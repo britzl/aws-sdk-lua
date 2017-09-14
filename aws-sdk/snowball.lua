@@ -41,12 +41,23 @@ end
 -- Required key: ClusterId
 -- @return CancelClusterRequest structure as a key-value pair table
 function M.CancelClusterRequest(args)
-	assert(args, "You must provdide an argument table when creating CancelClusterRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CancelClusterRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ClusterId"] = args["ClusterId"],
 	}
-	asserts.AssertCancelClusterRequest(t)
-	return t
+	asserts.AssertCancelClusterRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CancelClusterResult = { nil }
@@ -65,11 +76,22 @@ end
 -- Valid keys:
 -- @return CancelClusterResult structure as a key-value pair table
 function M.CancelClusterResult(args)
-	assert(args, "You must provdide an argument table when creating CancelClusterResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CancelClusterResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertCancelClusterResult(t)
-	return t
+	asserts.AssertCancelClusterResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdateJobRequest = { ["Description"] = true, ["AddressId"] = true, ["Notification"] = true, ["RoleARN"] = true, ["JobId"] = true, ["ShippingOption"] = true, ["ForwardingAddressId"] = true, ["SnowballCapacityPreference"] = true, ["Resources"] = true, nil }
@@ -108,8 +130,14 @@ end
 -- Required key: JobId
 -- @return UpdateJobRequest structure as a key-value pair table
 function M.UpdateJobRequest(args)
-	assert(args, "You must provdide an argument table when creating UpdateJobRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateJobRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Description"] = args["Description"],
 		["AddressId"] = args["AddressId"],
 		["Notification"] = args["Notification"],
@@ -120,8 +148,13 @@ function M.UpdateJobRequest(args)
 		["SnowballCapacityPreference"] = args["SnowballCapacityPreference"],
 		["Resources"] = args["Resources"],
 	}
-	asserts.AssertUpdateJobRequest(t)
-	return t
+	asserts.AssertUpdateJobRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UnsupportedAddressException = { ["Message"] = true, nil }
@@ -142,12 +175,23 @@ end
 -- * Message [String] 
 -- @return UnsupportedAddressException structure as a key-value pair table
 function M.UnsupportedAddressException(args)
-	assert(args, "You must provdide an argument table when creating UnsupportedAddressException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UnsupportedAddressException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Message"] = args["Message"],
 	}
-	asserts.AssertUnsupportedAddressException(t)
-	return t
+	asserts.AssertUnsupportedAddressException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateJobRequest = { ["Description"] = true, ["AddressId"] = true, ["KmsKeyARN"] = true, ["Notification"] = true, ["RoleARN"] = true, ["ClusterId"] = true, ["ForwardingAddressId"] = true, ["ShippingOption"] = true, ["JobType"] = true, ["SnowballType"] = true, ["SnowballCapacityPreference"] = true, ["Resources"] = true, nil }
@@ -190,8 +234,14 @@ end
 -- * Resources [JobResource] <p>Defines the Amazon S3 buckets associated with this job.</p> <p>With <code>IMPORT</code> jobs, you specify the bucket or buckets that your transferred data will be imported into.</p> <p>With <code>EXPORT</code> jobs, you specify the bucket or buckets that your transferred data will be exported from. Optionally, you can also specify a <code>KeyRange</code> value. If you choose to export a range, you define the length of the range by providing either an inclusive <code>BeginMarker</code> value, an inclusive <code>EndMarker</code> value, or both. Ranges are UTF-8 binary sorted.</p>
 -- @return CreateJobRequest structure as a key-value pair table
 function M.CreateJobRequest(args)
-	assert(args, "You must provdide an argument table when creating CreateJobRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateJobRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Description"] = args["Description"],
 		["AddressId"] = args["AddressId"],
 		["KmsKeyARN"] = args["KmsKeyARN"],
@@ -205,8 +255,13 @@ function M.CreateJobRequest(args)
 		["SnowballCapacityPreference"] = args["SnowballCapacityPreference"],
 		["Resources"] = args["Resources"],
 	}
-	asserts.AssertCreateJobRequest(t)
-	return t
+	asserts.AssertCreateJobRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListJobsRequest = { ["NextToken"] = true, ["MaxResults"] = true, nil }
@@ -229,13 +284,24 @@ end
 -- * MaxResults [ListLimit] <p>The number of <code>JobListEntry</code> objects to return.</p>
 -- @return ListJobsRequest structure as a key-value pair table
 function M.ListJobsRequest(args)
-	assert(args, "You must provdide an argument table when creating ListJobsRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListJobsRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NextToken"] = args["NextToken"],
 		["MaxResults"] = args["MaxResults"],
 	}
-	asserts.AssertListJobsRequest(t)
-	return t
+	asserts.AssertListJobsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.KMSRequestFailedException = { ["Message"] = true, nil }
@@ -256,12 +322,23 @@ end
 -- * Message [String] 
 -- @return KMSRequestFailedException structure as a key-value pair table
 function M.KMSRequestFailedException(args)
-	assert(args, "You must provdide an argument table when creating KMSRequestFailedException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating KMSRequestFailedException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Message"] = args["Message"],
 	}
-	asserts.AssertKMSRequestFailedException(t)
-	return t
+	asserts.AssertKMSRequestFailedException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidResourceException = { ["Message"] = true, nil }
@@ -282,12 +359,23 @@ end
 -- * Message [String] 
 -- @return InvalidResourceException structure as a key-value pair table
 function M.InvalidResourceException(args)
-	assert(args, "You must provdide an argument table when creating InvalidResourceException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidResourceException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Message"] = args["Message"],
 	}
-	asserts.AssertInvalidResourceException(t)
-	return t
+	asserts.AssertInvalidResourceException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ClusterMetadata = { ["Description"] = true, ["AddressId"] = true, ["KmsKeyARN"] = true, ["Notification"] = true, ["RoleARN"] = true, ["ClusterId"] = true, ["ForwardingAddressId"] = true, ["ClusterState"] = true, ["ShippingOption"] = true, ["Resources"] = true, ["SnowballType"] = true, ["CreationDate"] = true, ["JobType"] = true, nil }
@@ -332,8 +420,14 @@ end
 -- * JobType [JobType] <p>The type of job for this cluster. Currently, the only job type supported for clusters is <code>LOCAL_USE</code>.</p>
 -- @return ClusterMetadata structure as a key-value pair table
 function M.ClusterMetadata(args)
-	assert(args, "You must provdide an argument table when creating ClusterMetadata")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ClusterMetadata")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Description"] = args["Description"],
 		["AddressId"] = args["AddressId"],
 		["KmsKeyARN"] = args["KmsKeyARN"],
@@ -348,8 +442,13 @@ function M.ClusterMetadata(args)
 		["CreationDate"] = args["CreationDate"],
 		["JobType"] = args["JobType"],
 	}
-	asserts.AssertClusterMetadata(t)
-	return t
+	asserts.AssertClusterMetadata(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetJobUnlockCodeResult = { ["UnlockCode"] = true, nil }
@@ -370,12 +469,23 @@ end
 -- * UnlockCode [String] <p>The <code>UnlockCode</code> value for the specified job. The <code>UnlockCode</code> value can be accessed for up to 90 days after the job has been created.</p>
 -- @return GetJobUnlockCodeResult structure as a key-value pair table
 function M.GetJobUnlockCodeResult(args)
-	assert(args, "You must provdide an argument table when creating GetJobUnlockCodeResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetJobUnlockCodeResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["UnlockCode"] = args["UnlockCode"],
 	}
-	asserts.AssertGetJobUnlockCodeResult(t)
-	return t
+	asserts.AssertGetJobUnlockCodeResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.KeyRange = { ["EndMarker"] = true, ["BeginMarker"] = true, nil }
@@ -398,13 +508,24 @@ end
 -- * BeginMarker [String] <p>The key that starts an optional key range for an export job. Ranges are inclusive and UTF-8 binary sorted.</p>
 -- @return KeyRange structure as a key-value pair table
 function M.KeyRange(args)
-	assert(args, "You must provdide an argument table when creating KeyRange")
-	local t = { 
+	assert(args, "You must provide an argument table when creating KeyRange")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["EndMarker"] = args["EndMarker"],
 		["BeginMarker"] = args["BeginMarker"],
 	}
-	asserts.AssertKeyRange(t)
-	return t
+	asserts.AssertKeyRange(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Shipment = { ["Status"] = true, ["TrackingNumber"] = true, nil }
@@ -427,13 +548,24 @@ end
 -- * TrackingNumber [String] <p>The tracking number for this job. Using this tracking number with your region's carrier's website, you can track a Snowball as the carrier transports it.</p> <p>For India, the carrier is Amazon Logistics. For all other regions, UPS is the carrier.</p>
 -- @return Shipment structure as a key-value pair table
 function M.Shipment(args)
-	assert(args, "You must provdide an argument table when creating Shipment")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Shipment")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Status"] = args["Status"],
 		["TrackingNumber"] = args["TrackingNumber"],
 	}
-	asserts.AssertShipment(t)
-	return t
+	asserts.AssertShipment(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidNextTokenException = { ["Message"] = true, nil }
@@ -454,12 +586,23 @@ end
 -- * Message [String] 
 -- @return InvalidNextTokenException structure as a key-value pair table
 function M.InvalidNextTokenException(args)
-	assert(args, "You must provdide an argument table when creating InvalidNextTokenException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidNextTokenException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Message"] = args["Message"],
 	}
-	asserts.AssertInvalidNextTokenException(t)
-	return t
+	asserts.AssertInvalidNextTokenException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.EventTriggerDefinition = { ["EventResourceARN"] = true, nil }
@@ -480,12 +623,23 @@ end
 -- * EventResourceARN [ResourceARN] <p>The Amazon Resource Name (ARN) for any local Amazon S3 resource that is an AWS Lambda function's event trigger associated with this job.</p>
 -- @return EventTriggerDefinition structure as a key-value pair table
 function M.EventTriggerDefinition(args)
-	assert(args, "You must provdide an argument table when creating EventTriggerDefinition")
-	local t = { 
+	assert(args, "You must provide an argument table when creating EventTriggerDefinition")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["EventResourceARN"] = args["EventResourceARN"],
 	}
-	asserts.AssertEventTriggerDefinition(t)
-	return t
+	asserts.AssertEventTriggerDefinition(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateAddressRequest = { ["Address"] = true, nil }
@@ -508,12 +662,23 @@ end
 -- Required key: Address
 -- @return CreateAddressRequest structure as a key-value pair table
 function M.CreateAddressRequest(args)
-	assert(args, "You must provdide an argument table when creating CreateAddressRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateAddressRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Address"] = args["Address"],
 	}
-	asserts.AssertCreateAddressRequest(t)
-	return t
+	asserts.AssertCreateAddressRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateAddressResult = { ["AddressId"] = true, nil }
@@ -534,12 +699,23 @@ end
 -- * AddressId [String] <p>The automatically generated ID for a specific address. You'll use this ID when you create a job to specify which address you want the Snowball for that job shipped to.</p>
 -- @return CreateAddressResult structure as a key-value pair table
 function M.CreateAddressResult(args)
-	assert(args, "You must provdide an argument table when creating CreateAddressResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateAddressResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["AddressId"] = args["AddressId"],
 	}
-	asserts.AssertCreateAddressResult(t)
-	return t
+	asserts.AssertCreateAddressResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListJobsResult = { ["NextToken"] = true, ["JobListEntries"] = true, nil }
@@ -562,13 +738,24 @@ end
 -- * JobListEntries [JobListEntryList] <p>Each <code>JobListEntry</code> object contains a job's state, a job's ID, and a value that indicates whether the job is a job part, in the case of export jobs. </p>
 -- @return ListJobsResult structure as a key-value pair table
 function M.ListJobsResult(args)
-	assert(args, "You must provdide an argument table when creating ListJobsResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListJobsResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NextToken"] = args["NextToken"],
 		["JobListEntries"] = args["JobListEntries"],
 	}
-	asserts.AssertListJobsResult(t)
-	return t
+	asserts.AssertListJobsResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ClusterListEntry = { ["ClusterState"] = true, ["CreationDate"] = true, ["ClusterId"] = true, ["Description"] = true, nil }
@@ -595,15 +782,26 @@ end
 -- * Description [String] <p>Defines an optional description of the cluster, for example <code>Environmental Data Cluster-01</code>.</p>
 -- @return ClusterListEntry structure as a key-value pair table
 function M.ClusterListEntry(args)
-	assert(args, "You must provdide an argument table when creating ClusterListEntry")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ClusterListEntry")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ClusterState"] = args["ClusterState"],
 		["CreationDate"] = args["CreationDate"],
 		["ClusterId"] = args["ClusterId"],
 		["Description"] = args["Description"],
 	}
-	asserts.AssertClusterListEntry(t)
-	return t
+	asserts.AssertClusterListEntry(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateJobResult = { ["JobId"] = true, nil }
@@ -624,12 +822,23 @@ end
 -- * JobId [JobId] <p>The automatically generated ID for a job, for example <code>JID123e4567-e89b-12d3-a456-426655440000</code>.</p>
 -- @return CreateJobResult structure as a key-value pair table
 function M.CreateJobResult(args)
-	assert(args, "You must provdide an argument table when creating CreateJobResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateJobResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["JobId"] = args["JobId"],
 	}
-	asserts.AssertCreateJobResult(t)
-	return t
+	asserts.AssertCreateJobResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.JobLogs = { ["JobFailureLogURI"] = true, ["JobSuccessLogURI"] = true, ["JobCompletionReportURI"] = true, nil }
@@ -654,14 +863,25 @@ end
 -- * JobCompletionReportURI [String] <p>A link to an Amazon S3 presigned URL where the job completion report is located.</p>
 -- @return JobLogs structure as a key-value pair table
 function M.JobLogs(args)
-	assert(args, "You must provdide an argument table when creating JobLogs")
-	local t = { 
+	assert(args, "You must provide an argument table when creating JobLogs")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["JobFailureLogURI"] = args["JobFailureLogURI"],
 		["JobSuccessLogURI"] = args["JobSuccessLogURI"],
 		["JobCompletionReportURI"] = args["JobCompletionReportURI"],
 	}
-	asserts.AssertJobLogs(t)
-	return t
+	asserts.AssertJobLogs(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetJobManifestRequest = { ["JobId"] = true, nil }
@@ -684,12 +904,23 @@ end
 -- Required key: JobId
 -- @return GetJobManifestRequest structure as a key-value pair table
 function M.GetJobManifestRequest(args)
-	assert(args, "You must provdide an argument table when creating GetJobManifestRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetJobManifestRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["JobId"] = args["JobId"],
 	}
-	asserts.AssertGetJobManifestRequest(t)
-	return t
+	asserts.AssertGetJobManifestRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeJobRequest = { ["JobId"] = true, nil }
@@ -712,12 +943,23 @@ end
 -- Required key: JobId
 -- @return DescribeJobRequest structure as a key-value pair table
 function M.DescribeJobRequest(args)
-	assert(args, "You must provdide an argument table when creating DescribeJobRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeJobRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["JobId"] = args["JobId"],
 	}
-	asserts.AssertDescribeJobRequest(t)
-	return t
+	asserts.AssertDescribeJobRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetSnowballUsageResult = { ["SnowballLimit"] = true, ["SnowballsInUse"] = true, nil }
@@ -740,13 +982,24 @@ end
 -- * SnowballsInUse [Integer] <p>The number of Snowballs that this account is currently using.</p>
 -- @return GetSnowballUsageResult structure as a key-value pair table
 function M.GetSnowballUsageResult(args)
-	assert(args, "You must provdide an argument table when creating GetSnowballUsageResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetSnowballUsageResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["SnowballLimit"] = args["SnowballLimit"],
 		["SnowballsInUse"] = args["SnowballsInUse"],
 	}
-	asserts.AssertGetSnowballUsageResult(t)
-	return t
+	asserts.AssertGetSnowballUsageResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateClusterResult = { ["ClusterId"] = true, nil }
@@ -767,12 +1020,23 @@ end
 -- * ClusterId [ClusterId] <p>The automatically generated ID for a cluster.</p>
 -- @return CreateClusterResult structure as a key-value pair table
 function M.CreateClusterResult(args)
-	assert(args, "You must provdide an argument table when creating CreateClusterResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateClusterResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ClusterId"] = args["ClusterId"],
 	}
-	asserts.AssertCreateClusterResult(t)
-	return t
+	asserts.AssertCreateClusterResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeAddressResult = { ["Address"] = true, nil }
@@ -793,12 +1057,23 @@ end
 -- * Address [Address] <p>The address that you want the Snowball or Snowballs associated with a specific job to be shipped to.</p>
 -- @return DescribeAddressResult structure as a key-value pair table
 function M.DescribeAddressResult(args)
-	assert(args, "You must provdide an argument table when creating DescribeAddressResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeAddressResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Address"] = args["Address"],
 	}
-	asserts.AssertDescribeAddressResult(t)
-	return t
+	asserts.AssertDescribeAddressResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.JobMetadata = { ["SnowballCapacityPreference"] = true, ["JobState"] = true, ["Description"] = true, ["AddressId"] = true, ["ForwardingAddressId"] = true, ["KmsKeyARN"] = true, ["Notification"] = true, ["RoleARN"] = true, ["ClusterId"] = true, ["JobId"] = true, ["DataTransferProgress"] = true, ["JobType"] = true, ["SnowballType"] = true, ["JobLogInfo"] = true, ["CreationDate"] = true, ["Resources"] = true, ["ShippingDetails"] = true, nil }
@@ -851,8 +1126,14 @@ end
 -- * ShippingDetails [ShippingDetails] <p>A job's shipping information, including inbound and outbound tracking numbers and shipping speed options.</p>
 -- @return JobMetadata structure as a key-value pair table
 function M.JobMetadata(args)
-	assert(args, "You must provdide an argument table when creating JobMetadata")
-	local t = { 
+	assert(args, "You must provide an argument table when creating JobMetadata")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["SnowballCapacityPreference"] = args["SnowballCapacityPreference"],
 		["JobState"] = args["JobState"],
 		["Description"] = args["Description"],
@@ -871,8 +1152,13 @@ function M.JobMetadata(args)
 		["Resources"] = args["Resources"],
 		["ShippingDetails"] = args["ShippingDetails"],
 	}
-	asserts.AssertJobMetadata(t)
-	return t
+	asserts.AssertJobMetadata(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeJobResult = { ["JobMetadata"] = true, ["SubJobMetadata"] = true, nil }
@@ -895,13 +1181,24 @@ end
 -- * SubJobMetadata [JobMetadataList] <p>Information about a specific job part (in the case of an export job), including shipping information, job status, and other important metadata.</p>
 -- @return DescribeJobResult structure as a key-value pair table
 function M.DescribeJobResult(args)
-	assert(args, "You must provdide an argument table when creating DescribeJobResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeJobResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["JobMetadata"] = args["JobMetadata"],
 		["SubJobMetadata"] = args["SubJobMetadata"],
 	}
-	asserts.AssertDescribeJobResult(t)
-	return t
+	asserts.AssertDescribeJobResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetJobManifestResult = { ["ManifestURI"] = true, nil }
@@ -922,12 +1219,23 @@ end
 -- * ManifestURI [String] <p>The Amazon S3 presigned URL for the manifest file associated with the specified <code>JobId</code> value.</p>
 -- @return GetJobManifestResult structure as a key-value pair table
 function M.GetJobManifestResult(args)
-	assert(args, "You must provdide an argument table when creating GetJobManifestResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetJobManifestResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ManifestURI"] = args["ManifestURI"],
 	}
-	asserts.AssertGetJobManifestResult(t)
-	return t
+	asserts.AssertGetJobManifestResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Address = { ["City"] = true, ["Name"] = true, ["AddressId"] = true, ["Street1"] = true, ["Company"] = true, ["Street3"] = true, ["PostalCode"] = true, ["PrefectureOrDistrict"] = true, ["Country"] = true, ["Landmark"] = true, ["PhoneNumber"] = true, ["IsRestricted"] = true, ["StateOrProvince"] = true, ["Street2"] = true, nil }
@@ -974,8 +1282,14 @@ end
 -- * Street2 [String] <p>The second line in a street address that a Snowball is to be delivered to.</p>
 -- @return Address structure as a key-value pair table
 function M.Address(args)
-	assert(args, "You must provdide an argument table when creating Address")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Address")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["City"] = args["City"],
 		["Name"] = args["Name"],
 		["AddressId"] = args["AddressId"],
@@ -991,8 +1305,13 @@ function M.Address(args)
 		["StateOrProvince"] = args["StateOrProvince"],
 		["Street2"] = args["Street2"],
 	}
-	asserts.AssertAddress(t)
-	return t
+	asserts.AssertAddress(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetSnowballUsageRequest = { nil }
@@ -1011,11 +1330,22 @@ end
 -- Valid keys:
 -- @return GetSnowballUsageRequest structure as a key-value pair table
 function M.GetSnowballUsageRequest(args)
-	assert(args, "You must provdide an argument table when creating GetSnowballUsageRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetSnowballUsageRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertGetSnowballUsageRequest(t)
-	return t
+	asserts.AssertGetSnowballUsageRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidInputCombinationException = { ["Message"] = true, nil }
@@ -1036,12 +1366,23 @@ end
 -- * Message [String] 
 -- @return InvalidInputCombinationException structure as a key-value pair table
 function M.InvalidInputCombinationException(args)
-	assert(args, "You must provdide an argument table when creating InvalidInputCombinationException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidInputCombinationException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Message"] = args["Message"],
 	}
-	asserts.AssertInvalidInputCombinationException(t)
-	return t
+	asserts.AssertInvalidInputCombinationException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeAddressRequest = { ["AddressId"] = true, nil }
@@ -1064,12 +1405,23 @@ end
 -- Required key: AddressId
 -- @return DescribeAddressRequest structure as a key-value pair table
 function M.DescribeAddressRequest(args)
-	assert(args, "You must provdide an argument table when creating DescribeAddressRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeAddressRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["AddressId"] = args["AddressId"],
 	}
-	asserts.AssertDescribeAddressRequest(t)
-	return t
+	asserts.AssertDescribeAddressRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.LambdaResource = { ["EventTriggers"] = true, ["LambdaArn"] = true, nil }
@@ -1092,13 +1444,24 @@ end
 -- * LambdaArn [ResourceARN] <p>An Amazon Resource Name (ARN) that represents an AWS Lambda function to be triggered by PUT object actions on the associated local Amazon S3 resource.</p>
 -- @return LambdaResource structure as a key-value pair table
 function M.LambdaResource(args)
-	assert(args, "You must provdide an argument table when creating LambdaResource")
-	local t = { 
+	assert(args, "You must provide an argument table when creating LambdaResource")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["EventTriggers"] = args["EventTriggers"],
 		["LambdaArn"] = args["LambdaArn"],
 	}
-	asserts.AssertLambdaResource(t)
-	return t
+	asserts.AssertLambdaResource(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListClusterJobsResult = { ["NextToken"] = true, ["JobListEntries"] = true, nil }
@@ -1121,13 +1484,24 @@ end
 -- * JobListEntries [JobListEntryList] <p>Each <code>JobListEntry</code> object contains a job's state, a job's ID, and a value that indicates whether the job is a job part, in the case of export jobs. </p>
 -- @return ListClusterJobsResult structure as a key-value pair table
 function M.ListClusterJobsResult(args)
-	assert(args, "You must provdide an argument table when creating ListClusterJobsResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListClusterJobsResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NextToken"] = args["NextToken"],
 		["JobListEntries"] = args["JobListEntries"],
 	}
-	asserts.AssertListClusterJobsResult(t)
-	return t
+	asserts.AssertListClusterJobsResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ClusterLimitExceededException = { ["Message"] = true, nil }
@@ -1148,12 +1522,23 @@ end
 -- * Message [String] 
 -- @return ClusterLimitExceededException structure as a key-value pair table
 function M.ClusterLimitExceededException(args)
-	assert(args, "You must provdide an argument table when creating ClusterLimitExceededException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ClusterLimitExceededException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Message"] = args["Message"],
 	}
-	asserts.AssertClusterLimitExceededException(t)
-	return t
+	asserts.AssertClusterLimitExceededException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeAddressesResult = { ["NextToken"] = true, ["Addresses"] = true, nil }
@@ -1176,13 +1561,24 @@ end
 -- * Addresses [AddressList] <p>The Snowball shipping addresses that were created for this account.</p>
 -- @return DescribeAddressesResult structure as a key-value pair table
 function M.DescribeAddressesResult(args)
-	assert(args, "You must provdide an argument table when creating DescribeAddressesResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeAddressesResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NextToken"] = args["NextToken"],
 		["Addresses"] = args["Addresses"],
 	}
-	asserts.AssertDescribeAddressesResult(t)
-	return t
+	asserts.AssertDescribeAddressesResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Notification = { ["NotifyAll"] = true, ["JobStatesToNotify"] = true, ["SnsTopicARN"] = true, nil }
@@ -1207,14 +1603,25 @@ end
 -- * SnsTopicARN [SnsTopicARN] <p>The new SNS <code>TopicArn</code> that you want to associate with this job. You can create Amazon Resource Names (ARNs) for topics by using the <a href="http://docs.aws.amazon.com/sns/latest/api/API_CreateTopic.html">CreateTopic</a> Amazon SNS API action.</p> <p>You can subscribe email addresses to an Amazon SNS topic through the AWS Management Console, or by using the <a href="http://docs.aws.amazon.com/sns/latest/api/API_Subscribe.html">Subscribe</a> AWS Simple Notification Service (SNS) API action.</p>
 -- @return Notification structure as a key-value pair table
 function M.Notification(args)
-	assert(args, "You must provdide an argument table when creating Notification")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Notification")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NotifyAll"] = args["NotifyAll"],
 		["JobStatesToNotify"] = args["JobStatesToNotify"],
 		["SnsTopicARN"] = args["SnsTopicARN"],
 	}
-	asserts.AssertNotification(t)
-	return t
+	asserts.AssertNotification(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeAddressesRequest = { ["NextToken"] = true, ["MaxResults"] = true, nil }
@@ -1237,13 +1644,24 @@ end
 -- * MaxResults [ListLimit] <p>The number of <code>ADDRESS</code> objects to return.</p>
 -- @return DescribeAddressesRequest structure as a key-value pair table
 function M.DescribeAddressesRequest(args)
-	assert(args, "You must provdide an argument table when creating DescribeAddressesRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeAddressesRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NextToken"] = args["NextToken"],
 		["MaxResults"] = args["MaxResults"],
 	}
-	asserts.AssertDescribeAddressesRequest(t)
-	return t
+	asserts.AssertDescribeAddressesRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdateJobResult = { nil }
@@ -1262,11 +1680,22 @@ end
 -- Valid keys:
 -- @return UpdateJobResult structure as a key-value pair table
 function M.UpdateJobResult(args)
-	assert(args, "You must provdide an argument table when creating UpdateJobResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateJobResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertUpdateJobResult(t)
-	return t
+	asserts.AssertUpdateJobResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetJobUnlockCodeRequest = { ["JobId"] = true, nil }
@@ -1289,12 +1718,23 @@ end
 -- Required key: JobId
 -- @return GetJobUnlockCodeRequest structure as a key-value pair table
 function M.GetJobUnlockCodeRequest(args)
-	assert(args, "You must provdide an argument table when creating GetJobUnlockCodeRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetJobUnlockCodeRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["JobId"] = args["JobId"],
 	}
-	asserts.AssertGetJobUnlockCodeRequest(t)
-	return t
+	asserts.AssertGetJobUnlockCodeRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateClusterRequest = { ["Description"] = true, ["AddressId"] = true, ["KmsKeyARN"] = true, ["Notification"] = true, ["RoleARN"] = true, ["ForwardingAddressId"] = true, ["ShippingOption"] = true, ["JobType"] = true, ["SnowballType"] = true, ["Resources"] = true, nil }
@@ -1343,8 +1783,14 @@ end
 -- Required key: ShippingOption
 -- @return CreateClusterRequest structure as a key-value pair table
 function M.CreateClusterRequest(args)
-	assert(args, "You must provdide an argument table when creating CreateClusterRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateClusterRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Description"] = args["Description"],
 		["AddressId"] = args["AddressId"],
 		["KmsKeyARN"] = args["KmsKeyARN"],
@@ -1356,8 +1802,13 @@ function M.CreateClusterRequest(args)
 		["SnowballType"] = args["SnowballType"],
 		["Resources"] = args["Resources"],
 	}
-	asserts.AssertCreateClusterRequest(t)
-	return t
+	asserts.AssertCreateClusterRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.JobListEntry = { ["IsMaster"] = true, ["JobState"] = true, ["Description"] = true, ["JobId"] = true, ["SnowballType"] = true, ["CreationDate"] = true, ["JobType"] = true, nil }
@@ -1390,8 +1841,14 @@ end
 -- * JobType [JobType] <p>The type of job.</p>
 -- @return JobListEntry structure as a key-value pair table
 function M.JobListEntry(args)
-	assert(args, "You must provdide an argument table when creating JobListEntry")
-	local t = { 
+	assert(args, "You must provide an argument table when creating JobListEntry")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["IsMaster"] = args["IsMaster"],
 		["JobState"] = args["JobState"],
 		["Description"] = args["Description"],
@@ -1400,8 +1857,13 @@ function M.JobListEntry(args)
 		["CreationDate"] = args["CreationDate"],
 		["JobType"] = args["JobType"],
 	}
-	asserts.AssertJobListEntry(t)
-	return t
+	asserts.AssertJobListEntry(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DataTransfer = { ["ObjectsTransferred"] = true, ["TotalBytes"] = true, ["BytesTransferred"] = true, ["TotalObjects"] = true, nil }
@@ -1428,15 +1890,26 @@ end
 -- * TotalObjects [Long] <p>The total number of objects for a transfer between a Snowball and Amazon S3. This value is set to 0 (zero) until all the keys that will be transferred have been listed.</p>
 -- @return DataTransfer structure as a key-value pair table
 function M.DataTransfer(args)
-	assert(args, "You must provdide an argument table when creating DataTransfer")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DataTransfer")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ObjectsTransferred"] = args["ObjectsTransferred"],
 		["TotalBytes"] = args["TotalBytes"],
 		["BytesTransferred"] = args["BytesTransferred"],
 		["TotalObjects"] = args["TotalObjects"],
 	}
-	asserts.AssertDataTransfer(t)
-	return t
+	asserts.AssertDataTransfer(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidAddressException = { ["Message"] = true, nil }
@@ -1457,12 +1930,23 @@ end
 -- * Message [String] 
 -- @return InvalidAddressException structure as a key-value pair table
 function M.InvalidAddressException(args)
-	assert(args, "You must provdide an argument table when creating InvalidAddressException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidAddressException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Message"] = args["Message"],
 	}
-	asserts.AssertInvalidAddressException(t)
-	return t
+	asserts.AssertInvalidAddressException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdateClusterResult = { nil }
@@ -1481,11 +1965,22 @@ end
 -- Valid keys:
 -- @return UpdateClusterResult structure as a key-value pair table
 function M.UpdateClusterResult(args)
-	assert(args, "You must provdide an argument table when creating UpdateClusterResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateClusterResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertUpdateClusterResult(t)
-	return t
+	asserts.AssertUpdateClusterResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidJobStateException = { ["Message"] = true, nil }
@@ -1506,12 +2001,23 @@ end
 -- * Message [String] 
 -- @return InvalidJobStateException structure as a key-value pair table
 function M.InvalidJobStateException(args)
-	assert(args, "You must provdide an argument table when creating InvalidJobStateException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidJobStateException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Message"] = args["Message"],
 	}
-	asserts.AssertInvalidJobStateException(t)
-	return t
+	asserts.AssertInvalidJobStateException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CancelJobResult = { nil }
@@ -1530,11 +2036,22 @@ end
 -- Valid keys:
 -- @return CancelJobResult structure as a key-value pair table
 function M.CancelJobResult(args)
-	assert(args, "You must provdide an argument table when creating CancelJobResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CancelJobResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertCancelJobResult(t)
-	return t
+	asserts.AssertCancelJobResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeClusterRequest = { ["ClusterId"] = true, nil }
@@ -1557,12 +2074,23 @@ end
 -- Required key: ClusterId
 -- @return DescribeClusterRequest structure as a key-value pair table
 function M.DescribeClusterRequest(args)
-	assert(args, "You must provdide an argument table when creating DescribeClusterRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeClusterRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ClusterId"] = args["ClusterId"],
 	}
-	asserts.AssertDescribeClusterRequest(t)
-	return t
+	asserts.AssertDescribeClusterRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.JobResource = { ["LambdaResources"] = true, ["S3Resources"] = true, nil }
@@ -1585,13 +2113,24 @@ end
 -- * S3Resources [S3ResourceList] <p>An array of <code>S3Resource</code> objects.</p>
 -- @return JobResource structure as a key-value pair table
 function M.JobResource(args)
-	assert(args, "You must provdide an argument table when creating JobResource")
-	local t = { 
+	assert(args, "You must provide an argument table when creating JobResource")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["LambdaResources"] = args["LambdaResources"],
 		["S3Resources"] = args["S3Resources"],
 	}
-	asserts.AssertJobResource(t)
-	return t
+	asserts.AssertJobResource(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListClustersRequest = { ["NextToken"] = true, ["MaxResults"] = true, nil }
@@ -1614,13 +2153,24 @@ end
 -- * MaxResults [ListLimit] <p>The number of <code>ClusterListEntry</code> objects to return.</p>
 -- @return ListClustersRequest structure as a key-value pair table
 function M.ListClustersRequest(args)
-	assert(args, "You must provdide an argument table when creating ListClustersRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListClustersRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NextToken"] = args["NextToken"],
 		["MaxResults"] = args["MaxResults"],
 	}
-	asserts.AssertListClustersRequest(t)
-	return t
+	asserts.AssertListClustersRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdateClusterRequest = { ["Description"] = true, ["AddressId"] = true, ["Notification"] = true, ["RoleARN"] = true, ["ClusterId"] = true, ["ForwardingAddressId"] = true, ["ShippingOption"] = true, ["Resources"] = true, nil }
@@ -1657,8 +2207,14 @@ end
 -- Required key: ClusterId
 -- @return UpdateClusterRequest structure as a key-value pair table
 function M.UpdateClusterRequest(args)
-	assert(args, "You must provdide an argument table when creating UpdateClusterRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateClusterRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Description"] = args["Description"],
 		["AddressId"] = args["AddressId"],
 		["Notification"] = args["Notification"],
@@ -1668,8 +2224,13 @@ function M.UpdateClusterRequest(args)
 		["ShippingOption"] = args["ShippingOption"],
 		["Resources"] = args["Resources"],
 	}
-	asserts.AssertUpdateClusterRequest(t)
-	return t
+	asserts.AssertUpdateClusterRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListClustersResult = { ["ClusterListEntries"] = true, ["NextToken"] = true, nil }
@@ -1692,13 +2253,24 @@ end
 -- * NextToken [String] <p>HTTP requests are stateless. If you use the automatically generated <code>NextToken</code> value in your next <code>ClusterListEntry</code> call, your list of returned clusters will start from this point in the array.</p>
 -- @return ListClustersResult structure as a key-value pair table
 function M.ListClustersResult(args)
-	assert(args, "You must provdide an argument table when creating ListClustersResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListClustersResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ClusterListEntries"] = args["ClusterListEntries"],
 		["NextToken"] = args["NextToken"],
 	}
-	asserts.AssertListClustersResult(t)
-	return t
+	asserts.AssertListClustersResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.S3Resource = { ["BucketArn"] = true, ["KeyRange"] = true, nil }
@@ -1721,13 +2293,24 @@ end
 -- * KeyRange [KeyRange] <p>For export jobs, you can provide an optional <code>KeyRange</code> within a specific Amazon S3 bucket. The length of the range is defined at job creation, and has either an inclusive <code>BeginMarker</code>, an inclusive <code>EndMarker</code>, or both. Ranges are UTF-8 binary sorted.</p>
 -- @return S3Resource structure as a key-value pair table
 function M.S3Resource(args)
-	assert(args, "You must provdide an argument table when creating S3Resource")
-	local t = { 
+	assert(args, "You must provide an argument table when creating S3Resource")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["BucketArn"] = args["BucketArn"],
 		["KeyRange"] = args["KeyRange"],
 	}
-	asserts.AssertS3Resource(t)
-	return t
+	asserts.AssertS3Resource(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListClusterJobsRequest = { ["NextToken"] = true, ["ClusterId"] = true, ["MaxResults"] = true, nil }
@@ -1754,14 +2337,25 @@ end
 -- Required key: ClusterId
 -- @return ListClusterJobsRequest structure as a key-value pair table
 function M.ListClusterJobsRequest(args)
-	assert(args, "You must provdide an argument table when creating ListClusterJobsRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListClusterJobsRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NextToken"] = args["NextToken"],
 		["ClusterId"] = args["ClusterId"],
 		["MaxResults"] = args["MaxResults"],
 	}
-	asserts.AssertListClusterJobsRequest(t)
-	return t
+	asserts.AssertListClusterJobsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeClusterResult = { ["ClusterMetadata"] = true, nil }
@@ -1782,12 +2376,23 @@ end
 -- * ClusterMetadata [ClusterMetadata] <p>Information about a specific cluster, including shipping information, cluster status, and other important metadata.</p>
 -- @return DescribeClusterResult structure as a key-value pair table
 function M.DescribeClusterResult(args)
-	assert(args, "You must provdide an argument table when creating DescribeClusterResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeClusterResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ClusterMetadata"] = args["ClusterMetadata"],
 	}
-	asserts.AssertDescribeClusterResult(t)
-	return t
+	asserts.AssertDescribeClusterResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CancelJobRequest = { ["JobId"] = true, nil }
@@ -1810,12 +2415,23 @@ end
 -- Required key: JobId
 -- @return CancelJobRequest structure as a key-value pair table
 function M.CancelJobRequest(args)
-	assert(args, "You must provdide an argument table when creating CancelJobRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CancelJobRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["JobId"] = args["JobId"],
 	}
-	asserts.AssertCancelJobRequest(t)
-	return t
+	asserts.AssertCancelJobRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ShippingDetails = { ["OutboundShipment"] = true, ["ShippingOption"] = true, ["InboundShipment"] = true, nil }
@@ -1840,14 +2456,25 @@ end
 -- * InboundShipment [Shipment] <p>The <code>Status</code> and <code>TrackingNumber</code> values for a Snowball being delivered to the address that you specified for a particular job.</p>
 -- @return ShippingDetails structure as a key-value pair table
 function M.ShippingDetails(args)
-	assert(args, "You must provdide an argument table when creating ShippingDetails")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ShippingDetails")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["OutboundShipment"] = args["OutboundShipment"],
 		["ShippingOption"] = args["ShippingOption"],
 		["InboundShipment"] = args["InboundShipment"],
 	}
-	asserts.AssertShippingDetails(t)
-	return t
+	asserts.AssertShippingDetails(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 function asserts.AssertJobId(str)
@@ -2241,8 +2868,11 @@ function M.ListJobsAsync(ListJobsRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AWSIESnowballJobManagementService.ListJobs",
 	}
+	for header,value in pairs(ListJobsRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ListJobsRequest, headers, settings, cb)
 	else
@@ -2273,8 +2903,11 @@ function M.ListClusterJobsAsync(ListClusterJobsRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AWSIESnowballJobManagementService.ListClusterJobs",
 	}
+	for header,value in pairs(ListClusterJobsRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ListClusterJobsRequest, headers, settings, cb)
 	else
@@ -2305,8 +2938,11 @@ function M.GetJobUnlockCodeAsync(GetJobUnlockCodeRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AWSIESnowballJobManagementService.GetJobUnlockCode",
 	}
+	for header,value in pairs(GetJobUnlockCodeRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", GetJobUnlockCodeRequest, headers, settings, cb)
 	else
@@ -2337,8 +2973,11 @@ function M.CreateJobAsync(CreateJobRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AWSIESnowballJobManagementService.CreateJob",
 	}
+	for header,value in pairs(CreateJobRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateJobRequest, headers, settings, cb)
 	else
@@ -2369,8 +3008,11 @@ function M.ListClustersAsync(ListClustersRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AWSIESnowballJobManagementService.ListClusters",
 	}
+	for header,value in pairs(ListClustersRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ListClustersRequest, headers, settings, cb)
 	else
@@ -2401,8 +3043,11 @@ function M.CreateClusterAsync(CreateClusterRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AWSIESnowballJobManagementService.CreateCluster",
 	}
+	for header,value in pairs(CreateClusterRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateClusterRequest, headers, settings, cb)
 	else
@@ -2433,8 +3078,11 @@ function M.UpdateJobAsync(UpdateJobRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AWSIESnowballJobManagementService.UpdateJob",
 	}
+	for header,value in pairs(UpdateJobRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateJobRequest, headers, settings, cb)
 	else
@@ -2465,8 +3113,11 @@ function M.GetSnowballUsageAsync(GetSnowballUsageRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AWSIESnowballJobManagementService.GetSnowballUsage",
 	}
+	for header,value in pairs(GetSnowballUsageRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", GetSnowballUsageRequest, headers, settings, cb)
 	else
@@ -2497,8 +3148,11 @@ function M.GetJobManifestAsync(GetJobManifestRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AWSIESnowballJobManagementService.GetJobManifest",
 	}
+	for header,value in pairs(GetJobManifestRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", GetJobManifestRequest, headers, settings, cb)
 	else
@@ -2529,8 +3183,11 @@ function M.CreateAddressAsync(CreateAddressRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AWSIESnowballJobManagementService.CreateAddress",
 	}
+	for header,value in pairs(CreateAddressRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateAddressRequest, headers, settings, cb)
 	else
@@ -2561,8 +3218,11 @@ function M.DescribeAddressAsync(DescribeAddressRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AWSIESnowballJobManagementService.DescribeAddress",
 	}
+	for header,value in pairs(DescribeAddressRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeAddressRequest, headers, settings, cb)
 	else
@@ -2593,8 +3253,11 @@ function M.DescribeAddressesAsync(DescribeAddressesRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AWSIESnowballJobManagementService.DescribeAddresses",
 	}
+	for header,value in pairs(DescribeAddressesRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeAddressesRequest, headers, settings, cb)
 	else
@@ -2625,8 +3288,11 @@ function M.CancelJobAsync(CancelJobRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AWSIESnowballJobManagementService.CancelJob",
 	}
+	for header,value in pairs(CancelJobRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", CancelJobRequest, headers, settings, cb)
 	else
@@ -2657,8 +3323,11 @@ function M.CancelClusterAsync(CancelClusterRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AWSIESnowballJobManagementService.CancelCluster",
 	}
+	for header,value in pairs(CancelClusterRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", CancelClusterRequest, headers, settings, cb)
 	else
@@ -2689,8 +3358,11 @@ function M.DescribeJobAsync(DescribeJobRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AWSIESnowballJobManagementService.DescribeJob",
 	}
+	for header,value in pairs(DescribeJobRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeJobRequest, headers, settings, cb)
 	else
@@ -2721,8 +3393,11 @@ function M.DescribeClusterAsync(DescribeClusterRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AWSIESnowballJobManagementService.DescribeCluster",
 	}
+	for header,value in pairs(DescribeClusterRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeClusterRequest, headers, settings, cb)
 	else
@@ -2753,8 +3428,11 @@ function M.UpdateClusterAsync(UpdateClusterRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AWSIESnowballJobManagementService.UpdateCluster",
 	}
+	for header,value in pairs(UpdateClusterRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateClusterRequest, headers, settings, cb)
 	else

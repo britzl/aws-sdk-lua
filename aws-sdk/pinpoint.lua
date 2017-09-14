@@ -41,12 +41,23 @@ end
 -- Required key: ApplicationSettingsResource
 -- @return UpdateApplicationSettingsResponse structure as a key-value pair table
 function M.UpdateApplicationSettingsResponse(args)
-	assert(args, "You must provdide an argument table when creating UpdateApplicationSettingsResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateApplicationSettingsResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ApplicationSettingsResource"] = args["ApplicationSettingsResource"],
 	}
-	asserts.AssertUpdateApplicationSettingsResponse(t)
-	return t
+	asserts.AssertUpdateApplicationSettingsResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ActivityResponse = { ["End"] = true, ["CampaignId"] = true, ["TimezonesTotalCount"] = true, ["SuccessfulEndpointCount"] = true, ["ScheduledStart"] = true, ["TotalEndpointCount"] = true, ["Start"] = true, ["State"] = true, ["Result"] = true, ["TimezonesCompletedCount"] = true, ["TreatmentId"] = true, ["ApplicationId"] = true, ["Id"] = true, nil }
@@ -91,8 +102,14 @@ end
 -- * Id [__string] The unique activity ID.
 -- @return ActivityResponse structure as a key-value pair table
 function M.ActivityResponse(args)
-	assert(args, "You must provdide an argument table when creating ActivityResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ActivityResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["End"] = args["End"],
 		["CampaignId"] = args["CampaignId"],
 		["TimezonesTotalCount"] = args["TimezonesTotalCount"],
@@ -107,8 +124,13 @@ function M.ActivityResponse(args)
 		["ApplicationId"] = args["ApplicationId"],
 		["Id"] = args["Id"],
 	}
-	asserts.AssertActivityResponse(t)
-	return t
+	asserts.AssertActivityResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteSmsChannelResponse = { ["SMSChannelResponse"] = true, nil }
@@ -131,12 +153,23 @@ end
 -- Required key: SMSChannelResponse
 -- @return DeleteSmsChannelResponse structure as a key-value pair table
 function M.DeleteSmsChannelResponse(args)
-	assert(args, "You must provdide an argument table when creating DeleteSmsChannelResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteSmsChannelResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["SMSChannelResponse"] = args["SMSChannelResponse"],
 	}
-	asserts.AssertDeleteSmsChannelResponse(t)
-	return t
+	asserts.AssertDeleteSmsChannelResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.WriteCampaignRequest = { ["Description"] = true, ["Limits"] = true, ["Schedule"] = true, ["TreatmentName"] = true, ["HoldoutPercent"] = true, ["SegmentVersion"] = true, ["SegmentId"] = true, ["AdditionalTreatments"] = true, ["IsPaused"] = true, ["MessageConfiguration"] = true, ["TreatmentDescription"] = true, ["Name"] = true, nil }
@@ -179,8 +212,14 @@ end
 -- * Name [__string] The custom name of the campaign.
 -- @return WriteCampaignRequest structure as a key-value pair table
 function M.WriteCampaignRequest(args)
-	assert(args, "You must provdide an argument table when creating WriteCampaignRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating WriteCampaignRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Description"] = args["Description"],
 		["Limits"] = args["Limits"],
 		["Schedule"] = args["Schedule"],
@@ -194,8 +233,13 @@ function M.WriteCampaignRequest(args)
 		["TreatmentDescription"] = args["TreatmentDescription"],
 		["Name"] = args["Name"],
 	}
-	asserts.AssertWriteCampaignRequest(t)
-	return t
+	asserts.AssertWriteCampaignRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.EndpointUser = { ["UserId"] = true, ["UserAttributes"] = true, nil }
@@ -218,13 +262,24 @@ end
 -- * UserAttributes [MapOfListOf__string] Custom attributes specific to the user.
 -- @return EndpointUser structure as a key-value pair table
 function M.EndpointUser(args)
-	assert(args, "You must provdide an argument table when creating EndpointUser")
-	local t = { 
+	assert(args, "You must provide an argument table when creating EndpointUser")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["UserId"] = args["UserId"],
 		["UserAttributes"] = args["UserAttributes"],
 	}
-	asserts.AssertEndpointUser(t)
-	return t
+	asserts.AssertEndpointUser(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetApnsChannelRequest = { ["ApplicationId"] = true, nil }
@@ -247,12 +302,24 @@ end
 -- Required key: ApplicationId
 -- @return GetApnsChannelRequest structure as a key-value pair table
 function M.GetApnsChannelRequest(args)
-	assert(args, "You must provdide an argument table when creating GetApnsChannelRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetApnsChannelRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{application-id}"] = args["ApplicationId"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ApplicationId"] = args["ApplicationId"],
 	}
-	asserts.AssertGetApnsChannelRequest(t)
-	return t
+	asserts.AssertGetApnsChannelRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetGcmChannelRequest = { ["ApplicationId"] = true, nil }
@@ -275,12 +342,24 @@ end
 -- Required key: ApplicationId
 -- @return GetGcmChannelRequest structure as a key-value pair table
 function M.GetGcmChannelRequest(args)
-	assert(args, "You must provdide an argument table when creating GetGcmChannelRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetGcmChannelRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{application-id}"] = args["ApplicationId"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ApplicationId"] = args["ApplicationId"],
 	}
-	asserts.AssertGetGcmChannelRequest(t)
-	return t
+	asserts.AssertGetGcmChannelRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.BadRequestException = { ["Message"] = true, ["RequestID"] = true, nil }
@@ -303,13 +382,24 @@ end
 -- * RequestID [__string] The unique message body ID.
 -- @return BadRequestException structure as a key-value pair table
 function M.BadRequestException(args)
-	assert(args, "You must provdide an argument table when creating BadRequestException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating BadRequestException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Message"] = args["Message"],
 		["RequestID"] = args["RequestID"],
 	}
-	asserts.AssertBadRequestException(t)
-	return t
+	asserts.AssertBadRequestException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.WriteApplicationSettingsRequest = { ["QuietTime"] = true, ["Limits"] = true, nil }
@@ -332,13 +422,24 @@ end
 -- * Limits [CampaignLimits] The default campaign limits for the app. These limits apply to each campaign for the app, unless the campaign overrides the default with limits of its own.
 -- @return WriteApplicationSettingsRequest structure as a key-value pair table
 function M.WriteApplicationSettingsRequest(args)
-	assert(args, "You must provdide an argument table when creating WriteApplicationSettingsRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating WriteApplicationSettingsRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["QuietTime"] = args["QuietTime"],
 		["Limits"] = args["Limits"],
 	}
-	asserts.AssertWriteApplicationSettingsRequest(t)
-	return t
+	asserts.AssertWriteApplicationSettingsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteApnsChannelRequest = { ["ApplicationId"] = true, nil }
@@ -361,12 +462,24 @@ end
 -- Required key: ApplicationId
 -- @return DeleteApnsChannelRequest structure as a key-value pair table
 function M.DeleteApnsChannelRequest(args)
-	assert(args, "You must provdide an argument table when creating DeleteApnsChannelRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteApnsChannelRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{application-id}"] = args["ApplicationId"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ApplicationId"] = args["ApplicationId"],
 	}
-	asserts.AssertDeleteApnsChannelRequest(t)
-	return t
+	asserts.AssertDeleteApnsChannelRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.WriteSegmentRequest = { ["Dimensions"] = true, ["Name"] = true, nil }
@@ -389,13 +502,24 @@ end
 -- * Name [__string] The name of segment
 -- @return WriteSegmentRequest structure as a key-value pair table
 function M.WriteSegmentRequest(args)
-	assert(args, "You must provdide an argument table when creating WriteSegmentRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating WriteSegmentRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Dimensions"] = args["Dimensions"],
 		["Name"] = args["Name"],
 	}
-	asserts.AssertWriteSegmentRequest(t)
-	return t
+	asserts.AssertWriteSegmentRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.SegmentsResponse = { ["Item"] = true, ["NextToken"] = true, nil }
@@ -418,13 +542,24 @@ end
 -- * NextToken [__string] An identifier used to retrieve the next page of results. The token is null if no additional pages exist.
 -- @return SegmentsResponse structure as a key-value pair table
 function M.SegmentsResponse(args)
-	assert(args, "You must provdide an argument table when creating SegmentsResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating SegmentsResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Item"] = args["Item"],
 		["NextToken"] = args["NextToken"],
 	}
-	asserts.AssertSegmentsResponse(t)
-	return t
+	asserts.AssertSegmentsResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdateSmsChannelResponse = { ["SMSChannelResponse"] = true, nil }
@@ -447,12 +582,23 @@ end
 -- Required key: SMSChannelResponse
 -- @return UpdateSmsChannelResponse structure as a key-value pair table
 function M.UpdateSmsChannelResponse(args)
-	assert(args, "You must provdide an argument table when creating UpdateSmsChannelResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateSmsChannelResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["SMSChannelResponse"] = args["SMSChannelResponse"],
 	}
-	asserts.AssertUpdateSmsChannelResponse(t)
-	return t
+	asserts.AssertUpdateSmsChannelResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InternalServerErrorException = { ["Message"] = true, ["RequestID"] = true, nil }
@@ -475,13 +621,24 @@ end
 -- * RequestID [__string] The unique message body ID.
 -- @return InternalServerErrorException structure as a key-value pair table
 function M.InternalServerErrorException(args)
-	assert(args, "You must provdide an argument table when creating InternalServerErrorException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InternalServerErrorException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Message"] = args["Message"],
 		["RequestID"] = args["RequestID"],
 	}
-	asserts.AssertInternalServerErrorException(t)
-	return t
+	asserts.AssertInternalServerErrorException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetImportJobsResponse = { ["ImportJobsResponse"] = true, nil }
@@ -504,12 +661,23 @@ end
 -- Required key: ImportJobsResponse
 -- @return GetImportJobsResponse structure as a key-value pair table
 function M.GetImportJobsResponse(args)
-	assert(args, "You must provdide an argument table when creating GetImportJobsResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetImportJobsResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ImportJobsResponse"] = args["ImportJobsResponse"],
 	}
-	asserts.AssertGetImportJobsResponse(t)
-	return t
+	asserts.AssertGetImportJobsResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateCampaignRequest = { ["ApplicationId"] = true, ["WriteCampaignRequest"] = true, nil }
@@ -536,13 +704,25 @@ end
 -- Required key: WriteCampaignRequest
 -- @return CreateCampaignRequest structure as a key-value pair table
 function M.CreateCampaignRequest(args)
-	assert(args, "You must provdide an argument table when creating CreateCampaignRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateCampaignRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{application-id}"] = args["ApplicationId"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ApplicationId"] = args["ApplicationId"],
 		["WriteCampaignRequest"] = args["WriteCampaignRequest"],
 	}
-	asserts.AssertCreateCampaignRequest(t)
-	return t
+	asserts.AssertCreateCampaignRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.PutEventStreamRequest = { ["ApplicationId"] = true, ["WriteEventStream"] = true, nil }
@@ -569,13 +749,25 @@ end
 -- Required key: WriteEventStream
 -- @return PutEventStreamRequest structure as a key-value pair table
 function M.PutEventStreamRequest(args)
-	assert(args, "You must provdide an argument table when creating PutEventStreamRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating PutEventStreamRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{application-id}"] = args["ApplicationId"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ApplicationId"] = args["ApplicationId"],
 		["WriteEventStream"] = args["WriteEventStream"],
 	}
-	asserts.AssertPutEventStreamRequest(t)
-	return t
+	asserts.AssertPutEventStreamRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdateEndpointRequest = { ["ApplicationId"] = true, ["EndpointRequest"] = true, ["EndpointId"] = true, nil }
@@ -606,14 +798,27 @@ end
 -- Required key: EndpointRequest
 -- @return UpdateEndpointRequest structure as a key-value pair table
 function M.UpdateEndpointRequest(args)
-	assert(args, "You must provdide an argument table when creating UpdateEndpointRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateEndpointRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{application-id}"] = args["ApplicationId"],
+        ["{endpoint-id}"] = args["EndpointId"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ApplicationId"] = args["ApplicationId"],
 		["EndpointRequest"] = args["EndpointRequest"],
 		["EndpointId"] = args["EndpointId"],
 	}
-	asserts.AssertUpdateEndpointRequest(t)
-	return t
+	asserts.AssertUpdateEndpointRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Schedule = { ["QuietTime"] = true, ["Frequency"] = true, ["IsLocalTime"] = true, ["StartTime"] = true, ["Timezone"] = true, ["EndTime"] = true, nil }
@@ -644,8 +849,14 @@ end
 -- * EndTime [__string] The scheduled time that the campaign ends in ISO 8601 format.
 -- @return Schedule structure as a key-value pair table
 function M.Schedule(args)
-	assert(args, "You must provdide an argument table when creating Schedule")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Schedule")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["QuietTime"] = args["QuietTime"],
 		["Frequency"] = args["Frequency"],
 		["IsLocalTime"] = args["IsLocalTime"],
@@ -653,8 +864,13 @@ function M.Schedule(args)
 		["Timezone"] = args["Timezone"],
 		["EndTime"] = args["EndTime"],
 	}
-	asserts.AssertSchedule(t)
-	return t
+	asserts.AssertSchedule(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AddressConfiguration = { ["Substitutions"] = true, ["BodyOverride"] = true, ["Context"] = true, ["RawContent"] = true, ["ChannelType"] = true, ["TitleOverride"] = true, nil }
@@ -685,8 +901,14 @@ end
 -- * TitleOverride [__string] Title override. If specified will override default title if applicable.
 -- @return AddressConfiguration structure as a key-value pair table
 function M.AddressConfiguration(args)
-	assert(args, "You must provdide an argument table when creating AddressConfiguration")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AddressConfiguration")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Substitutions"] = args["Substitutions"],
 		["BodyOverride"] = args["BodyOverride"],
 		["Context"] = args["Context"],
@@ -694,8 +916,13 @@ function M.AddressConfiguration(args)
 		["ChannelType"] = args["ChannelType"],
 		["TitleOverride"] = args["TitleOverride"],
 	}
-	asserts.AssertAddressConfiguration(t)
-	return t
+	asserts.AssertAddressConfiguration(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetSegmentVersionsRequest = { ["Token"] = true, ["ApplicationId"] = true, ["SegmentId"] = true, ["PageSize"] = true, nil }
@@ -726,15 +953,30 @@ end
 -- Required key: ApplicationId
 -- @return GetSegmentVersionsRequest structure as a key-value pair table
 function M.GetSegmentVersionsRequest(args)
-	assert(args, "You must provdide an argument table when creating GetSegmentVersionsRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetSegmentVersionsRequest")
+    local query_args = { 
+        ["token"] = args["Token"],
+        ["page-size"] = args["PageSize"],
+    }
+    local uri_args = { 
+        ["{application-id}"] = args["ApplicationId"],
+        ["{segment-id}"] = args["SegmentId"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Token"] = args["Token"],
 		["ApplicationId"] = args["ApplicationId"],
 		["SegmentId"] = args["SegmentId"],
 		["PageSize"] = args["PageSize"],
 	}
-	asserts.AssertGetSegmentVersionsRequest(t)
-	return t
+	asserts.AssertGetSegmentVersionsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetCampaignVersionResponse = { ["CampaignResponse"] = true, nil }
@@ -757,12 +999,23 @@ end
 -- Required key: CampaignResponse
 -- @return GetCampaignVersionResponse structure as a key-value pair table
 function M.GetCampaignVersionResponse(args)
-	assert(args, "You must provdide an argument table when creating GetCampaignVersionResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetCampaignVersionResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["CampaignResponse"] = args["CampaignResponse"],
 	}
-	asserts.AssertGetCampaignVersionResponse(t)
-	return t
+	asserts.AssertGetCampaignVersionResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.APNSSandboxChannelResponse = { ["LastModifiedDate"] = true, ["Enabled"] = true, ["LastModifiedBy"] = true, ["Platform"] = true, ["Version"] = true, ["IsArchived"] = true, ["CreationDate"] = true, ["ApplicationId"] = true, ["Id"] = true, nil }
@@ -799,8 +1052,14 @@ end
 -- * Id [__string] Channel ID. Not used, only for backwards compatibility.
 -- @return APNSSandboxChannelResponse structure as a key-value pair table
 function M.APNSSandboxChannelResponse(args)
-	assert(args, "You must provdide an argument table when creating APNSSandboxChannelResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating APNSSandboxChannelResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["LastModifiedDate"] = args["LastModifiedDate"],
 		["Enabled"] = args["Enabled"],
 		["LastModifiedBy"] = args["LastModifiedBy"],
@@ -811,8 +1070,13 @@ function M.APNSSandboxChannelResponse(args)
 		["ApplicationId"] = args["ApplicationId"],
 		["Id"] = args["Id"],
 	}
-	asserts.AssertAPNSSandboxChannelResponse(t)
-	return t
+	asserts.AssertAPNSSandboxChannelResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.WriteTreatmentResource = { ["SizePercent"] = true, ["MessageConfiguration"] = true, ["TreatmentName"] = true, ["TreatmentDescription"] = true, ["Schedule"] = true, nil }
@@ -841,16 +1105,27 @@ end
 -- * Schedule [Schedule] The campaign schedule.
 -- @return WriteTreatmentResource structure as a key-value pair table
 function M.WriteTreatmentResource(args)
-	assert(args, "You must provdide an argument table when creating WriteTreatmentResource")
-	local t = { 
+	assert(args, "You must provide an argument table when creating WriteTreatmentResource")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["SizePercent"] = args["SizePercent"],
 		["MessageConfiguration"] = args["MessageConfiguration"],
 		["TreatmentName"] = args["TreatmentName"],
 		["TreatmentDescription"] = args["TreatmentDescription"],
 		["Schedule"] = args["Schedule"],
 	}
-	asserts.AssertWriteTreatmentResource(t)
-	return t
+	asserts.AssertWriteTreatmentResource(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CampaignState = { ["CampaignStatus"] = true, nil }
@@ -871,12 +1146,23 @@ end
 -- * CampaignStatus [CampaignStatus] The status of the campaign, or the status of a treatment that belongs to an A/B test campaign.Valid values: SCHEDULED, EXECUTING, PENDING_NEXT_RUN, COMPLETED, PAUSED
 -- @return CampaignState structure as a key-value pair table
 function M.CampaignState(args)
-	assert(args, "You must provdide an argument table when creating CampaignState")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CampaignState")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["CampaignStatus"] = args["CampaignStatus"],
 	}
-	asserts.AssertCampaignState(t)
-	return t
+	asserts.AssertCampaignState(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdateSegmentRequest = { ["WriteSegmentRequest"] = true, ["ApplicationId"] = true, ["SegmentId"] = true, nil }
@@ -907,14 +1193,27 @@ end
 -- Required key: WriteSegmentRequest
 -- @return UpdateSegmentRequest structure as a key-value pair table
 function M.UpdateSegmentRequest(args)
-	assert(args, "You must provdide an argument table when creating UpdateSegmentRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateSegmentRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{application-id}"] = args["ApplicationId"],
+        ["{segment-id}"] = args["SegmentId"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["WriteSegmentRequest"] = args["WriteSegmentRequest"],
 		["ApplicationId"] = args["ApplicationId"],
 		["SegmentId"] = args["SegmentId"],
 	}
-	asserts.AssertUpdateSegmentRequest(t)
-	return t
+	asserts.AssertUpdateSegmentRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateImportJobRequest = { ["ApplicationId"] = true, ["ImportJobRequest"] = true, nil }
@@ -941,13 +1240,25 @@ end
 -- Required key: ImportJobRequest
 -- @return CreateImportJobRequest structure as a key-value pair table
 function M.CreateImportJobRequest(args)
-	assert(args, "You must provdide an argument table when creating CreateImportJobRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateImportJobRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{application-id}"] = args["ApplicationId"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ApplicationId"] = args["ApplicationId"],
 		["ImportJobRequest"] = args["ImportJobRequest"],
 	}
-	asserts.AssertCreateImportJobRequest(t)
-	return t
+	asserts.AssertCreateImportJobRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetApplicationSettingsRequest = { ["ApplicationId"] = true, nil }
@@ -970,12 +1281,24 @@ end
 -- Required key: ApplicationId
 -- @return GetApplicationSettingsRequest structure as a key-value pair table
 function M.GetApplicationSettingsRequest(args)
-	assert(args, "You must provdide an argument table when creating GetApplicationSettingsRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetApplicationSettingsRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{application-id}"] = args["ApplicationId"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ApplicationId"] = args["ApplicationId"],
 	}
-	asserts.AssertGetApplicationSettingsRequest(t)
-	return t
+	asserts.AssertGetApplicationSettingsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetImportJobsRequest = { ["Token"] = true, ["ApplicationId"] = true, ["PageSize"] = true, nil }
@@ -1002,14 +1325,28 @@ end
 -- Required key: ApplicationId
 -- @return GetImportJobsRequest structure as a key-value pair table
 function M.GetImportJobsRequest(args)
-	assert(args, "You must provdide an argument table when creating GetImportJobsRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetImportJobsRequest")
+    local query_args = { 
+        ["token"] = args["Token"],
+        ["page-size"] = args["PageSize"],
+    }
+    local uri_args = { 
+        ["{application-id}"] = args["ApplicationId"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Token"] = args["Token"],
 		["ApplicationId"] = args["ApplicationId"],
 		["PageSize"] = args["PageSize"],
 	}
-	asserts.AssertGetImportJobsRequest(t)
-	return t
+	asserts.AssertGetImportJobsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DefaultPushNotificationMessage = { ["Body"] = true, ["Title"] = true, ["Url"] = true, ["Substitutions"] = true, ["Action"] = true, ["SilentPush"] = true, ["Data"] = true, nil }
@@ -1042,8 +1379,14 @@ end
 -- * Data [MapOf__string] The data payload used for a silent push. This payload is added to the notifications' data.pinpoint.jsonBody' object
 -- @return DefaultPushNotificationMessage structure as a key-value pair table
 function M.DefaultPushNotificationMessage(args)
-	assert(args, "You must provdide an argument table when creating DefaultPushNotificationMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DefaultPushNotificationMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Body"] = args["Body"],
 		["Title"] = args["Title"],
 		["Url"] = args["Url"],
@@ -1052,8 +1395,13 @@ function M.DefaultPushNotificationMessage(args)
 		["SilentPush"] = args["SilentPush"],
 		["Data"] = args["Data"],
 	}
-	asserts.AssertDefaultPushNotificationMessage(t)
-	return t
+	asserts.AssertDefaultPushNotificationMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdateGcmChannelResponse = { ["GCMChannelResponse"] = true, nil }
@@ -1076,12 +1424,23 @@ end
 -- Required key: GCMChannelResponse
 -- @return UpdateGcmChannelResponse structure as a key-value pair table
 function M.UpdateGcmChannelResponse(args)
-	assert(args, "You must provdide an argument table when creating UpdateGcmChannelResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateGcmChannelResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["GCMChannelResponse"] = args["GCMChannelResponse"],
 	}
-	asserts.AssertUpdateGcmChannelResponse(t)
-	return t
+	asserts.AssertUpdateGcmChannelResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteSmsChannelRequest = { ["ApplicationId"] = true, nil }
@@ -1104,12 +1463,24 @@ end
 -- Required key: ApplicationId
 -- @return DeleteSmsChannelRequest structure as a key-value pair table
 function M.DeleteSmsChannelRequest(args)
-	assert(args, "You must provdide an argument table when creating DeleteSmsChannelRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteSmsChannelRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{application-id}"] = args["ApplicationId"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ApplicationId"] = args["ApplicationId"],
 	}
-	asserts.AssertDeleteSmsChannelRequest(t)
-	return t
+	asserts.AssertDeleteSmsChannelRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetCampaignVersionRequest = { ["Version"] = true, ["ApplicationId"] = true, ["CampaignId"] = true, nil }
@@ -1140,14 +1511,28 @@ end
 -- Required key: CampaignId
 -- @return GetCampaignVersionRequest structure as a key-value pair table
 function M.GetCampaignVersionRequest(args)
-	assert(args, "You must provdide an argument table when creating GetCampaignVersionRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetCampaignVersionRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{version}"] = args["Version"],
+        ["{application-id}"] = args["ApplicationId"],
+        ["{campaign-id}"] = args["CampaignId"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Version"] = args["Version"],
 		["ApplicationId"] = args["ApplicationId"],
 		["CampaignId"] = args["CampaignId"],
 	}
-	asserts.AssertGetCampaignVersionRequest(t)
-	return t
+	asserts.AssertGetCampaignVersionRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.EndpointResponse = { ["ShardId"] = true, ["EffectiveDate"] = true, ["OptOut"] = true, ["RequestId"] = true, ["Demographic"] = true, ["User"] = true, ["Metrics"] = true, ["Location"] = true, ["Address"] = true, ["CohortId"] = true, ["Attributes"] = true, ["ChannelType"] = true, ["CreationDate"] = true, ["ApplicationId"] = true, ["Id"] = true, ["EndpointStatus"] = true, nil }
@@ -1198,8 +1583,14 @@ end
 -- * EndpointStatus [__string] The endpoint status. Can be either ACTIVE or INACTIVE. Will be set to INACTIVE if a delivery fails. Will be set to ACTIVE if the address is updated.
 -- @return EndpointResponse structure as a key-value pair table
 function M.EndpointResponse(args)
-	assert(args, "You must provdide an argument table when creating EndpointResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating EndpointResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ShardId"] = args["ShardId"],
 		["EffectiveDate"] = args["EffectiveDate"],
 		["OptOut"] = args["OptOut"],
@@ -1217,8 +1608,13 @@ function M.EndpointResponse(args)
 		["Id"] = args["Id"],
 		["EndpointStatus"] = args["EndpointStatus"],
 	}
-	asserts.AssertEndpointResponse(t)
-	return t
+	asserts.AssertEndpointResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DirectMessageConfiguration = { ["APNSMessage"] = true, ["DefaultPushNotificationMessage"] = true, ["DefaultMessage"] = true, ["SMSMessage"] = true, ["GCMMessage"] = true, nil }
@@ -1247,16 +1643,27 @@ end
 -- * GCMMessage [GCMMessage] The message to GCM channels. Overrides the default push notification message.
 -- @return DirectMessageConfiguration structure as a key-value pair table
 function M.DirectMessageConfiguration(args)
-	assert(args, "You must provdide an argument table when creating DirectMessageConfiguration")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DirectMessageConfiguration")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["APNSMessage"] = args["APNSMessage"],
 		["DefaultPushNotificationMessage"] = args["DefaultPushNotificationMessage"],
 		["DefaultMessage"] = args["DefaultMessage"],
 		["SMSMessage"] = args["SMSMessage"],
 		["GCMMessage"] = args["GCMMessage"],
 	}
-	asserts.AssertDirectMessageConfiguration(t)
-	return t
+	asserts.AssertDirectMessageConfiguration(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.MethodNotAllowedException = { ["Message"] = true, ["RequestID"] = true, nil }
@@ -1279,13 +1686,24 @@ end
 -- * RequestID [__string] The unique message body ID.
 -- @return MethodNotAllowedException structure as a key-value pair table
 function M.MethodNotAllowedException(args)
-	assert(args, "You must provdide an argument table when creating MethodNotAllowedException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating MethodNotAllowedException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Message"] = args["Message"],
 		["RequestID"] = args["RequestID"],
 	}
-	asserts.AssertMethodNotAllowedException(t)
-	return t
+	asserts.AssertMethodNotAllowedException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteEventStreamRequest = { ["ApplicationId"] = true, nil }
@@ -1308,12 +1726,24 @@ end
 -- Required key: ApplicationId
 -- @return DeleteEventStreamRequest structure as a key-value pair table
 function M.DeleteEventStreamRequest(args)
-	assert(args, "You must provdide an argument table when creating DeleteEventStreamRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteEventStreamRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{application-id}"] = args["ApplicationId"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ApplicationId"] = args["ApplicationId"],
 	}
-	asserts.AssertDeleteEventStreamRequest(t)
-	return t
+	asserts.AssertDeleteEventStreamRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetSegmentImportJobsRequest = { ["Token"] = true, ["ApplicationId"] = true, ["SegmentId"] = true, ["PageSize"] = true, nil }
@@ -1344,15 +1774,30 @@ end
 -- Required key: ApplicationId
 -- @return GetSegmentImportJobsRequest structure as a key-value pair table
 function M.GetSegmentImportJobsRequest(args)
-	assert(args, "You must provdide an argument table when creating GetSegmentImportJobsRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetSegmentImportJobsRequest")
+    local query_args = { 
+        ["token"] = args["Token"],
+        ["page-size"] = args["PageSize"],
+    }
+    local uri_args = { 
+        ["{application-id}"] = args["ApplicationId"],
+        ["{segment-id}"] = args["SegmentId"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Token"] = args["Token"],
 		["ApplicationId"] = args["ApplicationId"],
 		["SegmentId"] = args["SegmentId"],
 		["PageSize"] = args["PageSize"],
 	}
-	asserts.AssertGetSegmentImportJobsRequest(t)
-	return t
+	asserts.AssertGetSegmentImportJobsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetSmsChannelResponse = { ["SMSChannelResponse"] = true, nil }
@@ -1375,12 +1820,23 @@ end
 -- Required key: SMSChannelResponse
 -- @return GetSmsChannelResponse structure as a key-value pair table
 function M.GetSmsChannelResponse(args)
-	assert(args, "You must provdide an argument table when creating GetSmsChannelResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetSmsChannelResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["SMSChannelResponse"] = args["SMSChannelResponse"],
 	}
-	asserts.AssertGetSmsChannelResponse(t)
-	return t
+	asserts.AssertGetSmsChannelResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CampaignLimits = { ["Total"] = true, ["Daily"] = true, nil }
@@ -1403,13 +1859,24 @@ end
 -- * Daily [__integer] The maximum number of messages that the campaign can send daily.
 -- @return CampaignLimits structure as a key-value pair table
 function M.CampaignLimits(args)
-	assert(args, "You must provdide an argument table when creating CampaignLimits")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CampaignLimits")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Total"] = args["Total"],
 		["Daily"] = args["Daily"],
 	}
-	asserts.AssertCampaignLimits(t)
-	return t
+	asserts.AssertCampaignLimits(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetSegmentVersionResponse = { ["SegmentResponse"] = true, nil }
@@ -1432,12 +1899,23 @@ end
 -- Required key: SegmentResponse
 -- @return GetSegmentVersionResponse structure as a key-value pair table
 function M.GetSegmentVersionResponse(args)
-	assert(args, "You must provdide an argument table when creating GetSegmentVersionResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetSegmentVersionResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["SegmentResponse"] = args["SegmentResponse"],
 	}
-	asserts.AssertGetSegmentVersionResponse(t)
-	return t
+	asserts.AssertGetSegmentVersionResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.PutEventStreamResponse = { ["EventStream"] = true, nil }
@@ -1460,12 +1938,23 @@ end
 -- Required key: EventStream
 -- @return PutEventStreamResponse structure as a key-value pair table
 function M.PutEventStreamResponse(args)
-	assert(args, "You must provdide an argument table when creating PutEventStreamResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating PutEventStreamResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["EventStream"] = args["EventStream"],
 	}
-	asserts.AssertPutEventStreamResponse(t)
-	return t
+	asserts.AssertPutEventStreamResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.APNSChannelResponse = { ["LastModifiedDate"] = true, ["Enabled"] = true, ["LastModifiedBy"] = true, ["Platform"] = true, ["Version"] = true, ["IsArchived"] = true, ["CreationDate"] = true, ["ApplicationId"] = true, ["Id"] = true, nil }
@@ -1502,8 +1991,14 @@ end
 -- * Id [__string] Channel ID. Not used, only for backwards compatibility.
 -- @return APNSChannelResponse structure as a key-value pair table
 function M.APNSChannelResponse(args)
-	assert(args, "You must provdide an argument table when creating APNSChannelResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating APNSChannelResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["LastModifiedDate"] = args["LastModifiedDate"],
 		["Enabled"] = args["Enabled"],
 		["LastModifiedBy"] = args["LastModifiedBy"],
@@ -1514,8 +2009,13 @@ function M.APNSChannelResponse(args)
 		["ApplicationId"] = args["ApplicationId"],
 		["Id"] = args["Id"],
 	}
-	asserts.AssertAPNSChannelResponse(t)
-	return t
+	asserts.AssertAPNSChannelResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetCampaignsRequest = { ["Token"] = true, ["ApplicationId"] = true, ["PageSize"] = true, nil }
@@ -1542,14 +2042,28 @@ end
 -- Required key: ApplicationId
 -- @return GetCampaignsRequest structure as a key-value pair table
 function M.GetCampaignsRequest(args)
-	assert(args, "You must provdide an argument table when creating GetCampaignsRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetCampaignsRequest")
+    local query_args = { 
+        ["token"] = args["Token"],
+        ["page-size"] = args["PageSize"],
+    }
+    local uri_args = { 
+        ["{application-id}"] = args["ApplicationId"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Token"] = args["Token"],
 		["ApplicationId"] = args["ApplicationId"],
 		["PageSize"] = args["PageSize"],
 	}
-	asserts.AssertGetCampaignsRequest(t)
-	return t
+	asserts.AssertGetCampaignsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.APNSSandboxChannelRequest = { ["PrivateKey"] = true, ["Enabled"] = true, ["Certificate"] = true, nil }
@@ -1574,14 +2088,25 @@ end
 -- * Certificate [__string] The distribution certificate from Apple.
 -- @return APNSSandboxChannelRequest structure as a key-value pair table
 function M.APNSSandboxChannelRequest(args)
-	assert(args, "You must provdide an argument table when creating APNSSandboxChannelRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating APNSSandboxChannelRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["PrivateKey"] = args["PrivateKey"],
 		["Enabled"] = args["Enabled"],
 		["Certificate"] = args["Certificate"],
 	}
-	asserts.AssertAPNSSandboxChannelRequest(t)
-	return t
+	asserts.AssertAPNSSandboxChannelRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.SegmentDimensions = { ["Attributes"] = true, ["Demographic"] = true, ["Location"] = true, ["Behavior"] = true, ["UserAttributes"] = true, nil }
@@ -1610,16 +2135,27 @@ end
 -- * UserAttributes [MapOfAttributeDimension] Custom segment user attributes.
 -- @return SegmentDimensions structure as a key-value pair table
 function M.SegmentDimensions(args)
-	assert(args, "You must provdide an argument table when creating SegmentDimensions")
-	local t = { 
+	assert(args, "You must provide an argument table when creating SegmentDimensions")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Attributes"] = args["Attributes"],
 		["Demographic"] = args["Demographic"],
 		["Location"] = args["Location"],
 		["Behavior"] = args["Behavior"],
 		["UserAttributes"] = args["UserAttributes"],
 	}
-	asserts.AssertSegmentDimensions(t)
-	return t
+	asserts.AssertSegmentDimensions(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ImportJobsResponse = { ["Item"] = true, ["NextToken"] = true, nil }
@@ -1642,13 +2178,24 @@ end
 -- * NextToken [__string] The string that you use in a subsequent request to get the next page of results in a paginated response.
 -- @return ImportJobsResponse structure as a key-value pair table
 function M.ImportJobsResponse(args)
-	assert(args, "You must provdide an argument table when creating ImportJobsResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ImportJobsResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Item"] = args["Item"],
 		["NextToken"] = args["NextToken"],
 	}
-	asserts.AssertImportJobsResponse(t)
-	return t
+	asserts.AssertImportJobsResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GCMChannelResponse = { ["Credential"] = true, ["LastModifiedDate"] = true, ["Enabled"] = true, ["LastModifiedBy"] = true, ["Platform"] = true, ["Version"] = true, ["IsArchived"] = true, ["CreationDate"] = true, ["ApplicationId"] = true, ["Id"] = true, nil }
@@ -1687,8 +2234,14 @@ end
 -- * Id [__string] Channel ID. Not used, only for backwards compatibility.
 -- @return GCMChannelResponse structure as a key-value pair table
 function M.GCMChannelResponse(args)
-	assert(args, "You must provdide an argument table when creating GCMChannelResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GCMChannelResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Credential"] = args["Credential"],
 		["LastModifiedDate"] = args["LastModifiedDate"],
 		["Enabled"] = args["Enabled"],
@@ -1700,8 +2253,13 @@ function M.GCMChannelResponse(args)
 		["ApplicationId"] = args["ApplicationId"],
 		["Id"] = args["Id"],
 	}
-	asserts.AssertGCMChannelResponse(t)
-	return t
+	asserts.AssertGCMChannelResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CampaignSmsMessage = { ["Body"] = true, ["SenderId"] = true, ["MessageType"] = true, nil }
@@ -1726,14 +2284,25 @@ end
 -- * MessageType [MessageType] Is this is a transactional SMS message, otherwise a promotional message.
 -- @return CampaignSmsMessage structure as a key-value pair table
 function M.CampaignSmsMessage(args)
-	assert(args, "You must provdide an argument table when creating CampaignSmsMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CampaignSmsMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Body"] = args["Body"],
 		["SenderId"] = args["SenderId"],
 		["MessageType"] = args["MessageType"],
 	}
-	asserts.AssertCampaignSmsMessage(t)
-	return t
+	asserts.AssertCampaignSmsMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.WriteEventStream = { ["DestinationStreamArn"] = true, ["RoleArn"] = true, ["ExternalId"] = true, nil }
@@ -1758,14 +2327,25 @@ end
 -- * ExternalId [__string] The external ID assigned the IAM role that authorizes Amazon Pinpoint to publish to the stream.
 -- @return WriteEventStream structure as a key-value pair table
 function M.WriteEventStream(args)
-	assert(args, "You must provdide an argument table when creating WriteEventStream")
-	local t = { 
+	assert(args, "You must provide an argument table when creating WriteEventStream")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DestinationStreamArn"] = args["DestinationStreamArn"],
 		["RoleArn"] = args["RoleArn"],
 		["ExternalId"] = args["ExternalId"],
 	}
-	asserts.AssertWriteEventStream(t)
-	return t
+	asserts.AssertWriteEventStream(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.SegmentLocation = { ["Country"] = true, nil }
@@ -1786,12 +2366,23 @@ end
 -- * Country [SetDimension] The country filter according to ISO 3166-1 Alpha-2 codes.
 -- @return SegmentLocation structure as a key-value pair table
 function M.SegmentLocation(args)
-	assert(args, "You must provdide an argument table when creating SegmentLocation")
-	local t = { 
+	assert(args, "You must provide an argument table when creating SegmentLocation")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Country"] = args["Country"],
 	}
-	asserts.AssertSegmentLocation(t)
-	return t
+	asserts.AssertSegmentLocation(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteEmailChannelRequest = { ["ApplicationId"] = true, nil }
@@ -1814,12 +2405,24 @@ end
 -- Required key: ApplicationId
 -- @return DeleteEmailChannelRequest structure as a key-value pair table
 function M.DeleteEmailChannelRequest(args)
-	assert(args, "You must provdide an argument table when creating DeleteEmailChannelRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteEmailChannelRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{application-id}"] = args["ApplicationId"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ApplicationId"] = args["ApplicationId"],
 	}
-	asserts.AssertDeleteEmailChannelRequest(t)
-	return t
+	asserts.AssertDeleteEmailChannelRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetCampaignActivitiesRequest = { ["Token"] = true, ["ApplicationId"] = true, ["PageSize"] = true, ["CampaignId"] = true, nil }
@@ -1850,15 +2453,30 @@ end
 -- Required key: CampaignId
 -- @return GetCampaignActivitiesRequest structure as a key-value pair table
 function M.GetCampaignActivitiesRequest(args)
-	assert(args, "You must provdide an argument table when creating GetCampaignActivitiesRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetCampaignActivitiesRequest")
+    local query_args = { 
+        ["token"] = args["Token"],
+        ["page-size"] = args["PageSize"],
+    }
+    local uri_args = { 
+        ["{application-id}"] = args["ApplicationId"],
+        ["{campaign-id}"] = args["CampaignId"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Token"] = args["Token"],
 		["ApplicationId"] = args["ApplicationId"],
 		["PageSize"] = args["PageSize"],
 		["CampaignId"] = args["CampaignId"],
 	}
-	asserts.AssertGetCampaignActivitiesRequest(t)
-	return t
+	asserts.AssertGetCampaignActivitiesRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ImportJobResource = { ["DefineSegment"] = true, ["SegmentId"] = true, ["Format"] = true, ["RoleArn"] = true, ["S3Url"] = true, ["RegisterEndpoints"] = true, ["ExternalId"] = true, ["SegmentName"] = true, nil }
@@ -1893,8 +2511,14 @@ end
 -- * SegmentName [__string] A custom name for the segment created by the import job. Use if DefineSegment is true.
 -- @return ImportJobResource structure as a key-value pair table
 function M.ImportJobResource(args)
-	assert(args, "You must provdide an argument table when creating ImportJobResource")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ImportJobResource")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DefineSegment"] = args["DefineSegment"],
 		["SegmentId"] = args["SegmentId"],
 		["Format"] = args["Format"],
@@ -1904,8 +2528,13 @@ function M.ImportJobResource(args)
 		["ExternalId"] = args["ExternalId"],
 		["SegmentName"] = args["SegmentName"],
 	}
-	asserts.AssertImportJobResource(t)
-	return t
+	asserts.AssertImportJobResource(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdateCampaignRequest = { ["ApplicationId"] = true, ["WriteCampaignRequest"] = true, ["CampaignId"] = true, nil }
@@ -1936,14 +2565,27 @@ end
 -- Required key: WriteCampaignRequest
 -- @return UpdateCampaignRequest structure as a key-value pair table
 function M.UpdateCampaignRequest(args)
-	assert(args, "You must provdide an argument table when creating UpdateCampaignRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateCampaignRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{application-id}"] = args["ApplicationId"],
+        ["{campaign-id}"] = args["CampaignId"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ApplicationId"] = args["ApplicationId"],
 		["WriteCampaignRequest"] = args["WriteCampaignRequest"],
 		["CampaignId"] = args["CampaignId"],
 	}
-	asserts.AssertUpdateCampaignRequest(t)
-	return t
+	asserts.AssertUpdateCampaignRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.EventStream = { ["DestinationStreamArn"] = true, ["RoleArn"] = true, ["LastUpdatedBy"] = true, ["ExternalId"] = true, ["LastModifiedDate"] = true, ["ApplicationId"] = true, nil }
@@ -1974,8 +2616,14 @@ end
 -- * ApplicationId [__string] The ID of the application from which events should be published.
 -- @return EventStream structure as a key-value pair table
 function M.EventStream(args)
-	assert(args, "You must provdide an argument table when creating EventStream")
-	local t = { 
+	assert(args, "You must provide an argument table when creating EventStream")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DestinationStreamArn"] = args["DestinationStreamArn"],
 		["RoleArn"] = args["RoleArn"],
 		["LastUpdatedBy"] = args["LastUpdatedBy"],
@@ -1983,8 +2631,13 @@ function M.EventStream(args)
 		["LastModifiedDate"] = args["LastModifiedDate"],
 		["ApplicationId"] = args["ApplicationId"],
 	}
-	asserts.AssertEventStream(t)
-	return t
+	asserts.AssertEventStream(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdateApnsSandboxChannelResponse = { ["APNSSandboxChannelResponse"] = true, nil }
@@ -2007,12 +2660,23 @@ end
 -- Required key: APNSSandboxChannelResponse
 -- @return UpdateApnsSandboxChannelResponse structure as a key-value pair table
 function M.UpdateApnsSandboxChannelResponse(args)
-	assert(args, "You must provdide an argument table when creating UpdateApnsSandboxChannelResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateApnsSandboxChannelResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["APNSSandboxChannelResponse"] = args["APNSSandboxChannelResponse"],
 	}
-	asserts.AssertUpdateApnsSandboxChannelResponse(t)
-	return t
+	asserts.AssertUpdateApnsSandboxChannelResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetSegmentRequest = { ["ApplicationId"] = true, ["SegmentId"] = true, nil }
@@ -2039,13 +2703,26 @@ end
 -- Required key: ApplicationId
 -- @return GetSegmentRequest structure as a key-value pair table
 function M.GetSegmentRequest(args)
-	assert(args, "You must provdide an argument table when creating GetSegmentRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetSegmentRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{application-id}"] = args["ApplicationId"],
+        ["{segment-id}"] = args["SegmentId"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ApplicationId"] = args["ApplicationId"],
 		["SegmentId"] = args["SegmentId"],
 	}
-	asserts.AssertGetSegmentRequest(t)
-	return t
+	asserts.AssertGetSegmentRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetCampaignActivitiesResponse = { ["ActivitiesResponse"] = true, nil }
@@ -2068,12 +2745,23 @@ end
 -- Required key: ActivitiesResponse
 -- @return GetCampaignActivitiesResponse structure as a key-value pair table
 function M.GetCampaignActivitiesResponse(args)
-	assert(args, "You must provdide an argument table when creating GetCampaignActivitiesResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetCampaignActivitiesResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ActivitiesResponse"] = args["ActivitiesResponse"],
 	}
-	asserts.AssertGetCampaignActivitiesResponse(t)
-	return t
+	asserts.AssertGetCampaignActivitiesResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetApnsSandboxChannelRequest = { ["ApplicationId"] = true, nil }
@@ -2096,12 +2784,24 @@ end
 -- Required key: ApplicationId
 -- @return GetApnsSandboxChannelRequest structure as a key-value pair table
 function M.GetApnsSandboxChannelRequest(args)
-	assert(args, "You must provdide an argument table when creating GetApnsSandboxChannelRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetApnsSandboxChannelRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{application-id}"] = args["ApplicationId"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ApplicationId"] = args["ApplicationId"],
 	}
-	asserts.AssertGetApnsSandboxChannelRequest(t)
-	return t
+	asserts.AssertGetApnsSandboxChannelRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetEndpointResponse = { ["EndpointResponse"] = true, nil }
@@ -2124,12 +2824,23 @@ end
 -- Required key: EndpointResponse
 -- @return GetEndpointResponse structure as a key-value pair table
 function M.GetEndpointResponse(args)
-	assert(args, "You must provdide an argument table when creating GetEndpointResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetEndpointResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["EndpointResponse"] = args["EndpointResponse"],
 	}
-	asserts.AssertGetEndpointResponse(t)
-	return t
+	asserts.AssertGetEndpointResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetSegmentsResponse = { ["SegmentsResponse"] = true, nil }
@@ -2152,12 +2863,23 @@ end
 -- Required key: SegmentsResponse
 -- @return GetSegmentsResponse structure as a key-value pair table
 function M.GetSegmentsResponse(args)
-	assert(args, "You must provdide an argument table when creating GetSegmentsResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetSegmentsResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["SegmentsResponse"] = args["SegmentsResponse"],
 	}
-	asserts.AssertGetSegmentsResponse(t)
-	return t
+	asserts.AssertGetSegmentsResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GCMChannelRequest = { ["ApiKey"] = true, ["Enabled"] = true, nil }
@@ -2180,13 +2902,24 @@ end
 -- * Enabled [__boolean] If the channel is enabled for sending messages.
 -- @return GCMChannelRequest structure as a key-value pair table
 function M.GCMChannelRequest(args)
-	assert(args, "You must provdide an argument table when creating GCMChannelRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GCMChannelRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ApiKey"] = args["ApiKey"],
 		["Enabled"] = args["Enabled"],
 	}
-	asserts.AssertGCMChannelRequest(t)
-	return t
+	asserts.AssertGCMChannelRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.NotFoundException = { ["Message"] = true, ["RequestID"] = true, nil }
@@ -2209,13 +2942,24 @@ end
 -- * RequestID [__string] The unique message body ID.
 -- @return NotFoundException structure as a key-value pair table
 function M.NotFoundException(args)
-	assert(args, "You must provdide an argument table when creating NotFoundException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating NotFoundException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Message"] = args["Message"],
 		["RequestID"] = args["RequestID"],
 	}
-	asserts.AssertNotFoundException(t)
-	return t
+	asserts.AssertNotFoundException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdateApnsChannelResponse = { ["APNSChannelResponse"] = true, nil }
@@ -2238,12 +2982,23 @@ end
 -- Required key: APNSChannelResponse
 -- @return UpdateApnsChannelResponse structure as a key-value pair table
 function M.UpdateApnsChannelResponse(args)
-	assert(args, "You must provdide an argument table when creating UpdateApnsChannelResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateApnsChannelResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["APNSChannelResponse"] = args["APNSChannelResponse"],
 	}
-	asserts.AssertUpdateApnsChannelResponse(t)
-	return t
+	asserts.AssertUpdateApnsChannelResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdateEmailChannelResponse = { ["EmailChannelResponse"] = true, nil }
@@ -2266,12 +3021,23 @@ end
 -- Required key: EmailChannelResponse
 -- @return UpdateEmailChannelResponse structure as a key-value pair table
 function M.UpdateEmailChannelResponse(args)
-	assert(args, "You must provdide an argument table when creating UpdateEmailChannelResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateEmailChannelResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["EmailChannelResponse"] = args["EmailChannelResponse"],
 	}
-	asserts.AssertUpdateEmailChannelResponse(t)
-	return t
+	asserts.AssertUpdateEmailChannelResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ImportJobResponse = { ["CompletionDate"] = true, ["Definition"] = true, ["Type"] = true, ["TotalFailures"] = true, ["TotalPieces"] = true, ["FailedPieces"] = true, ["CompletedPieces"] = true, ["JobStatus"] = true, ["Failures"] = true, ["CreationDate"] = true, ["ApplicationId"] = true, ["Id"] = true, ["TotalProcessed"] = true, nil }
@@ -2316,8 +3082,14 @@ end
 -- * TotalProcessed [__integer] The number of endpoints that were processed by the import job.
 -- @return ImportJobResponse structure as a key-value pair table
 function M.ImportJobResponse(args)
-	assert(args, "You must provdide an argument table when creating ImportJobResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ImportJobResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["CompletionDate"] = args["CompletionDate"],
 		["Definition"] = args["Definition"],
 		["Type"] = args["Type"],
@@ -2332,8 +3104,13 @@ function M.ImportJobResponse(args)
 		["Id"] = args["Id"],
 		["TotalProcessed"] = args["TotalProcessed"],
 	}
-	asserts.AssertImportJobResponse(t)
-	return t
+	asserts.AssertImportJobResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.SendMessagesResponse = { ["MessageResponse"] = true, nil }
@@ -2356,12 +3133,23 @@ end
 -- Required key: MessageResponse
 -- @return SendMessagesResponse structure as a key-value pair table
 function M.SendMessagesResponse(args)
-	assert(args, "You must provdide an argument table when creating SendMessagesResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating SendMessagesResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["MessageResponse"] = args["MessageResponse"],
 	}
-	asserts.AssertSendMessagesResponse(t)
-	return t
+	asserts.AssertSendMessagesResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetSegmentImportJobsResponse = { ["ImportJobsResponse"] = true, nil }
@@ -2384,12 +3172,23 @@ end
 -- Required key: ImportJobsResponse
 -- @return GetSegmentImportJobsResponse structure as a key-value pair table
 function M.GetSegmentImportJobsResponse(args)
-	assert(args, "You must provdide an argument table when creating GetSegmentImportJobsResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetSegmentImportJobsResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ImportJobsResponse"] = args["ImportJobsResponse"],
 	}
-	asserts.AssertGetSegmentImportJobsResponse(t)
-	return t
+	asserts.AssertGetSegmentImportJobsResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.MessageRequest = { ["MessageConfiguration"] = true, ["Addresses"] = true, ["Context"] = true, nil }
@@ -2414,14 +3213,25 @@ end
 -- * Context [MapOf__string] A map of custom attributes to attributes to be attached to the message. This payload is added to the push notification's 'data.pinpoint' object or added to the email/sms delivery receipt event attributes.
 -- @return MessageRequest structure as a key-value pair table
 function M.MessageRequest(args)
-	assert(args, "You must provdide an argument table when creating MessageRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating MessageRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["MessageConfiguration"] = args["MessageConfiguration"],
 		["Addresses"] = args["Addresses"],
 		["Context"] = args["Context"],
 	}
-	asserts.AssertMessageRequest(t)
-	return t
+	asserts.AssertMessageRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetApnsChannelResponse = { ["APNSChannelResponse"] = true, nil }
@@ -2444,12 +3254,23 @@ end
 -- Required key: APNSChannelResponse
 -- @return GetApnsChannelResponse structure as a key-value pair table
 function M.GetApnsChannelResponse(args)
-	assert(args, "You must provdide an argument table when creating GetApnsChannelResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetApnsChannelResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["APNSChannelResponse"] = args["APNSChannelResponse"],
 	}
-	asserts.AssertGetApnsChannelResponse(t)
-	return t
+	asserts.AssertGetApnsChannelResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateSegmentRequest = { ["WriteSegmentRequest"] = true, ["ApplicationId"] = true, nil }
@@ -2476,13 +3297,25 @@ end
 -- Required key: WriteSegmentRequest
 -- @return CreateSegmentRequest structure as a key-value pair table
 function M.CreateSegmentRequest(args)
-	assert(args, "You must provdide an argument table when creating CreateSegmentRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateSegmentRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{application-id}"] = args["ApplicationId"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["WriteSegmentRequest"] = args["WriteSegmentRequest"],
 		["ApplicationId"] = args["ApplicationId"],
 	}
-	asserts.AssertCreateSegmentRequest(t)
-	return t
+	asserts.AssertCreateSegmentRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.SMSChannelResponse = { ["ShortCode"] = true, ["LastModifiedDate"] = true, ["Enabled"] = true, ["LastModifiedBy"] = true, ["Platform"] = true, ["Version"] = true, ["SenderId"] = true, ["IsArchived"] = true, ["CreationDate"] = true, ["ApplicationId"] = true, ["Id"] = true, nil }
@@ -2523,8 +3356,14 @@ end
 -- * Id [__string] Channel ID. Not used, only for backwards compatibility.
 -- @return SMSChannelResponse structure as a key-value pair table
 function M.SMSChannelResponse(args)
-	assert(args, "You must provdide an argument table when creating SMSChannelResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating SMSChannelResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ShortCode"] = args["ShortCode"],
 		["LastModifiedDate"] = args["LastModifiedDate"],
 		["Enabled"] = args["Enabled"],
@@ -2537,8 +3376,13 @@ function M.SMSChannelResponse(args)
 		["ApplicationId"] = args["ApplicationId"],
 		["Id"] = args["Id"],
 	}
-	asserts.AssertSMSChannelResponse(t)
-	return t
+	asserts.AssertSMSChannelResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.TooManyRequestsException = { ["Message"] = true, ["RequestID"] = true, nil }
@@ -2561,13 +3405,24 @@ end
 -- * RequestID [__string] The unique message body ID.
 -- @return TooManyRequestsException structure as a key-value pair table
 function M.TooManyRequestsException(args)
-	assert(args, "You must provdide an argument table when creating TooManyRequestsException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating TooManyRequestsException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Message"] = args["Message"],
 		["RequestID"] = args["RequestID"],
 	}
-	asserts.AssertTooManyRequestsException(t)
-	return t
+	asserts.AssertTooManyRequestsException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CampaignResponse = { ["Description"] = true, ["Limits"] = true, ["Schedule"] = true, ["TreatmentName"] = true, ["LastModifiedDate"] = true, ["HoldoutPercent"] = true, ["SegmentVersion"] = true, ["SegmentId"] = true, ["State"] = true, ["Version"] = true, ["AdditionalTreatments"] = true, ["DefaultState"] = true, ["MessageConfiguration"] = true, ["IsPaused"] = true, ["CreationDate"] = true, ["ApplicationId"] = true, ["Id"] = true, ["TreatmentDescription"] = true, ["Name"] = true, nil }
@@ -2624,8 +3479,14 @@ end
 -- * Name [__string] The custom name of the campaign.
 -- @return CampaignResponse structure as a key-value pair table
 function M.CampaignResponse(args)
-	assert(args, "You must provdide an argument table when creating CampaignResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CampaignResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Description"] = args["Description"],
 		["Limits"] = args["Limits"],
 		["Schedule"] = args["Schedule"],
@@ -2646,8 +3507,13 @@ function M.CampaignResponse(args)
 		["TreatmentDescription"] = args["TreatmentDescription"],
 		["Name"] = args["Name"],
 	}
-	asserts.AssertCampaignResponse(t)
-	return t
+	asserts.AssertCampaignResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CampaignEmailMessage = { ["Body"] = true, ["Title"] = true, ["HtmlBody"] = true, nil }
@@ -2672,14 +3538,25 @@ end
 -- * HtmlBody [__string] The email html body.
 -- @return CampaignEmailMessage structure as a key-value pair table
 function M.CampaignEmailMessage(args)
-	assert(args, "You must provdide an argument table when creating CampaignEmailMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CampaignEmailMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Body"] = args["Body"],
 		["Title"] = args["Title"],
 		["HtmlBody"] = args["HtmlBody"],
 	}
-	asserts.AssertCampaignEmailMessage(t)
-	return t
+	asserts.AssertCampaignEmailMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdateApnsSandboxChannelRequest = { ["ApplicationId"] = true, ["APNSSandboxChannelRequest"] = true, nil }
@@ -2706,13 +3583,25 @@ end
 -- Required key: APNSSandboxChannelRequest
 -- @return UpdateApnsSandboxChannelRequest structure as a key-value pair table
 function M.UpdateApnsSandboxChannelRequest(args)
-	assert(args, "You must provdide an argument table when creating UpdateApnsSandboxChannelRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateApnsSandboxChannelRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{application-id}"] = args["ApplicationId"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ApplicationId"] = args["ApplicationId"],
 		["APNSSandboxChannelRequest"] = args["APNSSandboxChannelRequest"],
 	}
-	asserts.AssertUpdateApnsSandboxChannelRequest(t)
-	return t
+	asserts.AssertUpdateApnsSandboxChannelRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdateEndpointResponse = { ["MessageBody"] = true, nil }
@@ -2735,12 +3624,23 @@ end
 -- Required key: MessageBody
 -- @return UpdateEndpointResponse structure as a key-value pair table
 function M.UpdateEndpointResponse(args)
-	assert(args, "You must provdide an argument table when creating UpdateEndpointResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateEndpointResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["MessageBody"] = args["MessageBody"],
 	}
-	asserts.AssertUpdateEndpointResponse(t)
-	return t
+	asserts.AssertUpdateEndpointResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CampaignsResponse = { ["Item"] = true, ["NextToken"] = true, nil }
@@ -2763,13 +3663,24 @@ end
 -- * NextToken [__string] The string that you use in a subsequent request to get the next page of results in a paginated response.
 -- @return CampaignsResponse structure as a key-value pair table
 function M.CampaignsResponse(args)
-	assert(args, "You must provdide an argument table when creating CampaignsResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CampaignsResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Item"] = args["Item"],
 		["NextToken"] = args["NextToken"],
 	}
-	asserts.AssertCampaignsResponse(t)
-	return t
+	asserts.AssertCampaignsResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DefaultMessage = { ["Body"] = true, ["Substitutions"] = true, nil }
@@ -2792,13 +3703,24 @@ end
 -- * Substitutions [MapOfListOf__string] Default message substitutions. Can be overridden by individual address substitutions.
 -- @return DefaultMessage structure as a key-value pair table
 function M.DefaultMessage(args)
-	assert(args, "You must provdide an argument table when creating DefaultMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DefaultMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Body"] = args["Body"],
 		["Substitutions"] = args["Substitutions"],
 	}
-	asserts.AssertDefaultMessage(t)
-	return t
+	asserts.AssertDefaultMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetEmailChannelResponse = { ["EmailChannelResponse"] = true, nil }
@@ -2821,12 +3743,23 @@ end
 -- Required key: EmailChannelResponse
 -- @return GetEmailChannelResponse structure as a key-value pair table
 function M.GetEmailChannelResponse(args)
-	assert(args, "You must provdide an argument table when creating GetEmailChannelResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetEmailChannelResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["EmailChannelResponse"] = args["EmailChannelResponse"],
 	}
-	asserts.AssertGetEmailChannelResponse(t)
-	return t
+	asserts.AssertGetEmailChannelResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteGcmChannelResponse = { ["GCMChannelResponse"] = true, nil }
@@ -2849,12 +3782,23 @@ end
 -- Required key: GCMChannelResponse
 -- @return DeleteGcmChannelResponse structure as a key-value pair table
 function M.DeleteGcmChannelResponse(args)
-	assert(args, "You must provdide an argument table when creating DeleteGcmChannelResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteGcmChannelResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["GCMChannelResponse"] = args["GCMChannelResponse"],
 	}
-	asserts.AssertDeleteGcmChannelResponse(t)
-	return t
+	asserts.AssertDeleteGcmChannelResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteEmailChannelResponse = { ["EmailChannelResponse"] = true, nil }
@@ -2877,12 +3821,23 @@ end
 -- Required key: EmailChannelResponse
 -- @return DeleteEmailChannelResponse structure as a key-value pair table
 function M.DeleteEmailChannelResponse(args)
-	assert(args, "You must provdide an argument table when creating DeleteEmailChannelResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteEmailChannelResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["EmailChannelResponse"] = args["EmailChannelResponse"],
 	}
-	asserts.AssertDeleteEmailChannelResponse(t)
-	return t
+	asserts.AssertDeleteEmailChannelResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Message = { ["Body"] = true, ["MediaUrl"] = true, ["Url"] = true, ["ImageUrl"] = true, ["ImageSmallIconUrl"] = true, ["Title"] = true, ["Action"] = true, ["SilentPush"] = true, ["JsonBody"] = true, ["ImageIconUrl"] = true, nil }
@@ -2921,8 +3876,14 @@ end
 -- * ImageIconUrl [__string] The URL that points to the icon image for the push notification icon, for example, the app icon.
 -- @return Message structure as a key-value pair table
 function M.Message(args)
-	assert(args, "You must provdide an argument table when creating Message")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Message")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Body"] = args["Body"],
 		["MediaUrl"] = args["MediaUrl"],
 		["Url"] = args["Url"],
@@ -2934,8 +3895,13 @@ function M.Message(args)
 		["JsonBody"] = args["JsonBody"],
 		["ImageIconUrl"] = args["ImageIconUrl"],
 	}
-	asserts.AssertMessage(t)
-	return t
+	asserts.AssertMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.MessageResponse = { ["ApplicationId"] = true, ["RequestId"] = true, ["Result"] = true, nil }
@@ -2960,14 +3926,25 @@ end
 -- * Result [MapOfMessageResult] A map containing a multi part response for each address, with the address as the key(Email address, phone number or push token) and the result as the value.
 -- @return MessageResponse structure as a key-value pair table
 function M.MessageResponse(args)
-	assert(args, "You must provdide an argument table when creating MessageResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating MessageResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ApplicationId"] = args["ApplicationId"],
 		["RequestId"] = args["RequestId"],
 		["Result"] = args["Result"],
 	}
-	asserts.AssertMessageResponse(t)
-	return t
+	asserts.AssertMessageResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.APNSChannelRequest = { ["PrivateKey"] = true, ["Enabled"] = true, ["Certificate"] = true, nil }
@@ -2992,14 +3969,25 @@ end
 -- * Certificate [__string] The distribution certificate from Apple.
 -- @return APNSChannelRequest structure as a key-value pair table
 function M.APNSChannelRequest(args)
-	assert(args, "You must provdide an argument table when creating APNSChannelRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating APNSChannelRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["PrivateKey"] = args["PrivateKey"],
 		["Enabled"] = args["Enabled"],
 		["Certificate"] = args["Certificate"],
 	}
-	asserts.AssertAPNSChannelRequest(t)
-	return t
+	asserts.AssertAPNSChannelRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.EndpointDemographic = { ["Locale"] = true, ["ModelVersion"] = true, ["Make"] = true, ["AppVersion"] = true, ["Platform"] = true, ["PlatformVersion"] = true, ["Timezone"] = true, ["Model"] = true, nil }
@@ -3034,8 +4022,14 @@ end
 -- * Model [__string] The endpoint model, such as iPhone.
 -- @return EndpointDemographic structure as a key-value pair table
 function M.EndpointDemographic(args)
-	assert(args, "You must provdide an argument table when creating EndpointDemographic")
-	local t = { 
+	assert(args, "You must provide an argument table when creating EndpointDemographic")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Locale"] = args["Locale"],
 		["ModelVersion"] = args["ModelVersion"],
 		["Make"] = args["Make"],
@@ -3045,8 +4039,13 @@ function M.EndpointDemographic(args)
 		["Timezone"] = args["Timezone"],
 		["Model"] = args["Model"],
 	}
-	asserts.AssertEndpointDemographic(t)
-	return t
+	asserts.AssertEndpointDemographic(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.MessageResult = { ["DeliveryStatus"] = true, ["UpdatedToken"] = true, ["StatusMessage"] = true, ["StatusCode"] = true, nil }
@@ -3073,15 +4072,26 @@ end
 -- * StatusCode [__integer] Downstream service status code.
 -- @return MessageResult structure as a key-value pair table
 function M.MessageResult(args)
-	assert(args, "You must provdide an argument table when creating MessageResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating MessageResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DeliveryStatus"] = args["DeliveryStatus"],
 		["UpdatedToken"] = args["UpdatedToken"],
 		["StatusMessage"] = args["StatusMessage"],
 		["StatusCode"] = args["StatusCode"],
 	}
-	asserts.AssertMessageResult(t)
-	return t
+	asserts.AssertMessageResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetCampaignVersionsRequest = { ["Token"] = true, ["ApplicationId"] = true, ["PageSize"] = true, ["CampaignId"] = true, nil }
@@ -3112,15 +4122,30 @@ end
 -- Required key: CampaignId
 -- @return GetCampaignVersionsRequest structure as a key-value pair table
 function M.GetCampaignVersionsRequest(args)
-	assert(args, "You must provdide an argument table when creating GetCampaignVersionsRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetCampaignVersionsRequest")
+    local query_args = { 
+        ["token"] = args["Token"],
+        ["page-size"] = args["PageSize"],
+    }
+    local uri_args = { 
+        ["{application-id}"] = args["ApplicationId"],
+        ["{campaign-id}"] = args["CampaignId"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Token"] = args["Token"],
 		["ApplicationId"] = args["ApplicationId"],
 		["PageSize"] = args["PageSize"],
 		["CampaignId"] = args["CampaignId"],
 	}
-	asserts.AssertGetCampaignVersionsRequest(t)
-	return t
+	asserts.AssertGetCampaignVersionsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteSegmentResponse = { ["SegmentResponse"] = true, nil }
@@ -3143,12 +4168,23 @@ end
 -- Required key: SegmentResponse
 -- @return DeleteSegmentResponse structure as a key-value pair table
 function M.DeleteSegmentResponse(args)
-	assert(args, "You must provdide an argument table when creating DeleteSegmentResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteSegmentResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["SegmentResponse"] = args["SegmentResponse"],
 	}
-	asserts.AssertDeleteSegmentResponse(t)
-	return t
+	asserts.AssertDeleteSegmentResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetSegmentVersionsResponse = { ["SegmentsResponse"] = true, nil }
@@ -3171,12 +4207,23 @@ end
 -- Required key: SegmentsResponse
 -- @return GetSegmentVersionsResponse structure as a key-value pair table
 function M.GetSegmentVersionsResponse(args)
-	assert(args, "You must provdide an argument table when creating GetSegmentVersionsResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetSegmentVersionsResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["SegmentsResponse"] = args["SegmentsResponse"],
 	}
-	asserts.AssertGetSegmentVersionsResponse(t)
-	return t
+	asserts.AssertGetSegmentVersionsResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteCampaignResponse = { ["CampaignResponse"] = true, nil }
@@ -3199,12 +4246,23 @@ end
 -- Required key: CampaignResponse
 -- @return DeleteCampaignResponse structure as a key-value pair table
 function M.DeleteCampaignResponse(args)
-	assert(args, "You must provdide an argument table when creating DeleteCampaignResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteCampaignResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["CampaignResponse"] = args["CampaignResponse"],
 	}
-	asserts.AssertDeleteCampaignResponse(t)
-	return t
+	asserts.AssertDeleteCampaignResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.SendMessagesRequest = { ["ApplicationId"] = true, ["MessageRequest"] = true, nil }
@@ -3231,13 +4289,25 @@ end
 -- Required key: MessageRequest
 -- @return SendMessagesRequest structure as a key-value pair table
 function M.SendMessagesRequest(args)
-	assert(args, "You must provdide an argument table when creating SendMessagesRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating SendMessagesRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{application-id}"] = args["ApplicationId"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ApplicationId"] = args["ApplicationId"],
 		["MessageRequest"] = args["MessageRequest"],
 	}
-	asserts.AssertSendMessagesRequest(t)
-	return t
+	asserts.AssertSendMessagesRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteCampaignRequest = { ["ApplicationId"] = true, ["CampaignId"] = true, nil }
@@ -3264,13 +4334,26 @@ end
 -- Required key: ApplicationId
 -- @return DeleteCampaignRequest structure as a key-value pair table
 function M.DeleteCampaignRequest(args)
-	assert(args, "You must provdide an argument table when creating DeleteCampaignRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteCampaignRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{application-id}"] = args["ApplicationId"],
+        ["{campaign-id}"] = args["CampaignId"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ApplicationId"] = args["ApplicationId"],
 		["CampaignId"] = args["CampaignId"],
 	}
-	asserts.AssertDeleteCampaignRequest(t)
-	return t
+	asserts.AssertDeleteCampaignRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.QuietTime = { ["Start"] = true, ["End"] = true, nil }
@@ -3293,13 +4376,24 @@ end
 -- * End [__string] The default end time for quiet time in ISO 8601 format.
 -- @return QuietTime structure as a key-value pair table
 function M.QuietTime(args)
-	assert(args, "You must provdide an argument table when creating QuietTime")
-	local t = { 
+	assert(args, "You must provide an argument table when creating QuietTime")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Start"] = args["Start"],
 		["End"] = args["End"],
 	}
-	asserts.AssertQuietTime(t)
-	return t
+	asserts.AssertQuietTime(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteApnsSandboxChannelResponse = { ["APNSSandboxChannelResponse"] = true, nil }
@@ -3322,12 +4416,23 @@ end
 -- Required key: APNSSandboxChannelResponse
 -- @return DeleteApnsSandboxChannelResponse structure as a key-value pair table
 function M.DeleteApnsSandboxChannelResponse(args)
-	assert(args, "You must provdide an argument table when creating DeleteApnsSandboxChannelResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteApnsSandboxChannelResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["APNSSandboxChannelResponse"] = args["APNSSandboxChannelResponse"],
 	}
-	asserts.AssertDeleteApnsSandboxChannelResponse(t)
-	return t
+	asserts.AssertDeleteApnsSandboxChannelResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetCampaignRequest = { ["ApplicationId"] = true, ["CampaignId"] = true, nil }
@@ -3354,13 +4459,26 @@ end
 -- Required key: ApplicationId
 -- @return GetCampaignRequest structure as a key-value pair table
 function M.GetCampaignRequest(args)
-	assert(args, "You must provdide an argument table when creating GetCampaignRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetCampaignRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{application-id}"] = args["ApplicationId"],
+        ["{campaign-id}"] = args["CampaignId"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ApplicationId"] = args["ApplicationId"],
 		["CampaignId"] = args["CampaignId"],
 	}
-	asserts.AssertGetCampaignRequest(t)
-	return t
+	asserts.AssertGetCampaignRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetCampaignsResponse = { ["CampaignsResponse"] = true, nil }
@@ -3383,12 +4501,23 @@ end
 -- Required key: CampaignsResponse
 -- @return GetCampaignsResponse structure as a key-value pair table
 function M.GetCampaignsResponse(args)
-	assert(args, "You must provdide an argument table when creating GetCampaignsResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetCampaignsResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["CampaignsResponse"] = args["CampaignsResponse"],
 	}
-	asserts.AssertGetCampaignsResponse(t)
-	return t
+	asserts.AssertGetCampaignsResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateCampaignResponse = { ["CampaignResponse"] = true, nil }
@@ -3411,12 +4540,23 @@ end
 -- Required key: CampaignResponse
 -- @return CreateCampaignResponse structure as a key-value pair table
 function M.CreateCampaignResponse(args)
-	assert(args, "You must provdide an argument table when creating CreateCampaignResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateCampaignResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["CampaignResponse"] = args["CampaignResponse"],
 	}
-	asserts.AssertCreateCampaignResponse(t)
-	return t
+	asserts.AssertCreateCampaignResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteSegmentRequest = { ["ApplicationId"] = true, ["SegmentId"] = true, nil }
@@ -3443,13 +4583,26 @@ end
 -- Required key: ApplicationId
 -- @return DeleteSegmentRequest structure as a key-value pair table
 function M.DeleteSegmentRequest(args)
-	assert(args, "You must provdide an argument table when creating DeleteSegmentRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteSegmentRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{application-id}"] = args["ApplicationId"],
+        ["{segment-id}"] = args["SegmentId"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ApplicationId"] = args["ApplicationId"],
 		["SegmentId"] = args["SegmentId"],
 	}
-	asserts.AssertDeleteSegmentRequest(t)
-	return t
+	asserts.AssertDeleteSegmentRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetImportJobRequest = { ["ApplicationId"] = true, ["JobId"] = true, nil }
@@ -3476,13 +4629,26 @@ end
 -- Required key: JobId
 -- @return GetImportJobRequest structure as a key-value pair table
 function M.GetImportJobRequest(args)
-	assert(args, "You must provdide an argument table when creating GetImportJobRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetImportJobRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{application-id}"] = args["ApplicationId"],
+        ["{job-id}"] = args["JobId"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ApplicationId"] = args["ApplicationId"],
 		["JobId"] = args["JobId"],
 	}
-	asserts.AssertGetImportJobRequest(t)
-	return t
+	asserts.AssertGetImportJobRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ApplicationSettingsResource = { ["LastModifiedDate"] = true, ["QuietTime"] = true, ["ApplicationId"] = true, ["Limits"] = true, nil }
@@ -3509,15 +4675,26 @@ end
 -- * Limits [CampaignLimits] The default campaign limits for the app. These limits apply to each campaign for the app, unless the campaign overrides the default with limits of its own.
 -- @return ApplicationSettingsResource structure as a key-value pair table
 function M.ApplicationSettingsResource(args)
-	assert(args, "You must provdide an argument table when creating ApplicationSettingsResource")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ApplicationSettingsResource")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["LastModifiedDate"] = args["LastModifiedDate"],
 		["QuietTime"] = args["QuietTime"],
 		["ApplicationId"] = args["ApplicationId"],
 		["Limits"] = args["Limits"],
 	}
-	asserts.AssertApplicationSettingsResource(t)
-	return t
+	asserts.AssertApplicationSettingsResource(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateSegmentResponse = { ["SegmentResponse"] = true, nil }
@@ -3540,12 +4717,23 @@ end
 -- Required key: SegmentResponse
 -- @return CreateSegmentResponse structure as a key-value pair table
 function M.CreateSegmentResponse(args)
-	assert(args, "You must provdide an argument table when creating CreateSegmentResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateSegmentResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["SegmentResponse"] = args["SegmentResponse"],
 	}
-	asserts.AssertCreateSegmentResponse(t)
-	return t
+	asserts.AssertCreateSegmentResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GCMMessage = { ["Body"] = true, ["Sound"] = true, ["Title"] = true, ["Url"] = true, ["ImageUrl"] = true, ["RawContent"] = true, ["Substitutions"] = true, ["CollapseKey"] = true, ["SmallImageIconUrl"] = true, ["SilentPush"] = true, ["IconReference"] = true, ["Action"] = true, ["RestrictedPackageName"] = true, ["Data"] = true, ["ImageIconUrl"] = true, nil }
@@ -3594,8 +4782,14 @@ end
 -- * ImageIconUrl [__string] The URL that points to an image used as the large icon to the notification content view.
 -- @return GCMMessage structure as a key-value pair table
 function M.GCMMessage(args)
-	assert(args, "You must provdide an argument table when creating GCMMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GCMMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Body"] = args["Body"],
 		["Sound"] = args["Sound"],
 		["Title"] = args["Title"],
@@ -3612,8 +4806,13 @@ function M.GCMMessage(args)
 		["Data"] = args["Data"],
 		["ImageIconUrl"] = args["ImageIconUrl"],
 	}
-	asserts.AssertGCMMessage(t)
-	return t
+	asserts.AssertGCMMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.SegmentBehaviors = { ["Recency"] = true, nil }
@@ -3634,12 +4833,23 @@ end
 -- * Recency [RecencyDimension] The recency of use.
 -- @return SegmentBehaviors structure as a key-value pair table
 function M.SegmentBehaviors(args)
-	assert(args, "You must provdide an argument table when creating SegmentBehaviors")
-	local t = { 
+	assert(args, "You must provide an argument table when creating SegmentBehaviors")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Recency"] = args["Recency"],
 	}
-	asserts.AssertSegmentBehaviors(t)
-	return t
+	asserts.AssertSegmentBehaviors(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdateEndpointsBatchRequest = { ["EndpointBatchRequest"] = true, ["ApplicationId"] = true, nil }
@@ -3666,13 +4876,25 @@ end
 -- Required key: EndpointBatchRequest
 -- @return UpdateEndpointsBatchRequest structure as a key-value pair table
 function M.UpdateEndpointsBatchRequest(args)
-	assert(args, "You must provdide an argument table when creating UpdateEndpointsBatchRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateEndpointsBatchRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{application-id}"] = args["ApplicationId"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["EndpointBatchRequest"] = args["EndpointBatchRequest"],
 		["ApplicationId"] = args["ApplicationId"],
 	}
-	asserts.AssertUpdateEndpointsBatchRequest(t)
-	return t
+	asserts.AssertUpdateEndpointsBatchRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetCampaignResponse = { ["CampaignResponse"] = true, nil }
@@ -3695,12 +4917,23 @@ end
 -- Required key: CampaignResponse
 -- @return GetCampaignResponse structure as a key-value pair table
 function M.GetCampaignResponse(args)
-	assert(args, "You must provdide an argument table when creating GetCampaignResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetCampaignResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["CampaignResponse"] = args["CampaignResponse"],
 	}
-	asserts.AssertGetCampaignResponse(t)
-	return t
+	asserts.AssertGetCampaignResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetApplicationSettingsResponse = { ["ApplicationSettingsResource"] = true, nil }
@@ -3723,12 +4956,23 @@ end
 -- Required key: ApplicationSettingsResource
 -- @return GetApplicationSettingsResponse structure as a key-value pair table
 function M.GetApplicationSettingsResponse(args)
-	assert(args, "You must provdide an argument table when creating GetApplicationSettingsResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetApplicationSettingsResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ApplicationSettingsResource"] = args["ApplicationSettingsResource"],
 	}
-	asserts.AssertGetApplicationSettingsResponse(t)
-	return t
+	asserts.AssertGetApplicationSettingsResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.MessageBody = { ["Message"] = true, ["RequestID"] = true, nil }
@@ -3751,13 +4995,24 @@ end
 -- * RequestID [__string] The unique message body ID.
 -- @return MessageBody structure as a key-value pair table
 function M.MessageBody(args)
-	assert(args, "You must provdide an argument table when creating MessageBody")
-	local t = { 
+	assert(args, "You must provide an argument table when creating MessageBody")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Message"] = args["Message"],
 		["RequestID"] = args["RequestID"],
 	}
-	asserts.AssertMessageBody(t)
-	return t
+	asserts.AssertMessageBody(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.EndpointBatchItem = { ["EffectiveDate"] = true, ["OptOut"] = true, ["RequestId"] = true, ["Demographic"] = true, ["User"] = true, ["Metrics"] = true, ["Location"] = true, ["Address"] = true, ["Attributes"] = true, ["ChannelType"] = true, ["Id"] = true, ["EndpointStatus"] = true, nil }
@@ -3800,8 +5055,14 @@ end
 -- * EndpointStatus [__string] The endpoint status. Can be either ACTIVE or INACTIVE. Will be set to INACTIVE if a delivery fails. Will be set to ACTIVE if the address is updated.
 -- @return EndpointBatchItem structure as a key-value pair table
 function M.EndpointBatchItem(args)
-	assert(args, "You must provdide an argument table when creating EndpointBatchItem")
-	local t = { 
+	assert(args, "You must provide an argument table when creating EndpointBatchItem")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["EffectiveDate"] = args["EffectiveDate"],
 		["OptOut"] = args["OptOut"],
 		["RequestId"] = args["RequestId"],
@@ -3815,8 +5076,13 @@ function M.EndpointBatchItem(args)
 		["Id"] = args["Id"],
 		["EndpointStatus"] = args["EndpointStatus"],
 	}
-	asserts.AssertEndpointBatchItem(t)
-	return t
+	asserts.AssertEndpointBatchItem(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetImportJobResponse = { ["ImportJobResponse"] = true, nil }
@@ -3839,12 +5105,23 @@ end
 -- Required key: ImportJobResponse
 -- @return GetImportJobResponse structure as a key-value pair table
 function M.GetImportJobResponse(args)
-	assert(args, "You must provdide an argument table when creating GetImportJobResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetImportJobResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ImportJobResponse"] = args["ImportJobResponse"],
 	}
-	asserts.AssertGetImportJobResponse(t)
-	return t
+	asserts.AssertGetImportJobResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ForbiddenException = { ["Message"] = true, ["RequestID"] = true, nil }
@@ -3867,13 +5144,24 @@ end
 -- * RequestID [__string] The unique message body ID.
 -- @return ForbiddenException structure as a key-value pair table
 function M.ForbiddenException(args)
-	assert(args, "You must provdide an argument table when creating ForbiddenException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ForbiddenException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Message"] = args["Message"],
 		["RequestID"] = args["RequestID"],
 	}
-	asserts.AssertForbiddenException(t)
-	return t
+	asserts.AssertForbiddenException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ImportJobRequest = { ["DefineSegment"] = true, ["SegmentId"] = true, ["Format"] = true, ["RoleArn"] = true, ["S3Url"] = true, ["RegisterEndpoints"] = true, ["ExternalId"] = true, ["SegmentName"] = true, nil }
@@ -3908,8 +5196,14 @@ end
 -- * SegmentName [__string] A custom name for the segment created by the import job. Use if DefineSegment is true.
 -- @return ImportJobRequest structure as a key-value pair table
 function M.ImportJobRequest(args)
-	assert(args, "You must provdide an argument table when creating ImportJobRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ImportJobRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DefineSegment"] = args["DefineSegment"],
 		["SegmentId"] = args["SegmentId"],
 		["Format"] = args["Format"],
@@ -3919,8 +5213,13 @@ function M.ImportJobRequest(args)
 		["ExternalId"] = args["ExternalId"],
 		["SegmentName"] = args["SegmentName"],
 	}
-	asserts.AssertImportJobRequest(t)
-	return t
+	asserts.AssertImportJobRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.EmailChannelResponse = { ["FromAddress"] = true, ["LastModifiedDate"] = true, ["RoleArn"] = true, ["Enabled"] = true, ["LastModifiedBy"] = true, ["Platform"] = true, ["Version"] = true, ["IsArchived"] = true, ["CreationDate"] = true, ["ApplicationId"] = true, ["Id"] = true, ["Identity"] = true, nil }
@@ -3963,8 +5262,14 @@ end
 -- * Identity [__string] The ARN of an identity verified with SES.
 -- @return EmailChannelResponse structure as a key-value pair table
 function M.EmailChannelResponse(args)
-	assert(args, "You must provdide an argument table when creating EmailChannelResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating EmailChannelResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["FromAddress"] = args["FromAddress"],
 		["LastModifiedDate"] = args["LastModifiedDate"],
 		["RoleArn"] = args["RoleArn"],
@@ -3978,8 +5283,13 @@ function M.EmailChannelResponse(args)
 		["Id"] = args["Id"],
 		["Identity"] = args["Identity"],
 	}
-	asserts.AssertEmailChannelResponse(t)
-	return t
+	asserts.AssertEmailChannelResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.APNSMessage = { ["Body"] = true, ["Category"] = true, ["MediaUrl"] = true, ["Url"] = true, ["Data"] = true, ["ThreadId"] = true, ["Substitutions"] = true, ["Title"] = true, ["RawContent"] = true, ["Action"] = true, ["SilentPush"] = true, ["Badge"] = true, ["Sound"] = true, nil }
@@ -4024,8 +5334,14 @@ end
 -- * Sound [__string] Include this key when you want the system to play a sound. The value of this key is the name of a sound file in your app's main bundle or in the Library/Sounds folder of your app's data container. If the sound file cannot be found, or if you specify defaultfor the value, the system plays the default alert sound.
 -- @return APNSMessage structure as a key-value pair table
 function M.APNSMessage(args)
-	assert(args, "You must provdide an argument table when creating APNSMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating APNSMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Body"] = args["Body"],
 		["Category"] = args["Category"],
 		["MediaUrl"] = args["MediaUrl"],
@@ -4040,8 +5356,13 @@ function M.APNSMessage(args)
 		["Badge"] = args["Badge"],
 		["Sound"] = args["Sound"],
 	}
-	asserts.AssertAPNSMessage(t)
-	return t
+	asserts.AssertAPNSMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.EndpointRequest = { ["EffectiveDate"] = true, ["OptOut"] = true, ["RequestId"] = true, ["Demographic"] = true, ["User"] = true, ["Metrics"] = true, ["Location"] = true, ["Address"] = true, ["Attributes"] = true, ["ChannelType"] = true, ["EndpointStatus"] = true, nil }
@@ -4082,8 +5403,14 @@ end
 -- * EndpointStatus [__string] The endpoint status. Can be either ACTIVE or INACTIVE. Will be set to INACTIVE if a delivery fails. Will be set to ACTIVE if the address is updated.
 -- @return EndpointRequest structure as a key-value pair table
 function M.EndpointRequest(args)
-	assert(args, "You must provdide an argument table when creating EndpointRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating EndpointRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["EffectiveDate"] = args["EffectiveDate"],
 		["OptOut"] = args["OptOut"],
 		["RequestId"] = args["RequestId"],
@@ -4096,8 +5423,13 @@ function M.EndpointRequest(args)
 		["ChannelType"] = args["ChannelType"],
 		["EndpointStatus"] = args["EndpointStatus"],
 	}
-	asserts.AssertEndpointRequest(t)
-	return t
+	asserts.AssertEndpointRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteApnsChannelResponse = { ["APNSChannelResponse"] = true, nil }
@@ -4120,12 +5452,23 @@ end
 -- Required key: APNSChannelResponse
 -- @return DeleteApnsChannelResponse structure as a key-value pair table
 function M.DeleteApnsChannelResponse(args)
-	assert(args, "You must provdide an argument table when creating DeleteApnsChannelResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteApnsChannelResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["APNSChannelResponse"] = args["APNSChannelResponse"],
 	}
-	asserts.AssertDeleteApnsChannelResponse(t)
-	return t
+	asserts.AssertDeleteApnsChannelResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateImportJobResponse = { ["ImportJobResponse"] = true, nil }
@@ -4148,12 +5491,23 @@ end
 -- Required key: ImportJobResponse
 -- @return CreateImportJobResponse structure as a key-value pair table
 function M.CreateImportJobResponse(args)
-	assert(args, "You must provdide an argument table when creating CreateImportJobResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateImportJobResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ImportJobResponse"] = args["ImportJobResponse"],
 	}
-	asserts.AssertCreateImportJobResponse(t)
-	return t
+	asserts.AssertCreateImportJobResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.TreatmentResource = { ["SizePercent"] = true, ["Schedule"] = true, ["TreatmentName"] = true, ["State"] = true, ["MessageConfiguration"] = true, ["Id"] = true, ["TreatmentDescription"] = true, nil }
@@ -4186,8 +5540,14 @@ end
 -- * TreatmentDescription [__string] A custom description for the treatment.
 -- @return TreatmentResource structure as a key-value pair table
 function M.TreatmentResource(args)
-	assert(args, "You must provdide an argument table when creating TreatmentResource")
-	local t = { 
+	assert(args, "You must provide an argument table when creating TreatmentResource")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["SizePercent"] = args["SizePercent"],
 		["Schedule"] = args["Schedule"],
 		["TreatmentName"] = args["TreatmentName"],
@@ -4196,8 +5556,13 @@ function M.TreatmentResource(args)
 		["Id"] = args["Id"],
 		["TreatmentDescription"] = args["TreatmentDescription"],
 	}
-	asserts.AssertTreatmentResource(t)
-	return t
+	asserts.AssertTreatmentResource(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetSegmentResponse = { ["SegmentResponse"] = true, nil }
@@ -4220,12 +5585,23 @@ end
 -- Required key: SegmentResponse
 -- @return GetSegmentResponse structure as a key-value pair table
 function M.GetSegmentResponse(args)
-	assert(args, "You must provdide an argument table when creating GetSegmentResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetSegmentResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["SegmentResponse"] = args["SegmentResponse"],
 	}
-	asserts.AssertGetSegmentResponse(t)
-	return t
+	asserts.AssertGetSegmentResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetEmailChannelRequest = { ["ApplicationId"] = true, nil }
@@ -4248,12 +5624,24 @@ end
 -- Required key: ApplicationId
 -- @return GetEmailChannelRequest structure as a key-value pair table
 function M.GetEmailChannelRequest(args)
-	assert(args, "You must provdide an argument table when creating GetEmailChannelRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetEmailChannelRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{application-id}"] = args["ApplicationId"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ApplicationId"] = args["ApplicationId"],
 	}
-	asserts.AssertGetEmailChannelRequest(t)
-	return t
+	asserts.AssertGetEmailChannelRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetEventStreamRequest = { ["ApplicationId"] = true, nil }
@@ -4276,12 +5664,24 @@ end
 -- Required key: ApplicationId
 -- @return GetEventStreamRequest structure as a key-value pair table
 function M.GetEventStreamRequest(args)
-	assert(args, "You must provdide an argument table when creating GetEventStreamRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetEventStreamRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{application-id}"] = args["ApplicationId"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ApplicationId"] = args["ApplicationId"],
 	}
-	asserts.AssertGetEventStreamRequest(t)
-	return t
+	asserts.AssertGetEventStreamRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.RecencyDimension = { ["Duration"] = true, ["RecencyType"] = true, nil }
@@ -4304,13 +5704,24 @@ end
 -- * RecencyType [RecencyType] The recency dimension type:ACTIVE - Users who have used your app within the specified duration are included in the segment.INACTIVE - Users who have not used your app within the specified duration are included in the segment.
 -- @return RecencyDimension structure as a key-value pair table
 function M.RecencyDimension(args)
-	assert(args, "You must provdide an argument table when creating RecencyDimension")
-	local t = { 
+	assert(args, "You must provide an argument table when creating RecencyDimension")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Duration"] = args["Duration"],
 		["RecencyType"] = args["RecencyType"],
 	}
-	asserts.AssertRecencyDimension(t)
-	return t
+	asserts.AssertRecencyDimension(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteEventStreamResponse = { ["EventStream"] = true, nil }
@@ -4333,12 +5744,23 @@ end
 -- Required key: EventStream
 -- @return DeleteEventStreamResponse structure as a key-value pair table
 function M.DeleteEventStreamResponse(args)
-	assert(args, "You must provdide an argument table when creating DeleteEventStreamResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteEventStreamResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["EventStream"] = args["EventStream"],
 	}
-	asserts.AssertDeleteEventStreamResponse(t)
-	return t
+	asserts.AssertDeleteEventStreamResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetEndpointRequest = { ["ApplicationId"] = true, ["EndpointId"] = true, nil }
@@ -4365,13 +5787,26 @@ end
 -- Required key: EndpointId
 -- @return GetEndpointRequest structure as a key-value pair table
 function M.GetEndpointRequest(args)
-	assert(args, "You must provdide an argument table when creating GetEndpointRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetEndpointRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{application-id}"] = args["ApplicationId"],
+        ["{endpoint-id}"] = args["EndpointId"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ApplicationId"] = args["ApplicationId"],
 		["EndpointId"] = args["EndpointId"],
 	}
-	asserts.AssertGetEndpointRequest(t)
-	return t
+	asserts.AssertGetEndpointRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetSmsChannelRequest = { ["ApplicationId"] = true, nil }
@@ -4394,12 +5829,24 @@ end
 -- Required key: ApplicationId
 -- @return GetSmsChannelRequest structure as a key-value pair table
 function M.GetSmsChannelRequest(args)
-	assert(args, "You must provdide an argument table when creating GetSmsChannelRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetSmsChannelRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{application-id}"] = args["ApplicationId"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ApplicationId"] = args["ApplicationId"],
 	}
-	asserts.AssertGetSmsChannelRequest(t)
-	return t
+	asserts.AssertGetSmsChannelRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetSegmentVersionRequest = { ["Version"] = true, ["ApplicationId"] = true, ["SegmentId"] = true, nil }
@@ -4430,14 +5877,28 @@ end
 -- Required key: ApplicationId
 -- @return GetSegmentVersionRequest structure as a key-value pair table
 function M.GetSegmentVersionRequest(args)
-	assert(args, "You must provdide an argument table when creating GetSegmentVersionRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetSegmentVersionRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{version}"] = args["Version"],
+        ["{application-id}"] = args["ApplicationId"],
+        ["{segment-id}"] = args["SegmentId"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Version"] = args["Version"],
 		["ApplicationId"] = args["ApplicationId"],
 		["SegmentId"] = args["SegmentId"],
 	}
-	asserts.AssertGetSegmentVersionRequest(t)
-	return t
+	asserts.AssertGetSegmentVersionRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.SMSMessage = { ["Body"] = true, ["SenderId"] = true, ["MessageType"] = true, ["Substitutions"] = true, nil }
@@ -4464,15 +5925,26 @@ end
 -- * Substitutions [MapOfListOf__string] Default message substitutions. Can be overridden by individual address substitutions.
 -- @return SMSMessage structure as a key-value pair table
 function M.SMSMessage(args)
-	assert(args, "You must provdide an argument table when creating SMSMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating SMSMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Body"] = args["Body"],
 		["SenderId"] = args["SenderId"],
 		["MessageType"] = args["MessageType"],
 		["Substitutions"] = args["Substitutions"],
 	}
-	asserts.AssertSMSMessage(t)
-	return t
+	asserts.AssertSMSMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetEventStreamResponse = { ["EventStream"] = true, nil }
@@ -4495,12 +5967,23 @@ end
 -- Required key: EventStream
 -- @return GetEventStreamResponse structure as a key-value pair table
 function M.GetEventStreamResponse(args)
-	assert(args, "You must provdide an argument table when creating GetEventStreamResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetEventStreamResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["EventStream"] = args["EventStream"],
 	}
-	asserts.AssertGetEventStreamResponse(t)
-	return t
+	asserts.AssertGetEventStreamResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.SegmentImportResource = { ["Format"] = true, ["RoleArn"] = true, ["S3Url"] = true, ["ExternalId"] = true, ["ChannelCounts"] = true, ["Size"] = true, nil }
@@ -4531,8 +6014,14 @@ end
 -- * Size [__integer] The number of endpoints that were successfully imported to create this segment.
 -- @return SegmentImportResource structure as a key-value pair table
 function M.SegmentImportResource(args)
-	assert(args, "You must provdide an argument table when creating SegmentImportResource")
-	local t = { 
+	assert(args, "You must provide an argument table when creating SegmentImportResource")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Format"] = args["Format"],
 		["RoleArn"] = args["RoleArn"],
 		["S3Url"] = args["S3Url"],
@@ -4540,8 +6029,13 @@ function M.SegmentImportResource(args)
 		["ChannelCounts"] = args["ChannelCounts"],
 		["Size"] = args["Size"],
 	}
-	asserts.AssertSegmentImportResource(t)
-	return t
+	asserts.AssertSegmentImportResource(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.SegmentDemographics = { ["Make"] = true, ["AppVersion"] = true, ["Platform"] = true, ["DeviceType"] = true, ["Model"] = true, ["Channel"] = true, nil }
@@ -4572,8 +6066,14 @@ end
 -- * Channel [SetDimension] The channel criteria for the segment.
 -- @return SegmentDemographics structure as a key-value pair table
 function M.SegmentDemographics(args)
-	assert(args, "You must provdide an argument table when creating SegmentDemographics")
-	local t = { 
+	assert(args, "You must provide an argument table when creating SegmentDemographics")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Make"] = args["Make"],
 		["AppVersion"] = args["AppVersion"],
 		["Platform"] = args["Platform"],
@@ -4581,8 +6081,13 @@ function M.SegmentDemographics(args)
 		["Model"] = args["Model"],
 		["Channel"] = args["Channel"],
 	}
-	asserts.AssertSegmentDemographics(t)
-	return t
+	asserts.AssertSegmentDemographics(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdateGcmChannelRequest = { ["ApplicationId"] = true, ["GCMChannelRequest"] = true, nil }
@@ -4609,13 +6114,25 @@ end
 -- Required key: GCMChannelRequest
 -- @return UpdateGcmChannelRequest structure as a key-value pair table
 function M.UpdateGcmChannelRequest(args)
-	assert(args, "You must provdide an argument table when creating UpdateGcmChannelRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateGcmChannelRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{application-id}"] = args["ApplicationId"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ApplicationId"] = args["ApplicationId"],
 		["GCMChannelRequest"] = args["GCMChannelRequest"],
 	}
-	asserts.AssertUpdateGcmChannelRequest(t)
-	return t
+	asserts.AssertUpdateGcmChannelRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.SetDimension = { ["DimensionType"] = true, ["Values"] = true, nil }
@@ -4638,13 +6155,24 @@ end
 -- * Values [ListOf__string] The criteria values for the segment dimension. Endpoints with matching attribute values are included or excluded from the segment, depending on the setting for Type.
 -- @return SetDimension structure as a key-value pair table
 function M.SetDimension(args)
-	assert(args, "You must provdide an argument table when creating SetDimension")
-	local t = { 
+	assert(args, "You must provide an argument table when creating SetDimension")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DimensionType"] = args["DimensionType"],
 		["Values"] = args["Values"],
 	}
-	asserts.AssertSetDimension(t)
-	return t
+	asserts.AssertSetDimension(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteGcmChannelRequest = { ["ApplicationId"] = true, nil }
@@ -4667,12 +6195,24 @@ end
 -- Required key: ApplicationId
 -- @return DeleteGcmChannelRequest structure as a key-value pair table
 function M.DeleteGcmChannelRequest(args)
-	assert(args, "You must provdide an argument table when creating DeleteGcmChannelRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteGcmChannelRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{application-id}"] = args["ApplicationId"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ApplicationId"] = args["ApplicationId"],
 	}
-	asserts.AssertDeleteGcmChannelRequest(t)
-	return t
+	asserts.AssertDeleteGcmChannelRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetSegmentsRequest = { ["Token"] = true, ["ApplicationId"] = true, ["PageSize"] = true, nil }
@@ -4699,14 +6239,28 @@ end
 -- Required key: ApplicationId
 -- @return GetSegmentsRequest structure as a key-value pair table
 function M.GetSegmentsRequest(args)
-	assert(args, "You must provdide an argument table when creating GetSegmentsRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetSegmentsRequest")
+    local query_args = { 
+        ["token"] = args["Token"],
+        ["page-size"] = args["PageSize"],
+    }
+    local uri_args = { 
+        ["{application-id}"] = args["ApplicationId"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Token"] = args["Token"],
 		["ApplicationId"] = args["ApplicationId"],
 		["PageSize"] = args["PageSize"],
 	}
-	asserts.AssertGetSegmentsRequest(t)
-	return t
+	asserts.AssertGetSegmentsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdateCampaignResponse = { ["CampaignResponse"] = true, nil }
@@ -4729,12 +6283,23 @@ end
 -- Required key: CampaignResponse
 -- @return UpdateCampaignResponse structure as a key-value pair table
 function M.UpdateCampaignResponse(args)
-	assert(args, "You must provdide an argument table when creating UpdateCampaignResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateCampaignResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["CampaignResponse"] = args["CampaignResponse"],
 	}
-	asserts.AssertUpdateCampaignResponse(t)
-	return t
+	asserts.AssertUpdateCampaignResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetCampaignVersionsResponse = { ["CampaignsResponse"] = true, nil }
@@ -4757,12 +6322,23 @@ end
 -- Required key: CampaignsResponse
 -- @return GetCampaignVersionsResponse structure as a key-value pair table
 function M.GetCampaignVersionsResponse(args)
-	assert(args, "You must provdide an argument table when creating GetCampaignVersionsResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetCampaignVersionsResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["CampaignsResponse"] = args["CampaignsResponse"],
 	}
-	asserts.AssertGetCampaignVersionsResponse(t)
-	return t
+	asserts.AssertGetCampaignVersionsResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdateApnsChannelRequest = { ["ApplicationId"] = true, ["APNSChannelRequest"] = true, nil }
@@ -4789,13 +6365,25 @@ end
 -- Required key: APNSChannelRequest
 -- @return UpdateApnsChannelRequest structure as a key-value pair table
 function M.UpdateApnsChannelRequest(args)
-	assert(args, "You must provdide an argument table when creating UpdateApnsChannelRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateApnsChannelRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{application-id}"] = args["ApplicationId"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ApplicationId"] = args["ApplicationId"],
 		["APNSChannelRequest"] = args["APNSChannelRequest"],
 	}
-	asserts.AssertUpdateApnsChannelRequest(t)
-	return t
+	asserts.AssertUpdateApnsChannelRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.EndpointLocation = { ["City"] = true, ["Country"] = true, ["Region"] = true, ["Longitude"] = true, ["PostalCode"] = true, ["Latitude"] = true, nil }
@@ -4826,8 +6414,14 @@ end
 -- * Latitude [__double] The latitude of the endpoint location. Rounded to one decimal (Roughly corresponding to a mile).
 -- @return EndpointLocation structure as a key-value pair table
 function M.EndpointLocation(args)
-	assert(args, "You must provdide an argument table when creating EndpointLocation")
-	local t = { 
+	assert(args, "You must provide an argument table when creating EndpointLocation")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["City"] = args["City"],
 		["Country"] = args["Country"],
 		["Region"] = args["Region"],
@@ -4835,8 +6429,13 @@ function M.EndpointLocation(args)
 		["PostalCode"] = args["PostalCode"],
 		["Latitude"] = args["Latitude"],
 	}
-	asserts.AssertEndpointLocation(t)
-	return t
+	asserts.AssertEndpointLocation(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdateApplicationSettingsRequest = { ["WriteApplicationSettingsRequest"] = true, ["ApplicationId"] = true, nil }
@@ -4863,13 +6462,25 @@ end
 -- Required key: WriteApplicationSettingsRequest
 -- @return UpdateApplicationSettingsRequest structure as a key-value pair table
 function M.UpdateApplicationSettingsRequest(args)
-	assert(args, "You must provdide an argument table when creating UpdateApplicationSettingsRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateApplicationSettingsRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{application-id}"] = args["ApplicationId"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["WriteApplicationSettingsRequest"] = args["WriteApplicationSettingsRequest"],
 		["ApplicationId"] = args["ApplicationId"],
 	}
-	asserts.AssertUpdateApplicationSettingsRequest(t)
-	return t
+	asserts.AssertUpdateApplicationSettingsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdateEndpointsBatchResponse = { ["MessageBody"] = true, nil }
@@ -4892,12 +6503,23 @@ end
 -- Required key: MessageBody
 -- @return UpdateEndpointsBatchResponse structure as a key-value pair table
 function M.UpdateEndpointsBatchResponse(args)
-	assert(args, "You must provdide an argument table when creating UpdateEndpointsBatchResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateEndpointsBatchResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["MessageBody"] = args["MessageBody"],
 	}
-	asserts.AssertUpdateEndpointsBatchResponse(t)
-	return t
+	asserts.AssertUpdateEndpointsBatchResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AttributeDimension = { ["Values"] = true, ["AttributeType"] = true, nil }
@@ -4920,13 +6542,24 @@ end
 -- * AttributeType [AttributeType] The type of dimension:INCLUSIVE - Endpoints that match the criteria are included in the segment.EXCLUSIVE - Endpoints that match the criteria are excluded from the segment.
 -- @return AttributeDimension structure as a key-value pair table
 function M.AttributeDimension(args)
-	assert(args, "You must provdide an argument table when creating AttributeDimension")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AttributeDimension")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Values"] = args["Values"],
 		["AttributeType"] = args["AttributeType"],
 	}
-	asserts.AssertAttributeDimension(t)
-	return t
+	asserts.AssertAttributeDimension(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetGcmChannelResponse = { ["GCMChannelResponse"] = true, nil }
@@ -4949,12 +6582,23 @@ end
 -- Required key: GCMChannelResponse
 -- @return GetGcmChannelResponse structure as a key-value pair table
 function M.GetGcmChannelResponse(args)
-	assert(args, "You must provdide an argument table when creating GetGcmChannelResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetGcmChannelResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["GCMChannelResponse"] = args["GCMChannelResponse"],
 	}
-	asserts.AssertGetGcmChannelResponse(t)
-	return t
+	asserts.AssertGetGcmChannelResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ActivitiesResponse = { ["Item"] = true, nil }
@@ -4975,12 +6619,23 @@ end
 -- * Item [ListOfActivityResponse] List of campaign activities
 -- @return ActivitiesResponse structure as a key-value pair table
 function M.ActivitiesResponse(args)
-	assert(args, "You must provdide an argument table when creating ActivitiesResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ActivitiesResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Item"] = args["Item"],
 	}
-	asserts.AssertActivitiesResponse(t)
-	return t
+	asserts.AssertActivitiesResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteApnsSandboxChannelRequest = { ["ApplicationId"] = true, nil }
@@ -5003,12 +6658,24 @@ end
 -- Required key: ApplicationId
 -- @return DeleteApnsSandboxChannelRequest structure as a key-value pair table
 function M.DeleteApnsSandboxChannelRequest(args)
-	assert(args, "You must provdide an argument table when creating DeleteApnsSandboxChannelRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteApnsSandboxChannelRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{application-id}"] = args["ApplicationId"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ApplicationId"] = args["ApplicationId"],
 	}
-	asserts.AssertDeleteApnsSandboxChannelRequest(t)
-	return t
+	asserts.AssertDeleteApnsSandboxChannelRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetApnsSandboxChannelResponse = { ["APNSSandboxChannelResponse"] = true, nil }
@@ -5031,12 +6698,23 @@ end
 -- Required key: APNSSandboxChannelResponse
 -- @return GetApnsSandboxChannelResponse structure as a key-value pair table
 function M.GetApnsSandboxChannelResponse(args)
-	assert(args, "You must provdide an argument table when creating GetApnsSandboxChannelResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetApnsSandboxChannelResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["APNSSandboxChannelResponse"] = args["APNSSandboxChannelResponse"],
 	}
-	asserts.AssertGetApnsSandboxChannelResponse(t)
-	return t
+	asserts.AssertGetApnsSandboxChannelResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.SegmentResponse = { ["Dimensions"] = true, ["LastModifiedDate"] = true, ["SegmentType"] = true, ["Version"] = true, ["ImportDefinition"] = true, ["CreationDate"] = true, ["ApplicationId"] = true, ["Id"] = true, ["Name"] = true, nil }
@@ -5073,8 +6751,14 @@ end
 -- * Name [__string] The name of segment
 -- @return SegmentResponse structure as a key-value pair table
 function M.SegmentResponse(args)
-	assert(args, "You must provdide an argument table when creating SegmentResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating SegmentResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Dimensions"] = args["Dimensions"],
 		["LastModifiedDate"] = args["LastModifiedDate"],
 		["SegmentType"] = args["SegmentType"],
@@ -5085,8 +6769,13 @@ function M.SegmentResponse(args)
 		["Id"] = args["Id"],
 		["Name"] = args["Name"],
 	}
-	asserts.AssertSegmentResponse(t)
-	return t
+	asserts.AssertSegmentResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdateEmailChannelRequest = { ["ApplicationId"] = true, ["EmailChannelRequest"] = true, nil }
@@ -5113,13 +6802,25 @@ end
 -- Required key: EmailChannelRequest
 -- @return UpdateEmailChannelRequest structure as a key-value pair table
 function M.UpdateEmailChannelRequest(args)
-	assert(args, "You must provdide an argument table when creating UpdateEmailChannelRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateEmailChannelRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{application-id}"] = args["ApplicationId"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ApplicationId"] = args["ApplicationId"],
 		["EmailChannelRequest"] = args["EmailChannelRequest"],
 	}
-	asserts.AssertUpdateEmailChannelRequest(t)
-	return t
+	asserts.AssertUpdateEmailChannelRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.SMSChannelRequest = { ["SenderId"] = true, ["Enabled"] = true, nil }
@@ -5142,13 +6843,24 @@ end
 -- * Enabled [__boolean] If the channel is enabled for sending messages.
 -- @return SMSChannelRequest structure as a key-value pair table
 function M.SMSChannelRequest(args)
-	assert(args, "You must provdide an argument table when creating SMSChannelRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating SMSChannelRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["SenderId"] = args["SenderId"],
 		["Enabled"] = args["Enabled"],
 	}
-	asserts.AssertSMSChannelRequest(t)
-	return t
+	asserts.AssertSMSChannelRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.EmailChannelRequest = { ["RoleArn"] = true, ["FromAddress"] = true, ["Enabled"] = true, ["Identity"] = true, nil }
@@ -5175,15 +6887,26 @@ end
 -- * Identity [__string] The ARN of an identity verified with SES.
 -- @return EmailChannelRequest structure as a key-value pair table
 function M.EmailChannelRequest(args)
-	assert(args, "You must provdide an argument table when creating EmailChannelRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating EmailChannelRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["RoleArn"] = args["RoleArn"],
 		["FromAddress"] = args["FromAddress"],
 		["Enabled"] = args["Enabled"],
 		["Identity"] = args["Identity"],
 	}
-	asserts.AssertEmailChannelRequest(t)
-	return t
+	asserts.AssertEmailChannelRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.MessageConfiguration = { ["APNSMessage"] = true, ["EmailMessage"] = true, ["DefaultMessage"] = true, ["SMSMessage"] = true, ["GCMMessage"] = true, nil }
@@ -5212,16 +6935,27 @@ end
 -- * GCMMessage [Message] The message that the campaign delivers to GCM channels. Overrides the default message.
 -- @return MessageConfiguration structure as a key-value pair table
 function M.MessageConfiguration(args)
-	assert(args, "You must provdide an argument table when creating MessageConfiguration")
-	local t = { 
+	assert(args, "You must provide an argument table when creating MessageConfiguration")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["APNSMessage"] = args["APNSMessage"],
 		["EmailMessage"] = args["EmailMessage"],
 		["DefaultMessage"] = args["DefaultMessage"],
 		["SMSMessage"] = args["SMSMessage"],
 		["GCMMessage"] = args["GCMMessage"],
 	}
-	asserts.AssertMessageConfiguration(t)
-	return t
+	asserts.AssertMessageConfiguration(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdateSegmentResponse = { ["SegmentResponse"] = true, nil }
@@ -5244,12 +6978,23 @@ end
 -- Required key: SegmentResponse
 -- @return UpdateSegmentResponse structure as a key-value pair table
 function M.UpdateSegmentResponse(args)
-	assert(args, "You must provdide an argument table when creating UpdateSegmentResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateSegmentResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["SegmentResponse"] = args["SegmentResponse"],
 	}
-	asserts.AssertUpdateSegmentResponse(t)
-	return t
+	asserts.AssertUpdateSegmentResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.EndpointBatchRequest = { ["Item"] = true, nil }
@@ -5270,12 +7015,23 @@ end
 -- * Item [ListOfEndpointBatchItem] List of items to update. Maximum 100 items
 -- @return EndpointBatchRequest structure as a key-value pair table
 function M.EndpointBatchRequest(args)
-	assert(args, "You must provdide an argument table when creating EndpointBatchRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating EndpointBatchRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Item"] = args["Item"],
 	}
-	asserts.AssertEndpointBatchRequest(t)
-	return t
+	asserts.AssertEndpointBatchRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdateSmsChannelRequest = { ["ApplicationId"] = true, ["SMSChannelRequest"] = true, nil }
@@ -5302,13 +7058,25 @@ end
 -- Required key: SMSChannelRequest
 -- @return UpdateSmsChannelRequest structure as a key-value pair table
 function M.UpdateSmsChannelRequest(args)
-	assert(args, "You must provdide an argument table when creating UpdateSmsChannelRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateSmsChannelRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{application-id}"] = args["ApplicationId"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ApplicationId"] = args["ApplicationId"],
 		["SMSChannelRequest"] = args["SMSChannelRequest"],
 	}
-	asserts.AssertUpdateSmsChannelRequest(t)
-	return t
+	asserts.AssertUpdateSmsChannelRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 function asserts.AssertMessageType(str)
@@ -5776,8 +7544,11 @@ function M.CreateSegmentAsync(CreateSegmentRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".CreateSegment",
 	}
+	for header,value in pairs(CreateSegmentRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/v1/apps/{application-id}/segments", CreateSegmentRequest, headers, settings, cb)
 	else
@@ -5808,8 +7579,11 @@ function M.GetImportJobsAsync(GetImportJobsRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".GetImportJobs",
 	}
+	for header,value in pairs(GetImportJobsRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
 	if request_handler then
 		request_handler(settings.uri, "/v1/apps/{application-id}/jobs/import", GetImportJobsRequest, headers, settings, cb)
 	else
@@ -5840,8 +7614,11 @@ function M.GetSegmentVersionAsync(GetSegmentVersionRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".GetSegmentVersion",
 	}
+	for header,value in pairs(GetSegmentVersionRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
 	if request_handler then
 		request_handler(settings.uri, "/v1/apps/{application-id}/segments/{segment-id}/versions/{version}", GetSegmentVersionRequest, headers, settings, cb)
 	else
@@ -5872,8 +7649,11 @@ function M.DeleteApnsSandboxChannelAsync(DeleteApnsSandboxChannelRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DeleteApnsSandboxChannel",
 	}
+	for header,value in pairs(DeleteApnsSandboxChannelRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("DELETE")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE")
 	if request_handler then
 		request_handler(settings.uri, "/v1/apps/{application-id}/channels/apns_sandbox", DeleteApnsSandboxChannelRequest, headers, settings, cb)
 	else
@@ -5904,8 +7684,11 @@ function M.DeleteGcmChannelAsync(DeleteGcmChannelRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DeleteGcmChannel",
 	}
+	for header,value in pairs(DeleteGcmChannelRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("DELETE")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE")
 	if request_handler then
 		request_handler(settings.uri, "/v1/apps/{application-id}/channels/gcm", DeleteGcmChannelRequest, headers, settings, cb)
 	else
@@ -5936,8 +7719,11 @@ function M.DeleteCampaignAsync(DeleteCampaignRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DeleteCampaign",
 	}
+	for header,value in pairs(DeleteCampaignRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("DELETE")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE")
 	if request_handler then
 		request_handler(settings.uri, "/v1/apps/{application-id}/campaigns/{campaign-id}", DeleteCampaignRequest, headers, settings, cb)
 	else
@@ -5968,8 +7754,11 @@ function M.GetImportJobAsync(GetImportJobRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".GetImportJob",
 	}
+	for header,value in pairs(GetImportJobRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
 	if request_handler then
 		request_handler(settings.uri, "/v1/apps/{application-id}/jobs/import/{job-id}", GetImportJobRequest, headers, settings, cb)
 	else
@@ -6000,8 +7789,11 @@ function M.CreateCampaignAsync(CreateCampaignRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".CreateCampaign",
 	}
+	for header,value in pairs(CreateCampaignRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/v1/apps/{application-id}/campaigns", CreateCampaignRequest, headers, settings, cb)
 	else
@@ -6032,8 +7824,11 @@ function M.CreateImportJobAsync(CreateImportJobRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".CreateImportJob",
 	}
+	for header,value in pairs(CreateImportJobRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/v1/apps/{application-id}/jobs/import", CreateImportJobRequest, headers, settings, cb)
 	else
@@ -6064,8 +7859,11 @@ function M.UpdateSmsChannelAsync(UpdateSmsChannelRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".UpdateSmsChannel",
 	}
+	for header,value in pairs(UpdateSmsChannelRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("PUT")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT")
 	if request_handler then
 		request_handler(settings.uri, "/v1/apps/{application-id}/channels/sms", UpdateSmsChannelRequest, headers, settings, cb)
 	else
@@ -6096,8 +7894,11 @@ function M.GetCampaignVersionAsync(GetCampaignVersionRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".GetCampaignVersion",
 	}
+	for header,value in pairs(GetCampaignVersionRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
 	if request_handler then
 		request_handler(settings.uri, "/v1/apps/{application-id}/campaigns/{campaign-id}/versions/{version}", GetCampaignVersionRequest, headers, settings, cb)
 	else
@@ -6128,8 +7929,11 @@ function M.GetGcmChannelAsync(GetGcmChannelRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".GetGcmChannel",
 	}
+	for header,value in pairs(GetGcmChannelRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
 	if request_handler then
 		request_handler(settings.uri, "/v1/apps/{application-id}/channels/gcm", GetGcmChannelRequest, headers, settings, cb)
 	else
@@ -6160,8 +7964,11 @@ function M.UpdateApnsChannelAsync(UpdateApnsChannelRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".UpdateApnsChannel",
 	}
+	for header,value in pairs(UpdateApnsChannelRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("PUT")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT")
 	if request_handler then
 		request_handler(settings.uri, "/v1/apps/{application-id}/channels/apns", UpdateApnsChannelRequest, headers, settings, cb)
 	else
@@ -6192,8 +7999,11 @@ function M.UpdateGcmChannelAsync(UpdateGcmChannelRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".UpdateGcmChannel",
 	}
+	for header,value in pairs(UpdateGcmChannelRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("PUT")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT")
 	if request_handler then
 		request_handler(settings.uri, "/v1/apps/{application-id}/channels/gcm", UpdateGcmChannelRequest, headers, settings, cb)
 	else
@@ -6224,8 +8034,11 @@ function M.GetSegmentAsync(GetSegmentRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".GetSegment",
 	}
+	for header,value in pairs(GetSegmentRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
 	if request_handler then
 		request_handler(settings.uri, "/v1/apps/{application-id}/segments/{segment-id}", GetSegmentRequest, headers, settings, cb)
 	else
@@ -6256,8 +8069,11 @@ function M.GetCampaignAsync(GetCampaignRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".GetCampaign",
 	}
+	for header,value in pairs(GetCampaignRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
 	if request_handler then
 		request_handler(settings.uri, "/v1/apps/{application-id}/campaigns/{campaign-id}", GetCampaignRequest, headers, settings, cb)
 	else
@@ -6288,8 +8104,11 @@ function M.GetEmailChannelAsync(GetEmailChannelRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".GetEmailChannel",
 	}
+	for header,value in pairs(GetEmailChannelRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
 	if request_handler then
 		request_handler(settings.uri, "/v1/apps/{application-id}/channels/email", GetEmailChannelRequest, headers, settings, cb)
 	else
@@ -6320,8 +8139,11 @@ function M.UpdateCampaignAsync(UpdateCampaignRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".UpdateCampaign",
 	}
+	for header,value in pairs(UpdateCampaignRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("PUT")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT")
 	if request_handler then
 		request_handler(settings.uri, "/v1/apps/{application-id}/campaigns/{campaign-id}", UpdateCampaignRequest, headers, settings, cb)
 	else
@@ -6352,8 +8174,11 @@ function M.UpdateApplicationSettingsAsync(UpdateApplicationSettingsRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".UpdateApplicationSettings",
 	}
+	for header,value in pairs(UpdateApplicationSettingsRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("PUT")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT")
 	if request_handler then
 		request_handler(settings.uri, "/v1/apps/{application-id}/settings", UpdateApplicationSettingsRequest, headers, settings, cb)
 	else
@@ -6384,8 +8209,11 @@ function M.UpdateApnsSandboxChannelAsync(UpdateApnsSandboxChannelRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".UpdateApnsSandboxChannel",
 	}
+	for header,value in pairs(UpdateApnsSandboxChannelRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("PUT")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT")
 	if request_handler then
 		request_handler(settings.uri, "/v1/apps/{application-id}/channels/apns_sandbox", UpdateApnsSandboxChannelRequest, headers, settings, cb)
 	else
@@ -6416,8 +8244,11 @@ function M.GetSegmentsAsync(GetSegmentsRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".GetSegments",
 	}
+	for header,value in pairs(GetSegmentsRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
 	if request_handler then
 		request_handler(settings.uri, "/v1/apps/{application-id}/segments", GetSegmentsRequest, headers, settings, cb)
 	else
@@ -6448,8 +8279,11 @@ function M.PutEventStreamAsync(PutEventStreamRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".PutEventStream",
 	}
+	for header,value in pairs(PutEventStreamRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/v1/apps/{application-id}/eventstream", PutEventStreamRequest, headers, settings, cb)
 	else
@@ -6480,8 +8314,11 @@ function M.DeleteSegmentAsync(DeleteSegmentRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DeleteSegment",
 	}
+	for header,value in pairs(DeleteSegmentRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("DELETE")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE")
 	if request_handler then
 		request_handler(settings.uri, "/v1/apps/{application-id}/segments/{segment-id}", DeleteSegmentRequest, headers, settings, cb)
 	else
@@ -6512,8 +8349,11 @@ function M.GetCampaignVersionsAsync(GetCampaignVersionsRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".GetCampaignVersions",
 	}
+	for header,value in pairs(GetCampaignVersionsRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
 	if request_handler then
 		request_handler(settings.uri, "/v1/apps/{application-id}/campaigns/{campaign-id}/versions", GetCampaignVersionsRequest, headers, settings, cb)
 	else
@@ -6544,8 +8384,11 @@ function M.UpdateEndpointAsync(UpdateEndpointRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".UpdateEndpoint",
 	}
+	for header,value in pairs(UpdateEndpointRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("PUT")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT")
 	if request_handler then
 		request_handler(settings.uri, "/v1/apps/{application-id}/endpoints/{endpoint-id}", UpdateEndpointRequest, headers, settings, cb)
 	else
@@ -6576,8 +8419,11 @@ function M.GetApnsSandboxChannelAsync(GetApnsSandboxChannelRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".GetApnsSandboxChannel",
 	}
+	for header,value in pairs(GetApnsSandboxChannelRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
 	if request_handler then
 		request_handler(settings.uri, "/v1/apps/{application-id}/channels/apns_sandbox", GetApnsSandboxChannelRequest, headers, settings, cb)
 	else
@@ -6608,8 +8454,11 @@ function M.GetSegmentImportJobsAsync(GetSegmentImportJobsRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".GetSegmentImportJobs",
 	}
+	for header,value in pairs(GetSegmentImportJobsRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
 	if request_handler then
 		request_handler(settings.uri, "/v1/apps/{application-id}/segments/{segment-id}/jobs/import", GetSegmentImportJobsRequest, headers, settings, cb)
 	else
@@ -6640,8 +8489,11 @@ function M.GetCampaignsAsync(GetCampaignsRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".GetCampaigns",
 	}
+	for header,value in pairs(GetCampaignsRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
 	if request_handler then
 		request_handler(settings.uri, "/v1/apps/{application-id}/campaigns", GetCampaignsRequest, headers, settings, cb)
 	else
@@ -6672,8 +8524,11 @@ function M.DeleteEmailChannelAsync(DeleteEmailChannelRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DeleteEmailChannel",
 	}
+	for header,value in pairs(DeleteEmailChannelRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("DELETE")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE")
 	if request_handler then
 		request_handler(settings.uri, "/v1/apps/{application-id}/channels/email", DeleteEmailChannelRequest, headers, settings, cb)
 	else
@@ -6704,8 +8559,11 @@ function M.GetCampaignActivitiesAsync(GetCampaignActivitiesRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".GetCampaignActivities",
 	}
+	for header,value in pairs(GetCampaignActivitiesRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
 	if request_handler then
 		request_handler(settings.uri, "/v1/apps/{application-id}/campaigns/{campaign-id}/activities", GetCampaignActivitiesRequest, headers, settings, cb)
 	else
@@ -6736,8 +8594,11 @@ function M.GetApnsChannelAsync(GetApnsChannelRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".GetApnsChannel",
 	}
+	for header,value in pairs(GetApnsChannelRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
 	if request_handler then
 		request_handler(settings.uri, "/v1/apps/{application-id}/channels/apns", GetApnsChannelRequest, headers, settings, cb)
 	else
@@ -6768,8 +8629,11 @@ function M.GetEndpointAsync(GetEndpointRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".GetEndpoint",
 	}
+	for header,value in pairs(GetEndpointRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
 	if request_handler then
 		request_handler(settings.uri, "/v1/apps/{application-id}/endpoints/{endpoint-id}", GetEndpointRequest, headers, settings, cb)
 	else
@@ -6800,8 +8664,11 @@ function M.GetEventStreamAsync(GetEventStreamRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".GetEventStream",
 	}
+	for header,value in pairs(GetEventStreamRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
 	if request_handler then
 		request_handler(settings.uri, "/v1/apps/{application-id}/eventstream", GetEventStreamRequest, headers, settings, cb)
 	else
@@ -6832,8 +8699,11 @@ function M.DeleteSmsChannelAsync(DeleteSmsChannelRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DeleteSmsChannel",
 	}
+	for header,value in pairs(DeleteSmsChannelRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("DELETE")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE")
 	if request_handler then
 		request_handler(settings.uri, "/v1/apps/{application-id}/channels/sms", DeleteSmsChannelRequest, headers, settings, cb)
 	else
@@ -6864,8 +8734,11 @@ function M.SendMessagesAsync(SendMessagesRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".SendMessages",
 	}
+	for header,value in pairs(SendMessagesRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/v1/apps/{application-id}/messages", SendMessagesRequest, headers, settings, cb)
 	else
@@ -6896,8 +8769,11 @@ function M.DeleteApnsChannelAsync(DeleteApnsChannelRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DeleteApnsChannel",
 	}
+	for header,value in pairs(DeleteApnsChannelRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("DELETE")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE")
 	if request_handler then
 		request_handler(settings.uri, "/v1/apps/{application-id}/channels/apns", DeleteApnsChannelRequest, headers, settings, cb)
 	else
@@ -6928,8 +8804,11 @@ function M.DeleteEventStreamAsync(DeleteEventStreamRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DeleteEventStream",
 	}
+	for header,value in pairs(DeleteEventStreamRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("DELETE")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE")
 	if request_handler then
 		request_handler(settings.uri, "/v1/apps/{application-id}/eventstream", DeleteEventStreamRequest, headers, settings, cb)
 	else
@@ -6960,8 +8839,11 @@ function M.GetApplicationSettingsAsync(GetApplicationSettingsRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".GetApplicationSettings",
 	}
+	for header,value in pairs(GetApplicationSettingsRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
 	if request_handler then
 		request_handler(settings.uri, "/v1/apps/{application-id}/settings", GetApplicationSettingsRequest, headers, settings, cb)
 	else
@@ -6992,8 +8874,11 @@ function M.UpdateEmailChannelAsync(UpdateEmailChannelRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".UpdateEmailChannel",
 	}
+	for header,value in pairs(UpdateEmailChannelRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("PUT")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT")
 	if request_handler then
 		request_handler(settings.uri, "/v1/apps/{application-id}/channels/email", UpdateEmailChannelRequest, headers, settings, cb)
 	else
@@ -7024,8 +8909,11 @@ function M.GetSmsChannelAsync(GetSmsChannelRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".GetSmsChannel",
 	}
+	for header,value in pairs(GetSmsChannelRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
 	if request_handler then
 		request_handler(settings.uri, "/v1/apps/{application-id}/channels/sms", GetSmsChannelRequest, headers, settings, cb)
 	else
@@ -7056,8 +8944,11 @@ function M.UpdateSegmentAsync(UpdateSegmentRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".UpdateSegment",
 	}
+	for header,value in pairs(UpdateSegmentRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("PUT")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT")
 	if request_handler then
 		request_handler(settings.uri, "/v1/apps/{application-id}/segments/{segment-id}", UpdateSegmentRequest, headers, settings, cb)
 	else
@@ -7088,8 +8979,11 @@ function M.GetSegmentVersionsAsync(GetSegmentVersionsRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".GetSegmentVersions",
 	}
+	for header,value in pairs(GetSegmentVersionsRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
 	if request_handler then
 		request_handler(settings.uri, "/v1/apps/{application-id}/segments/{segment-id}/versions", GetSegmentVersionsRequest, headers, settings, cb)
 	else
@@ -7120,8 +9014,11 @@ function M.UpdateEndpointsBatchAsync(UpdateEndpointsBatchRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".UpdateEndpointsBatch",
 	}
+	for header,value in pairs(UpdateEndpointsBatchRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("PUT")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT")
 	if request_handler then
 		request_handler(settings.uri, "/v1/apps/{application-id}/endpoints", UpdateEndpointsBatchRequest, headers, settings, cb)
 	else

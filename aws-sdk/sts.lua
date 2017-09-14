@@ -39,12 +39,23 @@ end
 -- * message [expiredIdentityTokenMessage] 
 -- @return ExpiredTokenException structure as a key-value pair table
 function M.ExpiredTokenException(args)
-	assert(args, "You must provdide an argument table when creating ExpiredTokenException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ExpiredTokenException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertExpiredTokenException(t)
-	return t
+	asserts.AssertExpiredTokenException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AssumeRoleWithSAMLRequest = { ["Policy"] = true, ["DurationSeconds"] = true, ["RoleArn"] = true, ["PrincipalArn"] = true, ["SAMLAssertion"] = true, nil }
@@ -79,16 +90,27 @@ end
 -- Required key: SAMLAssertion
 -- @return AssumeRoleWithSAMLRequest structure as a key-value pair table
 function M.AssumeRoleWithSAMLRequest(args)
-	assert(args, "You must provdide an argument table when creating AssumeRoleWithSAMLRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AssumeRoleWithSAMLRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Policy"] = args["Policy"],
 		["DurationSeconds"] = args["DurationSeconds"],
 		["RoleArn"] = args["RoleArn"],
 		["PrincipalArn"] = args["PrincipalArn"],
 		["SAMLAssertion"] = args["SAMLAssertion"],
 	}
-	asserts.AssertAssumeRoleWithSAMLRequest(t)
-	return t
+	asserts.AssertAssumeRoleWithSAMLRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AssumeRoleWithWebIdentityResponse = { ["PackedPolicySize"] = true, ["AssumedRoleUser"] = true, ["Audience"] = true, ["Provider"] = true, ["SubjectFromWebIdentityToken"] = true, ["Credentials"] = true, nil }
@@ -119,8 +141,14 @@ end
 -- * Credentials [Credentials] <p>The temporary security credentials, which include an access key ID, a secret access key, and a security token.</p> <p> <b>Note:</b> The size of the security token that STS APIs return is not fixed. We strongly recommend that you make no assumptions about the maximum size. As of this writing, the typical size is less than 4096 bytes, but that can vary. Also, future updates to AWS might require larger sizes.</p>
 -- @return AssumeRoleWithWebIdentityResponse structure as a key-value pair table
 function M.AssumeRoleWithWebIdentityResponse(args)
-	assert(args, "You must provdide an argument table when creating AssumeRoleWithWebIdentityResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AssumeRoleWithWebIdentityResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["PackedPolicySize"] = args["PackedPolicySize"],
 		["AssumedRoleUser"] = args["AssumedRoleUser"],
 		["Audience"] = args["Audience"],
@@ -128,8 +156,13 @@ function M.AssumeRoleWithWebIdentityResponse(args)
 		["SubjectFromWebIdentityToken"] = args["SubjectFromWebIdentityToken"],
 		["Credentials"] = args["Credentials"],
 	}
-	asserts.AssertAssumeRoleWithWebIdentityResponse(t)
-	return t
+	asserts.AssertAssumeRoleWithWebIdentityResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.PackedPolicyTooLargeException = { ["message"] = true, nil }
@@ -150,12 +183,23 @@ end
 -- * message [packedPolicyTooLargeMessage] 
 -- @return PackedPolicyTooLargeException structure as a key-value pair table
 function M.PackedPolicyTooLargeException(args)
-	assert(args, "You must provdide an argument table when creating PackedPolicyTooLargeException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating PackedPolicyTooLargeException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertPackedPolicyTooLargeException(t)
-	return t
+	asserts.AssertPackedPolicyTooLargeException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AssumedRoleUser = { ["AssumedRoleId"] = true, ["Arn"] = true, nil }
@@ -182,13 +226,24 @@ end
 -- Required key: Arn
 -- @return AssumedRoleUser structure as a key-value pair table
 function M.AssumedRoleUser(args)
-	assert(args, "You must provdide an argument table when creating AssumedRoleUser")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AssumedRoleUser")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["AssumedRoleId"] = args["AssumedRoleId"],
 		["Arn"] = args["Arn"],
 	}
-	asserts.AssertAssumedRoleUser(t)
-	return t
+	asserts.AssertAssumedRoleUser(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.FederatedUser = { ["FederatedUserId"] = true, ["Arn"] = true, nil }
@@ -215,13 +270,24 @@ end
 -- Required key: Arn
 -- @return FederatedUser structure as a key-value pair table
 function M.FederatedUser(args)
-	assert(args, "You must provdide an argument table when creating FederatedUser")
-	local t = { 
+	assert(args, "You must provide an argument table when creating FederatedUser")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["FederatedUserId"] = args["FederatedUserId"],
 		["Arn"] = args["Arn"],
 	}
-	asserts.AssertFederatedUser(t)
-	return t
+	asserts.AssertFederatedUser(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.MalformedPolicyDocumentException = { ["message"] = true, nil }
@@ -242,12 +308,23 @@ end
 -- * message [malformedPolicyDocumentMessage] 
 -- @return MalformedPolicyDocumentException structure as a key-value pair table
 function M.MalformedPolicyDocumentException(args)
-	assert(args, "You must provdide an argument table when creating MalformedPolicyDocumentException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating MalformedPolicyDocumentException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertMalformedPolicyDocumentException(t)
-	return t
+	asserts.AssertMalformedPolicyDocumentException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidIdentityTokenException = { ["message"] = true, nil }
@@ -268,12 +345,23 @@ end
 -- * message [invalidIdentityTokenMessage] 
 -- @return InvalidIdentityTokenException structure as a key-value pair table
 function M.InvalidIdentityTokenException(args)
-	assert(args, "You must provdide an argument table when creating InvalidIdentityTokenException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidIdentityTokenException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertInvalidIdentityTokenException(t)
-	return t
+	asserts.AssertInvalidIdentityTokenException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetFederationTokenResponse = { ["FederatedUser"] = true, ["Credentials"] = true, ["PackedPolicySize"] = true, nil }
@@ -298,14 +386,25 @@ end
 -- * PackedPolicySize [nonNegativeIntegerType] <p>A percentage value indicating the size of the policy in packed form. The service rejects policies for which the packed size is greater than 100 percent of the allowed value.</p>
 -- @return GetFederationTokenResponse structure as a key-value pair table
 function M.GetFederationTokenResponse(args)
-	assert(args, "You must provdide an argument table when creating GetFederationTokenResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetFederationTokenResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["FederatedUser"] = args["FederatedUser"],
 		["Credentials"] = args["Credentials"],
 		["PackedPolicySize"] = args["PackedPolicySize"],
 	}
-	asserts.AssertGetFederationTokenResponse(t)
-	return t
+	asserts.AssertGetFederationTokenResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.IDPRejectedClaimException = { ["message"] = true, nil }
@@ -326,12 +425,23 @@ end
 -- * message [idpRejectedClaimMessage] 
 -- @return IDPRejectedClaimException structure as a key-value pair table
 function M.IDPRejectedClaimException(args)
-	assert(args, "You must provdide an argument table when creating IDPRejectedClaimException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating IDPRejectedClaimException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertIDPRejectedClaimException(t)
-	return t
+	asserts.AssertIDPRejectedClaimException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.IDPCommunicationErrorException = { ["message"] = true, nil }
@@ -352,12 +462,23 @@ end
 -- * message [idpCommunicationErrorMessage] 
 -- @return IDPCommunicationErrorException structure as a key-value pair table
 function M.IDPCommunicationErrorException(args)
-	assert(args, "You must provdide an argument table when creating IDPCommunicationErrorException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating IDPCommunicationErrorException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertIDPCommunicationErrorException(t)
-	return t
+	asserts.AssertIDPCommunicationErrorException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetSessionTokenRequest = { ["DurationSeconds"] = true, ["SerialNumber"] = true, ["TokenCode"] = true, nil }
@@ -382,14 +503,25 @@ end
 -- * TokenCode [tokenCodeType] <p>The value provided by the MFA device, if MFA is required. If any policy requires the IAM user to submit an MFA code, specify this value. If MFA authentication is required, and the user does not provide a code when requesting a set of temporary security credentials, the user will receive an "access denied" response when requesting resources that require MFA authentication.</p> <p>The format for this parameter, as described by its regex pattern, is a sequence of six numeric digits.</p>
 -- @return GetSessionTokenRequest structure as a key-value pair table
 function M.GetSessionTokenRequest(args)
-	assert(args, "You must provdide an argument table when creating GetSessionTokenRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetSessionTokenRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DurationSeconds"] = args["DurationSeconds"],
 		["SerialNumber"] = args["SerialNumber"],
 		["TokenCode"] = args["TokenCode"],
 	}
-	asserts.AssertGetSessionTokenRequest(t)
-	return t
+	asserts.AssertGetSessionTokenRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Credentials = { ["SecretAccessKey"] = true, ["SessionToken"] = true, ["Expiration"] = true, ["AccessKeyId"] = true, nil }
@@ -424,15 +556,26 @@ end
 -- Required key: Expiration
 -- @return Credentials structure as a key-value pair table
 function M.Credentials(args)
-	assert(args, "You must provdide an argument table when creating Credentials")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Credentials")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["SecretAccessKey"] = args["SecretAccessKey"],
 		["SessionToken"] = args["SessionToken"],
 		["Expiration"] = args["Expiration"],
 		["AccessKeyId"] = args["AccessKeyId"],
 	}
-	asserts.AssertCredentials(t)
-	return t
+	asserts.AssertCredentials(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AssumeRoleRequest = { ["RoleSessionName"] = true, ["RoleArn"] = true, ["SerialNumber"] = true, ["DurationSeconds"] = true, ["ExternalId"] = true, ["TokenCode"] = true, ["Policy"] = true, nil }
@@ -469,8 +612,14 @@ end
 -- Required key: RoleSessionName
 -- @return AssumeRoleRequest structure as a key-value pair table
 function M.AssumeRoleRequest(args)
-	assert(args, "You must provdide an argument table when creating AssumeRoleRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AssumeRoleRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["RoleSessionName"] = args["RoleSessionName"],
 		["RoleArn"] = args["RoleArn"],
 		["SerialNumber"] = args["SerialNumber"],
@@ -479,8 +628,13 @@ function M.AssumeRoleRequest(args)
 		["TokenCode"] = args["TokenCode"],
 		["Policy"] = args["Policy"],
 	}
-	asserts.AssertAssumeRoleRequest(t)
-	return t
+	asserts.AssertAssumeRoleRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DecodeAuthorizationMessageRequest = { ["EncodedMessage"] = true, nil }
@@ -503,12 +657,23 @@ end
 -- Required key: EncodedMessage
 -- @return DecodeAuthorizationMessageRequest structure as a key-value pair table
 function M.DecodeAuthorizationMessageRequest(args)
-	assert(args, "You must provdide an argument table when creating DecodeAuthorizationMessageRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DecodeAuthorizationMessageRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["EncodedMessage"] = args["EncodedMessage"],
 	}
-	asserts.AssertDecodeAuthorizationMessageRequest(t)
-	return t
+	asserts.AssertDecodeAuthorizationMessageRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetSessionTokenResponse = { ["Credentials"] = true, nil }
@@ -529,12 +694,23 @@ end
 -- * Credentials [Credentials] <p>The temporary security credentials, which include an access key ID, a secret access key, and a security (or session) token.</p> <p> <b>Note:</b> The size of the security token that STS APIs return is not fixed. We strongly recommend that you make no assumptions about the maximum size. As of this writing, the typical size is less than 4096 bytes, but that can vary. Also, future updates to AWS might require larger sizes.</p>
 -- @return GetSessionTokenResponse structure as a key-value pair table
 function M.GetSessionTokenResponse(args)
-	assert(args, "You must provdide an argument table when creating GetSessionTokenResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetSessionTokenResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Credentials"] = args["Credentials"],
 	}
-	asserts.AssertGetSessionTokenResponse(t)
-	return t
+	asserts.AssertGetSessionTokenResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.RegionDisabledException = { ["message"] = true, nil }
@@ -555,12 +731,23 @@ end
 -- * message [regionDisabledMessage] 
 -- @return RegionDisabledException structure as a key-value pair table
 function M.RegionDisabledException(args)
-	assert(args, "You must provdide an argument table when creating RegionDisabledException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating RegionDisabledException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertRegionDisabledException(t)
-	return t
+	asserts.AssertRegionDisabledException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DecodeAuthorizationMessageResponse = { ["DecodedMessage"] = true, nil }
@@ -581,12 +768,23 @@ end
 -- * DecodedMessage [decodedMessageType] <p>An XML document that contains the decoded message.</p>
 -- @return DecodeAuthorizationMessageResponse structure as a key-value pair table
 function M.DecodeAuthorizationMessageResponse(args)
-	assert(args, "You must provdide an argument table when creating DecodeAuthorizationMessageResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DecodeAuthorizationMessageResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DecodedMessage"] = args["DecodedMessage"],
 	}
-	asserts.AssertDecodeAuthorizationMessageResponse(t)
-	return t
+	asserts.AssertDecodeAuthorizationMessageResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AssumeRoleWithSAMLResponse = { ["PackedPolicySize"] = true, ["SubjectType"] = true, ["AssumedRoleUser"] = true, ["Audience"] = true, ["NameQualifier"] = true, ["Credentials"] = true, ["Issuer"] = true, ["Subject"] = true, nil }
@@ -621,8 +819,14 @@ end
 -- * Subject [Subject] <p>The value of the <code>NameID</code> element in the <code>Subject</code> element of the SAML assertion.</p>
 -- @return AssumeRoleWithSAMLResponse structure as a key-value pair table
 function M.AssumeRoleWithSAMLResponse(args)
-	assert(args, "You must provdide an argument table when creating AssumeRoleWithSAMLResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AssumeRoleWithSAMLResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["PackedPolicySize"] = args["PackedPolicySize"],
 		["SubjectType"] = args["SubjectType"],
 		["AssumedRoleUser"] = args["AssumedRoleUser"],
@@ -632,8 +836,13 @@ function M.AssumeRoleWithSAMLResponse(args)
 		["Issuer"] = args["Issuer"],
 		["Subject"] = args["Subject"],
 	}
-	asserts.AssertAssumeRoleWithSAMLResponse(t)
-	return t
+	asserts.AssertAssumeRoleWithSAMLResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetCallerIdentityResponse = { ["Account"] = true, ["UserId"] = true, ["Arn"] = true, nil }
@@ -658,14 +867,25 @@ end
 -- * Arn [arnType] <p>The AWS ARN associated with the calling entity.</p>
 -- @return GetCallerIdentityResponse structure as a key-value pair table
 function M.GetCallerIdentityResponse(args)
-	assert(args, "You must provdide an argument table when creating GetCallerIdentityResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetCallerIdentityResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Account"] = args["Account"],
 		["UserId"] = args["UserId"],
 		["Arn"] = args["Arn"],
 	}
-	asserts.AssertGetCallerIdentityResponse(t)
-	return t
+	asserts.AssertGetCallerIdentityResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AssumeRoleWithWebIdentityRequest = { ["RoleSessionName"] = true, ["RoleArn"] = true, ["WebIdentityToken"] = true, ["DurationSeconds"] = true, ["ProviderId"] = true, ["Policy"] = true, nil }
@@ -702,8 +922,14 @@ end
 -- Required key: WebIdentityToken
 -- @return AssumeRoleWithWebIdentityRequest structure as a key-value pair table
 function M.AssumeRoleWithWebIdentityRequest(args)
-	assert(args, "You must provdide an argument table when creating AssumeRoleWithWebIdentityRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AssumeRoleWithWebIdentityRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["RoleSessionName"] = args["RoleSessionName"],
 		["RoleArn"] = args["RoleArn"],
 		["WebIdentityToken"] = args["WebIdentityToken"],
@@ -711,8 +937,13 @@ function M.AssumeRoleWithWebIdentityRequest(args)
 		["ProviderId"] = args["ProviderId"],
 		["Policy"] = args["Policy"],
 	}
-	asserts.AssertAssumeRoleWithWebIdentityRequest(t)
-	return t
+	asserts.AssertAssumeRoleWithWebIdentityRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidAuthorizationMessageException = { ["message"] = true, nil }
@@ -733,12 +964,23 @@ end
 -- * message [invalidAuthorizationMessage] 
 -- @return InvalidAuthorizationMessageException structure as a key-value pair table
 function M.InvalidAuthorizationMessageException(args)
-	assert(args, "You must provdide an argument table when creating InvalidAuthorizationMessageException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidAuthorizationMessageException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertInvalidAuthorizationMessageException(t)
-	return t
+	asserts.AssertInvalidAuthorizationMessageException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AssumeRoleResponse = { ["AssumedRoleUser"] = true, ["Credentials"] = true, ["PackedPolicySize"] = true, nil }
@@ -763,14 +1005,25 @@ end
 -- * PackedPolicySize [nonNegativeIntegerType] <p>A percentage value that indicates the size of the policy in packed form. The service rejects any policy with a packed size greater than 100 percent, which means the policy exceeded the allowed space.</p>
 -- @return AssumeRoleResponse structure as a key-value pair table
 function M.AssumeRoleResponse(args)
-	assert(args, "You must provdide an argument table when creating AssumeRoleResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AssumeRoleResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["AssumedRoleUser"] = args["AssumedRoleUser"],
 		["Credentials"] = args["Credentials"],
 		["PackedPolicySize"] = args["PackedPolicySize"],
 	}
-	asserts.AssertAssumeRoleResponse(t)
-	return t
+	asserts.AssertAssumeRoleResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetFederationTokenRequest = { ["Policy"] = true, ["DurationSeconds"] = true, ["Name"] = true, nil }
@@ -797,14 +1050,25 @@ end
 -- Required key: Name
 -- @return GetFederationTokenRequest structure as a key-value pair table
 function M.GetFederationTokenRequest(args)
-	assert(args, "You must provdide an argument table when creating GetFederationTokenRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetFederationTokenRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Policy"] = args["Policy"],
 		["DurationSeconds"] = args["DurationSeconds"],
 		["Name"] = args["Name"],
 	}
-	asserts.AssertGetFederationTokenRequest(t)
-	return t
+	asserts.AssertGetFederationTokenRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetCallerIdentityRequest = { nil }
@@ -823,11 +1087,22 @@ end
 -- Valid keys:
 -- @return GetCallerIdentityRequest structure as a key-value pair table
 function M.GetCallerIdentityRequest(args)
-	assert(args, "You must provdide an argument table when creating GetCallerIdentityRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetCallerIdentityRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertGetCallerIdentityRequest(t)
-	return t
+	asserts.AssertGetCallerIdentityRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 function asserts.AssertarnType(str)
@@ -1322,8 +1597,11 @@ function M.GetFederationTokenAsync(GetFederationTokenRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".GetFederationToken",
 	}
+	for header,value in pairs(GetFederationTokenRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", GetFederationTokenRequest, headers, settings, cb)
 	else
@@ -1354,8 +1632,11 @@ function M.AssumeRoleAsync(AssumeRoleRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".AssumeRole",
 	}
+	for header,value in pairs(AssumeRoleRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", AssumeRoleRequest, headers, settings, cb)
 	else
@@ -1386,8 +1667,11 @@ function M.DecodeAuthorizationMessageAsync(DecodeAuthorizationMessageRequest, cb
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DecodeAuthorizationMessage",
 	}
+	for header,value in pairs(DecodeAuthorizationMessageRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DecodeAuthorizationMessageRequest, headers, settings, cb)
 	else
@@ -1418,8 +1702,11 @@ function M.AssumeRoleWithWebIdentityAsync(AssumeRoleWithWebIdentityRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".AssumeRoleWithWebIdentity",
 	}
+	for header,value in pairs(AssumeRoleWithWebIdentityRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", AssumeRoleWithWebIdentityRequest, headers, settings, cb)
 	else
@@ -1450,8 +1737,11 @@ function M.GetSessionTokenAsync(GetSessionTokenRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".GetSessionToken",
 	}
+	for header,value in pairs(GetSessionTokenRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", GetSessionTokenRequest, headers, settings, cb)
 	else
@@ -1482,8 +1772,11 @@ function M.GetCallerIdentityAsync(GetCallerIdentityRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".GetCallerIdentity",
 	}
+	for header,value in pairs(GetCallerIdentityRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", GetCallerIdentityRequest, headers, settings, cb)
 	else
@@ -1514,8 +1807,11 @@ function M.AssumeRoleWithSAMLAsync(AssumeRoleWithSAMLRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".AssumeRoleWithSAML",
 	}
+	for header,value in pairs(AssumeRoleWithSAMLRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", AssumeRoleWithSAMLRequest, headers, settings, cb)
 	else

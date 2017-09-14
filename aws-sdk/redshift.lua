@@ -39,12 +39,23 @@ end
 -- * ClusterSecurityGroup [ClusterSecurityGroup] 
 -- @return RevokeClusterSecurityGroupIngressResult structure as a key-value pair table
 function M.RevokeClusterSecurityGroupIngressResult(args)
-	assert(args, "You must provdide an argument table when creating RevokeClusterSecurityGroupIngressResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating RevokeClusterSecurityGroupIngressResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ClusterSecurityGroup"] = args["ClusterSecurityGroup"],
 	}
-	asserts.AssertRevokeClusterSecurityGroupIngressResult(t)
-	return t
+	asserts.AssertRevokeClusterSecurityGroupIngressResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ClusterNode = { ["NodeRole"] = true, ["PrivateIPAddress"] = true, ["PublicIPAddress"] = true, nil }
@@ -69,14 +80,25 @@ end
 -- * PublicIPAddress [String] <p>The public IP address of a node within a cluster.</p>
 -- @return ClusterNode structure as a key-value pair table
 function M.ClusterNode(args)
-	assert(args, "You must provdide an argument table when creating ClusterNode")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ClusterNode")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NodeRole"] = args["NodeRole"],
 		["PrivateIPAddress"] = args["PrivateIPAddress"],
 		["PublicIPAddress"] = args["PublicIPAddress"],
 	}
-	asserts.AssertClusterNode(t)
-	return t
+	asserts.AssertClusterNode(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteEventSubscriptionMessage = { ["SubscriptionName"] = true, nil }
@@ -99,12 +121,23 @@ end
 -- Required key: SubscriptionName
 -- @return DeleteEventSubscriptionMessage structure as a key-value pair table
 function M.DeleteEventSubscriptionMessage(args)
-	assert(args, "You must provdide an argument table when creating DeleteEventSubscriptionMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteEventSubscriptionMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["SubscriptionName"] = args["SubscriptionName"],
 	}
-	asserts.AssertDeleteEventSubscriptionMessage(t)
-	return t
+	asserts.AssertDeleteEventSubscriptionMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ClusterSubnetGroup = { ["Subnets"] = true, ["VpcId"] = true, ["Description"] = true, ["Tags"] = true, ["SubnetGroupStatus"] = true, ["ClusterSubnetGroupName"] = true, nil }
@@ -135,8 +168,14 @@ end
 -- * ClusterSubnetGroupName [String] <p>The name of the cluster subnet group.</p>
 -- @return ClusterSubnetGroup structure as a key-value pair table
 function M.ClusterSubnetGroup(args)
-	assert(args, "You must provdide an argument table when creating ClusterSubnetGroup")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ClusterSubnetGroup")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Subnets"] = args["Subnets"],
 		["VpcId"] = args["VpcId"],
 		["Description"] = args["Description"],
@@ -144,8 +183,13 @@ function M.ClusterSubnetGroup(args)
 		["SubnetGroupStatus"] = args["SubnetGroupStatus"],
 		["ClusterSubnetGroupName"] = args["ClusterSubnetGroupName"],
 	}
-	asserts.AssertClusterSubnetGroup(t)
-	return t
+	asserts.AssertClusterSubnetGroup(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ClusterNotFoundFault = { nil }
@@ -164,11 +208,22 @@ end
 -- Valid keys:
 -- @return ClusterNotFoundFault structure as a key-value pair table
 function M.ClusterNotFoundFault(args)
-	assert(args, "You must provdide an argument table when creating ClusterNotFoundFault")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ClusterNotFoundFault")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertClusterNotFoundFault(t)
-	return t
+	asserts.AssertClusterNotFoundFault(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidClusterStateFault = { nil }
@@ -187,11 +242,22 @@ end
 -- Valid keys:
 -- @return InvalidClusterStateFault structure as a key-value pair table
 function M.InvalidClusterStateFault(args)
-	assert(args, "You must provdide an argument table when creating InvalidClusterStateFault")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidClusterStateFault")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertInvalidClusterStateFault(t)
-	return t
+	asserts.AssertInvalidClusterStateFault(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ClusterSnapshotNotFoundFault = { nil }
@@ -210,11 +276,22 @@ end
 -- Valid keys:
 -- @return ClusterSnapshotNotFoundFault structure as a key-value pair table
 function M.ClusterSnapshotNotFoundFault(args)
-	assert(args, "You must provdide an argument table when creating ClusterSnapshotNotFoundFault")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ClusterSnapshotNotFoundFault")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertClusterSnapshotNotFoundFault(t)
-	return t
+	asserts.AssertClusterSnapshotNotFoundFault(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.SNSNoAuthorizationFault = { nil }
@@ -233,11 +310,22 @@ end
 -- Valid keys:
 -- @return SNSNoAuthorizationFault structure as a key-value pair table
 function M.SNSNoAuthorizationFault(args)
-	assert(args, "You must provdide an argument table when creating SNSNoAuthorizationFault")
-	local t = { 
+	assert(args, "You must provide an argument table when creating SNSNoAuthorizationFault")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertSNSNoAuthorizationFault(t)
-	return t
+	asserts.AssertSNSNoAuthorizationFault(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.EventCategoriesMap = { ["SourceType"] = true, ["Events"] = true, nil }
@@ -260,13 +348,24 @@ end
 -- * Events [EventInfoMapList] <p>The events in the event category.</p>
 -- @return EventCategoriesMap structure as a key-value pair table
 function M.EventCategoriesMap(args)
-	assert(args, "You must provdide an argument table when creating EventCategoriesMap")
-	local t = { 
+	assert(args, "You must provide an argument table when creating EventCategoriesMap")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["SourceType"] = args["SourceType"],
 		["Events"] = args["Events"],
 	}
-	asserts.AssertEventCategoriesMap(t)
-	return t
+	asserts.AssertEventCategoriesMap(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateHsmConfigurationResult = { ["HsmConfiguration"] = true, nil }
@@ -287,12 +386,23 @@ end
 -- * HsmConfiguration [HsmConfiguration] 
 -- @return CreateHsmConfigurationResult structure as a key-value pair table
 function M.CreateHsmConfigurationResult(args)
-	assert(args, "You must provdide an argument table when creating CreateHsmConfigurationResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateHsmConfigurationResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["HsmConfiguration"] = args["HsmConfiguration"],
 	}
-	asserts.AssertCreateHsmConfigurationResult(t)
-	return t
+	asserts.AssertCreateHsmConfigurationResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.PurchaseReservedNodeOfferingResult = { ["ReservedNode"] = true, nil }
@@ -313,12 +423,23 @@ end
 -- * ReservedNode [ReservedNode] 
 -- @return PurchaseReservedNodeOfferingResult structure as a key-value pair table
 function M.PurchaseReservedNodeOfferingResult(args)
-	assert(args, "You must provdide an argument table when creating PurchaseReservedNodeOfferingResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating PurchaseReservedNodeOfferingResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ReservedNode"] = args["ReservedNode"],
 	}
-	asserts.AssertPurchaseReservedNodeOfferingResult(t)
-	return t
+	asserts.AssertPurchaseReservedNodeOfferingResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteHsmConfigurationMessage = { ["HsmConfigurationIdentifier"] = true, nil }
@@ -341,12 +462,23 @@ end
 -- Required key: HsmConfigurationIdentifier
 -- @return DeleteHsmConfigurationMessage structure as a key-value pair table
 function M.DeleteHsmConfigurationMessage(args)
-	assert(args, "You must provdide an argument table when creating DeleteHsmConfigurationMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteHsmConfigurationMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["HsmConfigurationIdentifier"] = args["HsmConfigurationIdentifier"],
 	}
-	asserts.AssertDeleteHsmConfigurationMessage(t)
-	return t
+	asserts.AssertDeleteHsmConfigurationMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ModifyEventSubscriptionMessage = { ["EventCategories"] = true, ["Severity"] = true, ["Enabled"] = true, ["SnsTopicArn"] = true, ["SubscriptionName"] = true, ["SourceIds"] = true, ["SourceType"] = true, nil }
@@ -381,8 +513,14 @@ end
 -- Required key: SubscriptionName
 -- @return ModifyEventSubscriptionMessage structure as a key-value pair table
 function M.ModifyEventSubscriptionMessage(args)
-	assert(args, "You must provdide an argument table when creating ModifyEventSubscriptionMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ModifyEventSubscriptionMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["EventCategories"] = args["EventCategories"],
 		["Severity"] = args["Severity"],
 		["Enabled"] = args["Enabled"],
@@ -391,8 +529,13 @@ function M.ModifyEventSubscriptionMessage(args)
 		["SourceIds"] = args["SourceIds"],
 		["SourceType"] = args["SourceType"],
 	}
-	asserts.AssertModifyEventSubscriptionMessage(t)
-	return t
+	asserts.AssertModifyEventSubscriptionMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteClusterParameterGroupMessage = { ["ParameterGroupName"] = true, nil }
@@ -415,12 +558,23 @@ end
 -- Required key: ParameterGroupName
 -- @return DeleteClusterParameterGroupMessage structure as a key-value pair table
 function M.DeleteClusterParameterGroupMessage(args)
-	assert(args, "You must provdide an argument table when creating DeleteClusterParameterGroupMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteClusterParameterGroupMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ParameterGroupName"] = args["ParameterGroupName"],
 	}
-	asserts.AssertDeleteClusterParameterGroupMessage(t)
-	return t
+	asserts.AssertDeleteClusterParameterGroupMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.HsmClientCertificateMessage = { ["Marker"] = true, ["HsmClientCertificates"] = true, nil }
@@ -443,13 +597,24 @@ end
 -- * HsmClientCertificates [HsmClientCertificateList] <p>A list of the identifiers for one or more HSM client certificates used by Amazon Redshift clusters to store and retrieve database encryption keys in an HSM.</p>
 -- @return HsmClientCertificateMessage structure as a key-value pair table
 function M.HsmClientCertificateMessage(args)
-	assert(args, "You must provdide an argument table when creating HsmClientCertificateMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating HsmClientCertificateMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Marker"] = args["Marker"],
 		["HsmClientCertificates"] = args["HsmClientCertificates"],
 	}
-	asserts.AssertHsmClientCertificateMessage(t)
-	return t
+	asserts.AssertHsmClientCertificateMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeEventCategoriesMessage = { ["SourceType"] = true, nil }
@@ -470,12 +635,23 @@ end
 -- * SourceType [String] <p>The source type, such as cluster or parameter group, to which the described event categories apply.</p> <p>Valid values: cluster, cluster-snapshot, cluster-parameter-group, and cluster-security-group.</p>
 -- @return DescribeEventCategoriesMessage structure as a key-value pair table
 function M.DescribeEventCategoriesMessage(args)
-	assert(args, "You must provdide an argument table when creating DescribeEventCategoriesMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeEventCategoriesMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["SourceType"] = args["SourceType"],
 	}
-	asserts.AssertDescribeEventCategoriesMessage(t)
-	return t
+	asserts.AssertDescribeEventCategoriesMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.SubscriptionEventIdNotFoundFault = { nil }
@@ -494,11 +670,22 @@ end
 -- Valid keys:
 -- @return SubscriptionEventIdNotFoundFault structure as a key-value pair table
 function M.SubscriptionEventIdNotFoundFault(args)
-	assert(args, "You must provdide an argument table when creating SubscriptionEventIdNotFoundFault")
-	local t = { 
+	assert(args, "You must provide an argument table when creating SubscriptionEventIdNotFoundFault")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertSubscriptionEventIdNotFoundFault(t)
-	return t
+	asserts.AssertSubscriptionEventIdNotFoundFault(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateClusterSecurityGroupResult = { ["ClusterSecurityGroup"] = true, nil }
@@ -519,12 +706,23 @@ end
 -- * ClusterSecurityGroup [ClusterSecurityGroup] 
 -- @return CreateClusterSecurityGroupResult structure as a key-value pair table
 function M.CreateClusterSecurityGroupResult(args)
-	assert(args, "You must provdide an argument table when creating CreateClusterSecurityGroupResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateClusterSecurityGroupResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ClusterSecurityGroup"] = args["ClusterSecurityGroup"],
 	}
-	asserts.AssertCreateClusterSecurityGroupResult(t)
-	return t
+	asserts.AssertCreateClusterSecurityGroupResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.SnapshotCopyAlreadyDisabledFault = { nil }
@@ -543,11 +741,22 @@ end
 -- Valid keys:
 -- @return SnapshotCopyAlreadyDisabledFault structure as a key-value pair table
 function M.SnapshotCopyAlreadyDisabledFault(args)
-	assert(args, "You must provdide an argument table when creating SnapshotCopyAlreadyDisabledFault")
-	local t = { 
+	assert(args, "You must provide an argument table when creating SnapshotCopyAlreadyDisabledFault")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertSnapshotCopyAlreadyDisabledFault(t)
-	return t
+	asserts.AssertSnapshotCopyAlreadyDisabledFault(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidElasticIpFault = { nil }
@@ -566,11 +775,22 @@ end
 -- Valid keys:
 -- @return InvalidElasticIpFault structure as a key-value pair table
 function M.InvalidElasticIpFault(args)
-	assert(args, "You must provdide an argument table when creating InvalidElasticIpFault")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidElasticIpFault")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertInvalidElasticIpFault(t)
-	return t
+	asserts.AssertInvalidElasticIpFault(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ClusterParameterStatus = { ["ParameterName"] = true, ["ParameterApplyStatus"] = true, ["ParameterApplyErrorDescription"] = true, nil }
@@ -595,14 +815,25 @@ end
 -- * ParameterApplyErrorDescription [String] <p>The error that prevented the parameter from being applied to the database.</p>
 -- @return ClusterParameterStatus structure as a key-value pair table
 function M.ClusterParameterStatus(args)
-	assert(args, "You must provdide an argument table when creating ClusterParameterStatus")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ClusterParameterStatus")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ParameterName"] = args["ParameterName"],
 		["ParameterApplyStatus"] = args["ParameterApplyStatus"],
 		["ParameterApplyErrorDescription"] = args["ParameterApplyErrorDescription"],
 	}
-	asserts.AssertClusterParameterStatus(t)
-	return t
+	asserts.AssertClusterParameterStatus(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ClusterVersion = { ["ClusterVersion"] = true, ["Description"] = true, ["ClusterParameterGroupFamily"] = true, nil }
@@ -627,14 +858,25 @@ end
 -- * ClusterParameterGroupFamily [String] <p>The name of the cluster parameter group family for the cluster.</p>
 -- @return ClusterVersion structure as a key-value pair table
 function M.ClusterVersion(args)
-	assert(args, "You must provdide an argument table when creating ClusterVersion")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ClusterVersion")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ClusterVersion"] = args["ClusterVersion"],
 		["Description"] = args["Description"],
 		["ClusterParameterGroupFamily"] = args["ClusterParameterGroupFamily"],
 	}
-	asserts.AssertClusterVersion(t)
-	return t
+	asserts.AssertClusterVersion(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ModifyClusterMessage = { ["HsmClientCertificateIdentifier"] = true, ["NodeType"] = true, ["PubliclyAccessible"] = true, ["ClusterParameterGroupName"] = true, ["EnhancedVpcRouting"] = true, ["ElasticIp"] = true, ["ClusterType"] = true, ["MasterUserPassword"] = true, ["VpcSecurityGroupIds"] = true, ["AllowVersionUpgrade"] = true, ["PreferredMaintenanceWindow"] = true, ["AutomatedSnapshotRetentionPeriod"] = true, ["ClusterSecurityGroups"] = true, ["ClusterIdentifier"] = true, ["HsmConfigurationIdentifier"] = true, ["NewClusterIdentifier"] = true, ["NumberOfNodes"] = true, ["ClusterVersion"] = true, nil }
@@ -691,8 +933,14 @@ end
 -- Required key: ClusterIdentifier
 -- @return ModifyClusterMessage structure as a key-value pair table
 function M.ModifyClusterMessage(args)
-	assert(args, "You must provdide an argument table when creating ModifyClusterMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ModifyClusterMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["HsmClientCertificateIdentifier"] = args["HsmClientCertificateIdentifier"],
 		["NodeType"] = args["NodeType"],
 		["PubliclyAccessible"] = args["PubliclyAccessible"],
@@ -712,8 +960,13 @@ function M.ModifyClusterMessage(args)
 		["NumberOfNodes"] = args["NumberOfNodes"],
 		["ClusterVersion"] = args["ClusterVersion"],
 	}
-	asserts.AssertModifyClusterMessage(t)
-	return t
+	asserts.AssertModifyClusterMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ClusterParameterGroupStatus = { ["ClusterParameterStatusList"] = true, ["ParameterGroupName"] = true, ["ParameterApplyStatus"] = true, nil }
@@ -738,14 +991,25 @@ end
 -- * ParameterApplyStatus [String] <p>The status of parameter updates.</p>
 -- @return ClusterParameterGroupStatus structure as a key-value pair table
 function M.ClusterParameterGroupStatus(args)
-	assert(args, "You must provdide an argument table when creating ClusterParameterGroupStatus")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ClusterParameterGroupStatus")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ClusterParameterStatusList"] = args["ClusterParameterStatusList"],
 		["ParameterGroupName"] = args["ParameterGroupName"],
 		["ParameterApplyStatus"] = args["ParameterApplyStatus"],
 	}
-	asserts.AssertClusterParameterGroupStatus(t)
-	return t
+	asserts.AssertClusterParameterGroupStatus(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.VpcSecurityGroupMembership = { ["Status"] = true, ["VpcSecurityGroupId"] = true, nil }
@@ -768,13 +1032,24 @@ end
 -- * VpcSecurityGroupId [String] <p>The identifier of the VPC security group.</p>
 -- @return VpcSecurityGroupMembership structure as a key-value pair table
 function M.VpcSecurityGroupMembership(args)
-	assert(args, "You must provdide an argument table when creating VpcSecurityGroupMembership")
-	local t = { 
+	assert(args, "You must provide an argument table when creating VpcSecurityGroupMembership")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Status"] = args["Status"],
 		["VpcSecurityGroupId"] = args["VpcSecurityGroupId"],
 	}
-	asserts.AssertVpcSecurityGroupMembership(t)
-	return t
+	asserts.AssertVpcSecurityGroupMembership(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateClusterResult = { ["Cluster"] = true, nil }
@@ -795,12 +1070,23 @@ end
 -- * Cluster [Cluster] 
 -- @return CreateClusterResult structure as a key-value pair table
 function M.CreateClusterResult(args)
-	assert(args, "You must provdide an argument table when creating CreateClusterResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateClusterResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Cluster"] = args["Cluster"],
 	}
-	asserts.AssertCreateClusterResult(t)
-	return t
+	asserts.AssertCreateClusterResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ClusterSecurityGroupMembership = { ["Status"] = true, ["ClusterSecurityGroupName"] = true, nil }
@@ -823,13 +1109,24 @@ end
 -- * ClusterSecurityGroupName [String] <p>The name of the cluster security group.</p>
 -- @return ClusterSecurityGroupMembership structure as a key-value pair table
 function M.ClusterSecurityGroupMembership(args)
-	assert(args, "You must provdide an argument table when creating ClusterSecurityGroupMembership")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ClusterSecurityGroupMembership")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Status"] = args["Status"],
 		["ClusterSecurityGroupName"] = args["ClusterSecurityGroupName"],
 	}
-	asserts.AssertClusterSecurityGroupMembership(t)
-	return t
+	asserts.AssertClusterSecurityGroupMembership(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ResizeNotFoundFault = { nil }
@@ -848,11 +1145,22 @@ end
 -- Valid keys:
 -- @return ResizeNotFoundFault structure as a key-value pair table
 function M.ResizeNotFoundFault(args)
-	assert(args, "You must provdide an argument table when creating ResizeNotFoundFault")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ResizeNotFoundFault")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertResizeNotFoundFault(t)
-	return t
+	asserts.AssertResizeNotFoundFault(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DependentServiceRequestThrottlingFault = { nil }
@@ -871,11 +1179,22 @@ end
 -- Valid keys:
 -- @return DependentServiceRequestThrottlingFault structure as a key-value pair table
 function M.DependentServiceRequestThrottlingFault(args)
-	assert(args, "You must provdide an argument table when creating DependentServiceRequestThrottlingFault")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DependentServiceRequestThrottlingFault")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertDependentServiceRequestThrottlingFault(t)
-	return t
+	asserts.AssertDependentServiceRequestThrottlingFault(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AccountWithRestoreAccess = { ["AccountAlias"] = true, ["AccountId"] = true, nil }
@@ -898,13 +1217,24 @@ end
 -- * AccountId [String] <p>The identifier of an AWS customer account authorized to restore a snapshot.</p>
 -- @return AccountWithRestoreAccess structure as a key-value pair table
 function M.AccountWithRestoreAccess(args)
-	assert(args, "You must provdide an argument table when creating AccountWithRestoreAccess")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AccountWithRestoreAccess")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["AccountAlias"] = args["AccountAlias"],
 		["AccountId"] = args["AccountId"],
 	}
-	asserts.AssertAccountWithRestoreAccess(t)
-	return t
+	asserts.AssertAccountWithRestoreAccess(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.TaggedResourceListMessage = { ["Marker"] = true, ["TaggedResources"] = true, nil }
@@ -927,13 +1257,24 @@ end
 -- * TaggedResources [TaggedResourceList] <p>A list of tags with their associated resources.</p>
 -- @return TaggedResourceListMessage structure as a key-value pair table
 function M.TaggedResourceListMessage(args)
-	assert(args, "You must provdide an argument table when creating TaggedResourceListMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating TaggedResourceListMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Marker"] = args["Marker"],
 		["TaggedResources"] = args["TaggedResources"],
 	}
-	asserts.AssertTaggedResourceListMessage(t)
-	return t
+	asserts.AssertTaggedResourceListMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.RevokeSnapshotAccessResult = { ["Snapshot"] = true, nil }
@@ -954,12 +1295,23 @@ end
 -- * Snapshot [Snapshot] 
 -- @return RevokeSnapshotAccessResult structure as a key-value pair table
 function M.RevokeSnapshotAccessResult(args)
-	assert(args, "You must provdide an argument table when creating RevokeSnapshotAccessResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating RevokeSnapshotAccessResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Snapshot"] = args["Snapshot"],
 	}
-	asserts.AssertRevokeSnapshotAccessResult(t)
-	return t
+	asserts.AssertRevokeSnapshotAccessResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.PurchaseReservedNodeOfferingMessage = { ["NodeCount"] = true, ["ReservedNodeOfferingId"] = true, nil }
@@ -984,13 +1336,24 @@ end
 -- Required key: ReservedNodeOfferingId
 -- @return PurchaseReservedNodeOfferingMessage structure as a key-value pair table
 function M.PurchaseReservedNodeOfferingMessage(args)
-	assert(args, "You must provdide an argument table when creating PurchaseReservedNodeOfferingMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating PurchaseReservedNodeOfferingMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NodeCount"] = args["NodeCount"],
 		["ReservedNodeOfferingId"] = args["ReservedNodeOfferingId"],
 	}
-	asserts.AssertPurchaseReservedNodeOfferingMessage(t)
-	return t
+	asserts.AssertPurchaseReservedNodeOfferingMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InsufficientClusterCapacityFault = { nil }
@@ -1009,11 +1372,22 @@ end
 -- Valid keys:
 -- @return InsufficientClusterCapacityFault structure as a key-value pair table
 function M.InsufficientClusterCapacityFault(args)
-	assert(args, "You must provdide an argument table when creating InsufficientClusterCapacityFault")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InsufficientClusterCapacityFault")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertInsufficientClusterCapacityFault(t)
-	return t
+	asserts.AssertInsufficientClusterCapacityFault(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateEventSubscriptionResult = { ["EventSubscription"] = true, nil }
@@ -1034,12 +1408,23 @@ end
 -- * EventSubscription [EventSubscription] 
 -- @return CreateEventSubscriptionResult structure as a key-value pair table
 function M.CreateEventSubscriptionResult(args)
-	assert(args, "You must provdide an argument table when creating CreateEventSubscriptionResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateEventSubscriptionResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["EventSubscription"] = args["EventSubscription"],
 	}
-	asserts.AssertCreateEventSubscriptionResult(t)
-	return t
+	asserts.AssertCreateEventSubscriptionResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.HsmStatus = { ["Status"] = true, ["HsmClientCertificateIdentifier"] = true, ["HsmConfigurationIdentifier"] = true, nil }
@@ -1064,14 +1449,25 @@ end
 -- * HsmConfigurationIdentifier [String] <p>Specifies the name of the HSM configuration that contains the information the Amazon Redshift cluster can use to retrieve and store keys in an HSM.</p>
 -- @return HsmStatus structure as a key-value pair table
 function M.HsmStatus(args)
-	assert(args, "You must provdide an argument table when creating HsmStatus")
-	local t = { 
+	assert(args, "You must provide an argument table when creating HsmStatus")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Status"] = args["Status"],
 		["HsmClientCertificateIdentifier"] = args["HsmClientCertificateIdentifier"],
 		["HsmConfigurationIdentifier"] = args["HsmConfigurationIdentifier"],
 	}
-	asserts.AssertHsmStatus(t)
-	return t
+	asserts.AssertHsmStatus(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.SNSInvalidTopicFault = { nil }
@@ -1090,11 +1486,22 @@ end
 -- Valid keys:
 -- @return SNSInvalidTopicFault structure as a key-value pair table
 function M.SNSInvalidTopicFault(args)
-	assert(args, "You must provdide an argument table when creating SNSInvalidTopicFault")
-	local t = { 
+	assert(args, "You must provide an argument table when creating SNSInvalidTopicFault")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertSNSInvalidTopicFault(t)
-	return t
+	asserts.AssertSNSInvalidTopicFault(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ReservedNodeOfferingsMessage = { ["Marker"] = true, ["ReservedNodeOfferings"] = true, nil }
@@ -1117,13 +1524,24 @@ end
 -- * ReservedNodeOfferings [ReservedNodeOfferingList] <p>A list of <code>ReservedNodeOffering</code> objects.</p>
 -- @return ReservedNodeOfferingsMessage structure as a key-value pair table
 function M.ReservedNodeOfferingsMessage(args)
-	assert(args, "You must provdide an argument table when creating ReservedNodeOfferingsMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ReservedNodeOfferingsMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Marker"] = args["Marker"],
 		["ReservedNodeOfferings"] = args["ReservedNodeOfferings"],
 	}
-	asserts.AssertReservedNodeOfferingsMessage(t)
-	return t
+	asserts.AssertReservedNodeOfferingsMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.HsmConfigurationNotFoundFault = { nil }
@@ -1142,11 +1560,22 @@ end
 -- Valid keys:
 -- @return HsmConfigurationNotFoundFault structure as a key-value pair table
 function M.HsmConfigurationNotFoundFault(args)
-	assert(args, "You must provdide an argument table when creating HsmConfigurationNotFoundFault")
-	local t = { 
+	assert(args, "You must provide an argument table when creating HsmConfigurationNotFoundFault")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertHsmConfigurationNotFoundFault(t)
-	return t
+	asserts.AssertHsmConfigurationNotFoundFault(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.NumberOfNodesQuotaExceededFault = { nil }
@@ -1165,11 +1594,22 @@ end
 -- Valid keys:
 -- @return NumberOfNodesQuotaExceededFault structure as a key-value pair table
 function M.NumberOfNodesQuotaExceededFault(args)
-	assert(args, "You must provdide an argument table when creating NumberOfNodesQuotaExceededFault")
-	local t = { 
+	assert(args, "You must provide an argument table when creating NumberOfNodesQuotaExceededFault")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertNumberOfNodesQuotaExceededFault(t)
-	return t
+	asserts.AssertNumberOfNodesQuotaExceededFault(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateEventSubscriptionMessage = { ["EventCategories"] = true, ["Severity"] = true, ["Tags"] = true, ["Enabled"] = true, ["SnsTopicArn"] = true, ["SubscriptionName"] = true, ["SourceIds"] = true, ["SourceType"] = true, nil }
@@ -1208,8 +1648,14 @@ end
 -- Required key: SnsTopicArn
 -- @return CreateEventSubscriptionMessage structure as a key-value pair table
 function M.CreateEventSubscriptionMessage(args)
-	assert(args, "You must provdide an argument table when creating CreateEventSubscriptionMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateEventSubscriptionMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["EventCategories"] = args["EventCategories"],
 		["Severity"] = args["Severity"],
 		["Tags"] = args["Tags"],
@@ -1219,8 +1665,13 @@ function M.CreateEventSubscriptionMessage(args)
 		["SourceIds"] = args["SourceIds"],
 		["SourceType"] = args["SourceType"],
 	}
-	asserts.AssertCreateEventSubscriptionMessage(t)
-	return t
+	asserts.AssertCreateEventSubscriptionMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeClusterParameterGroupsMessage = { ["Marker"] = true, ["TagValues"] = true, ["MaxRecords"] = true, ["TagKeys"] = true, ["ParameterGroupName"] = true, nil }
@@ -1249,16 +1700,27 @@ end
 -- * ParameterGroupName [String] <p>The name of a specific parameter group for which to return details. By default, details about all parameter groups and the default parameter group are returned.</p>
 -- @return DescribeClusterParameterGroupsMessage structure as a key-value pair table
 function M.DescribeClusterParameterGroupsMessage(args)
-	assert(args, "You must provdide an argument table when creating DescribeClusterParameterGroupsMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeClusterParameterGroupsMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Marker"] = args["Marker"],
 		["TagValues"] = args["TagValues"],
 		["MaxRecords"] = args["MaxRecords"],
 		["TagKeys"] = args["TagKeys"],
 		["ParameterGroupName"] = args["ParameterGroupName"],
 	}
-	asserts.AssertDescribeClusterParameterGroupsMessage(t)
-	return t
+	asserts.AssertDescribeClusterParameterGroupsMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.IncompatibleOrderableOptions = { nil }
@@ -1277,11 +1739,22 @@ end
 -- Valid keys:
 -- @return IncompatibleOrderableOptions structure as a key-value pair table
 function M.IncompatibleOrderableOptions(args)
-	assert(args, "You must provdide an argument table when creating IncompatibleOrderableOptions")
-	local t = { 
+	assert(args, "You must provide an argument table when creating IncompatibleOrderableOptions")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertIncompatibleOrderableOptions(t)
-	return t
+	asserts.AssertIncompatibleOrderableOptions(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateHsmClientCertificateMessage = { ["HsmClientCertificateIdentifier"] = true, ["Tags"] = true, nil }
@@ -1306,13 +1779,24 @@ end
 -- Required key: HsmClientCertificateIdentifier
 -- @return CreateHsmClientCertificateMessage structure as a key-value pair table
 function M.CreateHsmClientCertificateMessage(args)
-	assert(args, "You must provdide an argument table when creating CreateHsmClientCertificateMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateHsmClientCertificateMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["HsmClientCertificateIdentifier"] = args["HsmClientCertificateIdentifier"],
 		["Tags"] = args["Tags"],
 	}
-	asserts.AssertCreateHsmClientCertificateMessage(t)
-	return t
+	asserts.AssertCreateHsmClientCertificateMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidS3KeyPrefixFault = { nil }
@@ -1331,11 +1815,22 @@ end
 -- Valid keys:
 -- @return InvalidS3KeyPrefixFault structure as a key-value pair table
 function M.InvalidS3KeyPrefixFault(args)
-	assert(args, "You must provdide an argument table when creating InvalidS3KeyPrefixFault")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidS3KeyPrefixFault")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertInvalidS3KeyPrefixFault(t)
-	return t
+	asserts.AssertInvalidS3KeyPrefixFault(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.SubscriptionAlreadyExistFault = { nil }
@@ -1354,11 +1849,22 @@ end
 -- Valid keys:
 -- @return SubscriptionAlreadyExistFault structure as a key-value pair table
 function M.SubscriptionAlreadyExistFault(args)
-	assert(args, "You must provdide an argument table when creating SubscriptionAlreadyExistFault")
-	local t = { 
+	assert(args, "You must provide an argument table when creating SubscriptionAlreadyExistFault")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertSubscriptionAlreadyExistFault(t)
-	return t
+	asserts.AssertSubscriptionAlreadyExistFault(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.RebootClusterMessage = { ["ClusterIdentifier"] = true, nil }
@@ -1381,12 +1887,23 @@ end
 -- Required key: ClusterIdentifier
 -- @return RebootClusterMessage structure as a key-value pair table
 function M.RebootClusterMessage(args)
-	assert(args, "You must provdide an argument table when creating RebootClusterMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating RebootClusterMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ClusterIdentifier"] = args["ClusterIdentifier"],
 	}
-	asserts.AssertRebootClusterMessage(t)
-	return t
+	asserts.AssertRebootClusterMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ClusterSecurityGroupMessage = { ["Marker"] = true, ["ClusterSecurityGroups"] = true, nil }
@@ -1409,13 +1926,24 @@ end
 -- * ClusterSecurityGroups [ClusterSecurityGroups] <p>A list of <a>ClusterSecurityGroup</a> instances. </p>
 -- @return ClusterSecurityGroupMessage structure as a key-value pair table
 function M.ClusterSecurityGroupMessage(args)
-	assert(args, "You must provdide an argument table when creating ClusterSecurityGroupMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ClusterSecurityGroupMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Marker"] = args["Marker"],
 		["ClusterSecurityGroups"] = args["ClusterSecurityGroups"],
 	}
-	asserts.AssertClusterSecurityGroupMessage(t)
-	return t
+	asserts.AssertClusterSecurityGroupMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.EventsMessage = { ["Marker"] = true, ["Events"] = true, nil }
@@ -1438,13 +1966,24 @@ end
 -- * Events [EventList] <p>A list of <code>Event</code> instances. </p>
 -- @return EventsMessage structure as a key-value pair table
 function M.EventsMessage(args)
-	assert(args, "You must provdide an argument table when creating EventsMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating EventsMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Marker"] = args["Marker"],
 		["Events"] = args["Events"],
 	}
-	asserts.AssertEventsMessage(t)
-	return t
+	asserts.AssertEventsMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeEventsMessage = { ["SourceType"] = true, ["Marker"] = true, ["MaxRecords"] = true, ["StartTime"] = true, ["Duration"] = true, ["SourceIdentifier"] = true, ["EndTime"] = true, nil }
@@ -1477,8 +2016,14 @@ end
 -- * EndTime [TStamp] <p>The end of the time interval for which to retrieve events, specified in ISO 8601 format. For more information about ISO 8601, go to the <a href="http://en.wikipedia.org/wiki/ISO_8601">ISO8601 Wikipedia page.</a> </p> <p>Example: <code>2009-07-08T18:00Z</code> </p>
 -- @return DescribeEventsMessage structure as a key-value pair table
 function M.DescribeEventsMessage(args)
-	assert(args, "You must provdide an argument table when creating DescribeEventsMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeEventsMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["SourceType"] = args["SourceType"],
 		["Marker"] = args["Marker"],
 		["MaxRecords"] = args["MaxRecords"],
@@ -1487,8 +2032,13 @@ function M.DescribeEventsMessage(args)
 		["SourceIdentifier"] = args["SourceIdentifier"],
 		["EndTime"] = args["EndTime"],
 	}
-	asserts.AssertDescribeEventsMessage(t)
-	return t
+	asserts.AssertDescribeEventsMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ClusterParameterGroupsMessage = { ["Marker"] = true, ["ParameterGroups"] = true, nil }
@@ -1511,13 +2061,24 @@ end
 -- * ParameterGroups [ParameterGroupList] <p>A list of <a>ClusterParameterGroup</a> instances. Each instance describes one cluster parameter group. </p>
 -- @return ClusterParameterGroupsMessage structure as a key-value pair table
 function M.ClusterParameterGroupsMessage(args)
-	assert(args, "You must provdide an argument table when creating ClusterParameterGroupsMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ClusterParameterGroupsMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Marker"] = args["Marker"],
 		["ParameterGroups"] = args["ParameterGroups"],
 	}
-	asserts.AssertClusterParameterGroupsMessage(t)
-	return t
+	asserts.AssertClusterParameterGroupsMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ClusterSubnetGroupAlreadyExistsFault = { nil }
@@ -1536,11 +2097,22 @@ end
 -- Valid keys:
 -- @return ClusterSubnetGroupAlreadyExistsFault structure as a key-value pair table
 function M.ClusterSubnetGroupAlreadyExistsFault(args)
-	assert(args, "You must provdide an argument table when creating ClusterSubnetGroupAlreadyExistsFault")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ClusterSubnetGroupAlreadyExistsFault")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertClusterSubnetGroupAlreadyExistsFault(t)
-	return t
+	asserts.AssertClusterSubnetGroupAlreadyExistsFault(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AccessToSnapshotDeniedFault = { nil }
@@ -1559,11 +2131,22 @@ end
 -- Valid keys:
 -- @return AccessToSnapshotDeniedFault structure as a key-value pair table
 function M.AccessToSnapshotDeniedFault(args)
-	assert(args, "You must provdide an argument table when creating AccessToSnapshotDeniedFault")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AccessToSnapshotDeniedFault")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertAccessToSnapshotDeniedFault(t)
-	return t
+	asserts.AssertAccessToSnapshotDeniedFault(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ClusterSnapshotCopyStatus = { ["SnapshotCopyGrantName"] = true, ["DestinationRegion"] = true, ["RetentionPeriod"] = true, nil }
@@ -1588,14 +2171,25 @@ end
 -- * RetentionPeriod [Long] <p>The number of days that automated snapshots are retained in the destination region after they are copied from a source region.</p>
 -- @return ClusterSnapshotCopyStatus structure as a key-value pair table
 function M.ClusterSnapshotCopyStatus(args)
-	assert(args, "You must provdide an argument table when creating ClusterSnapshotCopyStatus")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ClusterSnapshotCopyStatus")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["SnapshotCopyGrantName"] = args["SnapshotCopyGrantName"],
 		["DestinationRegion"] = args["DestinationRegion"],
 		["RetentionPeriod"] = args["RetentionPeriod"],
 	}
-	asserts.AssertClusterSnapshotCopyStatus(t)
-	return t
+	asserts.AssertClusterSnapshotCopyStatus(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Tag = { ["Value"] = true, ["Key"] = true, nil }
@@ -1618,13 +2212,24 @@ end
 -- * Key [String] <p>The key, or name, for the resource tag.</p>
 -- @return Tag structure as a key-value pair table
 function M.Tag(args)
-	assert(args, "You must provdide an argument table when creating Tag")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Tag")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Value"] = args["Value"],
 		["Key"] = args["Key"],
 	}
-	asserts.AssertTag(t)
-	return t
+	asserts.AssertTag(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ClusterSubnetGroupMessage = { ["Marker"] = true, ["ClusterSubnetGroups"] = true, nil }
@@ -1647,13 +2252,24 @@ end
 -- * ClusterSubnetGroups [ClusterSubnetGroups] <p>A list of <a>ClusterSubnetGroup</a> instances. </p>
 -- @return ClusterSubnetGroupMessage structure as a key-value pair table
 function M.ClusterSubnetGroupMessage(args)
-	assert(args, "You must provdide an argument table when creating ClusterSubnetGroupMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ClusterSubnetGroupMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Marker"] = args["Marker"],
 		["ClusterSubnetGroups"] = args["ClusterSubnetGroups"],
 	}
-	asserts.AssertClusterSubnetGroupMessage(t)
-	return t
+	asserts.AssertClusterSubnetGroupMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Event = { ["EventId"] = true, ["EventCategories"] = true, ["SourceType"] = true, ["Date"] = true, ["Message"] = true, ["SourceIdentifier"] = true, ["Severity"] = true, nil }
@@ -1686,8 +2302,14 @@ end
 -- * Severity [String] <p>The severity of the event.</p> <p>Values: ERROR, INFO</p>
 -- @return Event structure as a key-value pair table
 function M.Event(args)
-	assert(args, "You must provdide an argument table when creating Event")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Event")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["EventId"] = args["EventId"],
 		["EventCategories"] = args["EventCategories"],
 		["SourceType"] = args["SourceType"],
@@ -1696,8 +2318,13 @@ function M.Event(args)
 		["SourceIdentifier"] = args["SourceIdentifier"],
 		["Severity"] = args["Severity"],
 	}
-	asserts.AssertEvent(t)
-	return t
+	asserts.AssertEvent(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DisableLoggingMessage = { ["ClusterIdentifier"] = true, nil }
@@ -1720,12 +2347,23 @@ end
 -- Required key: ClusterIdentifier
 -- @return DisableLoggingMessage structure as a key-value pair table
 function M.DisableLoggingMessage(args)
-	assert(args, "You must provdide an argument table when creating DisableLoggingMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DisableLoggingMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ClusterIdentifier"] = args["ClusterIdentifier"],
 	}
-	asserts.AssertDisableLoggingMessage(t)
-	return t
+	asserts.AssertDisableLoggingMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.SubscriptionNotFoundFault = { nil }
@@ -1744,11 +2382,22 @@ end
 -- Valid keys:
 -- @return SubscriptionNotFoundFault structure as a key-value pair table
 function M.SubscriptionNotFoundFault(args)
-	assert(args, "You must provdide an argument table when creating SubscriptionNotFoundFault")
-	local t = { 
+	assert(args, "You must provide an argument table when creating SubscriptionNotFoundFault")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertSubscriptionNotFoundFault(t)
-	return t
+	asserts.AssertSubscriptionNotFoundFault(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidSubnet = { nil }
@@ -1767,11 +2416,22 @@ end
 -- Valid keys:
 -- @return InvalidSubnet structure as a key-value pair table
 function M.InvalidSubnet(args)
-	assert(args, "You must provdide an argument table when creating InvalidSubnet")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidSubnet")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertInvalidSubnet(t)
-	return t
+	asserts.AssertInvalidSubnet(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ClusterSecurityGroupQuotaExceededFault = { nil }
@@ -1790,11 +2450,22 @@ end
 -- Valid keys:
 -- @return ClusterSecurityGroupQuotaExceededFault structure as a key-value pair table
 function M.ClusterSecurityGroupQuotaExceededFault(args)
-	assert(args, "You must provdide an argument table when creating ClusterSecurityGroupQuotaExceededFault")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ClusterSecurityGroupQuotaExceededFault")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertClusterSecurityGroupQuotaExceededFault(t)
-	return t
+	asserts.AssertClusterSecurityGroupQuotaExceededFault(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ReservedNodeOfferingNotFoundFault = { nil }
@@ -1813,11 +2484,22 @@ end
 -- Valid keys:
 -- @return ReservedNodeOfferingNotFoundFault structure as a key-value pair table
 function M.ReservedNodeOfferingNotFoundFault(args)
-	assert(args, "You must provdide an argument table when creating ReservedNodeOfferingNotFoundFault")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ReservedNodeOfferingNotFoundFault")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertReservedNodeOfferingNotFoundFault(t)
-	return t
+	asserts.AssertReservedNodeOfferingNotFoundFault(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateClusterMessage = { ["ClusterParameterGroupName"] = true, ["PubliclyAccessible"] = true, ["MasterUsername"] = true, ["VpcSecurityGroupIds"] = true, ["NumberOfNodes"] = true, ["ClusterVersion"] = true, ["Tags"] = true, ["AutomatedSnapshotRetentionPeriod"] = true, ["EnhancedVpcRouting"] = true, ["DBName"] = true, ["PreferredMaintenanceWindow"] = true, ["AdditionalInfo"] = true, ["ClusterType"] = true, ["IamRoles"] = true, ["AllowVersionUpgrade"] = true, ["HsmConfigurationIdentifier"] = true, ["ClusterSecurityGroups"] = true, ["ClusterIdentifier"] = true, ["HsmClientCertificateIdentifier"] = true, ["AvailabilityZone"] = true, ["NodeType"] = true, ["ElasticIp"] = true, ["Encrypted"] = true, ["MasterUserPassword"] = true, ["KmsKeyId"] = true, ["Port"] = true, ["ClusterSubnetGroupName"] = true, nil }
@@ -1898,8 +2580,14 @@ end
 -- Required key: MasterUserPassword
 -- @return CreateClusterMessage structure as a key-value pair table
 function M.CreateClusterMessage(args)
-	assert(args, "You must provdide an argument table when creating CreateClusterMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateClusterMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ClusterParameterGroupName"] = args["ClusterParameterGroupName"],
 		["PubliclyAccessible"] = args["PubliclyAccessible"],
 		["MasterUsername"] = args["MasterUsername"],
@@ -1928,8 +2616,13 @@ function M.CreateClusterMessage(args)
 		["Port"] = args["Port"],
 		["ClusterSubnetGroupName"] = args["ClusterSubnetGroupName"],
 	}
-	asserts.AssertCreateClusterMessage(t)
-	return t
+	asserts.AssertCreateClusterMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ClusterSnapshotQuotaExceededFault = { nil }
@@ -1948,11 +2641,22 @@ end
 -- Valid keys:
 -- @return ClusterSnapshotQuotaExceededFault structure as a key-value pair table
 function M.ClusterSnapshotQuotaExceededFault(args)
-	assert(args, "You must provdide an argument table when creating ClusterSnapshotQuotaExceededFault")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ClusterSnapshotQuotaExceededFault")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertClusterSnapshotQuotaExceededFault(t)
-	return t
+	asserts.AssertClusterSnapshotQuotaExceededFault(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteTagsMessage = { ["ResourceName"] = true, ["TagKeys"] = true, nil }
@@ -1979,13 +2683,24 @@ end
 -- Required key: TagKeys
 -- @return DeleteTagsMessage structure as a key-value pair table
 function M.DeleteTagsMessage(args)
-	assert(args, "You must provdide an argument table when creating DeleteTagsMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteTagsMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ResourceName"] = args["ResourceName"],
 		["TagKeys"] = args["TagKeys"],
 	}
-	asserts.AssertDeleteTagsMessage(t)
-	return t
+	asserts.AssertDeleteTagsMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateSnapshotCopyGrantResult = { ["SnapshotCopyGrant"] = true, nil }
@@ -2006,12 +2721,23 @@ end
 -- * SnapshotCopyGrant [SnapshotCopyGrant] 
 -- @return CreateSnapshotCopyGrantResult structure as a key-value pair table
 function M.CreateSnapshotCopyGrantResult(args)
-	assert(args, "You must provdide an argument table when creating CreateSnapshotCopyGrantResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateSnapshotCopyGrantResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["SnapshotCopyGrant"] = args["SnapshotCopyGrant"],
 	}
-	asserts.AssertCreateSnapshotCopyGrantResult(t)
-	return t
+	asserts.AssertCreateSnapshotCopyGrantResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Endpoint = { ["Port"] = true, ["Address"] = true, nil }
@@ -2034,13 +2760,24 @@ end
 -- * Address [String] <p>The DNS address of the Cluster.</p>
 -- @return Endpoint structure as a key-value pair table
 function M.Endpoint(args)
-	assert(args, "You must provdide an argument table when creating Endpoint")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Endpoint")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Port"] = args["Port"],
 		["Address"] = args["Address"],
 	}
-	asserts.AssertEndpoint(t)
-	return t
+	asserts.AssertEndpoint(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.HsmConfiguration = { ["Tags"] = true, ["HsmIpAddress"] = true, ["HsmPartitionName"] = true, ["HsmConfigurationIdentifier"] = true, ["Description"] = true, nil }
@@ -2069,16 +2806,27 @@ end
 -- * Description [String] <p>A text description of the HSM configuration.</p>
 -- @return HsmConfiguration structure as a key-value pair table
 function M.HsmConfiguration(args)
-	assert(args, "You must provdide an argument table when creating HsmConfiguration")
-	local t = { 
+	assert(args, "You must provide an argument table when creating HsmConfiguration")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Tags"] = args["Tags"],
 		["HsmIpAddress"] = args["HsmIpAddress"],
 		["HsmPartitionName"] = args["HsmPartitionName"],
 		["HsmConfigurationIdentifier"] = args["HsmConfigurationIdentifier"],
 		["Description"] = args["Description"],
 	}
-	asserts.AssertHsmConfiguration(t)
-	return t
+	asserts.AssertHsmConfiguration(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ReservedNode = { ["OfferingType"] = true, ["FixedPrice"] = true, ["NodeType"] = true, ["NodeCount"] = true, ["UsagePrice"] = true, ["RecurringCharges"] = true, ["ReservedNodeId"] = true, ["State"] = true, ["StartTime"] = true, ["Duration"] = true, ["ReservedNodeOfferingId"] = true, ["CurrencyCode"] = true, nil }
@@ -2121,8 +2869,14 @@ end
 -- * CurrencyCode [String] <p>The currency code for the reserved cluster.</p>
 -- @return ReservedNode structure as a key-value pair table
 function M.ReservedNode(args)
-	assert(args, "You must provdide an argument table when creating ReservedNode")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ReservedNode")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["OfferingType"] = args["OfferingType"],
 		["FixedPrice"] = args["FixedPrice"],
 		["NodeType"] = args["NodeType"],
@@ -2136,8 +2890,13 @@ function M.ReservedNode(args)
 		["ReservedNodeOfferingId"] = args["ReservedNodeOfferingId"],
 		["CurrencyCode"] = args["CurrencyCode"],
 	}
-	asserts.AssertReservedNode(t)
-	return t
+	asserts.AssertReservedNode(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ResetClusterParameterGroupMessage = { ["ResetAllParameters"] = true, ["ParameterGroupName"] = true, ["Parameters"] = true, nil }
@@ -2164,14 +2923,25 @@ end
 -- Required key: ParameterGroupName
 -- @return ResetClusterParameterGroupMessage structure as a key-value pair table
 function M.ResetClusterParameterGroupMessage(args)
-	assert(args, "You must provdide an argument table when creating ResetClusterParameterGroupMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ResetClusterParameterGroupMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ResetAllParameters"] = args["ResetAllParameters"],
 		["ParameterGroupName"] = args["ParameterGroupName"],
 		["Parameters"] = args["Parameters"],
 	}
-	asserts.AssertResetClusterParameterGroupMessage(t)
-	return t
+	asserts.AssertResetClusterParameterGroupMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ModifyClusterResult = { ["Cluster"] = true, nil }
@@ -2192,12 +2962,23 @@ end
 -- * Cluster [Cluster] 
 -- @return ModifyClusterResult structure as a key-value pair table
 function M.ModifyClusterResult(args)
-	assert(args, "You must provdide an argument table when creating ModifyClusterResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ModifyClusterResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Cluster"] = args["Cluster"],
 	}
-	asserts.AssertModifyClusterResult(t)
-	return t
+	asserts.AssertModifyClusterResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidSubscriptionStateFault = { nil }
@@ -2216,11 +2997,22 @@ end
 -- Valid keys:
 -- @return InvalidSubscriptionStateFault structure as a key-value pair table
 function M.InvalidSubscriptionStateFault(args)
-	assert(args, "You must provdide an argument table when creating InvalidSubscriptionStateFault")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidSubscriptionStateFault")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertInvalidSubscriptionStateFault(t)
-	return t
+	asserts.AssertInvalidSubscriptionStateFault(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InProgressTableRestoreQuotaExceededFault = { nil }
@@ -2239,11 +3031,22 @@ end
 -- Valid keys:
 -- @return InProgressTableRestoreQuotaExceededFault structure as a key-value pair table
 function M.InProgressTableRestoreQuotaExceededFault(args)
-	assert(args, "You must provdide an argument table when creating InProgressTableRestoreQuotaExceededFault")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InProgressTableRestoreQuotaExceededFault")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertInProgressTableRestoreQuotaExceededFault(t)
-	return t
+	asserts.AssertInProgressTableRestoreQuotaExceededFault(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Parameter = { ["Description"] = true, ["DataType"] = true, ["IsModifiable"] = true, ["AllowedValues"] = true, ["Source"] = true, ["ParameterValue"] = true, ["ParameterName"] = true, ["MinimumEngineVersion"] = true, ["ApplyType"] = true, nil }
@@ -2280,8 +3083,14 @@ end
 -- * ApplyType [ParameterApplyType] <p>Specifies how to apply the WLM configuration parameter. Some properties can be applied dynamically, while other properties require that any associated clusters be rebooted for the configuration changes to be applied. For more information about parameters and parameter groups, go to <a href="http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-parameter-groups.html">Amazon Redshift Parameter Groups</a> in the <i>Amazon Redshift Cluster Management Guide</i>.</p>
 -- @return Parameter structure as a key-value pair table
 function M.Parameter(args)
-	assert(args, "You must provdide an argument table when creating Parameter")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Parameter")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Description"] = args["Description"],
 		["DataType"] = args["DataType"],
 		["IsModifiable"] = args["IsModifiable"],
@@ -2292,8 +3101,13 @@ function M.Parameter(args)
 		["MinimumEngineVersion"] = args["MinimumEngineVersion"],
 		["ApplyType"] = args["ApplyType"],
 	}
-	asserts.AssertParameter(t)
-	return t
+	asserts.AssertParameter(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CopyClusterSnapshotResult = { ["Snapshot"] = true, nil }
@@ -2314,12 +3128,23 @@ end
 -- * Snapshot [Snapshot] 
 -- @return CopyClusterSnapshotResult structure as a key-value pair table
 function M.CopyClusterSnapshotResult(args)
-	assert(args, "You must provdide an argument table when creating CopyClusterSnapshotResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CopyClusterSnapshotResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Snapshot"] = args["Snapshot"],
 	}
-	asserts.AssertCopyClusterSnapshotResult(t)
-	return t
+	asserts.AssertCopyClusterSnapshotResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ClusterIamRole = { ["ApplyStatus"] = true, ["IamRoleArn"] = true, nil }
@@ -2342,13 +3167,24 @@ end
 -- * IamRoleArn [String] <p>The Amazon Resource Name (ARN) of the IAM role, for example, <code>arn:aws:iam::123456789012:role/RedshiftCopyUnload</code>. </p>
 -- @return ClusterIamRole structure as a key-value pair table
 function M.ClusterIamRole(args)
-	assert(args, "You must provdide an argument table when creating ClusterIamRole")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ClusterIamRole")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ApplyStatus"] = args["ApplyStatus"],
 		["IamRoleArn"] = args["IamRoleArn"],
 	}
-	asserts.AssertClusterIamRole(t)
-	return t
+	asserts.AssertClusterIamRole(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidTableRestoreArgumentFault = { nil }
@@ -2367,11 +3203,22 @@ end
 -- Valid keys:
 -- @return InvalidTableRestoreArgumentFault structure as a key-value pair table
 function M.InvalidTableRestoreArgumentFault(args)
-	assert(args, "You must provdide an argument table when creating InvalidTableRestoreArgumentFault")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidTableRestoreArgumentFault")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertInvalidTableRestoreArgumentFault(t)
-	return t
+	asserts.AssertInvalidTableRestoreArgumentFault(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ClusterSubnetQuotaExceededFault = { nil }
@@ -2390,11 +3237,22 @@ end
 -- Valid keys:
 -- @return ClusterSubnetQuotaExceededFault structure as a key-value pair table
 function M.ClusterSubnetQuotaExceededFault(args)
-	assert(args, "You must provdide an argument table when creating ClusterSubnetQuotaExceededFault")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ClusterSubnetQuotaExceededFault")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertClusterSubnetQuotaExceededFault(t)
-	return t
+	asserts.AssertClusterSubnetQuotaExceededFault(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UnsupportedOptionFault = { nil }
@@ -2413,11 +3271,22 @@ end
 -- Valid keys:
 -- @return UnsupportedOptionFault structure as a key-value pair table
 function M.UnsupportedOptionFault(args)
-	assert(args, "You must provdide an argument table when creating UnsupportedOptionFault")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UnsupportedOptionFault")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertUnsupportedOptionFault(t)
-	return t
+	asserts.AssertUnsupportedOptionFault(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.RestoreTableFromClusterSnapshotResult = { ["TableRestoreStatus"] = true, nil }
@@ -2438,12 +3307,23 @@ end
 -- * TableRestoreStatus [TableRestoreStatus] 
 -- @return RestoreTableFromClusterSnapshotResult structure as a key-value pair table
 function M.RestoreTableFromClusterSnapshotResult(args)
-	assert(args, "You must provdide an argument table when creating RestoreTableFromClusterSnapshotResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating RestoreTableFromClusterSnapshotResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["TableRestoreStatus"] = args["TableRestoreStatus"],
 	}
-	asserts.AssertRestoreTableFromClusterSnapshotResult(t)
-	return t
+	asserts.AssertRestoreTableFromClusterSnapshotResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ModifyClusterSubnetGroupMessage = { ["SubnetIds"] = true, ["ClusterSubnetGroupName"] = true, ["Description"] = true, nil }
@@ -2472,14 +3352,25 @@ end
 -- Required key: SubnetIds
 -- @return ModifyClusterSubnetGroupMessage structure as a key-value pair table
 function M.ModifyClusterSubnetGroupMessage(args)
-	assert(args, "You must provdide an argument table when creating ModifyClusterSubnetGroupMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ModifyClusterSubnetGroupMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["SubnetIds"] = args["SubnetIds"],
 		["ClusterSubnetGroupName"] = args["ClusterSubnetGroupName"],
 		["Description"] = args["Description"],
 	}
-	asserts.AssertModifyClusterSubnetGroupMessage(t)
-	return t
+	asserts.AssertModifyClusterSubnetGroupMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.HsmClientCertificateQuotaExceededFault = { nil }
@@ -2498,11 +3389,22 @@ end
 -- Valid keys:
 -- @return HsmClientCertificateQuotaExceededFault structure as a key-value pair table
 function M.HsmClientCertificateQuotaExceededFault(args)
-	assert(args, "You must provdide an argument table when creating HsmClientCertificateQuotaExceededFault")
-	local t = { 
+	assert(args, "You must provide an argument table when creating HsmClientCertificateQuotaExceededFault")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertHsmClientCertificateQuotaExceededFault(t)
-	return t
+	asserts.AssertHsmClientCertificateQuotaExceededFault(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ModifyClusterIamRolesResult = { ["Cluster"] = true, nil }
@@ -2523,12 +3425,23 @@ end
 -- * Cluster [Cluster] 
 -- @return ModifyClusterIamRolesResult structure as a key-value pair table
 function M.ModifyClusterIamRolesResult(args)
-	assert(args, "You must provdide an argument table when creating ModifyClusterIamRolesResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ModifyClusterIamRolesResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Cluster"] = args["Cluster"],
 	}
-	asserts.AssertModifyClusterIamRolesResult(t)
-	return t
+	asserts.AssertModifyClusterIamRolesResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ModifyClusterIamRolesMessage = { ["AddIamRoles"] = true, ["RemoveIamRoles"] = true, ["ClusterIdentifier"] = true, nil }
@@ -2555,14 +3468,25 @@ end
 -- Required key: ClusterIdentifier
 -- @return ModifyClusterIamRolesMessage structure as a key-value pair table
 function M.ModifyClusterIamRolesMessage(args)
-	assert(args, "You must provdide an argument table when creating ModifyClusterIamRolesMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ModifyClusterIamRolesMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["AddIamRoles"] = args["AddIamRoles"],
 		["RemoveIamRoles"] = args["RemoveIamRoles"],
 		["ClusterIdentifier"] = args["ClusterIdentifier"],
 	}
-	asserts.AssertModifyClusterIamRolesMessage(t)
-	return t
+	asserts.AssertModifyClusterIamRolesMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateClusterSecurityGroupMessage = { ["ClusterSecurityGroupName"] = true, ["Description"] = true, ["Tags"] = true, nil }
@@ -2591,14 +3515,25 @@ end
 -- Required key: Description
 -- @return CreateClusterSecurityGroupMessage structure as a key-value pair table
 function M.CreateClusterSecurityGroupMessage(args)
-	assert(args, "You must provdide an argument table when creating CreateClusterSecurityGroupMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateClusterSecurityGroupMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ClusterSecurityGroupName"] = args["ClusterSecurityGroupName"],
 		["Description"] = args["Description"],
 		["Tags"] = args["Tags"],
 	}
-	asserts.AssertCreateClusterSecurityGroupMessage(t)
-	return t
+	asserts.AssertCreateClusterSecurityGroupMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.HsmClientCertificateNotFoundFault = { nil }
@@ -2617,11 +3552,22 @@ end
 -- Valid keys:
 -- @return HsmClientCertificateNotFoundFault structure as a key-value pair table
 function M.HsmClientCertificateNotFoundFault(args)
-	assert(args, "You must provdide an argument table when creating HsmClientCertificateNotFoundFault")
-	local t = { 
+	assert(args, "You must provide an argument table when creating HsmClientCertificateNotFoundFault")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertHsmClientCertificateNotFoundFault(t)
-	return t
+	asserts.AssertHsmClientCertificateNotFoundFault(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.EventSubscriptionQuotaExceededFault = { nil }
@@ -2640,11 +3586,22 @@ end
 -- Valid keys:
 -- @return EventSubscriptionQuotaExceededFault structure as a key-value pair table
 function M.EventSubscriptionQuotaExceededFault(args)
-	assert(args, "You must provdide an argument table when creating EventSubscriptionQuotaExceededFault")
-	local t = { 
+	assert(args, "You must provide an argument table when creating EventSubscriptionQuotaExceededFault")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertEventSubscriptionQuotaExceededFault(t)
-	return t
+	asserts.AssertEventSubscriptionQuotaExceededFault(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteClusterSnapshotMessage = { ["SnapshotClusterIdentifier"] = true, ["SnapshotIdentifier"] = true, nil }
@@ -2669,13 +3626,24 @@ end
 -- Required key: SnapshotIdentifier
 -- @return DeleteClusterSnapshotMessage structure as a key-value pair table
 function M.DeleteClusterSnapshotMessage(args)
-	assert(args, "You must provdide an argument table when creating DeleteClusterSnapshotMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteClusterSnapshotMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["SnapshotClusterIdentifier"] = args["SnapshotClusterIdentifier"],
 		["SnapshotIdentifier"] = args["SnapshotIdentifier"],
 	}
-	asserts.AssertDeleteClusterSnapshotMessage(t)
-	return t
+	asserts.AssertDeleteClusterSnapshotMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeClusterVersionsMessage = { ["Marker"] = true, ["MaxRecords"] = true, ["ClusterVersion"] = true, ["ClusterParameterGroupFamily"] = true, nil }
@@ -2702,15 +3670,26 @@ end
 -- * ClusterParameterGroupFamily [String] <p>The name of a specific cluster parameter group family to return details for.</p> <p>Constraints:</p> <ul> <li> <p>Must be 1 to 255 alphanumeric characters</p> </li> <li> <p>First character must be a letter</p> </li> <li> <p>Cannot end with a hyphen or contain two consecutive hyphens</p> </li> </ul>
 -- @return DescribeClusterVersionsMessage structure as a key-value pair table
 function M.DescribeClusterVersionsMessage(args)
-	assert(args, "You must provdide an argument table when creating DescribeClusterVersionsMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeClusterVersionsMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Marker"] = args["Marker"],
 		["MaxRecords"] = args["MaxRecords"],
 		["ClusterVersion"] = args["ClusterVersion"],
 		["ClusterParameterGroupFamily"] = args["ClusterParameterGroupFamily"],
 	}
-	asserts.AssertDescribeClusterVersionsMessage(t)
-	return t
+	asserts.AssertDescribeClusterVersionsMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ClustersMessage = { ["Marker"] = true, ["Clusters"] = true, nil }
@@ -2733,13 +3712,24 @@ end
 -- * Clusters [ClusterList] <p>A list of <code>Cluster</code> objects, where each object describes one cluster. </p>
 -- @return ClustersMessage structure as a key-value pair table
 function M.ClustersMessage(args)
-	assert(args, "You must provdide an argument table when creating ClustersMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ClustersMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Marker"] = args["Marker"],
 		["Clusters"] = args["Clusters"],
 	}
-	asserts.AssertClustersMessage(t)
-	return t
+	asserts.AssertClustersMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AuthorizationQuotaExceededFault = { nil }
@@ -2758,11 +3748,22 @@ end
 -- Valid keys:
 -- @return AuthorizationQuotaExceededFault structure as a key-value pair table
 function M.AuthorizationQuotaExceededFault(args)
-	assert(args, "You must provdide an argument table when creating AuthorizationQuotaExceededFault")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AuthorizationQuotaExceededFault")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertAuthorizationQuotaExceededFault(t)
-	return t
+	asserts.AssertAuthorizationQuotaExceededFault(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DisableSnapshotCopyMessage = { ["ClusterIdentifier"] = true, nil }
@@ -2785,12 +3786,23 @@ end
 -- Required key: ClusterIdentifier
 -- @return DisableSnapshotCopyMessage structure as a key-value pair table
 function M.DisableSnapshotCopyMessage(args)
-	assert(args, "You must provdide an argument table when creating DisableSnapshotCopyMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DisableSnapshotCopyMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ClusterIdentifier"] = args["ClusterIdentifier"],
 	}
-	asserts.AssertDisableSnapshotCopyMessage(t)
-	return t
+	asserts.AssertDisableSnapshotCopyMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.SourceNotFoundFault = { nil }
@@ -2809,11 +3821,22 @@ end
 -- Valid keys:
 -- @return SourceNotFoundFault structure as a key-value pair table
 function M.SourceNotFoundFault(args)
-	assert(args, "You must provdide an argument table when creating SourceNotFoundFault")
-	local t = { 
+	assert(args, "You must provide an argument table when creating SourceNotFoundFault")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertSourceNotFoundFault(t)
-	return t
+	asserts.AssertSourceNotFoundFault(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ModifySnapshotCopyRetentionPeriodMessage = { ["ClusterIdentifier"] = true, ["RetentionPeriod"] = true, nil }
@@ -2840,13 +3863,24 @@ end
 -- Required key: RetentionPeriod
 -- @return ModifySnapshotCopyRetentionPeriodMessage structure as a key-value pair table
 function M.ModifySnapshotCopyRetentionPeriodMessage(args)
-	assert(args, "You must provdide an argument table when creating ModifySnapshotCopyRetentionPeriodMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ModifySnapshotCopyRetentionPeriodMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ClusterIdentifier"] = args["ClusterIdentifier"],
 		["RetentionPeriod"] = args["RetentionPeriod"],
 	}
-	asserts.AssertModifySnapshotCopyRetentionPeriodMessage(t)
-	return t
+	asserts.AssertModifySnapshotCopyRetentionPeriodMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DisableSnapshotCopyResult = { ["Cluster"] = true, nil }
@@ -2867,12 +3901,23 @@ end
 -- * Cluster [Cluster] 
 -- @return DisableSnapshotCopyResult structure as a key-value pair table
 function M.DisableSnapshotCopyResult(args)
-	assert(args, "You must provdide an argument table when creating DisableSnapshotCopyResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DisableSnapshotCopyResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Cluster"] = args["Cluster"],
 	}
-	asserts.AssertDisableSnapshotCopyResult(t)
-	return t
+	asserts.AssertDisableSnapshotCopyResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteClusterSnapshotResult = { ["Snapshot"] = true, nil }
@@ -2893,12 +3938,23 @@ end
 -- * Snapshot [Snapshot] 
 -- @return DeleteClusterSnapshotResult structure as a key-value pair table
 function M.DeleteClusterSnapshotResult(args)
-	assert(args, "You must provdide an argument table when creating DeleteClusterSnapshotResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteClusterSnapshotResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Snapshot"] = args["Snapshot"],
 	}
-	asserts.AssertDeleteClusterSnapshotResult(t)
-	return t
+	asserts.AssertDeleteClusterSnapshotResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateHsmConfigurationMessage = { ["HsmPartitionName"] = true, ["Description"] = true, ["Tags"] = true, ["HsmPartitionPassword"] = true, ["HsmConfigurationIdentifier"] = true, ["HsmIpAddress"] = true, ["HsmServerPublicCertificate"] = true, nil }
@@ -2943,8 +3999,14 @@ end
 -- Required key: HsmServerPublicCertificate
 -- @return CreateHsmConfigurationMessage structure as a key-value pair table
 function M.CreateHsmConfigurationMessage(args)
-	assert(args, "You must provdide an argument table when creating CreateHsmConfigurationMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateHsmConfigurationMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["HsmPartitionName"] = args["HsmPartitionName"],
 		["Description"] = args["Description"],
 		["Tags"] = args["Tags"],
@@ -2953,8 +4015,13 @@ function M.CreateHsmConfigurationMessage(args)
 		["HsmIpAddress"] = args["HsmIpAddress"],
 		["HsmServerPublicCertificate"] = args["HsmServerPublicCertificate"],
 	}
-	asserts.AssertCreateHsmConfigurationMessage(t)
-	return t
+	asserts.AssertCreateHsmConfigurationMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.EC2SecurityGroup = { ["Status"] = true, ["EC2SecurityGroupName"] = true, ["EC2SecurityGroupOwnerId"] = true, ["Tags"] = true, nil }
@@ -2981,15 +4048,26 @@ end
 -- * Tags [TagList] <p>The list of tags for the EC2 security group.</p>
 -- @return EC2SecurityGroup structure as a key-value pair table
 function M.EC2SecurityGroup(args)
-	assert(args, "You must provdide an argument table when creating EC2SecurityGroup")
-	local t = { 
+	assert(args, "You must provide an argument table when creating EC2SecurityGroup")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Status"] = args["Status"],
 		["EC2SecurityGroupName"] = args["EC2SecurityGroupName"],
 		["EC2SecurityGroupOwnerId"] = args["EC2SecurityGroupOwnerId"],
 		["Tags"] = args["Tags"],
 	}
-	asserts.AssertEC2SecurityGroup(t)
-	return t
+	asserts.AssertEC2SecurityGroup(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.RecurringCharge = { ["RecurringChargeAmount"] = true, ["RecurringChargeFrequency"] = true, nil }
@@ -3012,13 +4090,24 @@ end
 -- * RecurringChargeFrequency [String] <p>The frequency at which the recurring charge amount is applied.</p>
 -- @return RecurringCharge structure as a key-value pair table
 function M.RecurringCharge(args)
-	assert(args, "You must provdide an argument table when creating RecurringCharge")
-	local t = { 
+	assert(args, "You must provide an argument table when creating RecurringCharge")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["RecurringChargeAmount"] = args["RecurringChargeAmount"],
 		["RecurringChargeFrequency"] = args["RecurringChargeFrequency"],
 	}
-	asserts.AssertRecurringCharge(t)
-	return t
+	asserts.AssertRecurringCharge(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.EventCategoriesMessage = { ["EventCategoriesMapList"] = true, nil }
@@ -3039,12 +4128,23 @@ end
 -- * EventCategoriesMapList [EventCategoriesMapList] <p>A list of event categories descriptions.</p>
 -- @return EventCategoriesMessage structure as a key-value pair table
 function M.EventCategoriesMessage(args)
-	assert(args, "You must provdide an argument table when creating EventCategoriesMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating EventCategoriesMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["EventCategoriesMapList"] = args["EventCategoriesMapList"],
 	}
-	asserts.AssertEventCategoriesMessage(t)
-	return t
+	asserts.AssertEventCategoriesMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.PendingModifiedValues = { ["ClusterVersion"] = true, ["PubliclyAccessible"] = true, ["EnhancedVpcRouting"] = true, ["ClusterType"] = true, ["MasterUserPassword"] = true, ["AutomatedSnapshotRetentionPeriod"] = true, ["NodeType"] = true, ["ClusterIdentifier"] = true, ["NumberOfNodes"] = true, nil }
@@ -3081,8 +4181,14 @@ end
 -- * NumberOfNodes [IntegerOptional] <p>The pending or in-progress change of the number of nodes in the cluster.</p>
 -- @return PendingModifiedValues structure as a key-value pair table
 function M.PendingModifiedValues(args)
-	assert(args, "You must provdide an argument table when creating PendingModifiedValues")
-	local t = { 
+	assert(args, "You must provide an argument table when creating PendingModifiedValues")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ClusterVersion"] = args["ClusterVersion"],
 		["PubliclyAccessible"] = args["PubliclyAccessible"],
 		["EnhancedVpcRouting"] = args["EnhancedVpcRouting"],
@@ -3093,8 +4199,13 @@ function M.PendingModifiedValues(args)
 		["ClusterIdentifier"] = args["ClusterIdentifier"],
 		["NumberOfNodes"] = args["NumberOfNodes"],
 	}
-	asserts.AssertPendingModifiedValues(t)
-	return t
+	asserts.AssertPendingModifiedValues(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetClusterCredentialsMessage = { ["DbGroups"] = true, ["AutoCreate"] = true, ["DurationSeconds"] = true, ["DbUser"] = true, ["ClusterIdentifier"] = true, ["DbName"] = true, nil }
@@ -3129,8 +4240,14 @@ end
 -- Required key: ClusterIdentifier
 -- @return GetClusterCredentialsMessage structure as a key-value pair table
 function M.GetClusterCredentialsMessage(args)
-	assert(args, "You must provdide an argument table when creating GetClusterCredentialsMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetClusterCredentialsMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DbGroups"] = args["DbGroups"],
 		["AutoCreate"] = args["AutoCreate"],
 		["DurationSeconds"] = args["DurationSeconds"],
@@ -3138,8 +4255,13 @@ function M.GetClusterCredentialsMessage(args)
 		["ClusterIdentifier"] = args["ClusterIdentifier"],
 		["DbName"] = args["DbName"],
 	}
-	asserts.AssertGetClusterCredentialsMessage(t)
-	return t
+	asserts.AssertGetClusterCredentialsMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.EventInfoMap = { ["EventId"] = true, ["EventCategories"] = true, ["Severity"] = true, ["EventDescription"] = true, nil }
@@ -3166,15 +4288,26 @@ end
 -- * EventDescription [String] <p>The description of an Amazon Redshift event.</p>
 -- @return EventInfoMap structure as a key-value pair table
 function M.EventInfoMap(args)
-	assert(args, "You must provdide an argument table when creating EventInfoMap")
-	local t = { 
+	assert(args, "You must provide an argument table when creating EventInfoMap")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["EventId"] = args["EventId"],
 		["EventCategories"] = args["EventCategories"],
 		["Severity"] = args["Severity"],
 		["EventDescription"] = args["EventDescription"],
 	}
-	asserts.AssertEventInfoMap(t)
-	return t
+	asserts.AssertEventInfoMap(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteSnapshotCopyGrantMessage = { ["SnapshotCopyGrantName"] = true, nil }
@@ -3197,12 +4330,23 @@ end
 -- Required key: SnapshotCopyGrantName
 -- @return DeleteSnapshotCopyGrantMessage structure as a key-value pair table
 function M.DeleteSnapshotCopyGrantMessage(args)
-	assert(args, "You must provdide an argument table when creating DeleteSnapshotCopyGrantMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteSnapshotCopyGrantMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["SnapshotCopyGrantName"] = args["SnapshotCopyGrantName"],
 	}
-	asserts.AssertDeleteSnapshotCopyGrantMessage(t)
-	return t
+	asserts.AssertDeleteSnapshotCopyGrantMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidClusterSubnetStateFault = { nil }
@@ -3221,11 +4365,22 @@ end
 -- Valid keys:
 -- @return InvalidClusterSubnetStateFault structure as a key-value pair table
 function M.InvalidClusterSubnetStateFault(args)
-	assert(args, "You must provdide an argument table when creating InvalidClusterSubnetStateFault")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidClusterSubnetStateFault")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertInvalidClusterSubnetStateFault(t)
-	return t
+	asserts.AssertInvalidClusterSubnetStateFault(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UnauthorizedOperation = { nil }
@@ -3244,11 +4399,22 @@ end
 -- Valid keys:
 -- @return UnauthorizedOperation structure as a key-value pair table
 function M.UnauthorizedOperation(args)
-	assert(args, "You must provdide an argument table when creating UnauthorizedOperation")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UnauthorizedOperation")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertUnauthorizedOperation(t)
-	return t
+	asserts.AssertUnauthorizedOperation(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.RestoreFromClusterSnapshotResult = { ["Cluster"] = true, nil }
@@ -3269,12 +4435,23 @@ end
 -- * Cluster [Cluster] 
 -- @return RestoreFromClusterSnapshotResult structure as a key-value pair table
 function M.RestoreFromClusterSnapshotResult(args)
-	assert(args, "You must provdide an argument table when creating RestoreFromClusterSnapshotResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating RestoreFromClusterSnapshotResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Cluster"] = args["Cluster"],
 	}
-	asserts.AssertRestoreFromClusterSnapshotResult(t)
-	return t
+	asserts.AssertRestoreFromClusterSnapshotResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeDefaultClusterParametersMessage = { ["Marker"] = true, ["ParameterGroupFamily"] = true, ["MaxRecords"] = true, nil }
@@ -3301,14 +4478,25 @@ end
 -- Required key: ParameterGroupFamily
 -- @return DescribeDefaultClusterParametersMessage structure as a key-value pair table
 function M.DescribeDefaultClusterParametersMessage(args)
-	assert(args, "You must provdide an argument table when creating DescribeDefaultClusterParametersMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeDefaultClusterParametersMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Marker"] = args["Marker"],
 		["ParameterGroupFamily"] = args["ParameterGroupFamily"],
 		["MaxRecords"] = args["MaxRecords"],
 	}
-	asserts.AssertDescribeDefaultClusterParametersMessage(t)
-	return t
+	asserts.AssertDescribeDefaultClusterParametersMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.EventSubscriptionsMessage = { ["Marker"] = true, ["EventSubscriptionsList"] = true, nil }
@@ -3331,13 +4519,24 @@ end
 -- * EventSubscriptionsList [EventSubscriptionsList] <p>A list of event subscriptions.</p>
 -- @return EventSubscriptionsMessage structure as a key-value pair table
 function M.EventSubscriptionsMessage(args)
-	assert(args, "You must provdide an argument table when creating EventSubscriptionsMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating EventSubscriptionsMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Marker"] = args["Marker"],
 		["EventSubscriptionsList"] = args["EventSubscriptionsList"],
 	}
-	asserts.AssertEventSubscriptionsMessage(t)
-	return t
+	asserts.AssertEventSubscriptionsMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateHsmClientCertificateResult = { ["HsmClientCertificate"] = true, nil }
@@ -3358,12 +4557,23 @@ end
 -- * HsmClientCertificate [HsmClientCertificate] 
 -- @return CreateHsmClientCertificateResult structure as a key-value pair table
 function M.CreateHsmClientCertificateResult(args)
-	assert(args, "You must provdide an argument table when creating CreateHsmClientCertificateResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateHsmClientCertificateResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["HsmClientCertificate"] = args["HsmClientCertificate"],
 	}
-	asserts.AssertCreateHsmClientCertificateResult(t)
-	return t
+	asserts.AssertCreateHsmClientCertificateResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.RestoreFromClusterSnapshotMessage = { ["ClusterParameterGroupName"] = true, ["PubliclyAccessible"] = true, ["OwnerAccount"] = true, ["VpcSecurityGroupIds"] = true, ["SnapshotClusterIdentifier"] = true, ["AutomatedSnapshotRetentionPeriod"] = true, ["EnhancedVpcRouting"] = true, ["PreferredMaintenanceWindow"] = true, ["AdditionalInfo"] = true, ["IamRoles"] = true, ["AllowVersionUpgrade"] = true, ["HsmConfigurationIdentifier"] = true, ["ClusterSecurityGroups"] = true, ["ClusterIdentifier"] = true, ["HsmClientCertificateIdentifier"] = true, ["AvailabilityZone"] = true, ["NodeType"] = true, ["ElasticIp"] = true, ["KmsKeyId"] = true, ["SnapshotIdentifier"] = true, ["Port"] = true, ["ClusterSubnetGroupName"] = true, nil }
@@ -3430,8 +4640,14 @@ end
 -- Required key: SnapshotIdentifier
 -- @return RestoreFromClusterSnapshotMessage structure as a key-value pair table
 function M.RestoreFromClusterSnapshotMessage(args)
-	assert(args, "You must provdide an argument table when creating RestoreFromClusterSnapshotMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating RestoreFromClusterSnapshotMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ClusterParameterGroupName"] = args["ClusterParameterGroupName"],
 		["PubliclyAccessible"] = args["PubliclyAccessible"],
 		["OwnerAccount"] = args["OwnerAccount"],
@@ -3455,8 +4671,13 @@ function M.RestoreFromClusterSnapshotMessage(args)
 		["Port"] = args["Port"],
 		["ClusterSubnetGroupName"] = args["ClusterSubnetGroupName"],
 	}
-	asserts.AssertRestoreFromClusterSnapshotMessage(t)
-	return t
+	asserts.AssertRestoreFromClusterSnapshotMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.HsmClientCertificate = { ["HsmClientCertificatePublicKey"] = true, ["HsmClientCertificateIdentifier"] = true, ["Tags"] = true, nil }
@@ -3481,14 +4702,25 @@ end
 -- * Tags [TagList] <p>The list of tags for the HSM client certificate.</p>
 -- @return HsmClientCertificate structure as a key-value pair table
 function M.HsmClientCertificate(args)
-	assert(args, "You must provdide an argument table when creating HsmClientCertificate")
-	local t = { 
+	assert(args, "You must provide an argument table when creating HsmClientCertificate")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["HsmClientCertificatePublicKey"] = args["HsmClientCertificatePublicKey"],
 		["HsmClientCertificateIdentifier"] = args["HsmClientCertificateIdentifier"],
 		["Tags"] = args["Tags"],
 	}
-	asserts.AssertHsmClientCertificate(t)
-	return t
+	asserts.AssertHsmClientCertificate(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AvailabilityZone = { ["Name"] = true, nil }
@@ -3509,12 +4741,23 @@ end
 -- * Name [String] <p>The name of the availability zone.</p>
 -- @return AvailabilityZone structure as a key-value pair table
 function M.AvailabilityZone(args)
-	assert(args, "You must provdide an argument table when creating AvailabilityZone")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AvailabilityZone")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Name"] = args["Name"],
 	}
-	asserts.AssertAvailabilityZone(t)
-	return t
+	asserts.AssertAvailabilityZone(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeHsmClientCertificatesMessage = { ["Marker"] = true, ["TagValues"] = true, ["MaxRecords"] = true, ["TagKeys"] = true, ["HsmClientCertificateIdentifier"] = true, nil }
@@ -3543,16 +4786,27 @@ end
 -- * HsmClientCertificateIdentifier [String] <p>The identifier of a specific HSM client certificate for which you want information. If no identifier is specified, information is returned for all HSM client certificates owned by your AWS customer account.</p>
 -- @return DescribeHsmClientCertificatesMessage structure as a key-value pair table
 function M.DescribeHsmClientCertificatesMessage(args)
-	assert(args, "You must provdide an argument table when creating DescribeHsmClientCertificatesMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeHsmClientCertificatesMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Marker"] = args["Marker"],
 		["TagValues"] = args["TagValues"],
 		["MaxRecords"] = args["MaxRecords"],
 		["TagKeys"] = args["TagKeys"],
 		["HsmClientCertificateIdentifier"] = args["HsmClientCertificateIdentifier"],
 	}
-	asserts.AssertDescribeHsmClientCertificatesMessage(t)
-	return t
+	asserts.AssertDescribeHsmClientCertificatesMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidTagFault = { nil }
@@ -3571,11 +4825,22 @@ end
 -- Valid keys:
 -- @return InvalidTagFault structure as a key-value pair table
 function M.InvalidTagFault(args)
-	assert(args, "You must provdide an argument table when creating InvalidTagFault")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidTagFault")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertInvalidTagFault(t)
-	return t
+	asserts.AssertInvalidTagFault(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.IPRange = { ["Status"] = true, ["Tags"] = true, ["CIDRIP"] = true, nil }
@@ -3600,14 +4865,25 @@ end
 -- * CIDRIP [String] <p>The IP range in Classless Inter-Domain Routing (CIDR) notation.</p>
 -- @return IPRange structure as a key-value pair table
 function M.IPRange(args)
-	assert(args, "You must provdide an argument table when creating IPRange")
-	local t = { 
+	assert(args, "You must provide an argument table when creating IPRange")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Status"] = args["Status"],
 		["Tags"] = args["Tags"],
 		["CIDRIP"] = args["CIDRIP"],
 	}
-	asserts.AssertIPRange(t)
-	return t
+	asserts.AssertIPRange(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ModifySnapshotCopyRetentionPeriodResult = { ["Cluster"] = true, nil }
@@ -3628,12 +4904,23 @@ end
 -- * Cluster [Cluster] 
 -- @return ModifySnapshotCopyRetentionPeriodResult structure as a key-value pair table
 function M.ModifySnapshotCopyRetentionPeriodResult(args)
-	assert(args, "You must provdide an argument table when creating ModifySnapshotCopyRetentionPeriodResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ModifySnapshotCopyRetentionPeriodResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Cluster"] = args["Cluster"],
 	}
-	asserts.AssertModifySnapshotCopyRetentionPeriodResult(t)
-	return t
+	asserts.AssertModifySnapshotCopyRetentionPeriodResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.SnapshotCopyGrantAlreadyExistsFault = { nil }
@@ -3652,11 +4939,22 @@ end
 -- Valid keys:
 -- @return SnapshotCopyGrantAlreadyExistsFault structure as a key-value pair table
 function M.SnapshotCopyGrantAlreadyExistsFault(args)
-	assert(args, "You must provdide an argument table when creating SnapshotCopyGrantAlreadyExistsFault")
-	local t = { 
+	assert(args, "You must provide an argument table when creating SnapshotCopyGrantAlreadyExistsFault")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertSnapshotCopyGrantAlreadyExistsFault(t)
-	return t
+	asserts.AssertSnapshotCopyGrantAlreadyExistsFault(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteClusterSecurityGroupMessage = { ["ClusterSecurityGroupName"] = true, nil }
@@ -3679,12 +4977,23 @@ end
 -- Required key: ClusterSecurityGroupName
 -- @return DeleteClusterSecurityGroupMessage structure as a key-value pair table
 function M.DeleteClusterSecurityGroupMessage(args)
-	assert(args, "You must provdide an argument table when creating DeleteClusterSecurityGroupMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteClusterSecurityGroupMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ClusterSecurityGroupName"] = args["ClusterSecurityGroupName"],
 	}
-	asserts.AssertDeleteClusterSecurityGroupMessage(t)
-	return t
+	asserts.AssertDeleteClusterSecurityGroupMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeReservedNodesMessage = { ["Marker"] = true, ["ReservedNodeId"] = true, ["MaxRecords"] = true, nil }
@@ -3709,14 +5018,25 @@ end
 -- * MaxRecords [IntegerOptional] <p>The maximum number of response records to return in each call. If the number of remaining response records exceeds the specified <code>MaxRecords</code> value, a value is returned in a <code>marker</code> field of the response. You can retrieve the next set of records by retrying the command with the returned marker value. </p> <p>Default: <code>100</code> </p> <p>Constraints: minimum 20, maximum 100.</p>
 -- @return DescribeReservedNodesMessage structure as a key-value pair table
 function M.DescribeReservedNodesMessage(args)
-	assert(args, "You must provdide an argument table when creating DescribeReservedNodesMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeReservedNodesMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Marker"] = args["Marker"],
 		["ReservedNodeId"] = args["ReservedNodeId"],
 		["MaxRecords"] = args["MaxRecords"],
 	}
-	asserts.AssertDescribeReservedNodesMessage(t)
-	return t
+	asserts.AssertDescribeReservedNodesMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeReservedNodeOfferingsMessage = { ["Marker"] = true, ["MaxRecords"] = true, ["ReservedNodeOfferingId"] = true, nil }
@@ -3741,14 +5061,25 @@ end
 -- * ReservedNodeOfferingId [String] <p>The unique identifier for the offering.</p>
 -- @return DescribeReservedNodeOfferingsMessage structure as a key-value pair table
 function M.DescribeReservedNodeOfferingsMessage(args)
-	assert(args, "You must provdide an argument table when creating DescribeReservedNodeOfferingsMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeReservedNodeOfferingsMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Marker"] = args["Marker"],
 		["MaxRecords"] = args["MaxRecords"],
 		["ReservedNodeOfferingId"] = args["ReservedNodeOfferingId"],
 	}
-	asserts.AssertDescribeReservedNodeOfferingsMessage(t)
-	return t
+	asserts.AssertDescribeReservedNodeOfferingsMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CopyClusterSnapshotMessage = { ["SourceSnapshotIdentifier"] = true, ["SourceSnapshotClusterIdentifier"] = true, ["TargetSnapshotIdentifier"] = true, nil }
@@ -3777,14 +5108,25 @@ end
 -- Required key: TargetSnapshotIdentifier
 -- @return CopyClusterSnapshotMessage structure as a key-value pair table
 function M.CopyClusterSnapshotMessage(args)
-	assert(args, "You must provdide an argument table when creating CopyClusterSnapshotMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CopyClusterSnapshotMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["SourceSnapshotIdentifier"] = args["SourceSnapshotIdentifier"],
 		["SourceSnapshotClusterIdentifier"] = args["SourceSnapshotClusterIdentifier"],
 		["TargetSnapshotIdentifier"] = args["TargetSnapshotIdentifier"],
 	}
-	asserts.AssertCopyClusterSnapshotMessage(t)
-	return t
+	asserts.AssertCopyClusterSnapshotMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.RevokeSnapshotAccessMessage = { ["AccountWithRestoreAccess"] = true, ["SnapshotClusterIdentifier"] = true, ["SnapshotIdentifier"] = true, nil }
@@ -3813,14 +5155,25 @@ end
 -- Required key: AccountWithRestoreAccess
 -- @return RevokeSnapshotAccessMessage structure as a key-value pair table
 function M.RevokeSnapshotAccessMessage(args)
-	assert(args, "You must provdide an argument table when creating RevokeSnapshotAccessMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating RevokeSnapshotAccessMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["AccountWithRestoreAccess"] = args["AccountWithRestoreAccess"],
 		["SnapshotClusterIdentifier"] = args["SnapshotClusterIdentifier"],
 		["SnapshotIdentifier"] = args["SnapshotIdentifier"],
 	}
-	asserts.AssertRevokeSnapshotAccessMessage(t)
-	return t
+	asserts.AssertRevokeSnapshotAccessMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidClusterSnapshotStateFault = { nil }
@@ -3839,11 +5192,22 @@ end
 -- Valid keys:
 -- @return InvalidClusterSnapshotStateFault structure as a key-value pair table
 function M.InvalidClusterSnapshotStateFault(args)
-	assert(args, "You must provdide an argument table when creating InvalidClusterSnapshotStateFault")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidClusterSnapshotStateFault")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertInvalidClusterSnapshotStateFault(t)
-	return t
+	asserts.AssertInvalidClusterSnapshotStateFault(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Subnet = { ["SubnetStatus"] = true, ["SubnetIdentifier"] = true, ["SubnetAvailabilityZone"] = true, nil }
@@ -3868,14 +5232,25 @@ end
 -- * SubnetAvailabilityZone [AvailabilityZone] 
 -- @return Subnet structure as a key-value pair table
 function M.Subnet(args)
-	assert(args, "You must provdide an argument table when creating Subnet")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Subnet")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["SubnetStatus"] = args["SubnetStatus"],
 		["SubnetIdentifier"] = args["SubnetIdentifier"],
 		["SubnetAvailabilityZone"] = args["SubnetAvailabilityZone"],
 	}
-	asserts.AssertSubnet(t)
-	return t
+	asserts.AssertSubnet(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidHsmClientCertificateStateFault = { nil }
@@ -3894,11 +5269,22 @@ end
 -- Valid keys:
 -- @return InvalidHsmClientCertificateStateFault structure as a key-value pair table
 function M.InvalidHsmClientCertificateStateFault(args)
-	assert(args, "You must provdide an argument table when creating InvalidHsmClientCertificateStateFault")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidHsmClientCertificateStateFault")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertInvalidHsmClientCertificateStateFault(t)
-	return t
+	asserts.AssertInvalidHsmClientCertificateStateFault(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidS3BucketNameFault = { nil }
@@ -3917,11 +5303,22 @@ end
 -- Valid keys:
 -- @return InvalidS3BucketNameFault structure as a key-value pair table
 function M.InvalidS3BucketNameFault(args)
-	assert(args, "You must provdide an argument table when creating InvalidS3BucketNameFault")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidS3BucketNameFault")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertInvalidS3BucketNameFault(t)
-	return t
+	asserts.AssertInvalidS3BucketNameFault(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.SnapshotCopyGrantQuotaExceededFault = { nil }
@@ -3940,11 +5337,22 @@ end
 -- Valid keys:
 -- @return SnapshotCopyGrantQuotaExceededFault structure as a key-value pair table
 function M.SnapshotCopyGrantQuotaExceededFault(args)
-	assert(args, "You must provdide an argument table when creating SnapshotCopyGrantQuotaExceededFault")
-	local t = { 
+	assert(args, "You must provide an argument table when creating SnapshotCopyGrantQuotaExceededFault")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertSnapshotCopyGrantQuotaExceededFault(t)
-	return t
+	asserts.AssertSnapshotCopyGrantQuotaExceededFault(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AuthorizationNotFoundFault = { nil }
@@ -3963,11 +5371,22 @@ end
 -- Valid keys:
 -- @return AuthorizationNotFoundFault structure as a key-value pair table
 function M.AuthorizationNotFoundFault(args)
-	assert(args, "You must provdide an argument table when creating AuthorizationNotFoundFault")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AuthorizationNotFoundFault")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertAuthorizationNotFoundFault(t)
-	return t
+	asserts.AssertAuthorizationNotFoundFault(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.LimitExceededFault = { nil }
@@ -3986,11 +5405,22 @@ end
 -- Valid keys:
 -- @return LimitExceededFault structure as a key-value pair table
 function M.LimitExceededFault(args)
-	assert(args, "You must provdide an argument table when creating LimitExceededFault")
-	local t = { 
+	assert(args, "You must provide an argument table when creating LimitExceededFault")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertLimitExceededFault(t)
-	return t
+	asserts.AssertLimitExceededFault(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AuthorizeClusterSecurityGroupIngressResult = { ["ClusterSecurityGroup"] = true, nil }
@@ -4011,12 +5441,23 @@ end
 -- * ClusterSecurityGroup [ClusterSecurityGroup] 
 -- @return AuthorizeClusterSecurityGroupIngressResult structure as a key-value pair table
 function M.AuthorizeClusterSecurityGroupIngressResult(args)
-	assert(args, "You must provdide an argument table when creating AuthorizeClusterSecurityGroupIngressResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AuthorizeClusterSecurityGroupIngressResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ClusterSecurityGroup"] = args["ClusterSecurityGroup"],
 	}
-	asserts.AssertAuthorizeClusterSecurityGroupIngressResult(t)
-	return t
+	asserts.AssertAuthorizeClusterSecurityGroupIngressResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ModifyClusterParameterGroupMessage = { ["ParameterGroupName"] = true, ["Parameters"] = true, nil }
@@ -4043,13 +5484,24 @@ end
 -- Required key: Parameters
 -- @return ModifyClusterParameterGroupMessage structure as a key-value pair table
 function M.ModifyClusterParameterGroupMessage(args)
-	assert(args, "You must provdide an argument table when creating ModifyClusterParameterGroupMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ModifyClusterParameterGroupMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ParameterGroupName"] = args["ParameterGroupName"],
 		["Parameters"] = args["Parameters"],
 	}
-	asserts.AssertModifyClusterParameterGroupMessage(t)
-	return t
+	asserts.AssertModifyClusterParameterGroupMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeClusterSnapshotsMessage = { ["TagKeys"] = true, ["OwnerAccount"] = true, ["TagValues"] = true, ["Marker"] = true, ["MaxRecords"] = true, ["StartTime"] = true, ["SnapshotType"] = true, ["ClusterIdentifier"] = true, ["EndTime"] = true, ["SnapshotIdentifier"] = true, nil }
@@ -4088,8 +5540,14 @@ end
 -- * SnapshotIdentifier [String] <p>The snapshot identifier of the snapshot about which to return information.</p>
 -- @return DescribeClusterSnapshotsMessage structure as a key-value pair table
 function M.DescribeClusterSnapshotsMessage(args)
-	assert(args, "You must provdide an argument table when creating DescribeClusterSnapshotsMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeClusterSnapshotsMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["TagKeys"] = args["TagKeys"],
 		["OwnerAccount"] = args["OwnerAccount"],
 		["TagValues"] = args["TagValues"],
@@ -4101,8 +5559,13 @@ function M.DescribeClusterSnapshotsMessage(args)
 		["EndTime"] = args["EndTime"],
 		["SnapshotIdentifier"] = args["SnapshotIdentifier"],
 	}
-	asserts.AssertDescribeClusterSnapshotsMessage(t)
-	return t
+	asserts.AssertDescribeClusterSnapshotsMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ModifyClusterSubnetGroupResult = { ["ClusterSubnetGroup"] = true, nil }
@@ -4123,12 +5586,23 @@ end
 -- * ClusterSubnetGroup [ClusterSubnetGroup] 
 -- @return ModifyClusterSubnetGroupResult structure as a key-value pair table
 function M.ModifyClusterSubnetGroupResult(args)
-	assert(args, "You must provdide an argument table when creating ModifyClusterSubnetGroupResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ModifyClusterSubnetGroupResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ClusterSubnetGroup"] = args["ClusterSubnetGroup"],
 	}
-	asserts.AssertModifyClusterSubnetGroupResult(t)
-	return t
+	asserts.AssertModifyClusterSubnetGroupResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateClusterSnapshotResult = { ["Snapshot"] = true, nil }
@@ -4149,12 +5623,23 @@ end
 -- * Snapshot [Snapshot] 
 -- @return CreateClusterSnapshotResult structure as a key-value pair table
 function M.CreateClusterSnapshotResult(args)
-	assert(args, "You must provdide an argument table when creating CreateClusterSnapshotResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateClusterSnapshotResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Snapshot"] = args["Snapshot"],
 	}
-	asserts.AssertCreateClusterSnapshotResult(t)
-	return t
+	asserts.AssertCreateClusterSnapshotResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ClusterSubnetGroupQuotaExceededFault = { nil }
@@ -4173,11 +5658,22 @@ end
 -- Valid keys:
 -- @return ClusterSubnetGroupQuotaExceededFault structure as a key-value pair table
 function M.ClusterSubnetGroupQuotaExceededFault(args)
-	assert(args, "You must provdide an argument table when creating ClusterSubnetGroupQuotaExceededFault")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ClusterSubnetGroupQuotaExceededFault")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertClusterSubnetGroupQuotaExceededFault(t)
-	return t
+	asserts.AssertClusterSubnetGroupQuotaExceededFault(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DependentServiceUnavailableFault = { nil }
@@ -4196,11 +5692,22 @@ end
 -- Valid keys:
 -- @return DependentServiceUnavailableFault structure as a key-value pair table
 function M.DependentServiceUnavailableFault(args)
-	assert(args, "You must provdide an argument table when creating DependentServiceUnavailableFault")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DependentServiceUnavailableFault")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertDependentServiceUnavailableFault(t)
-	return t
+	asserts.AssertDependentServiceUnavailableFault(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.RestoreTableFromClusterSnapshotMessage = { ["SourceTableName"] = true, ["TargetDatabaseName"] = true, ["SourceSchemaName"] = true, ["NewTableName"] = true, ["TargetSchemaName"] = true, ["ClusterIdentifier"] = true, ["SourceDatabaseName"] = true, ["SnapshotIdentifier"] = true, nil }
@@ -4245,8 +5752,14 @@ end
 -- Required key: NewTableName
 -- @return RestoreTableFromClusterSnapshotMessage structure as a key-value pair table
 function M.RestoreTableFromClusterSnapshotMessage(args)
-	assert(args, "You must provdide an argument table when creating RestoreTableFromClusterSnapshotMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating RestoreTableFromClusterSnapshotMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["SourceTableName"] = args["SourceTableName"],
 		["TargetDatabaseName"] = args["TargetDatabaseName"],
 		["SourceSchemaName"] = args["SourceSchemaName"],
@@ -4256,8 +5769,13 @@ function M.RestoreTableFromClusterSnapshotMessage(args)
 		["SourceDatabaseName"] = args["SourceDatabaseName"],
 		["SnapshotIdentifier"] = args["SnapshotIdentifier"],
 	}
-	asserts.AssertRestoreTableFromClusterSnapshotMessage(t)
-	return t
+	asserts.AssertRestoreTableFromClusterSnapshotMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeResizeMessage = { ["ClusterIdentifier"] = true, nil }
@@ -4280,12 +5798,23 @@ end
 -- Required key: ClusterIdentifier
 -- @return DescribeResizeMessage structure as a key-value pair table
 function M.DescribeResizeMessage(args)
-	assert(args, "You must provdide an argument table when creating DescribeResizeMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeResizeMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ClusterIdentifier"] = args["ClusterIdentifier"],
 	}
-	asserts.AssertDescribeResizeMessage(t)
-	return t
+	asserts.AssertDescribeResizeMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeEventSubscriptionsMessage = { ["Marker"] = true, ["MaxRecords"] = true, ["SubscriptionName"] = true, nil }
@@ -4310,14 +5839,25 @@ end
 -- * SubscriptionName [String] <p>The name of the Amazon Redshift event notification subscription to be described.</p>
 -- @return DescribeEventSubscriptionsMessage structure as a key-value pair table
 function M.DescribeEventSubscriptionsMessage(args)
-	assert(args, "You must provdide an argument table when creating DescribeEventSubscriptionsMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeEventSubscriptionsMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Marker"] = args["Marker"],
 		["MaxRecords"] = args["MaxRecords"],
 		["SubscriptionName"] = args["SubscriptionName"],
 	}
-	asserts.AssertDescribeEventSubscriptionsMessage(t)
-	return t
+	asserts.AssertDescribeEventSubscriptionsMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.EnableSnapshotCopyResult = { ["Cluster"] = true, nil }
@@ -4338,12 +5878,23 @@ end
 -- * Cluster [Cluster] 
 -- @return EnableSnapshotCopyResult structure as a key-value pair table
 function M.EnableSnapshotCopyResult(args)
-	assert(args, "You must provdide an argument table when creating EnableSnapshotCopyResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating EnableSnapshotCopyResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Cluster"] = args["Cluster"],
 	}
-	asserts.AssertEnableSnapshotCopyResult(t)
-	return t
+	asserts.AssertEnableSnapshotCopyResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.SnapshotCopyDisabledFault = { nil }
@@ -4362,11 +5913,22 @@ end
 -- Valid keys:
 -- @return SnapshotCopyDisabledFault structure as a key-value pair table
 function M.SnapshotCopyDisabledFault(args)
-	assert(args, "You must provdide an argument table when creating SnapshotCopyDisabledFault")
-	local t = { 
+	assert(args, "You must provide an argument table when creating SnapshotCopyDisabledFault")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertSnapshotCopyDisabledFault(t)
-	return t
+	asserts.AssertSnapshotCopyDisabledFault(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeTagsMessage = { ["ResourceType"] = true, ["TagValues"] = true, ["MaxRecords"] = true, ["Marker"] = true, ["ResourceName"] = true, ["TagKeys"] = true, nil }
@@ -4397,8 +5959,14 @@ end
 -- * TagKeys [TagKeyList] <p>A tag key or keys for which you want to return all matching resources that are associated with the specified key or keys. For example, suppose that you have resources tagged with keys called <code>owner</code> and <code>environment</code>. If you specify both of these tag keys in the request, Amazon Redshift returns a response with all resources that have either or both of these tag keys associated with them.</p>
 -- @return DescribeTagsMessage structure as a key-value pair table
 function M.DescribeTagsMessage(args)
-	assert(args, "You must provdide an argument table when creating DescribeTagsMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeTagsMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ResourceType"] = args["ResourceType"],
 		["TagValues"] = args["TagValues"],
 		["MaxRecords"] = args["MaxRecords"],
@@ -4406,8 +5974,13 @@ function M.DescribeTagsMessage(args)
 		["ResourceName"] = args["ResourceName"],
 		["TagKeys"] = args["TagKeys"],
 	}
-	asserts.AssertDescribeTagsMessage(t)
-	return t
+	asserts.AssertDescribeTagsMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ClusterParameterGroupAlreadyExistsFault = { nil }
@@ -4426,11 +5999,22 @@ end
 -- Valid keys:
 -- @return ClusterParameterGroupAlreadyExistsFault structure as a key-value pair table
 function M.ClusterParameterGroupAlreadyExistsFault(args)
-	assert(args, "You must provdide an argument table when creating ClusterParameterGroupAlreadyExistsFault")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ClusterParameterGroupAlreadyExistsFault")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertClusterParameterGroupAlreadyExistsFault(t)
-	return t
+	asserts.AssertClusterParameterGroupAlreadyExistsFault(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.SnapshotCopyGrantNotFoundFault = { nil }
@@ -4449,11 +6033,22 @@ end
 -- Valid keys:
 -- @return SnapshotCopyGrantNotFoundFault structure as a key-value pair table
 function M.SnapshotCopyGrantNotFoundFault(args)
-	assert(args, "You must provdide an argument table when creating SnapshotCopyGrantNotFoundFault")
-	local t = { 
+	assert(args, "You must provide an argument table when creating SnapshotCopyGrantNotFoundFault")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertSnapshotCopyGrantNotFoundFault(t)
-	return t
+	asserts.AssertSnapshotCopyGrantNotFoundFault(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.OrderableClusterOptionsMessage = { ["Marker"] = true, ["OrderableClusterOptions"] = true, nil }
@@ -4476,13 +6071,24 @@ end
 -- * OrderableClusterOptions [OrderableClusterOptionsList] <p>An <code>OrderableClusterOption</code> structure containing information about orderable options for the cluster.</p>
 -- @return OrderableClusterOptionsMessage structure as a key-value pair table
 function M.OrderableClusterOptionsMessage(args)
-	assert(args, "You must provdide an argument table when creating OrderableClusterOptionsMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating OrderableClusterOptionsMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Marker"] = args["Marker"],
 		["OrderableClusterOptions"] = args["OrderableClusterOptions"],
 	}
-	asserts.AssertOrderableClusterOptionsMessage(t)
-	return t
+	asserts.AssertOrderableClusterOptionsMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidRestoreFault = { nil }
@@ -4501,11 +6107,22 @@ end
 -- Valid keys:
 -- @return InvalidRestoreFault structure as a key-value pair table
 function M.InvalidRestoreFault(args)
-	assert(args, "You must provdide an argument table when creating InvalidRestoreFault")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidRestoreFault")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertInvalidRestoreFault(t)
-	return t
+	asserts.AssertInvalidRestoreFault(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteClusterResult = { ["Cluster"] = true, nil }
@@ -4526,12 +6143,23 @@ end
 -- * Cluster [Cluster] 
 -- @return DeleteClusterResult structure as a key-value pair table
 function M.DeleteClusterResult(args)
-	assert(args, "You must provdide an argument table when creating DeleteClusterResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteClusterResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Cluster"] = args["Cluster"],
 	}
-	asserts.AssertDeleteClusterResult(t)
-	return t
+	asserts.AssertDeleteClusterResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.SubscriptionCategoryNotFoundFault = { nil }
@@ -4550,11 +6178,22 @@ end
 -- Valid keys:
 -- @return SubscriptionCategoryNotFoundFault structure as a key-value pair table
 function M.SubscriptionCategoryNotFoundFault(args)
-	assert(args, "You must provdide an argument table when creating SubscriptionCategoryNotFoundFault")
-	local t = { 
+	assert(args, "You must provide an argument table when creating SubscriptionCategoryNotFoundFault")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertSubscriptionCategoryNotFoundFault(t)
-	return t
+	asserts.AssertSubscriptionCategoryNotFoundFault(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.SubscriptionSeverityNotFoundFault = { nil }
@@ -4573,11 +6212,22 @@ end
 -- Valid keys:
 -- @return SubscriptionSeverityNotFoundFault structure as a key-value pair table
 function M.SubscriptionSeverityNotFoundFault(args)
-	assert(args, "You must provdide an argument table when creating SubscriptionSeverityNotFoundFault")
-	local t = { 
+	assert(args, "You must provide an argument table when creating SubscriptionSeverityNotFoundFault")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertSubscriptionSeverityNotFoundFault(t)
-	return t
+	asserts.AssertSubscriptionSeverityNotFoundFault(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidSnapshotCopyGrantStateFault = { nil }
@@ -4596,11 +6246,22 @@ end
 -- Valid keys:
 -- @return InvalidSnapshotCopyGrantStateFault structure as a key-value pair table
 function M.InvalidSnapshotCopyGrantStateFault(args)
-	assert(args, "You must provdide an argument table when creating InvalidSnapshotCopyGrantStateFault")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidSnapshotCopyGrantStateFault")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertInvalidSnapshotCopyGrantStateFault(t)
-	return t
+	asserts.AssertInvalidSnapshotCopyGrantStateFault(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeOrderableClusterOptionsMessage = { ["Marker"] = true, ["NodeType"] = true, ["MaxRecords"] = true, ["ClusterVersion"] = true, nil }
@@ -4627,15 +6288,26 @@ end
 -- * ClusterVersion [String] <p>The version filter value. Specify this parameter to show only the available offerings matching the specified version.</p> <p>Default: All versions.</p> <p>Constraints: Must be one of the version returned from <a>DescribeClusterVersions</a>.</p>
 -- @return DescribeOrderableClusterOptionsMessage structure as a key-value pair table
 function M.DescribeOrderableClusterOptionsMessage(args)
-	assert(args, "You must provdide an argument table when creating DescribeOrderableClusterOptionsMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeOrderableClusterOptionsMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Marker"] = args["Marker"],
 		["NodeType"] = args["NodeType"],
 		["MaxRecords"] = args["MaxRecords"],
 		["ClusterVersion"] = args["ClusterVersion"],
 	}
-	asserts.AssertDescribeOrderableClusterOptionsMessage(t)
-	return t
+	asserts.AssertDescribeOrderableClusterOptionsMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ClusterSnapshotAlreadyExistsFault = { nil }
@@ -4654,11 +6326,22 @@ end
 -- Valid keys:
 -- @return ClusterSnapshotAlreadyExistsFault structure as a key-value pair table
 function M.ClusterSnapshotAlreadyExistsFault(args)
-	assert(args, "You must provdide an argument table when creating ClusterSnapshotAlreadyExistsFault")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ClusterSnapshotAlreadyExistsFault")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertClusterSnapshotAlreadyExistsFault(t)
-	return t
+	asserts.AssertClusterSnapshotAlreadyExistsFault(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.TagLimitExceededFault = { nil }
@@ -4677,11 +6360,22 @@ end
 -- Valid keys:
 -- @return TagLimitExceededFault structure as a key-value pair table
 function M.TagLimitExceededFault(args)
-	assert(args, "You must provdide an argument table when creating TagLimitExceededFault")
-	local t = { 
+	assert(args, "You must provide an argument table when creating TagLimitExceededFault")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertTagLimitExceededFault(t)
-	return t
+	asserts.AssertTagLimitExceededFault(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ReservedNodeQuotaExceededFault = { nil }
@@ -4700,11 +6394,22 @@ end
 -- Valid keys:
 -- @return ReservedNodeQuotaExceededFault structure as a key-value pair table
 function M.ReservedNodeQuotaExceededFault(args)
-	assert(args, "You must provdide an argument table when creating ReservedNodeQuotaExceededFault")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ReservedNodeQuotaExceededFault")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertReservedNodeQuotaExceededFault(t)
-	return t
+	asserts.AssertReservedNodeQuotaExceededFault(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateClusterSubnetGroupMessage = { ["SubnetIds"] = true, ["Tags"] = true, ["ClusterSubnetGroupName"] = true, ["Description"] = true, nil }
@@ -4737,15 +6442,26 @@ end
 -- Required key: SubnetIds
 -- @return CreateClusterSubnetGroupMessage structure as a key-value pair table
 function M.CreateClusterSubnetGroupMessage(args)
-	assert(args, "You must provdide an argument table when creating CreateClusterSubnetGroupMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateClusterSubnetGroupMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["SubnetIds"] = args["SubnetIds"],
 		["Tags"] = args["Tags"],
 		["ClusterSubnetGroupName"] = args["ClusterSubnetGroupName"],
 		["Description"] = args["Description"],
 	}
-	asserts.AssertCreateClusterSubnetGroupMessage(t)
-	return t
+	asserts.AssertCreateClusterSubnetGroupMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ClusterSecurityGroup = { ["IPRanges"] = true, ["Tags"] = true, ["ClusterSecurityGroupName"] = true, ["Description"] = true, ["EC2SecurityGroups"] = true, nil }
@@ -4774,16 +6490,27 @@ end
 -- * EC2SecurityGroups [EC2SecurityGroupList] <p>A list of EC2 security groups that are permitted to access clusters associated with this cluster security group.</p>
 -- @return ClusterSecurityGroup structure as a key-value pair table
 function M.ClusterSecurityGroup(args)
-	assert(args, "You must provdide an argument table when creating ClusterSecurityGroup")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ClusterSecurityGroup")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["IPRanges"] = args["IPRanges"],
 		["Tags"] = args["Tags"],
 		["ClusterSecurityGroupName"] = args["ClusterSecurityGroupName"],
 		["Description"] = args["Description"],
 		["EC2SecurityGroups"] = args["EC2SecurityGroups"],
 	}
-	asserts.AssertClusterSecurityGroup(t)
-	return t
+	asserts.AssertClusterSecurityGroup(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeClusterSubnetGroupsMessage = { ["Marker"] = true, ["TagValues"] = true, ["MaxRecords"] = true, ["TagKeys"] = true, ["ClusterSubnetGroupName"] = true, nil }
@@ -4812,16 +6539,27 @@ end
 -- * ClusterSubnetGroupName [String] <p>The name of the cluster subnet group for which information is requested.</p>
 -- @return DescribeClusterSubnetGroupsMessage structure as a key-value pair table
 function M.DescribeClusterSubnetGroupsMessage(args)
-	assert(args, "You must provdide an argument table when creating DescribeClusterSubnetGroupsMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeClusterSubnetGroupsMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Marker"] = args["Marker"],
 		["TagValues"] = args["TagValues"],
 		["MaxRecords"] = args["MaxRecords"],
 		["TagKeys"] = args["TagKeys"],
 		["ClusterSubnetGroupName"] = args["ClusterSubnetGroupName"],
 	}
-	asserts.AssertDescribeClusterSubnetGroupsMessage(t)
-	return t
+	asserts.AssertDescribeClusterSubnetGroupsMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.HsmClientCertificateAlreadyExistsFault = { nil }
@@ -4840,11 +6578,22 @@ end
 -- Valid keys:
 -- @return HsmClientCertificateAlreadyExistsFault structure as a key-value pair table
 function M.HsmClientCertificateAlreadyExistsFault(args)
-	assert(args, "You must provdide an argument table when creating HsmClientCertificateAlreadyExistsFault")
-	local t = { 
+	assert(args, "You must provide an argument table when creating HsmClientCertificateAlreadyExistsFault")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertHsmClientCertificateAlreadyExistsFault(t)
-	return t
+	asserts.AssertHsmClientCertificateAlreadyExistsFault(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.EnableLoggingMessage = { ["S3KeyPrefix"] = true, ["ClusterIdentifier"] = true, ["BucketName"] = true, nil }
@@ -4873,14 +6622,25 @@ end
 -- Required key: BucketName
 -- @return EnableLoggingMessage structure as a key-value pair table
 function M.EnableLoggingMessage(args)
-	assert(args, "You must provdide an argument table when creating EnableLoggingMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating EnableLoggingMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["S3KeyPrefix"] = args["S3KeyPrefix"],
 		["ClusterIdentifier"] = args["ClusterIdentifier"],
 		["BucketName"] = args["BucketName"],
 	}
-	asserts.AssertEnableLoggingMessage(t)
-	return t
+	asserts.AssertEnableLoggingMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AuthorizeClusterSecurityGroupIngressMessage = { ["EC2SecurityGroupName"] = true, ["EC2SecurityGroupOwnerId"] = true, ["ClusterSecurityGroupName"] = true, ["CIDRIP"] = true, nil }
@@ -4909,15 +6669,26 @@ end
 -- Required key: ClusterSecurityGroupName
 -- @return AuthorizeClusterSecurityGroupIngressMessage structure as a key-value pair table
 function M.AuthorizeClusterSecurityGroupIngressMessage(args)
-	assert(args, "You must provdide an argument table when creating AuthorizeClusterSecurityGroupIngressMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AuthorizeClusterSecurityGroupIngressMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["EC2SecurityGroupName"] = args["EC2SecurityGroupName"],
 		["EC2SecurityGroupOwnerId"] = args["EC2SecurityGroupOwnerId"],
 		["ClusterSecurityGroupName"] = args["ClusterSecurityGroupName"],
 		["CIDRIP"] = args["CIDRIP"],
 	}
-	asserts.AssertAuthorizeClusterSecurityGroupIngressMessage(t)
-	return t
+	asserts.AssertAuthorizeClusterSecurityGroupIngressMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeLoggingStatusMessage = { ["ClusterIdentifier"] = true, nil }
@@ -4940,12 +6711,23 @@ end
 -- Required key: ClusterIdentifier
 -- @return DescribeLoggingStatusMessage structure as a key-value pair table
 function M.DescribeLoggingStatusMessage(args)
-	assert(args, "You must provdide an argument table when creating DescribeLoggingStatusMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeLoggingStatusMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ClusterIdentifier"] = args["ClusterIdentifier"],
 	}
-	asserts.AssertDescribeLoggingStatusMessage(t)
-	return t
+	asserts.AssertDescribeLoggingStatusMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ClusterParameterGroupDetails = { ["Marker"] = true, ["Parameters"] = true, nil }
@@ -4968,13 +6750,24 @@ end
 -- * Parameters [ParametersList] <p>A list of <a>Parameter</a> instances. Each instance lists the parameters of one cluster parameter group. </p>
 -- @return ClusterParameterGroupDetails structure as a key-value pair table
 function M.ClusterParameterGroupDetails(args)
-	assert(args, "You must provdide an argument table when creating ClusterParameterGroupDetails")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ClusterParameterGroupDetails")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Marker"] = args["Marker"],
 		["Parameters"] = args["Parameters"],
 	}
-	asserts.AssertClusterParameterGroupDetails(t)
-	return t
+	asserts.AssertClusterParameterGroupDetails(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Snapshot = { ["MasterUsername"] = true, ["OwnerAccount"] = true, ["CurrentBackupRateInMegaBytesPerSecond"] = true, ["ActualIncrementalBackupSizeInMegaBytes"] = true, ["NumberOfNodes"] = true, ["Status"] = true, ["VpcId"] = true, ["ClusterVersion"] = true, ["Tags"] = true, ["EnhancedVpcRouting"] = true, ["EstimatedSecondsToCompletion"] = true, ["SourceRegion"] = true, ["AccountsWithRestoreAccess"] = true, ["TotalBackupSizeInMegaBytes"] = true, ["DBName"] = true, ["BackupProgressInMegaBytes"] = true, ["ClusterCreateTime"] = true, ["RestorableNodeTypes"] = true, ["EncryptedWithHSM"] = true, ["ClusterIdentifier"] = true, ["SnapshotCreateTime"] = true, ["AvailabilityZone"] = true, ["NodeType"] = true, ["Encrypted"] = true, ["ElapsedTimeInSeconds"] = true, ["KmsKeyId"] = true, ["SnapshotType"] = true, ["Port"] = true, ["SnapshotIdentifier"] = true, nil }
@@ -5051,8 +6844,14 @@ end
 -- * SnapshotIdentifier [String] <p>The snapshot identifier that is provided in the request.</p>
 -- @return Snapshot structure as a key-value pair table
 function M.Snapshot(args)
-	assert(args, "You must provdide an argument table when creating Snapshot")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Snapshot")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["MasterUsername"] = args["MasterUsername"],
 		["OwnerAccount"] = args["OwnerAccount"],
 		["CurrentBackupRateInMegaBytesPerSecond"] = args["CurrentBackupRateInMegaBytesPerSecond"],
@@ -5083,8 +6882,13 @@ function M.Snapshot(args)
 		["Port"] = args["Port"],
 		["SnapshotIdentifier"] = args["SnapshotIdentifier"],
 	}
-	asserts.AssertSnapshot(t)
-	return t
+	asserts.AssertSnapshot(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteHsmClientCertificateMessage = { ["HsmClientCertificateIdentifier"] = true, nil }
@@ -5107,12 +6911,23 @@ end
 -- Required key: HsmClientCertificateIdentifier
 -- @return DeleteHsmClientCertificateMessage structure as a key-value pair table
 function M.DeleteHsmClientCertificateMessage(args)
-	assert(args, "You must provdide an argument table when creating DeleteHsmClientCertificateMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteHsmClientCertificateMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["HsmClientCertificateIdentifier"] = args["HsmClientCertificateIdentifier"],
 	}
-	asserts.AssertDeleteHsmClientCertificateMessage(t)
-	return t
+	asserts.AssertDeleteHsmClientCertificateMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AuthorizeSnapshotAccessMessage = { ["AccountWithRestoreAccess"] = true, ["SnapshotClusterIdentifier"] = true, ["SnapshotIdentifier"] = true, nil }
@@ -5141,14 +6956,25 @@ end
 -- Required key: AccountWithRestoreAccess
 -- @return AuthorizeSnapshotAccessMessage structure as a key-value pair table
 function M.AuthorizeSnapshotAccessMessage(args)
-	assert(args, "You must provdide an argument table when creating AuthorizeSnapshotAccessMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AuthorizeSnapshotAccessMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["AccountWithRestoreAccess"] = args["AccountWithRestoreAccess"],
 		["SnapshotClusterIdentifier"] = args["SnapshotClusterIdentifier"],
 		["SnapshotIdentifier"] = args["SnapshotIdentifier"],
 	}
-	asserts.AssertAuthorizeSnapshotAccessMessage(t)
-	return t
+	asserts.AssertAuthorizeSnapshotAccessMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AuthorizeSnapshotAccessResult = { ["Snapshot"] = true, nil }
@@ -5169,12 +6995,23 @@ end
 -- * Snapshot [Snapshot] 
 -- @return AuthorizeSnapshotAccessResult structure as a key-value pair table
 function M.AuthorizeSnapshotAccessResult(args)
-	assert(args, "You must provdide an argument table when creating AuthorizeSnapshotAccessResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AuthorizeSnapshotAccessResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Snapshot"] = args["Snapshot"],
 	}
-	asserts.AssertAuthorizeSnapshotAccessResult(t)
-	return t
+	asserts.AssertAuthorizeSnapshotAccessResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidVPCNetworkStateFault = { nil }
@@ -5193,11 +7030,22 @@ end
 -- Valid keys:
 -- @return InvalidVPCNetworkStateFault structure as a key-value pair table
 function M.InvalidVPCNetworkStateFault(args)
-	assert(args, "You must provdide an argument table when creating InvalidVPCNetworkStateFault")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidVPCNetworkStateFault")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertInvalidVPCNetworkStateFault(t)
-	return t
+	asserts.AssertInvalidVPCNetworkStateFault(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ClusterSecurityGroupNotFoundFault = { nil }
@@ -5216,11 +7064,22 @@ end
 -- Valid keys:
 -- @return ClusterSecurityGroupNotFoundFault structure as a key-value pair table
 function M.ClusterSecurityGroupNotFoundFault(args)
-	assert(args, "You must provdide an argument table when creating ClusterSecurityGroupNotFoundFault")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ClusterSecurityGroupNotFoundFault")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertClusterSecurityGroupNotFoundFault(t)
-	return t
+	asserts.AssertClusterSecurityGroupNotFoundFault(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.RevokeClusterSecurityGroupIngressMessage = { ["EC2SecurityGroupName"] = true, ["EC2SecurityGroupOwnerId"] = true, ["ClusterSecurityGroupName"] = true, ["CIDRIP"] = true, nil }
@@ -5249,15 +7108,26 @@ end
 -- Required key: ClusterSecurityGroupName
 -- @return RevokeClusterSecurityGroupIngressMessage structure as a key-value pair table
 function M.RevokeClusterSecurityGroupIngressMessage(args)
-	assert(args, "You must provdide an argument table when creating RevokeClusterSecurityGroupIngressMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating RevokeClusterSecurityGroupIngressMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["EC2SecurityGroupName"] = args["EC2SecurityGroupName"],
 		["EC2SecurityGroupOwnerId"] = args["EC2SecurityGroupOwnerId"],
 		["ClusterSecurityGroupName"] = args["ClusterSecurityGroupName"],
 		["CIDRIP"] = args["CIDRIP"],
 	}
-	asserts.AssertRevokeClusterSecurityGroupIngressMessage(t)
-	return t
+	asserts.AssertRevokeClusterSecurityGroupIngressMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.SnapshotCopyGrant = { ["Tags"] = true, ["SnapshotCopyGrantName"] = true, ["KmsKeyId"] = true, nil }
@@ -5282,14 +7152,25 @@ end
 -- * KmsKeyId [String] <p>The unique identifier of the customer master key (CMK) in AWS KMS to which Amazon Redshift is granted permission.</p>
 -- @return SnapshotCopyGrant structure as a key-value pair table
 function M.SnapshotCopyGrant(args)
-	assert(args, "You must provdide an argument table when creating SnapshotCopyGrant")
-	local t = { 
+	assert(args, "You must provide an argument table when creating SnapshotCopyGrant")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Tags"] = args["Tags"],
 		["SnapshotCopyGrantName"] = args["SnapshotCopyGrantName"],
 		["KmsKeyId"] = args["KmsKeyId"],
 	}
-	asserts.AssertSnapshotCopyGrant(t)
-	return t
+	asserts.AssertSnapshotCopyGrant(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.NumberOfNodesPerClusterLimitExceededFault = { nil }
@@ -5308,11 +7189,22 @@ end
 -- Valid keys:
 -- @return NumberOfNodesPerClusterLimitExceededFault structure as a key-value pair table
 function M.NumberOfNodesPerClusterLimitExceededFault(args)
-	assert(args, "You must provdide an argument table when creating NumberOfNodesPerClusterLimitExceededFault")
-	local t = { 
+	assert(args, "You must provide an argument table when creating NumberOfNodesPerClusterLimitExceededFault")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertNumberOfNodesPerClusterLimitExceededFault(t)
-	return t
+	asserts.AssertNumberOfNodesPerClusterLimitExceededFault(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.EnableSnapshotCopyMessage = { ["ClusterIdentifier"] = true, ["SnapshotCopyGrantName"] = true, ["DestinationRegion"] = true, ["RetentionPeriod"] = true, nil }
@@ -5343,15 +7235,26 @@ end
 -- Required key: DestinationRegion
 -- @return EnableSnapshotCopyMessage structure as a key-value pair table
 function M.EnableSnapshotCopyMessage(args)
-	assert(args, "You must provdide an argument table when creating EnableSnapshotCopyMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating EnableSnapshotCopyMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ClusterIdentifier"] = args["ClusterIdentifier"],
 		["SnapshotCopyGrantName"] = args["SnapshotCopyGrantName"],
 		["DestinationRegion"] = args["DestinationRegion"],
 		["RetentionPeriod"] = args["RetentionPeriod"],
 	}
-	asserts.AssertEnableSnapshotCopyMessage(t)
-	return t
+	asserts.AssertEnableSnapshotCopyMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Cluster = { ["PubliclyAccessible"] = true, ["MasterUsername"] = true, ["VpcSecurityGroups"] = true, ["HsmStatus"] = true, ["ClusterPublicKey"] = true, ["ModifyStatus"] = true, ["NumberOfNodes"] = true, ["PendingModifiedValues"] = true, ["IamRoles"] = true, ["VpcId"] = true, ["ClusterVersion"] = true, ["Tags"] = true, ["AutomatedSnapshotRetentionPeriod"] = true, ["ClusterParameterGroups"] = true, ["DBName"] = true, ["PreferredMaintenanceWindow"] = true, ["Endpoint"] = true, ["RestoreStatus"] = true, ["ElasticIpStatus"] = true, ["AllowVersionUpgrade"] = true, ["ClusterCreateTime"] = true, ["ClusterSubnetGroupName"] = true, ["EnhancedVpcRouting"] = true, ["ClusterSecurityGroups"] = true, ["ClusterIdentifier"] = true, ["ClusterNodes"] = true, ["AvailabilityZone"] = true, ["NodeType"] = true, ["Encrypted"] = true, ["ClusterRevisionNumber"] = true, ["ClusterSnapshotCopyStatus"] = true, ["KmsKeyId"] = true, ["ClusterStatus"] = true, nil }
@@ -5436,8 +7339,14 @@ end
 -- * ClusterStatus [String] <p> The current state of the cluster. Possible values are the following:</p> <ul> <li> <p> <code>available</code> </p> </li> <li> <p> <code>creating</code> </p> </li> <li> <p> <code>deleting</code> </p> </li> <li> <p> <code>final-snapshot</code> </p> </li> <li> <p> <code>hardware-failure</code> </p> </li> <li> <p> <code>incompatible-hsm</code> </p> </li> <li> <p> <code>incompatible-network</code> </p> </li> <li> <p> <code>incompatible-parameters</code> </p> </li> <li> <p> <code>incompatible-restore</code> </p> </li> <li> <p> <code>modifying</code> </p> </li> <li> <p> <code>rebooting</code> </p> </li> <li> <p> <code>renaming</code> </p> </li> <li> <p> <code>resizing</code> </p> </li> <li> <p> <code>rotating-keys</code> </p> </li> <li> <p> <code>storage-full</code> </p> </li> <li> <p> <code>updating-hsm</code> </p> </li> </ul>
 -- @return Cluster structure as a key-value pair table
 function M.Cluster(args)
-	assert(args, "You must provdide an argument table when creating Cluster")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Cluster")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["PubliclyAccessible"] = args["PubliclyAccessible"],
 		["MasterUsername"] = args["MasterUsername"],
 		["VpcSecurityGroups"] = args["VpcSecurityGroups"],
@@ -5472,8 +7381,13 @@ function M.Cluster(args)
 		["KmsKeyId"] = args["KmsKeyId"],
 		["ClusterStatus"] = args["ClusterStatus"],
 	}
-	asserts.AssertCluster(t)
-	return t
+	asserts.AssertCluster(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.RestoreStatus = { ["Status"] = true, ["ProgressInMegaBytes"] = true, ["CurrentRestoreRateInMegaBytesPerSecond"] = true, ["EstimatedTimeToCompletionInSeconds"] = true, ["ElapsedTimeInSeconds"] = true, ["SnapshotSizeInMegaBytes"] = true, nil }
@@ -5504,8 +7418,14 @@ end
 -- * SnapshotSizeInMegaBytes [Long] <p>The size of the set of snapshot data used to restore the cluster.</p>
 -- @return RestoreStatus structure as a key-value pair table
 function M.RestoreStatus(args)
-	assert(args, "You must provdide an argument table when creating RestoreStatus")
-	local t = { 
+	assert(args, "You must provide an argument table when creating RestoreStatus")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Status"] = args["Status"],
 		["ProgressInMegaBytes"] = args["ProgressInMegaBytes"],
 		["CurrentRestoreRateInMegaBytesPerSecond"] = args["CurrentRestoreRateInMegaBytesPerSecond"],
@@ -5513,8 +7433,13 @@ function M.RestoreStatus(args)
 		["ElapsedTimeInSeconds"] = args["ElapsedTimeInSeconds"],
 		["SnapshotSizeInMegaBytes"] = args["SnapshotSizeInMegaBytes"],
 	}
-	asserts.AssertRestoreStatus(t)
-	return t
+	asserts.AssertRestoreStatus(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeClusterParametersMessage = { ["Marker"] = true, ["Source"] = true, ["MaxRecords"] = true, ["ParameterGroupName"] = true, nil }
@@ -5543,15 +7468,26 @@ end
 -- Required key: ParameterGroupName
 -- @return DescribeClusterParametersMessage structure as a key-value pair table
 function M.DescribeClusterParametersMessage(args)
-	assert(args, "You must provdide an argument table when creating DescribeClusterParametersMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeClusterParametersMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Marker"] = args["Marker"],
 		["Source"] = args["Source"],
 		["MaxRecords"] = args["MaxRecords"],
 		["ParameterGroupName"] = args["ParameterGroupName"],
 	}
-	asserts.AssertDescribeClusterParametersMessage(t)
-	return t
+	asserts.AssertDescribeClusterParametersMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeDefaultClusterParametersResult = { ["DefaultClusterParameters"] = true, nil }
@@ -5572,12 +7508,23 @@ end
 -- * DefaultClusterParameters [DefaultClusterParameters] 
 -- @return DescribeDefaultClusterParametersResult structure as a key-value pair table
 function M.DescribeDefaultClusterParametersResult(args)
-	assert(args, "You must provdide an argument table when creating DescribeDefaultClusterParametersResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeDefaultClusterParametersResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DefaultClusterParameters"] = args["DefaultClusterParameters"],
 	}
-	asserts.AssertDescribeDefaultClusterParametersResult(t)
-	return t
+	asserts.AssertDescribeDefaultClusterParametersResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ReservedNodeNotFoundFault = { nil }
@@ -5596,11 +7543,22 @@ end
 -- Valid keys:
 -- @return ReservedNodeNotFoundFault structure as a key-value pair table
 function M.ReservedNodeNotFoundFault(args)
-	assert(args, "You must provdide an argument table when creating ReservedNodeNotFoundFault")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ReservedNodeNotFoundFault")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertReservedNodeNotFoundFault(t)
-	return t
+	asserts.AssertReservedNodeNotFoundFault(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UnsupportedOperationFault = { nil }
@@ -5619,11 +7577,22 @@ end
 -- Valid keys:
 -- @return UnsupportedOperationFault structure as a key-value pair table
 function M.UnsupportedOperationFault(args)
-	assert(args, "You must provdide an argument table when creating UnsupportedOperationFault")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UnsupportedOperationFault")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertUnsupportedOperationFault(t)
-	return t
+	asserts.AssertUnsupportedOperationFault(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.LoggingStatus = { ["LastFailureMessage"] = true, ["LoggingEnabled"] = true, ["LastFailureTime"] = true, ["LastSuccessfulDeliveryTime"] = true, ["S3KeyPrefix"] = true, ["BucketName"] = true, nil }
@@ -5654,8 +7623,14 @@ end
 -- * BucketName [String] <p>The name of the S3 bucket where the log files are stored.</p>
 -- @return LoggingStatus structure as a key-value pair table
 function M.LoggingStatus(args)
-	assert(args, "You must provdide an argument table when creating LoggingStatus")
-	local t = { 
+	assert(args, "You must provide an argument table when creating LoggingStatus")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["LastFailureMessage"] = args["LastFailureMessage"],
 		["LoggingEnabled"] = args["LoggingEnabled"],
 		["LastFailureTime"] = args["LastFailureTime"],
@@ -5663,8 +7638,13 @@ function M.LoggingStatus(args)
 		["S3KeyPrefix"] = args["S3KeyPrefix"],
 		["BucketName"] = args["BucketName"],
 	}
-	asserts.AssertLoggingStatus(t)
-	return t
+	asserts.AssertLoggingStatus(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ResizeProgressMessage = { ["Status"] = true, ["ImportTablesCompleted"] = true, ["EstimatedTimeToCompletionInSeconds"] = true, ["ProgressInMegaBytes"] = true, ["TargetClusterType"] = true, ["TotalResizeDataInMegaBytes"] = true, ["TargetNumberOfNodes"] = true, ["ImportTablesInProgress"] = true, ["ImportTablesNotStarted"] = true, ["AvgResizeRateInMegaBytesPerSecond"] = true, ["ElapsedTimeInSeconds"] = true, ["TargetNodeType"] = true, nil }
@@ -5707,8 +7687,14 @@ end
 -- * TargetNodeType [String] <p>The node type that the cluster will have after the resize operation is complete.</p>
 -- @return ResizeProgressMessage structure as a key-value pair table
 function M.ResizeProgressMessage(args)
-	assert(args, "You must provdide an argument table when creating ResizeProgressMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ResizeProgressMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Status"] = args["Status"],
 		["ImportTablesCompleted"] = args["ImportTablesCompleted"],
 		["EstimatedTimeToCompletionInSeconds"] = args["EstimatedTimeToCompletionInSeconds"],
@@ -5722,8 +7708,13 @@ function M.ResizeProgressMessage(args)
 		["ElapsedTimeInSeconds"] = args["ElapsedTimeInSeconds"],
 		["TargetNodeType"] = args["TargetNodeType"],
 	}
-	asserts.AssertResizeProgressMessage(t)
-	return t
+	asserts.AssertResizeProgressMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ResourceNotFoundFault = { nil }
@@ -5742,11 +7733,22 @@ end
 -- Valid keys:
 -- @return ResourceNotFoundFault structure as a key-value pair table
 function M.ResourceNotFoundFault(args)
-	assert(args, "You must provdide an argument table when creating ResourceNotFoundFault")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ResourceNotFoundFault")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertResourceNotFoundFault(t)
-	return t
+	asserts.AssertResourceNotFoundFault(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.HsmConfigurationAlreadyExistsFault = { nil }
@@ -5765,11 +7767,22 @@ end
 -- Valid keys:
 -- @return HsmConfigurationAlreadyExistsFault structure as a key-value pair table
 function M.HsmConfigurationAlreadyExistsFault(args)
-	assert(args, "You must provdide an argument table when creating HsmConfigurationAlreadyExistsFault")
-	local t = { 
+	assert(args, "You must provide an argument table when creating HsmConfigurationAlreadyExistsFault")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertHsmConfigurationAlreadyExistsFault(t)
-	return t
+	asserts.AssertHsmConfigurationAlreadyExistsFault(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeHsmConfigurationsMessage = { ["Marker"] = true, ["TagValues"] = true, ["MaxRecords"] = true, ["TagKeys"] = true, ["HsmConfigurationIdentifier"] = true, nil }
@@ -5798,16 +7811,27 @@ end
 -- * HsmConfigurationIdentifier [String] <p>The identifier of a specific Amazon Redshift HSM configuration to be described. If no identifier is specified, information is returned for all HSM configurations owned by your AWS customer account.</p>
 -- @return DescribeHsmConfigurationsMessage structure as a key-value pair table
 function M.DescribeHsmConfigurationsMessage(args)
-	assert(args, "You must provdide an argument table when creating DescribeHsmConfigurationsMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeHsmConfigurationsMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Marker"] = args["Marker"],
 		["TagValues"] = args["TagValues"],
 		["MaxRecords"] = args["MaxRecords"],
 		["TagKeys"] = args["TagKeys"],
 		["HsmConfigurationIdentifier"] = args["HsmConfigurationIdentifier"],
 	}
-	asserts.AssertDescribeHsmConfigurationsMessage(t)
-	return t
+	asserts.AssertDescribeHsmConfigurationsMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeTableRestoreStatusMessage = { ["Marker"] = true, ["ClusterIdentifier"] = true, ["MaxRecords"] = true, ["TableRestoreRequestId"] = true, nil }
@@ -5834,15 +7858,26 @@ end
 -- * TableRestoreRequestId [String] <p>The identifier of the table restore request to return status for. If you don't specify a <code>TableRestoreRequestId</code> value, then <code>DescribeTableRestoreStatus</code> returns the status of all in-progress table restore requests.</p>
 -- @return DescribeTableRestoreStatusMessage structure as a key-value pair table
 function M.DescribeTableRestoreStatusMessage(args)
-	assert(args, "You must provdide an argument table when creating DescribeTableRestoreStatusMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeTableRestoreStatusMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Marker"] = args["Marker"],
 		["ClusterIdentifier"] = args["ClusterIdentifier"],
 		["MaxRecords"] = args["MaxRecords"],
 		["TableRestoreRequestId"] = args["TableRestoreRequestId"],
 	}
-	asserts.AssertDescribeTableRestoreStatusMessage(t)
-	return t
+	asserts.AssertDescribeTableRestoreStatusMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ClusterCredentials = { ["DbUser"] = true, ["Expiration"] = true, ["DbPassword"] = true, nil }
@@ -5867,14 +7902,25 @@ end
 -- * DbPassword [SensitiveString] <p>A temporary password that authorizes the user name returned by <code>DbUser</code> to log on to the database <code>DbName</code>. </p>
 -- @return ClusterCredentials structure as a key-value pair table
 function M.ClusterCredentials(args)
-	assert(args, "You must provdide an argument table when creating ClusterCredentials")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ClusterCredentials")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DbUser"] = args["DbUser"],
 		["Expiration"] = args["Expiration"],
 		["DbPassword"] = args["DbPassword"],
 	}
-	asserts.AssertClusterCredentials(t)
-	return t
+	asserts.AssertClusterCredentials(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ModifyEventSubscriptionResult = { ["EventSubscription"] = true, nil }
@@ -5895,12 +7941,23 @@ end
 -- * EventSubscription [EventSubscription] 
 -- @return ModifyEventSubscriptionResult structure as a key-value pair table
 function M.ModifyEventSubscriptionResult(args)
-	assert(args, "You must provdide an argument table when creating ModifyEventSubscriptionResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ModifyEventSubscriptionResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["EventSubscription"] = args["EventSubscription"],
 	}
-	asserts.AssertModifyEventSubscriptionResult(t)
-	return t
+	asserts.AssertModifyEventSubscriptionResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.SnapshotCopyGrantMessage = { ["Marker"] = true, ["SnapshotCopyGrants"] = true, nil }
@@ -5923,13 +7980,24 @@ end
 -- * SnapshotCopyGrants [SnapshotCopyGrantList] <p>The list of <code>SnapshotCopyGrant</code> objects.</p>
 -- @return SnapshotCopyGrantMessage structure as a key-value pair table
 function M.SnapshotCopyGrantMessage(args)
-	assert(args, "You must provdide an argument table when creating SnapshotCopyGrantMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating SnapshotCopyGrantMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Marker"] = args["Marker"],
 		["SnapshotCopyGrants"] = args["SnapshotCopyGrants"],
 	}
-	asserts.AssertSnapshotCopyGrantMessage(t)
-	return t
+	asserts.AssertSnapshotCopyGrantMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.HsmConfigurationQuotaExceededFault = { nil }
@@ -5948,11 +8016,22 @@ end
 -- Valid keys:
 -- @return HsmConfigurationQuotaExceededFault structure as a key-value pair table
 function M.HsmConfigurationQuotaExceededFault(args)
-	assert(args, "You must provdide an argument table when creating HsmConfigurationQuotaExceededFault")
-	local t = { 
+	assert(args, "You must provide an argument table when creating HsmConfigurationQuotaExceededFault")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertHsmConfigurationQuotaExceededFault(t)
-	return t
+	asserts.AssertHsmConfigurationQuotaExceededFault(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.TableRestoreStatus = { ["Status"] = true, ["RequestTime"] = true, ["TotalDataInMegaBytes"] = true, ["SourceSchemaName"] = true, ["TargetDatabaseName"] = true, ["ProgressInMegaBytes"] = true, ["SourceTableName"] = true, ["TableRestoreRequestId"] = true, ["NewTableName"] = true, ["TargetSchemaName"] = true, ["Message"] = true, ["SourceDatabaseName"] = true, ["ClusterIdentifier"] = true, ["SnapshotIdentifier"] = true, nil }
@@ -5999,8 +8078,14 @@ end
 -- * SnapshotIdentifier [String] <p>The identifier of the snapshot that the table is being restored from.</p>
 -- @return TableRestoreStatus structure as a key-value pair table
 function M.TableRestoreStatus(args)
-	assert(args, "You must provdide an argument table when creating TableRestoreStatus")
-	local t = { 
+	assert(args, "You must provide an argument table when creating TableRestoreStatus")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Status"] = args["Status"],
 		["RequestTime"] = args["RequestTime"],
 		["TotalDataInMegaBytes"] = args["TotalDataInMegaBytes"],
@@ -6016,8 +8101,13 @@ function M.TableRestoreStatus(args)
 		["ClusterIdentifier"] = args["ClusterIdentifier"],
 		["SnapshotIdentifier"] = args["SnapshotIdentifier"],
 	}
-	asserts.AssertTableRestoreStatus(t)
-	return t
+	asserts.AssertTableRestoreStatus(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.SnapshotCopyAlreadyEnabledFault = { nil }
@@ -6036,11 +8126,22 @@ end
 -- Valid keys:
 -- @return SnapshotCopyAlreadyEnabledFault structure as a key-value pair table
 function M.SnapshotCopyAlreadyEnabledFault(args)
-	assert(args, "You must provdide an argument table when creating SnapshotCopyAlreadyEnabledFault")
-	local t = { 
+	assert(args, "You must provide an argument table when creating SnapshotCopyAlreadyEnabledFault")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertSnapshotCopyAlreadyEnabledFault(t)
-	return t
+	asserts.AssertSnapshotCopyAlreadyEnabledFault(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteClusterMessage = { ["FinalClusterSnapshotIdentifier"] = true, ["ClusterIdentifier"] = true, ["SkipFinalClusterSnapshot"] = true, nil }
@@ -6067,14 +8168,25 @@ end
 -- Required key: ClusterIdentifier
 -- @return DeleteClusterMessage structure as a key-value pair table
 function M.DeleteClusterMessage(args)
-	assert(args, "You must provdide an argument table when creating DeleteClusterMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteClusterMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["FinalClusterSnapshotIdentifier"] = args["FinalClusterSnapshotIdentifier"],
 		["ClusterIdentifier"] = args["ClusterIdentifier"],
 		["SkipFinalClusterSnapshot"] = args["SkipFinalClusterSnapshot"],
 	}
-	asserts.AssertDeleteClusterMessage(t)
-	return t
+	asserts.AssertDeleteClusterMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DefaultClusterParameters = { ["Marker"] = true, ["ParameterGroupFamily"] = true, ["Parameters"] = true, nil }
@@ -6099,14 +8211,25 @@ end
 -- * Parameters [ParametersList] <p>The list of cluster default parameters.</p>
 -- @return DefaultClusterParameters structure as a key-value pair table
 function M.DefaultClusterParameters(args)
-	assert(args, "You must provdide an argument table when creating DefaultClusterParameters")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DefaultClusterParameters")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Marker"] = args["Marker"],
 		["ParameterGroupFamily"] = args["ParameterGroupFamily"],
 		["Parameters"] = args["Parameters"],
 	}
-	asserts.AssertDefaultClusterParameters(t)
-	return t
+	asserts.AssertDefaultClusterParameters(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ClusterParameterGroupNameMessage = { ["ParameterGroupStatus"] = true, ["ParameterGroupName"] = true, nil }
@@ -6129,13 +8252,24 @@ end
 -- * ParameterGroupName [String] <p>The name of the cluster parameter group.</p>
 -- @return ClusterParameterGroupNameMessage structure as a key-value pair table
 function M.ClusterParameterGroupNameMessage(args)
-	assert(args, "You must provdide an argument table when creating ClusterParameterGroupNameMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ClusterParameterGroupNameMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ParameterGroupStatus"] = args["ParameterGroupStatus"],
 		["ParameterGroupName"] = args["ParameterGroupName"],
 	}
-	asserts.AssertClusterParameterGroupNameMessage(t)
-	return t
+	asserts.AssertClusterParameterGroupNameMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidClusterSecurityGroupStateFault = { nil }
@@ -6154,11 +8288,22 @@ end
 -- Valid keys:
 -- @return InvalidClusterSecurityGroupStateFault structure as a key-value pair table
 function M.InvalidClusterSecurityGroupStateFault(args)
-	assert(args, "You must provdide an argument table when creating InvalidClusterSecurityGroupStateFault")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidClusterSecurityGroupStateFault")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertInvalidClusterSecurityGroupStateFault(t)
-	return t
+	asserts.AssertInvalidClusterSecurityGroupStateFault(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateTagsMessage = { ["ResourceName"] = true, ["Tags"] = true, nil }
@@ -6185,13 +8330,24 @@ end
 -- Required key: Tags
 -- @return CreateTagsMessage structure as a key-value pair table
 function M.CreateTagsMessage(args)
-	assert(args, "You must provdide an argument table when creating CreateTagsMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateTagsMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ResourceName"] = args["ResourceName"],
 		["Tags"] = args["Tags"],
 	}
-	asserts.AssertCreateTagsMessage(t)
-	return t
+	asserts.AssertCreateTagsMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InsufficientS3BucketPolicyFault = { nil }
@@ -6210,11 +8366,22 @@ end
 -- Valid keys:
 -- @return InsufficientS3BucketPolicyFault structure as a key-value pair table
 function M.InsufficientS3BucketPolicyFault(args)
-	assert(args, "You must provdide an argument table when creating InsufficientS3BucketPolicyFault")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InsufficientS3BucketPolicyFault")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertInsufficientS3BucketPolicyFault(t)
-	return t
+	asserts.AssertInsufficientS3BucketPolicyFault(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.RotateEncryptionKeyResult = { ["Cluster"] = true, nil }
@@ -6235,12 +8402,23 @@ end
 -- * Cluster [Cluster] 
 -- @return RotateEncryptionKeyResult structure as a key-value pair table
 function M.RotateEncryptionKeyResult(args)
-	assert(args, "You must provdide an argument table when creating RotateEncryptionKeyResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating RotateEncryptionKeyResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Cluster"] = args["Cluster"],
 	}
-	asserts.AssertRotateEncryptionKeyResult(t)
-	return t
+	asserts.AssertRotateEncryptionKeyResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteClusterSubnetGroupMessage = { ["ClusterSubnetGroupName"] = true, nil }
@@ -6263,12 +8441,23 @@ end
 -- Required key: ClusterSubnetGroupName
 -- @return DeleteClusterSubnetGroupMessage structure as a key-value pair table
 function M.DeleteClusterSubnetGroupMessage(args)
-	assert(args, "You must provdide an argument table when creating DeleteClusterSubnetGroupMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteClusterSubnetGroupMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ClusterSubnetGroupName"] = args["ClusterSubnetGroupName"],
 	}
-	asserts.AssertDeleteClusterSubnetGroupMessage(t)
-	return t
+	asserts.AssertDeleteClusterSubnetGroupMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeClusterSecurityGroupsMessage = { ["Marker"] = true, ["TagValues"] = true, ["MaxRecords"] = true, ["TagKeys"] = true, ["ClusterSecurityGroupName"] = true, nil }
@@ -6297,16 +8486,27 @@ end
 -- * ClusterSecurityGroupName [String] <p>The name of a cluster security group for which you are requesting details. You can specify either the <b>Marker</b> parameter or a <b>ClusterSecurityGroupName</b> parameter, but not both. </p> <p> Example: <code>securitygroup1</code> </p>
 -- @return DescribeClusterSecurityGroupsMessage structure as a key-value pair table
 function M.DescribeClusterSecurityGroupsMessage(args)
-	assert(args, "You must provdide an argument table when creating DescribeClusterSecurityGroupsMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeClusterSecurityGroupsMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Marker"] = args["Marker"],
 		["TagValues"] = args["TagValues"],
 		["MaxRecords"] = args["MaxRecords"],
 		["TagKeys"] = args["TagKeys"],
 		["ClusterSecurityGroupName"] = args["ClusterSecurityGroupName"],
 	}
-	asserts.AssertDescribeClusterSecurityGroupsMessage(t)
-	return t
+	asserts.AssertDescribeClusterSecurityGroupsMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CopyToRegionDisabledFault = { nil }
@@ -6325,11 +8525,22 @@ end
 -- Valid keys:
 -- @return CopyToRegionDisabledFault structure as a key-value pair table
 function M.CopyToRegionDisabledFault(args)
-	assert(args, "You must provdide an argument table when creating CopyToRegionDisabledFault")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CopyToRegionDisabledFault")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertCopyToRegionDisabledFault(t)
-	return t
+	asserts.AssertCopyToRegionDisabledFault(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidHsmConfigurationStateFault = { nil }
@@ -6348,11 +8559,22 @@ end
 -- Valid keys:
 -- @return InvalidHsmConfigurationStateFault structure as a key-value pair table
 function M.InvalidHsmConfigurationStateFault(args)
-	assert(args, "You must provdide an argument table when creating InvalidHsmConfigurationStateFault")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidHsmConfigurationStateFault")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertInvalidHsmConfigurationStateFault(t)
-	return t
+	asserts.AssertInvalidHsmConfigurationStateFault(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateClusterSnapshotMessage = { ["ClusterIdentifier"] = true, ["Tags"] = true, ["SnapshotIdentifier"] = true, nil }
@@ -6381,14 +8603,25 @@ end
 -- Required key: ClusterIdentifier
 -- @return CreateClusterSnapshotMessage structure as a key-value pair table
 function M.CreateClusterSnapshotMessage(args)
-	assert(args, "You must provdide an argument table when creating CreateClusterSnapshotMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateClusterSnapshotMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ClusterIdentifier"] = args["ClusterIdentifier"],
 		["Tags"] = args["Tags"],
 		["SnapshotIdentifier"] = args["SnapshotIdentifier"],
 	}
-	asserts.AssertCreateClusterSnapshotMessage(t)
-	return t
+	asserts.AssertCreateClusterSnapshotMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.SnapshotMessage = { ["Marker"] = true, ["Snapshots"] = true, nil }
@@ -6411,13 +8644,24 @@ end
 -- * Snapshots [SnapshotList] <p>A list of <a>Snapshot</a> instances. </p>
 -- @return SnapshotMessage structure as a key-value pair table
 function M.SnapshotMessage(args)
-	assert(args, "You must provdide an argument table when creating SnapshotMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating SnapshotMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Marker"] = args["Marker"],
 		["Snapshots"] = args["Snapshots"],
 	}
-	asserts.AssertSnapshotMessage(t)
-	return t
+	asserts.AssertSnapshotMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AuthorizationAlreadyExistsFault = { nil }
@@ -6436,11 +8680,22 @@ end
 -- Valid keys:
 -- @return AuthorizationAlreadyExistsFault structure as a key-value pair table
 function M.AuthorizationAlreadyExistsFault(args)
-	assert(args, "You must provdide an argument table when creating AuthorizationAlreadyExistsFault")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AuthorizationAlreadyExistsFault")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertAuthorizationAlreadyExistsFault(t)
-	return t
+	asserts.AssertAuthorizationAlreadyExistsFault(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidClusterParameterGroupStateFault = { nil }
@@ -6459,11 +8714,22 @@ end
 -- Valid keys:
 -- @return InvalidClusterParameterGroupStateFault structure as a key-value pair table
 function M.InvalidClusterParameterGroupStateFault(args)
-	assert(args, "You must provdide an argument table when creating InvalidClusterParameterGroupStateFault")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidClusterParameterGroupStateFault")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertInvalidClusterParameterGroupStateFault(t)
-	return t
+	asserts.AssertInvalidClusterParameterGroupStateFault(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateSnapshotCopyGrantMessage = { ["Tags"] = true, ["SnapshotCopyGrantName"] = true, ["KmsKeyId"] = true, nil }
@@ -6490,14 +8756,25 @@ end
 -- Required key: SnapshotCopyGrantName
 -- @return CreateSnapshotCopyGrantMessage structure as a key-value pair table
 function M.CreateSnapshotCopyGrantMessage(args)
-	assert(args, "You must provdide an argument table when creating CreateSnapshotCopyGrantMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateSnapshotCopyGrantMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Tags"] = args["Tags"],
 		["SnapshotCopyGrantName"] = args["SnapshotCopyGrantName"],
 		["KmsKeyId"] = args["KmsKeyId"],
 	}
-	asserts.AssertCreateSnapshotCopyGrantMessage(t)
-	return t
+	asserts.AssertCreateSnapshotCopyGrantMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ElasticIpStatus = { ["Status"] = true, ["ElasticIp"] = true, nil }
@@ -6520,13 +8797,24 @@ end
 -- * ElasticIp [String] <p>The elastic IP (EIP) address for the cluster.</p>
 -- @return ElasticIpStatus structure as a key-value pair table
 function M.ElasticIpStatus(args)
-	assert(args, "You must provdide an argument table when creating ElasticIpStatus")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ElasticIpStatus")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Status"] = args["Status"],
 		["ElasticIp"] = args["ElasticIp"],
 	}
-	asserts.AssertElasticIpStatus(t)
-	return t
+	asserts.AssertElasticIpStatus(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ClusterVersionsMessage = { ["Marker"] = true, ["ClusterVersions"] = true, nil }
@@ -6549,13 +8837,24 @@ end
 -- * ClusterVersions [ClusterVersionList] <p>A list of <code>Version</code> elements. </p>
 -- @return ClusterVersionsMessage structure as a key-value pair table
 function M.ClusterVersionsMessage(args)
-	assert(args, "You must provdide an argument table when creating ClusterVersionsMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ClusterVersionsMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Marker"] = args["Marker"],
 		["ClusterVersions"] = args["ClusterVersions"],
 	}
-	asserts.AssertClusterVersionsMessage(t)
-	return t
+	asserts.AssertClusterVersionsMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ReservedNodeAlreadyExistsFault = { nil }
@@ -6574,11 +8873,22 @@ end
 -- Valid keys:
 -- @return ReservedNodeAlreadyExistsFault structure as a key-value pair table
 function M.ReservedNodeAlreadyExistsFault(args)
-	assert(args, "You must provdide an argument table when creating ReservedNodeAlreadyExistsFault")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ReservedNodeAlreadyExistsFault")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertReservedNodeAlreadyExistsFault(t)
-	return t
+	asserts.AssertReservedNodeAlreadyExistsFault(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ClusterSecurityGroupAlreadyExistsFault = { nil }
@@ -6597,11 +8907,22 @@ end
 -- Valid keys:
 -- @return ClusterSecurityGroupAlreadyExistsFault structure as a key-value pair table
 function M.ClusterSecurityGroupAlreadyExistsFault(args)
-	assert(args, "You must provdide an argument table when creating ClusterSecurityGroupAlreadyExistsFault")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ClusterSecurityGroupAlreadyExistsFault")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertClusterSecurityGroupAlreadyExistsFault(t)
-	return t
+	asserts.AssertClusterSecurityGroupAlreadyExistsFault(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ClusterParameterGroupNotFoundFault = { nil }
@@ -6620,11 +8941,22 @@ end
 -- Valid keys:
 -- @return ClusterParameterGroupNotFoundFault structure as a key-value pair table
 function M.ClusterParameterGroupNotFoundFault(args)
-	assert(args, "You must provdide an argument table when creating ClusterParameterGroupNotFoundFault")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ClusterParameterGroupNotFoundFault")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertClusterParameterGroupNotFoundFault(t)
-	return t
+	asserts.AssertClusterParameterGroupNotFoundFault(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.RebootClusterResult = { ["Cluster"] = true, nil }
@@ -6645,12 +8977,23 @@ end
 -- * Cluster [Cluster] 
 -- @return RebootClusterResult structure as a key-value pair table
 function M.RebootClusterResult(args)
-	assert(args, "You must provdide an argument table when creating RebootClusterResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating RebootClusterResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Cluster"] = args["Cluster"],
 	}
-	asserts.AssertRebootClusterResult(t)
-	return t
+	asserts.AssertRebootClusterResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ClusterQuotaExceededFault = { nil }
@@ -6669,11 +9012,22 @@ end
 -- Valid keys:
 -- @return ClusterQuotaExceededFault structure as a key-value pair table
 function M.ClusterQuotaExceededFault(args)
-	assert(args, "You must provdide an argument table when creating ClusterQuotaExceededFault")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ClusterQuotaExceededFault")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertClusterQuotaExceededFault(t)
-	return t
+	asserts.AssertClusterQuotaExceededFault(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateClusterParameterGroupMessage = { ["ParameterGroupFamily"] = true, ["Tags"] = true, ["ParameterGroupName"] = true, ["Description"] = true, nil }
@@ -6706,15 +9060,26 @@ end
 -- Required key: Description
 -- @return CreateClusterParameterGroupMessage structure as a key-value pair table
 function M.CreateClusterParameterGroupMessage(args)
-	assert(args, "You must provdide an argument table when creating CreateClusterParameterGroupMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateClusterParameterGroupMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ParameterGroupFamily"] = args["ParameterGroupFamily"],
 		["Tags"] = args["Tags"],
 		["ParameterGroupName"] = args["ParameterGroupName"],
 		["Description"] = args["Description"],
 	}
-	asserts.AssertCreateClusterParameterGroupMessage(t)
-	return t
+	asserts.AssertCreateClusterParameterGroupMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.SNSTopicArnNotFoundFault = { nil }
@@ -6733,11 +9098,22 @@ end
 -- Valid keys:
 -- @return SNSTopicArnNotFoundFault structure as a key-value pair table
 function M.SNSTopicArnNotFoundFault(args)
-	assert(args, "You must provdide an argument table when creating SNSTopicArnNotFoundFault")
-	local t = { 
+	assert(args, "You must provide an argument table when creating SNSTopicArnNotFoundFault")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertSNSTopicArnNotFoundFault(t)
-	return t
+	asserts.AssertSNSTopicArnNotFoundFault(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ReservedNodesMessage = { ["Marker"] = true, ["ReservedNodes"] = true, nil }
@@ -6760,13 +9136,24 @@ end
 -- * ReservedNodes [ReservedNodeList] <p>The list of <code>ReservedNode</code> objects.</p>
 -- @return ReservedNodesMessage structure as a key-value pair table
 function M.ReservedNodesMessage(args)
-	assert(args, "You must provdide an argument table when creating ReservedNodesMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ReservedNodesMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Marker"] = args["Marker"],
 		["ReservedNodes"] = args["ReservedNodes"],
 	}
-	asserts.AssertReservedNodesMessage(t)
-	return t
+	asserts.AssertReservedNodesMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.TableRestoreNotFoundFault = { nil }
@@ -6785,11 +9172,22 @@ end
 -- Valid keys:
 -- @return TableRestoreNotFoundFault structure as a key-value pair table
 function M.TableRestoreNotFoundFault(args)
-	assert(args, "You must provdide an argument table when creating TableRestoreNotFoundFault")
-	local t = { 
+	assert(args, "You must provide an argument table when creating TableRestoreNotFoundFault")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertTableRestoreNotFoundFault(t)
-	return t
+	asserts.AssertTableRestoreNotFoundFault(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.RotateEncryptionKeyMessage = { ["ClusterIdentifier"] = true, nil }
@@ -6812,12 +9210,23 @@ end
 -- Required key: ClusterIdentifier
 -- @return RotateEncryptionKeyMessage structure as a key-value pair table
 function M.RotateEncryptionKeyMessage(args)
-	assert(args, "You must provdide an argument table when creating RotateEncryptionKeyMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating RotateEncryptionKeyMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ClusterIdentifier"] = args["ClusterIdentifier"],
 	}
-	asserts.AssertRotateEncryptionKeyMessage(t)
-	return t
+	asserts.AssertRotateEncryptionKeyMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeSnapshotCopyGrantsMessage = { ["Marker"] = true, ["TagValues"] = true, ["MaxRecords"] = true, ["SnapshotCopyGrantName"] = true, ["TagKeys"] = true, nil }
@@ -6846,16 +9255,27 @@ end
 -- * TagKeys [TagKeyList] <p>A tag key or keys for which you want to return all matching resources that are associated with the specified key or keys. For example, suppose that you have resources tagged with keys called <code>owner</code> and <code>environment</code>. If you specify both of these tag keys in the request, Amazon Redshift returns a response with all resources that have either or both of these tag keys associated with them.</p>
 -- @return DescribeSnapshotCopyGrantsMessage structure as a key-value pair table
 function M.DescribeSnapshotCopyGrantsMessage(args)
-	assert(args, "You must provdide an argument table when creating DescribeSnapshotCopyGrantsMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeSnapshotCopyGrantsMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Marker"] = args["Marker"],
 		["TagValues"] = args["TagValues"],
 		["MaxRecords"] = args["MaxRecords"],
 		["SnapshotCopyGrantName"] = args["SnapshotCopyGrantName"],
 		["TagKeys"] = args["TagKeys"],
 	}
-	asserts.AssertDescribeSnapshotCopyGrantsMessage(t)
-	return t
+	asserts.AssertDescribeSnapshotCopyGrantsMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ReservedNodeOffering = { ["OfferingType"] = true, ["FixedPrice"] = true, ["NodeType"] = true, ["UsagePrice"] = true, ["RecurringCharges"] = true, ["Duration"] = true, ["ReservedNodeOfferingId"] = true, ["CurrencyCode"] = true, nil }
@@ -6890,8 +9310,14 @@ end
 -- * CurrencyCode [String] <p>The currency code for the compute nodes offering.</p>
 -- @return ReservedNodeOffering structure as a key-value pair table
 function M.ReservedNodeOffering(args)
-	assert(args, "You must provdide an argument table when creating ReservedNodeOffering")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ReservedNodeOffering")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["OfferingType"] = args["OfferingType"],
 		["FixedPrice"] = args["FixedPrice"],
 		["NodeType"] = args["NodeType"],
@@ -6901,8 +9327,13 @@ function M.ReservedNodeOffering(args)
 		["ReservedNodeOfferingId"] = args["ReservedNodeOfferingId"],
 		["CurrencyCode"] = args["CurrencyCode"],
 	}
-	asserts.AssertReservedNodeOffering(t)
-	return t
+	asserts.AssertReservedNodeOffering(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ClusterParameterGroup = { ["ParameterGroupFamily"] = true, ["Tags"] = true, ["ParameterGroupName"] = true, ["Description"] = true, nil }
@@ -6929,15 +9360,26 @@ end
 -- * Description [String] <p>The description of the parameter group.</p>
 -- @return ClusterParameterGroup structure as a key-value pair table
 function M.ClusterParameterGroup(args)
-	assert(args, "You must provdide an argument table when creating ClusterParameterGroup")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ClusterParameterGroup")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ParameterGroupFamily"] = args["ParameterGroupFamily"],
 		["Tags"] = args["Tags"],
 		["ParameterGroupName"] = args["ParameterGroupName"],
 		["Description"] = args["Description"],
 	}
-	asserts.AssertClusterParameterGroup(t)
-	return t
+	asserts.AssertClusterParameterGroup(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateClusterParameterGroupResult = { ["ClusterParameterGroup"] = true, nil }
@@ -6958,12 +9400,23 @@ end
 -- * ClusterParameterGroup [ClusterParameterGroup] 
 -- @return CreateClusterParameterGroupResult structure as a key-value pair table
 function M.CreateClusterParameterGroupResult(args)
-	assert(args, "You must provdide an argument table when creating CreateClusterParameterGroupResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateClusterParameterGroupResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ClusterParameterGroup"] = args["ClusterParameterGroup"],
 	}
-	asserts.AssertCreateClusterParameterGroupResult(t)
-	return t
+	asserts.AssertCreateClusterParameterGroupResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateClusterSubnetGroupResult = { ["ClusterSubnetGroup"] = true, nil }
@@ -6984,12 +9437,23 @@ end
 -- * ClusterSubnetGroup [ClusterSubnetGroup] 
 -- @return CreateClusterSubnetGroupResult structure as a key-value pair table
 function M.CreateClusterSubnetGroupResult(args)
-	assert(args, "You must provdide an argument table when creating CreateClusterSubnetGroupResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateClusterSubnetGroupResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ClusterSubnetGroup"] = args["ClusterSubnetGroup"],
 	}
-	asserts.AssertCreateClusterSubnetGroupResult(t)
-	return t
+	asserts.AssertCreateClusterSubnetGroupResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.TableRestoreStatusMessage = { ["Marker"] = true, ["TableRestoreStatusDetails"] = true, nil }
@@ -7012,13 +9476,24 @@ end
 -- * TableRestoreStatusDetails [TableRestoreStatusList] <p>A list of status details for one or more table restore requests.</p>
 -- @return TableRestoreStatusMessage structure as a key-value pair table
 function M.TableRestoreStatusMessage(args)
-	assert(args, "You must provdide an argument table when creating TableRestoreStatusMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating TableRestoreStatusMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Marker"] = args["Marker"],
 		["TableRestoreStatusDetails"] = args["TableRestoreStatusDetails"],
 	}
-	asserts.AssertTableRestoreStatusMessage(t)
-	return t
+	asserts.AssertTableRestoreStatusMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidClusterSubnetGroupStateFault = { nil }
@@ -7037,11 +9512,22 @@ end
 -- Valid keys:
 -- @return InvalidClusterSubnetGroupStateFault structure as a key-value pair table
 function M.InvalidClusterSubnetGroupStateFault(args)
-	assert(args, "You must provdide an argument table when creating InvalidClusterSubnetGroupStateFault")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidClusterSubnetGroupStateFault")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertInvalidClusterSubnetGroupStateFault(t)
-	return t
+	asserts.AssertInvalidClusterSubnetGroupStateFault(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeClustersMessage = { ["Marker"] = true, ["TagValues"] = true, ["ClusterIdentifier"] = true, ["TagKeys"] = true, ["MaxRecords"] = true, nil }
@@ -7070,16 +9556,27 @@ end
 -- * MaxRecords [IntegerOptional] <p>The maximum number of response records to return in each call. If the number of remaining response records exceeds the specified <code>MaxRecords</code> value, a value is returned in a <code>marker</code> field of the response. You can retrieve the next set of records by retrying the command with the returned marker value. </p> <p>Default: <code>100</code> </p> <p>Constraints: minimum 20, maximum 100.</p>
 -- @return DescribeClustersMessage structure as a key-value pair table
 function M.DescribeClustersMessage(args)
-	assert(args, "You must provdide an argument table when creating DescribeClustersMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeClustersMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Marker"] = args["Marker"],
 		["TagValues"] = args["TagValues"],
 		["ClusterIdentifier"] = args["ClusterIdentifier"],
 		["TagKeys"] = args["TagKeys"],
 		["MaxRecords"] = args["MaxRecords"],
 	}
-	asserts.AssertDescribeClustersMessage(t)
-	return t
+	asserts.AssertDescribeClustersMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UnknownSnapshotCopyRegionFault = { nil }
@@ -7098,11 +9595,22 @@ end
 -- Valid keys:
 -- @return UnknownSnapshotCopyRegionFault structure as a key-value pair table
 function M.UnknownSnapshotCopyRegionFault(args)
-	assert(args, "You must provdide an argument table when creating UnknownSnapshotCopyRegionFault")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UnknownSnapshotCopyRegionFault")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertUnknownSnapshotCopyRegionFault(t)
-	return t
+	asserts.AssertUnknownSnapshotCopyRegionFault(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.OrderableClusterOption = { ["NodeType"] = true, ["AvailabilityZones"] = true, ["ClusterVersion"] = true, ["ClusterType"] = true, nil }
@@ -7129,15 +9637,26 @@ end
 -- * ClusterType [String] <p>The cluster type, for example <code>multi-node</code>. </p>
 -- @return OrderableClusterOption structure as a key-value pair table
 function M.OrderableClusterOption(args)
-	assert(args, "You must provdide an argument table when creating OrderableClusterOption")
-	local t = { 
+	assert(args, "You must provide an argument table when creating OrderableClusterOption")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NodeType"] = args["NodeType"],
 		["AvailabilityZones"] = args["AvailabilityZones"],
 		["ClusterVersion"] = args["ClusterVersion"],
 		["ClusterType"] = args["ClusterType"],
 	}
-	asserts.AssertOrderableClusterOption(t)
-	return t
+	asserts.AssertOrderableClusterOption(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ClusterSubnetGroupNotFoundFault = { nil }
@@ -7156,11 +9675,22 @@ end
 -- Valid keys:
 -- @return ClusterSubnetGroupNotFoundFault structure as a key-value pair table
 function M.ClusterSubnetGroupNotFoundFault(args)
-	assert(args, "You must provdide an argument table when creating ClusterSubnetGroupNotFoundFault")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ClusterSubnetGroupNotFoundFault")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertClusterSubnetGroupNotFoundFault(t)
-	return t
+	asserts.AssertClusterSubnetGroupNotFoundFault(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.HsmConfigurationMessage = { ["Marker"] = true, ["HsmConfigurations"] = true, nil }
@@ -7183,13 +9713,24 @@ end
 -- * HsmConfigurations [HsmConfigurationList] <p>A list of <code>HsmConfiguration</code> objects.</p>
 -- @return HsmConfigurationMessage structure as a key-value pair table
 function M.HsmConfigurationMessage(args)
-	assert(args, "You must provdide an argument table when creating HsmConfigurationMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating HsmConfigurationMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Marker"] = args["Marker"],
 		["HsmConfigurations"] = args["HsmConfigurations"],
 	}
-	asserts.AssertHsmConfigurationMessage(t)
-	return t
+	asserts.AssertHsmConfigurationMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ClusterParameterGroupQuotaExceededFault = { nil }
@@ -7208,11 +9749,22 @@ end
 -- Valid keys:
 -- @return ClusterParameterGroupQuotaExceededFault structure as a key-value pair table
 function M.ClusterParameterGroupQuotaExceededFault(args)
-	assert(args, "You must provdide an argument table when creating ClusterParameterGroupQuotaExceededFault")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ClusterParameterGroupQuotaExceededFault")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertClusterParameterGroupQuotaExceededFault(t)
-	return t
+	asserts.AssertClusterParameterGroupQuotaExceededFault(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ClusterAlreadyExistsFault = { nil }
@@ -7231,11 +9783,22 @@ end
 -- Valid keys:
 -- @return ClusterAlreadyExistsFault structure as a key-value pair table
 function M.ClusterAlreadyExistsFault(args)
-	assert(args, "You must provdide an argument table when creating ClusterAlreadyExistsFault")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ClusterAlreadyExistsFault")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertClusterAlreadyExistsFault(t)
-	return t
+	asserts.AssertClusterAlreadyExistsFault(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.EventSubscription = { ["Status"] = true, ["Tags"] = true, ["SubscriptionCreationTime"] = true, ["SourceType"] = true, ["EventCategoriesList"] = true, ["SourceIdsList"] = true, ["CustSubscriptionId"] = true, ["Enabled"] = true, ["SnsTopicArn"] = true, ["CustomerAwsId"] = true, ["Severity"] = true, nil }
@@ -7276,8 +9839,14 @@ end
 -- * Severity [String] <p>The event severity specified in the Amazon Redshift event notification subscription.</p> <p>Values: ERROR, INFO</p>
 -- @return EventSubscription structure as a key-value pair table
 function M.EventSubscription(args)
-	assert(args, "You must provdide an argument table when creating EventSubscription")
-	local t = { 
+	assert(args, "You must provide an argument table when creating EventSubscription")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Status"] = args["Status"],
 		["Tags"] = args["Tags"],
 		["SubscriptionCreationTime"] = args["SubscriptionCreationTime"],
@@ -7290,8 +9859,13 @@ function M.EventSubscription(args)
 		["CustomerAwsId"] = args["CustomerAwsId"],
 		["Severity"] = args["Severity"],
 	}
-	asserts.AssertEventSubscription(t)
-	return t
+	asserts.AssertEventSubscription(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.TaggedResource = { ["ResourceType"] = true, ["ResourceName"] = true, ["Tag"] = true, nil }
@@ -7316,14 +9890,25 @@ end
 -- * Tag [Tag] <p>The tag for the resource.</p>
 -- @return TaggedResource structure as a key-value pair table
 function M.TaggedResource(args)
-	assert(args, "You must provdide an argument table when creating TaggedResource")
-	local t = { 
+	assert(args, "You must provide an argument table when creating TaggedResource")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ResourceType"] = args["ResourceType"],
 		["ResourceName"] = args["ResourceName"],
 		["Tag"] = args["Tag"],
 	}
-	asserts.AssertTaggedResource(t)
-	return t
+	asserts.AssertTaggedResource(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.BucketNotFoundFault = { nil }
@@ -7342,11 +9927,22 @@ end
 -- Valid keys:
 -- @return BucketNotFoundFault structure as a key-value pair table
 function M.BucketNotFoundFault(args)
-	assert(args, "You must provdide an argument table when creating BucketNotFoundFault")
-	local t = { 
+	assert(args, "You must provide an argument table when creating BucketNotFoundFault")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertBucketNotFoundFault(t)
-	return t
+	asserts.AssertBucketNotFoundFault(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.SubnetAlreadyInUse = { nil }
@@ -7365,11 +9961,22 @@ end
 -- Valid keys:
 -- @return SubnetAlreadyInUse structure as a key-value pair table
 function M.SubnetAlreadyInUse(args)
-	assert(args, "You must provdide an argument table when creating SubnetAlreadyInUse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating SubnetAlreadyInUse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertSubnetAlreadyInUse(t)
-	return t
+	asserts.AssertSubnetAlreadyInUse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 function asserts.AssertTableRestoreStatusType(str)
@@ -8248,8 +10855,11 @@ function M.DeleteTagsAsync(DeleteTagsMessage, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DeleteTags",
 	}
+	for header,value in pairs(DeleteTagsMessage.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteTagsMessage, headers, settings, cb)
 	else
@@ -8280,8 +10890,11 @@ function M.DescribeDefaultClusterParametersAsync(DescribeDefaultClusterParameter
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DescribeDefaultClusterParameters",
 	}
+	for header,value in pairs(DescribeDefaultClusterParametersMessage.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeDefaultClusterParametersMessage, headers, settings, cb)
 	else
@@ -8312,8 +10925,11 @@ function M.DescribeClusterParameterGroupsAsync(DescribeClusterParameterGroupsMes
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DescribeClusterParameterGroups",
 	}
+	for header,value in pairs(DescribeClusterParameterGroupsMessage.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeClusterParameterGroupsMessage, headers, settings, cb)
 	else
@@ -8344,8 +10960,11 @@ function M.RestoreFromClusterSnapshotAsync(RestoreFromClusterSnapshotMessage, cb
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".RestoreFromClusterSnapshot",
 	}
+	for header,value in pairs(RestoreFromClusterSnapshotMessage.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", RestoreFromClusterSnapshotMessage, headers, settings, cb)
 	else
@@ -8376,8 +10995,11 @@ function M.CreateClusterAsync(CreateClusterMessage, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".CreateCluster",
 	}
+	for header,value in pairs(CreateClusterMessage.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateClusterMessage, headers, settings, cb)
 	else
@@ -8408,8 +11030,11 @@ function M.CopyClusterSnapshotAsync(CopyClusterSnapshotMessage, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".CopyClusterSnapshot",
 	}
+	for header,value in pairs(CopyClusterSnapshotMessage.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", CopyClusterSnapshotMessage, headers, settings, cb)
 	else
@@ -8440,8 +11065,11 @@ function M.CreateClusterParameterGroupAsync(CreateClusterParameterGroupMessage, 
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".CreateClusterParameterGroup",
 	}
+	for header,value in pairs(CreateClusterParameterGroupMessage.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateClusterParameterGroupMessage, headers, settings, cb)
 	else
@@ -8472,8 +11100,11 @@ function M.DescribeEventsAsync(DescribeEventsMessage, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DescribeEvents",
 	}
+	for header,value in pairs(DescribeEventsMessage.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeEventsMessage, headers, settings, cb)
 	else
@@ -8504,8 +11135,11 @@ function M.DescribeEventSubscriptionsAsync(DescribeEventSubscriptionsMessage, cb
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DescribeEventSubscriptions",
 	}
+	for header,value in pairs(DescribeEventSubscriptionsMessage.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeEventSubscriptionsMessage, headers, settings, cb)
 	else
@@ -8536,8 +11170,11 @@ function M.CreateEventSubscriptionAsync(CreateEventSubscriptionMessage, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".CreateEventSubscription",
 	}
+	for header,value in pairs(CreateEventSubscriptionMessage.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateEventSubscriptionMessage, headers, settings, cb)
 	else
@@ -8568,8 +11205,11 @@ function M.DescribeHsmClientCertificatesAsync(DescribeHsmClientCertificatesMessa
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DescribeHsmClientCertificates",
 	}
+	for header,value in pairs(DescribeHsmClientCertificatesMessage.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeHsmClientCertificatesMessage, headers, settings, cb)
 	else
@@ -8600,8 +11240,11 @@ function M.DeleteClusterAsync(DeleteClusterMessage, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DeleteCluster",
 	}
+	for header,value in pairs(DeleteClusterMessage.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteClusterMessage, headers, settings, cb)
 	else
@@ -8632,8 +11275,11 @@ function M.CreateSnapshotCopyGrantAsync(CreateSnapshotCopyGrantMessage, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".CreateSnapshotCopyGrant",
 	}
+	for header,value in pairs(CreateSnapshotCopyGrantMessage.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateSnapshotCopyGrantMessage, headers, settings, cb)
 	else
@@ -8664,8 +11310,11 @@ function M.DescribeEventCategoriesAsync(DescribeEventCategoriesMessage, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DescribeEventCategories",
 	}
+	for header,value in pairs(DescribeEventCategoriesMessage.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeEventCategoriesMessage, headers, settings, cb)
 	else
@@ -8696,8 +11345,11 @@ function M.ModifySnapshotCopyRetentionPeriodAsync(ModifySnapshotCopyRetentionPer
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".ModifySnapshotCopyRetentionPeriod",
 	}
+	for header,value in pairs(ModifySnapshotCopyRetentionPeriodMessage.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ModifySnapshotCopyRetentionPeriodMessage, headers, settings, cb)
 	else
@@ -8728,8 +11380,11 @@ function M.GetClusterCredentialsAsync(GetClusterCredentialsMessage, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".GetClusterCredentials",
 	}
+	for header,value in pairs(GetClusterCredentialsMessage.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", GetClusterCredentialsMessage, headers, settings, cb)
 	else
@@ -8760,8 +11415,11 @@ function M.DeleteSnapshotCopyGrantAsync(DeleteSnapshotCopyGrantMessage, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DeleteSnapshotCopyGrant",
 	}
+	for header,value in pairs(DeleteSnapshotCopyGrantMessage.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteSnapshotCopyGrantMessage, headers, settings, cb)
 	else
@@ -8792,8 +11450,11 @@ function M.DescribeReservedNodesAsync(DescribeReservedNodesMessage, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DescribeReservedNodes",
 	}
+	for header,value in pairs(DescribeReservedNodesMessage.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeReservedNodesMessage, headers, settings, cb)
 	else
@@ -8824,8 +11485,11 @@ function M.AuthorizeSnapshotAccessAsync(AuthorizeSnapshotAccessMessage, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".AuthorizeSnapshotAccess",
 	}
+	for header,value in pairs(AuthorizeSnapshotAccessMessage.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", AuthorizeSnapshotAccessMessage, headers, settings, cb)
 	else
@@ -8856,8 +11520,11 @@ function M.EnableLoggingAsync(EnableLoggingMessage, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".EnableLogging",
 	}
+	for header,value in pairs(EnableLoggingMessage.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", EnableLoggingMessage, headers, settings, cb)
 	else
@@ -8888,8 +11555,11 @@ function M.DisableSnapshotCopyAsync(DisableSnapshotCopyMessage, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DisableSnapshotCopy",
 	}
+	for header,value in pairs(DisableSnapshotCopyMessage.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DisableSnapshotCopyMessage, headers, settings, cb)
 	else
@@ -8920,8 +11590,11 @@ function M.DeleteHsmClientCertificateAsync(DeleteHsmClientCertificateMessage, cb
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DeleteHsmClientCertificate",
 	}
+	for header,value in pairs(DeleteHsmClientCertificateMessage.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteHsmClientCertificateMessage, headers, settings, cb)
 	else
@@ -8952,8 +11625,11 @@ function M.RebootClusterAsync(RebootClusterMessage, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".RebootCluster",
 	}
+	for header,value in pairs(RebootClusterMessage.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", RebootClusterMessage, headers, settings, cb)
 	else
@@ -8984,8 +11660,11 @@ function M.CreateHsmConfigurationAsync(CreateHsmConfigurationMessage, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".CreateHsmConfiguration",
 	}
+	for header,value in pairs(CreateHsmConfigurationMessage.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateHsmConfigurationMessage, headers, settings, cb)
 	else
@@ -9016,8 +11695,11 @@ function M.RevokeSnapshotAccessAsync(RevokeSnapshotAccessMessage, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".RevokeSnapshotAccess",
 	}
+	for header,value in pairs(RevokeSnapshotAccessMessage.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", RevokeSnapshotAccessMessage, headers, settings, cb)
 	else
@@ -9048,8 +11730,11 @@ function M.DescribeClustersAsync(DescribeClustersMessage, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DescribeClusters",
 	}
+	for header,value in pairs(DescribeClustersMessage.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeClustersMessage, headers, settings, cb)
 	else
@@ -9080,8 +11765,11 @@ function M.ModifyClusterIamRolesAsync(ModifyClusterIamRolesMessage, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".ModifyClusterIamRoles",
 	}
+	for header,value in pairs(ModifyClusterIamRolesMessage.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ModifyClusterIamRolesMessage, headers, settings, cb)
 	else
@@ -9112,8 +11800,11 @@ function M.ResetClusterParameterGroupAsync(ResetClusterParameterGroupMessage, cb
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".ResetClusterParameterGroup",
 	}
+	for header,value in pairs(ResetClusterParameterGroupMessage.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ResetClusterParameterGroupMessage, headers, settings, cb)
 	else
@@ -9144,8 +11835,11 @@ function M.DescribeTableRestoreStatusAsync(DescribeTableRestoreStatusMessage, cb
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DescribeTableRestoreStatus",
 	}
+	for header,value in pairs(DescribeTableRestoreStatusMessage.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeTableRestoreStatusMessage, headers, settings, cb)
 	else
@@ -9176,8 +11870,11 @@ function M.DeleteClusterSecurityGroupAsync(DeleteClusterSecurityGroupMessage, cb
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DeleteClusterSecurityGroup",
 	}
+	for header,value in pairs(DeleteClusterSecurityGroupMessage.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteClusterSecurityGroupMessage, headers, settings, cb)
 	else
@@ -9208,8 +11905,11 @@ function M.ModifyClusterParameterGroupAsync(ModifyClusterParameterGroupMessage, 
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".ModifyClusterParameterGroup",
 	}
+	for header,value in pairs(ModifyClusterParameterGroupMessage.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ModifyClusterParameterGroupMessage, headers, settings, cb)
 	else
@@ -9240,8 +11940,11 @@ function M.DescribeClusterSnapshotsAsync(DescribeClusterSnapshotsMessage, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DescribeClusterSnapshots",
 	}
+	for header,value in pairs(DescribeClusterSnapshotsMessage.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeClusterSnapshotsMessage, headers, settings, cb)
 	else
@@ -9272,8 +11975,11 @@ function M.CreateClusterSecurityGroupAsync(CreateClusterSecurityGroupMessage, cb
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".CreateClusterSecurityGroup",
 	}
+	for header,value in pairs(CreateClusterSecurityGroupMessage.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateClusterSecurityGroupMessage, headers, settings, cb)
 	else
@@ -9304,8 +12010,11 @@ function M.DisableLoggingAsync(DisableLoggingMessage, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DisableLogging",
 	}
+	for header,value in pairs(DisableLoggingMessage.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DisableLoggingMessage, headers, settings, cb)
 	else
@@ -9336,8 +12045,11 @@ function M.DescribeClusterVersionsAsync(DescribeClusterVersionsMessage, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DescribeClusterVersions",
 	}
+	for header,value in pairs(DescribeClusterVersionsMessage.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeClusterVersionsMessage, headers, settings, cb)
 	else
@@ -9368,8 +12080,11 @@ function M.DescribeResizeAsync(DescribeResizeMessage, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DescribeResize",
 	}
+	for header,value in pairs(DescribeResizeMessage.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeResizeMessage, headers, settings, cb)
 	else
@@ -9400,8 +12115,11 @@ function M.DescribeClusterSubnetGroupsAsync(DescribeClusterSubnetGroupsMessage, 
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DescribeClusterSubnetGroups",
 	}
+	for header,value in pairs(DescribeClusterSubnetGroupsMessage.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeClusterSubnetGroupsMessage, headers, settings, cb)
 	else
@@ -9432,8 +12150,11 @@ function M.AuthorizeClusterSecurityGroupIngressAsync(AuthorizeClusterSecurityGro
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".AuthorizeClusterSecurityGroupIngress",
 	}
+	for header,value in pairs(AuthorizeClusterSecurityGroupIngressMessage.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", AuthorizeClusterSecurityGroupIngressMessage, headers, settings, cb)
 	else
@@ -9464,8 +12185,11 @@ function M.DescribeHsmConfigurationsAsync(DescribeHsmConfigurationsMessage, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DescribeHsmConfigurations",
 	}
+	for header,value in pairs(DescribeHsmConfigurationsMessage.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeHsmConfigurationsMessage, headers, settings, cb)
 	else
@@ -9496,8 +12220,11 @@ function M.DeleteEventSubscriptionAsync(DeleteEventSubscriptionMessage, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DeleteEventSubscription",
 	}
+	for header,value in pairs(DeleteEventSubscriptionMessage.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteEventSubscriptionMessage, headers, settings, cb)
 	else
@@ -9528,8 +12255,11 @@ function M.DescribeTagsAsync(DescribeTagsMessage, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DescribeTags",
 	}
+	for header,value in pairs(DescribeTagsMessage.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeTagsMessage, headers, settings, cb)
 	else
@@ -9560,8 +12290,11 @@ function M.DeleteHsmConfigurationAsync(DeleteHsmConfigurationMessage, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DeleteHsmConfiguration",
 	}
+	for header,value in pairs(DeleteHsmConfigurationMessage.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteHsmConfigurationMessage, headers, settings, cb)
 	else
@@ -9592,8 +12325,11 @@ function M.CreateClusterSubnetGroupAsync(CreateClusterSubnetGroupMessage, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".CreateClusterSubnetGroup",
 	}
+	for header,value in pairs(CreateClusterSubnetGroupMessage.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateClusterSubnetGroupMessage, headers, settings, cb)
 	else
@@ -9624,8 +12360,11 @@ function M.DescribeClusterParametersAsync(DescribeClusterParametersMessage, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DescribeClusterParameters",
 	}
+	for header,value in pairs(DescribeClusterParametersMessage.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeClusterParametersMessage, headers, settings, cb)
 	else
@@ -9656,8 +12395,11 @@ function M.CreateHsmClientCertificateAsync(CreateHsmClientCertificateMessage, cb
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".CreateHsmClientCertificate",
 	}
+	for header,value in pairs(CreateHsmClientCertificateMessage.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateHsmClientCertificateMessage, headers, settings, cb)
 	else
@@ -9688,8 +12430,11 @@ function M.ModifyClusterSubnetGroupAsync(ModifyClusterSubnetGroupMessage, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".ModifyClusterSubnetGroup",
 	}
+	for header,value in pairs(ModifyClusterSubnetGroupMessage.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ModifyClusterSubnetGroupMessage, headers, settings, cb)
 	else
@@ -9720,8 +12465,11 @@ function M.DescribeSnapshotCopyGrantsAsync(DescribeSnapshotCopyGrantsMessage, cb
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DescribeSnapshotCopyGrants",
 	}
+	for header,value in pairs(DescribeSnapshotCopyGrantsMessage.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeSnapshotCopyGrantsMessage, headers, settings, cb)
 	else
@@ -9752,8 +12500,11 @@ function M.DescribeOrderableClusterOptionsAsync(DescribeOrderableClusterOptionsM
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DescribeOrderableClusterOptions",
 	}
+	for header,value in pairs(DescribeOrderableClusterOptionsMessage.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeOrderableClusterOptionsMessage, headers, settings, cb)
 	else
@@ -9784,8 +12535,11 @@ function M.ModifyClusterAsync(ModifyClusterMessage, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".ModifyCluster",
 	}
+	for header,value in pairs(ModifyClusterMessage.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ModifyClusterMessage, headers, settings, cb)
 	else
@@ -9816,8 +12570,11 @@ function M.RotateEncryptionKeyAsync(RotateEncryptionKeyMessage, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".RotateEncryptionKey",
 	}
+	for header,value in pairs(RotateEncryptionKeyMessage.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", RotateEncryptionKeyMessage, headers, settings, cb)
 	else
@@ -9848,8 +12605,11 @@ function M.EnableSnapshotCopyAsync(EnableSnapshotCopyMessage, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".EnableSnapshotCopy",
 	}
+	for header,value in pairs(EnableSnapshotCopyMessage.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", EnableSnapshotCopyMessage, headers, settings, cb)
 	else
@@ -9880,8 +12640,11 @@ function M.CreateClusterSnapshotAsync(CreateClusterSnapshotMessage, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".CreateClusterSnapshot",
 	}
+	for header,value in pairs(CreateClusterSnapshotMessage.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateClusterSnapshotMessage, headers, settings, cb)
 	else
@@ -9912,8 +12675,11 @@ function M.DeleteClusterSnapshotAsync(DeleteClusterSnapshotMessage, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DeleteClusterSnapshot",
 	}
+	for header,value in pairs(DeleteClusterSnapshotMessage.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteClusterSnapshotMessage, headers, settings, cb)
 	else
@@ -9944,8 +12710,11 @@ function M.CreateTagsAsync(CreateTagsMessage, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".CreateTags",
 	}
+	for header,value in pairs(CreateTagsMessage.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateTagsMessage, headers, settings, cb)
 	else
@@ -9976,8 +12745,11 @@ function M.DescribeReservedNodeOfferingsAsync(DescribeReservedNodeOfferingsMessa
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DescribeReservedNodeOfferings",
 	}
+	for header,value in pairs(DescribeReservedNodeOfferingsMessage.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeReservedNodeOfferingsMessage, headers, settings, cb)
 	else
@@ -10008,8 +12780,11 @@ function M.DescribeLoggingStatusAsync(DescribeLoggingStatusMessage, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DescribeLoggingStatus",
 	}
+	for header,value in pairs(DescribeLoggingStatusMessage.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeLoggingStatusMessage, headers, settings, cb)
 	else
@@ -10040,8 +12815,11 @@ function M.ModifyEventSubscriptionAsync(ModifyEventSubscriptionMessage, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".ModifyEventSubscription",
 	}
+	for header,value in pairs(ModifyEventSubscriptionMessage.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ModifyEventSubscriptionMessage, headers, settings, cb)
 	else
@@ -10072,8 +12850,11 @@ function M.RestoreTableFromClusterSnapshotAsync(RestoreTableFromClusterSnapshotM
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".RestoreTableFromClusterSnapshot",
 	}
+	for header,value in pairs(RestoreTableFromClusterSnapshotMessage.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", RestoreTableFromClusterSnapshotMessage, headers, settings, cb)
 	else
@@ -10104,8 +12885,11 @@ function M.DescribeClusterSecurityGroupsAsync(DescribeClusterSecurityGroupsMessa
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DescribeClusterSecurityGroups",
 	}
+	for header,value in pairs(DescribeClusterSecurityGroupsMessage.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeClusterSecurityGroupsMessage, headers, settings, cb)
 	else
@@ -10136,8 +12920,11 @@ function M.RevokeClusterSecurityGroupIngressAsync(RevokeClusterSecurityGroupIngr
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".RevokeClusterSecurityGroupIngress",
 	}
+	for header,value in pairs(RevokeClusterSecurityGroupIngressMessage.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", RevokeClusterSecurityGroupIngressMessage, headers, settings, cb)
 	else
@@ -10168,8 +12955,11 @@ function M.DeleteClusterParameterGroupAsync(DeleteClusterParameterGroupMessage, 
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DeleteClusterParameterGroup",
 	}
+	for header,value in pairs(DeleteClusterParameterGroupMessage.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteClusterParameterGroupMessage, headers, settings, cb)
 	else
@@ -10200,8 +12990,11 @@ function M.DeleteClusterSubnetGroupAsync(DeleteClusterSubnetGroupMessage, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DeleteClusterSubnetGroup",
 	}
+	for header,value in pairs(DeleteClusterSubnetGroupMessage.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteClusterSubnetGroupMessage, headers, settings, cb)
 	else
@@ -10232,8 +13025,11 @@ function M.PurchaseReservedNodeOfferingAsync(PurchaseReservedNodeOfferingMessage
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".PurchaseReservedNodeOffering",
 	}
+	for header,value in pairs(PurchaseReservedNodeOfferingMessage.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", PurchaseReservedNodeOfferingMessage, headers, settings, cb)
 	else

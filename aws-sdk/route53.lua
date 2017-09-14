@@ -47,14 +47,25 @@ end
 -- Required key: VPCs
 -- @return ListVPCAssociationAuthorizationsResponse structure as a key-value pair table
 function M.ListVPCAssociationAuthorizationsResponse(args)
-	assert(args, "You must provdide an argument table when creating ListVPCAssociationAuthorizationsResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListVPCAssociationAuthorizationsResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["HostedZoneId"] = args["HostedZoneId"],
 		["VPCs"] = args["VPCs"],
 		["NextToken"] = args["NextToken"],
 	}
-	asserts.AssertListVPCAssociationAuthorizationsResponse(t)
-	return t
+	asserts.AssertListVPCAssociationAuthorizationsResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateTrafficPolicyRequest = { ["Comment"] = true, ["Document"] = true, ["Name"] = true, nil }
@@ -83,14 +94,25 @@ end
 -- Required key: Document
 -- @return CreateTrafficPolicyRequest structure as a key-value pair table
 function M.CreateTrafficPolicyRequest(args)
-	assert(args, "You must provdide an argument table when creating CreateTrafficPolicyRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateTrafficPolicyRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Comment"] = args["Comment"],
 		["Document"] = args["Document"],
 		["Name"] = args["Name"],
 	}
-	asserts.AssertCreateTrafficPolicyRequest(t)
-	return t
+	asserts.AssertCreateTrafficPolicyRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListHostedZonesByNameResponse = { ["HostedZones"] = true, ["NextHostedZoneId"] = true, ["DNSName"] = true, ["MaxItems"] = true, ["HostedZoneId"] = true, ["NextDNSName"] = true, ["IsTruncated"] = true, nil }
@@ -129,8 +151,14 @@ end
 -- Required key: MaxItems
 -- @return ListHostedZonesByNameResponse structure as a key-value pair table
 function M.ListHostedZonesByNameResponse(args)
-	assert(args, "You must provdide an argument table when creating ListHostedZonesByNameResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListHostedZonesByNameResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["HostedZones"] = args["HostedZones"],
 		["NextHostedZoneId"] = args["NextHostedZoneId"],
 		["DNSName"] = args["DNSName"],
@@ -139,8 +167,13 @@ function M.ListHostedZonesByNameResponse(args)
 		["NextDNSName"] = args["NextDNSName"],
 		["IsTruncated"] = args["IsTruncated"],
 	}
-	asserts.AssertListHostedZonesByNameResponse(t)
-	return t
+	asserts.AssertListHostedZonesByNameResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateTrafficPolicyResponse = { ["TrafficPolicy"] = true, ["Location"] = true, nil }
@@ -167,13 +200,25 @@ end
 -- Required key: Location
 -- @return CreateTrafficPolicyResponse structure as a key-value pair table
 function M.CreateTrafficPolicyResponse(args)
-	assert(args, "You must provdide an argument table when creating CreateTrafficPolicyResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateTrafficPolicyResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+        ["Location"] = args["Location"],
+    }
+	local all_args = { 
 		["TrafficPolicy"] = args["TrafficPolicy"],
 		["Location"] = args["Location"],
 	}
-	asserts.AssertCreateTrafficPolicyResponse(t)
-	return t
+	asserts.AssertCreateTrafficPolicyResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetTrafficPolicyInstanceResponse = { ["TrafficPolicyInstance"] = true, nil }
@@ -196,12 +241,23 @@ end
 -- Required key: TrafficPolicyInstance
 -- @return GetTrafficPolicyInstanceResponse structure as a key-value pair table
 function M.GetTrafficPolicyInstanceResponse(args)
-	assert(args, "You must provdide an argument table when creating GetTrafficPolicyInstanceResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetTrafficPolicyInstanceResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["TrafficPolicyInstance"] = args["TrafficPolicyInstance"],
 	}
-	asserts.AssertGetTrafficPolicyInstanceResponse(t)
-	return t
+	asserts.AssertGetTrafficPolicyInstanceResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteHostedZoneRequest = { ["Id"] = true, nil }
@@ -224,12 +280,24 @@ end
 -- Required key: Id
 -- @return DeleteHostedZoneRequest structure as a key-value pair table
 function M.DeleteHostedZoneRequest(args)
-	assert(args, "You must provdide an argument table when creating DeleteHostedZoneRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteHostedZoneRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{Id}"] = args["Id"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Id"] = args["Id"],
 	}
-	asserts.AssertDeleteHostedZoneRequest(t)
-	return t
+	asserts.AssertDeleteHostedZoneRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AlarmIdentifier = { ["Region"] = true, ["Name"] = true, nil }
@@ -256,13 +324,24 @@ end
 -- Required key: Name
 -- @return AlarmIdentifier structure as a key-value pair table
 function M.AlarmIdentifier(args)
-	assert(args, "You must provdide an argument table when creating AlarmIdentifier")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AlarmIdentifier")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Region"] = args["Region"],
 		["Name"] = args["Name"],
 	}
-	asserts.AssertAlarmIdentifier(t)
-	return t
+	asserts.AssertAlarmIdentifier(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateHealthCheckRequest = { ["HealthCheckConfig"] = true, ["CallerReference"] = true, nil }
@@ -289,13 +368,24 @@ end
 -- Required key: HealthCheckConfig
 -- @return CreateHealthCheckRequest structure as a key-value pair table
 function M.CreateHealthCheckRequest(args)
-	assert(args, "You must provdide an argument table when creating CreateHealthCheckRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateHealthCheckRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["HealthCheckConfig"] = args["HealthCheckConfig"],
 		["CallerReference"] = args["CallerReference"],
 	}
-	asserts.AssertCreateHealthCheckRequest(t)
-	return t
+	asserts.AssertCreateHealthCheckRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ResourceRecord = { ["Value"] = true, nil }
@@ -318,12 +408,23 @@ end
 -- Required key: Value
 -- @return ResourceRecord structure as a key-value pair table
 function M.ResourceRecord(args)
-	assert(args, "You must provdide an argument table when creating ResourceRecord")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ResourceRecord")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Value"] = args["Value"],
 	}
-	asserts.AssertResourceRecord(t)
-	return t
+	asserts.AssertResourceRecord(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListTagsForResourcesRequest = { ["ResourceType"] = true, ["ResourceIds"] = true, nil }
@@ -350,13 +451,25 @@ end
 -- Required key: ResourceIds
 -- @return ListTagsForResourcesRequest structure as a key-value pair table
 function M.ListTagsForResourcesRequest(args)
-	assert(args, "You must provdide an argument table when creating ListTagsForResourcesRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListTagsForResourcesRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{ResourceType}"] = args["ResourceType"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ResourceType"] = args["ResourceType"],
 		["ResourceIds"] = args["ResourceIds"],
 	}
-	asserts.AssertListTagsForResourcesRequest(t)
-	return t
+	asserts.AssertListTagsForResourcesRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListTrafficPolicyInstancesByPolicyRequest = { ["TrafficPolicyInstanceNameMarker"] = true, ["TrafficPolicyVersion"] = true, ["HostedZoneIdMarker"] = true, ["TrafficPolicyId"] = true, ["MaxItems"] = true, ["TrafficPolicyInstanceTypeMarker"] = true, nil }
@@ -391,8 +504,20 @@ end
 -- Required key: TrafficPolicyVersion
 -- @return ListTrafficPolicyInstancesByPolicyRequest structure as a key-value pair table
 function M.ListTrafficPolicyInstancesByPolicyRequest(args)
-	assert(args, "You must provdide an argument table when creating ListTrafficPolicyInstancesByPolicyRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListTrafficPolicyInstancesByPolicyRequest")
+    local query_args = { 
+        ["trafficpolicyinstancename"] = args["TrafficPolicyInstanceNameMarker"],
+        ["version"] = args["TrafficPolicyVersion"],
+        ["hostedzoneid"] = args["HostedZoneIdMarker"],
+        ["id"] = args["TrafficPolicyId"],
+        ["maxitems"] = args["MaxItems"],
+        ["trafficpolicyinstancetype"] = args["TrafficPolicyInstanceTypeMarker"],
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["TrafficPolicyInstanceNameMarker"] = args["TrafficPolicyInstanceNameMarker"],
 		["TrafficPolicyVersion"] = args["TrafficPolicyVersion"],
 		["HostedZoneIdMarker"] = args["HostedZoneIdMarker"],
@@ -400,8 +525,13 @@ function M.ListTrafficPolicyInstancesByPolicyRequest(args)
 		["MaxItems"] = args["MaxItems"],
 		["TrafficPolicyInstanceTypeMarker"] = args["TrafficPolicyInstanceTypeMarker"],
 	}
-	asserts.AssertListTrafficPolicyInstancesByPolicyRequest(t)
-	return t
+	asserts.AssertListTrafficPolicyInstancesByPolicyRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetChangeResponse = { ["ChangeInfo"] = true, nil }
@@ -424,12 +554,23 @@ end
 -- Required key: ChangeInfo
 -- @return GetChangeResponse structure as a key-value pair table
 function M.GetChangeResponse(args)
-	assert(args, "You must provdide an argument table when creating GetChangeResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetChangeResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ChangeInfo"] = args["ChangeInfo"],
 	}
-	asserts.AssertGetChangeResponse(t)
-	return t
+	asserts.AssertGetChangeResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.PublicZoneVPCAssociation = { ["message"] = true, nil }
@@ -450,12 +591,23 @@ end
 -- * message [ErrorMessage] <p>Descriptive message for the error response.</p>
 -- @return PublicZoneVPCAssociation structure as a key-value pair table
 function M.PublicZoneVPCAssociation(args)
-	assert(args, "You must provdide an argument table when creating PublicZoneVPCAssociation")
-	local t = { 
+	assert(args, "You must provide an argument table when creating PublicZoneVPCAssociation")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertPublicZoneVPCAssociation(t)
-	return t
+	asserts.AssertPublicZoneVPCAssociation(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidArgument = { ["message"] = true, nil }
@@ -476,12 +628,23 @@ end
 -- * message [ErrorMessage] <p>Descriptive message for the error response.</p>
 -- @return InvalidArgument structure as a key-value pair table
 function M.InvalidArgument(args)
-	assert(args, "You must provdide an argument table when creating InvalidArgument")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidArgument")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertInvalidArgument(t)
-	return t
+	asserts.AssertInvalidArgument(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListTrafficPolicyInstancesByPolicyResponse = { ["TrafficPolicyInstanceNameMarker"] = true, ["HostedZoneIdMarker"] = true, ["TrafficPolicyInstances"] = true, ["MaxItems"] = true, ["TrafficPolicyInstanceTypeMarker"] = true, ["IsTruncated"] = true, nil }
@@ -518,8 +681,14 @@ end
 -- Required key: MaxItems
 -- @return ListTrafficPolicyInstancesByPolicyResponse structure as a key-value pair table
 function M.ListTrafficPolicyInstancesByPolicyResponse(args)
-	assert(args, "You must provdide an argument table when creating ListTrafficPolicyInstancesByPolicyResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListTrafficPolicyInstancesByPolicyResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["TrafficPolicyInstanceNameMarker"] = args["TrafficPolicyInstanceNameMarker"],
 		["HostedZoneIdMarker"] = args["HostedZoneIdMarker"],
 		["TrafficPolicyInstances"] = args["TrafficPolicyInstances"],
@@ -527,8 +696,13 @@ function M.ListTrafficPolicyInstancesByPolicyResponse(args)
 		["TrafficPolicyInstanceTypeMarker"] = args["TrafficPolicyInstanceTypeMarker"],
 		["IsTruncated"] = args["IsTruncated"],
 	}
-	asserts.AssertListTrafficPolicyInstancesByPolicyResponse(t)
-	return t
+	asserts.AssertListTrafficPolicyInstancesByPolicyResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetGeoLocationResponse = { ["GeoLocationDetails"] = true, nil }
@@ -551,12 +725,23 @@ end
 -- Required key: GeoLocationDetails
 -- @return GetGeoLocationResponse structure as a key-value pair table
 function M.GetGeoLocationResponse(args)
-	assert(args, "You must provdide an argument table when creating GetGeoLocationResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetGeoLocationResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["GeoLocationDetails"] = args["GeoLocationDetails"],
 	}
-	asserts.AssertGetGeoLocationResponse(t)
-	return t
+	asserts.AssertGetGeoLocationResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdateTrafficPolicyInstanceRequest = { ["TrafficPolicyId"] = true, ["TrafficPolicyVersion"] = true, ["Id"] = true, ["TTL"] = true, nil }
@@ -591,15 +776,27 @@ end
 -- Required key: TrafficPolicyVersion
 -- @return UpdateTrafficPolicyInstanceRequest structure as a key-value pair table
 function M.UpdateTrafficPolicyInstanceRequest(args)
-	assert(args, "You must provdide an argument table when creating UpdateTrafficPolicyInstanceRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateTrafficPolicyInstanceRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{Id}"] = args["Id"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["TrafficPolicyId"] = args["TrafficPolicyId"],
 		["TrafficPolicyVersion"] = args["TrafficPolicyVersion"],
 		["Id"] = args["Id"],
 		["TTL"] = args["TTL"],
 	}
-	asserts.AssertUpdateTrafficPolicyInstanceRequest(t)
-	return t
+	asserts.AssertUpdateTrafficPolicyInstanceRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListTrafficPoliciesRequest = { ["TrafficPolicyIdMarker"] = true, ["MaxItems"] = true, nil }
@@ -622,13 +819,26 @@ end
 -- * MaxItems [PageMaxItems] <p>(Optional) The maximum number of traffic policies that you want Amazon Route 53 to return in response to this request. If you have more than <code>MaxItems</code> traffic policies, the value of <code>IsTruncated</code> in the response is <code>true</code>, and the value of <code>TrafficPolicyIdMarker</code> is the ID of the first traffic policy that Amazon Route 53 will return if you submit another request.</p>
 -- @return ListTrafficPoliciesRequest structure as a key-value pair table
 function M.ListTrafficPoliciesRequest(args)
-	assert(args, "You must provdide an argument table when creating ListTrafficPoliciesRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListTrafficPoliciesRequest")
+    local query_args = { 
+        ["trafficpolicyid"] = args["TrafficPolicyIdMarker"],
+        ["maxitems"] = args["MaxItems"],
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["TrafficPolicyIdMarker"] = args["TrafficPolicyIdMarker"],
 		["MaxItems"] = args["MaxItems"],
 	}
-	asserts.AssertListTrafficPoliciesRequest(t)
-	return t
+	asserts.AssertListTrafficPoliciesRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DelegationSetNotAvailable = { ["message"] = true, nil }
@@ -649,12 +859,23 @@ end
 -- * message [ErrorMessage] <p>Descriptive message for the error response.</p>
 -- @return DelegationSetNotAvailable structure as a key-value pair table
 function M.DelegationSetNotAvailable(args)
-	assert(args, "You must provdide an argument table when creating DelegationSetNotAvailable")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DelegationSetNotAvailable")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertDelegationSetNotAvailable(t)
-	return t
+	asserts.AssertDelegationSetNotAvailable(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteHealthCheckRequest = { ["HealthCheckId"] = true, nil }
@@ -677,12 +898,24 @@ end
 -- Required key: HealthCheckId
 -- @return DeleteHealthCheckRequest structure as a key-value pair table
 function M.DeleteHealthCheckRequest(args)
-	assert(args, "You must provdide an argument table when creating DeleteHealthCheckRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteHealthCheckRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{HealthCheckId}"] = args["HealthCheckId"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["HealthCheckId"] = args["HealthCheckId"],
 	}
-	asserts.AssertDeleteHealthCheckRequest(t)
-	return t
+	asserts.AssertDeleteHealthCheckRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.StatusReport = { ["Status"] = true, ["CheckedTime"] = true, nil }
@@ -705,13 +938,24 @@ end
 -- * CheckedTime [TimeStamp] <p>The date and time that the health checker performed the health check in <a href="https://en.wikipedia.org/wiki/ISO_8601">ISO 8601 format</a> and Coordinated Universal Time (UTC). For example, the value <code>2017-03-27T17:48:16.751Z</code> represents March 27, 2017 at 17:48:16.751 UTC.</p>
 -- @return StatusReport structure as a key-value pair table
 function M.StatusReport(args)
-	assert(args, "You must provdide an argument table when creating StatusReport")
-	local t = { 
+	assert(args, "You must provide an argument table when creating StatusReport")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Status"] = args["Status"],
 		["CheckedTime"] = args["CheckedTime"],
 	}
-	asserts.AssertStatusReport(t)
-	return t
+	asserts.AssertStatusReport(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetHostedZoneRequest = { ["Id"] = true, nil }
@@ -734,12 +978,24 @@ end
 -- Required key: Id
 -- @return GetHostedZoneRequest structure as a key-value pair table
 function M.GetHostedZoneRequest(args)
-	assert(args, "You must provdide an argument table when creating GetHostedZoneRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetHostedZoneRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{Id}"] = args["Id"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Id"] = args["Id"],
 	}
-	asserts.AssertGetHostedZoneRequest(t)
-	return t
+	asserts.AssertGetHostedZoneRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteTrafficPolicyResponse = { nil }
@@ -758,11 +1014,22 @@ end
 -- Valid keys:
 -- @return DeleteTrafficPolicyResponse structure as a key-value pair table
 function M.DeleteTrafficPolicyResponse(args)
-	assert(args, "You must provdide an argument table when creating DeleteTrafficPolicyResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteTrafficPolicyResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertDeleteTrafficPolicyResponse(t)
-	return t
+	asserts.AssertDeleteTrafficPolicyResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListReusableDelegationSetsResponse = { ["Marker"] = true, ["DelegationSets"] = true, ["IsTruncated"] = true, ["MaxItems"] = true, ["NextMarker"] = true, nil }
@@ -799,16 +1066,27 @@ end
 -- Required key: MaxItems
 -- @return ListReusableDelegationSetsResponse structure as a key-value pair table
 function M.ListReusableDelegationSetsResponse(args)
-	assert(args, "You must provdide an argument table when creating ListReusableDelegationSetsResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListReusableDelegationSetsResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Marker"] = args["Marker"],
 		["DelegationSets"] = args["DelegationSets"],
 		["IsTruncated"] = args["IsTruncated"],
 		["MaxItems"] = args["MaxItems"],
 		["NextMarker"] = args["NextMarker"],
 	}
-	asserts.AssertListReusableDelegationSetsResponse(t)
-	return t
+	asserts.AssertListReusableDelegationSetsResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Change = { ["Action"] = true, ["ResourceRecordSet"] = true, nil }
@@ -835,13 +1113,24 @@ end
 -- Required key: ResourceRecordSet
 -- @return Change structure as a key-value pair table
 function M.Change(args)
-	assert(args, "You must provdide an argument table when creating Change")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Change")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Action"] = args["Action"],
 		["ResourceRecordSet"] = args["ResourceRecordSet"],
 	}
-	asserts.AssertChange(t)
-	return t
+	asserts.AssertChange(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateReusableDelegationSetRequest = { ["HostedZoneId"] = true, ["CallerReference"] = true, nil }
@@ -866,13 +1155,24 @@ end
 -- Required key: CallerReference
 -- @return CreateReusableDelegationSetRequest structure as a key-value pair table
 function M.CreateReusableDelegationSetRequest(args)
-	assert(args, "You must provdide an argument table when creating CreateReusableDelegationSetRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateReusableDelegationSetRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["HostedZoneId"] = args["HostedZoneId"],
 		["CallerReference"] = args["CallerReference"],
 	}
-	asserts.AssertCreateReusableDelegationSetRequest(t)
-	return t
+	asserts.AssertCreateReusableDelegationSetRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateHostedZoneRequest = { ["DelegationSetId"] = true, ["HostedZoneConfig"] = true, ["CallerReference"] = true, ["Name"] = true, ["VPC"] = true, nil }
@@ -905,16 +1205,27 @@ end
 -- Required key: CallerReference
 -- @return CreateHostedZoneRequest structure as a key-value pair table
 function M.CreateHostedZoneRequest(args)
-	assert(args, "You must provdide an argument table when creating CreateHostedZoneRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateHostedZoneRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DelegationSetId"] = args["DelegationSetId"],
 		["HostedZoneConfig"] = args["HostedZoneConfig"],
 		["CallerReference"] = args["CallerReference"],
 		["Name"] = args["Name"],
 		["VPC"] = args["VPC"],
 	}
-	asserts.AssertCreateHostedZoneRequest(t)
-	return t
+	asserts.AssertCreateHostedZoneRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DelegationSetInUse = { ["message"] = true, nil }
@@ -935,12 +1246,23 @@ end
 -- * message [ErrorMessage] <p>Descriptive message for the error response.</p>
 -- @return DelegationSetInUse structure as a key-value pair table
 function M.DelegationSetInUse(args)
-	assert(args, "You must provdide an argument table when creating DelegationSetInUse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DelegationSetInUse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertDelegationSetInUse(t)
-	return t
+	asserts.AssertDelegationSetInUse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetHealthCheckCountResponse = { ["HealthCheckCount"] = true, nil }
@@ -963,12 +1285,23 @@ end
 -- Required key: HealthCheckCount
 -- @return GetHealthCheckCountResponse structure as a key-value pair table
 function M.GetHealthCheckCountResponse(args)
-	assert(args, "You must provdide an argument table when creating GetHealthCheckCountResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetHealthCheckCountResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["HealthCheckCount"] = args["HealthCheckCount"],
 	}
-	asserts.AssertGetHealthCheckCountResponse(t)
-	return t
+	asserts.AssertGetHealthCheckCountResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidChangeBatch = { ["messages"] = true, nil }
@@ -989,12 +1322,23 @@ end
 -- * messages [ErrorMessages] <p>Descriptive message for the error response.</p>
 -- @return InvalidChangeBatch structure as a key-value pair table
 function M.InvalidChangeBatch(args)
-	assert(args, "You must provdide an argument table when creating InvalidChangeBatch")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidChangeBatch")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["messages"] = args["messages"],
 	}
-	asserts.AssertInvalidChangeBatch(t)
-	return t
+	asserts.AssertInvalidChangeBatch(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteTrafficPolicyRequest = { ["Version"] = true, ["Id"] = true, nil }
@@ -1021,13 +1365,26 @@ end
 -- Required key: Version
 -- @return DeleteTrafficPolicyRequest structure as a key-value pair table
 function M.DeleteTrafficPolicyRequest(args)
-	assert(args, "You must provdide an argument table when creating DeleteTrafficPolicyRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteTrafficPolicyRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{Version}"] = args["Version"],
+        ["{Id}"] = args["Id"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Version"] = args["Version"],
 		["Id"] = args["Id"],
 	}
-	asserts.AssertDeleteTrafficPolicyRequest(t)
-	return t
+	asserts.AssertDeleteTrafficPolicyRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdateHostedZoneCommentRequest = { ["Comment"] = true, ["Id"] = true, nil }
@@ -1052,13 +1409,25 @@ end
 -- Required key: Id
 -- @return UpdateHostedZoneCommentRequest structure as a key-value pair table
 function M.UpdateHostedZoneCommentRequest(args)
-	assert(args, "You must provdide an argument table when creating UpdateHostedZoneCommentRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateHostedZoneCommentRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{Id}"] = args["Id"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Comment"] = args["Comment"],
 		["Id"] = args["Id"],
 	}
-	asserts.AssertUpdateHostedZoneCommentRequest(t)
-	return t
+	asserts.AssertUpdateHostedZoneCommentRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ConcurrentModification = { ["message"] = true, nil }
@@ -1079,12 +1448,23 @@ end
 -- * message [ErrorMessage] <p>Descriptive message for the error response.</p>
 -- @return ConcurrentModification structure as a key-value pair table
 function M.ConcurrentModification(args)
-	assert(args, "You must provdide an argument table when creating ConcurrentModification")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ConcurrentModification")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertConcurrentModification(t)
-	return t
+	asserts.AssertConcurrentModification(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetHealthCheckStatusResponse = { ["HealthCheckObservations"] = true, nil }
@@ -1107,12 +1487,23 @@ end
 -- Required key: HealthCheckObservations
 -- @return GetHealthCheckStatusResponse structure as a key-value pair table
 function M.GetHealthCheckStatusResponse(args)
-	assert(args, "You must provdide an argument table when creating GetHealthCheckStatusResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetHealthCheckStatusResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["HealthCheckObservations"] = args["HealthCheckObservations"],
 	}
-	asserts.AssertGetHealthCheckStatusResponse(t)
-	return t
+	asserts.AssertGetHealthCheckStatusResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetGeoLocationRequest = { ["SubdivisionCode"] = true, ["CountryCode"] = true, ["ContinentCode"] = true, nil }
@@ -1137,14 +1528,28 @@ end
 -- * ContinentCode [GeoLocationContinentCode] <p>Amazon Route 53 supports the following continent codes:</p> <ul> <li> <p> <b>AF</b>: Africa</p> </li> <li> <p> <b>AN</b>: Antarctica</p> </li> <li> <p> <b>AS</b>: Asia</p> </li> <li> <p> <b>EU</b>: Europe</p> </li> <li> <p> <b>OC</b>: Oceania</p> </li> <li> <p> <b>NA</b>: North America</p> </li> <li> <p> <b>SA</b>: South America</p> </li> </ul>
 -- @return GetGeoLocationRequest structure as a key-value pair table
 function M.GetGeoLocationRequest(args)
-	assert(args, "You must provdide an argument table when creating GetGeoLocationRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetGeoLocationRequest")
+    local query_args = { 
+        ["subdivisioncode"] = args["SubdivisionCode"],
+        ["countrycode"] = args["CountryCode"],
+        ["continentcode"] = args["ContinentCode"],
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["SubdivisionCode"] = args["SubdivisionCode"],
 		["CountryCode"] = args["CountryCode"],
 		["ContinentCode"] = args["ContinentCode"],
 	}
-	asserts.AssertGetGeoLocationRequest(t)
-	return t
+	asserts.AssertGetGeoLocationRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetTrafficPolicyInstanceCountResponse = { ["TrafficPolicyInstanceCount"] = true, nil }
@@ -1167,12 +1572,23 @@ end
 -- Required key: TrafficPolicyInstanceCount
 -- @return GetTrafficPolicyInstanceCountResponse structure as a key-value pair table
 function M.GetTrafficPolicyInstanceCountResponse(args)
-	assert(args, "You must provdide an argument table when creating GetTrafficPolicyInstanceCountResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetTrafficPolicyInstanceCountResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["TrafficPolicyInstanceCount"] = args["TrafficPolicyInstanceCount"],
 	}
-	asserts.AssertGetTrafficPolicyInstanceCountResponse(t)
-	return t
+	asserts.AssertGetTrafficPolicyInstanceCountResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateTrafficPolicyInstanceRequest = { ["HostedZoneId"] = true, ["TrafficPolicyVersion"] = true, ["TrafficPolicyId"] = true, ["Name"] = true, ["TTL"] = true, nil }
@@ -1211,16 +1627,27 @@ end
 -- Required key: TrafficPolicyVersion
 -- @return CreateTrafficPolicyInstanceRequest structure as a key-value pair table
 function M.CreateTrafficPolicyInstanceRequest(args)
-	assert(args, "You must provdide an argument table when creating CreateTrafficPolicyInstanceRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateTrafficPolicyInstanceRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["HostedZoneId"] = args["HostedZoneId"],
 		["TrafficPolicyVersion"] = args["TrafficPolicyVersion"],
 		["TrafficPolicyId"] = args["TrafficPolicyId"],
 		["Name"] = args["Name"],
 		["TTL"] = args["TTL"],
 	}
-	asserts.AssertCreateTrafficPolicyInstanceRequest(t)
-	return t
+	asserts.AssertCreateTrafficPolicyInstanceRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetTrafficPolicyInstanceCountRequest = { nil }
@@ -1239,11 +1666,22 @@ end
 -- Valid keys:
 -- @return GetTrafficPolicyInstanceCountRequest structure as a key-value pair table
 function M.GetTrafficPolicyInstanceCountRequest(args)
-	assert(args, "You must provdide an argument table when creating GetTrafficPolicyInstanceCountRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetTrafficPolicyInstanceCountRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertGetTrafficPolicyInstanceCountRequest(t)
-	return t
+	asserts.AssertGetTrafficPolicyInstanceCountRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListHealthChecksResponse = { ["Marker"] = true, ["HealthChecks"] = true, ["NextMarker"] = true, ["IsTruncated"] = true, ["MaxItems"] = true, nil }
@@ -1280,16 +1718,27 @@ end
 -- Required key: MaxItems
 -- @return ListHealthChecksResponse structure as a key-value pair table
 function M.ListHealthChecksResponse(args)
-	assert(args, "You must provdide an argument table when creating ListHealthChecksResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListHealthChecksResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Marker"] = args["Marker"],
 		["HealthChecks"] = args["HealthChecks"],
 		["NextMarker"] = args["NextMarker"],
 		["IsTruncated"] = args["IsTruncated"],
 		["MaxItems"] = args["MaxItems"],
 	}
-	asserts.AssertListHealthChecksResponse(t)
-	return t
+	asserts.AssertListHealthChecksResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.TrafficPolicyInstanceAlreadyExists = { ["message"] = true, nil }
@@ -1310,12 +1759,23 @@ end
 -- * message [ErrorMessage] <p>Descriptive message for the error response.</p>
 -- @return TrafficPolicyInstanceAlreadyExists structure as a key-value pair table
 function M.TrafficPolicyInstanceAlreadyExists(args)
-	assert(args, "You must provdide an argument table when creating TrafficPolicyInstanceAlreadyExists")
-	local t = { 
+	assert(args, "You must provide an argument table when creating TrafficPolicyInstanceAlreadyExists")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertTrafficPolicyInstanceAlreadyExists(t)
-	return t
+	asserts.AssertTrafficPolicyInstanceAlreadyExists(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.HostedZoneNotFound = { ["message"] = true, nil }
@@ -1336,12 +1796,23 @@ end
 -- * message [ErrorMessage] <p>Descriptive message for the error response.</p>
 -- @return HostedZoneNotFound structure as a key-value pair table
 function M.HostedZoneNotFound(args)
-	assert(args, "You must provdide an argument table when creating HostedZoneNotFound")
-	local t = { 
+	assert(args, "You must provide an argument table when creating HostedZoneNotFound")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertHostedZoneNotFound(t)
-	return t
+	asserts.AssertHostedZoneNotFound(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListReusableDelegationSetsRequest = { ["Marker"] = true, ["MaxItems"] = true, nil }
@@ -1364,13 +1835,26 @@ end
 -- * MaxItems [PageMaxItems] <p>The number of reusable delegation sets that you want Amazon Route 53 to return in the response to this request. If you specify a value greater than 100, Amazon Route 53 returns only the first 100 reusable delegation sets.</p>
 -- @return ListReusableDelegationSetsRequest structure as a key-value pair table
 function M.ListReusableDelegationSetsRequest(args)
-	assert(args, "You must provdide an argument table when creating ListReusableDelegationSetsRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListReusableDelegationSetsRequest")
+    local query_args = { 
+        ["marker"] = args["Marker"],
+        ["maxitems"] = args["MaxItems"],
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Marker"] = args["Marker"],
 		["MaxItems"] = args["MaxItems"],
 	}
-	asserts.AssertListReusableDelegationSetsRequest(t)
-	return t
+	asserts.AssertListReusableDelegationSetsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetCheckerIpRangesRequest = { nil }
@@ -1389,11 +1873,22 @@ end
 -- Valid keys:
 -- @return GetCheckerIpRangesRequest structure as a key-value pair table
 function M.GetCheckerIpRangesRequest(args)
-	assert(args, "You must provdide an argument table when creating GetCheckerIpRangesRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetCheckerIpRangesRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertGetCheckerIpRangesRequest(t)
-	return t
+	asserts.AssertGetCheckerIpRangesRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.TooManyTrafficPolicyInstances = { ["message"] = true, nil }
@@ -1414,12 +1909,23 @@ end
 -- * message [ErrorMessage] <p>Descriptive message for the error response.</p>
 -- @return TooManyTrafficPolicyInstances structure as a key-value pair table
 function M.TooManyTrafficPolicyInstances(args)
-	assert(args, "You must provdide an argument table when creating TooManyTrafficPolicyInstances")
-	local t = { 
+	assert(args, "You must provide an argument table when creating TooManyTrafficPolicyInstances")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertTooManyTrafficPolicyInstances(t)
-	return t
+	asserts.AssertTooManyTrafficPolicyInstances(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.VPCAssociationNotFound = { ["message"] = true, nil }
@@ -1440,12 +1946,23 @@ end
 -- * message [ErrorMessage] <p>Descriptive message for the error response.</p>
 -- @return VPCAssociationNotFound structure as a key-value pair table
 function M.VPCAssociationNotFound(args)
-	assert(args, "You must provdide an argument table when creating VPCAssociationNotFound")
-	local t = { 
+	assert(args, "You must provide an argument table when creating VPCAssociationNotFound")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertVPCAssociationNotFound(t)
-	return t
+	asserts.AssertVPCAssociationNotFound(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GeoLocation = { ["SubdivisionCode"] = true, ["CountryCode"] = true, ["ContinentCode"] = true, nil }
@@ -1470,14 +1987,25 @@ end
 -- * ContinentCode [GeoLocationContinentCode] <p>The two-letter code for the continent.</p> <p>Valid values: <code>AF</code> | <code>AN</code> | <code>AS</code> | <code>EU</code> | <code>OC</code> | <code>NA</code> | <code>SA</code> </p> <p>Constraint: Specifying <code>ContinentCode</code> with either <code>CountryCode</code> or <code>SubdivisionCode</code> returns an <code>InvalidInput</code> error.</p>
 -- @return GeoLocation structure as a key-value pair table
 function M.GeoLocation(args)
-	assert(args, "You must provdide an argument table when creating GeoLocation")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GeoLocation")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["SubdivisionCode"] = args["SubdivisionCode"],
 		["CountryCode"] = args["CountryCode"],
 		["ContinentCode"] = args["ContinentCode"],
 	}
-	asserts.AssertGeoLocation(t)
-	return t
+	asserts.AssertGeoLocation(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteVPCAssociationAuthorizationResponse = { nil }
@@ -1496,11 +2024,22 @@ end
 -- Valid keys:
 -- @return DeleteVPCAssociationAuthorizationResponse structure as a key-value pair table
 function M.DeleteVPCAssociationAuthorizationResponse(args)
-	assert(args, "You must provdide an argument table when creating DeleteVPCAssociationAuthorizationResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteVPCAssociationAuthorizationResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertDeleteVPCAssociationAuthorizationResponse(t)
-	return t
+	asserts.AssertDeleteVPCAssociationAuthorizationResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ChangeBatch = { ["Comment"] = true, ["Changes"] = true, nil }
@@ -1525,13 +2064,24 @@ end
 -- Required key: Changes
 -- @return ChangeBatch structure as a key-value pair table
 function M.ChangeBatch(args)
-	assert(args, "You must provdide an argument table when creating ChangeBatch")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ChangeBatch")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Comment"] = args["Comment"],
 		["Changes"] = args["Changes"],
 	}
-	asserts.AssertChangeBatch(t)
-	return t
+	asserts.AssertChangeBatch(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListGeoLocationsRequest = { ["StartCountryCode"] = true, ["StartSubdivisionCode"] = true, ["StartContinentCode"] = true, ["MaxItems"] = true, nil }
@@ -1558,15 +2108,30 @@ end
 -- * MaxItems [PageMaxItems] <p>(Optional) The maximum number of geolocations to be included in the response body for this request. If more than <code>MaxItems</code> geolocations remain to be listed, then the value of the <code>IsTruncated</code> element in the response is <code>true</code>.</p>
 -- @return ListGeoLocationsRequest structure as a key-value pair table
 function M.ListGeoLocationsRequest(args)
-	assert(args, "You must provdide an argument table when creating ListGeoLocationsRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListGeoLocationsRequest")
+    local query_args = { 
+        ["startcountrycode"] = args["StartCountryCode"],
+        ["startsubdivisioncode"] = args["StartSubdivisionCode"],
+        ["startcontinentcode"] = args["StartContinentCode"],
+        ["maxitems"] = args["MaxItems"],
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["StartCountryCode"] = args["StartCountryCode"],
 		["StartSubdivisionCode"] = args["StartSubdivisionCode"],
 		["StartContinentCode"] = args["StartContinentCode"],
 		["MaxItems"] = args["MaxItems"],
 	}
-	asserts.AssertListGeoLocationsRequest(t)
-	return t
+	asserts.AssertListGeoLocationsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetHealthCheckCountRequest = { nil }
@@ -1585,11 +2150,22 @@ end
 -- Valid keys:
 -- @return GetHealthCheckCountRequest structure as a key-value pair table
 function M.GetHealthCheckCountRequest(args)
-	assert(args, "You must provdide an argument table when creating GetHealthCheckCountRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetHealthCheckCountRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertGetHealthCheckCountRequest(t)
-	return t
+	asserts.AssertGetHealthCheckCountRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.TrafficPolicy = { ["Comment"] = true, ["Name"] = true, ["Version"] = true, ["Document"] = true, ["Type"] = true, ["Id"] = true, nil }
@@ -1630,8 +2206,14 @@ end
 -- Required key: Document
 -- @return TrafficPolicy structure as a key-value pair table
 function M.TrafficPolicy(args)
-	assert(args, "You must provdide an argument table when creating TrafficPolicy")
-	local t = { 
+	assert(args, "You must provide an argument table when creating TrafficPolicy")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Comment"] = args["Comment"],
 		["Name"] = args["Name"],
 		["Version"] = args["Version"],
@@ -1639,8 +2221,13 @@ function M.TrafficPolicy(args)
 		["Type"] = args["Type"],
 		["Id"] = args["Id"],
 	}
-	asserts.AssertTrafficPolicy(t)
-	return t
+	asserts.AssertTrafficPolicy(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListTagsForResourceRequest = { ["ResourceType"] = true, ["ResourceId"] = true, nil }
@@ -1667,13 +2254,26 @@ end
 -- Required key: ResourceId
 -- @return ListTagsForResourceRequest structure as a key-value pair table
 function M.ListTagsForResourceRequest(args)
-	assert(args, "You must provdide an argument table when creating ListTagsForResourceRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListTagsForResourceRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{ResourceType}"] = args["ResourceType"],
+        ["{ResourceId}"] = args["ResourceId"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ResourceType"] = args["ResourceType"],
 		["ResourceId"] = args["ResourceId"],
 	}
-	asserts.AssertListTagsForResourceRequest(t)
-	return t
+	asserts.AssertListTagsForResourceRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.VPC = { ["VPCId"] = true, ["VPCRegion"] = true, nil }
@@ -1696,13 +2296,24 @@ end
 -- * VPCRegion [VPCRegion] <p>(Private hosted zones only) The region in which you created an Amazon VPC.</p>
 -- @return VPC structure as a key-value pair table
 function M.VPC(args)
-	assert(args, "You must provdide an argument table when creating VPC")
-	local t = { 
+	assert(args, "You must provide an argument table when creating VPC")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["VPCId"] = args["VPCId"],
 		["VPCRegion"] = args["VPCRegion"],
 	}
-	asserts.AssertVPC(t)
-	return t
+	asserts.AssertVPC(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.TrafficPolicySummary = { ["TrafficPolicyCount"] = true, ["LatestVersion"] = true, ["Type"] = true, ["Id"] = true, ["Name"] = true, nil }
@@ -1741,16 +2352,27 @@ end
 -- Required key: TrafficPolicyCount
 -- @return TrafficPolicySummary structure as a key-value pair table
 function M.TrafficPolicySummary(args)
-	assert(args, "You must provdide an argument table when creating TrafficPolicySummary")
-	local t = { 
+	assert(args, "You must provide an argument table when creating TrafficPolicySummary")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["TrafficPolicyCount"] = args["TrafficPolicyCount"],
 		["LatestVersion"] = args["LatestVersion"],
 		["Type"] = args["Type"],
 		["Id"] = args["Id"],
 		["Name"] = args["Name"],
 	}
-	asserts.AssertTrafficPolicySummary(t)
-	return t
+	asserts.AssertTrafficPolicySummary(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListHostedZonesResponse = { ["Marker"] = true, ["HostedZones"] = true, ["NextMarker"] = true, ["IsTruncated"] = true, ["MaxItems"] = true, nil }
@@ -1787,16 +2409,27 @@ end
 -- Required key: MaxItems
 -- @return ListHostedZonesResponse structure as a key-value pair table
 function M.ListHostedZonesResponse(args)
-	assert(args, "You must provdide an argument table when creating ListHostedZonesResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListHostedZonesResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Marker"] = args["Marker"],
 		["HostedZones"] = args["HostedZones"],
 		["NextMarker"] = args["NextMarker"],
 		["IsTruncated"] = args["IsTruncated"],
 		["MaxItems"] = args["MaxItems"],
 	}
-	asserts.AssertListHostedZonesResponse(t)
-	return t
+	asserts.AssertListHostedZonesResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetHealthCheckRequest = { ["HealthCheckId"] = true, nil }
@@ -1819,12 +2452,24 @@ end
 -- Required key: HealthCheckId
 -- @return GetHealthCheckRequest structure as a key-value pair table
 function M.GetHealthCheckRequest(args)
-	assert(args, "You must provdide an argument table when creating GetHealthCheckRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetHealthCheckRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{HealthCheckId}"] = args["HealthCheckId"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["HealthCheckId"] = args["HealthCheckId"],
 	}
-	asserts.AssertGetHealthCheckRequest(t)
-	return t
+	asserts.AssertGetHealthCheckRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DelegationSetNotReusable = { ["message"] = true, nil }
@@ -1845,12 +2490,23 @@ end
 -- * message [ErrorMessage] <p>Descriptive message for the error response.</p>
 -- @return DelegationSetNotReusable structure as a key-value pair table
 function M.DelegationSetNotReusable(args)
-	assert(args, "You must provdide an argument table when creating DelegationSetNotReusable")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DelegationSetNotReusable")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertDelegationSetNotReusable(t)
-	return t
+	asserts.AssertDelegationSetNotReusable(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdateTrafficPolicyInstanceResponse = { ["TrafficPolicyInstance"] = true, nil }
@@ -1873,12 +2529,23 @@ end
 -- Required key: TrafficPolicyInstance
 -- @return UpdateTrafficPolicyInstanceResponse structure as a key-value pair table
 function M.UpdateTrafficPolicyInstanceResponse(args)
-	assert(args, "You must provdide an argument table when creating UpdateTrafficPolicyInstanceResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateTrafficPolicyInstanceResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["TrafficPolicyInstance"] = args["TrafficPolicyInstance"],
 	}
-	asserts.AssertUpdateTrafficPolicyInstanceResponse(t)
-	return t
+	asserts.AssertUpdateTrafficPolicyInstanceResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateHostedZoneResponse = { ["Location"] = true, ["HostedZone"] = true, ["VPC"] = true, ["ChangeInfo"] = true, ["DelegationSet"] = true, nil }
@@ -1915,16 +2582,28 @@ end
 -- Required key: Location
 -- @return CreateHostedZoneResponse structure as a key-value pair table
 function M.CreateHostedZoneResponse(args)
-	assert(args, "You must provdide an argument table when creating CreateHostedZoneResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateHostedZoneResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+        ["Location"] = args["Location"],
+    }
+	local all_args = { 
 		["Location"] = args["Location"],
 		["HostedZone"] = args["HostedZone"],
 		["VPC"] = args["VPC"],
 		["ChangeInfo"] = args["ChangeInfo"],
 		["DelegationSet"] = args["DelegationSet"],
 	}
-	asserts.AssertCreateHostedZoneResponse(t)
-	return t
+	asserts.AssertCreateHostedZoneResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetReusableDelegationSetRequest = { ["Id"] = true, nil }
@@ -1947,12 +2626,24 @@ end
 -- Required key: Id
 -- @return GetReusableDelegationSetRequest structure as a key-value pair table
 function M.GetReusableDelegationSetRequest(args)
-	assert(args, "You must provdide an argument table when creating GetReusableDelegationSetRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetReusableDelegationSetRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{Id}"] = args["Id"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Id"] = args["Id"],
 	}
-	asserts.AssertGetReusableDelegationSetRequest(t)
-	return t
+	asserts.AssertGetReusableDelegationSetRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteHostedZoneResponse = { ["ChangeInfo"] = true, nil }
@@ -1975,12 +2666,23 @@ end
 -- Required key: ChangeInfo
 -- @return DeleteHostedZoneResponse structure as a key-value pair table
 function M.DeleteHostedZoneResponse(args)
-	assert(args, "You must provdide an argument table when creating DeleteHostedZoneResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteHostedZoneResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ChangeInfo"] = args["ChangeInfo"],
 	}
-	asserts.AssertDeleteHostedZoneResponse(t)
-	return t
+	asserts.AssertDeleteHostedZoneResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ConflictingTypes = { ["message"] = true, nil }
@@ -2001,12 +2703,23 @@ end
 -- * message [ErrorMessage] <p>Descriptive message for the error response.</p>
 -- @return ConflictingTypes structure as a key-value pair table
 function M.ConflictingTypes(args)
-	assert(args, "You must provdide an argument table when creating ConflictingTypes")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ConflictingTypes")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertConflictingTypes(t)
-	return t
+	asserts.AssertConflictingTypes(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.HealthCheckInUse = { ["message"] = true, nil }
@@ -2027,12 +2740,23 @@ end
 -- * message [ErrorMessage] <p>Descriptive message for the error response.</p>
 -- @return HealthCheckInUse structure as a key-value pair table
 function M.HealthCheckInUse(args)
-	assert(args, "You must provdide an argument table when creating HealthCheckInUse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating HealthCheckInUse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertHealthCheckInUse(t)
-	return t
+	asserts.AssertHealthCheckInUse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteReusableDelegationSetRequest = { ["Id"] = true, nil }
@@ -2055,12 +2779,24 @@ end
 -- Required key: Id
 -- @return DeleteReusableDelegationSetRequest structure as a key-value pair table
 function M.DeleteReusableDelegationSetRequest(args)
-	assert(args, "You must provdide an argument table when creating DeleteReusableDelegationSetRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteReusableDelegationSetRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{Id}"] = args["Id"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Id"] = args["Id"],
 	}
-	asserts.AssertDeleteReusableDelegationSetRequest(t)
-	return t
+	asserts.AssertDeleteReusableDelegationSetRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.HostedZoneNotEmpty = { ["message"] = true, nil }
@@ -2081,12 +2817,23 @@ end
 -- * message [ErrorMessage] <p>Descriptive message for the error response.</p>
 -- @return HostedZoneNotEmpty structure as a key-value pair table
 function M.HostedZoneNotEmpty(args)
-	assert(args, "You must provdide an argument table when creating HostedZoneNotEmpty")
-	local t = { 
+	assert(args, "You must provide an argument table when creating HostedZoneNotEmpty")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertHostedZoneNotEmpty(t)
-	return t
+	asserts.AssertHostedZoneNotEmpty(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetHostedZoneResponse = { ["VPCs"] = true, ["HostedZone"] = true, ["DelegationSet"] = true, nil }
@@ -2113,14 +2860,25 @@ end
 -- Required key: HostedZone
 -- @return GetHostedZoneResponse structure as a key-value pair table
 function M.GetHostedZoneResponse(args)
-	assert(args, "You must provdide an argument table when creating GetHostedZoneResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetHostedZoneResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["VPCs"] = args["VPCs"],
 		["HostedZone"] = args["HostedZone"],
 		["DelegationSet"] = args["DelegationSet"],
 	}
-	asserts.AssertGetHostedZoneResponse(t)
-	return t
+	asserts.AssertGetHostedZoneResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DelegationSetAlreadyCreated = { ["message"] = true, nil }
@@ -2141,12 +2899,23 @@ end
 -- * message [ErrorMessage] <p>Descriptive message for the error response.</p>
 -- @return DelegationSetAlreadyCreated structure as a key-value pair table
 function M.DelegationSetAlreadyCreated(args)
-	assert(args, "You must provdide an argument table when creating DelegationSetAlreadyCreated")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DelegationSetAlreadyCreated")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertDelegationSetAlreadyCreated(t)
-	return t
+	asserts.AssertDelegationSetAlreadyCreated(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetTrafficPolicyResponse = { ["TrafficPolicy"] = true, nil }
@@ -2169,12 +2938,23 @@ end
 -- Required key: TrafficPolicy
 -- @return GetTrafficPolicyResponse structure as a key-value pair table
 function M.GetTrafficPolicyResponse(args)
-	assert(args, "You must provdide an argument table when creating GetTrafficPolicyResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetTrafficPolicyResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["TrafficPolicy"] = args["TrafficPolicy"],
 	}
-	asserts.AssertGetTrafficPolicyResponse(t)
-	return t
+	asserts.AssertGetTrafficPolicyResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateHealthCheckResponse = { ["HealthCheck"] = true, ["Location"] = true, nil }
@@ -2201,13 +2981,25 @@ end
 -- Required key: Location
 -- @return CreateHealthCheckResponse structure as a key-value pair table
 function M.CreateHealthCheckResponse(args)
-	assert(args, "You must provdide an argument table when creating CreateHealthCheckResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateHealthCheckResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+        ["Location"] = args["Location"],
+    }
+	local all_args = { 
 		["HealthCheck"] = args["HealthCheck"],
 		["Location"] = args["Location"],
 	}
-	asserts.AssertCreateHealthCheckResponse(t)
-	return t
+	asserts.AssertCreateHealthCheckResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListTrafficPolicyVersionsRequest = { ["Id"] = true, ["MaxItems"] = true, ["TrafficPolicyVersionMarker"] = true, nil }
@@ -2234,14 +3026,28 @@ end
 -- Required key: Id
 -- @return ListTrafficPolicyVersionsRequest structure as a key-value pair table
 function M.ListTrafficPolicyVersionsRequest(args)
-	assert(args, "You must provdide an argument table when creating ListTrafficPolicyVersionsRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListTrafficPolicyVersionsRequest")
+    local query_args = { 
+        ["maxitems"] = args["MaxItems"],
+        ["trafficpolicyversion"] = args["TrafficPolicyVersionMarker"],
+    }
+    local uri_args = { 
+        ["{Id}"] = args["Id"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Id"] = args["Id"],
 		["MaxItems"] = args["MaxItems"],
 		["TrafficPolicyVersionMarker"] = args["TrafficPolicyVersionMarker"],
 	}
-	asserts.AssertListTrafficPolicyVersionsRequest(t)
-	return t
+	asserts.AssertListTrafficPolicyVersionsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListTrafficPoliciesResponse = { ["TrafficPolicyIdMarker"] = true, ["TrafficPolicySummaries"] = true, ["MaxItems"] = true, ["IsTruncated"] = true, nil }
@@ -2276,15 +3082,26 @@ end
 -- Required key: MaxItems
 -- @return ListTrafficPoliciesResponse structure as a key-value pair table
 function M.ListTrafficPoliciesResponse(args)
-	assert(args, "You must provdide an argument table when creating ListTrafficPoliciesResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListTrafficPoliciesResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["TrafficPolicyIdMarker"] = args["TrafficPolicyIdMarker"],
 		["TrafficPolicySummaries"] = args["TrafficPolicySummaries"],
 		["MaxItems"] = args["MaxItems"],
 		["IsTruncated"] = args["IsTruncated"],
 	}
-	asserts.AssertListTrafficPoliciesResponse(t)
-	return t
+	asserts.AssertListTrafficPoliciesResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.HostedZone = { ["ResourceRecordSetCount"] = true, ["CallerReference"] = true, ["Config"] = true, ["Id"] = true, ["Name"] = true, nil }
@@ -2319,16 +3136,27 @@ end
 -- Required key: CallerReference
 -- @return HostedZone structure as a key-value pair table
 function M.HostedZone(args)
-	assert(args, "You must provdide an argument table when creating HostedZone")
-	local t = { 
+	assert(args, "You must provide an argument table when creating HostedZone")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ResourceRecordSetCount"] = args["ResourceRecordSetCount"],
 		["CallerReference"] = args["CallerReference"],
 		["Config"] = args["Config"],
 		["Id"] = args["Id"],
 		["Name"] = args["Name"],
 	}
-	asserts.AssertHostedZone(t)
-	return t
+	asserts.AssertHostedZone(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetHealthCheckResponse = { ["HealthCheck"] = true, nil }
@@ -2351,12 +3179,23 @@ end
 -- Required key: HealthCheck
 -- @return GetHealthCheckResponse structure as a key-value pair table
 function M.GetHealthCheckResponse(args)
-	assert(args, "You must provdide an argument table when creating GetHealthCheckResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetHealthCheckResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["HealthCheck"] = args["HealthCheck"],
 	}
-	asserts.AssertGetHealthCheckResponse(t)
-	return t
+	asserts.AssertGetHealthCheckResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.NoSuchTrafficPolicy = { ["message"] = true, nil }
@@ -2377,12 +3216,23 @@ end
 -- * message [ErrorMessage] <p>Descriptive message for the error response.</p>
 -- @return NoSuchTrafficPolicy structure as a key-value pair table
 function M.NoSuchTrafficPolicy(args)
-	assert(args, "You must provdide an argument table when creating NoSuchTrafficPolicy")
-	local t = { 
+	assert(args, "You must provide an argument table when creating NoSuchTrafficPolicy")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertNoSuchTrafficPolicy(t)
-	return t
+	asserts.AssertNoSuchTrafficPolicy(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Dimension = { ["Name"] = true, ["Value"] = true, nil }
@@ -2409,13 +3259,24 @@ end
 -- Required key: Value
 -- @return Dimension structure as a key-value pair table
 function M.Dimension(args)
-	assert(args, "You must provdide an argument table when creating Dimension")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Dimension")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Name"] = args["Name"],
 		["Value"] = args["Value"],
 	}
-	asserts.AssertDimension(t)
-	return t
+	asserts.AssertDimension(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdateTrafficPolicyCommentResponse = { ["TrafficPolicy"] = true, nil }
@@ -2438,12 +3299,23 @@ end
 -- Required key: TrafficPolicy
 -- @return UpdateTrafficPolicyCommentResponse structure as a key-value pair table
 function M.UpdateTrafficPolicyCommentResponse(args)
-	assert(args, "You must provdide an argument table when creating UpdateTrafficPolicyCommentResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateTrafficPolicyCommentResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["TrafficPolicy"] = args["TrafficPolicy"],
 	}
-	asserts.AssertUpdateTrafficPolicyCommentResponse(t)
-	return t
+	asserts.AssertUpdateTrafficPolicyCommentResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidTrafficPolicyDocument = { ["message"] = true, nil }
@@ -2464,12 +3336,23 @@ end
 -- * message [ErrorMessage] <p>Descriptive message for the error response.</p>
 -- @return InvalidTrafficPolicyDocument structure as a key-value pair table
 function M.InvalidTrafficPolicyDocument(args)
-	assert(args, "You must provdide an argument table when creating InvalidTrafficPolicyDocument")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidTrafficPolicyDocument")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertInvalidTrafficPolicyDocument(t)
-	return t
+	asserts.AssertInvalidTrafficPolicyDocument(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.NoSuchChange = { ["message"] = true, nil }
@@ -2490,12 +3373,23 @@ end
 -- * message [ErrorMessage] 
 -- @return NoSuchChange structure as a key-value pair table
 function M.NoSuchChange(args)
-	assert(args, "You must provdide an argument table when creating NoSuchChange")
-	local t = { 
+	assert(args, "You must provide an argument table when creating NoSuchChange")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertNoSuchChange(t)
-	return t
+	asserts.AssertNoSuchChange(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ChangeTagsForResourceRequest = { ["ResourceType"] = true, ["ResourceId"] = true, ["AddTags"] = true, ["RemoveTagKeys"] = true, nil }
@@ -2526,15 +3420,28 @@ end
 -- Required key: ResourceId
 -- @return ChangeTagsForResourceRequest structure as a key-value pair table
 function M.ChangeTagsForResourceRequest(args)
-	assert(args, "You must provdide an argument table when creating ChangeTagsForResourceRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ChangeTagsForResourceRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{ResourceType}"] = args["ResourceType"],
+        ["{ResourceId}"] = args["ResourceId"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ResourceType"] = args["ResourceType"],
 		["ResourceId"] = args["ResourceId"],
 		["AddTags"] = args["AddTags"],
 		["RemoveTagKeys"] = args["RemoveTagKeys"],
 	}
-	asserts.AssertChangeTagsForResourceRequest(t)
-	return t
+	asserts.AssertChangeTagsForResourceRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateVPCAssociationAuthorizationRequest = { ["HostedZoneId"] = true, ["VPC"] = true, nil }
@@ -2561,13 +3468,25 @@ end
 -- Required key: VPC
 -- @return CreateVPCAssociationAuthorizationRequest structure as a key-value pair table
 function M.CreateVPCAssociationAuthorizationRequest(args)
-	assert(args, "You must provdide an argument table when creating CreateVPCAssociationAuthorizationRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateVPCAssociationAuthorizationRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{Id}"] = args["HostedZoneId"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["HostedZoneId"] = args["HostedZoneId"],
 		["VPC"] = args["VPC"],
 	}
-	asserts.AssertCreateVPCAssociationAuthorizationRequest(t)
-	return t
+	asserts.AssertCreateVPCAssociationAuthorizationRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListResourceRecordSetsResponse = { ["NextRecordIdentifier"] = true, ["NextRecordType"] = true, ["NextRecordName"] = true, ["ResourceRecordSets"] = true, ["MaxItems"] = true, ["IsTruncated"] = true, nil }
@@ -2604,8 +3523,14 @@ end
 -- Required key: MaxItems
 -- @return ListResourceRecordSetsResponse structure as a key-value pair table
 function M.ListResourceRecordSetsResponse(args)
-	assert(args, "You must provdide an argument table when creating ListResourceRecordSetsResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListResourceRecordSetsResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NextRecordIdentifier"] = args["NextRecordIdentifier"],
 		["NextRecordType"] = args["NextRecordType"],
 		["NextRecordName"] = args["NextRecordName"],
@@ -2613,8 +3538,13 @@ function M.ListResourceRecordSetsResponse(args)
 		["MaxItems"] = args["MaxItems"],
 		["IsTruncated"] = args["IsTruncated"],
 	}
-	asserts.AssertListResourceRecordSetsResponse(t)
-	return t
+	asserts.AssertListResourceRecordSetsResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteTrafficPolicyInstanceRequest = { ["Id"] = true, nil }
@@ -2637,12 +3567,24 @@ end
 -- Required key: Id
 -- @return DeleteTrafficPolicyInstanceRequest structure as a key-value pair table
 function M.DeleteTrafficPolicyInstanceRequest(args)
-	assert(args, "You must provdide an argument table when creating DeleteTrafficPolicyInstanceRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteTrafficPolicyInstanceRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{Id}"] = args["Id"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Id"] = args["Id"],
 	}
-	asserts.AssertDeleteTrafficPolicyInstanceRequest(t)
-	return t
+	asserts.AssertDeleteTrafficPolicyInstanceRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdateHostedZoneCommentResponse = { ["HostedZone"] = true, nil }
@@ -2665,12 +3607,23 @@ end
 -- Required key: HostedZone
 -- @return UpdateHostedZoneCommentResponse structure as a key-value pair table
 function M.UpdateHostedZoneCommentResponse(args)
-	assert(args, "You must provdide an argument table when creating UpdateHostedZoneCommentResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateHostedZoneCommentResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["HostedZone"] = args["HostedZone"],
 	}
-	asserts.AssertUpdateHostedZoneCommentResponse(t)
-	return t
+	asserts.AssertUpdateHostedZoneCommentResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.HealthCheckVersionMismatch = { ["message"] = true, nil }
@@ -2691,12 +3644,23 @@ end
 -- * message [ErrorMessage] 
 -- @return HealthCheckVersionMismatch structure as a key-value pair table
 function M.HealthCheckVersionMismatch(args)
-	assert(args, "You must provdide an argument table when creating HealthCheckVersionMismatch")
-	local t = { 
+	assert(args, "You must provide an argument table when creating HealthCheckVersionMismatch")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertHealthCheckVersionMismatch(t)
-	return t
+	asserts.AssertHealthCheckVersionMismatch(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.IncompatibleVersion = { ["message"] = true, nil }
@@ -2717,12 +3681,23 @@ end
 -- * message [ErrorMessage] 
 -- @return IncompatibleVersion structure as a key-value pair table
 function M.IncompatibleVersion(args)
-	assert(args, "You must provdide an argument table when creating IncompatibleVersion")
-	local t = { 
+	assert(args, "You must provide an argument table when creating IncompatibleVersion")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertIncompatibleVersion(t)
-	return t
+	asserts.AssertIncompatibleVersion(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.TooManyVPCAssociationAuthorizations = { ["message"] = true, nil }
@@ -2743,12 +3718,23 @@ end
 -- * message [ErrorMessage] <p>Descriptive message for the error response.</p>
 -- @return TooManyVPCAssociationAuthorizations structure as a key-value pair table
 function M.TooManyVPCAssociationAuthorizations(args)
-	assert(args, "You must provdide an argument table when creating TooManyVPCAssociationAuthorizations")
-	local t = { 
+	assert(args, "You must provide an argument table when creating TooManyVPCAssociationAuthorizations")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertTooManyVPCAssociationAuthorizations(t)
-	return t
+	asserts.AssertTooManyVPCAssociationAuthorizations(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.TooManyHealthChecks = { ["message"] = true, nil }
@@ -2769,12 +3755,23 @@ end
 -- * message [ErrorMessage] 
 -- @return TooManyHealthChecks structure as a key-value pair table
 function M.TooManyHealthChecks(args)
-	assert(args, "You must provdide an argument table when creating TooManyHealthChecks")
-	local t = { 
+	assert(args, "You must provide an argument table when creating TooManyHealthChecks")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertTooManyHealthChecks(t)
-	return t
+	asserts.AssertTooManyHealthChecks(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdateHealthCheckRequest = { ["SearchString"] = true, ["HealthCheckId"] = true, ["AlarmIdentifier"] = true, ["HealthCheckVersion"] = true, ["ResourcePath"] = true, ["ChildHealthChecks"] = true, ["Inverted"] = true, ["Regions"] = true, ["InsufficientDataHealthStatus"] = true, ["HealthThreshold"] = true, ["EnableSNI"] = true, ["FailureThreshold"] = true, ["IPAddress"] = true, ["Port"] = true, ["FullyQualifiedDomainName"] = true, nil }
@@ -2825,8 +3822,15 @@ end
 -- Required key: HealthCheckId
 -- @return UpdateHealthCheckRequest structure as a key-value pair table
 function M.UpdateHealthCheckRequest(args)
-	assert(args, "You must provdide an argument table when creating UpdateHealthCheckRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateHealthCheckRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{HealthCheckId}"] = args["HealthCheckId"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["SearchString"] = args["SearchString"],
 		["HealthCheckId"] = args["HealthCheckId"],
 		["AlarmIdentifier"] = args["AlarmIdentifier"],
@@ -2843,8 +3847,13 @@ function M.UpdateHealthCheckRequest(args)
 		["Port"] = args["Port"],
 		["FullyQualifiedDomainName"] = args["FullyQualifiedDomainName"],
 	}
-	asserts.AssertUpdateHealthCheckRequest(t)
-	return t
+	asserts.AssertUpdateHealthCheckRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidVPCId = { ["message"] = true, nil }
@@ -2865,12 +3874,23 @@ end
 -- * message [ErrorMessage] <p>Descriptive message for the error response.</p>
 -- @return InvalidVPCId structure as a key-value pair table
 function M.InvalidVPCId(args)
-	assert(args, "You must provdide an argument table when creating InvalidVPCId")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidVPCId")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertInvalidVPCId(t)
-	return t
+	asserts.AssertInvalidVPCId(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.NoSuchHostedZone = { ["message"] = true, nil }
@@ -2891,12 +3911,23 @@ end
 -- * message [ErrorMessage] <p>Descriptive message for the error response.</p>
 -- @return NoSuchHostedZone structure as a key-value pair table
 function M.NoSuchHostedZone(args)
-	assert(args, "You must provdide an argument table when creating NoSuchHostedZone")
-	local t = { 
+	assert(args, "You must provide an argument table when creating NoSuchHostedZone")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertNoSuchHostedZone(t)
-	return t
+	asserts.AssertNoSuchHostedZone(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GeoLocationDetails = { ["CountryName"] = true, ["CountryCode"] = true, ["SubdivisionCode"] = true, ["ContinentName"] = true, ["SubdivisionName"] = true, ["ContinentCode"] = true, nil }
@@ -2927,8 +3958,14 @@ end
 -- * ContinentCode [GeoLocationContinentCode] <p>The two-letter code for the continent.</p>
 -- @return GeoLocationDetails structure as a key-value pair table
 function M.GeoLocationDetails(args)
-	assert(args, "You must provdide an argument table when creating GeoLocationDetails")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GeoLocationDetails")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["CountryName"] = args["CountryName"],
 		["CountryCode"] = args["CountryCode"],
 		["SubdivisionCode"] = args["SubdivisionCode"],
@@ -2936,8 +3973,13 @@ function M.GeoLocationDetails(args)
 		["SubdivisionName"] = args["SubdivisionName"],
 		["ContinentCode"] = args["ContinentCode"],
 	}
-	asserts.AssertGeoLocationDetails(t)
-	return t
+	asserts.AssertGeoLocationDetails(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListResourceRecordSetsRequest = { ["HostedZoneId"] = true, ["StartRecordName"] = true, ["StartRecordIdentifier"] = true, ["StartRecordType"] = true, ["MaxItems"] = true, nil }
@@ -2968,16 +4010,32 @@ end
 -- Required key: HostedZoneId
 -- @return ListResourceRecordSetsRequest structure as a key-value pair table
 function M.ListResourceRecordSetsRequest(args)
-	assert(args, "You must provdide an argument table when creating ListResourceRecordSetsRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListResourceRecordSetsRequest")
+    local query_args = { 
+        ["name"] = args["StartRecordName"],
+        ["identifier"] = args["StartRecordIdentifier"],
+        ["type"] = args["StartRecordType"],
+        ["maxitems"] = args["MaxItems"],
+    }
+    local uri_args = { 
+        ["{Id}"] = args["HostedZoneId"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["HostedZoneId"] = args["HostedZoneId"],
 		["StartRecordName"] = args["StartRecordName"],
 		["StartRecordIdentifier"] = args["StartRecordIdentifier"],
 		["StartRecordType"] = args["StartRecordType"],
 		["MaxItems"] = args["MaxItems"],
 	}
-	asserts.AssertListResourceRecordSetsRequest(t)
-	return t
+	asserts.AssertListResourceRecordSetsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetReusableDelegationSetResponse = { ["DelegationSet"] = true, nil }
@@ -3000,12 +4058,23 @@ end
 -- Required key: DelegationSet
 -- @return GetReusableDelegationSetResponse structure as a key-value pair table
 function M.GetReusableDelegationSetResponse(args)
-	assert(args, "You must provdide an argument table when creating GetReusableDelegationSetResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetReusableDelegationSetResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DelegationSet"] = args["DelegationSet"],
 	}
-	asserts.AssertGetReusableDelegationSetResponse(t)
-	return t
+	asserts.AssertGetReusableDelegationSetResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListTrafficPolicyInstancesResponse = { ["TrafficPolicyInstanceNameMarker"] = true, ["HostedZoneIdMarker"] = true, ["TrafficPolicyInstances"] = true, ["MaxItems"] = true, ["TrafficPolicyInstanceTypeMarker"] = true, ["IsTruncated"] = true, nil }
@@ -3042,8 +4111,14 @@ end
 -- Required key: MaxItems
 -- @return ListTrafficPolicyInstancesResponse structure as a key-value pair table
 function M.ListTrafficPolicyInstancesResponse(args)
-	assert(args, "You must provdide an argument table when creating ListTrafficPolicyInstancesResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListTrafficPolicyInstancesResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["TrafficPolicyInstanceNameMarker"] = args["TrafficPolicyInstanceNameMarker"],
 		["HostedZoneIdMarker"] = args["HostedZoneIdMarker"],
 		["TrafficPolicyInstances"] = args["TrafficPolicyInstances"],
@@ -3051,8 +4126,13 @@ function M.ListTrafficPolicyInstancesResponse(args)
 		["TrafficPolicyInstanceTypeMarker"] = args["TrafficPolicyInstanceTypeMarker"],
 		["IsTruncated"] = args["IsTruncated"],
 	}
-	asserts.AssertListTrafficPolicyInstancesResponse(t)
-	return t
+	asserts.AssertListTrafficPolicyInstancesResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetTrafficPolicyInstanceRequest = { ["Id"] = true, nil }
@@ -3075,12 +4155,24 @@ end
 -- Required key: Id
 -- @return GetTrafficPolicyInstanceRequest structure as a key-value pair table
 function M.GetTrafficPolicyInstanceRequest(args)
-	assert(args, "You must provdide an argument table when creating GetTrafficPolicyInstanceRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetTrafficPolicyInstanceRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{Id}"] = args["Id"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Id"] = args["Id"],
 	}
-	asserts.AssertGetTrafficPolicyInstanceRequest(t)
-	return t
+	asserts.AssertGetTrafficPolicyInstanceRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateTrafficPolicyVersionRequest = { ["Comment"] = true, ["Document"] = true, ["Id"] = true, nil }
@@ -3109,14 +4201,26 @@ end
 -- Required key: Document
 -- @return CreateTrafficPolicyVersionRequest structure as a key-value pair table
 function M.CreateTrafficPolicyVersionRequest(args)
-	assert(args, "You must provdide an argument table when creating CreateTrafficPolicyVersionRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateTrafficPolicyVersionRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{Id}"] = args["Id"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Comment"] = args["Comment"],
 		["Document"] = args["Document"],
 		["Id"] = args["Id"],
 	}
-	asserts.AssertCreateTrafficPolicyVersionRequest(t)
-	return t
+	asserts.AssertCreateTrafficPolicyVersionRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.HostedZoneConfig = { ["Comment"] = true, ["PrivateZone"] = true, nil }
@@ -3139,13 +4243,24 @@ end
 -- * PrivateZone [IsPrivateZone] <p>A value that indicates whether this is a private hosted zone.</p>
 -- @return HostedZoneConfig structure as a key-value pair table
 function M.HostedZoneConfig(args)
-	assert(args, "You must provdide an argument table when creating HostedZoneConfig")
-	local t = { 
+	assert(args, "You must provide an argument table when creating HostedZoneConfig")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Comment"] = args["Comment"],
 		["PrivateZone"] = args["PrivateZone"],
 	}
-	asserts.AssertHostedZoneConfig(t)
-	return t
+	asserts.AssertHostedZoneConfig(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteHealthCheckResponse = { nil }
@@ -3164,11 +4279,22 @@ end
 -- Valid keys:
 -- @return DeleteHealthCheckResponse structure as a key-value pair table
 function M.DeleteHealthCheckResponse(args)
-	assert(args, "You must provdide an argument table when creating DeleteHealthCheckResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteHealthCheckResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertDeleteHealthCheckResponse(t)
-	return t
+	asserts.AssertDeleteHealthCheckResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AssociateVPCWithHostedZoneRequest = { ["HostedZoneId"] = true, ["Comment"] = true, ["VPC"] = true, nil }
@@ -3197,14 +4323,26 @@ end
 -- Required key: VPC
 -- @return AssociateVPCWithHostedZoneRequest structure as a key-value pair table
 function M.AssociateVPCWithHostedZoneRequest(args)
-	assert(args, "You must provdide an argument table when creating AssociateVPCWithHostedZoneRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AssociateVPCWithHostedZoneRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{Id}"] = args["HostedZoneId"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["HostedZoneId"] = args["HostedZoneId"],
 		["Comment"] = args["Comment"],
 		["VPC"] = args["VPC"],
 	}
-	asserts.AssertAssociateVPCWithHostedZoneRequest(t)
-	return t
+	asserts.AssertAssociateVPCWithHostedZoneRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ChangeTagsForResourceResponse = { nil }
@@ -3223,11 +4361,22 @@ end
 -- Valid keys:
 -- @return ChangeTagsForResourceResponse structure as a key-value pair table
 function M.ChangeTagsForResourceResponse(args)
-	assert(args, "You must provdide an argument table when creating ChangeTagsForResourceResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ChangeTagsForResourceResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertChangeTagsForResourceResponse(t)
-	return t
+	asserts.AssertChangeTagsForResourceResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CloudWatchAlarmConfiguration = { ["EvaluationPeriods"] = true, ["Dimensions"] = true, ["Namespace"] = true, ["Period"] = true, ["ComparisonOperator"] = true, ["Statistic"] = true, ["Threshold"] = true, ["MetricName"] = true, nil }
@@ -3276,8 +4425,14 @@ end
 -- Required key: Statistic
 -- @return CloudWatchAlarmConfiguration structure as a key-value pair table
 function M.CloudWatchAlarmConfiguration(args)
-	assert(args, "You must provdide an argument table when creating CloudWatchAlarmConfiguration")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CloudWatchAlarmConfiguration")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["EvaluationPeriods"] = args["EvaluationPeriods"],
 		["Dimensions"] = args["Dimensions"],
 		["Namespace"] = args["Namespace"],
@@ -3287,8 +4442,13 @@ function M.CloudWatchAlarmConfiguration(args)
 		["Threshold"] = args["Threshold"],
 		["MetricName"] = args["MetricName"],
 	}
-	asserts.AssertCloudWatchAlarmConfiguration(t)
-	return t
+	asserts.AssertCloudWatchAlarmConfiguration(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListTrafficPolicyVersionsResponse = { ["MaxItems"] = true, ["IsTruncated"] = true, ["TrafficPolicies"] = true, ["TrafficPolicyVersionMarker"] = true, nil }
@@ -3323,15 +4483,26 @@ end
 -- Required key: MaxItems
 -- @return ListTrafficPolicyVersionsResponse structure as a key-value pair table
 function M.ListTrafficPolicyVersionsResponse(args)
-	assert(args, "You must provdide an argument table when creating ListTrafficPolicyVersionsResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListTrafficPolicyVersionsResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["MaxItems"] = args["MaxItems"],
 		["IsTruncated"] = args["IsTruncated"],
 		["TrafficPolicies"] = args["TrafficPolicies"],
 		["TrafficPolicyVersionMarker"] = args["TrafficPolicyVersionMarker"],
 	}
-	asserts.AssertListTrafficPolicyVersionsResponse(t)
-	return t
+	asserts.AssertListTrafficPolicyVersionsResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ConflictingDomainExists = { ["message"] = true, nil }
@@ -3352,12 +4523,23 @@ end
 -- * message [ErrorMessage] 
 -- @return ConflictingDomainExists structure as a key-value pair table
 function M.ConflictingDomainExists(args)
-	assert(args, "You must provdide an argument table when creating ConflictingDomainExists")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ConflictingDomainExists")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertConflictingDomainExists(t)
-	return t
+	asserts.AssertConflictingDomainExists(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListHostedZonesByNameRequest = { ["HostedZoneId"] = true, ["DNSName"] = true, ["MaxItems"] = true, nil }
@@ -3382,14 +4564,28 @@ end
 -- * MaxItems [PageMaxItems] <p>The maximum number of hosted zones to be included in the response body for this request. If you have more than <code>maxitems</code> hosted zones, then the value of the <code>IsTruncated</code> element in the response is true, and the values of <code>NextDNSName</code> and <code>NextHostedZoneId</code> specify the first hosted zone in the next group of <code>maxitems</code> hosted zones. </p>
 -- @return ListHostedZonesByNameRequest structure as a key-value pair table
 function M.ListHostedZonesByNameRequest(args)
-	assert(args, "You must provdide an argument table when creating ListHostedZonesByNameRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListHostedZonesByNameRequest")
+    local query_args = { 
+        ["hostedzoneid"] = args["HostedZoneId"],
+        ["dnsname"] = args["DNSName"],
+        ["maxitems"] = args["MaxItems"],
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["HostedZoneId"] = args["HostedZoneId"],
 		["DNSName"] = args["DNSName"],
 		["MaxItems"] = args["MaxItems"],
 	}
-	asserts.AssertListHostedZonesByNameRequest(t)
-	return t
+	asserts.AssertListHostedZonesByNameRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdateTrafficPolicyCommentRequest = { ["Comment"] = true, ["Version"] = true, ["Id"] = true, nil }
@@ -3420,14 +4616,27 @@ end
 -- Required key: Comment
 -- @return UpdateTrafficPolicyCommentRequest structure as a key-value pair table
 function M.UpdateTrafficPolicyCommentRequest(args)
-	assert(args, "You must provdide an argument table when creating UpdateTrafficPolicyCommentRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateTrafficPolicyCommentRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{Version}"] = args["Version"],
+        ["{Id}"] = args["Id"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Comment"] = args["Comment"],
 		["Version"] = args["Version"],
 		["Id"] = args["Id"],
 	}
-	asserts.AssertUpdateTrafficPolicyCommentRequest(t)
-	return t
+	asserts.AssertUpdateTrafficPolicyCommentRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteReusableDelegationSetResponse = { nil }
@@ -3446,11 +4655,22 @@ end
 -- Valid keys:
 -- @return DeleteReusableDelegationSetResponse structure as a key-value pair table
 function M.DeleteReusableDelegationSetResponse(args)
-	assert(args, "You must provdide an argument table when creating DeleteReusableDelegationSetResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteReusableDelegationSetResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertDeleteReusableDelegationSetResponse(t)
-	return t
+	asserts.AssertDeleteReusableDelegationSetResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ResourceTagSet = { ["ResourceType"] = true, ["ResourceId"] = true, ["Tags"] = true, nil }
@@ -3475,14 +4695,25 @@ end
 -- * Tags [TagList] <p>The tags associated with the specified resource.</p>
 -- @return ResourceTagSet structure as a key-value pair table
 function M.ResourceTagSet(args)
-	assert(args, "You must provdide an argument table when creating ResourceTagSet")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ResourceTagSet")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ResourceType"] = args["ResourceType"],
 		["ResourceId"] = args["ResourceId"],
 		["Tags"] = args["Tags"],
 	}
-	asserts.AssertResourceTagSet(t)
-	return t
+	asserts.AssertResourceTagSet(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.HostedZoneAlreadyExists = { ["message"] = true, nil }
@@ -3503,12 +4734,23 @@ end
 -- * message [ErrorMessage] <p>Descriptive message for the error response.</p>
 -- @return HostedZoneAlreadyExists structure as a key-value pair table
 function M.HostedZoneAlreadyExists(args)
-	assert(args, "You must provdide an argument table when creating HostedZoneAlreadyExists")
-	local t = { 
+	assert(args, "You must provide an argument table when creating HostedZoneAlreadyExists")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertHostedZoneAlreadyExists(t)
-	return t
+	asserts.AssertHostedZoneAlreadyExists(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DelegationSet = { ["NameServers"] = true, ["CallerReference"] = true, ["Id"] = true, nil }
@@ -3535,14 +4777,25 @@ end
 -- Required key: NameServers
 -- @return DelegationSet structure as a key-value pair table
 function M.DelegationSet(args)
-	assert(args, "You must provdide an argument table when creating DelegationSet")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DelegationSet")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NameServers"] = args["NameServers"],
 		["CallerReference"] = args["CallerReference"],
 		["Id"] = args["Id"],
 	}
-	asserts.AssertDelegationSet(t)
-	return t
+	asserts.AssertDelegationSet(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.NoSuchTrafficPolicyInstance = { ["message"] = true, nil }
@@ -3563,12 +4816,23 @@ end
 -- * message [ErrorMessage] <p>Descriptive message for the error response.</p>
 -- @return NoSuchTrafficPolicyInstance structure as a key-value pair table
 function M.NoSuchTrafficPolicyInstance(args)
-	assert(args, "You must provdide an argument table when creating NoSuchTrafficPolicyInstance")
-	local t = { 
+	assert(args, "You must provide an argument table when creating NoSuchTrafficPolicyInstance")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertNoSuchTrafficPolicyInstance(t)
-	return t
+	asserts.AssertNoSuchTrafficPolicyInstance(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.HealthCheckObservation = { ["StatusReport"] = true, ["Region"] = true, ["IPAddress"] = true, nil }
@@ -3593,14 +4857,25 @@ end
 -- * IPAddress [IPAddress] <p>The IP address of the Amazon Route 53 health checker that provided the failure reason in <code>StatusReport</code>.</p>
 -- @return HealthCheckObservation structure as a key-value pair table
 function M.HealthCheckObservation(args)
-	assert(args, "You must provdide an argument table when creating HealthCheckObservation")
-	local t = { 
+	assert(args, "You must provide an argument table when creating HealthCheckObservation")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["StatusReport"] = args["StatusReport"],
 		["Region"] = args["Region"],
 		["IPAddress"] = args["IPAddress"],
 	}
-	asserts.AssertHealthCheckObservation(t)
-	return t
+	asserts.AssertHealthCheckObservation(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetTrafficPolicyRequest = { ["Version"] = true, ["Id"] = true, nil }
@@ -3627,13 +4902,26 @@ end
 -- Required key: Version
 -- @return GetTrafficPolicyRequest structure as a key-value pair table
 function M.GetTrafficPolicyRequest(args)
-	assert(args, "You must provdide an argument table when creating GetTrafficPolicyRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetTrafficPolicyRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{Version}"] = args["Version"],
+        ["{Id}"] = args["Id"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Version"] = args["Version"],
 		["Id"] = args["Id"],
 	}
-	asserts.AssertGetTrafficPolicyRequest(t)
-	return t
+	asserts.AssertGetTrafficPolicyRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.TrafficPolicyAlreadyExists = { ["message"] = true, nil }
@@ -3654,12 +4942,23 @@ end
 -- * message [ErrorMessage] <p>Descriptive message for the error response.</p>
 -- @return TrafficPolicyAlreadyExists structure as a key-value pair table
 function M.TrafficPolicyAlreadyExists(args)
-	assert(args, "You must provdide an argument table when creating TrafficPolicyAlreadyExists")
-	local t = { 
+	assert(args, "You must provide an argument table when creating TrafficPolicyAlreadyExists")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertTrafficPolicyAlreadyExists(t)
-	return t
+	asserts.AssertTrafficPolicyAlreadyExists(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteTrafficPolicyInstanceResponse = { nil }
@@ -3678,11 +4977,22 @@ end
 -- Valid keys:
 -- @return DeleteTrafficPolicyInstanceResponse structure as a key-value pair table
 function M.DeleteTrafficPolicyInstanceResponse(args)
-	assert(args, "You must provdide an argument table when creating DeleteTrafficPolicyInstanceResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteTrafficPolicyInstanceResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertDeleteTrafficPolicyInstanceResponse(t)
-	return t
+	asserts.AssertDeleteTrafficPolicyInstanceResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListTrafficPolicyInstancesRequest = { ["HostedZoneIdMarker"] = true, ["TrafficPolicyInstanceTypeMarker"] = true, ["TrafficPolicyInstanceNameMarker"] = true, ["MaxItems"] = true, nil }
@@ -3709,15 +5019,30 @@ end
 -- * MaxItems [PageMaxItems] <p>The maximum number of traffic policy instances that you want Amazon Route 53 to return in response to a <code>ListTrafficPolicyInstances</code> request. If you have more than <code>MaxItems</code> traffic policy instances, the value of the <code>IsTruncated</code> element in the response is <code>true</code>, and the values of <code>HostedZoneIdMarker</code>, <code>TrafficPolicyInstanceNameMarker</code>, and <code>TrafficPolicyInstanceTypeMarker</code> represent the first traffic policy instance in the next group of <code>MaxItems</code> traffic policy instances.</p>
 -- @return ListTrafficPolicyInstancesRequest structure as a key-value pair table
 function M.ListTrafficPolicyInstancesRequest(args)
-	assert(args, "You must provdide an argument table when creating ListTrafficPolicyInstancesRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListTrafficPolicyInstancesRequest")
+    local query_args = { 
+        ["hostedzoneid"] = args["HostedZoneIdMarker"],
+        ["trafficpolicyinstancetype"] = args["TrafficPolicyInstanceTypeMarker"],
+        ["trafficpolicyinstancename"] = args["TrafficPolicyInstanceNameMarker"],
+        ["maxitems"] = args["MaxItems"],
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["HostedZoneIdMarker"] = args["HostedZoneIdMarker"],
 		["TrafficPolicyInstanceTypeMarker"] = args["TrafficPolicyInstanceTypeMarker"],
 		["TrafficPolicyInstanceNameMarker"] = args["TrafficPolicyInstanceNameMarker"],
 		["MaxItems"] = args["MaxItems"],
 	}
-	asserts.AssertListTrafficPolicyInstancesRequest(t)
-	return t
+	asserts.AssertListTrafficPolicyInstancesRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.HealthCheckConfig = { ["FailureThreshold"] = true, ["SearchString"] = true, ["AlarmIdentifier"] = true, ["IPAddress"] = true, ["ResourcePath"] = true, ["ChildHealthChecks"] = true, ["Inverted"] = true, ["Regions"] = true, ["InsufficientDataHealthStatus"] = true, ["HealthThreshold"] = true, ["EnableSNI"] = true, ["MeasureLatency"] = true, ["RequestInterval"] = true, ["Type"] = true, ["Port"] = true, ["FullyQualifiedDomainName"] = true, nil }
@@ -3770,8 +5095,14 @@ end
 -- Required key: Type
 -- @return HealthCheckConfig structure as a key-value pair table
 function M.HealthCheckConfig(args)
-	assert(args, "You must provdide an argument table when creating HealthCheckConfig")
-	local t = { 
+	assert(args, "You must provide an argument table when creating HealthCheckConfig")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["FailureThreshold"] = args["FailureThreshold"],
 		["SearchString"] = args["SearchString"],
 		["AlarmIdentifier"] = args["AlarmIdentifier"],
@@ -3789,8 +5120,13 @@ function M.HealthCheckConfig(args)
 		["Port"] = args["Port"],
 		["FullyQualifiedDomainName"] = args["FullyQualifiedDomainName"],
 	}
-	asserts.AssertHealthCheckConfig(t)
-	return t
+	asserts.AssertHealthCheckConfig(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.NotAuthorizedException = { ["message"] = true, nil }
@@ -3811,12 +5147,23 @@ end
 -- * message [ErrorMessage] <p>Descriptive message for the error response.</p>
 -- @return NotAuthorizedException structure as a key-value pair table
 function M.NotAuthorizedException(args)
-	assert(args, "You must provdide an argument table when creating NotAuthorizedException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating NotAuthorizedException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertNotAuthorizedException(t)
-	return t
+	asserts.AssertNotAuthorizedException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetCheckerIpRangesResponse = { ["CheckerIpRanges"] = true, nil }
@@ -3839,12 +5186,23 @@ end
 -- Required key: CheckerIpRanges
 -- @return GetCheckerIpRangesResponse structure as a key-value pair table
 function M.GetCheckerIpRangesResponse(args)
-	assert(args, "You must provdide an argument table when creating GetCheckerIpRangesResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetCheckerIpRangesResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["CheckerIpRanges"] = args["CheckerIpRanges"],
 	}
-	asserts.AssertGetCheckerIpRangesResponse(t)
-	return t
+	asserts.AssertGetCheckerIpRangesResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidDomainName = { ["message"] = true, nil }
@@ -3865,12 +5223,23 @@ end
 -- * message [ErrorMessage] <p>Descriptive message for the error response.</p>
 -- @return InvalidDomainName structure as a key-value pair table
 function M.InvalidDomainName(args)
-	assert(args, "You must provdide an argument table when creating InvalidDomainName")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidDomainName")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertInvalidDomainName(t)
-	return t
+	asserts.AssertInvalidDomainName(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteVPCAssociationAuthorizationRequest = { ["HostedZoneId"] = true, ["VPC"] = true, nil }
@@ -3897,13 +5266,25 @@ end
 -- Required key: VPC
 -- @return DeleteVPCAssociationAuthorizationRequest structure as a key-value pair table
 function M.DeleteVPCAssociationAuthorizationRequest(args)
-	assert(args, "You must provdide an argument table when creating DeleteVPCAssociationAuthorizationRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteVPCAssociationAuthorizationRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{Id}"] = args["HostedZoneId"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["HostedZoneId"] = args["HostedZoneId"],
 		["VPC"] = args["VPC"],
 	}
-	asserts.AssertDeleteVPCAssociationAuthorizationRequest(t)
-	return t
+	asserts.AssertDeleteVPCAssociationAuthorizationRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ThrottlingException = { ["message"] = true, nil }
@@ -3924,12 +5305,23 @@ end
 -- * message [ErrorMessage] 
 -- @return ThrottlingException structure as a key-value pair table
 function M.ThrottlingException(args)
-	assert(args, "You must provdide an argument table when creating ThrottlingException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ThrottlingException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertThrottlingException(t)
-	return t
+	asserts.AssertThrottlingException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListGeoLocationsResponse = { ["GeoLocationDetailsList"] = true, ["NextSubdivisionCode"] = true, ["NextCountryCode"] = true, ["MaxItems"] = true, ["NextContinentCode"] = true, ["IsTruncated"] = true, nil }
@@ -3966,8 +5358,14 @@ end
 -- Required key: MaxItems
 -- @return ListGeoLocationsResponse structure as a key-value pair table
 function M.ListGeoLocationsResponse(args)
-	assert(args, "You must provdide an argument table when creating ListGeoLocationsResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListGeoLocationsResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["GeoLocationDetailsList"] = args["GeoLocationDetailsList"],
 		["NextSubdivisionCode"] = args["NextSubdivisionCode"],
 		["NextCountryCode"] = args["NextCountryCode"],
@@ -3975,8 +5373,13 @@ function M.ListGeoLocationsResponse(args)
 		["NextContinentCode"] = args["NextContinentCode"],
 		["IsTruncated"] = args["IsTruncated"],
 	}
-	asserts.AssertListGeoLocationsResponse(t)
-	return t
+	asserts.AssertListGeoLocationsResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateTrafficPolicyInstanceResponse = { ["TrafficPolicyInstance"] = true, ["Location"] = true, nil }
@@ -4003,13 +5406,25 @@ end
 -- Required key: Location
 -- @return CreateTrafficPolicyInstanceResponse structure as a key-value pair table
 function M.CreateTrafficPolicyInstanceResponse(args)
-	assert(args, "You must provdide an argument table when creating CreateTrafficPolicyInstanceResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateTrafficPolicyInstanceResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+        ["Location"] = args["Location"],
+    }
+	local all_args = { 
 		["TrafficPolicyInstance"] = args["TrafficPolicyInstance"],
 		["Location"] = args["Location"],
 	}
-	asserts.AssertCreateTrafficPolicyInstanceResponse(t)
-	return t
+	asserts.AssertCreateTrafficPolicyInstanceResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetHostedZoneCountResponse = { ["HostedZoneCount"] = true, nil }
@@ -4032,12 +5447,23 @@ end
 -- Required key: HostedZoneCount
 -- @return GetHostedZoneCountResponse structure as a key-value pair table
 function M.GetHostedZoneCountResponse(args)
-	assert(args, "You must provdide an argument table when creating GetHostedZoneCountResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetHostedZoneCountResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["HostedZoneCount"] = args["HostedZoneCount"],
 	}
-	asserts.AssertGetHostedZoneCountResponse(t)
-	return t
+	asserts.AssertGetHostedZoneCountResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListVPCAssociationAuthorizationsRequest = { ["HostedZoneId"] = true, ["NextToken"] = true, ["MaxResults"] = true, nil }
@@ -4064,14 +5490,28 @@ end
 -- Required key: HostedZoneId
 -- @return ListVPCAssociationAuthorizationsRequest structure as a key-value pair table
 function M.ListVPCAssociationAuthorizationsRequest(args)
-	assert(args, "You must provdide an argument table when creating ListVPCAssociationAuthorizationsRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListVPCAssociationAuthorizationsRequest")
+    local query_args = { 
+        ["nexttoken"] = args["NextToken"],
+        ["maxresults"] = args["MaxResults"],
+    }
+    local uri_args = { 
+        ["{Id}"] = args["HostedZoneId"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["HostedZoneId"] = args["HostedZoneId"],
 		["NextToken"] = args["NextToken"],
 		["MaxResults"] = args["MaxResults"],
 	}
-	asserts.AssertListVPCAssociationAuthorizationsRequest(t)
-	return t
+	asserts.AssertListVPCAssociationAuthorizationsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.HealthCheck = { ["HealthCheckConfig"] = true, ["CallerReference"] = true, ["HealthCheckVersion"] = true, ["Id"] = true, ["CloudWatchAlarmConfiguration"] = true, nil }
@@ -4108,16 +5548,27 @@ end
 -- Required key: HealthCheckVersion
 -- @return HealthCheck structure as a key-value pair table
 function M.HealthCheck(args)
-	assert(args, "You must provdide an argument table when creating HealthCheck")
-	local t = { 
+	assert(args, "You must provide an argument table when creating HealthCheck")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["HealthCheckConfig"] = args["HealthCheckConfig"],
 		["CallerReference"] = args["CallerReference"],
 		["HealthCheckVersion"] = args["HealthCheckVersion"],
 		["Id"] = args["Id"],
 		["CloudWatchAlarmConfiguration"] = args["CloudWatchAlarmConfiguration"],
 	}
-	asserts.AssertHealthCheck(t)
-	return t
+	asserts.AssertHealthCheck(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DisassociateVPCFromHostedZoneResponse = { ["ChangeInfo"] = true, nil }
@@ -4140,12 +5591,23 @@ end
 -- Required key: ChangeInfo
 -- @return DisassociateVPCFromHostedZoneResponse structure as a key-value pair table
 function M.DisassociateVPCFromHostedZoneResponse(args)
-	assert(args, "You must provdide an argument table when creating DisassociateVPCFromHostedZoneResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DisassociateVPCFromHostedZoneResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ChangeInfo"] = args["ChangeInfo"],
 	}
-	asserts.AssertDisassociateVPCFromHostedZoneResponse(t)
-	return t
+	asserts.AssertDisassociateVPCFromHostedZoneResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateReusableDelegationSetResponse = { ["Location"] = true, ["DelegationSet"] = true, nil }
@@ -4172,13 +5634,25 @@ end
 -- Required key: Location
 -- @return CreateReusableDelegationSetResponse structure as a key-value pair table
 function M.CreateReusableDelegationSetResponse(args)
-	assert(args, "You must provdide an argument table when creating CreateReusableDelegationSetResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateReusableDelegationSetResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+        ["Location"] = args["Location"],
+    }
+	local all_args = { 
 		["Location"] = args["Location"],
 		["DelegationSet"] = args["DelegationSet"],
 	}
-	asserts.AssertCreateReusableDelegationSetResponse(t)
-	return t
+	asserts.AssertCreateReusableDelegationSetResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListHealthChecksRequest = { ["Marker"] = true, ["MaxItems"] = true, nil }
@@ -4201,13 +5675,26 @@ end
 -- * MaxItems [PageMaxItems] <p>The maximum number of health checks that you want <code>ListHealthChecks</code> to return in response to the current request. Amazon Route 53 returns a maximum of 100 items. If you set <code>MaxItems</code> to a value greater than 100, Amazon Route 53 returns only the first 100 health checks. </p>
 -- @return ListHealthChecksRequest structure as a key-value pair table
 function M.ListHealthChecksRequest(args)
-	assert(args, "You must provdide an argument table when creating ListHealthChecksRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListHealthChecksRequest")
+    local query_args = { 
+        ["marker"] = args["Marker"],
+        ["maxitems"] = args["MaxItems"],
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Marker"] = args["Marker"],
 		["MaxItems"] = args["MaxItems"],
 	}
-	asserts.AssertListHealthChecksRequest(t)
-	return t
+	asserts.AssertListHealthChecksRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ChangeResourceRecordSetsResponse = { ["ChangeInfo"] = true, nil }
@@ -4230,12 +5717,23 @@ end
 -- Required key: ChangeInfo
 -- @return ChangeResourceRecordSetsResponse structure as a key-value pair table
 function M.ChangeResourceRecordSetsResponse(args)
-	assert(args, "You must provdide an argument table when creating ChangeResourceRecordSetsResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ChangeResourceRecordSetsResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ChangeInfo"] = args["ChangeInfo"],
 	}
-	asserts.AssertChangeResourceRecordSetsResponse(t)
-	return t
+	asserts.AssertChangeResourceRecordSetsResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DisassociateVPCFromHostedZoneRequest = { ["HostedZoneId"] = true, ["Comment"] = true, ["VPC"] = true, nil }
@@ -4264,14 +5762,26 @@ end
 -- Required key: VPC
 -- @return DisassociateVPCFromHostedZoneRequest structure as a key-value pair table
 function M.DisassociateVPCFromHostedZoneRequest(args)
-	assert(args, "You must provdide an argument table when creating DisassociateVPCFromHostedZoneRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DisassociateVPCFromHostedZoneRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{Id}"] = args["HostedZoneId"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["HostedZoneId"] = args["HostedZoneId"],
 		["Comment"] = args["Comment"],
 		["VPC"] = args["VPC"],
 	}
-	asserts.AssertDisassociateVPCFromHostedZoneRequest(t)
-	return t
+	asserts.AssertDisassociateVPCFromHostedZoneRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.TestDNSAnswerRequest = { ["ResolverIP"] = true, ["RecordType"] = true, ["RecordName"] = true, ["EDNS0ClientSubnetMask"] = true, ["EDNS0ClientSubnetIP"] = true, ["HostedZoneId"] = true, nil }
@@ -4308,8 +5818,20 @@ end
 -- Required key: RecordType
 -- @return TestDNSAnswerRequest structure as a key-value pair table
 function M.TestDNSAnswerRequest(args)
-	assert(args, "You must provdide an argument table when creating TestDNSAnswerRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating TestDNSAnswerRequest")
+    local query_args = { 
+        ["resolverip"] = args["ResolverIP"],
+        ["recordtype"] = args["RecordType"],
+        ["recordname"] = args["RecordName"],
+        ["edns0clientsubnetmask"] = args["EDNS0ClientSubnetMask"],
+        ["edns0clientsubnetip"] = args["EDNS0ClientSubnetIP"],
+        ["hostedzoneid"] = args["HostedZoneId"],
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ResolverIP"] = args["ResolverIP"],
 		["RecordType"] = args["RecordType"],
 		["RecordName"] = args["RecordName"],
@@ -4317,8 +5839,13 @@ function M.TestDNSAnswerRequest(args)
 		["EDNS0ClientSubnetIP"] = args["EDNS0ClientSubnetIP"],
 		["HostedZoneId"] = args["HostedZoneId"],
 	}
-	asserts.AssertTestDNSAnswerRequest(t)
-	return t
+	asserts.AssertTestDNSAnswerRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.TrafficPolicyInstance = { ["Name"] = true, ["TrafficPolicyVersion"] = true, ["TrafficPolicyType"] = true, ["State"] = true, ["TrafficPolicyId"] = true, ["TTL"] = true, ["HostedZoneId"] = true, ["Message"] = true, ["Id"] = true, nil }
@@ -4373,8 +5900,14 @@ end
 -- Required key: TrafficPolicyType
 -- @return TrafficPolicyInstance structure as a key-value pair table
 function M.TrafficPolicyInstance(args)
-	assert(args, "You must provdide an argument table when creating TrafficPolicyInstance")
-	local t = { 
+	assert(args, "You must provide an argument table when creating TrafficPolicyInstance")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Name"] = args["Name"],
 		["TrafficPolicyVersion"] = args["TrafficPolicyVersion"],
 		["TrafficPolicyType"] = args["TrafficPolicyType"],
@@ -4385,8 +5918,13 @@ function M.TrafficPolicyInstance(args)
 		["Message"] = args["Message"],
 		["Id"] = args["Id"],
 	}
-	asserts.AssertTrafficPolicyInstance(t)
-	return t
+	asserts.AssertTrafficPolicyInstance(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.TrafficPolicyInUse = { ["message"] = true, nil }
@@ -4407,12 +5945,23 @@ end
 -- * message [ErrorMessage] <p>Descriptive message for the error response.</p>
 -- @return TrafficPolicyInUse structure as a key-value pair table
 function M.TrafficPolicyInUse(args)
-	assert(args, "You must provdide an argument table when creating TrafficPolicyInUse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating TrafficPolicyInUse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertTrafficPolicyInUse(t)
-	return t
+	asserts.AssertTrafficPolicyInUse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ChangeInfo = { ["Status"] = true, ["Comment"] = true, ["SubmittedAt"] = true, ["Id"] = true, nil }
@@ -4445,15 +5994,26 @@ end
 -- Required key: SubmittedAt
 -- @return ChangeInfo structure as a key-value pair table
 function M.ChangeInfo(args)
-	assert(args, "You must provdide an argument table when creating ChangeInfo")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ChangeInfo")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Status"] = args["Status"],
 		["Comment"] = args["Comment"],
 		["SubmittedAt"] = args["SubmittedAt"],
 		["Id"] = args["Id"],
 	}
-	asserts.AssertChangeInfo(t)
-	return t
+	asserts.AssertChangeInfo(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListTrafficPolicyInstancesByHostedZoneResponse = { ["TrafficPolicyInstanceTypeMarker"] = true, ["TrafficPolicyInstanceNameMarker"] = true, ["TrafficPolicyInstances"] = true, ["MaxItems"] = true, ["IsTruncated"] = true, nil }
@@ -4488,16 +6048,27 @@ end
 -- Required key: MaxItems
 -- @return ListTrafficPolicyInstancesByHostedZoneResponse structure as a key-value pair table
 function M.ListTrafficPolicyInstancesByHostedZoneResponse(args)
-	assert(args, "You must provdide an argument table when creating ListTrafficPolicyInstancesByHostedZoneResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListTrafficPolicyInstancesByHostedZoneResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["TrafficPolicyInstanceTypeMarker"] = args["TrafficPolicyInstanceTypeMarker"],
 		["TrafficPolicyInstanceNameMarker"] = args["TrafficPolicyInstanceNameMarker"],
 		["TrafficPolicyInstances"] = args["TrafficPolicyInstances"],
 		["MaxItems"] = args["MaxItems"],
 		["IsTruncated"] = args["IsTruncated"],
 	}
-	asserts.AssertListTrafficPolicyInstancesByHostedZoneResponse(t)
-	return t
+	asserts.AssertListTrafficPolicyInstancesByHostedZoneResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetHealthCheckLastFailureReasonResponse = { ["HealthCheckObservations"] = true, nil }
@@ -4520,12 +6091,23 @@ end
 -- Required key: HealthCheckObservations
 -- @return GetHealthCheckLastFailureReasonResponse structure as a key-value pair table
 function M.GetHealthCheckLastFailureReasonResponse(args)
-	assert(args, "You must provdide an argument table when creating GetHealthCheckLastFailureReasonResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetHealthCheckLastFailureReasonResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["HealthCheckObservations"] = args["HealthCheckObservations"],
 	}
-	asserts.AssertGetHealthCheckLastFailureReasonResponse(t)
-	return t
+	asserts.AssertGetHealthCheckLastFailureReasonResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DelegationSetAlreadyReusable = { ["message"] = true, nil }
@@ -4546,12 +6128,23 @@ end
 -- * message [ErrorMessage] <p>Descriptive message for the error response.</p>
 -- @return DelegationSetAlreadyReusable structure as a key-value pair table
 function M.DelegationSetAlreadyReusable(args)
-	assert(args, "You must provdide an argument table when creating DelegationSetAlreadyReusable")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DelegationSetAlreadyReusable")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertDelegationSetAlreadyReusable(t)
-	return t
+	asserts.AssertDelegationSetAlreadyReusable(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.LimitsExceeded = { ["message"] = true, nil }
@@ -4572,12 +6165,23 @@ end
 -- * message [ErrorMessage] <p>Descriptive message for the error response.</p>
 -- @return LimitsExceeded structure as a key-value pair table
 function M.LimitsExceeded(args)
-	assert(args, "You must provdide an argument table when creating LimitsExceeded")
-	local t = { 
+	assert(args, "You must provide an argument table when creating LimitsExceeded")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertLimitsExceeded(t)
-	return t
+	asserts.AssertLimitsExceeded(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetHealthCheckStatusRequest = { ["HealthCheckId"] = true, nil }
@@ -4600,12 +6204,24 @@ end
 -- Required key: HealthCheckId
 -- @return GetHealthCheckStatusRequest structure as a key-value pair table
 function M.GetHealthCheckStatusRequest(args)
-	assert(args, "You must provdide an argument table when creating GetHealthCheckStatusRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetHealthCheckStatusRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{HealthCheckId}"] = args["HealthCheckId"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["HealthCheckId"] = args["HealthCheckId"],
 	}
-	asserts.AssertGetHealthCheckStatusRequest(t)
-	return t
+	asserts.AssertGetHealthCheckStatusRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListTagsForResourceResponse = { ["ResourceTagSet"] = true, nil }
@@ -4628,12 +6244,23 @@ end
 -- Required key: ResourceTagSet
 -- @return ListTagsForResourceResponse structure as a key-value pair table
 function M.ListTagsForResourceResponse(args)
-	assert(args, "You must provdide an argument table when creating ListTagsForResourceResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListTagsForResourceResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ResourceTagSet"] = args["ResourceTagSet"],
 	}
-	asserts.AssertListTagsForResourceResponse(t)
-	return t
+	asserts.AssertListTagsForResourceResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AliasTarget = { ["HostedZoneId"] = true, ["EvaluateTargetHealth"] = true, ["DNSName"] = true, nil }
@@ -4664,14 +6291,25 @@ end
 -- Required key: EvaluateTargetHealth
 -- @return AliasTarget structure as a key-value pair table
 function M.AliasTarget(args)
-	assert(args, "You must provdide an argument table when creating AliasTarget")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AliasTarget")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["HostedZoneId"] = args["HostedZoneId"],
 		["EvaluateTargetHealth"] = args["EvaluateTargetHealth"],
 		["DNSName"] = args["DNSName"],
 	}
-	asserts.AssertAliasTarget(t)
-	return t
+	asserts.AssertAliasTarget(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetHostedZoneCountRequest = { nil }
@@ -4690,11 +6328,22 @@ end
 -- Valid keys:
 -- @return GetHostedZoneCountRequest structure as a key-value pair table
 function M.GetHostedZoneCountRequest(args)
-	assert(args, "You must provdide an argument table when creating GetHostedZoneCountRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetHostedZoneCountRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertGetHostedZoneCountRequest(t)
-	return t
+	asserts.AssertGetHostedZoneCountRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetHealthCheckLastFailureReasonRequest = { ["HealthCheckId"] = true, nil }
@@ -4717,12 +6366,24 @@ end
 -- Required key: HealthCheckId
 -- @return GetHealthCheckLastFailureReasonRequest structure as a key-value pair table
 function M.GetHealthCheckLastFailureReasonRequest(args)
-	assert(args, "You must provdide an argument table when creating GetHealthCheckLastFailureReasonRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetHealthCheckLastFailureReasonRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{HealthCheckId}"] = args["HealthCheckId"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["HealthCheckId"] = args["HealthCheckId"],
 	}
-	asserts.AssertGetHealthCheckLastFailureReasonRequest(t)
-	return t
+	asserts.AssertGetHealthCheckLastFailureReasonRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdateHealthCheckResponse = { ["HealthCheck"] = true, nil }
@@ -4745,12 +6406,23 @@ end
 -- Required key: HealthCheck
 -- @return UpdateHealthCheckResponse structure as a key-value pair table
 function M.UpdateHealthCheckResponse(args)
-	assert(args, "You must provdide an argument table when creating UpdateHealthCheckResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateHealthCheckResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["HealthCheck"] = args["HealthCheck"],
 	}
-	asserts.AssertUpdateHealthCheckResponse(t)
-	return t
+	asserts.AssertUpdateHealthCheckResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.TooManyHostedZones = { ["message"] = true, nil }
@@ -4771,12 +6443,23 @@ end
 -- * message [ErrorMessage] <p>Descriptive message for the error response.</p>
 -- @return TooManyHostedZones structure as a key-value pair table
 function M.TooManyHostedZones(args)
-	assert(args, "You must provdide an argument table when creating TooManyHostedZones")
-	local t = { 
+	assert(args, "You must provide an argument table when creating TooManyHostedZones")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertTooManyHostedZones(t)
-	return t
+	asserts.AssertTooManyHostedZones(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Tag = { ["Value"] = true, ["Key"] = true, nil }
@@ -4799,13 +6482,24 @@ end
 -- * Key [TagKey] <p>The value of <code>Key</code> depends on the operation that you want to perform:</p> <ul> <li> <p> <b>Add a tag to a health check or hosted zone</b>: <code>Key</code> is the name that you want to give the new tag.</p> </li> <li> <p> <b>Edit a tag</b>: <code>Key</code> is the name of the tag that you want to change the <code>Value</code> for.</p> </li> <li> <p> <b> Delete a key</b>: <code>Key</code> is the name of the tag you want to remove.</p> </li> <li> <p> <b>Give a name to a health check</b>: Edit the default <code>Name</code> tag. In the Amazon Route 53 console, the list of your health checks includes a <b>Name</b> column that lets you see the name that you've given to each health check.</p> </li> </ul>
 -- @return Tag structure as a key-value pair table
 function M.Tag(args)
-	assert(args, "You must provdide an argument table when creating Tag")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Tag")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Value"] = args["Value"],
 		["Key"] = args["Key"],
 	}
-	asserts.AssertTag(t)
-	return t
+	asserts.AssertTag(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateTrafficPolicyVersionResponse = { ["TrafficPolicy"] = true, ["Location"] = true, nil }
@@ -4832,13 +6526,25 @@ end
 -- Required key: Location
 -- @return CreateTrafficPolicyVersionResponse structure as a key-value pair table
 function M.CreateTrafficPolicyVersionResponse(args)
-	assert(args, "You must provdide an argument table when creating CreateTrafficPolicyVersionResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateTrafficPolicyVersionResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+        ["Location"] = args["Location"],
+    }
+	local all_args = { 
 		["TrafficPolicy"] = args["TrafficPolicy"],
 		["Location"] = args["Location"],
 	}
-	asserts.AssertCreateTrafficPolicyVersionResponse(t)
-	return t
+	asserts.AssertCreateTrafficPolicyVersionResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ResourceRecordSet = { ["GeoLocation"] = true, ["HealthCheckId"] = true, ["Name"] = true, ["Weight"] = true, ["Type"] = true, ["Region"] = true, ["AliasTarget"] = true, ["ResourceRecords"] = true, ["MultiValueAnswer"] = true, ["TTL"] = true, ["TrafficPolicyInstanceId"] = true, ["SetIdentifier"] = true, ["Failover"] = true, nil }
@@ -4887,8 +6593,14 @@ end
 -- Required key: Type
 -- @return ResourceRecordSet structure as a key-value pair table
 function M.ResourceRecordSet(args)
-	assert(args, "You must provdide an argument table when creating ResourceRecordSet")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ResourceRecordSet")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["GeoLocation"] = args["GeoLocation"],
 		["HealthCheckId"] = args["HealthCheckId"],
 		["Name"] = args["Name"],
@@ -4903,8 +6615,13 @@ function M.ResourceRecordSet(args)
 		["SetIdentifier"] = args["SetIdentifier"],
 		["Failover"] = args["Failover"],
 	}
-	asserts.AssertResourceRecordSet(t)
-	return t
+	asserts.AssertResourceRecordSet(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidPaginationToken = { ["message"] = true, nil }
@@ -4925,12 +6642,23 @@ end
 -- * message [ErrorMessage] 
 -- @return InvalidPaginationToken structure as a key-value pair table
 function M.InvalidPaginationToken(args)
-	assert(args, "You must provdide an argument table when creating InvalidPaginationToken")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidPaginationToken")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertInvalidPaginationToken(t)
-	return t
+	asserts.AssertInvalidPaginationToken(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.NoSuchGeoLocation = { ["message"] = true, nil }
@@ -4951,12 +6679,23 @@ end
 -- * message [ErrorMessage] <p>Descriptive message for the error response.</p>
 -- @return NoSuchGeoLocation structure as a key-value pair table
 function M.NoSuchGeoLocation(args)
-	assert(args, "You must provdide an argument table when creating NoSuchGeoLocation")
-	local t = { 
+	assert(args, "You must provide an argument table when creating NoSuchGeoLocation")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertNoSuchGeoLocation(t)
-	return t
+	asserts.AssertNoSuchGeoLocation(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.TooManyTrafficPolicies = { ["message"] = true, nil }
@@ -4977,12 +6716,23 @@ end
 -- * message [ErrorMessage] <p>Descriptive message for the error response.</p>
 -- @return TooManyTrafficPolicies structure as a key-value pair table
 function M.TooManyTrafficPolicies(args)
-	assert(args, "You must provdide an argument table when creating TooManyTrafficPolicies")
-	local t = { 
+	assert(args, "You must provide an argument table when creating TooManyTrafficPolicies")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertTooManyTrafficPolicies(t)
-	return t
+	asserts.AssertTooManyTrafficPolicies(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ChangeResourceRecordSetsRequest = { ["HostedZoneId"] = true, ["ChangeBatch"] = true, nil }
@@ -5009,13 +6759,25 @@ end
 -- Required key: ChangeBatch
 -- @return ChangeResourceRecordSetsRequest structure as a key-value pair table
 function M.ChangeResourceRecordSetsRequest(args)
-	assert(args, "You must provdide an argument table when creating ChangeResourceRecordSetsRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ChangeResourceRecordSetsRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{Id}"] = args["HostedZoneId"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["HostedZoneId"] = args["HostedZoneId"],
 		["ChangeBatch"] = args["ChangeBatch"],
 	}
-	asserts.AssertChangeResourceRecordSetsRequest(t)
-	return t
+	asserts.AssertChangeResourceRecordSetsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListTagsForResourcesResponse = { ["ResourceTagSets"] = true, nil }
@@ -5038,12 +6800,23 @@ end
 -- Required key: ResourceTagSets
 -- @return ListTagsForResourcesResponse structure as a key-value pair table
 function M.ListTagsForResourcesResponse(args)
-	assert(args, "You must provdide an argument table when creating ListTagsForResourcesResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListTagsForResourcesResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ResourceTagSets"] = args["ResourceTagSets"],
 	}
-	asserts.AssertListTagsForResourcesResponse(t)
-	return t
+	asserts.AssertListTagsForResourcesResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AssociateVPCWithHostedZoneResponse = { ["ChangeInfo"] = true, nil }
@@ -5066,12 +6839,23 @@ end
 -- Required key: ChangeInfo
 -- @return AssociateVPCWithHostedZoneResponse structure as a key-value pair table
 function M.AssociateVPCWithHostedZoneResponse(args)
-	assert(args, "You must provdide an argument table when creating AssociateVPCWithHostedZoneResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AssociateVPCWithHostedZoneResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ChangeInfo"] = args["ChangeInfo"],
 	}
-	asserts.AssertAssociateVPCWithHostedZoneResponse(t)
-	return t
+	asserts.AssertAssociateVPCWithHostedZoneResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetChangeRequest = { ["Id"] = true, nil }
@@ -5094,12 +6878,24 @@ end
 -- Required key: Id
 -- @return GetChangeRequest structure as a key-value pair table
 function M.GetChangeRequest(args)
-	assert(args, "You must provdide an argument table when creating GetChangeRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetChangeRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{Id}"] = args["Id"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Id"] = args["Id"],
 	}
-	asserts.AssertGetChangeRequest(t)
-	return t
+	asserts.AssertGetChangeRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListTrafficPolicyInstancesByHostedZoneRequest = { ["HostedZoneId"] = true, ["TrafficPolicyInstanceTypeMarker"] = true, ["TrafficPolicyInstanceNameMarker"] = true, ["MaxItems"] = true, nil }
@@ -5128,15 +6924,30 @@ end
 -- Required key: HostedZoneId
 -- @return ListTrafficPolicyInstancesByHostedZoneRequest structure as a key-value pair table
 function M.ListTrafficPolicyInstancesByHostedZoneRequest(args)
-	assert(args, "You must provdide an argument table when creating ListTrafficPolicyInstancesByHostedZoneRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListTrafficPolicyInstancesByHostedZoneRequest")
+    local query_args = { 
+        ["id"] = args["HostedZoneId"],
+        ["trafficpolicyinstancetype"] = args["TrafficPolicyInstanceTypeMarker"],
+        ["trafficpolicyinstancename"] = args["TrafficPolicyInstanceNameMarker"],
+        ["maxitems"] = args["MaxItems"],
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["HostedZoneId"] = args["HostedZoneId"],
 		["TrafficPolicyInstanceTypeMarker"] = args["TrafficPolicyInstanceTypeMarker"],
 		["TrafficPolicyInstanceNameMarker"] = args["TrafficPolicyInstanceNameMarker"],
 		["MaxItems"] = args["MaxItems"],
 	}
-	asserts.AssertListTrafficPolicyInstancesByHostedZoneRequest(t)
-	return t
+	asserts.AssertListTrafficPolicyInstancesByHostedZoneRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.PriorRequestNotComplete = { ["message"] = true, nil }
@@ -5157,12 +6968,23 @@ end
 -- * message [ErrorMessage] 
 -- @return PriorRequestNotComplete structure as a key-value pair table
 function M.PriorRequestNotComplete(args)
-	assert(args, "You must provdide an argument table when creating PriorRequestNotComplete")
-	local t = { 
+	assert(args, "You must provide an argument table when creating PriorRequestNotComplete")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertPriorRequestNotComplete(t)
-	return t
+	asserts.AssertPriorRequestNotComplete(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.NoSuchHealthCheck = { ["message"] = true, nil }
@@ -5183,12 +7005,23 @@ end
 -- * message [ErrorMessage] <p>Descriptive message for the error response.</p>
 -- @return NoSuchHealthCheck structure as a key-value pair table
 function M.NoSuchHealthCheck(args)
-	assert(args, "You must provdide an argument table when creating NoSuchHealthCheck")
-	local t = { 
+	assert(args, "You must provide an argument table when creating NoSuchHealthCheck")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertNoSuchHealthCheck(t)
-	return t
+	asserts.AssertNoSuchHealthCheck(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.NoSuchDelegationSet = { ["message"] = true, nil }
@@ -5209,12 +7042,23 @@ end
 -- * message [ErrorMessage] <p>Descriptive message for the error response.</p>
 -- @return NoSuchDelegationSet structure as a key-value pair table
 function M.NoSuchDelegationSet(args)
-	assert(args, "You must provdide an argument table when creating NoSuchDelegationSet")
-	local t = { 
+	assert(args, "You must provide an argument table when creating NoSuchDelegationSet")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertNoSuchDelegationSet(t)
-	return t
+	asserts.AssertNoSuchDelegationSet(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.TestDNSAnswerResponse = { ["Protocol"] = true, ["RecordType"] = true, ["RecordName"] = true, ["ResponseCode"] = true, ["Nameserver"] = true, ["RecordData"] = true, nil }
@@ -5257,8 +7101,14 @@ end
 -- Required key: Protocol
 -- @return TestDNSAnswerResponse structure as a key-value pair table
 function M.TestDNSAnswerResponse(args)
-	assert(args, "You must provdide an argument table when creating TestDNSAnswerResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating TestDNSAnswerResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Protocol"] = args["Protocol"],
 		["RecordType"] = args["RecordType"],
 		["RecordName"] = args["RecordName"],
@@ -5266,8 +7116,13 @@ function M.TestDNSAnswerResponse(args)
 		["Nameserver"] = args["Nameserver"],
 		["RecordData"] = args["RecordData"],
 	}
-	asserts.AssertTestDNSAnswerResponse(t)
-	return t
+	asserts.AssertTestDNSAnswerResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.VPCAssociationAuthorizationNotFound = { ["message"] = true, nil }
@@ -5288,12 +7143,23 @@ end
 -- * message [ErrorMessage] <p>Descriptive message for the error response.</p>
 -- @return VPCAssociationAuthorizationNotFound structure as a key-value pair table
 function M.VPCAssociationAuthorizationNotFound(args)
-	assert(args, "You must provdide an argument table when creating VPCAssociationAuthorizationNotFound")
-	local t = { 
+	assert(args, "You must provide an argument table when creating VPCAssociationAuthorizationNotFound")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertVPCAssociationAuthorizationNotFound(t)
-	return t
+	asserts.AssertVPCAssociationAuthorizationNotFound(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidInput = { ["message"] = true, nil }
@@ -5314,12 +7180,23 @@ end
 -- * message [ErrorMessage] <p>Descriptive message for the error response.</p>
 -- @return InvalidInput structure as a key-value pair table
 function M.InvalidInput(args)
-	assert(args, "You must provdide an argument table when creating InvalidInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertInvalidInput(t)
-	return t
+	asserts.AssertInvalidInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateVPCAssociationAuthorizationResponse = { ["HostedZoneId"] = true, ["VPC"] = true, nil }
@@ -5346,13 +7223,24 @@ end
 -- Required key: VPC
 -- @return CreateVPCAssociationAuthorizationResponse structure as a key-value pair table
 function M.CreateVPCAssociationAuthorizationResponse(args)
-	assert(args, "You must provdide an argument table when creating CreateVPCAssociationAuthorizationResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateVPCAssociationAuthorizationResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["HostedZoneId"] = args["HostedZoneId"],
 		["VPC"] = args["VPC"],
 	}
-	asserts.AssertCreateVPCAssociationAuthorizationResponse(t)
-	return t
+	asserts.AssertCreateVPCAssociationAuthorizationResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.HealthCheckAlreadyExists = { ["message"] = true, nil }
@@ -5373,12 +7261,23 @@ end
 -- * message [ErrorMessage] <p>Descriptive message for the error response.</p>
 -- @return HealthCheckAlreadyExists structure as a key-value pair table
 function M.HealthCheckAlreadyExists(args)
-	assert(args, "You must provdide an argument table when creating HealthCheckAlreadyExists")
-	local t = { 
+	assert(args, "You must provide an argument table when creating HealthCheckAlreadyExists")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertHealthCheckAlreadyExists(t)
-	return t
+	asserts.AssertHealthCheckAlreadyExists(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.LastVPCAssociation = { ["message"] = true, nil }
@@ -5399,12 +7298,23 @@ end
 -- * message [ErrorMessage] <p>Descriptive message for the error response.</p>
 -- @return LastVPCAssociation structure as a key-value pair table
 function M.LastVPCAssociation(args)
-	assert(args, "You must provdide an argument table when creating LastVPCAssociation")
-	local t = { 
+	assert(args, "You must provide an argument table when creating LastVPCAssociation")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertLastVPCAssociation(t)
-	return t
+	asserts.AssertLastVPCAssociation(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListHostedZonesRequest = { ["Marker"] = true, ["DelegationSetId"] = true, ["MaxItems"] = true, nil }
@@ -5429,14 +7339,28 @@ end
 -- * MaxItems [PageMaxItems] <p>(Optional) The maximum number of hosted zones that you want Amazon Route 53 to return. If you have more than <code>maxitems</code> hosted zones, the value of <code>IsTruncated</code> in the response is <code>true</code>, and the value of <code>NextMarker</code> is the hosted zone ID of the first hosted zone that Amazon Route 53 will return if you submit another request.</p>
 -- @return ListHostedZonesRequest structure as a key-value pair table
 function M.ListHostedZonesRequest(args)
-	assert(args, "You must provdide an argument table when creating ListHostedZonesRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListHostedZonesRequest")
+    local query_args = { 
+        ["marker"] = args["Marker"],
+        ["delegationsetid"] = args["DelegationSetId"],
+        ["maxitems"] = args["MaxItems"],
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Marker"] = args["Marker"],
 		["DelegationSetId"] = args["DelegationSetId"],
 		["MaxItems"] = args["MaxItems"],
 	}
-	asserts.AssertListHostedZonesRequest(t)
-	return t
+	asserts.AssertListHostedZonesRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 function asserts.AssertDNSName(str)
@@ -6849,8 +8773,11 @@ function M.ListTrafficPolicyInstancesByHostedZoneAsync(ListTrafficPolicyInstance
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".ListTrafficPolicyInstancesByHostedZone",
 	}
+	for header,value in pairs(ListTrafficPolicyInstancesByHostedZoneRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "GET")
 	if request_handler then
 		request_handler(settings.uri, "/2013-04-01/trafficpolicyinstances/hostedzone", ListTrafficPolicyInstancesByHostedZoneRequest, headers, settings, cb)
 	else
@@ -6881,8 +8808,11 @@ function M.GetCheckerIpRangesAsync(GetCheckerIpRangesRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".GetCheckerIpRanges",
 	}
+	for header,value in pairs(GetCheckerIpRangesRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "GET")
 	if request_handler then
 		request_handler(settings.uri, "/2013-04-01/checkeripranges", GetCheckerIpRangesRequest, headers, settings, cb)
 	else
@@ -6913,8 +8843,11 @@ function M.ListTrafficPolicyInstancesByPolicyAsync(ListTrafficPolicyInstancesByP
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".ListTrafficPolicyInstancesByPolicy",
 	}
+	for header,value in pairs(ListTrafficPolicyInstancesByPolicyRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "GET")
 	if request_handler then
 		request_handler(settings.uri, "/2013-04-01/trafficpolicyinstances/trafficpolicy", ListTrafficPolicyInstancesByPolicyRequest, headers, settings, cb)
 	else
@@ -6945,8 +8878,11 @@ function M.ListTrafficPoliciesAsync(ListTrafficPoliciesRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".ListTrafficPolicies",
 	}
+	for header,value in pairs(ListTrafficPoliciesRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "GET")
 	if request_handler then
 		request_handler(settings.uri, "/2013-04-01/trafficpolicies", ListTrafficPoliciesRequest, headers, settings, cb)
 	else
@@ -6977,8 +8913,11 @@ function M.UpdateHostedZoneCommentAsync(UpdateHostedZoneCommentRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".UpdateHostedZoneComment",
 	}
+	for header,value in pairs(UpdateHostedZoneCommentRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/2013-04-01/hostedzone/{Id}", UpdateHostedZoneCommentRequest, headers, settings, cb)
 	else
@@ -7009,8 +8948,11 @@ function M.ChangeTagsForResourceAsync(ChangeTagsForResourceRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".ChangeTagsForResource",
 	}
+	for header,value in pairs(ChangeTagsForResourceRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/2013-04-01/tags/{ResourceType}/{ResourceId}", ChangeTagsForResourceRequest, headers, settings, cb)
 	else
@@ -7041,8 +8983,11 @@ function M.GetHealthCheckAsync(GetHealthCheckRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".GetHealthCheck",
 	}
+	for header,value in pairs(GetHealthCheckRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "GET")
 	if request_handler then
 		request_handler(settings.uri, "/2013-04-01/healthcheck/{HealthCheckId}", GetHealthCheckRequest, headers, settings, cb)
 	else
@@ -7073,8 +9018,11 @@ function M.ListHostedZonesByNameAsync(ListHostedZonesByNameRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".ListHostedZonesByName",
 	}
+	for header,value in pairs(ListHostedZonesByNameRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "GET")
 	if request_handler then
 		request_handler(settings.uri, "/2013-04-01/hostedzonesbyname", ListHostedZonesByNameRequest, headers, settings, cb)
 	else
@@ -7105,8 +9053,11 @@ function M.GetHostedZoneAsync(GetHostedZoneRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".GetHostedZone",
 	}
+	for header,value in pairs(GetHostedZoneRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "GET")
 	if request_handler then
 		request_handler(settings.uri, "/2013-04-01/hostedzone/{Id}", GetHostedZoneRequest, headers, settings, cb)
 	else
@@ -7137,8 +9088,11 @@ function M.DeleteReusableDelegationSetAsync(DeleteReusableDelegationSetRequest, 
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DeleteReusableDelegationSet",
 	}
+	for header,value in pairs(DeleteReusableDelegationSetRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("DELETE")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "DELETE")
 	if request_handler then
 		request_handler(settings.uri, "/2013-04-01/delegationset/{Id}", DeleteReusableDelegationSetRequest, headers, settings, cb)
 	else
@@ -7169,8 +9123,11 @@ function M.DeleteTrafficPolicyInstanceAsync(DeleteTrafficPolicyInstanceRequest, 
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DeleteTrafficPolicyInstance",
 	}
+	for header,value in pairs(DeleteTrafficPolicyInstanceRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("DELETE")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "DELETE")
 	if request_handler then
 		request_handler(settings.uri, "/2013-04-01/trafficpolicyinstance/{Id}", DeleteTrafficPolicyInstanceRequest, headers, settings, cb)
 	else
@@ -7201,8 +9158,11 @@ function M.GetHostedZoneCountAsync(GetHostedZoneCountRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".GetHostedZoneCount",
 	}
+	for header,value in pairs(GetHostedZoneCountRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "GET")
 	if request_handler then
 		request_handler(settings.uri, "/2013-04-01/hostedzonecount", GetHostedZoneCountRequest, headers, settings, cb)
 	else
@@ -7233,8 +9193,11 @@ function M.GetTrafficPolicyInstanceCountAsync(GetTrafficPolicyInstanceCountReque
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".GetTrafficPolicyInstanceCount",
 	}
+	for header,value in pairs(GetTrafficPolicyInstanceCountRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "GET")
 	if request_handler then
 		request_handler(settings.uri, "/2013-04-01/trafficpolicyinstancecount", GetTrafficPolicyInstanceCountRequest, headers, settings, cb)
 	else
@@ -7265,8 +9228,11 @@ function M.UpdateTrafficPolicyCommentAsync(UpdateTrafficPolicyCommentRequest, cb
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".UpdateTrafficPolicyComment",
 	}
+	for header,value in pairs(UpdateTrafficPolicyCommentRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/2013-04-01/trafficpolicy/{Id}/{Version}", UpdateTrafficPolicyCommentRequest, headers, settings, cb)
 	else
@@ -7297,8 +9263,11 @@ function M.ChangeResourceRecordSetsAsync(ChangeResourceRecordSetsRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".ChangeResourceRecordSets",
 	}
+	for header,value in pairs(ChangeResourceRecordSetsRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/2013-04-01/hostedzone/{Id}/rrset/", ChangeResourceRecordSetsRequest, headers, settings, cb)
 	else
@@ -7329,8 +9298,11 @@ function M.DeleteTrafficPolicyAsync(DeleteTrafficPolicyRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DeleteTrafficPolicy",
 	}
+	for header,value in pairs(DeleteTrafficPolicyRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("DELETE")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "DELETE")
 	if request_handler then
 		request_handler(settings.uri, "/2013-04-01/trafficpolicy/{Id}/{Version}", DeleteTrafficPolicyRequest, headers, settings, cb)
 	else
@@ -7361,8 +9333,11 @@ function M.CreateHostedZoneAsync(CreateHostedZoneRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".CreateHostedZone",
 	}
+	for header,value in pairs(CreateHostedZoneRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/2013-04-01/hostedzone", CreateHostedZoneRequest, headers, settings, cb)
 	else
@@ -7393,8 +9368,11 @@ function M.CreateVPCAssociationAuthorizationAsync(CreateVPCAssociationAuthorizat
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".CreateVPCAssociationAuthorization",
 	}
+	for header,value in pairs(CreateVPCAssociationAuthorizationRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/2013-04-01/hostedzone/{Id}/authorizevpcassociation", CreateVPCAssociationAuthorizationRequest, headers, settings, cb)
 	else
@@ -7425,8 +9403,11 @@ function M.DeleteHostedZoneAsync(DeleteHostedZoneRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DeleteHostedZone",
 	}
+	for header,value in pairs(DeleteHostedZoneRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("DELETE")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "DELETE")
 	if request_handler then
 		request_handler(settings.uri, "/2013-04-01/hostedzone/{Id}", DeleteHostedZoneRequest, headers, settings, cb)
 	else
@@ -7457,8 +9438,11 @@ function M.GetHealthCheckStatusAsync(GetHealthCheckStatusRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".GetHealthCheckStatus",
 	}
+	for header,value in pairs(GetHealthCheckStatusRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "GET")
 	if request_handler then
 		request_handler(settings.uri, "/2013-04-01/healthcheck/{HealthCheckId}/status", GetHealthCheckStatusRequest, headers, settings, cb)
 	else
@@ -7489,8 +9473,11 @@ function M.TestDNSAnswerAsync(TestDNSAnswerRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".TestDNSAnswer",
 	}
+	for header,value in pairs(TestDNSAnswerRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "GET")
 	if request_handler then
 		request_handler(settings.uri, "/2013-04-01/testdnsanswer", TestDNSAnswerRequest, headers, settings, cb)
 	else
@@ -7521,8 +9508,11 @@ function M.ListReusableDelegationSetsAsync(ListReusableDelegationSetsRequest, cb
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".ListReusableDelegationSets",
 	}
+	for header,value in pairs(ListReusableDelegationSetsRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "GET")
 	if request_handler then
 		request_handler(settings.uri, "/2013-04-01/delegationset", ListReusableDelegationSetsRequest, headers, settings, cb)
 	else
@@ -7553,8 +9543,11 @@ function M.GetTrafficPolicyAsync(GetTrafficPolicyRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".GetTrafficPolicy",
 	}
+	for header,value in pairs(GetTrafficPolicyRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "GET")
 	if request_handler then
 		request_handler(settings.uri, "/2013-04-01/trafficpolicy/{Id}/{Version}", GetTrafficPolicyRequest, headers, settings, cb)
 	else
@@ -7585,8 +9578,11 @@ function M.CreateTrafficPolicyInstanceAsync(CreateTrafficPolicyInstanceRequest, 
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".CreateTrafficPolicyInstance",
 	}
+	for header,value in pairs(CreateTrafficPolicyInstanceRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/2013-04-01/trafficpolicyinstance", CreateTrafficPolicyInstanceRequest, headers, settings, cb)
 	else
@@ -7617,8 +9613,11 @@ function M.GetGeoLocationAsync(GetGeoLocationRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".GetGeoLocation",
 	}
+	for header,value in pairs(GetGeoLocationRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "GET")
 	if request_handler then
 		request_handler(settings.uri, "/2013-04-01/geolocation", GetGeoLocationRequest, headers, settings, cb)
 	else
@@ -7649,8 +9648,11 @@ function M.GetReusableDelegationSetAsync(GetReusableDelegationSetRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".GetReusableDelegationSet",
 	}
+	for header,value in pairs(GetReusableDelegationSetRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "GET")
 	if request_handler then
 		request_handler(settings.uri, "/2013-04-01/delegationset/{Id}", GetReusableDelegationSetRequest, headers, settings, cb)
 	else
@@ -7681,8 +9683,11 @@ function M.ListHostedZonesAsync(ListHostedZonesRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".ListHostedZones",
 	}
+	for header,value in pairs(ListHostedZonesRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "GET")
 	if request_handler then
 		request_handler(settings.uri, "/2013-04-01/hostedzone", ListHostedZonesRequest, headers, settings, cb)
 	else
@@ -7713,8 +9718,11 @@ function M.UpdateHealthCheckAsync(UpdateHealthCheckRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".UpdateHealthCheck",
 	}
+	for header,value in pairs(UpdateHealthCheckRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/2013-04-01/healthcheck/{HealthCheckId}", UpdateHealthCheckRequest, headers, settings, cb)
 	else
@@ -7745,8 +9753,11 @@ function M.GetHealthCheckCountAsync(GetHealthCheckCountRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".GetHealthCheckCount",
 	}
+	for header,value in pairs(GetHealthCheckCountRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "GET")
 	if request_handler then
 		request_handler(settings.uri, "/2013-04-01/healthcheckcount", GetHealthCheckCountRequest, headers, settings, cb)
 	else
@@ -7777,8 +9788,11 @@ function M.DisassociateVPCFromHostedZoneAsync(DisassociateVPCFromHostedZoneReque
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DisassociateVPCFromHostedZone",
 	}
+	for header,value in pairs(DisassociateVPCFromHostedZoneRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/2013-04-01/hostedzone/{Id}/disassociatevpc", DisassociateVPCFromHostedZoneRequest, headers, settings, cb)
 	else
@@ -7809,8 +9823,11 @@ function M.DeleteVPCAssociationAuthorizationAsync(DeleteVPCAssociationAuthorizat
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DeleteVPCAssociationAuthorization",
 	}
+	for header,value in pairs(DeleteVPCAssociationAuthorizationRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/2013-04-01/hostedzone/{Id}/deauthorizevpcassociation", DeleteVPCAssociationAuthorizationRequest, headers, settings, cb)
 	else
@@ -7841,8 +9858,11 @@ function M.GetTrafficPolicyInstanceAsync(GetTrafficPolicyInstanceRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".GetTrafficPolicyInstance",
 	}
+	for header,value in pairs(GetTrafficPolicyInstanceRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "GET")
 	if request_handler then
 		request_handler(settings.uri, "/2013-04-01/trafficpolicyinstance/{Id}", GetTrafficPolicyInstanceRequest, headers, settings, cb)
 	else
@@ -7873,8 +9893,11 @@ function M.DeleteHealthCheckAsync(DeleteHealthCheckRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DeleteHealthCheck",
 	}
+	for header,value in pairs(DeleteHealthCheckRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("DELETE")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "DELETE")
 	if request_handler then
 		request_handler(settings.uri, "/2013-04-01/healthcheck/{HealthCheckId}", DeleteHealthCheckRequest, headers, settings, cb)
 	else
@@ -7905,8 +9928,11 @@ function M.CreateHealthCheckAsync(CreateHealthCheckRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".CreateHealthCheck",
 	}
+	for header,value in pairs(CreateHealthCheckRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/2013-04-01/healthcheck", CreateHealthCheckRequest, headers, settings, cb)
 	else
@@ -7937,8 +9963,11 @@ function M.CreateTrafficPolicyVersionAsync(CreateTrafficPolicyVersionRequest, cb
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".CreateTrafficPolicyVersion",
 	}
+	for header,value in pairs(CreateTrafficPolicyVersionRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/2013-04-01/trafficpolicy/{Id}", CreateTrafficPolicyVersionRequest, headers, settings, cb)
 	else
@@ -7969,8 +9998,11 @@ function M.CreateTrafficPolicyAsync(CreateTrafficPolicyRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".CreateTrafficPolicy",
 	}
+	for header,value in pairs(CreateTrafficPolicyRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/2013-04-01/trafficpolicy", CreateTrafficPolicyRequest, headers, settings, cb)
 	else
@@ -8001,8 +10033,11 @@ function M.ListTagsForResourcesAsync(ListTagsForResourcesRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".ListTagsForResources",
 	}
+	for header,value in pairs(ListTagsForResourcesRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/2013-04-01/tags/{ResourceType}", ListTagsForResourcesRequest, headers, settings, cb)
 	else
@@ -8033,8 +10068,11 @@ function M.ListGeoLocationsAsync(ListGeoLocationsRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".ListGeoLocations",
 	}
+	for header,value in pairs(ListGeoLocationsRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "GET")
 	if request_handler then
 		request_handler(settings.uri, "/2013-04-01/geolocations", ListGeoLocationsRequest, headers, settings, cb)
 	else
@@ -8065,8 +10103,11 @@ function M.AssociateVPCWithHostedZoneAsync(AssociateVPCWithHostedZoneRequest, cb
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".AssociateVPCWithHostedZone",
 	}
+	for header,value in pairs(AssociateVPCWithHostedZoneRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/2013-04-01/hostedzone/{Id}/associatevpc", AssociateVPCWithHostedZoneRequest, headers, settings, cb)
 	else
@@ -8097,8 +10138,11 @@ function M.ListTrafficPolicyInstancesAsync(ListTrafficPolicyInstancesRequest, cb
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".ListTrafficPolicyInstances",
 	}
+	for header,value in pairs(ListTrafficPolicyInstancesRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "GET")
 	if request_handler then
 		request_handler(settings.uri, "/2013-04-01/trafficpolicyinstances", ListTrafficPolicyInstancesRequest, headers, settings, cb)
 	else
@@ -8129,8 +10173,11 @@ function M.ListVPCAssociationAuthorizationsAsync(ListVPCAssociationAuthorization
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".ListVPCAssociationAuthorizations",
 	}
+	for header,value in pairs(ListVPCAssociationAuthorizationsRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "GET")
 	if request_handler then
 		request_handler(settings.uri, "/2013-04-01/hostedzone/{Id}/authorizevpcassociation", ListVPCAssociationAuthorizationsRequest, headers, settings, cb)
 	else
@@ -8161,8 +10208,11 @@ function M.GetHealthCheckLastFailureReasonAsync(GetHealthCheckLastFailureReasonR
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".GetHealthCheckLastFailureReason",
 	}
+	for header,value in pairs(GetHealthCheckLastFailureReasonRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "GET")
 	if request_handler then
 		request_handler(settings.uri, "/2013-04-01/healthcheck/{HealthCheckId}/lastfailurereason", GetHealthCheckLastFailureReasonRequest, headers, settings, cb)
 	else
@@ -8193,8 +10243,11 @@ function M.GetChangeAsync(GetChangeRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".GetChange",
 	}
+	for header,value in pairs(GetChangeRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "GET")
 	if request_handler then
 		request_handler(settings.uri, "/2013-04-01/change/{Id}", GetChangeRequest, headers, settings, cb)
 	else
@@ -8225,8 +10278,11 @@ function M.UpdateTrafficPolicyInstanceAsync(UpdateTrafficPolicyInstanceRequest, 
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".UpdateTrafficPolicyInstance",
 	}
+	for header,value in pairs(UpdateTrafficPolicyInstanceRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/2013-04-01/trafficpolicyinstance/{Id}", UpdateTrafficPolicyInstanceRequest, headers, settings, cb)
 	else
@@ -8257,8 +10313,11 @@ function M.CreateReusableDelegationSetAsync(CreateReusableDelegationSetRequest, 
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".CreateReusableDelegationSet",
 	}
+	for header,value in pairs(CreateReusableDelegationSetRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/2013-04-01/delegationset", CreateReusableDelegationSetRequest, headers, settings, cb)
 	else
@@ -8289,8 +10348,11 @@ function M.ListResourceRecordSetsAsync(ListResourceRecordSetsRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".ListResourceRecordSets",
 	}
+	for header,value in pairs(ListResourceRecordSetsRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "GET")
 	if request_handler then
 		request_handler(settings.uri, "/2013-04-01/hostedzone/{Id}/rrset", ListResourceRecordSetsRequest, headers, settings, cb)
 	else
@@ -8321,8 +10383,11 @@ function M.ListTagsForResourceAsync(ListTagsForResourceRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".ListTagsForResource",
 	}
+	for header,value in pairs(ListTagsForResourceRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "GET")
 	if request_handler then
 		request_handler(settings.uri, "/2013-04-01/tags/{ResourceType}/{ResourceId}", ListTagsForResourceRequest, headers, settings, cb)
 	else
@@ -8353,8 +10418,11 @@ function M.ListHealthChecksAsync(ListHealthChecksRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".ListHealthChecks",
 	}
+	for header,value in pairs(ListHealthChecksRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "GET")
 	if request_handler then
 		request_handler(settings.uri, "/2013-04-01/healthcheck", ListHealthChecksRequest, headers, settings, cb)
 	else
@@ -8385,8 +10453,11 @@ function M.ListTrafficPolicyVersionsAsync(ListTrafficPolicyVersionsRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".ListTrafficPolicyVersions",
 	}
+	for header,value in pairs(ListTrafficPolicyVersionsRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "GET")
 	if request_handler then
 		request_handler(settings.uri, "/2013-04-01/trafficpolicies/{Id}/versions", ListTrafficPolicyVersionsRequest, headers, settings, cb)
 	else

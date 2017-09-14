@@ -49,8 +49,14 @@ end
 -- * IsDefault [Boolean] <p>Indicates whether this is the default network ACL for the VPC.</p>
 -- @return NetworkAcl structure as a key-value pair table
 function M.NetworkAcl(args)
-	assert(args, "You must provdide an argument table when creating NetworkAcl")
-	local t = { 
+	assert(args, "You must provide an argument table when creating NetworkAcl")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Associations"] = args["Associations"],
 		["NetworkAclId"] = args["NetworkAclId"],
 		["VpcId"] = args["VpcId"],
@@ -58,8 +64,13 @@ function M.NetworkAcl(args)
 		["Entries"] = args["Entries"],
 		["IsDefault"] = args["IsDefault"],
 	}
-	asserts.AssertNetworkAcl(t)
-	return t
+	asserts.AssertNetworkAcl(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateSecurityGroupResult = { ["GroupId"] = true, nil }
@@ -80,12 +91,23 @@ end
 -- * GroupId [String] <p>The ID of the security group.</p>
 -- @return CreateSecurityGroupResult structure as a key-value pair table
 function M.CreateSecurityGroupResult(args)
-	assert(args, "You must provdide an argument table when creating CreateSecurityGroupResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateSecurityGroupResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["GroupId"] = args["GroupId"],
 	}
-	asserts.AssertCreateSecurityGroupResult(t)
-	return t
+	asserts.AssertCreateSecurityGroupResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateFpgaImageResult = { ["FpgaImageId"] = true, ["FpgaImageGlobalId"] = true, nil }
@@ -108,13 +130,24 @@ end
 -- * FpgaImageGlobalId [String] <p>The global FPGA image identifier (AGFI ID).</p>
 -- @return CreateFpgaImageResult structure as a key-value pair table
 function M.CreateFpgaImageResult(args)
-	assert(args, "You must provdide an argument table when creating CreateFpgaImageResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateFpgaImageResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["FpgaImageId"] = args["FpgaImageId"],
 		["FpgaImageGlobalId"] = args["FpgaImageGlobalId"],
 	}
-	asserts.AssertCreateFpgaImageResult(t)
-	return t
+	asserts.AssertCreateFpgaImageResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.VpcCidrBlockState = { ["State"] = true, ["StatusMessage"] = true, nil }
@@ -137,13 +170,24 @@ end
 -- * StatusMessage [String] <p>A message about the status of the CIDR block, if applicable.</p>
 -- @return VpcCidrBlockState structure as a key-value pair table
 function M.VpcCidrBlockState(args)
-	assert(args, "You must provdide an argument table when creating VpcCidrBlockState")
-	local t = { 
+	assert(args, "You must provide an argument table when creating VpcCidrBlockState")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["State"] = args["State"],
 		["StatusMessage"] = args["StatusMessage"],
 	}
-	asserts.AssertVpcCidrBlockState(t)
-	return t
+	asserts.AssertVpcCidrBlockState(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InstanceBlockDeviceMapping = { ["DeviceName"] = true, ["Ebs"] = true, nil }
@@ -166,13 +210,24 @@ end
 -- * Ebs [EbsInstanceBlockDevice] <p>Parameters used to automatically set up EBS volumes when the instance is launched.</p>
 -- @return InstanceBlockDeviceMapping structure as a key-value pair table
 function M.InstanceBlockDeviceMapping(args)
-	assert(args, "You must provdide an argument table when creating InstanceBlockDeviceMapping")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InstanceBlockDeviceMapping")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DeviceName"] = args["DeviceName"],
 		["Ebs"] = args["Ebs"],
 	}
-	asserts.AssertInstanceBlockDeviceMapping(t)
-	return t
+	asserts.AssertInstanceBlockDeviceMapping(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ImportInstanceTaskDetails = { ["InstanceId"] = true, ["Platform"] = true, ["Description"] = true, ["Volumes"] = true, nil }
@@ -201,15 +256,26 @@ end
 -- Required key: Volumes
 -- @return ImportInstanceTaskDetails structure as a key-value pair table
 function M.ImportInstanceTaskDetails(args)
-	assert(args, "You must provdide an argument table when creating ImportInstanceTaskDetails")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ImportInstanceTaskDetails")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["InstanceId"] = args["InstanceId"],
 		["Platform"] = args["Platform"],
 		["Description"] = args["Description"],
 		["Volumes"] = args["Volumes"],
 	}
-	asserts.AssertImportInstanceTaskDetails(t)
-	return t
+	asserts.AssertImportInstanceTaskDetails(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeVpnConnectionsResult = { ["VpnConnections"] = true, nil }
@@ -230,12 +296,23 @@ end
 -- * VpnConnections [VpnConnectionList] <p>Information about one or more VPN connections.</p>
 -- @return DescribeVpnConnectionsResult structure as a key-value pair table
 function M.DescribeVpnConnectionsResult(args)
-	assert(args, "You must provdide an argument table when creating DescribeVpnConnectionsResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeVpnConnectionsResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["VpnConnections"] = args["VpnConnections"],
 	}
-	asserts.AssertDescribeVpnConnectionsResult(t)
-	return t
+	asserts.AssertDescribeVpnConnectionsResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ReservedInstancesConfiguration = { ["Platform"] = true, ["AvailabilityZone"] = true, ["Scope"] = true, ["InstanceType"] = true, ["InstanceCount"] = true, nil }
@@ -264,16 +341,27 @@ end
 -- * InstanceCount [Integer] <p>The number of modified Reserved Instances.</p>
 -- @return ReservedInstancesConfiguration structure as a key-value pair table
 function M.ReservedInstancesConfiguration(args)
-	assert(args, "You must provdide an argument table when creating ReservedInstancesConfiguration")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ReservedInstancesConfiguration")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Platform"] = args["Platform"],
 		["AvailabilityZone"] = args["AvailabilityZone"],
 		["Scope"] = args["Scope"],
 		["InstanceType"] = args["InstanceType"],
 		["InstanceCount"] = args["InstanceCount"],
 	}
-	asserts.AssertReservedInstancesConfiguration(t)
-	return t
+	asserts.AssertReservedInstancesConfiguration(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateVpcPeeringConnectionRequest = { ["VpcId"] = true, ["PeerOwnerId"] = true, ["PeerVpcId"] = true, ["DryRun"] = true, nil }
@@ -300,15 +388,26 @@ end
 -- * DryRun [Boolean] <p>Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is <code>DryRunOperation</code>. Otherwise, it is <code>UnauthorizedOperation</code>.</p>
 -- @return CreateVpcPeeringConnectionRequest structure as a key-value pair table
 function M.CreateVpcPeeringConnectionRequest(args)
-	assert(args, "You must provdide an argument table when creating CreateVpcPeeringConnectionRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateVpcPeeringConnectionRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["VpcId"] = args["VpcId"],
 		["PeerOwnerId"] = args["PeerOwnerId"],
 		["PeerVpcId"] = args["PeerVpcId"],
 		["DryRun"] = args["DryRun"],
 	}
-	asserts.AssertCreateVpcPeeringConnectionRequest(t)
-	return t
+	asserts.AssertCreateVpcPeeringConnectionRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteVpnConnectionRouteRequest = { ["VpnConnectionId"] = true, ["DestinationCidrBlock"] = true, nil }
@@ -335,13 +434,24 @@ end
 -- Required key: VpnConnectionId
 -- @return DeleteVpnConnectionRouteRequest structure as a key-value pair table
 function M.DeleteVpnConnectionRouteRequest(args)
-	assert(args, "You must provdide an argument table when creating DeleteVpnConnectionRouteRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteVpnConnectionRouteRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["VpnConnectionId"] = args["VpnConnectionId"],
 		["DestinationCidrBlock"] = args["DestinationCidrBlock"],
 	}
-	asserts.AssertDeleteVpnConnectionRouteRequest(t)
-	return t
+	asserts.AssertDeleteVpnConnectionRouteRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ScheduledInstancesNetworkInterface = { ["PrivateIpAddressConfigs"] = true, ["DeviceIndex"] = true, ["Description"] = true, ["Ipv6AddressCount"] = true, ["SubnetId"] = true, ["DeleteOnTermination"] = true, ["PrivateIpAddress"] = true, ["Groups"] = true, ["Ipv6Addresses"] = true, ["NetworkInterfaceId"] = true, ["AssociatePublicIpAddress"] = true, ["SecondaryPrivateIpAddressCount"] = true, nil }
@@ -384,8 +494,14 @@ end
 -- * SecondaryPrivateIpAddressCount [Integer] <p>The number of secondary private IPv4 addresses.</p>
 -- @return ScheduledInstancesNetworkInterface structure as a key-value pair table
 function M.ScheduledInstancesNetworkInterface(args)
-	assert(args, "You must provdide an argument table when creating ScheduledInstancesNetworkInterface")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ScheduledInstancesNetworkInterface")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["PrivateIpAddressConfigs"] = args["PrivateIpAddressConfigs"],
 		["DeviceIndex"] = args["DeviceIndex"],
 		["Description"] = args["Description"],
@@ -399,8 +515,13 @@ function M.ScheduledInstancesNetworkInterface(args)
 		["AssociatePublicIpAddress"] = args["AssociatePublicIpAddress"],
 		["SecondaryPrivateIpAddressCount"] = args["SecondaryPrivateIpAddressCount"],
 	}
-	asserts.AssertScheduledInstancesNetworkInterface(t)
-	return t
+	asserts.AssertScheduledInstancesNetworkInterface(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetPasswordDataRequest = { ["InstanceId"] = true, ["DryRun"] = true, nil }
@@ -425,13 +546,24 @@ end
 -- Required key: InstanceId
 -- @return GetPasswordDataRequest structure as a key-value pair table
 function M.GetPasswordDataRequest(args)
-	assert(args, "You must provdide an argument table when creating GetPasswordDataRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetPasswordDataRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["InstanceId"] = args["InstanceId"],
 		["DryRun"] = args["DryRun"],
 	}
-	asserts.AssertGetPasswordDataRequest(t)
-	return t
+	asserts.AssertGetPasswordDataRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeImagesResult = { ["Images"] = true, nil }
@@ -452,12 +584,23 @@ end
 -- * Images [ImageList] <p>Information about one or more images.</p>
 -- @return DescribeImagesResult structure as a key-value pair table
 function M.DescribeImagesResult(args)
-	assert(args, "You must provdide an argument table when creating DescribeImagesResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeImagesResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Images"] = args["Images"],
 	}
-	asserts.AssertDescribeImagesResult(t)
-	return t
+	asserts.AssertDescribeImagesResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.PurchaseScheduledInstancesResult = { ["ScheduledInstanceSet"] = true, nil }
@@ -478,12 +621,23 @@ end
 -- * ScheduledInstanceSet [PurchasedScheduledInstanceSet] <p>Information about the Scheduled Instances.</p>
 -- @return PurchaseScheduledInstancesResult structure as a key-value pair table
 function M.PurchaseScheduledInstancesResult(args)
-	assert(args, "You must provdide an argument table when creating PurchaseScheduledInstancesResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating PurchaseScheduledInstancesResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ScheduledInstanceSet"] = args["ScheduledInstanceSet"],
 	}
-	asserts.AssertPurchaseScheduledInstancesResult(t)
-	return t
+	asserts.AssertPurchaseScheduledInstancesResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Host = { ["HostId"] = true, ["HostProperties"] = true, ["State"] = true, ["Instances"] = true, ["HostReservationId"] = true, ["AvailabilityZone"] = true, ["AvailableCapacity"] = true, ["ClientToken"] = true, ["AutoPlacement"] = true, nil }
@@ -520,8 +674,14 @@ end
 -- * AutoPlacement [AutoPlacement] <p>Whether auto-placement is on or off.</p>
 -- @return Host structure as a key-value pair table
 function M.Host(args)
-	assert(args, "You must provdide an argument table when creating Host")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Host")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["HostId"] = args["HostId"],
 		["HostProperties"] = args["HostProperties"],
 		["State"] = args["State"],
@@ -532,8 +692,13 @@ function M.Host(args)
 		["ClientToken"] = args["ClientToken"],
 		["AutoPlacement"] = args["AutoPlacement"],
 	}
-	asserts.AssertHost(t)
-	return t
+	asserts.AssertHost(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CancelReservedInstancesListingRequest = { ["ReservedInstancesListingId"] = true, nil }
@@ -556,12 +721,23 @@ end
 -- Required key: ReservedInstancesListingId
 -- @return CancelReservedInstancesListingRequest structure as a key-value pair table
 function M.CancelReservedInstancesListingRequest(args)
-	assert(args, "You must provdide an argument table when creating CancelReservedInstancesListingRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CancelReservedInstancesListingRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ReservedInstancesListingId"] = args["ReservedInstancesListingId"],
 	}
-	asserts.AssertCancelReservedInstancesListingRequest(t)
-	return t
+	asserts.AssertCancelReservedInstancesListingRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateSubnetResult = { ["Subnet"] = true, nil }
@@ -582,12 +758,23 @@ end
 -- * Subnet [Subnet] <p>Information about the subnet.</p>
 -- @return CreateSubnetResult structure as a key-value pair table
 function M.CreateSubnetResult(args)
-	assert(args, "You must provdide an argument table when creating CreateSubnetResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateSubnetResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Subnet"] = args["Subnet"],
 	}
-	asserts.AssertCreateSubnetResult(t)
-	return t
+	asserts.AssertCreateSubnetResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeTagsRequest = { ["NextToken"] = true, ["DryRun"] = true, ["MaxResults"] = true, ["Filters"] = true, nil }
@@ -614,15 +801,26 @@ end
 -- * Filters [FilterList] <p>One or more filters.</p> <ul> <li> <p> <code>key</code> - The tag key.</p> </li> <li> <p> <code>resource-id</code> - The resource ID.</p> </li> <li> <p> <code>resource-type</code> - The resource type (<code>customer-gateway</code> | <code>dhcp-options</code> | <code>image</code> | <code>instance</code> | <code>internet-gateway</code> | <code>network-acl</code> | <code>network-interface</code> | <code>reserved-instances</code> | <code>route-table</code> | <code>security-group</code> | <code>snapshot</code> | <code>spot-instances-request</code> | <code>subnet</code> | <code>volume</code> | <code>vpc</code> | <code>vpn-connection</code> | <code>vpn-gateway</code>).</p> </li> <li> <p> <code>value</code> - The tag value.</p> </li> </ul>
 -- @return DescribeTagsRequest structure as a key-value pair table
 function M.DescribeTagsRequest(args)
-	assert(args, "You must provdide an argument table when creating DescribeTagsRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeTagsRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NextToken"] = args["NextToken"],
 		["DryRun"] = args["DryRun"],
 		["MaxResults"] = args["MaxResults"],
 		["Filters"] = args["Filters"],
 	}
-	asserts.AssertDescribeTagsRequest(t)
-	return t
+	asserts.AssertDescribeTagsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InstancePrivateIpAddress = { ["PrivateDnsName"] = true, ["PrivateIpAddress"] = true, ["Primary"] = true, ["Association"] = true, nil }
@@ -649,15 +847,26 @@ end
 -- * Association [InstanceNetworkInterfaceAssociation] <p>The association information for an Elastic IP address for the network interface.</p>
 -- @return InstancePrivateIpAddress structure as a key-value pair table
 function M.InstancePrivateIpAddress(args)
-	assert(args, "You must provdide an argument table when creating InstancePrivateIpAddress")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InstancePrivateIpAddress")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["PrivateDnsName"] = args["PrivateDnsName"],
 		["PrivateIpAddress"] = args["PrivateIpAddress"],
 		["Primary"] = args["Primary"],
 		["Association"] = args["Association"],
 	}
-	asserts.AssertInstancePrivateIpAddress(t)
-	return t
+	asserts.AssertInstancePrivateIpAddress(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateInstanceExportTaskRequest = { ["InstanceId"] = true, ["TargetEnvironment"] = true, ["Description"] = true, ["ExportToS3Task"] = true, nil }
@@ -686,15 +895,26 @@ end
 -- Required key: InstanceId
 -- @return CreateInstanceExportTaskRequest structure as a key-value pair table
 function M.CreateInstanceExportTaskRequest(args)
-	assert(args, "You must provdide an argument table when creating CreateInstanceExportTaskRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateInstanceExportTaskRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["InstanceId"] = args["InstanceId"],
 		["TargetEnvironment"] = args["TargetEnvironment"],
 		["Description"] = args["Description"],
 		["ExportToS3Task"] = args["ExportToS3Task"],
 	}
-	asserts.AssertCreateInstanceExportTaskRequest(t)
-	return t
+	asserts.AssertCreateInstanceExportTaskRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateInstanceExportTaskResult = { ["ExportTask"] = true, nil }
@@ -715,12 +935,23 @@ end
 -- * ExportTask [ExportTask] <p>Information about the instance export task.</p>
 -- @return CreateInstanceExportTaskResult structure as a key-value pair table
 function M.CreateInstanceExportTaskResult(args)
-	assert(args, "You must provdide an argument table when creating CreateInstanceExportTaskResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateInstanceExportTaskResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ExportTask"] = args["ExportTask"],
 	}
-	asserts.AssertCreateInstanceExportTaskResult(t)
-	return t
+	asserts.AssertCreateInstanceExportTaskResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.RejectVpcPeeringConnectionRequest = { ["DryRun"] = true, ["VpcPeeringConnectionId"] = true, nil }
@@ -745,13 +976,24 @@ end
 -- Required key: VpcPeeringConnectionId
 -- @return RejectVpcPeeringConnectionRequest structure as a key-value pair table
 function M.RejectVpcPeeringConnectionRequest(args)
-	assert(args, "You must provdide an argument table when creating RejectVpcPeeringConnectionRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating RejectVpcPeeringConnectionRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DryRun"] = args["DryRun"],
 		["VpcPeeringConnectionId"] = args["VpcPeeringConnectionId"],
 	}
-	asserts.AssertRejectVpcPeeringConnectionRequest(t)
-	return t
+	asserts.AssertRejectVpcPeeringConnectionRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CopyImageResult = { ["ImageId"] = true, nil }
@@ -772,12 +1014,23 @@ end
 -- * ImageId [String] <p>The ID of the new AMI.</p>
 -- @return CopyImageResult structure as a key-value pair table
 function M.CopyImageResult(args)
-	assert(args, "You must provdide an argument table when creating CopyImageResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CopyImageResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ImageId"] = args["ImageId"],
 	}
-	asserts.AssertCopyImageResult(t)
-	return t
+	asserts.AssertCopyImageResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Region = { ["Endpoint"] = true, ["RegionName"] = true, nil }
@@ -800,13 +1053,24 @@ end
 -- * RegionName [String] <p>The name of the region.</p>
 -- @return Region structure as a key-value pair table
 function M.Region(args)
-	assert(args, "You must provdide an argument table when creating Region")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Region")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Endpoint"] = args["Endpoint"],
 		["RegionName"] = args["RegionName"],
 	}
-	asserts.AssertRegion(t)
-	return t
+	asserts.AssertRegion(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AllocateHostsRequest = { ["ClientToken"] = true, ["Quantity"] = true, ["AvailabilityZone"] = true, ["InstanceType"] = true, ["AutoPlacement"] = true, nil }
@@ -841,16 +1105,27 @@ end
 -- Required key: Quantity
 -- @return AllocateHostsRequest structure as a key-value pair table
 function M.AllocateHostsRequest(args)
-	assert(args, "You must provdide an argument table when creating AllocateHostsRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AllocateHostsRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ClientToken"] = args["ClientToken"],
 		["Quantity"] = args["Quantity"],
 		["AvailabilityZone"] = args["AvailabilityZone"],
 		["InstanceType"] = args["InstanceType"],
 		["AutoPlacement"] = args["AutoPlacement"],
 	}
-	asserts.AssertAllocateHostsRequest(t)
-	return t
+	asserts.AssertAllocateHostsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeSpotFleetRequestHistoryResponse = { ["HistoryRecords"] = true, ["SpotFleetRequestId"] = true, ["NextToken"] = true, ["LastEvaluatedTime"] = true, ["StartTime"] = true, nil }
@@ -887,16 +1162,27 @@ end
 -- Required key: StartTime
 -- @return DescribeSpotFleetRequestHistoryResponse structure as a key-value pair table
 function M.DescribeSpotFleetRequestHistoryResponse(args)
-	assert(args, "You must provdide an argument table when creating DescribeSpotFleetRequestHistoryResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeSpotFleetRequestHistoryResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["HistoryRecords"] = args["HistoryRecords"],
 		["SpotFleetRequestId"] = args["SpotFleetRequestId"],
 		["NextToken"] = args["NextToken"],
 		["LastEvaluatedTime"] = args["LastEvaluatedTime"],
 		["StartTime"] = args["StartTime"],
 	}
-	asserts.AssertDescribeSpotFleetRequestHistoryResponse(t)
-	return t
+	asserts.AssertDescribeSpotFleetRequestHistoryResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.PurchaseReservedInstancesOfferingRequest = { ["ReservedInstancesOfferingId"] = true, ["InstanceCount"] = true, ["DryRun"] = true, ["LimitPrice"] = true, nil }
@@ -927,15 +1213,26 @@ end
 -- Required key: ReservedInstancesOfferingId
 -- @return PurchaseReservedInstancesOfferingRequest structure as a key-value pair table
 function M.PurchaseReservedInstancesOfferingRequest(args)
-	assert(args, "You must provdide an argument table when creating PurchaseReservedInstancesOfferingRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating PurchaseReservedInstancesOfferingRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ReservedInstancesOfferingId"] = args["ReservedInstancesOfferingId"],
 		["InstanceCount"] = args["InstanceCount"],
 		["DryRun"] = args["DryRun"],
 		["LimitPrice"] = args["LimitPrice"],
 	}
-	asserts.AssertPurchaseReservedInstancesOfferingRequest(t)
-	return t
+	asserts.AssertPurchaseReservedInstancesOfferingRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.FlowLog = { ["ResourceId"] = true, ["CreationTime"] = true, ["LogGroupName"] = true, ["TrafficType"] = true, ["FlowLogStatus"] = true, ["FlowLogId"] = true, ["DeliverLogsPermissionArn"] = true, ["DeliverLogsStatus"] = true, ["DeliverLogsErrorMessage"] = true, nil }
@@ -972,8 +1269,14 @@ end
 -- * DeliverLogsErrorMessage [String] <p>Information about the error that occurred. <code>Rate limited</code> indicates that CloudWatch logs throttling has been applied for one or more network interfaces, or that you've reached the limit on the number of CloudWatch Logs log groups that you can create. <code>Access error</code> indicates that the IAM role associated with the flow log does not have sufficient permissions to publish to CloudWatch Logs. <code>Unknown error</code> indicates an internal error.</p>
 -- @return FlowLog structure as a key-value pair table
 function M.FlowLog(args)
-	assert(args, "You must provdide an argument table when creating FlowLog")
-	local t = { 
+	assert(args, "You must provide an argument table when creating FlowLog")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ResourceId"] = args["ResourceId"],
 		["CreationTime"] = args["CreationTime"],
 		["LogGroupName"] = args["LogGroupName"],
@@ -984,8 +1287,13 @@ function M.FlowLog(args)
 		["DeliverLogsStatus"] = args["DeliverLogsStatus"],
 		["DeliverLogsErrorMessage"] = args["DeliverLogsErrorMessage"],
 	}
-	asserts.AssertFlowLog(t)
-	return t
+	asserts.AssertFlowLog(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.RequestSpotInstancesRequest = { ["InstanceCount"] = true, ["DryRun"] = true, ["LaunchGroup"] = true, ["BlockDurationMinutes"] = true, ["LaunchSpecification"] = true, ["AvailabilityZoneGroup"] = true, ["ClientToken"] = true, ["ValidUntil"] = true, ["ValidFrom"] = true, ["Type"] = true, ["SpotPrice"] = true, nil }
@@ -1028,8 +1336,14 @@ end
 -- Required key: SpotPrice
 -- @return RequestSpotInstancesRequest structure as a key-value pair table
 function M.RequestSpotInstancesRequest(args)
-	assert(args, "You must provdide an argument table when creating RequestSpotInstancesRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating RequestSpotInstancesRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["InstanceCount"] = args["InstanceCount"],
 		["DryRun"] = args["DryRun"],
 		["LaunchGroup"] = args["LaunchGroup"],
@@ -1042,8 +1356,13 @@ function M.RequestSpotInstancesRequest(args)
 		["Type"] = args["Type"],
 		["SpotPrice"] = args["SpotPrice"],
 	}
-	asserts.AssertRequestSpotInstancesRequest(t)
-	return t
+	asserts.AssertRequestSpotInstancesRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DisableVpcClassicLinkDnsSupportRequest = { ["VpcId"] = true, nil }
@@ -1064,12 +1383,23 @@ end
 -- * VpcId [String] <p>The ID of the VPC.</p>
 -- @return DisableVpcClassicLinkDnsSupportRequest structure as a key-value pair table
 function M.DisableVpcClassicLinkDnsSupportRequest(args)
-	assert(args, "You must provdide an argument table when creating DisableVpcClassicLinkDnsSupportRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DisableVpcClassicLinkDnsSupportRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["VpcId"] = args["VpcId"],
 	}
-	asserts.AssertDisableVpcClassicLinkDnsSupportRequest(t)
-	return t
+	asserts.AssertDisableVpcClassicLinkDnsSupportRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.BlobAttributeValue = { ["Value"] = true, nil }
@@ -1090,12 +1420,23 @@ end
 -- * Value [Blob] 
 -- @return BlobAttributeValue structure as a key-value pair table
 function M.BlobAttributeValue(args)
-	assert(args, "You must provdide an argument table when creating BlobAttributeValue")
-	local t = { 
+	assert(args, "You must provide an argument table when creating BlobAttributeValue")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Value"] = args["Value"],
 	}
-	asserts.AssertBlobAttributeValue(t)
-	return t
+	asserts.AssertBlobAttributeValue(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CancelSpotInstanceRequestsRequest = { ["SpotInstanceRequestIds"] = true, ["DryRun"] = true, nil }
@@ -1120,13 +1461,24 @@ end
 -- Required key: SpotInstanceRequestIds
 -- @return CancelSpotInstanceRequestsRequest structure as a key-value pair table
 function M.CancelSpotInstanceRequestsRequest(args)
-	assert(args, "You must provdide an argument table when creating CancelSpotInstanceRequestsRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CancelSpotInstanceRequestsRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["SpotInstanceRequestIds"] = args["SpotInstanceRequestIds"],
 		["DryRun"] = args["DryRun"],
 	}
-	asserts.AssertCancelSpotInstanceRequestsRequest(t)
-	return t
+	asserts.AssertCancelSpotInstanceRequestsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteSnapshotRequest = { ["SnapshotId"] = true, ["DryRun"] = true, nil }
@@ -1151,13 +1503,24 @@ end
 -- Required key: SnapshotId
 -- @return DeleteSnapshotRequest structure as a key-value pair table
 function M.DeleteSnapshotRequest(args)
-	assert(args, "You must provdide an argument table when creating DeleteSnapshotRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteSnapshotRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["SnapshotId"] = args["SnapshotId"],
 		["DryRun"] = args["DryRun"],
 	}
-	asserts.AssertDeleteSnapshotRequest(t)
-	return t
+	asserts.AssertDeleteSnapshotRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DetachClassicLinkVpcRequest = { ["InstanceId"] = true, ["VpcId"] = true, ["DryRun"] = true, nil }
@@ -1186,14 +1549,25 @@ end
 -- Required key: VpcId
 -- @return DetachClassicLinkVpcRequest structure as a key-value pair table
 function M.DetachClassicLinkVpcRequest(args)
-	assert(args, "You must provdide an argument table when creating DetachClassicLinkVpcRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DetachClassicLinkVpcRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["InstanceId"] = args["InstanceId"],
 		["VpcId"] = args["VpcId"],
 		["DryRun"] = args["DryRun"],
 	}
-	asserts.AssertDetachClassicLinkVpcRequest(t)
-	return t
+	asserts.AssertDetachClassicLinkVpcRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.SnapshotTaskDetail = { ["Status"] = true, ["Description"] = true, ["Format"] = true, ["Url"] = true, ["DiskImageSize"] = true, ["SnapshotId"] = true, ["Progress"] = true, ["StatusMessage"] = true, ["UserBucket"] = true, nil }
@@ -1230,8 +1604,14 @@ end
 -- * UserBucket [UserBucketDetails] <p>The S3 bucket for the disk image.</p>
 -- @return SnapshotTaskDetail structure as a key-value pair table
 function M.SnapshotTaskDetail(args)
-	assert(args, "You must provdide an argument table when creating SnapshotTaskDetail")
-	local t = { 
+	assert(args, "You must provide an argument table when creating SnapshotTaskDetail")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Status"] = args["Status"],
 		["Description"] = args["Description"],
 		["Format"] = args["Format"],
@@ -1242,8 +1622,13 @@ function M.SnapshotTaskDetail(args)
 		["StatusMessage"] = args["StatusMessage"],
 		["UserBucket"] = args["UserBucket"],
 	}
-	asserts.AssertSnapshotTaskDetail(t)
-	return t
+	asserts.AssertSnapshotTaskDetail(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Tag = { ["Value"] = true, ["Key"] = true, nil }
@@ -1266,13 +1651,24 @@ end
 -- * Key [String] <p>The key of the tag.</p> <p>Constraints: Tag keys are case-sensitive and accept a maximum of 127 Unicode characters. May not begin with <code>aws:</code> </p>
 -- @return Tag structure as a key-value pair table
 function M.Tag(args)
-	assert(args, "You must provdide an argument table when creating Tag")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Tag")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Value"] = args["Value"],
 		["Key"] = args["Key"],
 	}
-	asserts.AssertTag(t)
-	return t
+	asserts.AssertTag(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ScheduledInstancesPlacement = { ["GroupName"] = true, ["AvailabilityZone"] = true, nil }
@@ -1295,13 +1691,24 @@ end
 -- * AvailabilityZone [String] <p>The Availability Zone.</p>
 -- @return ScheduledInstancesPlacement structure as a key-value pair table
 function M.ScheduledInstancesPlacement(args)
-	assert(args, "You must provdide an argument table when creating ScheduledInstancesPlacement")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ScheduledInstancesPlacement")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["GroupName"] = args["GroupName"],
 		["AvailabilityZone"] = args["AvailabilityZone"],
 	}
-	asserts.AssertScheduledInstancesPlacement(t)
-	return t
+	asserts.AssertScheduledInstancesPlacement(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeFpgaImagesResult = { ["FpgaImages"] = true, ["NextToken"] = true, nil }
@@ -1324,13 +1731,24 @@ end
 -- * NextToken [NextToken] <p>The token to use to retrieve the next page of results. This value is <code>null</code> when there are no more results to return.</p>
 -- @return DescribeFpgaImagesResult structure as a key-value pair table
 function M.DescribeFpgaImagesResult(args)
-	assert(args, "You must provdide an argument table when creating DescribeFpgaImagesResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeFpgaImagesResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["FpgaImages"] = args["FpgaImages"],
 		["NextToken"] = args["NextToken"],
 	}
-	asserts.AssertDescribeFpgaImagesResult(t)
-	return t
+	asserts.AssertDescribeFpgaImagesResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ModifyInstancePlacementResult = { ["Return"] = true, nil }
@@ -1351,12 +1769,23 @@ end
 -- * Return [Boolean] <p>Is <code>true</code> if the request succeeds, and an error otherwise.</p>
 -- @return ModifyInstancePlacementResult structure as a key-value pair table
 function M.ModifyInstancePlacementResult(args)
-	assert(args, "You must provdide an argument table when creating ModifyInstancePlacementResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ModifyInstancePlacementResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Return"] = args["Return"],
 	}
-	asserts.AssertModifyInstancePlacementResult(t)
-	return t
+	asserts.AssertModifyInstancePlacementResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeSecurityGroupReferencesResult = { ["SecurityGroupReferenceSet"] = true, nil }
@@ -1377,12 +1806,23 @@ end
 -- * SecurityGroupReferenceSet [SecurityGroupReferences] <p>Information about the VPCs with the referencing security groups.</p>
 -- @return DescribeSecurityGroupReferencesResult structure as a key-value pair table
 function M.DescribeSecurityGroupReferencesResult(args)
-	assert(args, "You must provdide an argument table when creating DescribeSecurityGroupReferencesResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeSecurityGroupReferencesResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["SecurityGroupReferenceSet"] = args["SecurityGroupReferenceSet"],
 	}
-	asserts.AssertDescribeSecurityGroupReferencesResult(t)
-	return t
+	asserts.AssertDescribeSecurityGroupReferencesResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeDhcpOptionsRequest = { ["DhcpOptionsIds"] = true, ["DryRun"] = true, ["Filters"] = true, nil }
@@ -1407,14 +1847,25 @@ end
 -- * Filters [FilterList] <p>One or more filters.</p> <ul> <li> <p> <code>dhcp-options-id</code> - The ID of a set of DHCP options.</p> </li> <li> <p> <code>key</code> - The key for one of the options (for example, <code>domain-name</code>).</p> </li> <li> <p> <code>value</code> - The value for one of the options.</p> </li> <li> <p> <code>tag</code>:<i>key</i>=<i>value</i> - The key/value combination of a tag assigned to the resource. Specify the key of the tag in the filter name and the value of the tag in the filter value. For example, for the tag Purpose=X, specify <code>tag:Purpose</code> for the filter name and <code>X</code> for the filter value.</p> </li> <li> <p> <code>tag-key</code> - The key of a tag assigned to the resource. This filter is independent of the <code>tag-value</code> filter. For example, if you use both the filter "tag-key=Purpose" and the filter "tag-value=X", you get any resources assigned both the tag key Purpose (regardless of what the tag's value is), and the tag value X (regardless of what the tag's key is). If you want to list only resources where Purpose is X, see the <code>tag</code>:<i>key</i>=<i>value</i> filter.</p> </li> <li> <p> <code>tag-value</code> - The value of a tag assigned to the resource. This filter is independent of the <code>tag-key</code> filter.</p> </li> </ul>
 -- @return DescribeDhcpOptionsRequest structure as a key-value pair table
 function M.DescribeDhcpOptionsRequest(args)
-	assert(args, "You must provdide an argument table when creating DescribeDhcpOptionsRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeDhcpOptionsRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DhcpOptionsIds"] = args["DhcpOptionsIds"],
 		["DryRun"] = args["DryRun"],
 		["Filters"] = args["Filters"],
 	}
-	asserts.AssertDescribeDhcpOptionsRequest(t)
-	return t
+	asserts.AssertDescribeDhcpOptionsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ScheduledInstanceRecurrence = { ["OccurrenceDaySet"] = true, ["Interval"] = true, ["Frequency"] = true, ["OccurrenceRelativeToEnd"] = true, ["OccurrenceUnit"] = true, nil }
@@ -1443,16 +1894,27 @@ end
 -- * OccurrenceUnit [String] <p>The unit for <code>occurrenceDaySet</code> (<code>DayOfWeek</code> or <code>DayOfMonth</code>).</p>
 -- @return ScheduledInstanceRecurrence structure as a key-value pair table
 function M.ScheduledInstanceRecurrence(args)
-	assert(args, "You must provdide an argument table when creating ScheduledInstanceRecurrence")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ScheduledInstanceRecurrence")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["OccurrenceDaySet"] = args["OccurrenceDaySet"],
 		["Interval"] = args["Interval"],
 		["Frequency"] = args["Frequency"],
 		["OccurrenceRelativeToEnd"] = args["OccurrenceRelativeToEnd"],
 		["OccurrenceUnit"] = args["OccurrenceUnit"],
 	}
-	asserts.AssertScheduledInstanceRecurrence(t)
-	return t
+	asserts.AssertScheduledInstanceRecurrence(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeSecurityGroupsResult = { ["SecurityGroups"] = true, nil }
@@ -1473,12 +1935,23 @@ end
 -- * SecurityGroups [SecurityGroupList] <p>Information about one or more security groups.</p>
 -- @return DescribeSecurityGroupsResult structure as a key-value pair table
 function M.DescribeSecurityGroupsResult(args)
-	assert(args, "You must provdide an argument table when creating DescribeSecurityGroupsResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeSecurityGroupsResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["SecurityGroups"] = args["SecurityGroups"],
 	}
-	asserts.AssertDescribeSecurityGroupsResult(t)
-	return t
+	asserts.AssertDescribeSecurityGroupsResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CancelExportTaskRequest = { ["ExportTaskId"] = true, nil }
@@ -1501,12 +1974,23 @@ end
 -- Required key: ExportTaskId
 -- @return CancelExportTaskRequest structure as a key-value pair table
 function M.CancelExportTaskRequest(args)
-	assert(args, "You must provdide an argument table when creating CancelExportTaskRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CancelExportTaskRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ExportTaskId"] = args["ExportTaskId"],
 	}
-	asserts.AssertCancelExportTaskRequest(t)
-	return t
+	asserts.AssertCancelExportTaskRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ModifyReservedInstancesResult = { ["ReservedInstancesModificationId"] = true, nil }
@@ -1527,12 +2011,23 @@ end
 -- * ReservedInstancesModificationId [String] <p>The ID for the modification.</p>
 -- @return ModifyReservedInstancesResult structure as a key-value pair table
 function M.ModifyReservedInstancesResult(args)
-	assert(args, "You must provdide an argument table when creating ModifyReservedInstancesResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ModifyReservedInstancesResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ReservedInstancesModificationId"] = args["ReservedInstancesModificationId"],
 	}
-	asserts.AssertModifyReservedInstancesResult(t)
-	return t
+	asserts.AssertModifyReservedInstancesResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteDhcpOptionsRequest = { ["DryRun"] = true, ["DhcpOptionsId"] = true, nil }
@@ -1557,13 +2052,24 @@ end
 -- Required key: DhcpOptionsId
 -- @return DeleteDhcpOptionsRequest structure as a key-value pair table
 function M.DeleteDhcpOptionsRequest(args)
-	assert(args, "You must provdide an argument table when creating DeleteDhcpOptionsRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteDhcpOptionsRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DryRun"] = args["DryRun"],
 		["DhcpOptionsId"] = args["DhcpOptionsId"],
 	}
-	asserts.AssertDeleteDhcpOptionsRequest(t)
-	return t
+	asserts.AssertDeleteDhcpOptionsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateEgressOnlyInternetGatewayRequest = { ["VpcId"] = true, ["DryRun"] = true, ["ClientToken"] = true, nil }
@@ -1590,14 +2096,25 @@ end
 -- Required key: VpcId
 -- @return CreateEgressOnlyInternetGatewayRequest structure as a key-value pair table
 function M.CreateEgressOnlyInternetGatewayRequest(args)
-	assert(args, "You must provdide an argument table when creating CreateEgressOnlyInternetGatewayRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateEgressOnlyInternetGatewayRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["VpcId"] = args["VpcId"],
 		["DryRun"] = args["DryRun"],
 		["ClientToken"] = args["ClientToken"],
 	}
-	asserts.AssertCreateEgressOnlyInternetGatewayRequest(t)
-	return t
+	asserts.AssertCreateEgressOnlyInternetGatewayRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeInstancesResult = { ["Reservations"] = true, ["NextToken"] = true, nil }
@@ -1620,13 +2137,24 @@ end
 -- * NextToken [String] <p>The token to use to retrieve the next page of results. This value is <code>null</code> when there are no more results to return.</p>
 -- @return DescribeInstancesResult structure as a key-value pair table
 function M.DescribeInstancesResult(args)
-	assert(args, "You must provdide an argument table when creating DescribeInstancesResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeInstancesResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Reservations"] = args["Reservations"],
 		["NextToken"] = args["NextToken"],
 	}
-	asserts.AssertDescribeInstancesResult(t)
-	return t
+	asserts.AssertDescribeInstancesResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.SnapshotDetail = { ["Status"] = true, ["DeviceName"] = true, ["Description"] = true, ["Format"] = true, ["Url"] = true, ["DiskImageSize"] = true, ["Progress"] = true, ["SnapshotId"] = true, ["StatusMessage"] = true, ["UserBucket"] = true, nil }
@@ -1665,8 +2193,14 @@ end
 -- * UserBucket [UserBucketDetails] <p>The S3 bucket for the disk image.</p>
 -- @return SnapshotDetail structure as a key-value pair table
 function M.SnapshotDetail(args)
-	assert(args, "You must provdide an argument table when creating SnapshotDetail")
-	local t = { 
+	assert(args, "You must provide an argument table when creating SnapshotDetail")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Status"] = args["Status"],
 		["DeviceName"] = args["DeviceName"],
 		["Description"] = args["Description"],
@@ -1678,8 +2212,13 @@ function M.SnapshotDetail(args)
 		["StatusMessage"] = args["StatusMessage"],
 		["UserBucket"] = args["UserBucket"],
 	}
-	asserts.AssertSnapshotDetail(t)
-	return t
+	asserts.AssertSnapshotDetail(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.RequestSpotFleetResponse = { ["SpotFleetRequestId"] = true, nil }
@@ -1702,12 +2241,23 @@ end
 -- Required key: SpotFleetRequestId
 -- @return RequestSpotFleetResponse structure as a key-value pair table
 function M.RequestSpotFleetResponse(args)
-	assert(args, "You must provdide an argument table when creating RequestSpotFleetResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating RequestSpotFleetResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["SpotFleetRequestId"] = args["SpotFleetRequestId"],
 	}
-	asserts.AssertRequestSpotFleetResponse(t)
-	return t
+	asserts.AssertRequestSpotFleetResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AssociateRouteTableRequest = { ["SubnetId"] = true, ["RouteTableId"] = true, ["DryRun"] = true, nil }
@@ -1736,14 +2286,25 @@ end
 -- Required key: SubnetId
 -- @return AssociateRouteTableRequest structure as a key-value pair table
 function M.AssociateRouteTableRequest(args)
-	assert(args, "You must provdide an argument table when creating AssociateRouteTableRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AssociateRouteTableRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["SubnetId"] = args["SubnetId"],
 		["RouteTableId"] = args["RouteTableId"],
 		["DryRun"] = args["DryRun"],
 	}
-	asserts.AssertAssociateRouteTableRequest(t)
-	return t
+	asserts.AssertAssociateRouteTableRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.HostReservation = { ["Count"] = true, ["End"] = true, ["HourlyPrice"] = true, ["InstanceFamily"] = true, ["CurrencyCode"] = true, ["OfferingId"] = true, ["PaymentOption"] = true, ["State"] = true, ["HostIdSet"] = true, ["Start"] = true, ["HostReservationId"] = true, ["UpfrontPrice"] = true, ["Duration"] = true, nil }
@@ -1788,8 +2349,14 @@ end
 -- * Duration [Integer] <p>The length of the reservation's term, specified in seconds. Can be <code>31536000 (1 year)</code> | <code>94608000 (3 years)</code>.</p>
 -- @return HostReservation structure as a key-value pair table
 function M.HostReservation(args)
-	assert(args, "You must provdide an argument table when creating HostReservation")
-	local t = { 
+	assert(args, "You must provide an argument table when creating HostReservation")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Count"] = args["Count"],
 		["End"] = args["End"],
 		["HourlyPrice"] = args["HourlyPrice"],
@@ -1804,8 +2371,13 @@ function M.HostReservation(args)
 		["UpfrontPrice"] = args["UpfrontPrice"],
 		["Duration"] = args["Duration"],
 	}
-	asserts.AssertHostReservation(t)
-	return t
+	asserts.AssertHostReservation(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ResetNetworkInterfaceAttributeRequest = { ["NetworkInterfaceId"] = true, ["DryRun"] = true, ["SourceDestCheck"] = true, nil }
@@ -1832,14 +2404,25 @@ end
 -- Required key: NetworkInterfaceId
 -- @return ResetNetworkInterfaceAttributeRequest structure as a key-value pair table
 function M.ResetNetworkInterfaceAttributeRequest(args)
-	assert(args, "You must provdide an argument table when creating ResetNetworkInterfaceAttributeRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ResetNetworkInterfaceAttributeRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NetworkInterfaceId"] = args["NetworkInterfaceId"],
 		["DryRun"] = args["DryRun"],
 		["SourceDestCheck"] = args["SourceDestCheck"],
 	}
-	asserts.AssertResetNetworkInterfaceAttributeRequest(t)
-	return t
+	asserts.AssertResetNetworkInterfaceAttributeRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.NetworkInterfacePrivateIpAddress = { ["PrivateDnsName"] = true, ["PrivateIpAddress"] = true, ["Primary"] = true, ["Association"] = true, nil }
@@ -1866,15 +2449,26 @@ end
 -- * Association [NetworkInterfaceAssociation] <p>The association information for an Elastic IP address (IPv4) associated with the network interface.</p>
 -- @return NetworkInterfacePrivateIpAddress structure as a key-value pair table
 function M.NetworkInterfacePrivateIpAddress(args)
-	assert(args, "You must provdide an argument table when creating NetworkInterfacePrivateIpAddress")
-	local t = { 
+	assert(args, "You must provide an argument table when creating NetworkInterfacePrivateIpAddress")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["PrivateDnsName"] = args["PrivateDnsName"],
 		["PrivateIpAddress"] = args["PrivateIpAddress"],
 		["Primary"] = args["Primary"],
 		["Association"] = args["Association"],
 	}
-	asserts.AssertNetworkInterfacePrivateIpAddress(t)
-	return t
+	asserts.AssertNetworkInterfacePrivateIpAddress(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeFlowLogsRequest = { ["Filter"] = true, ["NextToken"] = true, ["MaxResults"] = true, ["FlowLogIds"] = true, nil }
@@ -1901,15 +2495,26 @@ end
 -- * FlowLogIds [ValueStringList] <p>One or more flow log IDs.</p>
 -- @return DescribeFlowLogsRequest structure as a key-value pair table
 function M.DescribeFlowLogsRequest(args)
-	assert(args, "You must provdide an argument table when creating DescribeFlowLogsRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeFlowLogsRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Filter"] = args["Filter"],
 		["NextToken"] = args["NextToken"],
 		["MaxResults"] = args["MaxResults"],
 		["FlowLogIds"] = args["FlowLogIds"],
 	}
-	asserts.AssertDescribeFlowLogsRequest(t)
-	return t
+	asserts.AssertDescribeFlowLogsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.SpotInstanceStatus = { ["Message"] = true, ["Code"] = true, ["UpdateTime"] = true, nil }
@@ -1934,14 +2539,25 @@ end
 -- * UpdateTime [DateTime] <p>The date and time of the most recent status update, in UTC format (for example, <i>YYYY</i>-<i>MM</i>-<i>DD</i>T<i>HH</i>:<i>MM</i>:<i>SS</i>Z).</p>
 -- @return SpotInstanceStatus structure as a key-value pair table
 function M.SpotInstanceStatus(args)
-	assert(args, "You must provdide an argument table when creating SpotInstanceStatus")
-	local t = { 
+	assert(args, "You must provide an argument table when creating SpotInstanceStatus")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Message"] = args["Message"],
 		["Code"] = args["Code"],
 		["UpdateTime"] = args["UpdateTime"],
 	}
-	asserts.AssertSpotInstanceStatus(t)
-	return t
+	asserts.AssertSpotInstanceStatus(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateFpgaImageRequest = { ["DryRun"] = true, ["Name"] = true, ["LogsStorageLocation"] = true, ["InputStorageLocation"] = true, ["ClientToken"] = true, ["Description"] = true, nil }
@@ -1974,8 +2590,14 @@ end
 -- Required key: InputStorageLocation
 -- @return CreateFpgaImageRequest structure as a key-value pair table
 function M.CreateFpgaImageRequest(args)
-	assert(args, "You must provdide an argument table when creating CreateFpgaImageRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateFpgaImageRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DryRun"] = args["DryRun"],
 		["Name"] = args["Name"],
 		["LogsStorageLocation"] = args["LogsStorageLocation"],
@@ -1983,8 +2605,13 @@ function M.CreateFpgaImageRequest(args)
 		["ClientToken"] = args["ClientToken"],
 		["Description"] = args["Description"],
 	}
-	asserts.AssertCreateFpgaImageRequest(t)
-	return t
+	asserts.AssertCreateFpgaImageRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.LaunchPermission = { ["UserId"] = true, ["Group"] = true, nil }
@@ -2007,13 +2634,24 @@ end
 -- * Group [PermissionGroup] <p>The name of the group.</p>
 -- @return LaunchPermission structure as a key-value pair table
 function M.LaunchPermission(args)
-	assert(args, "You must provdide an argument table when creating LaunchPermission")
-	local t = { 
+	assert(args, "You must provide an argument table when creating LaunchPermission")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["UserId"] = args["UserId"],
 		["Group"] = args["Group"],
 	}
-	asserts.AssertLaunchPermission(t)
-	return t
+	asserts.AssertLaunchPermission(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeInstanceStatusRequest = { ["DryRun"] = true, ["IncludeAllInstances"] = true, ["MaxResults"] = true, ["Filters"] = true, ["NextToken"] = true, ["InstanceIds"] = true, nil }
@@ -2044,8 +2682,14 @@ end
 -- * InstanceIds [InstanceIdStringList] <p>One or more instance IDs.</p> <p>Default: Describes all your instances.</p> <p>Constraints: Maximum 100 explicitly specified instance IDs.</p>
 -- @return DescribeInstanceStatusRequest structure as a key-value pair table
 function M.DescribeInstanceStatusRequest(args)
-	assert(args, "You must provdide an argument table when creating DescribeInstanceStatusRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeInstanceStatusRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DryRun"] = args["DryRun"],
 		["IncludeAllInstances"] = args["IncludeAllInstances"],
 		["MaxResults"] = args["MaxResults"],
@@ -2053,8 +2697,13 @@ function M.DescribeInstanceStatusRequest(args)
 		["NextToken"] = args["NextToken"],
 		["InstanceIds"] = args["InstanceIds"],
 	}
-	asserts.AssertDescribeInstanceStatusRequest(t)
-	return t
+	asserts.AssertDescribeInstanceStatusRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ImportSnapshotTask = { ["SnapshotTaskDetail"] = true, ["Description"] = true, ["ImportTaskId"] = true, nil }
@@ -2079,14 +2728,25 @@ end
 -- * ImportTaskId [String] <p>The ID of the import snapshot task.</p>
 -- @return ImportSnapshotTask structure as a key-value pair table
 function M.ImportSnapshotTask(args)
-	assert(args, "You must provdide an argument table when creating ImportSnapshotTask")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ImportSnapshotTask")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["SnapshotTaskDetail"] = args["SnapshotTaskDetail"],
 		["Description"] = args["Description"],
 		["ImportTaskId"] = args["ImportTaskId"],
 	}
-	asserts.AssertImportSnapshotTask(t)
-	return t
+	asserts.AssertImportSnapshotTask(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetHostReservationPurchasePreviewResult = { ["TotalHourlyPrice"] = true, ["Purchase"] = true, ["CurrencyCode"] = true, ["TotalUpfrontPrice"] = true, nil }
@@ -2113,15 +2773,26 @@ end
 -- * TotalUpfrontPrice [String] <p>The potential total upfront price. This is billed immediately.</p>
 -- @return GetHostReservationPurchasePreviewResult structure as a key-value pair table
 function M.GetHostReservationPurchasePreviewResult(args)
-	assert(args, "You must provdide an argument table when creating GetHostReservationPurchasePreviewResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetHostReservationPurchasePreviewResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["TotalHourlyPrice"] = args["TotalHourlyPrice"],
 		["Purchase"] = args["Purchase"],
 		["CurrencyCode"] = args["CurrencyCode"],
 		["TotalUpfrontPrice"] = args["TotalUpfrontPrice"],
 	}
-	asserts.AssertGetHostReservationPurchasePreviewResult(t)
-	return t
+	asserts.AssertGetHostReservationPurchasePreviewResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UnsuccessfulItem = { ["ResourceId"] = true, ["Error"] = true, nil }
@@ -2146,13 +2817,24 @@ end
 -- Required key: Error
 -- @return UnsuccessfulItem structure as a key-value pair table
 function M.UnsuccessfulItem(args)
-	assert(args, "You must provdide an argument table when creating UnsuccessfulItem")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UnsuccessfulItem")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ResourceId"] = args["ResourceId"],
 		["Error"] = args["Error"],
 	}
-	asserts.AssertUnsuccessfulItem(t)
-	return t
+	asserts.AssertUnsuccessfulItem(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.PeeringConnectionOptionsRequest = { ["AllowEgressFromLocalVpcToRemoteClassicLink"] = true, ["AllowDnsResolutionFromRemoteVpc"] = true, ["AllowEgressFromLocalClassicLinkToRemoteVpc"] = true, nil }
@@ -2177,14 +2859,25 @@ end
 -- * AllowEgressFromLocalClassicLinkToRemoteVpc [Boolean] <p>If true, enables outbound communication from an EC2-Classic instance that's linked to a local VPC via ClassicLink to instances in a peer VPC.</p>
 -- @return PeeringConnectionOptionsRequest structure as a key-value pair table
 function M.PeeringConnectionOptionsRequest(args)
-	assert(args, "You must provdide an argument table when creating PeeringConnectionOptionsRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating PeeringConnectionOptionsRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["AllowEgressFromLocalVpcToRemoteClassicLink"] = args["AllowEgressFromLocalVpcToRemoteClassicLink"],
 		["AllowDnsResolutionFromRemoteVpc"] = args["AllowDnsResolutionFromRemoteVpc"],
 		["AllowEgressFromLocalClassicLinkToRemoteVpc"] = args["AllowEgressFromLocalClassicLinkToRemoteVpc"],
 	}
-	asserts.AssertPeeringConnectionOptionsRequest(t)
-	return t
+	asserts.AssertPeeringConnectionOptionsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeInstanceAttributeRequest = { ["InstanceId"] = true, ["Attribute"] = true, ["DryRun"] = true, nil }
@@ -2213,14 +2906,25 @@ end
 -- Required key: InstanceId
 -- @return DescribeInstanceAttributeRequest structure as a key-value pair table
 function M.DescribeInstanceAttributeRequest(args)
-	assert(args, "You must provdide an argument table when creating DescribeInstanceAttributeRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeInstanceAttributeRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["InstanceId"] = args["InstanceId"],
 		["Attribute"] = args["Attribute"],
 		["DryRun"] = args["DryRun"],
 	}
-	asserts.AssertDescribeInstanceAttributeRequest(t)
-	return t
+	asserts.AssertDescribeInstanceAttributeRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DiskImageDetail = { ["Bytes"] = true, ["ImportManifestUrl"] = true, ["Format"] = true, nil }
@@ -2251,14 +2955,25 @@ end
 -- Required key: ImportManifestUrl
 -- @return DiskImageDetail structure as a key-value pair table
 function M.DiskImageDetail(args)
-	assert(args, "You must provdide an argument table when creating DiskImageDetail")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DiskImageDetail")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Bytes"] = args["Bytes"],
 		["ImportManifestUrl"] = args["ImportManifestUrl"],
 		["Format"] = args["Format"],
 	}
-	asserts.AssertDiskImageDetail(t)
-	return t
+	asserts.AssertDiskImageDetail(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AvailabilityZone = { ["State"] = true, ["ZoneName"] = true, ["Messages"] = true, ["RegionName"] = true, nil }
@@ -2285,15 +3000,26 @@ end
 -- * RegionName [String] <p>The name of the region.</p>
 -- @return AvailabilityZone structure as a key-value pair table
 function M.AvailabilityZone(args)
-	assert(args, "You must provdide an argument table when creating AvailabilityZone")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AvailabilityZone")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["State"] = args["State"],
 		["ZoneName"] = args["ZoneName"],
 		["Messages"] = args["Messages"],
 		["RegionName"] = args["RegionName"],
 	}
-	asserts.AssertAvailabilityZone(t)
-	return t
+	asserts.AssertAvailabilityZone(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeNetworkInterfacesRequest = { ["NetworkInterfaceIds"] = true, ["DryRun"] = true, ["Filters"] = true, nil }
@@ -2318,14 +3044,25 @@ end
 -- * Filters [FilterList] <p>One or more filters.</p> <ul> <li> <p> <code>addresses.private-ip-address</code> - The private IPv4 addresses associated with the network interface.</p> </li> <li> <p> <code>addresses.primary</code> - Whether the private IPv4 address is the primary IP address associated with the network interface. </p> </li> <li> <p> <code>addresses.association.public-ip</code> - The association ID returned when the network interface was associated with the Elastic IP address (IPv4).</p> </li> <li> <p> <code>addresses.association.owner-id</code> - The owner ID of the addresses associated with the network interface.</p> </li> <li> <p> <code>association.association-id</code> - The association ID returned when the network interface was associated with an IPv4 address.</p> </li> <li> <p> <code>association.allocation-id</code> - The allocation ID returned when you allocated the Elastic IP address (IPv4) for your network interface.</p> </li> <li> <p> <code>association.ip-owner-id</code> - The owner of the Elastic IP address (IPv4) associated with the network interface.</p> </li> <li> <p> <code>association.public-ip</code> - The address of the Elastic IP address (IPv4) bound to the network interface.</p> </li> <li> <p> <code>association.public-dns-name</code> - The public DNS name for the network interface (IPv4).</p> </li> <li> <p> <code>attachment.attachment-id</code> - The ID of the interface attachment.</p> </li> <li> <p> <code>attachment.attach.time</code> - The time that the network interface was attached to an instance.</p> </li> <li> <p> <code>attachment.delete-on-termination</code> - Indicates whether the attachment is deleted when an instance is terminated.</p> </li> <li> <p> <code>attachment.device-index</code> - The device index to which the network interface is attached.</p> </li> <li> <p> <code>attachment.instance-id</code> - The ID of the instance to which the network interface is attached.</p> </li> <li> <p> <code>attachment.instance-owner-id</code> - The owner ID of the instance to which the network interface is attached.</p> </li> <li> <p> <code>attachment.nat-gateway-id</code> - The ID of the NAT gateway to which the network interface is attached.</p> </li> <li> <p> <code>attachment.status</code> - The status of the attachment (<code>attaching</code> | <code>attached</code> | <code>detaching</code> | <code>detached</code>).</p> </li> <li> <p> <code>availability-zone</code> - The Availability Zone of the network interface.</p> </li> <li> <p> <code>description</code> - The description of the network interface.</p> </li> <li> <p> <code>group-id</code> - The ID of a security group associated with the network interface.</p> </li> <li> <p> <code>group-name</code> - The name of a security group associated with the network interface.</p> </li> <li> <p> <code>ipv6-addresses.ipv6-address</code> - An IPv6 address associated with the network interface.</p> </li> <li> <p> <code>mac-address</code> - The MAC address of the network interface.</p> </li> <li> <p> <code>network-interface-id</code> - The ID of the network interface.</p> </li> <li> <p> <code>owner-id</code> - The AWS account ID of the network interface owner.</p> </li> <li> <p> <code>private-ip-address</code> - The private IPv4 address or addresses of the network interface.</p> </li> <li> <p> <code>private-dns-name</code> - The private DNS name of the network interface (IPv4).</p> </li> <li> <p> <code>requester-id</code> - The ID of the entity that launched the instance on your behalf (for example, AWS Management Console, Auto Scaling, and so on).</p> </li> <li> <p> <code>requester-managed</code> - Indicates whether the network interface is being managed by an AWS service (for example, AWS Management Console, Auto Scaling, and so on).</p> </li> <li> <p> <code>source-desk-check</code> - Indicates whether the network interface performs source/destination checking. A value of <code>true</code> means checking is enabled, and <code>false</code> means checking is disabled. The value must be <code>false</code> for the network interface to perform network address translation (NAT) in your VPC. </p> </li> <li> <p> <code>status</code> - The status of the network interface. If the network interface is not attached to an instance, the status is <code>available</code>; if a network interface is attached to an instance the status is <code>in-use</code>.</p> </li> <li> <p> <code>subnet-id</code> - The ID of the subnet for the network interface.</p> </li> <li> <p> <code>tag</code>:<i>key</i>=<i>value</i> - The key/value combination of a tag assigned to the resource. Specify the key of the tag in the filter name and the value of the tag in the filter value. For example, for the tag Purpose=X, specify <code>tag:Purpose</code> for the filter name and <code>X</code> for the filter value.</p> </li> <li> <p> <code>tag-key</code> - The key of a tag assigned to the resource. This filter is independent of the <code>tag-value</code> filter. For example, if you use both the filter "tag-key=Purpose" and the filter "tag-value=X", you get any resources assigned both the tag key Purpose (regardless of what the tag's value is), and the tag value X (regardless of what the tag's key is). If you want to list only resources where Purpose is X, see the <code>tag</code>:<i>key</i>=<i>value</i> filter.</p> </li> <li> <p> <code>tag-value</code> - The value of a tag assigned to the resource. This filter is independent of the <code>tag-key</code> filter.</p> </li> <li> <p> <code>vpc-id</code> - The ID of the VPC for the network interface.</p> </li> </ul>
 -- @return DescribeNetworkInterfacesRequest structure as a key-value pair table
 function M.DescribeNetworkInterfacesRequest(args)
-	assert(args, "You must provdide an argument table when creating DescribeNetworkInterfacesRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeNetworkInterfacesRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NetworkInterfaceIds"] = args["NetworkInterfaceIds"],
 		["DryRun"] = args["DryRun"],
 		["Filters"] = args["Filters"],
 	}
-	asserts.AssertDescribeNetworkInterfacesRequest(t)
-	return t
+	asserts.AssertDescribeNetworkInterfacesRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GroupIdentifier = { ["GroupName"] = true, ["GroupId"] = true, nil }
@@ -2348,13 +3085,24 @@ end
 -- * GroupId [String] <p>The ID of the security group.</p>
 -- @return GroupIdentifier structure as a key-value pair table
 function M.GroupIdentifier(args)
-	assert(args, "You must provdide an argument table when creating GroupIdentifier")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GroupIdentifier")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["GroupName"] = args["GroupName"],
 		["GroupId"] = args["GroupId"],
 	}
-	asserts.AssertGroupIdentifier(t)
-	return t
+	asserts.AssertGroupIdentifier(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.RunScheduledInstancesRequest = { ["ScheduledInstanceId"] = true, ["LaunchSpecification"] = true, ["InstanceCount"] = true, ["DryRun"] = true, ["ClientToken"] = true, nil }
@@ -2387,16 +3135,27 @@ end
 -- Required key: ScheduledInstanceId
 -- @return RunScheduledInstancesRequest structure as a key-value pair table
 function M.RunScheduledInstancesRequest(args)
-	assert(args, "You must provdide an argument table when creating RunScheduledInstancesRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating RunScheduledInstancesRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ScheduledInstanceId"] = args["ScheduledInstanceId"],
 		["LaunchSpecification"] = args["LaunchSpecification"],
 		["InstanceCount"] = args["InstanceCount"],
 		["DryRun"] = args["DryRun"],
 		["ClientToken"] = args["ClientToken"],
 	}
-	asserts.AssertRunScheduledInstancesRequest(t)
-	return t
+	asserts.AssertRunScheduledInstancesRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DiskImageDescription = { ["Checksum"] = true, ["Size"] = true, ["ImportManifestUrl"] = true, ["Format"] = true, nil }
@@ -2429,15 +3188,26 @@ end
 -- Required key: Size
 -- @return DiskImageDescription structure as a key-value pair table
 function M.DiskImageDescription(args)
-	assert(args, "You must provdide an argument table when creating DiskImageDescription")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DiskImageDescription")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Checksum"] = args["Checksum"],
 		["Size"] = args["Size"],
 		["ImportManifestUrl"] = args["ImportManifestUrl"],
 		["Format"] = args["Format"],
 	}
-	asserts.AssertDiskImageDescription(t)
-	return t
+	asserts.AssertDiskImageDescription(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.RouteTableAssociation = { ["SubnetId"] = true, ["RouteTableAssociationId"] = true, ["Main"] = true, ["RouteTableId"] = true, nil }
@@ -2464,15 +3234,26 @@ end
 -- * RouteTableId [String] <p>The ID of the route table.</p>
 -- @return RouteTableAssociation structure as a key-value pair table
 function M.RouteTableAssociation(args)
-	assert(args, "You must provdide an argument table when creating RouteTableAssociation")
-	local t = { 
+	assert(args, "You must provide an argument table when creating RouteTableAssociation")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["SubnetId"] = args["SubnetId"],
 		["RouteTableAssociationId"] = args["RouteTableAssociationId"],
 		["Main"] = args["Main"],
 		["RouteTableId"] = args["RouteTableId"],
 	}
-	asserts.AssertRouteTableAssociation(t)
-	return t
+	asserts.AssertRouteTableAssociation(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CancelImportTaskRequest = { ["DryRun"] = true, ["CancelReason"] = true, ["ImportTaskId"] = true, nil }
@@ -2497,14 +3278,25 @@ end
 -- * ImportTaskId [String] <p>The ID of the import image or import snapshot task to be canceled.</p>
 -- @return CancelImportTaskRequest structure as a key-value pair table
 function M.CancelImportTaskRequest(args)
-	assert(args, "You must provdide an argument table when creating CancelImportTaskRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CancelImportTaskRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DryRun"] = args["DryRun"],
 		["CancelReason"] = args["CancelReason"],
 		["ImportTaskId"] = args["ImportTaskId"],
 	}
-	asserts.AssertCancelImportTaskRequest(t)
-	return t
+	asserts.AssertCancelImportTaskRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ImportInstanceRequest = { ["Platform"] = true, ["DiskImages"] = true, ["DryRun"] = true, ["Description"] = true, ["LaunchSpecification"] = true, nil }
@@ -2535,16 +3327,27 @@ end
 -- Required key: Platform
 -- @return ImportInstanceRequest structure as a key-value pair table
 function M.ImportInstanceRequest(args)
-	assert(args, "You must provdide an argument table when creating ImportInstanceRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ImportInstanceRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Platform"] = args["Platform"],
 		["DiskImages"] = args["DiskImages"],
 		["DryRun"] = args["DryRun"],
 		["Description"] = args["Description"],
 		["LaunchSpecification"] = args["LaunchSpecification"],
 	}
-	asserts.AssertImportInstanceRequest(t)
-	return t
+	asserts.AssertImportInstanceRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.SubnetCidrBlockState = { ["State"] = true, ["StatusMessage"] = true, nil }
@@ -2567,13 +3370,24 @@ end
 -- * StatusMessage [String] <p>A message about the status of the CIDR block, if applicable.</p>
 -- @return SubnetCidrBlockState structure as a key-value pair table
 function M.SubnetCidrBlockState(args)
-	assert(args, "You must provdide an argument table when creating SubnetCidrBlockState")
-	local t = { 
+	assert(args, "You must provide an argument table when creating SubnetCidrBlockState")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["State"] = args["State"],
 		["StatusMessage"] = args["StatusMessage"],
 	}
-	asserts.AssertSubnetCidrBlockState(t)
-	return t
+	asserts.AssertSubnetCidrBlockState(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateVolumeRequest = { ["AvailabilityZone"] = true, ["DryRun"] = true, ["TagSpecifications"] = true, ["Encrypted"] = true, ["VolumeType"] = true, ["KmsKeyId"] = true, ["SnapshotId"] = true, ["Iops"] = true, ["Size"] = true, nil }
@@ -2612,8 +3426,14 @@ end
 -- Required key: AvailabilityZone
 -- @return CreateVolumeRequest structure as a key-value pair table
 function M.CreateVolumeRequest(args)
-	assert(args, "You must provdide an argument table when creating CreateVolumeRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateVolumeRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["AvailabilityZone"] = args["AvailabilityZone"],
 		["DryRun"] = args["DryRun"],
 		["TagSpecifications"] = args["TagSpecifications"],
@@ -2624,8 +3444,13 @@ function M.CreateVolumeRequest(args)
 		["Iops"] = args["Iops"],
 		["Size"] = args["Size"],
 	}
-	asserts.AssertCreateVolumeRequest(t)
-	return t
+	asserts.AssertCreateVolumeRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeHostsResult = { ["NextToken"] = true, ["Hosts"] = true, nil }
@@ -2648,13 +3473,24 @@ end
 -- * Hosts [HostList] <p>Information about the Dedicated Hosts.</p>
 -- @return DescribeHostsResult structure as a key-value pair table
 function M.DescribeHostsResult(args)
-	assert(args, "You must provdide an argument table when creating DescribeHostsResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeHostsResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NextToken"] = args["NextToken"],
 		["Hosts"] = args["Hosts"],
 	}
-	asserts.AssertDescribeHostsResult(t)
-	return t
+	asserts.AssertDescribeHostsResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeVolumesResult = { ["NextToken"] = true, ["Volumes"] = true, nil }
@@ -2677,13 +3513,24 @@ end
 -- * Volumes [VolumeList] <p>Information about the volumes.</p>
 -- @return DescribeVolumesResult structure as a key-value pair table
 function M.DescribeVolumesResult(args)
-	assert(args, "You must provdide an argument table when creating DescribeVolumesResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeVolumesResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NextToken"] = args["NextToken"],
 		["Volumes"] = args["Volumes"],
 	}
-	asserts.AssertDescribeVolumesResult(t)
-	return t
+	asserts.AssertDescribeVolumesResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeNatGatewaysRequest = { ["Filter"] = true, ["NextToken"] = true, ["NatGatewayIds"] = true, ["MaxResults"] = true, nil }
@@ -2710,15 +3557,26 @@ end
 -- * MaxResults [Integer] <p>The maximum number of items to return for this request. The request returns a token that you can specify in a subsequent call to get the next set of results.</p> <p>Constraint: If the value specified is greater than 1000, we return only 1000 items.</p>
 -- @return DescribeNatGatewaysRequest structure as a key-value pair table
 function M.DescribeNatGatewaysRequest(args)
-	assert(args, "You must provdide an argument table when creating DescribeNatGatewaysRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeNatGatewaysRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Filter"] = args["Filter"],
 		["NextToken"] = args["NextToken"],
 		["NatGatewayIds"] = args["NatGatewayIds"],
 		["MaxResults"] = args["MaxResults"],
 	}
-	asserts.AssertDescribeNatGatewaysRequest(t)
-	return t
+	asserts.AssertDescribeNatGatewaysRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DetachInternetGatewayRequest = { ["VpcId"] = true, ["DryRun"] = true, ["InternetGatewayId"] = true, nil }
@@ -2747,14 +3605,25 @@ end
 -- Required key: VpcId
 -- @return DetachInternetGatewayRequest structure as a key-value pair table
 function M.DetachInternetGatewayRequest(args)
-	assert(args, "You must provdide an argument table when creating DetachInternetGatewayRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DetachInternetGatewayRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["VpcId"] = args["VpcId"],
 		["DryRun"] = args["DryRun"],
 		["InternetGatewayId"] = args["InternetGatewayId"],
 	}
-	asserts.AssertDetachInternetGatewayRequest(t)
-	return t
+	asserts.AssertDetachInternetGatewayRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ScheduledInstancesEbs = { ["VolumeSize"] = true, ["Encrypted"] = true, ["VolumeType"] = true, ["DeleteOnTermination"] = true, ["SnapshotId"] = true, ["Iops"] = true, nil }
@@ -2785,8 +3654,14 @@ end
 -- * Iops [Integer] <p>The number of I/O operations per second (IOPS) that the volume supports. For io1 volumes, this represents the number of IOPS that are provisioned for the volume. For <code>gp2</code> volumes, this represents the baseline performance of the volume and the rate at which the volume accumulates I/O credits for bursting. For more information about <code>gp2</code> baseline performance, I/O credits, and bursting, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSVolumeTypes.html">Amazon EBS Volume Types</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.</p> <p>Constraint: Range is 100-20000 IOPS for <code>io1</code> volumes and 100-10000 IOPS for <code>gp2</code> volumes.</p> <p>Condition: This parameter is required for requests to create <code>io1</code>volumes; it is not used in requests to create <code>gp2</code>, <code>st1</code>, <code>sc1</code>, or <code>standard</code> volumes.</p>
 -- @return ScheduledInstancesEbs structure as a key-value pair table
 function M.ScheduledInstancesEbs(args)
-	assert(args, "You must provdide an argument table when creating ScheduledInstancesEbs")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ScheduledInstancesEbs")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["VolumeSize"] = args["VolumeSize"],
 		["Encrypted"] = args["Encrypted"],
 		["VolumeType"] = args["VolumeType"],
@@ -2794,8 +3669,13 @@ function M.ScheduledInstancesEbs(args)
 		["SnapshotId"] = args["SnapshotId"],
 		["Iops"] = args["Iops"],
 	}
-	asserts.AssertScheduledInstancesEbs(t)
-	return t
+	asserts.AssertScheduledInstancesEbs(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateImageRequest = { ["DryRun"] = true, ["Description"] = true, ["InstanceId"] = true, ["BlockDeviceMappings"] = true, ["NoReboot"] = true, ["Name"] = true, nil }
@@ -2830,8 +3710,14 @@ end
 -- Required key: Name
 -- @return CreateImageRequest structure as a key-value pair table
 function M.CreateImageRequest(args)
-	assert(args, "You must provdide an argument table when creating CreateImageRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateImageRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DryRun"] = args["DryRun"],
 		["Description"] = args["Description"],
 		["InstanceId"] = args["InstanceId"],
@@ -2839,8 +3725,13 @@ function M.CreateImageRequest(args)
 		["NoReboot"] = args["NoReboot"],
 		["Name"] = args["Name"],
 	}
-	asserts.AssertCreateImageRequest(t)
-	return t
+	asserts.AssertCreateImageRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DisableVpcClassicLinkDnsSupportResult = { ["Return"] = true, nil }
@@ -2861,12 +3752,23 @@ end
 -- * Return [Boolean] <p>Returns <code>true</code> if the request succeeds; otherwise, it returns an error.</p>
 -- @return DisableVpcClassicLinkDnsSupportResult structure as a key-value pair table
 function M.DisableVpcClassicLinkDnsSupportResult(args)
-	assert(args, "You must provdide an argument table when creating DisableVpcClassicLinkDnsSupportResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DisableVpcClassicLinkDnsSupportResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Return"] = args["Return"],
 	}
-	asserts.AssertDisableVpcClassicLinkDnsSupportResult(t)
-	return t
+	asserts.AssertDisableVpcClassicLinkDnsSupportResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribePrefixListsResult = { ["NextToken"] = true, ["PrefixLists"] = true, nil }
@@ -2889,13 +3791,24 @@ end
 -- * PrefixLists [PrefixListSet] <p>All available prefix lists.</p>
 -- @return DescribePrefixListsResult structure as a key-value pair table
 function M.DescribePrefixListsResult(args)
-	assert(args, "You must provdide an argument table when creating DescribePrefixListsResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribePrefixListsResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NextToken"] = args["NextToken"],
 		["PrefixLists"] = args["PrefixLists"],
 	}
-	asserts.AssertDescribePrefixListsResult(t)
-	return t
+	asserts.AssertDescribePrefixListsResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeMovingAddressesResult = { ["MovingAddressStatuses"] = true, ["NextToken"] = true, nil }
@@ -2918,13 +3831,24 @@ end
 -- * NextToken [String] <p>The token to use to retrieve the next page of results. This value is <code>null</code> when there are no more results to return.</p>
 -- @return DescribeMovingAddressesResult structure as a key-value pair table
 function M.DescribeMovingAddressesResult(args)
-	assert(args, "You must provdide an argument table when creating DescribeMovingAddressesResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeMovingAddressesResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["MovingAddressStatuses"] = args["MovingAddressStatuses"],
 		["NextToken"] = args["NextToken"],
 	}
-	asserts.AssertDescribeMovingAddressesResult(t)
-	return t
+	asserts.AssertDescribeMovingAddressesResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.VolumeModification = { ["TargetSize"] = true, ["TargetVolumeType"] = true, ["ModificationState"] = true, ["VolumeId"] = true, ["TargetIops"] = true, ["OriginalSize"] = true, ["StartTime"] = true, ["Progress"] = true, ["OriginalVolumeType"] = true, ["OriginalIops"] = true, ["EndTime"] = true, ["StatusMessage"] = true, nil }
@@ -2967,8 +3891,14 @@ end
 -- * StatusMessage [String] <p>Generic status message on modification progress or failure.</p>
 -- @return VolumeModification structure as a key-value pair table
 function M.VolumeModification(args)
-	assert(args, "You must provdide an argument table when creating VolumeModification")
-	local t = { 
+	assert(args, "You must provide an argument table when creating VolumeModification")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["TargetSize"] = args["TargetSize"],
 		["TargetVolumeType"] = args["TargetVolumeType"],
 		["ModificationState"] = args["ModificationState"],
@@ -2982,8 +3912,13 @@ function M.VolumeModification(args)
 		["EndTime"] = args["EndTime"],
 		["StatusMessage"] = args["StatusMessage"],
 	}
-	asserts.AssertVolumeModification(t)
-	return t
+	asserts.AssertVolumeModification(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ModifySnapshotAttributeRequest = { ["DryRun"] = true, ["Attribute"] = true, ["UserIds"] = true, ["GroupNames"] = true, ["CreateVolumePermission"] = true, ["OperationType"] = true, ["SnapshotId"] = true, nil }
@@ -3018,8 +3953,14 @@ end
 -- Required key: SnapshotId
 -- @return ModifySnapshotAttributeRequest structure as a key-value pair table
 function M.ModifySnapshotAttributeRequest(args)
-	assert(args, "You must provdide an argument table when creating ModifySnapshotAttributeRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ModifySnapshotAttributeRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DryRun"] = args["DryRun"],
 		["Attribute"] = args["Attribute"],
 		["UserIds"] = args["UserIds"],
@@ -3028,8 +3969,13 @@ function M.ModifySnapshotAttributeRequest(args)
 		["OperationType"] = args["OperationType"],
 		["SnapshotId"] = args["SnapshotId"],
 	}
-	asserts.AssertModifySnapshotAttributeRequest(t)
-	return t
+	asserts.AssertModifySnapshotAttributeRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeAddressesResult = { ["Addresses"] = true, nil }
@@ -3050,12 +3996,23 @@ end
 -- * Addresses [AddressList] <p>Information about one or more Elastic IP addresses.</p>
 -- @return DescribeAddressesResult structure as a key-value pair table
 function M.DescribeAddressesResult(args)
-	assert(args, "You must provdide an argument table when creating DescribeAddressesResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeAddressesResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Addresses"] = args["Addresses"],
 	}
-	asserts.AssertDescribeAddressesResult(t)
-	return t
+	asserts.AssertDescribeAddressesResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.RunInstancesMonitoringEnabled = { ["Enabled"] = true, nil }
@@ -3078,12 +4035,23 @@ end
 -- Required key: Enabled
 -- @return RunInstancesMonitoringEnabled structure as a key-value pair table
 function M.RunInstancesMonitoringEnabled(args)
-	assert(args, "You must provdide an argument table when creating RunInstancesMonitoringEnabled")
-	local t = { 
+	assert(args, "You must provide an argument table when creating RunInstancesMonitoringEnabled")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Enabled"] = args["Enabled"],
 	}
-	asserts.AssertRunInstancesMonitoringEnabled(t)
-	return t
+	asserts.AssertRunInstancesMonitoringEnabled(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.HostProperties = { ["Cores"] = true, ["TotalVCpus"] = true, ["InstanceType"] = true, ["Sockets"] = true, nil }
@@ -3110,15 +4078,26 @@ end
 -- * Sockets [Integer] <p>The number of sockets on the Dedicated Host.</p>
 -- @return HostProperties structure as a key-value pair table
 function M.HostProperties(args)
-	assert(args, "You must provdide an argument table when creating HostProperties")
-	local t = { 
+	assert(args, "You must provide an argument table when creating HostProperties")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Cores"] = args["Cores"],
 		["TotalVCpus"] = args["TotalVCpus"],
 		["InstanceType"] = args["InstanceType"],
 		["Sockets"] = args["Sockets"],
 	}
-	asserts.AssertHostProperties(t)
-	return t
+	asserts.AssertHostProperties(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InstanceStatusSummary = { ["Status"] = true, ["Details"] = true, nil }
@@ -3141,13 +4120,24 @@ end
 -- * Details [InstanceStatusDetailsList] <p>The system instance health or application instance health.</p>
 -- @return InstanceStatusSummary structure as a key-value pair table
 function M.InstanceStatusSummary(args)
-	assert(args, "You must provdide an argument table when creating InstanceStatusSummary")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InstanceStatusSummary")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Status"] = args["Status"],
 		["Details"] = args["Details"],
 	}
-	asserts.AssertInstanceStatusSummary(t)
-	return t
+	asserts.AssertInstanceStatusSummary(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeVpcsRequest = { ["DryRun"] = true, ["Filters"] = true, ["VpcIds"] = true, nil }
@@ -3172,14 +4162,25 @@ end
 -- * VpcIds [VpcIdStringList] <p>One or more VPC IDs.</p> <p>Default: Describes all your VPCs.</p>
 -- @return DescribeVpcsRequest structure as a key-value pair table
 function M.DescribeVpcsRequest(args)
-	assert(args, "You must provdide an argument table when creating DescribeVpcsRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeVpcsRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DryRun"] = args["DryRun"],
 		["Filters"] = args["Filters"],
 		["VpcIds"] = args["VpcIds"],
 	}
-	asserts.AssertDescribeVpcsRequest(t)
-	return t
+	asserts.AssertDescribeVpcsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.SubnetIpv6CidrBlockAssociation = { ["Ipv6CidrBlock"] = true, ["AssociationId"] = true, ["Ipv6CidrBlockState"] = true, nil }
@@ -3204,14 +4205,25 @@ end
 -- * Ipv6CidrBlockState [SubnetCidrBlockState] <p>Information about the state of the CIDR block.</p>
 -- @return SubnetIpv6CidrBlockAssociation structure as a key-value pair table
 function M.SubnetIpv6CidrBlockAssociation(args)
-	assert(args, "You must provdide an argument table when creating SubnetIpv6CidrBlockAssociation")
-	local t = { 
+	assert(args, "You must provide an argument table when creating SubnetIpv6CidrBlockAssociation")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Ipv6CidrBlock"] = args["Ipv6CidrBlock"],
 		["AssociationId"] = args["AssociationId"],
 		["Ipv6CidrBlockState"] = args["Ipv6CidrBlockState"],
 	}
-	asserts.AssertSubnetIpv6CidrBlockAssociation(t)
-	return t
+	asserts.AssertSubnetIpv6CidrBlockAssociation(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateRouteTableResult = { ["RouteTable"] = true, nil }
@@ -3232,12 +4244,23 @@ end
 -- * RouteTable [RouteTable] <p>Information about the route table.</p>
 -- @return CreateRouteTableResult structure as a key-value pair table
 function M.CreateRouteTableResult(args)
-	assert(args, "You must provdide an argument table when creating CreateRouteTableResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateRouteTableResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["RouteTable"] = args["RouteTable"],
 	}
-	asserts.AssertCreateRouteTableResult(t)
-	return t
+	asserts.AssertCreateRouteTableResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ModifyVpcEndpointResult = { ["Return"] = true, nil }
@@ -3258,12 +4281,23 @@ end
 -- * Return [Boolean] <p>Returns <code>true</code> if the request succeeds; otherwise, it returns an error.</p>
 -- @return ModifyVpcEndpointResult structure as a key-value pair table
 function M.ModifyVpcEndpointResult(args)
-	assert(args, "You must provdide an argument table when creating ModifyVpcEndpointResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ModifyVpcEndpointResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Return"] = args["Return"],
 	}
-	asserts.AssertModifyVpcEndpointResult(t)
-	return t
+	asserts.AssertModifyVpcEndpointResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeTagsResult = { ["NextToken"] = true, ["Tags"] = true, nil }
@@ -3286,13 +4320,24 @@ end
 -- * Tags [TagDescriptionList] <p>A list of tags.</p>
 -- @return DescribeTagsResult structure as a key-value pair table
 function M.DescribeTagsResult(args)
-	assert(args, "You must provdide an argument table when creating DescribeTagsResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeTagsResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NextToken"] = args["NextToken"],
 		["Tags"] = args["Tags"],
 	}
-	asserts.AssertDescribeTagsResult(t)
-	return t
+	asserts.AssertDescribeTagsResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteVpcPeeringConnectionResult = { ["Return"] = true, nil }
@@ -3313,12 +4358,23 @@ end
 -- * Return [Boolean] <p>Returns <code>true</code> if the request succeeds; otherwise, it returns an error.</p>
 -- @return DeleteVpcPeeringConnectionResult structure as a key-value pair table
 function M.DeleteVpcPeeringConnectionResult(args)
-	assert(args, "You must provdide an argument table when creating DeleteVpcPeeringConnectionResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteVpcPeeringConnectionResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Return"] = args["Return"],
 	}
-	asserts.AssertDeleteVpcPeeringConnectionResult(t)
-	return t
+	asserts.AssertDeleteVpcPeeringConnectionResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.BlockDeviceMapping = { ["DeviceName"] = true, ["VirtualName"] = true, ["NoDevice"] = true, ["Ebs"] = true, nil }
@@ -3345,15 +4401,26 @@ end
 -- * Ebs [EbsBlockDevice] <p>Parameters used to automatically set up EBS volumes when the instance is launched.</p>
 -- @return BlockDeviceMapping structure as a key-value pair table
 function M.BlockDeviceMapping(args)
-	assert(args, "You must provdide an argument table when creating BlockDeviceMapping")
-	local t = { 
+	assert(args, "You must provide an argument table when creating BlockDeviceMapping")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DeviceName"] = args["DeviceName"],
 		["VirtualName"] = args["VirtualName"],
 		["NoDevice"] = args["NoDevice"],
 		["Ebs"] = args["Ebs"],
 	}
-	asserts.AssertBlockDeviceMapping(t)
-	return t
+	asserts.AssertBlockDeviceMapping(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ImportInstanceResult = { ["ConversionTask"] = true, nil }
@@ -3374,12 +4441,23 @@ end
 -- * ConversionTask [ConversionTask] <p>Information about the conversion task.</p>
 -- @return ImportInstanceResult structure as a key-value pair table
 function M.ImportInstanceResult(args)
-	assert(args, "You must provdide an argument table when creating ImportInstanceResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ImportInstanceResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ConversionTask"] = args["ConversionTask"],
 	}
-	asserts.AssertImportInstanceResult(t)
-	return t
+	asserts.AssertImportInstanceResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AssociateRouteTableResult = { ["AssociationId"] = true, nil }
@@ -3400,12 +4478,23 @@ end
 -- * AssociationId [String] <p>The route table association ID (needed to disassociate the route table).</p>
 -- @return AssociateRouteTableResult structure as a key-value pair table
 function M.AssociateRouteTableResult(args)
-	assert(args, "You must provdide an argument table when creating AssociateRouteTableResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AssociateRouteTableResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["AssociationId"] = args["AssociationId"],
 	}
-	asserts.AssertAssociateRouteTableResult(t)
-	return t
+	asserts.AssertAssociateRouteTableResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DiskImageVolumeDescription = { ["Id"] = true, ["Size"] = true, nil }
@@ -3430,13 +4519,24 @@ end
 -- Required key: Id
 -- @return DiskImageVolumeDescription structure as a key-value pair table
 function M.DiskImageVolumeDescription(args)
-	assert(args, "You must provdide an argument table when creating DiskImageVolumeDescription")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DiskImageVolumeDescription")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Id"] = args["Id"],
 		["Size"] = args["Size"],
 	}
-	asserts.AssertDiskImageVolumeDescription(t)
-	return t
+	asserts.AssertDiskImageVolumeDescription(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.VpcAttachment = { ["State"] = true, ["VpcId"] = true, nil }
@@ -3459,13 +4559,24 @@ end
 -- * VpcId [String] <p>The ID of the VPC.</p>
 -- @return VpcAttachment structure as a key-value pair table
 function M.VpcAttachment(args)
-	assert(args, "You must provdide an argument table when creating VpcAttachment")
-	local t = { 
+	assert(args, "You must provide an argument table when creating VpcAttachment")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["State"] = args["State"],
 		["VpcId"] = args["VpcId"],
 	}
-	asserts.AssertVpcAttachment(t)
-	return t
+	asserts.AssertVpcAttachment(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Snapshot = { ["OwnerAlias"] = true, ["DataEncryptionKeyId"] = true, ["Description"] = true, ["VolumeSize"] = true, ["Tags"] = true, ["Encrypted"] = true, ["SnapshotId"] = true, ["VolumeId"] = true, ["StateMessage"] = true, ["State"] = true, ["KmsKeyId"] = true, ["StartTime"] = true, ["OwnerId"] = true, ["Progress"] = true, nil }
@@ -3512,8 +4623,14 @@ end
 -- * Progress [String] <p>The progress of the snapshot, as a percentage.</p>
 -- @return Snapshot structure as a key-value pair table
 function M.Snapshot(args)
-	assert(args, "You must provdide an argument table when creating Snapshot")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Snapshot")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["OwnerAlias"] = args["OwnerAlias"],
 		["DataEncryptionKeyId"] = args["DataEncryptionKeyId"],
 		["Description"] = args["Description"],
@@ -3529,8 +4646,13 @@ function M.Snapshot(args)
 		["OwnerId"] = args["OwnerId"],
 		["Progress"] = args["Progress"],
 	}
-	asserts.AssertSnapshot(t)
-	return t
+	asserts.AssertSnapshot(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeVpcsResult = { ["Vpcs"] = true, nil }
@@ -3551,12 +4673,23 @@ end
 -- * Vpcs [VpcList] <p>Information about one or more VPCs.</p>
 -- @return DescribeVpcsResult structure as a key-value pair table
 function M.DescribeVpcsResult(args)
-	assert(args, "You must provdide an argument table when creating DescribeVpcsResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeVpcsResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Vpcs"] = args["Vpcs"],
 	}
-	asserts.AssertDescribeVpcsResult(t)
-	return t
+	asserts.AssertDescribeVpcsResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CancelSpotFleetRequestsErrorItem = { ["SpotFleetRequestId"] = true, ["Error"] = true, nil }
@@ -3583,13 +4716,24 @@ end
 -- Required key: SpotFleetRequestId
 -- @return CancelSpotFleetRequestsErrorItem structure as a key-value pair table
 function M.CancelSpotFleetRequestsErrorItem(args)
-	assert(args, "You must provdide an argument table when creating CancelSpotFleetRequestsErrorItem")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CancelSpotFleetRequestsErrorItem")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["SpotFleetRequestId"] = args["SpotFleetRequestId"],
 		["Error"] = args["Error"],
 	}
-	asserts.AssertCancelSpotFleetRequestsErrorItem(t)
-	return t
+	asserts.AssertCancelSpotFleetRequestsErrorItem(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteRouteRequest = { ["DestinationCidrBlock"] = true, ["DryRun"] = true, ["DestinationIpv6CidrBlock"] = true, ["RouteTableId"] = true, nil }
@@ -3618,15 +4762,26 @@ end
 -- Required key: RouteTableId
 -- @return DeleteRouteRequest structure as a key-value pair table
 function M.DeleteRouteRequest(args)
-	assert(args, "You must provdide an argument table when creating DeleteRouteRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteRouteRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DestinationCidrBlock"] = args["DestinationCidrBlock"],
 		["DryRun"] = args["DryRun"],
 		["DestinationIpv6CidrBlock"] = args["DestinationIpv6CidrBlock"],
 		["RouteTableId"] = args["RouteTableId"],
 	}
-	asserts.AssertDeleteRouteRequest(t)
-	return t
+	asserts.AssertDeleteRouteRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ReplaceRouteRequest = { ["DestinationCidrBlock"] = true, ["EgressOnlyInternetGatewayId"] = true, ["DryRun"] = true, ["InstanceId"] = true, ["NetworkInterfaceId"] = true, ["RouteTableId"] = true, ["NatGatewayId"] = true, ["VpcPeeringConnectionId"] = true, ["GatewayId"] = true, ["DestinationIpv6CidrBlock"] = true, nil }
@@ -3667,8 +4822,14 @@ end
 -- Required key: RouteTableId
 -- @return ReplaceRouteRequest structure as a key-value pair table
 function M.ReplaceRouteRequest(args)
-	assert(args, "You must provdide an argument table when creating ReplaceRouteRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ReplaceRouteRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DestinationCidrBlock"] = args["DestinationCidrBlock"],
 		["EgressOnlyInternetGatewayId"] = args["EgressOnlyInternetGatewayId"],
 		["DryRun"] = args["DryRun"],
@@ -3680,8 +4841,13 @@ function M.ReplaceRouteRequest(args)
 		["GatewayId"] = args["GatewayId"],
 		["DestinationIpv6CidrBlock"] = args["DestinationIpv6CidrBlock"],
 	}
-	asserts.AssertReplaceRouteRequest(t)
-	return t
+	asserts.AssertReplaceRouteRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.SecurityGroupReference = { ["ReferencingVpcId"] = true, ["GroupId"] = true, ["VpcPeeringConnectionId"] = true, nil }
@@ -3710,14 +4876,25 @@ end
 -- Required key: ReferencingVpcId
 -- @return SecurityGroupReference structure as a key-value pair table
 function M.SecurityGroupReference(args)
-	assert(args, "You must provdide an argument table when creating SecurityGroupReference")
-	local t = { 
+	assert(args, "You must provide an argument table when creating SecurityGroupReference")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ReferencingVpcId"] = args["ReferencingVpcId"],
 		["GroupId"] = args["GroupId"],
 		["VpcPeeringConnectionId"] = args["VpcPeeringConnectionId"],
 	}
-	asserts.AssertSecurityGroupReference(t)
-	return t
+	asserts.AssertSecurityGroupReference(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeConversionTasksResult = { ["ConversionTasks"] = true, nil }
@@ -3738,12 +4915,23 @@ end
 -- * ConversionTasks [DescribeConversionTaskList] <p>Information about the conversion tasks.</p>
 -- @return DescribeConversionTasksResult structure as a key-value pair table
 function M.DescribeConversionTasksResult(args)
-	assert(args, "You must provdide an argument table when creating DescribeConversionTasksResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeConversionTasksResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ConversionTasks"] = args["ConversionTasks"],
 	}
-	asserts.AssertDescribeConversionTasksResult(t)
-	return t
+	asserts.AssertDescribeConversionTasksResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateSnapshotRequest = { ["DryRun"] = true, ["Description"] = true, ["VolumeId"] = true, nil }
@@ -3770,14 +4958,25 @@ end
 -- Required key: VolumeId
 -- @return CreateSnapshotRequest structure as a key-value pair table
 function M.CreateSnapshotRequest(args)
-	assert(args, "You must provdide an argument table when creating CreateSnapshotRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateSnapshotRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DryRun"] = args["DryRun"],
 		["Description"] = args["Description"],
 		["VolumeId"] = args["VolumeId"],
 	}
-	asserts.AssertCreateSnapshotRequest(t)
-	return t
+	asserts.AssertCreateSnapshotRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AssociateSubnetCidrBlockRequest = { ["SubnetId"] = true, ["Ipv6CidrBlock"] = true, nil }
@@ -3804,13 +5003,24 @@ end
 -- Required key: SubnetId
 -- @return AssociateSubnetCidrBlockRequest structure as a key-value pair table
 function M.AssociateSubnetCidrBlockRequest(args)
-	assert(args, "You must provdide an argument table when creating AssociateSubnetCidrBlockRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AssociateSubnetCidrBlockRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["SubnetId"] = args["SubnetId"],
 		["Ipv6CidrBlock"] = args["Ipv6CidrBlock"],
 	}
-	asserts.AssertAssociateSubnetCidrBlockRequest(t)
-	return t
+	asserts.AssertAssociateSubnetCidrBlockRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ImageAttribute = { ["ProductCodes"] = true, ["Description"] = true, ["LaunchPermissions"] = true, ["SriovNetSupport"] = true, ["ImageId"] = true, ["BlockDeviceMappings"] = true, ["KernelId"] = true, ["RamdiskId"] = true, nil }
@@ -3845,8 +5055,14 @@ end
 -- * RamdiskId [AttributeValue] <p>The RAM disk ID.</p>
 -- @return ImageAttribute structure as a key-value pair table
 function M.ImageAttribute(args)
-	assert(args, "You must provdide an argument table when creating ImageAttribute")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ImageAttribute")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ProductCodes"] = args["ProductCodes"],
 		["Description"] = args["Description"],
 		["LaunchPermissions"] = args["LaunchPermissions"],
@@ -3856,8 +5072,13 @@ function M.ImageAttribute(args)
 		["KernelId"] = args["KernelId"],
 		["RamdiskId"] = args["RamdiskId"],
 	}
-	asserts.AssertImageAttribute(t)
-	return t
+	asserts.AssertImageAttribute(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteEgressOnlyInternetGatewayRequest = { ["EgressOnlyInternetGatewayId"] = true, ["DryRun"] = true, nil }
@@ -3882,13 +5103,24 @@ end
 -- Required key: EgressOnlyInternetGatewayId
 -- @return DeleteEgressOnlyInternetGatewayRequest structure as a key-value pair table
 function M.DeleteEgressOnlyInternetGatewayRequest(args)
-	assert(args, "You must provdide an argument table when creating DeleteEgressOnlyInternetGatewayRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteEgressOnlyInternetGatewayRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["EgressOnlyInternetGatewayId"] = args["EgressOnlyInternetGatewayId"],
 		["DryRun"] = args["DryRun"],
 	}
-	asserts.AssertDeleteEgressOnlyInternetGatewayRequest(t)
-	return t
+	asserts.AssertDeleteEgressOnlyInternetGatewayRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeVolumesRequest = { ["MaxResults"] = true, ["NextToken"] = true, ["DryRun"] = true, ["VolumeIds"] = true, ["Filters"] = true, nil }
@@ -3917,16 +5149,27 @@ end
 -- * Filters [FilterList] <p>One or more filters.</p> <ul> <li> <p> <code>attachment.attach-time</code> - The time stamp when the attachment initiated.</p> </li> <li> <p> <code>attachment.delete-on-termination</code> - Whether the volume is deleted on instance termination.</p> </li> <li> <p> <code>attachment.device</code> - The device name that is exposed to the instance (for example, <code>/dev/sda1</code>).</p> </li> <li> <p> <code>attachment.instance-id</code> - The ID of the instance the volume is attached to.</p> </li> <li> <p> <code>attachment.status</code> - The attachment state (<code>attaching</code> | <code>attached</code> | <code>detaching</code> | <code>detached</code>).</p> </li> <li> <p> <code>availability-zone</code> - The Availability Zone in which the volume was created.</p> </li> <li> <p> <code>create-time</code> - The time stamp when the volume was created.</p> </li> <li> <p> <code>encrypted</code> - The encryption status of the volume.</p> </li> <li> <p> <code>size</code> - The size of the volume, in GiB.</p> </li> <li> <p> <code>snapshot-id</code> - The snapshot from which the volume was created.</p> </li> <li> <p> <code>status</code> - The status of the volume (<code>creating</code> | <code>available</code> | <code>in-use</code> | <code>deleting</code> | <code>deleted</code> | <code>error</code>).</p> </li> <li> <p> <code>tag</code>:<i>key</i>=<i>value</i> - The key/value combination of a tag assigned to the resource. Specify the key of the tag in the filter name and the value of the tag in the filter value. For example, for the tag Purpose=X, specify <code>tag:Purpose</code> for the filter name and <code>X</code> for the filter value.</p> </li> <li> <p> <code>tag-key</code> - The key of a tag assigned to the resource. This filter is independent of the <code>tag-value</code> filter. For example, if you use both the filter "tag-key=Purpose" and the filter "tag-value=X", you get any resources assigned both the tag key Purpose (regardless of what the tag's value is), and the tag value X (regardless of what the tag's key is). If you want to list only resources where Purpose is X, see the <code>tag</code>:<i>key</i>=<i>value</i> filter.</p> </li> <li> <p> <code>tag-value</code> - The value of a tag assigned to the resource. This filter is independent of the <code>tag-key</code> filter.</p> </li> <li> <p> <code>volume-id</code> - The volume ID.</p> </li> <li> <p> <code>volume-type</code> - The Amazon EBS volume type. This can be <code>gp2</code> for General Purpose SSD, <code>io1</code> for Provisioned IOPS SSD, <code>st1</code> for Throughput Optimized HDD, <code>sc1</code> for Cold HDD, or <code>standard</code> for Magnetic volumes.</p> </li> </ul>
 -- @return DescribeVolumesRequest structure as a key-value pair table
 function M.DescribeVolumesRequest(args)
-	assert(args, "You must provdide an argument table when creating DescribeVolumesRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeVolumesRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["MaxResults"] = args["MaxResults"],
 		["NextToken"] = args["NextToken"],
 		["DryRun"] = args["DryRun"],
 		["VolumeIds"] = args["VolumeIds"],
 		["Filters"] = args["Filters"],
 	}
-	asserts.AssertDescribeVolumesRequest(t)
-	return t
+	asserts.AssertDescribeVolumesRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeHostsRequest = { ["Filter"] = true, ["HostIds"] = true, ["NextToken"] = true, ["MaxResults"] = true, nil }
@@ -3953,15 +5196,26 @@ end
 -- * MaxResults [Integer] <p>The maximum number of results to return for the request in a single page. The remaining results can be seen by sending another request with the returned <code>nextToken</code> value. This value can be between 5 and 500; if <code>maxResults</code> is given a larger value than 500, you will receive an error. You cannot specify this parameter and the host IDs parameter in the same request.</p>
 -- @return DescribeHostsRequest structure as a key-value pair table
 function M.DescribeHostsRequest(args)
-	assert(args, "You must provdide an argument table when creating DescribeHostsRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeHostsRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Filter"] = args["Filter"],
 		["HostIds"] = args["HostIds"],
 		["NextToken"] = args["NextToken"],
 		["MaxResults"] = args["MaxResults"],
 	}
-	asserts.AssertDescribeHostsRequest(t)
-	return t
+	asserts.AssertDescribeHostsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeImportImageTasksResult = { ["NextToken"] = true, ["ImportImageTasks"] = true, nil }
@@ -3984,13 +5238,24 @@ end
 -- * ImportImageTasks [ImportImageTaskList] <p>A list of zero or more import image tasks that are currently active or were completed or canceled in the previous 7 days.</p>
 -- @return DescribeImportImageTasksResult structure as a key-value pair table
 function M.DescribeImportImageTasksResult(args)
-	assert(args, "You must provdide an argument table when creating DescribeImportImageTasksResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeImportImageTasksResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NextToken"] = args["NextToken"],
 		["ImportImageTasks"] = args["ImportImageTasks"],
 	}
-	asserts.AssertDescribeImportImageTasksResult(t)
-	return t
+	asserts.AssertDescribeImportImageTasksResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreatePlacementGroupRequest = { ["GroupName"] = true, ["DryRun"] = true, ["Strategy"] = true, nil }
@@ -4019,14 +5284,25 @@ end
 -- Required key: Strategy
 -- @return CreatePlacementGroupRequest structure as a key-value pair table
 function M.CreatePlacementGroupRequest(args)
-	assert(args, "You must provdide an argument table when creating CreatePlacementGroupRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreatePlacementGroupRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["GroupName"] = args["GroupName"],
 		["DryRun"] = args["DryRun"],
 		["Strategy"] = args["Strategy"],
 	}
-	asserts.AssertCreatePlacementGroupRequest(t)
-	return t
+	asserts.AssertCreatePlacementGroupRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DisassociateIamInstanceProfileResult = { ["IamInstanceProfileAssociation"] = true, nil }
@@ -4047,12 +5323,23 @@ end
 -- * IamInstanceProfileAssociation [IamInstanceProfileAssociation] <p>Information about the IAM instance profile association.</p>
 -- @return DisassociateIamInstanceProfileResult structure as a key-value pair table
 function M.DisassociateIamInstanceProfileResult(args)
-	assert(args, "You must provdide an argument table when creating DisassociateIamInstanceProfileResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DisassociateIamInstanceProfileResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["IamInstanceProfileAssociation"] = args["IamInstanceProfileAssociation"],
 	}
-	asserts.AssertDisassociateIamInstanceProfileResult(t)
-	return t
+	asserts.AssertDisassociateIamInstanceProfileResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AssignIpv6AddressesResult = { ["AssignedIpv6Addresses"] = true, ["NetworkInterfaceId"] = true, nil }
@@ -4075,13 +5362,24 @@ end
 -- * NetworkInterfaceId [String] <p>The ID of the network interface.</p>
 -- @return AssignIpv6AddressesResult structure as a key-value pair table
 function M.AssignIpv6AddressesResult(args)
-	assert(args, "You must provdide an argument table when creating AssignIpv6AddressesResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AssignIpv6AddressesResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["AssignedIpv6Addresses"] = args["AssignedIpv6Addresses"],
 		["NetworkInterfaceId"] = args["NetworkInterfaceId"],
 	}
-	asserts.AssertAssignIpv6AddressesResult(t)
-	return t
+	asserts.AssertAssignIpv6AddressesResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.StaleSecurityGroup = { ["VpcId"] = true, ["StaleIpPermissionsEgress"] = true, ["GroupName"] = true, ["StaleIpPermissions"] = true, ["GroupId"] = true, ["Description"] = true, nil }
@@ -4114,8 +5412,14 @@ end
 -- Required key: GroupId
 -- @return StaleSecurityGroup structure as a key-value pair table
 function M.StaleSecurityGroup(args)
-	assert(args, "You must provdide an argument table when creating StaleSecurityGroup")
-	local t = { 
+	assert(args, "You must provide an argument table when creating StaleSecurityGroup")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["VpcId"] = args["VpcId"],
 		["StaleIpPermissionsEgress"] = args["StaleIpPermissionsEgress"],
 		["GroupName"] = args["GroupName"],
@@ -4123,8 +5427,13 @@ function M.StaleSecurityGroup(args)
 		["GroupId"] = args["GroupId"],
 		["Description"] = args["Description"],
 	}
-	asserts.AssertStaleSecurityGroup(t)
-	return t
+	asserts.AssertStaleSecurityGroup(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.IamInstanceProfileSpecification = { ["Name"] = true, ["Arn"] = true, nil }
@@ -4147,13 +5456,24 @@ end
 -- * Arn [String] <p>The Amazon Resource Name (ARN) of the instance profile.</p>
 -- @return IamInstanceProfileSpecification structure as a key-value pair table
 function M.IamInstanceProfileSpecification(args)
-	assert(args, "You must provdide an argument table when creating IamInstanceProfileSpecification")
-	local t = { 
+	assert(args, "You must provide an argument table when creating IamInstanceProfileSpecification")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Name"] = args["Name"],
 		["Arn"] = args["Arn"],
 	}
-	asserts.AssertIamInstanceProfileSpecification(t)
-	return t
+	asserts.AssertIamInstanceProfileSpecification(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeVolumeAttributeRequest = { ["Attribute"] = true, ["DryRun"] = true, ["VolumeId"] = true, nil }
@@ -4180,14 +5500,25 @@ end
 -- Required key: VolumeId
 -- @return DescribeVolumeAttributeRequest structure as a key-value pair table
 function M.DescribeVolumeAttributeRequest(args)
-	assert(args, "You must provdide an argument table when creating DescribeVolumeAttributeRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeVolumeAttributeRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Attribute"] = args["Attribute"],
 		["DryRun"] = args["DryRun"],
 		["VolumeId"] = args["VolumeId"],
 	}
-	asserts.AssertDescribeVolumeAttributeRequest(t)
-	return t
+	asserts.AssertDescribeVolumeAttributeRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeSecurityGroupsRequest = { ["GroupNames"] = true, ["DryRun"] = true, ["GroupIds"] = true, ["Filters"] = true, nil }
@@ -4214,15 +5545,26 @@ end
 -- * Filters [FilterList] <p>One or more filters. If using multiple filters for rules, the results include security groups for which any combination of rules - not necessarily a single rule - match all filters.</p> <ul> <li> <p> <code>description</code> - The description of the security group.</p> </li> <li> <p> <code>egress.ip-permission.prefix-list-id</code> - The ID (prefix) of the AWS service to which the security group allows access.</p> </li> <li> <p> <code>group-id</code> - The ID of the security group. </p> </li> <li> <p> <code>group-name</code> - The name of the security group.</p> </li> <li> <p> <code>ip-permission.cidr</code> - An IPv4 CIDR range that has been granted permission in a security group rule.</p> </li> <li> <p> <code>ip-permission.from-port</code> - The start of port range for the TCP and UDP protocols, or an ICMP type number.</p> </li> <li> <p> <code>ip-permission.group-id</code> - The ID of a security group that has been granted permission.</p> </li> <li> <p> <code>ip-permission.group-name</code> - The name of a security group that has been granted permission.</p> </li> <li> <p> <code>ip-permission.ipv6-cidr</code> - An IPv6 CIDR range that has been granted permission in a security group rule.</p> </li> <li> <p> <code>ip-permission.protocol</code> - The IP protocol for the permission (<code>tcp</code> | <code>udp</code> | <code>icmp</code> or a protocol number).</p> </li> <li> <p> <code>ip-permission.to-port</code> - The end of port range for the TCP and UDP protocols, or an ICMP code.</p> </li> <li> <p> <code>ip-permission.user-id</code> - The ID of an AWS account that has been granted permission.</p> </li> <li> <p> <code>owner-id</code> - The AWS account ID of the owner of the security group.</p> </li> <li> <p> <code>tag-key</code> - The key of a tag assigned to the security group.</p> </li> <li> <p> <code>tag-value</code> - The value of a tag assigned to the security group.</p> </li> <li> <p> <code>vpc-id</code> - The ID of the VPC specified when the security group was created.</p> </li> </ul>
 -- @return DescribeSecurityGroupsRequest structure as a key-value pair table
 function M.DescribeSecurityGroupsRequest(args)
-	assert(args, "You must provdide an argument table when creating DescribeSecurityGroupsRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeSecurityGroupsRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["GroupNames"] = args["GroupNames"],
 		["DryRun"] = args["DryRun"],
 		["GroupIds"] = args["GroupIds"],
 		["Filters"] = args["Filters"],
 	}
-	asserts.AssertDescribeSecurityGroupsRequest(t)
-	return t
+	asserts.AssertDescribeSecurityGroupsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.NetworkAclEntry = { ["IcmpTypeCode"] = true, ["RuleNumber"] = true, ["Protocol"] = true, ["Ipv6CidrBlock"] = true, ["Egress"] = true, ["RuleAction"] = true, ["PortRange"] = true, ["CidrBlock"] = true, nil }
@@ -4257,8 +5599,14 @@ end
 -- * CidrBlock [String] <p>The IPv4 network range to allow or deny, in CIDR notation.</p>
 -- @return NetworkAclEntry structure as a key-value pair table
 function M.NetworkAclEntry(args)
-	assert(args, "You must provdide an argument table when creating NetworkAclEntry")
-	local t = { 
+	assert(args, "You must provide an argument table when creating NetworkAclEntry")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["IcmpTypeCode"] = args["IcmpTypeCode"],
 		["RuleNumber"] = args["RuleNumber"],
 		["Protocol"] = args["Protocol"],
@@ -4268,8 +5616,13 @@ function M.NetworkAclEntry(args)
 		["PortRange"] = args["PortRange"],
 		["CidrBlock"] = args["CidrBlock"],
 	}
-	asserts.AssertNetworkAclEntry(t)
-	return t
+	asserts.AssertNetworkAclEntry(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UserBucketDetails = { ["S3Bucket"] = true, ["S3Key"] = true, nil }
@@ -4292,13 +5645,24 @@ end
 -- * S3Key [String] <p>The file name of the disk image.</p>
 -- @return UserBucketDetails structure as a key-value pair table
 function M.UserBucketDetails(args)
-	assert(args, "You must provdide an argument table when creating UserBucketDetails")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UserBucketDetails")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["S3Bucket"] = args["S3Bucket"],
 		["S3Key"] = args["S3Key"],
 	}
-	asserts.AssertUserBucketDetails(t)
-	return t
+	asserts.AssertUserBucketDetails(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CancelImportTaskResult = { ["State"] = true, ["PreviousState"] = true, ["ImportTaskId"] = true, nil }
@@ -4323,14 +5687,25 @@ end
 -- * ImportTaskId [String] <p>The ID of the task being canceled.</p>
 -- @return CancelImportTaskResult structure as a key-value pair table
 function M.CancelImportTaskResult(args)
-	assert(args, "You must provdide an argument table when creating CancelImportTaskResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CancelImportTaskResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["State"] = args["State"],
 		["PreviousState"] = args["PreviousState"],
 		["ImportTaskId"] = args["ImportTaskId"],
 	}
-	asserts.AssertCancelImportTaskResult(t)
-	return t
+	asserts.AssertCancelImportTaskResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.RegisterImageResult = { ["ImageId"] = true, nil }
@@ -4351,12 +5726,23 @@ end
 -- * ImageId [String] <p>The ID of the newly registered AMI.</p>
 -- @return RegisterImageResult structure as a key-value pair table
 function M.RegisterImageResult(args)
-	assert(args, "You must provdide an argument table when creating RegisterImageResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating RegisterImageResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ImageId"] = args["ImageId"],
 	}
-	asserts.AssertRegisterImageResult(t)
-	return t
+	asserts.AssertRegisterImageResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateNetworkAclResult = { ["NetworkAcl"] = true, nil }
@@ -4377,12 +5763,23 @@ end
 -- * NetworkAcl [NetworkAcl] <p>Information about the network ACL.</p>
 -- @return CreateNetworkAclResult structure as a key-value pair table
 function M.CreateNetworkAclResult(args)
-	assert(args, "You must provdide an argument table when creating CreateNetworkAclResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateNetworkAclResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NetworkAcl"] = args["NetworkAcl"],
 	}
-	asserts.AssertCreateNetworkAclResult(t)
-	return t
+	asserts.AssertCreateNetworkAclResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeVolumeStatusResult = { ["NextToken"] = true, ["VolumeStatuses"] = true, nil }
@@ -4405,13 +5802,24 @@ end
 -- * VolumeStatuses [VolumeStatusList] <p>A list of volumes.</p>
 -- @return DescribeVolumeStatusResult structure as a key-value pair table
 function M.DescribeVolumeStatusResult(args)
-	assert(args, "You must provdide an argument table when creating DescribeVolumeStatusResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeVolumeStatusResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NextToken"] = args["NextToken"],
 		["VolumeStatuses"] = args["VolumeStatuses"],
 	}
-	asserts.AssertDescribeVolumeStatusResult(t)
-	return t
+	asserts.AssertDescribeVolumeStatusResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ModifyVolumeResult = { ["VolumeModification"] = true, nil }
@@ -4432,12 +5840,23 @@ end
 -- * VolumeModification [VolumeModification] <p>A <a>VolumeModification</a> object.</p>
 -- @return ModifyVolumeResult structure as a key-value pair table
 function M.ModifyVolumeResult(args)
-	assert(args, "You must provdide an argument table when creating ModifyVolumeResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ModifyVolumeResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["VolumeModification"] = args["VolumeModification"],
 	}
-	asserts.AssertModifyVolumeResult(t)
-	return t
+	asserts.AssertModifyVolumeResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CancelConversionRequest = { ["ConversionTaskId"] = true, ["ReasonMessage"] = true, ["DryRun"] = true, nil }
@@ -4464,14 +5883,25 @@ end
 -- Required key: ConversionTaskId
 -- @return CancelConversionRequest structure as a key-value pair table
 function M.CancelConversionRequest(args)
-	assert(args, "You must provdide an argument table when creating CancelConversionRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CancelConversionRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ConversionTaskId"] = args["ConversionTaskId"],
 		["ReasonMessage"] = args["ReasonMessage"],
 		["DryRun"] = args["DryRun"],
 	}
-	asserts.AssertCancelConversionRequest(t)
-	return t
+	asserts.AssertCancelConversionRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ConfirmProductInstanceResult = { ["OwnerId"] = true, ["Return"] = true, nil }
@@ -4494,13 +5924,24 @@ end
 -- * Return [Boolean] <p>The return value of the request. Returns <code>true</code> if the specified product code is owned by the requester and associated with the specified instance.</p>
 -- @return ConfirmProductInstanceResult structure as a key-value pair table
 function M.ConfirmProductInstanceResult(args)
-	assert(args, "You must provdide an argument table when creating ConfirmProductInstanceResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ConfirmProductInstanceResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["OwnerId"] = args["OwnerId"],
 		["Return"] = args["Return"],
 	}
-	asserts.AssertConfirmProductInstanceResult(t)
-	return t
+	asserts.AssertConfirmProductInstanceResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateReservedInstancesListingResult = { ["ReservedInstancesListings"] = true, nil }
@@ -4521,12 +5962,23 @@ end
 -- * ReservedInstancesListings [ReservedInstancesListingList] <p>Information about the Standard Reserved Instance listing.</p>
 -- @return CreateReservedInstancesListingResult structure as a key-value pair table
 function M.CreateReservedInstancesListingResult(args)
-	assert(args, "You must provdide an argument table when creating CreateReservedInstancesListingResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateReservedInstancesListingResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ReservedInstancesListings"] = args["ReservedInstancesListings"],
 	}
-	asserts.AssertCreateReservedInstancesListingResult(t)
-	return t
+	asserts.AssertCreateReservedInstancesListingResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ReplaceNetworkAclEntryRequest = { ["IcmpTypeCode"] = true, ["NetworkAclId"] = true, ["RuleNumber"] = true, ["DryRun"] = true, ["Ipv6CidrBlock"] = true, ["Egress"] = true, ["RuleAction"] = true, ["PortRange"] = true, ["Protocol"] = true, ["CidrBlock"] = true, nil }
@@ -4575,8 +6027,14 @@ end
 -- Required key: RuleNumber
 -- @return ReplaceNetworkAclEntryRequest structure as a key-value pair table
 function M.ReplaceNetworkAclEntryRequest(args)
-	assert(args, "You must provdide an argument table when creating ReplaceNetworkAclEntryRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ReplaceNetworkAclEntryRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["IcmpTypeCode"] = args["IcmpTypeCode"],
 		["NetworkAclId"] = args["NetworkAclId"],
 		["RuleNumber"] = args["RuleNumber"],
@@ -4588,8 +6046,13 @@ function M.ReplaceNetworkAclEntryRequest(args)
 		["Protocol"] = args["Protocol"],
 		["CidrBlock"] = args["CidrBlock"],
 	}
-	asserts.AssertReplaceNetworkAclEntryRequest(t)
-	return t
+	asserts.AssertReplaceNetworkAclEntryRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ImportSnapshotRequest = { ["DryRun"] = true, ["Description"] = true, ["ClientData"] = true, ["ClientToken"] = true, ["RoleName"] = true, ["DiskContainer"] = true, nil }
@@ -4620,8 +6083,14 @@ end
 -- * DiskContainer [SnapshotDiskContainer] <p>Information about the disk container.</p>
 -- @return ImportSnapshotRequest structure as a key-value pair table
 function M.ImportSnapshotRequest(args)
-	assert(args, "You must provdide an argument table when creating ImportSnapshotRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ImportSnapshotRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DryRun"] = args["DryRun"],
 		["Description"] = args["Description"],
 		["ClientData"] = args["ClientData"],
@@ -4629,8 +6098,13 @@ function M.ImportSnapshotRequest(args)
 		["RoleName"] = args["RoleName"],
 		["DiskContainer"] = args["DiskContainer"],
 	}
-	asserts.AssertImportSnapshotRequest(t)
-	return t
+	asserts.AssertImportSnapshotRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.PortRange = { ["To"] = true, ["From"] = true, nil }
@@ -4653,13 +6127,24 @@ end
 -- * From [Integer] <p>The first port in the range.</p>
 -- @return PortRange structure as a key-value pair table
 function M.PortRange(args)
-	assert(args, "You must provdide an argument table when creating PortRange")
-	local t = { 
+	assert(args, "You must provide an argument table when creating PortRange")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["To"] = args["To"],
 		["From"] = args["From"],
 	}
-	asserts.AssertPortRange(t)
-	return t
+	asserts.AssertPortRange(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Reservation = { ["Instances"] = true, ["ReservationId"] = true, ["RequesterId"] = true, ["Groups"] = true, ["OwnerId"] = true, nil }
@@ -4688,16 +6173,27 @@ end
 -- * OwnerId [String] <p>The ID of the AWS account that owns the reservation.</p>
 -- @return Reservation structure as a key-value pair table
 function M.Reservation(args)
-	assert(args, "You must provdide an argument table when creating Reservation")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Reservation")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Instances"] = args["Instances"],
 		["ReservationId"] = args["ReservationId"],
 		["RequesterId"] = args["RequesterId"],
 		["Groups"] = args["Groups"],
 		["OwnerId"] = args["OwnerId"],
 	}
-	asserts.AssertReservation(t)
-	return t
+	asserts.AssertReservation(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeConversionTasksRequest = { ["ConversionTaskIds"] = true, ["DryRun"] = true, nil }
@@ -4720,13 +6216,24 @@ end
 -- * DryRun [Boolean] <p>Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is <code>DryRunOperation</code>. Otherwise, it is <code>UnauthorizedOperation</code>.</p>
 -- @return DescribeConversionTasksRequest structure as a key-value pair table
 function M.DescribeConversionTasksRequest(args)
-	assert(args, "You must provdide an argument table when creating DescribeConversionTasksRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeConversionTasksRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ConversionTaskIds"] = args["ConversionTaskIds"],
 		["DryRun"] = args["DryRun"],
 	}
-	asserts.AssertDescribeConversionTasksRequest(t)
-	return t
+	asserts.AssertDescribeConversionTasksRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeImagesRequest = { ["Owners"] = true, ["ImageIds"] = true, ["DryRun"] = true, ["Filters"] = true, ["ExecutableUsers"] = true, nil }
@@ -4755,16 +6262,27 @@ end
 -- * ExecutableUsers [ExecutableByStringList] <p>Scopes the images by users with explicit launch permissions. Specify an AWS account ID, <code>self</code> (the sender of the request), or <code>all</code> (public AMIs).</p>
 -- @return DescribeImagesRequest structure as a key-value pair table
 function M.DescribeImagesRequest(args)
-	assert(args, "You must provdide an argument table when creating DescribeImagesRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeImagesRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Owners"] = args["Owners"],
 		["ImageIds"] = args["ImageIds"],
 		["DryRun"] = args["DryRun"],
 		["Filters"] = args["Filters"],
 		["ExecutableUsers"] = args["ExecutableUsers"],
 	}
-	asserts.AssertDescribeImagesRequest(t)
-	return t
+	asserts.AssertDescribeImagesRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.TagSpecification = { ["ResourceType"] = true, ["Tags"] = true, nil }
@@ -4787,13 +6305,24 @@ end
 -- * Tags [TagList] <p>The tags to apply to the resource.</p>
 -- @return TagSpecification structure as a key-value pair table
 function M.TagSpecification(args)
-	assert(args, "You must provdide an argument table when creating TagSpecification")
-	local t = { 
+	assert(args, "You must provide an argument table when creating TagSpecification")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ResourceType"] = args["ResourceType"],
 		["Tags"] = args["Tags"],
 	}
-	asserts.AssertTagSpecification(t)
-	return t
+	asserts.AssertTagSpecification(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeIdentityIdFormatRequest = { ["PrincipalArn"] = true, ["Resource"] = true, nil }
@@ -4818,13 +6347,24 @@ end
 -- Required key: PrincipalArn
 -- @return DescribeIdentityIdFormatRequest structure as a key-value pair table
 function M.DescribeIdentityIdFormatRequest(args)
-	assert(args, "You must provdide an argument table when creating DescribeIdentityIdFormatRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeIdentityIdFormatRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["PrincipalArn"] = args["PrincipalArn"],
 		["Resource"] = args["Resource"],
 	}
-	asserts.AssertDescribeIdentityIdFormatRequest(t)
-	return t
+	asserts.AssertDescribeIdentityIdFormatRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeFpgaImagesRequest = { ["Owners"] = true, ["DryRun"] = true, ["FpgaImageIds"] = true, ["MaxResults"] = true, ["Filters"] = true, ["NextToken"] = true, nil }
@@ -4855,8 +6395,14 @@ end
 -- * NextToken [NextToken] <p>The token to retrieve the next page of results.</p>
 -- @return DescribeFpgaImagesRequest structure as a key-value pair table
 function M.DescribeFpgaImagesRequest(args)
-	assert(args, "You must provdide an argument table when creating DescribeFpgaImagesRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeFpgaImagesRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Owners"] = args["Owners"],
 		["DryRun"] = args["DryRun"],
 		["FpgaImageIds"] = args["FpgaImageIds"],
@@ -4864,8 +6410,13 @@ function M.DescribeFpgaImagesRequest(args)
 		["Filters"] = args["Filters"],
 		["NextToken"] = args["NextToken"],
 	}
-	asserts.AssertDescribeFpgaImagesRequest(t)
-	return t
+	asserts.AssertDescribeFpgaImagesRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.NetworkInterface = { ["Status"] = true, ["MacAddress"] = true, ["SourceDestCheck"] = true, ["AvailabilityZone"] = true, ["Description"] = true, ["NetworkInterfaceId"] = true, ["VpcId"] = true, ["PrivateIpAddresses"] = true, ["RequesterManaged"] = true, ["PrivateDnsName"] = true, ["RequesterId"] = true, ["InterfaceType"] = true, ["Attachment"] = true, ["Groups"] = true, ["Ipv6Addresses"] = true, ["OwnerId"] = true, ["PrivateIpAddress"] = true, ["SubnetId"] = true, ["TagSet"] = true, ["Association"] = true, nil }
@@ -4924,8 +6475,14 @@ end
 -- * Association [NetworkInterfaceAssociation] <p>The association information for an Elastic IP address (IPv4) associated with the network interface.</p>
 -- @return NetworkInterface structure as a key-value pair table
 function M.NetworkInterface(args)
-	assert(args, "You must provdide an argument table when creating NetworkInterface")
-	local t = { 
+	assert(args, "You must provide an argument table when creating NetworkInterface")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Status"] = args["Status"],
 		["MacAddress"] = args["MacAddress"],
 		["SourceDestCheck"] = args["SourceDestCheck"],
@@ -4947,8 +6504,13 @@ function M.NetworkInterface(args)
 		["TagSet"] = args["TagSet"],
 		["Association"] = args["Association"],
 	}
-	asserts.AssertNetworkInterface(t)
-	return t
+	asserts.AssertNetworkInterface(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.KeyPair = { ["KeyMaterial"] = true, ["KeyName"] = true, ["KeyFingerprint"] = true, nil }
@@ -4973,14 +6535,25 @@ end
 -- * KeyFingerprint [String] <p>The SHA-1 digest of the DER encoded private key.</p>
 -- @return KeyPair structure as a key-value pair table
 function M.KeyPair(args)
-	assert(args, "You must provdide an argument table when creating KeyPair")
-	local t = { 
+	assert(args, "You must provide an argument table when creating KeyPair")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["KeyMaterial"] = args["KeyMaterial"],
 		["KeyName"] = args["KeyName"],
 		["KeyFingerprint"] = args["KeyFingerprint"],
 	}
-	asserts.AssertKeyPair(t)
-	return t
+	asserts.AssertKeyPair(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.PropagatingVgw = { ["GatewayId"] = true, nil }
@@ -5001,12 +6574,23 @@ end
 -- * GatewayId [String] <p>The ID of the virtual private gateway (VGW).</p>
 -- @return PropagatingVgw structure as a key-value pair table
 function M.PropagatingVgw(args)
-	assert(args, "You must provdide an argument table when creating PropagatingVgw")
-	local t = { 
+	assert(args, "You must provide an argument table when creating PropagatingVgw")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["GatewayId"] = args["GatewayId"],
 	}
-	asserts.AssertPropagatingVgw(t)
-	return t
+	asserts.AssertPropagatingVgw(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribePrefixListsRequest = { ["NextToken"] = true, ["DryRun"] = true, ["MaxResults"] = true, ["Filters"] = true, ["PrefixListIds"] = true, nil }
@@ -5035,16 +6619,27 @@ end
 -- * PrefixListIds [ValueStringList] <p>One or more prefix list IDs.</p>
 -- @return DescribePrefixListsRequest structure as a key-value pair table
 function M.DescribePrefixListsRequest(args)
-	assert(args, "You must provdide an argument table when creating DescribePrefixListsRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribePrefixListsRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NextToken"] = args["NextToken"],
 		["DryRun"] = args["DryRun"],
 		["MaxResults"] = args["MaxResults"],
 		["Filters"] = args["Filters"],
 		["PrefixListIds"] = args["PrefixListIds"],
 	}
-	asserts.AssertDescribePrefixListsRequest(t)
-	return t
+	asserts.AssertDescribePrefixListsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.PriceSchedule = { ["Active"] = true, ["CurrencyCode"] = true, ["Term"] = true, ["Price"] = true, nil }
@@ -5071,15 +6666,26 @@ end
 -- * Price [Double] <p>The fixed price for the term.</p>
 -- @return PriceSchedule structure as a key-value pair table
 function M.PriceSchedule(args)
-	assert(args, "You must provdide an argument table when creating PriceSchedule")
-	local t = { 
+	assert(args, "You must provide an argument table when creating PriceSchedule")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Active"] = args["Active"],
 		["CurrencyCode"] = args["CurrencyCode"],
 		["Term"] = args["Term"],
 		["Price"] = args["Price"],
 	}
-	asserts.AssertPriceSchedule(t)
-	return t
+	asserts.AssertPriceSchedule(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InstanceNetworkInterfaceSpecification = { ["DeviceIndex"] = true, ["Description"] = true, ["Ipv6AddressCount"] = true, ["PrivateIpAddresses"] = true, ["SubnetId"] = true, ["DeleteOnTermination"] = true, ["PrivateIpAddress"] = true, ["Groups"] = true, ["Ipv6Addresses"] = true, ["NetworkInterfaceId"] = true, ["AssociatePublicIpAddress"] = true, ["SecondaryPrivateIpAddressCount"] = true, nil }
@@ -5122,8 +6728,14 @@ end
 -- * SecondaryPrivateIpAddressCount [Integer] <p>The number of secondary private IPv4 addresses. You can't specify this option and specify more than one private IP address using the private IP addresses option. You cannot specify this option if you're launching more than one instance in a <a>RunInstances</a> request.</p>
 -- @return InstanceNetworkInterfaceSpecification structure as a key-value pair table
 function M.InstanceNetworkInterfaceSpecification(args)
-	assert(args, "You must provdide an argument table when creating InstanceNetworkInterfaceSpecification")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InstanceNetworkInterfaceSpecification")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DeviceIndex"] = args["DeviceIndex"],
 		["Description"] = args["Description"],
 		["Ipv6AddressCount"] = args["Ipv6AddressCount"],
@@ -5137,8 +6749,13 @@ function M.InstanceNetworkInterfaceSpecification(args)
 		["AssociatePublicIpAddress"] = args["AssociatePublicIpAddress"],
 		["SecondaryPrivateIpAddressCount"] = args["SecondaryPrivateIpAddressCount"],
 	}
-	asserts.AssertInstanceNetworkInterfaceSpecification(t)
-	return t
+	asserts.AssertInstanceNetworkInterfaceSpecification(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ReplaceNetworkAclAssociationResult = { ["NewAssociationId"] = true, nil }
@@ -5159,12 +6776,23 @@ end
 -- * NewAssociationId [String] <p>The ID of the new association.</p>
 -- @return ReplaceNetworkAclAssociationResult structure as a key-value pair table
 function M.ReplaceNetworkAclAssociationResult(args)
-	assert(args, "You must provdide an argument table when creating ReplaceNetworkAclAssociationResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ReplaceNetworkAclAssociationResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NewAssociationId"] = args["NewAssociationId"],
 	}
-	asserts.AssertReplaceNetworkAclAssociationResult(t)
-	return t
+	asserts.AssertReplaceNetworkAclAssociationResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UnsuccessfulItemError = { ["Message"] = true, ["Code"] = true, nil }
@@ -5191,13 +6819,24 @@ end
 -- Required key: Message
 -- @return UnsuccessfulItemError structure as a key-value pair table
 function M.UnsuccessfulItemError(args)
-	assert(args, "You must provdide an argument table when creating UnsuccessfulItemError")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UnsuccessfulItemError")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Message"] = args["Message"],
 		["Code"] = args["Code"],
 	}
-	asserts.AssertUnsuccessfulItemError(t)
-	return t
+	asserts.AssertUnsuccessfulItemError(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ReplaceRouteTableAssociationResult = { ["NewAssociationId"] = true, nil }
@@ -5218,12 +6857,23 @@ end
 -- * NewAssociationId [String] <p>The ID of the new association.</p>
 -- @return ReplaceRouteTableAssociationResult structure as a key-value pair table
 function M.ReplaceRouteTableAssociationResult(args)
-	assert(args, "You must provdide an argument table when creating ReplaceRouteTableAssociationResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ReplaceRouteTableAssociationResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NewAssociationId"] = args["NewAssociationId"],
 	}
-	asserts.AssertReplaceRouteTableAssociationResult(t)
-	return t
+	asserts.AssertReplaceRouteTableAssociationResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AllocateHostsResult = { ["HostIds"] = true, nil }
@@ -5244,12 +6894,23 @@ end
 -- * HostIds [ResponseHostIdList] <p>The ID of the allocated Dedicated Host. This is used when you want to launch an instance onto a specific host.</p>
 -- @return AllocateHostsResult structure as a key-value pair table
 function M.AllocateHostsResult(args)
-	assert(args, "You must provdide an argument table when creating AllocateHostsResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AllocateHostsResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["HostIds"] = args["HostIds"],
 	}
-	asserts.AssertAllocateHostsResult(t)
-	return t
+	asserts.AssertAllocateHostsResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateCustomerGatewayResult = { ["CustomerGateway"] = true, nil }
@@ -5270,12 +6931,23 @@ end
 -- * CustomerGateway [CustomerGateway] <p>Information about the customer gateway.</p>
 -- @return CreateCustomerGatewayResult structure as a key-value pair table
 function M.CreateCustomerGatewayResult(args)
-	assert(args, "You must provdide an argument table when creating CreateCustomerGatewayResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateCustomerGatewayResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["CustomerGateway"] = args["CustomerGateway"],
 	}
-	asserts.AssertCreateCustomerGatewayResult(t)
-	return t
+	asserts.AssertCreateCustomerGatewayResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeVpcClassicLinkRequest = { ["DryRun"] = true, ["Filters"] = true, ["VpcIds"] = true, nil }
@@ -5300,14 +6972,25 @@ end
 -- * VpcIds [VpcClassicLinkIdList] <p>One or more VPCs for which you want to describe the ClassicLink status.</p>
 -- @return DescribeVpcClassicLinkRequest structure as a key-value pair table
 function M.DescribeVpcClassicLinkRequest(args)
-	assert(args, "You must provdide an argument table when creating DescribeVpcClassicLinkRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeVpcClassicLinkRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DryRun"] = args["DryRun"],
 		["Filters"] = args["Filters"],
 		["VpcIds"] = args["VpcIds"],
 	}
-	asserts.AssertDescribeVpcClassicLinkRequest(t)
-	return t
+	asserts.AssertDescribeVpcClassicLinkRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ModifySpotFleetRequestResponse = { ["Return"] = true, nil }
@@ -5328,12 +7011,23 @@ end
 -- * Return [Boolean] <p>Is <code>true</code> if the request succeeds, and an error otherwise.</p>
 -- @return ModifySpotFleetRequestResponse structure as a key-value pair table
 function M.ModifySpotFleetRequestResponse(args)
-	assert(args, "You must provdide an argument table when creating ModifySpotFleetRequestResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ModifySpotFleetRequestResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Return"] = args["Return"],
 	}
-	asserts.AssertModifySpotFleetRequestResponse(t)
-	return t
+	asserts.AssertModifySpotFleetRequestResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ModifySpotFleetRequestRequest = { ["TargetCapacity"] = true, ["SpotFleetRequestId"] = true, ["ExcessCapacityTerminationPolicy"] = true, nil }
@@ -5360,14 +7054,25 @@ end
 -- Required key: SpotFleetRequestId
 -- @return ModifySpotFleetRequestRequest structure as a key-value pair table
 function M.ModifySpotFleetRequestRequest(args)
-	assert(args, "You must provdide an argument table when creating ModifySpotFleetRequestRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ModifySpotFleetRequestRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["TargetCapacity"] = args["TargetCapacity"],
 		["SpotFleetRequestId"] = args["SpotFleetRequestId"],
 		["ExcessCapacityTerminationPolicy"] = args["ExcessCapacityTerminationPolicy"],
 	}
-	asserts.AssertModifySpotFleetRequestRequest(t)
-	return t
+	asserts.AssertModifySpotFleetRequestRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Subnet = { ["AvailabilityZone"] = true, ["Tags"] = true, ["AvailableIpAddressCount"] = true, ["DefaultForAz"] = true, ["Ipv6CidrBlockAssociationSet"] = true, ["VpcId"] = true, ["State"] = true, ["MapPublicIpOnLaunch"] = true, ["SubnetId"] = true, ["CidrBlock"] = true, ["AssignIpv6AddressOnCreation"] = true, nil }
@@ -5408,8 +7113,14 @@ end
 -- * AssignIpv6AddressOnCreation [Boolean] <p>Indicates whether a network interface created in this subnet (including a network interface created by <a>RunInstances</a>) receives an IPv6 address.</p>
 -- @return Subnet structure as a key-value pair table
 function M.Subnet(args)
-	assert(args, "You must provdide an argument table when creating Subnet")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Subnet")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["AvailabilityZone"] = args["AvailabilityZone"],
 		["Tags"] = args["Tags"],
 		["AvailableIpAddressCount"] = args["AvailableIpAddressCount"],
@@ -5422,8 +7133,13 @@ function M.Subnet(args)
 		["CidrBlock"] = args["CidrBlock"],
 		["AssignIpv6AddressOnCreation"] = args["AssignIpv6AddressOnCreation"],
 	}
-	asserts.AssertSubnet(t)
-	return t
+	asserts.AssertSubnet(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DisableVgwRoutePropagationRequest = { ["GatewayId"] = true, ["RouteTableId"] = true, nil }
@@ -5450,13 +7166,24 @@ end
 -- Required key: RouteTableId
 -- @return DisableVgwRoutePropagationRequest structure as a key-value pair table
 function M.DisableVgwRoutePropagationRequest(args)
-	assert(args, "You must provdide an argument table when creating DisableVgwRoutePropagationRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DisableVgwRoutePropagationRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["GatewayId"] = args["GatewayId"],
 		["RouteTableId"] = args["RouteTableId"],
 	}
-	asserts.AssertDisableVgwRoutePropagationRequest(t)
-	return t
+	asserts.AssertDisableVgwRoutePropagationRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeHostReservationsResult = { ["NextToken"] = true, ["HostReservationSet"] = true, nil }
@@ -5479,13 +7206,24 @@ end
 -- * HostReservationSet [HostReservationSet] <p>Details about the reservation's configuration.</p>
 -- @return DescribeHostReservationsResult structure as a key-value pair table
 function M.DescribeHostReservationsResult(args)
-	assert(args, "You must provdide an argument table when creating DescribeHostReservationsResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeHostReservationsResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NextToken"] = args["NextToken"],
 		["HostReservationSet"] = args["HostReservationSet"],
 	}
-	asserts.AssertDescribeHostReservationsResult(t)
-	return t
+	asserts.AssertDescribeHostReservationsResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CancelSpotInstanceRequestsResult = { ["CancelledSpotInstanceRequests"] = true, nil }
@@ -5506,12 +7244,23 @@ end
 -- * CancelledSpotInstanceRequests [CancelledSpotInstanceRequestList] <p>One or more Spot instance requests.</p>
 -- @return CancelSpotInstanceRequestsResult structure as a key-value pair table
 function M.CancelSpotInstanceRequestsResult(args)
-	assert(args, "You must provdide an argument table when creating CancelSpotInstanceRequestsResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CancelSpotInstanceRequestsResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["CancelledSpotInstanceRequests"] = args["CancelledSpotInstanceRequests"],
 	}
-	asserts.AssertCancelSpotInstanceRequestsResult(t)
-	return t
+	asserts.AssertCancelSpotInstanceRequestsResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.RunInstancesRequest = { ["DryRun"] = true, ["TagSpecifications"] = true, ["MinCount"] = true, ["EbsOptimized"] = true, ["RamdiskId"] = true, ["Monitoring"] = true, ["PrivateIpAddress"] = true, ["ImageId"] = true, ["KeyName"] = true, ["SecurityGroups"] = true, ["ClientToken"] = true, ["SubnetId"] = true, ["InstanceType"] = true, ["NetworkInterfaces"] = true, ["AdditionalInfo"] = true, ["Placement"] = true, ["InstanceInitiatedShutdownBehavior"] = true, ["SecurityGroupIds"] = true, ["BlockDeviceMappings"] = true, ["KernelId"] = true, ["IamInstanceProfile"] = true, ["UserData"] = true, ["Ipv6AddressCount"] = true, ["MaxCount"] = true, ["Ipv6Addresses"] = true, ["DisableApiTermination"] = true, nil }
@@ -5588,8 +7337,14 @@ end
 -- Required key: MinCount
 -- @return RunInstancesRequest structure as a key-value pair table
 function M.RunInstancesRequest(args)
-	assert(args, "You must provdide an argument table when creating RunInstancesRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating RunInstancesRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DryRun"] = args["DryRun"],
 		["TagSpecifications"] = args["TagSpecifications"],
 		["MinCount"] = args["MinCount"],
@@ -5617,8 +7372,13 @@ function M.RunInstancesRequest(args)
 		["Ipv6Addresses"] = args["Ipv6Addresses"],
 		["DisableApiTermination"] = args["DisableApiTermination"],
 	}
-	asserts.AssertRunInstancesRequest(t)
-	return t
+	asserts.AssertRunInstancesRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateVpnConnectionRequest = { ["CustomerGatewayId"] = true, ["DryRun"] = true, ["Type"] = true, ["VpnGatewayId"] = true, ["Options"] = true, nil }
@@ -5653,16 +7413,27 @@ end
 -- Required key: VpnGatewayId
 -- @return CreateVpnConnectionRequest structure as a key-value pair table
 function M.CreateVpnConnectionRequest(args)
-	assert(args, "You must provdide an argument table when creating CreateVpnConnectionRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateVpnConnectionRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["CustomerGatewayId"] = args["CustomerGatewayId"],
 		["DryRun"] = args["DryRun"],
 		["Type"] = args["Type"],
 		["VpnGatewayId"] = args["VpnGatewayId"],
 		["Options"] = args["Options"],
 	}
-	asserts.AssertCreateVpnConnectionRequest(t)
-	return t
+	asserts.AssertCreateVpnConnectionRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.VpcIpv6CidrBlockAssociation = { ["Ipv6CidrBlock"] = true, ["AssociationId"] = true, ["Ipv6CidrBlockState"] = true, nil }
@@ -5687,14 +7458,25 @@ end
 -- * Ipv6CidrBlockState [VpcCidrBlockState] <p>Information about the state of the CIDR block.</p>
 -- @return VpcIpv6CidrBlockAssociation structure as a key-value pair table
 function M.VpcIpv6CidrBlockAssociation(args)
-	assert(args, "You must provdide an argument table when creating VpcIpv6CidrBlockAssociation")
-	local t = { 
+	assert(args, "You must provide an argument table when creating VpcIpv6CidrBlockAssociation")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Ipv6CidrBlock"] = args["Ipv6CidrBlock"],
 		["AssociationId"] = args["AssociationId"],
 		["Ipv6CidrBlockState"] = args["Ipv6CidrBlockState"],
 	}
-	asserts.AssertVpcIpv6CidrBlockAssociation(t)
-	return t
+	asserts.AssertVpcIpv6CidrBlockAssociation(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeSpotFleetInstancesResponse = { ["ActiveInstances"] = true, ["SpotFleetRequestId"] = true, ["NextToken"] = true, nil }
@@ -5723,14 +7505,25 @@ end
 -- Required key: SpotFleetRequestId
 -- @return DescribeSpotFleetInstancesResponse structure as a key-value pair table
 function M.DescribeSpotFleetInstancesResponse(args)
-	assert(args, "You must provdide an argument table when creating DescribeSpotFleetInstancesResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeSpotFleetInstancesResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ActiveInstances"] = args["ActiveInstances"],
 		["SpotFleetRequestId"] = args["SpotFleetRequestId"],
 		["NextToken"] = args["NextToken"],
 	}
-	asserts.AssertDescribeSpotFleetInstancesResponse(t)
-	return t
+	asserts.AssertDescribeSpotFleetInstancesResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.VpnConnection = { ["VpnConnectionId"] = true, ["Tags"] = true, ["CustomerGatewayConfiguration"] = true, ["Routes"] = true, ["State"] = true, ["VpnGatewayId"] = true, ["CustomerGatewayId"] = true, ["Type"] = true, ["Options"] = true, ["VgwTelemetry"] = true, nil }
@@ -5769,8 +7562,14 @@ end
 -- * VgwTelemetry [VgwTelemetryList] <p>Information about the VPN tunnel.</p>
 -- @return VpnConnection structure as a key-value pair table
 function M.VpnConnection(args)
-	assert(args, "You must provdide an argument table when creating VpnConnection")
-	local t = { 
+	assert(args, "You must provide an argument table when creating VpnConnection")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["VpnConnectionId"] = args["VpnConnectionId"],
 		["Tags"] = args["Tags"],
 		["CustomerGatewayConfiguration"] = args["CustomerGatewayConfiguration"],
@@ -5782,8 +7581,13 @@ function M.VpnConnection(args)
 		["Options"] = args["Options"],
 		["VgwTelemetry"] = args["VgwTelemetry"],
 	}
-	asserts.AssertVpnConnection(t)
-	return t
+	asserts.AssertVpnConnection(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ScheduledInstancesPrivateIpAddressConfig = { ["Primary"] = true, ["PrivateIpAddress"] = true, nil }
@@ -5806,13 +7610,24 @@ end
 -- * PrivateIpAddress [String] <p>The IPv4 address.</p>
 -- @return ScheduledInstancesPrivateIpAddressConfig structure as a key-value pair table
 function M.ScheduledInstancesPrivateIpAddressConfig(args)
-	assert(args, "You must provdide an argument table when creating ScheduledInstancesPrivateIpAddressConfig")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ScheduledInstancesPrivateIpAddressConfig")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Primary"] = args["Primary"],
 		["PrivateIpAddress"] = args["PrivateIpAddress"],
 	}
-	asserts.AssertScheduledInstancesPrivateIpAddressConfig(t)
-	return t
+	asserts.AssertScheduledInstancesPrivateIpAddressConfig(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeSubnetsResult = { ["Subnets"] = true, nil }
@@ -5833,12 +7648,23 @@ end
 -- * Subnets [SubnetList] <p>Information about one or more subnets.</p>
 -- @return DescribeSubnetsResult structure as a key-value pair table
 function M.DescribeSubnetsResult(args)
-	assert(args, "You must provdide an argument table when creating DescribeSubnetsResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeSubnetsResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Subnets"] = args["Subnets"],
 	}
-	asserts.AssertDescribeSubnetsResult(t)
-	return t
+	asserts.AssertDescribeSubnetsResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DisableVpcClassicLinkResult = { ["Return"] = true, nil }
@@ -5859,12 +7685,23 @@ end
 -- * Return [Boolean] <p>Returns <code>true</code> if the request succeeds; otherwise, it returns an error.</p>
 -- @return DisableVpcClassicLinkResult structure as a key-value pair table
 function M.DisableVpcClassicLinkResult(args)
-	assert(args, "You must provdide an argument table when creating DisableVpcClassicLinkResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DisableVpcClassicLinkResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Return"] = args["Return"],
 	}
-	asserts.AssertDisableVpcClassicLinkResult(t)
-	return t
+	asserts.AssertDisableVpcClassicLinkResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AcceptVpcPeeringConnectionResult = { ["VpcPeeringConnection"] = true, nil }
@@ -5885,12 +7722,23 @@ end
 -- * VpcPeeringConnection [VpcPeeringConnection] <p>Information about the VPC peering connection.</p>
 -- @return AcceptVpcPeeringConnectionResult structure as a key-value pair table
 function M.AcceptVpcPeeringConnectionResult(args)
-	assert(args, "You must provdide an argument table when creating AcceptVpcPeeringConnectionResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AcceptVpcPeeringConnectionResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["VpcPeeringConnection"] = args["VpcPeeringConnection"],
 	}
-	asserts.AssertAcceptVpcPeeringConnectionResult(t)
-	return t
+	asserts.AssertAcceptVpcPeeringConnectionResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ModifyReservedInstancesRequest = { ["TargetConfigurations"] = true, ["ReservedInstancesIds"] = true, ["ClientToken"] = true, nil }
@@ -5919,14 +7767,25 @@ end
 -- Required key: TargetConfigurations
 -- @return ModifyReservedInstancesRequest structure as a key-value pair table
 function M.ModifyReservedInstancesRequest(args)
-	assert(args, "You must provdide an argument table when creating ModifyReservedInstancesRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ModifyReservedInstancesRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["TargetConfigurations"] = args["TargetConfigurations"],
 		["ReservedInstancesIds"] = args["ReservedInstancesIds"],
 		["ClientToken"] = args["ClientToken"],
 	}
-	asserts.AssertModifyReservedInstancesRequest(t)
-	return t
+	asserts.AssertModifyReservedInstancesRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ReservedInstanceReservationValue = { ["ReservedInstanceId"] = true, ["ReservationValue"] = true, nil }
@@ -5949,13 +7808,24 @@ end
 -- * ReservationValue [ReservationValue] <p>The total value of the Convertible Reserved Instance that you are exchanging.</p>
 -- @return ReservedInstanceReservationValue structure as a key-value pair table
 function M.ReservedInstanceReservationValue(args)
-	assert(args, "You must provdide an argument table when creating ReservedInstanceReservationValue")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ReservedInstanceReservationValue")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ReservedInstanceId"] = args["ReservedInstanceId"],
 		["ReservationValue"] = args["ReservationValue"],
 	}
-	asserts.AssertReservedInstanceReservationValue(t)
-	return t
+	asserts.AssertReservedInstanceReservationValue(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateVolumePermission = { ["UserId"] = true, ["Group"] = true, nil }
@@ -5978,13 +7848,24 @@ end
 -- * Group [PermissionGroup] <p>The specific group that is to be added or removed from a volume's list of create volume permissions.</p>
 -- @return CreateVolumePermission structure as a key-value pair table
 function M.CreateVolumePermission(args)
-	assert(args, "You must provdide an argument table when creating CreateVolumePermission")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateVolumePermission")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["UserId"] = args["UserId"],
 		["Group"] = args["Group"],
 	}
-	asserts.AssertCreateVolumePermission(t)
-	return t
+	asserts.AssertCreateVolumePermission(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeSpotFleetRequestsRequest = { ["SpotFleetRequestIds"] = true, ["NextToken"] = true, ["DryRun"] = true, ["MaxResults"] = true, nil }
@@ -6011,15 +7892,26 @@ end
 -- * MaxResults [Integer] <p>The maximum number of results to return in a single call. Specify a value between 1 and 1000. The default value is 1000. To retrieve the remaining results, make another call with the returned <code>NextToken</code> value.</p>
 -- @return DescribeSpotFleetRequestsRequest structure as a key-value pair table
 function M.DescribeSpotFleetRequestsRequest(args)
-	assert(args, "You must provdide an argument table when creating DescribeSpotFleetRequestsRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeSpotFleetRequestsRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["SpotFleetRequestIds"] = args["SpotFleetRequestIds"],
 		["NextToken"] = args["NextToken"],
 		["DryRun"] = args["DryRun"],
 		["MaxResults"] = args["MaxResults"],
 	}
-	asserts.AssertDescribeSpotFleetRequestsRequest(t)
-	return t
+	asserts.AssertDescribeSpotFleetRequestsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetConsoleOutputRequest = { ["InstanceId"] = true, ["DryRun"] = true, nil }
@@ -6044,13 +7936,24 @@ end
 -- Required key: InstanceId
 -- @return GetConsoleOutputRequest structure as a key-value pair table
 function M.GetConsoleOutputRequest(args)
-	assert(args, "You must provdide an argument table when creating GetConsoleOutputRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetConsoleOutputRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["InstanceId"] = args["InstanceId"],
 		["DryRun"] = args["DryRun"],
 	}
-	asserts.AssertGetConsoleOutputRequest(t)
-	return t
+	asserts.AssertGetConsoleOutputRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeFlowLogsResult = { ["FlowLogs"] = true, ["NextToken"] = true, nil }
@@ -6073,13 +7976,24 @@ end
 -- * NextToken [String] <p>The token to use to retrieve the next page of results. This value is <code>null</code> when there are no more results to return.</p>
 -- @return DescribeFlowLogsResult structure as a key-value pair table
 function M.DescribeFlowLogsResult(args)
-	assert(args, "You must provdide an argument table when creating DescribeFlowLogsResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeFlowLogsResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["FlowLogs"] = args["FlowLogs"],
 		["NextToken"] = args["NextToken"],
 	}
-	asserts.AssertDescribeFlowLogsResult(t)
-	return t
+	asserts.AssertDescribeFlowLogsResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.VolumeStatusInfo = { ["Status"] = true, ["Details"] = true, nil }
@@ -6102,13 +8016,24 @@ end
 -- * Details [VolumeStatusDetailsList] <p>The details of the volume status.</p>
 -- @return VolumeStatusInfo structure as a key-value pair table
 function M.VolumeStatusInfo(args)
-	assert(args, "You must provdide an argument table when creating VolumeStatusInfo")
-	local t = { 
+	assert(args, "You must provide an argument table when creating VolumeStatusInfo")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Status"] = args["Status"],
 		["Details"] = args["Details"],
 	}
-	asserts.AssertVolumeStatusInfo(t)
-	return t
+	asserts.AssertVolumeStatusInfo(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Purchase = { ["HourlyPrice"] = true, ["InstanceFamily"] = true, ["CurrencyCode"] = true, ["PaymentOption"] = true, ["HostIdSet"] = true, ["HostReservationId"] = true, ["UpfrontPrice"] = true, ["Duration"] = true, nil }
@@ -6143,8 +8068,14 @@ end
 -- * Duration [Integer] <p>The duration of the reservation's term in seconds.</p>
 -- @return Purchase structure as a key-value pair table
 function M.Purchase(args)
-	assert(args, "You must provdide an argument table when creating Purchase")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Purchase")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["HourlyPrice"] = args["HourlyPrice"],
 		["InstanceFamily"] = args["InstanceFamily"],
 		["CurrencyCode"] = args["CurrencyCode"],
@@ -6154,8 +8085,13 @@ function M.Purchase(args)
 		["UpfrontPrice"] = args["UpfrontPrice"],
 		["Duration"] = args["Duration"],
 	}
-	asserts.AssertPurchase(t)
-	return t
+	asserts.AssertPurchase(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.PeeringConnectionOptions = { ["AllowEgressFromLocalVpcToRemoteClassicLink"] = true, ["AllowDnsResolutionFromRemoteVpc"] = true, ["AllowEgressFromLocalClassicLinkToRemoteVpc"] = true, nil }
@@ -6180,14 +8116,25 @@ end
 -- * AllowEgressFromLocalClassicLinkToRemoteVpc [Boolean] <p>If true, enables outbound communication from an EC2-Classic instance that's linked to a local VPC via ClassicLink to instances in a peer VPC.</p>
 -- @return PeeringConnectionOptions structure as a key-value pair table
 function M.PeeringConnectionOptions(args)
-	assert(args, "You must provdide an argument table when creating PeeringConnectionOptions")
-	local t = { 
+	assert(args, "You must provide an argument table when creating PeeringConnectionOptions")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["AllowEgressFromLocalVpcToRemoteClassicLink"] = args["AllowEgressFromLocalVpcToRemoteClassicLink"],
 		["AllowDnsResolutionFromRemoteVpc"] = args["AllowDnsResolutionFromRemoteVpc"],
 		["AllowEgressFromLocalClassicLinkToRemoteVpc"] = args["AllowEgressFromLocalClassicLinkToRemoteVpc"],
 	}
-	asserts.AssertPeeringConnectionOptions(t)
-	return t
+	asserts.AssertPeeringConnectionOptions(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Vpc = { ["VpcId"] = true, ["InstanceTenancy"] = true, ["Tags"] = true, ["Ipv6CidrBlockAssociationSet"] = true, ["State"] = true, ["DhcpOptionsId"] = true, ["CidrBlock"] = true, ["IsDefault"] = true, nil }
@@ -6222,8 +8169,14 @@ end
 -- * IsDefault [Boolean] <p>Indicates whether the VPC is the default VPC.</p>
 -- @return Vpc structure as a key-value pair table
 function M.Vpc(args)
-	assert(args, "You must provdide an argument table when creating Vpc")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Vpc")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["VpcId"] = args["VpcId"],
 		["InstanceTenancy"] = args["InstanceTenancy"],
 		["Tags"] = args["Tags"],
@@ -6233,8 +8186,13 @@ function M.Vpc(args)
 		["CidrBlock"] = args["CidrBlock"],
 		["IsDefault"] = args["IsDefault"],
 	}
-	asserts.AssertVpc(t)
-	return t
+	asserts.AssertVpc(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeVpcEndpointServicesResult = { ["NextToken"] = true, ["ServiceNames"] = true, nil }
@@ -6257,13 +8215,24 @@ end
 -- * ServiceNames [ValueStringList] <p>A list of supported AWS services.</p>
 -- @return DescribeVpcEndpointServicesResult structure as a key-value pair table
 function M.DescribeVpcEndpointServicesResult(args)
-	assert(args, "You must provdide an argument table when creating DescribeVpcEndpointServicesResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeVpcEndpointServicesResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NextToken"] = args["NextToken"],
 		["ServiceNames"] = args["ServiceNames"],
 	}
-	asserts.AssertDescribeVpcEndpointServicesResult(t)
-	return t
+	asserts.AssertDescribeVpcEndpointServicesResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ReplaceRouteTableAssociationRequest = { ["RouteTableId"] = true, ["AssociationId"] = true, ["DryRun"] = true, nil }
@@ -6292,14 +8261,25 @@ end
 -- Required key: RouteTableId
 -- @return ReplaceRouteTableAssociationRequest structure as a key-value pair table
 function M.ReplaceRouteTableAssociationRequest(args)
-	assert(args, "You must provdide an argument table when creating ReplaceRouteTableAssociationRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ReplaceRouteTableAssociationRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["RouteTableId"] = args["RouteTableId"],
 		["AssociationId"] = args["AssociationId"],
 		["DryRun"] = args["DryRun"],
 	}
-	asserts.AssertReplaceRouteTableAssociationRequest(t)
-	return t
+	asserts.AssertReplaceRouteTableAssociationRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CancelBundleTaskResult = { ["BundleTask"] = true, nil }
@@ -6320,12 +8300,23 @@ end
 -- * BundleTask [BundleTask] <p>Information about the bundle task.</p>
 -- @return CancelBundleTaskResult structure as a key-value pair table
 function M.CancelBundleTaskResult(args)
-	assert(args, "You must provdide an argument table when creating CancelBundleTaskResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CancelBundleTaskResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["BundleTask"] = args["BundleTask"],
 	}
-	asserts.AssertCancelBundleTaskResult(t)
-	return t
+	asserts.AssertCancelBundleTaskResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.SecurityGroup = { ["IpPermissionsEgress"] = true, ["Description"] = true, ["Tags"] = true, ["IpPermissions"] = true, ["GroupName"] = true, ["VpcId"] = true, ["OwnerId"] = true, ["GroupId"] = true, nil }
@@ -6360,8 +8351,14 @@ end
 -- * GroupId [String] <p>The ID of the security group.</p>
 -- @return SecurityGroup structure as a key-value pair table
 function M.SecurityGroup(args)
-	assert(args, "You must provdide an argument table when creating SecurityGroup")
-	local t = { 
+	assert(args, "You must provide an argument table when creating SecurityGroup")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["IpPermissionsEgress"] = args["IpPermissionsEgress"],
 		["Description"] = args["Description"],
 		["Tags"] = args["Tags"],
@@ -6371,8 +8368,13 @@ function M.SecurityGroup(args)
 		["OwnerId"] = args["OwnerId"],
 		["GroupId"] = args["GroupId"],
 	}
-	asserts.AssertSecurityGroup(t)
-	return t
+	asserts.AssertSecurityGroup(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.EnableVpcClassicLinkDnsSupportRequest = { ["VpcId"] = true, nil }
@@ -6393,12 +8395,23 @@ end
 -- * VpcId [String] <p>The ID of the VPC.</p>
 -- @return EnableVpcClassicLinkDnsSupportRequest structure as a key-value pair table
 function M.EnableVpcClassicLinkDnsSupportRequest(args)
-	assert(args, "You must provdide an argument table when creating EnableVpcClassicLinkDnsSupportRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating EnableVpcClassicLinkDnsSupportRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["VpcId"] = args["VpcId"],
 	}
-	asserts.AssertEnableVpcClassicLinkDnsSupportRequest(t)
-	return t
+	asserts.AssertEnableVpcClassicLinkDnsSupportRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ReportInstanceStatusRequest = { ["Status"] = true, ["ReasonCodes"] = true, ["DryRun"] = true, ["Description"] = true, ["Instances"] = true, ["StartTime"] = true, ["EndTime"] = true, nil }
@@ -6437,8 +8450,14 @@ end
 -- Required key: Status
 -- @return ReportInstanceStatusRequest structure as a key-value pair table
 function M.ReportInstanceStatusRequest(args)
-	assert(args, "You must provdide an argument table when creating ReportInstanceStatusRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ReportInstanceStatusRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Status"] = args["Status"],
 		["ReasonCodes"] = args["ReasonCodes"],
 		["DryRun"] = args["DryRun"],
@@ -6447,8 +8466,13 @@ function M.ReportInstanceStatusRequest(args)
 		["StartTime"] = args["StartTime"],
 		["EndTime"] = args["EndTime"],
 	}
-	asserts.AssertReportInstanceStatusRequest(t)
-	return t
+	asserts.AssertReportInstanceStatusRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeVolumeAttributeResult = { ["AutoEnableIO"] = true, ["ProductCodes"] = true, ["VolumeId"] = true, nil }
@@ -6473,14 +8497,25 @@ end
 -- * VolumeId [String] <p>The ID of the volume.</p>
 -- @return DescribeVolumeAttributeResult structure as a key-value pair table
 function M.DescribeVolumeAttributeResult(args)
-	assert(args, "You must provdide an argument table when creating DescribeVolumeAttributeResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeVolumeAttributeResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["AutoEnableIO"] = args["AutoEnableIO"],
 		["ProductCodes"] = args["ProductCodes"],
 		["VolumeId"] = args["VolumeId"],
 	}
-	asserts.AssertDescribeVolumeAttributeResult(t)
-	return t
+	asserts.AssertDescribeVolumeAttributeResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ReservedInstancesId = { ["ReservedInstancesId"] = true, nil }
@@ -6501,12 +8536,23 @@ end
 -- * ReservedInstancesId [String] <p>The ID of the Reserved Instance.</p>
 -- @return ReservedInstancesId structure as a key-value pair table
 function M.ReservedInstancesId(args)
-	assert(args, "You must provdide an argument table when creating ReservedInstancesId")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ReservedInstancesId")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ReservedInstancesId"] = args["ReservedInstancesId"],
 	}
-	asserts.AssertReservedInstancesId(t)
-	return t
+	asserts.AssertReservedInstancesId(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AttributeValue = { ["Value"] = true, nil }
@@ -6527,12 +8573,23 @@ end
 -- * Value [String] <p>The attribute value. Note that the value is case-sensitive.</p>
 -- @return AttributeValue structure as a key-value pair table
 function M.AttributeValue(args)
-	assert(args, "You must provdide an argument table when creating AttributeValue")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AttributeValue")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Value"] = args["Value"],
 	}
-	asserts.AssertAttributeValue(t)
-	return t
+	asserts.AssertAttributeValue(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeVpcEndpointsRequest = { ["VpcEndpointIds"] = true, ["NextToken"] = true, ["DryRun"] = true, ["MaxResults"] = true, ["Filters"] = true, nil }
@@ -6561,16 +8618,27 @@ end
 -- * Filters [FilterList] <p>One or more filters.</p> <ul> <li> <p> <code>service-name</code>: The name of the AWS service.</p> </li> <li> <p> <code>vpc-id</code>: The ID of the VPC in which the endpoint resides.</p> </li> <li> <p> <code>vpc-endpoint-id</code>: The ID of the endpoint.</p> </li> <li> <p> <code>vpc-endpoint-state</code>: The state of the endpoint. (<code>pending</code> | <code>available</code> | <code>deleting</code> | <code>deleted</code>)</p> </li> </ul>
 -- @return DescribeVpcEndpointsRequest structure as a key-value pair table
 function M.DescribeVpcEndpointsRequest(args)
-	assert(args, "You must provdide an argument table when creating DescribeVpcEndpointsRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeVpcEndpointsRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["VpcEndpointIds"] = args["VpcEndpointIds"],
 		["NextToken"] = args["NextToken"],
 		["DryRun"] = args["DryRun"],
 		["MaxResults"] = args["MaxResults"],
 		["Filters"] = args["Filters"],
 	}
-	asserts.AssertDescribeVpcEndpointsRequest(t)
-	return t
+	asserts.AssertDescribeVpcEndpointsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.TagDescription = { ["ResourceType"] = true, ["ResourceId"] = true, ["Value"] = true, ["Key"] = true, nil }
@@ -6597,15 +8665,26 @@ end
 -- * Key [String] <p>The tag key.</p>
 -- @return TagDescription structure as a key-value pair table
 function M.TagDescription(args)
-	assert(args, "You must provdide an argument table when creating TagDescription")
-	local t = { 
+	assert(args, "You must provide an argument table when creating TagDescription")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ResourceType"] = args["ResourceType"],
 		["ResourceId"] = args["ResourceId"],
 		["Value"] = args["Value"],
 		["Key"] = args["Key"],
 	}
-	asserts.AssertTagDescription(t)
-	return t
+	asserts.AssertTagDescription(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteVpcRequest = { ["VpcId"] = true, ["DryRun"] = true, nil }
@@ -6630,13 +8709,24 @@ end
 -- Required key: VpcId
 -- @return DeleteVpcRequest structure as a key-value pair table
 function M.DeleteVpcRequest(args)
-	assert(args, "You must provdide an argument table when creating DeleteVpcRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteVpcRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["VpcId"] = args["VpcId"],
 		["DryRun"] = args["DryRun"],
 	}
-	asserts.AssertDeleteVpcRequest(t)
-	return t
+	asserts.AssertDeleteVpcRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeSnapshotsRequest = { ["OwnerIds"] = true, ["DryRun"] = true, ["SnapshotIds"] = true, ["MaxResults"] = true, ["Filters"] = true, ["RestorableByUserIds"] = true, ["NextToken"] = true, nil }
@@ -6669,8 +8759,14 @@ end
 -- * NextToken [String] <p>The <code>NextToken</code> value returned from a previous paginated <code>DescribeSnapshots</code> request where <code>MaxResults</code> was used and the results exceeded the value of that parameter. Pagination continues from the end of the previous results that returned the <code>NextToken</code> value. This value is <code>null</code> when there are no more results to return.</p>
 -- @return DescribeSnapshotsRequest structure as a key-value pair table
 function M.DescribeSnapshotsRequest(args)
-	assert(args, "You must provdide an argument table when creating DescribeSnapshotsRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeSnapshotsRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["OwnerIds"] = args["OwnerIds"],
 		["DryRun"] = args["DryRun"],
 		["SnapshotIds"] = args["SnapshotIds"],
@@ -6679,8 +8775,13 @@ function M.DescribeSnapshotsRequest(args)
 		["RestorableByUserIds"] = args["RestorableByUserIds"],
 		["NextToken"] = args["NextToken"],
 	}
-	asserts.AssertDescribeSnapshotsRequest(t)
-	return t
+	asserts.AssertDescribeSnapshotsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.VpnConnectionOptions = { ["StaticRoutesOnly"] = true, nil }
@@ -6701,12 +8802,23 @@ end
 -- * StaticRoutesOnly [Boolean] <p>Indicates whether the VPN connection uses static routes only. Static routes must be used for devices that don't support BGP.</p>
 -- @return VpnConnectionOptions structure as a key-value pair table
 function M.VpnConnectionOptions(args)
-	assert(args, "You must provdide an argument table when creating VpnConnectionOptions")
-	local t = { 
+	assert(args, "You must provide an argument table when creating VpnConnectionOptions")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["StaticRoutesOnly"] = args["StaticRoutesOnly"],
 	}
-	asserts.AssertVpnConnectionOptions(t)
-	return t
+	asserts.AssertVpnConnectionOptions(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.BundleInstanceRequest = { ["InstanceId"] = true, ["DryRun"] = true, ["Storage"] = true, nil }
@@ -6735,14 +8847,25 @@ end
 -- Required key: Storage
 -- @return BundleInstanceRequest structure as a key-value pair table
 function M.BundleInstanceRequest(args)
-	assert(args, "You must provdide an argument table when creating BundleInstanceRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating BundleInstanceRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["InstanceId"] = args["InstanceId"],
 		["DryRun"] = args["DryRun"],
 		["Storage"] = args["Storage"],
 	}
-	asserts.AssertBundleInstanceRequest(t)
-	return t
+	asserts.AssertBundleInstanceRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ImportVolumeTaskDetails = { ["BytesConverted"] = true, ["Volume"] = true, ["Image"] = true, ["AvailabilityZone"] = true, ["Description"] = true, nil }
@@ -6779,16 +8902,27 @@ end
 -- Required key: Volume
 -- @return ImportVolumeTaskDetails structure as a key-value pair table
 function M.ImportVolumeTaskDetails(args)
-	assert(args, "You must provdide an argument table when creating ImportVolumeTaskDetails")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ImportVolumeTaskDetails")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["BytesConverted"] = args["BytesConverted"],
 		["Volume"] = args["Volume"],
 		["Image"] = args["Image"],
 		["AvailabilityZone"] = args["AvailabilityZone"],
 		["Description"] = args["Description"],
 	}
-	asserts.AssertImportVolumeTaskDetails(t)
-	return t
+	asserts.AssertImportVolumeTaskDetails(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ImportSnapshotResult = { ["SnapshotTaskDetail"] = true, ["Description"] = true, ["ImportTaskId"] = true, nil }
@@ -6813,14 +8947,25 @@ end
 -- * ImportTaskId [String] <p>The ID of the import snapshot task.</p>
 -- @return ImportSnapshotResult structure as a key-value pair table
 function M.ImportSnapshotResult(args)
-	assert(args, "You must provdide an argument table when creating ImportSnapshotResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ImportSnapshotResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["SnapshotTaskDetail"] = args["SnapshotTaskDetail"],
 		["Description"] = args["Description"],
 		["ImportTaskId"] = args["ImportTaskId"],
 	}
-	asserts.AssertImportSnapshotResult(t)
-	return t
+	asserts.AssertImportSnapshotResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.VolumeStatusEvent = { ["EventId"] = true, ["EventType"] = true, ["NotBefore"] = true, ["Description"] = true, ["NotAfter"] = true, nil }
@@ -6849,16 +8994,27 @@ end
 -- * NotAfter [DateTime] <p>The latest end time of the event.</p>
 -- @return VolumeStatusEvent structure as a key-value pair table
 function M.VolumeStatusEvent(args)
-	assert(args, "You must provdide an argument table when creating VolumeStatusEvent")
-	local t = { 
+	assert(args, "You must provide an argument table when creating VolumeStatusEvent")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["EventId"] = args["EventId"],
 		["EventType"] = args["EventType"],
 		["NotBefore"] = args["NotBefore"],
 		["Description"] = args["Description"],
 		["NotAfter"] = args["NotAfter"],
 	}
-	asserts.AssertVolumeStatusEvent(t)
-	return t
+	asserts.AssertVolumeStatusEvent(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.RejectVpcPeeringConnectionResult = { ["Return"] = true, nil }
@@ -6879,12 +9035,23 @@ end
 -- * Return [Boolean] <p>Returns <code>true</code> if the request succeeds; otherwise, it returns an error.</p>
 -- @return RejectVpcPeeringConnectionResult structure as a key-value pair table
 function M.RejectVpcPeeringConnectionResult(args)
-	assert(args, "You must provdide an argument table when creating RejectVpcPeeringConnectionResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating RejectVpcPeeringConnectionResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Return"] = args["Return"],
 	}
-	asserts.AssertRejectVpcPeeringConnectionResult(t)
-	return t
+	asserts.AssertRejectVpcPeeringConnectionResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteFlowLogsResult = { ["Unsuccessful"] = true, nil }
@@ -6905,12 +9072,23 @@ end
 -- * Unsuccessful [UnsuccessfulItemSet] <p>Information about the flow logs that could not be deleted successfully.</p>
 -- @return DeleteFlowLogsResult structure as a key-value pair table
 function M.DeleteFlowLogsResult(args)
-	assert(args, "You must provdide an argument table when creating DeleteFlowLogsResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteFlowLogsResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Unsuccessful"] = args["Unsuccessful"],
 	}
-	asserts.AssertDeleteFlowLogsResult(t)
-	return t
+	asserts.AssertDeleteFlowLogsResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UserBucket = { ["S3Bucket"] = true, ["S3Key"] = true, nil }
@@ -6933,13 +9111,24 @@ end
 -- * S3Key [String] <p>The file name of the disk image.</p>
 -- @return UserBucket structure as a key-value pair table
 function M.UserBucket(args)
-	assert(args, "You must provdide an argument table when creating UserBucket")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UserBucket")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["S3Bucket"] = args["S3Bucket"],
 		["S3Key"] = args["S3Key"],
 	}
-	asserts.AssertUserBucket(t)
-	return t
+	asserts.AssertUserBucket(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateFlowLogsResult = { ["Unsuccessful"] = true, ["FlowLogIds"] = true, ["ClientToken"] = true, nil }
@@ -6964,14 +9153,25 @@ end
 -- * ClientToken [String] <p>Unique, case-sensitive identifier you provide to ensure the idempotency of the request.</p>
 -- @return CreateFlowLogsResult structure as a key-value pair table
 function M.CreateFlowLogsResult(args)
-	assert(args, "You must provdide an argument table when creating CreateFlowLogsResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateFlowLogsResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Unsuccessful"] = args["Unsuccessful"],
 		["FlowLogIds"] = args["FlowLogIds"],
 		["ClientToken"] = args["ClientToken"],
 	}
-	asserts.AssertCreateFlowLogsResult(t)
-	return t
+	asserts.AssertCreateFlowLogsResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.StopInstancesRequest = { ["Force"] = true, ["DryRun"] = true, ["InstanceIds"] = true, nil }
@@ -6998,14 +9198,25 @@ end
 -- Required key: InstanceIds
 -- @return StopInstancesRequest structure as a key-value pair table
 function M.StopInstancesRequest(args)
-	assert(args, "You must provdide an argument table when creating StopInstancesRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating StopInstancesRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Force"] = args["Force"],
 		["DryRun"] = args["DryRun"],
 		["InstanceIds"] = args["InstanceIds"],
 	}
-	asserts.AssertStopInstancesRequest(t)
-	return t
+	asserts.AssertStopInstancesRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.StopInstancesResult = { ["StoppingInstances"] = true, nil }
@@ -7026,12 +9237,23 @@ end
 -- * StoppingInstances [InstanceStateChangeList] <p>Information about one or more stopped instances.</p>
 -- @return StopInstancesResult structure as a key-value pair table
 function M.StopInstancesResult(args)
-	assert(args, "You must provdide an argument table when creating StopInstancesResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating StopInstancesResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["StoppingInstances"] = args["StoppingInstances"],
 	}
-	asserts.AssertStopInstancesResult(t)
-	return t
+	asserts.AssertStopInstancesResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeReservedInstancesListingsRequest = { ["ReservedInstancesId"] = true, ["ReservedInstancesListingId"] = true, ["Filters"] = true, nil }
@@ -7056,14 +9278,25 @@ end
 -- * Filters [FilterList] <p>One or more filters.</p> <ul> <li> <p> <code>reserved-instances-id</code> - The ID of the Reserved Instances.</p> </li> <li> <p> <code>reserved-instances-listing-id</code> - The ID of the Reserved Instances listing.</p> </li> <li> <p> <code>status</code> - The status of the Reserved Instance listing (<code>pending</code> | <code>active</code> | <code>cancelled</code> | <code>closed</code>).</p> </li> <li> <p> <code>status-message</code> - The reason for the status.</p> </li> </ul>
 -- @return DescribeReservedInstancesListingsRequest structure as a key-value pair table
 function M.DescribeReservedInstancesListingsRequest(args)
-	assert(args, "You must provdide an argument table when creating DescribeReservedInstancesListingsRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeReservedInstancesListingsRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ReservedInstancesId"] = args["ReservedInstancesId"],
 		["ReservedInstancesListingId"] = args["ReservedInstancesListingId"],
 		["Filters"] = args["Filters"],
 	}
-	asserts.AssertDescribeReservedInstancesListingsRequest(t)
-	return t
+	asserts.AssertDescribeReservedInstancesListingsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ModifySubnetAttributeRequest = { ["SubnetId"] = true, ["MapPublicIpOnLaunch"] = true, ["AssignIpv6AddressOnCreation"] = true, nil }
@@ -7090,14 +9323,25 @@ end
 -- Required key: SubnetId
 -- @return ModifySubnetAttributeRequest structure as a key-value pair table
 function M.ModifySubnetAttributeRequest(args)
-	assert(args, "You must provdide an argument table when creating ModifySubnetAttributeRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ModifySubnetAttributeRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["SubnetId"] = args["SubnetId"],
 		["MapPublicIpOnLaunch"] = args["MapPublicIpOnLaunch"],
 		["AssignIpv6AddressOnCreation"] = args["AssignIpv6AddressOnCreation"],
 	}
-	asserts.AssertModifySubnetAttributeRequest(t)
-	return t
+	asserts.AssertModifySubnetAttributeRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DisassociateAddressRequest = { ["PublicIp"] = true, ["AssociationId"] = true, ["DryRun"] = true, nil }
@@ -7122,14 +9366,25 @@ end
 -- * DryRun [Boolean] <p>Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is <code>DryRunOperation</code>. Otherwise, it is <code>UnauthorizedOperation</code>.</p>
 -- @return DisassociateAddressRequest structure as a key-value pair table
 function M.DisassociateAddressRequest(args)
-	assert(args, "You must provdide an argument table when creating DisassociateAddressRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DisassociateAddressRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["PublicIp"] = args["PublicIp"],
 		["AssociationId"] = args["AssociationId"],
 		["DryRun"] = args["DryRun"],
 	}
-	asserts.AssertDisassociateAddressRequest(t)
-	return t
+	asserts.AssertDisassociateAddressRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ExportTask = { ["Description"] = true, ["InstanceExportDetails"] = true, ["ExportTaskId"] = true, ["State"] = true, ["StatusMessage"] = true, ["ExportToS3Task"] = true, nil }
@@ -7160,8 +9415,14 @@ end
 -- * ExportToS3Task [ExportToS3Task] <p>Information about the export task.</p>
 -- @return ExportTask structure as a key-value pair table
 function M.ExportTask(args)
-	assert(args, "You must provdide an argument table when creating ExportTask")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ExportTask")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Description"] = args["Description"],
 		["InstanceExportDetails"] = args["InstanceExportDetails"],
 		["ExportTaskId"] = args["ExportTaskId"],
@@ -7169,8 +9430,13 @@ function M.ExportTask(args)
 		["StatusMessage"] = args["StatusMessage"],
 		["ExportToS3Task"] = args["ExportToS3Task"],
 	}
-	asserts.AssertExportTask(t)
-	return t
+	asserts.AssertExportTask(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ImportVolumeRequest = { ["Volume"] = true, ["Image"] = true, ["AvailabilityZone"] = true, ["DryRun"] = true, ["Description"] = true, nil }
@@ -7205,16 +9471,27 @@ end
 -- Required key: Volume
 -- @return ImportVolumeRequest structure as a key-value pair table
 function M.ImportVolumeRequest(args)
-	assert(args, "You must provdide an argument table when creating ImportVolumeRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ImportVolumeRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Volume"] = args["Volume"],
 		["Image"] = args["Image"],
 		["AvailabilityZone"] = args["AvailabilityZone"],
 		["DryRun"] = args["DryRun"],
 		["Description"] = args["Description"],
 	}
-	asserts.AssertImportVolumeRequest(t)
-	return t
+	asserts.AssertImportVolumeRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeVpnGatewaysResult = { ["VpnGateways"] = true, nil }
@@ -7235,12 +9512,23 @@ end
 -- * VpnGateways [VpnGatewayList] <p>Information about one or more virtual private gateways.</p>
 -- @return DescribeVpnGatewaysResult structure as a key-value pair table
 function M.DescribeVpnGatewaysResult(args)
-	assert(args, "You must provdide an argument table when creating DescribeVpnGatewaysResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeVpnGatewaysResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["VpnGateways"] = args["VpnGateways"],
 	}
-	asserts.AssertDescribeVpnGatewaysResult(t)
-	return t
+	asserts.AssertDescribeVpnGatewaysResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ImageDiskContainer = { ["DeviceName"] = true, ["Description"] = true, ["Format"] = true, ["Url"] = true, ["SnapshotId"] = true, ["UserBucket"] = true, nil }
@@ -7271,8 +9559,14 @@ end
 -- * UserBucket [UserBucket] <p>The S3 bucket for the disk image.</p>
 -- @return ImageDiskContainer structure as a key-value pair table
 function M.ImageDiskContainer(args)
-	assert(args, "You must provdide an argument table when creating ImageDiskContainer")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ImageDiskContainer")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DeviceName"] = args["DeviceName"],
 		["Description"] = args["Description"],
 		["Format"] = args["Format"],
@@ -7280,8 +9574,13 @@ function M.ImageDiskContainer(args)
 		["SnapshotId"] = args["SnapshotId"],
 		["UserBucket"] = args["UserBucket"],
 	}
-	asserts.AssertImageDiskContainer(t)
-	return t
+	asserts.AssertImageDiskContainer(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeSpotPriceHistoryRequest = { ["NextToken"] = true, ["AvailabilityZone"] = true, ["DryRun"] = true, ["StartTime"] = true, ["InstanceTypes"] = true, ["MaxResults"] = true, ["ProductDescriptions"] = true, ["Filters"] = true, ["EndTime"] = true, nil }
@@ -7318,8 +9617,14 @@ end
 -- * EndTime [DateTime] <p>The date and time, up to the current date, from which to stop retrieving the price history data, in UTC format (for example, <i>YYYY</i>-<i>MM</i>-<i>DD</i>T<i>HH</i>:<i>MM</i>:<i>SS</i>Z).</p>
 -- @return DescribeSpotPriceHistoryRequest structure as a key-value pair table
 function M.DescribeSpotPriceHistoryRequest(args)
-	assert(args, "You must provdide an argument table when creating DescribeSpotPriceHistoryRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeSpotPriceHistoryRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NextToken"] = args["NextToken"],
 		["AvailabilityZone"] = args["AvailabilityZone"],
 		["DryRun"] = args["DryRun"],
@@ -7330,8 +9635,13 @@ function M.DescribeSpotPriceHistoryRequest(args)
 		["Filters"] = args["Filters"],
 		["EndTime"] = args["EndTime"],
 	}
-	asserts.AssertDescribeSpotPriceHistoryRequest(t)
-	return t
+	asserts.AssertDescribeSpotPriceHistoryRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ModifyHostsRequest = { ["HostIds"] = true, ["AutoPlacement"] = true, nil }
@@ -7358,13 +9668,24 @@ end
 -- Required key: HostIds
 -- @return ModifyHostsRequest structure as a key-value pair table
 function M.ModifyHostsRequest(args)
-	assert(args, "You must provdide an argument table when creating ModifyHostsRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ModifyHostsRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["HostIds"] = args["HostIds"],
 		["AutoPlacement"] = args["AutoPlacement"],
 	}
-	asserts.AssertModifyHostsRequest(t)
-	return t
+	asserts.AssertModifyHostsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ResetImageAttributeRequest = { ["Attribute"] = true, ["DryRun"] = true, ["ImageId"] = true, nil }
@@ -7393,14 +9714,25 @@ end
 -- Required key: ImageId
 -- @return ResetImageAttributeRequest structure as a key-value pair table
 function M.ResetImageAttributeRequest(args)
-	assert(args, "You must provdide an argument table when creating ResetImageAttributeRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ResetImageAttributeRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Attribute"] = args["Attribute"],
 		["DryRun"] = args["DryRun"],
 		["ImageId"] = args["ImageId"],
 	}
-	asserts.AssertResetImageAttributeRequest(t)
-	return t
+	asserts.AssertResetImageAttributeRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeAvailabilityZonesResult = { ["AvailabilityZones"] = true, nil }
@@ -7421,12 +9753,23 @@ end
 -- * AvailabilityZones [AvailabilityZoneList] <p>Information about one or more Availability Zones.</p>
 -- @return DescribeAvailabilityZonesResult structure as a key-value pair table
 function M.DescribeAvailabilityZonesResult(args)
-	assert(args, "You must provdide an argument table when creating DescribeAvailabilityZonesResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeAvailabilityZonesResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["AvailabilityZones"] = args["AvailabilityZones"],
 	}
-	asserts.AssertDescribeAvailabilityZonesResult(t)
-	return t
+	asserts.AssertDescribeAvailabilityZonesResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.RecurringCharge = { ["Amount"] = true, ["Frequency"] = true, nil }
@@ -7449,13 +9792,24 @@ end
 -- * Frequency [RecurringChargeFrequency] <p>The frequency of the recurring charge.</p>
 -- @return RecurringCharge structure as a key-value pair table
 function M.RecurringCharge(args)
-	assert(args, "You must provdide an argument table when creating RecurringCharge")
-	local t = { 
+	assert(args, "You must provide an argument table when creating RecurringCharge")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Amount"] = args["Amount"],
 		["Frequency"] = args["Frequency"],
 	}
-	asserts.AssertRecurringCharge(t)
-	return t
+	asserts.AssertRecurringCharge(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InstanceStateChange = { ["InstanceId"] = true, ["CurrentState"] = true, ["PreviousState"] = true, nil }
@@ -7480,14 +9834,25 @@ end
 -- * PreviousState [InstanceState] <p>The previous state of the instance.</p>
 -- @return InstanceStateChange structure as a key-value pair table
 function M.InstanceStateChange(args)
-	assert(args, "You must provdide an argument table when creating InstanceStateChange")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InstanceStateChange")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["InstanceId"] = args["InstanceId"],
 		["CurrentState"] = args["CurrentState"],
 		["PreviousState"] = args["PreviousState"],
 	}
-	asserts.AssertInstanceStateChange(t)
-	return t
+	asserts.AssertInstanceStateChange(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.PurchaseRequest = { ["InstanceCount"] = true, ["PurchaseToken"] = true, nil }
@@ -7514,13 +9879,24 @@ end
 -- Required key: PurchaseToken
 -- @return PurchaseRequest structure as a key-value pair table
 function M.PurchaseRequest(args)
-	assert(args, "You must provdide an argument table when creating PurchaseRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating PurchaseRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["InstanceCount"] = args["InstanceCount"],
 		["PurchaseToken"] = args["PurchaseToken"],
 	}
-	asserts.AssertPurchaseRequest(t)
-	return t
+	asserts.AssertPurchaseRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ResetSnapshotAttributeRequest = { ["Attribute"] = true, ["DryRun"] = true, ["SnapshotId"] = true, nil }
@@ -7549,14 +9925,25 @@ end
 -- Required key: SnapshotId
 -- @return ResetSnapshotAttributeRequest structure as a key-value pair table
 function M.ResetSnapshotAttributeRequest(args)
-	assert(args, "You must provdide an argument table when creating ResetSnapshotAttributeRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ResetSnapshotAttributeRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Attribute"] = args["Attribute"],
 		["DryRun"] = args["DryRun"],
 		["SnapshotId"] = args["SnapshotId"],
 	}
-	asserts.AssertResetSnapshotAttributeRequest(t)
-	return t
+	asserts.AssertResetSnapshotAttributeRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeVolumesModificationsResult = { ["VolumesModifications"] = true, ["NextToken"] = true, nil }
@@ -7579,13 +9966,24 @@ end
 -- * NextToken [String] <p>Token for pagination, null if there are no more results </p>
 -- @return DescribeVolumesModificationsResult structure as a key-value pair table
 function M.DescribeVolumesModificationsResult(args)
-	assert(args, "You must provdide an argument table when creating DescribeVolumesModificationsResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeVolumesModificationsResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["VolumesModifications"] = args["VolumesModifications"],
 		["NextToken"] = args["NextToken"],
 	}
-	asserts.AssertDescribeVolumesModificationsResult(t)
-	return t
+	asserts.AssertDescribeVolumesModificationsResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ImportKeyPairRequest = { ["PublicKeyMaterial"] = true, ["KeyName"] = true, ["DryRun"] = true, nil }
@@ -7614,14 +10012,25 @@ end
 -- Required key: PublicKeyMaterial
 -- @return ImportKeyPairRequest structure as a key-value pair table
 function M.ImportKeyPairRequest(args)
-	assert(args, "You must provdide an argument table when creating ImportKeyPairRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ImportKeyPairRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["PublicKeyMaterial"] = args["PublicKeyMaterial"],
 		["KeyName"] = args["KeyName"],
 		["DryRun"] = args["DryRun"],
 	}
-	asserts.AssertImportKeyPairRequest(t)
-	return t
+	asserts.AssertImportKeyPairRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.SpotFleetLaunchSpecification = { ["WeightedCapacity"] = true, ["UserData"] = true, ["SubnetId"] = true, ["Monitoring"] = true, ["ImageId"] = true, ["KeyName"] = true, ["BlockDeviceMappings"] = true, ["EbsOptimized"] = true, ["SecurityGroups"] = true, ["SpotPrice"] = true, ["RamdiskId"] = true, ["KernelId"] = true, ["Placement"] = true, ["IamInstanceProfile"] = true, ["InstanceType"] = true, ["AddressingType"] = true, ["NetworkInterfaces"] = true, nil }
@@ -7674,8 +10083,14 @@ end
 -- * NetworkInterfaces [InstanceNetworkInterfaceSpecificationList] <p>One or more network interfaces. If you specify a network interface, you must specify subnet IDs and security group IDs using the network interface.</p>
 -- @return SpotFleetLaunchSpecification structure as a key-value pair table
 function M.SpotFleetLaunchSpecification(args)
-	assert(args, "You must provdide an argument table when creating SpotFleetLaunchSpecification")
-	local t = { 
+	assert(args, "You must provide an argument table when creating SpotFleetLaunchSpecification")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["WeightedCapacity"] = args["WeightedCapacity"],
 		["UserData"] = args["UserData"],
 		["SubnetId"] = args["SubnetId"],
@@ -7694,8 +10109,13 @@ function M.SpotFleetLaunchSpecification(args)
 		["AddressingType"] = args["AddressingType"],
 		["NetworkInterfaces"] = args["NetworkInterfaces"],
 	}
-	asserts.AssertSpotFleetLaunchSpecification(t)
-	return t
+	asserts.AssertSpotFleetLaunchSpecification(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteNetworkAclRequest = { ["NetworkAclId"] = true, ["DryRun"] = true, nil }
@@ -7720,13 +10140,24 @@ end
 -- Required key: NetworkAclId
 -- @return DeleteNetworkAclRequest structure as a key-value pair table
 function M.DeleteNetworkAclRequest(args)
-	assert(args, "You must provdide an argument table when creating DeleteNetworkAclRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteNetworkAclRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NetworkAclId"] = args["NetworkAclId"],
 		["DryRun"] = args["DryRun"],
 	}
-	asserts.AssertDeleteNetworkAclRequest(t)
-	return t
+	asserts.AssertDeleteNetworkAclRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribePlacementGroupsRequest = { ["GroupNames"] = true, ["DryRun"] = true, ["Filters"] = true, nil }
@@ -7751,14 +10182,25 @@ end
 -- * Filters [FilterList] <p>One or more filters.</p> <ul> <li> <p> <code>group-name</code> - The name of the placement group.</p> </li> <li> <p> <code>state</code> - The state of the placement group (<code>pending</code> | <code>available</code> | <code>deleting</code> | <code>deleted</code>).</p> </li> <li> <p> <code>strategy</code> - The strategy of the placement group (<code>cluster</code>).</p> </li> </ul>
 -- @return DescribePlacementGroupsRequest structure as a key-value pair table
 function M.DescribePlacementGroupsRequest(args)
-	assert(args, "You must provdide an argument table when creating DescribePlacementGroupsRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribePlacementGroupsRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["GroupNames"] = args["GroupNames"],
 		["DryRun"] = args["DryRun"],
 		["Filters"] = args["Filters"],
 	}
-	asserts.AssertDescribePlacementGroupsRequest(t)
-	return t
+	asserts.AssertDescribePlacementGroupsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeNetworkAclsRequest = { ["NetworkAclIds"] = true, ["DryRun"] = true, ["Filters"] = true, nil }
@@ -7783,14 +10225,25 @@ end
 -- * Filters [FilterList] <p>One or more filters.</p> <ul> <li> <p> <code>association.association-id</code> - The ID of an association ID for the ACL.</p> </li> <li> <p> <code>association.network-acl-id</code> - The ID of the network ACL involved in the association.</p> </li> <li> <p> <code>association.subnet-id</code> - The ID of the subnet involved in the association.</p> </li> <li> <p> <code>default</code> - Indicates whether the ACL is the default network ACL for the VPC.</p> </li> <li> <p> <code>entry.cidr</code> - The IPv4 CIDR range specified in the entry.</p> </li> <li> <p> <code>entry.egress</code> - Indicates whether the entry applies to egress traffic.</p> </li> <li> <p> <code>entry.icmp.code</code> - The ICMP code specified in the entry, if any.</p> </li> <li> <p> <code>entry.icmp.type</code> - The ICMP type specified in the entry, if any.</p> </li> <li> <p> <code>entry.ipv6-cidr</code> - The IPv6 CIDR range specified in the entry.</p> </li> <li> <p> <code>entry.port-range.from</code> - The start of the port range specified in the entry. </p> </li> <li> <p> <code>entry.port-range.to</code> - The end of the port range specified in the entry. </p> </li> <li> <p> <code>entry.protocol</code> - The protocol specified in the entry (<code>tcp</code> | <code>udp</code> | <code>icmp</code> or a protocol number).</p> </li> <li> <p> <code>entry.rule-action</code> - Allows or denies the matching traffic (<code>allow</code> | <code>deny</code>).</p> </li> <li> <p> <code>entry.rule-number</code> - The number of an entry (in other words, rule) in the ACL's set of entries.</p> </li> <li> <p> <code>network-acl-id</code> - The ID of the network ACL.</p> </li> <li> <p> <code>tag</code>:<i>key</i>=<i>value</i> - The key/value combination of a tag assigned to the resource. Specify the key of the tag in the filter name and the value of the tag in the filter value. For example, for the tag Purpose=X, specify <code>tag:Purpose</code> for the filter name and <code>X</code> for the filter value.</p> </li> <li> <p> <code>tag-key</code> - The key of a tag assigned to the resource. This filter is independent of the <code>tag-value</code> filter. For example, if you use both the filter "tag-key=Purpose" and the filter "tag-value=X", you get any resources assigned both the tag key Purpose (regardless of what the tag's value is), and the tag value X (regardless of what the tag's key is). If you want to list only resources where Purpose is X, see the <code>tag</code>:<i>key</i>=<i>value</i> filter.</p> </li> <li> <p> <code>tag-value</code> - The value of a tag assigned to the resource. This filter is independent of the <code>tag-key</code> filter.</p> </li> <li> <p> <code>vpc-id</code> - The ID of the VPC for the network ACL.</p> </li> </ul>
 -- @return DescribeNetworkAclsRequest structure as a key-value pair table
 function M.DescribeNetworkAclsRequest(args)
-	assert(args, "You must provdide an argument table when creating DescribeNetworkAclsRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeNetworkAclsRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NetworkAclIds"] = args["NetworkAclIds"],
 		["DryRun"] = args["DryRun"],
 		["Filters"] = args["Filters"],
 	}
-	asserts.AssertDescribeNetworkAclsRequest(t)
-	return t
+	asserts.AssertDescribeNetworkAclsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AssignIpv6AddressesRequest = { ["Ipv6Addresses"] = true, ["Ipv6AddressCount"] = true, ["NetworkInterfaceId"] = true, nil }
@@ -7817,14 +10270,25 @@ end
 -- Required key: NetworkInterfaceId
 -- @return AssignIpv6AddressesRequest structure as a key-value pair table
 function M.AssignIpv6AddressesRequest(args)
-	assert(args, "You must provdide an argument table when creating AssignIpv6AddressesRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AssignIpv6AddressesRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Ipv6Addresses"] = args["Ipv6Addresses"],
 		["Ipv6AddressCount"] = args["Ipv6AddressCount"],
 		["NetworkInterfaceId"] = args["NetworkInterfaceId"],
 	}
-	asserts.AssertAssignIpv6AddressesRequest(t)
-	return t
+	asserts.AssertAssignIpv6AddressesRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.MonitorInstancesResult = { ["InstanceMonitorings"] = true, nil }
@@ -7845,12 +10309,23 @@ end
 -- * InstanceMonitorings [InstanceMonitoringList] <p>The monitoring information.</p>
 -- @return MonitorInstancesResult structure as a key-value pair table
 function M.MonitorInstancesResult(args)
-	assert(args, "You must provdide an argument table when creating MonitorInstancesResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating MonitorInstancesResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["InstanceMonitorings"] = args["InstanceMonitorings"],
 	}
-	asserts.AssertMonitorInstancesResult(t)
-	return t
+	asserts.AssertMonitorInstancesResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.SlotDateTimeRangeRequest = { ["LatestTime"] = true, ["EarliestTime"] = true, nil }
@@ -7877,13 +10352,24 @@ end
 -- Required key: LatestTime
 -- @return SlotDateTimeRangeRequest structure as a key-value pair table
 function M.SlotDateTimeRangeRequest(args)
-	assert(args, "You must provdide an argument table when creating SlotDateTimeRangeRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating SlotDateTimeRangeRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["LatestTime"] = args["LatestTime"],
 		["EarliestTime"] = args["EarliestTime"],
 	}
-	asserts.AssertSlotDateTimeRangeRequest(t)
-	return t
+	asserts.AssertSlotDateTimeRangeRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeVpcEndpointsResult = { ["NextToken"] = true, ["VpcEndpoints"] = true, nil }
@@ -7906,13 +10392,24 @@ end
 -- * VpcEndpoints [VpcEndpointSet] <p>Information about the endpoints.</p>
 -- @return DescribeVpcEndpointsResult structure as a key-value pair table
 function M.DescribeVpcEndpointsResult(args)
-	assert(args, "You must provdide an argument table when creating DescribeVpcEndpointsResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeVpcEndpointsResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NextToken"] = args["NextToken"],
 		["VpcEndpoints"] = args["VpcEndpoints"],
 	}
-	asserts.AssertDescribeVpcEndpointsResult(t)
-	return t
+	asserts.AssertDescribeVpcEndpointsResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.FpgaImage = { ["OwnerAlias"] = true, ["UpdateTime"] = true, ["Name"] = true, ["ProductCodes"] = true, ["PciId"] = true, ["Tags"] = true, ["FpgaImageGlobalId"] = true, ["State"] = true, ["ShellVersion"] = true, ["OwnerId"] = true, ["FpgaImageId"] = true, ["CreateTime"] = true, ["Description"] = true, nil }
@@ -7957,8 +10454,14 @@ end
 -- * Description [String] <p>The description of the AFI.</p>
 -- @return FpgaImage structure as a key-value pair table
 function M.FpgaImage(args)
-	assert(args, "You must provdide an argument table when creating FpgaImage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating FpgaImage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["OwnerAlias"] = args["OwnerAlias"],
 		["UpdateTime"] = args["UpdateTime"],
 		["Name"] = args["Name"],
@@ -7973,8 +10476,13 @@ function M.FpgaImage(args)
 		["CreateTime"] = args["CreateTime"],
 		["Description"] = args["Description"],
 	}
-	asserts.AssertFpgaImage(t)
-	return t
+	asserts.AssertFpgaImage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeKeyPairsRequest = { ["DryRun"] = true, ["Filters"] = true, ["KeyNames"] = true, nil }
@@ -7999,14 +10507,25 @@ end
 -- * KeyNames [KeyNameStringList] <p>One or more key pair names.</p> <p>Default: Describes all your key pairs.</p>
 -- @return DescribeKeyPairsRequest structure as a key-value pair table
 function M.DescribeKeyPairsRequest(args)
-	assert(args, "You must provdide an argument table when creating DescribeKeyPairsRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeKeyPairsRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DryRun"] = args["DryRun"],
 		["Filters"] = args["Filters"],
 		["KeyNames"] = args["KeyNames"],
 	}
-	asserts.AssertDescribeKeyPairsRequest(t)
-	return t
+	asserts.AssertDescribeKeyPairsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.PurchaseReservedInstancesOfferingResult = { ["ReservedInstancesId"] = true, nil }
@@ -8027,12 +10546,23 @@ end
 -- * ReservedInstancesId [String] <p>The IDs of the purchased Reserved Instances.</p>
 -- @return PurchaseReservedInstancesOfferingResult structure as a key-value pair table
 function M.PurchaseReservedInstancesOfferingResult(args)
-	assert(args, "You must provdide an argument table when creating PurchaseReservedInstancesOfferingResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating PurchaseReservedInstancesOfferingResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ReservedInstancesId"] = args["ReservedInstancesId"],
 	}
-	asserts.AssertPurchaseReservedInstancesOfferingResult(t)
-	return t
+	asserts.AssertPurchaseReservedInstancesOfferingResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CancelBundleTaskRequest = { ["DryRun"] = true, ["BundleId"] = true, nil }
@@ -8057,13 +10587,24 @@ end
 -- Required key: BundleId
 -- @return CancelBundleTaskRequest structure as a key-value pair table
 function M.CancelBundleTaskRequest(args)
-	assert(args, "You must provdide an argument table when creating CancelBundleTaskRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CancelBundleTaskRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DryRun"] = args["DryRun"],
 		["BundleId"] = args["BundleId"],
 	}
-	asserts.AssertCancelBundleTaskRequest(t)
-	return t
+	asserts.AssertCancelBundleTaskRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ReleaseAddressRequest = { ["PublicIp"] = true, ["DryRun"] = true, ["AllocationId"] = true, nil }
@@ -8088,14 +10629,25 @@ end
 -- * AllocationId [String] <p>[EC2-VPC] The allocation ID. Required for EC2-VPC.</p>
 -- @return ReleaseAddressRequest structure as a key-value pair table
 function M.ReleaseAddressRequest(args)
-	assert(args, "You must provdide an argument table when creating ReleaseAddressRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ReleaseAddressRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["PublicIp"] = args["PublicIp"],
 		["DryRun"] = args["DryRun"],
 		["AllocationId"] = args["AllocationId"],
 	}
-	asserts.AssertReleaseAddressRequest(t)
-	return t
+	asserts.AssertReleaseAddressRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.TerminateInstancesResult = { ["TerminatingInstances"] = true, nil }
@@ -8116,12 +10668,23 @@ end
 -- * TerminatingInstances [InstanceStateChangeList] <p>Information about one or more terminated instances.</p>
 -- @return TerminateInstancesResult structure as a key-value pair table
 function M.TerminateInstancesResult(args)
-	assert(args, "You must provdide an argument table when creating TerminateInstancesResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating TerminateInstancesResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["TerminatingInstances"] = args["TerminatingInstances"],
 	}
-	asserts.AssertTerminateInstancesResult(t)
-	return t
+	asserts.AssertTerminateInstancesResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InstanceMonitoring = { ["InstanceId"] = true, ["Monitoring"] = true, nil }
@@ -8144,13 +10707,24 @@ end
 -- * Monitoring [Monitoring] <p>The monitoring for the instance.</p>
 -- @return InstanceMonitoring structure as a key-value pair table
 function M.InstanceMonitoring(args)
-	assert(args, "You must provdide an argument table when creating InstanceMonitoring")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InstanceMonitoring")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["InstanceId"] = args["InstanceId"],
 		["Monitoring"] = args["Monitoring"],
 	}
-	asserts.AssertInstanceMonitoring(t)
-	return t
+	asserts.AssertInstanceMonitoring(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeRegionsResult = { ["Regions"] = true, nil }
@@ -8171,12 +10745,23 @@ end
 -- * Regions [RegionList] <p>Information about one or more regions.</p>
 -- @return DescribeRegionsResult structure as a key-value pair table
 function M.DescribeRegionsResult(args)
-	assert(args, "You must provdide an argument table when creating DescribeRegionsResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeRegionsResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Regions"] = args["Regions"],
 	}
-	asserts.AssertDescribeRegionsResult(t)
-	return t
+	asserts.AssertDescribeRegionsResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.VpcPeeringConnectionOptionsDescription = { ["AllowEgressFromLocalVpcToRemoteClassicLink"] = true, ["AllowDnsResolutionFromRemoteVpc"] = true, ["AllowEgressFromLocalClassicLinkToRemoteVpc"] = true, nil }
@@ -8201,14 +10786,25 @@ end
 -- * AllowEgressFromLocalClassicLinkToRemoteVpc [Boolean] <p>Indicates whether a local ClassicLink connection can communicate with the peer VPC over the VPC peering connection.</p>
 -- @return VpcPeeringConnectionOptionsDescription structure as a key-value pair table
 function M.VpcPeeringConnectionOptionsDescription(args)
-	assert(args, "You must provdide an argument table when creating VpcPeeringConnectionOptionsDescription")
-	local t = { 
+	assert(args, "You must provide an argument table when creating VpcPeeringConnectionOptionsDescription")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["AllowEgressFromLocalVpcToRemoteClassicLink"] = args["AllowEgressFromLocalVpcToRemoteClassicLink"],
 		["AllowDnsResolutionFromRemoteVpc"] = args["AllowDnsResolutionFromRemoteVpc"],
 		["AllowEgressFromLocalClassicLinkToRemoteVpc"] = args["AllowEgressFromLocalClassicLinkToRemoteVpc"],
 	}
-	asserts.AssertVpcPeeringConnectionOptionsDescription(t)
-	return t
+	asserts.AssertVpcPeeringConnectionOptionsDescription(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.NatGateway = { ["NatGatewayAddresses"] = true, ["ProvisionedBandwidth"] = true, ["VpcId"] = true, ["State"] = true, ["FailureMessage"] = true, ["FailureCode"] = true, ["NatGatewayId"] = true, ["SubnetId"] = true, ["DeleteTime"] = true, ["CreateTime"] = true, nil }
@@ -8247,8 +10843,14 @@ end
 -- * CreateTime [DateTime] <p>The date and time the NAT gateway was created.</p>
 -- @return NatGateway structure as a key-value pair table
 function M.NatGateway(args)
-	assert(args, "You must provdide an argument table when creating NatGateway")
-	local t = { 
+	assert(args, "You must provide an argument table when creating NatGateway")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NatGatewayAddresses"] = args["NatGatewayAddresses"],
 		["ProvisionedBandwidth"] = args["ProvisionedBandwidth"],
 		["VpcId"] = args["VpcId"],
@@ -8260,8 +10862,13 @@ function M.NatGateway(args)
 		["DeleteTime"] = args["DeleteTime"],
 		["CreateTime"] = args["CreateTime"],
 	}
-	asserts.AssertNatGateway(t)
-	return t
+	asserts.AssertNatGateway(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeVpnConnectionsRequest = { ["DryRun"] = true, ["VpnConnectionIds"] = true, ["Filters"] = true, nil }
@@ -8286,14 +10893,25 @@ end
 -- * Filters [FilterList] <p>One or more filters.</p> <ul> <li> <p> <code>customer-gateway-configuration</code> - The configuration information for the customer gateway.</p> </li> <li> <p> <code>customer-gateway-id</code> - The ID of a customer gateway associated with the VPN connection.</p> </li> <li> <p> <code>state</code> - The state of the VPN connection (<code>pending</code> | <code>available</code> | <code>deleting</code> | <code>deleted</code>).</p> </li> <li> <p> <code>option.static-routes-only</code> - Indicates whether the connection has static routes only. Used for devices that do not support Border Gateway Protocol (BGP).</p> </li> <li> <p> <code>route.destination-cidr-block</code> - The destination CIDR block. This corresponds to the subnet used in a customer data center.</p> </li> <li> <p> <code>bgp-asn</code> - The BGP Autonomous System Number (ASN) associated with a BGP device.</p> </li> <li> <p> <code>tag</code>:<i>key</i>=<i>value</i> - The key/value combination of a tag assigned to the resource. Specify the key of the tag in the filter name and the value of the tag in the filter value. For example, for the tag Purpose=X, specify <code>tag:Purpose</code> for the filter name and <code>X</code> for the filter value.</p> </li> <li> <p> <code>tag-key</code> - The key of a tag assigned to the resource. This filter is independent of the <code>tag-value</code> filter. For example, if you use both the filter "tag-key=Purpose" and the filter "tag-value=X", you get any resources assigned both the tag key Purpose (regardless of what the tag's value is), and the tag value X (regardless of what the tag's key is). If you want to list only resources where Purpose is X, see the <code>tag</code>:<i>key</i>=<i>value</i> filter.</p> </li> <li> <p> <code>tag-value</code> - The value of a tag assigned to the resource. This filter is independent of the <code>tag-key</code> filter.</p> </li> <li> <p> <code>type</code> - The type of VPN connection. Currently the only supported type is <code>ipsec.1</code>.</p> </li> <li> <p> <code>vpn-connection-id</code> - The ID of the VPN connection.</p> </li> <li> <p> <code>vpn-gateway-id</code> - The ID of a virtual private gateway associated with the VPN connection.</p> </li> </ul>
 -- @return DescribeVpnConnectionsRequest structure as a key-value pair table
 function M.DescribeVpnConnectionsRequest(args)
-	assert(args, "You must provdide an argument table when creating DescribeVpnConnectionsRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeVpnConnectionsRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DryRun"] = args["DryRun"],
 		["VpnConnectionIds"] = args["VpnConnectionIds"],
 		["Filters"] = args["Filters"],
 	}
-	asserts.AssertDescribeVpnConnectionsRequest(t)
-	return t
+	asserts.AssertDescribeVpnConnectionsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.SpotDatafeedSubscription = { ["Fault"] = true, ["Prefix"] = true, ["Bucket"] = true, ["State"] = true, ["OwnerId"] = true, nil }
@@ -8322,16 +10940,27 @@ end
 -- * OwnerId [String] <p>The AWS account ID of the account.</p>
 -- @return SpotDatafeedSubscription structure as a key-value pair table
 function M.SpotDatafeedSubscription(args)
-	assert(args, "You must provdide an argument table when creating SpotDatafeedSubscription")
-	local t = { 
+	assert(args, "You must provide an argument table when creating SpotDatafeedSubscription")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Fault"] = args["Fault"],
 		["Prefix"] = args["Prefix"],
 		["Bucket"] = args["Bucket"],
 		["State"] = args["State"],
 		["OwnerId"] = args["OwnerId"],
 	}
-	asserts.AssertSpotDatafeedSubscription(t)
-	return t
+	asserts.AssertSpotDatafeedSubscription(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.StorageLocation = { ["Bucket"] = true, ["Key"] = true, nil }
@@ -8354,13 +10983,24 @@ end
 -- * Key [String] <p>The key.</p>
 -- @return StorageLocation structure as a key-value pair table
 function M.StorageLocation(args)
-	assert(args, "You must provdide an argument table when creating StorageLocation")
-	local t = { 
+	assert(args, "You must provide an argument table when creating StorageLocation")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Bucket"] = args["Bucket"],
 		["Key"] = args["Key"],
 	}
-	asserts.AssertStorageLocation(t)
-	return t
+	asserts.AssertStorageLocation(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ModifyHostsResult = { ["Successful"] = true, ["Unsuccessful"] = true, nil }
@@ -8383,13 +11023,24 @@ end
 -- * Unsuccessful [UnsuccessfulItemList] <p>The IDs of the Dedicated Hosts that could not be modified. Check whether the setting you requested can be used.</p>
 -- @return ModifyHostsResult structure as a key-value pair table
 function M.ModifyHostsResult(args)
-	assert(args, "You must provdide an argument table when creating ModifyHostsResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ModifyHostsResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Successful"] = args["Successful"],
 		["Unsuccessful"] = args["Unsuccessful"],
 	}
-	asserts.AssertModifyHostsResult(t)
-	return t
+	asserts.AssertModifyHostsResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateInternetGatewayRequest = { ["DryRun"] = true, nil }
@@ -8410,12 +11061,23 @@ end
 -- * DryRun [Boolean] <p>Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is <code>DryRunOperation</code>. Otherwise, it is <code>UnauthorizedOperation</code>.</p>
 -- @return CreateInternetGatewayRequest structure as a key-value pair table
 function M.CreateInternetGatewayRequest(args)
-	assert(args, "You must provdide an argument table when creating CreateInternetGatewayRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateInternetGatewayRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DryRun"] = args["DryRun"],
 	}
-	asserts.AssertCreateInternetGatewayRequest(t)
-	return t
+	asserts.AssertCreateInternetGatewayRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeNetworkInterfacesResult = { ["NetworkInterfaces"] = true, nil }
@@ -8436,12 +11098,23 @@ end
 -- * NetworkInterfaces [NetworkInterfaceList] <p>Information about one or more network interfaces.</p>
 -- @return DescribeNetworkInterfacesResult structure as a key-value pair table
 function M.DescribeNetworkInterfacesResult(args)
-	assert(args, "You must provdide an argument table when creating DescribeNetworkInterfacesResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeNetworkInterfacesResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NetworkInterfaces"] = args["NetworkInterfaces"],
 	}
-	asserts.AssertDescribeNetworkInterfacesResult(t)
-	return t
+	asserts.AssertDescribeNetworkInterfacesResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InstanceNetworkInterfaceAssociation = { ["PublicIp"] = true, ["PublicDnsName"] = true, ["IpOwnerId"] = true, nil }
@@ -8466,14 +11139,25 @@ end
 -- * IpOwnerId [String] <p>The ID of the owner of the Elastic IP address.</p>
 -- @return InstanceNetworkInterfaceAssociation structure as a key-value pair table
 function M.InstanceNetworkInterfaceAssociation(args)
-	assert(args, "You must provdide an argument table when creating InstanceNetworkInterfaceAssociation")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InstanceNetworkInterfaceAssociation")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["PublicIp"] = args["PublicIp"],
 		["PublicDnsName"] = args["PublicDnsName"],
 		["IpOwnerId"] = args["IpOwnerId"],
 	}
-	asserts.AssertInstanceNetworkInterfaceAssociation(t)
-	return t
+	asserts.AssertInstanceNetworkInterfaceAssociation(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InstanceExportDetails = { ["InstanceId"] = true, ["TargetEnvironment"] = true, nil }
@@ -8496,13 +11180,24 @@ end
 -- * TargetEnvironment [ExportEnvironment] <p>The target virtualization environment.</p>
 -- @return InstanceExportDetails structure as a key-value pair table
 function M.InstanceExportDetails(args)
-	assert(args, "You must provdide an argument table when creating InstanceExportDetails")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InstanceExportDetails")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["InstanceId"] = args["InstanceId"],
 		["TargetEnvironment"] = args["TargetEnvironment"],
 	}
-	asserts.AssertInstanceExportDetails(t)
-	return t
+	asserts.AssertInstanceExportDetails(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.VpcClassicLink = { ["ClassicLinkEnabled"] = true, ["VpcId"] = true, ["Tags"] = true, nil }
@@ -8527,14 +11222,25 @@ end
 -- * Tags [TagList] <p>Any tags assigned to the VPC.</p>
 -- @return VpcClassicLink structure as a key-value pair table
 function M.VpcClassicLink(args)
-	assert(args, "You must provdide an argument table when creating VpcClassicLink")
-	local t = { 
+	assert(args, "You must provide an argument table when creating VpcClassicLink")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ClassicLinkEnabled"] = args["ClassicLinkEnabled"],
 		["VpcId"] = args["VpcId"],
 		["Tags"] = args["Tags"],
 	}
-	asserts.AssertVpcClassicLink(t)
-	return t
+	asserts.AssertVpcClassicLink(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.NetworkInterfaceIpv6Address = { ["Ipv6Address"] = true, nil }
@@ -8555,12 +11261,23 @@ end
 -- * Ipv6Address [String] <p>The IPv6 address.</p>
 -- @return NetworkInterfaceIpv6Address structure as a key-value pair table
 function M.NetworkInterfaceIpv6Address(args)
-	assert(args, "You must provdide an argument table when creating NetworkInterfaceIpv6Address")
-	local t = { 
+	assert(args, "You must provide an argument table when creating NetworkInterfaceIpv6Address")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Ipv6Address"] = args["Ipv6Address"],
 	}
-	asserts.AssertNetworkInterfaceIpv6Address(t)
-	return t
+	asserts.AssertNetworkInterfaceIpv6Address(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DisableVpcClassicLinkRequest = { ["VpcId"] = true, ["DryRun"] = true, nil }
@@ -8585,13 +11302,24 @@ end
 -- Required key: VpcId
 -- @return DisableVpcClassicLinkRequest structure as a key-value pair table
 function M.DisableVpcClassicLinkRequest(args)
-	assert(args, "You must provdide an argument table when creating DisableVpcClassicLinkRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DisableVpcClassicLinkRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["VpcId"] = args["VpcId"],
 		["DryRun"] = args["DryRun"],
 	}
-	asserts.AssertDisableVpcClassicLinkRequest(t)
-	return t
+	asserts.AssertDisableVpcClassicLinkRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.SpotFleetRequestConfigData = { ["Type"] = true, ["FulfilledCapacity"] = true, ["TerminateInstancesWithExpiration"] = true, ["LaunchSpecifications"] = true, ["IamFleetRole"] = true, ["ValidUntil"] = true, ["ClientToken"] = true, ["TargetCapacity"] = true, ["ValidFrom"] = true, ["ExcessCapacityTerminationPolicy"] = true, ["ReplaceUnhealthyInstances"] = true, ["SpotPrice"] = true, ["AllocationStrategy"] = true, nil }
@@ -8644,8 +11372,14 @@ end
 -- Required key: TargetCapacity
 -- @return SpotFleetRequestConfigData structure as a key-value pair table
 function M.SpotFleetRequestConfigData(args)
-	assert(args, "You must provdide an argument table when creating SpotFleetRequestConfigData")
-	local t = { 
+	assert(args, "You must provide an argument table when creating SpotFleetRequestConfigData")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Type"] = args["Type"],
 		["FulfilledCapacity"] = args["FulfilledCapacity"],
 		["TerminateInstancesWithExpiration"] = args["TerminateInstancesWithExpiration"],
@@ -8660,8 +11394,13 @@ function M.SpotFleetRequestConfigData(args)
 		["SpotPrice"] = args["SpotPrice"],
 		["AllocationStrategy"] = args["AllocationStrategy"],
 	}
-	asserts.AssertSpotFleetRequestConfigData(t)
-	return t
+	asserts.AssertSpotFleetRequestConfigData(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.VolumeStatusItem = { ["VolumeStatus"] = true, ["AvailabilityZone"] = true, ["Events"] = true, ["Actions"] = true, ["VolumeId"] = true, nil }
@@ -8690,16 +11429,27 @@ end
 -- * VolumeId [String] <p>The volume ID.</p>
 -- @return VolumeStatusItem structure as a key-value pair table
 function M.VolumeStatusItem(args)
-	assert(args, "You must provdide an argument table when creating VolumeStatusItem")
-	local t = { 
+	assert(args, "You must provide an argument table when creating VolumeStatusItem")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["VolumeStatus"] = args["VolumeStatus"],
 		["AvailabilityZone"] = args["AvailabilityZone"],
 		["Events"] = args["Events"],
 		["Actions"] = args["Actions"],
 		["VolumeId"] = args["VolumeId"],
 	}
-	asserts.AssertVolumeStatusItem(t)
-	return t
+	asserts.AssertVolumeStatusItem(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeVpnGatewaysRequest = { ["DryRun"] = true, ["VpnGatewayIds"] = true, ["Filters"] = true, nil }
@@ -8724,14 +11474,25 @@ end
 -- * Filters [FilterList] <p>One or more filters.</p> <ul> <li> <p> <code>attachment.state</code> - The current state of the attachment between the gateway and the VPC (<code>attaching</code> | <code>attached</code> | <code>detaching</code> | <code>detached</code>).</p> </li> <li> <p> <code>attachment.vpc-id</code> - The ID of an attached VPC.</p> </li> <li> <p> <code>availability-zone</code> - The Availability Zone for the virtual private gateway (if applicable).</p> </li> <li> <p> <code>state</code> - The state of the virtual private gateway (<code>pending</code> | <code>available</code> | <code>deleting</code> | <code>deleted</code>).</p> </li> <li> <p> <code>tag</code>:<i>key</i>=<i>value</i> - The key/value combination of a tag assigned to the resource. Specify the key of the tag in the filter name and the value of the tag in the filter value. For example, for the tag Purpose=X, specify <code>tag:Purpose</code> for the filter name and <code>X</code> for the filter value.</p> </li> <li> <p> <code>tag-key</code> - The key of a tag assigned to the resource. This filter is independent of the <code>tag-value</code> filter. For example, if you use both the filter "tag-key=Purpose" and the filter "tag-value=X", you get any resources assigned both the tag key Purpose (regardless of what the tag's value is), and the tag value X (regardless of what the tag's key is). If you want to list only resources where Purpose is X, see the <code>tag</code>:<i>key</i>=<i>value</i> filter.</p> </li> <li> <p> <code>tag-value</code> - The value of a tag assigned to the resource. This filter is independent of the <code>tag-key</code> filter.</p> </li> <li> <p> <code>type</code> - The type of virtual private gateway. Currently the only supported type is <code>ipsec.1</code>.</p> </li> <li> <p> <code>vpn-gateway-id</code> - The ID of the virtual private gateway.</p> </li> </ul>
 -- @return DescribeVpnGatewaysRequest structure as a key-value pair table
 function M.DescribeVpnGatewaysRequest(args)
-	assert(args, "You must provdide an argument table when creating DescribeVpnGatewaysRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeVpnGatewaysRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DryRun"] = args["DryRun"],
 		["VpnGatewayIds"] = args["VpnGatewayIds"],
 		["Filters"] = args["Filters"],
 	}
-	asserts.AssertDescribeVpnGatewaysRequest(t)
-	return t
+	asserts.AssertDescribeVpnGatewaysRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeVpcAttributeResult = { ["EnableDnsSupport"] = true, ["VpcId"] = true, ["EnableDnsHostnames"] = true, nil }
@@ -8756,14 +11517,25 @@ end
 -- * EnableDnsHostnames [AttributeBooleanValue] <p>Indicates whether the instances launched in the VPC get DNS hostnames. If this attribute is <code>true</code>, instances in the VPC get DNS hostnames; otherwise, they do not.</p>
 -- @return DescribeVpcAttributeResult structure as a key-value pair table
 function M.DescribeVpcAttributeResult(args)
-	assert(args, "You must provdide an argument table when creating DescribeVpcAttributeResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeVpcAttributeResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["EnableDnsSupport"] = args["EnableDnsSupport"],
 		["VpcId"] = args["VpcId"],
 		["EnableDnsHostnames"] = args["EnableDnsHostnames"],
 	}
-	asserts.AssertDescribeVpcAttributeResult(t)
-	return t
+	asserts.AssertDescribeVpcAttributeResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InstanceNetworkInterface = { ["Status"] = true, ["MacAddress"] = true, ["SourceDestCheck"] = true, ["VpcId"] = true, ["Description"] = true, ["NetworkInterfaceId"] = true, ["PrivateIpAddresses"] = true, ["PrivateDnsName"] = true, ["Attachment"] = true, ["Groups"] = true, ["Ipv6Addresses"] = true, ["OwnerId"] = true, ["PrivateIpAddress"] = true, ["SubnetId"] = true, ["Association"] = true, nil }
@@ -8812,8 +11584,14 @@ end
 -- * Association [InstanceNetworkInterfaceAssociation] <p>The association information for an Elastic IPv4 associated with the network interface.</p>
 -- @return InstanceNetworkInterface structure as a key-value pair table
 function M.InstanceNetworkInterface(args)
-	assert(args, "You must provdide an argument table when creating InstanceNetworkInterface")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InstanceNetworkInterface")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Status"] = args["Status"],
 		["MacAddress"] = args["MacAddress"],
 		["SourceDestCheck"] = args["SourceDestCheck"],
@@ -8830,8 +11608,13 @@ function M.InstanceNetworkInterface(args)
 		["SubnetId"] = args["SubnetId"],
 		["Association"] = args["Association"],
 	}
-	asserts.AssertInstanceNetworkInterface(t)
-	return t
+	asserts.AssertInstanceNetworkInterface(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeExportTasksRequest = { ["ExportTaskIds"] = true, nil }
@@ -8852,12 +11635,23 @@ end
 -- * ExportTaskIds [ExportTaskIdStringList] <p>One or more export task IDs.</p>
 -- @return DescribeExportTasksRequest structure as a key-value pair table
 function M.DescribeExportTasksRequest(args)
-	assert(args, "You must provdide an argument table when creating DescribeExportTasksRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeExportTasksRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ExportTaskIds"] = args["ExportTaskIds"],
 	}
-	asserts.AssertDescribeExportTasksRequest(t)
-	return t
+	asserts.AssertDescribeExportTasksRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateKeyPairRequest = { ["KeyName"] = true, ["DryRun"] = true, nil }
@@ -8882,13 +11676,24 @@ end
 -- Required key: KeyName
 -- @return CreateKeyPairRequest structure as a key-value pair table
 function M.CreateKeyPairRequest(args)
-	assert(args, "You must provdide an argument table when creating CreateKeyPairRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateKeyPairRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["KeyName"] = args["KeyName"],
 		["DryRun"] = args["DryRun"],
 	}
-	asserts.AssertCreateKeyPairRequest(t)
-	return t
+	asserts.AssertCreateKeyPairRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteVolumeRequest = { ["DryRun"] = true, ["VolumeId"] = true, nil }
@@ -8913,13 +11718,24 @@ end
 -- Required key: VolumeId
 -- @return DeleteVolumeRequest structure as a key-value pair table
 function M.DeleteVolumeRequest(args)
-	assert(args, "You must provdide an argument table when creating DeleteVolumeRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteVolumeRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DryRun"] = args["DryRun"],
 		["VolumeId"] = args["VolumeId"],
 	}
-	asserts.AssertDeleteVolumeRequest(t)
-	return t
+	asserts.AssertDeleteVolumeRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.PurchaseScheduledInstancesRequest = { ["PurchaseRequests"] = true, ["DryRun"] = true, ["ClientToken"] = true, nil }
@@ -8946,14 +11762,25 @@ end
 -- Required key: PurchaseRequests
 -- @return PurchaseScheduledInstancesRequest structure as a key-value pair table
 function M.PurchaseScheduledInstancesRequest(args)
-	assert(args, "You must provdide an argument table when creating PurchaseScheduledInstancesRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating PurchaseScheduledInstancesRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["PurchaseRequests"] = args["PurchaseRequests"],
 		["DryRun"] = args["DryRun"],
 		["ClientToken"] = args["ClientToken"],
 	}
-	asserts.AssertPurchaseScheduledInstancesRequest(t)
-	return t
+	asserts.AssertPurchaseScheduledInstancesRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeImportSnapshotTasksRequest = { ["NextToken"] = true, ["DryRun"] = true, ["MaxResults"] = true, ["Filters"] = true, ["ImportTaskIds"] = true, nil }
@@ -8982,16 +11809,27 @@ end
 -- * ImportTaskIds [ImportTaskIdList] <p>A list of import snapshot task IDs.</p>
 -- @return DescribeImportSnapshotTasksRequest structure as a key-value pair table
 function M.DescribeImportSnapshotTasksRequest(args)
-	assert(args, "You must provdide an argument table when creating DescribeImportSnapshotTasksRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeImportSnapshotTasksRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NextToken"] = args["NextToken"],
 		["DryRun"] = args["DryRun"],
 		["MaxResults"] = args["MaxResults"],
 		["Filters"] = args["Filters"],
 		["ImportTaskIds"] = args["ImportTaskIds"],
 	}
-	asserts.AssertDescribeImportSnapshotTasksRequest(t)
-	return t
+	asserts.AssertDescribeImportSnapshotTasksRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateEgressOnlyInternetGatewayResult = { ["EgressOnlyInternetGateway"] = true, ["ClientToken"] = true, nil }
@@ -9014,13 +11852,24 @@ end
 -- * ClientToken [String] <p>Unique, case-sensitive identifier you provide to ensure the idempotency of the request.</p>
 -- @return CreateEgressOnlyInternetGatewayResult structure as a key-value pair table
 function M.CreateEgressOnlyInternetGatewayResult(args)
-	assert(args, "You must provdide an argument table when creating CreateEgressOnlyInternetGatewayResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateEgressOnlyInternetGatewayResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["EgressOnlyInternetGateway"] = args["EgressOnlyInternetGateway"],
 		["ClientToken"] = args["ClientToken"],
 	}
-	asserts.AssertCreateEgressOnlyInternetGatewayResult(t)
-	return t
+	asserts.AssertCreateEgressOnlyInternetGatewayResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeClassicLinkInstancesResult = { ["Instances"] = true, ["NextToken"] = true, nil }
@@ -9043,13 +11892,24 @@ end
 -- * NextToken [String] <p>The token to use to retrieve the next page of results. This value is <code>null</code> when there are no more results to return.</p>
 -- @return DescribeClassicLinkInstancesResult structure as a key-value pair table
 function M.DescribeClassicLinkInstancesResult(args)
-	assert(args, "You must provdide an argument table when creating DescribeClassicLinkInstancesResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeClassicLinkInstancesResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Instances"] = args["Instances"],
 		["NextToken"] = args["NextToken"],
 	}
-	asserts.AssertDescribeClassicLinkInstancesResult(t)
-	return t
+	asserts.AssertDescribeClassicLinkInstancesResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CopyImageRequest = { ["SourceRegion"] = true, ["DryRun"] = true, ["Name"] = true, ["Encrypted"] = true, ["SourceImageId"] = true, ["KmsKeyId"] = true, ["ClientToken"] = true, ["Description"] = true, nil }
@@ -9090,8 +11950,14 @@ end
 -- Required key: SourceRegion
 -- @return CopyImageRequest structure as a key-value pair table
 function M.CopyImageRequest(args)
-	assert(args, "You must provdide an argument table when creating CopyImageRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CopyImageRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["SourceRegion"] = args["SourceRegion"],
 		["DryRun"] = args["DryRun"],
 		["Name"] = args["Name"],
@@ -9101,8 +11967,13 @@ function M.CopyImageRequest(args)
 		["ClientToken"] = args["ClientToken"],
 		["Description"] = args["Description"],
 	}
-	asserts.AssertCopyImageRequest(t)
-	return t
+	asserts.AssertCopyImageRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateNetworkAclRequest = { ["VpcId"] = true, ["DryRun"] = true, nil }
@@ -9127,13 +11998,24 @@ end
 -- Required key: VpcId
 -- @return CreateNetworkAclRequest structure as a key-value pair table
 function M.CreateNetworkAclRequest(args)
-	assert(args, "You must provdide an argument table when creating CreateNetworkAclRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateNetworkAclRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["VpcId"] = args["VpcId"],
 		["DryRun"] = args["DryRun"],
 	}
-	asserts.AssertCreateNetworkAclRequest(t)
-	return t
+	asserts.AssertCreateNetworkAclRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DisassociateRouteTableRequest = { ["AssociationId"] = true, ["DryRun"] = true, nil }
@@ -9158,13 +12040,24 @@ end
 -- Required key: AssociationId
 -- @return DisassociateRouteTableRequest structure as a key-value pair table
 function M.DisassociateRouteTableRequest(args)
-	assert(args, "You must provdide an argument table when creating DisassociateRouteTableRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DisassociateRouteTableRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["AssociationId"] = args["AssociationId"],
 		["DryRun"] = args["DryRun"],
 	}
-	asserts.AssertDisassociateRouteTableRequest(t)
-	return t
+	asserts.AssertDisassociateRouteTableRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeAddressesRequest = { ["PublicIps"] = true, ["DryRun"] = true, ["AllocationIds"] = true, ["Filters"] = true, nil }
@@ -9191,15 +12084,26 @@ end
 -- * Filters [FilterList] <p>One or more filters. Filter names and values are case-sensitive.</p> <ul> <li> <p> <code>allocation-id</code> - [EC2-VPC] The allocation ID for the address.</p> </li> <li> <p> <code>association-id</code> - [EC2-VPC] The association ID for the address.</p> </li> <li> <p> <code>domain</code> - Indicates whether the address is for use in EC2-Classic (<code>standard</code>) or in a VPC (<code>vpc</code>).</p> </li> <li> <p> <code>instance-id</code> - The ID of the instance the address is associated with, if any.</p> </li> <li> <p> <code>network-interface-id</code> - [EC2-VPC] The ID of the network interface that the address is associated with, if any.</p> </li> <li> <p> <code>network-interface-owner-id</code> - The AWS account ID of the owner.</p> </li> <li> <p> <code>private-ip-address</code> - [EC2-VPC] The private IP address associated with the Elastic IP address.</p> </li> <li> <p> <code>public-ip</code> - The Elastic IP address.</p> </li> </ul>
 -- @return DescribeAddressesRequest structure as a key-value pair table
 function M.DescribeAddressesRequest(args)
-	assert(args, "You must provdide an argument table when creating DescribeAddressesRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeAddressesRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["PublicIps"] = args["PublicIps"],
 		["DryRun"] = args["DryRun"],
 		["AllocationIds"] = args["AllocationIds"],
 		["Filters"] = args["Filters"],
 	}
-	asserts.AssertDescribeAddressesRequest(t)
-	return t
+	asserts.AssertDescribeAddressesRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AllocateAddressResult = { ["PublicIp"] = true, ["Domain"] = true, ["AllocationId"] = true, nil }
@@ -9224,14 +12128,25 @@ end
 -- * AllocationId [String] <p>[EC2-VPC] The ID that AWS assigns to represent the allocation of the Elastic IP address for use with instances in a VPC.</p>
 -- @return AllocateAddressResult structure as a key-value pair table
 function M.AllocateAddressResult(args)
-	assert(args, "You must provdide an argument table when creating AllocateAddressResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AllocateAddressResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["PublicIp"] = args["PublicIp"],
 		["Domain"] = args["Domain"],
 		["AllocationId"] = args["AllocationId"],
 	}
-	asserts.AssertAllocateAddressResult(t)
-	return t
+	asserts.AssertAllocateAddressResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.FpgaImageState = { ["Message"] = true, ["Code"] = true, nil }
@@ -9254,13 +12169,24 @@ end
 -- * Code [FpgaImageStateCode] <p>The state. The following are the possible values:</p> <ul> <li> <p> <code>pending</code> - AFI bitstream generation is in progress.</p> </li> <li> <p> <code>available</code> - The AFI is available for use.</p> </li> <li> <p> <code>failed</code> - AFI bitstream generation failed.</p> </li> <li> <p> <code>unavailable</code> - The AFI is no longer available for use.</p> </li> </ul>
 -- @return FpgaImageState structure as a key-value pair table
 function M.FpgaImageState(args)
-	assert(args, "You must provdide an argument table when creating FpgaImageState")
-	local t = { 
+	assert(args, "You must provide an argument table when creating FpgaImageState")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Message"] = args["Message"],
 		["Code"] = args["Code"],
 	}
-	asserts.AssertFpgaImageState(t)
-	return t
+	asserts.AssertFpgaImageState(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeNetworkInterfaceAttributeRequest = { ["Attribute"] = true, ["NetworkInterfaceId"] = true, ["DryRun"] = true, nil }
@@ -9287,14 +12213,25 @@ end
 -- Required key: NetworkInterfaceId
 -- @return DescribeNetworkInterfaceAttributeRequest structure as a key-value pair table
 function M.DescribeNetworkInterfaceAttributeRequest(args)
-	assert(args, "You must provdide an argument table when creating DescribeNetworkInterfaceAttributeRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeNetworkInterfaceAttributeRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Attribute"] = args["Attribute"],
 		["NetworkInterfaceId"] = args["NetworkInterfaceId"],
 		["DryRun"] = args["DryRun"],
 	}
-	asserts.AssertDescribeNetworkInterfaceAttributeRequest(t)
-	return t
+	asserts.AssertDescribeNetworkInterfaceAttributeRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeSpotDatafeedSubscriptionRequest = { ["DryRun"] = true, nil }
@@ -9315,12 +12252,23 @@ end
 -- * DryRun [Boolean] <p>Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is <code>DryRunOperation</code>. Otherwise, it is <code>UnauthorizedOperation</code>.</p>
 -- @return DescribeSpotDatafeedSubscriptionRequest structure as a key-value pair table
 function M.DescribeSpotDatafeedSubscriptionRequest(args)
-	assert(args, "You must provdide an argument table when creating DescribeSpotDatafeedSubscriptionRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeSpotDatafeedSubscriptionRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DryRun"] = args["DryRun"],
 	}
-	asserts.AssertDescribeSpotDatafeedSubscriptionRequest(t)
-	return t
+	asserts.AssertDescribeSpotDatafeedSubscriptionRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ReplaceNetworkAclAssociationRequest = { ["NetworkAclId"] = true, ["AssociationId"] = true, ["DryRun"] = true, nil }
@@ -9349,14 +12297,25 @@ end
 -- Required key: NetworkAclId
 -- @return ReplaceNetworkAclAssociationRequest structure as a key-value pair table
 function M.ReplaceNetworkAclAssociationRequest(args)
-	assert(args, "You must provdide an argument table when creating ReplaceNetworkAclAssociationRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ReplaceNetworkAclAssociationRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NetworkAclId"] = args["NetworkAclId"],
 		["AssociationId"] = args["AssociationId"],
 		["DryRun"] = args["DryRun"],
 	}
-	asserts.AssertReplaceNetworkAclAssociationRequest(t)
-	return t
+	asserts.AssertReplaceNetworkAclAssociationRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteNetworkAclEntryRequest = { ["NetworkAclId"] = true, ["Egress"] = true, ["DryRun"] = true, ["RuleNumber"] = true, nil }
@@ -9389,15 +12348,26 @@ end
 -- Required key: RuleNumber
 -- @return DeleteNetworkAclEntryRequest structure as a key-value pair table
 function M.DeleteNetworkAclEntryRequest(args)
-	assert(args, "You must provdide an argument table when creating DeleteNetworkAclEntryRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteNetworkAclEntryRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NetworkAclId"] = args["NetworkAclId"],
 		["Egress"] = args["Egress"],
 		["DryRun"] = args["DryRun"],
 		["RuleNumber"] = args["RuleNumber"],
 	}
-	asserts.AssertDeleteNetworkAclEntryRequest(t)
-	return t
+	asserts.AssertDeleteNetworkAclEntryRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteSpotDatafeedSubscriptionRequest = { ["DryRun"] = true, nil }
@@ -9418,12 +12388,23 @@ end
 -- * DryRun [Boolean] <p>Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is <code>DryRunOperation</code>. Otherwise, it is <code>UnauthorizedOperation</code>.</p>
 -- @return DeleteSpotDatafeedSubscriptionRequest structure as a key-value pair table
 function M.DeleteSpotDatafeedSubscriptionRequest(args)
-	assert(args, "You must provdide an argument table when creating DeleteSpotDatafeedSubscriptionRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteSpotDatafeedSubscriptionRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DryRun"] = args["DryRun"],
 	}
-	asserts.AssertDeleteSpotDatafeedSubscriptionRequest(t)
-	return t
+	asserts.AssertDeleteSpotDatafeedSubscriptionRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeBundleTasksResult = { ["BundleTasks"] = true, nil }
@@ -9444,12 +12425,23 @@ end
 -- * BundleTasks [BundleTaskList] <p>Information about one or more bundle tasks.</p>
 -- @return DescribeBundleTasksResult structure as a key-value pair table
 function M.DescribeBundleTasksResult(args)
-	assert(args, "You must provdide an argument table when creating DescribeBundleTasksResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeBundleTasksResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["BundleTasks"] = args["BundleTasks"],
 	}
-	asserts.AssertDescribeBundleTasksResult(t)
-	return t
+	asserts.AssertDescribeBundleTasksResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ReplaceIamInstanceProfileAssociationRequest = { ["AssociationId"] = true, ["IamInstanceProfile"] = true, nil }
@@ -9476,13 +12468,24 @@ end
 -- Required key: AssociationId
 -- @return ReplaceIamInstanceProfileAssociationRequest structure as a key-value pair table
 function M.ReplaceIamInstanceProfileAssociationRequest(args)
-	assert(args, "You must provdide an argument table when creating ReplaceIamInstanceProfileAssociationRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ReplaceIamInstanceProfileAssociationRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["AssociationId"] = args["AssociationId"],
 		["IamInstanceProfile"] = args["IamInstanceProfile"],
 	}
-	asserts.AssertReplaceIamInstanceProfileAssociationRequest(t)
-	return t
+	asserts.AssertReplaceIamInstanceProfileAssociationRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.PurchaseHostReservationResult = { ["TotalHourlyPrice"] = true, ["Purchase"] = true, ["CurrencyCode"] = true, ["TotalUpfrontPrice"] = true, ["ClientToken"] = true, nil }
@@ -9511,16 +12514,27 @@ end
 -- * ClientToken [String] <p>Unique, case-sensitive identifier you provide to ensure idempotency of the request. For more information, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Run_Instance_Idempotency.html">How to Ensure Idempotency</a> in the <i>Amazon Elastic Compute Cloud User Guide</i> </p>
 -- @return PurchaseHostReservationResult structure as a key-value pair table
 function M.PurchaseHostReservationResult(args)
-	assert(args, "You must provdide an argument table when creating PurchaseHostReservationResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating PurchaseHostReservationResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["TotalHourlyPrice"] = args["TotalHourlyPrice"],
 		["Purchase"] = args["Purchase"],
 		["CurrencyCode"] = args["CurrencyCode"],
 		["TotalUpfrontPrice"] = args["TotalUpfrontPrice"],
 		["ClientToken"] = args["ClientToken"],
 	}
-	asserts.AssertPurchaseHostReservationResult(t)
-	return t
+	asserts.AssertPurchaseHostReservationResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ModifyVolumeAttributeRequest = { ["AutoEnableIO"] = true, ["DryRun"] = true, ["VolumeId"] = true, nil }
@@ -9547,14 +12561,25 @@ end
 -- Required key: VolumeId
 -- @return ModifyVolumeAttributeRequest structure as a key-value pair table
 function M.ModifyVolumeAttributeRequest(args)
-	assert(args, "You must provdide an argument table when creating ModifyVolumeAttributeRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ModifyVolumeAttributeRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["AutoEnableIO"] = args["AutoEnableIO"],
 		["DryRun"] = args["DryRun"],
 		["VolumeId"] = args["VolumeId"],
 	}
-	asserts.AssertModifyVolumeAttributeRequest(t)
-	return t
+	asserts.AssertModifyVolumeAttributeRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateRouteResult = { ["Return"] = true, nil }
@@ -9575,12 +12600,23 @@ end
 -- * Return [Boolean] <p>Returns <code>true</code> if the request succeeds; otherwise, it returns an error.</p>
 -- @return CreateRouteResult structure as a key-value pair table
 function M.CreateRouteResult(args)
-	assert(args, "You must provdide an argument table when creating CreateRouteResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateRouteResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Return"] = args["Return"],
 	}
-	asserts.AssertCreateRouteResult(t)
-	return t
+	asserts.AssertCreateRouteResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ImportInstanceLaunchSpecification = { ["AdditionalInfo"] = true, ["Monitoring"] = true, ["UserData"] = true, ["InstanceInitiatedShutdownBehavior"] = true, ["GroupNames"] = true, ["Architecture"] = true, ["SubnetId"] = true, ["Placement"] = true, ["InstanceType"] = true, ["PrivateIpAddress"] = true, ["GroupIds"] = true, nil }
@@ -9621,8 +12657,14 @@ end
 -- * GroupIds [SecurityGroupIdStringList] <p>One or more security group IDs.</p>
 -- @return ImportInstanceLaunchSpecification structure as a key-value pair table
 function M.ImportInstanceLaunchSpecification(args)
-	assert(args, "You must provdide an argument table when creating ImportInstanceLaunchSpecification")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ImportInstanceLaunchSpecification")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["AdditionalInfo"] = args["AdditionalInfo"],
 		["Monitoring"] = args["Monitoring"],
 		["UserData"] = args["UserData"],
@@ -9635,8 +12677,13 @@ function M.ImportInstanceLaunchSpecification(args)
 		["PrivateIpAddress"] = args["PrivateIpAddress"],
 		["GroupIds"] = args["GroupIds"],
 	}
-	asserts.AssertImportInstanceLaunchSpecification(t)
-	return t
+	asserts.AssertImportInstanceLaunchSpecification(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateDhcpOptionsRequest = { ["DryRun"] = true, ["DhcpConfigurations"] = true, nil }
@@ -9661,13 +12708,24 @@ end
 -- Required key: DhcpConfigurations
 -- @return CreateDhcpOptionsRequest structure as a key-value pair table
 function M.CreateDhcpOptionsRequest(args)
-	assert(args, "You must provdide an argument table when creating CreateDhcpOptionsRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateDhcpOptionsRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DryRun"] = args["DryRun"],
 		["DhcpConfigurations"] = args["DhcpConfigurations"],
 	}
-	asserts.AssertCreateDhcpOptionsRequest(t)
-	return t
+	asserts.AssertCreateDhcpOptionsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DisassociateVpcCidrBlockResult = { ["Ipv6CidrBlockAssociation"] = true, ["VpcId"] = true, nil }
@@ -9690,13 +12748,24 @@ end
 -- * VpcId [String] <p>The ID of the VPC.</p>
 -- @return DisassociateVpcCidrBlockResult structure as a key-value pair table
 function M.DisassociateVpcCidrBlockResult(args)
-	assert(args, "You must provdide an argument table when creating DisassociateVpcCidrBlockResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DisassociateVpcCidrBlockResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Ipv6CidrBlockAssociation"] = args["Ipv6CidrBlockAssociation"],
 		["VpcId"] = args["VpcId"],
 	}
-	asserts.AssertDisassociateVpcCidrBlockResult(t)
-	return t
+	asserts.AssertDisassociateVpcCidrBlockResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteVpnConnectionRequest = { ["VpnConnectionId"] = true, ["DryRun"] = true, nil }
@@ -9721,13 +12790,24 @@ end
 -- Required key: VpnConnectionId
 -- @return DeleteVpnConnectionRequest structure as a key-value pair table
 function M.DeleteVpnConnectionRequest(args)
-	assert(args, "You must provdide an argument table when creating DeleteVpnConnectionRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteVpnConnectionRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["VpnConnectionId"] = args["VpnConnectionId"],
 		["DryRun"] = args["DryRun"],
 	}
-	asserts.AssertDeleteVpnConnectionRequest(t)
-	return t
+	asserts.AssertDeleteVpnConnectionRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateVpnGatewayResult = { ["VpnGateway"] = true, nil }
@@ -9748,12 +12828,23 @@ end
 -- * VpnGateway [VpnGateway] <p>Information about the virtual private gateway.</p>
 -- @return CreateVpnGatewayResult structure as a key-value pair table
 function M.CreateVpnGatewayResult(args)
-	assert(args, "You must provdide an argument table when creating CreateVpnGatewayResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateVpnGatewayResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["VpnGateway"] = args["VpnGateway"],
 	}
-	asserts.AssertCreateVpnGatewayResult(t)
-	return t
+	asserts.AssertCreateVpnGatewayResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ModifyIdentityIdFormatRequest = { ["UseLongIds"] = true, ["PrincipalArn"] = true, ["Resource"] = true, nil }
@@ -9784,14 +12875,25 @@ end
 -- Required key: UseLongIds
 -- @return ModifyIdentityIdFormatRequest structure as a key-value pair table
 function M.ModifyIdentityIdFormatRequest(args)
-	assert(args, "You must provdide an argument table when creating ModifyIdentityIdFormatRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ModifyIdentityIdFormatRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["UseLongIds"] = args["UseLongIds"],
 		["PrincipalArn"] = args["PrincipalArn"],
 		["Resource"] = args["Resource"],
 	}
-	asserts.AssertModifyIdentityIdFormatRequest(t)
-	return t
+	asserts.AssertModifyIdentityIdFormatRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AttachVolumeRequest = { ["Device"] = true, ["InstanceId"] = true, ["DryRun"] = true, ["VolumeId"] = true, nil }
@@ -9824,15 +12926,26 @@ end
 -- Required key: VolumeId
 -- @return AttachVolumeRequest structure as a key-value pair table
 function M.AttachVolumeRequest(args)
-	assert(args, "You must provdide an argument table when creating AttachVolumeRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AttachVolumeRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Device"] = args["Device"],
 		["InstanceId"] = args["InstanceId"],
 		["DryRun"] = args["DryRun"],
 		["VolumeId"] = args["VolumeId"],
 	}
-	asserts.AssertAttachVolumeRequest(t)
-	return t
+	asserts.AssertAttachVolumeRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.SnapshotDiskContainer = { ["Url"] = true, ["UserBucket"] = true, ["Description"] = true, ["Format"] = true, nil }
@@ -9859,15 +12972,26 @@ end
 -- * Format [String] <p>The format of the disk image being imported.</p> <p>Valid values: <code>RAW</code> | <code>VHD</code> | <code>VMDK</code> | <code>OVA</code> </p>
 -- @return SnapshotDiskContainer structure as a key-value pair table
 function M.SnapshotDiskContainer(args)
-	assert(args, "You must provdide an argument table when creating SnapshotDiskContainer")
-	local t = { 
+	assert(args, "You must provide an argument table when creating SnapshotDiskContainer")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Url"] = args["Url"],
 		["UserBucket"] = args["UserBucket"],
 		["Description"] = args["Description"],
 		["Format"] = args["Format"],
 	}
-	asserts.AssertSnapshotDiskContainer(t)
-	return t
+	asserts.AssertSnapshotDiskContainer(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InstanceStatusEvent = { ["Code"] = true, ["Description"] = true, ["NotBefore"] = true, ["NotAfter"] = true, nil }
@@ -9894,15 +13018,26 @@ end
 -- * NotAfter [DateTime] <p>The latest scheduled end time for the event.</p>
 -- @return InstanceStatusEvent structure as a key-value pair table
 function M.InstanceStatusEvent(args)
-	assert(args, "You must provdide an argument table when creating InstanceStatusEvent")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InstanceStatusEvent")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Code"] = args["Code"],
 		["Description"] = args["Description"],
 		["NotBefore"] = args["NotBefore"],
 		["NotAfter"] = args["NotAfter"],
 	}
-	asserts.AssertInstanceStatusEvent(t)
-	return t
+	asserts.AssertInstanceStatusEvent(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.BundleTask = { ["UpdateTime"] = true, ["InstanceId"] = true, ["Storage"] = true, ["BundleTaskError"] = true, ["State"] = true, ["StartTime"] = true, ["Progress"] = true, ["BundleId"] = true, nil }
@@ -9937,8 +13072,14 @@ end
 -- * BundleId [String] <p>The ID of the bundle task.</p>
 -- @return BundleTask structure as a key-value pair table
 function M.BundleTask(args)
-	assert(args, "You must provdide an argument table when creating BundleTask")
-	local t = { 
+	assert(args, "You must provide an argument table when creating BundleTask")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["UpdateTime"] = args["UpdateTime"],
 		["InstanceId"] = args["InstanceId"],
 		["Storage"] = args["Storage"],
@@ -9948,8 +13089,13 @@ function M.BundleTask(args)
 		["Progress"] = args["Progress"],
 		["BundleId"] = args["BundleId"],
 	}
-	asserts.AssertBundleTask(t)
-	return t
+	asserts.AssertBundleTask(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.VpcPeeringConnectionVpcInfo = { ["PeeringOptions"] = true, ["Ipv6CidrBlockSet"] = true, ["VpcId"] = true, ["CidrBlock"] = true, ["OwnerId"] = true, nil }
@@ -9978,16 +13124,27 @@ end
 -- * OwnerId [String] <p>The AWS account ID of the VPC owner.</p>
 -- @return VpcPeeringConnectionVpcInfo structure as a key-value pair table
 function M.VpcPeeringConnectionVpcInfo(args)
-	assert(args, "You must provdide an argument table when creating VpcPeeringConnectionVpcInfo")
-	local t = { 
+	assert(args, "You must provide an argument table when creating VpcPeeringConnectionVpcInfo")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["PeeringOptions"] = args["PeeringOptions"],
 		["Ipv6CidrBlockSet"] = args["Ipv6CidrBlockSet"],
 		["VpcId"] = args["VpcId"],
 		["CidrBlock"] = args["CidrBlock"],
 		["OwnerId"] = args["OwnerId"],
 	}
-	asserts.AssertVpcPeeringConnectionVpcInfo(t)
-	return t
+	asserts.AssertVpcPeeringConnectionVpcInfo(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ImportImageResult = { ["Status"] = true, ["LicenseType"] = true, ["Description"] = true, ["Hypervisor"] = true, ["ImageId"] = true, ["Platform"] = true, ["Architecture"] = true, ["SnapshotDetails"] = true, ["Progress"] = true, ["StatusMessage"] = true, ["ImportTaskId"] = true, nil }
@@ -10028,8 +13185,14 @@ end
 -- * ImportTaskId [String] <p>The task ID of the import image task.</p>
 -- @return ImportImageResult structure as a key-value pair table
 function M.ImportImageResult(args)
-	assert(args, "You must provdide an argument table when creating ImportImageResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ImportImageResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Status"] = args["Status"],
 		["LicenseType"] = args["LicenseType"],
 		["Description"] = args["Description"],
@@ -10042,8 +13205,13 @@ function M.ImportImageResult(args)
 		["StatusMessage"] = args["StatusMessage"],
 		["ImportTaskId"] = args["ImportTaskId"],
 	}
-	asserts.AssertImportImageResult(t)
-	return t
+	asserts.AssertImportImageResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateNetworkInterfaceResult = { ["NetworkInterface"] = true, nil }
@@ -10064,12 +13232,23 @@ end
 -- * NetworkInterface [NetworkInterface] <p>Information about the network interface.</p>
 -- @return CreateNetworkInterfaceResult structure as a key-value pair table
 function M.CreateNetworkInterfaceResult(args)
-	assert(args, "You must provdide an argument table when creating CreateNetworkInterfaceResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateNetworkInterfaceResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NetworkInterface"] = args["NetworkInterface"],
 	}
-	asserts.AssertCreateNetworkInterfaceResult(t)
-	return t
+	asserts.AssertCreateNetworkInterfaceResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ModifyImageAttributeRequest = { ["ProductCodes"] = true, ["UserGroups"] = true, ["DryRun"] = true, ["Description"] = true, ["Attribute"] = true, ["UserIds"] = true, ["Value"] = true, ["ImageId"] = true, ["OperationType"] = true, ["LaunchPermission"] = true, nil }
@@ -10110,8 +13289,14 @@ end
 -- Required key: ImageId
 -- @return ModifyImageAttributeRequest structure as a key-value pair table
 function M.ModifyImageAttributeRequest(args)
-	assert(args, "You must provdide an argument table when creating ModifyImageAttributeRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ModifyImageAttributeRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ProductCodes"] = args["ProductCodes"],
 		["UserGroups"] = args["UserGroups"],
 		["DryRun"] = args["DryRun"],
@@ -10123,8 +13308,13 @@ function M.ModifyImageAttributeRequest(args)
 		["OperationType"] = args["OperationType"],
 		["LaunchPermission"] = args["LaunchPermission"],
 	}
-	asserts.AssertModifyImageAttributeRequest(t)
-	return t
+	asserts.AssertModifyImageAttributeRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeSpotFleetRequestsResponse = { ["SpotFleetRequestConfigs"] = true, ["NextToken"] = true, nil }
@@ -10149,13 +13339,24 @@ end
 -- Required key: SpotFleetRequestConfigs
 -- @return DescribeSpotFleetRequestsResponse structure as a key-value pair table
 function M.DescribeSpotFleetRequestsResponse(args)
-	assert(args, "You must provdide an argument table when creating DescribeSpotFleetRequestsResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeSpotFleetRequestsResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["SpotFleetRequestConfigs"] = args["SpotFleetRequestConfigs"],
 		["NextToken"] = args["NextToken"],
 	}
-	asserts.AssertDescribeSpotFleetRequestsResponse(t)
-	return t
+	asserts.AssertDescribeSpotFleetRequestsResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeVpcEndpointServicesRequest = { ["NextToken"] = true, ["DryRun"] = true, ["MaxResults"] = true, nil }
@@ -10180,14 +13381,25 @@ end
 -- * MaxResults [Integer] <p>The maximum number of items to return for this request. The request returns a token that you can specify in a subsequent call to get the next set of results.</p> <p>Constraint: If the value is greater than 1000, we return only 1000 items.</p>
 -- @return DescribeVpcEndpointServicesRequest structure as a key-value pair table
 function M.DescribeVpcEndpointServicesRequest(args)
-	assert(args, "You must provdide an argument table when creating DescribeVpcEndpointServicesRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeVpcEndpointServicesRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NextToken"] = args["NextToken"],
 		["DryRun"] = args["DryRun"],
 		["MaxResults"] = args["MaxResults"],
 	}
-	asserts.AssertDescribeVpcEndpointServicesRequest(t)
-	return t
+	asserts.AssertDescribeVpcEndpointServicesRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.NewDhcpConfiguration = { ["Values"] = true, ["Key"] = true, nil }
@@ -10210,13 +13422,24 @@ end
 -- * Key [String] 
 -- @return NewDhcpConfiguration structure as a key-value pair table
 function M.NewDhcpConfiguration(args)
-	assert(args, "You must provdide an argument table when creating NewDhcpConfiguration")
-	local t = { 
+	assert(args, "You must provide an argument table when creating NewDhcpConfiguration")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Values"] = args["Values"],
 		["Key"] = args["Key"],
 	}
-	asserts.AssertNewDhcpConfiguration(t)
-	return t
+	asserts.AssertNewDhcpConfiguration(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ModifyVpcPeeringConnectionOptionsResult = { ["RequesterPeeringConnectionOptions"] = true, ["AccepterPeeringConnectionOptions"] = true, nil }
@@ -10239,13 +13462,24 @@ end
 -- * AccepterPeeringConnectionOptions [PeeringConnectionOptions] <p>Information about the VPC peering connection options for the accepter VPC.</p>
 -- @return ModifyVpcPeeringConnectionOptionsResult structure as a key-value pair table
 function M.ModifyVpcPeeringConnectionOptionsResult(args)
-	assert(args, "You must provdide an argument table when creating ModifyVpcPeeringConnectionOptionsResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ModifyVpcPeeringConnectionOptionsResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["RequesterPeeringConnectionOptions"] = args["RequesterPeeringConnectionOptions"],
 		["AccepterPeeringConnectionOptions"] = args["AccepterPeeringConnectionOptions"],
 	}
-	asserts.AssertModifyVpcPeeringConnectionOptionsResult(t)
-	return t
+	asserts.AssertModifyVpcPeeringConnectionOptionsResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.StateReason = { ["Message"] = true, ["Code"] = true, nil }
@@ -10268,13 +13502,24 @@ end
 -- * Code [String] <p>The reason code for the state change.</p>
 -- @return StateReason structure as a key-value pair table
 function M.StateReason(args)
-	assert(args, "You must provdide an argument table when creating StateReason")
-	local t = { 
+	assert(args, "You must provide an argument table when creating StateReason")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Message"] = args["Message"],
 		["Code"] = args["Code"],
 	}
-	asserts.AssertStateReason(t)
-	return t
+	asserts.AssertStateReason(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.VpcPeeringConnectionStateReason = { ["Message"] = true, ["Code"] = true, nil }
@@ -10297,13 +13542,24 @@ end
 -- * Code [VpcPeeringConnectionStateReasonCode] <p>The status of the VPC peering connection.</p>
 -- @return VpcPeeringConnectionStateReason structure as a key-value pair table
 function M.VpcPeeringConnectionStateReason(args)
-	assert(args, "You must provdide an argument table when creating VpcPeeringConnectionStateReason")
-	local t = { 
+	assert(args, "You must provide an argument table when creating VpcPeeringConnectionStateReason")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Message"] = args["Message"],
 		["Code"] = args["Code"],
 	}
-	asserts.AssertVpcPeeringConnectionStateReason(t)
-	return t
+	asserts.AssertVpcPeeringConnectionStateReason(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.IamInstanceProfile = { ["Id"] = true, ["Arn"] = true, nil }
@@ -10326,13 +13582,24 @@ end
 -- * Arn [String] <p>The Amazon Resource Name (ARN) of the instance profile.</p>
 -- @return IamInstanceProfile structure as a key-value pair table
 function M.IamInstanceProfile(args)
-	assert(args, "You must provdide an argument table when creating IamInstanceProfile")
-	local t = { 
+	assert(args, "You must provide an argument table when creating IamInstanceProfile")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Id"] = args["Id"],
 		["Arn"] = args["Arn"],
 	}
-	asserts.AssertIamInstanceProfile(t)
-	return t
+	asserts.AssertIamInstanceProfile(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.IpRange = { ["CidrIp"] = true, nil }
@@ -10353,12 +13620,23 @@ end
 -- * CidrIp [String] <p>The IPv4 CIDR range. You can either specify a CIDR range or a source security group, not both. To specify a single IPv4 address, use the /32 prefix.</p>
 -- @return IpRange structure as a key-value pair table
 function M.IpRange(args)
-	assert(args, "You must provdide an argument table when creating IpRange")
-	local t = { 
+	assert(args, "You must provide an argument table when creating IpRange")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["CidrIp"] = args["CidrIp"],
 	}
-	asserts.AssertIpRange(t)
-	return t
+	asserts.AssertIpRange(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InstanceCount = { ["State"] = true, ["InstanceCount"] = true, nil }
@@ -10381,13 +13659,24 @@ end
 -- * InstanceCount [Integer] <p>The number of listed Reserved Instances in the state specified by the <code>state</code>.</p>
 -- @return InstanceCount structure as a key-value pair table
 function M.InstanceCount(args)
-	assert(args, "You must provdide an argument table when creating InstanceCount")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InstanceCount")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["State"] = args["State"],
 		["InstanceCount"] = args["InstanceCount"],
 	}
-	asserts.AssertInstanceCount(t)
-	return t
+	asserts.AssertInstanceCount(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ScheduledInstancesIamInstanceProfile = { ["Name"] = true, ["Arn"] = true, nil }
@@ -10410,13 +13699,24 @@ end
 -- * Arn [String] <p>The Amazon Resource Name (ARN).</p>
 -- @return ScheduledInstancesIamInstanceProfile structure as a key-value pair table
 function M.ScheduledInstancesIamInstanceProfile(args)
-	assert(args, "You must provdide an argument table when creating ScheduledInstancesIamInstanceProfile")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ScheduledInstancesIamInstanceProfile")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Name"] = args["Name"],
 		["Arn"] = args["Arn"],
 	}
-	asserts.AssertScheduledInstancesIamInstanceProfile(t)
-	return t
+	asserts.AssertScheduledInstancesIamInstanceProfile(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.VolumeStatusAction = { ["EventId"] = true, ["EventType"] = true, ["Code"] = true, ["Description"] = true, nil }
@@ -10443,15 +13743,26 @@ end
 -- * Description [String] <p>A description of the operation.</p>
 -- @return VolumeStatusAction structure as a key-value pair table
 function M.VolumeStatusAction(args)
-	assert(args, "You must provdide an argument table when creating VolumeStatusAction")
-	local t = { 
+	assert(args, "You must provide an argument table when creating VolumeStatusAction")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["EventId"] = args["EventId"],
 		["EventType"] = args["EventType"],
 		["Code"] = args["Code"],
 		["Description"] = args["Description"],
 	}
-	asserts.AssertVolumeStatusAction(t)
-	return t
+	asserts.AssertVolumeStatusAction(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.VgwTelemetry = { ["Status"] = true, ["AcceptedRouteCount"] = true, ["LastStatusChange"] = true, ["OutsideIpAddress"] = true, ["StatusMessage"] = true, nil }
@@ -10480,16 +13791,27 @@ end
 -- * StatusMessage [String] <p>If an error occurs, a description of the error.</p>
 -- @return VgwTelemetry structure as a key-value pair table
 function M.VgwTelemetry(args)
-	assert(args, "You must provdide an argument table when creating VgwTelemetry")
-	local t = { 
+	assert(args, "You must provide an argument table when creating VgwTelemetry")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Status"] = args["Status"],
 		["AcceptedRouteCount"] = args["AcceptedRouteCount"],
 		["LastStatusChange"] = args["LastStatusChange"],
 		["OutsideIpAddress"] = args["OutsideIpAddress"],
 		["StatusMessage"] = args["StatusMessage"],
 	}
-	asserts.AssertVgwTelemetry(t)
-	return t
+	asserts.AssertVgwTelemetry(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.VpcEndpoint = { ["VpcId"] = true, ["ServiceName"] = true, ["State"] = true, ["PolicyDocument"] = true, ["RouteTableIds"] = true, ["VpcEndpointId"] = true, ["CreationTimestamp"] = true, nil }
@@ -10522,8 +13844,14 @@ end
 -- * CreationTimestamp [DateTime] <p>The date and time the VPC endpoint was created.</p>
 -- @return VpcEndpoint structure as a key-value pair table
 function M.VpcEndpoint(args)
-	assert(args, "You must provdide an argument table when creating VpcEndpoint")
-	local t = { 
+	assert(args, "You must provide an argument table when creating VpcEndpoint")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["VpcId"] = args["VpcId"],
 		["ServiceName"] = args["ServiceName"],
 		["State"] = args["State"],
@@ -10532,8 +13860,13 @@ function M.VpcEndpoint(args)
 		["VpcEndpointId"] = args["VpcEndpointId"],
 		["CreationTimestamp"] = args["CreationTimestamp"],
 	}
-	asserts.AssertVpcEndpoint(t)
-	return t
+	asserts.AssertVpcEndpoint(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AssociateAddressResult = { ["AssociationId"] = true, nil }
@@ -10554,12 +13887,23 @@ end
 -- * AssociationId [String] <p>[EC2-VPC] The ID that represents the association of the Elastic IP address with an instance.</p>
 -- @return AssociateAddressResult structure as a key-value pair table
 function M.AssociateAddressResult(args)
-	assert(args, "You must provdide an argument table when creating AssociateAddressResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AssociateAddressResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["AssociationId"] = args["AssociationId"],
 	}
-	asserts.AssertAssociateAddressResult(t)
-	return t
+	asserts.AssertAssociateAddressResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InternetGatewayAttachment = { ["State"] = true, ["VpcId"] = true, nil }
@@ -10582,13 +13926,24 @@ end
 -- * VpcId [String] <p>The ID of the VPC.</p>
 -- @return InternetGatewayAttachment structure as a key-value pair table
 function M.InternetGatewayAttachment(args)
-	assert(args, "You must provdide an argument table when creating InternetGatewayAttachment")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InternetGatewayAttachment")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["State"] = args["State"],
 		["VpcId"] = args["VpcId"],
 	}
-	asserts.AssertInternetGatewayAttachment(t)
-	return t
+	asserts.AssertInternetGatewayAttachment(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CancelSpotFleetRequestsSuccessItem = { ["PreviousSpotFleetRequestState"] = true, ["CurrentSpotFleetRequestState"] = true, ["SpotFleetRequestId"] = true, nil }
@@ -10619,14 +13974,25 @@ end
 -- Required key: SpotFleetRequestId
 -- @return CancelSpotFleetRequestsSuccessItem structure as a key-value pair table
 function M.CancelSpotFleetRequestsSuccessItem(args)
-	assert(args, "You must provdide an argument table when creating CancelSpotFleetRequestsSuccessItem")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CancelSpotFleetRequestsSuccessItem")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["PreviousSpotFleetRequestState"] = args["PreviousSpotFleetRequestState"],
 		["CurrentSpotFleetRequestState"] = args["CurrentSpotFleetRequestState"],
 		["SpotFleetRequestId"] = args["SpotFleetRequestId"],
 	}
-	asserts.AssertCancelSpotFleetRequestsSuccessItem(t)
-	return t
+	asserts.AssertCancelSpotFleetRequestsSuccessItem(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.RevokeSecurityGroupEgressRequest = { ["DryRun"] = true, ["CidrIp"] = true, ["IpPermissions"] = true, ["FromPort"] = true, ["SourceSecurityGroupOwnerId"] = true, ["SourceSecurityGroupName"] = true, ["ToPort"] = true, ["IpProtocol"] = true, ["GroupId"] = true, nil }
@@ -10665,8 +14031,14 @@ end
 -- Required key: GroupId
 -- @return RevokeSecurityGroupEgressRequest structure as a key-value pair table
 function M.RevokeSecurityGroupEgressRequest(args)
-	assert(args, "You must provdide an argument table when creating RevokeSecurityGroupEgressRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating RevokeSecurityGroupEgressRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DryRun"] = args["DryRun"],
 		["CidrIp"] = args["CidrIp"],
 		["IpPermissions"] = args["IpPermissions"],
@@ -10677,8 +14049,13 @@ function M.RevokeSecurityGroupEgressRequest(args)
 		["IpProtocol"] = args["IpProtocol"],
 		["GroupId"] = args["GroupId"],
 	}
-	asserts.AssertRevokeSecurityGroupEgressRequest(t)
-	return t
+	asserts.AssertRevokeSecurityGroupEgressRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeImportImageTasksRequest = { ["NextToken"] = true, ["DryRun"] = true, ["MaxResults"] = true, ["Filters"] = true, ["ImportTaskIds"] = true, nil }
@@ -10707,16 +14084,27 @@ end
 -- * ImportTaskIds [ImportTaskIdList] <p>A list of import image task IDs.</p>
 -- @return DescribeImportImageTasksRequest structure as a key-value pair table
 function M.DescribeImportImageTasksRequest(args)
-	assert(args, "You must provdide an argument table when creating DescribeImportImageTasksRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeImportImageTasksRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NextToken"] = args["NextToken"],
 		["DryRun"] = args["DryRun"],
 		["MaxResults"] = args["MaxResults"],
 		["Filters"] = args["Filters"],
 		["ImportTaskIds"] = args["ImportTaskIds"],
 	}
-	asserts.AssertDescribeImportImageTasksRequest(t)
-	return t
+	asserts.AssertDescribeImportImageTasksRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeVpcClassicLinkDnsSupportResult = { ["Vpcs"] = true, ["NextToken"] = true, nil }
@@ -10739,13 +14127,24 @@ end
 -- * NextToken [NextToken] <p>The token to use when requesting the next set of items.</p>
 -- @return DescribeVpcClassicLinkDnsSupportResult structure as a key-value pair table
 function M.DescribeVpcClassicLinkDnsSupportResult(args)
-	assert(args, "You must provdide an argument table when creating DescribeVpcClassicLinkDnsSupportResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeVpcClassicLinkDnsSupportResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Vpcs"] = args["Vpcs"],
 		["NextToken"] = args["NextToken"],
 	}
-	asserts.AssertDescribeVpcClassicLinkDnsSupportResult(t)
-	return t
+	asserts.AssertDescribeVpcClassicLinkDnsSupportResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.RegisterImageRequest = { ["VirtualizationType"] = true, ["DryRun"] = true, ["Description"] = true, ["EnaSupport"] = true, ["SriovNetSupport"] = true, ["BlockDeviceMappings"] = true, ["Architecture"] = true, ["BillingProducts"] = true, ["ImageLocation"] = true, ["KernelId"] = true, ["RamdiskId"] = true, ["RootDeviceName"] = true, ["Name"] = true, nil }
@@ -10792,8 +14191,14 @@ end
 -- Required key: Name
 -- @return RegisterImageRequest structure as a key-value pair table
 function M.RegisterImageRequest(args)
-	assert(args, "You must provdide an argument table when creating RegisterImageRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating RegisterImageRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["VirtualizationType"] = args["VirtualizationType"],
 		["DryRun"] = args["DryRun"],
 		["Description"] = args["Description"],
@@ -10808,8 +14213,13 @@ function M.RegisterImageRequest(args)
 		["RootDeviceName"] = args["RootDeviceName"],
 		["Name"] = args["Name"],
 	}
-	asserts.AssertRegisterImageRequest(t)
-	return t
+	asserts.AssertRegisterImageRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.IcmpTypeCode = { ["Code"] = true, ["Type"] = true, nil }
@@ -10832,13 +14242,24 @@ end
 -- * Type [Integer] <p>The ICMP type. A value of -1 means all types.</p>
 -- @return IcmpTypeCode structure as a key-value pair table
 function M.IcmpTypeCode(args)
-	assert(args, "You must provdide an argument table when creating IcmpTypeCode")
-	local t = { 
+	assert(args, "You must provide an argument table when creating IcmpTypeCode")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Code"] = args["Code"],
 		["Type"] = args["Type"],
 	}
-	asserts.AssertIcmpTypeCode(t)
-	return t
+	asserts.AssertIcmpTypeCode(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeInternetGatewaysRequest = { ["DryRun"] = true, ["InternetGatewayIds"] = true, ["Filters"] = true, nil }
@@ -10863,14 +14284,25 @@ end
 -- * Filters [FilterList] <p>One or more filters.</p> <ul> <li> <p> <code>attachment.state</code> - The current state of the attachment between the gateway and the VPC (<code>available</code>). Present only if a VPC is attached.</p> </li> <li> <p> <code>attachment.vpc-id</code> - The ID of an attached VPC.</p> </li> <li> <p> <code>internet-gateway-id</code> - The ID of the Internet gateway.</p> </li> <li> <p> <code>tag</code>:<i>key</i>=<i>value</i> - The key/value combination of a tag assigned to the resource. Specify the key of the tag in the filter name and the value of the tag in the filter value. For example, for the tag Purpose=X, specify <code>tag:Purpose</code> for the filter name and <code>X</code> for the filter value.</p> </li> <li> <p> <code>tag-key</code> - The key of a tag assigned to the resource. This filter is independent of the <code>tag-value</code> filter. For example, if you use both the filter "tag-key=Purpose" and the filter "tag-value=X", you get any resources assigned both the tag key Purpose (regardless of what the tag's value is), and the tag value X (regardless of what the tag's key is). If you want to list only resources where Purpose is X, see the <code>tag</code>:<i>key</i>=<i>value</i> filter.</p> </li> <li> <p> <code>tag-value</code> - The value of a tag assigned to the resource. This filter is independent of the <code>tag-key</code> filter.</p> </li> </ul>
 -- @return DescribeInternetGatewaysRequest structure as a key-value pair table
 function M.DescribeInternetGatewaysRequest(args)
-	assert(args, "You must provdide an argument table when creating DescribeInternetGatewaysRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeInternetGatewaysRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DryRun"] = args["DryRun"],
 		["InternetGatewayIds"] = args["InternetGatewayIds"],
 		["Filters"] = args["Filters"],
 	}
-	asserts.AssertDescribeInternetGatewaysRequest(t)
-	return t
+	asserts.AssertDescribeInternetGatewaysRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateVpcPeeringConnectionResult = { ["VpcPeeringConnection"] = true, nil }
@@ -10891,12 +14323,23 @@ end
 -- * VpcPeeringConnection [VpcPeeringConnection] <p>Information about the VPC peering connection.</p>
 -- @return CreateVpcPeeringConnectionResult structure as a key-value pair table
 function M.CreateVpcPeeringConnectionResult(args)
-	assert(args, "You must provdide an argument table when creating CreateVpcPeeringConnectionResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateVpcPeeringConnectionResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["VpcPeeringConnection"] = args["VpcPeeringConnection"],
 	}
-	asserts.AssertCreateVpcPeeringConnectionResult(t)
-	return t
+	asserts.AssertCreateVpcPeeringConnectionResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.NetworkInterfaceAttachmentChanges = { ["DeleteOnTermination"] = true, ["AttachmentId"] = true, nil }
@@ -10919,13 +14362,24 @@ end
 -- * AttachmentId [String] <p>The ID of the network interface attachment.</p>
 -- @return NetworkInterfaceAttachmentChanges structure as a key-value pair table
 function M.NetworkInterfaceAttachmentChanges(args)
-	assert(args, "You must provdide an argument table when creating NetworkInterfaceAttachmentChanges")
-	local t = { 
+	assert(args, "You must provide an argument table when creating NetworkInterfaceAttachmentChanges")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DeleteOnTermination"] = args["DeleteOnTermination"],
 		["AttachmentId"] = args["AttachmentId"],
 	}
-	asserts.AssertNetworkInterfaceAttachmentChanges(t)
-	return t
+	asserts.AssertNetworkInterfaceAttachmentChanges(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateNetworkInterfaceRequest = { ["DryRun"] = true, ["Description"] = true, ["Ipv6AddressCount"] = true, ["PrivateIpAddresses"] = true, ["SubnetId"] = true, ["SecondaryPrivateIpAddressCount"] = true, ["Groups"] = true, ["Ipv6Addresses"] = true, ["PrivateIpAddress"] = true, nil }
@@ -10964,8 +14418,14 @@ end
 -- Required key: SubnetId
 -- @return CreateNetworkInterfaceRequest structure as a key-value pair table
 function M.CreateNetworkInterfaceRequest(args)
-	assert(args, "You must provdide an argument table when creating CreateNetworkInterfaceRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateNetworkInterfaceRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DryRun"] = args["DryRun"],
 		["Description"] = args["Description"],
 		["Ipv6AddressCount"] = args["Ipv6AddressCount"],
@@ -10976,8 +14436,13 @@ function M.CreateNetworkInterfaceRequest(args)
 		["Ipv6Addresses"] = args["Ipv6Addresses"],
 		["PrivateIpAddress"] = args["PrivateIpAddress"],
 	}
-	asserts.AssertCreateNetworkInterfaceRequest(t)
-	return t
+	asserts.AssertCreateNetworkInterfaceRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeImportSnapshotTasksResult = { ["NextToken"] = true, ["ImportSnapshotTasks"] = true, nil }
@@ -11000,13 +14465,24 @@ end
 -- * ImportSnapshotTasks [ImportSnapshotTaskList] <p>A list of zero or more import snapshot tasks that are currently active or were completed or canceled in the previous 7 days.</p>
 -- @return DescribeImportSnapshotTasksResult structure as a key-value pair table
 function M.DescribeImportSnapshotTasksResult(args)
-	assert(args, "You must provdide an argument table when creating DescribeImportSnapshotTasksResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeImportSnapshotTasksResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NextToken"] = args["NextToken"],
 		["ImportSnapshotTasks"] = args["ImportSnapshotTasks"],
 	}
-	asserts.AssertDescribeImportSnapshotTasksResult(t)
-	return t
+	asserts.AssertDescribeImportSnapshotTasksResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeStaleSecurityGroupsResult = { ["StaleSecurityGroupSet"] = true, ["NextToken"] = true, nil }
@@ -11029,13 +14505,24 @@ end
 -- * NextToken [String] <p>The token to use when requesting the next set of items. If there are no additional items to return, the string is empty.</p>
 -- @return DescribeStaleSecurityGroupsResult structure as a key-value pair table
 function M.DescribeStaleSecurityGroupsResult(args)
-	assert(args, "You must provdide an argument table when creating DescribeStaleSecurityGroupsResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeStaleSecurityGroupsResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["StaleSecurityGroupSet"] = args["StaleSecurityGroupSet"],
 		["NextToken"] = args["NextToken"],
 	}
-	asserts.AssertDescribeStaleSecurityGroupsResult(t)
-	return t
+	asserts.AssertDescribeStaleSecurityGroupsResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.PriceScheduleSpecification = { ["Term"] = true, ["CurrencyCode"] = true, ["Price"] = true, nil }
@@ -11060,14 +14547,25 @@ end
 -- * Price [Double] <p>The fixed price for the term.</p>
 -- @return PriceScheduleSpecification structure as a key-value pair table
 function M.PriceScheduleSpecification(args)
-	assert(args, "You must provdide an argument table when creating PriceScheduleSpecification")
-	local t = { 
+	assert(args, "You must provide an argument table when creating PriceScheduleSpecification")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Term"] = args["Term"],
 		["CurrencyCode"] = args["CurrencyCode"],
 		["Price"] = args["Price"],
 	}
-	asserts.AssertPriceScheduleSpecification(t)
-	return t
+	asserts.AssertPriceScheduleSpecification(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UnassignIpv6AddressesResult = { ["NetworkInterfaceId"] = true, ["UnassignedIpv6Addresses"] = true, nil }
@@ -11090,13 +14588,24 @@ end
 -- * UnassignedIpv6Addresses [Ipv6AddressList] <p>The IPv6 addresses that have been unassigned from the network interface.</p>
 -- @return UnassignIpv6AddressesResult structure as a key-value pair table
 function M.UnassignIpv6AddressesResult(args)
-	assert(args, "You must provdide an argument table when creating UnassignIpv6AddressesResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UnassignIpv6AddressesResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NetworkInterfaceId"] = args["NetworkInterfaceId"],
 		["UnassignedIpv6Addresses"] = args["UnassignedIpv6Addresses"],
 	}
-	asserts.AssertUnassignIpv6AddressesResult(t)
-	return t
+	asserts.AssertUnassignIpv6AddressesResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeImageAttributeRequest = { ["Attribute"] = true, ["DryRun"] = true, ["ImageId"] = true, nil }
@@ -11125,14 +14634,25 @@ end
 -- Required key: ImageId
 -- @return DescribeImageAttributeRequest structure as a key-value pair table
 function M.DescribeImageAttributeRequest(args)
-	assert(args, "You must provdide an argument table when creating DescribeImageAttributeRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeImageAttributeRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Attribute"] = args["Attribute"],
 		["DryRun"] = args["DryRun"],
 		["ImageId"] = args["ImageId"],
 	}
-	asserts.AssertDescribeImageAttributeRequest(t)
-	return t
+	asserts.AssertDescribeImageAttributeRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeEgressOnlyInternetGatewaysResult = { ["NextToken"] = true, ["EgressOnlyInternetGateways"] = true, nil }
@@ -11155,13 +14675,24 @@ end
 -- * EgressOnlyInternetGateways [EgressOnlyInternetGatewayList] <p>Information about the egress-only Internet gateways.</p>
 -- @return DescribeEgressOnlyInternetGatewaysResult structure as a key-value pair table
 function M.DescribeEgressOnlyInternetGatewaysResult(args)
-	assert(args, "You must provdide an argument table when creating DescribeEgressOnlyInternetGatewaysResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeEgressOnlyInternetGatewaysResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NextToken"] = args["NextToken"],
 		["EgressOnlyInternetGateways"] = args["EgressOnlyInternetGateways"],
 	}
-	asserts.AssertDescribeEgressOnlyInternetGatewaysResult(t)
-	return t
+	asserts.AssertDescribeEgressOnlyInternetGatewaysResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InstanceNetworkInterfaceAttachment = { ["Status"] = true, ["DeviceIndex"] = true, ["DeleteOnTermination"] = true, ["AttachmentId"] = true, ["AttachTime"] = true, nil }
@@ -11190,16 +14721,27 @@ end
 -- * AttachTime [DateTime] <p>The time stamp when the attachment initiated.</p>
 -- @return InstanceNetworkInterfaceAttachment structure as a key-value pair table
 function M.InstanceNetworkInterfaceAttachment(args)
-	assert(args, "You must provdide an argument table when creating InstanceNetworkInterfaceAttachment")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InstanceNetworkInterfaceAttachment")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Status"] = args["Status"],
 		["DeviceIndex"] = args["DeviceIndex"],
 		["DeleteOnTermination"] = args["DeleteOnTermination"],
 		["AttachmentId"] = args["AttachmentId"],
 		["AttachTime"] = args["AttachTime"],
 	}
-	asserts.AssertInstanceNetworkInterfaceAttachment(t)
-	return t
+	asserts.AssertInstanceNetworkInterfaceAttachment(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeSubnetsRequest = { ["SubnetIds"] = true, ["DryRun"] = true, ["Filters"] = true, nil }
@@ -11224,14 +14766,25 @@ end
 -- * Filters [FilterList] <p>One or more filters.</p> <ul> <li> <p> <code>availabilityZone</code> - The Availability Zone for the subnet. You can also use <code>availability-zone</code> as the filter name.</p> </li> <li> <p> <code>available-ip-address-count</code> - The number of IPv4 addresses in the subnet that are available.</p> </li> <li> <p> <code>cidrBlock</code> - The IPv4 CIDR block of the subnet. The CIDR block you specify must exactly match the subnet's CIDR block for information to be returned for the subnet. You can also use <code>cidr</code> or <code>cidr-block</code> as the filter names.</p> </li> <li> <p> <code>defaultForAz</code> - Indicates whether this is the default subnet for the Availability Zone. You can also use <code>default-for-az</code> as the filter name.</p> </li> <li> <p> <code>ipv6-cidr-block-association.ipv6-cidr-block</code> - An IPv6 CIDR block associated with the subnet.</p> </li> <li> <p> <code>ipv6-cidr-block-association.association-id</code> - An association ID for an IPv6 CIDR block associated with the subnet.</p> </li> <li> <p> <code>ipv6-cidr-block-association.state</code> - The state of an IPv6 CIDR block associated with the subnet.</p> </li> <li> <p> <code>state</code> - The state of the subnet (<code>pending</code> | <code>available</code>).</p> </li> <li> <p> <code>subnet-id</code> - The ID of the subnet.</p> </li> <li> <p> <code>tag</code>:<i>key</i>=<i>value</i> - The key/value combination of a tag assigned to the resource. Specify the key of the tag in the filter name and the value of the tag in the filter value. For example, for the tag Purpose=X, specify <code>tag:Purpose</code> for the filter name and <code>X</code> for the filter value.</p> </li> <li> <p> <code>tag-key</code> - The key of a tag assigned to the resource. This filter is independent of the <code>tag-value</code> filter. For example, if you use both the filter "tag-key=Purpose" and the filter "tag-value=X", you get any resources assigned both the tag key Purpose (regardless of what the tag's value is), and the tag value X (regardless of what the tag's key is). If you want to list only resources where Purpose is X, see the <code>tag</code>:<i>key</i>=<i>value</i> filter.</p> </li> <li> <p> <code>tag-value</code> - The value of a tag assigned to the resource. This filter is independent of the <code>tag-key</code> filter.</p> </li> <li> <p> <code>vpc-id</code> - The ID of the VPC for the subnet.</p> </li> </ul>
 -- @return DescribeSubnetsRequest structure as a key-value pair table
 function M.DescribeSubnetsRequest(args)
-	assert(args, "You must provdide an argument table when creating DescribeSubnetsRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeSubnetsRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["SubnetIds"] = args["SubnetIds"],
 		["DryRun"] = args["DryRun"],
 		["Filters"] = args["Filters"],
 	}
-	asserts.AssertDescribeSubnetsRequest(t)
-	return t
+	asserts.AssertDescribeSubnetsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateSubnetRequest = { ["VpcId"] = true, ["Ipv6CidrBlock"] = true, ["DryRun"] = true, ["AvailabilityZone"] = true, ["CidrBlock"] = true, nil }
@@ -11264,16 +14817,27 @@ end
 -- Required key: VpcId
 -- @return CreateSubnetRequest structure as a key-value pair table
 function M.CreateSubnetRequest(args)
-	assert(args, "You must provdide an argument table when creating CreateSubnetRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateSubnetRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["VpcId"] = args["VpcId"],
 		["Ipv6CidrBlock"] = args["Ipv6CidrBlock"],
 		["DryRun"] = args["DryRun"],
 		["AvailabilityZone"] = args["AvailabilityZone"],
 		["CidrBlock"] = args["CidrBlock"],
 	}
-	asserts.AssertCreateSubnetRequest(t)
-	return t
+	asserts.AssertCreateSubnetRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ConfirmProductInstanceRequest = { ["InstanceId"] = true, ["ProductCode"] = true, ["DryRun"] = true, nil }
@@ -11302,14 +14866,25 @@ end
 -- Required key: ProductCode
 -- @return ConfirmProductInstanceRequest structure as a key-value pair table
 function M.ConfirmProductInstanceRequest(args)
-	assert(args, "You must provdide an argument table when creating ConfirmProductInstanceRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ConfirmProductInstanceRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["InstanceId"] = args["InstanceId"],
 		["ProductCode"] = args["ProductCode"],
 		["DryRun"] = args["DryRun"],
 	}
-	asserts.AssertConfirmProductInstanceRequest(t)
-	return t
+	asserts.AssertConfirmProductInstanceRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ScheduledInstanceRecurrenceRequest = { ["OccurrenceDays"] = true, ["Interval"] = true, ["Frequency"] = true, ["OccurrenceRelativeToEnd"] = true, ["OccurrenceUnit"] = true, nil }
@@ -11338,16 +14913,27 @@ end
 -- * OccurrenceUnit [String] <p>The unit for <code>OccurrenceDays</code> (<code>DayOfWeek</code> or <code>DayOfMonth</code>). This value is required for a monthly schedule. You can't specify <code>DayOfWeek</code> with a weekly schedule. You can't specify this value with a daily schedule.</p>
 -- @return ScheduledInstanceRecurrenceRequest structure as a key-value pair table
 function M.ScheduledInstanceRecurrenceRequest(args)
-	assert(args, "You must provdide an argument table when creating ScheduledInstanceRecurrenceRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ScheduledInstanceRecurrenceRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["OccurrenceDays"] = args["OccurrenceDays"],
 		["Interval"] = args["Interval"],
 		["Frequency"] = args["Frequency"],
 		["OccurrenceRelativeToEnd"] = args["OccurrenceRelativeToEnd"],
 		["OccurrenceUnit"] = args["OccurrenceUnit"],
 	}
-	asserts.AssertScheduledInstanceRecurrenceRequest(t)
-	return t
+	asserts.AssertScheduledInstanceRecurrenceRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeStaleSecurityGroupsRequest = { ["VpcId"] = true, ["NextToken"] = true, ["DryRun"] = true, ["MaxResults"] = true, nil }
@@ -11376,15 +14962,26 @@ end
 -- Required key: VpcId
 -- @return DescribeStaleSecurityGroupsRequest structure as a key-value pair table
 function M.DescribeStaleSecurityGroupsRequest(args)
-	assert(args, "You must provdide an argument table when creating DescribeStaleSecurityGroupsRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeStaleSecurityGroupsRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["VpcId"] = args["VpcId"],
 		["NextToken"] = args["NextToken"],
 		["DryRun"] = args["DryRun"],
 		["MaxResults"] = args["MaxResults"],
 	}
-	asserts.AssertDescribeStaleSecurityGroupsRequest(t)
-	return t
+	asserts.AssertDescribeStaleSecurityGroupsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ReservationValue = { ["RemainingUpfrontValue"] = true, ["HourlyPrice"] = true, ["RemainingTotalValue"] = true, nil }
@@ -11409,14 +15006,25 @@ end
 -- * RemainingTotalValue [String] <p>The balance of the total value (the sum of remainingUpfrontValue + hourlyPrice * number of hours remaining).</p>
 -- @return ReservationValue structure as a key-value pair table
 function M.ReservationValue(args)
-	assert(args, "You must provdide an argument table when creating ReservationValue")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ReservationValue")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["RemainingUpfrontValue"] = args["RemainingUpfrontValue"],
 		["HourlyPrice"] = args["HourlyPrice"],
 		["RemainingTotalValue"] = args["RemainingTotalValue"],
 	}
-	asserts.AssertReservationValue(t)
-	return t
+	asserts.AssertReservationValue(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AssociateVpcCidrBlockRequest = { ["VpcId"] = true, ["AmazonProvidedIpv6CidrBlock"] = true, nil }
@@ -11441,13 +15049,24 @@ end
 -- Required key: VpcId
 -- @return AssociateVpcCidrBlockRequest structure as a key-value pair table
 function M.AssociateVpcCidrBlockRequest(args)
-	assert(args, "You must provdide an argument table when creating AssociateVpcCidrBlockRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AssociateVpcCidrBlockRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["VpcId"] = args["VpcId"],
 		["AmazonProvidedIpv6CidrBlock"] = args["AmazonProvidedIpv6CidrBlock"],
 	}
-	asserts.AssertAssociateVpcCidrBlockRequest(t)
-	return t
+	asserts.AssertAssociateVpcCidrBlockRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ExportToS3Task = { ["S3Bucket"] = true, ["S3Key"] = true, ["DiskImageFormat"] = true, ["ContainerFormat"] = true, nil }
@@ -11474,15 +15093,26 @@ end
 -- * ContainerFormat [ContainerFormat] <p>The container format used to combine disk images with metadata (such as OVF). If absent, only the disk image is exported.</p>
 -- @return ExportToS3Task structure as a key-value pair table
 function M.ExportToS3Task(args)
-	assert(args, "You must provdide an argument table when creating ExportToS3Task")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ExportToS3Task")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["S3Bucket"] = args["S3Bucket"],
 		["S3Key"] = args["S3Key"],
 		["DiskImageFormat"] = args["DiskImageFormat"],
 		["ContainerFormat"] = args["ContainerFormat"],
 	}
-	asserts.AssertExportToS3Task(t)
-	return t
+	asserts.AssertExportToS3Task(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AuthorizeSecurityGroupIngressRequest = { ["DryRun"] = true, ["GroupName"] = true, ["CidrIp"] = true, ["IpPermissions"] = true, ["FromPort"] = true, ["SourceSecurityGroupOwnerId"] = true, ["SourceSecurityGroupName"] = true, ["ToPort"] = true, ["IpProtocol"] = true, ["GroupId"] = true, nil }
@@ -11521,8 +15151,14 @@ end
 -- * GroupId [String] <p>The ID of the security group. Required for a nondefault VPC.</p>
 -- @return AuthorizeSecurityGroupIngressRequest structure as a key-value pair table
 function M.AuthorizeSecurityGroupIngressRequest(args)
-	assert(args, "You must provdide an argument table when creating AuthorizeSecurityGroupIngressRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AuthorizeSecurityGroupIngressRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DryRun"] = args["DryRun"],
 		["GroupName"] = args["GroupName"],
 		["CidrIp"] = args["CidrIp"],
@@ -11534,8 +15170,13 @@ function M.AuthorizeSecurityGroupIngressRequest(args)
 		["IpProtocol"] = args["IpProtocol"],
 		["GroupId"] = args["GroupId"],
 	}
-	asserts.AssertAuthorizeSecurityGroupIngressRequest(t)
-	return t
+	asserts.AssertAuthorizeSecurityGroupIngressRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeAccountAttributesRequest = { ["DryRun"] = true, ["AttributeNames"] = true, nil }
@@ -11558,13 +15199,24 @@ end
 -- * AttributeNames [AccountAttributeNameStringList] <p>One or more account attribute names.</p>
 -- @return DescribeAccountAttributesRequest structure as a key-value pair table
 function M.DescribeAccountAttributesRequest(args)
-	assert(args, "You must provdide an argument table when creating DescribeAccountAttributesRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeAccountAttributesRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DryRun"] = args["DryRun"],
 		["AttributeNames"] = args["AttributeNames"],
 	}
-	asserts.AssertDescribeAccountAttributesRequest(t)
-	return t
+	asserts.AssertDescribeAccountAttributesRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.VpcPeeringConnection = { ["Status"] = true, ["Tags"] = true, ["RequesterVpcInfo"] = true, ["VpcPeeringConnectionId"] = true, ["ExpirationTime"] = true, ["AccepterVpcInfo"] = true, nil }
@@ -11595,8 +15247,14 @@ end
 -- * AccepterVpcInfo [VpcPeeringConnectionVpcInfo] <p>Information about the accepter VPC. CIDR block information is only returned when describing an active VPC peering connection.</p>
 -- @return VpcPeeringConnection structure as a key-value pair table
 function M.VpcPeeringConnection(args)
-	assert(args, "You must provdide an argument table when creating VpcPeeringConnection")
-	local t = { 
+	assert(args, "You must provide an argument table when creating VpcPeeringConnection")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Status"] = args["Status"],
 		["Tags"] = args["Tags"],
 		["RequesterVpcInfo"] = args["RequesterVpcInfo"],
@@ -11604,8 +15262,13 @@ function M.VpcPeeringConnection(args)
 		["ExpirationTime"] = args["ExpirationTime"],
 		["AccepterVpcInfo"] = args["AccepterVpcInfo"],
 	}
-	asserts.AssertVpcPeeringConnection(t)
-	return t
+	asserts.AssertVpcPeeringConnection(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeScheduledInstanceAvailabilityResult = { ["NextToken"] = true, ["ScheduledInstanceAvailabilitySet"] = true, nil }
@@ -11628,13 +15291,24 @@ end
 -- * ScheduledInstanceAvailabilitySet [ScheduledInstanceAvailabilitySet] <p>Information about the available Scheduled Instances.</p>
 -- @return DescribeScheduledInstanceAvailabilityResult structure as a key-value pair table
 function M.DescribeScheduledInstanceAvailabilityResult(args)
-	assert(args, "You must provdide an argument table when creating DescribeScheduledInstanceAvailabilityResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeScheduledInstanceAvailabilityResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NextToken"] = args["NextToken"],
 		["ScheduledInstanceAvailabilitySet"] = args["ScheduledInstanceAvailabilitySet"],
 	}
-	asserts.AssertDescribeScheduledInstanceAvailabilityResult(t)
-	return t
+	asserts.AssertDescribeScheduledInstanceAvailabilityResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeIamInstanceProfileAssociationsRequest = { ["NextToken"] = true, ["MaxResults"] = true, ["Filters"] = true, ["AssociationIds"] = true, nil }
@@ -11661,15 +15335,26 @@ end
 -- * AssociationIds [AssociationIdList] <p>One or more IAM instance profile associations.</p>
 -- @return DescribeIamInstanceProfileAssociationsRequest structure as a key-value pair table
 function M.DescribeIamInstanceProfileAssociationsRequest(args)
-	assert(args, "You must provdide an argument table when creating DescribeIamInstanceProfileAssociationsRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeIamInstanceProfileAssociationsRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NextToken"] = args["NextToken"],
 		["MaxResults"] = args["MaxResults"],
 		["Filters"] = args["Filters"],
 		["AssociationIds"] = args["AssociationIds"],
 	}
-	asserts.AssertDescribeIamInstanceProfileAssociationsRequest(t)
-	return t
+	asserts.AssertDescribeIamInstanceProfileAssociationsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ConversionTask = { ["ImportInstance"] = true, ["ImportVolume"] = true, ["Tags"] = true, ["ConversionTaskId"] = true, ["State"] = true, ["ExpirationTime"] = true, ["StatusMessage"] = true, nil }
@@ -11706,8 +15391,14 @@ end
 -- Required key: State
 -- @return ConversionTask structure as a key-value pair table
 function M.ConversionTask(args)
-	assert(args, "You must provdide an argument table when creating ConversionTask")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ConversionTask")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ImportInstance"] = args["ImportInstance"],
 		["ImportVolume"] = args["ImportVolume"],
 		["Tags"] = args["Tags"],
@@ -11716,8 +15407,13 @@ function M.ConversionTask(args)
 		["ExpirationTime"] = args["ExpirationTime"],
 		["StatusMessage"] = args["StatusMessage"],
 	}
-	asserts.AssertConversionTask(t)
-	return t
+	asserts.AssertConversionTask(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateVpcEndpointResult = { ["VpcEndpoint"] = true, ["ClientToken"] = true, nil }
@@ -11740,13 +15436,24 @@ end
 -- * ClientToken [String] <p>Unique, case-sensitive identifier you provide to ensure the idempotency of the request.</p>
 -- @return CreateVpcEndpointResult structure as a key-value pair table
 function M.CreateVpcEndpointResult(args)
-	assert(args, "You must provdide an argument table when creating CreateVpcEndpointResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateVpcEndpointResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["VpcEndpoint"] = args["VpcEndpoint"],
 		["ClientToken"] = args["ClientToken"],
 	}
-	asserts.AssertCreateVpcEndpointResult(t)
-	return t
+	asserts.AssertCreateVpcEndpointResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeSpotPriceHistoryResult = { ["NextToken"] = true, ["SpotPriceHistory"] = true, nil }
@@ -11769,13 +15476,24 @@ end
 -- * SpotPriceHistory [SpotPriceHistoryList] <p>The historical Spot prices.</p>
 -- @return DescribeSpotPriceHistoryResult structure as a key-value pair table
 function M.DescribeSpotPriceHistoryResult(args)
-	assert(args, "You must provdide an argument table when creating DescribeSpotPriceHistoryResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeSpotPriceHistoryResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NextToken"] = args["NextToken"],
 		["SpotPriceHistory"] = args["SpotPriceHistory"],
 	}
-	asserts.AssertDescribeSpotPriceHistoryResult(t)
-	return t
+	asserts.AssertDescribeSpotPriceHistoryResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeScheduledInstanceAvailabilityRequest = { ["DryRun"] = true, ["Filters"] = true, ["MinSlotDurationInHours"] = true, ["MaxResults"] = true, ["FirstSlotStartTimeRange"] = true, ["Recurrence"] = true, ["MaxSlotDurationInHours"] = true, ["NextToken"] = true, nil }
@@ -11814,8 +15532,14 @@ end
 -- Required key: Recurrence
 -- @return DescribeScheduledInstanceAvailabilityRequest structure as a key-value pair table
 function M.DescribeScheduledInstanceAvailabilityRequest(args)
-	assert(args, "You must provdide an argument table when creating DescribeScheduledInstanceAvailabilityRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeScheduledInstanceAvailabilityRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DryRun"] = args["DryRun"],
 		["Filters"] = args["Filters"],
 		["MinSlotDurationInHours"] = args["MinSlotDurationInHours"],
@@ -11825,8 +15549,13 @@ function M.DescribeScheduledInstanceAvailabilityRequest(args)
 		["MaxSlotDurationInHours"] = args["MaxSlotDurationInHours"],
 		["NextToken"] = args["NextToken"],
 	}
-	asserts.AssertDescribeScheduledInstanceAvailabilityRequest(t)
-	return t
+	asserts.AssertDescribeScheduledInstanceAvailabilityRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeNatGatewaysResult = { ["NextToken"] = true, ["NatGateways"] = true, nil }
@@ -11849,13 +15578,24 @@ end
 -- * NatGateways [NatGatewayList] <p>Information about the NAT gateways.</p>
 -- @return DescribeNatGatewaysResult structure as a key-value pair table
 function M.DescribeNatGatewaysResult(args)
-	assert(args, "You must provdide an argument table when creating DescribeNatGatewaysResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeNatGatewaysResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NextToken"] = args["NextToken"],
 		["NatGateways"] = args["NatGateways"],
 	}
-	asserts.AssertDescribeNatGatewaysResult(t)
-	return t
+	asserts.AssertDescribeNatGatewaysResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ReplaceIamInstanceProfileAssociationResult = { ["IamInstanceProfileAssociation"] = true, nil }
@@ -11876,12 +15616,23 @@ end
 -- * IamInstanceProfileAssociation [IamInstanceProfileAssociation] <p>Information about the IAM instance profile association.</p>
 -- @return ReplaceIamInstanceProfileAssociationResult structure as a key-value pair table
 function M.ReplaceIamInstanceProfileAssociationResult(args)
-	assert(args, "You must provdide an argument table when creating ReplaceIamInstanceProfileAssociationResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ReplaceIamInstanceProfileAssociationResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["IamInstanceProfileAssociation"] = args["IamInstanceProfileAssociation"],
 	}
-	asserts.AssertReplaceIamInstanceProfileAssociationResult(t)
-	return t
+	asserts.AssertReplaceIamInstanceProfileAssociationResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ProvisionedBandwidth = { ["Status"] = true, ["Provisioned"] = true, ["RequestTime"] = true, ["Requested"] = true, ["ProvisionTime"] = true, nil }
@@ -11910,16 +15661,27 @@ end
 -- * ProvisionTime [DateTime] <p>Reserved. If you need to sustain traffic greater than the <a href="http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/vpc-nat-gateway.html">documented limits</a>, contact us through the <a href="https://console.aws.amazon.com/support/home?">Support Center</a>.</p>
 -- @return ProvisionedBandwidth structure as a key-value pair table
 function M.ProvisionedBandwidth(args)
-	assert(args, "You must provdide an argument table when creating ProvisionedBandwidth")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ProvisionedBandwidth")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Status"] = args["Status"],
 		["Provisioned"] = args["Provisioned"],
 		["RequestTime"] = args["RequestTime"],
 		["Requested"] = args["Requested"],
 		["ProvisionTime"] = args["ProvisionTime"],
 	}
-	asserts.AssertProvisionedBandwidth(t)
-	return t
+	asserts.AssertProvisionedBandwidth(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribePlacementGroupsResult = { ["PlacementGroups"] = true, nil }
@@ -11940,12 +15702,23 @@ end
 -- * PlacementGroups [PlacementGroupList] <p>One or more placement groups.</p>
 -- @return DescribePlacementGroupsResult structure as a key-value pair table
 function M.DescribePlacementGroupsResult(args)
-	assert(args, "You must provdide an argument table when creating DescribePlacementGroupsResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribePlacementGroupsResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["PlacementGroups"] = args["PlacementGroups"],
 	}
-	asserts.AssertDescribePlacementGroupsResult(t)
-	return t
+	asserts.AssertDescribePlacementGroupsResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UnmonitorInstancesRequest = { ["DryRun"] = true, ["InstanceIds"] = true, nil }
@@ -11970,13 +15743,24 @@ end
 -- Required key: InstanceIds
 -- @return UnmonitorInstancesRequest structure as a key-value pair table
 function M.UnmonitorInstancesRequest(args)
-	assert(args, "You must provdide an argument table when creating UnmonitorInstancesRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UnmonitorInstancesRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DryRun"] = args["DryRun"],
 		["InstanceIds"] = args["InstanceIds"],
 	}
-	asserts.AssertUnmonitorInstancesRequest(t)
-	return t
+	asserts.AssertUnmonitorInstancesRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.BundleInstanceResult = { ["BundleTask"] = true, nil }
@@ -11997,12 +15781,23 @@ end
 -- * BundleTask [BundleTask] <p>Information about the bundle task.</p>
 -- @return BundleInstanceResult structure as a key-value pair table
 function M.BundleInstanceResult(args)
-	assert(args, "You must provdide an argument table when creating BundleInstanceResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating BundleInstanceResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["BundleTask"] = args["BundleTask"],
 	}
-	asserts.AssertBundleInstanceResult(t)
-	return t
+	asserts.AssertBundleInstanceResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AccountAttributeValue = { ["AttributeValue"] = true, nil }
@@ -12023,12 +15818,23 @@ end
 -- * AttributeValue [String] <p>The value of the attribute.</p>
 -- @return AccountAttributeValue structure as a key-value pair table
 function M.AccountAttributeValue(args)
-	assert(args, "You must provdide an argument table when creating AccountAttributeValue")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AccountAttributeValue")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["AttributeValue"] = args["AttributeValue"],
 	}
-	asserts.AssertAccountAttributeValue(t)
-	return t
+	asserts.AssertAccountAttributeValue(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeHostReservationsRequest = { ["Filter"] = true, ["HostReservationIdSet"] = true, ["NextToken"] = true, ["MaxResults"] = true, nil }
@@ -12055,15 +15861,26 @@ end
 -- * MaxResults [Integer] <p>The maximum number of results to return for the request in a single page. The remaining results can be seen by sending another request with the returned <code>nextToken</code> value. This value can be between 5 and 500; if <code>maxResults</code> is given a larger value than 500, you will receive an error.</p>
 -- @return DescribeHostReservationsRequest structure as a key-value pair table
 function M.DescribeHostReservationsRequest(args)
-	assert(args, "You must provdide an argument table when creating DescribeHostReservationsRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeHostReservationsRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Filter"] = args["Filter"],
 		["HostReservationIdSet"] = args["HostReservationIdSet"],
 		["NextToken"] = args["NextToken"],
 		["MaxResults"] = args["MaxResults"],
 	}
-	asserts.AssertDescribeHostReservationsRequest(t)
-	return t
+	asserts.AssertDescribeHostReservationsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeScheduledInstancesRequest = { ["ScheduledInstanceIds"] = true, ["DryRun"] = true, ["MaxResults"] = true, ["SlotStartTimeRange"] = true, ["Filters"] = true, ["NextToken"] = true, nil }
@@ -12094,8 +15911,14 @@ end
 -- * NextToken [String] <p>The token for the next set of results.</p>
 -- @return DescribeScheduledInstancesRequest structure as a key-value pair table
 function M.DescribeScheduledInstancesRequest(args)
-	assert(args, "You must provdide an argument table when creating DescribeScheduledInstancesRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeScheduledInstancesRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ScheduledInstanceIds"] = args["ScheduledInstanceIds"],
 		["DryRun"] = args["DryRun"],
 		["MaxResults"] = args["MaxResults"],
@@ -12103,8 +15926,13 @@ function M.DescribeScheduledInstancesRequest(args)
 		["Filters"] = args["Filters"],
 		["NextToken"] = args["NextToken"],
 	}
-	asserts.AssertDescribeScheduledInstancesRequest(t)
-	return t
+	asserts.AssertDescribeScheduledInstancesRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetConsoleScreenshotRequest = { ["InstanceId"] = true, ["WakeUp"] = true, ["DryRun"] = true, nil }
@@ -12131,14 +15959,25 @@ end
 -- Required key: InstanceId
 -- @return GetConsoleScreenshotRequest structure as a key-value pair table
 function M.GetConsoleScreenshotRequest(args)
-	assert(args, "You must provdide an argument table when creating GetConsoleScreenshotRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetConsoleScreenshotRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["InstanceId"] = args["InstanceId"],
 		["WakeUp"] = args["WakeUp"],
 		["DryRun"] = args["DryRun"],
 	}
-	asserts.AssertGetConsoleScreenshotRequest(t)
-	return t
+	asserts.AssertGetConsoleScreenshotRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.NetworkAclAssociation = { ["SubnetId"] = true, ["NetworkAclId"] = true, ["NetworkAclAssociationId"] = true, nil }
@@ -12163,14 +16002,25 @@ end
 -- * NetworkAclAssociationId [String] <p>The ID of the association between a network ACL and a subnet.</p>
 -- @return NetworkAclAssociation structure as a key-value pair table
 function M.NetworkAclAssociation(args)
-	assert(args, "You must provdide an argument table when creating NetworkAclAssociation")
-	local t = { 
+	assert(args, "You must provide an argument table when creating NetworkAclAssociation")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["SubnetId"] = args["SubnetId"],
 		["NetworkAclId"] = args["NetworkAclId"],
 		["NetworkAclAssociationId"] = args["NetworkAclAssociationId"],
 	}
-	asserts.AssertNetworkAclAssociation(t)
-	return t
+	asserts.AssertNetworkAclAssociation(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeExportTasksResult = { ["ExportTasks"] = true, nil }
@@ -12191,12 +16041,23 @@ end
 -- * ExportTasks [ExportTaskList] <p>Information about the export tasks.</p>
 -- @return DescribeExportTasksResult structure as a key-value pair table
 function M.DescribeExportTasksResult(args)
-	assert(args, "You must provdide an argument table when creating DescribeExportTasksResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeExportTasksResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ExportTasks"] = args["ExportTasks"],
 	}
-	asserts.AssertDescribeExportTasksResult(t)
-	return t
+	asserts.AssertDescribeExportTasksResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CancelSpotFleetRequestsRequest = { ["SpotFleetRequestIds"] = true, ["DryRun"] = true, ["TerminateInstances"] = true, nil }
@@ -12225,14 +16086,25 @@ end
 -- Required key: TerminateInstances
 -- @return CancelSpotFleetRequestsRequest structure as a key-value pair table
 function M.CancelSpotFleetRequestsRequest(args)
-	assert(args, "You must provdide an argument table when creating CancelSpotFleetRequestsRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CancelSpotFleetRequestsRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["SpotFleetRequestIds"] = args["SpotFleetRequestIds"],
 		["DryRun"] = args["DryRun"],
 		["TerminateInstances"] = args["TerminateInstances"],
 	}
-	asserts.AssertCancelSpotFleetRequestsRequest(t)
-	return t
+	asserts.AssertCancelSpotFleetRequestsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DiskImage = { ["Volume"] = true, ["Image"] = true, ["Description"] = true, nil }
@@ -12257,14 +16129,25 @@ end
 -- * Description [String] <p>A description of the disk image.</p>
 -- @return DiskImage structure as a key-value pair table
 function M.DiskImage(args)
-	assert(args, "You must provdide an argument table when creating DiskImage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DiskImage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Volume"] = args["Volume"],
 		["Image"] = args["Image"],
 		["Description"] = args["Description"],
 	}
-	asserts.AssertDiskImage(t)
-	return t
+	asserts.AssertDiskImage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AttachInternetGatewayRequest = { ["VpcId"] = true, ["DryRun"] = true, ["InternetGatewayId"] = true, nil }
@@ -12293,14 +16176,25 @@ end
 -- Required key: VpcId
 -- @return AttachInternetGatewayRequest structure as a key-value pair table
 function M.AttachInternetGatewayRequest(args)
-	assert(args, "You must provdide an argument table when creating AttachInternetGatewayRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AttachInternetGatewayRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["VpcId"] = args["VpcId"],
 		["DryRun"] = args["DryRun"],
 		["InternetGatewayId"] = args["InternetGatewayId"],
 	}
-	asserts.AssertAttachInternetGatewayRequest(t)
-	return t
+	asserts.AssertAttachInternetGatewayRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AttachClassicLinkVpcRequest = { ["InstanceId"] = true, ["VpcId"] = true, ["DryRun"] = true, ["Groups"] = true, nil }
@@ -12333,15 +16227,26 @@ end
 -- Required key: VpcId
 -- @return AttachClassicLinkVpcRequest structure as a key-value pair table
 function M.AttachClassicLinkVpcRequest(args)
-	assert(args, "You must provdide an argument table when creating AttachClassicLinkVpcRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AttachClassicLinkVpcRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["InstanceId"] = args["InstanceId"],
 		["VpcId"] = args["VpcId"],
 		["DryRun"] = args["DryRun"],
 		["Groups"] = args["Groups"],
 	}
-	asserts.AssertAttachClassicLinkVpcRequest(t)
-	return t
+	asserts.AssertAttachClassicLinkVpcRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Storage = { ["S3"] = true, nil }
@@ -12362,12 +16267,23 @@ end
 -- * S3 [S3Storage] <p>An Amazon S3 storage location.</p>
 -- @return Storage structure as a key-value pair table
 function M.Storage(args)
-	assert(args, "You must provdide an argument table when creating Storage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Storage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["S3"] = args["S3"],
 	}
-	asserts.AssertStorage(t)
-	return t
+	asserts.AssertStorage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeMovingAddressesRequest = { ["PublicIps"] = true, ["NextToken"] = true, ["DryRun"] = true, ["MaxResults"] = true, ["Filters"] = true, nil }
@@ -12396,16 +16312,27 @@ end
 -- * Filters [FilterList] <p>One or more filters.</p> <ul> <li> <p> <code>moving-status</code> - The status of the Elastic IP address (<code>MovingToVpc</code> | <code>RestoringToClassic</code>).</p> </li> </ul>
 -- @return DescribeMovingAddressesRequest structure as a key-value pair table
 function M.DescribeMovingAddressesRequest(args)
-	assert(args, "You must provdide an argument table when creating DescribeMovingAddressesRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeMovingAddressesRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["PublicIps"] = args["PublicIps"],
 		["NextToken"] = args["NextToken"],
 		["DryRun"] = args["DryRun"],
 		["MaxResults"] = args["MaxResults"],
 		["Filters"] = args["Filters"],
 	}
-	asserts.AssertDescribeMovingAddressesRequest(t)
-	return t
+	asserts.AssertDescribeMovingAddressesRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CopySnapshotRequest = { ["DryRun"] = true, ["Description"] = true, ["Encrypted"] = true, ["PresignedUrl"] = true, ["SourceRegion"] = true, ["KmsKeyId"] = true, ["SourceSnapshotId"] = true, ["DestinationRegion"] = true, nil }
@@ -12444,8 +16371,14 @@ end
 -- Required key: SourceSnapshotId
 -- @return CopySnapshotRequest structure as a key-value pair table
 function M.CopySnapshotRequest(args)
-	assert(args, "You must provdide an argument table when creating CopySnapshotRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CopySnapshotRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DryRun"] = args["DryRun"],
 		["Description"] = args["Description"],
 		["Encrypted"] = args["Encrypted"],
@@ -12455,8 +16388,13 @@ function M.CopySnapshotRequest(args)
 		["SourceSnapshotId"] = args["SourceSnapshotId"],
 		["DestinationRegion"] = args["DestinationRegion"],
 	}
-	asserts.AssertCopySnapshotRequest(t)
-	return t
+	asserts.AssertCopySnapshotRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ModifyVpcPeeringConnectionOptionsRequest = { ["DryRun"] = true, ["RequesterPeeringConnectionOptions"] = true, ["VpcPeeringConnectionId"] = true, ["AccepterPeeringConnectionOptions"] = true, nil }
@@ -12485,15 +16423,26 @@ end
 -- Required key: VpcPeeringConnectionId
 -- @return ModifyVpcPeeringConnectionOptionsRequest structure as a key-value pair table
 function M.ModifyVpcPeeringConnectionOptionsRequest(args)
-	assert(args, "You must provdide an argument table when creating ModifyVpcPeeringConnectionOptionsRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ModifyVpcPeeringConnectionOptionsRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DryRun"] = args["DryRun"],
 		["RequesterPeeringConnectionOptions"] = args["RequesterPeeringConnectionOptions"],
 		["VpcPeeringConnectionId"] = args["VpcPeeringConnectionId"],
 		["AccepterPeeringConnectionOptions"] = args["AccepterPeeringConnectionOptions"],
 	}
-	asserts.AssertModifyVpcPeeringConnectionOptionsRequest(t)
-	return t
+	asserts.AssertModifyVpcPeeringConnectionOptionsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.RequestSpotInstancesResult = { ["SpotInstanceRequests"] = true, nil }
@@ -12514,12 +16463,23 @@ end
 -- * SpotInstanceRequests [SpotInstanceRequestList] <p>One or more Spot instance requests.</p>
 -- @return RequestSpotInstancesResult structure as a key-value pair table
 function M.RequestSpotInstancesResult(args)
-	assert(args, "You must provdide an argument table when creating RequestSpotInstancesResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating RequestSpotInstancesResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["SpotInstanceRequests"] = args["SpotInstanceRequests"],
 	}
-	asserts.AssertRequestSpotInstancesResult(t)
-	return t
+	asserts.AssertRequestSpotInstancesResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteVpnGatewayRequest = { ["DryRun"] = true, ["VpnGatewayId"] = true, nil }
@@ -12544,13 +16504,24 @@ end
 -- Required key: VpnGatewayId
 -- @return DeleteVpnGatewayRequest structure as a key-value pair table
 function M.DeleteVpnGatewayRequest(args)
-	assert(args, "You must provdide an argument table when creating DeleteVpnGatewayRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteVpnGatewayRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DryRun"] = args["DryRun"],
 		["VpnGatewayId"] = args["VpnGatewayId"],
 	}
-	asserts.AssertDeleteVpnGatewayRequest(t)
-	return t
+	asserts.AssertDeleteVpnGatewayRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InstanceAttribute = { ["ProductCodes"] = true, ["SourceDestCheck"] = true, ["UserData"] = true, ["InstanceId"] = true, ["EnaSupport"] = true, ["SriovNetSupport"] = true, ["InstanceInitiatedShutdownBehavior"] = true, ["BlockDeviceMappings"] = true, ["EbsOptimized"] = true, ["Groups"] = true, ["KernelId"] = true, ["RamdiskId"] = true, ["RootDeviceName"] = true, ["DisableApiTermination"] = true, ["InstanceType"] = true, nil }
@@ -12599,8 +16570,14 @@ end
 -- * InstanceType [AttributeValue] <p>The instance type.</p>
 -- @return InstanceAttribute structure as a key-value pair table
 function M.InstanceAttribute(args)
-	assert(args, "You must provdide an argument table when creating InstanceAttribute")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InstanceAttribute")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ProductCodes"] = args["ProductCodes"],
 		["SourceDestCheck"] = args["SourceDestCheck"],
 		["UserData"] = args["UserData"],
@@ -12617,8 +16594,13 @@ function M.InstanceAttribute(args)
 		["DisableApiTermination"] = args["DisableApiTermination"],
 		["InstanceType"] = args["InstanceType"],
 	}
-	asserts.AssertInstanceAttribute(t)
-	return t
+	asserts.AssertInstanceAttribute(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteEgressOnlyInternetGatewayResult = { ["ReturnCode"] = true, nil }
@@ -12639,12 +16621,23 @@ end
 -- * ReturnCode [Boolean] <p>Returns <code>true</code> if the request succeeds; otherwise, it returns an error.</p>
 -- @return DeleteEgressOnlyInternetGatewayResult structure as a key-value pair table
 function M.DeleteEgressOnlyInternetGatewayResult(args)
-	assert(args, "You must provdide an argument table when creating DeleteEgressOnlyInternetGatewayResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteEgressOnlyInternetGatewayResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ReturnCode"] = args["ReturnCode"],
 	}
-	asserts.AssertDeleteEgressOnlyInternetGatewayResult(t)
-	return t
+	asserts.AssertDeleteEgressOnlyInternetGatewayResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteNatGatewayRequest = { ["NatGatewayId"] = true, nil }
@@ -12667,12 +16660,23 @@ end
 -- Required key: NatGatewayId
 -- @return DeleteNatGatewayRequest structure as a key-value pair table
 function M.DeleteNatGatewayRequest(args)
-	assert(args, "You must provdide an argument table when creating DeleteNatGatewayRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteNatGatewayRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NatGatewayId"] = args["NatGatewayId"],
 	}
-	asserts.AssertDeleteNatGatewayRequest(t)
-	return t
+	asserts.AssertDeleteNatGatewayRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CopySnapshotResult = { ["SnapshotId"] = true, nil }
@@ -12693,12 +16697,23 @@ end
 -- * SnapshotId [String] <p>The ID of the new snapshot.</p>
 -- @return CopySnapshotResult structure as a key-value pair table
 function M.CopySnapshotResult(args)
-	assert(args, "You must provdide an argument table when creating CopySnapshotResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CopySnapshotResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["SnapshotId"] = args["SnapshotId"],
 	}
-	asserts.AssertCopySnapshotResult(t)
-	return t
+	asserts.AssertCopySnapshotResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InstanceBlockDeviceMappingSpecification = { ["VirtualName"] = true, ["DeviceName"] = true, ["NoDevice"] = true, ["Ebs"] = true, nil }
@@ -12725,15 +16740,26 @@ end
 -- * Ebs [EbsInstanceBlockDeviceSpecification] <p>Parameters used to automatically set up EBS volumes when the instance is launched.</p>
 -- @return InstanceBlockDeviceMappingSpecification structure as a key-value pair table
 function M.InstanceBlockDeviceMappingSpecification(args)
-	assert(args, "You must provdide an argument table when creating InstanceBlockDeviceMappingSpecification")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InstanceBlockDeviceMappingSpecification")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["VirtualName"] = args["VirtualName"],
 		["DeviceName"] = args["DeviceName"],
 		["NoDevice"] = args["NoDevice"],
 		["Ebs"] = args["Ebs"],
 	}
-	asserts.AssertInstanceBlockDeviceMappingSpecification(t)
-	return t
+	asserts.AssertInstanceBlockDeviceMappingSpecification(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.StartInstancesRequest = { ["AdditionalInfo"] = true, ["DryRun"] = true, ["InstanceIds"] = true, nil }
@@ -12760,14 +16786,25 @@ end
 -- Required key: InstanceIds
 -- @return StartInstancesRequest structure as a key-value pair table
 function M.StartInstancesRequest(args)
-	assert(args, "You must provdide an argument table when creating StartInstancesRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating StartInstancesRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["AdditionalInfo"] = args["AdditionalInfo"],
 		["DryRun"] = args["DryRun"],
 		["InstanceIds"] = args["InstanceIds"],
 	}
-	asserts.AssertStartInstancesRequest(t)
-	return t
+	asserts.AssertStartInstancesRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeIdFormatResult = { ["Statuses"] = true, nil }
@@ -12788,12 +16825,23 @@ end
 -- * Statuses [IdFormatList] <p>Information about the ID format for the resource.</p>
 -- @return DescribeIdFormatResult structure as a key-value pair table
 function M.DescribeIdFormatResult(args)
-	assert(args, "You must provdide an argument table when creating DescribeIdFormatResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeIdFormatResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Statuses"] = args["Statuses"],
 	}
-	asserts.AssertDescribeIdFormatResult(t)
-	return t
+	asserts.AssertDescribeIdFormatResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CancelReservedInstancesListingResult = { ["ReservedInstancesListings"] = true, nil }
@@ -12814,12 +16862,23 @@ end
 -- * ReservedInstancesListings [ReservedInstancesListingList] <p>The Reserved Instance listing.</p>
 -- @return CancelReservedInstancesListingResult structure as a key-value pair table
 function M.CancelReservedInstancesListingResult(args)
-	assert(args, "You must provdide an argument table when creating CancelReservedInstancesListingResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CancelReservedInstancesListingResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ReservedInstancesListings"] = args["ReservedInstancesListings"],
 	}
-	asserts.AssertCancelReservedInstancesListingResult(t)
-	return t
+	asserts.AssertCancelReservedInstancesListingResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.RestoreAddressToClassicResult = { ["PublicIp"] = true, ["Status"] = true, nil }
@@ -12842,13 +16901,24 @@ end
 -- * Status [Status] <p>The move status for the IP address.</p>
 -- @return RestoreAddressToClassicResult structure as a key-value pair table
 function M.RestoreAddressToClassicResult(args)
-	assert(args, "You must provdide an argument table when creating RestoreAddressToClassicResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating RestoreAddressToClassicResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["PublicIp"] = args["PublicIp"],
 		["Status"] = args["Status"],
 	}
-	asserts.AssertRestoreAddressToClassicResult(t)
-	return t
+	asserts.AssertRestoreAddressToClassicResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.PrefixListId = { ["PrefixListId"] = true, nil }
@@ -12869,12 +16939,23 @@ end
 -- * PrefixListId [String] <p>The ID of the prefix.</p>
 -- @return PrefixListId structure as a key-value pair table
 function M.PrefixListId(args)
-	assert(args, "You must provdide an argument table when creating PrefixListId")
-	local t = { 
+	assert(args, "You must provide an argument table when creating PrefixListId")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["PrefixListId"] = args["PrefixListId"],
 	}
-	asserts.AssertPrefixListId(t)
-	return t
+	asserts.AssertPrefixListId(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Placement = { ["HostId"] = true, ["AvailabilityZone"] = true, ["SpreadDomain"] = true, ["GroupName"] = true, ["Tenancy"] = true, ["Affinity"] = true, nil }
@@ -12905,8 +16986,14 @@ end
 -- * Affinity [String] <p>The affinity setting for the instance on the Dedicated Host. This parameter is not supported for the <a>ImportInstance</a> command.</p>
 -- @return Placement structure as a key-value pair table
 function M.Placement(args)
-	assert(args, "You must provdide an argument table when creating Placement")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Placement")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["HostId"] = args["HostId"],
 		["AvailabilityZone"] = args["AvailabilityZone"],
 		["SpreadDomain"] = args["SpreadDomain"],
@@ -12914,8 +17001,13 @@ function M.Placement(args)
 		["Tenancy"] = args["Tenancy"],
 		["Affinity"] = args["Affinity"],
 	}
-	asserts.AssertPlacement(t)
-	return t
+	asserts.AssertPlacement(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ScheduledInstancesBlockDeviceMapping = { ["VirtualName"] = true, ["DeviceName"] = true, ["NoDevice"] = true, ["Ebs"] = true, nil }
@@ -12942,15 +17034,26 @@ end
 -- * Ebs [ScheduledInstancesEbs] <p>Parameters used to set up EBS volumes automatically when the instance is launched.</p>
 -- @return ScheduledInstancesBlockDeviceMapping structure as a key-value pair table
 function M.ScheduledInstancesBlockDeviceMapping(args)
-	assert(args, "You must provdide an argument table when creating ScheduledInstancesBlockDeviceMapping")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ScheduledInstancesBlockDeviceMapping")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["VirtualName"] = args["VirtualName"],
 		["DeviceName"] = args["DeviceName"],
 		["NoDevice"] = args["NoDevice"],
 		["Ebs"] = args["Ebs"],
 	}
-	asserts.AssertScheduledInstancesBlockDeviceMapping(t)
-	return t
+	asserts.AssertScheduledInstancesBlockDeviceMapping(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateVolumePermissionModifications = { ["Add"] = true, ["Remove"] = true, nil }
@@ -12973,13 +17076,24 @@ end
 -- * Remove [CreateVolumePermissionList] <p>Removes a specific AWS account ID or group from a volume's list of create volume permissions.</p>
 -- @return CreateVolumePermissionModifications structure as a key-value pair table
 function M.CreateVolumePermissionModifications(args)
-	assert(args, "You must provdide an argument table when creating CreateVolumePermissionModifications")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateVolumePermissionModifications")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Add"] = args["Add"],
 		["Remove"] = args["Remove"],
 	}
-	asserts.AssertCreateVolumePermissionModifications(t)
-	return t
+	asserts.AssertCreateVolumePermissionModifications(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.EbsBlockDevice = { ["VolumeSize"] = true, ["Encrypted"] = true, ["VolumeType"] = true, ["DeleteOnTermination"] = true, ["SnapshotId"] = true, ["Iops"] = true, nil }
@@ -13010,8 +17124,14 @@ end
 -- * Iops [Integer] <p>The number of I/O operations per second (IOPS) that the volume supports. For <code>io1</code>, this represents the number of IOPS that are provisioned for the volume. For <code>gp2</code>, this represents the baseline performance of the volume and the rate at which the volume accumulates I/O credits for bursting. For more information about General Purpose SSD baseline performance, I/O credits, and bursting, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSVolumeTypes.html">Amazon EBS Volume Types</a> in the <i>Amazon Elastic Compute Cloud User Guide</i>.</p> <p>Constraint: Range is 100-20000 IOPS for <code>io1</code> volumes and 100-10000 IOPS for <code>gp2</code> volumes.</p> <p>Condition: This parameter is required for requests to create <code>io1</code> volumes; it is not used in requests to create <code>gp2</code>, <code>st1</code>, <code>sc1</code>, or <code>standard</code> volumes.</p>
 -- @return EbsBlockDevice structure as a key-value pair table
 function M.EbsBlockDevice(args)
-	assert(args, "You must provdide an argument table when creating EbsBlockDevice")
-	local t = { 
+	assert(args, "You must provide an argument table when creating EbsBlockDevice")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["VolumeSize"] = args["VolumeSize"],
 		["Encrypted"] = args["Encrypted"],
 		["VolumeType"] = args["VolumeType"],
@@ -13019,8 +17139,13 @@ function M.EbsBlockDevice(args)
 		["SnapshotId"] = args["SnapshotId"],
 		["Iops"] = args["Iops"],
 	}
-	asserts.AssertEbsBlockDevice(t)
-	return t
+	asserts.AssertEbsBlockDevice(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.TargetConfiguration = { ["InstanceCount"] = true, ["OfferingId"] = true, nil }
@@ -13043,13 +17168,24 @@ end
 -- * OfferingId [String] <p>The ID of the Convertible Reserved Instance offering.</p>
 -- @return TargetConfiguration structure as a key-value pair table
 function M.TargetConfiguration(args)
-	assert(args, "You must provdide an argument table when creating TargetConfiguration")
-	local t = { 
+	assert(args, "You must provide an argument table when creating TargetConfiguration")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["InstanceCount"] = args["InstanceCount"],
 		["OfferingId"] = args["OfferingId"],
 	}
-	asserts.AssertTargetConfiguration(t)
-	return t
+	asserts.AssertTargetConfiguration(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeVolumesModificationsRequest = { ["MaxResults"] = true, ["NextToken"] = true, ["DryRun"] = true, ["VolumeIds"] = true, ["Filters"] = true, nil }
@@ -13078,16 +17214,27 @@ end
 -- * Filters [FilterList] <p>One or more filters. Supported filters: <code>volume-id</code>, <code>modification-state</code>, <code>target-size</code>, <code>target-iops</code>, <code>target-volume-type</code>, <code>original-size</code>, <code>original-iops</code>, <code>original-volume-type</code>, <code>start-time</code>. </p>
 -- @return DescribeVolumesModificationsRequest structure as a key-value pair table
 function M.DescribeVolumesModificationsRequest(args)
-	assert(args, "You must provdide an argument table when creating DescribeVolumesModificationsRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeVolumesModificationsRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["MaxResults"] = args["MaxResults"],
 		["NextToken"] = args["NextToken"],
 		["DryRun"] = args["DryRun"],
 		["VolumeIds"] = args["VolumeIds"],
 		["Filters"] = args["Filters"],
 	}
-	asserts.AssertDescribeVolumesModificationsRequest(t)
-	return t
+	asserts.AssertDescribeVolumesModificationsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UserData = { ["Data"] = true, nil }
@@ -13108,12 +17255,23 @@ end
 -- * Data [String] <p>The user data. If you are using an AWS SDK or command line tool, Base64-encoding is performed for you, and you can load the text from a file. Otherwise, you must provide Base64-encoded text.</p>
 -- @return UserData structure as a key-value pair table
 function M.UserData(args)
-	assert(args, "You must provdide an argument table when creating UserData")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UserData")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Data"] = args["Data"],
 	}
-	asserts.AssertUserData(t)
-	return t
+	asserts.AssertUserData(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ImportInstanceVolumeDetailItem = { ["Status"] = true, ["AvailabilityZone"] = true, ["Description"] = true, ["Image"] = true, ["Volume"] = true, ["BytesConverted"] = true, ["StatusMessage"] = true, nil }
@@ -13156,8 +17314,14 @@ end
 -- Required key: Volume
 -- @return ImportInstanceVolumeDetailItem structure as a key-value pair table
 function M.ImportInstanceVolumeDetailItem(args)
-	assert(args, "You must provdide an argument table when creating ImportInstanceVolumeDetailItem")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ImportInstanceVolumeDetailItem")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Status"] = args["Status"],
 		["AvailabilityZone"] = args["AvailabilityZone"],
 		["Description"] = args["Description"],
@@ -13166,8 +17330,13 @@ function M.ImportInstanceVolumeDetailItem(args)
 		["BytesConverted"] = args["BytesConverted"],
 		["StatusMessage"] = args["StatusMessage"],
 	}
-	asserts.AssertImportInstanceVolumeDetailItem(t)
-	return t
+	asserts.AssertImportInstanceVolumeDetailItem(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeReservedInstancesModificationsRequest = { ["NextToken"] = true, ["ReservedInstancesModificationIds"] = true, ["Filters"] = true, nil }
@@ -13192,14 +17361,25 @@ end
 -- * Filters [FilterList] <p>One or more filters.</p> <ul> <li> <p> <code>client-token</code> - The idempotency token for the modification request.</p> </li> <li> <p> <code>create-date</code> - The time when the modification request was created.</p> </li> <li> <p> <code>effective-date</code> - The time when the modification becomes effective.</p> </li> <li> <p> <code>modification-result.reserved-instances-id</code> - The ID for the Reserved Instances created as part of the modification request. This ID is only available when the status of the modification is <code>fulfilled</code>.</p> </li> <li> <p> <code>modification-result.target-configuration.availability-zone</code> - The Availability Zone for the new Reserved Instances.</p> </li> <li> <p> <code>modification-result.target-configuration.instance-count </code> - The number of new Reserved Instances.</p> </li> <li> <p> <code>modification-result.target-configuration.instance-type</code> - The instance type of the new Reserved Instances.</p> </li> <li> <p> <code>modification-result.target-configuration.platform</code> - The network platform of the new Reserved Instances (<code>EC2-Classic</code> | <code>EC2-VPC</code>).</p> </li> <li> <p> <code>reserved-instances-id</code> - The ID of the Reserved Instances modified.</p> </li> <li> <p> <code>reserved-instances-modification-id</code> - The ID of the modification request.</p> </li> <li> <p> <code>status</code> - The status of the Reserved Instances modification request (<code>processing</code> | <code>fulfilled</code> | <code>failed</code>).</p> </li> <li> <p> <code>status-message</code> - The reason for the status.</p> </li> <li> <p> <code>update-date</code> - The time when the modification request was last updated.</p> </li> </ul>
 -- @return DescribeReservedInstancesModificationsRequest structure as a key-value pair table
 function M.DescribeReservedInstancesModificationsRequest(args)
-	assert(args, "You must provdide an argument table when creating DescribeReservedInstancesModificationsRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeReservedInstancesModificationsRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NextToken"] = args["NextToken"],
 		["ReservedInstancesModificationIds"] = args["ReservedInstancesModificationIds"],
 		["Filters"] = args["Filters"],
 	}
-	asserts.AssertDescribeReservedInstancesModificationsRequest(t)
-	return t
+	asserts.AssertDescribeReservedInstancesModificationsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeIdFormatRequest = { ["Resource"] = true, nil }
@@ -13220,12 +17400,23 @@ end
 -- * Resource [String] <p>The type of resource: <code>instance</code> | <code>reservation</code> | <code>snapshot</code> | <code>volume</code> </p>
 -- @return DescribeIdFormatRequest structure as a key-value pair table
 function M.DescribeIdFormatRequest(args)
-	assert(args, "You must provdide an argument table when creating DescribeIdFormatRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeIdFormatRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Resource"] = args["Resource"],
 	}
-	asserts.AssertDescribeIdFormatRequest(t)
-	return t
+	asserts.AssertDescribeIdFormatRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateSecurityGroupRequest = { ["GroupName"] = true, ["VpcId"] = true, ["DryRun"] = true, ["Description"] = true, nil }
@@ -13256,15 +17447,26 @@ end
 -- Required key: GroupName
 -- @return CreateSecurityGroupRequest structure as a key-value pair table
 function M.CreateSecurityGroupRequest(args)
-	assert(args, "You must provdide an argument table when creating CreateSecurityGroupRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateSecurityGroupRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["GroupName"] = args["GroupName"],
 		["VpcId"] = args["VpcId"],
 		["DryRun"] = args["DryRun"],
 		["Description"] = args["Description"],
 	}
-	asserts.AssertCreateSecurityGroupRequest(t)
-	return t
+	asserts.AssertCreateSecurityGroupRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.BundleTaskError = { ["Message"] = true, ["Code"] = true, nil }
@@ -13287,13 +17489,24 @@ end
 -- * Code [String] <p>The error code.</p>
 -- @return BundleTaskError structure as a key-value pair table
 function M.BundleTaskError(args)
-	assert(args, "You must provdide an argument table when creating BundleTaskError")
-	local t = { 
+	assert(args, "You must provide an argument table when creating BundleTaskError")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Message"] = args["Message"],
 		["Code"] = args["Code"],
 	}
-	asserts.AssertBundleTaskError(t)
-	return t
+	asserts.AssertBundleTaskError(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateFlowLogsRequest = { ["ResourceType"] = true, ["LogGroupName"] = true, ["TrafficType"] = true, ["ResourceIds"] = true, ["DeliverLogsPermissionArn"] = true, ["ClientToken"] = true, nil }
@@ -13334,8 +17547,14 @@ end
 -- Required key: TrafficType
 -- @return CreateFlowLogsRequest structure as a key-value pair table
 function M.CreateFlowLogsRequest(args)
-	assert(args, "You must provdide an argument table when creating CreateFlowLogsRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateFlowLogsRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ResourceType"] = args["ResourceType"],
 		["LogGroupName"] = args["LogGroupName"],
 		["TrafficType"] = args["TrafficType"],
@@ -13343,8 +17562,13 @@ function M.CreateFlowLogsRequest(args)
 		["DeliverLogsPermissionArn"] = args["DeliverLogsPermissionArn"],
 		["ClientToken"] = args["ClientToken"],
 	}
-	asserts.AssertCreateFlowLogsRequest(t)
-	return t
+	asserts.AssertCreateFlowLogsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.S3Storage = { ["UploadPolicySignature"] = true, ["Prefix"] = true, ["AWSAccessKeyId"] = true, ["Bucket"] = true, ["UploadPolicy"] = true, nil }
@@ -13373,16 +17597,27 @@ end
 -- * UploadPolicy [Blob] <p>An Amazon S3 upload policy that gives Amazon EC2 permission to upload items into Amazon S3 on your behalf.</p>
 -- @return S3Storage structure as a key-value pair table
 function M.S3Storage(args)
-	assert(args, "You must provdide an argument table when creating S3Storage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating S3Storage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["UploadPolicySignature"] = args["UploadPolicySignature"],
 		["Prefix"] = args["Prefix"],
 		["AWSAccessKeyId"] = args["AWSAccessKeyId"],
 		["Bucket"] = args["Bucket"],
 		["UploadPolicy"] = args["UploadPolicy"],
 	}
-	asserts.AssertS3Storage(t)
-	return t
+	asserts.AssertS3Storage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.EnableVgwRoutePropagationRequest = { ["GatewayId"] = true, ["RouteTableId"] = true, nil }
@@ -13409,13 +17644,24 @@ end
 -- Required key: RouteTableId
 -- @return EnableVgwRoutePropagationRequest structure as a key-value pair table
 function M.EnableVgwRoutePropagationRequest(args)
-	assert(args, "You must provdide an argument table when creating EnableVgwRoutePropagationRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating EnableVgwRoutePropagationRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["GatewayId"] = args["GatewayId"],
 		["RouteTableId"] = args["RouteTableId"],
 	}
-	asserts.AssertEnableVgwRoutePropagationRequest(t)
-	return t
+	asserts.AssertEnableVgwRoutePropagationRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.IamInstanceProfileAssociation = { ["InstanceId"] = true, ["Timestamp"] = true, ["State"] = true, ["AssociationId"] = true, ["IamInstanceProfile"] = true, nil }
@@ -13444,16 +17690,27 @@ end
 -- * IamInstanceProfile [IamInstanceProfile] <p>The IAM instance profile.</p>
 -- @return IamInstanceProfileAssociation structure as a key-value pair table
 function M.IamInstanceProfileAssociation(args)
-	assert(args, "You must provdide an argument table when creating IamInstanceProfileAssociation")
-	local t = { 
+	assert(args, "You must provide an argument table when creating IamInstanceProfileAssociation")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["InstanceId"] = args["InstanceId"],
 		["Timestamp"] = args["Timestamp"],
 		["State"] = args["State"],
 		["AssociationId"] = args["AssociationId"],
 		["IamInstanceProfile"] = args["IamInstanceProfile"],
 	}
-	asserts.AssertIamInstanceProfileAssociation(t)
-	return t
+	asserts.AssertIamInstanceProfileAssociation(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ScheduledInstance = { ["AvailabilityZone"] = true, ["ScheduledInstanceId"] = true, ["HourlyPrice"] = true, ["CreateDate"] = true, ["Recurrence"] = true, ["Platform"] = true, ["TermEndDate"] = true, ["InstanceCount"] = true, ["SlotDurationInHours"] = true, ["PreviousSlotEndTime"] = true, ["TermStartDate"] = true, ["NetworkPlatform"] = true, ["TotalScheduledInstanceHours"] = true, ["NextSlotStartTime"] = true, ["InstanceType"] = true, nil }
@@ -13502,8 +17759,14 @@ end
 -- * InstanceType [String] <p>The instance type.</p>
 -- @return ScheduledInstance structure as a key-value pair table
 function M.ScheduledInstance(args)
-	assert(args, "You must provdide an argument table when creating ScheduledInstance")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ScheduledInstance")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["AvailabilityZone"] = args["AvailabilityZone"],
 		["ScheduledInstanceId"] = args["ScheduledInstanceId"],
 		["HourlyPrice"] = args["HourlyPrice"],
@@ -13520,8 +17783,13 @@ function M.ScheduledInstance(args)
 		["NextSlotStartTime"] = args["NextSlotStartTime"],
 		["InstanceType"] = args["InstanceType"],
 	}
-	asserts.AssertScheduledInstance(t)
-	return t
+	asserts.AssertScheduledInstance(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.HostInstance = { ["InstanceId"] = true, ["InstanceType"] = true, nil }
@@ -13544,13 +17812,24 @@ end
 -- * InstanceType [String] <p>The instance type size (for example, <code>m3.medium</code>) of the running instance.</p>
 -- @return HostInstance structure as a key-value pair table
 function M.HostInstance(args)
-	assert(args, "You must provdide an argument table when creating HostInstance")
-	local t = { 
+	assert(args, "You must provide an argument table when creating HostInstance")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["InstanceId"] = args["InstanceId"],
 		["InstanceType"] = args["InstanceType"],
 	}
-	asserts.AssertHostInstance(t)
-	return t
+	asserts.AssertHostInstance(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Monitoring = { ["State"] = true, nil }
@@ -13571,12 +17850,23 @@ end
 -- * State [MonitoringState] <p>Indicates whether detailed monitoring is enabled. Otherwise, basic monitoring is enabled.</p>
 -- @return Monitoring structure as a key-value pair table
 function M.Monitoring(args)
-	assert(args, "You must provdide an argument table when creating Monitoring")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Monitoring")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["State"] = args["State"],
 	}
-	asserts.AssertMonitoring(t)
-	return t
+	asserts.AssertMonitoring(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AttachVpnGatewayResult = { ["VpcAttachment"] = true, nil }
@@ -13597,12 +17887,23 @@ end
 -- * VpcAttachment [VpcAttachment] <p>Information about the attachment.</p>
 -- @return AttachVpnGatewayResult structure as a key-value pair table
 function M.AttachVpnGatewayResult(args)
-	assert(args, "You must provdide an argument table when creating AttachVpnGatewayResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AttachVpnGatewayResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["VpcAttachment"] = args["VpcAttachment"],
 	}
-	asserts.AssertAttachVpnGatewayResult(t)
-	return t
+	asserts.AssertAttachVpnGatewayResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeletePlacementGroupRequest = { ["GroupName"] = true, ["DryRun"] = true, nil }
@@ -13627,13 +17928,24 @@ end
 -- Required key: GroupName
 -- @return DeletePlacementGroupRequest structure as a key-value pair table
 function M.DeletePlacementGroupRequest(args)
-	assert(args, "You must provdide an argument table when creating DeletePlacementGroupRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeletePlacementGroupRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["GroupName"] = args["GroupName"],
 		["DryRun"] = args["DryRun"],
 	}
-	asserts.AssertDeletePlacementGroupRequest(t)
-	return t
+	asserts.AssertDeletePlacementGroupRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.MoveAddressToVpcRequest = { ["PublicIp"] = true, ["DryRun"] = true, nil }
@@ -13658,13 +17970,24 @@ end
 -- Required key: PublicIp
 -- @return MoveAddressToVpcRequest structure as a key-value pair table
 function M.MoveAddressToVpcRequest(args)
-	assert(args, "You must provdide an argument table when creating MoveAddressToVpcRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating MoveAddressToVpcRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["PublicIp"] = args["PublicIp"],
 		["DryRun"] = args["DryRun"],
 	}
-	asserts.AssertMoveAddressToVpcRequest(t)
-	return t
+	asserts.AssertMoveAddressToVpcRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateNatGatewayResult = { ["NatGateway"] = true, ["ClientToken"] = true, nil }
@@ -13687,13 +18010,24 @@ end
 -- * ClientToken [String] <p>Unique, case-sensitive identifier to ensure the idempotency of the request. Only returned if a client token was provided in the request.</p>
 -- @return CreateNatGatewayResult structure as a key-value pair table
 function M.CreateNatGatewayResult(args)
-	assert(args, "You must provdide an argument table when creating CreateNatGatewayResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateNatGatewayResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NatGateway"] = args["NatGateway"],
 		["ClientToken"] = args["ClientToken"],
 	}
-	asserts.AssertCreateNatGatewayResult(t)
-	return t
+	asserts.AssertCreateNatGatewayResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DisassociateSubnetCidrBlockRequest = { ["AssociationId"] = true, nil }
@@ -13716,12 +18050,23 @@ end
 -- Required key: AssociationId
 -- @return DisassociateSubnetCidrBlockRequest structure as a key-value pair table
 function M.DisassociateSubnetCidrBlockRequest(args)
-	assert(args, "You must provdide an argument table when creating DisassociateSubnetCidrBlockRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DisassociateSubnetCidrBlockRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["AssociationId"] = args["AssociationId"],
 	}
-	asserts.AssertDisassociateSubnetCidrBlockRequest(t)
-	return t
+	asserts.AssertDisassociateSubnetCidrBlockRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InternetGateway = { ["Tags"] = true, ["Attachments"] = true, ["InternetGatewayId"] = true, nil }
@@ -13746,14 +18091,25 @@ end
 -- * InternetGatewayId [String] <p>The ID of the Internet gateway.</p>
 -- @return InternetGateway structure as a key-value pair table
 function M.InternetGateway(args)
-	assert(args, "You must provdide an argument table when creating InternetGateway")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InternetGateway")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Tags"] = args["Tags"],
 		["Attachments"] = args["Attachments"],
 		["InternetGatewayId"] = args["InternetGatewayId"],
 	}
-	asserts.AssertInternetGateway(t)
-	return t
+	asserts.AssertInternetGateway(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AccountAttribute = { ["AttributeName"] = true, ["AttributeValues"] = true, nil }
@@ -13776,13 +18132,24 @@ end
 -- * AttributeValues [AccountAttributeValueList] <p>One or more values for the account attribute.</p>
 -- @return AccountAttribute structure as a key-value pair table
 function M.AccountAttribute(args)
-	assert(args, "You must provdide an argument table when creating AccountAttribute")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AccountAttribute")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["AttributeName"] = args["AttributeName"],
 		["AttributeValues"] = args["AttributeValues"],
 	}
-	asserts.AssertAccountAttribute(t)
-	return t
+	asserts.AssertAccountAttribute(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeDhcpOptionsResult = { ["DhcpOptions"] = true, nil }
@@ -13803,12 +18170,23 @@ end
 -- * DhcpOptions [DhcpOptionsList] <p>Information about one or more DHCP options sets.</p>
 -- @return DescribeDhcpOptionsResult structure as a key-value pair table
 function M.DescribeDhcpOptionsResult(args)
-	assert(args, "You must provdide an argument table when creating DescribeDhcpOptionsResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeDhcpOptionsResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DhcpOptions"] = args["DhcpOptions"],
 	}
-	asserts.AssertDescribeDhcpOptionsResult(t)
-	return t
+	asserts.AssertDescribeDhcpOptionsResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteTagsRequest = { ["DryRun"] = true, ["Resources"] = true, ["Tags"] = true, nil }
@@ -13835,14 +18213,25 @@ end
 -- Required key: Resources
 -- @return DeleteTagsRequest structure as a key-value pair table
 function M.DeleteTagsRequest(args)
-	assert(args, "You must provdide an argument table when creating DeleteTagsRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteTagsRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DryRun"] = args["DryRun"],
 		["Resources"] = args["Resources"],
 		["Tags"] = args["Tags"],
 	}
-	asserts.AssertDeleteTagsRequest(t)
-	return t
+	asserts.AssertDeleteTagsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ModifyVpcAttributeRequest = { ["VpcId"] = true, ["EnableDnsSupport"] = true, ["EnableDnsHostnames"] = true, nil }
@@ -13869,14 +18258,25 @@ end
 -- Required key: VpcId
 -- @return ModifyVpcAttributeRequest structure as a key-value pair table
 function M.ModifyVpcAttributeRequest(args)
-	assert(args, "You must provdide an argument table when creating ModifyVpcAttributeRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ModifyVpcAttributeRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["VpcId"] = args["VpcId"],
 		["EnableDnsSupport"] = args["EnableDnsSupport"],
 		["EnableDnsHostnames"] = args["EnableDnsHostnames"],
 	}
-	asserts.AssertModifyVpcAttributeRequest(t)
-	return t
+	asserts.AssertModifyVpcAttributeRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ScheduledInstancesIpv6Address = { ["Ipv6Address"] = true, nil }
@@ -13897,12 +18297,23 @@ end
 -- * Ipv6Address [Ipv6Address] <p>The IPv6 address.</p>
 -- @return ScheduledInstancesIpv6Address structure as a key-value pair table
 function M.ScheduledInstancesIpv6Address(args)
-	assert(args, "You must provdide an argument table when creating ScheduledInstancesIpv6Address")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ScheduledInstancesIpv6Address")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Ipv6Address"] = args["Ipv6Address"],
 	}
-	asserts.AssertScheduledInstancesIpv6Address(t)
-	return t
+	asserts.AssertScheduledInstancesIpv6Address(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.SpotInstanceRequest = { ["Status"] = true, ["ActualBlockHourlyPrice"] = true, ["ValidUntil"] = true, ["LaunchGroup"] = true, ["Tags"] = true, ["InstanceId"] = true, ["Fault"] = true, ["BlockDurationMinutes"] = true, ["SpotInstanceRequestId"] = true, ["State"] = true, ["ProductDescription"] = true, ["AvailabilityZoneGroup"] = true, ["LaunchSpecification"] = true, ["ValidFrom"] = true, ["Type"] = true, ["CreateTime"] = true, ["SpotPrice"] = true, ["LaunchedAvailabilityZone"] = true, nil }
@@ -13957,8 +18368,14 @@ end
 -- * LaunchedAvailabilityZone [String] <p>The Availability Zone in which the bid is launched.</p>
 -- @return SpotInstanceRequest structure as a key-value pair table
 function M.SpotInstanceRequest(args)
-	assert(args, "You must provdide an argument table when creating SpotInstanceRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating SpotInstanceRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Status"] = args["Status"],
 		["ActualBlockHourlyPrice"] = args["ActualBlockHourlyPrice"],
 		["ValidUntil"] = args["ValidUntil"],
@@ -13978,8 +18395,13 @@ function M.SpotInstanceRequest(args)
 		["SpotPrice"] = args["SpotPrice"],
 		["LaunchedAvailabilityZone"] = args["LaunchedAvailabilityZone"],
 	}
-	asserts.AssertSpotInstanceRequest(t)
-	return t
+	asserts.AssertSpotInstanceRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeReservedInstancesResult = { ["ReservedInstances"] = true, nil }
@@ -14000,12 +18422,23 @@ end
 -- * ReservedInstances [ReservedInstancesList] <p>A list of Reserved Instances.</p>
 -- @return DescribeReservedInstancesResult structure as a key-value pair table
 function M.DescribeReservedInstancesResult(args)
-	assert(args, "You must provdide an argument table when creating DescribeReservedInstancesResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeReservedInstancesResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ReservedInstances"] = args["ReservedInstances"],
 	}
-	asserts.AssertDescribeReservedInstancesResult(t)
-	return t
+	asserts.AssertDescribeReservedInstancesResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeAccountAttributesResult = { ["AccountAttributes"] = true, nil }
@@ -14026,12 +18459,23 @@ end
 -- * AccountAttributes [AccountAttributeList] <p>Information about one or more account attributes.</p>
 -- @return DescribeAccountAttributesResult structure as a key-value pair table
 function M.DescribeAccountAttributesResult(args)
-	assert(args, "You must provdide an argument table when creating DescribeAccountAttributesResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeAccountAttributesResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["AccountAttributes"] = args["AccountAttributes"],
 	}
-	asserts.AssertDescribeAccountAttributesResult(t)
-	return t
+	asserts.AssertDescribeAccountAttributesResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UserIdGroupPair = { ["VpcId"] = true, ["PeeringStatus"] = true, ["UserId"] = true, ["GroupName"] = true, ["VpcPeeringConnectionId"] = true, ["GroupId"] = true, nil }
@@ -14062,8 +18506,14 @@ end
 -- * GroupId [String] <p>The ID of the security group.</p>
 -- @return UserIdGroupPair structure as a key-value pair table
 function M.UserIdGroupPair(args)
-	assert(args, "You must provdide an argument table when creating UserIdGroupPair")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UserIdGroupPair")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["VpcId"] = args["VpcId"],
 		["PeeringStatus"] = args["PeeringStatus"],
 		["UserId"] = args["UserId"],
@@ -14071,8 +18521,13 @@ function M.UserIdGroupPair(args)
 		["VpcPeeringConnectionId"] = args["VpcPeeringConnectionId"],
 		["GroupId"] = args["GroupId"],
 	}
-	asserts.AssertUserIdGroupPair(t)
-	return t
+	asserts.AssertUserIdGroupPair(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeRouteTablesRequest = { ["RouteTableIds"] = true, ["DryRun"] = true, ["Filters"] = true, nil }
@@ -14097,14 +18552,25 @@ end
 -- * Filters [FilterList] <p>One or more filters.</p> <ul> <li> <p> <code>association.route-table-association-id</code> - The ID of an association ID for the route table.</p> </li> <li> <p> <code>association.route-table-id</code> - The ID of the route table involved in the association.</p> </li> <li> <p> <code>association.subnet-id</code> - The ID of the subnet involved in the association.</p> </li> <li> <p> <code>association.main</code> - Indicates whether the route table is the main route table for the VPC (<code>true</code> | <code>false</code>). Route tables that do not have an association ID are not returned in the response.</p> </li> <li> <p> <code>route-table-id</code> - The ID of the route table.</p> </li> <li> <p> <code>route.destination-cidr-block</code> - The IPv4 CIDR range specified in a route in the table.</p> </li> <li> <p> <code>route.destination-ipv6-cidr-block</code> - The IPv6 CIDR range specified in a route in the route table.</p> </li> <li> <p> <code>route.destination-prefix-list-id</code> - The ID (prefix) of the AWS service specified in a route in the table.</p> </li> <li> <p> <code>route.egress-only-internet-gateway-id</code> - The ID of an egress-only Internet gateway specified in a route in the route table.</p> </li> <li> <p> <code>route.gateway-id</code> - The ID of a gateway specified in a route in the table.</p> </li> <li> <p> <code>route.instance-id</code> - The ID of an instance specified in a route in the table.</p> </li> <li> <p> <code>route.nat-gateway-id</code> - The ID of a NAT gateway.</p> </li> <li> <p> <code>route.origin</code> - Describes how the route was created. <code>CreateRouteTable</code> indicates that the route was automatically created when the route table was created; <code>CreateRoute</code> indicates that the route was manually added to the route table; <code>EnableVgwRoutePropagation</code> indicates that the route was propagated by route propagation.</p> </li> <li> <p> <code>route.state</code> - The state of a route in the route table (<code>active</code> | <code>blackhole</code>). The blackhole state indicates that the route's target isn't available (for example, the specified gateway isn't attached to the VPC, the specified NAT instance has been terminated, and so on).</p> </li> <li> <p> <code>route.vpc-peering-connection-id</code> - The ID of a VPC peering connection specified in a route in the table.</p> </li> <li> <p> <code>tag</code>:<i>key</i>=<i>value</i> - The key/value combination of a tag assigned to the resource. Specify the key of the tag in the filter name and the value of the tag in the filter value. For example, for the tag Purpose=X, specify <code>tag:Purpose</code> for the filter name and <code>X</code> for the filter value.</p> </li> <li> <p> <code>tag-key</code> - The key of a tag assigned to the resource. This filter is independent of the <code>tag-value</code> filter. For example, if you use both the filter "tag-key=Purpose" and the filter "tag-value=X", you get any resources assigned both the tag key Purpose (regardless of what the tag's value is), and the tag value X (regardless of what the tag's key is). If you want to list only resources where Purpose is X, see the <code>tag</code>:<i>key</i>=<i>value</i> filter.</p> </li> <li> <p> <code>tag-value</code> - The value of a tag assigned to the resource. This filter is independent of the <code>tag-key</code> filter.</p> </li> <li> <p> <code>vpc-id</code> - The ID of the VPC for the route table.</p> </li> </ul>
 -- @return DescribeRouteTablesRequest structure as a key-value pair table
 function M.DescribeRouteTablesRequest(args)
-	assert(args, "You must provdide an argument table when creating DescribeRouteTablesRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeRouteTablesRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["RouteTableIds"] = args["RouteTableIds"],
 		["DryRun"] = args["DryRun"],
 		["Filters"] = args["Filters"],
 	}
-	asserts.AssertDescribeRouteTablesRequest(t)
-	return t
+	asserts.AssertDescribeRouteTablesRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeInternetGatewaysResult = { ["InternetGateways"] = true, nil }
@@ -14125,12 +18591,23 @@ end
 -- * InternetGateways [InternetGatewayList] <p>Information about one or more Internet gateways.</p>
 -- @return DescribeInternetGatewaysResult structure as a key-value pair table
 function M.DescribeInternetGatewaysResult(args)
-	assert(args, "You must provdide an argument table when creating DescribeInternetGatewaysResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeInternetGatewaysResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["InternetGateways"] = args["InternetGateways"],
 	}
-	asserts.AssertDescribeInternetGatewaysResult(t)
-	return t
+	asserts.AssertDescribeInternetGatewaysResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeSecurityGroupReferencesRequest = { ["DryRun"] = true, ["GroupId"] = true, nil }
@@ -14155,13 +18632,24 @@ end
 -- Required key: GroupId
 -- @return DescribeSecurityGroupReferencesRequest structure as a key-value pair table
 function M.DescribeSecurityGroupReferencesRequest(args)
-	assert(args, "You must provdide an argument table when creating DescribeSecurityGroupReferencesRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeSecurityGroupReferencesRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DryRun"] = args["DryRun"],
 		["GroupId"] = args["GroupId"],
 	}
-	asserts.AssertDescribeSecurityGroupReferencesRequest(t)
-	return t
+	asserts.AssertDescribeSecurityGroupReferencesRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ImportImageRequest = { ["LicenseType"] = true, ["DryRun"] = true, ["Description"] = true, ["ClientData"] = true, ["Hypervisor"] = true, ["DiskContainers"] = true, ["Platform"] = true, ["Architecture"] = true, ["ClientToken"] = true, ["RoleName"] = true, nil }
@@ -14200,8 +18688,14 @@ end
 -- * RoleName [String] <p>The name of the role to use when not using the default role, 'vmimport'.</p>
 -- @return ImportImageRequest structure as a key-value pair table
 function M.ImportImageRequest(args)
-	assert(args, "You must provdide an argument table when creating ImportImageRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ImportImageRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["LicenseType"] = args["LicenseType"],
 		["DryRun"] = args["DryRun"],
 		["Description"] = args["Description"],
@@ -14213,8 +18707,13 @@ function M.ImportImageRequest(args)
 		["ClientToken"] = args["ClientToken"],
 		["RoleName"] = args["RoleName"],
 	}
-	asserts.AssertImportImageRequest(t)
-	return t
+	asserts.AssertImportImageRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeReservedInstancesOfferingsResult = { ["NextToken"] = true, ["ReservedInstancesOfferings"] = true, nil }
@@ -14237,13 +18736,24 @@ end
 -- * ReservedInstancesOfferings [ReservedInstancesOfferingList] <p>A list of Reserved Instances offerings.</p>
 -- @return DescribeReservedInstancesOfferingsResult structure as a key-value pair table
 function M.DescribeReservedInstancesOfferingsResult(args)
-	assert(args, "You must provdide an argument table when creating DescribeReservedInstancesOfferingsResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeReservedInstancesOfferingsResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NextToken"] = args["NextToken"],
 		["ReservedInstancesOfferings"] = args["ReservedInstancesOfferings"],
 	}
-	asserts.AssertDescribeReservedInstancesOfferingsResult(t)
-	return t
+	asserts.AssertDescribeReservedInstancesOfferingsResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ScheduledInstancesMonitoring = { ["Enabled"] = true, nil }
@@ -14264,12 +18774,23 @@ end
 -- * Enabled [Boolean] <p>Indicates whether monitoring is enabled.</p>
 -- @return ScheduledInstancesMonitoring structure as a key-value pair table
 function M.ScheduledInstancesMonitoring(args)
-	assert(args, "You must provdide an argument table when creating ScheduledInstancesMonitoring")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ScheduledInstancesMonitoring")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Enabled"] = args["Enabled"],
 	}
-	asserts.AssertScheduledInstancesMonitoring(t)
-	return t
+	asserts.AssertScheduledInstancesMonitoring(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ScheduledInstancesLaunchSpecification = { ["UserData"] = true, ["SubnetId"] = true, ["Monitoring"] = true, ["ImageId"] = true, ["KeyName"] = true, ["BlockDeviceMappings"] = true, ["EbsOptimized"] = true, ["SecurityGroupIds"] = true, ["RamdiskId"] = true, ["KernelId"] = true, ["Placement"] = true, ["IamInstanceProfile"] = true, ["InstanceType"] = true, ["NetworkInterfaces"] = true, nil }
@@ -14318,8 +18839,14 @@ end
 -- Required key: ImageId
 -- @return ScheduledInstancesLaunchSpecification structure as a key-value pair table
 function M.ScheduledInstancesLaunchSpecification(args)
-	assert(args, "You must provdide an argument table when creating ScheduledInstancesLaunchSpecification")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ScheduledInstancesLaunchSpecification")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["UserData"] = args["UserData"],
 		["SubnetId"] = args["SubnetId"],
 		["Monitoring"] = args["Monitoring"],
@@ -14335,8 +18862,13 @@ function M.ScheduledInstancesLaunchSpecification(args)
 		["InstanceType"] = args["InstanceType"],
 		["NetworkInterfaces"] = args["NetworkInterfaces"],
 	}
-	asserts.AssertScheduledInstancesLaunchSpecification(t)
-	return t
+	asserts.AssertScheduledInstancesLaunchSpecification(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InstanceCapacity = { ["AvailableCapacity"] = true, ["InstanceType"] = true, ["TotalCapacity"] = true, nil }
@@ -14361,14 +18893,25 @@ end
 -- * TotalCapacity [Integer] <p>The total number of instances that can be launched onto the Dedicated Host.</p>
 -- @return InstanceCapacity structure as a key-value pair table
 function M.InstanceCapacity(args)
-	assert(args, "You must provdide an argument table when creating InstanceCapacity")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InstanceCapacity")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["AvailableCapacity"] = args["AvailableCapacity"],
 		["InstanceType"] = args["InstanceType"],
 		["TotalCapacity"] = args["TotalCapacity"],
 	}
-	asserts.AssertInstanceCapacity(t)
-	return t
+	asserts.AssertInstanceCapacity(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeInstancesRequest = { ["MaxResults"] = true, ["NextToken"] = true, ["DryRun"] = true, ["InstanceIds"] = true, ["Filters"] = true, nil }
@@ -14397,16 +18940,27 @@ end
 -- * Filters [FilterList] <p>One or more filters.</p> <ul> <li> <p> <code>affinity</code> - The affinity setting for an instance running on a Dedicated Host (<code>default</code> | <code>host</code>).</p> </li> <li> <p> <code>architecture</code> - The instance architecture (<code>i386</code> | <code>x86_64</code>).</p> </li> <li> <p> <code>availability-zone</code> - The Availability Zone of the instance.</p> </li> <li> <p> <code>block-device-mapping.attach-time</code> - The attach time for an EBS volume mapped to the instance, for example, <code>2010-09-15T17:15:20.000Z</code>.</p> </li> <li> <p> <code>block-device-mapping.delete-on-termination</code> - A Boolean that indicates whether the EBS volume is deleted on instance termination.</p> </li> <li> <p> <code>block-device-mapping.device-name</code> - The device name for the EBS volume (for example, <code>/dev/sdh</code> or <code>xvdh</code>).</p> </li> <li> <p> <code>block-device-mapping.status</code> - The status for the EBS volume (<code>attaching</code> | <code>attached</code> | <code>detaching</code> | <code>detached</code>).</p> </li> <li> <p> <code>block-device-mapping.volume-id</code> - The volume ID of the EBS volume.</p> </li> <li> <p> <code>client-token</code> - The idempotency token you provided when you launched the instance.</p> </li> <li> <p> <code>dns-name</code> - The public DNS name of the instance.</p> </li> <li> <p> <code>group-id</code> - The ID of the security group for the instance. EC2-Classic only.</p> </li> <li> <p> <code>group-name</code> - The name of the security group for the instance. EC2-Classic only.</p> </li> <li> <p> <code>host-id</code> - The ID of the Dedicated Host on which the instance is running, if applicable.</p> </li> <li> <p> <code>hypervisor</code> - The hypervisor type of the instance (<code>ovm</code> | <code>xen</code>).</p> </li> <li> <p> <code>iam-instance-profile.arn</code> - The instance profile associated with the instance. Specified as an ARN.</p> </li> <li> <p> <code>image-id</code> - The ID of the image used to launch the instance.</p> </li> <li> <p> <code>instance-id</code> - The ID of the instance.</p> </li> <li> <p> <code>instance-lifecycle</code> - Indicates whether this is a Spot Instance or a Scheduled Instance (<code>spot</code> | <code>scheduled</code>).</p> </li> <li> <p> <code>instance-state-code</code> - The state of the instance, as a 16-bit unsigned integer. The high byte is an opaque internal value and should be ignored. The low byte is set based on the state represented. The valid values are: 0 (pending), 16 (running), 32 (shutting-down), 48 (terminated), 64 (stopping), and 80 (stopped).</p> </li> <li> <p> <code>instance-state-name</code> - The state of the instance (<code>pending</code> | <code>running</code> | <code>shutting-down</code> | <code>terminated</code> | <code>stopping</code> | <code>stopped</code>).</p> </li> <li> <p> <code>instance-type</code> - The type of instance (for example, <code>t2.micro</code>).</p> </li> <li> <p> <code>instance.group-id</code> - The ID of the security group for the instance. </p> </li> <li> <p> <code>instance.group-name</code> - The name of the security group for the instance. </p> </li> <li> <p> <code>ip-address</code> - The public IPv4 address of the instance.</p> </li> <li> <p> <code>kernel-id</code> - The kernel ID.</p> </li> <li> <p> <code>key-name</code> - The name of the key pair used when the instance was launched.</p> </li> <li> <p> <code>launch-index</code> - When launching multiple instances, this is the index for the instance in the launch group (for example, 0, 1, 2, and so on). </p> </li> <li> <p> <code>launch-time</code> - The time when the instance was launched.</p> </li> <li> <p> <code>monitoring-state</code> - Indicates whether detailed monitoring is enabled (<code>disabled</code> | <code>enabled</code>).</p> </li> <li> <p> <code>network-interface.addresses.private-ip-address</code> - The private IPv4 address associated with the network interface.</p> </li> <li> <p> <code>network-interface.addresses.primary</code> - Specifies whether the IPv4 address of the network interface is the primary private IPv4 address.</p> </li> <li> <p> <code>network-interface.addresses.association.public-ip</code> - The ID of the association of an Elastic IP address (IPv4) with a network interface.</p> </li> <li> <p> <code>network-interface.addresses.association.ip-owner-id</code> - The owner ID of the private IPv4 address associated with the network interface.</p> </li> <li> <p> <code>network-interface.association.public-ip</code> - The address of the Elastic IP address (IPv4) bound to the network interface.</p> </li> <li> <p> <code>network-interface.association.ip-owner-id</code> - The owner of the Elastic IP address (IPv4) associated with the network interface.</p> </li> <li> <p> <code>network-interface.association.allocation-id</code> - The allocation ID returned when you allocated the Elastic IP address (IPv4) for your network interface.</p> </li> <li> <p> <code>network-interface.association.association-id</code> - The association ID returned when the network interface was associated with an IPv4 address.</p> </li> <li> <p> <code>network-interface.attachment.attachment-id</code> - The ID of the interface attachment.</p> </li> <li> <p> <code>network-interface.attachment.instance-id</code> - The ID of the instance to which the network interface is attached.</p> </li> <li> <p> <code>network-interface.attachment.instance-owner-id</code> - The owner ID of the instance to which the network interface is attached.</p> </li> <li> <p> <code>network-interface.attachment.device-index</code> - The device index to which the network interface is attached.</p> </li> <li> <p> <code>network-interface.attachment.status</code> - The status of the attachment (<code>attaching</code> | <code>attached</code> | <code>detaching</code> | <code>detached</code>).</p> </li> <li> <p> <code>network-interface.attachment.attach-time</code> - The time that the network interface was attached to an instance.</p> </li> <li> <p> <code>network-interface.attachment.delete-on-termination</code> - Specifies whether the attachment is deleted when an instance is terminated.</p> </li> <li> <p> <code>network-interface.availability-zone</code> - The Availability Zone for the network interface.</p> </li> <li> <p> <code>network-interface.description</code> - The description of the network interface.</p> </li> <li> <p> <code>network-interface.group-id</code> - The ID of a security group associated with the network interface.</p> </li> <li> <p> <code>network-interface.group-name</code> - The name of a security group associated with the network interface.</p> </li> <li> <p> <code>network-interface.ipv6-addresses.ipv6-address</code> - The IPv6 address associated with the network interface.</p> </li> <li> <p> <code>network-interface.mac-address</code> - The MAC address of the network interface.</p> </li> <li> <p> <code>network-interface.network-interface-id</code> - The ID of the network interface.</p> </li> <li> <p> <code>network-interface.owner-id</code> - The ID of the owner of the network interface.</p> </li> <li> <p> <code>network-interface.private-dns-name</code> - The private DNS name of the network interface.</p> </li> <li> <p> <code>network-interface.requester-id</code> - The requester ID for the network interface.</p> </li> <li> <p> <code>network-interface.requester-managed</code> - Indicates whether the network interface is being managed by AWS.</p> </li> <li> <p> <code>network-interface.status</code> - The status of the network interface (<code>available</code>) | <code>in-use</code>).</p> </li> <li> <p> <code>network-interface.source-dest-check</code> - Whether the network interface performs source/destination checking. A value of <code>true</code> means checking is enabled, and <code>false</code> means checking is disabled. The value must be <code>false</code> for the network interface to perform network address translation (NAT) in your VPC.</p> </li> <li> <p> <code>network-interface.subnet-id</code> - The ID of the subnet for the network interface.</p> </li> <li> <p> <code>network-interface.vpc-id</code> - The ID of the VPC for the network interface.</p> </li> <li> <p> <code>owner-id</code> - The AWS account ID of the instance owner.</p> </li> <li> <p> <code>placement-group-name</code> - The name of the placement group for the instance.</p> </li> <li> <p> <code>platform</code> - The platform. Use <code>windows</code> if you have Windows instances; otherwise, leave blank.</p> </li> <li> <p> <code>private-dns-name</code> - The private IPv4 DNS name of the instance.</p> </li> <li> <p> <code>private-ip-address</code> - The private IPv4 address of the instance.</p> </li> <li> <p> <code>product-code</code> - The product code associated with the AMI used to launch the instance.</p> </li> <li> <p> <code>product-code.type</code> - The type of product code (<code>devpay</code> | <code>marketplace</code>).</p> </li> <li> <p> <code>ramdisk-id</code> - The RAM disk ID.</p> </li> <li> <p> <code>reason</code> - The reason for the current state of the instance (for example, shows "User Initiated [date]" when you stop or terminate the instance). Similar to the state-reason-code filter.</p> </li> <li> <p> <code>requester-id</code> - The ID of the entity that launched the instance on your behalf (for example, AWS Management Console, Auto Scaling, and so on).</p> </li> <li> <p> <code>reservation-id</code> - The ID of the instance's reservation. A reservation ID is created any time you launch an instance. A reservation ID has a one-to-one relationship with an instance launch request, but can be associated with more than one instance if you launch multiple instances using the same launch request. For example, if you launch one instance, you'll get one reservation ID. If you launch ten instances using the same launch request, you'll also get one reservation ID.</p> </li> <li> <p> <code>root-device-name</code> - The name of the root device for the instance (for example, <code>/dev/sda1</code> or <code>/dev/xvda</code>).</p> </li> <li> <p> <code>root-device-type</code> - The type of root device that the instance uses (<code>ebs</code> | <code>instance-store</code>).</p> </li> <li> <p> <code>source-dest-check</code> - Indicates whether the instance performs source/destination checking. A value of <code>true</code> means that checking is enabled, and <code>false</code> means checking is disabled. The value must be <code>false</code> for the instance to perform network address translation (NAT) in your VPC. </p> </li> <li> <p> <code>spot-instance-request-id</code> - The ID of the Spot instance request.</p> </li> <li> <p> <code>state-reason-code</code> - The reason code for the state change.</p> </li> <li> <p> <code>state-reason-message</code> - A message that describes the state change.</p> </li> <li> <p> <code>subnet-id</code> - The ID of the subnet for the instance.</p> </li> <li> <p> <code>tag</code>:<i>key</i>=<i>value</i> - The key/value combination of a tag assigned to the resource. Specify the key of the tag in the filter name and the value of the tag in the filter value. For example, for the tag Purpose=X, specify <code>tag:Purpose</code> for the filter name and <code>X</code> for the filter value.</p> </li> <li> <p> <code>tag-key</code> - The key of a tag assigned to the resource. This filter is independent of the <code>tag-value</code> filter. For example, if you use both the filter "tag-key=Purpose" and the filter "tag-value=X", you get any resources assigned both the tag key Purpose (regardless of what the tag's value is), and the tag value X (regardless of what the tag's key is). If you want to list only resources where Purpose is X, see the <code>tag</code>:<i>key</i>=<i>value</i> filter.</p> </li> <li> <p> <code>tag-value</code> - The value of a tag assigned to the resource. This filter is independent of the <code>tag-key</code> filter.</p> </li> <li> <p> <code>tenancy</code> - The tenancy of an instance (<code>dedicated</code> | <code>default</code> | <code>host</code>).</p> </li> <li> <p> <code>virtualization-type</code> - The virtualization type of the instance (<code>paravirtual</code> | <code>hvm</code>).</p> </li> <li> <p> <code>vpc-id</code> - The ID of the VPC that the instance is running in.</p> </li> </ul>
 -- @return DescribeInstancesRequest structure as a key-value pair table
 function M.DescribeInstancesRequest(args)
-	assert(args, "You must provdide an argument table when creating DescribeInstancesRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeInstancesRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["MaxResults"] = args["MaxResults"],
 		["NextToken"] = args["NextToken"],
 		["DryRun"] = args["DryRun"],
 		["InstanceIds"] = args["InstanceIds"],
 		["Filters"] = args["Filters"],
 	}
-	asserts.AssertDescribeInstancesRequest(t)
-	return t
+	asserts.AssertDescribeInstancesRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ReservedInstancesModificationResult = { ["ReservedInstancesId"] = true, ["TargetConfiguration"] = true, nil }
@@ -14429,13 +18983,24 @@ end
 -- * TargetConfiguration [ReservedInstancesConfiguration] <p>The target Reserved Instances configurations supplied as part of the modification request.</p>
 -- @return ReservedInstancesModificationResult structure as a key-value pair table
 function M.ReservedInstancesModificationResult(args)
-	assert(args, "You must provdide an argument table when creating ReservedInstancesModificationResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ReservedInstancesModificationResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ReservedInstancesId"] = args["ReservedInstancesId"],
 		["TargetConfiguration"] = args["TargetConfiguration"],
 	}
-	asserts.AssertReservedInstancesModificationResult(t)
-	return t
+	asserts.AssertReservedInstancesModificationResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateRouteTableRequest = { ["VpcId"] = true, ["DryRun"] = true, nil }
@@ -14460,13 +19025,24 @@ end
 -- Required key: VpcId
 -- @return CreateRouteTableRequest structure as a key-value pair table
 function M.CreateRouteTableRequest(args)
-	assert(args, "You must provdide an argument table when creating CreateRouteTableRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateRouteTableRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["VpcId"] = args["VpcId"],
 		["DryRun"] = args["DryRun"],
 	}
-	asserts.AssertCreateRouteTableRequest(t)
-	return t
+	asserts.AssertCreateRouteTableRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeSpotDatafeedSubscriptionResult = { ["SpotDatafeedSubscription"] = true, nil }
@@ -14487,12 +19063,23 @@ end
 -- * SpotDatafeedSubscription [SpotDatafeedSubscription] <p>The Spot instance data feed subscription.</p>
 -- @return DescribeSpotDatafeedSubscriptionResult structure as a key-value pair table
 function M.DescribeSpotDatafeedSubscriptionResult(args)
-	assert(args, "You must provdide an argument table when creating DescribeSpotDatafeedSubscriptionResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeSpotDatafeedSubscriptionResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["SpotDatafeedSubscription"] = args["SpotDatafeedSubscription"],
 	}
-	asserts.AssertDescribeSpotDatafeedSubscriptionResult(t)
-	return t
+	asserts.AssertDescribeSpotDatafeedSubscriptionResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeCustomerGatewaysRequest = { ["CustomerGatewayIds"] = true, ["DryRun"] = true, ["Filters"] = true, nil }
@@ -14517,14 +19104,25 @@ end
 -- * Filters [FilterList] <p>One or more filters.</p> <ul> <li> <p> <code>bgp-asn</code> - The customer gateway's Border Gateway Protocol (BGP) Autonomous System Number (ASN).</p> </li> <li> <p> <code>customer-gateway-id</code> - The ID of the customer gateway.</p> </li> <li> <p> <code>ip-address</code> - The IP address of the customer gateway's Internet-routable external interface.</p> </li> <li> <p> <code>state</code> - The state of the customer gateway (<code>pending</code> | <code>available</code> | <code>deleting</code> | <code>deleted</code>).</p> </li> <li> <p> <code>type</code> - The type of customer gateway. Currently, the only supported type is <code>ipsec.1</code>.</p> </li> <li> <p> <code>tag</code>:<i>key</i>=<i>value</i> - The key/value combination of a tag assigned to the resource. Specify the key of the tag in the filter name and the value of the tag in the filter value. For example, for the tag Purpose=X, specify <code>tag:Purpose</code> for the filter name and <code>X</code> for the filter value.</p> </li> <li> <p> <code>tag-key</code> - The key of a tag assigned to the resource. This filter is independent of the <code>tag-value</code> filter. For example, if you use both the filter "tag-key=Purpose" and the filter "tag-value=X", you get any resources assigned both the tag key Purpose (regardless of what the tag's value is), and the tag value X (regardless of what the tag's key is). If you want to list only resources where Purpose is X, see the <code>tag</code>:<i>key</i>=<i>value</i> filter.</p> </li> <li> <p> <code>tag-value</code> - The value of a tag assigned to the resource. This filter is independent of the <code>tag-key</code> filter.</p> </li> </ul>
 -- @return DescribeCustomerGatewaysRequest structure as a key-value pair table
 function M.DescribeCustomerGatewaysRequest(args)
-	assert(args, "You must provdide an argument table when creating DescribeCustomerGatewaysRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeCustomerGatewaysRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["CustomerGatewayIds"] = args["CustomerGatewayIds"],
 		["DryRun"] = args["DryRun"],
 		["Filters"] = args["Filters"],
 	}
-	asserts.AssertDescribeCustomerGatewaysRequest(t)
-	return t
+	asserts.AssertDescribeCustomerGatewaysRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CancelledSpotInstanceRequest = { ["State"] = true, ["SpotInstanceRequestId"] = true, nil }
@@ -14547,13 +19145,24 @@ end
 -- * SpotInstanceRequestId [String] <p>The ID of the Spot instance request.</p>
 -- @return CancelledSpotInstanceRequest structure as a key-value pair table
 function M.CancelledSpotInstanceRequest(args)
-	assert(args, "You must provdide an argument table when creating CancelledSpotInstanceRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CancelledSpotInstanceRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["State"] = args["State"],
 		["SpotInstanceRequestId"] = args["SpotInstanceRequestId"],
 	}
-	asserts.AssertCancelledSpotInstanceRequest(t)
-	return t
+	asserts.AssertCancelledSpotInstanceRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ScheduledInstanceAvailability = { ["AvailabilityZone"] = true, ["TotalScheduledInstanceHours"] = true, ["HourlyPrice"] = true, ["MinTermDurationInDays"] = true, ["AvailableInstanceCount"] = true, ["SlotDurationInHours"] = true, ["Recurrence"] = true, ["MaxTermDurationInDays"] = true, ["FirstSlotStartTime"] = true, ["Platform"] = true, ["NetworkPlatform"] = true, ["InstanceType"] = true, ["PurchaseToken"] = true, nil }
@@ -14598,8 +19207,14 @@ end
 -- * PurchaseToken [String] <p>The purchase token. This token expires in two hours.</p>
 -- @return ScheduledInstanceAvailability structure as a key-value pair table
 function M.ScheduledInstanceAvailability(args)
-	assert(args, "You must provdide an argument table when creating ScheduledInstanceAvailability")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ScheduledInstanceAvailability")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["AvailabilityZone"] = args["AvailabilityZone"],
 		["TotalScheduledInstanceHours"] = args["TotalScheduledInstanceHours"],
 		["HourlyPrice"] = args["HourlyPrice"],
@@ -14614,8 +19229,13 @@ function M.ScheduledInstanceAvailability(args)
 		["InstanceType"] = args["InstanceType"],
 		["PurchaseToken"] = args["PurchaseToken"],
 	}
-	asserts.AssertScheduledInstanceAvailability(t)
-	return t
+	asserts.AssertScheduledInstanceAvailability(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeSnapshotsResult = { ["NextToken"] = true, ["Snapshots"] = true, nil }
@@ -14638,13 +19258,24 @@ end
 -- * Snapshots [SnapshotList] <p>Information about the snapshots.</p>
 -- @return DescribeSnapshotsResult structure as a key-value pair table
 function M.DescribeSnapshotsResult(args)
-	assert(args, "You must provdide an argument table when creating DescribeSnapshotsResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeSnapshotsResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NextToken"] = args["NextToken"],
 		["Snapshots"] = args["Snapshots"],
 	}
-	asserts.AssertDescribeSnapshotsResult(t)
-	return t
+	asserts.AssertDescribeSnapshotsResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteInternetGatewayRequest = { ["DryRun"] = true, ["InternetGatewayId"] = true, nil }
@@ -14669,13 +19300,24 @@ end
 -- Required key: InternetGatewayId
 -- @return DeleteInternetGatewayRequest structure as a key-value pair table
 function M.DeleteInternetGatewayRequest(args)
-	assert(args, "You must provdide an argument table when creating DeleteInternetGatewayRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteInternetGatewayRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DryRun"] = args["DryRun"],
 		["InternetGatewayId"] = args["InternetGatewayId"],
 	}
-	asserts.AssertDeleteInternetGatewayRequest(t)
-	return t
+	asserts.AssertDeleteInternetGatewayRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UnmonitorInstancesResult = { ["InstanceMonitorings"] = true, nil }
@@ -14696,12 +19338,23 @@ end
 -- * InstanceMonitorings [InstanceMonitoringList] <p>The monitoring information.</p>
 -- @return UnmonitorInstancesResult structure as a key-value pair table
 function M.UnmonitorInstancesResult(args)
-	assert(args, "You must provdide an argument table when creating UnmonitorInstancesResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UnmonitorInstancesResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["InstanceMonitorings"] = args["InstanceMonitorings"],
 	}
-	asserts.AssertUnmonitorInstancesResult(t)
-	return t
+	asserts.AssertUnmonitorInstancesResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.StaleIpPermission = { ["PrefixListIds"] = true, ["FromPort"] = true, ["IpRanges"] = true, ["ToPort"] = true, ["IpProtocol"] = true, ["UserIdGroupPairs"] = true, nil }
@@ -14732,8 +19385,14 @@ end
 -- * UserIdGroupPairs [UserIdGroupPairSet] <p>One or more security group pairs. Returns the ID of the referenced security group and VPC, and the ID and status of the VPC peering connection.</p>
 -- @return StaleIpPermission structure as a key-value pair table
 function M.StaleIpPermission(args)
-	assert(args, "You must provdide an argument table when creating StaleIpPermission")
-	local t = { 
+	assert(args, "You must provide an argument table when creating StaleIpPermission")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["PrefixListIds"] = args["PrefixListIds"],
 		["FromPort"] = args["FromPort"],
 		["IpRanges"] = args["IpRanges"],
@@ -14741,8 +19400,13 @@ function M.StaleIpPermission(args)
 		["IpProtocol"] = args["IpProtocol"],
 		["UserIdGroupPairs"] = args["UserIdGroupPairs"],
 	}
-	asserts.AssertStaleIpPermission(t)
-	return t
+	asserts.AssertStaleIpPermission(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeRegionsRequest = { ["DryRun"] = true, ["Filters"] = true, ["RegionNames"] = true, nil }
@@ -14767,14 +19431,25 @@ end
 -- * RegionNames [RegionNameStringList] <p>The names of one or more regions.</p>
 -- @return DescribeRegionsRequest structure as a key-value pair table
 function M.DescribeRegionsRequest(args)
-	assert(args, "You must provdide an argument table when creating DescribeRegionsRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeRegionsRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DryRun"] = args["DryRun"],
 		["Filters"] = args["Filters"],
 		["RegionNames"] = args["RegionNames"],
 	}
-	asserts.AssertDescribeRegionsRequest(t)
-	return t
+	asserts.AssertDescribeRegionsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CancelSpotFleetRequestsResponse = { ["SuccessfulFleetRequests"] = true, ["UnsuccessfulFleetRequests"] = true, nil }
@@ -14797,13 +19472,24 @@ end
 -- * UnsuccessfulFleetRequests [CancelSpotFleetRequestsErrorSet] <p>Information about the Spot fleet requests that are not successfully canceled.</p>
 -- @return CancelSpotFleetRequestsResponse structure as a key-value pair table
 function M.CancelSpotFleetRequestsResponse(args)
-	assert(args, "You must provdide an argument table when creating CancelSpotFleetRequestsResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CancelSpotFleetRequestsResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["SuccessfulFleetRequests"] = args["SuccessfulFleetRequests"],
 		["UnsuccessfulFleetRequests"] = args["UnsuccessfulFleetRequests"],
 	}
-	asserts.AssertCancelSpotFleetRequestsResponse(t)
-	return t
+	asserts.AssertCancelSpotFleetRequestsResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.PlacementGroup = { ["GroupName"] = true, ["State"] = true, ["Strategy"] = true, nil }
@@ -14828,14 +19514,25 @@ end
 -- * Strategy [PlacementStrategy] <p>The placement strategy.</p>
 -- @return PlacementGroup structure as a key-value pair table
 function M.PlacementGroup(args)
-	assert(args, "You must provdide an argument table when creating PlacementGroup")
-	local t = { 
+	assert(args, "You must provide an argument table when creating PlacementGroup")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["GroupName"] = args["GroupName"],
 		["State"] = args["State"],
 		["Strategy"] = args["Strategy"],
 	}
-	asserts.AssertPlacementGroup(t)
-	return t
+	asserts.AssertPlacementGroup(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AssociateIamInstanceProfileRequest = { ["InstanceId"] = true, ["IamInstanceProfile"] = true, nil }
@@ -14862,13 +19559,24 @@ end
 -- Required key: InstanceId
 -- @return AssociateIamInstanceProfileRequest structure as a key-value pair table
 function M.AssociateIamInstanceProfileRequest(args)
-	assert(args, "You must provdide an argument table when creating AssociateIamInstanceProfileRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AssociateIamInstanceProfileRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["InstanceId"] = args["InstanceId"],
 		["IamInstanceProfile"] = args["IamInstanceProfile"],
 	}
-	asserts.AssertAssociateIamInstanceProfileRequest(t)
-	return t
+	asserts.AssertAssociateIamInstanceProfileRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateNatGatewayRequest = { ["SubnetId"] = true, ["AllocationId"] = true, ["ClientToken"] = true, nil }
@@ -14897,14 +19605,25 @@ end
 -- Required key: SubnetId
 -- @return CreateNatGatewayRequest structure as a key-value pair table
 function M.CreateNatGatewayRequest(args)
-	assert(args, "You must provdide an argument table when creating CreateNatGatewayRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateNatGatewayRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["SubnetId"] = args["SubnetId"],
 		["AllocationId"] = args["AllocationId"],
 		["ClientToken"] = args["ClientToken"],
 	}
-	asserts.AssertCreateNatGatewayRequest(t)
-	return t
+	asserts.AssertCreateNatGatewayRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.PricingDetail = { ["Count"] = true, ["Price"] = true, nil }
@@ -14927,13 +19646,24 @@ end
 -- * Price [Double] <p>The price per instance.</p>
 -- @return PricingDetail structure as a key-value pair table
 function M.PricingDetail(args)
-	assert(args, "You must provdide an argument table when creating PricingDetail")
-	local t = { 
+	assert(args, "You must provide an argument table when creating PricingDetail")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Count"] = args["Count"],
 		["Price"] = args["Price"],
 	}
-	asserts.AssertPricingDetail(t)
-	return t
+	asserts.AssertPricingDetail(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UnassignIpv6AddressesRequest = { ["Ipv6Addresses"] = true, ["NetworkInterfaceId"] = true, nil }
@@ -14960,13 +19690,24 @@ end
 -- Required key: NetworkInterfaceId
 -- @return UnassignIpv6AddressesRequest structure as a key-value pair table
 function M.UnassignIpv6AddressesRequest(args)
-	assert(args, "You must provdide an argument table when creating UnassignIpv6AddressesRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UnassignIpv6AddressesRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Ipv6Addresses"] = args["Ipv6Addresses"],
 		["NetworkInterfaceId"] = args["NetworkInterfaceId"],
 	}
-	asserts.AssertUnassignIpv6AddressesRequest(t)
-	return t
+	asserts.AssertUnassignIpv6AddressesRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.EnableVpcClassicLinkResult = { ["Return"] = true, nil }
@@ -14987,12 +19728,23 @@ end
 -- * Return [Boolean] <p>Returns <code>true</code> if the request succeeds; otherwise, it returns an error.</p>
 -- @return EnableVpcClassicLinkResult structure as a key-value pair table
 function M.EnableVpcClassicLinkResult(args)
-	assert(args, "You must provdide an argument table when creating EnableVpcClassicLinkResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating EnableVpcClassicLinkResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Return"] = args["Return"],
 	}
-	asserts.AssertEnableVpcClassicLinkResult(t)
-	return t
+	asserts.AssertEnableVpcClassicLinkResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.SpotPlacement = { ["Tenancy"] = true, ["GroupName"] = true, ["AvailabilityZone"] = true, nil }
@@ -15017,14 +19769,25 @@ end
 -- * AvailabilityZone [String] <p>The Availability Zone.</p> <p>[Spot fleet only] To specify multiple Availability Zones, separate them using commas; for example, "us-west-2a, us-west-2b".</p>
 -- @return SpotPlacement structure as a key-value pair table
 function M.SpotPlacement(args)
-	assert(args, "You must provdide an argument table when creating SpotPlacement")
-	local t = { 
+	assert(args, "You must provide an argument table when creating SpotPlacement")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Tenancy"] = args["Tenancy"],
 		["GroupName"] = args["GroupName"],
 		["AvailabilityZone"] = args["AvailabilityZone"],
 	}
-	asserts.AssertSpotPlacement(t)
-	return t
+	asserts.AssertSpotPlacement(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteVpcEndpointsResult = { ["Unsuccessful"] = true, nil }
@@ -15045,12 +19808,23 @@ end
 -- * Unsuccessful [UnsuccessfulItemSet] <p>Information about the endpoints that were not successfully deleted.</p>
 -- @return DeleteVpcEndpointsResult structure as a key-value pair table
 function M.DeleteVpcEndpointsResult(args)
-	assert(args, "You must provdide an argument table when creating DeleteVpcEndpointsResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteVpcEndpointsResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Unsuccessful"] = args["Unsuccessful"],
 	}
-	asserts.AssertDeleteVpcEndpointsResult(t)
-	return t
+	asserts.AssertDeleteVpcEndpointsResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.EbsInstanceBlockDevice = { ["Status"] = true, ["DeleteOnTermination"] = true, ["VolumeId"] = true, ["AttachTime"] = true, nil }
@@ -15077,15 +19851,26 @@ end
 -- * AttachTime [DateTime] <p>The time stamp when the attachment initiated.</p>
 -- @return EbsInstanceBlockDevice structure as a key-value pair table
 function M.EbsInstanceBlockDevice(args)
-	assert(args, "You must provdide an argument table when creating EbsInstanceBlockDevice")
-	local t = { 
+	assert(args, "You must provide an argument table when creating EbsInstanceBlockDevice")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Status"] = args["Status"],
 		["DeleteOnTermination"] = args["DeleteOnTermination"],
 		["VolumeId"] = args["VolumeId"],
 		["AttachTime"] = args["AttachTime"],
 	}
-	asserts.AssertEbsInstanceBlockDevice(t)
-	return t
+	asserts.AssertEbsInstanceBlockDevice(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.VolumeStatusDetails = { ["Status"] = true, ["Name"] = true, nil }
@@ -15108,13 +19893,24 @@ end
 -- * Name [VolumeStatusName] <p>The name of the volume status.</p>
 -- @return VolumeStatusDetails structure as a key-value pair table
 function M.VolumeStatusDetails(args)
-	assert(args, "You must provdide an argument table when creating VolumeStatusDetails")
-	local t = { 
+	assert(args, "You must provide an argument table when creating VolumeStatusDetails")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Status"] = args["Status"],
 		["Name"] = args["Name"],
 	}
-	asserts.AssertVolumeStatusDetails(t)
-	return t
+	asserts.AssertVolumeStatusDetails(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeHostReservationOfferingsRequest = { ["OfferingId"] = true, ["MaxResults"] = true, ["Filter"] = true, ["MinDuration"] = true, ["NextToken"] = true, ["MaxDuration"] = true, nil }
@@ -15145,8 +19941,14 @@ end
 -- * MaxDuration [Integer] <p>This is the maximum duration of the reservation you'd like to purchase, specified in seconds. Reservations are available in one-year and three-year terms. The number of seconds specified must be the number of seconds in a year (365x24x60x60) times one of the supported durations (1 or 3). For example, specify 94608000 for three years.</p>
 -- @return DescribeHostReservationOfferingsRequest structure as a key-value pair table
 function M.DescribeHostReservationOfferingsRequest(args)
-	assert(args, "You must provdide an argument table when creating DescribeHostReservationOfferingsRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeHostReservationOfferingsRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["OfferingId"] = args["OfferingId"],
 		["MaxResults"] = args["MaxResults"],
 		["Filter"] = args["Filter"],
@@ -15154,8 +19956,13 @@ function M.DescribeHostReservationOfferingsRequest(args)
 		["NextToken"] = args["NextToken"],
 		["MaxDuration"] = args["MaxDuration"],
 	}
-	asserts.AssertDescribeHostReservationOfferingsRequest(t)
-	return t
+	asserts.AssertDescribeHostReservationOfferingsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.StartInstancesResult = { ["StartingInstances"] = true, nil }
@@ -15176,12 +19983,23 @@ end
 -- * StartingInstances [InstanceStateChangeList] <p>Information about one or more started instances.</p>
 -- @return StartInstancesResult structure as a key-value pair table
 function M.StartInstancesResult(args)
-	assert(args, "You must provdide an argument table when creating StartInstancesResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating StartInstancesResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["StartingInstances"] = args["StartingInstances"],
 	}
-	asserts.AssertStartInstancesResult(t)
-	return t
+	asserts.AssertStartInstancesResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Address = { ["Domain"] = true, ["InstanceId"] = true, ["NetworkInterfaceId"] = true, ["AssociationId"] = true, ["NetworkInterfaceOwnerId"] = true, ["PublicIp"] = true, ["AllocationId"] = true, ["PrivateIpAddress"] = true, nil }
@@ -15216,8 +20034,14 @@ end
 -- * PrivateIpAddress [String] <p>The private IP address associated with the Elastic IP address.</p>
 -- @return Address structure as a key-value pair table
 function M.Address(args)
-	assert(args, "You must provdide an argument table when creating Address")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Address")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Domain"] = args["Domain"],
 		["InstanceId"] = args["InstanceId"],
 		["NetworkInterfaceId"] = args["NetworkInterfaceId"],
@@ -15227,8 +20051,13 @@ function M.Address(args)
 		["AllocationId"] = args["AllocationId"],
 		["PrivateIpAddress"] = args["PrivateIpAddress"],
 	}
-	asserts.AssertAddress(t)
-	return t
+	asserts.AssertAddress(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.VpnGateway = { ["AvailabilityZone"] = true, ["Tags"] = true, ["VpcAttachments"] = true, ["State"] = true, ["VpnGatewayId"] = true, ["Type"] = true, nil }
@@ -15259,8 +20088,14 @@ end
 -- * Type [GatewayType] <p>The type of VPN connection the virtual private gateway supports.</p>
 -- @return VpnGateway structure as a key-value pair table
 function M.VpnGateway(args)
-	assert(args, "You must provdide an argument table when creating VpnGateway")
-	local t = { 
+	assert(args, "You must provide an argument table when creating VpnGateway")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["AvailabilityZone"] = args["AvailabilityZone"],
 		["Tags"] = args["Tags"],
 		["VpcAttachments"] = args["VpcAttachments"],
@@ -15268,8 +20103,13 @@ function M.VpnGateway(args)
 		["VpnGatewayId"] = args["VpnGatewayId"],
 		["Type"] = args["Type"],
 	}
-	asserts.AssertVpnGateway(t)
-	return t
+	asserts.AssertVpnGateway(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ReleaseHostsRequest = { ["HostIds"] = true, nil }
@@ -15292,12 +20132,23 @@ end
 -- Required key: HostIds
 -- @return ReleaseHostsRequest structure as a key-value pair table
 function M.ReleaseHostsRequest(args)
-	assert(args, "You must provdide an argument table when creating ReleaseHostsRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ReleaseHostsRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["HostIds"] = args["HostIds"],
 	}
-	asserts.AssertReleaseHostsRequest(t)
-	return t
+	asserts.AssertReleaseHostsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.EbsInstanceBlockDeviceSpecification = { ["DeleteOnTermination"] = true, ["VolumeId"] = true, nil }
@@ -15320,13 +20171,24 @@ end
 -- * VolumeId [String] <p>The ID of the EBS volume.</p>
 -- @return EbsInstanceBlockDeviceSpecification structure as a key-value pair table
 function M.EbsInstanceBlockDeviceSpecification(args)
-	assert(args, "You must provdide an argument table when creating EbsInstanceBlockDeviceSpecification")
-	local t = { 
+	assert(args, "You must provide an argument table when creating EbsInstanceBlockDeviceSpecification")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DeleteOnTermination"] = args["DeleteOnTermination"],
 		["VolumeId"] = args["VolumeId"],
 	}
-	asserts.AssertEbsInstanceBlockDeviceSpecification(t)
-	return t
+	asserts.AssertEbsInstanceBlockDeviceSpecification(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.EnableVolumeIORequest = { ["DryRun"] = true, ["VolumeId"] = true, nil }
@@ -15351,13 +20213,24 @@ end
 -- Required key: VolumeId
 -- @return EnableVolumeIORequest structure as a key-value pair table
 function M.EnableVolumeIORequest(args)
-	assert(args, "You must provdide an argument table when creating EnableVolumeIORequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating EnableVolumeIORequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DryRun"] = args["DryRun"],
 		["VolumeId"] = args["VolumeId"],
 	}
-	asserts.AssertEnableVolumeIORequest(t)
-	return t
+	asserts.AssertEnableVolumeIORequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeScheduledInstancesResult = { ["NextToken"] = true, ["ScheduledInstanceSet"] = true, nil }
@@ -15380,13 +20253,24 @@ end
 -- * ScheduledInstanceSet [ScheduledInstanceSet] <p>Information about the Scheduled Instances.</p>
 -- @return DescribeScheduledInstancesResult structure as a key-value pair table
 function M.DescribeScheduledInstancesResult(args)
-	assert(args, "You must provdide an argument table when creating DescribeScheduledInstancesResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeScheduledInstancesResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NextToken"] = args["NextToken"],
 		["ScheduledInstanceSet"] = args["ScheduledInstanceSet"],
 	}
-	asserts.AssertDescribeScheduledInstancesResult(t)
-	return t
+	asserts.AssertDescribeScheduledInstancesResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AssociateVpcCidrBlockResult = { ["Ipv6CidrBlockAssociation"] = true, ["VpcId"] = true, nil }
@@ -15409,13 +20293,24 @@ end
 -- * VpcId [String] <p>The ID of the VPC.</p>
 -- @return AssociateVpcCidrBlockResult structure as a key-value pair table
 function M.AssociateVpcCidrBlockResult(args)
-	assert(args, "You must provdide an argument table when creating AssociateVpcCidrBlockResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AssociateVpcCidrBlockResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Ipv6CidrBlockAssociation"] = args["Ipv6CidrBlockAssociation"],
 		["VpcId"] = args["VpcId"],
 	}
-	asserts.AssertAssociateVpcCidrBlockResult(t)
-	return t
+	asserts.AssertAssociateVpcCidrBlockResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.PciId = { ["SubsystemVendorId"] = true, ["VendorId"] = true, ["DeviceId"] = true, ["SubsystemId"] = true, nil }
@@ -15442,15 +20337,26 @@ end
 -- * SubsystemId [String] <p>The ID of the subsystem.</p>
 -- @return PciId structure as a key-value pair table
 function M.PciId(args)
-	assert(args, "You must provdide an argument table when creating PciId")
-	local t = { 
+	assert(args, "You must provide an argument table when creating PciId")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["SubsystemVendorId"] = args["SubsystemVendorId"],
 		["VendorId"] = args["VendorId"],
 		["DeviceId"] = args["DeviceId"],
 		["SubsystemId"] = args["SubsystemId"],
 	}
-	asserts.AssertPciId(t)
-	return t
+	asserts.AssertPciId(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.RequestSpotLaunchSpecification = { ["UserData"] = true, ["SubnetId"] = true, ["Monitoring"] = true, ["KeyName"] = true, ["SecurityGroupIds"] = true, ["ImageId"] = true, ["BlockDeviceMappings"] = true, ["EbsOptimized"] = true, ["SecurityGroups"] = true, ["RamdiskId"] = true, ["KernelId"] = true, ["Placement"] = true, ["IamInstanceProfile"] = true, ["InstanceType"] = true, ["AddressingType"] = true, ["NetworkInterfaces"] = true, nil }
@@ -15501,8 +20407,14 @@ end
 -- * NetworkInterfaces [InstanceNetworkInterfaceSpecificationList] <p>One or more network interfaces. If you specify a network interface, you must specify subnet IDs and security group IDs using the network interface.</p>
 -- @return RequestSpotLaunchSpecification structure as a key-value pair table
 function M.RequestSpotLaunchSpecification(args)
-	assert(args, "You must provdide an argument table when creating RequestSpotLaunchSpecification")
-	local t = { 
+	assert(args, "You must provide an argument table when creating RequestSpotLaunchSpecification")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["UserData"] = args["UserData"],
 		["SubnetId"] = args["SubnetId"],
 		["Monitoring"] = args["Monitoring"],
@@ -15520,8 +20432,13 @@ function M.RequestSpotLaunchSpecification(args)
 		["AddressingType"] = args["AddressingType"],
 		["NetworkInterfaces"] = args["NetworkInterfaces"],
 	}
-	asserts.AssertRequestSpotLaunchSpecification(t)
-	return t
+	asserts.AssertRequestSpotLaunchSpecification(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CustomerGateway = { ["Tags"] = true, ["IpAddress"] = true, ["State"] = true, ["CustomerGatewayId"] = true, ["BgpAsn"] = true, ["Type"] = true, nil }
@@ -15552,8 +20469,14 @@ end
 -- * Type [String] <p>The type of VPN connection the customer gateway supports (<code>ipsec.1</code>).</p>
 -- @return CustomerGateway structure as a key-value pair table
 function M.CustomerGateway(args)
-	assert(args, "You must provdide an argument table when creating CustomerGateway")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CustomerGateway")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Tags"] = args["Tags"],
 		["IpAddress"] = args["IpAddress"],
 		["State"] = args["State"],
@@ -15561,8 +20484,13 @@ function M.CustomerGateway(args)
 		["BgpAsn"] = args["BgpAsn"],
 		["Type"] = args["Type"],
 	}
-	asserts.AssertCustomerGateway(t)
-	return t
+	asserts.AssertCustomerGateway(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateSpotDatafeedSubscriptionRequest = { ["DryRun"] = true, ["Prefix"] = true, ["Bucket"] = true, nil }
@@ -15589,14 +20517,25 @@ end
 -- Required key: Bucket
 -- @return CreateSpotDatafeedSubscriptionRequest structure as a key-value pair table
 function M.CreateSpotDatafeedSubscriptionRequest(args)
-	assert(args, "You must provdide an argument table when creating CreateSpotDatafeedSubscriptionRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateSpotDatafeedSubscriptionRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DryRun"] = args["DryRun"],
 		["Prefix"] = args["Prefix"],
 		["Bucket"] = args["Bucket"],
 	}
-	asserts.AssertCreateSpotDatafeedSubscriptionRequest(t)
-	return t
+	asserts.AssertCreateSpotDatafeedSubscriptionRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteFlowLogsRequest = { ["FlowLogIds"] = true, nil }
@@ -15619,12 +20558,23 @@ end
 -- Required key: FlowLogIds
 -- @return DeleteFlowLogsRequest structure as a key-value pair table
 function M.DeleteFlowLogsRequest(args)
-	assert(args, "You must provdide an argument table when creating DeleteFlowLogsRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteFlowLogsRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["FlowLogIds"] = args["FlowLogIds"],
 	}
-	asserts.AssertDeleteFlowLogsRequest(t)
-	return t
+	asserts.AssertDeleteFlowLogsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeSpotFleetInstancesRequest = { ["SpotFleetRequestId"] = true, ["NextToken"] = true, ["DryRun"] = true, ["MaxResults"] = true, nil }
@@ -15653,15 +20603,26 @@ end
 -- Required key: SpotFleetRequestId
 -- @return DescribeSpotFleetInstancesRequest structure as a key-value pair table
 function M.DescribeSpotFleetInstancesRequest(args)
-	assert(args, "You must provdide an argument table when creating DescribeSpotFleetInstancesRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeSpotFleetInstancesRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["SpotFleetRequestId"] = args["SpotFleetRequestId"],
 		["NextToken"] = args["NextToken"],
 		["DryRun"] = args["DryRun"],
 		["MaxResults"] = args["MaxResults"],
 	}
-	asserts.AssertDescribeSpotFleetInstancesRequest(t)
-	return t
+	asserts.AssertDescribeSpotFleetInstancesRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AvailableCapacity = { ["AvailableInstanceCapacity"] = true, ["AvailableVCpus"] = true, nil }
@@ -15684,13 +20645,24 @@ end
 -- * AvailableVCpus [Integer] <p>The number of vCPUs available on the Dedicated Host.</p>
 -- @return AvailableCapacity structure as a key-value pair table
 function M.AvailableCapacity(args)
-	assert(args, "You must provdide an argument table when creating AvailableCapacity")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AvailableCapacity")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["AvailableInstanceCapacity"] = args["AvailableInstanceCapacity"],
 		["AvailableVCpus"] = args["AvailableVCpus"],
 	}
-	asserts.AssertAvailableCapacity(t)
-	return t
+	asserts.AssertAvailableCapacity(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.LaunchPermissionModifications = { ["Add"] = true, ["Remove"] = true, nil }
@@ -15713,13 +20685,24 @@ end
 -- * Remove [LaunchPermissionList] <p>The AWS account ID to remove from the list of launch permissions for the AMI.</p>
 -- @return LaunchPermissionModifications structure as a key-value pair table
 function M.LaunchPermissionModifications(args)
-	assert(args, "You must provdide an argument table when creating LaunchPermissionModifications")
-	local t = { 
+	assert(args, "You must provide an argument table when creating LaunchPermissionModifications")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Add"] = args["Add"],
 		["Remove"] = args["Remove"],
 	}
-	asserts.AssertLaunchPermissionModifications(t)
-	return t
+	asserts.AssertLaunchPermissionModifications(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetReservedInstancesExchangeQuoteRequest = { ["ReservedInstanceIds"] = true, ["DryRun"] = true, ["TargetConfigurations"] = true, nil }
@@ -15746,14 +20729,25 @@ end
 -- Required key: ReservedInstanceIds
 -- @return GetReservedInstancesExchangeQuoteRequest structure as a key-value pair table
 function M.GetReservedInstancesExchangeQuoteRequest(args)
-	assert(args, "You must provdide an argument table when creating GetReservedInstancesExchangeQuoteRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetReservedInstancesExchangeQuoteRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ReservedInstanceIds"] = args["ReservedInstanceIds"],
 		["DryRun"] = args["DryRun"],
 		["TargetConfigurations"] = args["TargetConfigurations"],
 	}
-	asserts.AssertGetReservedInstancesExchangeQuoteRequest(t)
-	return t
+	asserts.AssertGetReservedInstancesExchangeQuoteRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.VpnStaticRoute = { ["DestinationCidrBlock"] = true, ["State"] = true, ["Source"] = true, nil }
@@ -15778,14 +20772,25 @@ end
 -- * Source [VpnStaticRouteSource] <p>Indicates how the routes were provided.</p>
 -- @return VpnStaticRoute structure as a key-value pair table
 function M.VpnStaticRoute(args)
-	assert(args, "You must provdide an argument table when creating VpnStaticRoute")
-	local t = { 
+	assert(args, "You must provide an argument table when creating VpnStaticRoute")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DestinationCidrBlock"] = args["DestinationCidrBlock"],
 		["State"] = args["State"],
 		["Source"] = args["Source"],
 	}
-	asserts.AssertVpnStaticRoute(t)
-	return t
+	asserts.AssertVpnStaticRoute(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteVpcPeeringConnectionRequest = { ["DryRun"] = true, ["VpcPeeringConnectionId"] = true, nil }
@@ -15810,13 +20815,24 @@ end
 -- Required key: VpcPeeringConnectionId
 -- @return DeleteVpcPeeringConnectionRequest structure as a key-value pair table
 function M.DeleteVpcPeeringConnectionRequest(args)
-	assert(args, "You must provdide an argument table when creating DeleteVpcPeeringConnectionRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteVpcPeeringConnectionRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DryRun"] = args["DryRun"],
 		["VpcPeeringConnectionId"] = args["VpcPeeringConnectionId"],
 	}
-	asserts.AssertDeleteVpcPeeringConnectionRequest(t)
-	return t
+	asserts.AssertDeleteVpcPeeringConnectionRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeReservedInstancesModificationsResult = { ["NextToken"] = true, ["ReservedInstancesModifications"] = true, nil }
@@ -15839,13 +20855,24 @@ end
 -- * ReservedInstancesModifications [ReservedInstancesModificationList] <p>The Reserved Instance modification information.</p>
 -- @return DescribeReservedInstancesModificationsResult structure as a key-value pair table
 function M.DescribeReservedInstancesModificationsResult(args)
-	assert(args, "You must provdide an argument table when creating DescribeReservedInstancesModificationsResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeReservedInstancesModificationsResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NextToken"] = args["NextToken"],
 		["ReservedInstancesModifications"] = args["ReservedInstancesModifications"],
 	}
-	asserts.AssertDescribeReservedInstancesModificationsResult(t)
-	return t
+	asserts.AssertDescribeReservedInstancesModificationsResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.IdFormat = { ["Resource"] = true, ["Deadline"] = true, ["UseLongIds"] = true, nil }
@@ -15870,14 +20897,25 @@ end
 -- * UseLongIds [Boolean] <p>Indicates whether longer IDs (17-character IDs) are enabled for the resource.</p>
 -- @return IdFormat structure as a key-value pair table
 function M.IdFormat(args)
-	assert(args, "You must provdide an argument table when creating IdFormat")
-	local t = { 
+	assert(args, "You must provide an argument table when creating IdFormat")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Resource"] = args["Resource"],
 		["Deadline"] = args["Deadline"],
 		["UseLongIds"] = args["UseLongIds"],
 	}
-	asserts.AssertIdFormat(t)
-	return t
+	asserts.AssertIdFormat(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.TargetConfigurationRequest = { ["InstanceCount"] = true, ["OfferingId"] = true, nil }
@@ -15902,13 +20940,24 @@ end
 -- Required key: OfferingId
 -- @return TargetConfigurationRequest structure as a key-value pair table
 function M.TargetConfigurationRequest(args)
-	assert(args, "You must provdide an argument table when creating TargetConfigurationRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating TargetConfigurationRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["InstanceCount"] = args["InstanceCount"],
 		["OfferingId"] = args["OfferingId"],
 	}
-	asserts.AssertTargetConfigurationRequest(t)
-	return t
+	asserts.AssertTargetConfigurationRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InstanceState = { ["Code"] = true, ["Name"] = true, nil }
@@ -15931,13 +20980,24 @@ end
 -- * Name [InstanceStateName] <p>The current state of the instance.</p>
 -- @return InstanceState structure as a key-value pair table
 function M.InstanceState(args)
-	assert(args, "You must provdide an argument table when creating InstanceState")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InstanceState")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Code"] = args["Code"],
 		["Name"] = args["Name"],
 	}
-	asserts.AssertInstanceState(t)
-	return t
+	asserts.AssertInstanceState(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AttachClassicLinkVpcResult = { ["Return"] = true, nil }
@@ -15958,12 +21018,23 @@ end
 -- * Return [Boolean] <p>Returns <code>true</code> if the request succeeds; otherwise, it returns an error.</p>
 -- @return AttachClassicLinkVpcResult structure as a key-value pair table
 function M.AttachClassicLinkVpcResult(args)
-	assert(args, "You must provdide an argument table when creating AttachClassicLinkVpcResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AttachClassicLinkVpcResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Return"] = args["Return"],
 	}
-	asserts.AssertAttachClassicLinkVpcResult(t)
-	return t
+	asserts.AssertAttachClassicLinkVpcResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DetachClassicLinkVpcResult = { ["Return"] = true, nil }
@@ -15984,12 +21055,23 @@ end
 -- * Return [Boolean] <p>Returns <code>true</code> if the request succeeds; otherwise, it returns an error.</p>
 -- @return DetachClassicLinkVpcResult structure as a key-value pair table
 function M.DetachClassicLinkVpcResult(args)
-	assert(args, "You must provdide an argument table when creating DetachClassicLinkVpcResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DetachClassicLinkVpcResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Return"] = args["Return"],
 	}
-	asserts.AssertDetachClassicLinkVpcResult(t)
-	return t
+	asserts.AssertDetachClassicLinkVpcResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DisassociateSubnetCidrBlockResult = { ["SubnetId"] = true, ["Ipv6CidrBlockAssociation"] = true, nil }
@@ -16012,13 +21094,24 @@ end
 -- * Ipv6CidrBlockAssociation [SubnetIpv6CidrBlockAssociation] <p>Information about the IPv6 CIDR block association.</p>
 -- @return DisassociateSubnetCidrBlockResult structure as a key-value pair table
 function M.DisassociateSubnetCidrBlockResult(args)
-	assert(args, "You must provdide an argument table when creating DisassociateSubnetCidrBlockResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DisassociateSubnetCidrBlockResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["SubnetId"] = args["SubnetId"],
 		["Ipv6CidrBlockAssociation"] = args["Ipv6CidrBlockAssociation"],
 	}
-	asserts.AssertDisassociateSubnetCidrBlockResult(t)
-	return t
+	asserts.AssertDisassociateSubnetCidrBlockResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ModifyInstanceAttributeRequest = { ["Ramdisk"] = true, ["Kernel"] = true, ["SourceDestCheck"] = true, ["DryRun"] = true, ["UserData"] = true, ["InstanceId"] = true, ["Attribute"] = true, ["EnaSupport"] = true, ["SriovNetSupport"] = true, ["InstanceInitiatedShutdownBehavior"] = true, ["BlockDeviceMappings"] = true, ["Value"] = true, ["Groups"] = true, ["EbsOptimized"] = true, ["DisableApiTermination"] = true, ["InstanceType"] = true, nil }
@@ -16071,8 +21164,14 @@ end
 -- Required key: InstanceId
 -- @return ModifyInstanceAttributeRequest structure as a key-value pair table
 function M.ModifyInstanceAttributeRequest(args)
-	assert(args, "You must provdide an argument table when creating ModifyInstanceAttributeRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ModifyInstanceAttributeRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Ramdisk"] = args["Ramdisk"],
 		["Kernel"] = args["Kernel"],
 		["SourceDestCheck"] = args["SourceDestCheck"],
@@ -16090,8 +21189,13 @@ function M.ModifyInstanceAttributeRequest(args)
 		["DisableApiTermination"] = args["DisableApiTermination"],
 		["InstanceType"] = args["InstanceType"],
 	}
-	asserts.AssertModifyInstanceAttributeRequest(t)
-	return t
+	asserts.AssertModifyInstanceAttributeRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetHostReservationPurchasePreviewRequest = { ["HostIdSet"] = true, ["OfferingId"] = true, nil }
@@ -16118,13 +21222,24 @@ end
 -- Required key: OfferingId
 -- @return GetHostReservationPurchasePreviewRequest structure as a key-value pair table
 function M.GetHostReservationPurchasePreviewRequest(args)
-	assert(args, "You must provdide an argument table when creating GetHostReservationPurchasePreviewRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetHostReservationPurchasePreviewRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["HostIdSet"] = args["HostIdSet"],
 		["OfferingId"] = args["OfferingId"],
 	}
-	asserts.AssertGetHostReservationPurchasePreviewRequest(t)
-	return t
+	asserts.AssertGetHostReservationPurchasePreviewRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.EnableVpcClassicLinkDnsSupportResult = { ["Return"] = true, nil }
@@ -16145,12 +21260,23 @@ end
 -- * Return [Boolean] <p>Returns <code>true</code> if the request succeeds; otherwise, it returns an error.</p>
 -- @return EnableVpcClassicLinkDnsSupportResult structure as a key-value pair table
 function M.EnableVpcClassicLinkDnsSupportResult(args)
-	assert(args, "You must provdide an argument table when creating EnableVpcClassicLinkDnsSupportResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating EnableVpcClassicLinkDnsSupportResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Return"] = args["Return"],
 	}
-	asserts.AssertEnableVpcClassicLinkDnsSupportResult(t)
-	return t
+	asserts.AssertEnableVpcClassicLinkDnsSupportResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetPasswordDataResult = { ["InstanceId"] = true, ["Timestamp"] = true, ["PasswordData"] = true, nil }
@@ -16175,14 +21301,25 @@ end
 -- * PasswordData [String] <p>The password of the instance.</p>
 -- @return GetPasswordDataResult structure as a key-value pair table
 function M.GetPasswordDataResult(args)
-	assert(args, "You must provdide an argument table when creating GetPasswordDataResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetPasswordDataResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["InstanceId"] = args["InstanceId"],
 		["Timestamp"] = args["Timestamp"],
 		["PasswordData"] = args["PasswordData"],
 	}
-	asserts.AssertGetPasswordDataResult(t)
-	return t
+	asserts.AssertGetPasswordDataResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.KeyPairInfo = { ["KeyName"] = true, ["KeyFingerprint"] = true, nil }
@@ -16205,13 +21342,24 @@ end
 -- * KeyFingerprint [String] <p>If you used <a>CreateKeyPair</a> to create the key pair, this is the SHA-1 digest of the DER encoded private key. If you used <a>ImportKeyPair</a> to provide AWS the public key, this is the MD5 public key fingerprint as specified in section 4 of RFC4716.</p>
 -- @return KeyPairInfo structure as a key-value pair table
 function M.KeyPairInfo(args)
-	assert(args, "You must provdide an argument table when creating KeyPairInfo")
-	local t = { 
+	assert(args, "You must provide an argument table when creating KeyPairInfo")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["KeyName"] = args["KeyName"],
 		["KeyFingerprint"] = args["KeyFingerprint"],
 	}
-	asserts.AssertKeyPairInfo(t)
-	return t
+	asserts.AssertKeyPairInfo(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeVpcClassicLinkResult = { ["Vpcs"] = true, nil }
@@ -16232,12 +21380,23 @@ end
 -- * Vpcs [VpcClassicLinkList] <p>The ClassicLink status of one or more VPCs.</p>
 -- @return DescribeVpcClassicLinkResult structure as a key-value pair table
 function M.DescribeVpcClassicLinkResult(args)
-	assert(args, "You must provdide an argument table when creating DescribeVpcClassicLinkResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeVpcClassicLinkResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Vpcs"] = args["Vpcs"],
 	}
-	asserts.AssertDescribeVpcClassicLinkResult(t)
-	return t
+	asserts.AssertDescribeVpcClassicLinkResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeEgressOnlyInternetGatewaysRequest = { ["EgressOnlyInternetGatewayIds"] = true, ["NextToken"] = true, ["DryRun"] = true, ["MaxResults"] = true, nil }
@@ -16264,15 +21423,26 @@ end
 -- * MaxResults [Integer] <p>The maximum number of results to return for the request in a single page. The remaining results can be seen by sending another request with the returned <code>NextToken</code> value. This value can be between 5 and 1000; if <code>MaxResults</code> is given a value larger than 1000, only 1000 results are returned.</p>
 -- @return DescribeEgressOnlyInternetGatewaysRequest structure as a key-value pair table
 function M.DescribeEgressOnlyInternetGatewaysRequest(args)
-	assert(args, "You must provdide an argument table when creating DescribeEgressOnlyInternetGatewaysRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeEgressOnlyInternetGatewaysRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["EgressOnlyInternetGatewayIds"] = args["EgressOnlyInternetGatewayIds"],
 		["NextToken"] = args["NextToken"],
 		["DryRun"] = args["DryRun"],
 		["MaxResults"] = args["MaxResults"],
 	}
-	asserts.AssertDescribeEgressOnlyInternetGatewaysRequest(t)
-	return t
+	asserts.AssertDescribeEgressOnlyInternetGatewaysRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DetachVpnGatewayRequest = { ["VpcId"] = true, ["DryRun"] = true, ["VpnGatewayId"] = true, nil }
@@ -16301,14 +21471,25 @@ end
 -- Required key: VpnGatewayId
 -- @return DetachVpnGatewayRequest structure as a key-value pair table
 function M.DetachVpnGatewayRequest(args)
-	assert(args, "You must provdide an argument table when creating DetachVpnGatewayRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DetachVpnGatewayRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["VpcId"] = args["VpcId"],
 		["DryRun"] = args["DryRun"],
 		["VpnGatewayId"] = args["VpnGatewayId"],
 	}
-	asserts.AssertDetachVpnGatewayRequest(t)
-	return t
+	asserts.AssertDetachVpnGatewayRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeBundleTasksRequest = { ["DryRun"] = true, ["Filters"] = true, ["BundleIds"] = true, nil }
@@ -16333,14 +21514,25 @@ end
 -- * BundleIds [BundleIdStringList] <p>One or more bundle task IDs.</p> <p>Default: Describes all your bundle tasks.</p>
 -- @return DescribeBundleTasksRequest structure as a key-value pair table
 function M.DescribeBundleTasksRequest(args)
-	assert(args, "You must provdide an argument table when creating DescribeBundleTasksRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeBundleTasksRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DryRun"] = args["DryRun"],
 		["Filters"] = args["Filters"],
 		["BundleIds"] = args["BundleIds"],
 	}
-	asserts.AssertDescribeBundleTasksRequest(t)
-	return t
+	asserts.AssertDescribeBundleTasksRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.PurchaseHostReservationRequest = { ["CurrencyCode"] = true, ["OfferingId"] = true, ["LimitPrice"] = true, ["HostIdSet"] = true, ["ClientToken"] = true, nil }
@@ -16373,16 +21565,27 @@ end
 -- Required key: OfferingId
 -- @return PurchaseHostReservationRequest structure as a key-value pair table
 function M.PurchaseHostReservationRequest(args)
-	assert(args, "You must provdide an argument table when creating PurchaseHostReservationRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating PurchaseHostReservationRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["CurrencyCode"] = args["CurrencyCode"],
 		["OfferingId"] = args["OfferingId"],
 		["LimitPrice"] = args["LimitPrice"],
 		["HostIdSet"] = args["HostIdSet"],
 		["ClientToken"] = args["ClientToken"],
 	}
-	asserts.AssertPurchaseHostReservationRequest(t)
-	return t
+	asserts.AssertPurchaseHostReservationRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ReleaseHostsResult = { ["Successful"] = true, ["Unsuccessful"] = true, nil }
@@ -16405,13 +21608,24 @@ end
 -- * Unsuccessful [UnsuccessfulItemList] <p>The IDs of the Dedicated Hosts that could not be released, including an error message.</p>
 -- @return ReleaseHostsResult structure as a key-value pair table
 function M.ReleaseHostsResult(args)
-	assert(args, "You must provdide an argument table when creating ReleaseHostsResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ReleaseHostsResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Successful"] = args["Successful"],
 		["Unsuccessful"] = args["Unsuccessful"],
 	}
-	asserts.AssertReleaseHostsResult(t)
-	return t
+	asserts.AssertReleaseHostsResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.LaunchSpecification = { ["UserData"] = true, ["SubnetId"] = true, ["Placement"] = true, ["Monitoring"] = true, ["ImageId"] = true, ["KeyName"] = true, ["BlockDeviceMappings"] = true, ["EbsOptimized"] = true, ["SecurityGroups"] = true, ["KernelId"] = true, ["RamdiskId"] = true, ["IamInstanceProfile"] = true, ["InstanceType"] = true, ["AddressingType"] = true, ["NetworkInterfaces"] = true, nil }
@@ -16460,8 +21674,14 @@ end
 -- * NetworkInterfaces [InstanceNetworkInterfaceSpecificationList] <p>One or more network interfaces. If you specify a network interface, you must specify subnet IDs and security group IDs using the network interface.</p>
 -- @return LaunchSpecification structure as a key-value pair table
 function M.LaunchSpecification(args)
-	assert(args, "You must provdide an argument table when creating LaunchSpecification")
-	local t = { 
+	assert(args, "You must provide an argument table when creating LaunchSpecification")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["UserData"] = args["UserData"],
 		["SubnetId"] = args["SubnetId"],
 		["Placement"] = args["Placement"],
@@ -16478,8 +21698,13 @@ function M.LaunchSpecification(args)
 		["AddressingType"] = args["AddressingType"],
 		["NetworkInterfaces"] = args["NetworkInterfaces"],
 	}
-	asserts.AssertLaunchSpecification(t)
-	return t
+	asserts.AssertLaunchSpecification(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateRouteRequest = { ["DestinationCidrBlock"] = true, ["EgressOnlyInternetGatewayId"] = true, ["DryRun"] = true, ["InstanceId"] = true, ["NetworkInterfaceId"] = true, ["RouteTableId"] = true, ["NatGatewayId"] = true, ["VpcPeeringConnectionId"] = true, ["GatewayId"] = true, ["DestinationIpv6CidrBlock"] = true, nil }
@@ -16520,8 +21745,14 @@ end
 -- Required key: RouteTableId
 -- @return CreateRouteRequest structure as a key-value pair table
 function M.CreateRouteRequest(args)
-	assert(args, "You must provdide an argument table when creating CreateRouteRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateRouteRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DestinationCidrBlock"] = args["DestinationCidrBlock"],
 		["EgressOnlyInternetGatewayId"] = args["EgressOnlyInternetGatewayId"],
 		["DryRun"] = args["DryRun"],
@@ -16533,8 +21764,13 @@ function M.CreateRouteRequest(args)
 		["GatewayId"] = args["GatewayId"],
 		["DestinationIpv6CidrBlock"] = args["DestinationIpv6CidrBlock"],
 	}
-	asserts.AssertCreateRouteRequest(t)
-	return t
+	asserts.AssertCreateRouteRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AssociateIamInstanceProfileResult = { ["IamInstanceProfileAssociation"] = true, nil }
@@ -16555,12 +21791,23 @@ end
 -- * IamInstanceProfileAssociation [IamInstanceProfileAssociation] <p>Information about the IAM instance profile association.</p>
 -- @return AssociateIamInstanceProfileResult structure as a key-value pair table
 function M.AssociateIamInstanceProfileResult(args)
-	assert(args, "You must provdide an argument table when creating AssociateIamInstanceProfileResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AssociateIamInstanceProfileResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["IamInstanceProfileAssociation"] = args["IamInstanceProfileAssociation"],
 	}
-	asserts.AssertAssociateIamInstanceProfileResult(t)
-	return t
+	asserts.AssertAssociateIamInstanceProfileResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.MoveAddressToVpcResult = { ["Status"] = true, ["AllocationId"] = true, nil }
@@ -16583,13 +21830,24 @@ end
 -- * AllocationId [String] <p>The allocation ID for the Elastic IP address.</p>
 -- @return MoveAddressToVpcResult structure as a key-value pair table
 function M.MoveAddressToVpcResult(args)
-	assert(args, "You must provdide an argument table when creating MoveAddressToVpcResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating MoveAddressToVpcResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Status"] = args["Status"],
 		["AllocationId"] = args["AllocationId"],
 	}
-	asserts.AssertMoveAddressToVpcResult(t)
-	return t
+	asserts.AssertMoveAddressToVpcResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AssociateDhcpOptionsRequest = { ["VpcId"] = true, ["DryRun"] = true, ["DhcpOptionsId"] = true, nil }
@@ -16618,14 +21876,25 @@ end
 -- Required key: VpcId
 -- @return AssociateDhcpOptionsRequest structure as a key-value pair table
 function M.AssociateDhcpOptionsRequest(args)
-	assert(args, "You must provdide an argument table when creating AssociateDhcpOptionsRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AssociateDhcpOptionsRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["VpcId"] = args["VpcId"],
 		["DryRun"] = args["DryRun"],
 		["DhcpOptionsId"] = args["DhcpOptionsId"],
 	}
-	asserts.AssertAssociateDhcpOptionsRequest(t)
-	return t
+	asserts.AssertAssociateDhcpOptionsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.MovingAddressStatus = { ["PublicIp"] = true, ["MoveStatus"] = true, nil }
@@ -16648,13 +21917,24 @@ end
 -- * MoveStatus [MoveStatus] <p>The status of the Elastic IP address that's being moved to the EC2-VPC platform, or restored to the EC2-Classic platform.</p>
 -- @return MovingAddressStatus structure as a key-value pair table
 function M.MovingAddressStatus(args)
-	assert(args, "You must provdide an argument table when creating MovingAddressStatus")
-	local t = { 
+	assert(args, "You must provide an argument table when creating MovingAddressStatus")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["PublicIp"] = args["PublicIp"],
 		["MoveStatus"] = args["MoveStatus"],
 	}
-	asserts.AssertMovingAddressStatus(t)
-	return t
+	asserts.AssertMovingAddressStatus(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteSubnetRequest = { ["SubnetId"] = true, ["DryRun"] = true, nil }
@@ -16679,13 +21959,24 @@ end
 -- Required key: SubnetId
 -- @return DeleteSubnetRequest structure as a key-value pair table
 function M.DeleteSubnetRequest(args)
-	assert(args, "You must provdide an argument table when creating DeleteSubnetRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteSubnetRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["SubnetId"] = args["SubnetId"],
 		["DryRun"] = args["DryRun"],
 	}
-	asserts.AssertDeleteSubnetRequest(t)
-	return t
+	asserts.AssertDeleteSubnetRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.SpotInstanceStateFault = { ["Message"] = true, ["Code"] = true, nil }
@@ -16708,13 +21999,24 @@ end
 -- * Code [String] <p>The reason code for the Spot instance state change.</p>
 -- @return SpotInstanceStateFault structure as a key-value pair table
 function M.SpotInstanceStateFault(args)
-	assert(args, "You must provdide an argument table when creating SpotInstanceStateFault")
-	local t = { 
+	assert(args, "You must provide an argument table when creating SpotInstanceStateFault")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Message"] = args["Message"],
 		["Code"] = args["Code"],
 	}
-	asserts.AssertSpotInstanceStateFault(t)
-	return t
+	asserts.AssertSpotInstanceStateFault(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DhcpConfiguration = { ["Values"] = true, ["Key"] = true, nil }
@@ -16737,13 +22039,24 @@ end
 -- * Key [String] <p>The name of a DHCP option.</p>
 -- @return DhcpConfiguration structure as a key-value pair table
 function M.DhcpConfiguration(args)
-	assert(args, "You must provdide an argument table when creating DhcpConfiguration")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DhcpConfiguration")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Values"] = args["Values"],
 		["Key"] = args["Key"],
 	}
-	asserts.AssertDhcpConfiguration(t)
-	return t
+	asserts.AssertDhcpConfiguration(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.VolumeDetail = { ["Size"] = true, nil }
@@ -16766,12 +22079,23 @@ end
 -- Required key: Size
 -- @return VolumeDetail structure as a key-value pair table
 function M.VolumeDetail(args)
-	assert(args, "You must provdide an argument table when creating VolumeDetail")
-	local t = { 
+	assert(args, "You must provide an argument table when creating VolumeDetail")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Size"] = args["Size"],
 	}
-	asserts.AssertVolumeDetail(t)
-	return t
+	asserts.AssertVolumeDetail(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DisassociateVpcCidrBlockRequest = { ["AssociationId"] = true, nil }
@@ -16794,12 +22118,23 @@ end
 -- Required key: AssociationId
 -- @return DisassociateVpcCidrBlockRequest structure as a key-value pair table
 function M.DisassociateVpcCidrBlockRequest(args)
-	assert(args, "You must provdide an argument table when creating DisassociateVpcCidrBlockRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DisassociateVpcCidrBlockRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["AssociationId"] = args["AssociationId"],
 	}
-	asserts.AssertDisassociateVpcCidrBlockRequest(t)
-	return t
+	asserts.AssertDisassociateVpcCidrBlockRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Instance = { ["Monitoring"] = true, ["StateReason"] = true, ["PublicDnsName"] = true, ["Platform"] = true, ["State"] = true, ["EbsOptimized"] = true, ["LaunchTime"] = true, ["PublicIpAddress"] = true, ["RamdiskId"] = true, ["PrivateIpAddress"] = true, ["ProductCodes"] = true, ["VpcId"] = true, ["StateTransitionReason"] = true, ["InstanceId"] = true, ["EnaSupport"] = true, ["SriovNetSupport"] = true, ["ImageId"] = true, ["PrivateDnsName"] = true, ["KeyName"] = true, ["SecurityGroups"] = true, ["ClientToken"] = true, ["SubnetId"] = true, ["InstanceType"] = true, ["NetworkInterfaces"] = true, ["SourceDestCheck"] = true, ["Placement"] = true, ["Hypervisor"] = true, ["InstanceLifecycle"] = true, ["BlockDeviceMappings"] = true, ["Architecture"] = true, ["KernelId"] = true, ["IamInstanceProfile"] = true, ["RootDeviceName"] = true, ["VirtualizationType"] = true, ["RootDeviceType"] = true, ["Tags"] = true, ["SpotInstanceRequestId"] = true, ["AmiLaunchIndex"] = true, nil }
@@ -16894,8 +22229,14 @@ end
 -- * AmiLaunchIndex [Integer] <p>The AMI launch index, which can be used to find this instance in the launch group.</p>
 -- @return Instance structure as a key-value pair table
 function M.Instance(args)
-	assert(args, "You must provdide an argument table when creating Instance")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Instance")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Monitoring"] = args["Monitoring"],
 		["StateReason"] = args["StateReason"],
 		["PublicDnsName"] = args["PublicDnsName"],
@@ -16935,8 +22276,13 @@ function M.Instance(args)
 		["SpotInstanceRequestId"] = args["SpotInstanceRequestId"],
 		["AmiLaunchIndex"] = args["AmiLaunchIndex"],
 	}
-	asserts.AssertInstance(t)
-	return t
+	asserts.AssertInstance(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteNetworkInterfaceRequest = { ["NetworkInterfaceId"] = true, ["DryRun"] = true, nil }
@@ -16961,13 +22307,24 @@ end
 -- Required key: NetworkInterfaceId
 -- @return DeleteNetworkInterfaceRequest structure as a key-value pair table
 function M.DeleteNetworkInterfaceRequest(args)
-	assert(args, "You must provdide an argument table when creating DeleteNetworkInterfaceRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteNetworkInterfaceRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NetworkInterfaceId"] = args["NetworkInterfaceId"],
 		["DryRun"] = args["DryRun"],
 	}
-	asserts.AssertDeleteNetworkInterfaceRequest(t)
-	return t
+	asserts.AssertDeleteNetworkInterfaceRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.SpotFleetMonitoring = { ["Enabled"] = true, nil }
@@ -16988,12 +22345,23 @@ end
 -- * Enabled [Boolean] <p>Enables monitoring for the instance.</p> <p>Default: <code>false</code> </p>
 -- @return SpotFleetMonitoring structure as a key-value pair table
 function M.SpotFleetMonitoring(args)
-	assert(args, "You must provdide an argument table when creating SpotFleetMonitoring")
-	local t = { 
+	assert(args, "You must provide an argument table when creating SpotFleetMonitoring")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Enabled"] = args["Enabled"],
 	}
-	asserts.AssertSpotFleetMonitoring(t)
-	return t
+	asserts.AssertSpotFleetMonitoring(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.RouteTable = { ["Associations"] = true, ["RouteTableId"] = true, ["VpcId"] = true, ["PropagatingVgws"] = true, ["Tags"] = true, ["Routes"] = true, nil }
@@ -17024,8 +22392,14 @@ end
 -- * Routes [RouteList] <p>The routes in the route table.</p>
 -- @return RouteTable structure as a key-value pair table
 function M.RouteTable(args)
-	assert(args, "You must provdide an argument table when creating RouteTable")
-	local t = { 
+	assert(args, "You must provide an argument table when creating RouteTable")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Associations"] = args["Associations"],
 		["RouteTableId"] = args["RouteTableId"],
 		["VpcId"] = args["VpcId"],
@@ -17033,8 +22407,13 @@ function M.RouteTable(args)
 		["Tags"] = args["Tags"],
 		["Routes"] = args["Routes"],
 	}
-	asserts.AssertRouteTable(t)
-	return t
+	asserts.AssertRouteTable(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.VpnConnectionOptionsSpecification = { ["StaticRoutesOnly"] = true, nil }
@@ -17055,12 +22434,23 @@ end
 -- * StaticRoutesOnly [Boolean] <p>Indicates whether the VPN connection uses static routes only. Static routes must be used for devices that don't support BGP.</p>
 -- @return VpnConnectionOptionsSpecification structure as a key-value pair table
 function M.VpnConnectionOptionsSpecification(args)
-	assert(args, "You must provdide an argument table when creating VpnConnectionOptionsSpecification")
-	local t = { 
+	assert(args, "You must provide an argument table when creating VpnConnectionOptionsSpecification")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["StaticRoutesOnly"] = args["StaticRoutesOnly"],
 	}
-	asserts.AssertVpnConnectionOptionsSpecification(t)
-	return t
+	asserts.AssertVpnConnectionOptionsSpecification(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeNetworkAclsResult = { ["NetworkAcls"] = true, nil }
@@ -17081,12 +22471,23 @@ end
 -- * NetworkAcls [NetworkAclList] <p>Information about one or more network ACLs.</p>
 -- @return DescribeNetworkAclsResult structure as a key-value pair table
 function M.DescribeNetworkAclsResult(args)
-	assert(args, "You must provdide an argument table when creating DescribeNetworkAclsResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeNetworkAclsResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NetworkAcls"] = args["NetworkAcls"],
 	}
-	asserts.AssertDescribeNetworkAclsResult(t)
-	return t
+	asserts.AssertDescribeNetworkAclsResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateTagsRequest = { ["DryRun"] = true, ["Resources"] = true, ["Tags"] = true, nil }
@@ -17115,14 +22516,25 @@ end
 -- Required key: Tags
 -- @return CreateTagsRequest structure as a key-value pair table
 function M.CreateTagsRequest(args)
-	assert(args, "You must provdide an argument table when creating CreateTagsRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateTagsRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DryRun"] = args["DryRun"],
 		["Resources"] = args["Resources"],
 		["Tags"] = args["Tags"],
 	}
-	asserts.AssertCreateTagsRequest(t)
-	return t
+	asserts.AssertCreateTagsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.HostOffering = { ["HourlyPrice"] = true, ["OfferingId"] = true, ["CurrencyCode"] = true, ["InstanceFamily"] = true, ["PaymentOption"] = true, ["UpfrontPrice"] = true, ["Duration"] = true, nil }
@@ -17155,8 +22567,14 @@ end
 -- * Duration [Integer] <p>The duration of the offering (in seconds).</p>
 -- @return HostOffering structure as a key-value pair table
 function M.HostOffering(args)
-	assert(args, "You must provdide an argument table when creating HostOffering")
-	local t = { 
+	assert(args, "You must provide an argument table when creating HostOffering")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["HourlyPrice"] = args["HourlyPrice"],
 		["OfferingId"] = args["OfferingId"],
 		["CurrencyCode"] = args["CurrencyCode"],
@@ -17165,8 +22583,13 @@ function M.HostOffering(args)
 		["UpfrontPrice"] = args["UpfrontPrice"],
 		["Duration"] = args["Duration"],
 	}
-	asserts.AssertHostOffering(t)
-	return t
+	asserts.AssertHostOffering(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeVpcClassicLinkDnsSupportRequest = { ["NextToken"] = true, ["MaxResults"] = true, ["VpcIds"] = true, nil }
@@ -17191,14 +22614,25 @@ end
 -- * VpcIds [VpcClassicLinkIdList] <p>One or more VPC IDs.</p>
 -- @return DescribeVpcClassicLinkDnsSupportRequest structure as a key-value pair table
 function M.DescribeVpcClassicLinkDnsSupportRequest(args)
-	assert(args, "You must provdide an argument table when creating DescribeVpcClassicLinkDnsSupportRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeVpcClassicLinkDnsSupportRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NextToken"] = args["NextToken"],
 		["MaxResults"] = args["MaxResults"],
 		["VpcIds"] = args["VpcIds"],
 	}
-	asserts.AssertDescribeVpcClassicLinkDnsSupportRequest(t)
-	return t
+	asserts.AssertDescribeVpcClassicLinkDnsSupportRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeSpotInstanceRequestsRequest = { ["SpotInstanceRequestIds"] = true, ["DryRun"] = true, ["Filters"] = true, nil }
@@ -17223,14 +22657,25 @@ end
 -- * Filters [FilterList] <p>One or more filters.</p> <ul> <li> <p> <code>availability-zone-group</code> - The Availability Zone group.</p> </li> <li> <p> <code>create-time</code> - The time stamp when the Spot instance request was created.</p> </li> <li> <p> <code>fault-code</code> - The fault code related to the request.</p> </li> <li> <p> <code>fault-message</code> - The fault message related to the request.</p> </li> <li> <p> <code>instance-id</code> - The ID of the instance that fulfilled the request.</p> </li> <li> <p> <code>launch-group</code> - The Spot instance launch group.</p> </li> <li> <p> <code>launch.block-device-mapping.delete-on-termination</code> - Indicates whether the Amazon EBS volume is deleted on instance termination.</p> </li> <li> <p> <code>launch.block-device-mapping.device-name</code> - The device name for the Amazon EBS volume (for example, <code>/dev/sdh</code>).</p> </li> <li> <p> <code>launch.block-device-mapping.snapshot-id</code> - The ID of the snapshot used for the Amazon EBS volume.</p> </li> <li> <p> <code>launch.block-device-mapping.volume-size</code> - The size of the Amazon EBS volume, in GiB.</p> </li> <li> <p> <code>launch.block-device-mapping.volume-type</code> - The type of the Amazon EBS volume: <code>gp2</code> for General Purpose SSD, <code>io1</code> for Provisioned IOPS SSD, <code>st1</code> for Throughput Optimized HDD, <code>sc1</code>for Cold HDD, or <code>standard</code> for Magnetic.</p> </li> <li> <p> <code>launch.group-id</code> - The security group for the instance.</p> </li> <li> <p> <code>launch.image-id</code> - The ID of the AMI.</p> </li> <li> <p> <code>launch.instance-type</code> - The type of instance (for example, <code>m3.medium</code>).</p> </li> <li> <p> <code>launch.kernel-id</code> - The kernel ID.</p> </li> <li> <p> <code>launch.key-name</code> - The name of the key pair the instance launched with.</p> </li> <li> <p> <code>launch.monitoring-enabled</code> - Whether monitoring is enabled for the Spot instance.</p> </li> <li> <p> <code>launch.ramdisk-id</code> - The RAM disk ID.</p> </li> <li> <p> <code>network-interface.network-interface-id</code> - The ID of the network interface.</p> </li> <li> <p> <code>network-interface.device-index</code> - The index of the device for the network interface attachment on the instance.</p> </li> <li> <p> <code>network-interface.subnet-id</code> - The ID of the subnet for the instance.</p> </li> <li> <p> <code>network-interface.description</code> - A description of the network interface.</p> </li> <li> <p> <code>network-interface.private-ip-address</code> - The primary private IP address of the network interface.</p> </li> <li> <p> <code>network-interface.delete-on-termination</code> - Indicates whether the network interface is deleted when the instance is terminated.</p> </li> <li> <p> <code>network-interface.group-id</code> - The ID of the security group associated with the network interface.</p> </li> <li> <p> <code>network-interface.group-name</code> - The name of the security group associated with the network interface.</p> </li> <li> <p> <code>network-interface.addresses.primary</code> - Indicates whether the IP address is the primary private IP address.</p> </li> <li> <p> <code>product-description</code> - The product description associated with the instance (<code>Linux/UNIX</code> | <code>Windows</code>).</p> </li> <li> <p> <code>spot-instance-request-id</code> - The Spot instance request ID.</p> </li> <li> <p> <code>spot-price</code> - The maximum hourly price for any Spot instance launched to fulfill the request.</p> </li> <li> <p> <code>state</code> - The state of the Spot instance request (<code>open</code> | <code>active</code> | <code>closed</code> | <code>cancelled</code> | <code>failed</code>). Spot bid status information can help you track your Amazon EC2 Spot instance requests. For more information, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/spot-bid-status.html">Spot Bid Status</a> in the Amazon Elastic Compute Cloud User Guide.</p> </li> <li> <p> <code>status-code</code> - The short code describing the most recent evaluation of your Spot instance request.</p> </li> <li> <p> <code>status-message</code> - The message explaining the status of the Spot instance request.</p> </li> <li> <p> <code>tag</code>:<i>key</i>=<i>value</i> - The key/value combination of a tag assigned to the resource. Specify the key of the tag in the filter name and the value of the tag in the filter value. For example, for the tag Purpose=X, specify <code>tag:Purpose</code> for the filter name and <code>X</code> for the filter value.</p> </li> <li> <p> <code>tag-key</code> - The key of a tag assigned to the resource. This filter is independent of the <code>tag-value</code> filter. For example, if you use both the filter "tag-key=Purpose" and the filter "tag-value=X", you get any resources assigned both the tag key Purpose (regardless of what the tag's value is), and the tag value X (regardless of what the tag's key is). If you want to list only resources where Purpose is X, see the <code>tag</code>:<i>key</i>=<i>value</i> filter.</p> </li> <li> <p> <code>tag-value</code> - The value of a tag assigned to the resource. This filter is independent of the <code>tag-key</code> filter.</p> </li> <li> <p> <code>type</code> - The type of Spot instance request (<code>one-time</code> | <code>persistent</code>).</p> </li> <li> <p> <code>launched-availability-zone</code> - The Availability Zone in which the bid is launched.</p> </li> <li> <p> <code>valid-from</code> - The start date of the request.</p> </li> <li> <p> <code>valid-until</code> - The end date of the request.</p> </li> </ul>
 -- @return DescribeSpotInstanceRequestsRequest structure as a key-value pair table
 function M.DescribeSpotInstanceRequestsRequest(args)
-	assert(args, "You must provdide an argument table when creating DescribeSpotInstanceRequestsRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeSpotInstanceRequestsRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["SpotInstanceRequestIds"] = args["SpotInstanceRequestIds"],
 		["DryRun"] = args["DryRun"],
 		["Filters"] = args["Filters"],
 	}
-	asserts.AssertDescribeSpotInstanceRequestsRequest(t)
-	return t
+	asserts.AssertDescribeSpotInstanceRequestsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteRouteTableRequest = { ["RouteTableId"] = true, ["DryRun"] = true, nil }
@@ -17255,13 +22700,24 @@ end
 -- Required key: RouteTableId
 -- @return DeleteRouteTableRequest structure as a key-value pair table
 function M.DeleteRouteTableRequest(args)
-	assert(args, "You must provdide an argument table when creating DeleteRouteTableRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteRouteTableRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["RouteTableId"] = args["RouteTableId"],
 		["DryRun"] = args["DryRun"],
 	}
-	asserts.AssertDeleteRouteTableRequest(t)
-	return t
+	asserts.AssertDeleteRouteTableRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateVpnConnectionRouteRequest = { ["VpnConnectionId"] = true, ["DestinationCidrBlock"] = true, nil }
@@ -17288,13 +22744,24 @@ end
 -- Required key: VpnConnectionId
 -- @return CreateVpnConnectionRouteRequest structure as a key-value pair table
 function M.CreateVpnConnectionRouteRequest(args)
-	assert(args, "You must provdide an argument table when creating CreateVpnConnectionRouteRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateVpnConnectionRouteRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["VpnConnectionId"] = args["VpnConnectionId"],
 		["DestinationCidrBlock"] = args["DestinationCidrBlock"],
 	}
-	asserts.AssertCreateVpnConnectionRouteRequest(t)
-	return t
+	asserts.AssertCreateVpnConnectionRouteRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateVpnGatewayRequest = { ["DryRun"] = true, ["AvailabilityZone"] = true, ["Type"] = true, nil }
@@ -17321,14 +22788,25 @@ end
 -- Required key: Type
 -- @return CreateVpnGatewayRequest structure as a key-value pair table
 function M.CreateVpnGatewayRequest(args)
-	assert(args, "You must provdide an argument table when creating CreateVpnGatewayRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateVpnGatewayRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DryRun"] = args["DryRun"],
 		["AvailabilityZone"] = args["AvailabilityZone"],
 		["Type"] = args["Type"],
 	}
-	asserts.AssertCreateVpnGatewayRequest(t)
-	return t
+	asserts.AssertCreateVpnGatewayRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeVpcPeeringConnectionsResult = { ["VpcPeeringConnections"] = true, nil }
@@ -17349,12 +22827,23 @@ end
 -- * VpcPeeringConnections [VpcPeeringConnectionList] <p>Information about the VPC peering connections.</p>
 -- @return DescribeVpcPeeringConnectionsResult structure as a key-value pair table
 function M.DescribeVpcPeeringConnectionsResult(args)
-	assert(args, "You must provdide an argument table when creating DescribeVpcPeeringConnectionsResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeVpcPeeringConnectionsResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["VpcPeeringConnections"] = args["VpcPeeringConnections"],
 	}
-	asserts.AssertDescribeVpcPeeringConnectionsResult(t)
-	return t
+	asserts.AssertDescribeVpcPeeringConnectionsResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateDhcpOptionsResult = { ["DhcpOptions"] = true, nil }
@@ -17375,12 +22864,23 @@ end
 -- * DhcpOptions [DhcpOptions] <p>A set of DHCP options.</p>
 -- @return CreateDhcpOptionsResult structure as a key-value pair table
 function M.CreateDhcpOptionsResult(args)
-	assert(args, "You must provdide an argument table when creating CreateDhcpOptionsResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateDhcpOptionsResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DhcpOptions"] = args["DhcpOptions"],
 	}
-	asserts.AssertCreateDhcpOptionsResult(t)
-	return t
+	asserts.AssertCreateDhcpOptionsResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteKeyPairRequest = { ["KeyName"] = true, ["DryRun"] = true, nil }
@@ -17405,13 +22905,24 @@ end
 -- Required key: KeyName
 -- @return DeleteKeyPairRequest structure as a key-value pair table
 function M.DeleteKeyPairRequest(args)
-	assert(args, "You must provdide an argument table when creating DeleteKeyPairRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteKeyPairRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["KeyName"] = args["KeyName"],
 		["DryRun"] = args["DryRun"],
 	}
-	asserts.AssertDeleteKeyPairRequest(t)
-	return t
+	asserts.AssertDeleteKeyPairRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.EventInformation = { ["InstanceId"] = true, ["EventSubType"] = true, ["EventDescription"] = true, nil }
@@ -17436,14 +22947,25 @@ end
 -- * EventDescription [String] <p>The description of the event.</p>
 -- @return EventInformation structure as a key-value pair table
 function M.EventInformation(args)
-	assert(args, "You must provdide an argument table when creating EventInformation")
-	local t = { 
+	assert(args, "You must provide an argument table when creating EventInformation")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["InstanceId"] = args["InstanceId"],
 		["EventSubType"] = args["EventSubType"],
 		["EventDescription"] = args["EventDescription"],
 	}
-	asserts.AssertEventInformation(t)
-	return t
+	asserts.AssertEventInformation(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.TerminateInstancesRequest = { ["DryRun"] = true, ["InstanceIds"] = true, nil }
@@ -17468,13 +22990,24 @@ end
 -- Required key: InstanceIds
 -- @return TerminateInstancesRequest structure as a key-value pair table
 function M.TerminateInstancesRequest(args)
-	assert(args, "You must provdide an argument table when creating TerminateInstancesRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating TerminateInstancesRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DryRun"] = args["DryRun"],
 		["InstanceIds"] = args["InstanceIds"],
 	}
-	asserts.AssertTerminateInstancesRequest(t)
-	return t
+	asserts.AssertTerminateInstancesRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateVpnConnectionResult = { ["VpnConnection"] = true, nil }
@@ -17495,12 +23028,23 @@ end
 -- * VpnConnection [VpnConnection] <p>Information about the VPN connection.</p>
 -- @return CreateVpnConnectionResult structure as a key-value pair table
 function M.CreateVpnConnectionResult(args)
-	assert(args, "You must provdide an argument table when creating CreateVpnConnectionResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateVpnConnectionResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["VpnConnection"] = args["VpnConnection"],
 	}
-	asserts.AssertCreateVpnConnectionResult(t)
-	return t
+	asserts.AssertCreateVpnConnectionResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InstanceStatusDetails = { ["Status"] = true, ["ImpairedSince"] = true, ["Name"] = true, nil }
@@ -17525,14 +23069,25 @@ end
 -- * Name [StatusName] <p>The type of instance status.</p>
 -- @return InstanceStatusDetails structure as a key-value pair table
 function M.InstanceStatusDetails(args)
-	assert(args, "You must provdide an argument table when creating InstanceStatusDetails")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InstanceStatusDetails")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Status"] = args["Status"],
 		["ImpairedSince"] = args["ImpairedSince"],
 		["Name"] = args["Name"],
 	}
-	asserts.AssertInstanceStatusDetails(t)
-	return t
+	asserts.AssertInstanceStatusDetails(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.SlotStartTimeRangeRequest = { ["LatestTime"] = true, ["EarliestTime"] = true, nil }
@@ -17555,13 +23110,24 @@ end
 -- * EarliestTime [DateTime] <p>The earliest date and time, in UTC, for the Scheduled Instance to start.</p>
 -- @return SlotStartTimeRangeRequest structure as a key-value pair table
 function M.SlotStartTimeRangeRequest(args)
-	assert(args, "You must provdide an argument table when creating SlotStartTimeRangeRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating SlotStartTimeRangeRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["LatestTime"] = args["LatestTime"],
 		["EarliestTime"] = args["EarliestTime"],
 	}
-	asserts.AssertSlotStartTimeRangeRequest(t)
-	return t
+	asserts.AssertSlotStartTimeRangeRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeRouteTablesResult = { ["RouteTables"] = true, nil }
@@ -17582,12 +23148,23 @@ end
 -- * RouteTables [RouteTableList] <p>Information about one or more route tables.</p>
 -- @return DescribeRouteTablesResult structure as a key-value pair table
 function M.DescribeRouteTablesResult(args)
-	assert(args, "You must provdide an argument table when creating DescribeRouteTablesResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeRouteTablesResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["RouteTables"] = args["RouteTables"],
 	}
-	asserts.AssertDescribeRouteTablesResult(t)
-	return t
+	asserts.AssertDescribeRouteTablesResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ReservedInstancesModification = { ["Status"] = true, ["ModificationResults"] = true, ["EffectiveDate"] = true, ["CreateDate"] = true, ["StatusMessage"] = true, ["ClientToken"] = true, ["ReservedInstancesModificationId"] = true, ["ReservedInstancesIds"] = true, ["UpdateDate"] = true, nil }
@@ -17624,8 +23201,14 @@ end
 -- * UpdateDate [DateTime] <p>The time when the modification request was last updated.</p>
 -- @return ReservedInstancesModification structure as a key-value pair table
 function M.ReservedInstancesModification(args)
-	assert(args, "You must provdide an argument table when creating ReservedInstancesModification")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ReservedInstancesModification")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Status"] = args["Status"],
 		["ModificationResults"] = args["ModificationResults"],
 		["EffectiveDate"] = args["EffectiveDate"],
@@ -17636,8 +23219,13 @@ function M.ReservedInstancesModification(args)
 		["ReservedInstancesIds"] = args["ReservedInstancesIds"],
 		["UpdateDate"] = args["UpdateDate"],
 	}
-	asserts.AssertReservedInstancesModification(t)
-	return t
+	asserts.AssertReservedInstancesModification(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeSpotFleetRequestHistoryRequest = { ["SpotFleetRequestId"] = true, ["DryRun"] = true, ["EventType"] = true, ["MaxResults"] = true, ["StartTime"] = true, ["NextToken"] = true, nil }
@@ -17672,8 +23260,14 @@ end
 -- Required key: StartTime
 -- @return DescribeSpotFleetRequestHistoryRequest structure as a key-value pair table
 function M.DescribeSpotFleetRequestHistoryRequest(args)
-	assert(args, "You must provdide an argument table when creating DescribeSpotFleetRequestHistoryRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeSpotFleetRequestHistoryRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["SpotFleetRequestId"] = args["SpotFleetRequestId"],
 		["DryRun"] = args["DryRun"],
 		["EventType"] = args["EventType"],
@@ -17681,8 +23275,13 @@ function M.DescribeSpotFleetRequestHistoryRequest(args)
 		["StartTime"] = args["StartTime"],
 		["NextToken"] = args["NextToken"],
 	}
-	asserts.AssertDescribeSpotFleetRequestHistoryRequest(t)
-	return t
+	asserts.AssertDescribeSpotFleetRequestHistoryRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InstanceIpv6Address = { ["Ipv6Address"] = true, nil }
@@ -17703,12 +23302,23 @@ end
 -- * Ipv6Address [String] <p>The IPv6 address.</p>
 -- @return InstanceIpv6Address structure as a key-value pair table
 function M.InstanceIpv6Address(args)
-	assert(args, "You must provdide an argument table when creating InstanceIpv6Address")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InstanceIpv6Address")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Ipv6Address"] = args["Ipv6Address"],
 	}
-	asserts.AssertInstanceIpv6Address(t)
-	return t
+	asserts.AssertInstanceIpv6Address(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Ipv6CidrBlock = { ["Ipv6CidrBlock"] = true, nil }
@@ -17729,12 +23339,23 @@ end
 -- * Ipv6CidrBlock [String] <p>The IPv6 CIDR block.</p>
 -- @return Ipv6CidrBlock structure as a key-value pair table
 function M.Ipv6CidrBlock(args)
-	assert(args, "You must provdide an argument table when creating Ipv6CidrBlock")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Ipv6CidrBlock")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Ipv6CidrBlock"] = args["Ipv6CidrBlock"],
 	}
-	asserts.AssertIpv6CidrBlock(t)
-	return t
+	asserts.AssertIpv6CidrBlock(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ModifyVpcEndpointRequest = { ["DryRun"] = true, ["AddRouteTableIds"] = true, ["ResetPolicy"] = true, ["RemoveRouteTableIds"] = true, ["PolicyDocument"] = true, ["VpcEndpointId"] = true, nil }
@@ -17767,8 +23388,14 @@ end
 -- Required key: VpcEndpointId
 -- @return ModifyVpcEndpointRequest structure as a key-value pair table
 function M.ModifyVpcEndpointRequest(args)
-	assert(args, "You must provdide an argument table when creating ModifyVpcEndpointRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ModifyVpcEndpointRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DryRun"] = args["DryRun"],
 		["AddRouteTableIds"] = args["AddRouteTableIds"],
 		["ResetPolicy"] = args["ResetPolicy"],
@@ -17776,8 +23403,13 @@ function M.ModifyVpcEndpointRequest(args)
 		["PolicyDocument"] = args["PolicyDocument"],
 		["VpcEndpointId"] = args["VpcEndpointId"],
 	}
-	asserts.AssertModifyVpcEndpointRequest(t)
-	return t
+	asserts.AssertModifyVpcEndpointRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ReservedInstancesListing = { ["ReservedInstancesId"] = true, ["Status"] = true, ["Tags"] = true, ["PriceSchedules"] = true, ["CreateDate"] = true, ["ClientToken"] = true, ["ReservedInstancesListingId"] = true, ["UpdateDate"] = true, ["InstanceCounts"] = true, ["StatusMessage"] = true, nil }
@@ -17816,8 +23448,14 @@ end
 -- * StatusMessage [String] <p>The reason for the current status of the Reserved Instance listing. The response can be blank.</p>
 -- @return ReservedInstancesListing structure as a key-value pair table
 function M.ReservedInstancesListing(args)
-	assert(args, "You must provdide an argument table when creating ReservedInstancesListing")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ReservedInstancesListing")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ReservedInstancesId"] = args["ReservedInstancesId"],
 		["Status"] = args["Status"],
 		["Tags"] = args["Tags"],
@@ -17829,8 +23467,13 @@ function M.ReservedInstancesListing(args)
 		["InstanceCounts"] = args["InstanceCounts"],
 		["StatusMessage"] = args["StatusMessage"],
 	}
-	asserts.AssertReservedInstancesListing(t)
-	return t
+	asserts.AssertReservedInstancesListing(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Route = { ["Origin"] = true, ["DestinationCidrBlock"] = true, ["EgressOnlyInternetGatewayId"] = true, ["DestinationPrefixListId"] = true, ["InstanceId"] = true, ["NetworkInterfaceId"] = true, ["State"] = true, ["NatGatewayId"] = true, ["VpcPeeringConnectionId"] = true, ["GatewayId"] = true, ["DestinationIpv6CidrBlock"] = true, ["InstanceOwnerId"] = true, nil }
@@ -17873,8 +23516,14 @@ end
 -- * InstanceOwnerId [String] <p>The AWS account ID of the owner of the instance.</p>
 -- @return Route structure as a key-value pair table
 function M.Route(args)
-	assert(args, "You must provdide an argument table when creating Route")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Route")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Origin"] = args["Origin"],
 		["DestinationCidrBlock"] = args["DestinationCidrBlock"],
 		["EgressOnlyInternetGatewayId"] = args["EgressOnlyInternetGatewayId"],
@@ -17888,8 +23537,13 @@ function M.Route(args)
 		["DestinationIpv6CidrBlock"] = args["DestinationIpv6CidrBlock"],
 		["InstanceOwnerId"] = args["InstanceOwnerId"],
 	}
-	asserts.AssertRoute(t)
-	return t
+	asserts.AssertRoute(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ProductCode = { ["ProductCodeId"] = true, ["ProductCodeType"] = true, nil }
@@ -17912,13 +23566,24 @@ end
 -- * ProductCodeType [ProductCodeValues] <p>The type of product code.</p>
 -- @return ProductCode structure as a key-value pair table
 function M.ProductCode(args)
-	assert(args, "You must provdide an argument table when creating ProductCode")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ProductCode")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ProductCodeId"] = args["ProductCodeId"],
 		["ProductCodeType"] = args["ProductCodeType"],
 	}
-	asserts.AssertProductCode(t)
-	return t
+	asserts.AssertProductCode(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Ipv6Range = { ["CidrIpv6"] = true, nil }
@@ -17939,12 +23604,23 @@ end
 -- * CidrIpv6 [String] <p>The IPv6 CIDR range. You can either specify a CIDR range or a source security group, not both. To specify a single IPv6 address, use the /128 prefix.</p>
 -- @return Ipv6Range structure as a key-value pair table
 function M.Ipv6Range(args)
-	assert(args, "You must provdide an argument table when creating Ipv6Range")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Ipv6Range")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["CidrIpv6"] = args["CidrIpv6"],
 	}
-	asserts.AssertIpv6Range(t)
-	return t
+	asserts.AssertIpv6Range(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AcceptReservedInstancesExchangeQuoteResult = { ["ExchangeId"] = true, nil }
@@ -17965,12 +23641,23 @@ end
 -- * ExchangeId [String] <p>The ID of the successful exchange.</p>
 -- @return AcceptReservedInstancesExchangeQuoteResult structure as a key-value pair table
 function M.AcceptReservedInstancesExchangeQuoteResult(args)
-	assert(args, "You must provdide an argument table when creating AcceptReservedInstancesExchangeQuoteResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AcceptReservedInstancesExchangeQuoteResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ExchangeId"] = args["ExchangeId"],
 	}
-	asserts.AssertAcceptReservedInstancesExchangeQuoteResult(t)
-	return t
+	asserts.AssertAcceptReservedInstancesExchangeQuoteResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AssociateSubnetCidrBlockResult = { ["SubnetId"] = true, ["Ipv6CidrBlockAssociation"] = true, nil }
@@ -17993,13 +23680,24 @@ end
 -- * Ipv6CidrBlockAssociation [SubnetIpv6CidrBlockAssociation] <p>Information about the IPv6 CIDR block association.</p>
 -- @return AssociateSubnetCidrBlockResult structure as a key-value pair table
 function M.AssociateSubnetCidrBlockResult(args)
-	assert(args, "You must provdide an argument table when creating AssociateSubnetCidrBlockResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AssociateSubnetCidrBlockResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["SubnetId"] = args["SubnetId"],
 		["Ipv6CidrBlockAssociation"] = args["Ipv6CidrBlockAssociation"],
 	}
-	asserts.AssertAssociateSubnetCidrBlockResult(t)
-	return t
+	asserts.AssertAssociateSubnetCidrBlockResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.SpotPrice = { ["Timestamp"] = true, ["AvailabilityZone"] = true, ["InstanceType"] = true, ["ProductDescription"] = true, ["SpotPrice"] = true, nil }
@@ -18028,16 +23726,27 @@ end
 -- * SpotPrice [String] <p>The maximum price (bid) that you are willing to pay for a Spot instance.</p>
 -- @return SpotPrice structure as a key-value pair table
 function M.SpotPrice(args)
-	assert(args, "You must provdide an argument table when creating SpotPrice")
-	local t = { 
+	assert(args, "You must provide an argument table when creating SpotPrice")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Timestamp"] = args["Timestamp"],
 		["AvailabilityZone"] = args["AvailabilityZone"],
 		["InstanceType"] = args["InstanceType"],
 		["ProductDescription"] = args["ProductDescription"],
 		["SpotPrice"] = args["SpotPrice"],
 	}
-	asserts.AssertSpotPrice(t)
-	return t
+	asserts.AssertSpotPrice(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.PrefixList = { ["PrefixListName"] = true, ["Cidrs"] = true, ["PrefixListId"] = true, nil }
@@ -18062,14 +23771,25 @@ end
 -- * PrefixListId [String] <p>The ID of the prefix.</p>
 -- @return PrefixList structure as a key-value pair table
 function M.PrefixList(args)
-	assert(args, "You must provdide an argument table when creating PrefixList")
-	local t = { 
+	assert(args, "You must provide an argument table when creating PrefixList")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["PrefixListName"] = args["PrefixListName"],
 		["Cidrs"] = args["Cidrs"],
 		["PrefixListId"] = args["PrefixListId"],
 	}
-	asserts.AssertPrefixList(t)
-	return t
+	asserts.AssertPrefixList(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteVpcEndpointsRequest = { ["VpcEndpointIds"] = true, ["DryRun"] = true, nil }
@@ -18094,13 +23814,24 @@ end
 -- Required key: VpcEndpointIds
 -- @return DeleteVpcEndpointsRequest structure as a key-value pair table
 function M.DeleteVpcEndpointsRequest(args)
-	assert(args, "You must provdide an argument table when creating DeleteVpcEndpointsRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteVpcEndpointsRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["VpcEndpointIds"] = args["VpcEndpointIds"],
 		["DryRun"] = args["DryRun"],
 	}
-	asserts.AssertDeleteVpcEndpointsRequest(t)
-	return t
+	asserts.AssertDeleteVpcEndpointsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Image = { ["RootDeviceType"] = true, ["State"] = true, ["ImageLocation"] = true, ["RamdiskId"] = true, ["Public"] = true, ["ProductCodes"] = true, ["Description"] = true, ["Tags"] = true, ["EnaSupport"] = true, ["SriovNetSupport"] = true, ["ImageId"] = true, ["KernelId"] = true, ["Name"] = true, ["Hypervisor"] = true, ["BlockDeviceMappings"] = true, ["Architecture"] = true, ["ImageOwnerAlias"] = true, ["StateReason"] = true, ["RootDeviceName"] = true, ["ImageType"] = true, ["VirtualizationType"] = true, ["Platform"] = true, ["OwnerId"] = true, ["CreationDate"] = true, nil }
@@ -18167,8 +23898,14 @@ end
 -- * CreationDate [String] <p>The date and time the image was created.</p>
 -- @return Image structure as a key-value pair table
 function M.Image(args)
-	assert(args, "You must provdide an argument table when creating Image")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Image")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["RootDeviceType"] = args["RootDeviceType"],
 		["State"] = args["State"],
 		["ImageLocation"] = args["ImageLocation"],
@@ -18194,8 +23931,13 @@ function M.Image(args)
 		["OwnerId"] = args["OwnerId"],
 		["CreationDate"] = args["CreationDate"],
 	}
-	asserts.AssertImage(t)
-	return t
+	asserts.AssertImage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DetachNetworkInterfaceRequest = { ["DryRun"] = true, ["AttachmentId"] = true, ["Force"] = true, nil }
@@ -18222,14 +23964,25 @@ end
 -- Required key: AttachmentId
 -- @return DetachNetworkInterfaceRequest structure as a key-value pair table
 function M.DetachNetworkInterfaceRequest(args)
-	assert(args, "You must provdide an argument table when creating DetachNetworkInterfaceRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DetachNetworkInterfaceRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DryRun"] = args["DryRun"],
 		["AttachmentId"] = args["AttachmentId"],
 		["Force"] = args["Force"],
 	}
-	asserts.AssertDetachNetworkInterfaceRequest(t)
-	return t
+	asserts.AssertDetachNetworkInterfaceRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AttachNetworkInterfaceResult = { ["AttachmentId"] = true, nil }
@@ -18250,12 +24003,23 @@ end
 -- * AttachmentId [String] <p>The ID of the network interface attachment.</p>
 -- @return AttachNetworkInterfaceResult structure as a key-value pair table
 function M.AttachNetworkInterfaceResult(args)
-	assert(args, "You must provdide an argument table when creating AttachNetworkInterfaceResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AttachNetworkInterfaceResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["AttachmentId"] = args["AttachmentId"],
 	}
-	asserts.AssertAttachNetworkInterfaceResult(t)
-	return t
+	asserts.AssertAttachNetworkInterfaceResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeReservedInstancesListingsResult = { ["ReservedInstancesListings"] = true, nil }
@@ -18276,12 +24040,23 @@ end
 -- * ReservedInstancesListings [ReservedInstancesListingList] <p>Information about the Reserved Instance listing.</p>
 -- @return DescribeReservedInstancesListingsResult structure as a key-value pair table
 function M.DescribeReservedInstancesListingsResult(args)
-	assert(args, "You must provdide an argument table when creating DescribeReservedInstancesListingsResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeReservedInstancesListingsResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ReservedInstancesListings"] = args["ReservedInstancesListings"],
 	}
-	asserts.AssertDescribeReservedInstancesListingsResult(t)
-	return t
+	asserts.AssertDescribeReservedInstancesListingsResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DisassociateIamInstanceProfileRequest = { ["AssociationId"] = true, nil }
@@ -18304,12 +24079,23 @@ end
 -- Required key: AssociationId
 -- @return DisassociateIamInstanceProfileRequest structure as a key-value pair table
 function M.DisassociateIamInstanceProfileRequest(args)
-	assert(args, "You must provdide an argument table when creating DisassociateIamInstanceProfileRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DisassociateIamInstanceProfileRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["AssociationId"] = args["AssociationId"],
 	}
-	asserts.AssertDisassociateIamInstanceProfileRequest(t)
-	return t
+	asserts.AssertDisassociateIamInstanceProfileRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AllocateAddressRequest = { ["Domain"] = true, ["DryRun"] = true, nil }
@@ -18332,13 +24118,24 @@ end
 -- * DryRun [Boolean] <p>Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is <code>DryRunOperation</code>. Otherwise, it is <code>UnauthorizedOperation</code>.</p>
 -- @return AllocateAddressRequest structure as a key-value pair table
 function M.AllocateAddressRequest(args)
-	assert(args, "You must provdide an argument table when creating AllocateAddressRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AllocateAddressRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Domain"] = args["Domain"],
 		["DryRun"] = args["DryRun"],
 	}
-	asserts.AssertAllocateAddressRequest(t)
-	return t
+	asserts.AssertAllocateAddressRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeIamInstanceProfileAssociationsResult = { ["IamInstanceProfileAssociations"] = true, ["NextToken"] = true, nil }
@@ -18361,13 +24158,24 @@ end
 -- * NextToken [NextToken] <p>The token to use to retrieve the next page of results. This value is <code>null</code> when there are no more results to return.</p>
 -- @return DescribeIamInstanceProfileAssociationsResult structure as a key-value pair table
 function M.DescribeIamInstanceProfileAssociationsResult(args)
-	assert(args, "You must provdide an argument table when creating DescribeIamInstanceProfileAssociationsResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeIamInstanceProfileAssociationsResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["IamInstanceProfileAssociations"] = args["IamInstanceProfileAssociations"],
 		["NextToken"] = args["NextToken"],
 	}
-	asserts.AssertDescribeIamInstanceProfileAssociationsResult(t)
-	return t
+	asserts.AssertDescribeIamInstanceProfileAssociationsResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AttributeBooleanValue = { ["Value"] = true, nil }
@@ -18388,12 +24196,23 @@ end
 -- * Value [Boolean] <p>The attribute value. The valid values are <code>true</code> or <code>false</code>.</p>
 -- @return AttributeBooleanValue structure as a key-value pair table
 function M.AttributeBooleanValue(args)
-	assert(args, "You must provdide an argument table when creating AttributeBooleanValue")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AttributeBooleanValue")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Value"] = args["Value"],
 	}
-	asserts.AssertAttributeBooleanValue(t)
-	return t
+	asserts.AssertAttributeBooleanValue(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeSnapshotAttributeRequest = { ["Attribute"] = true, ["DryRun"] = true, ["SnapshotId"] = true, nil }
@@ -18422,14 +24241,25 @@ end
 -- Required key: SnapshotId
 -- @return DescribeSnapshotAttributeRequest structure as a key-value pair table
 function M.DescribeSnapshotAttributeRequest(args)
-	assert(args, "You must provdide an argument table when creating DescribeSnapshotAttributeRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeSnapshotAttributeRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Attribute"] = args["Attribute"],
 		["DryRun"] = args["DryRun"],
 		["SnapshotId"] = args["SnapshotId"],
 	}
-	asserts.AssertDescribeSnapshotAttributeRequest(t)
-	return t
+	asserts.AssertDescribeSnapshotAttributeRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeAvailabilityZonesRequest = { ["DryRun"] = true, ["Filters"] = true, ["ZoneNames"] = true, nil }
@@ -18454,14 +24284,25 @@ end
 -- * ZoneNames [ZoneNameStringList] <p>The names of one or more Availability Zones.</p>
 -- @return DescribeAvailabilityZonesRequest structure as a key-value pair table
 function M.DescribeAvailabilityZonesRequest(args)
-	assert(args, "You must provdide an argument table when creating DescribeAvailabilityZonesRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeAvailabilityZonesRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DryRun"] = args["DryRun"],
 		["Filters"] = args["Filters"],
 		["ZoneNames"] = args["ZoneNames"],
 	}
-	asserts.AssertDescribeAvailabilityZonesRequest(t)
-	return t
+	asserts.AssertDescribeAvailabilityZonesRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DetachVolumeRequest = { ["Device"] = true, ["InstanceId"] = true, ["DryRun"] = true, ["Force"] = true, ["VolumeId"] = true, nil }
@@ -18492,16 +24333,27 @@ end
 -- Required key: VolumeId
 -- @return DetachVolumeRequest structure as a key-value pair table
 function M.DetachVolumeRequest(args)
-	assert(args, "You must provdide an argument table when creating DetachVolumeRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DetachVolumeRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Device"] = args["Device"],
 		["InstanceId"] = args["InstanceId"],
 		["DryRun"] = args["DryRun"],
 		["Force"] = args["Force"],
 		["VolumeId"] = args["VolumeId"],
 	}
-	asserts.AssertDetachVolumeRequest(t)
-	return t
+	asserts.AssertDetachVolumeRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ResetInstanceAttributeRequest = { ["InstanceId"] = true, ["Attribute"] = true, ["DryRun"] = true, nil }
@@ -18530,14 +24382,25 @@ end
 -- Required key: InstanceId
 -- @return ResetInstanceAttributeRequest structure as a key-value pair table
 function M.ResetInstanceAttributeRequest(args)
-	assert(args, "You must provdide an argument table when creating ResetInstanceAttributeRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ResetInstanceAttributeRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["InstanceId"] = args["InstanceId"],
 		["Attribute"] = args["Attribute"],
 		["DryRun"] = args["DryRun"],
 	}
-	asserts.AssertResetInstanceAttributeRequest(t)
-	return t
+	asserts.AssertResetInstanceAttributeRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.RestoreAddressToClassicRequest = { ["PublicIp"] = true, ["DryRun"] = true, nil }
@@ -18562,13 +24425,24 @@ end
 -- Required key: PublicIp
 -- @return RestoreAddressToClassicRequest structure as a key-value pair table
 function M.RestoreAddressToClassicRequest(args)
-	assert(args, "You must provdide an argument table when creating RestoreAddressToClassicRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating RestoreAddressToClassicRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["PublicIp"] = args["PublicIp"],
 		["DryRun"] = args["DryRun"],
 	}
-	asserts.AssertRestoreAddressToClassicRequest(t)
-	return t
+	asserts.AssertRestoreAddressToClassicRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.HistoryRecord = { ["EventType"] = true, ["EventInformation"] = true, ["Timestamp"] = true, nil }
@@ -18599,14 +24473,25 @@ end
 -- Required key: Timestamp
 -- @return HistoryRecord structure as a key-value pair table
 function M.HistoryRecord(args)
-	assert(args, "You must provdide an argument table when creating HistoryRecord")
-	local t = { 
+	assert(args, "You must provide an argument table when creating HistoryRecord")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["EventType"] = args["EventType"],
 		["EventInformation"] = args["EventInformation"],
 		["Timestamp"] = args["Timestamp"],
 	}
-	asserts.AssertHistoryRecord(t)
-	return t
+	asserts.AssertHistoryRecord(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.PrivateIpAddressSpecification = { ["Primary"] = true, ["PrivateIpAddress"] = true, nil }
@@ -18631,13 +24516,24 @@ end
 -- Required key: PrivateIpAddress
 -- @return PrivateIpAddressSpecification structure as a key-value pair table
 function M.PrivateIpAddressSpecification(args)
-	assert(args, "You must provdide an argument table when creating PrivateIpAddressSpecification")
-	local t = { 
+	assert(args, "You must provide an argument table when creating PrivateIpAddressSpecification")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Primary"] = args["Primary"],
 		["PrivateIpAddress"] = args["PrivateIpAddress"],
 	}
-	asserts.AssertPrivateIpAddressSpecification(t)
-	return t
+	asserts.AssertPrivateIpAddressSpecification(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AcceptReservedInstancesExchangeQuoteRequest = { ["ReservedInstanceIds"] = true, ["DryRun"] = true, ["TargetConfigurations"] = true, nil }
@@ -18664,14 +24560,25 @@ end
 -- Required key: ReservedInstanceIds
 -- @return AcceptReservedInstancesExchangeQuoteRequest structure as a key-value pair table
 function M.AcceptReservedInstancesExchangeQuoteRequest(args)
-	assert(args, "You must provdide an argument table when creating AcceptReservedInstancesExchangeQuoteRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AcceptReservedInstancesExchangeQuoteRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ReservedInstanceIds"] = args["ReservedInstanceIds"],
 		["DryRun"] = args["DryRun"],
 		["TargetConfigurations"] = args["TargetConfigurations"],
 	}
-	asserts.AssertAcceptReservedInstancesExchangeQuoteRequest(t)
-	return t
+	asserts.AssertAcceptReservedInstancesExchangeQuoteRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AttachVpnGatewayRequest = { ["VpcId"] = true, ["DryRun"] = true, ["VpnGatewayId"] = true, nil }
@@ -18700,14 +24607,25 @@ end
 -- Required key: VpnGatewayId
 -- @return AttachVpnGatewayRequest structure as a key-value pair table
 function M.AttachVpnGatewayRequest(args)
-	assert(args, "You must provdide an argument table when creating AttachVpnGatewayRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AttachVpnGatewayRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["VpcId"] = args["VpcId"],
 		["DryRun"] = args["DryRun"],
 		["VpnGatewayId"] = args["VpnGatewayId"],
 	}
-	asserts.AssertAttachVpnGatewayRequest(t)
-	return t
+	asserts.AssertAttachVpnGatewayRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateVpcEndpointRequest = { ["VpcId"] = true, ["DryRun"] = true, ["ServiceName"] = true, ["PolicyDocument"] = true, ["RouteTableIds"] = true, ["ClientToken"] = true, nil }
@@ -18742,8 +24660,14 @@ end
 -- Required key: VpcId
 -- @return CreateVpcEndpointRequest structure as a key-value pair table
 function M.CreateVpcEndpointRequest(args)
-	assert(args, "You must provdide an argument table when creating CreateVpcEndpointRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateVpcEndpointRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["VpcId"] = args["VpcId"],
 		["DryRun"] = args["DryRun"],
 		["ServiceName"] = args["ServiceName"],
@@ -18751,8 +24675,13 @@ function M.CreateVpcEndpointRequest(args)
 		["RouteTableIds"] = args["RouteTableIds"],
 		["ClientToken"] = args["ClientToken"],
 	}
-	asserts.AssertCreateVpcEndpointRequest(t)
-	return t
+	asserts.AssertCreateVpcEndpointRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AssociateAddressRequest = { ["DryRun"] = true, ["InstanceId"] = true, ["NetworkInterfaceId"] = true, ["PublicIp"] = true, ["AllowReassociation"] = true, ["AllocationId"] = true, ["PrivateIpAddress"] = true, nil }
@@ -18785,8 +24714,14 @@ end
 -- * PrivateIpAddress [String] <p>[EC2-VPC] The primary or secondary private IP address to associate with the Elastic IP address. If no private IP address is specified, the Elastic IP address is associated with the primary private IP address.</p>
 -- @return AssociateAddressRequest structure as a key-value pair table
 function M.AssociateAddressRequest(args)
-	assert(args, "You must provdide an argument table when creating AssociateAddressRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AssociateAddressRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DryRun"] = args["DryRun"],
 		["InstanceId"] = args["InstanceId"],
 		["NetworkInterfaceId"] = args["NetworkInterfaceId"],
@@ -18795,8 +24730,13 @@ function M.AssociateAddressRequest(args)
 		["AllocationId"] = args["AllocationId"],
 		["PrivateIpAddress"] = args["PrivateIpAddress"],
 	}
-	asserts.AssertAssociateAddressRequest(t)
-	return t
+	asserts.AssertAssociateAddressRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteNatGatewayResult = { ["NatGatewayId"] = true, nil }
@@ -18817,12 +24757,23 @@ end
 -- * NatGatewayId [String] <p>The ID of the NAT gateway.</p>
 -- @return DeleteNatGatewayResult structure as a key-value pair table
 function M.DeleteNatGatewayResult(args)
-	assert(args, "You must provdide an argument table when creating DeleteNatGatewayResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteNatGatewayResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NatGatewayId"] = args["NatGatewayId"],
 	}
-	asserts.AssertDeleteNatGatewayResult(t)
-	return t
+	asserts.AssertDeleteNatGatewayResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ImportImageTask = { ["Status"] = true, ["LicenseType"] = true, ["Description"] = true, ["Hypervisor"] = true, ["ImageId"] = true, ["Platform"] = true, ["Architecture"] = true, ["SnapshotDetails"] = true, ["Progress"] = true, ["StatusMessage"] = true, ["ImportTaskId"] = true, nil }
@@ -18863,8 +24814,14 @@ end
 -- * ImportTaskId [String] <p>The ID of the import image task.</p>
 -- @return ImportImageTask structure as a key-value pair table
 function M.ImportImageTask(args)
-	assert(args, "You must provdide an argument table when creating ImportImageTask")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ImportImageTask")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Status"] = args["Status"],
 		["LicenseType"] = args["LicenseType"],
 		["Description"] = args["Description"],
@@ -18877,8 +24834,13 @@ function M.ImportImageTask(args)
 		["StatusMessage"] = args["StatusMessage"],
 		["ImportTaskId"] = args["ImportTaskId"],
 	}
-	asserts.AssertImportImageTask(t)
-	return t
+	asserts.AssertImportImageTask(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeregisterImageRequest = { ["DryRun"] = true, ["ImageId"] = true, nil }
@@ -18903,13 +24865,24 @@ end
 -- Required key: ImageId
 -- @return DeregisterImageRequest structure as a key-value pair table
 function M.DeregisterImageRequest(args)
-	assert(args, "You must provdide an argument table when creating DeregisterImageRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeregisterImageRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DryRun"] = args["DryRun"],
 		["ImageId"] = args["ImageId"],
 	}
-	asserts.AssertDeregisterImageRequest(t)
-	return t
+	asserts.AssertDeregisterImageRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateInternetGatewayResult = { ["InternetGateway"] = true, nil }
@@ -18930,12 +24903,23 @@ end
 -- * InternetGateway [InternetGateway] <p>Information about the Internet gateway.</p>
 -- @return CreateInternetGatewayResult structure as a key-value pair table
 function M.CreateInternetGatewayResult(args)
-	assert(args, "You must provdide an argument table when creating CreateInternetGatewayResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateInternetGatewayResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["InternetGateway"] = args["InternetGateway"],
 	}
-	asserts.AssertCreateInternetGatewayResult(t)
-	return t
+	asserts.AssertCreateInternetGatewayResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ReservedInstanceLimitPrice = { ["Amount"] = true, ["CurrencyCode"] = true, nil }
@@ -18958,13 +24942,24 @@ end
 -- * CurrencyCode [CurrencyCodeValues] <p>The currency in which the <code>limitPrice</code> amount is specified. At this time, the only supported currency is <code>USD</code>.</p>
 -- @return ReservedInstanceLimitPrice structure as a key-value pair table
 function M.ReservedInstanceLimitPrice(args)
-	assert(args, "You must provdide an argument table when creating ReservedInstanceLimitPrice")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ReservedInstanceLimitPrice")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Amount"] = args["Amount"],
 		["CurrencyCode"] = args["CurrencyCode"],
 	}
-	asserts.AssertReservedInstanceLimitPrice(t)
-	return t
+	asserts.AssertReservedInstanceLimitPrice(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeInstanceStatusResult = { ["InstanceStatuses"] = true, ["NextToken"] = true, nil }
@@ -18987,13 +24982,24 @@ end
 -- * NextToken [String] <p>The token to use to retrieve the next page of results. This value is <code>null</code> when there are no more results to return.</p>
 -- @return DescribeInstanceStatusResult structure as a key-value pair table
 function M.DescribeInstanceStatusResult(args)
-	assert(args, "You must provdide an argument table when creating DescribeInstanceStatusResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeInstanceStatusResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["InstanceStatuses"] = args["InstanceStatuses"],
 		["NextToken"] = args["NextToken"],
 	}
-	asserts.AssertDescribeInstanceStatusResult(t)
-	return t
+	asserts.AssertDescribeInstanceStatusResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.RunScheduledInstancesResult = { ["InstanceIdSet"] = true, nil }
@@ -19014,12 +25020,23 @@ end
 -- * InstanceIdSet [InstanceIdSet] <p>The IDs of the newly launched instances.</p>
 -- @return RunScheduledInstancesResult structure as a key-value pair table
 function M.RunScheduledInstancesResult(args)
-	assert(args, "You must provdide an argument table when creating RunScheduledInstancesResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating RunScheduledInstancesResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["InstanceIdSet"] = args["InstanceIdSet"],
 	}
-	asserts.AssertRunScheduledInstancesResult(t)
-	return t
+	asserts.AssertRunScheduledInstancesResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetConsoleOutputResult = { ["InstanceId"] = true, ["Output"] = true, ["Timestamp"] = true, nil }
@@ -19044,14 +25061,25 @@ end
 -- * Timestamp [DateTime] <p>The time the output was last updated.</p>
 -- @return GetConsoleOutputResult structure as a key-value pair table
 function M.GetConsoleOutputResult(args)
-	assert(args, "You must provdide an argument table when creating GetConsoleOutputResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetConsoleOutputResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["InstanceId"] = args["InstanceId"],
 		["Output"] = args["Output"],
 		["Timestamp"] = args["Timestamp"],
 	}
-	asserts.AssertGetConsoleOutputResult(t)
-	return t
+	asserts.AssertGetConsoleOutputResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ClassicLinkInstance = { ["InstanceId"] = true, ["VpcId"] = true, ["Groups"] = true, ["Tags"] = true, nil }
@@ -19078,15 +25106,26 @@ end
 -- * Tags [TagList] <p>Any tags assigned to the instance.</p>
 -- @return ClassicLinkInstance structure as a key-value pair table
 function M.ClassicLinkInstance(args)
-	assert(args, "You must provdide an argument table when creating ClassicLinkInstance")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ClassicLinkInstance")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["InstanceId"] = args["InstanceId"],
 		["VpcId"] = args["VpcId"],
 		["Groups"] = args["Groups"],
 		["Tags"] = args["Tags"],
 	}
-	asserts.AssertClassicLinkInstance(t)
-	return t
+	asserts.AssertClassicLinkInstance(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.NetworkInterfaceAttachment = { ["Status"] = true, ["DeviceIndex"] = true, ["AttachTime"] = true, ["InstanceId"] = true, ["DeleteOnTermination"] = true, ["AttachmentId"] = true, ["InstanceOwnerId"] = true, nil }
@@ -19119,8 +25158,14 @@ end
 -- * InstanceOwnerId [String] <p>The AWS account ID of the owner of the instance.</p>
 -- @return NetworkInterfaceAttachment structure as a key-value pair table
 function M.NetworkInterfaceAttachment(args)
-	assert(args, "You must provdide an argument table when creating NetworkInterfaceAttachment")
-	local t = { 
+	assert(args, "You must provide an argument table when creating NetworkInterfaceAttachment")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Status"] = args["Status"],
 		["DeviceIndex"] = args["DeviceIndex"],
 		["AttachTime"] = args["AttachTime"],
@@ -19129,8 +25174,13 @@ function M.NetworkInterfaceAttachment(args)
 		["AttachmentId"] = args["AttachmentId"],
 		["InstanceOwnerId"] = args["InstanceOwnerId"],
 	}
-	asserts.AssertNetworkInterfaceAttachment(t)
-	return t
+	asserts.AssertNetworkInterfaceAttachment(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ModifyNetworkInterfaceAttributeRequest = { ["SourceDestCheck"] = true, ["DryRun"] = true, ["Description"] = true, ["NetworkInterfaceId"] = true, ["Attachment"] = true, ["Groups"] = true, nil }
@@ -19163,8 +25213,14 @@ end
 -- Required key: NetworkInterfaceId
 -- @return ModifyNetworkInterfaceAttributeRequest structure as a key-value pair table
 function M.ModifyNetworkInterfaceAttributeRequest(args)
-	assert(args, "You must provdide an argument table when creating ModifyNetworkInterfaceAttributeRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ModifyNetworkInterfaceAttributeRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["SourceDestCheck"] = args["SourceDestCheck"],
 		["DryRun"] = args["DryRun"],
 		["Description"] = args["Description"],
@@ -19172,8 +25228,13 @@ function M.ModifyNetworkInterfaceAttributeRequest(args)
 		["Attachment"] = args["Attachment"],
 		["Groups"] = args["Groups"],
 	}
-	asserts.AssertModifyNetworkInterfaceAttributeRequest(t)
-	return t
+	asserts.AssertModifyNetworkInterfaceAttributeRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InstanceStatus = { ["InstanceStatus"] = true, ["AvailabilityZone"] = true, ["InstanceId"] = true, ["InstanceState"] = true, ["Events"] = true, ["SystemStatus"] = true, nil }
@@ -19204,8 +25265,14 @@ end
 -- * SystemStatus [InstanceStatusSummary] <p>Reports impaired functionality that stems from issues related to the systems that support an instance, such as hardware failures and network connectivity problems.</p>
 -- @return InstanceStatus structure as a key-value pair table
 function M.InstanceStatus(args)
-	assert(args, "You must provdide an argument table when creating InstanceStatus")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InstanceStatus")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["InstanceStatus"] = args["InstanceStatus"],
 		["AvailabilityZone"] = args["AvailabilityZone"],
 		["InstanceId"] = args["InstanceId"],
@@ -19213,8 +25280,13 @@ function M.InstanceStatus(args)
 		["Events"] = args["Events"],
 		["SystemStatus"] = args["SystemStatus"],
 	}
-	asserts.AssertInstanceStatus(t)
-	return t
+	asserts.AssertInstanceStatus(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.EgressOnlyInternetGateway = { ["EgressOnlyInternetGatewayId"] = true, ["Attachments"] = true, nil }
@@ -19237,13 +25309,24 @@ end
 -- * Attachments [InternetGatewayAttachmentList] <p>Information about the attachment of the egress-only Internet gateway.</p>
 -- @return EgressOnlyInternetGateway structure as a key-value pair table
 function M.EgressOnlyInternetGateway(args)
-	assert(args, "You must provdide an argument table when creating EgressOnlyInternetGateway")
-	local t = { 
+	assert(args, "You must provide an argument table when creating EgressOnlyInternetGateway")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["EgressOnlyInternetGatewayId"] = args["EgressOnlyInternetGatewayId"],
 		["Attachments"] = args["Attachments"],
 	}
-	asserts.AssertEgressOnlyInternetGateway(t)
-	return t
+	asserts.AssertEgressOnlyInternetGateway(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UnassignPrivateIpAddressesRequest = { ["NetworkInterfaceId"] = true, ["PrivateIpAddresses"] = true, nil }
@@ -19270,13 +25353,24 @@ end
 -- Required key: PrivateIpAddresses
 -- @return UnassignPrivateIpAddressesRequest structure as a key-value pair table
 function M.UnassignPrivateIpAddressesRequest(args)
-	assert(args, "You must provdide an argument table when creating UnassignPrivateIpAddressesRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UnassignPrivateIpAddressesRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NetworkInterfaceId"] = args["NetworkInterfaceId"],
 		["PrivateIpAddresses"] = args["PrivateIpAddresses"],
 	}
-	asserts.AssertUnassignPrivateIpAddressesRequest(t)
-	return t
+	asserts.AssertUnassignPrivateIpAddressesRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Filter = { ["Values"] = true, ["Name"] = true, nil }
@@ -19299,13 +25393,24 @@ end
 -- * Name [String] <p>The name of the filter. Filter names are case-sensitive.</p>
 -- @return Filter structure as a key-value pair table
 function M.Filter(args)
-	assert(args, "You must provdide an argument table when creating Filter")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Filter")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Values"] = args["Values"],
 		["Name"] = args["Name"],
 	}
-	asserts.AssertFilter(t)
-	return t
+	asserts.AssertFilter(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.TargetReservationValue = { ["TargetConfiguration"] = true, ["ReservationValue"] = true, nil }
@@ -19328,13 +25433,24 @@ end
 -- * ReservationValue [ReservationValue] <p>The total value of the Convertible Reserved Instances that make up the exchange. This is the sum of the list value, remaining upfront price, and additional upfront cost of the exchange.</p>
 -- @return TargetReservationValue structure as a key-value pair table
 function M.TargetReservationValue(args)
-	assert(args, "You must provdide an argument table when creating TargetReservationValue")
-	local t = { 
+	assert(args, "You must provide an argument table when creating TargetReservationValue")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["TargetConfiguration"] = args["TargetConfiguration"],
 		["ReservationValue"] = args["ReservationValue"],
 	}
-	asserts.AssertTargetReservationValue(t)
-	return t
+	asserts.AssertTargetReservationValue(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ModifyIdFormatRequest = { ["UseLongIds"] = true, ["Resource"] = true, nil }
@@ -19361,13 +25477,24 @@ end
 -- Required key: UseLongIds
 -- @return ModifyIdFormatRequest structure as a key-value pair table
 function M.ModifyIdFormatRequest(args)
-	assert(args, "You must provdide an argument table when creating ModifyIdFormatRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ModifyIdFormatRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["UseLongIds"] = args["UseLongIds"],
 		["Resource"] = args["Resource"],
 	}
-	asserts.AssertModifyIdFormatRequest(t)
-	return t
+	asserts.AssertModifyIdFormatRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeIdentityIdFormatResult = { ["Statuses"] = true, nil }
@@ -19388,12 +25515,23 @@ end
 -- * Statuses [IdFormatList] <p>Information about the ID format for the resources.</p>
 -- @return DescribeIdentityIdFormatResult structure as a key-value pair table
 function M.DescribeIdentityIdFormatResult(args)
-	assert(args, "You must provdide an argument table when creating DescribeIdentityIdFormatResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeIdentityIdFormatResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Statuses"] = args["Statuses"],
 	}
-	asserts.AssertDescribeIdentityIdFormatResult(t)
-	return t
+	asserts.AssertDescribeIdentityIdFormatResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ImportVolumeResult = { ["ConversionTask"] = true, nil }
@@ -19414,12 +25552,23 @@ end
 -- * ConversionTask [ConversionTask] <p>Information about the conversion task.</p>
 -- @return ImportVolumeResult structure as a key-value pair table
 function M.ImportVolumeResult(args)
-	assert(args, "You must provdide an argument table when creating ImportVolumeResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ImportVolumeResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ConversionTask"] = args["ConversionTask"],
 	}
-	asserts.AssertImportVolumeResult(t)
-	return t
+	asserts.AssertImportVolumeResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeKeyPairsResult = { ["KeyPairs"] = true, nil }
@@ -19440,12 +25589,23 @@ end
 -- * KeyPairs [KeyPairList] <p>Information about one or more key pairs.</p>
 -- @return DescribeKeyPairsResult structure as a key-value pair table
 function M.DescribeKeyPairsResult(args)
-	assert(args, "You must provdide an argument table when creating DescribeKeyPairsResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeKeyPairsResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["KeyPairs"] = args["KeyPairs"],
 	}
-	asserts.AssertDescribeKeyPairsResult(t)
-	return t
+	asserts.AssertDescribeKeyPairsResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.VolumeAttachment = { ["AttachTime"] = true, ["InstanceId"] = true, ["VolumeId"] = true, ["State"] = true, ["DeleteOnTermination"] = true, ["Device"] = true, nil }
@@ -19476,8 +25636,14 @@ end
 -- * Device [String] <p>The device name.</p>
 -- @return VolumeAttachment structure as a key-value pair table
 function M.VolumeAttachment(args)
-	assert(args, "You must provdide an argument table when creating VolumeAttachment")
-	local t = { 
+	assert(args, "You must provide an argument table when creating VolumeAttachment")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["AttachTime"] = args["AttachTime"],
 		["InstanceId"] = args["InstanceId"],
 		["VolumeId"] = args["VolumeId"],
@@ -19485,8 +25651,13 @@ function M.VolumeAttachment(args)
 		["DeleteOnTermination"] = args["DeleteOnTermination"],
 		["Device"] = args["Device"],
 	}
-	asserts.AssertVolumeAttachment(t)
-	return t
+	asserts.AssertVolumeAttachment(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeReservedInstancesRequest = { ["OfferingType"] = true, ["OfferingClass"] = true, ["DryRun"] = true, ["ReservedInstancesIds"] = true, ["Filters"] = true, nil }
@@ -19515,16 +25686,27 @@ end
 -- * Filters [FilterList] <p>One or more filters.</p> <ul> <li> <p> <code>availability-zone</code> - The Availability Zone where the Reserved Instance can be used.</p> </li> <li> <p> <code>duration</code> - The duration of the Reserved Instance (one year or three years), in seconds (<code>31536000</code> | <code>94608000</code>).</p> </li> <li> <p> <code>end</code> - The time when the Reserved Instance expires (for example, 2015-08-07T11:54:42.000Z).</p> </li> <li> <p> <code>fixed-price</code> - The purchase price of the Reserved Instance (for example, 9800.0).</p> </li> <li> <p> <code>instance-type</code> - The instance type that is covered by the reservation.</p> </li> <li> <p> <code>scope</code> - The scope of the Reserved Instance (<code>Region</code> or <code>Availability Zone</code>).</p> </li> <li> <p> <code>product-description</code> - The Reserved Instance product platform description. Instances that include <code>(Amazon VPC)</code> in the product platform description will only be displayed to EC2-Classic account holders and are for use with Amazon VPC (<code>Linux/UNIX</code> | <code>Linux/UNIX (Amazon VPC)</code> | <code>SUSE Linux</code> | <code>SUSE Linux (Amazon VPC)</code> | <code>Red Hat Enterprise Linux</code> | <code>Red Hat Enterprise Linux (Amazon VPC)</code> | <code>Windows</code> | <code>Windows (Amazon VPC)</code> | <code>Windows with SQL Server Standard</code> | <code>Windows with SQL Server Standard (Amazon VPC)</code> | <code>Windows with SQL Server Web</code> | <code>Windows with SQL Server Web (Amazon VPC)</code> | <code>Windows with SQL Server Enterprise</code> | <code>Windows with SQL Server Enterprise (Amazon VPC)</code>).</p> </li> <li> <p> <code>reserved-instances-id</code> - The ID of the Reserved Instance.</p> </li> <li> <p> <code>start</code> - The time at which the Reserved Instance purchase request was placed (for example, 2014-08-07T11:54:42.000Z).</p> </li> <li> <p> <code>state</code> - The state of the Reserved Instance (<code>payment-pending</code> | <code>active</code> | <code>payment-failed</code> | <code>retired</code>).</p> </li> <li> <p> <code>tag</code>:<i>key</i>=<i>value</i> - The key/value combination of a tag assigned to the resource. Specify the key of the tag in the filter name and the value of the tag in the filter value. For example, for the tag Purpose=X, specify <code>tag:Purpose</code> for the filter name and <code>X</code> for the filter value.</p> </li> <li> <p> <code>tag-key</code> - The key of a tag assigned to the resource. This filter is independent of the <code>tag-value</code> filter. For example, if you use both the filter "tag-key=Purpose" and the filter "tag-value=X", you get any resources assigned both the tag key Purpose (regardless of what the tag's value is), and the tag value X (regardless of what the tag's key is). If you want to list only resources where Purpose is X, see the <code>tag</code>:<i>key</i>=<i>value</i> filter.</p> </li> <li> <p> <code>tag-value</code> - The value of a tag assigned to the resource. This filter is independent of the <code>tag-key</code> filter.</p> </li> <li> <p> <code>usage-price</code> - The usage price of the Reserved Instance, per hour (for example, 0.84).</p> </li> </ul>
 -- @return DescribeReservedInstancesRequest structure as a key-value pair table
 function M.DescribeReservedInstancesRequest(args)
-	assert(args, "You must provdide an argument table when creating DescribeReservedInstancesRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeReservedInstancesRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["OfferingType"] = args["OfferingType"],
 		["OfferingClass"] = args["OfferingClass"],
 		["DryRun"] = args["DryRun"],
 		["ReservedInstancesIds"] = args["ReservedInstancesIds"],
 		["Filters"] = args["Filters"],
 	}
-	asserts.AssertDescribeReservedInstancesRequest(t)
-	return t
+	asserts.AssertDescribeReservedInstancesRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateCustomerGatewayRequest = { ["PublicIp"] = true, ["BgpAsn"] = true, ["DryRun"] = true, ["Type"] = true, nil }
@@ -19557,15 +25739,26 @@ end
 -- Required key: Type
 -- @return CreateCustomerGatewayRequest structure as a key-value pair table
 function M.CreateCustomerGatewayRequest(args)
-	assert(args, "You must provdide an argument table when creating CreateCustomerGatewayRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateCustomerGatewayRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["PublicIp"] = args["PublicIp"],
 		["BgpAsn"] = args["BgpAsn"],
 		["DryRun"] = args["DryRun"],
 		["Type"] = args["Type"],
 	}
-	asserts.AssertCreateCustomerGatewayRequest(t)
-	return t
+	asserts.AssertCreateCustomerGatewayRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteSecurityGroupRequest = { ["GroupName"] = true, ["DryRun"] = true, ["GroupId"] = true, nil }
@@ -19590,14 +25783,25 @@ end
 -- * GroupId [String] <p>The ID of the security group. Required for a nondefault VPC.</p>
 -- @return DeleteSecurityGroupRequest structure as a key-value pair table
 function M.DeleteSecurityGroupRequest(args)
-	assert(args, "You must provdide an argument table when creating DeleteSecurityGroupRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteSecurityGroupRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["GroupName"] = args["GroupName"],
 		["DryRun"] = args["DryRun"],
 		["GroupId"] = args["GroupId"],
 	}
-	asserts.AssertDeleteSecurityGroupRequest(t)
-	return t
+	asserts.AssertDeleteSecurityGroupRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.NatGatewayAddress = { ["PublicIp"] = true, ["NetworkInterfaceId"] = true, ["AllocationId"] = true, ["PrivateIp"] = true, nil }
@@ -19624,15 +25828,26 @@ end
 -- * PrivateIp [String] <p>The private IP address associated with the Elastic IP address.</p>
 -- @return NatGatewayAddress structure as a key-value pair table
 function M.NatGatewayAddress(args)
-	assert(args, "You must provdide an argument table when creating NatGatewayAddress")
-	local t = { 
+	assert(args, "You must provide an argument table when creating NatGatewayAddress")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["PublicIp"] = args["PublicIp"],
 		["NetworkInterfaceId"] = args["NetworkInterfaceId"],
 		["AllocationId"] = args["AllocationId"],
 		["PrivateIp"] = args["PrivateIp"],
 	}
-	asserts.AssertNatGatewayAddress(t)
-	return t
+	asserts.AssertNatGatewayAddress(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeSnapshotAttributeResult = { ["ProductCodes"] = true, ["CreateVolumePermissions"] = true, ["SnapshotId"] = true, nil }
@@ -19657,14 +25872,25 @@ end
 -- * SnapshotId [String] <p>The ID of the EBS snapshot.</p>
 -- @return DescribeSnapshotAttributeResult structure as a key-value pair table
 function M.DescribeSnapshotAttributeResult(args)
-	assert(args, "You must provdide an argument table when creating DescribeSnapshotAttributeResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeSnapshotAttributeResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ProductCodes"] = args["ProductCodes"],
 		["CreateVolumePermissions"] = args["CreateVolumePermissions"],
 		["SnapshotId"] = args["SnapshotId"],
 	}
-	asserts.AssertDescribeSnapshotAttributeResult(t)
-	return t
+	asserts.AssertDescribeSnapshotAttributeResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ActiveInstance = { ["InstanceId"] = true, ["InstanceHealth"] = true, ["InstanceType"] = true, ["SpotInstanceRequestId"] = true, nil }
@@ -19691,15 +25917,26 @@ end
 -- * SpotInstanceRequestId [String] <p>The ID of the Spot instance request.</p>
 -- @return ActiveInstance structure as a key-value pair table
 function M.ActiveInstance(args)
-	assert(args, "You must provdide an argument table when creating ActiveInstance")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ActiveInstance")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["InstanceId"] = args["InstanceId"],
 		["InstanceHealth"] = args["InstanceHealth"],
 		["InstanceType"] = args["InstanceType"],
 		["SpotInstanceRequestId"] = args["SpotInstanceRequestId"],
 	}
-	asserts.AssertActiveInstance(t)
-	return t
+	asserts.AssertActiveInstance(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ModifyVolumeRequest = { ["VolumeType"] = true, ["Iops"] = true, ["DryRun"] = true, ["VolumeId"] = true, ["Size"] = true, nil }
@@ -19730,16 +25967,27 @@ end
 -- Required key: VolumeId
 -- @return ModifyVolumeRequest structure as a key-value pair table
 function M.ModifyVolumeRequest(args)
-	assert(args, "You must provdide an argument table when creating ModifyVolumeRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ModifyVolumeRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["VolumeType"] = args["VolumeType"],
 		["Iops"] = args["Iops"],
 		["DryRun"] = args["DryRun"],
 		["VolumeId"] = args["VolumeId"],
 		["Size"] = args["Size"],
 	}
-	asserts.AssertModifyVolumeRequest(t)
-	return t
+	asserts.AssertModifyVolumeRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.RevokeSecurityGroupIngressRequest = { ["DryRun"] = true, ["GroupName"] = true, ["CidrIp"] = true, ["IpPermissions"] = true, ["FromPort"] = true, ["SourceSecurityGroupOwnerId"] = true, ["SourceSecurityGroupName"] = true, ["ToPort"] = true, ["IpProtocol"] = true, ["GroupId"] = true, nil }
@@ -19778,8 +26026,14 @@ end
 -- * GroupId [String] <p>The ID of the security group. Required for a security group in a nondefault VPC.</p>
 -- @return RevokeSecurityGroupIngressRequest structure as a key-value pair table
 function M.RevokeSecurityGroupIngressRequest(args)
-	assert(args, "You must provdide an argument table when creating RevokeSecurityGroupIngressRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating RevokeSecurityGroupIngressRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DryRun"] = args["DryRun"],
 		["GroupName"] = args["GroupName"],
 		["CidrIp"] = args["CidrIp"],
@@ -19791,8 +26045,13 @@ function M.RevokeSecurityGroupIngressRequest(args)
 		["IpProtocol"] = args["IpProtocol"],
 		["GroupId"] = args["GroupId"],
 	}
-	asserts.AssertRevokeSecurityGroupIngressRequest(t)
-	return t
+	asserts.AssertRevokeSecurityGroupIngressRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateSpotDatafeedSubscriptionResult = { ["SpotDatafeedSubscription"] = true, nil }
@@ -19813,12 +26072,23 @@ end
 -- * SpotDatafeedSubscription [SpotDatafeedSubscription] <p>The Spot instance data feed subscription.</p>
 -- @return CreateSpotDatafeedSubscriptionResult structure as a key-value pair table
 function M.CreateSpotDatafeedSubscriptionResult(args)
-	assert(args, "You must provdide an argument table when creating CreateSpotDatafeedSubscriptionResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateSpotDatafeedSubscriptionResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["SpotDatafeedSubscription"] = args["SpotDatafeedSubscription"],
 	}
-	asserts.AssertCreateSpotDatafeedSubscriptionResult(t)
-	return t
+	asserts.AssertCreateSpotDatafeedSubscriptionResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeClassicLinkInstancesRequest = { ["MaxResults"] = true, ["NextToken"] = true, ["DryRun"] = true, ["InstanceIds"] = true, ["Filters"] = true, nil }
@@ -19847,16 +26117,27 @@ end
 -- * Filters [FilterList] <p>One or more filters.</p> <ul> <li> <p> <code>group-id</code> - The ID of a VPC security group that's associated with the instance.</p> </li> <li> <p> <code>instance-id</code> - The ID of the instance.</p> </li> <li> <p> <code>tag</code>:<i>key</i>=<i>value</i> - The key/value combination of a tag assigned to the resource.</p> </li> <li> <p> <code>tag-key</code> - The key of a tag assigned to the resource. This filter is independent of the <code>tag-value</code> filter. For example, if you use both the filter "tag-key=Purpose" and the filter "tag-value=X", you get any resources assigned both the tag key Purpose (regardless of what the tag's value is), and the tag value X (regardless of what the tag's key is). If you want to list only resources where Purpose is X, see the <code>tag</code>:<i>key</i>=<i>value</i> filter.</p> </li> <li> <p> <code>tag-value</code> - The value of a tag assigned to the resource. This filter is independent of the <code>tag-key</code> filter.</p> </li> <li> <p> <code>vpc-id</code> - The ID of the VPC that the instance is linked to.</p> </li> </ul>
 -- @return DescribeClassicLinkInstancesRequest structure as a key-value pair table
 function M.DescribeClassicLinkInstancesRequest(args)
-	assert(args, "You must provdide an argument table when creating DescribeClassicLinkInstancesRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeClassicLinkInstancesRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["MaxResults"] = args["MaxResults"],
 		["NextToken"] = args["NextToken"],
 		["DryRun"] = args["DryRun"],
 		["InstanceIds"] = args["InstanceIds"],
 		["Filters"] = args["Filters"],
 	}
-	asserts.AssertDescribeClassicLinkInstancesRequest(t)
-	return t
+	asserts.AssertDescribeClassicLinkInstancesRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeReservedInstancesOfferingsRequest = { ["MaxInstanceCount"] = true, ["OfferingType"] = true, ["AvailabilityZone"] = true, ["DryRun"] = true, ["ProductDescription"] = true, ["IncludeMarketplace"] = true, ["ReservedInstancesOfferingIds"] = true, ["MaxResults"] = true, ["InstanceType"] = true, ["OfferingClass"] = true, ["Filters"] = true, ["MinDuration"] = true, ["InstanceTenancy"] = true, ["NextToken"] = true, ["MaxDuration"] = true, nil }
@@ -19905,8 +26186,14 @@ end
 -- * MaxDuration [Long] <p>The maximum duration (in seconds) to filter when searching for offerings.</p> <p>Default: 94608000 (3 years)</p>
 -- @return DescribeReservedInstancesOfferingsRequest structure as a key-value pair table
 function M.DescribeReservedInstancesOfferingsRequest(args)
-	assert(args, "You must provdide an argument table when creating DescribeReservedInstancesOfferingsRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeReservedInstancesOfferingsRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["MaxInstanceCount"] = args["MaxInstanceCount"],
 		["OfferingType"] = args["OfferingType"],
 		["AvailabilityZone"] = args["AvailabilityZone"],
@@ -19923,8 +26210,13 @@ function M.DescribeReservedInstancesOfferingsRequest(args)
 		["NextToken"] = args["NextToken"],
 		["MaxDuration"] = args["MaxDuration"],
 	}
-	asserts.AssertDescribeReservedInstancesOfferingsRequest(t)
-	return t
+	asserts.AssertDescribeReservedInstancesOfferingsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetReservedInstancesExchangeQuoteResult = { ["CurrencyCode"] = true, ["ReservedInstanceValueSet"] = true, ["PaymentDue"] = true, ["TargetConfigurationValueSet"] = true, ["IsValidExchange"] = true, ["ValidationFailureReason"] = true, ["OutputReservedInstancesWillExpireAt"] = true, ["ReservedInstanceValueRollup"] = true, ["TargetConfigurationValueRollup"] = true, nil }
@@ -19961,8 +26253,14 @@ end
 -- * TargetConfigurationValueRollup [ReservationValue] <p>The cost associated with the Reserved Instance.</p>
 -- @return GetReservedInstancesExchangeQuoteResult structure as a key-value pair table
 function M.GetReservedInstancesExchangeQuoteResult(args)
-	assert(args, "You must provdide an argument table when creating GetReservedInstancesExchangeQuoteResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetReservedInstancesExchangeQuoteResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["CurrencyCode"] = args["CurrencyCode"],
 		["ReservedInstanceValueSet"] = args["ReservedInstanceValueSet"],
 		["PaymentDue"] = args["PaymentDue"],
@@ -19973,8 +26271,13 @@ function M.GetReservedInstancesExchangeQuoteResult(args)
 		["ReservedInstanceValueRollup"] = args["ReservedInstanceValueRollup"],
 		["TargetConfigurationValueRollup"] = args["TargetConfigurationValueRollup"],
 	}
-	asserts.AssertGetReservedInstancesExchangeQuoteResult(t)
-	return t
+	asserts.AssertGetReservedInstancesExchangeQuoteResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateImageResult = { ["ImageId"] = true, nil }
@@ -19995,12 +26298,23 @@ end
 -- * ImageId [String] <p>The ID of the new AMI.</p>
 -- @return CreateImageResult structure as a key-value pair table
 function M.CreateImageResult(args)
-	assert(args, "You must provdide an argument table when creating CreateImageResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateImageResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ImageId"] = args["ImageId"],
 	}
-	asserts.AssertCreateImageResult(t)
-	return t
+	asserts.AssertCreateImageResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DhcpOptions = { ["Tags"] = true, ["DhcpConfigurations"] = true, ["DhcpOptionsId"] = true, nil }
@@ -20025,14 +26339,25 @@ end
 -- * DhcpOptionsId [String] <p>The ID of the set of DHCP options.</p>
 -- @return DhcpOptions structure as a key-value pair table
 function M.DhcpOptions(args)
-	assert(args, "You must provdide an argument table when creating DhcpOptions")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DhcpOptions")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Tags"] = args["Tags"],
 		["DhcpConfigurations"] = args["DhcpConfigurations"],
 		["DhcpOptionsId"] = args["DhcpOptionsId"],
 	}
-	asserts.AssertDhcpOptions(t)
-	return t
+	asserts.AssertDhcpOptions(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ReservedInstances = { ["ReservedInstancesId"] = true, ["OfferingType"] = true, ["AvailabilityZone"] = true, ["End"] = true, ["ProductDescription"] = true, ["Tags"] = true, ["Scope"] = true, ["UsagePrice"] = true, ["RecurringCharges"] = true, ["OfferingClass"] = true, ["Start"] = true, ["State"] = true, ["FixedPrice"] = true, ["CurrencyCode"] = true, ["Duration"] = true, ["InstanceTenancy"] = true, ["InstanceType"] = true, ["InstanceCount"] = true, nil }
@@ -20087,8 +26412,14 @@ end
 -- * InstanceCount [Integer] <p>The number of reservations purchased.</p>
 -- @return ReservedInstances structure as a key-value pair table
 function M.ReservedInstances(args)
-	assert(args, "You must provdide an argument table when creating ReservedInstances")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ReservedInstances")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ReservedInstancesId"] = args["ReservedInstancesId"],
 		["OfferingType"] = args["OfferingType"],
 		["AvailabilityZone"] = args["AvailabilityZone"],
@@ -20108,8 +26439,13 @@ function M.ReservedInstances(args)
 		["InstanceType"] = args["InstanceType"],
 		["InstanceCount"] = args["InstanceCount"],
 	}
-	asserts.AssertReservedInstances(t)
-	return t
+	asserts.AssertReservedInstances(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeCustomerGatewaysResult = { ["CustomerGateways"] = true, nil }
@@ -20130,12 +26466,23 @@ end
 -- * CustomerGateways [CustomerGatewayList] <p>Information about one or more customer gateways.</p>
 -- @return DescribeCustomerGatewaysResult structure as a key-value pair table
 function M.DescribeCustomerGatewaysResult(args)
-	assert(args, "You must provdide an argument table when creating DescribeCustomerGatewaysResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeCustomerGatewaysResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["CustomerGateways"] = args["CustomerGateways"],
 	}
-	asserts.AssertDescribeCustomerGatewaysResult(t)
-	return t
+	asserts.AssertDescribeCustomerGatewaysResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AvailabilityZoneMessage = { ["Message"] = true, nil }
@@ -20156,12 +26503,23 @@ end
 -- * Message [String] <p>The message about the Availability Zone.</p>
 -- @return AvailabilityZoneMessage structure as a key-value pair table
 function M.AvailabilityZoneMessage(args)
-	assert(args, "You must provdide an argument table when creating AvailabilityZoneMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AvailabilityZoneMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Message"] = args["Message"],
 	}
-	asserts.AssertAvailabilityZoneMessage(t)
-	return t
+	asserts.AssertAvailabilityZoneMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetConsoleScreenshotResult = { ["InstanceId"] = true, ["ImageData"] = true, nil }
@@ -20184,13 +26542,24 @@ end
 -- * ImageData [String] <p>The data that comprises the image.</p>
 -- @return GetConsoleScreenshotResult structure as a key-value pair table
 function M.GetConsoleScreenshotResult(args)
-	assert(args, "You must provdide an argument table when creating GetConsoleScreenshotResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetConsoleScreenshotResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["InstanceId"] = args["InstanceId"],
 		["ImageData"] = args["ImageData"],
 	}
-	asserts.AssertGetConsoleScreenshotResult(t)
-	return t
+	asserts.AssertGetConsoleScreenshotResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeVpcPeeringConnectionsRequest = { ["VpcPeeringConnectionIds"] = true, ["DryRun"] = true, ["Filters"] = true, nil }
@@ -20215,14 +26584,25 @@ end
 -- * Filters [FilterList] <p>One or more filters.</p> <ul> <li> <p> <code>accepter-vpc-info.cidr-block</code> - The IPv4 CIDR block of the peer VPC.</p> </li> <li> <p> <code>accepter-vpc-info.owner-id</code> - The AWS account ID of the owner of the peer VPC.</p> </li> <li> <p> <code>accepter-vpc-info.vpc-id</code> - The ID of the peer VPC.</p> </li> <li> <p> <code>expiration-time</code> - The expiration date and time for the VPC peering connection.</p> </li> <li> <p> <code>requester-vpc-info.cidr-block</code> - The IPv4 CIDR block of the requester's VPC.</p> </li> <li> <p> <code>requester-vpc-info.owner-id</code> - The AWS account ID of the owner of the requester VPC.</p> </li> <li> <p> <code>requester-vpc-info.vpc-id</code> - The ID of the requester VPC.</p> </li> <li> <p> <code>status-code</code> - The status of the VPC peering connection (<code>pending-acceptance</code> | <code>failed</code> | <code>expired</code> | <code>provisioning</code> | <code>active</code> | <code>deleted</code> | <code>rejected</code>).</p> </li> <li> <p> <code>status-message</code> - A message that provides more information about the status of the VPC peering connection, if applicable.</p> </li> <li> <p> <code>tag</code>:<i>key</i>=<i>value</i> - The key/value combination of a tag assigned to the resource. Specify the key of the tag in the filter name and the value of the tag in the filter value. For example, for the tag Purpose=X, specify <code>tag:Purpose</code> for the filter name and <code>X</code> for the filter value.</p> </li> <li> <p> <code>tag-key</code> - The key of a tag assigned to the resource. This filter is independent of the <code>tag-value</code> filter. For example, if you use both the filter "tag-key=Purpose" and the filter "tag-value=X", you get any resources assigned both the tag key Purpose (regardless of what the tag's value is), and the tag value X (regardless of what the tag's key is). If you want to list only resources where Purpose is X, see the <code>tag</code>:<i>key</i>=<i>value</i> filter.</p> </li> <li> <p> <code>tag-value</code> - The value of a tag assigned to the resource. This filter is independent of the <code>tag-key</code> filter.</p> </li> <li> <p> <code>vpc-peering-connection-id</code> - The ID of the VPC peering connection.</p> </li> </ul>
 -- @return DescribeVpcPeeringConnectionsRequest structure as a key-value pair table
 function M.DescribeVpcPeeringConnectionsRequest(args)
-	assert(args, "You must provdide an argument table when creating DescribeVpcPeeringConnectionsRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeVpcPeeringConnectionsRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["VpcPeeringConnectionIds"] = args["VpcPeeringConnectionIds"],
 		["DryRun"] = args["DryRun"],
 		["Filters"] = args["Filters"],
 	}
-	asserts.AssertDescribeVpcPeeringConnectionsRequest(t)
-	return t
+	asserts.AssertDescribeVpcPeeringConnectionsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AuthorizeSecurityGroupEgressRequest = { ["DryRun"] = true, ["CidrIp"] = true, ["IpPermissions"] = true, ["FromPort"] = true, ["SourceSecurityGroupOwnerId"] = true, ["SourceSecurityGroupName"] = true, ["ToPort"] = true, ["IpProtocol"] = true, ["GroupId"] = true, nil }
@@ -20261,8 +26641,14 @@ end
 -- Required key: GroupId
 -- @return AuthorizeSecurityGroupEgressRequest structure as a key-value pair table
 function M.AuthorizeSecurityGroupEgressRequest(args)
-	assert(args, "You must provdide an argument table when creating AuthorizeSecurityGroupEgressRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AuthorizeSecurityGroupEgressRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DryRun"] = args["DryRun"],
 		["CidrIp"] = args["CidrIp"],
 		["IpPermissions"] = args["IpPermissions"],
@@ -20273,8 +26659,13 @@ function M.AuthorizeSecurityGroupEgressRequest(args)
 		["IpProtocol"] = args["IpProtocol"],
 		["GroupId"] = args["GroupId"],
 	}
-	asserts.AssertAuthorizeSecurityGroupEgressRequest(t)
-	return t
+	asserts.AssertAuthorizeSecurityGroupEgressRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteCustomerGatewayRequest = { ["CustomerGatewayId"] = true, ["DryRun"] = true, nil }
@@ -20299,13 +26690,24 @@ end
 -- Required key: CustomerGatewayId
 -- @return DeleteCustomerGatewayRequest structure as a key-value pair table
 function M.DeleteCustomerGatewayRequest(args)
-	assert(args, "You must provdide an argument table when creating DeleteCustomerGatewayRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteCustomerGatewayRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["CustomerGatewayId"] = args["CustomerGatewayId"],
 		["DryRun"] = args["DryRun"],
 	}
-	asserts.AssertDeleteCustomerGatewayRequest(t)
-	return t
+	asserts.AssertDeleteCustomerGatewayRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateReservedInstancesListingRequest = { ["ReservedInstancesId"] = true, ["PriceSchedules"] = true, ["InstanceCount"] = true, ["ClientToken"] = true, nil }
@@ -20340,15 +26742,26 @@ end
 -- Required key: ReservedInstancesId
 -- @return CreateReservedInstancesListingRequest structure as a key-value pair table
 function M.CreateReservedInstancesListingRequest(args)
-	assert(args, "You must provdide an argument table when creating CreateReservedInstancesListingRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateReservedInstancesListingRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ReservedInstancesId"] = args["ReservedInstancesId"],
 		["PriceSchedules"] = args["PriceSchedules"],
 		["InstanceCount"] = args["InstanceCount"],
 		["ClientToken"] = args["ClientToken"],
 	}
-	asserts.AssertCreateReservedInstancesListingRequest(t)
-	return t
+	asserts.AssertCreateReservedInstancesListingRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.NetworkInterfaceAssociation = { ["PublicIp"] = true, ["AssociationId"] = true, ["PublicDnsName"] = true, ["AllocationId"] = true, ["IpOwnerId"] = true, nil }
@@ -20377,16 +26790,27 @@ end
 -- * IpOwnerId [String] <p>The ID of the Elastic IP address owner.</p>
 -- @return NetworkInterfaceAssociation structure as a key-value pair table
 function M.NetworkInterfaceAssociation(args)
-	assert(args, "You must provdide an argument table when creating NetworkInterfaceAssociation")
-	local t = { 
+	assert(args, "You must provide an argument table when creating NetworkInterfaceAssociation")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["PublicIp"] = args["PublicIp"],
 		["AssociationId"] = args["AssociationId"],
 		["PublicDnsName"] = args["PublicDnsName"],
 		["AllocationId"] = args["AllocationId"],
 		["IpOwnerId"] = args["IpOwnerId"],
 	}
-	asserts.AssertNetworkInterfaceAssociation(t)
-	return t
+	asserts.AssertNetworkInterfaceAssociation(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ReservedInstancesOffering = { ["OfferingClass"] = true, ["Marketplace"] = true, ["ProductDescription"] = true, ["CurrencyCode"] = true, ["PricingDetails"] = true, ["UsagePrice"] = true, ["RecurringCharges"] = true, ["OfferingType"] = true, ["AvailabilityZone"] = true, ["FixedPrice"] = true, ["Scope"] = true, ["Duration"] = true, ["InstanceTenancy"] = true, ["ReservedInstancesOfferingId"] = true, ["InstanceType"] = true, nil }
@@ -20435,8 +26859,14 @@ end
 -- * InstanceType [InstanceType] <p>The instance type on which the Reserved Instance can be used.</p>
 -- @return ReservedInstancesOffering structure as a key-value pair table
 function M.ReservedInstancesOffering(args)
-	assert(args, "You must provdide an argument table when creating ReservedInstancesOffering")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ReservedInstancesOffering")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["OfferingClass"] = args["OfferingClass"],
 		["Marketplace"] = args["Marketplace"],
 		["ProductDescription"] = args["ProductDescription"],
@@ -20453,8 +26883,13 @@ function M.ReservedInstancesOffering(args)
 		["ReservedInstancesOfferingId"] = args["ReservedInstancesOfferingId"],
 		["InstanceType"] = args["InstanceType"],
 	}
-	asserts.AssertReservedInstancesOffering(t)
-	return t
+	asserts.AssertReservedInstancesOffering(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.IpPermission = { ["PrefixListIds"] = true, ["FromPort"] = true, ["IpRanges"] = true, ["ToPort"] = true, ["IpProtocol"] = true, ["UserIdGroupPairs"] = true, ["Ipv6Ranges"] = true, nil }
@@ -20487,8 +26922,14 @@ end
 -- * Ipv6Ranges [Ipv6RangeList] <p>[EC2-VPC only] One or more IPv6 ranges.</p>
 -- @return IpPermission structure as a key-value pair table
 function M.IpPermission(args)
-	assert(args, "You must provdide an argument table when creating IpPermission")
-	local t = { 
+	assert(args, "You must provide an argument table when creating IpPermission")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["PrefixListIds"] = args["PrefixListIds"],
 		["FromPort"] = args["FromPort"],
 		["IpRanges"] = args["IpRanges"],
@@ -20497,8 +26938,13 @@ function M.IpPermission(args)
 		["UserIdGroupPairs"] = args["UserIdGroupPairs"],
 		["Ipv6Ranges"] = args["Ipv6Ranges"],
 	}
-	asserts.AssertIpPermission(t)
-	return t
+	asserts.AssertIpPermission(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.MonitorInstancesRequest = { ["DryRun"] = true, ["InstanceIds"] = true, nil }
@@ -20523,13 +26969,24 @@ end
 -- Required key: InstanceIds
 -- @return MonitorInstancesRequest structure as a key-value pair table
 function M.MonitorInstancesRequest(args)
-	assert(args, "You must provdide an argument table when creating MonitorInstancesRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating MonitorInstancesRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DryRun"] = args["DryRun"],
 		["InstanceIds"] = args["InstanceIds"],
 	}
-	asserts.AssertMonitorInstancesRequest(t)
-	return t
+	asserts.AssertMonitorInstancesRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AcceptVpcPeeringConnectionRequest = { ["DryRun"] = true, ["VpcPeeringConnectionId"] = true, nil }
@@ -20552,13 +27009,24 @@ end
 -- * VpcPeeringConnectionId [String] <p>The ID of the VPC peering connection.</p>
 -- @return AcceptVpcPeeringConnectionRequest structure as a key-value pair table
 function M.AcceptVpcPeeringConnectionRequest(args)
-	assert(args, "You must provdide an argument table when creating AcceptVpcPeeringConnectionRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AcceptVpcPeeringConnectionRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DryRun"] = args["DryRun"],
 		["VpcPeeringConnectionId"] = args["VpcPeeringConnectionId"],
 	}
-	asserts.AssertAcceptVpcPeeringConnectionRequest(t)
-	return t
+	asserts.AssertAcceptVpcPeeringConnectionRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Volume = { ["AvailabilityZone"] = true, ["Attachments"] = true, ["Tags"] = true, ["Encrypted"] = true, ["VolumeType"] = true, ["VolumeId"] = true, ["State"] = true, ["KmsKeyId"] = true, ["SnapshotId"] = true, ["Iops"] = true, ["CreateTime"] = true, ["Size"] = true, nil }
@@ -20601,8 +27069,14 @@ end
 -- * Size [Integer] <p>The size of the volume, in GiBs.</p>
 -- @return Volume structure as a key-value pair table
 function M.Volume(args)
-	assert(args, "You must provdide an argument table when creating Volume")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Volume")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["AvailabilityZone"] = args["AvailabilityZone"],
 		["Attachments"] = args["Attachments"],
 		["Tags"] = args["Tags"],
@@ -20616,8 +27090,13 @@ function M.Volume(args)
 		["CreateTime"] = args["CreateTime"],
 		["Size"] = args["Size"],
 	}
-	asserts.AssertVolume(t)
-	return t
+	asserts.AssertVolume(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateVpcResult = { ["Vpc"] = true, nil }
@@ -20638,12 +27117,23 @@ end
 -- * Vpc [Vpc] <p>Information about the VPC.</p>
 -- @return CreateVpcResult structure as a key-value pair table
 function M.CreateVpcResult(args)
-	assert(args, "You must provdide an argument table when creating CreateVpcResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateVpcResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Vpc"] = args["Vpc"],
 	}
-	asserts.AssertCreateVpcResult(t)
-	return t
+	asserts.AssertCreateVpcResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.EnableVpcClassicLinkRequest = { ["VpcId"] = true, ["DryRun"] = true, nil }
@@ -20668,13 +27158,24 @@ end
 -- Required key: VpcId
 -- @return EnableVpcClassicLinkRequest structure as a key-value pair table
 function M.EnableVpcClassicLinkRequest(args)
-	assert(args, "You must provdide an argument table when creating EnableVpcClassicLinkRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating EnableVpcClassicLinkRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["VpcId"] = args["VpcId"],
 		["DryRun"] = args["DryRun"],
 	}
-	asserts.AssertEnableVpcClassicLinkRequest(t)
-	return t
+	asserts.AssertEnableVpcClassicLinkRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeVolumeStatusRequest = { ["NextToken"] = true, ["DryRun"] = true, ["MaxResults"] = true, ["Filters"] = true, ["VolumeIds"] = true, nil }
@@ -20703,16 +27204,27 @@ end
 -- * VolumeIds [VolumeIdStringList] <p>One or more volume IDs.</p> <p>Default: Describes all your volumes.</p>
 -- @return DescribeVolumeStatusRequest structure as a key-value pair table
 function M.DescribeVolumeStatusRequest(args)
-	assert(args, "You must provdide an argument table when creating DescribeVolumeStatusRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeVolumeStatusRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NextToken"] = args["NextToken"],
 		["DryRun"] = args["DryRun"],
 		["MaxResults"] = args["MaxResults"],
 		["Filters"] = args["Filters"],
 		["VolumeIds"] = args["VolumeIds"],
 	}
-	asserts.AssertDescribeVolumeStatusRequest(t)
-	return t
+	asserts.AssertDescribeVolumeStatusRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AssignPrivateIpAddressesRequest = { ["NetworkInterfaceId"] = true, ["SecondaryPrivateIpAddressCount"] = true, ["PrivateIpAddresses"] = true, ["AllowReassignment"] = true, nil }
@@ -20741,15 +27253,26 @@ end
 -- Required key: NetworkInterfaceId
 -- @return AssignPrivateIpAddressesRequest structure as a key-value pair table
 function M.AssignPrivateIpAddressesRequest(args)
-	assert(args, "You must provdide an argument table when creating AssignPrivateIpAddressesRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AssignPrivateIpAddressesRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NetworkInterfaceId"] = args["NetworkInterfaceId"],
 		["SecondaryPrivateIpAddressCount"] = args["SecondaryPrivateIpAddressCount"],
 		["PrivateIpAddresses"] = args["PrivateIpAddresses"],
 		["AllowReassignment"] = args["AllowReassignment"],
 	}
-	asserts.AssertAssignPrivateIpAddressesRequest(t)
-	return t
+	asserts.AssertAssignPrivateIpAddressesRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.RequestSpotFleetRequest = { ["SpotFleetRequestConfig"] = true, ["DryRun"] = true, nil }
@@ -20774,13 +27297,24 @@ end
 -- Required key: SpotFleetRequestConfig
 -- @return RequestSpotFleetRequest structure as a key-value pair table
 function M.RequestSpotFleetRequest(args)
-	assert(args, "You must provdide an argument table when creating RequestSpotFleetRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating RequestSpotFleetRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["SpotFleetRequestConfig"] = args["SpotFleetRequestConfig"],
 		["DryRun"] = args["DryRun"],
 	}
-	asserts.AssertRequestSpotFleetRequest(t)
-	return t
+	asserts.AssertRequestSpotFleetRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateVpcRequest = { ["AmazonProvidedIpv6CidrBlock"] = true, ["DryRun"] = true, ["InstanceTenancy"] = true, ["CidrBlock"] = true, nil }
@@ -20809,15 +27343,26 @@ end
 -- Required key: CidrBlock
 -- @return CreateVpcRequest structure as a key-value pair table
 function M.CreateVpcRequest(args)
-	assert(args, "You must provdide an argument table when creating CreateVpcRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateVpcRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["AmazonProvidedIpv6CidrBlock"] = args["AmazonProvidedIpv6CidrBlock"],
 		["DryRun"] = args["DryRun"],
 		["InstanceTenancy"] = args["InstanceTenancy"],
 		["CidrBlock"] = args["CidrBlock"],
 	}
-	asserts.AssertCreateVpcRequest(t)
-	return t
+	asserts.AssertCreateVpcRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CancelSpotFleetRequestsError = { ["Message"] = true, ["Code"] = true, nil }
@@ -20844,13 +27389,24 @@ end
 -- Required key: Message
 -- @return CancelSpotFleetRequestsError structure as a key-value pair table
 function M.CancelSpotFleetRequestsError(args)
-	assert(args, "You must provdide an argument table when creating CancelSpotFleetRequestsError")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CancelSpotFleetRequestsError")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Message"] = args["Message"],
 		["Code"] = args["Code"],
 	}
-	asserts.AssertCancelSpotFleetRequestsError(t)
-	return t
+	asserts.AssertCancelSpotFleetRequestsError(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ClassicLinkDnsSupport = { ["VpcId"] = true, ["ClassicLinkDnsSupported"] = true, nil }
@@ -20873,13 +27429,24 @@ end
 -- * ClassicLinkDnsSupported [Boolean] <p>Indicates whether ClassicLink DNS support is enabled for the VPC.</p>
 -- @return ClassicLinkDnsSupport structure as a key-value pair table
 function M.ClassicLinkDnsSupport(args)
-	assert(args, "You must provdide an argument table when creating ClassicLinkDnsSupport")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ClassicLinkDnsSupport")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["VpcId"] = args["VpcId"],
 		["ClassicLinkDnsSupported"] = args["ClassicLinkDnsSupported"],
 	}
-	asserts.AssertClassicLinkDnsSupport(t)
-	return t
+	asserts.AssertClassicLinkDnsSupport(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.RebootInstancesRequest = { ["DryRun"] = true, ["InstanceIds"] = true, nil }
@@ -20904,13 +27471,24 @@ end
 -- Required key: InstanceIds
 -- @return RebootInstancesRequest structure as a key-value pair table
 function M.RebootInstancesRequest(args)
-	assert(args, "You must provdide an argument table when creating RebootInstancesRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating RebootInstancesRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DryRun"] = args["DryRun"],
 		["InstanceIds"] = args["InstanceIds"],
 	}
-	asserts.AssertRebootInstancesRequest(t)
-	return t
+	asserts.AssertRebootInstancesRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateNetworkAclEntryRequest = { ["IcmpTypeCode"] = true, ["NetworkAclId"] = true, ["RuleNumber"] = true, ["DryRun"] = true, ["Ipv6CidrBlock"] = true, ["Egress"] = true, ["RuleAction"] = true, ["PortRange"] = true, ["Protocol"] = true, ["CidrBlock"] = true, nil }
@@ -20959,8 +27537,14 @@ end
 -- Required key: RuleNumber
 -- @return CreateNetworkAclEntryRequest structure as a key-value pair table
 function M.CreateNetworkAclEntryRequest(args)
-	assert(args, "You must provdide an argument table when creating CreateNetworkAclEntryRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateNetworkAclEntryRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["IcmpTypeCode"] = args["IcmpTypeCode"],
 		["NetworkAclId"] = args["NetworkAclId"],
 		["RuleNumber"] = args["RuleNumber"],
@@ -20972,8 +27556,13 @@ function M.CreateNetworkAclEntryRequest(args)
 		["Protocol"] = args["Protocol"],
 		["CidrBlock"] = args["CidrBlock"],
 	}
-	asserts.AssertCreateNetworkAclEntryRequest(t)
-	return t
+	asserts.AssertCreateNetworkAclEntryRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AttachNetworkInterfaceRequest = { ["InstanceId"] = true, ["DeviceIndex"] = true, ["NetworkInterfaceId"] = true, ["DryRun"] = true, nil }
@@ -21006,15 +27595,26 @@ end
 -- Required key: NetworkInterfaceId
 -- @return AttachNetworkInterfaceRequest structure as a key-value pair table
 function M.AttachNetworkInterfaceRequest(args)
-	assert(args, "You must provdide an argument table when creating AttachNetworkInterfaceRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AttachNetworkInterfaceRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["InstanceId"] = args["InstanceId"],
 		["DeviceIndex"] = args["DeviceIndex"],
 		["NetworkInterfaceId"] = args["NetworkInterfaceId"],
 		["DryRun"] = args["DryRun"],
 	}
-	asserts.AssertAttachNetworkInterfaceRequest(t)
-	return t
+	asserts.AssertAttachNetworkInterfaceRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ImportKeyPairResult = { ["KeyName"] = true, ["KeyFingerprint"] = true, nil }
@@ -21037,13 +27637,24 @@ end
 -- * KeyFingerprint [String] <p>The MD5 public key fingerprint as specified in section 4 of RFC 4716.</p>
 -- @return ImportKeyPairResult structure as a key-value pair table
 function M.ImportKeyPairResult(args)
-	assert(args, "You must provdide an argument table when creating ImportKeyPairResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ImportKeyPairResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["KeyName"] = args["KeyName"],
 		["KeyFingerprint"] = args["KeyFingerprint"],
 	}
-	asserts.AssertImportKeyPairResult(t)
-	return t
+	asserts.AssertImportKeyPairResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeSpotInstanceRequestsResult = { ["SpotInstanceRequests"] = true, nil }
@@ -21064,12 +27675,23 @@ end
 -- * SpotInstanceRequests [SpotInstanceRequestList] <p>One or more Spot instance requests.</p>
 -- @return DescribeSpotInstanceRequestsResult structure as a key-value pair table
 function M.DescribeSpotInstanceRequestsResult(args)
-	assert(args, "You must provdide an argument table when creating DescribeSpotInstanceRequestsResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeSpotInstanceRequestsResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["SpotInstanceRequests"] = args["SpotInstanceRequests"],
 	}
-	asserts.AssertDescribeSpotInstanceRequestsResult(t)
-	return t
+	asserts.AssertDescribeSpotInstanceRequestsResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ClientData = { ["Comment"] = true, ["UploadSize"] = true, ["UploadEnd"] = true, ["UploadStart"] = true, nil }
@@ -21096,15 +27718,26 @@ end
 -- * UploadStart [DateTime] <p>The time that the disk upload starts.</p>
 -- @return ClientData structure as a key-value pair table
 function M.ClientData(args)
-	assert(args, "You must provdide an argument table when creating ClientData")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ClientData")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Comment"] = args["Comment"],
 		["UploadSize"] = args["UploadSize"],
 		["UploadEnd"] = args["UploadEnd"],
 		["UploadStart"] = args["UploadStart"],
 	}
-	asserts.AssertClientData(t)
-	return t
+	asserts.AssertClientData(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeNetworkInterfaceAttributeResult = { ["SourceDestCheck"] = true, ["NetworkInterfaceId"] = true, ["Attachment"] = true, ["Groups"] = true, ["Description"] = true, nil }
@@ -21133,16 +27766,27 @@ end
 -- * Description [AttributeValue] <p>The description of the network interface.</p>
 -- @return DescribeNetworkInterfaceAttributeResult structure as a key-value pair table
 function M.DescribeNetworkInterfaceAttributeResult(args)
-	assert(args, "You must provdide an argument table when creating DescribeNetworkInterfaceAttributeResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeNetworkInterfaceAttributeResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["SourceDestCheck"] = args["SourceDestCheck"],
 		["NetworkInterfaceId"] = args["NetworkInterfaceId"],
 		["Attachment"] = args["Attachment"],
 		["Groups"] = args["Groups"],
 		["Description"] = args["Description"],
 	}
-	asserts.AssertDescribeNetworkInterfaceAttributeResult(t)
-	return t
+	asserts.AssertDescribeNetworkInterfaceAttributeResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ModifyInstancePlacementRequest = { ["InstanceId"] = true, ["Tenancy"] = true, ["HostId"] = true, ["Affinity"] = true, nil }
@@ -21171,15 +27815,26 @@ end
 -- Required key: InstanceId
 -- @return ModifyInstancePlacementRequest structure as a key-value pair table
 function M.ModifyInstancePlacementRequest(args)
-	assert(args, "You must provdide an argument table when creating ModifyInstancePlacementRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ModifyInstancePlacementRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["InstanceId"] = args["InstanceId"],
 		["Tenancy"] = args["Tenancy"],
 		["HostId"] = args["HostId"],
 		["Affinity"] = args["Affinity"],
 	}
-	asserts.AssertModifyInstancePlacementRequest(t)
-	return t
+	asserts.AssertModifyInstancePlacementRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.SpotFleetRequestConfig = { ["SpotFleetRequestState"] = true, ["SpotFleetRequestId"] = true, ["ActivityStatus"] = true, ["CreateTime"] = true, ["SpotFleetRequestConfig"] = true, nil }
@@ -21216,16 +27871,27 @@ end
 -- Required key: SpotFleetRequestState
 -- @return SpotFleetRequestConfig structure as a key-value pair table
 function M.SpotFleetRequestConfig(args)
-	assert(args, "You must provdide an argument table when creating SpotFleetRequestConfig")
-	local t = { 
+	assert(args, "You must provide an argument table when creating SpotFleetRequestConfig")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["SpotFleetRequestState"] = args["SpotFleetRequestState"],
 		["SpotFleetRequestId"] = args["SpotFleetRequestId"],
 		["ActivityStatus"] = args["ActivityStatus"],
 		["CreateTime"] = args["CreateTime"],
 		["SpotFleetRequestConfig"] = args["SpotFleetRequestConfig"],
 	}
-	asserts.AssertSpotFleetRequestConfig(t)
-	return t
+	asserts.AssertSpotFleetRequestConfig(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ExportToS3TaskSpecification = { ["S3Bucket"] = true, ["DiskImageFormat"] = true, ["S3Prefix"] = true, ["ContainerFormat"] = true, nil }
@@ -21252,15 +27918,26 @@ end
 -- * ContainerFormat [ContainerFormat] <p>The container format used to combine disk images with metadata (such as OVF). If absent, only the disk image is exported.</p>
 -- @return ExportToS3TaskSpecification structure as a key-value pair table
 function M.ExportToS3TaskSpecification(args)
-	assert(args, "You must provdide an argument table when creating ExportToS3TaskSpecification")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ExportToS3TaskSpecification")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["S3Bucket"] = args["S3Bucket"],
 		["DiskImageFormat"] = args["DiskImageFormat"],
 		["S3Prefix"] = args["S3Prefix"],
 		["ContainerFormat"] = args["ContainerFormat"],
 	}
-	asserts.AssertExportToS3TaskSpecification(t)
-	return t
+	asserts.AssertExportToS3TaskSpecification(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeHostReservationOfferingsResult = { ["NextToken"] = true, ["OfferingSet"] = true, nil }
@@ -21283,13 +27960,24 @@ end
 -- * OfferingSet [HostOfferingSet] <p>Information about the offerings.</p>
 -- @return DescribeHostReservationOfferingsResult structure as a key-value pair table
 function M.DescribeHostReservationOfferingsResult(args)
-	assert(args, "You must provdide an argument table when creating DescribeHostReservationOfferingsResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeHostReservationOfferingsResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NextToken"] = args["NextToken"],
 		["OfferingSet"] = args["OfferingSet"],
 	}
-	asserts.AssertDescribeHostReservationOfferingsResult(t)
-	return t
+	asserts.AssertDescribeHostReservationOfferingsResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeVpcAttributeRequest = { ["Attribute"] = true, ["VpcId"] = true, ["DryRun"] = true, nil }
@@ -21318,14 +28006,25 @@ end
 -- Required key: VpcId
 -- @return DescribeVpcAttributeRequest structure as a key-value pair table
 function M.DescribeVpcAttributeRequest(args)
-	assert(args, "You must provdide an argument table when creating DescribeVpcAttributeRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeVpcAttributeRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Attribute"] = args["Attribute"],
 		["VpcId"] = args["VpcId"],
 		["DryRun"] = args["DryRun"],
 	}
-	asserts.AssertDescribeVpcAttributeRequest(t)
-	return t
+	asserts.AssertDescribeVpcAttributeRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 function asserts.AssertEgressOnlyInternetGatewayId(str)
@@ -25636,8 +32335,11 @@ function M.DeleteTagsAsync(DeleteTagsRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DeleteTags",
 	}
+	for header,value in pairs(DeleteTagsRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteTagsRequest, headers, settings, cb)
 	else
@@ -25668,8 +32370,11 @@ function M.ResetSnapshotAttributeAsync(ResetSnapshotAttributeRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".ResetSnapshotAttribute",
 	}
+	for header,value in pairs(ResetSnapshotAttributeRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ResetSnapshotAttributeRequest, headers, settings, cb)
 	else
@@ -25700,8 +32405,11 @@ function M.DescribeCustomerGatewaysAsync(DescribeCustomerGatewaysRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DescribeCustomerGateways",
 	}
+	for header,value in pairs(DescribeCustomerGatewaysRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeCustomerGatewaysRequest, headers, settings, cb)
 	else
@@ -25732,8 +32440,11 @@ function M.EnableVpcClassicLinkDnsSupportAsync(EnableVpcClassicLinkDnsSupportReq
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".EnableVpcClassicLinkDnsSupport",
 	}
+	for header,value in pairs(EnableVpcClassicLinkDnsSupportRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", EnableVpcClassicLinkDnsSupportRequest, headers, settings, cb)
 	else
@@ -25764,8 +32475,11 @@ function M.DescribeNetworkAclsAsync(DescribeNetworkAclsRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DescribeNetworkAcls",
 	}
+	for header,value in pairs(DescribeNetworkAclsRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeNetworkAclsRequest, headers, settings, cb)
 	else
@@ -25796,8 +32510,11 @@ function M.DescribeImageAttributeAsync(DescribeImageAttributeRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DescribeImageAttribute",
 	}
+	for header,value in pairs(DescribeImageAttributeRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeImageAttributeRequest, headers, settings, cb)
 	else
@@ -25828,8 +32545,11 @@ function M.CancelConversionTaskAsync(CancelConversionRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".CancelConversionTask",
 	}
+	for header,value in pairs(CancelConversionRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", CancelConversionRequest, headers, settings, cb)
 	else
@@ -25860,8 +32580,11 @@ function M.CancelImportTaskAsync(CancelImportTaskRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".CancelImportTask",
 	}
+	for header,value in pairs(CancelImportTaskRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", CancelImportTaskRequest, headers, settings, cb)
 	else
@@ -25892,8 +32615,11 @@ function M.CreateVpnConnectionRouteAsync(CreateVpnConnectionRouteRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".CreateVpnConnectionRoute",
 	}
+	for header,value in pairs(CreateVpnConnectionRouteRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateVpnConnectionRouteRequest, headers, settings, cb)
 	else
@@ -25924,8 +32650,11 @@ function M.DescribeRouteTablesAsync(DescribeRouteTablesRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DescribeRouteTables",
 	}
+	for header,value in pairs(DescribeRouteTablesRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeRouteTablesRequest, headers, settings, cb)
 	else
@@ -25956,8 +32685,11 @@ function M.ResetImageAttributeAsync(ResetImageAttributeRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".ResetImageAttribute",
 	}
+	for header,value in pairs(ResetImageAttributeRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ResetImageAttributeRequest, headers, settings, cb)
 	else
@@ -25988,8 +32720,11 @@ function M.CreateRouteTableAsync(CreateRouteTableRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".CreateRouteTable",
 	}
+	for header,value in pairs(CreateRouteTableRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateRouteTableRequest, headers, settings, cb)
 	else
@@ -26020,8 +32755,11 @@ function M.ReplaceRouteTableAssociationAsync(ReplaceRouteTableAssociationRequest
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".ReplaceRouteTableAssociation",
 	}
+	for header,value in pairs(ReplaceRouteTableAssociationRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ReplaceRouteTableAssociationRequest, headers, settings, cb)
 	else
@@ -26052,8 +32790,11 @@ function M.CreateVpcEndpointAsync(CreateVpcEndpointRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".CreateVpcEndpoint",
 	}
+	for header,value in pairs(CreateVpcEndpointRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateVpcEndpointRequest, headers, settings, cb)
 	else
@@ -26084,8 +32825,11 @@ function M.RegisterImageAsync(RegisterImageRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".RegisterImage",
 	}
+	for header,value in pairs(RegisterImageRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", RegisterImageRequest, headers, settings, cb)
 	else
@@ -26116,8 +32860,11 @@ function M.AssociateDhcpOptionsAsync(AssociateDhcpOptionsRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".AssociateDhcpOptions",
 	}
+	for header,value in pairs(AssociateDhcpOptionsRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", AssociateDhcpOptionsRequest, headers, settings, cb)
 	else
@@ -26148,8 +32895,11 @@ function M.ImportKeyPairAsync(ImportKeyPairRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".ImportKeyPair",
 	}
+	for header,value in pairs(ImportKeyPairRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ImportKeyPairRequest, headers, settings, cb)
 	else
@@ -26180,8 +32930,11 @@ function M.DescribeAvailabilityZonesAsync(DescribeAvailabilityZonesRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DescribeAvailabilityZones",
 	}
+	for header,value in pairs(DescribeAvailabilityZonesRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeAvailabilityZonesRequest, headers, settings, cb)
 	else
@@ -26212,8 +32965,11 @@ function M.RequestSpotInstancesAsync(RequestSpotInstancesRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".RequestSpotInstances",
 	}
+	for header,value in pairs(RequestSpotInstancesRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", RequestSpotInstancesRequest, headers, settings, cb)
 	else
@@ -26244,8 +33000,11 @@ function M.DescribeVpnGatewaysAsync(DescribeVpnGatewaysRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DescribeVpnGateways",
 	}
+	for header,value in pairs(DescribeVpnGatewaysRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeVpnGatewaysRequest, headers, settings, cb)
 	else
@@ -26276,8 +33035,11 @@ function M.AcceptVpcPeeringConnectionAsync(AcceptVpcPeeringConnectionRequest, cb
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".AcceptVpcPeeringConnection",
 	}
+	for header,value in pairs(AcceptVpcPeeringConnectionRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", AcceptVpcPeeringConnectionRequest, headers, settings, cb)
 	else
@@ -26308,8 +33070,11 @@ function M.DescribeReservedInstancesModificationsAsync(DescribeReservedInstances
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DescribeReservedInstancesModifications",
 	}
+	for header,value in pairs(DescribeReservedInstancesModificationsRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeReservedInstancesModificationsRequest, headers, settings, cb)
 	else
@@ -26340,8 +33105,11 @@ function M.GetPasswordDataAsync(GetPasswordDataRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".GetPasswordData",
 	}
+	for header,value in pairs(GetPasswordDataRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", GetPasswordDataRequest, headers, settings, cb)
 	else
@@ -26372,8 +33140,11 @@ function M.DescribeImportSnapshotTasksAsync(DescribeImportSnapshotTasksRequest, 
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DescribeImportSnapshotTasks",
 	}
+	for header,value in pairs(DescribeImportSnapshotTasksRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeImportSnapshotTasksRequest, headers, settings, cb)
 	else
@@ -26404,8 +33175,11 @@ function M.UnassignIpv6AddressesAsync(UnassignIpv6AddressesRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".UnassignIpv6Addresses",
 	}
+	for header,value in pairs(UnassignIpv6AddressesRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", UnassignIpv6AddressesRequest, headers, settings, cb)
 	else
@@ -26436,8 +33210,11 @@ function M.DeleteVpnConnectionAsync(DeleteVpnConnectionRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DeleteVpnConnection",
 	}
+	for header,value in pairs(DeleteVpnConnectionRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteVpnConnectionRequest, headers, settings, cb)
 	else
@@ -26468,8 +33245,11 @@ function M.AttachVpnGatewayAsync(AttachVpnGatewayRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".AttachVpnGateway",
 	}
+	for header,value in pairs(AttachVpnGatewayRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", AttachVpnGatewayRequest, headers, settings, cb)
 	else
@@ -26500,8 +33280,11 @@ function M.ImportImageAsync(ImportImageRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".ImportImage",
 	}
+	for header,value in pairs(ImportImageRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ImportImageRequest, headers, settings, cb)
 	else
@@ -26532,8 +33315,11 @@ function M.DescribeAddressesAsync(DescribeAddressesRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DescribeAddresses",
 	}
+	for header,value in pairs(DescribeAddressesRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeAddressesRequest, headers, settings, cb)
 	else
@@ -26564,8 +33350,11 @@ function M.DisassociateIamInstanceProfileAsync(DisassociateIamInstanceProfileReq
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DisassociateIamInstanceProfile",
 	}
+	for header,value in pairs(DisassociateIamInstanceProfileRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DisassociateIamInstanceProfileRequest, headers, settings, cb)
 	else
@@ -26596,8 +33385,11 @@ function M.AssociateIamInstanceProfileAsync(AssociateIamInstanceProfileRequest, 
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".AssociateIamInstanceProfile",
 	}
+	for header,value in pairs(AssociateIamInstanceProfileRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", AssociateIamInstanceProfileRequest, headers, settings, cb)
 	else
@@ -26628,8 +33420,11 @@ function M.PurchaseHostReservationAsync(PurchaseHostReservationRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".PurchaseHostReservation",
 	}
+	for header,value in pairs(PurchaseHostReservationRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", PurchaseHostReservationRequest, headers, settings, cb)
 	else
@@ -26660,8 +33455,11 @@ function M.BundleInstanceAsync(BundleInstanceRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".BundleInstance",
 	}
+	for header,value in pairs(BundleInstanceRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", BundleInstanceRequest, headers, settings, cb)
 	else
@@ -26692,8 +33490,11 @@ function M.DescribeReservedInstancesAsync(DescribeReservedInstancesRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DescribeReservedInstances",
 	}
+	for header,value in pairs(DescribeReservedInstancesRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeReservedInstancesRequest, headers, settings, cb)
 	else
@@ -26724,8 +33525,11 @@ function M.CreateNetworkAclAsync(CreateNetworkAclRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".CreateNetworkAcl",
 	}
+	for header,value in pairs(CreateNetworkAclRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateNetworkAclRequest, headers, settings, cb)
 	else
@@ -26756,8 +33560,11 @@ function M.CreateImageAsync(CreateImageRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".CreateImage",
 	}
+	for header,value in pairs(CreateImageRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateImageRequest, headers, settings, cb)
 	else
@@ -26788,8 +33595,11 @@ function M.ModifyHostsAsync(ModifyHostsRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".ModifyHosts",
 	}
+	for header,value in pairs(ModifyHostsRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ModifyHostsRequest, headers, settings, cb)
 	else
@@ -26820,8 +33630,11 @@ function M.RebootInstancesAsync(RebootInstancesRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".RebootInstances",
 	}
+	for header,value in pairs(RebootInstancesRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", RebootInstancesRequest, headers, settings, cb)
 	else
@@ -26852,8 +33665,11 @@ function M.DescribeVpcEndpointsAsync(DescribeVpcEndpointsRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DescribeVpcEndpoints",
 	}
+	for header,value in pairs(DescribeVpcEndpointsRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeVpcEndpointsRequest, headers, settings, cb)
 	else
@@ -26884,8 +33700,11 @@ function M.ModifyIdentityIdFormatAsync(ModifyIdentityIdFormatRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".ModifyIdentityIdFormat",
 	}
+	for header,value in pairs(ModifyIdentityIdFormatRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ModifyIdentityIdFormatRequest, headers, settings, cb)
 	else
@@ -26916,8 +33735,11 @@ function M.DescribeSpotFleetRequestHistoryAsync(DescribeSpotFleetRequestHistoryR
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DescribeSpotFleetRequestHistory",
 	}
+	for header,value in pairs(DescribeSpotFleetRequestHistoryRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeSpotFleetRequestHistoryRequest, headers, settings, cb)
 	else
@@ -26948,8 +33770,11 @@ function M.PurchaseScheduledInstancesAsync(PurchaseScheduledInstancesRequest, cb
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".PurchaseScheduledInstances",
 	}
+	for header,value in pairs(PurchaseScheduledInstancesRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", PurchaseScheduledInstancesRequest, headers, settings, cb)
 	else
@@ -26980,8 +33805,11 @@ function M.ReplaceIamInstanceProfileAssociationAsync(ReplaceIamInstanceProfileAs
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".ReplaceIamInstanceProfileAssociation",
 	}
+	for header,value in pairs(ReplaceIamInstanceProfileAssociationRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ReplaceIamInstanceProfileAssociationRequest, headers, settings, cb)
 	else
@@ -27012,8 +33840,11 @@ function M.DetachVolumeAsync(DetachVolumeRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DetachVolume",
 	}
+	for header,value in pairs(DetachVolumeRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DetachVolumeRequest, headers, settings, cb)
 	else
@@ -27044,8 +33875,11 @@ function M.DescribeIamInstanceProfileAssociationsAsync(DescribeIamInstanceProfil
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DescribeIamInstanceProfileAssociations",
 	}
+	for header,value in pairs(DescribeIamInstanceProfileAssociationsRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeIamInstanceProfileAssociationsRequest, headers, settings, cb)
 	else
@@ -27076,8 +33910,11 @@ function M.AssignPrivateIpAddressesAsync(AssignPrivateIpAddressesRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".AssignPrivateIpAddresses",
 	}
+	for header,value in pairs(AssignPrivateIpAddressesRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", AssignPrivateIpAddressesRequest, headers, settings, cb)
 	else
@@ -27108,8 +33945,11 @@ function M.CancelExportTaskAsync(CancelExportTaskRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".CancelExportTask",
 	}
+	for header,value in pairs(CancelExportTaskRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", CancelExportTaskRequest, headers, settings, cb)
 	else
@@ -27140,8 +33980,11 @@ function M.DetachVpnGatewayAsync(DetachVpnGatewayRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DetachVpnGateway",
 	}
+	for header,value in pairs(DetachVpnGatewayRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DetachVpnGatewayRequest, headers, settings, cb)
 	else
@@ -27172,8 +34015,11 @@ function M.DescribeVpcAttributeAsync(DescribeVpcAttributeRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DescribeVpcAttribute",
 	}
+	for header,value in pairs(DescribeVpcAttributeRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeVpcAttributeRequest, headers, settings, cb)
 	else
@@ -27204,8 +34050,11 @@ function M.CancelBundleTaskAsync(CancelBundleTaskRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".CancelBundleTask",
 	}
+	for header,value in pairs(CancelBundleTaskRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", CancelBundleTaskRequest, headers, settings, cb)
 	else
@@ -27236,8 +34085,11 @@ function M.DescribeNatGatewaysAsync(DescribeNatGatewaysRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DescribeNatGateways",
 	}
+	for header,value in pairs(DescribeNatGatewaysRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeNatGatewaysRequest, headers, settings, cb)
 	else
@@ -27268,8 +34120,11 @@ function M.DisassociateSubnetCidrBlockAsync(DisassociateSubnetCidrBlockRequest, 
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DisassociateSubnetCidrBlock",
 	}
+	for header,value in pairs(DisassociateSubnetCidrBlockRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DisassociateSubnetCidrBlockRequest, headers, settings, cb)
 	else
@@ -27300,8 +34155,11 @@ function M.CreateVpcPeeringConnectionAsync(CreateVpcPeeringConnectionRequest, cb
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".CreateVpcPeeringConnection",
 	}
+	for header,value in pairs(CreateVpcPeeringConnectionRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateVpcPeeringConnectionRequest, headers, settings, cb)
 	else
@@ -27332,8 +34190,11 @@ function M.ModifyIdFormatAsync(ModifyIdFormatRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".ModifyIdFormat",
 	}
+	for header,value in pairs(ModifyIdFormatRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ModifyIdFormatRequest, headers, settings, cb)
 	else
@@ -27364,8 +34225,11 @@ function M.DescribeSpotFleetRequestsAsync(DescribeSpotFleetRequestsRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DescribeSpotFleetRequests",
 	}
+	for header,value in pairs(DescribeSpotFleetRequestsRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeSpotFleetRequestsRequest, headers, settings, cb)
 	else
@@ -27396,8 +34260,11 @@ function M.AllocateHostsAsync(AllocateHostsRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".AllocateHosts",
 	}
+	for header,value in pairs(AllocateHostsRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", AllocateHostsRequest, headers, settings, cb)
 	else
@@ -27428,8 +34295,11 @@ function M.DeleteNetworkAclAsync(DeleteNetworkAclRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DeleteNetworkAcl",
 	}
+	for header,value in pairs(DeleteNetworkAclRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteNetworkAclRequest, headers, settings, cb)
 	else
@@ -27460,8 +34330,11 @@ function M.GetHostReservationPurchasePreviewAsync(GetHostReservationPurchasePrev
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".GetHostReservationPurchasePreview",
 	}
+	for header,value in pairs(GetHostReservationPurchasePreviewRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", GetHostReservationPurchasePreviewRequest, headers, settings, cb)
 	else
@@ -27492,8 +34365,11 @@ function M.CopyImageAsync(CopyImageRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".CopyImage",
 	}
+	for header,value in pairs(CopyImageRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", CopyImageRequest, headers, settings, cb)
 	else
@@ -27524,8 +34400,11 @@ function M.CreateSnapshotAsync(CreateSnapshotRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".CreateSnapshot",
 	}
+	for header,value in pairs(CreateSnapshotRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateSnapshotRequest, headers, settings, cb)
 	else
@@ -27556,8 +34435,11 @@ function M.CreateSubnetAsync(CreateSubnetRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".CreateSubnet",
 	}
+	for header,value in pairs(CreateSubnetRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateSubnetRequest, headers, settings, cb)
 	else
@@ -27588,8 +34470,11 @@ function M.RequestSpotFleetAsync(RequestSpotFleetRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".RequestSpotFleet",
 	}
+	for header,value in pairs(RequestSpotFleetRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", RequestSpotFleetRequest, headers, settings, cb)
 	else
@@ -27620,8 +34505,11 @@ function M.ModifyImageAttributeAsync(ModifyImageAttributeRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".ModifyImageAttribute",
 	}
+	for header,value in pairs(ModifyImageAttributeRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ModifyImageAttributeRequest, headers, settings, cb)
 	else
@@ -27652,8 +34540,11 @@ function M.AssociateSubnetCidrBlockAsync(AssociateSubnetCidrBlockRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".AssociateSubnetCidrBlock",
 	}
+	for header,value in pairs(AssociateSubnetCidrBlockRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", AssociateSubnetCidrBlockRequest, headers, settings, cb)
 	else
@@ -27684,8 +34575,11 @@ function M.StartInstancesAsync(StartInstancesRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".StartInstances",
 	}
+	for header,value in pairs(StartInstancesRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", StartInstancesRequest, headers, settings, cb)
 	else
@@ -27716,8 +34610,11 @@ function M.DescribeSpotInstanceRequestsAsync(DescribeSpotInstanceRequestsRequest
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DescribeSpotInstanceRequests",
 	}
+	for header,value in pairs(DescribeSpotInstanceRequestsRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeSpotInstanceRequestsRequest, headers, settings, cb)
 	else
@@ -27748,8 +34645,11 @@ function M.DisableVgwRoutePropagationAsync(DisableVgwRoutePropagationRequest, cb
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DisableVgwRoutePropagation",
 	}
+	for header,value in pairs(DisableVgwRoutePropagationRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DisableVgwRoutePropagationRequest, headers, settings, cb)
 	else
@@ -27780,8 +34680,11 @@ function M.DescribeVpcsAsync(DescribeVpcsRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DescribeVpcs",
 	}
+	for header,value in pairs(DescribeVpcsRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeVpcsRequest, headers, settings, cb)
 	else
@@ -27812,8 +34715,11 @@ function M.DisassociateAddressAsync(DisassociateAddressRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DisassociateAddress",
 	}
+	for header,value in pairs(DisassociateAddressRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DisassociateAddressRequest, headers, settings, cb)
 	else
@@ -27844,8 +34750,11 @@ function M.ModifySnapshotAttributeAsync(ModifySnapshotAttributeRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".ModifySnapshotAttribute",
 	}
+	for header,value in pairs(ModifySnapshotAttributeRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ModifySnapshotAttributeRequest, headers, settings, cb)
 	else
@@ -27876,8 +34785,11 @@ function M.MoveAddressToVpcAsync(MoveAddressToVpcRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".MoveAddressToVpc",
 	}
+	for header,value in pairs(MoveAddressToVpcRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", MoveAddressToVpcRequest, headers, settings, cb)
 	else
@@ -27908,8 +34820,11 @@ function M.CreateVpcAsync(CreateVpcRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".CreateVpc",
 	}
+	for header,value in pairs(CreateVpcRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateVpcRequest, headers, settings, cb)
 	else
@@ -27940,8 +34855,11 @@ function M.DescribeVpcEndpointServicesAsync(DescribeVpcEndpointServicesRequest, 
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DescribeVpcEndpointServices",
 	}
+	for header,value in pairs(DescribeVpcEndpointServicesRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeVpcEndpointServicesRequest, headers, settings, cb)
 	else
@@ -27972,8 +34890,11 @@ function M.CancelSpotFleetRequestsAsync(CancelSpotFleetRequestsRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".CancelSpotFleetRequests",
 	}
+	for header,value in pairs(CancelSpotFleetRequestsRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", CancelSpotFleetRequestsRequest, headers, settings, cb)
 	else
@@ -28004,8 +34925,11 @@ function M.UnmonitorInstancesAsync(UnmonitorInstancesRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".UnmonitorInstances",
 	}
+	for header,value in pairs(UnmonitorInstancesRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", UnmonitorInstancesRequest, headers, settings, cb)
 	else
@@ -28036,8 +34960,11 @@ function M.DeleteSubnetAsync(DeleteSubnetRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DeleteSubnet",
 	}
+	for header,value in pairs(DeleteSubnetRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteSubnetRequest, headers, settings, cb)
 	else
@@ -28068,8 +34995,11 @@ function M.CreatePlacementGroupAsync(CreatePlacementGroupRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".CreatePlacementGroup",
 	}
+	for header,value in pairs(CreatePlacementGroupRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", CreatePlacementGroupRequest, headers, settings, cb)
 	else
@@ -28100,8 +35030,11 @@ function M.CopySnapshotAsync(CopySnapshotRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".CopySnapshot",
 	}
+	for header,value in pairs(CopySnapshotRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", CopySnapshotRequest, headers, settings, cb)
 	else
@@ -28132,8 +35065,11 @@ function M.DisableVpcClassicLinkDnsSupportAsync(DisableVpcClassicLinkDnsSupportR
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DisableVpcClassicLinkDnsSupport",
 	}
+	for header,value in pairs(DisableVpcClassicLinkDnsSupportRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DisableVpcClassicLinkDnsSupportRequest, headers, settings, cb)
 	else
@@ -28164,8 +35100,11 @@ function M.DescribeHostReservationOfferingsAsync(DescribeHostReservationOffering
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DescribeHostReservationOfferings",
 	}
+	for header,value in pairs(DescribeHostReservationOfferingsRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeHostReservationOfferingsRequest, headers, settings, cb)
 	else
@@ -28196,8 +35135,11 @@ function M.DescribeVolumesModificationsAsync(DescribeVolumesModificationsRequest
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DescribeVolumesModifications",
 	}
+	for header,value in pairs(DescribeVolumesModificationsRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeVolumesModificationsRequest, headers, settings, cb)
 	else
@@ -28228,8 +35170,11 @@ function M.AssociateVpcCidrBlockAsync(AssociateVpcCidrBlockRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".AssociateVpcCidrBlock",
 	}
+	for header,value in pairs(AssociateVpcCidrBlockRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", AssociateVpcCidrBlockRequest, headers, settings, cb)
 	else
@@ -28260,8 +35205,11 @@ function M.AssociateAddressAsync(AssociateAddressRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".AssociateAddress",
 	}
+	for header,value in pairs(AssociateAddressRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", AssociateAddressRequest, headers, settings, cb)
 	else
@@ -28292,8 +35240,11 @@ function M.DeleteCustomerGatewayAsync(DeleteCustomerGatewayRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DeleteCustomerGateway",
 	}
+	for header,value in pairs(DeleteCustomerGatewayRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteCustomerGatewayRequest, headers, settings, cb)
 	else
@@ -28324,8 +35275,11 @@ function M.CreateInternetGatewayAsync(CreateInternetGatewayRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".CreateInternetGateway",
 	}
+	for header,value in pairs(CreateInternetGatewayRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateInternetGatewayRequest, headers, settings, cb)
 	else
@@ -28356,8 +35310,11 @@ function M.AttachClassicLinkVpcAsync(AttachClassicLinkVpcRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".AttachClassicLinkVpc",
 	}
+	for header,value in pairs(AttachClassicLinkVpcRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", AttachClassicLinkVpcRequest, headers, settings, cb)
 	else
@@ -28388,8 +35345,11 @@ function M.DescribeSpotPriceHistoryAsync(DescribeSpotPriceHistoryRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DescribeSpotPriceHistory",
 	}
+	for header,value in pairs(DescribeSpotPriceHistoryRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeSpotPriceHistoryRequest, headers, settings, cb)
 	else
@@ -28420,8 +35380,11 @@ function M.DescribeDhcpOptionsAsync(DescribeDhcpOptionsRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DescribeDhcpOptions",
 	}
+	for header,value in pairs(DescribeDhcpOptionsRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeDhcpOptionsRequest, headers, settings, cb)
 	else
@@ -28452,8 +35415,11 @@ function M.DeleteVpcPeeringConnectionAsync(DeleteVpcPeeringConnectionRequest, cb
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DeleteVpcPeeringConnection",
 	}
+	for header,value in pairs(DeleteVpcPeeringConnectionRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteVpcPeeringConnectionRequest, headers, settings, cb)
 	else
@@ -28484,8 +35450,11 @@ function M.DescribeFlowLogsAsync(DescribeFlowLogsRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DescribeFlowLogs",
 	}
+	for header,value in pairs(DescribeFlowLogsRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeFlowLogsRequest, headers, settings, cb)
 	else
@@ -28516,8 +35485,11 @@ function M.CreateNetworkAclEntryAsync(CreateNetworkAclEntryRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".CreateNetworkAclEntry",
 	}
+	for header,value in pairs(CreateNetworkAclEntryRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateNetworkAclEntryRequest, headers, settings, cb)
 	else
@@ -28548,8 +35520,11 @@ function M.ReleaseHostsAsync(ReleaseHostsRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".ReleaseHosts",
 	}
+	for header,value in pairs(ReleaseHostsRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ReleaseHostsRequest, headers, settings, cb)
 	else
@@ -28580,8 +35555,11 @@ function M.RestoreAddressToClassicAsync(RestoreAddressToClassicRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".RestoreAddressToClassic",
 	}
+	for header,value in pairs(RestoreAddressToClassicRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", RestoreAddressToClassicRequest, headers, settings, cb)
 	else
@@ -28612,8 +35590,11 @@ function M.CreateNetworkInterfaceAsync(CreateNetworkInterfaceRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".CreateNetworkInterface",
 	}
+	for header,value in pairs(CreateNetworkInterfaceRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateNetworkInterfaceRequest, headers, settings, cb)
 	else
@@ -28644,8 +35625,11 @@ function M.DescribeRegionsAsync(DescribeRegionsRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DescribeRegions",
 	}
+	for header,value in pairs(DescribeRegionsRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeRegionsRequest, headers, settings, cb)
 	else
@@ -28676,8 +35660,11 @@ function M.RevokeSecurityGroupIngressAsync(RevokeSecurityGroupIngressRequest, cb
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".RevokeSecurityGroupIngress",
 	}
+	for header,value in pairs(RevokeSecurityGroupIngressRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", RevokeSecurityGroupIngressRequest, headers, settings, cb)
 	else
@@ -28708,8 +35695,11 @@ function M.UnassignPrivateIpAddressesAsync(UnassignPrivateIpAddressesRequest, cb
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".UnassignPrivateIpAddresses",
 	}
+	for header,value in pairs(UnassignPrivateIpAddressesRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", UnassignPrivateIpAddressesRequest, headers, settings, cb)
 	else
@@ -28740,8 +35730,11 @@ function M.AttachInternetGatewayAsync(AttachInternetGatewayRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".AttachInternetGateway",
 	}
+	for header,value in pairs(AttachInternetGatewayRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", AttachInternetGatewayRequest, headers, settings, cb)
 	else
@@ -28772,8 +35765,11 @@ function M.CreateInstanceExportTaskAsync(CreateInstanceExportTaskRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".CreateInstanceExportTask",
 	}
+	for header,value in pairs(CreateInstanceExportTaskRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateInstanceExportTaskRequest, headers, settings, cb)
 	else
@@ -28804,8 +35800,11 @@ function M.DeleteDhcpOptionsAsync(DeleteDhcpOptionsRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DeleteDhcpOptions",
 	}
+	for header,value in pairs(DeleteDhcpOptionsRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteDhcpOptionsRequest, headers, settings, cb)
 	else
@@ -28836,8 +35835,11 @@ function M.ResetNetworkInterfaceAttributeAsync(ResetNetworkInterfaceAttributeReq
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".ResetNetworkInterfaceAttribute",
 	}
+	for header,value in pairs(ResetNetworkInterfaceAttributeRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ResetNetworkInterfaceAttributeRequest, headers, settings, cb)
 	else
@@ -28868,8 +35870,11 @@ function M.ModifyReservedInstancesAsync(ModifyReservedInstancesRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".ModifyReservedInstances",
 	}
+	for header,value in pairs(ModifyReservedInstancesRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ModifyReservedInstancesRequest, headers, settings, cb)
 	else
@@ -28900,8 +35905,11 @@ function M.DetachNetworkInterfaceAsync(DetachNetworkInterfaceRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DetachNetworkInterface",
 	}
+	for header,value in pairs(DetachNetworkInterfaceRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DetachNetworkInterfaceRequest, headers, settings, cb)
 	else
@@ -28932,8 +35940,11 @@ function M.DescribeImportImageTasksAsync(DescribeImportImageTasksRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DescribeImportImageTasks",
 	}
+	for header,value in pairs(DescribeImportImageTasksRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeImportImageTasksRequest, headers, settings, cb)
 	else
@@ -28964,8 +35975,11 @@ function M.DescribeSpotFleetInstancesAsync(DescribeSpotFleetInstancesRequest, cb
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DescribeSpotFleetInstances",
 	}
+	for header,value in pairs(DescribeSpotFleetInstancesRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeSpotFleetInstancesRequest, headers, settings, cb)
 	else
@@ -28996,8 +36010,11 @@ function M.EnableVpcClassicLinkAsync(EnableVpcClassicLinkRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".EnableVpcClassicLink",
 	}
+	for header,value in pairs(EnableVpcClassicLinkRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", EnableVpcClassicLinkRequest, headers, settings, cb)
 	else
@@ -29028,8 +36045,11 @@ function M.CreateFlowLogsAsync(CreateFlowLogsRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".CreateFlowLogs",
 	}
+	for header,value in pairs(CreateFlowLogsRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateFlowLogsRequest, headers, settings, cb)
 	else
@@ -29060,8 +36080,11 @@ function M.DisassociateVpcCidrBlockAsync(DisassociateVpcCidrBlockRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DisassociateVpcCidrBlock",
 	}
+	for header,value in pairs(DisassociateVpcCidrBlockRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DisassociateVpcCidrBlockRequest, headers, settings, cb)
 	else
@@ -29092,8 +36115,11 @@ function M.DescribeVolumeStatusAsync(DescribeVolumeStatusRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DescribeVolumeStatus",
 	}
+	for header,value in pairs(DescribeVolumeStatusRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeVolumeStatusRequest, headers, settings, cb)
 	else
@@ -29124,8 +36150,11 @@ function M.DescribeHostsAsync(DescribeHostsRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DescribeHosts",
 	}
+	for header,value in pairs(DescribeHostsRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeHostsRequest, headers, settings, cb)
 	else
@@ -29156,8 +36185,11 @@ function M.DescribeVpcPeeringConnectionsAsync(DescribeVpcPeeringConnectionsReque
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DescribeVpcPeeringConnections",
 	}
+	for header,value in pairs(DescribeVpcPeeringConnectionsRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeVpcPeeringConnectionsRequest, headers, settings, cb)
 	else
@@ -29188,8 +36220,11 @@ function M.DescribeVolumesAsync(DescribeVolumesRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DescribeVolumes",
 	}
+	for header,value in pairs(DescribeVolumesRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeVolumesRequest, headers, settings, cb)
 	else
@@ -29220,8 +36255,11 @@ function M.DeleteNetworkInterfaceAsync(DeleteNetworkInterfaceRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DeleteNetworkInterface",
 	}
+	for header,value in pairs(DeleteNetworkInterfaceRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteNetworkInterfaceRequest, headers, settings, cb)
 	else
@@ -29252,8 +36290,11 @@ function M.DescribeVpnConnectionsAsync(DescribeVpnConnectionsRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DescribeVpnConnections",
 	}
+	for header,value in pairs(DescribeVpnConnectionsRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeVpnConnectionsRequest, headers, settings, cb)
 	else
@@ -29284,8 +36325,11 @@ function M.DeleteVpcEndpointsAsync(DeleteVpcEndpointsRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DeleteVpcEndpoints",
 	}
+	for header,value in pairs(DeleteVpcEndpointsRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteVpcEndpointsRequest, headers, settings, cb)
 	else
@@ -29316,8 +36360,11 @@ function M.DescribeVolumeAttributeAsync(DescribeVolumeAttributeRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DescribeVolumeAttribute",
 	}
+	for header,value in pairs(DescribeVolumeAttributeRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeVolumeAttributeRequest, headers, settings, cb)
 	else
@@ -29348,8 +36395,11 @@ function M.DeleteKeyPairAsync(DeleteKeyPairRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DeleteKeyPair",
 	}
+	for header,value in pairs(DeleteKeyPairRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteKeyPairRequest, headers, settings, cb)
 	else
@@ -29380,8 +36430,11 @@ function M.DeleteNatGatewayAsync(DeleteNatGatewayRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DeleteNatGateway",
 	}
+	for header,value in pairs(DeleteNatGatewayRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteNatGatewayRequest, headers, settings, cb)
 	else
@@ -29412,8 +36465,11 @@ function M.ModifyInstancePlacementAsync(ModifyInstancePlacementRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".ModifyInstancePlacement",
 	}
+	for header,value in pairs(ModifyInstancePlacementRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ModifyInstancePlacementRequest, headers, settings, cb)
 	else
@@ -29444,8 +36500,11 @@ function M.ReplaceNetworkAclEntryAsync(ReplaceNetworkAclEntryRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".ReplaceNetworkAclEntry",
 	}
+	for header,value in pairs(ReplaceNetworkAclEntryRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ReplaceNetworkAclEntryRequest, headers, settings, cb)
 	else
@@ -29476,8 +36535,11 @@ function M.CreateEgressOnlyInternetGatewayAsync(CreateEgressOnlyInternetGatewayR
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".CreateEgressOnlyInternetGateway",
 	}
+	for header,value in pairs(CreateEgressOnlyInternetGatewayRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateEgressOnlyInternetGatewayRequest, headers, settings, cb)
 	else
@@ -29508,8 +36570,11 @@ function M.DeleteInternetGatewayAsync(DeleteInternetGatewayRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DeleteInternetGateway",
 	}
+	for header,value in pairs(DeleteInternetGatewayRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteInternetGatewayRequest, headers, settings, cb)
 	else
@@ -29540,8 +36605,11 @@ function M.CreateVolumeAsync(CreateVolumeRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".CreateVolume",
 	}
+	for header,value in pairs(CreateVolumeRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateVolumeRequest, headers, settings, cb)
 	else
@@ -29572,8 +36640,11 @@ function M.RunInstancesAsync(RunInstancesRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".RunInstances",
 	}
+	for header,value in pairs(RunInstancesRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", RunInstancesRequest, headers, settings, cb)
 	else
@@ -29604,8 +36675,11 @@ function M.DescribeScheduledInstancesAsync(DescribeScheduledInstancesRequest, cb
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DescribeScheduledInstances",
 	}
+	for header,value in pairs(DescribeScheduledInstancesRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeScheduledInstancesRequest, headers, settings, cb)
 	else
@@ -29636,8 +36710,11 @@ function M.DeleteRouteAsync(DeleteRouteRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DeleteRoute",
 	}
+	for header,value in pairs(DeleteRouteRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteRouteRequest, headers, settings, cb)
 	else
@@ -29668,8 +36745,11 @@ function M.DisableVpcClassicLinkAsync(DisableVpcClassicLinkRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DisableVpcClassicLink",
 	}
+	for header,value in pairs(DisableVpcClassicLinkRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DisableVpcClassicLinkRequest, headers, settings, cb)
 	else
@@ -29700,8 +36780,11 @@ function M.AttachNetworkInterfaceAsync(AttachNetworkInterfaceRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".AttachNetworkInterface",
 	}
+	for header,value in pairs(AttachNetworkInterfaceRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", AttachNetworkInterfaceRequest, headers, settings, cb)
 	else
@@ -29732,8 +36815,11 @@ function M.CreateNatGatewayAsync(CreateNatGatewayRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".CreateNatGateway",
 	}
+	for header,value in pairs(CreateNatGatewayRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateNatGatewayRequest, headers, settings, cb)
 	else
@@ -29764,8 +36850,11 @@ function M.DeleteVpnConnectionRouteAsync(DeleteVpnConnectionRouteRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DeleteVpnConnectionRoute",
 	}
+	for header,value in pairs(DeleteVpnConnectionRouteRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteVpnConnectionRouteRequest, headers, settings, cb)
 	else
@@ -29796,8 +36885,11 @@ function M.CancelSpotInstanceRequestsAsync(CancelSpotInstanceRequestsRequest, cb
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".CancelSpotInstanceRequests",
 	}
+	for header,value in pairs(CancelSpotInstanceRequestsRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", CancelSpotInstanceRequestsRequest, headers, settings, cb)
 	else
@@ -29828,8 +36920,11 @@ function M.CreateKeyPairAsync(CreateKeyPairRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".CreateKeyPair",
 	}
+	for header,value in pairs(CreateKeyPairRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateKeyPairRequest, headers, settings, cb)
 	else
@@ -29860,8 +36955,11 @@ function M.DescribeNetworkInterfaceAttributeAsync(DescribeNetworkInterfaceAttrib
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DescribeNetworkInterfaceAttribute",
 	}
+	for header,value in pairs(DescribeNetworkInterfaceAttributeRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeNetworkInterfaceAttributeRequest, headers, settings, cb)
 	else
@@ -29892,8 +36990,11 @@ function M.DescribeIdFormatAsync(DescribeIdFormatRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DescribeIdFormat",
 	}
+	for header,value in pairs(DescribeIdFormatRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeIdFormatRequest, headers, settings, cb)
 	else
@@ -29924,8 +37025,11 @@ function M.DeleteSnapshotAsync(DeleteSnapshotRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DeleteSnapshot",
 	}
+	for header,value in pairs(DeleteSnapshotRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteSnapshotRequest, headers, settings, cb)
 	else
@@ -29956,8 +37060,11 @@ function M.DescribeMovingAddressesAsync(DescribeMovingAddressesRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DescribeMovingAddresses",
 	}
+	for header,value in pairs(DescribeMovingAddressesRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeMovingAddressesRequest, headers, settings, cb)
 	else
@@ -29988,8 +37095,11 @@ function M.DescribeInstanceAttributeAsync(DescribeInstanceAttributeRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DescribeInstanceAttribute",
 	}
+	for header,value in pairs(DescribeInstanceAttributeRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeInstanceAttributeRequest, headers, settings, cb)
 	else
@@ -30020,8 +37130,11 @@ function M.DeregisterImageAsync(DeregisterImageRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DeregisterImage",
 	}
+	for header,value in pairs(DeregisterImageRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DeregisterImageRequest, headers, settings, cb)
 	else
@@ -30052,8 +37165,11 @@ function M.DeleteVpnGatewayAsync(DeleteVpnGatewayRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DeleteVpnGateway",
 	}
+	for header,value in pairs(DeleteVpnGatewayRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteVpnGatewayRequest, headers, settings, cb)
 	else
@@ -30084,8 +37200,11 @@ function M.ReportInstanceStatusAsync(ReportInstanceStatusRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".ReportInstanceStatus",
 	}
+	for header,value in pairs(ReportInstanceStatusRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ReportInstanceStatusRequest, headers, settings, cb)
 	else
@@ -30116,8 +37235,11 @@ function M.CancelReservedInstancesListingAsync(CancelReservedInstancesListingReq
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".CancelReservedInstancesListing",
 	}
+	for header,value in pairs(CancelReservedInstancesListingRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", CancelReservedInstancesListingRequest, headers, settings, cb)
 	else
@@ -30148,8 +37270,11 @@ function M.DescribePrefixListsAsync(DescribePrefixListsRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DescribePrefixLists",
 	}
+	for header,value in pairs(DescribePrefixListsRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribePrefixListsRequest, headers, settings, cb)
 	else
@@ -30180,8 +37305,11 @@ function M.DescribeSnapshotAttributeAsync(DescribeSnapshotAttributeRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DescribeSnapshotAttribute",
 	}
+	for header,value in pairs(DescribeSnapshotAttributeRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeSnapshotAttributeRequest, headers, settings, cb)
 	else
@@ -30212,8 +37340,11 @@ function M.PurchaseReservedInstancesOfferingAsync(PurchaseReservedInstancesOffer
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".PurchaseReservedInstancesOffering",
 	}
+	for header,value in pairs(PurchaseReservedInstancesOfferingRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", PurchaseReservedInstancesOfferingRequest, headers, settings, cb)
 	else
@@ -30244,8 +37375,11 @@ function M.ModifySubnetAttributeAsync(ModifySubnetAttributeRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".ModifySubnetAttribute",
 	}
+	for header,value in pairs(ModifySubnetAttributeRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ModifySubnetAttributeRequest, headers, settings, cb)
 	else
@@ -30276,8 +37410,11 @@ function M.DescribeNetworkInterfacesAsync(DescribeNetworkInterfacesRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DescribeNetworkInterfaces",
 	}
+	for header,value in pairs(DescribeNetworkInterfacesRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeNetworkInterfacesRequest, headers, settings, cb)
 	else
@@ -30308,8 +37445,11 @@ function M.ConfirmProductInstanceAsync(ConfirmProductInstanceRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".ConfirmProductInstance",
 	}
+	for header,value in pairs(ConfirmProductInstanceRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ConfirmProductInstanceRequest, headers, settings, cb)
 	else
@@ -30340,8 +37480,11 @@ function M.DescribeExportTasksAsync(DescribeExportTasksRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DescribeExportTasks",
 	}
+	for header,value in pairs(DescribeExportTasksRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeExportTasksRequest, headers, settings, cb)
 	else
@@ -30372,8 +37515,11 @@ function M.DetachInternetGatewayAsync(DetachInternetGatewayRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DetachInternetGateway",
 	}
+	for header,value in pairs(DetachInternetGatewayRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DetachInternetGatewayRequest, headers, settings, cb)
 	else
@@ -30404,8 +37550,11 @@ function M.DeleteNetworkAclEntryAsync(DeleteNetworkAclEntryRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DeleteNetworkAclEntry",
 	}
+	for header,value in pairs(DeleteNetworkAclEntryRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteNetworkAclEntryRequest, headers, settings, cb)
 	else
@@ -30436,8 +37585,11 @@ function M.CreateFpgaImageAsync(CreateFpgaImageRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".CreateFpgaImage",
 	}
+	for header,value in pairs(CreateFpgaImageRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateFpgaImageRequest, headers, settings, cb)
 	else
@@ -30468,8 +37620,11 @@ function M.CreateCustomerGatewayAsync(CreateCustomerGatewayRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".CreateCustomerGateway",
 	}
+	for header,value in pairs(CreateCustomerGatewayRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateCustomerGatewayRequest, headers, settings, cb)
 	else
@@ -30500,8 +37655,11 @@ function M.ResetInstanceAttributeAsync(ResetInstanceAttributeRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".ResetInstanceAttribute",
 	}
+	for header,value in pairs(ResetInstanceAttributeRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ResetInstanceAttributeRequest, headers, settings, cb)
 	else
@@ -30532,8 +37690,11 @@ function M.CreateSecurityGroupAsync(CreateSecurityGroupRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".CreateSecurityGroup",
 	}
+	for header,value in pairs(CreateSecurityGroupRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateSecurityGroupRequest, headers, settings, cb)
 	else
@@ -30564,8 +37725,11 @@ function M.DescribeInternetGatewaysAsync(DescribeInternetGatewaysRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DescribeInternetGateways",
 	}
+	for header,value in pairs(DescribeInternetGatewaysRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeInternetGatewaysRequest, headers, settings, cb)
 	else
@@ -30596,8 +37760,11 @@ function M.ModifyNetworkInterfaceAttributeAsync(ModifyNetworkInterfaceAttributeR
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".ModifyNetworkInterfaceAttribute",
 	}
+	for header,value in pairs(ModifyNetworkInterfaceAttributeRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ModifyNetworkInterfaceAttributeRequest, headers, settings, cb)
 	else
@@ -30628,8 +37795,11 @@ function M.AttachVolumeAsync(AttachVolumeRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".AttachVolume",
 	}
+	for header,value in pairs(AttachVolumeRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", AttachVolumeRequest, headers, settings, cb)
 	else
@@ -30660,8 +37830,11 @@ function M.DescribeSnapshotsAsync(DescribeSnapshotsRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DescribeSnapshots",
 	}
+	for header,value in pairs(DescribeSnapshotsRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeSnapshotsRequest, headers, settings, cb)
 	else
@@ -30692,8 +37865,11 @@ function M.TerminateInstancesAsync(TerminateInstancesRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".TerminateInstances",
 	}
+	for header,value in pairs(TerminateInstancesRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", TerminateInstancesRequest, headers, settings, cb)
 	else
@@ -30724,8 +37900,11 @@ function M.AcceptReservedInstancesExchangeQuoteAsync(AcceptReservedInstancesExch
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".AcceptReservedInstancesExchangeQuote",
 	}
+	for header,value in pairs(AcceptReservedInstancesExchangeQuoteRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", AcceptReservedInstancesExchangeQuoteRequest, headers, settings, cb)
 	else
@@ -30756,8 +37935,11 @@ function M.DeleteSpotDatafeedSubscriptionAsync(DeleteSpotDatafeedSubscriptionReq
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DeleteSpotDatafeedSubscription",
 	}
+	for header,value in pairs(DeleteSpotDatafeedSubscriptionRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteSpotDatafeedSubscriptionRequest, headers, settings, cb)
 	else
@@ -30788,8 +37970,11 @@ function M.DeletePlacementGroupAsync(DeletePlacementGroupRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DeletePlacementGroup",
 	}
+	for header,value in pairs(DeletePlacementGroupRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DeletePlacementGroupRequest, headers, settings, cb)
 	else
@@ -30820,8 +38005,11 @@ function M.DeleteRouteTableAsync(DeleteRouteTableRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DeleteRouteTable",
 	}
+	for header,value in pairs(DeleteRouteTableRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteRouteTableRequest, headers, settings, cb)
 	else
@@ -30852,8 +38040,11 @@ function M.DescribeKeyPairsAsync(DescribeKeyPairsRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DescribeKeyPairs",
 	}
+	for header,value in pairs(DescribeKeyPairsRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeKeyPairsRequest, headers, settings, cb)
 	else
@@ -30884,8 +38075,11 @@ function M.DescribeStaleSecurityGroupsAsync(DescribeStaleSecurityGroupsRequest, 
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DescribeStaleSecurityGroups",
 	}
+	for header,value in pairs(DescribeStaleSecurityGroupsRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeStaleSecurityGroupsRequest, headers, settings, cb)
 	else
@@ -30916,8 +38110,11 @@ function M.DescribeReservedInstancesOfferingsAsync(DescribeReservedInstancesOffe
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DescribeReservedInstancesOfferings",
 	}
+	for header,value in pairs(DescribeReservedInstancesOfferingsRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeReservedInstancesOfferingsRequest, headers, settings, cb)
 	else
@@ -30948,8 +38145,11 @@ function M.GetConsoleScreenshotAsync(GetConsoleScreenshotRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".GetConsoleScreenshot",
 	}
+	for header,value in pairs(GetConsoleScreenshotRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", GetConsoleScreenshotRequest, headers, settings, cb)
 	else
@@ -30980,8 +38180,11 @@ function M.DescribeAccountAttributesAsync(DescribeAccountAttributesRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DescribeAccountAttributes",
 	}
+	for header,value in pairs(DescribeAccountAttributesRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeAccountAttributesRequest, headers, settings, cb)
 	else
@@ -31012,8 +38215,11 @@ function M.AssignIpv6AddressesAsync(AssignIpv6AddressesRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".AssignIpv6Addresses",
 	}
+	for header,value in pairs(AssignIpv6AddressesRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", AssignIpv6AddressesRequest, headers, settings, cb)
 	else
@@ -31044,8 +38250,11 @@ function M.AuthorizeSecurityGroupEgressAsync(AuthorizeSecurityGroupEgressRequest
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".AuthorizeSecurityGroupEgress",
 	}
+	for header,value in pairs(AuthorizeSecurityGroupEgressRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", AuthorizeSecurityGroupEgressRequest, headers, settings, cb)
 	else
@@ -31076,8 +38285,11 @@ function M.AllocateAddressAsync(AllocateAddressRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".AllocateAddress",
 	}
+	for header,value in pairs(AllocateAddressRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", AllocateAddressRequest, headers, settings, cb)
 	else
@@ -31108,8 +38320,11 @@ function M.AuthorizeSecurityGroupIngressAsync(AuthorizeSecurityGroupIngressReque
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".AuthorizeSecurityGroupIngress",
 	}
+	for header,value in pairs(AuthorizeSecurityGroupIngressRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", AuthorizeSecurityGroupIngressRequest, headers, settings, cb)
 	else
@@ -31140,8 +38355,11 @@ function M.CreateSpotDatafeedSubscriptionAsync(CreateSpotDatafeedSubscriptionReq
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".CreateSpotDatafeedSubscription",
 	}
+	for header,value in pairs(CreateSpotDatafeedSubscriptionRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateSpotDatafeedSubscriptionRequest, headers, settings, cb)
 	else
@@ -31172,8 +38390,11 @@ function M.ImportInstanceAsync(ImportInstanceRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".ImportInstance",
 	}
+	for header,value in pairs(ImportInstanceRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ImportInstanceRequest, headers, settings, cb)
 	else
@@ -31204,8 +38425,11 @@ function M.StopInstancesAsync(StopInstancesRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".StopInstances",
 	}
+	for header,value in pairs(StopInstancesRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", StopInstancesRequest, headers, settings, cb)
 	else
@@ -31236,8 +38460,11 @@ function M.ReleaseAddressAsync(ReleaseAddressRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".ReleaseAddress",
 	}
+	for header,value in pairs(ReleaseAddressRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ReleaseAddressRequest, headers, settings, cb)
 	else
@@ -31268,8 +38495,11 @@ function M.DescribeFpgaImagesAsync(DescribeFpgaImagesRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DescribeFpgaImages",
 	}
+	for header,value in pairs(DescribeFpgaImagesRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeFpgaImagesRequest, headers, settings, cb)
 	else
@@ -31300,8 +38530,11 @@ function M.RejectVpcPeeringConnectionAsync(RejectVpcPeeringConnectionRequest, cb
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".RejectVpcPeeringConnection",
 	}
+	for header,value in pairs(RejectVpcPeeringConnectionRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", RejectVpcPeeringConnectionRequest, headers, settings, cb)
 	else
@@ -31332,8 +38565,11 @@ function M.MonitorInstancesAsync(MonitorInstancesRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".MonitorInstances",
 	}
+	for header,value in pairs(MonitorInstancesRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", MonitorInstancesRequest, headers, settings, cb)
 	else
@@ -31364,8 +38600,11 @@ function M.DescribeImagesAsync(DescribeImagesRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DescribeImages",
 	}
+	for header,value in pairs(DescribeImagesRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeImagesRequest, headers, settings, cb)
 	else
@@ -31396,8 +38635,11 @@ function M.DisassociateRouteTableAsync(DisassociateRouteTableRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DisassociateRouteTable",
 	}
+	for header,value in pairs(DisassociateRouteTableRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DisassociateRouteTableRequest, headers, settings, cb)
 	else
@@ -31428,8 +38670,11 @@ function M.ReplaceRouteAsync(ReplaceRouteRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".ReplaceRoute",
 	}
+	for header,value in pairs(ReplaceRouteRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ReplaceRouteRequest, headers, settings, cb)
 	else
@@ -31460,8 +38705,11 @@ function M.AssociateRouteTableAsync(AssociateRouteTableRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".AssociateRouteTable",
 	}
+	for header,value in pairs(AssociateRouteTableRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", AssociateRouteTableRequest, headers, settings, cb)
 	else
@@ -31492,8 +38740,11 @@ function M.DeleteVpcAsync(DeleteVpcRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DeleteVpc",
 	}
+	for header,value in pairs(DeleteVpcRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteVpcRequest, headers, settings, cb)
 	else
@@ -31524,8 +38775,11 @@ function M.DescribeSpotDatafeedSubscriptionAsync(DescribeSpotDatafeedSubscriptio
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DescribeSpotDatafeedSubscription",
 	}
+	for header,value in pairs(DescribeSpotDatafeedSubscriptionRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeSpotDatafeedSubscriptionRequest, headers, settings, cb)
 	else
@@ -31556,8 +38810,11 @@ function M.DescribePlacementGroupsAsync(DescribePlacementGroupsRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DescribePlacementGroups",
 	}
+	for header,value in pairs(DescribePlacementGroupsRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribePlacementGroupsRequest, headers, settings, cb)
 	else
@@ -31588,8 +38845,11 @@ function M.DescribeInstancesAsync(DescribeInstancesRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DescribeInstances",
 	}
+	for header,value in pairs(DescribeInstancesRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeInstancesRequest, headers, settings, cb)
 	else
@@ -31620,8 +38880,11 @@ function M.CreateRouteAsync(CreateRouteRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".CreateRoute",
 	}
+	for header,value in pairs(CreateRouteRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateRouteRequest, headers, settings, cb)
 	else
@@ -31652,8 +38915,11 @@ function M.DeleteEgressOnlyInternetGatewayAsync(DeleteEgressOnlyInternetGatewayR
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DeleteEgressOnlyInternetGateway",
 	}
+	for header,value in pairs(DeleteEgressOnlyInternetGatewayRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteEgressOnlyInternetGatewayRequest, headers, settings, cb)
 	else
@@ -31684,8 +38950,11 @@ function M.DescribeSecurityGroupsAsync(DescribeSecurityGroupsRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DescribeSecurityGroups",
 	}
+	for header,value in pairs(DescribeSecurityGroupsRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeSecurityGroupsRequest, headers, settings, cb)
 	else
@@ -31716,8 +38985,11 @@ function M.CreateDhcpOptionsAsync(CreateDhcpOptionsRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".CreateDhcpOptions",
 	}
+	for header,value in pairs(CreateDhcpOptionsRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateDhcpOptionsRequest, headers, settings, cb)
 	else
@@ -31748,8 +39020,11 @@ function M.RevokeSecurityGroupEgressAsync(RevokeSecurityGroupEgressRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".RevokeSecurityGroupEgress",
 	}
+	for header,value in pairs(RevokeSecurityGroupEgressRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", RevokeSecurityGroupEgressRequest, headers, settings, cb)
 	else
@@ -31780,8 +39055,11 @@ function M.CreateVpnGatewayAsync(CreateVpnGatewayRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".CreateVpnGateway",
 	}
+	for header,value in pairs(CreateVpnGatewayRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateVpnGatewayRequest, headers, settings, cb)
 	else
@@ -31812,8 +39090,11 @@ function M.DescribeBundleTasksAsync(DescribeBundleTasksRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DescribeBundleTasks",
 	}
+	for header,value in pairs(DescribeBundleTasksRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeBundleTasksRequest, headers, settings, cb)
 	else
@@ -31844,8 +39125,11 @@ function M.DescribeReservedInstancesListingsAsync(DescribeReservedInstancesListi
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DescribeReservedInstancesListings",
 	}
+	for header,value in pairs(DescribeReservedInstancesListingsRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeReservedInstancesListingsRequest, headers, settings, cb)
 	else
@@ -31876,8 +39160,11 @@ function M.GetReservedInstancesExchangeQuoteAsync(GetReservedInstancesExchangeQu
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".GetReservedInstancesExchangeQuote",
 	}
+	for header,value in pairs(GetReservedInstancesExchangeQuoteRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", GetReservedInstancesExchangeQuoteRequest, headers, settings, cb)
 	else
@@ -31908,8 +39195,11 @@ function M.DescribeClassicLinkInstancesAsync(DescribeClassicLinkInstancesRequest
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DescribeClassicLinkInstances",
 	}
+	for header,value in pairs(DescribeClassicLinkInstancesRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeClassicLinkInstancesRequest, headers, settings, cb)
 	else
@@ -31940,8 +39230,11 @@ function M.ModifySpotFleetRequestAsync(ModifySpotFleetRequestRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".ModifySpotFleetRequest",
 	}
+	for header,value in pairs(ModifySpotFleetRequestRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ModifySpotFleetRequestRequest, headers, settings, cb)
 	else
@@ -31972,8 +39265,11 @@ function M.DeleteVolumeAsync(DeleteVolumeRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DeleteVolume",
 	}
+	for header,value in pairs(DeleteVolumeRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteVolumeRequest, headers, settings, cb)
 	else
@@ -32004,8 +39300,11 @@ function M.DescribeConversionTasksAsync(DescribeConversionTasksRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DescribeConversionTasks",
 	}
+	for header,value in pairs(DescribeConversionTasksRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeConversionTasksRequest, headers, settings, cb)
 	else
@@ -32036,8 +39335,11 @@ function M.DescribeVpcClassicLinkDnsSupportAsync(DescribeVpcClassicLinkDnsSuppor
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DescribeVpcClassicLinkDnsSupport",
 	}
+	for header,value in pairs(DescribeVpcClassicLinkDnsSupportRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeVpcClassicLinkDnsSupportRequest, headers, settings, cb)
 	else
@@ -32068,8 +39370,11 @@ function M.DeleteSecurityGroupAsync(DeleteSecurityGroupRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DeleteSecurityGroup",
 	}
+	for header,value in pairs(DeleteSecurityGroupRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteSecurityGroupRequest, headers, settings, cb)
 	else
@@ -32100,8 +39405,11 @@ function M.DescribeSubnetsAsync(DescribeSubnetsRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DescribeSubnets",
 	}
+	for header,value in pairs(DescribeSubnetsRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeSubnetsRequest, headers, settings, cb)
 	else
@@ -32132,8 +39440,11 @@ function M.DescribeVpcClassicLinkAsync(DescribeVpcClassicLinkRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DescribeVpcClassicLink",
 	}
+	for header,value in pairs(DescribeVpcClassicLinkRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeVpcClassicLinkRequest, headers, settings, cb)
 	else
@@ -32164,8 +39475,11 @@ function M.DescribeIdentityIdFormatAsync(DescribeIdentityIdFormatRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DescribeIdentityIdFormat",
 	}
+	for header,value in pairs(DescribeIdentityIdFormatRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeIdentityIdFormatRequest, headers, settings, cb)
 	else
@@ -32196,8 +39510,11 @@ function M.ModifyVpcPeeringConnectionOptionsAsync(ModifyVpcPeeringConnectionOpti
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".ModifyVpcPeeringConnectionOptions",
 	}
+	for header,value in pairs(ModifyVpcPeeringConnectionOptionsRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ModifyVpcPeeringConnectionOptionsRequest, headers, settings, cb)
 	else
@@ -32228,8 +39545,11 @@ function M.ModifyVolumeAttributeAsync(ModifyVolumeAttributeRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".ModifyVolumeAttribute",
 	}
+	for header,value in pairs(ModifyVolumeAttributeRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ModifyVolumeAttributeRequest, headers, settings, cb)
 	else
@@ -32260,8 +39580,11 @@ function M.ImportVolumeAsync(ImportVolumeRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".ImportVolume",
 	}
+	for header,value in pairs(ImportVolumeRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ImportVolumeRequest, headers, settings, cb)
 	else
@@ -32292,8 +39615,11 @@ function M.ImportSnapshotAsync(ImportSnapshotRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".ImportSnapshot",
 	}
+	for header,value in pairs(ImportSnapshotRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ImportSnapshotRequest, headers, settings, cb)
 	else
@@ -32324,8 +39650,11 @@ function M.GetConsoleOutputAsync(GetConsoleOutputRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".GetConsoleOutput",
 	}
+	for header,value in pairs(GetConsoleOutputRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", GetConsoleOutputRequest, headers, settings, cb)
 	else
@@ -32356,8 +39685,11 @@ function M.DescribeTagsAsync(DescribeTagsRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DescribeTags",
 	}
+	for header,value in pairs(DescribeTagsRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeTagsRequest, headers, settings, cb)
 	else
@@ -32388,8 +39720,11 @@ function M.EnableVgwRoutePropagationAsync(EnableVgwRoutePropagationRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".EnableVgwRoutePropagation",
 	}
+	for header,value in pairs(EnableVgwRoutePropagationRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", EnableVgwRoutePropagationRequest, headers, settings, cb)
 	else
@@ -32420,8 +39755,11 @@ function M.ModifyVpcEndpointAsync(ModifyVpcEndpointRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".ModifyVpcEndpoint",
 	}
+	for header,value in pairs(ModifyVpcEndpointRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ModifyVpcEndpointRequest, headers, settings, cb)
 	else
@@ -32452,8 +39790,11 @@ function M.DescribeInstanceStatusAsync(DescribeInstanceStatusRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DescribeInstanceStatus",
 	}
+	for header,value in pairs(DescribeInstanceStatusRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeInstanceStatusRequest, headers, settings, cb)
 	else
@@ -32484,8 +39825,11 @@ function M.ModifyVpcAttributeAsync(ModifyVpcAttributeRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".ModifyVpcAttribute",
 	}
+	for header,value in pairs(ModifyVpcAttributeRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ModifyVpcAttributeRequest, headers, settings, cb)
 	else
@@ -32516,8 +39860,11 @@ function M.EnableVolumeIOAsync(EnableVolumeIORequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".EnableVolumeIO",
 	}
+	for header,value in pairs(EnableVolumeIORequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", EnableVolumeIORequest, headers, settings, cb)
 	else
@@ -32548,8 +39895,11 @@ function M.CreateTagsAsync(CreateTagsRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".CreateTags",
 	}
+	for header,value in pairs(CreateTagsRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateTagsRequest, headers, settings, cb)
 	else
@@ -32580,8 +39930,11 @@ function M.DescribeSecurityGroupReferencesAsync(DescribeSecurityGroupReferencesR
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DescribeSecurityGroupReferences",
 	}
+	for header,value in pairs(DescribeSecurityGroupReferencesRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeSecurityGroupReferencesRequest, headers, settings, cb)
 	else
@@ -32612,8 +39965,11 @@ function M.DeleteFlowLogsAsync(DeleteFlowLogsRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DeleteFlowLogs",
 	}
+	for header,value in pairs(DeleteFlowLogsRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteFlowLogsRequest, headers, settings, cb)
 	else
@@ -32644,8 +40000,11 @@ function M.ReplaceNetworkAclAssociationAsync(ReplaceNetworkAclAssociationRequest
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".ReplaceNetworkAclAssociation",
 	}
+	for header,value in pairs(ReplaceNetworkAclAssociationRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ReplaceNetworkAclAssociationRequest, headers, settings, cb)
 	else
@@ -32676,8 +40035,11 @@ function M.CreateVpnConnectionAsync(CreateVpnConnectionRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".CreateVpnConnection",
 	}
+	for header,value in pairs(CreateVpnConnectionRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateVpnConnectionRequest, headers, settings, cb)
 	else
@@ -32708,8 +40070,11 @@ function M.DetachClassicLinkVpcAsync(DetachClassicLinkVpcRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DetachClassicLinkVpc",
 	}
+	for header,value in pairs(DetachClassicLinkVpcRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DetachClassicLinkVpcRequest, headers, settings, cb)
 	else
@@ -32740,8 +40105,11 @@ function M.CreateReservedInstancesListingAsync(CreateReservedInstancesListingReq
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".CreateReservedInstancesListing",
 	}
+	for header,value in pairs(CreateReservedInstancesListingRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateReservedInstancesListingRequest, headers, settings, cb)
 	else
@@ -32772,8 +40140,11 @@ function M.DescribeHostReservationsAsync(DescribeHostReservationsRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DescribeHostReservations",
 	}
+	for header,value in pairs(DescribeHostReservationsRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeHostReservationsRequest, headers, settings, cb)
 	else
@@ -32804,8 +40175,11 @@ function M.DescribeEgressOnlyInternetGatewaysAsync(DescribeEgressOnlyInternetGat
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DescribeEgressOnlyInternetGateways",
 	}
+	for header,value in pairs(DescribeEgressOnlyInternetGatewaysRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeEgressOnlyInternetGatewaysRequest, headers, settings, cb)
 	else
@@ -32836,8 +40210,11 @@ function M.ModifyInstanceAttributeAsync(ModifyInstanceAttributeRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".ModifyInstanceAttribute",
 	}
+	for header,value in pairs(ModifyInstanceAttributeRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ModifyInstanceAttributeRequest, headers, settings, cb)
 	else
@@ -32868,8 +40245,11 @@ function M.ModifyVolumeAsync(ModifyVolumeRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".ModifyVolume",
 	}
+	for header,value in pairs(ModifyVolumeRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ModifyVolumeRequest, headers, settings, cb)
 	else
@@ -32900,8 +40280,11 @@ function M.RunScheduledInstancesAsync(RunScheduledInstancesRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".RunScheduledInstances",
 	}
+	for header,value in pairs(RunScheduledInstancesRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", RunScheduledInstancesRequest, headers, settings, cb)
 	else
@@ -32932,8 +40315,11 @@ function M.DescribeScheduledInstanceAvailabilityAsync(DescribeScheduledInstanceA
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DescribeScheduledInstanceAvailability",
 	}
+	for header,value in pairs(DescribeScheduledInstanceAvailabilityRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("ec2", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeScheduledInstanceAvailabilityRequest, headers, settings, cb)
 	else

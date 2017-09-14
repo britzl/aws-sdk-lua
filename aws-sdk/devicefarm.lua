@@ -43,13 +43,24 @@ end
 -- Required key: arn
 -- @return ListUploadsRequest structure as a key-value pair table
 function M.ListUploadsRequest(args)
-	assert(args, "You must provdide an argument table when creating ListUploadsRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListUploadsRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["nextToken"] = args["nextToken"],
 		["arn"] = args["arn"],
 	}
-	asserts.AssertListUploadsRequest(t)
-	return t
+	asserts.AssertListUploadsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListDevicesRequest = { ["nextToken"] = true, ["arn"] = true, nil }
@@ -72,13 +83,24 @@ end
 -- * arn [AmazonResourceName] <p>The Amazon Resource Name (ARN) of the project.</p>
 -- @return ListDevicesRequest structure as a key-value pair table
 function M.ListDevicesRequest(args)
-	assert(args, "You must provdide an argument table when creating ListDevicesRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListDevicesRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["nextToken"] = args["nextToken"],
 		["arn"] = args["arn"],
 	}
-	asserts.AssertListDevicesRequest(t)
-	return t
+	asserts.AssertListDevicesRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteProjectRequest = { ["arn"] = true, nil }
@@ -101,12 +123,23 @@ end
 -- Required key: arn
 -- @return DeleteProjectRequest structure as a key-value pair table
 function M.DeleteProjectRequest(args)
-	assert(args, "You must provdide an argument table when creating DeleteProjectRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteProjectRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["arn"] = args["arn"],
 	}
-	asserts.AssertDeleteProjectRequest(t)
-	return t
+	asserts.AssertDeleteProjectRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.RenewOfferingResult = { ["offeringTransaction"] = true, nil }
@@ -127,12 +160,23 @@ end
 -- * offeringTransaction [OfferingTransaction] <p>Represents the status of the offering transaction for the renewal.</p>
 -- @return RenewOfferingResult structure as a key-value pair table
 function M.RenewOfferingResult(args)
-	assert(args, "You must provdide an argument table when creating RenewOfferingResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating RenewOfferingResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["offeringTransaction"] = args["offeringTransaction"],
 	}
-	asserts.AssertRenewOfferingResult(t)
-	return t
+	asserts.AssertRenewOfferingResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListSamplesRequest = { ["nextToken"] = true, ["arn"] = true, nil }
@@ -157,13 +201,24 @@ end
 -- Required key: arn
 -- @return ListSamplesRequest structure as a key-value pair table
 function M.ListSamplesRequest(args)
-	assert(args, "You must provdide an argument table when creating ListSamplesRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListSamplesRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["nextToken"] = args["nextToken"],
 		["arn"] = args["arn"],
 	}
-	asserts.AssertListSamplesRequest(t)
-	return t
+	asserts.AssertListSamplesRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeviceMinutes = { ["unmetered"] = true, ["total"] = true, ["metered"] = true, nil }
@@ -188,14 +243,25 @@ end
 -- * metered [Double] <p>When specified, represents only the sum of metered minutes used by the resource to run tests.</p>
 -- @return DeviceMinutes structure as a key-value pair table
 function M.DeviceMinutes(args)
-	assert(args, "You must provdide an argument table when creating DeviceMinutes")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeviceMinutes")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["unmetered"] = args["unmetered"],
 		["total"] = args["total"],
 		["metered"] = args["metered"],
 	}
-	asserts.AssertDeviceMinutes(t)
-	return t
+	asserts.AssertDeviceMinutes(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateUploadResult = { ["upload"] = true, nil }
@@ -216,12 +282,23 @@ end
 -- * upload [Upload] <p>The newly created upload.</p>
 -- @return CreateUploadResult structure as a key-value pair table
 function M.CreateUploadResult(args)
-	assert(args, "You must provdide an argument table when creating CreateUploadResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateUploadResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["upload"] = args["upload"],
 	}
-	asserts.AssertCreateUploadResult(t)
-	return t
+	asserts.AssertCreateUploadResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UniqueProblem = { ["message"] = true, ["problems"] = true, nil }
@@ -244,13 +321,24 @@ end
 -- * problems [Problems] <p>Information about the problems.</p>
 -- @return UniqueProblem structure as a key-value pair table
 function M.UniqueProblem(args)
-	assert(args, "You must provdide an argument table when creating UniqueProblem")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UniqueProblem")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 		["problems"] = args["problems"],
 	}
-	asserts.AssertUniqueProblem(t)
-	return t
+	asserts.AssertUniqueProblem(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Test = { ["status"] = true, ["name"] = true, ["created"] = true, ["started"] = true, ["deviceMinutes"] = true, ["stopped"] = true, ["result"] = true, ["message"] = true, ["type"] = true, ["arn"] = true, ["counters"] = true, nil }
@@ -291,8 +379,14 @@ end
 -- * counters [Counters] <p>The test's result counters.</p>
 -- @return Test structure as a key-value pair table
 function M.Test(args)
-	assert(args, "You must provdide an argument table when creating Test")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Test")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["status"] = args["status"],
 		["name"] = args["name"],
 		["created"] = args["created"],
@@ -305,8 +399,13 @@ function M.Test(args)
 		["arn"] = args["arn"],
 		["counters"] = args["counters"],
 	}
-	asserts.AssertTest(t)
-	return t
+	asserts.AssertTest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Suite = { ["status"] = true, ["name"] = true, ["created"] = true, ["started"] = true, ["deviceMinutes"] = true, ["stopped"] = true, ["result"] = true, ["message"] = true, ["type"] = true, ["arn"] = true, ["counters"] = true, nil }
@@ -347,8 +446,14 @@ end
 -- * counters [Counters] <p>The suite's result counters.</p>
 -- @return Suite structure as a key-value pair table
 function M.Suite(args)
-	assert(args, "You must provdide an argument table when creating Suite")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Suite")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["status"] = args["status"],
 		["name"] = args["name"],
 		["created"] = args["created"],
@@ -361,8 +466,13 @@ function M.Suite(args)
 		["arn"] = args["arn"],
 		["counters"] = args["counters"],
 	}
-	asserts.AssertSuite(t)
-	return t
+	asserts.AssertSuite(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CPU = { ["frequency"] = true, ["architecture"] = true, ["clock"] = true, nil }
@@ -387,14 +497,25 @@ end
 -- * clock [Double] <p>The clock speed of the device's CPU, expressed in hertz (Hz). For example, a 1.2 GHz CPU is expressed as 1200000000.</p>
 -- @return CPU structure as a key-value pair table
 function M.CPU(args)
-	assert(args, "You must provdide an argument table when creating CPU")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CPU")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["frequency"] = args["frequency"],
 		["architecture"] = args["architecture"],
 		["clock"] = args["clock"],
 	}
-	asserts.AssertCPU(t)
-	return t
+	asserts.AssertCPU(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteUploadResult = { nil }
@@ -413,11 +534,22 @@ end
 -- Valid keys:
 -- @return DeleteUploadResult structure as a key-value pair table
 function M.DeleteUploadResult(args)
-	assert(args, "You must provdide an argument table when creating DeleteUploadResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteUploadResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertDeleteUploadResult(t)
-	return t
+	asserts.AssertDeleteUploadResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteRemoteAccessSessionResult = { nil }
@@ -436,11 +568,22 @@ end
 -- Valid keys:
 -- @return DeleteRemoteAccessSessionResult structure as a key-value pair table
 function M.DeleteRemoteAccessSessionResult(args)
-	assert(args, "You must provdide an argument table when creating DeleteRemoteAccessSessionResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteRemoteAccessSessionResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertDeleteRemoteAccessSessionResult(t)
-	return t
+	asserts.AssertDeleteRemoteAccessSessionResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListRemoteAccessSessionsRequest = { ["nextToken"] = true, ["arn"] = true, nil }
@@ -465,13 +608,24 @@ end
 -- Required key: arn
 -- @return ListRemoteAccessSessionsRequest structure as a key-value pair table
 function M.ListRemoteAccessSessionsRequest(args)
-	assert(args, "You must provdide an argument table when creating ListRemoteAccessSessionsRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListRemoteAccessSessionsRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["nextToken"] = args["nextToken"],
 		["arn"] = args["arn"],
 	}
-	asserts.AssertListRemoteAccessSessionsRequest(t)
-	return t
+	asserts.AssertListRemoteAccessSessionsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListProjectsRequest = { ["nextToken"] = true, ["arn"] = true, nil }
@@ -494,13 +648,24 @@ end
 -- * arn [AmazonResourceName] <p>Optional. If no Amazon Resource Name (ARN) is specified, then AWS Device Farm returns a list of all projects for the AWS account. You can also specify a project ARN.</p>
 -- @return ListProjectsRequest structure as a key-value pair table
 function M.ListProjectsRequest(args)
-	assert(args, "You must provdide an argument table when creating ListProjectsRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListProjectsRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["nextToken"] = args["nextToken"],
 		["arn"] = args["arn"],
 	}
-	asserts.AssertListProjectsRequest(t)
-	return t
+	asserts.AssertListProjectsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetProjectRequest = { ["arn"] = true, nil }
@@ -523,12 +688,23 @@ end
 -- Required key: arn
 -- @return GetProjectRequest structure as a key-value pair table
 function M.GetProjectRequest(args)
-	assert(args, "You must provdide an argument table when creating GetProjectRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetProjectRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["arn"] = args["arn"],
 	}
-	asserts.AssertGetProjectRequest(t)
-	return t
+	asserts.AssertGetProjectRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListProjectsResult = { ["nextToken"] = true, ["projects"] = true, nil }
@@ -551,13 +727,24 @@ end
 -- * projects [Projects] <p>Information about the projects.</p>
 -- @return ListProjectsResult structure as a key-value pair table
 function M.ListProjectsResult(args)
-	assert(args, "You must provdide an argument table when creating ListProjectsResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListProjectsResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["nextToken"] = args["nextToken"],
 		["projects"] = args["projects"],
 	}
-	asserts.AssertListProjectsResult(t)
-	return t
+	asserts.AssertListProjectsResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListOfferingTransactionsRequest = { ["nextToken"] = true, nil }
@@ -578,12 +765,23 @@ end
 -- * nextToken [PaginationToken] <p>An identifier that was returned from the previous call to this operation, which can be used to return the next set of items in the list.</p>
 -- @return ListOfferingTransactionsRequest structure as a key-value pair table
 function M.ListOfferingTransactionsRequest(args)
-	assert(args, "You must provdide an argument table when creating ListOfferingTransactionsRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListOfferingTransactionsRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["nextToken"] = args["nextToken"],
 	}
-	asserts.AssertListOfferingTransactionsRequest(t)
-	return t
+	asserts.AssertListOfferingTransactionsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AccountSettings = { ["maxSlots"] = true, ["unmeteredRemoteAccessDevices"] = true, ["maxJobTimeoutMinutes"] = true, ["trialMinutes"] = true, ["defaultJobTimeoutMinutes"] = true, ["awsAccountNumber"] = true, ["unmeteredDevices"] = true, nil }
@@ -616,8 +814,14 @@ end
 -- * unmeteredDevices [PurchasedDevicesMap] <p>Returns the unmetered devices you have purchased or want to purchase.</p>
 -- @return AccountSettings structure as a key-value pair table
 function M.AccountSettings(args)
-	assert(args, "You must provdide an argument table when creating AccountSettings")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AccountSettings")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["maxSlots"] = args["maxSlots"],
 		["unmeteredRemoteAccessDevices"] = args["unmeteredRemoteAccessDevices"],
 		["maxJobTimeoutMinutes"] = args["maxJobTimeoutMinutes"],
@@ -626,8 +830,13 @@ function M.AccountSettings(args)
 		["awsAccountNumber"] = args["awsAccountNumber"],
 		["unmeteredDevices"] = args["unmeteredDevices"],
 	}
-	asserts.AssertAccountSettings(t)
-	return t
+	asserts.AssertAccountSettings(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdateDevicePoolResult = { ["devicePool"] = true, nil }
@@ -648,12 +857,23 @@ end
 -- * devicePool [DevicePool] <p>The device pool you just updated.</p>
 -- @return UpdateDevicePoolResult structure as a key-value pair table
 function M.UpdateDevicePoolResult(args)
-	assert(args, "You must provdide an argument table when creating UpdateDevicePoolResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateDevicePoolResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["devicePool"] = args["devicePool"],
 	}
-	asserts.AssertUpdateDevicePoolResult(t)
-	return t
+	asserts.AssertUpdateDevicePoolResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.OfferingTransaction = { ["offeringPromotionId"] = true, ["offeringStatus"] = true, ["cost"] = true, ["createdOn"] = true, ["transactionId"] = true, nil }
@@ -682,16 +902,27 @@ end
 -- * transactionId [TransactionIdentifier] <p>The transaction ID of the offering transaction.</p>
 -- @return OfferingTransaction structure as a key-value pair table
 function M.OfferingTransaction(args)
-	assert(args, "You must provdide an argument table when creating OfferingTransaction")
-	local t = { 
+	assert(args, "You must provide an argument table when creating OfferingTransaction")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["offeringPromotionId"] = args["offeringPromotionId"],
 		["offeringStatus"] = args["offeringStatus"],
 		["cost"] = args["cost"],
 		["createdOn"] = args["createdOn"],
 		["transactionId"] = args["transactionId"],
 	}
-	asserts.AssertOfferingTransaction(t)
-	return t
+	asserts.AssertOfferingTransaction(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ServiceAccountException = { ["message"] = true, nil }
@@ -712,12 +943,23 @@ end
 -- * message [Message] <p>Any additional information about the exception.</p>
 -- @return ServiceAccountException structure as a key-value pair table
 function M.ServiceAccountException(args)
-	assert(args, "You must provdide an argument table when creating ServiceAccountException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ServiceAccountException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertServiceAccountException(t)
-	return t
+	asserts.AssertServiceAccountException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdateDevicePoolRequest = { ["rules"] = true, ["name"] = true, ["arn"] = true, ["description"] = true, nil }
@@ -746,15 +988,26 @@ end
 -- Required key: arn
 -- @return UpdateDevicePoolRequest structure as a key-value pair table
 function M.UpdateDevicePoolRequest(args)
-	assert(args, "You must provdide an argument table when creating UpdateDevicePoolRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateDevicePoolRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["rules"] = args["rules"],
 		["name"] = args["name"],
 		["arn"] = args["arn"],
 		["description"] = args["description"],
 	}
-	asserts.AssertUpdateDevicePoolRequest(t)
-	return t
+	asserts.AssertUpdateDevicePoolRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.OfferingPromotion = { ["id"] = true, ["description"] = true, nil }
@@ -777,13 +1030,24 @@ end
 -- * description [Message] <p>A string describing the offering promotion.</p>
 -- @return OfferingPromotion structure as a key-value pair table
 function M.OfferingPromotion(args)
-	assert(args, "You must provdide an argument table when creating OfferingPromotion")
-	local t = { 
+	assert(args, "You must provide an argument table when creating OfferingPromotion")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["id"] = args["id"],
 		["description"] = args["description"],
 	}
-	asserts.AssertOfferingPromotion(t)
-	return t
+	asserts.AssertOfferingPromotion(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdateProjectRequest = { ["defaultJobTimeoutMinutes"] = true, ["name"] = true, ["arn"] = true, nil }
@@ -810,14 +1074,25 @@ end
 -- Required key: arn
 -- @return UpdateProjectRequest structure as a key-value pair table
 function M.UpdateProjectRequest(args)
-	assert(args, "You must provdide an argument table when creating UpdateProjectRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateProjectRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["defaultJobTimeoutMinutes"] = args["defaultJobTimeoutMinutes"],
 		["name"] = args["name"],
 		["arn"] = args["arn"],
 	}
-	asserts.AssertUpdateProjectRequest(t)
-	return t
+	asserts.AssertUpdateProjectRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetSuiteResult = { ["suite"] = true, nil }
@@ -838,12 +1113,23 @@ end
 -- * suite [Suite] <p>A collection of one or more tests.</p>
 -- @return GetSuiteResult structure as a key-value pair table
 function M.GetSuiteResult(args)
-	assert(args, "You must provdide an argument table when creating GetSuiteResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetSuiteResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["suite"] = args["suite"],
 	}
-	asserts.AssertGetSuiteResult(t)
-	return t
+	asserts.AssertGetSuiteResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetJobResult = { ["job"] = true, nil }
@@ -864,12 +1150,23 @@ end
 -- * job [Job] <p>An object containing information about the requested job.</p>
 -- @return GetJobResult structure as a key-value pair table
 function M.GetJobResult(args)
-	assert(args, "You must provdide an argument table when creating GetJobResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetJobResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["job"] = args["job"],
 	}
-	asserts.AssertGetJobResult(t)
-	return t
+	asserts.AssertGetJobResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Project = { ["defaultJobTimeoutMinutes"] = true, ["name"] = true, ["arn"] = true, ["created"] = true, nil }
@@ -896,15 +1193,26 @@ end
 -- * created [DateTime] <p>When the project was created.</p>
 -- @return Project structure as a key-value pair table
 function M.Project(args)
-	assert(args, "You must provdide an argument table when creating Project")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Project")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["defaultJobTimeoutMinutes"] = args["defaultJobTimeoutMinutes"],
 		["name"] = args["name"],
 		["arn"] = args["arn"],
 		["created"] = args["created"],
 	}
-	asserts.AssertProject(t)
-	return t
+	asserts.AssertProject(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetRemoteAccessSessionResult = { ["remoteAccessSession"] = true, nil }
@@ -925,12 +1233,23 @@ end
 -- * remoteAccessSession [RemoteAccessSession] <p>A container that lists detailed information about the remote access session.</p>
 -- @return GetRemoteAccessSessionResult structure as a key-value pair table
 function M.GetRemoteAccessSessionResult(args)
-	assert(args, "You must provdide an argument table when creating GetRemoteAccessSessionResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetRemoteAccessSessionResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["remoteAccessSession"] = args["remoteAccessSession"],
 	}
-	asserts.AssertGetRemoteAccessSessionResult(t)
-	return t
+	asserts.AssertGetRemoteAccessSessionResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.StopRunResult = { ["run"] = true, nil }
@@ -951,12 +1270,23 @@ end
 -- * run [Run] <p>The run that was stopped.</p>
 -- @return StopRunResult structure as a key-value pair table
 function M.StopRunResult(args)
-	assert(args, "You must provdide an argument table when creating StopRunResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating StopRunResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["run"] = args["run"],
 	}
-	asserts.AssertStopRunResult(t)
-	return t
+	asserts.AssertStopRunResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetRemoteAccessSessionRequest = { ["arn"] = true, nil }
@@ -979,12 +1309,23 @@ end
 -- Required key: arn
 -- @return GetRemoteAccessSessionRequest structure as a key-value pair table
 function M.GetRemoteAccessSessionRequest(args)
-	assert(args, "You must provdide an argument table when creating GetRemoteAccessSessionRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetRemoteAccessSessionRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["arn"] = args["arn"],
 	}
-	asserts.AssertGetRemoteAccessSessionRequest(t)
-	return t
+	asserts.AssertGetRemoteAccessSessionRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListOfferingPromotionsResult = { ["offeringPromotions"] = true, ["nextToken"] = true, nil }
@@ -1007,13 +1348,24 @@ end
 -- * nextToken [PaginationToken] <p>An identifier to be used in the next call to this operation, to return the next set of items in the list.</p>
 -- @return ListOfferingPromotionsResult structure as a key-value pair table
 function M.ListOfferingPromotionsResult(args)
-	assert(args, "You must provdide an argument table when creating ListOfferingPromotionsResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListOfferingPromotionsResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["offeringPromotions"] = args["offeringPromotions"],
 		["nextToken"] = args["nextToken"],
 	}
-	asserts.AssertListOfferingPromotionsResult(t)
-	return t
+	asserts.AssertListOfferingPromotionsResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetProjectResult = { ["project"] = true, nil }
@@ -1034,12 +1386,23 @@ end
 -- * project [Project] <p>The project you wish to get information about.</p>
 -- @return GetProjectResult structure as a key-value pair table
 function M.GetProjectResult(args)
-	assert(args, "You must provdide an argument table when creating GetProjectResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetProjectResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["project"] = args["project"],
 	}
-	asserts.AssertGetProjectResult(t)
-	return t
+	asserts.AssertGetProjectResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Radios = { ["gps"] = true, ["wifi"] = true, ["nfc"] = true, ["bluetooth"] = true, nil }
@@ -1066,15 +1429,26 @@ end
 -- * bluetooth [Boolean] <p>True if Bluetooth is enabled at the beginning of the test; otherwise, false.</p>
 -- @return Radios structure as a key-value pair table
 function M.Radios(args)
-	assert(args, "You must provdide an argument table when creating Radios")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Radios")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["gps"] = args["gps"],
 		["wifi"] = args["wifi"],
 		["nfc"] = args["nfc"],
 		["bluetooth"] = args["bluetooth"],
 	}
-	asserts.AssertRadios(t)
-	return t
+	asserts.AssertRadios(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteRunRequest = { ["arn"] = true, nil }
@@ -1097,12 +1471,23 @@ end
 -- Required key: arn
 -- @return DeleteRunRequest structure as a key-value pair table
 function M.DeleteRunRequest(args)
-	assert(args, "You must provdide an argument table when creating DeleteRunRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteRunRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["arn"] = args["arn"],
 	}
-	asserts.AssertDeleteRunRequest(t)
-	return t
+	asserts.AssertDeleteRunRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ScheduleRunTest = { ["filter"] = true, ["type"] = true, ["parameters"] = true, ["testPackageArn"] = true, nil }
@@ -1131,15 +1516,26 @@ end
 -- Required key: type
 -- @return ScheduleRunTest structure as a key-value pair table
 function M.ScheduleRunTest(args)
-	assert(args, "You must provdide an argument table when creating ScheduleRunTest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ScheduleRunTest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["filter"] = args["filter"],
 		["type"] = args["type"],
 		["parameters"] = args["parameters"],
 		["testPackageArn"] = args["testPackageArn"],
 	}
-	asserts.AssertScheduleRunTest(t)
-	return t
+	asserts.AssertScheduleRunTest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteRemoteAccessSessionRequest = { ["arn"] = true, nil }
@@ -1162,12 +1558,23 @@ end
 -- Required key: arn
 -- @return DeleteRemoteAccessSessionRequest structure as a key-value pair table
 function M.DeleteRemoteAccessSessionRequest(args)
-	assert(args, "You must provdide an argument table when creating DeleteRemoteAccessSessionRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteRemoteAccessSessionRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["arn"] = args["arn"],
 	}
-	asserts.AssertDeleteRemoteAccessSessionRequest(t)
-	return t
+	asserts.AssertDeleteRemoteAccessSessionRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetRunResult = { ["run"] = true, nil }
@@ -1188,12 +1595,23 @@ end
 -- * run [Run] <p>The run you wish to get results from.</p>
 -- @return GetRunResult structure as a key-value pair table
 function M.GetRunResult(args)
-	assert(args, "You must provdide an argument table when creating GetRunResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetRunResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["run"] = args["run"],
 	}
-	asserts.AssertGetRunResult(t)
-	return t
+	asserts.AssertGetRunResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListTestsRequest = { ["nextToken"] = true, ["arn"] = true, nil }
@@ -1218,13 +1636,24 @@ end
 -- Required key: arn
 -- @return ListTestsRequest structure as a key-value pair table
 function M.ListTestsRequest(args)
-	assert(args, "You must provdide an argument table when creating ListTestsRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListTestsRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["nextToken"] = args["nextToken"],
 		["arn"] = args["arn"],
 	}
-	asserts.AssertListTestsRequest(t)
-	return t
+	asserts.AssertListTestsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteNetworkProfileResult = { nil }
@@ -1243,11 +1672,22 @@ end
 -- Valid keys:
 -- @return DeleteNetworkProfileResult structure as a key-value pair table
 function M.DeleteNetworkProfileResult(args)
-	assert(args, "You must provdide an argument table when creating DeleteNetworkProfileResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteNetworkProfileResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertDeleteNetworkProfileResult(t)
-	return t
+	asserts.AssertDeleteNetworkProfileResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateProjectRequest = { ["defaultJobTimeoutMinutes"] = true, ["name"] = true, nil }
@@ -1272,13 +1712,24 @@ end
 -- Required key: name
 -- @return CreateProjectRequest structure as a key-value pair table
 function M.CreateProjectRequest(args)
-	assert(args, "You must provdide an argument table when creating CreateProjectRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateProjectRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["defaultJobTimeoutMinutes"] = args["defaultJobTimeoutMinutes"],
 		["name"] = args["name"],
 	}
-	asserts.AssertCreateProjectRequest(t)
-	return t
+	asserts.AssertCreateProjectRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.OfferingStatus = { ["effectiveOn"] = true, ["type"] = true, ["offering"] = true, ["quantity"] = true, nil }
@@ -1305,15 +1756,26 @@ end
 -- * quantity [Integer] <p>The number of available devices in the offering.</p>
 -- @return OfferingStatus structure as a key-value pair table
 function M.OfferingStatus(args)
-	assert(args, "You must provdide an argument table when creating OfferingStatus")
-	local t = { 
+	assert(args, "You must provide an argument table when creating OfferingStatus")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["effectiveOn"] = args["effectiveOn"],
 		["type"] = args["type"],
 		["offering"] = args["offering"],
 		["quantity"] = args["quantity"],
 	}
-	asserts.AssertOfferingStatus(t)
-	return t
+	asserts.AssertOfferingStatus(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.LimitExceededException = { ["message"] = true, nil }
@@ -1334,12 +1796,23 @@ end
 -- * message [Message] <p>Any additional information about the exception.</p>
 -- @return LimitExceededException structure as a key-value pair table
 function M.LimitExceededException(args)
-	assert(args, "You must provdide an argument table when creating LimitExceededException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating LimitExceededException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertLimitExceededException(t)
-	return t
+	asserts.AssertLimitExceededException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListUploadsResult = { ["nextToken"] = true, ["uploads"] = true, nil }
@@ -1362,13 +1835,24 @@ end
 -- * uploads [Uploads] <p>Information about the uploads.</p>
 -- @return ListUploadsResult structure as a key-value pair table
 function M.ListUploadsResult(args)
-	assert(args, "You must provdide an argument table when creating ListUploadsResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListUploadsResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["nextToken"] = args["nextToken"],
 		["uploads"] = args["uploads"],
 	}
-	asserts.AssertListUploadsResult(t)
-	return t
+	asserts.AssertListUploadsResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListSuitesResult = { ["suites"] = true, ["nextToken"] = true, nil }
@@ -1391,13 +1875,24 @@ end
 -- * nextToken [PaginationToken] <p>If the number of items that are returned is significantly large, this is an identifier that is also returned, which can be used in a subsequent call to this operation to return the next set of items in the list.</p>
 -- @return ListSuitesResult structure as a key-value pair table
 function M.ListSuitesResult(args)
-	assert(args, "You must provdide an argument table when creating ListSuitesResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListSuitesResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["suites"] = args["suites"],
 		["nextToken"] = args["nextToken"],
 	}
-	asserts.AssertListSuitesResult(t)
-	return t
+	asserts.AssertListSuitesResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateUploadRequest = { ["contentType"] = true, ["type"] = true, ["name"] = true, ["projectArn"] = true, nil }
@@ -1430,15 +1925,26 @@ end
 -- Required key: type
 -- @return CreateUploadRequest structure as a key-value pair table
 function M.CreateUploadRequest(args)
-	assert(args, "You must provdide an argument table when creating CreateUploadRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateUploadRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["contentType"] = args["contentType"],
 		["type"] = args["type"],
 		["name"] = args["name"],
 		["projectArn"] = args["projectArn"],
 	}
-	asserts.AssertCreateUploadRequest(t)
-	return t
+	asserts.AssertCreateUploadRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListSamplesResult = { ["nextToken"] = true, ["samples"] = true, nil }
@@ -1461,13 +1967,24 @@ end
 -- * samples [Samples] <p>Information about the samples.</p>
 -- @return ListSamplesResult structure as a key-value pair table
 function M.ListSamplesResult(args)
-	assert(args, "You must provdide an argument table when creating ListSamplesResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListSamplesResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["nextToken"] = args["nextToken"],
 		["samples"] = args["samples"],
 	}
-	asserts.AssertListSamplesResult(t)
-	return t
+	asserts.AssertListSamplesResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ArgumentException = { ["message"] = true, nil }
@@ -1488,12 +2005,23 @@ end
 -- * message [Message] <p>Any additional information about the exception.</p>
 -- @return ArgumentException structure as a key-value pair table
 function M.ArgumentException(args)
-	assert(args, "You must provdide an argument table when creating ArgumentException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ArgumentException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertArgumentException(t)
-	return t
+	asserts.AssertArgumentException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListUniqueProblemsResult = { ["nextToken"] = true, ["uniqueProblems"] = true, nil }
@@ -1516,13 +2044,24 @@ end
 -- * uniqueProblems [UniqueProblemsByExecutionResultMap] <p>Information about the unique problems.</p> <p>Allowed values include:</p> <ul> <li> <p>PENDING: A pending condition.</p> </li> <li> <p>PASSED: A passing condition.</p> </li> <li> <p>WARNED: A warning condition.</p> </li> <li> <p>FAILED: A failed condition.</p> </li> <li> <p>SKIPPED: A skipped condition.</p> </li> <li> <p>ERRORED: An error condition.</p> </li> <li> <p>STOPPED: A stopped condition.</p> </li> </ul>
 -- @return ListUniqueProblemsResult structure as a key-value pair table
 function M.ListUniqueProblemsResult(args)
-	assert(args, "You must provdide an argument table when creating ListUniqueProblemsResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListUniqueProblemsResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["nextToken"] = args["nextToken"],
 		["uniqueProblems"] = args["uniqueProblems"],
 	}
-	asserts.AssertListUniqueProblemsResult(t)
-	return t
+	asserts.AssertListUniqueProblemsResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetDeviceResult = { ["device"] = true, nil }
@@ -1543,12 +2082,23 @@ end
 -- * device [Device] <p>An object containing information about the requested device.</p>
 -- @return GetDeviceResult structure as a key-value pair table
 function M.GetDeviceResult(args)
-	assert(args, "You must provdide an argument table when creating GetDeviceResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetDeviceResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["device"] = args["device"],
 	}
-	asserts.AssertGetDeviceResult(t)
-	return t
+	asserts.AssertGetDeviceResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.RenewOfferingRequest = { ["quantity"] = true, ["offeringId"] = true, nil }
@@ -1571,13 +2121,24 @@ end
 -- * offeringId [OfferingIdentifier] <p>The ID of a request to renew an offering.</p>
 -- @return RenewOfferingRequest structure as a key-value pair table
 function M.RenewOfferingRequest(args)
-	assert(args, "You must provdide an argument table when creating RenewOfferingRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating RenewOfferingRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["quantity"] = args["quantity"],
 		["offeringId"] = args["offeringId"],
 	}
-	asserts.AssertRenewOfferingRequest(t)
-	return t
+	asserts.AssertRenewOfferingRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Run = { ["status"] = true, ["name"] = true, ["networkProfile"] = true, ["created"] = true, ["started"] = true, ["totalJobs"] = true, ["completedJobs"] = true, ["deviceMinutes"] = true, ["platform"] = true, ["stopped"] = true, ["result"] = true, ["message"] = true, ["billingMethod"] = true, ["type"] = true, ["arn"] = true, ["counters"] = true, nil }
@@ -1628,8 +2189,14 @@ end
 -- * counters [Counters] <p>The run's result counters.</p>
 -- @return Run structure as a key-value pair table
 function M.Run(args)
-	assert(args, "You must provdide an argument table when creating Run")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Run")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["status"] = args["status"],
 		["name"] = args["name"],
 		["networkProfile"] = args["networkProfile"],
@@ -1647,8 +2214,13 @@ function M.Run(args)
 		["arn"] = args["arn"],
 		["counters"] = args["counters"],
 	}
-	asserts.AssertRun(t)
-	return t
+	asserts.AssertRun(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListJobsResult = { ["nextToken"] = true, ["jobs"] = true, nil }
@@ -1671,13 +2243,24 @@ end
 -- * jobs [Jobs] <p>Information about the jobs.</p>
 -- @return ListJobsResult structure as a key-value pair table
 function M.ListJobsResult(args)
-	assert(args, "You must provdide an argument table when creating ListJobsResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListJobsResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["nextToken"] = args["nextToken"],
 		["jobs"] = args["jobs"],
 	}
-	asserts.AssertListJobsResult(t)
-	return t
+	asserts.AssertListJobsResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListArtifactsRequest = { ["nextToken"] = true, ["type"] = true, ["arn"] = true, nil }
@@ -1706,14 +2289,25 @@ end
 -- Required key: type
 -- @return ListArtifactsRequest structure as a key-value pair table
 function M.ListArtifactsRequest(args)
-	assert(args, "You must provdide an argument table when creating ListArtifactsRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListArtifactsRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["nextToken"] = args["nextToken"],
 		["type"] = args["type"],
 		["arn"] = args["arn"],
 	}
-	asserts.AssertListArtifactsRequest(t)
-	return t
+	asserts.AssertListArtifactsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetUploadResult = { ["upload"] = true, nil }
@@ -1734,12 +2328,23 @@ end
 -- * upload [Upload] <p>An app or a set of one or more tests to upload or that have been uploaded.</p>
 -- @return GetUploadResult structure as a key-value pair table
 function M.GetUploadResult(args)
-	assert(args, "You must provdide an argument table when creating GetUploadResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetUploadResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["upload"] = args["upload"],
 	}
-	asserts.AssertGetUploadResult(t)
-	return t
+	asserts.AssertGetUploadResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Job = { ["status"] = true, ["name"] = true, ["created"] = true, ["started"] = true, ["deviceMinutes"] = true, ["stopped"] = true, ["result"] = true, ["device"] = true, ["message"] = true, ["type"] = true, ["arn"] = true, ["counters"] = true, nil }
@@ -1782,8 +2387,14 @@ end
 -- * counters [Counters] <p>The job's result counters.</p>
 -- @return Job structure as a key-value pair table
 function M.Job(args)
-	assert(args, "You must provdide an argument table when creating Job")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Job")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["status"] = args["status"],
 		["name"] = args["name"],
 		["created"] = args["created"],
@@ -1797,8 +2408,13 @@ function M.Job(args)
 		["arn"] = args["arn"],
 		["counters"] = args["counters"],
 	}
-	asserts.AssertJob(t)
-	return t
+	asserts.AssertJob(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListArtifactsResult = { ["artifacts"] = true, ["nextToken"] = true, nil }
@@ -1821,13 +2437,24 @@ end
 -- * nextToken [PaginationToken] <p>If the number of items that are returned is significantly large, this is an identifier that is also returned, which can be used in a subsequent call to this operation to return the next set of items in the list.</p>
 -- @return ListArtifactsResult structure as a key-value pair table
 function M.ListArtifactsResult(args)
-	assert(args, "You must provdide an argument table when creating ListArtifactsResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListArtifactsResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["artifacts"] = args["artifacts"],
 		["nextToken"] = args["nextToken"],
 	}
-	asserts.AssertListArtifactsResult(t)
-	return t
+	asserts.AssertListArtifactsResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateDevicePoolResult = { ["devicePool"] = true, nil }
@@ -1848,12 +2475,23 @@ end
 -- * devicePool [DevicePool] <p>The newly created device pool.</p>
 -- @return CreateDevicePoolResult structure as a key-value pair table
 function M.CreateDevicePoolResult(args)
-	assert(args, "You must provdide an argument table when creating CreateDevicePoolResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateDevicePoolResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["devicePool"] = args["devicePool"],
 	}
-	asserts.AssertCreateDevicePoolResult(t)
-	return t
+	asserts.AssertCreateDevicePoolResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ScheduleRunResult = { ["run"] = true, nil }
@@ -1874,12 +2512,23 @@ end
 -- * run [Run] <p>Information about the scheduled run.</p>
 -- @return ScheduleRunResult structure as a key-value pair table
 function M.ScheduleRunResult(args)
-	assert(args, "You must provdide an argument table when creating ScheduleRunResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ScheduleRunResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["run"] = args["run"],
 	}
-	asserts.AssertScheduleRunResult(t)
-	return t
+	asserts.AssertScheduleRunResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListSuitesRequest = { ["nextToken"] = true, ["arn"] = true, nil }
@@ -1904,13 +2553,24 @@ end
 -- Required key: arn
 -- @return ListSuitesRequest structure as a key-value pair table
 function M.ListSuitesRequest(args)
-	assert(args, "You must provdide an argument table when creating ListSuitesRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListSuitesRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["nextToken"] = args["nextToken"],
 		["arn"] = args["arn"],
 	}
-	asserts.AssertListSuitesRequest(t)
-	return t
+	asserts.AssertListSuitesRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.NotFoundException = { ["message"] = true, nil }
@@ -1931,12 +2591,23 @@ end
 -- * message [Message] <p>Any additional information about the exception.</p>
 -- @return NotFoundException structure as a key-value pair table
 function M.NotFoundException(args)
-	assert(args, "You must provdide an argument table when creating NotFoundException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating NotFoundException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertNotFoundException(t)
-	return t
+	asserts.AssertNotFoundException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetAccountSettingsResult = { ["accountSettings"] = true, nil }
@@ -1957,12 +2628,23 @@ end
 -- * accountSettings [AccountSettings] <p>The account settings.</p>
 -- @return GetAccountSettingsResult structure as a key-value pair table
 function M.GetAccountSettingsResult(args)
-	assert(args, "You must provdide an argument table when creating GetAccountSettingsResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetAccountSettingsResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["accountSettings"] = args["accountSettings"],
 	}
-	asserts.AssertGetAccountSettingsResult(t)
-	return t
+	asserts.AssertGetAccountSettingsResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateDevicePoolRequest = { ["rules"] = true, ["name"] = true, ["projectArn"] = true, ["description"] = true, nil }
@@ -1995,15 +2677,26 @@ end
 -- Required key: rules
 -- @return CreateDevicePoolRequest structure as a key-value pair table
 function M.CreateDevicePoolRequest(args)
-	assert(args, "You must provdide an argument table when creating CreateDevicePoolRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateDevicePoolRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["rules"] = args["rules"],
 		["name"] = args["name"],
 		["projectArn"] = args["projectArn"],
 		["description"] = args["description"],
 	}
-	asserts.AssertCreateDevicePoolRequest(t)
-	return t
+	asserts.AssertCreateDevicePoolRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.RecurringCharge = { ["cost"] = true, ["frequency"] = true, nil }
@@ -2026,13 +2719,24 @@ end
 -- * frequency [RecurringChargeFrequency] <p>The frequency in which charges will recur.</p>
 -- @return RecurringCharge structure as a key-value pair table
 function M.RecurringCharge(args)
-	assert(args, "You must provdide an argument table when creating RecurringCharge")
-	local t = { 
+	assert(args, "You must provide an argument table when creating RecurringCharge")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["cost"] = args["cost"],
 		["frequency"] = args["frequency"],
 	}
-	asserts.AssertRecurringCharge(t)
-	return t
+	asserts.AssertRecurringCharge(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateProjectResult = { ["project"] = true, nil }
@@ -2053,12 +2757,23 @@ end
 -- * project [Project] <p>The newly created project.</p>
 -- @return CreateProjectResult structure as a key-value pair table
 function M.CreateProjectResult(args)
-	assert(args, "You must provdide an argument table when creating CreateProjectResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateProjectResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["project"] = args["project"],
 	}
-	asserts.AssertCreateProjectResult(t)
-	return t
+	asserts.AssertCreateProjectResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Upload = { ["status"] = true, ["contentType"] = true, ["name"] = true, ["created"] = true, ["url"] = true, ["message"] = true, ["type"] = true, ["arn"] = true, ["metadata"] = true, nil }
@@ -2095,8 +2810,14 @@ end
 -- * metadata [Metadata] <p>The upload's metadata. For example, for Android, this contains information that is parsed from the manifest and is displayed in the AWS Device Farm console after the associated app is uploaded.</p>
 -- @return Upload structure as a key-value pair table
 function M.Upload(args)
-	assert(args, "You must provdide an argument table when creating Upload")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Upload")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["status"] = args["status"],
 		["contentType"] = args["contentType"],
 		["name"] = args["name"],
@@ -2107,8 +2828,13 @@ function M.Upload(args)
 		["arn"] = args["arn"],
 		["metadata"] = args["metadata"],
 	}
-	asserts.AssertUpload(t)
-	return t
+	asserts.AssertUpload(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteDevicePoolRequest = { ["arn"] = true, nil }
@@ -2131,12 +2857,23 @@ end
 -- Required key: arn
 -- @return DeleteDevicePoolRequest structure as a key-value pair table
 function M.DeleteDevicePoolRequest(args)
-	assert(args, "You must provdide an argument table when creating DeleteDevicePoolRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteDevicePoolRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["arn"] = args["arn"],
 	}
-	asserts.AssertDeleteDevicePoolRequest(t)
-	return t
+	asserts.AssertDeleteDevicePoolRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListOfferingsRequest = { ["nextToken"] = true, nil }
@@ -2157,12 +2894,23 @@ end
 -- * nextToken [PaginationToken] <p>An identifier that was returned from the previous call to this operation, which can be used to return the next set of items in the list.</p>
 -- @return ListOfferingsRequest structure as a key-value pair table
 function M.ListOfferingsRequest(args)
-	assert(args, "You must provdide an argument table when creating ListOfferingsRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListOfferingsRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["nextToken"] = args["nextToken"],
 	}
-	asserts.AssertListOfferingsRequest(t)
-	return t
+	asserts.AssertListOfferingsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListNetworkProfilesRequest = { ["nextToken"] = true, ["type"] = true, ["arn"] = true, nil }
@@ -2189,14 +2937,25 @@ end
 -- Required key: arn
 -- @return ListNetworkProfilesRequest structure as a key-value pair table
 function M.ListNetworkProfilesRequest(args)
-	assert(args, "You must provdide an argument table when creating ListNetworkProfilesRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListNetworkProfilesRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["nextToken"] = args["nextToken"],
 		["type"] = args["type"],
 		["arn"] = args["arn"],
 	}
-	asserts.AssertListNetworkProfilesRequest(t)
-	return t
+	asserts.AssertListNetworkProfilesRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteUploadRequest = { ["arn"] = true, nil }
@@ -2219,12 +2978,23 @@ end
 -- Required key: arn
 -- @return DeleteUploadRequest structure as a key-value pair table
 function M.DeleteUploadRequest(args)
-	assert(args, "You must provdide an argument table when creating DeleteUploadRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteUploadRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["arn"] = args["arn"],
 	}
-	asserts.AssertDeleteUploadRequest(t)
-	return t
+	asserts.AssertDeleteUploadRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetDeviceRequest = { ["arn"] = true, nil }
@@ -2247,12 +3017,23 @@ end
 -- Required key: arn
 -- @return GetDeviceRequest structure as a key-value pair table
 function M.GetDeviceRequest(args)
-	assert(args, "You must provdide an argument table when creating GetDeviceRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetDeviceRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["arn"] = args["arn"],
 	}
-	asserts.AssertGetDeviceRequest(t)
-	return t
+	asserts.AssertGetDeviceRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.StopRemoteAccessSessionResult = { ["remoteAccessSession"] = true, nil }
@@ -2273,12 +3054,23 @@ end
 -- * remoteAccessSession [RemoteAccessSession] <p>A container representing the metadata from the service about the remote access session you are stopping.</p>
 -- @return StopRemoteAccessSessionResult structure as a key-value pair table
 function M.StopRemoteAccessSessionResult(args)
-	assert(args, "You must provdide an argument table when creating StopRemoteAccessSessionResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating StopRemoteAccessSessionResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["remoteAccessSession"] = args["remoteAccessSession"],
 	}
-	asserts.AssertStopRemoteAccessSessionResult(t)
-	return t
+	asserts.AssertStopRemoteAccessSessionResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.IdempotencyException = { ["message"] = true, nil }
@@ -2299,12 +3091,23 @@ end
 -- * message [Message] <p>Any additional information about the exception.</p>
 -- @return IdempotencyException structure as a key-value pair table
 function M.IdempotencyException(args)
-	assert(args, "You must provdide an argument table when creating IdempotencyException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating IdempotencyException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertIdempotencyException(t)
-	return t
+	asserts.AssertIdempotencyException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.IncompatibilityMessage = { ["message"] = true, ["type"] = true, nil }
@@ -2327,13 +3130,24 @@ end
 -- * type [DeviceAttribute] <p>The type of incompatibility.</p> <p>Allowed values include:</p> <ul> <li> <p>ARN: The ARN.</p> </li> <li> <p>FORM_FACTOR: The form factor (for example, phone or tablet).</p> </li> <li> <p>MANUFACTURER: The manufacturer.</p> </li> <li> <p>PLATFORM: The platform (for example, Android or iOS).</p> </li> <li> <p>REMOTE_ACCESS_ENABLED: Whether the device is enabled for remote access.</p> </li> <li> <p>APPIUM_VERSION: The Appium version for the test.</p> </li> </ul>
 -- @return IncompatibilityMessage structure as a key-value pair table
 function M.IncompatibilityMessage(args)
-	assert(args, "You must provdide an argument table when creating IncompatibilityMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating IncompatibilityMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 		["type"] = args["type"],
 	}
-	asserts.AssertIncompatibilityMessage(t)
-	return t
+	asserts.AssertIncompatibilityMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetTestRequest = { ["arn"] = true, nil }
@@ -2356,12 +3170,23 @@ end
 -- Required key: arn
 -- @return GetTestRequest structure as a key-value pair table
 function M.GetTestRequest(args)
-	assert(args, "You must provdide an argument table when creating GetTestRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetTestRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["arn"] = args["arn"],
 	}
-	asserts.AssertGetTestRequest(t)
-	return t
+	asserts.AssertGetTestRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListDevicesResult = { ["nextToken"] = true, ["devices"] = true, nil }
@@ -2384,13 +3209,24 @@ end
 -- * devices [Devices] <p>Information about the devices.</p>
 -- @return ListDevicesResult structure as a key-value pair table
 function M.ListDevicesResult(args)
-	assert(args, "You must provdide an argument table when creating ListDevicesResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListDevicesResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["nextToken"] = args["nextToken"],
 		["devices"] = args["devices"],
 	}
-	asserts.AssertListDevicesResult(t)
-	return t
+	asserts.AssertListDevicesResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdateNetworkProfileResult = { ["networkProfile"] = true, nil }
@@ -2411,12 +3247,23 @@ end
 -- * networkProfile [NetworkProfile] <p>A list of the available network profiles.</p>
 -- @return UpdateNetworkProfileResult structure as a key-value pair table
 function M.UpdateNetworkProfileResult(args)
-	assert(args, "You must provdide an argument table when creating UpdateNetworkProfileResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateNetworkProfileResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["networkProfile"] = args["networkProfile"],
 	}
-	asserts.AssertUpdateNetworkProfileResult(t)
-	return t
+	asserts.AssertUpdateNetworkProfileResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetDevicePoolCompatibilityRequest = { ["devicePoolArn"] = true, ["testType"] = true, ["test"] = true, ["appArn"] = true, nil }
@@ -2445,15 +3292,26 @@ end
 -- Required key: devicePoolArn
 -- @return GetDevicePoolCompatibilityRequest structure as a key-value pair table
 function M.GetDevicePoolCompatibilityRequest(args)
-	assert(args, "You must provdide an argument table when creating GetDevicePoolCompatibilityRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetDevicePoolCompatibilityRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["devicePoolArn"] = args["devicePoolArn"],
 		["testType"] = args["testType"],
 		["test"] = args["test"],
 		["appArn"] = args["appArn"],
 	}
-	asserts.AssertGetDevicePoolCompatibilityRequest(t)
-	return t
+	asserts.AssertGetDevicePoolCompatibilityRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteRunResult = { nil }
@@ -2472,11 +3330,22 @@ end
 -- Valid keys:
 -- @return DeleteRunResult structure as a key-value pair table
 function M.DeleteRunResult(args)
-	assert(args, "You must provdide an argument table when creating DeleteRunResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteRunResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertDeleteRunResult(t)
-	return t
+	asserts.AssertDeleteRunResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateRemoteAccessSessionRequest = { ["configuration"] = true, ["deviceArn"] = true, ["projectArn"] = true, ["name"] = true, nil }
@@ -2507,15 +3376,26 @@ end
 -- Required key: deviceArn
 -- @return CreateRemoteAccessSessionRequest structure as a key-value pair table
 function M.CreateRemoteAccessSessionRequest(args)
-	assert(args, "You must provdide an argument table when creating CreateRemoteAccessSessionRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateRemoteAccessSessionRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["configuration"] = args["configuration"],
 		["deviceArn"] = args["deviceArn"],
 		["projectArn"] = args["projectArn"],
 		["name"] = args["name"],
 	}
-	asserts.AssertCreateRemoteAccessSessionRequest(t)
-	return t
+	asserts.AssertCreateRemoteAccessSessionRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetNetworkProfileResult = { ["networkProfile"] = true, nil }
@@ -2536,12 +3416,23 @@ end
 -- * networkProfile [NetworkProfile] <p>The network profile.</p>
 -- @return GetNetworkProfileResult structure as a key-value pair table
 function M.GetNetworkProfileResult(args)
-	assert(args, "You must provdide an argument table when creating GetNetworkProfileResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetNetworkProfileResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["networkProfile"] = args["networkProfile"],
 	}
-	asserts.AssertGetNetworkProfileResult(t)
-	return t
+	asserts.AssertGetNetworkProfileResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DevicePoolCompatibilityResult = { ["device"] = true, ["compatible"] = true, ["incompatibilityMessages"] = true, nil }
@@ -2566,14 +3457,25 @@ end
 -- * incompatibilityMessages [IncompatibilityMessages] <p>Information about the compatibility.</p>
 -- @return DevicePoolCompatibilityResult structure as a key-value pair table
 function M.DevicePoolCompatibilityResult(args)
-	assert(args, "You must provdide an argument table when creating DevicePoolCompatibilityResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DevicePoolCompatibilityResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["device"] = args["device"],
 		["compatible"] = args["compatible"],
 		["incompatibilityMessages"] = args["incompatibilityMessages"],
 	}
-	asserts.AssertDevicePoolCompatibilityResult(t)
-	return t
+	asserts.AssertDevicePoolCompatibilityResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetJobRequest = { ["arn"] = true, nil }
@@ -2596,12 +3498,23 @@ end
 -- Required key: arn
 -- @return GetJobRequest structure as a key-value pair table
 function M.GetJobRequest(args)
-	assert(args, "You must provdide an argument table when creating GetJobRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetJobRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["arn"] = args["arn"],
 	}
-	asserts.AssertGetJobRequest(t)
-	return t
+	asserts.AssertGetJobRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.PurchaseOfferingResult = { ["offeringTransaction"] = true, nil }
@@ -2622,12 +3535,23 @@ end
 -- * offeringTransaction [OfferingTransaction] <p>Represents the offering transaction for the purchase result.</p>
 -- @return PurchaseOfferingResult structure as a key-value pair table
 function M.PurchaseOfferingResult(args)
-	assert(args, "You must provdide an argument table when creating PurchaseOfferingResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating PurchaseOfferingResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["offeringTransaction"] = args["offeringTransaction"],
 	}
-	asserts.AssertPurchaseOfferingResult(t)
-	return t
+	asserts.AssertPurchaseOfferingResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Counters = { ["skipped"] = true, ["warned"] = true, ["failed"] = true, ["stopped"] = true, ["passed"] = true, ["errored"] = true, ["total"] = true, nil }
@@ -2660,8 +3584,14 @@ end
 -- * total [Integer] <p>The total number of entities.</p>
 -- @return Counters structure as a key-value pair table
 function M.Counters(args)
-	assert(args, "You must provdide an argument table when creating Counters")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Counters")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["skipped"] = args["skipped"],
 		["warned"] = args["warned"],
 		["failed"] = args["failed"],
@@ -2670,8 +3600,13 @@ function M.Counters(args)
 		["errored"] = args["errored"],
 		["total"] = args["total"],
 	}
-	asserts.AssertCounters(t)
-	return t
+	asserts.AssertCounters(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InstallToRemoteAccessSessionResult = { ["appUpload"] = true, nil }
@@ -2692,12 +3627,23 @@ end
 -- * appUpload [Upload] <p>An app to upload or that has been uploaded.</p>
 -- @return InstallToRemoteAccessSessionResult structure as a key-value pair table
 function M.InstallToRemoteAccessSessionResult(args)
-	assert(args, "You must provdide an argument table when creating InstallToRemoteAccessSessionResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InstallToRemoteAccessSessionResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["appUpload"] = args["appUpload"],
 	}
-	asserts.AssertInstallToRemoteAccessSessionResult(t)
-	return t
+	asserts.AssertInstallToRemoteAccessSessionResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.MonetaryAmount = { ["amount"] = true, ["currencyCode"] = true, nil }
@@ -2720,13 +3666,24 @@ end
 -- * currencyCode [CurrencyCode] <p>The currency code of a monetary amount. For example, <code>USD</code> means "U.S. dollars."</p>
 -- @return MonetaryAmount structure as a key-value pair table
 function M.MonetaryAmount(args)
-	assert(args, "You must provdide an argument table when creating MonetaryAmount")
-	local t = { 
+	assert(args, "You must provide an argument table when creating MonetaryAmount")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["amount"] = args["amount"],
 		["currencyCode"] = args["currencyCode"],
 	}
-	asserts.AssertMonetaryAmount(t)
-	return t
+	asserts.AssertMonetaryAmount(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListJobsRequest = { ["nextToken"] = true, ["arn"] = true, nil }
@@ -2751,13 +3708,24 @@ end
 -- Required key: arn
 -- @return ListJobsRequest structure as a key-value pair table
 function M.ListJobsRequest(args)
-	assert(args, "You must provdide an argument table when creating ListJobsRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListJobsRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["nextToken"] = args["nextToken"],
 		["arn"] = args["arn"],
 	}
-	asserts.AssertListJobsRequest(t)
-	return t
+	asserts.AssertListJobsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdateNetworkProfileRequest = { ["name"] = true, ["downlinkLossPercent"] = true, ["uplinkLossPercent"] = true, ["uplinkJitterMs"] = true, ["downlinkJitterMs"] = true, ["arn"] = true, ["uplinkDelayMs"] = true, ["uplinkBandwidthBits"] = true, ["downlinkDelayMs"] = true, ["type"] = true, ["downlinkBandwidthBits"] = true, ["description"] = true, nil }
@@ -2802,8 +3770,14 @@ end
 -- Required key: arn
 -- @return UpdateNetworkProfileRequest structure as a key-value pair table
 function M.UpdateNetworkProfileRequest(args)
-	assert(args, "You must provdide an argument table when creating UpdateNetworkProfileRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateNetworkProfileRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["name"] = args["name"],
 		["downlinkLossPercent"] = args["downlinkLossPercent"],
 		["uplinkLossPercent"] = args["uplinkLossPercent"],
@@ -2817,8 +3791,13 @@ function M.UpdateNetworkProfileRequest(args)
 		["downlinkBandwidthBits"] = args["downlinkBandwidthBits"],
 		["description"] = args["description"],
 	}
-	asserts.AssertUpdateNetworkProfileRequest(t)
-	return t
+	asserts.AssertUpdateNetworkProfileRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.RemoteAccessSession = { ["status"] = true, ["endpoint"] = true, ["name"] = true, ["created"] = true, ["started"] = true, ["deviceMinutes"] = true, ["stopped"] = true, ["result"] = true, ["device"] = true, ["message"] = true, ["billingMethod"] = true, ["arn"] = true, nil }
@@ -2861,8 +3840,14 @@ end
 -- * arn [AmazonResourceName] <p>The Amazon Resource Name (ARN) of the remote access session.</p>
 -- @return RemoteAccessSession structure as a key-value pair table
 function M.RemoteAccessSession(args)
-	assert(args, "You must provdide an argument table when creating RemoteAccessSession")
-	local t = { 
+	assert(args, "You must provide an argument table when creating RemoteAccessSession")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["status"] = args["status"],
 		["endpoint"] = args["endpoint"],
 		["name"] = args["name"],
@@ -2876,8 +3861,13 @@ function M.RemoteAccessSession(args)
 		["billingMethod"] = args["billingMethod"],
 		["arn"] = args["arn"],
 	}
-	asserts.AssertRemoteAccessSession(t)
-	return t
+	asserts.AssertRemoteAccessSession(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Device = { ["formFactor"] = true, ["name"] = true, ["remoteAccessEnabled"] = true, ["resolution"] = true, ["image"] = true, ["fleetName"] = true, ["fleetType"] = true, ["platform"] = true, ["carrier"] = true, ["radio"] = true, ["heapSize"] = true, ["memory"] = true, ["model"] = true, ["os"] = true, ["cpu"] = true, ["arn"] = true, ["manufacturer"] = true, nil }
@@ -2930,8 +3920,14 @@ end
 -- * manufacturer [String] <p>The device's manufacturer name.</p>
 -- @return Device structure as a key-value pair table
 function M.Device(args)
-	assert(args, "You must provdide an argument table when creating Device")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Device")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["formFactor"] = args["formFactor"],
 		["name"] = args["name"],
 		["remoteAccessEnabled"] = args["remoteAccessEnabled"],
@@ -2950,8 +3946,13 @@ function M.Device(args)
 		["arn"] = args["arn"],
 		["manufacturer"] = args["manufacturer"],
 	}
-	asserts.AssertDevice(t)
-	return t
+	asserts.AssertDevice(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteNetworkProfileRequest = { ["arn"] = true, nil }
@@ -2974,12 +3975,23 @@ end
 -- Required key: arn
 -- @return DeleteNetworkProfileRequest structure as a key-value pair table
 function M.DeleteNetworkProfileRequest(args)
-	assert(args, "You must provdide an argument table when creating DeleteNetworkProfileRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteNetworkProfileRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["arn"] = args["arn"],
 	}
-	asserts.AssertDeleteNetworkProfileRequest(t)
-	return t
+	asserts.AssertDeleteNetworkProfileRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InstallToRemoteAccessSessionRequest = { ["appArn"] = true, ["remoteAccessSessionArn"] = true, nil }
@@ -3006,13 +4018,24 @@ end
 -- Required key: appArn
 -- @return InstallToRemoteAccessSessionRequest structure as a key-value pair table
 function M.InstallToRemoteAccessSessionRequest(args)
-	assert(args, "You must provdide an argument table when creating InstallToRemoteAccessSessionRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InstallToRemoteAccessSessionRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["appArn"] = args["appArn"],
 		["remoteAccessSessionArn"] = args["remoteAccessSessionArn"],
 	}
-	asserts.AssertInstallToRemoteAccessSessionRequest(t)
-	return t
+	asserts.AssertInstallToRemoteAccessSessionRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteProjectResult = { nil }
@@ -3031,11 +4054,22 @@ end
 -- Valid keys:
 -- @return DeleteProjectResult structure as a key-value pair table
 function M.DeleteProjectResult(args)
-	assert(args, "You must provdide an argument table when creating DeleteProjectResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteProjectResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertDeleteProjectResult(t)
-	return t
+	asserts.AssertDeleteProjectResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListUniqueProblemsRequest = { ["nextToken"] = true, ["arn"] = true, nil }
@@ -3060,13 +4094,24 @@ end
 -- Required key: arn
 -- @return ListUniqueProblemsRequest structure as a key-value pair table
 function M.ListUniqueProblemsRequest(args)
-	assert(args, "You must provdide an argument table when creating ListUniqueProblemsRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListUniqueProblemsRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["nextToken"] = args["nextToken"],
 		["arn"] = args["arn"],
 	}
-	asserts.AssertListUniqueProblemsRequest(t)
-	return t
+	asserts.AssertListUniqueProblemsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ScheduleRunRequest = { ["name"] = true, ["test"] = true, ["executionConfiguration"] = true, ["devicePoolArn"] = true, ["configuration"] = true, ["appArn"] = true, ["projectArn"] = true, nil }
@@ -3105,8 +4150,14 @@ end
 -- Required key: test
 -- @return ScheduleRunRequest structure as a key-value pair table
 function M.ScheduleRunRequest(args)
-	assert(args, "You must provdide an argument table when creating ScheduleRunRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ScheduleRunRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["name"] = args["name"],
 		["test"] = args["test"],
 		["executionConfiguration"] = args["executionConfiguration"],
@@ -3115,8 +4166,13 @@ function M.ScheduleRunRequest(args)
 		["appArn"] = args["appArn"],
 		["projectArn"] = args["projectArn"],
 	}
-	asserts.AssertScheduleRunRequest(t)
-	return t
+	asserts.AssertScheduleRunRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListDevicePoolsRequest = { ["nextToken"] = true, ["type"] = true, ["arn"] = true, nil }
@@ -3143,14 +4199,25 @@ end
 -- Required key: arn
 -- @return ListDevicePoolsRequest structure as a key-value pair table
 function M.ListDevicePoolsRequest(args)
-	assert(args, "You must provdide an argument table when creating ListDevicePoolsRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListDevicePoolsRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["nextToken"] = args["nextToken"],
 		["type"] = args["type"],
 		["arn"] = args["arn"],
 	}
-	asserts.AssertListDevicePoolsRequest(t)
-	return t
+	asserts.AssertListDevicePoolsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdateProjectResult = { ["project"] = true, nil }
@@ -3171,12 +4238,23 @@ end
 -- * project [Project] <p>The project you wish to update.</p>
 -- @return UpdateProjectResult structure as a key-value pair table
 function M.UpdateProjectResult(args)
-	assert(args, "You must provdide an argument table when creating UpdateProjectResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateProjectResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["project"] = args["project"],
 	}
-	asserts.AssertUpdateProjectResult(t)
-	return t
+	asserts.AssertUpdateProjectResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Problem = { ["run"] = true, ["device"] = true, ["job"] = true, ["result"] = true, ["test"] = true, ["suite"] = true, ["message"] = true, nil }
@@ -3209,8 +4287,14 @@ end
 -- * message [Message] <p>A message about the problem's result.</p>
 -- @return Problem structure as a key-value pair table
 function M.Problem(args)
-	assert(args, "You must provdide an argument table when creating Problem")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Problem")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["run"] = args["run"],
 		["device"] = args["device"],
 		["job"] = args["job"],
@@ -3219,8 +4303,13 @@ function M.Problem(args)
 		["suite"] = args["suite"],
 		["message"] = args["message"],
 	}
-	asserts.AssertProblem(t)
-	return t
+	asserts.AssertProblem(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateRemoteAccessSessionResult = { ["remoteAccessSession"] = true, nil }
@@ -3241,12 +4330,23 @@ end
 -- * remoteAccessSession [RemoteAccessSession] <p>A container that describes the remote access session when the request to create a remote access session is sent.</p>
 -- @return CreateRemoteAccessSessionResult structure as a key-value pair table
 function M.CreateRemoteAccessSessionResult(args)
-	assert(args, "You must provdide an argument table when creating CreateRemoteAccessSessionResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateRemoteAccessSessionResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["remoteAccessSession"] = args["remoteAccessSession"],
 	}
-	asserts.AssertCreateRemoteAccessSessionResult(t)
-	return t
+	asserts.AssertCreateRemoteAccessSessionResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateRemoteAccessSessionConfiguration = { ["billingMethod"] = true, nil }
@@ -3267,12 +4367,23 @@ end
 -- * billingMethod [BillingMethod] <p>Returns the billing method for purposes of configuring a remote access session.</p>
 -- @return CreateRemoteAccessSessionConfiguration structure as a key-value pair table
 function M.CreateRemoteAccessSessionConfiguration(args)
-	assert(args, "You must provdide an argument table when creating CreateRemoteAccessSessionConfiguration")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateRemoteAccessSessionConfiguration")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["billingMethod"] = args["billingMethod"],
 	}
-	asserts.AssertCreateRemoteAccessSessionConfiguration(t)
-	return t
+	asserts.AssertCreateRemoteAccessSessionConfiguration(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetTestResult = { ["test"] = true, nil }
@@ -3293,12 +4404,23 @@ end
 -- * test [Test] <p>A test condition that is evaluated.</p>
 -- @return GetTestResult structure as a key-value pair table
 function M.GetTestResult(args)
-	assert(args, "You must provdide an argument table when creating GetTestResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetTestResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["test"] = args["test"],
 	}
-	asserts.AssertGetTestResult(t)
-	return t
+	asserts.AssertGetTestResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ScheduleRunConfiguration = { ["radios"] = true, ["locale"] = true, ["networkProfileArn"] = true, ["location"] = true, ["extraDataPackageArn"] = true, ["auxiliaryApps"] = true, ["billingMethod"] = true, nil }
@@ -3331,8 +4453,14 @@ end
 -- * billingMethod [BillingMethod] <p>Specifies the billing method for a test run: <code>metered</code> or <code>unmetered</code>. If the parameter is not specified, the default value is <code>metered</code>.</p>
 -- @return ScheduleRunConfiguration structure as a key-value pair table
 function M.ScheduleRunConfiguration(args)
-	assert(args, "You must provdide an argument table when creating ScheduleRunConfiguration")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ScheduleRunConfiguration")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["radios"] = args["radios"],
 		["locale"] = args["locale"],
 		["networkProfileArn"] = args["networkProfileArn"],
@@ -3341,8 +4469,13 @@ function M.ScheduleRunConfiguration(args)
 		["auxiliaryApps"] = args["auxiliaryApps"],
 		["billingMethod"] = args["billingMethod"],
 	}
-	asserts.AssertScheduleRunConfiguration(t)
-	return t
+	asserts.AssertScheduleRunConfiguration(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.NetworkProfile = { ["name"] = true, ["downlinkLossPercent"] = true, ["uplinkLossPercent"] = true, ["uplinkJitterMs"] = true, ["downlinkJitterMs"] = true, ["arn"] = true, ["uplinkDelayMs"] = true, ["uplinkBandwidthBits"] = true, ["downlinkDelayMs"] = true, ["type"] = true, ["downlinkBandwidthBits"] = true, ["description"] = true, nil }
@@ -3385,8 +4518,14 @@ end
 -- * description [Message] <p>The description of the network profile.</p>
 -- @return NetworkProfile structure as a key-value pair table
 function M.NetworkProfile(args)
-	assert(args, "You must provdide an argument table when creating NetworkProfile")
-	local t = { 
+	assert(args, "You must provide an argument table when creating NetworkProfile")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["name"] = args["name"],
 		["downlinkLossPercent"] = args["downlinkLossPercent"],
 		["uplinkLossPercent"] = args["uplinkLossPercent"],
@@ -3400,8 +4539,13 @@ function M.NetworkProfile(args)
 		["downlinkBandwidthBits"] = args["downlinkBandwidthBits"],
 		["description"] = args["description"],
 	}
-	asserts.AssertNetworkProfile(t)
-	return t
+	asserts.AssertNetworkProfile(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Location = { ["latitude"] = true, ["longitude"] = true, nil }
@@ -3428,13 +4572,24 @@ end
 -- Required key: longitude
 -- @return Location structure as a key-value pair table
 function M.Location(args)
-	assert(args, "You must provdide an argument table when creating Location")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Location")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["latitude"] = args["latitude"],
 		["longitude"] = args["longitude"],
 	}
-	asserts.AssertLocation(t)
-	return t
+	asserts.AssertLocation(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetRunRequest = { ["arn"] = true, nil }
@@ -3457,12 +4612,23 @@ end
 -- Required key: arn
 -- @return GetRunRequest structure as a key-value pair table
 function M.GetRunRequest(args)
-	assert(args, "You must provdide an argument table when creating GetRunRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetRunRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["arn"] = args["arn"],
 	}
-	asserts.AssertGetRunRequest(t)
-	return t
+	asserts.AssertGetRunRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Resolution = { ["width"] = true, ["height"] = true, nil }
@@ -3485,13 +4651,24 @@ end
 -- * height [Integer] <p>The screen resolution's height, expressed in pixels.</p>
 -- @return Resolution structure as a key-value pair table
 function M.Resolution(args)
-	assert(args, "You must provdide an argument table when creating Resolution")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Resolution")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["width"] = args["width"],
 		["height"] = args["height"],
 	}
-	asserts.AssertResolution(t)
-	return t
+	asserts.AssertResolution(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.PurchaseOfferingRequest = { ["offeringPromotionId"] = true, ["quantity"] = true, ["offeringId"] = true, nil }
@@ -3516,14 +4693,25 @@ end
 -- * offeringId [OfferingIdentifier] <p>The ID of the offering.</p>
 -- @return PurchaseOfferingRequest structure as a key-value pair table
 function M.PurchaseOfferingRequest(args)
-	assert(args, "You must provdide an argument table when creating PurchaseOfferingRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating PurchaseOfferingRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["offeringPromotionId"] = args["offeringPromotionId"],
 		["quantity"] = args["quantity"],
 		["offeringId"] = args["offeringId"],
 	}
-	asserts.AssertPurchaseOfferingRequest(t)
-	return t
+	asserts.AssertPurchaseOfferingRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateNetworkProfileResult = { ["networkProfile"] = true, nil }
@@ -3544,12 +4732,23 @@ end
 -- * networkProfile [NetworkProfile] <p>The network profile that is returned by the create network profile request.</p>
 -- @return CreateNetworkProfileResult structure as a key-value pair table
 function M.CreateNetworkProfileResult(args)
-	assert(args, "You must provdide an argument table when creating CreateNetworkProfileResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateNetworkProfileResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["networkProfile"] = args["networkProfile"],
 	}
-	asserts.AssertCreateNetworkProfileResult(t)
-	return t
+	asserts.AssertCreateNetworkProfileResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.TrialMinutes = { ["total"] = true, ["remaining"] = true, nil }
@@ -3572,13 +4771,24 @@ end
 -- * remaining [Double] <p>The number of free trial minutes remaining in the account.</p>
 -- @return TrialMinutes structure as a key-value pair table
 function M.TrialMinutes(args)
-	assert(args, "You must provdide an argument table when creating TrialMinutes")
-	local t = { 
+	assert(args, "You must provide an argument table when creating TrialMinutes")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["total"] = args["total"],
 		["remaining"] = args["remaining"],
 	}
-	asserts.AssertTrialMinutes(t)
-	return t
+	asserts.AssertTrialMinutes(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetOfferingStatusRequest = { ["nextToken"] = true, nil }
@@ -3599,12 +4809,23 @@ end
 -- * nextToken [PaginationToken] <p>An identifier that was returned from the previous call to this operation, which can be used to return the next set of items in the list.</p>
 -- @return GetOfferingStatusRequest structure as a key-value pair table
 function M.GetOfferingStatusRequest(args)
-	assert(args, "You must provdide an argument table when creating GetOfferingStatusRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetOfferingStatusRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["nextToken"] = args["nextToken"],
 	}
-	asserts.AssertGetOfferingStatusRequest(t)
-	return t
+	asserts.AssertGetOfferingStatusRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetOfferingStatusResult = { ["current"] = true, ["nextPeriod"] = true, ["nextToken"] = true, nil }
@@ -3629,14 +4850,25 @@ end
 -- * nextToken [PaginationToken] <p>An identifier that was returned from the previous call to this operation, which can be used to return the next set of items in the list.</p>
 -- @return GetOfferingStatusResult structure as a key-value pair table
 function M.GetOfferingStatusResult(args)
-	assert(args, "You must provdide an argument table when creating GetOfferingStatusResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetOfferingStatusResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["current"] = args["current"],
 		["nextPeriod"] = args["nextPeriod"],
 		["nextToken"] = args["nextToken"],
 	}
-	asserts.AssertGetOfferingStatusResult(t)
-	return t
+	asserts.AssertGetOfferingStatusResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListOfferingTransactionsResult = { ["offeringTransactions"] = true, ["nextToken"] = true, nil }
@@ -3659,13 +4891,24 @@ end
 -- * nextToken [PaginationToken] <p>An identifier that was returned from the previous call to this operation, which can be used to return the next set of items in the list.</p>
 -- @return ListOfferingTransactionsResult structure as a key-value pair table
 function M.ListOfferingTransactionsResult(args)
-	assert(args, "You must provdide an argument table when creating ListOfferingTransactionsResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListOfferingTransactionsResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["offeringTransactions"] = args["offeringTransactions"],
 		["nextToken"] = args["nextToken"],
 	}
-	asserts.AssertListOfferingTransactionsResult(t)
-	return t
+	asserts.AssertListOfferingTransactionsResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Offering = { ["recurringCharges"] = true, ["platform"] = true, ["type"] = true, ["id"] = true, ["description"] = true, nil }
@@ -3694,16 +4937,27 @@ end
 -- * description [Message] <p>A string describing the offering.</p>
 -- @return Offering structure as a key-value pair table
 function M.Offering(args)
-	assert(args, "You must provdide an argument table when creating Offering")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Offering")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["recurringCharges"] = args["recurringCharges"],
 		["platform"] = args["platform"],
 		["type"] = args["type"],
 		["id"] = args["id"],
 		["description"] = args["description"],
 	}
-	asserts.AssertOffering(t)
-	return t
+	asserts.AssertOffering(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListTestsResult = { ["tests"] = true, ["nextToken"] = true, nil }
@@ -3726,13 +4980,24 @@ end
 -- * nextToken [PaginationToken] <p>If the number of items that are returned is significantly large, this is an identifier that is also returned, which can be used in a subsequent call to this operation to return the next set of items in the list.</p>
 -- @return ListTestsResult structure as a key-value pair table
 function M.ListTestsResult(args)
-	assert(args, "You must provdide an argument table when creating ListTestsResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListTestsResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["tests"] = args["tests"],
 		["nextToken"] = args["nextToken"],
 	}
-	asserts.AssertListTestsResult(t)
-	return t
+	asserts.AssertListTestsResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ExecutionConfiguration = { ["jobTimeoutMinutes"] = true, ["appPackagesCleanup"] = true, ["accountsCleanup"] = true, nil }
@@ -3757,14 +5022,25 @@ end
 -- * accountsCleanup [AccountsCleanup] <p>True if account cleanup is enabled at the beginning of the test; otherwise, false.</p>
 -- @return ExecutionConfiguration structure as a key-value pair table
 function M.ExecutionConfiguration(args)
-	assert(args, "You must provdide an argument table when creating ExecutionConfiguration")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ExecutionConfiguration")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["jobTimeoutMinutes"] = args["jobTimeoutMinutes"],
 		["appPackagesCleanup"] = args["appPackagesCleanup"],
 		["accountsCleanup"] = args["accountsCleanup"],
 	}
-	asserts.AssertExecutionConfiguration(t)
-	return t
+	asserts.AssertExecutionConfiguration(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Artifact = { ["url"] = true, ["extension"] = true, ["type"] = true, ["name"] = true, ["arn"] = true, nil }
@@ -3793,16 +5069,27 @@ end
 -- * arn [AmazonResourceName] <p>The artifact's ARN.</p>
 -- @return Artifact structure as a key-value pair table
 function M.Artifact(args)
-	assert(args, "You must provdide an argument table when creating Artifact")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Artifact")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["url"] = args["url"],
 		["extension"] = args["extension"],
 		["type"] = args["type"],
 		["name"] = args["name"],
 		["arn"] = args["arn"],
 	}
-	asserts.AssertArtifact(t)
-	return t
+	asserts.AssertArtifact(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetAccountSettingsRequest = { nil }
@@ -3821,11 +5108,22 @@ end
 -- Valid keys:
 -- @return GetAccountSettingsRequest structure as a key-value pair table
 function M.GetAccountSettingsRequest(args)
-	assert(args, "You must provdide an argument table when creating GetAccountSettingsRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetAccountSettingsRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertGetAccountSettingsRequest(t)
-	return t
+	asserts.AssertGetAccountSettingsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetDevicePoolRequest = { ["arn"] = true, nil }
@@ -3848,12 +5146,23 @@ end
 -- Required key: arn
 -- @return GetDevicePoolRequest structure as a key-value pair table
 function M.GetDevicePoolRequest(args)
-	assert(args, "You must provdide an argument table when creating GetDevicePoolRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetDevicePoolRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["arn"] = args["arn"],
 	}
-	asserts.AssertGetDevicePoolRequest(t)
-	return t
+	asserts.AssertGetDevicePoolRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetNetworkProfileRequest = { ["arn"] = true, nil }
@@ -3876,12 +5185,23 @@ end
 -- Required key: arn
 -- @return GetNetworkProfileRequest structure as a key-value pair table
 function M.GetNetworkProfileRequest(args)
-	assert(args, "You must provdide an argument table when creating GetNetworkProfileRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetNetworkProfileRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["arn"] = args["arn"],
 	}
-	asserts.AssertGetNetworkProfileRequest(t)
-	return t
+	asserts.AssertGetNetworkProfileRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListOfferingsResult = { ["offerings"] = true, ["nextToken"] = true, nil }
@@ -3904,13 +5224,24 @@ end
 -- * nextToken [PaginationToken] <p>An identifier that was returned from the previous call to this operation, which can be used to return the next set of items in the list.</p>
 -- @return ListOfferingsResult structure as a key-value pair table
 function M.ListOfferingsResult(args)
-	assert(args, "You must provdide an argument table when creating ListOfferingsResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListOfferingsResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["offerings"] = args["offerings"],
 		["nextToken"] = args["nextToken"],
 	}
-	asserts.AssertListOfferingsResult(t)
-	return t
+	asserts.AssertListOfferingsResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetUploadRequest = { ["arn"] = true, nil }
@@ -3933,12 +5264,23 @@ end
 -- Required key: arn
 -- @return GetUploadRequest structure as a key-value pair table
 function M.GetUploadRequest(args)
-	assert(args, "You must provdide an argument table when creating GetUploadRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetUploadRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["arn"] = args["arn"],
 	}
-	asserts.AssertGetUploadRequest(t)
-	return t
+	asserts.AssertGetUploadRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListOfferingPromotionsRequest = { ["nextToken"] = true, nil }
@@ -3959,12 +5301,23 @@ end
 -- * nextToken [PaginationToken] <p>An identifier that was returned from the previous call to this operation, which can be used to return the next set of items in the list.</p>
 -- @return ListOfferingPromotionsRequest structure as a key-value pair table
 function M.ListOfferingPromotionsRequest(args)
-	assert(args, "You must provdide an argument table when creating ListOfferingPromotionsRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListOfferingPromotionsRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["nextToken"] = args["nextToken"],
 	}
-	asserts.AssertListOfferingPromotionsRequest(t)
-	return t
+	asserts.AssertListOfferingPromotionsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListRunsResult = { ["runs"] = true, ["nextToken"] = true, nil }
@@ -3987,13 +5340,24 @@ end
 -- * nextToken [PaginationToken] <p>If the number of items that are returned is significantly large, this is an identifier that is also returned, which can be used in a subsequent call to this operation to return the next set of items in the list.</p>
 -- @return ListRunsResult structure as a key-value pair table
 function M.ListRunsResult(args)
-	assert(args, "You must provdide an argument table when creating ListRunsResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListRunsResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["runs"] = args["runs"],
 		["nextToken"] = args["nextToken"],
 	}
-	asserts.AssertListRunsResult(t)
-	return t
+	asserts.AssertListRunsResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.StopRunRequest = { ["arn"] = true, nil }
@@ -4016,12 +5380,23 @@ end
 -- Required key: arn
 -- @return StopRunRequest structure as a key-value pair table
 function M.StopRunRequest(args)
-	assert(args, "You must provdide an argument table when creating StopRunRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating StopRunRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["arn"] = args["arn"],
 	}
-	asserts.AssertStopRunRequest(t)
-	return t
+	asserts.AssertStopRunRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListRunsRequest = { ["nextToken"] = true, ["arn"] = true, nil }
@@ -4046,13 +5421,24 @@ end
 -- Required key: arn
 -- @return ListRunsRequest structure as a key-value pair table
 function M.ListRunsRequest(args)
-	assert(args, "You must provdide an argument table when creating ListRunsRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListRunsRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["nextToken"] = args["nextToken"],
 		["arn"] = args["arn"],
 	}
-	asserts.AssertListRunsRequest(t)
-	return t
+	asserts.AssertListRunsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.NotEligibleException = { ["message"] = true, nil }
@@ -4073,12 +5459,23 @@ end
 -- * message [Message] <p>The HTTP response code of a Not Eligible exception.</p>
 -- @return NotEligibleException structure as a key-value pair table
 function M.NotEligibleException(args)
-	assert(args, "You must provdide an argument table when creating NotEligibleException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating NotEligibleException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertNotEligibleException(t)
-	return t
+	asserts.AssertNotEligibleException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetSuiteRequest = { ["arn"] = true, nil }
@@ -4101,12 +5498,23 @@ end
 -- Required key: arn
 -- @return GetSuiteRequest structure as a key-value pair table
 function M.GetSuiteRequest(args)
-	assert(args, "You must provdide an argument table when creating GetSuiteRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetSuiteRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["arn"] = args["arn"],
 	}
-	asserts.AssertGetSuiteRequest(t)
-	return t
+	asserts.AssertGetSuiteRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Rule = { ["operator"] = true, ["attribute"] = true, ["value"] = true, nil }
@@ -4131,14 +5539,25 @@ end
 -- * value [String] <p>The rule's value.</p>
 -- @return Rule structure as a key-value pair table
 function M.Rule(args)
-	assert(args, "You must provdide an argument table when creating Rule")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Rule")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["operator"] = args["operator"],
 		["attribute"] = args["attribute"],
 		["value"] = args["value"],
 	}
-	asserts.AssertRule(t)
-	return t
+	asserts.AssertRule(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListDevicePoolsResult = { ["devicePools"] = true, ["nextToken"] = true, nil }
@@ -4161,13 +5580,24 @@ end
 -- * nextToken [PaginationToken] <p>If the number of items that are returned is significantly large, this is an identifier that is also returned, which can be used in a subsequent call to this operation to return the next set of items in the list.</p>
 -- @return ListDevicePoolsResult structure as a key-value pair table
 function M.ListDevicePoolsResult(args)
-	assert(args, "You must provdide an argument table when creating ListDevicePoolsResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListDevicePoolsResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["devicePools"] = args["devicePools"],
 		["nextToken"] = args["nextToken"],
 	}
-	asserts.AssertListDevicePoolsResult(t)
-	return t
+	asserts.AssertListDevicePoolsResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ProblemDetail = { ["name"] = true, ["arn"] = true, nil }
@@ -4190,13 +5620,24 @@ end
 -- * arn [AmazonResourceName] <p>The problem detail's ARN.</p>
 -- @return ProblemDetail structure as a key-value pair table
 function M.ProblemDetail(args)
-	assert(args, "You must provdide an argument table when creating ProblemDetail")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ProblemDetail")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["name"] = args["name"],
 		["arn"] = args["arn"],
 	}
-	asserts.AssertProblemDetail(t)
-	return t
+	asserts.AssertProblemDetail(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.StopRemoteAccessSessionRequest = { ["arn"] = true, nil }
@@ -4219,12 +5660,23 @@ end
 -- Required key: arn
 -- @return StopRemoteAccessSessionRequest structure as a key-value pair table
 function M.StopRemoteAccessSessionRequest(args)
-	assert(args, "You must provdide an argument table when creating StopRemoteAccessSessionRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating StopRemoteAccessSessionRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["arn"] = args["arn"],
 	}
-	asserts.AssertStopRemoteAccessSessionRequest(t)
-	return t
+	asserts.AssertStopRemoteAccessSessionRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateNetworkProfileRequest = { ["name"] = true, ["downlinkLossPercent"] = true, ["uplinkLossPercent"] = true, ["uplinkJitterMs"] = true, ["downlinkJitterMs"] = true, ["projectArn"] = true, ["uplinkDelayMs"] = true, ["uplinkBandwidthBits"] = true, ["downlinkDelayMs"] = true, ["type"] = true, ["downlinkBandwidthBits"] = true, ["description"] = true, nil }
@@ -4271,8 +5723,14 @@ end
 -- Required key: name
 -- @return CreateNetworkProfileRequest structure as a key-value pair table
 function M.CreateNetworkProfileRequest(args)
-	assert(args, "You must provdide an argument table when creating CreateNetworkProfileRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateNetworkProfileRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["name"] = args["name"],
 		["downlinkLossPercent"] = args["downlinkLossPercent"],
 		["uplinkLossPercent"] = args["uplinkLossPercent"],
@@ -4286,8 +5744,13 @@ function M.CreateNetworkProfileRequest(args)
 		["downlinkBandwidthBits"] = args["downlinkBandwidthBits"],
 		["description"] = args["description"],
 	}
-	asserts.AssertCreateNetworkProfileRequest(t)
-	return t
+	asserts.AssertCreateNetworkProfileRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListRemoteAccessSessionsResult = { ["nextToken"] = true, ["remoteAccessSessions"] = true, nil }
@@ -4310,13 +5773,24 @@ end
 -- * remoteAccessSessions [RemoteAccessSessions] <p>A container representing the metadata from the service about each remote access session you are requesting.</p>
 -- @return ListRemoteAccessSessionsResult structure as a key-value pair table
 function M.ListRemoteAccessSessionsResult(args)
-	assert(args, "You must provdide an argument table when creating ListRemoteAccessSessionsResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListRemoteAccessSessionsResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["nextToken"] = args["nextToken"],
 		["remoteAccessSessions"] = args["remoteAccessSessions"],
 	}
-	asserts.AssertListRemoteAccessSessionsResult(t)
-	return t
+	asserts.AssertListRemoteAccessSessionsResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListNetworkProfilesResult = { ["nextToken"] = true, ["networkProfiles"] = true, nil }
@@ -4339,13 +5813,24 @@ end
 -- * networkProfiles [NetworkProfiles] <p>A list of the available network profiles.</p>
 -- @return ListNetworkProfilesResult structure as a key-value pair table
 function M.ListNetworkProfilesResult(args)
-	assert(args, "You must provdide an argument table when creating ListNetworkProfilesResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListNetworkProfilesResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["nextToken"] = args["nextToken"],
 		["networkProfiles"] = args["networkProfiles"],
 	}
-	asserts.AssertListNetworkProfilesResult(t)
-	return t
+	asserts.AssertListNetworkProfilesResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Sample = { ["url"] = true, ["type"] = true, ["arn"] = true, nil }
@@ -4370,14 +5855,25 @@ end
 -- * arn [AmazonResourceName] <p>The sample's ARN.</p>
 -- @return Sample structure as a key-value pair table
 function M.Sample(args)
-	assert(args, "You must provdide an argument table when creating Sample")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Sample")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["url"] = args["url"],
 		["type"] = args["type"],
 		["arn"] = args["arn"],
 	}
-	asserts.AssertSample(t)
-	return t
+	asserts.AssertSample(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DevicePool = { ["rules"] = true, ["type"] = true, ["name"] = true, ["arn"] = true, ["description"] = true, nil }
@@ -4406,16 +5902,27 @@ end
 -- * description [Message] <p>The device pool's description.</p>
 -- @return DevicePool structure as a key-value pair table
 function M.DevicePool(args)
-	assert(args, "You must provdide an argument table when creating DevicePool")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DevicePool")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["rules"] = args["rules"],
 		["type"] = args["type"],
 		["name"] = args["name"],
 		["arn"] = args["arn"],
 		["description"] = args["description"],
 	}
-	asserts.AssertDevicePool(t)
-	return t
+	asserts.AssertDevicePool(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetDevicePoolResult = { ["devicePool"] = true, nil }
@@ -4436,12 +5943,23 @@ end
 -- * devicePool [DevicePool] <p>An object containing information about the requested device pool.</p>
 -- @return GetDevicePoolResult structure as a key-value pair table
 function M.GetDevicePoolResult(args)
-	assert(args, "You must provdide an argument table when creating GetDevicePoolResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetDevicePoolResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["devicePool"] = args["devicePool"],
 	}
-	asserts.AssertGetDevicePoolResult(t)
-	return t
+	asserts.AssertGetDevicePoolResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetDevicePoolCompatibilityResult = { ["compatibleDevices"] = true, ["incompatibleDevices"] = true, nil }
@@ -4464,13 +5982,24 @@ end
 -- * incompatibleDevices [DevicePoolCompatibilityResults] <p>Information about incompatible devices.</p>
 -- @return GetDevicePoolCompatibilityResult structure as a key-value pair table
 function M.GetDevicePoolCompatibilityResult(args)
-	assert(args, "You must provdide an argument table when creating GetDevicePoolCompatibilityResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetDevicePoolCompatibilityResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["compatibleDevices"] = args["compatibleDevices"],
 		["incompatibleDevices"] = args["incompatibleDevices"],
 	}
-	asserts.AssertGetDevicePoolCompatibilityResult(t)
-	return t
+	asserts.AssertGetDevicePoolCompatibilityResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteDevicePoolResult = { nil }
@@ -4489,11 +6018,22 @@ end
 -- Valid keys:
 -- @return DeleteDevicePoolResult structure as a key-value pair table
 function M.DeleteDevicePoolResult(args)
-	assert(args, "You must provdide an argument table when creating DeleteDevicePoolResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteDevicePoolResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertDeleteDevicePoolResult(t)
-	return t
+	asserts.AssertDeleteDevicePoolResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 function asserts.AssertDevicePlatform(str)
@@ -5409,8 +6949,11 @@ function M.ListSamplesAsync(ListSamplesRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "DeviceFarm_20150623.ListSamples",
 	}
+	for header,value in pairs(ListSamplesRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ListSamplesRequest, headers, settings, cb)
 	else
@@ -5441,8 +6984,11 @@ function M.PurchaseOfferingAsync(PurchaseOfferingRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "DeviceFarm_20150623.PurchaseOffering",
 	}
+	for header,value in pairs(PurchaseOfferingRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", PurchaseOfferingRequest, headers, settings, cb)
 	else
@@ -5473,8 +7019,11 @@ function M.GetUploadAsync(GetUploadRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "DeviceFarm_20150623.GetUpload",
 	}
+	for header,value in pairs(GetUploadRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", GetUploadRequest, headers, settings, cb)
 	else
@@ -5505,8 +7054,11 @@ function M.ListOfferingPromotionsAsync(ListOfferingPromotionsRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "DeviceFarm_20150623.ListOfferingPromotions",
 	}
+	for header,value in pairs(ListOfferingPromotionsRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ListOfferingPromotionsRequest, headers, settings, cb)
 	else
@@ -5537,8 +7089,11 @@ function M.UpdateDevicePoolAsync(UpdateDevicePoolRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "DeviceFarm_20150623.UpdateDevicePool",
 	}
+	for header,value in pairs(UpdateDevicePoolRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateDevicePoolRequest, headers, settings, cb)
 	else
@@ -5569,8 +7124,11 @@ function M.StopRunAsync(StopRunRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "DeviceFarm_20150623.StopRun",
 	}
+	for header,value in pairs(StopRunRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", StopRunRequest, headers, settings, cb)
 	else
@@ -5601,8 +7159,11 @@ function M.CreateRemoteAccessSessionAsync(CreateRemoteAccessSessionRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "DeviceFarm_20150623.CreateRemoteAccessSession",
 	}
+	for header,value in pairs(CreateRemoteAccessSessionRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateRemoteAccessSessionRequest, headers, settings, cb)
 	else
@@ -5633,8 +7194,11 @@ function M.ListOfferingsAsync(ListOfferingsRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "DeviceFarm_20150623.ListOfferings",
 	}
+	for header,value in pairs(ListOfferingsRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ListOfferingsRequest, headers, settings, cb)
 	else
@@ -5665,8 +7229,11 @@ function M.GetTestAsync(GetTestRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "DeviceFarm_20150623.GetTest",
 	}
+	for header,value in pairs(GetTestRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", GetTestRequest, headers, settings, cb)
 	else
@@ -5697,8 +7264,11 @@ function M.DeleteNetworkProfileAsync(DeleteNetworkProfileRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "DeviceFarm_20150623.DeleteNetworkProfile",
 	}
+	for header,value in pairs(DeleteNetworkProfileRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteNetworkProfileRequest, headers, settings, cb)
 	else
@@ -5729,8 +7299,11 @@ function M.ListProjectsAsync(ListProjectsRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "DeviceFarm_20150623.ListProjects",
 	}
+	for header,value in pairs(ListProjectsRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ListProjectsRequest, headers, settings, cb)
 	else
@@ -5761,8 +7334,11 @@ function M.ListNetworkProfilesAsync(ListNetworkProfilesRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "DeviceFarm_20150623.ListNetworkProfiles",
 	}
+	for header,value in pairs(ListNetworkProfilesRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ListNetworkProfilesRequest, headers, settings, cb)
 	else
@@ -5793,8 +7369,11 @@ function M.DeleteUploadAsync(DeleteUploadRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "DeviceFarm_20150623.DeleteUpload",
 	}
+	for header,value in pairs(DeleteUploadRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteUploadRequest, headers, settings, cb)
 	else
@@ -5825,8 +7404,11 @@ function M.GetSuiteAsync(GetSuiteRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "DeviceFarm_20150623.GetSuite",
 	}
+	for header,value in pairs(GetSuiteRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", GetSuiteRequest, headers, settings, cb)
 	else
@@ -5857,8 +7439,11 @@ function M.DeleteRemoteAccessSessionAsync(DeleteRemoteAccessSessionRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "DeviceFarm_20150623.DeleteRemoteAccessSession",
 	}
+	for header,value in pairs(DeleteRemoteAccessSessionRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteRemoteAccessSessionRequest, headers, settings, cb)
 	else
@@ -5889,8 +7474,11 @@ function M.DeleteRunAsync(DeleteRunRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "DeviceFarm_20150623.DeleteRun",
 	}
+	for header,value in pairs(DeleteRunRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteRunRequest, headers, settings, cb)
 	else
@@ -5921,8 +7509,11 @@ function M.ListOfferingTransactionsAsync(ListOfferingTransactionsRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "DeviceFarm_20150623.ListOfferingTransactions",
 	}
+	for header,value in pairs(ListOfferingTransactionsRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ListOfferingTransactionsRequest, headers, settings, cb)
 	else
@@ -5953,8 +7544,11 @@ function M.GetProjectAsync(GetProjectRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "DeviceFarm_20150623.GetProject",
 	}
+	for header,value in pairs(GetProjectRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", GetProjectRequest, headers, settings, cb)
 	else
@@ -5985,8 +7579,11 @@ function M.InstallToRemoteAccessSessionAsync(InstallToRemoteAccessSessionRequest
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "DeviceFarm_20150623.InstallToRemoteAccessSession",
 	}
+	for header,value in pairs(InstallToRemoteAccessSessionRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", InstallToRemoteAccessSessionRequest, headers, settings, cb)
 	else
@@ -6017,8 +7614,11 @@ function M.ListUniqueProblemsAsync(ListUniqueProblemsRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "DeviceFarm_20150623.ListUniqueProblems",
 	}
+	for header,value in pairs(ListUniqueProblemsRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ListUniqueProblemsRequest, headers, settings, cb)
 	else
@@ -6049,8 +7649,11 @@ function M.ListDevicePoolsAsync(ListDevicePoolsRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "DeviceFarm_20150623.ListDevicePools",
 	}
+	for header,value in pairs(ListDevicePoolsRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ListDevicePoolsRequest, headers, settings, cb)
 	else
@@ -6081,8 +7684,11 @@ function M.CreateUploadAsync(CreateUploadRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "DeviceFarm_20150623.CreateUpload",
 	}
+	for header,value in pairs(CreateUploadRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateUploadRequest, headers, settings, cb)
 	else
@@ -6113,8 +7719,11 @@ function M.GetDevicePoolCompatibilityAsync(GetDevicePoolCompatibilityRequest, cb
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "DeviceFarm_20150623.GetDevicePoolCompatibility",
 	}
+	for header,value in pairs(GetDevicePoolCompatibilityRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", GetDevicePoolCompatibilityRequest, headers, settings, cb)
 	else
@@ -6145,8 +7754,11 @@ function M.DeleteDevicePoolAsync(DeleteDevicePoolRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "DeviceFarm_20150623.DeleteDevicePool",
 	}
+	for header,value in pairs(DeleteDevicePoolRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteDevicePoolRequest, headers, settings, cb)
 	else
@@ -6177,8 +7789,11 @@ function M.ListTestsAsync(ListTestsRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "DeviceFarm_20150623.ListTests",
 	}
+	for header,value in pairs(ListTestsRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ListTestsRequest, headers, settings, cb)
 	else
@@ -6209,8 +7824,11 @@ function M.UpdateProjectAsync(UpdateProjectRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "DeviceFarm_20150623.UpdateProject",
 	}
+	for header,value in pairs(UpdateProjectRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateProjectRequest, headers, settings, cb)
 	else
@@ -6241,8 +7859,11 @@ function M.ListSuitesAsync(ListSuitesRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "DeviceFarm_20150623.ListSuites",
 	}
+	for header,value in pairs(ListSuitesRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ListSuitesRequest, headers, settings, cb)
 	else
@@ -6273,8 +7894,11 @@ function M.GetDevicePoolAsync(GetDevicePoolRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "DeviceFarm_20150623.GetDevicePool",
 	}
+	for header,value in pairs(GetDevicePoolRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", GetDevicePoolRequest, headers, settings, cb)
 	else
@@ -6305,8 +7929,11 @@ function M.StopRemoteAccessSessionAsync(StopRemoteAccessSessionRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "DeviceFarm_20150623.StopRemoteAccessSession",
 	}
+	for header,value in pairs(StopRemoteAccessSessionRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", StopRemoteAccessSessionRequest, headers, settings, cb)
 	else
@@ -6337,8 +7964,11 @@ function M.RenewOfferingAsync(RenewOfferingRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "DeviceFarm_20150623.RenewOffering",
 	}
+	for header,value in pairs(RenewOfferingRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", RenewOfferingRequest, headers, settings, cb)
 	else
@@ -6369,8 +7999,11 @@ function M.GetRemoteAccessSessionAsync(GetRemoteAccessSessionRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "DeviceFarm_20150623.GetRemoteAccessSession",
 	}
+	for header,value in pairs(GetRemoteAccessSessionRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", GetRemoteAccessSessionRequest, headers, settings, cb)
 	else
@@ -6401,8 +8034,11 @@ function M.ListJobsAsync(ListJobsRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "DeviceFarm_20150623.ListJobs",
 	}
+	for header,value in pairs(ListJobsRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ListJobsRequest, headers, settings, cb)
 	else
@@ -6433,8 +8069,11 @@ function M.GetRunAsync(GetRunRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "DeviceFarm_20150623.GetRun",
 	}
+	for header,value in pairs(GetRunRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", GetRunRequest, headers, settings, cb)
 	else
@@ -6465,8 +8104,11 @@ function M.ListUploadsAsync(ListUploadsRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "DeviceFarm_20150623.ListUploads",
 	}
+	for header,value in pairs(ListUploadsRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ListUploadsRequest, headers, settings, cb)
 	else
@@ -6497,8 +8139,11 @@ function M.UpdateNetworkProfileAsync(UpdateNetworkProfileRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "DeviceFarm_20150623.UpdateNetworkProfile",
 	}
+	for header,value in pairs(UpdateNetworkProfileRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateNetworkProfileRequest, headers, settings, cb)
 	else
@@ -6529,8 +8174,11 @@ function M.ListRemoteAccessSessionsAsync(ListRemoteAccessSessionsRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "DeviceFarm_20150623.ListRemoteAccessSessions",
 	}
+	for header,value in pairs(ListRemoteAccessSessionsRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ListRemoteAccessSessionsRequest, headers, settings, cb)
 	else
@@ -6561,8 +8209,11 @@ function M.GetNetworkProfileAsync(GetNetworkProfileRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "DeviceFarm_20150623.GetNetworkProfile",
 	}
+	for header,value in pairs(GetNetworkProfileRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", GetNetworkProfileRequest, headers, settings, cb)
 	else
@@ -6593,8 +8244,11 @@ function M.CreateNetworkProfileAsync(CreateNetworkProfileRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "DeviceFarm_20150623.CreateNetworkProfile",
 	}
+	for header,value in pairs(CreateNetworkProfileRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateNetworkProfileRequest, headers, settings, cb)
 	else
@@ -6625,8 +8279,11 @@ function M.ListDevicesAsync(ListDevicesRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "DeviceFarm_20150623.ListDevices",
 	}
+	for header,value in pairs(ListDevicesRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ListDevicesRequest, headers, settings, cb)
 	else
@@ -6657,8 +8314,11 @@ function M.GetDeviceAsync(GetDeviceRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "DeviceFarm_20150623.GetDevice",
 	}
+	for header,value in pairs(GetDeviceRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", GetDeviceRequest, headers, settings, cb)
 	else
@@ -6689,8 +8349,11 @@ function M.CreateDevicePoolAsync(CreateDevicePoolRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "DeviceFarm_20150623.CreateDevicePool",
 	}
+	for header,value in pairs(CreateDevicePoolRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateDevicePoolRequest, headers, settings, cb)
 	else
@@ -6721,8 +8384,11 @@ function M.ScheduleRunAsync(ScheduleRunRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "DeviceFarm_20150623.ScheduleRun",
 	}
+	for header,value in pairs(ScheduleRunRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ScheduleRunRequest, headers, settings, cb)
 	else
@@ -6753,8 +8419,11 @@ function M.ListArtifactsAsync(ListArtifactsRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "DeviceFarm_20150623.ListArtifacts",
 	}
+	for header,value in pairs(ListArtifactsRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ListArtifactsRequest, headers, settings, cb)
 	else
@@ -6785,8 +8454,11 @@ function M.CreateProjectAsync(CreateProjectRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "DeviceFarm_20150623.CreateProject",
 	}
+	for header,value in pairs(CreateProjectRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateProjectRequest, headers, settings, cb)
 	else
@@ -6817,8 +8489,11 @@ function M.GetJobAsync(GetJobRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "DeviceFarm_20150623.GetJob",
 	}
+	for header,value in pairs(GetJobRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", GetJobRequest, headers, settings, cb)
 	else
@@ -6849,8 +8524,11 @@ function M.DeleteProjectAsync(DeleteProjectRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "DeviceFarm_20150623.DeleteProject",
 	}
+	for header,value in pairs(DeleteProjectRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteProjectRequest, headers, settings, cb)
 	else
@@ -6881,8 +8559,11 @@ function M.ListRunsAsync(ListRunsRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "DeviceFarm_20150623.ListRuns",
 	}
+	for header,value in pairs(ListRunsRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ListRunsRequest, headers, settings, cb)
 	else
@@ -6913,8 +8594,11 @@ function M.GetAccountSettingsAsync(GetAccountSettingsRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "DeviceFarm_20150623.GetAccountSettings",
 	}
+	for header,value in pairs(GetAccountSettingsRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", GetAccountSettingsRequest, headers, settings, cb)
 	else
@@ -6945,8 +8629,11 @@ function M.GetOfferingStatusAsync(GetOfferingStatusRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "DeviceFarm_20150623.GetOfferingStatus",
 	}
+	for header,value in pairs(GetOfferingStatusRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", GetOfferingStatusRequest, headers, settings, cb)
 	else

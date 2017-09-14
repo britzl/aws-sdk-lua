@@ -45,15 +45,26 @@ end
 -- * DoubleValue [Double] <p>The DoubleValue field will be populated with a double value when the entitlement is a double type. Otherwise, the field will not be set.</p>
 -- @return EntitlementValue structure as a key-value pair table
 function M.EntitlementValue(args)
-	assert(args, "You must provdide an argument table when creating EntitlementValue")
-	local t = { 
+	assert(args, "You must provide an argument table when creating EntitlementValue")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["StringValue"] = args["StringValue"],
 		["BooleanValue"] = args["BooleanValue"],
 		["IntegerValue"] = args["IntegerValue"],
 		["DoubleValue"] = args["DoubleValue"],
 	}
-	asserts.AssertEntitlementValue(t)
-	return t
+	asserts.AssertEntitlementValue(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetEntitlementsRequest = { ["Filter"] = true, ["ProductCode"] = true, ["NextToken"] = true, ["MaxResults"] = true, nil }
@@ -82,15 +93,26 @@ end
 -- Required key: ProductCode
 -- @return GetEntitlementsRequest structure as a key-value pair table
 function M.GetEntitlementsRequest(args)
-	assert(args, "You must provdide an argument table when creating GetEntitlementsRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetEntitlementsRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Filter"] = args["Filter"],
 		["ProductCode"] = args["ProductCode"],
 		["NextToken"] = args["NextToken"],
 		["MaxResults"] = args["MaxResults"],
 	}
-	asserts.AssertGetEntitlementsRequest(t)
-	return t
+	asserts.AssertGetEntitlementsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Entitlement = { ["ProductCode"] = true, ["CustomerIdentifier"] = true, ["Dimension"] = true, ["Value"] = true, ["ExpirationDate"] = true, nil }
@@ -119,16 +141,27 @@ end
 -- * ExpirationDate [Timestamp] <p>The expiration date represents the minimum date through which this entitlement is expected to remain valid. For contractual products listed on AWS Marketplace, the expiration date is the date at which the customer will renew or cancel their contract. Customers who are opting to renew their contract will still have entitlements with an expiration date.</p>
 -- @return Entitlement structure as a key-value pair table
 function M.Entitlement(args)
-	assert(args, "You must provdide an argument table when creating Entitlement")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Entitlement")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ProductCode"] = args["ProductCode"],
 		["CustomerIdentifier"] = args["CustomerIdentifier"],
 		["Dimension"] = args["Dimension"],
 		["Value"] = args["Value"],
 		["ExpirationDate"] = args["ExpirationDate"],
 	}
-	asserts.AssertEntitlement(t)
-	return t
+	asserts.AssertEntitlement(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetEntitlementsResult = { ["Entitlements"] = true, ["NextToken"] = true, nil }
@@ -151,13 +184,24 @@ end
 -- * NextToken [NonEmptyString] <p>For paginated results, use NextToken in subsequent calls to GetEntitlements. If the result contains an empty set of entitlements, NextToken might still be present and should be used.</p>
 -- @return GetEntitlementsResult structure as a key-value pair table
 function M.GetEntitlementsResult(args)
-	assert(args, "You must provdide an argument table when creating GetEntitlementsResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetEntitlementsResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Entitlements"] = args["Entitlements"],
 		["NextToken"] = args["NextToken"],
 	}
-	asserts.AssertGetEntitlementsResult(t)
-	return t
+	asserts.AssertGetEntitlementsResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidParameterException = { ["message"] = true, nil }
@@ -178,12 +222,23 @@ end
 -- * message [ErrorMessage] 
 -- @return InvalidParameterException structure as a key-value pair table
 function M.InvalidParameterException(args)
-	assert(args, "You must provdide an argument table when creating InvalidParameterException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidParameterException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertInvalidParameterException(t)
-	return t
+	asserts.AssertInvalidParameterException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InternalServiceErrorException = { ["message"] = true, nil }
@@ -204,12 +259,23 @@ end
 -- * message [ErrorMessage] 
 -- @return InternalServiceErrorException structure as a key-value pair table
 function M.InternalServiceErrorException(args)
-	assert(args, "You must provdide an argument table when creating InternalServiceErrorException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InternalServiceErrorException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertInternalServiceErrorException(t)
-	return t
+	asserts.AssertInternalServiceErrorException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ThrottlingException = { ["message"] = true, nil }
@@ -230,12 +296,23 @@ end
 -- * message [ErrorMessage] 
 -- @return ThrottlingException structure as a key-value pair table
 function M.ThrottlingException(args)
-	assert(args, "You must provdide an argument table when creating ThrottlingException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ThrottlingException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertThrottlingException(t)
-	return t
+	asserts.AssertThrottlingException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 function asserts.AssertProductCode(str)
@@ -444,8 +521,11 @@ function M.GetEntitlementsAsync(GetEntitlementsRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AWSMPEntitlementService.GetEntitlements",
 	}
+	for header,value in pairs(GetEntitlementsRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", GetEntitlementsRequest, headers, settings, cb)
 	else

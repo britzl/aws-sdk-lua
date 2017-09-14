@@ -39,12 +39,23 @@ end
 -- * message [string] 
 -- @return SubscriptionLimitExceededException structure as a key-value pair table
 function M.SubscriptionLimitExceededException(args)
-	assert(args, "You must provdide an argument table when creating SubscriptionLimitExceededException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating SubscriptionLimitExceededException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertSubscriptionLimitExceededException(t)
-	return t
+	asserts.AssertSubscriptionLimitExceededException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CheckIfPhoneNumberIsOptedOutInput = { ["phoneNumber"] = true, nil }
@@ -67,12 +78,23 @@ end
 -- Required key: phoneNumber
 -- @return CheckIfPhoneNumberIsOptedOutInput structure as a key-value pair table
 function M.CheckIfPhoneNumberIsOptedOutInput(args)
-	assert(args, "You must provdide an argument table when creating CheckIfPhoneNumberIsOptedOutInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CheckIfPhoneNumberIsOptedOutInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["phoneNumber"] = args["phoneNumber"],
 	}
-	asserts.AssertCheckIfPhoneNumberIsOptedOutInput(t)
-	return t
+	asserts.AssertCheckIfPhoneNumberIsOptedOutInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetEndpointAttributesResponse = { ["Attributes"] = true, nil }
@@ -93,12 +115,23 @@ end
 -- * Attributes [MapStringToString] <p>Attributes include the following:</p> <ul> <li> <p> <code>CustomUserData</code> -- arbitrary user data to associate with the endpoint. Amazon SNS does not use this data. The data must be in UTF-8 format and less than 2KB.</p> </li> <li> <p> <code>Enabled</code> -- flag that enables/disables delivery to the endpoint. Amazon SNS will set this to false when a notification service indicates to Amazon SNS that the endpoint is invalid. Users can set it back to true, typically after updating Token.</p> </li> <li> <p> <code>Token</code> -- device token, also referred to as a registration id, for an app and mobile device. This is returned from the notification service when an app and mobile device are registered with the notification service.</p> </li> </ul>
 -- @return GetEndpointAttributesResponse structure as a key-value pair table
 function M.GetEndpointAttributesResponse(args)
-	assert(args, "You must provdide an argument table when creating GetEndpointAttributesResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetEndpointAttributesResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Attributes"] = args["Attributes"],
 	}
-	asserts.AssertGetEndpointAttributesResponse(t)
-	return t
+	asserts.AssertGetEndpointAttributesResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetEndpointAttributesInput = { ["EndpointArn"] = true, nil }
@@ -121,12 +154,23 @@ end
 -- Required key: EndpointArn
 -- @return GetEndpointAttributesInput structure as a key-value pair table
 function M.GetEndpointAttributesInput(args)
-	assert(args, "You must provdide an argument table when creating GetEndpointAttributesInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetEndpointAttributesInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["EndpointArn"] = args["EndpointArn"],
 	}
-	asserts.AssertGetEndpointAttributesInput(t)
-	return t
+	asserts.AssertGetEndpointAttributesInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.SetTopicAttributesInput = { ["AttributeName"] = true, ["AttributeValue"] = true, ["TopicArn"] = true, nil }
@@ -155,14 +199,25 @@ end
 -- Required key: AttributeName
 -- @return SetTopicAttributesInput structure as a key-value pair table
 function M.SetTopicAttributesInput(args)
-	assert(args, "You must provdide an argument table when creating SetTopicAttributesInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating SetTopicAttributesInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["AttributeName"] = args["AttributeName"],
 		["AttributeValue"] = args["AttributeValue"],
 		["TopicArn"] = args["TopicArn"],
 	}
-	asserts.AssertSetTopicAttributesInput(t)
-	return t
+	asserts.AssertSetTopicAttributesInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreatePlatformApplicationInput = { ["Platform"] = true, ["Name"] = true, ["Attributes"] = true, nil }
@@ -193,14 +248,25 @@ end
 -- Required key: Attributes
 -- @return CreatePlatformApplicationInput structure as a key-value pair table
 function M.CreatePlatformApplicationInput(args)
-	assert(args, "You must provdide an argument table when creating CreatePlatformApplicationInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreatePlatformApplicationInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Platform"] = args["Platform"],
 		["Name"] = args["Name"],
 		["Attributes"] = args["Attributes"],
 	}
-	asserts.AssertCreatePlatformApplicationInput(t)
-	return t
+	asserts.AssertCreatePlatformApplicationInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreatePlatformEndpointInput = { ["Attributes"] = true, ["Token"] = true, ["PlatformApplicationArn"] = true, ["CustomUserData"] = true, nil }
@@ -231,15 +297,26 @@ end
 -- Required key: Token
 -- @return CreatePlatformEndpointInput structure as a key-value pair table
 function M.CreatePlatformEndpointInput(args)
-	assert(args, "You must provdide an argument table when creating CreatePlatformEndpointInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreatePlatformEndpointInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Attributes"] = args["Attributes"],
 		["Token"] = args["Token"],
 		["PlatformApplicationArn"] = args["PlatformApplicationArn"],
 		["CustomUserData"] = args["CustomUserData"],
 	}
-	asserts.AssertCreatePlatformEndpointInput(t)
-	return t
+	asserts.AssertCreatePlatformEndpointInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ConfirmSubscriptionInput = { ["Token"] = true, ["AuthenticateOnUnsubscribe"] = true, ["TopicArn"] = true, nil }
@@ -268,14 +345,25 @@ end
 -- Required key: Token
 -- @return ConfirmSubscriptionInput structure as a key-value pair table
 function M.ConfirmSubscriptionInput(args)
-	assert(args, "You must provdide an argument table when creating ConfirmSubscriptionInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ConfirmSubscriptionInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Token"] = args["Token"],
 		["AuthenticateOnUnsubscribe"] = args["AuthenticateOnUnsubscribe"],
 		["TopicArn"] = args["TopicArn"],
 	}
-	asserts.AssertConfirmSubscriptionInput(t)
-	return t
+	asserts.AssertConfirmSubscriptionInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListSubscriptionsByTopicInput = { ["NextToken"] = true, ["TopicArn"] = true, nil }
@@ -300,13 +388,24 @@ end
 -- Required key: TopicArn
 -- @return ListSubscriptionsByTopicInput structure as a key-value pair table
 function M.ListSubscriptionsByTopicInput(args)
-	assert(args, "You must provdide an argument table when creating ListSubscriptionsByTopicInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListSubscriptionsByTopicInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NextToken"] = args["NextToken"],
 		["TopicArn"] = args["TopicArn"],
 	}
-	asserts.AssertListSubscriptionsByTopicInput(t)
-	return t
+	asserts.AssertListSubscriptionsByTopicInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.PlatformApplication = { ["Attributes"] = true, ["PlatformApplicationArn"] = true, nil }
@@ -329,13 +428,24 @@ end
 -- * PlatformApplicationArn [String] <p>PlatformApplicationArn for platform application object.</p>
 -- @return PlatformApplication structure as a key-value pair table
 function M.PlatformApplication(args)
-	assert(args, "You must provdide an argument table when creating PlatformApplication")
-	local t = { 
+	assert(args, "You must provide an argument table when creating PlatformApplication")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Attributes"] = args["Attributes"],
 		["PlatformApplicationArn"] = args["PlatformApplicationArn"],
 	}
-	asserts.AssertPlatformApplication(t)
-	return t
+	asserts.AssertPlatformApplication(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.EndpointDisabledException = { ["message"] = true, nil }
@@ -356,12 +466,23 @@ end
 -- * message [string] <p>Message for endpoint disabled.</p>
 -- @return EndpointDisabledException structure as a key-value pair table
 function M.EndpointDisabledException(args)
-	assert(args, "You must provdide an argument table when creating EndpointDisabledException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating EndpointDisabledException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertEndpointDisabledException(t)
-	return t
+	asserts.AssertEndpointDisabledException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetSMSAttributesResponse = { ["attributes"] = true, nil }
@@ -382,12 +503,23 @@ end
 -- * attributes [MapStringToString] <p>The SMS attribute names and their values.</p>
 -- @return GetSMSAttributesResponse structure as a key-value pair table
 function M.GetSMSAttributesResponse(args)
-	assert(args, "You must provdide an argument table when creating GetSMSAttributesResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetSMSAttributesResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["attributes"] = args["attributes"],
 	}
-	asserts.AssertGetSMSAttributesResponse(t)
-	return t
+	asserts.AssertGetSMSAttributesResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Topic = { ["TopicArn"] = true, nil }
@@ -408,12 +540,23 @@ end
 -- * TopicArn [topicARN] <p>The topic's ARN.</p>
 -- @return Topic structure as a key-value pair table
 function M.Topic(args)
-	assert(args, "You must provdide an argument table when creating Topic")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Topic")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["TopicArn"] = args["TopicArn"],
 	}
-	asserts.AssertTopic(t)
-	return t
+	asserts.AssertTopic(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListPhoneNumbersOptedOutInput = { ["nextToken"] = true, nil }
@@ -434,12 +577,23 @@ end
 -- * nextToken [string] <p>A <code>NextToken</code> string is used when you call the <code>ListPhoneNumbersOptedOut</code> action to retrieve additional records that are available after the first page of results.</p>
 -- @return ListPhoneNumbersOptedOutInput structure as a key-value pair table
 function M.ListPhoneNumbersOptedOutInput(args)
-	assert(args, "You must provdide an argument table when creating ListPhoneNumbersOptedOutInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListPhoneNumbersOptedOutInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["nextToken"] = args["nextToken"],
 	}
-	asserts.AssertListPhoneNumbersOptedOutInput(t)
-	return t
+	asserts.AssertListPhoneNumbersOptedOutInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Subscription = { ["Owner"] = true, ["Endpoint"] = true, ["Protocol"] = true, ["TopicArn"] = true, ["SubscriptionArn"] = true, nil }
@@ -468,16 +622,27 @@ end
 -- * SubscriptionArn [subscriptionARN] <p>The subscription's ARN.</p>
 -- @return Subscription structure as a key-value pair table
 function M.Subscription(args)
-	assert(args, "You must provdide an argument table when creating Subscription")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Subscription")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Owner"] = args["Owner"],
 		["Endpoint"] = args["Endpoint"],
 		["Protocol"] = args["Protocol"],
 		["TopicArn"] = args["TopicArn"],
 		["SubscriptionArn"] = args["SubscriptionArn"],
 	}
-	asserts.AssertSubscription(t)
-	return t
+	asserts.AssertSubscription(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListSubscriptionsResponse = { ["NextToken"] = true, ["Subscriptions"] = true, nil }
@@ -500,13 +665,24 @@ end
 -- * Subscriptions [SubscriptionsList] <p>A list of subscriptions.</p>
 -- @return ListSubscriptionsResponse structure as a key-value pair table
 function M.ListSubscriptionsResponse(args)
-	assert(args, "You must provdide an argument table when creating ListSubscriptionsResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListSubscriptionsResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NextToken"] = args["NextToken"],
 		["Subscriptions"] = args["Subscriptions"],
 	}
-	asserts.AssertListSubscriptionsResponse(t)
-	return t
+	asserts.AssertListSubscriptionsResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListTopicsResponse = { ["Topics"] = true, ["NextToken"] = true, nil }
@@ -529,13 +705,24 @@ end
 -- * NextToken [nextToken] <p>Token to pass along to the next <code>ListTopics</code> request. This element is returned if there are additional topics to retrieve.</p>
 -- @return ListTopicsResponse structure as a key-value pair table
 function M.ListTopicsResponse(args)
-	assert(args, "You must provdide an argument table when creating ListTopicsResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListTopicsResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Topics"] = args["Topics"],
 		["NextToken"] = args["NextToken"],
 	}
-	asserts.AssertListTopicsResponse(t)
-	return t
+	asserts.AssertListTopicsResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.OptInPhoneNumberInput = { ["phoneNumber"] = true, nil }
@@ -558,12 +745,23 @@ end
 -- Required key: phoneNumber
 -- @return OptInPhoneNumberInput structure as a key-value pair table
 function M.OptInPhoneNumberInput(args)
-	assert(args, "You must provdide an argument table when creating OptInPhoneNumberInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating OptInPhoneNumberInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["phoneNumber"] = args["phoneNumber"],
 	}
-	asserts.AssertOptInPhoneNumberInput(t)
-	return t
+	asserts.AssertOptInPhoneNumberInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListPlatformApplicationsInput = { ["NextToken"] = true, nil }
@@ -584,12 +782,23 @@ end
 -- * NextToken [String] <p>NextToken string is used when calling ListPlatformApplications action to retrieve additional records that are available after the first page results.</p>
 -- @return ListPlatformApplicationsInput structure as a key-value pair table
 function M.ListPlatformApplicationsInput(args)
-	assert(args, "You must provdide an argument table when creating ListPlatformApplicationsInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListPlatformApplicationsInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NextToken"] = args["NextToken"],
 	}
-	asserts.AssertListPlatformApplicationsInput(t)
-	return t
+	asserts.AssertListPlatformApplicationsInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetSubscriptionAttributesInput = { ["SubscriptionArn"] = true, nil }
@@ -612,12 +821,23 @@ end
 -- Required key: SubscriptionArn
 -- @return GetSubscriptionAttributesInput structure as a key-value pair table
 function M.GetSubscriptionAttributesInput(args)
-	assert(args, "You must provdide an argument table when creating GetSubscriptionAttributesInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetSubscriptionAttributesInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["SubscriptionArn"] = args["SubscriptionArn"],
 	}
-	asserts.AssertGetSubscriptionAttributesInput(t)
-	return t
+	asserts.AssertGetSubscriptionAttributesInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateEndpointResponse = { ["EndpointArn"] = true, nil }
@@ -638,12 +858,23 @@ end
 -- * EndpointArn [String] <p>EndpointArn returned from CreateEndpoint action.</p>
 -- @return CreateEndpointResponse structure as a key-value pair table
 function M.CreateEndpointResponse(args)
-	assert(args, "You must provdide an argument table when creating CreateEndpointResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateEndpointResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["EndpointArn"] = args["EndpointArn"],
 	}
-	asserts.AssertCreateEndpointResponse(t)
-	return t
+	asserts.AssertCreateEndpointResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.NotFoundException = { ["message"] = true, nil }
@@ -664,12 +895,23 @@ end
 -- * message [string] 
 -- @return NotFoundException structure as a key-value pair table
 function M.NotFoundException(args)
-	assert(args, "You must provdide an argument table when creating NotFoundException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating NotFoundException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertNotFoundException(t)
-	return t
+	asserts.AssertNotFoundException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetPlatformApplicationAttributesInput = { ["PlatformApplicationArn"] = true, nil }
@@ -692,12 +934,23 @@ end
 -- Required key: PlatformApplicationArn
 -- @return GetPlatformApplicationAttributesInput structure as a key-value pair table
 function M.GetPlatformApplicationAttributesInput(args)
-	assert(args, "You must provdide an argument table when creating GetPlatformApplicationAttributesInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetPlatformApplicationAttributesInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["PlatformApplicationArn"] = args["PlatformApplicationArn"],
 	}
-	asserts.AssertGetPlatformApplicationAttributesInput(t)
-	return t
+	asserts.AssertGetPlatformApplicationAttributesInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetSMSAttributesInput = { ["attributes"] = true, nil }
@@ -718,12 +971,23 @@ end
 -- * attributes [ListString] <p>A list of the individual attribute names, such as <code>MonthlySpendLimit</code>, for which you want values.</p> <p>For all attribute names, see <a href="http://docs.aws.amazon.com/sns/latest/api/API_SetSMSAttributes.html">SetSMSAttributes</a>.</p> <p>If you don't use this parameter, Amazon SNS returns all SMS attributes.</p>
 -- @return GetSMSAttributesInput structure as a key-value pair table
 function M.GetSMSAttributesInput(args)
-	assert(args, "You must provdide an argument table when creating GetSMSAttributesInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetSMSAttributesInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["attributes"] = args["attributes"],
 	}
-	asserts.AssertGetSMSAttributesInput(t)
-	return t
+	asserts.AssertGetSMSAttributesInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ConfirmSubscriptionResponse = { ["SubscriptionArn"] = true, nil }
@@ -744,12 +1008,23 @@ end
 -- * SubscriptionArn [subscriptionARN] <p>The ARN of the created subscription.</p>
 -- @return ConfirmSubscriptionResponse structure as a key-value pair table
 function M.ConfirmSubscriptionResponse(args)
-	assert(args, "You must provdide an argument table when creating ConfirmSubscriptionResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ConfirmSubscriptionResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["SubscriptionArn"] = args["SubscriptionArn"],
 	}
-	asserts.AssertConfirmSubscriptionResponse(t)
-	return t
+	asserts.AssertConfirmSubscriptionResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteTopicInput = { ["TopicArn"] = true, nil }
@@ -772,12 +1047,23 @@ end
 -- Required key: TopicArn
 -- @return DeleteTopicInput structure as a key-value pair table
 function M.DeleteTopicInput(args)
-	assert(args, "You must provdide an argument table when creating DeleteTopicInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteTopicInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["TopicArn"] = args["TopicArn"],
 	}
-	asserts.AssertDeleteTopicInput(t)
-	return t
+	asserts.AssertDeleteTopicInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.TopicLimitExceededException = { ["message"] = true, nil }
@@ -798,12 +1084,23 @@ end
 -- * message [string] 
 -- @return TopicLimitExceededException structure as a key-value pair table
 function M.TopicLimitExceededException(args)
-	assert(args, "You must provdide an argument table when creating TopicLimitExceededException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating TopicLimitExceededException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertTopicLimitExceededException(t)
-	return t
+	asserts.AssertTopicLimitExceededException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.SetSMSAttributesInput = { ["attributes"] = true, nil }
@@ -826,12 +1123,23 @@ end
 -- Required key: attributes
 -- @return SetSMSAttributesInput structure as a key-value pair table
 function M.SetSMSAttributesInput(args)
-	assert(args, "You must provdide an argument table when creating SetSMSAttributesInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating SetSMSAttributesInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["attributes"] = args["attributes"],
 	}
-	asserts.AssertSetSMSAttributesInput(t)
-	return t
+	asserts.AssertSetSMSAttributesInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ThrottledException = { ["message"] = true, nil }
@@ -852,12 +1160,23 @@ end
 -- * message [string] <p>Throttled request.</p>
 -- @return ThrottledException structure as a key-value pair table
 function M.ThrottledException(args)
-	assert(args, "You must provdide an argument table when creating ThrottledException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ThrottledException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertThrottledException(t)
-	return t
+	asserts.AssertThrottledException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.OptInPhoneNumberResponse = { nil }
@@ -876,11 +1195,22 @@ end
 -- Valid keys:
 -- @return OptInPhoneNumberResponse structure as a key-value pair table
 function M.OptInPhoneNumberResponse(args)
-	assert(args, "You must provdide an argument table when creating OptInPhoneNumberResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating OptInPhoneNumberResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertOptInPhoneNumberResponse(t)
-	return t
+	asserts.AssertOptInPhoneNumberResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListSubscriptionsByTopicResponse = { ["NextToken"] = true, ["Subscriptions"] = true, nil }
@@ -903,13 +1233,24 @@ end
 -- * Subscriptions [SubscriptionsList] <p>A list of subscriptions.</p>
 -- @return ListSubscriptionsByTopicResponse structure as a key-value pair table
 function M.ListSubscriptionsByTopicResponse(args)
-	assert(args, "You must provdide an argument table when creating ListSubscriptionsByTopicResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListSubscriptionsByTopicResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NextToken"] = args["NextToken"],
 		["Subscriptions"] = args["Subscriptions"],
 	}
-	asserts.AssertListSubscriptionsByTopicResponse(t)
-	return t
+	asserts.AssertListSubscriptionsByTopicResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.PublishInput = { ["MessageStructure"] = true, ["PhoneNumber"] = true, ["TargetArn"] = true, ["Message"] = true, ["MessageAttributes"] = true, ["TopicArn"] = true, ["Subject"] = true, nil }
@@ -944,8 +1285,14 @@ end
 -- Required key: Message
 -- @return PublishInput structure as a key-value pair table
 function M.PublishInput(args)
-	assert(args, "You must provdide an argument table when creating PublishInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating PublishInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["MessageStructure"] = args["MessageStructure"],
 		["PhoneNumber"] = args["PhoneNumber"],
 		["TargetArn"] = args["TargetArn"],
@@ -954,8 +1301,13 @@ function M.PublishInput(args)
 		["TopicArn"] = args["TopicArn"],
 		["Subject"] = args["Subject"],
 	}
-	asserts.AssertPublishInput(t)
-	return t
+	asserts.AssertPublishInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.SetSubscriptionAttributesInput = { ["AttributeName"] = true, ["AttributeValue"] = true, ["SubscriptionArn"] = true, nil }
@@ -984,14 +1336,25 @@ end
 -- Required key: AttributeName
 -- @return SetSubscriptionAttributesInput structure as a key-value pair table
 function M.SetSubscriptionAttributesInput(args)
-	assert(args, "You must provdide an argument table when creating SetSubscriptionAttributesInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating SetSubscriptionAttributesInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["AttributeName"] = args["AttributeName"],
 		["AttributeValue"] = args["AttributeValue"],
 		["SubscriptionArn"] = args["SubscriptionArn"],
 	}
-	asserts.AssertSetSubscriptionAttributesInput(t)
-	return t
+	asserts.AssertSetSubscriptionAttributesInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetSubscriptionAttributesResponse = { ["Attributes"] = true, nil }
@@ -1012,12 +1375,23 @@ end
 -- * Attributes [SubscriptionAttributesMap] <p>A map of the subscription's attributes. Attributes in this map include the following:</p> <ul> <li> <p> <code>SubscriptionArn</code> -- the subscription's ARN</p> </li> <li> <p> <code>TopicArn</code> -- the topic ARN that the subscription is associated with</p> </li> <li> <p> <code>Owner</code> -- the AWS account ID of the subscription's owner</p> </li> <li> <p> <code>ConfirmationWasAuthenticated</code> -- true if the subscription confirmation request was authenticated</p> </li> <li> <p> <code>DeliveryPolicy</code> -- the JSON serialization of the subscription's delivery policy</p> </li> <li> <p> <code>EffectiveDeliveryPolicy</code> -- the JSON serialization of the effective delivery policy that takes into account the topic delivery policy and account system defaults</p> </li> </ul>
 -- @return GetSubscriptionAttributesResponse structure as a key-value pair table
 function M.GetSubscriptionAttributesResponse(args)
-	assert(args, "You must provdide an argument table when creating GetSubscriptionAttributesResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetSubscriptionAttributesResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Attributes"] = args["Attributes"],
 	}
-	asserts.AssertGetSubscriptionAttributesResponse(t)
-	return t
+	asserts.AssertGetSubscriptionAttributesResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateTopicResponse = { ["TopicArn"] = true, nil }
@@ -1038,12 +1412,23 @@ end
 -- * TopicArn [topicARN] <p>The Amazon Resource Name (ARN) assigned to the created topic.</p>
 -- @return CreateTopicResponse structure as a key-value pair table
 function M.CreateTopicResponse(args)
-	assert(args, "You must provdide an argument table when creating CreateTopicResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateTopicResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["TopicArn"] = args["TopicArn"],
 	}
-	asserts.AssertCreateTopicResponse(t)
-	return t
+	asserts.AssertCreateTopicResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InternalErrorException = { ["message"] = true, nil }
@@ -1064,12 +1449,23 @@ end
 -- * message [string] 
 -- @return InternalErrorException structure as a key-value pair table
 function M.InternalErrorException(args)
-	assert(args, "You must provdide an argument table when creating InternalErrorException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InternalErrorException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertInternalErrorException(t)
-	return t
+	asserts.AssertInternalErrorException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetTopicAttributesResponse = { ["Attributes"] = true, nil }
@@ -1090,12 +1486,23 @@ end
 -- * Attributes [TopicAttributesMap] <p>A map of the topic's attributes. Attributes in this map include the following:</p> <ul> <li> <p> <code>TopicArn</code> -- the topic's ARN</p> </li> <li> <p> <code>Owner</code> -- the AWS account ID of the topic's owner</p> </li> <li> <p> <code>Policy</code> -- the JSON serialization of the topic's access control policy</p> </li> <li> <p> <code>DisplayName</code> -- the human-readable name used in the "From" field for notifications to email and email-json endpoints</p> </li> <li> <p> <code>SubscriptionsPending</code> -- the number of subscriptions pending confirmation on this topic</p> </li> <li> <p> <code>SubscriptionsConfirmed</code> -- the number of confirmed subscriptions on this topic</p> </li> <li> <p> <code>SubscriptionsDeleted</code> -- the number of deleted subscriptions on this topic</p> </li> <li> <p> <code>DeliveryPolicy</code> -- the JSON serialization of the topic's delivery policy</p> </li> <li> <p> <code>EffectiveDeliveryPolicy</code> -- the JSON serialization of the effective delivery policy that takes into account system defaults</p> </li> </ul>
 -- @return GetTopicAttributesResponse structure as a key-value pair table
 function M.GetTopicAttributesResponse(args)
-	assert(args, "You must provdide an argument table when creating GetTopicAttributesResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetTopicAttributesResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Attributes"] = args["Attributes"],
 	}
-	asserts.AssertGetTopicAttributesResponse(t)
-	return t
+	asserts.AssertGetTopicAttributesResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListPhoneNumbersOptedOutResponse = { ["phoneNumbers"] = true, ["nextToken"] = true, nil }
@@ -1118,13 +1525,24 @@ end
 -- * nextToken [string] <p>A <code>NextToken</code> string is returned when you call the <code>ListPhoneNumbersOptedOut</code> action if additional records are available after the first page of results.</p>
 -- @return ListPhoneNumbersOptedOutResponse structure as a key-value pair table
 function M.ListPhoneNumbersOptedOutResponse(args)
-	assert(args, "You must provdide an argument table when creating ListPhoneNumbersOptedOutResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListPhoneNumbersOptedOutResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["phoneNumbers"] = args["phoneNumbers"],
 		["nextToken"] = args["nextToken"],
 	}
-	asserts.AssertListPhoneNumbersOptedOutResponse(t)
-	return t
+	asserts.AssertListPhoneNumbersOptedOutResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreatePlatformApplicationResponse = { ["PlatformApplicationArn"] = true, nil }
@@ -1145,12 +1563,23 @@ end
 -- * PlatformApplicationArn [String] <p>PlatformApplicationArn is returned.</p>
 -- @return CreatePlatformApplicationResponse structure as a key-value pair table
 function M.CreatePlatformApplicationResponse(args)
-	assert(args, "You must provdide an argument table when creating CreatePlatformApplicationResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreatePlatformApplicationResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["PlatformApplicationArn"] = args["PlatformApplicationArn"],
 	}
-	asserts.AssertCreatePlatformApplicationResponse(t)
-	return t
+	asserts.AssertCreatePlatformApplicationResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AuthorizationErrorException = { ["message"] = true, nil }
@@ -1171,12 +1600,23 @@ end
 -- * message [string] 
 -- @return AuthorizationErrorException structure as a key-value pair table
 function M.AuthorizationErrorException(args)
-	assert(args, "You must provdide an argument table when creating AuthorizationErrorException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AuthorizationErrorException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertAuthorizationErrorException(t)
-	return t
+	asserts.AssertAuthorizationErrorException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.SetPlatformApplicationAttributesInput = { ["Attributes"] = true, ["PlatformApplicationArn"] = true, nil }
@@ -1203,13 +1643,24 @@ end
 -- Required key: Attributes
 -- @return SetPlatformApplicationAttributesInput structure as a key-value pair table
 function M.SetPlatformApplicationAttributesInput(args)
-	assert(args, "You must provdide an argument table when creating SetPlatformApplicationAttributesInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating SetPlatformApplicationAttributesInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Attributes"] = args["Attributes"],
 		["PlatformApplicationArn"] = args["PlatformApplicationArn"],
 	}
-	asserts.AssertSetPlatformApplicationAttributesInput(t)
-	return t
+	asserts.AssertSetPlatformApplicationAttributesInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UnsubscribeInput = { ["SubscriptionArn"] = true, nil }
@@ -1232,12 +1683,23 @@ end
 -- Required key: SubscriptionArn
 -- @return UnsubscribeInput structure as a key-value pair table
 function M.UnsubscribeInput(args)
-	assert(args, "You must provdide an argument table when creating UnsubscribeInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UnsubscribeInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["SubscriptionArn"] = args["SubscriptionArn"],
 	}
-	asserts.AssertUnsubscribeInput(t)
-	return t
+	asserts.AssertUnsubscribeInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidParameterValueException = { ["message"] = true, nil }
@@ -1258,12 +1720,23 @@ end
 -- * message [string] <p>The parameter value is invalid.</p>
 -- @return InvalidParameterValueException structure as a key-value pair table
 function M.InvalidParameterValueException(args)
-	assert(args, "You must provdide an argument table when creating InvalidParameterValueException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidParameterValueException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertInvalidParameterValueException(t)
-	return t
+	asserts.AssertInvalidParameterValueException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListEndpointsByPlatformApplicationResponse = { ["Endpoints"] = true, ["NextToken"] = true, nil }
@@ -1286,13 +1759,24 @@ end
 -- * NextToken [String] <p>NextToken string is returned when calling ListEndpointsByPlatformApplication action if additional records are available after the first page results.</p>
 -- @return ListEndpointsByPlatformApplicationResponse structure as a key-value pair table
 function M.ListEndpointsByPlatformApplicationResponse(args)
-	assert(args, "You must provdide an argument table when creating ListEndpointsByPlatformApplicationResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListEndpointsByPlatformApplicationResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Endpoints"] = args["Endpoints"],
 		["NextToken"] = args["NextToken"],
 	}
-	asserts.AssertListEndpointsByPlatformApplicationResponse(t)
-	return t
+	asserts.AssertListEndpointsByPlatformApplicationResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.SubscribeInput = { ["Endpoint"] = true, ["Protocol"] = true, ["TopicArn"] = true, nil }
@@ -1321,14 +1805,25 @@ end
 -- Required key: Protocol
 -- @return SubscribeInput structure as a key-value pair table
 function M.SubscribeInput(args)
-	assert(args, "You must provdide an argument table when creating SubscribeInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating SubscribeInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Endpoint"] = args["Endpoint"],
 		["Protocol"] = args["Protocol"],
 		["TopicArn"] = args["TopicArn"],
 	}
-	asserts.AssertSubscribeInput(t)
-	return t
+	asserts.AssertSubscribeInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeletePlatformApplicationInput = { ["PlatformApplicationArn"] = true, nil }
@@ -1351,12 +1846,23 @@ end
 -- Required key: PlatformApplicationArn
 -- @return DeletePlatformApplicationInput structure as a key-value pair table
 function M.DeletePlatformApplicationInput(args)
-	assert(args, "You must provdide an argument table when creating DeletePlatformApplicationInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeletePlatformApplicationInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["PlatformApplicationArn"] = args["PlatformApplicationArn"],
 	}
-	asserts.AssertDeletePlatformApplicationInput(t)
-	return t
+	asserts.AssertDeletePlatformApplicationInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.PublishResponse = { ["MessageId"] = true, nil }
@@ -1377,12 +1883,23 @@ end
 -- * MessageId [messageId] <p>Unique identifier assigned to the published message.</p> <p>Length Constraint: Maximum 100 characters</p>
 -- @return PublishResponse structure as a key-value pair table
 function M.PublishResponse(args)
-	assert(args, "You must provdide an argument table when creating PublishResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating PublishResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["MessageId"] = args["MessageId"],
 	}
-	asserts.AssertPublishResponse(t)
-	return t
+	asserts.AssertPublishResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.MessageAttributeValue = { ["DataType"] = true, ["StringValue"] = true, ["BinaryValue"] = true, nil }
@@ -1409,14 +1926,25 @@ end
 -- Required key: DataType
 -- @return MessageAttributeValue structure as a key-value pair table
 function M.MessageAttributeValue(args)
-	assert(args, "You must provdide an argument table when creating MessageAttributeValue")
-	local t = { 
+	assert(args, "You must provide an argument table when creating MessageAttributeValue")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DataType"] = args["DataType"],
 		["StringValue"] = args["StringValue"],
 		["BinaryValue"] = args["BinaryValue"],
 	}
-	asserts.AssertMessageAttributeValue(t)
-	return t
+	asserts.AssertMessageAttributeValue(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CheckIfPhoneNumberIsOptedOutResponse = { ["isOptedOut"] = true, nil }
@@ -1437,12 +1965,23 @@ end
 -- * isOptedOut [boolean] <p>Indicates whether the phone number is opted out:</p> <ul> <li> <p> <code>true</code> – The phone number is opted out, meaning you cannot publish SMS messages to it.</p> </li> <li> <p> <code>false</code> – The phone number is opted in, meaning you can publish SMS messages to it.</p> </li> </ul>
 -- @return CheckIfPhoneNumberIsOptedOutResponse structure as a key-value pair table
 function M.CheckIfPhoneNumberIsOptedOutResponse(args)
-	assert(args, "You must provdide an argument table when creating CheckIfPhoneNumberIsOptedOutResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CheckIfPhoneNumberIsOptedOutResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["isOptedOut"] = args["isOptedOut"],
 	}
-	asserts.AssertCheckIfPhoneNumberIsOptedOutResponse(t)
-	return t
+	asserts.AssertCheckIfPhoneNumberIsOptedOutResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListEndpointsByPlatformApplicationInput = { ["NextToken"] = true, ["PlatformApplicationArn"] = true, nil }
@@ -1467,13 +2006,24 @@ end
 -- Required key: PlatformApplicationArn
 -- @return ListEndpointsByPlatformApplicationInput structure as a key-value pair table
 function M.ListEndpointsByPlatformApplicationInput(args)
-	assert(args, "You must provdide an argument table when creating ListEndpointsByPlatformApplicationInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListEndpointsByPlatformApplicationInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NextToken"] = args["NextToken"],
 		["PlatformApplicationArn"] = args["PlatformApplicationArn"],
 	}
-	asserts.AssertListEndpointsByPlatformApplicationInput(t)
-	return t
+	asserts.AssertListEndpointsByPlatformApplicationInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.SetSMSAttributesResponse = { nil }
@@ -1492,11 +2042,22 @@ end
 -- Valid keys:
 -- @return SetSMSAttributesResponse structure as a key-value pair table
 function M.SetSMSAttributesResponse(args)
-	assert(args, "You must provdide an argument table when creating SetSMSAttributesResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating SetSMSAttributesResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertSetSMSAttributesResponse(t)
-	return t
+	asserts.AssertSetSMSAttributesResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.RemovePermissionInput = { ["TopicArn"] = true, ["Label"] = true, nil }
@@ -1523,13 +2084,24 @@ end
 -- Required key: Label
 -- @return RemovePermissionInput structure as a key-value pair table
 function M.RemovePermissionInput(args)
-	assert(args, "You must provdide an argument table when creating RemovePermissionInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating RemovePermissionInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["TopicArn"] = args["TopicArn"],
 		["Label"] = args["Label"],
 	}
-	asserts.AssertRemovePermissionInput(t)
-	return t
+	asserts.AssertRemovePermissionInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidParameterException = { ["message"] = true, nil }
@@ -1550,12 +2122,23 @@ end
 -- * message [string] 
 -- @return InvalidParameterException structure as a key-value pair table
 function M.InvalidParameterException(args)
-	assert(args, "You must provdide an argument table when creating InvalidParameterException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidParameterException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertInvalidParameterException(t)
-	return t
+	asserts.AssertInvalidParameterException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateTopicInput = { ["Name"] = true, nil }
@@ -1578,12 +2161,23 @@ end
 -- Required key: Name
 -- @return CreateTopicInput structure as a key-value pair table
 function M.CreateTopicInput(args)
-	assert(args, "You must provdide an argument table when creating CreateTopicInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateTopicInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Name"] = args["Name"],
 	}
-	asserts.AssertCreateTopicInput(t)
-	return t
+	asserts.AssertCreateTopicInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteEndpointInput = { ["EndpointArn"] = true, nil }
@@ -1606,12 +2200,23 @@ end
 -- Required key: EndpointArn
 -- @return DeleteEndpointInput structure as a key-value pair table
 function M.DeleteEndpointInput(args)
-	assert(args, "You must provdide an argument table when creating DeleteEndpointInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteEndpointInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["EndpointArn"] = args["EndpointArn"],
 	}
-	asserts.AssertDeleteEndpointInput(t)
-	return t
+	asserts.AssertDeleteEndpointInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.SetEndpointAttributesInput = { ["Attributes"] = true, ["EndpointArn"] = true, nil }
@@ -1638,13 +2243,24 @@ end
 -- Required key: Attributes
 -- @return SetEndpointAttributesInput structure as a key-value pair table
 function M.SetEndpointAttributesInput(args)
-	assert(args, "You must provdide an argument table when creating SetEndpointAttributesInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating SetEndpointAttributesInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Attributes"] = args["Attributes"],
 		["EndpointArn"] = args["EndpointArn"],
 	}
-	asserts.AssertSetEndpointAttributesInput(t)
-	return t
+	asserts.AssertSetEndpointAttributesInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Endpoint = { ["Attributes"] = true, ["EndpointArn"] = true, nil }
@@ -1667,13 +2283,24 @@ end
 -- * EndpointArn [String] <p>EndpointArn for mobile app and device.</p>
 -- @return Endpoint structure as a key-value pair table
 function M.Endpoint(args)
-	assert(args, "You must provdide an argument table when creating Endpoint")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Endpoint")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Attributes"] = args["Attributes"],
 		["EndpointArn"] = args["EndpointArn"],
 	}
-	asserts.AssertEndpoint(t)
-	return t
+	asserts.AssertEndpoint(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListTopicsInput = { ["NextToken"] = true, nil }
@@ -1694,12 +2321,23 @@ end
 -- * NextToken [nextToken] <p>Token returned by the previous <code>ListTopics</code> request.</p>
 -- @return ListTopicsInput structure as a key-value pair table
 function M.ListTopicsInput(args)
-	assert(args, "You must provdide an argument table when creating ListTopicsInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListTopicsInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NextToken"] = args["NextToken"],
 	}
-	asserts.AssertListTopicsInput(t)
-	return t
+	asserts.AssertListTopicsInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListSubscriptionsInput = { ["NextToken"] = true, nil }
@@ -1720,12 +2358,23 @@ end
 -- * NextToken [nextToken] <p>Token returned by the previous <code>ListSubscriptions</code> request.</p>
 -- @return ListSubscriptionsInput structure as a key-value pair table
 function M.ListSubscriptionsInput(args)
-	assert(args, "You must provdide an argument table when creating ListSubscriptionsInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListSubscriptionsInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NextToken"] = args["NextToken"],
 	}
-	asserts.AssertListSubscriptionsInput(t)
-	return t
+	asserts.AssertListSubscriptionsInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.SubscribeResponse = { ["SubscriptionArn"] = true, nil }
@@ -1746,12 +2395,23 @@ end
 -- * SubscriptionArn [subscriptionARN] <p>The ARN of the subscription, if the service was able to create a subscription immediately (without requiring endpoint owner confirmation).</p>
 -- @return SubscribeResponse structure as a key-value pair table
 function M.SubscribeResponse(args)
-	assert(args, "You must provdide an argument table when creating SubscribeResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating SubscribeResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["SubscriptionArn"] = args["SubscriptionArn"],
 	}
-	asserts.AssertSubscribeResponse(t)
-	return t
+	asserts.AssertSubscribeResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListPlatformApplicationsResponse = { ["NextToken"] = true, ["PlatformApplications"] = true, nil }
@@ -1774,13 +2434,24 @@ end
 -- * PlatformApplications [ListOfPlatformApplications] <p>Platform applications returned when calling ListPlatformApplications action.</p>
 -- @return ListPlatformApplicationsResponse structure as a key-value pair table
 function M.ListPlatformApplicationsResponse(args)
-	assert(args, "You must provdide an argument table when creating ListPlatformApplicationsResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListPlatformApplicationsResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NextToken"] = args["NextToken"],
 		["PlatformApplications"] = args["PlatformApplications"],
 	}
-	asserts.AssertListPlatformApplicationsResponse(t)
-	return t
+	asserts.AssertListPlatformApplicationsResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetTopicAttributesInput = { ["TopicArn"] = true, nil }
@@ -1803,12 +2474,23 @@ end
 -- Required key: TopicArn
 -- @return GetTopicAttributesInput structure as a key-value pair table
 function M.GetTopicAttributesInput(args)
-	assert(args, "You must provdide an argument table when creating GetTopicAttributesInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetTopicAttributesInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["TopicArn"] = args["TopicArn"],
 	}
-	asserts.AssertGetTopicAttributesInput(t)
-	return t
+	asserts.AssertGetTopicAttributesInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AddPermissionInput = { ["ActionName"] = true, ["AWSAccountId"] = true, ["TopicArn"] = true, ["Label"] = true, nil }
@@ -1843,15 +2525,26 @@ end
 -- Required key: ActionName
 -- @return AddPermissionInput structure as a key-value pair table
 function M.AddPermissionInput(args)
-	assert(args, "You must provdide an argument table when creating AddPermissionInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AddPermissionInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ActionName"] = args["ActionName"],
 		["AWSAccountId"] = args["AWSAccountId"],
 		["TopicArn"] = args["TopicArn"],
 		["Label"] = args["Label"],
 	}
-	asserts.AssertAddPermissionInput(t)
-	return t
+	asserts.AssertAddPermissionInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetPlatformApplicationAttributesResponse = { ["Attributes"] = true, nil }
@@ -1872,12 +2565,23 @@ end
 -- * Attributes [MapStringToString] <p>Attributes include the following:</p> <ul> <li> <p> <code>EventEndpointCreated</code> -- Topic ARN to which EndpointCreated event notifications should be sent.</p> </li> <li> <p> <code>EventEndpointDeleted</code> -- Topic ARN to which EndpointDeleted event notifications should be sent.</p> </li> <li> <p> <code>EventEndpointUpdated</code> -- Topic ARN to which EndpointUpdate event notifications should be sent.</p> </li> <li> <p> <code>EventDeliveryFailure</code> -- Topic ARN to which DeliveryFailure event notifications should be sent upon Direct Publish delivery failure (permanent) to one of the application's endpoints.</p> </li> </ul>
 -- @return GetPlatformApplicationAttributesResponse structure as a key-value pair table
 function M.GetPlatformApplicationAttributesResponse(args)
-	assert(args, "You must provdide an argument table when creating GetPlatformApplicationAttributesResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetPlatformApplicationAttributesResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Attributes"] = args["Attributes"],
 	}
-	asserts.AssertGetPlatformApplicationAttributesResponse(t)
-	return t
+	asserts.AssertGetPlatformApplicationAttributesResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.PlatformApplicationDisabledException = { ["message"] = true, nil }
@@ -1898,12 +2602,23 @@ end
 -- * message [string] <p>Message for platform application disabled.</p>
 -- @return PlatformApplicationDisabledException structure as a key-value pair table
 function M.PlatformApplicationDisabledException(args)
-	assert(args, "You must provdide an argument table when creating PlatformApplicationDisabledException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating PlatformApplicationDisabledException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertPlatformApplicationDisabledException(t)
-	return t
+	asserts.AssertPlatformApplicationDisabledException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 function asserts.Assertprotocol(str)
@@ -2385,8 +3100,11 @@ function M.ListPlatformApplicationsAsync(ListPlatformApplicationsInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".ListPlatformApplications",
 	}
+	for header,value in pairs(ListPlatformApplicationsInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ListPlatformApplicationsInput, headers, settings, cb)
 	else
@@ -2417,8 +3135,11 @@ function M.SetPlatformApplicationAttributesAsync(SetPlatformApplicationAttribute
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".SetPlatformApplicationAttributes",
 	}
+	for header,value in pairs(SetPlatformApplicationAttributesInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", SetPlatformApplicationAttributesInput, headers, settings, cb)
 	else
@@ -2449,8 +3170,11 @@ function M.ListSubscriptionsByTopicAsync(ListSubscriptionsByTopicInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".ListSubscriptionsByTopic",
 	}
+	for header,value in pairs(ListSubscriptionsByTopicInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ListSubscriptionsByTopicInput, headers, settings, cb)
 	else
@@ -2481,8 +3205,11 @@ function M.ListSubscriptionsAsync(ListSubscriptionsInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".ListSubscriptions",
 	}
+	for header,value in pairs(ListSubscriptionsInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ListSubscriptionsInput, headers, settings, cb)
 	else
@@ -2513,8 +3240,11 @@ function M.ListPhoneNumbersOptedOutAsync(ListPhoneNumbersOptedOutInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".ListPhoneNumbersOptedOut",
 	}
+	for header,value in pairs(ListPhoneNumbersOptedOutInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ListPhoneNumbersOptedOutInput, headers, settings, cb)
 	else
@@ -2545,8 +3275,11 @@ function M.ConfirmSubscriptionAsync(ConfirmSubscriptionInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".ConfirmSubscription",
 	}
+	for header,value in pairs(ConfirmSubscriptionInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ConfirmSubscriptionInput, headers, settings, cb)
 	else
@@ -2577,8 +3310,11 @@ function M.SetTopicAttributesAsync(SetTopicAttributesInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".SetTopicAttributes",
 	}
+	for header,value in pairs(SetTopicAttributesInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", SetTopicAttributesInput, headers, settings, cb)
 	else
@@ -2609,8 +3345,11 @@ function M.SetEndpointAttributesAsync(SetEndpointAttributesInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".SetEndpointAttributes",
 	}
+	for header,value in pairs(SetEndpointAttributesInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", SetEndpointAttributesInput, headers, settings, cb)
 	else
@@ -2641,8 +3380,11 @@ function M.CheckIfPhoneNumberIsOptedOutAsync(CheckIfPhoneNumberIsOptedOutInput, 
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".CheckIfPhoneNumberIsOptedOut",
 	}
+	for header,value in pairs(CheckIfPhoneNumberIsOptedOutInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", CheckIfPhoneNumberIsOptedOutInput, headers, settings, cb)
 	else
@@ -2673,8 +3415,11 @@ function M.AddPermissionAsync(AddPermissionInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".AddPermission",
 	}
+	for header,value in pairs(AddPermissionInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", AddPermissionInput, headers, settings, cb)
 	else
@@ -2705,8 +3450,11 @@ function M.UnsubscribeAsync(UnsubscribeInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".Unsubscribe",
 	}
+	for header,value in pairs(UnsubscribeInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", UnsubscribeInput, headers, settings, cb)
 	else
@@ -2737,8 +3485,11 @@ function M.GetSubscriptionAttributesAsync(GetSubscriptionAttributesInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".GetSubscriptionAttributes",
 	}
+	for header,value in pairs(GetSubscriptionAttributesInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", GetSubscriptionAttributesInput, headers, settings, cb)
 	else
@@ -2769,8 +3520,11 @@ function M.CreatePlatformEndpointAsync(CreatePlatformEndpointInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".CreatePlatformEndpoint",
 	}
+	for header,value in pairs(CreatePlatformEndpointInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", CreatePlatformEndpointInput, headers, settings, cb)
 	else
@@ -2801,8 +3555,11 @@ function M.RemovePermissionAsync(RemovePermissionInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".RemovePermission",
 	}
+	for header,value in pairs(RemovePermissionInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", RemovePermissionInput, headers, settings, cb)
 	else
@@ -2833,8 +3590,11 @@ function M.CreateTopicAsync(CreateTopicInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".CreateTopic",
 	}
+	for header,value in pairs(CreateTopicInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateTopicInput, headers, settings, cb)
 	else
@@ -2865,8 +3625,11 @@ function M.SetSubscriptionAttributesAsync(SetSubscriptionAttributesInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".SetSubscriptionAttributes",
 	}
+	for header,value in pairs(SetSubscriptionAttributesInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", SetSubscriptionAttributesInput, headers, settings, cb)
 	else
@@ -2897,8 +3660,11 @@ function M.CreatePlatformApplicationAsync(CreatePlatformApplicationInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".CreatePlatformApplication",
 	}
+	for header,value in pairs(CreatePlatformApplicationInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", CreatePlatformApplicationInput, headers, settings, cb)
 	else
@@ -2929,8 +3695,11 @@ function M.GetPlatformApplicationAttributesAsync(GetPlatformApplicationAttribute
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".GetPlatformApplicationAttributes",
 	}
+	for header,value in pairs(GetPlatformApplicationAttributesInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", GetPlatformApplicationAttributesInput, headers, settings, cb)
 	else
@@ -2961,8 +3730,11 @@ function M.GetSMSAttributesAsync(GetSMSAttributesInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".GetSMSAttributes",
 	}
+	for header,value in pairs(GetSMSAttributesInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", GetSMSAttributesInput, headers, settings, cb)
 	else
@@ -2993,8 +3765,11 @@ function M.PublishAsync(PublishInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".Publish",
 	}
+	for header,value in pairs(PublishInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", PublishInput, headers, settings, cb)
 	else
@@ -3025,8 +3800,11 @@ function M.SetSMSAttributesAsync(SetSMSAttributesInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".SetSMSAttributes",
 	}
+	for header,value in pairs(SetSMSAttributesInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", SetSMSAttributesInput, headers, settings, cb)
 	else
@@ -3057,8 +3835,11 @@ function M.ListEndpointsByPlatformApplicationAsync(ListEndpointsByPlatformApplic
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".ListEndpointsByPlatformApplication",
 	}
+	for header,value in pairs(ListEndpointsByPlatformApplicationInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ListEndpointsByPlatformApplicationInput, headers, settings, cb)
 	else
@@ -3089,8 +3870,11 @@ function M.GetEndpointAttributesAsync(GetEndpointAttributesInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".GetEndpointAttributes",
 	}
+	for header,value in pairs(GetEndpointAttributesInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", GetEndpointAttributesInput, headers, settings, cb)
 	else
@@ -3121,8 +3905,11 @@ function M.DeleteEndpointAsync(DeleteEndpointInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DeleteEndpoint",
 	}
+	for header,value in pairs(DeleteEndpointInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteEndpointInput, headers, settings, cb)
 	else
@@ -3153,8 +3940,11 @@ function M.DeletePlatformApplicationAsync(DeletePlatformApplicationInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DeletePlatformApplication",
 	}
+	for header,value in pairs(DeletePlatformApplicationInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DeletePlatformApplicationInput, headers, settings, cb)
 	else
@@ -3185,8 +3975,11 @@ function M.GetTopicAttributesAsync(GetTopicAttributesInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".GetTopicAttributes",
 	}
+	for header,value in pairs(GetTopicAttributesInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", GetTopicAttributesInput, headers, settings, cb)
 	else
@@ -3217,8 +4010,11 @@ function M.SubscribeAsync(SubscribeInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".Subscribe",
 	}
+	for header,value in pairs(SubscribeInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", SubscribeInput, headers, settings, cb)
 	else
@@ -3249,8 +4045,11 @@ function M.DeleteTopicAsync(DeleteTopicInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DeleteTopic",
 	}
+	for header,value in pairs(DeleteTopicInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteTopicInput, headers, settings, cb)
 	else
@@ -3281,8 +4080,11 @@ function M.OptInPhoneNumberAsync(OptInPhoneNumberInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".OptInPhoneNumber",
 	}
+	for header,value in pairs(OptInPhoneNumberInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", OptInPhoneNumberInput, headers, settings, cb)
 	else
@@ -3313,8 +4115,11 @@ function M.ListTopicsAsync(ListTopicsInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".ListTopics",
 	}
+	for header,value in pairs(ListTopicsInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ListTopicsInput, headers, settings, cb)
 	else

@@ -39,12 +39,23 @@ end
 -- * message [ErrorMessage] <p>An error message that indicates that you have exceeded the number of cases you can have open.</p>
 -- @return CaseCreationLimitExceeded structure as a key-value pair table
 function M.CaseCreationLimitExceeded(args)
-	assert(args, "You must provdide an argument table when creating CaseCreationLimitExceeded")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CaseCreationLimitExceeded")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertCaseCreationLimitExceeded(t)
-	return t
+	asserts.AssertCaseCreationLimitExceeded(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Service = { ["code"] = true, ["name"] = true, ["categories"] = true, nil }
@@ -69,14 +80,25 @@ end
 -- * categories [CategoryList] <p>A list of categories that describe the type of support issue a case describes. Categories consist of a category name and a category code. Category names and codes are passed to AWS Support when you call <a>CreateCase</a>.</p>
 -- @return Service structure as a key-value pair table
 function M.Service(args)
-	assert(args, "You must provdide an argument table when creating Service")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Service")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["code"] = args["code"],
 		["name"] = args["name"],
 		["categories"] = args["categories"],
 	}
-	asserts.AssertService(t)
-	return t
+	asserts.AssertService(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.RecentCaseCommunications = { ["communications"] = true, ["nextToken"] = true, nil }
@@ -99,13 +121,24 @@ end
 -- * nextToken [NextToken] <p>A resumption point for pagination.</p>
 -- @return RecentCaseCommunications structure as a key-value pair table
 function M.RecentCaseCommunications(args)
-	assert(args, "You must provdide an argument table when creating RecentCaseCommunications")
-	local t = { 
+	assert(args, "You must provide an argument table when creating RecentCaseCommunications")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["communications"] = args["communications"],
 		["nextToken"] = args["nextToken"],
 	}
-	asserts.AssertRecentCaseCommunications(t)
-	return t
+	asserts.AssertRecentCaseCommunications(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeAttachmentRequest = { ["attachmentId"] = true, nil }
@@ -128,12 +161,23 @@ end
 -- Required key: attachmentId
 -- @return DescribeAttachmentRequest structure as a key-value pair table
 function M.DescribeAttachmentRequest(args)
-	assert(args, "You must provdide an argument table when creating DescribeAttachmentRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeAttachmentRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["attachmentId"] = args["attachmentId"],
 	}
-	asserts.AssertDescribeAttachmentRequest(t)
-	return t
+	asserts.AssertDescribeAttachmentRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.TrustedAdvisorCheckDescription = { ["category"] = true, ["description"] = true, ["metadata"] = true, ["id"] = true, ["name"] = true, nil }
@@ -172,16 +216,27 @@ end
 -- Required key: metadata
 -- @return TrustedAdvisorCheckDescription structure as a key-value pair table
 function M.TrustedAdvisorCheckDescription(args)
-	assert(args, "You must provdide an argument table when creating TrustedAdvisorCheckDescription")
-	local t = { 
+	assert(args, "You must provide an argument table when creating TrustedAdvisorCheckDescription")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["category"] = args["category"],
 		["description"] = args["description"],
 		["metadata"] = args["metadata"],
 		["id"] = args["id"],
 		["name"] = args["name"],
 	}
-	asserts.AssertTrustedAdvisorCheckDescription(t)
-	return t
+	asserts.AssertTrustedAdvisorCheckDescription(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AttachmentSetIdNotFound = { ["message"] = true, nil }
@@ -202,12 +257,23 @@ end
 -- * message [ErrorMessage] <p>An attachment set with the specified ID could not be found.</p>
 -- @return AttachmentSetIdNotFound structure as a key-value pair table
 function M.AttachmentSetIdNotFound(args)
-	assert(args, "You must provdide an argument table when creating AttachmentSetIdNotFound")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AttachmentSetIdNotFound")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertAttachmentSetIdNotFound(t)
-	return t
+	asserts.AssertAttachmentSetIdNotFound(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InternalServerError = { ["message"] = true, nil }
@@ -228,12 +294,23 @@ end
 -- * message [ErrorMessage] <p>An internal server error occurred.</p>
 -- @return InternalServerError structure as a key-value pair table
 function M.InternalServerError(args)
-	assert(args, "You must provdide an argument table when creating InternalServerError")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InternalServerError")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertInternalServerError(t)
-	return t
+	asserts.AssertInternalServerError(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeAttachmentResponse = { ["attachment"] = true, nil }
@@ -254,12 +331,23 @@ end
 -- * attachment [Attachment] <p>The attachment content and file name.</p>
 -- @return DescribeAttachmentResponse structure as a key-value pair table
 function M.DescribeAttachmentResponse(args)
-	assert(args, "You must provdide an argument table when creating DescribeAttachmentResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeAttachmentResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["attachment"] = args["attachment"],
 	}
-	asserts.AssertDescribeAttachmentResponse(t)
-	return t
+	asserts.AssertDescribeAttachmentResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.TrustedAdvisorCheckRefreshStatus = { ["checkId"] = true, ["status"] = true, ["millisUntilNextRefreshable"] = true, nil }
@@ -290,14 +378,25 @@ end
 -- Required key: millisUntilNextRefreshable
 -- @return TrustedAdvisorCheckRefreshStatus structure as a key-value pair table
 function M.TrustedAdvisorCheckRefreshStatus(args)
-	assert(args, "You must provdide an argument table when creating TrustedAdvisorCheckRefreshStatus")
-	local t = { 
+	assert(args, "You must provide an argument table when creating TrustedAdvisorCheckRefreshStatus")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["checkId"] = args["checkId"],
 		["status"] = args["status"],
 		["millisUntilNextRefreshable"] = args["millisUntilNextRefreshable"],
 	}
-	asserts.AssertTrustedAdvisorCheckRefreshStatus(t)
-	return t
+	asserts.AssertTrustedAdvisorCheckRefreshStatus(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.RefreshTrustedAdvisorCheckRequest = { ["checkId"] = true, nil }
@@ -320,12 +419,23 @@ end
 -- Required key: checkId
 -- @return RefreshTrustedAdvisorCheckRequest structure as a key-value pair table
 function M.RefreshTrustedAdvisorCheckRequest(args)
-	assert(args, "You must provdide an argument table when creating RefreshTrustedAdvisorCheckRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating RefreshTrustedAdvisorCheckRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["checkId"] = args["checkId"],
 	}
-	asserts.AssertRefreshTrustedAdvisorCheckRequest(t)
-	return t
+	asserts.AssertRefreshTrustedAdvisorCheckRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AttachmentIdNotFound = { ["message"] = true, nil }
@@ -346,12 +456,23 @@ end
 -- * message [ErrorMessage] <p>An attachment with the specified ID could not be found.</p>
 -- @return AttachmentIdNotFound structure as a key-value pair table
 function M.AttachmentIdNotFound(args)
-	assert(args, "You must provdide an argument table when creating AttachmentIdNotFound")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AttachmentIdNotFound")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertAttachmentIdNotFound(t)
-	return t
+	asserts.AssertAttachmentIdNotFound(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CaseIdNotFound = { ["message"] = true, nil }
@@ -372,12 +493,23 @@ end
 -- * message [ErrorMessage] <p>The requested <code>CaseId</code> could not be located.</p>
 -- @return CaseIdNotFound structure as a key-value pair table
 function M.CaseIdNotFound(args)
-	assert(args, "You must provdide an argument table when creating CaseIdNotFound")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CaseIdNotFound")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertCaseIdNotFound(t)
-	return t
+	asserts.AssertCaseIdNotFound(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateCaseRequest = { ["language"] = true, ["ccEmailAddresses"] = true, ["communicationBody"] = true, ["attachmentSetId"] = true, ["severityCode"] = true, ["categoryCode"] = true, ["serviceCode"] = true, ["issueType"] = true, ["subject"] = true, nil }
@@ -418,8 +550,14 @@ end
 -- Required key: communicationBody
 -- @return CreateCaseRequest structure as a key-value pair table
 function M.CreateCaseRequest(args)
-	assert(args, "You must provdide an argument table when creating CreateCaseRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateCaseRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["language"] = args["language"],
 		["ccEmailAddresses"] = args["ccEmailAddresses"],
 		["communicationBody"] = args["communicationBody"],
@@ -430,8 +568,13 @@ function M.CreateCaseRequest(args)
 		["issueType"] = args["issueType"],
 		["subject"] = args["subject"],
 	}
-	asserts.AssertCreateCaseRequest(t)
-	return t
+	asserts.AssertCreateCaseRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeTrustedAdvisorCheckRefreshStatusesResponse = { ["statuses"] = true, nil }
@@ -454,12 +597,23 @@ end
 -- Required key: statuses
 -- @return DescribeTrustedAdvisorCheckRefreshStatusesResponse structure as a key-value pair table
 function M.DescribeTrustedAdvisorCheckRefreshStatusesResponse(args)
-	assert(args, "You must provdide an argument table when creating DescribeTrustedAdvisorCheckRefreshStatusesResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeTrustedAdvisorCheckRefreshStatusesResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["statuses"] = args["statuses"],
 	}
-	asserts.AssertDescribeTrustedAdvisorCheckRefreshStatusesResponse(t)
-	return t
+	asserts.AssertDescribeTrustedAdvisorCheckRefreshStatusesResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.TrustedAdvisorResourceDetail = { ["status"] = true, ["resourceId"] = true, ["region"] = true, ["isSuppressed"] = true, ["metadata"] = true, nil }
@@ -494,16 +648,27 @@ end
 -- Required key: metadata
 -- @return TrustedAdvisorResourceDetail structure as a key-value pair table
 function M.TrustedAdvisorResourceDetail(args)
-	assert(args, "You must provdide an argument table when creating TrustedAdvisorResourceDetail")
-	local t = { 
+	assert(args, "You must provide an argument table when creating TrustedAdvisorResourceDetail")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["status"] = args["status"],
 		["resourceId"] = args["resourceId"],
 		["region"] = args["region"],
 		["isSuppressed"] = args["isSuppressed"],
 		["metadata"] = args["metadata"],
 	}
-	asserts.AssertTrustedAdvisorResourceDetail(t)
-	return t
+	asserts.AssertTrustedAdvisorResourceDetail(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.TrustedAdvisorCheckResult = { ["checkId"] = true, ["status"] = true, ["flaggedResources"] = true, ["timestamp"] = true, ["resourcesSummary"] = true, ["categorySpecificSummary"] = true, nil }
@@ -546,8 +711,14 @@ end
 -- Required key: flaggedResources
 -- @return TrustedAdvisorCheckResult structure as a key-value pair table
 function M.TrustedAdvisorCheckResult(args)
-	assert(args, "You must provdide an argument table when creating TrustedAdvisorCheckResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating TrustedAdvisorCheckResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["checkId"] = args["checkId"],
 		["status"] = args["status"],
 		["flaggedResources"] = args["flaggedResources"],
@@ -555,8 +726,13 @@ function M.TrustedAdvisorCheckResult(args)
 		["resourcesSummary"] = args["resourcesSummary"],
 		["categorySpecificSummary"] = args["categorySpecificSummary"],
 	}
-	asserts.AssertTrustedAdvisorCheckResult(t)
-	return t
+	asserts.AssertTrustedAdvisorCheckResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeTrustedAdvisorChecksRequest = { ["language"] = true, nil }
@@ -579,12 +755,23 @@ end
 -- Required key: language
 -- @return DescribeTrustedAdvisorChecksRequest structure as a key-value pair table
 function M.DescribeTrustedAdvisorChecksRequest(args)
-	assert(args, "You must provdide an argument table when creating DescribeTrustedAdvisorChecksRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeTrustedAdvisorChecksRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["language"] = args["language"],
 	}
-	asserts.AssertDescribeTrustedAdvisorChecksRequest(t)
-	return t
+	asserts.AssertDescribeTrustedAdvisorChecksRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeTrustedAdvisorCheckResultRequest = { ["checkId"] = true, ["language"] = true, nil }
@@ -609,13 +796,24 @@ end
 -- Required key: checkId
 -- @return DescribeTrustedAdvisorCheckResultRequest structure as a key-value pair table
 function M.DescribeTrustedAdvisorCheckResultRequest(args)
-	assert(args, "You must provdide an argument table when creating DescribeTrustedAdvisorCheckResultRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeTrustedAdvisorCheckResultRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["checkId"] = args["checkId"],
 		["language"] = args["language"],
 	}
-	asserts.AssertDescribeTrustedAdvisorCheckResultRequest(t)
-	return t
+	asserts.AssertDescribeTrustedAdvisorCheckResultRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateCaseResponse = { ["caseId"] = true, nil }
@@ -636,12 +834,23 @@ end
 -- * caseId [CaseId] <p>The AWS Support case ID requested or returned in the call. The case ID is an alphanumeric string formatted as shown in this example: case-<i>12345678910-2013-c4c1d2bf33c5cf47</i> </p>
 -- @return CreateCaseResponse structure as a key-value pair table
 function M.CreateCaseResponse(args)
-	assert(args, "You must provdide an argument table when creating CreateCaseResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateCaseResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["caseId"] = args["caseId"],
 	}
-	asserts.AssertCreateCaseResponse(t)
-	return t
+	asserts.AssertCreateCaseResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeServicesRequest = { ["serviceCodeList"] = true, ["language"] = true, nil }
@@ -664,13 +873,24 @@ end
 -- * language [Language] <p>The ISO 639-1 code for the language in which AWS provides support. AWS Support currently supports English ("en") and Japanese ("ja"). Language parameters must be passed explicitly for operations that take them.</p>
 -- @return DescribeServicesRequest structure as a key-value pair table
 function M.DescribeServicesRequest(args)
-	assert(args, "You must provdide an argument table when creating DescribeServicesRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeServicesRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["serviceCodeList"] = args["serviceCodeList"],
 		["language"] = args["language"],
 	}
-	asserts.AssertDescribeServicesRequest(t)
-	return t
+	asserts.AssertDescribeServicesRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.RefreshTrustedAdvisorCheckResponse = { ["status"] = true, nil }
@@ -693,12 +913,23 @@ end
 -- Required key: status
 -- @return RefreshTrustedAdvisorCheckResponse structure as a key-value pair table
 function M.RefreshTrustedAdvisorCheckResponse(args)
-	assert(args, "You must provdide an argument table when creating RefreshTrustedAdvisorCheckResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating RefreshTrustedAdvisorCheckResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["status"] = args["status"],
 	}
-	asserts.AssertRefreshTrustedAdvisorCheckResponse(t)
-	return t
+	asserts.AssertRefreshTrustedAdvisorCheckResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeCommunicationsResponse = { ["communications"] = true, ["nextToken"] = true, nil }
@@ -721,13 +952,24 @@ end
 -- * nextToken [NextToken] <p>A resumption point for pagination.</p>
 -- @return DescribeCommunicationsResponse structure as a key-value pair table
 function M.DescribeCommunicationsResponse(args)
-	assert(args, "You must provdide an argument table when creating DescribeCommunicationsResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeCommunicationsResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["communications"] = args["communications"],
 		["nextToken"] = args["nextToken"],
 	}
-	asserts.AssertDescribeCommunicationsResponse(t)
-	return t
+	asserts.AssertDescribeCommunicationsResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Communication = { ["body"] = true, ["attachmentSet"] = true, ["caseId"] = true, ["timeCreated"] = true, ["submittedBy"] = true, nil }
@@ -756,16 +998,27 @@ end
 -- * submittedBy [SubmittedBy] <p>The email address of the account that submitted the AWS Support case.</p>
 -- @return Communication structure as a key-value pair table
 function M.Communication(args)
-	assert(args, "You must provdide an argument table when creating Communication")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Communication")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["body"] = args["body"],
 		["attachmentSet"] = args["attachmentSet"],
 		["caseId"] = args["caseId"],
 		["timeCreated"] = args["timeCreated"],
 		["submittedBy"] = args["submittedBy"],
 	}
-	asserts.AssertCommunication(t)
-	return t
+	asserts.AssertCommunication(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AttachmentSetExpired = { ["message"] = true, nil }
@@ -786,12 +1039,23 @@ end
 -- * message [ErrorMessage] <p>The expiration time of the attachment set has passed. The set expires 1 hour after it is created.</p>
 -- @return AttachmentSetExpired structure as a key-value pair table
 function M.AttachmentSetExpired(args)
-	assert(args, "You must provdide an argument table when creating AttachmentSetExpired")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AttachmentSetExpired")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertAttachmentSetExpired(t)
-	return t
+	asserts.AssertAttachmentSetExpired(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AttachmentSetSizeLimitExceeded = { ["message"] = true, nil }
@@ -812,12 +1076,23 @@ end
 -- * message [ErrorMessage] <p>A limit for the size of an attachment set has been exceeded. The limits are 3 attachments and 5 MB per attachment.</p>
 -- @return AttachmentSetSizeLimitExceeded structure as a key-value pair table
 function M.AttachmentSetSizeLimitExceeded(args)
-	assert(args, "You must provdide an argument table when creating AttachmentSetSizeLimitExceeded")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AttachmentSetSizeLimitExceeded")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertAttachmentSetSizeLimitExceeded(t)
-	return t
+	asserts.AssertAttachmentSetSizeLimitExceeded(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.TrustedAdvisorCheckSummary = { ["checkId"] = true, ["status"] = true, ["timestamp"] = true, ["resourcesSummary"] = true, ["hasFlaggedResources"] = true, ["categorySpecificSummary"] = true, nil }
@@ -858,8 +1133,14 @@ end
 -- Required key: categorySpecificSummary
 -- @return TrustedAdvisorCheckSummary structure as a key-value pair table
 function M.TrustedAdvisorCheckSummary(args)
-	assert(args, "You must provdide an argument table when creating TrustedAdvisorCheckSummary")
-	local t = { 
+	assert(args, "You must provide an argument table when creating TrustedAdvisorCheckSummary")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["checkId"] = args["checkId"],
 		["status"] = args["status"],
 		["timestamp"] = args["timestamp"],
@@ -867,8 +1148,13 @@ function M.TrustedAdvisorCheckSummary(args)
 		["hasFlaggedResources"] = args["hasFlaggedResources"],
 		["categorySpecificSummary"] = args["categorySpecificSummary"],
 	}
-	asserts.AssertTrustedAdvisorCheckSummary(t)
-	return t
+	asserts.AssertTrustedAdvisorCheckSummary(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AddCommunicationToCaseResponse = { ["result"] = true, nil }
@@ -889,12 +1175,23 @@ end
 -- * result [Result] <p>True if <a>AddCommunicationToCase</a> succeeds. Otherwise, returns an error.</p>
 -- @return AddCommunicationToCaseResponse structure as a key-value pair table
 function M.AddCommunicationToCaseResponse(args)
-	assert(args, "You must provdide an argument table when creating AddCommunicationToCaseResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AddCommunicationToCaseResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["result"] = args["result"],
 	}
-	asserts.AssertAddCommunicationToCaseResponse(t)
-	return t
+	asserts.AssertAddCommunicationToCaseResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Category = { ["code"] = true, ["name"] = true, nil }
@@ -917,13 +1214,24 @@ end
 -- * name [CategoryName] <p>The category name for the support case.</p>
 -- @return Category structure as a key-value pair table
 function M.Category(args)
-	assert(args, "You must provdide an argument table when creating Category")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Category")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["code"] = args["code"],
 		["name"] = args["name"],
 	}
-	asserts.AssertCategory(t)
-	return t
+	asserts.AssertCategory(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ResolveCaseResponse = { ["finalCaseStatus"] = true, ["initialCaseStatus"] = true, nil }
@@ -946,13 +1254,24 @@ end
 -- * initialCaseStatus [CaseStatus] <p>The status of the case when the <a>ResolveCase</a> request was sent.</p>
 -- @return ResolveCaseResponse structure as a key-value pair table
 function M.ResolveCaseResponse(args)
-	assert(args, "You must provdide an argument table when creating ResolveCaseResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ResolveCaseResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["finalCaseStatus"] = args["finalCaseStatus"],
 		["initialCaseStatus"] = args["initialCaseStatus"],
 	}
-	asserts.AssertResolveCaseResponse(t)
-	return t
+	asserts.AssertResolveCaseResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeTrustedAdvisorCheckResultResponse = { ["result"] = true, nil }
@@ -973,12 +1292,23 @@ end
 -- * result [TrustedAdvisorCheckResult] <p>The detailed results of the Trusted Advisor check.</p>
 -- @return DescribeTrustedAdvisorCheckResultResponse structure as a key-value pair table
 function M.DescribeTrustedAdvisorCheckResultResponse(args)
-	assert(args, "You must provdide an argument table when creating DescribeTrustedAdvisorCheckResultResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeTrustedAdvisorCheckResultResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["result"] = args["result"],
 	}
-	asserts.AssertDescribeTrustedAdvisorCheckResultResponse(t)
-	return t
+	asserts.AssertDescribeTrustedAdvisorCheckResultResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeCasesRequest = { ["includeCommunications"] = true, ["language"] = true, ["includeResolvedCases"] = true, ["maxResults"] = true, ["afterTime"] = true, ["caseIdList"] = true, ["displayId"] = true, ["nextToken"] = true, ["beforeTime"] = true, nil }
@@ -1015,8 +1345,14 @@ end
 -- * beforeTime [BeforeTime] <p>The end date for a filtered date search on support case communications. Case communications are available for 12 months after creation.</p>
 -- @return DescribeCasesRequest structure as a key-value pair table
 function M.DescribeCasesRequest(args)
-	assert(args, "You must provdide an argument table when creating DescribeCasesRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeCasesRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["includeCommunications"] = args["includeCommunications"],
 		["language"] = args["language"],
 		["includeResolvedCases"] = args["includeResolvedCases"],
@@ -1027,8 +1363,13 @@ function M.DescribeCasesRequest(args)
 		["nextToken"] = args["nextToken"],
 		["beforeTime"] = args["beforeTime"],
 	}
-	asserts.AssertDescribeCasesRequest(t)
-	return t
+	asserts.AssertDescribeCasesRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeTrustedAdvisorChecksResponse = { ["checks"] = true, nil }
@@ -1051,12 +1392,23 @@ end
 -- Required key: checks
 -- @return DescribeTrustedAdvisorChecksResponse structure as a key-value pair table
 function M.DescribeTrustedAdvisorChecksResponse(args)
-	assert(args, "You must provdide an argument table when creating DescribeTrustedAdvisorChecksResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeTrustedAdvisorChecksResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["checks"] = args["checks"],
 	}
-	asserts.AssertDescribeTrustedAdvisorChecksResponse(t)
-	return t
+	asserts.AssertDescribeTrustedAdvisorChecksResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Attachment = { ["data"] = true, ["fileName"] = true, nil }
@@ -1079,13 +1431,24 @@ end
 -- * fileName [FileName] <p>The name of the attachment file.</p>
 -- @return Attachment structure as a key-value pair table
 function M.Attachment(args)
-	assert(args, "You must provdide an argument table when creating Attachment")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Attachment")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["data"] = args["data"],
 		["fileName"] = args["fileName"],
 	}
-	asserts.AssertAttachment(t)
-	return t
+	asserts.AssertAttachment(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeTrustedAdvisorCheckRefreshStatusesRequest = { ["checkIds"] = true, nil }
@@ -1108,12 +1471,23 @@ end
 -- Required key: checkIds
 -- @return DescribeTrustedAdvisorCheckRefreshStatusesRequest structure as a key-value pair table
 function M.DescribeTrustedAdvisorCheckRefreshStatusesRequest(args)
-	assert(args, "You must provdide an argument table when creating DescribeTrustedAdvisorCheckRefreshStatusesRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeTrustedAdvisorCheckRefreshStatusesRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["checkIds"] = args["checkIds"],
 	}
-	asserts.AssertDescribeTrustedAdvisorCheckRefreshStatusesRequest(t)
-	return t
+	asserts.AssertDescribeTrustedAdvisorCheckRefreshStatusesRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeCommunicationsRequest = { ["afterTime"] = true, ["nextToken"] = true, ["beforeTime"] = true, ["caseId"] = true, ["maxResults"] = true, nil }
@@ -1144,16 +1518,27 @@ end
 -- Required key: caseId
 -- @return DescribeCommunicationsRequest structure as a key-value pair table
 function M.DescribeCommunicationsRequest(args)
-	assert(args, "You must provdide an argument table when creating DescribeCommunicationsRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeCommunicationsRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["afterTime"] = args["afterTime"],
 		["nextToken"] = args["nextToken"],
 		["beforeTime"] = args["beforeTime"],
 		["caseId"] = args["caseId"],
 		["maxResults"] = args["maxResults"],
 	}
-	asserts.AssertDescribeCommunicationsRequest(t)
-	return t
+	asserts.AssertDescribeCommunicationsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AddCommunicationToCaseRequest = { ["communicationBody"] = true, ["caseId"] = true, ["ccEmailAddresses"] = true, ["attachmentSetId"] = true, nil }
@@ -1182,15 +1567,26 @@ end
 -- Required key: communicationBody
 -- @return AddCommunicationToCaseRequest structure as a key-value pair table
 function M.AddCommunicationToCaseRequest(args)
-	assert(args, "You must provdide an argument table when creating AddCommunicationToCaseRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AddCommunicationToCaseRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["communicationBody"] = args["communicationBody"],
 		["caseId"] = args["caseId"],
 		["ccEmailAddresses"] = args["ccEmailAddresses"],
 		["attachmentSetId"] = args["attachmentSetId"],
 	}
-	asserts.AssertAddCommunicationToCaseRequest(t)
-	return t
+	asserts.AssertAddCommunicationToCaseRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AddAttachmentsToSetResponse = { ["expiryTime"] = true, ["attachmentSetId"] = true, nil }
@@ -1213,13 +1609,24 @@ end
 -- * attachmentSetId [AttachmentSetId] <p>The ID of the attachment set. If an <code>attachmentSetId</code> was not specified, a new attachment set is created, and the ID of the set is returned in the response. If an <code>attachmentSetId</code> was specified, the attachments are added to the specified set, if it exists.</p>
 -- @return AddAttachmentsToSetResponse structure as a key-value pair table
 function M.AddAttachmentsToSetResponse(args)
-	assert(args, "You must provdide an argument table when creating AddAttachmentsToSetResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AddAttachmentsToSetResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["expiryTime"] = args["expiryTime"],
 		["attachmentSetId"] = args["attachmentSetId"],
 	}
-	asserts.AssertAddAttachmentsToSetResponse(t)
-	return t
+	asserts.AssertAddAttachmentsToSetResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.TrustedAdvisorResourcesSummary = { ["resourcesFlagged"] = true, ["resourcesProcessed"] = true, ["resourcesSuppressed"] = true, ["resourcesIgnored"] = true, nil }
@@ -1254,15 +1661,26 @@ end
 -- Required key: resourcesSuppressed
 -- @return TrustedAdvisorResourcesSummary structure as a key-value pair table
 function M.TrustedAdvisorResourcesSummary(args)
-	assert(args, "You must provdide an argument table when creating TrustedAdvisorResourcesSummary")
-	local t = { 
+	assert(args, "You must provide an argument table when creating TrustedAdvisorResourcesSummary")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["resourcesFlagged"] = args["resourcesFlagged"],
 		["resourcesProcessed"] = args["resourcesProcessed"],
 		["resourcesSuppressed"] = args["resourcesSuppressed"],
 		["resourcesIgnored"] = args["resourcesIgnored"],
 	}
-	asserts.AssertTrustedAdvisorResourcesSummary(t)
-	return t
+	asserts.AssertTrustedAdvisorResourcesSummary(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ResolveCaseRequest = { ["caseId"] = true, nil }
@@ -1283,12 +1701,23 @@ end
 -- * caseId [CaseId] <p>The AWS Support case ID requested or returned in the call. The case ID is an alphanumeric string formatted as shown in this example: case-<i>12345678910-2013-c4c1d2bf33c5cf47</i> </p>
 -- @return ResolveCaseRequest structure as a key-value pair table
 function M.ResolveCaseRequest(args)
-	assert(args, "You must provdide an argument table when creating ResolveCaseRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ResolveCaseRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["caseId"] = args["caseId"],
 	}
-	asserts.AssertResolveCaseRequest(t)
-	return t
+	asserts.AssertResolveCaseRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.TrustedAdvisorCostOptimizingSummary = { ["estimatedMonthlySavings"] = true, ["estimatedPercentMonthlySavings"] = true, nil }
@@ -1315,13 +1744,24 @@ end
 -- Required key: estimatedPercentMonthlySavings
 -- @return TrustedAdvisorCostOptimizingSummary structure as a key-value pair table
 function M.TrustedAdvisorCostOptimizingSummary(args)
-	assert(args, "You must provdide an argument table when creating TrustedAdvisorCostOptimizingSummary")
-	local t = { 
+	assert(args, "You must provide an argument table when creating TrustedAdvisorCostOptimizingSummary")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["estimatedMonthlySavings"] = args["estimatedMonthlySavings"],
 		["estimatedPercentMonthlySavings"] = args["estimatedPercentMonthlySavings"],
 	}
-	asserts.AssertTrustedAdvisorCostOptimizingSummary(t)
-	return t
+	asserts.AssertTrustedAdvisorCostOptimizingSummary(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeSeverityLevelsResponse = { ["severityLevels"] = true, nil }
@@ -1342,12 +1782,23 @@ end
 -- * severityLevels [SeverityLevelsList] <p>The available severity levels for the support case. Available severity levels are defined by your service level agreement with AWS.</p>
 -- @return DescribeSeverityLevelsResponse structure as a key-value pair table
 function M.DescribeSeverityLevelsResponse(args)
-	assert(args, "You must provdide an argument table when creating DescribeSeverityLevelsResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeSeverityLevelsResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["severityLevels"] = args["severityLevels"],
 	}
-	asserts.AssertDescribeSeverityLevelsResponse(t)
-	return t
+	asserts.AssertDescribeSeverityLevelsResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeSeverityLevelsRequest = { ["language"] = true, nil }
@@ -1368,12 +1819,23 @@ end
 -- * language [Language] <p>The ISO 639-1 code for the language in which AWS provides support. AWS Support currently supports English ("en") and Japanese ("ja"). Language parameters must be passed explicitly for operations that take them.</p>
 -- @return DescribeSeverityLevelsRequest structure as a key-value pair table
 function M.DescribeSeverityLevelsRequest(args)
-	assert(args, "You must provdide an argument table when creating DescribeSeverityLevelsRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeSeverityLevelsRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["language"] = args["language"],
 	}
-	asserts.AssertDescribeSeverityLevelsRequest(t)
-	return t
+	asserts.AssertDescribeSeverityLevelsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.TrustedAdvisorCategorySpecificSummary = { ["costOptimizing"] = true, nil }
@@ -1394,12 +1856,23 @@ end
 -- * costOptimizing [TrustedAdvisorCostOptimizingSummary] <p>The summary information about cost savings for a Trusted Advisor check that is in the Cost Optimizing category.</p>
 -- @return TrustedAdvisorCategorySpecificSummary structure as a key-value pair table
 function M.TrustedAdvisorCategorySpecificSummary(args)
-	assert(args, "You must provdide an argument table when creating TrustedAdvisorCategorySpecificSummary")
-	local t = { 
+	assert(args, "You must provide an argument table when creating TrustedAdvisorCategorySpecificSummary")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["costOptimizing"] = args["costOptimizing"],
 	}
-	asserts.AssertTrustedAdvisorCategorySpecificSummary(t)
-	return t
+	asserts.AssertTrustedAdvisorCategorySpecificSummary(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AddAttachmentsToSetRequest = { ["attachmentSetId"] = true, ["attachments"] = true, nil }
@@ -1424,13 +1897,24 @@ end
 -- Required key: attachments
 -- @return AddAttachmentsToSetRequest structure as a key-value pair table
 function M.AddAttachmentsToSetRequest(args)
-	assert(args, "You must provdide an argument table when creating AddAttachmentsToSetRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AddAttachmentsToSetRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["attachmentSetId"] = args["attachmentSetId"],
 		["attachments"] = args["attachments"],
 	}
-	asserts.AssertAddAttachmentsToSetRequest(t)
-	return t
+	asserts.AssertAddAttachmentsToSetRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeAttachmentLimitExceeded = { ["message"] = true, nil }
@@ -1451,12 +1935,23 @@ end
 -- * message [ErrorMessage] <p>The limit for the number of <a>DescribeAttachment</a> requests in a short period of time has been exceeded.</p>
 -- @return DescribeAttachmentLimitExceeded structure as a key-value pair table
 function M.DescribeAttachmentLimitExceeded(args)
-	assert(args, "You must provdide an argument table when creating DescribeAttachmentLimitExceeded")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeAttachmentLimitExceeded")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertDescribeAttachmentLimitExceeded(t)
-	return t
+	asserts.AssertDescribeAttachmentLimitExceeded(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AttachmentDetails = { ["attachmentId"] = true, ["fileName"] = true, nil }
@@ -1479,13 +1974,24 @@ end
 -- * fileName [FileName] <p>The file name of the attachment.</p>
 -- @return AttachmentDetails structure as a key-value pair table
 function M.AttachmentDetails(args)
-	assert(args, "You must provdide an argument table when creating AttachmentDetails")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AttachmentDetails")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["attachmentId"] = args["attachmentId"],
 		["fileName"] = args["fileName"],
 	}
-	asserts.AssertAttachmentDetails(t)
-	return t
+	asserts.AssertAttachmentDetails(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeServicesResponse = { ["services"] = true, nil }
@@ -1506,12 +2012,23 @@ end
 -- * services [ServiceList] <p>A JSON-formatted list of AWS services.</p>
 -- @return DescribeServicesResponse structure as a key-value pair table
 function M.DescribeServicesResponse(args)
-	assert(args, "You must provdide an argument table when creating DescribeServicesResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeServicesResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["services"] = args["services"],
 	}
-	asserts.AssertDescribeServicesResponse(t)
-	return t
+	asserts.AssertDescribeServicesResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeTrustedAdvisorCheckSummariesResponse = { ["summaries"] = true, nil }
@@ -1534,12 +2051,23 @@ end
 -- Required key: summaries
 -- @return DescribeTrustedAdvisorCheckSummariesResponse structure as a key-value pair table
 function M.DescribeTrustedAdvisorCheckSummariesResponse(args)
-	assert(args, "You must provdide an argument table when creating DescribeTrustedAdvisorCheckSummariesResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeTrustedAdvisorCheckSummariesResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["summaries"] = args["summaries"],
 	}
-	asserts.AssertDescribeTrustedAdvisorCheckSummariesResponse(t)
-	return t
+	asserts.AssertDescribeTrustedAdvisorCheckSummariesResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.SeverityLevel = { ["code"] = true, ["name"] = true, nil }
@@ -1562,13 +2090,24 @@ end
 -- * name [SeverityLevelName] <p>The name of the severity level that corresponds to the severity level code.</p>
 -- @return SeverityLevel structure as a key-value pair table
 function M.SeverityLevel(args)
-	assert(args, "You must provdide an argument table when creating SeverityLevel")
-	local t = { 
+	assert(args, "You must provide an argument table when creating SeverityLevel")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["code"] = args["code"],
 		["name"] = args["name"],
 	}
-	asserts.AssertSeverityLevel(t)
-	return t
+	asserts.AssertSeverityLevel(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AttachmentLimitExceeded = { ["message"] = true, nil }
@@ -1589,12 +2128,23 @@ end
 -- * message [ErrorMessage] <p>The limit for the number of attachment sets created in a short period of time has been exceeded.</p>
 -- @return AttachmentLimitExceeded structure as a key-value pair table
 function M.AttachmentLimitExceeded(args)
-	assert(args, "You must provdide an argument table when creating AttachmentLimitExceeded")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AttachmentLimitExceeded")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertAttachmentLimitExceeded(t)
-	return t
+	asserts.AssertAttachmentLimitExceeded(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CaseDetails = { ["status"] = true, ["recentCommunications"] = true, ["ccEmailAddresses"] = true, ["timeCreated"] = true, ["caseId"] = true, ["severityCode"] = true, ["language"] = true, ["categoryCode"] = true, ["serviceCode"] = true, ["submittedBy"] = true, ["displayId"] = true, ["subject"] = true, nil }
@@ -1637,8 +2187,14 @@ end
 -- * subject [Subject] <p>The subject line for the case in the AWS Support Center.</p>
 -- @return CaseDetails structure as a key-value pair table
 function M.CaseDetails(args)
-	assert(args, "You must provdide an argument table when creating CaseDetails")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CaseDetails")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["status"] = args["status"],
 		["recentCommunications"] = args["recentCommunications"],
 		["ccEmailAddresses"] = args["ccEmailAddresses"],
@@ -1652,8 +2208,13 @@ function M.CaseDetails(args)
 		["displayId"] = args["displayId"],
 		["subject"] = args["subject"],
 	}
-	asserts.AssertCaseDetails(t)
-	return t
+	asserts.AssertCaseDetails(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeCasesResponse = { ["cases"] = true, ["nextToken"] = true, nil }
@@ -1676,13 +2237,24 @@ end
 -- * nextToken [NextToken] <p>A resumption point for pagination.</p>
 -- @return DescribeCasesResponse structure as a key-value pair table
 function M.DescribeCasesResponse(args)
-	assert(args, "You must provdide an argument table when creating DescribeCasesResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeCasesResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["cases"] = args["cases"],
 		["nextToken"] = args["nextToken"],
 	}
-	asserts.AssertDescribeCasesResponse(t)
-	return t
+	asserts.AssertDescribeCasesResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeTrustedAdvisorCheckSummariesRequest = { ["checkIds"] = true, nil }
@@ -1705,12 +2277,23 @@ end
 -- Required key: checkIds
 -- @return DescribeTrustedAdvisorCheckSummariesRequest structure as a key-value pair table
 function M.DescribeTrustedAdvisorCheckSummariesRequest(args)
-	assert(args, "You must provdide an argument table when creating DescribeTrustedAdvisorCheckSummariesRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeTrustedAdvisorCheckSummariesRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["checkIds"] = args["checkIds"],
 	}
-	asserts.AssertDescribeTrustedAdvisorCheckSummariesRequest(t)
-	return t
+	asserts.AssertDescribeTrustedAdvisorCheckSummariesRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 function asserts.AssertServiceCode(str)
@@ -2376,8 +2959,11 @@ function M.CreateCaseAsync(CreateCaseRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AWSSupport_20130415.CreateCase",
 	}
+	for header,value in pairs(CreateCaseRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateCaseRequest, headers, settings, cb)
 	else
@@ -2408,8 +2994,11 @@ function M.AddAttachmentsToSetAsync(AddAttachmentsToSetRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AWSSupport_20130415.AddAttachmentsToSet",
 	}
+	for header,value in pairs(AddAttachmentsToSetRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", AddAttachmentsToSetRequest, headers, settings, cb)
 	else
@@ -2440,8 +3029,11 @@ function M.AddCommunicationToCaseAsync(AddCommunicationToCaseRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AWSSupport_20130415.AddCommunicationToCase",
 	}
+	for header,value in pairs(AddCommunicationToCaseRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", AddCommunicationToCaseRequest, headers, settings, cb)
 	else
@@ -2472,8 +3064,11 @@ function M.DescribeTrustedAdvisorCheckRefreshStatusesAsync(DescribeTrustedAdviso
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AWSSupport_20130415.DescribeTrustedAdvisorCheckRefreshStatuses",
 	}
+	for header,value in pairs(DescribeTrustedAdvisorCheckRefreshStatusesRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeTrustedAdvisorCheckRefreshStatusesRequest, headers, settings, cb)
 	else
@@ -2504,8 +3099,11 @@ function M.DescribeTrustedAdvisorCheckResultAsync(DescribeTrustedAdvisorCheckRes
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AWSSupport_20130415.DescribeTrustedAdvisorCheckResult",
 	}
+	for header,value in pairs(DescribeTrustedAdvisorCheckResultRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeTrustedAdvisorCheckResultRequest, headers, settings, cb)
 	else
@@ -2536,8 +3134,11 @@ function M.ResolveCaseAsync(ResolveCaseRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AWSSupport_20130415.ResolveCase",
 	}
+	for header,value in pairs(ResolveCaseRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ResolveCaseRequest, headers, settings, cb)
 	else
@@ -2568,8 +3169,11 @@ function M.DescribeSeverityLevelsAsync(DescribeSeverityLevelsRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AWSSupport_20130415.DescribeSeverityLevels",
 	}
+	for header,value in pairs(DescribeSeverityLevelsRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeSeverityLevelsRequest, headers, settings, cb)
 	else
@@ -2600,8 +3204,11 @@ function M.DescribeCasesAsync(DescribeCasesRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AWSSupport_20130415.DescribeCases",
 	}
+	for header,value in pairs(DescribeCasesRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeCasesRequest, headers, settings, cb)
 	else
@@ -2632,8 +3239,11 @@ function M.RefreshTrustedAdvisorCheckAsync(RefreshTrustedAdvisorCheckRequest, cb
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AWSSupport_20130415.RefreshTrustedAdvisorCheck",
 	}
+	for header,value in pairs(RefreshTrustedAdvisorCheckRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", RefreshTrustedAdvisorCheckRequest, headers, settings, cb)
 	else
@@ -2664,8 +3274,11 @@ function M.DescribeAttachmentAsync(DescribeAttachmentRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AWSSupport_20130415.DescribeAttachment",
 	}
+	for header,value in pairs(DescribeAttachmentRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeAttachmentRequest, headers, settings, cb)
 	else
@@ -2696,8 +3309,11 @@ function M.DescribeTrustedAdvisorChecksAsync(DescribeTrustedAdvisorChecksRequest
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AWSSupport_20130415.DescribeTrustedAdvisorChecks",
 	}
+	for header,value in pairs(DescribeTrustedAdvisorChecksRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeTrustedAdvisorChecksRequest, headers, settings, cb)
 	else
@@ -2728,8 +3344,11 @@ function M.DescribeTrustedAdvisorCheckSummariesAsync(DescribeTrustedAdvisorCheck
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AWSSupport_20130415.DescribeTrustedAdvisorCheckSummaries",
 	}
+	for header,value in pairs(DescribeTrustedAdvisorCheckSummariesRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeTrustedAdvisorCheckSummariesRequest, headers, settings, cb)
 	else
@@ -2760,8 +3379,11 @@ function M.DescribeCommunicationsAsync(DescribeCommunicationsRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AWSSupport_20130415.DescribeCommunications",
 	}
+	for header,value in pairs(DescribeCommunicationsRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeCommunicationsRequest, headers, settings, cb)
 	else
@@ -2792,8 +3414,11 @@ function M.DescribeServicesAsync(DescribeServicesRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AWSSupport_20130415.DescribeServices",
 	}
+	for header,value in pairs(DescribeServicesRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeServicesRequest, headers, settings, cb)
 	else

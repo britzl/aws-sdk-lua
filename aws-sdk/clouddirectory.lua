@@ -41,13 +41,24 @@ end
 -- * Name [SchemaName] <p>The name of the retrieved schema.</p>
 -- @return GetSchemaAsJsonResponse structure as a key-value pair table
 function M.GetSchemaAsJsonResponse(args)
-	assert(args, "You must provdide an argument table when creating GetSchemaAsJsonResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetSchemaAsJsonResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Document"] = args["Document"],
 		["Name"] = args["Name"],
 	}
-	asserts.AssertGetSchemaAsJsonResponse(t)
-	return t
+	asserts.AssertGetSchemaAsJsonResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ObjectAttributeRange = { ["AttributeKey"] = true, ["Range"] = true, nil }
@@ -70,13 +81,24 @@ end
 -- * Range [TypedAttributeValueRange] <p>The range of attribute values being selected.</p>
 -- @return ObjectAttributeRange structure as a key-value pair table
 function M.ObjectAttributeRange(args)
-	assert(args, "You must provdide an argument table when creating ObjectAttributeRange")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ObjectAttributeRange")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["AttributeKey"] = args["AttributeKey"],
 		["Range"] = args["Range"],
 	}
-	asserts.AssertObjectAttributeRange(t)
-	return t
+	asserts.AssertObjectAttributeRange(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.LinkNameAlreadyInUseException = { ["Message"] = true, nil }
@@ -97,12 +119,23 @@ end
 -- * Message [ExceptionMessage] 
 -- @return LinkNameAlreadyInUseException structure as a key-value pair table
 function M.LinkNameAlreadyInUseException(args)
-	assert(args, "You must provdide an argument table when creating LinkNameAlreadyInUseException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating LinkNameAlreadyInUseException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Message"] = args["Message"],
 	}
-	asserts.AssertLinkNameAlreadyInUseException(t)
-	return t
+	asserts.AssertLinkNameAlreadyInUseException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.BatchReadException = { ["Message"] = true, ["Type"] = true, nil }
@@ -125,13 +158,24 @@ end
 -- * Type [BatchReadExceptionType] <p>A type of exception, such as <code>InvalidArnException</code>.</p>
 -- @return BatchReadException structure as a key-value pair table
 function M.BatchReadException(args)
-	assert(args, "You must provdide an argument table when creating BatchReadException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating BatchReadException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Message"] = args["Message"],
 		["Type"] = args["Type"],
 	}
-	asserts.AssertBatchReadException(t)
-	return t
+	asserts.AssertBatchReadException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.RemoveFacetFromObjectResponse = { nil }
@@ -150,11 +194,22 @@ end
 -- Valid keys:
 -- @return RemoveFacetFromObjectResponse structure as a key-value pair table
 function M.RemoveFacetFromObjectResponse(args)
-	assert(args, "You must provdide an argument table when creating RemoveFacetFromObjectResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating RemoveFacetFromObjectResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertRemoveFacetFromObjectResponse(t)
-	return t
+	asserts.AssertRemoveFacetFromObjectResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidNextTokenException = { ["Message"] = true, nil }
@@ -175,12 +230,23 @@ end
 -- * Message [ExceptionMessage] 
 -- @return InvalidNextTokenException structure as a key-value pair table
 function M.InvalidNextTokenException(args)
-	assert(args, "You must provdide an argument table when creating InvalidNextTokenException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidNextTokenException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Message"] = args["Message"],
 	}
-	asserts.AssertInvalidNextTokenException(t)
-	return t
+	asserts.AssertInvalidNextTokenException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AttachObjectRequest = { ["ParentReference"] = true, ["LinkName"] = true, ["DirectoryArn"] = true, ["ChildReference"] = true, nil }
@@ -215,15 +281,27 @@ end
 -- Required key: LinkName
 -- @return AttachObjectRequest structure as a key-value pair table
 function M.AttachObjectRequest(args)
-	assert(args, "You must provdide an argument table when creating AttachObjectRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AttachObjectRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+        ["x-amz-data-partition"] = args["DirectoryArn"],
+    }
+	local all_args = { 
 		["ParentReference"] = args["ParentReference"],
 		["LinkName"] = args["LinkName"],
 		["DirectoryArn"] = args["DirectoryArn"],
 		["ChildReference"] = args["ChildReference"],
 	}
-	asserts.AssertAttachObjectRequest(t)
-	return t
+	asserts.AssertAttachObjectRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.SchemaAlreadyPublishedException = { ["Message"] = true, nil }
@@ -244,12 +322,23 @@ end
 -- * Message [ExceptionMessage] 
 -- @return SchemaAlreadyPublishedException structure as a key-value pair table
 function M.SchemaAlreadyPublishedException(args)
-	assert(args, "You must provdide an argument table when creating SchemaAlreadyPublishedException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating SchemaAlreadyPublishedException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Message"] = args["Message"],
 	}
-	asserts.AssertSchemaAlreadyPublishedException(t)
-	return t
+	asserts.AssertSchemaAlreadyPublishedException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ApplySchemaRequest = { ["DirectoryArn"] = true, ["PublishedSchemaArn"] = true, nil }
@@ -276,13 +365,25 @@ end
 -- Required key: DirectoryArn
 -- @return ApplySchemaRequest structure as a key-value pair table
 function M.ApplySchemaRequest(args)
-	assert(args, "You must provdide an argument table when creating ApplySchemaRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ApplySchemaRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+        ["x-amz-data-partition"] = args["DirectoryArn"],
+    }
+	local all_args = { 
 		["DirectoryArn"] = args["DirectoryArn"],
 		["PublishedSchemaArn"] = args["PublishedSchemaArn"],
 	}
-	asserts.AssertApplySchemaRequest(t)
-	return t
+	asserts.AssertApplySchemaRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.TypedAttributeValueRange = { ["EndMode"] = true, ["StartMode"] = true, ["StartValue"] = true, ["EndValue"] = true, nil }
@@ -313,15 +414,26 @@ end
 -- Required key: EndMode
 -- @return TypedAttributeValueRange structure as a key-value pair table
 function M.TypedAttributeValueRange(args)
-	assert(args, "You must provdide an argument table when creating TypedAttributeValueRange")
-	local t = { 
+	assert(args, "You must provide an argument table when creating TypedAttributeValueRange")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["EndMode"] = args["EndMode"],
 		["StartMode"] = args["StartMode"],
 		["StartValue"] = args["StartValue"],
 		["EndValue"] = args["EndValue"],
 	}
-	asserts.AssertTypedAttributeValueRange(t)
-	return t
+	asserts.AssertTypedAttributeValueRange(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidFacetUpdateException = { ["Message"] = true, nil }
@@ -342,12 +454,23 @@ end
 -- * Message [ExceptionMessage] 
 -- @return InvalidFacetUpdateException structure as a key-value pair table
 function M.InvalidFacetUpdateException(args)
-	assert(args, "You must provdide an argument table when creating InvalidFacetUpdateException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidFacetUpdateException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Message"] = args["Message"],
 	}
-	asserts.AssertInvalidFacetUpdateException(t)
-	return t
+	asserts.AssertInvalidFacetUpdateException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListObjectChildrenResponse = { ["NextToken"] = true, ["Children"] = true, nil }
@@ -370,13 +493,24 @@ end
 -- * Children [LinkNameToObjectIdentifierMap] <p>Children structure, which is a map with key as the <code>LinkName</code> and <code>ObjectIdentifier</code> as the value.</p>
 -- @return ListObjectChildrenResponse structure as a key-value pair table
 function M.ListObjectChildrenResponse(args)
-	assert(args, "You must provdide an argument table when creating ListObjectChildrenResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListObjectChildrenResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NextToken"] = args["NextToken"],
 		["Children"] = args["Children"],
 	}
-	asserts.AssertListObjectChildrenResponse(t)
-	return t
+	asserts.AssertListObjectChildrenResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListPolicyAttachmentsResponse = { ["NextToken"] = true, ["ObjectIdentifiers"] = true, nil }
@@ -399,13 +533,24 @@ end
 -- * ObjectIdentifiers [ObjectIdentifierList] <p>A list of <code>ObjectIdentifiers</code> to which the policy is attached.</p>
 -- @return ListPolicyAttachmentsResponse structure as a key-value pair table
 function M.ListPolicyAttachmentsResponse(args)
-	assert(args, "You must provdide an argument table when creating ListPolicyAttachmentsResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListPolicyAttachmentsResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NextToken"] = args["NextToken"],
 		["ObjectIdentifiers"] = args["ObjectIdentifiers"],
 	}
-	asserts.AssertListPolicyAttachmentsResponse(t)
-	return t
+	asserts.AssertListPolicyAttachmentsResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AttachPolicyRequest = { ["PolicyReference"] = true, ["ObjectReference"] = true, ["DirectoryArn"] = true, nil }
@@ -434,14 +579,26 @@ end
 -- Required key: ObjectReference
 -- @return AttachPolicyRequest structure as a key-value pair table
 function M.AttachPolicyRequest(args)
-	assert(args, "You must provdide an argument table when creating AttachPolicyRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AttachPolicyRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+        ["x-amz-data-partition"] = args["DirectoryArn"],
+    }
+	local all_args = { 
 		["PolicyReference"] = args["PolicyReference"],
 		["ObjectReference"] = args["ObjectReference"],
 		["DirectoryArn"] = args["DirectoryArn"],
 	}
-	asserts.AssertAttachPolicyRequest(t)
-	return t
+	asserts.AssertAttachPolicyRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.EnableDirectoryResponse = { ["DirectoryArn"] = true, nil }
@@ -464,12 +621,23 @@ end
 -- Required key: DirectoryArn
 -- @return EnableDirectoryResponse structure as a key-value pair table
 function M.EnableDirectoryResponse(args)
-	assert(args, "You must provdide an argument table when creating EnableDirectoryResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating EnableDirectoryResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DirectoryArn"] = args["DirectoryArn"],
 	}
-	asserts.AssertEnableDirectoryResponse(t)
-	return t
+	asserts.AssertEnableDirectoryResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListDevelopmentSchemaArnsRequest = { ["NextToken"] = true, ["MaxResults"] = true, nil }
@@ -492,13 +660,24 @@ end
 -- * MaxResults [NumberResults] <p>The maximum number of results to retrieve.</p>
 -- @return ListDevelopmentSchemaArnsRequest structure as a key-value pair table
 function M.ListDevelopmentSchemaArnsRequest(args)
-	assert(args, "You must provdide an argument table when creating ListDevelopmentSchemaArnsRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListDevelopmentSchemaArnsRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NextToken"] = args["NextToken"],
 		["MaxResults"] = args["MaxResults"],
 	}
-	asserts.AssertListDevelopmentSchemaArnsRequest(t)
-	return t
+	asserts.AssertListDevelopmentSchemaArnsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ObjectNotDetachedException = { ["Message"] = true, nil }
@@ -519,12 +698,23 @@ end
 -- * Message [ExceptionMessage] 
 -- @return ObjectNotDetachedException structure as a key-value pair table
 function M.ObjectNotDetachedException(args)
-	assert(args, "You must provdide an argument table when creating ObjectNotDetachedException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ObjectNotDetachedException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Message"] = args["Message"],
 	}
-	asserts.AssertObjectNotDetachedException(t)
-	return t
+	asserts.AssertObjectNotDetachedException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.StillContainsLinksException = { ["Message"] = true, nil }
@@ -545,12 +735,23 @@ end
 -- * Message [ExceptionMessage] 
 -- @return StillContainsLinksException structure as a key-value pair table
 function M.StillContainsLinksException(args)
-	assert(args, "You must provdide an argument table when creating StillContainsLinksException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating StillContainsLinksException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Message"] = args["Message"],
 	}
-	asserts.AssertStillContainsLinksException(t)
-	return t
+	asserts.AssertStillContainsLinksException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.BatchWriteRequest = { ["Operations"] = true, ["DirectoryArn"] = true, nil }
@@ -577,13 +778,25 @@ end
 -- Required key: Operations
 -- @return BatchWriteRequest structure as a key-value pair table
 function M.BatchWriteRequest(args)
-	assert(args, "You must provdide an argument table when creating BatchWriteRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating BatchWriteRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+        ["x-amz-data-partition"] = args["DirectoryArn"],
+    }
+	local all_args = { 
 		["Operations"] = args["Operations"],
 		["DirectoryArn"] = args["DirectoryArn"],
 	}
-	asserts.AssertBatchWriteRequest(t)
-	return t
+	asserts.AssertBatchWriteRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.PolicyAttachment = { ["PolicyType"] = true, ["ObjectIdentifier"] = true, ["PolicyId"] = true, nil }
@@ -608,14 +821,25 @@ end
 -- * PolicyId [ObjectIdentifier] <p>The ID of <code>PolicyAttachment</code>.</p>
 -- @return PolicyAttachment structure as a key-value pair table
 function M.PolicyAttachment(args)
-	assert(args, "You must provdide an argument table when creating PolicyAttachment")
-	local t = { 
+	assert(args, "You must provide an argument table when creating PolicyAttachment")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["PolicyType"] = args["PolicyType"],
 		["ObjectIdentifier"] = args["ObjectIdentifier"],
 		["PolicyId"] = args["PolicyId"],
 	}
-	asserts.AssertPolicyAttachment(t)
-	return t
+	asserts.AssertPolicyAttachment(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AttachToIndexResponse = { ["AttachedObjectIdentifier"] = true, nil }
@@ -636,12 +860,23 @@ end
 -- * AttachedObjectIdentifier [ObjectIdentifier] <p>The <code>ObjectIdentifier</code> of the object that was attached to the index.</p>
 -- @return AttachToIndexResponse structure as a key-value pair table
 function M.AttachToIndexResponse(args)
-	assert(args, "You must provdide an argument table when creating AttachToIndexResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AttachToIndexResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["AttachedObjectIdentifier"] = args["AttachedObjectIdentifier"],
 	}
-	asserts.AssertAttachToIndexResponse(t)
-	return t
+	asserts.AssertAttachToIndexResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.FacetNotFoundException = { ["Message"] = true, nil }
@@ -662,12 +897,23 @@ end
 -- * Message [ExceptionMessage] 
 -- @return FacetNotFoundException structure as a key-value pair table
 function M.FacetNotFoundException(args)
-	assert(args, "You must provdide an argument table when creating FacetNotFoundException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating FacetNotFoundException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Message"] = args["Message"],
 	}
-	asserts.AssertFacetNotFoundException(t)
-	return t
+	asserts.AssertFacetNotFoundException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdateObjectAttributesResponse = { ["ObjectIdentifier"] = true, nil }
@@ -688,12 +934,23 @@ end
 -- * ObjectIdentifier [ObjectIdentifier] <p>The <code>ObjectIdentifier</code> of the updated object.</p>
 -- @return UpdateObjectAttributesResponse structure as a key-value pair table
 function M.UpdateObjectAttributesResponse(args)
-	assert(args, "You must provdide an argument table when creating UpdateObjectAttributesResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateObjectAttributesResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ObjectIdentifier"] = args["ObjectIdentifier"],
 	}
-	asserts.AssertUpdateObjectAttributesResponse(t)
-	return t
+	asserts.AssertUpdateObjectAttributesResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AttachTypedLinkRequest = { ["SourceObjectReference"] = true, ["Attributes"] = true, ["TargetObjectReference"] = true, ["DirectoryArn"] = true, ["TypedLinkFacet"] = true, nil }
@@ -732,16 +989,28 @@ end
 -- Required key: Attributes
 -- @return AttachTypedLinkRequest structure as a key-value pair table
 function M.AttachTypedLinkRequest(args)
-	assert(args, "You must provdide an argument table when creating AttachTypedLinkRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AttachTypedLinkRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+        ["x-amz-data-partition"] = args["DirectoryArn"],
+    }
+	local all_args = { 
 		["SourceObjectReference"] = args["SourceObjectReference"],
 		["Attributes"] = args["Attributes"],
 		["TargetObjectReference"] = args["TargetObjectReference"],
 		["DirectoryArn"] = args["DirectoryArn"],
 		["TypedLinkFacet"] = args["TypedLinkFacet"],
 	}
-	asserts.AssertAttachTypedLinkRequest(t)
-	return t
+	asserts.AssertAttachTypedLinkRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UnsupportedIndexTypeException = { ["Message"] = true, nil }
@@ -762,12 +1031,23 @@ end
 -- * Message [ExceptionMessage] 
 -- @return UnsupportedIndexTypeException structure as a key-value pair table
 function M.UnsupportedIndexTypeException(args)
-	assert(args, "You must provdide an argument table when creating UnsupportedIndexTypeException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UnsupportedIndexTypeException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Message"] = args["Message"],
 	}
-	asserts.AssertUnsupportedIndexTypeException(t)
-	return t
+	asserts.AssertUnsupportedIndexTypeException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.BatchReadOperationResponse = { ["SuccessfulResponse"] = true, ["ExceptionResponse"] = true, nil }
@@ -790,13 +1070,24 @@ end
 -- * ExceptionResponse [BatchReadException] <p>Identifies which operation in a batch has failed.</p>
 -- @return BatchReadOperationResponse structure as a key-value pair table
 function M.BatchReadOperationResponse(args)
-	assert(args, "You must provdide an argument table when creating BatchReadOperationResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating BatchReadOperationResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["SuccessfulResponse"] = args["SuccessfulResponse"],
 		["ExceptionResponse"] = args["ExceptionResponse"],
 	}
-	asserts.AssertBatchReadOperationResponse(t)
-	return t
+	asserts.AssertBatchReadOperationResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AddFacetToObjectResponse = { nil }
@@ -815,11 +1106,22 @@ end
 -- Valid keys:
 -- @return AddFacetToObjectResponse structure as a key-value pair table
 function M.AddFacetToObjectResponse(args)
-	assert(args, "You must provdide an argument table when creating AddFacetToObjectResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AddFacetToObjectResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertAddFacetToObjectResponse(t)
-	return t
+	asserts.AssertAddFacetToObjectResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListFacetNamesRequest = { ["SchemaArn"] = true, ["NextToken"] = true, ["MaxResults"] = true, nil }
@@ -846,14 +1148,26 @@ end
 -- Required key: SchemaArn
 -- @return ListFacetNamesRequest structure as a key-value pair table
 function M.ListFacetNamesRequest(args)
-	assert(args, "You must provdide an argument table when creating ListFacetNamesRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListFacetNamesRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+        ["x-amz-data-partition"] = args["SchemaArn"],
+    }
+	local all_args = { 
 		["SchemaArn"] = args["SchemaArn"],
 		["NextToken"] = args["NextToken"],
 		["MaxResults"] = args["MaxResults"],
 	}
-	asserts.AssertListFacetNamesRequest(t)
-	return t
+	asserts.AssertListFacetNamesRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteFacetResponse = { nil }
@@ -872,11 +1186,22 @@ end
 -- Valid keys:
 -- @return DeleteFacetResponse structure as a key-value pair table
 function M.DeleteFacetResponse(args)
-	assert(args, "You must provdide an argument table when creating DeleteFacetResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteFacetResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertDeleteFacetResponse(t)
-	return t
+	asserts.AssertDeleteFacetResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidArnException = { ["Message"] = true, nil }
@@ -897,12 +1222,23 @@ end
 -- * Message [ExceptionMessage] 
 -- @return InvalidArnException structure as a key-value pair table
 function M.InvalidArnException(args)
-	assert(args, "You must provdide an argument table when creating InvalidArnException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidArnException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Message"] = args["Message"],
 	}
-	asserts.AssertInvalidArnException(t)
-	return t
+	asserts.AssertInvalidArnException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AttributeKey = { ["SchemaArn"] = true, ["FacetName"] = true, ["Name"] = true, nil }
@@ -933,14 +1269,25 @@ end
 -- Required key: Name
 -- @return AttributeKey structure as a key-value pair table
 function M.AttributeKey(args)
-	assert(args, "You must provdide an argument table when creating AttributeKey")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AttributeKey")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["SchemaArn"] = args["SchemaArn"],
 		["FacetName"] = args["FacetName"],
 		["Name"] = args["Name"],
 	}
-	asserts.AssertAttributeKey(t)
-	return t
+	asserts.AssertAttributeKey(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListAppliedSchemaArnsRequest = { ["NextToken"] = true, ["MaxResults"] = true, ["DirectoryArn"] = true, nil }
@@ -967,14 +1314,25 @@ end
 -- Required key: DirectoryArn
 -- @return ListAppliedSchemaArnsRequest structure as a key-value pair table
 function M.ListAppliedSchemaArnsRequest(args)
-	assert(args, "You must provdide an argument table when creating ListAppliedSchemaArnsRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListAppliedSchemaArnsRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NextToken"] = args["NextToken"],
 		["MaxResults"] = args["MaxResults"],
 		["DirectoryArn"] = args["DirectoryArn"],
 	}
-	asserts.AssertListAppliedSchemaArnsRequest(t)
-	return t
+	asserts.AssertListAppliedSchemaArnsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.BatchCreateObjectResponse = { ["ObjectIdentifier"] = true, nil }
@@ -995,12 +1353,23 @@ end
 -- * ObjectIdentifier [ObjectIdentifier] <p>The ID that is associated with the object.</p>
 -- @return BatchCreateObjectResponse structure as a key-value pair table
 function M.BatchCreateObjectResponse(args)
-	assert(args, "You must provdide an argument table when creating BatchCreateObjectResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating BatchCreateObjectResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ObjectIdentifier"] = args["ObjectIdentifier"],
 	}
-	asserts.AssertBatchCreateObjectResponse(t)
-	return t
+	asserts.AssertBatchCreateObjectResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdateFacetResponse = { nil }
@@ -1019,11 +1388,22 @@ end
 -- Valid keys:
 -- @return UpdateFacetResponse structure as a key-value pair table
 function M.UpdateFacetResponse(args)
-	assert(args, "You must provdide an argument table when creating UpdateFacetResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateFacetResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertUpdateFacetResponse(t)
-	return t
+	asserts.AssertUpdateFacetResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.FacetInUseException = { ["Message"] = true, nil }
@@ -1044,12 +1424,23 @@ end
 -- * Message [ExceptionMessage] 
 -- @return FacetInUseException structure as a key-value pair table
 function M.FacetInUseException(args)
-	assert(args, "You must provdide an argument table when creating FacetInUseException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating FacetInUseException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Message"] = args["Message"],
 	}
-	asserts.AssertFacetInUseException(t)
-	return t
+	asserts.AssertFacetInUseException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.PathToObjectIdentifiers = { ["Path"] = true, ["ObjectIdentifiers"] = true, nil }
@@ -1072,13 +1463,24 @@ end
 -- * ObjectIdentifiers [ObjectIdentifierList] <p>Lists <code>ObjectIdentifiers</code> starting from directory root to the object in the request.</p>
 -- @return PathToObjectIdentifiers structure as a key-value pair table
 function M.PathToObjectIdentifiers(args)
-	assert(args, "You must provdide an argument table when creating PathToObjectIdentifiers")
-	local t = { 
+	assert(args, "You must provide an argument table when creating PathToObjectIdentifiers")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Path"] = args["Path"],
 		["ObjectIdentifiers"] = args["ObjectIdentifiers"],
 	}
-	asserts.AssertPathToObjectIdentifiers(t)
-	return t
+	asserts.AssertPathToObjectIdentifiers(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.BatchReadRequest = { ["Operations"] = true, ["ConsistencyLevel"] = true, ["DirectoryArn"] = true, nil }
@@ -1107,14 +1509,27 @@ end
 -- Required key: Operations
 -- @return BatchReadRequest structure as a key-value pair table
 function M.BatchReadRequest(args)
-	assert(args, "You must provdide an argument table when creating BatchReadRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating BatchReadRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+        ["x-amz-consistency-level"] = args["ConsistencyLevel"],
+        ["x-amz-data-partition"] = args["DirectoryArn"],
+    }
+	local all_args = { 
 		["Operations"] = args["Operations"],
 		["ConsistencyLevel"] = args["ConsistencyLevel"],
 		["DirectoryArn"] = args["DirectoryArn"],
 	}
-	asserts.AssertBatchReadRequest(t)
-	return t
+	asserts.AssertBatchReadRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.FacetValidationException = { ["Message"] = true, nil }
@@ -1135,12 +1550,23 @@ end
 -- * Message [ExceptionMessage] 
 -- @return FacetValidationException structure as a key-value pair table
 function M.FacetValidationException(args)
-	assert(args, "You must provdide an argument table when creating FacetValidationException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating FacetValidationException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Message"] = args["Message"],
 	}
-	asserts.AssertFacetValidationException(t)
-	return t
+	asserts.AssertFacetValidationException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListObjectChildrenRequest = { ["ConsistencyLevel"] = true, ["ObjectReference"] = true, ["NextToken"] = true, ["MaxResults"] = true, ["DirectoryArn"] = true, nil }
@@ -1173,16 +1599,29 @@ end
 -- Required key: ObjectReference
 -- @return ListObjectChildrenRequest structure as a key-value pair table
 function M.ListObjectChildrenRequest(args)
-	assert(args, "You must provdide an argument table when creating ListObjectChildrenRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListObjectChildrenRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+        ["x-amz-consistency-level"] = args["ConsistencyLevel"],
+        ["x-amz-data-partition"] = args["DirectoryArn"],
+    }
+	local all_args = { 
 		["ConsistencyLevel"] = args["ConsistencyLevel"],
 		["ObjectReference"] = args["ObjectReference"],
 		["NextToken"] = args["NextToken"],
 		["MaxResults"] = args["MaxResults"],
 		["DirectoryArn"] = args["DirectoryArn"],
 	}
-	asserts.AssertListObjectChildrenRequest(t)
-	return t
+	asserts.AssertListObjectChildrenRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.BatchWriteOperationResponse = { ["DetachObject"] = true, ["AttachObject"] = true, ["AddFacetToObject"] = true, ["RemoveFacetFromObject"] = true, ["CreateObject"] = true, ["DeleteObject"] = true, ["UpdateObjectAttributes"] = true, nil }
@@ -1215,8 +1654,14 @@ end
 -- * UpdateObjectAttributes [BatchUpdateObjectAttributesResponse] <p>Updates a given object’s attributes.</p>
 -- @return BatchWriteOperationResponse structure as a key-value pair table
 function M.BatchWriteOperationResponse(args)
-	assert(args, "You must provdide an argument table when creating BatchWriteOperationResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating BatchWriteOperationResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DetachObject"] = args["DetachObject"],
 		["AttachObject"] = args["AttachObject"],
 		["AddFacetToObject"] = args["AddFacetToObject"],
@@ -1225,8 +1670,13 @@ function M.BatchWriteOperationResponse(args)
 		["DeleteObject"] = args["DeleteObject"],
 		["UpdateObjectAttributes"] = args["UpdateObjectAttributes"],
 	}
-	asserts.AssertBatchWriteOperationResponse(t)
-	return t
+	asserts.AssertBatchWriteOperationResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Tag = { ["Value"] = true, ["Key"] = true, nil }
@@ -1249,13 +1699,24 @@ end
 -- * Key [TagKey] <p>The key that is associated with the tag.</p>
 -- @return Tag structure as a key-value pair table
 function M.Tag(args)
-	assert(args, "You must provdide an argument table when creating Tag")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Tag")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Value"] = args["Value"],
 		["Key"] = args["Key"],
 	}
-	asserts.AssertTag(t)
-	return t
+	asserts.AssertTag(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListFacetAttributesResponse = { ["Attributes"] = true, ["NextToken"] = true, nil }
@@ -1278,13 +1739,24 @@ end
 -- * NextToken [NextToken] <p>The pagination token.</p>
 -- @return ListFacetAttributesResponse structure as a key-value pair table
 function M.ListFacetAttributesResponse(args)
-	assert(args, "You must provdide an argument table when creating ListFacetAttributesResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListFacetAttributesResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Attributes"] = args["Attributes"],
 		["NextToken"] = args["NextToken"],
 	}
-	asserts.AssertListFacetAttributesResponse(t)
-	return t
+	asserts.AssertListFacetAttributesResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdateSchemaResponse = { ["SchemaArn"] = true, nil }
@@ -1305,12 +1777,23 @@ end
 -- * SchemaArn [Arn] <p>The ARN that is associated with the updated schema. For more information, see <a>arns</a>.</p>
 -- @return UpdateSchemaResponse structure as a key-value pair table
 function M.UpdateSchemaResponse(args)
-	assert(args, "You must provdide an argument table when creating UpdateSchemaResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateSchemaResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["SchemaArn"] = args["SchemaArn"],
 	}
-	asserts.AssertUpdateSchemaResponse(t)
-	return t
+	asserts.AssertUpdateSchemaResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DisableDirectoryRequest = { ["DirectoryArn"] = true, nil }
@@ -1333,12 +1816,24 @@ end
 -- Required key: DirectoryArn
 -- @return DisableDirectoryRequest structure as a key-value pair table
 function M.DisableDirectoryRequest(args)
-	assert(args, "You must provdide an argument table when creating DisableDirectoryRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DisableDirectoryRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+        ["x-amz-data-partition"] = args["DirectoryArn"],
+    }
+	local all_args = { 
 		["DirectoryArn"] = args["DirectoryArn"],
 	}
-	asserts.AssertDisableDirectoryRequest(t)
-	return t
+	asserts.AssertDisableDirectoryRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.LimitExceededException = { ["Message"] = true, nil }
@@ -1359,12 +1854,23 @@ end
 -- * Message [ExceptionMessage] 
 -- @return LimitExceededException structure as a key-value pair table
 function M.LimitExceededException(args)
-	assert(args, "You must provdide an argument table when creating LimitExceededException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating LimitExceededException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Message"] = args["Message"],
 	}
-	asserts.AssertLimitExceededException(t)
-	return t
+	asserts.AssertLimitExceededException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListTypedLinkFacetNamesRequest = { ["SchemaArn"] = true, ["NextToken"] = true, ["MaxResults"] = true, nil }
@@ -1391,14 +1897,26 @@ end
 -- Required key: SchemaArn
 -- @return ListTypedLinkFacetNamesRequest structure as a key-value pair table
 function M.ListTypedLinkFacetNamesRequest(args)
-	assert(args, "You must provdide an argument table when creating ListTypedLinkFacetNamesRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListTypedLinkFacetNamesRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+        ["x-amz-data-partition"] = args["SchemaArn"],
+    }
+	local all_args = { 
 		["SchemaArn"] = args["SchemaArn"],
 		["NextToken"] = args["NextToken"],
 		["MaxResults"] = args["MaxResults"],
 	}
-	asserts.AssertListTypedLinkFacetNamesRequest(t)
-	return t
+	asserts.AssertListTypedLinkFacetNamesRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListObjectPoliciesRequest = { ["ConsistencyLevel"] = true, ["ObjectReference"] = true, ["NextToken"] = true, ["MaxResults"] = true, ["DirectoryArn"] = true, nil }
@@ -1431,16 +1949,29 @@ end
 -- Required key: ObjectReference
 -- @return ListObjectPoliciesRequest structure as a key-value pair table
 function M.ListObjectPoliciesRequest(args)
-	assert(args, "You must provdide an argument table when creating ListObjectPoliciesRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListObjectPoliciesRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+        ["x-amz-consistency-level"] = args["ConsistencyLevel"],
+        ["x-amz-data-partition"] = args["DirectoryArn"],
+    }
+	local all_args = { 
 		["ConsistencyLevel"] = args["ConsistencyLevel"],
 		["ObjectReference"] = args["ObjectReference"],
 		["NextToken"] = args["NextToken"],
 		["MaxResults"] = args["MaxResults"],
 		["DirectoryArn"] = args["DirectoryArn"],
 	}
-	asserts.AssertListObjectPoliciesRequest(t)
-	return t
+	asserts.AssertListObjectPoliciesRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetFacetResponse = { ["Facet"] = true, nil }
@@ -1461,12 +1992,23 @@ end
 -- * Facet [Facet] <p>The <a>Facet</a> structure that is associated with the facet.</p>
 -- @return GetFacetResponse structure as a key-value pair table
 function M.GetFacetResponse(args)
-	assert(args, "You must provdide an argument table when creating GetFacetResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetFacetResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Facet"] = args["Facet"],
 	}
-	asserts.AssertGetFacetResponse(t)
-	return t
+	asserts.AssertGetFacetResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListDirectoriesRequest = { ["state"] = true, ["NextToken"] = true, ["MaxResults"] = true, nil }
@@ -1491,14 +2033,25 @@ end
 -- * MaxResults [NumberResults] <p>The maximum number of results to retrieve.</p>
 -- @return ListDirectoriesRequest structure as a key-value pair table
 function M.ListDirectoriesRequest(args)
-	assert(args, "You must provdide an argument table when creating ListDirectoriesRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListDirectoriesRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["state"] = args["state"],
 		["NextToken"] = args["NextToken"],
 		["MaxResults"] = args["MaxResults"],
 	}
-	asserts.AssertListDirectoriesRequest(t)
-	return t
+	asserts.AssertListDirectoriesRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ValidationException = { ["Message"] = true, nil }
@@ -1519,12 +2072,23 @@ end
 -- * Message [ExceptionMessage] 
 -- @return ValidationException structure as a key-value pair table
 function M.ValidationException(args)
-	assert(args, "You must provdide an argument table when creating ValidationException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ValidationException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Message"] = args["Message"],
 	}
-	asserts.AssertValidationException(t)
-	return t
+	asserts.AssertValidationException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DirectoryNotDisabledException = { ["Message"] = true, nil }
@@ -1545,12 +2109,23 @@ end
 -- * Message [ExceptionMessage] 
 -- @return DirectoryNotDisabledException structure as a key-value pair table
 function M.DirectoryNotDisabledException(args)
-	assert(args, "You must provdide an argument table when creating DirectoryNotDisabledException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DirectoryNotDisabledException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Message"] = args["Message"],
 	}
-	asserts.AssertDirectoryNotDisabledException(t)
-	return t
+	asserts.AssertDirectoryNotDisabledException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ObjectReference = { ["Selector"] = true, nil }
@@ -1571,12 +2146,23 @@ end
 -- * Selector [SelectorObjectReference] <p>A path selector supports easy selection of an object by the parent/child links leading to it from the directory root. Use the link names from each parent/child link to construct the path. Path selectors start with a slash (/) and link names are separated by slashes. For more information about paths, see <a href="http://docs.aws.amazon.com/directoryservice/latest/admin-guide/objectsandlinks.html#accessingobjects">Accessing Objects</a>. You can identify an object in one of the following ways:</p> <ul> <li> <p> <i>$ObjectIdentifier</i> - An object identifier is an opaque string provided by Amazon Cloud Directory. When creating objects, the system will provide you with the identifier of the created object. An object’s identifier is immutable and no two objects will ever share the same object identifier</p> </li> <li> <p> <i>/some/path</i> - Identifies the object based on path</p> </li> <li> <p> <i>#SomeBatchReference</i> - Identifies the object in a batch call</p> </li> </ul>
 -- @return ObjectReference structure as a key-value pair table
 function M.ObjectReference(args)
-	assert(args, "You must provdide an argument table when creating ObjectReference")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ObjectReference")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Selector"] = args["Selector"],
 	}
-	asserts.AssertObjectReference(t)
-	return t
+	asserts.AssertObjectReference(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListObjectPoliciesResponse = { ["AttachedPolicyIds"] = true, ["NextToken"] = true, nil }
@@ -1599,13 +2185,24 @@ end
 -- * NextToken [NextToken] <p>The pagination token.</p>
 -- @return ListObjectPoliciesResponse structure as a key-value pair table
 function M.ListObjectPoliciesResponse(args)
-	assert(args, "You must provdide an argument table when creating ListObjectPoliciesResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListObjectPoliciesResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["AttachedPolicyIds"] = args["AttachedPolicyIds"],
 		["NextToken"] = args["NextToken"],
 	}
-	asserts.AssertListObjectPoliciesResponse(t)
-	return t
+	asserts.AssertListObjectPoliciesResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InternalServiceException = { ["Message"] = true, nil }
@@ -1626,12 +2223,23 @@ end
 -- * Message [ExceptionMessage] 
 -- @return InternalServiceException structure as a key-value pair table
 function M.InternalServiceException(args)
-	assert(args, "You must provdide an argument table when creating InternalServiceException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InternalServiceException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Message"] = args["Message"],
 	}
-	asserts.AssertInternalServiceException(t)
-	return t
+	asserts.AssertInternalServiceException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ApplySchemaResponse = { ["AppliedSchemaArn"] = true, ["DirectoryArn"] = true, nil }
@@ -1654,13 +2262,24 @@ end
 -- * DirectoryArn [Arn] <p>The ARN that is associated with the <a>Directory</a>. For more information, see <a>arns</a>.</p>
 -- @return ApplySchemaResponse structure as a key-value pair table
 function M.ApplySchemaResponse(args)
-	assert(args, "You must provdide an argument table when creating ApplySchemaResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ApplySchemaResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["AppliedSchemaArn"] = args["AppliedSchemaArn"],
 		["DirectoryArn"] = args["DirectoryArn"],
 	}
-	asserts.AssertApplySchemaResponse(t)
-	return t
+	asserts.AssertApplySchemaResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.FacetAttribute = { ["AttributeDefinition"] = true, ["RequiredBehavior"] = true, ["Name"] = true, ["AttributeReference"] = true, nil }
@@ -1689,15 +2308,26 @@ end
 -- Required key: Name
 -- @return FacetAttribute structure as a key-value pair table
 function M.FacetAttribute(args)
-	assert(args, "You must provdide an argument table when creating FacetAttribute")
-	local t = { 
+	assert(args, "You must provide an argument table when creating FacetAttribute")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["AttributeDefinition"] = args["AttributeDefinition"],
 		["RequiredBehavior"] = args["RequiredBehavior"],
 		["Name"] = args["Name"],
 		["AttributeReference"] = args["AttributeReference"],
 	}
-	asserts.AssertFacetAttribute(t)
-	return t
+	asserts.AssertFacetAttribute(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.BatchUpdateObjectAttributes = { ["AttributeUpdates"] = true, ["ObjectReference"] = true, nil }
@@ -1724,13 +2354,24 @@ end
 -- Required key: AttributeUpdates
 -- @return BatchUpdateObjectAttributes structure as a key-value pair table
 function M.BatchUpdateObjectAttributes(args)
-	assert(args, "You must provdide an argument table when creating BatchUpdateObjectAttributes")
-	local t = { 
+	assert(args, "You must provide an argument table when creating BatchUpdateObjectAttributes")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["AttributeUpdates"] = args["AttributeUpdates"],
 		["ObjectReference"] = args["ObjectReference"],
 	}
-	asserts.AssertBatchUpdateObjectAttributes(t)
-	return t
+	asserts.AssertBatchUpdateObjectAttributes(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdateFacetRequest = { ["AttributeUpdates"] = true, ["SchemaArn"] = true, ["Name"] = true, ["ObjectType"] = true, nil }
@@ -1761,15 +2402,27 @@ end
 -- Required key: Name
 -- @return UpdateFacetRequest structure as a key-value pair table
 function M.UpdateFacetRequest(args)
-	assert(args, "You must provdide an argument table when creating UpdateFacetRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateFacetRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+        ["x-amz-data-partition"] = args["SchemaArn"],
+    }
+	local all_args = { 
 		["AttributeUpdates"] = args["AttributeUpdates"],
 		["SchemaArn"] = args["SchemaArn"],
 		["Name"] = args["Name"],
 		["ObjectType"] = args["ObjectType"],
 	}
-	asserts.AssertUpdateFacetRequest(t)
-	return t
+	asserts.AssertUpdateFacetRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListObjectParentPathsRequest = { ["ObjectReference"] = true, ["NextToken"] = true, ["MaxResults"] = true, ["DirectoryArn"] = true, nil }
@@ -1800,15 +2453,27 @@ end
 -- Required key: ObjectReference
 -- @return ListObjectParentPathsRequest structure as a key-value pair table
 function M.ListObjectParentPathsRequest(args)
-	assert(args, "You must provdide an argument table when creating ListObjectParentPathsRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListObjectParentPathsRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+        ["x-amz-data-partition"] = args["DirectoryArn"],
+    }
+	local all_args = { 
 		["ObjectReference"] = args["ObjectReference"],
 		["NextToken"] = args["NextToken"],
 		["MaxResults"] = args["MaxResults"],
 		["DirectoryArn"] = args["DirectoryArn"],
 	}
-	asserts.AssertListObjectParentPathsRequest(t)
-	return t
+	asserts.AssertListObjectParentPathsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.RetryableConflictException = { ["Message"] = true, nil }
@@ -1829,12 +2494,23 @@ end
 -- * Message [ExceptionMessage] 
 -- @return RetryableConflictException structure as a key-value pair table
 function M.RetryableConflictException(args)
-	assert(args, "You must provdide an argument table when creating RetryableConflictException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating RetryableConflictException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Message"] = args["Message"],
 	}
-	asserts.AssertRetryableConflictException(t)
-	return t
+	asserts.AssertRetryableConflictException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.SchemaAlreadyExistsException = { ["Message"] = true, nil }
@@ -1855,12 +2531,23 @@ end
 -- * Message [ExceptionMessage] 
 -- @return SchemaAlreadyExistsException structure as a key-value pair table
 function M.SchemaAlreadyExistsException(args)
-	assert(args, "You must provdide an argument table when creating SchemaAlreadyExistsException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating SchemaAlreadyExistsException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Message"] = args["Message"],
 	}
-	asserts.AssertSchemaAlreadyExistsException(t)
-	return t
+	asserts.AssertSchemaAlreadyExistsException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.NotIndexException = { ["Message"] = true, nil }
@@ -1881,12 +2568,23 @@ end
 -- * Message [ExceptionMessage] 
 -- @return NotIndexException structure as a key-value pair table
 function M.NotIndexException(args)
-	assert(args, "You must provdide an argument table when creating NotIndexException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating NotIndexException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Message"] = args["Message"],
 	}
-	asserts.AssertNotIndexException(t)
-	return t
+	asserts.AssertNotIndexException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListObjectParentsResponse = { ["NextToken"] = true, ["Parents"] = true, nil }
@@ -1909,13 +2607,24 @@ end
 -- * Parents [ObjectIdentifierToLinkNameMap] <p>The parent structure, which is a map with key as the <code>ObjectIdentifier</code> and LinkName as the value.</p>
 -- @return ListObjectParentsResponse structure as a key-value pair table
 function M.ListObjectParentsResponse(args)
-	assert(args, "You must provdide an argument table when creating ListObjectParentsResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListObjectParentsResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NextToken"] = args["NextToken"],
 		["Parents"] = args["Parents"],
 	}
-	asserts.AssertListObjectParentsResponse(t)
-	return t
+	asserts.AssertListObjectParentsResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AttributeNameAndValue = { ["AttributeName"] = true, ["Value"] = true, nil }
@@ -1942,13 +2651,24 @@ end
 -- Required key: Value
 -- @return AttributeNameAndValue structure as a key-value pair table
 function M.AttributeNameAndValue(args)
-	assert(args, "You must provdide an argument table when creating AttributeNameAndValue")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AttributeNameAndValue")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["AttributeName"] = args["AttributeName"],
 		["Value"] = args["Value"],
 	}
-	asserts.AssertAttributeNameAndValue(t)
-	return t
+	asserts.AssertAttributeNameAndValue(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.RemoveFacetFromObjectRequest = { ["ObjectReference"] = true, ["SchemaFacet"] = true, ["DirectoryArn"] = true, nil }
@@ -1979,14 +2699,26 @@ end
 -- Required key: ObjectReference
 -- @return RemoveFacetFromObjectRequest structure as a key-value pair table
 function M.RemoveFacetFromObjectRequest(args)
-	assert(args, "You must provdide an argument table when creating RemoveFacetFromObjectRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating RemoveFacetFromObjectRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+        ["x-amz-data-partition"] = args["DirectoryArn"],
+    }
+	local all_args = { 
 		["ObjectReference"] = args["ObjectReference"],
 		["SchemaFacet"] = args["SchemaFacet"],
 		["DirectoryArn"] = args["DirectoryArn"],
 	}
-	asserts.AssertRemoveFacetFromObjectRequest(t)
-	return t
+	asserts.AssertRemoveFacetFromObjectRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.TypedLinkFacetAttributeUpdate = { ["Action"] = true, ["Attribute"] = true, nil }
@@ -2013,13 +2745,24 @@ end
 -- Required key: Action
 -- @return TypedLinkFacetAttributeUpdate structure as a key-value pair table
 function M.TypedLinkFacetAttributeUpdate(args)
-	assert(args, "You must provdide an argument table when creating TypedLinkFacetAttributeUpdate")
-	local t = { 
+	assert(args, "You must provide an argument table when creating TypedLinkFacetAttributeUpdate")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Action"] = args["Action"],
 		["Attribute"] = args["Attribute"],
 	}
-	asserts.AssertTypedLinkFacetAttributeUpdate(t)
-	return t
+	asserts.AssertTypedLinkFacetAttributeUpdate(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidSchemaDocException = { ["Message"] = true, nil }
@@ -2040,12 +2783,23 @@ end
 -- * Message [ExceptionMessage] 
 -- @return InvalidSchemaDocException structure as a key-value pair table
 function M.InvalidSchemaDocException(args)
-	assert(args, "You must provdide an argument table when creating InvalidSchemaDocException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidSchemaDocException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Message"] = args["Message"],
 	}
-	asserts.AssertInvalidSchemaDocException(t)
-	return t
+	asserts.AssertInvalidSchemaDocException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteObjectResponse = { nil }
@@ -2064,11 +2818,22 @@ end
 -- Valid keys:
 -- @return DeleteObjectResponse structure as a key-value pair table
 function M.DeleteObjectResponse(args)
-	assert(args, "You must provdide an argument table when creating DeleteObjectResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteObjectResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertDeleteObjectResponse(t)
-	return t
+	asserts.AssertDeleteObjectResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListAttachedIndicesRequest = { ["MaxResults"] = true, ["ConsistencyLevel"] = true, ["NextToken"] = true, ["TargetReference"] = true, ["DirectoryArn"] = true, nil }
@@ -2101,16 +2866,29 @@ end
 -- Required key: TargetReference
 -- @return ListAttachedIndicesRequest structure as a key-value pair table
 function M.ListAttachedIndicesRequest(args)
-	assert(args, "You must provdide an argument table when creating ListAttachedIndicesRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListAttachedIndicesRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+        ["x-amz-consistency-level"] = args["ConsistencyLevel"],
+        ["x-amz-data-partition"] = args["DirectoryArn"],
+    }
+	local all_args = { 
 		["MaxResults"] = args["MaxResults"],
 		["ConsistencyLevel"] = args["ConsistencyLevel"],
 		["NextToken"] = args["NextToken"],
 		["TargetReference"] = args["TargetReference"],
 		["DirectoryArn"] = args["DirectoryArn"],
 	}
-	asserts.AssertListAttachedIndicesRequest(t)
-	return t
+	asserts.AssertListAttachedIndicesRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AttachObjectResponse = { ["AttachedObjectIdentifier"] = true, nil }
@@ -2131,12 +2909,23 @@ end
 -- * AttachedObjectIdentifier [ObjectIdentifier] <p>The attached <code>ObjectIdentifier</code>, which is the child <code>ObjectIdentifier</code>.</p>
 -- @return AttachObjectResponse structure as a key-value pair table
 function M.AttachObjectResponse(args)
-	assert(args, "You must provdide an argument table when creating AttachObjectResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AttachObjectResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["AttachedObjectIdentifier"] = args["AttachedObjectIdentifier"],
 	}
-	asserts.AssertAttachObjectResponse(t)
-	return t
+	asserts.AssertAttachObjectResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.TypedAttributeValue = { ["StringValue"] = true, ["BooleanValue"] = true, ["DatetimeValue"] = true, ["BinaryValue"] = true, ["NumberValue"] = true, nil }
@@ -2165,16 +2954,27 @@ end
 -- * NumberValue [NumberAttributeValue] <p>A number data value.</p>
 -- @return TypedAttributeValue structure as a key-value pair table
 function M.TypedAttributeValue(args)
-	assert(args, "You must provdide an argument table when creating TypedAttributeValue")
-	local t = { 
+	assert(args, "You must provide an argument table when creating TypedAttributeValue")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["StringValue"] = args["StringValue"],
 		["BooleanValue"] = args["BooleanValue"],
 		["DatetimeValue"] = args["DatetimeValue"],
 		["BinaryValue"] = args["BinaryValue"],
 		["NumberValue"] = args["NumberValue"],
 	}
-	asserts.AssertTypedAttributeValue(t)
-	return t
+	asserts.AssertTypedAttributeValue(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdateSchemaRequest = { ["SchemaArn"] = true, ["Name"] = true, nil }
@@ -2201,13 +3001,25 @@ end
 -- Required key: Name
 -- @return UpdateSchemaRequest structure as a key-value pair table
 function M.UpdateSchemaRequest(args)
-	assert(args, "You must provdide an argument table when creating UpdateSchemaRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateSchemaRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+        ["x-amz-data-partition"] = args["SchemaArn"],
+    }
+	local all_args = { 
 		["SchemaArn"] = args["SchemaArn"],
 		["Name"] = args["Name"],
 	}
-	asserts.AssertUpdateSchemaRequest(t)
-	return t
+	asserts.AssertUpdateSchemaRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.FacetAttributeUpdate = { ["Action"] = true, ["Attribute"] = true, nil }
@@ -2230,13 +3042,24 @@ end
 -- * Attribute [FacetAttribute] <p>The attribute to update.</p>
 -- @return FacetAttributeUpdate structure as a key-value pair table
 function M.FacetAttributeUpdate(args)
-	assert(args, "You must provdide an argument table when creating FacetAttributeUpdate")
-	local t = { 
+	assert(args, "You must provide an argument table when creating FacetAttributeUpdate")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Action"] = args["Action"],
 		["Attribute"] = args["Attribute"],
 	}
-	asserts.AssertFacetAttributeUpdate(t)
-	return t
+	asserts.AssertFacetAttributeUpdate(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateIndexRequest = { ["ParentReference"] = true, ["OrderedIndexedAttributeList"] = true, ["IsUnique"] = true, ["DirectoryArn"] = true, ["LinkName"] = true, nil }
@@ -2271,16 +3094,28 @@ end
 -- Required key: IsUnique
 -- @return CreateIndexRequest structure as a key-value pair table
 function M.CreateIndexRequest(args)
-	assert(args, "You must provdide an argument table when creating CreateIndexRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateIndexRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+        ["x-amz-data-partition"] = args["DirectoryArn"],
+    }
+	local all_args = { 
 		["ParentReference"] = args["ParentReference"],
 		["OrderedIndexedAttributeList"] = args["OrderedIndexedAttributeList"],
 		["IsUnique"] = args["IsUnique"],
 		["DirectoryArn"] = args["DirectoryArn"],
 		["LinkName"] = args["LinkName"],
 	}
-	asserts.AssertCreateIndexRequest(t)
-	return t
+	asserts.AssertCreateIndexRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteSchemaResponse = { ["SchemaArn"] = true, nil }
@@ -2301,12 +3136,23 @@ end
 -- * SchemaArn [Arn] <p>The input ARN that is returned as part of the response. For more information, see <a>arns</a>.</p>
 -- @return DeleteSchemaResponse structure as a key-value pair table
 function M.DeleteSchemaResponse(args)
-	assert(args, "You must provdide an argument table when creating DeleteSchemaResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteSchemaResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["SchemaArn"] = args["SchemaArn"],
 	}
-	asserts.AssertDeleteSchemaResponse(t)
-	return t
+	asserts.AssertDeleteSchemaResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Facet = { ["Name"] = true, ["ObjectType"] = true, nil }
@@ -2329,13 +3175,24 @@ end
 -- * ObjectType [ObjectType] <p>The object type that is associated with the facet. See <a>CreateFacetRequest$ObjectType</a> for more details.</p>
 -- @return Facet structure as a key-value pair table
 function M.Facet(args)
-	assert(args, "You must provdide an argument table when creating Facet")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Facet")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Name"] = args["Name"],
 		["ObjectType"] = args["ObjectType"],
 	}
-	asserts.AssertFacet(t)
-	return t
+	asserts.AssertFacet(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateTypedLinkFacetRequest = { ["Facet"] = true, ["SchemaArn"] = true, nil }
@@ -2362,13 +3219,25 @@ end
 -- Required key: Facet
 -- @return CreateTypedLinkFacetRequest structure as a key-value pair table
 function M.CreateTypedLinkFacetRequest(args)
-	assert(args, "You must provdide an argument table when creating CreateTypedLinkFacetRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateTypedLinkFacetRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+        ["x-amz-data-partition"] = args["SchemaArn"],
+    }
+	local all_args = { 
 		["Facet"] = args["Facet"],
 		["SchemaArn"] = args["SchemaArn"],
 	}
-	asserts.AssertCreateTypedLinkFacetRequest(t)
-	return t
+	asserts.AssertCreateTypedLinkFacetRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DirectoryDeletedException = { ["Message"] = true, nil }
@@ -2389,12 +3258,23 @@ end
 -- * Message [ExceptionMessage] 
 -- @return DirectoryDeletedException structure as a key-value pair table
 function M.DirectoryDeletedException(args)
-	assert(args, "You must provdide an argument table when creating DirectoryDeletedException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DirectoryDeletedException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Message"] = args["Message"],
 	}
-	asserts.AssertDirectoryDeletedException(t)
-	return t
+	asserts.AssertDirectoryDeletedException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListObjectParentsRequest = { ["ConsistencyLevel"] = true, ["ObjectReference"] = true, ["NextToken"] = true, ["MaxResults"] = true, ["DirectoryArn"] = true, nil }
@@ -2427,16 +3307,29 @@ end
 -- Required key: ObjectReference
 -- @return ListObjectParentsRequest structure as a key-value pair table
 function M.ListObjectParentsRequest(args)
-	assert(args, "You must provdide an argument table when creating ListObjectParentsRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListObjectParentsRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+        ["x-amz-consistency-level"] = args["ConsistencyLevel"],
+        ["x-amz-data-partition"] = args["DirectoryArn"],
+    }
+	local all_args = { 
 		["ConsistencyLevel"] = args["ConsistencyLevel"],
 		["ObjectReference"] = args["ObjectReference"],
 		["NextToken"] = args["NextToken"],
 		["MaxResults"] = args["MaxResults"],
 		["DirectoryArn"] = args["DirectoryArn"],
 	}
-	asserts.AssertListObjectParentsRequest(t)
-	return t
+	asserts.AssertListObjectParentsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Directory = { ["State"] = true, ["CreationDateTime"] = true, ["Name"] = true, ["DirectoryArn"] = true, nil }
@@ -2463,15 +3356,26 @@ end
 -- * DirectoryArn [DirectoryArn] <p>The Amazon Resource Name (ARN) that is associated with the directory. For more information, see <a>arns</a>.</p>
 -- @return Directory structure as a key-value pair table
 function M.Directory(args)
-	assert(args, "You must provdide an argument table when creating Directory")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Directory")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["State"] = args["State"],
 		["CreationDateTime"] = args["CreationDateTime"],
 		["Name"] = args["Name"],
 		["DirectoryArn"] = args["DirectoryArn"],
 	}
-	asserts.AssertDirectory(t)
-	return t
+	asserts.AssertDirectory(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.SchemaFacet = { ["SchemaArn"] = true, ["FacetName"] = true, nil }
@@ -2494,13 +3398,24 @@ end
 -- * FacetName [FacetName] <p>The name of the facet.</p>
 -- @return SchemaFacet structure as a key-value pair table
 function M.SchemaFacet(args)
-	assert(args, "You must provdide an argument table when creating SchemaFacet")
-	local t = { 
+	assert(args, "You must provide an argument table when creating SchemaFacet")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["SchemaArn"] = args["SchemaArn"],
 		["FacetName"] = args["FacetName"],
 	}
-	asserts.AssertSchemaFacet(t)
-	return t
+	asserts.AssertSchemaFacet(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListObjectAttributesRequest = { ["FacetFilter"] = true, ["MaxResults"] = true, ["ObjectReference"] = true, ["DirectoryArn"] = true, ["NextToken"] = true, ["ConsistencyLevel"] = true, nil }
@@ -2535,8 +3450,16 @@ end
 -- Required key: ObjectReference
 -- @return ListObjectAttributesRequest structure as a key-value pair table
 function M.ListObjectAttributesRequest(args)
-	assert(args, "You must provdide an argument table when creating ListObjectAttributesRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListObjectAttributesRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+        ["x-amz-data-partition"] = args["DirectoryArn"],
+        ["x-amz-consistency-level"] = args["ConsistencyLevel"],
+    }
+	local all_args = { 
 		["FacetFilter"] = args["FacetFilter"],
 		["MaxResults"] = args["MaxResults"],
 		["ObjectReference"] = args["ObjectReference"],
@@ -2544,8 +3467,13 @@ function M.ListObjectAttributesRequest(args)
 		["NextToken"] = args["NextToken"],
 		["ConsistencyLevel"] = args["ConsistencyLevel"],
 	}
-	asserts.AssertListObjectAttributesRequest(t)
-	return t
+	asserts.AssertListObjectAttributesRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.BatchDetachObjectResponse = { ["detachedObjectIdentifier"] = true, nil }
@@ -2566,12 +3494,23 @@ end
 -- * detachedObjectIdentifier [ObjectIdentifier] <p>The <code>ObjectIdentifier</code> of the detached object.</p>
 -- @return BatchDetachObjectResponse structure as a key-value pair table
 function M.BatchDetachObjectResponse(args)
-	assert(args, "You must provdide an argument table when creating BatchDetachObjectResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating BatchDetachObjectResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["detachedObjectIdentifier"] = args["detachedObjectIdentifier"],
 	}
-	asserts.AssertBatchDetachObjectResponse(t)
-	return t
+	asserts.AssertBatchDetachObjectResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListIndexResponse = { ["IndexAttachments"] = true, ["NextToken"] = true, nil }
@@ -2594,13 +3533,24 @@ end
 -- * NextToken [NextToken] <p>The pagination token.</p>
 -- @return ListIndexResponse structure as a key-value pair table
 function M.ListIndexResponse(args)
-	assert(args, "You must provdide an argument table when creating ListIndexResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListIndexResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["IndexAttachments"] = args["IndexAttachments"],
 		["NextToken"] = args["NextToken"],
 	}
-	asserts.AssertListIndexResponse(t)
-	return t
+	asserts.AssertListIndexResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DetachPolicyResponse = { nil }
@@ -2619,11 +3569,22 @@ end
 -- Valid keys:
 -- @return DetachPolicyResponse structure as a key-value pair table
 function M.DetachPolicyResponse(args)
-	assert(args, "You must provdide an argument table when creating DetachPolicyResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DetachPolicyResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertDetachPolicyResponse(t)
-	return t
+	asserts.AssertDetachPolicyResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.PublishSchemaRequest = { ["DevelopmentSchemaArn"] = true, ["Version"] = true, ["Name"] = true, nil }
@@ -2652,14 +3613,26 @@ end
 -- Required key: Version
 -- @return PublishSchemaRequest structure as a key-value pair table
 function M.PublishSchemaRequest(args)
-	assert(args, "You must provdide an argument table when creating PublishSchemaRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating PublishSchemaRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+        ["x-amz-data-partition"] = args["DevelopmentSchemaArn"],
+    }
+	local all_args = { 
 		["DevelopmentSchemaArn"] = args["DevelopmentSchemaArn"],
 		["Version"] = args["Version"],
 		["Name"] = args["Name"],
 	}
-	asserts.AssertPublishSchemaRequest(t)
-	return t
+	asserts.AssertPublishSchemaRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateObjectResponse = { ["ObjectIdentifier"] = true, nil }
@@ -2680,12 +3653,23 @@ end
 -- * ObjectIdentifier [ObjectIdentifier] <p>The identifier that is associated with the object.</p>
 -- @return CreateObjectResponse structure as a key-value pair table
 function M.CreateObjectResponse(args)
-	assert(args, "You must provdide an argument table when creating CreateObjectResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateObjectResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ObjectIdentifier"] = args["ObjectIdentifier"],
 	}
-	asserts.AssertCreateObjectResponse(t)
-	return t
+	asserts.AssertCreateObjectResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListFacetAttributesRequest = { ["SchemaArn"] = true, ["NextToken"] = true, ["Name"] = true, ["MaxResults"] = true, nil }
@@ -2716,15 +3700,27 @@ end
 -- Required key: Name
 -- @return ListFacetAttributesRequest structure as a key-value pair table
 function M.ListFacetAttributesRequest(args)
-	assert(args, "You must provdide an argument table when creating ListFacetAttributesRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListFacetAttributesRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+        ["x-amz-data-partition"] = args["SchemaArn"],
+    }
+	local all_args = { 
 		["SchemaArn"] = args["SchemaArn"],
 		["NextToken"] = args["NextToken"],
 		["Name"] = args["Name"],
 		["MaxResults"] = args["MaxResults"],
 	}
-	asserts.AssertListFacetAttributesRequest(t)
-	return t
+	asserts.AssertListFacetAttributesRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteObjectRequest = { ["ObjectReference"] = true, ["DirectoryArn"] = true, nil }
@@ -2751,13 +3747,25 @@ end
 -- Required key: ObjectReference
 -- @return DeleteObjectRequest structure as a key-value pair table
 function M.DeleteObjectRequest(args)
-	assert(args, "You must provdide an argument table when creating DeleteObjectRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteObjectRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+        ["x-amz-data-partition"] = args["DirectoryArn"],
+    }
+	local all_args = { 
 		["ObjectReference"] = args["ObjectReference"],
 		["DirectoryArn"] = args["DirectoryArn"],
 	}
-	asserts.AssertDeleteObjectRequest(t)
-	return t
+	asserts.AssertDeleteObjectRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DetachObjectRequest = { ["ParentReference"] = true, ["LinkName"] = true, ["DirectoryArn"] = true, nil }
@@ -2788,14 +3796,26 @@ end
 -- Required key: LinkName
 -- @return DetachObjectRequest structure as a key-value pair table
 function M.DetachObjectRequest(args)
-	assert(args, "You must provdide an argument table when creating DetachObjectRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DetachObjectRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+        ["x-amz-data-partition"] = args["DirectoryArn"],
+    }
+	local all_args = { 
 		["ParentReference"] = args["ParentReference"],
 		["LinkName"] = args["LinkName"],
 		["DirectoryArn"] = args["DirectoryArn"],
 	}
-	asserts.AssertDetachObjectRequest(t)
-	return t
+	asserts.AssertDetachObjectRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetFacetRequest = { ["SchemaArn"] = true, ["Name"] = true, nil }
@@ -2822,13 +3842,25 @@ end
 -- Required key: Name
 -- @return GetFacetRequest structure as a key-value pair table
 function M.GetFacetRequest(args)
-	assert(args, "You must provdide an argument table when creating GetFacetRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetFacetRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+        ["x-amz-data-partition"] = args["SchemaArn"],
+    }
+	local all_args = { 
 		["SchemaArn"] = args["SchemaArn"],
 		["Name"] = args["Name"],
 	}
-	asserts.AssertGetFacetRequest(t)
-	return t
+	asserts.AssertGetFacetRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListDirectoriesResponse = { ["Directories"] = true, ["NextToken"] = true, nil }
@@ -2853,13 +3885,24 @@ end
 -- Required key: Directories
 -- @return ListDirectoriesResponse structure as a key-value pair table
 function M.ListDirectoriesResponse(args)
-	assert(args, "You must provdide an argument table when creating ListDirectoriesResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListDirectoriesResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Directories"] = args["Directories"],
 		["NextToken"] = args["NextToken"],
 	}
-	asserts.AssertListDirectoriesResponse(t)
-	return t
+	asserts.AssertListDirectoriesResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidTaggingRequestException = { ["Message"] = true, nil }
@@ -2880,12 +3923,23 @@ end
 -- * Message [ExceptionMessage] 
 -- @return InvalidTaggingRequestException structure as a key-value pair table
 function M.InvalidTaggingRequestException(args)
-	assert(args, "You must provdide an argument table when creating InvalidTaggingRequestException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidTaggingRequestException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Message"] = args["Message"],
 	}
-	asserts.AssertInvalidTaggingRequestException(t)
-	return t
+	asserts.AssertInvalidTaggingRequestException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateDirectoryResponse = { ["AppliedSchemaArn"] = true, ["ObjectIdentifier"] = true, ["Name"] = true, ["DirectoryArn"] = true, nil }
@@ -2920,15 +3974,26 @@ end
 -- Required key: AppliedSchemaArn
 -- @return CreateDirectoryResponse structure as a key-value pair table
 function M.CreateDirectoryResponse(args)
-	assert(args, "You must provdide an argument table when creating CreateDirectoryResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateDirectoryResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["AppliedSchemaArn"] = args["AppliedSchemaArn"],
 		["ObjectIdentifier"] = args["ObjectIdentifier"],
 		["Name"] = args["Name"],
 		["DirectoryArn"] = args["DirectoryArn"],
 	}
-	asserts.AssertCreateDirectoryResponse(t)
-	return t
+	asserts.AssertCreateDirectoryResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListAttachedIndicesResponse = { ["IndexAttachments"] = true, ["NextToken"] = true, nil }
@@ -2951,13 +4016,24 @@ end
 -- * NextToken [NextToken] <p>The pagination token.</p>
 -- @return ListAttachedIndicesResponse structure as a key-value pair table
 function M.ListAttachedIndicesResponse(args)
-	assert(args, "You must provdide an argument table when creating ListAttachedIndicesResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListAttachedIndicesResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["IndexAttachments"] = args["IndexAttachments"],
 		["NextToken"] = args["NextToken"],
 	}
-	asserts.AssertListAttachedIndicesResponse(t)
-	return t
+	asserts.AssertListAttachedIndicesResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UntagResourceRequest = { ["ResourceArn"] = true, ["TagKeys"] = true, nil }
@@ -2984,13 +4060,24 @@ end
 -- Required key: TagKeys
 -- @return UntagResourceRequest structure as a key-value pair table
 function M.UntagResourceRequest(args)
-	assert(args, "You must provdide an argument table when creating UntagResourceRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UntagResourceRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ResourceArn"] = args["ResourceArn"],
 		["TagKeys"] = args["TagKeys"],
 	}
-	asserts.AssertUntagResourceRequest(t)
-	return t
+	asserts.AssertUntagResourceRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DirectoryAlreadyExistsException = { ["Message"] = true, nil }
@@ -3011,12 +4098,23 @@ end
 -- * Message [ExceptionMessage] 
 -- @return DirectoryAlreadyExistsException structure as a key-value pair table
 function M.DirectoryAlreadyExistsException(args)
-	assert(args, "You must provdide an argument table when creating DirectoryAlreadyExistsException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DirectoryAlreadyExistsException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Message"] = args["Message"],
 	}
-	asserts.AssertDirectoryAlreadyExistsException(t)
-	return t
+	asserts.AssertDirectoryAlreadyExistsException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.BatchListObjectChildrenResponse = { ["NextToken"] = true, ["Children"] = true, nil }
@@ -3039,13 +4137,24 @@ end
 -- * Children [LinkNameToObjectIdentifierMap] <p>The children structure, which is a map with the key as the <code>LinkName</code> and <code>ObjectIdentifier</code> as the value.</p>
 -- @return BatchListObjectChildrenResponse structure as a key-value pair table
 function M.BatchListObjectChildrenResponse(args)
-	assert(args, "You must provdide an argument table when creating BatchListObjectChildrenResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating BatchListObjectChildrenResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NextToken"] = args["NextToken"],
 		["Children"] = args["Children"],
 	}
-	asserts.AssertBatchListObjectChildrenResponse(t)
-	return t
+	asserts.AssertBatchListObjectChildrenResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetObjectInformationRequest = { ["ObjectReference"] = true, ["ConsistencyLevel"] = true, ["DirectoryArn"] = true, nil }
@@ -3074,14 +4183,27 @@ end
 -- Required key: ObjectReference
 -- @return GetObjectInformationRequest structure as a key-value pair table
 function M.GetObjectInformationRequest(args)
-	assert(args, "You must provdide an argument table when creating GetObjectInformationRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetObjectInformationRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+        ["x-amz-consistency-level"] = args["ConsistencyLevel"],
+        ["x-amz-data-partition"] = args["DirectoryArn"],
+    }
+	local all_args = { 
 		["ObjectReference"] = args["ObjectReference"],
 		["ConsistencyLevel"] = args["ConsistencyLevel"],
 		["DirectoryArn"] = args["DirectoryArn"],
 	}
-	asserts.AssertGetObjectInformationRequest(t)
-	return t
+	asserts.AssertGetObjectInformationRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.PublishSchemaResponse = { ["PublishedSchemaArn"] = true, nil }
@@ -3102,12 +4224,23 @@ end
 -- * PublishedSchemaArn [Arn] <p>The ARN that is associated with the published schema. For more information, see <a>arns</a>.</p>
 -- @return PublishSchemaResponse structure as a key-value pair table
 function M.PublishSchemaResponse(args)
-	assert(args, "You must provdide an argument table when creating PublishSchemaResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating PublishSchemaResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["PublishedSchemaArn"] = args["PublishedSchemaArn"],
 	}
-	asserts.AssertPublishSchemaResponse(t)
-	return t
+	asserts.AssertPublishSchemaResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidAttachmentException = { ["Message"] = true, nil }
@@ -3128,12 +4261,23 @@ end
 -- * Message [ExceptionMessage] 
 -- @return InvalidAttachmentException structure as a key-value pair table
 function M.InvalidAttachmentException(args)
-	assert(args, "You must provdide an argument table when creating InvalidAttachmentException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidAttachmentException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Message"] = args["Message"],
 	}
-	asserts.AssertInvalidAttachmentException(t)
-	return t
+	asserts.AssertInvalidAttachmentException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdateObjectAttributesRequest = { ["AttributeUpdates"] = true, ["ObjectReference"] = true, ["DirectoryArn"] = true, nil }
@@ -3164,14 +4308,26 @@ end
 -- Required key: AttributeUpdates
 -- @return UpdateObjectAttributesRequest structure as a key-value pair table
 function M.UpdateObjectAttributesRequest(args)
-	assert(args, "You must provdide an argument table when creating UpdateObjectAttributesRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateObjectAttributesRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+        ["x-amz-data-partition"] = args["DirectoryArn"],
+    }
+	local all_args = { 
 		["AttributeUpdates"] = args["AttributeUpdates"],
 		["ObjectReference"] = args["ObjectReference"],
 		["DirectoryArn"] = args["DirectoryArn"],
 	}
-	asserts.AssertUpdateObjectAttributesRequest(t)
-	return t
+	asserts.AssertUpdateObjectAttributesRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DetachFromIndexRequest = { ["IndexReference"] = true, ["DirectoryArn"] = true, ["TargetReference"] = true, nil }
@@ -3202,14 +4358,26 @@ end
 -- Required key: TargetReference
 -- @return DetachFromIndexRequest structure as a key-value pair table
 function M.DetachFromIndexRequest(args)
-	assert(args, "You must provdide an argument table when creating DetachFromIndexRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DetachFromIndexRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+        ["x-amz-data-partition"] = args["DirectoryArn"],
+    }
+	local all_args = { 
 		["IndexReference"] = args["IndexReference"],
 		["DirectoryArn"] = args["DirectoryArn"],
 		["TargetReference"] = args["TargetReference"],
 	}
-	asserts.AssertDetachFromIndexRequest(t)
-	return t
+	asserts.AssertDetachFromIndexRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListAppliedSchemaArnsResponse = { ["NextToken"] = true, ["SchemaArns"] = true, nil }
@@ -3232,13 +4400,24 @@ end
 -- * SchemaArns [Arns] <p>The ARNs of schemas that are applied to the directory.</p>
 -- @return ListAppliedSchemaArnsResponse structure as a key-value pair table
 function M.ListAppliedSchemaArnsResponse(args)
-	assert(args, "You must provdide an argument table when creating ListAppliedSchemaArnsResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListAppliedSchemaArnsResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NextToken"] = args["NextToken"],
 		["SchemaArns"] = args["SchemaArns"],
 	}
-	asserts.AssertListAppliedSchemaArnsResponse(t)
-	return t
+	asserts.AssertListAppliedSchemaArnsResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListIncomingTypedLinksRequest = { ["FilterAttributeRanges"] = true, ["MaxResults"] = true, ["FilterTypedLink"] = true, ["ObjectReference"] = true, ["DirectoryArn"] = true, ["NextToken"] = true, ["ConsistencyLevel"] = true, nil }
@@ -3275,8 +4454,15 @@ end
 -- Required key: ObjectReference
 -- @return ListIncomingTypedLinksRequest structure as a key-value pair table
 function M.ListIncomingTypedLinksRequest(args)
-	assert(args, "You must provdide an argument table when creating ListIncomingTypedLinksRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListIncomingTypedLinksRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+        ["x-amz-data-partition"] = args["DirectoryArn"],
+    }
+	local all_args = { 
 		["FilterAttributeRanges"] = args["FilterAttributeRanges"],
 		["MaxResults"] = args["MaxResults"],
 		["FilterTypedLink"] = args["FilterTypedLink"],
@@ -3285,8 +4471,13 @@ function M.ListIncomingTypedLinksRequest(args)
 		["NextToken"] = args["NextToken"],
 		["ConsistencyLevel"] = args["ConsistencyLevel"],
 	}
-	asserts.AssertListIncomingTypedLinksRequest(t)
-	return t
+	asserts.AssertListIncomingTypedLinksRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DetachPolicyRequest = { ["PolicyReference"] = true, ["ObjectReference"] = true, ["DirectoryArn"] = true, nil }
@@ -3317,14 +4508,26 @@ end
 -- Required key: ObjectReference
 -- @return DetachPolicyRequest structure as a key-value pair table
 function M.DetachPolicyRequest(args)
-	assert(args, "You must provdide an argument table when creating DetachPolicyRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DetachPolicyRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+        ["x-amz-data-partition"] = args["DirectoryArn"],
+    }
+	local all_args = { 
 		["PolicyReference"] = args["PolicyReference"],
 		["ObjectReference"] = args["ObjectReference"],
 		["DirectoryArn"] = args["DirectoryArn"],
 	}
-	asserts.AssertDetachPolicyRequest(t)
-	return t
+	asserts.AssertDetachPolicyRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.PutSchemaFromJsonResponse = { ["Arn"] = true, nil }
@@ -3345,12 +4548,23 @@ end
 -- * Arn [Arn] <p>The ARN of the schema to update.</p>
 -- @return PutSchemaFromJsonResponse structure as a key-value pair table
 function M.PutSchemaFromJsonResponse(args)
-	assert(args, "You must provdide an argument table when creating PutSchemaFromJsonResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating PutSchemaFromJsonResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Arn"] = args["Arn"],
 	}
-	asserts.AssertPutSchemaFromJsonResponse(t)
-	return t
+	asserts.AssertPutSchemaFromJsonResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.TypedLinkSpecifier = { ["SourceObjectReference"] = true, ["IdentityAttributeValues"] = true, ["TargetObjectReference"] = true, ["TypedLinkFacet"] = true, nil }
@@ -3385,15 +4599,26 @@ end
 -- Required key: IdentityAttributeValues
 -- @return TypedLinkSpecifier structure as a key-value pair table
 function M.TypedLinkSpecifier(args)
-	assert(args, "You must provdide an argument table when creating TypedLinkSpecifier")
-	local t = { 
+	assert(args, "You must provide an argument table when creating TypedLinkSpecifier")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["SourceObjectReference"] = args["SourceObjectReference"],
 		["IdentityAttributeValues"] = args["IdentityAttributeValues"],
 		["TargetObjectReference"] = args["TargetObjectReference"],
 		["TypedLinkFacet"] = args["TypedLinkFacet"],
 	}
-	asserts.AssertTypedLinkSpecifier(t)
-	return t
+	asserts.AssertTypedLinkSpecifier(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ObjectAlreadyDetachedException = { ["Message"] = true, nil }
@@ -3414,12 +4639,23 @@ end
 -- * Message [ExceptionMessage] 
 -- @return ObjectAlreadyDetachedException structure as a key-value pair table
 function M.ObjectAlreadyDetachedException(args)
-	assert(args, "You must provdide an argument table when creating ObjectAlreadyDetachedException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ObjectAlreadyDetachedException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Message"] = args["Message"],
 	}
-	asserts.AssertObjectAlreadyDetachedException(t)
-	return t
+	asserts.AssertObjectAlreadyDetachedException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListIndexRequest = { ["MaxResults"] = true, ["RangesOnIndexedValues"] = true, ["IndexReference"] = true, ["DirectoryArn"] = true, ["NextToken"] = true, ["ConsistencyLevel"] = true, nil }
@@ -3454,8 +4690,16 @@ end
 -- Required key: IndexReference
 -- @return ListIndexRequest structure as a key-value pair table
 function M.ListIndexRequest(args)
-	assert(args, "You must provdide an argument table when creating ListIndexRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListIndexRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+        ["x-amz-data-partition"] = args["DirectoryArn"],
+        ["x-amz-consistency-level"] = args["ConsistencyLevel"],
+    }
+	local all_args = { 
 		["MaxResults"] = args["MaxResults"],
 		["RangesOnIndexedValues"] = args["RangesOnIndexedValues"],
 		["IndexReference"] = args["IndexReference"],
@@ -3463,8 +4707,13 @@ function M.ListIndexRequest(args)
 		["NextToken"] = args["NextToken"],
 		["ConsistencyLevel"] = args["ConsistencyLevel"],
 	}
-	asserts.AssertListIndexRequest(t)
-	return t
+	asserts.AssertListIndexRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateTypedLinkFacetResponse = { nil }
@@ -3483,11 +4732,22 @@ end
 -- Valid keys:
 -- @return CreateTypedLinkFacetResponse structure as a key-value pair table
 function M.CreateTypedLinkFacetResponse(args)
-	assert(args, "You must provdide an argument table when creating CreateTypedLinkFacetResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateTypedLinkFacetResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertCreateTypedLinkFacetResponse(t)
-	return t
+	asserts.AssertCreateTypedLinkFacetResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListPublishedSchemaArnsResponse = { ["NextToken"] = true, ["SchemaArns"] = true, nil }
@@ -3510,13 +4770,24 @@ end
 -- * SchemaArns [Arns] <p>The ARNs of published schemas.</p>
 -- @return ListPublishedSchemaArnsResponse structure as a key-value pair table
 function M.ListPublishedSchemaArnsResponse(args)
-	assert(args, "You must provdide an argument table when creating ListPublishedSchemaArnsResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListPublishedSchemaArnsResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NextToken"] = args["NextToken"],
 		["SchemaArns"] = args["SchemaArns"],
 	}
-	asserts.AssertListPublishedSchemaArnsResponse(t)
-	return t
+	asserts.AssertListPublishedSchemaArnsResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateIndexResponse = { ["ObjectIdentifier"] = true, nil }
@@ -3537,12 +4808,23 @@ end
 -- * ObjectIdentifier [ObjectIdentifier] <p>The <code>ObjectIdentifier</code> of the index created by this operation.</p>
 -- @return CreateIndexResponse structure as a key-value pair table
 function M.CreateIndexResponse(args)
-	assert(args, "You must provdide an argument table when creating CreateIndexResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateIndexResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ObjectIdentifier"] = args["ObjectIdentifier"],
 	}
-	asserts.AssertCreateIndexResponse(t)
-	return t
+	asserts.AssertCreateIndexResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.BatchAttachObject = { ["ParentReference"] = true, ["LinkName"] = true, ["ChildReference"] = true, nil }
@@ -3573,14 +4855,25 @@ end
 -- Required key: LinkName
 -- @return BatchAttachObject structure as a key-value pair table
 function M.BatchAttachObject(args)
-	assert(args, "You must provdide an argument table when creating BatchAttachObject")
-	local t = { 
+	assert(args, "You must provide an argument table when creating BatchAttachObject")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ParentReference"] = args["ParentReference"],
 		["LinkName"] = args["LinkName"],
 		["ChildReference"] = args["ChildReference"],
 	}
-	asserts.AssertBatchAttachObject(t)
-	return t
+	asserts.AssertBatchAttachObject(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.FacetAttributeDefinition = { ["Rules"] = true, ["DefaultValue"] = true, ["Type"] = true, ["IsImmutable"] = true, nil }
@@ -3609,15 +4902,26 @@ end
 -- Required key: Type
 -- @return FacetAttributeDefinition structure as a key-value pair table
 function M.FacetAttributeDefinition(args)
-	assert(args, "You must provdide an argument table when creating FacetAttributeDefinition")
-	local t = { 
+	assert(args, "You must provide an argument table when creating FacetAttributeDefinition")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Rules"] = args["Rules"],
 		["DefaultValue"] = args["DefaultValue"],
 		["Type"] = args["Type"],
 		["IsImmutable"] = args["IsImmutable"],
 	}
-	asserts.AssertFacetAttributeDefinition(t)
-	return t
+	asserts.AssertFacetAttributeDefinition(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListTagsForResourceRequest = { ["ResourceArn"] = true, ["NextToken"] = true, ["MaxResults"] = true, nil }
@@ -3644,14 +4948,25 @@ end
 -- Required key: ResourceArn
 -- @return ListTagsForResourceRequest structure as a key-value pair table
 function M.ListTagsForResourceRequest(args)
-	assert(args, "You must provdide an argument table when creating ListTagsForResourceRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListTagsForResourceRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ResourceArn"] = args["ResourceArn"],
 		["NextToken"] = args["NextToken"],
 		["MaxResults"] = args["MaxResults"],
 	}
-	asserts.AssertListTagsForResourceRequest(t)
-	return t
+	asserts.AssertListTagsForResourceRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.BatchAddFacetToObjectResponse = { nil }
@@ -3670,11 +4985,22 @@ end
 -- Valid keys:
 -- @return BatchAddFacetToObjectResponse structure as a key-value pair table
 function M.BatchAddFacetToObjectResponse(args)
-	assert(args, "You must provdide an argument table when creating BatchAddFacetToObjectResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating BatchAddFacetToObjectResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertBatchAddFacetToObjectResponse(t)
-	return t
+	asserts.AssertBatchAddFacetToObjectResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.BatchRemoveFacetFromObjectResponse = { nil }
@@ -3693,11 +5019,22 @@ end
 -- Valid keys:
 -- @return BatchRemoveFacetFromObjectResponse structure as a key-value pair table
 function M.BatchRemoveFacetFromObjectResponse(args)
-	assert(args, "You must provdide an argument table when creating BatchRemoveFacetFromObjectResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating BatchRemoveFacetFromObjectResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertBatchRemoveFacetFromObjectResponse(t)
-	return t
+	asserts.AssertBatchRemoveFacetFromObjectResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AttachPolicyResponse = { nil }
@@ -3716,11 +5053,22 @@ end
 -- Valid keys:
 -- @return AttachPolicyResponse structure as a key-value pair table
 function M.AttachPolicyResponse(args)
-	assert(args, "You must provdide an argument table when creating AttachPolicyResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AttachPolicyResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertAttachPolicyResponse(t)
-	return t
+	asserts.AssertAttachPolicyResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.PolicyToPath = { ["Path"] = true, ["Policies"] = true, nil }
@@ -3743,13 +5091,24 @@ end
 -- * Policies [PolicyAttachmentList] <p>List of policy objects.</p>
 -- @return PolicyToPath structure as a key-value pair table
 function M.PolicyToPath(args)
-	assert(args, "You must provdide an argument table when creating PolicyToPath")
-	local t = { 
+	assert(args, "You must provide an argument table when creating PolicyToPath")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Path"] = args["Path"],
 		["Policies"] = args["Policies"],
 	}
-	asserts.AssertPolicyToPath(t)
-	return t
+	asserts.AssertPolicyToPath(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.BatchListObjectChildren = { ["ObjectReference"] = true, ["NextToken"] = true, ["MaxResults"] = true, nil }
@@ -3776,14 +5135,25 @@ end
 -- Required key: ObjectReference
 -- @return BatchListObjectChildren structure as a key-value pair table
 function M.BatchListObjectChildren(args)
-	assert(args, "You must provdide an argument table when creating BatchListObjectChildren")
-	local t = { 
+	assert(args, "You must provide an argument table when creating BatchListObjectChildren")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ObjectReference"] = args["ObjectReference"],
 		["NextToken"] = args["NextToken"],
 		["MaxResults"] = args["MaxResults"],
 	}
-	asserts.AssertBatchListObjectChildren(t)
-	return t
+	asserts.AssertBatchListObjectChildren(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListPublishedSchemaArnsRequest = { ["NextToken"] = true, ["MaxResults"] = true, nil }
@@ -3806,13 +5176,24 @@ end
 -- * MaxResults [NumberResults] <p>The maximum number of results to retrieve.</p>
 -- @return ListPublishedSchemaArnsRequest structure as a key-value pair table
 function M.ListPublishedSchemaArnsRequest(args)
-	assert(args, "You must provdide an argument table when creating ListPublishedSchemaArnsRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListPublishedSchemaArnsRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NextToken"] = args["NextToken"],
 		["MaxResults"] = args["MaxResults"],
 	}
-	asserts.AssertListPublishedSchemaArnsRequest(t)
-	return t
+	asserts.AssertListPublishedSchemaArnsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdateTypedLinkFacetResponse = { nil }
@@ -3831,11 +5212,22 @@ end
 -- Valid keys:
 -- @return UpdateTypedLinkFacetResponse structure as a key-value pair table
 function M.UpdateTypedLinkFacetResponse(args)
-	assert(args, "You must provdide an argument table when creating UpdateTypedLinkFacetResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateTypedLinkFacetResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertUpdateTypedLinkFacetResponse(t)
-	return t
+	asserts.AssertUpdateTypedLinkFacetResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.FacetAlreadyExistsException = { ["Message"] = true, nil }
@@ -3856,12 +5248,23 @@ end
 -- * Message [ExceptionMessage] 
 -- @return FacetAlreadyExistsException structure as a key-value pair table
 function M.FacetAlreadyExistsException(args)
-	assert(args, "You must provdide an argument table when creating FacetAlreadyExistsException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating FacetAlreadyExistsException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Message"] = args["Message"],
 	}
-	asserts.AssertFacetAlreadyExistsException(t)
-	return t
+	asserts.AssertFacetAlreadyExistsException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.TagResourceRequest = { ["ResourceArn"] = true, ["Tags"] = true, nil }
@@ -3888,13 +5291,24 @@ end
 -- Required key: Tags
 -- @return TagResourceRequest structure as a key-value pair table
 function M.TagResourceRequest(args)
-	assert(args, "You must provdide an argument table when creating TagResourceRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating TagResourceRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ResourceArn"] = args["ResourceArn"],
 		["Tags"] = args["Tags"],
 	}
-	asserts.AssertTagResourceRequest(t)
-	return t
+	asserts.AssertTagResourceRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AttachTypedLinkResponse = { ["TypedLinkSpecifier"] = true, nil }
@@ -3915,12 +5329,23 @@ end
 -- * TypedLinkSpecifier [TypedLinkSpecifier] <p>Returns a typed link specifier as output.</p>
 -- @return AttachTypedLinkResponse structure as a key-value pair table
 function M.AttachTypedLinkResponse(args)
-	assert(args, "You must provdide an argument table when creating AttachTypedLinkResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AttachTypedLinkResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["TypedLinkSpecifier"] = args["TypedLinkSpecifier"],
 	}
-	asserts.AssertAttachTypedLinkResponse(t)
-	return t
+	asserts.AssertAttachTypedLinkResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DisableDirectoryResponse = { ["DirectoryArn"] = true, nil }
@@ -3943,12 +5368,23 @@ end
 -- Required key: DirectoryArn
 -- @return DisableDirectoryResponse structure as a key-value pair table
 function M.DisableDirectoryResponse(args)
-	assert(args, "You must provdide an argument table when creating DisableDirectoryResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DisableDirectoryResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DirectoryArn"] = args["DirectoryArn"],
 	}
-	asserts.AssertDisableDirectoryResponse(t)
-	return t
+	asserts.AssertDisableDirectoryResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DetachObjectResponse = { ["DetachedObjectIdentifier"] = true, nil }
@@ -3969,12 +5405,23 @@ end
 -- * DetachedObjectIdentifier [ObjectIdentifier] <p>The <code>ObjectIdentifier</code> that was detached from the object.</p>
 -- @return DetachObjectResponse structure as a key-value pair table
 function M.DetachObjectResponse(args)
-	assert(args, "You must provdide an argument table when creating DetachObjectResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DetachObjectResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DetachedObjectIdentifier"] = args["DetachedObjectIdentifier"],
 	}
-	asserts.AssertDetachObjectResponse(t)
-	return t
+	asserts.AssertDetachObjectResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.BatchListObjectAttributes = { ["FacetFilter"] = true, ["ObjectReference"] = true, ["NextToken"] = true, ["MaxResults"] = true, nil }
@@ -4003,15 +5450,26 @@ end
 -- Required key: ObjectReference
 -- @return BatchListObjectAttributes structure as a key-value pair table
 function M.BatchListObjectAttributes(args)
-	assert(args, "You must provdide an argument table when creating BatchListObjectAttributes")
-	local t = { 
+	assert(args, "You must provide an argument table when creating BatchListObjectAttributes")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["FacetFilter"] = args["FacetFilter"],
 		["ObjectReference"] = args["ObjectReference"],
 		["NextToken"] = args["NextToken"],
 		["MaxResults"] = args["MaxResults"],
 	}
-	asserts.AssertBatchListObjectAttributes(t)
-	return t
+	asserts.AssertBatchListObjectAttributes(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetTypedLinkFacetInformationResponse = { ["IdentityAttributeOrder"] = true, nil }
@@ -4032,12 +5490,23 @@ end
 -- * IdentityAttributeOrder [AttributeNameList] <p>The order of identity attributes for the facet, from most significant to least significant. The ability to filter typed links considers the order that the attributes are defined on the typed link facet. When providing ranges to typed link selection, any inexact ranges must be specified at the end. Any attributes that do not have a range specified are presumed to match the entire range. Filters are interpreted in the order of the attributes on the typed link facet, not the order in which they are supplied to any API calls. For more information about identity attributes, see <a href="http://docs.aws.amazon.com/directoryservice/latest/admin-guide/objectsandlinks.html#typedlink">Typed link</a>.</p>
 -- @return GetTypedLinkFacetInformationResponse structure as a key-value pair table
 function M.GetTypedLinkFacetInformationResponse(args)
-	assert(args, "You must provdide an argument table when creating GetTypedLinkFacetInformationResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetTypedLinkFacetInformationResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["IdentityAttributeOrder"] = args["IdentityAttributeOrder"],
 	}
-	asserts.AssertGetTypedLinkFacetInformationResponse(t)
-	return t
+	asserts.AssertGetTypedLinkFacetInformationResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UntagResourceResponse = { nil }
@@ -4056,11 +5525,22 @@ end
 -- Valid keys:
 -- @return UntagResourceResponse structure as a key-value pair table
 function M.UntagResourceResponse(args)
-	assert(args, "You must provdide an argument table when creating UntagResourceResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UntagResourceResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertUntagResourceResponse(t)
-	return t
+	asserts.AssertUntagResourceResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetObjectInformationResponse = { ["ObjectIdentifier"] = true, ["SchemaFacets"] = true, nil }
@@ -4083,13 +5563,24 @@ end
 -- * SchemaFacets [SchemaFacetList] <p>The facets attached to the specified object.</p>
 -- @return GetObjectInformationResponse structure as a key-value pair table
 function M.GetObjectInformationResponse(args)
-	assert(args, "You must provdide an argument table when creating GetObjectInformationResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetObjectInformationResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ObjectIdentifier"] = args["ObjectIdentifier"],
 		["SchemaFacets"] = args["SchemaFacets"],
 	}
-	asserts.AssertGetObjectInformationResponse(t)
-	return t
+	asserts.AssertGetObjectInformationResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DirectoryNotEnabledException = { ["Message"] = true, nil }
@@ -4110,12 +5601,23 @@ end
 -- * Message [ExceptionMessage] 
 -- @return DirectoryNotEnabledException structure as a key-value pair table
 function M.DirectoryNotEnabledException(args)
-	assert(args, "You must provdide an argument table when creating DirectoryNotEnabledException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DirectoryNotEnabledException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Message"] = args["Message"],
 	}
-	asserts.AssertDirectoryNotEnabledException(t)
-	return t
+	asserts.AssertDirectoryNotEnabledException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateSchemaResponse = { ["SchemaArn"] = true, nil }
@@ -4136,12 +5638,23 @@ end
 -- * SchemaArn [Arn] <p>The Amazon Resource Name (ARN) that is associated with the schema. For more information, see <a>arns</a>.</p>
 -- @return CreateSchemaResponse structure as a key-value pair table
 function M.CreateSchemaResponse(args)
-	assert(args, "You must provdide an argument table when creating CreateSchemaResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateSchemaResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["SchemaArn"] = args["SchemaArn"],
 	}
-	asserts.AssertCreateSchemaResponse(t)
-	return t
+	asserts.AssertCreateSchemaResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateFacetResponse = { nil }
@@ -4160,11 +5673,22 @@ end
 -- Valid keys:
 -- @return CreateFacetResponse structure as a key-value pair table
 function M.CreateFacetResponse(args)
-	assert(args, "You must provdide an argument table when creating CreateFacetResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateFacetResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertCreateFacetResponse(t)
-	return t
+	asserts.AssertCreateFacetResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetSchemaAsJsonRequest = { ["SchemaArn"] = true, nil }
@@ -4187,12 +5711,24 @@ end
 -- Required key: SchemaArn
 -- @return GetSchemaAsJsonRequest structure as a key-value pair table
 function M.GetSchemaAsJsonRequest(args)
-	assert(args, "You must provdide an argument table when creating GetSchemaAsJsonRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetSchemaAsJsonRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+        ["x-amz-data-partition"] = args["SchemaArn"],
+    }
+	local all_args = { 
 		["SchemaArn"] = args["SchemaArn"],
 	}
-	asserts.AssertGetSchemaAsJsonRequest(t)
-	return t
+	asserts.AssertGetSchemaAsJsonRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteTypedLinkFacetResponse = { nil }
@@ -4211,11 +5747,22 @@ end
 -- Valid keys:
 -- @return DeleteTypedLinkFacetResponse structure as a key-value pair table
 function M.DeleteTypedLinkFacetResponse(args)
-	assert(args, "You must provdide an argument table when creating DeleteTypedLinkFacetResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteTypedLinkFacetResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertDeleteTypedLinkFacetResponse(t)
-	return t
+	asserts.AssertDeleteTypedLinkFacetResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetTypedLinkFacetInformationRequest = { ["SchemaArn"] = true, ["Name"] = true, nil }
@@ -4242,13 +5789,25 @@ end
 -- Required key: Name
 -- @return GetTypedLinkFacetInformationRequest structure as a key-value pair table
 function M.GetTypedLinkFacetInformationRequest(args)
-	assert(args, "You must provdide an argument table when creating GetTypedLinkFacetInformationRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetTypedLinkFacetInformationRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+        ["x-amz-data-partition"] = args["SchemaArn"],
+    }
+	local all_args = { 
 		["SchemaArn"] = args["SchemaArn"],
 		["Name"] = args["Name"],
 	}
-	asserts.AssertGetTypedLinkFacetInformationRequest(t)
-	return t
+	asserts.AssertGetTypedLinkFacetInformationRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListOutgoingTypedLinksResponse = { ["NextToken"] = true, ["TypedLinkSpecifiers"] = true, nil }
@@ -4271,13 +5830,24 @@ end
 -- * TypedLinkSpecifiers [TypedLinkSpecifierList] <p>Returns a typed link specifier as output.</p>
 -- @return ListOutgoingTypedLinksResponse structure as a key-value pair table
 function M.ListOutgoingTypedLinksResponse(args)
-	assert(args, "You must provdide an argument table when creating ListOutgoingTypedLinksResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListOutgoingTypedLinksResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NextToken"] = args["NextToken"],
 		["TypedLinkSpecifiers"] = args["TypedLinkSpecifiers"],
 	}
-	asserts.AssertListOutgoingTypedLinksResponse(t)
-	return t
+	asserts.AssertListOutgoingTypedLinksResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.PutSchemaFromJsonRequest = { ["Document"] = true, ["SchemaArn"] = true, nil }
@@ -4304,13 +5874,25 @@ end
 -- Required key: Document
 -- @return PutSchemaFromJsonRequest structure as a key-value pair table
 function M.PutSchemaFromJsonRequest(args)
-	assert(args, "You must provdide an argument table when creating PutSchemaFromJsonRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating PutSchemaFromJsonRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+        ["x-amz-data-partition"] = args["SchemaArn"],
+    }
+	local all_args = { 
 		["Document"] = args["Document"],
 		["SchemaArn"] = args["SchemaArn"],
 	}
-	asserts.AssertPutSchemaFromJsonRequest(t)
-	return t
+	asserts.AssertPutSchemaFromJsonRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.EnableDirectoryRequest = { ["DirectoryArn"] = true, nil }
@@ -4333,12 +5915,24 @@ end
 -- Required key: DirectoryArn
 -- @return EnableDirectoryRequest structure as a key-value pair table
 function M.EnableDirectoryRequest(args)
-	assert(args, "You must provdide an argument table when creating EnableDirectoryRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating EnableDirectoryRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+        ["x-amz-data-partition"] = args["DirectoryArn"],
+    }
+	local all_args = { 
 		["DirectoryArn"] = args["DirectoryArn"],
 	}
-	asserts.AssertEnableDirectoryRequest(t)
-	return t
+	asserts.AssertEnableDirectoryRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.IndexedAttributeMissingException = { ["Message"] = true, nil }
@@ -4359,12 +5953,23 @@ end
 -- * Message [ExceptionMessage] 
 -- @return IndexedAttributeMissingException structure as a key-value pair table
 function M.IndexedAttributeMissingException(args)
-	assert(args, "You must provdide an argument table when creating IndexedAttributeMissingException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating IndexedAttributeMissingException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Message"] = args["Message"],
 	}
-	asserts.AssertIndexedAttributeMissingException(t)
-	return t
+	asserts.AssertIndexedAttributeMissingException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListObjectParentPathsResponse = { ["PathToObjectIdentifiersList"] = true, ["NextToken"] = true, nil }
@@ -4387,13 +5992,24 @@ end
 -- * NextToken [NextToken] <p>The pagination token.</p>
 -- @return ListObjectParentPathsResponse structure as a key-value pair table
 function M.ListObjectParentPathsResponse(args)
-	assert(args, "You must provdide an argument table when creating ListObjectParentPathsResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListObjectParentPathsResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["PathToObjectIdentifiersList"] = args["PathToObjectIdentifiersList"],
 		["NextToken"] = args["NextToken"],
 	}
-	asserts.AssertListObjectParentPathsResponse(t)
-	return t
+	asserts.AssertListObjectParentPathsResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdateTypedLinkFacetRequest = { ["AttributeUpdates"] = true, ["SchemaArn"] = true, ["IdentityAttributeOrder"] = true, ["Name"] = true, nil }
@@ -4428,15 +6044,27 @@ end
 -- Required key: IdentityAttributeOrder
 -- @return UpdateTypedLinkFacetRequest structure as a key-value pair table
 function M.UpdateTypedLinkFacetRequest(args)
-	assert(args, "You must provdide an argument table when creating UpdateTypedLinkFacetRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateTypedLinkFacetRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+        ["x-amz-data-partition"] = args["SchemaArn"],
+    }
+	local all_args = { 
 		["AttributeUpdates"] = args["AttributeUpdates"],
 		["SchemaArn"] = args["SchemaArn"],
 		["IdentityAttributeOrder"] = args["IdentityAttributeOrder"],
 		["Name"] = args["Name"],
 	}
-	asserts.AssertUpdateTypedLinkFacetRequest(t)
-	return t
+	asserts.AssertUpdateTypedLinkFacetRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListFacetNamesResponse = { ["NextToken"] = true, ["FacetNames"] = true, nil }
@@ -4459,13 +6087,24 @@ end
 -- * FacetNames [FacetNameList] <p>The names of facets that exist within the schema.</p>
 -- @return ListFacetNamesResponse structure as a key-value pair table
 function M.ListFacetNamesResponse(args)
-	assert(args, "You must provdide an argument table when creating ListFacetNamesResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListFacetNamesResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NextToken"] = args["NextToken"],
 		["FacetNames"] = args["FacetNames"],
 	}
-	asserts.AssertListFacetNamesResponse(t)
-	return t
+	asserts.AssertListFacetNamesResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListTypedLinkFacetAttributesRequest = { ["SchemaArn"] = true, ["NextToken"] = true, ["Name"] = true, ["MaxResults"] = true, nil }
@@ -4496,15 +6135,27 @@ end
 -- Required key: Name
 -- @return ListTypedLinkFacetAttributesRequest structure as a key-value pair table
 function M.ListTypedLinkFacetAttributesRequest(args)
-	assert(args, "You must provdide an argument table when creating ListTypedLinkFacetAttributesRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListTypedLinkFacetAttributesRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+        ["x-amz-data-partition"] = args["SchemaArn"],
+    }
+	local all_args = { 
 		["SchemaArn"] = args["SchemaArn"],
 		["NextToken"] = args["NextToken"],
 		["Name"] = args["Name"],
 		["MaxResults"] = args["MaxResults"],
 	}
-	asserts.AssertListTypedLinkFacetAttributesRequest(t)
-	return t
+	asserts.AssertListTypedLinkFacetAttributesRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.TagResourceResponse = { nil }
@@ -4523,11 +6174,22 @@ end
 -- Valid keys:
 -- @return TagResourceResponse structure as a key-value pair table
 function M.TagResourceResponse(args)
-	assert(args, "You must provdide an argument table when creating TagResourceResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating TagResourceResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertTagResourceResponse(t)
-	return t
+	asserts.AssertTagResourceResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.TypedLinkAttributeDefinition = { ["RequiredBehavior"] = true, ["Name"] = true, ["IsImmutable"] = true, ["Rules"] = true, ["DefaultValue"] = true, ["Type"] = true, nil }
@@ -4564,8 +6226,14 @@ end
 -- Required key: RequiredBehavior
 -- @return TypedLinkAttributeDefinition structure as a key-value pair table
 function M.TypedLinkAttributeDefinition(args)
-	assert(args, "You must provdide an argument table when creating TypedLinkAttributeDefinition")
-	local t = { 
+	assert(args, "You must provide an argument table when creating TypedLinkAttributeDefinition")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["RequiredBehavior"] = args["RequiredBehavior"],
 		["Name"] = args["Name"],
 		["IsImmutable"] = args["IsImmutable"],
@@ -4573,8 +6241,13 @@ function M.TypedLinkAttributeDefinition(args)
 		["DefaultValue"] = args["DefaultValue"],
 		["Type"] = args["Type"],
 	}
-	asserts.AssertTypedLinkAttributeDefinition(t)
-	return t
+	asserts.AssertTypedLinkAttributeDefinition(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListOutgoingTypedLinksRequest = { ["FilterAttributeRanges"] = true, ["MaxResults"] = true, ["FilterTypedLink"] = true, ["ObjectReference"] = true, ["DirectoryArn"] = true, ["NextToken"] = true, ["ConsistencyLevel"] = true, nil }
@@ -4611,8 +6284,15 @@ end
 -- Required key: ObjectReference
 -- @return ListOutgoingTypedLinksRequest structure as a key-value pair table
 function M.ListOutgoingTypedLinksRequest(args)
-	assert(args, "You must provdide an argument table when creating ListOutgoingTypedLinksRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListOutgoingTypedLinksRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+        ["x-amz-data-partition"] = args["DirectoryArn"],
+    }
+	local all_args = { 
 		["FilterAttributeRanges"] = args["FilterAttributeRanges"],
 		["MaxResults"] = args["MaxResults"],
 		["FilterTypedLink"] = args["FilterTypedLink"],
@@ -4621,8 +6301,13 @@ function M.ListOutgoingTypedLinksRequest(args)
 		["NextToken"] = args["NextToken"],
 		["ConsistencyLevel"] = args["ConsistencyLevel"],
 	}
-	asserts.AssertListOutgoingTypedLinksRequest(t)
-	return t
+	asserts.AssertListOutgoingTypedLinksRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateDirectoryRequest = { ["SchemaArn"] = true, ["Name"] = true, nil }
@@ -4649,13 +6334,25 @@ end
 -- Required key: SchemaArn
 -- @return CreateDirectoryRequest structure as a key-value pair table
 function M.CreateDirectoryRequest(args)
-	assert(args, "You must provdide an argument table when creating CreateDirectoryRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateDirectoryRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+        ["x-amz-data-partition"] = args["SchemaArn"],
+    }
+	local all_args = { 
 		["SchemaArn"] = args["SchemaArn"],
 		["Name"] = args["Name"],
 	}
-	asserts.AssertCreateDirectoryRequest(t)
-	return t
+	asserts.AssertCreateDirectoryRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListTypedLinkFacetNamesResponse = { ["NextToken"] = true, ["FacetNames"] = true, nil }
@@ -4678,13 +6375,24 @@ end
 -- * FacetNames [TypedLinkNameList] <p>The names of typed link facets that exist within the schema.</p>
 -- @return ListTypedLinkFacetNamesResponse structure as a key-value pair table
 function M.ListTypedLinkFacetNamesResponse(args)
-	assert(args, "You must provdide an argument table when creating ListTypedLinkFacetNamesResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListTypedLinkFacetNamesResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NextToken"] = args["NextToken"],
 		["FacetNames"] = args["FacetNames"],
 	}
-	asserts.AssertListTypedLinkFacetNamesResponse(t)
-	return t
+	asserts.AssertListTypedLinkFacetNamesResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetDirectoryRequest = { ["DirectoryArn"] = true, nil }
@@ -4707,12 +6415,24 @@ end
 -- Required key: DirectoryArn
 -- @return GetDirectoryRequest structure as a key-value pair table
 function M.GetDirectoryRequest(args)
-	assert(args, "You must provdide an argument table when creating GetDirectoryRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetDirectoryRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+        ["x-amz-data-partition"] = args["DirectoryArn"],
+    }
+	local all_args = { 
 		["DirectoryArn"] = args["DirectoryArn"],
 	}
-	asserts.AssertGetDirectoryRequest(t)
-	return t
+	asserts.AssertGetDirectoryRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.BatchAttachObjectResponse = { ["attachedObjectIdentifier"] = true, nil }
@@ -4733,12 +6453,23 @@ end
 -- * attachedObjectIdentifier [ObjectIdentifier] <p>The <code>ObjectIdentifier</code> of the object that has been attached.</p>
 -- @return BatchAttachObjectResponse structure as a key-value pair table
 function M.BatchAttachObjectResponse(args)
-	assert(args, "You must provdide an argument table when creating BatchAttachObjectResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating BatchAttachObjectResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["attachedObjectIdentifier"] = args["attachedObjectIdentifier"],
 	}
-	asserts.AssertBatchAttachObjectResponse(t)
-	return t
+	asserts.AssertBatchAttachObjectResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.BatchWriteOperation = { ["DetachObject"] = true, ["AttachObject"] = true, ["AddFacetToObject"] = true, ["RemoveFacetFromObject"] = true, ["CreateObject"] = true, ["DeleteObject"] = true, ["UpdateObjectAttributes"] = true, nil }
@@ -4771,8 +6502,14 @@ end
 -- * UpdateObjectAttributes [BatchUpdateObjectAttributes] <p>Updates a given object's attributes.</p>
 -- @return BatchWriteOperation structure as a key-value pair table
 function M.BatchWriteOperation(args)
-	assert(args, "You must provdide an argument table when creating BatchWriteOperation")
-	local t = { 
+	assert(args, "You must provide an argument table when creating BatchWriteOperation")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DetachObject"] = args["DetachObject"],
 		["AttachObject"] = args["AttachObject"],
 		["AddFacetToObject"] = args["AddFacetToObject"],
@@ -4781,8 +6518,13 @@ function M.BatchWriteOperation(args)
 		["DeleteObject"] = args["DeleteObject"],
 		["UpdateObjectAttributes"] = args["UpdateObjectAttributes"],
 	}
-	asserts.AssertBatchWriteOperation(t)
-	return t
+	asserts.AssertBatchWriteOperation(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetDirectoryResponse = { ["Directory"] = true, nil }
@@ -4805,12 +6547,23 @@ end
 -- Required key: Directory
 -- @return GetDirectoryResponse structure as a key-value pair table
 function M.GetDirectoryResponse(args)
-	assert(args, "You must provdide an argument table when creating GetDirectoryResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetDirectoryResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Directory"] = args["Directory"],
 	}
-	asserts.AssertGetDirectoryResponse(t)
-	return t
+	asserts.AssertGetDirectoryResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.BatchReadSuccessfulResponse = { ["ListObjectAttributes"] = true, ["ListObjectChildren"] = true, nil }
@@ -4833,13 +6586,24 @@ end
 -- * ListObjectChildren [BatchListObjectChildrenResponse] <p>Returns a paginated list of child objects that are associated with a given object.</p>
 -- @return BatchReadSuccessfulResponse structure as a key-value pair table
 function M.BatchReadSuccessfulResponse(args)
-	assert(args, "You must provdide an argument table when creating BatchReadSuccessfulResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating BatchReadSuccessfulResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ListObjectAttributes"] = args["ListObjectAttributes"],
 		["ListObjectChildren"] = args["ListObjectChildren"],
 	}
-	asserts.AssertBatchReadSuccessfulResponse(t)
-	return t
+	asserts.AssertBatchReadSuccessfulResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateSchemaRequest = { ["Name"] = true, nil }
@@ -4862,12 +6626,23 @@ end
 -- Required key: Name
 -- @return CreateSchemaRequest structure as a key-value pair table
 function M.CreateSchemaRequest(args)
-	assert(args, "You must provdide an argument table when creating CreateSchemaRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateSchemaRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Name"] = args["Name"],
 	}
-	asserts.AssertCreateSchemaRequest(t)
-	return t
+	asserts.AssertCreateSchemaRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.BatchReadResponse = { ["Responses"] = true, nil }
@@ -4888,12 +6663,23 @@ end
 -- * Responses [BatchReadOperationResponseList] <p>A list of all the responses for each batch read.</p>
 -- @return BatchReadResponse structure as a key-value pair table
 function M.BatchReadResponse(args)
-	assert(args, "You must provdide an argument table when creating BatchReadResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating BatchReadResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Responses"] = args["Responses"],
 	}
-	asserts.AssertBatchReadResponse(t)
-	return t
+	asserts.AssertBatchReadResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteTypedLinkFacetRequest = { ["SchemaArn"] = true, ["Name"] = true, nil }
@@ -4920,13 +6706,25 @@ end
 -- Required key: Name
 -- @return DeleteTypedLinkFacetRequest structure as a key-value pair table
 function M.DeleteTypedLinkFacetRequest(args)
-	assert(args, "You must provdide an argument table when creating DeleteTypedLinkFacetRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteTypedLinkFacetRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+        ["x-amz-data-partition"] = args["SchemaArn"],
+    }
+	local all_args = { 
 		["SchemaArn"] = args["SchemaArn"],
 		["Name"] = args["Name"],
 	}
-	asserts.AssertDeleteTypedLinkFacetRequest(t)
-	return t
+	asserts.AssertDeleteTypedLinkFacetRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListObjectAttributesResponse = { ["Attributes"] = true, ["NextToken"] = true, nil }
@@ -4949,13 +6747,24 @@ end
 -- * NextToken [NextToken] <p>The pagination token.</p>
 -- @return ListObjectAttributesResponse structure as a key-value pair table
 function M.ListObjectAttributesResponse(args)
-	assert(args, "You must provdide an argument table when creating ListObjectAttributesResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListObjectAttributesResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Attributes"] = args["Attributes"],
 		["NextToken"] = args["NextToken"],
 	}
-	asserts.AssertListObjectAttributesResponse(t)
-	return t
+	asserts.AssertListObjectAttributesResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AttachToIndexRequest = { ["IndexReference"] = true, ["DirectoryArn"] = true, ["TargetReference"] = true, nil }
@@ -4986,14 +6795,26 @@ end
 -- Required key: TargetReference
 -- @return AttachToIndexRequest structure as a key-value pair table
 function M.AttachToIndexRequest(args)
-	assert(args, "You must provdide an argument table when creating AttachToIndexRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AttachToIndexRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+        ["x-amz-data-partition"] = args["DirectoryArn"],
+    }
+	local all_args = { 
 		["IndexReference"] = args["IndexReference"],
 		["DirectoryArn"] = args["DirectoryArn"],
 		["TargetReference"] = args["TargetReference"],
 	}
-	asserts.AssertAttachToIndexRequest(t)
-	return t
+	asserts.AssertAttachToIndexRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.LookupPolicyRequest = { ["ObjectReference"] = true, ["NextToken"] = true, ["MaxResults"] = true, ["DirectoryArn"] = true, nil }
@@ -5024,15 +6845,27 @@ end
 -- Required key: ObjectReference
 -- @return LookupPolicyRequest structure as a key-value pair table
 function M.LookupPolicyRequest(args)
-	assert(args, "You must provdide an argument table when creating LookupPolicyRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating LookupPolicyRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+        ["x-amz-data-partition"] = args["DirectoryArn"],
+    }
+	local all_args = { 
 		["ObjectReference"] = args["ObjectReference"],
 		["NextToken"] = args["NextToken"],
 		["MaxResults"] = args["MaxResults"],
 		["DirectoryArn"] = args["DirectoryArn"],
 	}
-	asserts.AssertLookupPolicyRequest(t)
-	return t
+	asserts.AssertLookupPolicyRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.BatchWriteException = { ["Index"] = true, ["Message"] = true, ["Type"] = true, nil }
@@ -5057,14 +6890,25 @@ end
 -- * Type [BatchWriteExceptionType] 
 -- @return BatchWriteException structure as a key-value pair table
 function M.BatchWriteException(args)
-	assert(args, "You must provdide an argument table when creating BatchWriteException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating BatchWriteException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Index"] = args["Index"],
 		["Message"] = args["Message"],
 		["Type"] = args["Type"],
 	}
-	asserts.AssertBatchWriteException(t)
-	return t
+	asserts.AssertBatchWriteException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.BatchReadOperation = { ["ListObjectAttributes"] = true, ["ListObjectChildren"] = true, nil }
@@ -5087,13 +6931,24 @@ end
 -- * ListObjectChildren [BatchListObjectChildren] <p>Returns a paginated list of child objects that are associated with a given object.</p>
 -- @return BatchReadOperation structure as a key-value pair table
 function M.BatchReadOperation(args)
-	assert(args, "You must provdide an argument table when creating BatchReadOperation")
-	local t = { 
+	assert(args, "You must provide an argument table when creating BatchReadOperation")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ListObjectAttributes"] = args["ListObjectAttributes"],
 		["ListObjectChildren"] = args["ListObjectChildren"],
 	}
-	asserts.AssertBatchReadOperation(t)
-	return t
+	asserts.AssertBatchReadOperation(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AttributeKeyAndValue = { ["Value"] = true, ["Key"] = true, nil }
@@ -5120,13 +6975,24 @@ end
 -- Required key: Value
 -- @return AttributeKeyAndValue structure as a key-value pair table
 function M.AttributeKeyAndValue(args)
-	assert(args, "You must provdide an argument table when creating AttributeKeyAndValue")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AttributeKeyAndValue")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Value"] = args["Value"],
 		["Key"] = args["Key"],
 	}
-	asserts.AssertAttributeKeyAndValue(t)
-	return t
+	asserts.AssertAttributeKeyAndValue(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.IndexAttachment = { ["ObjectIdentifier"] = true, ["IndexedAttributes"] = true, nil }
@@ -5149,13 +7015,24 @@ end
 -- * IndexedAttributes [AttributeKeyAndValueList] <p>The indexed attribute values.</p>
 -- @return IndexAttachment structure as a key-value pair table
 function M.IndexAttachment(args)
-	assert(args, "You must provdide an argument table when creating IndexAttachment")
-	local t = { 
+	assert(args, "You must provide an argument table when creating IndexAttachment")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ObjectIdentifier"] = args["ObjectIdentifier"],
 		["IndexedAttributes"] = args["IndexedAttributes"],
 	}
-	asserts.AssertIndexAttachment(t)
-	return t
+	asserts.AssertIndexAttachment(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.BatchCreateObject = { ["ObjectAttributeList"] = true, ["ParentReference"] = true, ["BatchReferenceName"] = true, ["SchemaFacet"] = true, ["LinkName"] = true, nil }
@@ -5194,16 +7071,27 @@ end
 -- Required key: BatchReferenceName
 -- @return BatchCreateObject structure as a key-value pair table
 function M.BatchCreateObject(args)
-	assert(args, "You must provdide an argument table when creating BatchCreateObject")
-	local t = { 
+	assert(args, "You must provide an argument table when creating BatchCreateObject")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ObjectAttributeList"] = args["ObjectAttributeList"],
 		["ParentReference"] = args["ParentReference"],
 		["BatchReferenceName"] = args["BatchReferenceName"],
 		["SchemaFacet"] = args["SchemaFacet"],
 		["LinkName"] = args["LinkName"],
 	}
-	asserts.AssertBatchCreateObject(t)
-	return t
+	asserts.AssertBatchCreateObject(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListDevelopmentSchemaArnsResponse = { ["NextToken"] = true, ["SchemaArns"] = true, nil }
@@ -5226,13 +7114,24 @@ end
 -- * SchemaArns [Arns] <p>The ARNs of retrieved development schemas.</p>
 -- @return ListDevelopmentSchemaArnsResponse structure as a key-value pair table
 function M.ListDevelopmentSchemaArnsResponse(args)
-	assert(args, "You must provdide an argument table when creating ListDevelopmentSchemaArnsResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListDevelopmentSchemaArnsResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NextToken"] = args["NextToken"],
 		["SchemaArns"] = args["SchemaArns"],
 	}
-	asserts.AssertListDevelopmentSchemaArnsResponse(t)
-	return t
+	asserts.AssertListDevelopmentSchemaArnsResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.LookupPolicyResponse = { ["PolicyToPathList"] = true, ["NextToken"] = true, nil }
@@ -5255,13 +7154,24 @@ end
 -- * NextToken [NextToken] <p>The pagination token.</p>
 -- @return LookupPolicyResponse structure as a key-value pair table
 function M.LookupPolicyResponse(args)
-	assert(args, "You must provdide an argument table when creating LookupPolicyResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating LookupPolicyResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["PolicyToPathList"] = args["PolicyToPathList"],
 		["NextToken"] = args["NextToken"],
 	}
-	asserts.AssertLookupPolicyResponse(t)
-	return t
+	asserts.AssertLookupPolicyResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidRuleException = { ["Message"] = true, nil }
@@ -5282,12 +7192,23 @@ end
 -- * Message [ExceptionMessage] 
 -- @return InvalidRuleException structure as a key-value pair table
 function M.InvalidRuleException(args)
-	assert(args, "You must provdide an argument table when creating InvalidRuleException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidRuleException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Message"] = args["Message"],
 	}
-	asserts.AssertInvalidRuleException(t)
-	return t
+	asserts.AssertInvalidRuleException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListTagsForResourceResponse = { ["NextToken"] = true, ["Tags"] = true, nil }
@@ -5310,13 +7231,24 @@ end
 -- * Tags [TagList] <p>A list of tag key value pairs that are associated with the response.</p>
 -- @return ListTagsForResourceResponse structure as a key-value pair table
 function M.ListTagsForResourceResponse(args)
-	assert(args, "You must provdide an argument table when creating ListTagsForResourceResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListTagsForResourceResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NextToken"] = args["NextToken"],
 		["Tags"] = args["Tags"],
 	}
-	asserts.AssertListTagsForResourceResponse(t)
-	return t
+	asserts.AssertListTagsForResourceResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.TypedLinkSchemaAndFacetName = { ["TypedLinkName"] = true, ["SchemaArn"] = true, nil }
@@ -5343,13 +7275,24 @@ end
 -- Required key: TypedLinkName
 -- @return TypedLinkSchemaAndFacetName structure as a key-value pair table
 function M.TypedLinkSchemaAndFacetName(args)
-	assert(args, "You must provdide an argument table when creating TypedLinkSchemaAndFacetName")
-	local t = { 
+	assert(args, "You must provide an argument table when creating TypedLinkSchemaAndFacetName")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["TypedLinkName"] = args["TypedLinkName"],
 		["SchemaArn"] = args["SchemaArn"],
 	}
-	asserts.AssertTypedLinkSchemaAndFacetName(t)
-	return t
+	asserts.AssertTypedLinkSchemaAndFacetName(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListIncomingTypedLinksResponse = { ["NextToken"] = true, ["LinkSpecifiers"] = true, nil }
@@ -5372,13 +7315,24 @@ end
 -- * LinkSpecifiers [TypedLinkSpecifierList] <p>Returns one or more typed link specifiers as output.</p>
 -- @return ListIncomingTypedLinksResponse structure as a key-value pair table
 function M.ListIncomingTypedLinksResponse(args)
-	assert(args, "You must provdide an argument table when creating ListIncomingTypedLinksResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListIncomingTypedLinksResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NextToken"] = args["NextToken"],
 		["LinkSpecifiers"] = args["LinkSpecifiers"],
 	}
-	asserts.AssertListIncomingTypedLinksResponse(t)
-	return t
+	asserts.AssertListIncomingTypedLinksResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.BatchDetachObject = { ["ParentReference"] = true, ["LinkName"] = true, ["BatchReferenceName"] = true, nil }
@@ -5409,14 +7363,25 @@ end
 -- Required key: BatchReferenceName
 -- @return BatchDetachObject structure as a key-value pair table
 function M.BatchDetachObject(args)
-	assert(args, "You must provdide an argument table when creating BatchDetachObject")
-	local t = { 
+	assert(args, "You must provide an argument table when creating BatchDetachObject")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ParentReference"] = args["ParentReference"],
 		["LinkName"] = args["LinkName"],
 		["BatchReferenceName"] = args["BatchReferenceName"],
 	}
-	asserts.AssertBatchDetachObject(t)
-	return t
+	asserts.AssertBatchDetachObject(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateFacetRequest = { ["Attributes"] = true, ["SchemaArn"] = true, ["Name"] = true, ["ObjectType"] = true, nil }
@@ -5449,15 +7414,27 @@ end
 -- Required key: ObjectType
 -- @return CreateFacetRequest structure as a key-value pair table
 function M.CreateFacetRequest(args)
-	assert(args, "You must provdide an argument table when creating CreateFacetRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateFacetRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+        ["x-amz-data-partition"] = args["SchemaArn"],
+    }
+	local all_args = { 
 		["Attributes"] = args["Attributes"],
 		["SchemaArn"] = args["SchemaArn"],
 		["Name"] = args["Name"],
 		["ObjectType"] = args["ObjectType"],
 	}
-	asserts.AssertCreateFacetRequest(t)
-	return t
+	asserts.AssertCreateFacetRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.TypedLinkAttributeRange = { ["Range"] = true, ["AttributeName"] = true, nil }
@@ -5482,13 +7459,24 @@ end
 -- Required key: Range
 -- @return TypedLinkAttributeRange structure as a key-value pair table
 function M.TypedLinkAttributeRange(args)
-	assert(args, "You must provdide an argument table when creating TypedLinkAttributeRange")
-	local t = { 
+	assert(args, "You must provide an argument table when creating TypedLinkAttributeRange")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Range"] = args["Range"],
 		["AttributeName"] = args["AttributeName"],
 	}
-	asserts.AssertTypedLinkAttributeRange(t)
-	return t
+	asserts.AssertTypedLinkAttributeRange(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.BatchDeleteObject = { ["ObjectReference"] = true, nil }
@@ -5511,12 +7499,23 @@ end
 -- Required key: ObjectReference
 -- @return BatchDeleteObject structure as a key-value pair table
 function M.BatchDeleteObject(args)
-	assert(args, "You must provdide an argument table when creating BatchDeleteObject")
-	local t = { 
+	assert(args, "You must provide an argument table when creating BatchDeleteObject")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ObjectReference"] = args["ObjectReference"],
 	}
-	asserts.AssertBatchDeleteObject(t)
-	return t
+	asserts.AssertBatchDeleteObject(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteDirectoryRequest = { ["DirectoryArn"] = true, nil }
@@ -5539,12 +7538,24 @@ end
 -- Required key: DirectoryArn
 -- @return DeleteDirectoryRequest structure as a key-value pair table
 function M.DeleteDirectoryRequest(args)
-	assert(args, "You must provdide an argument table when creating DeleteDirectoryRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteDirectoryRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+        ["x-amz-data-partition"] = args["DirectoryArn"],
+    }
+	local all_args = { 
 		["DirectoryArn"] = args["DirectoryArn"],
 	}
-	asserts.AssertDeleteDirectoryRequest(t)
-	return t
+	asserts.AssertDeleteDirectoryRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.BatchListObjectAttributesResponse = { ["Attributes"] = true, ["NextToken"] = true, nil }
@@ -5567,13 +7578,24 @@ end
 -- * NextToken [NextToken] <p>The pagination token.</p>
 -- @return BatchListObjectAttributesResponse structure as a key-value pair table
 function M.BatchListObjectAttributesResponse(args)
-	assert(args, "You must provdide an argument table when creating BatchListObjectAttributesResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating BatchListObjectAttributesResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Attributes"] = args["Attributes"],
 		["NextToken"] = args["NextToken"],
 	}
-	asserts.AssertBatchListObjectAttributesResponse(t)
-	return t
+	asserts.AssertBatchListObjectAttributesResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AddFacetToObjectRequest = { ["ObjectAttributeList"] = true, ["ObjectReference"] = true, ["SchemaFacet"] = true, ["DirectoryArn"] = true, nil }
@@ -5606,15 +7628,27 @@ end
 -- Required key: ObjectReference
 -- @return AddFacetToObjectRequest structure as a key-value pair table
 function M.AddFacetToObjectRequest(args)
-	assert(args, "You must provdide an argument table when creating AddFacetToObjectRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AddFacetToObjectRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+        ["x-amz-data-partition"] = args["DirectoryArn"],
+    }
+	local all_args = { 
 		["ObjectAttributeList"] = args["ObjectAttributeList"],
 		["ObjectReference"] = args["ObjectReference"],
 		["SchemaFacet"] = args["SchemaFacet"],
 		["DirectoryArn"] = args["DirectoryArn"],
 	}
-	asserts.AssertAddFacetToObjectRequest(t)
-	return t
+	asserts.AssertAddFacetToObjectRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ObjectAttributeUpdate = { ["ObjectAttributeAction"] = true, ["ObjectAttributeKey"] = true, nil }
@@ -5637,13 +7671,24 @@ end
 -- * ObjectAttributeKey [AttributeKey] <p>The key of the attribute being updated.</p>
 -- @return ObjectAttributeUpdate structure as a key-value pair table
 function M.ObjectAttributeUpdate(args)
-	assert(args, "You must provdide an argument table when creating ObjectAttributeUpdate")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ObjectAttributeUpdate")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ObjectAttributeAction"] = args["ObjectAttributeAction"],
 		["ObjectAttributeKey"] = args["ObjectAttributeKey"],
 	}
-	asserts.AssertObjectAttributeUpdate(t)
-	return t
+	asserts.AssertObjectAttributeUpdate(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CannotListParentOfRootException = { ["Message"] = true, nil }
@@ -5664,12 +7709,23 @@ end
 -- * Message [ExceptionMessage] 
 -- @return CannotListParentOfRootException structure as a key-value pair table
 function M.CannotListParentOfRootException(args)
-	assert(args, "You must provdide an argument table when creating CannotListParentOfRootException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CannotListParentOfRootException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Message"] = args["Message"],
 	}
-	asserts.AssertCannotListParentOfRootException(t)
-	return t
+	asserts.AssertCannotListParentOfRootException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListTypedLinkFacetAttributesResponse = { ["Attributes"] = true, ["NextToken"] = true, nil }
@@ -5692,13 +7748,24 @@ end
 -- * NextToken [NextToken] <p>The pagination token.</p>
 -- @return ListTypedLinkFacetAttributesResponse structure as a key-value pair table
 function M.ListTypedLinkFacetAttributesResponse(args)
-	assert(args, "You must provdide an argument table when creating ListTypedLinkFacetAttributesResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListTypedLinkFacetAttributesResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Attributes"] = args["Attributes"],
 		["NextToken"] = args["NextToken"],
 	}
-	asserts.AssertListTypedLinkFacetAttributesResponse(t)
-	return t
+	asserts.AssertListTypedLinkFacetAttributesResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DetachFromIndexResponse = { ["DetachedObjectIdentifier"] = true, nil }
@@ -5719,12 +7786,23 @@ end
 -- * DetachedObjectIdentifier [ObjectIdentifier] <p>The <code>ObjectIdentifier</code> of the object that was detached from the index.</p>
 -- @return DetachFromIndexResponse structure as a key-value pair table
 function M.DetachFromIndexResponse(args)
-	assert(args, "You must provdide an argument table when creating DetachFromIndexResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DetachFromIndexResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DetachedObjectIdentifier"] = args["DetachedObjectIdentifier"],
 	}
-	asserts.AssertDetachFromIndexResponse(t)
-	return t
+	asserts.AssertDetachFromIndexResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AccessDeniedException = { ["Message"] = true, nil }
@@ -5745,12 +7823,23 @@ end
 -- * Message [ExceptionMessage] 
 -- @return AccessDeniedException structure as a key-value pair table
 function M.AccessDeniedException(args)
-	assert(args, "You must provdide an argument table when creating AccessDeniedException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AccessDeniedException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Message"] = args["Message"],
 	}
-	asserts.AssertAccessDeniedException(t)
-	return t
+	asserts.AssertAccessDeniedException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.NotPolicyException = { ["Message"] = true, nil }
@@ -5771,12 +7860,23 @@ end
 -- * Message [ExceptionMessage] 
 -- @return NotPolicyException structure as a key-value pair table
 function M.NotPolicyException(args)
-	assert(args, "You must provdide an argument table when creating NotPolicyException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating NotPolicyException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Message"] = args["Message"],
 	}
-	asserts.AssertNotPolicyException(t)
-	return t
+	asserts.AssertNotPolicyException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.NotNodeException = { ["Message"] = true, nil }
@@ -5797,12 +7897,23 @@ end
 -- * Message [ExceptionMessage] 
 -- @return NotNodeException structure as a key-value pair table
 function M.NotNodeException(args)
-	assert(args, "You must provdide an argument table when creating NotNodeException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating NotNodeException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Message"] = args["Message"],
 	}
-	asserts.AssertNotNodeException(t)
-	return t
+	asserts.AssertNotNodeException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.BatchUpdateObjectAttributesResponse = { ["ObjectIdentifier"] = true, nil }
@@ -5823,12 +7934,23 @@ end
 -- * ObjectIdentifier [ObjectIdentifier] <p>ID that is associated with the object.</p>
 -- @return BatchUpdateObjectAttributesResponse structure as a key-value pair table
 function M.BatchUpdateObjectAttributesResponse(args)
-	assert(args, "You must provdide an argument table when creating BatchUpdateObjectAttributesResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating BatchUpdateObjectAttributesResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ObjectIdentifier"] = args["ObjectIdentifier"],
 	}
-	asserts.AssertBatchUpdateObjectAttributesResponse(t)
-	return t
+	asserts.AssertBatchUpdateObjectAttributesResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Rule = { ["Type"] = true, ["Parameters"] = true, nil }
@@ -5851,13 +7973,24 @@ end
 -- * Parameters [RuleParameterMap] <p>The minimum and maximum parameters that are associated with the rule.</p>
 -- @return Rule structure as a key-value pair table
 function M.Rule(args)
-	assert(args, "You must provdide an argument table when creating Rule")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Rule")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Type"] = args["Type"],
 		["Parameters"] = args["Parameters"],
 	}
-	asserts.AssertRule(t)
-	return t
+	asserts.AssertRule(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateObjectRequest = { ["ObjectAttributeList"] = true, ["ParentReference"] = true, ["SchemaFacets"] = true, ["DirectoryArn"] = true, ["LinkName"] = true, nil }
@@ -5890,16 +8023,28 @@ end
 -- Required key: SchemaFacets
 -- @return CreateObjectRequest structure as a key-value pair table
 function M.CreateObjectRequest(args)
-	assert(args, "You must provdide an argument table when creating CreateObjectRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateObjectRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+        ["x-amz-data-partition"] = args["DirectoryArn"],
+    }
+	local all_args = { 
 		["ObjectAttributeList"] = args["ObjectAttributeList"],
 		["ParentReference"] = args["ParentReference"],
 		["SchemaFacets"] = args["SchemaFacets"],
 		["DirectoryArn"] = args["DirectoryArn"],
 		["LinkName"] = args["LinkName"],
 	}
-	asserts.AssertCreateObjectRequest(t)
-	return t
+	asserts.AssertCreateObjectRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.BatchAddFacetToObject = { ["ObjectAttributeList"] = true, ["ObjectReference"] = true, ["SchemaFacet"] = true, nil }
@@ -5930,14 +8075,25 @@ end
 -- Required key: ObjectReference
 -- @return BatchAddFacetToObject structure as a key-value pair table
 function M.BatchAddFacetToObject(args)
-	assert(args, "You must provdide an argument table when creating BatchAddFacetToObject")
-	local t = { 
+	assert(args, "You must provide an argument table when creating BatchAddFacetToObject")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ObjectAttributeList"] = args["ObjectAttributeList"],
 		["ObjectReference"] = args["ObjectReference"],
 		["SchemaFacet"] = args["SchemaFacet"],
 	}
-	asserts.AssertBatchAddFacetToObject(t)
-	return t
+	asserts.AssertBatchAddFacetToObject(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ResourceNotFoundException = { ["Message"] = true, nil }
@@ -5958,12 +8114,23 @@ end
 -- * Message [ExceptionMessage] 
 -- @return ResourceNotFoundException structure as a key-value pair table
 function M.ResourceNotFoundException(args)
-	assert(args, "You must provdide an argument table when creating ResourceNotFoundException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ResourceNotFoundException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Message"] = args["Message"],
 	}
-	asserts.AssertResourceNotFoundException(t)
-	return t
+	asserts.AssertResourceNotFoundException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.BatchDeleteObjectResponse = { nil }
@@ -5982,11 +8149,22 @@ end
 -- Valid keys:
 -- @return BatchDeleteObjectResponse structure as a key-value pair table
 function M.BatchDeleteObjectResponse(args)
-	assert(args, "You must provdide an argument table when creating BatchDeleteObjectResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating BatchDeleteObjectResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertBatchDeleteObjectResponse(t)
-	return t
+	asserts.AssertBatchDeleteObjectResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteDirectoryResponse = { ["DirectoryArn"] = true, nil }
@@ -6009,12 +8187,23 @@ end
 -- Required key: DirectoryArn
 -- @return DeleteDirectoryResponse structure as a key-value pair table
 function M.DeleteDirectoryResponse(args)
-	assert(args, "You must provdide an argument table when creating DeleteDirectoryResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteDirectoryResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DirectoryArn"] = args["DirectoryArn"],
 	}
-	asserts.AssertDeleteDirectoryResponse(t)
-	return t
+	asserts.AssertDeleteDirectoryResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.FacetAttributeReference = { ["TargetFacetName"] = true, ["TargetAttributeName"] = true, nil }
@@ -6041,13 +8230,24 @@ end
 -- Required key: TargetAttributeName
 -- @return FacetAttributeReference structure as a key-value pair table
 function M.FacetAttributeReference(args)
-	assert(args, "You must provdide an argument table when creating FacetAttributeReference")
-	local t = { 
+	assert(args, "You must provide an argument table when creating FacetAttributeReference")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["TargetFacetName"] = args["TargetFacetName"],
 		["TargetAttributeName"] = args["TargetAttributeName"],
 	}
-	asserts.AssertFacetAttributeReference(t)
-	return t
+	asserts.AssertFacetAttributeReference(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DetachTypedLinkRequest = { ["TypedLinkSpecifier"] = true, ["DirectoryArn"] = true, nil }
@@ -6074,13 +8274,25 @@ end
 -- Required key: TypedLinkSpecifier
 -- @return DetachTypedLinkRequest structure as a key-value pair table
 function M.DetachTypedLinkRequest(args)
-	assert(args, "You must provdide an argument table when creating DetachTypedLinkRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DetachTypedLinkRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+        ["x-amz-data-partition"] = args["DirectoryArn"],
+    }
+	local all_args = { 
 		["TypedLinkSpecifier"] = args["TypedLinkSpecifier"],
 		["DirectoryArn"] = args["DirectoryArn"],
 	}
-	asserts.AssertDetachTypedLinkRequest(t)
-	return t
+	asserts.AssertDetachTypedLinkRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ObjectAttributeAction = { ["ObjectAttributeActionType"] = true, ["ObjectAttributeUpdateValue"] = true, nil }
@@ -6103,13 +8315,24 @@ end
 -- * ObjectAttributeUpdateValue [TypedAttributeValue] <p>The value that you want to update to.</p>
 -- @return ObjectAttributeAction structure as a key-value pair table
 function M.ObjectAttributeAction(args)
-	assert(args, "You must provdide an argument table when creating ObjectAttributeAction")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ObjectAttributeAction")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ObjectAttributeActionType"] = args["ObjectAttributeActionType"],
 		["ObjectAttributeUpdateValue"] = args["ObjectAttributeUpdateValue"],
 	}
-	asserts.AssertObjectAttributeAction(t)
-	return t
+	asserts.AssertObjectAttributeAction(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.BatchRemoveFacetFromObject = { ["ObjectReference"] = true, ["SchemaFacet"] = true, nil }
@@ -6136,13 +8359,24 @@ end
 -- Required key: ObjectReference
 -- @return BatchRemoveFacetFromObject structure as a key-value pair table
 function M.BatchRemoveFacetFromObject(args)
-	assert(args, "You must provdide an argument table when creating BatchRemoveFacetFromObject")
-	local t = { 
+	assert(args, "You must provide an argument table when creating BatchRemoveFacetFromObject")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ObjectReference"] = args["ObjectReference"],
 		["SchemaFacet"] = args["SchemaFacet"],
 	}
-	asserts.AssertBatchRemoveFacetFromObject(t)
-	return t
+	asserts.AssertBatchRemoveFacetFromObject(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListPolicyAttachmentsRequest = { ["ConsistencyLevel"] = true, ["PolicyReference"] = true, ["NextToken"] = true, ["MaxResults"] = true, ["DirectoryArn"] = true, nil }
@@ -6175,16 +8409,29 @@ end
 -- Required key: PolicyReference
 -- @return ListPolicyAttachmentsRequest structure as a key-value pair table
 function M.ListPolicyAttachmentsRequest(args)
-	assert(args, "You must provdide an argument table when creating ListPolicyAttachmentsRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListPolicyAttachmentsRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+        ["x-amz-consistency-level"] = args["ConsistencyLevel"],
+        ["x-amz-data-partition"] = args["DirectoryArn"],
+    }
+	local all_args = { 
 		["ConsistencyLevel"] = args["ConsistencyLevel"],
 		["PolicyReference"] = args["PolicyReference"],
 		["NextToken"] = args["NextToken"],
 		["MaxResults"] = args["MaxResults"],
 		["DirectoryArn"] = args["DirectoryArn"],
 	}
-	asserts.AssertListPolicyAttachmentsRequest(t)
-	return t
+	asserts.AssertListPolicyAttachmentsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteSchemaRequest = { ["SchemaArn"] = true, nil }
@@ -6207,12 +8454,24 @@ end
 -- Required key: SchemaArn
 -- @return DeleteSchemaRequest structure as a key-value pair table
 function M.DeleteSchemaRequest(args)
-	assert(args, "You must provdide an argument table when creating DeleteSchemaRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteSchemaRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+        ["x-amz-data-partition"] = args["SchemaArn"],
+    }
+	local all_args = { 
 		["SchemaArn"] = args["SchemaArn"],
 	}
-	asserts.AssertDeleteSchemaRequest(t)
-	return t
+	asserts.AssertDeleteSchemaRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteFacetRequest = { ["SchemaArn"] = true, ["Name"] = true, nil }
@@ -6239,13 +8498,25 @@ end
 -- Required key: Name
 -- @return DeleteFacetRequest structure as a key-value pair table
 function M.DeleteFacetRequest(args)
-	assert(args, "You must provdide an argument table when creating DeleteFacetRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteFacetRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+        ["x-amz-data-partition"] = args["SchemaArn"],
+    }
+	local all_args = { 
 		["SchemaArn"] = args["SchemaArn"],
 		["Name"] = args["Name"],
 	}
-	asserts.AssertDeleteFacetRequest(t)
-	return t
+	asserts.AssertDeleteFacetRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.TypedLinkFacet = { ["Attributes"] = true, ["IdentityAttributeOrder"] = true, ["Name"] = true, nil }
@@ -6276,14 +8547,25 @@ end
 -- Required key: IdentityAttributeOrder
 -- @return TypedLinkFacet structure as a key-value pair table
 function M.TypedLinkFacet(args)
-	assert(args, "You must provdide an argument table when creating TypedLinkFacet")
-	local t = { 
+	assert(args, "You must provide an argument table when creating TypedLinkFacet")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Attributes"] = args["Attributes"],
 		["IdentityAttributeOrder"] = args["IdentityAttributeOrder"],
 		["Name"] = args["Name"],
 	}
-	asserts.AssertTypedLinkFacet(t)
-	return t
+	asserts.AssertTypedLinkFacet(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.BatchWriteResponse = { ["Responses"] = true, nil }
@@ -6304,12 +8586,23 @@ end
 -- * Responses [BatchWriteOperationResponseList] <p>A list of all the responses for each batch write.</p>
 -- @return BatchWriteResponse structure as a key-value pair table
 function M.BatchWriteResponse(args)
-	assert(args, "You must provdide an argument table when creating BatchWriteResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating BatchWriteResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Responses"] = args["Responses"],
 	}
-	asserts.AssertBatchWriteResponse(t)
-	return t
+	asserts.AssertBatchWriteResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 function asserts.AssertDirectoryArn(str)
@@ -7313,8 +9606,11 @@ function M.ListTypedLinkFacetNamesAsync(ListTypedLinkFacetNamesRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".ListTypedLinkFacetNames",
 	}
+	for header,value in pairs(ListTypedLinkFacetNamesRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/amazonclouddirectory/2017-01-11/typedlink/facet/list", ListTypedLinkFacetNamesRequest, headers, settings, cb)
 	else
@@ -7345,8 +9641,11 @@ function M.ListIncomingTypedLinksAsync(ListIncomingTypedLinksRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".ListIncomingTypedLinks",
 	}
+	for header,value in pairs(ListIncomingTypedLinksRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/amazonclouddirectory/2017-01-11/typedlink/incoming", ListIncomingTypedLinksRequest, headers, settings, cb)
 	else
@@ -7377,8 +9676,11 @@ function M.ListDirectoriesAsync(ListDirectoriesRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".ListDirectories",
 	}
+	for header,value in pairs(ListDirectoriesRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/amazonclouddirectory/2017-01-11/directory/list", ListDirectoriesRequest, headers, settings, cb)
 	else
@@ -7409,8 +9711,11 @@ function M.CreateSchemaAsync(CreateSchemaRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".CreateSchema",
 	}
+	for header,value in pairs(CreateSchemaRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("PUT")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT")
 	if request_handler then
 		request_handler(settings.uri, "/amazonclouddirectory/2017-01-11/schema/create", CreateSchemaRequest, headers, settings, cb)
 	else
@@ -7441,8 +9746,11 @@ function M.UpdateSchemaAsync(UpdateSchemaRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".UpdateSchema",
 	}
+	for header,value in pairs(UpdateSchemaRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("PUT")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT")
 	if request_handler then
 		request_handler(settings.uri, "/amazonclouddirectory/2017-01-11/schema/update", UpdateSchemaRequest, headers, settings, cb)
 	else
@@ -7473,8 +9781,11 @@ function M.CreateObjectAsync(CreateObjectRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".CreateObject",
 	}
+	for header,value in pairs(CreateObjectRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("PUT")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT")
 	if request_handler then
 		request_handler(settings.uri, "/amazonclouddirectory/2017-01-11/object", CreateObjectRequest, headers, settings, cb)
 	else
@@ -7505,8 +9816,11 @@ function M.EnableDirectoryAsync(EnableDirectoryRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".EnableDirectory",
 	}
+	for header,value in pairs(EnableDirectoryRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("PUT")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT")
 	if request_handler then
 		request_handler(settings.uri, "/amazonclouddirectory/2017-01-11/directory/enable", EnableDirectoryRequest, headers, settings, cb)
 	else
@@ -7537,8 +9851,11 @@ function M.GetObjectInformationAsync(GetObjectInformationRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".GetObjectInformation",
 	}
+	for header,value in pairs(GetObjectInformationRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/amazonclouddirectory/2017-01-11/object/information", GetObjectInformationRequest, headers, settings, cb)
 	else
@@ -7569,8 +9886,11 @@ function M.GetSchemaAsJsonAsync(GetSchemaAsJsonRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".GetSchemaAsJson",
 	}
+	for header,value in pairs(GetSchemaAsJsonRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/amazonclouddirectory/2017-01-11/schema/json", GetSchemaAsJsonRequest, headers, settings, cb)
 	else
@@ -7601,8 +9921,11 @@ function M.BatchWriteAsync(BatchWriteRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".BatchWrite",
 	}
+	for header,value in pairs(BatchWriteRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("PUT")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT")
 	if request_handler then
 		request_handler(settings.uri, "/amazonclouddirectory/2017-01-11/batchwrite", BatchWriteRequest, headers, settings, cb)
 	else
@@ -7633,8 +9956,11 @@ function M.ListFacetNamesAsync(ListFacetNamesRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".ListFacetNames",
 	}
+	for header,value in pairs(ListFacetNamesRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/amazonclouddirectory/2017-01-11/facet/list", ListFacetNamesRequest, headers, settings, cb)
 	else
@@ -7665,8 +9991,11 @@ function M.CreateDirectoryAsync(CreateDirectoryRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".CreateDirectory",
 	}
+	for header,value in pairs(CreateDirectoryRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("PUT")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT")
 	if request_handler then
 		request_handler(settings.uri, "/amazonclouddirectory/2017-01-11/directory/create", CreateDirectoryRequest, headers, settings, cb)
 	else
@@ -7697,8 +10026,11 @@ function M.CreateIndexAsync(CreateIndexRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".CreateIndex",
 	}
+	for header,value in pairs(CreateIndexRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("PUT")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT")
 	if request_handler then
 		request_handler(settings.uri, "/amazonclouddirectory/2017-01-11/index", CreateIndexRequest, headers, settings, cb)
 	else
@@ -7729,8 +10061,11 @@ function M.DeleteFacetAsync(DeleteFacetRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DeleteFacet",
 	}
+	for header,value in pairs(DeleteFacetRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("PUT")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT")
 	if request_handler then
 		request_handler(settings.uri, "/amazonclouddirectory/2017-01-11/facet/delete", DeleteFacetRequest, headers, settings, cb)
 	else
@@ -7761,8 +10096,11 @@ function M.DetachPolicyAsync(DetachPolicyRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DetachPolicy",
 	}
+	for header,value in pairs(DetachPolicyRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("PUT")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT")
 	if request_handler then
 		request_handler(settings.uri, "/amazonclouddirectory/2017-01-11/policy/detach", DetachPolicyRequest, headers, settings, cb)
 	else
@@ -7793,8 +10131,11 @@ function M.DetachObjectAsync(DetachObjectRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DetachObject",
 	}
+	for header,value in pairs(DetachObjectRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("PUT")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT")
 	if request_handler then
 		request_handler(settings.uri, "/amazonclouddirectory/2017-01-11/object/detach", DetachObjectRequest, headers, settings, cb)
 	else
@@ -7825,8 +10166,11 @@ function M.ListObjectChildrenAsync(ListObjectChildrenRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".ListObjectChildren",
 	}
+	for header,value in pairs(ListObjectChildrenRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/amazonclouddirectory/2017-01-11/object/children", ListObjectChildrenRequest, headers, settings, cb)
 	else
@@ -7857,8 +10201,11 @@ function M.ListObjectAttributesAsync(ListObjectAttributesRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".ListObjectAttributes",
 	}
+	for header,value in pairs(ListObjectAttributesRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/amazonclouddirectory/2017-01-11/object/attributes", ListObjectAttributesRequest, headers, settings, cb)
 	else
@@ -7889,8 +10236,11 @@ function M.AddFacetToObjectAsync(AddFacetToObjectRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".AddFacetToObject",
 	}
+	for header,value in pairs(AddFacetToObjectRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("PUT")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT")
 	if request_handler then
 		request_handler(settings.uri, "/amazonclouddirectory/2017-01-11/object/facets", AddFacetToObjectRequest, headers, settings, cb)
 	else
@@ -7921,8 +10271,11 @@ function M.PutSchemaFromJsonAsync(PutSchemaFromJsonRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".PutSchemaFromJson",
 	}
+	for header,value in pairs(PutSchemaFromJsonRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("PUT")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT")
 	if request_handler then
 		request_handler(settings.uri, "/amazonclouddirectory/2017-01-11/schema/json", PutSchemaFromJsonRequest, headers, settings, cb)
 	else
@@ -7953,8 +10306,11 @@ function M.ListPolicyAttachmentsAsync(ListPolicyAttachmentsRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".ListPolicyAttachments",
 	}
+	for header,value in pairs(ListPolicyAttachmentsRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/amazonclouddirectory/2017-01-11/policy/attachment", ListPolicyAttachmentsRequest, headers, settings, cb)
 	else
@@ -7985,8 +10341,11 @@ function M.CreateFacetAsync(CreateFacetRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".CreateFacet",
 	}
+	for header,value in pairs(CreateFacetRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("PUT")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT")
 	if request_handler then
 		request_handler(settings.uri, "/amazonclouddirectory/2017-01-11/facet/create", CreateFacetRequest, headers, settings, cb)
 	else
@@ -8017,8 +10376,11 @@ function M.ListObjectParentsAsync(ListObjectParentsRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".ListObjectParents",
 	}
+	for header,value in pairs(ListObjectParentsRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/amazonclouddirectory/2017-01-11/object/parent", ListObjectParentsRequest, headers, settings, cb)
 	else
@@ -8049,8 +10411,11 @@ function M.BatchReadAsync(BatchReadRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".BatchRead",
 	}
+	for header,value in pairs(BatchReadRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/amazonclouddirectory/2017-01-11/batchread", BatchReadRequest, headers, settings, cb)
 	else
@@ -8081,8 +10446,11 @@ function M.DetachTypedLinkAsync(DetachTypedLinkRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DetachTypedLink",
 	}
+	for header,value in pairs(DetachTypedLinkRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("PUT")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT")
 	if request_handler then
 		request_handler(settings.uri, "/amazonclouddirectory/2017-01-11/typedlink/detach", DetachTypedLinkRequest, headers, settings, cb)
 	else
@@ -8113,8 +10481,11 @@ function M.RemoveFacetFromObjectAsync(RemoveFacetFromObjectRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".RemoveFacetFromObject",
 	}
+	for header,value in pairs(RemoveFacetFromObjectRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("PUT")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT")
 	if request_handler then
 		request_handler(settings.uri, "/amazonclouddirectory/2017-01-11/object/facets/delete", RemoveFacetFromObjectRequest, headers, settings, cb)
 	else
@@ -8145,8 +10516,11 @@ function M.LookupPolicyAsync(LookupPolicyRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".LookupPolicy",
 	}
+	for header,value in pairs(LookupPolicyRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/amazonclouddirectory/2017-01-11/policy/lookup", LookupPolicyRequest, headers, settings, cb)
 	else
@@ -8177,8 +10551,11 @@ function M.ListObjectParentPathsAsync(ListObjectParentPathsRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".ListObjectParentPaths",
 	}
+	for header,value in pairs(ListObjectParentPathsRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/amazonclouddirectory/2017-01-11/object/parentpaths", ListObjectParentPathsRequest, headers, settings, cb)
 	else
@@ -8209,8 +10586,11 @@ function M.TagResourceAsync(TagResourceRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".TagResource",
 	}
+	for header,value in pairs(TagResourceRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("PUT")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT")
 	if request_handler then
 		request_handler(settings.uri, "/amazonclouddirectory/2017-01-11/tags/add", TagResourceRequest, headers, settings, cb)
 	else
@@ -8241,8 +10621,11 @@ function M.ListAttachedIndicesAsync(ListAttachedIndicesRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".ListAttachedIndices",
 	}
+	for header,value in pairs(ListAttachedIndicesRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/amazonclouddirectory/2017-01-11/object/indices", ListAttachedIndicesRequest, headers, settings, cb)
 	else
@@ -8273,8 +10656,11 @@ function M.AttachTypedLinkAsync(AttachTypedLinkRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".AttachTypedLink",
 	}
+	for header,value in pairs(AttachTypedLinkRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("PUT")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT")
 	if request_handler then
 		request_handler(settings.uri, "/amazonclouddirectory/2017-01-11/typedlink/attach", AttachTypedLinkRequest, headers, settings, cb)
 	else
@@ -8305,8 +10691,11 @@ function M.UpdateObjectAttributesAsync(UpdateObjectAttributesRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".UpdateObjectAttributes",
 	}
+	for header,value in pairs(UpdateObjectAttributesRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("PUT")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT")
 	if request_handler then
 		request_handler(settings.uri, "/amazonclouddirectory/2017-01-11/object/update", UpdateObjectAttributesRequest, headers, settings, cb)
 	else
@@ -8337,8 +10726,11 @@ function M.ListTypedLinkFacetAttributesAsync(ListTypedLinkFacetAttributesRequest
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".ListTypedLinkFacetAttributes",
 	}
+	for header,value in pairs(ListTypedLinkFacetAttributesRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/amazonclouddirectory/2017-01-11/typedlink/facet/attributes", ListTypedLinkFacetAttributesRequest, headers, settings, cb)
 	else
@@ -8369,8 +10761,11 @@ function M.ListPublishedSchemaArnsAsync(ListPublishedSchemaArnsRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".ListPublishedSchemaArns",
 	}
+	for header,value in pairs(ListPublishedSchemaArnsRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/amazonclouddirectory/2017-01-11/schema/published", ListPublishedSchemaArnsRequest, headers, settings, cb)
 	else
@@ -8401,8 +10796,11 @@ function M.DeleteDirectoryAsync(DeleteDirectoryRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DeleteDirectory",
 	}
+	for header,value in pairs(DeleteDirectoryRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("PUT")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT")
 	if request_handler then
 		request_handler(settings.uri, "/amazonclouddirectory/2017-01-11/directory", DeleteDirectoryRequest, headers, settings, cb)
 	else
@@ -8433,8 +10831,11 @@ function M.PublishSchemaAsync(PublishSchemaRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".PublishSchema",
 	}
+	for header,value in pairs(PublishSchemaRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("PUT")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT")
 	if request_handler then
 		request_handler(settings.uri, "/amazonclouddirectory/2017-01-11/schema/publish", PublishSchemaRequest, headers, settings, cb)
 	else
@@ -8465,8 +10866,11 @@ function M.GetFacetAsync(GetFacetRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".GetFacet",
 	}
+	for header,value in pairs(GetFacetRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/amazonclouddirectory/2017-01-11/facet", GetFacetRequest, headers, settings, cb)
 	else
@@ -8497,8 +10901,11 @@ function M.DeleteSchemaAsync(DeleteSchemaRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DeleteSchema",
 	}
+	for header,value in pairs(DeleteSchemaRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("PUT")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT")
 	if request_handler then
 		request_handler(settings.uri, "/amazonclouddirectory/2017-01-11/schema", DeleteSchemaRequest, headers, settings, cb)
 	else
@@ -8529,8 +10936,11 @@ function M.AttachPolicyAsync(AttachPolicyRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".AttachPolicy",
 	}
+	for header,value in pairs(AttachPolicyRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("PUT")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT")
 	if request_handler then
 		request_handler(settings.uri, "/amazonclouddirectory/2017-01-11/policy/attach", AttachPolicyRequest, headers, settings, cb)
 	else
@@ -8561,8 +10971,11 @@ function M.DisableDirectoryAsync(DisableDirectoryRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DisableDirectory",
 	}
+	for header,value in pairs(DisableDirectoryRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("PUT")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT")
 	if request_handler then
 		request_handler(settings.uri, "/amazonclouddirectory/2017-01-11/directory/disable", DisableDirectoryRequest, headers, settings, cb)
 	else
@@ -8593,8 +11006,11 @@ function M.ListFacetAttributesAsync(ListFacetAttributesRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".ListFacetAttributes",
 	}
+	for header,value in pairs(ListFacetAttributesRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/amazonclouddirectory/2017-01-11/facet/attributes", ListFacetAttributesRequest, headers, settings, cb)
 	else
@@ -8625,8 +11041,11 @@ function M.DeleteTypedLinkFacetAsync(DeleteTypedLinkFacetRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DeleteTypedLinkFacet",
 	}
+	for header,value in pairs(DeleteTypedLinkFacetRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("PUT")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT")
 	if request_handler then
 		request_handler(settings.uri, "/amazonclouddirectory/2017-01-11/typedlink/facet/delete", DeleteTypedLinkFacetRequest, headers, settings, cb)
 	else
@@ -8657,8 +11076,11 @@ function M.UpdateTypedLinkFacetAsync(UpdateTypedLinkFacetRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".UpdateTypedLinkFacet",
 	}
+	for header,value in pairs(UpdateTypedLinkFacetRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("PUT")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT")
 	if request_handler then
 		request_handler(settings.uri, "/amazonclouddirectory/2017-01-11/typedlink/facet", UpdateTypedLinkFacetRequest, headers, settings, cb)
 	else
@@ -8689,8 +11111,11 @@ function M.DetachFromIndexAsync(DetachFromIndexRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DetachFromIndex",
 	}
+	for header,value in pairs(DetachFromIndexRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("PUT")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT")
 	if request_handler then
 		request_handler(settings.uri, "/amazonclouddirectory/2017-01-11/index/detach", DetachFromIndexRequest, headers, settings, cb)
 	else
@@ -8721,8 +11146,11 @@ function M.ListAppliedSchemaArnsAsync(ListAppliedSchemaArnsRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".ListAppliedSchemaArns",
 	}
+	for header,value in pairs(ListAppliedSchemaArnsRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/amazonclouddirectory/2017-01-11/schema/applied", ListAppliedSchemaArnsRequest, headers, settings, cb)
 	else
@@ -8753,8 +11181,11 @@ function M.ListObjectPoliciesAsync(ListObjectPoliciesRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".ListObjectPolicies",
 	}
+	for header,value in pairs(ListObjectPoliciesRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/amazonclouddirectory/2017-01-11/object/policy", ListObjectPoliciesRequest, headers, settings, cb)
 	else
@@ -8785,8 +11216,11 @@ function M.ApplySchemaAsync(ApplySchemaRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".ApplySchema",
 	}
+	for header,value in pairs(ApplySchemaRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("PUT")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT")
 	if request_handler then
 		request_handler(settings.uri, "/amazonclouddirectory/2017-01-11/schema/apply", ApplySchemaRequest, headers, settings, cb)
 	else
@@ -8817,8 +11251,11 @@ function M.ListDevelopmentSchemaArnsAsync(ListDevelopmentSchemaArnsRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".ListDevelopmentSchemaArns",
 	}
+	for header,value in pairs(ListDevelopmentSchemaArnsRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/amazonclouddirectory/2017-01-11/schema/development", ListDevelopmentSchemaArnsRequest, headers, settings, cb)
 	else
@@ -8849,8 +11286,11 @@ function M.GetDirectoryAsync(GetDirectoryRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".GetDirectory",
 	}
+	for header,value in pairs(GetDirectoryRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/amazonclouddirectory/2017-01-11/directory/get", GetDirectoryRequest, headers, settings, cb)
 	else
@@ -8881,8 +11321,11 @@ function M.AttachObjectAsync(AttachObjectRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".AttachObject",
 	}
+	for header,value in pairs(AttachObjectRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("PUT")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT")
 	if request_handler then
 		request_handler(settings.uri, "/amazonclouddirectory/2017-01-11/object/attach", AttachObjectRequest, headers, settings, cb)
 	else
@@ -8913,8 +11356,11 @@ function M.ListTagsForResourceAsync(ListTagsForResourceRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".ListTagsForResource",
 	}
+	for header,value in pairs(ListTagsForResourceRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/amazonclouddirectory/2017-01-11/tags", ListTagsForResourceRequest, headers, settings, cb)
 	else
@@ -8945,8 +11391,11 @@ function M.UntagResourceAsync(UntagResourceRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".UntagResource",
 	}
+	for header,value in pairs(UntagResourceRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("PUT")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT")
 	if request_handler then
 		request_handler(settings.uri, "/amazonclouddirectory/2017-01-11/tags/remove", UntagResourceRequest, headers, settings, cb)
 	else
@@ -8977,8 +11426,11 @@ function M.CreateTypedLinkFacetAsync(CreateTypedLinkFacetRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".CreateTypedLinkFacet",
 	}
+	for header,value in pairs(CreateTypedLinkFacetRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("PUT")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT")
 	if request_handler then
 		request_handler(settings.uri, "/amazonclouddirectory/2017-01-11/typedlink/facet/create", CreateTypedLinkFacetRequest, headers, settings, cb)
 	else
@@ -9009,8 +11461,11 @@ function M.AttachToIndexAsync(AttachToIndexRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".AttachToIndex",
 	}
+	for header,value in pairs(AttachToIndexRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("PUT")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT")
 	if request_handler then
 		request_handler(settings.uri, "/amazonclouddirectory/2017-01-11/index/attach", AttachToIndexRequest, headers, settings, cb)
 	else
@@ -9041,8 +11496,11 @@ function M.ListIndexAsync(ListIndexRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".ListIndex",
 	}
+	for header,value in pairs(ListIndexRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/amazonclouddirectory/2017-01-11/index/targets", ListIndexRequest, headers, settings, cb)
 	else
@@ -9073,8 +11531,11 @@ function M.UpdateFacetAsync(UpdateFacetRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".UpdateFacet",
 	}
+	for header,value in pairs(UpdateFacetRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("PUT")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT")
 	if request_handler then
 		request_handler(settings.uri, "/amazonclouddirectory/2017-01-11/facet", UpdateFacetRequest, headers, settings, cb)
 	else
@@ -9105,8 +11566,11 @@ function M.ListOutgoingTypedLinksAsync(ListOutgoingTypedLinksRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".ListOutgoingTypedLinks",
 	}
+	for header,value in pairs(ListOutgoingTypedLinksRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/amazonclouddirectory/2017-01-11/typedlink/outgoing", ListOutgoingTypedLinksRequest, headers, settings, cb)
 	else
@@ -9137,8 +11601,11 @@ function M.DeleteObjectAsync(DeleteObjectRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DeleteObject",
 	}
+	for header,value in pairs(DeleteObjectRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("PUT")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT")
 	if request_handler then
 		request_handler(settings.uri, "/amazonclouddirectory/2017-01-11/object/delete", DeleteObjectRequest, headers, settings, cb)
 	else
@@ -9169,8 +11636,11 @@ function M.GetTypedLinkFacetInformationAsync(GetTypedLinkFacetInformationRequest
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".GetTypedLinkFacetInformation",
 	}
+	for header,value in pairs(GetTypedLinkFacetInformationRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/amazonclouddirectory/2017-01-11/typedlink/facet/get", GetTypedLinkFacetInformationRequest, headers, settings, cb)
 	else

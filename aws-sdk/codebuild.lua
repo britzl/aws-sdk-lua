@@ -41,13 +41,24 @@ end
 -- * platform [PlatformType] <p>The platform's name.</p>
 -- @return EnvironmentPlatform structure as a key-value pair table
 function M.EnvironmentPlatform(args)
-	assert(args, "You must provdide an argument table when creating EnvironmentPlatform")
-	local t = { 
+	assert(args, "You must provide an argument table when creating EnvironmentPlatform")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["languages"] = args["languages"],
 		["platform"] = args["platform"],
 	}
-	asserts.AssertEnvironmentPlatform(t)
-	return t
+	asserts.AssertEnvironmentPlatform(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateProjectOutput = { ["project"] = true, nil }
@@ -68,12 +79,23 @@ end
 -- * project [Project] <p>Information about the build project that was created.</p>
 -- @return CreateProjectOutput structure as a key-value pair table
 function M.CreateProjectOutput(args)
-	assert(args, "You must provdide an argument table when creating CreateProjectOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateProjectOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["project"] = args["project"],
 	}
-	asserts.AssertCreateProjectOutput(t)
-	return t
+	asserts.AssertCreateProjectOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.StartBuildOutput = { ["build"] = true, nil }
@@ -94,12 +116,23 @@ end
 -- * build [Build] <p>Information about the build to be run.</p>
 -- @return StartBuildOutput structure as a key-value pair table
 function M.StartBuildOutput(args)
-	assert(args, "You must provdide an argument table when creating StartBuildOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating StartBuildOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["build"] = args["build"],
 	}
-	asserts.AssertStartBuildOutput(t)
-	return t
+	asserts.AssertStartBuildOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListCuratedEnvironmentImagesOutput = { ["platforms"] = true, nil }
@@ -120,12 +153,23 @@ end
 -- * platforms [EnvironmentPlatforms] <p>Information about supported platforms for Docker images that are managed by AWS CodeBuild.</p>
 -- @return ListCuratedEnvironmentImagesOutput structure as a key-value pair table
 function M.ListCuratedEnvironmentImagesOutput(args)
-	assert(args, "You must provdide an argument table when creating ListCuratedEnvironmentImagesOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListCuratedEnvironmentImagesOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["platforms"] = args["platforms"],
 	}
-	asserts.AssertListCuratedEnvironmentImagesOutput(t)
-	return t
+	asserts.AssertListCuratedEnvironmentImagesOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Build = { ["environment"] = true, ["phases"] = true, ["buildComplete"] = true, ["logs"] = true, ["artifacts"] = true, ["projectName"] = true, ["timeoutInMinutes"] = true, ["initiator"] = true, ["buildStatus"] = true, ["sourceVersion"] = true, ["source"] = true, ["currentPhase"] = true, ["startTime"] = true, ["endTime"] = true, ["id"] = true, ["arn"] = true, nil }
@@ -176,8 +220,14 @@ end
 -- * arn [NonEmptyString] <p>The Amazon Resource Name (ARN) of the build.</p>
 -- @return Build structure as a key-value pair table
 function M.Build(args)
-	assert(args, "You must provdide an argument table when creating Build")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Build")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["environment"] = args["environment"],
 		["phases"] = args["phases"],
 		["buildComplete"] = args["buildComplete"],
@@ -195,8 +245,13 @@ function M.Build(args)
 		["id"] = args["id"],
 		["arn"] = args["arn"],
 	}
-	asserts.AssertBuild(t)
-	return t
+	asserts.AssertBuild(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.PhaseContext = { ["message"] = true, ["statusCode"] = true, nil }
@@ -219,13 +274,24 @@ end
 -- * statusCode [String] <p>The status code for the context of the build phase.</p>
 -- @return PhaseContext structure as a key-value pair table
 function M.PhaseContext(args)
-	assert(args, "You must provdide an argument table when creating PhaseContext")
-	local t = { 
+	assert(args, "You must provide an argument table when creating PhaseContext")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 		["statusCode"] = args["statusCode"],
 	}
-	asserts.AssertPhaseContext(t)
-	return t
+	asserts.AssertPhaseContext(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.StopBuildInput = { ["id"] = true, nil }
@@ -248,12 +314,23 @@ end
 -- Required key: id
 -- @return StopBuildInput structure as a key-value pair table
 function M.StopBuildInput(args)
-	assert(args, "You must provdide an argument table when creating StopBuildInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating StopBuildInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["id"] = args["id"],
 	}
-	asserts.AssertStopBuildInput(t)
-	return t
+	asserts.AssertStopBuildInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdateProjectOutput = { ["project"] = true, nil }
@@ -274,12 +351,23 @@ end
 -- * project [Project] <p>Information about the build project that was changed.</p>
 -- @return UpdateProjectOutput structure as a key-value pair table
 function M.UpdateProjectOutput(args)
-	assert(args, "You must provdide an argument table when creating UpdateProjectOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateProjectOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["project"] = args["project"],
 	}
-	asserts.AssertUpdateProjectOutput(t)
-	return t
+	asserts.AssertUpdateProjectOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ProjectSource = { ["buildspec"] = true, ["type"] = true, ["location"] = true, ["auth"] = true, nil }
@@ -308,15 +396,26 @@ end
 -- Required key: type
 -- @return ProjectSource structure as a key-value pair table
 function M.ProjectSource(args)
-	assert(args, "You must provdide an argument table when creating ProjectSource")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ProjectSource")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["buildspec"] = args["buildspec"],
 		["type"] = args["type"],
 		["location"] = args["location"],
 		["auth"] = args["auth"],
 	}
-	asserts.AssertProjectSource(t)
-	return t
+	asserts.AssertProjectSource(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.LogsLocation = { ["groupName"] = true, ["deepLink"] = true, ["streamName"] = true, nil }
@@ -341,14 +440,25 @@ end
 -- * streamName [String] <p>The name of the Amazon CloudWatch Logs stream for the build logs.</p>
 -- @return LogsLocation structure as a key-value pair table
 function M.LogsLocation(args)
-	assert(args, "You must provdide an argument table when creating LogsLocation")
-	local t = { 
+	assert(args, "You must provide an argument table when creating LogsLocation")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["groupName"] = args["groupName"],
 		["deepLink"] = args["deepLink"],
 		["streamName"] = args["streamName"],
 	}
-	asserts.AssertLogsLocation(t)
-	return t
+	asserts.AssertLogsLocation(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListProjectsInput = { ["nextToken"] = true, ["sortBy"] = true, ["sortOrder"] = true, nil }
@@ -373,14 +483,25 @@ end
 -- * sortOrder [SortOrderType] <p>The order in which to list build projects. Valid values include:</p> <ul> <li> <p> <code>ASCENDING</code>: List the build project names in ascending order.</p> </li> <li> <p> <code>DESCENDING</code>: List the build project names in descending order.</p> </li> </ul> <p>Use <code>sortBy</code> to specify the criterion to be used to list build project names.</p>
 -- @return ListProjectsInput structure as a key-value pair table
 function M.ListProjectsInput(args)
-	assert(args, "You must provdide an argument table when creating ListProjectsInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListProjectsInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["nextToken"] = args["nextToken"],
 		["sortBy"] = args["sortBy"],
 		["sortOrder"] = args["sortOrder"],
 	}
-	asserts.AssertListProjectsInput(t)
-	return t
+	asserts.AssertListProjectsInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.BuildPhase = { ["contexts"] = true, ["phaseType"] = true, ["phaseStatus"] = true, ["durationInSeconds"] = true, ["startTime"] = true, ["endTime"] = true, nil }
@@ -411,8 +532,14 @@ end
 -- * endTime [Timestamp] <p>When the build phase ended, expressed in Unix time format.</p>
 -- @return BuildPhase structure as a key-value pair table
 function M.BuildPhase(args)
-	assert(args, "You must provdide an argument table when creating BuildPhase")
-	local t = { 
+	assert(args, "You must provide an argument table when creating BuildPhase")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["contexts"] = args["contexts"],
 		["phaseType"] = args["phaseType"],
 		["phaseStatus"] = args["phaseStatus"],
@@ -420,8 +547,13 @@ function M.BuildPhase(args)
 		["startTime"] = args["startTime"],
 		["endTime"] = args["endTime"],
 	}
-	asserts.AssertBuildPhase(t)
-	return t
+	asserts.AssertBuildPhase(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.BatchGetBuildsInput = { ["ids"] = true, nil }
@@ -444,12 +576,23 @@ end
 -- Required key: ids
 -- @return BatchGetBuildsInput structure as a key-value pair table
 function M.BatchGetBuildsInput(args)
-	assert(args, "You must provdide an argument table when creating BatchGetBuildsInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating BatchGetBuildsInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ids"] = args["ids"],
 	}
-	asserts.AssertBatchGetBuildsInput(t)
-	return t
+	asserts.AssertBatchGetBuildsInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListBuildsInput = { ["nextToken"] = true, ["sortOrder"] = true, nil }
@@ -472,13 +615,24 @@ end
 -- * sortOrder [SortOrderType] <p>The order to list build IDs. Valid values include:</p> <ul> <li> <p> <code>ASCENDING</code>: List the build IDs in ascending order by build ID.</p> </li> <li> <p> <code>DESCENDING</code>: List the build IDs in descending order by build ID.</p> </li> </ul>
 -- @return ListBuildsInput structure as a key-value pair table
 function M.ListBuildsInput(args)
-	assert(args, "You must provdide an argument table when creating ListBuildsInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListBuildsInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["nextToken"] = args["nextToken"],
 		["sortOrder"] = args["sortOrder"],
 	}
-	asserts.AssertListBuildsInput(t)
-	return t
+	asserts.AssertListBuildsInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteProjectOutput = { nil }
@@ -497,11 +651,22 @@ end
 -- Valid keys:
 -- @return DeleteProjectOutput structure as a key-value pair table
 function M.DeleteProjectOutput(args)
-	assert(args, "You must provdide an argument table when creating DeleteProjectOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteProjectOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertDeleteProjectOutput(t)
-	return t
+	asserts.AssertDeleteProjectOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdateProjectInput = { ["name"] = true, ["serviceRole"] = true, ["tags"] = true, ["artifacts"] = true, ["timeoutInMinutes"] = true, ["environment"] = true, ["source"] = true, ["encryptionKey"] = true, ["description"] = true, nil }
@@ -540,8 +705,14 @@ end
 -- Required key: name
 -- @return UpdateProjectInput structure as a key-value pair table
 function M.UpdateProjectInput(args)
-	assert(args, "You must provdide an argument table when creating UpdateProjectInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateProjectInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["name"] = args["name"],
 		["serviceRole"] = args["serviceRole"],
 		["tags"] = args["tags"],
@@ -552,8 +723,13 @@ function M.UpdateProjectInput(args)
 		["encryptionKey"] = args["encryptionKey"],
 		["description"] = args["description"],
 	}
-	asserts.AssertUpdateProjectInput(t)
-	return t
+	asserts.AssertUpdateProjectInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.BatchGetBuildsOutput = { ["buildsNotFound"] = true, ["builds"] = true, nil }
@@ -576,13 +752,24 @@ end
 -- * builds [Builds] <p>Information about the requested builds.</p>
 -- @return BatchGetBuildsOutput structure as a key-value pair table
 function M.BatchGetBuildsOutput(args)
-	assert(args, "You must provdide an argument table when creating BatchGetBuildsOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating BatchGetBuildsOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["buildsNotFound"] = args["buildsNotFound"],
 		["builds"] = args["builds"],
 	}
-	asserts.AssertBatchGetBuildsOutput(t)
-	return t
+	asserts.AssertBatchGetBuildsOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ProjectArtifacts = { ["packaging"] = true, ["name"] = true, ["namespaceType"] = true, ["location"] = true, ["path"] = true, ["type"] = true, nil }
@@ -615,8 +802,14 @@ end
 -- Required key: type
 -- @return ProjectArtifacts structure as a key-value pair table
 function M.ProjectArtifacts(args)
-	assert(args, "You must provdide an argument table when creating ProjectArtifacts")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ProjectArtifacts")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["packaging"] = args["packaging"],
 		["name"] = args["name"],
 		["namespaceType"] = args["namespaceType"],
@@ -624,8 +817,13 @@ function M.ProjectArtifacts(args)
 		["path"] = args["path"],
 		["type"] = args["type"],
 	}
-	asserts.AssertProjectArtifacts(t)
-	return t
+	asserts.AssertProjectArtifacts(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Tag = { ["value"] = true, ["key"] = true, nil }
@@ -648,13 +846,24 @@ end
 -- * key [KeyInput] <p>The tag's key.</p>
 -- @return Tag structure as a key-value pair table
 function M.Tag(args)
-	assert(args, "You must provdide an argument table when creating Tag")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Tag")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["value"] = args["value"],
 		["key"] = args["key"],
 	}
-	asserts.AssertTag(t)
-	return t
+	asserts.AssertTag(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListBuildsForProjectInput = { ["projectName"] = true, ["nextToken"] = true, ["sortOrder"] = true, nil }
@@ -681,14 +890,25 @@ end
 -- Required key: projectName
 -- @return ListBuildsForProjectInput structure as a key-value pair table
 function M.ListBuildsForProjectInput(args)
-	assert(args, "You must provdide an argument table when creating ListBuildsForProjectInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListBuildsForProjectInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["projectName"] = args["projectName"],
 		["nextToken"] = args["nextToken"],
 		["sortOrder"] = args["sortOrder"],
 	}
-	asserts.AssertListBuildsForProjectInput(t)
-	return t
+	asserts.AssertListBuildsForProjectInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Project = { ["name"] = true, ["serviceRole"] = true, ["tags"] = true, ["artifacts"] = true, ["lastModified"] = true, ["timeoutInMinutes"] = true, ["created"] = true, ["environment"] = true, ["source"] = true, ["encryptionKey"] = true, ["arn"] = true, ["description"] = true, nil }
@@ -731,8 +951,14 @@ end
 -- * description [ProjectDescription] <p>A description that makes the build project easy to identify.</p>
 -- @return Project structure as a key-value pair table
 function M.Project(args)
-	assert(args, "You must provdide an argument table when creating Project")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Project")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["name"] = args["name"],
 		["serviceRole"] = args["serviceRole"],
 		["tags"] = args["tags"],
@@ -746,8 +972,13 @@ function M.Project(args)
 		["arn"] = args["arn"],
 		["description"] = args["description"],
 	}
-	asserts.AssertProject(t)
-	return t
+	asserts.AssertProject(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.EnvironmentImage = { ["name"] = true, ["description"] = true, nil }
@@ -770,13 +1001,24 @@ end
 -- * description [String] <p>The description of the Docker image.</p>
 -- @return EnvironmentImage structure as a key-value pair table
 function M.EnvironmentImage(args)
-	assert(args, "You must provdide an argument table when creating EnvironmentImage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating EnvironmentImage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["name"] = args["name"],
 		["description"] = args["description"],
 	}
-	asserts.AssertEnvironmentImage(t)
-	return t
+	asserts.AssertEnvironmentImage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListCuratedEnvironmentImagesInput = { nil }
@@ -795,11 +1037,22 @@ end
 -- Valid keys:
 -- @return ListCuratedEnvironmentImagesInput structure as a key-value pair table
 function M.ListCuratedEnvironmentImagesInput(args)
-	assert(args, "You must provdide an argument table when creating ListCuratedEnvironmentImagesInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListCuratedEnvironmentImagesInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertListCuratedEnvironmentImagesInput(t)
-	return t
+	asserts.AssertListCuratedEnvironmentImagesInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ResourceAlreadyExistsException = { nil }
@@ -818,11 +1071,22 @@ end
 -- Valid keys:
 -- @return ResourceAlreadyExistsException structure as a key-value pair table
 function M.ResourceAlreadyExistsException(args)
-	assert(args, "You must provdide an argument table when creating ResourceAlreadyExistsException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ResourceAlreadyExistsException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertResourceAlreadyExistsException(t)
-	return t
+	asserts.AssertResourceAlreadyExistsException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateProjectInput = { ["name"] = true, ["serviceRole"] = true, ["tags"] = true, ["artifacts"] = true, ["timeoutInMinutes"] = true, ["environment"] = true, ["source"] = true, ["encryptionKey"] = true, ["description"] = true, nil }
@@ -867,8 +1131,14 @@ end
 -- Required key: environment
 -- @return CreateProjectInput structure as a key-value pair table
 function M.CreateProjectInput(args)
-	assert(args, "You must provdide an argument table when creating CreateProjectInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateProjectInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["name"] = args["name"],
 		["serviceRole"] = args["serviceRole"],
 		["tags"] = args["tags"],
@@ -879,8 +1149,13 @@ function M.CreateProjectInput(args)
 		["encryptionKey"] = args["encryptionKey"],
 		["description"] = args["description"],
 	}
-	asserts.AssertCreateProjectInput(t)
-	return t
+	asserts.AssertCreateProjectInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListBuildsOutput = { ["nextToken"] = true, ["ids"] = true, nil }
@@ -903,13 +1178,24 @@ end
 -- * ids [BuildIds] <p>A list of build IDs, with each build ID representing a single build.</p>
 -- @return ListBuildsOutput structure as a key-value pair table
 function M.ListBuildsOutput(args)
-	assert(args, "You must provdide an argument table when creating ListBuildsOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListBuildsOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["nextToken"] = args["nextToken"],
 		["ids"] = args["ids"],
 	}
-	asserts.AssertListBuildsOutput(t)
-	return t
+	asserts.AssertListBuildsOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AccountLimitExceededException = { nil }
@@ -928,11 +1214,22 @@ end
 -- Valid keys:
 -- @return AccountLimitExceededException structure as a key-value pair table
 function M.AccountLimitExceededException(args)
-	assert(args, "You must provdide an argument table when creating AccountLimitExceededException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AccountLimitExceededException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertAccountLimitExceededException(t)
-	return t
+	asserts.AssertAccountLimitExceededException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListBuildsForProjectOutput = { ["nextToken"] = true, ["ids"] = true, nil }
@@ -955,13 +1252,24 @@ end
 -- * ids [BuildIds] <p>A list of build IDs for the specified build project, with each build ID representing a single build.</p>
 -- @return ListBuildsForProjectOutput structure as a key-value pair table
 function M.ListBuildsForProjectOutput(args)
-	assert(args, "You must provdide an argument table when creating ListBuildsForProjectOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListBuildsForProjectOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["nextToken"] = args["nextToken"],
 		["ids"] = args["ids"],
 	}
-	asserts.AssertListBuildsForProjectOutput(t)
-	return t
+	asserts.AssertListBuildsForProjectOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.BatchGetProjectsOutput = { ["projectsNotFound"] = true, ["projects"] = true, nil }
@@ -984,13 +1292,24 @@ end
 -- * projects [Projects] <p>Information about the requested build projects.</p>
 -- @return BatchGetProjectsOutput structure as a key-value pair table
 function M.BatchGetProjectsOutput(args)
-	assert(args, "You must provdide an argument table when creating BatchGetProjectsOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating BatchGetProjectsOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["projectsNotFound"] = args["projectsNotFound"],
 		["projects"] = args["projects"],
 	}
-	asserts.AssertBatchGetProjectsOutput(t)
-	return t
+	asserts.AssertBatchGetProjectsOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListProjectsOutput = { ["nextToken"] = true, ["projects"] = true, nil }
@@ -1013,13 +1332,24 @@ end
 -- * projects [ProjectNames] <p>The list of build project names, with each build project name representing a single build project.</p>
 -- @return ListProjectsOutput structure as a key-value pair table
 function M.ListProjectsOutput(args)
-	assert(args, "You must provdide an argument table when creating ListProjectsOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListProjectsOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["nextToken"] = args["nextToken"],
 		["projects"] = args["projects"],
 	}
-	asserts.AssertListProjectsOutput(t)
-	return t
+	asserts.AssertListProjectsOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.SourceAuth = { ["resource"] = true, ["type"] = true, nil }
@@ -1044,13 +1374,24 @@ end
 -- Required key: type
 -- @return SourceAuth structure as a key-value pair table
 function M.SourceAuth(args)
-	assert(args, "You must provdide an argument table when creating SourceAuth")
-	local t = { 
+	assert(args, "You must provide an argument table when creating SourceAuth")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["resource"] = args["resource"],
 		["type"] = args["type"],
 	}
-	asserts.AssertSourceAuth(t)
-	return t
+	asserts.AssertSourceAuth(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.EnvironmentVariable = { ["name"] = true, ["value"] = true, nil }
@@ -1077,13 +1418,24 @@ end
 -- Required key: value
 -- @return EnvironmentVariable structure as a key-value pair table
 function M.EnvironmentVariable(args)
-	assert(args, "You must provdide an argument table when creating EnvironmentVariable")
-	local t = { 
+	assert(args, "You must provide an argument table when creating EnvironmentVariable")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["name"] = args["name"],
 		["value"] = args["value"],
 	}
-	asserts.AssertEnvironmentVariable(t)
-	return t
+	asserts.AssertEnvironmentVariable(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ResourceNotFoundException = { nil }
@@ -1102,11 +1454,22 @@ end
 -- Valid keys:
 -- @return ResourceNotFoundException structure as a key-value pair table
 function M.ResourceNotFoundException(args)
-	assert(args, "You must provdide an argument table when creating ResourceNotFoundException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ResourceNotFoundException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertResourceNotFoundException(t)
-	return t
+	asserts.AssertResourceNotFoundException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.BatchGetProjectsInput = { ["names"] = true, nil }
@@ -1129,12 +1492,23 @@ end
 -- Required key: names
 -- @return BatchGetProjectsInput structure as a key-value pair table
 function M.BatchGetProjectsInput(args)
-	assert(args, "You must provdide an argument table when creating BatchGetProjectsInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating BatchGetProjectsInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["names"] = args["names"],
 	}
-	asserts.AssertBatchGetProjectsInput(t)
-	return t
+	asserts.AssertBatchGetProjectsInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.StopBuildOutput = { ["build"] = true, nil }
@@ -1155,12 +1529,23 @@ end
 -- * build [Build] <p>Information about the build.</p>
 -- @return StopBuildOutput structure as a key-value pair table
 function M.StopBuildOutput(args)
-	assert(args, "You must provdide an argument table when creating StopBuildOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating StopBuildOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["build"] = args["build"],
 	}
-	asserts.AssertStopBuildOutput(t)
-	return t
+	asserts.AssertStopBuildOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteProjectInput = { ["name"] = true, nil }
@@ -1183,12 +1568,23 @@ end
 -- Required key: name
 -- @return DeleteProjectInput structure as a key-value pair table
 function M.DeleteProjectInput(args)
-	assert(args, "You must provdide an argument table when creating DeleteProjectInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteProjectInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["name"] = args["name"],
 	}
-	asserts.AssertDeleteProjectInput(t)
-	return t
+	asserts.AssertDeleteProjectInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.StartBuildInput = { ["buildspecOverride"] = true, ["environmentVariablesOverride"] = true, ["artifactsOverride"] = true, ["projectName"] = true, ["sourceVersion"] = true, ["timeoutInMinutesOverride"] = true, nil }
@@ -1221,8 +1617,14 @@ end
 -- Required key: projectName
 -- @return StartBuildInput structure as a key-value pair table
 function M.StartBuildInput(args)
-	assert(args, "You must provdide an argument table when creating StartBuildInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating StartBuildInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["buildspecOverride"] = args["buildspecOverride"],
 		["environmentVariablesOverride"] = args["environmentVariablesOverride"],
 		["artifactsOverride"] = args["artifactsOverride"],
@@ -1230,8 +1632,13 @@ function M.StartBuildInput(args)
 		["sourceVersion"] = args["sourceVersion"],
 		["timeoutInMinutesOverride"] = args["timeoutInMinutesOverride"],
 	}
-	asserts.AssertStartBuildInput(t)
-	return t
+	asserts.AssertStartBuildInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidInputException = { nil }
@@ -1250,11 +1657,22 @@ end
 -- Valid keys:
 -- @return InvalidInputException structure as a key-value pair table
 function M.InvalidInputException(args)
-	assert(args, "You must provdide an argument table when creating InvalidInputException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidInputException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertInvalidInputException(t)
-	return t
+	asserts.AssertInvalidInputException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ProjectEnvironment = { ["computeType"] = true, ["privilegedMode"] = true, ["image"] = true, ["type"] = true, ["environmentVariables"] = true, nil }
@@ -1289,16 +1707,27 @@ end
 -- Required key: computeType
 -- @return ProjectEnvironment structure as a key-value pair table
 function M.ProjectEnvironment(args)
-	assert(args, "You must provdide an argument table when creating ProjectEnvironment")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ProjectEnvironment")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["computeType"] = args["computeType"],
 		["privilegedMode"] = args["privilegedMode"],
 		["image"] = args["image"],
 		["type"] = args["type"],
 		["environmentVariables"] = args["environmentVariables"],
 	}
-	asserts.AssertProjectEnvironment(t)
-	return t
+	asserts.AssertProjectEnvironment(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.EnvironmentLanguage = { ["images"] = true, ["language"] = true, nil }
@@ -1321,13 +1750,24 @@ end
 -- * language [LanguageType] <p>The programming language for the Docker images.</p>
 -- @return EnvironmentLanguage structure as a key-value pair table
 function M.EnvironmentLanguage(args)
-	assert(args, "You must provdide an argument table when creating EnvironmentLanguage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating EnvironmentLanguage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["images"] = args["images"],
 		["language"] = args["language"],
 	}
-	asserts.AssertEnvironmentLanguage(t)
-	return t
+	asserts.AssertEnvironmentLanguage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.BuildArtifacts = { ["md5sum"] = true, ["location"] = true, ["sha256sum"] = true, nil }
@@ -1352,14 +1792,25 @@ end
 -- * sha256sum [String] <p>The SHA-256 hash of the build artifact.</p> <p>You can use this hash along with a checksum tool to confirm both file integrity and authenticity.</p> <note> <p>This value is available only if the build project's <code>packaging</code> value is set to <code>ZIP</code>.</p> </note>
 -- @return BuildArtifacts structure as a key-value pair table
 function M.BuildArtifacts(args)
-	assert(args, "You must provdide an argument table when creating BuildArtifacts")
-	local t = { 
+	assert(args, "You must provide an argument table when creating BuildArtifacts")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["md5sum"] = args["md5sum"],
 		["location"] = args["location"],
 		["sha256sum"] = args["sha256sum"],
 	}
-	asserts.AssertBuildArtifacts(t)
-	return t
+	asserts.AssertBuildArtifacts(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 function asserts.AssertComputeType(str)
@@ -1866,8 +2317,11 @@ function M.ListBuildsAsync(ListBuildsInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "CodeBuild_20161006.ListBuilds",
 	}
+	for header,value in pairs(ListBuildsInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ListBuildsInput, headers, settings, cb)
 	else
@@ -1898,8 +2352,11 @@ function M.StopBuildAsync(StopBuildInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "CodeBuild_20161006.StopBuild",
 	}
+	for header,value in pairs(StopBuildInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", StopBuildInput, headers, settings, cb)
 	else
@@ -1930,8 +2387,11 @@ function M.ListBuildsForProjectAsync(ListBuildsForProjectInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "CodeBuild_20161006.ListBuildsForProject",
 	}
+	for header,value in pairs(ListBuildsForProjectInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ListBuildsForProjectInput, headers, settings, cb)
 	else
@@ -1962,8 +2422,11 @@ function M.BatchGetBuildsAsync(BatchGetBuildsInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "CodeBuild_20161006.BatchGetBuilds",
 	}
+	for header,value in pairs(BatchGetBuildsInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", BatchGetBuildsInput, headers, settings, cb)
 	else
@@ -1994,8 +2457,11 @@ function M.CreateProjectAsync(CreateProjectInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "CodeBuild_20161006.CreateProject",
 	}
+	for header,value in pairs(CreateProjectInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateProjectInput, headers, settings, cb)
 	else
@@ -2026,8 +2492,11 @@ function M.ListCuratedEnvironmentImagesAsync(ListCuratedEnvironmentImagesInput, 
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "CodeBuild_20161006.ListCuratedEnvironmentImages",
 	}
+	for header,value in pairs(ListCuratedEnvironmentImagesInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ListCuratedEnvironmentImagesInput, headers, settings, cb)
 	else
@@ -2058,8 +2527,11 @@ function M.ListProjectsAsync(ListProjectsInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "CodeBuild_20161006.ListProjects",
 	}
+	for header,value in pairs(ListProjectsInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ListProjectsInput, headers, settings, cb)
 	else
@@ -2090,8 +2562,11 @@ function M.UpdateProjectAsync(UpdateProjectInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "CodeBuild_20161006.UpdateProject",
 	}
+	for header,value in pairs(UpdateProjectInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateProjectInput, headers, settings, cb)
 	else
@@ -2122,8 +2597,11 @@ function M.StartBuildAsync(StartBuildInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "CodeBuild_20161006.StartBuild",
 	}
+	for header,value in pairs(StartBuildInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", StartBuildInput, headers, settings, cb)
 	else
@@ -2154,8 +2632,11 @@ function M.DeleteProjectAsync(DeleteProjectInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "CodeBuild_20161006.DeleteProject",
 	}
+	for header,value in pairs(DeleteProjectInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteProjectInput, headers, settings, cb)
 	else
@@ -2186,8 +2667,11 @@ function M.BatchGetProjectsAsync(BatchGetProjectsInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "CodeBuild_20161006.BatchGetProjects",
 	}
+	for header,value in pairs(BatchGetProjectsInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", BatchGetProjectsInput, headers, settings, cb)
 	else

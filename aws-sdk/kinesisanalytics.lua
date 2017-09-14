@@ -41,13 +41,24 @@ end
 -- * ExclusiveStartApplicationName [ApplicationName] <p>Name of the application to start the list with. When using pagination to retrieve the list, you don't need to specify this parameter in the first request. However, in subsequent requests, you add the last application name from the previous response to get the next page of applications.</p>
 -- @return ListApplicationsRequest structure as a key-value pair table
 function M.ListApplicationsRequest(args)
-	assert(args, "You must provdide an argument table when creating ListApplicationsRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListApplicationsRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Limit"] = args["Limit"],
 		["ExclusiveStartApplicationName"] = args["ExclusiveStartApplicationName"],
 	}
-	asserts.AssertListApplicationsRequest(t)
-	return t
+	asserts.AssertListApplicationsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DestinationSchema = { ["RecordFormatType"] = true, nil }
@@ -68,12 +79,23 @@ end
 -- * RecordFormatType [RecordFormatType] <p>Specifies the format of the records on the output stream.</p>
 -- @return DestinationSchema structure as a key-value pair table
 function M.DestinationSchema(args)
-	assert(args, "You must provdide an argument table when creating DestinationSchema")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DestinationSchema")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["RecordFormatType"] = args["RecordFormatType"],
 	}
-	asserts.AssertDestinationSchema(t)
-	return t
+	asserts.AssertDestinationSchema(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidApplicationConfigurationException = { ["message"] = true, nil }
@@ -94,12 +116,23 @@ end
 -- * message [ErrorMessage] <p>test</p>
 -- @return InvalidApplicationConfigurationException structure as a key-value pair table
 function M.InvalidApplicationConfigurationException(args)
-	assert(args, "You must provdide an argument table when creating InvalidApplicationConfigurationException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidApplicationConfigurationException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertInvalidApplicationConfigurationException(t)
-	return t
+	asserts.AssertInvalidApplicationConfigurationException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.JSONMappingParameters = { ["RecordRowPath"] = true, nil }
@@ -122,12 +155,23 @@ end
 -- Required key: RecordRowPath
 -- @return JSONMappingParameters structure as a key-value pair table
 function M.JSONMappingParameters(args)
-	assert(args, "You must provdide an argument table when creating JSONMappingParameters")
-	local t = { 
+	assert(args, "You must provide an argument table when creating JSONMappingParameters")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["RecordRowPath"] = args["RecordRowPath"],
 	}
-	asserts.AssertJSONMappingParameters(t)
-	return t
+	asserts.AssertJSONMappingParameters(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteApplicationReferenceDataSourceResponse = { nil }
@@ -146,11 +190,22 @@ end
 -- Valid keys:
 -- @return DeleteApplicationReferenceDataSourceResponse structure as a key-value pair table
 function M.DeleteApplicationReferenceDataSourceResponse(args)
-	assert(args, "You must provdide an argument table when creating DeleteApplicationReferenceDataSourceResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteApplicationReferenceDataSourceResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertDeleteApplicationReferenceDataSourceResponse(t)
-	return t
+	asserts.AssertDeleteApplicationReferenceDataSourceResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AddApplicationInputResponse = { nil }
@@ -169,11 +224,22 @@ end
 -- Valid keys:
 -- @return AddApplicationInputResponse structure as a key-value pair table
 function M.AddApplicationInputResponse(args)
-	assert(args, "You must provdide an argument table when creating AddApplicationInputResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AddApplicationInputResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertAddApplicationInputResponse(t)
-	return t
+	asserts.AssertAddApplicationInputResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ReferenceDataSourceDescription = { ["S3ReferenceDataSourceDescription"] = true, ["ReferenceId"] = true, ["TableName"] = true, ["ReferenceSchema"] = true, nil }
@@ -206,15 +272,26 @@ end
 -- Required key: S3ReferenceDataSourceDescription
 -- @return ReferenceDataSourceDescription structure as a key-value pair table
 function M.ReferenceDataSourceDescription(args)
-	assert(args, "You must provdide an argument table when creating ReferenceDataSourceDescription")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ReferenceDataSourceDescription")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["S3ReferenceDataSourceDescription"] = args["S3ReferenceDataSourceDescription"],
 		["ReferenceId"] = args["ReferenceId"],
 		["TableName"] = args["TableName"],
 		["ReferenceSchema"] = args["ReferenceSchema"],
 	}
-	asserts.AssertReferenceDataSourceDescription(t)
-	return t
+	asserts.AssertReferenceDataSourceDescription(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdateApplicationRequest = { ["ApplicationName"] = true, ["ApplicationUpdate"] = true, ["CurrentApplicationVersionId"] = true, nil }
@@ -245,14 +322,25 @@ end
 -- Required key: ApplicationUpdate
 -- @return UpdateApplicationRequest structure as a key-value pair table
 function M.UpdateApplicationRequest(args)
-	assert(args, "You must provdide an argument table when creating UpdateApplicationRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateApplicationRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ApplicationName"] = args["ApplicationName"],
 		["ApplicationUpdate"] = args["ApplicationUpdate"],
 		["CurrentApplicationVersionId"] = args["CurrentApplicationVersionId"],
 	}
-	asserts.AssertUpdateApplicationRequest(t)
-	return t
+	asserts.AssertUpdateApplicationRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CloudWatchLoggingOption = { ["RoleARN"] = true, ["LogStreamARN"] = true, nil }
@@ -279,13 +367,24 @@ end
 -- Required key: RoleARN
 -- @return CloudWatchLoggingOption structure as a key-value pair table
 function M.CloudWatchLoggingOption(args)
-	assert(args, "You must provdide an argument table when creating CloudWatchLoggingOption")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CloudWatchLoggingOption")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["RoleARN"] = args["RoleARN"],
 		["LogStreamARN"] = args["LogStreamARN"],
 	}
-	asserts.AssertCloudWatchLoggingOption(t)
-	return t
+	asserts.AssertCloudWatchLoggingOption(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteApplicationReferenceDataSourceRequest = { ["ApplicationName"] = true, ["ReferenceId"] = true, ["CurrentApplicationVersionId"] = true, nil }
@@ -316,14 +415,25 @@ end
 -- Required key: ReferenceId
 -- @return DeleteApplicationReferenceDataSourceRequest structure as a key-value pair table
 function M.DeleteApplicationReferenceDataSourceRequest(args)
-	assert(args, "You must provdide an argument table when creating DeleteApplicationReferenceDataSourceRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteApplicationReferenceDataSourceRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ApplicationName"] = args["ApplicationName"],
 		["ReferenceId"] = args["ReferenceId"],
 		["CurrentApplicationVersionId"] = args["CurrentApplicationVersionId"],
 	}
-	asserts.AssertDeleteApplicationReferenceDataSourceRequest(t)
-	return t
+	asserts.AssertDeleteApplicationReferenceDataSourceRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CodeValidationException = { ["message"] = true, nil }
@@ -344,12 +454,23 @@ end
 -- * message [ErrorMessage] <p>Test</p>
 -- @return CodeValidationException structure as a key-value pair table
 function M.CodeValidationException(args)
-	assert(args, "You must provdide an argument table when creating CodeValidationException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CodeValidationException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertCodeValidationException(t)
-	return t
+	asserts.AssertCodeValidationException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.KinesisFirehoseOutput = { ["ResourceARN"] = true, ["RoleARN"] = true, nil }
@@ -376,13 +497,24 @@ end
 -- Required key: RoleARN
 -- @return KinesisFirehoseOutput structure as a key-value pair table
 function M.KinesisFirehoseOutput(args)
-	assert(args, "You must provdide an argument table when creating KinesisFirehoseOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating KinesisFirehoseOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ResourceARN"] = args["ResourceARN"],
 		["RoleARN"] = args["RoleARN"],
 	}
-	asserts.AssertKinesisFirehoseOutput(t)
-	return t
+	asserts.AssertKinesisFirehoseOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.KinesisStreamsOutput = { ["ResourceARN"] = true, ["RoleARN"] = true, nil }
@@ -409,13 +541,24 @@ end
 -- Required key: RoleARN
 -- @return KinesisStreamsOutput structure as a key-value pair table
 function M.KinesisStreamsOutput(args)
-	assert(args, "You must provdide an argument table when creating KinesisStreamsOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating KinesisStreamsOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ResourceARN"] = args["ResourceARN"],
 		["RoleARN"] = args["RoleARN"],
 	}
-	asserts.AssertKinesisStreamsOutput(t)
-	return t
+	asserts.AssertKinesisStreamsOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteApplicationResponse = { nil }
@@ -434,11 +577,22 @@ end
 -- Valid keys:
 -- @return DeleteApplicationResponse structure as a key-value pair table
 function M.DeleteApplicationResponse(args)
-	assert(args, "You must provdide an argument table when creating DeleteApplicationResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteApplicationResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertDeleteApplicationResponse(t)
-	return t
+	asserts.AssertDeleteApplicationResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.KinesisFirehoseInputUpdate = { ["RoleARNUpdate"] = true, ["ResourceARNUpdate"] = true, nil }
@@ -461,13 +615,24 @@ end
 -- * ResourceARNUpdate [ResourceARN] <p>ARN of the input Amazon Kinesis Firehose delivery stream to read.</p>
 -- @return KinesisFirehoseInputUpdate structure as a key-value pair table
 function M.KinesisFirehoseInputUpdate(args)
-	assert(args, "You must provdide an argument table when creating KinesisFirehoseInputUpdate")
-	local t = { 
+	assert(args, "You must provide an argument table when creating KinesisFirehoseInputUpdate")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["RoleARNUpdate"] = args["RoleARNUpdate"],
 		["ResourceARNUpdate"] = args["ResourceARNUpdate"],
 	}
-	asserts.AssertKinesisFirehoseInputUpdate(t)
-	return t
+	asserts.AssertKinesisFirehoseInputUpdate(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AddApplicationReferenceDataSourceResponse = { nil }
@@ -486,11 +651,22 @@ end
 -- Valid keys:
 -- @return AddApplicationReferenceDataSourceResponse structure as a key-value pair table
 function M.AddApplicationReferenceDataSourceResponse(args)
-	assert(args, "You must provdide an argument table when creating AddApplicationReferenceDataSourceResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AddApplicationReferenceDataSourceResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertAddApplicationReferenceDataSourceResponse(t)
-	return t
+	asserts.AssertAddApplicationReferenceDataSourceResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteApplicationOutputRequest = { ["ApplicationName"] = true, ["OutputId"] = true, ["CurrentApplicationVersionId"] = true, nil }
@@ -521,14 +697,25 @@ end
 -- Required key: OutputId
 -- @return DeleteApplicationOutputRequest structure as a key-value pair table
 function M.DeleteApplicationOutputRequest(args)
-	assert(args, "You must provdide an argument table when creating DeleteApplicationOutputRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteApplicationOutputRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ApplicationName"] = args["ApplicationName"],
 		["OutputId"] = args["OutputId"],
 		["CurrentApplicationVersionId"] = args["CurrentApplicationVersionId"],
 	}
-	asserts.AssertDeleteApplicationOutputRequest(t)
-	return t
+	asserts.AssertDeleteApplicationOutputRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InputParallelism = { ["Count"] = true, nil }
@@ -549,12 +736,23 @@ end
 -- * Count [InputParallelismCount] <p>Number of in-application streams to create. For more information, see <a href="http://docs.aws.amazon.com/kinesisanalytics/latest/dev/limits.html">Limits</a>. </p>
 -- @return InputParallelism structure as a key-value pair table
 function M.InputParallelism(args)
-	assert(args, "You must provdide an argument table when creating InputParallelism")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InputParallelism")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Count"] = args["Count"],
 	}
-	asserts.AssertInputParallelism(t)
-	return t
+	asserts.AssertInputParallelism(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.LimitExceededException = { ["message"] = true, nil }
@@ -575,12 +773,23 @@ end
 -- * message [ErrorMessage] <p/>
 -- @return LimitExceededException structure as a key-value pair table
 function M.LimitExceededException(args)
-	assert(args, "You must provdide an argument table when creating LimitExceededException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating LimitExceededException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertLimitExceededException(t)
-	return t
+	asserts.AssertLimitExceededException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AddApplicationOutputResponse = { nil }
@@ -599,11 +808,22 @@ end
 -- Valid keys:
 -- @return AddApplicationOutputResponse structure as a key-value pair table
 function M.AddApplicationOutputResponse(args)
-	assert(args, "You must provdide an argument table when creating AddApplicationOutputResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AddApplicationOutputResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertAddApplicationOutputResponse(t)
-	return t
+	asserts.AssertAddApplicationOutputResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InputConfiguration = { ["InputStartingPositionConfiguration"] = true, ["Id"] = true, nil }
@@ -630,13 +850,24 @@ end
 -- Required key: InputStartingPositionConfiguration
 -- @return InputConfiguration structure as a key-value pair table
 function M.InputConfiguration(args)
-	assert(args, "You must provdide an argument table when creating InputConfiguration")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InputConfiguration")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["InputStartingPositionConfiguration"] = args["InputStartingPositionConfiguration"],
 		["Id"] = args["Id"],
 	}
-	asserts.AssertInputConfiguration(t)
-	return t
+	asserts.AssertInputConfiguration(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ConcurrentModificationException = { ["message"] = true, nil }
@@ -657,12 +888,23 @@ end
 -- * message [ErrorMessage] <p/>
 -- @return ConcurrentModificationException structure as a key-value pair table
 function M.ConcurrentModificationException(args)
-	assert(args, "You must provdide an argument table when creating ConcurrentModificationException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ConcurrentModificationException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertConcurrentModificationException(t)
-	return t
+	asserts.AssertConcurrentModificationException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.SourceSchema = { ["RecordColumns"] = true, ["RecordFormat"] = true, ["RecordEncoding"] = true, nil }
@@ -691,14 +933,25 @@ end
 -- Required key: RecordColumns
 -- @return SourceSchema structure as a key-value pair table
 function M.SourceSchema(args)
-	assert(args, "You must provdide an argument table when creating SourceSchema")
-	local t = { 
+	assert(args, "You must provide an argument table when creating SourceSchema")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["RecordColumns"] = args["RecordColumns"],
 		["RecordFormat"] = args["RecordFormat"],
 		["RecordEncoding"] = args["RecordEncoding"],
 	}
-	asserts.AssertSourceSchema(t)
-	return t
+	asserts.AssertSourceSchema(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CloudWatchLoggingOptionDescription = { ["CloudWatchLoggingOptionId"] = true, ["LogStreamARN"] = true, ["RoleARN"] = true, nil }
@@ -727,14 +980,25 @@ end
 -- Required key: RoleARN
 -- @return CloudWatchLoggingOptionDescription structure as a key-value pair table
 function M.CloudWatchLoggingOptionDescription(args)
-	assert(args, "You must provdide an argument table when creating CloudWatchLoggingOptionDescription")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CloudWatchLoggingOptionDescription")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["CloudWatchLoggingOptionId"] = args["CloudWatchLoggingOptionId"],
 		["LogStreamARN"] = args["LogStreamARN"],
 		["RoleARN"] = args["RoleARN"],
 	}
-	asserts.AssertCloudWatchLoggingOptionDescription(t)
-	return t
+	asserts.AssertCloudWatchLoggingOptionDescription(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ApplicationSummary = { ["ApplicationName"] = true, ["ApplicationStatus"] = true, ["ApplicationARN"] = true, nil }
@@ -765,14 +1029,25 @@ end
 -- Required key: ApplicationStatus
 -- @return ApplicationSummary structure as a key-value pair table
 function M.ApplicationSummary(args)
-	assert(args, "You must provdide an argument table when creating ApplicationSummary")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ApplicationSummary")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ApplicationName"] = args["ApplicationName"],
 		["ApplicationStatus"] = args["ApplicationStatus"],
 		["ApplicationARN"] = args["ApplicationARN"],
 	}
-	asserts.AssertApplicationSummary(t)
-	return t
+	asserts.AssertApplicationSummary(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeApplicationResponse = { ["ApplicationDetail"] = true, nil }
@@ -795,12 +1070,23 @@ end
 -- Required key: ApplicationDetail
 -- @return DescribeApplicationResponse structure as a key-value pair table
 function M.DescribeApplicationResponse(args)
-	assert(args, "You must provdide an argument table when creating DescribeApplicationResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeApplicationResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ApplicationDetail"] = args["ApplicationDetail"],
 	}
-	asserts.AssertDescribeApplicationResponse(t)
-	return t
+	asserts.AssertDescribeApplicationResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteApplicationCloudWatchLoggingOptionRequest = { ["ApplicationName"] = true, ["CloudWatchLoggingOptionId"] = true, ["CurrentApplicationVersionId"] = true, nil }
@@ -831,14 +1117,25 @@ end
 -- Required key: CloudWatchLoggingOptionId
 -- @return DeleteApplicationCloudWatchLoggingOptionRequest structure as a key-value pair table
 function M.DeleteApplicationCloudWatchLoggingOptionRequest(args)
-	assert(args, "You must provdide an argument table when creating DeleteApplicationCloudWatchLoggingOptionRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteApplicationCloudWatchLoggingOptionRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ApplicationName"] = args["ApplicationName"],
 		["CloudWatchLoggingOptionId"] = args["CloudWatchLoggingOptionId"],
 		["CurrentApplicationVersionId"] = args["CurrentApplicationVersionId"],
 	}
-	asserts.AssertDeleteApplicationCloudWatchLoggingOptionRequest(t)
-	return t
+	asserts.AssertDeleteApplicationCloudWatchLoggingOptionRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.S3ReferenceDataSource = { ["FileKey"] = true, ["ReferenceRoleARN"] = true, ["BucketARN"] = true, nil }
@@ -869,14 +1166,25 @@ end
 -- Required key: ReferenceRoleARN
 -- @return S3ReferenceDataSource structure as a key-value pair table
 function M.S3ReferenceDataSource(args)
-	assert(args, "You must provdide an argument table when creating S3ReferenceDataSource")
-	local t = { 
+	assert(args, "You must provide an argument table when creating S3ReferenceDataSource")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["FileKey"] = args["FileKey"],
 		["ReferenceRoleARN"] = args["ReferenceRoleARN"],
 		["BucketARN"] = args["BucketARN"],
 	}
-	asserts.AssertS3ReferenceDataSource(t)
-	return t
+	asserts.AssertS3ReferenceDataSource(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AddApplicationInputRequest = { ["ApplicationName"] = true, ["Input"] = true, ["CurrentApplicationVersionId"] = true, nil }
@@ -907,14 +1215,25 @@ end
 -- Required key: Input
 -- @return AddApplicationInputRequest structure as a key-value pair table
 function M.AddApplicationInputRequest(args)
-	assert(args, "You must provdide an argument table when creating AddApplicationInputRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AddApplicationInputRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ApplicationName"] = args["ApplicationName"],
 		["Input"] = args["Input"],
 		["CurrentApplicationVersionId"] = args["CurrentApplicationVersionId"],
 	}
-	asserts.AssertAddApplicationInputRequest(t)
-	return t
+	asserts.AssertAddApplicationInputRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AddApplicationOutputRequest = { ["ApplicationName"] = true, ["Output"] = true, ["CurrentApplicationVersionId"] = true, nil }
@@ -945,14 +1264,25 @@ end
 -- Required key: Output
 -- @return AddApplicationOutputRequest structure as a key-value pair table
 function M.AddApplicationOutputRequest(args)
-	assert(args, "You must provdide an argument table when creating AddApplicationOutputRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AddApplicationOutputRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ApplicationName"] = args["ApplicationName"],
 		["Output"] = args["Output"],
 		["CurrentApplicationVersionId"] = args["CurrentApplicationVersionId"],
 	}
-	asserts.AssertAddApplicationOutputRequest(t)
-	return t
+	asserts.AssertAddApplicationOutputRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UnableToDetectSchemaException = { ["message"] = true, ["RawInputRecords"] = true, nil }
@@ -975,13 +1305,24 @@ end
 -- * RawInputRecords [RawInputRecords] 
 -- @return UnableToDetectSchemaException structure as a key-value pair table
 function M.UnableToDetectSchemaException(args)
-	assert(args, "You must provdide an argument table when creating UnableToDetectSchemaException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UnableToDetectSchemaException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 		["RawInputRecords"] = args["RawInputRecords"],
 	}
-	asserts.AssertUnableToDetectSchemaException(t)
-	return t
+	asserts.AssertUnableToDetectSchemaException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.KinesisStreamsOutputUpdate = { ["RoleARNUpdate"] = true, ["ResourceARNUpdate"] = true, nil }
@@ -1004,13 +1345,24 @@ end
 -- * ResourceARNUpdate [ResourceARN] <p>Amazon Resource Name (ARN) of the Amazon Kinesis stream where you want to write the output.</p>
 -- @return KinesisStreamsOutputUpdate structure as a key-value pair table
 function M.KinesisStreamsOutputUpdate(args)
-	assert(args, "You must provdide an argument table when creating KinesisStreamsOutputUpdate")
-	local t = { 
+	assert(args, "You must provide an argument table when creating KinesisStreamsOutputUpdate")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["RoleARNUpdate"] = args["RoleARNUpdate"],
 		["ResourceARNUpdate"] = args["ResourceARNUpdate"],
 	}
-	asserts.AssertKinesisStreamsOutputUpdate(t)
-	return t
+	asserts.AssertKinesisStreamsOutputUpdate(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AddApplicationCloudWatchLoggingOptionResponse = { nil }
@@ -1029,11 +1381,22 @@ end
 -- Valid keys:
 -- @return AddApplicationCloudWatchLoggingOptionResponse structure as a key-value pair table
 function M.AddApplicationCloudWatchLoggingOptionResponse(args)
-	assert(args, "You must provdide an argument table when creating AddApplicationCloudWatchLoggingOptionResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AddApplicationCloudWatchLoggingOptionResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertAddApplicationCloudWatchLoggingOptionResponse(t)
-	return t
+	asserts.AssertAddApplicationCloudWatchLoggingOptionResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.KinesisFirehoseOutputUpdate = { ["RoleARNUpdate"] = true, ["ResourceARNUpdate"] = true, nil }
@@ -1056,13 +1419,24 @@ end
 -- * ResourceARNUpdate [ResourceARN] <p>Amazon Resource Name (ARN) of the Amazon Kinesis Firehose delivery stream to write to.</p>
 -- @return KinesisFirehoseOutputUpdate structure as a key-value pair table
 function M.KinesisFirehoseOutputUpdate(args)
-	assert(args, "You must provdide an argument table when creating KinesisFirehoseOutputUpdate")
-	local t = { 
+	assert(args, "You must provide an argument table when creating KinesisFirehoseOutputUpdate")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["RoleARNUpdate"] = args["RoleARNUpdate"],
 		["ResourceARNUpdate"] = args["ResourceARNUpdate"],
 	}
-	asserts.AssertKinesisFirehoseOutputUpdate(t)
-	return t
+	asserts.AssertKinesisFirehoseOutputUpdate(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.StopApplicationResponse = { nil }
@@ -1081,11 +1455,22 @@ end
 -- Valid keys:
 -- @return StopApplicationResponse structure as a key-value pair table
 function M.StopApplicationResponse(args)
-	assert(args, "You must provdide an argument table when creating StopApplicationResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating StopApplicationResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertStopApplicationResponse(t)
-	return t
+	asserts.AssertStopApplicationResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteApplicationRequest = { ["ApplicationName"] = true, ["CreateTimestamp"] = true, nil }
@@ -1112,13 +1497,24 @@ end
 -- Required key: CreateTimestamp
 -- @return DeleteApplicationRequest structure as a key-value pair table
 function M.DeleteApplicationRequest(args)
-	assert(args, "You must provdide an argument table when creating DeleteApplicationRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteApplicationRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ApplicationName"] = args["ApplicationName"],
 		["CreateTimestamp"] = args["CreateTimestamp"],
 	}
-	asserts.AssertDeleteApplicationRequest(t)
-	return t
+	asserts.AssertDeleteApplicationRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.StopApplicationRequest = { ["ApplicationName"] = true, nil }
@@ -1141,12 +1537,23 @@ end
 -- Required key: ApplicationName
 -- @return StopApplicationRequest structure as a key-value pair table
 function M.StopApplicationRequest(args)
-	assert(args, "You must provdide an argument table when creating StopApplicationRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating StopApplicationRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ApplicationName"] = args["ApplicationName"],
 	}
-	asserts.AssertStopApplicationRequest(t)
-	return t
+	asserts.AssertStopApplicationRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Input = { ["InputParallelism"] = true, ["KinesisFirehoseInput"] = true, ["KinesisStreamsInput"] = true, ["InputSchema"] = true, ["NamePrefix"] = true, nil }
@@ -1179,16 +1586,27 @@ end
 -- Required key: InputSchema
 -- @return Input structure as a key-value pair table
 function M.Input(args)
-	assert(args, "You must provdide an argument table when creating Input")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Input")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["InputParallelism"] = args["InputParallelism"],
 		["KinesisFirehoseInput"] = args["KinesisFirehoseInput"],
 		["KinesisStreamsInput"] = args["KinesisStreamsInput"],
 		["InputSchema"] = args["InputSchema"],
 		["NamePrefix"] = args["NamePrefix"],
 	}
-	asserts.AssertInput(t)
-	return t
+	asserts.AssertInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AddApplicationCloudWatchLoggingOptionRequest = { ["ApplicationName"] = true, ["CloudWatchLoggingOption"] = true, ["CurrentApplicationVersionId"] = true, nil }
@@ -1219,14 +1637,25 @@ end
 -- Required key: CloudWatchLoggingOption
 -- @return AddApplicationCloudWatchLoggingOptionRequest structure as a key-value pair table
 function M.AddApplicationCloudWatchLoggingOptionRequest(args)
-	assert(args, "You must provdide an argument table when creating AddApplicationCloudWatchLoggingOptionRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AddApplicationCloudWatchLoggingOptionRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ApplicationName"] = args["ApplicationName"],
 		["CloudWatchLoggingOption"] = args["CloudWatchLoggingOption"],
 		["CurrentApplicationVersionId"] = args["CurrentApplicationVersionId"],
 	}
-	asserts.AssertAddApplicationCloudWatchLoggingOptionRequest(t)
-	return t
+	asserts.AssertAddApplicationCloudWatchLoggingOptionRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ReferenceDataSourceUpdate = { ["ReferenceSchemaUpdate"] = true, ["ReferenceId"] = true, ["TableNameUpdate"] = true, ["S3ReferenceDataSourceUpdate"] = true, nil }
@@ -1255,15 +1684,26 @@ end
 -- Required key: ReferenceId
 -- @return ReferenceDataSourceUpdate structure as a key-value pair table
 function M.ReferenceDataSourceUpdate(args)
-	assert(args, "You must provdide an argument table when creating ReferenceDataSourceUpdate")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ReferenceDataSourceUpdate")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ReferenceSchemaUpdate"] = args["ReferenceSchemaUpdate"],
 		["ReferenceId"] = args["ReferenceId"],
 		["TableNameUpdate"] = args["TableNameUpdate"],
 		["S3ReferenceDataSourceUpdate"] = args["S3ReferenceDataSourceUpdate"],
 	}
-	asserts.AssertReferenceDataSourceUpdate(t)
-	return t
+	asserts.AssertReferenceDataSourceUpdate(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ResourceInUseException = { ["message"] = true, nil }
@@ -1284,12 +1724,23 @@ end
 -- * message [ErrorMessage] <p/>
 -- @return ResourceInUseException structure as a key-value pair table
 function M.ResourceInUseException(args)
-	assert(args, "You must provdide an argument table when creating ResourceInUseException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ResourceInUseException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertResourceInUseException(t)
-	return t
+	asserts.AssertResourceInUseException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteApplicationOutputResponse = { nil }
@@ -1308,11 +1759,22 @@ end
 -- Valid keys:
 -- @return DeleteApplicationOutputResponse structure as a key-value pair table
 function M.DeleteApplicationOutputResponse(args)
-	assert(args, "You must provdide an argument table when creating DeleteApplicationOutputResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteApplicationOutputResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertDeleteApplicationOutputResponse(t)
-	return t
+	asserts.AssertDeleteApplicationOutputResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.S3ReferenceDataSourceUpdate = { ["FileKeyUpdate"] = true, ["ReferenceRoleARNUpdate"] = true, ["BucketARNUpdate"] = true, nil }
@@ -1337,14 +1799,25 @@ end
 -- * BucketARNUpdate [BucketARN] <p>Amazon Resource Name (ARN) of the S3 bucket.</p>
 -- @return S3ReferenceDataSourceUpdate structure as a key-value pair table
 function M.S3ReferenceDataSourceUpdate(args)
-	assert(args, "You must provdide an argument table when creating S3ReferenceDataSourceUpdate")
-	local t = { 
+	assert(args, "You must provide an argument table when creating S3ReferenceDataSourceUpdate")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["FileKeyUpdate"] = args["FileKeyUpdate"],
 		["ReferenceRoleARNUpdate"] = args["ReferenceRoleARNUpdate"],
 		["BucketARNUpdate"] = args["BucketARNUpdate"],
 	}
-	asserts.AssertS3ReferenceDataSourceUpdate(t)
-	return t
+	asserts.AssertS3ReferenceDataSourceUpdate(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdateApplicationResponse = { nil }
@@ -1363,11 +1836,22 @@ end
 -- Valid keys:
 -- @return UpdateApplicationResponse structure as a key-value pair table
 function M.UpdateApplicationResponse(args)
-	assert(args, "You must provdide an argument table when creating UpdateApplicationResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateApplicationResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertUpdateApplicationResponse(t)
-	return t
+	asserts.AssertUpdateApplicationResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.KinesisStreamsOutputDescription = { ["ResourceARN"] = true, ["RoleARN"] = true, nil }
@@ -1390,13 +1874,24 @@ end
 -- * RoleARN [RoleARN] <p>ARN of the IAM role that Amazon Kinesis Analytics can assume to access the stream.</p>
 -- @return KinesisStreamsOutputDescription structure as a key-value pair table
 function M.KinesisStreamsOutputDescription(args)
-	assert(args, "You must provdide an argument table when creating KinesisStreamsOutputDescription")
-	local t = { 
+	assert(args, "You must provide an argument table when creating KinesisStreamsOutputDescription")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ResourceARN"] = args["ResourceARN"],
 		["RoleARN"] = args["RoleARN"],
 	}
-	asserts.AssertKinesisStreamsOutputDescription(t)
-	return t
+	asserts.AssertKinesisStreamsOutputDescription(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CloudWatchLoggingOptionUpdate = { ["CloudWatchLoggingOptionId"] = true, ["LogStreamARNUpdate"] = true, ["RoleARNUpdate"] = true, nil }
@@ -1423,14 +1918,25 @@ end
 -- Required key: CloudWatchLoggingOptionId
 -- @return CloudWatchLoggingOptionUpdate structure as a key-value pair table
 function M.CloudWatchLoggingOptionUpdate(args)
-	assert(args, "You must provdide an argument table when creating CloudWatchLoggingOptionUpdate")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CloudWatchLoggingOptionUpdate")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["CloudWatchLoggingOptionId"] = args["CloudWatchLoggingOptionId"],
 		["LogStreamARNUpdate"] = args["LogStreamARNUpdate"],
 		["RoleARNUpdate"] = args["RoleARNUpdate"],
 	}
-	asserts.AssertCloudWatchLoggingOptionUpdate(t)
-	return t
+	asserts.AssertCloudWatchLoggingOptionUpdate(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InputUpdate = { ["KinesisFirehoseInputUpdate"] = true, ["InputSchemaUpdate"] = true, ["NamePrefixUpdate"] = true, ["InputId"] = true, ["InputParallelismUpdate"] = true, ["KinesisStreamsInputUpdate"] = true, nil }
@@ -1463,8 +1969,14 @@ end
 -- Required key: InputId
 -- @return InputUpdate structure as a key-value pair table
 function M.InputUpdate(args)
-	assert(args, "You must provdide an argument table when creating InputUpdate")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InputUpdate")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["KinesisFirehoseInputUpdate"] = args["KinesisFirehoseInputUpdate"],
 		["InputSchemaUpdate"] = args["InputSchemaUpdate"],
 		["NamePrefixUpdate"] = args["NamePrefixUpdate"],
@@ -1472,8 +1984,13 @@ function M.InputUpdate(args)
 		["InputParallelismUpdate"] = args["InputParallelismUpdate"],
 		["KinesisStreamsInputUpdate"] = args["KinesisStreamsInputUpdate"],
 	}
-	asserts.AssertInputUpdate(t)
-	return t
+	asserts.AssertInputUpdate(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ApplicationDetail = { ["ApplicationName"] = true, ["OutputDescriptions"] = true, ["ApplicationDescription"] = true, ["LastUpdateTimestamp"] = true, ["ApplicationVersionId"] = true, ["ApplicationStatus"] = true, ["CreateTimestamp"] = true, ["ReferenceDataSourceDescriptions"] = true, ["CloudWatchLoggingOptionDescriptions"] = true, ["InputDescriptions"] = true, ["ApplicationARN"] = true, ["ApplicationCode"] = true, nil }
@@ -1524,8 +2041,14 @@ end
 -- Required key: ApplicationVersionId
 -- @return ApplicationDetail structure as a key-value pair table
 function M.ApplicationDetail(args)
-	assert(args, "You must provdide an argument table when creating ApplicationDetail")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ApplicationDetail")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ApplicationName"] = args["ApplicationName"],
 		["OutputDescriptions"] = args["OutputDescriptions"],
 		["ApplicationDescription"] = args["ApplicationDescription"],
@@ -1539,8 +2062,13 @@ function M.ApplicationDetail(args)
 		["ApplicationARN"] = args["ApplicationARN"],
 		["ApplicationCode"] = args["ApplicationCode"],
 	}
-	asserts.AssertApplicationDetail(t)
-	return t
+	asserts.AssertApplicationDetail(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.S3ReferenceDataSourceDescription = { ["FileKey"] = true, ["ReferenceRoleARN"] = true, ["BucketARN"] = true, nil }
@@ -1571,14 +2099,25 @@ end
 -- Required key: ReferenceRoleARN
 -- @return S3ReferenceDataSourceDescription structure as a key-value pair table
 function M.S3ReferenceDataSourceDescription(args)
-	assert(args, "You must provdide an argument table when creating S3ReferenceDataSourceDescription")
-	local t = { 
+	assert(args, "You must provide an argument table when creating S3ReferenceDataSourceDescription")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["FileKey"] = args["FileKey"],
 		["ReferenceRoleARN"] = args["ReferenceRoleARN"],
 		["BucketARN"] = args["BucketARN"],
 	}
-	asserts.AssertS3ReferenceDataSourceDescription(t)
-	return t
+	asserts.AssertS3ReferenceDataSourceDescription(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InputDescription = { ["InputStartingPositionConfiguration"] = true, ["KinesisFirehoseInputDescription"] = true, ["InputId"] = true, ["KinesisStreamsInputDescription"] = true, ["NamePrefix"] = true, ["InAppStreamNames"] = true, ["InputParallelism"] = true, ["InputSchema"] = true, nil }
@@ -1613,8 +2152,14 @@ end
 -- * InputSchema [SourceSchema] 
 -- @return InputDescription structure as a key-value pair table
 function M.InputDescription(args)
-	assert(args, "You must provdide an argument table when creating InputDescription")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InputDescription")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["InputStartingPositionConfiguration"] = args["InputStartingPositionConfiguration"],
 		["KinesisFirehoseInputDescription"] = args["KinesisFirehoseInputDescription"],
 		["InputId"] = args["InputId"],
@@ -1624,8 +2169,13 @@ function M.InputDescription(args)
 		["InputParallelism"] = args["InputParallelism"],
 		["InputSchema"] = args["InputSchema"],
 	}
-	asserts.AssertInputDescription(t)
-	return t
+	asserts.AssertInputDescription(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InputParallelismUpdate = { ["CountUpdate"] = true, nil }
@@ -1646,12 +2196,23 @@ end
 -- * CountUpdate [InputParallelismCount] <p>Number of in-application streams to create for the specified streaming source.</p>
 -- @return InputParallelismUpdate structure as a key-value pair table
 function M.InputParallelismUpdate(args)
-	assert(args, "You must provdide an argument table when creating InputParallelismUpdate")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InputParallelismUpdate")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["CountUpdate"] = args["CountUpdate"],
 	}
-	asserts.AssertInputParallelismUpdate(t)
-	return t
+	asserts.AssertInputParallelismUpdate(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ReferenceDataSource = { ["TableName"] = true, ["ReferenceSchema"] = true, ["S3ReferenceDataSource"] = true, nil }
@@ -1680,14 +2241,25 @@ end
 -- Required key: ReferenceSchema
 -- @return ReferenceDataSource structure as a key-value pair table
 function M.ReferenceDataSource(args)
-	assert(args, "You must provdide an argument table when creating ReferenceDataSource")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ReferenceDataSource")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["TableName"] = args["TableName"],
 		["ReferenceSchema"] = args["ReferenceSchema"],
 		["S3ReferenceDataSource"] = args["S3ReferenceDataSource"],
 	}
-	asserts.AssertReferenceDataSource(t)
-	return t
+	asserts.AssertReferenceDataSource(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ResourceNotFoundException = { ["message"] = true, nil }
@@ -1708,12 +2280,23 @@ end
 -- * message [ErrorMessage] <p/>
 -- @return ResourceNotFoundException structure as a key-value pair table
 function M.ResourceNotFoundException(args)
-	assert(args, "You must provdide an argument table when creating ResourceNotFoundException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ResourceNotFoundException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertResourceNotFoundException(t)
-	return t
+	asserts.AssertResourceNotFoundException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.KinesisFirehoseOutputDescription = { ["ResourceARN"] = true, ["RoleARN"] = true, nil }
@@ -1736,13 +2319,24 @@ end
 -- * RoleARN [RoleARN] <p>ARN of the IAM role that Amazon Kinesis Analytics can assume to access the stream.</p>
 -- @return KinesisFirehoseOutputDescription structure as a key-value pair table
 function M.KinesisFirehoseOutputDescription(args)
-	assert(args, "You must provdide an argument table when creating KinesisFirehoseOutputDescription")
-	local t = { 
+	assert(args, "You must provide an argument table when creating KinesisFirehoseOutputDescription")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ResourceARN"] = args["ResourceARN"],
 		["RoleARN"] = args["RoleARN"],
 	}
-	asserts.AssertKinesisFirehoseOutputDescription(t)
-	return t
+	asserts.AssertKinesisFirehoseOutputDescription(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.KinesisStreamsInputDescription = { ["ResourceARN"] = true, ["RoleARN"] = true, nil }
@@ -1765,13 +2359,24 @@ end
 -- * RoleARN [RoleARN] <p>ARN of the IAM role that Amazon Kinesis Analytics can assume to access the stream.</p>
 -- @return KinesisStreamsInputDescription structure as a key-value pair table
 function M.KinesisStreamsInputDescription(args)
-	assert(args, "You must provdide an argument table when creating KinesisStreamsInputDescription")
-	local t = { 
+	assert(args, "You must provide an argument table when creating KinesisStreamsInputDescription")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ResourceARN"] = args["ResourceARN"],
 		["RoleARN"] = args["RoleARN"],
 	}
-	asserts.AssertKinesisStreamsInputDescription(t)
-	return t
+	asserts.AssertKinesisStreamsInputDescription(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeApplicationRequest = { ["ApplicationName"] = true, nil }
@@ -1794,12 +2399,23 @@ end
 -- Required key: ApplicationName
 -- @return DescribeApplicationRequest structure as a key-value pair table
 function M.DescribeApplicationRequest(args)
-	assert(args, "You must provdide an argument table when creating DescribeApplicationRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeApplicationRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ApplicationName"] = args["ApplicationName"],
 	}
-	asserts.AssertDescribeApplicationRequest(t)
-	return t
+	asserts.AssertDescribeApplicationRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.OutputDescription = { ["OutputId"] = true, ["DestinationSchema"] = true, ["KinesisStreamsOutputDescription"] = true, ["KinesisFirehoseOutputDescription"] = true, ["Name"] = true, nil }
@@ -1828,16 +2444,27 @@ end
 -- * Name [InAppStreamName] <p>Name of the in-application stream configured as output.</p>
 -- @return OutputDescription structure as a key-value pair table
 function M.OutputDescription(args)
-	assert(args, "You must provdide an argument table when creating OutputDescription")
-	local t = { 
+	assert(args, "You must provide an argument table when creating OutputDescription")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["OutputId"] = args["OutputId"],
 		["DestinationSchema"] = args["DestinationSchema"],
 		["KinesisStreamsOutputDescription"] = args["KinesisStreamsOutputDescription"],
 		["KinesisFirehoseOutputDescription"] = args["KinesisFirehoseOutputDescription"],
 		["Name"] = args["Name"],
 	}
-	asserts.AssertOutputDescription(t)
-	return t
+	asserts.AssertOutputDescription(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.StartApplicationResponse = { nil }
@@ -1856,11 +2483,22 @@ end
 -- Valid keys:
 -- @return StartApplicationResponse structure as a key-value pair table
 function M.StartApplicationResponse(args)
-	assert(args, "You must provdide an argument table when creating StartApplicationResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating StartApplicationResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertStartApplicationResponse(t)
-	return t
+	asserts.AssertStartApplicationResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DiscoverInputSchemaRequest = { ["ResourceARN"] = true, ["InputStartingPositionConfiguration"] = true, ["RoleARN"] = true, nil }
@@ -1891,14 +2529,25 @@ end
 -- Required key: InputStartingPositionConfiguration
 -- @return DiscoverInputSchemaRequest structure as a key-value pair table
 function M.DiscoverInputSchemaRequest(args)
-	assert(args, "You must provdide an argument table when creating DiscoverInputSchemaRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DiscoverInputSchemaRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ResourceARN"] = args["ResourceARN"],
 		["InputStartingPositionConfiguration"] = args["InputStartingPositionConfiguration"],
 		["RoleARN"] = args["RoleARN"],
 	}
-	asserts.AssertDiscoverInputSchemaRequest(t)
-	return t
+	asserts.AssertDiscoverInputSchemaRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.MappingParameters = { ["JSONMappingParameters"] = true, ["CSVMappingParameters"] = true, nil }
@@ -1921,13 +2570,24 @@ end
 -- * CSVMappingParameters [CSVMappingParameters] <p>Provides additional mapping information when the record format uses delimiters (for example, CSV).</p>
 -- @return MappingParameters structure as a key-value pair table
 function M.MappingParameters(args)
-	assert(args, "You must provdide an argument table when creating MappingParameters")
-	local t = { 
+	assert(args, "You must provide an argument table when creating MappingParameters")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["JSONMappingParameters"] = args["JSONMappingParameters"],
 		["CSVMappingParameters"] = args["CSVMappingParameters"],
 	}
-	asserts.AssertMappingParameters(t)
-	return t
+	asserts.AssertMappingParameters(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ResourceProvisionedThroughputExceededException = { ["message"] = true, nil }
@@ -1948,12 +2608,23 @@ end
 -- * message [ErrorMessage] 
 -- @return ResourceProvisionedThroughputExceededException structure as a key-value pair table
 function M.ResourceProvisionedThroughputExceededException(args)
-	assert(args, "You must provdide an argument table when creating ResourceProvisionedThroughputExceededException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ResourceProvisionedThroughputExceededException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertResourceProvisionedThroughputExceededException(t)
-	return t
+	asserts.AssertResourceProvisionedThroughputExceededException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteApplicationCloudWatchLoggingOptionResponse = { nil }
@@ -1972,11 +2643,22 @@ end
 -- Valid keys:
 -- @return DeleteApplicationCloudWatchLoggingOptionResponse structure as a key-value pair table
 function M.DeleteApplicationCloudWatchLoggingOptionResponse(args)
-	assert(args, "You must provdide an argument table when creating DeleteApplicationCloudWatchLoggingOptionResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteApplicationCloudWatchLoggingOptionResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertDeleteApplicationCloudWatchLoggingOptionResponse(t)
-	return t
+	asserts.AssertDeleteApplicationCloudWatchLoggingOptionResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.KinesisFirehoseInputDescription = { ["ResourceARN"] = true, ["RoleARN"] = true, nil }
@@ -1999,13 +2681,24 @@ end
 -- * RoleARN [RoleARN] <p>ARN of the IAM role that Amazon Kinesis Analytics assumes to access the stream.</p>
 -- @return KinesisFirehoseInputDescription structure as a key-value pair table
 function M.KinesisFirehoseInputDescription(args)
-	assert(args, "You must provdide an argument table when creating KinesisFirehoseInputDescription")
-	local t = { 
+	assert(args, "You must provide an argument table when creating KinesisFirehoseInputDescription")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ResourceARN"] = args["ResourceARN"],
 		["RoleARN"] = args["RoleARN"],
 	}
-	asserts.AssertKinesisFirehoseInputDescription(t)
-	return t
+	asserts.AssertKinesisFirehoseInputDescription(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateApplicationRequest = { ["ApplicationName"] = true, ["Inputs"] = true, ["ApplicationDescription"] = true, ["Outputs"] = true, ["CloudWatchLoggingOptions"] = true, ["ApplicationCode"] = true, nil }
@@ -2038,8 +2731,14 @@ end
 -- Required key: ApplicationName
 -- @return CreateApplicationRequest structure as a key-value pair table
 function M.CreateApplicationRequest(args)
-	assert(args, "You must provdide an argument table when creating CreateApplicationRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateApplicationRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ApplicationName"] = args["ApplicationName"],
 		["Inputs"] = args["Inputs"],
 		["ApplicationDescription"] = args["ApplicationDescription"],
@@ -2047,8 +2746,13 @@ function M.CreateApplicationRequest(args)
 		["CloudWatchLoggingOptions"] = args["CloudWatchLoggingOptions"],
 		["ApplicationCode"] = args["ApplicationCode"],
 	}
-	asserts.AssertCreateApplicationRequest(t)
-	return t
+	asserts.AssertCreateApplicationRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.RecordFormat = { ["MappingParameters"] = true, ["RecordFormatType"] = true, nil }
@@ -2073,13 +2777,24 @@ end
 -- Required key: RecordFormatType
 -- @return RecordFormat structure as a key-value pair table
 function M.RecordFormat(args)
-	assert(args, "You must provdide an argument table when creating RecordFormat")
-	local t = { 
+	assert(args, "You must provide an argument table when creating RecordFormat")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["MappingParameters"] = args["MappingParameters"],
 		["RecordFormatType"] = args["RecordFormatType"],
 	}
-	asserts.AssertRecordFormat(t)
-	return t
+	asserts.AssertRecordFormat(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.RecordColumn = { ["SqlType"] = true, ["Name"] = true, ["Mapping"] = true, nil }
@@ -2108,14 +2823,25 @@ end
 -- Required key: SqlType
 -- @return RecordColumn structure as a key-value pair table
 function M.RecordColumn(args)
-	assert(args, "You must provdide an argument table when creating RecordColumn")
-	local t = { 
+	assert(args, "You must provide an argument table when creating RecordColumn")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["SqlType"] = args["SqlType"],
 		["Name"] = args["Name"],
 		["Mapping"] = args["Mapping"],
 	}
-	asserts.AssertRecordColumn(t)
-	return t
+	asserts.AssertRecordColumn(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ApplicationUpdate = { ["ReferenceDataSourceUpdates"] = true, ["CloudWatchLoggingOptionUpdates"] = true, ["InputUpdates"] = true, ["ApplicationCodeUpdate"] = true, ["OutputUpdates"] = true, nil }
@@ -2144,16 +2870,27 @@ end
 -- * OutputUpdates [OutputUpdates] <p>Describes application output configuration updates.</p>
 -- @return ApplicationUpdate structure as a key-value pair table
 function M.ApplicationUpdate(args)
-	assert(args, "You must provdide an argument table when creating ApplicationUpdate")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ApplicationUpdate")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ReferenceDataSourceUpdates"] = args["ReferenceDataSourceUpdates"],
 		["CloudWatchLoggingOptionUpdates"] = args["CloudWatchLoggingOptionUpdates"],
 		["InputUpdates"] = args["InputUpdates"],
 		["ApplicationCodeUpdate"] = args["ApplicationCodeUpdate"],
 		["OutputUpdates"] = args["OutputUpdates"],
 	}
-	asserts.AssertApplicationUpdate(t)
-	return t
+	asserts.AssertApplicationUpdate(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InputStartingPositionConfiguration = { ["InputStartingPosition"] = true, nil }
@@ -2174,12 +2911,23 @@ end
 -- * InputStartingPosition [InputStartingPosition] <p>The starting position on the stream.</p> <ul> <li> <p> <code>NOW</code> - Start reading just after the most recent record in the stream, start at the request timestamp that the customer issued.</p> </li> <li> <p> <code>TRIM_HORIZON</code> - Start reading at the last untrimmed record in the stream, which is the oldest record available in the stream. This option is not available for an Amazon Kinesis Firehose delivery stream.</p> </li> <li> <p> <code>LAST_STOPPED_POINT</code> - Resume reading from where the application last stopped reading.</p> </li> </ul>
 -- @return InputStartingPositionConfiguration structure as a key-value pair table
 function M.InputStartingPositionConfiguration(args)
-	assert(args, "You must provdide an argument table when creating InputStartingPositionConfiguration")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InputStartingPositionConfiguration")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["InputStartingPosition"] = args["InputStartingPosition"],
 	}
-	asserts.AssertInputStartingPositionConfiguration(t)
-	return t
+	asserts.AssertInputStartingPositionConfiguration(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.KinesisStreamsInput = { ["ResourceARN"] = true, ["RoleARN"] = true, nil }
@@ -2206,13 +2954,24 @@ end
 -- Required key: RoleARN
 -- @return KinesisStreamsInput structure as a key-value pair table
 function M.KinesisStreamsInput(args)
-	assert(args, "You must provdide an argument table when creating KinesisStreamsInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating KinesisStreamsInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ResourceARN"] = args["ResourceARN"],
 		["RoleARN"] = args["RoleARN"],
 	}
-	asserts.AssertKinesisStreamsInput(t)
-	return t
+	asserts.AssertKinesisStreamsInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DiscoverInputSchemaResponse = { ["RawInputRecords"] = true, ["InputSchema"] = true, ["ParsedInputRecords"] = true, nil }
@@ -2237,14 +2996,25 @@ end
 -- * ParsedInputRecords [ParsedInputRecords] <p>An array of elements, where each element corresponds to a row in a stream record (a stream record can have more than one row).</p>
 -- @return DiscoverInputSchemaResponse structure as a key-value pair table
 function M.DiscoverInputSchemaResponse(args)
-	assert(args, "You must provdide an argument table when creating DiscoverInputSchemaResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DiscoverInputSchemaResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["RawInputRecords"] = args["RawInputRecords"],
 		["InputSchema"] = args["InputSchema"],
 		["ParsedInputRecords"] = args["ParsedInputRecords"],
 	}
-	asserts.AssertDiscoverInputSchemaResponse(t)
-	return t
+	asserts.AssertDiscoverInputSchemaResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Output = { ["DestinationSchema"] = true, ["KinesisStreamsOutput"] = true, ["KinesisFirehoseOutput"] = true, ["Name"] = true, nil }
@@ -2275,15 +3045,26 @@ end
 -- Required key: DestinationSchema
 -- @return Output structure as a key-value pair table
 function M.Output(args)
-	assert(args, "You must provdide an argument table when creating Output")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Output")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DestinationSchema"] = args["DestinationSchema"],
 		["KinesisStreamsOutput"] = args["KinesisStreamsOutput"],
 		["KinesisFirehoseOutput"] = args["KinesisFirehoseOutput"],
 		["Name"] = args["Name"],
 	}
-	asserts.AssertOutput(t)
-	return t
+	asserts.AssertOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidArgumentException = { ["message"] = true, nil }
@@ -2304,12 +3085,23 @@ end
 -- * message [ErrorMessage] <p/>
 -- @return InvalidArgumentException structure as a key-value pair table
 function M.InvalidArgumentException(args)
-	assert(args, "You must provdide an argument table when creating InvalidArgumentException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidArgumentException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertInvalidArgumentException(t)
-	return t
+	asserts.AssertInvalidArgumentException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.KinesisFirehoseInput = { ["ResourceARN"] = true, ["RoleARN"] = true, nil }
@@ -2336,13 +3128,24 @@ end
 -- Required key: RoleARN
 -- @return KinesisFirehoseInput structure as a key-value pair table
 function M.KinesisFirehoseInput(args)
-	assert(args, "You must provdide an argument table when creating KinesisFirehoseInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating KinesisFirehoseInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ResourceARN"] = args["ResourceARN"],
 		["RoleARN"] = args["RoleARN"],
 	}
-	asserts.AssertKinesisFirehoseInput(t)
-	return t
+	asserts.AssertKinesisFirehoseInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateApplicationResponse = { ["ApplicationSummary"] = true, nil }
@@ -2365,12 +3168,23 @@ end
 -- Required key: ApplicationSummary
 -- @return CreateApplicationResponse structure as a key-value pair table
 function M.CreateApplicationResponse(args)
-	assert(args, "You must provdide an argument table when creating CreateApplicationResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateApplicationResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ApplicationSummary"] = args["ApplicationSummary"],
 	}
-	asserts.AssertCreateApplicationResponse(t)
-	return t
+	asserts.AssertCreateApplicationResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.OutputUpdate = { ["OutputId"] = true, ["DestinationSchemaUpdate"] = true, ["KinesisFirehoseOutputUpdate"] = true, ["KinesisStreamsOutputUpdate"] = true, ["NameUpdate"] = true, nil }
@@ -2401,16 +3215,27 @@ end
 -- Required key: OutputId
 -- @return OutputUpdate structure as a key-value pair table
 function M.OutputUpdate(args)
-	assert(args, "You must provdide an argument table when creating OutputUpdate")
-	local t = { 
+	assert(args, "You must provide an argument table when creating OutputUpdate")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["OutputId"] = args["OutputId"],
 		["DestinationSchemaUpdate"] = args["DestinationSchemaUpdate"],
 		["KinesisFirehoseOutputUpdate"] = args["KinesisFirehoseOutputUpdate"],
 		["KinesisStreamsOutputUpdate"] = args["KinesisStreamsOutputUpdate"],
 		["NameUpdate"] = args["NameUpdate"],
 	}
-	asserts.AssertOutputUpdate(t)
-	return t
+	asserts.AssertOutputUpdate(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InputSchemaUpdate = { ["RecordFormatUpdate"] = true, ["RecordColumnUpdates"] = true, ["RecordEncodingUpdate"] = true, nil }
@@ -2435,14 +3260,25 @@ end
 -- * RecordEncodingUpdate [RecordEncoding] <p>Specifies the encoding of the records in the streaming source. For example, UTF-8.</p>
 -- @return InputSchemaUpdate structure as a key-value pair table
 function M.InputSchemaUpdate(args)
-	assert(args, "You must provdide an argument table when creating InputSchemaUpdate")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InputSchemaUpdate")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["RecordFormatUpdate"] = args["RecordFormatUpdate"],
 		["RecordColumnUpdates"] = args["RecordColumnUpdates"],
 		["RecordEncodingUpdate"] = args["RecordEncodingUpdate"],
 	}
-	asserts.AssertInputSchemaUpdate(t)
-	return t
+	asserts.AssertInputSchemaUpdate(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.StartApplicationRequest = { ["ApplicationName"] = true, ["InputConfigurations"] = true, nil }
@@ -2469,13 +3305,24 @@ end
 -- Required key: InputConfigurations
 -- @return StartApplicationRequest structure as a key-value pair table
 function M.StartApplicationRequest(args)
-	assert(args, "You must provdide an argument table when creating StartApplicationRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating StartApplicationRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ApplicationName"] = args["ApplicationName"],
 		["InputConfigurations"] = args["InputConfigurations"],
 	}
-	asserts.AssertStartApplicationRequest(t)
-	return t
+	asserts.AssertStartApplicationRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AddApplicationReferenceDataSourceRequest = { ["ApplicationName"] = true, ["ReferenceDataSource"] = true, ["CurrentApplicationVersionId"] = true, nil }
@@ -2506,14 +3353,25 @@ end
 -- Required key: ReferenceDataSource
 -- @return AddApplicationReferenceDataSourceRequest structure as a key-value pair table
 function M.AddApplicationReferenceDataSourceRequest(args)
-	assert(args, "You must provdide an argument table when creating AddApplicationReferenceDataSourceRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AddApplicationReferenceDataSourceRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ApplicationName"] = args["ApplicationName"],
 		["ReferenceDataSource"] = args["ReferenceDataSource"],
 		["CurrentApplicationVersionId"] = args["CurrentApplicationVersionId"],
 	}
-	asserts.AssertAddApplicationReferenceDataSourceRequest(t)
-	return t
+	asserts.AssertAddApplicationReferenceDataSourceRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CSVMappingParameters = { ["RecordColumnDelimiter"] = true, ["RecordRowDelimiter"] = true, nil }
@@ -2540,13 +3398,24 @@ end
 -- Required key: RecordColumnDelimiter
 -- @return CSVMappingParameters structure as a key-value pair table
 function M.CSVMappingParameters(args)
-	assert(args, "You must provdide an argument table when creating CSVMappingParameters")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CSVMappingParameters")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["RecordColumnDelimiter"] = args["RecordColumnDelimiter"],
 		["RecordRowDelimiter"] = args["RecordRowDelimiter"],
 	}
-	asserts.AssertCSVMappingParameters(t)
-	return t
+	asserts.AssertCSVMappingParameters(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListApplicationsResponse = { ["HasMoreApplications"] = true, ["ApplicationSummaries"] = true, nil }
@@ -2573,13 +3442,24 @@ end
 -- Required key: HasMoreApplications
 -- @return ListApplicationsResponse structure as a key-value pair table
 function M.ListApplicationsResponse(args)
-	assert(args, "You must provdide an argument table when creating ListApplicationsResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListApplicationsResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["HasMoreApplications"] = args["HasMoreApplications"],
 		["ApplicationSummaries"] = args["ApplicationSummaries"],
 	}
-	asserts.AssertListApplicationsResponse(t)
-	return t
+	asserts.AssertListApplicationsResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.KinesisStreamsInputUpdate = { ["RoleARNUpdate"] = true, ["ResourceARNUpdate"] = true, nil }
@@ -2602,13 +3482,24 @@ end
 -- * ResourceARNUpdate [ResourceARN] <p>Amazon Resource Name (ARN) of the input Amazon Kinesis stream to read.</p>
 -- @return KinesisStreamsInputUpdate structure as a key-value pair table
 function M.KinesisStreamsInputUpdate(args)
-	assert(args, "You must provdide an argument table when creating KinesisStreamsInputUpdate")
-	local t = { 
+	assert(args, "You must provide an argument table when creating KinesisStreamsInputUpdate")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["RoleARNUpdate"] = args["RoleARNUpdate"],
 		["ResourceARNUpdate"] = args["ResourceARNUpdate"],
 	}
-	asserts.AssertKinesisStreamsInputUpdate(t)
-	return t
+	asserts.AssertKinesisStreamsInputUpdate(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 function asserts.AssertParsedInputRecordField(str)
@@ -3276,8 +4167,11 @@ function M.DiscoverInputSchemaAsync(DiscoverInputSchemaRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "KinesisAnalytics_20150814.DiscoverInputSchema",
 	}
+	for header,value in pairs(DiscoverInputSchemaRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DiscoverInputSchemaRequest, headers, settings, cb)
 	else
@@ -3308,8 +4202,11 @@ function M.DeleteApplicationOutputAsync(DeleteApplicationOutputRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "KinesisAnalytics_20150814.DeleteApplicationOutput",
 	}
+	for header,value in pairs(DeleteApplicationOutputRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteApplicationOutputRequest, headers, settings, cb)
 	else
@@ -3340,8 +4237,11 @@ function M.AddApplicationReferenceDataSourceAsync(AddApplicationReferenceDataSou
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "KinesisAnalytics_20150814.AddApplicationReferenceDataSource",
 	}
+	for header,value in pairs(AddApplicationReferenceDataSourceRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", AddApplicationReferenceDataSourceRequest, headers, settings, cb)
 	else
@@ -3372,8 +4272,11 @@ function M.ListApplicationsAsync(ListApplicationsRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "KinesisAnalytics_20150814.ListApplications",
 	}
+	for header,value in pairs(ListApplicationsRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ListApplicationsRequest, headers, settings, cb)
 	else
@@ -3404,8 +4307,11 @@ function M.UpdateApplicationAsync(UpdateApplicationRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "KinesisAnalytics_20150814.UpdateApplication",
 	}
+	for header,value in pairs(UpdateApplicationRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateApplicationRequest, headers, settings, cb)
 	else
@@ -3436,8 +4342,11 @@ function M.StopApplicationAsync(StopApplicationRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "KinesisAnalytics_20150814.StopApplication",
 	}
+	for header,value in pairs(StopApplicationRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", StopApplicationRequest, headers, settings, cb)
 	else
@@ -3468,8 +4377,11 @@ function M.AddApplicationOutputAsync(AddApplicationOutputRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "KinesisAnalytics_20150814.AddApplicationOutput",
 	}
+	for header,value in pairs(AddApplicationOutputRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", AddApplicationOutputRequest, headers, settings, cb)
 	else
@@ -3500,8 +4412,11 @@ function M.DeleteApplicationAsync(DeleteApplicationRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "KinesisAnalytics_20150814.DeleteApplication",
 	}
+	for header,value in pairs(DeleteApplicationRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteApplicationRequest, headers, settings, cb)
 	else
@@ -3532,8 +4447,11 @@ function M.AddApplicationCloudWatchLoggingOptionAsync(AddApplicationCloudWatchLo
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "KinesisAnalytics_20150814.AddApplicationCloudWatchLoggingOption",
 	}
+	for header,value in pairs(AddApplicationCloudWatchLoggingOptionRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", AddApplicationCloudWatchLoggingOptionRequest, headers, settings, cb)
 	else
@@ -3564,8 +4482,11 @@ function M.DeleteApplicationCloudWatchLoggingOptionAsync(DeleteApplicationCloudW
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "KinesisAnalytics_20150814.DeleteApplicationCloudWatchLoggingOption",
 	}
+	for header,value in pairs(DeleteApplicationCloudWatchLoggingOptionRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteApplicationCloudWatchLoggingOptionRequest, headers, settings, cb)
 	else
@@ -3596,8 +4517,11 @@ function M.AddApplicationInputAsync(AddApplicationInputRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "KinesisAnalytics_20150814.AddApplicationInput",
 	}
+	for header,value in pairs(AddApplicationInputRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", AddApplicationInputRequest, headers, settings, cb)
 	else
@@ -3628,8 +4552,11 @@ function M.DescribeApplicationAsync(DescribeApplicationRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "KinesisAnalytics_20150814.DescribeApplication",
 	}
+	for header,value in pairs(DescribeApplicationRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeApplicationRequest, headers, settings, cb)
 	else
@@ -3660,8 +4587,11 @@ function M.DeleteApplicationReferenceDataSourceAsync(DeleteApplicationReferenceD
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "KinesisAnalytics_20150814.DeleteApplicationReferenceDataSource",
 	}
+	for header,value in pairs(DeleteApplicationReferenceDataSourceRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteApplicationReferenceDataSourceRequest, headers, settings, cb)
 	else
@@ -3692,8 +4622,11 @@ function M.StartApplicationAsync(StartApplicationRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "KinesisAnalytics_20150814.StartApplication",
 	}
+	for header,value in pairs(StartApplicationRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", StartApplicationRequest, headers, settings, cb)
 	else
@@ -3724,8 +4657,11 @@ function M.CreateApplicationAsync(CreateApplicationRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "KinesisAnalytics_20150814.CreateApplication",
 	}
+	for header,value in pairs(CreateApplicationRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateApplicationRequest, headers, settings, cb)
 	else

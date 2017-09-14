@@ -41,13 +41,24 @@ end
 -- * TagValues [TagValuesOutputList] <p>A list of all tag values for the specified key in the AWS account.</p>
 -- @return GetTagValuesOutput structure as a key-value pair table
 function M.GetTagValuesOutput(args)
-	assert(args, "You must provdide an argument table when creating GetTagValuesOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetTagValuesOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["PaginationToken"] = args["PaginationToken"],
 		["TagValues"] = args["TagValues"],
 	}
-	asserts.AssertGetTagValuesOutput(t)
-	return t
+	asserts.AssertGetTagValuesOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InternalServiceException = { ["Message"] = true, nil }
@@ -68,12 +79,23 @@ end
 -- * Message [ExceptionMessage] 
 -- @return InternalServiceException structure as a key-value pair table
 function M.InternalServiceException(args)
-	assert(args, "You must provdide an argument table when creating InternalServiceException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InternalServiceException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Message"] = args["Message"],
 	}
-	asserts.AssertInternalServiceException(t)
-	return t
+	asserts.AssertInternalServiceException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ThrottledException = { ["Message"] = true, nil }
@@ -94,12 +116,23 @@ end
 -- * Message [ExceptionMessage] 
 -- @return ThrottledException structure as a key-value pair table
 function M.ThrottledException(args)
-	assert(args, "You must provdide an argument table when creating ThrottledException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ThrottledException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Message"] = args["Message"],
 	}
-	asserts.AssertThrottledException(t)
-	return t
+	asserts.AssertThrottledException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetResourcesOutput = { ["PaginationToken"] = true, ["ResourceTagMappingList"] = true, nil }
@@ -122,13 +155,24 @@ end
 -- * ResourceTagMappingList [ResourceTagMappingList] <p>A list of resource ARNs and the tags (keys and values) associated with each.</p>
 -- @return GetResourcesOutput structure as a key-value pair table
 function M.GetResourcesOutput(args)
-	assert(args, "You must provdide an argument table when creating GetResourcesOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetResourcesOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["PaginationToken"] = args["PaginationToken"],
 		["ResourceTagMappingList"] = args["ResourceTagMappingList"],
 	}
-	asserts.AssertGetResourcesOutput(t)
-	return t
+	asserts.AssertGetResourcesOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetTagKeysOutput = { ["PaginationToken"] = true, ["TagKeys"] = true, nil }
@@ -151,13 +195,24 @@ end
 -- * TagKeys [TagKeyList] <p>A list of all tag keys in the AWS account.</p>
 -- @return GetTagKeysOutput structure as a key-value pair table
 function M.GetTagKeysOutput(args)
-	assert(args, "You must provdide an argument table when creating GetTagKeysOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetTagKeysOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["PaginationToken"] = args["PaginationToken"],
 		["TagKeys"] = args["TagKeys"],
 	}
-	asserts.AssertGetTagKeysOutput(t)
-	return t
+	asserts.AssertGetTagKeysOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidParameterException = { ["Message"] = true, nil }
@@ -178,12 +233,23 @@ end
 -- * Message [ExceptionMessage] 
 -- @return InvalidParameterException structure as a key-value pair table
 function M.InvalidParameterException(args)
-	assert(args, "You must provdide an argument table when creating InvalidParameterException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidParameterException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Message"] = args["Message"],
 	}
-	asserts.AssertInvalidParameterException(t)
-	return t
+	asserts.AssertInvalidParameterException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Tag = { ["Value"] = true, ["Key"] = true, nil }
@@ -210,13 +276,24 @@ end
 -- Required key: Value
 -- @return Tag structure as a key-value pair table
 function M.Tag(args)
-	assert(args, "You must provdide an argument table when creating Tag")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Tag")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Value"] = args["Value"],
 		["Key"] = args["Key"],
 	}
-	asserts.AssertTag(t)
-	return t
+	asserts.AssertTag(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ResourceTagMapping = { ["ResourceARN"] = true, ["Tags"] = true, nil }
@@ -239,13 +316,24 @@ end
 -- * Tags [TagList] <p>The tags that have been applied to one or more AWS resources.</p>
 -- @return ResourceTagMapping structure as a key-value pair table
 function M.ResourceTagMapping(args)
-	assert(args, "You must provdide an argument table when creating ResourceTagMapping")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ResourceTagMapping")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ResourceARN"] = args["ResourceARN"],
 		["Tags"] = args["Tags"],
 	}
-	asserts.AssertResourceTagMapping(t)
-	return t
+	asserts.AssertResourceTagMapping(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.TagResourcesOutput = { ["FailedResourcesMap"] = true, nil }
@@ -266,12 +354,23 @@ end
 -- * FailedResourcesMap [FailedResourcesMap] <p>Details of resources that could not be tagged. An error code, status code, and error message are returned for each failed item.</p>
 -- @return TagResourcesOutput structure as a key-value pair table
 function M.TagResourcesOutput(args)
-	assert(args, "You must provdide an argument table when creating TagResourcesOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating TagResourcesOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["FailedResourcesMap"] = args["FailedResourcesMap"],
 	}
-	asserts.AssertTagResourcesOutput(t)
-	return t
+	asserts.AssertTagResourcesOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UntagResourcesInput = { ["TagKeys"] = true, ["ResourceARNList"] = true, nil }
@@ -298,13 +397,24 @@ end
 -- Required key: TagKeys
 -- @return UntagResourcesInput structure as a key-value pair table
 function M.UntagResourcesInput(args)
-	assert(args, "You must provdide an argument table when creating UntagResourcesInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UntagResourcesInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["TagKeys"] = args["TagKeys"],
 		["ResourceARNList"] = args["ResourceARNList"],
 	}
-	asserts.AssertUntagResourcesInput(t)
-	return t
+	asserts.AssertUntagResourcesInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.TagFilter = { ["Values"] = true, ["Key"] = true, nil }
@@ -327,13 +437,24 @@ end
 -- * Key [TagKey] <p>One part of a key-value pair that make up a tag. A key is a general label that acts like a category for more specific tag values.</p>
 -- @return TagFilter structure as a key-value pair table
 function M.TagFilter(args)
-	assert(args, "You must provdide an argument table when creating TagFilter")
-	local t = { 
+	assert(args, "You must provide an argument table when creating TagFilter")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Values"] = args["Values"],
 		["Key"] = args["Key"],
 	}
-	asserts.AssertTagFilter(t)
-	return t
+	asserts.AssertTagFilter(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UntagResourcesOutput = { ["FailedResourcesMap"] = true, nil }
@@ -354,12 +475,23 @@ end
 -- * FailedResourcesMap [FailedResourcesMap] <p>Details of resources that could not be untagged. An error code, status code, and error message are returned for each failed item.</p>
 -- @return UntagResourcesOutput structure as a key-value pair table
 function M.UntagResourcesOutput(args)
-	assert(args, "You must provdide an argument table when creating UntagResourcesOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UntagResourcesOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["FailedResourcesMap"] = args["FailedResourcesMap"],
 	}
-	asserts.AssertUntagResourcesOutput(t)
-	return t
+	asserts.AssertUntagResourcesOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetResourcesInput = { ["PaginationToken"] = true, ["TagsPerPage"] = true, ["TagFilters"] = true, ["ResourcesPerPage"] = true, ["ResourceTypeFilters"] = true, nil }
@@ -388,16 +520,27 @@ end
 -- * ResourceTypeFilters [ResourceTypeFilterList] <p>The constraints on the resources that you want returned. The format of each resource type is <code>service[:resourceType]</code>. For example, specifying a resource type of <code>ec2</code> returns all tagged Amazon EC2 resources (which includes tagged EC2 instances). Specifying a resource type of <code>ec2:instance</code> returns only EC2 instances. </p> <p>The string for each service name and resource type is the same as that embedded in a resource's Amazon Resource Name (ARN). Consult the <i>AWS General Reference</i> for the following:</p> <ul> <li> <p>For a list of service name strings, see <a href="http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#genref-aws-service-namespaces">AWS Service Namespaces</a>.</p> </li> <li> <p>For resource type strings, see <a href="http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#arns-syntax">Example ARNs</a>.</p> </li> <li> <p>For more information about ARNs, see <a href="http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon Resource Names (ARNs) and AWS Service Namespaces</a>.</p> </li> </ul>
 -- @return GetResourcesInput structure as a key-value pair table
 function M.GetResourcesInput(args)
-	assert(args, "You must provdide an argument table when creating GetResourcesInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetResourcesInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["PaginationToken"] = args["PaginationToken"],
 		["TagsPerPage"] = args["TagsPerPage"],
 		["TagFilters"] = args["TagFilters"],
 		["ResourcesPerPage"] = args["ResourcesPerPage"],
 		["ResourceTypeFilters"] = args["ResourceTypeFilters"],
 	}
-	asserts.AssertGetResourcesInput(t)
-	return t
+	asserts.AssertGetResourcesInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.FailureInfo = { ["ErrorCode"] = true, ["ErrorMessage"] = true, ["StatusCode"] = true, nil }
@@ -422,14 +565,25 @@ end
 -- * StatusCode [StatusCode] <p>The HTTP status code of the common error.</p>
 -- @return FailureInfo structure as a key-value pair table
 function M.FailureInfo(args)
-	assert(args, "You must provdide an argument table when creating FailureInfo")
-	local t = { 
+	assert(args, "You must provide an argument table when creating FailureInfo")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ErrorCode"] = args["ErrorCode"],
 		["ErrorMessage"] = args["ErrorMessage"],
 		["StatusCode"] = args["StatusCode"],
 	}
-	asserts.AssertFailureInfo(t)
-	return t
+	asserts.AssertFailureInfo(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetTagValuesInput = { ["PaginationToken"] = true, ["Key"] = true, nil }
@@ -454,13 +608,24 @@ end
 -- Required key: Key
 -- @return GetTagValuesInput structure as a key-value pair table
 function M.GetTagValuesInput(args)
-	assert(args, "You must provdide an argument table when creating GetTagValuesInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetTagValuesInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["PaginationToken"] = args["PaginationToken"],
 		["Key"] = args["Key"],
 	}
-	asserts.AssertGetTagValuesInput(t)
-	return t
+	asserts.AssertGetTagValuesInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.TagResourcesInput = { ["ResourceARNList"] = true, ["Tags"] = true, nil }
@@ -487,13 +652,24 @@ end
 -- Required key: Tags
 -- @return TagResourcesInput structure as a key-value pair table
 function M.TagResourcesInput(args)
-	assert(args, "You must provdide an argument table when creating TagResourcesInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating TagResourcesInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ResourceARNList"] = args["ResourceARNList"],
 		["Tags"] = args["Tags"],
 	}
-	asserts.AssertTagResourcesInput(t)
-	return t
+	asserts.AssertTagResourcesInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetTagKeysInput = { ["PaginationToken"] = true, nil }
@@ -514,12 +690,23 @@ end
 -- * PaginationToken [PaginationToken] <p>A string that indicates that additional data is available. Leave this value empty for your initial request. If the response includes a PaginationToken, use that string for this value to request an additional page of data.</p>
 -- @return GetTagKeysInput structure as a key-value pair table
 function M.GetTagKeysInput(args)
-	assert(args, "You must provdide an argument table when creating GetTagKeysInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetTagKeysInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["PaginationToken"] = args["PaginationToken"],
 	}
-	asserts.AssertGetTagKeysInput(t)
-	return t
+	asserts.AssertGetTagKeysInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.PaginationTokenExpiredException = { ["Message"] = true, nil }
@@ -540,12 +727,23 @@ end
 -- * Message [ExceptionMessage] 
 -- @return PaginationTokenExpiredException structure as a key-value pair table
 function M.PaginationTokenExpiredException(args)
-	assert(args, "You must provdide an argument table when creating PaginationTokenExpiredException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating PaginationTokenExpiredException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Message"] = args["Message"],
 	}
-	asserts.AssertPaginationTokenExpiredException(t)
-	return t
+	asserts.AssertPaginationTokenExpiredException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 function asserts.AssertPaginationToken(str)
@@ -898,8 +1096,11 @@ function M.GetTagKeysAsync(GetTagKeysInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "ResourceGroupsTaggingAPI_20170126.GetTagKeys",
 	}
+	for header,value in pairs(GetTagKeysInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", GetTagKeysInput, headers, settings, cb)
 	else
@@ -930,8 +1131,11 @@ function M.TagResourcesAsync(TagResourcesInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "ResourceGroupsTaggingAPI_20170126.TagResources",
 	}
+	for header,value in pairs(TagResourcesInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", TagResourcesInput, headers, settings, cb)
 	else
@@ -962,8 +1166,11 @@ function M.UntagResourcesAsync(UntagResourcesInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "ResourceGroupsTaggingAPI_20170126.UntagResources",
 	}
+	for header,value in pairs(UntagResourcesInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", UntagResourcesInput, headers, settings, cb)
 	else
@@ -994,8 +1201,11 @@ function M.GetTagValuesAsync(GetTagValuesInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "ResourceGroupsTaggingAPI_20170126.GetTagValues",
 	}
+	for header,value in pairs(GetTagValuesInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", GetTagValuesInput, headers, settings, cb)
 	else
@@ -1026,8 +1236,11 @@ function M.GetResourcesAsync(GetResourcesInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "ResourceGroupsTaggingAPI_20170126.GetResources",
 	}
+	for header,value in pairs(GetResourcesInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", GetResourcesInput, headers, settings, cb)
 	else

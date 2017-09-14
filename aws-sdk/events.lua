@@ -37,11 +37,22 @@ end
 -- Valid keys:
 -- @return LimitExceededException structure as a key-value pair table
 function M.LimitExceededException(args)
-	assert(args, "You must provdide an argument table when creating LimitExceededException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating LimitExceededException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertLimitExceededException(t)
-	return t
+	asserts.AssertLimitExceededException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListTargetsByRuleResponse = { ["NextToken"] = true, ["Targets"] = true, nil }
@@ -64,13 +75,24 @@ end
 -- * Targets [TargetList] <p>The targets assigned to the rule.</p>
 -- @return ListTargetsByRuleResponse structure as a key-value pair table
 function M.ListTargetsByRuleResponse(args)
-	assert(args, "You must provdide an argument table when creating ListTargetsByRuleResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListTargetsByRuleResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NextToken"] = args["NextToken"],
 		["Targets"] = args["Targets"],
 	}
-	asserts.AssertListTargetsByRuleResponse(t)
-	return t
+	asserts.AssertListTargetsByRuleResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.PutEventsRequestEntry = { ["Source"] = true, ["DetailType"] = true, ["Detail"] = true, ["Resources"] = true, ["Time"] = true, nil }
@@ -99,16 +121,27 @@ end
 -- * Time [EventTime] <p>The timestamp of the event, per <a href="https://www.rfc-editor.org/rfc/rfc3339.txt">RFC3339</a>. If no timestamp is provided, the timestamp of the <a>PutEvents</a> call is used.</p>
 -- @return PutEventsRequestEntry structure as a key-value pair table
 function M.PutEventsRequestEntry(args)
-	assert(args, "You must provdide an argument table when creating PutEventsRequestEntry")
-	local t = { 
+	assert(args, "You must provide an argument table when creating PutEventsRequestEntry")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Source"] = args["Source"],
 		["DetailType"] = args["DetailType"],
 		["Detail"] = args["Detail"],
 		["Resources"] = args["Resources"],
 		["Time"] = args["Time"],
 	}
-	asserts.AssertPutEventsRequestEntry(t)
-	return t
+	asserts.AssertPutEventsRequestEntry(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ConcurrentModificationException = { nil }
@@ -127,11 +160,22 @@ end
 -- Valid keys:
 -- @return ConcurrentModificationException structure as a key-value pair table
 function M.ConcurrentModificationException(args)
-	assert(args, "You must provdide an argument table when creating ConcurrentModificationException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ConcurrentModificationException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertConcurrentModificationException(t)
-	return t
+	asserts.AssertConcurrentModificationException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteRuleRequest = { ["Name"] = true, nil }
@@ -154,12 +198,23 @@ end
 -- Required key: Name
 -- @return DeleteRuleRequest structure as a key-value pair table
 function M.DeleteRuleRequest(args)
-	assert(args, "You must provdide an argument table when creating DeleteRuleRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteRuleRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Name"] = args["Name"],
 	}
-	asserts.AssertDeleteRuleRequest(t)
-	return t
+	asserts.AssertDeleteRuleRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InputTransformer = { ["InputTemplate"] = true, ["InputPathsMap"] = true, nil }
@@ -184,13 +239,24 @@ end
 -- Required key: InputTemplate
 -- @return InputTransformer structure as a key-value pair table
 function M.InputTransformer(args)
-	assert(args, "You must provdide an argument table when creating InputTransformer")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InputTransformer")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["InputTemplate"] = args["InputTemplate"],
 		["InputPathsMap"] = args["InputPathsMap"],
 	}
-	asserts.AssertInputTransformer(t)
-	return t
+	asserts.AssertInputTransformer(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.RunCommandTarget = { ["Values"] = true, ["Key"] = true, nil }
@@ -217,13 +283,24 @@ end
 -- Required key: Values
 -- @return RunCommandTarget structure as a key-value pair table
 function M.RunCommandTarget(args)
-	assert(args, "You must provdide an argument table when creating RunCommandTarget")
-	local t = { 
+	assert(args, "You must provide an argument table when creating RunCommandTarget")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Values"] = args["Values"],
 		["Key"] = args["Key"],
 	}
-	asserts.AssertRunCommandTarget(t)
-	return t
+	asserts.AssertRunCommandTarget(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.KinesisParameters = { ["PartitionKeyPath"] = true, nil }
@@ -246,12 +323,23 @@ end
 -- Required key: PartitionKeyPath
 -- @return KinesisParameters structure as a key-value pair table
 function M.KinesisParameters(args)
-	assert(args, "You must provdide an argument table when creating KinesisParameters")
-	local t = { 
+	assert(args, "You must provide an argument table when creating KinesisParameters")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["PartitionKeyPath"] = args["PartitionKeyPath"],
 	}
-	asserts.AssertKinesisParameters(t)
-	return t
+	asserts.AssertKinesisParameters(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListRulesResponse = { ["Rules"] = true, ["NextToken"] = true, nil }
@@ -274,13 +362,24 @@ end
 -- * NextToken [NextToken] <p>Indicates whether there are additional results to retrieve. If there are no more results, the value is null.</p>
 -- @return ListRulesResponse structure as a key-value pair table
 function M.ListRulesResponse(args)
-	assert(args, "You must provdide an argument table when creating ListRulesResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListRulesResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Rules"] = args["Rules"],
 		["NextToken"] = args["NextToken"],
 	}
-	asserts.AssertListRulesResponse(t)
-	return t
+	asserts.AssertListRulesResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DisableRuleRequest = { ["Name"] = true, nil }
@@ -303,12 +402,23 @@ end
 -- Required key: Name
 -- @return DisableRuleRequest structure as a key-value pair table
 function M.DisableRuleRequest(args)
-	assert(args, "You must provdide an argument table when creating DisableRuleRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DisableRuleRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Name"] = args["Name"],
 	}
-	asserts.AssertDisableRuleRequest(t)
-	return t
+	asserts.AssertDisableRuleRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.PutTargetsResponse = { ["FailedEntries"] = true, ["FailedEntryCount"] = true, nil }
@@ -331,13 +441,24 @@ end
 -- * FailedEntryCount [Integer] <p>The number of failed entries.</p>
 -- @return PutTargetsResponse structure as a key-value pair table
 function M.PutTargetsResponse(args)
-	assert(args, "You must provdide an argument table when creating PutTargetsResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating PutTargetsResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["FailedEntries"] = args["FailedEntries"],
 		["FailedEntryCount"] = args["FailedEntryCount"],
 	}
-	asserts.AssertPutTargetsResponse(t)
-	return t
+	asserts.AssertPutTargetsResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListRuleNamesByTargetRequest = { ["TargetArn"] = true, ["NextToken"] = true, ["Limit"] = true, nil }
@@ -364,14 +485,25 @@ end
 -- Required key: TargetArn
 -- @return ListRuleNamesByTargetRequest structure as a key-value pair table
 function M.ListRuleNamesByTargetRequest(args)
-	assert(args, "You must provdide an argument table when creating ListRuleNamesByTargetRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListRuleNamesByTargetRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["TargetArn"] = args["TargetArn"],
 		["NextToken"] = args["NextToken"],
 		["Limit"] = args["Limit"],
 	}
-	asserts.AssertListRuleNamesByTargetRequest(t)
-	return t
+	asserts.AssertListRuleNamesByTargetRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Target = { ["RunCommandParameters"] = true, ["RoleArn"] = true, ["InputTransformer"] = true, ["EcsParameters"] = true, ["KinesisParameters"] = true, ["InputPath"] = true, ["Input"] = true, ["Id"] = true, ["Arn"] = true, nil }
@@ -412,8 +544,14 @@ end
 -- Required key: Arn
 -- @return Target structure as a key-value pair table
 function M.Target(args)
-	assert(args, "You must provdide an argument table when creating Target")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Target")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["RunCommandParameters"] = args["RunCommandParameters"],
 		["RoleArn"] = args["RoleArn"],
 		["InputTransformer"] = args["InputTransformer"],
@@ -424,8 +562,13 @@ function M.Target(args)
 		["Id"] = args["Id"],
 		["Arn"] = args["Arn"],
 	}
-	asserts.AssertTarget(t)
-	return t
+	asserts.AssertTarget(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeRuleResponse = { ["ScheduleExpression"] = true, ["Name"] = true, ["EventPattern"] = true, ["State"] = true, ["RoleArn"] = true, ["Arn"] = true, ["Description"] = true, nil }
@@ -458,8 +601,14 @@ end
 -- * Description [RuleDescription] <p>The description of the rule.</p>
 -- @return DescribeRuleResponse structure as a key-value pair table
 function M.DescribeRuleResponse(args)
-	assert(args, "You must provdide an argument table when creating DescribeRuleResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeRuleResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ScheduleExpression"] = args["ScheduleExpression"],
 		["Name"] = args["Name"],
 		["EventPattern"] = args["EventPattern"],
@@ -468,8 +617,13 @@ function M.DescribeRuleResponse(args)
 		["Arn"] = args["Arn"],
 		["Description"] = args["Description"],
 	}
-	asserts.AssertDescribeRuleResponse(t)
-	return t
+	asserts.AssertDescribeRuleResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.RunCommandParameters = { ["RunCommandTargets"] = true, nil }
@@ -492,12 +646,23 @@ end
 -- Required key: RunCommandTargets
 -- @return RunCommandParameters structure as a key-value pair table
 function M.RunCommandParameters(args)
-	assert(args, "You must provdide an argument table when creating RunCommandParameters")
-	local t = { 
+	assert(args, "You must provide an argument table when creating RunCommandParameters")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["RunCommandTargets"] = args["RunCommandTargets"],
 	}
-	asserts.AssertRunCommandParameters(t)
-	return t
+	asserts.AssertRunCommandParameters(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.PutEventsResultEntry = { ["EventId"] = true, ["ErrorCode"] = true, ["ErrorMessage"] = true, nil }
@@ -522,14 +687,25 @@ end
 -- * ErrorMessage [ErrorMessage] <p>The error message that explains why the event submission failed.</p>
 -- @return PutEventsResultEntry structure as a key-value pair table
 function M.PutEventsResultEntry(args)
-	assert(args, "You must provdide an argument table when creating PutEventsResultEntry")
-	local t = { 
+	assert(args, "You must provide an argument table when creating PutEventsResultEntry")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["EventId"] = args["EventId"],
 		["ErrorCode"] = args["ErrorCode"],
 		["ErrorMessage"] = args["ErrorMessage"],
 	}
-	asserts.AssertPutEventsResultEntry(t)
-	return t
+	asserts.AssertPutEventsResultEntry(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.RemoveTargetsResponse = { ["FailedEntries"] = true, ["FailedEntryCount"] = true, nil }
@@ -552,13 +728,24 @@ end
 -- * FailedEntryCount [Integer] <p>The number of failed entries.</p>
 -- @return RemoveTargetsResponse structure as a key-value pair table
 function M.RemoveTargetsResponse(args)
-	assert(args, "You must provdide an argument table when creating RemoveTargetsResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating RemoveTargetsResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["FailedEntries"] = args["FailedEntries"],
 		["FailedEntryCount"] = args["FailedEntryCount"],
 	}
-	asserts.AssertRemoveTargetsResponse(t)
-	return t
+	asserts.AssertRemoveTargetsResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.PutTargetsRequest = { ["Targets"] = true, ["Rule"] = true, nil }
@@ -585,13 +772,24 @@ end
 -- Required key: Targets
 -- @return PutTargetsRequest structure as a key-value pair table
 function M.PutTargetsRequest(args)
-	assert(args, "You must provdide an argument table when creating PutTargetsRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating PutTargetsRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Targets"] = args["Targets"],
 		["Rule"] = args["Rule"],
 	}
-	asserts.AssertPutTargetsRequest(t)
-	return t
+	asserts.AssertPutTargetsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.RemoveTargetsResultEntry = { ["ErrorCode"] = true, ["ErrorMessage"] = true, ["TargetId"] = true, nil }
@@ -616,14 +814,25 @@ end
 -- * TargetId [TargetId] <p>The ID of the target.</p>
 -- @return RemoveTargetsResultEntry structure as a key-value pair table
 function M.RemoveTargetsResultEntry(args)
-	assert(args, "You must provdide an argument table when creating RemoveTargetsResultEntry")
-	local t = { 
+	assert(args, "You must provide an argument table when creating RemoveTargetsResultEntry")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ErrorCode"] = args["ErrorCode"],
 		["ErrorMessage"] = args["ErrorMessage"],
 		["TargetId"] = args["TargetId"],
 	}
-	asserts.AssertRemoveTargetsResultEntry(t)
-	return t
+	asserts.AssertRemoveTargetsResultEntry(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.PutTargetsResultEntry = { ["ErrorCode"] = true, ["ErrorMessage"] = true, ["TargetId"] = true, nil }
@@ -648,14 +857,25 @@ end
 -- * TargetId [TargetId] <p>The ID of the target.</p>
 -- @return PutTargetsResultEntry structure as a key-value pair table
 function M.PutTargetsResultEntry(args)
-	assert(args, "You must provdide an argument table when creating PutTargetsResultEntry")
-	local t = { 
+	assert(args, "You must provide an argument table when creating PutTargetsResultEntry")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ErrorCode"] = args["ErrorCode"],
 		["ErrorMessage"] = args["ErrorMessage"],
 		["TargetId"] = args["TargetId"],
 	}
-	asserts.AssertPutTargetsResultEntry(t)
-	return t
+	asserts.AssertPutTargetsResultEntry(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.EcsParameters = { ["TaskDefinitionArn"] = true, ["TaskCount"] = true, nil }
@@ -680,13 +900,24 @@ end
 -- Required key: TaskDefinitionArn
 -- @return EcsParameters structure as a key-value pair table
 function M.EcsParameters(args)
-	assert(args, "You must provdide an argument table when creating EcsParameters")
-	local t = { 
+	assert(args, "You must provide an argument table when creating EcsParameters")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["TaskDefinitionArn"] = args["TaskDefinitionArn"],
 		["TaskCount"] = args["TaskCount"],
 	}
-	asserts.AssertEcsParameters(t)
-	return t
+	asserts.AssertEcsParameters(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.RemoveTargetsRequest = { ["Ids"] = true, ["Rule"] = true, nil }
@@ -713,13 +944,24 @@ end
 -- Required key: Ids
 -- @return RemoveTargetsRequest structure as a key-value pair table
 function M.RemoveTargetsRequest(args)
-	assert(args, "You must provdide an argument table when creating RemoveTargetsRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating RemoveTargetsRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Ids"] = args["Ids"],
 		["Rule"] = args["Rule"],
 	}
-	asserts.AssertRemoveTargetsRequest(t)
-	return t
+	asserts.AssertRemoveTargetsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeRuleRequest = { ["Name"] = true, nil }
@@ -742,12 +984,23 @@ end
 -- Required key: Name
 -- @return DescribeRuleRequest structure as a key-value pair table
 function M.DescribeRuleRequest(args)
-	assert(args, "You must provdide an argument table when creating DescribeRuleRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeRuleRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Name"] = args["Name"],
 	}
-	asserts.AssertDescribeRuleRequest(t)
-	return t
+	asserts.AssertDescribeRuleRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListRulesRequest = { ["NextToken"] = true, ["Limit"] = true, ["NamePrefix"] = true, nil }
@@ -772,14 +1025,25 @@ end
 -- * NamePrefix [RuleName] <p>The prefix matching the rule name.</p>
 -- @return ListRulesRequest structure as a key-value pair table
 function M.ListRulesRequest(args)
-	assert(args, "You must provdide an argument table when creating ListRulesRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListRulesRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NextToken"] = args["NextToken"],
 		["Limit"] = args["Limit"],
 		["NamePrefix"] = args["NamePrefix"],
 	}
-	asserts.AssertListRulesRequest(t)
-	return t
+	asserts.AssertListRulesRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.EnableRuleRequest = { ["Name"] = true, nil }
@@ -802,12 +1066,23 @@ end
 -- Required key: Name
 -- @return EnableRuleRequest structure as a key-value pair table
 function M.EnableRuleRequest(args)
-	assert(args, "You must provdide an argument table when creating EnableRuleRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating EnableRuleRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Name"] = args["Name"],
 	}
-	asserts.AssertEnableRuleRequest(t)
-	return t
+	asserts.AssertEnableRuleRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListRuleNamesByTargetResponse = { ["NextToken"] = true, ["RuleNames"] = true, nil }
@@ -830,13 +1105,24 @@ end
 -- * RuleNames [RuleNameList] <p>The names of the rules that can invoke the given target.</p>
 -- @return ListRuleNamesByTargetResponse structure as a key-value pair table
 function M.ListRuleNamesByTargetResponse(args)
-	assert(args, "You must provdide an argument table when creating ListRuleNamesByTargetResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListRuleNamesByTargetResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NextToken"] = args["NextToken"],
 		["RuleNames"] = args["RuleNames"],
 	}
-	asserts.AssertListRuleNamesByTargetResponse(t)
-	return t
+	asserts.AssertListRuleNamesByTargetResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InternalException = { nil }
@@ -855,11 +1141,22 @@ end
 -- Valid keys:
 -- @return InternalException structure as a key-value pair table
 function M.InternalException(args)
-	assert(args, "You must provdide an argument table when creating InternalException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InternalException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertInternalException(t)
-	return t
+	asserts.AssertInternalException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListTargetsByRuleRequest = { ["NextToken"] = true, ["Limit"] = true, ["Rule"] = true, nil }
@@ -886,14 +1183,25 @@ end
 -- Required key: Rule
 -- @return ListTargetsByRuleRequest structure as a key-value pair table
 function M.ListTargetsByRuleRequest(args)
-	assert(args, "You must provdide an argument table when creating ListTargetsByRuleRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListTargetsByRuleRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NextToken"] = args["NextToken"],
 		["Limit"] = args["Limit"],
 		["Rule"] = args["Rule"],
 	}
-	asserts.AssertListTargetsByRuleRequest(t)
-	return t
+	asserts.AssertListTargetsByRuleRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.PutRuleResponse = { ["RuleArn"] = true, nil }
@@ -914,12 +1222,23 @@ end
 -- * RuleArn [RuleArn] <p>The Amazon Resource Name (ARN) of the rule.</p>
 -- @return PutRuleResponse structure as a key-value pair table
 function M.PutRuleResponse(args)
-	assert(args, "You must provdide an argument table when creating PutRuleResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating PutRuleResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["RuleArn"] = args["RuleArn"],
 	}
-	asserts.AssertPutRuleResponse(t)
-	return t
+	asserts.AssertPutRuleResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.TestEventPatternResponse = { ["Result"] = true, nil }
@@ -940,12 +1259,23 @@ end
 -- * Result [Boolean] <p>Indicates whether the event matches the event pattern.</p>
 -- @return TestEventPatternResponse structure as a key-value pair table
 function M.TestEventPatternResponse(args)
-	assert(args, "You must provdide an argument table when creating TestEventPatternResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating TestEventPatternResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Result"] = args["Result"],
 	}
-	asserts.AssertTestEventPatternResponse(t)
-	return t
+	asserts.AssertTestEventPatternResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Rule = { ["ScheduleExpression"] = true, ["Name"] = true, ["EventPattern"] = true, ["State"] = true, ["RoleArn"] = true, ["Arn"] = true, ["Description"] = true, nil }
@@ -978,8 +1308,14 @@ end
 -- * Description [RuleDescription] <p>The description of the rule.</p>
 -- @return Rule structure as a key-value pair table
 function M.Rule(args)
-	assert(args, "You must provdide an argument table when creating Rule")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Rule")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ScheduleExpression"] = args["ScheduleExpression"],
 		["Name"] = args["Name"],
 		["EventPattern"] = args["EventPattern"],
@@ -988,8 +1324,13 @@ function M.Rule(args)
 		["Arn"] = args["Arn"],
 		["Description"] = args["Description"],
 	}
-	asserts.AssertRule(t)
-	return t
+	asserts.AssertRule(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.PutEventsRequest = { ["Entries"] = true, nil }
@@ -1012,12 +1353,23 @@ end
 -- Required key: Entries
 -- @return PutEventsRequest structure as a key-value pair table
 function M.PutEventsRequest(args)
-	assert(args, "You must provdide an argument table when creating PutEventsRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating PutEventsRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Entries"] = args["Entries"],
 	}
-	asserts.AssertPutEventsRequest(t)
-	return t
+	asserts.AssertPutEventsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.PutRuleRequest = { ["ScheduleExpression"] = true, ["Name"] = true, ["RoleArn"] = true, ["State"] = true, ["EventPattern"] = true, ["Description"] = true, nil }
@@ -1050,8 +1402,14 @@ end
 -- Required key: Name
 -- @return PutRuleRequest structure as a key-value pair table
 function M.PutRuleRequest(args)
-	assert(args, "You must provdide an argument table when creating PutRuleRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating PutRuleRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ScheduleExpression"] = args["ScheduleExpression"],
 		["Name"] = args["Name"],
 		["RoleArn"] = args["RoleArn"],
@@ -1059,8 +1417,13 @@ function M.PutRuleRequest(args)
 		["EventPattern"] = args["EventPattern"],
 		["Description"] = args["Description"],
 	}
-	asserts.AssertPutRuleRequest(t)
-	return t
+	asserts.AssertPutRuleRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.PutEventsResponse = { ["FailedEntryCount"] = true, ["Entries"] = true, nil }
@@ -1083,13 +1446,24 @@ end
 -- * Entries [PutEventsResultEntryList] <p>The successfully and unsuccessfully ingested events results. If the ingestion was successful, the entry has the event ID in it. Otherwise, you can use the error code and error message to identify the problem with the entry.</p>
 -- @return PutEventsResponse structure as a key-value pair table
 function M.PutEventsResponse(args)
-	assert(args, "You must provdide an argument table when creating PutEventsResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating PutEventsResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["FailedEntryCount"] = args["FailedEntryCount"],
 		["Entries"] = args["Entries"],
 	}
-	asserts.AssertPutEventsResponse(t)
-	return t
+	asserts.AssertPutEventsResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidEventPatternException = { nil }
@@ -1108,11 +1482,22 @@ end
 -- Valid keys:
 -- @return InvalidEventPatternException structure as a key-value pair table
 function M.InvalidEventPatternException(args)
-	assert(args, "You must provdide an argument table when creating InvalidEventPatternException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidEventPatternException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertInvalidEventPatternException(t)
-	return t
+	asserts.AssertInvalidEventPatternException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.TestEventPatternRequest = { ["EventPattern"] = true, ["Event"] = true, nil }
@@ -1139,13 +1524,24 @@ end
 -- Required key: Event
 -- @return TestEventPatternRequest structure as a key-value pair table
 function M.TestEventPatternRequest(args)
-	assert(args, "You must provdide an argument table when creating TestEventPatternRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating TestEventPatternRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["EventPattern"] = args["EventPattern"],
 		["Event"] = args["Event"],
 	}
-	asserts.AssertTestEventPatternRequest(t)
-	return t
+	asserts.AssertTestEventPatternRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ResourceNotFoundException = { nil }
@@ -1164,11 +1560,22 @@ end
 -- Valid keys:
 -- @return ResourceNotFoundException structure as a key-value pair table
 function M.ResourceNotFoundException(args)
-	assert(args, "You must provdide an argument table when creating ResourceNotFoundException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ResourceNotFoundException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertResourceNotFoundException(t)
-	return t
+	asserts.AssertResourceNotFoundException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 function asserts.AssertRuleDescription(str)
@@ -1749,8 +2156,11 @@ function M.PutEventsAsync(PutEventsRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AWSEvents.PutEvents",
 	}
+	for header,value in pairs(PutEventsRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", PutEventsRequest, headers, settings, cb)
 	else
@@ -1781,8 +2191,11 @@ function M.DescribeRuleAsync(DescribeRuleRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AWSEvents.DescribeRule",
 	}
+	for header,value in pairs(DescribeRuleRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeRuleRequest, headers, settings, cb)
 	else
@@ -1813,8 +2226,11 @@ function M.ListTargetsByRuleAsync(ListTargetsByRuleRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AWSEvents.ListTargetsByRule",
 	}
+	for header,value in pairs(ListTargetsByRuleRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ListTargetsByRuleRequest, headers, settings, cb)
 	else
@@ -1845,8 +2261,11 @@ function M.PutTargetsAsync(PutTargetsRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AWSEvents.PutTargets",
 	}
+	for header,value in pairs(PutTargetsRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", PutTargetsRequest, headers, settings, cb)
 	else
@@ -1877,8 +2296,11 @@ function M.DeleteRuleAsync(DeleteRuleRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AWSEvents.DeleteRule",
 	}
+	for header,value in pairs(DeleteRuleRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteRuleRequest, headers, settings, cb)
 	else
@@ -1909,8 +2331,11 @@ function M.ListRuleNamesByTargetAsync(ListRuleNamesByTargetRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AWSEvents.ListRuleNamesByTarget",
 	}
+	for header,value in pairs(ListRuleNamesByTargetRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ListRuleNamesByTargetRequest, headers, settings, cb)
 	else
@@ -1941,8 +2366,11 @@ function M.EnableRuleAsync(EnableRuleRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AWSEvents.EnableRule",
 	}
+	for header,value in pairs(EnableRuleRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", EnableRuleRequest, headers, settings, cb)
 	else
@@ -1973,8 +2401,11 @@ function M.TestEventPatternAsync(TestEventPatternRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AWSEvents.TestEventPattern",
 	}
+	for header,value in pairs(TestEventPatternRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", TestEventPatternRequest, headers, settings, cb)
 	else
@@ -2005,8 +2436,11 @@ function M.ListRulesAsync(ListRulesRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AWSEvents.ListRules",
 	}
+	for header,value in pairs(ListRulesRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ListRulesRequest, headers, settings, cb)
 	else
@@ -2037,8 +2471,11 @@ function M.DisableRuleAsync(DisableRuleRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AWSEvents.DisableRule",
 	}
+	for header,value in pairs(DisableRuleRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DisableRuleRequest, headers, settings, cb)
 	else
@@ -2069,8 +2506,11 @@ function M.PutRuleAsync(PutRuleRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AWSEvents.PutRule",
 	}
+	for header,value in pairs(PutRuleRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", PutRuleRequest, headers, settings, cb)
 	else
@@ -2101,8 +2541,11 @@ function M.RemoveTargetsAsync(RemoveTargetsRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AWSEvents.RemoveTargets",
 	}
+	for header,value in pairs(RemoveTargetsRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", RemoveTargetsRequest, headers, settings, cb)
 	else

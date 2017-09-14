@@ -43,13 +43,24 @@ end
 -- Required key: IdentityId
 -- @return GetOpenIdTokenInput structure as a key-value pair table
 function M.GetOpenIdTokenInput(args)
-	assert(args, "You must provdide an argument table when creating GetOpenIdTokenInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetOpenIdTokenInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Logins"] = args["Logins"],
 		["IdentityId"] = args["IdentityId"],
 	}
-	asserts.AssertGetOpenIdTokenInput(t)
-	return t
+	asserts.AssertGetOpenIdTokenInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.RulesConfigurationType = { ["Rules"] = true, nil }
@@ -72,12 +83,23 @@ end
 -- Required key: Rules
 -- @return RulesConfigurationType structure as a key-value pair table
 function M.RulesConfigurationType(args)
-	assert(args, "You must provdide an argument table when creating RulesConfigurationType")
-	local t = { 
+	assert(args, "You must provide an argument table when creating RulesConfigurationType")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Rules"] = args["Rules"],
 	}
-	asserts.AssertRulesConfigurationType(t)
-	return t
+	asserts.AssertRulesConfigurationType(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetIdentityPoolRolesResponse = { ["IdentityPoolId"] = true, ["Roles"] = true, ["RoleMappings"] = true, nil }
@@ -102,14 +124,25 @@ end
 -- * RoleMappings [RoleMappingMap] <p>How users for a specific identity provider are to mapped to roles. This is a String-to-<a>RoleMapping</a> object map. The string identifies the identity provider, for example, "graph.facebook.com" or "cognito-idp-east-1.amazonaws.com/us-east-1_abcdefghi:app_client_id".</p>
 -- @return GetIdentityPoolRolesResponse structure as a key-value pair table
 function M.GetIdentityPoolRolesResponse(args)
-	assert(args, "You must provdide an argument table when creating GetIdentityPoolRolesResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetIdentityPoolRolesResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["IdentityPoolId"] = args["IdentityPoolId"],
 		["Roles"] = args["Roles"],
 		["RoleMappings"] = args["RoleMappings"],
 	}
-	asserts.AssertGetIdentityPoolRolesResponse(t)
-	return t
+	asserts.AssertGetIdentityPoolRolesResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListIdentityPoolsInput = { ["NextToken"] = true, ["MaxResults"] = true, nil }
@@ -134,13 +167,24 @@ end
 -- Required key: MaxResults
 -- @return ListIdentityPoolsInput structure as a key-value pair table
 function M.ListIdentityPoolsInput(args)
-	assert(args, "You must provdide an argument table when creating ListIdentityPoolsInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListIdentityPoolsInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NextToken"] = args["NextToken"],
 		["MaxResults"] = args["MaxResults"],
 	}
-	asserts.AssertListIdentityPoolsInput(t)
-	return t
+	asserts.AssertListIdentityPoolsInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.NotAuthorizedException = { ["message"] = true, nil }
@@ -161,12 +205,23 @@ end
 -- * message [String] <p>The message returned by a NotAuthorizedException</p>
 -- @return NotAuthorizedException structure as a key-value pair table
 function M.NotAuthorizedException(args)
-	assert(args, "You must provdide an argument table when creating NotAuthorizedException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating NotAuthorizedException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertNotAuthorizedException(t)
-	return t
+	asserts.AssertNotAuthorizedException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateIdentityPoolInput = { ["DeveloperProviderName"] = true, ["SamlProviderARNs"] = true, ["SupportedLoginProviders"] = true, ["AllowUnauthenticatedIdentities"] = true, ["CognitoIdentityProviders"] = true, ["IdentityPoolName"] = true, ["OpenIdConnectProviderARNs"] = true, nil }
@@ -203,8 +258,14 @@ end
 -- Required key: AllowUnauthenticatedIdentities
 -- @return CreateIdentityPoolInput structure as a key-value pair table
 function M.CreateIdentityPoolInput(args)
-	assert(args, "You must provdide an argument table when creating CreateIdentityPoolInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateIdentityPoolInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DeveloperProviderName"] = args["DeveloperProviderName"],
 		["SamlProviderARNs"] = args["SamlProviderARNs"],
 		["SupportedLoginProviders"] = args["SupportedLoginProviders"],
@@ -213,8 +274,13 @@ function M.CreateIdentityPoolInput(args)
 		["IdentityPoolName"] = args["IdentityPoolName"],
 		["OpenIdConnectProviderARNs"] = args["OpenIdConnectProviderARNs"],
 	}
-	asserts.AssertCreateIdentityPoolInput(t)
-	return t
+	asserts.AssertCreateIdentityPoolInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetOpenIdTokenForDeveloperIdentityResponse = { ["Token"] = true, ["IdentityId"] = true, nil }
@@ -237,13 +303,24 @@ end
 -- * IdentityId [IdentityId] <p>A unique identifier in the format REGION:GUID.</p>
 -- @return GetOpenIdTokenForDeveloperIdentityResponse structure as a key-value pair table
 function M.GetOpenIdTokenForDeveloperIdentityResponse(args)
-	assert(args, "You must provdide an argument table when creating GetOpenIdTokenForDeveloperIdentityResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetOpenIdTokenForDeveloperIdentityResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Token"] = args["Token"],
 		["IdentityId"] = args["IdentityId"],
 	}
-	asserts.AssertGetOpenIdTokenForDeveloperIdentityResponse(t)
-	return t
+	asserts.AssertGetOpenIdTokenForDeveloperIdentityResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetIdResponse = { ["IdentityId"] = true, nil }
@@ -264,12 +341,23 @@ end
 -- * IdentityId [IdentityId] <p>A unique identifier in the format REGION:GUID.</p>
 -- @return GetIdResponse structure as a key-value pair table
 function M.GetIdResponse(args)
-	assert(args, "You must provdide an argument table when creating GetIdResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetIdResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["IdentityId"] = args["IdentityId"],
 	}
-	asserts.AssertGetIdResponse(t)
-	return t
+	asserts.AssertGetIdResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetOpenIdTokenResponse = { ["Token"] = true, ["IdentityId"] = true, nil }
@@ -292,13 +380,24 @@ end
 -- * IdentityId [IdentityId] <p>A unique identifier in the format REGION:GUID. Note that the IdentityId returned may not match the one passed on input.</p>
 -- @return GetOpenIdTokenResponse structure as a key-value pair table
 function M.GetOpenIdTokenResponse(args)
-	assert(args, "You must provdide an argument table when creating GetOpenIdTokenResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetOpenIdTokenResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Token"] = args["Token"],
 		["IdentityId"] = args["IdentityId"],
 	}
-	asserts.AssertGetOpenIdTokenResponse(t)
-	return t
+	asserts.AssertGetOpenIdTokenResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.RoleMapping = { ["AmbiguousRoleResolution"] = true, ["Type"] = true, ["RulesConfiguration"] = true, nil }
@@ -325,14 +424,25 @@ end
 -- Required key: Type
 -- @return RoleMapping structure as a key-value pair table
 function M.RoleMapping(args)
-	assert(args, "You must provdide an argument table when creating RoleMapping")
-	local t = { 
+	assert(args, "You must provide an argument table when creating RoleMapping")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["AmbiguousRoleResolution"] = args["AmbiguousRoleResolution"],
 		["Type"] = args["Type"],
 		["RulesConfiguration"] = args["RulesConfiguration"],
 	}
-	asserts.AssertRoleMapping(t)
-	return t
+	asserts.AssertRoleMapping(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.MappingRule = { ["Claim"] = true, ["MatchType"] = true, ["RoleARN"] = true, ["Value"] = true, nil }
@@ -367,15 +477,26 @@ end
 -- Required key: RoleARN
 -- @return MappingRule structure as a key-value pair table
 function M.MappingRule(args)
-	assert(args, "You must provdide an argument table when creating MappingRule")
-	local t = { 
+	assert(args, "You must provide an argument table when creating MappingRule")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Claim"] = args["Claim"],
 		["MatchType"] = args["MatchType"],
 		["RoleARN"] = args["RoleARN"],
 		["Value"] = args["Value"],
 	}
-	asserts.AssertMappingRule(t)
-	return t
+	asserts.AssertMappingRule(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidParameterException = { ["message"] = true, nil }
@@ -396,12 +517,23 @@ end
 -- * message [String] <p>The message returned by an InvalidParameterException.</p>
 -- @return InvalidParameterException structure as a key-value pair table
 function M.InvalidParameterException(args)
-	assert(args, "You must provdide an argument table when creating InvalidParameterException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidParameterException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertInvalidParameterException(t)
-	return t
+	asserts.AssertInvalidParameterException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UnprocessedIdentityId = { ["ErrorCode"] = true, ["IdentityId"] = true, nil }
@@ -424,13 +556,24 @@ end
 -- * IdentityId [IdentityId] <p>A unique identifier in the format REGION:GUID.</p>
 -- @return UnprocessedIdentityId structure as a key-value pair table
 function M.UnprocessedIdentityId(args)
-	assert(args, "You must provdide an argument table when creating UnprocessedIdentityId")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UnprocessedIdentityId")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ErrorCode"] = args["ErrorCode"],
 		["IdentityId"] = args["IdentityId"],
 	}
-	asserts.AssertUnprocessedIdentityId(t)
-	return t
+	asserts.AssertUnprocessedIdentityId(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetIdentityPoolRolesInput = { ["IdentityPoolId"] = true, nil }
@@ -453,12 +596,23 @@ end
 -- Required key: IdentityPoolId
 -- @return GetIdentityPoolRolesInput structure as a key-value pair table
 function M.GetIdentityPoolRolesInput(args)
-	assert(args, "You must provdide an argument table when creating GetIdentityPoolRolesInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetIdentityPoolRolesInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["IdentityPoolId"] = args["IdentityPoolId"],
 	}
-	asserts.AssertGetIdentityPoolRolesInput(t)
-	return t
+	asserts.AssertGetIdentityPoolRolesInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListIdentitiesInput = { ["IdentityPoolId"] = true, ["NextToken"] = true, ["HideDisabled"] = true, ["MaxResults"] = true, nil }
@@ -489,15 +643,26 @@ end
 -- Required key: MaxResults
 -- @return ListIdentitiesInput structure as a key-value pair table
 function M.ListIdentitiesInput(args)
-	assert(args, "You must provdide an argument table when creating ListIdentitiesInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListIdentitiesInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["IdentityPoolId"] = args["IdentityPoolId"],
 		["NextToken"] = args["NextToken"],
 		["HideDisabled"] = args["HideDisabled"],
 		["MaxResults"] = args["MaxResults"],
 	}
-	asserts.AssertListIdentitiesInput(t)
-	return t
+	asserts.AssertListIdentitiesInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteIdentityPoolInput = { ["IdentityPoolId"] = true, nil }
@@ -520,12 +685,23 @@ end
 -- Required key: IdentityPoolId
 -- @return DeleteIdentityPoolInput structure as a key-value pair table
 function M.DeleteIdentityPoolInput(args)
-	assert(args, "You must provdide an argument table when creating DeleteIdentityPoolInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteIdentityPoolInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["IdentityPoolId"] = args["IdentityPoolId"],
 	}
-	asserts.AssertDeleteIdentityPoolInput(t)
-	return t
+	asserts.AssertDeleteIdentityPoolInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteIdentitiesInput = { ["IdentityIdsToDelete"] = true, nil }
@@ -548,12 +724,23 @@ end
 -- Required key: IdentityIdsToDelete
 -- @return DeleteIdentitiesInput structure as a key-value pair table
 function M.DeleteIdentitiesInput(args)
-	assert(args, "You must provdide an argument table when creating DeleteIdentitiesInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteIdentitiesInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["IdentityIdsToDelete"] = args["IdentityIdsToDelete"],
 	}
-	asserts.AssertDeleteIdentitiesInput(t)
-	return t
+	asserts.AssertDeleteIdentitiesInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.LimitExceededException = { ["message"] = true, nil }
@@ -574,12 +761,23 @@ end
 -- * message [String] <p>The message returned by a LimitExceededException.</p>
 -- @return LimitExceededException structure as a key-value pair table
 function M.LimitExceededException(args)
-	assert(args, "You must provdide an argument table when creating LimitExceededException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating LimitExceededException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertLimitExceededException(t)
-	return t
+	asserts.AssertLimitExceededException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListIdentityPoolsResponse = { ["NextToken"] = true, ["IdentityPools"] = true, nil }
@@ -602,13 +800,24 @@ end
 -- * IdentityPools [IdentityPoolsList] <p>The identity pools returned by the ListIdentityPools action.</p>
 -- @return ListIdentityPoolsResponse structure as a key-value pair table
 function M.ListIdentityPoolsResponse(args)
-	assert(args, "You must provdide an argument table when creating ListIdentityPoolsResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListIdentityPoolsResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NextToken"] = args["NextToken"],
 		["IdentityPools"] = args["IdentityPools"],
 	}
-	asserts.AssertListIdentityPoolsResponse(t)
-	return t
+	asserts.AssertListIdentityPoolsResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ConcurrentModificationException = { ["message"] = true, nil }
@@ -629,12 +838,23 @@ end
 -- * message [String] <p>The message returned by a ConcurrentModificationException.</p>
 -- @return ConcurrentModificationException structure as a key-value pair table
 function M.ConcurrentModificationException(args)
-	assert(args, "You must provdide an argument table when creating ConcurrentModificationException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ConcurrentModificationException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertConcurrentModificationException(t)
-	return t
+	asserts.AssertConcurrentModificationException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetOpenIdTokenForDeveloperIdentityInput = { ["Logins"] = true, ["IdentityPoolId"] = true, ["TokenDuration"] = true, ["IdentityId"] = true, nil }
@@ -665,15 +885,26 @@ end
 -- Required key: Logins
 -- @return GetOpenIdTokenForDeveloperIdentityInput structure as a key-value pair table
 function M.GetOpenIdTokenForDeveloperIdentityInput(args)
-	assert(args, "You must provdide an argument table when creating GetOpenIdTokenForDeveloperIdentityInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetOpenIdTokenForDeveloperIdentityInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Logins"] = args["Logins"],
 		["IdentityPoolId"] = args["IdentityPoolId"],
 		["TokenDuration"] = args["TokenDuration"],
 		["IdentityId"] = args["IdentityId"],
 	}
-	asserts.AssertGetOpenIdTokenForDeveloperIdentityInput(t)
-	return t
+	asserts.AssertGetOpenIdTokenForDeveloperIdentityInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CognitoIdentityProvider = { ["ServerSideTokenCheck"] = true, ["ClientId"] = true, ["ProviderName"] = true, nil }
@@ -698,14 +929,25 @@ end
 -- * ProviderName [CognitoIdentityProviderName] <p>The provider name for an Amazon Cognito Identity User Pool. For example, <code>cognito-idp.us-east-1.amazonaws.com/us-east-1_123456789</code>.</p>
 -- @return CognitoIdentityProvider structure as a key-value pair table
 function M.CognitoIdentityProvider(args)
-	assert(args, "You must provdide an argument table when creating CognitoIdentityProvider")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CognitoIdentityProvider")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ServerSideTokenCheck"] = args["ServerSideTokenCheck"],
 		["ClientId"] = args["ClientId"],
 		["ProviderName"] = args["ProviderName"],
 	}
-	asserts.AssertCognitoIdentityProvider(t)
-	return t
+	asserts.AssertCognitoIdentityProvider(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.TooManyRequestsException = { ["message"] = true, nil }
@@ -726,12 +968,23 @@ end
 -- * message [String] <p>Message returned by a TooManyRequestsException</p>
 -- @return TooManyRequestsException structure as a key-value pair table
 function M.TooManyRequestsException(args)
-	assert(args, "You must provdide an argument table when creating TooManyRequestsException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating TooManyRequestsException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertTooManyRequestsException(t)
-	return t
+	asserts.AssertTooManyRequestsException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.IdentityDescription = { ["Logins"] = true, ["LastModifiedDate"] = true, ["CreationDate"] = true, ["IdentityId"] = true, nil }
@@ -758,15 +1011,26 @@ end
 -- * IdentityId [IdentityId] <p>A unique identifier in the format REGION:GUID.</p>
 -- @return IdentityDescription structure as a key-value pair table
 function M.IdentityDescription(args)
-	assert(args, "You must provdide an argument table when creating IdentityDescription")
-	local t = { 
+	assert(args, "You must provide an argument table when creating IdentityDescription")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Logins"] = args["Logins"],
 		["LastModifiedDate"] = args["LastModifiedDate"],
 		["CreationDate"] = args["CreationDate"],
 		["IdentityId"] = args["IdentityId"],
 	}
-	asserts.AssertIdentityDescription(t)
-	return t
+	asserts.AssertIdentityDescription(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListIdentitiesResponse = { ["IdentityPoolId"] = true, ["NextToken"] = true, ["Identities"] = true, nil }
@@ -791,14 +1055,25 @@ end
 -- * Identities [IdentitiesList] <p>An object containing a set of identities and associated mappings.</p>
 -- @return ListIdentitiesResponse structure as a key-value pair table
 function M.ListIdentitiesResponse(args)
-	assert(args, "You must provdide an argument table when creating ListIdentitiesResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListIdentitiesResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["IdentityPoolId"] = args["IdentityPoolId"],
 		["NextToken"] = args["NextToken"],
 		["Identities"] = args["Identities"],
 	}
-	asserts.AssertListIdentitiesResponse(t)
-	return t
+	asserts.AssertListIdentitiesResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.IdentityPoolShortDescription = { ["IdentityPoolId"] = true, ["IdentityPoolName"] = true, nil }
@@ -821,13 +1096,24 @@ end
 -- * IdentityPoolName [IdentityPoolName] <p>A string that you provide.</p>
 -- @return IdentityPoolShortDescription structure as a key-value pair table
 function M.IdentityPoolShortDescription(args)
-	assert(args, "You must provdide an argument table when creating IdentityPoolShortDescription")
-	local t = { 
+	assert(args, "You must provide an argument table when creating IdentityPoolShortDescription")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["IdentityPoolId"] = args["IdentityPoolId"],
 		["IdentityPoolName"] = args["IdentityPoolName"],
 	}
-	asserts.AssertIdentityPoolShortDescription(t)
-	return t
+	asserts.AssertIdentityPoolShortDescription(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InternalErrorException = { ["message"] = true, nil }
@@ -848,12 +1134,23 @@ end
 -- * message [String] <p>The message returned by an InternalErrorException.</p>
 -- @return InternalErrorException structure as a key-value pair table
 function M.InternalErrorException(args)
-	assert(args, "You must provdide an argument table when creating InternalErrorException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InternalErrorException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertInternalErrorException(t)
-	return t
+	asserts.AssertInternalErrorException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidIdentityPoolConfigurationException = { ["message"] = true, nil }
@@ -874,12 +1171,23 @@ end
 -- * message [String] <p>The message returned for an <code>InvalidIdentityPoolConfigurationException</code> </p>
 -- @return InvalidIdentityPoolConfigurationException structure as a key-value pair table
 function M.InvalidIdentityPoolConfigurationException(args)
-	assert(args, "You must provdide an argument table when creating InvalidIdentityPoolConfigurationException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidIdentityPoolConfigurationException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertInvalidIdentityPoolConfigurationException(t)
-	return t
+	asserts.AssertInvalidIdentityPoolConfigurationException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Credentials = { ["SecretKey"] = true, ["SessionToken"] = true, ["Expiration"] = true, ["AccessKeyId"] = true, nil }
@@ -906,15 +1214,26 @@ end
 -- * AccessKeyId [AccessKeyString] <p>The Access Key portion of the credentials.</p>
 -- @return Credentials structure as a key-value pair table
 function M.Credentials(args)
-	assert(args, "You must provdide an argument table when creating Credentials")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Credentials")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["SecretKey"] = args["SecretKey"],
 		["SessionToken"] = args["SessionToken"],
 		["Expiration"] = args["Expiration"],
 		["AccessKeyId"] = args["AccessKeyId"],
 	}
-	asserts.AssertCredentials(t)
-	return t
+	asserts.AssertCredentials(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.SetIdentityPoolRolesInput = { ["IdentityPoolId"] = true, ["Roles"] = true, ["RoleMappings"] = true, nil }
@@ -943,14 +1262,25 @@ end
 -- Required key: Roles
 -- @return SetIdentityPoolRolesInput structure as a key-value pair table
 function M.SetIdentityPoolRolesInput(args)
-	assert(args, "You must provdide an argument table when creating SetIdentityPoolRolesInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating SetIdentityPoolRolesInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["IdentityPoolId"] = args["IdentityPoolId"],
 		["Roles"] = args["Roles"],
 		["RoleMappings"] = args["RoleMappings"],
 	}
-	asserts.AssertSetIdentityPoolRolesInput(t)
-	return t
+	asserts.AssertSetIdentityPoolRolesInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetIdInput = { ["Logins"] = true, ["IdentityPoolId"] = true, ["AccountId"] = true, nil }
@@ -977,14 +1307,25 @@ end
 -- Required key: IdentityPoolId
 -- @return GetIdInput structure as a key-value pair table
 function M.GetIdInput(args)
-	assert(args, "You must provdide an argument table when creating GetIdInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetIdInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Logins"] = args["Logins"],
 		["IdentityPoolId"] = args["IdentityPoolId"],
 		["AccountId"] = args["AccountId"],
 	}
-	asserts.AssertGetIdInput(t)
-	return t
+	asserts.AssertGetIdInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeIdentityPoolInput = { ["IdentityPoolId"] = true, nil }
@@ -1007,12 +1348,23 @@ end
 -- Required key: IdentityPoolId
 -- @return DescribeIdentityPoolInput structure as a key-value pair table
 function M.DescribeIdentityPoolInput(args)
-	assert(args, "You must provdide an argument table when creating DescribeIdentityPoolInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeIdentityPoolInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["IdentityPoolId"] = args["IdentityPoolId"],
 	}
-	asserts.AssertDescribeIdentityPoolInput(t)
-	return t
+	asserts.AssertDescribeIdentityPoolInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UnlinkDeveloperIdentityInput = { ["IdentityPoolId"] = true, ["DeveloperUserIdentifier"] = true, ["DeveloperProviderName"] = true, ["IdentityId"] = true, nil }
@@ -1047,15 +1399,26 @@ end
 -- Required key: DeveloperUserIdentifier
 -- @return UnlinkDeveloperIdentityInput structure as a key-value pair table
 function M.UnlinkDeveloperIdentityInput(args)
-	assert(args, "You must provdide an argument table when creating UnlinkDeveloperIdentityInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UnlinkDeveloperIdentityInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["IdentityPoolId"] = args["IdentityPoolId"],
 		["DeveloperUserIdentifier"] = args["DeveloperUserIdentifier"],
 		["DeveloperProviderName"] = args["DeveloperProviderName"],
 		["IdentityId"] = args["IdentityId"],
 	}
-	asserts.AssertUnlinkDeveloperIdentityInput(t)
-	return t
+	asserts.AssertUnlinkDeveloperIdentityInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.IdentityPool = { ["DeveloperProviderName"] = true, ["SamlProviderARNs"] = true, ["SupportedLoginProviders"] = true, ["AllowUnauthenticatedIdentities"] = true, ["IdentityPoolName"] = true, ["IdentityPoolId"] = true, ["CognitoIdentityProviders"] = true, ["OpenIdConnectProviderARNs"] = true, nil }
@@ -1096,8 +1459,14 @@ end
 -- Required key: AllowUnauthenticatedIdentities
 -- @return IdentityPool structure as a key-value pair table
 function M.IdentityPool(args)
-	assert(args, "You must provdide an argument table when creating IdentityPool")
-	local t = { 
+	assert(args, "You must provide an argument table when creating IdentityPool")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DeveloperProviderName"] = args["DeveloperProviderName"],
 		["SamlProviderARNs"] = args["SamlProviderARNs"],
 		["SupportedLoginProviders"] = args["SupportedLoginProviders"],
@@ -1107,8 +1476,13 @@ function M.IdentityPool(args)
 		["CognitoIdentityProviders"] = args["CognitoIdentityProviders"],
 		["OpenIdConnectProviderARNs"] = args["OpenIdConnectProviderARNs"],
 	}
-	asserts.AssertIdentityPool(t)
-	return t
+	asserts.AssertIdentityPool(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ResourceNotFoundException = { ["message"] = true, nil }
@@ -1129,12 +1503,23 @@ end
 -- * message [String] <p>The message returned by a ResourceNotFoundException.</p>
 -- @return ResourceNotFoundException structure as a key-value pair table
 function M.ResourceNotFoundException(args)
-	assert(args, "You must provdide an argument table when creating ResourceNotFoundException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ResourceNotFoundException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertResourceNotFoundException(t)
-	return t
+	asserts.AssertResourceNotFoundException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.LookupDeveloperIdentityInput = { ["IdentityPoolId"] = true, ["NextToken"] = true, ["DeveloperUserIdentifier"] = true, ["MaxResults"] = true, ["IdentityId"] = true, nil }
@@ -1165,16 +1550,27 @@ end
 -- Required key: IdentityPoolId
 -- @return LookupDeveloperIdentityInput structure as a key-value pair table
 function M.LookupDeveloperIdentityInput(args)
-	assert(args, "You must provdide an argument table when creating LookupDeveloperIdentityInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating LookupDeveloperIdentityInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["IdentityPoolId"] = args["IdentityPoolId"],
 		["NextToken"] = args["NextToken"],
 		["DeveloperUserIdentifier"] = args["DeveloperUserIdentifier"],
 		["MaxResults"] = args["MaxResults"],
 		["IdentityId"] = args["IdentityId"],
 	}
-	asserts.AssertLookupDeveloperIdentityInput(t)
-	return t
+	asserts.AssertLookupDeveloperIdentityInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.MergeDeveloperIdentitiesInput = { ["DestinationUserIdentifier"] = true, ["IdentityPoolId"] = true, ["DeveloperProviderName"] = true, ["SourceUserIdentifier"] = true, nil }
@@ -1209,15 +1605,26 @@ end
 -- Required key: IdentityPoolId
 -- @return MergeDeveloperIdentitiesInput structure as a key-value pair table
 function M.MergeDeveloperIdentitiesInput(args)
-	assert(args, "You must provdide an argument table when creating MergeDeveloperIdentitiesInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating MergeDeveloperIdentitiesInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DestinationUserIdentifier"] = args["DestinationUserIdentifier"],
 		["IdentityPoolId"] = args["IdentityPoolId"],
 		["DeveloperProviderName"] = args["DeveloperProviderName"],
 		["SourceUserIdentifier"] = args["SourceUserIdentifier"],
 	}
-	asserts.AssertMergeDeveloperIdentitiesInput(t)
-	return t
+	asserts.AssertMergeDeveloperIdentitiesInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeveloperUserAlreadyRegisteredException = { ["message"] = true, nil }
@@ -1238,12 +1645,23 @@ end
 -- * message [String] <p>This developer user identifier is already registered with Cognito.</p>
 -- @return DeveloperUserAlreadyRegisteredException structure as a key-value pair table
 function M.DeveloperUserAlreadyRegisteredException(args)
-	assert(args, "You must provdide an argument table when creating DeveloperUserAlreadyRegisteredException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeveloperUserAlreadyRegisteredException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertDeveloperUserAlreadyRegisteredException(t)
-	return t
+	asserts.AssertDeveloperUserAlreadyRegisteredException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UnlinkIdentityInput = { ["Logins"] = true, ["LoginsToRemove"] = true, ["IdentityId"] = true, nil }
@@ -1274,14 +1692,25 @@ end
 -- Required key: LoginsToRemove
 -- @return UnlinkIdentityInput structure as a key-value pair table
 function M.UnlinkIdentityInput(args)
-	assert(args, "You must provdide an argument table when creating UnlinkIdentityInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UnlinkIdentityInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Logins"] = args["Logins"],
 		["LoginsToRemove"] = args["LoginsToRemove"],
 		["IdentityId"] = args["IdentityId"],
 	}
-	asserts.AssertUnlinkIdentityInput(t)
-	return t
+	asserts.AssertUnlinkIdentityInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ExternalServiceException = { ["message"] = true, nil }
@@ -1302,12 +1731,23 @@ end
 -- * message [String] <p>The message returned by an ExternalServiceException</p>
 -- @return ExternalServiceException structure as a key-value pair table
 function M.ExternalServiceException(args)
-	assert(args, "You must provdide an argument table when creating ExternalServiceException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ExternalServiceException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertExternalServiceException(t)
-	return t
+	asserts.AssertExternalServiceException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetCredentialsForIdentityResponse = { ["Credentials"] = true, ["IdentityId"] = true, nil }
@@ -1330,13 +1770,24 @@ end
 -- * IdentityId [IdentityId] <p>A unique identifier in the format REGION:GUID.</p>
 -- @return GetCredentialsForIdentityResponse structure as a key-value pair table
 function M.GetCredentialsForIdentityResponse(args)
-	assert(args, "You must provdide an argument table when creating GetCredentialsForIdentityResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetCredentialsForIdentityResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Credentials"] = args["Credentials"],
 		["IdentityId"] = args["IdentityId"],
 	}
-	asserts.AssertGetCredentialsForIdentityResponse(t)
-	return t
+	asserts.AssertGetCredentialsForIdentityResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetCredentialsForIdentityInput = { ["Logins"] = true, ["CustomRoleArn"] = true, ["IdentityId"] = true, nil }
@@ -1363,14 +1814,25 @@ end
 -- Required key: IdentityId
 -- @return GetCredentialsForIdentityInput structure as a key-value pair table
 function M.GetCredentialsForIdentityInput(args)
-	assert(args, "You must provdide an argument table when creating GetCredentialsForIdentityInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetCredentialsForIdentityInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Logins"] = args["Logins"],
 		["CustomRoleArn"] = args["CustomRoleArn"],
 		["IdentityId"] = args["IdentityId"],
 	}
-	asserts.AssertGetCredentialsForIdentityInput(t)
-	return t
+	asserts.AssertGetCredentialsForIdentityInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeIdentityInput = { ["IdentityId"] = true, nil }
@@ -1393,12 +1855,23 @@ end
 -- Required key: IdentityId
 -- @return DescribeIdentityInput structure as a key-value pair table
 function M.DescribeIdentityInput(args)
-	assert(args, "You must provdide an argument table when creating DescribeIdentityInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeIdentityInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["IdentityId"] = args["IdentityId"],
 	}
-	asserts.AssertDescribeIdentityInput(t)
-	return t
+	asserts.AssertDescribeIdentityInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteIdentitiesResponse = { ["UnprocessedIdentityIds"] = true, nil }
@@ -1419,12 +1892,23 @@ end
 -- * UnprocessedIdentityIds [UnprocessedIdentityIdList] <p>An array of UnprocessedIdentityId objects, each of which contains an ErrorCode and IdentityId.</p>
 -- @return DeleteIdentitiesResponse structure as a key-value pair table
 function M.DeleteIdentitiesResponse(args)
-	assert(args, "You must provdide an argument table when creating DeleteIdentitiesResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteIdentitiesResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["UnprocessedIdentityIds"] = args["UnprocessedIdentityIds"],
 	}
-	asserts.AssertDeleteIdentitiesResponse(t)
-	return t
+	asserts.AssertDeleteIdentitiesResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ResourceConflictException = { ["message"] = true, nil }
@@ -1445,12 +1929,23 @@ end
 -- * message [String] <p>The message returned by a ResourceConflictException.</p>
 -- @return ResourceConflictException structure as a key-value pair table
 function M.ResourceConflictException(args)
-	assert(args, "You must provdide an argument table when creating ResourceConflictException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ResourceConflictException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertResourceConflictException(t)
-	return t
+	asserts.AssertResourceConflictException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.MergeDeveloperIdentitiesResponse = { ["IdentityId"] = true, nil }
@@ -1471,12 +1966,23 @@ end
 -- * IdentityId [IdentityId] <p>A unique identifier in the format REGION:GUID.</p>
 -- @return MergeDeveloperIdentitiesResponse structure as a key-value pair table
 function M.MergeDeveloperIdentitiesResponse(args)
-	assert(args, "You must provdide an argument table when creating MergeDeveloperIdentitiesResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating MergeDeveloperIdentitiesResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["IdentityId"] = args["IdentityId"],
 	}
-	asserts.AssertMergeDeveloperIdentitiesResponse(t)
-	return t
+	asserts.AssertMergeDeveloperIdentitiesResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.LookupDeveloperIdentityResponse = { ["NextToken"] = true, ["DeveloperUserIdentifierList"] = true, ["IdentityId"] = true, nil }
@@ -1501,14 +2007,25 @@ end
 -- * IdentityId [IdentityId] <p>A unique identifier in the format REGION:GUID.</p>
 -- @return LookupDeveloperIdentityResponse structure as a key-value pair table
 function M.LookupDeveloperIdentityResponse(args)
-	assert(args, "You must provdide an argument table when creating LookupDeveloperIdentityResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating LookupDeveloperIdentityResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NextToken"] = args["NextToken"],
 		["DeveloperUserIdentifierList"] = args["DeveloperUserIdentifierList"],
 		["IdentityId"] = args["IdentityId"],
 	}
-	asserts.AssertLookupDeveloperIdentityResponse(t)
-	return t
+	asserts.AssertLookupDeveloperIdentityResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 function asserts.AssertCognitoIdentityProviderClientId(str)
@@ -2142,8 +2659,11 @@ function M.MergeDeveloperIdentitiesAsync(MergeDeveloperIdentitiesInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AWSCognitoIdentityService.MergeDeveloperIdentities",
 	}
+	for header,value in pairs(MergeDeveloperIdentitiesInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", MergeDeveloperIdentitiesInput, headers, settings, cb)
 	else
@@ -2174,8 +2694,11 @@ function M.GetIdentityPoolRolesAsync(GetIdentityPoolRolesInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AWSCognitoIdentityService.GetIdentityPoolRoles",
 	}
+	for header,value in pairs(GetIdentityPoolRolesInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", GetIdentityPoolRolesInput, headers, settings, cb)
 	else
@@ -2206,8 +2729,11 @@ function M.DeleteIdentitiesAsync(DeleteIdentitiesInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AWSCognitoIdentityService.DeleteIdentities",
 	}
+	for header,value in pairs(DeleteIdentitiesInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteIdentitiesInput, headers, settings, cb)
 	else
@@ -2238,8 +2764,11 @@ function M.GetOpenIdTokenForDeveloperIdentityAsync(GetOpenIdTokenForDeveloperIde
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AWSCognitoIdentityService.GetOpenIdTokenForDeveloperIdentity",
 	}
+	for header,value in pairs(GetOpenIdTokenForDeveloperIdentityInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", GetOpenIdTokenForDeveloperIdentityInput, headers, settings, cb)
 	else
@@ -2270,8 +2799,11 @@ function M.LookupDeveloperIdentityAsync(LookupDeveloperIdentityInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AWSCognitoIdentityService.LookupDeveloperIdentity",
 	}
+	for header,value in pairs(LookupDeveloperIdentityInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", LookupDeveloperIdentityInput, headers, settings, cb)
 	else
@@ -2302,8 +2834,11 @@ function M.ListIdentityPoolsAsync(ListIdentityPoolsInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AWSCognitoIdentityService.ListIdentityPools",
 	}
+	for header,value in pairs(ListIdentityPoolsInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ListIdentityPoolsInput, headers, settings, cb)
 	else
@@ -2334,8 +2869,11 @@ function M.DescribeIdentityAsync(DescribeIdentityInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AWSCognitoIdentityService.DescribeIdentity",
 	}
+	for header,value in pairs(DescribeIdentityInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeIdentityInput, headers, settings, cb)
 	else
@@ -2366,8 +2904,11 @@ function M.GetIdAsync(GetIdInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AWSCognitoIdentityService.GetId",
 	}
+	for header,value in pairs(GetIdInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", GetIdInput, headers, settings, cb)
 	else
@@ -2398,8 +2939,11 @@ function M.UnlinkIdentityAsync(UnlinkIdentityInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AWSCognitoIdentityService.UnlinkIdentity",
 	}
+	for header,value in pairs(UnlinkIdentityInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", UnlinkIdentityInput, headers, settings, cb)
 	else
@@ -2430,8 +2974,11 @@ function M.ListIdentitiesAsync(ListIdentitiesInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AWSCognitoIdentityService.ListIdentities",
 	}
+	for header,value in pairs(ListIdentitiesInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ListIdentitiesInput, headers, settings, cb)
 	else
@@ -2462,8 +3009,11 @@ function M.DeleteIdentityPoolAsync(DeleteIdentityPoolInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AWSCognitoIdentityService.DeleteIdentityPool",
 	}
+	for header,value in pairs(DeleteIdentityPoolInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteIdentityPoolInput, headers, settings, cb)
 	else
@@ -2494,8 +3044,11 @@ function M.GetCredentialsForIdentityAsync(GetCredentialsForIdentityInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AWSCognitoIdentityService.GetCredentialsForIdentity",
 	}
+	for header,value in pairs(GetCredentialsForIdentityInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", GetCredentialsForIdentityInput, headers, settings, cb)
 	else
@@ -2526,8 +3079,11 @@ function M.UpdateIdentityPoolAsync(IdentityPool, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AWSCognitoIdentityService.UpdateIdentityPool",
 	}
+	for header,value in pairs(IdentityPool.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", IdentityPool, headers, settings, cb)
 	else
@@ -2558,8 +3114,11 @@ function M.SetIdentityPoolRolesAsync(SetIdentityPoolRolesInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AWSCognitoIdentityService.SetIdentityPoolRoles",
 	}
+	for header,value in pairs(SetIdentityPoolRolesInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", SetIdentityPoolRolesInput, headers, settings, cb)
 	else
@@ -2590,8 +3149,11 @@ function M.UnlinkDeveloperIdentityAsync(UnlinkDeveloperIdentityInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AWSCognitoIdentityService.UnlinkDeveloperIdentity",
 	}
+	for header,value in pairs(UnlinkDeveloperIdentityInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", UnlinkDeveloperIdentityInput, headers, settings, cb)
 	else
@@ -2622,8 +3184,11 @@ function M.DescribeIdentityPoolAsync(DescribeIdentityPoolInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AWSCognitoIdentityService.DescribeIdentityPool",
 	}
+	for header,value in pairs(DescribeIdentityPoolInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeIdentityPoolInput, headers, settings, cb)
 	else
@@ -2654,8 +3219,11 @@ function M.GetOpenIdTokenAsync(GetOpenIdTokenInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AWSCognitoIdentityService.GetOpenIdToken",
 	}
+	for header,value in pairs(GetOpenIdTokenInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", GetOpenIdTokenInput, headers, settings, cb)
 	else
@@ -2686,8 +3254,11 @@ function M.CreateIdentityPoolAsync(CreateIdentityPoolInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AWSCognitoIdentityService.CreateIdentityPool",
 	}
+	for header,value in pairs(CreateIdentityPoolInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateIdentityPoolInput, headers, settings, cb)
 	else

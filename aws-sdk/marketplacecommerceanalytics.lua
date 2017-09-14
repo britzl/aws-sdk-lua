@@ -39,12 +39,23 @@ end
 -- * message [ExceptionMessage] This message describes details of the error.
 -- @return MarketplaceCommerceAnalyticsException structure as a key-value pair table
 function M.MarketplaceCommerceAnalyticsException(args)
-	assert(args, "You must provdide an argument table when creating MarketplaceCommerceAnalyticsException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating MarketplaceCommerceAnalyticsException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertMarketplaceCommerceAnalyticsException(t)
-	return t
+	asserts.AssertMarketplaceCommerceAnalyticsException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.StartSupportDataExportResult = { ["dataSetRequestId"] = true, nil }
@@ -65,12 +76,23 @@ end
 -- * dataSetRequestId [DataSetRequestId] A unique identifier representing a specific request to the StartSupportDataExport operation. This identifier can be used to correlate a request with notifications from the SNS topic.
 -- @return StartSupportDataExportResult structure as a key-value pair table
 function M.StartSupportDataExportResult(args)
-	assert(args, "You must provdide an argument table when creating StartSupportDataExportResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating StartSupportDataExportResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["dataSetRequestId"] = args["dataSetRequestId"],
 	}
-	asserts.AssertStartSupportDataExportResult(t)
-	return t
+	asserts.AssertStartSupportDataExportResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GenerateDataSetResult = { ["dataSetRequestId"] = true, nil }
@@ -91,12 +113,23 @@ end
 -- * dataSetRequestId [DataSetRequestId] A unique identifier representing a specific request to the GenerateDataSet operation. This identifier can be used to correlate a request with notifications from the SNS topic.
 -- @return GenerateDataSetResult structure as a key-value pair table
 function M.GenerateDataSetResult(args)
-	assert(args, "You must provdide an argument table when creating GenerateDataSetResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GenerateDataSetResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["dataSetRequestId"] = args["dataSetRequestId"],
 	}
-	asserts.AssertGenerateDataSetResult(t)
-	return t
+	asserts.AssertGenerateDataSetResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.StartSupportDataExportRequest = { ["roleNameArn"] = true, ["destinationS3BucketName"] = true, ["snsTopicArn"] = true, ["fromDate"] = true, ["destinationS3Prefix"] = true, ["dataSetType"] = true, ["customerDefinedValues"] = true, nil }
@@ -139,8 +172,14 @@ end
 -- Required key: snsTopicArn
 -- @return StartSupportDataExportRequest structure as a key-value pair table
 function M.StartSupportDataExportRequest(args)
-	assert(args, "You must provdide an argument table when creating StartSupportDataExportRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating StartSupportDataExportRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["roleNameArn"] = args["roleNameArn"],
 		["destinationS3BucketName"] = args["destinationS3BucketName"],
 		["snsTopicArn"] = args["snsTopicArn"],
@@ -149,8 +188,13 @@ function M.StartSupportDataExportRequest(args)
 		["dataSetType"] = args["dataSetType"],
 		["customerDefinedValues"] = args["customerDefinedValues"],
 	}
-	asserts.AssertStartSupportDataExportRequest(t)
-	return t
+	asserts.AssertStartSupportDataExportRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GenerateDataSetRequest = { ["roleNameArn"] = true, ["destinationS3BucketName"] = true, ["snsTopicArn"] = true, ["dataSetPublicationDate"] = true, ["destinationS3Prefix"] = true, ["dataSetType"] = true, ["customerDefinedValues"] = true, nil }
@@ -193,8 +237,14 @@ end
 -- Required key: snsTopicArn
 -- @return GenerateDataSetRequest structure as a key-value pair table
 function M.GenerateDataSetRequest(args)
-	assert(args, "You must provdide an argument table when creating GenerateDataSetRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GenerateDataSetRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["roleNameArn"] = args["roleNameArn"],
 		["destinationS3BucketName"] = args["destinationS3BucketName"],
 		["snsTopicArn"] = args["snsTopicArn"],
@@ -203,8 +253,13 @@ function M.GenerateDataSetRequest(args)
 		["dataSetType"] = args["dataSetType"],
 		["customerDefinedValues"] = args["customerDefinedValues"],
 	}
-	asserts.AssertGenerateDataSetRequest(t)
-	return t
+	asserts.AssertGenerateDataSetRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 function asserts.AssertExceptionMessage(str)
@@ -414,8 +469,11 @@ function M.GenerateDataSetAsync(GenerateDataSetRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "MarketplaceCommerceAnalytics20150701.GenerateDataSet",
 	}
+	for header,value in pairs(GenerateDataSetRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", GenerateDataSetRequest, headers, settings, cb)
 	else
@@ -446,8 +504,11 @@ function M.StartSupportDataExportAsync(StartSupportDataExportRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "MarketplaceCommerceAnalytics20150701.StartSupportDataExport",
 	}
+	for header,value in pairs(StartSupportDataExportRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", StartSupportDataExportRequest, headers, settings, cb)
 	else

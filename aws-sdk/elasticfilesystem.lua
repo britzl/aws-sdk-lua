@@ -41,12 +41,24 @@ end
 -- Required key: MountTargetId
 -- @return DescribeMountTargetSecurityGroupsRequest structure as a key-value pair table
 function M.DescribeMountTargetSecurityGroupsRequest(args)
-	assert(args, "You must provdide an argument table when creating DescribeMountTargetSecurityGroupsRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeMountTargetSecurityGroupsRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{MountTargetId}"] = args["MountTargetId"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["MountTargetId"] = args["MountTargetId"],
 	}
-	asserts.AssertDescribeMountTargetSecurityGroupsRequest(t)
-	return t
+	asserts.AssertDescribeMountTargetSecurityGroupsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.SecurityGroupNotFound = { ["ErrorCode"] = true, ["Message"] = true, nil }
@@ -71,13 +83,24 @@ end
 -- Required key: ErrorCode
 -- @return SecurityGroupNotFound structure as a key-value pair table
 function M.SecurityGroupNotFound(args)
-	assert(args, "You must provdide an argument table when creating SecurityGroupNotFound")
-	local t = { 
+	assert(args, "You must provide an argument table when creating SecurityGroupNotFound")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ErrorCode"] = args["ErrorCode"],
 		["Message"] = args["Message"],
 	}
-	asserts.AssertSecurityGroupNotFound(t)
-	return t
+	asserts.AssertSecurityGroupNotFound(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DependencyTimeout = { ["ErrorCode"] = true, ["Message"] = true, nil }
@@ -102,13 +125,24 @@ end
 -- Required key: ErrorCode
 -- @return DependencyTimeout structure as a key-value pair table
 function M.DependencyTimeout(args)
-	assert(args, "You must provdide an argument table when creating DependencyTimeout")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DependencyTimeout")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ErrorCode"] = args["ErrorCode"],
 		["Message"] = args["Message"],
 	}
-	asserts.AssertDependencyTimeout(t)
-	return t
+	asserts.AssertDependencyTimeout(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteMountTargetRequest = { ["MountTargetId"] = true, nil }
@@ -131,12 +165,24 @@ end
 -- Required key: MountTargetId
 -- @return DeleteMountTargetRequest structure as a key-value pair table
 function M.DeleteMountTargetRequest(args)
-	assert(args, "You must provdide an argument table when creating DeleteMountTargetRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteMountTargetRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{MountTargetId}"] = args["MountTargetId"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["MountTargetId"] = args["MountTargetId"],
 	}
-	asserts.AssertDeleteMountTargetRequest(t)
-	return t
+	asserts.AssertDeleteMountTargetRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.MountTargetDescription = { ["MountTargetId"] = true, ["NetworkInterfaceId"] = true, ["FileSystemId"] = true, ["LifeCycleState"] = true, ["SubnetId"] = true, ["OwnerId"] = true, ["IpAddress"] = true, nil }
@@ -177,8 +223,14 @@ end
 -- Required key: LifeCycleState
 -- @return MountTargetDescription structure as a key-value pair table
 function M.MountTargetDescription(args)
-	assert(args, "You must provdide an argument table when creating MountTargetDescription")
-	local t = { 
+	assert(args, "You must provide an argument table when creating MountTargetDescription")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["MountTargetId"] = args["MountTargetId"],
 		["NetworkInterfaceId"] = args["NetworkInterfaceId"],
 		["FileSystemId"] = args["FileSystemId"],
@@ -187,8 +239,13 @@ function M.MountTargetDescription(args)
 		["OwnerId"] = args["OwnerId"],
 		["IpAddress"] = args["IpAddress"],
 	}
-	asserts.AssertMountTargetDescription(t)
-	return t
+	asserts.AssertMountTargetDescription(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.IpAddressInUse = { ["ErrorCode"] = true, ["Message"] = true, nil }
@@ -213,13 +270,24 @@ end
 -- Required key: ErrorCode
 -- @return IpAddressInUse structure as a key-value pair table
 function M.IpAddressInUse(args)
-	assert(args, "You must provdide an argument table when creating IpAddressInUse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating IpAddressInUse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ErrorCode"] = args["ErrorCode"],
 		["Message"] = args["Message"],
 	}
-	asserts.AssertIpAddressInUse(t)
-	return t
+	asserts.AssertIpAddressInUse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.IncorrectMountTargetState = { ["ErrorCode"] = true, ["Message"] = true, nil }
@@ -244,13 +312,24 @@ end
 -- Required key: ErrorCode
 -- @return IncorrectMountTargetState structure as a key-value pair table
 function M.IncorrectMountTargetState(args)
-	assert(args, "You must provdide an argument table when creating IncorrectMountTargetState")
-	local t = { 
+	assert(args, "You must provide an argument table when creating IncorrectMountTargetState")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ErrorCode"] = args["ErrorCode"],
 		["Message"] = args["Message"],
 	}
-	asserts.AssertIncorrectMountTargetState(t)
-	return t
+	asserts.AssertIncorrectMountTargetState(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.MountTargetConflict = { ["ErrorCode"] = true, ["Message"] = true, nil }
@@ -275,13 +354,24 @@ end
 -- Required key: ErrorCode
 -- @return MountTargetConflict structure as a key-value pair table
 function M.MountTargetConflict(args)
-	assert(args, "You must provdide an argument table when creating MountTargetConflict")
-	local t = { 
+	assert(args, "You must provide an argument table when creating MountTargetConflict")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ErrorCode"] = args["ErrorCode"],
 		["Message"] = args["Message"],
 	}
-	asserts.AssertMountTargetConflict(t)
-	return t
+	asserts.AssertMountTargetConflict(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.FileSystemNotFound = { ["ErrorCode"] = true, ["Message"] = true, nil }
@@ -306,13 +396,24 @@ end
 -- Required key: ErrorCode
 -- @return FileSystemNotFound structure as a key-value pair table
 function M.FileSystemNotFound(args)
-	assert(args, "You must provdide an argument table when creating FileSystemNotFound")
-	local t = { 
+	assert(args, "You must provide an argument table when creating FileSystemNotFound")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ErrorCode"] = args["ErrorCode"],
 		["Message"] = args["Message"],
 	}
-	asserts.AssertFileSystemNotFound(t)
-	return t
+	asserts.AssertFileSystemNotFound(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeFileSystemsResponse = { ["Marker"] = true, ["NextMarker"] = true, ["FileSystems"] = true, nil }
@@ -337,14 +438,25 @@ end
 -- * FileSystems [FileSystemDescriptions] <p>Array of file system descriptions.</p>
 -- @return DescribeFileSystemsResponse structure as a key-value pair table
 function M.DescribeFileSystemsResponse(args)
-	assert(args, "You must provdide an argument table when creating DescribeFileSystemsResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeFileSystemsResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Marker"] = args["Marker"],
 		["NextMarker"] = args["NextMarker"],
 		["FileSystems"] = args["FileSystems"],
 	}
-	asserts.AssertDescribeFileSystemsResponse(t)
-	return t
+	asserts.AssertDescribeFileSystemsResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeMountTargetsResponse = { ["Marker"] = true, ["NextMarker"] = true, ["MountTargets"] = true, nil }
@@ -369,14 +481,25 @@ end
 -- * MountTargets [MountTargetDescriptions] <p>Returns the file system's mount targets as an array of <code>MountTargetDescription</code> objects.</p>
 -- @return DescribeMountTargetsResponse structure as a key-value pair table
 function M.DescribeMountTargetsResponse(args)
-	assert(args, "You must provdide an argument table when creating DescribeMountTargetsResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeMountTargetsResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Marker"] = args["Marker"],
 		["NextMarker"] = args["NextMarker"],
 		["MountTargets"] = args["MountTargets"],
 	}
-	asserts.AssertDescribeMountTargetsResponse(t)
-	return t
+	asserts.AssertDescribeMountTargetsResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.BadRequest = { ["ErrorCode"] = true, ["Message"] = true, nil }
@@ -401,13 +524,24 @@ end
 -- Required key: ErrorCode
 -- @return BadRequest structure as a key-value pair table
 function M.BadRequest(args)
-	assert(args, "You must provdide an argument table when creating BadRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating BadRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ErrorCode"] = args["ErrorCode"],
 		["Message"] = args["Message"],
 	}
-	asserts.AssertBadRequest(t)
-	return t
+	asserts.AssertBadRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeTagsResponse = { ["Marker"] = true, ["NextMarker"] = true, ["Tags"] = true, nil }
@@ -434,14 +568,25 @@ end
 -- Required key: Tags
 -- @return DescribeTagsResponse structure as a key-value pair table
 function M.DescribeTagsResponse(args)
-	assert(args, "You must provdide an argument table when creating DescribeTagsResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeTagsResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Marker"] = args["Marker"],
 		["NextMarker"] = args["NextMarker"],
 		["Tags"] = args["Tags"],
 	}
-	asserts.AssertDescribeTagsResponse(t)
-	return t
+	asserts.AssertDescribeTagsResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteFileSystemRequest = { ["FileSystemId"] = true, nil }
@@ -464,12 +609,24 @@ end
 -- Required key: FileSystemId
 -- @return DeleteFileSystemRequest structure as a key-value pair table
 function M.DeleteFileSystemRequest(args)
-	assert(args, "You must provdide an argument table when creating DeleteFileSystemRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteFileSystemRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{FileSystemId}"] = args["FileSystemId"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["FileSystemId"] = args["FileSystemId"],
 	}
-	asserts.AssertDeleteFileSystemRequest(t)
-	return t
+	asserts.AssertDeleteFileSystemRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateFileSystemRequest = { ["PerformanceMode"] = true, ["CreationToken"] = true, nil }
@@ -494,13 +651,24 @@ end
 -- Required key: CreationToken
 -- @return CreateFileSystemRequest structure as a key-value pair table
 function M.CreateFileSystemRequest(args)
-	assert(args, "You must provdide an argument table when creating CreateFileSystemRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateFileSystemRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["PerformanceMode"] = args["PerformanceMode"],
 		["CreationToken"] = args["CreationToken"],
 	}
-	asserts.AssertCreateFileSystemRequest(t)
-	return t
+	asserts.AssertCreateFileSystemRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeMountTargetSecurityGroupsResponse = { ["SecurityGroups"] = true, nil }
@@ -523,12 +691,23 @@ end
 -- Required key: SecurityGroups
 -- @return DescribeMountTargetSecurityGroupsResponse structure as a key-value pair table
 function M.DescribeMountTargetSecurityGroupsResponse(args)
-	assert(args, "You must provdide an argument table when creating DescribeMountTargetSecurityGroupsResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeMountTargetSecurityGroupsResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["SecurityGroups"] = args["SecurityGroups"],
 	}
-	asserts.AssertDescribeMountTargetSecurityGroupsResponse(t)
-	return t
+	asserts.AssertDescribeMountTargetSecurityGroupsResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.FileSystemInUse = { ["ErrorCode"] = true, ["Message"] = true, nil }
@@ -553,13 +732,24 @@ end
 -- Required key: ErrorCode
 -- @return FileSystemInUse structure as a key-value pair table
 function M.FileSystemInUse(args)
-	assert(args, "You must provdide an argument table when creating FileSystemInUse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating FileSystemInUse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ErrorCode"] = args["ErrorCode"],
 		["Message"] = args["Message"],
 	}
-	asserts.AssertFileSystemInUse(t)
-	return t
+	asserts.AssertFileSystemInUse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.FileSystemSize = { ["Timestamp"] = true, ["Value"] = true, nil }
@@ -584,13 +774,24 @@ end
 -- Required key: Value
 -- @return FileSystemSize structure as a key-value pair table
 function M.FileSystemSize(args)
-	assert(args, "You must provdide an argument table when creating FileSystemSize")
-	local t = { 
+	assert(args, "You must provide an argument table when creating FileSystemSize")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Timestamp"] = args["Timestamp"],
 		["Value"] = args["Value"],
 	}
-	asserts.AssertFileSystemSize(t)
-	return t
+	asserts.AssertFileSystemSize(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.FileSystemLimitExceeded = { ["ErrorCode"] = true, ["Message"] = true, nil }
@@ -615,13 +816,24 @@ end
 -- Required key: ErrorCode
 -- @return FileSystemLimitExceeded structure as a key-value pair table
 function M.FileSystemLimitExceeded(args)
-	assert(args, "You must provdide an argument table when creating FileSystemLimitExceeded")
-	local t = { 
+	assert(args, "You must provide an argument table when creating FileSystemLimitExceeded")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ErrorCode"] = args["ErrorCode"],
 		["Message"] = args["Message"],
 	}
-	asserts.AssertFileSystemLimitExceeded(t)
-	return t
+	asserts.AssertFileSystemLimitExceeded(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateMountTargetRequest = { ["SubnetId"] = true, ["SecurityGroups"] = true, ["FileSystemId"] = true, ["IpAddress"] = true, nil }
@@ -652,15 +864,26 @@ end
 -- Required key: SubnetId
 -- @return CreateMountTargetRequest structure as a key-value pair table
 function M.CreateMountTargetRequest(args)
-	assert(args, "You must provdide an argument table when creating CreateMountTargetRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateMountTargetRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["SubnetId"] = args["SubnetId"],
 		["SecurityGroups"] = args["SecurityGroups"],
 		["FileSystemId"] = args["FileSystemId"],
 		["IpAddress"] = args["IpAddress"],
 	}
-	asserts.AssertCreateMountTargetRequest(t)
-	return t
+	asserts.AssertCreateMountTargetRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeTagsRequest = { ["Marker"] = true, ["FileSystemId"] = true, ["MaxItems"] = true, nil }
@@ -687,14 +910,28 @@ end
 -- Required key: FileSystemId
 -- @return DescribeTagsRequest structure as a key-value pair table
 function M.DescribeTagsRequest(args)
-	assert(args, "You must provdide an argument table when creating DescribeTagsRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeTagsRequest")
+    local query_args = { 
+        ["Marker"] = args["Marker"],
+        ["MaxItems"] = args["MaxItems"],
+    }
+    local uri_args = { 
+        ["{FileSystemId}"] = args["FileSystemId"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Marker"] = args["Marker"],
 		["FileSystemId"] = args["FileSystemId"],
 		["MaxItems"] = args["MaxItems"],
 	}
-	asserts.AssertDescribeTagsRequest(t)
-	return t
+	asserts.AssertDescribeTagsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteTagsRequest = { ["FileSystemId"] = true, ["TagKeys"] = true, nil }
@@ -721,13 +958,25 @@ end
 -- Required key: TagKeys
 -- @return DeleteTagsRequest structure as a key-value pair table
 function M.DeleteTagsRequest(args)
-	assert(args, "You must provdide an argument table when creating DeleteTagsRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteTagsRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{FileSystemId}"] = args["FileSystemId"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["FileSystemId"] = args["FileSystemId"],
 		["TagKeys"] = args["TagKeys"],
 	}
-	asserts.AssertDeleteTagsRequest(t)
-	return t
+	asserts.AssertDeleteTagsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeMountTargetsRequest = { ["Marker"] = true, ["FileSystemId"] = true, ["MountTargetId"] = true, ["MaxItems"] = true, nil }
@@ -754,15 +1003,30 @@ end
 -- * MaxItems [MaxItems] <p>(Optional) Maximum number of mount targets to return in the response. It must be an integer with a value greater than zero.</p>
 -- @return DescribeMountTargetsRequest structure as a key-value pair table
 function M.DescribeMountTargetsRequest(args)
-	assert(args, "You must provdide an argument table when creating DescribeMountTargetsRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeMountTargetsRequest")
+    local query_args = { 
+        ["Marker"] = args["Marker"],
+        ["FileSystemId"] = args["FileSystemId"],
+        ["MountTargetId"] = args["MountTargetId"],
+        ["MaxItems"] = args["MaxItems"],
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Marker"] = args["Marker"],
 		["FileSystemId"] = args["FileSystemId"],
 		["MountTargetId"] = args["MountTargetId"],
 		["MaxItems"] = args["MaxItems"],
 	}
-	asserts.AssertDescribeMountTargetsRequest(t)
-	return t
+	asserts.AssertDescribeMountTargetsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.SecurityGroupLimitExceeded = { ["ErrorCode"] = true, ["Message"] = true, nil }
@@ -787,13 +1051,24 @@ end
 -- Required key: ErrorCode
 -- @return SecurityGroupLimitExceeded structure as a key-value pair table
 function M.SecurityGroupLimitExceeded(args)
-	assert(args, "You must provdide an argument table when creating SecurityGroupLimitExceeded")
-	local t = { 
+	assert(args, "You must provide an argument table when creating SecurityGroupLimitExceeded")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ErrorCode"] = args["ErrorCode"],
 		["Message"] = args["Message"],
 	}
-	asserts.AssertSecurityGroupLimitExceeded(t)
-	return t
+	asserts.AssertSecurityGroupLimitExceeded(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.NoFreeAddressesInSubnet = { ["ErrorCode"] = true, ["Message"] = true, nil }
@@ -818,13 +1093,24 @@ end
 -- Required key: ErrorCode
 -- @return NoFreeAddressesInSubnet structure as a key-value pair table
 function M.NoFreeAddressesInSubnet(args)
-	assert(args, "You must provdide an argument table when creating NoFreeAddressesInSubnet")
-	local t = { 
+	assert(args, "You must provide an argument table when creating NoFreeAddressesInSubnet")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ErrorCode"] = args["ErrorCode"],
 		["Message"] = args["Message"],
 	}
-	asserts.AssertNoFreeAddressesInSubnet(t)
-	return t
+	asserts.AssertNoFreeAddressesInSubnet(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeFileSystemsRequest = { ["Marker"] = true, ["FileSystemId"] = true, ["MaxItems"] = true, ["CreationToken"] = true, nil }
@@ -851,15 +1137,30 @@ end
 -- * CreationToken [CreationToken] <p>(Optional) Restricts the list to the file system with this creation token (String). You specify a creation token when you create an Amazon EFS file system.</p>
 -- @return DescribeFileSystemsRequest structure as a key-value pair table
 function M.DescribeFileSystemsRequest(args)
-	assert(args, "You must provdide an argument table when creating DescribeFileSystemsRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeFileSystemsRequest")
+    local query_args = { 
+        ["Marker"] = args["Marker"],
+        ["FileSystemId"] = args["FileSystemId"],
+        ["MaxItems"] = args["MaxItems"],
+        ["CreationToken"] = args["CreationToken"],
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Marker"] = args["Marker"],
 		["FileSystemId"] = args["FileSystemId"],
 		["MaxItems"] = args["MaxItems"],
 		["CreationToken"] = args["CreationToken"],
 	}
-	asserts.AssertDescribeFileSystemsRequest(t)
-	return t
+	asserts.AssertDescribeFileSystemsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InternalServerError = { ["ErrorCode"] = true, ["Message"] = true, nil }
@@ -884,13 +1185,24 @@ end
 -- Required key: ErrorCode
 -- @return InternalServerError structure as a key-value pair table
 function M.InternalServerError(args)
-	assert(args, "You must provdide an argument table when creating InternalServerError")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InternalServerError")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ErrorCode"] = args["ErrorCode"],
 		["Message"] = args["Message"],
 	}
-	asserts.AssertInternalServerError(t)
-	return t
+	asserts.AssertInternalServerError(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ModifyMountTargetSecurityGroupsRequest = { ["MountTargetId"] = true, ["SecurityGroups"] = true, nil }
@@ -915,13 +1227,25 @@ end
 -- Required key: MountTargetId
 -- @return ModifyMountTargetSecurityGroupsRequest structure as a key-value pair table
 function M.ModifyMountTargetSecurityGroupsRequest(args)
-	assert(args, "You must provdide an argument table when creating ModifyMountTargetSecurityGroupsRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ModifyMountTargetSecurityGroupsRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{MountTargetId}"] = args["MountTargetId"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["MountTargetId"] = args["MountTargetId"],
 		["SecurityGroups"] = args["SecurityGroups"],
 	}
-	asserts.AssertModifyMountTargetSecurityGroupsRequest(t)
-	return t
+	asserts.AssertModifyMountTargetSecurityGroupsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.IncorrectFileSystemLifeCycleState = { ["ErrorCode"] = true, ["Message"] = true, nil }
@@ -946,13 +1270,24 @@ end
 -- Required key: ErrorCode
 -- @return IncorrectFileSystemLifeCycleState structure as a key-value pair table
 function M.IncorrectFileSystemLifeCycleState(args)
-	assert(args, "You must provdide an argument table when creating IncorrectFileSystemLifeCycleState")
-	local t = { 
+	assert(args, "You must provide an argument table when creating IncorrectFileSystemLifeCycleState")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ErrorCode"] = args["ErrorCode"],
 		["Message"] = args["Message"],
 	}
-	asserts.AssertIncorrectFileSystemLifeCycleState(t)
-	return t
+	asserts.AssertIncorrectFileSystemLifeCycleState(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.FileSystemAlreadyExists = { ["ErrorCode"] = true, ["Message"] = true, ["FileSystemId"] = true, nil }
@@ -981,14 +1316,25 @@ end
 -- Required key: FileSystemId
 -- @return FileSystemAlreadyExists structure as a key-value pair table
 function M.FileSystemAlreadyExists(args)
-	assert(args, "You must provdide an argument table when creating FileSystemAlreadyExists")
-	local t = { 
+	assert(args, "You must provide an argument table when creating FileSystemAlreadyExists")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ErrorCode"] = args["ErrorCode"],
 		["Message"] = args["Message"],
 		["FileSystemId"] = args["FileSystemId"],
 	}
-	asserts.AssertFileSystemAlreadyExists(t)
-	return t
+	asserts.AssertFileSystemAlreadyExists(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.SubnetNotFound = { ["ErrorCode"] = true, ["Message"] = true, nil }
@@ -1013,13 +1359,24 @@ end
 -- Required key: ErrorCode
 -- @return SubnetNotFound structure as a key-value pair table
 function M.SubnetNotFound(args)
-	assert(args, "You must provdide an argument table when creating SubnetNotFound")
-	local t = { 
+	assert(args, "You must provide an argument table when creating SubnetNotFound")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ErrorCode"] = args["ErrorCode"],
 		["Message"] = args["Message"],
 	}
-	asserts.AssertSubnetNotFound(t)
-	return t
+	asserts.AssertSubnetNotFound(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.MountTargetNotFound = { ["ErrorCode"] = true, ["Message"] = true, nil }
@@ -1044,13 +1401,24 @@ end
 -- Required key: ErrorCode
 -- @return MountTargetNotFound structure as a key-value pair table
 function M.MountTargetNotFound(args)
-	assert(args, "You must provdide an argument table when creating MountTargetNotFound")
-	local t = { 
+	assert(args, "You must provide an argument table when creating MountTargetNotFound")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ErrorCode"] = args["ErrorCode"],
 		["Message"] = args["Message"],
 	}
-	asserts.AssertMountTargetNotFound(t)
-	return t
+	asserts.AssertMountTargetNotFound(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.FileSystemDescription = { ["SizeInBytes"] = true, ["Name"] = true, ["CreationToken"] = true, ["CreationTime"] = true, ["PerformanceMode"] = true, ["FileSystemId"] = true, ["NumberOfMountTargets"] = true, ["LifeCycleState"] = true, ["OwnerId"] = true, nil }
@@ -1103,8 +1471,14 @@ end
 -- Required key: PerformanceMode
 -- @return FileSystemDescription structure as a key-value pair table
 function M.FileSystemDescription(args)
-	assert(args, "You must provdide an argument table when creating FileSystemDescription")
-	local t = { 
+	assert(args, "You must provide an argument table when creating FileSystemDescription")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["SizeInBytes"] = args["SizeInBytes"],
 		["Name"] = args["Name"],
 		["CreationToken"] = args["CreationToken"],
@@ -1115,8 +1489,13 @@ function M.FileSystemDescription(args)
 		["LifeCycleState"] = args["LifeCycleState"],
 		["OwnerId"] = args["OwnerId"],
 	}
-	asserts.AssertFileSystemDescription(t)
-	return t
+	asserts.AssertFileSystemDescription(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.NetworkInterfaceLimitExceeded = { ["ErrorCode"] = true, ["Message"] = true, nil }
@@ -1141,13 +1520,24 @@ end
 -- Required key: ErrorCode
 -- @return NetworkInterfaceLimitExceeded structure as a key-value pair table
 function M.NetworkInterfaceLimitExceeded(args)
-	assert(args, "You must provdide an argument table when creating NetworkInterfaceLimitExceeded")
-	local t = { 
+	assert(args, "You must provide an argument table when creating NetworkInterfaceLimitExceeded")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ErrorCode"] = args["ErrorCode"],
 		["Message"] = args["Message"],
 	}
-	asserts.AssertNetworkInterfaceLimitExceeded(t)
-	return t
+	asserts.AssertNetworkInterfaceLimitExceeded(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateTagsRequest = { ["FileSystemId"] = true, ["Tags"] = true, nil }
@@ -1174,13 +1564,25 @@ end
 -- Required key: Tags
 -- @return CreateTagsRequest structure as a key-value pair table
 function M.CreateTagsRequest(args)
-	assert(args, "You must provdide an argument table when creating CreateTagsRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateTagsRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{FileSystemId}"] = args["FileSystemId"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["FileSystemId"] = args["FileSystemId"],
 		["Tags"] = args["Tags"],
 	}
-	asserts.AssertCreateTagsRequest(t)
-	return t
+	asserts.AssertCreateTagsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Tag = { ["Value"] = true, ["Key"] = true, nil }
@@ -1207,13 +1609,24 @@ end
 -- Required key: Value
 -- @return Tag structure as a key-value pair table
 function M.Tag(args)
-	assert(args, "You must provdide an argument table when creating Tag")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Tag")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Value"] = args["Value"],
 		["Key"] = args["Key"],
 	}
-	asserts.AssertTag(t)
-	return t
+	asserts.AssertTag(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UnsupportedAvailabilityZone = { ["ErrorCode"] = true, ["Message"] = true, nil }
@@ -1238,13 +1651,24 @@ end
 -- Required key: ErrorCode
 -- @return UnsupportedAvailabilityZone structure as a key-value pair table
 function M.UnsupportedAvailabilityZone(args)
-	assert(args, "You must provdide an argument table when creating UnsupportedAvailabilityZone")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UnsupportedAvailabilityZone")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ErrorCode"] = args["ErrorCode"],
 		["Message"] = args["Message"],
 	}
-	asserts.AssertUnsupportedAvailabilityZone(t)
-	return t
+	asserts.AssertUnsupportedAvailabilityZone(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 function asserts.AssertCreationToken(str)
@@ -1590,8 +2014,11 @@ function M.DeleteTagsAsync(DeleteTagsRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DeleteTags",
 	}
+	for header,value in pairs(DeleteTagsRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/2015-02-01/delete-tags/{FileSystemId}", DeleteTagsRequest, headers, settings, cb)
 	else
@@ -1622,8 +2049,11 @@ function M.DescribeMountTargetSecurityGroupsAsync(DescribeMountTargetSecurityGro
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DescribeMountTargetSecurityGroups",
 	}
+	for header,value in pairs(DescribeMountTargetSecurityGroupsRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
 	if request_handler then
 		request_handler(settings.uri, "/2015-02-01/mount-targets/{MountTargetId}/security-groups", DescribeMountTargetSecurityGroupsRequest, headers, settings, cb)
 	else
@@ -1654,8 +2084,11 @@ function M.DeleteFileSystemAsync(DeleteFileSystemRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DeleteFileSystem",
 	}
+	for header,value in pairs(DeleteFileSystemRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("DELETE")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE")
 	if request_handler then
 		request_handler(settings.uri, "/2015-02-01/file-systems/{FileSystemId}", DeleteFileSystemRequest, headers, settings, cb)
 	else
@@ -1686,8 +2119,11 @@ function M.CreateTagsAsync(CreateTagsRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".CreateTags",
 	}
+	for header,value in pairs(CreateTagsRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/2015-02-01/create-tags/{FileSystemId}", CreateTagsRequest, headers, settings, cb)
 	else
@@ -1718,8 +2154,11 @@ function M.CreateMountTargetAsync(CreateMountTargetRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".CreateMountTarget",
 	}
+	for header,value in pairs(CreateMountTargetRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/2015-02-01/mount-targets", CreateMountTargetRequest, headers, settings, cb)
 	else
@@ -1750,8 +2189,11 @@ function M.DescribeFileSystemsAsync(DescribeFileSystemsRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DescribeFileSystems",
 	}
+	for header,value in pairs(DescribeFileSystemsRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
 	if request_handler then
 		request_handler(settings.uri, "/2015-02-01/file-systems", DescribeFileSystemsRequest, headers, settings, cb)
 	else
@@ -1782,8 +2224,11 @@ function M.DescribeTagsAsync(DescribeTagsRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DescribeTags",
 	}
+	for header,value in pairs(DescribeTagsRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
 	if request_handler then
 		request_handler(settings.uri, "/2015-02-01/tags/{FileSystemId}/", DescribeTagsRequest, headers, settings, cb)
 	else
@@ -1814,8 +2259,11 @@ function M.ModifyMountTargetSecurityGroupsAsync(ModifyMountTargetSecurityGroupsR
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".ModifyMountTargetSecurityGroups",
 	}
+	for header,value in pairs(ModifyMountTargetSecurityGroupsRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("PUT")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT")
 	if request_handler then
 		request_handler(settings.uri, "/2015-02-01/mount-targets/{MountTargetId}/security-groups", ModifyMountTargetSecurityGroupsRequest, headers, settings, cb)
 	else
@@ -1846,8 +2294,11 @@ function M.DescribeMountTargetsAsync(DescribeMountTargetsRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DescribeMountTargets",
 	}
+	for header,value in pairs(DescribeMountTargetsRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
 	if request_handler then
 		request_handler(settings.uri, "/2015-02-01/mount-targets", DescribeMountTargetsRequest, headers, settings, cb)
 	else
@@ -1878,8 +2329,11 @@ function M.CreateFileSystemAsync(CreateFileSystemRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".CreateFileSystem",
 	}
+	for header,value in pairs(CreateFileSystemRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/2015-02-01/file-systems", CreateFileSystemRequest, headers, settings, cb)
 	else
@@ -1910,8 +2364,11 @@ function M.DeleteMountTargetAsync(DeleteMountTargetRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DeleteMountTarget",
 	}
+	for header,value in pairs(DeleteMountTargetRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("DELETE")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE")
 	if request_handler then
 		request_handler(settings.uri, "/2015-02-01/mount-targets/{MountTargetId}", DeleteMountTargetRequest, headers, settings, cb)
 	else

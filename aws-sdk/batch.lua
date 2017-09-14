@@ -37,11 +37,22 @@ end
 -- Valid keys:
 -- @return CancelJobResponse structure as a key-value pair table
 function M.CancelJobResponse(args)
-	assert(args, "You must provdide an argument table when creating CancelJobResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CancelJobResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertCancelJobResponse(t)
-	return t
+	asserts.AssertCancelJobResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeJobDefinitionsRequest = { ["status"] = true, ["nextToken"] = true, ["jobDefinitions"] = true, ["jobDefinitionName"] = true, ["maxResults"] = true, nil }
@@ -70,16 +81,27 @@ end
 -- * maxResults [Integer] <p>The maximum number of results returned by <code>DescribeJobDefinitions</code> in paginated output. When this parameter is used, <code>DescribeJobDefinitions</code> only returns <code>maxResults</code> results in a single page along with a <code>nextToken</code> response element. The remaining results of the initial request can be seen by sending another <code>DescribeJobDefinitions</code> request with the returned <code>nextToken</code> value. This value can be between 1 and 100. If this parameter is not used, then <code>DescribeJobDefinitions</code> returns up to 100 results and a <code>nextToken</code> value if applicable.</p>
 -- @return DescribeJobDefinitionsRequest structure as a key-value pair table
 function M.DescribeJobDefinitionsRequest(args)
-	assert(args, "You must provdide an argument table when creating DescribeJobDefinitionsRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeJobDefinitionsRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["status"] = args["status"],
 		["nextToken"] = args["nextToken"],
 		["jobDefinitions"] = args["jobDefinitions"],
 		["jobDefinitionName"] = args["jobDefinitionName"],
 		["maxResults"] = args["maxResults"],
 	}
-	asserts.AssertDescribeJobDefinitionsRequest(t)
-	return t
+	asserts.AssertDescribeJobDefinitionsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AttemptDetail = { ["startedAt"] = true, ["container"] = true, ["stoppedAt"] = true, ["statusReason"] = true, nil }
@@ -106,15 +128,26 @@ end
 -- * statusReason [String] <p>A short, human-readable string to provide additional details about the current status of the job attempt.</p>
 -- @return AttemptDetail structure as a key-value pair table
 function M.AttemptDetail(args)
-	assert(args, "You must provdide an argument table when creating AttemptDetail")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AttemptDetail")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["startedAt"] = args["startedAt"],
 		["container"] = args["container"],
 		["stoppedAt"] = args["stoppedAt"],
 		["statusReason"] = args["statusReason"],
 	}
-	asserts.AssertAttemptDetail(t)
-	return t
+	asserts.AssertAttemptDetail(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Ulimit = { ["softLimit"] = true, ["hardLimit"] = true, ["name"] = true, nil }
@@ -145,14 +178,25 @@ end
 -- Required key: softLimit
 -- @return Ulimit structure as a key-value pair table
 function M.Ulimit(args)
-	assert(args, "You must provdide an argument table when creating Ulimit")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Ulimit")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["softLimit"] = args["softLimit"],
 		["hardLimit"] = args["hardLimit"],
 		["name"] = args["name"],
 	}
-	asserts.AssertUlimit(t)
-	return t
+	asserts.AssertUlimit(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListJobsRequest = { ["nextToken"] = true, ["maxResults"] = true, ["jobStatus"] = true, ["jobQueue"] = true, nil }
@@ -181,15 +225,26 @@ end
 -- Required key: jobQueue
 -- @return ListJobsRequest structure as a key-value pair table
 function M.ListJobsRequest(args)
-	assert(args, "You must provdide an argument table when creating ListJobsRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListJobsRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["nextToken"] = args["nextToken"],
 		["maxResults"] = args["maxResults"],
 		["jobStatus"] = args["jobStatus"],
 		["jobQueue"] = args["jobQueue"],
 	}
-	asserts.AssertListJobsRequest(t)
-	return t
+	asserts.AssertListJobsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.TerminateJobRequest = { ["reason"] = true, ["jobId"] = true, nil }
@@ -216,13 +271,24 @@ end
 -- Required key: reason
 -- @return TerminateJobRequest structure as a key-value pair table
 function M.TerminateJobRequest(args)
-	assert(args, "You must provdide an argument table when creating TerminateJobRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating TerminateJobRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["reason"] = args["reason"],
 		["jobId"] = args["jobId"],
 	}
-	asserts.AssertTerminateJobRequest(t)
-	return t
+	asserts.AssertTerminateJobRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdateComputeEnvironmentRequest = { ["computeEnvironment"] = true, ["state"] = true, ["computeResources"] = true, ["serviceRole"] = true, nil }
@@ -251,15 +317,26 @@ end
 -- Required key: computeEnvironment
 -- @return UpdateComputeEnvironmentRequest structure as a key-value pair table
 function M.UpdateComputeEnvironmentRequest(args)
-	assert(args, "You must provdide an argument table when creating UpdateComputeEnvironmentRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateComputeEnvironmentRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["computeEnvironment"] = args["computeEnvironment"],
 		["state"] = args["state"],
 		["computeResources"] = args["computeResources"],
 		["serviceRole"] = args["serviceRole"],
 	}
-	asserts.AssertUpdateComputeEnvironmentRequest(t)
-	return t
+	asserts.AssertUpdateComputeEnvironmentRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ComputeResourceUpdate = { ["maxvCpus"] = true, ["minvCpus"] = true, ["desiredvCpus"] = true, nil }
@@ -284,14 +361,25 @@ end
 -- * desiredvCpus [Integer] <p>The desired number of EC2 vCPUS in the compute environment.</p>
 -- @return ComputeResourceUpdate structure as a key-value pair table
 function M.ComputeResourceUpdate(args)
-	assert(args, "You must provdide an argument table when creating ComputeResourceUpdate")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ComputeResourceUpdate")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["maxvCpus"] = args["maxvCpus"],
 		["minvCpus"] = args["minvCpus"],
 		["desiredvCpus"] = args["desiredvCpus"],
 	}
-	asserts.AssertComputeResourceUpdate(t)
-	return t
+	asserts.AssertComputeResourceUpdate(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.KeyValuePair = { ["name"] = true, ["value"] = true, nil }
@@ -314,13 +402,24 @@ end
 -- * value [String] <p>The value of the key value pair. For environment variables, this is the value of the environment variable.</p>
 -- @return KeyValuePair structure as a key-value pair table
 function M.KeyValuePair(args)
-	assert(args, "You must provdide an argument table when creating KeyValuePair")
-	local t = { 
+	assert(args, "You must provide an argument table when creating KeyValuePair")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["name"] = args["name"],
 		["value"] = args["value"],
 	}
-	asserts.AssertKeyValuePair(t)
-	return t
+	asserts.AssertKeyValuePair(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateJobQueueRequest = { ["priority"] = true, ["state"] = true, ["computeEnvironmentOrder"] = true, ["jobQueueName"] = true, nil }
@@ -353,15 +452,26 @@ end
 -- Required key: computeEnvironmentOrder
 -- @return CreateJobQueueRequest structure as a key-value pair table
 function M.CreateJobQueueRequest(args)
-	assert(args, "You must provdide an argument table when creating CreateJobQueueRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateJobQueueRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["priority"] = args["priority"],
 		["state"] = args["state"],
 		["computeEnvironmentOrder"] = args["computeEnvironmentOrder"],
 		["jobQueueName"] = args["jobQueueName"],
 	}
-	asserts.AssertCreateJobQueueRequest(t)
-	return t
+	asserts.AssertCreateJobQueueRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.RetryStrategy = { ["attempts"] = true, nil }
@@ -382,12 +492,23 @@ end
 -- * attempts [Integer] <p>The number of times to move a job to the <code>RUNNABLE</code> status. You may specify between 1 and 10 attempts. If <code>attempts</code> is greater than one, the job is retried if it fails until it has moved to <code>RUNNABLE</code> that many times.</p>
 -- @return RetryStrategy structure as a key-value pair table
 function M.RetryStrategy(args)
-	assert(args, "You must provdide an argument table when creating RetryStrategy")
-	local t = { 
+	assert(args, "You must provide an argument table when creating RetryStrategy")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["attempts"] = args["attempts"],
 	}
-	asserts.AssertRetryStrategy(t)
-	return t
+	asserts.AssertRetryStrategy(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.MountPoint = { ["sourceVolume"] = true, ["readOnly"] = true, ["containerPath"] = true, nil }
@@ -412,14 +533,25 @@ end
 -- * containerPath [String] <p>The path on the container at which to mount the host volume.</p>
 -- @return MountPoint structure as a key-value pair table
 function M.MountPoint(args)
-	assert(args, "You must provdide an argument table when creating MountPoint")
-	local t = { 
+	assert(args, "You must provide an argument table when creating MountPoint")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["sourceVolume"] = args["sourceVolume"],
 		["readOnly"] = args["readOnly"],
 		["containerPath"] = args["containerPath"],
 	}
-	asserts.AssertMountPoint(t)
-	return t
+	asserts.AssertMountPoint(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateComputeEnvironmentRequest = { ["computeEnvironmentName"] = true, ["state"] = true, ["type"] = true, ["computeResources"] = true, ["serviceRole"] = true, nil }
@@ -454,16 +586,27 @@ end
 -- Required key: serviceRole
 -- @return CreateComputeEnvironmentRequest structure as a key-value pair table
 function M.CreateComputeEnvironmentRequest(args)
-	assert(args, "You must provdide an argument table when creating CreateComputeEnvironmentRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateComputeEnvironmentRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["computeEnvironmentName"] = args["computeEnvironmentName"],
 		["state"] = args["state"],
 		["type"] = args["type"],
 		["computeResources"] = args["computeResources"],
 		["serviceRole"] = args["serviceRole"],
 	}
-	asserts.AssertCreateComputeEnvironmentRequest(t)
-	return t
+	asserts.AssertCreateComputeEnvironmentRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.JobDependency = { ["jobId"] = true, nil }
@@ -484,12 +627,23 @@ end
 -- * jobId [String] <p>The job ID of the AWS Batch job associated with this dependency.</p>
 -- @return JobDependency structure as a key-value pair table
 function M.JobDependency(args)
-	assert(args, "You must provdide an argument table when creating JobDependency")
-	local t = { 
+	assert(args, "You must provide an argument table when creating JobDependency")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["jobId"] = args["jobId"],
 	}
-	asserts.AssertJobDependency(t)
-	return t
+	asserts.AssertJobDependency(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ComputeEnvironmentDetail = { ["status"] = true, ["serviceRole"] = true, ["computeEnvironmentArn"] = true, ["computeResources"] = true, ["statusReason"] = true, ["ecsClusterArn"] = true, ["state"] = true, ["computeEnvironmentName"] = true, ["type"] = true, nil }
@@ -532,8 +686,14 @@ end
 -- Required key: ecsClusterArn
 -- @return ComputeEnvironmentDetail structure as a key-value pair table
 function M.ComputeEnvironmentDetail(args)
-	assert(args, "You must provdide an argument table when creating ComputeEnvironmentDetail")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ComputeEnvironmentDetail")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["status"] = args["status"],
 		["serviceRole"] = args["serviceRole"],
 		["computeEnvironmentArn"] = args["computeEnvironmentArn"],
@@ -544,8 +704,13 @@ function M.ComputeEnvironmentDetail(args)
 		["computeEnvironmentName"] = args["computeEnvironmentName"],
 		["type"] = args["type"],
 	}
-	asserts.AssertComputeEnvironmentDetail(t)
-	return t
+	asserts.AssertComputeEnvironmentDetail(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.JobDetail = { ["status"] = true, ["container"] = true, ["parameters"] = true, ["jobDefinition"] = true, ["statusReason"] = true, ["jobId"] = true, ["attempts"] = true, ["retryStrategy"] = true, ["jobQueue"] = true, ["dependsOn"] = true, ["startedAt"] = true, ["jobName"] = true, ["createdAt"] = true, ["stoppedAt"] = true, nil }
@@ -604,8 +769,14 @@ end
 -- Required key: jobDefinition
 -- @return JobDetail structure as a key-value pair table
 function M.JobDetail(args)
-	assert(args, "You must provdide an argument table when creating JobDetail")
-	local t = { 
+	assert(args, "You must provide an argument table when creating JobDetail")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["status"] = args["status"],
 		["container"] = args["container"],
 		["parameters"] = args["parameters"],
@@ -621,8 +792,13 @@ function M.JobDetail(args)
 		["createdAt"] = args["createdAt"],
 		["stoppedAt"] = args["stoppedAt"],
 	}
-	asserts.AssertJobDetail(t)
-	return t
+	asserts.AssertJobDetail(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.SubmitJobResponse = { ["jobId"] = true, ["jobName"] = true, nil }
@@ -649,13 +825,24 @@ end
 -- Required key: jobId
 -- @return SubmitJobResponse structure as a key-value pair table
 function M.SubmitJobResponse(args)
-	assert(args, "You must provdide an argument table when creating SubmitJobResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating SubmitJobResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["jobId"] = args["jobId"],
 		["jobName"] = args["jobName"],
 	}
-	asserts.AssertSubmitJobResponse(t)
-	return t
+	asserts.AssertSubmitJobResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ComputeEnvironmentOrder = { ["computeEnvironment"] = true, ["order"] = true, nil }
@@ -682,13 +869,24 @@ end
 -- Required key: computeEnvironment
 -- @return ComputeEnvironmentOrder structure as a key-value pair table
 function M.ComputeEnvironmentOrder(args)
-	assert(args, "You must provdide an argument table when creating ComputeEnvironmentOrder")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ComputeEnvironmentOrder")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["computeEnvironment"] = args["computeEnvironment"],
 		["order"] = args["order"],
 	}
-	asserts.AssertComputeEnvironmentOrder(t)
-	return t
+	asserts.AssertComputeEnvironmentOrder(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeJobQueuesResponse = { ["jobQueues"] = true, ["nextToken"] = true, nil }
@@ -711,13 +909,24 @@ end
 -- * nextToken [String] <p>The <code>nextToken</code> value to include in a future <code>DescribeJobQueues</code> request. When the results of a <code>DescribeJobQueues</code> request exceed <code>maxResults</code>, this value can be used to retrieve the next page of results. This value is <code>null</code> when there are no more results to return.</p>
 -- @return DescribeJobQueuesResponse structure as a key-value pair table
 function M.DescribeJobQueuesResponse(args)
-	assert(args, "You must provdide an argument table when creating DescribeJobQueuesResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeJobQueuesResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["jobQueues"] = args["jobQueues"],
 		["nextToken"] = args["nextToken"],
 	}
-	asserts.AssertDescribeJobQueuesResponse(t)
-	return t
+	asserts.AssertDescribeJobQueuesResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteComputeEnvironmentRequest = { ["computeEnvironment"] = true, nil }
@@ -740,12 +949,23 @@ end
 -- Required key: computeEnvironment
 -- @return DeleteComputeEnvironmentRequest structure as a key-value pair table
 function M.DeleteComputeEnvironmentRequest(args)
-	assert(args, "You must provdide an argument table when creating DeleteComputeEnvironmentRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteComputeEnvironmentRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["computeEnvironment"] = args["computeEnvironment"],
 	}
-	asserts.AssertDeleteComputeEnvironmentRequest(t)
-	return t
+	asserts.AssertDeleteComputeEnvironmentRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteComputeEnvironmentResponse = { nil }
@@ -764,11 +984,22 @@ end
 -- Valid keys:
 -- @return DeleteComputeEnvironmentResponse structure as a key-value pair table
 function M.DeleteComputeEnvironmentResponse(args)
-	assert(args, "You must provdide an argument table when creating DeleteComputeEnvironmentResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteComputeEnvironmentResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertDeleteComputeEnvironmentResponse(t)
-	return t
+	asserts.AssertDeleteComputeEnvironmentResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ComputeResource = { ["subnets"] = true, ["spotIamFleetRole"] = true, ["tags"] = true, ["desiredvCpus"] = true, ["minvCpus"] = true, ["instanceTypes"] = true, ["imageId"] = true, ["bidPercentage"] = true, ["instanceRole"] = true, ["maxvCpus"] = true, ["securityGroupIds"] = true, ["type"] = true, ["ec2KeyPair"] = true, nil }
@@ -827,8 +1058,14 @@ end
 -- Required key: instanceRole
 -- @return ComputeResource structure as a key-value pair table
 function M.ComputeResource(args)
-	assert(args, "You must provdide an argument table when creating ComputeResource")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ComputeResource")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["subnets"] = args["subnets"],
 		["spotIamFleetRole"] = args["spotIamFleetRole"],
 		["tags"] = args["tags"],
@@ -843,8 +1080,13 @@ function M.ComputeResource(args)
 		["type"] = args["type"],
 		["ec2KeyPair"] = args["ec2KeyPair"],
 	}
-	asserts.AssertComputeResource(t)
-	return t
+	asserts.AssertComputeResource(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.RegisterJobDefinitionRequest = { ["retryStrategy"] = true, ["containerProperties"] = true, ["type"] = true, ["parameters"] = true, ["jobDefinitionName"] = true, nil }
@@ -877,16 +1119,27 @@ end
 -- Required key: type
 -- @return RegisterJobDefinitionRequest structure as a key-value pair table
 function M.RegisterJobDefinitionRequest(args)
-	assert(args, "You must provdide an argument table when creating RegisterJobDefinitionRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating RegisterJobDefinitionRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["retryStrategy"] = args["retryStrategy"],
 		["containerProperties"] = args["containerProperties"],
 		["type"] = args["type"],
 		["parameters"] = args["parameters"],
 		["jobDefinitionName"] = args["jobDefinitionName"],
 	}
-	asserts.AssertRegisterJobDefinitionRequest(t)
-	return t
+	asserts.AssertRegisterJobDefinitionRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Volume = { ["host"] = true, ["name"] = true, nil }
@@ -909,13 +1162,24 @@ end
 -- * name [String] <p>The name of the volume. Up to 255 letters (uppercase and lowercase), numbers, hyphens, and underscores are allowed. This name is referenced in the <code>sourceVolume</code> parameter of container definition <code>mountPoints</code>.</p>
 -- @return Volume structure as a key-value pair table
 function M.Volume(args)
-	assert(args, "You must provdide an argument table when creating Volume")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Volume")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["host"] = args["host"],
 		["name"] = args["name"],
 	}
-	asserts.AssertVolume(t)
-	return t
+	asserts.AssertVolume(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Host = { ["sourcePath"] = true, nil }
@@ -936,12 +1200,23 @@ end
 -- * sourcePath [String] <p>The path on the host container instance that is presented to the container. If this parameter is empty, then the Docker daemon has assigned a host path for you. If the <code>host</code> parameter contains a <code>sourcePath</code> file location, then the data volume persists at the specified location on the host container instance until you delete it manually. If the <code>sourcePath</code> value does not exist on the host container instance, the Docker daemon creates it. If the location does exist, the contents of the source path folder are exported.</p>
 -- @return Host structure as a key-value pair table
 function M.Host(args)
-	assert(args, "You must provdide an argument table when creating Host")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Host")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["sourcePath"] = args["sourcePath"],
 	}
-	asserts.AssertHost(t)
-	return t
+	asserts.AssertHost(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.JobQueueDetail = { ["status"] = true, ["jobQueueArn"] = true, ["computeEnvironmentOrder"] = true, ["statusReason"] = true, ["priority"] = true, ["state"] = true, ["jobQueueName"] = true, nil }
@@ -984,8 +1259,14 @@ end
 -- Required key: computeEnvironmentOrder
 -- @return JobQueueDetail structure as a key-value pair table
 function M.JobQueueDetail(args)
-	assert(args, "You must provdide an argument table when creating JobQueueDetail")
-	local t = { 
+	assert(args, "You must provide an argument table when creating JobQueueDetail")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["status"] = args["status"],
 		["jobQueueArn"] = args["jobQueueArn"],
 		["computeEnvironmentOrder"] = args["computeEnvironmentOrder"],
@@ -994,8 +1275,13 @@ function M.JobQueueDetail(args)
 		["state"] = args["state"],
 		["jobQueueName"] = args["jobQueueName"],
 	}
-	asserts.AssertJobQueueDetail(t)
-	return t
+	asserts.AssertJobQueueDetail(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.JobSummary = { ["jobName"] = true, ["jobId"] = true, nil }
@@ -1022,13 +1308,24 @@ end
 -- Required key: jobName
 -- @return JobSummary structure as a key-value pair table
 function M.JobSummary(args)
-	assert(args, "You must provdide an argument table when creating JobSummary")
-	local t = { 
+	assert(args, "You must provide an argument table when creating JobSummary")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["jobName"] = args["jobName"],
 		["jobId"] = args["jobId"],
 	}
-	asserts.AssertJobSummary(t)
-	return t
+	asserts.AssertJobSummary(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.JobDefinition = { ["status"] = true, ["jobDefinitionArn"] = true, ["parameters"] = true, ["retryStrategy"] = true, ["containerProperties"] = true, ["type"] = true, ["jobDefinitionName"] = true, ["revision"] = true, nil }
@@ -1071,8 +1368,14 @@ end
 -- Required key: type
 -- @return JobDefinition structure as a key-value pair table
 function M.JobDefinition(args)
-	assert(args, "You must provdide an argument table when creating JobDefinition")
-	local t = { 
+	assert(args, "You must provide an argument table when creating JobDefinition")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["status"] = args["status"],
 		["jobDefinitionArn"] = args["jobDefinitionArn"],
 		["parameters"] = args["parameters"],
@@ -1082,8 +1385,13 @@ function M.JobDefinition(args)
 		["jobDefinitionName"] = args["jobDefinitionName"],
 		["revision"] = args["revision"],
 	}
-	asserts.AssertJobDefinition(t)
-	return t
+	asserts.AssertJobDefinition(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdateJobQueueResponse = { ["jobQueueArn"] = true, ["jobQueueName"] = true, nil }
@@ -1106,13 +1414,24 @@ end
 -- * jobQueueName [String] <p>The name of the job queue.</p>
 -- @return UpdateJobQueueResponse structure as a key-value pair table
 function M.UpdateJobQueueResponse(args)
-	assert(args, "You must provdide an argument table when creating UpdateJobQueueResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateJobQueueResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["jobQueueArn"] = args["jobQueueArn"],
 		["jobQueueName"] = args["jobQueueName"],
 	}
-	asserts.AssertUpdateJobQueueResponse(t)
-	return t
+	asserts.AssertUpdateJobQueueResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeComputeEnvironmentsResponse = { ["nextToken"] = true, ["computeEnvironments"] = true, nil }
@@ -1135,13 +1454,24 @@ end
 -- * computeEnvironments [ComputeEnvironmentDetailList] <p>The list of compute environments.</p>
 -- @return DescribeComputeEnvironmentsResponse structure as a key-value pair table
 function M.DescribeComputeEnvironmentsResponse(args)
-	assert(args, "You must provdide an argument table when creating DescribeComputeEnvironmentsResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeComputeEnvironmentsResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["nextToken"] = args["nextToken"],
 		["computeEnvironments"] = args["computeEnvironments"],
 	}
-	asserts.AssertDescribeComputeEnvironmentsResponse(t)
-	return t
+	asserts.AssertDescribeComputeEnvironmentsResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeComputeEnvironmentsRequest = { ["nextToken"] = true, ["maxResults"] = true, ["computeEnvironments"] = true, nil }
@@ -1166,14 +1496,25 @@ end
 -- * computeEnvironments [StringList] <p>A list of up to 100 compute environment names or full Amazon Resource Name (ARN) entries. </p>
 -- @return DescribeComputeEnvironmentsRequest structure as a key-value pair table
 function M.DescribeComputeEnvironmentsRequest(args)
-	assert(args, "You must provdide an argument table when creating DescribeComputeEnvironmentsRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeComputeEnvironmentsRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["nextToken"] = args["nextToken"],
 		["maxResults"] = args["maxResults"],
 		["computeEnvironments"] = args["computeEnvironments"],
 	}
-	asserts.AssertDescribeComputeEnvironmentsRequest(t)
-	return t
+	asserts.AssertDescribeComputeEnvironmentsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ServerException = { ["message"] = true, nil }
@@ -1194,12 +1535,23 @@ end
 -- * message [String] 
 -- @return ServerException structure as a key-value pair table
 function M.ServerException(args)
-	assert(args, "You must provdide an argument table when creating ServerException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ServerException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertServerException(t)
-	return t
+	asserts.AssertServerException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateComputeEnvironmentResponse = { ["computeEnvironmentName"] = true, ["computeEnvironmentArn"] = true, nil }
@@ -1222,13 +1574,24 @@ end
 -- * computeEnvironmentArn [String] <p>The Amazon Resource Name (ARN) of the compute environment. </p>
 -- @return CreateComputeEnvironmentResponse structure as a key-value pair table
 function M.CreateComputeEnvironmentResponse(args)
-	assert(args, "You must provdide an argument table when creating CreateComputeEnvironmentResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateComputeEnvironmentResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["computeEnvironmentName"] = args["computeEnvironmentName"],
 		["computeEnvironmentArn"] = args["computeEnvironmentArn"],
 	}
-	asserts.AssertCreateComputeEnvironmentResponse(t)
-	return t
+	asserts.AssertCreateComputeEnvironmentResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdateJobQueueRequest = { ["priority"] = true, ["state"] = true, ["computeEnvironmentOrder"] = true, ["jobQueue"] = true, nil }
@@ -1257,15 +1620,26 @@ end
 -- Required key: jobQueue
 -- @return UpdateJobQueueRequest structure as a key-value pair table
 function M.UpdateJobQueueRequest(args)
-	assert(args, "You must provdide an argument table when creating UpdateJobQueueRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateJobQueueRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["priority"] = args["priority"],
 		["state"] = args["state"],
 		["computeEnvironmentOrder"] = args["computeEnvironmentOrder"],
 		["jobQueue"] = args["jobQueue"],
 	}
-	asserts.AssertUpdateJobQueueRequest(t)
-	return t
+	asserts.AssertUpdateJobQueueRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.TerminateJobResponse = { nil }
@@ -1284,11 +1658,22 @@ end
 -- Valid keys:
 -- @return TerminateJobResponse structure as a key-value pair table
 function M.TerminateJobResponse(args)
-	assert(args, "You must provdide an argument table when creating TerminateJobResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating TerminateJobResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertTerminateJobResponse(t)
-	return t
+	asserts.AssertTerminateJobResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateJobQueueResponse = { ["jobQueueArn"] = true, ["jobQueueName"] = true, nil }
@@ -1315,13 +1700,24 @@ end
 -- Required key: jobQueueArn
 -- @return CreateJobQueueResponse structure as a key-value pair table
 function M.CreateJobQueueResponse(args)
-	assert(args, "You must provdide an argument table when creating CreateJobQueueResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateJobQueueResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["jobQueueArn"] = args["jobQueueArn"],
 		["jobQueueName"] = args["jobQueueName"],
 	}
-	asserts.AssertCreateJobQueueResponse(t)
-	return t
+	asserts.AssertCreateJobQueueResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeregisterJobDefinitionResponse = { nil }
@@ -1340,11 +1736,22 @@ end
 -- Valid keys:
 -- @return DeregisterJobDefinitionResponse structure as a key-value pair table
 function M.DeregisterJobDefinitionResponse(args)
-	assert(args, "You must provdide an argument table when creating DeregisterJobDefinitionResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeregisterJobDefinitionResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertDeregisterJobDefinitionResponse(t)
-	return t
+	asserts.AssertDeregisterJobDefinitionResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListJobsResponse = { ["nextToken"] = true, ["jobSummaryList"] = true, nil }
@@ -1369,13 +1776,24 @@ end
 -- Required key: jobSummaryList
 -- @return ListJobsResponse structure as a key-value pair table
 function M.ListJobsResponse(args)
-	assert(args, "You must provdide an argument table when creating ListJobsResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListJobsResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["nextToken"] = args["nextToken"],
 		["jobSummaryList"] = args["jobSummaryList"],
 	}
-	asserts.AssertListJobsResponse(t)
-	return t
+	asserts.AssertListJobsResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeJobsResponse = { ["jobs"] = true, nil }
@@ -1396,12 +1814,23 @@ end
 -- * jobs [JobDetailList] <p>The list of jobs. </p>
 -- @return DescribeJobsResponse structure as a key-value pair table
 function M.DescribeJobsResponse(args)
-	assert(args, "You must provdide an argument table when creating DescribeJobsResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeJobsResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["jobs"] = args["jobs"],
 	}
-	asserts.AssertDescribeJobsResponse(t)
-	return t
+	asserts.AssertDescribeJobsResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.RegisterJobDefinitionResponse = { ["jobDefinitionArn"] = true, ["jobDefinitionName"] = true, ["revision"] = true, nil }
@@ -1432,14 +1861,25 @@ end
 -- Required key: revision
 -- @return RegisterJobDefinitionResponse structure as a key-value pair table
 function M.RegisterJobDefinitionResponse(args)
-	assert(args, "You must provdide an argument table when creating RegisterJobDefinitionResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating RegisterJobDefinitionResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["jobDefinitionArn"] = args["jobDefinitionArn"],
 		["jobDefinitionName"] = args["jobDefinitionName"],
 		["revision"] = args["revision"],
 	}
-	asserts.AssertRegisterJobDefinitionResponse(t)
-	return t
+	asserts.AssertRegisterJobDefinitionResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ContainerOverrides = { ["environment"] = true, ["vcpus"] = true, ["command"] = true, ["memory"] = true, nil }
@@ -1466,15 +1906,26 @@ end
 -- * memory [Integer] <p>The number of MiB of memory reserved for the job. This value overrides the value set in the job definition.</p>
 -- @return ContainerOverrides structure as a key-value pair table
 function M.ContainerOverrides(args)
-	assert(args, "You must provdide an argument table when creating ContainerOverrides")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ContainerOverrides")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["environment"] = args["environment"],
 		["vcpus"] = args["vcpus"],
 		["command"] = args["command"],
 		["memory"] = args["memory"],
 	}
-	asserts.AssertContainerOverrides(t)
-	return t
+	asserts.AssertContainerOverrides(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeJobQueuesRequest = { ["jobQueues"] = true, ["nextToken"] = true, ["maxResults"] = true, nil }
@@ -1499,14 +1950,25 @@ end
 -- * maxResults [Integer] <p>The maximum number of results returned by <code>DescribeJobQueues</code> in paginated output. When this parameter is used, <code>DescribeJobQueues</code> only returns <code>maxResults</code> results in a single page along with a <code>nextToken</code> response element. The remaining results of the initial request can be seen by sending another <code>DescribeJobQueues</code> request with the returned <code>nextToken</code> value. This value can be between 1 and 100. If this parameter is not used, then <code>DescribeJobQueues</code> returns up to 100 results and a <code>nextToken</code> value if applicable.</p>
 -- @return DescribeJobQueuesRequest structure as a key-value pair table
 function M.DescribeJobQueuesRequest(args)
-	assert(args, "You must provdide an argument table when creating DescribeJobQueuesRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeJobQueuesRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["jobQueues"] = args["jobQueues"],
 		["nextToken"] = args["nextToken"],
 		["maxResults"] = args["maxResults"],
 	}
-	asserts.AssertDescribeJobQueuesRequest(t)
-	return t
+	asserts.AssertDescribeJobQueuesRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ContainerProperties = { ["mountPoints"] = true, ["readonlyRootFilesystem"] = true, ["image"] = true, ["environment"] = true, ["vcpus"] = true, ["jobRoleArn"] = true, ["user"] = true, ["volumes"] = true, ["memory"] = true, ["command"] = true, ["privileged"] = true, ["ulimits"] = true, nil }
@@ -1555,8 +2017,14 @@ end
 -- Required key: memory
 -- @return ContainerProperties structure as a key-value pair table
 function M.ContainerProperties(args)
-	assert(args, "You must provdide an argument table when creating ContainerProperties")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ContainerProperties")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["mountPoints"] = args["mountPoints"],
 		["readonlyRootFilesystem"] = args["readonlyRootFilesystem"],
 		["image"] = args["image"],
@@ -1570,8 +2038,13 @@ function M.ContainerProperties(args)
 		["privileged"] = args["privileged"],
 		["ulimits"] = args["ulimits"],
 	}
-	asserts.AssertContainerProperties(t)
-	return t
+	asserts.AssertContainerProperties(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteJobQueueResponse = { nil }
@@ -1590,11 +2063,22 @@ end
 -- Valid keys:
 -- @return DeleteJobQueueResponse structure as a key-value pair table
 function M.DeleteJobQueueResponse(args)
-	assert(args, "You must provdide an argument table when creating DeleteJobQueueResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteJobQueueResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertDeleteJobQueueResponse(t)
-	return t
+	asserts.AssertDeleteJobQueueResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdateComputeEnvironmentResponse = { ["computeEnvironmentName"] = true, ["computeEnvironmentArn"] = true, nil }
@@ -1617,13 +2101,24 @@ end
 -- * computeEnvironmentArn [String] <p>The Amazon Resource Name (ARN) of the compute environment. </p>
 -- @return UpdateComputeEnvironmentResponse structure as a key-value pair table
 function M.UpdateComputeEnvironmentResponse(args)
-	assert(args, "You must provdide an argument table when creating UpdateComputeEnvironmentResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateComputeEnvironmentResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["computeEnvironmentName"] = args["computeEnvironmentName"],
 		["computeEnvironmentArn"] = args["computeEnvironmentArn"],
 	}
-	asserts.AssertUpdateComputeEnvironmentResponse(t)
-	return t
+	asserts.AssertUpdateComputeEnvironmentResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteJobQueueRequest = { ["jobQueue"] = true, nil }
@@ -1646,12 +2141,23 @@ end
 -- Required key: jobQueue
 -- @return DeleteJobQueueRequest structure as a key-value pair table
 function M.DeleteJobQueueRequest(args)
-	assert(args, "You must provdide an argument table when creating DeleteJobQueueRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteJobQueueRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["jobQueue"] = args["jobQueue"],
 	}
-	asserts.AssertDeleteJobQueueRequest(t)
-	return t
+	asserts.AssertDeleteJobQueueRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AttemptContainerDetail = { ["reason"] = true, ["taskArn"] = true, ["containerInstanceArn"] = true, ["exitCode"] = true, nil }
@@ -1678,15 +2184,26 @@ end
 -- * exitCode [Integer] <p>The exit code for the job attempt. A non-zero exit code is considered a failure.</p>
 -- @return AttemptContainerDetail structure as a key-value pair table
 function M.AttemptContainerDetail(args)
-	assert(args, "You must provdide an argument table when creating AttemptContainerDetail")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AttemptContainerDetail")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["reason"] = args["reason"],
 		["taskArn"] = args["taskArn"],
 		["containerInstanceArn"] = args["containerInstanceArn"],
 		["exitCode"] = args["exitCode"],
 	}
-	asserts.AssertAttemptContainerDetail(t)
-	return t
+	asserts.AssertAttemptContainerDetail(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.SubmitJobRequest = { ["parameters"] = true, ["jobDefinition"] = true, ["jobQueue"] = true, ["jobName"] = true, ["retryStrategy"] = true, ["containerOverrides"] = true, ["dependsOn"] = true, nil }
@@ -1725,8 +2242,14 @@ end
 -- Required key: jobDefinition
 -- @return SubmitJobRequest structure as a key-value pair table
 function M.SubmitJobRequest(args)
-	assert(args, "You must provdide an argument table when creating SubmitJobRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating SubmitJobRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["parameters"] = args["parameters"],
 		["jobDefinition"] = args["jobDefinition"],
 		["jobQueue"] = args["jobQueue"],
@@ -1735,8 +2258,13 @@ function M.SubmitJobRequest(args)
 		["containerOverrides"] = args["containerOverrides"],
 		["dependsOn"] = args["dependsOn"],
 	}
-	asserts.AssertSubmitJobRequest(t)
-	return t
+	asserts.AssertSubmitJobRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ContainerDetail = { ["mountPoints"] = true, ["taskArn"] = true, ["readonlyRootFilesystem"] = true, ["image"] = true, ["reason"] = true, ["containerInstanceArn"] = true, ["environment"] = true, ["vcpus"] = true, ["jobRoleArn"] = true, ["user"] = true, ["volumes"] = true, ["memory"] = true, ["command"] = true, ["privileged"] = true, ["ulimits"] = true, ["exitCode"] = true, nil }
@@ -1787,8 +2315,14 @@ end
 -- * exitCode [Integer] <p>The exit code to return upon completion.</p>
 -- @return ContainerDetail structure as a key-value pair table
 function M.ContainerDetail(args)
-	assert(args, "You must provdide an argument table when creating ContainerDetail")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ContainerDetail")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["mountPoints"] = args["mountPoints"],
 		["taskArn"] = args["taskArn"],
 		["readonlyRootFilesystem"] = args["readonlyRootFilesystem"],
@@ -1806,8 +2340,13 @@ function M.ContainerDetail(args)
 		["ulimits"] = args["ulimits"],
 		["exitCode"] = args["exitCode"],
 	}
-	asserts.AssertContainerDetail(t)
-	return t
+	asserts.AssertContainerDetail(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeJobDefinitionsResponse = { ["nextToken"] = true, ["jobDefinitions"] = true, nil }
@@ -1830,13 +2369,24 @@ end
 -- * jobDefinitions [JobDefinitionList] <p>The list of job definitions. </p>
 -- @return DescribeJobDefinitionsResponse structure as a key-value pair table
 function M.DescribeJobDefinitionsResponse(args)
-	assert(args, "You must provdide an argument table when creating DescribeJobDefinitionsResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeJobDefinitionsResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["nextToken"] = args["nextToken"],
 		["jobDefinitions"] = args["jobDefinitions"],
 	}
-	asserts.AssertDescribeJobDefinitionsResponse(t)
-	return t
+	asserts.AssertDescribeJobDefinitionsResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeregisterJobDefinitionRequest = { ["jobDefinition"] = true, nil }
@@ -1859,12 +2409,23 @@ end
 -- Required key: jobDefinition
 -- @return DeregisterJobDefinitionRequest structure as a key-value pair table
 function M.DeregisterJobDefinitionRequest(args)
-	assert(args, "You must provdide an argument table when creating DeregisterJobDefinitionRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeregisterJobDefinitionRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["jobDefinition"] = args["jobDefinition"],
 	}
-	asserts.AssertDeregisterJobDefinitionRequest(t)
-	return t
+	asserts.AssertDeregisterJobDefinitionRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ClientException = { ["message"] = true, nil }
@@ -1885,12 +2446,23 @@ end
 -- * message [String] 
 -- @return ClientException structure as a key-value pair table
 function M.ClientException(args)
-	assert(args, "You must provdide an argument table when creating ClientException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ClientException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertClientException(t)
-	return t
+	asserts.AssertClientException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeJobsRequest = { ["jobs"] = true, nil }
@@ -1913,12 +2485,23 @@ end
 -- Required key: jobs
 -- @return DescribeJobsRequest structure as a key-value pair table
 function M.DescribeJobsRequest(args)
-	assert(args, "You must provdide an argument table when creating DescribeJobsRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeJobsRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["jobs"] = args["jobs"],
 	}
-	asserts.AssertDescribeJobsRequest(t)
-	return t
+	asserts.AssertDescribeJobsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CancelJobRequest = { ["reason"] = true, ["jobId"] = true, nil }
@@ -1945,13 +2528,24 @@ end
 -- Required key: reason
 -- @return CancelJobRequest structure as a key-value pair table
 function M.CancelJobRequest(args)
-	assert(args, "You must provdide an argument table when creating CancelJobRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CancelJobRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["reason"] = args["reason"],
 		["jobId"] = args["jobId"],
 	}
-	asserts.AssertCancelJobRequest(t)
-	return t
+	asserts.AssertCancelJobRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 function asserts.AssertCEType(str)
@@ -2360,8 +2954,11 @@ function M.ListJobsAsync(ListJobsRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".ListJobs",
 	}
+	for header,value in pairs(ListJobsRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/v1/listjobs", ListJobsRequest, headers, settings, cb)
 	else
@@ -2392,8 +2989,11 @@ function M.SubmitJobAsync(SubmitJobRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".SubmitJob",
 	}
+	for header,value in pairs(SubmitJobRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/v1/submitjob", SubmitJobRequest, headers, settings, cb)
 	else
@@ -2424,8 +3024,11 @@ function M.UpdateJobQueueAsync(UpdateJobQueueRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".UpdateJobQueue",
 	}
+	for header,value in pairs(UpdateJobQueueRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/v1/updatejobqueue", UpdateJobQueueRequest, headers, settings, cb)
 	else
@@ -2456,8 +3059,11 @@ function M.UpdateComputeEnvironmentAsync(UpdateComputeEnvironmentRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".UpdateComputeEnvironment",
 	}
+	for header,value in pairs(UpdateComputeEnvironmentRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/v1/updatecomputeenvironment", UpdateComputeEnvironmentRequest, headers, settings, cb)
 	else
@@ -2488,8 +3094,11 @@ function M.DeregisterJobDefinitionAsync(DeregisterJobDefinitionRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DeregisterJobDefinition",
 	}
+	for header,value in pairs(DeregisterJobDefinitionRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/v1/deregisterjobdefinition", DeregisterJobDefinitionRequest, headers, settings, cb)
 	else
@@ -2520,8 +3129,11 @@ function M.DescribeJobQueuesAsync(DescribeJobQueuesRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DescribeJobQueues",
 	}
+	for header,value in pairs(DescribeJobQueuesRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/v1/describejobqueues", DescribeJobQueuesRequest, headers, settings, cb)
 	else
@@ -2552,8 +3164,11 @@ function M.CreateComputeEnvironmentAsync(CreateComputeEnvironmentRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".CreateComputeEnvironment",
 	}
+	for header,value in pairs(CreateComputeEnvironmentRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/v1/createcomputeenvironment", CreateComputeEnvironmentRequest, headers, settings, cb)
 	else
@@ -2584,8 +3199,11 @@ function M.DeleteComputeEnvironmentAsync(DeleteComputeEnvironmentRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DeleteComputeEnvironment",
 	}
+	for header,value in pairs(DeleteComputeEnvironmentRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/v1/deletecomputeenvironment", DeleteComputeEnvironmentRequest, headers, settings, cb)
 	else
@@ -2616,8 +3234,11 @@ function M.DescribeComputeEnvironmentsAsync(DescribeComputeEnvironmentsRequest, 
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DescribeComputeEnvironments",
 	}
+	for header,value in pairs(DescribeComputeEnvironmentsRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/v1/describecomputeenvironments", DescribeComputeEnvironmentsRequest, headers, settings, cb)
 	else
@@ -2648,8 +3269,11 @@ function M.CreateJobQueueAsync(CreateJobQueueRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".CreateJobQueue",
 	}
+	for header,value in pairs(CreateJobQueueRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/v1/createjobqueue", CreateJobQueueRequest, headers, settings, cb)
 	else
@@ -2680,8 +3304,11 @@ function M.RegisterJobDefinitionAsync(RegisterJobDefinitionRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".RegisterJobDefinition",
 	}
+	for header,value in pairs(RegisterJobDefinitionRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/v1/registerjobdefinition", RegisterJobDefinitionRequest, headers, settings, cb)
 	else
@@ -2712,8 +3339,11 @@ function M.CancelJobAsync(CancelJobRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".CancelJob",
 	}
+	for header,value in pairs(CancelJobRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/v1/canceljob", CancelJobRequest, headers, settings, cb)
 	else
@@ -2744,8 +3374,11 @@ function M.DescribeJobDefinitionsAsync(DescribeJobDefinitionsRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DescribeJobDefinitions",
 	}
+	for header,value in pairs(DescribeJobDefinitionsRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/v1/describejobdefinitions", DescribeJobDefinitionsRequest, headers, settings, cb)
 	else
@@ -2776,8 +3409,11 @@ function M.DeleteJobQueueAsync(DeleteJobQueueRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DeleteJobQueue",
 	}
+	for header,value in pairs(DeleteJobQueueRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/v1/deletejobqueue", DeleteJobQueueRequest, headers, settings, cb)
 	else
@@ -2808,8 +3444,11 @@ function M.DescribeJobsAsync(DescribeJobsRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DescribeJobs",
 	}
+	for header,value in pairs(DescribeJobsRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/v1/describejobs", DescribeJobsRequest, headers, settings, cb)
 	else
@@ -2840,8 +3479,11 @@ function M.TerminateJobAsync(TerminateJobRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".TerminateJob",
 	}
+	for header,value in pairs(TerminateJobRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/v1/terminatejob", TerminateJobRequest, headers, settings, cb)
 	else

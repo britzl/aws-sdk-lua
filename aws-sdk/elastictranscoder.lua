@@ -79,8 +79,14 @@ end
 -- * Composition [Composition] <p>You can create an output file that contains an excerpt from the input file. This excerpt, called a clip, can come from the beginning, middle, or end of the file. The Composition object contains settings for the clips that make up an output file. For the current release, you can only specify settings for a single clip per output file. The Composition object cannot be null.</p>
 -- @return JobOutput structure as a key-value pair table
 function M.JobOutput(args)
-	assert(args, "You must provdide an argument table when creating JobOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating JobOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Status"] = args["Status"],
 		["AppliedColorSpaceConversion"] = args["AppliedColorSpaceConversion"],
 		["Rotate"] = args["Rotate"],
@@ -103,8 +109,13 @@ function M.JobOutput(args)
 		["Id"] = args["Id"],
 		["Composition"] = args["Composition"],
 	}
-	asserts.AssertJobOutput(t)
-	return t
+	asserts.AssertJobOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListJobsByStatusRequest = { ["Status"] = true, ["PageToken"] = true, ["Ascending"] = true, nil }
@@ -131,14 +142,28 @@ end
 -- Required key: Status
 -- @return ListJobsByStatusRequest structure as a key-value pair table
 function M.ListJobsByStatusRequest(args)
-	assert(args, "You must provdide an argument table when creating ListJobsByStatusRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListJobsByStatusRequest")
+    local query_args = { 
+        ["PageToken"] = args["PageToken"],
+        ["Ascending"] = args["Ascending"],
+    }
+    local uri_args = { 
+        ["{Status}"] = args["Status"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Status"] = args["Status"],
 		["PageToken"] = args["PageToken"],
 		["Ascending"] = args["Ascending"],
 	}
-	asserts.AssertListJobsByStatusRequest(t)
-	return t
+	asserts.AssertListJobsByStatusRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.TestRoleResponse = { ["Messages"] = true, ["Success"] = true, nil }
@@ -161,13 +186,24 @@ end
 -- * Success [Success] <p>If the operation is successful, this value is <code>true</code>; otherwise, the value is <code>false</code>.</p>
 -- @return TestRoleResponse structure as a key-value pair table
 function M.TestRoleResponse(args)
-	assert(args, "You must provdide an argument table when creating TestRoleResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating TestRoleResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Messages"] = args["Messages"],
 		["Success"] = args["Success"],
 	}
-	asserts.AssertTestRoleResponse(t)
-	return t
+	asserts.AssertTestRoleResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListJobsByStatusResponse = { ["NextPageToken"] = true, ["Jobs"] = true, nil }
@@ -190,13 +226,24 @@ end
 -- * Jobs [Jobs] <p>An array of <code>Job</code> objects that have the specified status.</p>
 -- @return ListJobsByStatusResponse structure as a key-value pair table
 function M.ListJobsByStatusResponse(args)
-	assert(args, "You must provdide an argument table when creating ListJobsByStatusResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListJobsByStatusResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NextPageToken"] = args["NextPageToken"],
 		["Jobs"] = args["Jobs"],
 	}
-	asserts.AssertListJobsByStatusResponse(t)
-	return t
+	asserts.AssertListJobsByStatusResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ReadPresetResponse = { ["Preset"] = true, nil }
@@ -217,12 +264,23 @@ end
 -- * Preset [Preset] <p>A section of the response body that provides information about the preset.</p>
 -- @return ReadPresetResponse structure as a key-value pair table
 function M.ReadPresetResponse(args)
-	assert(args, "You must provdide an argument table when creating ReadPresetResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ReadPresetResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Preset"] = args["Preset"],
 	}
-	asserts.AssertReadPresetResponse(t)
-	return t
+	asserts.AssertReadPresetResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Notifications = { ["Completed"] = true, ["Warning"] = true, ["Progressing"] = true, ["Error"] = true, nil }
@@ -249,15 +307,26 @@ end
 -- * Error [SnsTopic] <p>The Amazon SNS topic that you want to notify when Elastic Transcoder encounters an error condition.</p>
 -- @return Notifications structure as a key-value pair table
 function M.Notifications(args)
-	assert(args, "You must provdide an argument table when creating Notifications")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Notifications")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Completed"] = args["Completed"],
 		["Warning"] = args["Warning"],
 		["Progressing"] = args["Progressing"],
 		["Error"] = args["Error"],
 	}
-	asserts.AssertNotifications(t)
-	return t
+	asserts.AssertNotifications(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Preset = { ["Thumbnails"] = true, ["Container"] = true, ["Description"] = true, ["Video"] = true, ["Audio"] = true, ["Type"] = true, ["Id"] = true, ["Arn"] = true, ["Name"] = true, nil }
@@ -294,8 +363,14 @@ end
 -- * Name [Name] <p>The name of the preset.</p>
 -- @return Preset structure as a key-value pair table
 function M.Preset(args)
-	assert(args, "You must provdide an argument table when creating Preset")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Preset")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Thumbnails"] = args["Thumbnails"],
 		["Container"] = args["Container"],
 		["Description"] = args["Description"],
@@ -306,8 +381,13 @@ function M.Preset(args)
 		["Arn"] = args["Arn"],
 		["Name"] = args["Name"],
 	}
-	asserts.AssertPreset(t)
-	return t
+	asserts.AssertPreset(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Timing = { ["FinishTimeMillis"] = true, ["SubmitTimeMillis"] = true, ["StartTimeMillis"] = true, nil }
@@ -332,14 +412,25 @@ end
 -- * StartTimeMillis [NullableLong] <p>The time the job began transcoding, in epoch milliseconds.</p>
 -- @return Timing structure as a key-value pair table
 function M.Timing(args)
-	assert(args, "You must provdide an argument table when creating Timing")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Timing")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["FinishTimeMillis"] = args["FinishTimeMillis"],
 		["SubmitTimeMillis"] = args["SubmitTimeMillis"],
 		["StartTimeMillis"] = args["StartTimeMillis"],
 	}
-	asserts.AssertTiming(t)
-	return t
+	asserts.AssertTiming(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.PipelineOutputConfig = { ["Bucket"] = true, ["StorageClass"] = true, ["Permissions"] = true, nil }
@@ -364,14 +455,25 @@ end
 -- * Permissions [Permissions] <p>Optional. The <code>Permissions</code> object specifies which users and/or predefined Amazon S3 groups you want to have access to transcoded files and playlists, and the type of access you want them to have. You can grant permissions to a maximum of 30 users and/or predefined Amazon S3 groups.</p> <p>If you include <code>Permissions</code>, Elastic Transcoder grants only the permissions that you specify. It does not grant full permissions to the owner of the role specified by <code>Role</code>. If you want that user to have full control, you must explicitly grant full control to the user.</p> <p> If you omit <code>Permissions</code>, Elastic Transcoder grants full control over the transcoded files and playlists to the owner of the role specified by <code>Role</code>, and grants no other permissions to any other user or group.</p>
 -- @return PipelineOutputConfig structure as a key-value pair table
 function M.PipelineOutputConfig(args)
-	assert(args, "You must provdide an argument table when creating PipelineOutputConfig")
-	local t = { 
+	assert(args, "You must provide an argument table when creating PipelineOutputConfig")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Bucket"] = args["Bucket"],
 		["StorageClass"] = args["StorageClass"],
 		["Permissions"] = args["Permissions"],
 	}
-	asserts.AssertPipelineOutputConfig(t)
-	return t
+	asserts.AssertPipelineOutputConfig(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Permission = { ["Access"] = true, ["Grantee"] = true, ["GranteeType"] = true, nil }
@@ -396,14 +498,25 @@ end
 -- * GranteeType [GranteeType] <p>The type of value that appears in the Grantee object:</p> <ul> <li> <p> <code>Canonical</code>: Either the canonical user ID for an AWS account or an origin access identity for an Amazon CloudFront distribution.</p> <important> <p>A canonical user ID is not the same as an AWS account number.</p> </important> </li> <li> <p> <code>Email</code>: The registered email address of an AWS account.</p> </li> <li> <p> <code>Group</code>: One of the following predefined Amazon S3 groups: <code>AllUsers</code>, <code>AuthenticatedUsers</code>, or <code>LogDelivery</code>.</p> </li> </ul>
 -- @return Permission structure as a key-value pair table
 function M.Permission(args)
-	assert(args, "You must provdide an argument table when creating Permission")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Permission")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Access"] = args["Access"],
 		["Grantee"] = args["Grantee"],
 		["GranteeType"] = args["GranteeType"],
 	}
-	asserts.AssertPermission(t)
-	return t
+	asserts.AssertPermission(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Warning = { ["Message"] = true, ["Code"] = true, nil }
@@ -426,13 +539,24 @@ end
 -- * Code [String] <p>The code of the cross-regional warning.</p>
 -- @return Warning structure as a key-value pair table
 function M.Warning(args)
-	assert(args, "You must provdide an argument table when creating Warning")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Warning")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Message"] = args["Message"],
 		["Code"] = args["Code"],
 	}
-	asserts.AssertWarning(t)
-	return t
+	asserts.AssertWarning(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.JobAlbumArt = { ["MergePolicy"] = true, ["Artwork"] = true, nil }
@@ -455,13 +579,24 @@ end
 -- * Artwork [Artworks] <p>The file to be used as album art. There can be multiple artworks associated with an audio file, to a maximum of 20. Valid formats are <code>.jpg</code> and <code>.png</code> </p>
 -- @return JobAlbumArt structure as a key-value pair table
 function M.JobAlbumArt(args)
-	assert(args, "You must provdide an argument table when creating JobAlbumArt")
-	local t = { 
+	assert(args, "You must provide an argument table when creating JobAlbumArt")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["MergePolicy"] = args["MergePolicy"],
 		["Artwork"] = args["Artwork"],
 	}
-	asserts.AssertJobAlbumArt(t)
-	return t
+	asserts.AssertJobAlbumArt(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AudioCodecOptions = { ["Profile"] = true, ["BitDepth"] = true, ["Signed"] = true, ["BitOrder"] = true, nil }
@@ -488,15 +623,26 @@ end
 -- * BitOrder [AudioBitOrder] <p>You can only choose an audio bit order when you specify <code>pcm</code> for the value of Audio:Codec.</p> <p>The order the bits of a PCM sample are stored in.</p> <p>The supported value is <code>LittleEndian</code>.</p>
 -- @return AudioCodecOptions structure as a key-value pair table
 function M.AudioCodecOptions(args)
-	assert(args, "You must provdide an argument table when creating AudioCodecOptions")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AudioCodecOptions")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Profile"] = args["Profile"],
 		["BitDepth"] = args["BitDepth"],
 		["Signed"] = args["Signed"],
 		["BitOrder"] = args["BitOrder"],
 	}
-	asserts.AssertAudioCodecOptions(t)
-	return t
+	asserts.AssertAudioCodecOptions(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeletePresetResponse = { nil }
@@ -515,11 +661,22 @@ end
 -- Valid keys:
 -- @return DeletePresetResponse structure as a key-value pair table
 function M.DeletePresetResponse(args)
-	assert(args, "You must provdide an argument table when creating DeletePresetResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeletePresetResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertDeletePresetResponse(t)
-	return t
+	asserts.AssertDeletePresetResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Playlist = { ["Status"] = true, ["Name"] = true, ["HlsContentProtection"] = true, ["Format"] = true, ["StatusDetail"] = true, ["PlayReadyDrm"] = true, ["OutputKeys"] = true, nil }
@@ -552,8 +709,14 @@ end
 -- * OutputKeys [OutputKeys] <p>For each output in this job that you want to include in a master playlist, the value of the Outputs:Key object.</p> <ul> <li> <p>If your output is not <code>HLS</code> or does not have a segment duration set, the name of the output file is a concatenation of <code>OutputKeyPrefix</code> and <code>Outputs:Key</code>:</p> <p>OutputKeyPrefix<code>Outputs:Key</code> </p> </li> <li> <p>If your output is <code>HLSv3</code> and has a segment duration set, or is not included in a playlist, Elastic Transcoder creates an output playlist file with a file extension of <code>.m3u8</code>, and a series of <code>.ts</code> files that include a five-digit sequential counter beginning with 00000:</p> <p>OutputKeyPrefix<code>Outputs:Key</code>.m3u8</p> <p>OutputKeyPrefix<code>Outputs:Key</code>00000.ts</p> </li> <li> <p>If your output is <code>HLSv4</code>, has a segment duration set, and is included in an <code>HLSv4</code> playlist, Elastic Transcoder creates an output playlist file with a file extension of <code>_v4.m3u8</code>. If the output is video, Elastic Transcoder also creates an output file with an extension of <code>_iframe.m3u8</code>:</p> <p>OutputKeyPrefix<code>Outputs:Key</code>_v4.m3u8</p> <p>OutputKeyPrefix<code>Outputs:Key</code>_iframe.m3u8</p> <p>OutputKeyPrefix<code>Outputs:Key</code>.ts</p> </li> </ul> <p>Elastic Transcoder automatically appends the relevant file extension to the file name. If you include a file extension in Output Key, the file name will have two extensions.</p> <p>If you include more than one output in a playlist, any segment duration settings, clip settings, or caption settings must be the same for all outputs in the playlist. For <code>Smooth</code> playlists, the <code>Audio:Profile</code>, <code>Video:Profile</code>, and <code>Video:FrameRate</code> to <code>Video:KeyframesMaxDist</code> ratio must be the same for all outputs.</p>
 -- @return Playlist structure as a key-value pair table
 function M.Playlist(args)
-	assert(args, "You must provdide an argument table when creating Playlist")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Playlist")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Status"] = args["Status"],
 		["Name"] = args["Name"],
 		["HlsContentProtection"] = args["HlsContentProtection"],
@@ -562,8 +725,13 @@ function M.Playlist(args)
 		["PlayReadyDrm"] = args["PlayReadyDrm"],
 		["OutputKeys"] = args["OutputKeys"],
 	}
-	asserts.AssertPlaylist(t)
-	return t
+	asserts.AssertPlaylist(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CancelJobResponse = { nil }
@@ -582,11 +750,22 @@ end
 -- Valid keys:
 -- @return CancelJobResponse structure as a key-value pair table
 function M.CancelJobResponse(args)
-	assert(args, "You must provdide an argument table when creating CancelJobResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CancelJobResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertCancelJobResponse(t)
-	return t
+	asserts.AssertCancelJobResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Encryption = { ["InitializationVector"] = true, ["Mode"] = true, ["Key"] = true, ["KeyMd5"] = true, nil }
@@ -613,15 +792,26 @@ end
 -- * KeyMd5 [Base64EncodedString] <p>The MD5 digest of the key that you used to encrypt your input file, or that you want Elastic Transcoder to use to encrypt your output file. Elastic Transcoder uses the key digest as a checksum to make sure your key was not corrupted in transit. The key MD5 must be base64-encoded, and it must be exactly 16 bytes long before being base64-encoded.</p>
 -- @return Encryption structure as a key-value pair table
 function M.Encryption(args)
-	assert(args, "You must provdide an argument table when creating Encryption")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Encryption")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["InitializationVector"] = args["InitializationVector"],
 		["Mode"] = args["Mode"],
 		["Key"] = args["Key"],
 		["KeyMd5"] = args["KeyMd5"],
 	}
-	asserts.AssertEncryption(t)
-	return t
+	asserts.AssertEncryption(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListPresetsResponse = { ["NextPageToken"] = true, ["Presets"] = true, nil }
@@ -644,13 +834,24 @@ end
 -- * Presets [Presets] <p>An array of <code>Preset</code> objects.</p>
 -- @return ListPresetsResponse structure as a key-value pair table
 function M.ListPresetsResponse(args)
-	assert(args, "You must provdide an argument table when creating ListPresetsResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListPresetsResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NextPageToken"] = args["NextPageToken"],
 		["Presets"] = args["Presets"],
 	}
-	asserts.AssertListPresetsResponse(t)
-	return t
+	asserts.AssertListPresetsResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListJobsByPipelineResponse = { ["NextPageToken"] = true, ["Jobs"] = true, nil }
@@ -673,13 +874,24 @@ end
 -- * Jobs [Jobs] <p>An array of <code>Job</code> objects that are in the specified pipeline.</p>
 -- @return ListJobsByPipelineResponse structure as a key-value pair table
 function M.ListJobsByPipelineResponse(args)
-	assert(args, "You must provdide an argument table when creating ListJobsByPipelineResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListJobsByPipelineResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NextPageToken"] = args["NextPageToken"],
 		["Jobs"] = args["Jobs"],
 	}
-	asserts.AssertListJobsByPipelineResponse(t)
-	return t
+	asserts.AssertListJobsByPipelineResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateJobResponse = { ["Job"] = true, nil }
@@ -700,12 +912,23 @@ end
 -- * Job [Job] <p>A section of the response body that provides information about the job that is created.</p>
 -- @return CreateJobResponse structure as a key-value pair table
 function M.CreateJobResponse(args)
-	assert(args, "You must provdide an argument table when creating CreateJobResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateJobResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Job"] = args["Job"],
 	}
-	asserts.AssertCreateJobResponse(t)
-	return t
+	asserts.AssertCreateJobResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InternalServiceException = { nil }
@@ -724,11 +947,22 @@ end
 -- Valid keys:
 -- @return InternalServiceException structure as a key-value pair table
 function M.InternalServiceException(args)
-	assert(args, "You must provdide an argument table when creating InternalServiceException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InternalServiceException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertInternalServiceException(t)
-	return t
+	asserts.AssertInternalServiceException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Thumbnails = { ["SizingPolicy"] = true, ["MaxWidth"] = true, ["Format"] = true, ["PaddingPolicy"] = true, ["Interval"] = true, ["MaxHeight"] = true, ["AspectRatio"] = true, ["Resolution"] = true, nil }
@@ -763,8 +997,14 @@ end
 -- * Resolution [ThumbnailResolution] <important> <p>To better control resolution and aspect ratio of thumbnails, we recommend that you use the values <code>MaxWidth</code>, <code>MaxHeight</code>, <code>SizingPolicy</code>, and <code>PaddingPolicy</code> instead of <code>Resolution</code> and <code>AspectRatio</code>. The two groups of settings are mutually exclusive. Do not use them together.</p> </important> <p>The width and height of thumbnail files in pixels. Specify a value in the format <code> <i>width</i> </code> x <code> <i>height</i> </code> where both values are even integers. The values cannot exceed the width and height that you specified in the <code>Video:Resolution</code> object.</p>
 -- @return Thumbnails structure as a key-value pair table
 function M.Thumbnails(args)
-	assert(args, "You must provdide an argument table when creating Thumbnails")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Thumbnails")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["SizingPolicy"] = args["SizingPolicy"],
 		["MaxWidth"] = args["MaxWidth"],
 		["Format"] = args["Format"],
@@ -774,8 +1014,13 @@ function M.Thumbnails(args)
 		["AspectRatio"] = args["AspectRatio"],
 		["Resolution"] = args["Resolution"],
 	}
-	asserts.AssertThumbnails(t)
-	return t
+	asserts.AssertThumbnails(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.HlsContentProtection = { ["KeyMd5"] = true, ["KeyStoragePolicy"] = true, ["InitializationVector"] = true, ["LicenseAcquisitionUrl"] = true, ["Key"] = true, ["Method"] = true, nil }
@@ -806,8 +1051,14 @@ end
 -- * Method [HlsContentProtectionMethod] <p>The content protection method for your output. The only valid value is: <code>aes-128</code>.</p> <p>This value is written into the method attribute of the <code>EXT-X-KEY</code> metadata tag in the output playlist.</p>
 -- @return HlsContentProtection structure as a key-value pair table
 function M.HlsContentProtection(args)
-	assert(args, "You must provdide an argument table when creating HlsContentProtection")
-	local t = { 
+	assert(args, "You must provide an argument table when creating HlsContentProtection")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["KeyMd5"] = args["KeyMd5"],
 		["KeyStoragePolicy"] = args["KeyStoragePolicy"],
 		["InitializationVector"] = args["InitializationVector"],
@@ -815,8 +1066,13 @@ function M.HlsContentProtection(args)
 		["Key"] = args["Key"],
 		["Method"] = args["Method"],
 	}
-	asserts.AssertHlsContentProtection(t)
-	return t
+	asserts.AssertHlsContentProtection(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreatePresetRequest = { ["Container"] = true, ["Thumbnails"] = true, ["Video"] = true, ["Description"] = true, ["Audio"] = true, ["Name"] = true, nil }
@@ -851,8 +1107,14 @@ end
 -- Required key: Container
 -- @return CreatePresetRequest structure as a key-value pair table
 function M.CreatePresetRequest(args)
-	assert(args, "You must provdide an argument table when creating CreatePresetRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreatePresetRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Container"] = args["Container"],
 		["Thumbnails"] = args["Thumbnails"],
 		["Video"] = args["Video"],
@@ -860,8 +1122,13 @@ function M.CreatePresetRequest(args)
 		["Audio"] = args["Audio"],
 		["Name"] = args["Name"],
 	}
-	asserts.AssertCreatePresetRequest(t)
-	return t
+	asserts.AssertCreatePresetRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Job = { ["Status"] = true, ["Inputs"] = true, ["Playlists"] = true, ["Outputs"] = true, ["PipelineId"] = true, ["OutputKeyPrefix"] = true, ["UserMetadata"] = true, ["Output"] = true, ["Timing"] = true, ["Input"] = true, ["Id"] = true, ["Arn"] = true, nil }
@@ -904,8 +1171,14 @@ end
 -- * Arn [String] <p>The Amazon Resource Name (ARN) for the job.</p>
 -- @return Job structure as a key-value pair table
 function M.Job(args)
-	assert(args, "You must provdide an argument table when creating Job")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Job")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Status"] = args["Status"],
 		["Inputs"] = args["Inputs"],
 		["Playlists"] = args["Playlists"],
@@ -919,8 +1192,13 @@ function M.Job(args)
 		["Id"] = args["Id"],
 		["Arn"] = args["Arn"],
 	}
-	asserts.AssertJob(t)
-	return t
+	asserts.AssertJob(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ReadPipelineResponse = { ["Pipeline"] = true, ["Warnings"] = true, nil }
@@ -943,13 +1221,24 @@ end
 -- * Warnings [Warnings] <p>Elastic Transcoder returns a warning if the resources used by your pipeline are not in the same region as the pipeline.</p> <p>Using resources in the same region, such as your Amazon S3 buckets, Amazon SNS notification topics, and AWS KMS key, reduces processing time and prevents cross-regional charges.</p>
 -- @return ReadPipelineResponse structure as a key-value pair table
 function M.ReadPipelineResponse(args)
-	assert(args, "You must provdide an argument table when creating ReadPipelineResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ReadPipelineResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Pipeline"] = args["Pipeline"],
 		["Warnings"] = args["Warnings"],
 	}
-	asserts.AssertReadPipelineResponse(t)
-	return t
+	asserts.AssertReadPipelineResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListPipelinesRequest = { ["PageToken"] = true, ["Ascending"] = true, nil }
@@ -972,13 +1261,26 @@ end
 -- * Ascending [Ascending] <p>To list pipelines in chronological order by the date and time that they were created, enter <code>true</code>. To list pipelines in reverse chronological order, enter <code>false</code>.</p>
 -- @return ListPipelinesRequest structure as a key-value pair table
 function M.ListPipelinesRequest(args)
-	assert(args, "You must provdide an argument table when creating ListPipelinesRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListPipelinesRequest")
+    local query_args = { 
+        ["PageToken"] = args["PageToken"],
+        ["Ascending"] = args["Ascending"],
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["PageToken"] = args["PageToken"],
 		["Ascending"] = args["Ascending"],
 	}
-	asserts.AssertListPipelinesRequest(t)
-	return t
+	asserts.AssertListPipelinesRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListPresetsRequest = { ["PageToken"] = true, ["Ascending"] = true, nil }
@@ -1001,13 +1303,26 @@ end
 -- * Ascending [Ascending] <p>To list presets in chronological order by the date and time that they were created, enter <code>true</code>. To list presets in reverse chronological order, enter <code>false</code>.</p>
 -- @return ListPresetsRequest structure as a key-value pair table
 function M.ListPresetsRequest(args)
-	assert(args, "You must provdide an argument table when creating ListPresetsRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListPresetsRequest")
+    local query_args = { 
+        ["PageToken"] = args["PageToken"],
+        ["Ascending"] = args["Ascending"],
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["PageToken"] = args["PageToken"],
 		["Ascending"] = args["Ascending"],
 	}
-	asserts.AssertListPresetsRequest(t)
-	return t
+	asserts.AssertListPresetsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdatePipelineResponse = { ["Pipeline"] = true, ["Warnings"] = true, nil }
@@ -1030,13 +1345,24 @@ end
 -- * Warnings [Warnings] <p>Elastic Transcoder returns a warning if the resources used by your pipeline are not in the same region as the pipeline.</p> <p>Using resources in the same region, such as your Amazon S3 buckets, Amazon SNS notification topics, and AWS KMS key, reduces processing time and prevents cross-regional charges.</p>
 -- @return UpdatePipelineResponse structure as a key-value pair table
 function M.UpdatePipelineResponse(args)
-	assert(args, "You must provdide an argument table when creating UpdatePipelineResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdatePipelineResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Pipeline"] = args["Pipeline"],
 		["Warnings"] = args["Warnings"],
 	}
-	asserts.AssertUpdatePipelineResponse(t)
-	return t
+	asserts.AssertUpdatePipelineResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdatePipelineNotificationsRequest = { ["Notifications"] = true, ["Id"] = true, nil }
@@ -1063,13 +1389,25 @@ end
 -- Required key: Notifications
 -- @return UpdatePipelineNotificationsRequest structure as a key-value pair table
 function M.UpdatePipelineNotificationsRequest(args)
-	assert(args, "You must provdide an argument table when creating UpdatePipelineNotificationsRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdatePipelineNotificationsRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{Id}"] = args["Id"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Notifications"] = args["Notifications"],
 		["Id"] = args["Id"],
 	}
-	asserts.AssertUpdatePipelineNotificationsRequest(t)
-	return t
+	asserts.AssertUpdatePipelineNotificationsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.PresetWatermark = { ["SizingPolicy"] = true, ["VerticalOffset"] = true, ["VerticalAlign"] = true, ["Target"] = true, ["MaxWidth"] = true, ["MaxHeight"] = true, ["HorizontalAlign"] = true, ["HorizontalOffset"] = true, ["Opacity"] = true, ["Id"] = true, nil }
@@ -1108,8 +1446,14 @@ end
 -- * Id [PresetWatermarkId] <p> A unique identifier for the settings for one watermark. The value of <code>Id</code> can be up to 40 characters long. </p>
 -- @return PresetWatermark structure as a key-value pair table
 function M.PresetWatermark(args)
-	assert(args, "You must provdide an argument table when creating PresetWatermark")
-	local t = { 
+	assert(args, "You must provide an argument table when creating PresetWatermark")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["SizingPolicy"] = args["SizingPolicy"],
 		["VerticalOffset"] = args["VerticalOffset"],
 		["VerticalAlign"] = args["VerticalAlign"],
@@ -1121,8 +1465,13 @@ function M.PresetWatermark(args)
 		["Opacity"] = args["Opacity"],
 		["Id"] = args["Id"],
 	}
-	asserts.AssertPresetWatermark(t)
-	return t
+	asserts.AssertPresetWatermark(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DetectedProperties = { ["Width"] = true, ["DurationMillis"] = true, ["FrameRate"] = true, ["FileSize"] = true, ["Height"] = true, nil }
@@ -1151,16 +1500,27 @@ end
 -- * Height [NullableInteger] <p>The detected height of the input file, in pixels.</p>
 -- @return DetectedProperties structure as a key-value pair table
 function M.DetectedProperties(args)
-	assert(args, "You must provdide an argument table when creating DetectedProperties")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DetectedProperties")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Width"] = args["Width"],
 		["DurationMillis"] = args["DurationMillis"],
 		["FrameRate"] = args["FrameRate"],
 		["FileSize"] = args["FileSize"],
 		["Height"] = args["Height"],
 	}
-	asserts.AssertDetectedProperties(t)
-	return t
+	asserts.AssertDetectedProperties(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Clip = { ["TimeSpan"] = true, nil }
@@ -1181,12 +1541,23 @@ end
 -- * TimeSpan [TimeSpan] <p>Settings that determine when a clip begins and how long it lasts.</p>
 -- @return Clip structure as a key-value pair table
 function M.Clip(args)
-	assert(args, "You must provdide an argument table when creating Clip")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Clip")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["TimeSpan"] = args["TimeSpan"],
 	}
-	asserts.AssertClip(t)
-	return t
+	asserts.AssertClip(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeletePipelineResponse = { nil }
@@ -1205,11 +1576,22 @@ end
 -- Valid keys:
 -- @return DeletePipelineResponse structure as a key-value pair table
 function M.DeletePipelineResponse(args)
-	assert(args, "You must provdide an argument table when creating DeletePipelineResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeletePipelineResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertDeletePipelineResponse(t)
-	return t
+	asserts.AssertDeletePipelineResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.LimitExceededException = { nil }
@@ -1228,11 +1610,22 @@ end
 -- Valid keys:
 -- @return LimitExceededException structure as a key-value pair table
 function M.LimitExceededException(args)
-	assert(args, "You must provdide an argument table when creating LimitExceededException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating LimitExceededException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertLimitExceededException(t)
-	return t
+	asserts.AssertLimitExceededException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.VideoParameters = { ["SizingPolicy"] = true, ["MaxWidth"] = true, ["PaddingPolicy"] = true, ["Resolution"] = true, ["MaxFrameRate"] = true, ["FrameRate"] = true, ["MaxHeight"] = true, ["KeyframesMaxDist"] = true, ["FixedGOP"] = true, ["Codec"] = true, ["Watermarks"] = true, ["CodecOptions"] = true, ["AspectRatio"] = true, ["BitRate"] = true, ["DisplayAspectRatio"] = true, nil }
@@ -1281,8 +1674,14 @@ end
 -- * DisplayAspectRatio [AspectRatio] <p>The value that Elastic Transcoder adds to the metadata in the output file.</p>
 -- @return VideoParameters structure as a key-value pair table
 function M.VideoParameters(args)
-	assert(args, "You must provdide an argument table when creating VideoParameters")
-	local t = { 
+	assert(args, "You must provide an argument table when creating VideoParameters")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["SizingPolicy"] = args["SizingPolicy"],
 		["MaxWidth"] = args["MaxWidth"],
 		["PaddingPolicy"] = args["PaddingPolicy"],
@@ -1299,8 +1698,13 @@ function M.VideoParameters(args)
 		["BitRate"] = args["BitRate"],
 		["DisplayAspectRatio"] = args["DisplayAspectRatio"],
 	}
-	asserts.AssertVideoParameters(t)
-	return t
+	asserts.AssertVideoParameters(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ValidationException = { nil }
@@ -1319,11 +1723,22 @@ end
 -- Valid keys:
 -- @return ValidationException structure as a key-value pair table
 function M.ValidationException(args)
-	assert(args, "You must provdide an argument table when creating ValidationException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ValidationException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertValidationException(t)
-	return t
+	asserts.AssertValidationException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ResourceInUseException = { nil }
@@ -1342,11 +1757,22 @@ end
 -- Valid keys:
 -- @return ResourceInUseException structure as a key-value pair table
 function M.ResourceInUseException(args)
-	assert(args, "You must provdide an argument table when creating ResourceInUseException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ResourceInUseException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertResourceInUseException(t)
-	return t
+	asserts.AssertResourceInUseException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreatePipelineRequest = { ["ContentConfig"] = true, ["ThumbnailConfig"] = true, ["Name"] = true, ["Notifications"] = true, ["AwsKmsKeyArn"] = true, ["InputBucket"] = true, ["OutputBucket"] = true, ["Role"] = true, nil }
@@ -1387,8 +1813,14 @@ end
 -- Required key: Role
 -- @return CreatePipelineRequest structure as a key-value pair table
 function M.CreatePipelineRequest(args)
-	assert(args, "You must provdide an argument table when creating CreatePipelineRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreatePipelineRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ContentConfig"] = args["ContentConfig"],
 		["ThumbnailConfig"] = args["ThumbnailConfig"],
 		["Name"] = args["Name"],
@@ -1398,8 +1830,13 @@ function M.CreatePipelineRequest(args)
 		["OutputBucket"] = args["OutputBucket"],
 		["Role"] = args["Role"],
 	}
-	asserts.AssertCreatePipelineRequest(t)
-	return t
+	asserts.AssertCreatePipelineRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdatePipelineStatusRequest = { ["Status"] = true, ["Id"] = true, nil }
@@ -1426,13 +1863,25 @@ end
 -- Required key: Status
 -- @return UpdatePipelineStatusRequest structure as a key-value pair table
 function M.UpdatePipelineStatusRequest(args)
-	assert(args, "You must provdide an argument table when creating UpdatePipelineStatusRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdatePipelineStatusRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{Id}"] = args["Id"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Status"] = args["Status"],
 		["Id"] = args["Id"],
 	}
-	asserts.AssertUpdatePipelineStatusRequest(t)
-	return t
+	asserts.AssertUpdatePipelineStatusRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ReadJobRequest = { ["Id"] = true, nil }
@@ -1455,12 +1904,24 @@ end
 -- Required key: Id
 -- @return ReadJobRequest structure as a key-value pair table
 function M.ReadJobRequest(args)
-	assert(args, "You must provdide an argument table when creating ReadJobRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ReadJobRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{Id}"] = args["Id"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Id"] = args["Id"],
 	}
-	asserts.AssertReadJobRequest(t)
-	return t
+	asserts.AssertReadJobRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Artwork = { ["SizingPolicy"] = true, ["AlbumArtFormat"] = true, ["MaxWidth"] = true, ["PaddingPolicy"] = true, ["Encryption"] = true, ["MaxHeight"] = true, ["InputKey"] = true, nil }
@@ -1493,8 +1954,14 @@ end
 -- * InputKey [WatermarkKey] <p>The name of the file to be used as album art. To determine which Amazon S3 bucket contains the specified file, Elastic Transcoder checks the pipeline specified by <code>PipelineId</code>; the <code>InputBucket</code> object in that pipeline identifies the bucket.</p> <p>If the file name includes a prefix, for example, <code>cooking/pie.jpg</code>, include the prefix in the key. If the file isn't in the specified bucket, Elastic Transcoder returns an error.</p>
 -- @return Artwork structure as a key-value pair table
 function M.Artwork(args)
-	assert(args, "You must provdide an argument table when creating Artwork")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Artwork")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["SizingPolicy"] = args["SizingPolicy"],
 		["AlbumArtFormat"] = args["AlbumArtFormat"],
 		["MaxWidth"] = args["MaxWidth"],
@@ -1503,8 +1970,13 @@ function M.Artwork(args)
 		["MaxHeight"] = args["MaxHeight"],
 		["InputKey"] = args["InputKey"],
 	}
-	asserts.AssertArtwork(t)
-	return t
+	asserts.AssertArtwork(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdatePipelineRequest = { ["ContentConfig"] = true, ["ThumbnailConfig"] = true, ["Name"] = true, ["Notifications"] = true, ["AwsKmsKeyArn"] = true, ["InputBucket"] = true, ["Role"] = true, ["Id"] = true, nil }
@@ -1541,8 +2013,15 @@ end
 -- Required key: Id
 -- @return UpdatePipelineRequest structure as a key-value pair table
 function M.UpdatePipelineRequest(args)
-	assert(args, "You must provdide an argument table when creating UpdatePipelineRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdatePipelineRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{Id}"] = args["Id"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ContentConfig"] = args["ContentConfig"],
 		["ThumbnailConfig"] = args["ThumbnailConfig"],
 		["Name"] = args["Name"],
@@ -1552,8 +2031,13 @@ function M.UpdatePipelineRequest(args)
 		["Role"] = args["Role"],
 		["Id"] = args["Id"],
 	}
-	asserts.AssertUpdatePipelineRequest(t)
-	return t
+	asserts.AssertUpdatePipelineRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CaptionSource = { ["TimeOffset"] = true, ["Encryption"] = true, ["Language"] = true, ["Key"] = true, ["Label"] = true, nil }
@@ -1582,16 +2066,27 @@ end
 -- * Label [Name] <p>The label of the caption shown in the player when choosing a language. We recommend that you put the caption language name here, in the language of the captions.</p>
 -- @return CaptionSource structure as a key-value pair table
 function M.CaptionSource(args)
-	assert(args, "You must provdide an argument table when creating CaptionSource")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CaptionSource")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["TimeOffset"] = args["TimeOffset"],
 		["Encryption"] = args["Encryption"],
 		["Language"] = args["Language"],
 		["Key"] = args["Key"],
 		["Label"] = args["Label"],
 	}
-	asserts.AssertCaptionSource(t)
-	return t
+	asserts.AssertCaptionSource(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeletePresetRequest = { ["Id"] = true, nil }
@@ -1614,12 +2109,24 @@ end
 -- Required key: Id
 -- @return DeletePresetRequest structure as a key-value pair table
 function M.DeletePresetRequest(args)
-	assert(args, "You must provdide an argument table when creating DeletePresetRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeletePresetRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{Id}"] = args["Id"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Id"] = args["Id"],
 	}
-	asserts.AssertDeletePresetRequest(t)
-	return t
+	asserts.AssertDeletePresetRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InputCaptions = { ["MergePolicy"] = true, ["CaptionSources"] = true, nil }
@@ -1642,13 +2149,24 @@ end
 -- * CaptionSources [CaptionSources] <p>Source files for the input sidecar captions used during the transcoding process. To omit all sidecar captions, leave <code>CaptionSources</code> blank.</p>
 -- @return InputCaptions structure as a key-value pair table
 function M.InputCaptions(args)
-	assert(args, "You must provdide an argument table when creating InputCaptions")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InputCaptions")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["MergePolicy"] = args["MergePolicy"],
 		["CaptionSources"] = args["CaptionSources"],
 	}
-	asserts.AssertInputCaptions(t)
-	return t
+	asserts.AssertInputCaptions(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ResourceNotFoundException = { nil }
@@ -1667,11 +2185,22 @@ end
 -- Valid keys:
 -- @return ResourceNotFoundException structure as a key-value pair table
 function M.ResourceNotFoundException(args)
-	assert(args, "You must provdide an argument table when creating ResourceNotFoundException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ResourceNotFoundException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertResourceNotFoundException(t)
-	return t
+	asserts.AssertResourceNotFoundException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeletePipelineRequest = { ["Id"] = true, nil }
@@ -1694,12 +2223,24 @@ end
 -- Required key: Id
 -- @return DeletePipelineRequest structure as a key-value pair table
 function M.DeletePipelineRequest(args)
-	assert(args, "You must provdide an argument table when creating DeletePipelineRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeletePipelineRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{Id}"] = args["Id"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Id"] = args["Id"],
 	}
-	asserts.AssertDeletePipelineRequest(t)
-	return t
+	asserts.AssertDeletePipelineRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdatePipelineNotificationsResponse = { ["Pipeline"] = true, nil }
@@ -1720,12 +2261,23 @@ end
 -- * Pipeline [Pipeline] <p>A section of the response body that provides information about the pipeline associated with this notification.</p>
 -- @return UpdatePipelineNotificationsResponse structure as a key-value pair table
 function M.UpdatePipelineNotificationsResponse(args)
-	assert(args, "You must provdide an argument table when creating UpdatePipelineNotificationsResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdatePipelineNotificationsResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Pipeline"] = args["Pipeline"],
 	}
-	asserts.AssertUpdatePipelineNotificationsResponse(t)
-	return t
+	asserts.AssertUpdatePipelineNotificationsResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Captions = { ["MergePolicy"] = true, ["CaptionSources"] = true, ["CaptionFormats"] = true, nil }
@@ -1750,14 +2302,25 @@ end
 -- * CaptionFormats [CaptionFormats] <p>The array of file formats for the output captions. If you leave this value blank, Elastic Transcoder returns an error.</p>
 -- @return Captions structure as a key-value pair table
 function M.Captions(args)
-	assert(args, "You must provdide an argument table when creating Captions")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Captions")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["MergePolicy"] = args["MergePolicy"],
 		["CaptionSources"] = args["CaptionSources"],
 		["CaptionFormats"] = args["CaptionFormats"],
 	}
-	asserts.AssertCaptions(t)
-	return t
+	asserts.AssertCaptions(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListJobsByPipelineRequest = { ["PageToken"] = true, ["PipelineId"] = true, ["Ascending"] = true, nil }
@@ -1784,14 +2347,28 @@ end
 -- Required key: PipelineId
 -- @return ListJobsByPipelineRequest structure as a key-value pair table
 function M.ListJobsByPipelineRequest(args)
-	assert(args, "You must provdide an argument table when creating ListJobsByPipelineRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListJobsByPipelineRequest")
+    local query_args = { 
+        ["PageToken"] = args["PageToken"],
+        ["Ascending"] = args["Ascending"],
+    }
+    local uri_args = { 
+        ["{PipelineId}"] = args["PipelineId"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["PageToken"] = args["PageToken"],
 		["PipelineId"] = args["PipelineId"],
 		["Ascending"] = args["Ascending"],
 	}
-	asserts.AssertListJobsByPipelineRequest(t)
-	return t
+	asserts.AssertListJobsByPipelineRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.TimeSpan = { ["Duration"] = true, ["StartTime"] = true, nil }
@@ -1814,13 +2391,24 @@ end
 -- * StartTime [Time] <p>The place in the input file where you want a clip to start. The format can be either HH:mm:ss.SSS (maximum value: 23:59:59.999; SSS is thousandths of a second) or sssss.SSS (maximum value: 86399.999). If you don't specify a value, Elastic Transcoder starts at the beginning of the input file.</p>
 -- @return TimeSpan structure as a key-value pair table
 function M.TimeSpan(args)
-	assert(args, "You must provdide an argument table when creating TimeSpan")
-	local t = { 
+	assert(args, "You must provide an argument table when creating TimeSpan")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Duration"] = args["Duration"],
 		["StartTime"] = args["StartTime"],
 	}
-	asserts.AssertTimeSpan(t)
-	return t
+	asserts.AssertTimeSpan(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateJobRequest = { ["Inputs"] = true, ["Playlists"] = true, ["Outputs"] = true, ["PipelineId"] = true, ["OutputKeyPrefix"] = true, ["UserMetadata"] = true, ["Output"] = true, ["Input"] = true, nil }
@@ -1857,8 +2445,14 @@ end
 -- Required key: PipelineId
 -- @return CreateJobRequest structure as a key-value pair table
 function M.CreateJobRequest(args)
-	assert(args, "You must provdide an argument table when creating CreateJobRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateJobRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Inputs"] = args["Inputs"],
 		["Playlists"] = args["Playlists"],
 		["Outputs"] = args["Outputs"],
@@ -1868,8 +2462,13 @@ function M.CreateJobRequest(args)
 		["Output"] = args["Output"],
 		["Input"] = args["Input"],
 	}
-	asserts.AssertCreateJobRequest(t)
-	return t
+	asserts.AssertCreateJobRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreatePresetResponse = { ["Preset"] = true, ["Warning"] = true, nil }
@@ -1892,13 +2491,24 @@ end
 -- * Warning [String] <p>If the preset settings don't comply with the standards for the video codec but Elastic Transcoder created the preset, this message explains the reason the preset settings don't meet the standard. Elastic Transcoder created the preset because the settings might produce acceptable output.</p>
 -- @return CreatePresetResponse structure as a key-value pair table
 function M.CreatePresetResponse(args)
-	assert(args, "You must provdide an argument table when creating CreatePresetResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreatePresetResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Preset"] = args["Preset"],
 		["Warning"] = args["Warning"],
 	}
-	asserts.AssertCreatePresetResponse(t)
-	return t
+	asserts.AssertCreatePresetResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Pipeline = { ["Status"] = true, ["ContentConfig"] = true, ["Name"] = true, ["ThumbnailConfig"] = true, ["AwsKmsKeyArn"] = true, ["Notifications"] = true, ["Role"] = true, ["InputBucket"] = true, ["OutputBucket"] = true, ["Id"] = true, ["Arn"] = true, nil }
@@ -1939,8 +2549,14 @@ end
 -- * Arn [String] <p>The Amazon Resource Name (ARN) for the pipeline.</p>
 -- @return Pipeline structure as a key-value pair table
 function M.Pipeline(args)
-	assert(args, "You must provdide an argument table when creating Pipeline")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Pipeline")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Status"] = args["Status"],
 		["ContentConfig"] = args["ContentConfig"],
 		["Name"] = args["Name"],
@@ -1953,8 +2569,13 @@ function M.Pipeline(args)
 		["Id"] = args["Id"],
 		["Arn"] = args["Arn"],
 	}
-	asserts.AssertPipeline(t)
-	return t
+	asserts.AssertPipeline(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.PlayReadyDrm = { ["KeyId"] = true, ["KeyMd5"] = true, ["Format"] = true, ["InitializationVector"] = true, ["LicenseAcquisitionUrl"] = true, ["Key"] = true, nil }
@@ -1985,8 +2606,14 @@ end
 -- * Key [NonEmptyBase64EncodedString] <p>The DRM key for your file, provided by your DRM license provider. The key must be base64-encoded, and it must be one of the following bit lengths before being base64-encoded:</p> <p> <code>128</code>, <code>192</code>, or <code>256</code>. </p> <p>The key must also be encrypted by using AWS KMS.</p>
 -- @return PlayReadyDrm structure as a key-value pair table
 function M.PlayReadyDrm(args)
-	assert(args, "You must provdide an argument table when creating PlayReadyDrm")
-	local t = { 
+	assert(args, "You must provide an argument table when creating PlayReadyDrm")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["KeyId"] = args["KeyId"],
 		["KeyMd5"] = args["KeyMd5"],
 		["Format"] = args["Format"],
@@ -1994,8 +2621,13 @@ function M.PlayReadyDrm(args)
 		["LicenseAcquisitionUrl"] = args["LicenseAcquisitionUrl"],
 		["Key"] = args["Key"],
 	}
-	asserts.AssertPlayReadyDrm(t)
-	return t
+	asserts.AssertPlayReadyDrm(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreatePipelineResponse = { ["Pipeline"] = true, ["Warnings"] = true, nil }
@@ -2018,13 +2650,24 @@ end
 -- * Warnings [Warnings] <p>Elastic Transcoder returns a warning if the resources used by your pipeline are not in the same region as the pipeline.</p> <p>Using resources in the same region, such as your Amazon S3 buckets, Amazon SNS notification topics, and AWS KMS key, reduces processing time and prevents cross-regional charges.</p>
 -- @return CreatePipelineResponse structure as a key-value pair table
 function M.CreatePipelineResponse(args)
-	assert(args, "You must provdide an argument table when creating CreatePipelineResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreatePipelineResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Pipeline"] = args["Pipeline"],
 		["Warnings"] = args["Warnings"],
 	}
-	asserts.AssertCreatePipelineResponse(t)
-	return t
+	asserts.AssertCreatePipelineResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateJobOutput = { ["Rotate"] = true, ["Encryption"] = true, ["PresetId"] = true, ["Watermarks"] = true, ["SegmentDuration"] = true, ["Key"] = true, ["Captions"] = true, ["AlbumArt"] = true, ["ThumbnailPattern"] = true, ["ThumbnailEncryption"] = true, ["Composition"] = true, nil }
@@ -2065,8 +2708,14 @@ end
 -- * Composition [Composition] <p>You can create an output file that contains an excerpt from the input file. This excerpt, called a clip, can come from the beginning, middle, or end of the file. The Composition object contains settings for the clips that make up an output file. For the current release, you can only specify settings for a single clip per output file. The Composition object cannot be null.</p>
 -- @return CreateJobOutput structure as a key-value pair table
 function M.CreateJobOutput(args)
-	assert(args, "You must provdide an argument table when creating CreateJobOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateJobOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Rotate"] = args["Rotate"],
 		["Encryption"] = args["Encryption"],
 		["PresetId"] = args["PresetId"],
@@ -2079,8 +2728,13 @@ function M.CreateJobOutput(args)
 		["ThumbnailEncryption"] = args["ThumbnailEncryption"],
 		["Composition"] = args["Composition"],
 	}
-	asserts.AssertCreateJobOutput(t)
-	return t
+	asserts.AssertCreateJobOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ReadJobResponse = { ["Job"] = true, nil }
@@ -2101,12 +2755,23 @@ end
 -- * Job [Job] <p>A section of the response body that provides information about the job.</p>
 -- @return ReadJobResponse structure as a key-value pair table
 function M.ReadJobResponse(args)
-	assert(args, "You must provdide an argument table when creating ReadJobResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ReadJobResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Job"] = args["Job"],
 	}
-	asserts.AssertReadJobResponse(t)
-	return t
+	asserts.AssertReadJobResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.IncompatibleVersionException = { nil }
@@ -2125,11 +2790,22 @@ end
 -- Valid keys:
 -- @return IncompatibleVersionException structure as a key-value pair table
 function M.IncompatibleVersionException(args)
-	assert(args, "You must provdide an argument table when creating IncompatibleVersionException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating IncompatibleVersionException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertIncompatibleVersionException(t)
-	return t
+	asserts.AssertIncompatibleVersionException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CaptionFormat = { ["Encryption"] = true, ["Pattern"] = true, ["Format"] = true, nil }
@@ -2154,14 +2830,25 @@ end
 -- * Format [CaptionFormatFormat] <p>The format you specify determines whether Elastic Transcoder generates an embedded or sidecar caption for this output.</p> <ul> <li> <p> <b>Valid Embedded Caption Formats:</b> </p> <ul> <li> <p> <b>for FLAC</b>: None</p> </li> <li> <p> <b>For MP3</b>: None</p> </li> <li> <p> <b>For MP4</b>: mov-text</p> </li> <li> <p> <b>For MPEG-TS</b>: None</p> </li> <li> <p> <b>For ogg</b>: None</p> </li> <li> <p> <b>For webm</b>: None</p> </li> </ul> </li> <li> <p> <b>Valid Sidecar Caption Formats:</b> Elastic Transcoder supports dfxp (first div element only), scc, srt, and webvtt. If you want ttml or smpte-tt compatible captions, specify dfxp as your output format.</p> <ul> <li> <p> <b>For FMP4</b>: dfxp</p> </li> <li> <p> <b>Non-FMP4 outputs</b>: All sidecar types</p> </li> </ul> <p> <code>fmp4</code> captions have an extension of <code>.ismt</code> </p> </li> </ul>
 -- @return CaptionFormat structure as a key-value pair table
 function M.CaptionFormat(args)
-	assert(args, "You must provdide an argument table when creating CaptionFormat")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CaptionFormat")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Encryption"] = args["Encryption"],
 		["Pattern"] = args["Pattern"],
 		["Format"] = args["Format"],
 	}
-	asserts.AssertCaptionFormat(t)
-	return t
+	asserts.AssertCaptionFormat(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AudioParameters = { ["AudioPackingMode"] = true, ["Channels"] = true, ["Codec"] = true, ["CodecOptions"] = true, ["SampleRate"] = true, ["BitRate"] = true, nil }
@@ -2192,8 +2879,14 @@ end
 -- * BitRate [AudioBitRate] <p>The bit rate of the audio stream in the output file, in kilobits/second. Enter an integer between 64 and 320, inclusive.</p>
 -- @return AudioParameters structure as a key-value pair table
 function M.AudioParameters(args)
-	assert(args, "You must provdide an argument table when creating AudioParameters")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AudioParameters")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["AudioPackingMode"] = args["AudioPackingMode"],
 		["Channels"] = args["Channels"],
 		["Codec"] = args["Codec"],
@@ -2201,8 +2894,13 @@ function M.AudioParameters(args)
 		["SampleRate"] = args["SampleRate"],
 		["BitRate"] = args["BitRate"],
 	}
-	asserts.AssertAudioParameters(t)
-	return t
+	asserts.AssertAudioParameters(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AccessDeniedException = { nil }
@@ -2221,11 +2919,22 @@ end
 -- Valid keys:
 -- @return AccessDeniedException structure as a key-value pair table
 function M.AccessDeniedException(args)
-	assert(args, "You must provdide an argument table when creating AccessDeniedException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AccessDeniedException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertAccessDeniedException(t)
-	return t
+	asserts.AssertAccessDeniedException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ReadPresetRequest = { ["Id"] = true, nil }
@@ -2248,12 +2957,24 @@ end
 -- Required key: Id
 -- @return ReadPresetRequest structure as a key-value pair table
 function M.ReadPresetRequest(args)
-	assert(args, "You must provdide an argument table when creating ReadPresetRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ReadPresetRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{Id}"] = args["Id"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Id"] = args["Id"],
 	}
-	asserts.AssertReadPresetRequest(t)
-	return t
+	asserts.AssertReadPresetRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.JobWatermark = { ["Encryption"] = true, ["InputKey"] = true, ["PresetWatermarkId"] = true, nil }
@@ -2278,14 +2999,25 @@ end
 -- * PresetWatermarkId [PresetWatermarkId] <p>The ID of the watermark settings that Elastic Transcoder uses to add watermarks to the video during transcoding. The settings are in the preset specified by Preset for the current output. In that preset, the value of Watermarks Id tells Elastic Transcoder which settings to use.</p>
 -- @return JobWatermark structure as a key-value pair table
 function M.JobWatermark(args)
-	assert(args, "You must provdide an argument table when creating JobWatermark")
-	local t = { 
+	assert(args, "You must provide an argument table when creating JobWatermark")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Encryption"] = args["Encryption"],
 		["InputKey"] = args["InputKey"],
 		["PresetWatermarkId"] = args["PresetWatermarkId"],
 	}
-	asserts.AssertJobWatermark(t)
-	return t
+	asserts.AssertJobWatermark(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ReadPipelineRequest = { ["Id"] = true, nil }
@@ -2308,12 +3040,24 @@ end
 -- Required key: Id
 -- @return ReadPipelineRequest structure as a key-value pair table
 function M.ReadPipelineRequest(args)
-	assert(args, "You must provdide an argument table when creating ReadPipelineRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ReadPipelineRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{Id}"] = args["Id"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Id"] = args["Id"],
 	}
-	asserts.AssertReadPipelineRequest(t)
-	return t
+	asserts.AssertReadPipelineRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.TestRoleRequest = { ["OutputBucket"] = true, ["Topics"] = true, ["Role"] = true, ["InputBucket"] = true, nil }
@@ -2348,15 +3092,26 @@ end
 -- Required key: Topics
 -- @return TestRoleRequest structure as a key-value pair table
 function M.TestRoleRequest(args)
-	assert(args, "You must provdide an argument table when creating TestRoleRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating TestRoleRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["OutputBucket"] = args["OutputBucket"],
 		["Topics"] = args["Topics"],
 		["Role"] = args["Role"],
 		["InputBucket"] = args["InputBucket"],
 	}
-	asserts.AssertTestRoleRequest(t)
-	return t
+	asserts.AssertTestRoleRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdatePipelineStatusResponse = { ["Pipeline"] = true, nil }
@@ -2377,12 +3132,23 @@ end
 -- * Pipeline [Pipeline] <p>A section of the response body that provides information about the pipeline.</p>
 -- @return UpdatePipelineStatusResponse structure as a key-value pair table
 function M.UpdatePipelineStatusResponse(args)
-	assert(args, "You must provdide an argument table when creating UpdatePipelineStatusResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdatePipelineStatusResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Pipeline"] = args["Pipeline"],
 	}
-	asserts.AssertUpdatePipelineStatusResponse(t)
-	return t
+	asserts.AssertUpdatePipelineStatusResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateJobPlaylist = { ["HlsContentProtection"] = true, ["OutputKeys"] = true, ["Name"] = true, ["PlayReadyDrm"] = true, ["Format"] = true, nil }
@@ -2411,16 +3177,27 @@ end
 -- * Format [PlaylistFormat] <p>The format of the output playlist. Valid formats include <code>HLSv3</code>, <code>HLSv4</code>, and <code>Smooth</code>.</p>
 -- @return CreateJobPlaylist structure as a key-value pair table
 function M.CreateJobPlaylist(args)
-	assert(args, "You must provdide an argument table when creating CreateJobPlaylist")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateJobPlaylist")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["HlsContentProtection"] = args["HlsContentProtection"],
 		["OutputKeys"] = args["OutputKeys"],
 		["Name"] = args["Name"],
 		["PlayReadyDrm"] = args["PlayReadyDrm"],
 		["Format"] = args["Format"],
 	}
-	asserts.AssertCreateJobPlaylist(t)
-	return t
+	asserts.AssertCreateJobPlaylist(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.JobInput = { ["Container"] = true, ["TimeSpan"] = true, ["InputCaptions"] = true, ["Encryption"] = true, ["FrameRate"] = true, ["Key"] = true, ["AspectRatio"] = true, ["DetectedProperties"] = true, ["Resolution"] = true, ["Interlaced"] = true, nil }
@@ -2459,8 +3236,14 @@ end
 -- * Interlaced [Interlaced] <p>Whether the input file is interlaced. If you want Elastic Transcoder to automatically detect whether the input file is interlaced, specify <code>auto</code>. If you want to specify whether the input file is interlaced, enter one of the following values:</p> <p> <code>true</code>, <code>false</code> </p> <p>If you specify a value other than <code>auto</code>, Elastic Transcoder disables automatic detection of interlacing.</p>
 -- @return JobInput structure as a key-value pair table
 function M.JobInput(args)
-	assert(args, "You must provdide an argument table when creating JobInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating JobInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Container"] = args["Container"],
 		["TimeSpan"] = args["TimeSpan"],
 		["InputCaptions"] = args["InputCaptions"],
@@ -2472,8 +3255,13 @@ function M.JobInput(args)
 		["Resolution"] = args["Resolution"],
 		["Interlaced"] = args["Interlaced"],
 	}
-	asserts.AssertJobInput(t)
-	return t
+	asserts.AssertJobInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListPipelinesResponse = { ["NextPageToken"] = true, ["Pipelines"] = true, nil }
@@ -2496,13 +3284,24 @@ end
 -- * Pipelines [Pipelines] <p>An array of <code>Pipeline</code> objects.</p>
 -- @return ListPipelinesResponse structure as a key-value pair table
 function M.ListPipelinesResponse(args)
-	assert(args, "You must provdide an argument table when creating ListPipelinesResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListPipelinesResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NextPageToken"] = args["NextPageToken"],
 		["Pipelines"] = args["Pipelines"],
 	}
-	asserts.AssertListPipelinesResponse(t)
-	return t
+	asserts.AssertListPipelinesResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CancelJobRequest = { ["Id"] = true, nil }
@@ -2525,12 +3324,24 @@ end
 -- Required key: Id
 -- @return CancelJobRequest structure as a key-value pair table
 function M.CancelJobRequest(args)
-	assert(args, "You must provdide an argument table when creating CancelJobRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CancelJobRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{Id}"] = args["Id"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Id"] = args["Id"],
 	}
-	asserts.AssertCancelJobRequest(t)
-	return t
+	asserts.AssertCancelJobRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 function asserts.AssertFilename(str)
@@ -3791,8 +4602,11 @@ function M.ReadPresetAsync(ReadPresetRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".ReadPreset",
 	}
+	for header,value in pairs(ReadPresetRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
 	if request_handler then
 		request_handler(settings.uri, "/2012-09-25/presets/{Id}", ReadPresetRequest, headers, settings, cb)
 	else
@@ -3823,8 +4637,11 @@ function M.CreateJobAsync(CreateJobRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".CreateJob",
 	}
+	for header,value in pairs(CreateJobRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/2012-09-25/jobs", CreateJobRequest, headers, settings, cb)
 	else
@@ -3855,8 +4672,11 @@ function M.CreatePresetAsync(CreatePresetRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".CreatePreset",
 	}
+	for header,value in pairs(CreatePresetRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/2012-09-25/presets", CreatePresetRequest, headers, settings, cb)
 	else
@@ -3887,8 +4707,11 @@ function M.UpdatePipelineNotificationsAsync(UpdatePipelineNotificationsRequest, 
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".UpdatePipelineNotifications",
 	}
+	for header,value in pairs(UpdatePipelineNotificationsRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/2012-09-25/pipelines/{Id}/notifications", UpdatePipelineNotificationsRequest, headers, settings, cb)
 	else
@@ -3919,8 +4742,11 @@ function M.ListPipelinesAsync(ListPipelinesRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".ListPipelines",
 	}
+	for header,value in pairs(ListPipelinesRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
 	if request_handler then
 		request_handler(settings.uri, "/2012-09-25/pipelines", ListPipelinesRequest, headers, settings, cb)
 	else
@@ -3951,8 +4777,11 @@ function M.DeletePipelineAsync(DeletePipelineRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DeletePipeline",
 	}
+	for header,value in pairs(DeletePipelineRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("DELETE")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE")
 	if request_handler then
 		request_handler(settings.uri, "/2012-09-25/pipelines/{Id}", DeletePipelineRequest, headers, settings, cb)
 	else
@@ -3983,8 +4812,11 @@ function M.ReadJobAsync(ReadJobRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".ReadJob",
 	}
+	for header,value in pairs(ReadJobRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
 	if request_handler then
 		request_handler(settings.uri, "/2012-09-25/jobs/{Id}", ReadJobRequest, headers, settings, cb)
 	else
@@ -4015,8 +4847,11 @@ function M.UpdatePipelineAsync(UpdatePipelineRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".UpdatePipeline",
 	}
+	for header,value in pairs(UpdatePipelineRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("PUT")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT")
 	if request_handler then
 		request_handler(settings.uri, "/2012-09-25/pipelines/{Id}", UpdatePipelineRequest, headers, settings, cb)
 	else
@@ -4047,8 +4882,11 @@ function M.ListPresetsAsync(ListPresetsRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".ListPresets",
 	}
+	for header,value in pairs(ListPresetsRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
 	if request_handler then
 		request_handler(settings.uri, "/2012-09-25/presets", ListPresetsRequest, headers, settings, cb)
 	else
@@ -4079,8 +4917,11 @@ function M.DeletePresetAsync(DeletePresetRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DeletePreset",
 	}
+	for header,value in pairs(DeletePresetRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("DELETE")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE")
 	if request_handler then
 		request_handler(settings.uri, "/2012-09-25/presets/{Id}", DeletePresetRequest, headers, settings, cb)
 	else
@@ -4111,8 +4952,11 @@ function M.ListJobsByPipelineAsync(ListJobsByPipelineRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".ListJobsByPipeline",
 	}
+	for header,value in pairs(ListJobsByPipelineRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
 	if request_handler then
 		request_handler(settings.uri, "/2012-09-25/jobsByPipeline/{PipelineId}", ListJobsByPipelineRequest, headers, settings, cb)
 	else
@@ -4143,8 +4987,11 @@ function M.CancelJobAsync(CancelJobRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".CancelJob",
 	}
+	for header,value in pairs(CancelJobRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("DELETE")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE")
 	if request_handler then
 		request_handler(settings.uri, "/2012-09-25/jobs/{Id}", CancelJobRequest, headers, settings, cb)
 	else
@@ -4175,8 +5022,11 @@ function M.UpdatePipelineStatusAsync(UpdatePipelineStatusRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".UpdatePipelineStatus",
 	}
+	for header,value in pairs(UpdatePipelineStatusRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/2012-09-25/pipelines/{Id}/status", UpdatePipelineStatusRequest, headers, settings, cb)
 	else
@@ -4207,8 +5057,11 @@ function M.CreatePipelineAsync(CreatePipelineRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".CreatePipeline",
 	}
+	for header,value in pairs(CreatePipelineRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/2012-09-25/pipelines", CreatePipelineRequest, headers, settings, cb)
 	else
@@ -4239,8 +5092,11 @@ function M.ReadPipelineAsync(ReadPipelineRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".ReadPipeline",
 	}
+	for header,value in pairs(ReadPipelineRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
 	if request_handler then
 		request_handler(settings.uri, "/2012-09-25/pipelines/{Id}", ReadPipelineRequest, headers, settings, cb)
 	else
@@ -4271,8 +5127,11 @@ function M.ListJobsByStatusAsync(ListJobsByStatusRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".ListJobsByStatus",
 	}
+	for header,value in pairs(ListJobsByStatusRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
 	if request_handler then
 		request_handler(settings.uri, "/2012-09-25/jobsByStatus/{Status}", ListJobsByStatusRequest, headers, settings, cb)
 	else

@@ -59,8 +59,14 @@ end
 -- Required key: secret
 -- @return ActionConfigurationProperty structure as a key-value pair table
 function M.ActionConfigurationProperty(args)
-	assert(args, "You must provdide an argument table when creating ActionConfigurationProperty")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ActionConfigurationProperty")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["description"] = args["description"],
 		["required"] = args["required"],
 		["secret"] = args["secret"],
@@ -69,8 +75,13 @@ function M.ActionConfigurationProperty(args)
 		["queryable"] = args["queryable"],
 		["name"] = args["name"],
 	}
-	asserts.AssertActionConfigurationProperty(t)
-	return t
+	asserts.AssertActionConfigurationProperty(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.PollForJobsInput = { ["actionTypeId"] = true, ["maxBatchSize"] = true, ["queryParam"] = true, nil }
@@ -97,14 +108,25 @@ end
 -- Required key: actionTypeId
 -- @return PollForJobsInput structure as a key-value pair table
 function M.PollForJobsInput(args)
-	assert(args, "You must provdide an argument table when creating PollForJobsInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating PollForJobsInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["actionTypeId"] = args["actionTypeId"],
 		["maxBatchSize"] = args["maxBatchSize"],
 		["queryParam"] = args["queryParam"],
 	}
-	asserts.AssertPollForJobsInput(t)
-	return t
+	asserts.AssertPollForJobsInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateCustomActionTypeInput = { ["category"] = true, ["settings"] = true, ["configurationProperties"] = true, ["version"] = true, ["provider"] = true, ["inputArtifactDetails"] = true, ["outputArtifactDetails"] = true, nil }
@@ -147,8 +169,14 @@ end
 -- Required key: outputArtifactDetails
 -- @return CreateCustomActionTypeInput structure as a key-value pair table
 function M.CreateCustomActionTypeInput(args)
-	assert(args, "You must provdide an argument table when creating CreateCustomActionTypeInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateCustomActionTypeInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["category"] = args["category"],
 		["settings"] = args["settings"],
 		["configurationProperties"] = args["configurationProperties"],
@@ -157,8 +185,13 @@ function M.CreateCustomActionTypeInput(args)
 		["inputArtifactDetails"] = args["inputArtifactDetails"],
 		["outputArtifactDetails"] = args["outputArtifactDetails"],
 	}
-	asserts.AssertCreateCustomActionTypeInput(t)
-	return t
+	asserts.AssertCreateCustomActionTypeInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.StageState = { ["actionStates"] = true, ["inboundTransitionState"] = true, ["latestExecution"] = true, ["stageName"] = true, nil }
@@ -185,15 +218,26 @@ end
 -- * stageName [StageName] <p>The name of the stage.</p>
 -- @return StageState structure as a key-value pair table
 function M.StageState(args)
-	assert(args, "You must provdide an argument table when creating StageState")
-	local t = { 
+	assert(args, "You must provide an argument table when creating StageState")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["actionStates"] = args["actionStates"],
 		["inboundTransitionState"] = args["inboundTransitionState"],
 		["latestExecution"] = args["latestExecution"],
 		["stageName"] = args["stageName"],
 	}
-	asserts.AssertStageState(t)
-	return t
+	asserts.AssertStageState(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetPipelineStateOutput = { ["stageStates"] = true, ["pipelineVersion"] = true, ["updated"] = true, ["pipelineName"] = true, ["created"] = true, nil }
@@ -222,16 +266,27 @@ end
 -- * created [Timestamp] <p>The date and time the pipeline was created, in timestamp format.</p>
 -- @return GetPipelineStateOutput structure as a key-value pair table
 function M.GetPipelineStateOutput(args)
-	assert(args, "You must provdide an argument table when creating GetPipelineStateOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetPipelineStateOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["stageStates"] = args["stageStates"],
 		["pipelineVersion"] = args["pipelineVersion"],
 		["updated"] = args["updated"],
 		["pipelineName"] = args["pipelineName"],
 		["created"] = args["created"],
 	}
-	asserts.AssertGetPipelineStateOutput(t)
-	return t
+	asserts.AssertGetPipelineStateOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListPipelinesOutput = { ["nextToken"] = true, ["pipelines"] = true, nil }
@@ -254,13 +309,24 @@ end
 -- * pipelines [PipelineList] <p>The list of pipelines.</p>
 -- @return ListPipelinesOutput structure as a key-value pair table
 function M.ListPipelinesOutput(args)
-	assert(args, "You must provdide an argument table when creating ListPipelinesOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListPipelinesOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["nextToken"] = args["nextToken"],
 		["pipelines"] = args["pipelines"],
 	}
-	asserts.AssertListPipelinesOutput(t)
-	return t
+	asserts.AssertListPipelinesOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ArtifactRevision = { ["revisionUrl"] = true, ["name"] = true, ["created"] = true, ["revisionId"] = true, ["revisionSummary"] = true, ["revisionChangeIdentifier"] = true, nil }
@@ -291,8 +357,14 @@ end
 -- * revisionChangeIdentifier [RevisionChangeIdentifier] <p>An additional identifier for a revision, such as a commit date or, for artifacts stored in Amazon S3 buckets, the ETag value.</p>
 -- @return ArtifactRevision structure as a key-value pair table
 function M.ArtifactRevision(args)
-	assert(args, "You must provdide an argument table when creating ArtifactRevision")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ArtifactRevision")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["revisionUrl"] = args["revisionUrl"],
 		["name"] = args["name"],
 		["created"] = args["created"],
@@ -300,8 +372,13 @@ function M.ArtifactRevision(args)
 		["revisionSummary"] = args["revisionSummary"],
 		["revisionChangeIdentifier"] = args["revisionChangeIdentifier"],
 	}
-	asserts.AssertArtifactRevision(t)
-	return t
+	asserts.AssertArtifactRevision(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ArtifactDetails = { ["maximumCount"] = true, ["minimumCount"] = true, nil }
@@ -328,13 +405,24 @@ end
 -- Required key: maximumCount
 -- @return ArtifactDetails structure as a key-value pair table
 function M.ArtifactDetails(args)
-	assert(args, "You must provdide an argument table when creating ArtifactDetails")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ArtifactDetails")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["maximumCount"] = args["maximumCount"],
 		["minimumCount"] = args["minimumCount"],
 	}
-	asserts.AssertArtifactDetails(t)
-	return t
+	asserts.AssertArtifactDetails(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.PutThirdPartyJobSuccessResultInput = { ["currentRevision"] = true, ["clientToken"] = true, ["executionDetails"] = true, ["continuationToken"] = true, ["jobId"] = true, nil }
@@ -367,16 +455,27 @@ end
 -- Required key: clientToken
 -- @return PutThirdPartyJobSuccessResultInput structure as a key-value pair table
 function M.PutThirdPartyJobSuccessResultInput(args)
-	assert(args, "You must provdide an argument table when creating PutThirdPartyJobSuccessResultInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating PutThirdPartyJobSuccessResultInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["currentRevision"] = args["currentRevision"],
 		["clientToken"] = args["clientToken"],
 		["executionDetails"] = args["executionDetails"],
 		["continuationToken"] = args["continuationToken"],
 		["jobId"] = args["jobId"],
 	}
-	asserts.AssertPutThirdPartyJobSuccessResultInput(t)
-	return t
+	asserts.AssertPutThirdPartyJobSuccessResultInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AcknowledgeJobOutput = { ["status"] = true, nil }
@@ -397,12 +496,23 @@ end
 -- * status [JobStatus] <p>Whether the job worker has received the specified job.</p>
 -- @return AcknowledgeJobOutput structure as a key-value pair table
 function M.AcknowledgeJobOutput(args)
-	assert(args, "You must provdide an argument table when creating AcknowledgeJobOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AcknowledgeJobOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["status"] = args["status"],
 	}
-	asserts.AssertAcknowledgeJobOutput(t)
-	return t
+	asserts.AssertAcknowledgeJobOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdatePipelineInput = { ["pipeline"] = true, nil }
@@ -425,12 +535,23 @@ end
 -- Required key: pipeline
 -- @return UpdatePipelineInput structure as a key-value pair table
 function M.UpdatePipelineInput(args)
-	assert(args, "You must provdide an argument table when creating UpdatePipelineInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdatePipelineInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["pipeline"] = args["pipeline"],
 	}
-	asserts.AssertUpdatePipelineInput(t)
-	return t
+	asserts.AssertUpdatePipelineInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Job = { ["nonce"] = true, ["data"] = true, ["id"] = true, ["accountId"] = true, nil }
@@ -457,15 +578,26 @@ end
 -- * accountId [AccountId] <p>The ID of the AWS account to use when performing the job.</p>
 -- @return Job structure as a key-value pair table
 function M.Job(args)
-	assert(args, "You must provdide an argument table when creating Job")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Job")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["nonce"] = args["nonce"],
 		["data"] = args["data"],
 		["id"] = args["id"],
 		["accountId"] = args["accountId"],
 	}
-	asserts.AssertJob(t)
-	return t
+	asserts.AssertJob(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ErrorDetails = { ["message"] = true, ["code"] = true, nil }
@@ -488,13 +620,24 @@ end
 -- * code [Code] <p>The system ID or error number code of the error.</p>
 -- @return ErrorDetails structure as a key-value pair table
 function M.ErrorDetails(args)
-	assert(args, "You must provdide an argument table when creating ErrorDetails")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ErrorDetails")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 		["code"] = args["code"],
 	}
-	asserts.AssertErrorDetails(t)
-	return t
+	asserts.AssertErrorDetails(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdatePipelineOutput = { ["pipeline"] = true, nil }
@@ -515,12 +658,23 @@ end
 -- * pipeline [PipelineDeclaration] <p>The structure of the updated pipeline.</p>
 -- @return UpdatePipelineOutput structure as a key-value pair table
 function M.UpdatePipelineOutput(args)
-	assert(args, "You must provdide an argument table when creating UpdatePipelineOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdatePipelineOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["pipeline"] = args["pipeline"],
 	}
-	asserts.AssertUpdatePipelineOutput(t)
-	return t
+	asserts.AssertUpdatePipelineOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ActionType = { ["inputArtifactDetails"] = true, ["actionConfigurationProperties"] = true, ["outputArtifactDetails"] = true, ["id"] = true, ["settings"] = true, nil }
@@ -555,16 +709,27 @@ end
 -- Required key: outputArtifactDetails
 -- @return ActionType structure as a key-value pair table
 function M.ActionType(args)
-	assert(args, "You must provdide an argument table when creating ActionType")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ActionType")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["inputArtifactDetails"] = args["inputArtifactDetails"],
 		["actionConfigurationProperties"] = args["actionConfigurationProperties"],
 		["outputArtifactDetails"] = args["outputArtifactDetails"],
 		["id"] = args["id"],
 		["settings"] = args["settings"],
 	}
-	asserts.AssertActionType(t)
-	return t
+	asserts.AssertActionType(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidActionDeclarationException = { nil }
@@ -583,11 +748,22 @@ end
 -- Valid keys:
 -- @return InvalidActionDeclarationException structure as a key-value pair table
 function M.InvalidActionDeclarationException(args)
-	assert(args, "You must provdide an argument table when creating InvalidActionDeclarationException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidActionDeclarationException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertInvalidActionDeclarationException(t)
-	return t
+	asserts.AssertInvalidActionDeclarationException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.JobDetails = { ["data"] = true, ["id"] = true, ["accountId"] = true, nil }
@@ -612,14 +788,25 @@ end
 -- * accountId [AccountId] <p>The AWS account ID associated with the job.</p>
 -- @return JobDetails structure as a key-value pair table
 function M.JobDetails(args)
-	assert(args, "You must provdide an argument table when creating JobDetails")
-	local t = { 
+	assert(args, "You must provide an argument table when creating JobDetails")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["data"] = args["data"],
 		["id"] = args["id"],
 		["accountId"] = args["accountId"],
 	}
-	asserts.AssertJobDetails(t)
-	return t
+	asserts.AssertJobDetails(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.StageNotFoundException = { nil }
@@ -638,11 +825,22 @@ end
 -- Valid keys:
 -- @return StageNotFoundException structure as a key-value pair table
 function M.StageNotFoundException(args)
-	assert(args, "You must provdide an argument table when creating StageNotFoundException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating StageNotFoundException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertStageNotFoundException(t)
-	return t
+	asserts.AssertStageNotFoundException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DisableStageTransitionInput = { ["reason"] = true, ["pipelineName"] = true, ["stageName"] = true, ["transitionType"] = true, nil }
@@ -677,15 +875,26 @@ end
 -- Required key: reason
 -- @return DisableStageTransitionInput structure as a key-value pair table
 function M.DisableStageTransitionInput(args)
-	assert(args, "You must provdide an argument table when creating DisableStageTransitionInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DisableStageTransitionInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["reason"] = args["reason"],
 		["pipelineName"] = args["pipelineName"],
 		["stageName"] = args["stageName"],
 		["transitionType"] = args["transitionType"],
 	}
-	asserts.AssertDisableStageTransitionInput(t)
-	return t
+	asserts.AssertDisableStageTransitionInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AcknowledgeJobInput = { ["nonce"] = true, ["jobId"] = true, nil }
@@ -712,13 +921,24 @@ end
 -- Required key: nonce
 -- @return AcknowledgeJobInput structure as a key-value pair table
 function M.AcknowledgeJobInput(args)
-	assert(args, "You must provdide an argument table when creating AcknowledgeJobInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AcknowledgeJobInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["nonce"] = args["nonce"],
 		["jobId"] = args["jobId"],
 	}
-	asserts.AssertAcknowledgeJobInput(t)
-	return t
+	asserts.AssertAcknowledgeJobInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AcknowledgeThirdPartyJobOutput = { ["status"] = true, nil }
@@ -739,12 +959,23 @@ end
 -- * status [JobStatus] <p>The status information for the third party job, if any.</p>
 -- @return AcknowledgeThirdPartyJobOutput structure as a key-value pair table
 function M.AcknowledgeThirdPartyJobOutput(args)
-	assert(args, "You must provdide an argument table when creating AcknowledgeThirdPartyJobOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AcknowledgeThirdPartyJobOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["status"] = args["status"],
 	}
-	asserts.AssertAcknowledgeThirdPartyJobOutput(t)
-	return t
+	asserts.AssertAcknowledgeThirdPartyJobOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreatePipelineInput = { ["pipeline"] = true, nil }
@@ -767,12 +998,23 @@ end
 -- Required key: pipeline
 -- @return CreatePipelineInput structure as a key-value pair table
 function M.CreatePipelineInput(args)
-	assert(args, "You must provdide an argument table when creating CreatePipelineInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreatePipelineInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["pipeline"] = args["pipeline"],
 	}
-	asserts.AssertCreatePipelineInput(t)
-	return t
+	asserts.AssertCreatePipelineInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListPipelineExecutionsOutput = { ["pipelineExecutionSummaries"] = true, ["nextToken"] = true, nil }
@@ -795,13 +1037,24 @@ end
 -- * nextToken [NextToken] <p>A token that can be used in the next list pipeline executions call to return the next set of pipeline executions. To view all items in the list, continue to call this operation with each subsequent token until no more nextToken values are returned.</p>
 -- @return ListPipelineExecutionsOutput structure as a key-value pair table
 function M.ListPipelineExecutionsOutput(args)
-	assert(args, "You must provdide an argument table when creating ListPipelineExecutionsOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListPipelineExecutionsOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["pipelineExecutionSummaries"] = args["pipelineExecutionSummaries"],
 		["nextToken"] = args["nextToken"],
 	}
-	asserts.AssertListPipelineExecutionsOutput(t)
-	return t
+	asserts.AssertListPipelineExecutionsOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ActionContext = { ["name"] = true, nil }
@@ -822,12 +1075,23 @@ end
 -- * name [ActionName] <p>The name of the action within the context of a job.</p>
 -- @return ActionContext structure as a key-value pair table
 function M.ActionContext(args)
-	assert(args, "You must provdide an argument table when creating ActionContext")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ActionContext")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["name"] = args["name"],
 	}
-	asserts.AssertActionContext(t)
-	return t
+	asserts.AssertActionContext(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.PutApprovalResultInput = { ["actionName"] = true, ["token"] = true, ["pipelineName"] = true, ["result"] = true, ["stageName"] = true, nil }
@@ -866,16 +1130,27 @@ end
 -- Required key: token
 -- @return PutApprovalResultInput structure as a key-value pair table
 function M.PutApprovalResultInput(args)
-	assert(args, "You must provdide an argument table when creating PutApprovalResultInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating PutApprovalResultInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["actionName"] = args["actionName"],
 		["token"] = args["token"],
 		["pipelineName"] = args["pipelineName"],
 		["result"] = args["result"],
 		["stageName"] = args["stageName"],
 	}
-	asserts.AssertPutApprovalResultInput(t)
-	return t
+	asserts.AssertPutApprovalResultInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidStructureException = { nil }
@@ -894,11 +1169,22 @@ end
 -- Valid keys:
 -- @return InvalidStructureException structure as a key-value pair table
 function M.InvalidStructureException(args)
-	assert(args, "You must provdide an argument table when creating InvalidStructureException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidStructureException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertInvalidStructureException(t)
-	return t
+	asserts.AssertInvalidStructureException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.PutActionRevisionOutput = { ["pipelineExecutionId"] = true, ["newRevision"] = true, nil }
@@ -921,13 +1207,24 @@ end
 -- * newRevision [Boolean] <p>Indicates whether the artifact revision was previously used in an execution of the specified pipeline.</p>
 -- @return PutActionRevisionOutput structure as a key-value pair table
 function M.PutActionRevisionOutput(args)
-	assert(args, "You must provdide an argument table when creating PutActionRevisionOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating PutActionRevisionOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["pipelineExecutionId"] = args["pipelineExecutionId"],
 		["newRevision"] = args["newRevision"],
 	}
-	asserts.AssertPutActionRevisionOutput(t)
-	return t
+	asserts.AssertPutActionRevisionOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InputArtifact = { ["name"] = true, nil }
@@ -950,12 +1247,23 @@ end
 -- Required key: name
 -- @return InputArtifact structure as a key-value pair table
 function M.InputArtifact(args)
-	assert(args, "You must provdide an argument table when creating InputArtifact")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InputArtifact")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["name"] = args["name"],
 	}
-	asserts.AssertInputArtifact(t)
-	return t
+	asserts.AssertInputArtifact(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetPipelineExecutionOutput = { ["pipelineExecution"] = true, nil }
@@ -976,12 +1284,23 @@ end
 -- * pipelineExecution [PipelineExecution] <p>Represents information about the execution of a pipeline.</p>
 -- @return GetPipelineExecutionOutput structure as a key-value pair table
 function M.GetPipelineExecutionOutput(args)
-	assert(args, "You must provdide an argument table when creating GetPipelineExecutionOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetPipelineExecutionOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["pipelineExecution"] = args["pipelineExecution"],
 	}
-	asserts.AssertGetPipelineExecutionOutput(t)
-	return t
+	asserts.AssertGetPipelineExecutionOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ApprovalAlreadyCompletedException = { nil }
@@ -1000,11 +1319,22 @@ end
 -- Valid keys:
 -- @return ApprovalAlreadyCompletedException structure as a key-value pair table
 function M.ApprovalAlreadyCompletedException(args)
-	assert(args, "You must provdide an argument table when creating ApprovalAlreadyCompletedException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ApprovalAlreadyCompletedException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertApprovalAlreadyCompletedException(t)
-	return t
+	asserts.AssertApprovalAlreadyCompletedException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ActionTypeId = { ["category"] = true, ["owner"] = true, ["version"] = true, ["provider"] = true, nil }
@@ -1039,15 +1369,26 @@ end
 -- Required key: version
 -- @return ActionTypeId structure as a key-value pair table
 function M.ActionTypeId(args)
-	assert(args, "You must provdide an argument table when creating ActionTypeId")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ActionTypeId")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["category"] = args["category"],
 		["owner"] = args["owner"],
 		["version"] = args["version"],
 		["provider"] = args["provider"],
 	}
-	asserts.AssertActionTypeId(t)
-	return t
+	asserts.AssertActionTypeId(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.TransitionState = { ["disabledReason"] = true, ["enabled"] = true, ["lastChangedAt"] = true, ["lastChangedBy"] = true, nil }
@@ -1074,15 +1415,26 @@ end
 -- * lastChangedBy [LastChangedBy] <p>The ID of the user who last changed the transition state.</p>
 -- @return TransitionState structure as a key-value pair table
 function M.TransitionState(args)
-	assert(args, "You must provdide an argument table when creating TransitionState")
-	local t = { 
+	assert(args, "You must provide an argument table when creating TransitionState")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["disabledReason"] = args["disabledReason"],
 		["enabled"] = args["enabled"],
 		["lastChangedAt"] = args["lastChangedAt"],
 		["lastChangedBy"] = args["lastChangedBy"],
 	}
-	asserts.AssertTransitionState(t)
-	return t
+	asserts.AssertTransitionState(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ActionState = { ["actionName"] = true, ["revisionUrl"] = true, ["entityUrl"] = true, ["latestExecution"] = true, ["currentRevision"] = true, nil }
@@ -1111,16 +1463,27 @@ end
 -- * currentRevision [ActionRevision] <p>Represents information about the version (or revision) of an action.</p>
 -- @return ActionState structure as a key-value pair table
 function M.ActionState(args)
-	assert(args, "You must provdide an argument table when creating ActionState")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ActionState")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["actionName"] = args["actionName"],
 		["revisionUrl"] = args["revisionUrl"],
 		["entityUrl"] = args["entityUrl"],
 		["latestExecution"] = args["latestExecution"],
 		["currentRevision"] = args["currentRevision"],
 	}
-	asserts.AssertActionState(t)
-	return t
+	asserts.AssertActionState(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.LimitExceededException = { nil }
@@ -1139,11 +1502,22 @@ end
 -- Valid keys:
 -- @return LimitExceededException structure as a key-value pair table
 function M.LimitExceededException(args)
-	assert(args, "You must provdide an argument table when creating LimitExceededException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating LimitExceededException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertLimitExceededException(t)
-	return t
+	asserts.AssertLimitExceededException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.PutActionRevisionInput = { ["actionName"] = true, ["pipelineName"] = true, ["stageName"] = true, ["actionRevision"] = true, nil }
@@ -1178,15 +1552,26 @@ end
 -- Required key: actionRevision
 -- @return PutActionRevisionInput structure as a key-value pair table
 function M.PutActionRevisionInput(args)
-	assert(args, "You must provdide an argument table when creating PutActionRevisionInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating PutActionRevisionInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["actionName"] = args["actionName"],
 		["pipelineName"] = args["pipelineName"],
 		["stageName"] = args["stageName"],
 		["actionRevision"] = args["actionRevision"],
 	}
-	asserts.AssertPutActionRevisionInput(t)
-	return t
+	asserts.AssertPutActionRevisionInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetPipelineInput = { ["version"] = true, ["name"] = true, nil }
@@ -1211,13 +1596,24 @@ end
 -- Required key: name
 -- @return GetPipelineInput structure as a key-value pair table
 function M.GetPipelineInput(args)
-	assert(args, "You must provdide an argument table when creating GetPipelineInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetPipelineInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["version"] = args["version"],
 		["name"] = args["name"],
 	}
-	asserts.AssertGetPipelineInput(t)
-	return t
+	asserts.AssertGetPipelineInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.PipelineDeclaration = { ["roleArn"] = true, ["stages"] = true, ["artifactStore"] = true, ["name"] = true, ["version"] = true, nil }
@@ -1254,16 +1650,27 @@ end
 -- Required key: stages
 -- @return PipelineDeclaration structure as a key-value pair table
 function M.PipelineDeclaration(args)
-	assert(args, "You must provdide an argument table when creating PipelineDeclaration")
-	local t = { 
+	assert(args, "You must provide an argument table when creating PipelineDeclaration")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["roleArn"] = args["roleArn"],
 		["stages"] = args["stages"],
 		["artifactStore"] = args["artifactStore"],
 		["name"] = args["name"],
 		["version"] = args["version"],
 	}
-	asserts.AssertPipelineDeclaration(t)
-	return t
+	asserts.AssertPipelineDeclaration(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidNextTokenException = { nil }
@@ -1282,11 +1689,22 @@ end
 -- Valid keys:
 -- @return InvalidNextTokenException structure as a key-value pair table
 function M.InvalidNextTokenException(args)
-	assert(args, "You must provdide an argument table when creating InvalidNextTokenException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidNextTokenException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertInvalidNextTokenException(t)
-	return t
+	asserts.AssertInvalidNextTokenException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.PipelineNameInUseException = { nil }
@@ -1305,11 +1723,22 @@ end
 -- Valid keys:
 -- @return PipelineNameInUseException structure as a key-value pair table
 function M.PipelineNameInUseException(args)
-	assert(args, "You must provdide an argument table when creating PipelineNameInUseException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating PipelineNameInUseException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertPipelineNameInUseException(t)
-	return t
+	asserts.AssertPipelineNameInUseException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.StartPipelineExecutionInput = { ["name"] = true, nil }
@@ -1332,12 +1761,23 @@ end
 -- Required key: name
 -- @return StartPipelineExecutionInput structure as a key-value pair table
 function M.StartPipelineExecutionInput(args)
-	assert(args, "You must provdide an argument table when creating StartPipelineExecutionInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating StartPipelineExecutionInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["name"] = args["name"],
 	}
-	asserts.AssertStartPipelineExecutionInput(t)
-	return t
+	asserts.AssertStartPipelineExecutionInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ActionConfiguration = { ["configuration"] = true, nil }
@@ -1358,12 +1798,23 @@ end
 -- * configuration [ActionConfigurationMap] <p>The configuration data for the action.</p>
 -- @return ActionConfiguration structure as a key-value pair table
 function M.ActionConfiguration(args)
-	assert(args, "You must provdide an argument table when creating ActionConfiguration")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ActionConfiguration")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["configuration"] = args["configuration"],
 	}
-	asserts.AssertActionConfiguration(t)
-	return t
+	asserts.AssertActionConfiguration(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ArtifactStore = { ["type"] = true, ["location"] = true, ["encryptionKey"] = true, nil }
@@ -1392,14 +1843,25 @@ end
 -- Required key: location
 -- @return ArtifactStore structure as a key-value pair table
 function M.ArtifactStore(args)
-	assert(args, "You must provdide an argument table when creating ArtifactStore")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ArtifactStore")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["type"] = args["type"],
 		["location"] = args["location"],
 		["encryptionKey"] = args["encryptionKey"],
 	}
-	asserts.AssertArtifactStore(t)
-	return t
+	asserts.AssertArtifactStore(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeletePipelineInput = { ["name"] = true, nil }
@@ -1422,12 +1884,23 @@ end
 -- Required key: name
 -- @return DeletePipelineInput structure as a key-value pair table
 function M.DeletePipelineInput(args)
-	assert(args, "You must provdide an argument table when creating DeletePipelineInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeletePipelineInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["name"] = args["name"],
 	}
-	asserts.AssertDeletePipelineInput(t)
-	return t
+	asserts.AssertDeletePipelineInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ThirdPartyJobDetails = { ["nonce"] = true, ["data"] = true, ["id"] = true, nil }
@@ -1452,14 +1925,25 @@ end
 -- * id [ThirdPartyJobId] <p>The identifier used to identify the job details in AWS CodePipeline.</p>
 -- @return ThirdPartyJobDetails structure as a key-value pair table
 function M.ThirdPartyJobDetails(args)
-	assert(args, "You must provdide an argument table when creating ThirdPartyJobDetails")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ThirdPartyJobDetails")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["nonce"] = args["nonce"],
 		["data"] = args["data"],
 		["id"] = args["id"],
 	}
-	asserts.AssertThirdPartyJobDetails(t)
-	return t
+	asserts.AssertThirdPartyJobDetails(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.FailureDetails = { ["message"] = true, ["type"] = true, ["externalExecutionId"] = true, nil }
@@ -1488,14 +1972,25 @@ end
 -- Required key: message
 -- @return FailureDetails structure as a key-value pair table
 function M.FailureDetails(args)
-	assert(args, "You must provdide an argument table when creating FailureDetails")
-	local t = { 
+	assert(args, "You must provide an argument table when creating FailureDetails")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 		["type"] = args["type"],
 		["externalExecutionId"] = args["externalExecutionId"],
 	}
-	asserts.AssertFailureDetails(t)
-	return t
+	asserts.AssertFailureDetails(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ActionExecution = { ["status"] = true, ["lastStatusChange"] = true, ["externalExecutionId"] = true, ["errorDetails"] = true, ["externalExecutionUrl"] = true, ["summary"] = true, ["token"] = true, ["lastUpdatedBy"] = true, ["percentComplete"] = true, nil }
@@ -1532,8 +2027,14 @@ end
 -- * percentComplete [Percentage] <p>A percentage of completeness of the action as it runs.</p>
 -- @return ActionExecution structure as a key-value pair table
 function M.ActionExecution(args)
-	assert(args, "You must provdide an argument table when creating ActionExecution")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ActionExecution")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["status"] = args["status"],
 		["lastStatusChange"] = args["lastStatusChange"],
 		["externalExecutionId"] = args["externalExecutionId"],
@@ -1544,8 +2045,13 @@ function M.ActionExecution(args)
 		["lastUpdatedBy"] = args["lastUpdatedBy"],
 		["percentComplete"] = args["percentComplete"],
 	}
-	asserts.AssertActionExecution(t)
-	return t
+	asserts.AssertActionExecution(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.StartPipelineExecutionOutput = { ["pipelineExecutionId"] = true, nil }
@@ -1566,12 +2072,23 @@ end
 -- * pipelineExecutionId [PipelineExecutionId] <p>The unique system-generated ID of the pipeline execution that was started.</p>
 -- @return StartPipelineExecutionOutput structure as a key-value pair table
 function M.StartPipelineExecutionOutput(args)
-	assert(args, "You must provdide an argument table when creating StartPipelineExecutionOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating StartPipelineExecutionOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["pipelineExecutionId"] = args["pipelineExecutionId"],
 	}
-	asserts.AssertStartPipelineExecutionOutput(t)
-	return t
+	asserts.AssertStartPipelineExecutionOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreatePipelineOutput = { ["pipeline"] = true, nil }
@@ -1592,12 +2109,23 @@ end
 -- * pipeline [PipelineDeclaration] <p>Represents the structure of actions and stages to be performed in the pipeline. </p>
 -- @return CreatePipelineOutput structure as a key-value pair table
 function M.CreatePipelineOutput(args)
-	assert(args, "You must provdide an argument table when creating CreatePipelineOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreatePipelineOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["pipeline"] = args["pipeline"],
 	}
-	asserts.AssertCreatePipelineOutput(t)
-	return t
+	asserts.AssertCreatePipelineOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidStageDeclarationException = { nil }
@@ -1616,11 +2144,22 @@ end
 -- Valid keys:
 -- @return InvalidStageDeclarationException structure as a key-value pair table
 function M.InvalidStageDeclarationException(args)
-	assert(args, "You must provdide an argument table when creating InvalidStageDeclarationException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidStageDeclarationException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertInvalidStageDeclarationException(t)
-	return t
+	asserts.AssertInvalidStageDeclarationException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ActionNotFoundException = { nil }
@@ -1639,11 +2178,22 @@ end
 -- Valid keys:
 -- @return ActionNotFoundException structure as a key-value pair table
 function M.ActionNotFoundException(args)
-	assert(args, "You must provdide an argument table when creating ActionNotFoundException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ActionNotFoundException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertActionNotFoundException(t)
-	return t
+	asserts.AssertActionNotFoundException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ActionRevision = { ["revisionChangeId"] = true, ["revisionId"] = true, ["created"] = true, nil }
@@ -1674,14 +2224,25 @@ end
 -- Required key: created
 -- @return ActionRevision structure as a key-value pair table
 function M.ActionRevision(args)
-	assert(args, "You must provdide an argument table when creating ActionRevision")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ActionRevision")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["revisionChangeId"] = args["revisionChangeId"],
 		["revisionId"] = args["revisionId"],
 		["created"] = args["created"],
 	}
-	asserts.AssertActionRevision(t)
-	return t
+	asserts.AssertActionRevision(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.PutJobFailureResultInput = { ["failureDetails"] = true, ["jobId"] = true, nil }
@@ -1708,13 +2269,24 @@ end
 -- Required key: failureDetails
 -- @return PutJobFailureResultInput structure as a key-value pair table
 function M.PutJobFailureResultInput(args)
-	assert(args, "You must provdide an argument table when creating PutJobFailureResultInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating PutJobFailureResultInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["failureDetails"] = args["failureDetails"],
 		["jobId"] = args["jobId"],
 	}
-	asserts.AssertPutJobFailureResultInput(t)
-	return t
+	asserts.AssertPutJobFailureResultInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListPipelinesInput = { ["nextToken"] = true, nil }
@@ -1735,12 +2307,23 @@ end
 -- * nextToken [NextToken] <p>An identifier that was returned from the previous list pipelines call, which can be used to return the next set of pipelines in the list.</p>
 -- @return ListPipelinesInput structure as a key-value pair table
 function M.ListPipelinesInput(args)
-	assert(args, "You must provdide an argument table when creating ListPipelinesInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListPipelinesInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["nextToken"] = args["nextToken"],
 	}
-	asserts.AssertListPipelinesInput(t)
-	return t
+	asserts.AssertListPipelinesInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteCustomActionTypeInput = { ["category"] = true, ["version"] = true, ["provider"] = true, nil }
@@ -1771,14 +2354,25 @@ end
 -- Required key: version
 -- @return DeleteCustomActionTypeInput structure as a key-value pair table
 function M.DeleteCustomActionTypeInput(args)
-	assert(args, "You must provdide an argument table when creating DeleteCustomActionTypeInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteCustomActionTypeInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["category"] = args["category"],
 		["version"] = args["version"],
 		["provider"] = args["provider"],
 	}
-	asserts.AssertDeleteCustomActionTypeInput(t)
-	return t
+	asserts.AssertDeleteCustomActionTypeInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AcknowledgeThirdPartyJobInput = { ["nonce"] = true, ["clientToken"] = true, ["jobId"] = true, nil }
@@ -1809,14 +2403,25 @@ end
 -- Required key: clientToken
 -- @return AcknowledgeThirdPartyJobInput structure as a key-value pair table
 function M.AcknowledgeThirdPartyJobInput(args)
-	assert(args, "You must provdide an argument table when creating AcknowledgeThirdPartyJobInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AcknowledgeThirdPartyJobInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["nonce"] = args["nonce"],
 		["clientToken"] = args["clientToken"],
 		["jobId"] = args["jobId"],
 	}
-	asserts.AssertAcknowledgeThirdPartyJobInput(t)
-	return t
+	asserts.AssertAcknowledgeThirdPartyJobInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.PutThirdPartyJobFailureResultInput = { ["clientToken"] = true, ["failureDetails"] = true, ["jobId"] = true, nil }
@@ -1847,14 +2452,25 @@ end
 -- Required key: failureDetails
 -- @return PutThirdPartyJobFailureResultInput structure as a key-value pair table
 function M.PutThirdPartyJobFailureResultInput(args)
-	assert(args, "You must provdide an argument table when creating PutThirdPartyJobFailureResultInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating PutThirdPartyJobFailureResultInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["clientToken"] = args["clientToken"],
 		["failureDetails"] = args["failureDetails"],
 		["jobId"] = args["jobId"],
 	}
-	asserts.AssertPutThirdPartyJobFailureResultInput(t)
-	return t
+	asserts.AssertPutThirdPartyJobFailureResultInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AWSSessionCredentials = { ["secretAccessKey"] = true, ["sessionToken"] = true, ["accessKeyId"] = true, nil }
@@ -1885,14 +2501,25 @@ end
 -- Required key: sessionToken
 -- @return AWSSessionCredentials structure as a key-value pair table
 function M.AWSSessionCredentials(args)
-	assert(args, "You must provdide an argument table when creating AWSSessionCredentials")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AWSSessionCredentials")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["secretAccessKey"] = args["secretAccessKey"],
 		["sessionToken"] = args["sessionToken"],
 		["accessKeyId"] = args["accessKeyId"],
 	}
-	asserts.AssertAWSSessionCredentials(t)
-	return t
+	asserts.AssertAWSSessionCredentials(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.S3ArtifactLocation = { ["objectKey"] = true, ["bucketName"] = true, nil }
@@ -1919,13 +2546,24 @@ end
 -- Required key: objectKey
 -- @return S3ArtifactLocation structure as a key-value pair table
 function M.S3ArtifactLocation(args)
-	assert(args, "You must provdide an argument table when creating S3ArtifactLocation")
-	local t = { 
+	assert(args, "You must provide an argument table when creating S3ArtifactLocation")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["objectKey"] = args["objectKey"],
 		["bucketName"] = args["bucketName"],
 	}
-	asserts.AssertS3ArtifactLocation(t)
-	return t
+	asserts.AssertS3ArtifactLocation(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidJobStateException = { nil }
@@ -1944,11 +2582,22 @@ end
 -- Valid keys:
 -- @return InvalidJobStateException structure as a key-value pair table
 function M.InvalidJobStateException(args)
-	assert(args, "You must provdide an argument table when creating InvalidJobStateException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidJobStateException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertInvalidJobStateException(t)
-	return t
+	asserts.AssertInvalidJobStateException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetPipelineOutput = { ["pipeline"] = true, nil }
@@ -1969,12 +2618,23 @@ end
 -- * pipeline [PipelineDeclaration] <p>Represents the structure of actions and stages to be performed in the pipeline. </p>
 -- @return GetPipelineOutput structure as a key-value pair table
 function M.GetPipelineOutput(args)
-	assert(args, "You must provdide an argument table when creating GetPipelineOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetPipelineOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["pipeline"] = args["pipeline"],
 	}
-	asserts.AssertGetPipelineOutput(t)
-	return t
+	asserts.AssertGetPipelineOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListPipelineExecutionsInput = { ["nextToken"] = true, ["pipelineName"] = true, ["maxResults"] = true, nil }
@@ -2001,14 +2661,25 @@ end
 -- Required key: pipelineName
 -- @return ListPipelineExecutionsInput structure as a key-value pair table
 function M.ListPipelineExecutionsInput(args)
-	assert(args, "You must provdide an argument table when creating ListPipelineExecutionsInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListPipelineExecutionsInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["nextToken"] = args["nextToken"],
 		["pipelineName"] = args["pipelineName"],
 		["maxResults"] = args["maxResults"],
 	}
-	asserts.AssertListPipelineExecutionsInput(t)
-	return t
+	asserts.AssertListPipelineExecutionsInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListActionTypesOutput = { ["actionTypes"] = true, ["nextToken"] = true, nil }
@@ -2033,13 +2704,24 @@ end
 -- Required key: actionTypes
 -- @return ListActionTypesOutput structure as a key-value pair table
 function M.ListActionTypesOutput(args)
-	assert(args, "You must provdide an argument table when creating ListActionTypesOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListActionTypesOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["actionTypes"] = args["actionTypes"],
 		["nextToken"] = args["nextToken"],
 	}
-	asserts.AssertListActionTypesOutput(t)
-	return t
+	asserts.AssertListActionTypesOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ApprovalResult = { ["status"] = true, ["summary"] = true, nil }
@@ -2066,13 +2748,24 @@ end
 -- Required key: status
 -- @return ApprovalResult structure as a key-value pair table
 function M.ApprovalResult(args)
-	assert(args, "You must provdide an argument table when creating ApprovalResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ApprovalResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["status"] = args["status"],
 		["summary"] = args["summary"],
 	}
-	asserts.AssertApprovalResult(t)
-	return t
+	asserts.AssertApprovalResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.OutputArtifact = { ["name"] = true, nil }
@@ -2095,12 +2788,23 @@ end
 -- Required key: name
 -- @return OutputArtifact structure as a key-value pair table
 function M.OutputArtifact(args)
-	assert(args, "You must provdide an argument table when creating OutputArtifact")
-	local t = { 
+	assert(args, "You must provide an argument table when creating OutputArtifact")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["name"] = args["name"],
 	}
-	asserts.AssertOutputArtifact(t)
-	return t
+	asserts.AssertOutputArtifact(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.EncryptionKey = { ["type"] = true, ["id"] = true, nil }
@@ -2127,13 +2831,24 @@ end
 -- Required key: type
 -- @return EncryptionKey structure as a key-value pair table
 function M.EncryptionKey(args)
-	assert(args, "You must provdide an argument table when creating EncryptionKey")
-	local t = { 
+	assert(args, "You must provide an argument table when creating EncryptionKey")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["type"] = args["type"],
 		["id"] = args["id"],
 	}
-	asserts.AssertEncryptionKey(t)
-	return t
+	asserts.AssertEncryptionKey(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidClientTokenException = { nil }
@@ -2152,11 +2867,22 @@ end
 -- Valid keys:
 -- @return InvalidClientTokenException structure as a key-value pair table
 function M.InvalidClientTokenException(args)
-	assert(args, "You must provdide an argument table when creating InvalidClientTokenException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidClientTokenException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertInvalidClientTokenException(t)
-	return t
+	asserts.AssertInvalidClientTokenException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ValidationException = { nil }
@@ -2175,11 +2901,22 @@ end
 -- Valid keys:
 -- @return ValidationException structure as a key-value pair table
 function M.ValidationException(args)
-	assert(args, "You must provdide an argument table when creating ValidationException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ValidationException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertValidationException(t)
-	return t
+	asserts.AssertValidationException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetJobDetailsInput = { ["jobId"] = true, nil }
@@ -2202,12 +2939,23 @@ end
 -- Required key: jobId
 -- @return GetJobDetailsInput structure as a key-value pair table
 function M.GetJobDetailsInput(args)
-	assert(args, "You must provdide an argument table when creating GetJobDetailsInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetJobDetailsInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["jobId"] = args["jobId"],
 	}
-	asserts.AssertGetJobDetailsInput(t)
-	return t
+	asserts.AssertGetJobDetailsInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.PollForThirdPartyJobsOutput = { ["jobs"] = true, nil }
@@ -2228,12 +2976,23 @@ end
 -- * jobs [ThirdPartyJobList] <p>Information about the jobs to take action on.</p>
 -- @return PollForThirdPartyJobsOutput structure as a key-value pair table
 function M.PollForThirdPartyJobsOutput(args)
-	assert(args, "You must provdide an argument table when creating PollForThirdPartyJobsOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating PollForThirdPartyJobsOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["jobs"] = args["jobs"],
 	}
-	asserts.AssertPollForThirdPartyJobsOutput(t)
-	return t
+	asserts.AssertPollForThirdPartyJobsOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.RetryStageExecutionInput = { ["pipelineExecutionId"] = true, ["retryMode"] = true, ["pipelineName"] = true, ["stageName"] = true, nil }
@@ -2268,15 +3027,26 @@ end
 -- Required key: retryMode
 -- @return RetryStageExecutionInput structure as a key-value pair table
 function M.RetryStageExecutionInput(args)
-	assert(args, "You must provdide an argument table when creating RetryStageExecutionInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating RetryStageExecutionInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["pipelineExecutionId"] = args["pipelineExecutionId"],
 		["retryMode"] = args["retryMode"],
 		["pipelineName"] = args["pipelineName"],
 		["stageName"] = args["stageName"],
 	}
-	asserts.AssertRetryStageExecutionInput(t)
-	return t
+	asserts.AssertRetryStageExecutionInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetThirdPartyJobDetailsOutput = { ["jobDetails"] = true, nil }
@@ -2297,12 +3067,23 @@ end
 -- * jobDetails [ThirdPartyJobDetails] <p>The details of the job, including any protected values defined for the job.</p>
 -- @return GetThirdPartyJobDetailsOutput structure as a key-value pair table
 function M.GetThirdPartyJobDetailsOutput(args)
-	assert(args, "You must provdide an argument table when creating GetThirdPartyJobDetailsOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetThirdPartyJobDetailsOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["jobDetails"] = args["jobDetails"],
 	}
-	asserts.AssertGetThirdPartyJobDetailsOutput(t)
-	return t
+	asserts.AssertGetThirdPartyJobDetailsOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ExecutionDetails = { ["percentComplete"] = true, ["externalExecutionId"] = true, ["summary"] = true, nil }
@@ -2327,14 +3108,25 @@ end
 -- * summary [ExecutionSummary] <p>The summary of the current status of the actions.</p>
 -- @return ExecutionDetails structure as a key-value pair table
 function M.ExecutionDetails(args)
-	assert(args, "You must provdide an argument table when creating ExecutionDetails")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ExecutionDetails")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["percentComplete"] = args["percentComplete"],
 		["externalExecutionId"] = args["externalExecutionId"],
 		["summary"] = args["summary"],
 	}
-	asserts.AssertExecutionDetails(t)
-	return t
+	asserts.AssertExecutionDetails(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ArtifactLocation = { ["type"] = true, ["s3Location"] = true, nil }
@@ -2357,13 +3149,24 @@ end
 -- * s3Location [S3ArtifactLocation] <p>The Amazon S3 bucket that contains the artifact.</p>
 -- @return ArtifactLocation structure as a key-value pair table
 function M.ArtifactLocation(args)
-	assert(args, "You must provdide an argument table when creating ArtifactLocation")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ArtifactLocation")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["type"] = args["type"],
 		["s3Location"] = args["s3Location"],
 	}
-	asserts.AssertArtifactLocation(t)
-	return t
+	asserts.AssertArtifactLocation(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ActionDeclaration = { ["inputArtifacts"] = true, ["name"] = true, ["roleArn"] = true, ["actionTypeId"] = true, ["outputArtifacts"] = true, ["configuration"] = true, ["runOrder"] = true, nil }
@@ -2400,8 +3203,14 @@ end
 -- Required key: actionTypeId
 -- @return ActionDeclaration structure as a key-value pair table
 function M.ActionDeclaration(args)
-	assert(args, "You must provdide an argument table when creating ActionDeclaration")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ActionDeclaration")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["inputArtifacts"] = args["inputArtifacts"],
 		["name"] = args["name"],
 		["roleArn"] = args["roleArn"],
@@ -2410,8 +3219,13 @@ function M.ActionDeclaration(args)
 		["configuration"] = args["configuration"],
 		["runOrder"] = args["runOrder"],
 	}
-	asserts.AssertActionDeclaration(t)
-	return t
+	asserts.AssertActionDeclaration(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidBlockerDeclarationException = { nil }
@@ -2430,11 +3244,22 @@ end
 -- Valid keys:
 -- @return InvalidBlockerDeclarationException structure as a key-value pair table
 function M.InvalidBlockerDeclarationException(args)
-	assert(args, "You must provdide an argument table when creating InvalidBlockerDeclarationException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidBlockerDeclarationException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertInvalidBlockerDeclarationException(t)
-	return t
+	asserts.AssertInvalidBlockerDeclarationException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.StageContext = { ["name"] = true, nil }
@@ -2455,12 +3280,23 @@ end
 -- * name [StageName] <p>The name of the stage.</p>
 -- @return StageContext structure as a key-value pair table
 function M.StageContext(args)
-	assert(args, "You must provdide an argument table when creating StageContext")
-	local t = { 
+	assert(args, "You must provide an argument table when creating StageContext")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["name"] = args["name"],
 	}
-	asserts.AssertStageContext(t)
-	return t
+	asserts.AssertStageContext(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ActionTypeSettings = { ["entityUrlTemplate"] = true, ["revisionUrlTemplate"] = true, ["thirdPartyConfigurationUrl"] = true, ["executionUrlTemplate"] = true, nil }
@@ -2487,15 +3323,26 @@ end
 -- * executionUrlTemplate [UrlTemplate] <p>The URL returned to the AWS CodePipeline console that contains a link to the top-level landing page for the external system, such as console page for AWS CodeDeploy. This link is shown on the pipeline view page in the AWS CodePipeline console and provides a link to the execution entity of the external action.</p>
 -- @return ActionTypeSettings structure as a key-value pair table
 function M.ActionTypeSettings(args)
-	assert(args, "You must provdide an argument table when creating ActionTypeSettings")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ActionTypeSettings")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["entityUrlTemplate"] = args["entityUrlTemplate"],
 		["revisionUrlTemplate"] = args["revisionUrlTemplate"],
 		["thirdPartyConfigurationUrl"] = args["thirdPartyConfigurationUrl"],
 		["executionUrlTemplate"] = args["executionUrlTemplate"],
 	}
-	asserts.AssertActionTypeSettings(t)
-	return t
+	asserts.AssertActionTypeSettings(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetPipelineExecutionInput = { ["pipelineExecutionId"] = true, ["pipelineName"] = true, nil }
@@ -2522,13 +3369,24 @@ end
 -- Required key: pipelineExecutionId
 -- @return GetPipelineExecutionInput structure as a key-value pair table
 function M.GetPipelineExecutionInput(args)
-	assert(args, "You must provdide an argument table when creating GetPipelineExecutionInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetPipelineExecutionInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["pipelineExecutionId"] = args["pipelineExecutionId"],
 		["pipelineName"] = args["pipelineName"],
 	}
-	asserts.AssertGetPipelineExecutionInput(t)
-	return t
+	asserts.AssertGetPipelineExecutionInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.NotLatestPipelineExecutionException = { nil }
@@ -2547,11 +3405,22 @@ end
 -- Valid keys:
 -- @return NotLatestPipelineExecutionException structure as a key-value pair table
 function M.NotLatestPipelineExecutionException(args)
-	assert(args, "You must provdide an argument table when creating NotLatestPipelineExecutionException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating NotLatestPipelineExecutionException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertNotLatestPipelineExecutionException(t)
-	return t
+	asserts.AssertNotLatestPipelineExecutionException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateCustomActionTypeOutput = { ["actionType"] = true, nil }
@@ -2574,12 +3443,23 @@ end
 -- Required key: actionType
 -- @return CreateCustomActionTypeOutput structure as a key-value pair table
 function M.CreateCustomActionTypeOutput(args)
-	assert(args, "You must provdide an argument table when creating CreateCustomActionTypeOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateCustomActionTypeOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["actionType"] = args["actionType"],
 	}
-	asserts.AssertCreateCustomActionTypeOutput(t)
-	return t
+	asserts.AssertCreateCustomActionTypeOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.PutJobSuccessResultInput = { ["currentRevision"] = true, ["executionDetails"] = true, ["continuationToken"] = true, ["jobId"] = true, nil }
@@ -2608,15 +3488,26 @@ end
 -- Required key: jobId
 -- @return PutJobSuccessResultInput structure as a key-value pair table
 function M.PutJobSuccessResultInput(args)
-	assert(args, "You must provdide an argument table when creating PutJobSuccessResultInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating PutJobSuccessResultInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["currentRevision"] = args["currentRevision"],
 		["executionDetails"] = args["executionDetails"],
 		["continuationToken"] = args["continuationToken"],
 		["jobId"] = args["jobId"],
 	}
-	asserts.AssertPutJobSuccessResultInput(t)
-	return t
+	asserts.AssertPutJobSuccessResultInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.PollForJobsOutput = { ["jobs"] = true, nil }
@@ -2637,12 +3528,23 @@ end
 -- * jobs [JobList] <p>Information about the jobs to take action on.</p>
 -- @return PollForJobsOutput structure as a key-value pair table
 function M.PollForJobsOutput(args)
-	assert(args, "You must provdide an argument table when creating PollForJobsOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating PollForJobsOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["jobs"] = args["jobs"],
 	}
-	asserts.AssertPollForJobsOutput(t)
-	return t
+	asserts.AssertPollForJobsOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.PipelineExecutionSummary = { ["pipelineExecutionId"] = true, ["status"] = true, ["lastUpdateTime"] = true, ["startTime"] = true, nil }
@@ -2669,15 +3571,26 @@ end
 -- * startTime [Timestamp] <p>The date and time when the pipeline execution began, in timestamp format.</p>
 -- @return PipelineExecutionSummary structure as a key-value pair table
 function M.PipelineExecutionSummary(args)
-	assert(args, "You must provdide an argument table when creating PipelineExecutionSummary")
-	local t = { 
+	assert(args, "You must provide an argument table when creating PipelineExecutionSummary")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["pipelineExecutionId"] = args["pipelineExecutionId"],
 		["status"] = args["status"],
 		["lastUpdateTime"] = args["lastUpdateTime"],
 		["startTime"] = args["startTime"],
 	}
-	asserts.AssertPipelineExecutionSummary(t)
-	return t
+	asserts.AssertPipelineExecutionSummary(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.JobData = { ["inputArtifacts"] = true, ["pipelineContext"] = true, ["encryptionKey"] = true, ["actionTypeId"] = true, ["outputArtifacts"] = true, ["actionConfiguration"] = true, ["continuationToken"] = true, ["artifactCredentials"] = true, nil }
@@ -2712,8 +3625,14 @@ end
 -- * artifactCredentials [AWSSessionCredentials] <p>Represents an AWS session credentials object. These credentials are temporary credentials that are issued by AWS Secure Token Service (STS). They can be used to access input and output artifacts in the Amazon S3 bucket used to store artifact for the pipeline in AWS CodePipeline.</p>
 -- @return JobData structure as a key-value pair table
 function M.JobData(args)
-	assert(args, "You must provdide an argument table when creating JobData")
-	local t = { 
+	assert(args, "You must provide an argument table when creating JobData")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["inputArtifacts"] = args["inputArtifacts"],
 		["pipelineContext"] = args["pipelineContext"],
 		["encryptionKey"] = args["encryptionKey"],
@@ -2723,8 +3642,13 @@ function M.JobData(args)
 		["continuationToken"] = args["continuationToken"],
 		["artifactCredentials"] = args["artifactCredentials"],
 	}
-	asserts.AssertJobData(t)
-	return t
+	asserts.AssertJobData(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.EnableStageTransitionInput = { ["pipelineName"] = true, ["stageName"] = true, ["transitionType"] = true, nil }
@@ -2755,14 +3679,25 @@ end
 -- Required key: transitionType
 -- @return EnableStageTransitionInput structure as a key-value pair table
 function M.EnableStageTransitionInput(args)
-	assert(args, "You must provdide an argument table when creating EnableStageTransitionInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating EnableStageTransitionInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["pipelineName"] = args["pipelineName"],
 		["stageName"] = args["stageName"],
 		["transitionType"] = args["transitionType"],
 	}
-	asserts.AssertEnableStageTransitionInput(t)
-	return t
+	asserts.AssertEnableStageTransitionInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ActionTypeNotFoundException = { nil }
@@ -2781,11 +3716,22 @@ end
 -- Valid keys:
 -- @return ActionTypeNotFoundException structure as a key-value pair table
 function M.ActionTypeNotFoundException(args)
-	assert(args, "You must provdide an argument table when creating ActionTypeNotFoundException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ActionTypeNotFoundException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertActionTypeNotFoundException(t)
-	return t
+	asserts.AssertActionTypeNotFoundException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.JobNotFoundException = { nil }
@@ -2804,11 +3750,22 @@ end
 -- Valid keys:
 -- @return JobNotFoundException structure as a key-value pair table
 function M.JobNotFoundException(args)
-	assert(args, "You must provdide an argument table when creating JobNotFoundException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating JobNotFoundException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertJobNotFoundException(t)
-	return t
+	asserts.AssertJobNotFoundException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetPipelineStateInput = { ["name"] = true, nil }
@@ -2831,12 +3788,23 @@ end
 -- Required key: name
 -- @return GetPipelineStateInput structure as a key-value pair table
 function M.GetPipelineStateInput(args)
-	assert(args, "You must provdide an argument table when creating GetPipelineStateInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetPipelineStateInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["name"] = args["name"],
 	}
-	asserts.AssertGetPipelineStateInput(t)
-	return t
+	asserts.AssertGetPipelineStateInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.PipelineContext = { ["action"] = true, ["pipelineName"] = true, ["stage"] = true, nil }
@@ -2861,14 +3829,25 @@ end
 -- * stage [StageContext] <p>The stage of the pipeline.</p>
 -- @return PipelineContext structure as a key-value pair table
 function M.PipelineContext(args)
-	assert(args, "You must provdide an argument table when creating PipelineContext")
-	local t = { 
+	assert(args, "You must provide an argument table when creating PipelineContext")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["action"] = args["action"],
 		["pipelineName"] = args["pipelineName"],
 		["stage"] = args["stage"],
 	}
-	asserts.AssertPipelineContext(t)
-	return t
+	asserts.AssertPipelineContext(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetJobDetailsOutput = { ["jobDetails"] = true, nil }
@@ -2889,12 +3868,23 @@ end
 -- * jobDetails [JobDetails] <p>The details of the job.</p> <note> <p>If AWSSessionCredentials is used, a long-running job can call GetJobDetails again to obtain new credentials.</p> </note>
 -- @return GetJobDetailsOutput structure as a key-value pair table
 function M.GetJobDetailsOutput(args)
-	assert(args, "You must provdide an argument table when creating GetJobDetailsOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetJobDetailsOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["jobDetails"] = args["jobDetails"],
 	}
-	asserts.AssertGetJobDetailsOutput(t)
-	return t
+	asserts.AssertGetJobDetailsOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.PutApprovalResultOutput = { ["approvedAt"] = true, nil }
@@ -2915,12 +3905,23 @@ end
 -- * approvedAt [Timestamp] <p>The timestamp showing when the approval or rejection was submitted.</p>
 -- @return PutApprovalResultOutput structure as a key-value pair table
 function M.PutApprovalResultOutput(args)
-	assert(args, "You must provdide an argument table when creating PutApprovalResultOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating PutApprovalResultOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["approvedAt"] = args["approvedAt"],
 	}
-	asserts.AssertPutApprovalResultOutput(t)
-	return t
+	asserts.AssertPutApprovalResultOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.StageNotRetryableException = { nil }
@@ -2939,11 +3940,22 @@ end
 -- Valid keys:
 -- @return StageNotRetryableException structure as a key-value pair table
 function M.StageNotRetryableException(args)
-	assert(args, "You must provdide an argument table when creating StageNotRetryableException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating StageNotRetryableException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertStageNotRetryableException(t)
-	return t
+	asserts.AssertStageNotRetryableException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CurrentRevision = { ["changeIdentifier"] = true, ["created"] = true, ["revisionSummary"] = true, ["revision"] = true, nil }
@@ -2974,15 +3986,26 @@ end
 -- Required key: changeIdentifier
 -- @return CurrentRevision structure as a key-value pair table
 function M.CurrentRevision(args)
-	assert(args, "You must provdide an argument table when creating CurrentRevision")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CurrentRevision")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["changeIdentifier"] = args["changeIdentifier"],
 		["created"] = args["created"],
 		["revisionSummary"] = args["revisionSummary"],
 		["revision"] = args["revision"],
 	}
-	asserts.AssertCurrentRevision(t)
-	return t
+	asserts.AssertCurrentRevision(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidApprovalTokenException = { nil }
@@ -3001,11 +4024,22 @@ end
 -- Valid keys:
 -- @return InvalidApprovalTokenException structure as a key-value pair table
 function M.InvalidApprovalTokenException(args)
-	assert(args, "You must provdide an argument table when creating InvalidApprovalTokenException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidApprovalTokenException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertInvalidApprovalTokenException(t)
-	return t
+	asserts.AssertInvalidApprovalTokenException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetThirdPartyJobDetailsInput = { ["clientToken"] = true, ["jobId"] = true, nil }
@@ -3032,13 +4066,24 @@ end
 -- Required key: clientToken
 -- @return GetThirdPartyJobDetailsInput structure as a key-value pair table
 function M.GetThirdPartyJobDetailsInput(args)
-	assert(args, "You must provdide an argument table when creating GetThirdPartyJobDetailsInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetThirdPartyJobDetailsInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["clientToken"] = args["clientToken"],
 		["jobId"] = args["jobId"],
 	}
-	asserts.AssertGetThirdPartyJobDetailsInput(t)
-	return t
+	asserts.AssertGetThirdPartyJobDetailsInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.StageExecution = { ["pipelineExecutionId"] = true, ["status"] = true, nil }
@@ -3065,13 +4110,24 @@ end
 -- Required key: status
 -- @return StageExecution structure as a key-value pair table
 function M.StageExecution(args)
-	assert(args, "You must provdide an argument table when creating StageExecution")
-	local t = { 
+	assert(args, "You must provide an argument table when creating StageExecution")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["pipelineExecutionId"] = args["pipelineExecutionId"],
 		["status"] = args["status"],
 	}
-	asserts.AssertStageExecution(t)
-	return t
+	asserts.AssertStageExecution(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Artifact = { ["location"] = true, ["name"] = true, ["revision"] = true, nil }
@@ -3096,14 +4152,25 @@ end
 -- * revision [Revision] <p>The artifact's revision ID. Depending on the type of object, this could be a commit ID (GitHub) or a revision ID (Amazon S3).</p>
 -- @return Artifact structure as a key-value pair table
 function M.Artifact(args)
-	assert(args, "You must provdide an argument table when creating Artifact")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Artifact")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["location"] = args["location"],
 		["name"] = args["name"],
 		["revision"] = args["revision"],
 	}
-	asserts.AssertArtifact(t)
-	return t
+	asserts.AssertArtifact(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.PipelineVersionNotFoundException = { nil }
@@ -3122,11 +4189,22 @@ end
 -- Valid keys:
 -- @return PipelineVersionNotFoundException structure as a key-value pair table
 function M.PipelineVersionNotFoundException(args)
-	assert(args, "You must provdide an argument table when creating PipelineVersionNotFoundException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating PipelineVersionNotFoundException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertPipelineVersionNotFoundException(t)
-	return t
+	asserts.AssertPipelineVersionNotFoundException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidJobException = { nil }
@@ -3145,11 +4223,22 @@ end
 -- Valid keys:
 -- @return InvalidJobException structure as a key-value pair table
 function M.InvalidJobException(args)
-	assert(args, "You must provdide an argument table when creating InvalidJobException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidJobException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertInvalidJobException(t)
-	return t
+	asserts.AssertInvalidJobException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ThirdPartyJob = { ["clientId"] = true, ["jobId"] = true, nil }
@@ -3172,13 +4261,24 @@ end
 -- * jobId [JobId] <p>The identifier used to identify the job in AWS CodePipeline.</p>
 -- @return ThirdPartyJob structure as a key-value pair table
 function M.ThirdPartyJob(args)
-	assert(args, "You must provdide an argument table when creating ThirdPartyJob")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ThirdPartyJob")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["clientId"] = args["clientId"],
 		["jobId"] = args["jobId"],
 	}
-	asserts.AssertThirdPartyJob(t)
-	return t
+	asserts.AssertThirdPartyJob(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.StageDeclaration = { ["blockers"] = true, ["name"] = true, ["actions"] = true, nil }
@@ -3207,14 +4307,25 @@ end
 -- Required key: actions
 -- @return StageDeclaration structure as a key-value pair table
 function M.StageDeclaration(args)
-	assert(args, "You must provdide an argument table when creating StageDeclaration")
-	local t = { 
+	assert(args, "You must provide an argument table when creating StageDeclaration")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["blockers"] = args["blockers"],
 		["name"] = args["name"],
 		["actions"] = args["actions"],
 	}
-	asserts.AssertStageDeclaration(t)
-	return t
+	asserts.AssertStageDeclaration(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.BlockerDeclaration = { ["type"] = true, ["name"] = true, nil }
@@ -3241,13 +4352,24 @@ end
 -- Required key: type
 -- @return BlockerDeclaration structure as a key-value pair table
 function M.BlockerDeclaration(args)
-	assert(args, "You must provdide an argument table when creating BlockerDeclaration")
-	local t = { 
+	assert(args, "You must provide an argument table when creating BlockerDeclaration")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["type"] = args["type"],
 		["name"] = args["name"],
 	}
-	asserts.AssertBlockerDeclaration(t)
-	return t
+	asserts.AssertBlockerDeclaration(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.PipelineSummary = { ["updated"] = true, ["version"] = true, ["name"] = true, ["created"] = true, nil }
@@ -3274,15 +4396,26 @@ end
 -- * created [Timestamp] <p>The date and time the pipeline was created, in timestamp format.</p>
 -- @return PipelineSummary structure as a key-value pair table
 function M.PipelineSummary(args)
-	assert(args, "You must provdide an argument table when creating PipelineSummary")
-	local t = { 
+	assert(args, "You must provide an argument table when creating PipelineSummary")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["updated"] = args["updated"],
 		["version"] = args["version"],
 		["name"] = args["name"],
 		["created"] = args["created"],
 	}
-	asserts.AssertPipelineSummary(t)
-	return t
+	asserts.AssertPipelineSummary(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.RetryStageExecutionOutput = { ["pipelineExecutionId"] = true, nil }
@@ -3303,12 +4436,23 @@ end
 -- * pipelineExecutionId [PipelineExecutionId] <p>The ID of the current workflow execution in the failed stage.</p>
 -- @return RetryStageExecutionOutput structure as a key-value pair table
 function M.RetryStageExecutionOutput(args)
-	assert(args, "You must provdide an argument table when creating RetryStageExecutionOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating RetryStageExecutionOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["pipelineExecutionId"] = args["pipelineExecutionId"],
 	}
-	asserts.AssertRetryStageExecutionOutput(t)
-	return t
+	asserts.AssertRetryStageExecutionOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidNonceException = { nil }
@@ -3327,11 +4471,22 @@ end
 -- Valid keys:
 -- @return InvalidNonceException structure as a key-value pair table
 function M.InvalidNonceException(args)
-	assert(args, "You must provdide an argument table when creating InvalidNonceException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidNonceException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertInvalidNonceException(t)
-	return t
+	asserts.AssertInvalidNonceException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.PipelineNotFoundException = { nil }
@@ -3350,11 +4505,22 @@ end
 -- Valid keys:
 -- @return PipelineNotFoundException structure as a key-value pair table
 function M.PipelineNotFoundException(args)
-	assert(args, "You must provdide an argument table when creating PipelineNotFoundException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating PipelineNotFoundException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertPipelineNotFoundException(t)
-	return t
+	asserts.AssertPipelineNotFoundException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.PipelineExecution = { ["pipelineExecutionId"] = true, ["pipelineVersion"] = true, ["pipelineName"] = true, ["status"] = true, ["artifactRevisions"] = true, nil }
@@ -3383,16 +4549,27 @@ end
 -- * artifactRevisions [ArtifactRevisionList] <p>A list of ArtifactRevision objects included in a pipeline execution.</p>
 -- @return PipelineExecution structure as a key-value pair table
 function M.PipelineExecution(args)
-	assert(args, "You must provdide an argument table when creating PipelineExecution")
-	local t = { 
+	assert(args, "You must provide an argument table when creating PipelineExecution")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["pipelineExecutionId"] = args["pipelineExecutionId"],
 		["pipelineVersion"] = args["pipelineVersion"],
 		["pipelineName"] = args["pipelineName"],
 		["status"] = args["status"],
 		["artifactRevisions"] = args["artifactRevisions"],
 	}
-	asserts.AssertPipelineExecution(t)
-	return t
+	asserts.AssertPipelineExecution(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ThirdPartyJobData = { ["inputArtifacts"] = true, ["pipelineContext"] = true, ["encryptionKey"] = true, ["actionTypeId"] = true, ["outputArtifacts"] = true, ["actionConfiguration"] = true, ["continuationToken"] = true, ["artifactCredentials"] = true, nil }
@@ -3427,8 +4604,14 @@ end
 -- * artifactCredentials [AWSSessionCredentials] <p>Represents an AWS session credentials object. These credentials are temporary credentials that are issued by AWS Secure Token Service (STS). They can be used to access input and output artifacts in the Amazon S3 bucket used to store artifact for the pipeline in AWS CodePipeline. </p>
 -- @return ThirdPartyJobData structure as a key-value pair table
 function M.ThirdPartyJobData(args)
-	assert(args, "You must provdide an argument table when creating ThirdPartyJobData")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ThirdPartyJobData")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["inputArtifacts"] = args["inputArtifacts"],
 		["pipelineContext"] = args["pipelineContext"],
 		["encryptionKey"] = args["encryptionKey"],
@@ -3438,8 +4621,13 @@ function M.ThirdPartyJobData(args)
 		["continuationToken"] = args["continuationToken"],
 		["artifactCredentials"] = args["artifactCredentials"],
 	}
-	asserts.AssertThirdPartyJobData(t)
-	return t
+	asserts.AssertThirdPartyJobData(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.PollForThirdPartyJobsInput = { ["actionTypeId"] = true, ["maxBatchSize"] = true, nil }
@@ -3464,13 +4652,24 @@ end
 -- Required key: actionTypeId
 -- @return PollForThirdPartyJobsInput structure as a key-value pair table
 function M.PollForThirdPartyJobsInput(args)
-	assert(args, "You must provdide an argument table when creating PollForThirdPartyJobsInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating PollForThirdPartyJobsInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["actionTypeId"] = args["actionTypeId"],
 		["maxBatchSize"] = args["maxBatchSize"],
 	}
-	asserts.AssertPollForThirdPartyJobsInput(t)
-	return t
+	asserts.AssertPollForThirdPartyJobsInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.PipelineExecutionNotFoundException = { nil }
@@ -3489,11 +4688,22 @@ end
 -- Valid keys:
 -- @return PipelineExecutionNotFoundException structure as a key-value pair table
 function M.PipelineExecutionNotFoundException(args)
-	assert(args, "You must provdide an argument table when creating PipelineExecutionNotFoundException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating PipelineExecutionNotFoundException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertPipelineExecutionNotFoundException(t)
-	return t
+	asserts.AssertPipelineExecutionNotFoundException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListActionTypesInput = { ["nextToken"] = true, ["actionOwnerFilter"] = true, nil }
@@ -3516,13 +4726,24 @@ end
 -- * actionOwnerFilter [ActionOwner] <p>Filters the list of action types to those created by a specified entity.</p>
 -- @return ListActionTypesInput structure as a key-value pair table
 function M.ListActionTypesInput(args)
-	assert(args, "You must provdide an argument table when creating ListActionTypesInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListActionTypesInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["nextToken"] = args["nextToken"],
 		["actionOwnerFilter"] = args["actionOwnerFilter"],
 	}
-	asserts.AssertListActionTypesInput(t)
-	return t
+	asserts.AssertListActionTypesInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 function asserts.AssertActionName(str)
@@ -4649,8 +5870,11 @@ function M.EnableStageTransitionAsync(EnableStageTransitionInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "CodePipeline_20150709.EnableStageTransition",
 	}
+	for header,value in pairs(EnableStageTransitionInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", EnableStageTransitionInput, headers, settings, cb)
 	else
@@ -4681,8 +5905,11 @@ function M.RetryStageExecutionAsync(RetryStageExecutionInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "CodePipeline_20150709.RetryStageExecution",
 	}
+	for header,value in pairs(RetryStageExecutionInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", RetryStageExecutionInput, headers, settings, cb)
 	else
@@ -4713,8 +5940,11 @@ function M.PutJobSuccessResultAsync(PutJobSuccessResultInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "CodePipeline_20150709.PutJobSuccessResult",
 	}
+	for header,value in pairs(PutJobSuccessResultInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", PutJobSuccessResultInput, headers, settings, cb)
 	else
@@ -4745,8 +5975,11 @@ function M.PollForThirdPartyJobsAsync(PollForThirdPartyJobsInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "CodePipeline_20150709.PollForThirdPartyJobs",
 	}
+	for header,value in pairs(PollForThirdPartyJobsInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", PollForThirdPartyJobsInput, headers, settings, cb)
 	else
@@ -4777,8 +6010,11 @@ function M.GetThirdPartyJobDetailsAsync(GetThirdPartyJobDetailsInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "CodePipeline_20150709.GetThirdPartyJobDetails",
 	}
+	for header,value in pairs(GetThirdPartyJobDetailsInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", GetThirdPartyJobDetailsInput, headers, settings, cb)
 	else
@@ -4809,8 +6045,11 @@ function M.DeletePipelineAsync(DeletePipelineInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "CodePipeline_20150709.DeletePipeline",
 	}
+	for header,value in pairs(DeletePipelineInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DeletePipelineInput, headers, settings, cb)
 	else
@@ -4841,8 +6080,11 @@ function M.UpdatePipelineAsync(UpdatePipelineInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "CodePipeline_20150709.UpdatePipeline",
 	}
+	for header,value in pairs(UpdatePipelineInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdatePipelineInput, headers, settings, cb)
 	else
@@ -4873,8 +6115,11 @@ function M.AcknowledgeThirdPartyJobAsync(AcknowledgeThirdPartyJobInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "CodePipeline_20150709.AcknowledgeThirdPartyJob",
 	}
+	for header,value in pairs(AcknowledgeThirdPartyJobInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", AcknowledgeThirdPartyJobInput, headers, settings, cb)
 	else
@@ -4905,8 +6150,11 @@ function M.ListActionTypesAsync(ListActionTypesInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "CodePipeline_20150709.ListActionTypes",
 	}
+	for header,value in pairs(ListActionTypesInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ListActionTypesInput, headers, settings, cb)
 	else
@@ -4937,8 +6185,11 @@ function M.PutJobFailureResultAsync(PutJobFailureResultInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "CodePipeline_20150709.PutJobFailureResult",
 	}
+	for header,value in pairs(PutJobFailureResultInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", PutJobFailureResultInput, headers, settings, cb)
 	else
@@ -4969,8 +6220,11 @@ function M.GetPipelineExecutionAsync(GetPipelineExecutionInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "CodePipeline_20150709.GetPipelineExecution",
 	}
+	for header,value in pairs(GetPipelineExecutionInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", GetPipelineExecutionInput, headers, settings, cb)
 	else
@@ -5001,8 +6255,11 @@ function M.PutThirdPartyJobSuccessResultAsync(PutThirdPartyJobSuccessResultInput
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "CodePipeline_20150709.PutThirdPartyJobSuccessResult",
 	}
+	for header,value in pairs(PutThirdPartyJobSuccessResultInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", PutThirdPartyJobSuccessResultInput, headers, settings, cb)
 	else
@@ -5033,8 +6290,11 @@ function M.AcknowledgeJobAsync(AcknowledgeJobInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "CodePipeline_20150709.AcknowledgeJob",
 	}
+	for header,value in pairs(AcknowledgeJobInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", AcknowledgeJobInput, headers, settings, cb)
 	else
@@ -5065,8 +6325,11 @@ function M.PutActionRevisionAsync(PutActionRevisionInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "CodePipeline_20150709.PutActionRevision",
 	}
+	for header,value in pairs(PutActionRevisionInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", PutActionRevisionInput, headers, settings, cb)
 	else
@@ -5097,8 +6360,11 @@ function M.ListPipelinesAsync(ListPipelinesInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "CodePipeline_20150709.ListPipelines",
 	}
+	for header,value in pairs(ListPipelinesInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ListPipelinesInput, headers, settings, cb)
 	else
@@ -5129,8 +6395,11 @@ function M.StartPipelineExecutionAsync(StartPipelineExecutionInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "CodePipeline_20150709.StartPipelineExecution",
 	}
+	for header,value in pairs(StartPipelineExecutionInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", StartPipelineExecutionInput, headers, settings, cb)
 	else
@@ -5161,8 +6430,11 @@ function M.PutApprovalResultAsync(PutApprovalResultInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "CodePipeline_20150709.PutApprovalResult",
 	}
+	for header,value in pairs(PutApprovalResultInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", PutApprovalResultInput, headers, settings, cb)
 	else
@@ -5193,8 +6465,11 @@ function M.PutThirdPartyJobFailureResultAsync(PutThirdPartyJobFailureResultInput
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "CodePipeline_20150709.PutThirdPartyJobFailureResult",
 	}
+	for header,value in pairs(PutThirdPartyJobFailureResultInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", PutThirdPartyJobFailureResultInput, headers, settings, cb)
 	else
@@ -5225,8 +6500,11 @@ function M.PollForJobsAsync(PollForJobsInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "CodePipeline_20150709.PollForJobs",
 	}
+	for header,value in pairs(PollForJobsInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", PollForJobsInput, headers, settings, cb)
 	else
@@ -5257,8 +6535,11 @@ function M.GetPipelineStateAsync(GetPipelineStateInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "CodePipeline_20150709.GetPipelineState",
 	}
+	for header,value in pairs(GetPipelineStateInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", GetPipelineStateInput, headers, settings, cb)
 	else
@@ -5289,8 +6570,11 @@ function M.CreateCustomActionTypeAsync(CreateCustomActionTypeInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "CodePipeline_20150709.CreateCustomActionType",
 	}
+	for header,value in pairs(CreateCustomActionTypeInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateCustomActionTypeInput, headers, settings, cb)
 	else
@@ -5321,8 +6605,11 @@ function M.CreatePipelineAsync(CreatePipelineInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "CodePipeline_20150709.CreatePipeline",
 	}
+	for header,value in pairs(CreatePipelineInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", CreatePipelineInput, headers, settings, cb)
 	else
@@ -5353,8 +6640,11 @@ function M.GetJobDetailsAsync(GetJobDetailsInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "CodePipeline_20150709.GetJobDetails",
 	}
+	for header,value in pairs(GetJobDetailsInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", GetJobDetailsInput, headers, settings, cb)
 	else
@@ -5385,8 +6675,11 @@ function M.GetPipelineAsync(GetPipelineInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "CodePipeline_20150709.GetPipeline",
 	}
+	for header,value in pairs(GetPipelineInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", GetPipelineInput, headers, settings, cb)
 	else
@@ -5417,8 +6710,11 @@ function M.DeleteCustomActionTypeAsync(DeleteCustomActionTypeInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "CodePipeline_20150709.DeleteCustomActionType",
 	}
+	for header,value in pairs(DeleteCustomActionTypeInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteCustomActionTypeInput, headers, settings, cb)
 	else
@@ -5449,8 +6745,11 @@ function M.ListPipelineExecutionsAsync(ListPipelineExecutionsInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "CodePipeline_20150709.ListPipelineExecutions",
 	}
+	for header,value in pairs(ListPipelineExecutionsInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ListPipelineExecutionsInput, headers, settings, cb)
 	else
@@ -5481,8 +6780,11 @@ function M.DisableStageTransitionAsync(DisableStageTransitionInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "CodePipeline_20150709.DisableStageTransition",
 	}
+	for header,value in pairs(DisableStageTransitionInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DisableStageTransitionInput, headers, settings, cb)
 	else

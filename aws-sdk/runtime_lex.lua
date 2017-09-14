@@ -41,13 +41,25 @@ end
 -- * retryAfterSeconds [String] 
 -- @return LimitExceededException structure as a key-value pair table
 function M.LimitExceededException(args)
-	assert(args, "You must provdide an argument table when creating LimitExceededException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating LimitExceededException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+        ["Retry-After"] = args["retryAfterSeconds"],
+    }
+	local all_args = { 
 		["message"] = args["message"],
 		["retryAfterSeconds"] = args["retryAfterSeconds"],
 	}
-	asserts.AssertLimitExceededException(t)
-	return t
+	asserts.AssertLimitExceededException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.BadRequestException = { ["message"] = true, nil }
@@ -68,12 +80,23 @@ end
 -- * message [String] 
 -- @return BadRequestException structure as a key-value pair table
 function M.BadRequestException(args)
-	assert(args, "You must provdide an argument table when creating BadRequestException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating BadRequestException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertBadRequestException(t)
-	return t
+	asserts.AssertBadRequestException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.PostTextRequest = { ["inputText"] = true, ["userId"] = true, ["botName"] = true, ["sessionAttributes"] = true, ["botAlias"] = true, nil }
@@ -110,16 +133,30 @@ end
 -- Required key: inputText
 -- @return PostTextRequest structure as a key-value pair table
 function M.PostTextRequest(args)
-	assert(args, "You must provdide an argument table when creating PostTextRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating PostTextRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{userId}"] = args["userId"],
+        ["{botName}"] = args["botName"],
+        ["{botAlias}"] = args["botAlias"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["inputText"] = args["inputText"],
 		["userId"] = args["userId"],
 		["botName"] = args["botName"],
 		["sessionAttributes"] = args["sessionAttributes"],
 		["botAlias"] = args["botAlias"],
 	}
-	asserts.AssertPostTextRequest(t)
-	return t
+	asserts.AssertPostTextRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DependencyFailedException = { ["Message"] = true, nil }
@@ -140,12 +177,23 @@ end
 -- * Message [ErrorMessage] 
 -- @return DependencyFailedException structure as a key-value pair table
 function M.DependencyFailedException(args)
-	assert(args, "You must provdide an argument table when creating DependencyFailedException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DependencyFailedException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Message"] = args["Message"],
 	}
-	asserts.AssertDependencyFailedException(t)
-	return t
+	asserts.AssertDependencyFailedException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.RequestTimeoutException = { ["message"] = true, nil }
@@ -166,12 +214,23 @@ end
 -- * message [String] 
 -- @return RequestTimeoutException structure as a key-value pair table
 function M.RequestTimeoutException(args)
-	assert(args, "You must provdide an argument table when creating RequestTimeoutException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating RequestTimeoutException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertRequestTimeoutException(t)
-	return t
+	asserts.AssertRequestTimeoutException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.LoopDetectedException = { ["Message"] = true, nil }
@@ -192,12 +251,23 @@ end
 -- * Message [ErrorMessage] 
 -- @return LoopDetectedException structure as a key-value pair table
 function M.LoopDetectedException(args)
-	assert(args, "You must provdide an argument table when creating LoopDetectedException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating LoopDetectedException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Message"] = args["Message"],
 	}
-	asserts.AssertLoopDetectedException(t)
-	return t
+	asserts.AssertLoopDetectedException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.PostContentRequest = { ["contentType"] = true, ["userId"] = true, ["botAlias"] = true, ["accept"] = true, ["inputStream"] = true, ["botName"] = true, ["sessionAttributes"] = true, nil }
@@ -240,8 +310,20 @@ end
 -- Required key: inputStream
 -- @return PostContentRequest structure as a key-value pair table
 function M.PostContentRequest(args)
-	assert(args, "You must provdide an argument table when creating PostContentRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating PostContentRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{userId}"] = args["userId"],
+        ["{botAlias}"] = args["botAlias"],
+        ["{botName}"] = args["botName"],
+    }
+    local header_args = { 
+        ["Content-Type"] = args["contentType"],
+        ["Accept"] = args["accept"],
+        ["x-amz-lex-session-attributes"] = args["sessionAttributes"],
+    }
+	local all_args = { 
 		["contentType"] = args["contentType"],
 		["userId"] = args["userId"],
 		["botAlias"] = args["botAlias"],
@@ -250,8 +332,13 @@ function M.PostContentRequest(args)
 		["botName"] = args["botName"],
 		["sessionAttributes"] = args["sessionAttributes"],
 	}
-	asserts.AssertPostContentRequest(t)
-	return t
+	asserts.AssertPostContentRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ResponseCard = { ["genericAttachments"] = true, ["version"] = true, ["contentType"] = true, nil }
@@ -276,14 +363,25 @@ end
 -- * contentType [ContentType] <p>The content type of the response.</p>
 -- @return ResponseCard structure as a key-value pair table
 function M.ResponseCard(args)
-	assert(args, "You must provdide an argument table when creating ResponseCard")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ResponseCard")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["genericAttachments"] = args["genericAttachments"],
 		["version"] = args["version"],
 		["contentType"] = args["contentType"],
 	}
-	asserts.AssertResponseCard(t)
-	return t
+	asserts.AssertResponseCard(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.NotFoundException = { ["message"] = true, nil }
@@ -304,12 +402,23 @@ end
 -- * message [String] 
 -- @return NotFoundException structure as a key-value pair table
 function M.NotFoundException(args)
-	assert(args, "You must provdide an argument table when creating NotFoundException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating NotFoundException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertNotFoundException(t)
-	return t
+	asserts.AssertNotFoundException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InternalFailureException = { ["message"] = true, nil }
@@ -330,12 +439,23 @@ end
 -- * message [String] 
 -- @return InternalFailureException structure as a key-value pair table
 function M.InternalFailureException(args)
-	assert(args, "You must provdide an argument table when creating InternalFailureException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InternalFailureException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertInternalFailureException(t)
-	return t
+	asserts.AssertInternalFailureException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Button = { ["text"] = true, ["value"] = true, nil }
@@ -362,13 +482,24 @@ end
 -- Required key: value
 -- @return Button structure as a key-value pair table
 function M.Button(args)
-	assert(args, "You must provdide an argument table when creating Button")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Button")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["text"] = args["text"],
 		["value"] = args["value"],
 	}
-	asserts.AssertButton(t)
-	return t
+	asserts.AssertButton(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UnsupportedMediaTypeException = { ["message"] = true, nil }
@@ -389,12 +520,23 @@ end
 -- * message [String] 
 -- @return UnsupportedMediaTypeException structure as a key-value pair table
 function M.UnsupportedMediaTypeException(args)
-	assert(args, "You must provdide an argument table when creating UnsupportedMediaTypeException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UnsupportedMediaTypeException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertUnsupportedMediaTypeException(t)
-	return t
+	asserts.AssertUnsupportedMediaTypeException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.BadGatewayException = { ["Message"] = true, nil }
@@ -415,12 +557,23 @@ end
 -- * Message [ErrorMessage] 
 -- @return BadGatewayException structure as a key-value pair table
 function M.BadGatewayException(args)
-	assert(args, "You must provdide an argument table when creating BadGatewayException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating BadGatewayException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Message"] = args["Message"],
 	}
-	asserts.AssertBadGatewayException(t)
-	return t
+	asserts.AssertBadGatewayException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ConflictException = { ["message"] = true, nil }
@@ -441,12 +594,23 @@ end
 -- * message [String] 
 -- @return ConflictException structure as a key-value pair table
 function M.ConflictException(args)
-	assert(args, "You must provdide an argument table when creating ConflictException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ConflictException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertConflictException(t)
-	return t
+	asserts.AssertConflictException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GenericAttachment = { ["buttons"] = true, ["imageUrl"] = true, ["attachmentLinkUrl"] = true, ["subTitle"] = true, ["title"] = true, nil }
@@ -475,16 +639,27 @@ end
 -- * title [StringWithLength] <p>The title of the option.</p>
 -- @return GenericAttachment structure as a key-value pair table
 function M.GenericAttachment(args)
-	assert(args, "You must provdide an argument table when creating GenericAttachment")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GenericAttachment")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["buttons"] = args["buttons"],
 		["imageUrl"] = args["imageUrl"],
 		["attachmentLinkUrl"] = args["attachmentLinkUrl"],
 		["subTitle"] = args["subTitle"],
 		["title"] = args["title"],
 	}
-	asserts.AssertGenericAttachment(t)
-	return t
+	asserts.AssertGenericAttachment(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.PostContentResponse = { ["contentType"] = true, ["slotToElicit"] = true, ["dialogState"] = true, ["intentName"] = true, ["audioStream"] = true, ["inputTranscript"] = true, ["slots"] = true, ["message"] = true, ["sessionAttributes"] = true, nil }
@@ -521,8 +696,22 @@ end
 -- * sessionAttributes [String] <p> Map of key/value pairs representing the session-specific context information. </p>
 -- @return PostContentResponse structure as a key-value pair table
 function M.PostContentResponse(args)
-	assert(args, "You must provdide an argument table when creating PostContentResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating PostContentResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+        ["Content-Type"] = args["contentType"],
+        ["x-amz-lex-slot-to-elicit"] = args["slotToElicit"],
+        ["x-amz-lex-dialog-state"] = args["dialogState"],
+        ["x-amz-lex-intent-name"] = args["intentName"],
+        ["x-amz-lex-input-transcript"] = args["inputTranscript"],
+        ["x-amz-lex-slots"] = args["slots"],
+        ["x-amz-lex-message"] = args["message"],
+        ["x-amz-lex-session-attributes"] = args["sessionAttributes"],
+    }
+	local all_args = { 
 		["contentType"] = args["contentType"],
 		["slotToElicit"] = args["slotToElicit"],
 		["dialogState"] = args["dialogState"],
@@ -533,8 +722,13 @@ function M.PostContentResponse(args)
 		["message"] = args["message"],
 		["sessionAttributes"] = args["sessionAttributes"],
 	}
-	asserts.AssertPostContentResponse(t)
-	return t
+	asserts.AssertPostContentResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.NotAcceptableException = { ["message"] = true, nil }
@@ -555,12 +749,23 @@ end
 -- * message [String] 
 -- @return NotAcceptableException structure as a key-value pair table
 function M.NotAcceptableException(args)
-	assert(args, "You must provdide an argument table when creating NotAcceptableException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating NotAcceptableException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertNotAcceptableException(t)
-	return t
+	asserts.AssertNotAcceptableException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.PostTextResponse = { ["slotToElicit"] = true, ["dialogState"] = true, ["intentName"] = true, ["responseCard"] = true, ["slots"] = true, ["message"] = true, ["sessionAttributes"] = true, nil }
@@ -593,8 +798,14 @@ end
 -- * sessionAttributes [StringMap] <p>A map of key-value pairs representing the session-specific context information.</p>
 -- @return PostTextResponse structure as a key-value pair table
 function M.PostTextResponse(args)
-	assert(args, "You must provdide an argument table when creating PostTextResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating PostTextResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["slotToElicit"] = args["slotToElicit"],
 		["dialogState"] = args["dialogState"],
 		["intentName"] = args["intentName"],
@@ -603,8 +814,13 @@ function M.PostTextResponse(args)
 		["message"] = args["message"],
 		["sessionAttributes"] = args["sessionAttributes"],
 	}
-	asserts.AssertPostTextResponse(t)
-	return t
+	asserts.AssertPostTextResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 function asserts.AssertHttpContentType(str)
@@ -892,8 +1108,11 @@ function M.PostContentAsync(PostContentRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".PostContent",
 	}
+	for header,value in pairs(PostContentRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/bot/{botName}/alias/{botAlias}/user/{userId}/content", PostContentRequest, headers, settings, cb)
 	else
@@ -924,8 +1143,11 @@ function M.PostTextAsync(PostTextRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".PostText",
 	}
+	for header,value in pairs(PostTextRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/bot/{botName}/alias/{botAlias}/user/{userId}/text", PostTextRequest, headers, settings, cb)
 	else

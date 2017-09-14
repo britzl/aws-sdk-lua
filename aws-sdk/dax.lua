@@ -37,11 +37,22 @@ end
 -- Valid keys:
 -- @return ClusterNotFoundFault structure as a key-value pair table
 function M.ClusterNotFoundFault(args)
-	assert(args, "You must provdide an argument table when creating ClusterNotFoundFault")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ClusterNotFoundFault")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertClusterNotFoundFault(t)
-	return t
+	asserts.AssertClusterNotFoundFault(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeParametersResponse = { ["NextToken"] = true, ["Parameters"] = true, nil }
@@ -64,13 +75,24 @@ end
 -- * Parameters [ParameterList] <p>A list of parameters within a parameter group. Each element in the list represents one parameter.</p>
 -- @return DescribeParametersResponse structure as a key-value pair table
 function M.DescribeParametersResponse(args)
-	assert(args, "You must provdide an argument table when creating DescribeParametersResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeParametersResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NextToken"] = args["NextToken"],
 		["Parameters"] = args["Parameters"],
 	}
-	asserts.AssertDescribeParametersResponse(t)
-	return t
+	asserts.AssertDescribeParametersResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListTagsRequest = { ["ResourceName"] = true, ["NextToken"] = true, nil }
@@ -95,13 +117,24 @@ end
 -- Required key: ResourceName
 -- @return ListTagsRequest structure as a key-value pair table
 function M.ListTagsRequest(args)
-	assert(args, "You must provdide an argument table when creating ListTagsRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListTagsRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ResourceName"] = args["ResourceName"],
 		["NextToken"] = args["NextToken"],
 	}
-	asserts.AssertListTagsRequest(t)
-	return t
+	asserts.AssertListTagsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdateParameterGroupRequest = { ["ParameterGroupName"] = true, ["ParameterNameValues"] = true, nil }
@@ -128,13 +161,24 @@ end
 -- Required key: ParameterNameValues
 -- @return UpdateParameterGroupRequest structure as a key-value pair table
 function M.UpdateParameterGroupRequest(args)
-	assert(args, "You must provdide an argument table when creating UpdateParameterGroupRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateParameterGroupRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ParameterGroupName"] = args["ParameterGroupName"],
 		["ParameterNameValues"] = args["ParameterNameValues"],
 	}
-	asserts.AssertUpdateParameterGroupRequest(t)
-	return t
+	asserts.AssertUpdateParameterGroupRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteClusterResponse = { ["Cluster"] = true, nil }
@@ -155,12 +199,23 @@ end
 -- * Cluster [Cluster] <p>A description of the DAX cluster that is being deleted.</p>
 -- @return DeleteClusterResponse structure as a key-value pair table
 function M.DeleteClusterResponse(args)
-	assert(args, "You must provdide an argument table when creating DeleteClusterResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteClusterResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Cluster"] = args["Cluster"],
 	}
-	asserts.AssertDeleteClusterResponse(t)
-	return t
+	asserts.AssertDeleteClusterResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteParameterGroupResponse = { ["DeletionMessage"] = true, nil }
@@ -181,12 +236,23 @@ end
 -- * DeletionMessage [String] <p>A user-specified message for this action (i.e., a reason for deleting the parameter group).</p>
 -- @return DeleteParameterGroupResponse structure as a key-value pair table
 function M.DeleteParameterGroupResponse(args)
-	assert(args, "You must provdide an argument table when creating DeleteParameterGroupResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteParameterGroupResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DeletionMessage"] = args["DeletionMessage"],
 	}
-	asserts.AssertDeleteParameterGroupResponse(t)
-	return t
+	asserts.AssertDeleteParameterGroupResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidClusterStateFault = { nil }
@@ -205,11 +271,22 @@ end
 -- Valid keys:
 -- @return InvalidClusterStateFault structure as a key-value pair table
 function M.InvalidClusterStateFault(args)
-	assert(args, "You must provdide an argument table when creating InvalidClusterStateFault")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidClusterStateFault")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertInvalidClusterStateFault(t)
-	return t
+	asserts.AssertInvalidClusterStateFault(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.IncreaseReplicationFactorResponse = { ["Cluster"] = true, nil }
@@ -230,12 +307,23 @@ end
 -- * Cluster [Cluster] <p>A description of the DAX cluster. with its new replication factor.</p>
 -- @return IncreaseReplicationFactorResponse structure as a key-value pair table
 function M.IncreaseReplicationFactorResponse(args)
-	assert(args, "You must provdide an argument table when creating IncreaseReplicationFactorResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating IncreaseReplicationFactorResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Cluster"] = args["Cluster"],
 	}
-	asserts.AssertIncreaseReplicationFactorResponse(t)
-	return t
+	asserts.AssertIncreaseReplicationFactorResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteParameterGroupRequest = { ["ParameterGroupName"] = true, nil }
@@ -258,12 +346,23 @@ end
 -- Required key: ParameterGroupName
 -- @return DeleteParameterGroupRequest structure as a key-value pair table
 function M.DeleteParameterGroupRequest(args)
-	assert(args, "You must provdide an argument table when creating DeleteParameterGroupRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteParameterGroupRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ParameterGroupName"] = args["ParameterGroupName"],
 	}
-	asserts.AssertDeleteParameterGroupRequest(t)
-	return t
+	asserts.AssertDeleteParameterGroupRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ParameterGroup = { ["ParameterGroupName"] = true, ["Description"] = true, nil }
@@ -286,13 +385,24 @@ end
 -- * Description [String] <p>A description of the parameter group.</p>
 -- @return ParameterGroup structure as a key-value pair table
 function M.ParameterGroup(args)
-	assert(args, "You must provdide an argument table when creating ParameterGroup")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ParameterGroup")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ParameterGroupName"] = args["ParameterGroupName"],
 		["Description"] = args["Description"],
 	}
-	asserts.AssertParameterGroup(t)
-	return t
+	asserts.AssertParameterGroup(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InsufficientClusterCapacityFault = { nil }
@@ -311,11 +421,22 @@ end
 -- Valid keys:
 -- @return InsufficientClusterCapacityFault structure as a key-value pair table
 function M.InsufficientClusterCapacityFault(args)
-	assert(args, "You must provdide an argument table when creating InsufficientClusterCapacityFault")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InsufficientClusterCapacityFault")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertInsufficientClusterCapacityFault(t)
-	return t
+	asserts.AssertInsufficientClusterCapacityFault(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteClusterRequest = { ["ClusterName"] = true, nil }
@@ -338,12 +459,23 @@ end
 -- Required key: ClusterName
 -- @return DeleteClusterRequest structure as a key-value pair table
 function M.DeleteClusterRequest(args)
-	assert(args, "You must provdide an argument table when creating DeleteClusterRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteClusterRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ClusterName"] = args["ClusterName"],
 	}
-	asserts.AssertDeleteClusterRequest(t)
-	return t
+	asserts.AssertDeleteClusterRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidParameterGroupStateFault = { nil }
@@ -362,11 +494,22 @@ end
 -- Valid keys:
 -- @return InvalidParameterGroupStateFault structure as a key-value pair table
 function M.InvalidParameterGroupStateFault(args)
-	assert(args, "You must provdide an argument table when creating InvalidParameterGroupStateFault")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidParameterGroupStateFault")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertInvalidParameterGroupStateFault(t)
-	return t
+	asserts.AssertInvalidParameterGroupStateFault(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteSubnetGroupResponse = { ["DeletionMessage"] = true, nil }
@@ -387,12 +530,23 @@ end
 -- * DeletionMessage [String] <p>A user-specified message for this action (i.e., a reason for deleting the subnet group).</p>
 -- @return DeleteSubnetGroupResponse structure as a key-value pair table
 function M.DeleteSubnetGroupResponse(args)
-	assert(args, "You must provdide an argument table when creating DeleteSubnetGroupResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteSubnetGroupResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DeletionMessage"] = args["DeletionMessage"],
 	}
-	asserts.AssertDeleteSubnetGroupResponse(t)
-	return t
+	asserts.AssertDeleteSubnetGroupResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateSubnetGroupResponse = { ["SubnetGroup"] = true, nil }
@@ -413,12 +567,23 @@ end
 -- * SubnetGroup [SubnetGroup] <p>Represents the output of a <i>CreateSubnetGroup</i> operation.</p>
 -- @return CreateSubnetGroupResponse structure as a key-value pair table
 function M.CreateSubnetGroupResponse(args)
-	assert(args, "You must provdide an argument table when creating CreateSubnetGroupResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateSubnetGroupResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["SubnetGroup"] = args["SubnetGroup"],
 	}
-	asserts.AssertCreateSubnetGroupResponse(t)
-	return t
+	asserts.AssertCreateSubnetGroupResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeDefaultParametersRequest = { ["NextToken"] = true, ["MaxResults"] = true, nil }
@@ -441,13 +606,24 @@ end
 -- * MaxResults [IntegerOptional] <p>The maximum number of results to include in the response. If more results exist than the specified <code>MaxResults</code> value, a token is included in the response so that the remaining results can be retrieved.</p> <p>The value for <code>MaxResults</code> must be between 20 and 100.</p>
 -- @return DescribeDefaultParametersRequest structure as a key-value pair table
 function M.DescribeDefaultParametersRequest(args)
-	assert(args, "You must provdide an argument table when creating DescribeDefaultParametersRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeDefaultParametersRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NextToken"] = args["NextToken"],
 		["MaxResults"] = args["MaxResults"],
 	}
-	asserts.AssertDescribeDefaultParametersRequest(t)
-	return t
+	asserts.AssertDescribeDefaultParametersRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeSubnetGroupsRequest = { ["NextToken"] = true, ["SubnetGroupNames"] = true, ["MaxResults"] = true, nil }
@@ -472,14 +648,25 @@ end
 -- * MaxResults [IntegerOptional] <p>The maximum number of results to include in the response. If more results exist than the specified <code>MaxResults</code> value, a token is included in the response so that the remaining results can be retrieved.</p> <p>The value for <code>MaxResults</code> must be between 20 and 100.</p>
 -- @return DescribeSubnetGroupsRequest structure as a key-value pair table
 function M.DescribeSubnetGroupsRequest(args)
-	assert(args, "You must provdide an argument table when creating DescribeSubnetGroupsRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeSubnetGroupsRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NextToken"] = args["NextToken"],
 		["SubnetGroupNames"] = args["SubnetGroupNames"],
 		["MaxResults"] = args["MaxResults"],
 	}
-	asserts.AssertDescribeSubnetGroupsRequest(t)
-	return t
+	asserts.AssertDescribeSubnetGroupsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteSubnetGroupRequest = { ["SubnetGroupName"] = true, nil }
@@ -502,12 +689,23 @@ end
 -- Required key: SubnetGroupName
 -- @return DeleteSubnetGroupRequest structure as a key-value pair table
 function M.DeleteSubnetGroupRequest(args)
-	assert(args, "You must provdide an argument table when creating DeleteSubnetGroupRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteSubnetGroupRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["SubnetGroupName"] = args["SubnetGroupName"],
 	}
-	asserts.AssertDeleteSubnetGroupRequest(t)
-	return t
+	asserts.AssertDeleteSubnetGroupRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.SubnetGroupQuotaExceededFault = { nil }
@@ -526,11 +724,22 @@ end
 -- Valid keys:
 -- @return SubnetGroupQuotaExceededFault structure as a key-value pair table
 function M.SubnetGroupQuotaExceededFault(args)
-	assert(args, "You must provdide an argument table when creating SubnetGroupQuotaExceededFault")
-	local t = { 
+	assert(args, "You must provide an argument table when creating SubnetGroupQuotaExceededFault")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertSubnetGroupQuotaExceededFault(t)
-	return t
+	asserts.AssertSubnetGroupQuotaExceededFault(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DecreaseReplicationFactorResponse = { ["Cluster"] = true, nil }
@@ -551,12 +760,23 @@ end
 -- * Cluster [Cluster] <p>A description of the DAX cluster, after you have decreased its replication factor.</p>
 -- @return DecreaseReplicationFactorResponse structure as a key-value pair table
 function M.DecreaseReplicationFactorResponse(args)
-	assert(args, "You must provdide an argument table when creating DecreaseReplicationFactorResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DecreaseReplicationFactorResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Cluster"] = args["Cluster"],
 	}
-	asserts.AssertDecreaseReplicationFactorResponse(t)
-	return t
+	asserts.AssertDecreaseReplicationFactorResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Tag = { ["Value"] = true, ["Key"] = true, nil }
@@ -579,13 +799,24 @@ end
 -- * Key [String] <p>The key for the tag. Tag keys are case sensitive. Every DAX cluster can only have one tag with the same key. If you try to add an existing tag (same key), the existing tag value will be updated to the new value.</p>
 -- @return Tag structure as a key-value pair table
 function M.Tag(args)
-	assert(args, "You must provdide an argument table when creating Tag")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Tag")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Value"] = args["Value"],
 		["Key"] = args["Key"],
 	}
-	asserts.AssertTag(t)
-	return t
+	asserts.AssertTag(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeParametersRequest = { ["Source"] = true, ["NextToken"] = true, ["ParameterGroupName"] = true, ["MaxResults"] = true, nil }
@@ -614,15 +845,26 @@ end
 -- Required key: ParameterGroupName
 -- @return DescribeParametersRequest structure as a key-value pair table
 function M.DescribeParametersRequest(args)
-	assert(args, "You must provdide an argument table when creating DescribeParametersRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeParametersRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Source"] = args["Source"],
 		["NextToken"] = args["NextToken"],
 		["ParameterGroupName"] = args["ParameterGroupName"],
 		["MaxResults"] = args["MaxResults"],
 	}
-	asserts.AssertDescribeParametersRequest(t)
-	return t
+	asserts.AssertDescribeParametersRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.RebootNodeRequest = { ["ClusterName"] = true, ["NodeId"] = true, nil }
@@ -649,13 +891,24 @@ end
 -- Required key: NodeId
 -- @return RebootNodeRequest structure as a key-value pair table
 function M.RebootNodeRequest(args)
-	assert(args, "You must provdide an argument table when creating RebootNodeRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating RebootNodeRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ClusterName"] = args["ClusterName"],
 		["NodeId"] = args["NodeId"],
 	}
-	asserts.AssertRebootNodeRequest(t)
-	return t
+	asserts.AssertRebootNodeRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.NotificationConfiguration = { ["TopicStatus"] = true, ["TopicArn"] = true, nil }
@@ -678,13 +931,24 @@ end
 -- * TopicArn [String] <p>The Amazon Resource Name (ARN) that identifies the topic. </p>
 -- @return NotificationConfiguration structure as a key-value pair table
 function M.NotificationConfiguration(args)
-	assert(args, "You must provdide an argument table when creating NotificationConfiguration")
-	local t = { 
+	assert(args, "You must provide an argument table when creating NotificationConfiguration")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["TopicStatus"] = args["TopicStatus"],
 		["TopicArn"] = args["TopicArn"],
 	}
-	asserts.AssertNotificationConfiguration(t)
-	return t
+	asserts.AssertNotificationConfiguration(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Event = { ["SourceName"] = true, ["Date"] = true, ["Message"] = true, ["SourceType"] = true, nil }
@@ -711,15 +975,26 @@ end
 -- * SourceType [SourceType] <p>Specifies the origin of this event - a cluster, a parameter group, a node ID, etc.</p>
 -- @return Event structure as a key-value pair table
 function M.Event(args)
-	assert(args, "You must provdide an argument table when creating Event")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Event")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["SourceName"] = args["SourceName"],
 		["Date"] = args["Date"],
 		["Message"] = args["Message"],
 		["SourceType"] = args["SourceType"],
 	}
-	asserts.AssertEvent(t)
-	return t
+	asserts.AssertEvent(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeClustersRequest = { ["NextToken"] = true, ["MaxResults"] = true, ["ClusterNames"] = true, nil }
@@ -744,14 +1019,25 @@ end
 -- * ClusterNames [ClusterNameList] <p>The names of the DAX clusters being described.</p>
 -- @return DescribeClustersRequest structure as a key-value pair table
 function M.DescribeClustersRequest(args)
-	assert(args, "You must provdide an argument table when creating DescribeClustersRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeClustersRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NextToken"] = args["NextToken"],
 		["MaxResults"] = args["MaxResults"],
 		["ClusterNames"] = args["ClusterNames"],
 	}
-	asserts.AssertDescribeClustersRequest(t)
-	return t
+	asserts.AssertDescribeClustersRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidSubnet = { nil }
@@ -770,11 +1056,22 @@ end
 -- Valid keys:
 -- @return InvalidSubnet structure as a key-value pair table
 function M.InvalidSubnet(args)
-	assert(args, "You must provdide an argument table when creating InvalidSubnet")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidSubnet")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertInvalidSubnet(t)
-	return t
+	asserts.AssertInvalidSubnet(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Parameter = { ["ParameterType"] = true, ["Description"] = true, ["DataType"] = true, ["ChangeType"] = true, ["IsModifiable"] = true, ["AllowedValues"] = true, ["NodeTypeSpecificValues"] = true, ["Source"] = true, ["ParameterValue"] = true, ["ParameterName"] = true, nil }
@@ -813,8 +1110,14 @@ end
 -- * ParameterName [String] <p>The name of the parameter.</p>
 -- @return Parameter structure as a key-value pair table
 function M.Parameter(args)
-	assert(args, "You must provdide an argument table when creating Parameter")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Parameter")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ParameterType"] = args["ParameterType"],
 		["Description"] = args["Description"],
 		["DataType"] = args["DataType"],
@@ -826,8 +1129,13 @@ function M.Parameter(args)
 		["ParameterValue"] = args["ParameterValue"],
 		["ParameterName"] = args["ParameterName"],
 	}
-	asserts.AssertParameter(t)
-	return t
+	asserts.AssertParameter(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeDefaultParametersResponse = { ["NextToken"] = true, ["Parameters"] = true, nil }
@@ -850,13 +1158,24 @@ end
 -- * Parameters [ParameterList] <p>A list of parameters. Each element in the list represents one parameter.</p>
 -- @return DescribeDefaultParametersResponse structure as a key-value pair table
 function M.DescribeDefaultParametersResponse(args)
-	assert(args, "You must provdide an argument table when creating DescribeDefaultParametersResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeDefaultParametersResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NextToken"] = args["NextToken"],
 		["Parameters"] = args["Parameters"],
 	}
-	asserts.AssertDescribeDefaultParametersResponse(t)
-	return t
+	asserts.AssertDescribeDefaultParametersResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ParameterGroupQuotaExceededFault = { nil }
@@ -875,11 +1194,22 @@ end
 -- Valid keys:
 -- @return ParameterGroupQuotaExceededFault structure as a key-value pair table
 function M.ParameterGroupQuotaExceededFault(args)
-	assert(args, "You must provdide an argument table when creating ParameterGroupQuotaExceededFault")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ParameterGroupQuotaExceededFault")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertParameterGroupQuotaExceededFault(t)
-	return t
+	asserts.AssertParameterGroupQuotaExceededFault(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidParameterCombinationException = { ["message"] = true, nil }
@@ -900,12 +1230,23 @@ end
 -- * message [AwsQueryErrorMessage] 
 -- @return InvalidParameterCombinationException structure as a key-value pair table
 function M.InvalidParameterCombinationException(args)
-	assert(args, "You must provdide an argument table when creating InvalidParameterCombinationException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidParameterCombinationException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertInvalidParameterCombinationException(t)
-	return t
+	asserts.AssertInvalidParameterCombinationException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ParameterGroupAlreadyExistsFault = { nil }
@@ -924,11 +1265,22 @@ end
 -- Valid keys:
 -- @return ParameterGroupAlreadyExistsFault structure as a key-value pair table
 function M.ParameterGroupAlreadyExistsFault(args)
-	assert(args, "You must provdide an argument table when creating ParameterGroupAlreadyExistsFault")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ParameterGroupAlreadyExistsFault")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertParameterGroupAlreadyExistsFault(t)
-	return t
+	asserts.AssertParameterGroupAlreadyExistsFault(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdateClusterRequest = { ["Description"] = true, ["ClusterName"] = true, ["SecurityGroupIds"] = true, ["NotificationTopicStatus"] = true, ["ParameterGroupName"] = true, ["NotificationTopicArn"] = true, ["PreferredMaintenanceWindow"] = true, nil }
@@ -963,8 +1315,14 @@ end
 -- Required key: ClusterName
 -- @return UpdateClusterRequest structure as a key-value pair table
 function M.UpdateClusterRequest(args)
-	assert(args, "You must provdide an argument table when creating UpdateClusterRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateClusterRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Description"] = args["Description"],
 		["ClusterName"] = args["ClusterName"],
 		["SecurityGroupIds"] = args["SecurityGroupIds"],
@@ -973,8 +1331,13 @@ function M.UpdateClusterRequest(args)
 		["NotificationTopicArn"] = args["NotificationTopicArn"],
 		["PreferredMaintenanceWindow"] = args["PreferredMaintenanceWindow"],
 	}
-	asserts.AssertUpdateClusterRequest(t)
-	return t
+	asserts.AssertUpdateClusterRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.RebootNodeResponse = { ["Cluster"] = true, nil }
@@ -995,12 +1358,23 @@ end
 -- * Cluster [Cluster] <p>A description of the DAX cluster after a node has been rebooted.</p>
 -- @return RebootNodeResponse structure as a key-value pair table
 function M.RebootNodeResponse(args)
-	assert(args, "You must provdide an argument table when creating RebootNodeResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating RebootNodeResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Cluster"] = args["Cluster"],
 	}
-	asserts.AssertRebootNodeResponse(t)
-	return t
+	asserts.AssertRebootNodeResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ParameterGroupNotFoundFault = { nil }
@@ -1019,11 +1393,22 @@ end
 -- Valid keys:
 -- @return ParameterGroupNotFoundFault structure as a key-value pair table
 function M.ParameterGroupNotFoundFault(args)
-	assert(args, "You must provdide an argument table when creating ParameterGroupNotFoundFault")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ParameterGroupNotFoundFault")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertParameterGroupNotFoundFault(t)
-	return t
+	asserts.AssertParameterGroupNotFoundFault(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateParameterGroupResponse = { ["ParameterGroup"] = true, nil }
@@ -1044,12 +1429,23 @@ end
 -- * ParameterGroup [ParameterGroup] <p>Represents the output of a <i>CreateParameterGroup</i> action.</p>
 -- @return CreateParameterGroupResponse structure as a key-value pair table
 function M.CreateParameterGroupResponse(args)
-	assert(args, "You must provdide an argument table when creating CreateParameterGroupResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateParameterGroupResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ParameterGroup"] = args["ParameterGroup"],
 	}
-	asserts.AssertCreateParameterGroupResponse(t)
-	return t
+	asserts.AssertCreateParameterGroupResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.SecurityGroupMembership = { ["Status"] = true, ["SecurityGroupIdentifier"] = true, nil }
@@ -1072,13 +1468,24 @@ end
 -- * SecurityGroupIdentifier [String] <p>The unique ID for this security group.</p>
 -- @return SecurityGroupMembership structure as a key-value pair table
 function M.SecurityGroupMembership(args)
-	assert(args, "You must provdide an argument table when creating SecurityGroupMembership")
-	local t = { 
+	assert(args, "You must provide an argument table when creating SecurityGroupMembership")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Status"] = args["Status"],
 		["SecurityGroupIdentifier"] = args["SecurityGroupIdentifier"],
 	}
-	asserts.AssertSecurityGroupMembership(t)
-	return t
+	asserts.AssertSecurityGroupMembership(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.IncreaseReplicationFactorRequest = { ["ClusterName"] = true, ["AvailabilityZones"] = true, ["NewReplicationFactor"] = true, nil }
@@ -1107,14 +1514,25 @@ end
 -- Required key: NewReplicationFactor
 -- @return IncreaseReplicationFactorRequest structure as a key-value pair table
 function M.IncreaseReplicationFactorRequest(args)
-	assert(args, "You must provdide an argument table when creating IncreaseReplicationFactorRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating IncreaseReplicationFactorRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ClusterName"] = args["ClusterName"],
 		["AvailabilityZones"] = args["AvailabilityZones"],
 		["NewReplicationFactor"] = args["NewReplicationFactor"],
 	}
-	asserts.AssertIncreaseReplicationFactorRequest(t)
-	return t
+	asserts.AssertIncreaseReplicationFactorRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.SubnetGroup = { ["Subnets"] = true, ["SubnetGroupName"] = true, ["VpcId"] = true, ["Description"] = true, nil }
@@ -1141,15 +1559,26 @@ end
 -- * Description [String] <p>The description of the subnet group.</p>
 -- @return SubnetGroup structure as a key-value pair table
 function M.SubnetGroup(args)
-	assert(args, "You must provdide an argument table when creating SubnetGroup")
-	local t = { 
+	assert(args, "You must provide an argument table when creating SubnetGroup")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Subnets"] = args["Subnets"],
 		["SubnetGroupName"] = args["SubnetGroupName"],
 		["VpcId"] = args["VpcId"],
 		["Description"] = args["Description"],
 	}
-	asserts.AssertSubnetGroup(t)
-	return t
+	asserts.AssertSubnetGroup(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeClustersResponse = { ["Clusters"] = true, ["NextToken"] = true, nil }
@@ -1172,13 +1601,24 @@ end
 -- * NextToken [String] <p>Provides an identifier to allow retrieval of paginated results.</p>
 -- @return DescribeClustersResponse structure as a key-value pair table
 function M.DescribeClustersResponse(args)
-	assert(args, "You must provdide an argument table when creating DescribeClustersResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeClustersResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Clusters"] = args["Clusters"],
 		["NextToken"] = args["NextToken"],
 	}
-	asserts.AssertDescribeClustersResponse(t)
-	return t
+	asserts.AssertDescribeClustersResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UntagResourceRequest = { ["ResourceName"] = true, ["TagKeys"] = true, nil }
@@ -1205,13 +1645,24 @@ end
 -- Required key: TagKeys
 -- @return UntagResourceRequest structure as a key-value pair table
 function M.UntagResourceRequest(args)
-	assert(args, "You must provdide an argument table when creating UntagResourceRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UntagResourceRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ResourceName"] = args["ResourceName"],
 		["TagKeys"] = args["TagKeys"],
 	}
-	asserts.AssertUntagResourceRequest(t)
-	return t
+	asserts.AssertUntagResourceRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeParameterGroupsResponse = { ["ParameterGroups"] = true, ["NextToken"] = true, nil }
@@ -1234,13 +1685,24 @@ end
 -- * NextToken [String] <p>Provides an identifier to allow retrieval of paginated results.</p>
 -- @return DescribeParameterGroupsResponse structure as a key-value pair table
 function M.DescribeParameterGroupsResponse(args)
-	assert(args, "You must provdide an argument table when creating DescribeParameterGroupsResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeParameterGroupsResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ParameterGroups"] = args["ParameterGroups"],
 		["NextToken"] = args["NextToken"],
 	}
-	asserts.AssertDescribeParameterGroupsResponse(t)
-	return t
+	asserts.AssertDescribeParameterGroupsResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Subnet = { ["SubnetIdentifier"] = true, ["SubnetAvailabilityZone"] = true, nil }
@@ -1263,13 +1725,24 @@ end
 -- * SubnetAvailabilityZone [String] <p>The Availability Zone (AZ) for subnet subnet.</p>
 -- @return Subnet structure as a key-value pair table
 function M.Subnet(args)
-	assert(args, "You must provdide an argument table when creating Subnet")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Subnet")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["SubnetIdentifier"] = args["SubnetIdentifier"],
 		["SubnetAvailabilityZone"] = args["SubnetAvailabilityZone"],
 	}
-	asserts.AssertSubnet(t)
-	return t
+	asserts.AssertSubnet(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidARNFault = { nil }
@@ -1288,11 +1761,22 @@ end
 -- Valid keys:
 -- @return InvalidARNFault structure as a key-value pair table
 function M.InvalidARNFault(args)
-	assert(args, "You must provdide an argument table when creating InvalidARNFault")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidARNFault")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertInvalidARNFault(t)
-	return t
+	asserts.AssertInvalidARNFault(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateClusterResponse = { ["Cluster"] = true, nil }
@@ -1313,12 +1797,23 @@ end
 -- * Cluster [Cluster] <p>A description of the DAX cluster that you have created.</p>
 -- @return CreateClusterResponse structure as a key-value pair table
 function M.CreateClusterResponse(args)
-	assert(args, "You must provdide an argument table when creating CreateClusterResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateClusterResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Cluster"] = args["Cluster"],
 	}
-	asserts.AssertCreateClusterResponse(t)
-	return t
+	asserts.AssertCreateClusterResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Node = { ["Endpoint"] = true, ["NodeStatus"] = true, ["ParameterGroupStatus"] = true, ["NodeId"] = true, ["AvailabilityZone"] = true, ["NodeCreateTime"] = true, nil }
@@ -1349,8 +1844,14 @@ end
 -- * NodeCreateTime [TStamp] <p>The date and time (in UNIX epoch format) when the node was launched.</p>
 -- @return Node structure as a key-value pair table
 function M.Node(args)
-	assert(args, "You must provdide an argument table when creating Node")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Node")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Endpoint"] = args["Endpoint"],
 		["NodeStatus"] = args["NodeStatus"],
 		["ParameterGroupStatus"] = args["ParameterGroupStatus"],
@@ -1358,8 +1859,13 @@ function M.Node(args)
 		["AvailabilityZone"] = args["AvailabilityZone"],
 		["NodeCreateTime"] = args["NodeCreateTime"],
 	}
-	asserts.AssertNode(t)
-	return t
+	asserts.AssertNode(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeEventsResponse = { ["NextToken"] = true, ["Events"] = true, nil }
@@ -1382,13 +1888,24 @@ end
 -- * Events [EventList] <p>An array of events. Each element in the array represents one event.</p>
 -- @return DescribeEventsResponse structure as a key-value pair table
 function M.DescribeEventsResponse(args)
-	assert(args, "You must provdide an argument table when creating DescribeEventsResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeEventsResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NextToken"] = args["NextToken"],
 		["Events"] = args["Events"],
 	}
-	asserts.AssertDescribeEventsResponse(t)
-	return t
+	asserts.AssertDescribeEventsResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateClusterRequest = { ["ReplicationFactor"] = true, ["NotificationTopicArn"] = true, ["NodeType"] = true, ["Description"] = true, ["Tags"] = true, ["ClusterName"] = true, ["SubnetGroupName"] = true, ["IamRoleArn"] = true, ["SecurityGroupIds"] = true, ["ParameterGroupName"] = true, ["AvailabilityZones"] = true, ["PreferredMaintenanceWindow"] = true, nil }
@@ -1439,8 +1956,14 @@ end
 -- Required key: IamRoleArn
 -- @return CreateClusterRequest structure as a key-value pair table
 function M.CreateClusterRequest(args)
-	assert(args, "You must provdide an argument table when creating CreateClusterRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateClusterRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ReplicationFactor"] = args["ReplicationFactor"],
 		["NotificationTopicArn"] = args["NotificationTopicArn"],
 		["NodeType"] = args["NodeType"],
@@ -1454,8 +1977,13 @@ function M.CreateClusterRequest(args)
 		["AvailabilityZones"] = args["AvailabilityZones"],
 		["PreferredMaintenanceWindow"] = args["PreferredMaintenanceWindow"],
 	}
-	asserts.AssertCreateClusterRequest(t)
-	return t
+	asserts.AssertCreateClusterRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeSubnetGroupsResponse = { ["NextToken"] = true, ["SubnetGroups"] = true, nil }
@@ -1478,13 +2006,24 @@ end
 -- * SubnetGroups [SubnetGroupList] <p>An array of subnet groups. Each element in the array represents a single subnet group.</p>
 -- @return DescribeSubnetGroupsResponse structure as a key-value pair table
 function M.DescribeSubnetGroupsResponse(args)
-	assert(args, "You must provdide an argument table when creating DescribeSubnetGroupsResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeSubnetGroupsResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NextToken"] = args["NextToken"],
 		["SubnetGroups"] = args["SubnetGroups"],
 	}
-	asserts.AssertDescribeSubnetGroupsResponse(t)
-	return t
+	asserts.AssertDescribeSubnetGroupsResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.SubnetGroupInUseFault = { nil }
@@ -1503,11 +2042,22 @@ end
 -- Valid keys:
 -- @return SubnetGroupInUseFault structure as a key-value pair table
 function M.SubnetGroupInUseFault(args)
-	assert(args, "You must provdide an argument table when creating SubnetGroupInUseFault")
-	local t = { 
+	assert(args, "You must provide an argument table when creating SubnetGroupInUseFault")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertSubnetGroupInUseFault(t)
-	return t
+	asserts.AssertSubnetGroupInUseFault(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListTagsResponse = { ["NextToken"] = true, ["Tags"] = true, nil }
@@ -1530,13 +2080,24 @@ end
 -- * Tags [TagList] <p>A list of tags currently associated with the DAX cluster.</p>
 -- @return ListTagsResponse structure as a key-value pair table
 function M.ListTagsResponse(args)
-	assert(args, "You must provdide an argument table when creating ListTagsResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListTagsResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NextToken"] = args["NextToken"],
 		["Tags"] = args["Tags"],
 	}
-	asserts.AssertListTagsResponse(t)
-	return t
+	asserts.AssertListTagsResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UntagResourceResponse = { ["Tags"] = true, nil }
@@ -1557,12 +2118,23 @@ end
 -- * Tags [TagList] <p>The tag keys that have been removed from the cluster.</p>
 -- @return UntagResourceResponse structure as a key-value pair table
 function M.UntagResourceResponse(args)
-	assert(args, "You must provdide an argument table when creating UntagResourceResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UntagResourceResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Tags"] = args["Tags"],
 	}
-	asserts.AssertUntagResourceResponse(t)
-	return t
+	asserts.AssertUntagResourceResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdateClusterResponse = { ["Cluster"] = true, nil }
@@ -1583,12 +2155,23 @@ end
 -- * Cluster [Cluster] <p>A description of the DAX cluster, after it has been modified.</p>
 -- @return UpdateClusterResponse structure as a key-value pair table
 function M.UpdateClusterResponse(args)
-	assert(args, "You must provdide an argument table when creating UpdateClusterResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateClusterResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Cluster"] = args["Cluster"],
 	}
-	asserts.AssertUpdateClusterResponse(t)
-	return t
+	asserts.AssertUpdateClusterResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ParameterNameValue = { ["ParameterName"] = true, ["ParameterValue"] = true, nil }
@@ -1611,13 +2194,24 @@ end
 -- * ParameterValue [String] <p>The value of the parameter.</p>
 -- @return ParameterNameValue structure as a key-value pair table
 function M.ParameterNameValue(args)
-	assert(args, "You must provdide an argument table when creating ParameterNameValue")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ParameterNameValue")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ParameterName"] = args["ParameterName"],
 		["ParameterValue"] = args["ParameterValue"],
 	}
-	asserts.AssertParameterNameValue(t)
-	return t
+	asserts.AssertParameterNameValue(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidParameterValueException = { ["message"] = true, nil }
@@ -1638,12 +2232,23 @@ end
 -- * message [AwsQueryErrorMessage] 
 -- @return InvalidParameterValueException structure as a key-value pair table
 function M.InvalidParameterValueException(args)
-	assert(args, "You must provdide an argument table when creating InvalidParameterValueException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidParameterValueException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertInvalidParameterValueException(t)
-	return t
+	asserts.AssertInvalidParameterValueException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DecreaseReplicationFactorRequest = { ["ClusterName"] = true, ["NodeIdsToRemove"] = true, ["AvailabilityZones"] = true, ["NewReplicationFactor"] = true, nil }
@@ -1674,15 +2279,26 @@ end
 -- Required key: NewReplicationFactor
 -- @return DecreaseReplicationFactorRequest structure as a key-value pair table
 function M.DecreaseReplicationFactorRequest(args)
-	assert(args, "You must provdide an argument table when creating DecreaseReplicationFactorRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DecreaseReplicationFactorRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ClusterName"] = args["ClusterName"],
 		["NodeIdsToRemove"] = args["NodeIdsToRemove"],
 		["AvailabilityZones"] = args["AvailabilityZones"],
 		["NewReplicationFactor"] = args["NewReplicationFactor"],
 	}
-	asserts.AssertDecreaseReplicationFactorRequest(t)
-	return t
+	asserts.AssertDecreaseReplicationFactorRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.NodeQuotaForCustomerExceededFault = { nil }
@@ -1701,11 +2317,22 @@ end
 -- Valid keys:
 -- @return NodeQuotaForCustomerExceededFault structure as a key-value pair table
 function M.NodeQuotaForCustomerExceededFault(args)
-	assert(args, "You must provdide an argument table when creating NodeQuotaForCustomerExceededFault")
-	local t = { 
+	assert(args, "You must provide an argument table when creating NodeQuotaForCustomerExceededFault")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertNodeQuotaForCustomerExceededFault(t)
-	return t
+	asserts.AssertNodeQuotaForCustomerExceededFault(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidVPCNetworkStateFault = { nil }
@@ -1724,11 +2351,22 @@ end
 -- Valid keys:
 -- @return InvalidVPCNetworkStateFault structure as a key-value pair table
 function M.InvalidVPCNetworkStateFault(args)
-	assert(args, "You must provdide an argument table when creating InvalidVPCNetworkStateFault")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidVPCNetworkStateFault")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertInvalidVPCNetworkStateFault(t)
-	return t
+	asserts.AssertInvalidVPCNetworkStateFault(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.SubnetGroupNotFoundFault = { nil }
@@ -1747,11 +2385,22 @@ end
 -- Valid keys:
 -- @return SubnetGroupNotFoundFault structure as a key-value pair table
 function M.SubnetGroupNotFoundFault(args)
-	assert(args, "You must provdide an argument table when creating SubnetGroupNotFoundFault")
-	local t = { 
+	assert(args, "You must provide an argument table when creating SubnetGroupNotFoundFault")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertSubnetGroupNotFoundFault(t)
-	return t
+	asserts.AssertSubnetGroupNotFoundFault(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.SubnetGroupAlreadyExistsFault = { nil }
@@ -1770,11 +2419,22 @@ end
 -- Valid keys:
 -- @return SubnetGroupAlreadyExistsFault structure as a key-value pair table
 function M.SubnetGroupAlreadyExistsFault(args)
-	assert(args, "You must provdide an argument table when creating SubnetGroupAlreadyExistsFault")
-	local t = { 
+	assert(args, "You must provide an argument table when creating SubnetGroupAlreadyExistsFault")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertSubnetGroupAlreadyExistsFault(t)
-	return t
+	asserts.AssertSubnetGroupAlreadyExistsFault(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Cluster = { ["Status"] = true, ["SubnetGroup"] = true, ["NodeType"] = true, ["Description"] = true, ["ClusterName"] = true, ["ParameterGroup"] = true, ["ActiveNodes"] = true, ["TotalNodes"] = true, ["IamRoleArn"] = true, ["NodeIdsToRemove"] = true, ["SecurityGroups"] = true, ["ClusterArn"] = true, ["Nodes"] = true, ["ClusterDiscoveryEndpoint"] = true, ["NotificationConfiguration"] = true, ["PreferredMaintenanceWindow"] = true, nil }
@@ -1825,8 +2485,14 @@ end
 -- * PreferredMaintenanceWindow [String] <p>A range of time when maintenance of DAX cluster software will be performed. For example: <code>sun:01:00-sun:09:00</code>. Cluster maintenance normally takes less than 30 minutes, and is performed automatically within the maintenance window.</p>
 -- @return Cluster structure as a key-value pair table
 function M.Cluster(args)
-	assert(args, "You must provdide an argument table when creating Cluster")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Cluster")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Status"] = args["Status"],
 		["SubnetGroup"] = args["SubnetGroup"],
 		["NodeType"] = args["NodeType"],
@@ -1844,8 +2510,13 @@ function M.Cluster(args)
 		["NotificationConfiguration"] = args["NotificationConfiguration"],
 		["PreferredMaintenanceWindow"] = args["PreferredMaintenanceWindow"],
 	}
-	asserts.AssertCluster(t)
-	return t
+	asserts.AssertCluster(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateSubnetGroupRequest = { ["SubnetIds"] = true, ["SubnetGroupName"] = true, ["Description"] = true, nil }
@@ -1874,14 +2545,25 @@ end
 -- Required key: SubnetIds
 -- @return CreateSubnetGroupRequest structure as a key-value pair table
 function M.CreateSubnetGroupRequest(args)
-	assert(args, "You must provdide an argument table when creating CreateSubnetGroupRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateSubnetGroupRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["SubnetIds"] = args["SubnetIds"],
 		["SubnetGroupName"] = args["SubnetGroupName"],
 		["Description"] = args["Description"],
 	}
-	asserts.AssertCreateSubnetGroupRequest(t)
-	return t
+	asserts.AssertCreateSubnetGroupRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateParameterGroupRequest = { ["ParameterGroupName"] = true, ["Description"] = true, nil }
@@ -1906,13 +2588,24 @@ end
 -- Required key: ParameterGroupName
 -- @return CreateParameterGroupRequest structure as a key-value pair table
 function M.CreateParameterGroupRequest(args)
-	assert(args, "You must provdide an argument table when creating CreateParameterGroupRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateParameterGroupRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ParameterGroupName"] = args["ParameterGroupName"],
 		["Description"] = args["Description"],
 	}
-	asserts.AssertCreateParameterGroupRequest(t)
-	return t
+	asserts.AssertCreateParameterGroupRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeParameterGroupsRequest = { ["NextToken"] = true, ["ParameterGroupNames"] = true, ["MaxResults"] = true, nil }
@@ -1937,14 +2630,25 @@ end
 -- * MaxResults [IntegerOptional] <p>The maximum number of results to include in the response. If more results exist than the specified <code>MaxResults</code> value, a token is included in the response so that the remaining results can be retrieved.</p> <p>The value for <code>MaxResults</code> must be between 20 and 100.</p>
 -- @return DescribeParameterGroupsRequest structure as a key-value pair table
 function M.DescribeParameterGroupsRequest(args)
-	assert(args, "You must provdide an argument table when creating DescribeParameterGroupsRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeParameterGroupsRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NextToken"] = args["NextToken"],
 		["ParameterGroupNames"] = args["ParameterGroupNames"],
 		["MaxResults"] = args["MaxResults"],
 	}
-	asserts.AssertDescribeParameterGroupsRequest(t)
-	return t
+	asserts.AssertDescribeParameterGroupsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.TagResourceResponse = { ["Tags"] = true, nil }
@@ -1965,12 +2669,23 @@ end
 -- * Tags [TagList] <p>The list of tags that are associated with the DAX resource.</p>
 -- @return TagResourceResponse structure as a key-value pair table
 function M.TagResourceResponse(args)
-	assert(args, "You must provdide an argument table when creating TagResourceResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating TagResourceResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Tags"] = args["Tags"],
 	}
-	asserts.AssertTagResourceResponse(t)
-	return t
+	asserts.AssertTagResourceResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.SubnetInUse = { nil }
@@ -1989,11 +2704,22 @@ end
 -- Valid keys:
 -- @return SubnetInUse structure as a key-value pair table
 function M.SubnetInUse(args)
-	assert(args, "You must provdide an argument table when creating SubnetInUse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating SubnetInUse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertSubnetInUse(t)
-	return t
+	asserts.AssertSubnetInUse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.NodeNotFoundFault = { nil }
@@ -2012,11 +2738,22 @@ end
 -- Valid keys:
 -- @return NodeNotFoundFault structure as a key-value pair table
 function M.NodeNotFoundFault(args)
-	assert(args, "You must provdide an argument table when creating NodeNotFoundFault")
-	local t = { 
+	assert(args, "You must provide an argument table when creating NodeNotFoundFault")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertNodeNotFoundFault(t)
-	return t
+	asserts.AssertNodeNotFoundFault(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.TagNotFoundFault = { nil }
@@ -2035,11 +2772,22 @@ end
 -- Valid keys:
 -- @return TagNotFoundFault structure as a key-value pair table
 function M.TagNotFoundFault(args)
-	assert(args, "You must provdide an argument table when creating TagNotFoundFault")
-	local t = { 
+	assert(args, "You must provide an argument table when creating TagNotFoundFault")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertTagNotFoundFault(t)
-	return t
+	asserts.AssertTagNotFoundFault(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdateSubnetGroupResponse = { ["SubnetGroup"] = true, nil }
@@ -2060,12 +2808,23 @@ end
 -- * SubnetGroup [SubnetGroup] <p>The subnet group that has been modified.</p>
 -- @return UpdateSubnetGroupResponse structure as a key-value pair table
 function M.UpdateSubnetGroupResponse(args)
-	assert(args, "You must provdide an argument table when creating UpdateSubnetGroupResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateSubnetGroupResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["SubnetGroup"] = args["SubnetGroup"],
 	}
-	asserts.AssertUpdateSubnetGroupResponse(t)
-	return t
+	asserts.AssertUpdateSubnetGroupResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.TagQuotaPerResourceExceeded = { nil }
@@ -2084,11 +2843,22 @@ end
 -- Valid keys:
 -- @return TagQuotaPerResourceExceeded structure as a key-value pair table
 function M.TagQuotaPerResourceExceeded(args)
-	assert(args, "You must provdide an argument table when creating TagQuotaPerResourceExceeded")
-	local t = { 
+	assert(args, "You must provide an argument table when creating TagQuotaPerResourceExceeded")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertTagQuotaPerResourceExceeded(t)
-	return t
+	asserts.AssertTagQuotaPerResourceExceeded(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Endpoint = { ["Port"] = true, ["Address"] = true, nil }
@@ -2111,13 +2881,24 @@ end
 -- * Address [String] <p>The DNS hostname of the endpoint.</p>
 -- @return Endpoint structure as a key-value pair table
 function M.Endpoint(args)
-	assert(args, "You must provdide an argument table when creating Endpoint")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Endpoint")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Port"] = args["Port"],
 		["Address"] = args["Address"],
 	}
-	asserts.AssertEndpoint(t)
-	return t
+	asserts.AssertEndpoint(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ParameterGroupStatus = { ["NodeIdsToReboot"] = true, ["ParameterGroupName"] = true, ["ParameterApplyStatus"] = true, nil }
@@ -2142,14 +2923,25 @@ end
 -- * ParameterApplyStatus [String] <p>The status of parameter updates. </p>
 -- @return ParameterGroupStatus structure as a key-value pair table
 function M.ParameterGroupStatus(args)
-	assert(args, "You must provdide an argument table when creating ParameterGroupStatus")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ParameterGroupStatus")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NodeIdsToReboot"] = args["NodeIdsToReboot"],
 		["ParameterGroupName"] = args["ParameterGroupName"],
 		["ParameterApplyStatus"] = args["ParameterApplyStatus"],
 	}
-	asserts.AssertParameterGroupStatus(t)
-	return t
+	asserts.AssertParameterGroupStatus(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.NodeQuotaForClusterExceededFault = { nil }
@@ -2168,11 +2960,22 @@ end
 -- Valid keys:
 -- @return NodeQuotaForClusterExceededFault structure as a key-value pair table
 function M.NodeQuotaForClusterExceededFault(args)
-	assert(args, "You must provdide an argument table when creating NodeQuotaForClusterExceededFault")
-	local t = { 
+	assert(args, "You must provide an argument table when creating NodeQuotaForClusterExceededFault")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertNodeQuotaForClusterExceededFault(t)
-	return t
+	asserts.AssertNodeQuotaForClusterExceededFault(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdateParameterGroupResponse = { ["ParameterGroup"] = true, nil }
@@ -2193,12 +2996,23 @@ end
 -- * ParameterGroup [ParameterGroup] <p>The parameter group that has been modified.</p>
 -- @return UpdateParameterGroupResponse structure as a key-value pair table
 function M.UpdateParameterGroupResponse(args)
-	assert(args, "You must provdide an argument table when creating UpdateParameterGroupResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateParameterGroupResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ParameterGroup"] = args["ParameterGroup"],
 	}
-	asserts.AssertUpdateParameterGroupResponse(t)
-	return t
+	asserts.AssertUpdateParameterGroupResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.TagResourceRequest = { ["ResourceName"] = true, ["Tags"] = true, nil }
@@ -2225,13 +3039,24 @@ end
 -- Required key: Tags
 -- @return TagResourceRequest structure as a key-value pair table
 function M.TagResourceRequest(args)
-	assert(args, "You must provdide an argument table when creating TagResourceRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating TagResourceRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ResourceName"] = args["ResourceName"],
 		["Tags"] = args["Tags"],
 	}
-	asserts.AssertTagResourceRequest(t)
-	return t
+	asserts.AssertTagResourceRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeEventsRequest = { ["NextToken"] = true, ["SourceType"] = true, ["SourceName"] = true, ["MaxResults"] = true, ["StartTime"] = true, ["Duration"] = true, ["EndTime"] = true, nil }
@@ -2264,8 +3089,14 @@ end
 -- * EndTime [TStamp] <p>The end of the time interval for which to retrieve events, specified in ISO 8601 format.</p>
 -- @return DescribeEventsRequest structure as a key-value pair table
 function M.DescribeEventsRequest(args)
-	assert(args, "You must provdide an argument table when creating DescribeEventsRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeEventsRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NextToken"] = args["NextToken"],
 		["SourceType"] = args["SourceType"],
 		["SourceName"] = args["SourceName"],
@@ -2274,8 +3105,13 @@ function M.DescribeEventsRequest(args)
 		["Duration"] = args["Duration"],
 		["EndTime"] = args["EndTime"],
 	}
-	asserts.AssertDescribeEventsRequest(t)
-	return t
+	asserts.AssertDescribeEventsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ClusterQuotaForCustomerExceededFault = { nil }
@@ -2294,11 +3130,22 @@ end
 -- Valid keys:
 -- @return ClusterQuotaForCustomerExceededFault structure as a key-value pair table
 function M.ClusterQuotaForCustomerExceededFault(args)
-	assert(args, "You must provdide an argument table when creating ClusterQuotaForCustomerExceededFault")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ClusterQuotaForCustomerExceededFault")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertClusterQuotaForCustomerExceededFault(t)
-	return t
+	asserts.AssertClusterQuotaForCustomerExceededFault(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdateSubnetGroupRequest = { ["SubnetIds"] = true, ["SubnetGroupName"] = true, ["Description"] = true, nil }
@@ -2325,14 +3172,25 @@ end
 -- Required key: SubnetGroupName
 -- @return UpdateSubnetGroupRequest structure as a key-value pair table
 function M.UpdateSubnetGroupRequest(args)
-	assert(args, "You must provdide an argument table when creating UpdateSubnetGroupRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateSubnetGroupRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["SubnetIds"] = args["SubnetIds"],
 		["SubnetGroupName"] = args["SubnetGroupName"],
 		["Description"] = args["Description"],
 	}
-	asserts.AssertUpdateSubnetGroupRequest(t)
-	return t
+	asserts.AssertUpdateSubnetGroupRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ClusterAlreadyExistsFault = { nil }
@@ -2351,11 +3209,22 @@ end
 -- Valid keys:
 -- @return ClusterAlreadyExistsFault structure as a key-value pair table
 function M.ClusterAlreadyExistsFault(args)
-	assert(args, "You must provdide an argument table when creating ClusterAlreadyExistsFault")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ClusterAlreadyExistsFault")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertClusterAlreadyExistsFault(t)
-	return t
+	asserts.AssertClusterAlreadyExistsFault(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.NodeTypeSpecificValue = { ["NodeType"] = true, ["Value"] = true, nil }
@@ -2378,13 +3247,24 @@ end
 -- * Value [String] <p>The parameter value for this node type.</p>
 -- @return NodeTypeSpecificValue structure as a key-value pair table
 function M.NodeTypeSpecificValue(args)
-	assert(args, "You must provdide an argument table when creating NodeTypeSpecificValue")
-	local t = { 
+	assert(args, "You must provide an argument table when creating NodeTypeSpecificValue")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NodeType"] = args["NodeType"],
 		["Value"] = args["Value"],
 	}
-	asserts.AssertNodeTypeSpecificValue(t)
-	return t
+	asserts.AssertNodeTypeSpecificValue(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.SubnetQuotaExceededFault = { nil }
@@ -2403,11 +3283,22 @@ end
 -- Valid keys:
 -- @return SubnetQuotaExceededFault structure as a key-value pair table
 function M.SubnetQuotaExceededFault(args)
-	assert(args, "You must provdide an argument table when creating SubnetQuotaExceededFault")
-	local t = { 
+	assert(args, "You must provide an argument table when creating SubnetQuotaExceededFault")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertSubnetQuotaExceededFault(t)
-	return t
+	asserts.AssertSubnetQuotaExceededFault(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 function asserts.AssertString(str)
@@ -2845,8 +3736,11 @@ function M.CreateParameterGroupAsync(CreateParameterGroupRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AmazonDAXV3.CreateParameterGroup",
 	}
+	for header,value in pairs(CreateParameterGroupRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateParameterGroupRequest, headers, settings, cb)
 	else
@@ -2877,8 +3771,11 @@ function M.DeleteParameterGroupAsync(DeleteParameterGroupRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AmazonDAXV3.DeleteParameterGroup",
 	}
+	for header,value in pairs(DeleteParameterGroupRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteParameterGroupRequest, headers, settings, cb)
 	else
@@ -2909,8 +3806,11 @@ function M.UpdateClusterAsync(UpdateClusterRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AmazonDAXV3.UpdateCluster",
 	}
+	for header,value in pairs(UpdateClusterRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateClusterRequest, headers, settings, cb)
 	else
@@ -2941,8 +3841,11 @@ function M.UntagResourceAsync(UntagResourceRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AmazonDAXV3.UntagResource",
 	}
+	for header,value in pairs(UntagResourceRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", UntagResourceRequest, headers, settings, cb)
 	else
@@ -2973,8 +3876,11 @@ function M.CreateClusterAsync(CreateClusterRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AmazonDAXV3.CreateCluster",
 	}
+	for header,value in pairs(CreateClusterRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateClusterRequest, headers, settings, cb)
 	else
@@ -3005,8 +3911,11 @@ function M.DescribeSubnetGroupsAsync(DescribeSubnetGroupsRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AmazonDAXV3.DescribeSubnetGroups",
 	}
+	for header,value in pairs(DescribeSubnetGroupsRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeSubnetGroupsRequest, headers, settings, cb)
 	else
@@ -3037,8 +3946,11 @@ function M.IncreaseReplicationFactorAsync(IncreaseReplicationFactorRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AmazonDAXV3.IncreaseReplicationFactor",
 	}
+	for header,value in pairs(IncreaseReplicationFactorRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", IncreaseReplicationFactorRequest, headers, settings, cb)
 	else
@@ -3069,8 +3981,11 @@ function M.TagResourceAsync(TagResourceRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AmazonDAXV3.TagResource",
 	}
+	for header,value in pairs(TagResourceRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", TagResourceRequest, headers, settings, cb)
 	else
@@ -3101,8 +4016,11 @@ function M.UpdateSubnetGroupAsync(UpdateSubnetGroupRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AmazonDAXV3.UpdateSubnetGroup",
 	}
+	for header,value in pairs(UpdateSubnetGroupRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateSubnetGroupRequest, headers, settings, cb)
 	else
@@ -3133,8 +4051,11 @@ function M.DescribeParametersAsync(DescribeParametersRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AmazonDAXV3.DescribeParameters",
 	}
+	for header,value in pairs(DescribeParametersRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeParametersRequest, headers, settings, cb)
 	else
@@ -3165,8 +4086,11 @@ function M.DecreaseReplicationFactorAsync(DecreaseReplicationFactorRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AmazonDAXV3.DecreaseReplicationFactor",
 	}
+	for header,value in pairs(DecreaseReplicationFactorRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DecreaseReplicationFactorRequest, headers, settings, cb)
 	else
@@ -3197,8 +4121,11 @@ function M.RebootNodeAsync(RebootNodeRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AmazonDAXV3.RebootNode",
 	}
+	for header,value in pairs(RebootNodeRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", RebootNodeRequest, headers, settings, cb)
 	else
@@ -3229,8 +4156,11 @@ function M.CreateSubnetGroupAsync(CreateSubnetGroupRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AmazonDAXV3.CreateSubnetGroup",
 	}
+	for header,value in pairs(CreateSubnetGroupRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateSubnetGroupRequest, headers, settings, cb)
 	else
@@ -3261,8 +4191,11 @@ function M.UpdateParameterGroupAsync(UpdateParameterGroupRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AmazonDAXV3.UpdateParameterGroup",
 	}
+	for header,value in pairs(UpdateParameterGroupRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateParameterGroupRequest, headers, settings, cb)
 	else
@@ -3293,8 +4226,11 @@ function M.ListTagsAsync(ListTagsRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AmazonDAXV3.ListTags",
 	}
+	for header,value in pairs(ListTagsRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ListTagsRequest, headers, settings, cb)
 	else
@@ -3325,8 +4261,11 @@ function M.DescribeEventsAsync(DescribeEventsRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AmazonDAXV3.DescribeEvents",
 	}
+	for header,value in pairs(DescribeEventsRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeEventsRequest, headers, settings, cb)
 	else
@@ -3357,8 +4296,11 @@ function M.DeleteSubnetGroupAsync(DeleteSubnetGroupRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AmazonDAXV3.DeleteSubnetGroup",
 	}
+	for header,value in pairs(DeleteSubnetGroupRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteSubnetGroupRequest, headers, settings, cb)
 	else
@@ -3389,8 +4331,11 @@ function M.DescribeDefaultParametersAsync(DescribeDefaultParametersRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AmazonDAXV3.DescribeDefaultParameters",
 	}
+	for header,value in pairs(DescribeDefaultParametersRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeDefaultParametersRequest, headers, settings, cb)
 	else
@@ -3421,8 +4366,11 @@ function M.DescribeClustersAsync(DescribeClustersRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AmazonDAXV3.DescribeClusters",
 	}
+	for header,value in pairs(DescribeClustersRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeClustersRequest, headers, settings, cb)
 	else
@@ -3453,8 +4401,11 @@ function M.DescribeParameterGroupsAsync(DescribeParameterGroupsRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AmazonDAXV3.DescribeParameterGroups",
 	}
+	for header,value in pairs(DescribeParameterGroupsRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeParameterGroupsRequest, headers, settings, cb)
 	else
@@ -3485,8 +4436,11 @@ function M.DeleteClusterAsync(DeleteClusterRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AmazonDAXV3.DeleteCluster",
 	}
+	for header,value in pairs(DeleteClusterRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteClusterRequest, headers, settings, cb)
 	else

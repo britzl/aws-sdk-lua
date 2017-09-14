@@ -41,12 +41,23 @@ end
 -- Required key: message
 -- @return LimitExceededException structure as a key-value pair table
 function M.LimitExceededException(args)
-	assert(args, "You must provdide an argument table when creating LimitExceededException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating LimitExceededException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertLimitExceededException(t)
-	return t
+	asserts.AssertLimitExceededException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetIdentityPoolConfigurationResponse = { ["IdentityPoolId"] = true, ["PushSync"] = true, ["CognitoStreams"] = true, nil }
@@ -71,14 +82,25 @@ end
 -- * CognitoStreams [CognitoStreams] Options to apply to this identity pool for Amazon Cognito streams.
 -- @return GetIdentityPoolConfigurationResponse structure as a key-value pair table
 function M.GetIdentityPoolConfigurationResponse(args)
-	assert(args, "You must provdide an argument table when creating GetIdentityPoolConfigurationResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetIdentityPoolConfigurationResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["IdentityPoolId"] = args["IdentityPoolId"],
 		["PushSync"] = args["PushSync"],
 		["CognitoStreams"] = args["CognitoStreams"],
 	}
-	asserts.AssertGetIdentityPoolConfigurationResponse(t)
-	return t
+	asserts.AssertGetIdentityPoolConfigurationResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ConcurrentModificationException = { ["message"] = true, nil }
@@ -101,12 +123,23 @@ end
 -- Required key: message
 -- @return ConcurrentModificationException structure as a key-value pair table
 function M.ConcurrentModificationException(args)
-	assert(args, "You must provdide an argument table when creating ConcurrentModificationException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ConcurrentModificationException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertConcurrentModificationException(t)
-	return t
+	asserts.AssertConcurrentModificationException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteDatasetResponse = { ["Dataset"] = true, nil }
@@ -127,12 +160,23 @@ end
 -- * Dataset [Dataset] A collection of data for an identity pool. An identity pool can have multiple datasets. A dataset is per identity and can be general or associated with a particular entity in an application (like a saved game). Datasets are automatically created if they don't exist. Data is synced by dataset, and a dataset can hold up to 1MB of key-value pairs.
 -- @return DeleteDatasetResponse structure as a key-value pair table
 function M.DeleteDatasetResponse(args)
-	assert(args, "You must provdide an argument table when creating DeleteDatasetResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteDatasetResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Dataset"] = args["Dataset"],
 	}
-	asserts.AssertDeleteDatasetResponse(t)
-	return t
+	asserts.AssertDeleteDatasetResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InternalErrorException = { ["message"] = true, nil }
@@ -155,12 +199,23 @@ end
 -- Required key: message
 -- @return InternalErrorException structure as a key-value pair table
 function M.InternalErrorException(args)
-	assert(args, "You must provdide an argument table when creating InternalErrorException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InternalErrorException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertInternalErrorException(t)
-	return t
+	asserts.AssertInternalErrorException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeIdentityUsageRequest = { ["IdentityPoolId"] = true, ["IdentityId"] = true, nil }
@@ -187,13 +242,26 @@ end
 -- Required key: IdentityId
 -- @return DescribeIdentityUsageRequest structure as a key-value pair table
 function M.DescribeIdentityUsageRequest(args)
-	assert(args, "You must provdide an argument table when creating DescribeIdentityUsageRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeIdentityUsageRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{IdentityPoolId}"] = args["IdentityPoolId"],
+        ["{IdentityId}"] = args["IdentityId"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["IdentityPoolId"] = args["IdentityPoolId"],
 		["IdentityId"] = args["IdentityId"],
 	}
-	asserts.AssertDescribeIdentityUsageRequest(t)
-	return t
+	asserts.AssertDescribeIdentityUsageRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetBulkPublishDetailsRequest = { ["IdentityPoolId"] = true, nil }
@@ -216,12 +284,24 @@ end
 -- Required key: IdentityPoolId
 -- @return GetBulkPublishDetailsRequest structure as a key-value pair table
 function M.GetBulkPublishDetailsRequest(args)
-	assert(args, "You must provdide an argument table when creating GetBulkPublishDetailsRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetBulkPublishDetailsRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{IdentityPoolId}"] = args["IdentityPoolId"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["IdentityPoolId"] = args["IdentityPoolId"],
 	}
-	asserts.AssertGetBulkPublishDetailsRequest(t)
-	return t
+	asserts.AssertGetBulkPublishDetailsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListRecordsResponse = { ["Count"] = true, ["DatasetExists"] = true, ["DatasetSyncCount"] = true, ["LastModifiedBy"] = true, ["Records"] = true, ["MergedDatasetNames"] = true, ["SyncSessionToken"] = true, ["DatasetDeletedAfterRequestedSyncCount"] = true, ["NextToken"] = true, nil }
@@ -258,8 +338,14 @@ end
 -- * NextToken [String] A pagination token for obtaining the next page of results.
 -- @return ListRecordsResponse structure as a key-value pair table
 function M.ListRecordsResponse(args)
-	assert(args, "You must provdide an argument table when creating ListRecordsResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListRecordsResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Count"] = args["Count"],
 		["DatasetExists"] = args["DatasetExists"],
 		["DatasetSyncCount"] = args["DatasetSyncCount"],
@@ -270,8 +356,13 @@ function M.ListRecordsResponse(args)
 		["DatasetDeletedAfterRequestedSyncCount"] = args["DatasetDeletedAfterRequestedSyncCount"],
 		["NextToken"] = args["NextToken"],
 	}
-	asserts.AssertListRecordsResponse(t)
-	return t
+	asserts.AssertListRecordsResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.SetIdentityPoolConfigurationResponse = { ["IdentityPoolId"] = true, ["PushSync"] = true, ["CognitoStreams"] = true, nil }
@@ -296,14 +387,25 @@ end
 -- * CognitoStreams [CognitoStreams] Options to apply to this identity pool for Amazon Cognito streams.
 -- @return SetIdentityPoolConfigurationResponse structure as a key-value pair table
 function M.SetIdentityPoolConfigurationResponse(args)
-	assert(args, "You must provdide an argument table when creating SetIdentityPoolConfigurationResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating SetIdentityPoolConfigurationResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["IdentityPoolId"] = args["IdentityPoolId"],
 		["PushSync"] = args["PushSync"],
 		["CognitoStreams"] = args["CognitoStreams"],
 	}
-	asserts.AssertSetIdentityPoolConfigurationResponse(t)
-	return t
+	asserts.AssertSetIdentityPoolConfigurationResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.SubscribeToDatasetRequest = { ["IdentityPoolId"] = true, ["DatasetName"] = true, ["DeviceId"] = true, ["IdentityId"] = true, nil }
@@ -338,15 +440,30 @@ end
 -- Required key: DeviceId
 -- @return SubscribeToDatasetRequest structure as a key-value pair table
 function M.SubscribeToDatasetRequest(args)
-	assert(args, "You must provdide an argument table when creating SubscribeToDatasetRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating SubscribeToDatasetRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{IdentityPoolId}"] = args["IdentityPoolId"],
+        ["{DatasetName}"] = args["DatasetName"],
+        ["{DeviceId}"] = args["DeviceId"],
+        ["{IdentityId}"] = args["IdentityId"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["IdentityPoolId"] = args["IdentityPoolId"],
 		["DatasetName"] = args["DatasetName"],
 		["DeviceId"] = args["DeviceId"],
 		["IdentityId"] = args["IdentityId"],
 	}
-	asserts.AssertSubscribeToDatasetRequest(t)
-	return t
+	asserts.AssertSubscribeToDatasetRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UnsubscribeFromDatasetResponse = { nil }
@@ -365,11 +482,22 @@ end
 -- Valid keys:
 -- @return UnsubscribeFromDatasetResponse structure as a key-value pair table
 function M.UnsubscribeFromDatasetResponse(args)
-	assert(args, "You must provdide an argument table when creating UnsubscribeFromDatasetResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UnsubscribeFromDatasetResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertUnsubscribeFromDatasetResponse(t)
-	return t
+	asserts.AssertUnsubscribeFromDatasetResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.SetIdentityPoolConfigurationRequest = { ["IdentityPoolId"] = true, ["PushSync"] = true, ["CognitoStreams"] = true, nil }
@@ -396,14 +524,26 @@ end
 -- Required key: IdentityPoolId
 -- @return SetIdentityPoolConfigurationRequest structure as a key-value pair table
 function M.SetIdentityPoolConfigurationRequest(args)
-	assert(args, "You must provdide an argument table when creating SetIdentityPoolConfigurationRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating SetIdentityPoolConfigurationRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{IdentityPoolId}"] = args["IdentityPoolId"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["IdentityPoolId"] = args["IdentityPoolId"],
 		["PushSync"] = args["PushSync"],
 		["CognitoStreams"] = args["CognitoStreams"],
 	}
-	asserts.AssertSetIdentityPoolConfigurationRequest(t)
-	return t
+	asserts.AssertSetIdentityPoolConfigurationRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListIdentityPoolUsageResponse = { ["Count"] = true, ["NextToken"] = true, ["MaxResults"] = true, ["IdentityPoolUsages"] = true, nil }
@@ -430,15 +570,26 @@ end
 -- * IdentityPoolUsages [IdentityPoolUsageList] Usage information for the identity pools.
 -- @return ListIdentityPoolUsageResponse structure as a key-value pair table
 function M.ListIdentityPoolUsageResponse(args)
-	assert(args, "You must provdide an argument table when creating ListIdentityPoolUsageResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListIdentityPoolUsageResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Count"] = args["Count"],
 		["NextToken"] = args["NextToken"],
 		["MaxResults"] = args["MaxResults"],
 		["IdentityPoolUsages"] = args["IdentityPoolUsages"],
 	}
-	asserts.AssertListIdentityPoolUsageResponse(t)
-	return t
+	asserts.AssertListIdentityPoolUsageResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetCognitoEventsRequest = { ["IdentityPoolId"] = true, nil }
@@ -461,12 +612,24 @@ end
 -- Required key: IdentityPoolId
 -- @return GetCognitoEventsRequest structure as a key-value pair table
 function M.GetCognitoEventsRequest(args)
-	assert(args, "You must provdide an argument table when creating GetCognitoEventsRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetCognitoEventsRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{IdentityPoolId}"] = args["IdentityPoolId"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["IdentityPoolId"] = args["IdentityPoolId"],
 	}
-	asserts.AssertGetCognitoEventsRequest(t)
-	return t
+	asserts.AssertGetCognitoEventsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeIdentityPoolUsageRequest = { ["IdentityPoolId"] = true, nil }
@@ -489,12 +652,24 @@ end
 -- Required key: IdentityPoolId
 -- @return DescribeIdentityPoolUsageRequest structure as a key-value pair table
 function M.DescribeIdentityPoolUsageRequest(args)
-	assert(args, "You must provdide an argument table when creating DescribeIdentityPoolUsageRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeIdentityPoolUsageRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{IdentityPoolId}"] = args["IdentityPoolId"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["IdentityPoolId"] = args["IdentityPoolId"],
 	}
-	asserts.AssertDescribeIdentityPoolUsageRequest(t)
-	return t
+	asserts.AssertDescribeIdentityPoolUsageRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.IdentityPoolUsage = { ["DataStorage"] = true, ["IdentityPoolId"] = true, ["SyncSessionsCount"] = true, ["LastModifiedDate"] = true, nil }
@@ -521,15 +696,26 @@ end
 -- * LastModifiedDate [Date] Date on which the identity pool was last modified.
 -- @return IdentityPoolUsage structure as a key-value pair table
 function M.IdentityPoolUsage(args)
-	assert(args, "You must provdide an argument table when creating IdentityPoolUsage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating IdentityPoolUsage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DataStorage"] = args["DataStorage"],
 		["IdentityPoolId"] = args["IdentityPoolId"],
 		["SyncSessionsCount"] = args["SyncSessionsCount"],
 		["LastModifiedDate"] = args["LastModifiedDate"],
 	}
-	asserts.AssertIdentityPoolUsage(t)
-	return t
+	asserts.AssertIdentityPoolUsage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetBulkPublishDetailsResponse = { ["BulkPublishStartTime"] = true, ["IdentityPoolId"] = true, ["BulkPublishStatus"] = true, ["BulkPublishCompleteTime"] = true, ["FailureMessage"] = true, nil }
@@ -558,16 +744,27 @@ end
 -- * FailureMessage [String] If BulkPublishStatus is FAILED this field will contain the error message that caused the bulk publish to fail.
 -- @return GetBulkPublishDetailsResponse structure as a key-value pair table
 function M.GetBulkPublishDetailsResponse(args)
-	assert(args, "You must provdide an argument table when creating GetBulkPublishDetailsResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetBulkPublishDetailsResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["BulkPublishStartTime"] = args["BulkPublishStartTime"],
 		["IdentityPoolId"] = args["IdentityPoolId"],
 		["BulkPublishStatus"] = args["BulkPublishStatus"],
 		["BulkPublishCompleteTime"] = args["BulkPublishCompleteTime"],
 		["FailureMessage"] = args["FailureMessage"],
 	}
-	asserts.AssertGetBulkPublishDetailsResponse(t)
-	return t
+	asserts.AssertGetBulkPublishDetailsResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidParameterException = { ["message"] = true, nil }
@@ -590,12 +787,23 @@ end
 -- Required key: message
 -- @return InvalidParameterException structure as a key-value pair table
 function M.InvalidParameterException(args)
-	assert(args, "You must provdide an argument table when creating InvalidParameterException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidParameterException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertInvalidParameterException(t)
-	return t
+	asserts.AssertInvalidParameterException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UnsubscribeFromDatasetRequest = { ["IdentityPoolId"] = true, ["DatasetName"] = true, ["DeviceId"] = true, ["IdentityId"] = true, nil }
@@ -630,15 +838,30 @@ end
 -- Required key: DeviceId
 -- @return UnsubscribeFromDatasetRequest structure as a key-value pair table
 function M.UnsubscribeFromDatasetRequest(args)
-	assert(args, "You must provdide an argument table when creating UnsubscribeFromDatasetRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UnsubscribeFromDatasetRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{IdentityPoolId}"] = args["IdentityPoolId"],
+        ["{DatasetName}"] = args["DatasetName"],
+        ["{DeviceId}"] = args["DeviceId"],
+        ["{IdentityId}"] = args["IdentityId"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["IdentityPoolId"] = args["IdentityPoolId"],
 		["DatasetName"] = args["DatasetName"],
 		["DeviceId"] = args["DeviceId"],
 		["IdentityId"] = args["IdentityId"],
 	}
-	asserts.AssertUnsubscribeFromDatasetRequest(t)
-	return t
+	asserts.AssertUnsubscribeFromDatasetRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CognitoStreams = { ["StreamingStatus"] = true, ["RoleArn"] = true, ["StreamName"] = true, nil }
@@ -663,14 +886,25 @@ end
 -- * StreamName [StreamName] The name of the Cognito stream to receive updates. This stream must be in the developers account and in the same region as the identity pool.
 -- @return CognitoStreams structure as a key-value pair table
 function M.CognitoStreams(args)
-	assert(args, "You must provdide an argument table when creating CognitoStreams")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CognitoStreams")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["StreamingStatus"] = args["StreamingStatus"],
 		["RoleArn"] = args["RoleArn"],
 		["StreamName"] = args["StreamName"],
 	}
-	asserts.AssertCognitoStreams(t)
-	return t
+	asserts.AssertCognitoStreams(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListDatasetsRequest = { ["IdentityPoolId"] = true, ["NextToken"] = true, ["MaxResults"] = true, ["IdentityId"] = true, nil }
@@ -701,15 +935,30 @@ end
 -- Required key: IdentityPoolId
 -- @return ListDatasetsRequest structure as a key-value pair table
 function M.ListDatasetsRequest(args)
-	assert(args, "You must provdide an argument table when creating ListDatasetsRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListDatasetsRequest")
+    local query_args = { 
+        ["nextToken"] = args["NextToken"],
+        ["maxResults"] = args["MaxResults"],
+    }
+    local uri_args = { 
+        ["{IdentityPoolId}"] = args["IdentityPoolId"],
+        ["{IdentityId}"] = args["IdentityId"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["IdentityPoolId"] = args["IdentityPoolId"],
 		["NextToken"] = args["NextToken"],
 		["MaxResults"] = args["MaxResults"],
 		["IdentityId"] = args["IdentityId"],
 	}
-	asserts.AssertListDatasetsRequest(t)
-	return t
+	asserts.AssertListDatasetsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListIdentityPoolUsageRequest = { ["NextToken"] = true, ["MaxResults"] = true, nil }
@@ -732,13 +981,26 @@ end
 -- * MaxResults [IntegerString] The maximum number of results to be returned.
 -- @return ListIdentityPoolUsageRequest structure as a key-value pair table
 function M.ListIdentityPoolUsageRequest(args)
-	assert(args, "You must provdide an argument table when creating ListIdentityPoolUsageRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListIdentityPoolUsageRequest")
+    local query_args = { 
+        ["nextToken"] = args["NextToken"],
+        ["maxResults"] = args["MaxResults"],
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NextToken"] = args["NextToken"],
 		["MaxResults"] = args["MaxResults"],
 	}
-	asserts.AssertListIdentityPoolUsageRequest(t)
-	return t
+	asserts.AssertListIdentityPoolUsageRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.NotAuthorizedException = { ["message"] = true, nil }
@@ -761,12 +1023,23 @@ end
 -- Required key: message
 -- @return NotAuthorizedException structure as a key-value pair table
 function M.NotAuthorizedException(args)
-	assert(args, "You must provdide an argument table when creating NotAuthorizedException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating NotAuthorizedException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertNotAuthorizedException(t)
-	return t
+	asserts.AssertNotAuthorizedException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListRecordsRequest = { ["DatasetName"] = true, ["MaxResults"] = true, ["IdentityId"] = true, ["IdentityPoolId"] = true, ["LastSyncCount"] = true, ["SyncSessionToken"] = true, ["NextToken"] = true, nil }
@@ -805,8 +1078,21 @@ end
 -- Required key: DatasetName
 -- @return ListRecordsRequest structure as a key-value pair table
 function M.ListRecordsRequest(args)
-	assert(args, "You must provdide an argument table when creating ListRecordsRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListRecordsRequest")
+    local query_args = { 
+        ["maxResults"] = args["MaxResults"],
+        ["lastSyncCount"] = args["LastSyncCount"],
+        ["syncSessionToken"] = args["SyncSessionToken"],
+        ["nextToken"] = args["NextToken"],
+    }
+    local uri_args = { 
+        ["{DatasetName}"] = args["DatasetName"],
+        ["{IdentityId}"] = args["IdentityId"],
+        ["{IdentityPoolId}"] = args["IdentityPoolId"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DatasetName"] = args["DatasetName"],
 		["MaxResults"] = args["MaxResults"],
 		["IdentityId"] = args["IdentityId"],
@@ -815,8 +1101,13 @@ function M.ListRecordsRequest(args)
 		["SyncSessionToken"] = args["SyncSessionToken"],
 		["NextToken"] = args["NextToken"],
 	}
-	asserts.AssertListRecordsRequest(t)
-	return t
+	asserts.AssertListRecordsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.IdentityUsage = { ["DatasetCount"] = true, ["IdentityPoolId"] = true, ["DataStorage"] = true, ["LastModifiedDate"] = true, ["IdentityId"] = true, nil }
@@ -845,16 +1136,27 @@ end
 -- * IdentityId [IdentityId] A name-spaced GUID (for example, us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon Cognito. GUID generation is unique within a region.
 -- @return IdentityUsage structure as a key-value pair table
 function M.IdentityUsage(args)
-	assert(args, "You must provdide an argument table when creating IdentityUsage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating IdentityUsage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DatasetCount"] = args["DatasetCount"],
 		["IdentityPoolId"] = args["IdentityPoolId"],
 		["DataStorage"] = args["DataStorage"],
 		["LastModifiedDate"] = args["LastModifiedDate"],
 		["IdentityId"] = args["IdentityId"],
 	}
-	asserts.AssertIdentityUsage(t)
-	return t
+	asserts.AssertIdentityUsage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeDatasetResponse = { ["Dataset"] = true, nil }
@@ -875,12 +1177,23 @@ end
 -- * Dataset [Dataset] Meta data for a collection of data for an identity. An identity can have multiple datasets. A dataset can be general or associated with a particular entity in an application (like a saved game). Datasets are automatically created if they don't exist. Data is synced by dataset, and a dataset can hold up to 1MB of key-value pairs.
 -- @return DescribeDatasetResponse structure as a key-value pair table
 function M.DescribeDatasetResponse(args)
-	assert(args, "You must provdide an argument table when creating DescribeDatasetResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeDatasetResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Dataset"] = args["Dataset"],
 	}
-	asserts.AssertDescribeDatasetResponse(t)
-	return t
+	asserts.AssertDescribeDatasetResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteDatasetRequest = { ["IdentityPoolId"] = true, ["DatasetName"] = true, ["IdentityId"] = true, nil }
@@ -911,14 +1224,28 @@ end
 -- Required key: DatasetName
 -- @return DeleteDatasetRequest structure as a key-value pair table
 function M.DeleteDatasetRequest(args)
-	assert(args, "You must provdide an argument table when creating DeleteDatasetRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteDatasetRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{IdentityPoolId}"] = args["IdentityPoolId"],
+        ["{DatasetName}"] = args["DatasetName"],
+        ["{IdentityId}"] = args["IdentityId"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["IdentityPoolId"] = args["IdentityPoolId"],
 		["DatasetName"] = args["DatasetName"],
 		["IdentityId"] = args["IdentityId"],
 	}
-	asserts.AssertDeleteDatasetRequest(t)
-	return t
+	asserts.AssertDeleteDatasetRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.BulkPublishResponse = { ["IdentityPoolId"] = true, nil }
@@ -939,12 +1266,23 @@ end
 -- * IdentityPoolId [IdentityPoolId] A name-spaced GUID (for example, us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon Cognito. GUID generation is unique within a region.
 -- @return BulkPublishResponse structure as a key-value pair table
 function M.BulkPublishResponse(args)
-	assert(args, "You must provdide an argument table when creating BulkPublishResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating BulkPublishResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["IdentityPoolId"] = args["IdentityPoolId"],
 	}
-	asserts.AssertBulkPublishResponse(t)
-	return t
+	asserts.AssertBulkPublishResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.SubscribeToDatasetResponse = { nil }
@@ -963,11 +1301,22 @@ end
 -- Valid keys:
 -- @return SubscribeToDatasetResponse structure as a key-value pair table
 function M.SubscribeToDatasetResponse(args)
-	assert(args, "You must provdide an argument table when creating SubscribeToDatasetResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating SubscribeToDatasetResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertSubscribeToDatasetResponse(t)
-	return t
+	asserts.AssertSubscribeToDatasetResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidLambdaFunctionOutputException = { ["message"] = true, nil }
@@ -990,12 +1339,23 @@ end
 -- Required key: message
 -- @return InvalidLambdaFunctionOutputException structure as a key-value pair table
 function M.InvalidLambdaFunctionOutputException(args)
-	assert(args, "You must provdide an argument table when creating InvalidLambdaFunctionOutputException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidLambdaFunctionOutputException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertInvalidLambdaFunctionOutputException(t)
-	return t
+	asserts.AssertInvalidLambdaFunctionOutputException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.TooManyRequestsException = { ["message"] = true, nil }
@@ -1018,12 +1378,23 @@ end
 -- Required key: message
 -- @return TooManyRequestsException structure as a key-value pair table
 function M.TooManyRequestsException(args)
-	assert(args, "You must provdide an argument table when creating TooManyRequestsException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating TooManyRequestsException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertTooManyRequestsException(t)
-	return t
+	asserts.AssertTooManyRequestsException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeIdentityUsageResponse = { ["IdentityUsage"] = true, nil }
@@ -1044,12 +1415,23 @@ end
 -- * IdentityUsage [IdentityUsage] Usage information for the identity.
 -- @return DescribeIdentityUsageResponse structure as a key-value pair table
 function M.DescribeIdentityUsageResponse(args)
-	assert(args, "You must provdide an argument table when creating DescribeIdentityUsageResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeIdentityUsageResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["IdentityUsage"] = args["IdentityUsage"],
 	}
-	asserts.AssertDescribeIdentityUsageResponse(t)
-	return t
+	asserts.AssertDescribeIdentityUsageResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.PushSync = { ["RoleArn"] = true, ["ApplicationArns"] = true, nil }
@@ -1072,13 +1454,24 @@ end
 -- * ApplicationArns [ApplicationArnList] <p>List of SNS platform application ARNs that could be used by clients.</p>
 -- @return PushSync structure as a key-value pair table
 function M.PushSync(args)
-	assert(args, "You must provdide an argument table when creating PushSync")
-	local t = { 
+	assert(args, "You must provide an argument table when creating PushSync")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["RoleArn"] = args["RoleArn"],
 		["ApplicationArns"] = args["ApplicationArns"],
 	}
-	asserts.AssertPushSync(t)
-	return t
+	asserts.AssertPushSync(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Record = { ["DeviceLastModifiedDate"] = true, ["LastModifiedDate"] = true, ["Value"] = true, ["LastModifiedBy"] = true, ["Key"] = true, ["SyncCount"] = true, nil }
@@ -1109,8 +1502,14 @@ end
 -- * SyncCount [Long] The server sync count for this record.
 -- @return Record structure as a key-value pair table
 function M.Record(args)
-	assert(args, "You must provdide an argument table when creating Record")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Record")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DeviceLastModifiedDate"] = args["DeviceLastModifiedDate"],
 		["LastModifiedDate"] = args["LastModifiedDate"],
 		["Value"] = args["Value"],
@@ -1118,8 +1517,13 @@ function M.Record(args)
 		["Key"] = args["Key"],
 		["SyncCount"] = args["SyncCount"],
 	}
-	asserts.AssertRecord(t)
-	return t
+	asserts.AssertRecord(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.BulkPublishRequest = { ["IdentityPoolId"] = true, nil }
@@ -1142,12 +1546,24 @@ end
 -- Required key: IdentityPoolId
 -- @return BulkPublishRequest structure as a key-value pair table
 function M.BulkPublishRequest(args)
-	assert(args, "You must provdide an argument table when creating BulkPublishRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating BulkPublishRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{IdentityPoolId}"] = args["IdentityPoolId"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["IdentityPoolId"] = args["IdentityPoolId"],
 	}
-	asserts.AssertBulkPublishRequest(t)
-	return t
+	asserts.AssertBulkPublishRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdateRecordsResponse = { ["Records"] = true, nil }
@@ -1168,12 +1584,23 @@ end
 -- * Records [RecordList] A list of records that have been updated.
 -- @return UpdateRecordsResponse structure as a key-value pair table
 function M.UpdateRecordsResponse(args)
-	assert(args, "You must provdide an argument table when creating UpdateRecordsResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateRecordsResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Records"] = args["Records"],
 	}
-	asserts.AssertUpdateRecordsResponse(t)
-	return t
+	asserts.AssertUpdateRecordsResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeIdentityPoolUsageResponse = { ["IdentityPoolUsage"] = true, nil }
@@ -1194,12 +1621,23 @@ end
 -- * IdentityPoolUsage [IdentityPoolUsage] Information about the usage of the identity pool.
 -- @return DescribeIdentityPoolUsageResponse structure as a key-value pair table
 function M.DescribeIdentityPoolUsageResponse(args)
-	assert(args, "You must provdide an argument table when creating DescribeIdentityPoolUsageResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeIdentityPoolUsageResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["IdentityPoolUsage"] = args["IdentityPoolUsage"],
 	}
-	asserts.AssertDescribeIdentityPoolUsageResponse(t)
-	return t
+	asserts.AssertDescribeIdentityPoolUsageResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdateRecordsRequest = { ["DatasetName"] = true, ["RecordPatches"] = true, ["IdentityId"] = true, ["IdentityPoolId"] = true, ["DeviceId"] = true, ["SyncSessionToken"] = true, ["ClientContext"] = true, nil }
@@ -1240,8 +1678,18 @@ end
 -- Required key: SyncSessionToken
 -- @return UpdateRecordsRequest structure as a key-value pair table
 function M.UpdateRecordsRequest(args)
-	assert(args, "You must provdide an argument table when creating UpdateRecordsRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateRecordsRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{DatasetName}"] = args["DatasetName"],
+        ["{IdentityId}"] = args["IdentityId"],
+        ["{IdentityPoolId}"] = args["IdentityPoolId"],
+    }
+    local header_args = { 
+        ["x-amz-Client-Context"] = args["ClientContext"],
+    }
+	local all_args = { 
 		["DatasetName"] = args["DatasetName"],
 		["RecordPatches"] = args["RecordPatches"],
 		["IdentityId"] = args["IdentityId"],
@@ -1250,8 +1698,13 @@ function M.UpdateRecordsRequest(args)
 		["SyncSessionToken"] = args["SyncSessionToken"],
 		["ClientContext"] = args["ClientContext"],
 	}
-	asserts.AssertUpdateRecordsRequest(t)
-	return t
+	asserts.AssertUpdateRecordsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeDatasetRequest = { ["IdentityPoolId"] = true, ["DatasetName"] = true, ["IdentityId"] = true, nil }
@@ -1282,14 +1735,28 @@ end
 -- Required key: DatasetName
 -- @return DescribeDatasetRequest structure as a key-value pair table
 function M.DescribeDatasetRequest(args)
-	assert(args, "You must provdide an argument table when creating DescribeDatasetRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeDatasetRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{IdentityPoolId}"] = args["IdentityPoolId"],
+        ["{DatasetName}"] = args["DatasetName"],
+        ["{IdentityId}"] = args["IdentityId"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["IdentityPoolId"] = args["IdentityPoolId"],
 		["DatasetName"] = args["DatasetName"],
 		["IdentityId"] = args["IdentityId"],
 	}
-	asserts.AssertDescribeDatasetRequest(t)
-	return t
+	asserts.AssertDescribeDatasetRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetCognitoEventsResponse = { ["Events"] = true, nil }
@@ -1310,12 +1777,23 @@ end
 -- * Events [Events] <p>The Cognito Events returned from the GetCognitoEvents request</p>
 -- @return GetCognitoEventsResponse structure as a key-value pair table
 function M.GetCognitoEventsResponse(args)
-	assert(args, "You must provdide an argument table when creating GetCognitoEventsResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetCognitoEventsResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Events"] = args["Events"],
 	}
-	asserts.AssertGetCognitoEventsResponse(t)
-	return t
+	asserts.AssertGetCognitoEventsResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.SetCognitoEventsRequest = { ["IdentityPoolId"] = true, ["Events"] = true, nil }
@@ -1342,13 +1820,25 @@ end
 -- Required key: Events
 -- @return SetCognitoEventsRequest structure as a key-value pair table
 function M.SetCognitoEventsRequest(args)
-	assert(args, "You must provdide an argument table when creating SetCognitoEventsRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating SetCognitoEventsRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{IdentityPoolId}"] = args["IdentityPoolId"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["IdentityPoolId"] = args["IdentityPoolId"],
 		["Events"] = args["Events"],
 	}
-	asserts.AssertSetCognitoEventsRequest(t)
-	return t
+	asserts.AssertSetCognitoEventsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListDatasetsResponse = { ["Count"] = true, ["Datasets"] = true, ["NextToken"] = true, nil }
@@ -1373,14 +1863,25 @@ end
 -- * NextToken [String] A pagination token for obtaining the next page of results.
 -- @return ListDatasetsResponse structure as a key-value pair table
 function M.ListDatasetsResponse(args)
-	assert(args, "You must provdide an argument table when creating ListDatasetsResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListDatasetsResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Count"] = args["Count"],
 		["Datasets"] = args["Datasets"],
 		["NextToken"] = args["NextToken"],
 	}
-	asserts.AssertListDatasetsResponse(t)
-	return t
+	asserts.AssertListDatasetsResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.LambdaThrottledException = { ["message"] = true, nil }
@@ -1403,12 +1904,23 @@ end
 -- Required key: message
 -- @return LambdaThrottledException structure as a key-value pair table
 function M.LambdaThrottledException(args)
-	assert(args, "You must provdide an argument table when creating LambdaThrottledException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating LambdaThrottledException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertLambdaThrottledException(t)
-	return t
+	asserts.AssertLambdaThrottledException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ResourceConflictException = { ["message"] = true, nil }
@@ -1431,12 +1943,23 @@ end
 -- Required key: message
 -- @return ResourceConflictException structure as a key-value pair table
 function M.ResourceConflictException(args)
-	assert(args, "You must provdide an argument table when creating ResourceConflictException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ResourceConflictException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertResourceConflictException(t)
-	return t
+	asserts.AssertResourceConflictException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AlreadyStreamedException = { ["message"] = true, nil }
@@ -1459,12 +1982,23 @@ end
 -- Required key: message
 -- @return AlreadyStreamedException structure as a key-value pair table
 function M.AlreadyStreamedException(args)
-	assert(args, "You must provdide an argument table when creating AlreadyStreamedException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AlreadyStreamedException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertAlreadyStreamedException(t)
-	return t
+	asserts.AssertAlreadyStreamedException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Dataset = { ["DatasetName"] = true, ["DataStorage"] = true, ["LastModifiedDate"] = true, ["NumRecords"] = true, ["IdentityId"] = true, ["LastModifiedBy"] = true, ["CreationDate"] = true, nil }
@@ -1497,8 +2031,14 @@ end
 -- * CreationDate [Date] Date on which the dataset was created.
 -- @return Dataset structure as a key-value pair table
 function M.Dataset(args)
-	assert(args, "You must provdide an argument table when creating Dataset")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Dataset")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DatasetName"] = args["DatasetName"],
 		["DataStorage"] = args["DataStorage"],
 		["LastModifiedDate"] = args["LastModifiedDate"],
@@ -1507,8 +2047,13 @@ function M.Dataset(args)
 		["LastModifiedBy"] = args["LastModifiedBy"],
 		["CreationDate"] = args["CreationDate"],
 	}
-	asserts.AssertDataset(t)
-	return t
+	asserts.AssertDataset(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ResourceNotFoundException = { ["message"] = true, nil }
@@ -1531,12 +2076,23 @@ end
 -- Required key: message
 -- @return ResourceNotFoundException structure as a key-value pair table
 function M.ResourceNotFoundException(args)
-	assert(args, "You must provdide an argument table when creating ResourceNotFoundException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ResourceNotFoundException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertResourceNotFoundException(t)
-	return t
+	asserts.AssertResourceNotFoundException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.RecordPatch = { ["SyncCount"] = true, ["DeviceLastModifiedDate"] = true, ["Value"] = true, ["Key"] = true, ["Op"] = true, nil }
@@ -1571,16 +2127,27 @@ end
 -- Required key: SyncCount
 -- @return RecordPatch structure as a key-value pair table
 function M.RecordPatch(args)
-	assert(args, "You must provdide an argument table when creating RecordPatch")
-	local t = { 
+	assert(args, "You must provide an argument table when creating RecordPatch")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["SyncCount"] = args["SyncCount"],
 		["DeviceLastModifiedDate"] = args["DeviceLastModifiedDate"],
 		["Value"] = args["Value"],
 		["Key"] = args["Key"],
 		["Op"] = args["Op"],
 	}
-	asserts.AssertRecordPatch(t)
-	return t
+	asserts.AssertRecordPatch(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.RegisterDeviceResponse = { ["DeviceId"] = true, nil }
@@ -1601,12 +2168,23 @@ end
 -- * DeviceId [DeviceId] <p>The unique ID generated for this device by Cognito.</p>
 -- @return RegisterDeviceResponse structure as a key-value pair table
 function M.RegisterDeviceResponse(args)
-	assert(args, "You must provdide an argument table when creating RegisterDeviceResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating RegisterDeviceResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DeviceId"] = args["DeviceId"],
 	}
-	asserts.AssertRegisterDeviceResponse(t)
-	return t
+	asserts.AssertRegisterDeviceResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.RegisterDeviceRequest = { ["Platform"] = true, ["IdentityPoolId"] = true, ["Token"] = true, ["IdentityId"] = true, nil }
@@ -1641,15 +2219,28 @@ end
 -- Required key: Token
 -- @return RegisterDeviceRequest structure as a key-value pair table
 function M.RegisterDeviceRequest(args)
-	assert(args, "You must provdide an argument table when creating RegisterDeviceRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating RegisterDeviceRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{IdentityPoolId}"] = args["IdentityPoolId"],
+        ["{IdentityId}"] = args["IdentityId"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Platform"] = args["Platform"],
 		["IdentityPoolId"] = args["IdentityPoolId"],
 		["Token"] = args["Token"],
 		["IdentityId"] = args["IdentityId"],
 	}
-	asserts.AssertRegisterDeviceRequest(t)
-	return t
+	asserts.AssertRegisterDeviceRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidConfigurationException = { ["message"] = true, nil }
@@ -1672,12 +2263,23 @@ end
 -- Required key: message
 -- @return InvalidConfigurationException structure as a key-value pair table
 function M.InvalidConfigurationException(args)
-	assert(args, "You must provdide an argument table when creating InvalidConfigurationException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidConfigurationException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertInvalidConfigurationException(t)
-	return t
+	asserts.AssertInvalidConfigurationException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetIdentityPoolConfigurationRequest = { ["IdentityPoolId"] = true, nil }
@@ -1700,12 +2302,24 @@ end
 -- Required key: IdentityPoolId
 -- @return GetIdentityPoolConfigurationRequest structure as a key-value pair table
 function M.GetIdentityPoolConfigurationRequest(args)
-	assert(args, "You must provdide an argument table when creating GetIdentityPoolConfigurationRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetIdentityPoolConfigurationRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{IdentityPoolId}"] = args["IdentityPoolId"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["IdentityPoolId"] = args["IdentityPoolId"],
 	}
-	asserts.AssertGetIdentityPoolConfigurationRequest(t)
-	return t
+	asserts.AssertGetIdentityPoolConfigurationRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DuplicateRequestException = { ["message"] = true, nil }
@@ -1728,12 +2342,23 @@ end
 -- Required key: message
 -- @return DuplicateRequestException structure as a key-value pair table
 function M.DuplicateRequestException(args)
-	assert(args, "You must provdide an argument table when creating DuplicateRequestException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DuplicateRequestException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertDuplicateRequestException(t)
-	return t
+	asserts.AssertDuplicateRequestException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 function asserts.AssertDatasetName(str)
@@ -2180,8 +2805,11 @@ function M.SetCognitoEventsAsync(SetCognitoEventsRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".SetCognitoEvents",
 	}
+	for header,value in pairs(SetCognitoEventsRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/identitypools/{IdentityPoolId}/events", SetCognitoEventsRequest, headers, settings, cb)
 	else
@@ -2212,8 +2840,11 @@ function M.DescribeIdentityUsageAsync(DescribeIdentityUsageRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DescribeIdentityUsage",
 	}
+	for header,value in pairs(DescribeIdentityUsageRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
 	if request_handler then
 		request_handler(settings.uri, "/identitypools/{IdentityPoolId}/identities/{IdentityId}", DescribeIdentityUsageRequest, headers, settings, cb)
 	else
@@ -2244,8 +2875,11 @@ function M.ListRecordsAsync(ListRecordsRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".ListRecords",
 	}
+	for header,value in pairs(ListRecordsRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
 	if request_handler then
 		request_handler(settings.uri, "/identitypools/{IdentityPoolId}/identities/{IdentityId}/datasets/{DatasetName}/records", ListRecordsRequest, headers, settings, cb)
 	else
@@ -2276,8 +2910,11 @@ function M.DescribeDatasetAsync(DescribeDatasetRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DescribeDataset",
 	}
+	for header,value in pairs(DescribeDatasetRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
 	if request_handler then
 		request_handler(settings.uri, "/identitypools/{IdentityPoolId}/identities/{IdentityId}/datasets/{DatasetName}", DescribeDatasetRequest, headers, settings, cb)
 	else
@@ -2308,8 +2945,11 @@ function M.BulkPublishAsync(BulkPublishRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".BulkPublish",
 	}
+	for header,value in pairs(BulkPublishRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/identitypools/{IdentityPoolId}/bulkpublish", BulkPublishRequest, headers, settings, cb)
 	else
@@ -2340,8 +2980,11 @@ function M.UnsubscribeFromDatasetAsync(UnsubscribeFromDatasetRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".UnsubscribeFromDataset",
 	}
+	for header,value in pairs(UnsubscribeFromDatasetRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("DELETE")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE")
 	if request_handler then
 		request_handler(settings.uri, "/identitypools/{IdentityPoolId}/identities/{IdentityId}/datasets/{DatasetName}/subscriptions/{DeviceId}", UnsubscribeFromDatasetRequest, headers, settings, cb)
 	else
@@ -2372,8 +3015,11 @@ function M.ListIdentityPoolUsageAsync(ListIdentityPoolUsageRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".ListIdentityPoolUsage",
 	}
+	for header,value in pairs(ListIdentityPoolUsageRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
 	if request_handler then
 		request_handler(settings.uri, "/identitypools", ListIdentityPoolUsageRequest, headers, settings, cb)
 	else
@@ -2404,8 +3050,11 @@ function M.RegisterDeviceAsync(RegisterDeviceRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".RegisterDevice",
 	}
+	for header,value in pairs(RegisterDeviceRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/identitypools/{IdentityPoolId}/identity/{IdentityId}/device", RegisterDeviceRequest, headers, settings, cb)
 	else
@@ -2436,8 +3085,11 @@ function M.GetBulkPublishDetailsAsync(GetBulkPublishDetailsRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".GetBulkPublishDetails",
 	}
+	for header,value in pairs(GetBulkPublishDetailsRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/identitypools/{IdentityPoolId}/getBulkPublishDetails", GetBulkPublishDetailsRequest, headers, settings, cb)
 	else
@@ -2468,8 +3120,11 @@ function M.GetCognitoEventsAsync(GetCognitoEventsRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".GetCognitoEvents",
 	}
+	for header,value in pairs(GetCognitoEventsRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
 	if request_handler then
 		request_handler(settings.uri, "/identitypools/{IdentityPoolId}/events", GetCognitoEventsRequest, headers, settings, cb)
 	else
@@ -2500,8 +3155,11 @@ function M.DeleteDatasetAsync(DeleteDatasetRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DeleteDataset",
 	}
+	for header,value in pairs(DeleteDatasetRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("DELETE")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE")
 	if request_handler then
 		request_handler(settings.uri, "/identitypools/{IdentityPoolId}/identities/{IdentityId}/datasets/{DatasetName}", DeleteDatasetRequest, headers, settings, cb)
 	else
@@ -2532,8 +3190,11 @@ function M.DescribeIdentityPoolUsageAsync(DescribeIdentityPoolUsageRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DescribeIdentityPoolUsage",
 	}
+	for header,value in pairs(DescribeIdentityPoolUsageRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
 	if request_handler then
 		request_handler(settings.uri, "/identitypools/{IdentityPoolId}", DescribeIdentityPoolUsageRequest, headers, settings, cb)
 	else
@@ -2564,8 +3225,11 @@ function M.UpdateRecordsAsync(UpdateRecordsRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".UpdateRecords",
 	}
+	for header,value in pairs(UpdateRecordsRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/identitypools/{IdentityPoolId}/identities/{IdentityId}/datasets/{DatasetName}", UpdateRecordsRequest, headers, settings, cb)
 	else
@@ -2596,8 +3260,11 @@ function M.SubscribeToDatasetAsync(SubscribeToDatasetRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".SubscribeToDataset",
 	}
+	for header,value in pairs(SubscribeToDatasetRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/identitypools/{IdentityPoolId}/identities/{IdentityId}/datasets/{DatasetName}/subscriptions/{DeviceId}", SubscribeToDatasetRequest, headers, settings, cb)
 	else
@@ -2628,8 +3295,11 @@ function M.SetIdentityPoolConfigurationAsync(SetIdentityPoolConfigurationRequest
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".SetIdentityPoolConfiguration",
 	}
+	for header,value in pairs(SetIdentityPoolConfigurationRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/identitypools/{IdentityPoolId}/configuration", SetIdentityPoolConfigurationRequest, headers, settings, cb)
 	else
@@ -2660,8 +3330,11 @@ function M.GetIdentityPoolConfigurationAsync(GetIdentityPoolConfigurationRequest
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".GetIdentityPoolConfiguration",
 	}
+	for header,value in pairs(GetIdentityPoolConfigurationRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
 	if request_handler then
 		request_handler(settings.uri, "/identitypools/{IdentityPoolId}/configuration", GetIdentityPoolConfigurationRequest, headers, settings, cb)
 	else
@@ -2692,8 +3365,11 @@ function M.ListDatasetsAsync(ListDatasetsRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".ListDatasets",
 	}
+	for header,value in pairs(ListDatasetsRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
 	if request_handler then
 		request_handler(settings.uri, "/identitypools/{IdentityPoolId}/identities/{IdentityId}/datasets", ListDatasetsRequest, headers, settings, cb)
 	else

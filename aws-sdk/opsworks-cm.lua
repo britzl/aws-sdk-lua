@@ -39,12 +39,23 @@ end
 -- * Message [String] <p>Error or informational message that the maximum allowed number of servers or backups has been exceeded. </p>
 -- @return LimitExceededException structure as a key-value pair table
 function M.LimitExceededException(args)
-	assert(args, "You must provdide an argument table when creating LimitExceededException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating LimitExceededException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Message"] = args["Message"],
 	}
-	asserts.AssertLimitExceededException(t)
-	return t
+	asserts.AssertLimitExceededException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdateServerEngineAttributesResponse = { ["Server"] = true, nil }
@@ -65,12 +76,23 @@ end
 -- * Server [Server] <p>Contains the response to an <code>UpdateServerEngineAttributes</code> request. </p>
 -- @return UpdateServerEngineAttributesResponse structure as a key-value pair table
 function M.UpdateServerEngineAttributesResponse(args)
-	assert(args, "You must provdide an argument table when creating UpdateServerEngineAttributesResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateServerEngineAttributesResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Server"] = args["Server"],
 	}
-	asserts.AssertUpdateServerEngineAttributesResponse(t)
-	return t
+	asserts.AssertUpdateServerEngineAttributesResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ValidationException = { ["Message"] = true, nil }
@@ -91,12 +113,23 @@ end
 -- * Message [String] <p>Error or informational message that can contain more detail about a validation failure. </p>
 -- @return ValidationException structure as a key-value pair table
 function M.ValidationException(args)
-	assert(args, "You must provdide an argument table when creating ValidationException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ValidationException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Message"] = args["Message"],
 	}
-	asserts.AssertValidationException(t)
-	return t
+	asserts.AssertValidationException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateBackupRequest = { ["ServerName"] = true, ["Description"] = true, nil }
@@ -121,13 +154,24 @@ end
 -- Required key: ServerName
 -- @return CreateBackupRequest structure as a key-value pair table
 function M.CreateBackupRequest(args)
-	assert(args, "You must provdide an argument table when creating CreateBackupRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateBackupRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ServerName"] = args["ServerName"],
 		["Description"] = args["Description"],
 	}
-	asserts.AssertCreateBackupRequest(t)
-	return t
+	asserts.AssertCreateBackupRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeAccountAttributesResponse = { ["Attributes"] = true, nil }
@@ -148,12 +192,23 @@ end
 -- * Attributes [AccountAttributes] <p> The attributes that are currently set for the account. </p>
 -- @return DescribeAccountAttributesResponse structure as a key-value pair table
 function M.DescribeAccountAttributesResponse(args)
-	assert(args, "You must provdide an argument table when creating DescribeAccountAttributesResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeAccountAttributesResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Attributes"] = args["Attributes"],
 	}
-	asserts.AssertDescribeAccountAttributesResponse(t)
-	return t
+	asserts.AssertDescribeAccountAttributesResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteServerRequest = { ["ServerName"] = true, nil }
@@ -176,12 +231,23 @@ end
 -- Required key: ServerName
 -- @return DeleteServerRequest structure as a key-value pair table
 function M.DeleteServerRequest(args)
-	assert(args, "You must provdide an argument table when creating DeleteServerRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteServerRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ServerName"] = args["ServerName"],
 	}
-	asserts.AssertDeleteServerRequest(t)
-	return t
+	asserts.AssertDeleteServerRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.StartMaintenanceResponse = { ["Server"] = true, nil }
@@ -202,12 +268,23 @@ end
 -- * Server [Server] <p>Contains the response to a <code>StartMaintenance</code> request. </p>
 -- @return StartMaintenanceResponse structure as a key-value pair table
 function M.StartMaintenanceResponse(args)
-	assert(args, "You must provdide an argument table when creating StartMaintenanceResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating StartMaintenanceResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Server"] = args["Server"],
 	}
-	asserts.AssertStartMaintenanceResponse(t)
-	return t
+	asserts.AssertStartMaintenanceResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AccountAttribute = { ["Used"] = true, ["Name"] = true, ["Maximum"] = true, nil }
@@ -232,14 +309,25 @@ end
 -- * Maximum [Integer] <p> The maximum allowed value. </p>
 -- @return AccountAttribute structure as a key-value pair table
 function M.AccountAttribute(args)
-	assert(args, "You must provdide an argument table when creating AccountAttribute")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AccountAttribute")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Used"] = args["Used"],
 		["Name"] = args["Name"],
 		["Maximum"] = args["Maximum"],
 	}
-	asserts.AssertAccountAttribute(t)
-	return t
+	asserts.AssertAccountAttribute(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateServerResponse = { ["Server"] = true, nil }
@@ -260,12 +348,23 @@ end
 -- * Server [Server] <p>The server that is created by the request. </p>
 -- @return CreateServerResponse structure as a key-value pair table
 function M.CreateServerResponse(args)
-	assert(args, "You must provdide an argument table when creating CreateServerResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateServerResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Server"] = args["Server"],
 	}
-	asserts.AssertCreateServerResponse(t)
-	return t
+	asserts.AssertCreateServerResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidNextTokenException = { ["Message"] = true, nil }
@@ -286,12 +385,23 @@ end
 -- * Message [String] <p>Error or informational message that can contain more detail about a nextToken failure. </p>
 -- @return InvalidNextTokenException structure as a key-value pair table
 function M.InvalidNextTokenException(args)
-	assert(args, "You must provdide an argument table when creating InvalidNextTokenException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidNextTokenException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Message"] = args["Message"],
 	}
-	asserts.AssertInvalidNextTokenException(t)
-	return t
+	asserts.AssertInvalidNextTokenException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DisassociateNodeRequest = { ["ServerName"] = true, ["NodeName"] = true, ["EngineAttributes"] = true, nil }
@@ -320,14 +430,25 @@ end
 -- Required key: NodeName
 -- @return DisassociateNodeRequest structure as a key-value pair table
 function M.DisassociateNodeRequest(args)
-	assert(args, "You must provdide an argument table when creating DisassociateNodeRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DisassociateNodeRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ServerName"] = args["ServerName"],
 		["NodeName"] = args["NodeName"],
 		["EngineAttributes"] = args["EngineAttributes"],
 	}
-	asserts.AssertDisassociateNodeRequest(t)
-	return t
+	asserts.AssertDisassociateNodeRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeEventsResponse = { ["NextToken"] = true, ["ServerEvents"] = true, nil }
@@ -350,13 +471,24 @@ end
 -- * ServerEvents [ServerEvents] <p>Contains the response to a <code>DescribeEvents</code> request. </p>
 -- @return DescribeEventsResponse structure as a key-value pair table
 function M.DescribeEventsResponse(args)
-	assert(args, "You must provdide an argument table when creating DescribeEventsResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeEventsResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NextToken"] = args["NextToken"],
 		["ServerEvents"] = args["ServerEvents"],
 	}
-	asserts.AssertDescribeEventsResponse(t)
-	return t
+	asserts.AssertDescribeEventsResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.EngineAttribute = { ["Name"] = true, ["Value"] = true, nil }
@@ -379,13 +511,24 @@ end
 -- * Value [EngineAttributeValue] <p>The value of the engine attribute. </p>
 -- @return EngineAttribute structure as a key-value pair table
 function M.EngineAttribute(args)
-	assert(args, "You must provdide an argument table when creating EngineAttribute")
-	local t = { 
+	assert(args, "You must provide an argument table when creating EngineAttribute")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Name"] = args["Name"],
 		["Value"] = args["Value"],
 	}
-	asserts.AssertEngineAttribute(t)
-	return t
+	asserts.AssertEngineAttribute(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteServerResponse = { nil }
@@ -404,11 +547,22 @@ end
 -- Valid keys:
 -- @return DeleteServerResponse structure as a key-value pair table
 function M.DeleteServerResponse(args)
-	assert(args, "You must provdide an argument table when creating DeleteServerResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteServerResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertDeleteServerResponse(t)
-	return t
+	asserts.AssertDeleteServerResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdateServerResponse = { ["Server"] = true, nil }
@@ -429,12 +583,23 @@ end
 -- * Server [Server] <p>Contains the response to a <code>UpdateServer</code> request. </p>
 -- @return UpdateServerResponse structure as a key-value pair table
 function M.UpdateServerResponse(args)
-	assert(args, "You must provdide an argument table when creating UpdateServerResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateServerResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Server"] = args["Server"],
 	}
-	asserts.AssertUpdateServerResponse(t)
-	return t
+	asserts.AssertUpdateServerResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.RestoreServerRequest = { ["KeyPair"] = true, ["BackupId"] = true, ["ServerName"] = true, ["InstanceType"] = true, nil }
@@ -465,15 +630,26 @@ end
 -- Required key: ServerName
 -- @return RestoreServerRequest structure as a key-value pair table
 function M.RestoreServerRequest(args)
-	assert(args, "You must provdide an argument table when creating RestoreServerRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating RestoreServerRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["KeyPair"] = args["KeyPair"],
 		["BackupId"] = args["BackupId"],
 		["ServerName"] = args["ServerName"],
 		["InstanceType"] = args["InstanceType"],
 	}
-	asserts.AssertRestoreServerRequest(t)
-	return t
+	asserts.AssertRestoreServerRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdateServerRequest = { ["PreferredBackupWindow"] = true, ["ServerName"] = true, ["BackupRetentionCount"] = true, ["DisableAutomatedBackup"] = true, ["PreferredMaintenanceWindow"] = true, nil }
@@ -504,16 +680,27 @@ end
 -- Required key: ServerName
 -- @return UpdateServerRequest structure as a key-value pair table
 function M.UpdateServerRequest(args)
-	assert(args, "You must provdide an argument table when creating UpdateServerRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateServerRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["PreferredBackupWindow"] = args["PreferredBackupWindow"],
 		["ServerName"] = args["ServerName"],
 		["BackupRetentionCount"] = args["BackupRetentionCount"],
 		["DisableAutomatedBackup"] = args["DisableAutomatedBackup"],
 		["PreferredMaintenanceWindow"] = args["PreferredMaintenanceWindow"],
 	}
-	asserts.AssertUpdateServerRequest(t)
-	return t
+	asserts.AssertUpdateServerRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.RestoreServerResponse = { nil }
@@ -532,11 +719,22 @@ end
 -- Valid keys:
 -- @return RestoreServerResponse structure as a key-value pair table
 function M.RestoreServerResponse(args)
-	assert(args, "You must provdide an argument table when creating RestoreServerResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating RestoreServerResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertRestoreServerResponse(t)
-	return t
+	asserts.AssertRestoreServerResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteBackupResponse = { nil }
@@ -555,11 +753,22 @@ end
 -- Valid keys:
 -- @return DeleteBackupResponse structure as a key-value pair table
 function M.DeleteBackupResponse(args)
-	assert(args, "You must provdide an argument table when creating DeleteBackupResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteBackupResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertDeleteBackupResponse(t)
-	return t
+	asserts.AssertDeleteBackupResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateBackupResponse = { ["Backup"] = true, nil }
@@ -580,12 +789,23 @@ end
 -- * Backup [Backup] <p>Backup created by request.</p>
 -- @return CreateBackupResponse structure as a key-value pair table
 function M.CreateBackupResponse(args)
-	assert(args, "You must provdide an argument table when creating CreateBackupResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateBackupResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Backup"] = args["Backup"],
 	}
-	asserts.AssertCreateBackupResponse(t)
-	return t
+	asserts.AssertCreateBackupResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ResourceNotFoundException = { ["Message"] = true, nil }
@@ -606,12 +826,23 @@ end
 -- * Message [String] <p>Error or informational message that can contain more detail about problems locating or accessing a resource. </p>
 -- @return ResourceNotFoundException structure as a key-value pair table
 function M.ResourceNotFoundException(args)
-	assert(args, "You must provdide an argument table when creating ResourceNotFoundException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ResourceNotFoundException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Message"] = args["Message"],
 	}
-	asserts.AssertResourceNotFoundException(t)
-	return t
+	asserts.AssertResourceNotFoundException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeAccountAttributesRequest = { nil }
@@ -630,11 +861,22 @@ end
 -- Valid keys:
 -- @return DescribeAccountAttributesRequest structure as a key-value pair table
 function M.DescribeAccountAttributesRequest(args)
-	assert(args, "You must provdide an argument table when creating DescribeAccountAttributesRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeAccountAttributesRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertDescribeAccountAttributesRequest(t)
-	return t
+	asserts.AssertDescribeAccountAttributesRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DisassociateNodeResponse = { ["NodeAssociationStatusToken"] = true, nil }
@@ -655,12 +897,23 @@ end
 -- * NodeAssociationStatusToken [NodeAssociationStatusToken] <p>Contains a token which can be passed to the <code>DescribeNodeAssociationStatus</code> API call to get the status of the disassociation request. </p>
 -- @return DisassociateNodeResponse structure as a key-value pair table
 function M.DisassociateNodeResponse(args)
-	assert(args, "You must provdide an argument table when creating DisassociateNodeResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DisassociateNodeResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NodeAssociationStatusToken"] = args["NodeAssociationStatusToken"],
 	}
-	asserts.AssertDisassociateNodeResponse(t)
-	return t
+	asserts.AssertDisassociateNodeResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeServersResponse = { ["NextToken"] = true, ["Servers"] = true, nil }
@@ -683,13 +936,24 @@ end
 -- * Servers [Servers] <p>Contains the response to a <code>DescribeServers</code> request. </p>
 -- @return DescribeServersResponse structure as a key-value pair table
 function M.DescribeServersResponse(args)
-	assert(args, "You must provdide an argument table when creating DescribeServersResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeServersResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NextToken"] = args["NextToken"],
 		["Servers"] = args["Servers"],
 	}
-	asserts.AssertDescribeServersResponse(t)
-	return t
+	asserts.AssertDescribeServersResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeServersRequest = { ["ServerName"] = true, ["NextToken"] = true, ["MaxResults"] = true, nil }
@@ -714,14 +978,25 @@ end
 -- * MaxResults [MaxResults] <p>To receive a paginated response, use this parameter to specify the maximum number of results to be returned with a single call. If the number of available results exceeds this maximum, the response includes a <code>NextToken</code> value that you can assign to the <code>NextToken</code> request parameter to get the next set of results. </p>
 -- @return DescribeServersRequest structure as a key-value pair table
 function M.DescribeServersRequest(args)
-	assert(args, "You must provdide an argument table when creating DescribeServersRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeServersRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ServerName"] = args["ServerName"],
 		["NextToken"] = args["NextToken"],
 		["MaxResults"] = args["MaxResults"],
 	}
-	asserts.AssertDescribeServersRequest(t)
-	return t
+	asserts.AssertDescribeServersRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Server = { ["MaintenanceStatus"] = true, ["ServerArn"] = true, ["EngineAttributes"] = true, ["EngineModel"] = true, ["Engine"] = true, ["CloudFormationStackArn"] = true, ["DisableAutomatedBackup"] = true, ["BackupRetentionCount"] = true, ["StatusReason"] = true, ["PreferredBackupWindow"] = true, ["InstanceProfileArn"] = true, ["InstanceType"] = true, ["PreferredMaintenanceWindow"] = true, ["Status"] = true, ["Endpoint"] = true, ["ServerName"] = true, ["SecurityGroupIds"] = true, ["KeyPair"] = true, ["EngineVersion"] = true, ["AssociatePublicIpAddress"] = true, ["SubnetIds"] = true, ["CreatedAt"] = true, ["ServiceRoleArn"] = true, nil }
@@ -786,8 +1061,14 @@ end
 -- * ServiceRoleArn [String] <p>The service role ARN used to create the server. </p>
 -- @return Server structure as a key-value pair table
 function M.Server(args)
-	assert(args, "You must provdide an argument table when creating Server")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Server")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["MaintenanceStatus"] = args["MaintenanceStatus"],
 		["ServerArn"] = args["ServerArn"],
 		["EngineAttributes"] = args["EngineAttributes"],
@@ -812,8 +1093,13 @@ function M.Server(args)
 		["CreatedAt"] = args["CreatedAt"],
 		["ServiceRoleArn"] = args["ServiceRoleArn"],
 	}
-	asserts.AssertServer(t)
-	return t
+	asserts.AssertServer(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeNodeAssociationStatusResponse = { ["NodeAssociationStatus"] = true, nil }
@@ -834,12 +1120,23 @@ end
 -- * NodeAssociationStatus [NodeAssociationStatus] <p>The status of the association or disassociation request. </p> <p class="title"> <b>Possible values:</b> </p> <ul> <li> <p> <code>SUCCESS</code>: The association or disassociation succeeded. </p> </li> <li> <p> <code>FAILED</code>: The association or disassociation failed. </p> </li> <li> <p> <code>IN_PROGRESS</code>: The association or disassociation is still in progress. </p> </li> </ul>
 -- @return DescribeNodeAssociationStatusResponse structure as a key-value pair table
 function M.DescribeNodeAssociationStatusResponse(args)
-	assert(args, "You must provdide an argument table when creating DescribeNodeAssociationStatusResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeNodeAssociationStatusResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NodeAssociationStatus"] = args["NodeAssociationStatus"],
 	}
-	asserts.AssertDescribeNodeAssociationStatusResponse(t)
-	return t
+	asserts.AssertDescribeNodeAssociationStatusResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeBackupsRequest = { ["BackupId"] = true, ["ServerName"] = true, ["NextToken"] = true, ["MaxResults"] = true, nil }
@@ -866,15 +1163,26 @@ end
 -- * MaxResults [MaxResults] <p>To receive a paginated response, use this parameter to specify the maximum number of results to be returned with a single call. If the number of available results exceeds this maximum, the response includes a <code>NextToken</code> value that you can assign to the <code>NextToken</code> request parameter to get the next set of results. </p>
 -- @return DescribeBackupsRequest structure as a key-value pair table
 function M.DescribeBackupsRequest(args)
-	assert(args, "You must provdide an argument table when creating DescribeBackupsRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeBackupsRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["BackupId"] = args["BackupId"],
 		["ServerName"] = args["ServerName"],
 		["NextToken"] = args["NextToken"],
 		["MaxResults"] = args["MaxResults"],
 	}
-	asserts.AssertDescribeBackupsRequest(t)
-	return t
+	asserts.AssertDescribeBackupsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AssociateNodeResponse = { ["NodeAssociationStatusToken"] = true, nil }
@@ -895,12 +1203,23 @@ end
 -- * NodeAssociationStatusToken [NodeAssociationStatusToken] <p>Contains a token which can be passed to the <code>DescribeNodeAssociationStatus</code> API call to get the status of the association request. </p>
 -- @return AssociateNodeResponse structure as a key-value pair table
 function M.AssociateNodeResponse(args)
-	assert(args, "You must provdide an argument table when creating AssociateNodeResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AssociateNodeResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NodeAssociationStatusToken"] = args["NodeAssociationStatusToken"],
 	}
-	asserts.AssertAssociateNodeResponse(t)
-	return t
+	asserts.AssertAssociateNodeResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ServerEvent = { ["ServerName"] = true, ["Message"] = true, ["CreatedAt"] = true, ["LogUrl"] = true, nil }
@@ -927,15 +1246,26 @@ end
 -- * LogUrl [String] <p>The Amazon S3 URL of the event's log file.</p>
 -- @return ServerEvent structure as a key-value pair table
 function M.ServerEvent(args)
-	assert(args, "You must provdide an argument table when creating ServerEvent")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ServerEvent")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ServerName"] = args["ServerName"],
 		["Message"] = args["Message"],
 		["CreatedAt"] = args["CreatedAt"],
 		["LogUrl"] = args["LogUrl"],
 	}
-	asserts.AssertServerEvent(t)
-	return t
+	asserts.AssertServerEvent(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteBackupRequest = { ["BackupId"] = true, nil }
@@ -958,12 +1288,23 @@ end
 -- Required key: BackupId
 -- @return DeleteBackupRequest structure as a key-value pair table
 function M.DeleteBackupRequest(args)
-	assert(args, "You must provdide an argument table when creating DeleteBackupRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteBackupRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["BackupId"] = args["BackupId"],
 	}
-	asserts.AssertDeleteBackupRequest(t)
-	return t
+	asserts.AssertDeleteBackupRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateServerRequest = { ["Engine"] = true, ["ServiceRoleArn"] = true, ["SubnetIds"] = true, ["DisableAutomatedBackup"] = true, ["PreferredMaintenanceWindow"] = true, ["ServerName"] = true, ["BackupRetentionCount"] = true, ["InstanceType"] = true, ["PreferredBackupWindow"] = true, ["KeyPair"] = true, ["AssociatePublicIpAddress"] = true, ["SecurityGroupIds"] = true, ["EngineVersion"] = true, ["BackupId"] = true, ["InstanceProfileArn"] = true, ["EngineAttributes"] = true, ["EngineModel"] = true, nil }
@@ -1024,8 +1365,14 @@ end
 -- Required key: ServiceRoleArn
 -- @return CreateServerRequest structure as a key-value pair table
 function M.CreateServerRequest(args)
-	assert(args, "You must provdide an argument table when creating CreateServerRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateServerRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Engine"] = args["Engine"],
 		["ServiceRoleArn"] = args["ServiceRoleArn"],
 		["SubnetIds"] = args["SubnetIds"],
@@ -1044,8 +1391,13 @@ function M.CreateServerRequest(args)
 		["EngineAttributes"] = args["EngineAttributes"],
 		["EngineModel"] = args["EngineModel"],
 	}
-	asserts.AssertCreateServerRequest(t)
-	return t
+	asserts.AssertCreateServerRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeEventsRequest = { ["ServerName"] = true, ["NextToken"] = true, ["MaxResults"] = true, nil }
@@ -1072,14 +1424,25 @@ end
 -- Required key: ServerName
 -- @return DescribeEventsRequest structure as a key-value pair table
 function M.DescribeEventsRequest(args)
-	assert(args, "You must provdide an argument table when creating DescribeEventsRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeEventsRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ServerName"] = args["ServerName"],
 		["NextToken"] = args["NextToken"],
 		["MaxResults"] = args["MaxResults"],
 	}
-	asserts.AssertDescribeEventsRequest(t)
-	return t
+	asserts.AssertDescribeEventsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.StartMaintenanceRequest = { ["ServerName"] = true, nil }
@@ -1102,12 +1465,23 @@ end
 -- Required key: ServerName
 -- @return StartMaintenanceRequest structure as a key-value pair table
 function M.StartMaintenanceRequest(args)
-	assert(args, "You must provdide an argument table when creating StartMaintenanceRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating StartMaintenanceRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ServerName"] = args["ServerName"],
 	}
-	asserts.AssertStartMaintenanceRequest(t)
-	return t
+	asserts.AssertStartMaintenanceRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Backup = { ["ToolsVersion"] = true, ["S3DataUrl"] = true, ["EngineModel"] = true, ["S3DataSize"] = true, ["Engine"] = true, ["Description"] = true, ["S3LogUrl"] = true, ["PreferredBackupWindow"] = true, ["BackupArn"] = true, ["InstanceProfileArn"] = true, ["InstanceType"] = true, ["PreferredMaintenanceWindow"] = true, ["Status"] = true, ["ServerName"] = true, ["SecurityGroupIds"] = true, ["BackupType"] = true, ["KeyPair"] = true, ["EngineVersion"] = true, ["StatusDescription"] = true, ["UserArn"] = true, ["SubnetIds"] = true, ["CreatedAt"] = true, ["BackupId"] = true, ["ServiceRoleArn"] = true, nil }
@@ -1174,8 +1548,14 @@ end
 -- * ServiceRoleArn [String] <p> The service role ARN that is obtained from the server when the backup is created. </p>
 -- @return Backup structure as a key-value pair table
 function M.Backup(args)
-	assert(args, "You must provdide an argument table when creating Backup")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Backup")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ToolsVersion"] = args["ToolsVersion"],
 		["S3DataUrl"] = args["S3DataUrl"],
 		["EngineModel"] = args["EngineModel"],
@@ -1201,8 +1581,13 @@ function M.Backup(args)
 		["BackupId"] = args["BackupId"],
 		["ServiceRoleArn"] = args["ServiceRoleArn"],
 	}
-	asserts.AssertBackup(t)
-	return t
+	asserts.AssertBackup(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeBackupsResponse = { ["Backups"] = true, ["NextToken"] = true, nil }
@@ -1225,13 +1610,24 @@ end
 -- * NextToken [String] <p>NextToken is a string that is returned in some command responses. It indicates that not all entries have been returned, and that you must run at least one more request to get remaining items. To get remaining results, call <code>DescribeBackups</code> again, and assign the token from the previous results as the value of the <code>nextToken</code> parameter. If there are no more results, the response object's <code>nextToken</code> parameter value is <code>null</code>. Setting a <code>nextToken</code> value that was not returned in your previous results causes an <code>InvalidNextTokenException</code> to occur. </p>
 -- @return DescribeBackupsResponse structure as a key-value pair table
 function M.DescribeBackupsResponse(args)
-	assert(args, "You must provdide an argument table when creating DescribeBackupsResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeBackupsResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Backups"] = args["Backups"],
 		["NextToken"] = args["NextToken"],
 	}
-	asserts.AssertDescribeBackupsResponse(t)
-	return t
+	asserts.AssertDescribeBackupsResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AssociateNodeRequest = { ["ServerName"] = true, ["NodeName"] = true, ["EngineAttributes"] = true, nil }
@@ -1262,14 +1658,25 @@ end
 -- Required key: EngineAttributes
 -- @return AssociateNodeRequest structure as a key-value pair table
 function M.AssociateNodeRequest(args)
-	assert(args, "You must provdide an argument table when creating AssociateNodeRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AssociateNodeRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ServerName"] = args["ServerName"],
 		["NodeName"] = args["NodeName"],
 		["EngineAttributes"] = args["EngineAttributes"],
 	}
-	asserts.AssertAssociateNodeRequest(t)
-	return t
+	asserts.AssertAssociateNodeRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeNodeAssociationStatusRequest = { ["ServerName"] = true, ["NodeAssociationStatusToken"] = true, nil }
@@ -1296,13 +1703,24 @@ end
 -- Required key: ServerName
 -- @return DescribeNodeAssociationStatusRequest structure as a key-value pair table
 function M.DescribeNodeAssociationStatusRequest(args)
-	assert(args, "You must provdide an argument table when creating DescribeNodeAssociationStatusRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeNodeAssociationStatusRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ServerName"] = args["ServerName"],
 		["NodeAssociationStatusToken"] = args["NodeAssociationStatusToken"],
 	}
-	asserts.AssertDescribeNodeAssociationStatusRequest(t)
-	return t
+	asserts.AssertDescribeNodeAssociationStatusRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdateServerEngineAttributesRequest = { ["ServerName"] = true, ["AttributeName"] = true, ["AttributeValue"] = true, nil }
@@ -1331,14 +1749,25 @@ end
 -- Required key: AttributeName
 -- @return UpdateServerEngineAttributesRequest structure as a key-value pair table
 function M.UpdateServerEngineAttributesRequest(args)
-	assert(args, "You must provdide an argument table when creating UpdateServerEngineAttributesRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateServerEngineAttributesRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ServerName"] = args["ServerName"],
 		["AttributeName"] = args["AttributeName"],
 		["AttributeValue"] = args["AttributeValue"],
 	}
-	asserts.AssertUpdateServerEngineAttributesRequest(t)
-	return t
+	asserts.AssertUpdateServerEngineAttributesRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidStateException = { ["Message"] = true, nil }
@@ -1359,12 +1788,23 @@ end
 -- * Message [String] <p>Error or informational message that provides more detail if a resource is in a state that is not valid for performing a specified action. </p>
 -- @return InvalidStateException structure as a key-value pair table
 function M.InvalidStateException(args)
-	assert(args, "You must provdide an argument table when creating InvalidStateException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidStateException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Message"] = args["Message"],
 	}
-	asserts.AssertInvalidStateException(t)
-	return t
+	asserts.AssertInvalidStateException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ResourceAlreadyExistsException = { ["Message"] = true, nil }
@@ -1385,12 +1825,23 @@ end
 -- * Message [String] <p>Error or informational message in response to a CreateServer request that a resource cannot be created because it already exists. </p>
 -- @return ResourceAlreadyExistsException structure as a key-value pair table
 function M.ResourceAlreadyExistsException(args)
-	assert(args, "You must provdide an argument table when creating ResourceAlreadyExistsException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ResourceAlreadyExistsException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Message"] = args["Message"],
 	}
-	asserts.AssertResourceAlreadyExistsException(t)
-	return t
+	asserts.AssertResourceAlreadyExistsException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 function asserts.AssertBackupStatus(str)
@@ -1804,8 +2255,11 @@ function M.DescribeServersAsync(DescribeServersRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "OpsWorksCM_V2016_11_01.DescribeServers",
 	}
+	for header,value in pairs(DescribeServersRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeServersRequest, headers, settings, cb)
 	else
@@ -1836,8 +2290,11 @@ function M.DescribeNodeAssociationStatusAsync(DescribeNodeAssociationStatusReque
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "OpsWorksCM_V2016_11_01.DescribeNodeAssociationStatus",
 	}
+	for header,value in pairs(DescribeNodeAssociationStatusRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeNodeAssociationStatusRequest, headers, settings, cb)
 	else
@@ -1868,8 +2325,11 @@ function M.DeleteServerAsync(DeleteServerRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "OpsWorksCM_V2016_11_01.DeleteServer",
 	}
+	for header,value in pairs(DeleteServerRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteServerRequest, headers, settings, cb)
 	else
@@ -1900,8 +2360,11 @@ function M.DescribeBackupsAsync(DescribeBackupsRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "OpsWorksCM_V2016_11_01.DescribeBackups",
 	}
+	for header,value in pairs(DescribeBackupsRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeBackupsRequest, headers, settings, cb)
 	else
@@ -1932,8 +2395,11 @@ function M.RestoreServerAsync(RestoreServerRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "OpsWorksCM_V2016_11_01.RestoreServer",
 	}
+	for header,value in pairs(RestoreServerRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", RestoreServerRequest, headers, settings, cb)
 	else
@@ -1964,8 +2430,11 @@ function M.UpdateServerEngineAttributesAsync(UpdateServerEngineAttributesRequest
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "OpsWorksCM_V2016_11_01.UpdateServerEngineAttributes",
 	}
+	for header,value in pairs(UpdateServerEngineAttributesRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateServerEngineAttributesRequest, headers, settings, cb)
 	else
@@ -1996,8 +2465,11 @@ function M.DescribeAccountAttributesAsync(DescribeAccountAttributesRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "OpsWorksCM_V2016_11_01.DescribeAccountAttributes",
 	}
+	for header,value in pairs(DescribeAccountAttributesRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeAccountAttributesRequest, headers, settings, cb)
 	else
@@ -2028,8 +2500,11 @@ function M.DescribeEventsAsync(DescribeEventsRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "OpsWorksCM_V2016_11_01.DescribeEvents",
 	}
+	for header,value in pairs(DescribeEventsRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeEventsRequest, headers, settings, cb)
 	else
@@ -2060,8 +2535,11 @@ function M.DeleteBackupAsync(DeleteBackupRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "OpsWorksCM_V2016_11_01.DeleteBackup",
 	}
+	for header,value in pairs(DeleteBackupRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteBackupRequest, headers, settings, cb)
 	else
@@ -2092,8 +2570,11 @@ function M.CreateServerAsync(CreateServerRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "OpsWorksCM_V2016_11_01.CreateServer",
 	}
+	for header,value in pairs(CreateServerRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateServerRequest, headers, settings, cb)
 	else
@@ -2124,8 +2605,11 @@ function M.CreateBackupAsync(CreateBackupRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "OpsWorksCM_V2016_11_01.CreateBackup",
 	}
+	for header,value in pairs(CreateBackupRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateBackupRequest, headers, settings, cb)
 	else
@@ -2156,8 +2640,11 @@ function M.StartMaintenanceAsync(StartMaintenanceRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "OpsWorksCM_V2016_11_01.StartMaintenance",
 	}
+	for header,value in pairs(StartMaintenanceRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", StartMaintenanceRequest, headers, settings, cb)
 	else
@@ -2188,8 +2675,11 @@ function M.UpdateServerAsync(UpdateServerRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "OpsWorksCM_V2016_11_01.UpdateServer",
 	}
+	for header,value in pairs(UpdateServerRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateServerRequest, headers, settings, cb)
 	else
@@ -2220,8 +2710,11 @@ function M.AssociateNodeAsync(AssociateNodeRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "OpsWorksCM_V2016_11_01.AssociateNode",
 	}
+	for header,value in pairs(AssociateNodeRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", AssociateNodeRequest, headers, settings, cb)
 	else
@@ -2252,8 +2745,11 @@ function M.DisassociateNodeAsync(DisassociateNodeRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "OpsWorksCM_V2016_11_01.DisassociateNode",
 	}
+	for header,value in pairs(DisassociateNodeRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DisassociateNodeRequest, headers, settings, cb)
 	else

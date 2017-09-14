@@ -39,12 +39,23 @@ end
 -- * message [ErrorMessage] 
 -- @return LexiconSizeExceededException structure as a key-value pair table
 function M.LexiconSizeExceededException(args)
-	assert(args, "You must provdide an argument table when creating LexiconSizeExceededException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating LexiconSizeExceededException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertLexiconSizeExceededException(t)
-	return t
+	asserts.AssertLexiconSizeExceededException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteLexiconInput = { ["Name"] = true, nil }
@@ -67,12 +78,24 @@ end
 -- Required key: Name
 -- @return DeleteLexiconInput structure as a key-value pair table
 function M.DeleteLexiconInput(args)
-	assert(args, "You must provdide an argument table when creating DeleteLexiconInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteLexiconInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{LexiconName}"] = args["Name"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Name"] = args["Name"],
 	}
-	asserts.AssertDeleteLexiconInput(t)
-	return t
+	asserts.AssertDeleteLexiconInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.SynthesizeSpeechOutput = { ["ContentType"] = true, ["AudioStream"] = true, ["RequestCharacters"] = true, nil }
@@ -97,14 +120,27 @@ end
 -- * RequestCharacters [RequestCharacters] <p>Number of characters synthesized.</p>
 -- @return SynthesizeSpeechOutput structure as a key-value pair table
 function M.SynthesizeSpeechOutput(args)
-	assert(args, "You must provdide an argument table when creating SynthesizeSpeechOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating SynthesizeSpeechOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+        ["Content-Type"] = args["ContentType"],
+        ["x-amzn-RequestCharacters"] = args["RequestCharacters"],
+    }
+	local all_args = { 
 		["ContentType"] = args["ContentType"],
 		["AudioStream"] = args["AudioStream"],
 		["RequestCharacters"] = args["RequestCharacters"],
 	}
-	asserts.AssertSynthesizeSpeechOutput(t)
-	return t
+	asserts.AssertSynthesizeSpeechOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidSampleRateException = { ["message"] = true, nil }
@@ -125,12 +161,23 @@ end
 -- * message [ErrorMessage] 
 -- @return InvalidSampleRateException structure as a key-value pair table
 function M.InvalidSampleRateException(args)
-	assert(args, "You must provdide an argument table when creating InvalidSampleRateException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidSampleRateException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertInvalidSampleRateException(t)
-	return t
+	asserts.AssertInvalidSampleRateException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteLexiconOutput = { nil }
@@ -149,11 +196,22 @@ end
 -- Valid keys:
 -- @return DeleteLexiconOutput structure as a key-value pair table
 function M.DeleteLexiconOutput(args)
-	assert(args, "You must provdide an argument table when creating DeleteLexiconOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteLexiconOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertDeleteLexiconOutput(t)
-	return t
+	asserts.AssertDeleteLexiconOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidNextTokenException = { ["message"] = true, nil }
@@ -174,12 +232,23 @@ end
 -- * message [ErrorMessage] 
 -- @return InvalidNextTokenException structure as a key-value pair table
 function M.InvalidNextTokenException(args)
-	assert(args, "You must provdide an argument table when creating InvalidNextTokenException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidNextTokenException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertInvalidNextTokenException(t)
-	return t
+	asserts.AssertInvalidNextTokenException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.LexiconNotFoundException = { ["message"] = true, nil }
@@ -200,12 +269,23 @@ end
 -- * message [ErrorMessage] 
 -- @return LexiconNotFoundException structure as a key-value pair table
 function M.LexiconNotFoundException(args)
-	assert(args, "You must provdide an argument table when creating LexiconNotFoundException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating LexiconNotFoundException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertLexiconNotFoundException(t)
-	return t
+	asserts.AssertLexiconNotFoundException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UnsupportedPlsAlphabetException = { ["message"] = true, nil }
@@ -226,12 +306,23 @@ end
 -- * message [ErrorMessage] 
 -- @return UnsupportedPlsAlphabetException structure as a key-value pair table
 function M.UnsupportedPlsAlphabetException(args)
-	assert(args, "You must provdide an argument table when creating UnsupportedPlsAlphabetException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UnsupportedPlsAlphabetException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertUnsupportedPlsAlphabetException(t)
-	return t
+	asserts.AssertUnsupportedPlsAlphabetException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ServiceFailureException = { ["message"] = true, nil }
@@ -252,12 +343,23 @@ end
 -- * message [ErrorMessage] 
 -- @return ServiceFailureException structure as a key-value pair table
 function M.ServiceFailureException(args)
-	assert(args, "You must provdide an argument table when creating ServiceFailureException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ServiceFailureException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertServiceFailureException(t)
-	return t
+	asserts.AssertServiceFailureException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeVoicesInput = { ["LanguageCode"] = true, ["NextToken"] = true, nil }
@@ -280,13 +382,26 @@ end
 -- * NextToken [NextToken] <p>An opaque pagination token returned from the previous <code>DescribeVoices</code> operation. If present, this indicates where to continue the listing.</p>
 -- @return DescribeVoicesInput structure as a key-value pair table
 function M.DescribeVoicesInput(args)
-	assert(args, "You must provdide an argument table when creating DescribeVoicesInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeVoicesInput")
+    local query_args = { 
+        ["LanguageCode"] = args["LanguageCode"],
+        ["NextToken"] = args["NextToken"],
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["LanguageCode"] = args["LanguageCode"],
 		["NextToken"] = args["NextToken"],
 	}
-	asserts.AssertDescribeVoicesInput(t)
-	return t
+	asserts.AssertDescribeVoicesInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.MarksNotSupportedForFormatException = { ["message"] = true, nil }
@@ -307,12 +422,23 @@ end
 -- * message [ErrorMessage] 
 -- @return MarksNotSupportedForFormatException structure as a key-value pair table
 function M.MarksNotSupportedForFormatException(args)
-	assert(args, "You must provdide an argument table when creating MarksNotSupportedForFormatException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating MarksNotSupportedForFormatException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertMarksNotSupportedForFormatException(t)
-	return t
+	asserts.AssertMarksNotSupportedForFormatException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidSsmlException = { ["message"] = true, nil }
@@ -333,12 +459,23 @@ end
 -- * message [ErrorMessage] 
 -- @return InvalidSsmlException structure as a key-value pair table
 function M.InvalidSsmlException(args)
-	assert(args, "You must provdide an argument table when creating InvalidSsmlException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidSsmlException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertInvalidSsmlException(t)
-	return t
+	asserts.AssertInvalidSsmlException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeVoicesOutput = { ["NextToken"] = true, ["Voices"] = true, nil }
@@ -361,13 +498,24 @@ end
 -- * Voices [VoiceList] <p>A list of voices with their properties.</p>
 -- @return DescribeVoicesOutput structure as a key-value pair table
 function M.DescribeVoicesOutput(args)
-	assert(args, "You must provdide an argument table when creating DescribeVoicesOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeVoicesOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NextToken"] = args["NextToken"],
 		["Voices"] = args["Voices"],
 	}
-	asserts.AssertDescribeVoicesOutput(t)
-	return t
+	asserts.AssertDescribeVoicesOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.LexiconAttributes = { ["LanguageCode"] = true, ["LastModified"] = true, ["Alphabet"] = true, ["LexemesCount"] = true, ["LexiconArn"] = true, ["Size"] = true, nil }
@@ -398,8 +546,14 @@ end
 -- * Size [Size] <p>Total size of the lexicon, in characters.</p>
 -- @return LexiconAttributes structure as a key-value pair table
 function M.LexiconAttributes(args)
-	assert(args, "You must provdide an argument table when creating LexiconAttributes")
-	local t = { 
+	assert(args, "You must provide an argument table when creating LexiconAttributes")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["LanguageCode"] = args["LanguageCode"],
 		["LastModified"] = args["LastModified"],
 		["Alphabet"] = args["Alphabet"],
@@ -407,8 +561,13 @@ function M.LexiconAttributes(args)
 		["LexiconArn"] = args["LexiconArn"],
 		["Size"] = args["Size"],
 	}
-	asserts.AssertLexiconAttributes(t)
-	return t
+	asserts.AssertLexiconAttributes(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetLexiconOutput = { ["Lexicon"] = true, ["LexiconAttributes"] = true, nil }
@@ -431,13 +590,24 @@ end
 -- * LexiconAttributes [LexiconAttributes] <p>Metadata of the lexicon, including phonetic alphabetic used, language code, lexicon ARN, number of lexemes defined in the lexicon, and size of lexicon in bytes.</p>
 -- @return GetLexiconOutput structure as a key-value pair table
 function M.GetLexiconOutput(args)
-	assert(args, "You must provdide an argument table when creating GetLexiconOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetLexiconOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Lexicon"] = args["Lexicon"],
 		["LexiconAttributes"] = args["LexiconAttributes"],
 	}
-	asserts.AssertGetLexiconOutput(t)
-	return t
+	asserts.AssertGetLexiconOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.MaxLexiconsNumberExceededException = { ["message"] = true, nil }
@@ -458,12 +628,23 @@ end
 -- * message [ErrorMessage] 
 -- @return MaxLexiconsNumberExceededException structure as a key-value pair table
 function M.MaxLexiconsNumberExceededException(args)
-	assert(args, "You must provdide an argument table when creating MaxLexiconsNumberExceededException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating MaxLexiconsNumberExceededException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertMaxLexiconsNumberExceededException(t)
-	return t
+	asserts.AssertMaxLexiconsNumberExceededException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListLexiconsOutput = { ["NextToken"] = true, ["Lexicons"] = true, nil }
@@ -486,13 +667,24 @@ end
 -- * Lexicons [LexiconDescriptionList] <p>A list of lexicon names and attributes.</p>
 -- @return ListLexiconsOutput structure as a key-value pair table
 function M.ListLexiconsOutput(args)
-	assert(args, "You must provdide an argument table when creating ListLexiconsOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListLexiconsOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NextToken"] = args["NextToken"],
 		["Lexicons"] = args["Lexicons"],
 	}
-	asserts.AssertListLexiconsOutput(t)
-	return t
+	asserts.AssertListLexiconsOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListLexiconsInput = { ["NextToken"] = true, nil }
@@ -513,12 +705,24 @@ end
 -- * NextToken [NextToken] <p>An opaque pagination token returned from previous <code>ListLexicons</code> operation. If present, indicates where to continue the list of lexicons.</p>
 -- @return ListLexiconsInput structure as a key-value pair table
 function M.ListLexiconsInput(args)
-	assert(args, "You must provdide an argument table when creating ListLexiconsInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListLexiconsInput")
+    local query_args = { 
+        ["NextToken"] = args["NextToken"],
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NextToken"] = args["NextToken"],
 	}
-	asserts.AssertListLexiconsInput(t)
-	return t
+	asserts.AssertListLexiconsInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.TextLengthExceededException = { ["message"] = true, nil }
@@ -539,12 +743,23 @@ end
 -- * message [ErrorMessage] 
 -- @return TextLengthExceededException structure as a key-value pair table
 function M.TextLengthExceededException(args)
-	assert(args, "You must provdide an argument table when creating TextLengthExceededException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating TextLengthExceededException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertTextLengthExceededException(t)
-	return t
+	asserts.AssertTextLengthExceededException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Voice = { ["Gender"] = true, ["Name"] = true, ["LanguageName"] = true, ["Id"] = true, ["LanguageCode"] = true, nil }
@@ -573,16 +788,27 @@ end
 -- * LanguageCode [LanguageCode] <p>Language code of the voice.</p>
 -- @return Voice structure as a key-value pair table
 function M.Voice(args)
-	assert(args, "You must provdide an argument table when creating Voice")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Voice")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Gender"] = args["Gender"],
 		["Name"] = args["Name"],
 		["LanguageName"] = args["LanguageName"],
 		["Id"] = args["Id"],
 		["LanguageCode"] = args["LanguageCode"],
 	}
-	asserts.AssertVoice(t)
-	return t
+	asserts.AssertVoice(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.SsmlMarksNotSupportedForTextTypeException = { ["message"] = true, nil }
@@ -603,12 +829,23 @@ end
 -- * message [ErrorMessage] 
 -- @return SsmlMarksNotSupportedForTextTypeException structure as a key-value pair table
 function M.SsmlMarksNotSupportedForTextTypeException(args)
-	assert(args, "You must provdide an argument table when creating SsmlMarksNotSupportedForTextTypeException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating SsmlMarksNotSupportedForTextTypeException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertSsmlMarksNotSupportedForTextTypeException(t)
-	return t
+	asserts.AssertSsmlMarksNotSupportedForTextTypeException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Lexicon = { ["Content"] = true, ["Name"] = true, nil }
@@ -631,13 +868,24 @@ end
 -- * Name [LexiconName] <p>Name of the lexicon.</p>
 -- @return Lexicon structure as a key-value pair table
 function M.Lexicon(args)
-	assert(args, "You must provdide an argument table when creating Lexicon")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Lexicon")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Content"] = args["Content"],
 		["Name"] = args["Name"],
 	}
-	asserts.AssertLexicon(t)
-	return t
+	asserts.AssertLexicon(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.MaxLexemeLengthExceededException = { ["message"] = true, nil }
@@ -658,12 +906,23 @@ end
 -- * message [ErrorMessage] 
 -- @return MaxLexemeLengthExceededException structure as a key-value pair table
 function M.MaxLexemeLengthExceededException(args)
-	assert(args, "You must provdide an argument table when creating MaxLexemeLengthExceededException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating MaxLexemeLengthExceededException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertMaxLexemeLengthExceededException(t)
-	return t
+	asserts.AssertMaxLexemeLengthExceededException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.PutLexiconInput = { ["Content"] = true, ["Name"] = true, nil }
@@ -690,13 +949,25 @@ end
 -- Required key: Content
 -- @return PutLexiconInput structure as a key-value pair table
 function M.PutLexiconInput(args)
-	assert(args, "You must provdide an argument table when creating PutLexiconInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating PutLexiconInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{LexiconName}"] = args["Name"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Content"] = args["Content"],
 		["Name"] = args["Name"],
 	}
-	asserts.AssertPutLexiconInput(t)
-	return t
+	asserts.AssertPutLexiconInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UnsupportedPlsLanguageException = { ["message"] = true, nil }
@@ -717,12 +988,23 @@ end
 -- * message [ErrorMessage] 
 -- @return UnsupportedPlsLanguageException structure as a key-value pair table
 function M.UnsupportedPlsLanguageException(args)
-	assert(args, "You must provdide an argument table when creating UnsupportedPlsLanguageException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UnsupportedPlsLanguageException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertUnsupportedPlsLanguageException(t)
-	return t
+	asserts.AssertUnsupportedPlsLanguageException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.LexiconDescription = { ["Attributes"] = true, ["Name"] = true, nil }
@@ -745,13 +1027,24 @@ end
 -- * Name [LexiconName] <p>Name of the lexicon.</p>
 -- @return LexiconDescription structure as a key-value pair table
 function M.LexiconDescription(args)
-	assert(args, "You must provdide an argument table when creating LexiconDescription")
-	local t = { 
+	assert(args, "You must provide an argument table when creating LexiconDescription")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Attributes"] = args["Attributes"],
 		["Name"] = args["Name"],
 	}
-	asserts.AssertLexiconDescription(t)
-	return t
+	asserts.AssertLexiconDescription(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetLexiconInput = { ["Name"] = true, nil }
@@ -774,12 +1067,24 @@ end
 -- Required key: Name
 -- @return GetLexiconInput structure as a key-value pair table
 function M.GetLexiconInput(args)
-	assert(args, "You must provdide an argument table when creating GetLexiconInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetLexiconInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{LexiconName}"] = args["Name"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Name"] = args["Name"],
 	}
-	asserts.AssertGetLexiconInput(t)
-	return t
+	asserts.AssertGetLexiconInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.SynthesizeSpeechInput = { ["OutputFormat"] = true, ["SpeechMarkTypes"] = true, ["VoiceId"] = true, ["Text"] = true, ["LexiconNames"] = true, ["SampleRate"] = true, ["TextType"] = true, nil }
@@ -818,8 +1123,14 @@ end
 -- Required key: VoiceId
 -- @return SynthesizeSpeechInput structure as a key-value pair table
 function M.SynthesizeSpeechInput(args)
-	assert(args, "You must provdide an argument table when creating SynthesizeSpeechInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating SynthesizeSpeechInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["OutputFormat"] = args["OutputFormat"],
 		["SpeechMarkTypes"] = args["SpeechMarkTypes"],
 		["VoiceId"] = args["VoiceId"],
@@ -828,8 +1139,13 @@ function M.SynthesizeSpeechInput(args)
 		["SampleRate"] = args["SampleRate"],
 		["TextType"] = args["TextType"],
 	}
-	asserts.AssertSynthesizeSpeechInput(t)
-	return t
+	asserts.AssertSynthesizeSpeechInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidLexiconException = { ["message"] = true, nil }
@@ -850,12 +1166,23 @@ end
 -- * message [ErrorMessage] 
 -- @return InvalidLexiconException structure as a key-value pair table
 function M.InvalidLexiconException(args)
-	assert(args, "You must provdide an argument table when creating InvalidLexiconException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidLexiconException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertInvalidLexiconException(t)
-	return t
+	asserts.AssertInvalidLexiconException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.PutLexiconOutput = { nil }
@@ -874,11 +1201,22 @@ end
 -- Valid keys:
 -- @return PutLexiconOutput structure as a key-value pair table
 function M.PutLexiconOutput(args)
-	assert(args, "You must provdide an argument table when creating PutLexiconOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating PutLexiconOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertPutLexiconOutput(t)
-	return t
+	asserts.AssertPutLexiconOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 function asserts.AssertOutputFormat(str)
@@ -1235,8 +1573,11 @@ function M.DescribeVoicesAsync(DescribeVoicesInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DescribeVoices",
 	}
+	for header,value in pairs(DescribeVoicesInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
 	if request_handler then
 		request_handler(settings.uri, "/v1/voices", DescribeVoicesInput, headers, settings, cb)
 	else
@@ -1267,8 +1608,11 @@ function M.GetLexiconAsync(GetLexiconInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".GetLexicon",
 	}
+	for header,value in pairs(GetLexiconInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
 	if request_handler then
 		request_handler(settings.uri, "/v1/lexicons/{LexiconName}", GetLexiconInput, headers, settings, cb)
 	else
@@ -1299,8 +1643,11 @@ function M.PutLexiconAsync(PutLexiconInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".PutLexicon",
 	}
+	for header,value in pairs(PutLexiconInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("PUT")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT")
 	if request_handler then
 		request_handler(settings.uri, "/v1/lexicons/{LexiconName}", PutLexiconInput, headers, settings, cb)
 	else
@@ -1331,8 +1678,11 @@ function M.ListLexiconsAsync(ListLexiconsInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".ListLexicons",
 	}
+	for header,value in pairs(ListLexiconsInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
 	if request_handler then
 		request_handler(settings.uri, "/v1/lexicons", ListLexiconsInput, headers, settings, cb)
 	else
@@ -1363,8 +1713,11 @@ function M.SynthesizeSpeechAsync(SynthesizeSpeechInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".SynthesizeSpeech",
 	}
+	for header,value in pairs(SynthesizeSpeechInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/v1/speech", SynthesizeSpeechInput, headers, settings, cb)
 	else
@@ -1395,8 +1748,11 @@ function M.DeleteLexiconAsync(DeleteLexiconInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DeleteLexicon",
 	}
+	for header,value in pairs(DeleteLexiconInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("DELETE")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE")
 	if request_handler then
 		request_handler(settings.uri, "/v1/lexicons/{LexiconName}", DeleteLexiconInput, headers, settings, cb)
 	else

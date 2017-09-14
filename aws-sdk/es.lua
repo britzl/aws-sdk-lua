@@ -41,12 +41,23 @@ end
 -- Required key: DomainStatusList
 -- @return DescribeElasticsearchDomainsResponse structure as a key-value pair table
 function M.DescribeElasticsearchDomainsResponse(args)
-	assert(args, "You must provdide an argument table when creating DescribeElasticsearchDomainsResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeElasticsearchDomainsResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DomainStatusList"] = args["DomainStatusList"],
 	}
-	asserts.AssertDescribeElasticsearchDomainsResponse(t)
-	return t
+	asserts.AssertDescribeElasticsearchDomainsResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AdvancedOptionsStatus = { ["Status"] = true, ["Options"] = true, nil }
@@ -73,13 +84,24 @@ end
 -- Required key: Status
 -- @return AdvancedOptionsStatus structure as a key-value pair table
 function M.AdvancedOptionsStatus(args)
-	assert(args, "You must provdide an argument table when creating AdvancedOptionsStatus")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AdvancedOptionsStatus")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Status"] = args["Status"],
 		["Options"] = args["Options"],
 	}
-	asserts.AssertAdvancedOptionsStatus(t)
-	return t
+	asserts.AssertAdvancedOptionsStatus(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListTagsRequest = { ["ARN"] = true, nil }
@@ -102,12 +124,24 @@ end
 -- Required key: ARN
 -- @return ListTagsRequest structure as a key-value pair table
 function M.ListTagsRequest(args)
-	assert(args, "You must provdide an argument table when creating ListTagsRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListTagsRequest")
+    local query_args = { 
+        ["arn"] = args["ARN"],
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ARN"] = args["ARN"],
 	}
-	asserts.AssertListTagsRequest(t)
-	return t
+	asserts.AssertListTagsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.RemoveTagsRequest = { ["TagKeys"] = true, ["ARN"] = true, nil }
@@ -134,13 +168,24 @@ end
 -- Required key: TagKeys
 -- @return RemoveTagsRequest structure as a key-value pair table
 function M.RemoveTagsRequest(args)
-	assert(args, "You must provdide an argument table when creating RemoveTagsRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating RemoveTagsRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["TagKeys"] = args["TagKeys"],
 		["ARN"] = args["ARN"],
 	}
-	asserts.AssertRemoveTagsRequest(t)
-	return t
+	asserts.AssertRemoveTagsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteElasticsearchDomainResponse = { ["DomainStatus"] = true, nil }
@@ -161,12 +206,23 @@ end
 -- * DomainStatus [ElasticsearchDomainStatus] <p>The status of the Elasticsearch domain being deleted.</p>
 -- @return DeleteElasticsearchDomainResponse structure as a key-value pair table
 function M.DeleteElasticsearchDomainResponse(args)
-	assert(args, "You must provdide an argument table when creating DeleteElasticsearchDomainResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteElasticsearchDomainResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DomainStatus"] = args["DomainStatus"],
 	}
-	asserts.AssertDeleteElasticsearchDomainResponse(t)
-	return t
+	asserts.AssertDeleteElasticsearchDomainResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeElasticsearchDomainsRequest = { ["DomainNames"] = true, nil }
@@ -189,12 +245,23 @@ end
 -- Required key: DomainNames
 -- @return DescribeElasticsearchDomainsRequest structure as a key-value pair table
 function M.DescribeElasticsearchDomainsRequest(args)
-	assert(args, "You must provdide an argument table when creating DescribeElasticsearchDomainsRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeElasticsearchDomainsRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DomainNames"] = args["DomainNames"],
 	}
-	asserts.AssertDescribeElasticsearchDomainsRequest(t)
-	return t
+	asserts.AssertDescribeElasticsearchDomainsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListDomainNamesResponse = { ["DomainNames"] = true, nil }
@@ -215,12 +282,23 @@ end
 -- * DomainNames [DomainInfoList] <p>List of Elasticsearch domain names.</p>
 -- @return ListDomainNamesResponse structure as a key-value pair table
 function M.ListDomainNamesResponse(args)
-	assert(args, "You must provdide an argument table when creating ListDomainNamesResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListDomainNamesResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DomainNames"] = args["DomainNames"],
 	}
-	asserts.AssertListDomainNamesResponse(t)
-	return t
+	asserts.AssertListDomainNamesResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ElasticsearchDomainConfig = { ["ElasticsearchClusterConfig"] = true, ["ElasticsearchVersion"] = true, ["EBSOptions"] = true, ["SnapshotOptions"] = true, ["AdvancedOptions"] = true, ["AccessPolicies"] = true, nil }
@@ -251,8 +329,14 @@ end
 -- * AccessPolicies [AccessPoliciesStatus] <p>IAM access policy as a JSON-formatted string.</p>
 -- @return ElasticsearchDomainConfig structure as a key-value pair table
 function M.ElasticsearchDomainConfig(args)
-	assert(args, "You must provdide an argument table when creating ElasticsearchDomainConfig")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ElasticsearchDomainConfig")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ElasticsearchClusterConfig"] = args["ElasticsearchClusterConfig"],
 		["ElasticsearchVersion"] = args["ElasticsearchVersion"],
 		["EBSOptions"] = args["EBSOptions"],
@@ -260,8 +344,13 @@ function M.ElasticsearchDomainConfig(args)
 		["AdvancedOptions"] = args["AdvancedOptions"],
 		["AccessPolicies"] = args["AccessPolicies"],
 	}
-	asserts.AssertElasticsearchDomainConfig(t)
-	return t
+	asserts.AssertElasticsearchDomainConfig(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ElasticsearchDomainStatus = { ["ElasticsearchClusterConfig"] = true, ["Endpoint"] = true, ["Created"] = true, ["Deleted"] = true, ["DomainName"] = true, ["EBSOptions"] = true, ["SnapshotOptions"] = true, ["DomainId"] = true, ["AccessPolicies"] = true, ["Processing"] = true, ["AdvancedOptions"] = true, ["ElasticsearchVersion"] = true, ["ARN"] = true, nil }
@@ -314,8 +403,14 @@ end
 -- Required key: ElasticsearchClusterConfig
 -- @return ElasticsearchDomainStatus structure as a key-value pair table
 function M.ElasticsearchDomainStatus(args)
-	assert(args, "You must provdide an argument table when creating ElasticsearchDomainStatus")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ElasticsearchDomainStatus")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ElasticsearchClusterConfig"] = args["ElasticsearchClusterConfig"],
 		["Endpoint"] = args["Endpoint"],
 		["Created"] = args["Created"],
@@ -330,8 +425,13 @@ function M.ElasticsearchDomainStatus(args)
 		["ElasticsearchVersion"] = args["ElasticsearchVersion"],
 		["ARN"] = args["ARN"],
 	}
-	asserts.AssertElasticsearchDomainStatus(t)
-	return t
+	asserts.AssertElasticsearchDomainStatus(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AccessPoliciesStatus = { ["Status"] = true, ["Options"] = true, nil }
@@ -358,13 +458,24 @@ end
 -- Required key: Status
 -- @return AccessPoliciesStatus structure as a key-value pair table
 function M.AccessPoliciesStatus(args)
-	assert(args, "You must provdide an argument table when creating AccessPoliciesStatus")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AccessPoliciesStatus")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Status"] = args["Status"],
 		["Options"] = args["Options"],
 	}
-	asserts.AssertAccessPoliciesStatus(t)
-	return t
+	asserts.AssertAccessPoliciesStatus(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AdditionalLimit = { ["LimitValues"] = true, ["LimitName"] = true, nil }
@@ -387,13 +498,24 @@ end
 -- * LimitName [LimitName] <p> Name of Additional Limit is specific to a given InstanceType and for each of it's <code> <a>InstanceRole</a> </code> etc. <br/> Attributes and their details: <br/> <ul> <li>MaximumNumberOfDataNodesSupported</li> This attribute will be present in Master node only to specify how much data nodes upto which given <code> <a>ESPartitionInstanceType</a> </code> can support as master node. <li>MaximumNumberOfDataNodesWithoutMasterNode</li> This attribute will be present in Data node only to specify how much data nodes of given <code> <a>ESPartitionInstanceType</a> </code> upto which you don't need any master nodes to govern them. </ul> </p>
 -- @return AdditionalLimit structure as a key-value pair table
 function M.AdditionalLimit(args)
-	assert(args, "You must provdide an argument table when creating AdditionalLimit")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AdditionalLimit")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["LimitValues"] = args["LimitValues"],
 		["LimitName"] = args["LimitName"],
 	}
-	asserts.AssertAdditionalLimit(t)
-	return t
+	asserts.AssertAdditionalLimit(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.SnapshotOptions = { ["AutomatedSnapshotStartHour"] = true, nil }
@@ -414,12 +536,23 @@ end
 -- * AutomatedSnapshotStartHour [IntegerClass] <p>Specifies the time, in UTC format, when the service takes a daily automated snapshot of the specified Elasticsearch domain. Default value is <code>0</code> hours.</p>
 -- @return SnapshotOptions structure as a key-value pair table
 function M.SnapshotOptions(args)
-	assert(args, "You must provdide an argument table when creating SnapshotOptions")
-	local t = { 
+	assert(args, "You must provide an argument table when creating SnapshotOptions")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["AutomatedSnapshotStartHour"] = args["AutomatedSnapshotStartHour"],
 	}
-	asserts.AssertSnapshotOptions(t)
-	return t
+	asserts.AssertSnapshotOptions(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Tag = { ["Value"] = true, ["Key"] = true, nil }
@@ -446,13 +579,24 @@ end
 -- Required key: Value
 -- @return Tag structure as a key-value pair table
 function M.Tag(args)
-	assert(args, "You must provdide an argument table when creating Tag")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Tag")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Value"] = args["Value"],
 		["Key"] = args["Key"],
 	}
-	asserts.AssertTag(t)
-	return t
+	asserts.AssertTag(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.EBSOptionsStatus = { ["Status"] = true, ["Options"] = true, nil }
@@ -479,13 +623,24 @@ end
 -- Required key: Status
 -- @return EBSOptionsStatus structure as a key-value pair table
 function M.EBSOptionsStatus(args)
-	assert(args, "You must provdide an argument table when creating EBSOptionsStatus")
-	local t = { 
+	assert(args, "You must provide an argument table when creating EBSOptionsStatus")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Status"] = args["Status"],
 		["Options"] = args["Options"],
 	}
-	asserts.AssertEBSOptionsStatus(t)
-	return t
+	asserts.AssertEBSOptionsStatus(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListElasticsearchVersionsRequest = { ["NextToken"] = true, ["MaxResults"] = true, nil }
@@ -508,13 +663,26 @@ end
 -- * MaxResults [MaxResults] <p> Set this value to limit the number of results returned. Value provided must be greater than 10 else it wont be honored. </p>
 -- @return ListElasticsearchVersionsRequest structure as a key-value pair table
 function M.ListElasticsearchVersionsRequest(args)
-	assert(args, "You must provdide an argument table when creating ListElasticsearchVersionsRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListElasticsearchVersionsRequest")
+    local query_args = { 
+        ["nextToken"] = args["NextToken"],
+        ["maxResults"] = args["MaxResults"],
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NextToken"] = args["NextToken"],
 		["MaxResults"] = args["MaxResults"],
 	}
-	asserts.AssertListElasticsearchVersionsRequest(t)
-	return t
+	asserts.AssertListElasticsearchVersionsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdateElasticsearchDomainConfigRequest = { ["ElasticsearchClusterConfig"] = true, ["DomainName"] = true, ["EBSOptions"] = true, ["SnapshotOptions"] = true, ["AdvancedOptions"] = true, ["AccessPolicies"] = true, nil }
@@ -547,8 +715,15 @@ end
 -- Required key: DomainName
 -- @return UpdateElasticsearchDomainConfigRequest structure as a key-value pair table
 function M.UpdateElasticsearchDomainConfigRequest(args)
-	assert(args, "You must provdide an argument table when creating UpdateElasticsearchDomainConfigRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateElasticsearchDomainConfigRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{DomainName}"] = args["DomainName"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ElasticsearchClusterConfig"] = args["ElasticsearchClusterConfig"],
 		["DomainName"] = args["DomainName"],
 		["EBSOptions"] = args["EBSOptions"],
@@ -556,8 +731,13 @@ function M.UpdateElasticsearchDomainConfigRequest(args)
 		["AdvancedOptions"] = args["AdvancedOptions"],
 		["AccessPolicies"] = args["AccessPolicies"],
 	}
-	asserts.AssertUpdateElasticsearchDomainConfigRequest(t)
-	return t
+	asserts.AssertUpdateElasticsearchDomainConfigRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeElasticsearchDomainResponse = { ["DomainStatus"] = true, nil }
@@ -580,12 +760,23 @@ end
 -- Required key: DomainStatus
 -- @return DescribeElasticsearchDomainResponse structure as a key-value pair table
 function M.DescribeElasticsearchDomainResponse(args)
-	assert(args, "You must provdide an argument table when creating DescribeElasticsearchDomainResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeElasticsearchDomainResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DomainStatus"] = args["DomainStatus"],
 	}
-	asserts.AssertDescribeElasticsearchDomainResponse(t)
-	return t
+	asserts.AssertDescribeElasticsearchDomainResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeElasticsearchDomainConfigResponse = { ["DomainConfig"] = true, nil }
@@ -608,12 +799,23 @@ end
 -- Required key: DomainConfig
 -- @return DescribeElasticsearchDomainConfigResponse structure as a key-value pair table
 function M.DescribeElasticsearchDomainConfigResponse(args)
-	assert(args, "You must provdide an argument table when creating DescribeElasticsearchDomainConfigResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeElasticsearchDomainConfigResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DomainConfig"] = args["DomainConfig"],
 	}
-	asserts.AssertDescribeElasticsearchDomainConfigResponse(t)
-	return t
+	asserts.AssertDescribeElasticsearchDomainConfigResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.EBSOptions = { ["Iops"] = true, ["VolumeSize"] = true, ["VolumeType"] = true, ["EBSEnabled"] = true, nil }
@@ -640,15 +842,26 @@ end
 -- * EBSEnabled [Boolean] <p>Specifies whether EBS-based storage is enabled.</p>
 -- @return EBSOptions structure as a key-value pair table
 function M.EBSOptions(args)
-	assert(args, "You must provdide an argument table when creating EBSOptions")
-	local t = { 
+	assert(args, "You must provide an argument table when creating EBSOptions")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Iops"] = args["Iops"],
 		["VolumeSize"] = args["VolumeSize"],
 		["VolumeType"] = args["VolumeType"],
 		["EBSEnabled"] = args["EBSEnabled"],
 	}
-	asserts.AssertEBSOptions(t)
-	return t
+	asserts.AssertEBSOptions(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ElasticsearchVersionStatus = { ["Status"] = true, ["Options"] = true, nil }
@@ -675,13 +888,24 @@ end
 -- Required key: Status
 -- @return ElasticsearchVersionStatus structure as a key-value pair table
 function M.ElasticsearchVersionStatus(args)
-	assert(args, "You must provdide an argument table when creating ElasticsearchVersionStatus")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ElasticsearchVersionStatus")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Status"] = args["Status"],
 		["Options"] = args["Options"],
 	}
-	asserts.AssertElasticsearchVersionStatus(t)
-	return t
+	asserts.AssertElasticsearchVersionStatus(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ResourceAlreadyExistsException = { nil }
@@ -700,11 +924,22 @@ end
 -- Valid keys:
 -- @return ResourceAlreadyExistsException structure as a key-value pair table
 function M.ResourceAlreadyExistsException(args)
-	assert(args, "You must provdide an argument table when creating ResourceAlreadyExistsException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ResourceAlreadyExistsException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertResourceAlreadyExistsException(t)
-	return t
+	asserts.AssertResourceAlreadyExistsException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.StorageTypeLimit = { ["LimitValues"] = true, ["LimitName"] = true, nil }
@@ -727,13 +962,24 @@ end
 -- * LimitName [LimitName] <p> Name of storage limits that are applicable for given storage type. If <code> <a>StorageType</a> </code> is ebs, following storage options are applicable <ol> <li>MinimumVolumeSize</li> Minimum amount of volume size that is applicable for given storage type.It can be empty if it is not applicable. <li>MaximumVolumeSize</li> Maximum amount of volume size that is applicable for given storage type.It can be empty if it is not applicable. <li>MaximumIops</li> Maximum amount of Iops that is applicable for given storage type.It can be empty if it is not applicable. <li>MinimumIops</li> Minimum amount of Iops that is applicable for given storage type.It can be empty if it is not applicable. </ol> </p>
 -- @return StorageTypeLimit structure as a key-value pair table
 function M.StorageTypeLimit(args)
-	assert(args, "You must provdide an argument table when creating StorageTypeLimit")
-	local t = { 
+	assert(args, "You must provide an argument table when creating StorageTypeLimit")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["LimitValues"] = args["LimitValues"],
 		["LimitName"] = args["LimitName"],
 	}
-	asserts.AssertStorageTypeLimit(t)
-	return t
+	asserts.AssertStorageTypeLimit(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListElasticsearchVersionsResponse = { ["ElasticsearchVersions"] = true, ["NextToken"] = true, nil }
@@ -756,13 +1002,24 @@ end
 -- * NextToken [NextToken] 
 -- @return ListElasticsearchVersionsResponse structure as a key-value pair table
 function M.ListElasticsearchVersionsResponse(args)
-	assert(args, "You must provdide an argument table when creating ListElasticsearchVersionsResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListElasticsearchVersionsResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ElasticsearchVersions"] = args["ElasticsearchVersions"],
 		["NextToken"] = args["NextToken"],
 	}
-	asserts.AssertListElasticsearchVersionsResponse(t)
-	return t
+	asserts.AssertListElasticsearchVersionsResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ElasticsearchClusterConfigStatus = { ["Status"] = true, ["Options"] = true, nil }
@@ -789,13 +1046,24 @@ end
 -- Required key: Status
 -- @return ElasticsearchClusterConfigStatus structure as a key-value pair table
 function M.ElasticsearchClusterConfigStatus(args)
-	assert(args, "You must provdide an argument table when creating ElasticsearchClusterConfigStatus")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ElasticsearchClusterConfigStatus")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Status"] = args["Status"],
 		["Options"] = args["Options"],
 	}
-	asserts.AssertElasticsearchClusterConfigStatus(t)
-	return t
+	asserts.AssertElasticsearchClusterConfigStatus(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.StorageType = { ["StorageTypeName"] = true, ["StorageTypeLimits"] = true, ["StorageSubTypeName"] = true, nil }
@@ -820,14 +1088,25 @@ end
 -- * StorageSubTypeName [StorageSubTypeName] 
 -- @return StorageType structure as a key-value pair table
 function M.StorageType(args)
-	assert(args, "You must provdide an argument table when creating StorageType")
-	local t = { 
+	assert(args, "You must provide an argument table when creating StorageType")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["StorageTypeName"] = args["StorageTypeName"],
 		["StorageTypeLimits"] = args["StorageTypeLimits"],
 		["StorageSubTypeName"] = args["StorageSubTypeName"],
 	}
-	asserts.AssertStorageType(t)
-	return t
+	asserts.AssertStorageType(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.BaseException = { ["message"] = true, nil }
@@ -848,12 +1127,23 @@ end
 -- * message [ErrorMessage] <p>A description of the error.</p>
 -- @return BaseException structure as a key-value pair table
 function M.BaseException(args)
-	assert(args, "You must provdide an argument table when creating BaseException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating BaseException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertBaseException(t)
-	return t
+	asserts.AssertBaseException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InstanceLimits = { ["InstanceCountLimits"] = true, nil }
@@ -874,12 +1164,23 @@ end
 -- * InstanceCountLimits [InstanceCountLimits] 
 -- @return InstanceLimits structure as a key-value pair table
 function M.InstanceLimits(args)
-	assert(args, "You must provdide an argument table when creating InstanceLimits")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InstanceLimits")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["InstanceCountLimits"] = args["InstanceCountLimits"],
 	}
-	asserts.AssertInstanceLimits(t)
-	return t
+	asserts.AssertInstanceLimits(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.LimitExceededException = { nil }
@@ -898,11 +1199,22 @@ end
 -- Valid keys:
 -- @return LimitExceededException structure as a key-value pair table
 function M.LimitExceededException(args)
-	assert(args, "You must provdide an argument table when creating LimitExceededException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating LimitExceededException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertLimitExceededException(t)
-	return t
+	asserts.AssertLimitExceededException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeElasticsearchInstanceTypeLimitsRequest = { ["ElasticsearchVersion"] = true, ["InstanceType"] = true, ["DomainName"] = true, nil }
@@ -931,14 +1243,28 @@ end
 -- Required key: ElasticsearchVersion
 -- @return DescribeElasticsearchInstanceTypeLimitsRequest structure as a key-value pair table
 function M.DescribeElasticsearchInstanceTypeLimitsRequest(args)
-	assert(args, "You must provdide an argument table when creating DescribeElasticsearchInstanceTypeLimitsRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeElasticsearchInstanceTypeLimitsRequest")
+    local query_args = { 
+        ["domainName"] = args["DomainName"],
+    }
+    local uri_args = { 
+        ["{ElasticsearchVersion}"] = args["ElasticsearchVersion"],
+        ["{InstanceType}"] = args["InstanceType"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ElasticsearchVersion"] = args["ElasticsearchVersion"],
 		["InstanceType"] = args["InstanceType"],
 		["DomainName"] = args["DomainName"],
 	}
-	asserts.AssertDescribeElasticsearchInstanceTypeLimitsRequest(t)
-	return t
+	asserts.AssertDescribeElasticsearchInstanceTypeLimitsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ValidationException = { nil }
@@ -957,11 +1283,22 @@ end
 -- Valid keys:
 -- @return ValidationException structure as a key-value pair table
 function M.ValidationException(args)
-	assert(args, "You must provdide an argument table when creating ValidationException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ValidationException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertValidationException(t)
-	return t
+	asserts.AssertValidationException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListElasticsearchInstanceTypesResponse = { ["ElasticsearchInstanceTypes"] = true, ["NextToken"] = true, nil }
@@ -984,13 +1321,24 @@ end
 -- * NextToken [NextToken] <p>In case if there are more results available NextToken would be present, make further request to the same API with received NextToken to paginate remaining results. </p>
 -- @return ListElasticsearchInstanceTypesResponse structure as a key-value pair table
 function M.ListElasticsearchInstanceTypesResponse(args)
-	assert(args, "You must provdide an argument table when creating ListElasticsearchInstanceTypesResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListElasticsearchInstanceTypesResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ElasticsearchInstanceTypes"] = args["ElasticsearchInstanceTypes"],
 		["NextToken"] = args["NextToken"],
 	}
-	asserts.AssertListElasticsearchInstanceTypesResponse(t)
-	return t
+	asserts.AssertListElasticsearchInstanceTypesResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeElasticsearchDomainRequest = { ["DomainName"] = true, nil }
@@ -1013,12 +1361,24 @@ end
 -- Required key: DomainName
 -- @return DescribeElasticsearchDomainRequest structure as a key-value pair table
 function M.DescribeElasticsearchDomainRequest(args)
-	assert(args, "You must provdide an argument table when creating DescribeElasticsearchDomainRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeElasticsearchDomainRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{DomainName}"] = args["DomainName"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DomainName"] = args["DomainName"],
 	}
-	asserts.AssertDescribeElasticsearchDomainRequest(t)
-	return t
+	asserts.AssertDescribeElasticsearchDomainRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Limits = { ["InstanceLimits"] = true, ["StorageTypes"] = true, ["AdditionalLimits"] = true, nil }
@@ -1043,14 +1403,25 @@ end
 -- * AdditionalLimits [AdditionalLimitList] <p> List of additional limits that are specific to a given InstanceType and for each of it's <code> <a>InstanceRole</a> </code> . </p>
 -- @return Limits structure as a key-value pair table
 function M.Limits(args)
-	assert(args, "You must provdide an argument table when creating Limits")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Limits")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["InstanceLimits"] = args["InstanceLimits"],
 		["StorageTypes"] = args["StorageTypes"],
 		["AdditionalLimits"] = args["AdditionalLimits"],
 	}
-	asserts.AssertLimits(t)
-	return t
+	asserts.AssertLimits(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InternalException = { nil }
@@ -1069,11 +1440,22 @@ end
 -- Valid keys:
 -- @return InternalException structure as a key-value pair table
 function M.InternalException(args)
-	assert(args, "You must provdide an argument table when creating InternalException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InternalException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertInternalException(t)
-	return t
+	asserts.AssertInternalException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ElasticsearchClusterConfig = { ["DedicatedMasterEnabled"] = true, ["InstanceCount"] = true, ["ZoneAwarenessEnabled"] = true, ["DedicatedMasterType"] = true, ["InstanceType"] = true, ["DedicatedMasterCount"] = true, nil }
@@ -1104,8 +1486,14 @@ end
 -- * DedicatedMasterCount [IntegerClass] <p>Total number of dedicated master nodes, active and on standby, for the cluster.</p>
 -- @return ElasticsearchClusterConfig structure as a key-value pair table
 function M.ElasticsearchClusterConfig(args)
-	assert(args, "You must provdide an argument table when creating ElasticsearchClusterConfig")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ElasticsearchClusterConfig")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DedicatedMasterEnabled"] = args["DedicatedMasterEnabled"],
 		["InstanceCount"] = args["InstanceCount"],
 		["ZoneAwarenessEnabled"] = args["ZoneAwarenessEnabled"],
@@ -1113,8 +1501,13 @@ function M.ElasticsearchClusterConfig(args)
 		["InstanceType"] = args["InstanceType"],
 		["DedicatedMasterCount"] = args["DedicatedMasterCount"],
 	}
-	asserts.AssertElasticsearchClusterConfig(t)
-	return t
+	asserts.AssertElasticsearchClusterConfig(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListElasticsearchInstanceTypesRequest = { ["ElasticsearchVersion"] = true, ["NextToken"] = true, ["MaxResults"] = true, ["DomainName"] = true, nil }
@@ -1143,15 +1536,30 @@ end
 -- Required key: ElasticsearchVersion
 -- @return ListElasticsearchInstanceTypesRequest structure as a key-value pair table
 function M.ListElasticsearchInstanceTypesRequest(args)
-	assert(args, "You must provdide an argument table when creating ListElasticsearchInstanceTypesRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListElasticsearchInstanceTypesRequest")
+    local query_args = { 
+        ["nextToken"] = args["NextToken"],
+        ["maxResults"] = args["MaxResults"],
+        ["domainName"] = args["DomainName"],
+    }
+    local uri_args = { 
+        ["{ElasticsearchVersion}"] = args["ElasticsearchVersion"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ElasticsearchVersion"] = args["ElasticsearchVersion"],
 		["NextToken"] = args["NextToken"],
 		["MaxResults"] = args["MaxResults"],
 		["DomainName"] = args["DomainName"],
 	}
-	asserts.AssertListElasticsearchInstanceTypesRequest(t)
-	return t
+	asserts.AssertListElasticsearchInstanceTypesRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.SnapshotOptionsStatus = { ["Status"] = true, ["Options"] = true, nil }
@@ -1178,13 +1586,24 @@ end
 -- Required key: Status
 -- @return SnapshotOptionsStatus structure as a key-value pair table
 function M.SnapshotOptionsStatus(args)
-	assert(args, "You must provdide an argument table when creating SnapshotOptionsStatus")
-	local t = { 
+	assert(args, "You must provide an argument table when creating SnapshotOptionsStatus")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Status"] = args["Status"],
 		["Options"] = args["Options"],
 	}
-	asserts.AssertSnapshotOptionsStatus(t)
-	return t
+	asserts.AssertSnapshotOptionsStatus(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ResourceNotFoundException = { nil }
@@ -1203,11 +1622,22 @@ end
 -- Valid keys:
 -- @return ResourceNotFoundException structure as a key-value pair table
 function M.ResourceNotFoundException(args)
-	assert(args, "You must provdide an argument table when creating ResourceNotFoundException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ResourceNotFoundException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertResourceNotFoundException(t)
-	return t
+	asserts.AssertResourceNotFoundException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DisabledOperationException = { nil }
@@ -1226,11 +1656,22 @@ end
 -- Valid keys:
 -- @return DisabledOperationException structure as a key-value pair table
 function M.DisabledOperationException(args)
-	assert(args, "You must provdide an argument table when creating DisabledOperationException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DisabledOperationException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertDisabledOperationException(t)
-	return t
+	asserts.AssertDisabledOperationException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeElasticsearchInstanceTypeLimitsResponse = { ["LimitsByRole"] = true, nil }
@@ -1251,12 +1692,23 @@ end
 -- * LimitsByRole [LimitsByRole] 
 -- @return DescribeElasticsearchInstanceTypeLimitsResponse structure as a key-value pair table
 function M.DescribeElasticsearchInstanceTypeLimitsResponse(args)
-	assert(args, "You must provdide an argument table when creating DescribeElasticsearchInstanceTypeLimitsResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeElasticsearchInstanceTypeLimitsResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["LimitsByRole"] = args["LimitsByRole"],
 	}
-	asserts.AssertDescribeElasticsearchInstanceTypeLimitsResponse(t)
-	return t
+	asserts.AssertDescribeElasticsearchInstanceTypeLimitsResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidTypeException = { nil }
@@ -1275,11 +1727,22 @@ end
 -- Valid keys:
 -- @return InvalidTypeException structure as a key-value pair table
 function M.InvalidTypeException(args)
-	assert(args, "You must provdide an argument table when creating InvalidTypeException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidTypeException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertInvalidTypeException(t)
-	return t
+	asserts.AssertInvalidTypeException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.OptionStatus = { ["PendingDeletion"] = true, ["State"] = true, ["CreationDate"] = true, ["UpdateVersion"] = true, ["UpdateDate"] = true, nil }
@@ -1314,16 +1777,27 @@ end
 -- Required key: State
 -- @return OptionStatus structure as a key-value pair table
 function M.OptionStatus(args)
-	assert(args, "You must provdide an argument table when creating OptionStatus")
-	local t = { 
+	assert(args, "You must provide an argument table when creating OptionStatus")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["PendingDeletion"] = args["PendingDeletion"],
 		["State"] = args["State"],
 		["CreationDate"] = args["CreationDate"],
 		["UpdateVersion"] = args["UpdateVersion"],
 		["UpdateDate"] = args["UpdateDate"],
 	}
-	asserts.AssertOptionStatus(t)
-	return t
+	asserts.AssertOptionStatus(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateElasticsearchDomainRequest = { ["ElasticsearchClusterConfig"] = true, ["ElasticsearchVersion"] = true, ["DomainName"] = true, ["EBSOptions"] = true, ["SnapshotOptions"] = true, ["AdvancedOptions"] = true, ["AccessPolicies"] = true, nil }
@@ -1358,8 +1832,14 @@ end
 -- Required key: DomainName
 -- @return CreateElasticsearchDomainRequest structure as a key-value pair table
 function M.CreateElasticsearchDomainRequest(args)
-	assert(args, "You must provdide an argument table when creating CreateElasticsearchDomainRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateElasticsearchDomainRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ElasticsearchClusterConfig"] = args["ElasticsearchClusterConfig"],
 		["ElasticsearchVersion"] = args["ElasticsearchVersion"],
 		["DomainName"] = args["DomainName"],
@@ -1368,8 +1848,13 @@ function M.CreateElasticsearchDomainRequest(args)
 		["AdvancedOptions"] = args["AdvancedOptions"],
 		["AccessPolicies"] = args["AccessPolicies"],
 	}
-	asserts.AssertCreateElasticsearchDomainRequest(t)
-	return t
+	asserts.AssertCreateElasticsearchDomainRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DomainInfo = { ["DomainName"] = true, nil }
@@ -1390,12 +1875,23 @@ end
 -- * DomainName [DomainName] <p> Specifies the <code>DomainName</code>.</p>
 -- @return DomainInfo structure as a key-value pair table
 function M.DomainInfo(args)
-	assert(args, "You must provdide an argument table when creating DomainInfo")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DomainInfo")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DomainName"] = args["DomainName"],
 	}
-	asserts.AssertDomainInfo(t)
-	return t
+	asserts.AssertDomainInfo(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteElasticsearchDomainRequest = { ["DomainName"] = true, nil }
@@ -1418,12 +1914,24 @@ end
 -- Required key: DomainName
 -- @return DeleteElasticsearchDomainRequest structure as a key-value pair table
 function M.DeleteElasticsearchDomainRequest(args)
-	assert(args, "You must provdide an argument table when creating DeleteElasticsearchDomainRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteElasticsearchDomainRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{DomainName}"] = args["DomainName"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DomainName"] = args["DomainName"],
 	}
-	asserts.AssertDeleteElasticsearchDomainRequest(t)
-	return t
+	asserts.AssertDeleteElasticsearchDomainRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AddTagsRequest = { ["ARN"] = true, ["TagList"] = true, nil }
@@ -1450,13 +1958,24 @@ end
 -- Required key: TagList
 -- @return AddTagsRequest structure as a key-value pair table
 function M.AddTagsRequest(args)
-	assert(args, "You must provdide an argument table when creating AddTagsRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AddTagsRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ARN"] = args["ARN"],
 		["TagList"] = args["TagList"],
 	}
-	asserts.AssertAddTagsRequest(t)
-	return t
+	asserts.AssertAddTagsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateElasticsearchDomainResponse = { ["DomainStatus"] = true, nil }
@@ -1477,12 +1996,23 @@ end
 -- * DomainStatus [ElasticsearchDomainStatus] <p>The status of the newly created Elasticsearch domain. </p>
 -- @return CreateElasticsearchDomainResponse structure as a key-value pair table
 function M.CreateElasticsearchDomainResponse(args)
-	assert(args, "You must provdide an argument table when creating CreateElasticsearchDomainResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateElasticsearchDomainResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DomainStatus"] = args["DomainStatus"],
 	}
-	asserts.AssertCreateElasticsearchDomainResponse(t)
-	return t
+	asserts.AssertCreateElasticsearchDomainResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListTagsResponse = { ["TagList"] = true, nil }
@@ -1503,12 +2033,23 @@ end
 -- * TagList [TagList] <p> List of <code>Tag</code> for the requested Elasticsearch domain.</p>
 -- @return ListTagsResponse structure as a key-value pair table
 function M.ListTagsResponse(args)
-	assert(args, "You must provdide an argument table when creating ListTagsResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListTagsResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["TagList"] = args["TagList"],
 	}
-	asserts.AssertListTagsResponse(t)
-	return t
+	asserts.AssertListTagsResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeElasticsearchDomainConfigRequest = { ["DomainName"] = true, nil }
@@ -1531,12 +2072,24 @@ end
 -- Required key: DomainName
 -- @return DescribeElasticsearchDomainConfigRequest structure as a key-value pair table
 function M.DescribeElasticsearchDomainConfigRequest(args)
-	assert(args, "You must provdide an argument table when creating DescribeElasticsearchDomainConfigRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeElasticsearchDomainConfigRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{DomainName}"] = args["DomainName"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DomainName"] = args["DomainName"],
 	}
-	asserts.AssertDescribeElasticsearchDomainConfigRequest(t)
-	return t
+	asserts.AssertDescribeElasticsearchDomainConfigRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InstanceCountLimits = { ["MaximumInstanceCount"] = true, ["MinimumInstanceCount"] = true, nil }
@@ -1559,13 +2112,24 @@ end
 -- * MinimumInstanceCount [MinimumInstanceCount] 
 -- @return InstanceCountLimits structure as a key-value pair table
 function M.InstanceCountLimits(args)
-	assert(args, "You must provdide an argument table when creating InstanceCountLimits")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InstanceCountLimits")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["MaximumInstanceCount"] = args["MaximumInstanceCount"],
 		["MinimumInstanceCount"] = args["MinimumInstanceCount"],
 	}
-	asserts.AssertInstanceCountLimits(t)
-	return t
+	asserts.AssertInstanceCountLimits(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdateElasticsearchDomainConfigResponse = { ["DomainConfig"] = true, nil }
@@ -1588,12 +2152,23 @@ end
 -- Required key: DomainConfig
 -- @return UpdateElasticsearchDomainConfigResponse structure as a key-value pair table
 function M.UpdateElasticsearchDomainConfigResponse(args)
-	assert(args, "You must provdide an argument table when creating UpdateElasticsearchDomainConfigResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateElasticsearchDomainConfigResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DomainConfig"] = args["DomainConfig"],
 	}
-	asserts.AssertUpdateElasticsearchDomainConfigResponse(t)
-	return t
+	asserts.AssertUpdateElasticsearchDomainConfigResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 function asserts.AssertOptionState(str)
@@ -2133,8 +2708,11 @@ function M.RemoveTagsAsync(RemoveTagsRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".RemoveTags",
 	}
+	for header,value in pairs(RemoveTagsRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/2015-01-01/tags-removal", RemoveTagsRequest, headers, settings, cb)
 	else
@@ -2165,8 +2743,11 @@ function M.DeleteElasticsearchDomainAsync(DeleteElasticsearchDomainRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DeleteElasticsearchDomain",
 	}
+	for header,value in pairs(DeleteElasticsearchDomainRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("DELETE")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE")
 	if request_handler then
 		request_handler(settings.uri, "/2015-01-01/es/domain/{DomainName}", DeleteElasticsearchDomainRequest, headers, settings, cb)
 	else
@@ -2197,8 +2778,11 @@ function M.AddTagsAsync(AddTagsRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".AddTags",
 	}
+	for header,value in pairs(AddTagsRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/2015-01-01/tags", AddTagsRequest, headers, settings, cb)
 	else
@@ -2229,8 +2813,11 @@ function M.DescribeElasticsearchInstanceTypeLimitsAsync(DescribeElasticsearchIns
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DescribeElasticsearchInstanceTypeLimits",
 	}
+	for header,value in pairs(DescribeElasticsearchInstanceTypeLimitsRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
 	if request_handler then
 		request_handler(settings.uri, "/2015-01-01/es/instanceTypeLimits/{ElasticsearchVersion}/{InstanceType}", DescribeElasticsearchInstanceTypeLimitsRequest, headers, settings, cb)
 	else
@@ -2261,8 +2848,11 @@ function M.UpdateElasticsearchDomainConfigAsync(UpdateElasticsearchDomainConfigR
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".UpdateElasticsearchDomainConfig",
 	}
+	for header,value in pairs(UpdateElasticsearchDomainConfigRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/2015-01-01/es/domain/{DomainName}/config", UpdateElasticsearchDomainConfigRequest, headers, settings, cb)
 	else
@@ -2293,8 +2883,11 @@ function M.DescribeElasticsearchDomainConfigAsync(DescribeElasticsearchDomainCon
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DescribeElasticsearchDomainConfig",
 	}
+	for header,value in pairs(DescribeElasticsearchDomainConfigRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
 	if request_handler then
 		request_handler(settings.uri, "/2015-01-01/es/domain/{DomainName}/config", DescribeElasticsearchDomainConfigRequest, headers, settings, cb)
 	else
@@ -2325,8 +2918,11 @@ function M.CreateElasticsearchDomainAsync(CreateElasticsearchDomainRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".CreateElasticsearchDomain",
 	}
+	for header,value in pairs(CreateElasticsearchDomainRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/2015-01-01/es/domain", CreateElasticsearchDomainRequest, headers, settings, cb)
 	else
@@ -2357,8 +2953,11 @@ function M.DescribeElasticsearchDomainsAsync(DescribeElasticsearchDomainsRequest
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DescribeElasticsearchDomains",
 	}
+	for header,value in pairs(DescribeElasticsearchDomainsRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/2015-01-01/es/domain-info", DescribeElasticsearchDomainsRequest, headers, settings, cb)
 	else
@@ -2389,8 +2988,11 @@ function M.ListElasticsearchInstanceTypesAsync(ListElasticsearchInstanceTypesReq
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".ListElasticsearchInstanceTypes",
 	}
+	for header,value in pairs(ListElasticsearchInstanceTypesRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
 	if request_handler then
 		request_handler(settings.uri, "/2015-01-01/es/instanceTypes/{ElasticsearchVersion}", ListElasticsearchInstanceTypesRequest, headers, settings, cb)
 	else
@@ -2421,8 +3023,11 @@ function M.ListElasticsearchVersionsAsync(ListElasticsearchVersionsRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".ListElasticsearchVersions",
 	}
+	for header,value in pairs(ListElasticsearchVersionsRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
 	if request_handler then
 		request_handler(settings.uri, "/2015-01-01/es/versions", ListElasticsearchVersionsRequest, headers, settings, cb)
 	else
@@ -2452,7 +3057,8 @@ function M.ListDomainNamesAsync(cb)
 		[request_headers.AMZ_TARGET_HEADER] = ".ListDomainNames",
 	}
 
-	local request_handler, err = request_handlers.from_http_method("GET")
+
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
 	if request_handler then
 		request_handler(settings.uri, "/2015-01-01/domain", {}, headers, settings, cb)
 	else
@@ -2482,8 +3088,11 @@ function M.ListTagsAsync(ListTagsRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".ListTags",
 	}
+	for header,value in pairs(ListTagsRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
 	if request_handler then
 		request_handler(settings.uri, "/2015-01-01/tags/", ListTagsRequest, headers, settings, cb)
 	else
@@ -2514,8 +3123,11 @@ function M.DescribeElasticsearchDomainAsync(DescribeElasticsearchDomainRequest, 
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DescribeElasticsearchDomain",
 	}
+	for header,value in pairs(DescribeElasticsearchDomainRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
 	if request_handler then
 		request_handler(settings.uri, "/2015-01-01/es/domain/{DomainName}", DescribeElasticsearchDomainRequest, headers, settings, cb)
 	else

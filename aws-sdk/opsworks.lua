@@ -41,12 +41,23 @@ end
 -- Required key: InstanceId
 -- @return DeregisterInstanceRequest structure as a key-value pair table
 function M.DeregisterInstanceRequest(args)
-	assert(args, "You must provdide an argument table when creating DeregisterInstanceRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeregisterInstanceRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["InstanceId"] = args["InstanceId"],
 	}
-	asserts.AssertDeregisterInstanceRequest(t)
-	return t
+	asserts.AssertDeregisterInstanceRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.StopInstanceRequest = { ["InstanceId"] = true, nil }
@@ -69,12 +80,23 @@ end
 -- Required key: InstanceId
 -- @return StopInstanceRequest structure as a key-value pair table
 function M.StopInstanceRequest(args)
-	assert(args, "You must provdide an argument table when creating StopInstanceRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating StopInstanceRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["InstanceId"] = args["InstanceId"],
 	}
-	asserts.AssertStopInstanceRequest(t)
-	return t
+	asserts.AssertStopInstanceRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.StackSummary = { ["StackId"] = true, ["InstancesCount"] = true, ["Name"] = true, ["AppsCount"] = true, ["LayersCount"] = true, ["Arn"] = true, nil }
@@ -105,8 +127,14 @@ end
 -- * Arn [String] <p>The stack's ARN.</p>
 -- @return StackSummary structure as a key-value pair table
 function M.StackSummary(args)
-	assert(args, "You must provdide an argument table when creating StackSummary")
-	local t = { 
+	assert(args, "You must provide an argument table when creating StackSummary")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["StackId"] = args["StackId"],
 		["InstancesCount"] = args["InstancesCount"],
 		["Name"] = args["Name"],
@@ -114,8 +142,13 @@ function M.StackSummary(args)
 		["LayersCount"] = args["LayersCount"],
 		["Arn"] = args["Arn"],
 	}
-	asserts.AssertStackSummary(t)
-	return t
+	asserts.AssertStackSummary(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListTagsRequest = { ["ResourceArn"] = true, ["NextToken"] = true, ["MaxResults"] = true, nil }
@@ -142,14 +175,25 @@ end
 -- Required key: ResourceArn
 -- @return ListTagsRequest structure as a key-value pair table
 function M.ListTagsRequest(args)
-	assert(args, "You must provdide an argument table when creating ListTagsRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListTagsRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ResourceArn"] = args["ResourceArn"],
 		["NextToken"] = args["NextToken"],
 		["MaxResults"] = args["MaxResults"],
 	}
-	asserts.AssertListTagsRequest(t)
-	return t
+	asserts.AssertListTagsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateDeploymentResult = { ["DeploymentId"] = true, nil }
@@ -170,12 +214,23 @@ end
 -- * DeploymentId [String] <p>The deployment ID, which can be used with other requests to identify the deployment.</p>
 -- @return CreateDeploymentResult structure as a key-value pair table
 function M.CreateDeploymentResult(args)
-	assert(args, "You must provdide an argument table when creating CreateDeploymentResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateDeploymentResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DeploymentId"] = args["DeploymentId"],
 	}
-	asserts.AssertCreateDeploymentResult(t)
-	return t
+	asserts.AssertCreateDeploymentResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeAppsRequest = { ["StackId"] = true, ["AppIds"] = true, nil }
@@ -198,13 +253,24 @@ end
 -- * AppIds [Strings] <p>An array of app IDs for the apps to be described. If you use this parameter, <code>DescribeApps</code> returns a description of the specified apps. Otherwise, it returns a description of every app.</p>
 -- @return DescribeAppsRequest structure as a key-value pair table
 function M.DescribeAppsRequest(args)
-	assert(args, "You must provdide an argument table when creating DescribeAppsRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeAppsRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["StackId"] = args["StackId"],
 		["AppIds"] = args["AppIds"],
 	}
-	asserts.AssertDescribeAppsRequest(t)
-	return t
+	asserts.AssertDescribeAppsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeUserProfilesRequest = { ["IamUserArns"] = true, nil }
@@ -225,12 +291,23 @@ end
 -- * IamUserArns [Strings] <p>An array of IAM or federated user ARNs that identify the users to be described.</p>
 -- @return DescribeUserProfilesRequest structure as a key-value pair table
 function M.DescribeUserProfilesRequest(args)
-	assert(args, "You must provdide an argument table when creating DescribeUserProfilesRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeUserProfilesRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["IamUserArns"] = args["IamUserArns"],
 	}
-	asserts.AssertDescribeUserProfilesRequest(t)
-	return t
+	asserts.AssertDescribeUserProfilesRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeregisterRdsDbInstanceRequest = { ["RdsDbInstanceArn"] = true, nil }
@@ -253,12 +330,23 @@ end
 -- Required key: RdsDbInstanceArn
 -- @return DeregisterRdsDbInstanceRequest structure as a key-value pair table
 function M.DeregisterRdsDbInstanceRequest(args)
-	assert(args, "You must provdide an argument table when creating DeregisterRdsDbInstanceRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeregisterRdsDbInstanceRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["RdsDbInstanceArn"] = args["RdsDbInstanceArn"],
 	}
-	asserts.AssertDeregisterRdsDbInstanceRequest(t)
-	return t
+	asserts.AssertDeregisterRdsDbInstanceRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.StartInstanceRequest = { ["InstanceId"] = true, nil }
@@ -281,12 +369,23 @@ end
 -- Required key: InstanceId
 -- @return StartInstanceRequest structure as a key-value pair table
 function M.StartInstanceRequest(args)
-	assert(args, "You must provdide an argument table when creating StartInstanceRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating StartInstanceRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["InstanceId"] = args["InstanceId"],
 	}
-	asserts.AssertStartInstanceRequest(t)
-	return t
+	asserts.AssertStartInstanceRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeStackSummaryRequest = { ["StackId"] = true, nil }
@@ -309,12 +408,23 @@ end
 -- Required key: StackId
 -- @return DescribeStackSummaryRequest structure as a key-value pair table
 function M.DescribeStackSummaryRequest(args)
-	assert(args, "You must provdide an argument table when creating DescribeStackSummaryRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeStackSummaryRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["StackId"] = args["StackId"],
 	}
-	asserts.AssertDescribeStackSummaryRequest(t)
-	return t
+	asserts.AssertDescribeStackSummaryRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeVolumesResult = { ["Volumes"] = true, nil }
@@ -335,12 +445,23 @@ end
 -- * Volumes [Volumes] <p>An array of volume IDs.</p>
 -- @return DescribeVolumesResult structure as a key-value pair table
 function M.DescribeVolumesResult(args)
-	assert(args, "You must provdide an argument table when creating DescribeVolumesResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeVolumesResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Volumes"] = args["Volumes"],
 	}
-	asserts.AssertDescribeVolumesResult(t)
-	return t
+	asserts.AssertDescribeVolumesResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AttachElasticLoadBalancerRequest = { ["ElasticLoadBalancerName"] = true, ["LayerId"] = true, nil }
@@ -367,13 +488,24 @@ end
 -- Required key: LayerId
 -- @return AttachElasticLoadBalancerRequest structure as a key-value pair table
 function M.AttachElasticLoadBalancerRequest(args)
-	assert(args, "You must provdide an argument table when creating AttachElasticLoadBalancerRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AttachElasticLoadBalancerRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ElasticLoadBalancerName"] = args["ElasticLoadBalancerName"],
 		["LayerId"] = args["LayerId"],
 	}
-	asserts.AssertAttachElasticLoadBalancerRequest(t)
-	return t
+	asserts.AssertAttachElasticLoadBalancerRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdateMyUserProfileRequest = { ["SshPublicKey"] = true, nil }
@@ -394,12 +526,23 @@ end
 -- * SshPublicKey [String] <p>The user's SSH public key.</p>
 -- @return UpdateMyUserProfileRequest structure as a key-value pair table
 function M.UpdateMyUserProfileRequest(args)
-	assert(args, "You must provdide an argument table when creating UpdateMyUserProfileRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateMyUserProfileRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["SshPublicKey"] = args["SshPublicKey"],
 	}
-	asserts.AssertUpdateMyUserProfileRequest(t)
-	return t
+	asserts.AssertUpdateMyUserProfileRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteLayerRequest = { ["LayerId"] = true, nil }
@@ -422,12 +565,23 @@ end
 -- Required key: LayerId
 -- @return DeleteLayerRequest structure as a key-value pair table
 function M.DeleteLayerRequest(args)
-	assert(args, "You must provdide an argument table when creating DeleteLayerRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteLayerRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["LayerId"] = args["LayerId"],
 	}
-	asserts.AssertDeleteLayerRequest(t)
-	return t
+	asserts.AssertDeleteLayerRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ShutdownEventConfiguration = { ["DelayUntilElbConnectionsDrained"] = true, ["ExecutionTimeout"] = true, nil }
@@ -450,13 +604,24 @@ end
 -- * ExecutionTimeout [Integer] <p>The time, in seconds, that AWS OpsWorks Stacks will wait after triggering a Shutdown event before shutting down an instance.</p>
 -- @return ShutdownEventConfiguration structure as a key-value pair table
 function M.ShutdownEventConfiguration(args)
-	assert(args, "You must provdide an argument table when creating ShutdownEventConfiguration")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ShutdownEventConfiguration")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DelayUntilElbConnectionsDrained"] = args["DelayUntilElbConnectionsDrained"],
 		["ExecutionTimeout"] = args["ExecutionTimeout"],
 	}
-	asserts.AssertShutdownEventConfiguration(t)
-	return t
+	asserts.AssertShutdownEventConfiguration(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.EcsCluster = { ["StackId"] = true, ["EcsClusterArn"] = true, ["RegisteredAt"] = true, ["EcsClusterName"] = true, nil }
@@ -483,15 +648,26 @@ end
 -- * EcsClusterName [String] <p>The cluster name.</p>
 -- @return EcsCluster structure as a key-value pair table
 function M.EcsCluster(args)
-	assert(args, "You must provdide an argument table when creating EcsCluster")
-	local t = { 
+	assert(args, "You must provide an argument table when creating EcsCluster")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["StackId"] = args["StackId"],
 		["EcsClusterArn"] = args["EcsClusterArn"],
 		["RegisteredAt"] = args["RegisteredAt"],
 		["EcsClusterName"] = args["EcsClusterName"],
 	}
-	asserts.AssertEcsCluster(t)
-	return t
+	asserts.AssertEcsCluster(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeAppsResult = { ["Apps"] = true, nil }
@@ -512,12 +688,23 @@ end
 -- * Apps [Apps] <p>An array of <code>App</code> objects that describe the specified apps. </p>
 -- @return DescribeAppsResult structure as a key-value pair table
 function M.DescribeAppsResult(args)
-	assert(args, "You must provdide an argument table when creating DescribeAppsResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeAppsResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Apps"] = args["Apps"],
 	}
-	asserts.AssertDescribeAppsResult(t)
-	return t
+	asserts.AssertDescribeAppsResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdateAppRequest = { ["Environment"] = true, ["AppSource"] = true, ["Description"] = true, ["EnableSsl"] = true, ["SslConfiguration"] = true, ["AppId"] = true, ["Domains"] = true, ["Attributes"] = true, ["Name"] = true, ["Type"] = true, ["DataSources"] = true, nil }
@@ -560,8 +747,14 @@ end
 -- Required key: AppId
 -- @return UpdateAppRequest structure as a key-value pair table
 function M.UpdateAppRequest(args)
-	assert(args, "You must provdide an argument table when creating UpdateAppRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateAppRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Environment"] = args["Environment"],
 		["AppSource"] = args["AppSource"],
 		["Description"] = args["Description"],
@@ -574,8 +767,13 @@ function M.UpdateAppRequest(args)
 		["Type"] = args["Type"],
 		["DataSources"] = args["DataSources"],
 	}
-	asserts.AssertUpdateAppRequest(t)
-	return t
+	asserts.AssertUpdateAppRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.RegisterElasticIpRequest = { ["StackId"] = true, ["ElasticIp"] = true, nil }
@@ -602,13 +800,24 @@ end
 -- Required key: StackId
 -- @return RegisterElasticIpRequest structure as a key-value pair table
 function M.RegisterElasticIpRequest(args)
-	assert(args, "You must provdide an argument table when creating RegisterElasticIpRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating RegisterElasticIpRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["StackId"] = args["StackId"],
 		["ElasticIp"] = args["ElasticIp"],
 	}
-	asserts.AssertRegisterElasticIpRequest(t)
-	return t
+	asserts.AssertRegisterElasticIpRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeCommandsRequest = { ["InstanceId"] = true, ["DeploymentId"] = true, ["CommandIds"] = true, nil }
@@ -633,14 +842,25 @@ end
 -- * CommandIds [Strings] <p>An array of command IDs. If you include this parameter, <code>DescribeCommands</code> returns a description of the specified commands. Otherwise, it returns a description of every command.</p>
 -- @return DescribeCommandsRequest structure as a key-value pair table
 function M.DescribeCommandsRequest(args)
-	assert(args, "You must provdide an argument table when creating DescribeCommandsRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeCommandsRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["InstanceId"] = args["InstanceId"],
 		["DeploymentId"] = args["DeploymentId"],
 		["CommandIds"] = args["CommandIds"],
 	}
-	asserts.AssertDescribeCommandsRequest(t)
-	return t
+	asserts.AssertDescribeCommandsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeElasticLoadBalancersRequest = { ["StackId"] = true, ["LayerIds"] = true, nil }
@@ -663,13 +883,24 @@ end
 -- * LayerIds [Strings] <p>A list of layer IDs. The action describes the Elastic Load Balancing instances for the specified layers.</p>
 -- @return DescribeElasticLoadBalancersRequest structure as a key-value pair table
 function M.DescribeElasticLoadBalancersRequest(args)
-	assert(args, "You must provdide an argument table when creating DescribeElasticLoadBalancersRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeElasticLoadBalancersRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["StackId"] = args["StackId"],
 		["LayerIds"] = args["LayerIds"],
 	}
-	asserts.AssertDescribeElasticLoadBalancersRequest(t)
-	return t
+	asserts.AssertDescribeElasticLoadBalancersRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UnassignVolumeRequest = { ["VolumeId"] = true, nil }
@@ -692,12 +923,23 @@ end
 -- Required key: VolumeId
 -- @return UnassignVolumeRequest structure as a key-value pair table
 function M.UnassignVolumeRequest(args)
-	assert(args, "You must provdide an argument table when creating UnassignVolumeRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UnassignVolumeRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["VolumeId"] = args["VolumeId"],
 	}
-	asserts.AssertUnassignVolumeRequest(t)
-	return t
+	asserts.AssertUnassignVolumeRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribePermissionsResult = { ["Permissions"] = true, nil }
@@ -718,12 +960,23 @@ end
 -- * Permissions [Permissions] <p>An array of <code>Permission</code> objects that describe the stack permissions.</p> <ul> <li> <p>If the request object contains only a stack ID, the array contains a <code>Permission</code> object with permissions for each of the stack IAM ARNs.</p> </li> <li> <p>If the request object contains only an IAM ARN, the array contains a <code>Permission</code> object with permissions for each of the user's stack IDs.</p> </li> <li> <p>If the request contains a stack ID and an IAM ARN, the array contains a single <code>Permission</code> object with permissions for the specified stack and IAM ARN.</p> </li> </ul>
 -- @return DescribePermissionsResult structure as a key-value pair table
 function M.DescribePermissionsResult(args)
-	assert(args, "You must provdide an argument table when creating DescribePermissionsResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribePermissionsResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Permissions"] = args["Permissions"],
 	}
-	asserts.AssertDescribePermissionsResult(t)
-	return t
+	asserts.AssertDescribePermissionsResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListTagsResult = { ["NextToken"] = true, ["Tags"] = true, nil }
@@ -746,13 +999,24 @@ end
 -- * Tags [Tags] <p>A set of key-value pairs that contain tag keys and tag values that are attached to a stack or layer.</p>
 -- @return ListTagsResult structure as a key-value pair table
 function M.ListTagsResult(args)
-	assert(args, "You must provdide an argument table when creating ListTagsResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListTagsResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NextToken"] = args["NextToken"],
 		["Tags"] = args["Tags"],
 	}
-	asserts.AssertListTagsResult(t)
-	return t
+	asserts.AssertListTagsResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Recipes = { ["Undeploy"] = true, ["Setup"] = true, ["Configure"] = true, ["Shutdown"] = true, ["Deploy"] = true, nil }
@@ -781,16 +1045,27 @@ end
 -- * Deploy [Strings] <p>An array of custom recipe names to be run following a <code>deploy</code> event.</p>
 -- @return Recipes structure as a key-value pair table
 function M.Recipes(args)
-	assert(args, "You must provdide an argument table when creating Recipes")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Recipes")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Undeploy"] = args["Undeploy"],
 		["Setup"] = args["Setup"],
 		["Configure"] = args["Configure"],
 		["Shutdown"] = args["Shutdown"],
 		["Deploy"] = args["Deploy"],
 	}
-	asserts.AssertRecipes(t)
-	return t
+	asserts.AssertRecipes(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Layer = { ["StackId"] = true, ["DefaultRecipes"] = true, ["LayerId"] = true, ["AutoAssignPublicIps"] = true, ["Shortname"] = true, ["CustomSecurityGroupIds"] = true, ["LifecycleEventConfiguration"] = true, ["Type"] = true, ["CustomInstanceProfileArn"] = true, ["UseEbsOptimizedInstances"] = true, ["Packages"] = true, ["CreatedAt"] = true, ["Name"] = true, ["CloudWatchLogsConfiguration"] = true, ["CustomRecipes"] = true, ["VolumeConfigurations"] = true, ["Attributes"] = true, ["InstallUpdatesOnBoot"] = true, ["AutoAssignElasticIps"] = true, ["DefaultSecurityGroupNames"] = true, ["CustomJson"] = true, ["EnableAutoHealing"] = true, ["Arn"] = true, nil }
@@ -855,8 +1130,14 @@ end
 -- * Arn [String] 
 -- @return Layer structure as a key-value pair table
 function M.Layer(args)
-	assert(args, "You must provdide an argument table when creating Layer")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Layer")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["StackId"] = args["StackId"],
 		["DefaultRecipes"] = args["DefaultRecipes"],
 		["LayerId"] = args["LayerId"],
@@ -881,8 +1162,13 @@ function M.Layer(args)
 		["EnableAutoHealing"] = args["EnableAutoHealing"],
 		["Arn"] = args["Arn"],
 	}
-	asserts.AssertLayer(t)
-	return t
+	asserts.AssertLayer(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateStackRequest = { ["ServiceRoleArn"] = true, ["DefaultSubnetId"] = true, ["VpcId"] = true, ["DefaultRootDeviceType"] = true, ["Name"] = true, ["HostnameTheme"] = true, ["UseCustomCookbooks"] = true, ["CustomJson"] = true, ["Region"] = true, ["DefaultAvailabilityZone"] = true, ["UseOpsworksSecurityGroups"] = true, ["CustomCookbooksSource"] = true, ["ConfigurationManager"] = true, ["ChefConfiguration"] = true, ["AgentVersion"] = true, ["DefaultSshKeyName"] = true, ["DefaultInstanceProfileArn"] = true, ["Attributes"] = true, ["DefaultOs"] = true, nil }
@@ -947,8 +1233,14 @@ end
 -- Required key: DefaultInstanceProfileArn
 -- @return CreateStackRequest structure as a key-value pair table
 function M.CreateStackRequest(args)
-	assert(args, "You must provdide an argument table when creating CreateStackRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateStackRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ServiceRoleArn"] = args["ServiceRoleArn"],
 		["DefaultSubnetId"] = args["DefaultSubnetId"],
 		["VpcId"] = args["VpcId"],
@@ -969,8 +1261,13 @@ function M.CreateStackRequest(args)
 		["Attributes"] = args["Attributes"],
 		["DefaultOs"] = args["DefaultOs"],
 	}
-	asserts.AssertCreateStackRequest(t)
-	return t
+	asserts.AssertCreateStackRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Instance = { ["PrivateDns"] = true, ["SshHostRsaKeyFingerprint"] = true, ["SubnetId"] = true, ["Hostname"] = true, ["LastServiceErrorId"] = true, ["Platform"] = true, ["EbsOptimized"] = true, ["ReportedOs"] = true, ["AutoScalingType"] = true, ["Status"] = true, ["StackId"] = true, ["InstanceId"] = true, ["SshKeyName"] = true, ["InfrastructureClass"] = true, ["RootDeviceVolumeId"] = true, ["Tenancy"] = true, ["AgentVersion"] = true, ["SshHostDsaKeyFingerprint"] = true, ["InstanceProfileArn"] = true, ["InstanceType"] = true, ["CreatedAt"] = true, ["AmiId"] = true, ["LayerIds"] = true, ["Ec2InstanceId"] = true, ["PublicDns"] = true, ["SecurityGroupIds"] = true, ["EcsClusterArn"] = true, ["BlockDeviceMappings"] = true, ["Architecture"] = true, ["ReportedAgentVersion"] = true, ["InstallUpdatesOnBoot"] = true, ["Os"] = true, ["VirtualizationType"] = true, ["AvailabilityZone"] = true, ["EcsContainerInstanceArn"] = true, ["ElasticIp"] = true, ["RootDeviceType"] = true, ["PrivateIp"] = true, ["PublicIp"] = true, ["RegisteredBy"] = true, ["Arn"] = true, nil }
@@ -1071,8 +1368,14 @@ end
 -- * Arn [String] 
 -- @return Instance structure as a key-value pair table
 function M.Instance(args)
-	assert(args, "You must provdide an argument table when creating Instance")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Instance")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["PrivateDns"] = args["PrivateDns"],
 		["SshHostRsaKeyFingerprint"] = args["SshHostRsaKeyFingerprint"],
 		["SubnetId"] = args["SubnetId"],
@@ -1115,8 +1418,13 @@ function M.Instance(args)
 		["RegisteredBy"] = args["RegisteredBy"],
 		["Arn"] = args["Arn"],
 	}
-	asserts.AssertInstance(t)
-	return t
+	asserts.AssertInstance(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.WeeklyAutoScalingSchedule = { ["Monday"] = true, ["Tuesday"] = true, ["Friday"] = true, ["Wednesday"] = true, ["Thursday"] = true, ["Sunday"] = true, ["Saturday"] = true, nil }
@@ -1149,8 +1457,14 @@ end
 -- * Saturday [DailyAutoScalingSchedule] <p>The schedule for Saturday.</p>
 -- @return WeeklyAutoScalingSchedule structure as a key-value pair table
 function M.WeeklyAutoScalingSchedule(args)
-	assert(args, "You must provdide an argument table when creating WeeklyAutoScalingSchedule")
-	local t = { 
+	assert(args, "You must provide an argument table when creating WeeklyAutoScalingSchedule")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Monday"] = args["Monday"],
 		["Tuesday"] = args["Tuesday"],
 		["Friday"] = args["Friday"],
@@ -1159,8 +1473,13 @@ function M.WeeklyAutoScalingSchedule(args)
 		["Sunday"] = args["Sunday"],
 		["Saturday"] = args["Saturday"],
 	}
-	asserts.AssertWeeklyAutoScalingSchedule(t)
-	return t
+	asserts.AssertWeeklyAutoScalingSchedule(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.EnvironmentVariable = { ["Value"] = true, ["Key"] = true, ["Secure"] = true, nil }
@@ -1189,14 +1508,25 @@ end
 -- Required key: Value
 -- @return EnvironmentVariable structure as a key-value pair table
 function M.EnvironmentVariable(args)
-	assert(args, "You must provdide an argument table when creating EnvironmentVariable")
-	local t = { 
+	assert(args, "You must provide an argument table when creating EnvironmentVariable")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Value"] = args["Value"],
 		["Key"] = args["Key"],
 		["Secure"] = args["Secure"],
 	}
-	asserts.AssertEnvironmentVariable(t)
-	return t
+	asserts.AssertEnvironmentVariable(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.RegisterInstanceResult = { ["InstanceId"] = true, nil }
@@ -1217,12 +1547,23 @@ end
 -- * InstanceId [String] <p>The registered instance's AWS OpsWorks Stacks ID.</p>
 -- @return RegisterInstanceResult structure as a key-value pair table
 function M.RegisterInstanceResult(args)
-	assert(args, "You must provdide an argument table when creating RegisterInstanceResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating RegisterInstanceResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["InstanceId"] = args["InstanceId"],
 	}
-	asserts.AssertRegisterInstanceResult(t)
-	return t
+	asserts.AssertRegisterInstanceResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AutoScalingThresholds = { ["InstanceCount"] = true, ["LoadThreshold"] = true, ["ThresholdsWaitTime"] = true, ["IgnoreMetricsTime"] = true, ["MemoryThreshold"] = true, ["Alarms"] = true, ["CpuThreshold"] = true, nil }
@@ -1255,8 +1596,14 @@ end
 -- * CpuThreshold [Double] <p>The CPU utilization threshold, as a percent of the available CPU. A value of -1 disables the threshold.</p>
 -- @return AutoScalingThresholds structure as a key-value pair table
 function M.AutoScalingThresholds(args)
-	assert(args, "You must provdide an argument table when creating AutoScalingThresholds")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AutoScalingThresholds")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["InstanceCount"] = args["InstanceCount"],
 		["LoadThreshold"] = args["LoadThreshold"],
 		["ThresholdsWaitTime"] = args["ThresholdsWaitTime"],
@@ -1265,8 +1612,13 @@ function M.AutoScalingThresholds(args)
 		["Alarms"] = args["Alarms"],
 		["CpuThreshold"] = args["CpuThreshold"],
 	}
-	asserts.AssertAutoScalingThresholds(t)
-	return t
+	asserts.AssertAutoScalingThresholds(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.RebootInstanceRequest = { ["InstanceId"] = true, nil }
@@ -1289,12 +1641,23 @@ end
 -- Required key: InstanceId
 -- @return RebootInstanceRequest structure as a key-value pair table
 function M.RebootInstanceRequest(args)
-	assert(args, "You must provdide an argument table when creating RebootInstanceRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating RebootInstanceRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["InstanceId"] = args["InstanceId"],
 	}
-	asserts.AssertRebootInstanceRequest(t)
-	return t
+	asserts.AssertRebootInstanceRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.EbsBlockDevice = { ["DeleteOnTermination"] = true, ["SnapshotId"] = true, ["Iops"] = true, ["VolumeType"] = true, ["VolumeSize"] = true, nil }
@@ -1323,16 +1686,27 @@ end
 -- * VolumeSize [Integer] <p>The volume size, in GiB. For more information, see <a href="http://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_EbsBlockDevice.html">EbsBlockDevice</a>.</p>
 -- @return EbsBlockDevice structure as a key-value pair table
 function M.EbsBlockDevice(args)
-	assert(args, "You must provdide an argument table when creating EbsBlockDevice")
-	local t = { 
+	assert(args, "You must provide an argument table when creating EbsBlockDevice")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DeleteOnTermination"] = args["DeleteOnTermination"],
 		["SnapshotId"] = args["SnapshotId"],
 		["Iops"] = args["Iops"],
 		["VolumeType"] = args["VolumeType"],
 		["VolumeSize"] = args["VolumeSize"],
 	}
-	asserts.AssertEbsBlockDevice(t)
-	return t
+	asserts.AssertEbsBlockDevice(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.LoadBasedAutoScalingConfiguration = { ["DownScaling"] = true, ["Enable"] = true, ["UpScaling"] = true, ["LayerId"] = true, nil }
@@ -1359,15 +1733,26 @@ end
 -- * LayerId [String] <p>The layer ID.</p>
 -- @return LoadBasedAutoScalingConfiguration structure as a key-value pair table
 function M.LoadBasedAutoScalingConfiguration(args)
-	assert(args, "You must provdide an argument table when creating LoadBasedAutoScalingConfiguration")
-	local t = { 
+	assert(args, "You must provide an argument table when creating LoadBasedAutoScalingConfiguration")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DownScaling"] = args["DownScaling"],
 		["Enable"] = args["Enable"],
 		["UpScaling"] = args["UpScaling"],
 		["LayerId"] = args["LayerId"],
 	}
-	asserts.AssertLoadBasedAutoScalingConfiguration(t)
-	return t
+	asserts.AssertLoadBasedAutoScalingConfiguration(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateAppResult = { ["AppId"] = true, nil }
@@ -1388,12 +1773,23 @@ end
 -- * AppId [String] <p>The app ID.</p>
 -- @return CreateAppResult structure as a key-value pair table
 function M.CreateAppResult(args)
-	assert(args, "You must provdide an argument table when creating CreateAppResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateAppResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["AppId"] = args["AppId"],
 	}
-	asserts.AssertCreateAppResult(t)
-	return t
+	asserts.AssertCreateAppResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.SetTimeBasedAutoScalingRequest = { ["InstanceId"] = true, ["AutoScalingSchedule"] = true, nil }
@@ -1418,13 +1814,24 @@ end
 -- Required key: InstanceId
 -- @return SetTimeBasedAutoScalingRequest structure as a key-value pair table
 function M.SetTimeBasedAutoScalingRequest(args)
-	assert(args, "You must provdide an argument table when creating SetTimeBasedAutoScalingRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating SetTimeBasedAutoScalingRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["InstanceId"] = args["InstanceId"],
 		["AutoScalingSchedule"] = args["AutoScalingSchedule"],
 	}
-	asserts.AssertSetTimeBasedAutoScalingRequest(t)
-	return t
+	asserts.AssertSetTimeBasedAutoScalingRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CloneStackRequest = { ["HostnameTheme"] = true, ["UseCustomCookbooks"] = true, ["DefaultSshKeyName"] = true, ["CloneAppIds"] = true, ["ChefConfiguration"] = true, ["UseOpsworksSecurityGroups"] = true, ["ServiceRoleArn"] = true, ["VpcId"] = true, ["ConfigurationManager"] = true, ["CustomCookbooksSource"] = true, ["AgentVersion"] = true, ["DefaultAvailabilityZone"] = true, ["ClonePermissions"] = true, ["Name"] = true, ["Region"] = true, ["SourceStackId"] = true, ["DefaultInstanceProfileArn"] = true, ["Attributes"] = true, ["DefaultOs"] = true, ["DefaultSubnetId"] = true, ["DefaultRootDeviceType"] = true, ["CustomJson"] = true, nil }
@@ -1491,8 +1898,14 @@ end
 -- Required key: ServiceRoleArn
 -- @return CloneStackRequest structure as a key-value pair table
 function M.CloneStackRequest(args)
-	assert(args, "You must provdide an argument table when creating CloneStackRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CloneStackRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["HostnameTheme"] = args["HostnameTheme"],
 		["UseCustomCookbooks"] = args["UseCustomCookbooks"],
 		["DefaultSshKeyName"] = args["DefaultSshKeyName"],
@@ -1516,8 +1929,13 @@ function M.CloneStackRequest(args)
 		["DefaultRootDeviceType"] = args["DefaultRootDeviceType"],
 		["CustomJson"] = args["CustomJson"],
 	}
-	asserts.AssertCloneStackRequest(t)
-	return t
+	asserts.AssertCloneStackRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateDeploymentRequest = { ["StackId"] = true, ["Comment"] = true, ["CustomJson"] = true, ["LayerIds"] = true, ["Command"] = true, ["AppId"] = true, ["InstanceIds"] = true, nil }
@@ -1554,8 +1972,14 @@ end
 -- Required key: Command
 -- @return CreateDeploymentRequest structure as a key-value pair table
 function M.CreateDeploymentRequest(args)
-	assert(args, "You must provdide an argument table when creating CreateDeploymentRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateDeploymentRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["StackId"] = args["StackId"],
 		["Comment"] = args["Comment"],
 		["CustomJson"] = args["CustomJson"],
@@ -1564,8 +1988,13 @@ function M.CreateDeploymentRequest(args)
 		["AppId"] = args["AppId"],
 		["InstanceIds"] = args["InstanceIds"],
 	}
-	asserts.AssertCreateDeploymentRequest(t)
-	return t
+	asserts.AssertCreateDeploymentRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeStacksRequest = { ["StackIds"] = true, nil }
@@ -1586,12 +2015,23 @@ end
 -- * StackIds [Strings] <p>An array of stack IDs that specify the stacks to be described. If you omit this parameter, <code>DescribeStacks</code> returns a description of every stack.</p>
 -- @return DescribeStacksRequest structure as a key-value pair table
 function M.DescribeStacksRequest(args)
-	assert(args, "You must provdide an argument table when creating DescribeStacksRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeStacksRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["StackIds"] = args["StackIds"],
 	}
-	asserts.AssertDescribeStacksRequest(t)
-	return t
+	asserts.AssertDescribeStacksRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Source = { ["Username"] = true, ["SshKey"] = true, ["Url"] = true, ["Password"] = true, ["Type"] = true, ["Revision"] = true, nil }
@@ -1622,8 +2062,14 @@ end
 -- * Revision [String] <p>The application's version. AWS OpsWorks Stacks enables you to easily deploy new versions of an application. One of the simplest approaches is to have branches or revisions in your repository that represent different versions that can potentially be deployed.</p>
 -- @return Source structure as a key-value pair table
 function M.Source(args)
-	assert(args, "You must provdide an argument table when creating Source")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Source")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Username"] = args["Username"],
 		["SshKey"] = args["SshKey"],
 		["Url"] = args["Url"],
@@ -1631,8 +2077,13 @@ function M.Source(args)
 		["Type"] = args["Type"],
 		["Revision"] = args["Revision"],
 	}
-	asserts.AssertSource(t)
-	return t
+	asserts.AssertSource(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeInstancesResult = { ["Instances"] = true, nil }
@@ -1653,12 +2104,23 @@ end
 -- * Instances [Instances] <p>An array of <code>Instance</code> objects that describe the instances.</p>
 -- @return DescribeInstancesResult structure as a key-value pair table
 function M.DescribeInstancesResult(args)
-	assert(args, "You must provdide an argument table when creating DescribeInstancesResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeInstancesResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Instances"] = args["Instances"],
 	}
-	asserts.AssertDescribeInstancesResult(t)
-	return t
+	asserts.AssertDescribeInstancesResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeElasticIpsResult = { ["ElasticIps"] = true, nil }
@@ -1679,12 +2141,23 @@ end
 -- * ElasticIps [ElasticIps] <p>An <code>ElasticIps</code> object that describes the specified Elastic IP addresses.</p>
 -- @return DescribeElasticIpsResult structure as a key-value pair table
 function M.DescribeElasticIpsResult(args)
-	assert(args, "You must provdide an argument table when creating DescribeElasticIpsResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeElasticIpsResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ElasticIps"] = args["ElasticIps"],
 	}
-	asserts.AssertDescribeElasticIpsResult(t)
-	return t
+	asserts.AssertDescribeElasticIpsResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdateElasticIpRequest = { ["Name"] = true, ["ElasticIp"] = true, nil }
@@ -1709,13 +2182,24 @@ end
 -- Required key: ElasticIp
 -- @return UpdateElasticIpRequest structure as a key-value pair table
 function M.UpdateElasticIpRequest(args)
-	assert(args, "You must provdide an argument table when creating UpdateElasticIpRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateElasticIpRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Name"] = args["Name"],
 		["ElasticIp"] = args["ElasticIp"],
 	}
-	asserts.AssertUpdateElasticIpRequest(t)
-	return t
+	asserts.AssertUpdateElasticIpRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Permission = { ["StackId"] = true, ["IamUserArn"] = true, ["Level"] = true, ["AllowSudo"] = true, ["AllowSsh"] = true, nil }
@@ -1744,16 +2228,27 @@ end
 -- * AllowSsh [Boolean] <p>Whether the user can use SSH.</p>
 -- @return Permission structure as a key-value pair table
 function M.Permission(args)
-	assert(args, "You must provdide an argument table when creating Permission")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Permission")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["StackId"] = args["StackId"],
 		["IamUserArn"] = args["IamUserArn"],
 		["Level"] = args["Level"],
 		["AllowSudo"] = args["AllowSudo"],
 		["AllowSsh"] = args["AllowSsh"],
 	}
-	asserts.AssertPermission(t)
-	return t
+	asserts.AssertPermission(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AssociateElasticIpRequest = { ["InstanceId"] = true, ["ElasticIp"] = true, nil }
@@ -1778,13 +2273,24 @@ end
 -- Required key: ElasticIp
 -- @return AssociateElasticIpRequest structure as a key-value pair table
 function M.AssociateElasticIpRequest(args)
-	assert(args, "You must provdide an argument table when creating AssociateElasticIpRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AssociateElasticIpRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["InstanceId"] = args["InstanceId"],
 		["ElasticIp"] = args["ElasticIp"],
 	}
-	asserts.AssertAssociateElasticIpRequest(t)
-	return t
+	asserts.AssertAssociateElasticIpRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DetachElasticLoadBalancerRequest = { ["ElasticLoadBalancerName"] = true, ["LayerId"] = true, nil }
@@ -1811,13 +2317,24 @@ end
 -- Required key: LayerId
 -- @return DetachElasticLoadBalancerRequest structure as a key-value pair table
 function M.DetachElasticLoadBalancerRequest(args)
-	assert(args, "You must provdide an argument table when creating DetachElasticLoadBalancerRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DetachElasticLoadBalancerRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ElasticLoadBalancerName"] = args["ElasticLoadBalancerName"],
 		["LayerId"] = args["LayerId"],
 	}
-	asserts.AssertDetachElasticLoadBalancerRequest(t)
-	return t
+	asserts.AssertDetachElasticLoadBalancerRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateUserProfileResult = { ["IamUserArn"] = true, nil }
@@ -1838,12 +2355,23 @@ end
 -- * IamUserArn [String] <p>The user's IAM ARN.</p>
 -- @return CreateUserProfileResult structure as a key-value pair table
 function M.CreateUserProfileResult(args)
-	assert(args, "You must provdide an argument table when creating CreateUserProfileResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateUserProfileResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["IamUserArn"] = args["IamUserArn"],
 	}
-	asserts.AssertCreateUserProfileResult(t)
-	return t
+	asserts.AssertCreateUserProfileResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.SelfUserProfile = { ["IamUserArn"] = true, ["SshPublicKey"] = true, ["Name"] = true, ["SshUsername"] = true, nil }
@@ -1870,15 +2398,26 @@ end
 -- * SshUsername [String] <p>The user's SSH user name.</p>
 -- @return SelfUserProfile structure as a key-value pair table
 function M.SelfUserProfile(args)
-	assert(args, "You must provdide an argument table when creating SelfUserProfile")
-	local t = { 
+	assert(args, "You must provide an argument table when creating SelfUserProfile")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["IamUserArn"] = args["IamUserArn"],
 		["SshPublicKey"] = args["SshPublicKey"],
 		["Name"] = args["Name"],
 		["SshUsername"] = args["SshUsername"],
 	}
-	asserts.AssertSelfUserProfile(t)
-	return t
+	asserts.AssertSelfUserProfile(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdateStackRequest = { ["StackId"] = true, ["ServiceRoleArn"] = true, ["DefaultRootDeviceType"] = true, ["Name"] = true, ["HostnameTheme"] = true, ["UseCustomCookbooks"] = true, ["CustomJson"] = true, ["DefaultAvailabilityZone"] = true, ["UseOpsworksSecurityGroups"] = true, ["CustomCookbooksSource"] = true, ["ConfigurationManager"] = true, ["ChefConfiguration"] = true, ["DefaultSubnetId"] = true, ["DefaultSshKeyName"] = true, ["DefaultInstanceProfileArn"] = true, ["Attributes"] = true, ["DefaultOs"] = true, ["AgentVersion"] = true, nil }
@@ -1935,8 +2474,14 @@ end
 -- Required key: StackId
 -- @return UpdateStackRequest structure as a key-value pair table
 function M.UpdateStackRequest(args)
-	assert(args, "You must provdide an argument table when creating UpdateStackRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateStackRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["StackId"] = args["StackId"],
 		["ServiceRoleArn"] = args["ServiceRoleArn"],
 		["DefaultRootDeviceType"] = args["DefaultRootDeviceType"],
@@ -1956,8 +2501,13 @@ function M.UpdateStackRequest(args)
 		["DefaultOs"] = args["DefaultOs"],
 		["AgentVersion"] = args["AgentVersion"],
 	}
-	asserts.AssertUpdateStackRequest(t)
-	return t
+	asserts.AssertUpdateStackRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AgentVersion = { ["Version"] = true, ["ConfigurationManager"] = true, nil }
@@ -1980,13 +2530,24 @@ end
 -- * ConfigurationManager [StackConfigurationManager] <p>The configuration manager.</p>
 -- @return AgentVersion structure as a key-value pair table
 function M.AgentVersion(args)
-	assert(args, "You must provdide an argument table when creating AgentVersion")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AgentVersion")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Version"] = args["Version"],
 		["ConfigurationManager"] = args["ConfigurationManager"],
 	}
-	asserts.AssertAgentVersion(t)
-	return t
+	asserts.AssertAgentVersion(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CloneStackResult = { ["StackId"] = true, nil }
@@ -2007,12 +2568,23 @@ end
 -- * StackId [String] <p>The cloned stack ID.</p>
 -- @return CloneStackResult structure as a key-value pair table
 function M.CloneStackResult(args)
-	assert(args, "You must provdide an argument table when creating CloneStackResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CloneStackResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["StackId"] = args["StackId"],
 	}
-	asserts.AssertCloneStackResult(t)
-	return t
+	asserts.AssertCloneStackResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.StopStackRequest = { ["StackId"] = true, nil }
@@ -2035,12 +2607,23 @@ end
 -- Required key: StackId
 -- @return StopStackRequest structure as a key-value pair table
 function M.StopStackRequest(args)
-	assert(args, "You must provdide an argument table when creating StopStackRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating StopStackRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["StackId"] = args["StackId"],
 	}
-	asserts.AssertStopStackRequest(t)
-	return t
+	asserts.AssertStopStackRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetHostnameSuggestionRequest = { ["LayerId"] = true, nil }
@@ -2063,12 +2646,23 @@ end
 -- Required key: LayerId
 -- @return GetHostnameSuggestionRequest structure as a key-value pair table
 function M.GetHostnameSuggestionRequest(args)
-	assert(args, "You must provdide an argument table when creating GetHostnameSuggestionRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetHostnameSuggestionRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["LayerId"] = args["LayerId"],
 	}
-	asserts.AssertGetHostnameSuggestionRequest(t)
-	return t
+	asserts.AssertGetHostnameSuggestionRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeStackProvisioningParametersRequest = { ["StackId"] = true, nil }
@@ -2091,12 +2685,23 @@ end
 -- Required key: StackId
 -- @return DescribeStackProvisioningParametersRequest structure as a key-value pair table
 function M.DescribeStackProvisioningParametersRequest(args)
-	assert(args, "You must provdide an argument table when creating DescribeStackProvisioningParametersRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeStackProvisioningParametersRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["StackId"] = args["StackId"],
 	}
-	asserts.AssertDescribeStackProvisioningParametersRequest(t)
-	return t
+	asserts.AssertDescribeStackProvisioningParametersRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdateUserProfileRequest = { ["IamUserArn"] = true, ["SshPublicKey"] = true, ["AllowSelfManagement"] = true, ["SshUsername"] = true, nil }
@@ -2125,15 +2730,26 @@ end
 -- Required key: IamUserArn
 -- @return UpdateUserProfileRequest structure as a key-value pair table
 function M.UpdateUserProfileRequest(args)
-	assert(args, "You must provdide an argument table when creating UpdateUserProfileRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateUserProfileRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["IamUserArn"] = args["IamUserArn"],
 		["SshPublicKey"] = args["SshPublicKey"],
 		["AllowSelfManagement"] = args["AllowSelfManagement"],
 		["SshUsername"] = args["SshUsername"],
 	}
-	asserts.AssertUpdateUserProfileRequest(t)
-	return t
+	asserts.AssertUpdateUserProfileRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.RegisterRdsDbInstanceRequest = { ["StackId"] = true, ["DbUser"] = true, ["RdsDbInstanceArn"] = true, ["DbPassword"] = true, nil }
@@ -2168,15 +2784,26 @@ end
 -- Required key: DbPassword
 -- @return RegisterRdsDbInstanceRequest structure as a key-value pair table
 function M.RegisterRdsDbInstanceRequest(args)
-	assert(args, "You must provdide an argument table when creating RegisterRdsDbInstanceRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating RegisterRdsDbInstanceRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["StackId"] = args["StackId"],
 		["DbUser"] = args["DbUser"],
 		["RdsDbInstanceArn"] = args["RdsDbInstanceArn"],
 		["DbPassword"] = args["DbPassword"],
 	}
-	asserts.AssertRegisterRdsDbInstanceRequest(t)
-	return t
+	asserts.AssertRegisterRdsDbInstanceRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeLayersRequest = { ["StackId"] = true, ["LayerIds"] = true, nil }
@@ -2199,13 +2826,24 @@ end
 -- * LayerIds [Strings] <p>An array of layer IDs that specify the layers to be described. If you omit this parameter, <code>DescribeLayers</code> returns a description of every layer in the specified stack.</p>
 -- @return DescribeLayersRequest structure as a key-value pair table
 function M.DescribeLayersRequest(args)
-	assert(args, "You must provdide an argument table when creating DescribeLayersRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeLayersRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["StackId"] = args["StackId"],
 		["LayerIds"] = args["LayerIds"],
 	}
-	asserts.AssertDescribeLayersRequest(t)
-	return t
+	asserts.AssertDescribeLayersRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Command = { ["Status"] = true, ["CompletedAt"] = true, ["InstanceId"] = true, ["DeploymentId"] = true, ["AcknowledgedAt"] = true, ["LogUrl"] = true, ["Type"] = true, ["CommandId"] = true, ["CreatedAt"] = true, ["ExitCode"] = true, nil }
@@ -2244,8 +2882,14 @@ end
 -- * ExitCode [Integer] <p>The command exit code.</p>
 -- @return Command structure as a key-value pair table
 function M.Command(args)
-	assert(args, "You must provdide an argument table when creating Command")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Command")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Status"] = args["Status"],
 		["CompletedAt"] = args["CompletedAt"],
 		["InstanceId"] = args["InstanceId"],
@@ -2257,8 +2901,13 @@ function M.Command(args)
 		["CreatedAt"] = args["CreatedAt"],
 		["ExitCode"] = args["ExitCode"],
 	}
-	asserts.AssertCommand(t)
-	return t
+	asserts.AssertCommand(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteStackRequest = { ["StackId"] = true, nil }
@@ -2281,12 +2930,23 @@ end
 -- Required key: StackId
 -- @return DeleteStackRequest structure as a key-value pair table
 function M.DeleteStackRequest(args)
-	assert(args, "You must provdide an argument table when creating DeleteStackRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteStackRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["StackId"] = args["StackId"],
 	}
-	asserts.AssertDeleteStackRequest(t)
-	return t
+	asserts.AssertDeleteStackRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeRdsDbInstancesRequest = { ["StackId"] = true, ["RdsDbInstanceArns"] = true, nil }
@@ -2311,13 +2971,24 @@ end
 -- Required key: StackId
 -- @return DescribeRdsDbInstancesRequest structure as a key-value pair table
 function M.DescribeRdsDbInstancesRequest(args)
-	assert(args, "You must provdide an argument table when creating DescribeRdsDbInstancesRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeRdsDbInstancesRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["StackId"] = args["StackId"],
 		["RdsDbInstanceArns"] = args["RdsDbInstanceArns"],
 	}
-	asserts.AssertDescribeRdsDbInstancesRequest(t)
-	return t
+	asserts.AssertDescribeRdsDbInstancesRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateStackResult = { ["StackId"] = true, nil }
@@ -2338,12 +3009,23 @@ end
 -- * StackId [String] <p>The stack ID, which is an opaque string that you use to identify the stack when performing actions such as <code>DescribeStacks</code>.</p>
 -- @return CreateStackResult structure as a key-value pair table
 function M.CreateStackResult(args)
-	assert(args, "You must provdide an argument table when creating CreateStackResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateStackResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["StackId"] = args["StackId"],
 	}
-	asserts.AssertCreateStackResult(t)
-	return t
+	asserts.AssertCreateStackResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateAppRequest = { ["StackId"] = true, ["Environment"] = true, ["AppSource"] = true, ["DataSources"] = true, ["EnableSsl"] = true, ["SslConfiguration"] = true, ["Attributes"] = true, ["Domains"] = true, ["Description"] = true, ["Shortname"] = true, ["Type"] = true, ["Name"] = true, nil }
@@ -2392,8 +3074,14 @@ end
 -- Required key: Type
 -- @return CreateAppRequest structure as a key-value pair table
 function M.CreateAppRequest(args)
-	assert(args, "You must provdide an argument table when creating CreateAppRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateAppRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["StackId"] = args["StackId"],
 		["Environment"] = args["Environment"],
 		["AppSource"] = args["AppSource"],
@@ -2407,8 +3095,13 @@ function M.CreateAppRequest(args)
 		["Type"] = args["Type"],
 		["Name"] = args["Name"],
 	}
-	asserts.AssertCreateAppRequest(t)
-	return t
+	asserts.AssertCreateAppRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.App = { ["StackId"] = true, ["Environment"] = true, ["AppSource"] = true, ["Description"] = true, ["EnableSsl"] = true, ["SslConfiguration"] = true, ["Name"] = true, ["AppId"] = true, ["Domains"] = true, ["Attributes"] = true, ["Shortname"] = true, ["Type"] = true, ["CreatedAt"] = true, ["DataSources"] = true, nil }
@@ -2455,8 +3148,14 @@ end
 -- * DataSources [DataSources] <p>The app's data sources.</p>
 -- @return App structure as a key-value pair table
 function M.App(args)
-	assert(args, "You must provdide an argument table when creating App")
-	local t = { 
+	assert(args, "You must provide an argument table when creating App")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["StackId"] = args["StackId"],
 		["Environment"] = args["Environment"],
 		["AppSource"] = args["AppSource"],
@@ -2472,8 +3171,13 @@ function M.App(args)
 		["CreatedAt"] = args["CreatedAt"],
 		["DataSources"] = args["DataSources"],
 	}
-	asserts.AssertApp(t)
-	return t
+	asserts.AssertApp(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.RdsDbInstance = { ["Engine"] = true, ["StackId"] = true, ["MissingOnRds"] = true, ["Region"] = true, ["RdsDbInstanceArn"] = true, ["DbPassword"] = true, ["Address"] = true, ["DbUser"] = true, ["DbInstanceIdentifier"] = true, nil }
@@ -2510,8 +3214,14 @@ end
 -- * DbInstanceIdentifier [String] <p>The DB instance identifier.</p>
 -- @return RdsDbInstance structure as a key-value pair table
 function M.RdsDbInstance(args)
-	assert(args, "You must provdide an argument table when creating RdsDbInstance")
-	local t = { 
+	assert(args, "You must provide an argument table when creating RdsDbInstance")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Engine"] = args["Engine"],
 		["StackId"] = args["StackId"],
 		["MissingOnRds"] = args["MissingOnRds"],
@@ -2522,8 +3232,13 @@ function M.RdsDbInstance(args)
 		["DbUser"] = args["DbUser"],
 		["DbInstanceIdentifier"] = args["DbInstanceIdentifier"],
 	}
-	asserts.AssertRdsDbInstance(t)
-	return t
+	asserts.AssertRdsDbInstance(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DataSource = { ["Type"] = true, ["DatabaseName"] = true, ["Arn"] = true, nil }
@@ -2548,14 +3263,25 @@ end
 -- * Arn [String] <p>The data source's ARN.</p>
 -- @return DataSource structure as a key-value pair table
 function M.DataSource(args)
-	assert(args, "You must provdide an argument table when creating DataSource")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DataSource")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Type"] = args["Type"],
 		["DatabaseName"] = args["DatabaseName"],
 		["Arn"] = args["Arn"],
 	}
-	asserts.AssertDataSource(t)
-	return t
+	asserts.AssertDataSource(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UntagResourceRequest = { ["ResourceArn"] = true, ["TagKeys"] = true, nil }
@@ -2582,13 +3308,24 @@ end
 -- Required key: TagKeys
 -- @return UntagResourceRequest structure as a key-value pair table
 function M.UntagResourceRequest(args)
-	assert(args, "You must provdide an argument table when creating UntagResourceRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UntagResourceRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ResourceArn"] = args["ResourceArn"],
 		["TagKeys"] = args["TagKeys"],
 	}
-	asserts.AssertUntagResourceRequest(t)
-	return t
+	asserts.AssertUntagResourceRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.RegisterEcsClusterResult = { ["EcsClusterArn"] = true, nil }
@@ -2609,12 +3346,23 @@ end
 -- * EcsClusterArn [String] <p>The cluster's ARN.</p>
 -- @return RegisterEcsClusterResult structure as a key-value pair table
 function M.RegisterEcsClusterResult(args)
-	assert(args, "You must provdide an argument table when creating RegisterEcsClusterResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating RegisterEcsClusterResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["EcsClusterArn"] = args["EcsClusterArn"],
 	}
-	asserts.AssertRegisterEcsClusterResult(t)
-	return t
+	asserts.AssertRegisterEcsClusterResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeEcsClustersRequest = { ["StackId"] = true, ["EcsClusterArns"] = true, ["NextToken"] = true, ["MaxResults"] = true, nil }
@@ -2641,15 +3389,26 @@ end
 -- * MaxResults [Integer] <p>To receive a paginated response, use this parameter to specify the maximum number of results to be returned with a single call. If the number of available results exceeds this maximum, the response includes a <code>NextToken</code> value that you can assign to the <code>NextToken</code> request parameter to get the next set of results.</p>
 -- @return DescribeEcsClustersRequest structure as a key-value pair table
 function M.DescribeEcsClustersRequest(args)
-	assert(args, "You must provdide an argument table when creating DescribeEcsClustersRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeEcsClustersRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["StackId"] = args["StackId"],
 		["EcsClusterArns"] = args["EcsClusterArns"],
 		["NextToken"] = args["NextToken"],
 		["MaxResults"] = args["MaxResults"],
 	}
-	asserts.AssertDescribeEcsClustersRequest(t)
-	return t
+	asserts.AssertDescribeEcsClustersRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeAgentVersionsResult = { ["AgentVersions"] = true, nil }
@@ -2670,12 +3429,23 @@ end
 -- * AgentVersions [AgentVersions] <p>The agent versions for the specified stack or configuration manager. Note that this value is the complete version number, not the abbreviated number used by the console.</p>
 -- @return DescribeAgentVersionsResult structure as a key-value pair table
 function M.DescribeAgentVersionsResult(args)
-	assert(args, "You must provdide an argument table when creating DescribeAgentVersionsResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeAgentVersionsResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["AgentVersions"] = args["AgentVersions"],
 	}
-	asserts.AssertDescribeAgentVersionsResult(t)
-	return t
+	asserts.AssertDescribeAgentVersionsResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.SetLoadBasedAutoScalingRequest = { ["DownScaling"] = true, ["Enable"] = true, ["UpScaling"] = true, ["LayerId"] = true, nil }
@@ -2704,15 +3474,26 @@ end
 -- Required key: LayerId
 -- @return SetLoadBasedAutoScalingRequest structure as a key-value pair table
 function M.SetLoadBasedAutoScalingRequest(args)
-	assert(args, "You must provdide an argument table when creating SetLoadBasedAutoScalingRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating SetLoadBasedAutoScalingRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DownScaling"] = args["DownScaling"],
 		["Enable"] = args["Enable"],
 		["UpScaling"] = args["UpScaling"],
 		["LayerId"] = args["LayerId"],
 	}
-	asserts.AssertSetLoadBasedAutoScalingRequest(t)
-	return t
+	asserts.AssertSetLoadBasedAutoScalingRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeLoadBasedAutoScalingResult = { ["LoadBasedAutoScalingConfigurations"] = true, nil }
@@ -2733,12 +3514,23 @@ end
 -- * LoadBasedAutoScalingConfigurations [LoadBasedAutoScalingConfigurations] <p>An array of <code>LoadBasedAutoScalingConfiguration</code> objects that describe each layer's configuration.</p>
 -- @return DescribeLoadBasedAutoScalingResult structure as a key-value pair table
 function M.DescribeLoadBasedAutoScalingResult(args)
-	assert(args, "You must provdide an argument table when creating DescribeLoadBasedAutoScalingResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeLoadBasedAutoScalingResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["LoadBasedAutoScalingConfigurations"] = args["LoadBasedAutoScalingConfigurations"],
 	}
-	asserts.AssertDescribeLoadBasedAutoScalingResult(t)
-	return t
+	asserts.AssertDescribeLoadBasedAutoScalingResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeTimeBasedAutoScalingResult = { ["TimeBasedAutoScalingConfigurations"] = true, nil }
@@ -2759,12 +3551,23 @@ end
 -- * TimeBasedAutoScalingConfigurations [TimeBasedAutoScalingConfigurations] <p>An array of <code>TimeBasedAutoScalingConfiguration</code> objects that describe the configuration for the specified instances.</p>
 -- @return DescribeTimeBasedAutoScalingResult structure as a key-value pair table
 function M.DescribeTimeBasedAutoScalingResult(args)
-	assert(args, "You must provdide an argument table when creating DescribeTimeBasedAutoScalingResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeTimeBasedAutoScalingResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["TimeBasedAutoScalingConfigurations"] = args["TimeBasedAutoScalingConfigurations"],
 	}
-	asserts.AssertDescribeTimeBasedAutoScalingResult(t)
-	return t
+	asserts.AssertDescribeTimeBasedAutoScalingResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribePermissionsRequest = { ["StackId"] = true, ["IamUserArn"] = true, nil }
@@ -2787,13 +3590,24 @@ end
 -- * IamUserArn [String] <p>The user's IAM ARN. This can also be a federated user's ARN. For more information about IAM ARNs, see <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html">Using Identifiers</a>.</p>
 -- @return DescribePermissionsRequest structure as a key-value pair table
 function M.DescribePermissionsRequest(args)
-	assert(args, "You must provdide an argument table when creating DescribePermissionsRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribePermissionsRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["StackId"] = args["StackId"],
 		["IamUserArn"] = args["IamUserArn"],
 	}
-	asserts.AssertDescribePermissionsRequest(t)
-	return t
+	asserts.AssertDescribePermissionsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.SetPermissionRequest = { ["StackId"] = true, ["IamUserArn"] = true, ["Level"] = true, ["AllowSudo"] = true, ["AllowSsh"] = true, nil }
@@ -2826,16 +3640,27 @@ end
 -- Required key: IamUserArn
 -- @return SetPermissionRequest structure as a key-value pair table
 function M.SetPermissionRequest(args)
-	assert(args, "You must provdide an argument table when creating SetPermissionRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating SetPermissionRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["StackId"] = args["StackId"],
 		["IamUserArn"] = args["IamUserArn"],
 		["Level"] = args["Level"],
 		["AllowSudo"] = args["AllowSudo"],
 		["AllowSsh"] = args["AllowSsh"],
 	}
-	asserts.AssertSetPermissionRequest(t)
-	return t
+	asserts.AssertSetPermissionRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeTimeBasedAutoScalingRequest = { ["InstanceIds"] = true, nil }
@@ -2858,12 +3683,23 @@ end
 -- Required key: InstanceIds
 -- @return DescribeTimeBasedAutoScalingRequest structure as a key-value pair table
 function M.DescribeTimeBasedAutoScalingRequest(args)
-	assert(args, "You must provdide an argument table when creating DescribeTimeBasedAutoScalingRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeTimeBasedAutoScalingRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["InstanceIds"] = args["InstanceIds"],
 	}
-	asserts.AssertDescribeTimeBasedAutoScalingRequest(t)
-	return t
+	asserts.AssertDescribeTimeBasedAutoScalingRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeDeploymentsRequest = { ["StackId"] = true, ["DeploymentIds"] = true, ["AppId"] = true, nil }
@@ -2888,14 +3724,25 @@ end
 -- * AppId [String] <p>The app ID. If you include this parameter, <code>DescribeDeployments</code> returns a description of the commands associated with the specified app.</p>
 -- @return DescribeDeploymentsRequest structure as a key-value pair table
 function M.DescribeDeploymentsRequest(args)
-	assert(args, "You must provdide an argument table when creating DescribeDeploymentsRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeDeploymentsRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["StackId"] = args["StackId"],
 		["DeploymentIds"] = args["DeploymentIds"],
 		["AppId"] = args["AppId"],
 	}
-	asserts.AssertDescribeDeploymentsRequest(t)
-	return t
+	asserts.AssertDescribeDeploymentsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeUserProfilesResult = { ["UserProfiles"] = true, nil }
@@ -2916,12 +3763,23 @@ end
 -- * UserProfiles [UserProfiles] <p>A <code>Users</code> object that describes the specified users.</p>
 -- @return DescribeUserProfilesResult structure as a key-value pair table
 function M.DescribeUserProfilesResult(args)
-	assert(args, "You must provdide an argument table when creating DescribeUserProfilesResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeUserProfilesResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["UserProfiles"] = args["UserProfiles"],
 	}
-	asserts.AssertDescribeUserProfilesResult(t)
-	return t
+	asserts.AssertDescribeUserProfilesResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ChefConfiguration = { ["BerkshelfVersion"] = true, ["ManageBerkshelf"] = true, nil }
@@ -2944,13 +3802,24 @@ end
 -- * ManageBerkshelf [Boolean] <p>Whether to enable Berkshelf.</p>
 -- @return ChefConfiguration structure as a key-value pair table
 function M.ChefConfiguration(args)
-	assert(args, "You must provdide an argument table when creating ChefConfiguration")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ChefConfiguration")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["BerkshelfVersion"] = args["BerkshelfVersion"],
 		["ManageBerkshelf"] = args["ManageBerkshelf"],
 	}
-	asserts.AssertChefConfiguration(t)
-	return t
+	asserts.AssertChefConfiguration(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeAgentVersionsRequest = { ["StackId"] = true, ["ConfigurationManager"] = true, nil }
@@ -2973,13 +3842,24 @@ end
 -- * ConfigurationManager [StackConfigurationManager] <p>The configuration manager.</p>
 -- @return DescribeAgentVersionsRequest structure as a key-value pair table
 function M.DescribeAgentVersionsRequest(args)
-	assert(args, "You must provdide an argument table when creating DescribeAgentVersionsRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeAgentVersionsRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["StackId"] = args["StackId"],
 		["ConfigurationManager"] = args["ConfigurationManager"],
 	}
-	asserts.AssertDescribeAgentVersionsRequest(t)
-	return t
+	asserts.AssertDescribeAgentVersionsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeStacksResult = { ["Stacks"] = true, nil }
@@ -3000,12 +3880,23 @@ end
 -- * Stacks [Stacks] <p>An array of <code>Stack</code> objects that describe the stacks.</p>
 -- @return DescribeStacksResult structure as a key-value pair table
 function M.DescribeStacksResult(args)
-	assert(args, "You must provdide an argument table when creating DescribeStacksResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeStacksResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Stacks"] = args["Stacks"],
 	}
-	asserts.AssertDescribeStacksResult(t)
-	return t
+	asserts.AssertDescribeStacksResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeRdsDbInstancesResult = { ["RdsDbInstances"] = true, nil }
@@ -3026,12 +3917,23 @@ end
 -- * RdsDbInstances [RdsDbInstances] <p>An a array of <code>RdsDbInstance</code> objects that describe the instances.</p>
 -- @return DescribeRdsDbInstancesResult structure as a key-value pair table
 function M.DescribeRdsDbInstancesResult(args)
-	assert(args, "You must provdide an argument table when creating DescribeRdsDbInstancesResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeRdsDbInstancesResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["RdsDbInstances"] = args["RdsDbInstances"],
 	}
-	asserts.AssertDescribeRdsDbInstancesResult(t)
-	return t
+	asserts.AssertDescribeRdsDbInstancesResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeploymentCommand = { ["Args"] = true, ["Name"] = true, nil }
@@ -3056,13 +3958,24 @@ end
 -- Required key: Name
 -- @return DeploymentCommand structure as a key-value pair table
 function M.DeploymentCommand(args)
-	assert(args, "You must provdide an argument table when creating DeploymentCommand")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeploymentCommand")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Args"] = args["Args"],
 		["Name"] = args["Name"],
 	}
-	asserts.AssertDeploymentCommand(t)
-	return t
+	asserts.AssertDeploymentCommand(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeEcsClustersResult = { ["NextToken"] = true, ["EcsClusters"] = true, nil }
@@ -3085,13 +3998,24 @@ end
 -- * EcsClusters [EcsClusters] <p>A list of <code>EcsCluster</code> objects containing the cluster descriptions.</p>
 -- @return DescribeEcsClustersResult structure as a key-value pair table
 function M.DescribeEcsClustersResult(args)
-	assert(args, "You must provdide an argument table when creating DescribeEcsClustersResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeEcsClustersResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NextToken"] = args["NextToken"],
 		["EcsClusters"] = args["EcsClusters"],
 	}
-	asserts.AssertDescribeEcsClustersResult(t)
-	return t
+	asserts.AssertDescribeEcsClustersResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ValidationException = { ["message"] = true, nil }
@@ -3112,12 +4036,23 @@ end
 -- * message [String] <p>The exception message.</p>
 -- @return ValidationException structure as a key-value pair table
 function M.ValidationException(args)
-	assert(args, "You must provdide an argument table when creating ValidationException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ValidationException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertValidationException(t)
-	return t
+	asserts.AssertValidationException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdateRdsDbInstanceRequest = { ["DbUser"] = true, ["RdsDbInstanceArn"] = true, ["DbPassword"] = true, nil }
@@ -3144,14 +4079,25 @@ end
 -- Required key: RdsDbInstanceArn
 -- @return UpdateRdsDbInstanceRequest structure as a key-value pair table
 function M.UpdateRdsDbInstanceRequest(args)
-	assert(args, "You must provdide an argument table when creating UpdateRdsDbInstanceRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateRdsDbInstanceRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DbUser"] = args["DbUser"],
 		["RdsDbInstanceArn"] = args["RdsDbInstanceArn"],
 		["DbPassword"] = args["DbPassword"],
 	}
-	asserts.AssertUpdateRdsDbInstanceRequest(t)
-	return t
+	asserts.AssertUpdateRdsDbInstanceRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UserProfile = { ["IamUserArn"] = true, ["SshPublicKey"] = true, ["AllowSelfManagement"] = true, ["Name"] = true, ["SshUsername"] = true, nil }
@@ -3180,16 +4126,27 @@ end
 -- * SshUsername [String] <p>The user's SSH user name.</p>
 -- @return UserProfile structure as a key-value pair table
 function M.UserProfile(args)
-	assert(args, "You must provdide an argument table when creating UserProfile")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UserProfile")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["IamUserArn"] = args["IamUserArn"],
 		["SshPublicKey"] = args["SshPublicKey"],
 		["AllowSelfManagement"] = args["AllowSelfManagement"],
 		["Name"] = args["Name"],
 		["SshUsername"] = args["SshUsername"],
 	}
-	asserts.AssertUserProfile(t)
-	return t
+	asserts.AssertUserProfile(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateInstanceRequest = { ["StackId"] = true, ["AmiId"] = true, ["LayerIds"] = true, ["VirtualizationType"] = true, ["EbsOptimized"] = true, ["SshKeyName"] = true, ["Hostname"] = true, ["RootDeviceType"] = true, ["BlockDeviceMappings"] = true, ["AvailabilityZone"] = true, ["Architecture"] = true, ["AutoScalingType"] = true, ["SubnetId"] = true, ["Tenancy"] = true, ["InstallUpdatesOnBoot"] = true, ["Os"] = true, ["InstanceType"] = true, ["AgentVersion"] = true, nil }
@@ -3250,8 +4207,14 @@ end
 -- Required key: InstanceType
 -- @return CreateInstanceRequest structure as a key-value pair table
 function M.CreateInstanceRequest(args)
-	assert(args, "You must provdide an argument table when creating CreateInstanceRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateInstanceRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["StackId"] = args["StackId"],
 		["AmiId"] = args["AmiId"],
 		["LayerIds"] = args["LayerIds"],
@@ -3271,8 +4234,13 @@ function M.CreateInstanceRequest(args)
 		["InstanceType"] = args["InstanceType"],
 		["AgentVersion"] = args["AgentVersion"],
 	}
-	asserts.AssertCreateInstanceRequest(t)
-	return t
+	asserts.AssertCreateInstanceRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeRaidArraysRequest = { ["InstanceId"] = true, ["StackId"] = true, ["RaidArrayIds"] = true, nil }
@@ -3297,14 +4265,25 @@ end
 -- * RaidArrayIds [Strings] <p>An array of RAID array IDs. If you use this parameter, <code>DescribeRaidArrays</code> returns descriptions of the specified arrays. Otherwise, it returns a description of every array.</p>
 -- @return DescribeRaidArraysRequest structure as a key-value pair table
 function M.DescribeRaidArraysRequest(args)
-	assert(args, "You must provdide an argument table when creating DescribeRaidArraysRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeRaidArraysRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["InstanceId"] = args["InstanceId"],
 		["StackId"] = args["StackId"],
 		["RaidArrayIds"] = args["RaidArrayIds"],
 	}
-	asserts.AssertDescribeRaidArraysRequest(t)
-	return t
+	asserts.AssertDescribeRaidArraysRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.BlockDeviceMapping = { ["Ebs"] = true, ["DeviceName"] = true, ["VirtualName"] = true, ["NoDevice"] = true, nil }
@@ -3331,15 +4310,26 @@ end
 -- * NoDevice [String] <p>Suppresses the specified device included in the AMI's block device mapping.</p>
 -- @return BlockDeviceMapping structure as a key-value pair table
 function M.BlockDeviceMapping(args)
-	assert(args, "You must provdide an argument table when creating BlockDeviceMapping")
-	local t = { 
+	assert(args, "You must provide an argument table when creating BlockDeviceMapping")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Ebs"] = args["Ebs"],
 		["DeviceName"] = args["DeviceName"],
 		["VirtualName"] = args["VirtualName"],
 		["NoDevice"] = args["NoDevice"],
 	}
-	asserts.AssertBlockDeviceMapping(t)
-	return t
+	asserts.AssertBlockDeviceMapping(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteUserProfileRequest = { ["IamUserArn"] = true, nil }
@@ -3362,12 +4352,23 @@ end
 -- Required key: IamUserArn
 -- @return DeleteUserProfileRequest structure as a key-value pair table
 function M.DeleteUserProfileRequest(args)
-	assert(args, "You must provdide an argument table when creating DeleteUserProfileRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteUserProfileRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["IamUserArn"] = args["IamUserArn"],
 	}
-	asserts.AssertDeleteUserProfileRequest(t)
-	return t
+	asserts.AssertDeleteUserProfileRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeInstancesRequest = { ["StackId"] = true, ["InstanceIds"] = true, ["LayerId"] = true, nil }
@@ -3392,14 +4393,25 @@ end
 -- * LayerId [String] <p>A layer ID. If you use this parameter, <code>DescribeInstances</code> returns descriptions of the instances associated with the specified layer.</p>
 -- @return DescribeInstancesRequest structure as a key-value pair table
 function M.DescribeInstancesRequest(args)
-	assert(args, "You must provdide an argument table when creating DescribeInstancesRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeInstancesRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["StackId"] = args["StackId"],
 		["InstanceIds"] = args["InstanceIds"],
 		["LayerId"] = args["LayerId"],
 	}
-	asserts.AssertDescribeInstancesRequest(t)
-	return t
+	asserts.AssertDescribeInstancesRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InstanceIdentity = { ["Document"] = true, ["Signature"] = true, nil }
@@ -3422,13 +4434,24 @@ end
 -- * Signature [String] <p>A signature that can be used to verify the document's accuracy and authenticity.</p>
 -- @return InstanceIdentity structure as a key-value pair table
 function M.InstanceIdentity(args)
-	assert(args, "You must provdide an argument table when creating InstanceIdentity")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InstanceIdentity")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Document"] = args["Document"],
 		["Signature"] = args["Signature"],
 	}
-	asserts.AssertInstanceIdentity(t)
-	return t
+	asserts.AssertInstanceIdentity(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeregisterElasticIpRequest = { ["ElasticIp"] = true, nil }
@@ -3451,12 +4474,23 @@ end
 -- Required key: ElasticIp
 -- @return DeregisterElasticIpRequest structure as a key-value pair table
 function M.DeregisterElasticIpRequest(args)
-	assert(args, "You must provdide an argument table when creating DeregisterElasticIpRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeregisterElasticIpRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ElasticIp"] = args["ElasticIp"],
 	}
-	asserts.AssertDeregisterElasticIpRequest(t)
-	return t
+	asserts.AssertDeregisterElasticIpRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.RaidArray = { ["StackId"] = true, ["AvailabilityZone"] = true, ["Name"] = true, ["NumberOfDisks"] = true, ["InstanceId"] = true, ["RaidLevel"] = true, ["VolumeType"] = true, ["RaidArrayId"] = true, ["Device"] = true, ["MountPoint"] = true, ["Iops"] = true, ["CreatedAt"] = true, ["Size"] = true, nil }
@@ -3501,8 +4535,14 @@ end
 -- * Size [Integer] <p>The array's size.</p>
 -- @return RaidArray structure as a key-value pair table
 function M.RaidArray(args)
-	assert(args, "You must provdide an argument table when creating RaidArray")
-	local t = { 
+	assert(args, "You must provide an argument table when creating RaidArray")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["StackId"] = args["StackId"],
 		["AvailabilityZone"] = args["AvailabilityZone"],
 		["Name"] = args["Name"],
@@ -3517,8 +4557,13 @@ function M.RaidArray(args)
 		["CreatedAt"] = args["CreatedAt"],
 		["Size"] = args["Size"],
 	}
-	asserts.AssertRaidArray(t)
-	return t
+	asserts.AssertRaidArray(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ElasticIp = { ["InstanceId"] = true, ["Ip"] = true, ["Domain"] = true, ["Region"] = true, ["Name"] = true, nil }
@@ -3547,16 +4592,27 @@ end
 -- * Name [String] <p>The name.</p>
 -- @return ElasticIp structure as a key-value pair table
 function M.ElasticIp(args)
-	assert(args, "You must provdide an argument table when creating ElasticIp")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ElasticIp")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["InstanceId"] = args["InstanceId"],
 		["Ip"] = args["Ip"],
 		["Domain"] = args["Domain"],
 		["Region"] = args["Region"],
 		["Name"] = args["Name"],
 	}
-	asserts.AssertElasticIp(t)
-	return t
+	asserts.AssertElasticIp(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeElasticLoadBalancersResult = { ["ElasticLoadBalancers"] = true, nil }
@@ -3577,12 +4633,23 @@ end
 -- * ElasticLoadBalancers [ElasticLoadBalancers] <p>A list of <code>ElasticLoadBalancer</code> objects that describe the specified Elastic Load Balancing instances.</p>
 -- @return DescribeElasticLoadBalancersResult structure as a key-value pair table
 function M.DescribeElasticLoadBalancersResult(args)
-	assert(args, "You must provdide an argument table when creating DescribeElasticLoadBalancersResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeElasticLoadBalancersResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ElasticLoadBalancers"] = args["ElasticLoadBalancers"],
 	}
-	asserts.AssertDescribeElasticLoadBalancersResult(t)
-	return t
+	asserts.AssertDescribeElasticLoadBalancersResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteInstanceRequest = { ["InstanceId"] = true, ["DeleteVolumes"] = true, ["DeleteElasticIp"] = true, nil }
@@ -3609,14 +4676,25 @@ end
 -- Required key: InstanceId
 -- @return DeleteInstanceRequest structure as a key-value pair table
 function M.DeleteInstanceRequest(args)
-	assert(args, "You must provdide an argument table when creating DeleteInstanceRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteInstanceRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["InstanceId"] = args["InstanceId"],
 		["DeleteVolumes"] = args["DeleteVolumes"],
 		["DeleteElasticIp"] = args["DeleteElasticIp"],
 	}
-	asserts.AssertDeleteInstanceRequest(t)
-	return t
+	asserts.AssertDeleteInstanceRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DisassociateElasticIpRequest = { ["ElasticIp"] = true, nil }
@@ -3639,12 +4717,23 @@ end
 -- Required key: ElasticIp
 -- @return DisassociateElasticIpRequest structure as a key-value pair table
 function M.DisassociateElasticIpRequest(args)
-	assert(args, "You must provdide an argument table when creating DisassociateElasticIpRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DisassociateElasticIpRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ElasticIp"] = args["ElasticIp"],
 	}
-	asserts.AssertDisassociateElasticIpRequest(t)
-	return t
+	asserts.AssertDisassociateElasticIpRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ElasticLoadBalancer = { ["StackId"] = true, ["ElasticLoadBalancerName"] = true, ["VpcId"] = true, ["Ec2InstanceIds"] = true, ["Region"] = true, ["DnsName"] = true, ["LayerId"] = true, ["AvailabilityZones"] = true, ["SubnetIds"] = true, nil }
@@ -3681,8 +4770,14 @@ end
 -- * SubnetIds [Strings] <p>A list of subnet IDs, if the stack is running in a VPC.</p>
 -- @return ElasticLoadBalancer structure as a key-value pair table
 function M.ElasticLoadBalancer(args)
-	assert(args, "You must provdide an argument table when creating ElasticLoadBalancer")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ElasticLoadBalancer")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["StackId"] = args["StackId"],
 		["ElasticLoadBalancerName"] = args["ElasticLoadBalancerName"],
 		["VpcId"] = args["VpcId"],
@@ -3693,8 +4788,13 @@ function M.ElasticLoadBalancer(args)
 		["AvailabilityZones"] = args["AvailabilityZones"],
 		["SubnetIds"] = args["SubnetIds"],
 	}
-	asserts.AssertElasticLoadBalancer(t)
-	return t
+	asserts.AssertElasticLoadBalancer(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ResourceNotFoundException = { ["message"] = true, nil }
@@ -3715,12 +4815,23 @@ end
 -- * message [String] <p>The exception message.</p>
 -- @return ResourceNotFoundException structure as a key-value pair table
 function M.ResourceNotFoundException(args)
-	assert(args, "You must provdide an argument table when creating ResourceNotFoundException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ResourceNotFoundException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertResourceNotFoundException(t)
-	return t
+	asserts.AssertResourceNotFoundException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeRaidArraysResult = { ["RaidArrays"] = true, nil }
@@ -3741,12 +4852,23 @@ end
 -- * RaidArrays [RaidArrays] <p>A <code>RaidArrays</code> object that describes the specified RAID arrays.</p>
 -- @return DescribeRaidArraysResult structure as a key-value pair table
 function M.DescribeRaidArraysResult(args)
-	assert(args, "You must provdide an argument table when creating DescribeRaidArraysResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeRaidArraysResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["RaidArrays"] = args["RaidArrays"],
 	}
-	asserts.AssertDescribeRaidArraysResult(t)
-	return t
+	asserts.AssertDescribeRaidArraysResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeServiceErrorsRequest = { ["StackId"] = true, ["InstanceId"] = true, ["ServiceErrorIds"] = true, nil }
@@ -3771,14 +4893,25 @@ end
 -- * ServiceErrorIds [Strings] <p>An array of service error IDs. If you use this parameter, <code>DescribeServiceErrors</code> returns descriptions of the specified errors. Otherwise, it returns a description of every error.</p>
 -- @return DescribeServiceErrorsRequest structure as a key-value pair table
 function M.DescribeServiceErrorsRequest(args)
-	assert(args, "You must provdide an argument table when creating DescribeServiceErrorsRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeServiceErrorsRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["StackId"] = args["StackId"],
 		["InstanceId"] = args["InstanceId"],
 		["ServiceErrorIds"] = args["ServiceErrorIds"],
 	}
-	asserts.AssertDescribeServiceErrorsRequest(t)
-	return t
+	asserts.AssertDescribeServiceErrorsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ServiceError = { ["StackId"] = true, ["InstanceId"] = true, ["ServiceErrorId"] = true, ["Message"] = true, ["Type"] = true, ["CreatedAt"] = true, nil }
@@ -3809,8 +4942,14 @@ end
 -- * CreatedAt [DateTime] <p>When the error occurred.</p>
 -- @return ServiceError structure as a key-value pair table
 function M.ServiceError(args)
-	assert(args, "You must provdide an argument table when creating ServiceError")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ServiceError")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["StackId"] = args["StackId"],
 		["InstanceId"] = args["InstanceId"],
 		["ServiceErrorId"] = args["ServiceErrorId"],
@@ -3818,8 +4957,13 @@ function M.ServiceError(args)
 		["Type"] = args["Type"],
 		["CreatedAt"] = args["CreatedAt"],
 	}
-	asserts.AssertServiceError(t)
-	return t
+	asserts.AssertServiceError(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeVolumesRequest = { ["InstanceId"] = true, ["StackId"] = true, ["RaidArrayId"] = true, ["VolumeIds"] = true, nil }
@@ -3846,15 +4990,26 @@ end
 -- * VolumeIds [Strings] <p>Am array of volume IDs. If you use this parameter, <code>DescribeVolumes</code> returns descriptions of the specified volumes. Otherwise, it returns a description of every volume.</p>
 -- @return DescribeVolumesRequest structure as a key-value pair table
 function M.DescribeVolumesRequest(args)
-	assert(args, "You must provdide an argument table when creating DescribeVolumesRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeVolumesRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["InstanceId"] = args["InstanceId"],
 		["StackId"] = args["StackId"],
 		["RaidArrayId"] = args["RaidArrayId"],
 		["VolumeIds"] = args["VolumeIds"],
 	}
-	asserts.AssertDescribeVolumesRequest(t)
-	return t
+	asserts.AssertDescribeVolumesRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.StartStackRequest = { ["StackId"] = true, nil }
@@ -3877,12 +5032,23 @@ end
 -- Required key: StackId
 -- @return StartStackRequest structure as a key-value pair table
 function M.StartStackRequest(args)
-	assert(args, "You must provdide an argument table when creating StartStackRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating StartStackRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["StackId"] = args["StackId"],
 	}
-	asserts.AssertStartStackRequest(t)
-	return t
+	asserts.AssertStartStackRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.VolumeConfiguration = { ["NumberOfDisks"] = true, ["RaidLevel"] = true, ["VolumeType"] = true, ["Iops"] = true, ["MountPoint"] = true, ["Size"] = true, nil }
@@ -3919,8 +5085,14 @@ end
 -- Required key: Size
 -- @return VolumeConfiguration structure as a key-value pair table
 function M.VolumeConfiguration(args)
-	assert(args, "You must provdide an argument table when creating VolumeConfiguration")
-	local t = { 
+	assert(args, "You must provide an argument table when creating VolumeConfiguration")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NumberOfDisks"] = args["NumberOfDisks"],
 		["RaidLevel"] = args["RaidLevel"],
 		["VolumeType"] = args["VolumeType"],
@@ -3928,8 +5100,13 @@ function M.VolumeConfiguration(args)
 		["MountPoint"] = args["MountPoint"],
 		["Size"] = args["Size"],
 	}
-	asserts.AssertVolumeConfiguration(t)
-	return t
+	asserts.AssertVolumeConfiguration(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeElasticIpsRequest = { ["InstanceId"] = true, ["StackId"] = true, ["Ips"] = true, nil }
@@ -3954,14 +5131,25 @@ end
 -- * Ips [Strings] <p>An array of Elastic IP addresses to be described. If you include this parameter, <code>DescribeElasticIps</code> returns a description of the specified Elastic IP addresses. Otherwise, it returns a description of every Elastic IP address.</p>
 -- @return DescribeElasticIpsRequest structure as a key-value pair table
 function M.DescribeElasticIpsRequest(args)
-	assert(args, "You must provdide an argument table when creating DescribeElasticIpsRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeElasticIpsRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["InstanceId"] = args["InstanceId"],
 		["StackId"] = args["StackId"],
 		["Ips"] = args["Ips"],
 	}
-	asserts.AssertDescribeElasticIpsRequest(t)
-	return t
+	asserts.AssertDescribeElasticIpsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateInstanceResult = { ["InstanceId"] = true, nil }
@@ -3982,12 +5170,23 @@ end
 -- * InstanceId [String] <p>The instance ID.</p>
 -- @return CreateInstanceResult structure as a key-value pair table
 function M.CreateInstanceResult(args)
-	assert(args, "You must provdide an argument table when creating CreateInstanceResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateInstanceResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["InstanceId"] = args["InstanceId"],
 	}
-	asserts.AssertCreateInstanceResult(t)
-	return t
+	asserts.AssertCreateInstanceResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeStackSummaryResult = { ["StackSummary"] = true, nil }
@@ -4008,12 +5207,23 @@ end
 -- * StackSummary [StackSummary] <p>A <code>StackSummary</code> object that contains the results.</p>
 -- @return DescribeStackSummaryResult structure as a key-value pair table
 function M.DescribeStackSummaryResult(args)
-	assert(args, "You must provdide an argument table when creating DescribeStackSummaryResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeStackSummaryResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["StackSummary"] = args["StackSummary"],
 	}
-	asserts.AssertDescribeStackSummaryResult(t)
-	return t
+	asserts.AssertDescribeStackSummaryResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdateVolumeRequest = { ["MountPoint"] = true, ["VolumeId"] = true, ["Name"] = true, nil }
@@ -4040,14 +5250,25 @@ end
 -- Required key: VolumeId
 -- @return UpdateVolumeRequest structure as a key-value pair table
 function M.UpdateVolumeRequest(args)
-	assert(args, "You must provdide an argument table when creating UpdateVolumeRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateVolumeRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["MountPoint"] = args["MountPoint"],
 		["VolumeId"] = args["VolumeId"],
 		["Name"] = args["Name"],
 	}
-	asserts.AssertUpdateVolumeRequest(t)
-	return t
+	asserts.AssertUpdateVolumeRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.StackConfigurationManager = { ["Version"] = true, ["Name"] = true, nil }
@@ -4070,13 +5291,24 @@ end
 -- * Name [String] <p>The name. This parameter must be set to "Chef".</p>
 -- @return StackConfigurationManager structure as a key-value pair table
 function M.StackConfigurationManager(args)
-	assert(args, "You must provdide an argument table when creating StackConfigurationManager")
-	local t = { 
+	assert(args, "You must provide an argument table when creating StackConfigurationManager")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Version"] = args["Version"],
 		["Name"] = args["Name"],
 	}
-	asserts.AssertStackConfigurationManager(t)
-	return t
+	asserts.AssertStackConfigurationManager(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InstancesCount = { ["StartFailed"] = true, ["Requested"] = true, ["Registering"] = true, ["Terminated"] = true, ["RunningSetup"] = true, ["Booting"] = true, ["Deregistering"] = true, ["Rebooting"] = true, ["Unassigning"] = true, ["ShuttingDown"] = true, ["SetupFailed"] = true, ["Terminating"] = true, ["ConnectionLost"] = true, ["Online"] = true, ["Stopping"] = true, ["Stopped"] = true, ["Assigning"] = true, ["Registered"] = true, ["Pending"] = true, nil }
@@ -4133,8 +5365,14 @@ end
 -- * Pending [Integer] <p>The number of instances with <code>pending</code> status.</p>
 -- @return InstancesCount structure as a key-value pair table
 function M.InstancesCount(args)
-	assert(args, "You must provdide an argument table when creating InstancesCount")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InstancesCount")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["StartFailed"] = args["StartFailed"],
 		["Requested"] = args["Requested"],
 		["Registering"] = args["Registering"],
@@ -4155,8 +5393,13 @@ function M.InstancesCount(args)
 		["Registered"] = args["Registered"],
 		["Pending"] = args["Pending"],
 	}
-	asserts.AssertInstancesCount(t)
-	return t
+	asserts.AssertInstancesCount(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeCommandsResult = { ["Commands"] = true, nil }
@@ -4177,12 +5420,23 @@ end
 -- * Commands [Commands] <p>An array of <code>Command</code> objects that describe each of the specified commands.</p>
 -- @return DescribeCommandsResult structure as a key-value pair table
 function M.DescribeCommandsResult(args)
-	assert(args, "You must provdide an argument table when creating DescribeCommandsResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeCommandsResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Commands"] = args["Commands"],
 	}
-	asserts.AssertDescribeCommandsResult(t)
-	return t
+	asserts.AssertDescribeCommandsResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ReportedOs = { ["Version"] = true, ["Name"] = true, ["Family"] = true, nil }
@@ -4207,14 +5461,25 @@ end
 -- * Family [String] <p>The operating system family.</p>
 -- @return ReportedOs structure as a key-value pair table
 function M.ReportedOs(args)
-	assert(args, "You must provdide an argument table when creating ReportedOs")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ReportedOs")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Version"] = args["Version"],
 		["Name"] = args["Name"],
 		["Family"] = args["Family"],
 	}
-	asserts.AssertReportedOs(t)
-	return t
+	asserts.AssertReportedOs(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.TemporaryCredential = { ["Username"] = true, ["InstanceId"] = true, ["Password"] = true, ["ValidForInMinutes"] = true, nil }
@@ -4241,15 +5506,26 @@ end
 -- * ValidForInMinutes [Integer] <p>The length of time (in minutes) that the grant is valid. When the grant expires, at the end of this period, the user will no longer be able to use the credentials to log in. If they are logged in at the time, they will be automatically logged out.</p>
 -- @return TemporaryCredential structure as a key-value pair table
 function M.TemporaryCredential(args)
-	assert(args, "You must provdide an argument table when creating TemporaryCredential")
-	local t = { 
+	assert(args, "You must provide an argument table when creating TemporaryCredential")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Username"] = args["Username"],
 		["InstanceId"] = args["InstanceId"],
 		["Password"] = args["Password"],
 		["ValidForInMinutes"] = args["ValidForInMinutes"],
 	}
-	asserts.AssertTemporaryCredential(t)
-	return t
+	asserts.AssertTemporaryCredential(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdateLayerRequest = { ["LifecycleEventConfiguration"] = true, ["CustomRecipes"] = true, ["AutoAssignElasticIps"] = true, ["Name"] = true, ["CloudWatchLogsConfiguration"] = true, ["CustomJson"] = true, ["VolumeConfigurations"] = true, ["AutoAssignPublicIps"] = true, ["EnableAutoHealing"] = true, ["CustomInstanceProfileArn"] = true, ["UseEbsOptimizedInstances"] = true, ["LayerId"] = true, ["Attributes"] = true, ["Shortname"] = true, ["Packages"] = true, ["CustomSecurityGroupIds"] = true, ["InstallUpdatesOnBoot"] = true, nil }
@@ -4304,8 +5580,14 @@ end
 -- Required key: LayerId
 -- @return UpdateLayerRequest structure as a key-value pair table
 function M.UpdateLayerRequest(args)
-	assert(args, "You must provdide an argument table when creating UpdateLayerRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateLayerRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["LifecycleEventConfiguration"] = args["LifecycleEventConfiguration"],
 		["CustomRecipes"] = args["CustomRecipes"],
 		["AutoAssignElasticIps"] = args["AutoAssignElasticIps"],
@@ -4324,8 +5606,13 @@ function M.UpdateLayerRequest(args)
 		["CustomSecurityGroupIds"] = args["CustomSecurityGroupIds"],
 		["InstallUpdatesOnBoot"] = args["InstallUpdatesOnBoot"],
 	}
-	asserts.AssertUpdateLayerRequest(t)
-	return t
+	asserts.AssertUpdateLayerRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UnassignInstanceRequest = { ["InstanceId"] = true, nil }
@@ -4348,12 +5635,23 @@ end
 -- Required key: InstanceId
 -- @return UnassignInstanceRequest structure as a key-value pair table
 function M.UnassignInstanceRequest(args)
-	assert(args, "You must provdide an argument table when creating UnassignInstanceRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UnassignInstanceRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["InstanceId"] = args["InstanceId"],
 	}
-	asserts.AssertUnassignInstanceRequest(t)
-	return t
+	asserts.AssertUnassignInstanceRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateLayerResult = { ["LayerId"] = true, nil }
@@ -4374,12 +5672,23 @@ end
 -- * LayerId [String] <p>The layer ID.</p>
 -- @return CreateLayerResult structure as a key-value pair table
 function M.CreateLayerResult(args)
-	assert(args, "You must provdide an argument table when creating CreateLayerResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateLayerResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["LayerId"] = args["LayerId"],
 	}
-	asserts.AssertCreateLayerResult(t)
-	return t
+	asserts.AssertCreateLayerResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CloudWatchLogsConfiguration = { ["LogStreams"] = true, ["Enabled"] = true, nil }
@@ -4402,13 +5711,24 @@ end
 -- * Enabled [Boolean] <p>Whether CloudWatch Logs is enabled for a layer.</p>
 -- @return CloudWatchLogsConfiguration structure as a key-value pair table
 function M.CloudWatchLogsConfiguration(args)
-	assert(args, "You must provdide an argument table when creating CloudWatchLogsConfiguration")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CloudWatchLogsConfiguration")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["LogStreams"] = args["LogStreams"],
 		["Enabled"] = args["Enabled"],
 	}
-	asserts.AssertCloudWatchLogsConfiguration(t)
-	return t
+	asserts.AssertCloudWatchLogsConfiguration(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GrantAccessRequest = { ["InstanceId"] = true, ["ValidForInMinutes"] = true, nil }
@@ -4433,13 +5753,24 @@ end
 -- Required key: InstanceId
 -- @return GrantAccessRequest structure as a key-value pair table
 function M.GrantAccessRequest(args)
-	assert(args, "You must provdide an argument table when creating GrantAccessRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GrantAccessRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["InstanceId"] = args["InstanceId"],
 		["ValidForInMinutes"] = args["ValidForInMinutes"],
 	}
-	asserts.AssertGrantAccessRequest(t)
-	return t
+	asserts.AssertGrantAccessRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.RegisterVolumeResult = { ["VolumeId"] = true, nil }
@@ -4460,12 +5791,23 @@ end
 -- * VolumeId [String] <p>The volume ID.</p>
 -- @return RegisterVolumeResult structure as a key-value pair table
 function M.RegisterVolumeResult(args)
-	assert(args, "You must provdide an argument table when creating RegisterVolumeResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating RegisterVolumeResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["VolumeId"] = args["VolumeId"],
 	}
-	asserts.AssertRegisterVolumeResult(t)
-	return t
+	asserts.AssertRegisterVolumeResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Volume = { ["Status"] = true, ["AvailabilityZone"] = true, ["Name"] = true, ["InstanceId"] = true, ["Region"] = true, ["VolumeType"] = true, ["VolumeId"] = true, ["Device"] = true, ["RaidArrayId"] = true, ["Ec2VolumeId"] = true, ["MountPoint"] = true, ["Iops"] = true, ["Size"] = true, nil }
@@ -4510,8 +5852,14 @@ end
 -- * Size [Integer] <p>The volume size.</p>
 -- @return Volume structure as a key-value pair table
 function M.Volume(args)
-	assert(args, "You must provdide an argument table when creating Volume")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Volume")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Status"] = args["Status"],
 		["AvailabilityZone"] = args["AvailabilityZone"],
 		["Name"] = args["Name"],
@@ -4526,8 +5874,13 @@ function M.Volume(args)
 		["Iops"] = args["Iops"],
 		["Size"] = args["Size"],
 	}
-	asserts.AssertVolume(t)
-	return t
+	asserts.AssertVolume(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteAppRequest = { ["AppId"] = true, nil }
@@ -4550,12 +5903,23 @@ end
 -- Required key: AppId
 -- @return DeleteAppRequest structure as a key-value pair table
 function M.DeleteAppRequest(args)
-	assert(args, "You must provdide an argument table when creating DeleteAppRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteAppRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["AppId"] = args["AppId"],
 	}
-	asserts.AssertDeleteAppRequest(t)
-	return t
+	asserts.AssertDeleteAppRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GrantAccessResult = { ["TemporaryCredential"] = true, nil }
@@ -4576,12 +5940,23 @@ end
 -- * TemporaryCredential [TemporaryCredential] <p>A <code>TemporaryCredential</code> object that contains the data needed to log in to the instance by RDP clients, such as the Microsoft Remote Desktop Connection.</p>
 -- @return GrantAccessResult structure as a key-value pair table
 function M.GrantAccessResult(args)
-	assert(args, "You must provdide an argument table when creating GrantAccessResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GrantAccessResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["TemporaryCredential"] = args["TemporaryCredential"],
 	}
-	asserts.AssertGrantAccessResult(t)
-	return t
+	asserts.AssertGrantAccessResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdateInstanceRequest = { ["AmiId"] = true, ["LayerIds"] = true, ["InstanceId"] = true, ["SshKeyName"] = true, ["Hostname"] = true, ["EbsOptimized"] = true, ["Architecture"] = true, ["AutoScalingType"] = true, ["InstallUpdatesOnBoot"] = true, ["Os"] = true, ["InstanceType"] = true, ["AgentVersion"] = true, nil }
@@ -4626,8 +6001,14 @@ end
 -- Required key: InstanceId
 -- @return UpdateInstanceRequest structure as a key-value pair table
 function M.UpdateInstanceRequest(args)
-	assert(args, "You must provdide an argument table when creating UpdateInstanceRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateInstanceRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["AmiId"] = args["AmiId"],
 		["LayerIds"] = args["LayerIds"],
 		["InstanceId"] = args["InstanceId"],
@@ -4641,8 +6022,13 @@ function M.UpdateInstanceRequest(args)
 		["InstanceType"] = args["InstanceType"],
 		["AgentVersion"] = args["AgentVersion"],
 	}
-	asserts.AssertUpdateInstanceRequest(t)
-	return t
+	asserts.AssertUpdateInstanceRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Deployment = { ["StackId"] = true, ["Comment"] = true, ["CompletedAt"] = true, ["CustomJson"] = true, ["Status"] = true, ["IamUserArn"] = true, ["DeploymentId"] = true, ["Command"] = true, ["InstanceIds"] = true, ["AppId"] = true, ["Duration"] = true, ["CreatedAt"] = true, nil }
@@ -4685,8 +6071,14 @@ end
 -- * CreatedAt [DateTime] <p>Date when the deployment was created.</p>
 -- @return Deployment structure as a key-value pair table
 function M.Deployment(args)
-	assert(args, "You must provdide an argument table when creating Deployment")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Deployment")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["StackId"] = args["StackId"],
 		["Comment"] = args["Comment"],
 		["CompletedAt"] = args["CompletedAt"],
@@ -4700,8 +6092,13 @@ function M.Deployment(args)
 		["Duration"] = args["Duration"],
 		["CreatedAt"] = args["CreatedAt"],
 	}
-	asserts.AssertDeployment(t)
-	return t
+	asserts.AssertDeployment(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeLayersResult = { ["Layers"] = true, nil }
@@ -4722,12 +6119,23 @@ end
 -- * Layers [Layers] <p>An array of <code>Layer</code> objects that describe the layers.</p>
 -- @return DescribeLayersResult structure as a key-value pair table
 function M.DescribeLayersResult(args)
-	assert(args, "You must provdide an argument table when creating DescribeLayersResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeLayersResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Layers"] = args["Layers"],
 	}
-	asserts.AssertDescribeLayersResult(t)
-	return t
+	asserts.AssertDescribeLayersResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeregisterEcsClusterRequest = { ["EcsClusterArn"] = true, nil }
@@ -4750,12 +6158,23 @@ end
 -- Required key: EcsClusterArn
 -- @return DeregisterEcsClusterRequest structure as a key-value pair table
 function M.DeregisterEcsClusterRequest(args)
-	assert(args, "You must provdide an argument table when creating DeregisterEcsClusterRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeregisterEcsClusterRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["EcsClusterArn"] = args["EcsClusterArn"],
 	}
-	asserts.AssertDeregisterEcsClusterRequest(t)
-	return t
+	asserts.AssertDeregisterEcsClusterRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeStackProvisioningParametersResult = { ["AgentInstallerUrl"] = true, ["Parameters"] = true, nil }
@@ -4778,13 +6197,24 @@ end
 -- * Parameters [Parameters] <p>An embedded object that contains the provisioning parameters.</p>
 -- @return DescribeStackProvisioningParametersResult structure as a key-value pair table
 function M.DescribeStackProvisioningParametersResult(args)
-	assert(args, "You must provdide an argument table when creating DescribeStackProvisioningParametersResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeStackProvisioningParametersResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["AgentInstallerUrl"] = args["AgentInstallerUrl"],
 		["Parameters"] = args["Parameters"],
 	}
-	asserts.AssertDescribeStackProvisioningParametersResult(t)
-	return t
+	asserts.AssertDescribeStackProvisioningParametersResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Stack = { ["StackId"] = true, ["HostnameTheme"] = true, ["UseCustomCookbooks"] = true, ["DefaultSshKeyName"] = true, ["ChefConfiguration"] = true, ["UseOpsworksSecurityGroups"] = true, ["ServiceRoleArn"] = true, ["VpcId"] = true, ["ConfigurationManager"] = true, ["CustomCookbooksSource"] = true, ["AgentVersion"] = true, ["DefaultAvailabilityZone"] = true, ["CreatedAt"] = true, ["Name"] = true, ["Region"] = true, ["DefaultInstanceProfileArn"] = true, ["Attributes"] = true, ["DefaultOs"] = true, ["DefaultSubnetId"] = true, ["DefaultRootDeviceType"] = true, ["CustomJson"] = true, ["Arn"] = true, nil }
@@ -4847,8 +6277,14 @@ end
 -- * Arn [String] <p>The stack's ARN.</p>
 -- @return Stack structure as a key-value pair table
 function M.Stack(args)
-	assert(args, "You must provdide an argument table when creating Stack")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Stack")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["StackId"] = args["StackId"],
 		["HostnameTheme"] = args["HostnameTheme"],
 		["UseCustomCookbooks"] = args["UseCustomCookbooks"],
@@ -4872,8 +6308,13 @@ function M.Stack(args)
 		["CustomJson"] = args["CustomJson"],
 		["Arn"] = args["Arn"],
 	}
-	asserts.AssertStack(t)
-	return t
+	asserts.AssertStack(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.RegisterVolumeRequest = { ["Ec2VolumeId"] = true, ["StackId"] = true, nil }
@@ -4898,13 +6339,24 @@ end
 -- Required key: StackId
 -- @return RegisterVolumeRequest structure as a key-value pair table
 function M.RegisterVolumeRequest(args)
-	assert(args, "You must provdide an argument table when creating RegisterVolumeRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating RegisterVolumeRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Ec2VolumeId"] = args["Ec2VolumeId"],
 		["StackId"] = args["StackId"],
 	}
-	asserts.AssertRegisterVolumeRequest(t)
-	return t
+	asserts.AssertRegisterVolumeRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.RegisterElasticIpResult = { ["ElasticIp"] = true, nil }
@@ -4925,12 +6377,23 @@ end
 -- * ElasticIp [String] <p>The Elastic IP address.</p>
 -- @return RegisterElasticIpResult structure as a key-value pair table
 function M.RegisterElasticIpResult(args)
-	assert(args, "You must provdide an argument table when creating RegisterElasticIpResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating RegisterElasticIpResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ElasticIp"] = args["ElasticIp"],
 	}
-	asserts.AssertRegisterElasticIpResult(t)
-	return t
+	asserts.AssertRegisterElasticIpResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeLoadBasedAutoScalingRequest = { ["LayerIds"] = true, nil }
@@ -4953,12 +6416,23 @@ end
 -- Required key: LayerIds
 -- @return DescribeLoadBasedAutoScalingRequest structure as a key-value pair table
 function M.DescribeLoadBasedAutoScalingRequest(args)
-	assert(args, "You must provdide an argument table when creating DescribeLoadBasedAutoScalingRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeLoadBasedAutoScalingRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["LayerIds"] = args["LayerIds"],
 	}
-	asserts.AssertDescribeLoadBasedAutoScalingRequest(t)
-	return t
+	asserts.AssertDescribeLoadBasedAutoScalingRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.LifecycleEventConfiguration = { ["Shutdown"] = true, nil }
@@ -4979,12 +6453,23 @@ end
 -- * Shutdown [ShutdownEventConfiguration] <p>A <code>ShutdownEventConfiguration</code> object that specifies the Shutdown event configuration.</p>
 -- @return LifecycleEventConfiguration structure as a key-value pair table
 function M.LifecycleEventConfiguration(args)
-	assert(args, "You must provdide an argument table when creating LifecycleEventConfiguration")
-	local t = { 
+	assert(args, "You must provide an argument table when creating LifecycleEventConfiguration")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Shutdown"] = args["Shutdown"],
 	}
-	asserts.AssertLifecycleEventConfiguration(t)
-	return t
+	asserts.AssertLifecycleEventConfiguration(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CloudWatchLogsLogStream = { ["InitialPosition"] = true, ["Encoding"] = true, ["BatchSize"] = true, ["BufferDuration"] = true, ["MultiLineStartPattern"] = true, ["LogGroupName"] = true, ["File"] = true, ["BatchCount"] = true, ["DatetimeFormat"] = true, ["TimeZone"] = true, ["FileFingerprintLines"] = true, nil }
@@ -5025,8 +6510,14 @@ end
 -- * FileFingerprintLines [String] <p>Specifies the range of lines for identifying a file. The valid values are one number, or two dash-delimited numbers, such as '1', '2-5'. The default value is '1', meaning the first line is used to calculate the fingerprint. Fingerprint lines are not sent to CloudWatch Logs unless all specified lines are available.</p>
 -- @return CloudWatchLogsLogStream structure as a key-value pair table
 function M.CloudWatchLogsLogStream(args)
-	assert(args, "You must provdide an argument table when creating CloudWatchLogsLogStream")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CloudWatchLogsLogStream")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["InitialPosition"] = args["InitialPosition"],
 		["Encoding"] = args["Encoding"],
 		["BatchSize"] = args["BatchSize"],
@@ -5039,8 +6530,13 @@ function M.CloudWatchLogsLogStream(args)
 		["TimeZone"] = args["TimeZone"],
 		["FileFingerprintLines"] = args["FileFingerprintLines"],
 	}
-	asserts.AssertCloudWatchLogsLogStream(t)
-	return t
+	asserts.AssertCloudWatchLogsLogStream(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.TimeBasedAutoScalingConfiguration = { ["InstanceId"] = true, ["AutoScalingSchedule"] = true, nil }
@@ -5063,13 +6559,24 @@ end
 -- * AutoScalingSchedule [WeeklyAutoScalingSchedule] <p>A <code>WeeklyAutoScalingSchedule</code> object with the instance schedule.</p>
 -- @return TimeBasedAutoScalingConfiguration structure as a key-value pair table
 function M.TimeBasedAutoScalingConfiguration(args)
-	assert(args, "You must provdide an argument table when creating TimeBasedAutoScalingConfiguration")
-	local t = { 
+	assert(args, "You must provide an argument table when creating TimeBasedAutoScalingConfiguration")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["InstanceId"] = args["InstanceId"],
 		["AutoScalingSchedule"] = args["AutoScalingSchedule"],
 	}
-	asserts.AssertTimeBasedAutoScalingConfiguration(t)
-	return t
+	asserts.AssertTimeBasedAutoScalingConfiguration(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeregisterVolumeRequest = { ["VolumeId"] = true, nil }
@@ -5092,12 +6599,23 @@ end
 -- Required key: VolumeId
 -- @return DeregisterVolumeRequest structure as a key-value pair table
 function M.DeregisterVolumeRequest(args)
-	assert(args, "You must provdide an argument table when creating DeregisterVolumeRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeregisterVolumeRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["VolumeId"] = args["VolumeId"],
 	}
-	asserts.AssertDeregisterVolumeRequest(t)
-	return t
+	asserts.AssertDeregisterVolumeRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.RegisterInstanceRequest = { ["StackId"] = true, ["RsaPublicKeyFingerprint"] = true, ["RsaPublicKey"] = true, ["Hostname"] = true, ["PrivateIp"] = true, ["PublicIp"] = true, ["InstanceIdentity"] = true, nil }
@@ -5132,8 +6650,14 @@ end
 -- Required key: StackId
 -- @return RegisterInstanceRequest structure as a key-value pair table
 function M.RegisterInstanceRequest(args)
-	assert(args, "You must provdide an argument table when creating RegisterInstanceRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating RegisterInstanceRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["StackId"] = args["StackId"],
 		["RsaPublicKeyFingerprint"] = args["RsaPublicKeyFingerprint"],
 		["RsaPublicKey"] = args["RsaPublicKey"],
@@ -5142,8 +6666,13 @@ function M.RegisterInstanceRequest(args)
 		["PublicIp"] = args["PublicIp"],
 		["InstanceIdentity"] = args["InstanceIdentity"],
 	}
-	asserts.AssertRegisterInstanceRequest(t)
-	return t
+	asserts.AssertRegisterInstanceRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetHostnameSuggestionResult = { ["Hostname"] = true, ["LayerId"] = true, nil }
@@ -5166,13 +6695,24 @@ end
 -- * LayerId [String] <p>The layer ID.</p>
 -- @return GetHostnameSuggestionResult structure as a key-value pair table
 function M.GetHostnameSuggestionResult(args)
-	assert(args, "You must provdide an argument table when creating GetHostnameSuggestionResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetHostnameSuggestionResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Hostname"] = args["Hostname"],
 		["LayerId"] = args["LayerId"],
 	}
-	asserts.AssertGetHostnameSuggestionResult(t)
-	return t
+	asserts.AssertGetHostnameSuggestionResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AssignInstanceRequest = { ["InstanceId"] = true, ["LayerIds"] = true, nil }
@@ -5199,13 +6739,24 @@ end
 -- Required key: LayerIds
 -- @return AssignInstanceRequest structure as a key-value pair table
 function M.AssignInstanceRequest(args)
-	assert(args, "You must provdide an argument table when creating AssignInstanceRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AssignInstanceRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["InstanceId"] = args["InstanceId"],
 		["LayerIds"] = args["LayerIds"],
 	}
-	asserts.AssertAssignInstanceRequest(t)
-	return t
+	asserts.AssertAssignInstanceRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.TagResourceRequest = { ["ResourceArn"] = true, ["Tags"] = true, nil }
@@ -5232,13 +6783,24 @@ end
 -- Required key: Tags
 -- @return TagResourceRequest structure as a key-value pair table
 function M.TagResourceRequest(args)
-	assert(args, "You must provdide an argument table when creating TagResourceRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating TagResourceRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ResourceArn"] = args["ResourceArn"],
 		["Tags"] = args["Tags"],
 	}
-	asserts.AssertTagResourceRequest(t)
-	return t
+	asserts.AssertTagResourceRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AssignVolumeRequest = { ["InstanceId"] = true, ["VolumeId"] = true, nil }
@@ -5263,13 +6825,24 @@ end
 -- Required key: VolumeId
 -- @return AssignVolumeRequest structure as a key-value pair table
 function M.AssignVolumeRequest(args)
-	assert(args, "You must provdide an argument table when creating AssignVolumeRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AssignVolumeRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["InstanceId"] = args["InstanceId"],
 		["VolumeId"] = args["VolumeId"],
 	}
-	asserts.AssertAssignVolumeRequest(t)
-	return t
+	asserts.AssertAssignVolumeRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeServiceErrorsResult = { ["ServiceErrors"] = true, nil }
@@ -5290,12 +6863,23 @@ end
 -- * ServiceErrors [ServiceErrors] <p>An array of <code>ServiceError</code> objects that describe the specified service errors.</p>
 -- @return DescribeServiceErrorsResult structure as a key-value pair table
 function M.DescribeServiceErrorsResult(args)
-	assert(args, "You must provdide an argument table when creating DescribeServiceErrorsResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeServiceErrorsResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ServiceErrors"] = args["ServiceErrors"],
 	}
-	asserts.AssertDescribeServiceErrorsResult(t)
-	return t
+	asserts.AssertDescribeServiceErrorsResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeDeploymentsResult = { ["Deployments"] = true, nil }
@@ -5316,12 +6900,23 @@ end
 -- * Deployments [Deployments] <p>An array of <code>Deployment</code> objects that describe the deployments.</p>
 -- @return DescribeDeploymentsResult structure as a key-value pair table
 function M.DescribeDeploymentsResult(args)
-	assert(args, "You must provdide an argument table when creating DescribeDeploymentsResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeDeploymentsResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Deployments"] = args["Deployments"],
 	}
-	asserts.AssertDescribeDeploymentsResult(t)
-	return t
+	asserts.AssertDescribeDeploymentsResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateUserProfileRequest = { ["IamUserArn"] = true, ["SshPublicKey"] = true, ["AllowSelfManagement"] = true, ["SshUsername"] = true, nil }
@@ -5350,15 +6945,26 @@ end
 -- Required key: IamUserArn
 -- @return CreateUserProfileRequest structure as a key-value pair table
 function M.CreateUserProfileRequest(args)
-	assert(args, "You must provdide an argument table when creating CreateUserProfileRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateUserProfileRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["IamUserArn"] = args["IamUserArn"],
 		["SshPublicKey"] = args["SshPublicKey"],
 		["AllowSelfManagement"] = args["AllowSelfManagement"],
 		["SshUsername"] = args["SshUsername"],
 	}
-	asserts.AssertCreateUserProfileRequest(t)
-	return t
+	asserts.AssertCreateUserProfileRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateLayerRequest = { ["StackId"] = true, ["LifecycleEventConfiguration"] = true, ["AutoAssignElasticIps"] = true, ["Name"] = true, ["CloudWatchLogsConfiguration"] = true, ["CustomJson"] = true, ["CustomRecipes"] = true, ["CustomSecurityGroupIds"] = true, ["AutoAssignPublicIps"] = true, ["EnableAutoHealing"] = true, ["CustomInstanceProfileArn"] = true, ["UseEbsOptimizedInstances"] = true, ["VolumeConfigurations"] = true, ["Attributes"] = true, ["Shortname"] = true, ["Packages"] = true, ["Type"] = true, ["InstallUpdatesOnBoot"] = true, nil }
@@ -5421,8 +7027,14 @@ end
 -- Required key: Shortname
 -- @return CreateLayerRequest structure as a key-value pair table
 function M.CreateLayerRequest(args)
-	assert(args, "You must provdide an argument table when creating CreateLayerRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateLayerRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["StackId"] = args["StackId"],
 		["LifecycleEventConfiguration"] = args["LifecycleEventConfiguration"],
 		["AutoAssignElasticIps"] = args["AutoAssignElasticIps"],
@@ -5442,8 +7054,13 @@ function M.CreateLayerRequest(args)
 		["Type"] = args["Type"],
 		["InstallUpdatesOnBoot"] = args["InstallUpdatesOnBoot"],
 	}
-	asserts.AssertCreateLayerRequest(t)
-	return t
+	asserts.AssertCreateLayerRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeMyUserProfileResult = { ["UserProfile"] = true, nil }
@@ -5464,12 +7081,23 @@ end
 -- * UserProfile [SelfUserProfile] <p>A <code>UserProfile</code> object that describes the user's SSH information.</p>
 -- @return DescribeMyUserProfileResult structure as a key-value pair table
 function M.DescribeMyUserProfileResult(args)
-	assert(args, "You must provdide an argument table when creating DescribeMyUserProfileResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeMyUserProfileResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["UserProfile"] = args["UserProfile"],
 	}
-	asserts.AssertDescribeMyUserProfileResult(t)
-	return t
+	asserts.AssertDescribeMyUserProfileResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.SslConfiguration = { ["PrivateKey"] = true, ["Chain"] = true, ["Certificate"] = true, nil }
@@ -5498,14 +7126,25 @@ end
 -- Required key: PrivateKey
 -- @return SslConfiguration structure as a key-value pair table
 function M.SslConfiguration(args)
-	assert(args, "You must provdide an argument table when creating SslConfiguration")
-	local t = { 
+	assert(args, "You must provide an argument table when creating SslConfiguration")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["PrivateKey"] = args["PrivateKey"],
 		["Chain"] = args["Chain"],
 		["Certificate"] = args["Certificate"],
 	}
-	asserts.AssertSslConfiguration(t)
-	return t
+	asserts.AssertSslConfiguration(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.RegisterEcsClusterRequest = { ["StackId"] = true, ["EcsClusterArn"] = true, nil }
@@ -5532,13 +7171,24 @@ end
 -- Required key: StackId
 -- @return RegisterEcsClusterRequest structure as a key-value pair table
 function M.RegisterEcsClusterRequest(args)
-	assert(args, "You must provdide an argument table when creating RegisterEcsClusterRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating RegisterEcsClusterRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["StackId"] = args["StackId"],
 		["EcsClusterArn"] = args["EcsClusterArn"],
 	}
-	asserts.AssertRegisterEcsClusterRequest(t)
-	return t
+	asserts.AssertRegisterEcsClusterRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 function asserts.AssertDateTime(str)
@@ -6387,8 +8037,11 @@ function M.DeregisterVolumeAsync(DeregisterVolumeRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "OpsWorks_20130218.DeregisterVolume",
 	}
+	for header,value in pairs(DeregisterVolumeRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DeregisterVolumeRequest, headers, settings, cb)
 	else
@@ -6419,8 +8072,11 @@ function M.DeregisterInstanceAsync(DeregisterInstanceRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "OpsWorks_20130218.DeregisterInstance",
 	}
+	for header,value in pairs(DeregisterInstanceRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DeregisterInstanceRequest, headers, settings, cb)
 	else
@@ -6451,8 +8107,11 @@ function M.DescribeTimeBasedAutoScalingAsync(DescribeTimeBasedAutoScalingRequest
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "OpsWorks_20130218.DescribeTimeBasedAutoScaling",
 	}
+	for header,value in pairs(DescribeTimeBasedAutoScalingRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeTimeBasedAutoScalingRequest, headers, settings, cb)
 	else
@@ -6483,8 +8142,11 @@ function M.RebootInstanceAsync(RebootInstanceRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "OpsWorks_20130218.RebootInstance",
 	}
+	for header,value in pairs(RebootInstanceRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", RebootInstanceRequest, headers, settings, cb)
 	else
@@ -6515,8 +8177,11 @@ function M.StartStackAsync(StartStackRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "OpsWorks_20130218.StartStack",
 	}
+	for header,value in pairs(StartStackRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", StartStackRequest, headers, settings, cb)
 	else
@@ -6547,8 +8212,11 @@ function M.UnassignInstanceAsync(UnassignInstanceRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "OpsWorks_20130218.UnassignInstance",
 	}
+	for header,value in pairs(UnassignInstanceRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", UnassignInstanceRequest, headers, settings, cb)
 	else
@@ -6579,8 +8247,11 @@ function M.DisassociateElasticIpAsync(DisassociateElasticIpRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "OpsWorks_20130218.DisassociateElasticIp",
 	}
+	for header,value in pairs(DisassociateElasticIpRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DisassociateElasticIpRequest, headers, settings, cb)
 	else
@@ -6611,8 +8282,11 @@ function M.CreateUserProfileAsync(CreateUserProfileRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "OpsWorks_20130218.CreateUserProfile",
 	}
+	for header,value in pairs(CreateUserProfileRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateUserProfileRequest, headers, settings, cb)
 	else
@@ -6643,8 +8317,11 @@ function M.AttachElasticLoadBalancerAsync(AttachElasticLoadBalancerRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "OpsWorks_20130218.AttachElasticLoadBalancer",
 	}
+	for header,value in pairs(AttachElasticLoadBalancerRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", AttachElasticLoadBalancerRequest, headers, settings, cb)
 	else
@@ -6675,8 +8352,11 @@ function M.RegisterEcsClusterAsync(RegisterEcsClusterRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "OpsWorks_20130218.RegisterEcsCluster",
 	}
+	for header,value in pairs(RegisterEcsClusterRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", RegisterEcsClusterRequest, headers, settings, cb)
 	else
@@ -6707,8 +8387,11 @@ function M.DescribeLayersAsync(DescribeLayersRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "OpsWorks_20130218.DescribeLayers",
 	}
+	for header,value in pairs(DescribeLayersRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeLayersRequest, headers, settings, cb)
 	else
@@ -6739,8 +8422,11 @@ function M.UpdateElasticIpAsync(UpdateElasticIpRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "OpsWorks_20130218.UpdateElasticIp",
 	}
+	for header,value in pairs(UpdateElasticIpRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateElasticIpRequest, headers, settings, cb)
 	else
@@ -6771,8 +8457,11 @@ function M.DeleteInstanceAsync(DeleteInstanceRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "OpsWorks_20130218.DeleteInstance",
 	}
+	for header,value in pairs(DeleteInstanceRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteInstanceRequest, headers, settings, cb)
 	else
@@ -6803,8 +8492,11 @@ function M.DetachElasticLoadBalancerAsync(DetachElasticLoadBalancerRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "OpsWorks_20130218.DetachElasticLoadBalancer",
 	}
+	for header,value in pairs(DetachElasticLoadBalancerRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DetachElasticLoadBalancerRequest, headers, settings, cb)
 	else
@@ -6835,8 +8527,11 @@ function M.CreateDeploymentAsync(CreateDeploymentRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "OpsWorks_20130218.CreateDeployment",
 	}
+	for header,value in pairs(CreateDeploymentRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateDeploymentRequest, headers, settings, cb)
 	else
@@ -6867,8 +8562,11 @@ function M.UnassignVolumeAsync(UnassignVolumeRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "OpsWorks_20130218.UnassignVolume",
 	}
+	for header,value in pairs(UnassignVolumeRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", UnassignVolumeRequest, headers, settings, cb)
 	else
@@ -6899,8 +8597,11 @@ function M.DeleteUserProfileAsync(DeleteUserProfileRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "OpsWorks_20130218.DeleteUserProfile",
 	}
+	for header,value in pairs(DeleteUserProfileRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteUserProfileRequest, headers, settings, cb)
 	else
@@ -6931,8 +8632,11 @@ function M.CreateStackAsync(CreateStackRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "OpsWorks_20130218.CreateStack",
 	}
+	for header,value in pairs(CreateStackRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateStackRequest, headers, settings, cb)
 	else
@@ -6963,8 +8667,11 @@ function M.UpdateRdsDbInstanceAsync(UpdateRdsDbInstanceRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "OpsWorks_20130218.UpdateRdsDbInstance",
 	}
+	for header,value in pairs(UpdateRdsDbInstanceRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateRdsDbInstanceRequest, headers, settings, cb)
 	else
@@ -6995,8 +8702,11 @@ function M.GetHostnameSuggestionAsync(GetHostnameSuggestionRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "OpsWorks_20130218.GetHostnameSuggestion",
 	}
+	for header,value in pairs(GetHostnameSuggestionRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", GetHostnameSuggestionRequest, headers, settings, cb)
 	else
@@ -7027,8 +8737,11 @@ function M.DescribeInstancesAsync(DescribeInstancesRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "OpsWorks_20130218.DescribeInstances",
 	}
+	for header,value in pairs(DescribeInstancesRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeInstancesRequest, headers, settings, cb)
 	else
@@ -7059,8 +8772,11 @@ function M.DescribeCommandsAsync(DescribeCommandsRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "OpsWorks_20130218.DescribeCommands",
 	}
+	for header,value in pairs(DescribeCommandsRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeCommandsRequest, headers, settings, cb)
 	else
@@ -7090,7 +8806,8 @@ function M.DescribeMyUserProfileAsync(cb)
 		[request_headers.AMZ_TARGET_HEADER] = "OpsWorks_20130218.DescribeMyUserProfile",
 	}
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", {}, headers, settings, cb)
 	else
@@ -7120,8 +8837,11 @@ function M.DeregisterElasticIpAsync(DeregisterElasticIpRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "OpsWorks_20130218.DeregisterElasticIp",
 	}
+	for header,value in pairs(DeregisterElasticIpRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DeregisterElasticIpRequest, headers, settings, cb)
 	else
@@ -7152,8 +8872,11 @@ function M.DescribeAgentVersionsAsync(DescribeAgentVersionsRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "OpsWorks_20130218.DescribeAgentVersions",
 	}
+	for header,value in pairs(DescribeAgentVersionsRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeAgentVersionsRequest, headers, settings, cb)
 	else
@@ -7184,8 +8907,11 @@ function M.StopStackAsync(StopStackRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "OpsWorks_20130218.StopStack",
 	}
+	for header,value in pairs(StopStackRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", StopStackRequest, headers, settings, cb)
 	else
@@ -7216,8 +8942,11 @@ function M.DescribeAppsAsync(DescribeAppsRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "OpsWorks_20130218.DescribeApps",
 	}
+	for header,value in pairs(DescribeAppsRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeAppsRequest, headers, settings, cb)
 	else
@@ -7248,8 +8977,11 @@ function M.DescribeElasticIpsAsync(DescribeElasticIpsRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "OpsWorks_20130218.DescribeElasticIps",
 	}
+	for header,value in pairs(DescribeElasticIpsRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeElasticIpsRequest, headers, settings, cb)
 	else
@@ -7280,8 +9012,11 @@ function M.UpdateVolumeAsync(UpdateVolumeRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "OpsWorks_20130218.UpdateVolume",
 	}
+	for header,value in pairs(UpdateVolumeRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateVolumeRequest, headers, settings, cb)
 	else
@@ -7312,8 +9047,11 @@ function M.StartInstanceAsync(StartInstanceRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "OpsWorks_20130218.StartInstance",
 	}
+	for header,value in pairs(StartInstanceRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", StartInstanceRequest, headers, settings, cb)
 	else
@@ -7344,8 +9082,11 @@ function M.UpdateMyUserProfileAsync(UpdateMyUserProfileRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "OpsWorks_20130218.UpdateMyUserProfile",
 	}
+	for header,value in pairs(UpdateMyUserProfileRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateMyUserProfileRequest, headers, settings, cb)
 	else
@@ -7376,8 +9117,11 @@ function M.DeleteAppAsync(DeleteAppRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "OpsWorks_20130218.DeleteApp",
 	}
+	for header,value in pairs(DeleteAppRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteAppRequest, headers, settings, cb)
 	else
@@ -7408,8 +9152,11 @@ function M.UpdateInstanceAsync(UpdateInstanceRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "OpsWorks_20130218.UpdateInstance",
 	}
+	for header,value in pairs(UpdateInstanceRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateInstanceRequest, headers, settings, cb)
 	else
@@ -7440,8 +9187,11 @@ function M.RegisterElasticIpAsync(RegisterElasticIpRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "OpsWorks_20130218.RegisterElasticIp",
 	}
+	for header,value in pairs(RegisterElasticIpRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", RegisterElasticIpRequest, headers, settings, cb)
 	else
@@ -7472,8 +9222,11 @@ function M.TagResourceAsync(TagResourceRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "OpsWorks_20130218.TagResource",
 	}
+	for header,value in pairs(TagResourceRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", TagResourceRequest, headers, settings, cb)
 	else
@@ -7504,8 +9257,11 @@ function M.DeregisterRdsDbInstanceAsync(DeregisterRdsDbInstanceRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "OpsWorks_20130218.DeregisterRdsDbInstance",
 	}
+	for header,value in pairs(DeregisterRdsDbInstanceRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DeregisterRdsDbInstanceRequest, headers, settings, cb)
 	else
@@ -7536,8 +9292,11 @@ function M.DescribeRaidArraysAsync(DescribeRaidArraysRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "OpsWorks_20130218.DescribeRaidArrays",
 	}
+	for header,value in pairs(DescribeRaidArraysRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeRaidArraysRequest, headers, settings, cb)
 	else
@@ -7568,8 +9327,11 @@ function M.RegisterVolumeAsync(RegisterVolumeRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "OpsWorks_20130218.RegisterVolume",
 	}
+	for header,value in pairs(RegisterVolumeRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", RegisterVolumeRequest, headers, settings, cb)
 	else
@@ -7600,8 +9362,11 @@ function M.SetPermissionAsync(SetPermissionRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "OpsWorks_20130218.SetPermission",
 	}
+	for header,value in pairs(SetPermissionRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", SetPermissionRequest, headers, settings, cb)
 	else
@@ -7632,8 +9397,11 @@ function M.DescribeDeploymentsAsync(DescribeDeploymentsRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "OpsWorks_20130218.DescribeDeployments",
 	}
+	for header,value in pairs(DescribeDeploymentsRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeDeploymentsRequest, headers, settings, cb)
 	else
@@ -7664,8 +9432,11 @@ function M.ListTagsAsync(ListTagsRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "OpsWorks_20130218.ListTags",
 	}
+	for header,value in pairs(ListTagsRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ListTagsRequest, headers, settings, cb)
 	else
@@ -7696,8 +9467,11 @@ function M.CloneStackAsync(CloneStackRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "OpsWorks_20130218.CloneStack",
 	}
+	for header,value in pairs(CloneStackRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", CloneStackRequest, headers, settings, cb)
 	else
@@ -7728,8 +9502,11 @@ function M.DescribeServiceErrorsAsync(DescribeServiceErrorsRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "OpsWorks_20130218.DescribeServiceErrors",
 	}
+	for header,value in pairs(DescribeServiceErrorsRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeServiceErrorsRequest, headers, settings, cb)
 	else
@@ -7760,8 +9537,11 @@ function M.AssociateElasticIpAsync(AssociateElasticIpRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "OpsWorks_20130218.AssociateElasticIp",
 	}
+	for header,value in pairs(AssociateElasticIpRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", AssociateElasticIpRequest, headers, settings, cb)
 	else
@@ -7792,8 +9572,11 @@ function M.CreateInstanceAsync(CreateInstanceRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "OpsWorks_20130218.CreateInstance",
 	}
+	for header,value in pairs(CreateInstanceRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateInstanceRequest, headers, settings, cb)
 	else
@@ -7824,8 +9607,11 @@ function M.DescribeElasticLoadBalancersAsync(DescribeElasticLoadBalancersRequest
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "OpsWorks_20130218.DescribeElasticLoadBalancers",
 	}
+	for header,value in pairs(DescribeElasticLoadBalancersRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeElasticLoadBalancersRequest, headers, settings, cb)
 	else
@@ -7856,8 +9642,11 @@ function M.DeregisterEcsClusterAsync(DeregisterEcsClusterRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "OpsWorks_20130218.DeregisterEcsCluster",
 	}
+	for header,value in pairs(DeregisterEcsClusterRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DeregisterEcsClusterRequest, headers, settings, cb)
 	else
@@ -7888,8 +9677,11 @@ function M.DescribeEcsClustersAsync(DescribeEcsClustersRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "OpsWorks_20130218.DescribeEcsClusters",
 	}
+	for header,value in pairs(DescribeEcsClustersRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeEcsClustersRequest, headers, settings, cb)
 	else
@@ -7920,8 +9712,11 @@ function M.RegisterRdsDbInstanceAsync(RegisterRdsDbInstanceRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "OpsWorks_20130218.RegisterRdsDbInstance",
 	}
+	for header,value in pairs(RegisterRdsDbInstanceRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", RegisterRdsDbInstanceRequest, headers, settings, cb)
 	else
@@ -7952,8 +9747,11 @@ function M.SetTimeBasedAutoScalingAsync(SetTimeBasedAutoScalingRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "OpsWorks_20130218.SetTimeBasedAutoScaling",
 	}
+	for header,value in pairs(SetTimeBasedAutoScalingRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", SetTimeBasedAutoScalingRequest, headers, settings, cb)
 	else
@@ -7984,8 +9782,11 @@ function M.DescribeLoadBasedAutoScalingAsync(DescribeLoadBasedAutoScalingRequest
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "OpsWorks_20130218.DescribeLoadBasedAutoScaling",
 	}
+	for header,value in pairs(DescribeLoadBasedAutoScalingRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeLoadBasedAutoScalingRequest, headers, settings, cb)
 	else
@@ -8016,8 +9817,11 @@ function M.AssignInstanceAsync(AssignInstanceRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "OpsWorks_20130218.AssignInstance",
 	}
+	for header,value in pairs(AssignInstanceRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", AssignInstanceRequest, headers, settings, cb)
 	else
@@ -8048,8 +9852,11 @@ function M.SetLoadBasedAutoScalingAsync(SetLoadBasedAutoScalingRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "OpsWorks_20130218.SetLoadBasedAutoScaling",
 	}
+	for header,value in pairs(SetLoadBasedAutoScalingRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", SetLoadBasedAutoScalingRequest, headers, settings, cb)
 	else
@@ -8080,8 +9887,11 @@ function M.DescribeStackSummaryAsync(DescribeStackSummaryRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "OpsWorks_20130218.DescribeStackSummary",
 	}
+	for header,value in pairs(DescribeStackSummaryRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeStackSummaryRequest, headers, settings, cb)
 	else
@@ -8112,8 +9922,11 @@ function M.StopInstanceAsync(StopInstanceRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "OpsWorks_20130218.StopInstance",
 	}
+	for header,value in pairs(StopInstanceRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", StopInstanceRequest, headers, settings, cb)
 	else
@@ -8144,8 +9957,11 @@ function M.DescribeStacksAsync(DescribeStacksRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "OpsWorks_20130218.DescribeStacks",
 	}
+	for header,value in pairs(DescribeStacksRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeStacksRequest, headers, settings, cb)
 	else
@@ -8176,8 +9992,11 @@ function M.CreateLayerAsync(CreateLayerRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "OpsWorks_20130218.CreateLayer",
 	}
+	for header,value in pairs(CreateLayerRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateLayerRequest, headers, settings, cb)
 	else
@@ -8208,8 +10027,11 @@ function M.UpdateStackAsync(UpdateStackRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "OpsWorks_20130218.UpdateStack",
 	}
+	for header,value in pairs(UpdateStackRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateStackRequest, headers, settings, cb)
 	else
@@ -8240,8 +10062,11 @@ function M.GrantAccessAsync(GrantAccessRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "OpsWorks_20130218.GrantAccess",
 	}
+	for header,value in pairs(GrantAccessRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", GrantAccessRequest, headers, settings, cb)
 	else
@@ -8272,8 +10097,11 @@ function M.CreateAppAsync(CreateAppRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "OpsWorks_20130218.CreateApp",
 	}
+	for header,value in pairs(CreateAppRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateAppRequest, headers, settings, cb)
 	else
@@ -8304,8 +10132,11 @@ function M.UntagResourceAsync(UntagResourceRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "OpsWorks_20130218.UntagResource",
 	}
+	for header,value in pairs(UntagResourceRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", UntagResourceRequest, headers, settings, cb)
 	else
@@ -8336,8 +10167,11 @@ function M.DescribePermissionsAsync(DescribePermissionsRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "OpsWorks_20130218.DescribePermissions",
 	}
+	for header,value in pairs(DescribePermissionsRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribePermissionsRequest, headers, settings, cb)
 	else
@@ -8368,8 +10202,11 @@ function M.DeleteLayerAsync(DeleteLayerRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "OpsWorks_20130218.DeleteLayer",
 	}
+	for header,value in pairs(DeleteLayerRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteLayerRequest, headers, settings, cb)
 	else
@@ -8400,8 +10237,11 @@ function M.DescribeVolumesAsync(DescribeVolumesRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "OpsWorks_20130218.DescribeVolumes",
 	}
+	for header,value in pairs(DescribeVolumesRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeVolumesRequest, headers, settings, cb)
 	else
@@ -8432,8 +10272,11 @@ function M.DescribeStackProvisioningParametersAsync(DescribeStackProvisioningPar
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "OpsWorks_20130218.DescribeStackProvisioningParameters",
 	}
+	for header,value in pairs(DescribeStackProvisioningParametersRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeStackProvisioningParametersRequest, headers, settings, cb)
 	else
@@ -8464,8 +10307,11 @@ function M.RegisterInstanceAsync(RegisterInstanceRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "OpsWorks_20130218.RegisterInstance",
 	}
+	for header,value in pairs(RegisterInstanceRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", RegisterInstanceRequest, headers, settings, cb)
 	else
@@ -8496,8 +10342,11 @@ function M.DeleteStackAsync(DeleteStackRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "OpsWorks_20130218.DeleteStack",
 	}
+	for header,value in pairs(DeleteStackRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteStackRequest, headers, settings, cb)
 	else
@@ -8528,8 +10377,11 @@ function M.AssignVolumeAsync(AssignVolumeRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "OpsWorks_20130218.AssignVolume",
 	}
+	for header,value in pairs(AssignVolumeRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", AssignVolumeRequest, headers, settings, cb)
 	else
@@ -8560,8 +10412,11 @@ function M.UpdateAppAsync(UpdateAppRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "OpsWorks_20130218.UpdateApp",
 	}
+	for header,value in pairs(UpdateAppRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateAppRequest, headers, settings, cb)
 	else
@@ -8592,8 +10447,11 @@ function M.DescribeRdsDbInstancesAsync(DescribeRdsDbInstancesRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "OpsWorks_20130218.DescribeRdsDbInstances",
 	}
+	for header,value in pairs(DescribeRdsDbInstancesRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeRdsDbInstancesRequest, headers, settings, cb)
 	else
@@ -8624,8 +10482,11 @@ function M.UpdateUserProfileAsync(UpdateUserProfileRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "OpsWorks_20130218.UpdateUserProfile",
 	}
+	for header,value in pairs(UpdateUserProfileRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateUserProfileRequest, headers, settings, cb)
 	else
@@ -8656,8 +10517,11 @@ function M.DescribeUserProfilesAsync(DescribeUserProfilesRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "OpsWorks_20130218.DescribeUserProfiles",
 	}
+	for header,value in pairs(DescribeUserProfilesRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeUserProfilesRequest, headers, settings, cb)
 	else
@@ -8688,8 +10552,11 @@ function M.UpdateLayerAsync(UpdateLayerRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "OpsWorks_20130218.UpdateLayer",
 	}
+	for header,value in pairs(UpdateLayerRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateLayerRequest, headers, settings, cb)
 	else

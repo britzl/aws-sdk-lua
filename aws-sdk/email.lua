@@ -47,14 +47,25 @@ end
 -- Required key: NotificationType
 -- @return SetIdentityNotificationTopicRequest structure as a key-value pair table
 function M.SetIdentityNotificationTopicRequest(args)
-	assert(args, "You must provdide an argument table when creating SetIdentityNotificationTopicRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating SetIdentityNotificationTopicRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NotificationType"] = args["NotificationType"],
 		["Identity"] = args["Identity"],
 		["SnsTopic"] = args["SnsTopic"],
 	}
-	asserts.AssertSetIdentityNotificationTopicRequest(t)
-	return t
+	asserts.AssertSetIdentityNotificationTopicRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ReorderReceiptRuleSetRequest = { ["RuleSetName"] = true, ["RuleNames"] = true, nil }
@@ -81,13 +92,24 @@ end
 -- Required key: RuleNames
 -- @return ReorderReceiptRuleSetRequest structure as a key-value pair table
 function M.ReorderReceiptRuleSetRequest(args)
-	assert(args, "You must provdide an argument table when creating ReorderReceiptRuleSetRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ReorderReceiptRuleSetRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["RuleSetName"] = args["RuleSetName"],
 		["RuleNames"] = args["RuleNames"],
 	}
-	asserts.AssertReorderReceiptRuleSetRequest(t)
-	return t
+	asserts.AssertReorderReceiptRuleSetRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeActiveReceiptRuleSetRequest = { nil }
@@ -106,11 +128,22 @@ end
 -- Valid keys:
 -- @return DescribeActiveReceiptRuleSetRequest structure as a key-value pair table
 function M.DescribeActiveReceiptRuleSetRequest(args)
-	assert(args, "You must provdide an argument table when creating DescribeActiveReceiptRuleSetRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeActiveReceiptRuleSetRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertDescribeActiveReceiptRuleSetRequest(t)
-	return t
+	asserts.AssertDescribeActiveReceiptRuleSetRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidFirehoseDestinationException = { ["EventDestinationName"] = true, ["ConfigurationSetName"] = true, nil }
@@ -133,13 +166,24 @@ end
 -- * ConfigurationSetName [ConfigurationSetName] 
 -- @return InvalidFirehoseDestinationException structure as a key-value pair table
 function M.InvalidFirehoseDestinationException(args)
-	assert(args, "You must provdide an argument table when creating InvalidFirehoseDestinationException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidFirehoseDestinationException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["EventDestinationName"] = args["EventDestinationName"],
 		["ConfigurationSetName"] = args["ConfigurationSetName"],
 	}
-	asserts.AssertInvalidFirehoseDestinationException(t)
-	return t
+	asserts.AssertInvalidFirehoseDestinationException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Destination = { ["CcAddresses"] = true, ["BccAddresses"] = true, ["ToAddresses"] = true, nil }
@@ -164,14 +208,25 @@ end
 -- * ToAddresses [AddressList] <p>The To: field(s) of the message.</p>
 -- @return Destination structure as a key-value pair table
 function M.Destination(args)
-	assert(args, "You must provdide an argument table when creating Destination")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Destination")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["CcAddresses"] = args["CcAddresses"],
 		["BccAddresses"] = args["BccAddresses"],
 		["ToAddresses"] = args["ToAddresses"],
 	}
-	asserts.AssertDestination(t)
-	return t
+	asserts.AssertDestination(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.VerifyDomainDkimRequest = { ["Domain"] = true, nil }
@@ -194,12 +249,23 @@ end
 -- Required key: Domain
 -- @return VerifyDomainDkimRequest structure as a key-value pair table
 function M.VerifyDomainDkimRequest(args)
-	assert(args, "You must provdide an argument table when creating VerifyDomainDkimRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating VerifyDomainDkimRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Domain"] = args["Domain"],
 	}
-	asserts.AssertVerifyDomainDkimRequest(t)
-	return t
+	asserts.AssertVerifyDomainDkimRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.S3Action = { ["KmsKeyArn"] = true, ["ObjectKeyPrefix"] = true, ["BucketName"] = true, ["TopicArn"] = true, nil }
@@ -228,15 +294,26 @@ end
 -- Required key: BucketName
 -- @return S3Action structure as a key-value pair table
 function M.S3Action(args)
-	assert(args, "You must provdide an argument table when creating S3Action")
-	local t = { 
+	assert(args, "You must provide an argument table when creating S3Action")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["KmsKeyArn"] = args["KmsKeyArn"],
 		["ObjectKeyPrefix"] = args["ObjectKeyPrefix"],
 		["BucketName"] = args["BucketName"],
 		["TopicArn"] = args["TopicArn"],
 	}
-	asserts.AssertS3Action(t)
-	return t
+	asserts.AssertS3Action(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.SetIdentityNotificationTopicResponse = { nil }
@@ -255,11 +332,22 @@ end
 -- Valid keys:
 -- @return SetIdentityNotificationTopicResponse structure as a key-value pair table
 function M.SetIdentityNotificationTopicResponse(args)
-	assert(args, "You must provdide an argument table when creating SetIdentityNotificationTopicResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating SetIdentityNotificationTopicResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertSetIdentityNotificationTopicResponse(t)
-	return t
+	asserts.AssertSetIdentityNotificationTopicResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ExtensionField = { ["Name"] = true, ["Value"] = true, nil }
@@ -286,13 +374,24 @@ end
 -- Required key: Value
 -- @return ExtensionField structure as a key-value pair table
 function M.ExtensionField(args)
-	assert(args, "You must provdide an argument table when creating ExtensionField")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ExtensionField")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Name"] = args["Name"],
 		["Value"] = args["Value"],
 	}
-	asserts.AssertExtensionField(t)
-	return t
+	asserts.AssertExtensionField(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdateConfigurationSetEventDestinationRequest = { ["EventDestination"] = true, ["ConfigurationSetName"] = true, nil }
@@ -319,13 +418,24 @@ end
 -- Required key: EventDestination
 -- @return UpdateConfigurationSetEventDestinationRequest structure as a key-value pair table
 function M.UpdateConfigurationSetEventDestinationRequest(args)
-	assert(args, "You must provdide an argument table when creating UpdateConfigurationSetEventDestinationRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateConfigurationSetEventDestinationRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["EventDestination"] = args["EventDestination"],
 		["ConfigurationSetName"] = args["ConfigurationSetName"],
 	}
-	asserts.AssertUpdateConfigurationSetEventDestinationRequest(t)
-	return t
+	asserts.AssertUpdateConfigurationSetEventDestinationRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Body = { ["Text"] = true, ["Html"] = true, nil }
@@ -348,13 +458,24 @@ end
 -- * Html [Content] <p>The content of the message, in HTML format. Use this for email clients that can process HTML. You can include clickable links, formatted text, and much more in an HTML message.</p>
 -- @return Body structure as a key-value pair table
 function M.Body(args)
-	assert(args, "You must provdide an argument table when creating Body")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Body")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Text"] = args["Text"],
 		["Html"] = args["Html"],
 	}
-	asserts.AssertBody(t)
-	return t
+	asserts.AssertBody(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidConfigurationSetException = { nil }
@@ -373,11 +494,22 @@ end
 -- Valid keys:
 -- @return InvalidConfigurationSetException structure as a key-value pair table
 function M.InvalidConfigurationSetException(args)
-	assert(args, "You must provdide an argument table when creating InvalidConfigurationSetException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidConfigurationSetException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertInvalidConfigurationSetException(t)
-	return t
+	asserts.AssertInvalidConfigurationSetException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteConfigurationSetRequest = { ["ConfigurationSetName"] = true, nil }
@@ -400,12 +532,23 @@ end
 -- Required key: ConfigurationSetName
 -- @return DeleteConfigurationSetRequest structure as a key-value pair table
 function M.DeleteConfigurationSetRequest(args)
-	assert(args, "You must provdide an argument table when creating DeleteConfigurationSetRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteConfigurationSetRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ConfigurationSetName"] = args["ConfigurationSetName"],
 	}
-	asserts.AssertDeleteConfigurationSetRequest(t)
-	return t
+	asserts.AssertDeleteConfigurationSetRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.BouncedRecipientInfo = { ["RecipientArn"] = true, ["Recipient"] = true, ["BounceType"] = true, ["RecipientDsnFields"] = true, nil }
@@ -434,15 +577,26 @@ end
 -- Required key: Recipient
 -- @return BouncedRecipientInfo structure as a key-value pair table
 function M.BouncedRecipientInfo(args)
-	assert(args, "You must provdide an argument table when creating BouncedRecipientInfo")
-	local t = { 
+	assert(args, "You must provide an argument table when creating BouncedRecipientInfo")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["RecipientArn"] = args["RecipientArn"],
 		["Recipient"] = args["Recipient"],
 		["BounceType"] = args["BounceType"],
 		["RecipientDsnFields"] = args["RecipientDsnFields"],
 	}
-	asserts.AssertBouncedRecipientInfo(t)
-	return t
+	asserts.AssertBouncedRecipientInfo(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CloudWatchDestination = { ["DimensionConfigurations"] = true, nil }
@@ -465,12 +619,23 @@ end
 -- Required key: DimensionConfigurations
 -- @return CloudWatchDestination structure as a key-value pair table
 function M.CloudWatchDestination(args)
-	assert(args, "You must provdide an argument table when creating CloudWatchDestination")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CloudWatchDestination")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DimensionConfigurations"] = args["DimensionConfigurations"],
 	}
-	asserts.AssertCloudWatchDestination(t)
-	return t
+	asserts.AssertCloudWatchDestination(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.IdentityVerificationAttributes = { ["VerificationToken"] = true, ["VerificationStatus"] = true, nil }
@@ -495,13 +660,24 @@ end
 -- Required key: VerificationStatus
 -- @return IdentityVerificationAttributes structure as a key-value pair table
 function M.IdentityVerificationAttributes(args)
-	assert(args, "You must provdide an argument table when creating IdentityVerificationAttributes")
-	local t = { 
+	assert(args, "You must provide an argument table when creating IdentityVerificationAttributes")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["VerificationToken"] = args["VerificationToken"],
 		["VerificationStatus"] = args["VerificationStatus"],
 	}
-	asserts.AssertIdentityVerificationAttributes(t)
-	return t
+	asserts.AssertIdentityVerificationAttributes(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListVerifiedEmailAddressesResponse = { ["VerifiedEmailAddresses"] = true, nil }
@@ -522,12 +698,23 @@ end
 -- * VerifiedEmailAddresses [AddressList] <p>A list of email addresses that have been verified.</p>
 -- @return ListVerifiedEmailAddressesResponse structure as a key-value pair table
 function M.ListVerifiedEmailAddressesResponse(args)
-	assert(args, "You must provdide an argument table when creating ListVerifiedEmailAddressesResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListVerifiedEmailAddressesResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["VerifiedEmailAddresses"] = args["VerifiedEmailAddresses"],
 	}
-	asserts.AssertListVerifiedEmailAddressesResponse(t)
-	return t
+	asserts.AssertListVerifiedEmailAddressesResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteIdentityResponse = { nil }
@@ -546,11 +733,22 @@ end
 -- Valid keys:
 -- @return DeleteIdentityResponse structure as a key-value pair table
 function M.DeleteIdentityResponse(args)
-	assert(args, "You must provdide an argument table when creating DeleteIdentityResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteIdentityResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertDeleteIdentityResponse(t)
-	return t
+	asserts.AssertDeleteIdentityResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.EventDestinationAlreadyExistsException = { ["EventDestinationName"] = true, ["ConfigurationSetName"] = true, nil }
@@ -573,13 +771,24 @@ end
 -- * ConfigurationSetName [ConfigurationSetName] 
 -- @return EventDestinationAlreadyExistsException structure as a key-value pair table
 function M.EventDestinationAlreadyExistsException(args)
-	assert(args, "You must provdide an argument table when creating EventDestinationAlreadyExistsException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating EventDestinationAlreadyExistsException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["EventDestinationName"] = args["EventDestinationName"],
 		["ConfigurationSetName"] = args["ConfigurationSetName"],
 	}
-	asserts.AssertEventDestinationAlreadyExistsException(t)
-	return t
+	asserts.AssertEventDestinationAlreadyExistsException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.VerifyDomainIdentityResponse = { ["VerificationToken"] = true, nil }
@@ -602,12 +811,23 @@ end
 -- Required key: VerificationToken
 -- @return VerifyDomainIdentityResponse structure as a key-value pair table
 function M.VerifyDomainIdentityResponse(args)
-	assert(args, "You must provdide an argument table when creating VerifyDomainIdentityResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating VerifyDomainIdentityResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["VerificationToken"] = args["VerificationToken"],
 	}
-	asserts.AssertVerifyDomainIdentityResponse(t)
-	return t
+	asserts.AssertVerifyDomainIdentityResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteConfigurationSetResponse = { nil }
@@ -626,11 +846,22 @@ end
 -- Valid keys:
 -- @return DeleteConfigurationSetResponse structure as a key-value pair table
 function M.DeleteConfigurationSetResponse(args)
-	assert(args, "You must provdide an argument table when creating DeleteConfigurationSetResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteConfigurationSetResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertDeleteConfigurationSetResponse(t)
-	return t
+	asserts.AssertDeleteConfigurationSetResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateReceiptFilterResponse = { nil }
@@ -649,11 +880,22 @@ end
 -- Valid keys:
 -- @return CreateReceiptFilterResponse structure as a key-value pair table
 function M.CreateReceiptFilterResponse(args)
-	assert(args, "You must provdide an argument table when creating CreateReceiptFilterResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateReceiptFilterResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertCreateReceiptFilterResponse(t)
-	return t
+	asserts.AssertCreateReceiptFilterResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.VerifyEmailIdentityResponse = { nil }
@@ -672,11 +914,22 @@ end
 -- Valid keys:
 -- @return VerifyEmailIdentityResponse structure as a key-value pair table
 function M.VerifyEmailIdentityResponse(args)
-	assert(args, "You must provdide an argument table when creating VerifyEmailIdentityResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating VerifyEmailIdentityResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertVerifyEmailIdentityResponse(t)
-	return t
+	asserts.AssertVerifyEmailIdentityResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.SendRawEmailRequest = { ["ReturnPathArn"] = true, ["Tags"] = true, ["RawMessage"] = true, ["Source"] = true, ["ConfigurationSetName"] = true, ["FromArn"] = true, ["SourceArn"] = true, ["Destinations"] = true, nil }
@@ -713,8 +966,14 @@ end
 -- Required key: RawMessage
 -- @return SendRawEmailRequest structure as a key-value pair table
 function M.SendRawEmailRequest(args)
-	assert(args, "You must provdide an argument table when creating SendRawEmailRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating SendRawEmailRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ReturnPathArn"] = args["ReturnPathArn"],
 		["Tags"] = args["Tags"],
 		["RawMessage"] = args["RawMessage"],
@@ -724,8 +983,13 @@ function M.SendRawEmailRequest(args)
 		["SourceArn"] = args["SourceArn"],
 		["Destinations"] = args["Destinations"],
 	}
-	asserts.AssertSendRawEmailRequest(t)
-	return t
+	asserts.AssertSendRawEmailRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetIdentityVerificationAttributesResponse = { ["VerificationAttributes"] = true, nil }
@@ -748,12 +1012,23 @@ end
 -- Required key: VerificationAttributes
 -- @return GetIdentityVerificationAttributesResponse structure as a key-value pair table
 function M.GetIdentityVerificationAttributesResponse(args)
-	assert(args, "You must provdide an argument table when creating GetIdentityVerificationAttributesResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetIdentityVerificationAttributesResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["VerificationAttributes"] = args["VerificationAttributes"],
 	}
-	asserts.AssertGetIdentityVerificationAttributesResponse(t)
-	return t
+	asserts.AssertGetIdentityVerificationAttributesResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteReceiptFilterResponse = { nil }
@@ -772,11 +1047,22 @@ end
 -- Valid keys:
 -- @return DeleteReceiptFilterResponse structure as a key-value pair table
 function M.DeleteReceiptFilterResponse(args)
-	assert(args, "You must provdide an argument table when creating DeleteReceiptFilterResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteReceiptFilterResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertDeleteReceiptFilterResponse(t)
-	return t
+	asserts.AssertDeleteReceiptFilterResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.SetIdentityFeedbackForwardingEnabledRequest = { ["ForwardingEnabled"] = true, ["Identity"] = true, nil }
@@ -803,13 +1089,24 @@ end
 -- Required key: ForwardingEnabled
 -- @return SetIdentityFeedbackForwardingEnabledRequest structure as a key-value pair table
 function M.SetIdentityFeedbackForwardingEnabledRequest(args)
-	assert(args, "You must provdide an argument table when creating SetIdentityFeedbackForwardingEnabledRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating SetIdentityFeedbackForwardingEnabledRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ForwardingEnabled"] = args["ForwardingEnabled"],
 		["Identity"] = args["Identity"],
 	}
-	asserts.AssertSetIdentityFeedbackForwardingEnabledRequest(t)
-	return t
+	asserts.AssertSetIdentityFeedbackForwardingEnabledRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.SendBounceResponse = { ["MessageId"] = true, nil }
@@ -830,12 +1127,23 @@ end
 -- * MessageId [MessageId] <p>The message ID of the bounce message.</p>
 -- @return SendBounceResponse structure as a key-value pair table
 function M.SendBounceResponse(args)
-	assert(args, "You must provdide an argument table when creating SendBounceResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating SendBounceResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["MessageId"] = args["MessageId"],
 	}
-	asserts.AssertSendBounceResponse(t)
-	return t
+	asserts.AssertSendBounceResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.VerifyEmailAddressRequest = { ["EmailAddress"] = true, nil }
@@ -858,12 +1166,23 @@ end
 -- Required key: EmailAddress
 -- @return VerifyEmailAddressRequest structure as a key-value pair table
 function M.VerifyEmailAddressRequest(args)
-	assert(args, "You must provdide an argument table when creating VerifyEmailAddressRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating VerifyEmailAddressRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["EmailAddress"] = args["EmailAddress"],
 	}
-	asserts.AssertVerifyEmailAddressRequest(t)
-	return t
+	asserts.AssertVerifyEmailAddressRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.SetIdentityHeadersInNotificationsEnabledRequest = { ["Enabled"] = true, ["NotificationType"] = true, ["Identity"] = true, nil }
@@ -894,14 +1213,25 @@ end
 -- Required key: Enabled
 -- @return SetIdentityHeadersInNotificationsEnabledRequest structure as a key-value pair table
 function M.SetIdentityHeadersInNotificationsEnabledRequest(args)
-	assert(args, "You must provdide an argument table when creating SetIdentityHeadersInNotificationsEnabledRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating SetIdentityHeadersInNotificationsEnabledRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Enabled"] = args["Enabled"],
 		["NotificationType"] = args["NotificationType"],
 		["Identity"] = args["Identity"],
 	}
-	asserts.AssertSetIdentityHeadersInNotificationsEnabledRequest(t)
-	return t
+	asserts.AssertSetIdentityHeadersInNotificationsEnabledRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.LimitExceededException = { nil }
@@ -920,11 +1250,22 @@ end
 -- Valid keys:
 -- @return LimitExceededException structure as a key-value pair table
 function M.LimitExceededException(args)
-	assert(args, "You must provdide an argument table when creating LimitExceededException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating LimitExceededException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertLimitExceededException(t)
-	return t
+	asserts.AssertLimitExceededException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ConfigurationSet = { ["Name"] = true, nil }
@@ -947,12 +1288,23 @@ end
 -- Required key: Name
 -- @return ConfigurationSet structure as a key-value pair table
 function M.ConfigurationSet(args)
-	assert(args, "You must provdide an argument table when creating ConfigurationSet")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ConfigurationSet")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Name"] = args["Name"],
 	}
-	asserts.AssertConfigurationSet(t)
-	return t
+	asserts.AssertConfigurationSet(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetIdentityMailFromDomainAttributesRequest = { ["Identities"] = true, nil }
@@ -975,12 +1327,23 @@ end
 -- Required key: Identities
 -- @return GetIdentityMailFromDomainAttributesRequest structure as a key-value pair table
 function M.GetIdentityMailFromDomainAttributesRequest(args)
-	assert(args, "You must provdide an argument table when creating GetIdentityMailFromDomainAttributesRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetIdentityMailFromDomainAttributesRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Identities"] = args["Identities"],
 	}
-	asserts.AssertGetIdentityMailFromDomainAttributesRequest(t)
-	return t
+	asserts.AssertGetIdentityMailFromDomainAttributesRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetIdentityPoliciesRequest = { ["PolicyNames"] = true, ["Identity"] = true, nil }
@@ -1007,13 +1370,24 @@ end
 -- Required key: PolicyNames
 -- @return GetIdentityPoliciesRequest structure as a key-value pair table
 function M.GetIdentityPoliciesRequest(args)
-	assert(args, "You must provdide an argument table when creating GetIdentityPoliciesRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetIdentityPoliciesRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["PolicyNames"] = args["PolicyNames"],
 		["Identity"] = args["Identity"],
 	}
-	asserts.AssertGetIdentityPoliciesRequest(t)
-	return t
+	asserts.AssertGetIdentityPoliciesRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.SetIdentityDkimEnabledResponse = { nil }
@@ -1032,11 +1406,22 @@ end
 -- Valid keys:
 -- @return SetIdentityDkimEnabledResponse structure as a key-value pair table
 function M.SetIdentityDkimEnabledResponse(args)
-	assert(args, "You must provdide an argument table when creating SetIdentityDkimEnabledResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating SetIdentityDkimEnabledResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertSetIdentityDkimEnabledResponse(t)
-	return t
+	asserts.AssertSetIdentityDkimEnabledResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateConfigurationSetEventDestinationRequest = { ["EventDestination"] = true, ["ConfigurationSetName"] = true, nil }
@@ -1063,13 +1448,24 @@ end
 -- Required key: EventDestination
 -- @return CreateConfigurationSetEventDestinationRequest structure as a key-value pair table
 function M.CreateConfigurationSetEventDestinationRequest(args)
-	assert(args, "You must provdide an argument table when creating CreateConfigurationSetEventDestinationRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateConfigurationSetEventDestinationRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["EventDestination"] = args["EventDestination"],
 		["ConfigurationSetName"] = args["ConfigurationSetName"],
 	}
-	asserts.AssertCreateConfigurationSetEventDestinationRequest(t)
-	return t
+	asserts.AssertCreateConfigurationSetEventDestinationRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetIdentityDkimAttributesRequest = { ["Identities"] = true, nil }
@@ -1092,12 +1488,23 @@ end
 -- Required key: Identities
 -- @return GetIdentityDkimAttributesRequest structure as a key-value pair table
 function M.GetIdentityDkimAttributesRequest(args)
-	assert(args, "You must provdide an argument table when creating GetIdentityDkimAttributesRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetIdentityDkimAttributesRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Identities"] = args["Identities"],
 	}
-	asserts.AssertGetIdentityDkimAttributesRequest(t)
-	return t
+	asserts.AssertGetIdentityDkimAttributesRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.StopAction = { ["Scope"] = true, ["TopicArn"] = true, nil }
@@ -1122,13 +1529,24 @@ end
 -- Required key: Scope
 -- @return StopAction structure as a key-value pair table
 function M.StopAction(args)
-	assert(args, "You must provdide an argument table when creating StopAction")
-	local t = { 
+	assert(args, "You must provide an argument table when creating StopAction")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Scope"] = args["Scope"],
 		["TopicArn"] = args["TopicArn"],
 	}
-	asserts.AssertStopAction(t)
-	return t
+	asserts.AssertStopAction(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.SendEmailRequest = { ["Tags"] = true, ["ReturnPathArn"] = true, ["ReplyToAddresses"] = true, ["Destination"] = true, ["Source"] = true, ["ReturnPath"] = true, ["ConfigurationSetName"] = true, ["Message"] = true, ["SourceArn"] = true, nil }
@@ -1171,8 +1589,14 @@ end
 -- Required key: Message
 -- @return SendEmailRequest structure as a key-value pair table
 function M.SendEmailRequest(args)
-	assert(args, "You must provdide an argument table when creating SendEmailRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating SendEmailRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Tags"] = args["Tags"],
 		["ReturnPathArn"] = args["ReturnPathArn"],
 		["ReplyToAddresses"] = args["ReplyToAddresses"],
@@ -1183,8 +1607,13 @@ function M.SendEmailRequest(args)
 		["Message"] = args["Message"],
 		["SourceArn"] = args["SourceArn"],
 	}
-	asserts.AssertSendEmailRequest(t)
-	return t
+	asserts.AssertSendEmailRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidSnsTopicException = { ["Topic"] = true, nil }
@@ -1205,12 +1634,23 @@ end
 -- * Topic [AmazonResourceName] 
 -- @return InvalidSnsTopicException structure as a key-value pair table
 function M.InvalidSnsTopicException(args)
-	assert(args, "You must provdide an argument table when creating InvalidSnsTopicException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidSnsTopicException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Topic"] = args["Topic"],
 	}
-	asserts.AssertInvalidSnsTopicException(t)
-	return t
+	asserts.AssertInvalidSnsTopicException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteVerifiedEmailAddressRequest = { ["EmailAddress"] = true, nil }
@@ -1233,12 +1673,23 @@ end
 -- Required key: EmailAddress
 -- @return DeleteVerifiedEmailAddressRequest structure as a key-value pair table
 function M.DeleteVerifiedEmailAddressRequest(args)
-	assert(args, "You must provdide an argument table when creating DeleteVerifiedEmailAddressRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteVerifiedEmailAddressRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["EmailAddress"] = args["EmailAddress"],
 	}
-	asserts.AssertDeleteVerifiedEmailAddressRequest(t)
-	return t
+	asserts.AssertDeleteVerifiedEmailAddressRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.EventDestination = { ["MatchingEventTypes"] = true, ["Enabled"] = true, ["Name"] = true, ["CloudWatchDestination"] = true, ["KinesisFirehoseDestination"] = true, nil }
@@ -1271,16 +1722,27 @@ end
 -- Required key: MatchingEventTypes
 -- @return EventDestination structure as a key-value pair table
 function M.EventDestination(args)
-	assert(args, "You must provdide an argument table when creating EventDestination")
-	local t = { 
+	assert(args, "You must provide an argument table when creating EventDestination")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["MatchingEventTypes"] = args["MatchingEventTypes"],
 		["Enabled"] = args["Enabled"],
 		["Name"] = args["Name"],
 		["CloudWatchDestination"] = args["CloudWatchDestination"],
 		["KinesisFirehoseDestination"] = args["KinesisFirehoseDestination"],
 	}
-	asserts.AssertEventDestination(t)
-	return t
+	asserts.AssertEventDestination(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteReceiptRuleSetResponse = { nil }
@@ -1299,11 +1761,22 @@ end
 -- Valid keys:
 -- @return DeleteReceiptRuleSetResponse structure as a key-value pair table
 function M.DeleteReceiptRuleSetResponse(args)
-	assert(args, "You must provdide an argument table when creating DeleteReceiptRuleSetResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteReceiptRuleSetResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertDeleteReceiptRuleSetResponse(t)
-	return t
+	asserts.AssertDeleteReceiptRuleSetResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.IdentityMailFromDomainAttributes = { ["MailFromDomain"] = true, ["BehaviorOnMXFailure"] = true, ["MailFromDomainStatus"] = true, nil }
@@ -1334,14 +1807,25 @@ end
 -- Required key: BehaviorOnMXFailure
 -- @return IdentityMailFromDomainAttributes structure as a key-value pair table
 function M.IdentityMailFromDomainAttributes(args)
-	assert(args, "You must provdide an argument table when creating IdentityMailFromDomainAttributes")
-	local t = { 
+	assert(args, "You must provide an argument table when creating IdentityMailFromDomainAttributes")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["MailFromDomain"] = args["MailFromDomain"],
 		["BehaviorOnMXFailure"] = args["BehaviorOnMXFailure"],
 		["MailFromDomainStatus"] = args["MailFromDomainStatus"],
 	}
-	asserts.AssertIdentityMailFromDomainAttributes(t)
-	return t
+	asserts.AssertIdentityMailFromDomainAttributes(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetSendStatisticsResponse = { ["SendDataPoints"] = true, nil }
@@ -1362,12 +1846,23 @@ end
 -- * SendDataPoints [SendDataPointList] <p>A list of data points, each of which represents 15 minutes of activity.</p>
 -- @return GetSendStatisticsResponse structure as a key-value pair table
 function M.GetSendStatisticsResponse(args)
-	assert(args, "You must provdide an argument table when creating GetSendStatisticsResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetSendStatisticsResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["SendDataPoints"] = args["SendDataPoints"],
 	}
-	asserts.AssertGetSendStatisticsResponse(t)
-	return t
+	asserts.AssertGetSendStatisticsResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.SetIdentityDkimEnabledRequest = { ["DkimEnabled"] = true, ["Identity"] = true, nil }
@@ -1394,13 +1889,24 @@ end
 -- Required key: DkimEnabled
 -- @return SetIdentityDkimEnabledRequest structure as a key-value pair table
 function M.SetIdentityDkimEnabledRequest(args)
-	assert(args, "You must provdide an argument table when creating SetIdentityDkimEnabledRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating SetIdentityDkimEnabledRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DkimEnabled"] = args["DkimEnabled"],
 		["Identity"] = args["Identity"],
 	}
-	asserts.AssertSetIdentityDkimEnabledRequest(t)
-	return t
+	asserts.AssertSetIdentityDkimEnabledRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ReceiptRule = { ["Name"] = true, ["Recipients"] = true, ["Enabled"] = true, ["ScanEnabled"] = true, ["Actions"] = true, ["TlsPolicy"] = true, nil }
@@ -1433,8 +1939,14 @@ end
 -- Required key: Name
 -- @return ReceiptRule structure as a key-value pair table
 function M.ReceiptRule(args)
-	assert(args, "You must provdide an argument table when creating ReceiptRule")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ReceiptRule")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Name"] = args["Name"],
 		["Recipients"] = args["Recipients"],
 		["Enabled"] = args["Enabled"],
@@ -1442,8 +1954,13 @@ function M.ReceiptRule(args)
 		["Actions"] = args["Actions"],
 		["TlsPolicy"] = args["TlsPolicy"],
 	}
-	asserts.AssertReceiptRule(t)
-	return t
+	asserts.AssertReceiptRule(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateReceiptRuleSetResponse = { nil }
@@ -1462,11 +1979,22 @@ end
 -- Valid keys:
 -- @return CreateReceiptRuleSetResponse structure as a key-value pair table
 function M.CreateReceiptRuleSetResponse(args)
-	assert(args, "You must provdide an argument table when creating CreateReceiptRuleSetResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateReceiptRuleSetResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertCreateReceiptRuleSetResponse(t)
-	return t
+	asserts.AssertCreateReceiptRuleSetResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ReceiptAction = { ["AddHeaderAction"] = true, ["S3Action"] = true, ["SNSAction"] = true, ["BounceAction"] = true, ["LambdaAction"] = true, ["StopAction"] = true, ["WorkmailAction"] = true, nil }
@@ -1499,8 +2027,14 @@ end
 -- * WorkmailAction [WorkmailAction] <p>Calls Amazon WorkMail and, optionally, publishes a notification to Amazon SNS.</p>
 -- @return ReceiptAction structure as a key-value pair table
 function M.ReceiptAction(args)
-	assert(args, "You must provdide an argument table when creating ReceiptAction")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ReceiptAction")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["AddHeaderAction"] = args["AddHeaderAction"],
 		["S3Action"] = args["S3Action"],
 		["SNSAction"] = args["SNSAction"],
@@ -1509,8 +2043,13 @@ function M.ReceiptAction(args)
 		["StopAction"] = args["StopAction"],
 		["WorkmailAction"] = args["WorkmailAction"],
 	}
-	asserts.AssertReceiptAction(t)
-	return t
+	asserts.AssertReceiptAction(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteReceiptRuleSetRequest = { ["RuleSetName"] = true, nil }
@@ -1533,12 +2072,23 @@ end
 -- Required key: RuleSetName
 -- @return DeleteReceiptRuleSetRequest structure as a key-value pair table
 function M.DeleteReceiptRuleSetRequest(args)
-	assert(args, "You must provdide an argument table when creating DeleteReceiptRuleSetRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteReceiptRuleSetRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["RuleSetName"] = args["RuleSetName"],
 	}
-	asserts.AssertDeleteReceiptRuleSetRequest(t)
-	return t
+	asserts.AssertDeleteReceiptRuleSetRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.SetReceiptRulePositionResponse = { nil }
@@ -1557,11 +2107,22 @@ end
 -- Valid keys:
 -- @return SetReceiptRulePositionResponse structure as a key-value pair table
 function M.SetReceiptRulePositionResponse(args)
-	assert(args, "You must provdide an argument table when creating SetReceiptRulePositionResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating SetReceiptRulePositionResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertSetReceiptRulePositionResponse(t)
-	return t
+	asserts.AssertSetReceiptRulePositionResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetIdentityNotificationAttributesRequest = { ["Identities"] = true, nil }
@@ -1584,12 +2145,23 @@ end
 -- Required key: Identities
 -- @return GetIdentityNotificationAttributesRequest structure as a key-value pair table
 function M.GetIdentityNotificationAttributesRequest(args)
-	assert(args, "You must provdide an argument table when creating GetIdentityNotificationAttributesRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetIdentityNotificationAttributesRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Identities"] = args["Identities"],
 	}
-	asserts.AssertGetIdentityNotificationAttributesRequest(t)
-	return t
+	asserts.AssertGetIdentityNotificationAttributesRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidS3ConfigurationException = { ["Bucket"] = true, nil }
@@ -1610,12 +2182,23 @@ end
 -- * Bucket [S3BucketName] 
 -- @return InvalidS3ConfigurationException structure as a key-value pair table
 function M.InvalidS3ConfigurationException(args)
-	assert(args, "You must provdide an argument table when creating InvalidS3ConfigurationException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidS3ConfigurationException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Bucket"] = args["Bucket"],
 	}
-	asserts.AssertInvalidS3ConfigurationException(t)
-	return t
+	asserts.AssertInvalidS3ConfigurationException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.SetIdentityMailFromDomainRequest = { ["MailFromDomain"] = true, ["Identity"] = true, ["BehaviorOnMXFailure"] = true, nil }
@@ -1642,14 +2225,25 @@ end
 -- Required key: Identity
 -- @return SetIdentityMailFromDomainRequest structure as a key-value pair table
 function M.SetIdentityMailFromDomainRequest(args)
-	assert(args, "You must provdide an argument table when creating SetIdentityMailFromDomainRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating SetIdentityMailFromDomainRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["MailFromDomain"] = args["MailFromDomain"],
 		["Identity"] = args["Identity"],
 		["BehaviorOnMXFailure"] = args["BehaviorOnMXFailure"],
 	}
-	asserts.AssertSetIdentityMailFromDomainRequest(t)
-	return t
+	asserts.AssertSetIdentityMailFromDomainRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteConfigurationSetEventDestinationResponse = { nil }
@@ -1668,11 +2262,22 @@ end
 -- Valid keys:
 -- @return DeleteConfigurationSetEventDestinationResponse structure as a key-value pair table
 function M.DeleteConfigurationSetEventDestinationResponse(args)
-	assert(args, "You must provdide an argument table when creating DeleteConfigurationSetEventDestinationResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteConfigurationSetEventDestinationResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertDeleteConfigurationSetEventDestinationResponse(t)
-	return t
+	asserts.AssertDeleteConfigurationSetEventDestinationResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdateReceiptRuleRequest = { ["RuleSetName"] = true, ["Rule"] = true, nil }
@@ -1699,13 +2304,24 @@ end
 -- Required key: Rule
 -- @return UpdateReceiptRuleRequest structure as a key-value pair table
 function M.UpdateReceiptRuleRequest(args)
-	assert(args, "You must provdide an argument table when creating UpdateReceiptRuleRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateReceiptRuleRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["RuleSetName"] = args["RuleSetName"],
 		["Rule"] = args["Rule"],
 	}
-	asserts.AssertUpdateReceiptRuleRequest(t)
-	return t
+	asserts.AssertUpdateReceiptRuleRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.SetIdentityHeadersInNotificationsEnabledResponse = { nil }
@@ -1724,11 +2340,22 @@ end
 -- Valid keys:
 -- @return SetIdentityHeadersInNotificationsEnabledResponse structure as a key-value pair table
 function M.SetIdentityHeadersInNotificationsEnabledResponse(args)
-	assert(args, "You must provdide an argument table when creating SetIdentityHeadersInNotificationsEnabledResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating SetIdentityHeadersInNotificationsEnabledResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertSetIdentityHeadersInNotificationsEnabledResponse(t)
-	return t
+	asserts.AssertSetIdentityHeadersInNotificationsEnabledResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.WorkmailAction = { ["OrganizationArn"] = true, ["TopicArn"] = true, nil }
@@ -1753,13 +2380,24 @@ end
 -- Required key: OrganizationArn
 -- @return WorkmailAction structure as a key-value pair table
 function M.WorkmailAction(args)
-	assert(args, "You must provdide an argument table when creating WorkmailAction")
-	local t = { 
+	assert(args, "You must provide an argument table when creating WorkmailAction")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["OrganizationArn"] = args["OrganizationArn"],
 		["TopicArn"] = args["TopicArn"],
 	}
-	asserts.AssertWorkmailAction(t)
-	return t
+	asserts.AssertWorkmailAction(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ReceiptFilter = { ["IpFilter"] = true, ["Name"] = true, nil }
@@ -1786,13 +2424,24 @@ end
 -- Required key: IpFilter
 -- @return ReceiptFilter structure as a key-value pair table
 function M.ReceiptFilter(args)
-	assert(args, "You must provdide an argument table when creating ReceiptFilter")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ReceiptFilter")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["IpFilter"] = args["IpFilter"],
 		["Name"] = args["Name"],
 	}
-	asserts.AssertReceiptFilter(t)
-	return t
+	asserts.AssertReceiptFilter(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.SetIdentityFeedbackForwardingEnabledResponse = { nil }
@@ -1811,11 +2460,22 @@ end
 -- Valid keys:
 -- @return SetIdentityFeedbackForwardingEnabledResponse structure as a key-value pair table
 function M.SetIdentityFeedbackForwardingEnabledResponse(args)
-	assert(args, "You must provdide an argument table when creating SetIdentityFeedbackForwardingEnabledResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating SetIdentityFeedbackForwardingEnabledResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertSetIdentityFeedbackForwardingEnabledResponse(t)
-	return t
+	asserts.AssertSetIdentityFeedbackForwardingEnabledResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ConfigurationSetAlreadyExistsException = { ["ConfigurationSetName"] = true, nil }
@@ -1836,12 +2496,23 @@ end
 -- * ConfigurationSetName [ConfigurationSetName] 
 -- @return ConfigurationSetAlreadyExistsException structure as a key-value pair table
 function M.ConfigurationSetAlreadyExistsException(args)
-	assert(args, "You must provdide an argument table when creating ConfigurationSetAlreadyExistsException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ConfigurationSetAlreadyExistsException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ConfigurationSetName"] = args["ConfigurationSetName"],
 	}
-	asserts.AssertConfigurationSetAlreadyExistsException(t)
-	return t
+	asserts.AssertConfigurationSetAlreadyExistsException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeReceiptRuleSetResponse = { ["Rules"] = true, ["Metadata"] = true, nil }
@@ -1864,13 +2535,24 @@ end
 -- * Metadata [ReceiptRuleSetMetadata] <p>The metadata for the receipt rule set, which consists of the rule set name and the timestamp of when the rule set was created.</p>
 -- @return DescribeReceiptRuleSetResponse structure as a key-value pair table
 function M.DescribeReceiptRuleSetResponse(args)
-	assert(args, "You must provdide an argument table when creating DescribeReceiptRuleSetResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeReceiptRuleSetResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Rules"] = args["Rules"],
 		["Metadata"] = args["Metadata"],
 	}
-	asserts.AssertDescribeReceiptRuleSetResponse(t)
-	return t
+	asserts.AssertDescribeReceiptRuleSetResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListReceiptRuleSetsRequest = { ["NextToken"] = true, nil }
@@ -1891,12 +2573,23 @@ end
 -- * NextToken [NextToken] <p>A token returned from a previous call to <code>ListReceiptRuleSets</code> to indicate the position in the receipt rule set list.</p>
 -- @return ListReceiptRuleSetsRequest structure as a key-value pair table
 function M.ListReceiptRuleSetsRequest(args)
-	assert(args, "You must provdide an argument table when creating ListReceiptRuleSetsRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListReceiptRuleSetsRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NextToken"] = args["NextToken"],
 	}
-	asserts.AssertListReceiptRuleSetsRequest(t)
-	return t
+	asserts.AssertListReceiptRuleSetsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.VerifyEmailIdentityRequest = { ["EmailAddress"] = true, nil }
@@ -1919,12 +2612,23 @@ end
 -- Required key: EmailAddress
 -- @return VerifyEmailIdentityRequest structure as a key-value pair table
 function M.VerifyEmailIdentityRequest(args)
-	assert(args, "You must provdide an argument table when creating VerifyEmailIdentityRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating VerifyEmailIdentityRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["EmailAddress"] = args["EmailAddress"],
 	}
-	asserts.AssertVerifyEmailIdentityRequest(t)
-	return t
+	asserts.AssertVerifyEmailIdentityRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.MessageTag = { ["Name"] = true, ["Value"] = true, nil }
@@ -1951,13 +2655,24 @@ end
 -- Required key: Value
 -- @return MessageTag structure as a key-value pair table
 function M.MessageTag(args)
-	assert(args, "You must provdide an argument table when creating MessageTag")
-	local t = { 
+	assert(args, "You must provide an argument table when creating MessageTag")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Name"] = args["Name"],
 		["Value"] = args["Value"],
 	}
-	asserts.AssertMessageTag(t)
-	return t
+	asserts.AssertMessageTag(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetIdentityMailFromDomainAttributesResponse = { ["MailFromDomainAttributes"] = true, nil }
@@ -1980,12 +2695,23 @@ end
 -- Required key: MailFromDomainAttributes
 -- @return GetIdentityMailFromDomainAttributesResponse structure as a key-value pair table
 function M.GetIdentityMailFromDomainAttributesResponse(args)
-	assert(args, "You must provdide an argument table when creating GetIdentityMailFromDomainAttributesResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetIdentityMailFromDomainAttributesResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["MailFromDomainAttributes"] = args["MailFromDomainAttributes"],
 	}
-	asserts.AssertGetIdentityMailFromDomainAttributesResponse(t)
-	return t
+	asserts.AssertGetIdentityMailFromDomainAttributesResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListIdentitiesResponse = { ["NextToken"] = true, ["Identities"] = true, nil }
@@ -2010,13 +2736,24 @@ end
 -- Required key: Identities
 -- @return ListIdentitiesResponse structure as a key-value pair table
 function M.ListIdentitiesResponse(args)
-	assert(args, "You must provdide an argument table when creating ListIdentitiesResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListIdentitiesResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NextToken"] = args["NextToken"],
 		["Identities"] = args["Identities"],
 	}
-	asserts.AssertListIdentitiesResponse(t)
-	return t
+	asserts.AssertListIdentitiesResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Message = { ["Body"] = true, ["Subject"] = true, nil }
@@ -2043,13 +2780,24 @@ end
 -- Required key: Body
 -- @return Message structure as a key-value pair table
 function M.Message(args)
-	assert(args, "You must provdide an argument table when creating Message")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Message")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Body"] = args["Body"],
 		["Subject"] = args["Subject"],
 	}
-	asserts.AssertMessage(t)
-	return t
+	asserts.AssertMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeReceiptRuleSetRequest = { ["RuleSetName"] = true, nil }
@@ -2072,12 +2820,23 @@ end
 -- Required key: RuleSetName
 -- @return DescribeReceiptRuleSetRequest structure as a key-value pair table
 function M.DescribeReceiptRuleSetRequest(args)
-	assert(args, "You must provdide an argument table when creating DescribeReceiptRuleSetRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeReceiptRuleSetRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["RuleSetName"] = args["RuleSetName"],
 	}
-	asserts.AssertDescribeReceiptRuleSetRequest(t)
-	return t
+	asserts.AssertDescribeReceiptRuleSetRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.SendBounceRequest = { ["OriginalMessageId"] = true, ["BounceSenderArn"] = true, ["Explanation"] = true, ["BouncedRecipientInfoList"] = true, ["BounceSender"] = true, ["MessageDsn"] = true, nil }
@@ -2114,8 +2873,14 @@ end
 -- Required key: BouncedRecipientInfoList
 -- @return SendBounceRequest structure as a key-value pair table
 function M.SendBounceRequest(args)
-	assert(args, "You must provdide an argument table when creating SendBounceRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating SendBounceRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["OriginalMessageId"] = args["OriginalMessageId"],
 		["BounceSenderArn"] = args["BounceSenderArn"],
 		["Explanation"] = args["Explanation"],
@@ -2123,8 +2888,13 @@ function M.SendBounceRequest(args)
 		["BounceSender"] = args["BounceSender"],
 		["MessageDsn"] = args["MessageDsn"],
 	}
-	asserts.AssertSendBounceRequest(t)
-	return t
+	asserts.AssertSendBounceRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CloudWatchDimensionConfiguration = { ["DimensionName"] = true, ["DimensionValueSource"] = true, ["DefaultDimensionValue"] = true, nil }
@@ -2155,14 +2925,25 @@ end
 -- Required key: DefaultDimensionValue
 -- @return CloudWatchDimensionConfiguration structure as a key-value pair table
 function M.CloudWatchDimensionConfiguration(args)
-	assert(args, "You must provdide an argument table when creating CloudWatchDimensionConfiguration")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CloudWatchDimensionConfiguration")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DimensionName"] = args["DimensionName"],
 		["DimensionValueSource"] = args["DimensionValueSource"],
 		["DefaultDimensionValue"] = args["DefaultDimensionValue"],
 	}
-	asserts.AssertCloudWatchDimensionConfiguration(t)
-	return t
+	asserts.AssertCloudWatchDimensionConfiguration(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListIdentityPoliciesRequest = { ["Identity"] = true, nil }
@@ -2185,12 +2966,23 @@ end
 -- Required key: Identity
 -- @return ListIdentityPoliciesRequest structure as a key-value pair table
 function M.ListIdentityPoliciesRequest(args)
-	assert(args, "You must provdide an argument table when creating ListIdentityPoliciesRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListIdentityPoliciesRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Identity"] = args["Identity"],
 	}
-	asserts.AssertListIdentityPoliciesRequest(t)
-	return t
+	asserts.AssertListIdentityPoliciesRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AlreadyExistsException = { ["Name"] = true, nil }
@@ -2211,12 +3003,23 @@ end
 -- * Name [RuleOrRuleSetName] 
 -- @return AlreadyExistsException structure as a key-value pair table
 function M.AlreadyExistsException(args)
-	assert(args, "You must provdide an argument table when creating AlreadyExistsException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AlreadyExistsException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Name"] = args["Name"],
 	}
-	asserts.AssertAlreadyExistsException(t)
-	return t
+	asserts.AssertAlreadyExistsException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeReceiptRuleResponse = { ["Rule"] = true, nil }
@@ -2237,12 +3040,23 @@ end
 -- * Rule [ReceiptRule] <p>A data structure that contains the specified receipt rule's name, actions, recipients, domains, enabled status, scan status, and Transport Layer Security (TLS) policy.</p>
 -- @return DescribeReceiptRuleResponse structure as a key-value pair table
 function M.DescribeReceiptRuleResponse(args)
-	assert(args, "You must provdide an argument table when creating DescribeReceiptRuleResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeReceiptRuleResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Rule"] = args["Rule"],
 	}
-	asserts.AssertDescribeReceiptRuleResponse(t)
-	return t
+	asserts.AssertDescribeReceiptRuleResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetIdentityDkimAttributesResponse = { ["DkimAttributes"] = true, nil }
@@ -2265,12 +3079,23 @@ end
 -- Required key: DkimAttributes
 -- @return GetIdentityDkimAttributesResponse structure as a key-value pair table
 function M.GetIdentityDkimAttributesResponse(args)
-	assert(args, "You must provdide an argument table when creating GetIdentityDkimAttributesResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetIdentityDkimAttributesResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DkimAttributes"] = args["DkimAttributes"],
 	}
-	asserts.AssertGetIdentityDkimAttributesResponse(t)
-	return t
+	asserts.AssertGetIdentityDkimAttributesResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateReceiptRuleRequest = { ["After"] = true, ["RuleSetName"] = true, ["Rule"] = true, nil }
@@ -2299,14 +3124,25 @@ end
 -- Required key: Rule
 -- @return CreateReceiptRuleRequest structure as a key-value pair table
 function M.CreateReceiptRuleRequest(args)
-	assert(args, "You must provdide an argument table when creating CreateReceiptRuleRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateReceiptRuleRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["After"] = args["After"],
 		["RuleSetName"] = args["RuleSetName"],
 		["Rule"] = args["Rule"],
 	}
-	asserts.AssertCreateReceiptRuleRequest(t)
-	return t
+	asserts.AssertCreateReceiptRuleRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteReceiptRuleRequest = { ["RuleSetName"] = true, ["RuleName"] = true, nil }
@@ -2333,13 +3169,24 @@ end
 -- Required key: RuleName
 -- @return DeleteReceiptRuleRequest structure as a key-value pair table
 function M.DeleteReceiptRuleRequest(args)
-	assert(args, "You must provdide an argument table when creating DeleteReceiptRuleRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteReceiptRuleRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["RuleSetName"] = args["RuleSetName"],
 		["RuleName"] = args["RuleName"],
 	}
-	asserts.AssertDeleteReceiptRuleRequest(t)
-	return t
+	asserts.AssertDeleteReceiptRuleRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.SNSAction = { ["TopicArn"] = true, ["Encoding"] = true, nil }
@@ -2364,13 +3211,24 @@ end
 -- Required key: TopicArn
 -- @return SNSAction structure as a key-value pair table
 function M.SNSAction(args)
-	assert(args, "You must provdide an argument table when creating SNSAction")
-	local t = { 
+	assert(args, "You must provide an argument table when creating SNSAction")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["TopicArn"] = args["TopicArn"],
 		["Encoding"] = args["Encoding"],
 	}
-	asserts.AssertSNSAction(t)
-	return t
+	asserts.AssertSNSAction(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteIdentityPolicyResponse = { nil }
@@ -2389,11 +3247,22 @@ end
 -- Valid keys:
 -- @return DeleteIdentityPolicyResponse structure as a key-value pair table
 function M.DeleteIdentityPolicyResponse(args)
-	assert(args, "You must provdide an argument table when creating DeleteIdentityPolicyResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteIdentityPolicyResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertDeleteIdentityPolicyResponse(t)
-	return t
+	asserts.AssertDeleteIdentityPolicyResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.MessageDsn = { ["ArrivalDate"] = true, ["ReportingMta"] = true, ["ExtensionFields"] = true, nil }
@@ -2420,14 +3289,25 @@ end
 -- Required key: ReportingMta
 -- @return MessageDsn structure as a key-value pair table
 function M.MessageDsn(args)
-	assert(args, "You must provdide an argument table when creating MessageDsn")
-	local t = { 
+	assert(args, "You must provide an argument table when creating MessageDsn")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ArrivalDate"] = args["ArrivalDate"],
 		["ReportingMta"] = args["ReportingMta"],
 		["ExtensionFields"] = args["ExtensionFields"],
 	}
-	asserts.AssertMessageDsn(t)
-	return t
+	asserts.AssertMessageDsn(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.VerifyDomainDkimResponse = { ["DkimTokens"] = true, nil }
@@ -2450,12 +3330,23 @@ end
 -- Required key: DkimTokens
 -- @return VerifyDomainDkimResponse structure as a key-value pair table
 function M.VerifyDomainDkimResponse(args)
-	assert(args, "You must provdide an argument table when creating VerifyDomainDkimResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating VerifyDomainDkimResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DkimTokens"] = args["DkimTokens"],
 	}
-	asserts.AssertVerifyDomainDkimResponse(t)
-	return t
+	asserts.AssertVerifyDomainDkimResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListReceiptFiltersRequest = { nil }
@@ -2474,11 +3365,22 @@ end
 -- Valid keys:
 -- @return ListReceiptFiltersRequest structure as a key-value pair table
 function M.ListReceiptFiltersRequest(args)
-	assert(args, "You must provdide an argument table when creating ListReceiptFiltersRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListReceiptFiltersRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertListReceiptFiltersRequest(t)
-	return t
+	asserts.AssertListReceiptFiltersRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeConfigurationSetRequest = { ["ConfigurationSetAttributeNames"] = true, ["ConfigurationSetName"] = true, nil }
@@ -2503,13 +3405,24 @@ end
 -- Required key: ConfigurationSetName
 -- @return DescribeConfigurationSetRequest structure as a key-value pair table
 function M.DescribeConfigurationSetRequest(args)
-	assert(args, "You must provdide an argument table when creating DescribeConfigurationSetRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeConfigurationSetRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ConfigurationSetAttributeNames"] = args["ConfigurationSetAttributeNames"],
 		["ConfigurationSetName"] = args["ConfigurationSetName"],
 	}
-	asserts.AssertDescribeConfigurationSetRequest(t)
-	return t
+	asserts.AssertDescribeConfigurationSetRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateConfigurationSetEventDestinationResponse = { nil }
@@ -2528,11 +3441,22 @@ end
 -- Valid keys:
 -- @return CreateConfigurationSetEventDestinationResponse structure as a key-value pair table
 function M.CreateConfigurationSetEventDestinationResponse(args)
-	assert(args, "You must provdide an argument table when creating CreateConfigurationSetEventDestinationResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateConfigurationSetEventDestinationResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertCreateConfigurationSetEventDestinationResponse(t)
-	return t
+	asserts.AssertCreateConfigurationSetEventDestinationResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.SendRawEmailResponse = { ["MessageId"] = true, nil }
@@ -2555,12 +3479,23 @@ end
 -- Required key: MessageId
 -- @return SendRawEmailResponse structure as a key-value pair table
 function M.SendRawEmailResponse(args)
-	assert(args, "You must provdide an argument table when creating SendRawEmailResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating SendRawEmailResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["MessageId"] = args["MessageId"],
 	}
-	asserts.AssertSendRawEmailResponse(t)
-	return t
+	asserts.AssertSendRawEmailResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetIdentityVerificationAttributesRequest = { ["Identities"] = true, nil }
@@ -2583,12 +3518,23 @@ end
 -- Required key: Identities
 -- @return GetIdentityVerificationAttributesRequest structure as a key-value pair table
 function M.GetIdentityVerificationAttributesRequest(args)
-	assert(args, "You must provdide an argument table when creating GetIdentityVerificationAttributesRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetIdentityVerificationAttributesRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Identities"] = args["Identities"],
 	}
-	asserts.AssertGetIdentityVerificationAttributesRequest(t)
-	return t
+	asserts.AssertGetIdentityVerificationAttributesRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateReceiptFilterRequest = { ["Filter"] = true, nil }
@@ -2611,12 +3557,23 @@ end
 -- Required key: Filter
 -- @return CreateReceiptFilterRequest structure as a key-value pair table
 function M.CreateReceiptFilterRequest(args)
-	assert(args, "You must provdide an argument table when creating CreateReceiptFilterRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateReceiptFilterRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Filter"] = args["Filter"],
 	}
-	asserts.AssertCreateReceiptFilterRequest(t)
-	return t
+	asserts.AssertCreateReceiptFilterRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CannotDeleteException = { ["Name"] = true, nil }
@@ -2637,12 +3594,23 @@ end
 -- * Name [RuleOrRuleSetName] 
 -- @return CannotDeleteException structure as a key-value pair table
 function M.CannotDeleteException(args)
-	assert(args, "You must provdide an argument table when creating CannotDeleteException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CannotDeleteException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Name"] = args["Name"],
 	}
-	asserts.AssertCannotDeleteException(t)
-	return t
+	asserts.AssertCannotDeleteException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListReceiptRuleSetsResponse = { ["NextToken"] = true, ["RuleSets"] = true, nil }
@@ -2665,13 +3633,24 @@ end
 -- * RuleSets [ReceiptRuleSetsLists] <p>The metadata for the currently active receipt rule set. The metadata consists of the rule set name and the timestamp of when the rule set was created.</p>
 -- @return ListReceiptRuleSetsResponse structure as a key-value pair table
 function M.ListReceiptRuleSetsResponse(args)
-	assert(args, "You must provdide an argument table when creating ListReceiptRuleSetsResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListReceiptRuleSetsResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NextToken"] = args["NextToken"],
 		["RuleSets"] = args["RuleSets"],
 	}
-	asserts.AssertListReceiptRuleSetsResponse(t)
-	return t
+	asserts.AssertListReceiptRuleSetsResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CloneReceiptRuleSetRequest = { ["RuleSetName"] = true, ["OriginalRuleSetName"] = true, nil }
@@ -2698,13 +3677,24 @@ end
 -- Required key: OriginalRuleSetName
 -- @return CloneReceiptRuleSetRequest structure as a key-value pair table
 function M.CloneReceiptRuleSetRequest(args)
-	assert(args, "You must provdide an argument table when creating CloneReceiptRuleSetRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CloneReceiptRuleSetRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["RuleSetName"] = args["RuleSetName"],
 		["OriginalRuleSetName"] = args["OriginalRuleSetName"],
 	}
-	asserts.AssertCloneReceiptRuleSetRequest(t)
-	return t
+	asserts.AssertCloneReceiptRuleSetRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeConfigurationSetResponse = { ["EventDestinations"] = true, ["ConfigurationSet"] = true, nil }
@@ -2727,13 +3717,24 @@ end
 -- * ConfigurationSet [ConfigurationSet] <p>The configuration set object associated with the specified configuration set.</p>
 -- @return DescribeConfigurationSetResponse structure as a key-value pair table
 function M.DescribeConfigurationSetResponse(args)
-	assert(args, "You must provdide an argument table when creating DescribeConfigurationSetResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeConfigurationSetResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["EventDestinations"] = args["EventDestinations"],
 		["ConfigurationSet"] = args["ConfigurationSet"],
 	}
-	asserts.AssertDescribeConfigurationSetResponse(t)
-	return t
+	asserts.AssertDescribeConfigurationSetResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.SetActiveReceiptRuleSetResponse = { nil }
@@ -2752,11 +3753,22 @@ end
 -- Valid keys:
 -- @return SetActiveReceiptRuleSetResponse structure as a key-value pair table
 function M.SetActiveReceiptRuleSetResponse(args)
-	assert(args, "You must provdide an argument table when creating SetActiveReceiptRuleSetResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating SetActiveReceiptRuleSetResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertSetActiveReceiptRuleSetResponse(t)
-	return t
+	asserts.AssertSetActiveReceiptRuleSetResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateReceiptRuleSetRequest = { ["RuleSetName"] = true, nil }
@@ -2779,12 +3791,23 @@ end
 -- Required key: RuleSetName
 -- @return CreateReceiptRuleSetRequest structure as a key-value pair table
 function M.CreateReceiptRuleSetRequest(args)
-	assert(args, "You must provdide an argument table when creating CreateReceiptRuleSetRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateReceiptRuleSetRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["RuleSetName"] = args["RuleSetName"],
 	}
-	asserts.AssertCreateReceiptRuleSetRequest(t)
-	return t
+	asserts.AssertCreateReceiptRuleSetRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.PutIdentityPolicyResponse = { nil }
@@ -2803,11 +3826,22 @@ end
 -- Valid keys:
 -- @return PutIdentityPolicyResponse structure as a key-value pair table
 function M.PutIdentityPolicyResponse(args)
-	assert(args, "You must provdide an argument table when creating PutIdentityPolicyResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating PutIdentityPolicyResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertPutIdentityPolicyResponse(t)
-	return t
+	asserts.AssertPutIdentityPolicyResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.RawMessage = { ["Data"] = true, nil }
@@ -2830,12 +3864,23 @@ end
 -- Required key: Data
 -- @return RawMessage structure as a key-value pair table
 function M.RawMessage(args)
-	assert(args, "You must provdide an argument table when creating RawMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating RawMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Data"] = args["Data"],
 	}
-	asserts.AssertRawMessage(t)
-	return t
+	asserts.AssertRawMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.SendEmailResponse = { ["MessageId"] = true, nil }
@@ -2858,12 +3903,23 @@ end
 -- Required key: MessageId
 -- @return SendEmailResponse structure as a key-value pair table
 function M.SendEmailResponse(args)
-	assert(args, "You must provdide an argument table when creating SendEmailResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating SendEmailResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["MessageId"] = args["MessageId"],
 	}
-	asserts.AssertSendEmailResponse(t)
-	return t
+	asserts.AssertSendEmailResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.LambdaAction = { ["InvocationType"] = true, ["FunctionArn"] = true, ["TopicArn"] = true, nil }
@@ -2890,14 +3946,25 @@ end
 -- Required key: FunctionArn
 -- @return LambdaAction structure as a key-value pair table
 function M.LambdaAction(args)
-	assert(args, "You must provdide an argument table when creating LambdaAction")
-	local t = { 
+	assert(args, "You must provide an argument table when creating LambdaAction")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["InvocationType"] = args["InvocationType"],
 		["FunctionArn"] = args["FunctionArn"],
 		["TopicArn"] = args["TopicArn"],
 	}
-	asserts.AssertLambdaAction(t)
-	return t
+	asserts.AssertLambdaAction(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.RuleDoesNotExistException = { ["Name"] = true, nil }
@@ -2918,12 +3985,23 @@ end
 -- * Name [RuleOrRuleSetName] 
 -- @return RuleDoesNotExistException structure as a key-value pair table
 function M.RuleDoesNotExistException(args)
-	assert(args, "You must provdide an argument table when creating RuleDoesNotExistException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating RuleDoesNotExistException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Name"] = args["Name"],
 	}
-	asserts.AssertRuleDoesNotExistException(t)
-	return t
+	asserts.AssertRuleDoesNotExistException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ReceiptRuleSetMetadata = { ["CreatedTimestamp"] = true, ["Name"] = true, nil }
@@ -2946,13 +4024,24 @@ end
 -- * Name [ReceiptRuleSetName] <p>The name of the receipt rule set. The name must:</p> <ul> <li> <p>Contain only ASCII letters (a-z, A-Z), numbers (0-9), periods (.), underscores (_), or dashes (-).</p> </li> <li> <p>Start and end with a letter or number.</p> </li> <li> <p>Contain less than 64 characters.</p> </li> </ul>
 -- @return ReceiptRuleSetMetadata structure as a key-value pair table
 function M.ReceiptRuleSetMetadata(args)
-	assert(args, "You must provdide an argument table when creating ReceiptRuleSetMetadata")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ReceiptRuleSetMetadata")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["CreatedTimestamp"] = args["CreatedTimestamp"],
 		["Name"] = args["Name"],
 	}
-	asserts.AssertReceiptRuleSetMetadata(t)
-	return t
+	asserts.AssertReceiptRuleSetMetadata(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.MailFromDomainNotVerifiedException = { nil }
@@ -2971,11 +4060,22 @@ end
 -- Valid keys:
 -- @return MailFromDomainNotVerifiedException structure as a key-value pair table
 function M.MailFromDomainNotVerifiedException(args)
-	assert(args, "You must provdide an argument table when creating MailFromDomainNotVerifiedException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating MailFromDomainNotVerifiedException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertMailFromDomainNotVerifiedException(t)
-	return t
+	asserts.AssertMailFromDomainNotVerifiedException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.SetReceiptRulePositionRequest = { ["After"] = true, ["RuleSetName"] = true, ["RuleName"] = true, nil }
@@ -3004,14 +4104,25 @@ end
 -- Required key: RuleName
 -- @return SetReceiptRulePositionRequest structure as a key-value pair table
 function M.SetReceiptRulePositionRequest(args)
-	assert(args, "You must provdide an argument table when creating SetReceiptRulePositionRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating SetReceiptRulePositionRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["After"] = args["After"],
 		["RuleSetName"] = args["RuleSetName"],
 		["RuleName"] = args["RuleName"],
 	}
-	asserts.AssertSetReceiptRulePositionRequest(t)
-	return t
+	asserts.AssertSetReceiptRulePositionRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.SetIdentityMailFromDomainResponse = { nil }
@@ -3030,11 +4141,22 @@ end
 -- Valid keys:
 -- @return SetIdentityMailFromDomainResponse structure as a key-value pair table
 function M.SetIdentityMailFromDomainResponse(args)
-	assert(args, "You must provdide an argument table when creating SetIdentityMailFromDomainResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating SetIdentityMailFromDomainResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertSetIdentityMailFromDomainResponse(t)
-	return t
+	asserts.AssertSetIdentityMailFromDomainResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ConfigurationSetDoesNotExistException = { ["ConfigurationSetName"] = true, nil }
@@ -3055,12 +4177,23 @@ end
 -- * ConfigurationSetName [ConfigurationSetName] 
 -- @return ConfigurationSetDoesNotExistException structure as a key-value pair table
 function M.ConfigurationSetDoesNotExistException(args)
-	assert(args, "You must provdide an argument table when creating ConfigurationSetDoesNotExistException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ConfigurationSetDoesNotExistException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ConfigurationSetName"] = args["ConfigurationSetName"],
 	}
-	asserts.AssertConfigurationSetDoesNotExistException(t)
-	return t
+	asserts.AssertConfigurationSetDoesNotExistException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetIdentityPoliciesResponse = { ["Policies"] = true, nil }
@@ -3083,12 +4216,23 @@ end
 -- Required key: Policies
 -- @return GetIdentityPoliciesResponse structure as a key-value pair table
 function M.GetIdentityPoliciesResponse(args)
-	assert(args, "You must provdide an argument table when creating GetIdentityPoliciesResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetIdentityPoliciesResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Policies"] = args["Policies"],
 	}
-	asserts.AssertGetIdentityPoliciesResponse(t)
-	return t
+	asserts.AssertGetIdentityPoliciesResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.RuleSetDoesNotExistException = { ["Name"] = true, nil }
@@ -3109,12 +4253,23 @@ end
 -- * Name [RuleOrRuleSetName] 
 -- @return RuleSetDoesNotExistException structure as a key-value pair table
 function M.RuleSetDoesNotExistException(args)
-	assert(args, "You must provdide an argument table when creating RuleSetDoesNotExistException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating RuleSetDoesNotExistException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Name"] = args["Name"],
 	}
-	asserts.AssertRuleSetDoesNotExistException(t)
-	return t
+	asserts.AssertRuleSetDoesNotExistException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteReceiptFilterRequest = { ["FilterName"] = true, nil }
@@ -3137,12 +4292,23 @@ end
 -- Required key: FilterName
 -- @return DeleteReceiptFilterRequest structure as a key-value pair table
 function M.DeleteReceiptFilterRequest(args)
-	assert(args, "You must provdide an argument table when creating DeleteReceiptFilterRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteReceiptFilterRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["FilterName"] = args["FilterName"],
 	}
-	asserts.AssertDeleteReceiptFilterRequest(t)
-	return t
+	asserts.AssertDeleteReceiptFilterRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListConfigurationSetsRequest = { ["NextToken"] = true, ["MaxItems"] = true, nil }
@@ -3165,13 +4331,24 @@ end
 -- * MaxItems [MaxItems] <p>The number of configuration sets to return.</p>
 -- @return ListConfigurationSetsRequest structure as a key-value pair table
 function M.ListConfigurationSetsRequest(args)
-	assert(args, "You must provdide an argument table when creating ListConfigurationSetsRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListConfigurationSetsRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NextToken"] = args["NextToken"],
 		["MaxItems"] = args["MaxItems"],
 	}
-	asserts.AssertListConfigurationSetsRequest(t)
-	return t
+	asserts.AssertListConfigurationSetsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidLambdaFunctionException = { ["FunctionArn"] = true, nil }
@@ -3192,12 +4369,23 @@ end
 -- * FunctionArn [AmazonResourceName] 
 -- @return InvalidLambdaFunctionException structure as a key-value pair table
 function M.InvalidLambdaFunctionException(args)
-	assert(args, "You must provdide an argument table when creating InvalidLambdaFunctionException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidLambdaFunctionException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["FunctionArn"] = args["FunctionArn"],
 	}
-	asserts.AssertInvalidLambdaFunctionException(t)
-	return t
+	asserts.AssertInvalidLambdaFunctionException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ReceiptIpFilter = { ["Policy"] = true, ["Cidr"] = true, nil }
@@ -3224,13 +4412,24 @@ end
 -- Required key: Cidr
 -- @return ReceiptIpFilter structure as a key-value pair table
 function M.ReceiptIpFilter(args)
-	assert(args, "You must provdide an argument table when creating ReceiptIpFilter")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ReceiptIpFilter")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Policy"] = args["Policy"],
 		["Cidr"] = args["Cidr"],
 	}
-	asserts.AssertReceiptIpFilter(t)
-	return t
+	asserts.AssertReceiptIpFilter(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.IdentityDkimAttributes = { ["DkimTokens"] = true, ["DkimEnabled"] = true, ["DkimVerificationStatus"] = true, nil }
@@ -3259,14 +4458,25 @@ end
 -- Required key: DkimVerificationStatus
 -- @return IdentityDkimAttributes structure as a key-value pair table
 function M.IdentityDkimAttributes(args)
-	assert(args, "You must provdide an argument table when creating IdentityDkimAttributes")
-	local t = { 
+	assert(args, "You must provide an argument table when creating IdentityDkimAttributes")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DkimTokens"] = args["DkimTokens"],
 		["DkimEnabled"] = args["DkimEnabled"],
 		["DkimVerificationStatus"] = args["DkimVerificationStatus"],
 	}
-	asserts.AssertIdentityDkimAttributes(t)
-	return t
+	asserts.AssertIdentityDkimAttributes(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AddHeaderAction = { ["HeaderName"] = true, ["HeaderValue"] = true, nil }
@@ -3293,13 +4503,24 @@ end
 -- Required key: HeaderValue
 -- @return AddHeaderAction structure as a key-value pair table
 function M.AddHeaderAction(args)
-	assert(args, "You must provdide an argument table when creating AddHeaderAction")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AddHeaderAction")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["HeaderName"] = args["HeaderName"],
 		["HeaderValue"] = args["HeaderValue"],
 	}
-	asserts.AssertAddHeaderAction(t)
-	return t
+	asserts.AssertAddHeaderAction(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Content = { ["Charset"] = true, ["Data"] = true, nil }
@@ -3324,13 +4545,24 @@ end
 -- Required key: Data
 -- @return Content structure as a key-value pair table
 function M.Content(args)
-	assert(args, "You must provdide an argument table when creating Content")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Content")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Charset"] = args["Charset"],
 		["Data"] = args["Data"],
 	}
-	asserts.AssertContent(t)
-	return t
+	asserts.AssertContent(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.KinesisFirehoseDestination = { ["DeliveryStreamARN"] = true, ["IAMRoleARN"] = true, nil }
@@ -3357,13 +4589,24 @@ end
 -- Required key: DeliveryStreamARN
 -- @return KinesisFirehoseDestination structure as a key-value pair table
 function M.KinesisFirehoseDestination(args)
-	assert(args, "You must provdide an argument table when creating KinesisFirehoseDestination")
-	local t = { 
+	assert(args, "You must provide an argument table when creating KinesisFirehoseDestination")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DeliveryStreamARN"] = args["DeliveryStreamARN"],
 		["IAMRoleARN"] = args["IAMRoleARN"],
 	}
-	asserts.AssertKinesisFirehoseDestination(t)
-	return t
+	asserts.AssertKinesisFirehoseDestination(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdateReceiptRuleResponse = { nil }
@@ -3382,11 +4625,22 @@ end
 -- Valid keys:
 -- @return UpdateReceiptRuleResponse structure as a key-value pair table
 function M.UpdateReceiptRuleResponse(args)
-	assert(args, "You must provdide an argument table when creating UpdateReceiptRuleResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateReceiptRuleResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertUpdateReceiptRuleResponse(t)
-	return t
+	asserts.AssertUpdateReceiptRuleResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeReceiptRuleRequest = { ["RuleSetName"] = true, ["RuleName"] = true, nil }
@@ -3413,13 +4667,24 @@ end
 -- Required key: RuleName
 -- @return DescribeReceiptRuleRequest structure as a key-value pair table
 function M.DescribeReceiptRuleRequest(args)
-	assert(args, "You must provdide an argument table when creating DescribeReceiptRuleRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeReceiptRuleRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["RuleSetName"] = args["RuleSetName"],
 		["RuleName"] = args["RuleName"],
 	}
-	asserts.AssertDescribeReceiptRuleRequest(t)
-	return t
+	asserts.AssertDescribeReceiptRuleRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeActiveReceiptRuleSetResponse = { ["Rules"] = true, ["Metadata"] = true, nil }
@@ -3442,13 +4707,24 @@ end
 -- * Metadata [ReceiptRuleSetMetadata] <p>The metadata for the currently active receipt rule set. The metadata consists of the rule set name and a timestamp of when the rule set was created.</p>
 -- @return DescribeActiveReceiptRuleSetResponse structure as a key-value pair table
 function M.DescribeActiveReceiptRuleSetResponse(args)
-	assert(args, "You must provdide an argument table when creating DescribeActiveReceiptRuleSetResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeActiveReceiptRuleSetResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Rules"] = args["Rules"],
 		["Metadata"] = args["Metadata"],
 	}
-	asserts.AssertDescribeActiveReceiptRuleSetResponse(t)
-	return t
+	asserts.AssertDescribeActiveReceiptRuleSetResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetSendQuotaResponse = { ["Max24HourSend"] = true, ["SentLast24Hours"] = true, ["MaxSendRate"] = true, nil }
@@ -3473,14 +4749,25 @@ end
 -- * MaxSendRate [MaxSendRate] <p>The maximum number of emails that Amazon SES can accept from the user's account per second.</p> <note> <p>The rate at which Amazon SES accepts the user's messages might be less than the maximum send rate.</p> </note>
 -- @return GetSendQuotaResponse structure as a key-value pair table
 function M.GetSendQuotaResponse(args)
-	assert(args, "You must provdide an argument table when creating GetSendQuotaResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetSendQuotaResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Max24HourSend"] = args["Max24HourSend"],
 		["SentLast24Hours"] = args["SentLast24Hours"],
 		["MaxSendRate"] = args["MaxSendRate"],
 	}
-	asserts.AssertGetSendQuotaResponse(t)
-	return t
+	asserts.AssertGetSendQuotaResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.RecipientDsnFields = { ["Status"] = true, ["FinalRecipient"] = true, ["DiagnosticCode"] = true, ["LastAttemptDate"] = true, ["ExtensionFields"] = true, ["RemoteMta"] = true, ["Action"] = true, nil }
@@ -3517,8 +4804,14 @@ end
 -- Required key: Status
 -- @return RecipientDsnFields structure as a key-value pair table
 function M.RecipientDsnFields(args)
-	assert(args, "You must provdide an argument table when creating RecipientDsnFields")
-	local t = { 
+	assert(args, "You must provide an argument table when creating RecipientDsnFields")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Status"] = args["Status"],
 		["FinalRecipient"] = args["FinalRecipient"],
 		["DiagnosticCode"] = args["DiagnosticCode"],
@@ -3527,8 +4820,13 @@ function M.RecipientDsnFields(args)
 		["RemoteMta"] = args["RemoteMta"],
 		["Action"] = args["Action"],
 	}
-	asserts.AssertRecipientDsnFields(t)
-	return t
+	asserts.AssertRecipientDsnFields(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.SetActiveReceiptRuleSetRequest = { ["RuleSetName"] = true, nil }
@@ -3549,12 +4847,23 @@ end
 -- * RuleSetName [ReceiptRuleSetName] <p>The name of the receipt rule set to make active. Setting this value to null disables all email receiving.</p>
 -- @return SetActiveReceiptRuleSetRequest structure as a key-value pair table
 function M.SetActiveReceiptRuleSetRequest(args)
-	assert(args, "You must provdide an argument table when creating SetActiveReceiptRuleSetRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating SetActiveReceiptRuleSetRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["RuleSetName"] = args["RuleSetName"],
 	}
-	asserts.AssertSetActiveReceiptRuleSetRequest(t)
-	return t
+	asserts.AssertSetActiveReceiptRuleSetRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteIdentityPolicyRequest = { ["PolicyName"] = true, ["Identity"] = true, nil }
@@ -3581,13 +4890,24 @@ end
 -- Required key: PolicyName
 -- @return DeleteIdentityPolicyRequest structure as a key-value pair table
 function M.DeleteIdentityPolicyRequest(args)
-	assert(args, "You must provdide an argument table when creating DeleteIdentityPolicyRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteIdentityPolicyRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["PolicyName"] = args["PolicyName"],
 		["Identity"] = args["Identity"],
 	}
-	asserts.AssertDeleteIdentityPolicyRequest(t)
-	return t
+	asserts.AssertDeleteIdentityPolicyRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateConfigurationSetResponse = { nil }
@@ -3606,11 +4926,22 @@ end
 -- Valid keys:
 -- @return CreateConfigurationSetResponse structure as a key-value pair table
 function M.CreateConfigurationSetResponse(args)
-	assert(args, "You must provdide an argument table when creating CreateConfigurationSetResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateConfigurationSetResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertCreateConfigurationSetResponse(t)
-	return t
+	asserts.AssertCreateConfigurationSetResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteConfigurationSetEventDestinationRequest = { ["EventDestinationName"] = true, ["ConfigurationSetName"] = true, nil }
@@ -3637,13 +4968,24 @@ end
 -- Required key: EventDestinationName
 -- @return DeleteConfigurationSetEventDestinationRequest structure as a key-value pair table
 function M.DeleteConfigurationSetEventDestinationRequest(args)
-	assert(args, "You must provdide an argument table when creating DeleteConfigurationSetEventDestinationRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteConfigurationSetEventDestinationRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["EventDestinationName"] = args["EventDestinationName"],
 		["ConfigurationSetName"] = args["ConfigurationSetName"],
 	}
-	asserts.AssertDeleteConfigurationSetEventDestinationRequest(t)
-	return t
+	asserts.AssertDeleteConfigurationSetEventDestinationRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListIdentitiesRequest = { ["IdentityType"] = true, ["NextToken"] = true, ["MaxItems"] = true, nil }
@@ -3668,14 +5010,25 @@ end
 -- * MaxItems [MaxItems] <p>The maximum number of identities per page. Possible values are 1-1000 inclusive.</p>
 -- @return ListIdentitiesRequest structure as a key-value pair table
 function M.ListIdentitiesRequest(args)
-	assert(args, "You must provdide an argument table when creating ListIdentitiesRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListIdentitiesRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["IdentityType"] = args["IdentityType"],
 		["NextToken"] = args["NextToken"],
 		["MaxItems"] = args["MaxItems"],
 	}
-	asserts.AssertListIdentitiesRequest(t)
-	return t
+	asserts.AssertListIdentitiesRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.IdentityNotificationAttributes = { ["BounceTopic"] = true, ["HeadersInBounceNotificationsEnabled"] = true, ["DeliveryTopic"] = true, ["HeadersInDeliveryNotificationsEnabled"] = true, ["ComplaintTopic"] = true, ["HeadersInComplaintNotificationsEnabled"] = true, ["ForwardingEnabled"] = true, nil }
@@ -3716,8 +5069,14 @@ end
 -- Required key: ForwardingEnabled
 -- @return IdentityNotificationAttributes structure as a key-value pair table
 function M.IdentityNotificationAttributes(args)
-	assert(args, "You must provdide an argument table when creating IdentityNotificationAttributes")
-	local t = { 
+	assert(args, "You must provide an argument table when creating IdentityNotificationAttributes")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["BounceTopic"] = args["BounceTopic"],
 		["HeadersInBounceNotificationsEnabled"] = args["HeadersInBounceNotificationsEnabled"],
 		["DeliveryTopic"] = args["DeliveryTopic"],
@@ -3726,8 +5085,13 @@ function M.IdentityNotificationAttributes(args)
 		["HeadersInComplaintNotificationsEnabled"] = args["HeadersInComplaintNotificationsEnabled"],
 		["ForwardingEnabled"] = args["ForwardingEnabled"],
 	}
-	asserts.AssertIdentityNotificationAttributes(t)
-	return t
+	asserts.AssertIdentityNotificationAttributes(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateReceiptRuleResponse = { nil }
@@ -3746,11 +5110,22 @@ end
 -- Valid keys:
 -- @return CreateReceiptRuleResponse structure as a key-value pair table
 function M.CreateReceiptRuleResponse(args)
-	assert(args, "You must provdide an argument table when creating CreateReceiptRuleResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateReceiptRuleResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertCreateReceiptRuleResponse(t)
-	return t
+	asserts.AssertCreateReceiptRuleResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.MessageRejected = { nil }
@@ -3769,11 +5144,22 @@ end
 -- Valid keys:
 -- @return MessageRejected structure as a key-value pair table
 function M.MessageRejected(args)
-	assert(args, "You must provdide an argument table when creating MessageRejected")
-	local t = { 
+	assert(args, "You must provide an argument table when creating MessageRejected")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertMessageRejected(t)
-	return t
+	asserts.AssertMessageRejected(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidPolicyException = { nil }
@@ -3792,11 +5178,22 @@ end
 -- Valid keys:
 -- @return InvalidPolicyException structure as a key-value pair table
 function M.InvalidPolicyException(args)
-	assert(args, "You must provdide an argument table when creating InvalidPolicyException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidPolicyException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertInvalidPolicyException(t)
-	return t
+	asserts.AssertInvalidPolicyException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CloneReceiptRuleSetResponse = { nil }
@@ -3815,11 +5212,22 @@ end
 -- Valid keys:
 -- @return CloneReceiptRuleSetResponse structure as a key-value pair table
 function M.CloneReceiptRuleSetResponse(args)
-	assert(args, "You must provdide an argument table when creating CloneReceiptRuleSetResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CloneReceiptRuleSetResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertCloneReceiptRuleSetResponse(t)
-	return t
+	asserts.AssertCloneReceiptRuleSetResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListIdentityPoliciesResponse = { ["PolicyNames"] = true, nil }
@@ -3842,12 +5250,23 @@ end
 -- Required key: PolicyNames
 -- @return ListIdentityPoliciesResponse structure as a key-value pair table
 function M.ListIdentityPoliciesResponse(args)
-	assert(args, "You must provdide an argument table when creating ListIdentityPoliciesResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListIdentityPoliciesResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["PolicyNames"] = args["PolicyNames"],
 	}
-	asserts.AssertListIdentityPoliciesResponse(t)
-	return t
+	asserts.AssertListIdentityPoliciesResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteIdentityRequest = { ["Identity"] = true, nil }
@@ -3870,12 +5289,23 @@ end
 -- Required key: Identity
 -- @return DeleteIdentityRequest structure as a key-value pair table
 function M.DeleteIdentityRequest(args)
-	assert(args, "You must provdide an argument table when creating DeleteIdentityRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteIdentityRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Identity"] = args["Identity"],
 	}
-	asserts.AssertDeleteIdentityRequest(t)
-	return t
+	asserts.AssertDeleteIdentityRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdateConfigurationSetEventDestinationResponse = { nil }
@@ -3894,11 +5324,22 @@ end
 -- Valid keys:
 -- @return UpdateConfigurationSetEventDestinationResponse structure as a key-value pair table
 function M.UpdateConfigurationSetEventDestinationResponse(args)
-	assert(args, "You must provdide an argument table when creating UpdateConfigurationSetEventDestinationResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateConfigurationSetEventDestinationResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertUpdateConfigurationSetEventDestinationResponse(t)
-	return t
+	asserts.AssertUpdateConfigurationSetEventDestinationResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.BounceAction = { ["Message"] = true, ["Sender"] = true, ["SmtpReplyCode"] = true, ["TopicArn"] = true, ["StatusCode"] = true, nil }
@@ -3933,16 +5374,27 @@ end
 -- Required key: Sender
 -- @return BounceAction structure as a key-value pair table
 function M.BounceAction(args)
-	assert(args, "You must provdide an argument table when creating BounceAction")
-	local t = { 
+	assert(args, "You must provide an argument table when creating BounceAction")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Message"] = args["Message"],
 		["Sender"] = args["Sender"],
 		["SmtpReplyCode"] = args["SmtpReplyCode"],
 		["TopicArn"] = args["TopicArn"],
 		["StatusCode"] = args["StatusCode"],
 	}
-	asserts.AssertBounceAction(t)
-	return t
+	asserts.AssertBounceAction(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListConfigurationSetsResponse = { ["ConfigurationSets"] = true, ["NextToken"] = true, nil }
@@ -3965,13 +5417,24 @@ end
 -- * NextToken [NextToken] <p>A token indicating that there are additional configuration sets available to be listed. Pass this token to successive calls of <code>ListConfigurationSets</code>. </p>
 -- @return ListConfigurationSetsResponse structure as a key-value pair table
 function M.ListConfigurationSetsResponse(args)
-	assert(args, "You must provdide an argument table when creating ListConfigurationSetsResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListConfigurationSetsResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ConfigurationSets"] = args["ConfigurationSets"],
 		["NextToken"] = args["NextToken"],
 	}
-	asserts.AssertListConfigurationSetsResponse(t)
-	return t
+	asserts.AssertListConfigurationSetsResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.SendDataPoint = { ["Complaints"] = true, ["Timestamp"] = true, ["DeliveryAttempts"] = true, ["Bounces"] = true, ["Rejects"] = true, nil }
@@ -4000,16 +5463,27 @@ end
 -- * Rejects [Counter] <p>Number of emails rejected by Amazon SES.</p>
 -- @return SendDataPoint structure as a key-value pair table
 function M.SendDataPoint(args)
-	assert(args, "You must provdide an argument table when creating SendDataPoint")
-	local t = { 
+	assert(args, "You must provide an argument table when creating SendDataPoint")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Complaints"] = args["Complaints"],
 		["Timestamp"] = args["Timestamp"],
 		["DeliveryAttempts"] = args["DeliveryAttempts"],
 		["Bounces"] = args["Bounces"],
 		["Rejects"] = args["Rejects"],
 	}
-	asserts.AssertSendDataPoint(t)
-	return t
+	asserts.AssertSendDataPoint(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ReorderReceiptRuleSetResponse = { nil }
@@ -4028,11 +5502,22 @@ end
 -- Valid keys:
 -- @return ReorderReceiptRuleSetResponse structure as a key-value pair table
 function M.ReorderReceiptRuleSetResponse(args)
-	assert(args, "You must provdide an argument table when creating ReorderReceiptRuleSetResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ReorderReceiptRuleSetResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertReorderReceiptRuleSetResponse(t)
-	return t
+	asserts.AssertReorderReceiptRuleSetResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.VerifyDomainIdentityRequest = { ["Domain"] = true, nil }
@@ -4055,12 +5540,23 @@ end
 -- Required key: Domain
 -- @return VerifyDomainIdentityRequest structure as a key-value pair table
 function M.VerifyDomainIdentityRequest(args)
-	assert(args, "You must provdide an argument table when creating VerifyDomainIdentityRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating VerifyDomainIdentityRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Domain"] = args["Domain"],
 	}
-	asserts.AssertVerifyDomainIdentityRequest(t)
-	return t
+	asserts.AssertVerifyDomainIdentityRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.EventDestinationDoesNotExistException = { ["EventDestinationName"] = true, ["ConfigurationSetName"] = true, nil }
@@ -4083,13 +5579,24 @@ end
 -- * ConfigurationSetName [ConfigurationSetName] 
 -- @return EventDestinationDoesNotExistException structure as a key-value pair table
 function M.EventDestinationDoesNotExistException(args)
-	assert(args, "You must provdide an argument table when creating EventDestinationDoesNotExistException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating EventDestinationDoesNotExistException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["EventDestinationName"] = args["EventDestinationName"],
 		["ConfigurationSetName"] = args["ConfigurationSetName"],
 	}
-	asserts.AssertEventDestinationDoesNotExistException(t)
-	return t
+	asserts.AssertEventDestinationDoesNotExistException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetIdentityNotificationAttributesResponse = { ["NotificationAttributes"] = true, nil }
@@ -4112,12 +5619,23 @@ end
 -- Required key: NotificationAttributes
 -- @return GetIdentityNotificationAttributesResponse structure as a key-value pair table
 function M.GetIdentityNotificationAttributesResponse(args)
-	assert(args, "You must provdide an argument table when creating GetIdentityNotificationAttributesResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetIdentityNotificationAttributesResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NotificationAttributes"] = args["NotificationAttributes"],
 	}
-	asserts.AssertGetIdentityNotificationAttributesResponse(t)
-	return t
+	asserts.AssertGetIdentityNotificationAttributesResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteReceiptRuleResponse = { nil }
@@ -4136,11 +5654,22 @@ end
 -- Valid keys:
 -- @return DeleteReceiptRuleResponse structure as a key-value pair table
 function M.DeleteReceiptRuleResponse(args)
-	assert(args, "You must provdide an argument table when creating DeleteReceiptRuleResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteReceiptRuleResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertDeleteReceiptRuleResponse(t)
-	return t
+	asserts.AssertDeleteReceiptRuleResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidCloudWatchDestinationException = { ["EventDestinationName"] = true, ["ConfigurationSetName"] = true, nil }
@@ -4163,13 +5692,24 @@ end
 -- * ConfigurationSetName [ConfigurationSetName] 
 -- @return InvalidCloudWatchDestinationException structure as a key-value pair table
 function M.InvalidCloudWatchDestinationException(args)
-	assert(args, "You must provdide an argument table when creating InvalidCloudWatchDestinationException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidCloudWatchDestinationException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["EventDestinationName"] = args["EventDestinationName"],
 		["ConfigurationSetName"] = args["ConfigurationSetName"],
 	}
-	asserts.AssertInvalidCloudWatchDestinationException(t)
-	return t
+	asserts.AssertInvalidCloudWatchDestinationException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateConfigurationSetRequest = { ["ConfigurationSet"] = true, nil }
@@ -4192,12 +5732,23 @@ end
 -- Required key: ConfigurationSet
 -- @return CreateConfigurationSetRequest structure as a key-value pair table
 function M.CreateConfigurationSetRequest(args)
-	assert(args, "You must provdide an argument table when creating CreateConfigurationSetRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateConfigurationSetRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ConfigurationSet"] = args["ConfigurationSet"],
 	}
-	asserts.AssertCreateConfigurationSetRequest(t)
-	return t
+	asserts.AssertCreateConfigurationSetRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListReceiptFiltersResponse = { ["Filters"] = true, nil }
@@ -4218,12 +5769,23 @@ end
 -- * Filters [ReceiptFilterList] <p>A list of IP address filter data structures, which each consist of a name, an IP address range, and whether to allow or block mail from it.</p>
 -- @return ListReceiptFiltersResponse structure as a key-value pair table
 function M.ListReceiptFiltersResponse(args)
-	assert(args, "You must provdide an argument table when creating ListReceiptFiltersResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListReceiptFiltersResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Filters"] = args["Filters"],
 	}
-	asserts.AssertListReceiptFiltersResponse(t)
-	return t
+	asserts.AssertListReceiptFiltersResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.PutIdentityPolicyRequest = { ["Policy"] = true, ["PolicyName"] = true, ["Identity"] = true, nil }
@@ -4254,14 +5816,25 @@ end
 -- Required key: Policy
 -- @return PutIdentityPolicyRequest structure as a key-value pair table
 function M.PutIdentityPolicyRequest(args)
-	assert(args, "You must provdide an argument table when creating PutIdentityPolicyRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating PutIdentityPolicyRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Policy"] = args["Policy"],
 		["PolicyName"] = args["PolicyName"],
 		["Identity"] = args["Identity"],
 	}
-	asserts.AssertPutIdentityPolicyRequest(t)
-	return t
+	asserts.AssertPutIdentityPolicyRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 function asserts.AssertNotificationType(str)
@@ -5370,8 +6943,11 @@ function M.CreateReceiptRuleAsync(CreateReceiptRuleRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".CreateReceiptRule",
 	}
+	for header,value in pairs(CreateReceiptRuleRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateReceiptRuleRequest, headers, settings, cb)
 	else
@@ -5401,7 +6977,8 @@ function M.GetSendStatisticsAsync(cb)
 		[request_headers.AMZ_TARGET_HEADER] = ".GetSendStatistics",
 	}
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", {}, headers, settings, cb)
 	else
@@ -5431,8 +7008,11 @@ function M.ReorderReceiptRuleSetAsync(ReorderReceiptRuleSetRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".ReorderReceiptRuleSet",
 	}
+	for header,value in pairs(ReorderReceiptRuleSetRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ReorderReceiptRuleSetRequest, headers, settings, cb)
 	else
@@ -5463,8 +7043,11 @@ function M.GetIdentityPoliciesAsync(GetIdentityPoliciesRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".GetIdentityPolicies",
 	}
+	for header,value in pairs(GetIdentityPoliciesRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", GetIdentityPoliciesRequest, headers, settings, cb)
 	else
@@ -5495,8 +7078,11 @@ function M.VerifyEmailAddressAsync(VerifyEmailAddressRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".VerifyEmailAddress",
 	}
+	for header,value in pairs(VerifyEmailAddressRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", VerifyEmailAddressRequest, headers, settings, cb)
 	else
@@ -5527,8 +7113,11 @@ function M.SetIdentityMailFromDomainAsync(SetIdentityMailFromDomainRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".SetIdentityMailFromDomain",
 	}
+	for header,value in pairs(SetIdentityMailFromDomainRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", SetIdentityMailFromDomainRequest, headers, settings, cb)
 	else
@@ -5559,8 +7148,11 @@ function M.ListReceiptFiltersAsync(ListReceiptFiltersRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".ListReceiptFilters",
 	}
+	for header,value in pairs(ListReceiptFiltersRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ListReceiptFiltersRequest, headers, settings, cb)
 	else
@@ -5591,8 +7183,11 @@ function M.DescribeReceiptRuleSetAsync(DescribeReceiptRuleSetRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DescribeReceiptRuleSet",
 	}
+	for header,value in pairs(DescribeReceiptRuleSetRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeReceiptRuleSetRequest, headers, settings, cb)
 	else
@@ -5623,8 +7218,11 @@ function M.DeleteReceiptFilterAsync(DeleteReceiptFilterRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DeleteReceiptFilter",
 	}
+	for header,value in pairs(DeleteReceiptFilterRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteReceiptFilterRequest, headers, settings, cb)
 	else
@@ -5655,8 +7253,11 @@ function M.UpdateConfigurationSetEventDestinationAsync(UpdateConfigurationSetEve
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".UpdateConfigurationSetEventDestination",
 	}
+	for header,value in pairs(UpdateConfigurationSetEventDestinationRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateConfigurationSetEventDestinationRequest, headers, settings, cb)
 	else
@@ -5687,8 +7288,11 @@ function M.SetIdentityFeedbackForwardingEnabledAsync(SetIdentityFeedbackForwardi
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".SetIdentityFeedbackForwardingEnabled",
 	}
+	for header,value in pairs(SetIdentityFeedbackForwardingEnabledRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", SetIdentityFeedbackForwardingEnabledRequest, headers, settings, cb)
 	else
@@ -5719,8 +7323,11 @@ function M.UpdateReceiptRuleAsync(UpdateReceiptRuleRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".UpdateReceiptRule",
 	}
+	for header,value in pairs(UpdateReceiptRuleRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateReceiptRuleRequest, headers, settings, cb)
 	else
@@ -5751,8 +7358,11 @@ function M.SendBounceAsync(SendBounceRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".SendBounce",
 	}
+	for header,value in pairs(SendBounceRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", SendBounceRequest, headers, settings, cb)
 	else
@@ -5783,8 +7393,11 @@ function M.CreateConfigurationSetEventDestinationAsync(CreateConfigurationSetEve
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".CreateConfigurationSetEventDestination",
 	}
+	for header,value in pairs(CreateConfigurationSetEventDestinationRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateConfigurationSetEventDestinationRequest, headers, settings, cb)
 	else
@@ -5815,8 +7428,11 @@ function M.GetIdentityDkimAttributesAsync(GetIdentityDkimAttributesRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".GetIdentityDkimAttributes",
 	}
+	for header,value in pairs(GetIdentityDkimAttributesRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", GetIdentityDkimAttributesRequest, headers, settings, cb)
 	else
@@ -5847,8 +7463,11 @@ function M.SetReceiptRulePositionAsync(SetReceiptRulePositionRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".SetReceiptRulePosition",
 	}
+	for header,value in pairs(SetReceiptRulePositionRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", SetReceiptRulePositionRequest, headers, settings, cb)
 	else
@@ -5879,8 +7498,11 @@ function M.DeleteReceiptRuleAsync(DeleteReceiptRuleRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DeleteReceiptRule",
 	}
+	for header,value in pairs(DeleteReceiptRuleRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteReceiptRuleRequest, headers, settings, cb)
 	else
@@ -5911,8 +7533,11 @@ function M.DescribeConfigurationSetAsync(DescribeConfigurationSetRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DescribeConfigurationSet",
 	}
+	for header,value in pairs(DescribeConfigurationSetRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeConfigurationSetRequest, headers, settings, cb)
 	else
@@ -5942,7 +7567,8 @@ function M.ListVerifiedEmailAddressesAsync(cb)
 		[request_headers.AMZ_TARGET_HEADER] = ".ListVerifiedEmailAddresses",
 	}
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", {}, headers, settings, cb)
 	else
@@ -5972,8 +7598,11 @@ function M.DeleteConfigurationSetAsync(DeleteConfigurationSetRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DeleteConfigurationSet",
 	}
+	for header,value in pairs(DeleteConfigurationSetRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteConfigurationSetRequest, headers, settings, cb)
 	else
@@ -6004,8 +7633,11 @@ function M.CloneReceiptRuleSetAsync(CloneReceiptRuleSetRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".CloneReceiptRuleSet",
 	}
+	for header,value in pairs(CloneReceiptRuleSetRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", CloneReceiptRuleSetRequest, headers, settings, cb)
 	else
@@ -6036,8 +7668,11 @@ function M.VerifyDomainIdentityAsync(VerifyDomainIdentityRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".VerifyDomainIdentity",
 	}
+	for header,value in pairs(VerifyDomainIdentityRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", VerifyDomainIdentityRequest, headers, settings, cb)
 	else
@@ -6068,8 +7703,11 @@ function M.DescribeActiveReceiptRuleSetAsync(DescribeActiveReceiptRuleSetRequest
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DescribeActiveReceiptRuleSet",
 	}
+	for header,value in pairs(DescribeActiveReceiptRuleSetRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeActiveReceiptRuleSetRequest, headers, settings, cb)
 	else
@@ -6100,8 +7738,11 @@ function M.DeleteIdentityPolicyAsync(DeleteIdentityPolicyRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DeleteIdentityPolicy",
 	}
+	for header,value in pairs(DeleteIdentityPolicyRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteIdentityPolicyRequest, headers, settings, cb)
 	else
@@ -6132,8 +7773,11 @@ function M.SetActiveReceiptRuleSetAsync(SetActiveReceiptRuleSetRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".SetActiveReceiptRuleSet",
 	}
+	for header,value in pairs(SetActiveReceiptRuleSetRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", SetActiveReceiptRuleSetRequest, headers, settings, cb)
 	else
@@ -6164,8 +7808,11 @@ function M.DeleteReceiptRuleSetAsync(DeleteReceiptRuleSetRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DeleteReceiptRuleSet",
 	}
+	for header,value in pairs(DeleteReceiptRuleSetRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteReceiptRuleSetRequest, headers, settings, cb)
 	else
@@ -6196,8 +7843,11 @@ function M.SetIdentityDkimEnabledAsync(SetIdentityDkimEnabledRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".SetIdentityDkimEnabled",
 	}
+	for header,value in pairs(SetIdentityDkimEnabledRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", SetIdentityDkimEnabledRequest, headers, settings, cb)
 	else
@@ -6227,7 +7877,8 @@ function M.GetSendQuotaAsync(cb)
 		[request_headers.AMZ_TARGET_HEADER] = ".GetSendQuota",
 	}
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", {}, headers, settings, cb)
 	else
@@ -6257,8 +7908,11 @@ function M.SetIdentityNotificationTopicAsync(SetIdentityNotificationTopicRequest
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".SetIdentityNotificationTopic",
 	}
+	for header,value in pairs(SetIdentityNotificationTopicRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", SetIdentityNotificationTopicRequest, headers, settings, cb)
 	else
@@ -6289,8 +7943,11 @@ function M.CreateConfigurationSetAsync(CreateConfigurationSetRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".CreateConfigurationSet",
 	}
+	for header,value in pairs(CreateConfigurationSetRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateConfigurationSetRequest, headers, settings, cb)
 	else
@@ -6321,8 +7978,11 @@ function M.DeleteVerifiedEmailAddressAsync(DeleteVerifiedEmailAddressRequest, cb
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DeleteVerifiedEmailAddress",
 	}
+	for header,value in pairs(DeleteVerifiedEmailAddressRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteVerifiedEmailAddressRequest, headers, settings, cb)
 	else
@@ -6353,8 +8013,11 @@ function M.ListConfigurationSetsAsync(ListConfigurationSetsRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".ListConfigurationSets",
 	}
+	for header,value in pairs(ListConfigurationSetsRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ListConfigurationSetsRequest, headers, settings, cb)
 	else
@@ -6385,8 +8048,11 @@ function M.CreateReceiptFilterAsync(CreateReceiptFilterRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".CreateReceiptFilter",
 	}
+	for header,value in pairs(CreateReceiptFilterRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateReceiptFilterRequest, headers, settings, cb)
 	else
@@ -6417,8 +8083,11 @@ function M.DescribeReceiptRuleAsync(DescribeReceiptRuleRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DescribeReceiptRule",
 	}
+	for header,value in pairs(DescribeReceiptRuleRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeReceiptRuleRequest, headers, settings, cb)
 	else
@@ -6449,8 +8118,11 @@ function M.ListReceiptRuleSetsAsync(ListReceiptRuleSetsRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".ListReceiptRuleSets",
 	}
+	for header,value in pairs(ListReceiptRuleSetsRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ListReceiptRuleSetsRequest, headers, settings, cb)
 	else
@@ -6481,8 +8153,11 @@ function M.GetIdentityNotificationAttributesAsync(GetIdentityNotificationAttribu
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".GetIdentityNotificationAttributes",
 	}
+	for header,value in pairs(GetIdentityNotificationAttributesRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", GetIdentityNotificationAttributesRequest, headers, settings, cb)
 	else
@@ -6513,8 +8188,11 @@ function M.SetIdentityHeadersInNotificationsEnabledAsync(SetIdentityHeadersInNot
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".SetIdentityHeadersInNotificationsEnabled",
 	}
+	for header,value in pairs(SetIdentityHeadersInNotificationsEnabledRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", SetIdentityHeadersInNotificationsEnabledRequest, headers, settings, cb)
 	else
@@ -6545,8 +8223,11 @@ function M.SendEmailAsync(SendEmailRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".SendEmail",
 	}
+	for header,value in pairs(SendEmailRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", SendEmailRequest, headers, settings, cb)
 	else
@@ -6577,8 +8258,11 @@ function M.DeleteIdentityAsync(DeleteIdentityRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DeleteIdentity",
 	}
+	for header,value in pairs(DeleteIdentityRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteIdentityRequest, headers, settings, cb)
 	else
@@ -6609,8 +8293,11 @@ function M.VerifyDomainDkimAsync(VerifyDomainDkimRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".VerifyDomainDkim",
 	}
+	for header,value in pairs(VerifyDomainDkimRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", VerifyDomainDkimRequest, headers, settings, cb)
 	else
@@ -6641,8 +8328,11 @@ function M.GetIdentityMailFromDomainAttributesAsync(GetIdentityMailFromDomainAtt
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".GetIdentityMailFromDomainAttributes",
 	}
+	for header,value in pairs(GetIdentityMailFromDomainAttributesRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", GetIdentityMailFromDomainAttributesRequest, headers, settings, cb)
 	else
@@ -6673,8 +8363,11 @@ function M.ListIdentityPoliciesAsync(ListIdentityPoliciesRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".ListIdentityPolicies",
 	}
+	for header,value in pairs(ListIdentityPoliciesRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ListIdentityPoliciesRequest, headers, settings, cb)
 	else
@@ -6705,8 +8398,11 @@ function M.DeleteConfigurationSetEventDestinationAsync(DeleteConfigurationSetEve
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DeleteConfigurationSetEventDestination",
 	}
+	for header,value in pairs(DeleteConfigurationSetEventDestinationRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteConfigurationSetEventDestinationRequest, headers, settings, cb)
 	else
@@ -6737,8 +8433,11 @@ function M.ListIdentitiesAsync(ListIdentitiesRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".ListIdentities",
 	}
+	for header,value in pairs(ListIdentitiesRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ListIdentitiesRequest, headers, settings, cb)
 	else
@@ -6769,8 +8468,11 @@ function M.GetIdentityVerificationAttributesAsync(GetIdentityVerificationAttribu
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".GetIdentityVerificationAttributes",
 	}
+	for header,value in pairs(GetIdentityVerificationAttributesRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", GetIdentityVerificationAttributesRequest, headers, settings, cb)
 	else
@@ -6801,8 +8503,11 @@ function M.VerifyEmailIdentityAsync(VerifyEmailIdentityRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".VerifyEmailIdentity",
 	}
+	for header,value in pairs(VerifyEmailIdentityRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", VerifyEmailIdentityRequest, headers, settings, cb)
 	else
@@ -6833,8 +8538,11 @@ function M.PutIdentityPolicyAsync(PutIdentityPolicyRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".PutIdentityPolicy",
 	}
+	for header,value in pairs(PutIdentityPolicyRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", PutIdentityPolicyRequest, headers, settings, cb)
 	else
@@ -6865,8 +8573,11 @@ function M.SendRawEmailAsync(SendRawEmailRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".SendRawEmail",
 	}
+	for header,value in pairs(SendRawEmailRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", SendRawEmailRequest, headers, settings, cb)
 	else
@@ -6897,8 +8608,11 @@ function M.CreateReceiptRuleSetAsync(CreateReceiptRuleSetRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".CreateReceiptRuleSet",
 	}
+	for header,value in pairs(CreateReceiptRuleSetRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateReceiptRuleSetRequest, headers, settings, cb)
 	else

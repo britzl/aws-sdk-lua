@@ -41,13 +41,24 @@ end
 -- * Filters [FilterList] <p>Filters applied to the action.</p>
 -- @return DescribeEventCategoriesMessage structure as a key-value pair table
 function M.DescribeEventCategoriesMessage(args)
-	assert(args, "You must provdide an argument table when creating DescribeEventCategoriesMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeEventCategoriesMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["SourceType"] = args["SourceType"],
 		["Filters"] = args["Filters"],
 	}
-	asserts.AssertDescribeEventCategoriesMessage(t)
-	return t
+	asserts.AssertDescribeEventCategoriesMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeConnectionsResponse = { ["Marker"] = true, ["Connections"] = true, nil }
@@ -70,13 +81,24 @@ end
 -- * Connections [ConnectionList] <p>A description of the connections.</p>
 -- @return DescribeConnectionsResponse structure as a key-value pair table
 function M.DescribeConnectionsResponse(args)
-	assert(args, "You must provdide an argument table when creating DescribeConnectionsResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeConnectionsResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Marker"] = args["Marker"],
 		["Connections"] = args["Connections"],
 	}
-	asserts.AssertDescribeConnectionsResponse(t)
-	return t
+	asserts.AssertDescribeConnectionsResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteReplicationSubnetGroupResponse = { nil }
@@ -95,11 +117,22 @@ end
 -- Valid keys:
 -- @return DeleteReplicationSubnetGroupResponse structure as a key-value pair table
 function M.DeleteReplicationSubnetGroupResponse(args)
-	assert(args, "You must provdide an argument table when creating DeleteReplicationSubnetGroupResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteReplicationSubnetGroupResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertDeleteReplicationSubnetGroupResponse(t)
-	return t
+	asserts.AssertDeleteReplicationSubnetGroupResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeRefreshSchemasStatusResponse = { ["RefreshSchemasStatus"] = true, nil }
@@ -120,12 +153,23 @@ end
 -- * RefreshSchemasStatus [RefreshSchemasStatus] <p>The status of the schema.</p>
 -- @return DescribeRefreshSchemasStatusResponse structure as a key-value pair table
 function M.DescribeRefreshSchemasStatusResponse(args)
-	assert(args, "You must provdide an argument table when creating DescribeRefreshSchemasStatusResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeRefreshSchemasStatusResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["RefreshSchemasStatus"] = args["RefreshSchemasStatus"],
 	}
-	asserts.AssertDescribeRefreshSchemasStatusResponse(t)
-	return t
+	asserts.AssertDescribeRefreshSchemasStatusResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeTableStatisticsResponse = { ["ReplicationTaskArn"] = true, ["Marker"] = true, ["TableStatistics"] = true, nil }
@@ -150,14 +194,25 @@ end
 -- * TableStatistics [TableStatisticsList] <p>The table statistics.</p>
 -- @return DescribeTableStatisticsResponse structure as a key-value pair table
 function M.DescribeTableStatisticsResponse(args)
-	assert(args, "You must provdide an argument table when creating DescribeTableStatisticsResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeTableStatisticsResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ReplicationTaskArn"] = args["ReplicationTaskArn"],
 		["Marker"] = args["Marker"],
 		["TableStatistics"] = args["TableStatistics"],
 	}
-	asserts.AssertDescribeTableStatisticsResponse(t)
-	return t
+	asserts.AssertDescribeTableStatisticsResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteCertificateMessage = { ["CertificateArn"] = true, nil }
@@ -180,12 +235,23 @@ end
 -- Required key: CertificateArn
 -- @return DeleteCertificateMessage structure as a key-value pair table
 function M.DeleteCertificateMessage(args)
-	assert(args, "You must provdide an argument table when creating DeleteCertificateMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteCertificateMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["CertificateArn"] = args["CertificateArn"],
 	}
-	asserts.AssertDeleteCertificateMessage(t)
-	return t
+	asserts.AssertDeleteCertificateMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ModifyEventSubscriptionMessage = { ["EventCategories"] = true, ["Enabled"] = true, ["SourceType"] = true, ["SubscriptionName"] = true, ["SnsTopicArn"] = true, nil }
@@ -216,16 +282,27 @@ end
 -- Required key: SubscriptionName
 -- @return ModifyEventSubscriptionMessage structure as a key-value pair table
 function M.ModifyEventSubscriptionMessage(args)
-	assert(args, "You must provdide an argument table when creating ModifyEventSubscriptionMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ModifyEventSubscriptionMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["EventCategories"] = args["EventCategories"],
 		["Enabled"] = args["Enabled"],
 		["SourceType"] = args["SourceType"],
 		["SubscriptionName"] = args["SubscriptionName"],
 		["SnsTopicArn"] = args["SnsTopicArn"],
 	}
-	asserts.AssertModifyEventSubscriptionMessage(t)
-	return t
+	asserts.AssertModifyEventSubscriptionMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AccountQuota = { ["Max"] = true, ["AccountQuotaName"] = true, ["Used"] = true, nil }
@@ -250,14 +327,25 @@ end
 -- * Used [Long] <p>The amount currently used toward the quota maximum.</p>
 -- @return AccountQuota structure as a key-value pair table
 function M.AccountQuota(args)
-	assert(args, "You must provdide an argument table when creating AccountQuota")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AccountQuota")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Max"] = args["Max"],
 		["AccountQuotaName"] = args["AccountQuotaName"],
 		["Used"] = args["Used"],
 	}
-	asserts.AssertAccountQuota(t)
-	return t
+	asserts.AssertAccountQuota(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidCertificateFault = { ["message"] = true, nil }
@@ -278,12 +366,23 @@ end
 -- * message [ExceptionMessage] 
 -- @return InvalidCertificateFault structure as a key-value pair table
 function M.InvalidCertificateFault(args)
-	assert(args, "You must provdide an argument table when creating InvalidCertificateFault")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidCertificateFault")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertInvalidCertificateFault(t)
-	return t
+	asserts.AssertInvalidCertificateFault(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.MongoDbSettings = { ["Username"] = true, ["NestingLevel"] = true, ["AuthType"] = true, ["AuthSource"] = true, ["ServerName"] = true, ["AuthMechanism"] = true, ["DocsToInvestigate"] = true, ["DatabaseName"] = true, ["ExtractDocId"] = true, ["Password"] = true, ["Port"] = true, nil }
@@ -324,8 +423,14 @@ end
 -- * Port [IntegerOptional] <p> The port value for the MongoDB source endpoint. </p>
 -- @return MongoDbSettings structure as a key-value pair table
 function M.MongoDbSettings(args)
-	assert(args, "You must provdide an argument table when creating MongoDbSettings")
-	local t = { 
+	assert(args, "You must provide an argument table when creating MongoDbSettings")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Username"] = args["Username"],
 		["NestingLevel"] = args["NestingLevel"],
 		["AuthType"] = args["AuthType"],
@@ -338,8 +443,13 @@ function M.MongoDbSettings(args)
 		["Password"] = args["Password"],
 		["Port"] = args["Port"],
 	}
-	asserts.AssertMongoDbSettings(t)
-	return t
+	asserts.AssertMongoDbSettings(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ModifyEventSubscriptionResponse = { ["EventSubscription"] = true, nil }
@@ -360,12 +470,23 @@ end
 -- * EventSubscription [EventSubscription] <p>The modified event subscription.</p>
 -- @return ModifyEventSubscriptionResponse structure as a key-value pair table
 function M.ModifyEventSubscriptionResponse(args)
-	assert(args, "You must provdide an argument table when creating ModifyEventSubscriptionResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ModifyEventSubscriptionResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["EventSubscription"] = args["EventSubscription"],
 	}
-	asserts.AssertModifyEventSubscriptionResponse(t)
-	return t
+	asserts.AssertModifyEventSubscriptionResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ReplicationTaskStats = { ["TablesLoading"] = true, ["TablesQueued"] = true, ["TablesErrored"] = true, ["FullLoadProgressPercent"] = true, ["TablesLoaded"] = true, ["ElapsedTimeMillis"] = true, nil }
@@ -396,8 +517,14 @@ end
 -- * ElapsedTimeMillis [Long] <p>The elapsed time of the task, in milliseconds.</p>
 -- @return ReplicationTaskStats structure as a key-value pair table
 function M.ReplicationTaskStats(args)
-	assert(args, "You must provdide an argument table when creating ReplicationTaskStats")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ReplicationTaskStats")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["TablesLoading"] = args["TablesLoading"],
 		["TablesQueued"] = args["TablesQueued"],
 		["TablesErrored"] = args["TablesErrored"],
@@ -405,8 +532,13 @@ function M.ReplicationTaskStats(args)
 		["TablesLoaded"] = args["TablesLoaded"],
 		["ElapsedTimeMillis"] = args["ElapsedTimeMillis"],
 	}
-	asserts.AssertReplicationTaskStats(t)
-	return t
+	asserts.AssertReplicationTaskStats(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DynamoDbSettings = { ["ServiceAccessRoleArn"] = true, nil }
@@ -429,12 +561,23 @@ end
 -- Required key: ServiceAccessRoleArn
 -- @return DynamoDbSettings structure as a key-value pair table
 function M.DynamoDbSettings(args)
-	assert(args, "You must provdide an argument table when creating DynamoDbSettings")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DynamoDbSettings")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ServiceAccessRoleArn"] = args["ServiceAccessRoleArn"],
 	}
-	asserts.AssertDynamoDbSettings(t)
-	return t
+	asserts.AssertDynamoDbSettings(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteEndpointResponse = { ["Endpoint"] = true, nil }
@@ -455,12 +598,23 @@ end
 -- * Endpoint [Endpoint] <p>The endpoint that was deleted.</p>
 -- @return DeleteEndpointResponse structure as a key-value pair table
 function M.DeleteEndpointResponse(args)
-	assert(args, "You must provdide an argument table when creating DeleteEndpointResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteEndpointResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Endpoint"] = args["Endpoint"],
 	}
-	asserts.AssertDeleteEndpointResponse(t)
-	return t
+	asserts.AssertDeleteEndpointResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AccessDeniedFault = { ["message"] = true, nil }
@@ -481,12 +635,23 @@ end
 -- * message [ExceptionMessage] <p/>
 -- @return AccessDeniedFault structure as a key-value pair table
 function M.AccessDeniedFault(args)
-	assert(args, "You must provdide an argument table when creating AccessDeniedFault")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AccessDeniedFault")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertAccessDeniedFault(t)
-	return t
+	asserts.AssertAccessDeniedFault(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeTableStatisticsMessage = { ["ReplicationTaskArn"] = true, ["Marker"] = true, ["MaxRecords"] = true, nil }
@@ -513,14 +678,25 @@ end
 -- Required key: ReplicationTaskArn
 -- @return DescribeTableStatisticsMessage structure as a key-value pair table
 function M.DescribeTableStatisticsMessage(args)
-	assert(args, "You must provdide an argument table when creating DescribeTableStatisticsMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeTableStatisticsMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ReplicationTaskArn"] = args["ReplicationTaskArn"],
 		["Marker"] = args["Marker"],
 		["MaxRecords"] = args["MaxRecords"],
 	}
-	asserts.AssertDescribeTableStatisticsMessage(t)
-	return t
+	asserts.AssertDescribeTableStatisticsMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InsufficientResourceCapacityFault = { ["message"] = true, nil }
@@ -541,12 +717,23 @@ end
 -- * message [ExceptionMessage] <p/>
 -- @return InsufficientResourceCapacityFault structure as a key-value pair table
 function M.InsufficientResourceCapacityFault(args)
-	assert(args, "You must provdide an argument table when creating InsufficientResourceCapacityFault")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InsufficientResourceCapacityFault")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertInsufficientResourceCapacityFault(t)
-	return t
+	asserts.AssertInsufficientResourceCapacityFault(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeReplicationInstancesMessage = { ["Marker"] = true, ["MaxRecords"] = true, ["Filters"] = true, nil }
@@ -571,14 +758,25 @@ end
 -- * Filters [FilterList] <p>Filters applied to the describe action.</p> <p>Valid filter names: replication-instance-arn | replication-instance-id | replication-instance-class | engine-version</p>
 -- @return DescribeReplicationInstancesMessage structure as a key-value pair table
 function M.DescribeReplicationInstancesMessage(args)
-	assert(args, "You must provdide an argument table when creating DescribeReplicationInstancesMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeReplicationInstancesMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Marker"] = args["Marker"],
 		["MaxRecords"] = args["MaxRecords"],
 		["Filters"] = args["Filters"],
 	}
-	asserts.AssertDescribeReplicationInstancesMessage(t)
-	return t
+	asserts.AssertDescribeReplicationInstancesMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateReplicationTaskMessage = { ["SourceEndpointArn"] = true, ["ReplicationTaskIdentifier"] = true, ["ReplicationInstanceArn"] = true, ["Tags"] = true, ["TableMappings"] = true, ["MigrationType"] = true, ["TargetEndpointArn"] = true, ["ReplicationTaskSettings"] = true, ["CdcStartTime"] = true, nil }
@@ -627,8 +825,14 @@ end
 -- Required key: TableMappings
 -- @return CreateReplicationTaskMessage structure as a key-value pair table
 function M.CreateReplicationTaskMessage(args)
-	assert(args, "You must provdide an argument table when creating CreateReplicationTaskMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateReplicationTaskMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["SourceEndpointArn"] = args["SourceEndpointArn"],
 		["ReplicationTaskIdentifier"] = args["ReplicationTaskIdentifier"],
 		["ReplicationInstanceArn"] = args["ReplicationInstanceArn"],
@@ -639,8 +843,13 @@ function M.CreateReplicationTaskMessage(args)
 		["ReplicationTaskSettings"] = args["ReplicationTaskSettings"],
 		["CdcStartTime"] = args["CdcStartTime"],
 	}
-	asserts.AssertCreateReplicationTaskMessage(t)
-	return t
+	asserts.AssertCreateReplicationTaskMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidResourceStateFault = { ["message"] = true, nil }
@@ -661,12 +870,23 @@ end
 -- * message [ExceptionMessage] <p/>
 -- @return InvalidResourceStateFault structure as a key-value pair table
 function M.InvalidResourceStateFault(args)
-	assert(args, "You must provdide an argument table when creating InvalidResourceStateFault")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidResourceStateFault")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertInvalidResourceStateFault(t)
-	return t
+	asserts.AssertInvalidResourceStateFault(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.TestConnectionResponse = { ["Connection"] = true, nil }
@@ -687,12 +907,23 @@ end
 -- * Connection [Connection] <p>The connection tested.</p>
 -- @return TestConnectionResponse structure as a key-value pair table
 function M.TestConnectionResponse(args)
-	assert(args, "You must provdide an argument table when creating TestConnectionResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating TestConnectionResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Connection"] = args["Connection"],
 	}
-	asserts.AssertTestConnectionResponse(t)
-	return t
+	asserts.AssertTestConnectionResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeEventsMessage = { ["EventCategories"] = true, ["SourceType"] = true, ["Marker"] = true, ["MaxRecords"] = true, ["StartTime"] = true, ["Duration"] = true, ["Filters"] = true, ["SourceIdentifier"] = true, ["EndTime"] = true, nil }
@@ -729,8 +960,14 @@ end
 -- * EndTime [TStamp] <p>The end time for the events to be listed.</p>
 -- @return DescribeEventsMessage structure as a key-value pair table
 function M.DescribeEventsMessage(args)
-	assert(args, "You must provdide an argument table when creating DescribeEventsMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeEventsMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["EventCategories"] = args["EventCategories"],
 		["SourceType"] = args["SourceType"],
 		["Marker"] = args["Marker"],
@@ -741,8 +978,13 @@ function M.DescribeEventsMessage(args)
 		["SourceIdentifier"] = args["SourceIdentifier"],
 		["EndTime"] = args["EndTime"],
 	}
-	asserts.AssertDescribeEventsMessage(t)
-	return t
+	asserts.AssertDescribeEventsMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateReplicationTaskResponse = { ["ReplicationTask"] = true, nil }
@@ -763,12 +1005,23 @@ end
 -- * ReplicationTask [ReplicationTask] <p>The replication task that was created.</p>
 -- @return CreateReplicationTaskResponse structure as a key-value pair table
 function M.CreateReplicationTaskResponse(args)
-	assert(args, "You must provdide an argument table when creating CreateReplicationTaskResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateReplicationTaskResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ReplicationTask"] = args["ReplicationTask"],
 	}
-	asserts.AssertCreateReplicationTaskResponse(t)
-	return t
+	asserts.AssertCreateReplicationTaskResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.StorageQuotaExceededFault = { ["message"] = true, nil }
@@ -789,12 +1042,23 @@ end
 -- * message [ExceptionMessage] <p/>
 -- @return StorageQuotaExceededFault structure as a key-value pair table
 function M.StorageQuotaExceededFault(args)
-	assert(args, "You must provdide an argument table when creating StorageQuotaExceededFault")
-	local t = { 
+	assert(args, "You must provide an argument table when creating StorageQuotaExceededFault")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertStorageQuotaExceededFault(t)
-	return t
+	asserts.AssertStorageQuotaExceededFault(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Tag = { ["Value"] = true, ["Key"] = true, nil }
@@ -817,13 +1081,24 @@ end
 -- * Key [String] <p>A key is the required name of the tag. The string value can be from 1 to 128 Unicode characters in length and cannot be prefixed with "aws:" or "dms:". The string can only contain only the set of Unicode letters, digits, white-space, '_', '.', '/', '=', '+', '-' (Java regex: "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").</p>
 -- @return Tag structure as a key-value pair table
 function M.Tag(args)
-	assert(args, "You must provdide an argument table when creating Tag")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Tag")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Value"] = args["Value"],
 		["Key"] = args["Key"],
 	}
-	asserts.AssertTag(t)
-	return t
+	asserts.AssertTag(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AddTagsToResourceMessage = { ["ResourceArn"] = true, ["Tags"] = true, nil }
@@ -850,13 +1125,24 @@ end
 -- Required key: Tags
 -- @return AddTagsToResourceMessage structure as a key-value pair table
 function M.AddTagsToResourceMessage(args)
-	assert(args, "You must provdide an argument table when creating AddTagsToResourceMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AddTagsToResourceMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ResourceArn"] = args["ResourceArn"],
 		["Tags"] = args["Tags"],
 	}
-	asserts.AssertAddTagsToResourceMessage(t)
-	return t
+	asserts.AssertAddTagsToResourceMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Event = { ["Date"] = true, ["Message"] = true, ["SourceIdentifier"] = true, ["EventCategories"] = true, ["SourceType"] = true, nil }
@@ -885,16 +1171,27 @@ end
 -- * SourceType [SourceType] <p> The type of AWS DMS resource that generates events. </p> <p>Valid values: replication-instance | endpoint | migration-task</p>
 -- @return Event structure as a key-value pair table
 function M.Event(args)
-	assert(args, "You must provdide an argument table when creating Event")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Event")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Date"] = args["Date"],
 		["Message"] = args["Message"],
 		["SourceIdentifier"] = args["SourceIdentifier"],
 		["EventCategories"] = args["EventCategories"],
 		["SourceType"] = args["SourceType"],
 	}
-	asserts.AssertEvent(t)
-	return t
+	asserts.AssertEvent(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteReplicationSubnetGroupMessage = { ["ReplicationSubnetGroupIdentifier"] = true, nil }
@@ -917,12 +1214,23 @@ end
 -- Required key: ReplicationSubnetGroupIdentifier
 -- @return DeleteReplicationSubnetGroupMessage structure as a key-value pair table
 function M.DeleteReplicationSubnetGroupMessage(args)
-	assert(args, "You must provdide an argument table when creating DeleteReplicationSubnetGroupMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteReplicationSubnetGroupMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ReplicationSubnetGroupIdentifier"] = args["ReplicationSubnetGroupIdentifier"],
 	}
-	asserts.AssertDeleteReplicationSubnetGroupMessage(t)
-	return t
+	asserts.AssertDeleteReplicationSubnetGroupMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeRefreshSchemasStatusMessage = { ["EndpointArn"] = true, nil }
@@ -945,12 +1253,23 @@ end
 -- Required key: EndpointArn
 -- @return DescribeRefreshSchemasStatusMessage structure as a key-value pair table
 function M.DescribeRefreshSchemasStatusMessage(args)
-	assert(args, "You must provdide an argument table when creating DescribeRefreshSchemasStatusMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeRefreshSchemasStatusMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["EndpointArn"] = args["EndpointArn"],
 	}
-	asserts.AssertDescribeRefreshSchemasStatusMessage(t)
-	return t
+	asserts.AssertDescribeRefreshSchemasStatusMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.TestConnectionMessage = { ["EndpointArn"] = true, ["ReplicationInstanceArn"] = true, nil }
@@ -977,13 +1296,24 @@ end
 -- Required key: EndpointArn
 -- @return TestConnectionMessage structure as a key-value pair table
 function M.TestConnectionMessage(args)
-	assert(args, "You must provdide an argument table when creating TestConnectionMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating TestConnectionMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["EndpointArn"] = args["EndpointArn"],
 		["ReplicationInstanceArn"] = args["ReplicationInstanceArn"],
 	}
-	asserts.AssertTestConnectionMessage(t)
-	return t
+	asserts.AssertTestConnectionMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidSubnet = { ["message"] = true, nil }
@@ -1004,12 +1334,23 @@ end
 -- * message [ExceptionMessage] <p/>
 -- @return InvalidSubnet structure as a key-value pair table
 function M.InvalidSubnet(args)
-	assert(args, "You must provdide an argument table when creating InvalidSubnet")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidSubnet")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertInvalidSubnet(t)
-	return t
+	asserts.AssertInvalidSubnet(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.TableToReload = { ["SchemaName"] = true, ["TableName"] = true, nil }
@@ -1032,13 +1373,24 @@ end
 -- * TableName [String] <p>The table name of the table to be reloaded.</p>
 -- @return TableToReload structure as a key-value pair table
 function M.TableToReload(args)
-	assert(args, "You must provdide an argument table when creating TableToReload")
-	local t = { 
+	assert(args, "You must provide an argument table when creating TableToReload")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["SchemaName"] = args["SchemaName"],
 		["TableName"] = args["TableName"],
 	}
-	asserts.AssertTableToReload(t)
-	return t
+	asserts.AssertTableToReload(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ReloadTablesMessage = { ["ReplicationTaskArn"] = true, ["TablesToReload"] = true, nil }
@@ -1065,13 +1417,24 @@ end
 -- Required key: TablesToReload
 -- @return ReloadTablesMessage structure as a key-value pair table
 function M.ReloadTablesMessage(args)
-	assert(args, "You must provdide an argument table when creating ReloadTablesMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ReloadTablesMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ReplicationTaskArn"] = args["ReplicationTaskArn"],
 		["TablesToReload"] = args["TablesToReload"],
 	}
-	asserts.AssertReloadTablesMessage(t)
-	return t
+	asserts.AssertReloadTablesMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ResourceNotFoundFault = { ["message"] = true, nil }
@@ -1092,12 +1455,23 @@ end
 -- * message [ExceptionMessage] <p/>
 -- @return ResourceNotFoundFault structure as a key-value pair table
 function M.ResourceNotFoundFault(args)
-	assert(args, "You must provdide an argument table when creating ResourceNotFoundFault")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ResourceNotFoundFault")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertResourceNotFoundFault(t)
-	return t
+	asserts.AssertResourceNotFoundFault(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.RemoveTagsFromResourceResponse = { nil }
@@ -1116,11 +1490,22 @@ end
 -- Valid keys:
 -- @return RemoveTagsFromResourceResponse structure as a key-value pair table
 function M.RemoveTagsFromResourceResponse(args)
-	assert(args, "You must provdide an argument table when creating RemoveTagsFromResourceResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating RemoveTagsFromResourceResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertRemoveTagsFromResourceResponse(t)
-	return t
+	asserts.AssertRemoveTagsFromResourceResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeReplicationSubnetGroupsResponse = { ["Marker"] = true, ["ReplicationSubnetGroups"] = true, nil }
@@ -1143,13 +1528,24 @@ end
 -- * ReplicationSubnetGroups [ReplicationSubnetGroups] <p>A description of the replication subnet groups.</p>
 -- @return DescribeReplicationSubnetGroupsResponse structure as a key-value pair table
 function M.DescribeReplicationSubnetGroupsResponse(args)
-	assert(args, "You must provdide an argument table when creating DescribeReplicationSubnetGroupsResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeReplicationSubnetGroupsResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Marker"] = args["Marker"],
 		["ReplicationSubnetGroups"] = args["ReplicationSubnetGroups"],
 	}
-	asserts.AssertDescribeReplicationSubnetGroupsResponse(t)
-	return t
+	asserts.AssertDescribeReplicationSubnetGroupsResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateEventSubscriptionResponse = { ["EventSubscription"] = true, nil }
@@ -1170,12 +1566,23 @@ end
 -- * EventSubscription [EventSubscription] <p>The event subscription that was created.</p>
 -- @return CreateEventSubscriptionResponse structure as a key-value pair table
 function M.CreateEventSubscriptionResponse(args)
-	assert(args, "You must provdide an argument table when creating CreateEventSubscriptionResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateEventSubscriptionResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["EventSubscription"] = args["EventSubscription"],
 	}
-	asserts.AssertCreateEventSubscriptionResponse(t)
-	return t
+	asserts.AssertCreateEventSubscriptionResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeOrderableReplicationInstancesResponse = { ["Marker"] = true, ["OrderableReplicationInstances"] = true, nil }
@@ -1198,13 +1605,24 @@ end
 -- * OrderableReplicationInstances [OrderableReplicationInstanceList] <p>The order-able replication instances available.</p>
 -- @return DescribeOrderableReplicationInstancesResponse structure as a key-value pair table
 function M.DescribeOrderableReplicationInstancesResponse(args)
-	assert(args, "You must provdide an argument table when creating DescribeOrderableReplicationInstancesResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeOrderableReplicationInstancesResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Marker"] = args["Marker"],
 		["OrderableReplicationInstances"] = args["OrderableReplicationInstances"],
 	}
-	asserts.AssertDescribeOrderableReplicationInstancesResponse(t)
-	return t
+	asserts.AssertDescribeOrderableReplicationInstancesResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ModifyReplicationTaskMessage = { ["ReplicationTaskIdentifier"] = true, ["ReplicationTaskArn"] = true, ["MigrationType"] = true, ["TableMappings"] = true, ["ReplicationTaskSettings"] = true, ["CdcStartTime"] = true, nil }
@@ -1237,8 +1655,14 @@ end
 -- Required key: ReplicationTaskArn
 -- @return ModifyReplicationTaskMessage structure as a key-value pair table
 function M.ModifyReplicationTaskMessage(args)
-	assert(args, "You must provdide an argument table when creating ModifyReplicationTaskMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ModifyReplicationTaskMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ReplicationTaskIdentifier"] = args["ReplicationTaskIdentifier"],
 		["ReplicationTaskArn"] = args["ReplicationTaskArn"],
 		["MigrationType"] = args["MigrationType"],
@@ -1246,8 +1670,13 @@ function M.ModifyReplicationTaskMessage(args)
 		["ReplicationTaskSettings"] = args["ReplicationTaskSettings"],
 		["CdcStartTime"] = args["CdcStartTime"],
 	}
-	asserts.AssertModifyReplicationTaskMessage(t)
-	return t
+	asserts.AssertModifyReplicationTaskMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeConnectionsMessage = { ["Marker"] = true, ["MaxRecords"] = true, ["Filters"] = true, nil }
@@ -1272,14 +1701,25 @@ end
 -- * Filters [FilterList] <p>The filters applied to the connection.</p> <p>Valid filter names: endpoint-arn | replication-instance-arn</p>
 -- @return DescribeConnectionsMessage structure as a key-value pair table
 function M.DescribeConnectionsMessage(args)
-	assert(args, "You must provdide an argument table when creating DescribeConnectionsMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeConnectionsMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Marker"] = args["Marker"],
 		["MaxRecords"] = args["MaxRecords"],
 		["Filters"] = args["Filters"],
 	}
-	asserts.AssertDescribeConnectionsMessage(t)
-	return t
+	asserts.AssertDescribeConnectionsMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeReplicationInstancesResponse = { ["Marker"] = true, ["ReplicationInstances"] = true, nil }
@@ -1302,13 +1742,24 @@ end
 -- * ReplicationInstances [ReplicationInstanceList] <p>The replication instances described.</p>
 -- @return DescribeReplicationInstancesResponse structure as a key-value pair table
 function M.DescribeReplicationInstancesResponse(args)
-	assert(args, "You must provdide an argument table when creating DescribeReplicationInstancesResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeReplicationInstancesResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Marker"] = args["Marker"],
 		["ReplicationInstances"] = args["ReplicationInstances"],
 	}
-	asserts.AssertDescribeReplicationInstancesResponse(t)
-	return t
+	asserts.AssertDescribeReplicationInstancesResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeSchemasResponse = { ["Marker"] = true, ["Schemas"] = true, nil }
@@ -1331,13 +1782,24 @@ end
 -- * Schemas [SchemaList] <p>The described schema.</p>
 -- @return DescribeSchemasResponse structure as a key-value pair table
 function M.DescribeSchemasResponse(args)
-	assert(args, "You must provdide an argument table when creating DescribeSchemasResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeSchemasResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Marker"] = args["Marker"],
 		["Schemas"] = args["Schemas"],
 	}
-	asserts.AssertDescribeSchemasResponse(t)
-	return t
+	asserts.AssertDescribeSchemasResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.VpcSecurityGroupMembership = { ["Status"] = true, ["VpcSecurityGroupId"] = true, nil }
@@ -1360,13 +1822,24 @@ end
 -- * VpcSecurityGroupId [String] <p>The VPC security group Id.</p>
 -- @return VpcSecurityGroupMembership structure as a key-value pair table
 function M.VpcSecurityGroupMembership(args)
-	assert(args, "You must provdide an argument table when creating VpcSecurityGroupMembership")
-	local t = { 
+	assert(args, "You must provide an argument table when creating VpcSecurityGroupMembership")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Status"] = args["Status"],
 		["VpcSecurityGroupId"] = args["VpcSecurityGroupId"],
 	}
-	asserts.AssertVpcSecurityGroupMembership(t)
-	return t
+	asserts.AssertVpcSecurityGroupMembership(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.S3Settings = { ["CompressionType"] = true, ["BucketFolder"] = true, ["CsvRowDelimiter"] = true, ["CsvDelimiter"] = true, ["ServiceAccessRoleArn"] = true, ["ExternalTableDefinition"] = true, ["BucketName"] = true, nil }
@@ -1399,8 +1872,14 @@ end
 -- * BucketName [String] <p> The name of the S3 bucket. </p>
 -- @return S3Settings structure as a key-value pair table
 function M.S3Settings(args)
-	assert(args, "You must provdide an argument table when creating S3Settings")
-	local t = { 
+	assert(args, "You must provide an argument table when creating S3Settings")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["CompressionType"] = args["CompressionType"],
 		["BucketFolder"] = args["BucketFolder"],
 		["CsvRowDelimiter"] = args["CsvRowDelimiter"],
@@ -1409,8 +1888,13 @@ function M.S3Settings(args)
 		["ExternalTableDefinition"] = args["ExternalTableDefinition"],
 		["BucketName"] = args["BucketName"],
 	}
-	asserts.AssertS3Settings(t)
-	return t
+	asserts.AssertS3Settings(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeEndpointsResponse = { ["Marker"] = true, ["Endpoints"] = true, nil }
@@ -1433,13 +1917,24 @@ end
 -- * Endpoints [EndpointList] <p>Endpoint description.</p>
 -- @return DescribeEndpointsResponse structure as a key-value pair table
 function M.DescribeEndpointsResponse(args)
-	assert(args, "You must provdide an argument table when creating DescribeEndpointsResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeEndpointsResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Marker"] = args["Marker"],
 		["Endpoints"] = args["Endpoints"],
 	}
-	asserts.AssertDescribeEndpointsResponse(t)
-	return t
+	asserts.AssertDescribeEndpointsResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateEndpointResponse = { ["Endpoint"] = true, nil }
@@ -1460,12 +1955,23 @@ end
 -- * Endpoint [Endpoint] <p>The endpoint that was created.</p>
 -- @return CreateEndpointResponse structure as a key-value pair table
 function M.CreateEndpointResponse(args)
-	assert(args, "You must provdide an argument table when creating CreateEndpointResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateEndpointResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Endpoint"] = args["Endpoint"],
 	}
-	asserts.AssertCreateEndpointResponse(t)
-	return t
+	asserts.AssertCreateEndpointResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateReplicationSubnetGroupMessage = { ["ReplicationSubnetGroupDescription"] = true, ["SubnetIds"] = true, ["Tags"] = true, ["ReplicationSubnetGroupIdentifier"] = true, nil }
@@ -1498,15 +2004,26 @@ end
 -- Required key: SubnetIds
 -- @return CreateReplicationSubnetGroupMessage structure as a key-value pair table
 function M.CreateReplicationSubnetGroupMessage(args)
-	assert(args, "You must provdide an argument table when creating CreateReplicationSubnetGroupMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateReplicationSubnetGroupMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ReplicationSubnetGroupDescription"] = args["ReplicationSubnetGroupDescription"],
 		["SubnetIds"] = args["SubnetIds"],
 		["Tags"] = args["Tags"],
 		["ReplicationSubnetGroupIdentifier"] = args["ReplicationSubnetGroupIdentifier"],
 	}
-	asserts.AssertCreateReplicationSubnetGroupMessage(t)
-	return t
+	asserts.AssertCreateReplicationSubnetGroupMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeReplicationSubnetGroupsMessage = { ["Marker"] = true, ["MaxRecords"] = true, ["Filters"] = true, nil }
@@ -1531,14 +2048,25 @@ end
 -- * Filters [FilterList] <p>Filters applied to the describe action.</p>
 -- @return DescribeReplicationSubnetGroupsMessage structure as a key-value pair table
 function M.DescribeReplicationSubnetGroupsMessage(args)
-	assert(args, "You must provdide an argument table when creating DescribeReplicationSubnetGroupsMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeReplicationSubnetGroupsMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Marker"] = args["Marker"],
 		["MaxRecords"] = args["MaxRecords"],
 		["Filters"] = args["Filters"],
 	}
-	asserts.AssertDescribeReplicationSubnetGroupsMessage(t)
-	return t
+	asserts.AssertDescribeReplicationSubnetGroupsMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ReplicationSubnetGroup = { ["ReplicationSubnetGroupDescription"] = true, ["Subnets"] = true, ["VpcId"] = true, ["SubnetGroupStatus"] = true, ["ReplicationSubnetGroupIdentifier"] = true, nil }
@@ -1567,16 +2095,27 @@ end
 -- * ReplicationSubnetGroupIdentifier [String] <p>The identifier of the replication instance subnet group.</p>
 -- @return ReplicationSubnetGroup structure as a key-value pair table
 function M.ReplicationSubnetGroup(args)
-	assert(args, "You must provdide an argument table when creating ReplicationSubnetGroup")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ReplicationSubnetGroup")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ReplicationSubnetGroupDescription"] = args["ReplicationSubnetGroupDescription"],
 		["Subnets"] = args["Subnets"],
 		["VpcId"] = args["VpcId"],
 		["SubnetGroupStatus"] = args["SubnetGroupStatus"],
 		["ReplicationSubnetGroupIdentifier"] = args["ReplicationSubnetGroupIdentifier"],
 	}
-	asserts.AssertReplicationSubnetGroup(t)
-	return t
+	asserts.AssertReplicationSubnetGroup(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ModifyReplicationInstanceResponse = { ["ReplicationInstance"] = true, nil }
@@ -1597,12 +2136,23 @@ end
 -- * ReplicationInstance [ReplicationInstance] <p>The modified replication instance.</p>
 -- @return ModifyReplicationInstanceResponse structure as a key-value pair table
 function M.ModifyReplicationInstanceResponse(args)
-	assert(args, "You must provdide an argument table when creating ModifyReplicationInstanceResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ModifyReplicationInstanceResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ReplicationInstance"] = args["ReplicationInstance"],
 	}
-	asserts.AssertModifyReplicationInstanceResponse(t)
-	return t
+	asserts.AssertModifyReplicationInstanceResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.RefreshSchemasResponse = { ["RefreshSchemasStatus"] = true, nil }
@@ -1623,12 +2173,23 @@ end
 -- * RefreshSchemasStatus [RefreshSchemasStatus] <p>The status of the refreshed schema.</p>
 -- @return RefreshSchemasResponse structure as a key-value pair table
 function M.RefreshSchemasResponse(args)
-	assert(args, "You must provdide an argument table when creating RefreshSchemasResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating RefreshSchemasResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["RefreshSchemasStatus"] = args["RefreshSchemasStatus"],
 	}
-	asserts.AssertRefreshSchemasResponse(t)
-	return t
+	asserts.AssertRefreshSchemasResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeCertificatesResponse = { ["Marker"] = true, ["Certificates"] = true, nil }
@@ -1651,13 +2212,24 @@ end
 -- * Certificates [CertificateList] <p>The Secure Sockets Layer (SSL) certificates associated with the replication instance.</p>
 -- @return DescribeCertificatesResponse structure as a key-value pair table
 function M.DescribeCertificatesResponse(args)
-	assert(args, "You must provdide an argument table when creating DescribeCertificatesResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeCertificatesResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Marker"] = args["Marker"],
 		["Certificates"] = args["Certificates"],
 	}
-	asserts.AssertDescribeCertificatesResponse(t)
-	return t
+	asserts.AssertDescribeCertificatesResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.StartReplicationTaskMessage = { ["ReplicationTaskArn"] = true, ["StartReplicationTaskType"] = true, ["CdcStartTime"] = true, nil }
@@ -1686,14 +2258,25 @@ end
 -- Required key: StartReplicationTaskType
 -- @return StartReplicationTaskMessage structure as a key-value pair table
 function M.StartReplicationTaskMessage(args)
-	assert(args, "You must provdide an argument table when creating StartReplicationTaskMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating StartReplicationTaskMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ReplicationTaskArn"] = args["ReplicationTaskArn"],
 		["StartReplicationTaskType"] = args["StartReplicationTaskType"],
 		["CdcStartTime"] = args["CdcStartTime"],
 	}
-	asserts.AssertStartReplicationTaskMessage(t)
-	return t
+	asserts.AssertStartReplicationTaskMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ResourceQuotaExceededFault = { ["message"] = true, nil }
@@ -1714,12 +2297,23 @@ end
 -- * message [ExceptionMessage] <p/>
 -- @return ResourceQuotaExceededFault structure as a key-value pair table
 function M.ResourceQuotaExceededFault(args)
-	assert(args, "You must provdide an argument table when creating ResourceQuotaExceededFault")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ResourceQuotaExceededFault")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertResourceQuotaExceededFault(t)
-	return t
+	asserts.AssertResourceQuotaExceededFault(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.StartReplicationTaskResponse = { ["ReplicationTask"] = true, nil }
@@ -1740,12 +2334,23 @@ end
 -- * ReplicationTask [ReplicationTask] <p>The replication task started.</p>
 -- @return StartReplicationTaskResponse structure as a key-value pair table
 function M.StartReplicationTaskResponse(args)
-	assert(args, "You must provdide an argument table when creating StartReplicationTaskResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating StartReplicationTaskResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ReplicationTask"] = args["ReplicationTask"],
 	}
-	asserts.AssertStartReplicationTaskResponse(t)
-	return t
+	asserts.AssertStartReplicationTaskResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ModifyReplicationSubnetGroupMessage = { ["ReplicationSubnetGroupDescription"] = true, ["SubnetIds"] = true, ["ReplicationSubnetGroupIdentifier"] = true, nil }
@@ -1774,14 +2379,25 @@ end
 -- Required key: SubnetIds
 -- @return ModifyReplicationSubnetGroupMessage structure as a key-value pair table
 function M.ModifyReplicationSubnetGroupMessage(args)
-	assert(args, "You must provdide an argument table when creating ModifyReplicationSubnetGroupMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ModifyReplicationSubnetGroupMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ReplicationSubnetGroupDescription"] = args["ReplicationSubnetGroupDescription"],
 		["SubnetIds"] = args["SubnetIds"],
 		["ReplicationSubnetGroupIdentifier"] = args["ReplicationSubnetGroupIdentifier"],
 	}
-	asserts.AssertModifyReplicationSubnetGroupMessage(t)
-	return t
+	asserts.AssertModifyReplicationSubnetGroupMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AvailabilityZone = { ["Name"] = true, nil }
@@ -1802,12 +2418,23 @@ end
 -- * Name [String] <p>The name of the availability zone.</p>
 -- @return AvailabilityZone structure as a key-value pair table
 function M.AvailabilityZone(args)
-	assert(args, "You must provdide an argument table when creating AvailabilityZone")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AvailabilityZone")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Name"] = args["Name"],
 	}
-	asserts.AssertAvailabilityZone(t)
-	return t
+	asserts.AssertAvailabilityZone(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.TableStatistics = { ["Inserts"] = true, ["LastUpdateTime"] = true, ["FullLoadErrorRows"] = true, ["FullLoadCondtnlChkFailedRows"] = true, ["Ddls"] = true, ["TableName"] = true, ["Updates"] = true, ["FullLoadRows"] = true, ["TableState"] = true, ["SchemaName"] = true, ["Deletes"] = true, nil }
@@ -1848,8 +2475,14 @@ end
 -- * Deletes [Long] <p>The number of delete actions performed on a table.</p>
 -- @return TableStatistics structure as a key-value pair table
 function M.TableStatistics(args)
-	assert(args, "You must provdide an argument table when creating TableStatistics")
-	local t = { 
+	assert(args, "You must provide an argument table when creating TableStatistics")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Inserts"] = args["Inserts"],
 		["LastUpdateTime"] = args["LastUpdateTime"],
 		["FullLoadErrorRows"] = args["FullLoadErrorRows"],
@@ -1862,8 +2495,13 @@ function M.TableStatistics(args)
 		["SchemaName"] = args["SchemaName"],
 		["Deletes"] = args["Deletes"],
 	}
-	asserts.AssertTableStatistics(t)
-	return t
+	asserts.AssertTableStatistics(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ModifyReplicationInstanceMessage = { ["MultiAZ"] = true, ["AllowMajorVersionUpgrade"] = true, ["ReplicationInstanceArn"] = true, ["ReplicationInstanceClass"] = true, ["VpcSecurityGroupIds"] = true, ["ApplyImmediately"] = true, ["AutoMinorVersionUpgrade"] = true, ["AllocatedStorage"] = true, ["EngineVersion"] = true, ["ReplicationInstanceIdentifier"] = true, ["PreferredMaintenanceWindow"] = true, nil }
@@ -1906,8 +2544,14 @@ end
 -- Required key: ReplicationInstanceArn
 -- @return ModifyReplicationInstanceMessage structure as a key-value pair table
 function M.ModifyReplicationInstanceMessage(args)
-	assert(args, "You must provdide an argument table when creating ModifyReplicationInstanceMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ModifyReplicationInstanceMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["MultiAZ"] = args["MultiAZ"],
 		["AllowMajorVersionUpgrade"] = args["AllowMajorVersionUpgrade"],
 		["ReplicationInstanceArn"] = args["ReplicationInstanceArn"],
@@ -1920,8 +2564,13 @@ function M.ModifyReplicationInstanceMessage(args)
 		["ReplicationInstanceIdentifier"] = args["ReplicationInstanceIdentifier"],
 		["PreferredMaintenanceWindow"] = args["PreferredMaintenanceWindow"],
 	}
-	asserts.AssertModifyReplicationInstanceMessage(t)
-	return t
+	asserts.AssertModifyReplicationInstanceMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ModifyReplicationTaskResponse = { ["ReplicationTask"] = true, nil }
@@ -1942,12 +2591,23 @@ end
 -- * ReplicationTask [ReplicationTask] <p>The replication task that was modified.</p>
 -- @return ModifyReplicationTaskResponse structure as a key-value pair table
 function M.ModifyReplicationTaskResponse(args)
-	assert(args, "You must provdide an argument table when creating ModifyReplicationTaskResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ModifyReplicationTaskResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ReplicationTask"] = args["ReplicationTask"],
 	}
-	asserts.AssertModifyReplicationTaskResponse(t)
-	return t
+	asserts.AssertModifyReplicationTaskResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Subnet = { ["SubnetStatus"] = true, ["SubnetIdentifier"] = true, ["SubnetAvailabilityZone"] = true, nil }
@@ -1972,14 +2632,25 @@ end
 -- * SubnetAvailabilityZone [AvailabilityZone] <p>The Availability Zone of the subnet.</p>
 -- @return Subnet structure as a key-value pair table
 function M.Subnet(args)
-	assert(args, "You must provdide an argument table when creating Subnet")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Subnet")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["SubnetStatus"] = args["SubnetStatus"],
 		["SubnetIdentifier"] = args["SubnetIdentifier"],
 		["SubnetAvailabilityZone"] = args["SubnetAvailabilityZone"],
 	}
-	asserts.AssertSubnet(t)
-	return t
+	asserts.AssertSubnet(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteReplicationTaskResponse = { ["ReplicationTask"] = true, nil }
@@ -2000,12 +2671,23 @@ end
 -- * ReplicationTask [ReplicationTask] <p>The deleted replication task.</p>
 -- @return DeleteReplicationTaskResponse structure as a key-value pair table
 function M.DeleteReplicationTaskResponse(args)
-	assert(args, "You must provdide an argument table when creating DeleteReplicationTaskResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteReplicationTaskResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ReplicationTask"] = args["ReplicationTask"],
 	}
-	asserts.AssertDeleteReplicationTaskResponse(t)
-	return t
+	asserts.AssertDeleteReplicationTaskResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Certificate = { ["CertificateArn"] = true, ["CertificateCreationDate"] = true, ["CertificatePem"] = true, ["CertificateOwner"] = true, ["CertificateWallet"] = true, ["ValidToDate"] = true, ["KeyLength"] = true, ["CertificateIdentifier"] = true, ["SigningAlgorithm"] = true, ["ValidFromDate"] = true, nil }
@@ -2044,8 +2726,14 @@ end
 -- * ValidFromDate [TStamp] <p>The beginning date that the certificate is valid.</p>
 -- @return Certificate structure as a key-value pair table
 function M.Certificate(args)
-	assert(args, "You must provdide an argument table when creating Certificate")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Certificate")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["CertificateArn"] = args["CertificateArn"],
 		["CertificateCreationDate"] = args["CertificateCreationDate"],
 		["CertificatePem"] = args["CertificatePem"],
@@ -2057,8 +2745,13 @@ function M.Certificate(args)
 		["SigningAlgorithm"] = args["SigningAlgorithm"],
 		["ValidFromDate"] = args["ValidFromDate"],
 	}
-	asserts.AssertCertificate(t)
-	return t
+	asserts.AssertCertificate(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeOrderableReplicationInstancesMessage = { ["Marker"] = true, ["MaxRecords"] = true, nil }
@@ -2081,13 +2774,24 @@ end
 -- * MaxRecords [IntegerOptional] <p> The maximum number of records to include in the response. If more records exist than the specified <code>MaxRecords</code> value, a pagination token called a marker is included in the response so that the remaining results can be retrieved. </p> <p>Default: 100</p> <p>Constraints: Minimum 20, maximum 100.</p>
 -- @return DescribeOrderableReplicationInstancesMessage structure as a key-value pair table
 function M.DescribeOrderableReplicationInstancesMessage(args)
-	assert(args, "You must provdide an argument table when creating DescribeOrderableReplicationInstancesMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeOrderableReplicationInstancesMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Marker"] = args["Marker"],
 		["MaxRecords"] = args["MaxRecords"],
 	}
-	asserts.AssertDescribeOrderableReplicationInstancesMessage(t)
-	return t
+	asserts.AssertDescribeOrderableReplicationInstancesMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeEventSubscriptionsMessage = { ["Marker"] = true, ["MaxRecords"] = true, ["Filters"] = true, ["SubscriptionName"] = true, nil }
@@ -2114,15 +2818,26 @@ end
 -- * SubscriptionName [String] <p>The name of the AWS DMS event subscription to be described.</p>
 -- @return DescribeEventSubscriptionsMessage structure as a key-value pair table
 function M.DescribeEventSubscriptionsMessage(args)
-	assert(args, "You must provdide an argument table when creating DescribeEventSubscriptionsMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeEventSubscriptionsMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Marker"] = args["Marker"],
 		["MaxRecords"] = args["MaxRecords"],
 		["Filters"] = args["Filters"],
 		["SubscriptionName"] = args["SubscriptionName"],
 	}
-	asserts.AssertDescribeEventSubscriptionsMessage(t)
-	return t
+	asserts.AssertDescribeEventSubscriptionsMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeEventsResponse = { ["Marker"] = true, ["Events"] = true, nil }
@@ -2145,13 +2860,24 @@ end
 -- * Events [EventList] <p>The events described.</p>
 -- @return DescribeEventsResponse structure as a key-value pair table
 function M.DescribeEventsResponse(args)
-	assert(args, "You must provdide an argument table when creating DescribeEventsResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeEventsResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Marker"] = args["Marker"],
 		["Events"] = args["Events"],
 	}
-	asserts.AssertDescribeEventsResponse(t)
-	return t
+	asserts.AssertDescribeEventsResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteReplicationInstanceMessage = { ["ReplicationInstanceArn"] = true, nil }
@@ -2174,12 +2900,23 @@ end
 -- Required key: ReplicationInstanceArn
 -- @return DeleteReplicationInstanceMessage structure as a key-value pair table
 function M.DeleteReplicationInstanceMessage(args)
-	assert(args, "You must provdide an argument table when creating DeleteReplicationInstanceMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteReplicationInstanceMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ReplicationInstanceArn"] = args["ReplicationInstanceArn"],
 	}
-	asserts.AssertDeleteReplicationInstanceMessage(t)
-	return t
+	asserts.AssertDeleteReplicationInstanceMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteEndpointMessage = { ["EndpointArn"] = true, nil }
@@ -2202,12 +2939,23 @@ end
 -- Required key: EndpointArn
 -- @return DeleteEndpointMessage structure as a key-value pair table
 function M.DeleteEndpointMessage(args)
-	assert(args, "You must provdide an argument table when creating DeleteEndpointMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteEndpointMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["EndpointArn"] = args["EndpointArn"],
 	}
-	asserts.AssertDeleteEndpointMessage(t)
-	return t
+	asserts.AssertDeleteEndpointMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.EventCategoryGroup = { ["EventCategories"] = true, ["SourceType"] = true, nil }
@@ -2230,13 +2978,24 @@ end
 -- * SourceType [String] <p> The type of AWS DMS resource that generates events. </p> <p>Valid values: replication-instance | replication-server | security-group | migration-task</p>
 -- @return EventCategoryGroup structure as a key-value pair table
 function M.EventCategoryGroup(args)
-	assert(args, "You must provdide an argument table when creating EventCategoryGroup")
-	local t = { 
+	assert(args, "You must provide an argument table when creating EventCategoryGroup")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["EventCategories"] = args["EventCategories"],
 		["SourceType"] = args["SourceType"],
 	}
-	asserts.AssertEventCategoryGroup(t)
-	return t
+	asserts.AssertEventCategoryGroup(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.SupportedEndpointType = { ["EngineName"] = true, ["SupportsCDC"] = true, ["EndpointType"] = true, nil }
@@ -2261,14 +3020,25 @@ end
 -- * EndpointType [ReplicationEndpointTypeValue] <p>The type of endpoint.</p>
 -- @return SupportedEndpointType structure as a key-value pair table
 function M.SupportedEndpointType(args)
-	assert(args, "You must provdide an argument table when creating SupportedEndpointType")
-	local t = { 
+	assert(args, "You must provide an argument table when creating SupportedEndpointType")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["EngineName"] = args["EngineName"],
 		["SupportsCDC"] = args["SupportsCDC"],
 		["EndpointType"] = args["EndpointType"],
 	}
-	asserts.AssertSupportedEndpointType(t)
-	return t
+	asserts.AssertSupportedEndpointType(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteCertificateResponse = { ["Certificate"] = true, nil }
@@ -2289,12 +3059,23 @@ end
 -- * Certificate [Certificate] <p>The Secure Sockets Layer (SSL) certificate.</p>
 -- @return DeleteCertificateResponse structure as a key-value pair table
 function M.DeleteCertificateResponse(args)
-	assert(args, "You must provdide an argument table when creating DeleteCertificateResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteCertificateResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Certificate"] = args["Certificate"],
 	}
-	asserts.AssertDeleteCertificateResponse(t)
-	return t
+	asserts.AssertDeleteCertificateResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeEventCategoriesResponse = { ["EventCategoryGroupList"] = true, nil }
@@ -2315,12 +3096,23 @@ end
 -- * EventCategoryGroupList [EventCategoryGroupList] <p>A list of event categories.</p>
 -- @return DescribeEventCategoriesResponse structure as a key-value pair table
 function M.DescribeEventCategoriesResponse(args)
-	assert(args, "You must provdide an argument table when creating DescribeEventCategoriesResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeEventCategoriesResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["EventCategoryGroupList"] = args["EventCategoryGroupList"],
 	}
-	asserts.AssertDescribeEventCategoriesResponse(t)
-	return t
+	asserts.AssertDescribeEventCategoriesResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteReplicationInstanceResponse = { ["ReplicationInstance"] = true, nil }
@@ -2341,12 +3133,23 @@ end
 -- * ReplicationInstance [ReplicationInstance] <p>The replication instance that was deleted.</p>
 -- @return DeleteReplicationInstanceResponse structure as a key-value pair table
 function M.DeleteReplicationInstanceResponse(args)
-	assert(args, "You must provdide an argument table when creating DeleteReplicationInstanceResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteReplicationInstanceResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ReplicationInstance"] = args["ReplicationInstance"],
 	}
-	asserts.AssertDeleteReplicationInstanceResponse(t)
-	return t
+	asserts.AssertDeleteReplicationInstanceResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListTagsForResourceMessage = { ["ResourceArn"] = true, nil }
@@ -2369,12 +3172,23 @@ end
 -- Required key: ResourceArn
 -- @return ListTagsForResourceMessage structure as a key-value pair table
 function M.ListTagsForResourceMessage(args)
-	assert(args, "You must provdide an argument table when creating ListTagsForResourceMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListTagsForResourceMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ResourceArn"] = args["ResourceArn"],
 	}
-	asserts.AssertListTagsForResourceMessage(t)
-	return t
+	asserts.AssertListTagsForResourceMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteReplicationTaskMessage = { ["ReplicationTaskArn"] = true, nil }
@@ -2397,12 +3211,23 @@ end
 -- Required key: ReplicationTaskArn
 -- @return DeleteReplicationTaskMessage structure as a key-value pair table
 function M.DeleteReplicationTaskMessage(args)
-	assert(args, "You must provdide an argument table when creating DeleteReplicationTaskMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteReplicationTaskMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ReplicationTaskArn"] = args["ReplicationTaskArn"],
 	}
-	asserts.AssertDeleteReplicationTaskMessage(t)
-	return t
+	asserts.AssertDeleteReplicationTaskMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeEndpointsMessage = { ["Marker"] = true, ["MaxRecords"] = true, ["Filters"] = true, nil }
@@ -2427,14 +3252,25 @@ end
 -- * Filters [FilterList] <p>Filters applied to the describe action.</p> <p>Valid filter names: endpoint-arn | endpoint-type | endpoint-id | engine-name</p>
 -- @return DescribeEndpointsMessage structure as a key-value pair table
 function M.DescribeEndpointsMessage(args)
-	assert(args, "You must provdide an argument table when creating DescribeEndpointsMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeEndpointsMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Marker"] = args["Marker"],
 		["MaxRecords"] = args["MaxRecords"],
 		["Filters"] = args["Filters"],
 	}
-	asserts.AssertDescribeEndpointsMessage(t)
-	return t
+	asserts.AssertDescribeEndpointsMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Filter = { ["Values"] = true, ["Name"] = true, nil }
@@ -2461,13 +3297,24 @@ end
 -- Required key: Values
 -- @return Filter structure as a key-value pair table
 function M.Filter(args)
-	assert(args, "You must provdide an argument table when creating Filter")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Filter")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Values"] = args["Values"],
 		["Name"] = args["Name"],
 	}
-	asserts.AssertFilter(t)
-	return t
+	asserts.AssertFilter(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Connection = { ["Status"] = true, ["ReplicationInstanceArn"] = true, ["LastFailureMessage"] = true, ["EndpointArn"] = true, ["ReplicationInstanceIdentifier"] = true, ["EndpointIdentifier"] = true, nil }
@@ -2498,8 +3345,14 @@ end
 -- * EndpointIdentifier [String] <p>The identifier of the endpoint. Identifiers must begin with a letter; must contain only ASCII letters, digits, and hyphens; and must not end with a hyphen or contain two consecutive hyphens.</p>
 -- @return Connection structure as a key-value pair table
 function M.Connection(args)
-	assert(args, "You must provdide an argument table when creating Connection")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Connection")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Status"] = args["Status"],
 		["ReplicationInstanceArn"] = args["ReplicationInstanceArn"],
 		["LastFailureMessage"] = args["LastFailureMessage"],
@@ -2507,8 +3360,13 @@ function M.Connection(args)
 		["ReplicationInstanceIdentifier"] = args["ReplicationInstanceIdentifier"],
 		["EndpointIdentifier"] = args["EndpointIdentifier"],
 	}
-	asserts.AssertConnection(t)
-	return t
+	asserts.AssertConnection(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeEndpointTypesResponse = { ["Marker"] = true, ["SupportedEndpointTypes"] = true, nil }
@@ -2531,13 +3389,24 @@ end
 -- * SupportedEndpointTypes [SupportedEndpointTypeList] <p>The type of endpoints that are supported.</p>
 -- @return DescribeEndpointTypesResponse structure as a key-value pair table
 function M.DescribeEndpointTypesResponse(args)
-	assert(args, "You must provdide an argument table when creating DescribeEndpointTypesResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeEndpointTypesResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Marker"] = args["Marker"],
 		["SupportedEndpointTypes"] = args["SupportedEndpointTypes"],
 	}
-	asserts.AssertDescribeEndpointTypesResponse(t)
-	return t
+	asserts.AssertDescribeEndpointTypesResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpgradeDependencyFailureFault = { ["message"] = true, nil }
@@ -2558,12 +3427,23 @@ end
 -- * message [ExceptionMessage] <p/>
 -- @return UpgradeDependencyFailureFault structure as a key-value pair table
 function M.UpgradeDependencyFailureFault(args)
-	assert(args, "You must provdide an argument table when creating UpgradeDependencyFailureFault")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpgradeDependencyFailureFault")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertUpgradeDependencyFailureFault(t)
-	return t
+	asserts.AssertUpgradeDependencyFailureFault(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeCertificatesMessage = { ["Marker"] = true, ["MaxRecords"] = true, ["Filters"] = true, nil }
@@ -2588,14 +3468,25 @@ end
 -- * Filters [FilterList] <p>Filters applied to the certificate described in the form of key-value pairs.</p>
 -- @return DescribeCertificatesMessage structure as a key-value pair table
 function M.DescribeCertificatesMessage(args)
-	assert(args, "You must provdide an argument table when creating DescribeCertificatesMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeCertificatesMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Marker"] = args["Marker"],
 		["MaxRecords"] = args["MaxRecords"],
 		["Filters"] = args["Filters"],
 	}
-	asserts.AssertDescribeCertificatesMessage(t)
-	return t
+	asserts.AssertDescribeCertificatesMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ReplicationPendingModifiedValues = { ["ReplicationInstanceClass"] = true, ["EngineVersion"] = true, ["AllocatedStorage"] = true, ["MultiAZ"] = true, nil }
@@ -2622,15 +3513,26 @@ end
 -- * MultiAZ [BooleanOptional] <p> Specifies if the replication instance is a Multi-AZ deployment. You cannot set the <code>AvailabilityZone</code> parameter if the Multi-AZ parameter is set to <code>true</code>. </p>
 -- @return ReplicationPendingModifiedValues structure as a key-value pair table
 function M.ReplicationPendingModifiedValues(args)
-	assert(args, "You must provdide an argument table when creating ReplicationPendingModifiedValues")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ReplicationPendingModifiedValues")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ReplicationInstanceClass"] = args["ReplicationInstanceClass"],
 		["EngineVersion"] = args["EngineVersion"],
 		["AllocatedStorage"] = args["AllocatedStorage"],
 		["MultiAZ"] = args["MultiAZ"],
 	}
-	asserts.AssertReplicationPendingModifiedValues(t)
-	return t
+	asserts.AssertReplicationPendingModifiedValues(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeReplicationTasksMessage = { ["Marker"] = true, ["MaxRecords"] = true, ["Filters"] = true, nil }
@@ -2655,14 +3557,25 @@ end
 -- * Filters [FilterList] <p>Filters applied to the describe action.</p> <p>Valid filter names: replication-task-arn | replication-task-id | migration-type | endpoint-arn | replication-instance-arn</p>
 -- @return DescribeReplicationTasksMessage structure as a key-value pair table
 function M.DescribeReplicationTasksMessage(args)
-	assert(args, "You must provdide an argument table when creating DescribeReplicationTasksMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeReplicationTasksMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Marker"] = args["Marker"],
 		["MaxRecords"] = args["MaxRecords"],
 		["Filters"] = args["Filters"],
 	}
-	asserts.AssertDescribeReplicationTasksMessage(t)
-	return t
+	asserts.AssertDescribeReplicationTasksMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateReplicationInstanceMessage = { ["MultiAZ"] = true, ["AvailabilityZone"] = true, ["PubliclyAccessible"] = true, ["Tags"] = true, ["ReplicationInstanceClass"] = true, ["VpcSecurityGroupIds"] = true, ["AutoMinorVersionUpgrade"] = true, ["KmsKeyId"] = true, ["AllocatedStorage"] = true, ["EngineVersion"] = true, ["ReplicationInstanceIdentifier"] = true, ["PreferredMaintenanceWindow"] = true, ["ReplicationSubnetGroupIdentifier"] = true, nil }
@@ -2711,8 +3624,14 @@ end
 -- Required key: ReplicationInstanceClass
 -- @return CreateReplicationInstanceMessage structure as a key-value pair table
 function M.CreateReplicationInstanceMessage(args)
-	assert(args, "You must provdide an argument table when creating CreateReplicationInstanceMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateReplicationInstanceMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["MultiAZ"] = args["MultiAZ"],
 		["AvailabilityZone"] = args["AvailabilityZone"],
 		["PubliclyAccessible"] = args["PubliclyAccessible"],
@@ -2727,8 +3646,13 @@ function M.CreateReplicationInstanceMessage(args)
 		["PreferredMaintenanceWindow"] = args["PreferredMaintenanceWindow"],
 		["ReplicationSubnetGroupIdentifier"] = args["ReplicationSubnetGroupIdentifier"],
 	}
-	asserts.AssertCreateReplicationInstanceMessage(t)
-	return t
+	asserts.AssertCreateReplicationInstanceMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ModifyEndpointResponse = { ["Endpoint"] = true, nil }
@@ -2749,12 +3673,23 @@ end
 -- * Endpoint [Endpoint] <p>The modified endpoint.</p>
 -- @return ModifyEndpointResponse structure as a key-value pair table
 function M.ModifyEndpointResponse(args)
-	assert(args, "You must provdide an argument table when creating ModifyEndpointResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ModifyEndpointResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Endpoint"] = args["Endpoint"],
 	}
-	asserts.AssertModifyEndpointResponse(t)
-	return t
+	asserts.AssertModifyEndpointResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ModifyEndpointMessage = { ["Username"] = true, ["CertificateArn"] = true, ["MongoDbSettings"] = true, ["S3Settings"] = true, ["ServerName"] = true, ["EndpointType"] = true, ["EndpointArn"] = true, ["ExtraConnectionAttributes"] = true, ["DatabaseName"] = true, ["DynamoDbSettings"] = true, ["SslMode"] = true, ["EngineName"] = true, ["Password"] = true, ["EndpointIdentifier"] = true, ["Port"] = true, nil }
@@ -2805,8 +3740,14 @@ end
 -- Required key: EndpointArn
 -- @return ModifyEndpointMessage structure as a key-value pair table
 function M.ModifyEndpointMessage(args)
-	assert(args, "You must provdide an argument table when creating ModifyEndpointMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ModifyEndpointMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Username"] = args["Username"],
 		["CertificateArn"] = args["CertificateArn"],
 		["MongoDbSettings"] = args["MongoDbSettings"],
@@ -2823,8 +3764,13 @@ function M.ModifyEndpointMessage(args)
 		["EndpointIdentifier"] = args["EndpointIdentifier"],
 		["Port"] = args["Port"],
 	}
-	asserts.AssertModifyEndpointMessage(t)
-	return t
+	asserts.AssertModifyEndpointMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.RefreshSchemasMessage = { ["EndpointArn"] = true, ["ReplicationInstanceArn"] = true, nil }
@@ -2851,13 +3797,24 @@ end
 -- Required key: ReplicationInstanceArn
 -- @return RefreshSchemasMessage structure as a key-value pair table
 function M.RefreshSchemasMessage(args)
-	assert(args, "You must provdide an argument table when creating RefreshSchemasMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating RefreshSchemasMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["EndpointArn"] = args["EndpointArn"],
 		["ReplicationInstanceArn"] = args["ReplicationInstanceArn"],
 	}
-	asserts.AssertRefreshSchemasMessage(t)
-	return t
+	asserts.AssertRefreshSchemasMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.StopReplicationTaskResponse = { ["ReplicationTask"] = true, nil }
@@ -2878,12 +3835,23 @@ end
 -- * ReplicationTask [ReplicationTask] <p>The replication task stopped.</p>
 -- @return StopReplicationTaskResponse structure as a key-value pair table
 function M.StopReplicationTaskResponse(args)
-	assert(args, "You must provdide an argument table when creating StopReplicationTaskResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating StopReplicationTaskResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ReplicationTask"] = args["ReplicationTask"],
 	}
-	asserts.AssertStopReplicationTaskResponse(t)
-	return t
+	asserts.AssertStopReplicationTaskResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.KMSKeyNotAccessibleFault = { ["message"] = true, nil }
@@ -2904,12 +3872,23 @@ end
 -- * message [ExceptionMessage] <p/>
 -- @return KMSKeyNotAccessibleFault structure as a key-value pair table
 function M.KMSKeyNotAccessibleFault(args)
-	assert(args, "You must provdide an argument table when creating KMSKeyNotAccessibleFault")
-	local t = { 
+	assert(args, "You must provide an argument table when creating KMSKeyNotAccessibleFault")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertKMSKeyNotAccessibleFault(t)
-	return t
+	asserts.AssertKMSKeyNotAccessibleFault(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeAccountAttributesResponse = { ["AccountQuotas"] = true, nil }
@@ -2930,12 +3909,23 @@ end
 -- * AccountQuotas [AccountQuotaList] <p>Account quota information.</p>
 -- @return DescribeAccountAttributesResponse structure as a key-value pair table
 function M.DescribeAccountAttributesResponse(args)
-	assert(args, "You must provdide an argument table when creating DescribeAccountAttributesResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeAccountAttributesResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["AccountQuotas"] = args["AccountQuotas"],
 	}
-	asserts.AssertDescribeAccountAttributesResponse(t)
-	return t
+	asserts.AssertDescribeAccountAttributesResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeSchemasMessage = { ["Marker"] = true, ["MaxRecords"] = true, ["EndpointArn"] = true, nil }
@@ -2962,14 +3952,25 @@ end
 -- Required key: EndpointArn
 -- @return DescribeSchemasMessage structure as a key-value pair table
 function M.DescribeSchemasMessage(args)
-	assert(args, "You must provdide an argument table when creating DescribeSchemasMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeSchemasMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Marker"] = args["Marker"],
 		["MaxRecords"] = args["MaxRecords"],
 		["EndpointArn"] = args["EndpointArn"],
 	}
-	asserts.AssertDescribeSchemasMessage(t)
-	return t
+	asserts.AssertDescribeSchemasMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ReloadTablesResponse = { ["ReplicationTaskArn"] = true, nil }
@@ -2990,12 +3991,23 @@ end
 -- * ReplicationTaskArn [String] <p>The Amazon Resource Name (ARN) of the replication task. </p>
 -- @return ReloadTablesResponse structure as a key-value pair table
 function M.ReloadTablesResponse(args)
-	assert(args, "You must provdide an argument table when creating ReloadTablesResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ReloadTablesResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ReplicationTaskArn"] = args["ReplicationTaskArn"],
 	}
-	asserts.AssertReloadTablesResponse(t)
-	return t
+	asserts.AssertReloadTablesResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.SNSNoAuthorizationFault = { ["message"] = true, nil }
@@ -3016,12 +4028,23 @@ end
 -- * message [ExceptionMessage] <p/>
 -- @return SNSNoAuthorizationFault structure as a key-value pair table
 function M.SNSNoAuthorizationFault(args)
-	assert(args, "You must provdide an argument table when creating SNSNoAuthorizationFault")
-	local t = { 
+	assert(args, "You must provide an argument table when creating SNSNoAuthorizationFault")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertSNSNoAuthorizationFault(t)
-	return t
+	asserts.AssertSNSNoAuthorizationFault(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateReplicationInstanceResponse = { ["ReplicationInstance"] = true, nil }
@@ -3042,12 +4065,23 @@ end
 -- * ReplicationInstance [ReplicationInstance] <p>The replication instance that was created.</p>
 -- @return CreateReplicationInstanceResponse structure as a key-value pair table
 function M.CreateReplicationInstanceResponse(args)
-	assert(args, "You must provdide an argument table when creating CreateReplicationInstanceResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateReplicationInstanceResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ReplicationInstance"] = args["ReplicationInstance"],
 	}
-	asserts.AssertCreateReplicationInstanceResponse(t)
-	return t
+	asserts.AssertCreateReplicationInstanceResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListTagsForResourceResponse = { ["TagList"] = true, nil }
@@ -3068,12 +4102,23 @@ end
 -- * TagList [TagList] <p>A list of tags for the resource.</p>
 -- @return ListTagsForResourceResponse structure as a key-value pair table
 function M.ListTagsForResourceResponse(args)
-	assert(args, "You must provdide an argument table when creating ListTagsForResourceResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListTagsForResourceResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["TagList"] = args["TagList"],
 	}
-	asserts.AssertListTagsForResourceResponse(t)
-	return t
+	asserts.AssertListTagsForResourceResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteEventSubscriptionMessage = { ["SubscriptionName"] = true, nil }
@@ -3096,12 +4141,23 @@ end
 -- Required key: SubscriptionName
 -- @return DeleteEventSubscriptionMessage structure as a key-value pair table
 function M.DeleteEventSubscriptionMessage(args)
-	assert(args, "You must provdide an argument table when creating DeleteEventSubscriptionMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteEventSubscriptionMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["SubscriptionName"] = args["SubscriptionName"],
 	}
-	asserts.AssertDeleteEventSubscriptionMessage(t)
-	return t
+	asserts.AssertDeleteEventSubscriptionMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.SNSInvalidTopicFault = { ["message"] = true, nil }
@@ -3122,12 +4178,23 @@ end
 -- * message [ExceptionMessage] <p/>
 -- @return SNSInvalidTopicFault structure as a key-value pair table
 function M.SNSInvalidTopicFault(args)
-	assert(args, "You must provdide an argument table when creating SNSInvalidTopicFault")
-	local t = { 
+	assert(args, "You must provide an argument table when creating SNSInvalidTopicFault")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertSNSInvalidTopicFault(t)
-	return t
+	asserts.AssertSNSInvalidTopicFault(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ReplicationTask = { ["SourceEndpointArn"] = true, ["ReplicationTaskIdentifier"] = true, ["ReplicationInstanceArn"] = true, ["TableMappings"] = true, ["ReplicationTaskStartDate"] = true, ["ReplicationTaskStats"] = true, ["Status"] = true, ["ReplicationTaskArn"] = true, ["LastFailureMessage"] = true, ["StopReason"] = true, ["ReplicationTaskCreationDate"] = true, ["MigrationType"] = true, ["TargetEndpointArn"] = true, ["ReplicationTaskSettings"] = true, nil }
@@ -3174,8 +4241,14 @@ end
 -- * ReplicationTaskSettings [String] <p>The settings for the replication task.</p>
 -- @return ReplicationTask structure as a key-value pair table
 function M.ReplicationTask(args)
-	assert(args, "You must provdide an argument table when creating ReplicationTask")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ReplicationTask")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["SourceEndpointArn"] = args["SourceEndpointArn"],
 		["ReplicationTaskIdentifier"] = args["ReplicationTaskIdentifier"],
 		["ReplicationInstanceArn"] = args["ReplicationInstanceArn"],
@@ -3191,8 +4264,13 @@ function M.ReplicationTask(args)
 		["TargetEndpointArn"] = args["TargetEndpointArn"],
 		["ReplicationTaskSettings"] = args["ReplicationTaskSettings"],
 	}
-	asserts.AssertReplicationTask(t)
-	return t
+	asserts.AssertReplicationTask(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Endpoint = { ["Username"] = true, ["Status"] = true, ["MongoDbSettings"] = true, ["S3Settings"] = true, ["EndpointArn"] = true, ["ServerName"] = true, ["CertificateArn"] = true, ["EndpointType"] = true, ["ExternalId"] = true, ["KmsKeyId"] = true, ["ExtraConnectionAttributes"] = true, ["DatabaseName"] = true, ["DynamoDbSettings"] = true, ["SslMode"] = true, ["EngineName"] = true, ["EndpointIdentifier"] = true, ["Port"] = true, nil }
@@ -3245,8 +4323,14 @@ end
 -- * Port [IntegerOptional] <p>The port value used to access the endpoint.</p>
 -- @return Endpoint structure as a key-value pair table
 function M.Endpoint(args)
-	assert(args, "You must provdide an argument table when creating Endpoint")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Endpoint")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Username"] = args["Username"],
 		["Status"] = args["Status"],
 		["MongoDbSettings"] = args["MongoDbSettings"],
@@ -3265,8 +4349,13 @@ function M.Endpoint(args)
 		["EndpointIdentifier"] = args["EndpointIdentifier"],
 		["Port"] = args["Port"],
 	}
-	asserts.AssertEndpoint(t)
-	return t
+	asserts.AssertEndpoint(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ImportCertificateResponse = { ["Certificate"] = true, nil }
@@ -3287,12 +4376,23 @@ end
 -- * Certificate [Certificate] <p>The certificate to be uploaded.</p>
 -- @return ImportCertificateResponse structure as a key-value pair table
 function M.ImportCertificateResponse(args)
-	assert(args, "You must provdide an argument table when creating ImportCertificateResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ImportCertificateResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Certificate"] = args["Certificate"],
 	}
-	asserts.AssertImportCertificateResponse(t)
-	return t
+	asserts.AssertImportCertificateResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateEndpointMessage = { ["Username"] = true, ["CertificateArn"] = true, ["MongoDbSettings"] = true, ["S3Settings"] = true, ["Tags"] = true, ["ServerName"] = true, ["EndpointType"] = true, ["KmsKeyId"] = true, ["ExtraConnectionAttributes"] = true, ["DatabaseName"] = true, ["DynamoDbSettings"] = true, ["SslMode"] = true, ["EngineName"] = true, ["Password"] = true, ["EndpointIdentifier"] = true, ["Port"] = true, nil }
@@ -3349,8 +4449,14 @@ end
 -- Required key: EngineName
 -- @return CreateEndpointMessage structure as a key-value pair table
 function M.CreateEndpointMessage(args)
-	assert(args, "You must provdide an argument table when creating CreateEndpointMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateEndpointMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Username"] = args["Username"],
 		["CertificateArn"] = args["CertificateArn"],
 		["MongoDbSettings"] = args["MongoDbSettings"],
@@ -3368,8 +4474,13 @@ function M.CreateEndpointMessage(args)
 		["EndpointIdentifier"] = args["EndpointIdentifier"],
 		["Port"] = args["Port"],
 	}
-	asserts.AssertCreateEndpointMessage(t)
-	return t
+	asserts.AssertCreateEndpointMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.RemoveTagsFromResourceMessage = { ["ResourceArn"] = true, ["TagKeys"] = true, nil }
@@ -3396,13 +4507,24 @@ end
 -- Required key: TagKeys
 -- @return RemoveTagsFromResourceMessage structure as a key-value pair table
 function M.RemoveTagsFromResourceMessage(args)
-	assert(args, "You must provdide an argument table when creating RemoveTagsFromResourceMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating RemoveTagsFromResourceMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ResourceArn"] = args["ResourceArn"],
 		["TagKeys"] = args["TagKeys"],
 	}
-	asserts.AssertRemoveTagsFromResourceMessage(t)
-	return t
+	asserts.AssertRemoveTagsFromResourceMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.OrderableReplicationInstance = { ["StorageType"] = true, ["ReplicationInstanceClass"] = true, ["EngineVersion"] = true, ["IncludedAllocatedStorage"] = true, ["DefaultAllocatedStorage"] = true, ["MinAllocatedStorage"] = true, ["MaxAllocatedStorage"] = true, nil }
@@ -3435,8 +4557,14 @@ end
 -- * MaxAllocatedStorage [Integer] <p>The minimum amount of storage (in gigabytes) that can be allocated for the replication instance.</p>
 -- @return OrderableReplicationInstance structure as a key-value pair table
 function M.OrderableReplicationInstance(args)
-	assert(args, "You must provdide an argument table when creating OrderableReplicationInstance")
-	local t = { 
+	assert(args, "You must provide an argument table when creating OrderableReplicationInstance")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["StorageType"] = args["StorageType"],
 		["ReplicationInstanceClass"] = args["ReplicationInstanceClass"],
 		["EngineVersion"] = args["EngineVersion"],
@@ -3445,8 +4573,13 @@ function M.OrderableReplicationInstance(args)
 		["MinAllocatedStorage"] = args["MinAllocatedStorage"],
 		["MaxAllocatedStorage"] = args["MaxAllocatedStorage"],
 	}
-	asserts.AssertOrderableReplicationInstance(t)
-	return t
+	asserts.AssertOrderableReplicationInstance(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ReplicationInstance = { ["MultiAZ"] = true, ["AvailabilityZone"] = true, ["ReplicationInstancePrivateIpAddress"] = true, ["ReplicationInstanceArn"] = true, ["ReplicationInstancePrivateIpAddresses"] = true, ["ReplicationInstanceClass"] = true, ["ReplicationSubnetGroup"] = true, ["AutoMinorVersionUpgrade"] = true, ["ReplicationInstanceStatus"] = true, ["VpcSecurityGroups"] = true, ["KmsKeyId"] = true, ["InstanceCreateTime"] = true, ["ReplicationInstancePublicIpAddress"] = true, ["AllocatedStorage"] = true, ["EngineVersion"] = true, ["ReplicationInstancePublicIpAddresses"] = true, ["SecondaryAvailabilityZone"] = true, ["ReplicationInstanceIdentifier"] = true, ["PubliclyAccessible"] = true, ["PreferredMaintenanceWindow"] = true, ["PendingModifiedValues"] = true, nil }
@@ -3507,8 +4640,14 @@ end
 -- * PendingModifiedValues [ReplicationPendingModifiedValues] <p>The pending modification values.</p>
 -- @return ReplicationInstance structure as a key-value pair table
 function M.ReplicationInstance(args)
-	assert(args, "You must provdide an argument table when creating ReplicationInstance")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ReplicationInstance")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["MultiAZ"] = args["MultiAZ"],
 		["AvailabilityZone"] = args["AvailabilityZone"],
 		["ReplicationInstancePrivateIpAddress"] = args["ReplicationInstancePrivateIpAddress"],
@@ -3531,8 +4670,13 @@ function M.ReplicationInstance(args)
 		["PreferredMaintenanceWindow"] = args["PreferredMaintenanceWindow"],
 		["PendingModifiedValues"] = args["PendingModifiedValues"],
 	}
-	asserts.AssertReplicationInstance(t)
-	return t
+	asserts.AssertReplicationInstance(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AddTagsToResourceResponse = { nil }
@@ -3551,11 +4695,22 @@ end
 -- Valid keys:
 -- @return AddTagsToResourceResponse structure as a key-value pair table
 function M.AddTagsToResourceResponse(args)
-	assert(args, "You must provdide an argument table when creating AddTagsToResourceResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AddTagsToResourceResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertAddTagsToResourceResponse(t)
-	return t
+	asserts.AssertAddTagsToResourceResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ResourceAlreadyExistsFault = { ["message"] = true, nil }
@@ -3576,12 +4731,23 @@ end
 -- * message [ExceptionMessage] <p/>
 -- @return ResourceAlreadyExistsFault structure as a key-value pair table
 function M.ResourceAlreadyExistsFault(args)
-	assert(args, "You must provdide an argument table when creating ResourceAlreadyExistsFault")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ResourceAlreadyExistsFault")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertResourceAlreadyExistsFault(t)
-	return t
+	asserts.AssertResourceAlreadyExistsFault(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ReplicationSubnetGroupDoesNotCoverEnoughAZs = { ["message"] = true, nil }
@@ -3602,12 +4768,23 @@ end
 -- * message [ExceptionMessage] <p/>
 -- @return ReplicationSubnetGroupDoesNotCoverEnoughAZs structure as a key-value pair table
 function M.ReplicationSubnetGroupDoesNotCoverEnoughAZs(args)
-	assert(args, "You must provdide an argument table when creating ReplicationSubnetGroupDoesNotCoverEnoughAZs")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ReplicationSubnetGroupDoesNotCoverEnoughAZs")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertReplicationSubnetGroupDoesNotCoverEnoughAZs(t)
-	return t
+	asserts.AssertReplicationSubnetGroupDoesNotCoverEnoughAZs(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeReplicationTasksResponse = { ["Marker"] = true, ["ReplicationTasks"] = true, nil }
@@ -3630,13 +4807,24 @@ end
 -- * ReplicationTasks [ReplicationTaskList] <p>A description of the replication tasks.</p>
 -- @return DescribeReplicationTasksResponse structure as a key-value pair table
 function M.DescribeReplicationTasksResponse(args)
-	assert(args, "You must provdide an argument table when creating DescribeReplicationTasksResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeReplicationTasksResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Marker"] = args["Marker"],
 		["ReplicationTasks"] = args["ReplicationTasks"],
 	}
-	asserts.AssertDescribeReplicationTasksResponse(t)
-	return t
+	asserts.AssertDescribeReplicationTasksResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ImportCertificateMessage = { ["CertificateIdentifier"] = true, ["Tags"] = true, ["CertificatePem"] = true, ["CertificateWallet"] = true, nil }
@@ -3665,15 +4853,26 @@ end
 -- Required key: CertificateIdentifier
 -- @return ImportCertificateMessage structure as a key-value pair table
 function M.ImportCertificateMessage(args)
-	assert(args, "You must provdide an argument table when creating ImportCertificateMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ImportCertificateMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["CertificateIdentifier"] = args["CertificateIdentifier"],
 		["Tags"] = args["Tags"],
 		["CertificatePem"] = args["CertificatePem"],
 		["CertificateWallet"] = args["CertificateWallet"],
 	}
-	asserts.AssertImportCertificateMessage(t)
-	return t
+	asserts.AssertImportCertificateMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateReplicationSubnetGroupResponse = { ["ReplicationSubnetGroup"] = true, nil }
@@ -3694,12 +4893,23 @@ end
 -- * ReplicationSubnetGroup [ReplicationSubnetGroup] <p>The replication subnet group that was created.</p>
 -- @return CreateReplicationSubnetGroupResponse structure as a key-value pair table
 function M.CreateReplicationSubnetGroupResponse(args)
-	assert(args, "You must provdide an argument table when creating CreateReplicationSubnetGroupResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateReplicationSubnetGroupResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ReplicationSubnetGroup"] = args["ReplicationSubnetGroup"],
 	}
-	asserts.AssertCreateReplicationSubnetGroupResponse(t)
-	return t
+	asserts.AssertCreateReplicationSubnetGroupResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeEndpointTypesMessage = { ["Marker"] = true, ["MaxRecords"] = true, ["Filters"] = true, nil }
@@ -3724,14 +4934,25 @@ end
 -- * Filters [FilterList] <p>Filters applied to the describe action.</p> <p>Valid filter names: engine-name | endpoint-type</p>
 -- @return DescribeEndpointTypesMessage structure as a key-value pair table
 function M.DescribeEndpointTypesMessage(args)
-	assert(args, "You must provdide an argument table when creating DescribeEndpointTypesMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeEndpointTypesMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Marker"] = args["Marker"],
 		["MaxRecords"] = args["MaxRecords"],
 		["Filters"] = args["Filters"],
 	}
-	asserts.AssertDescribeEndpointTypesMessage(t)
-	return t
+	asserts.AssertDescribeEndpointTypesMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ModifyReplicationSubnetGroupResponse = { ["ReplicationSubnetGroup"] = true, nil }
@@ -3752,12 +4973,23 @@ end
 -- * ReplicationSubnetGroup [ReplicationSubnetGroup] <p>The modified replication subnet group.</p>
 -- @return ModifyReplicationSubnetGroupResponse structure as a key-value pair table
 function M.ModifyReplicationSubnetGroupResponse(args)
-	assert(args, "You must provdide an argument table when creating ModifyReplicationSubnetGroupResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ModifyReplicationSubnetGroupResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ReplicationSubnetGroup"] = args["ReplicationSubnetGroup"],
 	}
-	asserts.AssertModifyReplicationSubnetGroupResponse(t)
-	return t
+	asserts.AssertModifyReplicationSubnetGroupResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeEventSubscriptionsResponse = { ["Marker"] = true, ["EventSubscriptionsList"] = true, nil }
@@ -3780,13 +5012,24 @@ end
 -- * EventSubscriptionsList [EventSubscriptionsList] <p>A list of event subscriptions.</p>
 -- @return DescribeEventSubscriptionsResponse structure as a key-value pair table
 function M.DescribeEventSubscriptionsResponse(args)
-	assert(args, "You must provdide an argument table when creating DescribeEventSubscriptionsResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeEventSubscriptionsResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Marker"] = args["Marker"],
 		["EventSubscriptionsList"] = args["EventSubscriptionsList"],
 	}
-	asserts.AssertDescribeEventSubscriptionsResponse(t)
-	return t
+	asserts.AssertDescribeEventSubscriptionsResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateEventSubscriptionMessage = { ["EventCategories"] = true, ["SourceType"] = true, ["Tags"] = true, ["Enabled"] = true, ["SnsTopicArn"] = true, ["SubscriptionName"] = true, ["SourceIds"] = true, nil }
@@ -3823,8 +5066,14 @@ end
 -- Required key: SnsTopicArn
 -- @return CreateEventSubscriptionMessage structure as a key-value pair table
 function M.CreateEventSubscriptionMessage(args)
-	assert(args, "You must provdide an argument table when creating CreateEventSubscriptionMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateEventSubscriptionMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["EventCategories"] = args["EventCategories"],
 		["SourceType"] = args["SourceType"],
 		["Tags"] = args["Tags"],
@@ -3833,8 +5082,13 @@ function M.CreateEventSubscriptionMessage(args)
 		["SubscriptionName"] = args["SubscriptionName"],
 		["SourceIds"] = args["SourceIds"],
 	}
-	asserts.AssertCreateEventSubscriptionMessage(t)
-	return t
+	asserts.AssertCreateEventSubscriptionMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteEventSubscriptionResponse = { ["EventSubscription"] = true, nil }
@@ -3855,12 +5109,23 @@ end
 -- * EventSubscription [EventSubscription] <p>The event subscription that was deleted.</p>
 -- @return DeleteEventSubscriptionResponse structure as a key-value pair table
 function M.DeleteEventSubscriptionResponse(args)
-	assert(args, "You must provdide an argument table when creating DeleteEventSubscriptionResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteEventSubscriptionResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["EventSubscription"] = args["EventSubscription"],
 	}
-	asserts.AssertDeleteEventSubscriptionResponse(t)
-	return t
+	asserts.AssertDeleteEventSubscriptionResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeAccountAttributesMessage = { nil }
@@ -3879,11 +5144,22 @@ end
 -- Valid keys:
 -- @return DescribeAccountAttributesMessage structure as a key-value pair table
 function M.DescribeAccountAttributesMessage(args)
-	assert(args, "You must provdide an argument table when creating DescribeAccountAttributesMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeAccountAttributesMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertDescribeAccountAttributesMessage(t)
-	return t
+	asserts.AssertDescribeAccountAttributesMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.RefreshSchemasStatus = { ["Status"] = true, ["LastFailureMessage"] = true, ["LastRefreshDate"] = true, ["EndpointArn"] = true, ["ReplicationInstanceArn"] = true, nil }
@@ -3912,16 +5188,27 @@ end
 -- * ReplicationInstanceArn [String] <p>The Amazon Resource Name (ARN) of the replication instance.</p>
 -- @return RefreshSchemasStatus structure as a key-value pair table
 function M.RefreshSchemasStatus(args)
-	assert(args, "You must provdide an argument table when creating RefreshSchemasStatus")
-	local t = { 
+	assert(args, "You must provide an argument table when creating RefreshSchemasStatus")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Status"] = args["Status"],
 		["LastFailureMessage"] = args["LastFailureMessage"],
 		["LastRefreshDate"] = args["LastRefreshDate"],
 		["EndpointArn"] = args["EndpointArn"],
 		["ReplicationInstanceArn"] = args["ReplicationInstanceArn"],
 	}
-	asserts.AssertRefreshSchemasStatus(t)
-	return t
+	asserts.AssertRefreshSchemasStatus(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.EventSubscription = { ["Status"] = true, ["SubscriptionCreationTime"] = true, ["SourceType"] = true, ["EventCategoriesList"] = true, ["SourceIdsList"] = true, ["CustSubscriptionId"] = true, ["Enabled"] = true, ["SnsTopicArn"] = true, ["CustomerAwsId"] = true, nil }
@@ -3958,8 +5245,14 @@ end
 -- * CustomerAwsId [String] <p>The AWS customer account associated with the AWS DMS event notification subscription.</p>
 -- @return EventSubscription structure as a key-value pair table
 function M.EventSubscription(args)
-	assert(args, "You must provdide an argument table when creating EventSubscription")
-	local t = { 
+	assert(args, "You must provide an argument table when creating EventSubscription")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Status"] = args["Status"],
 		["SubscriptionCreationTime"] = args["SubscriptionCreationTime"],
 		["SourceType"] = args["SourceType"],
@@ -3970,8 +5263,13 @@ function M.EventSubscription(args)
 		["SnsTopicArn"] = args["SnsTopicArn"],
 		["CustomerAwsId"] = args["CustomerAwsId"],
 	}
-	asserts.AssertEventSubscription(t)
-	return t
+	asserts.AssertEventSubscription(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.SubnetAlreadyInUse = { ["message"] = true, nil }
@@ -3992,12 +5290,23 @@ end
 -- * message [ExceptionMessage] <p/>
 -- @return SubnetAlreadyInUse structure as a key-value pair table
 function M.SubnetAlreadyInUse(args)
-	assert(args, "You must provdide an argument table when creating SubnetAlreadyInUse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating SubnetAlreadyInUse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertSubnetAlreadyInUse(t)
-	return t
+	asserts.AssertSubnetAlreadyInUse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.StopReplicationTaskMessage = { ["ReplicationTaskArn"] = true, nil }
@@ -4020,12 +5329,23 @@ end
 -- Required key: ReplicationTaskArn
 -- @return StopReplicationTaskMessage structure as a key-value pair table
 function M.StopReplicationTaskMessage(args)
-	assert(args, "You must provdide an argument table when creating StopReplicationTaskMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating StopReplicationTaskMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ReplicationTaskArn"] = args["ReplicationTaskArn"],
 	}
-	asserts.AssertStopReplicationTaskMessage(t)
-	return t
+	asserts.AssertStopReplicationTaskMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 function asserts.AssertDmsSslModeValue(str)
@@ -4701,8 +6021,11 @@ function M.RefreshSchemasAsync(RefreshSchemasMessage, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AmazonDMSv20160101.RefreshSchemas",
 	}
+	for header,value in pairs(RefreshSchemasMessage.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", RefreshSchemasMessage, headers, settings, cb)
 	else
@@ -4733,8 +6056,11 @@ function M.DescribeCertificatesAsync(DescribeCertificatesMessage, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AmazonDMSv20160101.DescribeCertificates",
 	}
+	for header,value in pairs(DescribeCertificatesMessage.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeCertificatesMessage, headers, settings, cb)
 	else
@@ -4765,8 +6091,11 @@ function M.DescribeReplicationInstancesAsync(DescribeReplicationInstancesMessage
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AmazonDMSv20160101.DescribeReplicationInstances",
 	}
+	for header,value in pairs(DescribeReplicationInstancesMessage.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeReplicationInstancesMessage, headers, settings, cb)
 	else
@@ -4797,8 +6126,11 @@ function M.CreateReplicationSubnetGroupAsync(CreateReplicationSubnetGroupMessage
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AmazonDMSv20160101.CreateReplicationSubnetGroup",
 	}
+	for header,value in pairs(CreateReplicationSubnetGroupMessage.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateReplicationSubnetGroupMessage, headers, settings, cb)
 	else
@@ -4829,8 +6161,11 @@ function M.DescribeEventsAsync(DescribeEventsMessage, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AmazonDMSv20160101.DescribeEvents",
 	}
+	for header,value in pairs(DescribeEventsMessage.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeEventsMessage, headers, settings, cb)
 	else
@@ -4861,8 +6196,11 @@ function M.DescribeEventSubscriptionsAsync(DescribeEventSubscriptionsMessage, cb
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AmazonDMSv20160101.DescribeEventSubscriptions",
 	}
+	for header,value in pairs(DescribeEventSubscriptionsMessage.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeEventSubscriptionsMessage, headers, settings, cb)
 	else
@@ -4893,8 +6231,11 @@ function M.CreateReplicationTaskAsync(CreateReplicationTaskMessage, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AmazonDMSv20160101.CreateReplicationTask",
 	}
+	for header,value in pairs(CreateReplicationTaskMessage.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateReplicationTaskMessage, headers, settings, cb)
 	else
@@ -4925,8 +6266,11 @@ function M.DeleteReplicationInstanceAsync(DeleteReplicationInstanceMessage, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AmazonDMSv20160101.DeleteReplicationInstance",
 	}
+	for header,value in pairs(DeleteReplicationInstanceMessage.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteReplicationInstanceMessage, headers, settings, cb)
 	else
@@ -4957,8 +6301,11 @@ function M.ModifyReplicationInstanceAsync(ModifyReplicationInstanceMessage, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AmazonDMSv20160101.ModifyReplicationInstance",
 	}
+	for header,value in pairs(ModifyReplicationInstanceMessage.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ModifyReplicationInstanceMessage, headers, settings, cb)
 	else
@@ -4989,8 +6336,11 @@ function M.DescribeTableStatisticsAsync(DescribeTableStatisticsMessage, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AmazonDMSv20160101.DescribeTableStatistics",
 	}
+	for header,value in pairs(DescribeTableStatisticsMessage.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeTableStatisticsMessage, headers, settings, cb)
 	else
@@ -5021,8 +6371,11 @@ function M.DescribeEventCategoriesAsync(DescribeEventCategoriesMessage, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AmazonDMSv20160101.DescribeEventCategories",
 	}
+	for header,value in pairs(DescribeEventCategoriesMessage.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeEventCategoriesMessage, headers, settings, cb)
 	else
@@ -5053,8 +6406,11 @@ function M.StartReplicationTaskAsync(StartReplicationTaskMessage, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AmazonDMSv20160101.StartReplicationTask",
 	}
+	for header,value in pairs(StartReplicationTaskMessage.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", StartReplicationTaskMessage, headers, settings, cb)
 	else
@@ -5085,8 +6441,11 @@ function M.DeleteReplicationSubnetGroupAsync(DeleteReplicationSubnetGroupMessage
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AmazonDMSv20160101.DeleteReplicationSubnetGroup",
 	}
+	for header,value in pairs(DeleteReplicationSubnetGroupMessage.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteReplicationSubnetGroupMessage, headers, settings, cb)
 	else
@@ -5117,8 +6476,11 @@ function M.AddTagsToResourceAsync(AddTagsToResourceMessage, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AmazonDMSv20160101.AddTagsToResource",
 	}
+	for header,value in pairs(AddTagsToResourceMessage.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", AddTagsToResourceMessage, headers, settings, cb)
 	else
@@ -5149,8 +6511,11 @@ function M.DescribeAccountAttributesAsync(DescribeAccountAttributesMessage, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AmazonDMSv20160101.DescribeAccountAttributes",
 	}
+	for header,value in pairs(DescribeAccountAttributesMessage.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeAccountAttributesMessage, headers, settings, cb)
 	else
@@ -5181,8 +6546,11 @@ function M.DeleteCertificateAsync(DeleteCertificateMessage, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AmazonDMSv20160101.DeleteCertificate",
 	}
+	for header,value in pairs(DeleteCertificateMessage.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteCertificateMessage, headers, settings, cb)
 	else
@@ -5213,8 +6581,11 @@ function M.TestConnectionAsync(TestConnectionMessage, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AmazonDMSv20160101.TestConnection",
 	}
+	for header,value in pairs(TestConnectionMessage.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", TestConnectionMessage, headers, settings, cb)
 	else
@@ -5245,8 +6616,11 @@ function M.DescribeEndpointsAsync(DescribeEndpointsMessage, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AmazonDMSv20160101.DescribeEndpoints",
 	}
+	for header,value in pairs(DescribeEndpointsMessage.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeEndpointsMessage, headers, settings, cb)
 	else
@@ -5277,8 +6651,11 @@ function M.RemoveTagsFromResourceAsync(RemoveTagsFromResourceMessage, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AmazonDMSv20160101.RemoveTagsFromResource",
 	}
+	for header,value in pairs(RemoveTagsFromResourceMessage.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", RemoveTagsFromResourceMessage, headers, settings, cb)
 	else
@@ -5309,8 +6686,11 @@ function M.CreateEndpointAsync(CreateEndpointMessage, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AmazonDMSv20160101.CreateEndpoint",
 	}
+	for header,value in pairs(CreateEndpointMessage.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateEndpointMessage, headers, settings, cb)
 	else
@@ -5341,8 +6721,11 @@ function M.DeleteReplicationTaskAsync(DeleteReplicationTaskMessage, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AmazonDMSv20160101.DeleteReplicationTask",
 	}
+	for header,value in pairs(DeleteReplicationTaskMessage.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteReplicationTaskMessage, headers, settings, cb)
 	else
@@ -5373,8 +6756,11 @@ function M.DescribeRefreshSchemasStatusAsync(DescribeRefreshSchemasStatusMessage
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AmazonDMSv20160101.DescribeRefreshSchemasStatus",
 	}
+	for header,value in pairs(DescribeRefreshSchemasStatusMessage.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeRefreshSchemasStatusMessage, headers, settings, cb)
 	else
@@ -5405,8 +6791,11 @@ function M.ModifyEndpointAsync(ModifyEndpointMessage, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AmazonDMSv20160101.ModifyEndpoint",
 	}
+	for header,value in pairs(ModifyEndpointMessage.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ModifyEndpointMessage, headers, settings, cb)
 	else
@@ -5437,8 +6826,11 @@ function M.ReloadTablesAsync(ReloadTablesMessage, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AmazonDMSv20160101.ReloadTables",
 	}
+	for header,value in pairs(ReloadTablesMessage.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ReloadTablesMessage, headers, settings, cb)
 	else
@@ -5469,8 +6861,11 @@ function M.ModifyReplicationSubnetGroupAsync(ModifyReplicationSubnetGroupMessage
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AmazonDMSv20160101.ModifyReplicationSubnetGroup",
 	}
+	for header,value in pairs(ModifyReplicationSubnetGroupMessage.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ModifyReplicationSubnetGroupMessage, headers, settings, cb)
 	else
@@ -5501,8 +6896,11 @@ function M.DescribeSchemasAsync(DescribeSchemasMessage, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AmazonDMSv20160101.DescribeSchemas",
 	}
+	for header,value in pairs(DescribeSchemasMessage.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeSchemasMessage, headers, settings, cb)
 	else
@@ -5533,8 +6931,11 @@ function M.DeleteEventSubscriptionAsync(DeleteEventSubscriptionMessage, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AmazonDMSv20160101.DeleteEventSubscription",
 	}
+	for header,value in pairs(DeleteEventSubscriptionMessage.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteEventSubscriptionMessage, headers, settings, cb)
 	else
@@ -5565,8 +6966,11 @@ function M.ModifyEventSubscriptionAsync(ModifyEventSubscriptionMessage, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AmazonDMSv20160101.ModifyEventSubscription",
 	}
+	for header,value in pairs(ModifyEventSubscriptionMessage.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ModifyEventSubscriptionMessage, headers, settings, cb)
 	else
@@ -5597,8 +7001,11 @@ function M.DescribeConnectionsAsync(DescribeConnectionsMessage, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AmazonDMSv20160101.DescribeConnections",
 	}
+	for header,value in pairs(DescribeConnectionsMessage.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeConnectionsMessage, headers, settings, cb)
 	else
@@ -5629,8 +7036,11 @@ function M.CreateReplicationInstanceAsync(CreateReplicationInstanceMessage, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AmazonDMSv20160101.CreateReplicationInstance",
 	}
+	for header,value in pairs(CreateReplicationInstanceMessage.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateReplicationInstanceMessage, headers, settings, cb)
 	else
@@ -5661,8 +7071,11 @@ function M.ImportCertificateAsync(ImportCertificateMessage, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AmazonDMSv20160101.ImportCertificate",
 	}
+	for header,value in pairs(ImportCertificateMessage.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ImportCertificateMessage, headers, settings, cb)
 	else
@@ -5693,8 +7106,11 @@ function M.DescribeReplicationSubnetGroupsAsync(DescribeReplicationSubnetGroupsM
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AmazonDMSv20160101.DescribeReplicationSubnetGroups",
 	}
+	for header,value in pairs(DescribeReplicationSubnetGroupsMessage.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeReplicationSubnetGroupsMessage, headers, settings, cb)
 	else
@@ -5725,8 +7141,11 @@ function M.StopReplicationTaskAsync(StopReplicationTaskMessage, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AmazonDMSv20160101.StopReplicationTask",
 	}
+	for header,value in pairs(StopReplicationTaskMessage.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", StopReplicationTaskMessage, headers, settings, cb)
 	else
@@ -5757,8 +7176,11 @@ function M.DescribeEndpointTypesAsync(DescribeEndpointTypesMessage, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AmazonDMSv20160101.DescribeEndpointTypes",
 	}
+	for header,value in pairs(DescribeEndpointTypesMessage.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeEndpointTypesMessage, headers, settings, cb)
 	else
@@ -5789,8 +7211,11 @@ function M.DescribeReplicationTasksAsync(DescribeReplicationTasksMessage, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AmazonDMSv20160101.DescribeReplicationTasks",
 	}
+	for header,value in pairs(DescribeReplicationTasksMessage.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeReplicationTasksMessage, headers, settings, cb)
 	else
@@ -5821,8 +7246,11 @@ function M.CreateEventSubscriptionAsync(CreateEventSubscriptionMessage, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AmazonDMSv20160101.CreateEventSubscription",
 	}
+	for header,value in pairs(CreateEventSubscriptionMessage.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateEventSubscriptionMessage, headers, settings, cb)
 	else
@@ -5853,8 +7281,11 @@ function M.DeleteEndpointAsync(DeleteEndpointMessage, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AmazonDMSv20160101.DeleteEndpoint",
 	}
+	for header,value in pairs(DeleteEndpointMessage.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteEndpointMessage, headers, settings, cb)
 	else
@@ -5885,8 +7316,11 @@ function M.DescribeOrderableReplicationInstancesAsync(DescribeOrderableReplicati
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AmazonDMSv20160101.DescribeOrderableReplicationInstances",
 	}
+	for header,value in pairs(DescribeOrderableReplicationInstancesMessage.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeOrderableReplicationInstancesMessage, headers, settings, cb)
 	else
@@ -5917,8 +7351,11 @@ function M.ModifyReplicationTaskAsync(ModifyReplicationTaskMessage, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AmazonDMSv20160101.ModifyReplicationTask",
 	}
+	for header,value in pairs(ModifyReplicationTaskMessage.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ModifyReplicationTaskMessage, headers, settings, cb)
 	else
@@ -5949,8 +7386,11 @@ function M.ListTagsForResourceAsync(ListTagsForResourceMessage, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AmazonDMSv20160101.ListTagsForResource",
 	}
+	for header,value in pairs(ListTagsForResourceMessage.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ListTagsForResourceMessage, headers, settings, cb)
 	else

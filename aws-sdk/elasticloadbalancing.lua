@@ -41,12 +41,23 @@ end
 -- Required key: TargetGroupArn
 -- @return DescribeTargetGroupAttributesInput structure as a key-value pair table
 function M.DescribeTargetGroupAttributesInput(args)
-	assert(args, "You must provdide an argument table when creating DescribeTargetGroupAttributesInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeTargetGroupAttributesInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["TargetGroupArn"] = args["TargetGroupArn"],
 	}
-	asserts.AssertDescribeTargetGroupAttributesInput(t)
-	return t
+	asserts.AssertDescribeTargetGroupAttributesInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.TooManyCertificatesException = { nil }
@@ -65,11 +76,22 @@ end
 -- Valid keys:
 -- @return TooManyCertificatesException structure as a key-value pair table
 function M.TooManyCertificatesException(args)
-	assert(args, "You must provdide an argument table when creating TooManyCertificatesException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating TooManyCertificatesException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertTooManyCertificatesException(t)
-	return t
+	asserts.AssertTooManyCertificatesException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteRuleInput = { ["RuleArn"] = true, nil }
@@ -92,12 +114,23 @@ end
 -- Required key: RuleArn
 -- @return DeleteRuleInput structure as a key-value pair table
 function M.DeleteRuleInput(args)
-	assert(args, "You must provdide an argument table when creating DeleteRuleInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteRuleInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["RuleArn"] = args["RuleArn"],
 	}
-	asserts.AssertDeleteRuleInput(t)
-	return t
+	asserts.AssertDeleteRuleInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.SslPolicy = { ["SslProtocols"] = true, ["Ciphers"] = true, ["Name"] = true, nil }
@@ -122,14 +155,25 @@ end
 -- * Name [SslPolicyName] <p>The name of the policy.</p>
 -- @return SslPolicy structure as a key-value pair table
 function M.SslPolicy(args)
-	assert(args, "You must provdide an argument table when creating SslPolicy")
-	local t = { 
+	assert(args, "You must provide an argument table when creating SslPolicy")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["SslProtocols"] = args["SslProtocols"],
 		["Ciphers"] = args["Ciphers"],
 		["Name"] = args["Name"],
 	}
-	asserts.AssertSslPolicy(t)
-	return t
+	asserts.AssertSslPolicy(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DuplicateTagKeysException = { nil }
@@ -148,11 +192,22 @@ end
 -- Valid keys:
 -- @return DuplicateTagKeysException structure as a key-value pair table
 function M.DuplicateTagKeysException(args)
-	assert(args, "You must provdide an argument table when creating DuplicateTagKeysException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DuplicateTagKeysException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertDuplicateTagKeysException(t)
-	return t
+	asserts.AssertDuplicateTagKeysException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListenerNotFoundException = { nil }
@@ -171,11 +226,22 @@ end
 -- Valid keys:
 -- @return ListenerNotFoundException structure as a key-value pair table
 function M.ListenerNotFoundException(args)
-	assert(args, "You must provdide an argument table when creating ListenerNotFoundException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListenerNotFoundException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertListenerNotFoundException(t)
-	return t
+	asserts.AssertListenerNotFoundException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeLoadBalancersInput = { ["Marker"] = true, ["LoadBalancerArns"] = true, ["Names"] = true, ["PageSize"] = true, nil }
@@ -202,15 +268,26 @@ end
 -- * PageSize [PageSize] <p>The maximum number of results to return with this call.</p>
 -- @return DescribeLoadBalancersInput structure as a key-value pair table
 function M.DescribeLoadBalancersInput(args)
-	assert(args, "You must provdide an argument table when creating DescribeLoadBalancersInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeLoadBalancersInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Marker"] = args["Marker"],
 		["LoadBalancerArns"] = args["LoadBalancerArns"],
 		["Names"] = args["Names"],
 		["PageSize"] = args["PageSize"],
 	}
-	asserts.AssertDescribeLoadBalancersInput(t)
-	return t
+	asserts.AssertDescribeLoadBalancersInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AddTagsOutput = { nil }
@@ -229,11 +306,22 @@ end
 -- Valid keys:
 -- @return AddTagsOutput structure as a key-value pair table
 function M.AddTagsOutput(args)
-	assert(args, "You must provdide an argument table when creating AddTagsOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AddTagsOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertAddTagsOutput(t)
-	return t
+	asserts.AssertAddTagsOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.SubnetNotFoundException = { nil }
@@ -252,11 +340,22 @@ end
 -- Valid keys:
 -- @return SubnetNotFoundException structure as a key-value pair table
 function M.SubnetNotFoundException(args)
-	assert(args, "You must provdide an argument table when creating SubnetNotFoundException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating SubnetNotFoundException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertSubnetNotFoundException(t)
-	return t
+	asserts.AssertSubnetNotFoundException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.RulePriorityPair = { ["Priority"] = true, ["RuleArn"] = true, nil }
@@ -279,13 +378,24 @@ end
 -- * RuleArn [RuleArn] <p>The Amazon Resource Name (ARN) of the rule.</p>
 -- @return RulePriorityPair structure as a key-value pair table
 function M.RulePriorityPair(args)
-	assert(args, "You must provdide an argument table when creating RulePriorityPair")
-	local t = { 
+	assert(args, "You must provide an argument table when creating RulePriorityPair")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Priority"] = args["Priority"],
 		["RuleArn"] = args["RuleArn"],
 	}
-	asserts.AssertRulePriorityPair(t)
-	return t
+	asserts.AssertRulePriorityPair(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteTargetGroupOutput = { nil }
@@ -304,11 +414,22 @@ end
 -- Valid keys:
 -- @return DeleteTargetGroupOutput structure as a key-value pair table
 function M.DeleteTargetGroupOutput(args)
-	assert(args, "You must provdide an argument table when creating DeleteTargetGroupOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteTargetGroupOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertDeleteTargetGroupOutput(t)
-	return t
+	asserts.AssertDeleteTargetGroupOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DuplicateLoadBalancerNameException = { nil }
@@ -327,11 +448,22 @@ end
 -- Valid keys:
 -- @return DuplicateLoadBalancerNameException structure as a key-value pair table
 function M.DuplicateLoadBalancerNameException(args)
-	assert(args, "You must provdide an argument table when creating DuplicateLoadBalancerNameException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DuplicateLoadBalancerNameException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertDuplicateLoadBalancerNameException(t)
-	return t
+	asserts.AssertDuplicateLoadBalancerNameException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidConfigurationRequestException = { nil }
@@ -350,11 +482,22 @@ end
 -- Valid keys:
 -- @return InvalidConfigurationRequestException structure as a key-value pair table
 function M.InvalidConfigurationRequestException(args)
-	assert(args, "You must provdide an argument table when creating InvalidConfigurationRequestException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidConfigurationRequestException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertInvalidConfigurationRequestException(t)
-	return t
+	asserts.AssertInvalidConfigurationRequestException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ModifyTargetGroupAttributesInput = { ["Attributes"] = true, ["TargetGroupArn"] = true, nil }
@@ -381,13 +524,24 @@ end
 -- Required key: Attributes
 -- @return ModifyTargetGroupAttributesInput structure as a key-value pair table
 function M.ModifyTargetGroupAttributesInput(args)
-	assert(args, "You must provdide an argument table when creating ModifyTargetGroupAttributesInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ModifyTargetGroupAttributesInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Attributes"] = args["Attributes"],
 		["TargetGroupArn"] = args["TargetGroupArn"],
 	}
-	asserts.AssertModifyTargetGroupAttributesInput(t)
-	return t
+	asserts.AssertModifyTargetGroupAttributesInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Cipher = { ["Priority"] = true, ["Name"] = true, nil }
@@ -410,13 +564,24 @@ end
 -- * Name [CipherName] <p>The name of the cipher.</p>
 -- @return Cipher structure as a key-value pair table
 function M.Cipher(args)
-	assert(args, "You must provdide an argument table when creating Cipher")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Cipher")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Priority"] = args["Priority"],
 		["Name"] = args["Name"],
 	}
-	asserts.AssertCipher(t)
-	return t
+	asserts.AssertCipher(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeSSLPoliciesOutput = { ["NextMarker"] = true, ["SslPolicies"] = true, nil }
@@ -439,13 +604,24 @@ end
 -- * SslPolicies [SslPolicies] <p>Information about the policies.</p>
 -- @return DescribeSSLPoliciesOutput structure as a key-value pair table
 function M.DescribeSSLPoliciesOutput(args)
-	assert(args, "You must provdide an argument table when creating DescribeSSLPoliciesOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeSSLPoliciesOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NextMarker"] = args["NextMarker"],
 		["SslPolicies"] = args["SslPolicies"],
 	}
-	asserts.AssertDescribeSSLPoliciesOutput(t)
-	return t
+	asserts.AssertDescribeSSLPoliciesOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.OperationNotPermittedException = { nil }
@@ -464,11 +640,22 @@ end
 -- Valid keys:
 -- @return OperationNotPermittedException structure as a key-value pair table
 function M.OperationNotPermittedException(args)
-	assert(args, "You must provdide an argument table when creating OperationNotPermittedException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating OperationNotPermittedException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertOperationNotPermittedException(t)
-	return t
+	asserts.AssertOperationNotPermittedException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeTagsInput = { ["ResourceArns"] = true, nil }
@@ -491,12 +678,23 @@ end
 -- Required key: ResourceArns
 -- @return DescribeTagsInput structure as a key-value pair table
 function M.DescribeTagsInput(args)
-	assert(args, "You must provdide an argument table when creating DescribeTagsInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeTagsInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ResourceArns"] = args["ResourceArns"],
 	}
-	asserts.AssertDescribeTagsInput(t)
-	return t
+	asserts.AssertDescribeTagsInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.SetSecurityGroupsOutput = { ["SecurityGroupIds"] = true, nil }
@@ -517,12 +715,23 @@ end
 -- * SecurityGroupIds [SecurityGroups] <p>The IDs of the security groups associated with the load balancer.</p>
 -- @return SetSecurityGroupsOutput structure as a key-value pair table
 function M.SetSecurityGroupsOutput(args)
-	assert(args, "You must provdide an argument table when creating SetSecurityGroupsOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating SetSecurityGroupsOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["SecurityGroupIds"] = args["SecurityGroupIds"],
 	}
-	asserts.AssertSetSecurityGroupsOutput(t)
-	return t
+	asserts.AssertSetSecurityGroupsOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeAccountLimitsInput = { ["Marker"] = true, ["PageSize"] = true, nil }
@@ -545,13 +754,24 @@ end
 -- * PageSize [PageSize] <p>The maximum number of results to return with this call.</p>
 -- @return DescribeAccountLimitsInput structure as a key-value pair table
 function M.DescribeAccountLimitsInput(args)
-	assert(args, "You must provdide an argument table when creating DescribeAccountLimitsInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeAccountLimitsInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Marker"] = args["Marker"],
 		["PageSize"] = args["PageSize"],
 	}
-	asserts.AssertDescribeAccountLimitsInput(t)
-	return t
+	asserts.AssertDescribeAccountLimitsInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.SetSubnetsInput = { ["Subnets"] = true, ["LoadBalancerArn"] = true, nil }
@@ -578,13 +798,24 @@ end
 -- Required key: Subnets
 -- @return SetSubnetsInput structure as a key-value pair table
 function M.SetSubnetsInput(args)
-	assert(args, "You must provdide an argument table when creating SetSubnetsInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating SetSubnetsInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Subnets"] = args["Subnets"],
 		["LoadBalancerArn"] = args["LoadBalancerArn"],
 	}
-	asserts.AssertSetSubnetsInput(t)
-	return t
+	asserts.AssertSetSubnetsInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Limit = { ["Max"] = true, ["Name"] = true, nil }
@@ -607,13 +838,24 @@ end
 -- * Name [Name] <p>The name of the limit. The possible values are:</p> <ul> <li> <p>application-load-balancers</p> </li> <li> <p>listeners-per-application-load-balancer</p> </li> <li> <p>rules-per-application-load-balancer</p> </li> <li> <p>target-groups</p> </li> <li> <p>targets-per-application-load-balancer</p> </li> </ul>
 -- @return Limit structure as a key-value pair table
 function M.Limit(args)
-	assert(args, "You must provdide an argument table when creating Limit")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Limit")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Max"] = args["Max"],
 		["Name"] = args["Name"],
 	}
-	asserts.AssertLimit(t)
-	return t
+	asserts.AssertLimit(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DuplicateTargetGroupNameException = { nil }
@@ -632,11 +874,22 @@ end
 -- Valid keys:
 -- @return DuplicateTargetGroupNameException structure as a key-value pair table
 function M.DuplicateTargetGroupNameException(args)
-	assert(args, "You must provdide an argument table when creating DuplicateTargetGroupNameException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DuplicateTargetGroupNameException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertDuplicateTargetGroupNameException(t)
-	return t
+	asserts.AssertDuplicateTargetGroupNameException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.TargetGroup = { ["HealthCheckPath"] = true, ["HealthCheckIntervalSeconds"] = true, ["VpcId"] = true, ["Protocol"] = true, ["HealthCheckTimeoutSeconds"] = true, ["HealthCheckProtocol"] = true, ["LoadBalancerArns"] = true, ["UnhealthyThresholdCount"] = true, ["HealthyThresholdCount"] = true, ["TargetGroupArn"] = true, ["Matcher"] = true, ["HealthCheckPort"] = true, ["Port"] = true, ["TargetGroupName"] = true, nil }
@@ -683,8 +936,14 @@ end
 -- * TargetGroupName [TargetGroupName] <p>The name of the target group.</p>
 -- @return TargetGroup structure as a key-value pair table
 function M.TargetGroup(args)
-	assert(args, "You must provdide an argument table when creating TargetGroup")
-	local t = { 
+	assert(args, "You must provide an argument table when creating TargetGroup")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["HealthCheckPath"] = args["HealthCheckPath"],
 		["HealthCheckIntervalSeconds"] = args["HealthCheckIntervalSeconds"],
 		["VpcId"] = args["VpcId"],
@@ -700,8 +959,13 @@ function M.TargetGroup(args)
 		["Port"] = args["Port"],
 		["TargetGroupName"] = args["TargetGroupName"],
 	}
-	asserts.AssertTargetGroup(t)
-	return t
+	asserts.AssertTargetGroup(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeLoadBalancerAttributesOutput = { ["Attributes"] = true, nil }
@@ -722,12 +986,23 @@ end
 -- * Attributes [LoadBalancerAttributes] <p>Information about the load balancer attributes.</p>
 -- @return DescribeLoadBalancerAttributesOutput structure as a key-value pair table
 function M.DescribeLoadBalancerAttributesOutput(args)
-	assert(args, "You must provdide an argument table when creating DescribeLoadBalancerAttributesOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeLoadBalancerAttributesOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Attributes"] = args["Attributes"],
 	}
-	asserts.AssertDescribeLoadBalancerAttributesOutput(t)
-	return t
+	asserts.AssertDescribeLoadBalancerAttributesOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidSubnetException = { nil }
@@ -746,11 +1021,22 @@ end
 -- Valid keys:
 -- @return InvalidSubnetException structure as a key-value pair table
 function M.InvalidSubnetException(args)
-	assert(args, "You must provdide an argument table when creating InvalidSubnetException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidSubnetException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertInvalidSubnetException(t)
-	return t
+	asserts.AssertInvalidSubnetException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.TagDescription = { ["ResourceArn"] = true, ["Tags"] = true, nil }
@@ -773,13 +1059,24 @@ end
 -- * Tags [TagList] <p>Information about the tags.</p>
 -- @return TagDescription structure as a key-value pair table
 function M.TagDescription(args)
-	assert(args, "You must provdide an argument table when creating TagDescription")
-	local t = { 
+	assert(args, "You must provide an argument table when creating TagDescription")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ResourceArn"] = args["ResourceArn"],
 		["Tags"] = args["Tags"],
 	}
-	asserts.AssertTagDescription(t)
-	return t
+	asserts.AssertTagDescription(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Tag = { ["Value"] = true, ["Key"] = true, nil }
@@ -804,13 +1101,24 @@ end
 -- Required key: Key
 -- @return Tag structure as a key-value pair table
 function M.Tag(args)
-	assert(args, "You must provdide an argument table when creating Tag")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Tag")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Value"] = args["Value"],
 		["Key"] = args["Key"],
 	}
-	asserts.AssertTag(t)
-	return t
+	asserts.AssertTag(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeTargetGroupAttributesOutput = { ["Attributes"] = true, nil }
@@ -831,12 +1139,23 @@ end
 -- * Attributes [TargetGroupAttributes] <p>Information about the target group attributes</p>
 -- @return DescribeTargetGroupAttributesOutput structure as a key-value pair table
 function M.DescribeTargetGroupAttributesOutput(args)
-	assert(args, "You must provdide an argument table when creating DescribeTargetGroupAttributesOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeTargetGroupAttributesOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Attributes"] = args["Attributes"],
 	}
-	asserts.AssertDescribeTargetGroupAttributesOutput(t)
-	return t
+	asserts.AssertDescribeTargetGroupAttributesOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CertificateNotFoundException = { nil }
@@ -855,11 +1174,22 @@ end
 -- Valid keys:
 -- @return CertificateNotFoundException structure as a key-value pair table
 function M.CertificateNotFoundException(args)
-	assert(args, "You must provdide an argument table when creating CertificateNotFoundException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CertificateNotFoundException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertCertificateNotFoundException(t)
-	return t
+	asserts.AssertCertificateNotFoundException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateLoadBalancerInput = { ["IpAddressType"] = true, ["Subnets"] = true, ["Name"] = true, ["Tags"] = true, ["SecurityGroups"] = true, ["Scheme"] = true, nil }
@@ -894,8 +1224,14 @@ end
 -- Required key: Subnets
 -- @return CreateLoadBalancerInput structure as a key-value pair table
 function M.CreateLoadBalancerInput(args)
-	assert(args, "You must provdide an argument table when creating CreateLoadBalancerInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateLoadBalancerInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["IpAddressType"] = args["IpAddressType"],
 		["Subnets"] = args["Subnets"],
 		["Name"] = args["Name"],
@@ -903,8 +1239,13 @@ function M.CreateLoadBalancerInput(args)
 		["SecurityGroups"] = args["SecurityGroups"],
 		["Scheme"] = args["Scheme"],
 	}
-	asserts.AssertCreateLoadBalancerInput(t)
-	return t
+	asserts.AssertCreateLoadBalancerInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeregisterTargetsOutput = { nil }
@@ -923,11 +1264,22 @@ end
 -- Valid keys:
 -- @return DeregisterTargetsOutput structure as a key-value pair table
 function M.DeregisterTargetsOutput(args)
-	assert(args, "You must provdide an argument table when creating DeregisterTargetsOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeregisterTargetsOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertDeregisterTargetsOutput(t)
-	return t
+	asserts.AssertDeregisterTargetsOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.TargetGroupAssociationLimitException = { nil }
@@ -946,11 +1298,22 @@ end
 -- Valid keys:
 -- @return TargetGroupAssociationLimitException structure as a key-value pair table
 function M.TargetGroupAssociationLimitException(args)
-	assert(args, "You must provdide an argument table when creating TargetGroupAssociationLimitException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating TargetGroupAssociationLimitException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertTargetGroupAssociationLimitException(t)
-	return t
+	asserts.AssertTargetGroupAssociationLimitException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeregisterTargetsInput = { ["TargetGroupArn"] = true, ["Targets"] = true, nil }
@@ -977,13 +1340,24 @@ end
 -- Required key: Targets
 -- @return DeregisterTargetsInput structure as a key-value pair table
 function M.DeregisterTargetsInput(args)
-	assert(args, "You must provdide an argument table when creating DeregisterTargetsInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeregisterTargetsInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["TargetGroupArn"] = args["TargetGroupArn"],
 		["Targets"] = args["Targets"],
 	}
-	asserts.AssertDeregisterTargetsInput(t)
-	return t
+	asserts.AssertDeregisterTargetsInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Listener = { ["Protocol"] = true, ["DefaultActions"] = true, ["SslPolicy"] = true, ["Certificates"] = true, ["LoadBalancerArn"] = true, ["Port"] = true, ["ListenerArn"] = true, nil }
@@ -1016,8 +1390,14 @@ end
 -- * ListenerArn [ListenerArn] <p>The Amazon Resource Name (ARN) of the listener.</p>
 -- @return Listener structure as a key-value pair table
 function M.Listener(args)
-	assert(args, "You must provdide an argument table when creating Listener")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Listener")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Protocol"] = args["Protocol"],
 		["DefaultActions"] = args["DefaultActions"],
 		["SslPolicy"] = args["SslPolicy"],
@@ -1026,8 +1406,13 @@ function M.Listener(args)
 		["Port"] = args["Port"],
 		["ListenerArn"] = args["ListenerArn"],
 	}
-	asserts.AssertListener(t)
-	return t
+	asserts.AssertListener(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.TargetHealth = { ["State"] = true, ["Reason"] = true, ["Description"] = true, nil }
@@ -1052,14 +1437,25 @@ end
 -- * Description [Description] <p>A description of the target health that provides additional details. If the state is <code>healthy</code>, a description is not provided.</p>
 -- @return TargetHealth structure as a key-value pair table
 function M.TargetHealth(args)
-	assert(args, "You must provdide an argument table when creating TargetHealth")
-	local t = { 
+	assert(args, "You must provide an argument table when creating TargetHealth")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["State"] = args["State"],
 		["Reason"] = args["Reason"],
 		["Description"] = args["Description"],
 	}
-	asserts.AssertTargetHealth(t)
-	return t
+	asserts.AssertTargetHealth(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeLoadBalancerAttributesInput = { ["LoadBalancerArn"] = true, nil }
@@ -1082,12 +1478,23 @@ end
 -- Required key: LoadBalancerArn
 -- @return DescribeLoadBalancerAttributesInput structure as a key-value pair table
 function M.DescribeLoadBalancerAttributesInput(args)
-	assert(args, "You must provdide an argument table when creating DescribeLoadBalancerAttributesInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeLoadBalancerAttributesInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["LoadBalancerArn"] = args["LoadBalancerArn"],
 	}
-	asserts.AssertDescribeLoadBalancerAttributesInput(t)
-	return t
+	asserts.AssertDescribeLoadBalancerAttributesInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UnsupportedProtocolException = { nil }
@@ -1106,11 +1513,22 @@ end
 -- Valid keys:
 -- @return UnsupportedProtocolException structure as a key-value pair table
 function M.UnsupportedProtocolException(args)
-	assert(args, "You must provdide an argument table when creating UnsupportedProtocolException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UnsupportedProtocolException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertUnsupportedProtocolException(t)
-	return t
+	asserts.AssertUnsupportedProtocolException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ModifyRuleOutput = { ["Rules"] = true, nil }
@@ -1131,12 +1549,23 @@ end
 -- * Rules [Rules] <p>Information about the rule.</p>
 -- @return ModifyRuleOutput structure as a key-value pair table
 function M.ModifyRuleOutput(args)
-	assert(args, "You must provdide an argument table when creating ModifyRuleOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ModifyRuleOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Rules"] = args["Rules"],
 	}
-	asserts.AssertModifyRuleOutput(t)
-	return t
+	asserts.AssertModifyRuleOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.RuleCondition = { ["Field"] = true, ["Values"] = true, nil }
@@ -1159,13 +1588,24 @@ end
 -- * Values [ListOfString] <p>The condition value.</p> <p>If the field name is <code>host-header</code>, you can specify a single host name (for example, my.example.com). A host name is case insensitive, can be up to 128 characters in length, and can contain any of the following characters. Note that you can include up to three wildcard characters.</p> <ul> <li> <p>A-Z, a-z, 0-9</p> </li> <li> <p>- .</p> </li> <li> <p>* (matches 0 or more characters)</p> </li> <li> <p>? (matches exactly 1 character)</p> </li> </ul> <p>If the field name is <code>path-pattern</code>, you can specify a single path pattern (for example, /img/*). A path pattern is case sensitive, can be up to 128 characters in length, and can contain any of the following characters. Note that you can include up to three wildcard characters.</p> <ul> <li> <p>A-Z, a-z, 0-9</p> </li> <li> <p>_ - . $ / ~ " ' @ : +</p> </li> <li> <p>&amp; (using &amp;amp;)</p> </li> <li> <p>* (matches 0 or more characters)</p> </li> <li> <p>? (matches exactly 1 character)</p> </li> </ul>
 -- @return RuleCondition structure as a key-value pair table
 function M.RuleCondition(args)
-	assert(args, "You must provdide an argument table when creating RuleCondition")
-	local t = { 
+	assert(args, "You must provide an argument table when creating RuleCondition")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Field"] = args["Field"],
 		["Values"] = args["Values"],
 	}
-	asserts.AssertRuleCondition(t)
-	return t
+	asserts.AssertRuleCondition(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteRuleOutput = { nil }
@@ -1184,11 +1624,22 @@ end
 -- Valid keys:
 -- @return DeleteRuleOutput structure as a key-value pair table
 function M.DeleteRuleOutput(args)
-	assert(args, "You must provdide an argument table when creating DeleteRuleOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteRuleOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertDeleteRuleOutput(t)
-	return t
+	asserts.AssertDeleteRuleOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteLoadBalancerOutput = { nil }
@@ -1207,11 +1658,22 @@ end
 -- Valid keys:
 -- @return DeleteLoadBalancerOutput structure as a key-value pair table
 function M.DeleteLoadBalancerOutput(args)
-	assert(args, "You must provdide an argument table when creating DeleteLoadBalancerOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteLoadBalancerOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertDeleteLoadBalancerOutput(t)
-	return t
+	asserts.AssertDeleteLoadBalancerOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AvailabilityZone = { ["SubnetId"] = true, ["ZoneName"] = true, nil }
@@ -1234,13 +1696,24 @@ end
 -- * ZoneName [ZoneName] <p>The name of the Availability Zone.</p>
 -- @return AvailabilityZone structure as a key-value pair table
 function M.AvailabilityZone(args)
-	assert(args, "You must provdide an argument table when creating AvailabilityZone")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AvailabilityZone")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["SubnetId"] = args["SubnetId"],
 		["ZoneName"] = args["ZoneName"],
 	}
-	asserts.AssertAvailabilityZone(t)
-	return t
+	asserts.AssertAvailabilityZone(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.TooManyRegistrationsForTargetIdException = { nil }
@@ -1259,11 +1732,22 @@ end
 -- Valid keys:
 -- @return TooManyRegistrationsForTargetIdException structure as a key-value pair table
 function M.TooManyRegistrationsForTargetIdException(args)
-	assert(args, "You must provdide an argument table when creating TooManyRegistrationsForTargetIdException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating TooManyRegistrationsForTargetIdException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertTooManyRegistrationsForTargetIdException(t)
-	return t
+	asserts.AssertTooManyRegistrationsForTargetIdException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ResourceInUseException = { nil }
@@ -1282,11 +1766,22 @@ end
 -- Valid keys:
 -- @return ResourceInUseException structure as a key-value pair table
 function M.ResourceInUseException(args)
-	assert(args, "You must provdide an argument table when creating ResourceInUseException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ResourceInUseException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertResourceInUseException(t)
-	return t
+	asserts.AssertResourceInUseException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeLoadBalancersOutput = { ["LoadBalancers"] = true, ["NextMarker"] = true, nil }
@@ -1309,13 +1804,24 @@ end
 -- * NextMarker [Marker] <p>The marker to use when requesting the next set of results. If there are no additional results, the string is empty.</p>
 -- @return DescribeLoadBalancersOutput structure as a key-value pair table
 function M.DescribeLoadBalancersOutput(args)
-	assert(args, "You must provdide an argument table when creating DescribeLoadBalancersOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeLoadBalancersOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["LoadBalancers"] = args["LoadBalancers"],
 		["NextMarker"] = args["NextMarker"],
 	}
-	asserts.AssertDescribeLoadBalancersOutput(t)
-	return t
+	asserts.AssertDescribeLoadBalancersOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.IncompatibleProtocolsException = { nil }
@@ -1334,11 +1840,22 @@ end
 -- Valid keys:
 -- @return IncompatibleProtocolsException structure as a key-value pair table
 function M.IncompatibleProtocolsException(args)
-	assert(args, "You must provdide an argument table when creating IncompatibleProtocolsException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating IncompatibleProtocolsException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertIncompatibleProtocolsException(t)
-	return t
+	asserts.AssertIncompatibleProtocolsException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.RemoveTagsOutput = { nil }
@@ -1357,11 +1874,22 @@ end
 -- Valid keys:
 -- @return RemoveTagsOutput structure as a key-value pair table
 function M.RemoveTagsOutput(args)
-	assert(args, "You must provdide an argument table when creating RemoveTagsOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating RemoveTagsOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertRemoveTagsOutput(t)
-	return t
+	asserts.AssertRemoveTagsOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.TooManyTargetGroupsException = { nil }
@@ -1380,11 +1908,22 @@ end
 -- Valid keys:
 -- @return TooManyTargetGroupsException structure as a key-value pair table
 function M.TooManyTargetGroupsException(args)
-	assert(args, "You must provdide an argument table when creating TooManyTargetGroupsException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating TooManyTargetGroupsException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertTooManyTargetGroupsException(t)
-	return t
+	asserts.AssertTooManyTargetGroupsException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.TargetGroupNotFoundException = { nil }
@@ -1403,11 +1942,22 @@ end
 -- Valid keys:
 -- @return TargetGroupNotFoundException structure as a key-value pair table
 function M.TargetGroupNotFoundException(args)
-	assert(args, "You must provdide an argument table when creating TargetGroupNotFoundException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating TargetGroupNotFoundException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertTargetGroupNotFoundException(t)
-	return t
+	asserts.AssertTargetGroupNotFoundException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateLoadBalancerOutput = { ["LoadBalancers"] = true, nil }
@@ -1428,12 +1978,23 @@ end
 -- * LoadBalancers [LoadBalancers] <p>Information about the load balancer.</p>
 -- @return CreateLoadBalancerOutput structure as a key-value pair table
 function M.CreateLoadBalancerOutput(args)
-	assert(args, "You must provdide an argument table when creating CreateLoadBalancerOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateLoadBalancerOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["LoadBalancers"] = args["LoadBalancers"],
 	}
-	asserts.AssertCreateLoadBalancerOutput(t)
-	return t
+	asserts.AssertCreateLoadBalancerOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.SetIpAddressTypeInput = { ["IpAddressType"] = true, ["LoadBalancerArn"] = true, nil }
@@ -1460,13 +2021,24 @@ end
 -- Required key: IpAddressType
 -- @return SetIpAddressTypeInput structure as a key-value pair table
 function M.SetIpAddressTypeInput(args)
-	assert(args, "You must provdide an argument table when creating SetIpAddressTypeInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating SetIpAddressTypeInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["IpAddressType"] = args["IpAddressType"],
 		["LoadBalancerArn"] = args["LoadBalancerArn"],
 	}
-	asserts.AssertSetIpAddressTypeInput(t)
-	return t
+	asserts.AssertSetIpAddressTypeInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeTargetHealthInput = { ["TargetGroupArn"] = true, ["Targets"] = true, nil }
@@ -1491,13 +2063,24 @@ end
 -- Required key: TargetGroupArn
 -- @return DescribeTargetHealthInput structure as a key-value pair table
 function M.DescribeTargetHealthInput(args)
-	assert(args, "You must provdide an argument table when creating DescribeTargetHealthInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeTargetHealthInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["TargetGroupArn"] = args["TargetGroupArn"],
 		["Targets"] = args["Targets"],
 	}
-	asserts.AssertDescribeTargetHealthInput(t)
-	return t
+	asserts.AssertDescribeTargetHealthInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Certificate = { ["CertificateArn"] = true, nil }
@@ -1518,12 +2101,23 @@ end
 -- * CertificateArn [CertificateArn] <p>The Amazon Resource Name (ARN) of the certificate.</p>
 -- @return Certificate structure as a key-value pair table
 function M.Certificate(args)
-	assert(args, "You must provdide an argument table when creating Certificate")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Certificate")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["CertificateArn"] = args["CertificateArn"],
 	}
-	asserts.AssertCertificate(t)
-	return t
+	asserts.AssertCertificate(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.TooManyListenersException = { nil }
@@ -1542,11 +2136,22 @@ end
 -- Valid keys:
 -- @return TooManyListenersException structure as a key-value pair table
 function M.TooManyListenersException(args)
-	assert(args, "You must provdide an argument table when creating TooManyListenersException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating TooManyListenersException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertTooManyListenersException(t)
-	return t
+	asserts.AssertTooManyListenersException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidSchemeException = { nil }
@@ -1565,11 +2170,22 @@ end
 -- Valid keys:
 -- @return InvalidSchemeException structure as a key-value pair table
 function M.InvalidSchemeException(args)
-	assert(args, "You must provdide an argument table when creating InvalidSchemeException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidSchemeException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertInvalidSchemeException(t)
-	return t
+	asserts.AssertInvalidSchemeException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.SetSubnetsOutput = { ["AvailabilityZones"] = true, nil }
@@ -1590,12 +2206,23 @@ end
 -- * AvailabilityZones [AvailabilityZones] <p>Information about the subnet and Availability Zone.</p>
 -- @return SetSubnetsOutput structure as a key-value pair table
 function M.SetSubnetsOutput(args)
-	assert(args, "You must provdide an argument table when creating SetSubnetsOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating SetSubnetsOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["AvailabilityZones"] = args["AvailabilityZones"],
 	}
-	asserts.AssertSetSubnetsOutput(t)
-	return t
+	asserts.AssertSetSubnetsOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.TargetHealthDescription = { ["HealthCheckPort"] = true, ["Target"] = true, ["TargetHealth"] = true, nil }
@@ -1620,14 +2247,25 @@ end
 -- * TargetHealth [TargetHealth] <p>The health information for the target.</p>
 -- @return TargetHealthDescription structure as a key-value pair table
 function M.TargetHealthDescription(args)
-	assert(args, "You must provdide an argument table when creating TargetHealthDescription")
-	local t = { 
+	assert(args, "You must provide an argument table when creating TargetHealthDescription")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["HealthCheckPort"] = args["HealthCheckPort"],
 		["Target"] = args["Target"],
 		["TargetHealth"] = args["TargetHealth"],
 	}
-	asserts.AssertTargetHealthDescription(t)
-	return t
+	asserts.AssertTargetHealthDescription(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeTargetHealthOutput = { ["TargetHealthDescriptions"] = true, nil }
@@ -1648,12 +2286,23 @@ end
 -- * TargetHealthDescriptions [TargetHealthDescriptions] <p>Information about the health of the targets.</p>
 -- @return DescribeTargetHealthOutput structure as a key-value pair table
 function M.DescribeTargetHealthOutput(args)
-	assert(args, "You must provdide an argument table when creating DescribeTargetHealthOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeTargetHealthOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["TargetHealthDescriptions"] = args["TargetHealthDescriptions"],
 	}
-	asserts.AssertDescribeTargetHealthOutput(t)
-	return t
+	asserts.AssertDescribeTargetHealthOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteListenerInput = { ["ListenerArn"] = true, nil }
@@ -1676,12 +2325,23 @@ end
 -- Required key: ListenerArn
 -- @return DeleteListenerInput structure as a key-value pair table
 function M.DeleteListenerInput(args)
-	assert(args, "You must provdide an argument table when creating DeleteListenerInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteListenerInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ListenerArn"] = args["ListenerArn"],
 	}
-	asserts.AssertDeleteListenerInput(t)
-	return t
+	asserts.AssertDeleteListenerInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateListenerInput = { ["Protocol"] = true, ["DefaultActions"] = true, ["SslPolicy"] = true, ["Certificates"] = true, ["LoadBalancerArn"] = true, ["Port"] = true, nil }
@@ -1720,8 +2380,14 @@ end
 -- Required key: DefaultActions
 -- @return CreateListenerInput structure as a key-value pair table
 function M.CreateListenerInput(args)
-	assert(args, "You must provdide an argument table when creating CreateListenerInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateListenerInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Protocol"] = args["Protocol"],
 		["DefaultActions"] = args["DefaultActions"],
 		["SslPolicy"] = args["SslPolicy"],
@@ -1729,8 +2395,13 @@ function M.CreateListenerInput(args)
 		["LoadBalancerArn"] = args["LoadBalancerArn"],
 		["Port"] = args["Port"],
 	}
-	asserts.AssertCreateListenerInput(t)
-	return t
+	asserts.AssertCreateListenerInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateTargetGroupInput = { ["HealthyThresholdCount"] = true, ["HealthCheckIntervalSeconds"] = true, ["VpcId"] = true, ["Protocol"] = true, ["Name"] = true, ["HealthCheckProtocol"] = true, ["UnhealthyThresholdCount"] = true, ["HealthCheckPath"] = true, ["HealthCheckTimeoutSeconds"] = true, ["Matcher"] = true, ["HealthCheckPort"] = true, ["Port"] = true, nil }
@@ -1781,8 +2452,14 @@ end
 -- Required key: VpcId
 -- @return CreateTargetGroupInput structure as a key-value pair table
 function M.CreateTargetGroupInput(args)
-	assert(args, "You must provdide an argument table when creating CreateTargetGroupInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateTargetGroupInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["HealthyThresholdCount"] = args["HealthyThresholdCount"],
 		["HealthCheckIntervalSeconds"] = args["HealthCheckIntervalSeconds"],
 		["VpcId"] = args["VpcId"],
@@ -1796,8 +2473,13 @@ function M.CreateTargetGroupInput(args)
 		["HealthCheckPort"] = args["HealthCheckPort"],
 		["Port"] = args["Port"],
 	}
-	asserts.AssertCreateTargetGroupInput(t)
-	return t
+	asserts.AssertCreateTargetGroupInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ModifyLoadBalancerAttributesOutput = { ["Attributes"] = true, nil }
@@ -1818,12 +2500,23 @@ end
 -- * Attributes [LoadBalancerAttributes] <p>Information about the load balancer attributes.</p>
 -- @return ModifyLoadBalancerAttributesOutput structure as a key-value pair table
 function M.ModifyLoadBalancerAttributesOutput(args)
-	assert(args, "You must provdide an argument table when creating ModifyLoadBalancerAttributesOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ModifyLoadBalancerAttributesOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Attributes"] = args["Attributes"],
 	}
-	asserts.AssertModifyLoadBalancerAttributesOutput(t)
-	return t
+	asserts.AssertModifyLoadBalancerAttributesOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.RegisterTargetsOutput = { nil }
@@ -1842,11 +2535,22 @@ end
 -- Valid keys:
 -- @return RegisterTargetsOutput structure as a key-value pair table
 function M.RegisterTargetsOutput(args)
-	assert(args, "You must provdide an argument table when creating RegisterTargetsOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating RegisterTargetsOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertRegisterTargetsOutput(t)
-	return t
+	asserts.AssertRegisterTargetsOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Matcher = { ["HttpCode"] = true, nil }
@@ -1869,12 +2573,23 @@ end
 -- Required key: HttpCode
 -- @return Matcher structure as a key-value pair table
 function M.Matcher(args)
-	assert(args, "You must provdide an argument table when creating Matcher")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Matcher")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["HttpCode"] = args["HttpCode"],
 	}
-	asserts.AssertMatcher(t)
-	return t
+	asserts.AssertMatcher(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidSecurityGroupException = { nil }
@@ -1893,11 +2608,22 @@ end
 -- Valid keys:
 -- @return InvalidSecurityGroupException structure as a key-value pair table
 function M.InvalidSecurityGroupException(args)
-	assert(args, "You must provdide an argument table when creating InvalidSecurityGroupException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidSecurityGroupException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertInvalidSecurityGroupException(t)
-	return t
+	asserts.AssertInvalidSecurityGroupException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeAccountLimitsOutput = { ["NextMarker"] = true, ["Limits"] = true, nil }
@@ -1920,13 +2646,24 @@ end
 -- * Limits [Limits] <p>Information about the limits.</p>
 -- @return DescribeAccountLimitsOutput structure as a key-value pair table
 function M.DescribeAccountLimitsOutput(args)
-	assert(args, "You must provdide an argument table when creating DescribeAccountLimitsOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeAccountLimitsOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NextMarker"] = args["NextMarker"],
 		["Limits"] = args["Limits"],
 	}
-	asserts.AssertDescribeAccountLimitsOutput(t)
-	return t
+	asserts.AssertDescribeAccountLimitsOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ModifyListenerInput = { ["Protocol"] = true, ["DefaultActions"] = true, ["SslPolicy"] = true, ["Certificates"] = true, ["Port"] = true, ["ListenerArn"] = true, nil }
@@ -1959,8 +2696,14 @@ end
 -- Required key: ListenerArn
 -- @return ModifyListenerInput structure as a key-value pair table
 function M.ModifyListenerInput(args)
-	assert(args, "You must provdide an argument table when creating ModifyListenerInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ModifyListenerInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Protocol"] = args["Protocol"],
 		["DefaultActions"] = args["DefaultActions"],
 		["SslPolicy"] = args["SslPolicy"],
@@ -1968,8 +2711,13 @@ function M.ModifyListenerInput(args)
 		["Port"] = args["Port"],
 		["ListenerArn"] = args["ListenerArn"],
 	}
-	asserts.AssertModifyListenerInput(t)
-	return t
+	asserts.AssertModifyListenerInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ModifyLoadBalancerAttributesInput = { ["Attributes"] = true, ["LoadBalancerArn"] = true, nil }
@@ -1996,13 +2744,24 @@ end
 -- Required key: Attributes
 -- @return ModifyLoadBalancerAttributesInput structure as a key-value pair table
 function M.ModifyLoadBalancerAttributesInput(args)
-	assert(args, "You must provdide an argument table when creating ModifyLoadBalancerAttributesInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ModifyLoadBalancerAttributesInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Attributes"] = args["Attributes"],
 		["LoadBalancerArn"] = args["LoadBalancerArn"],
 	}
-	asserts.AssertModifyLoadBalancerAttributesInput(t)
-	return t
+	asserts.AssertModifyLoadBalancerAttributesInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ModifyTargetGroupInput = { ["HealthyThresholdCount"] = true, ["HealthCheckIntervalSeconds"] = true, ["TargetGroupArn"] = true, ["HealthCheckPort"] = true, ["HealthCheckProtocol"] = true, ["HealthCheckPath"] = true, ["HealthCheckTimeoutSeconds"] = true, ["Matcher"] = true, ["UnhealthyThresholdCount"] = true, nil }
@@ -2041,8 +2800,14 @@ end
 -- Required key: TargetGroupArn
 -- @return ModifyTargetGroupInput structure as a key-value pair table
 function M.ModifyTargetGroupInput(args)
-	assert(args, "You must provdide an argument table when creating ModifyTargetGroupInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ModifyTargetGroupInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["HealthyThresholdCount"] = args["HealthyThresholdCount"],
 		["HealthCheckIntervalSeconds"] = args["HealthCheckIntervalSeconds"],
 		["TargetGroupArn"] = args["TargetGroupArn"],
@@ -2053,8 +2818,13 @@ function M.ModifyTargetGroupInput(args)
 		["Matcher"] = args["Matcher"],
 		["UnhealthyThresholdCount"] = args["UnhealthyThresholdCount"],
 	}
-	asserts.AssertModifyTargetGroupInput(t)
-	return t
+	asserts.AssertModifyTargetGroupInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateRuleInput = { ["Priority"] = true, ["Conditions"] = true, ["Actions"] = true, ["ListenerArn"] = true, nil }
@@ -2089,15 +2859,26 @@ end
 -- Required key: Actions
 -- @return CreateRuleInput structure as a key-value pair table
 function M.CreateRuleInput(args)
-	assert(args, "You must provdide an argument table when creating CreateRuleInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateRuleInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Priority"] = args["Priority"],
 		["Conditions"] = args["Conditions"],
 		["Actions"] = args["Actions"],
 		["ListenerArn"] = args["ListenerArn"],
 	}
-	asserts.AssertCreateRuleInput(t)
-	return t
+	asserts.AssertCreateRuleInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeListenersInput = { ["ListenerArns"] = true, ["Marker"] = true, ["LoadBalancerArn"] = true, ["PageSize"] = true, nil }
@@ -2124,15 +2905,26 @@ end
 -- * PageSize [PageSize] <p>The maximum number of results to return with this call.</p>
 -- @return DescribeListenersInput structure as a key-value pair table
 function M.DescribeListenersInput(args)
-	assert(args, "You must provdide an argument table when creating DescribeListenersInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeListenersInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ListenerArns"] = args["ListenerArns"],
 		["Marker"] = args["Marker"],
 		["LoadBalancerArn"] = args["LoadBalancerArn"],
 		["PageSize"] = args["PageSize"],
 	}
-	asserts.AssertDescribeListenersInput(t)
-	return t
+	asserts.AssertDescribeListenersInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Rule = { ["Priority"] = true, ["Conditions"] = true, ["RuleArn"] = true, ["IsDefault"] = true, ["Actions"] = true, nil }
@@ -2161,16 +2953,27 @@ end
 -- * Actions [Actions] <p>The actions.</p>
 -- @return Rule structure as a key-value pair table
 function M.Rule(args)
-	assert(args, "You must provdide an argument table when creating Rule")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Rule")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Priority"] = args["Priority"],
 		["Conditions"] = args["Conditions"],
 		["RuleArn"] = args["RuleArn"],
 		["IsDefault"] = args["IsDefault"],
 		["Actions"] = args["Actions"],
 	}
-	asserts.AssertRule(t)
-	return t
+	asserts.AssertRule(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.SetRulePrioritiesInput = { ["RulePriorities"] = true, nil }
@@ -2193,12 +2996,23 @@ end
 -- Required key: RulePriorities
 -- @return SetRulePrioritiesInput structure as a key-value pair table
 function M.SetRulePrioritiesInput(args)
-	assert(args, "You must provdide an argument table when creating SetRulePrioritiesInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating SetRulePrioritiesInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["RulePriorities"] = args["RulePriorities"],
 	}
-	asserts.AssertSetRulePrioritiesInput(t)
-	return t
+	asserts.AssertSetRulePrioritiesInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.SetRulePrioritiesOutput = { ["Rules"] = true, nil }
@@ -2219,12 +3033,23 @@ end
 -- * Rules [Rules] <p>Information about the rules.</p>
 -- @return SetRulePrioritiesOutput structure as a key-value pair table
 function M.SetRulePrioritiesOutput(args)
-	assert(args, "You must provdide an argument table when creating SetRulePrioritiesOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating SetRulePrioritiesOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Rules"] = args["Rules"],
 	}
-	asserts.AssertSetRulePrioritiesOutput(t)
-	return t
+	asserts.AssertSetRulePrioritiesOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Action = { ["TargetGroupArn"] = true, ["Type"] = true, nil }
@@ -2251,13 +3076,24 @@ end
 -- Required key: TargetGroupArn
 -- @return Action structure as a key-value pair table
 function M.Action(args)
-	assert(args, "You must provdide an argument table when creating Action")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Action")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["TargetGroupArn"] = args["TargetGroupArn"],
 		["Type"] = args["Type"],
 	}
-	asserts.AssertAction(t)
-	return t
+	asserts.AssertAction(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.PriorityInUseException = { nil }
@@ -2276,11 +3112,22 @@ end
 -- Valid keys:
 -- @return PriorityInUseException structure as a key-value pair table
 function M.PriorityInUseException(args)
-	assert(args, "You must provdide an argument table when creating PriorityInUseException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating PriorityInUseException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertPriorityInUseException(t)
-	return t
+	asserts.AssertPriorityInUseException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.RegisterTargetsInput = { ["TargetGroupArn"] = true, ["Targets"] = true, nil }
@@ -2307,13 +3154,24 @@ end
 -- Required key: Targets
 -- @return RegisterTargetsInput structure as a key-value pair table
 function M.RegisterTargetsInput(args)
-	assert(args, "You must provdide an argument table when creating RegisterTargetsInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating RegisterTargetsInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["TargetGroupArn"] = args["TargetGroupArn"],
 		["Targets"] = args["Targets"],
 	}
-	asserts.AssertRegisterTargetsInput(t)
-	return t
+	asserts.AssertRegisterTargetsInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteTargetGroupInput = { ["TargetGroupArn"] = true, nil }
@@ -2336,12 +3194,23 @@ end
 -- Required key: TargetGroupArn
 -- @return DeleteTargetGroupInput structure as a key-value pair table
 function M.DeleteTargetGroupInput(args)
-	assert(args, "You must provdide an argument table when creating DeleteTargetGroupInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteTargetGroupInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["TargetGroupArn"] = args["TargetGroupArn"],
 	}
-	asserts.AssertDeleteTargetGroupInput(t)
-	return t
+	asserts.AssertDeleteTargetGroupInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.RuleNotFoundException = { nil }
@@ -2360,11 +3229,22 @@ end
 -- Valid keys:
 -- @return RuleNotFoundException structure as a key-value pair table
 function M.RuleNotFoundException(args)
-	assert(args, "You must provdide an argument table when creating RuleNotFoundException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating RuleNotFoundException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertRuleNotFoundException(t)
-	return t
+	asserts.AssertRuleNotFoundException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.TooManyTargetsException = { nil }
@@ -2383,11 +3263,22 @@ end
 -- Valid keys:
 -- @return TooManyTargetsException structure as a key-value pair table
 function M.TooManyTargetsException(args)
-	assert(args, "You must provdide an argument table when creating TooManyTargetsException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating TooManyTargetsException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertTooManyTargetsException(t)
-	return t
+	asserts.AssertTooManyTargetsException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.TooManyLoadBalancersException = { nil }
@@ -2406,11 +3297,22 @@ end
 -- Valid keys:
 -- @return TooManyLoadBalancersException structure as a key-value pair table
 function M.TooManyLoadBalancersException(args)
-	assert(args, "You must provdide an argument table when creating TooManyLoadBalancersException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating TooManyLoadBalancersException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertTooManyLoadBalancersException(t)
-	return t
+	asserts.AssertTooManyLoadBalancersException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AddTagsInput = { ["ResourceArns"] = true, ["Tags"] = true, nil }
@@ -2437,13 +3339,24 @@ end
 -- Required key: Tags
 -- @return AddTagsInput structure as a key-value pair table
 function M.AddTagsInput(args)
-	assert(args, "You must provdide an argument table when creating AddTagsInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AddTagsInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ResourceArns"] = args["ResourceArns"],
 		["Tags"] = args["Tags"],
 	}
-	asserts.AssertAddTagsInput(t)
-	return t
+	asserts.AssertAddTagsInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.TargetGroupAttribute = { ["Value"] = true, ["Key"] = true, nil }
@@ -2466,13 +3379,24 @@ end
 -- * Key [TargetGroupAttributeKey] <p>The name of the attribute.</p> <ul> <li> <p> <code>deregistration_delay.timeout_seconds</code> - The amount time for Elastic Load Balancing to wait before changing the state of a deregistering target from <code>draining</code> to <code>unused</code>. The range is 0-3600 seconds. The default value is 300 seconds.</p> </li> <li> <p> <code>stickiness.enabled</code> - Indicates whether sticky sessions are enabled. The value is <code>true</code> or <code>false</code>.</p> </li> <li> <p> <code>stickiness.type</code> - The type of sticky sessions. The possible value is <code>lb_cookie</code>.</p> </li> <li> <p> <code>stickiness.lb_cookie.duration_seconds</code> - The time period, in seconds, during which requests from a client should be routed to the same target. After this time period expires, the load balancer-generated cookie is considered stale. The range is 1 second to 1 week (604800 seconds). The default value is 1 day (86400 seconds).</p> </li> </ul>
 -- @return TargetGroupAttribute structure as a key-value pair table
 function M.TargetGroupAttribute(args)
-	assert(args, "You must provdide an argument table when creating TargetGroupAttribute")
-	local t = { 
+	assert(args, "You must provide an argument table when creating TargetGroupAttribute")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Value"] = args["Value"],
 		["Key"] = args["Key"],
 	}
-	asserts.AssertTargetGroupAttribute(t)
-	return t
+	asserts.AssertTargetGroupAttribute(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.HealthUnavailableException = { nil }
@@ -2491,11 +3415,22 @@ end
 -- Valid keys:
 -- @return HealthUnavailableException structure as a key-value pair table
 function M.HealthUnavailableException(args)
-	assert(args, "You must provdide an argument table when creating HealthUnavailableException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating HealthUnavailableException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertHealthUnavailableException(t)
-	return t
+	asserts.AssertHealthUnavailableException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ModifyRuleInput = { ["Conditions"] = true, ["RuleArn"] = true, ["Actions"] = true, nil }
@@ -2522,14 +3457,25 @@ end
 -- Required key: RuleArn
 -- @return ModifyRuleInput structure as a key-value pair table
 function M.ModifyRuleInput(args)
-	assert(args, "You must provdide an argument table when creating ModifyRuleInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ModifyRuleInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Conditions"] = args["Conditions"],
 		["RuleArn"] = args["RuleArn"],
 		["Actions"] = args["Actions"],
 	}
-	asserts.AssertModifyRuleInput(t)
-	return t
+	asserts.AssertModifyRuleInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.TooManyTagsException = { nil }
@@ -2548,11 +3494,22 @@ end
 -- Valid keys:
 -- @return TooManyTagsException structure as a key-value pair table
 function M.TooManyTagsException(args)
-	assert(args, "You must provdide an argument table when creating TooManyTagsException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating TooManyTagsException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertTooManyTagsException(t)
-	return t
+	asserts.AssertTooManyTagsException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeRulesOutput = { ["Rules"] = true, ["NextMarker"] = true, nil }
@@ -2575,13 +3532,24 @@ end
 -- * NextMarker [Marker] <p>The marker to use when requesting the next set of results. If there are no additional results, the string is empty.</p>
 -- @return DescribeRulesOutput structure as a key-value pair table
 function M.DescribeRulesOutput(args)
-	assert(args, "You must provdide an argument table when creating DescribeRulesOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeRulesOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Rules"] = args["Rules"],
 		["NextMarker"] = args["NextMarker"],
 	}
-	asserts.AssertDescribeRulesOutput(t)
-	return t
+	asserts.AssertDescribeRulesOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.SSLPolicyNotFoundException = { nil }
@@ -2600,11 +3568,22 @@ end
 -- Valid keys:
 -- @return SSLPolicyNotFoundException structure as a key-value pair table
 function M.SSLPolicyNotFoundException(args)
-	assert(args, "You must provdide an argument table when creating SSLPolicyNotFoundException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating SSLPolicyNotFoundException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertSSLPolicyNotFoundException(t)
-	return t
+	asserts.AssertSSLPolicyNotFoundException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DuplicateListenerException = { nil }
@@ -2623,11 +3602,22 @@ end
 -- Valid keys:
 -- @return DuplicateListenerException structure as a key-value pair table
 function M.DuplicateListenerException(args)
-	assert(args, "You must provdide an argument table when creating DuplicateListenerException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DuplicateListenerException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertDuplicateListenerException(t)
-	return t
+	asserts.AssertDuplicateListenerException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeTargetGroupsOutput = { ["NextMarker"] = true, ["TargetGroups"] = true, nil }
@@ -2650,13 +3640,24 @@ end
 -- * TargetGroups [TargetGroups] <p>Information about the target groups.</p>
 -- @return DescribeTargetGroupsOutput structure as a key-value pair table
 function M.DescribeTargetGroupsOutput(args)
-	assert(args, "You must provdide an argument table when creating DescribeTargetGroupsOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeTargetGroupsOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NextMarker"] = args["NextMarker"],
 		["TargetGroups"] = args["TargetGroups"],
 	}
-	asserts.AssertDescribeTargetGroupsOutput(t)
-	return t
+	asserts.AssertDescribeTargetGroupsOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteLoadBalancerInput = { ["LoadBalancerArn"] = true, nil }
@@ -2679,12 +3680,23 @@ end
 -- Required key: LoadBalancerArn
 -- @return DeleteLoadBalancerInput structure as a key-value pair table
 function M.DeleteLoadBalancerInput(args)
-	assert(args, "You must provdide an argument table when creating DeleteLoadBalancerInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteLoadBalancerInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["LoadBalancerArn"] = args["LoadBalancerArn"],
 	}
-	asserts.AssertDeleteLoadBalancerInput(t)
-	return t
+	asserts.AssertDeleteLoadBalancerInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeTargetGroupsInput = { ["Marker"] = true, ["TargetGroupArns"] = true, ["LoadBalancerArn"] = true, ["Names"] = true, ["PageSize"] = true, nil }
@@ -2713,16 +3725,27 @@ end
 -- * PageSize [PageSize] <p>The maximum number of results to return with this call.</p>
 -- @return DescribeTargetGroupsInput structure as a key-value pair table
 function M.DescribeTargetGroupsInput(args)
-	assert(args, "You must provdide an argument table when creating DescribeTargetGroupsInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeTargetGroupsInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Marker"] = args["Marker"],
 		["TargetGroupArns"] = args["TargetGroupArns"],
 		["LoadBalancerArn"] = args["LoadBalancerArn"],
 		["Names"] = args["Names"],
 		["PageSize"] = args["PageSize"],
 	}
-	asserts.AssertDescribeTargetGroupsInput(t)
-	return t
+	asserts.AssertDescribeTargetGroupsInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ModifyTargetGroupOutput = { ["TargetGroups"] = true, nil }
@@ -2743,12 +3766,23 @@ end
 -- * TargetGroups [TargetGroups] <p>Information about the target group.</p>
 -- @return ModifyTargetGroupOutput structure as a key-value pair table
 function M.ModifyTargetGroupOutput(args)
-	assert(args, "You must provdide an argument table when creating ModifyTargetGroupOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ModifyTargetGroupOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["TargetGroups"] = args["TargetGroups"],
 	}
-	asserts.AssertModifyTargetGroupOutput(t)
-	return t
+	asserts.AssertModifyTargetGroupOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ModifyTargetGroupAttributesOutput = { ["Attributes"] = true, nil }
@@ -2769,12 +3803,23 @@ end
 -- * Attributes [TargetGroupAttributes] <p>Information about the attributes.</p>
 -- @return ModifyTargetGroupAttributesOutput structure as a key-value pair table
 function M.ModifyTargetGroupAttributesOutput(args)
-	assert(args, "You must provdide an argument table when creating ModifyTargetGroupAttributesOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ModifyTargetGroupAttributesOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Attributes"] = args["Attributes"],
 	}
-	asserts.AssertModifyTargetGroupAttributesOutput(t)
-	return t
+	asserts.AssertModifyTargetGroupAttributesOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateTargetGroupOutput = { ["TargetGroups"] = true, nil }
@@ -2795,12 +3840,23 @@ end
 -- * TargetGroups [TargetGroups] <p>Information about the target group.</p>
 -- @return CreateTargetGroupOutput structure as a key-value pair table
 function M.CreateTargetGroupOutput(args)
-	assert(args, "You must provdide an argument table when creating CreateTargetGroupOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateTargetGroupOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["TargetGroups"] = args["TargetGroups"],
 	}
-	asserts.AssertCreateTargetGroupOutput(t)
-	return t
+	asserts.AssertCreateTargetGroupOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateListenerOutput = { ["Listeners"] = true, nil }
@@ -2821,12 +3877,23 @@ end
 -- * Listeners [Listeners] <p>Information about the listener.</p>
 -- @return CreateListenerOutput structure as a key-value pair table
 function M.CreateListenerOutput(args)
-	assert(args, "You must provdide an argument table when creating CreateListenerOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateListenerOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Listeners"] = args["Listeners"],
 	}
-	asserts.AssertCreateListenerOutput(t)
-	return t
+	asserts.AssertCreateListenerOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeRulesInput = { ["Marker"] = true, ["RuleArns"] = true, ["PageSize"] = true, ["ListenerArn"] = true, nil }
@@ -2853,15 +3920,26 @@ end
 -- * ListenerArn [ListenerArn] <p>The Amazon Resource Name (ARN) of the listener.</p>
 -- @return DescribeRulesInput structure as a key-value pair table
 function M.DescribeRulesInput(args)
-	assert(args, "You must provdide an argument table when creating DescribeRulesInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeRulesInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Marker"] = args["Marker"],
 		["RuleArns"] = args["RuleArns"],
 		["PageSize"] = args["PageSize"],
 		["ListenerArn"] = args["ListenerArn"],
 	}
-	asserts.AssertDescribeRulesInput(t)
-	return t
+	asserts.AssertDescribeRulesInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteListenerOutput = { nil }
@@ -2880,11 +3958,22 @@ end
 -- Valid keys:
 -- @return DeleteListenerOutput structure as a key-value pair table
 function M.DeleteListenerOutput(args)
-	assert(args, "You must provdide an argument table when creating DeleteListenerOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteListenerOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertDeleteListenerOutput(t)
-	return t
+	asserts.AssertDeleteListenerOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeTagsOutput = { ["TagDescriptions"] = true, nil }
@@ -2905,12 +3994,23 @@ end
 -- * TagDescriptions [TagDescriptions] <p>Information about the tags.</p>
 -- @return DescribeTagsOutput structure as a key-value pair table
 function M.DescribeTagsOutput(args)
-	assert(args, "You must provdide an argument table when creating DescribeTagsOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeTagsOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["TagDescriptions"] = args["TagDescriptions"],
 	}
-	asserts.AssertDescribeTagsOutput(t)
-	return t
+	asserts.AssertDescribeTagsOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ModifyListenerOutput = { ["Listeners"] = true, nil }
@@ -2931,12 +4031,23 @@ end
 -- * Listeners [Listeners] <p>Information about the modified listeners.</p>
 -- @return ModifyListenerOutput structure as a key-value pair table
 function M.ModifyListenerOutput(args)
-	assert(args, "You must provdide an argument table when creating ModifyListenerOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ModifyListenerOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Listeners"] = args["Listeners"],
 	}
-	asserts.AssertModifyListenerOutput(t)
-	return t
+	asserts.AssertModifyListenerOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.LoadBalancerState = { ["Reason"] = true, ["Code"] = true, nil }
@@ -2959,13 +4070,24 @@ end
 -- * Code [LoadBalancerStateEnum] <p>The state code. The initial state of the load balancer is <code>provisioning</code>. After the load balancer is fully set up and ready to route traffic, its state is <code>active</code>. If the load balancer could not be set up, its state is <code>failed</code>.</p>
 -- @return LoadBalancerState structure as a key-value pair table
 function M.LoadBalancerState(args)
-	assert(args, "You must provdide an argument table when creating LoadBalancerState")
-	local t = { 
+	assert(args, "You must provide an argument table when creating LoadBalancerState")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Reason"] = args["Reason"],
 		["Code"] = args["Code"],
 	}
-	asserts.AssertLoadBalancerState(t)
-	return t
+	asserts.AssertLoadBalancerState(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidTargetException = { nil }
@@ -2984,11 +4106,22 @@ end
 -- Valid keys:
 -- @return InvalidTargetException structure as a key-value pair table
 function M.InvalidTargetException(args)
-	assert(args, "You must provdide an argument table when creating InvalidTargetException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidTargetException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertInvalidTargetException(t)
-	return t
+	asserts.AssertInvalidTargetException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.SetSecurityGroupsInput = { ["SecurityGroups"] = true, ["LoadBalancerArn"] = true, nil }
@@ -3015,13 +4148,24 @@ end
 -- Required key: SecurityGroups
 -- @return SetSecurityGroupsInput structure as a key-value pair table
 function M.SetSecurityGroupsInput(args)
-	assert(args, "You must provdide an argument table when creating SetSecurityGroupsInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating SetSecurityGroupsInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["SecurityGroups"] = args["SecurityGroups"],
 		["LoadBalancerArn"] = args["LoadBalancerArn"],
 	}
-	asserts.AssertSetSecurityGroupsInput(t)
-	return t
+	asserts.AssertSetSecurityGroupsInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.LoadBalancerAttribute = { ["Value"] = true, ["Key"] = true, nil }
@@ -3044,13 +4188,24 @@ end
 -- * Key [LoadBalancerAttributeKey] <p>The name of the attribute.</p> <ul> <li> <p> <code>access_logs.s3.enabled</code> - Indicates whether access logs stored in Amazon S3 are enabled. The value is <code>true</code> or <code>false</code>.</p> </li> <li> <p> <code>access_logs.s3.bucket</code> - The name of the S3 bucket for the access logs. This attribute is required if access logs in Amazon S3 are enabled. The bucket must exist in the same region as the load balancer and have a bucket policy that grants Elastic Load Balancing permission to write to the bucket.</p> </li> <li> <p> <code>access_logs.s3.prefix</code> - The prefix for the location in the S3 bucket. If you don't specify a prefix, the access logs are stored in the root of the bucket.</p> </li> <li> <p> <code>deletion_protection.enabled</code> - Indicates whether deletion protection is enabled. The value is <code>true</code> or <code>false</code>.</p> </li> <li> <p> <code>idle_timeout.timeout_seconds</code> - The idle timeout value, in seconds. The valid range is 1-3600. The default is 60 seconds.</p> </li> </ul>
 -- @return LoadBalancerAttribute structure as a key-value pair table
 function M.LoadBalancerAttribute(args)
-	assert(args, "You must provdide an argument table when creating LoadBalancerAttribute")
-	local t = { 
+	assert(args, "You must provide an argument table when creating LoadBalancerAttribute")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Value"] = args["Value"],
 		["Key"] = args["Key"],
 	}
-	asserts.AssertLoadBalancerAttribute(t)
-	return t
+	asserts.AssertLoadBalancerAttribute(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeListenersOutput = { ["Listeners"] = true, ["NextMarker"] = true, nil }
@@ -3073,13 +4228,24 @@ end
 -- * NextMarker [Marker] <p>The marker to use when requesting the next set of results. If there are no additional results, the string is empty.</p>
 -- @return DescribeListenersOutput structure as a key-value pair table
 function M.DescribeListenersOutput(args)
-	assert(args, "You must provdide an argument table when creating DescribeListenersOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeListenersOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Listeners"] = args["Listeners"],
 		["NextMarker"] = args["NextMarker"],
 	}
-	asserts.AssertDescribeListenersOutput(t)
-	return t
+	asserts.AssertDescribeListenersOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.RemoveTagsInput = { ["TagKeys"] = true, ["ResourceArns"] = true, nil }
@@ -3106,13 +4272,24 @@ end
 -- Required key: TagKeys
 -- @return RemoveTagsInput structure as a key-value pair table
 function M.RemoveTagsInput(args)
-	assert(args, "You must provdide an argument table when creating RemoveTagsInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating RemoveTagsInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["TagKeys"] = args["TagKeys"],
 		["ResourceArns"] = args["ResourceArns"],
 	}
-	asserts.AssertRemoveTagsInput(t)
-	return t
+	asserts.AssertRemoveTagsInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.TooManyRulesException = { nil }
@@ -3131,11 +4308,22 @@ end
 -- Valid keys:
 -- @return TooManyRulesException structure as a key-value pair table
 function M.TooManyRulesException(args)
-	assert(args, "You must provdide an argument table when creating TooManyRulesException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating TooManyRulesException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertTooManyRulesException(t)
-	return t
+	asserts.AssertTooManyRulesException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.LoadBalancerNotFoundException = { nil }
@@ -3154,11 +4342,22 @@ end
 -- Valid keys:
 -- @return LoadBalancerNotFoundException structure as a key-value pair table
 function M.LoadBalancerNotFoundException(args)
-	assert(args, "You must provdide an argument table when creating LoadBalancerNotFoundException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating LoadBalancerNotFoundException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertLoadBalancerNotFoundException(t)
-	return t
+	asserts.AssertLoadBalancerNotFoundException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.TargetDescription = { ["Id"] = true, ["Port"] = true, nil }
@@ -3183,13 +4382,24 @@ end
 -- Required key: Id
 -- @return TargetDescription structure as a key-value pair table
 function M.TargetDescription(args)
-	assert(args, "You must provdide an argument table when creating TargetDescription")
-	local t = { 
+	assert(args, "You must provide an argument table when creating TargetDescription")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Id"] = args["Id"],
 		["Port"] = args["Port"],
 	}
-	asserts.AssertTargetDescription(t)
-	return t
+	asserts.AssertTargetDescription(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.SetIpAddressTypeOutput = { ["IpAddressType"] = true, nil }
@@ -3210,12 +4420,23 @@ end
 -- * IpAddressType [IpAddressType] <p>The IP address type.</p>
 -- @return SetIpAddressTypeOutput structure as a key-value pair table
 function M.SetIpAddressTypeOutput(args)
-	assert(args, "You must provdide an argument table when creating SetIpAddressTypeOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating SetIpAddressTypeOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["IpAddressType"] = args["IpAddressType"],
 	}
-	asserts.AssertSetIpAddressTypeOutput(t)
-	return t
+	asserts.AssertSetIpAddressTypeOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeSSLPoliciesInput = { ["Marker"] = true, ["Names"] = true, ["PageSize"] = true, nil }
@@ -3240,14 +4461,25 @@ end
 -- * PageSize [PageSize] <p>The maximum number of results to return with this call.</p>
 -- @return DescribeSSLPoliciesInput structure as a key-value pair table
 function M.DescribeSSLPoliciesInput(args)
-	assert(args, "You must provdide an argument table when creating DescribeSSLPoliciesInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeSSLPoliciesInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Marker"] = args["Marker"],
 		["Names"] = args["Names"],
 		["PageSize"] = args["PageSize"],
 	}
-	asserts.AssertDescribeSSLPoliciesInput(t)
-	return t
+	asserts.AssertDescribeSSLPoliciesInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateRuleOutput = { ["Rules"] = true, nil }
@@ -3268,12 +4500,23 @@ end
 -- * Rules [Rules] <p>Information about the rule.</p>
 -- @return CreateRuleOutput structure as a key-value pair table
 function M.CreateRuleOutput(args)
-	assert(args, "You must provdide an argument table when creating CreateRuleOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateRuleOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Rules"] = args["Rules"],
 	}
-	asserts.AssertCreateRuleOutput(t)
-	return t
+	asserts.AssertCreateRuleOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.LoadBalancer = { ["IpAddressType"] = true, ["VpcId"] = true, ["LoadBalancerArn"] = true, ["State"] = true, ["DNSName"] = true, ["SecurityGroups"] = true, ["LoadBalancerName"] = true, ["CreatedTime"] = true, ["Scheme"] = true, ["Type"] = true, ["CanonicalHostedZoneId"] = true, ["AvailabilityZones"] = true, nil }
@@ -3316,8 +4559,14 @@ end
 -- * AvailabilityZones [AvailabilityZones] <p>The Availability Zones for the load balancer.</p>
 -- @return LoadBalancer structure as a key-value pair table
 function M.LoadBalancer(args)
-	assert(args, "You must provdide an argument table when creating LoadBalancer")
-	local t = { 
+	assert(args, "You must provide an argument table when creating LoadBalancer")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["IpAddressType"] = args["IpAddressType"],
 		["VpcId"] = args["VpcId"],
 		["LoadBalancerArn"] = args["LoadBalancerArn"],
@@ -3331,8 +4580,13 @@ function M.LoadBalancer(args)
 		["CanonicalHostedZoneId"] = args["CanonicalHostedZoneId"],
 		["AvailabilityZones"] = args["AvailabilityZones"],
 	}
-	asserts.AssertLoadBalancer(t)
-	return t
+	asserts.AssertLoadBalancer(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 function asserts.AssertDNSName(str)
@@ -4445,8 +5699,11 @@ function M.RegisterTargetsAsync(RegisterTargetsInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".RegisterTargets",
 	}
+	for header,value in pairs(RegisterTargetsInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", RegisterTargetsInput, headers, settings, cb)
 	else
@@ -4477,8 +5734,11 @@ function M.DescribeSSLPoliciesAsync(DescribeSSLPoliciesInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DescribeSSLPolicies",
 	}
+	for header,value in pairs(DescribeSSLPoliciesInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeSSLPoliciesInput, headers, settings, cb)
 	else
@@ -4509,8 +5769,11 @@ function M.SetSecurityGroupsAsync(SetSecurityGroupsInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".SetSecurityGroups",
 	}
+	for header,value in pairs(SetSecurityGroupsInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", SetSecurityGroupsInput, headers, settings, cb)
 	else
@@ -4541,8 +5804,11 @@ function M.DeleteListenerAsync(DeleteListenerInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DeleteListener",
 	}
+	for header,value in pairs(DeleteListenerInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteListenerInput, headers, settings, cb)
 	else
@@ -4573,8 +5839,11 @@ function M.ModifyTargetGroupAsync(ModifyTargetGroupInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".ModifyTargetGroup",
 	}
+	for header,value in pairs(ModifyTargetGroupInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ModifyTargetGroupInput, headers, settings, cb)
 	else
@@ -4605,8 +5874,11 @@ function M.CreateRuleAsync(CreateRuleInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".CreateRule",
 	}
+	for header,value in pairs(CreateRuleInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateRuleInput, headers, settings, cb)
 	else
@@ -4637,8 +5909,11 @@ function M.SetRulePrioritiesAsync(SetRulePrioritiesInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".SetRulePriorities",
 	}
+	for header,value in pairs(SetRulePrioritiesInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", SetRulePrioritiesInput, headers, settings, cb)
 	else
@@ -4669,8 +5944,11 @@ function M.ModifyTargetGroupAttributesAsync(ModifyTargetGroupAttributesInput, cb
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".ModifyTargetGroupAttributes",
 	}
+	for header,value in pairs(ModifyTargetGroupAttributesInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ModifyTargetGroupAttributesInput, headers, settings, cb)
 	else
@@ -4701,8 +5979,11 @@ function M.DescribeLoadBalancerAttributesAsync(DescribeLoadBalancerAttributesInp
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DescribeLoadBalancerAttributes",
 	}
+	for header,value in pairs(DescribeLoadBalancerAttributesInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeLoadBalancerAttributesInput, headers, settings, cb)
 	else
@@ -4733,8 +6014,11 @@ function M.SetIpAddressTypeAsync(SetIpAddressTypeInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".SetIpAddressType",
 	}
+	for header,value in pairs(SetIpAddressTypeInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", SetIpAddressTypeInput, headers, settings, cb)
 	else
@@ -4765,8 +6049,11 @@ function M.ModifyListenerAsync(ModifyListenerInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".ModifyListener",
 	}
+	for header,value in pairs(ModifyListenerInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ModifyListenerInput, headers, settings, cb)
 	else
@@ -4797,8 +6084,11 @@ function M.DeleteLoadBalancerAsync(DeleteLoadBalancerInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DeleteLoadBalancer",
 	}
+	for header,value in pairs(DeleteLoadBalancerInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteLoadBalancerInput, headers, settings, cb)
 	else
@@ -4829,8 +6119,11 @@ function M.DeleteRuleAsync(DeleteRuleInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DeleteRule",
 	}
+	for header,value in pairs(DeleteRuleInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteRuleInput, headers, settings, cb)
 	else
@@ -4861,8 +6154,11 @@ function M.DeleteTargetGroupAsync(DeleteTargetGroupInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DeleteTargetGroup",
 	}
+	for header,value in pairs(DeleteTargetGroupInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteTargetGroupInput, headers, settings, cb)
 	else
@@ -4893,8 +6189,11 @@ function M.DescribeTargetGroupAttributesAsync(DescribeTargetGroupAttributesInput
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DescribeTargetGroupAttributes",
 	}
+	for header,value in pairs(DescribeTargetGroupAttributesInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeTargetGroupAttributesInput, headers, settings, cb)
 	else
@@ -4925,8 +6224,11 @@ function M.DescribeLoadBalancersAsync(DescribeLoadBalancersInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DescribeLoadBalancers",
 	}
+	for header,value in pairs(DescribeLoadBalancersInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeLoadBalancersInput, headers, settings, cb)
 	else
@@ -4957,8 +6259,11 @@ function M.DescribeListenersAsync(DescribeListenersInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DescribeListeners",
 	}
+	for header,value in pairs(DescribeListenersInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeListenersInput, headers, settings, cb)
 	else
@@ -4989,8 +6294,11 @@ function M.RemoveTagsAsync(RemoveTagsInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".RemoveTags",
 	}
+	for header,value in pairs(RemoveTagsInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", RemoveTagsInput, headers, settings, cb)
 	else
@@ -5021,8 +6329,11 @@ function M.CreateListenerAsync(CreateListenerInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".CreateListener",
 	}
+	for header,value in pairs(CreateListenerInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateListenerInput, headers, settings, cb)
 	else
@@ -5053,8 +6364,11 @@ function M.SetSubnetsAsync(SetSubnetsInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".SetSubnets",
 	}
+	for header,value in pairs(SetSubnetsInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", SetSubnetsInput, headers, settings, cb)
 	else
@@ -5085,8 +6399,11 @@ function M.DescribeTagsAsync(DescribeTagsInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DescribeTags",
 	}
+	for header,value in pairs(DescribeTagsInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeTagsInput, headers, settings, cb)
 	else
@@ -5117,8 +6434,11 @@ function M.ModifyRuleAsync(ModifyRuleInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".ModifyRule",
 	}
+	for header,value in pairs(ModifyRuleInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ModifyRuleInput, headers, settings, cb)
 	else
@@ -5149,8 +6469,11 @@ function M.CreateTargetGroupAsync(CreateTargetGroupInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".CreateTargetGroup",
 	}
+	for header,value in pairs(CreateTargetGroupInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateTargetGroupInput, headers, settings, cb)
 	else
@@ -5181,8 +6504,11 @@ function M.AddTagsAsync(AddTagsInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".AddTags",
 	}
+	for header,value in pairs(AddTagsInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", AddTagsInput, headers, settings, cb)
 	else
@@ -5213,8 +6539,11 @@ function M.DescribeTargetGroupsAsync(DescribeTargetGroupsInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DescribeTargetGroups",
 	}
+	for header,value in pairs(DescribeTargetGroupsInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeTargetGroupsInput, headers, settings, cb)
 	else
@@ -5245,8 +6574,11 @@ function M.DeregisterTargetsAsync(DeregisterTargetsInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DeregisterTargets",
 	}
+	for header,value in pairs(DeregisterTargetsInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DeregisterTargetsInput, headers, settings, cb)
 	else
@@ -5277,8 +6609,11 @@ function M.ModifyLoadBalancerAttributesAsync(ModifyLoadBalancerAttributesInput, 
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".ModifyLoadBalancerAttributes",
 	}
+	for header,value in pairs(ModifyLoadBalancerAttributesInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ModifyLoadBalancerAttributesInput, headers, settings, cb)
 	else
@@ -5309,8 +6644,11 @@ function M.DescribeRulesAsync(DescribeRulesInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DescribeRules",
 	}
+	for header,value in pairs(DescribeRulesInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeRulesInput, headers, settings, cb)
 	else
@@ -5341,8 +6679,11 @@ function M.DescribeTargetHealthAsync(DescribeTargetHealthInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DescribeTargetHealth",
 	}
+	for header,value in pairs(DescribeTargetHealthInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeTargetHealthInput, headers, settings, cb)
 	else
@@ -5373,8 +6714,11 @@ function M.CreateLoadBalancerAsync(CreateLoadBalancerInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".CreateLoadBalancer",
 	}
+	for header,value in pairs(CreateLoadBalancerInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateLoadBalancerInput, headers, settings, cb)
 	else
@@ -5405,8 +6749,11 @@ function M.DescribeAccountLimitsAsync(DescribeAccountLimitsInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DescribeAccountLimits",
 	}
+	for header,value in pairs(DescribeAccountLimitsInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeAccountLimitsInput, headers, settings, cb)
 	else

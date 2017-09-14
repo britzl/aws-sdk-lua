@@ -41,13 +41,24 @@ end
 -- * Message [ErrorMessage] 
 -- @return InvalidRequestException structure as a key-value pair table
 function M.InvalidRequestException(args)
-	assert(args, "You must provdide an argument table when creating InvalidRequestException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidRequestException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["AthenaErrorCode"] = args["AthenaErrorCode"],
 		["Message"] = args["Message"],
 	}
-	asserts.AssertInvalidRequestException(t)
-	return t
+	asserts.AssertInvalidRequestException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateNamedQueryInput = { ["ClientRequestToken"] = true, ["Database"] = true, ["QueryString"] = true, ["Name"] = true, ["Description"] = true, nil }
@@ -82,16 +93,27 @@ end
 -- Required key: QueryString
 -- @return CreateNamedQueryInput structure as a key-value pair table
 function M.CreateNamedQueryInput(args)
-	assert(args, "You must provdide an argument table when creating CreateNamedQueryInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateNamedQueryInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ClientRequestToken"] = args["ClientRequestToken"],
 		["Database"] = args["Database"],
 		["QueryString"] = args["QueryString"],
 		["Name"] = args["Name"],
 		["Description"] = args["Description"],
 	}
-	asserts.AssertCreateNamedQueryInput(t)
-	return t
+	asserts.AssertCreateNamedQueryInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListQueryExecutionsOutput = { ["NextToken"] = true, ["QueryExecutionIds"] = true, nil }
@@ -114,13 +136,24 @@ end
 -- * QueryExecutionIds [QueryExecutionIdList] <p>The unique IDs of each query execution as an array of strings.</p>
 -- @return ListQueryExecutionsOutput structure as a key-value pair table
 function M.ListQueryExecutionsOutput(args)
-	assert(args, "You must provdide an argument table when creating ListQueryExecutionsOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListQueryExecutionsOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NextToken"] = args["NextToken"],
 		["QueryExecutionIds"] = args["QueryExecutionIds"],
 	}
-	asserts.AssertListQueryExecutionsOutput(t)
-	return t
+	asserts.AssertListQueryExecutionsOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ResultSet = { ["Rows"] = true, ["ResultSetMetadata"] = true, nil }
@@ -143,13 +176,24 @@ end
 -- * ResultSetMetadata [ResultSetMetadata] <p>The metadata that describes the column structure and data types of a table of query results.</p>
 -- @return ResultSet structure as a key-value pair table
 function M.ResultSet(args)
-	assert(args, "You must provdide an argument table when creating ResultSet")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ResultSet")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Rows"] = args["Rows"],
 		["ResultSetMetadata"] = args["ResultSetMetadata"],
 	}
-	asserts.AssertResultSet(t)
-	return t
+	asserts.AssertResultSet(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InternalServerException = { ["Message"] = true, nil }
@@ -170,12 +214,23 @@ end
 -- * Message [ErrorMessage] 
 -- @return InternalServerException structure as a key-value pair table
 function M.InternalServerException(args)
-	assert(args, "You must provdide an argument table when creating InternalServerException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InternalServerException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Message"] = args["Message"],
 	}
-	asserts.AssertInternalServerException(t)
-	return t
+	asserts.AssertInternalServerException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.EncryptionConfiguration = { ["EncryptionOption"] = true, ["KmsKey"] = true, nil }
@@ -200,13 +255,24 @@ end
 -- Required key: EncryptionOption
 -- @return EncryptionConfiguration structure as a key-value pair table
 function M.EncryptionConfiguration(args)
-	assert(args, "You must provdide an argument table when creating EncryptionConfiguration")
-	local t = { 
+	assert(args, "You must provide an argument table when creating EncryptionConfiguration")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["EncryptionOption"] = args["EncryptionOption"],
 		["KmsKey"] = args["KmsKey"],
 	}
-	asserts.AssertEncryptionConfiguration(t)
-	return t
+	asserts.AssertEncryptionConfiguration(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.StartQueryExecutionInput = { ["ResultConfiguration"] = true, ["QueryExecutionContext"] = true, ["QueryString"] = true, ["ClientRequestToken"] = true, nil }
@@ -237,15 +303,26 @@ end
 -- Required key: ResultConfiguration
 -- @return StartQueryExecutionInput structure as a key-value pair table
 function M.StartQueryExecutionInput(args)
-	assert(args, "You must provdide an argument table when creating StartQueryExecutionInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating StartQueryExecutionInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ResultConfiguration"] = args["ResultConfiguration"],
 		["QueryExecutionContext"] = args["QueryExecutionContext"],
 		["QueryString"] = args["QueryString"],
 		["ClientRequestToken"] = args["ClientRequestToken"],
 	}
-	asserts.AssertStartQueryExecutionInput(t)
-	return t
+	asserts.AssertStartQueryExecutionInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetQueryExecutionOutput = { ["QueryExecution"] = true, nil }
@@ -266,12 +343,23 @@ end
 -- * QueryExecution [QueryExecution] <p>Information about the query execution.</p>
 -- @return GetQueryExecutionOutput structure as a key-value pair table
 function M.GetQueryExecutionOutput(args)
-	assert(args, "You must provdide an argument table when creating GetQueryExecutionOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetQueryExecutionOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["QueryExecution"] = args["QueryExecution"],
 	}
-	asserts.AssertGetQueryExecutionOutput(t)
-	return t
+	asserts.AssertGetQueryExecutionOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetNamedQueryInput = { ["NamedQueryId"] = true, nil }
@@ -294,12 +382,23 @@ end
 -- Required key: NamedQueryId
 -- @return GetNamedQueryInput structure as a key-value pair table
 function M.GetNamedQueryInput(args)
-	assert(args, "You must provdide an argument table when creating GetNamedQueryInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetNamedQueryInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NamedQueryId"] = args["NamedQueryId"],
 	}
-	asserts.AssertGetNamedQueryInput(t)
-	return t
+	asserts.AssertGetNamedQueryInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetNamedQueryOutput = { ["NamedQuery"] = true, nil }
@@ -320,12 +419,23 @@ end
 -- * NamedQuery [NamedQuery] <p>Information about the query.</p>
 -- @return GetNamedQueryOutput structure as a key-value pair table
 function M.GetNamedQueryOutput(args)
-	assert(args, "You must provdide an argument table when creating GetNamedQueryOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetNamedQueryOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NamedQuery"] = args["NamedQuery"],
 	}
-	asserts.AssertGetNamedQueryOutput(t)
-	return t
+	asserts.AssertGetNamedQueryOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetQueryExecutionInput = { ["QueryExecutionId"] = true, nil }
@@ -348,12 +458,23 @@ end
 -- Required key: QueryExecutionId
 -- @return GetQueryExecutionInput structure as a key-value pair table
 function M.GetQueryExecutionInput(args)
-	assert(args, "You must provdide an argument table when creating GetQueryExecutionInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetQueryExecutionInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["QueryExecutionId"] = args["QueryExecutionId"],
 	}
-	asserts.AssertGetQueryExecutionInput(t)
-	return t
+	asserts.AssertGetQueryExecutionInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.NamedQuery = { ["Database"] = true, ["QueryString"] = true, ["Name"] = true, ["NamedQueryId"] = true, ["Description"] = true, nil }
@@ -388,16 +509,27 @@ end
 -- Required key: QueryString
 -- @return NamedQuery structure as a key-value pair table
 function M.NamedQuery(args)
-	assert(args, "You must provdide an argument table when creating NamedQuery")
-	local t = { 
+	assert(args, "You must provide an argument table when creating NamedQuery")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Database"] = args["Database"],
 		["QueryString"] = args["QueryString"],
 		["Name"] = args["Name"],
 		["NamedQueryId"] = args["NamedQueryId"],
 		["Description"] = args["Description"],
 	}
-	asserts.AssertNamedQuery(t)
-	return t
+	asserts.AssertNamedQuery(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.StartQueryExecutionOutput = { ["QueryExecutionId"] = true, nil }
@@ -418,12 +550,23 @@ end
 -- * QueryExecutionId [QueryExecutionId] <p>The unique ID of the query that ran as a result of this request.</p>
 -- @return StartQueryExecutionOutput structure as a key-value pair table
 function M.StartQueryExecutionOutput(args)
-	assert(args, "You must provdide an argument table when creating StartQueryExecutionOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating StartQueryExecutionOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["QueryExecutionId"] = args["QueryExecutionId"],
 	}
-	asserts.AssertStartQueryExecutionOutput(t)
-	return t
+	asserts.AssertStartQueryExecutionOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListNamedQueriesInput = { ["NextToken"] = true, ["MaxResults"] = true, nil }
@@ -446,13 +589,24 @@ end
 -- * MaxResults [MaxNamedQueriesCount] <p>The maximum number of queries to return in this request.</p>
 -- @return ListNamedQueriesInput structure as a key-value pair table
 function M.ListNamedQueriesInput(args)
-	assert(args, "You must provdide an argument table when creating ListNamedQueriesInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListNamedQueriesInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NextToken"] = args["NextToken"],
 		["MaxResults"] = args["MaxResults"],
 	}
-	asserts.AssertListNamedQueriesInput(t)
-	return t
+	asserts.AssertListNamedQueriesInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetQueryResultsInput = { ["NextToken"] = true, ["QueryExecutionId"] = true, ["MaxResults"] = true, nil }
@@ -479,14 +633,25 @@ end
 -- Required key: QueryExecutionId
 -- @return GetQueryResultsInput structure as a key-value pair table
 function M.GetQueryResultsInput(args)
-	assert(args, "You must provdide an argument table when creating GetQueryResultsInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetQueryResultsInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NextToken"] = args["NextToken"],
 		["QueryExecutionId"] = args["QueryExecutionId"],
 		["MaxResults"] = args["MaxResults"],
 	}
-	asserts.AssertGetQueryResultsInput(t)
-	return t
+	asserts.AssertGetQueryResultsInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.QueryExecutionStatistics = { ["DataScannedInBytes"] = true, ["EngineExecutionTimeInMillis"] = true, nil }
@@ -509,13 +674,24 @@ end
 -- * EngineExecutionTimeInMillis [Long] <p>The number of milliseconds that the query took to execute.</p>
 -- @return QueryExecutionStatistics structure as a key-value pair table
 function M.QueryExecutionStatistics(args)
-	assert(args, "You must provdide an argument table when creating QueryExecutionStatistics")
-	local t = { 
+	assert(args, "You must provide an argument table when creating QueryExecutionStatistics")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DataScannedInBytes"] = args["DataScannedInBytes"],
 		["EngineExecutionTimeInMillis"] = args["EngineExecutionTimeInMillis"],
 	}
-	asserts.AssertQueryExecutionStatistics(t)
-	return t
+	asserts.AssertQueryExecutionStatistics(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteNamedQueryOutput = { nil }
@@ -534,11 +710,22 @@ end
 -- Valid keys:
 -- @return DeleteNamedQueryOutput structure as a key-value pair table
 function M.DeleteNamedQueryOutput(args)
-	assert(args, "You must provdide an argument table when creating DeleteNamedQueryOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteNamedQueryOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertDeleteNamedQueryOutput(t)
-	return t
+	asserts.AssertDeleteNamedQueryOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UnprocessedQueryExecutionId = { ["ErrorCode"] = true, ["ErrorMessage"] = true, ["QueryExecutionId"] = true, nil }
@@ -563,14 +750,25 @@ end
 -- * QueryExecutionId [QueryExecutionId] <p>The unique identifier of the query execution.</p>
 -- @return UnprocessedQueryExecutionId structure as a key-value pair table
 function M.UnprocessedQueryExecutionId(args)
-	assert(args, "You must provdide an argument table when creating UnprocessedQueryExecutionId")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UnprocessedQueryExecutionId")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ErrorCode"] = args["ErrorCode"],
 		["ErrorMessage"] = args["ErrorMessage"],
 		["QueryExecutionId"] = args["QueryExecutionId"],
 	}
-	asserts.AssertUnprocessedQueryExecutionId(t)
-	return t
+	asserts.AssertUnprocessedQueryExecutionId(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.BatchGetQueryExecutionInput = { ["QueryExecutionIds"] = true, nil }
@@ -593,12 +791,23 @@ end
 -- Required key: QueryExecutionIds
 -- @return BatchGetQueryExecutionInput structure as a key-value pair table
 function M.BatchGetQueryExecutionInput(args)
-	assert(args, "You must provdide an argument table when creating BatchGetQueryExecutionInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating BatchGetQueryExecutionInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["QueryExecutionIds"] = args["QueryExecutionIds"],
 	}
-	asserts.AssertBatchGetQueryExecutionInput(t)
-	return t
+	asserts.AssertBatchGetQueryExecutionInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.QueryExecution = { ["Status"] = true, ["Statistics"] = true, ["ResultConfiguration"] = true, ["QueryExecutionId"] = true, ["QueryExecutionContext"] = true, ["Query"] = true, nil }
@@ -629,8 +838,14 @@ end
 -- * Query [QueryString] <p>The SQL query statements which the query execution ran.</p>
 -- @return QueryExecution structure as a key-value pair table
 function M.QueryExecution(args)
-	assert(args, "You must provdide an argument table when creating QueryExecution")
-	local t = { 
+	assert(args, "You must provide an argument table when creating QueryExecution")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Status"] = args["Status"],
 		["Statistics"] = args["Statistics"],
 		["ResultConfiguration"] = args["ResultConfiguration"],
@@ -638,8 +853,13 @@ function M.QueryExecution(args)
 		["QueryExecutionContext"] = args["QueryExecutionContext"],
 		["Query"] = args["Query"],
 	}
-	asserts.AssertQueryExecution(t)
-	return t
+	asserts.AssertQueryExecution(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.QueryExecutionContext = { ["Database"] = true, nil }
@@ -660,12 +880,23 @@ end
 -- * Database [DatabaseString] <p>The name of the database.</p>
 -- @return QueryExecutionContext structure as a key-value pair table
 function M.QueryExecutionContext(args)
-	assert(args, "You must provdide an argument table when creating QueryExecutionContext")
-	local t = { 
+	assert(args, "You must provide an argument table when creating QueryExecutionContext")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Database"] = args["Database"],
 	}
-	asserts.AssertQueryExecutionContext(t)
-	return t
+	asserts.AssertQueryExecutionContext(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.TooManyRequestsException = { ["Message"] = true, ["Reason"] = true, nil }
@@ -688,13 +919,24 @@ end
 -- * Reason [ThrottleReason] 
 -- @return TooManyRequestsException structure as a key-value pair table
 function M.TooManyRequestsException(args)
-	assert(args, "You must provdide an argument table when creating TooManyRequestsException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating TooManyRequestsException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Message"] = args["Message"],
 		["Reason"] = args["Reason"],
 	}
-	asserts.AssertTooManyRequestsException(t)
-	return t
+	asserts.AssertTooManyRequestsException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetQueryResultsOutput = { ["NextToken"] = true, ["ResultSet"] = true, nil }
@@ -717,13 +959,24 @@ end
 -- * ResultSet [ResultSet] <p>The results of the query execution.</p>
 -- @return GetQueryResultsOutput structure as a key-value pair table
 function M.GetQueryResultsOutput(args)
-	assert(args, "You must provdide an argument table when creating GetQueryResultsOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetQueryResultsOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NextToken"] = args["NextToken"],
 		["ResultSet"] = args["ResultSet"],
 	}
-	asserts.AssertGetQueryResultsOutput(t)
-	return t
+	asserts.AssertGetQueryResultsOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.BatchGetQueryExecutionOutput = { ["UnprocessedQueryExecutionIds"] = true, ["QueryExecutions"] = true, nil }
@@ -746,13 +999,24 @@ end
 -- * QueryExecutions [QueryExecutionList] <p>Information about a query execution.</p>
 -- @return BatchGetQueryExecutionOutput structure as a key-value pair table
 function M.BatchGetQueryExecutionOutput(args)
-	assert(args, "You must provdide an argument table when creating BatchGetQueryExecutionOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating BatchGetQueryExecutionOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["UnprocessedQueryExecutionIds"] = args["UnprocessedQueryExecutionIds"],
 		["QueryExecutions"] = args["QueryExecutions"],
 	}
-	asserts.AssertBatchGetQueryExecutionOutput(t)
-	return t
+	asserts.AssertBatchGetQueryExecutionOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListQueryExecutionsInput = { ["NextToken"] = true, ["MaxResults"] = true, nil }
@@ -775,13 +1039,24 @@ end
 -- * MaxResults [MaxQueryExecutionsCount] <p>The maximum number of query executions to return in this request.</p>
 -- @return ListQueryExecutionsInput structure as a key-value pair table
 function M.ListQueryExecutionsInput(args)
-	assert(args, "You must provdide an argument table when creating ListQueryExecutionsInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListQueryExecutionsInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NextToken"] = args["NextToken"],
 		["MaxResults"] = args["MaxResults"],
 	}
-	asserts.AssertListQueryExecutionsInput(t)
-	return t
+	asserts.AssertListQueryExecutionsInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UnprocessedNamedQueryId = { ["ErrorCode"] = true, ["ErrorMessage"] = true, ["NamedQueryId"] = true, nil }
@@ -806,14 +1081,25 @@ end
 -- * NamedQueryId [NamedQueryId] <p>The unique identifier of the named query.</p>
 -- @return UnprocessedNamedQueryId structure as a key-value pair table
 function M.UnprocessedNamedQueryId(args)
-	assert(args, "You must provdide an argument table when creating UnprocessedNamedQueryId")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UnprocessedNamedQueryId")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ErrorCode"] = args["ErrorCode"],
 		["ErrorMessage"] = args["ErrorMessage"],
 		["NamedQueryId"] = args["NamedQueryId"],
 	}
-	asserts.AssertUnprocessedNamedQueryId(t)
-	return t
+	asserts.AssertUnprocessedNamedQueryId(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.QueryExecutionStatus = { ["SubmissionDateTime"] = true, ["State"] = true, ["CompletionDateTime"] = true, ["StateChangeReason"] = true, nil }
@@ -840,15 +1126,26 @@ end
 -- * StateChangeReason [String] <p>Further detail about the status of the query.</p>
 -- @return QueryExecutionStatus structure as a key-value pair table
 function M.QueryExecutionStatus(args)
-	assert(args, "You must provdide an argument table when creating QueryExecutionStatus")
-	local t = { 
+	assert(args, "You must provide an argument table when creating QueryExecutionStatus")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["SubmissionDateTime"] = args["SubmissionDateTime"],
 		["State"] = args["State"],
 		["CompletionDateTime"] = args["CompletionDateTime"],
 		["StateChangeReason"] = args["StateChangeReason"],
 	}
-	asserts.AssertQueryExecutionStatus(t)
-	return t
+	asserts.AssertQueryExecutionStatus(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ResultConfiguration = { ["EncryptionConfiguration"] = true, ["OutputLocation"] = true, nil }
@@ -873,13 +1170,24 @@ end
 -- Required key: OutputLocation
 -- @return ResultConfiguration structure as a key-value pair table
 function M.ResultConfiguration(args)
-	assert(args, "You must provdide an argument table when creating ResultConfiguration")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ResultConfiguration")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["EncryptionConfiguration"] = args["EncryptionConfiguration"],
 		["OutputLocation"] = args["OutputLocation"],
 	}
-	asserts.AssertResultConfiguration(t)
-	return t
+	asserts.AssertResultConfiguration(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.StopQueryExecutionOutput = { nil }
@@ -898,11 +1206,22 @@ end
 -- Valid keys:
 -- @return StopQueryExecutionOutput structure as a key-value pair table
 function M.StopQueryExecutionOutput(args)
-	assert(args, "You must provdide an argument table when creating StopQueryExecutionOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating StopQueryExecutionOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertStopQueryExecutionOutput(t)
-	return t
+	asserts.AssertStopQueryExecutionOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateNamedQueryOutput = { ["NamedQueryId"] = true, nil }
@@ -923,12 +1242,23 @@ end
 -- * NamedQueryId [NamedQueryId] <p>The unique ID of the query.</p>
 -- @return CreateNamedQueryOutput structure as a key-value pair table
 function M.CreateNamedQueryOutput(args)
-	assert(args, "You must provdide an argument table when creating CreateNamedQueryOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateNamedQueryOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NamedQueryId"] = args["NamedQueryId"],
 	}
-	asserts.AssertCreateNamedQueryOutput(t)
-	return t
+	asserts.AssertCreateNamedQueryOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Datum = { ["VarCharValue"] = true, nil }
@@ -949,12 +1279,23 @@ end
 -- * VarCharValue [datumString] <p>The value of the datum.</p>
 -- @return Datum structure as a key-value pair table
 function M.Datum(args)
-	assert(args, "You must provdide an argument table when creating Datum")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Datum")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["VarCharValue"] = args["VarCharValue"],
 	}
-	asserts.AssertDatum(t)
-	return t
+	asserts.AssertDatum(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.BatchGetNamedQueryInput = { ["NamedQueryIds"] = true, nil }
@@ -977,12 +1318,23 @@ end
 -- Required key: NamedQueryIds
 -- @return BatchGetNamedQueryInput structure as a key-value pair table
 function M.BatchGetNamedQueryInput(args)
-	assert(args, "You must provdide an argument table when creating BatchGetNamedQueryInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating BatchGetNamedQueryInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NamedQueryIds"] = args["NamedQueryIds"],
 	}
-	asserts.AssertBatchGetNamedQueryInput(t)
-	return t
+	asserts.AssertBatchGetNamedQueryInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteNamedQueryInput = { ["NamedQueryId"] = true, nil }
@@ -1005,12 +1357,23 @@ end
 -- Required key: NamedQueryId
 -- @return DeleteNamedQueryInput structure as a key-value pair table
 function M.DeleteNamedQueryInput(args)
-	assert(args, "You must provdide an argument table when creating DeleteNamedQueryInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteNamedQueryInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NamedQueryId"] = args["NamedQueryId"],
 	}
-	asserts.AssertDeleteNamedQueryInput(t)
-	return t
+	asserts.AssertDeleteNamedQueryInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListNamedQueriesOutput = { ["NamedQueryIds"] = true, ["NextToken"] = true, nil }
@@ -1033,13 +1396,24 @@ end
 -- * NextToken [Token] <p>A token to be used by the next request if this request is truncated.</p>
 -- @return ListNamedQueriesOutput structure as a key-value pair table
 function M.ListNamedQueriesOutput(args)
-	assert(args, "You must provdide an argument table when creating ListNamedQueriesOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListNamedQueriesOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NamedQueryIds"] = args["NamedQueryIds"],
 		["NextToken"] = args["NextToken"],
 	}
-	asserts.AssertListNamedQueriesOutput(t)
-	return t
+	asserts.AssertListNamedQueriesOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.BatchGetNamedQueryOutput = { ["UnprocessedNamedQueryIds"] = true, ["NamedQueries"] = true, nil }
@@ -1062,13 +1436,24 @@ end
 -- * NamedQueries [NamedQueryList] <p>Information about the named query IDs submitted.</p>
 -- @return BatchGetNamedQueryOutput structure as a key-value pair table
 function M.BatchGetNamedQueryOutput(args)
-	assert(args, "You must provdide an argument table when creating BatchGetNamedQueryOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating BatchGetNamedQueryOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["UnprocessedNamedQueryIds"] = args["UnprocessedNamedQueryIds"],
 		["NamedQueries"] = args["NamedQueries"],
 	}
-	asserts.AssertBatchGetNamedQueryOutput(t)
-	return t
+	asserts.AssertBatchGetNamedQueryOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ResultSetMetadata = { ["ColumnInfo"] = true, nil }
@@ -1089,12 +1474,23 @@ end
 -- * ColumnInfo [ColumnInfoList] <p>Information about the columns in a query execution result.</p>
 -- @return ResultSetMetadata structure as a key-value pair table
 function M.ResultSetMetadata(args)
-	assert(args, "You must provdide an argument table when creating ResultSetMetadata")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ResultSetMetadata")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ColumnInfo"] = args["ColumnInfo"],
 	}
-	asserts.AssertResultSetMetadata(t)
-	return t
+	asserts.AssertResultSetMetadata(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ColumnInfo = { ["Scale"] = true, ["Name"] = true, ["Nullable"] = true, ["TableName"] = true, ["Precision"] = true, ["Label"] = true, ["CaseSensitive"] = true, ["SchemaName"] = true, ["Type"] = true, ["CatalogName"] = true, nil }
@@ -1137,8 +1533,14 @@ end
 -- Required key: Type
 -- @return ColumnInfo structure as a key-value pair table
 function M.ColumnInfo(args)
-	assert(args, "You must provdide an argument table when creating ColumnInfo")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ColumnInfo")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Scale"] = args["Scale"],
 		["Name"] = args["Name"],
 		["Nullable"] = args["Nullable"],
@@ -1150,8 +1552,13 @@ function M.ColumnInfo(args)
 		["Type"] = args["Type"],
 		["CatalogName"] = args["CatalogName"],
 	}
-	asserts.AssertColumnInfo(t)
-	return t
+	asserts.AssertColumnInfo(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.StopQueryExecutionInput = { ["QueryExecutionId"] = true, nil }
@@ -1174,12 +1581,23 @@ end
 -- Required key: QueryExecutionId
 -- @return StopQueryExecutionInput structure as a key-value pair table
 function M.StopQueryExecutionInput(args)
-	assert(args, "You must provdide an argument table when creating StopQueryExecutionInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating StopQueryExecutionInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["QueryExecutionId"] = args["QueryExecutionId"],
 	}
-	asserts.AssertStopQueryExecutionInput(t)
-	return t
+	asserts.AssertStopQueryExecutionInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Row = { ["Data"] = true, nil }
@@ -1200,12 +1618,23 @@ end
 -- * Data [datumList] <p>The data that populates a row in a query result table.</p>
 -- @return Row structure as a key-value pair table
 function M.Row(args)
-	assert(args, "You must provdide an argument table when creating Row")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Row")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Data"] = args["Data"],
 	}
-	asserts.AssertRow(t)
-	return t
+	asserts.AssertRow(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 function asserts.AssertColumnNullable(str)
@@ -1665,8 +2094,11 @@ function M.BatchGetQueryExecutionAsync(BatchGetQueryExecutionInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AmazonAthena.BatchGetQueryExecution",
 	}
+	for header,value in pairs(BatchGetQueryExecutionInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", BatchGetQueryExecutionInput, headers, settings, cb)
 	else
@@ -1697,8 +2129,11 @@ function M.DeleteNamedQueryAsync(DeleteNamedQueryInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AmazonAthena.DeleteNamedQuery",
 	}
+	for header,value in pairs(DeleteNamedQueryInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteNamedQueryInput, headers, settings, cb)
 	else
@@ -1729,8 +2164,11 @@ function M.ListNamedQueriesAsync(ListNamedQueriesInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AmazonAthena.ListNamedQueries",
 	}
+	for header,value in pairs(ListNamedQueriesInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ListNamedQueriesInput, headers, settings, cb)
 	else
@@ -1761,8 +2199,11 @@ function M.StopQueryExecutionAsync(StopQueryExecutionInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AmazonAthena.StopQueryExecution",
 	}
+	for header,value in pairs(StopQueryExecutionInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", StopQueryExecutionInput, headers, settings, cb)
 	else
@@ -1793,8 +2234,11 @@ function M.BatchGetNamedQueryAsync(BatchGetNamedQueryInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AmazonAthena.BatchGetNamedQuery",
 	}
+	for header,value in pairs(BatchGetNamedQueryInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", BatchGetNamedQueryInput, headers, settings, cb)
 	else
@@ -1825,8 +2269,11 @@ function M.StartQueryExecutionAsync(StartQueryExecutionInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AmazonAthena.StartQueryExecution",
 	}
+	for header,value in pairs(StartQueryExecutionInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", StartQueryExecutionInput, headers, settings, cb)
 	else
@@ -1857,8 +2304,11 @@ function M.GetNamedQueryAsync(GetNamedQueryInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AmazonAthena.GetNamedQuery",
 	}
+	for header,value in pairs(GetNamedQueryInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", GetNamedQueryInput, headers, settings, cb)
 	else
@@ -1889,8 +2339,11 @@ function M.ListQueryExecutionsAsync(ListQueryExecutionsInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AmazonAthena.ListQueryExecutions",
 	}
+	for header,value in pairs(ListQueryExecutionsInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ListQueryExecutionsInput, headers, settings, cb)
 	else
@@ -1921,8 +2374,11 @@ function M.GetQueryExecutionAsync(GetQueryExecutionInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AmazonAthena.GetQueryExecution",
 	}
+	for header,value in pairs(GetQueryExecutionInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", GetQueryExecutionInput, headers, settings, cb)
 	else
@@ -1953,8 +2409,11 @@ function M.GetQueryResultsAsync(GetQueryResultsInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AmazonAthena.GetQueryResults",
 	}
+	for header,value in pairs(GetQueryResultsInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", GetQueryResultsInput, headers, settings, cb)
 	else
@@ -1985,8 +2444,11 @@ function M.CreateNamedQueryAsync(CreateNamedQueryInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AmazonAthena.CreateNamedQuery",
 	}
+	for header,value in pairs(CreateNamedQueryInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateNamedQueryInput, headers, settings, cb)
 	else

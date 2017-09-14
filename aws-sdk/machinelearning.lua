@@ -39,12 +39,23 @@ end
 -- * DataSourceId [EntityId] <p>A user-supplied ID that uniquely identifies the datasource. This value should be identical to the value of the <code>DataSourceID</code> in the request. </p>
 -- @return CreateDataSourceFromRedshiftOutput structure as a key-value pair table
 function M.CreateDataSourceFromRedshiftOutput(args)
-	assert(args, "You must provdide an argument table when creating CreateDataSourceFromRedshiftOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateDataSourceFromRedshiftOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DataSourceId"] = args["DataSourceId"],
 	}
-	asserts.AssertCreateDataSourceFromRedshiftOutput(t)
-	return t
+	asserts.AssertCreateDataSourceFromRedshiftOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InternalServerException = { ["message"] = true, ["code"] = true, nil }
@@ -67,13 +78,24 @@ end
 -- * code [ErrorCode] 
 -- @return InternalServerException structure as a key-value pair table
 function M.InternalServerException(args)
-	assert(args, "You must provdide an argument table when creating InternalServerException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InternalServerException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 		["code"] = args["code"],
 	}
-	asserts.AssertInternalServerException(t)
-	return t
+	asserts.AssertInternalServerException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteTagsInput = { ["ResourceType"] = true, ["ResourceId"] = true, ["TagKeys"] = true, nil }
@@ -104,14 +126,25 @@ end
 -- Required key: ResourceType
 -- @return DeleteTagsInput structure as a key-value pair table
 function M.DeleteTagsInput(args)
-	assert(args, "You must provdide an argument table when creating DeleteTagsInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteTagsInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ResourceType"] = args["ResourceType"],
 		["ResourceId"] = args["ResourceId"],
 		["TagKeys"] = args["TagKeys"],
 	}
-	asserts.AssertDeleteTagsInput(t)
-	return t
+	asserts.AssertDeleteTagsInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeBatchPredictionsInput = { ["GT"] = true, ["FilterVariable"] = true, ["GE"] = true, ["NE"] = true, ["LT"] = true, ["LE"] = true, ["Limit"] = true, ["SortOrder"] = true, ["NextToken"] = true, ["EQ"] = true, ["Prefix"] = true, nil }
@@ -152,8 +185,14 @@ end
 -- * Prefix [ComparatorValue] <p>A string that is found at the beginning of a variable, such as <code>Name</code> or <code>Id</code>.</p> <p>For example, a <code>Batch Prediction</code> operation could have the <code>Name</code> <code>2014-09-09-HolidayGiftMailer</code>. To search for this <code>BatchPrediction</code>, select <code>Name</code> for the <code>FilterVariable</code> and any of the following strings for the <code>Prefix</code>: </p> <ul> <li><p>2014-09</p></li> <li><p>2014-09-09</p></li> <li><p>2014-09-09-Holiday</p></li> </ul>
 -- @return DescribeBatchPredictionsInput structure as a key-value pair table
 function M.DescribeBatchPredictionsInput(args)
-	assert(args, "You must provdide an argument table when creating DescribeBatchPredictionsInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeBatchPredictionsInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["GT"] = args["GT"],
 		["FilterVariable"] = args["FilterVariable"],
 		["GE"] = args["GE"],
@@ -166,8 +205,13 @@ function M.DescribeBatchPredictionsInput(args)
 		["EQ"] = args["EQ"],
 		["Prefix"] = args["Prefix"],
 	}
-	asserts.AssertDescribeBatchPredictionsInput(t)
-	return t
+	asserts.AssertDescribeBatchPredictionsInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateBatchPredictionOutput = { ["BatchPredictionId"] = true, nil }
@@ -188,12 +232,23 @@ end
 -- * BatchPredictionId [EntityId] <p>A user-supplied ID that uniquely identifies the <code>BatchPrediction</code>. This value is identical to the value of the <code>BatchPredictionId</code> in the request.</p>
 -- @return CreateBatchPredictionOutput structure as a key-value pair table
 function M.CreateBatchPredictionOutput(args)
-	assert(args, "You must provdide an argument table when creating CreateBatchPredictionOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateBatchPredictionOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["BatchPredictionId"] = args["BatchPredictionId"],
 	}
-	asserts.AssertCreateBatchPredictionOutput(t)
-	return t
+	asserts.AssertCreateBatchPredictionOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AddTagsOutput = { ["ResourceType"] = true, ["ResourceId"] = true, nil }
@@ -216,13 +271,24 @@ end
 -- * ResourceId [EntityId] <p>The ID of the ML object that was tagged.</p>
 -- @return AddTagsOutput structure as a key-value pair table
 function M.AddTagsOutput(args)
-	assert(args, "You must provdide an argument table when creating AddTagsOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AddTagsOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ResourceType"] = args["ResourceType"],
 		["ResourceId"] = args["ResourceId"],
 	}
-	asserts.AssertAddTagsOutput(t)
-	return t
+	asserts.AssertAddTagsOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.MLModel = { ["Status"] = true, ["SizeInBytes"] = true, ["ComputeTime"] = true, ["Name"] = true, ["Algorithm"] = true, ["ScoreThreshold"] = true, ["TrainingParameters"] = true, ["MLModelType"] = true, ["CreatedByIamUser"] = true, ["ScoreThresholdLastUpdatedAt"] = true, ["EndpointInfo"] = true, ["MLModelId"] = true, ["InputDataLocationS3"] = true, ["LastUpdatedAt"] = true, ["TrainingDataSourceId"] = true, ["StartedAt"] = true, ["Message"] = true, ["CreatedAt"] = true, ["FinishedAt"] = true, nil }
@@ -279,8 +345,14 @@ end
 -- * FinishedAt [EpochTime] 
 -- @return MLModel structure as a key-value pair table
 function M.MLModel(args)
-	assert(args, "You must provdide an argument table when creating MLModel")
-	local t = { 
+	assert(args, "You must provide an argument table when creating MLModel")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Status"] = args["Status"],
 		["SizeInBytes"] = args["SizeInBytes"],
 		["ComputeTime"] = args["ComputeTime"],
@@ -301,8 +373,13 @@ function M.MLModel(args)
 		["CreatedAt"] = args["CreatedAt"],
 		["FinishedAt"] = args["FinishedAt"],
 	}
-	asserts.AssertMLModel(t)
-	return t
+	asserts.AssertMLModel(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidTagException = { ["message"] = true, nil }
@@ -323,12 +400,23 @@ end
 -- * message [ErrorMessage] 
 -- @return InvalidTagException structure as a key-value pair table
 function M.InvalidTagException(args)
-	assert(args, "You must provdide an argument table when creating InvalidTagException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidTagException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertInvalidTagException(t)
-	return t
+	asserts.AssertInvalidTagException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdateBatchPredictionInput = { ["BatchPredictionId"] = true, ["BatchPredictionName"] = true, nil }
@@ -355,13 +443,24 @@ end
 -- Required key: BatchPredictionName
 -- @return UpdateBatchPredictionInput structure as a key-value pair table
 function M.UpdateBatchPredictionInput(args)
-	assert(args, "You must provdide an argument table when creating UpdateBatchPredictionInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateBatchPredictionInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["BatchPredictionId"] = args["BatchPredictionId"],
 		["BatchPredictionName"] = args["BatchPredictionName"],
 	}
-	asserts.AssertUpdateBatchPredictionInput(t)
-	return t
+	asserts.AssertUpdateBatchPredictionInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.RedshiftMetadata = { ["RedshiftDatabase"] = true, ["DatabaseUserName"] = true, ["SelectSqlQuery"] = true, nil }
@@ -386,14 +485,25 @@ end
 -- * SelectSqlQuery [RedshiftSelectSqlQuery] <p> The SQL query that is specified during <a>CreateDataSourceFromRedshift</a>. Returns only if <code>Verbose</code> is true in GetDataSourceInput. </p>
 -- @return RedshiftMetadata structure as a key-value pair table
 function M.RedshiftMetadata(args)
-	assert(args, "You must provdide an argument table when creating RedshiftMetadata")
-	local t = { 
+	assert(args, "You must provide an argument table when creating RedshiftMetadata")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["RedshiftDatabase"] = args["RedshiftDatabase"],
 		["DatabaseUserName"] = args["DatabaseUserName"],
 		["SelectSqlQuery"] = args["SelectSqlQuery"],
 	}
-	asserts.AssertRedshiftMetadata(t)
-	return t
+	asserts.AssertRedshiftMetadata(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdateBatchPredictionOutput = { ["BatchPredictionId"] = true, nil }
@@ -414,12 +524,23 @@ end
 -- * BatchPredictionId [EntityId] <p>The ID assigned to the <code>BatchPrediction</code> during creation. This value should be identical to the value of the <code>BatchPredictionId</code> in the request.</p>
 -- @return UpdateBatchPredictionOutput structure as a key-value pair table
 function M.UpdateBatchPredictionOutput(args)
-	assert(args, "You must provdide an argument table when creating UpdateBatchPredictionOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateBatchPredictionOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["BatchPredictionId"] = args["BatchPredictionId"],
 	}
-	asserts.AssertUpdateBatchPredictionOutput(t)
-	return t
+	asserts.AssertUpdateBatchPredictionOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdateMLModelOutput = { ["MLModelId"] = true, nil }
@@ -440,12 +561,23 @@ end
 -- * MLModelId [EntityId] <p>The ID assigned to the <code>MLModel</code> during creation. This value should be identical to the value of the <code>MLModelID</code> in the request.</p>
 -- @return UpdateMLModelOutput structure as a key-value pair table
 function M.UpdateMLModelOutput(args)
-	assert(args, "You must provdide an argument table when creating UpdateMLModelOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateMLModelOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["MLModelId"] = args["MLModelId"],
 	}
-	asserts.AssertUpdateMLModelOutput(t)
-	return t
+	asserts.AssertUpdateMLModelOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetMLModelOutput = { ["Status"] = true, ["SizeInBytes"] = true, ["ComputeTime"] = true, ["Name"] = true, ["ScoreThreshold"] = true, ["TrainingParameters"] = true, ["MLModelType"] = true, ["CreatedByIamUser"] = true, ["Recipe"] = true, ["ScoreThresholdLastUpdatedAt"] = true, ["EndpointInfo"] = true, ["MLModelId"] = true, ["InputDataLocationS3"] = true, ["LastUpdatedAt"] = true, ["TrainingDataSourceId"] = true, ["StartedAt"] = true, ["LogUri"] = true, ["Schema"] = true, ["Message"] = true, ["CreatedAt"] = true, ["FinishedAt"] = true, nil }
@@ -506,8 +638,14 @@ end
 -- * FinishedAt [EpochTime] <p>The epoch time when Amazon Machine Learning marked the <code>MLModel</code> as <code>COMPLETED</code> or <code>FAILED</code>. <code>FinishedAt</code> is only available when the <code>MLModel</code> is in the <code>COMPLETED</code> or <code>FAILED</code> state.</p>
 -- @return GetMLModelOutput structure as a key-value pair table
 function M.GetMLModelOutput(args)
-	assert(args, "You must provdide an argument table when creating GetMLModelOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetMLModelOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Status"] = args["Status"],
 		["SizeInBytes"] = args["SizeInBytes"],
 		["ComputeTime"] = args["ComputeTime"],
@@ -530,8 +668,13 @@ function M.GetMLModelOutput(args)
 		["CreatedAt"] = args["CreatedAt"],
 		["FinishedAt"] = args["FinishedAt"],
 	}
-	asserts.AssertGetMLModelOutput(t)
-	return t
+	asserts.AssertGetMLModelOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeTagsInput = { ["ResourceType"] = true, ["ResourceId"] = true, nil }
@@ -558,13 +701,24 @@ end
 -- Required key: ResourceType
 -- @return DescribeTagsInput structure as a key-value pair table
 function M.DescribeTagsInput(args)
-	assert(args, "You must provdide an argument table when creating DescribeTagsInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeTagsInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ResourceType"] = args["ResourceType"],
 		["ResourceId"] = args["ResourceId"],
 	}
-	asserts.AssertDescribeTagsInput(t)
-	return t
+	asserts.AssertDescribeTagsInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.RedshiftDataSpec = { ["DatabaseCredentials"] = true, ["DataSchemaUri"] = true, ["DatabaseInformation"] = true, ["DataSchema"] = true, ["DataRearrangement"] = true, ["S3StagingLocation"] = true, ["SelectSqlQuery"] = true, nil }
@@ -605,8 +759,14 @@ end
 -- Required key: S3StagingLocation
 -- @return RedshiftDataSpec structure as a key-value pair table
 function M.RedshiftDataSpec(args)
-	assert(args, "You must provdide an argument table when creating RedshiftDataSpec")
-	local t = { 
+	assert(args, "You must provide an argument table when creating RedshiftDataSpec")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DatabaseCredentials"] = args["DatabaseCredentials"],
 		["DataSchemaUri"] = args["DataSchemaUri"],
 		["DatabaseInformation"] = args["DatabaseInformation"],
@@ -615,8 +775,13 @@ function M.RedshiftDataSpec(args)
 		["S3StagingLocation"] = args["S3StagingLocation"],
 		["SelectSqlQuery"] = args["SelectSqlQuery"],
 	}
-	asserts.AssertRedshiftDataSpec(t)
-	return t
+	asserts.AssertRedshiftDataSpec(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.IdempotentParameterMismatchException = { ["message"] = true, ["code"] = true, nil }
@@ -639,13 +804,24 @@ end
 -- * code [ErrorCode] 
 -- @return IdempotentParameterMismatchException structure as a key-value pair table
 function M.IdempotentParameterMismatchException(args)
-	assert(args, "You must provdide an argument table when creating IdempotentParameterMismatchException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating IdempotentParameterMismatchException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 		["code"] = args["code"],
 	}
-	asserts.AssertIdempotentParameterMismatchException(t)
-	return t
+	asserts.AssertIdempotentParameterMismatchException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetBatchPredictionInput = { ["BatchPredictionId"] = true, nil }
@@ -668,12 +844,23 @@ end
 -- Required key: BatchPredictionId
 -- @return GetBatchPredictionInput structure as a key-value pair table
 function M.GetBatchPredictionInput(args)
-	assert(args, "You must provdide an argument table when creating GetBatchPredictionInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetBatchPredictionInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["BatchPredictionId"] = args["BatchPredictionId"],
 	}
-	asserts.AssertGetBatchPredictionInput(t)
-	return t
+	asserts.AssertGetBatchPredictionInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.RedshiftDatabaseCredentials = { ["Username"] = true, ["Password"] = true, nil }
@@ -700,13 +887,24 @@ end
 -- Required key: Password
 -- @return RedshiftDatabaseCredentials structure as a key-value pair table
 function M.RedshiftDatabaseCredentials(args)
-	assert(args, "You must provdide an argument table when creating RedshiftDatabaseCredentials")
-	local t = { 
+	assert(args, "You must provide an argument table when creating RedshiftDatabaseCredentials")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Username"] = args["Username"],
 		["Password"] = args["Password"],
 	}
-	asserts.AssertRedshiftDatabaseCredentials(t)
-	return t
+	asserts.AssertRedshiftDatabaseCredentials(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteBatchPredictionInput = { ["BatchPredictionId"] = true, nil }
@@ -729,12 +927,23 @@ end
 -- Required key: BatchPredictionId
 -- @return DeleteBatchPredictionInput structure as a key-value pair table
 function M.DeleteBatchPredictionInput(args)
-	assert(args, "You must provdide an argument table when creating DeleteBatchPredictionInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteBatchPredictionInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["BatchPredictionId"] = args["BatchPredictionId"],
 	}
-	asserts.AssertDeleteBatchPredictionInput(t)
-	return t
+	asserts.AssertDeleteBatchPredictionInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeEvaluationsOutput = { ["NextToken"] = true, ["Results"] = true, nil }
@@ -757,13 +966,24 @@ end
 -- * Results [Evaluations] <p>A list of <code>Evaluation</code> that meet the search criteria. </p>
 -- @return DescribeEvaluationsOutput structure as a key-value pair table
 function M.DescribeEvaluationsOutput(args)
-	assert(args, "You must provdide an argument table when creating DescribeEvaluationsOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeEvaluationsOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NextToken"] = args["NextToken"],
 		["Results"] = args["Results"],
 	}
-	asserts.AssertDescribeEvaluationsOutput(t)
-	return t
+	asserts.AssertDescribeEvaluationsOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdateEvaluationInput = { ["EvaluationId"] = true, ["EvaluationName"] = true, nil }
@@ -790,13 +1010,24 @@ end
 -- Required key: EvaluationName
 -- @return UpdateEvaluationInput structure as a key-value pair table
 function M.UpdateEvaluationInput(args)
-	assert(args, "You must provdide an argument table when creating UpdateEvaluationInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateEvaluationInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["EvaluationId"] = args["EvaluationId"],
 		["EvaluationName"] = args["EvaluationName"],
 	}
-	asserts.AssertUpdateEvaluationInput(t)
-	return t
+	asserts.AssertUpdateEvaluationInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.PerformanceMetrics = { ["Properties"] = true, nil }
@@ -817,12 +1048,23 @@ end
 -- * Properties [PerformanceMetricsProperties] 
 -- @return PerformanceMetrics structure as a key-value pair table
 function M.PerformanceMetrics(args)
-	assert(args, "You must provdide an argument table when creating PerformanceMetrics")
-	local t = { 
+	assert(args, "You must provide an argument table when creating PerformanceMetrics")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Properties"] = args["Properties"],
 	}
-	asserts.AssertPerformanceMetrics(t)
-	return t
+	asserts.AssertPerformanceMetrics(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidInputException = { ["message"] = true, ["code"] = true, nil }
@@ -845,13 +1087,24 @@ end
 -- * code [ErrorCode] 
 -- @return InvalidInputException structure as a key-value pair table
 function M.InvalidInputException(args)
-	assert(args, "You must provdide an argument table when creating InvalidInputException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidInputException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 		["code"] = args["code"],
 	}
-	asserts.AssertInvalidInputException(t)
-	return t
+	asserts.AssertInvalidInputException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.LimitExceededException = { ["message"] = true, ["code"] = true, nil }
@@ -874,13 +1127,24 @@ end
 -- * code [ErrorCode] 
 -- @return LimitExceededException structure as a key-value pair table
 function M.LimitExceededException(args)
-	assert(args, "You must provdide an argument table when creating LimitExceededException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating LimitExceededException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 		["code"] = args["code"],
 	}
-	asserts.AssertLimitExceededException(t)
-	return t
+	asserts.AssertLimitExceededException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeDataSourcesOutput = { ["NextToken"] = true, ["Results"] = true, nil }
@@ -903,13 +1167,24 @@ end
 -- * Results [DataSources] <p>A list of <code>DataSource</code> that meet the search criteria. </p>
 -- @return DescribeDataSourcesOutput structure as a key-value pair table
 function M.DescribeDataSourcesOutput(args)
-	assert(args, "You must provdide an argument table when creating DescribeDataSourcesOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeDataSourcesOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NextToken"] = args["NextToken"],
 		["Results"] = args["Results"],
 	}
-	asserts.AssertDescribeDataSourcesOutput(t)
-	return t
+	asserts.AssertDescribeDataSourcesOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeEvaluationsInput = { ["GT"] = true, ["FilterVariable"] = true, ["GE"] = true, ["NE"] = true, ["LT"] = true, ["LE"] = true, ["Limit"] = true, ["SortOrder"] = true, ["NextToken"] = true, ["EQ"] = true, ["Prefix"] = true, nil }
@@ -950,8 +1225,14 @@ end
 -- * Prefix [ComparatorValue] <p>A string that is found at the beginning of a variable, such as <code>Name</code> or <code>Id</code>.</p> <p>For example, an <code>Evaluation</code> could have the <code>Name</code> <code>2014-09-09-HolidayGiftMailer</code>. To search for this <code>Evaluation</code>, select <code>Name</code> for the <code>FilterVariable</code> and any of the following strings for the <code>Prefix</code>: </p> <ul> <li><p>2014-09</p></li> <li><p>2014-09-09</p></li> <li><p>2014-09-09-Holiday</p></li> </ul>
 -- @return DescribeEvaluationsInput structure as a key-value pair table
 function M.DescribeEvaluationsInput(args)
-	assert(args, "You must provdide an argument table when creating DescribeEvaluationsInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeEvaluationsInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["GT"] = args["GT"],
 		["FilterVariable"] = args["FilterVariable"],
 		["GE"] = args["GE"],
@@ -964,8 +1245,13 @@ function M.DescribeEvaluationsInput(args)
 		["EQ"] = args["EQ"],
 		["Prefix"] = args["Prefix"],
 	}
-	asserts.AssertDescribeEvaluationsInput(t)
-	return t
+	asserts.AssertDescribeEvaluationsInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateEvaluationInput = { ["MLModelId"] = true, ["EvaluationId"] = true, ["EvaluationName"] = true, ["EvaluationDataSourceId"] = true, nil }
@@ -998,15 +1284,26 @@ end
 -- Required key: EvaluationDataSourceId
 -- @return CreateEvaluationInput structure as a key-value pair table
 function M.CreateEvaluationInput(args)
-	assert(args, "You must provdide an argument table when creating CreateEvaluationInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateEvaluationInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["MLModelId"] = args["MLModelId"],
 		["EvaluationId"] = args["EvaluationId"],
 		["EvaluationName"] = args["EvaluationName"],
 		["EvaluationDataSourceId"] = args["EvaluationDataSourceId"],
 	}
-	asserts.AssertCreateEvaluationInput(t)
-	return t
+	asserts.AssertCreateEvaluationInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateMLModelOutput = { ["MLModelId"] = true, nil }
@@ -1027,12 +1324,23 @@ end
 -- * MLModelId [EntityId] <p>A user-supplied ID that uniquely identifies the <code>MLModel</code>. This value should be identical to the value of the <code>MLModelId</code> in the request. </p>
 -- @return CreateMLModelOutput structure as a key-value pair table
 function M.CreateMLModelOutput(args)
-	assert(args, "You must provdide an argument table when creating CreateMLModelOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateMLModelOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["MLModelId"] = args["MLModelId"],
 	}
-	asserts.AssertCreateMLModelOutput(t)
-	return t
+	asserts.AssertCreateMLModelOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateDataSourceFromS3Input = { ["DataSourceName"] = true, ["ComputeStatistics"] = true, ["DataSourceId"] = true, ["DataSpec"] = true, nil }
@@ -1063,15 +1371,26 @@ end
 -- Required key: DataSpec
 -- @return CreateDataSourceFromS3Input structure as a key-value pair table
 function M.CreateDataSourceFromS3Input(args)
-	assert(args, "You must provdide an argument table when creating CreateDataSourceFromS3Input")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateDataSourceFromS3Input")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DataSourceName"] = args["DataSourceName"],
 		["ComputeStatistics"] = args["ComputeStatistics"],
 		["DataSourceId"] = args["DataSourceId"],
 		["DataSpec"] = args["DataSpec"],
 	}
-	asserts.AssertCreateDataSourceFromS3Input(t)
-	return t
+	asserts.AssertCreateDataSourceFromS3Input(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteRealtimeEndpointInput = { ["MLModelId"] = true, nil }
@@ -1094,12 +1413,23 @@ end
 -- Required key: MLModelId
 -- @return DeleteRealtimeEndpointInput structure as a key-value pair table
 function M.DeleteRealtimeEndpointInput(args)
-	assert(args, "You must provdide an argument table when creating DeleteRealtimeEndpointInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteRealtimeEndpointInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["MLModelId"] = args["MLModelId"],
 	}
-	asserts.AssertDeleteRealtimeEndpointInput(t)
-	return t
+	asserts.AssertDeleteRealtimeEndpointInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetDataSourceOutput = { ["Status"] = true, ["ComputeTime"] = true, ["NumberOfFiles"] = true, ["Name"] = true, ["DataSourceSchema"] = true, ["DataLocationS3"] = true, ["RoleARN"] = true, ["CreatedByIamUser"] = true, ["DataSizeInBytes"] = true, ["RDSMetadata"] = true, ["ComputeStatistics"] = true, ["LastUpdatedAt"] = true, ["DataSourceId"] = true, ["RedshiftMetadata"] = true, ["StartedAt"] = true, ["LogUri"] = true, ["DataRearrangement"] = true, ["Message"] = true, ["CreatedAt"] = true, ["FinishedAt"] = true, nil }
@@ -1158,8 +1488,14 @@ end
 -- * FinishedAt [EpochTime] <p>The epoch time when Amazon Machine Learning marked the <code>DataSource</code> as <code>COMPLETED</code> or <code>FAILED</code>. <code>FinishedAt</code> is only available when the <code>DataSource</code> is in the <code>COMPLETED</code> or <code>FAILED</code> state.</p>
 -- @return GetDataSourceOutput structure as a key-value pair table
 function M.GetDataSourceOutput(args)
-	assert(args, "You must provdide an argument table when creating GetDataSourceOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetDataSourceOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Status"] = args["Status"],
 		["ComputeTime"] = args["ComputeTime"],
 		["NumberOfFiles"] = args["NumberOfFiles"],
@@ -1181,8 +1517,13 @@ function M.GetDataSourceOutput(args)
 		["CreatedAt"] = args["CreatedAt"],
 		["FinishedAt"] = args["FinishedAt"],
 	}
-	asserts.AssertGetDataSourceOutput(t)
-	return t
+	asserts.AssertGetDataSourceOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdateDataSourceOutput = { ["DataSourceId"] = true, nil }
@@ -1203,12 +1544,23 @@ end
 -- * DataSourceId [EntityId] <p>The ID assigned to the <code>DataSource</code> during creation. This value should be identical to the value of the <code>DataSourceID</code> in the request.</p>
 -- @return UpdateDataSourceOutput structure as a key-value pair table
 function M.UpdateDataSourceOutput(args)
-	assert(args, "You must provdide an argument table when creating UpdateDataSourceOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateDataSourceOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DataSourceId"] = args["DataSourceId"],
 	}
-	asserts.AssertUpdateDataSourceOutput(t)
-	return t
+	asserts.AssertUpdateDataSourceOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteEvaluationOutput = { ["EvaluationId"] = true, nil }
@@ -1229,12 +1581,23 @@ end
 -- * EvaluationId [EntityId] <p>A user-supplied ID that uniquely identifies the <code>Evaluation</code>. This value should be identical to the value of the <code>EvaluationId</code> in the request.</p>
 -- @return DeleteEvaluationOutput structure as a key-value pair table
 function M.DeleteEvaluationOutput(args)
-	assert(args, "You must provdide an argument table when creating DeleteEvaluationOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteEvaluationOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["EvaluationId"] = args["EvaluationId"],
 	}
-	asserts.AssertDeleteEvaluationOutput(t)
-	return t
+	asserts.AssertDeleteEvaluationOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.S3DataSpec = { ["DataLocationS3"] = true, ["DataSchemaLocationS3"] = true, ["DataSchema"] = true, ["DataRearrangement"] = true, nil }
@@ -1263,15 +1626,26 @@ end
 -- Required key: DataLocationS3
 -- @return S3DataSpec structure as a key-value pair table
 function M.S3DataSpec(args)
-	assert(args, "You must provdide an argument table when creating S3DataSpec")
-	local t = { 
+	assert(args, "You must provide an argument table when creating S3DataSpec")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DataLocationS3"] = args["DataLocationS3"],
 		["DataSchemaLocationS3"] = args["DataSchemaLocationS3"],
 		["DataSchema"] = args["DataSchema"],
 		["DataRearrangement"] = args["DataRearrangement"],
 	}
-	asserts.AssertS3DataSpec(t)
-	return t
+	asserts.AssertS3DataSpec(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteMLModelOutput = { ["MLModelId"] = true, nil }
@@ -1292,12 +1666,23 @@ end
 -- * MLModelId [EntityId] <p>A user-supplied ID that uniquely identifies the <code>MLModel</code>. This value should be identical to the value of the <code>MLModelID</code> in the request.</p>
 -- @return DeleteMLModelOutput structure as a key-value pair table
 function M.DeleteMLModelOutput(args)
-	assert(args, "You must provdide an argument table when creating DeleteMLModelOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteMLModelOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["MLModelId"] = args["MLModelId"],
 	}
-	asserts.AssertDeleteMLModelOutput(t)
-	return t
+	asserts.AssertDeleteMLModelOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.RedshiftDatabase = { ["ClusterIdentifier"] = true, ["DatabaseName"] = true, nil }
@@ -1324,13 +1709,24 @@ end
 -- Required key: ClusterIdentifier
 -- @return RedshiftDatabase structure as a key-value pair table
 function M.RedshiftDatabase(args)
-	assert(args, "You must provdide an argument table when creating RedshiftDatabase")
-	local t = { 
+	assert(args, "You must provide an argument table when creating RedshiftDatabase")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ClusterIdentifier"] = args["ClusterIdentifier"],
 		["DatabaseName"] = args["DatabaseName"],
 	}
-	asserts.AssertRedshiftDatabase(t)
-	return t
+	asserts.AssertRedshiftDatabase(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateBatchPredictionInput = { ["MLModelId"] = true, ["BatchPredictionId"] = true, ["BatchPredictionDataSourceId"] = true, ["OutputUri"] = true, ["BatchPredictionName"] = true, nil }
@@ -1367,16 +1763,27 @@ end
 -- Required key: OutputUri
 -- @return CreateBatchPredictionInput structure as a key-value pair table
 function M.CreateBatchPredictionInput(args)
-	assert(args, "You must provdide an argument table when creating CreateBatchPredictionInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateBatchPredictionInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["MLModelId"] = args["MLModelId"],
 		["BatchPredictionId"] = args["BatchPredictionId"],
 		["BatchPredictionDataSourceId"] = args["BatchPredictionDataSourceId"],
 		["OutputUri"] = args["OutputUri"],
 		["BatchPredictionName"] = args["BatchPredictionName"],
 	}
-	asserts.AssertCreateBatchPredictionInput(t)
-	return t
+	asserts.AssertCreateBatchPredictionInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeBatchPredictionsOutput = { ["NextToken"] = true, ["Results"] = true, nil }
@@ -1399,13 +1806,24 @@ end
 -- * Results [BatchPredictions] <p>A list of <code>BatchPrediction</code> objects that meet the search criteria. </p>
 -- @return DescribeBatchPredictionsOutput structure as a key-value pair table
 function M.DescribeBatchPredictionsOutput(args)
-	assert(args, "You must provdide an argument table when creating DescribeBatchPredictionsOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeBatchPredictionsOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NextToken"] = args["NextToken"],
 		["Results"] = args["Results"],
 	}
-	asserts.AssertDescribeBatchPredictionsOutput(t)
-	return t
+	asserts.AssertDescribeBatchPredictionsOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.RealtimeEndpointInfo = { ["EndpointStatus"] = true, ["PeakRequestsPerSecond"] = true, ["CreatedAt"] = true, ["EndpointUrl"] = true, nil }
@@ -1432,15 +1850,26 @@ end
 -- * EndpointUrl [VipURL] <p>The URI that specifies where to send real-time prediction requests for the <code>MLModel</code>.</p> <note><title>Note</title> <p>The application must wait until the real-time endpoint is ready before using this URI.</p> </note>
 -- @return RealtimeEndpointInfo structure as a key-value pair table
 function M.RealtimeEndpointInfo(args)
-	assert(args, "You must provdide an argument table when creating RealtimeEndpointInfo")
-	local t = { 
+	assert(args, "You must provide an argument table when creating RealtimeEndpointInfo")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["EndpointStatus"] = args["EndpointStatus"],
 		["PeakRequestsPerSecond"] = args["PeakRequestsPerSecond"],
 		["CreatedAt"] = args["CreatedAt"],
 		["EndpointUrl"] = args["EndpointUrl"],
 	}
-	asserts.AssertRealtimeEndpointInfo(t)
-	return t
+	asserts.AssertRealtimeEndpointInfo(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeMLModelsOutput = { ["NextToken"] = true, ["Results"] = true, nil }
@@ -1463,13 +1892,24 @@ end
 -- * Results [MLModels] <p>A list of <code>MLModel</code> that meet the search criteria.</p>
 -- @return DescribeMLModelsOutput structure as a key-value pair table
 function M.DescribeMLModelsOutput(args)
-	assert(args, "You must provdide an argument table when creating DescribeMLModelsOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeMLModelsOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NextToken"] = args["NextToken"],
 		["Results"] = args["Results"],
 	}
-	asserts.AssertDescribeMLModelsOutput(t)
-	return t
+	asserts.AssertDescribeMLModelsOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DataSource = { ["Status"] = true, ["ComputeTime"] = true, ["NumberOfFiles"] = true, ["Name"] = true, ["DataLocationS3"] = true, ["RoleARN"] = true, ["CreatedByIamUser"] = true, ["DataSizeInBytes"] = true, ["RDSMetadata"] = true, ["ComputeStatistics"] = true, ["LastUpdatedAt"] = true, ["DataSourceId"] = true, ["RedshiftMetadata"] = true, ["StartedAt"] = true, ["Message"] = true, ["DataRearrangement"] = true, ["CreatedAt"] = true, ["FinishedAt"] = true, nil }
@@ -1524,8 +1964,14 @@ end
 -- * FinishedAt [EpochTime] 
 -- @return DataSource structure as a key-value pair table
 function M.DataSource(args)
-	assert(args, "You must provdide an argument table when creating DataSource")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DataSource")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Status"] = args["Status"],
 		["ComputeTime"] = args["ComputeTime"],
 		["NumberOfFiles"] = args["NumberOfFiles"],
@@ -1545,8 +1991,13 @@ function M.DataSource(args)
 		["CreatedAt"] = args["CreatedAt"],
 		["FinishedAt"] = args["FinishedAt"],
 	}
-	asserts.AssertDataSource(t)
-	return t
+	asserts.AssertDataSource(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateRealtimeEndpointInput = { ["MLModelId"] = true, nil }
@@ -1569,12 +2020,23 @@ end
 -- Required key: MLModelId
 -- @return CreateRealtimeEndpointInput structure as a key-value pair table
 function M.CreateRealtimeEndpointInput(args)
-	assert(args, "You must provdide an argument table when creating CreateRealtimeEndpointInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateRealtimeEndpointInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["MLModelId"] = args["MLModelId"],
 	}
-	asserts.AssertCreateRealtimeEndpointInput(t)
-	return t
+	asserts.AssertCreateRealtimeEndpointInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.RDSDataSpec = { ["DatabaseCredentials"] = true, ["DataSchemaUri"] = true, ["ServiceRole"] = true, ["ResourceRole"] = true, ["DatabaseInformation"] = true, ["SecurityGroupIds"] = true, ["SubnetId"] = true, ["DataSchema"] = true, ["DataRearrangement"] = true, ["S3StagingLocation"] = true, ["SelectSqlQuery"] = true, nil }
@@ -1631,8 +2093,14 @@ end
 -- Required key: SecurityGroupIds
 -- @return RDSDataSpec structure as a key-value pair table
 function M.RDSDataSpec(args)
-	assert(args, "You must provdide an argument table when creating RDSDataSpec")
-	local t = { 
+	assert(args, "You must provide an argument table when creating RDSDataSpec")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DatabaseCredentials"] = args["DatabaseCredentials"],
 		["DataSchemaUri"] = args["DataSchemaUri"],
 		["ServiceRole"] = args["ServiceRole"],
@@ -1645,8 +2113,13 @@ function M.RDSDataSpec(args)
 		["S3StagingLocation"] = args["S3StagingLocation"],
 		["SelectSqlQuery"] = args["SelectSqlQuery"],
 	}
-	asserts.AssertRDSDataSpec(t)
-	return t
+	asserts.AssertRDSDataSpec(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetMLModelInput = { ["MLModelId"] = true, ["Verbose"] = true, nil }
@@ -1671,13 +2144,24 @@ end
 -- Required key: MLModelId
 -- @return GetMLModelInput structure as a key-value pair table
 function M.GetMLModelInput(args)
-	assert(args, "You must provdide an argument table when creating GetMLModelInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetMLModelInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["MLModelId"] = args["MLModelId"],
 		["Verbose"] = args["Verbose"],
 	}
-	asserts.AssertGetMLModelInput(t)
-	return t
+	asserts.AssertGetMLModelInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteRealtimeEndpointOutput = { ["MLModelId"] = true, ["RealtimeEndpointInfo"] = true, nil }
@@ -1700,13 +2184,24 @@ end
 -- * RealtimeEndpointInfo [RealtimeEndpointInfo] <p>The endpoint information of the <code>MLModel</code> </p>
 -- @return DeleteRealtimeEndpointOutput structure as a key-value pair table
 function M.DeleteRealtimeEndpointOutput(args)
-	assert(args, "You must provdide an argument table when creating DeleteRealtimeEndpointOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteRealtimeEndpointOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["MLModelId"] = args["MLModelId"],
 		["RealtimeEndpointInfo"] = args["RealtimeEndpointInfo"],
 	}
-	asserts.AssertDeleteRealtimeEndpointOutput(t)
-	return t
+	asserts.AssertDeleteRealtimeEndpointOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.BatchPrediction = { ["Status"] = true, ["ComputeTime"] = true, ["Name"] = true, ["InputDataLocationS3"] = true, ["InvalidRecordCount"] = true, ["CreatedByIamUser"] = true, ["MLModelId"] = true, ["TotalRecordCount"] = true, ["LastUpdatedAt"] = true, ["BatchPredictionDataSourceId"] = true, ["OutputUri"] = true, ["StartedAt"] = true, ["BatchPredictionId"] = true, ["Message"] = true, ["CreatedAt"] = true, ["FinishedAt"] = true, nil }
@@ -1757,8 +2252,14 @@ end
 -- * FinishedAt [EpochTime] 
 -- @return BatchPrediction structure as a key-value pair table
 function M.BatchPrediction(args)
-	assert(args, "You must provdide an argument table when creating BatchPrediction")
-	local t = { 
+	assert(args, "You must provide an argument table when creating BatchPrediction")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Status"] = args["Status"],
 		["ComputeTime"] = args["ComputeTime"],
 		["Name"] = args["Name"],
@@ -1776,8 +2277,13 @@ function M.BatchPrediction(args)
 		["CreatedAt"] = args["CreatedAt"],
 		["FinishedAt"] = args["FinishedAt"],
 	}
-	asserts.AssertBatchPrediction(t)
-	return t
+	asserts.AssertBatchPrediction(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateDataSourceFromRDSInput = { ["DataSourceName"] = true, ["RDSData"] = true, ["ComputeStatistics"] = true, ["DataSourceId"] = true, ["RoleARN"] = true, nil }
@@ -1812,16 +2318,27 @@ end
 -- Required key: RoleARN
 -- @return CreateDataSourceFromRDSInput structure as a key-value pair table
 function M.CreateDataSourceFromRDSInput(args)
-	assert(args, "You must provdide an argument table when creating CreateDataSourceFromRDSInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateDataSourceFromRDSInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DataSourceName"] = args["DataSourceName"],
 		["RDSData"] = args["RDSData"],
 		["ComputeStatistics"] = args["ComputeStatistics"],
 		["DataSourceId"] = args["DataSourceId"],
 		["RoleARN"] = args["RoleARN"],
 	}
-	asserts.AssertCreateDataSourceFromRDSInput(t)
-	return t
+	asserts.AssertCreateDataSourceFromRDSInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Evaluation = { ["EvaluationDataSourceId"] = true, ["Status"] = true, ["ComputeTime"] = true, ["Name"] = true, ["InputDataLocationS3"] = true, ["EvaluationId"] = true, ["CreatedByIamUser"] = true, ["MLModelId"] = true, ["LastUpdatedAt"] = true, ["StartedAt"] = true, ["Message"] = true, ["PerformanceMetrics"] = true, ["CreatedAt"] = true, ["FinishedAt"] = true, nil }
@@ -1868,8 +2385,14 @@ end
 -- * FinishedAt [EpochTime] 
 -- @return Evaluation structure as a key-value pair table
 function M.Evaluation(args)
-	assert(args, "You must provdide an argument table when creating Evaluation")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Evaluation")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["EvaluationDataSourceId"] = args["EvaluationDataSourceId"],
 		["Status"] = args["Status"],
 		["ComputeTime"] = args["ComputeTime"],
@@ -1885,8 +2408,13 @@ function M.Evaluation(args)
 		["CreatedAt"] = args["CreatedAt"],
 		["FinishedAt"] = args["FinishedAt"],
 	}
-	asserts.AssertEvaluation(t)
-	return t
+	asserts.AssertEvaluation(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdateEvaluationOutput = { ["EvaluationId"] = true, nil }
@@ -1907,12 +2435,23 @@ end
 -- * EvaluationId [EntityId] <p>The ID assigned to the <code>Evaluation</code> during creation. This value should be identical to the value of the <code>Evaluation</code> in the request.</p>
 -- @return UpdateEvaluationOutput structure as a key-value pair table
 function M.UpdateEvaluationOutput(args)
-	assert(args, "You must provdide an argument table when creating UpdateEvaluationOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateEvaluationOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["EvaluationId"] = args["EvaluationId"],
 	}
-	asserts.AssertUpdateEvaluationOutput(t)
-	return t
+	asserts.AssertUpdateEvaluationOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdateMLModelInput = { ["MLModelId"] = true, ["ScoreThreshold"] = true, ["MLModelName"] = true, nil }
@@ -1939,14 +2478,25 @@ end
 -- Required key: MLModelId
 -- @return UpdateMLModelInput structure as a key-value pair table
 function M.UpdateMLModelInput(args)
-	assert(args, "You must provdide an argument table when creating UpdateMLModelInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateMLModelInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["MLModelId"] = args["MLModelId"],
 		["ScoreThreshold"] = args["ScoreThreshold"],
 		["MLModelName"] = args["MLModelName"],
 	}
-	asserts.AssertUpdateMLModelInput(t)
-	return t
+	asserts.AssertUpdateMLModelInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteDataSourceInput = { ["DataSourceId"] = true, nil }
@@ -1969,12 +2519,23 @@ end
 -- Required key: DataSourceId
 -- @return DeleteDataSourceInput structure as a key-value pair table
 function M.DeleteDataSourceInput(args)
-	assert(args, "You must provdide an argument table when creating DeleteDataSourceInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteDataSourceInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DataSourceId"] = args["DataSourceId"],
 	}
-	asserts.AssertDeleteDataSourceInput(t)
-	return t
+	asserts.AssertDeleteDataSourceInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteEvaluationInput = { ["EvaluationId"] = true, nil }
@@ -1997,12 +2558,23 @@ end
 -- Required key: EvaluationId
 -- @return DeleteEvaluationInput structure as a key-value pair table
 function M.DeleteEvaluationInput(args)
-	assert(args, "You must provdide an argument table when creating DeleteEvaluationInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteEvaluationInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["EvaluationId"] = args["EvaluationId"],
 	}
-	asserts.AssertDeleteEvaluationInput(t)
-	return t
+	asserts.AssertDeleteEvaluationInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetDataSourceInput = { ["DataSourceId"] = true, ["Verbose"] = true, nil }
@@ -2027,13 +2599,24 @@ end
 -- Required key: DataSourceId
 -- @return GetDataSourceInput structure as a key-value pair table
 function M.GetDataSourceInput(args)
-	assert(args, "You must provdide an argument table when creating GetDataSourceInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetDataSourceInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DataSourceId"] = args["DataSourceId"],
 		["Verbose"] = args["Verbose"],
 	}
-	asserts.AssertGetDataSourceInput(t)
-	return t
+	asserts.AssertGetDataSourceInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteBatchPredictionOutput = { ["BatchPredictionId"] = true, nil }
@@ -2054,12 +2637,23 @@ end
 -- * BatchPredictionId [EntityId] <p>A user-supplied ID that uniquely identifies the <code>BatchPrediction</code>. This value should be identical to the value of the <code>BatchPredictionID</code> in the request.</p>
 -- @return DeleteBatchPredictionOutput structure as a key-value pair table
 function M.DeleteBatchPredictionOutput(args)
-	assert(args, "You must provdide an argument table when creating DeleteBatchPredictionOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteBatchPredictionOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["BatchPredictionId"] = args["BatchPredictionId"],
 	}
-	asserts.AssertDeleteBatchPredictionOutput(t)
-	return t
+	asserts.AssertDeleteBatchPredictionOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteDataSourceOutput = { ["DataSourceId"] = true, nil }
@@ -2080,12 +2674,23 @@ end
 -- * DataSourceId [EntityId] <p>A user-supplied ID that uniquely identifies the <code>DataSource</code>. This value should be identical to the value of the <code>DataSourceID</code> in the request.</p>
 -- @return DeleteDataSourceOutput structure as a key-value pair table
 function M.DeleteDataSourceOutput(args)
-	assert(args, "You must provdide an argument table when creating DeleteDataSourceOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteDataSourceOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DataSourceId"] = args["DataSourceId"],
 	}
-	asserts.AssertDeleteDataSourceOutput(t)
-	return t
+	asserts.AssertDeleteDataSourceOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteMLModelInput = { ["MLModelId"] = true, nil }
@@ -2108,12 +2713,23 @@ end
 -- Required key: MLModelId
 -- @return DeleteMLModelInput structure as a key-value pair table
 function M.DeleteMLModelInput(args)
-	assert(args, "You must provdide an argument table when creating DeleteMLModelInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteMLModelInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["MLModelId"] = args["MLModelId"],
 	}
-	asserts.AssertDeleteMLModelInput(t)
-	return t
+	asserts.AssertDeleteMLModelInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ResourceNotFoundException = { ["message"] = true, ["code"] = true, nil }
@@ -2136,13 +2752,24 @@ end
 -- * code [ErrorCode] 
 -- @return ResourceNotFoundException structure as a key-value pair table
 function M.ResourceNotFoundException(args)
-	assert(args, "You must provdide an argument table when creating ResourceNotFoundException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ResourceNotFoundException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 		["code"] = args["code"],
 	}
-	asserts.AssertResourceNotFoundException(t)
-	return t
+	asserts.AssertResourceNotFoundException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateMLModelInput = { ["Parameters"] = true, ["MLModelType"] = true, ["Recipe"] = true, ["MLModelId"] = true, ["MLModelName"] = true, ["RecipeUri"] = true, ["TrainingDataSourceId"] = true, nil }
@@ -2181,8 +2808,14 @@ end
 -- Required key: TrainingDataSourceId
 -- @return CreateMLModelInput structure as a key-value pair table
 function M.CreateMLModelInput(args)
-	assert(args, "You must provdide an argument table when creating CreateMLModelInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateMLModelInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Parameters"] = args["Parameters"],
 		["MLModelType"] = args["MLModelType"],
 		["Recipe"] = args["Recipe"],
@@ -2191,8 +2824,13 @@ function M.CreateMLModelInput(args)
 		["RecipeUri"] = args["RecipeUri"],
 		["TrainingDataSourceId"] = args["TrainingDataSourceId"],
 	}
-	asserts.AssertCreateMLModelInput(t)
-	return t
+	asserts.AssertCreateMLModelInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateEvaluationOutput = { ["EvaluationId"] = true, nil }
@@ -2213,12 +2851,23 @@ end
 -- * EvaluationId [EntityId] <p>The user-supplied ID that uniquely identifies the <code>Evaluation</code>. This value should be identical to the value of the <code>EvaluationId</code> in the request.</p>
 -- @return CreateEvaluationOutput structure as a key-value pair table
 function M.CreateEvaluationOutput(args)
-	assert(args, "You must provdide an argument table when creating CreateEvaluationOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateEvaluationOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["EvaluationId"] = args["EvaluationId"],
 	}
-	asserts.AssertCreateEvaluationOutput(t)
-	return t
+	asserts.AssertCreateEvaluationOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetEvaluationInput = { ["EvaluationId"] = true, nil }
@@ -2241,12 +2890,23 @@ end
 -- Required key: EvaluationId
 -- @return GetEvaluationInput structure as a key-value pair table
 function M.GetEvaluationInput(args)
-	assert(args, "You must provdide an argument table when creating GetEvaluationInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetEvaluationInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["EvaluationId"] = args["EvaluationId"],
 	}
-	asserts.AssertGetEvaluationInput(t)
-	return t
+	asserts.AssertGetEvaluationInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AddTagsInput = { ["ResourceType"] = true, ["ResourceId"] = true, ["Tags"] = true, nil }
@@ -2277,14 +2937,25 @@ end
 -- Required key: ResourceType
 -- @return AddTagsInput structure as a key-value pair table
 function M.AddTagsInput(args)
-	assert(args, "You must provdide an argument table when creating AddTagsInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AddTagsInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ResourceType"] = args["ResourceType"],
 		["ResourceId"] = args["ResourceId"],
 		["Tags"] = args["Tags"],
 	}
-	asserts.AssertAddTagsInput(t)
-	return t
+	asserts.AssertAddTagsInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateDataSourceFromRDSOutput = { ["DataSourceId"] = true, nil }
@@ -2305,12 +2976,23 @@ end
 -- * DataSourceId [EntityId] <p>A user-supplied ID that uniquely identifies the datasource. This value should be identical to the value of the <code>DataSourceID</code> in the request. </p>
 -- @return CreateDataSourceFromRDSOutput structure as a key-value pair table
 function M.CreateDataSourceFromRDSOutput(args)
-	assert(args, "You must provdide an argument table when creating CreateDataSourceFromRDSOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateDataSourceFromRDSOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DataSourceId"] = args["DataSourceId"],
 	}
-	asserts.AssertCreateDataSourceFromRDSOutput(t)
-	return t
+	asserts.AssertCreateDataSourceFromRDSOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateRealtimeEndpointOutput = { ["MLModelId"] = true, ["RealtimeEndpointInfo"] = true, nil }
@@ -2333,13 +3015,24 @@ end
 -- * RealtimeEndpointInfo [RealtimeEndpointInfo] <p>The endpoint information of the <code>MLModel</code> </p>
 -- @return CreateRealtimeEndpointOutput structure as a key-value pair table
 function M.CreateRealtimeEndpointOutput(args)
-	assert(args, "You must provdide an argument table when creating CreateRealtimeEndpointOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateRealtimeEndpointOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["MLModelId"] = args["MLModelId"],
 		["RealtimeEndpointInfo"] = args["RealtimeEndpointInfo"],
 	}
-	asserts.AssertCreateRealtimeEndpointOutput(t)
-	return t
+	asserts.AssertCreateRealtimeEndpointOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.RDSDatabase = { ["InstanceIdentifier"] = true, ["DatabaseName"] = true, nil }
@@ -2366,13 +3059,24 @@ end
 -- Required key: DatabaseName
 -- @return RDSDatabase structure as a key-value pair table
 function M.RDSDatabase(args)
-	assert(args, "You must provdide an argument table when creating RDSDatabase")
-	local t = { 
+	assert(args, "You must provide an argument table when creating RDSDatabase")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["InstanceIdentifier"] = args["InstanceIdentifier"],
 		["DatabaseName"] = args["DatabaseName"],
 	}
-	asserts.AssertRDSDatabase(t)
-	return t
+	asserts.AssertRDSDatabase(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeMLModelsInput = { ["GT"] = true, ["FilterVariable"] = true, ["GE"] = true, ["NE"] = true, ["LT"] = true, ["LE"] = true, ["Limit"] = true, ["SortOrder"] = true, ["NextToken"] = true, ["EQ"] = true, ["Prefix"] = true, nil }
@@ -2413,8 +3117,14 @@ end
 -- * Prefix [ComparatorValue] <p>A string that is found at the beginning of a variable, such as <code>Name</code> or <code>Id</code>.</p> <p>For example, an <code>MLModel</code> could have the <code>Name</code> <code>2014-09-09-HolidayGiftMailer</code>. To search for this <code>MLModel</code>, select <code>Name</code> for the <code>FilterVariable</code> and any of the following strings for the <code>Prefix</code>: </p> <ul> <li><p>2014-09</p></li> <li><p>2014-09-09</p></li> <li><p>2014-09-09-Holiday</p></li> </ul>
 -- @return DescribeMLModelsInput structure as a key-value pair table
 function M.DescribeMLModelsInput(args)
-	assert(args, "You must provdide an argument table when creating DescribeMLModelsInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeMLModelsInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["GT"] = args["GT"],
 		["FilterVariable"] = args["FilterVariable"],
 		["GE"] = args["GE"],
@@ -2427,8 +3137,13 @@ function M.DescribeMLModelsInput(args)
 		["EQ"] = args["EQ"],
 		["Prefix"] = args["Prefix"],
 	}
-	asserts.AssertDescribeMLModelsInput(t)
-	return t
+	asserts.AssertDescribeMLModelsInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.PredictInput = { ["MLModelId"] = true, ["Record"] = true, ["PredictEndpoint"] = true, nil }
@@ -2459,14 +3174,25 @@ end
 -- Required key: PredictEndpoint
 -- @return PredictInput structure as a key-value pair table
 function M.PredictInput(args)
-	assert(args, "You must provdide an argument table when creating PredictInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating PredictInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["MLModelId"] = args["MLModelId"],
 		["Record"] = args["Record"],
 		["PredictEndpoint"] = args["PredictEndpoint"],
 	}
-	asserts.AssertPredictInput(t)
-	return t
+	asserts.AssertPredictInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdateDataSourceInput = { ["DataSourceName"] = true, ["DataSourceId"] = true, nil }
@@ -2493,13 +3219,24 @@ end
 -- Required key: DataSourceName
 -- @return UpdateDataSourceInput structure as a key-value pair table
 function M.UpdateDataSourceInput(args)
-	assert(args, "You must provdide an argument table when creating UpdateDataSourceInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateDataSourceInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DataSourceName"] = args["DataSourceName"],
 		["DataSourceId"] = args["DataSourceId"],
 	}
-	asserts.AssertUpdateDataSourceInput(t)
-	return t
+	asserts.AssertUpdateDataSourceInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetEvaluationOutput = { ["EvaluationDataSourceId"] = true, ["Status"] = true, ["ComputeTime"] = true, ["Name"] = true, ["InputDataLocationS3"] = true, ["EvaluationId"] = true, ["CreatedByIamUser"] = true, ["MLModelId"] = true, ["Message"] = true, ["LastUpdatedAt"] = true, ["StartedAt"] = true, ["LogUri"] = true, ["PerformanceMetrics"] = true, ["CreatedAt"] = true, ["FinishedAt"] = true, nil }
@@ -2548,8 +3285,14 @@ end
 -- * FinishedAt [EpochTime] <p>The epoch time when Amazon Machine Learning marked the <code>Evaluation</code> as <code>COMPLETED</code> or <code>FAILED</code>. <code>FinishedAt</code> is only available when the <code>Evaluation</code> is in the <code>COMPLETED</code> or <code>FAILED</code> state.</p>
 -- @return GetEvaluationOutput structure as a key-value pair table
 function M.GetEvaluationOutput(args)
-	assert(args, "You must provdide an argument table when creating GetEvaluationOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetEvaluationOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["EvaluationDataSourceId"] = args["EvaluationDataSourceId"],
 		["Status"] = args["Status"],
 		["ComputeTime"] = args["ComputeTime"],
@@ -2566,8 +3309,13 @@ function M.GetEvaluationOutput(args)
 		["CreatedAt"] = args["CreatedAt"],
 		["FinishedAt"] = args["FinishedAt"],
 	}
-	asserts.AssertGetEvaluationOutput(t)
-	return t
+	asserts.AssertGetEvaluationOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.RDSMetadata = { ["ServiceRole"] = true, ["DataPipelineId"] = true, ["ResourceRole"] = true, ["DatabaseUserName"] = true, ["Database"] = true, ["SelectSqlQuery"] = true, nil }
@@ -2598,8 +3346,14 @@ end
 -- * SelectSqlQuery [RDSSelectSqlQuery] <p>The SQL query that is supplied during <a>CreateDataSourceFromRDS</a>. Returns only if <code>Verbose</code> is true in <code>GetDataSourceInput</code>. </p>
 -- @return RDSMetadata structure as a key-value pair table
 function M.RDSMetadata(args)
-	assert(args, "You must provdide an argument table when creating RDSMetadata")
-	local t = { 
+	assert(args, "You must provide an argument table when creating RDSMetadata")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ServiceRole"] = args["ServiceRole"],
 		["DataPipelineId"] = args["DataPipelineId"],
 		["ResourceRole"] = args["ResourceRole"],
@@ -2607,8 +3361,13 @@ function M.RDSMetadata(args)
 		["Database"] = args["Database"],
 		["SelectSqlQuery"] = args["SelectSqlQuery"],
 	}
-	asserts.AssertRDSMetadata(t)
-	return t
+	asserts.AssertRDSMetadata(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeTagsOutput = { ["ResourceType"] = true, ["ResourceId"] = true, ["Tags"] = true, nil }
@@ -2633,14 +3392,25 @@ end
 -- * Tags [TagList] <p>A list of tags associated with the ML object.</p>
 -- @return DescribeTagsOutput structure as a key-value pair table
 function M.DescribeTagsOutput(args)
-	assert(args, "You must provdide an argument table when creating DescribeTagsOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeTagsOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ResourceType"] = args["ResourceType"],
 		["ResourceId"] = args["ResourceId"],
 		["Tags"] = args["Tags"],
 	}
-	asserts.AssertDescribeTagsOutput(t)
-	return t
+	asserts.AssertDescribeTagsOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.RDSDatabaseCredentials = { ["Username"] = true, ["Password"] = true, nil }
@@ -2667,13 +3437,24 @@ end
 -- Required key: Password
 -- @return RDSDatabaseCredentials structure as a key-value pair table
 function M.RDSDatabaseCredentials(args)
-	assert(args, "You must provdide an argument table when creating RDSDatabaseCredentials")
-	local t = { 
+	assert(args, "You must provide an argument table when creating RDSDatabaseCredentials")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Username"] = args["Username"],
 		["Password"] = args["Password"],
 	}
-	asserts.AssertRDSDatabaseCredentials(t)
-	return t
+	asserts.AssertRDSDatabaseCredentials(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateDataSourceFromS3Output = { ["DataSourceId"] = true, nil }
@@ -2694,12 +3475,23 @@ end
 -- * DataSourceId [EntityId] <p>A user-supplied ID that uniquely identifies the <code>DataSource</code>. This value should be identical to the value of the <code>DataSourceID</code> in the request. </p>
 -- @return CreateDataSourceFromS3Output structure as a key-value pair table
 function M.CreateDataSourceFromS3Output(args)
-	assert(args, "You must provdide an argument table when creating CreateDataSourceFromS3Output")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateDataSourceFromS3Output")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DataSourceId"] = args["DataSourceId"],
 	}
-	asserts.AssertCreateDataSourceFromS3Output(t)
-	return t
+	asserts.AssertCreateDataSourceFromS3Output(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetBatchPredictionOutput = { ["Status"] = true, ["ComputeTime"] = true, ["Name"] = true, ["InputDataLocationS3"] = true, ["InvalidRecordCount"] = true, ["CreatedByIamUser"] = true, ["MLModelId"] = true, ["TotalRecordCount"] = true, ["LastUpdatedAt"] = true, ["BatchPredictionDataSourceId"] = true, ["OutputUri"] = true, ["StartedAt"] = true, ["BatchPredictionId"] = true, ["LogUri"] = true, ["Message"] = true, ["CreatedAt"] = true, ["FinishedAt"] = true, nil }
@@ -2752,8 +3544,14 @@ end
 -- * FinishedAt [EpochTime] <p>The epoch time when Amazon Machine Learning marked the <code>BatchPrediction</code> as <code>COMPLETED</code> or <code>FAILED</code>. <code>FinishedAt</code> is only available when the <code>BatchPrediction</code> is in the <code>COMPLETED</code> or <code>FAILED</code> state.</p>
 -- @return GetBatchPredictionOutput structure as a key-value pair table
 function M.GetBatchPredictionOutput(args)
-	assert(args, "You must provdide an argument table when creating GetBatchPredictionOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetBatchPredictionOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Status"] = args["Status"],
 		["ComputeTime"] = args["ComputeTime"],
 		["Name"] = args["Name"],
@@ -2772,8 +3570,13 @@ function M.GetBatchPredictionOutput(args)
 		["CreatedAt"] = args["CreatedAt"],
 		["FinishedAt"] = args["FinishedAt"],
 	}
-	asserts.AssertGetBatchPredictionOutput(t)
-	return t
+	asserts.AssertGetBatchPredictionOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Tag = { ["Value"] = true, ["Key"] = true, nil }
@@ -2796,13 +3599,24 @@ end
 -- * Key [TagKey] <p>A unique identifier for the tag. Valid characters include Unicode letters, digits, white space, _, ., /, =, +, -, %, and @.</p>
 -- @return Tag structure as a key-value pair table
 function M.Tag(args)
-	assert(args, "You must provdide an argument table when creating Tag")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Tag")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Value"] = args["Value"],
 		["Key"] = args["Key"],
 	}
-	asserts.AssertTag(t)
-	return t
+	asserts.AssertTag(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.PredictOutput = { ["Prediction"] = true, nil }
@@ -2823,12 +3637,23 @@ end
 -- * Prediction [Prediction] 
 -- @return PredictOutput structure as a key-value pair table
 function M.PredictOutput(args)
-	assert(args, "You must provdide an argument table when creating PredictOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating PredictOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Prediction"] = args["Prediction"],
 	}
-	asserts.AssertPredictOutput(t)
-	return t
+	asserts.AssertPredictOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeDataSourcesInput = { ["GT"] = true, ["FilterVariable"] = true, ["GE"] = true, ["NE"] = true, ["LT"] = true, ["LE"] = true, ["Limit"] = true, ["SortOrder"] = true, ["NextToken"] = true, ["EQ"] = true, ["Prefix"] = true, nil }
@@ -2869,8 +3694,14 @@ end
 -- * Prefix [ComparatorValue] <p>A string that is found at the beginning of a variable, such as <code>Name</code> or <code>Id</code>.</p> <p>For example, a <code>DataSource</code> could have the <code>Name</code> <code>2014-09-09-HolidayGiftMailer</code>. To search for this <code>DataSource</code>, select <code>Name</code> for the <code>FilterVariable</code> and any of the following strings for the <code>Prefix</code>: </p> <ul> <li><p>2014-09</p></li> <li><p>2014-09-09</p></li> <li><p>2014-09-09-Holiday</p></li> </ul>
 -- @return DescribeDataSourcesInput structure as a key-value pair table
 function M.DescribeDataSourcesInput(args)
-	assert(args, "You must provdide an argument table when creating DescribeDataSourcesInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeDataSourcesInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["GT"] = args["GT"],
 		["FilterVariable"] = args["FilterVariable"],
 		["GE"] = args["GE"],
@@ -2883,8 +3714,13 @@ function M.DescribeDataSourcesInput(args)
 		["EQ"] = args["EQ"],
 		["Prefix"] = args["Prefix"],
 	}
-	asserts.AssertDescribeDataSourcesInput(t)
-	return t
+	asserts.AssertDescribeDataSourcesInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Prediction = { ["predictedLabel"] = true, ["predictedValue"] = true, ["predictedScores"] = true, ["details"] = true, nil }
@@ -2911,15 +3747,26 @@ end
 -- * details [DetailsMap] 
 -- @return Prediction structure as a key-value pair table
 function M.Prediction(args)
-	assert(args, "You must provdide an argument table when creating Prediction")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Prediction")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["predictedLabel"] = args["predictedLabel"],
 		["predictedValue"] = args["predictedValue"],
 		["predictedScores"] = args["predictedScores"],
 		["details"] = args["details"],
 	}
-	asserts.AssertPrediction(t)
-	return t
+	asserts.AssertPrediction(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.PredictorNotMountedException = { ["message"] = true, nil }
@@ -2940,12 +3787,23 @@ end
 -- * message [ErrorMessage] 
 -- @return PredictorNotMountedException structure as a key-value pair table
 function M.PredictorNotMountedException(args)
-	assert(args, "You must provdide an argument table when creating PredictorNotMountedException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating PredictorNotMountedException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertPredictorNotMountedException(t)
-	return t
+	asserts.AssertPredictorNotMountedException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateDataSourceFromRedshiftInput = { ["DataSourceName"] = true, ["RoleARN"] = true, ["ComputeStatistics"] = true, ["DataSourceId"] = true, ["DataSpec"] = true, nil }
@@ -2980,16 +3838,27 @@ end
 -- Required key: RoleARN
 -- @return CreateDataSourceFromRedshiftInput structure as a key-value pair table
 function M.CreateDataSourceFromRedshiftInput(args)
-	assert(args, "You must provdide an argument table when creating CreateDataSourceFromRedshiftInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateDataSourceFromRedshiftInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DataSourceName"] = args["DataSourceName"],
 		["RoleARN"] = args["RoleARN"],
 		["ComputeStatistics"] = args["ComputeStatistics"],
 		["DataSourceId"] = args["DataSourceId"],
 		["DataSpec"] = args["DataSpec"],
 	}
-	asserts.AssertCreateDataSourceFromRedshiftInput(t)
-	return t
+	asserts.AssertCreateDataSourceFromRedshiftInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.TagLimitExceededException = { ["message"] = true, nil }
@@ -3010,12 +3879,23 @@ end
 -- * message [ErrorMessage] 
 -- @return TagLimitExceededException structure as a key-value pair table
 function M.TagLimitExceededException(args)
-	assert(args, "You must provdide an argument table when creating TagLimitExceededException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating TagLimitExceededException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertTagLimitExceededException(t)
-	return t
+	asserts.AssertTagLimitExceededException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteTagsOutput = { ["ResourceType"] = true, ["ResourceId"] = true, nil }
@@ -3038,13 +3918,24 @@ end
 -- * ResourceId [EntityId] <p>The ID of the ML object from which tags were deleted.</p>
 -- @return DeleteTagsOutput structure as a key-value pair table
 function M.DeleteTagsOutput(args)
-	assert(args, "You must provdide an argument table when creating DeleteTagsOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteTagsOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ResourceType"] = args["ResourceType"],
 		["ResourceId"] = args["ResourceId"],
 	}
-	asserts.AssertDeleteTagsOutput(t)
-	return t
+	asserts.AssertDeleteTagsOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 function asserts.AssertTagKey(str)
@@ -3969,8 +4860,11 @@ function M.DeleteTagsAsync(DeleteTagsInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AmazonML_20141212.DeleteTags",
 	}
+	for header,value in pairs(DeleteTagsInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteTagsInput, headers, settings, cb)
 	else
@@ -4001,8 +4895,11 @@ function M.UpdateBatchPredictionAsync(UpdateBatchPredictionInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AmazonML_20141212.UpdateBatchPrediction",
 	}
+	for header,value in pairs(UpdateBatchPredictionInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateBatchPredictionInput, headers, settings, cb)
 	else
@@ -4033,8 +4930,11 @@ function M.GetEvaluationAsync(GetEvaluationInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AmazonML_20141212.GetEvaluation",
 	}
+	for header,value in pairs(GetEvaluationInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", GetEvaluationInput, headers, settings, cb)
 	else
@@ -4065,8 +4965,11 @@ function M.DescribeBatchPredictionsAsync(DescribeBatchPredictionsInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AmazonML_20141212.DescribeBatchPredictions",
 	}
+	for header,value in pairs(DescribeBatchPredictionsInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeBatchPredictionsInput, headers, settings, cb)
 	else
@@ -4097,8 +5000,11 @@ function M.CreateEvaluationAsync(CreateEvaluationInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AmazonML_20141212.CreateEvaluation",
 	}
+	for header,value in pairs(CreateEvaluationInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateEvaluationInput, headers, settings, cb)
 	else
@@ -4129,8 +5035,11 @@ function M.DescribeMLModelsAsync(DescribeMLModelsInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AmazonML_20141212.DescribeMLModels",
 	}
+	for header,value in pairs(DescribeMLModelsInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeMLModelsInput, headers, settings, cb)
 	else
@@ -4161,8 +5070,11 @@ function M.DeleteMLModelAsync(DeleteMLModelInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AmazonML_20141212.DeleteMLModel",
 	}
+	for header,value in pairs(DeleteMLModelInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteMLModelInput, headers, settings, cb)
 	else
@@ -4193,8 +5105,11 @@ function M.CreateDataSourceFromS3Async(CreateDataSourceFromS3Input, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AmazonML_20141212.CreateDataSourceFromS3",
 	}
+	for header,value in pairs(CreateDataSourceFromS3Input.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateDataSourceFromS3Input, headers, settings, cb)
 	else
@@ -4225,8 +5140,11 @@ function M.UpdateDataSourceAsync(UpdateDataSourceInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AmazonML_20141212.UpdateDataSource",
 	}
+	for header,value in pairs(UpdateDataSourceInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateDataSourceInput, headers, settings, cb)
 	else
@@ -4257,8 +5175,11 @@ function M.DescribeEvaluationsAsync(DescribeEvaluationsInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AmazonML_20141212.DescribeEvaluations",
 	}
+	for header,value in pairs(DescribeEvaluationsInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeEvaluationsInput, headers, settings, cb)
 	else
@@ -4289,8 +5210,11 @@ function M.CreateDataSourceFromRedshiftAsync(CreateDataSourceFromRedshiftInput, 
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AmazonML_20141212.CreateDataSourceFromRedshift",
 	}
+	for header,value in pairs(CreateDataSourceFromRedshiftInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateDataSourceFromRedshiftInput, headers, settings, cb)
 	else
@@ -4321,8 +5245,11 @@ function M.DescribeDataSourcesAsync(DescribeDataSourcesInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AmazonML_20141212.DescribeDataSources",
 	}
+	for header,value in pairs(DescribeDataSourcesInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeDataSourcesInput, headers, settings, cb)
 	else
@@ -4353,8 +5280,11 @@ function M.GetDataSourceAsync(GetDataSourceInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AmazonML_20141212.GetDataSource",
 	}
+	for header,value in pairs(GetDataSourceInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", GetDataSourceInput, headers, settings, cb)
 	else
@@ -4385,8 +5315,11 @@ function M.CreateRealtimeEndpointAsync(CreateRealtimeEndpointInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AmazonML_20141212.CreateRealtimeEndpoint",
 	}
+	for header,value in pairs(CreateRealtimeEndpointInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateRealtimeEndpointInput, headers, settings, cb)
 	else
@@ -4417,8 +5350,11 @@ function M.UpdateMLModelAsync(UpdateMLModelInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AmazonML_20141212.UpdateMLModel",
 	}
+	for header,value in pairs(UpdateMLModelInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateMLModelInput, headers, settings, cb)
 	else
@@ -4449,8 +5385,11 @@ function M.DeleteRealtimeEndpointAsync(DeleteRealtimeEndpointInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AmazonML_20141212.DeleteRealtimeEndpoint",
 	}
+	for header,value in pairs(DeleteRealtimeEndpointInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteRealtimeEndpointInput, headers, settings, cb)
 	else
@@ -4481,8 +5420,11 @@ function M.DescribeTagsAsync(DescribeTagsInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AmazonML_20141212.DescribeTags",
 	}
+	for header,value in pairs(DescribeTagsInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeTagsInput, headers, settings, cb)
 	else
@@ -4513,8 +5455,11 @@ function M.DeleteDataSourceAsync(DeleteDataSourceInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AmazonML_20141212.DeleteDataSource",
 	}
+	for header,value in pairs(DeleteDataSourceInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteDataSourceInput, headers, settings, cb)
 	else
@@ -4545,8 +5490,11 @@ function M.CreateDataSourceFromRDSAsync(CreateDataSourceFromRDSInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AmazonML_20141212.CreateDataSourceFromRDS",
 	}
+	for header,value in pairs(CreateDataSourceFromRDSInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateDataSourceFromRDSInput, headers, settings, cb)
 	else
@@ -4577,8 +5525,11 @@ function M.UpdateEvaluationAsync(UpdateEvaluationInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AmazonML_20141212.UpdateEvaluation",
 	}
+	for header,value in pairs(UpdateEvaluationInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateEvaluationInput, headers, settings, cb)
 	else
@@ -4609,8 +5560,11 @@ function M.AddTagsAsync(AddTagsInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AmazonML_20141212.AddTags",
 	}
+	for header,value in pairs(AddTagsInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", AddTagsInput, headers, settings, cb)
 	else
@@ -4641,8 +5595,11 @@ function M.PredictAsync(PredictInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AmazonML_20141212.Predict",
 	}
+	for header,value in pairs(PredictInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", PredictInput, headers, settings, cb)
 	else
@@ -4673,8 +5630,11 @@ function M.GetBatchPredictionAsync(GetBatchPredictionInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AmazonML_20141212.GetBatchPrediction",
 	}
+	for header,value in pairs(GetBatchPredictionInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", GetBatchPredictionInput, headers, settings, cb)
 	else
@@ -4705,8 +5665,11 @@ function M.DeleteEvaluationAsync(DeleteEvaluationInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AmazonML_20141212.DeleteEvaluation",
 	}
+	for header,value in pairs(DeleteEvaluationInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteEvaluationInput, headers, settings, cb)
 	else
@@ -4737,8 +5700,11 @@ function M.DeleteBatchPredictionAsync(DeleteBatchPredictionInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AmazonML_20141212.DeleteBatchPrediction",
 	}
+	for header,value in pairs(DeleteBatchPredictionInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteBatchPredictionInput, headers, settings, cb)
 	else
@@ -4769,8 +5735,11 @@ function M.CreateMLModelAsync(CreateMLModelInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AmazonML_20141212.CreateMLModel",
 	}
+	for header,value in pairs(CreateMLModelInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateMLModelInput, headers, settings, cb)
 	else
@@ -4801,8 +5770,11 @@ function M.CreateBatchPredictionAsync(CreateBatchPredictionInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AmazonML_20141212.CreateBatchPrediction",
 	}
+	for header,value in pairs(CreateBatchPredictionInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateBatchPredictionInput, headers, settings, cb)
 	else
@@ -4833,8 +5805,11 @@ function M.GetMLModelAsync(GetMLModelInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AmazonML_20141212.GetMLModel",
 	}
+	for header,value in pairs(GetMLModelInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", GetMLModelInput, headers, settings, cb)
 	else

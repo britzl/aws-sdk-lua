@@ -37,11 +37,22 @@ end
 -- Valid keys:
 -- @return InvalidRequestException structure as a key-value pair table
 function M.InvalidRequestException(args)
-	assert(args, "You must provdide an argument table when creating InvalidRequestException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidRequestException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertInvalidRequestException(t)
-	return t
+	asserts.AssertInvalidRequestException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.RemoveTagsFromResourceRequest = { ["ResourceArn"] = true, ["TagKeyList"] = true, nil }
@@ -68,13 +79,24 @@ end
 -- Required key: TagKeyList
 -- @return RemoveTagsFromResourceRequest structure as a key-value pair table
 function M.RemoveTagsFromResourceRequest(args)
-	assert(args, "You must provdide an argument table when creating RemoveTagsFromResourceRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating RemoveTagsFromResourceRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ResourceArn"] = args["ResourceArn"],
 		["TagKeyList"] = args["TagKeyList"],
 	}
-	asserts.AssertRemoveTagsFromResourceRequest(t)
-	return t
+	asserts.AssertRemoveTagsFromResourceRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListHsmsResponse = { ["HsmList"] = true, ["NextToken"] = true, nil }
@@ -97,13 +119,24 @@ end
 -- * NextToken [PaginationToken] <p>If not null, more results are available. Pass this value to <a>ListHsms</a> to retrieve the next set of items.</p>
 -- @return ListHsmsResponse structure as a key-value pair table
 function M.ListHsmsResponse(args)
-	assert(args, "You must provdide an argument table when creating ListHsmsResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListHsmsResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["HsmList"] = args["HsmList"],
 		["NextToken"] = args["NextToken"],
 	}
-	asserts.AssertListHsmsResponse(t)
-	return t
+	asserts.AssertListHsmsResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListAvailableZonesRequest = { nil }
@@ -122,11 +155,22 @@ end
 -- Valid keys:
 -- @return ListAvailableZonesRequest structure as a key-value pair table
 function M.ListAvailableZonesRequest(args)
-	assert(args, "You must provdide an argument table when creating ListAvailableZonesRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListAvailableZonesRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertListAvailableZonesRequest(t)
-	return t
+	asserts.AssertListAvailableZonesRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateLunaClientResponse = { ["ClientArn"] = true, nil }
@@ -147,12 +191,23 @@ end
 -- * ClientArn [ClientArn] <p>The ARN of the client.</p>
 -- @return CreateLunaClientResponse structure as a key-value pair table
 function M.CreateLunaClientResponse(args)
-	assert(args, "You must provdide an argument table when creating CreateLunaClientResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateLunaClientResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ClientArn"] = args["ClientArn"],
 	}
-	asserts.AssertCreateLunaClientResponse(t)
-	return t
+	asserts.AssertCreateLunaClientResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateHsmResponse = { ["HsmArn"] = true, nil }
@@ -173,12 +228,23 @@ end
 -- * HsmArn [HsmArn] <p>The ARN of the HSM.</p>
 -- @return CreateHsmResponse structure as a key-value pair table
 function M.CreateHsmResponse(args)
-	assert(args, "You must provdide an argument table when creating CreateHsmResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateHsmResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["HsmArn"] = args["HsmArn"],
 	}
-	asserts.AssertCreateHsmResponse(t)
-	return t
+	asserts.AssertCreateHsmResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AddTagsToResourceRequest = { ["ResourceArn"] = true, ["TagList"] = true, nil }
@@ -205,13 +271,24 @@ end
 -- Required key: TagList
 -- @return AddTagsToResourceRequest structure as a key-value pair table
 function M.AddTagsToResourceRequest(args)
-	assert(args, "You must provdide an argument table when creating AddTagsToResourceRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AddTagsToResourceRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ResourceArn"] = args["ResourceArn"],
 		["TagList"] = args["TagList"],
 	}
-	asserts.AssertAddTagsToResourceRequest(t)
-	return t
+	asserts.AssertAddTagsToResourceRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListLunaClientsRequest = { ["NextToken"] = true, nil }
@@ -232,12 +309,23 @@ end
 -- * NextToken [PaginationToken] <p>The <i>NextToken</i> value from a previous call to <a>ListLunaClients</a>. Pass null if this is the first call.</p>
 -- @return ListLunaClientsRequest structure as a key-value pair table
 function M.ListLunaClientsRequest(args)
-	assert(args, "You must provdide an argument table when creating ListLunaClientsRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListLunaClientsRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NextToken"] = args["NextToken"],
 	}
-	asserts.AssertListLunaClientsRequest(t)
-	return t
+	asserts.AssertListLunaClientsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.RemoveTagsFromResourceResponse = { ["Status"] = true, nil }
@@ -260,12 +348,23 @@ end
 -- Required key: Status
 -- @return RemoveTagsFromResourceResponse structure as a key-value pair table
 function M.RemoveTagsFromResourceResponse(args)
-	assert(args, "You must provdide an argument table when creating RemoveTagsFromResourceResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating RemoveTagsFromResourceResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Status"] = args["Status"],
 	}
-	asserts.AssertRemoveTagsFromResourceResponse(t)
-	return t
+	asserts.AssertRemoveTagsFromResourceResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListTagsForResourceRequest = { ["ResourceArn"] = true, nil }
@@ -288,12 +387,23 @@ end
 -- Required key: ResourceArn
 -- @return ListTagsForResourceRequest structure as a key-value pair table
 function M.ListTagsForResourceRequest(args)
-	assert(args, "You must provdide an argument table when creating ListTagsForResourceRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListTagsForResourceRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ResourceArn"] = args["ResourceArn"],
 	}
-	asserts.AssertListTagsForResourceRequest(t)
-	return t
+	asserts.AssertListTagsForResourceRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteHsmRequest = { ["HsmArn"] = true, nil }
@@ -316,12 +426,23 @@ end
 -- Required key: HsmArn
 -- @return DeleteHsmRequest structure as a key-value pair table
 function M.DeleteHsmRequest(args)
-	assert(args, "You must provdide an argument table when creating DeleteHsmRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteHsmRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["HsmArn"] = args["HsmArn"],
 	}
-	asserts.AssertDeleteHsmRequest(t)
-	return t
+	asserts.AssertDeleteHsmRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ModifyHsmResponse = { ["HsmArn"] = true, nil }
@@ -342,12 +463,23 @@ end
 -- * HsmArn [HsmArn] <p>The ARN of the HSM.</p>
 -- @return ModifyHsmResponse structure as a key-value pair table
 function M.ModifyHsmResponse(args)
-	assert(args, "You must provdide an argument table when creating ModifyHsmResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ModifyHsmResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["HsmArn"] = args["HsmArn"],
 	}
-	asserts.AssertModifyHsmResponse(t)
-	return t
+	asserts.AssertModifyHsmResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeHapgResponse = { ["PartitionSerialList"] = true, ["HsmsPendingRegistration"] = true, ["HsmsLastActionFailed"] = true, ["HsmsPendingDeletion"] = true, ["LastModifiedTimestamp"] = true, ["Label"] = true, ["HapgSerial"] = true, ["State"] = true, ["HapgArn"] = true, nil }
@@ -384,8 +516,14 @@ end
 -- * HapgArn [HapgArn] <p>The ARN of the high-availability partition group.</p>
 -- @return DescribeHapgResponse structure as a key-value pair table
 function M.DescribeHapgResponse(args)
-	assert(args, "You must provdide an argument table when creating DescribeHapgResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeHapgResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["PartitionSerialList"] = args["PartitionSerialList"],
 		["HsmsPendingRegistration"] = args["HsmsPendingRegistration"],
 		["HsmsLastActionFailed"] = args["HsmsLastActionFailed"],
@@ -396,8 +534,13 @@ function M.DescribeHapgResponse(args)
 		["State"] = args["State"],
 		["HapgArn"] = args["HapgArn"],
 	}
-	asserts.AssertDescribeHapgResponse(t)
-	return t
+	asserts.AssertDescribeHapgResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListTagsForResourceResponse = { ["TagList"] = true, nil }
@@ -420,12 +563,23 @@ end
 -- Required key: TagList
 -- @return ListTagsForResourceResponse structure as a key-value pair table
 function M.ListTagsForResourceResponse(args)
-	assert(args, "You must provdide an argument table when creating ListTagsForResourceResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListTagsForResourceResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["TagList"] = args["TagList"],
 	}
-	asserts.AssertListTagsForResourceResponse(t)
-	return t
+	asserts.AssertListTagsForResourceResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListHapgsRequest = { ["NextToken"] = true, nil }
@@ -446,12 +600,23 @@ end
 -- * NextToken [PaginationToken] <p>The <i>NextToken</i> value from a previous call to <a>ListHapgs</a>. Pass null if this is the first call.</p>
 -- @return ListHapgsRequest structure as a key-value pair table
 function M.ListHapgsRequest(args)
-	assert(args, "You must provdide an argument table when creating ListHapgsRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListHapgsRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NextToken"] = args["NextToken"],
 	}
-	asserts.AssertListHapgsRequest(t)
-	return t
+	asserts.AssertListHapgsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetConfigRequest = { ["HapgList"] = true, ["ClientVersion"] = true, ["ClientArn"] = true, nil }
@@ -482,14 +647,25 @@ end
 -- Required key: HapgList
 -- @return GetConfigRequest structure as a key-value pair table
 function M.GetConfigRequest(args)
-	assert(args, "You must provdide an argument table when creating GetConfigRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetConfigRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["HapgList"] = args["HapgList"],
 		["ClientVersion"] = args["ClientVersion"],
 		["ClientArn"] = args["ClientArn"],
 	}
-	asserts.AssertGetConfigRequest(t)
-	return t
+	asserts.AssertGetConfigRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateHapgRequest = { ["Label"] = true, nil }
@@ -512,12 +688,23 @@ end
 -- Required key: Label
 -- @return CreateHapgRequest structure as a key-value pair table
 function M.CreateHapgRequest(args)
-	assert(args, "You must provdide an argument table when creating CreateHapgRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateHapgRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Label"] = args["Label"],
 	}
-	asserts.AssertCreateHapgRequest(t)
-	return t
+	asserts.AssertCreateHapgRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeHapgRequest = { ["HapgArn"] = true, nil }
@@ -540,12 +727,23 @@ end
 -- Required key: HapgArn
 -- @return DescribeHapgRequest structure as a key-value pair table
 function M.DescribeHapgRequest(args)
-	assert(args, "You must provdide an argument table when creating DescribeHapgRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeHapgRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["HapgArn"] = args["HapgArn"],
 	}
-	asserts.AssertDescribeHapgRequest(t)
-	return t
+	asserts.AssertDescribeHapgRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListHapgsResponse = { ["HapgList"] = true, ["NextToken"] = true, nil }
@@ -570,13 +768,24 @@ end
 -- Required key: HapgList
 -- @return ListHapgsResponse structure as a key-value pair table
 function M.ListHapgsResponse(args)
-	assert(args, "You must provdide an argument table when creating ListHapgsResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListHapgsResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["HapgList"] = args["HapgList"],
 		["NextToken"] = args["NextToken"],
 	}
-	asserts.AssertListHapgsResponse(t)
-	return t
+	asserts.AssertListHapgsResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeHsmRequest = { ["HsmSerialNumber"] = true, ["HsmArn"] = true, nil }
@@ -599,13 +808,24 @@ end
 -- * HsmArn [HsmArn] <p>The ARN of the HSM. Either the <i>HsmArn</i> or the <i>SerialNumber</i> parameter must be specified.</p>
 -- @return DescribeHsmRequest structure as a key-value pair table
 function M.DescribeHsmRequest(args)
-	assert(args, "You must provdide an argument table when creating DescribeHsmRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeHsmRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["HsmSerialNumber"] = args["HsmSerialNumber"],
 		["HsmArn"] = args["HsmArn"],
 	}
-	asserts.AssertDescribeHsmRequest(t)
-	return t
+	asserts.AssertDescribeHsmRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeLunaClientResponse = { ["LastModifiedTimestamp"] = true, ["Label"] = true, ["CertificateFingerprint"] = true, ["Certificate"] = true, ["ClientArn"] = true, nil }
@@ -634,16 +854,27 @@ end
 -- * ClientArn [ClientArn] <p>The ARN of the client.</p>
 -- @return DescribeLunaClientResponse structure as a key-value pair table
 function M.DescribeLunaClientResponse(args)
-	assert(args, "You must provdide an argument table when creating DescribeLunaClientResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeLunaClientResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["LastModifiedTimestamp"] = args["LastModifiedTimestamp"],
 		["Label"] = args["Label"],
 		["CertificateFingerprint"] = args["CertificateFingerprint"],
 		["Certificate"] = args["Certificate"],
 		["ClientArn"] = args["ClientArn"],
 	}
-	asserts.AssertDescribeLunaClientResponse(t)
-	return t
+	asserts.AssertDescribeLunaClientResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteLunaClientRequest = { ["ClientArn"] = true, nil }
@@ -666,12 +897,23 @@ end
 -- Required key: ClientArn
 -- @return DeleteLunaClientRequest structure as a key-value pair table
 function M.DeleteLunaClientRequest(args)
-	assert(args, "You must provdide an argument table when creating DeleteLunaClientRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteLunaClientRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ClientArn"] = args["ClientArn"],
 	}
-	asserts.AssertDeleteLunaClientRequest(t)
-	return t
+	asserts.AssertDeleteLunaClientRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CloudHsmServiceException = { ["message"] = true, ["retryable"] = true, nil }
@@ -694,13 +936,24 @@ end
 -- * retryable [Boolean] <p>Indicates if the action can be retried.</p>
 -- @return CloudHsmServiceException structure as a key-value pair table
 function M.CloudHsmServiceException(args)
-	assert(args, "You must provdide an argument table when creating CloudHsmServiceException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CloudHsmServiceException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 		["retryable"] = args["retryable"],
 	}
-	asserts.AssertCloudHsmServiceException(t)
-	return t
+	asserts.AssertCloudHsmServiceException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ModifyHapgResponse = { ["HapgArn"] = true, nil }
@@ -721,12 +974,23 @@ end
 -- * HapgArn [HapgArn] <p>The ARN of the high-availability partition group.</p>
 -- @return ModifyHapgResponse structure as a key-value pair table
 function M.ModifyHapgResponse(args)
-	assert(args, "You must provdide an argument table when creating ModifyHapgResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ModifyHapgResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["HapgArn"] = args["HapgArn"],
 	}
-	asserts.AssertModifyHapgResponse(t)
-	return t
+	asserts.AssertModifyHapgResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteLunaClientResponse = { ["Status"] = true, nil }
@@ -749,12 +1013,23 @@ end
 -- Required key: Status
 -- @return DeleteLunaClientResponse structure as a key-value pair table
 function M.DeleteLunaClientResponse(args)
-	assert(args, "You must provdide an argument table when creating DeleteLunaClientResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteLunaClientResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Status"] = args["Status"],
 	}
-	asserts.AssertDeleteLunaClientResponse(t)
-	return t
+	asserts.AssertDeleteLunaClientResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListLunaClientsResponse = { ["NextToken"] = true, ["ClientList"] = true, nil }
@@ -779,13 +1054,24 @@ end
 -- Required key: ClientList
 -- @return ListLunaClientsResponse structure as a key-value pair table
 function M.ListLunaClientsResponse(args)
-	assert(args, "You must provdide an argument table when creating ListLunaClientsResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListLunaClientsResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NextToken"] = args["NextToken"],
 		["ClientList"] = args["ClientList"],
 	}
-	asserts.AssertListLunaClientsResponse(t)
-	return t
+	asserts.AssertListLunaClientsResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ModifyHapgRequest = { ["HapgArn"] = true, ["PartitionSerialList"] = true, ["Label"] = true, nil }
@@ -812,14 +1098,25 @@ end
 -- Required key: HapgArn
 -- @return ModifyHapgRequest structure as a key-value pair table
 function M.ModifyHapgRequest(args)
-	assert(args, "You must provdide an argument table when creating ModifyHapgRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ModifyHapgRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["HapgArn"] = args["HapgArn"],
 		["PartitionSerialList"] = args["PartitionSerialList"],
 		["Label"] = args["Label"],
 	}
-	asserts.AssertModifyHapgRequest(t)
-	return t
+	asserts.AssertModifyHapgRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ModifyLunaClientResponse = { ["ClientArn"] = true, nil }
@@ -840,12 +1137,23 @@ end
 -- * ClientArn [ClientArn] <p>The ARN of the client.</p>
 -- @return ModifyLunaClientResponse structure as a key-value pair table
 function M.ModifyLunaClientResponse(args)
-	assert(args, "You must provdide an argument table when creating ModifyLunaClientResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ModifyLunaClientResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ClientArn"] = args["ClientArn"],
 	}
-	asserts.AssertModifyLunaClientResponse(t)
-	return t
+	asserts.AssertModifyLunaClientResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AddTagsToResourceResponse = { ["Status"] = true, nil }
@@ -868,12 +1176,23 @@ end
 -- Required key: Status
 -- @return AddTagsToResourceResponse structure as a key-value pair table
 function M.AddTagsToResourceResponse(args)
-	assert(args, "You must provdide an argument table when creating AddTagsToResourceResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AddTagsToResourceResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Status"] = args["Status"],
 	}
-	asserts.AssertAddTagsToResourceResponse(t)
-	return t
+	asserts.AssertAddTagsToResourceResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetConfigResponse = { ["ConfigType"] = true, ["ConfigCred"] = true, ["ConfigFile"] = true, nil }
@@ -898,14 +1217,25 @@ end
 -- * ConfigFile [String] <p>The chrystoki.conf configuration file.</p>
 -- @return GetConfigResponse structure as a key-value pair table
 function M.GetConfigResponse(args)
-	assert(args, "You must provdide an argument table when creating GetConfigResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetConfigResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ConfigType"] = args["ConfigType"],
 		["ConfigCred"] = args["ConfigCred"],
 		["ConfigFile"] = args["ConfigFile"],
 	}
-	asserts.AssertGetConfigResponse(t)
-	return t
+	asserts.AssertGetConfigResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteHapgRequest = { ["HapgArn"] = true, nil }
@@ -928,12 +1258,23 @@ end
 -- Required key: HapgArn
 -- @return DeleteHapgRequest structure as a key-value pair table
 function M.DeleteHapgRequest(args)
-	assert(args, "You must provdide an argument table when creating DeleteHapgRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteHapgRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["HapgArn"] = args["HapgArn"],
 	}
-	asserts.AssertDeleteHapgRequest(t)
-	return t
+	asserts.AssertDeleteHapgRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteHapgResponse = { ["Status"] = true, nil }
@@ -956,12 +1297,23 @@ end
 -- Required key: Status
 -- @return DeleteHapgResponse structure as a key-value pair table
 function M.DeleteHapgResponse(args)
-	assert(args, "You must provdide an argument table when creating DeleteHapgResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteHapgResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Status"] = args["Status"],
 	}
-	asserts.AssertDeleteHapgResponse(t)
-	return t
+	asserts.AssertDeleteHapgResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListHsmsRequest = { ["NextToken"] = true, nil }
@@ -982,12 +1334,23 @@ end
 -- * NextToken [PaginationToken] <p>The <i>NextToken</i> value from a previous call to <a>ListHsms</a>. Pass null if this is the first call.</p>
 -- @return ListHsmsRequest structure as a key-value pair table
 function M.ListHsmsRequest(args)
-	assert(args, "You must provdide an argument table when creating ListHsmsRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListHsmsRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NextToken"] = args["NextToken"],
 	}
-	asserts.AssertListHsmsRequest(t)
-	return t
+	asserts.AssertListHsmsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ModifyLunaClientRequest = { ["Certificate"] = true, ["ClientArn"] = true, nil }
@@ -1014,13 +1377,24 @@ end
 -- Required key: Certificate
 -- @return ModifyLunaClientRequest structure as a key-value pair table
 function M.ModifyLunaClientRequest(args)
-	assert(args, "You must provdide an argument table when creating ModifyLunaClientRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ModifyLunaClientRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Certificate"] = args["Certificate"],
 		["ClientArn"] = args["ClientArn"],
 	}
-	asserts.AssertModifyLunaClientRequest(t)
-	return t
+	asserts.AssertModifyLunaClientRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeLunaClientRequest = { ["CertificateFingerprint"] = true, ["ClientArn"] = true, nil }
@@ -1043,13 +1417,24 @@ end
 -- * ClientArn [ClientArn] <p>The ARN of the client.</p>
 -- @return DescribeLunaClientRequest structure as a key-value pair table
 function M.DescribeLunaClientRequest(args)
-	assert(args, "You must provdide an argument table when creating DescribeLunaClientRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeLunaClientRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["CertificateFingerprint"] = args["CertificateFingerprint"],
 		["ClientArn"] = args["ClientArn"],
 	}
-	asserts.AssertDescribeLunaClientRequest(t)
-	return t
+	asserts.AssertDescribeLunaClientRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateHapgResponse = { ["HapgArn"] = true, nil }
@@ -1070,12 +1455,23 @@ end
 -- * HapgArn [HapgArn] <p>The ARN of the high-availability partition group.</p>
 -- @return CreateHapgResponse structure as a key-value pair table
 function M.CreateHapgResponse(args)
-	assert(args, "You must provdide an argument table when creating CreateHapgResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateHapgResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["HapgArn"] = args["HapgArn"],
 	}
-	asserts.AssertCreateHapgResponse(t)
-	return t
+	asserts.AssertCreateHapgResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ModifyHsmRequest = { ["IamRoleArn"] = true, ["EniIp"] = true, ["ExternalId"] = true, ["SubnetId"] = true, ["SyslogIp"] = true, ["HsmArn"] = true, nil }
@@ -1108,8 +1504,14 @@ end
 -- Required key: HsmArn
 -- @return ModifyHsmRequest structure as a key-value pair table
 function M.ModifyHsmRequest(args)
-	assert(args, "You must provdide an argument table when creating ModifyHsmRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ModifyHsmRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["IamRoleArn"] = args["IamRoleArn"],
 		["EniIp"] = args["EniIp"],
 		["ExternalId"] = args["ExternalId"],
@@ -1117,8 +1519,13 @@ function M.ModifyHsmRequest(args)
 		["SyslogIp"] = args["SyslogIp"],
 		["HsmArn"] = args["HsmArn"],
 	}
-	asserts.AssertModifyHsmRequest(t)
-	return t
+	asserts.AssertModifyHsmRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListAvailableZonesResponse = { ["AZList"] = true, nil }
@@ -1139,12 +1546,23 @@ end
 -- * AZList [AZList] <p>The list of Availability Zones that have available AWS CloudHSM capacity.</p>
 -- @return ListAvailableZonesResponse structure as a key-value pair table
 function M.ListAvailableZonesResponse(args)
-	assert(args, "You must provdide an argument table when creating ListAvailableZonesResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListAvailableZonesResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["AZList"] = args["AZList"],
 	}
-	asserts.AssertListAvailableZonesResponse(t)
-	return t
+	asserts.AssertListAvailableZonesResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateHsmRequest = { ["SshKey"] = true, ["SubscriptionType"] = true, ["IamRoleArn"] = true, ["EniIp"] = true, ["ExternalId"] = true, ["ClientToken"] = true, ["SubnetId"] = true, ["SyslogIp"] = true, nil }
@@ -1187,8 +1605,14 @@ end
 -- Required key: SubscriptionType
 -- @return CreateHsmRequest structure as a key-value pair table
 function M.CreateHsmRequest(args)
-	assert(args, "You must provdide an argument table when creating CreateHsmRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateHsmRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["SshKey"] = args["SshKey"],
 		["SubscriptionType"] = args["SubscriptionType"],
 		["IamRoleArn"] = args["IamRoleArn"],
@@ -1198,8 +1622,13 @@ function M.CreateHsmRequest(args)
 		["SubnetId"] = args["SubnetId"],
 		["SyslogIp"] = args["SyslogIp"],
 	}
-	asserts.AssertCreateHsmRequest(t)
-	return t
+	asserts.AssertCreateHsmRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteHsmResponse = { ["Status"] = true, nil }
@@ -1222,12 +1651,23 @@ end
 -- Required key: Status
 -- @return DeleteHsmResponse structure as a key-value pair table
 function M.DeleteHsmResponse(args)
-	assert(args, "You must provdide an argument table when creating DeleteHsmResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteHsmResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Status"] = args["Status"],
 	}
-	asserts.AssertDeleteHsmResponse(t)
-	return t
+	asserts.AssertDeleteHsmResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateLunaClientRequest = { ["Certificate"] = true, ["Label"] = true, nil }
@@ -1252,13 +1692,24 @@ end
 -- Required key: Certificate
 -- @return CreateLunaClientRequest structure as a key-value pair table
 function M.CreateLunaClientRequest(args)
-	assert(args, "You must provdide an argument table when creating CreateLunaClientRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateLunaClientRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Certificate"] = args["Certificate"],
 		["Label"] = args["Label"],
 	}
-	asserts.AssertCreateLunaClientRequest(t)
-	return t
+	asserts.AssertCreateLunaClientRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeHsmResponse = { ["Status"] = true, ["SubscriptionStartDate"] = true, ["AvailabilityZone"] = true, ["EniId"] = true, ["HsmType"] = true, ["SshPublicKey"] = true, ["SubscriptionType"] = true, ["SerialNumber"] = true, ["IamRoleArn"] = true, ["SubscriptionEndDate"] = true, ["EniIp"] = true, ["SoftwareVersion"] = true, ["VpcId"] = true, ["ServerCertUri"] = true, ["SubnetId"] = true, ["SshKeyLastUpdated"] = true, ["Partitions"] = true, ["ServerCertLastUpdated"] = true, ["StatusDetails"] = true, ["VendorName"] = true, ["HsmArn"] = true, nil }
@@ -1319,8 +1770,14 @@ end
 -- * HsmArn [HsmArn] <p>The ARN of the HSM.</p>
 -- @return DescribeHsmResponse structure as a key-value pair table
 function M.DescribeHsmResponse(args)
-	assert(args, "You must provdide an argument table when creating DescribeHsmResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeHsmResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Status"] = args["Status"],
 		["SubscriptionStartDate"] = args["SubscriptionStartDate"],
 		["AvailabilityZone"] = args["AvailabilityZone"],
@@ -1343,8 +1800,13 @@ function M.DescribeHsmResponse(args)
 		["VendorName"] = args["VendorName"],
 		["HsmArn"] = args["HsmArn"],
 	}
-	asserts.AssertDescribeHsmResponse(t)
-	return t
+	asserts.AssertDescribeHsmResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CloudHsmInternalException = { nil }
@@ -1363,11 +1825,22 @@ end
 -- Valid keys:
 -- @return CloudHsmInternalException structure as a key-value pair table
 function M.CloudHsmInternalException(args)
-	assert(args, "You must provdide an argument table when creating CloudHsmInternalException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CloudHsmInternalException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertCloudHsmInternalException(t)
-	return t
+	asserts.AssertCloudHsmInternalException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Tag = { ["Value"] = true, ["Key"] = true, nil }
@@ -1394,13 +1867,24 @@ end
 -- Required key: Value
 -- @return Tag structure as a key-value pair table
 function M.Tag(args)
-	assert(args, "You must provdide an argument table when creating Tag")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Tag")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Value"] = args["Value"],
 		["Key"] = args["Key"],
 	}
-	asserts.AssertTag(t)
-	return t
+	asserts.AssertTag(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 function asserts.AssertCertificate(str)
@@ -1898,8 +2382,11 @@ function M.CreateHsmAsync(CreateHsmRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "CloudHsmFrontendService.CreateHsm",
 	}
+	for header,value in pairs(CreateHsmRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateHsmRequest, headers, settings, cb)
 	else
@@ -1930,8 +2417,11 @@ function M.ListHapgsAsync(ListHapgsRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "CloudHsmFrontendService.ListHapgs",
 	}
+	for header,value in pairs(ListHapgsRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ListHapgsRequest, headers, settings, cb)
 	else
@@ -1962,8 +2452,11 @@ function M.ModifyHapgAsync(ModifyHapgRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "CloudHsmFrontendService.ModifyHapg",
 	}
+	for header,value in pairs(ModifyHapgRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ModifyHapgRequest, headers, settings, cb)
 	else
@@ -1994,8 +2487,11 @@ function M.DescribeHapgAsync(DescribeHapgRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "CloudHsmFrontendService.DescribeHapg",
 	}
+	for header,value in pairs(DescribeHapgRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeHapgRequest, headers, settings, cb)
 	else
@@ -2026,8 +2522,11 @@ function M.DeleteHsmAsync(DeleteHsmRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "CloudHsmFrontendService.DeleteHsm",
 	}
+	for header,value in pairs(DeleteHsmRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteHsmRequest, headers, settings, cb)
 	else
@@ -2058,8 +2557,11 @@ function M.ListHsmsAsync(ListHsmsRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "CloudHsmFrontendService.ListHsms",
 	}
+	for header,value in pairs(ListHsmsRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ListHsmsRequest, headers, settings, cb)
 	else
@@ -2090,8 +2592,11 @@ function M.AddTagsToResourceAsync(AddTagsToResourceRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "CloudHsmFrontendService.AddTagsToResource",
 	}
+	for header,value in pairs(AddTagsToResourceRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", AddTagsToResourceRequest, headers, settings, cb)
 	else
@@ -2122,8 +2627,11 @@ function M.DeleteLunaClientAsync(DeleteLunaClientRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "CloudHsmFrontendService.DeleteLunaClient",
 	}
+	for header,value in pairs(DeleteLunaClientRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteLunaClientRequest, headers, settings, cb)
 	else
@@ -2154,8 +2662,11 @@ function M.CreateLunaClientAsync(CreateLunaClientRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "CloudHsmFrontendService.CreateLunaClient",
 	}
+	for header,value in pairs(CreateLunaClientRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateLunaClientRequest, headers, settings, cb)
 	else
@@ -2186,8 +2697,11 @@ function M.CreateHapgAsync(CreateHapgRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "CloudHsmFrontendService.CreateHapg",
 	}
+	for header,value in pairs(CreateHapgRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateHapgRequest, headers, settings, cb)
 	else
@@ -2218,8 +2732,11 @@ function M.RemoveTagsFromResourceAsync(RemoveTagsFromResourceRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "CloudHsmFrontendService.RemoveTagsFromResource",
 	}
+	for header,value in pairs(RemoveTagsFromResourceRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", RemoveTagsFromResourceRequest, headers, settings, cb)
 	else
@@ -2250,8 +2767,11 @@ function M.DeleteHapgAsync(DeleteHapgRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "CloudHsmFrontendService.DeleteHapg",
 	}
+	for header,value in pairs(DeleteHapgRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteHapgRequest, headers, settings, cb)
 	else
@@ -2282,8 +2802,11 @@ function M.DescribeHsmAsync(DescribeHsmRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "CloudHsmFrontendService.DescribeHsm",
 	}
+	for header,value in pairs(DescribeHsmRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeHsmRequest, headers, settings, cb)
 	else
@@ -2314,8 +2837,11 @@ function M.GetConfigAsync(GetConfigRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "CloudHsmFrontendService.GetConfig",
 	}
+	for header,value in pairs(GetConfigRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", GetConfigRequest, headers, settings, cb)
 	else
@@ -2346,8 +2872,11 @@ function M.ListAvailableZonesAsync(ListAvailableZonesRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "CloudHsmFrontendService.ListAvailableZones",
 	}
+	for header,value in pairs(ListAvailableZonesRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ListAvailableZonesRequest, headers, settings, cb)
 	else
@@ -2378,8 +2907,11 @@ function M.ModifyHsmAsync(ModifyHsmRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "CloudHsmFrontendService.ModifyHsm",
 	}
+	for header,value in pairs(ModifyHsmRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ModifyHsmRequest, headers, settings, cb)
 	else
@@ -2410,8 +2942,11 @@ function M.ListTagsForResourceAsync(ListTagsForResourceRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "CloudHsmFrontendService.ListTagsForResource",
 	}
+	for header,value in pairs(ListTagsForResourceRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ListTagsForResourceRequest, headers, settings, cb)
 	else
@@ -2442,8 +2977,11 @@ function M.ModifyLunaClientAsync(ModifyLunaClientRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "CloudHsmFrontendService.ModifyLunaClient",
 	}
+	for header,value in pairs(ModifyLunaClientRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ModifyLunaClientRequest, headers, settings, cb)
 	else
@@ -2474,8 +3012,11 @@ function M.DescribeLunaClientAsync(DescribeLunaClientRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "CloudHsmFrontendService.DescribeLunaClient",
 	}
+	for header,value in pairs(DescribeLunaClientRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeLunaClientRequest, headers, settings, cb)
 	else
@@ -2506,8 +3047,11 @@ function M.ListLunaClientsAsync(ListLunaClientsRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "CloudHsmFrontendService.ListLunaClients",
 	}
+	for header,value in pairs(ListLunaClientsRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ListLunaClientsRequest, headers, settings, cb)
 	else

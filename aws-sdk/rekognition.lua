@@ -39,12 +39,23 @@ end
 -- * StatusCode [UInteger] <p>HTTP status code that indicates the result of the operation.</p>
 -- @return DeleteCollectionResponse structure as a key-value pair table
 function M.DeleteCollectionResponse(args)
-	assert(args, "You must provdide an argument table when creating DeleteCollectionResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteCollectionResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["StatusCode"] = args["StatusCode"],
 	}
-	asserts.AssertDeleteCollectionResponse(t)
-	return t
+	asserts.AssertDeleteCollectionResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteFacesResponse = { ["DeletedFaces"] = true, nil }
@@ -65,12 +76,23 @@ end
 -- * DeletedFaces [FaceIdList] <p>An array of strings (face IDs) of the faces that were deleted.</p>
 -- @return DeleteFacesResponse structure as a key-value pair table
 function M.DeleteFacesResponse(args)
-	assert(args, "You must provdide an argument table when creating DeleteFacesResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteFacesResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DeletedFaces"] = args["DeletedFaces"],
 	}
-	asserts.AssertDeleteFacesResponse(t)
-	return t
+	asserts.AssertDeleteFacesResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Smile = { ["Confidence"] = true, ["Value"] = true, nil }
@@ -93,13 +115,24 @@ end
 -- * Value [Boolean] <p>Boolean value that indicates whether the face is smiling or not.</p>
 -- @return Smile structure as a key-value pair table
 function M.Smile(args)
-	assert(args, "You must provdide an argument table when creating Smile")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Smile")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Confidence"] = args["Confidence"],
 		["Value"] = args["Value"],
 	}
-	asserts.AssertSmile(t)
-	return t
+	asserts.AssertSmile(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ComparedSourceImageFace = { ["BoundingBox"] = true, ["Confidence"] = true, nil }
@@ -122,13 +155,24 @@ end
 -- * Confidence [Percent] <p>Confidence level that the selected bounding box contains a face.</p>
 -- @return ComparedSourceImageFace structure as a key-value pair table
 function M.ComparedSourceImageFace(args)
-	assert(args, "You must provdide an argument table when creating ComparedSourceImageFace")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ComparedSourceImageFace")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["BoundingBox"] = args["BoundingBox"],
 		["Confidence"] = args["Confidence"],
 	}
-	asserts.AssertComparedSourceImageFace(t)
-	return t
+	asserts.AssertComparedSourceImageFace(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidS3ObjectException = { nil }
@@ -147,11 +191,22 @@ end
 -- Valid keys:
 -- @return InvalidS3ObjectException structure as a key-value pair table
 function M.InvalidS3ObjectException(args)
-	assert(args, "You must provdide an argument table when creating InvalidS3ObjectException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidS3ObjectException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertInvalidS3ObjectException(t)
-	return t
+	asserts.AssertInvalidS3ObjectException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteFacesRequest = { ["FaceIds"] = true, ["CollectionId"] = true, nil }
@@ -178,13 +233,24 @@ end
 -- Required key: FaceIds
 -- @return DeleteFacesRequest structure as a key-value pair table
 function M.DeleteFacesRequest(args)
-	assert(args, "You must provdide an argument table when creating DeleteFacesRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteFacesRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["FaceIds"] = args["FaceIds"],
 		["CollectionId"] = args["CollectionId"],
 	}
-	asserts.AssertDeleteFacesRequest(t)
-	return t
+	asserts.AssertDeleteFacesRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetCelebrityInfoResponse = { ["Name"] = true, ["Urls"] = true, nil }
@@ -207,13 +273,24 @@ end
 -- * Urls [Urls] <p>An array of URLs pointing to additional celebrity information. </p>
 -- @return GetCelebrityInfoResponse structure as a key-value pair table
 function M.GetCelebrityInfoResponse(args)
-	assert(args, "You must provdide an argument table when creating GetCelebrityInfoResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetCelebrityInfoResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Name"] = args["Name"],
 		["Urls"] = args["Urls"],
 	}
-	asserts.AssertGetCelebrityInfoResponse(t)
-	return t
+	asserts.AssertGetCelebrityInfoResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InternalServerError = { nil }
@@ -232,11 +309,22 @@ end
 -- Valid keys:
 -- @return InternalServerError structure as a key-value pair table
 function M.InternalServerError(args)
-	assert(args, "You must provdide an argument table when creating InternalServerError")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InternalServerError")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertInternalServerError(t)
-	return t
+	asserts.AssertInternalServerError(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ImageTooLargeException = { nil }
@@ -255,11 +343,22 @@ end
 -- Valid keys:
 -- @return ImageTooLargeException structure as a key-value pair table
 function M.ImageTooLargeException(args)
-	assert(args, "You must provdide an argument table when creating ImageTooLargeException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ImageTooLargeException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertImageTooLargeException(t)
-	return t
+	asserts.AssertImageTooLargeException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Landmark = { ["Y"] = true, ["X"] = true, ["Type"] = true, nil }
@@ -284,14 +383,25 @@ end
 -- * Type [LandmarkType] <p>Type of the landmark.</p>
 -- @return Landmark structure as a key-value pair table
 function M.Landmark(args)
-	assert(args, "You must provdide an argument table when creating Landmark")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Landmark")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Y"] = args["Y"],
 		["X"] = args["X"],
 		["Type"] = args["Type"],
 	}
-	asserts.AssertLandmark(t)
-	return t
+	asserts.AssertLandmark(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Eyeglasses = { ["Confidence"] = true, ["Value"] = true, nil }
@@ -314,13 +424,24 @@ end
 -- * Value [Boolean] <p>Boolean value that indicates whether the face is wearing eye glasses or not.</p>
 -- @return Eyeglasses structure as a key-value pair table
 function M.Eyeglasses(args)
-	assert(args, "You must provdide an argument table when creating Eyeglasses")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Eyeglasses")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Confidence"] = args["Confidence"],
 		["Value"] = args["Value"],
 	}
-	asserts.AssertEyeglasses(t)
-	return t
+	asserts.AssertEyeglasses(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.SearchFacesResponse = { ["SearchedFaceId"] = true, ["FaceMatches"] = true, nil }
@@ -343,13 +464,24 @@ end
 -- * FaceMatches [FaceMatchList] <p>An array of faces that matched the input face, along with the confidence in the match.</p>
 -- @return SearchFacesResponse structure as a key-value pair table
 function M.SearchFacesResponse(args)
-	assert(args, "You must provdide an argument table when creating SearchFacesResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating SearchFacesResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["SearchedFaceId"] = args["SearchedFaceId"],
 		["FaceMatches"] = args["FaceMatches"],
 	}
-	asserts.AssertSearchFacesResponse(t)
-	return t
+	asserts.AssertSearchFacesResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListCollectionsResponse = { ["NextToken"] = true, ["CollectionIds"] = true, nil }
@@ -372,13 +504,24 @@ end
 -- * CollectionIds [CollectionIdList] <p>An array of collection IDs.</p>
 -- @return ListCollectionsResponse structure as a key-value pair table
 function M.ListCollectionsResponse(args)
-	assert(args, "You must provdide an argument table when creating ListCollectionsResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListCollectionsResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NextToken"] = args["NextToken"],
 		["CollectionIds"] = args["CollectionIds"],
 	}
-	asserts.AssertListCollectionsResponse(t)
-	return t
+	asserts.AssertListCollectionsResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.SearchFacesByImageRequest = { ["Image"] = true, ["MaxFaces"] = true, ["FaceMatchThreshold"] = true, ["CollectionId"] = true, nil }
@@ -409,15 +552,26 @@ end
 -- Required key: Image
 -- @return SearchFacesByImageRequest structure as a key-value pair table
 function M.SearchFacesByImageRequest(args)
-	assert(args, "You must provdide an argument table when creating SearchFacesByImageRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating SearchFacesByImageRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Image"] = args["Image"],
 		["MaxFaces"] = args["MaxFaces"],
 		["FaceMatchThreshold"] = args["FaceMatchThreshold"],
 		["CollectionId"] = args["CollectionId"],
 	}
-	asserts.AssertSearchFacesByImageRequest(t)
-	return t
+	asserts.AssertSearchFacesByImageRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.IndexFacesRequest = { ["DetectionAttributes"] = true, ["Image"] = true, ["ExternalImageId"] = true, ["CollectionId"] = true, nil }
@@ -448,15 +602,26 @@ end
 -- Required key: Image
 -- @return IndexFacesRequest structure as a key-value pair table
 function M.IndexFacesRequest(args)
-	assert(args, "You must provdide an argument table when creating IndexFacesRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating IndexFacesRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DetectionAttributes"] = args["DetectionAttributes"],
 		["Image"] = args["Image"],
 		["ExternalImageId"] = args["ExternalImageId"],
 		["CollectionId"] = args["CollectionId"],
 	}
-	asserts.AssertIndexFacesRequest(t)
-	return t
+	asserts.AssertIndexFacesRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteCollectionRequest = { ["CollectionId"] = true, nil }
@@ -479,12 +644,23 @@ end
 -- Required key: CollectionId
 -- @return DeleteCollectionRequest structure as a key-value pair table
 function M.DeleteCollectionRequest(args)
-	assert(args, "You must provdide an argument table when creating DeleteCollectionRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteCollectionRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["CollectionId"] = args["CollectionId"],
 	}
-	asserts.AssertDeleteCollectionRequest(t)
-	return t
+	asserts.AssertDeleteCollectionRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.S3Object = { ["Version"] = true, ["Bucket"] = true, ["Name"] = true, nil }
@@ -509,14 +685,25 @@ end
 -- * Name [S3ObjectName] <p>S3 object key name.</p>
 -- @return S3Object structure as a key-value pair table
 function M.S3Object(args)
-	assert(args, "You must provdide an argument table when creating S3Object")
-	local t = { 
+	assert(args, "You must provide an argument table when creating S3Object")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Version"] = args["Version"],
 		["Bucket"] = args["Bucket"],
 		["Name"] = args["Name"],
 	}
-	asserts.AssertS3Object(t)
-	return t
+	asserts.AssertS3Object(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Label = { ["Confidence"] = true, ["Name"] = true, nil }
@@ -539,13 +726,24 @@ end
 -- * Name [String] <p>The name (label) of the object.</p>
 -- @return Label structure as a key-value pair table
 function M.Label(args)
-	assert(args, "You must provdide an argument table when creating Label")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Label")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Confidence"] = args["Confidence"],
 		["Name"] = args["Name"],
 	}
-	asserts.AssertLabel(t)
-	return t
+	asserts.AssertLabel(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ImageQuality = { ["Sharpness"] = true, ["Brightness"] = true, nil }
@@ -568,13 +766,24 @@ end
 -- * Brightness [Float] <p>Value representing brightness of the face. The service returns a value between 0 and 100 (inclusive). A higher value indicates a brighter face image.</p>
 -- @return ImageQuality structure as a key-value pair table
 function M.ImageQuality(args)
-	assert(args, "You must provdide an argument table when creating ImageQuality")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ImageQuality")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Sharpness"] = args["Sharpness"],
 		["Brightness"] = args["Brightness"],
 	}
-	asserts.AssertImageQuality(t)
-	return t
+	asserts.AssertImageQuality(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DetectModerationLabelsResponse = { ["ModerationLabels"] = true, nil }
@@ -595,12 +804,23 @@ end
 -- * ModerationLabels [ModerationLabels] <p>An array of labels for explicit or suggestive adult content found in the image. The list includes the top-level label and each child label detected in the image. This is useful for filtering specific categories of content. </p>
 -- @return DetectModerationLabelsResponse structure as a key-value pair table
 function M.DetectModerationLabelsResponse(args)
-	assert(args, "You must provdide an argument table when creating DetectModerationLabelsResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DetectModerationLabelsResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ModerationLabels"] = args["ModerationLabels"],
 	}
-	asserts.AssertDetectModerationLabelsResponse(t)
-	return t
+	asserts.AssertDetectModerationLabelsResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.IndexFacesResponse = { ["FaceRecords"] = true, ["OrientationCorrection"] = true, nil }
@@ -623,13 +843,24 @@ end
 -- * OrientationCorrection [OrientationCorrection] <p>The orientation of the input image (counterclockwise direction). If your application displays the image, you can use this value to correct image orientation. The bounding box coordinates returned in <code>FaceRecords</code> represent face locations before the image orientation is corrected. </p> <note> <p>If the input image is in jpeg format, it might contain exchangeable image (Exif) metadata. If so, and the Exif metadata populates the orientation field, the value of <code>OrientationCorrection</code> is null and the bounding box coordinates in <code>FaceRecords</code> represent face locations after Exif metadata is used to correct the image orientation. Images in .png format don't contain Exif metadata.</p> </note>
 -- @return IndexFacesResponse structure as a key-value pair table
 function M.IndexFacesResponse(args)
-	assert(args, "You must provdide an argument table when creating IndexFacesResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating IndexFacesResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["FaceRecords"] = args["FaceRecords"],
 		["OrientationCorrection"] = args["OrientationCorrection"],
 	}
-	asserts.AssertIndexFacesResponse(t)
-	return t
+	asserts.AssertIndexFacesResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateCollectionRequest = { ["CollectionId"] = true, nil }
@@ -652,12 +883,23 @@ end
 -- Required key: CollectionId
 -- @return CreateCollectionRequest structure as a key-value pair table
 function M.CreateCollectionRequest(args)
-	assert(args, "You must provdide an argument table when creating CreateCollectionRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateCollectionRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["CollectionId"] = args["CollectionId"],
 	}
-	asserts.AssertCreateCollectionRequest(t)
-	return t
+	asserts.AssertCreateCollectionRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Gender = { ["Confidence"] = true, ["Value"] = true, nil }
@@ -680,13 +922,24 @@ end
 -- * Value [GenderType] <p>Gender of the face.</p>
 -- @return Gender structure as a key-value pair table
 function M.Gender(args)
-	assert(args, "You must provdide an argument table when creating Gender")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Gender")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Confidence"] = args["Confidence"],
 		["Value"] = args["Value"],
 	}
-	asserts.AssertGender(t)
-	return t
+	asserts.AssertGender(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetCelebrityInfoRequest = { ["Id"] = true, nil }
@@ -709,12 +962,23 @@ end
 -- Required key: Id
 -- @return GetCelebrityInfoRequest structure as a key-value pair table
 function M.GetCelebrityInfoRequest(args)
-	assert(args, "You must provdide an argument table when creating GetCelebrityInfoRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetCelebrityInfoRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Id"] = args["Id"],
 	}
-	asserts.AssertGetCelebrityInfoRequest(t)
-	return t
+	asserts.AssertGetCelebrityInfoRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.RecognizeCelebritiesRequest = { ["Image"] = true, nil }
@@ -737,12 +1001,23 @@ end
 -- Required key: Image
 -- @return RecognizeCelebritiesRequest structure as a key-value pair table
 function M.RecognizeCelebritiesRequest(args)
-	assert(args, "You must provdide an argument table when creating RecognizeCelebritiesRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating RecognizeCelebritiesRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Image"] = args["Image"],
 	}
-	asserts.AssertRecognizeCelebritiesRequest(t)
-	return t
+	asserts.AssertRecognizeCelebritiesRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DetectLabelsRequest = { ["MinConfidence"] = true, ["Image"] = true, ["MaxLabels"] = true, nil }
@@ -769,14 +1044,25 @@ end
 -- Required key: Image
 -- @return DetectLabelsRequest structure as a key-value pair table
 function M.DetectLabelsRequest(args)
-	assert(args, "You must provdide an argument table when creating DetectLabelsRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DetectLabelsRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["MinConfidence"] = args["MinConfidence"],
 		["Image"] = args["Image"],
 		["MaxLabels"] = args["MaxLabels"],
 	}
-	asserts.AssertDetectLabelsRequest(t)
-	return t
+	asserts.AssertDetectLabelsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateCollectionResponse = { ["CollectionArn"] = true, ["StatusCode"] = true, nil }
@@ -799,13 +1085,24 @@ end
 -- * StatusCode [UInteger] <p>HTTP status code indicating the result of the operation.</p>
 -- @return CreateCollectionResponse structure as a key-value pair table
 function M.CreateCollectionResponse(args)
-	assert(args, "You must provdide an argument table when creating CreateCollectionResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateCollectionResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["CollectionArn"] = args["CollectionArn"],
 		["StatusCode"] = args["StatusCode"],
 	}
-	asserts.AssertCreateCollectionResponse(t)
-	return t
+	asserts.AssertCreateCollectionResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidPaginationTokenException = { nil }
@@ -824,11 +1121,22 @@ end
 -- Valid keys:
 -- @return InvalidPaginationTokenException structure as a key-value pair table
 function M.InvalidPaginationTokenException(args)
-	assert(args, "You must provdide an argument table when creating InvalidPaginationTokenException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidPaginationTokenException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertInvalidPaginationTokenException(t)
-	return t
+	asserts.AssertInvalidPaginationTokenException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidImageFormatException = { nil }
@@ -847,11 +1155,22 @@ end
 -- Valid keys:
 -- @return InvalidImageFormatException structure as a key-value pair table
 function M.InvalidImageFormatException(args)
-	assert(args, "You must provdide an argument table when creating InvalidImageFormatException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidImageFormatException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertInvalidImageFormatException(t)
-	return t
+	asserts.AssertInvalidImageFormatException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ResourceAlreadyExistsException = { nil }
@@ -870,11 +1189,22 @@ end
 -- Valid keys:
 -- @return ResourceAlreadyExistsException structure as a key-value pair table
 function M.ResourceAlreadyExistsException(args)
-	assert(args, "You must provdide an argument table when creating ResourceAlreadyExistsException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ResourceAlreadyExistsException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertResourceAlreadyExistsException(t)
-	return t
+	asserts.AssertResourceAlreadyExistsException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Emotion = { ["Confidence"] = true, ["Type"] = true, nil }
@@ -897,13 +1227,24 @@ end
 -- * Type [EmotionName] <p>Type of emotion detected.</p>
 -- @return Emotion structure as a key-value pair table
 function M.Emotion(args)
-	assert(args, "You must provdide an argument table when creating Emotion")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Emotion")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Confidence"] = args["Confidence"],
 		["Type"] = args["Type"],
 	}
-	asserts.AssertEmotion(t)
-	return t
+	asserts.AssertEmotion(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Image = { ["Bytes"] = true, ["S3Object"] = true, nil }
@@ -926,13 +1267,24 @@ end
 -- * S3Object [S3Object] <p>Identifies an S3 object as the image source.</p>
 -- @return Image structure as a key-value pair table
 function M.Image(args)
-	assert(args, "You must provdide an argument table when creating Image")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Image")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Bytes"] = args["Bytes"],
 		["S3Object"] = args["S3Object"],
 	}
-	asserts.AssertImage(t)
-	return t
+	asserts.AssertImage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CompareFacesResponse = { ["TargetImageOrientationCorrection"] = true, ["UnmatchedFaces"] = true, ["SourceImageOrientationCorrection"] = true, ["FaceMatches"] = true, ["SourceImageFace"] = true, nil }
@@ -961,16 +1313,27 @@ end
 -- * SourceImageFace [ComparedSourceImageFace] <p>The face in the source image that was used for comparison.</p>
 -- @return CompareFacesResponse structure as a key-value pair table
 function M.CompareFacesResponse(args)
-	assert(args, "You must provdide an argument table when creating CompareFacesResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CompareFacesResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["TargetImageOrientationCorrection"] = args["TargetImageOrientationCorrection"],
 		["UnmatchedFaces"] = args["UnmatchedFaces"],
 		["SourceImageOrientationCorrection"] = args["SourceImageOrientationCorrection"],
 		["FaceMatches"] = args["FaceMatches"],
 		["SourceImageFace"] = args["SourceImageFace"],
 	}
-	asserts.AssertCompareFacesResponse(t)
-	return t
+	asserts.AssertCompareFacesResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Beard = { ["Confidence"] = true, ["Value"] = true, nil }
@@ -993,13 +1356,24 @@ end
 -- * Value [Boolean] <p>Boolean value that indicates whether the face has beard or not.</p>
 -- @return Beard structure as a key-value pair table
 function M.Beard(args)
-	assert(args, "You must provdide an argument table when creating Beard")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Beard")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Confidence"] = args["Confidence"],
 		["Value"] = args["Value"],
 	}
-	asserts.AssertBeard(t)
-	return t
+	asserts.AssertBeard(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Pose = { ["Yaw"] = true, ["Roll"] = true, ["Pitch"] = true, nil }
@@ -1024,14 +1398,25 @@ end
 -- * Pitch [Degree] <p>Value representing the face rotation on the pitch axis.</p>
 -- @return Pose structure as a key-value pair table
 function M.Pose(args)
-	assert(args, "You must provdide an argument table when creating Pose")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Pose")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Yaw"] = args["Yaw"],
 		["Roll"] = args["Roll"],
 		["Pitch"] = args["Pitch"],
 	}
-	asserts.AssertPose(t)
-	return t
+	asserts.AssertPose(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.MouthOpen = { ["Confidence"] = true, ["Value"] = true, nil }
@@ -1054,13 +1439,24 @@ end
 -- * Value [Boolean] <p>Boolean value that indicates whether the mouth on the face is open or not.</p>
 -- @return MouthOpen structure as a key-value pair table
 function M.MouthOpen(args)
-	assert(args, "You must provdide an argument table when creating MouthOpen")
-	local t = { 
+	assert(args, "You must provide an argument table when creating MouthOpen")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Confidence"] = args["Confidence"],
 		["Value"] = args["Value"],
 	}
-	asserts.AssertMouthOpen(t)
-	return t
+	asserts.AssertMouthOpen(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListCollectionsRequest = { ["NextToken"] = true, ["MaxResults"] = true, nil }
@@ -1083,13 +1479,24 @@ end
 -- * MaxResults [PageSize] <p>Maximum number of collection IDs to return.</p>
 -- @return ListCollectionsRequest structure as a key-value pair table
 function M.ListCollectionsRequest(args)
-	assert(args, "You must provdide an argument table when creating ListCollectionsRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListCollectionsRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NextToken"] = args["NextToken"],
 		["MaxResults"] = args["MaxResults"],
 	}
-	asserts.AssertListCollectionsRequest(t)
-	return t
+	asserts.AssertListCollectionsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Face = { ["BoundingBox"] = true, ["FaceId"] = true, ["ExternalImageId"] = true, ["Confidence"] = true, ["ImageId"] = true, nil }
@@ -1118,16 +1525,27 @@ end
 -- * ImageId [ImageId] <p>Unique identifier that Amazon Rekognition assigns to the input image.</p>
 -- @return Face structure as a key-value pair table
 function M.Face(args)
-	assert(args, "You must provdide an argument table when creating Face")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Face")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["BoundingBox"] = args["BoundingBox"],
 		["FaceId"] = args["FaceId"],
 		["ExternalImageId"] = args["ExternalImageId"],
 		["Confidence"] = args["Confidence"],
 		["ImageId"] = args["ImageId"],
 	}
-	asserts.AssertFace(t)
-	return t
+	asserts.AssertFace(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DetectModerationLabelsRequest = { ["MinConfidence"] = true, ["Image"] = true, nil }
@@ -1152,13 +1570,24 @@ end
 -- Required key: Image
 -- @return DetectModerationLabelsRequest structure as a key-value pair table
 function M.DetectModerationLabelsRequest(args)
-	assert(args, "You must provdide an argument table when creating DetectModerationLabelsRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DetectModerationLabelsRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["MinConfidence"] = args["MinConfidence"],
 		["Image"] = args["Image"],
 	}
-	asserts.AssertDetectModerationLabelsRequest(t)
-	return t
+	asserts.AssertDetectModerationLabelsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DetectLabelsResponse = { ["Labels"] = true, ["OrientationCorrection"] = true, nil }
@@ -1181,13 +1610,24 @@ end
 -- * OrientationCorrection [OrientationCorrection] <p> The orientation of the input image (counter-clockwise direction). If your application displays the image, you can use this value to correct the orientation. If Amazon Rekognition detects that the input image was rotated (for example, by 90 degrees), it first corrects the orientation before detecting the labels. </p> <note> <p>If the input image Exif metadata populates the orientation field, Amazon Rekognition does not perform orientation correction and the value of OrientationCorrection will be null.</p> </note>
 -- @return DetectLabelsResponse structure as a key-value pair table
 function M.DetectLabelsResponse(args)
-	assert(args, "You must provdide an argument table when creating DetectLabelsResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DetectLabelsResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Labels"] = args["Labels"],
 		["OrientationCorrection"] = args["OrientationCorrection"],
 	}
-	asserts.AssertDetectLabelsResponse(t)
-	return t
+	asserts.AssertDetectLabelsResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Mustache = { ["Confidence"] = true, ["Value"] = true, nil }
@@ -1210,13 +1650,24 @@ end
 -- * Value [Boolean] <p>Boolean value that indicates whether the face has mustache or not.</p>
 -- @return Mustache structure as a key-value pair table
 function M.Mustache(args)
-	assert(args, "You must provdide an argument table when creating Mustache")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Mustache")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Confidence"] = args["Confidence"],
 		["Value"] = args["Value"],
 	}
-	asserts.AssertMustache(t)
-	return t
+	asserts.AssertMustache(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ProvisionedThroughputExceededException = { nil }
@@ -1235,11 +1686,22 @@ end
 -- Valid keys:
 -- @return ProvisionedThroughputExceededException structure as a key-value pair table
 function M.ProvisionedThroughputExceededException(args)
-	assert(args, "You must provdide an argument table when creating ProvisionedThroughputExceededException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ProvisionedThroughputExceededException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertProvisionedThroughputExceededException(t)
-	return t
+	asserts.AssertProvisionedThroughputExceededException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ResourceNotFoundException = { nil }
@@ -1258,11 +1720,22 @@ end
 -- Valid keys:
 -- @return ResourceNotFoundException structure as a key-value pair table
 function M.ResourceNotFoundException(args)
-	assert(args, "You must provdide an argument table when creating ResourceNotFoundException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ResourceNotFoundException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertResourceNotFoundException(t)
-	return t
+	asserts.AssertResourceNotFoundException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ThrottlingException = { nil }
@@ -1281,11 +1754,22 @@ end
 -- Valid keys:
 -- @return ThrottlingException structure as a key-value pair table
 function M.ThrottlingException(args)
-	assert(args, "You must provdide an argument table when creating ThrottlingException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ThrottlingException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertThrottlingException(t)
-	return t
+	asserts.AssertThrottlingException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ComparedFace = { ["BoundingBox"] = true, ["Confidence"] = true, ["Pose"] = true, ["Quality"] = true, ["Landmarks"] = true, nil }
@@ -1314,16 +1798,27 @@ end
 -- * Landmarks [Landmarks] <p>An array of facial landmarks.</p>
 -- @return ComparedFace structure as a key-value pair table
 function M.ComparedFace(args)
-	assert(args, "You must provdide an argument table when creating ComparedFace")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ComparedFace")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["BoundingBox"] = args["BoundingBox"],
 		["Confidence"] = args["Confidence"],
 		["Pose"] = args["Pose"],
 		["Quality"] = args["Quality"],
 		["Landmarks"] = args["Landmarks"],
 	}
-	asserts.AssertComparedFace(t)
-	return t
+	asserts.AssertComparedFace(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.SearchFacesRequest = { ["FaceId"] = true, ["MaxFaces"] = true, ["FaceMatchThreshold"] = true, ["CollectionId"] = true, nil }
@@ -1354,15 +1849,26 @@ end
 -- Required key: FaceId
 -- @return SearchFacesRequest structure as a key-value pair table
 function M.SearchFacesRequest(args)
-	assert(args, "You must provdide an argument table when creating SearchFacesRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating SearchFacesRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["FaceId"] = args["FaceId"],
 		["MaxFaces"] = args["MaxFaces"],
 		["FaceMatchThreshold"] = args["FaceMatchThreshold"],
 		["CollectionId"] = args["CollectionId"],
 	}
-	asserts.AssertSearchFacesRequest(t)
-	return t
+	asserts.AssertSearchFacesRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.SearchFacesByImageResponse = { ["SearchedFaceBoundingBox"] = true, ["SearchedFaceConfidence"] = true, ["FaceMatches"] = true, nil }
@@ -1387,14 +1893,25 @@ end
 -- * FaceMatches [FaceMatchList] <p>An array of faces that match the input face, along with the confidence in the match.</p>
 -- @return SearchFacesByImageResponse structure as a key-value pair table
 function M.SearchFacesByImageResponse(args)
-	assert(args, "You must provdide an argument table when creating SearchFacesByImageResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating SearchFacesByImageResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["SearchedFaceBoundingBox"] = args["SearchedFaceBoundingBox"],
 		["SearchedFaceConfidence"] = args["SearchedFaceConfidence"],
 		["FaceMatches"] = args["FaceMatches"],
 	}
-	asserts.AssertSearchFacesByImageResponse(t)
-	return t
+	asserts.AssertSearchFacesByImageResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.FaceRecord = { ["FaceDetail"] = true, ["Face"] = true, nil }
@@ -1417,13 +1934,24 @@ end
 -- * Face [Face] <p>Describes the face properties such as the bounding box, face ID, image ID of the input image, and external image ID that you assigned. </p>
 -- @return FaceRecord structure as a key-value pair table
 function M.FaceRecord(args)
-	assert(args, "You must provdide an argument table when creating FaceRecord")
-	local t = { 
+	assert(args, "You must provide an argument table when creating FaceRecord")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["FaceDetail"] = args["FaceDetail"],
 		["Face"] = args["Face"],
 	}
-	asserts.AssertFaceRecord(t)
-	return t
+	asserts.AssertFaceRecord(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AgeRange = { ["High"] = true, ["Low"] = true, nil }
@@ -1446,13 +1974,24 @@ end
 -- * Low [UInteger] <p>The lowest estimated age.</p>
 -- @return AgeRange structure as a key-value pair table
 function M.AgeRange(args)
-	assert(args, "You must provdide an argument table when creating AgeRange")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AgeRange")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["High"] = args["High"],
 		["Low"] = args["Low"],
 	}
-	asserts.AssertAgeRange(t)
-	return t
+	asserts.AssertAgeRange(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CompareFacesRequest = { ["TargetImage"] = true, ["SourceImage"] = true, ["SimilarityThreshold"] = true, nil }
@@ -1481,14 +2020,25 @@ end
 -- Required key: TargetImage
 -- @return CompareFacesRequest structure as a key-value pair table
 function M.CompareFacesRequest(args)
-	assert(args, "You must provdide an argument table when creating CompareFacesRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CompareFacesRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["TargetImage"] = args["TargetImage"],
 		["SourceImage"] = args["SourceImage"],
 		["SimilarityThreshold"] = args["SimilarityThreshold"],
 	}
-	asserts.AssertCompareFacesRequest(t)
-	return t
+	asserts.AssertCompareFacesRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Sunglasses = { ["Confidence"] = true, ["Value"] = true, nil }
@@ -1511,13 +2061,24 @@ end
 -- * Value [Boolean] <p>Boolean value that indicates whether the face is wearing sunglasses or not.</p>
 -- @return Sunglasses structure as a key-value pair table
 function M.Sunglasses(args)
-	assert(args, "You must provdide an argument table when creating Sunglasses")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Sunglasses")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Confidence"] = args["Confidence"],
 		["Value"] = args["Value"],
 	}
-	asserts.AssertSunglasses(t)
-	return t
+	asserts.AssertSunglasses(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.RecognizeCelebritiesResponse = { ["UnrecognizedFaces"] = true, ["CelebrityFaces"] = true, ["OrientationCorrection"] = true, nil }
@@ -1542,14 +2103,25 @@ end
 -- * OrientationCorrection [OrientationCorrection] <p>The orientation of the input image (counterclockwise direction). If your application displays the image, you can use this value to correct the orientation. The bounding box coordinates returned in <code>CelebrityFaces</code> and <code>UnrecognizedFaces</code> represent face locations before the image orientation is corrected. </p> <note> <p>If the input image is in .jpeg format, it might contain exchangeable image (Exif) metadata that includes the image's orientation. If so, and the Exif metadata for the input image populates the orientation field, the value of <code>OrientationCorrection</code> is null and the <code>CelebrityFaces</code> and <code>UnrecognizedFaces</code> bounding box coordinates represent face locations after Exif metadata is used to correct the image orientation. Images in .png format don't contain Exif metadata. </p> </note>
 -- @return RecognizeCelebritiesResponse structure as a key-value pair table
 function M.RecognizeCelebritiesResponse(args)
-	assert(args, "You must provdide an argument table when creating RecognizeCelebritiesResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating RecognizeCelebritiesResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["UnrecognizedFaces"] = args["UnrecognizedFaces"],
 		["CelebrityFaces"] = args["CelebrityFaces"],
 		["OrientationCorrection"] = args["OrientationCorrection"],
 	}
-	asserts.AssertRecognizeCelebritiesResponse(t)
-	return t
+	asserts.AssertRecognizeCelebritiesResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidParameterException = { nil }
@@ -1568,11 +2140,22 @@ end
 -- Valid keys:
 -- @return InvalidParameterException structure as a key-value pair table
 function M.InvalidParameterException(args)
-	assert(args, "You must provdide an argument table when creating InvalidParameterException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidParameterException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertInvalidParameterException(t)
-	return t
+	asserts.AssertInvalidParameterException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.EyeOpen = { ["Confidence"] = true, ["Value"] = true, nil }
@@ -1595,13 +2178,24 @@ end
 -- * Value [Boolean] <p>Boolean value that indicates whether the eyes on the face are open.</p>
 -- @return EyeOpen structure as a key-value pair table
 function M.EyeOpen(args)
-	assert(args, "You must provdide an argument table when creating EyeOpen")
-	local t = { 
+	assert(args, "You must provide an argument table when creating EyeOpen")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Confidence"] = args["Confidence"],
 		["Value"] = args["Value"],
 	}
-	asserts.AssertEyeOpen(t)
-	return t
+	asserts.AssertEyeOpen(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DetectFacesResponse = { ["FaceDetails"] = true, ["OrientationCorrection"] = true, nil }
@@ -1624,13 +2218,24 @@ end
 -- * OrientationCorrection [OrientationCorrection] <p> The orientation of the input image (counter-clockwise direction). If your application displays the image, you can use this value to correct image orientation. The bounding box coordinates returned in <code>FaceDetails</code> represent face locations before the image orientation is corrected. </p> <note> <p>If the input image is in .jpeg format, it might contain exchangeable image (Exif) metadata that includes the image's orientation. If so, and the Exif metadata for the input image populates the orientation field, the value of <code>OrientationCorrection</code> is null and the <code>FaceDetails</code> bounding box coordinates represent face locations after Exif metadata is used to correct the image orientation. Images in .png format don't contain Exif metadata.</p> </note>
 -- @return DetectFacesResponse structure as a key-value pair table
 function M.DetectFacesResponse(args)
-	assert(args, "You must provdide an argument table when creating DetectFacesResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DetectFacesResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["FaceDetails"] = args["FaceDetails"],
 		["OrientationCorrection"] = args["OrientationCorrection"],
 	}
-	asserts.AssertDetectFacesResponse(t)
-	return t
+	asserts.AssertDetectFacesResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Celebrity = { ["MatchConfidence"] = true, ["Face"] = true, ["Name"] = true, ["Urls"] = true, ["Id"] = true, nil }
@@ -1659,16 +2264,27 @@ end
 -- * Id [RekognitionUniqueId] <p>A unique identifier for the celebrity. </p>
 -- @return Celebrity structure as a key-value pair table
 function M.Celebrity(args)
-	assert(args, "You must provdide an argument table when creating Celebrity")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Celebrity")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["MatchConfidence"] = args["MatchConfidence"],
 		["Face"] = args["Face"],
 		["Name"] = args["Name"],
 		["Urls"] = args["Urls"],
 		["Id"] = args["Id"],
 	}
-	asserts.AssertCelebrity(t)
-	return t
+	asserts.AssertCelebrity(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DetectFacesRequest = { ["Attributes"] = true, ["Image"] = true, nil }
@@ -1693,13 +2309,24 @@ end
 -- Required key: Image
 -- @return DetectFacesRequest structure as a key-value pair table
 function M.DetectFacesRequest(args)
-	assert(args, "You must provdide an argument table when creating DetectFacesRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DetectFacesRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Attributes"] = args["Attributes"],
 		["Image"] = args["Image"],
 	}
-	asserts.AssertDetectFacesRequest(t)
-	return t
+	asserts.AssertDetectFacesRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CompareFacesMatch = { ["Face"] = true, ["Similarity"] = true, nil }
@@ -1722,13 +2349,24 @@ end
 -- * Similarity [Percent] <p>Level of confidence that the faces match.</p>
 -- @return CompareFacesMatch structure as a key-value pair table
 function M.CompareFacesMatch(args)
-	assert(args, "You must provdide an argument table when creating CompareFacesMatch")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CompareFacesMatch")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Face"] = args["Face"],
 		["Similarity"] = args["Similarity"],
 	}
-	asserts.AssertCompareFacesMatch(t)
-	return t
+	asserts.AssertCompareFacesMatch(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AccessDeniedException = { nil }
@@ -1747,11 +2385,22 @@ end
 -- Valid keys:
 -- @return AccessDeniedException structure as a key-value pair table
 function M.AccessDeniedException(args)
-	assert(args, "You must provdide an argument table when creating AccessDeniedException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AccessDeniedException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertAccessDeniedException(t)
-	return t
+	asserts.AssertAccessDeniedException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListFacesResponse = { ["NextToken"] = true, ["Faces"] = true, nil }
@@ -1774,13 +2423,24 @@ end
 -- * Faces [FaceList] <p>An array of <code>Face</code> objects. </p>
 -- @return ListFacesResponse structure as a key-value pair table
 function M.ListFacesResponse(args)
-	assert(args, "You must provdide an argument table when creating ListFacesResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListFacesResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NextToken"] = args["NextToken"],
 		["Faces"] = args["Faces"],
 	}
-	asserts.AssertListFacesResponse(t)
-	return t
+	asserts.AssertListFacesResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ModerationLabel = { ["Confidence"] = true, ["ParentName"] = true, ["Name"] = true, nil }
@@ -1805,14 +2465,25 @@ end
 -- * Name [String] <p>The label name for the type of content detected in the image.</p>
 -- @return ModerationLabel structure as a key-value pair table
 function M.ModerationLabel(args)
-	assert(args, "You must provdide an argument table when creating ModerationLabel")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ModerationLabel")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Confidence"] = args["Confidence"],
 		["ParentName"] = args["ParentName"],
 		["Name"] = args["Name"],
 	}
-	asserts.AssertModerationLabel(t)
-	return t
+	asserts.AssertModerationLabel(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListFacesRequest = { ["NextToken"] = true, ["MaxResults"] = true, ["CollectionId"] = true, nil }
@@ -1839,14 +2510,25 @@ end
 -- Required key: CollectionId
 -- @return ListFacesRequest structure as a key-value pair table
 function M.ListFacesRequest(args)
-	assert(args, "You must provdide an argument table when creating ListFacesRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListFacesRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NextToken"] = args["NextToken"],
 		["MaxResults"] = args["MaxResults"],
 		["CollectionId"] = args["CollectionId"],
 	}
-	asserts.AssertListFacesRequest(t)
-	return t
+	asserts.AssertListFacesRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.FaceMatch = { ["Face"] = true, ["Similarity"] = true, nil }
@@ -1869,13 +2551,24 @@ end
 -- * Similarity [Percent] <p>Confidence in the match of this face with the input face.</p>
 -- @return FaceMatch structure as a key-value pair table
 function M.FaceMatch(args)
-	assert(args, "You must provdide an argument table when creating FaceMatch")
-	local t = { 
+	assert(args, "You must provide an argument table when creating FaceMatch")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Face"] = args["Face"],
 		["Similarity"] = args["Similarity"],
 	}
-	asserts.AssertFaceMatch(t)
-	return t
+	asserts.AssertFaceMatch(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.BoundingBox = { ["Width"] = true, ["Top"] = true, ["Left"] = true, ["Height"] = true, nil }
@@ -1902,15 +2595,26 @@ end
 -- * Height [Float] <p>Height of the bounding box as a ratio of the overall image height.</p>
 -- @return BoundingBox structure as a key-value pair table
 function M.BoundingBox(args)
-	assert(args, "You must provdide an argument table when creating BoundingBox")
-	local t = { 
+	assert(args, "You must provide an argument table when creating BoundingBox")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Width"] = args["Width"],
 		["Top"] = args["Top"],
 		["Left"] = args["Left"],
 		["Height"] = args["Height"],
 	}
-	asserts.AssertBoundingBox(t)
-	return t
+	asserts.AssertBoundingBox(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.FaceDetail = { ["Confidence"] = true, ["Eyeglasses"] = true, ["Sunglasses"] = true, ["Gender"] = true, ["Landmarks"] = true, ["Pose"] = true, ["Emotions"] = true, ["AgeRange"] = true, ["EyesOpen"] = true, ["BoundingBox"] = true, ["Smile"] = true, ["MouthOpen"] = true, ["Quality"] = true, ["Mustache"] = true, ["Beard"] = true, nil }
@@ -1959,8 +2663,14 @@ end
 -- * Beard [Beard] <p>Indicates whether or not the face has a beard, and the confidence level in the determination.</p>
 -- @return FaceDetail structure as a key-value pair table
 function M.FaceDetail(args)
-	assert(args, "You must provdide an argument table when creating FaceDetail")
-	local t = { 
+	assert(args, "You must provide an argument table when creating FaceDetail")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Confidence"] = args["Confidence"],
 		["Eyeglasses"] = args["Eyeglasses"],
 		["Sunglasses"] = args["Sunglasses"],
@@ -1977,8 +2687,13 @@ function M.FaceDetail(args)
 		["Mustache"] = args["Mustache"],
 		["Beard"] = args["Beard"],
 	}
-	asserts.AssertFaceDetail(t)
-	return t
+	asserts.AssertFaceDetail(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 function asserts.AssertRekognitionUniqueId(str)
@@ -2550,8 +3265,11 @@ function M.DeleteCollectionAsync(DeleteCollectionRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "RekognitionService.DeleteCollection",
 	}
+	for header,value in pairs(DeleteCollectionRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteCollectionRequest, headers, settings, cb)
 	else
@@ -2582,8 +3300,11 @@ function M.ListFacesAsync(ListFacesRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "RekognitionService.ListFaces",
 	}
+	for header,value in pairs(ListFacesRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ListFacesRequest, headers, settings, cb)
 	else
@@ -2614,8 +3335,11 @@ function M.IndexFacesAsync(IndexFacesRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "RekognitionService.IndexFaces",
 	}
+	for header,value in pairs(IndexFacesRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", IndexFacesRequest, headers, settings, cb)
 	else
@@ -2646,8 +3370,11 @@ function M.SearchFacesAsync(SearchFacesRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "RekognitionService.SearchFaces",
 	}
+	for header,value in pairs(SearchFacesRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", SearchFacesRequest, headers, settings, cb)
 	else
@@ -2678,8 +3405,11 @@ function M.GetCelebrityInfoAsync(GetCelebrityInfoRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "RekognitionService.GetCelebrityInfo",
 	}
+	for header,value in pairs(GetCelebrityInfoRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", GetCelebrityInfoRequest, headers, settings, cb)
 	else
@@ -2710,8 +3440,11 @@ function M.DetectLabelsAsync(DetectLabelsRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "RekognitionService.DetectLabels",
 	}
+	for header,value in pairs(DetectLabelsRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DetectLabelsRequest, headers, settings, cb)
 	else
@@ -2742,8 +3475,11 @@ function M.DetectModerationLabelsAsync(DetectModerationLabelsRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "RekognitionService.DetectModerationLabels",
 	}
+	for header,value in pairs(DetectModerationLabelsRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DetectModerationLabelsRequest, headers, settings, cb)
 	else
@@ -2774,8 +3510,11 @@ function M.ListCollectionsAsync(ListCollectionsRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "RekognitionService.ListCollections",
 	}
+	for header,value in pairs(ListCollectionsRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ListCollectionsRequest, headers, settings, cb)
 	else
@@ -2806,8 +3545,11 @@ function M.CreateCollectionAsync(CreateCollectionRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "RekognitionService.CreateCollection",
 	}
+	for header,value in pairs(CreateCollectionRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateCollectionRequest, headers, settings, cb)
 	else
@@ -2838,8 +3580,11 @@ function M.CompareFacesAsync(CompareFacesRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "RekognitionService.CompareFaces",
 	}
+	for header,value in pairs(CompareFacesRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", CompareFacesRequest, headers, settings, cb)
 	else
@@ -2870,8 +3615,11 @@ function M.DeleteFacesAsync(DeleteFacesRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "RekognitionService.DeleteFaces",
 	}
+	for header,value in pairs(DeleteFacesRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteFacesRequest, headers, settings, cb)
 	else
@@ -2902,8 +3650,11 @@ function M.SearchFacesByImageAsync(SearchFacesByImageRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "RekognitionService.SearchFacesByImage",
 	}
+	for header,value in pairs(SearchFacesByImageRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", SearchFacesByImageRequest, headers, settings, cb)
 	else
@@ -2934,8 +3685,11 @@ function M.DetectFacesAsync(DetectFacesRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "RekognitionService.DetectFaces",
 	}
+	for header,value in pairs(DetectFacesRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DetectFacesRequest, headers, settings, cb)
 	else
@@ -2966,8 +3720,11 @@ function M.RecognizeCelebritiesAsync(RecognizeCelebritiesRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "RekognitionService.RecognizeCelebrities",
 	}
+	for header,value in pairs(RecognizeCelebritiesRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", RecognizeCelebritiesRequest, headers, settings, cb)
 	else

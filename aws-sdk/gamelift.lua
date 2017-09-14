@@ -67,8 +67,14 @@ end
 -- * Name [NonZeroAndMaxString] <p>Descriptive label that is associated with a fleet. Fleet names do not need to be unique.</p>
 -- @return FleetAttributes structure as a key-value pair table
 function M.FleetAttributes(args)
-	assert(args, "You must provdide an argument table when creating FleetAttributes")
-	local t = { 
+	assert(args, "You must provide an argument table when creating FleetAttributes")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Status"] = args["Status"],
 		["FleetArn"] = args["FleetArn"],
 		["Description"] = args["Description"],
@@ -85,8 +91,13 @@ function M.FleetAttributes(args)
 		["ServerLaunchParameters"] = args["ServerLaunchParameters"],
 		["Name"] = args["Name"],
 	}
-	asserts.AssertFleetAttributes(t)
-	return t
+	asserts.AssertFleetAttributes(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeFleetUtilizationInput = { ["FleetIds"] = true, ["NextToken"] = true, ["Limit"] = true, nil }
@@ -111,14 +122,25 @@ end
 -- * Limit [PositiveInteger] <p>Maximum number of results to return. Use this parameter with <code>NextToken</code> to get results as a set of sequential pages. This parameter is ignored when the request specifies one or a list of fleet IDs.</p>
 -- @return DescribeFleetUtilizationInput structure as a key-value pair table
 function M.DescribeFleetUtilizationInput(args)
-	assert(args, "You must provdide an argument table when creating DescribeFleetUtilizationInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeFleetUtilizationInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["FleetIds"] = args["FleetIds"],
 		["NextToken"] = args["NextToken"],
 		["Limit"] = args["Limit"],
 	}
-	asserts.AssertDescribeFleetUtilizationInput(t)
-	return t
+	asserts.AssertDescribeFleetUtilizationInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeFleetCapacityInput = { ["FleetIds"] = true, ["NextToken"] = true, ["Limit"] = true, nil }
@@ -143,14 +165,25 @@ end
 -- * Limit [PositiveInteger] <p>Maximum number of results to return. Use this parameter with <code>NextToken</code> to get results as a set of sequential pages. This parameter is ignored when the request specifies one or a list of fleet IDs.</p>
 -- @return DescribeFleetCapacityInput structure as a key-value pair table
 function M.DescribeFleetCapacityInput(args)
-	assert(args, "You must provdide an argument table when creating DescribeFleetCapacityInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeFleetCapacityInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["FleetIds"] = args["FleetIds"],
 		["NextToken"] = args["NextToken"],
 		["Limit"] = args["Limit"],
 	}
-	asserts.AssertDescribeFleetCapacityInput(t)
-	return t
+	asserts.AssertDescribeFleetCapacityInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListBuildsOutput = { ["NextToken"] = true, ["Builds"] = true, nil }
@@ -173,13 +206,24 @@ end
 -- * Builds [BuildList] <p>Collection of build records that match the request.</p>
 -- @return ListBuildsOutput structure as a key-value pair table
 function M.ListBuildsOutput(args)
-	assert(args, "You must provdide an argument table when creating ListBuildsOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListBuildsOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NextToken"] = args["NextToken"],
 		["Builds"] = args["Builds"],
 	}
-	asserts.AssertListBuildsOutput(t)
-	return t
+	asserts.AssertListBuildsOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.EC2InstanceLimit = { ["EC2InstanceType"] = true, ["CurrentInstances"] = true, ["InstanceLimit"] = true, nil }
@@ -204,14 +248,25 @@ end
 -- * InstanceLimit [WholeNumber] <p>Number of instances allowed.</p>
 -- @return EC2InstanceLimit structure as a key-value pair table
 function M.EC2InstanceLimit(args)
-	assert(args, "You must provdide an argument table when creating EC2InstanceLimit")
-	local t = { 
+	assert(args, "You must provide an argument table when creating EC2InstanceLimit")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["EC2InstanceType"] = args["EC2InstanceType"],
 		["CurrentInstances"] = args["CurrentInstances"],
 		["InstanceLimit"] = args["InstanceLimit"],
 	}
-	asserts.AssertEC2InstanceLimit(t)
-	return t
+	asserts.AssertEC2InstanceLimit(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeScalingPoliciesInput = { ["StatusFilter"] = true, ["Limit"] = true, ["NextToken"] = true, ["FleetId"] = true, nil }
@@ -240,15 +295,26 @@ end
 -- Required key: FleetId
 -- @return DescribeScalingPoliciesInput structure as a key-value pair table
 function M.DescribeScalingPoliciesInput(args)
-	assert(args, "You must provdide an argument table when creating DescribeScalingPoliciesInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeScalingPoliciesInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["StatusFilter"] = args["StatusFilter"],
 		["Limit"] = args["Limit"],
 		["NextToken"] = args["NextToken"],
 		["FleetId"] = args["FleetId"],
 	}
-	asserts.AssertDescribeScalingPoliciesInput(t)
-	return t
+	asserts.AssertDescribeScalingPoliciesInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdateFleetCapacityOutput = { ["FleetId"] = true, nil }
@@ -269,12 +335,23 @@ end
 -- * FleetId [FleetId] <p>Unique identifier for a fleet that was updated.</p>
 -- @return UpdateFleetCapacityOutput structure as a key-value pair table
 function M.UpdateFleetCapacityOutput(args)
-	assert(args, "You must provdide an argument table when creating UpdateFleetCapacityOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateFleetCapacityOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["FleetId"] = args["FleetId"],
 	}
-	asserts.AssertUpdateFleetCapacityOutput(t)
-	return t
+	asserts.AssertUpdateFleetCapacityOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.FleetCapacityExceededException = { ["Message"] = true, nil }
@@ -295,12 +372,23 @@ end
 -- * Message [NonEmptyString] 
 -- @return FleetCapacityExceededException structure as a key-value pair table
 function M.FleetCapacityExceededException(args)
-	assert(args, "You must provdide an argument table when creating FleetCapacityExceededException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating FleetCapacityExceededException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Message"] = args["Message"],
 	}
-	asserts.AssertFleetCapacityExceededException(t)
-	return t
+	asserts.AssertFleetCapacityExceededException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdateBuildOutput = { ["Build"] = true, nil }
@@ -321,12 +409,23 @@ end
 -- * Build [Build] <p>Object that contains the updated build record.</p>
 -- @return UpdateBuildOutput structure as a key-value pair table
 function M.UpdateBuildOutput(args)
-	assert(args, "You must provdide an argument table when creating UpdateBuildOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateBuildOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Build"] = args["Build"],
 	}
-	asserts.AssertUpdateBuildOutput(t)
-	return t
+	asserts.AssertUpdateBuildOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.StartGameSessionPlacementOutput = { ["GameSessionPlacement"] = true, nil }
@@ -347,12 +446,23 @@ end
 -- * GameSessionPlacement [GameSessionPlacement] <p>Object that describes the newly created game session placement. This object includes all the information provided in the request, as well as start/end time stamps and placement status. </p>
 -- @return StartGameSessionPlacementOutput structure as a key-value pair table
 function M.StartGameSessionPlacementOutput(args)
-	assert(args, "You must provdide an argument table when creating StartGameSessionPlacementOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating StartGameSessionPlacementOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["GameSessionPlacement"] = args["GameSessionPlacement"],
 	}
-	asserts.AssertStartGameSessionPlacementOutput(t)
-	return t
+	asserts.AssertStartGameSessionPlacementOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListBuildsInput = { ["Status"] = true, ["NextToken"] = true, ["Limit"] = true, nil }
@@ -377,14 +487,25 @@ end
 -- * Limit [PositiveInteger] <p>Maximum number of results to return. Use this parameter with <code>NextToken</code> to get results as a set of sequential pages.</p>
 -- @return ListBuildsInput structure as a key-value pair table
 function M.ListBuildsInput(args)
-	assert(args, "You must provdide an argument table when creating ListBuildsInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListBuildsInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Status"] = args["Status"],
 		["NextToken"] = args["NextToken"],
 		["Limit"] = args["Limit"],
 	}
-	asserts.AssertListBuildsInput(t)
-	return t
+	asserts.AssertListBuildsInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdateRuntimeConfigurationOutput = { ["RuntimeConfiguration"] = true, nil }
@@ -405,12 +526,23 @@ end
 -- * RuntimeConfiguration [RuntimeConfiguration] <p>The runtime configuration currently in force. If the update was successful, this object matches the one in the request.</p>
 -- @return UpdateRuntimeConfigurationOutput structure as a key-value pair table
 function M.UpdateRuntimeConfigurationOutput(args)
-	assert(args, "You must provdide an argument table when creating UpdateRuntimeConfigurationOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateRuntimeConfigurationOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["RuntimeConfiguration"] = args["RuntimeConfiguration"],
 	}
-	asserts.AssertUpdateRuntimeConfigurationOutput(t)
-	return t
+	asserts.AssertUpdateRuntimeConfigurationOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteGameSessionQueueInput = { ["Name"] = true, nil }
@@ -433,12 +565,23 @@ end
 -- Required key: Name
 -- @return DeleteGameSessionQueueInput structure as a key-value pair table
 function M.DeleteGameSessionQueueInput(args)
-	assert(args, "You must provdide an argument table when creating DeleteGameSessionQueueInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteGameSessionQueueInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Name"] = args["Name"],
 	}
-	asserts.AssertDeleteGameSessionQueueInput(t)
-	return t
+	asserts.AssertDeleteGameSessionQueueInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateBuildInput = { ["StorageLocation"] = true, ["Version"] = true, ["Name"] = true, ["OperatingSystem"] = true, nil }
@@ -465,15 +608,26 @@ end
 -- * OperatingSystem [OperatingSystem] <p>Operating system that the game server binaries are built to run on. This value determines the type of fleet resources that you can use for this build. If your game build contains multiple executables, they all must run on the same operating system.</p>
 -- @return CreateBuildInput structure as a key-value pair table
 function M.CreateBuildInput(args)
-	assert(args, "You must provdide an argument table when creating CreateBuildInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateBuildInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["StorageLocation"] = args["StorageLocation"],
 		["Version"] = args["Version"],
 		["Name"] = args["Name"],
 		["OperatingSystem"] = args["OperatingSystem"],
 	}
-	asserts.AssertCreateBuildInput(t)
-	return t
+	asserts.AssertCreateBuildInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.SearchGameSessionsOutput = { ["GameSessions"] = true, ["NextToken"] = true, nil }
@@ -496,13 +650,24 @@ end
 -- * NextToken [NonZeroAndMaxString] <p>Token that indicates where to resume retrieving results on the next call to this action. If no token is returned, these results represent the end of the list.</p>
 -- @return SearchGameSessionsOutput structure as a key-value pair table
 function M.SearchGameSessionsOutput(args)
-	assert(args, "You must provdide an argument table when creating SearchGameSessionsOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating SearchGameSessionsOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["GameSessions"] = args["GameSessions"],
 		["NextToken"] = args["NextToken"],
 	}
-	asserts.AssertSearchGameSessionsOutput(t)
-	return t
+	asserts.AssertSearchGameSessionsOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AwsCredentials = { ["SecretAccessKey"] = true, ["SessionToken"] = true, ["AccessKeyId"] = true, nil }
@@ -527,14 +692,25 @@ end
 -- * AccessKeyId [NonEmptyString] <p>Access key for an AWS account.</p>
 -- @return AwsCredentials structure as a key-value pair table
 function M.AwsCredentials(args)
-	assert(args, "You must provdide an argument table when creating AwsCredentials")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AwsCredentials")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["SecretAccessKey"] = args["SecretAccessKey"],
 		["SessionToken"] = args["SessionToken"],
 		["AccessKeyId"] = args["AccessKeyId"],
 	}
-	asserts.AssertAwsCredentials(t)
-	return t
+	asserts.AssertAwsCredentials(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeEC2InstanceLimitsInput = { ["EC2InstanceType"] = true, nil }
@@ -555,12 +731,23 @@ end
 -- * EC2InstanceType [EC2InstanceType] <p>Name of an EC2 instance type that is supported in Amazon GameLift. A fleet instance type determines the computing resources of each instance in the fleet, including CPU, memory, storage, and networking capacity. Amazon GameLift supports the following EC2 instance types. See <a href="http://aws.amazon.com/ec2/instance-types/">Amazon EC2 Instance Types</a> for detailed descriptions. Leave this parameter blank to retrieve limits for all types.</p>
 -- @return DescribeEC2InstanceLimitsInput structure as a key-value pair table
 function M.DescribeEC2InstanceLimitsInput(args)
-	assert(args, "You must provdide an argument table when creating DescribeEC2InstanceLimitsInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeEC2InstanceLimitsInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["EC2InstanceType"] = args["EC2InstanceType"],
 	}
-	asserts.AssertDescribeEC2InstanceLimitsInput(t)
-	return t
+	asserts.AssertDescribeEC2InstanceLimitsInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateBuildOutput = { ["StorageLocation"] = true, ["Build"] = true, ["UploadCredentials"] = true, nil }
@@ -585,14 +772,25 @@ end
 -- * UploadCredentials [AwsCredentials] <p>This element is not currently in use.</p>
 -- @return CreateBuildOutput structure as a key-value pair table
 function M.CreateBuildOutput(args)
-	assert(args, "You must provdide an argument table when creating CreateBuildOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateBuildOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["StorageLocation"] = args["StorageLocation"],
 		["Build"] = args["Build"],
 		["UploadCredentials"] = args["UploadCredentials"],
 	}
-	asserts.AssertCreateBuildOutput(t)
-	return t
+	asserts.AssertCreateBuildOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.RequestUploadCredentialsOutput = { ["StorageLocation"] = true, ["UploadCredentials"] = true, nil }
@@ -615,13 +813,24 @@ end
 -- * UploadCredentials [AwsCredentials] <p>AWS credentials required when uploading a game build to the storage location. These credentials have a limited lifespan and are valid only for the build they were issued for.</p>
 -- @return RequestUploadCredentialsOutput structure as a key-value pair table
 function M.RequestUploadCredentialsOutput(args)
-	assert(args, "You must provdide an argument table when creating RequestUploadCredentialsOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating RequestUploadCredentialsOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["StorageLocation"] = args["StorageLocation"],
 		["UploadCredentials"] = args["UploadCredentials"],
 	}
-	asserts.AssertRequestUploadCredentialsOutput(t)
-	return t
+	asserts.AssertRequestUploadCredentialsOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListFleetsInput = { ["BuildId"] = true, ["NextToken"] = true, ["Limit"] = true, nil }
@@ -646,14 +855,25 @@ end
 -- * Limit [PositiveInteger] <p>Maximum number of results to return. Use this parameter with <code>NextToken</code> to get results as a set of sequential pages.</p>
 -- @return ListFleetsInput structure as a key-value pair table
 function M.ListFleetsInput(args)
-	assert(args, "You must provdide an argument table when creating ListFleetsInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListFleetsInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["BuildId"] = args["BuildId"],
 		["NextToken"] = args["NextToken"],
 		["Limit"] = args["Limit"],
 	}
-	asserts.AssertListFleetsInput(t)
-	return t
+	asserts.AssertListFleetsInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeGameSessionQueuesOutput = { ["GameSessionQueues"] = true, ["NextToken"] = true, nil }
@@ -676,13 +896,24 @@ end
 -- * NextToken [NonZeroAndMaxString] <p>Token that indicates where to resume retrieving results on the next call to this action. If no token is returned, these results represent the end of the list.</p>
 -- @return DescribeGameSessionQueuesOutput structure as a key-value pair table
 function M.DescribeGameSessionQueuesOutput(args)
-	assert(args, "You must provdide an argument table when creating DescribeGameSessionQueuesOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeGameSessionQueuesOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["GameSessionQueues"] = args["GameSessionQueues"],
 		["NextToken"] = args["NextToken"],
 	}
-	asserts.AssertDescribeGameSessionQueuesOutput(t)
-	return t
+	asserts.AssertDescribeGameSessionQueuesOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.IdempotentParameterMismatchException = { ["Message"] = true, nil }
@@ -703,12 +934,23 @@ end
 -- * Message [NonEmptyString] 
 -- @return IdempotentParameterMismatchException structure as a key-value pair table
 function M.IdempotentParameterMismatchException(args)
-	assert(args, "You must provdide an argument table when creating IdempotentParameterMismatchException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating IdempotentParameterMismatchException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Message"] = args["Message"],
 	}
-	asserts.AssertIdempotentParameterMismatchException(t)
-	return t
+	asserts.AssertIdempotentParameterMismatchException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeGameSessionsInput = { ["Limit"] = true, ["GameSessionId"] = true, ["StatusFilter"] = true, ["FleetId"] = true, ["NextToken"] = true, ["AliasId"] = true, nil }
@@ -739,8 +981,14 @@ end
 -- * AliasId [AliasId] <p>Unique identifier for an alias associated with the fleet to retrieve all game sessions for. </p>
 -- @return DescribeGameSessionsInput structure as a key-value pair table
 function M.DescribeGameSessionsInput(args)
-	assert(args, "You must provdide an argument table when creating DescribeGameSessionsInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeGameSessionsInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Limit"] = args["Limit"],
 		["GameSessionId"] = args["GameSessionId"],
 		["StatusFilter"] = args["StatusFilter"],
@@ -748,8 +996,13 @@ function M.DescribeGameSessionsInput(args)
 		["NextToken"] = args["NextToken"],
 		["AliasId"] = args["AliasId"],
 	}
-	asserts.AssertDescribeGameSessionsInput(t)
-	return t
+	asserts.AssertDescribeGameSessionsInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.IpPermission = { ["ToPort"] = true, ["FromPort"] = true, ["Protocol"] = true, ["IpRange"] = true, nil }
@@ -784,15 +1037,26 @@ end
 -- Required key: Protocol
 -- @return IpPermission structure as a key-value pair table
 function M.IpPermission(args)
-	assert(args, "You must provdide an argument table when creating IpPermission")
-	local t = { 
+	assert(args, "You must provide an argument table when creating IpPermission")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ToPort"] = args["ToPort"],
 		["FromPort"] = args["FromPort"],
 		["Protocol"] = args["Protocol"],
 		["IpRange"] = args["IpRange"],
 	}
-	asserts.AssertIpPermission(t)
-	return t
+	asserts.AssertIpPermission(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Instance = { ["Status"] = true, ["InstanceId"] = true, ["Type"] = true, ["CreationTime"] = true, ["FleetId"] = true, ["IpAddress"] = true, ["OperatingSystem"] = true, nil }
@@ -825,8 +1089,14 @@ end
 -- * OperatingSystem [OperatingSystem] <p>Operating system that is running on this instance. </p>
 -- @return Instance structure as a key-value pair table
 function M.Instance(args)
-	assert(args, "You must provdide an argument table when creating Instance")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Instance")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Status"] = args["Status"],
 		["InstanceId"] = args["InstanceId"],
 		["Type"] = args["Type"],
@@ -835,8 +1105,13 @@ function M.Instance(args)
 		["IpAddress"] = args["IpAddress"],
 		["OperatingSystem"] = args["OperatingSystem"],
 	}
-	asserts.AssertInstance(t)
-	return t
+	asserts.AssertInstance(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.StopGameSessionPlacementInput = { ["PlacementId"] = true, nil }
@@ -859,12 +1134,23 @@ end
 -- Required key: PlacementId
 -- @return StopGameSessionPlacementInput structure as a key-value pair table
 function M.StopGameSessionPlacementInput(args)
-	assert(args, "You must provdide an argument table when creating StopGameSessionPlacementInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating StopGameSessionPlacementInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["PlacementId"] = args["PlacementId"],
 	}
-	asserts.AssertStopGameSessionPlacementInput(t)
-	return t
+	asserts.AssertStopGameSessionPlacementInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Event = { ["EventId"] = true, ["ResourceId"] = true, ["Message"] = true, ["EventTime"] = true, ["EventCode"] = true, nil }
@@ -893,16 +1179,27 @@ end
 -- * EventCode [EventCode] <p>Type of event being logged. </p>
 -- @return Event structure as a key-value pair table
 function M.Event(args)
-	assert(args, "You must provdide an argument table when creating Event")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Event")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["EventId"] = args["EventId"],
 		["ResourceId"] = args["ResourceId"],
 		["Message"] = args["Message"],
 		["EventTime"] = args["EventTime"],
 		["EventCode"] = args["EventCode"],
 	}
-	asserts.AssertEvent(t)
-	return t
+	asserts.AssertEvent(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.StartGameSessionPlacementInput = { ["MaximumPlayerSessionCount"] = true, ["PlacementId"] = true, ["GameSessionName"] = true, ["GameSessionQueueName"] = true, ["GameProperties"] = true, ["DesiredPlayerSessions"] = true, ["PlayerLatencies"] = true, nil }
@@ -941,8 +1238,14 @@ end
 -- Required key: MaximumPlayerSessionCount
 -- @return StartGameSessionPlacementInput structure as a key-value pair table
 function M.StartGameSessionPlacementInput(args)
-	assert(args, "You must provdide an argument table when creating StartGameSessionPlacementInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating StartGameSessionPlacementInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["MaximumPlayerSessionCount"] = args["MaximumPlayerSessionCount"],
 		["PlacementId"] = args["PlacementId"],
 		["GameSessionName"] = args["GameSessionName"],
@@ -951,8 +1254,13 @@ function M.StartGameSessionPlacementInput(args)
 		["DesiredPlayerSessions"] = args["DesiredPlayerSessions"],
 		["PlayerLatencies"] = args["PlayerLatencies"],
 	}
-	asserts.AssertStartGameSessionPlacementInput(t)
-	return t
+	asserts.AssertStartGameSessionPlacementInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeFleetAttributesOutput = { ["FleetAttributes"] = true, ["NextToken"] = true, nil }
@@ -975,13 +1283,24 @@ end
 -- * NextToken [NonZeroAndMaxString] <p>Token that indicates where to resume retrieving results on the next call to this action. If no token is returned, these results represent the end of the list.</p>
 -- @return DescribeFleetAttributesOutput structure as a key-value pair table
 function M.DescribeFleetAttributesOutput(args)
-	assert(args, "You must provdide an argument table when creating DescribeFleetAttributesOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeFleetAttributesOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["FleetAttributes"] = args["FleetAttributes"],
 		["NextToken"] = args["NextToken"],
 	}
-	asserts.AssertDescribeFleetAttributesOutput(t)
-	return t
+	asserts.AssertDescribeFleetAttributesOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.LimitExceededException = { ["Message"] = true, nil }
@@ -1002,12 +1321,23 @@ end
 -- * Message [NonEmptyString] 
 -- @return LimitExceededException structure as a key-value pair table
 function M.LimitExceededException(args)
-	assert(args, "You must provdide an argument table when creating LimitExceededException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating LimitExceededException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Message"] = args["Message"],
 	}
-	asserts.AssertLimitExceededException(t)
-	return t
+	asserts.AssertLimitExceededException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetInstanceAccessOutput = { ["InstanceAccess"] = true, nil }
@@ -1028,12 +1358,23 @@ end
 -- * InstanceAccess [InstanceAccess] <p>Object that contains connection information for a fleet instance, including IP address and access credentials.</p>
 -- @return GetInstanceAccessOutput structure as a key-value pair table
 function M.GetInstanceAccessOutput(args)
-	assert(args, "You must provdide an argument table when creating GetInstanceAccessOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetInstanceAccessOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["InstanceAccess"] = args["InstanceAccess"],
 	}
-	asserts.AssertGetInstanceAccessOutput(t)
-	return t
+	asserts.AssertGetInstanceAccessOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.FleetUtilization = { ["CurrentPlayerSessionCount"] = true, ["MaximumPlayerSessionCount"] = true, ["ActiveServerProcessCount"] = true, ["FleetId"] = true, ["ActiveGameSessionCount"] = true, nil }
@@ -1062,16 +1403,27 @@ end
 -- * ActiveGameSessionCount [WholeNumber] <p>Number of active game sessions currently being hosted on all instances in the fleet.</p>
 -- @return FleetUtilization structure as a key-value pair table
 function M.FleetUtilization(args)
-	assert(args, "You must provdide an argument table when creating FleetUtilization")
-	local t = { 
+	assert(args, "You must provide an argument table when creating FleetUtilization")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["CurrentPlayerSessionCount"] = args["CurrentPlayerSessionCount"],
 		["MaximumPlayerSessionCount"] = args["MaximumPlayerSessionCount"],
 		["ActiveServerProcessCount"] = args["ActiveServerProcessCount"],
 		["FleetId"] = args["FleetId"],
 		["ActiveGameSessionCount"] = args["ActiveGameSessionCount"],
 	}
-	asserts.AssertFleetUtilization(t)
-	return t
+	asserts.AssertFleetUtilization(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.PlayerLatencyPolicy = { ["MaximumIndividualPlayerLatencyMilliseconds"] = true, ["PolicyDurationSeconds"] = true, nil }
@@ -1094,13 +1446,24 @@ end
 -- * PolicyDurationSeconds [WholeNumber] <p>The length of time, in seconds, that the policy is enforced while placing a new game session. A null value for this property means that the policy is enforced until the queue times out.</p>
 -- @return PlayerLatencyPolicy structure as a key-value pair table
 function M.PlayerLatencyPolicy(args)
-	assert(args, "You must provdide an argument table when creating PlayerLatencyPolicy")
-	local t = { 
+	assert(args, "You must provide an argument table when creating PlayerLatencyPolicy")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["MaximumIndividualPlayerLatencyMilliseconds"] = args["MaximumIndividualPlayerLatencyMilliseconds"],
 		["PolicyDurationSeconds"] = args["PolicyDurationSeconds"],
 	}
-	asserts.AssertPlayerLatencyPolicy(t)
-	return t
+	asserts.AssertPlayerLatencyPolicy(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InternalServiceException = { ["Message"] = true, nil }
@@ -1121,12 +1484,23 @@ end
 -- * Message [NonEmptyString] 
 -- @return InternalServiceException structure as a key-value pair table
 function M.InternalServiceException(args)
-	assert(args, "You must provdide an argument table when creating InternalServiceException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InternalServiceException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Message"] = args["Message"],
 	}
-	asserts.AssertInternalServiceException(t)
-	return t
+	asserts.AssertInternalServiceException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeRuntimeConfigurationOutput = { ["RuntimeConfiguration"] = true, nil }
@@ -1147,12 +1521,23 @@ end
 -- * RuntimeConfiguration [RuntimeConfiguration] <p>Instructions describing how server processes should be launched and maintained on each instance in the fleet.</p>
 -- @return DescribeRuntimeConfigurationOutput structure as a key-value pair table
 function M.DescribeRuntimeConfigurationOutput(args)
-	assert(args, "You must provdide an argument table when creating DescribeRuntimeConfigurationOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeRuntimeConfigurationOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["RuntimeConfiguration"] = args["RuntimeConfiguration"],
 	}
-	asserts.AssertDescribeRuntimeConfigurationOutput(t)
-	return t
+	asserts.AssertDescribeRuntimeConfigurationOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Build = { ["Status"] = true, ["Name"] = true, ["BuildId"] = true, ["CreationTime"] = true, ["SizeOnDisk"] = true, ["Version"] = true, ["OperatingSystem"] = true, nil }
@@ -1185,8 +1570,14 @@ end
 -- * OperatingSystem [OperatingSystem] <p>Operating system that the game server binaries are built to run on. This value determines the type of fleet resources that you can use for this build.</p>
 -- @return Build structure as a key-value pair table
 function M.Build(args)
-	assert(args, "You must provdide an argument table when creating Build")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Build")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Status"] = args["Status"],
 		["Name"] = args["Name"],
 		["BuildId"] = args["BuildId"],
@@ -1195,8 +1586,13 @@ function M.Build(args)
 		["Version"] = args["Version"],
 		["OperatingSystem"] = args["OperatingSystem"],
 	}
-	asserts.AssertBuild(t)
-	return t
+	asserts.AssertBuild(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeFleetPortSettingsOutput = { ["InboundPermissions"] = true, nil }
@@ -1217,12 +1613,23 @@ end
 -- * InboundPermissions [IpPermissionsList] <p>Object that contains port settings for the requested fleet ID.</p>
 -- @return DescribeFleetPortSettingsOutput structure as a key-value pair table
 function M.DescribeFleetPortSettingsOutput(args)
-	assert(args, "You must provdide an argument table when creating DescribeFleetPortSettingsOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeFleetPortSettingsOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["InboundPermissions"] = args["InboundPermissions"],
 	}
-	asserts.AssertDescribeFleetPortSettingsOutput(t)
-	return t
+	asserts.AssertDescribeFleetPortSettingsOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreatePlayerSessionOutput = { ["PlayerSession"] = true, nil }
@@ -1243,12 +1650,23 @@ end
 -- * PlayerSession [PlayerSession] <p>Object that describes the newly created player session record.</p>
 -- @return CreatePlayerSessionOutput structure as a key-value pair table
 function M.CreatePlayerSessionOutput(args)
-	assert(args, "You must provdide an argument table when creating CreatePlayerSessionOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreatePlayerSessionOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["PlayerSession"] = args["PlayerSession"],
 	}
-	asserts.AssertCreatePlayerSessionOutput(t)
-	return t
+	asserts.AssertCreatePlayerSessionOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeBuildOutput = { ["Build"] = true, nil }
@@ -1269,12 +1687,23 @@ end
 -- * Build [Build] <p>Set of properties describing the requested build.</p>
 -- @return DescribeBuildOutput structure as a key-value pair table
 function M.DescribeBuildOutput(args)
-	assert(args, "You must provdide an argument table when creating DescribeBuildOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeBuildOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Build"] = args["Build"],
 	}
-	asserts.AssertDescribeBuildOutput(t)
-	return t
+	asserts.AssertDescribeBuildOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ScalingPolicy = { ["Status"] = true, ["EvaluationPeriods"] = true, ["Name"] = true, ["ComparisonOperator"] = true, ["FleetId"] = true, ["Threshold"] = true, ["ScalingAdjustment"] = true, ["MetricName"] = true, ["ScalingAdjustmentType"] = true, nil }
@@ -1311,8 +1740,14 @@ end
 -- * ScalingAdjustmentType [ScalingAdjustmentType] <p>Type of adjustment to make to a fleet's instance count (see <a>FleetCapacity</a>):</p> <ul> <li> <p> <b>ChangeInCapacity</b> – add (or subtract) the scaling adjustment value from the current instance count. Positive values scale up while negative values scale down.</p> </li> <li> <p> <b>ExactCapacity</b> – set the instance count to the scaling adjustment value.</p> </li> <li> <p> <b>PercentChangeInCapacity</b> – increase or reduce the current instance count by the scaling adjustment, read as a percentage. Positive values scale up while negative values scale down.</p> </li> </ul>
 -- @return ScalingPolicy structure as a key-value pair table
 function M.ScalingPolicy(args)
-	assert(args, "You must provdide an argument table when creating ScalingPolicy")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ScalingPolicy")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Status"] = args["Status"],
 		["EvaluationPeriods"] = args["EvaluationPeriods"],
 		["Name"] = args["Name"],
@@ -1323,8 +1758,13 @@ function M.ScalingPolicy(args)
 		["MetricName"] = args["MetricName"],
 		["ScalingAdjustmentType"] = args["ScalingAdjustmentType"],
 	}
-	asserts.AssertScalingPolicy(t)
-	return t
+	asserts.AssertScalingPolicy(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidFleetStatusException = { ["Message"] = true, nil }
@@ -1345,12 +1785,23 @@ end
 -- * Message [NonEmptyString] 
 -- @return InvalidFleetStatusException structure as a key-value pair table
 function M.InvalidFleetStatusException(args)
-	assert(args, "You must provdide an argument table when creating InvalidFleetStatusException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidFleetStatusException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Message"] = args["Message"],
 	}
-	asserts.AssertInvalidFleetStatusException(t)
-	return t
+	asserts.AssertInvalidFleetStatusException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeGameSessionDetailsInput = { ["Limit"] = true, ["GameSessionId"] = true, ["StatusFilter"] = true, ["FleetId"] = true, ["NextToken"] = true, ["AliasId"] = true, nil }
@@ -1381,8 +1832,14 @@ end
 -- * AliasId [AliasId] <p>Unique identifier for an alias associated with the fleet to retrieve all game sessions for.</p>
 -- @return DescribeGameSessionDetailsInput structure as a key-value pair table
 function M.DescribeGameSessionDetailsInput(args)
-	assert(args, "You must provdide an argument table when creating DescribeGameSessionDetailsInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeGameSessionDetailsInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Limit"] = args["Limit"],
 		["GameSessionId"] = args["GameSessionId"],
 		["StatusFilter"] = args["StatusFilter"],
@@ -1390,8 +1847,13 @@ function M.DescribeGameSessionDetailsInput(args)
 		["NextToken"] = args["NextToken"],
 		["AliasId"] = args["AliasId"],
 	}
-	asserts.AssertDescribeGameSessionDetailsInput(t)
-	return t
+	asserts.AssertDescribeGameSessionDetailsInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.TerminalRoutingStrategyException = { ["Message"] = true, nil }
@@ -1412,12 +1874,23 @@ end
 -- * Message [NonEmptyString] 
 -- @return TerminalRoutingStrategyException structure as a key-value pair table
 function M.TerminalRoutingStrategyException(args)
-	assert(args, "You must provdide an argument table when creating TerminalRoutingStrategyException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating TerminalRoutingStrategyException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Message"] = args["Message"],
 	}
-	asserts.AssertTerminalRoutingStrategyException(t)
-	return t
+	asserts.AssertTerminalRoutingStrategyException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeScalingPoliciesOutput = { ["ScalingPolicies"] = true, ["NextToken"] = true, nil }
@@ -1440,13 +1913,24 @@ end
 -- * NextToken [NonZeroAndMaxString] <p>Token that indicates where to resume retrieving results on the next call to this action. If no token is returned, these results represent the end of the list.</p>
 -- @return DescribeScalingPoliciesOutput structure as a key-value pair table
 function M.DescribeScalingPoliciesOutput(args)
-	assert(args, "You must provdide an argument table when creating DescribeScalingPoliciesOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeScalingPoliciesOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ScalingPolicies"] = args["ScalingPolicies"],
 		["NextToken"] = args["NextToken"],
 	}
-	asserts.AssertDescribeScalingPoliciesOutput(t)
-	return t
+	asserts.AssertDescribeScalingPoliciesOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteAliasInput = { ["AliasId"] = true, nil }
@@ -1469,12 +1953,23 @@ end
 -- Required key: AliasId
 -- @return DeleteAliasInput structure as a key-value pair table
 function M.DeleteAliasInput(args)
-	assert(args, "You must provdide an argument table when creating DeleteAliasInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteAliasInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["AliasId"] = args["AliasId"],
 	}
-	asserts.AssertDeleteAliasInput(t)
-	return t
+	asserts.AssertDeleteAliasInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdateGameSessionQueueOutput = { ["GameSessionQueue"] = true, nil }
@@ -1495,12 +1990,23 @@ end
 -- * GameSessionQueue [GameSessionQueue] <p>Object that describes the newly updated game session queue.</p>
 -- @return UpdateGameSessionQueueOutput structure as a key-value pair table
 function M.UpdateGameSessionQueueOutput(args)
-	assert(args, "You must provdide an argument table when creating UpdateGameSessionQueueOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateGameSessionQueueOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["GameSessionQueue"] = args["GameSessionQueue"],
 	}
-	asserts.AssertUpdateGameSessionQueueOutput(t)
-	return t
+	asserts.AssertUpdateGameSessionQueueOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.NotFoundException = { ["Message"] = true, nil }
@@ -1521,12 +2027,23 @@ end
 -- * Message [NonEmptyString] 
 -- @return NotFoundException structure as a key-value pair table
 function M.NotFoundException(args)
-	assert(args, "You must provdide an argument table when creating NotFoundException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating NotFoundException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Message"] = args["Message"],
 	}
-	asserts.AssertNotFoundException(t)
-	return t
+	asserts.AssertNotFoundException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateAliasOutput = { ["Alias"] = true, nil }
@@ -1547,12 +2064,23 @@ end
 -- * Alias [Alias] <p>Object that describes the newly created alias record.</p>
 -- @return CreateAliasOutput structure as a key-value pair table
 function M.CreateAliasOutput(args)
-	assert(args, "You must provdide an argument table when creating CreateAliasOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateAliasOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Alias"] = args["Alias"],
 	}
-	asserts.AssertCreateAliasOutput(t)
-	return t
+	asserts.AssertCreateAliasOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeAliasOutput = { ["Alias"] = true, nil }
@@ -1573,12 +2101,23 @@ end
 -- * Alias [Alias] <p>Object that contains the requested alias.</p>
 -- @return DescribeAliasOutput structure as a key-value pair table
 function M.DescribeAliasOutput(args)
-	assert(args, "You must provdide an argument table when creating DescribeAliasOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeAliasOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Alias"] = args["Alias"],
 	}
-	asserts.AssertDescribeAliasOutput(t)
-	return t
+	asserts.AssertDescribeAliasOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreatePlayerSessionInput = { ["PlayerId"] = true, ["GameSessionId"] = true, ["PlayerData"] = true, nil }
@@ -1607,14 +2146,25 @@ end
 -- Required key: PlayerId
 -- @return CreatePlayerSessionInput structure as a key-value pair table
 function M.CreatePlayerSessionInput(args)
-	assert(args, "You must provdide an argument table when creating CreatePlayerSessionInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreatePlayerSessionInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["PlayerId"] = args["PlayerId"],
 		["GameSessionId"] = args["GameSessionId"],
 		["PlayerData"] = args["PlayerData"],
 	}
-	asserts.AssertCreatePlayerSessionInput(t)
-	return t
+	asserts.AssertCreatePlayerSessionInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetGameSessionLogUrlInput = { ["GameSessionId"] = true, nil }
@@ -1637,12 +2187,23 @@ end
 -- Required key: GameSessionId
 -- @return GetGameSessionLogUrlInput structure as a key-value pair table
 function M.GetGameSessionLogUrlInput(args)
-	assert(args, "You must provdide an argument table when creating GetGameSessionLogUrlInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetGameSessionLogUrlInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["GameSessionId"] = args["GameSessionId"],
 	}
-	asserts.AssertGetGameSessionLogUrlInput(t)
-	return t
+	asserts.AssertGetGameSessionLogUrlInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InstanceAccess = { ["InstanceId"] = true, ["IpAddress"] = true, ["FleetId"] = true, ["OperatingSystem"] = true, ["Credentials"] = true, nil }
@@ -1671,16 +2232,27 @@ end
 -- * Credentials [InstanceCredentials] <p>Credentials required to access the instance.</p>
 -- @return InstanceAccess structure as a key-value pair table
 function M.InstanceAccess(args)
-	assert(args, "You must provdide an argument table when creating InstanceAccess")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InstanceAccess")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["InstanceId"] = args["InstanceId"],
 		["IpAddress"] = args["IpAddress"],
 		["FleetId"] = args["FleetId"],
 		["OperatingSystem"] = args["OperatingSystem"],
 		["Credentials"] = args["Credentials"],
 	}
-	asserts.AssertInstanceAccess(t)
-	return t
+	asserts.AssertInstanceAccess(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.PlacedPlayerSession = { ["PlayerId"] = true, ["PlayerSessionId"] = true, nil }
@@ -1703,13 +2275,24 @@ end
 -- * PlayerSessionId [PlayerSessionId] <p>Unique identifier for a player session.</p>
 -- @return PlacedPlayerSession structure as a key-value pair table
 function M.PlacedPlayerSession(args)
-	assert(args, "You must provdide an argument table when creating PlacedPlayerSession")
-	local t = { 
+	assert(args, "You must provide an argument table when creating PlacedPlayerSession")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["PlayerId"] = args["PlayerId"],
 		["PlayerSessionId"] = args["PlayerSessionId"],
 	}
-	asserts.AssertPlacedPlayerSession(t)
-	return t
+	asserts.AssertPlacedPlayerSession(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeInstancesInput = { ["InstanceId"] = true, ["Limit"] = true, ["NextToken"] = true, ["FleetId"] = true, nil }
@@ -1738,15 +2321,26 @@ end
 -- Required key: FleetId
 -- @return DescribeInstancesInput structure as a key-value pair table
 function M.DescribeInstancesInput(args)
-	assert(args, "You must provdide an argument table when creating DescribeInstancesInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeInstancesInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["InstanceId"] = args["InstanceId"],
 		["Limit"] = args["Limit"],
 		["NextToken"] = args["NextToken"],
 		["FleetId"] = args["FleetId"],
 	}
-	asserts.AssertDescribeInstancesInput(t)
-	return t
+	asserts.AssertDescribeInstancesInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeEC2InstanceLimitsOutput = { ["EC2InstanceLimits"] = true, nil }
@@ -1767,12 +2361,23 @@ end
 -- * EC2InstanceLimits [EC2InstanceLimitList] <p>Object that contains the maximum number of instances for the specified instance type.</p>
 -- @return DescribeEC2InstanceLimitsOutput structure as a key-value pair table
 function M.DescribeEC2InstanceLimitsOutput(args)
-	assert(args, "You must provdide an argument table when creating DescribeEC2InstanceLimitsOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeEC2InstanceLimitsOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["EC2InstanceLimits"] = args["EC2InstanceLimits"],
 	}
-	asserts.AssertDescribeEC2InstanceLimitsOutput(t)
-	return t
+	asserts.AssertDescribeEC2InstanceLimitsOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.FleetCapacity = { ["FleetId"] = true, ["InstanceType"] = true, ["InstanceCounts"] = true, nil }
@@ -1797,14 +2402,25 @@ end
 -- * InstanceCounts [EC2InstanceCounts] <p>Current status of fleet capacity.</p>
 -- @return FleetCapacity structure as a key-value pair table
 function M.FleetCapacity(args)
-	assert(args, "You must provdide an argument table when creating FleetCapacity")
-	local t = { 
+	assert(args, "You must provide an argument table when creating FleetCapacity")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["FleetId"] = args["FleetId"],
 		["InstanceType"] = args["InstanceType"],
 		["InstanceCounts"] = args["InstanceCounts"],
 	}
-	asserts.AssertFleetCapacity(t)
-	return t
+	asserts.AssertFleetCapacity(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateGameSessionQueueOutput = { ["GameSessionQueue"] = true, nil }
@@ -1825,12 +2441,23 @@ end
 -- * GameSessionQueue [GameSessionQueue] <p>Object that describes the newly created game session queue.</p>
 -- @return CreateGameSessionQueueOutput structure as a key-value pair table
 function M.CreateGameSessionQueueOutput(args)
-	assert(args, "You must provdide an argument table when creating CreateGameSessionQueueOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateGameSessionQueueOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["GameSessionQueue"] = args["GameSessionQueue"],
 	}
-	asserts.AssertCreateGameSessionQueueOutput(t)
-	return t
+	asserts.AssertCreateGameSessionQueueOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteFleetInput = { ["FleetId"] = true, nil }
@@ -1853,12 +2480,23 @@ end
 -- Required key: FleetId
 -- @return DeleteFleetInput structure as a key-value pair table
 function M.DeleteFleetInput(args)
-	assert(args, "You must provdide an argument table when creating DeleteFleetInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteFleetInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["FleetId"] = args["FleetId"],
 	}
-	asserts.AssertDeleteFleetInput(t)
-	return t
+	asserts.AssertDeleteFleetInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeFleetPortSettingsInput = { ["FleetId"] = true, nil }
@@ -1881,12 +2519,23 @@ end
 -- Required key: FleetId
 -- @return DescribeFleetPortSettingsInput structure as a key-value pair table
 function M.DescribeFleetPortSettingsInput(args)
-	assert(args, "You must provdide an argument table when creating DescribeFleetPortSettingsInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeFleetPortSettingsInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["FleetId"] = args["FleetId"],
 	}
-	asserts.AssertDescribeFleetPortSettingsInput(t)
-	return t
+	asserts.AssertDescribeFleetPortSettingsInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeFleetCapacityOutput = { ["NextToken"] = true, ["FleetCapacity"] = true, nil }
@@ -1909,13 +2558,24 @@ end
 -- * FleetCapacity [FleetCapacityList] <p>Collection of objects containing capacity information for each requested fleet ID. Leave this parameter empty to retrieve capacity information for all fleets.</p>
 -- @return DescribeFleetCapacityOutput structure as a key-value pair table
 function M.DescribeFleetCapacityOutput(args)
-	assert(args, "You must provdide an argument table when creating DescribeFleetCapacityOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeFleetCapacityOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NextToken"] = args["NextToken"],
 		["FleetCapacity"] = args["FleetCapacity"],
 	}
-	asserts.AssertDescribeFleetCapacityOutput(t)
-	return t
+	asserts.AssertDescribeFleetCapacityOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteBuildInput = { ["BuildId"] = true, nil }
@@ -1938,12 +2598,23 @@ end
 -- Required key: BuildId
 -- @return DeleteBuildInput structure as a key-value pair table
 function M.DeleteBuildInput(args)
-	assert(args, "You must provdide an argument table when creating DeleteBuildInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteBuildInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["BuildId"] = args["BuildId"],
 	}
-	asserts.AssertDeleteBuildInput(t)
-	return t
+	asserts.AssertDeleteBuildInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdateFleetAttributesInput = { ["Name"] = true, ["MetricGroups"] = true, ["NewGameSessionProtectionPolicy"] = true, ["FleetId"] = true, ["ResourceCreationLimitPolicy"] = true, ["Description"] = true, nil }
@@ -1976,8 +2647,14 @@ end
 -- Required key: FleetId
 -- @return UpdateFleetAttributesInput structure as a key-value pair table
 function M.UpdateFleetAttributesInput(args)
-	assert(args, "You must provdide an argument table when creating UpdateFleetAttributesInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateFleetAttributesInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Name"] = args["Name"],
 		["MetricGroups"] = args["MetricGroups"],
 		["NewGameSessionProtectionPolicy"] = args["NewGameSessionProtectionPolicy"],
@@ -1985,8 +2662,13 @@ function M.UpdateFleetAttributesInput(args)
 		["ResourceCreationLimitPolicy"] = args["ResourceCreationLimitPolicy"],
 		["Description"] = args["Description"],
 	}
-	asserts.AssertUpdateFleetAttributesInput(t)
-	return t
+	asserts.AssertUpdateFleetAttributesInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeGameSessionsOutput = { ["GameSessions"] = true, ["NextToken"] = true, nil }
@@ -2009,13 +2691,24 @@ end
 -- * NextToken [NonZeroAndMaxString] <p>Token that indicates where to resume retrieving results on the next call to this action. If no token is returned, these results represent the end of the list.</p>
 -- @return DescribeGameSessionsOutput structure as a key-value pair table
 function M.DescribeGameSessionsOutput(args)
-	assert(args, "You must provdide an argument table when creating DescribeGameSessionsOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeGameSessionsOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["GameSessions"] = args["GameSessions"],
 		["NextToken"] = args["NextToken"],
 	}
-	asserts.AssertDescribeGameSessionsOutput(t)
-	return t
+	asserts.AssertDescribeGameSessionsOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ResourceCreationLimitPolicy = { ["NewGameSessionsPerCreator"] = true, ["PolicyPeriodInMinutes"] = true, nil }
@@ -2038,13 +2731,24 @@ end
 -- * PolicyPeriodInMinutes [WholeNumber] <p>Time span used in evaluating the resource creation limit policy. </p>
 -- @return ResourceCreationLimitPolicy structure as a key-value pair table
 function M.ResourceCreationLimitPolicy(args)
-	assert(args, "You must provdide an argument table when creating ResourceCreationLimitPolicy")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ResourceCreationLimitPolicy")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NewGameSessionsPerCreator"] = args["NewGameSessionsPerCreator"],
 		["PolicyPeriodInMinutes"] = args["PolicyPeriodInMinutes"],
 	}
-	asserts.AssertResourceCreationLimitPolicy(t)
-	return t
+	asserts.AssertResourceCreationLimitPolicy(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.EC2InstanceCounts = { ["TERMINATING"] = true, ["MAXIMUM"] = true, ["DESIRED"] = true, ["IDLE"] = true, ["MINIMUM"] = true, ["ACTIVE"] = true, ["PENDING"] = true, nil }
@@ -2077,8 +2781,14 @@ end
 -- * PENDING [WholeNumber] <p>Number of instances in the fleet that are starting but not yet active.</p>
 -- @return EC2InstanceCounts structure as a key-value pair table
 function M.EC2InstanceCounts(args)
-	assert(args, "You must provdide an argument table when creating EC2InstanceCounts")
-	local t = { 
+	assert(args, "You must provide an argument table when creating EC2InstanceCounts")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["TERMINATING"] = args["TERMINATING"],
 		["MAXIMUM"] = args["MAXIMUM"],
 		["DESIRED"] = args["DESIRED"],
@@ -2087,8 +2797,13 @@ function M.EC2InstanceCounts(args)
 		["ACTIVE"] = args["ACTIVE"],
 		["PENDING"] = args["PENDING"],
 	}
-	asserts.AssertEC2InstanceCounts(t)
-	return t
+	asserts.AssertEC2InstanceCounts(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ResolveAliasOutput = { ["FleetId"] = true, nil }
@@ -2109,12 +2824,23 @@ end
 -- * FleetId [FleetId] <p>Fleet identifier that is associated with the requested alias.</p>
 -- @return ResolveAliasOutput structure as a key-value pair table
 function M.ResolveAliasOutput(args)
-	assert(args, "You must provdide an argument table when creating ResolveAliasOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ResolveAliasOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["FleetId"] = args["FleetId"],
 	}
-	asserts.AssertResolveAliasOutput(t)
-	return t
+	asserts.AssertResolveAliasOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidRequestException = { ["Message"] = true, nil }
@@ -2135,12 +2861,23 @@ end
 -- * Message [NonEmptyString] 
 -- @return InvalidRequestException structure as a key-value pair table
 function M.InvalidRequestException(args)
-	assert(args, "You must provdide an argument table when creating InvalidRequestException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidRequestException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Message"] = args["Message"],
 	}
-	asserts.AssertInvalidRequestException(t)
-	return t
+	asserts.AssertInvalidRequestException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdateAliasOutput = { ["Alias"] = true, nil }
@@ -2161,12 +2898,23 @@ end
 -- * Alias [Alias] <p>Object that contains the updated alias configuration.</p>
 -- @return UpdateAliasOutput structure as a key-value pair table
 function M.UpdateAliasOutput(args)
-	assert(args, "You must provdide an argument table when creating UpdateAliasOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateAliasOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Alias"] = args["Alias"],
 	}
-	asserts.AssertUpdateAliasOutput(t)
-	return t
+	asserts.AssertUpdateAliasOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdateAliasInput = { ["RoutingStrategy"] = true, ["AliasId"] = true, ["Name"] = true, ["Description"] = true, nil }
@@ -2195,15 +2943,26 @@ end
 -- Required key: AliasId
 -- @return UpdateAliasInput structure as a key-value pair table
 function M.UpdateAliasInput(args)
-	assert(args, "You must provdide an argument table when creating UpdateAliasInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateAliasInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["RoutingStrategy"] = args["RoutingStrategy"],
 		["AliasId"] = args["AliasId"],
 		["Name"] = args["Name"],
 		["Description"] = args["Description"],
 	}
-	asserts.AssertUpdateAliasInput(t)
-	return t
+	asserts.AssertUpdateAliasInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GameProperty = { ["Value"] = true, ["Key"] = true, nil }
@@ -2230,13 +2989,24 @@ end
 -- Required key: Value
 -- @return GameProperty structure as a key-value pair table
 function M.GameProperty(args)
-	assert(args, "You must provdide an argument table when creating GameProperty")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GameProperty")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Value"] = args["Value"],
 		["Key"] = args["Key"],
 	}
-	asserts.AssertGameProperty(t)
-	return t
+	asserts.AssertGameProperty(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GameSessionDetail = { ["GameSession"] = true, ["ProtectionPolicy"] = true, nil }
@@ -2259,13 +3029,24 @@ end
 -- * ProtectionPolicy [ProtectionPolicy] <p>Current status of protection for the game session.</p> <ul> <li> <p> <b>NoProtection</b> – The game session can be terminated during a scale-down event.</p> </li> <li> <p> <b>FullProtection</b> – If the game session is in an <code>ACTIVE</code> status, it cannot be terminated during a scale-down event.</p> </li> </ul>
 -- @return GameSessionDetail structure as a key-value pair table
 function M.GameSessionDetail(args)
-	assert(args, "You must provdide an argument table when creating GameSessionDetail")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GameSessionDetail")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["GameSession"] = args["GameSession"],
 		["ProtectionPolicy"] = args["ProtectionPolicy"],
 	}
-	asserts.AssertGameSessionDetail(t)
-	return t
+	asserts.AssertGameSessionDetail(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeFleetAttributesInput = { ["FleetIds"] = true, ["NextToken"] = true, ["Limit"] = true, nil }
@@ -2290,14 +3071,25 @@ end
 -- * Limit [PositiveInteger] <p>Maximum number of results to return. Use this parameter with <code>NextToken</code> to get results as a set of sequential pages. This parameter is ignored when the request specifies one or a list of fleet IDs.</p>
 -- @return DescribeFleetAttributesInput structure as a key-value pair table
 function M.DescribeFleetAttributesInput(args)
-	assert(args, "You must provdide an argument table when creating DescribeFleetAttributesInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeFleetAttributesInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["FleetIds"] = args["FleetIds"],
 		["NextToken"] = args["NextToken"],
 		["Limit"] = args["Limit"],
 	}
-	asserts.AssertDescribeFleetAttributesInput(t)
-	return t
+	asserts.AssertDescribeFleetAttributesInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidGameSessionStatusException = { ["Message"] = true, nil }
@@ -2318,12 +3110,23 @@ end
 -- * Message [NonEmptyString] 
 -- @return InvalidGameSessionStatusException structure as a key-value pair table
 function M.InvalidGameSessionStatusException(args)
-	assert(args, "You must provdide an argument table when creating InvalidGameSessionStatusException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidGameSessionStatusException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Message"] = args["Message"],
 	}
-	asserts.AssertInvalidGameSessionStatusException(t)
-	return t
+	asserts.AssertInvalidGameSessionStatusException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeAliasInput = { ["AliasId"] = true, nil }
@@ -2346,12 +3149,23 @@ end
 -- Required key: AliasId
 -- @return DescribeAliasInput structure as a key-value pair table
 function M.DescribeAliasInput(args)
-	assert(args, "You must provdide an argument table when creating DescribeAliasInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeAliasInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["AliasId"] = args["AliasId"],
 	}
-	asserts.AssertDescribeAliasInput(t)
-	return t
+	asserts.AssertDescribeAliasInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GameSession = { ["Status"] = true, ["MaximumPlayerSessionCount"] = true, ["Name"] = true, ["CurrentPlayerSessionCount"] = true, ["TerminationTime"] = true, ["GameProperties"] = true, ["CreationTime"] = true, ["PlayerSessionCreationPolicy"] = true, ["FleetId"] = true, ["CreatorId"] = true, ["GameSessionId"] = true, ["IpAddress"] = true, ["Port"] = true, nil }
@@ -2396,8 +3210,14 @@ end
 -- * Port [PortNumber] <p>Port number for the game session. To connect to a Amazon GameLift game server, an app needs both the IP address and port number.</p>
 -- @return GameSession structure as a key-value pair table
 function M.GameSession(args)
-	assert(args, "You must provdide an argument table when creating GameSession")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GameSession")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Status"] = args["Status"],
 		["MaximumPlayerSessionCount"] = args["MaximumPlayerSessionCount"],
 		["Name"] = args["Name"],
@@ -2412,8 +3232,13 @@ function M.GameSession(args)
 		["IpAddress"] = args["IpAddress"],
 		["Port"] = args["Port"],
 	}
-	asserts.AssertGameSession(t)
-	return t
+	asserts.AssertGameSession(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeGameSessionQueuesInput = { ["NextToken"] = true, ["Limit"] = true, ["Names"] = true, nil }
@@ -2438,14 +3263,25 @@ end
 -- * Names [GameSessionQueueNameList] <p>List of queue names to retrieve information for. To request settings for all queues, leave this parameter empty.</p>
 -- @return DescribeGameSessionQueuesInput structure as a key-value pair table
 function M.DescribeGameSessionQueuesInput(args)
-	assert(args, "You must provdide an argument table when creating DescribeGameSessionQueuesInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeGameSessionQueuesInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NextToken"] = args["NextToken"],
 		["Limit"] = args["Limit"],
 		["Names"] = args["Names"],
 	}
-	asserts.AssertDescribeGameSessionQueuesInput(t)
-	return t
+	asserts.AssertDescribeGameSessionQueuesInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreatePlayerSessionsOutput = { ["PlayerSessions"] = true, nil }
@@ -2466,12 +3302,23 @@ end
 -- * PlayerSessions [PlayerSessionList] <p>Collection of player session objects created for the added players.</p>
 -- @return CreatePlayerSessionsOutput structure as a key-value pair table
 function M.CreatePlayerSessionsOutput(args)
-	assert(args, "You must provdide an argument table when creating CreatePlayerSessionsOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreatePlayerSessionsOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["PlayerSessions"] = args["PlayerSessions"],
 	}
-	asserts.AssertCreatePlayerSessionsOutput(t)
-	return t
+	asserts.AssertCreatePlayerSessionsOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.PlayerLatency = { ["PlayerId"] = true, ["LatencyInMilliseconds"] = true, ["RegionIdentifier"] = true, nil }
@@ -2496,14 +3343,25 @@ end
 -- * RegionIdentifier [NonZeroAndMaxString] <p>Name of the region that is associated with the latency value.</p>
 -- @return PlayerLatency structure as a key-value pair table
 function M.PlayerLatency(args)
-	assert(args, "You must provdide an argument table when creating PlayerLatency")
-	local t = { 
+	assert(args, "You must provide an argument table when creating PlayerLatency")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["PlayerId"] = args["PlayerId"],
 		["LatencyInMilliseconds"] = args["LatencyInMilliseconds"],
 		["RegionIdentifier"] = args["RegionIdentifier"],
 	}
-	asserts.AssertPlayerLatency(t)
-	return t
+	asserts.AssertPlayerLatency(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetGameSessionLogUrlOutput = { ["PreSignedUrl"] = true, nil }
@@ -2524,12 +3382,23 @@ end
 -- * PreSignedUrl [NonZeroAndMaxString] <p>Location of the requested game session logs, available for download.</p>
 -- @return GetGameSessionLogUrlOutput structure as a key-value pair table
 function M.GetGameSessionLogUrlOutput(args)
-	assert(args, "You must provdide an argument table when creating GetGameSessionLogUrlOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetGameSessionLogUrlOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["PreSignedUrl"] = args["PreSignedUrl"],
 	}
-	asserts.AssertGetGameSessionLogUrlOutput(t)
-	return t
+	asserts.AssertGetGameSessionLogUrlOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeGameSessionPlacementInput = { ["PlacementId"] = true, nil }
@@ -2552,12 +3421,23 @@ end
 -- Required key: PlacementId
 -- @return DescribeGameSessionPlacementInput structure as a key-value pair table
 function M.DescribeGameSessionPlacementInput(args)
-	assert(args, "You must provdide an argument table when creating DescribeGameSessionPlacementInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeGameSessionPlacementInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["PlacementId"] = args["PlacementId"],
 	}
-	asserts.AssertDescribeGameSessionPlacementInput(t)
-	return t
+	asserts.AssertDescribeGameSessionPlacementInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.S3Location = { ["RoleArn"] = true, ["Bucket"] = true, ["Key"] = true, nil }
@@ -2582,14 +3462,25 @@ end
 -- * Key [NonEmptyString] <p>Name of the zip file containing your build files. </p>
 -- @return S3Location structure as a key-value pair table
 function M.S3Location(args)
-	assert(args, "You must provdide an argument table when creating S3Location")
-	local t = { 
+	assert(args, "You must provide an argument table when creating S3Location")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["RoleArn"] = args["RoleArn"],
 		["Bucket"] = args["Bucket"],
 		["Key"] = args["Key"],
 	}
-	asserts.AssertS3Location(t)
-	return t
+	asserts.AssertS3Location(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListAliasesInput = { ["NextToken"] = true, ["Limit"] = true, ["Name"] = true, ["RoutingStrategyType"] = true, nil }
@@ -2616,15 +3507,26 @@ end
 -- * RoutingStrategyType [RoutingStrategyType] <p>Type of routing to filter results on. Use this parameter to retrieve only aliases of a certain type. To retrieve all aliases, leave this parameter empty.</p> <p>Possible routing types include the following:</p> <ul> <li> <p> <b>SIMPLE</b> – The alias resolves to one specific fleet. Use this type when routing to active fleets.</p> </li> <li> <p> <b>TERMINAL</b> – The alias does not resolve to a fleet but instead can be used to display a message to the user. A terminal alias throws a TerminalRoutingStrategyException with the <a>RoutingStrategy</a> message embedded.</p> </li> </ul>
 -- @return ListAliasesInput structure as a key-value pair table
 function M.ListAliasesInput(args)
-	assert(args, "You must provdide an argument table when creating ListAliasesInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListAliasesInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NextToken"] = args["NextToken"],
 		["Limit"] = args["Limit"],
 		["Name"] = args["Name"],
 		["RoutingStrategyType"] = args["RoutingStrategyType"],
 	}
-	asserts.AssertListAliasesInput(t)
-	return t
+	asserts.AssertListAliasesInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeGameSessionDetailsOutput = { ["NextToken"] = true, ["GameSessionDetails"] = true, nil }
@@ -2647,13 +3549,24 @@ end
 -- * GameSessionDetails [GameSessionDetailList] <p>Collection of objects containing game session properties and the protection policy currently in force for each session matching the request.</p>
 -- @return DescribeGameSessionDetailsOutput structure as a key-value pair table
 function M.DescribeGameSessionDetailsOutput(args)
-	assert(args, "You must provdide an argument table when creating DescribeGameSessionDetailsOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeGameSessionDetailsOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NextToken"] = args["NextToken"],
 		["GameSessionDetails"] = args["GameSessionDetails"],
 	}
-	asserts.AssertDescribeGameSessionDetailsOutput(t)
-	return t
+	asserts.AssertDescribeGameSessionDetailsOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateFleetOutput = { ["FleetAttributes"] = true, nil }
@@ -2674,12 +3587,23 @@ end
 -- * FleetAttributes [FleetAttributes] <p>Properties for the newly created fleet.</p>
 -- @return CreateFleetOutput structure as a key-value pair table
 function M.CreateFleetOutput(args)
-	assert(args, "You must provdide an argument table when creating CreateFleetOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateFleetOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["FleetAttributes"] = args["FleetAttributes"],
 	}
-	asserts.AssertCreateFleetOutput(t)
-	return t
+	asserts.AssertCreateFleetOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeFleetEventsOutput = { ["NextToken"] = true, ["Events"] = true, nil }
@@ -2702,13 +3626,24 @@ end
 -- * Events [EventList] <p>Collection of objects containing event log entries for the specified fleet.</p>
 -- @return DescribeFleetEventsOutput structure as a key-value pair table
 function M.DescribeFleetEventsOutput(args)
-	assert(args, "You must provdide an argument table when creating DescribeFleetEventsOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeFleetEventsOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NextToken"] = args["NextToken"],
 		["Events"] = args["Events"],
 	}
-	asserts.AssertDescribeFleetEventsOutput(t)
-	return t
+	asserts.AssertDescribeFleetEventsOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeRuntimeConfigurationInput = { ["FleetId"] = true, nil }
@@ -2731,12 +3666,23 @@ end
 -- Required key: FleetId
 -- @return DescribeRuntimeConfigurationInput structure as a key-value pair table
 function M.DescribeRuntimeConfigurationInput(args)
-	assert(args, "You must provdide an argument table when creating DescribeRuntimeConfigurationInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeRuntimeConfigurationInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["FleetId"] = args["FleetId"],
 	}
-	asserts.AssertDescribeRuntimeConfigurationInput(t)
-	return t
+	asserts.AssertDescribeRuntimeConfigurationInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GameSessionFullException = { ["Message"] = true, nil }
@@ -2757,12 +3703,23 @@ end
 -- * Message [NonEmptyString] 
 -- @return GameSessionFullException structure as a key-value pair table
 function M.GameSessionFullException(args)
-	assert(args, "You must provdide an argument table when creating GameSessionFullException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GameSessionFullException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Message"] = args["Message"],
 	}
-	asserts.AssertGameSessionFullException(t)
-	return t
+	asserts.AssertGameSessionFullException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateGameSessionInput = { ["MaximumPlayerSessionCount"] = true, ["Name"] = true, ["GameProperties"] = true, ["IdempotencyToken"] = true, ["FleetId"] = true, ["CreatorId"] = true, ["GameSessionId"] = true, ["AliasId"] = true, nil }
@@ -2799,8 +3756,14 @@ end
 -- Required key: MaximumPlayerSessionCount
 -- @return CreateGameSessionInput structure as a key-value pair table
 function M.CreateGameSessionInput(args)
-	assert(args, "You must provdide an argument table when creating CreateGameSessionInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateGameSessionInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["MaximumPlayerSessionCount"] = args["MaximumPlayerSessionCount"],
 		["Name"] = args["Name"],
 		["GameProperties"] = args["GameProperties"],
@@ -2810,8 +3773,13 @@ function M.CreateGameSessionInput(args)
 		["GameSessionId"] = args["GameSessionId"],
 		["AliasId"] = args["AliasId"],
 	}
-	asserts.AssertCreateGameSessionInput(t)
-	return t
+	asserts.AssertCreateGameSessionInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteGameSessionQueueOutput = { nil }
@@ -2830,11 +3798,22 @@ end
 -- Valid keys:
 -- @return DeleteGameSessionQueueOutput structure as a key-value pair table
 function M.DeleteGameSessionQueueOutput(args)
-	assert(args, "You must provdide an argument table when creating DeleteGameSessionQueueOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteGameSessionQueueOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertDeleteGameSessionQueueOutput(t)
-	return t
+	asserts.AssertDeleteGameSessionQueueOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateGameSessionOutput = { ["GameSession"] = true, nil }
@@ -2855,12 +3834,23 @@ end
 -- * GameSession [GameSession] <p>Object that describes the newly created game session record.</p>
 -- @return CreateGameSessionOutput structure as a key-value pair table
 function M.CreateGameSessionOutput(args)
-	assert(args, "You must provdide an argument table when creating CreateGameSessionOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateGameSessionOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["GameSession"] = args["GameSession"],
 	}
-	asserts.AssertCreateGameSessionOutput(t)
-	return t
+	asserts.AssertCreateGameSessionOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdateFleetPortSettingsInput = { ["InboundPermissionRevocations"] = true, ["FleetId"] = true, ["InboundPermissionAuthorizations"] = true, nil }
@@ -2887,14 +3877,25 @@ end
 -- Required key: FleetId
 -- @return UpdateFleetPortSettingsInput structure as a key-value pair table
 function M.UpdateFleetPortSettingsInput(args)
-	assert(args, "You must provdide an argument table when creating UpdateFleetPortSettingsInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateFleetPortSettingsInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["InboundPermissionRevocations"] = args["InboundPermissionRevocations"],
 		["FleetId"] = args["FleetId"],
 		["InboundPermissionAuthorizations"] = args["InboundPermissionAuthorizations"],
 	}
-	asserts.AssertUpdateFleetPortSettingsInput(t)
-	return t
+	asserts.AssertUpdateFleetPortSettingsInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ConflictException = { ["Message"] = true, nil }
@@ -2915,12 +3916,23 @@ end
 -- * Message [NonEmptyString] 
 -- @return ConflictException structure as a key-value pair table
 function M.ConflictException(args)
-	assert(args, "You must provdide an argument table when creating ConflictException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ConflictException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Message"] = args["Message"],
 	}
-	asserts.AssertConflictException(t)
-	return t
+	asserts.AssertConflictException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.SearchGameSessionsInput = { ["FilterExpression"] = true, ["SortExpression"] = true, ["FleetId"] = true, ["Limit"] = true, ["NextToken"] = true, ["AliasId"] = true, nil }
@@ -2951,8 +3963,14 @@ end
 -- * AliasId [AliasId] <p>Unique identifier for an alias associated with the fleet to search for active game sessions. Each request must reference either a fleet ID or alias ID, but not both.</p>
 -- @return SearchGameSessionsInput structure as a key-value pair table
 function M.SearchGameSessionsInput(args)
-	assert(args, "You must provdide an argument table when creating SearchGameSessionsInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating SearchGameSessionsInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["FilterExpression"] = args["FilterExpression"],
 		["SortExpression"] = args["SortExpression"],
 		["FleetId"] = args["FleetId"],
@@ -2960,8 +3978,13 @@ function M.SearchGameSessionsInput(args)
 		["NextToken"] = args["NextToken"],
 		["AliasId"] = args["AliasId"],
 	}
-	asserts.AssertSearchGameSessionsInput(t)
-	return t
+	asserts.AssertSearchGameSessionsInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeFleetUtilizationOutput = { ["FleetUtilization"] = true, ["NextToken"] = true, nil }
@@ -2984,13 +4007,24 @@ end
 -- * NextToken [NonZeroAndMaxString] <p>Token that indicates where to resume retrieving results on the next call to this action. If no token is returned, these results represent the end of the list.</p>
 -- @return DescribeFleetUtilizationOutput structure as a key-value pair table
 function M.DescribeFleetUtilizationOutput(args)
-	assert(args, "You must provdide an argument table when creating DescribeFleetUtilizationOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeFleetUtilizationOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["FleetUtilization"] = args["FleetUtilization"],
 		["NextToken"] = args["NextToken"],
 	}
-	asserts.AssertDescribeFleetUtilizationOutput(t)
-	return t
+	asserts.AssertDescribeFleetUtilizationOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdateGameSessionInput = { ["MaximumPlayerSessionCount"] = true, ["PlayerSessionCreationPolicy"] = true, ["GameSessionId"] = true, ["Name"] = true, ["ProtectionPolicy"] = true, nil }
@@ -3021,16 +4055,27 @@ end
 -- Required key: GameSessionId
 -- @return UpdateGameSessionInput structure as a key-value pair table
 function M.UpdateGameSessionInput(args)
-	assert(args, "You must provdide an argument table when creating UpdateGameSessionInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateGameSessionInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["MaximumPlayerSessionCount"] = args["MaximumPlayerSessionCount"],
 		["PlayerSessionCreationPolicy"] = args["PlayerSessionCreationPolicy"],
 		["GameSessionId"] = args["GameSessionId"],
 		["Name"] = args["Name"],
 		["ProtectionPolicy"] = args["ProtectionPolicy"],
 	}
-	asserts.AssertUpdateGameSessionInput(t)
-	return t
+	asserts.AssertUpdateGameSessionInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdateGameSessionOutput = { ["GameSession"] = true, nil }
@@ -3051,12 +4096,23 @@ end
 -- * GameSession [GameSession] <p>Object that contains the updated game session metadata.</p>
 -- @return UpdateGameSessionOutput structure as a key-value pair table
 function M.UpdateGameSessionOutput(args)
-	assert(args, "You must provdide an argument table when creating UpdateGameSessionOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateGameSessionOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["GameSession"] = args["GameSession"],
 	}
-	asserts.AssertUpdateGameSessionOutput(t)
-	return t
+	asserts.AssertUpdateGameSessionOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GameSessionQueueDestination = { ["DestinationArn"] = true, nil }
@@ -3077,12 +4133,23 @@ end
 -- * DestinationArn [ArnStringModel] <p>Amazon Resource Name (ARN) assigned to fleet or fleet alias. ARNs, which include a fleet ID or alias ID and a region name, provide a unique identifier across all regions. </p>
 -- @return GameSessionQueueDestination structure as a key-value pair table
 function M.GameSessionQueueDestination(args)
-	assert(args, "You must provdide an argument table when creating GameSessionQueueDestination")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GameSessionQueueDestination")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DestinationArn"] = args["DestinationArn"],
 	}
-	asserts.AssertGameSessionQueueDestination(t)
-	return t
+	asserts.AssertGameSessionQueueDestination(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeGameSessionPlacementOutput = { ["GameSessionPlacement"] = true, nil }
@@ -3103,12 +4170,23 @@ end
 -- * GameSessionPlacement [GameSessionPlacement] <p>Object that describes the requested game session placement.</p>
 -- @return DescribeGameSessionPlacementOutput structure as a key-value pair table
 function M.DescribeGameSessionPlacementOutput(args)
-	assert(args, "You must provdide an argument table when creating DescribeGameSessionPlacementOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeGameSessionPlacementOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["GameSessionPlacement"] = args["GameSessionPlacement"],
 	}
-	asserts.AssertDescribeGameSessionPlacementOutput(t)
-	return t
+	asserts.AssertDescribeGameSessionPlacementOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdateFleetCapacityInput = { ["MinSize"] = true, ["MaxSize"] = true, ["FleetId"] = true, ["DesiredInstances"] = true, nil }
@@ -3137,15 +4215,26 @@ end
 -- Required key: FleetId
 -- @return UpdateFleetCapacityInput structure as a key-value pair table
 function M.UpdateFleetCapacityInput(args)
-	assert(args, "You must provdide an argument table when creating UpdateFleetCapacityInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateFleetCapacityInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["MinSize"] = args["MinSize"],
 		["MaxSize"] = args["MaxSize"],
 		["FleetId"] = args["FleetId"],
 		["DesiredInstances"] = args["DesiredInstances"],
 	}
-	asserts.AssertUpdateFleetCapacityInput(t)
-	return t
+	asserts.AssertUpdateFleetCapacityInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GameSessionQueue = { ["Destinations"] = true, ["GameSessionQueueArn"] = true, ["PlayerLatencyPolicies"] = true, ["Name"] = true, ["TimeoutInSeconds"] = true, nil }
@@ -3174,16 +4263,27 @@ end
 -- * TimeoutInSeconds [WholeNumber] <p>Maximum time, in seconds, that a new game session placement request remains in the queue. When a request exceeds this time, the game session placement changes to a TIMED_OUT status.</p>
 -- @return GameSessionQueue structure as a key-value pair table
 function M.GameSessionQueue(args)
-	assert(args, "You must provdide an argument table when creating GameSessionQueue")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GameSessionQueue")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Destinations"] = args["Destinations"],
 		["GameSessionQueueArn"] = args["GameSessionQueueArn"],
 		["PlayerLatencyPolicies"] = args["PlayerLatencyPolicies"],
 		["Name"] = args["Name"],
 		["TimeoutInSeconds"] = args["TimeoutInSeconds"],
 	}
-	asserts.AssertGameSessionQueue(t)
-	return t
+	asserts.AssertGameSessionQueue(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ResolveAliasInput = { ["AliasId"] = true, nil }
@@ -3206,12 +4306,23 @@ end
 -- Required key: AliasId
 -- @return ResolveAliasInput structure as a key-value pair table
 function M.ResolveAliasInput(args)
-	assert(args, "You must provdide an argument table when creating ResolveAliasInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ResolveAliasInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["AliasId"] = args["AliasId"],
 	}
-	asserts.AssertResolveAliasInput(t)
-	return t
+	asserts.AssertResolveAliasInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeInstancesOutput = { ["Instances"] = true, ["NextToken"] = true, nil }
@@ -3234,13 +4345,24 @@ end
 -- * NextToken [NonZeroAndMaxString] <p>Token that indicates where to resume retrieving results on the next call to this action. If no token is returned, these results represent the end of the list.</p>
 -- @return DescribeInstancesOutput structure as a key-value pair table
 function M.DescribeInstancesOutput(args)
-	assert(args, "You must provdide an argument table when creating DescribeInstancesOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeInstancesOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Instances"] = args["Instances"],
 		["NextToken"] = args["NextToken"],
 	}
-	asserts.AssertDescribeInstancesOutput(t)
-	return t
+	asserts.AssertDescribeInstancesOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListFleetsOutput = { ["FleetIds"] = true, ["NextToken"] = true, nil }
@@ -3263,13 +4385,24 @@ end
 -- * NextToken [NonZeroAndMaxString] <p>Token that indicates where to resume retrieving results on the next call to this action. If no token is returned, these results represent the end of the list.</p>
 -- @return ListFleetsOutput structure as a key-value pair table
 function M.ListFleetsOutput(args)
-	assert(args, "You must provdide an argument table when creating ListFleetsOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListFleetsOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["FleetIds"] = args["FleetIds"],
 		["NextToken"] = args["NextToken"],
 	}
-	asserts.AssertListFleetsOutput(t)
-	return t
+	asserts.AssertListFleetsOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdateRuntimeConfigurationInput = { ["FleetId"] = true, ["RuntimeConfiguration"] = true, nil }
@@ -3296,13 +4429,24 @@ end
 -- Required key: RuntimeConfiguration
 -- @return UpdateRuntimeConfigurationInput structure as a key-value pair table
 function M.UpdateRuntimeConfigurationInput(args)
-	assert(args, "You must provdide an argument table when creating UpdateRuntimeConfigurationInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateRuntimeConfigurationInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["FleetId"] = args["FleetId"],
 		["RuntimeConfiguration"] = args["RuntimeConfiguration"],
 	}
-	asserts.AssertUpdateRuntimeConfigurationInput(t)
-	return t
+	asserts.AssertUpdateRuntimeConfigurationInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GameSessionPlacement = { ["Status"] = true, ["MaximumPlayerSessionCount"] = true, ["PlacedPlayerSessions"] = true, ["PlacementId"] = true, ["GameSessionName"] = true, ["GameSessionQueueName"] = true, ["GameProperties"] = true, ["GameSessionId"] = true, ["StartTime"] = true, ["GameSessionRegion"] = true, ["PlayerLatencies"] = true, ["EndTime"] = true, ["IpAddress"] = true, ["Port"] = true, ["GameSessionArn"] = true, nil }
@@ -3351,8 +4495,14 @@ end
 -- * GameSessionArn [NonZeroAndMaxString] <p>Identifier for the game session created by this placement request. This value is set once the new game session is placed (placement status is Fulfilled). This identifier is unique across all regions. You can use this value as a <code>GameSessionId</code> value as needed.</p>
 -- @return GameSessionPlacement structure as a key-value pair table
 function M.GameSessionPlacement(args)
-	assert(args, "You must provdide an argument table when creating GameSessionPlacement")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GameSessionPlacement")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Status"] = args["Status"],
 		["MaximumPlayerSessionCount"] = args["MaximumPlayerSessionCount"],
 		["PlacedPlayerSessions"] = args["PlacedPlayerSessions"],
@@ -3369,8 +4519,13 @@ function M.GameSessionPlacement(args)
 		["Port"] = args["Port"],
 		["GameSessionArn"] = args["GameSessionArn"],
 	}
-	asserts.AssertGameSessionPlacement(t)
-	return t
+	asserts.AssertGameSessionPlacement(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeBuildInput = { ["BuildId"] = true, nil }
@@ -3393,12 +4548,23 @@ end
 -- Required key: BuildId
 -- @return DescribeBuildInput structure as a key-value pair table
 function M.DescribeBuildInput(args)
-	assert(args, "You must provdide an argument table when creating DescribeBuildInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeBuildInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["BuildId"] = args["BuildId"],
 	}
-	asserts.AssertDescribeBuildInput(t)
-	return t
+	asserts.AssertDescribeBuildInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeFleetEventsInput = { ["Limit"] = true, ["EndTime"] = true, ["FleetId"] = true, ["NextToken"] = true, ["StartTime"] = true, nil }
@@ -3429,16 +4595,27 @@ end
 -- Required key: FleetId
 -- @return DescribeFleetEventsInput structure as a key-value pair table
 function M.DescribeFleetEventsInput(args)
-	assert(args, "You must provdide an argument table when creating DescribeFleetEventsInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeFleetEventsInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Limit"] = args["Limit"],
 		["EndTime"] = args["EndTime"],
 		["FleetId"] = args["FleetId"],
 		["NextToken"] = args["NextToken"],
 		["StartTime"] = args["StartTime"],
 	}
-	asserts.AssertDescribeFleetEventsInput(t)
-	return t
+	asserts.AssertDescribeFleetEventsInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UnauthorizedException = { ["Message"] = true, nil }
@@ -3459,12 +4636,23 @@ end
 -- * Message [NonEmptyString] 
 -- @return UnauthorizedException structure as a key-value pair table
 function M.UnauthorizedException(args)
-	assert(args, "You must provdide an argument table when creating UnauthorizedException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UnauthorizedException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Message"] = args["Message"],
 	}
-	asserts.AssertUnauthorizedException(t)
-	return t
+	asserts.AssertUnauthorizedException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateAliasInput = { ["RoutingStrategy"] = true, ["Name"] = true, ["Description"] = true, nil }
@@ -3493,14 +4681,25 @@ end
 -- Required key: RoutingStrategy
 -- @return CreateAliasInput structure as a key-value pair table
 function M.CreateAliasInput(args)
-	assert(args, "You must provdide an argument table when creating CreateAliasInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateAliasInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["RoutingStrategy"] = args["RoutingStrategy"],
 		["Name"] = args["Name"],
 		["Description"] = args["Description"],
 	}
-	asserts.AssertCreateAliasInput(t)
-	return t
+	asserts.AssertCreateAliasInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribePlayerSessionsInput = { ["NextToken"] = true, ["PlayerId"] = true, ["PlayerSessionId"] = true, ["GameSessionId"] = true, ["Limit"] = true, ["PlayerSessionStatusFilter"] = true, nil }
@@ -3531,8 +4730,14 @@ end
 -- * PlayerSessionStatusFilter [NonZeroAndMaxString] <p>Player session status to filter results on.</p> <p>Possible player session statuses include the following:</p> <ul> <li> <p> <b>RESERVED</b> – The player session request has been received, but the player has not yet connected to the server process and/or been validated. </p> </li> <li> <p> <b>ACTIVE</b> – The player has been validated by the server process and is currently connected.</p> </li> <li> <p> <b>COMPLETED</b> – The player connection has been dropped.</p> </li> <li> <p> <b>TIMEDOUT</b> – A player session request was received, but the player did not connect and/or was not validated within the time-out limit (60 seconds).</p> </li> </ul>
 -- @return DescribePlayerSessionsInput structure as a key-value pair table
 function M.DescribePlayerSessionsInput(args)
-	assert(args, "You must provdide an argument table when creating DescribePlayerSessionsInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribePlayerSessionsInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NextToken"] = args["NextToken"],
 		["PlayerId"] = args["PlayerId"],
 		["PlayerSessionId"] = args["PlayerSessionId"],
@@ -3540,8 +4745,13 @@ function M.DescribePlayerSessionsInput(args)
 		["Limit"] = args["Limit"],
 		["PlayerSessionStatusFilter"] = args["PlayerSessionStatusFilter"],
 	}
-	asserts.AssertDescribePlayerSessionsInput(t)
-	return t
+	asserts.AssertDescribePlayerSessionsInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateGameSessionQueueInput = { ["Destinations"] = true, ["PlayerLatencyPolicies"] = true, ["Name"] = true, ["TimeoutInSeconds"] = true, nil }
@@ -3570,15 +4780,26 @@ end
 -- Required key: Name
 -- @return CreateGameSessionQueueInput structure as a key-value pair table
 function M.CreateGameSessionQueueInput(args)
-	assert(args, "You must provdide an argument table when creating CreateGameSessionQueueInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateGameSessionQueueInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Destinations"] = args["Destinations"],
 		["PlayerLatencyPolicies"] = args["PlayerLatencyPolicies"],
 		["Name"] = args["Name"],
 		["TimeoutInSeconds"] = args["TimeoutInSeconds"],
 	}
-	asserts.AssertCreateGameSessionQueueInput(t)
-	return t
+	asserts.AssertCreateGameSessionQueueInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.RoutingStrategy = { ["FleetId"] = true, ["Message"] = true, ["Type"] = true, nil }
@@ -3603,14 +4824,25 @@ end
 -- * Type [RoutingStrategyType] <p>Type of routing strategy.</p> <p>Possible routing types include the following:</p> <ul> <li> <p> <b>SIMPLE</b> – The alias resolves to one specific fleet. Use this type when routing to active fleets.</p> </li> <li> <p> <b>TERMINAL</b> – The alias does not resolve to a fleet but instead can be used to display a message to the user. A terminal alias throws a TerminalRoutingStrategyException with the <a>RoutingStrategy</a> message embedded.</p> </li> </ul>
 -- @return RoutingStrategy structure as a key-value pair table
 function M.RoutingStrategy(args)
-	assert(args, "You must provdide an argument table when creating RoutingStrategy")
-	local t = { 
+	assert(args, "You must provide an argument table when creating RoutingStrategy")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["FleetId"] = args["FleetId"],
 		["Message"] = args["Message"],
 		["Type"] = args["Type"],
 	}
-	asserts.AssertRoutingStrategy(t)
-	return t
+	asserts.AssertRoutingStrategy(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.PlayerSession = { ["Status"] = true, ["PlayerId"] = true, ["TerminationTime"] = true, ["CreationTime"] = true, ["PlayerData"] = true, ["PlayerSessionId"] = true, ["GameSessionId"] = true, ["FleetId"] = true, ["IpAddress"] = true, ["Port"] = true, nil }
@@ -3649,8 +4881,14 @@ end
 -- * Port [PortNumber] <p>Port number for the game session. To connect to a Amazon GameLift server process, an app needs both the IP address and port number.</p>
 -- @return PlayerSession structure as a key-value pair table
 function M.PlayerSession(args)
-	assert(args, "You must provdide an argument table when creating PlayerSession")
-	local t = { 
+	assert(args, "You must provide an argument table when creating PlayerSession")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Status"] = args["Status"],
 		["PlayerId"] = args["PlayerId"],
 		["TerminationTime"] = args["TerminationTime"],
@@ -3662,8 +4900,13 @@ function M.PlayerSession(args)
 		["IpAddress"] = args["IpAddress"],
 		["Port"] = args["Port"],
 	}
-	asserts.AssertPlayerSession(t)
-	return t
+	asserts.AssertPlayerSession(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.RequestUploadCredentialsInput = { ["BuildId"] = true, nil }
@@ -3686,12 +4929,23 @@ end
 -- Required key: BuildId
 -- @return RequestUploadCredentialsInput structure as a key-value pair table
 function M.RequestUploadCredentialsInput(args)
-	assert(args, "You must provdide an argument table when creating RequestUploadCredentialsInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating RequestUploadCredentialsInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["BuildId"] = args["BuildId"],
 	}
-	asserts.AssertRequestUploadCredentialsInput(t)
-	return t
+	asserts.AssertRequestUploadCredentialsInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribePlayerSessionsOutput = { ["PlayerSessions"] = true, ["NextToken"] = true, nil }
@@ -3714,13 +4968,24 @@ end
 -- * NextToken [NonZeroAndMaxString] <p>Token that indicates where to resume retrieving results on the next call to this action. If no token is returned, these results represent the end of the list.</p>
 -- @return DescribePlayerSessionsOutput structure as a key-value pair table
 function M.DescribePlayerSessionsOutput(args)
-	assert(args, "You must provdide an argument table when creating DescribePlayerSessionsOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribePlayerSessionsOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["PlayerSessions"] = args["PlayerSessions"],
 		["NextToken"] = args["NextToken"],
 	}
-	asserts.AssertDescribePlayerSessionsOutput(t)
-	return t
+	asserts.AssertDescribePlayerSessionsOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Alias = { ["Name"] = true, ["AliasArn"] = true, ["CreationTime"] = true, ["LastUpdatedTime"] = true, ["RoutingStrategy"] = true, ["AliasId"] = true, ["Description"] = true, nil }
@@ -3753,8 +5018,14 @@ end
 -- * Description [FreeText] <p>Human-readable description of an alias.</p>
 -- @return Alias structure as a key-value pair table
 function M.Alias(args)
-	assert(args, "You must provdide an argument table when creating Alias")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Alias")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Name"] = args["Name"],
 		["AliasArn"] = args["AliasArn"],
 		["CreationTime"] = args["CreationTime"],
@@ -3763,8 +5034,13 @@ function M.Alias(args)
 		["AliasId"] = args["AliasId"],
 		["Description"] = args["Description"],
 	}
-	asserts.AssertAlias(t)
-	return t
+	asserts.AssertAlias(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.RuntimeConfiguration = { ["GameSessionActivationTimeoutSeconds"] = true, ["ServerProcesses"] = true, ["MaxConcurrentGameSessionActivations"] = true, nil }
@@ -3789,14 +5065,25 @@ end
 -- * MaxConcurrentGameSessionActivations [MaxConcurrentGameSessionActivations] <p>Maximum number of game sessions with status ACTIVATING to allow on an instance simultaneously. This setting limits the amount of instance resources that can be used for new game activations at any one time.</p>
 -- @return RuntimeConfiguration structure as a key-value pair table
 function M.RuntimeConfiguration(args)
-	assert(args, "You must provdide an argument table when creating RuntimeConfiguration")
-	local t = { 
+	assert(args, "You must provide an argument table when creating RuntimeConfiguration")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["GameSessionActivationTimeoutSeconds"] = args["GameSessionActivationTimeoutSeconds"],
 		["ServerProcesses"] = args["ServerProcesses"],
 		["MaxConcurrentGameSessionActivations"] = args["MaxConcurrentGameSessionActivations"],
 	}
-	asserts.AssertRuntimeConfiguration(t)
-	return t
+	asserts.AssertRuntimeConfiguration(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.StopGameSessionPlacementOutput = { ["GameSessionPlacement"] = true, nil }
@@ -3817,12 +5104,23 @@ end
 -- * GameSessionPlacement [GameSessionPlacement] <p>Object that describes the canceled game session placement, with Cancelled status and an end time stamp. </p>
 -- @return StopGameSessionPlacementOutput structure as a key-value pair table
 function M.StopGameSessionPlacementOutput(args)
-	assert(args, "You must provdide an argument table when creating StopGameSessionPlacementOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating StopGameSessionPlacementOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["GameSessionPlacement"] = args["GameSessionPlacement"],
 	}
-	asserts.AssertStopGameSessionPlacementOutput(t)
-	return t
+	asserts.AssertStopGameSessionPlacementOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreatePlayerSessionsInput = { ["PlayerIds"] = true, ["GameSessionId"] = true, ["PlayerDataMap"] = true, nil }
@@ -3851,14 +5149,25 @@ end
 -- Required key: PlayerIds
 -- @return CreatePlayerSessionsInput structure as a key-value pair table
 function M.CreatePlayerSessionsInput(args)
-	assert(args, "You must provdide an argument table when creating CreatePlayerSessionsInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreatePlayerSessionsInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["PlayerIds"] = args["PlayerIds"],
 		["GameSessionId"] = args["GameSessionId"],
 		["PlayerDataMap"] = args["PlayerDataMap"],
 	}
-	asserts.AssertCreatePlayerSessionsInput(t)
-	return t
+	asserts.AssertCreatePlayerSessionsInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListAliasesOutput = { ["NextToken"] = true, ["Aliases"] = true, nil }
@@ -3881,13 +5190,24 @@ end
 -- * Aliases [AliasList] <p>Collection of alias records that match the list request.</p>
 -- @return ListAliasesOutput structure as a key-value pair table
 function M.ListAliasesOutput(args)
-	assert(args, "You must provdide an argument table when creating ListAliasesOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListAliasesOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NextToken"] = args["NextToken"],
 		["Aliases"] = args["Aliases"],
 	}
-	asserts.AssertListAliasesOutput(t)
-	return t
+	asserts.AssertListAliasesOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetInstanceAccessInput = { ["InstanceId"] = true, ["FleetId"] = true, nil }
@@ -3914,13 +5234,24 @@ end
 -- Required key: InstanceId
 -- @return GetInstanceAccessInput structure as a key-value pair table
 function M.GetInstanceAccessInput(args)
-	assert(args, "You must provdide an argument table when creating GetInstanceAccessInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetInstanceAccessInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["InstanceId"] = args["InstanceId"],
 		["FleetId"] = args["FleetId"],
 	}
-	asserts.AssertGetInstanceAccessInput(t)
-	return t
+	asserts.AssertGetInstanceAccessInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InstanceCredentials = { ["UserName"] = true, ["Secret"] = true, nil }
@@ -3943,13 +5274,24 @@ end
 -- * Secret [NonEmptyString] <p>Secret string. For Windows instances, the secret is a password for use with Windows Remote Desktop. For Linux instances, it is a private key (which must be saved as a <code>.pem</code> file) for use with SSH.</p>
 -- @return InstanceCredentials structure as a key-value pair table
 function M.InstanceCredentials(args)
-	assert(args, "You must provdide an argument table when creating InstanceCredentials")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InstanceCredentials")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["UserName"] = args["UserName"],
 		["Secret"] = args["Secret"],
 	}
-	asserts.AssertInstanceCredentials(t)
-	return t
+	asserts.AssertInstanceCredentials(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateFleetInput = { ["EC2InboundPermissions"] = true, ["Name"] = true, ["NewGameSessionProtectionPolicy"] = true, ["BuildId"] = true, ["RuntimeConfiguration"] = true, ["ServerLaunchPath"] = true, ["EC2InstanceType"] = true, ["ResourceCreationLimitPolicy"] = true, ["LogPaths"] = true, ["MetricGroups"] = true, ["ServerLaunchParameters"] = true, ["Description"] = true, nil }
@@ -3998,8 +5340,14 @@ end
 -- Required key: EC2InstanceType
 -- @return CreateFleetInput structure as a key-value pair table
 function M.CreateFleetInput(args)
-	assert(args, "You must provdide an argument table when creating CreateFleetInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateFleetInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["EC2InboundPermissions"] = args["EC2InboundPermissions"],
 		["Name"] = args["Name"],
 		["NewGameSessionProtectionPolicy"] = args["NewGameSessionProtectionPolicy"],
@@ -4013,8 +5361,13 @@ function M.CreateFleetInput(args)
 		["ServerLaunchParameters"] = args["ServerLaunchParameters"],
 		["Description"] = args["Description"],
 	}
-	asserts.AssertCreateFleetInput(t)
-	return t
+	asserts.AssertCreateFleetInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.PutScalingPolicyOutput = { ["Name"] = true, nil }
@@ -4035,12 +5388,23 @@ end
 -- * Name [NonZeroAndMaxString] <p>Descriptive label that is associated with a scaling policy. Policy names do not need to be unique.</p>
 -- @return PutScalingPolicyOutput structure as a key-value pair table
 function M.PutScalingPolicyOutput(args)
-	assert(args, "You must provdide an argument table when creating PutScalingPolicyOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating PutScalingPolicyOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Name"] = args["Name"],
 	}
-	asserts.AssertPutScalingPolicyOutput(t)
-	return t
+	asserts.AssertPutScalingPolicyOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdateFleetPortSettingsOutput = { ["FleetId"] = true, nil }
@@ -4061,12 +5425,23 @@ end
 -- * FleetId [FleetId] <p>Unique identifier for a fleet that was updated.</p>
 -- @return UpdateFleetPortSettingsOutput structure as a key-value pair table
 function M.UpdateFleetPortSettingsOutput(args)
-	assert(args, "You must provdide an argument table when creating UpdateFleetPortSettingsOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateFleetPortSettingsOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["FleetId"] = args["FleetId"],
 	}
-	asserts.AssertUpdateFleetPortSettingsOutput(t)
-	return t
+	asserts.AssertUpdateFleetPortSettingsOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ServerProcess = { ["ConcurrentExecutions"] = true, ["Parameters"] = true, ["LaunchPath"] = true, nil }
@@ -4095,14 +5470,25 @@ end
 -- Required key: ConcurrentExecutions
 -- @return ServerProcess structure as a key-value pair table
 function M.ServerProcess(args)
-	assert(args, "You must provdide an argument table when creating ServerProcess")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ServerProcess")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ConcurrentExecutions"] = args["ConcurrentExecutions"],
 		["Parameters"] = args["Parameters"],
 		["LaunchPath"] = args["LaunchPath"],
 	}
-	asserts.AssertServerProcess(t)
-	return t
+	asserts.AssertServerProcess(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DesiredPlayerSession = { ["PlayerId"] = true, ["PlayerData"] = true, nil }
@@ -4125,13 +5511,24 @@ end
 -- * PlayerData [PlayerData] <p>Developer-defined information related to a player. Amazon GameLift does not use this data, so it can be formatted as needed for use in the game.</p>
 -- @return DesiredPlayerSession structure as a key-value pair table
 function M.DesiredPlayerSession(args)
-	assert(args, "You must provdide an argument table when creating DesiredPlayerSession")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DesiredPlayerSession")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["PlayerId"] = args["PlayerId"],
 		["PlayerData"] = args["PlayerData"],
 	}
-	asserts.AssertDesiredPlayerSession(t)
-	return t
+	asserts.AssertDesiredPlayerSession(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteScalingPolicyInput = { ["FleetId"] = true, ["Name"] = true, nil }
@@ -4158,13 +5555,24 @@ end
 -- Required key: FleetId
 -- @return DeleteScalingPolicyInput structure as a key-value pair table
 function M.DeleteScalingPolicyInput(args)
-	assert(args, "You must provdide an argument table when creating DeleteScalingPolicyInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteScalingPolicyInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["FleetId"] = args["FleetId"],
 		["Name"] = args["Name"],
 	}
-	asserts.AssertDeleteScalingPolicyInput(t)
-	return t
+	asserts.AssertDeleteScalingPolicyInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.PutScalingPolicyInput = { ["EvaluationPeriods"] = true, ["Name"] = true, ["ComparisonOperator"] = true, ["FleetId"] = true, ["Threshold"] = true, ["ScalingAdjustment"] = true, ["MetricName"] = true, ["ScalingAdjustmentType"] = true, nil }
@@ -4215,8 +5623,14 @@ end
 -- Required key: MetricName
 -- @return PutScalingPolicyInput structure as a key-value pair table
 function M.PutScalingPolicyInput(args)
-	assert(args, "You must provdide an argument table when creating PutScalingPolicyInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating PutScalingPolicyInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["EvaluationPeriods"] = args["EvaluationPeriods"],
 		["Name"] = args["Name"],
 		["ComparisonOperator"] = args["ComparisonOperator"],
@@ -4226,8 +5640,13 @@ function M.PutScalingPolicyInput(args)
 		["MetricName"] = args["MetricName"],
 		["ScalingAdjustmentType"] = args["ScalingAdjustmentType"],
 	}
-	asserts.AssertPutScalingPolicyInput(t)
-	return t
+	asserts.AssertPutScalingPolicyInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdateGameSessionQueueInput = { ["Destinations"] = true, ["PlayerLatencyPolicies"] = true, ["Name"] = true, ["TimeoutInSeconds"] = true, nil }
@@ -4256,15 +5675,26 @@ end
 -- Required key: Name
 -- @return UpdateGameSessionQueueInput structure as a key-value pair table
 function M.UpdateGameSessionQueueInput(args)
-	assert(args, "You must provdide an argument table when creating UpdateGameSessionQueueInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateGameSessionQueueInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Destinations"] = args["Destinations"],
 		["PlayerLatencyPolicies"] = args["PlayerLatencyPolicies"],
 		["Name"] = args["Name"],
 		["TimeoutInSeconds"] = args["TimeoutInSeconds"],
 	}
-	asserts.AssertUpdateGameSessionQueueInput(t)
-	return t
+	asserts.AssertUpdateGameSessionQueueInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdateFleetAttributesOutput = { ["FleetId"] = true, nil }
@@ -4285,12 +5715,23 @@ end
 -- * FleetId [FleetId] <p>Unique identifier for a fleet that was updated.</p>
 -- @return UpdateFleetAttributesOutput structure as a key-value pair table
 function M.UpdateFleetAttributesOutput(args)
-	assert(args, "You must provdide an argument table when creating UpdateFleetAttributesOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateFleetAttributesOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["FleetId"] = args["FleetId"],
 	}
-	asserts.AssertUpdateFleetAttributesOutput(t)
-	return t
+	asserts.AssertUpdateFleetAttributesOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdateBuildInput = { ["BuildId"] = true, ["Version"] = true, ["Name"] = true, nil }
@@ -4317,14 +5758,25 @@ end
 -- Required key: BuildId
 -- @return UpdateBuildInput structure as a key-value pair table
 function M.UpdateBuildInput(args)
-	assert(args, "You must provdide an argument table when creating UpdateBuildInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateBuildInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["BuildId"] = args["BuildId"],
 		["Version"] = args["Version"],
 		["Name"] = args["Name"],
 	}
-	asserts.AssertUpdateBuildInput(t)
-	return t
+	asserts.AssertUpdateBuildInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 function asserts.AssertNonBlankString(str)
@@ -5307,8 +6759,11 @@ function M.RequestUploadCredentialsAsync(RequestUploadCredentialsInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "GameLift.RequestUploadCredentials",
 	}
+	for header,value in pairs(RequestUploadCredentialsInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", RequestUploadCredentialsInput, headers, settings, cb)
 	else
@@ -5339,8 +6794,11 @@ function M.UpdateRuntimeConfigurationAsync(UpdateRuntimeConfigurationInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "GameLift.UpdateRuntimeConfiguration",
 	}
+	for header,value in pairs(UpdateRuntimeConfigurationInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateRuntimeConfigurationInput, headers, settings, cb)
 	else
@@ -5371,8 +6829,11 @@ function M.DeleteFleetAsync(DeleteFleetInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "GameLift.DeleteFleet",
 	}
+	for header,value in pairs(DeleteFleetInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteFleetInput, headers, settings, cb)
 	else
@@ -5403,8 +6864,11 @@ function M.UpdateFleetCapacityAsync(UpdateFleetCapacityInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "GameLift.UpdateFleetCapacity",
 	}
+	for header,value in pairs(UpdateFleetCapacityInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateFleetCapacityInput, headers, settings, cb)
 	else
@@ -5435,8 +6899,11 @@ function M.DescribeRuntimeConfigurationAsync(DescribeRuntimeConfigurationInput, 
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "GameLift.DescribeRuntimeConfiguration",
 	}
+	for header,value in pairs(DescribeRuntimeConfigurationInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeRuntimeConfigurationInput, headers, settings, cb)
 	else
@@ -5467,8 +6934,11 @@ function M.DescribeGameSessionsAsync(DescribeGameSessionsInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "GameLift.DescribeGameSessions",
 	}
+	for header,value in pairs(DescribeGameSessionsInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeGameSessionsInput, headers, settings, cb)
 	else
@@ -5499,8 +6969,11 @@ function M.SearchGameSessionsAsync(SearchGameSessionsInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "GameLift.SearchGameSessions",
 	}
+	for header,value in pairs(SearchGameSessionsInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", SearchGameSessionsInput, headers, settings, cb)
 	else
@@ -5531,8 +7004,11 @@ function M.CreatePlayerSessionsAsync(CreatePlayerSessionsInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "GameLift.CreatePlayerSessions",
 	}
+	for header,value in pairs(CreatePlayerSessionsInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", CreatePlayerSessionsInput, headers, settings, cb)
 	else
@@ -5563,8 +7039,11 @@ function M.UpdateFleetPortSettingsAsync(UpdateFleetPortSettingsInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "GameLift.UpdateFleetPortSettings",
 	}
+	for header,value in pairs(UpdateFleetPortSettingsInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateFleetPortSettingsInput, headers, settings, cb)
 	else
@@ -5595,8 +7074,11 @@ function M.ListFleetsAsync(ListFleetsInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "GameLift.ListFleets",
 	}
+	for header,value in pairs(ListFleetsInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ListFleetsInput, headers, settings, cb)
 	else
@@ -5627,8 +7109,11 @@ function M.UpdateGameSessionAsync(UpdateGameSessionInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "GameLift.UpdateGameSession",
 	}
+	for header,value in pairs(UpdateGameSessionInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateGameSessionInput, headers, settings, cb)
 	else
@@ -5659,8 +7144,11 @@ function M.CreateGameSessionAsync(CreateGameSessionInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "GameLift.CreateGameSession",
 	}
+	for header,value in pairs(CreateGameSessionInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateGameSessionInput, headers, settings, cb)
 	else
@@ -5691,8 +7179,11 @@ function M.DescribeFleetCapacityAsync(DescribeFleetCapacityInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "GameLift.DescribeFleetCapacity",
 	}
+	for header,value in pairs(DescribeFleetCapacityInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeFleetCapacityInput, headers, settings, cb)
 	else
@@ -5723,8 +7214,11 @@ function M.ListAliasesAsync(ListAliasesInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "GameLift.ListAliases",
 	}
+	for header,value in pairs(ListAliasesInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ListAliasesInput, headers, settings, cb)
 	else
@@ -5755,8 +7249,11 @@ function M.UpdateBuildAsync(UpdateBuildInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "GameLift.UpdateBuild",
 	}
+	for header,value in pairs(UpdateBuildInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateBuildInput, headers, settings, cb)
 	else
@@ -5787,8 +7284,11 @@ function M.DeleteBuildAsync(DeleteBuildInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "GameLift.DeleteBuild",
 	}
+	for header,value in pairs(DeleteBuildInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteBuildInput, headers, settings, cb)
 	else
@@ -5819,8 +7319,11 @@ function M.PutScalingPolicyAsync(PutScalingPolicyInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "GameLift.PutScalingPolicy",
 	}
+	for header,value in pairs(PutScalingPolicyInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", PutScalingPolicyInput, headers, settings, cb)
 	else
@@ -5851,8 +7354,11 @@ function M.DescribeScalingPoliciesAsync(DescribeScalingPoliciesInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "GameLift.DescribeScalingPolicies",
 	}
+	for header,value in pairs(DescribeScalingPoliciesInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeScalingPoliciesInput, headers, settings, cb)
 	else
@@ -5883,8 +7389,11 @@ function M.DescribeInstancesAsync(DescribeInstancesInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "GameLift.DescribeInstances",
 	}
+	for header,value in pairs(DescribeInstancesInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeInstancesInput, headers, settings, cb)
 	else
@@ -5915,8 +7424,11 @@ function M.CreateBuildAsync(CreateBuildInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "GameLift.CreateBuild",
 	}
+	for header,value in pairs(CreateBuildInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateBuildInput, headers, settings, cb)
 	else
@@ -5947,8 +7459,11 @@ function M.DeleteGameSessionQueueAsync(DeleteGameSessionQueueInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "GameLift.DeleteGameSessionQueue",
 	}
+	for header,value in pairs(DeleteGameSessionQueueInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteGameSessionQueueInput, headers, settings, cb)
 	else
@@ -5979,8 +7494,11 @@ function M.CreatePlayerSessionAsync(CreatePlayerSessionInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "GameLift.CreatePlayerSession",
 	}
+	for header,value in pairs(CreatePlayerSessionInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", CreatePlayerSessionInput, headers, settings, cb)
 	else
@@ -6011,8 +7529,11 @@ function M.UpdateFleetAttributesAsync(UpdateFleetAttributesInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "GameLift.UpdateFleetAttributes",
 	}
+	for header,value in pairs(UpdateFleetAttributesInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateFleetAttributesInput, headers, settings, cb)
 	else
@@ -6043,8 +7564,11 @@ function M.DeleteAliasAsync(DeleteAliasInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "GameLift.DeleteAlias",
 	}
+	for header,value in pairs(DeleteAliasInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteAliasInput, headers, settings, cb)
 	else
@@ -6075,8 +7599,11 @@ function M.DescribeFleetPortSettingsAsync(DescribeFleetPortSettingsInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "GameLift.DescribeFleetPortSettings",
 	}
+	for header,value in pairs(DescribeFleetPortSettingsInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeFleetPortSettingsInput, headers, settings, cb)
 	else
@@ -6107,8 +7634,11 @@ function M.DescribePlayerSessionsAsync(DescribePlayerSessionsInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "GameLift.DescribePlayerSessions",
 	}
+	for header,value in pairs(DescribePlayerSessionsInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribePlayerSessionsInput, headers, settings, cb)
 	else
@@ -6139,8 +7669,11 @@ function M.DeleteScalingPolicyAsync(DeleteScalingPolicyInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "GameLift.DeleteScalingPolicy",
 	}
+	for header,value in pairs(DeleteScalingPolicyInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteScalingPolicyInput, headers, settings, cb)
 	else
@@ -6171,8 +7704,11 @@ function M.DescribeGameSessionQueuesAsync(DescribeGameSessionQueuesInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "GameLift.DescribeGameSessionQueues",
 	}
+	for header,value in pairs(DescribeGameSessionQueuesInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeGameSessionQueuesInput, headers, settings, cb)
 	else
@@ -6203,8 +7739,11 @@ function M.CreateAliasAsync(CreateAliasInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "GameLift.CreateAlias",
 	}
+	for header,value in pairs(CreateAliasInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateAliasInput, headers, settings, cb)
 	else
@@ -6235,8 +7774,11 @@ function M.UpdateAliasAsync(UpdateAliasInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "GameLift.UpdateAlias",
 	}
+	for header,value in pairs(UpdateAliasInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateAliasInput, headers, settings, cb)
 	else
@@ -6267,8 +7809,11 @@ function M.CreateFleetAsync(CreateFleetInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "GameLift.CreateFleet",
 	}
+	for header,value in pairs(CreateFleetInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateFleetInput, headers, settings, cb)
 	else
@@ -6299,8 +7844,11 @@ function M.DescribeGameSessionPlacementAsync(DescribeGameSessionPlacementInput, 
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "GameLift.DescribeGameSessionPlacement",
 	}
+	for header,value in pairs(DescribeGameSessionPlacementInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeGameSessionPlacementInput, headers, settings, cb)
 	else
@@ -6331,8 +7879,11 @@ function M.GetInstanceAccessAsync(GetInstanceAccessInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "GameLift.GetInstanceAccess",
 	}
+	for header,value in pairs(GetInstanceAccessInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", GetInstanceAccessInput, headers, settings, cb)
 	else
@@ -6363,8 +7914,11 @@ function M.ListBuildsAsync(ListBuildsInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "GameLift.ListBuilds",
 	}
+	for header,value in pairs(ListBuildsInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ListBuildsInput, headers, settings, cb)
 	else
@@ -6395,8 +7949,11 @@ function M.DescribeFleetAttributesAsync(DescribeFleetAttributesInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "GameLift.DescribeFleetAttributes",
 	}
+	for header,value in pairs(DescribeFleetAttributesInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeFleetAttributesInput, headers, settings, cb)
 	else
@@ -6427,8 +7984,11 @@ function M.ResolveAliasAsync(ResolveAliasInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "GameLift.ResolveAlias",
 	}
+	for header,value in pairs(ResolveAliasInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ResolveAliasInput, headers, settings, cb)
 	else
@@ -6459,8 +8019,11 @@ function M.DescribeGameSessionDetailsAsync(DescribeGameSessionDetailsInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "GameLift.DescribeGameSessionDetails",
 	}
+	for header,value in pairs(DescribeGameSessionDetailsInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeGameSessionDetailsInput, headers, settings, cb)
 	else
@@ -6491,8 +8054,11 @@ function M.StopGameSessionPlacementAsync(StopGameSessionPlacementInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "GameLift.StopGameSessionPlacement",
 	}
+	for header,value in pairs(StopGameSessionPlacementInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", StopGameSessionPlacementInput, headers, settings, cb)
 	else
@@ -6523,8 +8089,11 @@ function M.CreateGameSessionQueueAsync(CreateGameSessionQueueInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "GameLift.CreateGameSessionQueue",
 	}
+	for header,value in pairs(CreateGameSessionQueueInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateGameSessionQueueInput, headers, settings, cb)
 	else
@@ -6555,8 +8124,11 @@ function M.DescribeAliasAsync(DescribeAliasInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "GameLift.DescribeAlias",
 	}
+	for header,value in pairs(DescribeAliasInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeAliasInput, headers, settings, cb)
 	else
@@ -6587,8 +8159,11 @@ function M.StartGameSessionPlacementAsync(StartGameSessionPlacementInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "GameLift.StartGameSessionPlacement",
 	}
+	for header,value in pairs(StartGameSessionPlacementInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", StartGameSessionPlacementInput, headers, settings, cb)
 	else
@@ -6619,8 +8194,11 @@ function M.DescribeEC2InstanceLimitsAsync(DescribeEC2InstanceLimitsInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "GameLift.DescribeEC2InstanceLimits",
 	}
+	for header,value in pairs(DescribeEC2InstanceLimitsInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeEC2InstanceLimitsInput, headers, settings, cb)
 	else
@@ -6651,8 +8229,11 @@ function M.UpdateGameSessionQueueAsync(UpdateGameSessionQueueInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "GameLift.UpdateGameSessionQueue",
 	}
+	for header,value in pairs(UpdateGameSessionQueueInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateGameSessionQueueInput, headers, settings, cb)
 	else
@@ -6683,8 +8264,11 @@ function M.GetGameSessionLogUrlAsync(GetGameSessionLogUrlInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "GameLift.GetGameSessionLogUrl",
 	}
+	for header,value in pairs(GetGameSessionLogUrlInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", GetGameSessionLogUrlInput, headers, settings, cb)
 	else
@@ -6715,8 +8299,11 @@ function M.DescribeBuildAsync(DescribeBuildInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "GameLift.DescribeBuild",
 	}
+	for header,value in pairs(DescribeBuildInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeBuildInput, headers, settings, cb)
 	else
@@ -6747,8 +8334,11 @@ function M.DescribeFleetEventsAsync(DescribeFleetEventsInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "GameLift.DescribeFleetEvents",
 	}
+	for header,value in pairs(DescribeFleetEventsInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeFleetEventsInput, headers, settings, cb)
 	else
@@ -6779,8 +8369,11 @@ function M.DescribeFleetUtilizationAsync(DescribeFleetUtilizationInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "GameLift.DescribeFleetUtilization",
 	}
+	for header,value in pairs(DescribeFleetUtilizationInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeFleetUtilizationInput, headers, settings, cb)
 	else

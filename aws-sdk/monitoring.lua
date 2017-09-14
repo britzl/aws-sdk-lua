@@ -41,12 +41,23 @@ end
 -- Required key: AlarmNames
 -- @return DisableAlarmActionsInput structure as a key-value pair table
 function M.DisableAlarmActionsInput(args)
-	assert(args, "You must provdide an argument table when creating DisableAlarmActionsInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DisableAlarmActionsInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["AlarmNames"] = args["AlarmNames"],
 	}
-	asserts.AssertDisableAlarmActionsInput(t)
-	return t
+	asserts.AssertDisableAlarmActionsInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeAlarmsOutput = { ["NextToken"] = true, ["MetricAlarms"] = true, nil }
@@ -69,13 +80,24 @@ end
 -- * MetricAlarms [MetricAlarms] <p>The information for the specified alarms.</p>
 -- @return DescribeAlarmsOutput structure as a key-value pair table
 function M.DescribeAlarmsOutput(args)
-	assert(args, "You must provdide an argument table when creating DescribeAlarmsOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeAlarmsOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NextToken"] = args["NextToken"],
 		["MetricAlarms"] = args["MetricAlarms"],
 	}
-	asserts.AssertDescribeAlarmsOutput(t)
-	return t
+	asserts.AssertDescribeAlarmsOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InternalServiceFault = { ["Message"] = true, nil }
@@ -96,12 +118,23 @@ end
 -- * Message [FaultDescription] <p/>
 -- @return InternalServiceFault structure as a key-value pair table
 function M.InternalServiceFault(args)
-	assert(args, "You must provdide an argument table when creating InternalServiceFault")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InternalServiceFault")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Message"] = args["Message"],
 	}
-	asserts.AssertInternalServiceFault(t)
-	return t
+	asserts.AssertInternalServiceFault(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.MetricAlarm = { ["ExtendedStatistic"] = true, ["Dimensions"] = true, ["Namespace"] = true, ["ActionsEnabled"] = true, ["MetricName"] = true, ["EvaluationPeriods"] = true, ["StateValue"] = true, ["StateUpdatedTimestamp"] = true, ["AlarmConfigurationUpdatedTimestamp"] = true, ["AlarmActions"] = true, ["InsufficientDataActions"] = true, ["AlarmArn"] = true, ["StateReasonData"] = true, ["TreatMissingData"] = true, ["StateReason"] = true, ["EvaluateLowSampleCountPercentile"] = true, ["OKActions"] = true, ["AlarmDescription"] = true, ["Period"] = true, ["ComparisonOperator"] = true, ["AlarmName"] = true, ["Statistic"] = true, ["Threshold"] = true, ["Unit"] = true, nil }
@@ -168,8 +201,14 @@ end
 -- * Unit [StandardUnit] <p>The unit of the metric associated with the alarm.</p>
 -- @return MetricAlarm structure as a key-value pair table
 function M.MetricAlarm(args)
-	assert(args, "You must provdide an argument table when creating MetricAlarm")
-	local t = { 
+	assert(args, "You must provide an argument table when creating MetricAlarm")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ExtendedStatistic"] = args["ExtendedStatistic"],
 		["Dimensions"] = args["Dimensions"],
 		["Namespace"] = args["Namespace"],
@@ -195,8 +234,13 @@ function M.MetricAlarm(args)
 		["Threshold"] = args["Threshold"],
 		["Unit"] = args["Unit"],
 	}
-	asserts.AssertMetricAlarm(t)
-	return t
+	asserts.AssertMetricAlarm(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.LimitExceededFault = { ["message"] = true, nil }
@@ -217,12 +261,23 @@ end
 -- * message [ErrorMessage] <p/>
 -- @return LimitExceededFault structure as a key-value pair table
 function M.LimitExceededFault(args)
-	assert(args, "You must provdide an argument table when creating LimitExceededFault")
-	local t = { 
+	assert(args, "You must provide an argument table when creating LimitExceededFault")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertLimitExceededFault(t)
-	return t
+	asserts.AssertLimitExceededFault(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidNextToken = { ["message"] = true, nil }
@@ -243,12 +298,23 @@ end
 -- * message [ErrorMessage] <p/>
 -- @return InvalidNextToken structure as a key-value pair table
 function M.InvalidNextToken(args)
-	assert(args, "You must provdide an argument table when creating InvalidNextToken")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidNextToken")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertInvalidNextToken(t)
-	return t
+	asserts.AssertInvalidNextToken(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AlarmHistoryItem = { ["Timestamp"] = true, ["HistoryItemType"] = true, ["AlarmName"] = true, ["HistoryData"] = true, ["HistorySummary"] = true, nil }
@@ -277,16 +343,27 @@ end
 -- * HistorySummary [HistorySummary] <p>A summary of the alarm history, in text format.</p>
 -- @return AlarmHistoryItem structure as a key-value pair table
 function M.AlarmHistoryItem(args)
-	assert(args, "You must provdide an argument table when creating AlarmHistoryItem")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AlarmHistoryItem")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Timestamp"] = args["Timestamp"],
 		["HistoryItemType"] = args["HistoryItemType"],
 		["AlarmName"] = args["AlarmName"],
 		["HistoryData"] = args["HistoryData"],
 		["HistorySummary"] = args["HistorySummary"],
 	}
-	asserts.AssertAlarmHistoryItem(t)
-	return t
+	asserts.AssertAlarmHistoryItem(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetMetricStatisticsInput = { ["Statistics"] = true, ["Dimensions"] = true, ["Namespace"] = true, ["Period"] = true, ["StartTime"] = true, ["ExtendedStatistics"] = true, ["EndTime"] = true, ["Unit"] = true, ["MetricName"] = true, nil }
@@ -333,8 +410,14 @@ end
 -- Required key: Period
 -- @return GetMetricStatisticsInput structure as a key-value pair table
 function M.GetMetricStatisticsInput(args)
-	assert(args, "You must provdide an argument table when creating GetMetricStatisticsInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetMetricStatisticsInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Statistics"] = args["Statistics"],
 		["Dimensions"] = args["Dimensions"],
 		["Namespace"] = args["Namespace"],
@@ -345,8 +428,13 @@ function M.GetMetricStatisticsInput(args)
 		["Unit"] = args["Unit"],
 		["MetricName"] = args["MetricName"],
 	}
-	asserts.AssertGetMetricStatisticsInput(t)
-	return t
+	asserts.AssertGetMetricStatisticsInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListMetricsOutput = { ["Metrics"] = true, ["NextToken"] = true, nil }
@@ -369,13 +457,24 @@ end
 -- * NextToken [NextToken] <p>The token that marks the start of the next batch of returned results.</p>
 -- @return ListMetricsOutput structure as a key-value pair table
 function M.ListMetricsOutput(args)
-	assert(args, "You must provdide an argument table when creating ListMetricsOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListMetricsOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Metrics"] = args["Metrics"],
 		["NextToken"] = args["NextToken"],
 	}
-	asserts.AssertListMetricsOutput(t)
-	return t
+	asserts.AssertListMetricsOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidParameterCombinationException = { ["message"] = true, nil }
@@ -396,12 +495,23 @@ end
 -- * message [AwsQueryErrorMessage] <p/>
 -- @return InvalidParameterCombinationException structure as a key-value pair table
 function M.InvalidParameterCombinationException(args)
-	assert(args, "You must provdide an argument table when creating InvalidParameterCombinationException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidParameterCombinationException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertInvalidParameterCombinationException(t)
-	return t
+	asserts.AssertInvalidParameterCombinationException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeAlarmHistoryOutput = { ["AlarmHistoryItems"] = true, ["NextToken"] = true, nil }
@@ -424,13 +534,24 @@ end
 -- * NextToken [NextToken] <p>The token that marks the start of the next batch of returned results.</p>
 -- @return DescribeAlarmHistoryOutput structure as a key-value pair table
 function M.DescribeAlarmHistoryOutput(args)
-	assert(args, "You must provdide an argument table when creating DescribeAlarmHistoryOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeAlarmHistoryOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["AlarmHistoryItems"] = args["AlarmHistoryItems"],
 		["NextToken"] = args["NextToken"],
 	}
-	asserts.AssertDescribeAlarmHistoryOutput(t)
-	return t
+	asserts.AssertDescribeAlarmHistoryOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetMetricStatisticsOutput = { ["Datapoints"] = true, ["Label"] = true, nil }
@@ -453,13 +574,24 @@ end
 -- * Label [MetricLabel] <p>A label for the specified metric.</p>
 -- @return GetMetricStatisticsOutput structure as a key-value pair table
 function M.GetMetricStatisticsOutput(args)
-	assert(args, "You must provdide an argument table when creating GetMetricStatisticsOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetMetricStatisticsOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Datapoints"] = args["Datapoints"],
 		["Label"] = args["Label"],
 	}
-	asserts.AssertGetMetricStatisticsOutput(t)
-	return t
+	asserts.AssertGetMetricStatisticsOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.MetricDatum = { ["Dimensions"] = true, ["Timestamp"] = true, ["Value"] = true, ["StatisticValues"] = true, ["Unit"] = true, ["MetricName"] = true, nil }
@@ -492,8 +624,14 @@ end
 -- Required key: MetricName
 -- @return MetricDatum structure as a key-value pair table
 function M.MetricDatum(args)
-	assert(args, "You must provdide an argument table when creating MetricDatum")
-	local t = { 
+	assert(args, "You must provide an argument table when creating MetricDatum")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Dimensions"] = args["Dimensions"],
 		["Timestamp"] = args["Timestamp"],
 		["Value"] = args["Value"],
@@ -501,8 +639,13 @@ function M.MetricDatum(args)
 		["Unit"] = args["Unit"],
 		["MetricName"] = args["MetricName"],
 	}
-	asserts.AssertMetricDatum(t)
-	return t
+	asserts.AssertMetricDatum(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.PutMetricAlarmInput = { ["EvaluationPeriods"] = true, ["ExtendedStatistic"] = true, ["TreatMissingData"] = true, ["Dimensions"] = true, ["AlarmActions"] = true, ["AlarmDescription"] = true, ["Namespace"] = true, ["Period"] = true, ["EvaluateLowSampleCountPercentile"] = true, ["ComparisonOperator"] = true, ["AlarmName"] = true, ["Unit"] = true, ["Statistic"] = true, ["Threshold"] = true, ["InsufficientDataActions"] = true, ["OKActions"] = true, ["ActionsEnabled"] = true, ["MetricName"] = true, nil }
@@ -571,8 +714,14 @@ end
 -- Required key: ComparisonOperator
 -- @return PutMetricAlarmInput structure as a key-value pair table
 function M.PutMetricAlarmInput(args)
-	assert(args, "You must provdide an argument table when creating PutMetricAlarmInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating PutMetricAlarmInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["EvaluationPeriods"] = args["EvaluationPeriods"],
 		["ExtendedStatistic"] = args["ExtendedStatistic"],
 		["TreatMissingData"] = args["TreatMissingData"],
@@ -592,8 +741,13 @@ function M.PutMetricAlarmInput(args)
 		["ActionsEnabled"] = args["ActionsEnabled"],
 		["MetricName"] = args["MetricName"],
 	}
-	asserts.AssertPutMetricAlarmInput(t)
-	return t
+	asserts.AssertPutMetricAlarmInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteAlarmsInput = { ["AlarmNames"] = true, nil }
@@ -616,12 +770,23 @@ end
 -- Required key: AlarmNames
 -- @return DeleteAlarmsInput structure as a key-value pair table
 function M.DeleteAlarmsInput(args)
-	assert(args, "You must provdide an argument table when creating DeleteAlarmsInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteAlarmsInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["AlarmNames"] = args["AlarmNames"],
 	}
-	asserts.AssertDeleteAlarmsInput(t)
-	return t
+	asserts.AssertDeleteAlarmsInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.StatisticSet = { ["SampleCount"] = true, ["Sum"] = true, ["Minimum"] = true, ["Maximum"] = true, nil }
@@ -656,15 +821,26 @@ end
 -- Required key: Maximum
 -- @return StatisticSet structure as a key-value pair table
 function M.StatisticSet(args)
-	assert(args, "You must provdide an argument table when creating StatisticSet")
-	local t = { 
+	assert(args, "You must provide an argument table when creating StatisticSet")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["SampleCount"] = args["SampleCount"],
 		["Sum"] = args["Sum"],
 		["Minimum"] = args["Minimum"],
 		["Maximum"] = args["Maximum"],
 	}
-	asserts.AssertStatisticSet(t)
-	return t
+	asserts.AssertStatisticSet(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeAlarmsForMetricOutput = { ["MetricAlarms"] = true, nil }
@@ -685,12 +861,23 @@ end
 -- * MetricAlarms [MetricAlarms] <p>The information for each alarm with the specified metric.</p>
 -- @return DescribeAlarmsForMetricOutput structure as a key-value pair table
 function M.DescribeAlarmsForMetricOutput(args)
-	assert(args, "You must provdide an argument table when creating DescribeAlarmsForMetricOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeAlarmsForMetricOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["MetricAlarms"] = args["MetricAlarms"],
 	}
-	asserts.AssertDescribeAlarmsForMetricOutput(t)
-	return t
+	asserts.AssertDescribeAlarmsForMetricOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidParameterValueException = { ["message"] = true, nil }
@@ -711,12 +898,23 @@ end
 -- * message [AwsQueryErrorMessage] <p/>
 -- @return InvalidParameterValueException structure as a key-value pair table
 function M.InvalidParameterValueException(args)
-	assert(args, "You must provdide an argument table when creating InvalidParameterValueException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidParameterValueException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertInvalidParameterValueException(t)
-	return t
+	asserts.AssertInvalidParameterValueException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Datapoint = { ["SampleCount"] = true, ["Timestamp"] = true, ["Average"] = true, ["Maximum"] = true, ["Minimum"] = true, ["ExtendedStatistics"] = true, ["Sum"] = true, ["Unit"] = true, nil }
@@ -751,8 +949,14 @@ end
 -- * Unit [StandardUnit] <p>The standard unit for the data point.</p>
 -- @return Datapoint structure as a key-value pair table
 function M.Datapoint(args)
-	assert(args, "You must provdide an argument table when creating Datapoint")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Datapoint")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["SampleCount"] = args["SampleCount"],
 		["Timestamp"] = args["Timestamp"],
 		["Average"] = args["Average"],
@@ -762,8 +966,13 @@ function M.Datapoint(args)
 		["Sum"] = args["Sum"],
 		["Unit"] = args["Unit"],
 	}
-	asserts.AssertDatapoint(t)
-	return t
+	asserts.AssertDatapoint(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.MissingRequiredParameterException = { ["message"] = true, nil }
@@ -784,12 +993,23 @@ end
 -- * message [AwsQueryErrorMessage] <p/>
 -- @return MissingRequiredParameterException structure as a key-value pair table
 function M.MissingRequiredParameterException(args)
-	assert(args, "You must provdide an argument table when creating MissingRequiredParameterException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating MissingRequiredParameterException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertMissingRequiredParameterException(t)
-	return t
+	asserts.AssertMissingRequiredParameterException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DimensionFilter = { ["Name"] = true, ["Value"] = true, nil }
@@ -814,13 +1034,24 @@ end
 -- Required key: Name
 -- @return DimensionFilter structure as a key-value pair table
 function M.DimensionFilter(args)
-	assert(args, "You must provdide an argument table when creating DimensionFilter")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DimensionFilter")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Name"] = args["Name"],
 		["Value"] = args["Value"],
 	}
-	asserts.AssertDimensionFilter(t)
-	return t
+	asserts.AssertDimensionFilter(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.EnableAlarmActionsInput = { ["AlarmNames"] = true, nil }
@@ -843,12 +1074,23 @@ end
 -- Required key: AlarmNames
 -- @return EnableAlarmActionsInput structure as a key-value pair table
 function M.EnableAlarmActionsInput(args)
-	assert(args, "You must provdide an argument table when creating EnableAlarmActionsInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating EnableAlarmActionsInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["AlarmNames"] = args["AlarmNames"],
 	}
-	asserts.AssertEnableAlarmActionsInput(t)
-	return t
+	asserts.AssertEnableAlarmActionsInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeAlarmsInput = { ["StateValue"] = true, ["ActionPrefix"] = true, ["MaxRecords"] = true, ["AlarmNames"] = true, ["AlarmNamePrefix"] = true, ["NextToken"] = true, nil }
@@ -879,8 +1121,14 @@ end
 -- * NextToken [NextToken] <p>The token returned by a previous call to indicate that there is more data available.</p>
 -- @return DescribeAlarmsInput structure as a key-value pair table
 function M.DescribeAlarmsInput(args)
-	assert(args, "You must provdide an argument table when creating DescribeAlarmsInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeAlarmsInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["StateValue"] = args["StateValue"],
 		["ActionPrefix"] = args["ActionPrefix"],
 		["MaxRecords"] = args["MaxRecords"],
@@ -888,8 +1136,13 @@ function M.DescribeAlarmsInput(args)
 		["AlarmNamePrefix"] = args["AlarmNamePrefix"],
 		["NextToken"] = args["NextToken"],
 	}
-	asserts.AssertDescribeAlarmsInput(t)
-	return t
+	asserts.AssertDescribeAlarmsInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Dimension = { ["Name"] = true, ["Value"] = true, nil }
@@ -916,13 +1169,24 @@ end
 -- Required key: Value
 -- @return Dimension structure as a key-value pair table
 function M.Dimension(args)
-	assert(args, "You must provdide an argument table when creating Dimension")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Dimension")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Name"] = args["Name"],
 		["Value"] = args["Value"],
 	}
-	asserts.AssertDimension(t)
-	return t
+	asserts.AssertDimension(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeAlarmHistoryInput = { ["StartDate"] = true, ["EndDate"] = true, ["MaxRecords"] = true, ["AlarmName"] = true, ["HistoryItemType"] = true, ["NextToken"] = true, nil }
@@ -953,8 +1217,14 @@ end
 -- * NextToken [NextToken] <p>The token returned by a previous call to indicate that there is more data available.</p>
 -- @return DescribeAlarmHistoryInput structure as a key-value pair table
 function M.DescribeAlarmHistoryInput(args)
-	assert(args, "You must provdide an argument table when creating DescribeAlarmHistoryInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeAlarmHistoryInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["StartDate"] = args["StartDate"],
 		["EndDate"] = args["EndDate"],
 		["MaxRecords"] = args["MaxRecords"],
@@ -962,8 +1232,13 @@ function M.DescribeAlarmHistoryInput(args)
 		["HistoryItemType"] = args["HistoryItemType"],
 		["NextToken"] = args["NextToken"],
 	}
-	asserts.AssertDescribeAlarmHistoryInput(t)
-	return t
+	asserts.AssertDescribeAlarmHistoryInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListMetricsInput = { ["NextToken"] = true, ["Namespace"] = true, ["Dimensions"] = true, ["MetricName"] = true, nil }
@@ -990,15 +1265,26 @@ end
 -- * MetricName [MetricName] <p>The name of the metric to filter against.</p>
 -- @return ListMetricsInput structure as a key-value pair table
 function M.ListMetricsInput(args)
-	assert(args, "You must provdide an argument table when creating ListMetricsInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListMetricsInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NextToken"] = args["NextToken"],
 		["Namespace"] = args["Namespace"],
 		["Dimensions"] = args["Dimensions"],
 		["MetricName"] = args["MetricName"],
 	}
-	asserts.AssertListMetricsInput(t)
-	return t
+	asserts.AssertListMetricsInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidFormatFault = { ["message"] = true, nil }
@@ -1019,12 +1305,23 @@ end
 -- * message [ErrorMessage] <p/>
 -- @return InvalidFormatFault structure as a key-value pair table
 function M.InvalidFormatFault(args)
-	assert(args, "You must provdide an argument table when creating InvalidFormatFault")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidFormatFault")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertInvalidFormatFault(t)
-	return t
+	asserts.AssertInvalidFormatFault(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.PutMetricDataInput = { ["Namespace"] = true, ["MetricData"] = true, nil }
@@ -1051,13 +1348,24 @@ end
 -- Required key: MetricData
 -- @return PutMetricDataInput structure as a key-value pair table
 function M.PutMetricDataInput(args)
-	assert(args, "You must provdide an argument table when creating PutMetricDataInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating PutMetricDataInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Namespace"] = args["Namespace"],
 		["MetricData"] = args["MetricData"],
 	}
-	asserts.AssertPutMetricDataInput(t)
-	return t
+	asserts.AssertPutMetricDataInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Metric = { ["Namespace"] = true, ["Dimensions"] = true, ["MetricName"] = true, nil }
@@ -1082,14 +1390,25 @@ end
 -- * MetricName [MetricName] <p>The name of the metric.</p>
 -- @return Metric structure as a key-value pair table
 function M.Metric(args)
-	assert(args, "You must provdide an argument table when creating Metric")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Metric")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Namespace"] = args["Namespace"],
 		["Dimensions"] = args["Dimensions"],
 		["MetricName"] = args["MetricName"],
 	}
-	asserts.AssertMetric(t)
-	return t
+	asserts.AssertMetric(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.SetAlarmStateInput = { ["StateReason"] = true, ["StateReasonData"] = true, ["AlarmName"] = true, ["StateValue"] = true, nil }
@@ -1122,15 +1441,26 @@ end
 -- Required key: StateReason
 -- @return SetAlarmStateInput structure as a key-value pair table
 function M.SetAlarmStateInput(args)
-	assert(args, "You must provdide an argument table when creating SetAlarmStateInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating SetAlarmStateInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["StateReason"] = args["StateReason"],
 		["StateReasonData"] = args["StateReasonData"],
 		["AlarmName"] = args["AlarmName"],
 		["StateValue"] = args["StateValue"],
 	}
-	asserts.AssertSetAlarmStateInput(t)
-	return t
+	asserts.AssertSetAlarmStateInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeAlarmsForMetricInput = { ["ExtendedStatistic"] = true, ["Dimensions"] = true, ["Namespace"] = true, ["Period"] = true, ["Statistic"] = true, ["Unit"] = true, ["MetricName"] = true, nil }
@@ -1167,8 +1497,14 @@ end
 -- Required key: Namespace
 -- @return DescribeAlarmsForMetricInput structure as a key-value pair table
 function M.DescribeAlarmsForMetricInput(args)
-	assert(args, "You must provdide an argument table when creating DescribeAlarmsForMetricInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeAlarmsForMetricInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ExtendedStatistic"] = args["ExtendedStatistic"],
 		["Dimensions"] = args["Dimensions"],
 		["Namespace"] = args["Namespace"],
@@ -1177,8 +1513,13 @@ function M.DescribeAlarmsForMetricInput(args)
 		["Unit"] = args["Unit"],
 		["MetricName"] = args["MetricName"],
 	}
-	asserts.AssertDescribeAlarmsForMetricInput(t)
-	return t
+	asserts.AssertDescribeAlarmsForMetricInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ResourceNotFound = { ["message"] = true, nil }
@@ -1199,12 +1540,23 @@ end
 -- * message [ErrorMessage] <p/>
 -- @return ResourceNotFound structure as a key-value pair table
 function M.ResourceNotFound(args)
-	assert(args, "You must provdide an argument table when creating ResourceNotFound")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ResourceNotFound")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertResourceNotFound(t)
-	return t
+	asserts.AssertResourceNotFound(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 function asserts.AssertErrorMessage(str)
@@ -1852,8 +2204,11 @@ function M.ListMetricsAsync(ListMetricsInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".ListMetrics",
 	}
+	for header,value in pairs(ListMetricsInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ListMetricsInput, headers, settings, cb)
 	else
@@ -1884,8 +2239,11 @@ function M.EnableAlarmActionsAsync(EnableAlarmActionsInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".EnableAlarmActions",
 	}
+	for header,value in pairs(EnableAlarmActionsInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", EnableAlarmActionsInput, headers, settings, cb)
 	else
@@ -1916,8 +2274,11 @@ function M.DeleteAlarmsAsync(DeleteAlarmsInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DeleteAlarms",
 	}
+	for header,value in pairs(DeleteAlarmsInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteAlarmsInput, headers, settings, cb)
 	else
@@ -1948,8 +2309,11 @@ function M.PutMetricAlarmAsync(PutMetricAlarmInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".PutMetricAlarm",
 	}
+	for header,value in pairs(PutMetricAlarmInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", PutMetricAlarmInput, headers, settings, cb)
 	else
@@ -1980,8 +2344,11 @@ function M.GetMetricStatisticsAsync(GetMetricStatisticsInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".GetMetricStatistics",
 	}
+	for header,value in pairs(GetMetricStatisticsInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", GetMetricStatisticsInput, headers, settings, cb)
 	else
@@ -2012,8 +2379,11 @@ function M.DisableAlarmActionsAsync(DisableAlarmActionsInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DisableAlarmActions",
 	}
+	for header,value in pairs(DisableAlarmActionsInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DisableAlarmActionsInput, headers, settings, cb)
 	else
@@ -2044,8 +2414,11 @@ function M.SetAlarmStateAsync(SetAlarmStateInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".SetAlarmState",
 	}
+	for header,value in pairs(SetAlarmStateInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", SetAlarmStateInput, headers, settings, cb)
 	else
@@ -2076,8 +2449,11 @@ function M.PutMetricDataAsync(PutMetricDataInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".PutMetricData",
 	}
+	for header,value in pairs(PutMetricDataInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", PutMetricDataInput, headers, settings, cb)
 	else
@@ -2108,8 +2484,11 @@ function M.DescribeAlarmsAsync(DescribeAlarmsInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DescribeAlarms",
 	}
+	for header,value in pairs(DescribeAlarmsInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeAlarmsInput, headers, settings, cb)
 	else
@@ -2140,8 +2519,11 @@ function M.DescribeAlarmsForMetricAsync(DescribeAlarmsForMetricInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DescribeAlarmsForMetric",
 	}
+	for header,value in pairs(DescribeAlarmsForMetricInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeAlarmsForMetricInput, headers, settings, cb)
 	else
@@ -2172,8 +2554,11 @@ function M.DescribeAlarmHistoryAsync(DescribeAlarmHistoryInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DescribeAlarmHistory",
 	}
+	for header,value in pairs(DescribeAlarmHistoryInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeAlarmHistoryInput, headers, settings, cb)
 	else

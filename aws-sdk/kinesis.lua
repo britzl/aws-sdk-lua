@@ -43,14 +43,25 @@ end
 -- * DesiredShardLevelMetrics [MetricsNameList] <p>Represents the list of all the metrics that would be in the enhanced state after the operation.</p>
 -- @return EnhancedMonitoringOutput structure as a key-value pair table
 function M.EnhancedMonitoringOutput(args)
-	assert(args, "You must provdide an argument table when creating EnhancedMonitoringOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating EnhancedMonitoringOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["StreamName"] = args["StreamName"],
 		["CurrentShardLevelMetrics"] = args["CurrentShardLevelMetrics"],
 		["DesiredShardLevelMetrics"] = args["DesiredShardLevelMetrics"],
 	}
-	asserts.AssertEnhancedMonitoringOutput(t)
-	return t
+	asserts.AssertEnhancedMonitoringOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdateShardCountInput = { ["TargetShardCount"] = true, ["StreamName"] = true, ["ScalingType"] = true, nil }
@@ -81,14 +92,25 @@ end
 -- Required key: ScalingType
 -- @return UpdateShardCountInput structure as a key-value pair table
 function M.UpdateShardCountInput(args)
-	assert(args, "You must provdide an argument table when creating UpdateShardCountInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateShardCountInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["TargetShardCount"] = args["TargetShardCount"],
 		["StreamName"] = args["StreamName"],
 		["ScalingType"] = args["ScalingType"],
 	}
-	asserts.AssertUpdateShardCountInput(t)
-	return t
+	asserts.AssertUpdateShardCountInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.PutRecordsInput = { ["Records"] = true, ["StreamName"] = true, nil }
@@ -115,13 +137,24 @@ end
 -- Required key: StreamName
 -- @return PutRecordsInput structure as a key-value pair table
 function M.PutRecordsInput(args)
-	assert(args, "You must provdide an argument table when creating PutRecordsInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating PutRecordsInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Records"] = args["Records"],
 		["StreamName"] = args["StreamName"],
 	}
-	asserts.AssertPutRecordsInput(t)
-	return t
+	asserts.AssertPutRecordsInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.SplitShardInput = { ["ShardToSplit"] = true, ["StreamName"] = true, ["NewStartingHashKey"] = true, nil }
@@ -152,14 +185,25 @@ end
 -- Required key: NewStartingHashKey
 -- @return SplitShardInput structure as a key-value pair table
 function M.SplitShardInput(args)
-	assert(args, "You must provdide an argument table when creating SplitShardInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating SplitShardInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ShardToSplit"] = args["ShardToSplit"],
 		["StreamName"] = args["StreamName"],
 		["NewStartingHashKey"] = args["NewStartingHashKey"],
 	}
-	asserts.AssertSplitShardInput(t)
-	return t
+	asserts.AssertSplitShardInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.LimitExceededException = { ["message"] = true, nil }
@@ -180,12 +224,23 @@ end
 -- * message [ErrorMessage] <p>A message that provides information about the error.</p>
 -- @return LimitExceededException structure as a key-value pair table
 function M.LimitExceededException(args)
-	assert(args, "You must provdide an argument table when creating LimitExceededException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating LimitExceededException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertLimitExceededException(t)
-	return t
+	asserts.AssertLimitExceededException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DecreaseStreamRetentionPeriodInput = { ["RetentionPeriodHours"] = true, ["StreamName"] = true, nil }
@@ -212,13 +267,24 @@ end
 -- Required key: RetentionPeriodHours
 -- @return DecreaseStreamRetentionPeriodInput structure as a key-value pair table
 function M.DecreaseStreamRetentionPeriodInput(args)
-	assert(args, "You must provdide an argument table when creating DecreaseStreamRetentionPeriodInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DecreaseStreamRetentionPeriodInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["RetentionPeriodHours"] = args["RetentionPeriodHours"],
 		["StreamName"] = args["StreamName"],
 	}
-	asserts.AssertDecreaseStreamRetentionPeriodInput(t)
-	return t
+	asserts.AssertDecreaseStreamRetentionPeriodInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeLimitsOutput = { ["OpenShardCount"] = true, ["ShardLimit"] = true, nil }
@@ -245,13 +311,24 @@ end
 -- Required key: OpenShardCount
 -- @return DescribeLimitsOutput structure as a key-value pair table
 function M.DescribeLimitsOutput(args)
-	assert(args, "You must provdide an argument table when creating DescribeLimitsOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeLimitsOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["OpenShardCount"] = args["OpenShardCount"],
 		["ShardLimit"] = args["ShardLimit"],
 	}
-	asserts.AssertDescribeLimitsOutput(t)
-	return t
+	asserts.AssertDescribeLimitsOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListStreamsInput = { ["Limit"] = true, ["ExclusiveStartStreamName"] = true, nil }
@@ -274,13 +351,24 @@ end
 -- * ExclusiveStartStreamName [StreamName] <p>The name of the stream to start the list with.</p>
 -- @return ListStreamsInput structure as a key-value pair table
 function M.ListStreamsInput(args)
-	assert(args, "You must provdide an argument table when creating ListStreamsInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListStreamsInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Limit"] = args["Limit"],
 		["ExclusiveStartStreamName"] = args["ExclusiveStartStreamName"],
 	}
-	asserts.AssertListStreamsInput(t)
-	return t
+	asserts.AssertListStreamsInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AddTagsToStreamInput = { ["StreamName"] = true, ["Tags"] = true, nil }
@@ -307,13 +395,24 @@ end
 -- Required key: Tags
 -- @return AddTagsToStreamInput structure as a key-value pair table
 function M.AddTagsToStreamInput(args)
-	assert(args, "You must provdide an argument table when creating AddTagsToStreamInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AddTagsToStreamInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["StreamName"] = args["StreamName"],
 		["Tags"] = args["Tags"],
 	}
-	asserts.AssertAddTagsToStreamInput(t)
-	return t
+	asserts.AssertAddTagsToStreamInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.HashKeyRange = { ["EndingHashKey"] = true, ["StartingHashKey"] = true, nil }
@@ -340,13 +439,24 @@ end
 -- Required key: EndingHashKey
 -- @return HashKeyRange structure as a key-value pair table
 function M.HashKeyRange(args)
-	assert(args, "You must provdide an argument table when creating HashKeyRange")
-	local t = { 
+	assert(args, "You must provide an argument table when creating HashKeyRange")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["EndingHashKey"] = args["EndingHashKey"],
 		["StartingHashKey"] = args["StartingHashKey"],
 	}
-	asserts.AssertHashKeyRange(t)
-	return t
+	asserts.AssertHashKeyRange(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ResourceInUseException = { ["message"] = true, nil }
@@ -367,12 +477,23 @@ end
 -- * message [ErrorMessage] <p>A message that provides information about the error.</p>
 -- @return ResourceInUseException structure as a key-value pair table
 function M.ResourceInUseException(args)
-	assert(args, "You must provdide an argument table when creating ResourceInUseException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ResourceInUseException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertResourceInUseException(t)
-	return t
+	asserts.AssertResourceInUseException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DisableEnhancedMonitoringInput = { ["ShardLevelMetrics"] = true, ["StreamName"] = true, nil }
@@ -399,13 +520,24 @@ end
 -- Required key: ShardLevelMetrics
 -- @return DisableEnhancedMonitoringInput structure as a key-value pair table
 function M.DisableEnhancedMonitoringInput(args)
-	assert(args, "You must provdide an argument table when creating DisableEnhancedMonitoringInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DisableEnhancedMonitoringInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ShardLevelMetrics"] = args["ShardLevelMetrics"],
 		["StreamName"] = args["StreamName"],
 	}
-	asserts.AssertDisableEnhancedMonitoringInput(t)
-	return t
+	asserts.AssertDisableEnhancedMonitoringInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Tag = { ["Value"] = true, ["Key"] = true, nil }
@@ -430,13 +562,24 @@ end
 -- Required key: Key
 -- @return Tag structure as a key-value pair table
 function M.Tag(args)
-	assert(args, "You must provdide an argument table when creating Tag")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Tag")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Value"] = args["Value"],
 		["Key"] = args["Key"],
 	}
-	asserts.AssertTag(t)
-	return t
+	asserts.AssertTag(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.PutRecordsRequestEntry = { ["PartitionKey"] = true, ["Data"] = true, ["ExplicitHashKey"] = true, nil }
@@ -465,14 +608,25 @@ end
 -- Required key: PartitionKey
 -- @return PutRecordsRequestEntry structure as a key-value pair table
 function M.PutRecordsRequestEntry(args)
-	assert(args, "You must provdide an argument table when creating PutRecordsRequestEntry")
-	local t = { 
+	assert(args, "You must provide an argument table when creating PutRecordsRequestEntry")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["PartitionKey"] = args["PartitionKey"],
 		["Data"] = args["Data"],
 		["ExplicitHashKey"] = args["ExplicitHashKey"],
 	}
-	asserts.AssertPutRecordsRequestEntry(t)
-	return t
+	asserts.AssertPutRecordsRequestEntry(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.MergeShardsInput = { ["StreamName"] = true, ["ShardToMerge"] = true, ["AdjacentShardToMerge"] = true, nil }
@@ -503,14 +657,25 @@ end
 -- Required key: AdjacentShardToMerge
 -- @return MergeShardsInput structure as a key-value pair table
 function M.MergeShardsInput(args)
-	assert(args, "You must provdide an argument table when creating MergeShardsInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating MergeShardsInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["StreamName"] = args["StreamName"],
 		["ShardToMerge"] = args["ShardToMerge"],
 		["AdjacentShardToMerge"] = args["AdjacentShardToMerge"],
 	}
-	asserts.AssertMergeShardsInput(t)
-	return t
+	asserts.AssertMergeShardsInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteStreamInput = { ["StreamName"] = true, nil }
@@ -533,12 +698,23 @@ end
 -- Required key: StreamName
 -- @return DeleteStreamInput structure as a key-value pair table
 function M.DeleteStreamInput(args)
-	assert(args, "You must provdide an argument table when creating DeleteStreamInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteStreamInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["StreamName"] = args["StreamName"],
 	}
-	asserts.AssertDeleteStreamInput(t)
-	return t
+	asserts.AssertDeleteStreamInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Shard = { ["ShardId"] = true, ["HashKeyRange"] = true, ["ParentShardId"] = true, ["AdjacentParentShardId"] = true, ["SequenceNumberRange"] = true, nil }
@@ -573,16 +749,27 @@ end
 -- Required key: SequenceNumberRange
 -- @return Shard structure as a key-value pair table
 function M.Shard(args)
-	assert(args, "You must provdide an argument table when creating Shard")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Shard")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ShardId"] = args["ShardId"],
 		["HashKeyRange"] = args["HashKeyRange"],
 		["ParentShardId"] = args["ParentShardId"],
 		["AdjacentParentShardId"] = args["AdjacentParentShardId"],
 		["SequenceNumberRange"] = args["SequenceNumberRange"],
 	}
-	asserts.AssertShard(t)
-	return t
+	asserts.AssertShard(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.PutRecordsOutput = { ["FailedRecordCount"] = true, ["Records"] = true, nil }
@@ -607,13 +794,24 @@ end
 -- Required key: Records
 -- @return PutRecordsOutput structure as a key-value pair table
 function M.PutRecordsOutput(args)
-	assert(args, "You must provdide an argument table when creating PutRecordsOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating PutRecordsOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["FailedRecordCount"] = args["FailedRecordCount"],
 		["Records"] = args["Records"],
 	}
-	asserts.AssertPutRecordsOutput(t)
-	return t
+	asserts.AssertPutRecordsOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.PutRecordOutput = { ["ShardId"] = true, ["SequenceNumber"] = true, nil }
@@ -640,13 +838,24 @@ end
 -- Required key: SequenceNumber
 -- @return PutRecordOutput structure as a key-value pair table
 function M.PutRecordOutput(args)
-	assert(args, "You must provdide an argument table when creating PutRecordOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating PutRecordOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ShardId"] = args["ShardId"],
 		["SequenceNumber"] = args["SequenceNumber"],
 	}
-	asserts.AssertPutRecordOutput(t)
-	return t
+	asserts.AssertPutRecordOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.PutRecordInput = { ["PartitionKey"] = true, ["SequenceNumberForOrdering"] = true, ["StreamName"] = true, ["Data"] = true, ["ExplicitHashKey"] = true, nil }
@@ -681,16 +890,27 @@ end
 -- Required key: PartitionKey
 -- @return PutRecordInput structure as a key-value pair table
 function M.PutRecordInput(args)
-	assert(args, "You must provdide an argument table when creating PutRecordInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating PutRecordInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["PartitionKey"] = args["PartitionKey"],
 		["SequenceNumberForOrdering"] = args["SequenceNumberForOrdering"],
 		["StreamName"] = args["StreamName"],
 		["Data"] = args["Data"],
 		["ExplicitHashKey"] = args["ExplicitHashKey"],
 	}
-	asserts.AssertPutRecordInput(t)
-	return t
+	asserts.AssertPutRecordInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetShardIteratorInput = { ["ShardId"] = true, ["Timestamp"] = true, ["StartingSequenceNumber"] = true, ["StreamName"] = true, ["ShardIteratorType"] = true, nil }
@@ -725,16 +945,27 @@ end
 -- Required key: ShardIteratorType
 -- @return GetShardIteratorInput structure as a key-value pair table
 function M.GetShardIteratorInput(args)
-	assert(args, "You must provdide an argument table when creating GetShardIteratorInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetShardIteratorInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ShardId"] = args["ShardId"],
 		["Timestamp"] = args["Timestamp"],
 		["StartingSequenceNumber"] = args["StartingSequenceNumber"],
 		["StreamName"] = args["StreamName"],
 		["ShardIteratorType"] = args["ShardIteratorType"],
 	}
-	asserts.AssertGetShardIteratorInput(t)
-	return t
+	asserts.AssertGetShardIteratorInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ExpiredIteratorException = { ["message"] = true, nil }
@@ -755,12 +986,23 @@ end
 -- * message [ErrorMessage] <p>A message that provides information about the error.</p>
 -- @return ExpiredIteratorException structure as a key-value pair table
 function M.ExpiredIteratorException(args)
-	assert(args, "You must provdide an argument table when creating ExpiredIteratorException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ExpiredIteratorException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertExpiredIteratorException(t)
-	return t
+	asserts.AssertExpiredIteratorException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.SequenceNumberRange = { ["EndingSequenceNumber"] = true, ["StartingSequenceNumber"] = true, nil }
@@ -785,13 +1027,24 @@ end
 -- Required key: StartingSequenceNumber
 -- @return SequenceNumberRange structure as a key-value pair table
 function M.SequenceNumberRange(args)
-	assert(args, "You must provdide an argument table when creating SequenceNumberRange")
-	local t = { 
+	assert(args, "You must provide an argument table when creating SequenceNumberRange")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["EndingSequenceNumber"] = args["EndingSequenceNumber"],
 		["StartingSequenceNumber"] = args["StartingSequenceNumber"],
 	}
-	asserts.AssertSequenceNumberRange(t)
-	return t
+	asserts.AssertSequenceNumberRange(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetShardIteratorOutput = { ["ShardIterator"] = true, nil }
@@ -812,12 +1065,23 @@ end
 -- * ShardIterator [ShardIterator] <p>The position in the shard from which to start reading data records sequentially. A shard iterator specifies this position using the sequence number of a data record in a shard.</p>
 -- @return GetShardIteratorOutput structure as a key-value pair table
 function M.GetShardIteratorOutput(args)
-	assert(args, "You must provdide an argument table when creating GetShardIteratorOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetShardIteratorOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ShardIterator"] = args["ShardIterator"],
 	}
-	asserts.AssertGetShardIteratorOutput(t)
-	return t
+	asserts.AssertGetShardIteratorOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeStreamOutput = { ["StreamDescription"] = true, nil }
@@ -840,12 +1104,23 @@ end
 -- Required key: StreamDescription
 -- @return DescribeStreamOutput structure as a key-value pair table
 function M.DescribeStreamOutput(args)
-	assert(args, "You must provdide an argument table when creating DescribeStreamOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeStreamOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["StreamDescription"] = args["StreamDescription"],
 	}
-	asserts.AssertDescribeStreamOutput(t)
-	return t
+	asserts.AssertDescribeStreamOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Record = { ["Data"] = true, ["PartitionKey"] = true, ["ApproximateArrivalTimestamp"] = true, ["SequenceNumber"] = true, nil }
@@ -878,15 +1153,26 @@ end
 -- Required key: PartitionKey
 -- @return Record structure as a key-value pair table
 function M.Record(args)
-	assert(args, "You must provdide an argument table when creating Record")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Record")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Data"] = args["Data"],
 		["PartitionKey"] = args["PartitionKey"],
 		["ApproximateArrivalTimestamp"] = args["ApproximateArrivalTimestamp"],
 		["SequenceNumber"] = args["SequenceNumber"],
 	}
-	asserts.AssertRecord(t)
-	return t
+	asserts.AssertRecord(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.IncreaseStreamRetentionPeriodInput = { ["RetentionPeriodHours"] = true, ["StreamName"] = true, nil }
@@ -913,13 +1199,24 @@ end
 -- Required key: RetentionPeriodHours
 -- @return IncreaseStreamRetentionPeriodInput structure as a key-value pair table
 function M.IncreaseStreamRetentionPeriodInput(args)
-	assert(args, "You must provdide an argument table when creating IncreaseStreamRetentionPeriodInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating IncreaseStreamRetentionPeriodInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["RetentionPeriodHours"] = args["RetentionPeriodHours"],
 		["StreamName"] = args["StreamName"],
 	}
-	asserts.AssertIncreaseStreamRetentionPeriodInput(t)
-	return t
+	asserts.AssertIncreaseStreamRetentionPeriodInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.RemoveTagsFromStreamInput = { ["StreamName"] = true, ["TagKeys"] = true, nil }
@@ -946,13 +1243,24 @@ end
 -- Required key: TagKeys
 -- @return RemoveTagsFromStreamInput structure as a key-value pair table
 function M.RemoveTagsFromStreamInput(args)
-	assert(args, "You must provdide an argument table when creating RemoveTagsFromStreamInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating RemoveTagsFromStreamInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["StreamName"] = args["StreamName"],
 		["TagKeys"] = args["TagKeys"],
 	}
-	asserts.AssertRemoveTagsFromStreamInput(t)
-	return t
+	asserts.AssertRemoveTagsFromStreamInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdateShardCountOutput = { ["TargetShardCount"] = true, ["StreamName"] = true, ["CurrentShardCount"] = true, nil }
@@ -977,14 +1285,25 @@ end
 -- * CurrentShardCount [PositiveIntegerObject] <p>The current number of shards.</p>
 -- @return UpdateShardCountOutput structure as a key-value pair table
 function M.UpdateShardCountOutput(args)
-	assert(args, "You must provdide an argument table when creating UpdateShardCountOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateShardCountOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["TargetShardCount"] = args["TargetShardCount"],
 		["StreamName"] = args["StreamName"],
 		["CurrentShardCount"] = args["CurrentShardCount"],
 	}
-	asserts.AssertUpdateShardCountOutput(t)
-	return t
+	asserts.AssertUpdateShardCountOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.EnableEnhancedMonitoringInput = { ["ShardLevelMetrics"] = true, ["StreamName"] = true, nil }
@@ -1011,13 +1330,24 @@ end
 -- Required key: ShardLevelMetrics
 -- @return EnableEnhancedMonitoringInput structure as a key-value pair table
 function M.EnableEnhancedMonitoringInput(args)
-	assert(args, "You must provdide an argument table when creating EnableEnhancedMonitoringInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating EnableEnhancedMonitoringInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ShardLevelMetrics"] = args["ShardLevelMetrics"],
 		["StreamName"] = args["StreamName"],
 	}
-	asserts.AssertEnableEnhancedMonitoringInput(t)
-	return t
+	asserts.AssertEnableEnhancedMonitoringInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidArgumentException = { ["message"] = true, nil }
@@ -1038,12 +1368,23 @@ end
 -- * message [ErrorMessage] <p>A message that provides information about the error.</p>
 -- @return InvalidArgumentException structure as a key-value pair table
 function M.InvalidArgumentException(args)
-	assert(args, "You must provdide an argument table when creating InvalidArgumentException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidArgumentException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertInvalidArgumentException(t)
-	return t
+	asserts.AssertInvalidArgumentException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.StreamDescription = { ["HasMoreShards"] = true, ["RetentionPeriodHours"] = true, ["StreamName"] = true, ["Shards"] = true, ["StreamARN"] = true, ["EnhancedMonitoring"] = true, ["StreamCreationTimestamp"] = true, ["StreamStatus"] = true, nil }
@@ -1094,8 +1435,14 @@ end
 -- Required key: EnhancedMonitoring
 -- @return StreamDescription structure as a key-value pair table
 function M.StreamDescription(args)
-	assert(args, "You must provdide an argument table when creating StreamDescription")
-	local t = { 
+	assert(args, "You must provide an argument table when creating StreamDescription")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["HasMoreShards"] = args["HasMoreShards"],
 		["RetentionPeriodHours"] = args["RetentionPeriodHours"],
 		["StreamName"] = args["StreamName"],
@@ -1105,8 +1452,13 @@ function M.StreamDescription(args)
 		["StreamCreationTimestamp"] = args["StreamCreationTimestamp"],
 		["StreamStatus"] = args["StreamStatus"],
 	}
-	asserts.AssertStreamDescription(t)
-	return t
+	asserts.AssertStreamDescription(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ProvisionedThroughputExceededException = { ["message"] = true, nil }
@@ -1127,12 +1479,23 @@ end
 -- * message [ErrorMessage] <p>A message that provides information about the error.</p>
 -- @return ProvisionedThroughputExceededException structure as a key-value pair table
 function M.ProvisionedThroughputExceededException(args)
-	assert(args, "You must provdide an argument table when creating ProvisionedThroughputExceededException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ProvisionedThroughputExceededException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertProvisionedThroughputExceededException(t)
-	return t
+	asserts.AssertProvisionedThroughputExceededException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.EnhancedMetrics = { ["ShardLevelMetrics"] = true, nil }
@@ -1153,12 +1516,23 @@ end
 -- * ShardLevelMetrics [MetricsNameList] <p>List of shard-level metrics.</p> <p>The following are the valid shard-level metrics. The value "<code>ALL</code>" enhances every metric.</p> <ul> <li> <p> <code>IncomingBytes</code> </p> </li> <li> <p> <code>IncomingRecords</code> </p> </li> <li> <p> <code>OutgoingBytes</code> </p> </li> <li> <p> <code>OutgoingRecords</code> </p> </li> <li> <p> <code>WriteProvisionedThroughputExceeded</code> </p> </li> <li> <p> <code>ReadProvisionedThroughputExceeded</code> </p> </li> <li> <p> <code>IteratorAgeMilliseconds</code> </p> </li> <li> <p> <code>ALL</code> </p> </li> </ul> <p>For more information, see <a href="http://docs.aws.amazon.com/kinesis/latest/dev/monitoring-with-cloudwatch.html">Monitoring the Amazon Kinesis Streams Service with Amazon CloudWatch</a> in the <i>Amazon Kinesis Streams Developer Guide</i>.</p>
 -- @return EnhancedMetrics structure as a key-value pair table
 function M.EnhancedMetrics(args)
-	assert(args, "You must provdide an argument table when creating EnhancedMetrics")
-	local t = { 
+	assert(args, "You must provide an argument table when creating EnhancedMetrics")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ShardLevelMetrics"] = args["ShardLevelMetrics"],
 	}
-	asserts.AssertEnhancedMetrics(t)
-	return t
+	asserts.AssertEnhancedMetrics(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListTagsForStreamInput = { ["StreamName"] = true, ["Limit"] = true, ["ExclusiveStartTagKey"] = true, nil }
@@ -1185,14 +1559,25 @@ end
 -- Required key: StreamName
 -- @return ListTagsForStreamInput structure as a key-value pair table
 function M.ListTagsForStreamInput(args)
-	assert(args, "You must provdide an argument table when creating ListTagsForStreamInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListTagsForStreamInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["StreamName"] = args["StreamName"],
 		["Limit"] = args["Limit"],
 		["ExclusiveStartTagKey"] = args["ExclusiveStartTagKey"],
 	}
-	asserts.AssertListTagsForStreamInput(t)
-	return t
+	asserts.AssertListTagsForStreamInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.PutRecordsResultEntry = { ["ShardId"] = true, ["ErrorCode"] = true, ["ErrorMessage"] = true, ["SequenceNumber"] = true, nil }
@@ -1219,15 +1604,26 @@ end
 -- * SequenceNumber [SequenceNumber] <p>The sequence number for an individual record result.</p>
 -- @return PutRecordsResultEntry structure as a key-value pair table
 function M.PutRecordsResultEntry(args)
-	assert(args, "You must provdide an argument table when creating PutRecordsResultEntry")
-	local t = { 
+	assert(args, "You must provide an argument table when creating PutRecordsResultEntry")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ShardId"] = args["ShardId"],
 		["ErrorCode"] = args["ErrorCode"],
 		["ErrorMessage"] = args["ErrorMessage"],
 		["SequenceNumber"] = args["SequenceNumber"],
 	}
-	asserts.AssertPutRecordsResultEntry(t)
-	return t
+	asserts.AssertPutRecordsResultEntry(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListStreamsOutput = { ["StreamNames"] = true, ["HasMoreStreams"] = true, nil }
@@ -1254,13 +1650,24 @@ end
 -- Required key: HasMoreStreams
 -- @return ListStreamsOutput structure as a key-value pair table
 function M.ListStreamsOutput(args)
-	assert(args, "You must provdide an argument table when creating ListStreamsOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListStreamsOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["StreamNames"] = args["StreamNames"],
 		["HasMoreStreams"] = args["HasMoreStreams"],
 	}
-	asserts.AssertListStreamsOutput(t)
-	return t
+	asserts.AssertListStreamsOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListTagsForStreamOutput = { ["HasMoreTags"] = true, ["Tags"] = true, nil }
@@ -1287,13 +1694,24 @@ end
 -- Required key: HasMoreTags
 -- @return ListTagsForStreamOutput structure as a key-value pair table
 function M.ListTagsForStreamOutput(args)
-	assert(args, "You must provdide an argument table when creating ListTagsForStreamOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListTagsForStreamOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["HasMoreTags"] = args["HasMoreTags"],
 		["Tags"] = args["Tags"],
 	}
-	asserts.AssertListTagsForStreamOutput(t)
-	return t
+	asserts.AssertListTagsForStreamOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetRecordsOutput = { ["Records"] = true, ["NextShardIterator"] = true, ["MillisBehindLatest"] = true, nil }
@@ -1320,14 +1738,25 @@ end
 -- Required key: Records
 -- @return GetRecordsOutput structure as a key-value pair table
 function M.GetRecordsOutput(args)
-	assert(args, "You must provdide an argument table when creating GetRecordsOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetRecordsOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Records"] = args["Records"],
 		["NextShardIterator"] = args["NextShardIterator"],
 		["MillisBehindLatest"] = args["MillisBehindLatest"],
 	}
-	asserts.AssertGetRecordsOutput(t)
-	return t
+	asserts.AssertGetRecordsOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeLimitsInput = { nil }
@@ -1346,11 +1775,22 @@ end
 -- Valid keys:
 -- @return DescribeLimitsInput structure as a key-value pair table
 function M.DescribeLimitsInput(args)
-	assert(args, "You must provdide an argument table when creating DescribeLimitsInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeLimitsInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertDescribeLimitsInput(t)
-	return t
+	asserts.AssertDescribeLimitsInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateStreamInput = { ["StreamName"] = true, ["ShardCount"] = true, nil }
@@ -1377,13 +1817,24 @@ end
 -- Required key: ShardCount
 -- @return CreateStreamInput structure as a key-value pair table
 function M.CreateStreamInput(args)
-	assert(args, "You must provdide an argument table when creating CreateStreamInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateStreamInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["StreamName"] = args["StreamName"],
 		["ShardCount"] = args["ShardCount"],
 	}
-	asserts.AssertCreateStreamInput(t)
-	return t
+	asserts.AssertCreateStreamInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetRecordsInput = { ["ShardIterator"] = true, ["Limit"] = true, nil }
@@ -1408,13 +1859,24 @@ end
 -- Required key: ShardIterator
 -- @return GetRecordsInput structure as a key-value pair table
 function M.GetRecordsInput(args)
-	assert(args, "You must provdide an argument table when creating GetRecordsInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetRecordsInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ShardIterator"] = args["ShardIterator"],
 		["Limit"] = args["Limit"],
 	}
-	asserts.AssertGetRecordsInput(t)
-	return t
+	asserts.AssertGetRecordsInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeStreamInput = { ["StreamName"] = true, ["Limit"] = true, ["ExclusiveStartShardId"] = true, nil }
@@ -1441,14 +1903,25 @@ end
 -- Required key: StreamName
 -- @return DescribeStreamInput structure as a key-value pair table
 function M.DescribeStreamInput(args)
-	assert(args, "You must provdide an argument table when creating DescribeStreamInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeStreamInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["StreamName"] = args["StreamName"],
 		["Limit"] = args["Limit"],
 		["ExclusiveStartShardId"] = args["ExclusiveStartShardId"],
 	}
-	asserts.AssertDescribeStreamInput(t)
-	return t
+	asserts.AssertDescribeStreamInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ResourceNotFoundException = { ["message"] = true, nil }
@@ -1469,12 +1942,23 @@ end
 -- * message [ErrorMessage] <p>A message that provides information about the error.</p>
 -- @return ResourceNotFoundException structure as a key-value pair table
 function M.ResourceNotFoundException(args)
-	assert(args, "You must provdide an argument table when creating ResourceNotFoundException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ResourceNotFoundException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertResourceNotFoundException(t)
-	return t
+	asserts.AssertResourceNotFoundException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 function asserts.AssertMetricsName(str)
@@ -1981,8 +2465,11 @@ function M.GetRecordsAsync(GetRecordsInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "Kinesis_20131202.GetRecords",
 	}
+	for header,value in pairs(GetRecordsInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", GetRecordsInput, headers, settings, cb)
 	else
@@ -2013,8 +2500,11 @@ function M.IncreaseStreamRetentionPeriodAsync(IncreaseStreamRetentionPeriodInput
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "Kinesis_20131202.IncreaseStreamRetentionPeriod",
 	}
+	for header,value in pairs(IncreaseStreamRetentionPeriodInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", IncreaseStreamRetentionPeriodInput, headers, settings, cb)
 	else
@@ -2045,8 +2535,11 @@ function M.DescribeLimitsAsync(DescribeLimitsInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "Kinesis_20131202.DescribeLimits",
 	}
+	for header,value in pairs(DescribeLimitsInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeLimitsInput, headers, settings, cb)
 	else
@@ -2077,8 +2570,11 @@ function M.ListTagsForStreamAsync(ListTagsForStreamInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "Kinesis_20131202.ListTagsForStream",
 	}
+	for header,value in pairs(ListTagsForStreamInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ListTagsForStreamInput, headers, settings, cb)
 	else
@@ -2109,8 +2605,11 @@ function M.PutRecordsAsync(PutRecordsInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "Kinesis_20131202.PutRecords",
 	}
+	for header,value in pairs(PutRecordsInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", PutRecordsInput, headers, settings, cb)
 	else
@@ -2141,8 +2640,11 @@ function M.GetShardIteratorAsync(GetShardIteratorInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "Kinesis_20131202.GetShardIterator",
 	}
+	for header,value in pairs(GetShardIteratorInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", GetShardIteratorInput, headers, settings, cb)
 	else
@@ -2173,8 +2675,11 @@ function M.DeleteStreamAsync(DeleteStreamInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "Kinesis_20131202.DeleteStream",
 	}
+	for header,value in pairs(DeleteStreamInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteStreamInput, headers, settings, cb)
 	else
@@ -2205,8 +2710,11 @@ function M.AddTagsToStreamAsync(AddTagsToStreamInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "Kinesis_20131202.AddTagsToStream",
 	}
+	for header,value in pairs(AddTagsToStreamInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", AddTagsToStreamInput, headers, settings, cb)
 	else
@@ -2237,8 +2745,11 @@ function M.RemoveTagsFromStreamAsync(RemoveTagsFromStreamInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "Kinesis_20131202.RemoveTagsFromStream",
 	}
+	for header,value in pairs(RemoveTagsFromStreamInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", RemoveTagsFromStreamInput, headers, settings, cb)
 	else
@@ -2269,8 +2780,11 @@ function M.DecreaseStreamRetentionPeriodAsync(DecreaseStreamRetentionPeriodInput
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "Kinesis_20131202.DecreaseStreamRetentionPeriod",
 	}
+	for header,value in pairs(DecreaseStreamRetentionPeriodInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DecreaseStreamRetentionPeriodInput, headers, settings, cb)
 	else
@@ -2301,8 +2815,11 @@ function M.DisableEnhancedMonitoringAsync(DisableEnhancedMonitoringInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "Kinesis_20131202.DisableEnhancedMonitoring",
 	}
+	for header,value in pairs(DisableEnhancedMonitoringInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DisableEnhancedMonitoringInput, headers, settings, cb)
 	else
@@ -2333,8 +2850,11 @@ function M.SplitShardAsync(SplitShardInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "Kinesis_20131202.SplitShard",
 	}
+	for header,value in pairs(SplitShardInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", SplitShardInput, headers, settings, cb)
 	else
@@ -2365,8 +2885,11 @@ function M.DescribeStreamAsync(DescribeStreamInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "Kinesis_20131202.DescribeStream",
 	}
+	for header,value in pairs(DescribeStreamInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeStreamInput, headers, settings, cb)
 	else
@@ -2397,8 +2920,11 @@ function M.CreateStreamAsync(CreateStreamInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "Kinesis_20131202.CreateStream",
 	}
+	for header,value in pairs(CreateStreamInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateStreamInput, headers, settings, cb)
 	else
@@ -2429,8 +2955,11 @@ function M.PutRecordAsync(PutRecordInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "Kinesis_20131202.PutRecord",
 	}
+	for header,value in pairs(PutRecordInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", PutRecordInput, headers, settings, cb)
 	else
@@ -2461,8 +2990,11 @@ function M.ListStreamsAsync(ListStreamsInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "Kinesis_20131202.ListStreams",
 	}
+	for header,value in pairs(ListStreamsInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ListStreamsInput, headers, settings, cb)
 	else
@@ -2493,8 +3025,11 @@ function M.MergeShardsAsync(MergeShardsInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "Kinesis_20131202.MergeShards",
 	}
+	for header,value in pairs(MergeShardsInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", MergeShardsInput, headers, settings, cb)
 	else
@@ -2525,8 +3060,11 @@ function M.UpdateShardCountAsync(UpdateShardCountInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "Kinesis_20131202.UpdateShardCount",
 	}
+	for header,value in pairs(UpdateShardCountInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateShardCountInput, headers, settings, cb)
 	else
@@ -2557,8 +3095,11 @@ function M.EnableEnhancedMonitoringAsync(EnableEnhancedMonitoringInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "Kinesis_20131202.EnableEnhancedMonitoring",
 	}
+	for header,value in pairs(EnableEnhancedMonitoringInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", EnableEnhancedMonitoringInput, headers, settings, cb)
 	else

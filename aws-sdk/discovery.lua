@@ -37,11 +37,22 @@ end
 -- Valid keys:
 -- @return DisassociateConfigurationItemsFromApplicationResponse structure as a key-value pair table
 function M.DisassociateConfigurationItemsFromApplicationResponse(args)
-	assert(args, "You must provdide an argument table when creating DisassociateConfigurationItemsFromApplicationResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DisassociateConfigurationItemsFromApplicationResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertDisassociateConfigurationItemsFromApplicationResponse(t)
-	return t
+	asserts.AssertDisassociateConfigurationItemsFromApplicationResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeConfigurationsResponse = { ["configurations"] = true, nil }
@@ -62,12 +73,23 @@ end
 -- * configurations [DescribeConfigurationsAttributes] <p>A key in the response map. The value is an array of data.</p>
 -- @return DescribeConfigurationsResponse structure as a key-value pair table
 function M.DescribeConfigurationsResponse(args)
-	assert(args, "You must provdide an argument table when creating DescribeConfigurationsResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeConfigurationsResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["configurations"] = args["configurations"],
 	}
-	asserts.AssertDescribeConfigurationsResponse(t)
-	return t
+	asserts.AssertDescribeConfigurationsResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AgentInfo = { ["version"] = true, ["connectorId"] = true, ["agentType"] = true, ["hostName"] = true, ["collectionStatus"] = true, ["agentNetworkInfoList"] = true, ["health"] = true, ["agentId"] = true, ["registeredTime"] = true, ["lastHealthPingTime"] = true, nil }
@@ -106,8 +128,14 @@ end
 -- * lastHealthPingTime [String] <p>Time since agent or connector health was reported.</p>
 -- @return AgentInfo structure as a key-value pair table
 function M.AgentInfo(args)
-	assert(args, "You must provdide an argument table when creating AgentInfo")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AgentInfo")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["version"] = args["version"],
 		["connectorId"] = args["connectorId"],
 		["agentType"] = args["agentType"],
@@ -119,8 +147,13 @@ function M.AgentInfo(args)
 		["registeredTime"] = args["registeredTime"],
 		["lastHealthPingTime"] = args["lastHealthPingTime"],
 	}
-	asserts.AssertAgentInfo(t)
-	return t
+	asserts.AssertAgentInfo(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeTagsRequest = { ["nextToken"] = true, ["maxResults"] = true, ["filters"] = true, nil }
@@ -145,14 +178,25 @@ end
 -- * filters [TagFilters] <p>You can filter the list using a <i>key</i>-<i>value</i> format. You can separate these items by using logical operators. Allowed filters include <code>tagKey</code>, <code>tagValue</code>, and <code>configurationId</code>. </p>
 -- @return DescribeTagsRequest structure as a key-value pair table
 function M.DescribeTagsRequest(args)
-	assert(args, "You must provdide an argument table when creating DescribeTagsRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeTagsRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["nextToken"] = args["nextToken"],
 		["maxResults"] = args["maxResults"],
 		["filters"] = args["filters"],
 	}
-	asserts.AssertDescribeTagsRequest(t)
-	return t
+	asserts.AssertDescribeTagsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.OperationNotPermittedException = { ["message"] = true, nil }
@@ -173,12 +217,23 @@ end
 -- * message [Message] 
 -- @return OperationNotPermittedException structure as a key-value pair table
 function M.OperationNotPermittedException(args)
-	assert(args, "You must provdide an argument table when creating OperationNotPermittedException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating OperationNotPermittedException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertOperationNotPermittedException(t)
-	return t
+	asserts.AssertOperationNotPermittedException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdateApplicationRequest = { ["configurationId"] = true, ["name"] = true, ["description"] = true, nil }
@@ -205,14 +260,25 @@ end
 -- Required key: configurationId
 -- @return UpdateApplicationRequest structure as a key-value pair table
 function M.UpdateApplicationRequest(args)
-	assert(args, "You must provdide an argument table when creating UpdateApplicationRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateApplicationRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["configurationId"] = args["configurationId"],
 		["name"] = args["name"],
 		["description"] = args["description"],
 	}
-	asserts.AssertUpdateApplicationRequest(t)
-	return t
+	asserts.AssertUpdateApplicationRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AgentNetworkInfo = { ["macAddress"] = true, ["ipAddress"] = true, nil }
@@ -235,13 +301,24 @@ end
 -- * ipAddress [String] <p>The IP address for the host where the agent/connector resides.</p>
 -- @return AgentNetworkInfo structure as a key-value pair table
 function M.AgentNetworkInfo(args)
-	assert(args, "You must provdide an argument table when creating AgentNetworkInfo")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AgentNetworkInfo")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["macAddress"] = args["macAddress"],
 		["ipAddress"] = args["ipAddress"],
 	}
-	asserts.AssertAgentNetworkInfo(t)
-	return t
+	asserts.AssertAgentNetworkInfo(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteApplicationsRequest = { ["configurationIds"] = true, nil }
@@ -264,12 +341,23 @@ end
 -- Required key: configurationIds
 -- @return DeleteApplicationsRequest structure as a key-value pair table
 function M.DeleteApplicationsRequest(args)
-	assert(args, "You must provdide an argument table when creating DeleteApplicationsRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteApplicationsRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["configurationIds"] = args["configurationIds"],
 	}
-	asserts.AssertDeleteApplicationsRequest(t)
-	return t
+	asserts.AssertDeleteApplicationsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateTagsRequest = { ["configurationIds"] = true, ["tags"] = true, nil }
@@ -296,13 +384,24 @@ end
 -- Required key: tags
 -- @return CreateTagsRequest structure as a key-value pair table
 function M.CreateTagsRequest(args)
-	assert(args, "You must provdide an argument table when creating CreateTagsRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateTagsRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["configurationIds"] = args["configurationIds"],
 		["tags"] = args["tags"],
 	}
-	asserts.AssertCreateTagsRequest(t)
-	return t
+	asserts.AssertCreateTagsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListConfigurationsResponse = { ["nextToken"] = true, ["configurations"] = true, nil }
@@ -325,13 +424,24 @@ end
 -- * configurations [Configurations] <p>Returns configuration details, including the configuration ID, attribute names, and attribute values.</p>
 -- @return ListConfigurationsResponse structure as a key-value pair table
 function M.ListConfigurationsResponse(args)
-	assert(args, "You must provdide an argument table when creating ListConfigurationsResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListConfigurationsResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["nextToken"] = args["nextToken"],
 		["configurations"] = args["configurations"],
 	}
-	asserts.AssertListConfigurationsResponse(t)
-	return t
+	asserts.AssertListConfigurationsResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Tag = { ["value"] = true, ["key"] = true, nil }
@@ -358,13 +468,24 @@ end
 -- Required key: value
 -- @return Tag structure as a key-value pair table
 function M.Tag(args)
-	assert(args, "You must provdide an argument table when creating Tag")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Tag")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["value"] = args["value"],
 		["key"] = args["key"],
 	}
-	asserts.AssertTag(t)
-	return t
+	asserts.AssertTag(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeAgentsRequest = { ["nextToken"] = true, ["maxResults"] = true, ["filters"] = true, ["agentIds"] = true, nil }
@@ -391,15 +512,26 @@ end
 -- * agentIds [AgentIds] <p>The agent or the Connector IDs for which you want information. If you specify no IDs, the system returns information about all agents/Connectors associated with your AWS user account.</p>
 -- @return DescribeAgentsRequest structure as a key-value pair table
 function M.DescribeAgentsRequest(args)
-	assert(args, "You must provdide an argument table when creating DescribeAgentsRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeAgentsRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["nextToken"] = args["nextToken"],
 		["maxResults"] = args["maxResults"],
 		["filters"] = args["filters"],
 		["agentIds"] = args["agentIds"],
 	}
-	asserts.AssertDescribeAgentsRequest(t)
-	return t
+	asserts.AssertDescribeAgentsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListConfigurationsRequest = { ["orderBy"] = true, ["nextToken"] = true, ["maxResults"] = true, ["filters"] = true, ["configurationType"] = true, nil }
@@ -430,16 +562,27 @@ end
 -- Required key: configurationType
 -- @return ListConfigurationsRequest structure as a key-value pair table
 function M.ListConfigurationsRequest(args)
-	assert(args, "You must provdide an argument table when creating ListConfigurationsRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListConfigurationsRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["orderBy"] = args["orderBy"],
 		["nextToken"] = args["nextToken"],
 		["maxResults"] = args["maxResults"],
 		["filters"] = args["filters"],
 		["configurationType"] = args["configurationType"],
 	}
-	asserts.AssertListConfigurationsRequest(t)
-	return t
+	asserts.AssertListConfigurationsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeAgentsResponse = { ["agentsInfo"] = true, ["nextToken"] = true, nil }
@@ -462,13 +605,24 @@ end
 -- * nextToken [NextToken] <p>Token to retrieve the next set of results. For example, if you specified 100 IDs for <code>DescribeAgentsRequest$agentIds</code> but set <code>DescribeAgentsRequest$maxResults</code> to 10, you received a set of 10 results along with this token. Use this token in the next query to retrieve the next set of 10.</p>
 -- @return DescribeAgentsResponse structure as a key-value pair table
 function M.DescribeAgentsResponse(args)
-	assert(args, "You must provdide an argument table when creating DescribeAgentsResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeAgentsResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["agentsInfo"] = args["agentsInfo"],
 		["nextToken"] = args["nextToken"],
 	}
-	asserts.AssertDescribeAgentsResponse(t)
-	return t
+	asserts.AssertDescribeAgentsResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ExportConfigurationsResponse = { ["exportId"] = true, nil }
@@ -489,12 +643,23 @@ end
 -- * exportId [ConfigurationsExportId] <p>A unique identifier that you can use to query the export status.</p>
 -- @return ExportConfigurationsResponse structure as a key-value pair table
 function M.ExportConfigurationsResponse(args)
-	assert(args, "You must provdide an argument table when creating ExportConfigurationsResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ExportConfigurationsResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["exportId"] = args["exportId"],
 	}
-	asserts.AssertExportConfigurationsResponse(t)
-	return t
+	asserts.AssertExportConfigurationsResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ServerInternalErrorException = { ["message"] = true, nil }
@@ -515,12 +680,23 @@ end
 -- * message [Message] 
 -- @return ServerInternalErrorException structure as a key-value pair table
 function M.ServerInternalErrorException(args)
-	assert(args, "You must provdide an argument table when creating ServerInternalErrorException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ServerInternalErrorException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertServerInternalErrorException(t)
-	return t
+	asserts.AssertServerInternalErrorException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.StartDataCollectionByAgentIdsRequest = { ["agentIds"] = true, nil }
@@ -543,12 +719,23 @@ end
 -- Required key: agentIds
 -- @return StartDataCollectionByAgentIdsRequest structure as a key-value pair table
 function M.StartDataCollectionByAgentIdsRequest(args)
-	assert(args, "You must provdide an argument table when creating StartDataCollectionByAgentIdsRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating StartDataCollectionByAgentIdsRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["agentIds"] = args["agentIds"],
 	}
-	asserts.AssertStartDataCollectionByAgentIdsRequest(t)
-	return t
+	asserts.AssertStartDataCollectionByAgentIdsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteApplicationsResponse = { nil }
@@ -567,11 +754,22 @@ end
 -- Valid keys:
 -- @return DeleteApplicationsResponse structure as a key-value pair table
 function M.DeleteApplicationsResponse(args)
-	assert(args, "You must provdide an argument table when creating DeleteApplicationsResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteApplicationsResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertDeleteApplicationsResponse(t)
-	return t
+	asserts.AssertDeleteApplicationsResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AssociateConfigurationItemsToApplicationRequest = { ["applicationConfigurationId"] = true, ["configurationIds"] = true, nil }
@@ -598,13 +796,24 @@ end
 -- Required key: configurationIds
 -- @return AssociateConfigurationItemsToApplicationRequest structure as a key-value pair table
 function M.AssociateConfigurationItemsToApplicationRequest(args)
-	assert(args, "You must provdide an argument table when creating AssociateConfigurationItemsToApplicationRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AssociateConfigurationItemsToApplicationRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["applicationConfigurationId"] = args["applicationConfigurationId"],
 		["configurationIds"] = args["configurationIds"],
 	}
-	asserts.AssertAssociateConfigurationItemsToApplicationRequest(t)
-	return t
+	asserts.AssertAssociateConfigurationItemsToApplicationRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListServerNeighborsResponse = { ["neighbors"] = true, ["nextToken"] = true, ["knownDependencyCount"] = true, nil }
@@ -631,14 +840,25 @@ end
 -- Required key: neighbors
 -- @return ListServerNeighborsResponse structure as a key-value pair table
 function M.ListServerNeighborsResponse(args)
-	assert(args, "You must provdide an argument table when creating ListServerNeighborsResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListServerNeighborsResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["neighbors"] = args["neighbors"],
 		["nextToken"] = args["nextToken"],
 		["knownDependencyCount"] = args["knownDependencyCount"],
 	}
-	asserts.AssertListServerNeighborsResponse(t)
-	return t
+	asserts.AssertListServerNeighborsResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.StopDataCollectionByAgentIdsResponse = { ["agentsConfigurationStatus"] = true, nil }
@@ -659,12 +879,23 @@ end
 -- * agentsConfigurationStatus [AgentConfigurationStatusList] <p>Information about the agents or connector that were instructed to stop collecting data. Information includes the agent/connector ID, a description of the operation performed, and whether the agent/connector configuration was updated.</p>
 -- @return StopDataCollectionByAgentIdsResponse structure as a key-value pair table
 function M.StopDataCollectionByAgentIdsResponse(args)
-	assert(args, "You must provdide an argument table when creating StopDataCollectionByAgentIdsResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating StopDataCollectionByAgentIdsResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["agentsConfigurationStatus"] = args["agentsConfigurationStatus"],
 	}
-	asserts.AssertStopDataCollectionByAgentIdsResponse(t)
-	return t
+	asserts.AssertStopDataCollectionByAgentIdsResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.NeighborConnectionDetail = { ["connectionsCount"] = true, ["destinationServerId"] = true, ["sourceServerId"] = true, ["transportProtocol"] = true, ["destinationPort"] = true, nil }
@@ -699,16 +930,27 @@ end
 -- Required key: connectionsCount
 -- @return NeighborConnectionDetail structure as a key-value pair table
 function M.NeighborConnectionDetail(args)
-	assert(args, "You must provdide an argument table when creating NeighborConnectionDetail")
-	local t = { 
+	assert(args, "You must provide an argument table when creating NeighborConnectionDetail")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["connectionsCount"] = args["connectionsCount"],
 		["destinationServerId"] = args["destinationServerId"],
 		["sourceServerId"] = args["sourceServerId"],
 		["transportProtocol"] = args["transportProtocol"],
 		["destinationPort"] = args["destinationPort"],
 	}
-	asserts.AssertNeighborConnectionDetail(t)
-	return t
+	asserts.AssertNeighborConnectionDetail(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.StartDataCollectionByAgentIdsResponse = { ["agentsConfigurationStatus"] = true, nil }
@@ -729,12 +971,23 @@ end
 -- * agentsConfigurationStatus [AgentConfigurationStatusList] <p>Information about agents or the connector that were instructed to start collecting data. Information includes the agent/connector ID, a description of the operation performed, and whether the agent/connector configuration was updated.</p>
 -- @return StartDataCollectionByAgentIdsResponse structure as a key-value pair table
 function M.StartDataCollectionByAgentIdsResponse(args)
-	assert(args, "You must provdide an argument table when creating StartDataCollectionByAgentIdsResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating StartDataCollectionByAgentIdsResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["agentsConfigurationStatus"] = args["agentsConfigurationStatus"],
 	}
-	asserts.AssertStartDataCollectionByAgentIdsResponse(t)
-	return t
+	asserts.AssertStartDataCollectionByAgentIdsResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteTagsResponse = { nil }
@@ -753,11 +1006,22 @@ end
 -- Valid keys:
 -- @return DeleteTagsResponse structure as a key-value pair table
 function M.DeleteTagsResponse(args)
-	assert(args, "You must provdide an argument table when creating DeleteTagsResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteTagsResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertDeleteTagsResponse(t)
-	return t
+	asserts.AssertDeleteTagsResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.StartExportTaskRequest = { ["exportDataFormat"] = true, nil }
@@ -778,12 +1042,23 @@ end
 -- * exportDataFormat [ExportDataFormats] <p>The file format for the returned export data. Default value is <code>CSV</code>.</p>
 -- @return StartExportTaskRequest structure as a key-value pair table
 function M.StartExportTaskRequest(args)
-	assert(args, "You must provdide an argument table when creating StartExportTaskRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating StartExportTaskRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["exportDataFormat"] = args["exportDataFormat"],
 	}
-	asserts.AssertStartExportTaskRequest(t)
-	return t
+	asserts.AssertStartExportTaskRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeExportTasksResponse = { ["exportsInfo"] = true, ["nextToken"] = true, nil }
@@ -806,13 +1081,24 @@ end
 -- * nextToken [NextToken] <p>The <code>nextToken</code> value to include in a future <code>DescribeExportTasks</code> request. When the results of a <code>DescribeExportTasks</code> request exceed <code>maxResults</code>, this value can be used to retrieve the next page of results. This value is null when there are no more results to return.</p>
 -- @return DescribeExportTasksResponse structure as a key-value pair table
 function M.DescribeExportTasksResponse(args)
-	assert(args, "You must provdide an argument table when creating DescribeExportTasksResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeExportTasksResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["exportsInfo"] = args["exportsInfo"],
 		["nextToken"] = args["nextToken"],
 	}
-	asserts.AssertDescribeExportTasksResponse(t)
-	return t
+	asserts.AssertDescribeExportTasksResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteTagsRequest = { ["configurationIds"] = true, ["tags"] = true, nil }
@@ -837,13 +1123,24 @@ end
 -- Required key: configurationIds
 -- @return DeleteTagsRequest structure as a key-value pair table
 function M.DeleteTagsRequest(args)
-	assert(args, "You must provdide an argument table when creating DeleteTagsRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteTagsRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["configurationIds"] = args["configurationIds"],
 		["tags"] = args["tags"],
 	}
-	asserts.AssertDeleteTagsRequest(t)
-	return t
+	asserts.AssertDeleteTagsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AgentConfigurationStatus = { ["operationSucceeded"] = true, ["agentId"] = true, ["description"] = true, nil }
@@ -868,14 +1165,25 @@ end
 -- * description [String] <p>A description of the operation performed.</p>
 -- @return AgentConfigurationStatus structure as a key-value pair table
 function M.AgentConfigurationStatus(args)
-	assert(args, "You must provdide an argument table when creating AgentConfigurationStatus")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AgentConfigurationStatus")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["operationSucceeded"] = args["operationSucceeded"],
 		["agentId"] = args["agentId"],
 		["description"] = args["description"],
 	}
-	asserts.AssertAgentConfigurationStatus(t)
-	return t
+	asserts.AssertAgentConfigurationStatus(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdateApplicationResponse = { nil }
@@ -894,11 +1202,22 @@ end
 -- Valid keys:
 -- @return UpdateApplicationResponse structure as a key-value pair table
 function M.UpdateApplicationResponse(args)
-	assert(args, "You must provdide an argument table when creating UpdateApplicationResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateApplicationResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertUpdateApplicationResponse(t)
-	return t
+	asserts.AssertUpdateApplicationResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AuthorizationErrorException = { ["message"] = true, nil }
@@ -919,12 +1238,23 @@ end
 -- * message [Message] 
 -- @return AuthorizationErrorException structure as a key-value pair table
 function M.AuthorizationErrorException(args)
-	assert(args, "You must provdide an argument table when creating AuthorizationErrorException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AuthorizationErrorException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertAuthorizationErrorException(t)
-	return t
+	asserts.AssertAuthorizationErrorException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.OrderByElement = { ["fieldName"] = true, ["sortOrder"] = true, nil }
@@ -949,13 +1279,24 @@ end
 -- Required key: fieldName
 -- @return OrderByElement structure as a key-value pair table
 function M.OrderByElement(args)
-	assert(args, "You must provdide an argument table when creating OrderByElement")
-	local t = { 
+	assert(args, "You must provide an argument table when creating OrderByElement")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["fieldName"] = args["fieldName"],
 		["sortOrder"] = args["sortOrder"],
 	}
-	asserts.AssertOrderByElement(t)
-	return t
+	asserts.AssertOrderByElement(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListServerNeighborsRequest = { ["nextToken"] = true, ["configurationId"] = true, ["portInformationNeeded"] = true, ["maxResults"] = true, ["neighborConfigurationIds"] = true, nil }
@@ -986,16 +1327,27 @@ end
 -- Required key: configurationId
 -- @return ListServerNeighborsRequest structure as a key-value pair table
 function M.ListServerNeighborsRequest(args)
-	assert(args, "You must provdide an argument table when creating ListServerNeighborsRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListServerNeighborsRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["nextToken"] = args["nextToken"],
 		["configurationId"] = args["configurationId"],
 		["portInformationNeeded"] = args["portInformationNeeded"],
 		["maxResults"] = args["maxResults"],
 		["neighborConfigurationIds"] = args["neighborConfigurationIds"],
 	}
-	asserts.AssertListServerNeighborsRequest(t)
-	return t
+	asserts.AssertListServerNeighborsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.StopDataCollectionByAgentIdsRequest = { ["agentIds"] = true, nil }
@@ -1018,12 +1370,23 @@ end
 -- Required key: agentIds
 -- @return StopDataCollectionByAgentIdsRequest structure as a key-value pair table
 function M.StopDataCollectionByAgentIdsRequest(args)
-	assert(args, "You must provdide an argument table when creating StopDataCollectionByAgentIdsRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating StopDataCollectionByAgentIdsRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["agentIds"] = args["agentIds"],
 	}
-	asserts.AssertStopDataCollectionByAgentIdsRequest(t)
-	return t
+	asserts.AssertStopDataCollectionByAgentIdsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Filter = { ["values"] = true, ["name"] = true, ["condition"] = true, nil }
@@ -1054,14 +1417,25 @@ end
 -- Required key: condition
 -- @return Filter structure as a key-value pair table
 function M.Filter(args)
-	assert(args, "You must provdide an argument table when creating Filter")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Filter")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["values"] = args["values"],
 		["name"] = args["name"],
 		["condition"] = args["condition"],
 	}
-	asserts.AssertFilter(t)
-	return t
+	asserts.AssertFilter(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidParameterValueException = { ["message"] = true, nil }
@@ -1082,12 +1456,23 @@ end
 -- * message [Message] 
 -- @return InvalidParameterValueException structure as a key-value pair table
 function M.InvalidParameterValueException(args)
-	assert(args, "You must provdide an argument table when creating InvalidParameterValueException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidParameterValueException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertInvalidParameterValueException(t)
-	return t
+	asserts.AssertInvalidParameterValueException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ExportInfo = { ["exportId"] = true, ["exportRequestTime"] = true, ["exportStatus"] = true, ["statusMessage"] = true, ["configurationsDownloadUrl"] = true, nil }
@@ -1124,16 +1509,27 @@ end
 -- Required key: exportRequestTime
 -- @return ExportInfo structure as a key-value pair table
 function M.ExportInfo(args)
-	assert(args, "You must provdide an argument table when creating ExportInfo")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ExportInfo")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["exportId"] = args["exportId"],
 		["exportRequestTime"] = args["exportRequestTime"],
 		["exportStatus"] = args["exportStatus"],
 		["statusMessage"] = args["statusMessage"],
 		["configurationsDownloadUrl"] = args["configurationsDownloadUrl"],
 	}
-	asserts.AssertExportInfo(t)
-	return t
+	asserts.AssertExportInfo(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.StartExportTaskResponse = { ["exportId"] = true, nil }
@@ -1154,12 +1550,23 @@ end
 -- * exportId [ConfigurationsExportId] <p> A unique identifier used to query the status of an export request.</p>
 -- @return StartExportTaskResponse structure as a key-value pair table
 function M.StartExportTaskResponse(args)
-	assert(args, "You must provdide an argument table when creating StartExportTaskResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating StartExportTaskResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["exportId"] = args["exportId"],
 	}
-	asserts.AssertStartExportTaskResponse(t)
-	return t
+	asserts.AssertStartExportTaskResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AssociateConfigurationItemsToApplicationResponse = { nil }
@@ -1178,11 +1585,22 @@ end
 -- Valid keys:
 -- @return AssociateConfigurationItemsToApplicationResponse structure as a key-value pair table
 function M.AssociateConfigurationItemsToApplicationResponse(args)
-	assert(args, "You must provdide an argument table when creating AssociateConfigurationItemsToApplicationResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AssociateConfigurationItemsToApplicationResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertAssociateConfigurationItemsToApplicationResponse(t)
-	return t
+	asserts.AssertAssociateConfigurationItemsToApplicationResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateTagsResponse = { nil }
@@ -1201,11 +1619,22 @@ end
 -- Valid keys:
 -- @return CreateTagsResponse structure as a key-value pair table
 function M.CreateTagsResponse(args)
-	assert(args, "You must provdide an argument table when creating CreateTagsResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateTagsResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertCreateTagsResponse(t)
-	return t
+	asserts.AssertCreateTagsResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ResourceNotFoundException = { ["message"] = true, nil }
@@ -1226,12 +1655,23 @@ end
 -- * message [Message] 
 -- @return ResourceNotFoundException structure as a key-value pair table
 function M.ResourceNotFoundException(args)
-	assert(args, "You must provdide an argument table when creating ResourceNotFoundException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ResourceNotFoundException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertResourceNotFoundException(t)
-	return t
+	asserts.AssertResourceNotFoundException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetDiscoverySummaryResponse = { ["serversMappedtoTags"] = true, ["agentSummary"] = true, ["servers"] = true, ["applications"] = true, ["serversMappedToApplications"] = true, ["connectorSummary"] = true, nil }
@@ -1262,8 +1702,14 @@ end
 -- * connectorSummary [CustomerConnectorInfo] <p>Details about discovered connectors, including connector status and health.</p>
 -- @return GetDiscoverySummaryResponse structure as a key-value pair table
 function M.GetDiscoverySummaryResponse(args)
-	assert(args, "You must provdide an argument table when creating GetDiscoverySummaryResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetDiscoverySummaryResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["serversMappedtoTags"] = args["serversMappedtoTags"],
 		["agentSummary"] = args["agentSummary"],
 		["servers"] = args["servers"],
@@ -1271,8 +1717,13 @@ function M.GetDiscoverySummaryResponse(args)
 		["serversMappedToApplications"] = args["serversMappedToApplications"],
 		["connectorSummary"] = args["connectorSummary"],
 	}
-	asserts.AssertGetDiscoverySummaryResponse(t)
-	return t
+	asserts.AssertGetDiscoverySummaryResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeExportConfigurationsResponse = { ["exportsInfo"] = true, ["nextToken"] = true, nil }
@@ -1295,13 +1746,24 @@ end
 -- * nextToken [NextToken] <p>A token to get the next set of results. For example, if you specify 100 IDs for <code>DescribeExportConfigurationsRequest$exportIds</code> but set <code>DescribeExportConfigurationsRequest$maxResults</code> to 10, you get results in a set of 10. Use the token in the query to get the next set of 10.</p>
 -- @return DescribeExportConfigurationsResponse structure as a key-value pair table
 function M.DescribeExportConfigurationsResponse(args)
-	assert(args, "You must provdide an argument table when creating DescribeExportConfigurationsResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeExportConfigurationsResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["exportsInfo"] = args["exportsInfo"],
 		["nextToken"] = args["nextToken"],
 	}
-	asserts.AssertDescribeExportConfigurationsResponse(t)
-	return t
+	asserts.AssertDescribeExportConfigurationsResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeTagsResponse = { ["nextToken"] = true, ["tags"] = true, nil }
@@ -1324,13 +1786,24 @@ end
 -- * tags [ConfigurationTagSet] <p>Depending on the input, this is a list of configuration items tagged with a specific tag, or a list of tags for a specific configuration item.</p>
 -- @return DescribeTagsResponse structure as a key-value pair table
 function M.DescribeTagsResponse(args)
-	assert(args, "You must provdide an argument table when creating DescribeTagsResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeTagsResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["nextToken"] = args["nextToken"],
 		["tags"] = args["tags"],
 	}
-	asserts.AssertDescribeTagsResponse(t)
-	return t
+	asserts.AssertDescribeTagsResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeConfigurationsRequest = { ["configurationIds"] = true, nil }
@@ -1353,12 +1826,23 @@ end
 -- Required key: configurationIds
 -- @return DescribeConfigurationsRequest structure as a key-value pair table
 function M.DescribeConfigurationsRequest(args)
-	assert(args, "You must provdide an argument table when creating DescribeConfigurationsRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeConfigurationsRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["configurationIds"] = args["configurationIds"],
 	}
-	asserts.AssertDescribeConfigurationsRequest(t)
-	return t
+	asserts.AssertDescribeConfigurationsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetDiscoverySummaryRequest = { nil }
@@ -1377,11 +1861,22 @@ end
 -- Valid keys:
 -- @return GetDiscoverySummaryRequest structure as a key-value pair table
 function M.GetDiscoverySummaryRequest(args)
-	assert(args, "You must provdide an argument table when creating GetDiscoverySummaryRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetDiscoverySummaryRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertGetDiscoverySummaryRequest(t)
-	return t
+	asserts.AssertGetDiscoverySummaryRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CustomerConnectorInfo = { ["shutdownConnectors"] = true, ["activeConnectors"] = true, ["unhealthyConnectors"] = true, ["blackListedConnectors"] = true, ["unknownConnectors"] = true, ["totalConnectors"] = true, ["healthyConnectors"] = true, nil }
@@ -1428,8 +1923,14 @@ end
 -- Required key: unknownConnectors
 -- @return CustomerConnectorInfo structure as a key-value pair table
 function M.CustomerConnectorInfo(args)
-	assert(args, "You must provdide an argument table when creating CustomerConnectorInfo")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CustomerConnectorInfo")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["shutdownConnectors"] = args["shutdownConnectors"],
 		["activeConnectors"] = args["activeConnectors"],
 		["unhealthyConnectors"] = args["unhealthyConnectors"],
@@ -1438,8 +1939,13 @@ function M.CustomerConnectorInfo(args)
 		["totalConnectors"] = args["totalConnectors"],
 		["healthyConnectors"] = args["healthyConnectors"],
 	}
-	asserts.AssertCustomerConnectorInfo(t)
-	return t
+	asserts.AssertCustomerConnectorInfo(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeExportTasksRequest = { ["exportIds"] = true, ["nextToken"] = true, ["maxResults"] = true, nil }
@@ -1464,14 +1970,25 @@ end
 -- * maxResults [Integer] <p>The maximum number of volume results returned by <code>DescribeExportTasks</code> in paginated output. When this parameter is used, <code>DescribeExportTasks</code> only returns <code>maxResults</code> results in a single page along with a <code>nextToken</code> response element.</p>
 -- @return DescribeExportTasksRequest structure as a key-value pair table
 function M.DescribeExportTasksRequest(args)
-	assert(args, "You must provdide an argument table when creating DescribeExportTasksRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeExportTasksRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["exportIds"] = args["exportIds"],
 		["nextToken"] = args["nextToken"],
 		["maxResults"] = args["maxResults"],
 	}
-	asserts.AssertDescribeExportTasksRequest(t)
-	return t
+	asserts.AssertDescribeExportTasksRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidParameterException = { ["message"] = true, nil }
@@ -1492,12 +2009,23 @@ end
 -- * message [Message] 
 -- @return InvalidParameterException structure as a key-value pair table
 function M.InvalidParameterException(args)
-	assert(args, "You must provdide an argument table when creating InvalidParameterException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidParameterException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertInvalidParameterException(t)
-	return t
+	asserts.AssertInvalidParameterException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateApplicationRequest = { ["name"] = true, ["description"] = true, nil }
@@ -1522,13 +2050,24 @@ end
 -- Required key: name
 -- @return CreateApplicationRequest structure as a key-value pair table
 function M.CreateApplicationRequest(args)
-	assert(args, "You must provdide an argument table when creating CreateApplicationRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateApplicationRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["name"] = args["name"],
 		["description"] = args["description"],
 	}
-	asserts.AssertCreateApplicationRequest(t)
-	return t
+	asserts.AssertCreateApplicationRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ConfigurationTag = { ["timeOfCreation"] = true, ["configurationId"] = true, ["value"] = true, ["key"] = true, ["configurationType"] = true, nil }
@@ -1557,16 +2096,27 @@ end
 -- * configurationType [ConfigurationItemType] <p>A type of IT asset to tag.</p>
 -- @return ConfigurationTag structure as a key-value pair table
 function M.ConfigurationTag(args)
-	assert(args, "You must provdide an argument table when creating ConfigurationTag")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ConfigurationTag")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["timeOfCreation"] = args["timeOfCreation"],
 		["configurationId"] = args["configurationId"],
 		["value"] = args["value"],
 		["key"] = args["key"],
 		["configurationType"] = args["configurationType"],
 	}
-	asserts.AssertConfigurationTag(t)
-	return t
+	asserts.AssertConfigurationTag(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.TagFilter = { ["values"] = true, ["name"] = true, nil }
@@ -1593,13 +2143,24 @@ end
 -- Required key: values
 -- @return TagFilter structure as a key-value pair table
 function M.TagFilter(args)
-	assert(args, "You must provdide an argument table when creating TagFilter")
-	local t = { 
+	assert(args, "You must provide an argument table when creating TagFilter")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["values"] = args["values"],
 		["name"] = args["name"],
 	}
-	asserts.AssertTagFilter(t)
-	return t
+	asserts.AssertTagFilter(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateApplicationResponse = { ["configurationId"] = true, nil }
@@ -1620,12 +2181,23 @@ end
 -- * configurationId [String] <p>Configuration ID of an application to be created.</p>
 -- @return CreateApplicationResponse structure as a key-value pair table
 function M.CreateApplicationResponse(args)
-	assert(args, "You must provdide an argument table when creating CreateApplicationResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateApplicationResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["configurationId"] = args["configurationId"],
 	}
-	asserts.AssertCreateApplicationResponse(t)
-	return t
+	asserts.AssertCreateApplicationResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CustomerAgentInfo = { ["healthyAgents"] = true, ["unhealthyAgents"] = true, ["unknownAgents"] = true, ["activeAgents"] = true, ["shutdownAgents"] = true, ["totalAgents"] = true, ["blackListedAgents"] = true, nil }
@@ -1672,8 +2244,14 @@ end
 -- Required key: unknownAgents
 -- @return CustomerAgentInfo structure as a key-value pair table
 function M.CustomerAgentInfo(args)
-	assert(args, "You must provdide an argument table when creating CustomerAgentInfo")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CustomerAgentInfo")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["healthyAgents"] = args["healthyAgents"],
 		["unhealthyAgents"] = args["unhealthyAgents"],
 		["unknownAgents"] = args["unknownAgents"],
@@ -1682,8 +2260,13 @@ function M.CustomerAgentInfo(args)
 		["totalAgents"] = args["totalAgents"],
 		["blackListedAgents"] = args["blackListedAgents"],
 	}
-	asserts.AssertCustomerAgentInfo(t)
-	return t
+	asserts.AssertCustomerAgentInfo(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeExportConfigurationsRequest = { ["exportIds"] = true, ["nextToken"] = true, ["maxResults"] = true, nil }
@@ -1708,14 +2291,25 @@ end
 -- * maxResults [Integer] <p>The maximum number of results that you want to display as a part of the query.</p>
 -- @return DescribeExportConfigurationsRequest structure as a key-value pair table
 function M.DescribeExportConfigurationsRequest(args)
-	assert(args, "You must provdide an argument table when creating DescribeExportConfigurationsRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeExportConfigurationsRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["exportIds"] = args["exportIds"],
 		["nextToken"] = args["nextToken"],
 		["maxResults"] = args["maxResults"],
 	}
-	asserts.AssertDescribeExportConfigurationsRequest(t)
-	return t
+	asserts.AssertDescribeExportConfigurationsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DisassociateConfigurationItemsFromApplicationRequest = { ["applicationConfigurationId"] = true, ["configurationIds"] = true, nil }
@@ -1742,13 +2336,24 @@ end
 -- Required key: configurationIds
 -- @return DisassociateConfigurationItemsFromApplicationRequest structure as a key-value pair table
 function M.DisassociateConfigurationItemsFromApplicationRequest(args)
-	assert(args, "You must provdide an argument table when creating DisassociateConfigurationItemsFromApplicationRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DisassociateConfigurationItemsFromApplicationRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["applicationConfigurationId"] = args["applicationConfigurationId"],
 		["configurationIds"] = args["configurationIds"],
 	}
-	asserts.AssertDisassociateConfigurationItemsFromApplicationRequest(t)
-	return t
+	asserts.AssertDisassociateConfigurationItemsFromApplicationRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 function asserts.AssertConfigurationsExportId(str)
@@ -2373,8 +2978,11 @@ function M.DeleteTagsAsync(DeleteTagsRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AWSPoseidonService_V2015_11_01.DeleteTags",
 	}
+	for header,value in pairs(DeleteTagsRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteTagsRequest, headers, settings, cb)
 	else
@@ -2405,8 +3013,11 @@ function M.GetDiscoverySummaryAsync(GetDiscoverySummaryRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AWSPoseidonService_V2015_11_01.GetDiscoverySummary",
 	}
+	for header,value in pairs(GetDiscoverySummaryRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", GetDiscoverySummaryRequest, headers, settings, cb)
 	else
@@ -2437,8 +3048,11 @@ function M.ListConfigurationsAsync(ListConfigurationsRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AWSPoseidonService_V2015_11_01.ListConfigurations",
 	}
+	for header,value in pairs(ListConfigurationsRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ListConfigurationsRequest, headers, settings, cb)
 	else
@@ -2469,8 +3083,11 @@ function M.CreateTagsAsync(CreateTagsRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AWSPoseidonService_V2015_11_01.CreateTags",
 	}
+	for header,value in pairs(CreateTagsRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateTagsRequest, headers, settings, cb)
 	else
@@ -2501,8 +3118,11 @@ function M.DescribeExportTasksAsync(DescribeExportTasksRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AWSPoseidonService_V2015_11_01.DescribeExportTasks",
 	}
+	for header,value in pairs(DescribeExportTasksRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeExportTasksRequest, headers, settings, cb)
 	else
@@ -2533,8 +3153,11 @@ function M.DisassociateConfigurationItemsFromApplicationAsync(DisassociateConfig
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AWSPoseidonService_V2015_11_01.DisassociateConfigurationItemsFromApplication",
 	}
+	for header,value in pairs(DisassociateConfigurationItemsFromApplicationRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DisassociateConfigurationItemsFromApplicationRequest, headers, settings, cb)
 	else
@@ -2565,8 +3188,11 @@ function M.StartDataCollectionByAgentIdsAsync(StartDataCollectionByAgentIdsReque
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AWSPoseidonService_V2015_11_01.StartDataCollectionByAgentIds",
 	}
+	for header,value in pairs(StartDataCollectionByAgentIdsRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", StartDataCollectionByAgentIdsRequest, headers, settings, cb)
 	else
@@ -2597,8 +3223,11 @@ function M.UpdateApplicationAsync(UpdateApplicationRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AWSPoseidonService_V2015_11_01.UpdateApplication",
 	}
+	for header,value in pairs(UpdateApplicationRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateApplicationRequest, headers, settings, cb)
 	else
@@ -2629,8 +3258,11 @@ function M.ListServerNeighborsAsync(ListServerNeighborsRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AWSPoseidonService_V2015_11_01.ListServerNeighbors",
 	}
+	for header,value in pairs(ListServerNeighborsRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ListServerNeighborsRequest, headers, settings, cb)
 	else
@@ -2661,8 +3293,11 @@ function M.StopDataCollectionByAgentIdsAsync(StopDataCollectionByAgentIdsRequest
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AWSPoseidonService_V2015_11_01.StopDataCollectionByAgentIds",
 	}
+	for header,value in pairs(StopDataCollectionByAgentIdsRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", StopDataCollectionByAgentIdsRequest, headers, settings, cb)
 	else
@@ -2693,8 +3328,11 @@ function M.DescribeAgentsAsync(DescribeAgentsRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AWSPoseidonService_V2015_11_01.DescribeAgents",
 	}
+	for header,value in pairs(DescribeAgentsRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeAgentsRequest, headers, settings, cb)
 	else
@@ -2725,8 +3363,11 @@ function M.DescribeConfigurationsAsync(DescribeConfigurationsRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AWSPoseidonService_V2015_11_01.DescribeConfigurations",
 	}
+	for header,value in pairs(DescribeConfigurationsRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeConfigurationsRequest, headers, settings, cb)
 	else
@@ -2757,8 +3398,11 @@ function M.StartExportTaskAsync(StartExportTaskRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AWSPoseidonService_V2015_11_01.StartExportTask",
 	}
+	for header,value in pairs(StartExportTaskRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", StartExportTaskRequest, headers, settings, cb)
 	else
@@ -2789,8 +3433,11 @@ function M.DescribeTagsAsync(DescribeTagsRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AWSPoseidonService_V2015_11_01.DescribeTags",
 	}
+	for header,value in pairs(DescribeTagsRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeTagsRequest, headers, settings, cb)
 	else
@@ -2821,8 +3468,11 @@ function M.DeleteApplicationsAsync(DeleteApplicationsRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AWSPoseidonService_V2015_11_01.DeleteApplications",
 	}
+	for header,value in pairs(DeleteApplicationsRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteApplicationsRequest, headers, settings, cb)
 	else
@@ -2853,8 +3503,11 @@ function M.AssociateConfigurationItemsToApplicationAsync(AssociateConfigurationI
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AWSPoseidonService_V2015_11_01.AssociateConfigurationItemsToApplication",
 	}
+	for header,value in pairs(AssociateConfigurationItemsToApplicationRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", AssociateConfigurationItemsToApplicationRequest, headers, settings, cb)
 	else
@@ -2885,8 +3538,11 @@ function M.CreateApplicationAsync(CreateApplicationRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AWSPoseidonService_V2015_11_01.CreateApplication",
 	}
+	for header,value in pairs(CreateApplicationRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateApplicationRequest, headers, settings, cb)
 	else

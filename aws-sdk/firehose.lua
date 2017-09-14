@@ -39,12 +39,23 @@ end
 -- * message [ErrorMessage] <p>A message that provides information about the error.</p>
 -- @return ServiceUnavailableException structure as a key-value pair table
 function M.ServiceUnavailableException(args)
-	assert(args, "You must provdide an argument table when creating ServiceUnavailableException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ServiceUnavailableException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertServiceUnavailableException(t)
-	return t
+	asserts.AssertServiceUnavailableException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdateDestinationOutput = { nil }
@@ -63,11 +74,22 @@ end
 -- Valid keys:
 -- @return UpdateDestinationOutput structure as a key-value pair table
 function M.UpdateDestinationOutput(args)
-	assert(args, "You must provdide an argument table when creating UpdateDestinationOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateDestinationOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertUpdateDestinationOutput(t)
-	return t
+	asserts.AssertUpdateDestinationOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.KMSEncryptionConfig = { ["AWSKMSKeyARN"] = true, nil }
@@ -90,12 +112,23 @@ end
 -- Required key: AWSKMSKeyARN
 -- @return KMSEncryptionConfig structure as a key-value pair table
 function M.KMSEncryptionConfig(args)
-	assert(args, "You must provdide an argument table when creating KMSEncryptionConfig")
-	local t = { 
+	assert(args, "You must provide an argument table when creating KMSEncryptionConfig")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["AWSKMSKeyARN"] = args["AWSKMSKeyARN"],
 	}
-	asserts.AssertKMSEncryptionConfig(t)
-	return t
+	asserts.AssertKMSEncryptionConfig(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.PutRecordBatchOutput = { ["FailedPutCount"] = true, ["RequestResponses"] = true, nil }
@@ -122,13 +155,24 @@ end
 -- Required key: RequestResponses
 -- @return PutRecordBatchOutput structure as a key-value pair table
 function M.PutRecordBatchOutput(args)
-	assert(args, "You must provdide an argument table when creating PutRecordBatchOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating PutRecordBatchOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["FailedPutCount"] = args["FailedPutCount"],
 		["RequestResponses"] = args["RequestResponses"],
 	}
-	asserts.AssertPutRecordBatchOutput(t)
-	return t
+	asserts.AssertPutRecordBatchOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.PutRecordInput = { ["Record"] = true, ["DeliveryStreamName"] = true, nil }
@@ -155,13 +199,24 @@ end
 -- Required key: Record
 -- @return PutRecordInput structure as a key-value pair table
 function M.PutRecordInput(args)
-	assert(args, "You must provdide an argument table when creating PutRecordInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating PutRecordInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Record"] = args["Record"],
 		["DeliveryStreamName"] = args["DeliveryStreamName"],
 	}
-	asserts.AssertPutRecordInput(t)
-	return t
+	asserts.AssertPutRecordInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeliveryStreamDescription = { ["HasMoreDestinations"] = true, ["LastUpdateTimestamp"] = true, ["VersionId"] = true, ["CreateTimestamp"] = true, ["DeliveryStreamARN"] = true, ["DeliveryStreamStatus"] = true, ["DeliveryStreamName"] = true, ["Destinations"] = true, nil }
@@ -208,8 +263,14 @@ end
 -- Required key: HasMoreDestinations
 -- @return DeliveryStreamDescription structure as a key-value pair table
 function M.DeliveryStreamDescription(args)
-	assert(args, "You must provdide an argument table when creating DeliveryStreamDescription")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeliveryStreamDescription")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["HasMoreDestinations"] = args["HasMoreDestinations"],
 		["LastUpdateTimestamp"] = args["LastUpdateTimestamp"],
 		["VersionId"] = args["VersionId"],
@@ -219,8 +280,13 @@ function M.DeliveryStreamDescription(args)
 		["DeliveryStreamName"] = args["DeliveryStreamName"],
 		["Destinations"] = args["Destinations"],
 	}
-	asserts.AssertDeliveryStreamDescription(t)
-	return t
+	asserts.AssertDeliveryStreamDescription(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.S3DestinationDescription = { ["RoleARN"] = true, ["Prefix"] = true, ["BufferingHints"] = true, ["EncryptionConfiguration"] = true, ["CompressionFormat"] = true, ["CloudWatchLoggingOptions"] = true, ["BucketARN"] = true, nil }
@@ -263,8 +329,14 @@ end
 -- Required key: EncryptionConfiguration
 -- @return S3DestinationDescription structure as a key-value pair table
 function M.S3DestinationDescription(args)
-	assert(args, "You must provdide an argument table when creating S3DestinationDescription")
-	local t = { 
+	assert(args, "You must provide an argument table when creating S3DestinationDescription")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["RoleARN"] = args["RoleARN"],
 		["Prefix"] = args["Prefix"],
 		["BufferingHints"] = args["BufferingHints"],
@@ -273,8 +345,13 @@ function M.S3DestinationDescription(args)
 		["CloudWatchLoggingOptions"] = args["CloudWatchLoggingOptions"],
 		["BucketARN"] = args["BucketARN"],
 	}
-	asserts.AssertS3DestinationDescription(t)
-	return t
+	asserts.AssertS3DestinationDescription(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.PutRecordBatchResponseEntry = { ["RecordId"] = true, ["ErrorCode"] = true, ["ErrorMessage"] = true, nil }
@@ -299,14 +376,25 @@ end
 -- * ErrorMessage [ErrorMessage] <p>The error message for an individual record result.</p>
 -- @return PutRecordBatchResponseEntry structure as a key-value pair table
 function M.PutRecordBatchResponseEntry(args)
-	assert(args, "You must provdide an argument table when creating PutRecordBatchResponseEntry")
-	local t = { 
+	assert(args, "You must provide an argument table when creating PutRecordBatchResponseEntry")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["RecordId"] = args["RecordId"],
 		["ErrorCode"] = args["ErrorCode"],
 		["ErrorMessage"] = args["ErrorMessage"],
 	}
-	asserts.AssertPutRecordBatchResponseEntry(t)
-	return t
+	asserts.AssertPutRecordBatchResponseEntry(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.LimitExceededException = { ["message"] = true, nil }
@@ -327,12 +415,23 @@ end
 -- * message [ErrorMessage] <p>A message that provides information about the error.</p>
 -- @return LimitExceededException structure as a key-value pair table
 function M.LimitExceededException(args)
-	assert(args, "You must provdide an argument table when creating LimitExceededException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating LimitExceededException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertLimitExceededException(t)
-	return t
+	asserts.AssertLimitExceededException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ConcurrentModificationException = { ["message"] = true, nil }
@@ -353,12 +452,23 @@ end
 -- * message [ErrorMessage] <p>A message that provides information about the error.</p>
 -- @return ConcurrentModificationException structure as a key-value pair table
 function M.ConcurrentModificationException(args)
-	assert(args, "You must provdide an argument table when creating ConcurrentModificationException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ConcurrentModificationException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertConcurrentModificationException(t)
-	return t
+	asserts.AssertConcurrentModificationException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ExtendedS3DestinationUpdate = { ["RoleARN"] = true, ["Prefix"] = true, ["BufferingHints"] = true, ["S3BackupUpdate"] = true, ["EncryptionConfiguration"] = true, ["CompressionFormat"] = true, ["S3BackupMode"] = true, ["CloudWatchLoggingOptions"] = true, ["BucketARN"] = true, ["ProcessingConfiguration"] = true, nil }
@@ -397,8 +507,14 @@ end
 -- * ProcessingConfiguration [ProcessingConfiguration] <p>The data processing configuration.</p>
 -- @return ExtendedS3DestinationUpdate structure as a key-value pair table
 function M.ExtendedS3DestinationUpdate(args)
-	assert(args, "You must provdide an argument table when creating ExtendedS3DestinationUpdate")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ExtendedS3DestinationUpdate")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["RoleARN"] = args["RoleARN"],
 		["Prefix"] = args["Prefix"],
 		["BufferingHints"] = args["BufferingHints"],
@@ -410,8 +526,13 @@ function M.ExtendedS3DestinationUpdate(args)
 		["BucketARN"] = args["BucketARN"],
 		["ProcessingConfiguration"] = args["ProcessingConfiguration"],
 	}
-	asserts.AssertExtendedS3DestinationUpdate(t)
-	return t
+	asserts.AssertExtendedS3DestinationUpdate(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ProcessorParameter = { ["ParameterName"] = true, ["ParameterValue"] = true, nil }
@@ -438,13 +559,24 @@ end
 -- Required key: ParameterValue
 -- @return ProcessorParameter structure as a key-value pair table
 function M.ProcessorParameter(args)
-	assert(args, "You must provdide an argument table when creating ProcessorParameter")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ProcessorParameter")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ParameterName"] = args["ParameterName"],
 		["ParameterValue"] = args["ParameterValue"],
 	}
-	asserts.AssertProcessorParameter(t)
-	return t
+	asserts.AssertProcessorParameter(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.BufferingHints = { ["IntervalInSeconds"] = true, ["SizeInMBs"] = true, nil }
@@ -467,13 +599,24 @@ end
 -- * SizeInMBs [SizeInMBs] <p>Buffer incoming data to the specified size, in MBs, before delivering it to the destination. The default value is 5.</p> <p>We recommend setting this parameter to a value greater than the amount of data you typically ingest into the delivery stream in 10 seconds. For example, if you typically ingest data at 1 MB/sec, the value should be 10 MB or higher.</p>
 -- @return BufferingHints structure as a key-value pair table
 function M.BufferingHints(args)
-	assert(args, "You must provdide an argument table when creating BufferingHints")
-	local t = { 
+	assert(args, "You must provide an argument table when creating BufferingHints")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["IntervalInSeconds"] = args["IntervalInSeconds"],
 		["SizeInMBs"] = args["SizeInMBs"],
 	}
-	asserts.AssertBufferingHints(t)
-	return t
+	asserts.AssertBufferingHints(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Record = { ["Data"] = true, nil }
@@ -496,12 +639,23 @@ end
 -- Required key: Data
 -- @return Record structure as a key-value pair table
 function M.Record(args)
-	assert(args, "You must provdide an argument table when creating Record")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Record")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Data"] = args["Data"],
 	}
-	asserts.AssertRecord(t)
-	return t
+	asserts.AssertRecord(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ElasticsearchDestinationDescription = { ["IndexName"] = true, ["RetryOptions"] = true, ["RoleARN"] = true, ["BufferingHints"] = true, ["TypeName"] = true, ["S3BackupMode"] = true, ["CloudWatchLoggingOptions"] = true, ["DomainARN"] = true, ["S3DestinationDescription"] = true, ["IndexRotationPeriod"] = true, ["ProcessingConfiguration"] = true, nil }
@@ -542,8 +696,14 @@ end
 -- * ProcessingConfiguration [ProcessingConfiguration] <p>The data processing configuration.</p>
 -- @return ElasticsearchDestinationDescription structure as a key-value pair table
 function M.ElasticsearchDestinationDescription(args)
-	assert(args, "You must provdide an argument table when creating ElasticsearchDestinationDescription")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ElasticsearchDestinationDescription")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["IndexName"] = args["IndexName"],
 		["RetryOptions"] = args["RetryOptions"],
 		["RoleARN"] = args["RoleARN"],
@@ -556,8 +716,13 @@ function M.ElasticsearchDestinationDescription(args)
 		["IndexRotationPeriod"] = args["IndexRotationPeriod"],
 		["ProcessingConfiguration"] = args["ProcessingConfiguration"],
 	}
-	asserts.AssertElasticsearchDestinationDescription(t)
-	return t
+	asserts.AssertElasticsearchDestinationDescription(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteDeliveryStreamInput = { ["DeliveryStreamName"] = true, nil }
@@ -580,12 +745,23 @@ end
 -- Required key: DeliveryStreamName
 -- @return DeleteDeliveryStreamInput structure as a key-value pair table
 function M.DeleteDeliveryStreamInput(args)
-	assert(args, "You must provdide an argument table when creating DeleteDeliveryStreamInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteDeliveryStreamInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DeliveryStreamName"] = args["DeliveryStreamName"],
 	}
-	asserts.AssertDeleteDeliveryStreamInput(t)
-	return t
+	asserts.AssertDeleteDeliveryStreamInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.RedshiftRetryOptions = { ["DurationInSeconds"] = true, nil }
@@ -606,12 +782,23 @@ end
 -- * DurationInSeconds [RedshiftRetryDurationInSeconds] <p>The length of time during which Firehose retries delivery after a failure, starting from the initial request and including the first attempt. The default value is 3600 seconds (60 minutes). Firehose does not retry if the value of <code>DurationInSeconds</code> is 0 (zero) or if the first delivery attempt takes longer than the current value.</p>
 -- @return RedshiftRetryOptions structure as a key-value pair table
 function M.RedshiftRetryOptions(args)
-	assert(args, "You must provdide an argument table when creating RedshiftRetryOptions")
-	local t = { 
+	assert(args, "You must provide an argument table when creating RedshiftRetryOptions")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DurationInSeconds"] = args["DurationInSeconds"],
 	}
-	asserts.AssertRedshiftRetryOptions(t)
-	return t
+	asserts.AssertRedshiftRetryOptions(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListDeliveryStreamsOutput = { ["DeliveryStreamNames"] = true, ["HasMoreDeliveryStreams"] = true, nil }
@@ -638,13 +825,24 @@ end
 -- Required key: HasMoreDeliveryStreams
 -- @return ListDeliveryStreamsOutput structure as a key-value pair table
 function M.ListDeliveryStreamsOutput(args)
-	assert(args, "You must provdide an argument table when creating ListDeliveryStreamsOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListDeliveryStreamsOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DeliveryStreamNames"] = args["DeliveryStreamNames"],
 		["HasMoreDeliveryStreams"] = args["HasMoreDeliveryStreams"],
 	}
-	asserts.AssertListDeliveryStreamsOutput(t)
-	return t
+	asserts.AssertListDeliveryStreamsOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ResourceInUseException = { ["message"] = true, nil }
@@ -665,12 +863,23 @@ end
 -- * message [ErrorMessage] <p>A message that provides information about the error.</p>
 -- @return ResourceInUseException structure as a key-value pair table
 function M.ResourceInUseException(args)
-	assert(args, "You must provdide an argument table when creating ResourceInUseException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ResourceInUseException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertResourceInUseException(t)
-	return t
+	asserts.AssertResourceInUseException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.RedshiftDestinationDescription = { ["Username"] = true, ["S3BackupDescription"] = true, ["S3DestinationDescription"] = true, ["RetryOptions"] = true, ["RoleARN"] = true, ["ClusterJDBCURL"] = true, ["CopyCommand"] = true, ["CloudWatchLoggingOptions"] = true, ["ProcessingConfiguration"] = true, ["S3BackupMode"] = true, nil }
@@ -719,8 +928,14 @@ end
 -- Required key: S3DestinationDescription
 -- @return RedshiftDestinationDescription structure as a key-value pair table
 function M.RedshiftDestinationDescription(args)
-	assert(args, "You must provdide an argument table when creating RedshiftDestinationDescription")
-	local t = { 
+	assert(args, "You must provide an argument table when creating RedshiftDestinationDescription")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Username"] = args["Username"],
 		["S3BackupDescription"] = args["S3BackupDescription"],
 		["S3DestinationDescription"] = args["S3DestinationDescription"],
@@ -732,8 +947,13 @@ function M.RedshiftDestinationDescription(args)
 		["ProcessingConfiguration"] = args["ProcessingConfiguration"],
 		["S3BackupMode"] = args["S3BackupMode"],
 	}
-	asserts.AssertRedshiftDestinationDescription(t)
-	return t
+	asserts.AssertRedshiftDestinationDescription(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Processor = { ["Type"] = true, ["Parameters"] = true, nil }
@@ -758,13 +978,24 @@ end
 -- Required key: Type
 -- @return Processor structure as a key-value pair table
 function M.Processor(args)
-	assert(args, "You must provdide an argument table when creating Processor")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Processor")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Type"] = args["Type"],
 		["Parameters"] = args["Parameters"],
 	}
-	asserts.AssertProcessor(t)
-	return t
+	asserts.AssertProcessor(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteDeliveryStreamOutput = { nil }
@@ -783,11 +1014,22 @@ end
 -- Valid keys:
 -- @return DeleteDeliveryStreamOutput structure as a key-value pair table
 function M.DeleteDeliveryStreamOutput(args)
-	assert(args, "You must provdide an argument table when creating DeleteDeliveryStreamOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteDeliveryStreamOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertDeleteDeliveryStreamOutput(t)
-	return t
+	asserts.AssertDeleteDeliveryStreamOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateDeliveryStreamInput = { ["ExtendedS3DestinationConfiguration"] = true, ["S3DestinationConfiguration"] = true, ["DeliveryStreamName"] = true, ["ElasticsearchDestinationConfiguration"] = true, ["RedshiftDestinationConfiguration"] = true, nil }
@@ -818,16 +1060,27 @@ end
 -- Required key: DeliveryStreamName
 -- @return CreateDeliveryStreamInput structure as a key-value pair table
 function M.CreateDeliveryStreamInput(args)
-	assert(args, "You must provdide an argument table when creating CreateDeliveryStreamInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateDeliveryStreamInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ExtendedS3DestinationConfiguration"] = args["ExtendedS3DestinationConfiguration"],
 		["S3DestinationConfiguration"] = args["S3DestinationConfiguration"],
 		["DeliveryStreamName"] = args["DeliveryStreamName"],
 		["ElasticsearchDestinationConfiguration"] = args["ElasticsearchDestinationConfiguration"],
 		["RedshiftDestinationConfiguration"] = args["RedshiftDestinationConfiguration"],
 	}
-	asserts.AssertCreateDeliveryStreamInput(t)
-	return t
+	asserts.AssertCreateDeliveryStreamInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.RedshiftDestinationUpdate = { ["Username"] = true, ["S3Update"] = true, ["RetryOptions"] = true, ["RoleARN"] = true, ["ClusterJDBCURL"] = true, ["CopyCommand"] = true, ["CloudWatchLoggingOptions"] = true, ["Password"] = true, ["S3BackupUpdate"] = true, ["ProcessingConfiguration"] = true, ["S3BackupMode"] = true, nil }
@@ -868,8 +1121,14 @@ end
 -- * S3BackupMode [RedshiftS3BackupMode] <p>The Amazon S3 backup mode.</p>
 -- @return RedshiftDestinationUpdate structure as a key-value pair table
 function M.RedshiftDestinationUpdate(args)
-	assert(args, "You must provdide an argument table when creating RedshiftDestinationUpdate")
-	local t = { 
+	assert(args, "You must provide an argument table when creating RedshiftDestinationUpdate")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Username"] = args["Username"],
 		["S3Update"] = args["S3Update"],
 		["RetryOptions"] = args["RetryOptions"],
@@ -882,8 +1141,13 @@ function M.RedshiftDestinationUpdate(args)
 		["ProcessingConfiguration"] = args["ProcessingConfiguration"],
 		["S3BackupMode"] = args["S3BackupMode"],
 	}
-	asserts.AssertRedshiftDestinationUpdate(t)
-	return t
+	asserts.AssertRedshiftDestinationUpdate(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdateDestinationInput = { ["DeliveryStreamName"] = true, ["ElasticsearchDestinationUpdate"] = true, ["CurrentDeliveryStreamVersionId"] = true, ["DestinationId"] = true, ["ExtendedS3DestinationUpdate"] = true, ["S3DestinationUpdate"] = true, ["RedshiftDestinationUpdate"] = true, nil }
@@ -922,8 +1186,14 @@ end
 -- Required key: DestinationId
 -- @return UpdateDestinationInput structure as a key-value pair table
 function M.UpdateDestinationInput(args)
-	assert(args, "You must provdide an argument table when creating UpdateDestinationInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateDestinationInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DeliveryStreamName"] = args["DeliveryStreamName"],
 		["ElasticsearchDestinationUpdate"] = args["ElasticsearchDestinationUpdate"],
 		["CurrentDeliveryStreamVersionId"] = args["CurrentDeliveryStreamVersionId"],
@@ -932,8 +1202,13 @@ function M.UpdateDestinationInput(args)
 		["S3DestinationUpdate"] = args["S3DestinationUpdate"],
 		["RedshiftDestinationUpdate"] = args["RedshiftDestinationUpdate"],
 	}
-	asserts.AssertUpdateDestinationInput(t)
-	return t
+	asserts.AssertUpdateDestinationInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ElasticsearchDestinationConfiguration = { ["S3Configuration"] = true, ["IndexName"] = true, ["RetryOptions"] = true, ["RoleARN"] = true, ["BufferingHints"] = true, ["TypeName"] = true, ["S3BackupMode"] = true, ["CloudWatchLoggingOptions"] = true, ["DomainARN"] = true, ["IndexRotationPeriod"] = true, ["ProcessingConfiguration"] = true, nil }
@@ -984,8 +1259,14 @@ end
 -- Required key: S3Configuration
 -- @return ElasticsearchDestinationConfiguration structure as a key-value pair table
 function M.ElasticsearchDestinationConfiguration(args)
-	assert(args, "You must provdide an argument table when creating ElasticsearchDestinationConfiguration")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ElasticsearchDestinationConfiguration")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["S3Configuration"] = args["S3Configuration"],
 		["IndexName"] = args["IndexName"],
 		["RetryOptions"] = args["RetryOptions"],
@@ -998,8 +1279,13 @@ function M.ElasticsearchDestinationConfiguration(args)
 		["IndexRotationPeriod"] = args["IndexRotationPeriod"],
 		["ProcessingConfiguration"] = args["ProcessingConfiguration"],
 	}
-	asserts.AssertElasticsearchDestinationConfiguration(t)
-	return t
+	asserts.AssertElasticsearchDestinationConfiguration(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateDeliveryStreamOutput = { ["DeliveryStreamARN"] = true, nil }
@@ -1020,12 +1306,23 @@ end
 -- * DeliveryStreamARN [DeliveryStreamARN] <p>The ARN of the delivery stream.</p>
 -- @return CreateDeliveryStreamOutput structure as a key-value pair table
 function M.CreateDeliveryStreamOutput(args)
-	assert(args, "You must provdide an argument table when creating CreateDeliveryStreamOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateDeliveryStreamOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DeliveryStreamARN"] = args["DeliveryStreamARN"],
 	}
-	asserts.AssertCreateDeliveryStreamOutput(t)
-	return t
+	asserts.AssertCreateDeliveryStreamOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.PutRecordOutput = { ["RecordId"] = true, nil }
@@ -1048,12 +1345,23 @@ end
 -- Required key: RecordId
 -- @return PutRecordOutput structure as a key-value pair table
 function M.PutRecordOutput(args)
-	assert(args, "You must provdide an argument table when creating PutRecordOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating PutRecordOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["RecordId"] = args["RecordId"],
 	}
-	asserts.AssertPutRecordOutput(t)
-	return t
+	asserts.AssertPutRecordOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ExtendedS3DestinationDescription = { ["RoleARN"] = true, ["Prefix"] = true, ["BufferingHints"] = true, ["EncryptionConfiguration"] = true, ["CompressionFormat"] = true, ["S3BackupMode"] = true, ["CloudWatchLoggingOptions"] = true, ["BucketARN"] = true, ["ProcessingConfiguration"] = true, ["S3BackupDescription"] = true, nil }
@@ -1102,8 +1410,14 @@ end
 -- Required key: EncryptionConfiguration
 -- @return ExtendedS3DestinationDescription structure as a key-value pair table
 function M.ExtendedS3DestinationDescription(args)
-	assert(args, "You must provdide an argument table when creating ExtendedS3DestinationDescription")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ExtendedS3DestinationDescription")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["RoleARN"] = args["RoleARN"],
 		["Prefix"] = args["Prefix"],
 		["BufferingHints"] = args["BufferingHints"],
@@ -1115,8 +1429,13 @@ function M.ExtendedS3DestinationDescription(args)
 		["ProcessingConfiguration"] = args["ProcessingConfiguration"],
 		["S3BackupDescription"] = args["S3BackupDescription"],
 	}
-	asserts.AssertExtendedS3DestinationDescription(t)
-	return t
+	asserts.AssertExtendedS3DestinationDescription(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.RedshiftDestinationConfiguration = { ["Username"] = true, ["S3Configuration"] = true, ["S3BackupConfiguration"] = true, ["RetryOptions"] = true, ["RoleARN"] = true, ["ClusterJDBCURL"] = true, ["CopyCommand"] = true, ["CloudWatchLoggingOptions"] = true, ["Password"] = true, ["ProcessingConfiguration"] = true, ["S3BackupMode"] = true, nil }
@@ -1169,8 +1488,14 @@ end
 -- Required key: S3Configuration
 -- @return RedshiftDestinationConfiguration structure as a key-value pair table
 function M.RedshiftDestinationConfiguration(args)
-	assert(args, "You must provdide an argument table when creating RedshiftDestinationConfiguration")
-	local t = { 
+	assert(args, "You must provide an argument table when creating RedshiftDestinationConfiguration")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Username"] = args["Username"],
 		["S3Configuration"] = args["S3Configuration"],
 		["S3BackupConfiguration"] = args["S3BackupConfiguration"],
@@ -1183,8 +1508,13 @@ function M.RedshiftDestinationConfiguration(args)
 		["ProcessingConfiguration"] = args["ProcessingConfiguration"],
 		["S3BackupMode"] = args["S3BackupMode"],
 	}
-	asserts.AssertRedshiftDestinationConfiguration(t)
-	return t
+	asserts.AssertRedshiftDestinationConfiguration(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ResourceNotFoundException = { ["message"] = true, nil }
@@ -1205,12 +1535,23 @@ end
 -- * message [ErrorMessage] <p>A message that provides information about the error.</p>
 -- @return ResourceNotFoundException structure as a key-value pair table
 function M.ResourceNotFoundException(args)
-	assert(args, "You must provdide an argument table when creating ResourceNotFoundException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ResourceNotFoundException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertResourceNotFoundException(t)
-	return t
+	asserts.AssertResourceNotFoundException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.PutRecordBatchInput = { ["Records"] = true, ["DeliveryStreamName"] = true, nil }
@@ -1237,13 +1578,24 @@ end
 -- Required key: Records
 -- @return PutRecordBatchInput structure as a key-value pair table
 function M.PutRecordBatchInput(args)
-	assert(args, "You must provdide an argument table when creating PutRecordBatchInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating PutRecordBatchInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Records"] = args["Records"],
 		["DeliveryStreamName"] = args["DeliveryStreamName"],
 	}
-	asserts.AssertPutRecordBatchInput(t)
-	return t
+	asserts.AssertPutRecordBatchInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeDeliveryStreamOutput = { ["DeliveryStreamDescription"] = true, nil }
@@ -1266,12 +1618,23 @@ end
 -- Required key: DeliveryStreamDescription
 -- @return DescribeDeliveryStreamOutput structure as a key-value pair table
 function M.DescribeDeliveryStreamOutput(args)
-	assert(args, "You must provdide an argument table when creating DescribeDeliveryStreamOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeDeliveryStreamOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DeliveryStreamDescription"] = args["DeliveryStreamDescription"],
 	}
-	asserts.AssertDescribeDeliveryStreamOutput(t)
-	return t
+	asserts.AssertDescribeDeliveryStreamOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ElasticsearchRetryOptions = { ["DurationInSeconds"] = true, nil }
@@ -1292,12 +1655,23 @@ end
 -- * DurationInSeconds [ElasticsearchRetryDurationInSeconds] <p>After an initial failure to deliver to Amazon ES, the total amount of time during which Firehose re-attempts delivery (including the first attempt). After this time has elapsed, the failed documents are written to Amazon S3. Default value is 300 seconds (5 minutes). A value of 0 (zero) results in no retries.</p>
 -- @return ElasticsearchRetryOptions structure as a key-value pair table
 function M.ElasticsearchRetryOptions(args)
-	assert(args, "You must provdide an argument table when creating ElasticsearchRetryOptions")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ElasticsearchRetryOptions")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DurationInSeconds"] = args["DurationInSeconds"],
 	}
-	asserts.AssertElasticsearchRetryOptions(t)
-	return t
+	asserts.AssertElasticsearchRetryOptions(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.S3DestinationConfiguration = { ["RoleARN"] = true, ["Prefix"] = true, ["BufferingHints"] = true, ["EncryptionConfiguration"] = true, ["CompressionFormat"] = true, ["CloudWatchLoggingOptions"] = true, ["BucketARN"] = true, nil }
@@ -1334,8 +1708,14 @@ end
 -- Required key: BucketARN
 -- @return S3DestinationConfiguration structure as a key-value pair table
 function M.S3DestinationConfiguration(args)
-	assert(args, "You must provdide an argument table when creating S3DestinationConfiguration")
-	local t = { 
+	assert(args, "You must provide an argument table when creating S3DestinationConfiguration")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["RoleARN"] = args["RoleARN"],
 		["Prefix"] = args["Prefix"],
 		["BufferingHints"] = args["BufferingHints"],
@@ -1344,8 +1724,13 @@ function M.S3DestinationConfiguration(args)
 		["CloudWatchLoggingOptions"] = args["CloudWatchLoggingOptions"],
 		["BucketARN"] = args["BucketARN"],
 	}
-	asserts.AssertS3DestinationConfiguration(t)
-	return t
+	asserts.AssertS3DestinationConfiguration(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.EncryptionConfiguration = { ["KMSEncryptionConfig"] = true, ["NoEncryptionConfig"] = true, nil }
@@ -1368,13 +1753,24 @@ end
 -- * NoEncryptionConfig [NoEncryptionConfig] <p>Specifically override existing encryption information to ensure no encryption is used.</p>
 -- @return EncryptionConfiguration structure as a key-value pair table
 function M.EncryptionConfiguration(args)
-	assert(args, "You must provdide an argument table when creating EncryptionConfiguration")
-	local t = { 
+	assert(args, "You must provide an argument table when creating EncryptionConfiguration")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["KMSEncryptionConfig"] = args["KMSEncryptionConfig"],
 		["NoEncryptionConfig"] = args["NoEncryptionConfig"],
 	}
-	asserts.AssertEncryptionConfiguration(t)
-	return t
+	asserts.AssertEncryptionConfiguration(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ElasticsearchBufferingHints = { ["IntervalInSeconds"] = true, ["SizeInMBs"] = true, nil }
@@ -1397,13 +1793,24 @@ end
 -- * SizeInMBs [ElasticsearchBufferingSizeInMBs] <p>Buffer incoming data to the specified size, in MBs, before delivering it to the destination. The default value is 5.</p> <p>We recommend setting this parameter to a value greater than the amount of data you typically ingest into the delivery stream in 10 seconds. For example, if you typically ingest data at 1 MB/sec, the value should be 10 MB or higher.</p>
 -- @return ElasticsearchBufferingHints structure as a key-value pair table
 function M.ElasticsearchBufferingHints(args)
-	assert(args, "You must provdide an argument table when creating ElasticsearchBufferingHints")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ElasticsearchBufferingHints")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["IntervalInSeconds"] = args["IntervalInSeconds"],
 		["SizeInMBs"] = args["SizeInMBs"],
 	}
-	asserts.AssertElasticsearchBufferingHints(t)
-	return t
+	asserts.AssertElasticsearchBufferingHints(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CloudWatchLoggingOptions = { ["Enabled"] = true, ["LogStreamName"] = true, ["LogGroupName"] = true, nil }
@@ -1428,14 +1835,25 @@ end
 -- * LogGroupName [LogGroupName] <p>The CloudWatch group name for logging. This value is required if CloudWatch logging is enabled.</p>
 -- @return CloudWatchLoggingOptions structure as a key-value pair table
 function M.CloudWatchLoggingOptions(args)
-	assert(args, "You must provdide an argument table when creating CloudWatchLoggingOptions")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CloudWatchLoggingOptions")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Enabled"] = args["Enabled"],
 		["LogStreamName"] = args["LogStreamName"],
 		["LogGroupName"] = args["LogGroupName"],
 	}
-	asserts.AssertCloudWatchLoggingOptions(t)
-	return t
+	asserts.AssertCloudWatchLoggingOptions(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ElasticsearchDestinationUpdate = { ["IndexName"] = true, ["S3Update"] = true, ["RetryOptions"] = true, ["RoleARN"] = true, ["BufferingHints"] = true, ["TypeName"] = true, ["CloudWatchLoggingOptions"] = true, ["DomainARN"] = true, ["IndexRotationPeriod"] = true, ["ProcessingConfiguration"] = true, nil }
@@ -1474,8 +1892,14 @@ end
 -- * ProcessingConfiguration [ProcessingConfiguration] <p>The data processing configuration.</p>
 -- @return ElasticsearchDestinationUpdate structure as a key-value pair table
 function M.ElasticsearchDestinationUpdate(args)
-	assert(args, "You must provdide an argument table when creating ElasticsearchDestinationUpdate")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ElasticsearchDestinationUpdate")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["IndexName"] = args["IndexName"],
 		["S3Update"] = args["S3Update"],
 		["RetryOptions"] = args["RetryOptions"],
@@ -1487,8 +1911,13 @@ function M.ElasticsearchDestinationUpdate(args)
 		["IndexRotationPeriod"] = args["IndexRotationPeriod"],
 		["ProcessingConfiguration"] = args["ProcessingConfiguration"],
 	}
-	asserts.AssertElasticsearchDestinationUpdate(t)
-	return t
+	asserts.AssertElasticsearchDestinationUpdate(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DestinationDescription = { ["ElasticsearchDestinationDescription"] = true, ["DestinationId"] = true, ["ExtendedS3DestinationDescription"] = true, ["S3DestinationDescription"] = true, ["RedshiftDestinationDescription"] = true, nil }
@@ -1519,16 +1948,27 @@ end
 -- Required key: DestinationId
 -- @return DestinationDescription structure as a key-value pair table
 function M.DestinationDescription(args)
-	assert(args, "You must provdide an argument table when creating DestinationDescription")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DestinationDescription")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ElasticsearchDestinationDescription"] = args["ElasticsearchDestinationDescription"],
 		["DestinationId"] = args["DestinationId"],
 		["ExtendedS3DestinationDescription"] = args["ExtendedS3DestinationDescription"],
 		["S3DestinationDescription"] = args["S3DestinationDescription"],
 		["RedshiftDestinationDescription"] = args["RedshiftDestinationDescription"],
 	}
-	asserts.AssertDestinationDescription(t)
-	return t
+	asserts.AssertDestinationDescription(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CopyCommand = { ["DataTableName"] = true, ["CopyOptions"] = true, ["DataTableColumns"] = true, nil }
@@ -1555,14 +1995,25 @@ end
 -- Required key: DataTableName
 -- @return CopyCommand structure as a key-value pair table
 function M.CopyCommand(args)
-	assert(args, "You must provdide an argument table when creating CopyCommand")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CopyCommand")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DataTableName"] = args["DataTableName"],
 		["CopyOptions"] = args["CopyOptions"],
 		["DataTableColumns"] = args["DataTableColumns"],
 	}
-	asserts.AssertCopyCommand(t)
-	return t
+	asserts.AssertCopyCommand(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.S3DestinationUpdate = { ["RoleARN"] = true, ["Prefix"] = true, ["BufferingHints"] = true, ["EncryptionConfiguration"] = true, ["CompressionFormat"] = true, ["CloudWatchLoggingOptions"] = true, ["BucketARN"] = true, nil }
@@ -1595,8 +2046,14 @@ end
 -- * BucketARN [BucketARN] <p>The ARN of the S3 bucket.</p>
 -- @return S3DestinationUpdate structure as a key-value pair table
 function M.S3DestinationUpdate(args)
-	assert(args, "You must provdide an argument table when creating S3DestinationUpdate")
-	local t = { 
+	assert(args, "You must provide an argument table when creating S3DestinationUpdate")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["RoleARN"] = args["RoleARN"],
 		["Prefix"] = args["Prefix"],
 		["BufferingHints"] = args["BufferingHints"],
@@ -1605,8 +2062,13 @@ function M.S3DestinationUpdate(args)
 		["CloudWatchLoggingOptions"] = args["CloudWatchLoggingOptions"],
 		["BucketARN"] = args["BucketARN"],
 	}
-	asserts.AssertS3DestinationUpdate(t)
-	return t
+	asserts.AssertS3DestinationUpdate(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidArgumentException = { ["message"] = true, nil }
@@ -1627,12 +2089,23 @@ end
 -- * message [ErrorMessage] <p>A message that provides information about the error.</p>
 -- @return InvalidArgumentException structure as a key-value pair table
 function M.InvalidArgumentException(args)
-	assert(args, "You must provdide an argument table when creating InvalidArgumentException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidArgumentException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertInvalidArgumentException(t)
-	return t
+	asserts.AssertInvalidArgumentException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListDeliveryStreamsInput = { ["Limit"] = true, ["ExclusiveStartDeliveryStreamName"] = true, nil }
@@ -1655,13 +2128,24 @@ end
 -- * ExclusiveStartDeliveryStreamName [DeliveryStreamName] <p>The name of the delivery stream to start the list with.</p>
 -- @return ListDeliveryStreamsInput structure as a key-value pair table
 function M.ListDeliveryStreamsInput(args)
-	assert(args, "You must provdide an argument table when creating ListDeliveryStreamsInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListDeliveryStreamsInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Limit"] = args["Limit"],
 		["ExclusiveStartDeliveryStreamName"] = args["ExclusiveStartDeliveryStreamName"],
 	}
-	asserts.AssertListDeliveryStreamsInput(t)
-	return t
+	asserts.AssertListDeliveryStreamsInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ExtendedS3DestinationConfiguration = { ["RoleARN"] = true, ["Prefix"] = true, ["BufferingHints"] = true, ["EncryptionConfiguration"] = true, ["CompressionFormat"] = true, ["S3BackupMode"] = true, ["CloudWatchLoggingOptions"] = true, ["S3BackupConfiguration"] = true, ["BucketARN"] = true, ["ProcessingConfiguration"] = true, nil }
@@ -1704,8 +2188,14 @@ end
 -- Required key: BucketARN
 -- @return ExtendedS3DestinationConfiguration structure as a key-value pair table
 function M.ExtendedS3DestinationConfiguration(args)
-	assert(args, "You must provdide an argument table when creating ExtendedS3DestinationConfiguration")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ExtendedS3DestinationConfiguration")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["RoleARN"] = args["RoleARN"],
 		["Prefix"] = args["Prefix"],
 		["BufferingHints"] = args["BufferingHints"],
@@ -1717,8 +2207,13 @@ function M.ExtendedS3DestinationConfiguration(args)
 		["BucketARN"] = args["BucketARN"],
 		["ProcessingConfiguration"] = args["ProcessingConfiguration"],
 	}
-	asserts.AssertExtendedS3DestinationConfiguration(t)
-	return t
+	asserts.AssertExtendedS3DestinationConfiguration(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeDeliveryStreamInput = { ["ExclusiveStartDestinationId"] = true, ["DeliveryStreamName"] = true, ["Limit"] = true, nil }
@@ -1745,14 +2240,25 @@ end
 -- Required key: DeliveryStreamName
 -- @return DescribeDeliveryStreamInput structure as a key-value pair table
 function M.DescribeDeliveryStreamInput(args)
-	assert(args, "You must provdide an argument table when creating DescribeDeliveryStreamInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeDeliveryStreamInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ExclusiveStartDestinationId"] = args["ExclusiveStartDestinationId"],
 		["DeliveryStreamName"] = args["DeliveryStreamName"],
 		["Limit"] = args["Limit"],
 	}
-	asserts.AssertDescribeDeliveryStreamInput(t)
-	return t
+	asserts.AssertDescribeDeliveryStreamInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ProcessingConfiguration = { ["Enabled"] = true, ["Processors"] = true, nil }
@@ -1775,13 +2281,24 @@ end
 -- * Processors [ProcessorList] <p>The data processors.</p>
 -- @return ProcessingConfiguration structure as a key-value pair table
 function M.ProcessingConfiguration(args)
-	assert(args, "You must provdide an argument table when creating ProcessingConfiguration")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ProcessingConfiguration")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Enabled"] = args["Enabled"],
 		["Processors"] = args["Processors"],
 	}
-	asserts.AssertProcessingConfiguration(t)
-	return t
+	asserts.AssertProcessingConfiguration(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 function asserts.AssertDataTableName(str)
@@ -2453,8 +2970,11 @@ function M.CreateDeliveryStreamAsync(CreateDeliveryStreamInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "Firehose_20150804.CreateDeliveryStream",
 	}
+	for header,value in pairs(CreateDeliveryStreamInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateDeliveryStreamInput, headers, settings, cb)
 	else
@@ -2485,8 +3005,11 @@ function M.DescribeDeliveryStreamAsync(DescribeDeliveryStreamInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "Firehose_20150804.DescribeDeliveryStream",
 	}
+	for header,value in pairs(DescribeDeliveryStreamInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeDeliveryStreamInput, headers, settings, cb)
 	else
@@ -2517,8 +3040,11 @@ function M.UpdateDestinationAsync(UpdateDestinationInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "Firehose_20150804.UpdateDestination",
 	}
+	for header,value in pairs(UpdateDestinationInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateDestinationInput, headers, settings, cb)
 	else
@@ -2549,8 +3075,11 @@ function M.DeleteDeliveryStreamAsync(DeleteDeliveryStreamInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "Firehose_20150804.DeleteDeliveryStream",
 	}
+	for header,value in pairs(DeleteDeliveryStreamInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteDeliveryStreamInput, headers, settings, cb)
 	else
@@ -2581,8 +3110,11 @@ function M.ListDeliveryStreamsAsync(ListDeliveryStreamsInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "Firehose_20150804.ListDeliveryStreams",
 	}
+	for header,value in pairs(ListDeliveryStreamsInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ListDeliveryStreamsInput, headers, settings, cb)
 	else
@@ -2613,8 +3145,11 @@ function M.PutRecordBatchAsync(PutRecordBatchInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "Firehose_20150804.PutRecordBatch",
 	}
+	for header,value in pairs(PutRecordBatchInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", PutRecordBatchInput, headers, settings, cb)
 	else
@@ -2645,8 +3180,11 @@ function M.PutRecordAsync(PutRecordInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "Firehose_20150804.PutRecord",
 	}
+	for header,value in pairs(PutRecordInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", PutRecordInput, headers, settings, cb)
 	else

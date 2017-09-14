@@ -45,13 +45,24 @@ end
 -- Required key: SubnetIds
 -- @return DirectoryVpcSettings structure as a key-value pair table
 function M.DirectoryVpcSettings(args)
-	assert(args, "You must provdide an argument table when creating DirectoryVpcSettings")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DirectoryVpcSettings")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["SubnetIds"] = args["SubnetIds"],
 		["VpcId"] = args["VpcId"],
 	}
-	asserts.AssertDirectoryVpcSettings(t)
-	return t
+	asserts.AssertDirectoryVpcSettings(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UnsupportedOperationException = { ["Message"] = true, ["RequestId"] = true, nil }
@@ -74,13 +85,24 @@ end
 -- * RequestId [RequestId] 
 -- @return UnsupportedOperationException structure as a key-value pair table
 function M.UnsupportedOperationException(args)
-	assert(args, "You must provdide an argument table when creating UnsupportedOperationException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UnsupportedOperationException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Message"] = args["Message"],
 		["RequestId"] = args["RequestId"],
 	}
-	asserts.AssertUnsupportedOperationException(t)
-	return t
+	asserts.AssertUnsupportedOperationException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DisableSsoRequest = { ["UserName"] = true, ["DirectoryId"] = true, ["Password"] = true, nil }
@@ -107,14 +129,25 @@ end
 -- Required key: DirectoryId
 -- @return DisableSsoRequest structure as a key-value pair table
 function M.DisableSsoRequest(args)
-	assert(args, "You must provdide an argument table when creating DisableSsoRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DisableSsoRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["UserName"] = args["UserName"],
 		["DirectoryId"] = args["DirectoryId"],
 		["Password"] = args["Password"],
 	}
-	asserts.AssertDisableSsoRequest(t)
-	return t
+	asserts.AssertDisableSsoRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteTrustRequest = { ["TrustId"] = true, ["DeleteAssociatedConditionalForwarder"] = true, nil }
@@ -139,13 +172,24 @@ end
 -- Required key: TrustId
 -- @return DeleteTrustRequest structure as a key-value pair table
 function M.DeleteTrustRequest(args)
-	assert(args, "You must provdide an argument table when creating DeleteTrustRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteTrustRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["TrustId"] = args["TrustId"],
 		["DeleteAssociatedConditionalForwarder"] = args["DeleteAssociatedConditionalForwarder"],
 	}
-	asserts.AssertDeleteTrustRequest(t)
-	return t
+	asserts.AssertDeleteTrustRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeTrustsResult = { ["NextToken"] = true, ["Trusts"] = true, nil }
@@ -168,13 +212,24 @@ end
 -- * Trusts [Trusts] <p>The list of Trust objects that were retrieved.</p> <p>It is possible that this list contains less than the number of items specified in the <i>Limit</i> member of the request. This occurs if there are less than the requested number of items left to retrieve, or if the limitations of the operation have been exceeded.</p>
 -- @return DescribeTrustsResult structure as a key-value pair table
 function M.DescribeTrustsResult(args)
-	assert(args, "You must provdide an argument table when creating DescribeTrustsResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeTrustsResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NextToken"] = args["NextToken"],
 		["Trusts"] = args["Trusts"],
 	}
-	asserts.AssertDescribeTrustsResult(t)
-	return t
+	asserts.AssertDescribeTrustsResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteDirectoryResult = { ["DirectoryId"] = true, nil }
@@ -195,12 +250,23 @@ end
 -- * DirectoryId [DirectoryId] <p>The directory identifier.</p>
 -- @return DeleteDirectoryResult structure as a key-value pair table
 function M.DeleteDirectoryResult(args)
-	assert(args, "You must provdide an argument table when creating DeleteDirectoryResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteDirectoryResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DirectoryId"] = args["DirectoryId"],
 	}
-	asserts.AssertDeleteDirectoryResult(t)
-	return t
+	asserts.AssertDeleteDirectoryResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DirectoryUnavailableException = { ["Message"] = true, ["RequestId"] = true, nil }
@@ -223,13 +289,24 @@ end
 -- * RequestId [RequestId] 
 -- @return DirectoryUnavailableException structure as a key-value pair table
 function M.DirectoryUnavailableException(args)
-	assert(args, "You must provdide an argument table when creating DirectoryUnavailableException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DirectoryUnavailableException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Message"] = args["Message"],
 		["RequestId"] = args["RequestId"],
 	}
-	asserts.AssertDirectoryUnavailableException(t)
-	return t
+	asserts.AssertDirectoryUnavailableException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidParameterException = { ["Message"] = true, ["RequestId"] = true, nil }
@@ -252,13 +329,24 @@ end
 -- * RequestId [RequestId] 
 -- @return InvalidParameterException structure as a key-value pair table
 function M.InvalidParameterException(args)
-	assert(args, "You must provdide an argument table when creating InvalidParameterException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidParameterException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Message"] = args["Message"],
 		["RequestId"] = args["RequestId"],
 	}
-	asserts.AssertInvalidParameterException(t)
-	return t
+	asserts.AssertInvalidParameterException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateAliasResult = { ["DirectoryId"] = true, ["Alias"] = true, nil }
@@ -281,13 +369,24 @@ end
 -- * Alias [AliasName] <p>The alias for the directory.</p>
 -- @return CreateAliasResult structure as a key-value pair table
 function M.CreateAliasResult(args)
-	assert(args, "You must provdide an argument table when creating CreateAliasResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateAliasResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DirectoryId"] = args["DirectoryId"],
 		["Alias"] = args["Alias"],
 	}
-	asserts.AssertCreateAliasResult(t)
-	return t
+	asserts.AssertCreateAliasResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateDirectoryResult = { ["DirectoryId"] = true, nil }
@@ -308,12 +407,23 @@ end
 -- * DirectoryId [DirectoryId] <p>The identifier of the directory that was created.</p>
 -- @return CreateDirectoryResult structure as a key-value pair table
 function M.CreateDirectoryResult(args)
-	assert(args, "You must provdide an argument table when creating CreateDirectoryResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateDirectoryResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DirectoryId"] = args["DirectoryId"],
 	}
-	asserts.AssertCreateDirectoryResult(t)
-	return t
+	asserts.AssertCreateDirectoryResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListIpRoutesRequest = { ["DirectoryId"] = true, ["NextToken"] = true, ["Limit"] = true, nil }
@@ -340,14 +450,25 @@ end
 -- Required key: DirectoryId
 -- @return ListIpRoutesRequest structure as a key-value pair table
 function M.ListIpRoutesRequest(args)
-	assert(args, "You must provdide an argument table when creating ListIpRoutesRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListIpRoutesRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DirectoryId"] = args["DirectoryId"],
 		["NextToken"] = args["NextToken"],
 		["Limit"] = args["Limit"],
 	}
-	asserts.AssertListIpRoutesRequest(t)
-	return t
+	asserts.AssertListIpRoutesRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetSnapshotLimitsResult = { ["SnapshotLimits"] = true, nil }
@@ -368,12 +489,23 @@ end
 -- * SnapshotLimits [SnapshotLimits] <p>A <a>SnapshotLimits</a> object that contains the manual snapshot limits for the specified directory.</p>
 -- @return GetSnapshotLimitsResult structure as a key-value pair table
 function M.GetSnapshotLimitsResult(args)
-	assert(args, "You must provdide an argument table when creating GetSnapshotLimitsResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetSnapshotLimitsResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["SnapshotLimits"] = args["SnapshotLimits"],
 	}
-	asserts.AssertGetSnapshotLimitsResult(t)
-	return t
+	asserts.AssertGetSnapshotLimitsResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DisableSsoResult = { nil }
@@ -392,11 +524,22 @@ end
 -- Valid keys:
 -- @return DisableSsoResult structure as a key-value pair table
 function M.DisableSsoResult(args)
-	assert(args, "You must provdide an argument table when creating DisableSsoResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DisableSsoResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertDisableSsoResult(t)
-	return t
+	asserts.AssertDisableSsoResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeSnapshotsRequest = { ["DirectoryId"] = true, ["NextToken"] = true, ["Limit"] = true, ["SnapshotIds"] = true, nil }
@@ -423,15 +566,26 @@ end
 -- * SnapshotIds [SnapshotIds] <p>A list of identifiers of the snapshots to obtain the information for. If this member is null or empty, all snapshots are returned using the <i>Limit</i> and <i>NextToken</i> members.</p>
 -- @return DescribeSnapshotsRequest structure as a key-value pair table
 function M.DescribeSnapshotsRequest(args)
-	assert(args, "You must provdide an argument table when creating DescribeSnapshotsRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeSnapshotsRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DirectoryId"] = args["DirectoryId"],
 		["NextToken"] = args["NextToken"],
 		["Limit"] = args["Limit"],
 		["SnapshotIds"] = args["SnapshotIds"],
 	}
-	asserts.AssertDescribeSnapshotsRequest(t)
-	return t
+	asserts.AssertDescribeSnapshotsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteSnapshotRequest = { ["SnapshotId"] = true, nil }
@@ -454,12 +608,23 @@ end
 -- Required key: SnapshotId
 -- @return DeleteSnapshotRequest structure as a key-value pair table
 function M.DeleteSnapshotRequest(args)
-	assert(args, "You must provdide an argument table when creating DeleteSnapshotRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteSnapshotRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["SnapshotId"] = args["SnapshotId"],
 	}
-	asserts.AssertDeleteSnapshotRequest(t)
-	return t
+	asserts.AssertDeleteSnapshotRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListTagsForResourceResult = { ["NextToken"] = true, ["Tags"] = true, nil }
@@ -482,13 +647,24 @@ end
 -- * Tags [Tags] <p>List of tags returned by the ListTagsForResource operation.</p>
 -- @return ListTagsForResourceResult structure as a key-value pair table
 function M.ListTagsForResourceResult(args)
-	assert(args, "You must provdide an argument table when creating ListTagsForResourceResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListTagsForResourceResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NextToken"] = args["NextToken"],
 		["Tags"] = args["Tags"],
 	}
-	asserts.AssertListTagsForResourceResult(t)
-	return t
+	asserts.AssertListTagsForResourceResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteSnapshotResult = { ["SnapshotId"] = true, nil }
@@ -509,12 +685,23 @@ end
 -- * SnapshotId [SnapshotId] <p>The identifier of the directory snapshot that was deleted.</p>
 -- @return DeleteSnapshotResult structure as a key-value pair table
 function M.DeleteSnapshotResult(args)
-	assert(args, "You must provdide an argument table when creating DeleteSnapshotResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteSnapshotResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["SnapshotId"] = args["SnapshotId"],
 	}
-	asserts.AssertDeleteSnapshotResult(t)
-	return t
+	asserts.AssertDeleteSnapshotResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InsufficientPermissionsException = { ["Message"] = true, ["RequestId"] = true, nil }
@@ -537,13 +724,24 @@ end
 -- * RequestId [RequestId] 
 -- @return InsufficientPermissionsException structure as a key-value pair table
 function M.InsufficientPermissionsException(args)
-	assert(args, "You must provdide an argument table when creating InsufficientPermissionsException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InsufficientPermissionsException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Message"] = args["Message"],
 		["RequestId"] = args["RequestId"],
 	}
-	asserts.AssertInsufficientPermissionsException(t)
-	return t
+	asserts.AssertInsufficientPermissionsException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DirectoryDescription = { ["AccessUrl"] = true, ["DirectoryId"] = true, ["SsoEnabled"] = true, ["Name"] = true, ["RadiusStatus"] = true, ["DnsIpAddrs"] = true, ["VpcSettings"] = true, ["ConnectSettings"] = true, ["RadiusSettings"] = true, ["StageLastUpdatedDateTime"] = true, ["Alias"] = true, ["LaunchTime"] = true, ["StageReason"] = true, ["Description"] = true, ["ShortName"] = true, ["Stage"] = true, ["Type"] = true, ["Size"] = true, nil }
@@ -598,8 +796,14 @@ end
 -- * Size [DirectorySize] <p>The directory size.</p>
 -- @return DirectoryDescription structure as a key-value pair table
 function M.DirectoryDescription(args)
-	assert(args, "You must provdide an argument table when creating DirectoryDescription")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DirectoryDescription")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["AccessUrl"] = args["AccessUrl"],
 		["DirectoryId"] = args["DirectoryId"],
 		["SsoEnabled"] = args["SsoEnabled"],
@@ -619,8 +823,13 @@ function M.DirectoryDescription(args)
 		["Type"] = args["Type"],
 		["Size"] = args["Size"],
 	}
-	asserts.AssertDirectoryDescription(t)
-	return t
+	asserts.AssertDirectoryDescription(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.RegisterEventTopicRequest = { ["DirectoryId"] = true, ["TopicName"] = true, nil }
@@ -647,13 +856,24 @@ end
 -- Required key: TopicName
 -- @return RegisterEventTopicRequest structure as a key-value pair table
 function M.RegisterEventTopicRequest(args)
-	assert(args, "You must provdide an argument table when creating RegisterEventTopicRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating RegisterEventTopicRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DirectoryId"] = args["DirectoryId"],
 		["TopicName"] = args["TopicName"],
 	}
-	asserts.AssertRegisterEventTopicRequest(t)
-	return t
+	asserts.AssertRegisterEventTopicRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.IpRouteLimitExceededException = { ["Message"] = true, ["RequestId"] = true, nil }
@@ -676,13 +896,24 @@ end
 -- * RequestId [RequestId] 
 -- @return IpRouteLimitExceededException structure as a key-value pair table
 function M.IpRouteLimitExceededException(args)
-	assert(args, "You must provdide an argument table when creating IpRouteLimitExceededException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating IpRouteLimitExceededException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Message"] = args["Message"],
 		["RequestId"] = args["RequestId"],
 	}
-	asserts.AssertIpRouteLimitExceededException(t)
-	return t
+	asserts.AssertIpRouteLimitExceededException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Trust = { ["DirectoryId"] = true, ["StateLastUpdatedDateTime"] = true, ["LastUpdatedDateTime"] = true, ["CreatedDateTime"] = true, ["TrustStateReason"] = true, ["RemoteDomainName"] = true, ["TrustType"] = true, ["TrustId"] = true, ["TrustDirection"] = true, ["TrustState"] = true, nil }
@@ -721,8 +952,14 @@ end
 -- * TrustState [TrustState] <p>The trust relationship state.</p>
 -- @return Trust structure as a key-value pair table
 function M.Trust(args)
-	assert(args, "You must provdide an argument table when creating Trust")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Trust")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DirectoryId"] = args["DirectoryId"],
 		["StateLastUpdatedDateTime"] = args["StateLastUpdatedDateTime"],
 		["LastUpdatedDateTime"] = args["LastUpdatedDateTime"],
@@ -734,8 +971,13 @@ function M.Trust(args)
 		["TrustDirection"] = args["TrustDirection"],
 		["TrustState"] = args["TrustState"],
 	}
-	asserts.AssertTrust(t)
-	return t
+	asserts.AssertTrust(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeConditionalForwardersResult = { ["ConditionalForwarders"] = true, nil }
@@ -756,12 +998,23 @@ end
 -- * ConditionalForwarders [ConditionalForwarders] <p>The list of conditional forwarders that have been created.</p>
 -- @return DescribeConditionalForwardersResult structure as a key-value pair table
 function M.DescribeConditionalForwardersResult(args)
-	assert(args, "You must provdide an argument table when creating DescribeConditionalForwardersResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeConditionalForwardersResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ConditionalForwarders"] = args["ConditionalForwarders"],
 	}
-	asserts.AssertDescribeConditionalForwardersResult(t)
-	return t
+	asserts.AssertDescribeConditionalForwardersResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.RemoveTagsFromResourceResult = { nil }
@@ -780,11 +1033,22 @@ end
 -- Valid keys:
 -- @return RemoveTagsFromResourceResult structure as a key-value pair table
 function M.RemoveTagsFromResourceResult(args)
-	assert(args, "You must provdide an argument table when creating RemoveTagsFromResourceResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating RemoveTagsFromResourceResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertRemoveTagsFromResourceResult(t)
-	return t
+	asserts.AssertRemoveTagsFromResourceResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListSchemaExtensionsResult = { ["SchemaExtensionsInfo"] = true, ["NextToken"] = true, nil }
@@ -807,13 +1071,24 @@ end
 -- * NextToken [NextToken] <p>If not null, more results are available. Pass this value for the <code>NextToken</code> parameter in a subsequent call to <code>ListSchemaExtensions</code> to retrieve the next set of items.</p>
 -- @return ListSchemaExtensionsResult structure as a key-value pair table
 function M.ListSchemaExtensionsResult(args)
-	assert(args, "You must provdide an argument table when creating ListSchemaExtensionsResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListSchemaExtensionsResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["SchemaExtensionsInfo"] = args["SchemaExtensionsInfo"],
 		["NextToken"] = args["NextToken"],
 	}
-	asserts.AssertListSchemaExtensionsResult(t)
-	return t
+	asserts.AssertListSchemaExtensionsResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DirectoryLimitExceededException = { ["Message"] = true, ["RequestId"] = true, nil }
@@ -836,13 +1111,24 @@ end
 -- * RequestId [RequestId] 
 -- @return DirectoryLimitExceededException structure as a key-value pair table
 function M.DirectoryLimitExceededException(args)
-	assert(args, "You must provdide an argument table when creating DirectoryLimitExceededException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DirectoryLimitExceededException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Message"] = args["Message"],
 		["RequestId"] = args["RequestId"],
 	}
-	asserts.AssertDirectoryLimitExceededException(t)
-	return t
+	asserts.AssertDirectoryLimitExceededException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AddTagsToResourceRequest = { ["ResourceId"] = true, ["Tags"] = true, nil }
@@ -869,13 +1155,24 @@ end
 -- Required key: Tags
 -- @return AddTagsToResourceRequest structure as a key-value pair table
 function M.AddTagsToResourceRequest(args)
-	assert(args, "You must provdide an argument table when creating AddTagsToResourceRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AddTagsToResourceRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ResourceId"] = args["ResourceId"],
 		["Tags"] = args["Tags"],
 	}
-	asserts.AssertAddTagsToResourceRequest(t)
-	return t
+	asserts.AssertAddTagsToResourceRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidNextTokenException = { ["Message"] = true, ["RequestId"] = true, nil }
@@ -898,13 +1195,24 @@ end
 -- * RequestId [RequestId] 
 -- @return InvalidNextTokenException structure as a key-value pair table
 function M.InvalidNextTokenException(args)
-	assert(args, "You must provdide an argument table when creating InvalidNextTokenException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidNextTokenException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Message"] = args["Message"],
 		["RequestId"] = args["RequestId"],
 	}
-	asserts.AssertInvalidNextTokenException(t)
-	return t
+	asserts.AssertInvalidNextTokenException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.RemoveIpRoutesRequest = { ["DirectoryId"] = true, ["CidrIps"] = true, nil }
@@ -931,13 +1239,24 @@ end
 -- Required key: CidrIps
 -- @return RemoveIpRoutesRequest structure as a key-value pair table
 function M.RemoveIpRoutesRequest(args)
-	assert(args, "You must provdide an argument table when creating RemoveIpRoutesRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating RemoveIpRoutesRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DirectoryId"] = args["DirectoryId"],
 		["CidrIps"] = args["CidrIps"],
 	}
-	asserts.AssertRemoveIpRoutesRequest(t)
-	return t
+	asserts.AssertRemoveIpRoutesRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeConditionalForwardersRequest = { ["DirectoryId"] = true, ["RemoteDomainNames"] = true, nil }
@@ -962,13 +1281,24 @@ end
 -- Required key: DirectoryId
 -- @return DescribeConditionalForwardersRequest structure as a key-value pair table
 function M.DescribeConditionalForwardersRequest(args)
-	assert(args, "You must provdide an argument table when creating DescribeConditionalForwardersRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeConditionalForwardersRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DirectoryId"] = args["DirectoryId"],
 		["RemoteDomainNames"] = args["RemoteDomainNames"],
 	}
-	asserts.AssertDescribeConditionalForwardersRequest(t)
-	return t
+	asserts.AssertDescribeConditionalForwardersRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DirectoryConnectSettingsDescription = { ["CustomerUserName"] = true, ["VpcId"] = true, ["SubnetIds"] = true, ["SecurityGroupId"] = true, ["AvailabilityZones"] = true, ["ConnectIps"] = true, nil }
@@ -999,8 +1329,14 @@ end
 -- * ConnectIps [IpAddrs] <p>The IP addresses of the AD Connector servers.</p>
 -- @return DirectoryConnectSettingsDescription structure as a key-value pair table
 function M.DirectoryConnectSettingsDescription(args)
-	assert(args, "You must provdide an argument table when creating DirectoryConnectSettingsDescription")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DirectoryConnectSettingsDescription")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["CustomerUserName"] = args["CustomerUserName"],
 		["VpcId"] = args["VpcId"],
 		["SubnetIds"] = args["SubnetIds"],
@@ -1008,8 +1344,13 @@ function M.DirectoryConnectSettingsDescription(args)
 		["AvailabilityZones"] = args["AvailabilityZones"],
 		["ConnectIps"] = args["ConnectIps"],
 	}
-	asserts.AssertDirectoryConnectSettingsDescription(t)
-	return t
+	asserts.AssertDirectoryConnectSettingsDescription(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ConnectDirectoryRequest = { ["Name"] = true, ["ConnectSettings"] = true, ["Description"] = true, ["ShortName"] = true, ["Password"] = true, ["Size"] = true, nil }
@@ -1048,8 +1389,14 @@ end
 -- Required key: ConnectSettings
 -- @return ConnectDirectoryRequest structure as a key-value pair table
 function M.ConnectDirectoryRequest(args)
-	assert(args, "You must provdide an argument table when creating ConnectDirectoryRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ConnectDirectoryRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Name"] = args["Name"],
 		["ConnectSettings"] = args["ConnectSettings"],
 		["Description"] = args["Description"],
@@ -1057,8 +1404,13 @@ function M.ConnectDirectoryRequest(args)
 		["Password"] = args["Password"],
 		["Size"] = args["Size"],
 	}
-	asserts.AssertConnectDirectoryRequest(t)
-	return t
+	asserts.AssertConnectDirectoryRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.VerifyTrustRequest = { ["TrustId"] = true, nil }
@@ -1081,12 +1433,23 @@ end
 -- Required key: TrustId
 -- @return VerifyTrustRequest structure as a key-value pair table
 function M.VerifyTrustRequest(args)
-	assert(args, "You must provdide an argument table when creating VerifyTrustRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating VerifyTrustRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["TrustId"] = args["TrustId"],
 	}
-	asserts.AssertVerifyTrustRequest(t)
-	return t
+	asserts.AssertVerifyTrustRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Tag = { ["Value"] = true, ["Key"] = true, nil }
@@ -1113,13 +1476,24 @@ end
 -- Required key: Value
 -- @return Tag structure as a key-value pair table
 function M.Tag(args)
-	assert(args, "You must provdide an argument table when creating Tag")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Tag")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Value"] = args["Value"],
 		["Key"] = args["Key"],
 	}
-	asserts.AssertTag(t)
-	return t
+	asserts.AssertTag(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AddIpRoutesResult = { nil }
@@ -1138,11 +1512,22 @@ end
 -- Valid keys:
 -- @return AddIpRoutesResult structure as a key-value pair table
 function M.AddIpRoutesResult(args)
-	assert(args, "You must provdide an argument table when creating AddIpRoutesResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AddIpRoutesResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertAddIpRoutesResult(t)
-	return t
+	asserts.AssertAddIpRoutesResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateComputerRequest = { ["DirectoryId"] = true, ["ComputerName"] = true, ["Password"] = true, ["ComputerAttributes"] = true, ["OrganizationalUnitDistinguishedName"] = true, nil }
@@ -1177,16 +1562,27 @@ end
 -- Required key: Password
 -- @return CreateComputerRequest structure as a key-value pair table
 function M.CreateComputerRequest(args)
-	assert(args, "You must provdide an argument table when creating CreateComputerRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateComputerRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DirectoryId"] = args["DirectoryId"],
 		["ComputerName"] = args["ComputerName"],
 		["Password"] = args["Password"],
 		["ComputerAttributes"] = args["ComputerAttributes"],
 		["OrganizationalUnitDistinguishedName"] = args["OrganizationalUnitDistinguishedName"],
 	}
-	asserts.AssertCreateComputerRequest(t)
-	return t
+	asserts.AssertCreateComputerRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.EnableRadiusRequest = { ["DirectoryId"] = true, ["RadiusSettings"] = true, nil }
@@ -1213,13 +1609,24 @@ end
 -- Required key: RadiusSettings
 -- @return EnableRadiusRequest structure as a key-value pair table
 function M.EnableRadiusRequest(args)
-	assert(args, "You must provdide an argument table when creating EnableRadiusRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating EnableRadiusRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DirectoryId"] = args["DirectoryId"],
 		["RadiusSettings"] = args["RadiusSettings"],
 	}
-	asserts.AssertEnableRadiusRequest(t)
-	return t
+	asserts.AssertEnableRadiusRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DirectoryVpcSettingsDescription = { ["SubnetIds"] = true, ["VpcId"] = true, ["AvailabilityZones"] = true, ["SecurityGroupId"] = true, nil }
@@ -1246,15 +1653,26 @@ end
 -- * SecurityGroupId [SecurityGroupId] <p>The security group identifier for the directory. If the directory was created before 8/1/2014, this is the identifier of the directory members security group that was created when the directory was created. If the directory was created after this date, this value is null.</p>
 -- @return DirectoryVpcSettingsDescription structure as a key-value pair table
 function M.DirectoryVpcSettingsDescription(args)
-	assert(args, "You must provdide an argument table when creating DirectoryVpcSettingsDescription")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DirectoryVpcSettingsDescription")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["SubnetIds"] = args["SubnetIds"],
 		["VpcId"] = args["VpcId"],
 		["AvailabilityZones"] = args["AvailabilityZones"],
 		["SecurityGroupId"] = args["SecurityGroupId"],
 	}
-	asserts.AssertDirectoryVpcSettingsDescription(t)
-	return t
+	asserts.AssertDirectoryVpcSettingsDescription(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ClientException = { ["Message"] = true, ["RequestId"] = true, nil }
@@ -1277,13 +1695,24 @@ end
 -- * RequestId [RequestId] 
 -- @return ClientException structure as a key-value pair table
 function M.ClientException(args)
-	assert(args, "You must provdide an argument table when creating ClientException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ClientException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Message"] = args["Message"],
 		["RequestId"] = args["RequestId"],
 	}
-	asserts.AssertClientException(t)
-	return t
+	asserts.AssertClientException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateTrustResult = { ["TrustId"] = true, nil }
@@ -1304,12 +1733,23 @@ end
 -- * TrustId [TrustId] <p>A unique identifier for the trust relationship that was created.</p>
 -- @return CreateTrustResult structure as a key-value pair table
 function M.CreateTrustResult(args)
-	assert(args, "You must provdide an argument table when creating CreateTrustResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateTrustResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["TrustId"] = args["TrustId"],
 	}
-	asserts.AssertCreateTrustResult(t)
-	return t
+	asserts.AssertCreateTrustResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.SchemaExtensionInfo = { ["DirectoryId"] = true, ["Description"] = true, ["SchemaExtensionStatus"] = true, ["SchemaExtensionId"] = true, ["EndDateTime"] = true, ["StartDateTime"] = true, ["SchemaExtensionStatusReason"] = true, nil }
@@ -1342,8 +1782,14 @@ end
 -- * SchemaExtensionStatusReason [SchemaExtensionStatusReason] <p>The reason for the <code>SchemaExtensionStatus</code>.</p>
 -- @return SchemaExtensionInfo structure as a key-value pair table
 function M.SchemaExtensionInfo(args)
-	assert(args, "You must provdide an argument table when creating SchemaExtensionInfo")
-	local t = { 
+	assert(args, "You must provide an argument table when creating SchemaExtensionInfo")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DirectoryId"] = args["DirectoryId"],
 		["Description"] = args["Description"],
 		["SchemaExtensionStatus"] = args["SchemaExtensionStatus"],
@@ -1352,8 +1798,13 @@ function M.SchemaExtensionInfo(args)
 		["StartDateTime"] = args["StartDateTime"],
 		["SchemaExtensionStatusReason"] = args["SchemaExtensionStatusReason"],
 	}
-	asserts.AssertSchemaExtensionInfo(t)
-	return t
+	asserts.AssertSchemaExtensionInfo(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.RemoveIpRoutesResult = { nil }
@@ -1372,11 +1823,22 @@ end
 -- Valid keys:
 -- @return RemoveIpRoutesResult structure as a key-value pair table
 function M.RemoveIpRoutesResult(args)
-	assert(args, "You must provdide an argument table when creating RemoveIpRoutesResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating RemoveIpRoutesResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertRemoveIpRoutesResult(t)
-	return t
+	asserts.AssertRemoveIpRoutesResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListIpRoutesResult = { ["IpRoutesInfo"] = true, ["NextToken"] = true, nil }
@@ -1399,13 +1861,24 @@ end
 -- * NextToken [NextToken] <p>If not null, more results are available. Pass this value for the <i>NextToken</i> parameter in a subsequent call to <a>ListIpRoutes</a> to retrieve the next set of items.</p>
 -- @return ListIpRoutesResult structure as a key-value pair table
 function M.ListIpRoutesResult(args)
-	assert(args, "You must provdide an argument table when creating ListIpRoutesResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListIpRoutesResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["IpRoutesInfo"] = args["IpRoutesInfo"],
 		["NextToken"] = args["NextToken"],
 	}
-	asserts.AssertListIpRoutesResult(t)
-	return t
+	asserts.AssertListIpRoutesResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteConditionalForwarderRequest = { ["DirectoryId"] = true, ["RemoteDomainName"] = true, nil }
@@ -1432,13 +1905,24 @@ end
 -- Required key: RemoteDomainName
 -- @return DeleteConditionalForwarderRequest structure as a key-value pair table
 function M.DeleteConditionalForwarderRequest(args)
-	assert(args, "You must provdide an argument table when creating DeleteConditionalForwarderRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteConditionalForwarderRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DirectoryId"] = args["DirectoryId"],
 		["RemoteDomainName"] = args["RemoteDomainName"],
 	}
-	asserts.AssertDeleteConditionalForwarderRequest(t)
-	return t
+	asserts.AssertDeleteConditionalForwarderRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Computer = { ["ComputerName"] = true, ["ComputerAttributes"] = true, ["ComputerId"] = true, nil }
@@ -1463,14 +1947,25 @@ end
 -- * ComputerId [SID] <p>The identifier of the computer.</p>
 -- @return Computer structure as a key-value pair table
 function M.Computer(args)
-	assert(args, "You must provdide an argument table when creating Computer")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Computer")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ComputerName"] = args["ComputerName"],
 		["ComputerAttributes"] = args["ComputerAttributes"],
 		["ComputerId"] = args["ComputerId"],
 	}
-	asserts.AssertComputer(t)
-	return t
+	asserts.AssertComputer(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DirectoryConnectSettings = { ["CustomerDnsIps"] = true, ["CustomerUserName"] = true, ["SubnetIds"] = true, ["VpcId"] = true, nil }
@@ -1505,15 +2000,26 @@ end
 -- Required key: CustomerUserName
 -- @return DirectoryConnectSettings structure as a key-value pair table
 function M.DirectoryConnectSettings(args)
-	assert(args, "You must provdide an argument table when creating DirectoryConnectSettings")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DirectoryConnectSettings")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["CustomerDnsIps"] = args["CustomerDnsIps"],
 		["CustomerUserName"] = args["CustomerUserName"],
 		["SubnetIds"] = args["SubnetIds"],
 		["VpcId"] = args["VpcId"],
 	}
-	asserts.AssertDirectoryConnectSettings(t)
-	return t
+	asserts.AssertDirectoryConnectSettings(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListSchemaExtensionsRequest = { ["DirectoryId"] = true, ["NextToken"] = true, ["Limit"] = true, nil }
@@ -1540,14 +2046,25 @@ end
 -- Required key: DirectoryId
 -- @return ListSchemaExtensionsRequest structure as a key-value pair table
 function M.ListSchemaExtensionsRequest(args)
-	assert(args, "You must provdide an argument table when creating ListSchemaExtensionsRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListSchemaExtensionsRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DirectoryId"] = args["DirectoryId"],
 		["NextToken"] = args["NextToken"],
 		["Limit"] = args["Limit"],
 	}
-	asserts.AssertListSchemaExtensionsRequest(t)
-	return t
+	asserts.AssertListSchemaExtensionsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeEventTopicsResult = { ["EventTopics"] = true, nil }
@@ -1568,12 +2085,23 @@ end
 -- * EventTopics [EventTopics] <p>A list of SNS topic names that receive status messages from the specified Directory ID.</p>
 -- @return DescribeEventTopicsResult structure as a key-value pair table
 function M.DescribeEventTopicsResult(args)
-	assert(args, "You must provdide an argument table when creating DescribeEventTopicsResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeEventTopicsResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["EventTopics"] = args["EventTopics"],
 	}
-	asserts.AssertDescribeEventTopicsResult(t)
-	return t
+	asserts.AssertDescribeEventTopicsResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeregisterEventTopicRequest = { ["DirectoryId"] = true, ["TopicName"] = true, nil }
@@ -1600,13 +2128,24 @@ end
 -- Required key: TopicName
 -- @return DeregisterEventTopicRequest structure as a key-value pair table
 function M.DeregisterEventTopicRequest(args)
-	assert(args, "You must provdide an argument table when creating DeregisterEventTopicRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeregisterEventTopicRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DirectoryId"] = args["DirectoryId"],
 		["TopicName"] = args["TopicName"],
 	}
-	asserts.AssertDeregisterEventTopicRequest(t)
-	return t
+	asserts.AssertDeregisterEventTopicRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.VerifyTrustResult = { ["TrustId"] = true, nil }
@@ -1627,12 +2166,23 @@ end
 -- * TrustId [TrustId] <p>The unique Trust ID of the trust relationship that was verified.</p>
 -- @return VerifyTrustResult structure as a key-value pair table
 function M.VerifyTrustResult(args)
-	assert(args, "You must provdide an argument table when creating VerifyTrustResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating VerifyTrustResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["TrustId"] = args["TrustId"],
 	}
-	asserts.AssertVerifyTrustResult(t)
-	return t
+	asserts.AssertVerifyTrustResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateConditionalForwarderResult = { nil }
@@ -1651,11 +2201,22 @@ end
 -- Valid keys:
 -- @return CreateConditionalForwarderResult structure as a key-value pair table
 function M.CreateConditionalForwarderResult(args)
-	assert(args, "You must provdide an argument table when creating CreateConditionalForwarderResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateConditionalForwarderResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertCreateConditionalForwarderResult(t)
-	return t
+	asserts.AssertCreateConditionalForwarderResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeDirectoriesResult = { ["DirectoryDescriptions"] = true, ["NextToken"] = true, nil }
@@ -1678,13 +2239,24 @@ end
 -- * NextToken [NextToken] <p>If not null, more results are available. Pass this value for the <i>NextToken</i> parameter in a subsequent call to <a>DescribeDirectories</a> to retrieve the next set of items.</p>
 -- @return DescribeDirectoriesResult structure as a key-value pair table
 function M.DescribeDirectoriesResult(args)
-	assert(args, "You must provdide an argument table when creating DescribeDirectoriesResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeDirectoriesResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DirectoryDescriptions"] = args["DirectoryDescriptions"],
 		["NextToken"] = args["NextToken"],
 	}
-	asserts.AssertDescribeDirectoriesResult(t)
-	return t
+	asserts.AssertDescribeDirectoriesResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetSnapshotLimitsRequest = { ["DirectoryId"] = true, nil }
@@ -1707,12 +2279,23 @@ end
 -- Required key: DirectoryId
 -- @return GetSnapshotLimitsRequest structure as a key-value pair table
 function M.GetSnapshotLimitsRequest(args)
-	assert(args, "You must provdide an argument table when creating GetSnapshotLimitsRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetSnapshotLimitsRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DirectoryId"] = args["DirectoryId"],
 	}
-	asserts.AssertGetSnapshotLimitsRequest(t)
-	return t
+	asserts.AssertGetSnapshotLimitsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateMicrosoftADRequest = { ["ShortName"] = true, ["Password"] = true, ["Name"] = true, ["VpcSettings"] = true, ["Description"] = true, nil }
@@ -1747,16 +2330,27 @@ end
 -- Required key: VpcSettings
 -- @return CreateMicrosoftADRequest structure as a key-value pair table
 function M.CreateMicrosoftADRequest(args)
-	assert(args, "You must provdide an argument table when creating CreateMicrosoftADRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateMicrosoftADRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ShortName"] = args["ShortName"],
 		["Password"] = args["Password"],
 		["Name"] = args["Name"],
 		["VpcSettings"] = args["VpcSettings"],
 		["Description"] = args["Description"],
 	}
-	asserts.AssertCreateMicrosoftADRequest(t)
-	return t
+	asserts.AssertCreateMicrosoftADRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeEventTopicsRequest = { ["DirectoryId"] = true, ["TopicNames"] = true, nil }
@@ -1779,13 +2373,24 @@ end
 -- * TopicNames [TopicNames] <p>A list of SNS topic names for which to obtain the information. If this member is null, all associations for the specified Directory ID are returned.</p> <p>An empty list results in an <code>InvalidParameterException</code> being thrown.</p>
 -- @return DescribeEventTopicsRequest structure as a key-value pair table
 function M.DescribeEventTopicsRequest(args)
-	assert(args, "You must provdide an argument table when creating DescribeEventTopicsRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeEventTopicsRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DirectoryId"] = args["DirectoryId"],
 		["TopicNames"] = args["TopicNames"],
 	}
-	asserts.AssertDescribeEventTopicsRequest(t)
-	return t
+	asserts.AssertDescribeEventTopicsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeTrustsRequest = { ["Limit"] = true, ["DirectoryId"] = true, ["NextToken"] = true, ["TrustIds"] = true, nil }
@@ -1812,15 +2417,26 @@ end
 -- * TrustIds [TrustIds] <p>A list of identifiers of the trust relationships for which to obtain the information. If this member is null, all trust relationships that belong to the current account are returned.</p> <p>An empty list results in an <code>InvalidParameterException</code> being thrown.</p>
 -- @return DescribeTrustsRequest structure as a key-value pair table
 function M.DescribeTrustsRequest(args)
-	assert(args, "You must provdide an argument table when creating DescribeTrustsRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeTrustsRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Limit"] = args["Limit"],
 		["DirectoryId"] = args["DirectoryId"],
 		["NextToken"] = args["NextToken"],
 		["TrustIds"] = args["TrustIds"],
 	}
-	asserts.AssertDescribeTrustsRequest(t)
-	return t
+	asserts.AssertDescribeTrustsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListTagsForResourceRequest = { ["ResourceId"] = true, ["NextToken"] = true, ["Limit"] = true, nil }
@@ -1847,14 +2463,25 @@ end
 -- Required key: ResourceId
 -- @return ListTagsForResourceRequest structure as a key-value pair table
 function M.ListTagsForResourceRequest(args)
-	assert(args, "You must provdide an argument table when creating ListTagsForResourceRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListTagsForResourceRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ResourceId"] = args["ResourceId"],
 		["NextToken"] = args["NextToken"],
 		["Limit"] = args["Limit"],
 	}
-	asserts.AssertListTagsForResourceRequest(t)
-	return t
+	asserts.AssertListTagsForResourceRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdateRadiusResult = { nil }
@@ -1873,11 +2500,22 @@ end
 -- Valid keys:
 -- @return UpdateRadiusResult structure as a key-value pair table
 function M.UpdateRadiusResult(args)
-	assert(args, "You must provdide an argument table when creating UpdateRadiusResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateRadiusResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertUpdateRadiusResult(t)
-	return t
+	asserts.AssertUpdateRadiusResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DisableRadiusRequest = { ["DirectoryId"] = true, nil }
@@ -1900,12 +2538,23 @@ end
 -- Required key: DirectoryId
 -- @return DisableRadiusRequest structure as a key-value pair table
 function M.DisableRadiusRequest(args)
-	assert(args, "You must provdide an argument table when creating DisableRadiusRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DisableRadiusRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DirectoryId"] = args["DirectoryId"],
 	}
-	asserts.AssertDisableRadiusRequest(t)
-	return t
+	asserts.AssertDisableRadiusRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AuthenticationFailedException = { ["Message"] = true, ["RequestId"] = true, nil }
@@ -1928,13 +2577,24 @@ end
 -- * RequestId [RequestId] <p>The identifier of the request that caused the exception.</p>
 -- @return AuthenticationFailedException structure as a key-value pair table
 function M.AuthenticationFailedException(args)
-	assert(args, "You must provdide an argument table when creating AuthenticationFailedException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AuthenticationFailedException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Message"] = args["Message"],
 		["RequestId"] = args["RequestId"],
 	}
-	asserts.AssertAuthenticationFailedException(t)
-	return t
+	asserts.AssertAuthenticationFailedException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ServiceException = { ["Message"] = true, ["RequestId"] = true, nil }
@@ -1957,13 +2617,24 @@ end
 -- * RequestId [RequestId] 
 -- @return ServiceException structure as a key-value pair table
 function M.ServiceException(args)
-	assert(args, "You must provdide an argument table when creating ServiceException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ServiceException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Message"] = args["Message"],
 		["RequestId"] = args["RequestId"],
 	}
-	asserts.AssertServiceException(t)
-	return t
+	asserts.AssertServiceException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateAliasRequest = { ["DirectoryId"] = true, ["Alias"] = true, nil }
@@ -1990,13 +2661,24 @@ end
 -- Required key: Alias
 -- @return CreateAliasRequest structure as a key-value pair table
 function M.CreateAliasRequest(args)
-	assert(args, "You must provdide an argument table when creating CreateAliasRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateAliasRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DirectoryId"] = args["DirectoryId"],
 		["Alias"] = args["Alias"],
 	}
-	asserts.AssertCreateAliasRequest(t)
-	return t
+	asserts.AssertCreateAliasRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ConditionalForwarder = { ["RemoteDomainName"] = true, ["DnsIpAddrs"] = true, ["ReplicationScope"] = true, nil }
@@ -2021,14 +2703,25 @@ end
 -- * ReplicationScope [ReplicationScope] <p>The replication scope of the conditional forwarder. The only allowed value is <code>Domain</code>, which will replicate the conditional forwarder to all of the domain controllers for your AWS directory.</p>
 -- @return ConditionalForwarder structure as a key-value pair table
 function M.ConditionalForwarder(args)
-	assert(args, "You must provdide an argument table when creating ConditionalForwarder")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ConditionalForwarder")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["RemoteDomainName"] = args["RemoteDomainName"],
 		["DnsIpAddrs"] = args["DnsIpAddrs"],
 		["ReplicationScope"] = args["ReplicationScope"],
 	}
-	asserts.AssertConditionalForwarder(t)
-	return t
+	asserts.AssertConditionalForwarder(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AddIpRoutesRequest = { ["DirectoryId"] = true, ["UpdateSecurityGroupForDirectoryControllers"] = true, ["IpRoutes"] = true, nil }
@@ -2057,14 +2750,25 @@ end
 -- Required key: IpRoutes
 -- @return AddIpRoutesRequest structure as a key-value pair table
 function M.AddIpRoutesRequest(args)
-	assert(args, "You must provdide an argument table when creating AddIpRoutesRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AddIpRoutesRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DirectoryId"] = args["DirectoryId"],
 		["UpdateSecurityGroupForDirectoryControllers"] = args["UpdateSecurityGroupForDirectoryControllers"],
 		["IpRoutes"] = args["IpRoutes"],
 	}
-	asserts.AssertAddIpRoutesRequest(t)
-	return t
+	asserts.AssertAddIpRoutesRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.RegisterEventTopicResult = { nil }
@@ -2083,11 +2787,22 @@ end
 -- Valid keys:
 -- @return RegisterEventTopicResult structure as a key-value pair table
 function M.RegisterEventTopicResult(args)
-	assert(args, "You must provdide an argument table when creating RegisterEventTopicResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating RegisterEventTopicResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertRegisterEventTopicResult(t)
-	return t
+	asserts.AssertRegisterEventTopicResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.RemoveTagsFromResourceRequest = { ["ResourceId"] = true, ["TagKeys"] = true, nil }
@@ -2114,13 +2829,24 @@ end
 -- Required key: TagKeys
 -- @return RemoveTagsFromResourceRequest structure as a key-value pair table
 function M.RemoveTagsFromResourceRequest(args)
-	assert(args, "You must provdide an argument table when creating RemoveTagsFromResourceRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating RemoveTagsFromResourceRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ResourceId"] = args["ResourceId"],
 		["TagKeys"] = args["TagKeys"],
 	}
-	asserts.AssertRemoveTagsFromResourceRequest(t)
-	return t
+	asserts.AssertRemoveTagsFromResourceRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateTrustRequest = { ["TrustPassword"] = true, ["DirectoryId"] = true, ["RemoteDomainName"] = true, ["ConditionalForwarderIpAddrs"] = true, ["TrustType"] = true, ["TrustDirection"] = true, nil }
@@ -2159,8 +2885,14 @@ end
 -- Required key: TrustDirection
 -- @return CreateTrustRequest structure as a key-value pair table
 function M.CreateTrustRequest(args)
-	assert(args, "You must provdide an argument table when creating CreateTrustRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateTrustRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["TrustPassword"] = args["TrustPassword"],
 		["DirectoryId"] = args["DirectoryId"],
 		["RemoteDomainName"] = args["RemoteDomainName"],
@@ -2168,8 +2900,13 @@ function M.CreateTrustRequest(args)
 		["TrustType"] = args["TrustType"],
 		["TrustDirection"] = args["TrustDirection"],
 	}
-	asserts.AssertCreateTrustRequest(t)
-	return t
+	asserts.AssertCreateTrustRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CancelSchemaExtensionRequest = { ["DirectoryId"] = true, ["SchemaExtensionId"] = true, nil }
@@ -2196,13 +2933,24 @@ end
 -- Required key: SchemaExtensionId
 -- @return CancelSchemaExtensionRequest structure as a key-value pair table
 function M.CancelSchemaExtensionRequest(args)
-	assert(args, "You must provdide an argument table when creating CancelSchemaExtensionRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CancelSchemaExtensionRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DirectoryId"] = args["DirectoryId"],
 		["SchemaExtensionId"] = args["SchemaExtensionId"],
 	}
-	asserts.AssertCancelSchemaExtensionRequest(t)
-	return t
+	asserts.AssertCancelSchemaExtensionRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdateRadiusRequest = { ["DirectoryId"] = true, ["RadiusSettings"] = true, nil }
@@ -2229,13 +2977,24 @@ end
 -- Required key: RadiusSettings
 -- @return UpdateRadiusRequest structure as a key-value pair table
 function M.UpdateRadiusRequest(args)
-	assert(args, "You must provdide an argument table when creating UpdateRadiusRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateRadiusRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DirectoryId"] = args["DirectoryId"],
 		["RadiusSettings"] = args["RadiusSettings"],
 	}
-	asserts.AssertUpdateRadiusRequest(t)
-	return t
+	asserts.AssertUpdateRadiusRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Snapshot = { ["Status"] = true, ["DirectoryId"] = true, ["Name"] = true, ["StartTime"] = true, ["SnapshotId"] = true, ["Type"] = true, nil }
@@ -2266,8 +3025,14 @@ end
 -- * Type [SnapshotType] <p>The snapshot type.</p>
 -- @return Snapshot structure as a key-value pair table
 function M.Snapshot(args)
-	assert(args, "You must provdide an argument table when creating Snapshot")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Snapshot")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Status"] = args["Status"],
 		["DirectoryId"] = args["DirectoryId"],
 		["Name"] = args["Name"],
@@ -2275,8 +3040,13 @@ function M.Snapshot(args)
 		["SnapshotId"] = args["SnapshotId"],
 		["Type"] = args["Type"],
 	}
-	asserts.AssertSnapshot(t)
-	return t
+	asserts.AssertSnapshot(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateMicrosoftADResult = { ["DirectoryId"] = true, nil }
@@ -2297,12 +3067,23 @@ end
 -- * DirectoryId [DirectoryId] <p>The identifier of the directory that was created.</p>
 -- @return CreateMicrosoftADResult structure as a key-value pair table
 function M.CreateMicrosoftADResult(args)
-	assert(args, "You must provdide an argument table when creating CreateMicrosoftADResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateMicrosoftADResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DirectoryId"] = args["DirectoryId"],
 	}
-	asserts.AssertCreateMicrosoftADResult(t)
-	return t
+	asserts.AssertCreateMicrosoftADResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.EnableSsoResult = { nil }
@@ -2321,11 +3102,22 @@ end
 -- Valid keys:
 -- @return EnableSsoResult structure as a key-value pair table
 function M.EnableSsoResult(args)
-	assert(args, "You must provdide an argument table when creating EnableSsoResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating EnableSsoResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertEnableSsoResult(t)
-	return t
+	asserts.AssertEnableSsoResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateDirectoryRequest = { ["Name"] = true, ["VpcSettings"] = true, ["Description"] = true, ["ShortName"] = true, ["Password"] = true, ["Size"] = true, nil }
@@ -2362,8 +3154,14 @@ end
 -- Required key: Size
 -- @return CreateDirectoryRequest structure as a key-value pair table
 function M.CreateDirectoryRequest(args)
-	assert(args, "You must provdide an argument table when creating CreateDirectoryRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateDirectoryRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Name"] = args["Name"],
 		["VpcSettings"] = args["VpcSettings"],
 		["Description"] = args["Description"],
@@ -2371,8 +3169,13 @@ function M.CreateDirectoryRequest(args)
 		["Password"] = args["Password"],
 		["Size"] = args["Size"],
 	}
-	asserts.AssertCreateDirectoryRequest(t)
-	return t
+	asserts.AssertCreateDirectoryRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.RestoreFromSnapshotRequest = { ["SnapshotId"] = true, nil }
@@ -2395,12 +3198,23 @@ end
 -- Required key: SnapshotId
 -- @return RestoreFromSnapshotRequest structure as a key-value pair table
 function M.RestoreFromSnapshotRequest(args)
-	assert(args, "You must provdide an argument table when creating RestoreFromSnapshotRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating RestoreFromSnapshotRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["SnapshotId"] = args["SnapshotId"],
 	}
-	asserts.AssertRestoreFromSnapshotRequest(t)
-	return t
+	asserts.AssertRestoreFromSnapshotRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Attribute = { ["Name"] = true, ["Value"] = true, nil }
@@ -2423,13 +3237,24 @@ end
 -- * Value [AttributeValue] <p>The value of the attribute.</p>
 -- @return Attribute structure as a key-value pair table
 function M.Attribute(args)
-	assert(args, "You must provdide an argument table when creating Attribute")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Attribute")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Name"] = args["Name"],
 		["Value"] = args["Value"],
 	}
-	asserts.AssertAttribute(t)
-	return t
+	asserts.AssertAttribute(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeSnapshotsResult = { ["NextToken"] = true, ["Snapshots"] = true, nil }
@@ -2452,13 +3277,24 @@ end
 -- * Snapshots [Snapshots] <p>The list of <a>Snapshot</a> objects that were retrieved.</p> <p>It is possible that this list contains less than the number of items specified in the <i>Limit</i> member of the request. This occurs if there are less than the requested number of items left to retrieve, or if the limitations of the operation have been exceeded.</p>
 -- @return DescribeSnapshotsResult structure as a key-value pair table
 function M.DescribeSnapshotsResult(args)
-	assert(args, "You must provdide an argument table when creating DescribeSnapshotsResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeSnapshotsResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NextToken"] = args["NextToken"],
 		["Snapshots"] = args["Snapshots"],
 	}
-	asserts.AssertDescribeSnapshotsResult(t)
-	return t
+	asserts.AssertDescribeSnapshotsResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetDirectoryLimitsRequest = { nil }
@@ -2477,11 +3313,22 @@ end
 -- Valid keys:
 -- @return GetDirectoryLimitsRequest structure as a key-value pair table
 function M.GetDirectoryLimitsRequest(args)
-	assert(args, "You must provdide an argument table when creating GetDirectoryLimitsRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetDirectoryLimitsRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertGetDirectoryLimitsRequest(t)
-	return t
+	asserts.AssertGetDirectoryLimitsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateSnapshotRequest = { ["DirectoryId"] = true, ["Name"] = true, nil }
@@ -2506,13 +3353,24 @@ end
 -- Required key: DirectoryId
 -- @return CreateSnapshotRequest structure as a key-value pair table
 function M.CreateSnapshotRequest(args)
-	assert(args, "You must provdide an argument table when creating CreateSnapshotRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateSnapshotRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DirectoryId"] = args["DirectoryId"],
 		["Name"] = args["Name"],
 	}
-	asserts.AssertCreateSnapshotRequest(t)
-	return t
+	asserts.AssertCreateSnapshotRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeDirectoriesRequest = { ["DirectoryIds"] = true, ["NextToken"] = true, ["Limit"] = true, nil }
@@ -2537,14 +3395,25 @@ end
 -- * Limit [Limit] <p>The maximum number of items to return. If this value is zero, the maximum number of items is specified by the limitations of the operation.</p>
 -- @return DescribeDirectoriesRequest structure as a key-value pair table
 function M.DescribeDirectoriesRequest(args)
-	assert(args, "You must provdide an argument table when creating DescribeDirectoriesRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeDirectoriesRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DirectoryIds"] = args["DirectoryIds"],
 		["NextToken"] = args["NextToken"],
 		["Limit"] = args["Limit"],
 	}
-	asserts.AssertDescribeDirectoriesRequest(t)
-	return t
+	asserts.AssertDescribeDirectoriesRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateSnapshotResult = { ["SnapshotId"] = true, nil }
@@ -2565,12 +3434,23 @@ end
 -- * SnapshotId [SnapshotId] <p>The identifier of the snapshot that was created.</p>
 -- @return CreateSnapshotResult structure as a key-value pair table
 function M.CreateSnapshotResult(args)
-	assert(args, "You must provdide an argument table when creating CreateSnapshotResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateSnapshotResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["SnapshotId"] = args["SnapshotId"],
 	}
-	asserts.AssertCreateSnapshotResult(t)
-	return t
+	asserts.AssertCreateSnapshotResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CancelSchemaExtensionResult = { nil }
@@ -2589,11 +3469,22 @@ end
 -- Valid keys:
 -- @return CancelSchemaExtensionResult structure as a key-value pair table
 function M.CancelSchemaExtensionResult(args)
-	assert(args, "You must provdide an argument table when creating CancelSchemaExtensionResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CancelSchemaExtensionResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertCancelSchemaExtensionResult(t)
-	return t
+	asserts.AssertCancelSchemaExtensionResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdateConditionalForwarderRequest = { ["DirectoryId"] = true, ["RemoteDomainName"] = true, ["DnsIpAddrs"] = true, nil }
@@ -2624,14 +3515,25 @@ end
 -- Required key: DnsIpAddrs
 -- @return UpdateConditionalForwarderRequest structure as a key-value pair table
 function M.UpdateConditionalForwarderRequest(args)
-	assert(args, "You must provdide an argument table when creating UpdateConditionalForwarderRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateConditionalForwarderRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DirectoryId"] = args["DirectoryId"],
 		["RemoteDomainName"] = args["RemoteDomainName"],
 		["DnsIpAddrs"] = args["DnsIpAddrs"],
 	}
-	asserts.AssertUpdateConditionalForwarderRequest(t)
-	return t
+	asserts.AssertUpdateConditionalForwarderRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateConditionalForwarderRequest = { ["DirectoryId"] = true, ["RemoteDomainName"] = true, ["DnsIpAddrs"] = true, nil }
@@ -2662,14 +3564,25 @@ end
 -- Required key: DnsIpAddrs
 -- @return CreateConditionalForwarderRequest structure as a key-value pair table
 function M.CreateConditionalForwarderRequest(args)
-	assert(args, "You must provdide an argument table when creating CreateConditionalForwarderRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateConditionalForwarderRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DirectoryId"] = args["DirectoryId"],
 		["RemoteDomainName"] = args["RemoteDomainName"],
 		["DnsIpAddrs"] = args["DnsIpAddrs"],
 	}
-	asserts.AssertCreateConditionalForwarderRequest(t)
-	return t
+	asserts.AssertCreateConditionalForwarderRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AddTagsToResourceResult = { nil }
@@ -2688,11 +3601,22 @@ end
 -- Valid keys:
 -- @return AddTagsToResourceResult structure as a key-value pair table
 function M.AddTagsToResourceResult(args)
-	assert(args, "You must provdide an argument table when creating AddTagsToResourceResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AddTagsToResourceResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertAddTagsToResourceResult(t)
-	return t
+	asserts.AssertAddTagsToResourceResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeregisterEventTopicResult = { nil }
@@ -2711,11 +3635,22 @@ end
 -- Valid keys:
 -- @return DeregisterEventTopicResult structure as a key-value pair table
 function M.DeregisterEventTopicResult(args)
-	assert(args, "You must provdide an argument table when creating DeregisterEventTopicResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeregisterEventTopicResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertDeregisterEventTopicResult(t)
-	return t
+	asserts.AssertDeregisterEventTopicResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteConditionalForwarderResult = { nil }
@@ -2734,11 +3669,22 @@ end
 -- Valid keys:
 -- @return DeleteConditionalForwarderResult structure as a key-value pair table
 function M.DeleteConditionalForwarderResult(args)
-	assert(args, "You must provdide an argument table when creating DeleteConditionalForwarderResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteConditionalForwarderResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertDeleteConditionalForwarderResult(t)
-	return t
+	asserts.AssertDeleteConditionalForwarderResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ConnectDirectoryResult = { ["DirectoryId"] = true, nil }
@@ -2759,12 +3705,23 @@ end
 -- * DirectoryId [DirectoryId] <p>The identifier of the new directory.</p>
 -- @return ConnectDirectoryResult structure as a key-value pair table
 function M.ConnectDirectoryResult(args)
-	assert(args, "You must provdide an argument table when creating ConnectDirectoryResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ConnectDirectoryResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DirectoryId"] = args["DirectoryId"],
 	}
-	asserts.AssertConnectDirectoryResult(t)
-	return t
+	asserts.AssertConnectDirectoryResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.StartSchemaExtensionResult = { ["SchemaExtensionId"] = true, nil }
@@ -2785,12 +3742,23 @@ end
 -- * SchemaExtensionId [SchemaExtensionId] <p>The identifier of the schema extension that will be applied.</p>
 -- @return StartSchemaExtensionResult structure as a key-value pair table
 function M.StartSchemaExtensionResult(args)
-	assert(args, "You must provdide an argument table when creating StartSchemaExtensionResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating StartSchemaExtensionResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["SchemaExtensionId"] = args["SchemaExtensionId"],
 	}
-	asserts.AssertStartSchemaExtensionResult(t)
-	return t
+	asserts.AssertStartSchemaExtensionResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.EntityDoesNotExistException = { ["Message"] = true, ["RequestId"] = true, nil }
@@ -2813,13 +3781,24 @@ end
 -- * RequestId [RequestId] 
 -- @return EntityDoesNotExistException structure as a key-value pair table
 function M.EntityDoesNotExistException(args)
-	assert(args, "You must provdide an argument table when creating EntityDoesNotExistException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating EntityDoesNotExistException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Message"] = args["Message"],
 		["RequestId"] = args["RequestId"],
 	}
-	asserts.AssertEntityDoesNotExistException(t)
-	return t
+	asserts.AssertEntityDoesNotExistException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.RadiusSettings = { ["DisplayLabel"] = true, ["UseSameUsername"] = true, ["RadiusTimeout"] = true, ["AuthenticationProtocol"] = true, ["RadiusPort"] = true, ["RadiusRetries"] = true, ["RadiusServers"] = true, ["SharedSecret"] = true, nil }
@@ -2854,8 +3833,14 @@ end
 -- * SharedSecret [RadiusSharedSecret] <p>Not currently used.</p>
 -- @return RadiusSettings structure as a key-value pair table
 function M.RadiusSettings(args)
-	assert(args, "You must provdide an argument table when creating RadiusSettings")
-	local t = { 
+	assert(args, "You must provide an argument table when creating RadiusSettings")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DisplayLabel"] = args["DisplayLabel"],
 		["UseSameUsername"] = args["UseSameUsername"],
 		["RadiusTimeout"] = args["RadiusTimeout"],
@@ -2865,8 +3850,13 @@ function M.RadiusSettings(args)
 		["RadiusServers"] = args["RadiusServers"],
 		["SharedSecret"] = args["SharedSecret"],
 	}
-	asserts.AssertRadiusSettings(t)
-	return t
+	asserts.AssertRadiusSettings(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateComputerResult = { ["Computer"] = true, nil }
@@ -2887,12 +3877,23 @@ end
 -- * Computer [Computer] <p>A <a>Computer</a> object that represents the computer account.</p>
 -- @return CreateComputerResult structure as a key-value pair table
 function M.CreateComputerResult(args)
-	assert(args, "You must provdide an argument table when creating CreateComputerResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateComputerResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Computer"] = args["Computer"],
 	}
-	asserts.AssertCreateComputerResult(t)
-	return t
+	asserts.AssertCreateComputerResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.EnableSsoRequest = { ["UserName"] = true, ["DirectoryId"] = true, ["Password"] = true, nil }
@@ -2919,14 +3920,25 @@ end
 -- Required key: DirectoryId
 -- @return EnableSsoRequest structure as a key-value pair table
 function M.EnableSsoRequest(args)
-	assert(args, "You must provdide an argument table when creating EnableSsoRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating EnableSsoRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["UserName"] = args["UserName"],
 		["DirectoryId"] = args["DirectoryId"],
 		["Password"] = args["Password"],
 	}
-	asserts.AssertEnableSsoRequest(t)
-	return t
+	asserts.AssertEnableSsoRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.EnableRadiusResult = { nil }
@@ -2945,11 +3957,22 @@ end
 -- Valid keys:
 -- @return EnableRadiusResult structure as a key-value pair table
 function M.EnableRadiusResult(args)
-	assert(args, "You must provdide an argument table when creating EnableRadiusResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating EnableRadiusResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertEnableRadiusResult(t)
-	return t
+	asserts.AssertEnableRadiusResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.EventTopic = { ["CreatedDateTime"] = true, ["DirectoryId"] = true, ["TopicName"] = true, ["TopicArn"] = true, ["Status"] = true, nil }
@@ -2978,16 +4001,27 @@ end
 -- * Status [TopicStatus] <p>The topic registration status.</p>
 -- @return EventTopic structure as a key-value pair table
 function M.EventTopic(args)
-	assert(args, "You must provdide an argument table when creating EventTopic")
-	local t = { 
+	assert(args, "You must provide an argument table when creating EventTopic")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["CreatedDateTime"] = args["CreatedDateTime"],
 		["DirectoryId"] = args["DirectoryId"],
 		["TopicName"] = args["TopicName"],
 		["TopicArn"] = args["TopicArn"],
 		["Status"] = args["Status"],
 	}
-	asserts.AssertEventTopic(t)
-	return t
+	asserts.AssertEventTopic(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteDirectoryRequest = { ["DirectoryId"] = true, nil }
@@ -3010,12 +4044,23 @@ end
 -- Required key: DirectoryId
 -- @return DeleteDirectoryRequest structure as a key-value pair table
 function M.DeleteDirectoryRequest(args)
-	assert(args, "You must provdide an argument table when creating DeleteDirectoryRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteDirectoryRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DirectoryId"] = args["DirectoryId"],
 	}
-	asserts.AssertDeleteDirectoryRequest(t)
-	return t
+	asserts.AssertDeleteDirectoryRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.IpRouteInfo = { ["DirectoryId"] = true, ["IpRouteStatusReason"] = true, ["Description"] = true, ["AddedDateTime"] = true, ["CidrIp"] = true, ["IpRouteStatusMsg"] = true, nil }
@@ -3046,8 +4091,14 @@ end
 -- * IpRouteStatusMsg [IpRouteStatusMsg] <p>The status of the IP address block.</p>
 -- @return IpRouteInfo structure as a key-value pair table
 function M.IpRouteInfo(args)
-	assert(args, "You must provdide an argument table when creating IpRouteInfo")
-	local t = { 
+	assert(args, "You must provide an argument table when creating IpRouteInfo")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DirectoryId"] = args["DirectoryId"],
 		["IpRouteStatusReason"] = args["IpRouteStatusReason"],
 		["Description"] = args["Description"],
@@ -3055,8 +4106,13 @@ function M.IpRouteInfo(args)
 		["CidrIp"] = args["CidrIp"],
 		["IpRouteStatusMsg"] = args["IpRouteStatusMsg"],
 	}
-	asserts.AssertIpRouteInfo(t)
-	return t
+	asserts.AssertIpRouteInfo(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetDirectoryLimitsResult = { ["DirectoryLimits"] = true, nil }
@@ -3077,12 +4133,23 @@ end
 -- * DirectoryLimits [DirectoryLimits] <p>A <a>DirectoryLimits</a> object that contains the directory limits for the current region.</p>
 -- @return GetDirectoryLimitsResult structure as a key-value pair table
 function M.GetDirectoryLimitsResult(args)
-	assert(args, "You must provdide an argument table when creating GetDirectoryLimitsResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetDirectoryLimitsResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DirectoryLimits"] = args["DirectoryLimits"],
 	}
-	asserts.AssertGetDirectoryLimitsResult(t)
-	return t
+	asserts.AssertGetDirectoryLimitsResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.SnapshotLimitExceededException = { ["Message"] = true, ["RequestId"] = true, nil }
@@ -3105,13 +4172,24 @@ end
 -- * RequestId [RequestId] 
 -- @return SnapshotLimitExceededException structure as a key-value pair table
 function M.SnapshotLimitExceededException(args)
-	assert(args, "You must provdide an argument table when creating SnapshotLimitExceededException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating SnapshotLimitExceededException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Message"] = args["Message"],
 		["RequestId"] = args["RequestId"],
 	}
-	asserts.AssertSnapshotLimitExceededException(t)
-	return t
+	asserts.AssertSnapshotLimitExceededException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.SnapshotLimits = { ["ManualSnapshotsCurrentCount"] = true, ["ManualSnapshotsLimit"] = true, ["ManualSnapshotsLimitReached"] = true, nil }
@@ -3136,14 +4214,25 @@ end
 -- * ManualSnapshotsLimitReached [ManualSnapshotsLimitReached] <p>Indicates if the manual snapshot limit has been reached.</p>
 -- @return SnapshotLimits structure as a key-value pair table
 function M.SnapshotLimits(args)
-	assert(args, "You must provdide an argument table when creating SnapshotLimits")
-	local t = { 
+	assert(args, "You must provide an argument table when creating SnapshotLimits")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ManualSnapshotsCurrentCount"] = args["ManualSnapshotsCurrentCount"],
 		["ManualSnapshotsLimit"] = args["ManualSnapshotsLimit"],
 		["ManualSnapshotsLimitReached"] = args["ManualSnapshotsLimitReached"],
 	}
-	asserts.AssertSnapshotLimits(t)
-	return t
+	asserts.AssertSnapshotLimits(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.IpRoute = { ["Description"] = true, ["CidrIp"] = true, nil }
@@ -3166,13 +4255,24 @@ end
 -- * CidrIp [CidrIp] <p>IP address block using CIDR format, for example 10.0.0.0/24. This is often the address block of the DNS server used for your on-premises domain. For a single IP address use a CIDR address block with /32. For example 10.0.0.0/32.</p>
 -- @return IpRoute structure as a key-value pair table
 function M.IpRoute(args)
-	assert(args, "You must provdide an argument table when creating IpRoute")
-	local t = { 
+	assert(args, "You must provide an argument table when creating IpRoute")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Description"] = args["Description"],
 		["CidrIp"] = args["CidrIp"],
 	}
-	asserts.AssertIpRoute(t)
-	return t
+	asserts.AssertIpRoute(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DirectoryLimits = { ["CloudOnlyMicrosoftADCurrentCount"] = true, ["ConnectedDirectoriesLimitReached"] = true, ["ConnectedDirectoriesLimit"] = true, ["CloudOnlyDirectoriesLimit"] = true, ["CloudOnlyMicrosoftADLimit"] = true, ["ConnectedDirectoriesCurrentCount"] = true, ["CloudOnlyMicrosoftADLimitReached"] = true, ["CloudOnlyDirectoriesCurrentCount"] = true, ["CloudOnlyDirectoriesLimitReached"] = true, nil }
@@ -3209,8 +4309,14 @@ end
 -- * CloudOnlyDirectoriesLimitReached [CloudOnlyDirectoriesLimitReached] <p>Indicates if the cloud directory limit has been reached.</p>
 -- @return DirectoryLimits structure as a key-value pair table
 function M.DirectoryLimits(args)
-	assert(args, "You must provdide an argument table when creating DirectoryLimits")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DirectoryLimits")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["CloudOnlyMicrosoftADCurrentCount"] = args["CloudOnlyMicrosoftADCurrentCount"],
 		["ConnectedDirectoriesLimitReached"] = args["ConnectedDirectoriesLimitReached"],
 		["ConnectedDirectoriesLimit"] = args["ConnectedDirectoriesLimit"],
@@ -3221,8 +4327,13 @@ function M.DirectoryLimits(args)
 		["CloudOnlyDirectoriesCurrentCount"] = args["CloudOnlyDirectoriesCurrentCount"],
 		["CloudOnlyDirectoriesLimitReached"] = args["CloudOnlyDirectoriesLimitReached"],
 	}
-	asserts.AssertDirectoryLimits(t)
-	return t
+	asserts.AssertDirectoryLimits(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteTrustResult = { ["TrustId"] = true, nil }
@@ -3243,12 +4354,23 @@ end
 -- * TrustId [TrustId] <p>The Trust ID of the trust relationship that was deleted.</p>
 -- @return DeleteTrustResult structure as a key-value pair table
 function M.DeleteTrustResult(args)
-	assert(args, "You must provdide an argument table when creating DeleteTrustResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteTrustResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["TrustId"] = args["TrustId"],
 	}
-	asserts.AssertDeleteTrustResult(t)
-	return t
+	asserts.AssertDeleteTrustResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdateConditionalForwarderResult = { nil }
@@ -3267,11 +4389,22 @@ end
 -- Valid keys:
 -- @return UpdateConditionalForwarderResult structure as a key-value pair table
 function M.UpdateConditionalForwarderResult(args)
-	assert(args, "You must provdide an argument table when creating UpdateConditionalForwarderResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateConditionalForwarderResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertUpdateConditionalForwarderResult(t)
-	return t
+	asserts.AssertUpdateConditionalForwarderResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DisableRadiusResult = { nil }
@@ -3290,11 +4423,22 @@ end
 -- Valid keys:
 -- @return DisableRadiusResult structure as a key-value pair table
 function M.DisableRadiusResult(args)
-	assert(args, "You must provdide an argument table when creating DisableRadiusResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DisableRadiusResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertDisableRadiusResult(t)
-	return t
+	asserts.AssertDisableRadiusResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.StartSchemaExtensionRequest = { ["CreateSnapshotBeforeSchemaExtension"] = true, ["DirectoryId"] = true, ["LdifContent"] = true, ["Description"] = true, nil }
@@ -3329,15 +4473,26 @@ end
 -- Required key: Description
 -- @return StartSchemaExtensionRequest structure as a key-value pair table
 function M.StartSchemaExtensionRequest(args)
-	assert(args, "You must provdide an argument table when creating StartSchemaExtensionRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating StartSchemaExtensionRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["CreateSnapshotBeforeSchemaExtension"] = args["CreateSnapshotBeforeSchemaExtension"],
 		["DirectoryId"] = args["DirectoryId"],
 		["LdifContent"] = args["LdifContent"],
 		["Description"] = args["Description"],
 	}
-	asserts.AssertStartSchemaExtensionRequest(t)
-	return t
+	asserts.AssertStartSchemaExtensionRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.EntityAlreadyExistsException = { ["Message"] = true, ["RequestId"] = true, nil }
@@ -3360,13 +4515,24 @@ end
 -- * RequestId [RequestId] 
 -- @return EntityAlreadyExistsException structure as a key-value pair table
 function M.EntityAlreadyExistsException(args)
-	assert(args, "You must provdide an argument table when creating EntityAlreadyExistsException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating EntityAlreadyExistsException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Message"] = args["Message"],
 		["RequestId"] = args["RequestId"],
 	}
-	asserts.AssertEntityAlreadyExistsException(t)
-	return t
+	asserts.AssertEntityAlreadyExistsException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.RestoreFromSnapshotResult = { nil }
@@ -3385,11 +4551,22 @@ end
 -- Valid keys:
 -- @return RestoreFromSnapshotResult structure as a key-value pair table
 function M.RestoreFromSnapshotResult(args)
-	assert(args, "You must provdide an argument table when creating RestoreFromSnapshotResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating RestoreFromSnapshotResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertRestoreFromSnapshotResult(t)
-	return t
+	asserts.AssertRestoreFromSnapshotResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.TagLimitExceededException = { ["Message"] = true, ["RequestId"] = true, nil }
@@ -3412,13 +4589,24 @@ end
 -- * RequestId [RequestId] 
 -- @return TagLimitExceededException structure as a key-value pair table
 function M.TagLimitExceededException(args)
-	assert(args, "You must provdide an argument table when creating TagLimitExceededException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating TagLimitExceededException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Message"] = args["Message"],
 		["RequestId"] = args["RequestId"],
 	}
-	asserts.AssertTagLimitExceededException(t)
-	return t
+	asserts.AssertTagLimitExceededException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 function asserts.AssertIpRouteStatusMsg(str)
@@ -4672,8 +5860,11 @@ function M.RemoveTagsFromResourceAsync(RemoveTagsFromResourceRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "DirectoryService_20150416.RemoveTagsFromResource",
 	}
+	for header,value in pairs(RemoveTagsFromResourceRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", RemoveTagsFromResourceRequest, headers, settings, cb)
 	else
@@ -4704,8 +5895,11 @@ function M.CreateComputerAsync(CreateComputerRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "DirectoryService_20150416.CreateComputer",
 	}
+	for header,value in pairs(CreateComputerRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateComputerRequest, headers, settings, cb)
 	else
@@ -4736,8 +5930,11 @@ function M.EnableRadiusAsync(EnableRadiusRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "DirectoryService_20150416.EnableRadius",
 	}
+	for header,value in pairs(EnableRadiusRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", EnableRadiusRequest, headers, settings, cb)
 	else
@@ -4768,8 +5965,11 @@ function M.DeleteConditionalForwarderAsync(DeleteConditionalForwarderRequest, cb
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "DirectoryService_20150416.DeleteConditionalForwarder",
 	}
+	for header,value in pairs(DeleteConditionalForwarderRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteConditionalForwarderRequest, headers, settings, cb)
 	else
@@ -4800,8 +6000,11 @@ function M.CreateDirectoryAsync(CreateDirectoryRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "DirectoryService_20150416.CreateDirectory",
 	}
+	for header,value in pairs(CreateDirectoryRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateDirectoryRequest, headers, settings, cb)
 	else
@@ -4832,8 +6035,11 @@ function M.DescribeSnapshotsAsync(DescribeSnapshotsRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "DirectoryService_20150416.DescribeSnapshots",
 	}
+	for header,value in pairs(DescribeSnapshotsRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeSnapshotsRequest, headers, settings, cb)
 	else
@@ -4864,8 +6070,11 @@ function M.VerifyTrustAsync(VerifyTrustRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "DirectoryService_20150416.VerifyTrust",
 	}
+	for header,value in pairs(VerifyTrustRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", VerifyTrustRequest, headers, settings, cb)
 	else
@@ -4896,8 +6105,11 @@ function M.DeleteSnapshotAsync(DeleteSnapshotRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "DirectoryService_20150416.DeleteSnapshot",
 	}
+	for header,value in pairs(DeleteSnapshotRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteSnapshotRequest, headers, settings, cb)
 	else
@@ -4928,8 +6140,11 @@ function M.UpdateRadiusAsync(UpdateRadiusRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "DirectoryService_20150416.UpdateRadius",
 	}
+	for header,value in pairs(UpdateRadiusRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateRadiusRequest, headers, settings, cb)
 	else
@@ -4960,8 +6175,11 @@ function M.DisableRadiusAsync(DisableRadiusRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "DirectoryService_20150416.DisableRadius",
 	}
+	for header,value in pairs(DisableRadiusRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DisableRadiusRequest, headers, settings, cb)
 	else
@@ -4992,8 +6210,11 @@ function M.AddTagsToResourceAsync(AddTagsToResourceRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "DirectoryService_20150416.AddTagsToResource",
 	}
+	for header,value in pairs(AddTagsToResourceRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", AddTagsToResourceRequest, headers, settings, cb)
 	else
@@ -5024,8 +6245,11 @@ function M.DescribeConditionalForwardersAsync(DescribeConditionalForwardersReque
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "DirectoryService_20150416.DescribeConditionalForwarders",
 	}
+	for header,value in pairs(DescribeConditionalForwardersRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeConditionalForwardersRequest, headers, settings, cb)
 	else
@@ -5056,8 +6280,11 @@ function M.DescribeEventTopicsAsync(DescribeEventTopicsRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "DirectoryService_20150416.DescribeEventTopics",
 	}
+	for header,value in pairs(DescribeEventTopicsRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeEventTopicsRequest, headers, settings, cb)
 	else
@@ -5088,8 +6315,11 @@ function M.EnableSsoAsync(EnableSsoRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "DirectoryService_20150416.EnableSso",
 	}
+	for header,value in pairs(EnableSsoRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", EnableSsoRequest, headers, settings, cb)
 	else
@@ -5120,8 +6350,11 @@ function M.ListIpRoutesAsync(ListIpRoutesRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "DirectoryService_20150416.ListIpRoutes",
 	}
+	for header,value in pairs(ListIpRoutesRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ListIpRoutesRequest, headers, settings, cb)
 	else
@@ -5152,8 +6385,11 @@ function M.RemoveIpRoutesAsync(RemoveIpRoutesRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "DirectoryService_20150416.RemoveIpRoutes",
 	}
+	for header,value in pairs(RemoveIpRoutesRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", RemoveIpRoutesRequest, headers, settings, cb)
 	else
@@ -5184,8 +6420,11 @@ function M.CreateAliasAsync(CreateAliasRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "DirectoryService_20150416.CreateAlias",
 	}
+	for header,value in pairs(CreateAliasRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateAliasRequest, headers, settings, cb)
 	else
@@ -5216,8 +6455,11 @@ function M.ConnectDirectoryAsync(ConnectDirectoryRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "DirectoryService_20150416.ConnectDirectory",
 	}
+	for header,value in pairs(ConnectDirectoryRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ConnectDirectoryRequest, headers, settings, cb)
 	else
@@ -5248,8 +6490,11 @@ function M.DeleteDirectoryAsync(DeleteDirectoryRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "DirectoryService_20150416.DeleteDirectory",
 	}
+	for header,value in pairs(DeleteDirectoryRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteDirectoryRequest, headers, settings, cb)
 	else
@@ -5280,8 +6525,11 @@ function M.AddIpRoutesAsync(AddIpRoutesRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "DirectoryService_20150416.AddIpRoutes",
 	}
+	for header,value in pairs(AddIpRoutesRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", AddIpRoutesRequest, headers, settings, cb)
 	else
@@ -5312,8 +6560,11 @@ function M.CancelSchemaExtensionAsync(CancelSchemaExtensionRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "DirectoryService_20150416.CancelSchemaExtension",
 	}
+	for header,value in pairs(CancelSchemaExtensionRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", CancelSchemaExtensionRequest, headers, settings, cb)
 	else
@@ -5344,8 +6595,11 @@ function M.CreateConditionalForwarderAsync(CreateConditionalForwarderRequest, cb
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "DirectoryService_20150416.CreateConditionalForwarder",
 	}
+	for header,value in pairs(CreateConditionalForwarderRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateConditionalForwarderRequest, headers, settings, cb)
 	else
@@ -5376,8 +6630,11 @@ function M.RestoreFromSnapshotAsync(RestoreFromSnapshotRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "DirectoryService_20150416.RestoreFromSnapshot",
 	}
+	for header,value in pairs(RestoreFromSnapshotRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", RestoreFromSnapshotRequest, headers, settings, cb)
 	else
@@ -5408,8 +6665,11 @@ function M.ListSchemaExtensionsAsync(ListSchemaExtensionsRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "DirectoryService_20150416.ListSchemaExtensions",
 	}
+	for header,value in pairs(ListSchemaExtensionsRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ListSchemaExtensionsRequest, headers, settings, cb)
 	else
@@ -5440,8 +6700,11 @@ function M.DescribeTrustsAsync(DescribeTrustsRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "DirectoryService_20150416.DescribeTrusts",
 	}
+	for header,value in pairs(DescribeTrustsRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeTrustsRequest, headers, settings, cb)
 	else
@@ -5472,8 +6735,11 @@ function M.DeregisterEventTopicAsync(DeregisterEventTopicRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "DirectoryService_20150416.DeregisterEventTopic",
 	}
+	for header,value in pairs(DeregisterEventTopicRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DeregisterEventTopicRequest, headers, settings, cb)
 	else
@@ -5504,8 +6770,11 @@ function M.UpdateConditionalForwarderAsync(UpdateConditionalForwarderRequest, cb
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "DirectoryService_20150416.UpdateConditionalForwarder",
 	}
+	for header,value in pairs(UpdateConditionalForwarderRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateConditionalForwarderRequest, headers, settings, cb)
 	else
@@ -5536,8 +6805,11 @@ function M.CreateTrustAsync(CreateTrustRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "DirectoryService_20150416.CreateTrust",
 	}
+	for header,value in pairs(CreateTrustRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateTrustRequest, headers, settings, cb)
 	else
@@ -5568,8 +6840,11 @@ function M.GetDirectoryLimitsAsync(GetDirectoryLimitsRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "DirectoryService_20150416.GetDirectoryLimits",
 	}
+	for header,value in pairs(GetDirectoryLimitsRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", GetDirectoryLimitsRequest, headers, settings, cb)
 	else
@@ -5600,8 +6875,11 @@ function M.CreateMicrosoftADAsync(CreateMicrosoftADRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "DirectoryService_20150416.CreateMicrosoftAD",
 	}
+	for header,value in pairs(CreateMicrosoftADRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateMicrosoftADRequest, headers, settings, cb)
 	else
@@ -5632,8 +6910,11 @@ function M.RegisterEventTopicAsync(RegisterEventTopicRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "DirectoryService_20150416.RegisterEventTopic",
 	}
+	for header,value in pairs(RegisterEventTopicRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", RegisterEventTopicRequest, headers, settings, cb)
 	else
@@ -5664,8 +6945,11 @@ function M.GetSnapshotLimitsAsync(GetSnapshotLimitsRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "DirectoryService_20150416.GetSnapshotLimits",
 	}
+	for header,value in pairs(GetSnapshotLimitsRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", GetSnapshotLimitsRequest, headers, settings, cb)
 	else
@@ -5696,8 +6980,11 @@ function M.DeleteTrustAsync(DeleteTrustRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "DirectoryService_20150416.DeleteTrust",
 	}
+	for header,value in pairs(DeleteTrustRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteTrustRequest, headers, settings, cb)
 	else
@@ -5728,8 +7015,11 @@ function M.DescribeDirectoriesAsync(DescribeDirectoriesRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "DirectoryService_20150416.DescribeDirectories",
 	}
+	for header,value in pairs(DescribeDirectoriesRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeDirectoriesRequest, headers, settings, cb)
 	else
@@ -5760,8 +7050,11 @@ function M.StartSchemaExtensionAsync(StartSchemaExtensionRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "DirectoryService_20150416.StartSchemaExtension",
 	}
+	for header,value in pairs(StartSchemaExtensionRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", StartSchemaExtensionRequest, headers, settings, cb)
 	else
@@ -5792,8 +7085,11 @@ function M.ListTagsForResourceAsync(ListTagsForResourceRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "DirectoryService_20150416.ListTagsForResource",
 	}
+	for header,value in pairs(ListTagsForResourceRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ListTagsForResourceRequest, headers, settings, cb)
 	else
@@ -5824,8 +7120,11 @@ function M.CreateSnapshotAsync(CreateSnapshotRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "DirectoryService_20150416.CreateSnapshot",
 	}
+	for header,value in pairs(CreateSnapshotRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateSnapshotRequest, headers, settings, cb)
 	else
@@ -5856,8 +7155,11 @@ function M.DisableSsoAsync(DisableSsoRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "DirectoryService_20150416.DisableSso",
 	}
+	for header,value in pairs(DisableSsoRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DisableSsoRequest, headers, settings, cb)
 	else

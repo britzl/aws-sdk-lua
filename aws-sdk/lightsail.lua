@@ -39,12 +39,23 @@ end
 -- * accessDetails [InstanceAccessDetails] <p>An array of key-value pairs containing information about a get instance access request.</p>
 -- @return GetInstanceAccessDetailsResult structure as a key-value pair table
 function M.GetInstanceAccessDetailsResult(args)
-	assert(args, "You must provdide an argument table when creating GetInstanceAccessDetailsResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetInstanceAccessDetailsResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["accessDetails"] = args["accessDetails"],
 	}
-	asserts.AssertGetInstanceAccessDetailsResult(t)
-	return t
+	asserts.AssertGetInstanceAccessDetailsResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.MonthlyTransfer = { ["gbPerMonthAllocated"] = true, nil }
@@ -65,12 +76,23 @@ end
 -- * gbPerMonthAllocated [integer] <p>The amount allocated per month (in GB).</p>
 -- @return MonthlyTransfer structure as a key-value pair table
 function M.MonthlyTransfer(args)
-	assert(args, "You must provdide an argument table when creating MonthlyTransfer")
-	local t = { 
+	assert(args, "You must provide an argument table when creating MonthlyTransfer")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["gbPerMonthAllocated"] = args["gbPerMonthAllocated"],
 	}
-	asserts.AssertMonthlyTransfer(t)
-	return t
+	asserts.AssertMonthlyTransfer(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.StopInstanceRequest = { ["instanceName"] = true, nil }
@@ -93,12 +115,23 @@ end
 -- Required key: instanceName
 -- @return StopInstanceRequest structure as a key-value pair table
 function M.StopInstanceRequest(args)
-	assert(args, "You must provdide an argument table when creating StopInstanceRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating StopInstanceRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["instanceName"] = args["instanceName"],
 	}
-	asserts.AssertStopInstanceRequest(t)
-	return t
+	asserts.AssertStopInstanceRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InstanceState = { ["code"] = true, ["name"] = true, nil }
@@ -121,13 +154,24 @@ end
 -- * name [string] <p>The state of the instance (e.g., <code>running</code> or <code>pending</code>).</p>
 -- @return InstanceState structure as a key-value pair table
 function M.InstanceState(args)
-	assert(args, "You must provdide an argument table when creating InstanceState")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InstanceState")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["code"] = args["code"],
 		["name"] = args["name"],
 	}
-	asserts.AssertInstanceState(t)
-	return t
+	asserts.AssertInstanceState(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.PeerVpcResult = { ["operation"] = true, nil }
@@ -148,12 +192,23 @@ end
 -- * operation [Operation] <p>An array of key-value pairs containing information about the request operation.</p>
 -- @return PeerVpcResult structure as a key-value pair table
 function M.PeerVpcResult(args)
-	assert(args, "You must provdide an argument table when creating PeerVpcResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating PeerVpcResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["operation"] = args["operation"],
 	}
-	asserts.AssertPeerVpcResult(t)
-	return t
+	asserts.AssertPeerVpcResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UnauthenticatedException = { ["docs"] = true, ["message"] = true, ["code"] = true, ["tip"] = true, nil }
@@ -180,15 +235,26 @@ end
 -- * tip [string] 
 -- @return UnauthenticatedException structure as a key-value pair table
 function M.UnauthenticatedException(args)
-	assert(args, "You must provdide an argument table when creating UnauthenticatedException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UnauthenticatedException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["docs"] = args["docs"],
 		["message"] = args["message"],
 		["code"] = args["code"],
 		["tip"] = args["tip"],
 	}
-	asserts.AssertUnauthenticatedException(t)
-	return t
+	asserts.AssertUnauthenticatedException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetKeyPairResult = { ["keyPair"] = true, nil }
@@ -209,12 +275,23 @@ end
 -- * keyPair [KeyPair] <p>An array of key-value pairs containing information about the key pair.</p>
 -- @return GetKeyPairResult structure as a key-value pair table
 function M.GetKeyPairResult(args)
-	assert(args, "You must provdide an argument table when creating GetKeyPairResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetKeyPairResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["keyPair"] = args["keyPair"],
 	}
-	asserts.AssertGetKeyPairResult(t)
-	return t
+	asserts.AssertGetKeyPairResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateInstancesRequest = { ["userData"] = true, ["availabilityZone"] = true, ["customImageName"] = true, ["instanceNames"] = true, ["blueprintId"] = true, ["keyPairName"] = true, ["bundleId"] = true, nil }
@@ -255,8 +332,14 @@ end
 -- Required key: bundleId
 -- @return CreateInstancesRequest structure as a key-value pair table
 function M.CreateInstancesRequest(args)
-	assert(args, "You must provdide an argument table when creating CreateInstancesRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateInstancesRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["userData"] = args["userData"],
 		["availabilityZone"] = args["availabilityZone"],
 		["customImageName"] = args["customImageName"],
@@ -265,8 +348,13 @@ function M.CreateInstancesRequest(args)
 		["keyPairName"] = args["keyPairName"],
 		["bundleId"] = args["bundleId"],
 	}
-	asserts.AssertCreateInstancesRequest(t)
-	return t
+	asserts.AssertCreateInstancesRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DetachStaticIpRequest = { ["staticIpName"] = true, nil }
@@ -289,12 +377,23 @@ end
 -- Required key: staticIpName
 -- @return DetachStaticIpRequest structure as a key-value pair table
 function M.DetachStaticIpRequest(args)
-	assert(args, "You must provdide an argument table when creating DetachStaticIpRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DetachStaticIpRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["staticIpName"] = args["staticIpName"],
 	}
-	asserts.AssertDetachStaticIpRequest(t)
-	return t
+	asserts.AssertDetachStaticIpRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.StartInstanceRequest = { ["instanceName"] = true, nil }
@@ -317,12 +416,23 @@ end
 -- Required key: instanceName
 -- @return StartInstanceRequest structure as a key-value pair table
 function M.StartInstanceRequest(args)
-	assert(args, "You must provdide an argument table when creating StartInstanceRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating StartInstanceRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["instanceName"] = args["instanceName"],
 	}
-	asserts.AssertStartInstanceRequest(t)
-	return t
+	asserts.AssertStartInstanceRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetInstancePortStatesResult = { ["portStates"] = true, nil }
@@ -343,12 +453,23 @@ end
 -- * portStates [InstancePortStateList] <p>Information about the port states resulting from your request.</p>
 -- @return GetInstancePortStatesResult structure as a key-value pair table
 function M.GetInstancePortStatesResult(args)
-	assert(args, "You must provdide an argument table when creating GetInstancePortStatesResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetInstancePortStatesResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["portStates"] = args["portStates"],
 	}
-	asserts.AssertGetInstancePortStatesResult(t)
-	return t
+	asserts.AssertGetInstancePortStatesResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetInstanceStateRequest = { ["instanceName"] = true, nil }
@@ -371,12 +492,23 @@ end
 -- Required key: instanceName
 -- @return GetInstanceStateRequest structure as a key-value pair table
 function M.GetInstanceStateRequest(args)
-	assert(args, "You must provdide an argument table when creating GetInstanceStateRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetInstanceStateRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["instanceName"] = args["instanceName"],
 	}
-	asserts.AssertGetInstanceStateRequest(t)
-	return t
+	asserts.AssertGetInstanceStateRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateKeyPairResult = { ["keyPair"] = true, ["publicKeyBase64"] = true, ["operation"] = true, ["privateKeyBase64"] = true, nil }
@@ -403,15 +535,26 @@ end
 -- * privateKeyBase64 [Base64] <p>A base64-encoded RSA private key.</p>
 -- @return CreateKeyPairResult structure as a key-value pair table
 function M.CreateKeyPairResult(args)
-	assert(args, "You must provdide an argument table when creating CreateKeyPairResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateKeyPairResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["keyPair"] = args["keyPair"],
 		["publicKeyBase64"] = args["publicKeyBase64"],
 		["operation"] = args["operation"],
 		["privateKeyBase64"] = args["privateKeyBase64"],
 	}
-	asserts.AssertCreateKeyPairResult(t)
-	return t
+	asserts.AssertCreateKeyPairResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetStaticIpResult = { ["staticIp"] = true, nil }
@@ -432,12 +575,23 @@ end
 -- * staticIp [StaticIp] <p>An array of key-value pairs containing information about the requested static IP.</p>
 -- @return GetStaticIpResult structure as a key-value pair table
 function M.GetStaticIpResult(args)
-	assert(args, "You must provdide an argument table when creating GetStaticIpResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetStaticIpResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["staticIp"] = args["staticIp"],
 	}
-	asserts.AssertGetStaticIpResult(t)
-	return t
+	asserts.AssertGetStaticIpResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateDomainResult = { ["operation"] = true, nil }
@@ -458,12 +612,23 @@ end
 -- * operation [Operation] <p>An array of key-value pairs containing information about the domain resource you created.</p>
 -- @return CreateDomainResult structure as a key-value pair table
 function M.CreateDomainResult(args)
-	assert(args, "You must provdide an argument table when creating CreateDomainResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateDomainResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["operation"] = args["operation"],
 	}
-	asserts.AssertCreateDomainResult(t)
-	return t
+	asserts.AssertCreateDomainResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ReleaseStaticIpResult = { ["operations"] = true, nil }
@@ -484,12 +649,23 @@ end
 -- * operations [OperationList] <p>An array of key-value pairs containing information about the request operation.</p>
 -- @return ReleaseStaticIpResult structure as a key-value pair table
 function M.ReleaseStaticIpResult(args)
-	assert(args, "You must provdide an argument table when creating ReleaseStaticIpResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ReleaseStaticIpResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["operations"] = args["operations"],
 	}
-	asserts.AssertReleaseStaticIpResult(t)
-	return t
+	asserts.AssertReleaseStaticIpResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.StartInstanceResult = { ["operations"] = true, nil }
@@ -510,12 +686,23 @@ end
 -- * operations [OperationList] <p>An array of key-value pairs containing information about the request operation.</p>
 -- @return StartInstanceResult structure as a key-value pair table
 function M.StartInstanceResult(args)
-	assert(args, "You must provdide an argument table when creating StartInstanceResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating StartInstanceResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["operations"] = args["operations"],
 	}
-	asserts.AssertStartInstanceResult(t)
-	return t
+	asserts.AssertStartInstanceResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetInstanceResult = { ["instance"] = true, nil }
@@ -536,12 +723,23 @@ end
 -- * instance [Instance] <p>An array of key-value pairs containing information about the specified instance.</p>
 -- @return GetInstanceResult structure as a key-value pair table
 function M.GetInstanceResult(args)
-	assert(args, "You must provdide an argument table when creating GetInstanceResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetInstanceResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["instance"] = args["instance"],
 	}
-	asserts.AssertGetInstanceResult(t)
-	return t
+	asserts.AssertGetInstanceResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.MetricDatapoint = { ["sampleCount"] = true, ["timestamp"] = true, ["average"] = true, ["maximum"] = true, ["minimum"] = true, ["sum"] = true, ["unit"] = true, nil }
@@ -574,8 +772,14 @@ end
 -- * unit [MetricUnit] <p>The unit. </p>
 -- @return MetricDatapoint structure as a key-value pair table
 function M.MetricDatapoint(args)
-	assert(args, "You must provdide an argument table when creating MetricDatapoint")
-	local t = { 
+	assert(args, "You must provide an argument table when creating MetricDatapoint")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["sampleCount"] = args["sampleCount"],
 		["timestamp"] = args["timestamp"],
 		["average"] = args["average"],
@@ -584,8 +788,13 @@ function M.MetricDatapoint(args)
 		["sum"] = args["sum"],
 		["unit"] = args["unit"],
 	}
-	asserts.AssertMetricDatapoint(t)
-	return t
+	asserts.AssertMetricDatapoint(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Region = { ["availabilityZones"] = true, ["displayName"] = true, ["description"] = true, ["continentCode"] = true, ["name"] = true, nil }
@@ -614,16 +823,27 @@ end
 -- * name [RegionName] <p>The region name (e.g., <code>us-east-1</code>).</p>
 -- @return Region structure as a key-value pair table
 function M.Region(args)
-	assert(args, "You must provdide an argument table when creating Region")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Region")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["availabilityZones"] = args["availabilityZones"],
 		["displayName"] = args["displayName"],
 		["description"] = args["description"],
 		["continentCode"] = args["continentCode"],
 		["name"] = args["name"],
 	}
-	asserts.AssertRegion(t)
-	return t
+	asserts.AssertRegion(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.PutInstancePublicPortsRequest = { ["instanceName"] = true, ["portInfos"] = true, nil }
@@ -650,13 +870,24 @@ end
 -- Required key: instanceName
 -- @return PutInstancePublicPortsRequest structure as a key-value pair table
 function M.PutInstancePublicPortsRequest(args)
-	assert(args, "You must provdide an argument table when creating PutInstancePublicPortsRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating PutInstancePublicPortsRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["instanceName"] = args["instanceName"],
 		["portInfos"] = args["portInfos"],
 	}
-	asserts.AssertPutInstancePublicPortsRequest(t)
-	return t
+	asserts.AssertPutInstancePublicPortsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.RebootInstanceResult = { ["operations"] = true, nil }
@@ -677,12 +908,23 @@ end
 -- * operations [OperationList] <p>An array of key-value pairs containing information about the request operation.</p>
 -- @return RebootInstanceResult structure as a key-value pair table
 function M.RebootInstanceResult(args)
-	assert(args, "You must provdide an argument table when creating RebootInstanceResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating RebootInstanceResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["operations"] = args["operations"],
 	}
-	asserts.AssertRebootInstanceResult(t)
-	return t
+	asserts.AssertRebootInstanceResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateInstanceSnapshotResult = { ["operations"] = true, nil }
@@ -703,12 +945,23 @@ end
 -- * operations [OperationList] <p>An array of key-value pairs containing information about the results of your create instances snapshot request.</p>
 -- @return CreateInstanceSnapshotResult structure as a key-value pair table
 function M.CreateInstanceSnapshotResult(args)
-	assert(args, "You must provdide an argument table when creating CreateInstanceSnapshotResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateInstanceSnapshotResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["operations"] = args["operations"],
 	}
-	asserts.AssertCreateInstanceSnapshotResult(t)
-	return t
+	asserts.AssertCreateInstanceSnapshotResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Instance = { ["username"] = true, ["isStaticIp"] = true, ["networking"] = true, ["name"] = true, ["ipv6Address"] = true, ["resourceType"] = true, ["supportCode"] = true, ["blueprintName"] = true, ["hardware"] = true, ["privateIpAddress"] = true, ["state"] = true, ["arn"] = true, ["publicIpAddress"] = true, ["blueprintId"] = true, ["bundleId"] = true, ["sshKeyName"] = true, ["createdAt"] = true, ["location"] = true, nil }
@@ -763,8 +1016,14 @@ end
 -- * location [ResourceLocation] <p>The region name and availability zone where the instance is located.</p>
 -- @return Instance structure as a key-value pair table
 function M.Instance(args)
-	assert(args, "You must provdide an argument table when creating Instance")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Instance")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["username"] = args["username"],
 		["isStaticIp"] = args["isStaticIp"],
 		["networking"] = args["networking"],
@@ -784,8 +1043,13 @@ function M.Instance(args)
 		["createdAt"] = args["createdAt"],
 		["location"] = args["location"],
 	}
-	asserts.AssertInstance(t)
-	return t
+	asserts.AssertInstance(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetDomainRequest = { ["domainName"] = true, nil }
@@ -808,12 +1072,23 @@ end
 -- Required key: domainName
 -- @return GetDomainRequest structure as a key-value pair table
 function M.GetDomainRequest(args)
-	assert(args, "You must provdide an argument table when creating GetDomainRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetDomainRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["domainName"] = args["domainName"],
 	}
-	asserts.AssertGetDomainRequest(t)
-	return t
+	asserts.AssertGetDomainRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdateDomainEntryRequest = { ["domainEntry"] = true, ["domainName"] = true, nil }
@@ -840,13 +1115,24 @@ end
 -- Required key: domainEntry
 -- @return UpdateDomainEntryRequest structure as a key-value pair table
 function M.UpdateDomainEntryRequest(args)
-	assert(args, "You must provdide an argument table when creating UpdateDomainEntryRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateDomainEntryRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["domainEntry"] = args["domainEntry"],
 		["domainName"] = args["domainName"],
 	}
-	asserts.AssertUpdateDomainEntryRequest(t)
-	return t
+	asserts.AssertUpdateDomainEntryRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InstanceSnapshot = { ["fromInstanceName"] = true, ["name"] = true, ["sizeInGb"] = true, ["resourceType"] = true, ["supportCode"] = true, ["fromInstanceArn"] = true, ["state"] = true, ["arn"] = true, ["progress"] = true, ["fromBundleId"] = true, ["fromBlueprintId"] = true, ["createdAt"] = true, ["location"] = true, nil }
@@ -891,8 +1177,14 @@ end
 -- * location [ResourceLocation] <p>The region name and availability zone where you created the snapshot.</p>
 -- @return InstanceSnapshot structure as a key-value pair table
 function M.InstanceSnapshot(args)
-	assert(args, "You must provdide an argument table when creating InstanceSnapshot")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InstanceSnapshot")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["fromInstanceName"] = args["fromInstanceName"],
 		["name"] = args["name"],
 		["sizeInGb"] = args["sizeInGb"],
@@ -907,8 +1199,13 @@ function M.InstanceSnapshot(args)
 		["createdAt"] = args["createdAt"],
 		["location"] = args["location"],
 	}
-	asserts.AssertInstanceSnapshot(t)
-	return t
+	asserts.AssertInstanceSnapshot(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Operation = { ["status"] = true, ["resourceType"] = true, ["isTerminal"] = true, ["operationDetails"] = true, ["statusChangedAt"] = true, ["errorCode"] = true, ["errorDetails"] = true, ["location"] = true, ["operationType"] = true, ["resourceName"] = true, ["id"] = true, ["createdAt"] = true, nil }
@@ -951,8 +1248,14 @@ end
 -- * createdAt [IsoDate] <p>The timestamp when the operation was initialized (e.g., <code>1479816991.349</code>).</p>
 -- @return Operation structure as a key-value pair table
 function M.Operation(args)
-	assert(args, "You must provdide an argument table when creating Operation")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Operation")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["status"] = args["status"],
 		["resourceType"] = args["resourceType"],
 		["isTerminal"] = args["isTerminal"],
@@ -966,8 +1269,13 @@ function M.Operation(args)
 		["id"] = args["id"],
 		["createdAt"] = args["createdAt"],
 	}
-	asserts.AssertOperation(t)
-	return t
+	asserts.AssertOperation(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Disk = { ["name"] = true, ["sizeInGb"] = true, ["resourceType"] = true, ["supportCode"] = true, ["attachmentState"] = true, ["attachedTo"] = true, ["iops"] = true, ["gbInUse"] = true, ["arn"] = true, ["isAttached"] = true, ["path"] = true, ["isSystemDisk"] = true, ["createdAt"] = true, ["location"] = true, nil }
@@ -1014,8 +1322,14 @@ end
 -- * location [ResourceLocation] <p>The region and Availability Zone where the disk is located.</p>
 -- @return Disk structure as a key-value pair table
 function M.Disk(args)
-	assert(args, "You must provdide an argument table when creating Disk")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Disk")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["name"] = args["name"],
 		["sizeInGb"] = args["sizeInGb"],
 		["resourceType"] = args["resourceType"],
@@ -1031,8 +1345,13 @@ function M.Disk(args)
 		["createdAt"] = args["createdAt"],
 		["location"] = args["location"],
 	}
-	asserts.AssertDisk(t)
-	return t
+	asserts.AssertDisk(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AttachStaticIpResult = { ["operations"] = true, nil }
@@ -1053,12 +1372,23 @@ end
 -- * operations [OperationList] <p>An array of key-value pairs containing information about your API operations.</p>
 -- @return AttachStaticIpResult structure as a key-value pair table
 function M.AttachStaticIpResult(args)
-	assert(args, "You must provdide an argument table when creating AttachStaticIpResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AttachStaticIpResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["operations"] = args["operations"],
 	}
-	asserts.AssertAttachStaticIpResult(t)
-	return t
+	asserts.AssertAttachStaticIpResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteDomainRequest = { ["domainName"] = true, nil }
@@ -1081,12 +1411,23 @@ end
 -- Required key: domainName
 -- @return DeleteDomainRequest structure as a key-value pair table
 function M.DeleteDomainRequest(args)
-	assert(args, "You must provdide an argument table when creating DeleteDomainRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteDomainRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["domainName"] = args["domainName"],
 	}
-	asserts.AssertDeleteDomainRequest(t)
-	return t
+	asserts.AssertDeleteDomainRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InstanceAccessDetails = { ["username"] = true, ["certKey"] = true, ["instanceName"] = true, ["privateKey"] = true, ["expiresAt"] = true, ["protocol"] = true, ["password"] = true, ["ipAddress"] = true, nil }
@@ -1121,8 +1462,14 @@ end
 -- * ipAddress [IpAddress] <p>The public IP address of the Amazon Lightsail instance.</p>
 -- @return InstanceAccessDetails structure as a key-value pair table
 function M.InstanceAccessDetails(args)
-	assert(args, "You must provdide an argument table when creating InstanceAccessDetails")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InstanceAccessDetails")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["username"] = args["username"],
 		["certKey"] = args["certKey"],
 		["instanceName"] = args["instanceName"],
@@ -1132,8 +1479,13 @@ function M.InstanceAccessDetails(args)
 		["password"] = args["password"],
 		["ipAddress"] = args["ipAddress"],
 	}
-	asserts.AssertInstanceAccessDetails(t)
-	return t
+	asserts.AssertInstanceAccessDetails(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetKeyPairRequest = { ["keyPairName"] = true, nil }
@@ -1156,12 +1508,23 @@ end
 -- Required key: keyPairName
 -- @return GetKeyPairRequest structure as a key-value pair table
 function M.GetKeyPairRequest(args)
-	assert(args, "You must provdide an argument table when creating GetKeyPairRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetKeyPairRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["keyPairName"] = args["keyPairName"],
 	}
-	asserts.AssertGetKeyPairRequest(t)
-	return t
+	asserts.AssertGetKeyPairRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteKeyPairRequest = { ["keyPairName"] = true, nil }
@@ -1184,12 +1547,23 @@ end
 -- Required key: keyPairName
 -- @return DeleteKeyPairRequest structure as a key-value pair table
 function M.DeleteKeyPairRequest(args)
-	assert(args, "You must provdide an argument table when creating DeleteKeyPairRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteKeyPairRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["keyPairName"] = args["keyPairName"],
 	}
-	asserts.AssertDeleteKeyPairRequest(t)
-	return t
+	asserts.AssertDeleteKeyPairRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetOperationRequest = { ["operationId"] = true, nil }
@@ -1212,12 +1586,23 @@ end
 -- Required key: operationId
 -- @return GetOperationRequest structure as a key-value pair table
 function M.GetOperationRequest(args)
-	assert(args, "You must provdide an argument table when creating GetOperationRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetOperationRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["operationId"] = args["operationId"],
 	}
-	asserts.AssertGetOperationRequest(t)
-	return t
+	asserts.AssertGetOperationRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetBlueprintsResult = { ["nextPageToken"] = true, ["blueprints"] = true, nil }
@@ -1240,13 +1625,24 @@ end
 -- * blueprints [BlueprintList] <p>An array of key-value pairs that contains information about the available blueprints.</p>
 -- @return GetBlueprintsResult structure as a key-value pair table
 function M.GetBlueprintsResult(args)
-	assert(args, "You must provdide an argument table when creating GetBlueprintsResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetBlueprintsResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["nextPageToken"] = args["nextPageToken"],
 		["blueprints"] = args["blueprints"],
 	}
-	asserts.AssertGetBlueprintsResult(t)
-	return t
+	asserts.AssertGetBlueprintsResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateInstancesResult = { ["operations"] = true, nil }
@@ -1267,12 +1663,23 @@ end
 -- * operations [OperationList] <p>An array of key-value pairs containing information about the results of your create instances request.</p>
 -- @return CreateInstancesResult structure as a key-value pair table
 function M.CreateInstancesResult(args)
-	assert(args, "You must provdide an argument table when creating CreateInstancesResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateInstancesResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["operations"] = args["operations"],
 	}
-	asserts.AssertCreateInstancesResult(t)
-	return t
+	asserts.AssertCreateInstancesResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DetachStaticIpResult = { ["operations"] = true, nil }
@@ -1293,12 +1700,23 @@ end
 -- * operations [OperationList] <p>An array of key-value pairs containing information about the results of your detach static IP request.</p>
 -- @return DetachStaticIpResult structure as a key-value pair table
 function M.DetachStaticIpResult(args)
-	assert(args, "You must provdide an argument table when creating DetachStaticIpResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DetachStaticIpResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["operations"] = args["operations"],
 	}
-	asserts.AssertDetachStaticIpResult(t)
-	return t
+	asserts.AssertDetachStaticIpResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InstancePortInfo = { ["protocol"] = true, ["accessType"] = true, ["commonName"] = true, ["accessFrom"] = true, ["fromPort"] = true, ["accessDirection"] = true, ["toPort"] = true, nil }
@@ -1331,8 +1749,14 @@ end
 -- * toPort [Port] <p>The last port in the range.</p>
 -- @return InstancePortInfo structure as a key-value pair table
 function M.InstancePortInfo(args)
-	assert(args, "You must provdide an argument table when creating InstancePortInfo")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InstancePortInfo")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["protocol"] = args["protocol"],
 		["accessType"] = args["accessType"],
 		["commonName"] = args["commonName"],
@@ -1341,8 +1765,13 @@ function M.InstancePortInfo(args)
 		["accessDirection"] = args["accessDirection"],
 		["toPort"] = args["toPort"],
 	}
-	asserts.AssertInstancePortInfo(t)
-	return t
+	asserts.AssertInstancePortInfo(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetInstancesResult = { ["nextPageToken"] = true, ["instances"] = true, nil }
@@ -1365,13 +1794,24 @@ end
 -- * instances [InstanceList] <p>An array of key-value pairs containing information about your instances.</p>
 -- @return GetInstancesResult structure as a key-value pair table
 function M.GetInstancesResult(args)
-	assert(args, "You must provdide an argument table when creating GetInstancesResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetInstancesResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["nextPageToken"] = args["nextPageToken"],
 		["instances"] = args["instances"],
 	}
-	asserts.AssertGetInstancesResult(t)
-	return t
+	asserts.AssertGetInstancesResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetInstanceSnapshotRequest = { ["instanceSnapshotName"] = true, nil }
@@ -1394,12 +1834,23 @@ end
 -- Required key: instanceSnapshotName
 -- @return GetInstanceSnapshotRequest structure as a key-value pair table
 function M.GetInstanceSnapshotRequest(args)
-	assert(args, "You must provdide an argument table when creating GetInstanceSnapshotRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetInstanceSnapshotRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["instanceSnapshotName"] = args["instanceSnapshotName"],
 	}
-	asserts.AssertGetInstanceSnapshotRequest(t)
-	return t
+	asserts.AssertGetInstanceSnapshotRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ReleaseStaticIpRequest = { ["staticIpName"] = true, nil }
@@ -1422,12 +1873,23 @@ end
 -- Required key: staticIpName
 -- @return ReleaseStaticIpRequest structure as a key-value pair table
 function M.ReleaseStaticIpRequest(args)
-	assert(args, "You must provdide an argument table when creating ReleaseStaticIpRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ReleaseStaticIpRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["staticIpName"] = args["staticIpName"],
 	}
-	asserts.AssertReleaseStaticIpRequest(t)
-	return t
+	asserts.AssertReleaseStaticIpRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetOperationsForResourceRequest = { ["resourceName"] = true, ["pageToken"] = true, nil }
@@ -1452,13 +1914,24 @@ end
 -- Required key: resourceName
 -- @return GetOperationsForResourceRequest structure as a key-value pair table
 function M.GetOperationsForResourceRequest(args)
-	assert(args, "You must provdide an argument table when creating GetOperationsForResourceRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetOperationsForResourceRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["resourceName"] = args["resourceName"],
 		["pageToken"] = args["pageToken"],
 	}
-	asserts.AssertGetOperationsForResourceRequest(t)
-	return t
+	asserts.AssertGetOperationsForResourceRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetOperationResult = { ["operation"] = true, nil }
@@ -1479,12 +1952,23 @@ end
 -- * operation [Operation] <p>An array of key-value pairs containing information about the results of your get operation request.</p>
 -- @return GetOperationResult structure as a key-value pair table
 function M.GetOperationResult(args)
-	assert(args, "You must provdide an argument table when creating GetOperationResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetOperationResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["operation"] = args["operation"],
 	}
-	asserts.AssertGetOperationResult(t)
-	return t
+	asserts.AssertGetOperationResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetInstanceMetricDataRequest = { ["statistics"] = true, ["period"] = true, ["startTime"] = true, ["endTime"] = true, ["instanceName"] = true, ["unit"] = true, ["metricName"] = true, nil }
@@ -1531,8 +2015,14 @@ end
 -- Required key: statistics
 -- @return GetInstanceMetricDataRequest structure as a key-value pair table
 function M.GetInstanceMetricDataRequest(args)
-	assert(args, "You must provdide an argument table when creating GetInstanceMetricDataRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetInstanceMetricDataRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["statistics"] = args["statistics"],
 		["period"] = args["period"],
 		["startTime"] = args["startTime"],
@@ -1541,8 +2031,13 @@ function M.GetInstanceMetricDataRequest(args)
 		["unit"] = args["unit"],
 		["metricName"] = args["metricName"],
 	}
-	asserts.AssertGetInstanceMetricDataRequest(t)
-	return t
+	asserts.AssertGetInstanceMetricDataRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetRegionsResult = { ["regions"] = true, nil }
@@ -1563,12 +2058,23 @@ end
 -- * regions [RegionList] <p>An array of key-value pairs containing information about your get regions request.</p>
 -- @return GetRegionsResult structure as a key-value pair table
 function M.GetRegionsResult(args)
-	assert(args, "You must provdide an argument table when creating GetRegionsResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetRegionsResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["regions"] = args["regions"],
 	}
-	asserts.AssertGetRegionsResult(t)
-	return t
+	asserts.AssertGetRegionsResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.IsVpcPeeredRequest = { nil }
@@ -1587,11 +2093,22 @@ end
 -- Valid keys:
 -- @return IsVpcPeeredRequest structure as a key-value pair table
 function M.IsVpcPeeredRequest(args)
-	assert(args, "You must provdide an argument table when creating IsVpcPeeredRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating IsVpcPeeredRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertIsVpcPeeredRequest(t)
-	return t
+	asserts.AssertIsVpcPeeredRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.NotFoundException = { ["docs"] = true, ["message"] = true, ["code"] = true, ["tip"] = true, nil }
@@ -1618,15 +2135,26 @@ end
 -- * tip [string] 
 -- @return NotFoundException structure as a key-value pair table
 function M.NotFoundException(args)
-	assert(args, "You must provdide an argument table when creating NotFoundException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating NotFoundException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["docs"] = args["docs"],
 		["message"] = args["message"],
 		["code"] = args["code"],
 		["tip"] = args["tip"],
 	}
-	asserts.AssertNotFoundException(t)
-	return t
+	asserts.AssertNotFoundException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.OpenInstancePublicPortsResult = { ["operation"] = true, nil }
@@ -1647,12 +2175,23 @@ end
 -- * operation [Operation] <p>An array of key-value pairs containing information about the request operation.</p>
 -- @return OpenInstancePublicPortsResult structure as a key-value pair table
 function M.OpenInstancePublicPortsResult(args)
-	assert(args, "You must provdide an argument table when creating OpenInstancePublicPortsResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating OpenInstancePublicPortsResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["operation"] = args["operation"],
 	}
-	asserts.AssertOpenInstancePublicPortsResult(t)
-	return t
+	asserts.AssertOpenInstancePublicPortsResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetInstanceSnapshotsRequest = { ["pageToken"] = true, nil }
@@ -1673,12 +2212,23 @@ end
 -- * pageToken [string] <p>A token used for advancing to the next page of results from your get instance snapshots request.</p>
 -- @return GetInstanceSnapshotsRequest structure as a key-value pair table
 function M.GetInstanceSnapshotsRequest(args)
-	assert(args, "You must provdide an argument table when creating GetInstanceSnapshotsRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetInstanceSnapshotsRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["pageToken"] = args["pageToken"],
 	}
-	asserts.AssertGetInstanceSnapshotsRequest(t)
-	return t
+	asserts.AssertGetInstanceSnapshotsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetOperationsResult = { ["operations"] = true, ["nextPageToken"] = true, nil }
@@ -1701,13 +2251,24 @@ end
 -- * nextPageToken [string] <p>A token used for advancing to the next page of results from your get operations request.</p>
 -- @return GetOperationsResult structure as a key-value pair table
 function M.GetOperationsResult(args)
-	assert(args, "You must provdide an argument table when creating GetOperationsResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetOperationsResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["operations"] = args["operations"],
 		["nextPageToken"] = args["nextPageToken"],
 	}
-	asserts.AssertGetOperationsResult(t)
-	return t
+	asserts.AssertGetOperationsResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UnpeerVpcRequest = { nil }
@@ -1726,11 +2287,22 @@ end
 -- Valid keys:
 -- @return UnpeerVpcRequest structure as a key-value pair table
 function M.UnpeerVpcRequest(args)
-	assert(args, "You must provdide an argument table when creating UnpeerVpcRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UnpeerVpcRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertUnpeerVpcRequest(t)
-	return t
+	asserts.AssertUnpeerVpcRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UnpeerVpcResult = { ["operation"] = true, nil }
@@ -1751,12 +2323,23 @@ end
 -- * operation [Operation] <p>An array of key-value pairs containing information about the request operation.</p>
 -- @return UnpeerVpcResult structure as a key-value pair table
 function M.UnpeerVpcResult(args)
-	assert(args, "You must provdide an argument table when creating UnpeerVpcResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UnpeerVpcResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["operation"] = args["operation"],
 	}
-	asserts.AssertUnpeerVpcResult(t)
-	return t
+	asserts.AssertUnpeerVpcResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteDomainResult = { ["operation"] = true, nil }
@@ -1777,12 +2360,23 @@ end
 -- * operation [Operation] <p>An array of key-value pairs containing information about the results of your delete domain request.</p>
 -- @return DeleteDomainResult structure as a key-value pair table
 function M.DeleteDomainResult(args)
-	assert(args, "You must provdide an argument table when creating DeleteDomainResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteDomainResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["operation"] = args["operation"],
 	}
-	asserts.AssertDeleteDomainResult(t)
-	return t
+	asserts.AssertDeleteDomainResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetKeyPairsRequest = { ["pageToken"] = true, nil }
@@ -1803,12 +2397,23 @@ end
 -- * pageToken [string] <p>A token used for advancing to the next page of results from your get key pairs request.</p>
 -- @return GetKeyPairsRequest structure as a key-value pair table
 function M.GetKeyPairsRequest(args)
-	assert(args, "You must provdide an argument table when creating GetKeyPairsRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetKeyPairsRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["pageToken"] = args["pageToken"],
 	}
-	asserts.AssertGetKeyPairsRequest(t)
-	return t
+	asserts.AssertGetKeyPairsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ImportKeyPairRequest = { ["publicKeyBase64"] = true, ["keyPairName"] = true, nil }
@@ -1835,13 +2440,24 @@ end
 -- Required key: publicKeyBase64
 -- @return ImportKeyPairRequest structure as a key-value pair table
 function M.ImportKeyPairRequest(args)
-	assert(args, "You must provdide an argument table when creating ImportKeyPairRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ImportKeyPairRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["publicKeyBase64"] = args["publicKeyBase64"],
 		["keyPairName"] = args["keyPairName"],
 	}
-	asserts.AssertImportKeyPairRequest(t)
-	return t
+	asserts.AssertImportKeyPairRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.PutInstancePublicPortsResult = { ["operation"] = true, nil }
@@ -1862,12 +2478,23 @@ end
 -- * operation [Operation] <p>Describes metadata about the operation you just executed.</p>
 -- @return PutInstancePublicPortsResult structure as a key-value pair table
 function M.PutInstancePublicPortsResult(args)
-	assert(args, "You must provdide an argument table when creating PutInstancePublicPortsResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating PutInstancePublicPortsResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["operation"] = args["operation"],
 	}
-	asserts.AssertPutInstancePublicPortsResult(t)
-	return t
+	asserts.AssertPutInstancePublicPortsResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteInstanceSnapshotRequest = { ["instanceSnapshotName"] = true, nil }
@@ -1890,12 +2517,23 @@ end
 -- Required key: instanceSnapshotName
 -- @return DeleteInstanceSnapshotRequest structure as a key-value pair table
 function M.DeleteInstanceSnapshotRequest(args)
-	assert(args, "You must provdide an argument table when creating DeleteInstanceSnapshotRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteInstanceSnapshotRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["instanceSnapshotName"] = args["instanceSnapshotName"],
 	}
-	asserts.AssertDeleteInstanceSnapshotRequest(t)
-	return t
+	asserts.AssertDeleteInstanceSnapshotRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetOperationsForResourceResult = { ["operations"] = true, ["nextPageToken"] = true, ["nextPageCount"] = true, nil }
@@ -1920,14 +2558,25 @@ end
 -- * nextPageCount [string] <p>(Deprecated) Returns the number of pages of results that remain.</p> <note> <p>In releases prior to June 12, 2017, this parameter returned <code>null</code> by the API. It is now deprecated, and the API returns the <code>nextPageToken</code> parameter instead.</p> </note>
 -- @return GetOperationsForResourceResult structure as a key-value pair table
 function M.GetOperationsForResourceResult(args)
-	assert(args, "You must provdide an argument table when creating GetOperationsForResourceResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetOperationsForResourceResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["operations"] = args["operations"],
 		["nextPageToken"] = args["nextPageToken"],
 		["nextPageCount"] = args["nextPageCount"],
 	}
-	asserts.AssertGetOperationsForResourceResult(t)
-	return t
+	asserts.AssertGetOperationsForResourceResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetStaticIpsResult = { ["nextPageToken"] = true, ["staticIps"] = true, nil }
@@ -1950,13 +2599,24 @@ end
 -- * staticIps [StaticIpList] <p>An array of key-value pairs containing information about your get static IPs request.</p>
 -- @return GetStaticIpsResult structure as a key-value pair table
 function M.GetStaticIpsResult(args)
-	assert(args, "You must provdide an argument table when creating GetStaticIpsResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetStaticIpsResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["nextPageToken"] = args["nextPageToken"],
 		["staticIps"] = args["staticIps"],
 	}
-	asserts.AssertGetStaticIpsResult(t)
-	return t
+	asserts.AssertGetStaticIpsResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Domain = { ["domainEntries"] = true, ["name"] = true, ["resourceType"] = true, ["supportCode"] = true, ["arn"] = true, ["createdAt"] = true, ["location"] = true, nil }
@@ -1989,8 +2649,14 @@ end
 -- * location [ResourceLocation] <p>The AWS Region and Availability Zones where the domain recordset was created.</p>
 -- @return Domain structure as a key-value pair table
 function M.Domain(args)
-	assert(args, "You must provdide an argument table when creating Domain")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Domain")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["domainEntries"] = args["domainEntries"],
 		["name"] = args["name"],
 		["resourceType"] = args["resourceType"],
@@ -1999,8 +2665,13 @@ function M.Domain(args)
 		["createdAt"] = args["createdAt"],
 		["location"] = args["location"],
 	}
-	asserts.AssertDomain(t)
-	return t
+	asserts.AssertDomain(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AvailabilityZone = { ["state"] = true, ["zoneName"] = true, nil }
@@ -2023,13 +2694,24 @@ end
 -- * zoneName [NonEmptyString] <p>The name of the Availability Zone. The format is <code>us-east-1a</code> (case-sensitive).</p>
 -- @return AvailabilityZone structure as a key-value pair table
 function M.AvailabilityZone(args)
-	assert(args, "You must provdide an argument table when creating AvailabilityZone")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AvailabilityZone")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["state"] = args["state"],
 		["zoneName"] = args["zoneName"],
 	}
-	asserts.AssertAvailabilityZone(t)
-	return t
+	asserts.AssertAvailabilityZone(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InstanceHardware = { ["cpuCount"] = true, ["disks"] = true, ["ramSizeInGb"] = true, nil }
@@ -2054,14 +2736,25 @@ end
 -- * ramSizeInGb [float] <p>The amount of RAM in GB on the instance (e.g., <code>1.0</code>).</p>
 -- @return InstanceHardware structure as a key-value pair table
 function M.InstanceHardware(args)
-	assert(args, "You must provdide an argument table when creating InstanceHardware")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InstanceHardware")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["cpuCount"] = args["cpuCount"],
 		["disks"] = args["disks"],
 		["ramSizeInGb"] = args["ramSizeInGb"],
 	}
-	asserts.AssertInstanceHardware(t)
-	return t
+	asserts.AssertInstanceHardware(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.PeerVpcRequest = { nil }
@@ -2080,11 +2773,22 @@ end
 -- Valid keys:
 -- @return PeerVpcRequest structure as a key-value pair table
 function M.PeerVpcRequest(args)
-	assert(args, "You must provdide an argument table when creating PeerVpcRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating PeerVpcRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertPeerVpcRequest(t)
-	return t
+	asserts.AssertPeerVpcRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.StopInstanceResult = { ["operations"] = true, nil }
@@ -2105,12 +2809,23 @@ end
 -- * operations [OperationList] <p>An array of key-value pairs containing information about the request operation.</p>
 -- @return StopInstanceResult structure as a key-value pair table
 function M.StopInstanceResult(args)
-	assert(args, "You must provdide an argument table when creating StopInstanceResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating StopInstanceResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["operations"] = args["operations"],
 	}
-	asserts.AssertStopInstanceResult(t)
-	return t
+	asserts.AssertStopInstanceResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.KeyPair = { ["name"] = true, ["resourceType"] = true, ["supportCode"] = true, ["arn"] = true, ["fingerprint"] = true, ["createdAt"] = true, ["location"] = true, nil }
@@ -2143,8 +2858,14 @@ end
 -- * location [ResourceLocation] <p>The region name and Availability Zone where the key pair was created.</p>
 -- @return KeyPair structure as a key-value pair table
 function M.KeyPair(args)
-	assert(args, "You must provdide an argument table when creating KeyPair")
-	local t = { 
+	assert(args, "You must provide an argument table when creating KeyPair")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["name"] = args["name"],
 		["resourceType"] = args["resourceType"],
 		["supportCode"] = args["supportCode"],
@@ -2153,8 +2874,13 @@ function M.KeyPair(args)
 		["createdAt"] = args["createdAt"],
 		["location"] = args["location"],
 	}
-	asserts.AssertKeyPair(t)
-	return t
+	asserts.AssertKeyPair(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetActiveNamesRequest = { ["pageToken"] = true, nil }
@@ -2175,12 +2901,23 @@ end
 -- * pageToken [string] <p>A token used for paginating results from your get active names request.</p>
 -- @return GetActiveNamesRequest structure as a key-value pair table
 function M.GetActiveNamesRequest(args)
-	assert(args, "You must provdide an argument table when creating GetActiveNamesRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetActiveNamesRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["pageToken"] = args["pageToken"],
 	}
-	asserts.AssertGetActiveNamesRequest(t)
-	return t
+	asserts.AssertGetActiveNamesRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CloseInstancePublicPortsRequest = { ["instanceName"] = true, ["portInfo"] = true, nil }
@@ -2207,13 +2944,24 @@ end
 -- Required key: instanceName
 -- @return CloseInstancePublicPortsRequest structure as a key-value pair table
 function M.CloseInstancePublicPortsRequest(args)
-	assert(args, "You must provdide an argument table when creating CloseInstancePublicPortsRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CloseInstancePublicPortsRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["instanceName"] = args["instanceName"],
 		["portInfo"] = args["portInfo"],
 	}
-	asserts.AssertCloseInstancePublicPortsRequest(t)
-	return t
+	asserts.AssertCloseInstancePublicPortsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.PortInfo = { ["toPort"] = true, ["fromPort"] = true, ["protocol"] = true, nil }
@@ -2238,14 +2986,25 @@ end
 -- * protocol [NetworkProtocol] <p>The protocol. </p>
 -- @return PortInfo structure as a key-value pair table
 function M.PortInfo(args)
-	assert(args, "You must provdide an argument table when creating PortInfo")
-	local t = { 
+	assert(args, "You must provide an argument table when creating PortInfo")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["toPort"] = args["toPort"],
 		["fromPort"] = args["fromPort"],
 		["protocol"] = args["protocol"],
 	}
-	asserts.AssertPortInfo(t)
-	return t
+	asserts.AssertPortInfo(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateDomainEntryRequest = { ["domainEntry"] = true, ["domainName"] = true, nil }
@@ -2272,13 +3031,24 @@ end
 -- Required key: domainEntry
 -- @return CreateDomainEntryRequest structure as a key-value pair table
 function M.CreateDomainEntryRequest(args)
-	assert(args, "You must provdide an argument table when creating CreateDomainEntryRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateDomainEntryRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["domainEntry"] = args["domainEntry"],
 		["domainName"] = args["domainName"],
 	}
-	asserts.AssertCreateDomainEntryRequest(t)
-	return t
+	asserts.AssertCreateDomainEntryRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateDomainEntryResult = { ["operation"] = true, nil }
@@ -2299,12 +3069,23 @@ end
 -- * operation [Operation] <p>An array of key-value pairs containing information about the operation.</p>
 -- @return CreateDomainEntryResult structure as a key-value pair table
 function M.CreateDomainEntryResult(args)
-	assert(args, "You must provdide an argument table when creating CreateDomainEntryResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateDomainEntryResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["operation"] = args["operation"],
 	}
-	asserts.AssertCreateDomainEntryResult(t)
-	return t
+	asserts.AssertCreateDomainEntryResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetInstanceRequest = { ["instanceName"] = true, nil }
@@ -2327,12 +3108,23 @@ end
 -- Required key: instanceName
 -- @return GetInstanceRequest structure as a key-value pair table
 function M.GetInstanceRequest(args)
-	assert(args, "You must provdide an argument table when creating GetInstanceRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetInstanceRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["instanceName"] = args["instanceName"],
 	}
-	asserts.AssertGetInstanceRequest(t)
-	return t
+	asserts.AssertGetInstanceRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetBundlesRequest = { ["includeInactive"] = true, ["pageToken"] = true, nil }
@@ -2355,13 +3147,24 @@ end
 -- * pageToken [string] <p>A token used for advancing to the next page of results from your get bundles request.</p>
 -- @return GetBundlesRequest structure as a key-value pair table
 function M.GetBundlesRequest(args)
-	assert(args, "You must provdide an argument table when creating GetBundlesRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetBundlesRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["includeInactive"] = args["includeInactive"],
 		["pageToken"] = args["pageToken"],
 	}
-	asserts.AssertGetBundlesRequest(t)
-	return t
+	asserts.AssertGetBundlesRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ImportKeyPairResult = { ["operation"] = true, nil }
@@ -2382,12 +3185,23 @@ end
 -- * operation [Operation] <p>An array of key-value pairs containing information about the request operation.</p>
 -- @return ImportKeyPairResult structure as a key-value pair table
 function M.ImportKeyPairResult(args)
-	assert(args, "You must provdide an argument table when creating ImportKeyPairResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ImportKeyPairResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["operation"] = args["operation"],
 	}
-	asserts.AssertImportKeyPairResult(t)
-	return t
+	asserts.AssertImportKeyPairResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.RebootInstanceRequest = { ["instanceName"] = true, nil }
@@ -2410,12 +3224,23 @@ end
 -- Required key: instanceName
 -- @return RebootInstanceRequest structure as a key-value pair table
 function M.RebootInstanceRequest(args)
-	assert(args, "You must provdide an argument table when creating RebootInstanceRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating RebootInstanceRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["instanceName"] = args["instanceName"],
 	}
-	asserts.AssertRebootInstanceRequest(t)
-	return t
+	asserts.AssertRebootInstanceRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.OpenInstancePublicPortsRequest = { ["instanceName"] = true, ["portInfo"] = true, nil }
@@ -2442,13 +3267,24 @@ end
 -- Required key: instanceName
 -- @return OpenInstancePublicPortsRequest structure as a key-value pair table
 function M.OpenInstancePublicPortsRequest(args)
-	assert(args, "You must provdide an argument table when creating OpenInstancePublicPortsRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating OpenInstancePublicPortsRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["instanceName"] = args["instanceName"],
 		["portInfo"] = args["portInfo"],
 	}
-	asserts.AssertOpenInstancePublicPortsRequest(t)
-	return t
+	asserts.AssertOpenInstancePublicPortsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Blueprint = { ["group"] = true, ["description"] = true, ["productUrl"] = true, ["version"] = true, ["licenseUrl"] = true, ["versionCode"] = true, ["blueprintId"] = true, ["minPower"] = true, ["type"] = true, ["isActive"] = true, ["name"] = true, nil }
@@ -2489,8 +3325,14 @@ end
 -- * name [ResourceName] <p>The friendly name of the blueprint (e.g., <code>Amazon Linux</code>).</p>
 -- @return Blueprint structure as a key-value pair table
 function M.Blueprint(args)
-	assert(args, "You must provdide an argument table when creating Blueprint")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Blueprint")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["group"] = args["group"],
 		["description"] = args["description"],
 		["productUrl"] = args["productUrl"],
@@ -2503,8 +3345,13 @@ function M.Blueprint(args)
 		["isActive"] = args["isActive"],
 		["name"] = args["name"],
 	}
-	asserts.AssertBlueprint(t)
-	return t
+	asserts.AssertBlueprint(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetInstancesRequest = { ["pageToken"] = true, nil }
@@ -2525,12 +3372,23 @@ end
 -- * pageToken [string] <p>A token used for advancing to the next page of results from your get instances request.</p>
 -- @return GetInstancesRequest structure as a key-value pair table
 function M.GetInstancesRequest(args)
-	assert(args, "You must provdide an argument table when creating GetInstancesRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetInstancesRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["pageToken"] = args["pageToken"],
 	}
-	asserts.AssertGetInstancesRequest(t)
-	return t
+	asserts.AssertGetInstancesRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ResourceLocation = { ["availabilityZone"] = true, ["regionName"] = true, nil }
@@ -2553,13 +3411,24 @@ end
 -- * regionName [RegionName] <p>The AWS Region name.</p>
 -- @return ResourceLocation structure as a key-value pair table
 function M.ResourceLocation(args)
-	assert(args, "You must provdide an argument table when creating ResourceLocation")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ResourceLocation")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["availabilityZone"] = args["availabilityZone"],
 		["regionName"] = args["regionName"],
 	}
-	asserts.AssertResourceLocation(t)
-	return t
+	asserts.AssertResourceLocation(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateDomainRequest = { ["domainName"] = true, nil }
@@ -2582,12 +3451,23 @@ end
 -- Required key: domainName
 -- @return CreateDomainRequest structure as a key-value pair table
 function M.CreateDomainRequest(args)
-	assert(args, "You must provdide an argument table when creating CreateDomainRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateDomainRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["domainName"] = args["domainName"],
 	}
-	asserts.AssertCreateDomainRequest(t)
-	return t
+	asserts.AssertCreateDomainRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Bundle = { ["name"] = true, ["power"] = true, ["price"] = true, ["ramSizeInGb"] = true, ["diskSizeInGb"] = true, ["transferPerMonthInGb"] = true, ["cpuCount"] = true, ["instanceType"] = true, ["isActive"] = true, ["bundleId"] = true, nil }
@@ -2626,8 +3506,14 @@ end
 -- * bundleId [NonEmptyString] <p>The bundle ID (e.g., <code>micro_1_0</code>).</p>
 -- @return Bundle structure as a key-value pair table
 function M.Bundle(args)
-	assert(args, "You must provdide an argument table when creating Bundle")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Bundle")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["name"] = args["name"],
 		["power"] = args["power"],
 		["price"] = args["price"],
@@ -2639,8 +3525,13 @@ function M.Bundle(args)
 		["isActive"] = args["isActive"],
 		["bundleId"] = args["bundleId"],
 	}
-	asserts.AssertBundle(t)
-	return t
+	asserts.AssertBundle(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteInstanceResult = { ["operations"] = true, nil }
@@ -2661,12 +3552,23 @@ end
 -- * operations [OperationList] <p>An array of key-value pairs containing information about the results of your delete instance request.</p>
 -- @return DeleteInstanceResult structure as a key-value pair table
 function M.DeleteInstanceResult(args)
-	assert(args, "You must provdide an argument table when creating DeleteInstanceResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteInstanceResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["operations"] = args["operations"],
 	}
-	asserts.AssertDeleteInstanceResult(t)
-	return t
+	asserts.AssertDeleteInstanceResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidInputException = { ["docs"] = true, ["message"] = true, ["code"] = true, ["tip"] = true, nil }
@@ -2693,15 +3595,26 @@ end
 -- * tip [string] 
 -- @return InvalidInputException structure as a key-value pair table
 function M.InvalidInputException(args)
-	assert(args, "You must provdide an argument table when creating InvalidInputException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidInputException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["docs"] = args["docs"],
 		["message"] = args["message"],
 		["code"] = args["code"],
 		["tip"] = args["tip"],
 	}
-	asserts.AssertInvalidInputException(t)
-	return t
+	asserts.AssertInvalidInputException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AccountSetupInProgressException = { ["docs"] = true, ["message"] = true, ["code"] = true, ["tip"] = true, nil }
@@ -2728,15 +3641,26 @@ end
 -- * tip [string] 
 -- @return AccountSetupInProgressException structure as a key-value pair table
 function M.AccountSetupInProgressException(args)
-	assert(args, "You must provdide an argument table when creating AccountSetupInProgressException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AccountSetupInProgressException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["docs"] = args["docs"],
 		["message"] = args["message"],
 		["code"] = args["code"],
 		["tip"] = args["tip"],
 	}
-	asserts.AssertAccountSetupInProgressException(t)
-	return t
+	asserts.AssertAccountSetupInProgressException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteDomainEntryResult = { ["operation"] = true, nil }
@@ -2757,12 +3681,23 @@ end
 -- * operation [Operation] <p>An array of key-value pairs containing information about the results of your delete domain entry request.</p>
 -- @return DeleteDomainEntryResult structure as a key-value pair table
 function M.DeleteDomainEntryResult(args)
-	assert(args, "You must provdide an argument table when creating DeleteDomainEntryResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteDomainEntryResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["operation"] = args["operation"],
 	}
-	asserts.AssertDeleteDomainEntryResult(t)
-	return t
+	asserts.AssertDeleteDomainEntryResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateKeyPairRequest = { ["keyPairName"] = true, nil }
@@ -2785,12 +3720,23 @@ end
 -- Required key: keyPairName
 -- @return CreateKeyPairRequest structure as a key-value pair table
 function M.CreateKeyPairRequest(args)
-	assert(args, "You must provdide an argument table when creating CreateKeyPairRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateKeyPairRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["keyPairName"] = args["keyPairName"],
 	}
-	asserts.AssertCreateKeyPairRequest(t)
-	return t
+	asserts.AssertCreateKeyPairRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteDomainEntryRequest = { ["domainEntry"] = true, ["domainName"] = true, nil }
@@ -2817,13 +3763,24 @@ end
 -- Required key: domainEntry
 -- @return DeleteDomainEntryRequest structure as a key-value pair table
 function M.DeleteDomainEntryRequest(args)
-	assert(args, "You must provdide an argument table when creating DeleteDomainEntryRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteDomainEntryRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["domainEntry"] = args["domainEntry"],
 		["domainName"] = args["domainName"],
 	}
-	asserts.AssertDeleteDomainEntryRequest(t)
-	return t
+	asserts.AssertDeleteDomainEntryRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DomainEntry = { ["type"] = true, ["options"] = true, ["target"] = true, ["id"] = true, ["name"] = true, nil }
@@ -2852,16 +3809,27 @@ end
 -- * name [DomainName] <p>The name of the domain.</p>
 -- @return DomainEntry structure as a key-value pair table
 function M.DomainEntry(args)
-	assert(args, "You must provdide an argument table when creating DomainEntry")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DomainEntry")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["type"] = args["type"],
 		["options"] = args["options"],
 		["target"] = args["target"],
 		["id"] = args["id"],
 		["name"] = args["name"],
 	}
-	asserts.AssertDomainEntry(t)
-	return t
+	asserts.AssertDomainEntry(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetStaticIpRequest = { ["staticIpName"] = true, nil }
@@ -2884,12 +3852,23 @@ end
 -- Required key: staticIpName
 -- @return GetStaticIpRequest structure as a key-value pair table
 function M.GetStaticIpRequest(args)
-	assert(args, "You must provdide an argument table when creating GetStaticIpRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetStaticIpRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["staticIpName"] = args["staticIpName"],
 	}
-	asserts.AssertGetStaticIpRequest(t)
-	return t
+	asserts.AssertGetStaticIpRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DownloadDefaultKeyPairResult = { ["publicKeyBase64"] = true, ["privateKeyBase64"] = true, nil }
@@ -2912,13 +3891,24 @@ end
 -- * privateKeyBase64 [Base64] <p>A base64-encoded RSA private key.</p>
 -- @return DownloadDefaultKeyPairResult structure as a key-value pair table
 function M.DownloadDefaultKeyPairResult(args)
-	assert(args, "You must provdide an argument table when creating DownloadDefaultKeyPairResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DownloadDefaultKeyPairResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["publicKeyBase64"] = args["publicKeyBase64"],
 		["privateKeyBase64"] = args["privateKeyBase64"],
 	}
-	asserts.AssertDownloadDefaultKeyPairResult(t)
-	return t
+	asserts.AssertDownloadDefaultKeyPairResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateInstancesFromSnapshotResult = { ["operations"] = true, nil }
@@ -2939,12 +3929,23 @@ end
 -- * operations [OperationList] <p>An array of key-value pairs containing information about the results of your create instances from snapshot request.</p>
 -- @return CreateInstancesFromSnapshotResult structure as a key-value pair table
 function M.CreateInstancesFromSnapshotResult(args)
-	assert(args, "You must provdide an argument table when creating CreateInstancesFromSnapshotResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateInstancesFromSnapshotResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["operations"] = args["operations"],
 	}
-	asserts.AssertCreateInstancesFromSnapshotResult(t)
-	return t
+	asserts.AssertCreateInstancesFromSnapshotResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DownloadDefaultKeyPairRequest = { nil }
@@ -2963,11 +3964,22 @@ end
 -- Valid keys:
 -- @return DownloadDefaultKeyPairRequest structure as a key-value pair table
 function M.DownloadDefaultKeyPairRequest(args)
-	assert(args, "You must provdide an argument table when creating DownloadDefaultKeyPairRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DownloadDefaultKeyPairRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertDownloadDefaultKeyPairRequest(t)
-	return t
+	asserts.AssertDownloadDefaultKeyPairRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.IsVpcPeeredResult = { ["isPeered"] = true, nil }
@@ -2988,12 +4000,23 @@ end
 -- * isPeered [boolean] <p>Returns <code>true</code> if the Lightsail VPC is peered; otherwise, <code>false</code>.</p>
 -- @return IsVpcPeeredResult structure as a key-value pair table
 function M.IsVpcPeeredResult(args)
-	assert(args, "You must provdide an argument table when creating IsVpcPeeredResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating IsVpcPeeredResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["isPeered"] = args["isPeered"],
 	}
-	asserts.AssertIsVpcPeeredResult(t)
-	return t
+	asserts.AssertIsVpcPeeredResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.StaticIp = { ["name"] = true, ["resourceType"] = true, ["supportCode"] = true, ["attachedTo"] = true, ["arn"] = true, ["isAttached"] = true, ["ipAddress"] = true, ["createdAt"] = true, ["location"] = true, nil }
@@ -3030,8 +4053,14 @@ end
 -- * location [ResourceLocation] <p>The region and Availability Zone where the static IP was created.</p>
 -- @return StaticIp structure as a key-value pair table
 function M.StaticIp(args)
-	assert(args, "You must provdide an argument table when creating StaticIp")
-	local t = { 
+	assert(args, "You must provide an argument table when creating StaticIp")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["name"] = args["name"],
 		["resourceType"] = args["resourceType"],
 		["supportCode"] = args["supportCode"],
@@ -3042,8 +4071,13 @@ function M.StaticIp(args)
 		["createdAt"] = args["createdAt"],
 		["location"] = args["location"],
 	}
-	asserts.AssertStaticIp(t)
-	return t
+	asserts.AssertStaticIp(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteInstanceRequest = { ["instanceName"] = true, nil }
@@ -3066,12 +4100,23 @@ end
 -- Required key: instanceName
 -- @return DeleteInstanceRequest structure as a key-value pair table
 function M.DeleteInstanceRequest(args)
-	assert(args, "You must provdide an argument table when creating DeleteInstanceRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteInstanceRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["instanceName"] = args["instanceName"],
 	}
-	asserts.AssertDeleteInstanceRequest(t)
-	return t
+	asserts.AssertDeleteInstanceRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetInstancePortStatesRequest = { ["instanceName"] = true, nil }
@@ -3094,12 +4139,23 @@ end
 -- Required key: instanceName
 -- @return GetInstancePortStatesRequest structure as a key-value pair table
 function M.GetInstancePortStatesRequest(args)
-	assert(args, "You must provdide an argument table when creating GetInstancePortStatesRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetInstancePortStatesRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["instanceName"] = args["instanceName"],
 	}
-	asserts.AssertGetInstancePortStatesRequest(t)
-	return t
+	asserts.AssertGetInstancePortStatesRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CloseInstancePublicPortsResult = { ["operation"] = true, nil }
@@ -3120,12 +4176,23 @@ end
 -- * operation [Operation] <p>An array of key-value pairs that contains information about the operation.</p>
 -- @return CloseInstancePublicPortsResult structure as a key-value pair table
 function M.CloseInstancePublicPortsResult(args)
-	assert(args, "You must provdide an argument table when creating CloseInstancePublicPortsResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CloseInstancePublicPortsResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["operation"] = args["operation"],
 	}
-	asserts.AssertCloseInstancePublicPortsResult(t)
-	return t
+	asserts.AssertCloseInstancePublicPortsResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetInstanceAccessDetailsRequest = { ["protocol"] = true, ["instanceName"] = true, nil }
@@ -3150,13 +4217,24 @@ end
 -- Required key: instanceName
 -- @return GetInstanceAccessDetailsRequest structure as a key-value pair table
 function M.GetInstanceAccessDetailsRequest(args)
-	assert(args, "You must provdide an argument table when creating GetInstanceAccessDetailsRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetInstanceAccessDetailsRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["protocol"] = args["protocol"],
 		["instanceName"] = args["instanceName"],
 	}
-	asserts.AssertGetInstanceAccessDetailsRequest(t)
-	return t
+	asserts.AssertGetInstanceAccessDetailsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetInstanceSnapshotResult = { ["instanceSnapshot"] = true, nil }
@@ -3177,12 +4255,23 @@ end
 -- * instanceSnapshot [InstanceSnapshot] <p>An array of key-value pairs containing information about the results of your get instance snapshot request.</p>
 -- @return GetInstanceSnapshotResult structure as a key-value pair table
 function M.GetInstanceSnapshotResult(args)
-	assert(args, "You must provdide an argument table when creating GetInstanceSnapshotResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetInstanceSnapshotResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["instanceSnapshot"] = args["instanceSnapshot"],
 	}
-	asserts.AssertGetInstanceSnapshotResult(t)
-	return t
+	asserts.AssertGetInstanceSnapshotResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetOperationsRequest = { ["pageToken"] = true, nil }
@@ -3203,12 +4292,23 @@ end
 -- * pageToken [string] <p>A token used for advancing to the next page of results from your get operations request.</p>
 -- @return GetOperationsRequest structure as a key-value pair table
 function M.GetOperationsRequest(args)
-	assert(args, "You must provdide an argument table when creating GetOperationsRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetOperationsRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["pageToken"] = args["pageToken"],
 	}
-	asserts.AssertGetOperationsRequest(t)
-	return t
+	asserts.AssertGetOperationsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetBundlesResult = { ["nextPageToken"] = true, ["bundles"] = true, nil }
@@ -3231,13 +4331,24 @@ end
 -- * bundles [BundleList] <p>An array of key-value pairs that contains information about the available bundles.</p>
 -- @return GetBundlesResult structure as a key-value pair table
 function M.GetBundlesResult(args)
-	assert(args, "You must provdide an argument table when creating GetBundlesResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetBundlesResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["nextPageToken"] = args["nextPageToken"],
 		["bundles"] = args["bundles"],
 	}
-	asserts.AssertGetBundlesResult(t)
-	return t
+	asserts.AssertGetBundlesResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InstanceNetworking = { ["monthlyTransfer"] = true, ["ports"] = true, nil }
@@ -3260,13 +4371,24 @@ end
 -- * ports [InstancePortInfoList] <p>An array of key-value pairs containing information about the ports on the instance.</p>
 -- @return InstanceNetworking structure as a key-value pair table
 function M.InstanceNetworking(args)
-	assert(args, "You must provdide an argument table when creating InstanceNetworking")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InstanceNetworking")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["monthlyTransfer"] = args["monthlyTransfer"],
 		["ports"] = args["ports"],
 	}
-	asserts.AssertInstanceNetworking(t)
-	return t
+	asserts.AssertInstanceNetworking(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdateDomainEntryResult = { ["operations"] = true, nil }
@@ -3287,12 +4409,23 @@ end
 -- * operations [OperationList] <p>An array of key-value pairs containing information about the request operation.</p>
 -- @return UpdateDomainEntryResult structure as a key-value pair table
 function M.UpdateDomainEntryResult(args)
-	assert(args, "You must provdide an argument table when creating UpdateDomainEntryResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateDomainEntryResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["operations"] = args["operations"],
 	}
-	asserts.AssertUpdateDomainEntryResult(t)
-	return t
+	asserts.AssertUpdateDomainEntryResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ServiceException = { ["docs"] = true, ["message"] = true, ["code"] = true, ["tip"] = true, nil }
@@ -3319,15 +4452,26 @@ end
 -- * tip [string] 
 -- @return ServiceException structure as a key-value pair table
 function M.ServiceException(args)
-	assert(args, "You must provdide an argument table when creating ServiceException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ServiceException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["docs"] = args["docs"],
 		["message"] = args["message"],
 		["code"] = args["code"],
 		["tip"] = args["tip"],
 	}
-	asserts.AssertServiceException(t)
-	return t
+	asserts.AssertServiceException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteKeyPairResult = { ["operation"] = true, nil }
@@ -3348,12 +4492,23 @@ end
 -- * operation [Operation] <p>An array of key-value pairs containing information about the results of your delete key pair request.</p>
 -- @return DeleteKeyPairResult structure as a key-value pair table
 function M.DeleteKeyPairResult(args)
-	assert(args, "You must provdide an argument table when creating DeleteKeyPairResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteKeyPairResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["operation"] = args["operation"],
 	}
-	asserts.AssertDeleteKeyPairResult(t)
-	return t
+	asserts.AssertDeleteKeyPairResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteInstanceSnapshotResult = { ["operations"] = true, nil }
@@ -3374,12 +4529,23 @@ end
 -- * operations [OperationList] <p>An array of key-value pairs containing information about the results of your delete instance snapshot request.</p>
 -- @return DeleteInstanceSnapshotResult structure as a key-value pair table
 function M.DeleteInstanceSnapshotResult(args)
-	assert(args, "You must provdide an argument table when creating DeleteInstanceSnapshotResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteInstanceSnapshotResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["operations"] = args["operations"],
 	}
-	asserts.AssertDeleteInstanceSnapshotResult(t)
-	return t
+	asserts.AssertDeleteInstanceSnapshotResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetDomainsResult = { ["domains"] = true, ["nextPageToken"] = true, nil }
@@ -3402,13 +4568,24 @@ end
 -- * nextPageToken [string] <p>A token used for advancing to the next page of results from your get active names request.</p>
 -- @return GetDomainsResult structure as a key-value pair table
 function M.GetDomainsResult(args)
-	assert(args, "You must provdide an argument table when creating GetDomainsResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetDomainsResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["domains"] = args["domains"],
 		["nextPageToken"] = args["nextPageToken"],
 	}
-	asserts.AssertGetDomainsResult(t)
-	return t
+	asserts.AssertGetDomainsResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetRegionsRequest = { ["includeAvailabilityZones"] = true, nil }
@@ -3429,12 +4606,23 @@ end
 -- * includeAvailabilityZones [boolean] <p>A Boolean value indicating whether to also include Availability Zones in your get regions request. Availability Zones are indicated with a letter: e.g., <code>us-east-1a</code>.</p>
 -- @return GetRegionsRequest structure as a key-value pair table
 function M.GetRegionsRequest(args)
-	assert(args, "You must provdide an argument table when creating GetRegionsRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetRegionsRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["includeAvailabilityZones"] = args["includeAvailabilityZones"],
 	}
-	asserts.AssertGetRegionsRequest(t)
-	return t
+	asserts.AssertGetRegionsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetActiveNamesResult = { ["nextPageToken"] = true, ["activeNames"] = true, nil }
@@ -3457,13 +4645,24 @@ end
 -- * activeNames [StringList] <p>The list of active names returned by the get active names request.</p>
 -- @return GetActiveNamesResult structure as a key-value pair table
 function M.GetActiveNamesResult(args)
-	assert(args, "You must provdide an argument table when creating GetActiveNamesResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetActiveNamesResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["nextPageToken"] = args["nextPageToken"],
 		["activeNames"] = args["activeNames"],
 	}
-	asserts.AssertGetActiveNamesResult(t)
-	return t
+	asserts.AssertGetActiveNamesResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AllocateStaticIpRequest = { ["staticIpName"] = true, nil }
@@ -3486,12 +4685,23 @@ end
 -- Required key: staticIpName
 -- @return AllocateStaticIpRequest structure as a key-value pair table
 function M.AllocateStaticIpRequest(args)
-	assert(args, "You must provdide an argument table when creating AllocateStaticIpRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AllocateStaticIpRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["staticIpName"] = args["staticIpName"],
 	}
-	asserts.AssertAllocateStaticIpRequest(t)
-	return t
+	asserts.AssertAllocateStaticIpRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AllocateStaticIpResult = { ["operations"] = true, nil }
@@ -3512,12 +4722,23 @@ end
 -- * operations [OperationList] <p>An array of key-value pairs containing information about the static IP address you allocated.</p>
 -- @return AllocateStaticIpResult structure as a key-value pair table
 function M.AllocateStaticIpResult(args)
-	assert(args, "You must provdide an argument table when creating AllocateStaticIpResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AllocateStaticIpResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["operations"] = args["operations"],
 	}
-	asserts.AssertAllocateStaticIpResult(t)
-	return t
+	asserts.AssertAllocateStaticIpResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetBlueprintsRequest = { ["includeInactive"] = true, ["pageToken"] = true, nil }
@@ -3540,13 +4761,24 @@ end
 -- * pageToken [string] <p>A token used for advancing to the next page of results from your get blueprints request.</p>
 -- @return GetBlueprintsRequest structure as a key-value pair table
 function M.GetBlueprintsRequest(args)
-	assert(args, "You must provdide an argument table when creating GetBlueprintsRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetBlueprintsRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["includeInactive"] = args["includeInactive"],
 		["pageToken"] = args["pageToken"],
 	}
-	asserts.AssertGetBlueprintsRequest(t)
-	return t
+	asserts.AssertGetBlueprintsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetInstanceSnapshotsResult = { ["nextPageToken"] = true, ["instanceSnapshots"] = true, nil }
@@ -3569,13 +4801,24 @@ end
 -- * instanceSnapshots [InstanceSnapshotList] <p>An array of key-value pairs containing information about the results of your get instance snapshots request.</p>
 -- @return GetInstanceSnapshotsResult structure as a key-value pair table
 function M.GetInstanceSnapshotsResult(args)
-	assert(args, "You must provdide an argument table when creating GetInstanceSnapshotsResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetInstanceSnapshotsResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["nextPageToken"] = args["nextPageToken"],
 		["instanceSnapshots"] = args["instanceSnapshots"],
 	}
-	asserts.AssertGetInstanceSnapshotsResult(t)
-	return t
+	asserts.AssertGetInstanceSnapshotsResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AccessDeniedException = { ["docs"] = true, ["message"] = true, ["code"] = true, ["tip"] = true, nil }
@@ -3602,15 +4845,26 @@ end
 -- * tip [string] 
 -- @return AccessDeniedException structure as a key-value pair table
 function M.AccessDeniedException(args)
-	assert(args, "You must provdide an argument table when creating AccessDeniedException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AccessDeniedException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["docs"] = args["docs"],
 		["message"] = args["message"],
 		["code"] = args["code"],
 		["tip"] = args["tip"],
 	}
-	asserts.AssertAccessDeniedException(t)
-	return t
+	asserts.AssertAccessDeniedException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InstancePortState = { ["toPort"] = true, ["fromPort"] = true, ["state"] = true, ["protocol"] = true, nil }
@@ -3637,15 +4891,26 @@ end
 -- * protocol [NetworkProtocol] <p>The protocol being used. Can be one of the following.</p> <ul> <li> <p> <code>tcp</code> - Transmission Control Protocol (TCP) provides reliable, ordered, and error-checked delivery of streamed data between applications running on hosts communicating by an IP network. If you have an application that doesn't require reliable data stream service, use UDP instead.</p> </li> <li> <p> <code>all</code> - All transport layer protocol types. For more general information, see <a href="https://en.wikipedia.org/wiki/Transport_layer">Transport layer</a> on Wikipedia.</p> </li> <li> <p> <code>udp</code> - With User Datagram Protocol (UDP), computer applications can send messages (or datagrams) to other hosts on an Internet Protocol (IP) network. Prior communications are not required to set up transmission channels or data paths. Applications that don't require reliable data stream service can use UDP, which provides a connectionless datagram service that emphasizes reduced latency over reliability. If you do require reliable data stream service, use TCP instead.</p> </li> </ul>
 -- @return InstancePortState structure as a key-value pair table
 function M.InstancePortState(args)
-	assert(args, "You must provdide an argument table when creating InstancePortState")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InstancePortState")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["toPort"] = args["toPort"],
 		["fromPort"] = args["fromPort"],
 		["state"] = args["state"],
 		["protocol"] = args["protocol"],
 	}
-	asserts.AssertInstancePortState(t)
-	return t
+	asserts.AssertInstancePortState(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetStaticIpsRequest = { ["pageToken"] = true, nil }
@@ -3666,12 +4931,23 @@ end
 -- * pageToken [string] <p>A token used for advancing to the next page of results from your get static IPs request.</p>
 -- @return GetStaticIpsRequest structure as a key-value pair table
 function M.GetStaticIpsRequest(args)
-	assert(args, "You must provdide an argument table when creating GetStaticIpsRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetStaticIpsRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["pageToken"] = args["pageToken"],
 	}
-	asserts.AssertGetStaticIpsRequest(t)
-	return t
+	asserts.AssertGetStaticIpsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.OperationFailureException = { ["docs"] = true, ["message"] = true, ["code"] = true, ["tip"] = true, nil }
@@ -3698,15 +4974,26 @@ end
 -- * tip [string] 
 -- @return OperationFailureException structure as a key-value pair table
 function M.OperationFailureException(args)
-	assert(args, "You must provdide an argument table when creating OperationFailureException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating OperationFailureException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["docs"] = args["docs"],
 		["message"] = args["message"],
 		["code"] = args["code"],
 		["tip"] = args["tip"],
 	}
-	asserts.AssertOperationFailureException(t)
-	return t
+	asserts.AssertOperationFailureException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetKeyPairsResult = { ["nextPageToken"] = true, ["keyPairs"] = true, nil }
@@ -3729,13 +5016,24 @@ end
 -- * keyPairs [KeyPairList] <p>An array of key-value pairs containing information about the key pairs.</p>
 -- @return GetKeyPairsResult structure as a key-value pair table
 function M.GetKeyPairsResult(args)
-	assert(args, "You must provdide an argument table when creating GetKeyPairsResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetKeyPairsResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["nextPageToken"] = args["nextPageToken"],
 		["keyPairs"] = args["keyPairs"],
 	}
-	asserts.AssertGetKeyPairsResult(t)
-	return t
+	asserts.AssertGetKeyPairsResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetInstanceMetricDataResult = { ["metricData"] = true, ["metricName"] = true, nil }
@@ -3758,13 +5056,24 @@ end
 -- * metricName [InstanceMetricName] <p>The metric name to return data for. </p>
 -- @return GetInstanceMetricDataResult structure as a key-value pair table
 function M.GetInstanceMetricDataResult(args)
-	assert(args, "You must provdide an argument table when creating GetInstanceMetricDataResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetInstanceMetricDataResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["metricData"] = args["metricData"],
 		["metricName"] = args["metricName"],
 	}
-	asserts.AssertGetInstanceMetricDataResult(t)
-	return t
+	asserts.AssertGetInstanceMetricDataResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetDomainResult = { ["domain"] = true, nil }
@@ -3785,12 +5094,23 @@ end
 -- * domain [Domain] <p>An array of key-value pairs containing information about your get domain request.</p>
 -- @return GetDomainResult structure as a key-value pair table
 function M.GetDomainResult(args)
-	assert(args, "You must provdide an argument table when creating GetDomainResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetDomainResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["domain"] = args["domain"],
 	}
-	asserts.AssertGetDomainResult(t)
-	return t
+	asserts.AssertGetDomainResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetInstanceStateResult = { ["state"] = true, nil }
@@ -3811,12 +5131,23 @@ end
 -- * state [InstanceState] <p>The state of the instance.</p>
 -- @return GetInstanceStateResult structure as a key-value pair table
 function M.GetInstanceStateResult(args)
-	assert(args, "You must provdide an argument table when creating GetInstanceStateResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetInstanceStateResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["state"] = args["state"],
 	}
-	asserts.AssertGetInstanceStateResult(t)
-	return t
+	asserts.AssertGetInstanceStateResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AttachStaticIpRequest = { ["staticIpName"] = true, ["instanceName"] = true, nil }
@@ -3843,13 +5174,24 @@ end
 -- Required key: instanceName
 -- @return AttachStaticIpRequest structure as a key-value pair table
 function M.AttachStaticIpRequest(args)
-	assert(args, "You must provdide an argument table when creating AttachStaticIpRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AttachStaticIpRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["staticIpName"] = args["staticIpName"],
 		["instanceName"] = args["instanceName"],
 	}
-	asserts.AssertAttachStaticIpRequest(t)
-	return t
+	asserts.AssertAttachStaticIpRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateInstancesFromSnapshotRequest = { ["userData"] = true, ["availabilityZone"] = true, ["instanceNames"] = true, ["instanceSnapshotName"] = true, ["bundleId"] = true, ["keyPairName"] = true, nil }
@@ -3888,8 +5230,14 @@ end
 -- Required key: bundleId
 -- @return CreateInstancesFromSnapshotRequest structure as a key-value pair table
 function M.CreateInstancesFromSnapshotRequest(args)
-	assert(args, "You must provdide an argument table when creating CreateInstancesFromSnapshotRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateInstancesFromSnapshotRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["userData"] = args["userData"],
 		["availabilityZone"] = args["availabilityZone"],
 		["instanceNames"] = args["instanceNames"],
@@ -3897,8 +5245,13 @@ function M.CreateInstancesFromSnapshotRequest(args)
 		["bundleId"] = args["bundleId"],
 		["keyPairName"] = args["keyPairName"],
 	}
-	asserts.AssertCreateInstancesFromSnapshotRequest(t)
-	return t
+	asserts.AssertCreateInstancesFromSnapshotRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetDomainsRequest = { ["pageToken"] = true, nil }
@@ -3919,12 +5272,23 @@ end
 -- * pageToken [string] <p>A token used for advancing to the next page of results from your get domains request.</p>
 -- @return GetDomainsRequest structure as a key-value pair table
 function M.GetDomainsRequest(args)
-	assert(args, "You must provdide an argument table when creating GetDomainsRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetDomainsRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["pageToken"] = args["pageToken"],
 	}
-	asserts.AssertGetDomainsRequest(t)
-	return t
+	asserts.AssertGetDomainsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateInstanceSnapshotRequest = { ["instanceName"] = true, ["instanceSnapshotName"] = true, nil }
@@ -3951,13 +5315,24 @@ end
 -- Required key: instanceName
 -- @return CreateInstanceSnapshotRequest structure as a key-value pair table
 function M.CreateInstanceSnapshotRequest(args)
-	assert(args, "You must provdide an argument table when creating CreateInstanceSnapshotRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateInstanceSnapshotRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["instanceName"] = args["instanceName"],
 		["instanceSnapshotName"] = args["instanceSnapshotName"],
 	}
-	asserts.AssertCreateInstanceSnapshotRequest(t)
-	return t
+	asserts.AssertCreateInstanceSnapshotRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 function asserts.AssertResourceType(str)
@@ -4635,8 +6010,11 @@ function M.GetDomainAsync(GetDomainRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "Lightsail_20161128.GetDomain",
 	}
+	for header,value in pairs(GetDomainRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", GetDomainRequest, headers, settings, cb)
 	else
@@ -4667,8 +6045,11 @@ function M.GetKeyPairAsync(GetKeyPairRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "Lightsail_20161128.GetKeyPair",
 	}
+	for header,value in pairs(GetKeyPairRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", GetKeyPairRequest, headers, settings, cb)
 	else
@@ -4699,8 +6080,11 @@ function M.GetInstanceMetricDataAsync(GetInstanceMetricDataRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "Lightsail_20161128.GetInstanceMetricData",
 	}
+	for header,value in pairs(GetInstanceMetricDataRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", GetInstanceMetricDataRequest, headers, settings, cb)
 	else
@@ -4731,8 +6115,11 @@ function M.GetStaticIpsAsync(GetStaticIpsRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "Lightsail_20161128.GetStaticIps",
 	}
+	for header,value in pairs(GetStaticIpsRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", GetStaticIpsRequest, headers, settings, cb)
 	else
@@ -4763,8 +6150,11 @@ function M.GetOperationsForResourceAsync(GetOperationsForResourceRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "Lightsail_20161128.GetOperationsForResource",
 	}
+	for header,value in pairs(GetOperationsForResourceRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", GetOperationsForResourceRequest, headers, settings, cb)
 	else
@@ -4795,8 +6185,11 @@ function M.CloseInstancePublicPortsAsync(CloseInstancePublicPortsRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "Lightsail_20161128.CloseInstancePublicPorts",
 	}
+	for header,value in pairs(CloseInstancePublicPortsRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", CloseInstancePublicPortsRequest, headers, settings, cb)
 	else
@@ -4827,8 +6220,11 @@ function M.GetActiveNamesAsync(GetActiveNamesRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "Lightsail_20161128.GetActiveNames",
 	}
+	for header,value in pairs(GetActiveNamesRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", GetActiveNamesRequest, headers, settings, cb)
 	else
@@ -4859,8 +6255,11 @@ function M.GetInstancesAsync(GetInstancesRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "Lightsail_20161128.GetInstances",
 	}
+	for header,value in pairs(GetInstancesRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", GetInstancesRequest, headers, settings, cb)
 	else
@@ -4891,8 +6290,11 @@ function M.PutInstancePublicPortsAsync(PutInstancePublicPortsRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "Lightsail_20161128.PutInstancePublicPorts",
 	}
+	for header,value in pairs(PutInstancePublicPortsRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", PutInstancePublicPortsRequest, headers, settings, cb)
 	else
@@ -4923,8 +6325,11 @@ function M.DeleteInstanceAsync(DeleteInstanceRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "Lightsail_20161128.DeleteInstance",
 	}
+	for header,value in pairs(DeleteInstanceRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteInstanceRequest, headers, settings, cb)
 	else
@@ -4955,8 +6360,11 @@ function M.AttachStaticIpAsync(AttachStaticIpRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "Lightsail_20161128.AttachStaticIp",
 	}
+	for header,value in pairs(AttachStaticIpRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", AttachStaticIpRequest, headers, settings, cb)
 	else
@@ -4987,8 +6395,11 @@ function M.GetStaticIpAsync(GetStaticIpRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "Lightsail_20161128.GetStaticIp",
 	}
+	for header,value in pairs(GetStaticIpRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", GetStaticIpRequest, headers, settings, cb)
 	else
@@ -5019,8 +6430,11 @@ function M.CreateKeyPairAsync(CreateKeyPairRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "Lightsail_20161128.CreateKeyPair",
 	}
+	for header,value in pairs(CreateKeyPairRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateKeyPairRequest, headers, settings, cb)
 	else
@@ -5051,8 +6465,11 @@ function M.CreateDomainEntryAsync(CreateDomainEntryRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "Lightsail_20161128.CreateDomainEntry",
 	}
+	for header,value in pairs(CreateDomainEntryRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateDomainEntryRequest, headers, settings, cb)
 	else
@@ -5083,8 +6500,11 @@ function M.ImportKeyPairAsync(ImportKeyPairRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "Lightsail_20161128.ImportKeyPair",
 	}
+	for header,value in pairs(ImportKeyPairRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ImportKeyPairRequest, headers, settings, cb)
 	else
@@ -5115,8 +6535,11 @@ function M.CreateInstancesFromSnapshotAsync(CreateInstancesFromSnapshotRequest, 
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "Lightsail_20161128.CreateInstancesFromSnapshot",
 	}
+	for header,value in pairs(CreateInstancesFromSnapshotRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateInstancesFromSnapshotRequest, headers, settings, cb)
 	else
@@ -5147,8 +6570,11 @@ function M.GetInstanceSnapshotAsync(GetInstanceSnapshotRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "Lightsail_20161128.GetInstanceSnapshot",
 	}
+	for header,value in pairs(GetInstanceSnapshotRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", GetInstanceSnapshotRequest, headers, settings, cb)
 	else
@@ -5179,8 +6605,11 @@ function M.GetOperationAsync(GetOperationRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "Lightsail_20161128.GetOperation",
 	}
+	for header,value in pairs(GetOperationRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", GetOperationRequest, headers, settings, cb)
 	else
@@ -5211,8 +6640,11 @@ function M.DeleteInstanceSnapshotAsync(DeleteInstanceSnapshotRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "Lightsail_20161128.DeleteInstanceSnapshot",
 	}
+	for header,value in pairs(DeleteInstanceSnapshotRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteInstanceSnapshotRequest, headers, settings, cb)
 	else
@@ -5243,8 +6675,11 @@ function M.OpenInstancePublicPortsAsync(OpenInstancePublicPortsRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "Lightsail_20161128.OpenInstancePublicPorts",
 	}
+	for header,value in pairs(OpenInstancePublicPortsRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", OpenInstancePublicPortsRequest, headers, settings, cb)
 	else
@@ -5275,8 +6710,11 @@ function M.StartInstanceAsync(StartInstanceRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "Lightsail_20161128.StartInstance",
 	}
+	for header,value in pairs(StartInstanceRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", StartInstanceRequest, headers, settings, cb)
 	else
@@ -5307,8 +6745,11 @@ function M.UpdateDomainEntryAsync(UpdateDomainEntryRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "Lightsail_20161128.UpdateDomainEntry",
 	}
+	for header,value in pairs(UpdateDomainEntryRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateDomainEntryRequest, headers, settings, cb)
 	else
@@ -5339,8 +6780,11 @@ function M.GetInstancePortStatesAsync(GetInstancePortStatesRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "Lightsail_20161128.GetInstancePortStates",
 	}
+	for header,value in pairs(GetInstancePortStatesRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", GetInstancePortStatesRequest, headers, settings, cb)
 	else
@@ -5371,8 +6815,11 @@ function M.GetBlueprintsAsync(GetBlueprintsRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "Lightsail_20161128.GetBlueprints",
 	}
+	for header,value in pairs(GetBlueprintsRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", GetBlueprintsRequest, headers, settings, cb)
 	else
@@ -5403,8 +6850,11 @@ function M.CreateDomainAsync(CreateDomainRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "Lightsail_20161128.CreateDomain",
 	}
+	for header,value in pairs(CreateDomainRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateDomainRequest, headers, settings, cb)
 	else
@@ -5435,8 +6885,11 @@ function M.DownloadDefaultKeyPairAsync(DownloadDefaultKeyPairRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "Lightsail_20161128.DownloadDefaultKeyPair",
 	}
+	for header,value in pairs(DownloadDefaultKeyPairRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DownloadDefaultKeyPairRequest, headers, settings, cb)
 	else
@@ -5467,8 +6920,11 @@ function M.DeleteDomainEntryAsync(DeleteDomainEntryRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "Lightsail_20161128.DeleteDomainEntry",
 	}
+	for header,value in pairs(DeleteDomainEntryRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteDomainEntryRequest, headers, settings, cb)
 	else
@@ -5499,8 +6955,11 @@ function M.GetOperationsAsync(GetOperationsRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "Lightsail_20161128.GetOperations",
 	}
+	for header,value in pairs(GetOperationsRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", GetOperationsRequest, headers, settings, cb)
 	else
@@ -5531,8 +6990,11 @@ function M.GetBundlesAsync(GetBundlesRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "Lightsail_20161128.GetBundles",
 	}
+	for header,value in pairs(GetBundlesRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", GetBundlesRequest, headers, settings, cb)
 	else
@@ -5563,8 +7025,11 @@ function M.GetInstanceAsync(GetInstanceRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "Lightsail_20161128.GetInstance",
 	}
+	for header,value in pairs(GetInstanceRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", GetInstanceRequest, headers, settings, cb)
 	else
@@ -5595,8 +7060,11 @@ function M.GetInstanceStateAsync(GetInstanceStateRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "Lightsail_20161128.GetInstanceState",
 	}
+	for header,value in pairs(GetInstanceStateRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", GetInstanceStateRequest, headers, settings, cb)
 	else
@@ -5627,8 +7095,11 @@ function M.CreateInstanceSnapshotAsync(CreateInstanceSnapshotRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "Lightsail_20161128.CreateInstanceSnapshot",
 	}
+	for header,value in pairs(CreateInstanceSnapshotRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateInstanceSnapshotRequest, headers, settings, cb)
 	else
@@ -5659,8 +7130,11 @@ function M.AllocateStaticIpAsync(AllocateStaticIpRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "Lightsail_20161128.AllocateStaticIp",
 	}
+	for header,value in pairs(AllocateStaticIpRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", AllocateStaticIpRequest, headers, settings, cb)
 	else
@@ -5691,8 +7165,11 @@ function M.GetKeyPairsAsync(GetKeyPairsRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "Lightsail_20161128.GetKeyPairs",
 	}
+	for header,value in pairs(GetKeyPairsRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", GetKeyPairsRequest, headers, settings, cb)
 	else
@@ -5723,8 +7200,11 @@ function M.RebootInstanceAsync(RebootInstanceRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "Lightsail_20161128.RebootInstance",
 	}
+	for header,value in pairs(RebootInstanceRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", RebootInstanceRequest, headers, settings, cb)
 	else
@@ -5755,8 +7235,11 @@ function M.GetRegionsAsync(GetRegionsRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "Lightsail_20161128.GetRegions",
 	}
+	for header,value in pairs(GetRegionsRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", GetRegionsRequest, headers, settings, cb)
 	else
@@ -5787,8 +7270,11 @@ function M.GetInstanceSnapshotsAsync(GetInstanceSnapshotsRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "Lightsail_20161128.GetInstanceSnapshots",
 	}
+	for header,value in pairs(GetInstanceSnapshotsRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", GetInstanceSnapshotsRequest, headers, settings, cb)
 	else
@@ -5819,8 +7305,11 @@ function M.StopInstanceAsync(StopInstanceRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "Lightsail_20161128.StopInstance",
 	}
+	for header,value in pairs(StopInstanceRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", StopInstanceRequest, headers, settings, cb)
 	else
@@ -5851,8 +7340,11 @@ function M.GetInstanceAccessDetailsAsync(GetInstanceAccessDetailsRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "Lightsail_20161128.GetInstanceAccessDetails",
 	}
+	for header,value in pairs(GetInstanceAccessDetailsRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", GetInstanceAccessDetailsRequest, headers, settings, cb)
 	else
@@ -5883,8 +7375,11 @@ function M.GetDomainsAsync(GetDomainsRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "Lightsail_20161128.GetDomains",
 	}
+	for header,value in pairs(GetDomainsRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", GetDomainsRequest, headers, settings, cb)
 	else
@@ -5915,8 +7410,11 @@ function M.PeerVpcAsync(PeerVpcRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "Lightsail_20161128.PeerVpc",
 	}
+	for header,value in pairs(PeerVpcRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", PeerVpcRequest, headers, settings, cb)
 	else
@@ -5947,8 +7445,11 @@ function M.ReleaseStaticIpAsync(ReleaseStaticIpRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "Lightsail_20161128.ReleaseStaticIp",
 	}
+	for header,value in pairs(ReleaseStaticIpRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ReleaseStaticIpRequest, headers, settings, cb)
 	else
@@ -5979,8 +7480,11 @@ function M.IsVpcPeeredAsync(IsVpcPeeredRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "Lightsail_20161128.IsVpcPeered",
 	}
+	for header,value in pairs(IsVpcPeeredRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", IsVpcPeeredRequest, headers, settings, cb)
 	else
@@ -6011,8 +7515,11 @@ function M.DetachStaticIpAsync(DetachStaticIpRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "Lightsail_20161128.DetachStaticIp",
 	}
+	for header,value in pairs(DetachStaticIpRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DetachStaticIpRequest, headers, settings, cb)
 	else
@@ -6043,8 +7550,11 @@ function M.CreateInstancesAsync(CreateInstancesRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "Lightsail_20161128.CreateInstances",
 	}
+	for header,value in pairs(CreateInstancesRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateInstancesRequest, headers, settings, cb)
 	else
@@ -6075,8 +7585,11 @@ function M.UnpeerVpcAsync(UnpeerVpcRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "Lightsail_20161128.UnpeerVpc",
 	}
+	for header,value in pairs(UnpeerVpcRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", UnpeerVpcRequest, headers, settings, cb)
 	else
@@ -6107,8 +7620,11 @@ function M.DeleteDomainAsync(DeleteDomainRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "Lightsail_20161128.DeleteDomain",
 	}
+	for header,value in pairs(DeleteDomainRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteDomainRequest, headers, settings, cb)
 	else
@@ -6139,8 +7655,11 @@ function M.DeleteKeyPairAsync(DeleteKeyPairRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "Lightsail_20161128.DeleteKeyPair",
 	}
+	for header,value in pairs(DeleteKeyPairRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteKeyPairRequest, headers, settings, cb)
 	else

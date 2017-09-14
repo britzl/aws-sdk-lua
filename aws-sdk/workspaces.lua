@@ -47,16 +47,27 @@ end
 -- * UserEnabledAsLocalAdministrator [BooleanObject] <p>The WorkSpace user is an administrator on the WorkSpace.</p>
 -- @return DefaultWorkspaceCreationProperties structure as a key-value pair table
 function M.DefaultWorkspaceCreationProperties(args)
-	assert(args, "You must provdide an argument table when creating DefaultWorkspaceCreationProperties")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DefaultWorkspaceCreationProperties")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["EnableInternetAccess"] = args["EnableInternetAccess"],
 		["EnableWorkDocs"] = args["EnableWorkDocs"],
 		["DefaultOu"] = args["DefaultOu"],
 		["CustomSecurityGroupId"] = args["CustomSecurityGroupId"],
 		["UserEnabledAsLocalAdministrator"] = args["UserEnabledAsLocalAdministrator"],
 	}
-	asserts.AssertDefaultWorkspaceCreationProperties(t)
-	return t
+	asserts.AssertDefaultWorkspaceCreationProperties(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteTagsResult = { nil }
@@ -75,11 +86,22 @@ end
 -- Valid keys:
 -- @return DeleteTagsResult structure as a key-value pair table
 function M.DeleteTagsResult(args)
-	assert(args, "You must provdide an argument table when creating DeleteTagsResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteTagsResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertDeleteTagsResult(t)
-	return t
+	asserts.AssertDeleteTagsResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.TerminateWorkspacesResult = { ["FailedRequests"] = true, nil }
@@ -100,12 +122,23 @@ end
 -- * FailedRequests [FailedTerminateWorkspaceRequests] <p>An array of structures representing any WorkSpaces that could not be terminated.</p>
 -- @return TerminateWorkspacesResult structure as a key-value pair table
 function M.TerminateWorkspacesResult(args)
-	assert(args, "You must provdide an argument table when creating TerminateWorkspacesResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating TerminateWorkspacesResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["FailedRequests"] = args["FailedRequests"],
 	}
-	asserts.AssertTerminateWorkspacesResult(t)
-	return t
+	asserts.AssertTerminateWorkspacesResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.RebootWorkspacesResult = { ["FailedRequests"] = true, nil }
@@ -126,12 +159,23 @@ end
 -- * FailedRequests [FailedRebootWorkspaceRequests] <p>An array of structures representing any WorkSpaces that could not be rebooted.</p>
 -- @return RebootWorkspacesResult structure as a key-value pair table
 function M.RebootWorkspacesResult(args)
-	assert(args, "You must provdide an argument table when creating RebootWorkspacesResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating RebootWorkspacesResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["FailedRequests"] = args["FailedRequests"],
 	}
-	asserts.AssertRebootWorkspacesResult(t)
-	return t
+	asserts.AssertRebootWorkspacesResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeTagsRequest = { ["ResourceId"] = true, nil }
@@ -154,12 +198,23 @@ end
 -- Required key: ResourceId
 -- @return DescribeTagsRequest structure as a key-value pair table
 function M.DescribeTagsRequest(args)
-	assert(args, "You must provdide an argument table when creating DescribeTagsRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeTagsRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ResourceId"] = args["ResourceId"],
 	}
-	asserts.AssertDescribeTagsRequest(t)
-	return t
+	asserts.AssertDescribeTagsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.StopWorkspacesRequest = { ["StopWorkspaceRequests"] = true, nil }
@@ -182,12 +237,23 @@ end
 -- Required key: StopWorkspaceRequests
 -- @return StopWorkspacesRequest structure as a key-value pair table
 function M.StopWorkspacesRequest(args)
-	assert(args, "You must provdide an argument table when creating StopWorkspacesRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating StopWorkspacesRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["StopWorkspaceRequests"] = args["StopWorkspaceRequests"],
 	}
-	asserts.AssertStopWorkspacesRequest(t)
-	return t
+	asserts.AssertStopWorkspacesRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.RebootWorkspacesRequest = { ["RebootWorkspaceRequests"] = true, nil }
@@ -210,12 +276,23 @@ end
 -- Required key: RebootWorkspaceRequests
 -- @return RebootWorkspacesRequest structure as a key-value pair table
 function M.RebootWorkspacesRequest(args)
-	assert(args, "You must provdide an argument table when creating RebootWorkspacesRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating RebootWorkspacesRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["RebootWorkspaceRequests"] = args["RebootWorkspaceRequests"],
 	}
-	asserts.AssertRebootWorkspacesRequest(t)
-	return t
+	asserts.AssertRebootWorkspacesRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ResourceUnavailableException = { ["ResourceId"] = true, ["message"] = true, nil }
@@ -238,13 +315,24 @@ end
 -- * message [ExceptionMessage] <p>The exception error message.</p>
 -- @return ResourceUnavailableException structure as a key-value pair table
 function M.ResourceUnavailableException(args)
-	assert(args, "You must provdide an argument table when creating ResourceUnavailableException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ResourceUnavailableException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ResourceId"] = args["ResourceId"],
 		["message"] = args["message"],
 	}
-	asserts.AssertResourceUnavailableException(t)
-	return t
+	asserts.AssertResourceUnavailableException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateTagsRequest = { ["ResourceId"] = true, ["Tags"] = true, nil }
@@ -271,13 +359,24 @@ end
 -- Required key: Tags
 -- @return CreateTagsRequest structure as a key-value pair table
 function M.CreateTagsRequest(args)
-	assert(args, "You must provdide an argument table when creating CreateTagsRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateTagsRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ResourceId"] = args["ResourceId"],
 		["Tags"] = args["Tags"],
 	}
-	asserts.AssertCreateTagsRequest(t)
-	return t
+	asserts.AssertCreateTagsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Tag = { ["Value"] = true, ["Key"] = true, nil }
@@ -302,13 +401,24 @@ end
 -- Required key: Key
 -- @return Tag structure as a key-value pair table
 function M.Tag(args)
-	assert(args, "You must provdide an argument table when creating Tag")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Tag")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Value"] = args["Value"],
 		["Key"] = args["Key"],
 	}
-	asserts.AssertTag(t)
-	return t
+	asserts.AssertTag(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.OperationInProgressException = { ["message"] = true, nil }
@@ -329,12 +439,23 @@ end
 -- * message [ExceptionMessage] 
 -- @return OperationInProgressException structure as a key-value pair table
 function M.OperationInProgressException(args)
-	assert(args, "You must provdide an argument table when creating OperationInProgressException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating OperationInProgressException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertOperationInProgressException(t)
-	return t
+	asserts.AssertOperationInProgressException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ResourceLimitExceededException = { ["message"] = true, nil }
@@ -355,12 +476,23 @@ end
 -- * message [ExceptionMessage] <p>The exception error message.</p>
 -- @return ResourceLimitExceededException structure as a key-value pair table
 function M.ResourceLimitExceededException(args)
-	assert(args, "You must provdide an argument table when creating ResourceLimitExceededException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ResourceLimitExceededException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertResourceLimitExceededException(t)
-	return t
+	asserts.AssertResourceLimitExceededException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidResourceStateException = { ["message"] = true, nil }
@@ -381,12 +513,23 @@ end
 -- * message [ExceptionMessage] 
 -- @return InvalidResourceStateException structure as a key-value pair table
 function M.InvalidResourceStateException(args)
-	assert(args, "You must provdide an argument table when creating InvalidResourceStateException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidResourceStateException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertInvalidResourceStateException(t)
-	return t
+	asserts.AssertInvalidResourceStateException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.WorkspaceDirectory = { ["CustomerUserName"] = true, ["DirectoryId"] = true, ["DirectoryName"] = true, ["SubnetIds"] = true, ["WorkspaceCreationProperties"] = true, ["Alias"] = true, ["State"] = true, ["DirectoryType"] = true, ["RegistrationCode"] = true, ["IamRoleId"] = true, ["DnsIpAddresses"] = true, ["WorkspaceSecurityGroupId"] = true, nil }
@@ -429,8 +572,14 @@ end
 -- * WorkspaceSecurityGroupId [SecurityGroupId] <p>The identifier of the security group that is assigned to new WorkSpaces.</p>
 -- @return WorkspaceDirectory structure as a key-value pair table
 function M.WorkspaceDirectory(args)
-	assert(args, "You must provdide an argument table when creating WorkspaceDirectory")
-	local t = { 
+	assert(args, "You must provide an argument table when creating WorkspaceDirectory")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["CustomerUserName"] = args["CustomerUserName"],
 		["DirectoryId"] = args["DirectoryId"],
 		["DirectoryName"] = args["DirectoryName"],
@@ -444,8 +593,13 @@ function M.WorkspaceDirectory(args)
 		["DnsIpAddresses"] = args["DnsIpAddresses"],
 		["WorkspaceSecurityGroupId"] = args["WorkspaceSecurityGroupId"],
 	}
-	asserts.AssertWorkspaceDirectory(t)
-	return t
+	asserts.AssertWorkspaceDirectory(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeWorkspacesRequest = { ["UserName"] = true, ["DirectoryId"] = true, ["Limit"] = true, ["WorkspaceIds"] = true, ["NextToken"] = true, ["BundleId"] = true, nil }
@@ -476,8 +630,14 @@ end
 -- * BundleId [BundleId] <p>The identifier of a bundle to obtain the WorkSpaces for. All WorkSpaces that are created from this bundle will be retrieved. This parameter cannot be combined with any other filter parameter.</p>
 -- @return DescribeWorkspacesRequest structure as a key-value pair table
 function M.DescribeWorkspacesRequest(args)
-	assert(args, "You must provdide an argument table when creating DescribeWorkspacesRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeWorkspacesRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["UserName"] = args["UserName"],
 		["DirectoryId"] = args["DirectoryId"],
 		["Limit"] = args["Limit"],
@@ -485,8 +645,13 @@ function M.DescribeWorkspacesRequest(args)
 		["NextToken"] = args["NextToken"],
 		["BundleId"] = args["BundleId"],
 	}
-	asserts.AssertDescribeWorkspacesRequest(t)
-	return t
+	asserts.AssertDescribeWorkspacesRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ModifyWorkspacePropertiesRequest = { ["WorkspaceId"] = true, ["WorkspaceProperties"] = true, nil }
@@ -513,13 +678,24 @@ end
 -- Required key: WorkspaceProperties
 -- @return ModifyWorkspacePropertiesRequest structure as a key-value pair table
 function M.ModifyWorkspacePropertiesRequest(args)
-	assert(args, "You must provdide an argument table when creating ModifyWorkspacePropertiesRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ModifyWorkspacePropertiesRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["WorkspaceId"] = args["WorkspaceId"],
 		["WorkspaceProperties"] = args["WorkspaceProperties"],
 	}
-	asserts.AssertModifyWorkspacePropertiesRequest(t)
-	return t
+	asserts.AssertModifyWorkspacePropertiesRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.WorkspaceConnectionStatus = { ["ConnectionState"] = true, ["ConnectionStateCheckTimestamp"] = true, ["WorkspaceId"] = true, ["LastKnownUserConnectionTimestamp"] = true, nil }
@@ -546,15 +722,26 @@ end
 -- * LastKnownUserConnectionTimestamp [Timestamp] <p>The timestamp of the last known user connection.</p>
 -- @return WorkspaceConnectionStatus structure as a key-value pair table
 function M.WorkspaceConnectionStatus(args)
-	assert(args, "You must provdide an argument table when creating WorkspaceConnectionStatus")
-	local t = { 
+	assert(args, "You must provide an argument table when creating WorkspaceConnectionStatus")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ConnectionState"] = args["ConnectionState"],
 		["ConnectionStateCheckTimestamp"] = args["ConnectionStateCheckTimestamp"],
 		["WorkspaceId"] = args["WorkspaceId"],
 		["LastKnownUserConnectionTimestamp"] = args["LastKnownUserConnectionTimestamp"],
 	}
-	asserts.AssertWorkspaceConnectionStatus(t)
-	return t
+	asserts.AssertWorkspaceConnectionStatus(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeWorkspaceBundlesResult = { ["NextToken"] = true, ["Bundles"] = true, nil }
@@ -577,13 +764,24 @@ end
 -- * Bundles [BundleList] <p>An array of structures that contain information about the bundles.</p>
 -- @return DescribeWorkspaceBundlesResult structure as a key-value pair table
 function M.DescribeWorkspaceBundlesResult(args)
-	assert(args, "You must provdide an argument table when creating DescribeWorkspaceBundlesResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeWorkspaceBundlesResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NextToken"] = args["NextToken"],
 		["Bundles"] = args["Bundles"],
 	}
-	asserts.AssertDescribeWorkspaceBundlesResult(t)
-	return t
+	asserts.AssertDescribeWorkspaceBundlesResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Workspace = { ["UserName"] = true, ["DirectoryId"] = true, ["ComputerName"] = true, ["VolumeEncryptionKey"] = true, ["UserVolumeEncryptionEnabled"] = true, ["ErrorMessage"] = true, ["WorkspaceProperties"] = true, ["ErrorCode"] = true, ["State"] = true, ["WorkspaceId"] = true, ["SubnetId"] = true, ["RootVolumeEncryptionEnabled"] = true, ["IpAddress"] = true, ["BundleId"] = true, nil }
@@ -630,8 +828,14 @@ end
 -- * BundleId [BundleId] <p>The identifier of the bundle that the WorkSpace was created from.</p>
 -- @return Workspace structure as a key-value pair table
 function M.Workspace(args)
-	assert(args, "You must provdide an argument table when creating Workspace")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Workspace")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["UserName"] = args["UserName"],
 		["DirectoryId"] = args["DirectoryId"],
 		["ComputerName"] = args["ComputerName"],
@@ -647,8 +851,13 @@ function M.Workspace(args)
 		["IpAddress"] = args["IpAddress"],
 		["BundleId"] = args["BundleId"],
 	}
-	asserts.AssertWorkspace(t)
-	return t
+	asserts.AssertWorkspace(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.FailedWorkspaceChangeRequest = { ["ErrorCode"] = true, ["WorkspaceId"] = true, ["ErrorMessage"] = true, nil }
@@ -673,14 +882,25 @@ end
 -- * ErrorMessage [Description] <p>The textual error message.</p>
 -- @return FailedWorkspaceChangeRequest structure as a key-value pair table
 function M.FailedWorkspaceChangeRequest(args)
-	assert(args, "You must provdide an argument table when creating FailedWorkspaceChangeRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating FailedWorkspaceChangeRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ErrorCode"] = args["ErrorCode"],
 		["WorkspaceId"] = args["WorkspaceId"],
 		["ErrorMessage"] = args["ErrorMessage"],
 	}
-	asserts.AssertFailedWorkspaceChangeRequest(t)
-	return t
+	asserts.AssertFailedWorkspaceChangeRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ModifyWorkspacePropertiesResult = { nil }
@@ -699,11 +919,22 @@ end
 -- Valid keys:
 -- @return ModifyWorkspacePropertiesResult structure as a key-value pair table
 function M.ModifyWorkspacePropertiesResult(args)
-	assert(args, "You must provdide an argument table when creating ModifyWorkspacePropertiesResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ModifyWorkspacePropertiesResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertModifyWorkspacePropertiesResult(t)
-	return t
+	asserts.AssertModifyWorkspacePropertiesResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.StartWorkspacesRequest = { ["StartWorkspaceRequests"] = true, nil }
@@ -726,12 +957,23 @@ end
 -- Required key: StartWorkspaceRequests
 -- @return StartWorkspacesRequest structure as a key-value pair table
 function M.StartWorkspacesRequest(args)
-	assert(args, "You must provdide an argument table when creating StartWorkspacesRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating StartWorkspacesRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["StartWorkspaceRequests"] = args["StartWorkspaceRequests"],
 	}
-	asserts.AssertStartWorkspacesRequest(t)
-	return t
+	asserts.AssertStartWorkspacesRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.StartWorkspacesResult = { ["FailedRequests"] = true, nil }
@@ -752,12 +994,23 @@ end
 -- * FailedRequests [FailedStartWorkspaceRequests] <p>The failed requests.</p>
 -- @return StartWorkspacesResult structure as a key-value pair table
 function M.StartWorkspacesResult(args)
-	assert(args, "You must provdide an argument table when creating StartWorkspacesResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating StartWorkspacesResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["FailedRequests"] = args["FailedRequests"],
 	}
-	asserts.AssertStartWorkspacesResult(t)
-	return t
+	asserts.AssertStartWorkspacesResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeWorkspacesResult = { ["NextToken"] = true, ["Workspaces"] = true, nil }
@@ -780,13 +1033,24 @@ end
 -- * Workspaces [WorkspaceList] <p>An array of structures that contain the information about the WorkSpaces.</p> <p>Because the <a>CreateWorkspaces</a> operation is asynchronous, some of this information may be incomplete for a newly-created WorkSpace.</p>
 -- @return DescribeWorkspacesResult structure as a key-value pair table
 function M.DescribeWorkspacesResult(args)
-	assert(args, "You must provdide an argument table when creating DescribeWorkspacesResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeWorkspacesResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NextToken"] = args["NextToken"],
 		["Workspaces"] = args["Workspaces"],
 	}
-	asserts.AssertDescribeWorkspacesResult(t)
-	return t
+	asserts.AssertDescribeWorkspacesResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.WorkspaceRequest = { ["UserName"] = true, ["DirectoryId"] = true, ["VolumeEncryptionKey"] = true, ["Tags"] = true, ["WorkspaceProperties"] = true, ["BundleId"] = true, ["UserVolumeEncryptionEnabled"] = true, ["RootVolumeEncryptionEnabled"] = true, nil }
@@ -827,8 +1091,14 @@ end
 -- Required key: BundleId
 -- @return WorkspaceRequest structure as a key-value pair table
 function M.WorkspaceRequest(args)
-	assert(args, "You must provdide an argument table when creating WorkspaceRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating WorkspaceRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["UserName"] = args["UserName"],
 		["DirectoryId"] = args["DirectoryId"],
 		["VolumeEncryptionKey"] = args["VolumeEncryptionKey"],
@@ -838,8 +1108,13 @@ function M.WorkspaceRequest(args)
 		["UserVolumeEncryptionEnabled"] = args["UserVolumeEncryptionEnabled"],
 		["RootVolumeEncryptionEnabled"] = args["RootVolumeEncryptionEnabled"],
 	}
-	asserts.AssertWorkspaceRequest(t)
-	return t
+	asserts.AssertWorkspaceRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ComputeType = { ["Name"] = true, nil }
@@ -860,12 +1135,23 @@ end
 -- * Name [Compute] <p>The name of the compute type for the bundle.</p>
 -- @return ComputeType structure as a key-value pair table
 function M.ComputeType(args)
-	assert(args, "You must provdide an argument table when creating ComputeType")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ComputeType")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Name"] = args["Name"],
 	}
-	asserts.AssertComputeType(t)
-	return t
+	asserts.AssertComputeType(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.TerminateRequest = { ["WorkspaceId"] = true, nil }
@@ -888,12 +1174,23 @@ end
 -- Required key: WorkspaceId
 -- @return TerminateRequest structure as a key-value pair table
 function M.TerminateRequest(args)
-	assert(args, "You must provdide an argument table when creating TerminateRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating TerminateRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["WorkspaceId"] = args["WorkspaceId"],
 	}
-	asserts.AssertTerminateRequest(t)
-	return t
+	asserts.AssertTerminateRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteTagsRequest = { ["ResourceId"] = true, ["TagKeys"] = true, nil }
@@ -920,13 +1217,24 @@ end
 -- Required key: TagKeys
 -- @return DeleteTagsRequest structure as a key-value pair table
 function M.DeleteTagsRequest(args)
-	assert(args, "You must provdide an argument table when creating DeleteTagsRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteTagsRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ResourceId"] = args["ResourceId"],
 		["TagKeys"] = args["TagKeys"],
 	}
-	asserts.AssertDeleteTagsRequest(t)
-	return t
+	asserts.AssertDeleteTagsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeWorkspaceDirectoriesRequest = { ["DirectoryIds"] = true, ["NextToken"] = true, nil }
@@ -949,13 +1257,24 @@ end
 -- * NextToken [PaginationToken] <p>The <code>NextToken</code> value from a previous call to this operation. Pass null if this is the first call.</p>
 -- @return DescribeWorkspaceDirectoriesRequest structure as a key-value pair table
 function M.DescribeWorkspaceDirectoriesRequest(args)
-	assert(args, "You must provdide an argument table when creating DescribeWorkspaceDirectoriesRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeWorkspaceDirectoriesRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DirectoryIds"] = args["DirectoryIds"],
 		["NextToken"] = args["NextToken"],
 	}
-	asserts.AssertDescribeWorkspaceDirectoriesRequest(t)
-	return t
+	asserts.AssertDescribeWorkspaceDirectoriesRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeWorkspacesConnectionStatusRequest = { ["NextToken"] = true, ["WorkspaceIds"] = true, nil }
@@ -978,13 +1297,24 @@ end
 -- * WorkspaceIds [WorkspaceIdList] <p>An array of strings that contain the identifiers of the WorkSpaces.</p>
 -- @return DescribeWorkspacesConnectionStatusRequest structure as a key-value pair table
 function M.DescribeWorkspacesConnectionStatusRequest(args)
-	assert(args, "You must provdide an argument table when creating DescribeWorkspacesConnectionStatusRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeWorkspacesConnectionStatusRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NextToken"] = args["NextToken"],
 		["WorkspaceIds"] = args["WorkspaceIds"],
 	}
-	asserts.AssertDescribeWorkspacesConnectionStatusRequest(t)
-	return t
+	asserts.AssertDescribeWorkspacesConnectionStatusRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UserStorage = { ["Capacity"] = true, nil }
@@ -1005,12 +1335,23 @@ end
 -- * Capacity [NonEmptyString] <p>The amount of user storage for the bundle.</p>
 -- @return UserStorage structure as a key-value pair table
 function M.UserStorage(args)
-	assert(args, "You must provdide an argument table when creating UserStorage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UserStorage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Capacity"] = args["Capacity"],
 	}
-	asserts.AssertUserStorage(t)
-	return t
+	asserts.AssertUserStorage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeTagsResult = { ["TagList"] = true, nil }
@@ -1031,12 +1372,23 @@ end
 -- * TagList [TagList] <p>The list of tags.</p>
 -- @return DescribeTagsResult structure as a key-value pair table
 function M.DescribeTagsResult(args)
-	assert(args, "You must provdide an argument table when creating DescribeTagsResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeTagsResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["TagList"] = args["TagList"],
 	}
-	asserts.AssertDescribeTagsResult(t)
-	return t
+	asserts.AssertDescribeTagsResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.StopRequest = { ["WorkspaceId"] = true, nil }
@@ -1057,12 +1409,23 @@ end
 -- * WorkspaceId [WorkspaceId] <p>The ID of the WorkSpace.</p>
 -- @return StopRequest structure as a key-value pair table
 function M.StopRequest(args)
-	assert(args, "You must provdide an argument table when creating StopRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating StopRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["WorkspaceId"] = args["WorkspaceId"],
 	}
-	asserts.AssertStopRequest(t)
-	return t
+	asserts.AssertStopRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeWorkspaceBundlesRequest = { ["Owner"] = true, ["NextToken"] = true, ["BundleIds"] = true, nil }
@@ -1087,14 +1450,25 @@ end
 -- * BundleIds [BundleIdList] <p>An array of strings that contains the identifiers of the bundles to retrieve. This parameter cannot be combined with any other filter parameter.</p>
 -- @return DescribeWorkspaceBundlesRequest structure as a key-value pair table
 function M.DescribeWorkspaceBundlesRequest(args)
-	assert(args, "You must provdide an argument table when creating DescribeWorkspaceBundlesRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeWorkspaceBundlesRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Owner"] = args["Owner"],
 		["NextToken"] = args["NextToken"],
 		["BundleIds"] = args["BundleIds"],
 	}
-	asserts.AssertDescribeWorkspaceBundlesRequest(t)
-	return t
+	asserts.AssertDescribeWorkspaceBundlesRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.WorkspaceProperties = { ["RunningModeAutoStopTimeoutInMinutes"] = true, ["RunningMode"] = true, nil }
@@ -1117,13 +1491,24 @@ end
 -- * RunningMode [RunningMode] <p>The running mode of the WorkSpace. AlwaysOn WorkSpaces are billed monthly. AutoStop WorkSpaces are billed by the hour and stopped when no longer being used in order to save on costs.</p>
 -- @return WorkspaceProperties structure as a key-value pair table
 function M.WorkspaceProperties(args)
-	assert(args, "You must provdide an argument table when creating WorkspaceProperties")
-	local t = { 
+	assert(args, "You must provide an argument table when creating WorkspaceProperties")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["RunningModeAutoStopTimeoutInMinutes"] = args["RunningModeAutoStopTimeoutInMinutes"],
 		["RunningMode"] = args["RunningMode"],
 	}
-	asserts.AssertWorkspaceProperties(t)
-	return t
+	asserts.AssertWorkspaceProperties(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.StopWorkspacesResult = { ["FailedRequests"] = true, nil }
@@ -1144,12 +1529,23 @@ end
 -- * FailedRequests [FailedStopWorkspaceRequests] <p>The failed requests.</p>
 -- @return StopWorkspacesResult structure as a key-value pair table
 function M.StopWorkspacesResult(args)
-	assert(args, "You must provdide an argument table when creating StopWorkspacesResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating StopWorkspacesResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["FailedRequests"] = args["FailedRequests"],
 	}
-	asserts.AssertStopWorkspacesResult(t)
-	return t
+	asserts.AssertStopWorkspacesResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateTagsResult = { nil }
@@ -1168,11 +1564,22 @@ end
 -- Valid keys:
 -- @return CreateTagsResult structure as a key-value pair table
 function M.CreateTagsResult(args)
-	assert(args, "You must provdide an argument table when creating CreateTagsResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateTagsResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertCreateTagsResult(t)
-	return t
+	asserts.AssertCreateTagsResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UnsupportedWorkspaceConfigurationException = { ["message"] = true, nil }
@@ -1193,12 +1600,23 @@ end
 -- * message [ExceptionMessage] 
 -- @return UnsupportedWorkspaceConfigurationException structure as a key-value pair table
 function M.UnsupportedWorkspaceConfigurationException(args)
-	assert(args, "You must provdide an argument table when creating UnsupportedWorkspaceConfigurationException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UnsupportedWorkspaceConfigurationException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertUnsupportedWorkspaceConfigurationException(t)
-	return t
+	asserts.AssertUnsupportedWorkspaceConfigurationException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.TerminateWorkspacesRequest = { ["TerminateWorkspaceRequests"] = true, nil }
@@ -1221,12 +1639,23 @@ end
 -- Required key: TerminateWorkspaceRequests
 -- @return TerminateWorkspacesRequest structure as a key-value pair table
 function M.TerminateWorkspacesRequest(args)
-	assert(args, "You must provdide an argument table when creating TerminateWorkspacesRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating TerminateWorkspacesRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["TerminateWorkspaceRequests"] = args["TerminateWorkspaceRequests"],
 	}
-	asserts.AssertTerminateWorkspacesRequest(t)
-	return t
+	asserts.AssertTerminateWorkspacesRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeWorkspaceDirectoriesResult = { ["Directories"] = true, ["NextToken"] = true, nil }
@@ -1249,13 +1678,24 @@ end
 -- * NextToken [PaginationToken] <p>If not null, more results are available. Pass this value for the <code>NextToken</code> parameter in a subsequent call to this operation to retrieve the next set of items. This token is valid for one day and must be used within that time frame.</p>
 -- @return DescribeWorkspaceDirectoriesResult structure as a key-value pair table
 function M.DescribeWorkspaceDirectoriesResult(args)
-	assert(args, "You must provdide an argument table when creating DescribeWorkspaceDirectoriesResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeWorkspaceDirectoriesResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Directories"] = args["Directories"],
 		["NextToken"] = args["NextToken"],
 	}
-	asserts.AssertDescribeWorkspaceDirectoriesResult(t)
-	return t
+	asserts.AssertDescribeWorkspaceDirectoriesResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ResourceNotFoundException = { ["ResourceId"] = true, ["message"] = true, nil }
@@ -1278,13 +1718,24 @@ end
 -- * message [ExceptionMessage] <p>The resource could not be found.</p>
 -- @return ResourceNotFoundException structure as a key-value pair table
 function M.ResourceNotFoundException(args)
-	assert(args, "You must provdide an argument table when creating ResourceNotFoundException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ResourceNotFoundException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ResourceId"] = args["ResourceId"],
 		["message"] = args["message"],
 	}
-	asserts.AssertResourceNotFoundException(t)
-	return t
+	asserts.AssertResourceNotFoundException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateWorkspacesRequest = { ["Workspaces"] = true, nil }
@@ -1307,12 +1758,23 @@ end
 -- Required key: Workspaces
 -- @return CreateWorkspacesRequest structure as a key-value pair table
 function M.CreateWorkspacesRequest(args)
-	assert(args, "You must provdide an argument table when creating CreateWorkspacesRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateWorkspacesRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Workspaces"] = args["Workspaces"],
 	}
-	asserts.AssertCreateWorkspacesRequest(t)
-	return t
+	asserts.AssertCreateWorkspacesRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeWorkspacesConnectionStatusResult = { ["WorkspacesConnectionStatus"] = true, ["NextToken"] = true, nil }
@@ -1335,13 +1797,24 @@ end
 -- * NextToken [PaginationToken] <p>The next token of the result.</p>
 -- @return DescribeWorkspacesConnectionStatusResult structure as a key-value pair table
 function M.DescribeWorkspacesConnectionStatusResult(args)
-	assert(args, "You must provdide an argument table when creating DescribeWorkspacesConnectionStatusResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeWorkspacesConnectionStatusResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["WorkspacesConnectionStatus"] = args["WorkspacesConnectionStatus"],
 		["NextToken"] = args["NextToken"],
 	}
-	asserts.AssertDescribeWorkspacesConnectionStatusResult(t)
-	return t
+	asserts.AssertDescribeWorkspacesConnectionStatusResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AccessDeniedException = { ["message"] = true, nil }
@@ -1362,12 +1835,23 @@ end
 -- * message [ExceptionMessage] 
 -- @return AccessDeniedException structure as a key-value pair table
 function M.AccessDeniedException(args)
-	assert(args, "You must provdide an argument table when creating AccessDeniedException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AccessDeniedException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertAccessDeniedException(t)
-	return t
+	asserts.AssertAccessDeniedException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.RebootRequest = { ["WorkspaceId"] = true, nil }
@@ -1390,12 +1874,23 @@ end
 -- Required key: WorkspaceId
 -- @return RebootRequest structure as a key-value pair table
 function M.RebootRequest(args)
-	assert(args, "You must provdide an argument table when creating RebootRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating RebootRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["WorkspaceId"] = args["WorkspaceId"],
 	}
-	asserts.AssertRebootRequest(t)
-	return t
+	asserts.AssertRebootRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateWorkspacesResult = { ["PendingRequests"] = true, ["FailedRequests"] = true, nil }
@@ -1418,13 +1913,24 @@ end
 -- * FailedRequests [FailedCreateWorkspaceRequests] <p>An array of structures that represent the WorkSpaces that could not be created.</p>
 -- @return CreateWorkspacesResult structure as a key-value pair table
 function M.CreateWorkspacesResult(args)
-	assert(args, "You must provdide an argument table when creating CreateWorkspacesResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateWorkspacesResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["PendingRequests"] = args["PendingRequests"],
 		["FailedRequests"] = args["FailedRequests"],
 	}
-	asserts.AssertCreateWorkspacesResult(t)
-	return t
+	asserts.AssertCreateWorkspacesResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.RebuildRequest = { ["WorkspaceId"] = true, nil }
@@ -1447,12 +1953,23 @@ end
 -- Required key: WorkspaceId
 -- @return RebuildRequest structure as a key-value pair table
 function M.RebuildRequest(args)
-	assert(args, "You must provdide an argument table when creating RebuildRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating RebuildRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["WorkspaceId"] = args["WorkspaceId"],
 	}
-	asserts.AssertRebuildRequest(t)
-	return t
+	asserts.AssertRebuildRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.WorkspaceBundle = { ["ComputeType"] = true, ["Description"] = true, ["BundleId"] = true, ["Owner"] = true, ["UserStorage"] = true, ["Name"] = true, nil }
@@ -1483,8 +2000,14 @@ end
 -- * Name [NonEmptyString] <p>The name of the bundle.</p>
 -- @return WorkspaceBundle structure as a key-value pair table
 function M.WorkspaceBundle(args)
-	assert(args, "You must provdide an argument table when creating WorkspaceBundle")
-	local t = { 
+	assert(args, "You must provide an argument table when creating WorkspaceBundle")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ComputeType"] = args["ComputeType"],
 		["Description"] = args["Description"],
 		["BundleId"] = args["BundleId"],
@@ -1492,8 +2015,13 @@ function M.WorkspaceBundle(args)
 		["UserStorage"] = args["UserStorage"],
 		["Name"] = args["Name"],
 	}
-	asserts.AssertWorkspaceBundle(t)
-	return t
+	asserts.AssertWorkspaceBundle(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.RebuildWorkspacesResult = { ["FailedRequests"] = true, nil }
@@ -1514,12 +2042,23 @@ end
 -- * FailedRequests [FailedRebuildWorkspaceRequests] <p>An array of structures representing any WorkSpaces that could not be rebuilt.</p>
 -- @return RebuildWorkspacesResult structure as a key-value pair table
 function M.RebuildWorkspacesResult(args)
-	assert(args, "You must provdide an argument table when creating RebuildWorkspacesResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating RebuildWorkspacesResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["FailedRequests"] = args["FailedRequests"],
 	}
-	asserts.AssertRebuildWorkspacesResult(t)
-	return t
+	asserts.AssertRebuildWorkspacesResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.RebuildWorkspacesRequest = { ["RebuildWorkspaceRequests"] = true, nil }
@@ -1542,12 +2081,23 @@ end
 -- Required key: RebuildWorkspaceRequests
 -- @return RebuildWorkspacesRequest structure as a key-value pair table
 function M.RebuildWorkspacesRequest(args)
-	assert(args, "You must provdide an argument table when creating RebuildWorkspacesRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating RebuildWorkspacesRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["RebuildWorkspaceRequests"] = args["RebuildWorkspaceRequests"],
 	}
-	asserts.AssertRebuildWorkspacesRequest(t)
-	return t
+	asserts.AssertRebuildWorkspacesRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.StartRequest = { ["WorkspaceId"] = true, nil }
@@ -1568,12 +2118,23 @@ end
 -- * WorkspaceId [WorkspaceId] <p>The ID of the WorkSpace.</p>
 -- @return StartRequest structure as a key-value pair table
 function M.StartRequest(args)
-	assert(args, "You must provdide an argument table when creating StartRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating StartRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["WorkspaceId"] = args["WorkspaceId"],
 	}
-	asserts.AssertStartRequest(t)
-	return t
+	asserts.AssertStartRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidParameterValuesException = { ["message"] = true, nil }
@@ -1594,12 +2155,23 @@ end
 -- * message [ExceptionMessage] <p>The exception error message.</p>
 -- @return InvalidParameterValuesException structure as a key-value pair table
 function M.InvalidParameterValuesException(args)
-	assert(args, "You must provdide an argument table when creating InvalidParameterValuesException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidParameterValuesException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertInvalidParameterValuesException(t)
-	return t
+	asserts.AssertInvalidParameterValuesException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.FailedCreateWorkspaceRequest = { ["ErrorCode"] = true, ["ErrorMessage"] = true, ["WorkspaceRequest"] = true, nil }
@@ -1624,14 +2196,25 @@ end
 -- * WorkspaceRequest [WorkspaceRequest] <p>A <a>FailedCreateWorkspaceRequest$WorkspaceRequest</a> object that contains the information about the WorkSpace that could not be created.</p>
 -- @return FailedCreateWorkspaceRequest structure as a key-value pair table
 function M.FailedCreateWorkspaceRequest(args)
-	assert(args, "You must provdide an argument table when creating FailedCreateWorkspaceRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating FailedCreateWorkspaceRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ErrorCode"] = args["ErrorCode"],
 		["ErrorMessage"] = args["ErrorMessage"],
 		["WorkspaceRequest"] = args["WorkspaceRequest"],
 	}
-	asserts.AssertFailedCreateWorkspaceRequest(t)
-	return t
+	asserts.AssertFailedCreateWorkspaceRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 function asserts.AssertUserName(str)
@@ -2422,8 +3005,11 @@ function M.DeleteTagsAsync(DeleteTagsRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "WorkspacesService.DeleteTags",
 	}
+	for header,value in pairs(DeleteTagsRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteTagsRequest, headers, settings, cb)
 	else
@@ -2454,8 +3040,11 @@ function M.DescribeWorkspacesAsync(DescribeWorkspacesRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "WorkspacesService.DescribeWorkspaces",
 	}
+	for header,value in pairs(DescribeWorkspacesRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeWorkspacesRequest, headers, settings, cb)
 	else
@@ -2486,8 +3075,11 @@ function M.TerminateWorkspacesAsync(TerminateWorkspacesRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "WorkspacesService.TerminateWorkspaces",
 	}
+	for header,value in pairs(TerminateWorkspacesRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", TerminateWorkspacesRequest, headers, settings, cb)
 	else
@@ -2518,8 +3110,11 @@ function M.CreateTagsAsync(CreateTagsRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "WorkspacesService.CreateTags",
 	}
+	for header,value in pairs(CreateTagsRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateTagsRequest, headers, settings, cb)
 	else
@@ -2550,8 +3145,11 @@ function M.DescribeWorkspaceBundlesAsync(DescribeWorkspaceBundlesRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "WorkspacesService.DescribeWorkspaceBundles",
 	}
+	for header,value in pairs(DescribeWorkspaceBundlesRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeWorkspaceBundlesRequest, headers, settings, cb)
 	else
@@ -2582,8 +3180,11 @@ function M.DescribeWorkspaceDirectoriesAsync(DescribeWorkspaceDirectoriesRequest
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "WorkspacesService.DescribeWorkspaceDirectories",
 	}
+	for header,value in pairs(DescribeWorkspaceDirectoriesRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeWorkspaceDirectoriesRequest, headers, settings, cb)
 	else
@@ -2614,8 +3215,11 @@ function M.DescribeWorkspacesConnectionStatusAsync(DescribeWorkspacesConnectionS
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "WorkspacesService.DescribeWorkspacesConnectionStatus",
 	}
+	for header,value in pairs(DescribeWorkspacesConnectionStatusRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeWorkspacesConnectionStatusRequest, headers, settings, cb)
 	else
@@ -2646,8 +3250,11 @@ function M.RebuildWorkspacesAsync(RebuildWorkspacesRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "WorkspacesService.RebuildWorkspaces",
 	}
+	for header,value in pairs(RebuildWorkspacesRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", RebuildWorkspacesRequest, headers, settings, cb)
 	else
@@ -2678,8 +3285,11 @@ function M.DescribeTagsAsync(DescribeTagsRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "WorkspacesService.DescribeTags",
 	}
+	for header,value in pairs(DescribeTagsRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeTagsRequest, headers, settings, cb)
 	else
@@ -2710,8 +3320,11 @@ function M.RebootWorkspacesAsync(RebootWorkspacesRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "WorkspacesService.RebootWorkspaces",
 	}
+	for header,value in pairs(RebootWorkspacesRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", RebootWorkspacesRequest, headers, settings, cb)
 	else
@@ -2742,8 +3355,11 @@ function M.CreateWorkspacesAsync(CreateWorkspacesRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "WorkspacesService.CreateWorkspaces",
 	}
+	for header,value in pairs(CreateWorkspacesRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateWorkspacesRequest, headers, settings, cb)
 	else
@@ -2774,8 +3390,11 @@ function M.StopWorkspacesAsync(StopWorkspacesRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "WorkspacesService.StopWorkspaces",
 	}
+	for header,value in pairs(StopWorkspacesRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", StopWorkspacesRequest, headers, settings, cb)
 	else
@@ -2806,8 +3425,11 @@ function M.ModifyWorkspacePropertiesAsync(ModifyWorkspacePropertiesRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "WorkspacesService.ModifyWorkspaceProperties",
 	}
+	for header,value in pairs(ModifyWorkspacePropertiesRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ModifyWorkspacePropertiesRequest, headers, settings, cb)
 	else
@@ -2838,8 +3460,11 @@ function M.StartWorkspacesAsync(StartWorkspacesRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "WorkspacesService.StartWorkspaces",
 	}
+	for header,value in pairs(StartWorkspacesRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", StartWorkspacesRequest, headers, settings, cb)
 	else

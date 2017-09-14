@@ -37,11 +37,22 @@ end
 -- Valid keys:
 -- @return InvalidRequestException structure as a key-value pair table
 function M.InvalidRequestException(args)
-	assert(args, "You must provdide an argument table when creating InvalidRequestException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidRequestException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertInvalidRequestException(t)
-	return t
+	asserts.AssertInvalidRequestException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ApplyEnvironmentManagedActionRequest = { ["EnvironmentName"] = true, ["ActionId"] = true, ["EnvironmentId"] = true, nil }
@@ -68,14 +79,25 @@ end
 -- Required key: ActionId
 -- @return ApplyEnvironmentManagedActionRequest structure as a key-value pair table
 function M.ApplyEnvironmentManagedActionRequest(args)
-	assert(args, "You must provdide an argument table when creating ApplyEnvironmentManagedActionRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ApplyEnvironmentManagedActionRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["EnvironmentName"] = args["EnvironmentName"],
 		["ActionId"] = args["ActionId"],
 		["EnvironmentId"] = args["EnvironmentId"],
 	}
-	asserts.AssertApplyEnvironmentManagedActionRequest(t)
-	return t
+	asserts.AssertApplyEnvironmentManagedActionRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.TooManyApplicationVersionsException = { nil }
@@ -94,11 +116,22 @@ end
 -- Valid keys:
 -- @return TooManyApplicationVersionsException structure as a key-value pair table
 function M.TooManyApplicationVersionsException(args)
-	assert(args, "You must provdide an argument table when creating TooManyApplicationVersionsException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating TooManyApplicationVersionsException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertTooManyApplicationVersionsException(t)
-	return t
+	asserts.AssertTooManyApplicationVersionsException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InsufficientPrivilegesException = { nil }
@@ -117,11 +150,22 @@ end
 -- Valid keys:
 -- @return InsufficientPrivilegesException structure as a key-value pair table
 function M.InsufficientPrivilegesException(args)
-	assert(args, "You must provdide an argument table when creating InsufficientPrivilegesException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InsufficientPrivilegesException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertInsufficientPrivilegesException(t)
-	return t
+	asserts.AssertInsufficientPrivilegesException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.TooManyBucketsException = { nil }
@@ -140,11 +184,22 @@ end
 -- Valid keys:
 -- @return TooManyBucketsException structure as a key-value pair table
 function M.TooManyBucketsException(args)
-	assert(args, "You must provdide an argument table when creating TooManyBucketsException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating TooManyBucketsException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertTooManyBucketsException(t)
-	return t
+	asserts.AssertTooManyBucketsException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.EventDescription = { ["ApplicationName"] = true, ["EnvironmentName"] = true, ["VersionLabel"] = true, ["Severity"] = true, ["TemplateName"] = true, ["PlatformArn"] = true, ["RequestId"] = true, ["Message"] = true, ["EventDate"] = true, nil }
@@ -181,8 +236,14 @@ end
 -- * EventDate [EventDate] <p>The date when the event occurred.</p>
 -- @return EventDescription structure as a key-value pair table
 function M.EventDescription(args)
-	assert(args, "You must provdide an argument table when creating EventDescription")
-	local t = { 
+	assert(args, "You must provide an argument table when creating EventDescription")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ApplicationName"] = args["ApplicationName"],
 		["EnvironmentName"] = args["EnvironmentName"],
 		["VersionLabel"] = args["VersionLabel"],
@@ -193,8 +254,13 @@ function M.EventDescription(args)
 		["Message"] = args["Message"],
 		["EventDate"] = args["EventDate"],
 	}
-	asserts.AssertEventDescription(t)
-	return t
+	asserts.AssertEventDescription(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Trigger = { ["Name"] = true, nil }
@@ -215,12 +281,23 @@ end
 -- * Name [ResourceId] <p>The name of the trigger.</p>
 -- @return Trigger structure as a key-value pair table
 function M.Trigger(args)
-	assert(args, "You must provdide an argument table when creating Trigger")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Trigger")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Name"] = args["Name"],
 	}
-	asserts.AssertTrigger(t)
-	return t
+	asserts.AssertTrigger(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateEnvironmentMessage = { ["ApplicationName"] = true, ["EnvironmentName"] = true, ["VersionLabel"] = true, ["Description"] = true, ["Tags"] = true, ["CNAMEPrefix"] = true, ["TemplateName"] = true, ["SolutionStackName"] = true, ["GroupName"] = true, ["OptionSettings"] = true, ["Tier"] = true, ["PlatformArn"] = true, ["OptionsToRemove"] = true, nil }
@@ -267,8 +344,14 @@ end
 -- Required key: ApplicationName
 -- @return CreateEnvironmentMessage structure as a key-value pair table
 function M.CreateEnvironmentMessage(args)
-	assert(args, "You must provdide an argument table when creating CreateEnvironmentMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateEnvironmentMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ApplicationName"] = args["ApplicationName"],
 		["EnvironmentName"] = args["EnvironmentName"],
 		["VersionLabel"] = args["VersionLabel"],
@@ -283,8 +366,13 @@ function M.CreateEnvironmentMessage(args)
 		["PlatformArn"] = args["PlatformArn"],
 		["OptionsToRemove"] = args["OptionsToRemove"],
 	}
-	asserts.AssertCreateEnvironmentMessage(t)
-	return t
+	asserts.AssertCreateEnvironmentMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.EnvironmentResourceDescription = { ["EnvironmentName"] = true, ["AutoScalingGroups"] = true, ["Triggers"] = true, ["LoadBalancers"] = true, ["Queues"] = true, ["Instances"] = true, ["LaunchConfigurations"] = true, nil }
@@ -317,8 +405,14 @@ end
 -- * LaunchConfigurations [LaunchConfigurationList] <p>The Auto Scaling launch configurations in use by this environment.</p>
 -- @return EnvironmentResourceDescription structure as a key-value pair table
 function M.EnvironmentResourceDescription(args)
-	assert(args, "You must provdide an argument table when creating EnvironmentResourceDescription")
-	local t = { 
+	assert(args, "You must provide an argument table when creating EnvironmentResourceDescription")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["EnvironmentName"] = args["EnvironmentName"],
 		["AutoScalingGroups"] = args["AutoScalingGroups"],
 		["Triggers"] = args["Triggers"],
@@ -327,8 +421,13 @@ function M.EnvironmentResourceDescription(args)
 		["Instances"] = args["Instances"],
 		["LaunchConfigurations"] = args["LaunchConfigurations"],
 	}
-	asserts.AssertEnvironmentResourceDescription(t)
-	return t
+	asserts.AssertEnvironmentResourceDescription(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CheckDNSAvailabilityResultMessage = { ["Available"] = true, ["FullyQualifiedCNAME"] = true, nil }
@@ -351,13 +450,24 @@ end
 -- * FullyQualifiedCNAME [DNSCname] <p>The fully qualified CNAME to reserve when <a>CreateEnvironment</a> is called with the provided prefix.</p>
 -- @return CheckDNSAvailabilityResultMessage structure as a key-value pair table
 function M.CheckDNSAvailabilityResultMessage(args)
-	assert(args, "You must provdide an argument table when creating CheckDNSAvailabilityResultMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CheckDNSAvailabilityResultMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Available"] = args["Available"],
 		["FullyQualifiedCNAME"] = args["FullyQualifiedCNAME"],
 	}
-	asserts.AssertCheckDNSAvailabilityResultMessage(t)
-	return t
+	asserts.AssertCheckDNSAvailabilityResultMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeEnvironmentManagedActionHistoryRequest = { ["EnvironmentId"] = true, ["NextToken"] = true, ["MaxItems"] = true, ["EnvironmentName"] = true, nil }
@@ -384,15 +494,26 @@ end
 -- * EnvironmentName [EnvironmentName] <p>The name of the target environment.</p>
 -- @return DescribeEnvironmentManagedActionHistoryRequest structure as a key-value pair table
 function M.DescribeEnvironmentManagedActionHistoryRequest(args)
-	assert(args, "You must provdide an argument table when creating DescribeEnvironmentManagedActionHistoryRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeEnvironmentManagedActionHistoryRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["EnvironmentId"] = args["EnvironmentId"],
 		["NextToken"] = args["NextToken"],
 		["MaxItems"] = args["MaxItems"],
 		["EnvironmentName"] = args["EnvironmentName"],
 	}
-	asserts.AssertDescribeEnvironmentManagedActionHistoryRequest(t)
-	return t
+	asserts.AssertDescribeEnvironmentManagedActionHistoryRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribePlatformVersionResult = { ["PlatformDescription"] = true, nil }
@@ -413,12 +534,23 @@ end
 -- * PlatformDescription [PlatformDescription] <p>Detailed information about the version of the platform.</p>
 -- @return DescribePlatformVersionResult structure as a key-value pair table
 function M.DescribePlatformVersionResult(args)
-	assert(args, "You must provdide an argument table when creating DescribePlatformVersionResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribePlatformVersionResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["PlatformDescription"] = args["PlatformDescription"],
 	}
-	asserts.AssertDescribePlatformVersionResult(t)
-	return t
+	asserts.AssertDescribePlatformVersionResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CPUUtilization = { ["SoftIRQ"] = true, ["IOWait"] = true, ["System"] = true, ["Idle"] = true, ["User"] = true, ["IRQ"] = true, ["Nice"] = true, nil }
@@ -451,8 +583,14 @@ end
 -- * Nice [NullableDouble] <p>Percentage of time that the CPU has spent in the <code>Nice</code> state over the last 10 seconds.</p>
 -- @return CPUUtilization structure as a key-value pair table
 function M.CPUUtilization(args)
-	assert(args, "You must provdide an argument table when creating CPUUtilization")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CPUUtilization")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["SoftIRQ"] = args["SoftIRQ"],
 		["IOWait"] = args["IOWait"],
 		["System"] = args["System"],
@@ -461,8 +599,13 @@ function M.CPUUtilization(args)
 		["IRQ"] = args["IRQ"],
 		["Nice"] = args["Nice"],
 	}
-	asserts.AssertCPUUtilization(t)
-	return t
+	asserts.AssertCPUUtilization(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ManagedActionInvalidStateException = { nil }
@@ -481,11 +624,22 @@ end
 -- Valid keys:
 -- @return ManagedActionInvalidStateException structure as a key-value pair table
 function M.ManagedActionInvalidStateException(args)
-	assert(args, "You must provdide an argument table when creating ManagedActionInvalidStateException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ManagedActionInvalidStateException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertManagedActionInvalidStateException(t)
-	return t
+	asserts.AssertManagedActionInvalidStateException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.StatusCodes = { ["Status3xx"] = true, ["Status2xx"] = true, ["Status5xx"] = true, ["Status4xx"] = true, nil }
@@ -512,15 +666,26 @@ end
 -- * Status4xx [NullableInteger] <p>The percentage of requests over the last 10 seconds that resulted in a 4xx (400, 401, etc.) status code.</p>
 -- @return StatusCodes structure as a key-value pair table
 function M.StatusCodes(args)
-	assert(args, "You must provdide an argument table when creating StatusCodes")
-	local t = { 
+	assert(args, "You must provide an argument table when creating StatusCodes")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Status3xx"] = args["Status3xx"],
 		["Status2xx"] = args["Status2xx"],
 		["Status5xx"] = args["Status5xx"],
 		["Status4xx"] = args["Status4xx"],
 	}
-	asserts.AssertStatusCodes(t)
-	return t
+	asserts.AssertStatusCodes(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.EnvironmentResourceDescriptionsMessage = { ["EnvironmentResources"] = true, nil }
@@ -541,12 +706,23 @@ end
 -- * EnvironmentResources [EnvironmentResourceDescription] <p> A list of <a>EnvironmentResourceDescription</a>. </p>
 -- @return EnvironmentResourceDescriptionsMessage structure as a key-value pair table
 function M.EnvironmentResourceDescriptionsMessage(args)
-	assert(args, "You must provdide an argument table when creating EnvironmentResourceDescriptionsMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating EnvironmentResourceDescriptionsMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["EnvironmentResources"] = args["EnvironmentResources"],
 	}
-	asserts.AssertEnvironmentResourceDescriptionsMessage(t)
-	return t
+	asserts.AssertEnvironmentResourceDescriptionsMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.EnvironmentTier = { ["Version"] = true, ["Type"] = true, ["Name"] = true, nil }
@@ -571,14 +747,25 @@ end
 -- * Name [String] <p>The name of this environment tier.</p>
 -- @return EnvironmentTier structure as a key-value pair table
 function M.EnvironmentTier(args)
-	assert(args, "You must provdide an argument table when creating EnvironmentTier")
-	local t = { 
+	assert(args, "You must provide an argument table when creating EnvironmentTier")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Version"] = args["Version"],
 		["Type"] = args["Type"],
 		["Name"] = args["Name"],
 	}
-	asserts.AssertEnvironmentTier(t)
-	return t
+	asserts.AssertEnvironmentTier(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.S3Location = { ["S3Bucket"] = true, ["S3Key"] = true, nil }
@@ -601,13 +788,24 @@ end
 -- * S3Key [S3Key] <p>The Amazon S3 key where the data is located.</p>
 -- @return S3Location structure as a key-value pair table
 function M.S3Location(args)
-	assert(args, "You must provdide an argument table when creating S3Location")
-	local t = { 
+	assert(args, "You must provide an argument table when creating S3Location")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["S3Bucket"] = args["S3Bucket"],
 		["S3Key"] = args["S3Key"],
 	}
-	asserts.AssertS3Location(t)
-	return t
+	asserts.AssertS3Location(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CheckDNSAvailabilityMessage = { ["CNAMEPrefix"] = true, nil }
@@ -630,12 +828,23 @@ end
 -- Required key: CNAMEPrefix
 -- @return CheckDNSAvailabilityMessage structure as a key-value pair table
 function M.CheckDNSAvailabilityMessage(args)
-	assert(args, "You must provdide an argument table when creating CheckDNSAvailabilityMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CheckDNSAvailabilityMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["CNAMEPrefix"] = args["CNAMEPrefix"],
 	}
-	asserts.AssertCheckDNSAvailabilityMessage(t)
-	return t
+	asserts.AssertCheckDNSAvailabilityMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateConfigurationTemplateMessage = { ["ApplicationName"] = true, ["PlatformArn"] = true, ["Description"] = true, ["EnvironmentId"] = true, ["TemplateName"] = true, ["SolutionStackName"] = true, ["OptionSettings"] = true, ["SourceConfiguration"] = true, nil }
@@ -674,8 +883,14 @@ end
 -- Required key: TemplateName
 -- @return CreateConfigurationTemplateMessage structure as a key-value pair table
 function M.CreateConfigurationTemplateMessage(args)
-	assert(args, "You must provdide an argument table when creating CreateConfigurationTemplateMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateConfigurationTemplateMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ApplicationName"] = args["ApplicationName"],
 		["PlatformArn"] = args["PlatformArn"],
 		["Description"] = args["Description"],
@@ -685,8 +900,13 @@ function M.CreateConfigurationTemplateMessage(args)
 		["OptionSettings"] = args["OptionSettings"],
 		["SourceConfiguration"] = args["SourceConfiguration"],
 	}
-	asserts.AssertCreateConfigurationTemplateMessage(t)
-	return t
+	asserts.AssertCreateConfigurationTemplateMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeConfigurationSettingsMessage = { ["ApplicationName"] = true, ["EnvironmentName"] = true, ["TemplateName"] = true, nil }
@@ -713,14 +933,25 @@ end
 -- Required key: ApplicationName
 -- @return DescribeConfigurationSettingsMessage structure as a key-value pair table
 function M.DescribeConfigurationSettingsMessage(args)
-	assert(args, "You must provdide an argument table when creating DescribeConfigurationSettingsMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeConfigurationSettingsMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ApplicationName"] = args["ApplicationName"],
 		["EnvironmentName"] = args["EnvironmentName"],
 		["TemplateName"] = args["TemplateName"],
 	}
-	asserts.AssertDescribeConfigurationSettingsMessage(t)
-	return t
+	asserts.AssertDescribeConfigurationSettingsMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.S3LocationNotInServiceRegionException = { nil }
@@ -739,11 +970,22 @@ end
 -- Valid keys:
 -- @return S3LocationNotInServiceRegionException structure as a key-value pair table
 function M.S3LocationNotInServiceRegionException(args)
-	assert(args, "You must provdide an argument table when creating S3LocationNotInServiceRegionException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating S3LocationNotInServiceRegionException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertS3LocationNotInServiceRegionException(t)
-	return t
+	asserts.AssertS3LocationNotInServiceRegionException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeEnvironmentHealthResult = { ["Status"] = true, ["EnvironmentName"] = true, ["Color"] = true, ["ApplicationMetrics"] = true, ["RefreshedAt"] = true, ["HealthStatus"] = true, ["InstancesHealth"] = true, ["Causes"] = true, nil }
@@ -778,8 +1020,14 @@ end
 -- * Causes [Causes] <p>Descriptions of the data that contributed to the environment's current health status.</p>
 -- @return DescribeEnvironmentHealthResult structure as a key-value pair table
 function M.DescribeEnvironmentHealthResult(args)
-	assert(args, "You must provdide an argument table when creating DescribeEnvironmentHealthResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeEnvironmentHealthResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Status"] = args["Status"],
 		["EnvironmentName"] = args["EnvironmentName"],
 		["Color"] = args["Color"],
@@ -789,8 +1037,13 @@ function M.DescribeEnvironmentHealthResult(args)
 		["InstancesHealth"] = args["InstancesHealth"],
 		["Causes"] = args["Causes"],
 	}
-	asserts.AssertDescribeEnvironmentHealthResult(t)
-	return t
+	asserts.AssertDescribeEnvironmentHealthResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ConfigurationSettingsDescriptions = { ["ConfigurationSettings"] = true, nil }
@@ -811,12 +1064,23 @@ end
 -- * ConfigurationSettings [ConfigurationSettingsDescriptionList] <p> A list of <a>ConfigurationSettingsDescription</a>. </p>
 -- @return ConfigurationSettingsDescriptions structure as a key-value pair table
 function M.ConfigurationSettingsDescriptions(args)
-	assert(args, "You must provdide an argument table when creating ConfigurationSettingsDescriptions")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ConfigurationSettingsDescriptions")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ConfigurationSettings"] = args["ConfigurationSettings"],
 	}
-	asserts.AssertConfigurationSettingsDescriptions(t)
-	return t
+	asserts.AssertConfigurationSettingsDescriptions(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.MaxAgeRule = { ["DeleteSourceFromS3"] = true, ["Enabled"] = true, ["MaxAgeInDays"] = true, nil }
@@ -843,14 +1107,25 @@ end
 -- Required key: Enabled
 -- @return MaxAgeRule structure as a key-value pair table
 function M.MaxAgeRule(args)
-	assert(args, "You must provdide an argument table when creating MaxAgeRule")
-	local t = { 
+	assert(args, "You must provide an argument table when creating MaxAgeRule")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DeleteSourceFromS3"] = args["DeleteSourceFromS3"],
 		["Enabled"] = args["Enabled"],
 		["MaxAgeInDays"] = args["MaxAgeInDays"],
 	}
-	asserts.AssertMaxAgeRule(t)
-	return t
+	asserts.AssertMaxAgeRule(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ManagedAction = { ["Status"] = true, ["WindowStartTime"] = true, ["ActionType"] = true, ["ActionId"] = true, ["ActionDescription"] = true, nil }
@@ -879,16 +1154,27 @@ end
 -- * ActionDescription [String] <p>A description of the managed action.</p>
 -- @return ManagedAction structure as a key-value pair table
 function M.ManagedAction(args)
-	assert(args, "You must provdide an argument table when creating ManagedAction")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ManagedAction")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Status"] = args["Status"],
 		["WindowStartTime"] = args["WindowStartTime"],
 		["ActionType"] = args["ActionType"],
 		["ActionId"] = args["ActionId"],
 		["ActionDescription"] = args["ActionDescription"],
 	}
-	asserts.AssertManagedAction(t)
-	return t
+	asserts.AssertManagedAction(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.EventDescriptionsMessage = { ["NextToken"] = true, ["Events"] = true, nil }
@@ -911,13 +1197,24 @@ end
 -- * Events [EventDescriptionList] <p> A list of <a>EventDescription</a>. </p>
 -- @return EventDescriptionsMessage structure as a key-value pair table
 function M.EventDescriptionsMessage(args)
-	assert(args, "You must provdide an argument table when creating EventDescriptionsMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating EventDescriptionsMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NextToken"] = args["NextToken"],
 		["Events"] = args["Events"],
 	}
-	asserts.AssertEventDescriptionsMessage(t)
-	return t
+	asserts.AssertEventDescriptionsMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeApplicationVersionsMessage = { ["ApplicationName"] = true, ["MaxRecords"] = true, ["NextToken"] = true, ["VersionLabels"] = true, nil }
@@ -944,15 +1241,26 @@ end
 -- * VersionLabels [VersionLabelsList] <p>Specify a version label to show a specific application version.</p>
 -- @return DescribeApplicationVersionsMessage structure as a key-value pair table
 function M.DescribeApplicationVersionsMessage(args)
-	assert(args, "You must provdide an argument table when creating DescribeApplicationVersionsMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeApplicationVersionsMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ApplicationName"] = args["ApplicationName"],
 		["MaxRecords"] = args["MaxRecords"],
 		["NextToken"] = args["NextToken"],
 		["VersionLabels"] = args["VersionLabels"],
 	}
-	asserts.AssertDescribeApplicationVersionsMessage(t)
-	return t
+	asserts.AssertDescribeApplicationVersionsMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeEnvironmentsMessage = { ["ApplicationName"] = true, ["IncludedDeletedBackTo"] = true, ["VersionLabel"] = true, ["IncludeDeleted"] = true, ["EnvironmentNames"] = true, ["EnvironmentIds"] = true, nil }
@@ -983,8 +1291,14 @@ end
 -- * EnvironmentIds [EnvironmentIdList] <p>If specified, AWS Elastic Beanstalk restricts the returned descriptions to include only those that have the specified IDs.</p>
 -- @return DescribeEnvironmentsMessage structure as a key-value pair table
 function M.DescribeEnvironmentsMessage(args)
-	assert(args, "You must provdide an argument table when creating DescribeEnvironmentsMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeEnvironmentsMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ApplicationName"] = args["ApplicationName"],
 		["IncludedDeletedBackTo"] = args["IncludedDeletedBackTo"],
 		["VersionLabel"] = args["VersionLabel"],
@@ -992,8 +1306,13 @@ function M.DescribeEnvironmentsMessage(args)
 		["EnvironmentNames"] = args["EnvironmentNames"],
 		["EnvironmentIds"] = args["EnvironmentIds"],
 	}
-	asserts.AssertDescribeEnvironmentsMessage(t)
-	return t
+	asserts.AssertDescribeEnvironmentsMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeInstancesHealthResult = { ["InstanceHealthList"] = true, ["NextToken"] = true, ["RefreshedAt"] = true, nil }
@@ -1018,14 +1337,25 @@ end
 -- * RefreshedAt [RefreshedAt] <p>The date and time that the health information was retrieved.</p>
 -- @return DescribeInstancesHealthResult structure as a key-value pair table
 function M.DescribeInstancesHealthResult(args)
-	assert(args, "You must provdide an argument table when creating DescribeInstancesHealthResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeInstancesHealthResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["InstanceHealthList"] = args["InstanceHealthList"],
 		["NextToken"] = args["NextToken"],
 		["RefreshedAt"] = args["RefreshedAt"],
 	}
-	asserts.AssertDescribeInstancesHealthResult(t)
-	return t
+	asserts.AssertDescribeInstancesHealthResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.SourceConfiguration = { ["ApplicationName"] = true, ["TemplateName"] = true, nil }
@@ -1048,13 +1378,24 @@ end
 -- * TemplateName [ConfigurationTemplateName] <p>The name of the configuration template.</p>
 -- @return SourceConfiguration structure as a key-value pair table
 function M.SourceConfiguration(args)
-	assert(args, "You must provdide an argument table when creating SourceConfiguration")
-	local t = { 
+	assert(args, "You must provide an argument table when creating SourceConfiguration")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ApplicationName"] = args["ApplicationName"],
 		["TemplateName"] = args["TemplateName"],
 	}
-	asserts.AssertSourceConfiguration(t)
-	return t
+	asserts.AssertSourceConfiguration(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.EnvironmentDescription = { ["ApplicationName"] = true, ["EnvironmentName"] = true, ["VersionLabel"] = true, ["Status"] = true, ["Description"] = true, ["EnvironmentLinks"] = true, ["PlatformArn"] = true, ["TemplateName"] = true, ["EndpointURL"] = true, ["SolutionStackName"] = true, ["HealthStatus"] = true, ["EnvironmentId"] = true, ["CNAME"] = true, ["AbortableOperationInProgress"] = true, ["Tier"] = true, ["Health"] = true, ["DateUpdated"] = true, ["DateCreated"] = true, ["Resources"] = true, nil }
@@ -1111,8 +1452,14 @@ end
 -- * Resources [EnvironmentResourcesDescription] <p>The description of the AWS resources used by this environment.</p>
 -- @return EnvironmentDescription structure as a key-value pair table
 function M.EnvironmentDescription(args)
-	assert(args, "You must provdide an argument table when creating EnvironmentDescription")
-	local t = { 
+	assert(args, "You must provide an argument table when creating EnvironmentDescription")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ApplicationName"] = args["ApplicationName"],
 		["EnvironmentName"] = args["EnvironmentName"],
 		["VersionLabel"] = args["VersionLabel"],
@@ -1133,8 +1480,13 @@ function M.EnvironmentDescription(args)
 		["DateCreated"] = args["DateCreated"],
 		["Resources"] = args["Resources"],
 	}
-	asserts.AssertEnvironmentDescription(t)
-	return t
+	asserts.AssertEnvironmentDescription(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeEventsMessage = { ["ApplicationName"] = true, ["EnvironmentId"] = true, ["VersionLabel"] = true, ["NextToken"] = true, ["EnvironmentName"] = true, ["PlatformArn"] = true, ["TemplateName"] = true, ["MaxRecords"] = true, ["RequestId"] = true, ["StartTime"] = true, ["EndTime"] = true, ["Severity"] = true, nil }
@@ -1177,8 +1529,14 @@ end
 -- * Severity [EventSeverity] <p>If specified, limits the events returned from this call to include only those with the specified severity or higher.</p>
 -- @return DescribeEventsMessage structure as a key-value pair table
 function M.DescribeEventsMessage(args)
-	assert(args, "You must provdide an argument table when creating DescribeEventsMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeEventsMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ApplicationName"] = args["ApplicationName"],
 		["EnvironmentId"] = args["EnvironmentId"],
 		["VersionLabel"] = args["VersionLabel"],
@@ -1192,8 +1550,13 @@ function M.DescribeEventsMessage(args)
 		["EndTime"] = args["EndTime"],
 		["Severity"] = args["Severity"],
 	}
-	asserts.AssertDescribeEventsMessage(t)
-	return t
+	asserts.AssertDescribeEventsMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeConfigurationOptionsMessage = { ["ApplicationName"] = true, ["EnvironmentName"] = true, ["PlatformArn"] = true, ["TemplateName"] = true, ["SolutionStackName"] = true, ["Options"] = true, nil }
@@ -1224,8 +1587,14 @@ end
 -- * Options [OptionsSpecifierList] <p>If specified, restricts the descriptions to only the specified options.</p>
 -- @return DescribeConfigurationOptionsMessage structure as a key-value pair table
 function M.DescribeConfigurationOptionsMessage(args)
-	assert(args, "You must provdide an argument table when creating DescribeConfigurationOptionsMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeConfigurationOptionsMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ApplicationName"] = args["ApplicationName"],
 		["EnvironmentName"] = args["EnvironmentName"],
 		["PlatformArn"] = args["PlatformArn"],
@@ -1233,8 +1602,13 @@ function M.DescribeConfigurationOptionsMessage(args)
 		["SolutionStackName"] = args["SolutionStackName"],
 		["Options"] = args["Options"],
 	}
-	asserts.AssertDescribeConfigurationOptionsMessage(t)
-	return t
+	asserts.AssertDescribeConfigurationOptionsMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Tag = { ["Value"] = true, ["Key"] = true, nil }
@@ -1257,13 +1631,24 @@ end
 -- * Key [TagKey] <p>The key of the tag.</p>
 -- @return Tag structure as a key-value pair table
 function M.Tag(args)
-	assert(args, "You must provdide an argument table when creating Tag")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Tag")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Value"] = args["Value"],
 		["Key"] = args["Key"],
 	}
-	asserts.AssertTag(t)
-	return t
+	asserts.AssertTag(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ConfigurationOptionDescription = { ["Regex"] = true, ["Name"] = true, ["UserDefined"] = true, ["DefaultValue"] = true, ["ChangeSeverity"] = true, ["Namespace"] = true, ["MaxValue"] = true, ["MinValue"] = true, ["MaxLength"] = true, ["ValueType"] = true, ["ValueOptions"] = true, nil }
@@ -1304,8 +1689,14 @@ end
 -- * ValueOptions [ConfigurationOptionPossibleValues] <p>If specified, values for the configuration option are selected from this list.</p>
 -- @return ConfigurationOptionDescription structure as a key-value pair table
 function M.ConfigurationOptionDescription(args)
-	assert(args, "You must provdide an argument table when creating ConfigurationOptionDescription")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ConfigurationOptionDescription")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Regex"] = args["Regex"],
 		["Name"] = args["Name"],
 		["UserDefined"] = args["UserDefined"],
@@ -1318,8 +1709,13 @@ function M.ConfigurationOptionDescription(args)
 		["ValueType"] = args["ValueType"],
 		["ValueOptions"] = args["ValueOptions"],
 	}
-	asserts.AssertConfigurationOptionDescription(t)
-	return t
+	asserts.AssertConfigurationOptionDescription(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeEnvironmentManagedActionsResult = { ["ManagedActions"] = true, nil }
@@ -1340,12 +1736,23 @@ end
 -- * ManagedActions [ManagedActions] <p>A list of upcoming and in-progress managed actions.</p>
 -- @return DescribeEnvironmentManagedActionsResult structure as a key-value pair table
 function M.DescribeEnvironmentManagedActionsResult(args)
-	assert(args, "You must provdide an argument table when creating DescribeEnvironmentManagedActionsResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeEnvironmentManagedActionsResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ManagedActions"] = args["ManagedActions"],
 	}
-	asserts.AssertDescribeEnvironmentManagedActionsResult(t)
-	return t
+	asserts.AssertDescribeEnvironmentManagedActionsResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateStorageLocationResultMessage = { ["S3Bucket"] = true, nil }
@@ -1366,12 +1773,23 @@ end
 -- * S3Bucket [S3Bucket] <p>The name of the Amazon S3 bucket created.</p>
 -- @return CreateStorageLocationResultMessage structure as a key-value pair table
 function M.CreateStorageLocationResultMessage(args)
-	assert(args, "You must provdide an argument table when creating CreateStorageLocationResultMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateStorageLocationResultMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["S3Bucket"] = args["S3Bucket"],
 	}
-	asserts.AssertCreateStorageLocationResultMessage(t)
-	return t
+	asserts.AssertCreateStorageLocationResultMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.OptionSpecification = { ["OptionName"] = true, ["ResourceName"] = true, ["Namespace"] = true, nil }
@@ -1396,14 +1814,25 @@ end
 -- * Namespace [OptionNamespace] <p>A unique namespace identifying the option's associated AWS resource.</p>
 -- @return OptionSpecification structure as a key-value pair table
 function M.OptionSpecification(args)
-	assert(args, "You must provdide an argument table when creating OptionSpecification")
-	local t = { 
+	assert(args, "You must provide an argument table when creating OptionSpecification")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["OptionName"] = args["OptionName"],
 		["ResourceName"] = args["ResourceName"],
 		["Namespace"] = args["Namespace"],
 	}
-	asserts.AssertOptionSpecification(t)
-	return t
+	asserts.AssertOptionSpecification(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.PlatformDescription = { ["PlatformArn"] = true, ["Maintainer"] = true, ["Description"] = true, ["PlatformStatus"] = true, ["Frameworks"] = true, ["ProgrammingLanguages"] = true, ["SolutionStackName"] = true, ["OperatingSystemVersion"] = true, ["SupportedTierList"] = true, ["OperatingSystemName"] = true, ["PlatformCategory"] = true, ["PlatformOwner"] = true, ["PlatformVersion"] = true, ["DateUpdated"] = true, ["DateCreated"] = true, ["PlatformName"] = true, ["SupportedAddonList"] = true, ["CustomAmiList"] = true, nil }
@@ -1458,8 +1887,14 @@ end
 -- * CustomAmiList [CustomAmiList] <p>The custom AMIs supported by the platform.</p>
 -- @return PlatformDescription structure as a key-value pair table
 function M.PlatformDescription(args)
-	assert(args, "You must provdide an argument table when creating PlatformDescription")
-	local t = { 
+	assert(args, "You must provide an argument table when creating PlatformDescription")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["PlatformArn"] = args["PlatformArn"],
 		["Maintainer"] = args["Maintainer"],
 		["Description"] = args["Description"],
@@ -1479,8 +1914,13 @@ function M.PlatformDescription(args)
 		["SupportedAddonList"] = args["SupportedAddonList"],
 		["CustomAmiList"] = args["CustomAmiList"],
 	}
-	asserts.AssertPlatformDescription(t)
-	return t
+	asserts.AssertPlatformDescription(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AutoScalingGroup = { ["Name"] = true, nil }
@@ -1501,12 +1941,23 @@ end
 -- * Name [ResourceId] <p>The name of the <code>AutoScalingGroup</code> . </p>
 -- @return AutoScalingGroup structure as a key-value pair table
 function M.AutoScalingGroup(args)
-	assert(args, "You must provdide an argument table when creating AutoScalingGroup")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AutoScalingGroup")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Name"] = args["Name"],
 	}
-	asserts.AssertAutoScalingGroup(t)
-	return t
+	asserts.AssertAutoScalingGroup(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ApplicationVersionDescriptionMessage = { ["ApplicationVersion"] = true, nil }
@@ -1527,12 +1978,23 @@ end
 -- * ApplicationVersion [ApplicationVersionDescription] <p> The <a>ApplicationVersionDescription</a> of the application version. </p>
 -- @return ApplicationVersionDescriptionMessage structure as a key-value pair table
 function M.ApplicationVersionDescriptionMessage(args)
-	assert(args, "You must provdide an argument table when creating ApplicationVersionDescriptionMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ApplicationVersionDescriptionMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ApplicationVersion"] = args["ApplicationVersion"],
 	}
-	asserts.AssertApplicationVersionDescriptionMessage(t)
-	return t
+	asserts.AssertApplicationVersionDescriptionMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeEnvironmentResourcesMessage = { ["EnvironmentId"] = true, ["EnvironmentName"] = true, nil }
@@ -1555,13 +2017,24 @@ end
 -- * EnvironmentName [EnvironmentName] <p>The name of the environment to retrieve AWS resource usage data.</p> <p> Condition: You must specify either this or an EnvironmentId, or both. If you do not specify either, AWS Elastic Beanstalk returns <code>MissingRequiredParameter</code> error. </p>
 -- @return DescribeEnvironmentResourcesMessage structure as a key-value pair table
 function M.DescribeEnvironmentResourcesMessage(args)
-	assert(args, "You must provdide an argument table when creating DescribeEnvironmentResourcesMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeEnvironmentResourcesMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["EnvironmentId"] = args["EnvironmentId"],
 		["EnvironmentName"] = args["EnvironmentName"],
 	}
-	asserts.AssertDescribeEnvironmentResourcesMessage(t)
-	return t
+	asserts.AssertDescribeEnvironmentResourcesMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.RetrieveEnvironmentInfoMessage = { ["EnvironmentId"] = true, ["InfoType"] = true, ["EnvironmentName"] = true, nil }
@@ -1588,14 +2061,25 @@ end
 -- Required key: InfoType
 -- @return RetrieveEnvironmentInfoMessage structure as a key-value pair table
 function M.RetrieveEnvironmentInfoMessage(args)
-	assert(args, "You must provdide an argument table when creating RetrieveEnvironmentInfoMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating RetrieveEnvironmentInfoMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["EnvironmentId"] = args["EnvironmentId"],
 		["InfoType"] = args["InfoType"],
 		["EnvironmentName"] = args["EnvironmentName"],
 	}
-	asserts.AssertRetrieveEnvironmentInfoMessage(t)
-	return t
+	asserts.AssertRetrieveEnvironmentInfoMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateApplicationMessage = { ["ApplicationName"] = true, ["Description"] = true, ["ResourceLifecycleConfig"] = true, nil }
@@ -1622,14 +2106,25 @@ end
 -- Required key: ApplicationName
 -- @return CreateApplicationMessage structure as a key-value pair table
 function M.CreateApplicationMessage(args)
-	assert(args, "You must provdide an argument table when creating CreateApplicationMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateApplicationMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ApplicationName"] = args["ApplicationName"],
 		["Description"] = args["Description"],
 		["ResourceLifecycleConfig"] = args["ResourceLifecycleConfig"],
 	}
-	asserts.AssertCreateApplicationMessage(t)
-	return t
+	asserts.AssertCreateApplicationMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreatePlatformVersionRequest = { ["PlatformVersion"] = true, ["EnvironmentName"] = true, ["PlatformDefinitionBundle"] = true, ["PlatformName"] = true, ["OptionSettings"] = true, nil }
@@ -1664,16 +2159,27 @@ end
 -- Required key: PlatformDefinitionBundle
 -- @return CreatePlatformVersionRequest structure as a key-value pair table
 function M.CreatePlatformVersionRequest(args)
-	assert(args, "You must provdide an argument table when creating CreatePlatformVersionRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreatePlatformVersionRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["PlatformVersion"] = args["PlatformVersion"],
 		["EnvironmentName"] = args["EnvironmentName"],
 		["PlatformDefinitionBundle"] = args["PlatformDefinitionBundle"],
 		["PlatformName"] = args["PlatformName"],
 		["OptionSettings"] = args["OptionSettings"],
 	}
-	asserts.AssertCreatePlatformVersionRequest(t)
-	return t
+	asserts.AssertCreatePlatformVersionRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Listener = { ["Protocol"] = true, ["Port"] = true, nil }
@@ -1696,13 +2202,24 @@ end
 -- * Port [Integer] <p>The port that is used by the Listener.</p>
 -- @return Listener structure as a key-value pair table
 function M.Listener(args)
-	assert(args, "You must provdide an argument table when creating Listener")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Listener")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Protocol"] = args["Protocol"],
 		["Port"] = args["Port"],
 	}
-	asserts.AssertListener(t)
-	return t
+	asserts.AssertListener(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ApplicationResourceLifecycleDescriptionMessage = { ["ApplicationName"] = true, ["ResourceLifecycleConfig"] = true, nil }
@@ -1725,13 +2242,24 @@ end
 -- * ResourceLifecycleConfig [ApplicationResourceLifecycleConfig] <p>The lifecycle configuration.</p>
 -- @return ApplicationResourceLifecycleDescriptionMessage structure as a key-value pair table
 function M.ApplicationResourceLifecycleDescriptionMessage(args)
-	assert(args, "You must provdide an argument table when creating ApplicationResourceLifecycleDescriptionMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ApplicationResourceLifecycleDescriptionMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ApplicationName"] = args["ApplicationName"],
 		["ResourceLifecycleConfig"] = args["ResourceLifecycleConfig"],
 	}
-	asserts.AssertApplicationResourceLifecycleDescriptionMessage(t)
-	return t
+	asserts.AssertApplicationResourceLifecycleDescriptionMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.SystemStatus = { ["LoadAverage"] = true, ["CPUUtilization"] = true, nil }
@@ -1754,13 +2282,24 @@ end
 -- * CPUUtilization [CPUUtilization] <p>CPU utilization metrics for the instance.</p>
 -- @return SystemStatus structure as a key-value pair table
 function M.SystemStatus(args)
-	assert(args, "You must provdide an argument table when creating SystemStatus")
-	local t = { 
+	assert(args, "You must provide an argument table when creating SystemStatus")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["LoadAverage"] = args["LoadAverage"],
 		["CPUUtilization"] = args["CPUUtilization"],
 	}
-	asserts.AssertSystemStatus(t)
-	return t
+	asserts.AssertSystemStatus(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeletePlatformVersionRequest = { ["PlatformArn"] = true, nil }
@@ -1781,12 +2320,23 @@ end
 -- * PlatformArn [PlatformArn] <p>The ARN of the version of the custom platform.</p>
 -- @return DeletePlatformVersionRequest structure as a key-value pair table
 function M.DeletePlatformVersionRequest(args)
-	assert(args, "You must provdide an argument table when creating DeletePlatformVersionRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeletePlatformVersionRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["PlatformArn"] = args["PlatformArn"],
 	}
-	asserts.AssertDeletePlatformVersionRequest(t)
-	return t
+	asserts.AssertDeletePlatformVersionRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CodeBuildNotInServiceRegionException = { nil }
@@ -1805,11 +2355,22 @@ end
 -- Valid keys:
 -- @return CodeBuildNotInServiceRegionException structure as a key-value pair table
 function M.CodeBuildNotInServiceRegionException(args)
-	assert(args, "You must provdide an argument table when creating CodeBuildNotInServiceRegionException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CodeBuildNotInServiceRegionException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertCodeBuildNotInServiceRegionException(t)
-	return t
+	asserts.AssertCodeBuildNotInServiceRegionException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateApplicationVersionMessage = { ["ApplicationName"] = true, ["VersionLabel"] = true, ["SourceBuildInformation"] = true, ["Description"] = true, ["AutoCreateApplication"] = true, ["Process"] = true, ["BuildConfiguration"] = true, ["SourceBundle"] = true, nil }
@@ -1848,8 +2409,14 @@ end
 -- Required key: VersionLabel
 -- @return CreateApplicationVersionMessage structure as a key-value pair table
 function M.CreateApplicationVersionMessage(args)
-	assert(args, "You must provdide an argument table when creating CreateApplicationVersionMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateApplicationVersionMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ApplicationName"] = args["ApplicationName"],
 		["VersionLabel"] = args["VersionLabel"],
 		["SourceBuildInformation"] = args["SourceBuildInformation"],
@@ -1859,8 +2426,13 @@ function M.CreateApplicationVersionMessage(args)
 		["BuildConfiguration"] = args["BuildConfiguration"],
 		["SourceBundle"] = args["SourceBundle"],
 	}
-	asserts.AssertCreateApplicationVersionMessage(t)
-	return t
+	asserts.AssertCreateApplicationVersionMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ApplicationVersionDescriptionsMessage = { ["ApplicationVersions"] = true, ["NextToken"] = true, nil }
@@ -1883,13 +2455,24 @@ end
 -- * NextToken [Token] <p>For a paginated request, the token that you can pass in a subsequent request to get the next page.</p>
 -- @return ApplicationVersionDescriptionsMessage structure as a key-value pair table
 function M.ApplicationVersionDescriptionsMessage(args)
-	assert(args, "You must provdide an argument table when creating ApplicationVersionDescriptionsMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ApplicationVersionDescriptionsMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ApplicationVersions"] = args["ApplicationVersions"],
 		["NextToken"] = args["NextToken"],
 	}
-	asserts.AssertApplicationVersionDescriptionsMessage(t)
-	return t
+	asserts.AssertApplicationVersionDescriptionsMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Builder = { ["ARN"] = true, nil }
@@ -1910,12 +2493,23 @@ end
 -- * ARN [ARN] <p>The ARN of the builder.</p>
 -- @return Builder structure as a key-value pair table
 function M.Builder(args)
-	assert(args, "You must provdide an argument table when creating Builder")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Builder")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ARN"] = args["ARN"],
 	}
-	asserts.AssertBuilder(t)
-	return t
+	asserts.AssertBuilder(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ApplicationMetrics = { ["Duration"] = true, ["Latency"] = true, ["RequestCount"] = true, ["StatusCodes"] = true, nil }
@@ -1942,15 +2536,26 @@ end
 -- * StatusCodes [StatusCodes] <p>Represents the percentage of requests over the last 10 seconds that resulted in each type of status code response.</p>
 -- @return ApplicationMetrics structure as a key-value pair table
 function M.ApplicationMetrics(args)
-	assert(args, "You must provdide an argument table when creating ApplicationMetrics")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ApplicationMetrics")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Duration"] = args["Duration"],
 		["Latency"] = args["Latency"],
 		["RequestCount"] = args["RequestCount"],
 		["StatusCodes"] = args["StatusCodes"],
 	}
-	asserts.AssertApplicationMetrics(t)
-	return t
+	asserts.AssertApplicationMetrics(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.TerminateEnvironmentMessage = { ["EnvironmentId"] = true, ["TerminateResources"] = true, ["ForceTerminate"] = true, ["EnvironmentName"] = true, nil }
@@ -1977,15 +2582,26 @@ end
 -- * EnvironmentName [EnvironmentName] <p>The name of the environment to terminate.</p> <p> Condition: You must specify either this or an EnvironmentId, or both. If you do not specify either, AWS Elastic Beanstalk returns <code>MissingRequiredParameter</code> error. </p>
 -- @return TerminateEnvironmentMessage structure as a key-value pair table
 function M.TerminateEnvironmentMessage(args)
-	assert(args, "You must provdide an argument table when creating TerminateEnvironmentMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating TerminateEnvironmentMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["EnvironmentId"] = args["EnvironmentId"],
 		["TerminateResources"] = args["TerminateResources"],
 		["ForceTerminate"] = args["ForceTerminate"],
 		["EnvironmentName"] = args["EnvironmentName"],
 	}
-	asserts.AssertTerminateEnvironmentMessage(t)
-	return t
+	asserts.AssertTerminateEnvironmentMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Queue = { ["URL"] = true, ["Name"] = true, nil }
@@ -2008,13 +2624,24 @@ end
 -- * Name [String] <p>The name of the queue.</p>
 -- @return Queue structure as a key-value pair table
 function M.Queue(args)
-	assert(args, "You must provdide an argument table when creating Queue")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Queue")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["URL"] = args["URL"],
 		["Name"] = args["Name"],
 	}
-	asserts.AssertQueue(t)
-	return t
+	asserts.AssertQueue(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.BuildConfiguration = { ["ComputeType"] = true, ["Image"] = true, ["TimeoutInMinutes"] = true, ["CodeBuildServiceRole"] = true, ["ArtifactName"] = true, nil }
@@ -2047,16 +2674,27 @@ end
 -- Required key: Image
 -- @return BuildConfiguration structure as a key-value pair table
 function M.BuildConfiguration(args)
-	assert(args, "You must provdide an argument table when creating BuildConfiguration")
-	local t = { 
+	assert(args, "You must provide an argument table when creating BuildConfiguration")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ComputeType"] = args["ComputeType"],
 		["Image"] = args["Image"],
 		["TimeoutInMinutes"] = args["TimeoutInMinutes"],
 		["CodeBuildServiceRole"] = args["CodeBuildServiceRole"],
 		["ArtifactName"] = args["ArtifactName"],
 	}
-	asserts.AssertBuildConfiguration(t)
-	return t
+	asserts.AssertBuildConfiguration(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListAvailableSolutionStacksResultMessage = { ["SolutionStacks"] = true, ["SolutionStackDetails"] = true, nil }
@@ -2079,13 +2717,24 @@ end
 -- * SolutionStackDetails [AvailableSolutionStackDetailsList] <p> A list of available solution stacks and their <a>SolutionStackDescription</a>. </p>
 -- @return ListAvailableSolutionStacksResultMessage structure as a key-value pair table
 function M.ListAvailableSolutionStacksResultMessage(args)
-	assert(args, "You must provdide an argument table when creating ListAvailableSolutionStacksResultMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListAvailableSolutionStacksResultMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["SolutionStacks"] = args["SolutionStacks"],
 		["SolutionStackDetails"] = args["SolutionStackDetails"],
 	}
-	asserts.AssertListAvailableSolutionStacksResultMessage(t)
-	return t
+	asserts.AssertListAvailableSolutionStacksResultMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ValidateConfigurationSettingsMessage = { ["ApplicationName"] = true, ["EnvironmentName"] = true, ["OptionSettings"] = true, ["TemplateName"] = true, nil }
@@ -2116,15 +2765,26 @@ end
 -- Required key: OptionSettings
 -- @return ValidateConfigurationSettingsMessage structure as a key-value pair table
 function M.ValidateConfigurationSettingsMessage(args)
-	assert(args, "You must provdide an argument table when creating ValidateConfigurationSettingsMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ValidateConfigurationSettingsMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ApplicationName"] = args["ApplicationName"],
 		["EnvironmentName"] = args["EnvironmentName"],
 		["OptionSettings"] = args["OptionSettings"],
 		["TemplateName"] = args["TemplateName"],
 	}
-	asserts.AssertValidateConfigurationSettingsMessage(t)
-	return t
+	asserts.AssertValidateConfigurationSettingsMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeEnvironmentHealthRequest = { ["EnvironmentName"] = true, ["AttributeNames"] = true, ["EnvironmentId"] = true, nil }
@@ -2149,14 +2809,25 @@ end
 -- * EnvironmentId [EnvironmentId] <p>Specify the environment by ID.</p> <p>You must specify either this or an EnvironmentName, or both.</p>
 -- @return DescribeEnvironmentHealthRequest structure as a key-value pair table
 function M.DescribeEnvironmentHealthRequest(args)
-	assert(args, "You must provdide an argument table when creating DescribeEnvironmentHealthRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeEnvironmentHealthRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["EnvironmentName"] = args["EnvironmentName"],
 		["AttributeNames"] = args["AttributeNames"],
 		["EnvironmentId"] = args["EnvironmentId"],
 	}
-	asserts.AssertDescribeEnvironmentHealthRequest(t)
-	return t
+	asserts.AssertDescribeEnvironmentHealthRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ApplicationDescriptionsMessage = { ["Applications"] = true, nil }
@@ -2177,12 +2848,23 @@ end
 -- * Applications [ApplicationDescriptionList] <p>This parameter contains a list of <a>ApplicationDescription</a>.</p>
 -- @return ApplicationDescriptionsMessage structure as a key-value pair table
 function M.ApplicationDescriptionsMessage(args)
-	assert(args, "You must provdide an argument table when creating ApplicationDescriptionsMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ApplicationDescriptionsMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Applications"] = args["Applications"],
 	}
-	asserts.AssertApplicationDescriptionsMessage(t)
-	return t
+	asserts.AssertApplicationDescriptionsMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ApplicationVersionLifecycleConfig = { ["MaxCountRule"] = true, ["MaxAgeRule"] = true, nil }
@@ -2205,13 +2887,24 @@ end
 -- * MaxAgeRule [MaxAgeRule] <p>Specify a max age rule to restrict the length of time that application versions are retained for an application.</p>
 -- @return ApplicationVersionLifecycleConfig structure as a key-value pair table
 function M.ApplicationVersionLifecycleConfig(args)
-	assert(args, "You must provdide an argument table when creating ApplicationVersionLifecycleConfig")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ApplicationVersionLifecycleConfig")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["MaxCountRule"] = args["MaxCountRule"],
 		["MaxAgeRule"] = args["MaxAgeRule"],
 	}
-	asserts.AssertApplicationVersionLifecycleConfig(t)
-	return t
+	asserts.AssertApplicationVersionLifecycleConfig(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.OperationInProgressException = { nil }
@@ -2230,11 +2923,22 @@ end
 -- Valid keys:
 -- @return OperationInProgressException structure as a key-value pair table
 function M.OperationInProgressException(args)
-	assert(args, "You must provdide an argument table when creating OperationInProgressException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating OperationInProgressException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertOperationInProgressException(t)
-	return t
+	asserts.AssertOperationInProgressException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteEnvironmentConfigurationMessage = { ["ApplicationName"] = true, ["EnvironmentName"] = true, nil }
@@ -2261,13 +2965,24 @@ end
 -- Required key: EnvironmentName
 -- @return DeleteEnvironmentConfigurationMessage structure as a key-value pair table
 function M.DeleteEnvironmentConfigurationMessage(args)
-	assert(args, "You must provdide an argument table when creating DeleteEnvironmentConfigurationMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteEnvironmentConfigurationMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ApplicationName"] = args["ApplicationName"],
 		["EnvironmentName"] = args["EnvironmentName"],
 	}
-	asserts.AssertDeleteEnvironmentConfigurationMessage(t)
-	return t
+	asserts.AssertDeleteEnvironmentConfigurationMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.SourceBuildInformation = { ["SourceLocation"] = true, ["SourceType"] = true, ["SourceRepository"] = true, nil }
@@ -2298,14 +3013,25 @@ end
 -- Required key: SourceLocation
 -- @return SourceBuildInformation structure as a key-value pair table
 function M.SourceBuildInformation(args)
-	assert(args, "You must provdide an argument table when creating SourceBuildInformation")
-	local t = { 
+	assert(args, "You must provide an argument table when creating SourceBuildInformation")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["SourceLocation"] = args["SourceLocation"],
 		["SourceType"] = args["SourceType"],
 		["SourceRepository"] = args["SourceRepository"],
 	}
-	asserts.AssertSourceBuildInformation(t)
-	return t
+	asserts.AssertSourceBuildInformation(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.TooManyConfigurationTemplatesException = { nil }
@@ -2324,11 +3050,22 @@ end
 -- Valid keys:
 -- @return TooManyConfigurationTemplatesException structure as a key-value pair table
 function M.TooManyConfigurationTemplatesException(args)
-	assert(args, "You must provdide an argument table when creating TooManyConfigurationTemplatesException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating TooManyConfigurationTemplatesException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertTooManyConfigurationTemplatesException(t)
-	return t
+	asserts.AssertTooManyConfigurationTemplatesException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.SingleInstanceHealth = { ["AvailabilityZone"] = true, ["Deployment"] = true, ["InstanceId"] = true, ["ApplicationMetrics"] = true, ["System"] = true, ["Color"] = true, ["HealthStatus"] = true, ["LaunchedAt"] = true, ["InstanceType"] = true, ["Causes"] = true, nil }
@@ -2367,8 +3104,14 @@ end
 -- * Causes [Causes] <p>Represents the causes, which provide more information about the current health status.</p>
 -- @return SingleInstanceHealth structure as a key-value pair table
 function M.SingleInstanceHealth(args)
-	assert(args, "You must provdide an argument table when creating SingleInstanceHealth")
-	local t = { 
+	assert(args, "You must provide an argument table when creating SingleInstanceHealth")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["AvailabilityZone"] = args["AvailabilityZone"],
 		["Deployment"] = args["Deployment"],
 		["InstanceId"] = args["InstanceId"],
@@ -2380,8 +3123,13 @@ function M.SingleInstanceHealth(args)
 		["InstanceType"] = args["InstanceType"],
 		["Causes"] = args["Causes"],
 	}
-	asserts.AssertSingleInstanceHealth(t)
-	return t
+	asserts.AssertSingleInstanceHealth(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ApplicationResourceLifecycleConfig = { ["VersionLifecycleConfig"] = true, ["ServiceRole"] = true, nil }
@@ -2404,13 +3152,24 @@ end
 -- * ServiceRole [String] <p>The ARN of an IAM service role that Elastic Beanstalk has permission to assume.</p>
 -- @return ApplicationResourceLifecycleConfig structure as a key-value pair table
 function M.ApplicationResourceLifecycleConfig(args)
-	assert(args, "You must provdide an argument table when creating ApplicationResourceLifecycleConfig")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ApplicationResourceLifecycleConfig")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["VersionLifecycleConfig"] = args["VersionLifecycleConfig"],
 		["ServiceRole"] = args["ServiceRole"],
 	}
-	asserts.AssertApplicationResourceLifecycleConfig(t)
-	return t
+	asserts.AssertApplicationResourceLifecycleConfig(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Instance = { ["Id"] = true, nil }
@@ -2431,12 +3190,23 @@ end
 -- * Id [ResourceId] <p>The ID of the Amazon EC2 instance.</p>
 -- @return Instance structure as a key-value pair table
 function M.Instance(args)
-	assert(args, "You must provdide an argument table when creating Instance")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Instance")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Id"] = args["Id"],
 	}
-	asserts.AssertInstance(t)
-	return t
+	asserts.AssertInstance(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AbortEnvironmentUpdateMessage = { ["EnvironmentId"] = true, ["EnvironmentName"] = true, nil }
@@ -2459,13 +3229,24 @@ end
 -- * EnvironmentName [EnvironmentName] <p>This specifies the name of the environment with the in-progress update that you want to cancel.</p>
 -- @return AbortEnvironmentUpdateMessage structure as a key-value pair table
 function M.AbortEnvironmentUpdateMessage(args)
-	assert(args, "You must provdide an argument table when creating AbortEnvironmentUpdateMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AbortEnvironmentUpdateMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["EnvironmentId"] = args["EnvironmentId"],
 		["EnvironmentName"] = args["EnvironmentName"],
 	}
-	asserts.AssertAbortEnvironmentUpdateMessage(t)
-	return t
+	asserts.AssertAbortEnvironmentUpdateMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.RebuildEnvironmentMessage = { ["EnvironmentId"] = true, ["EnvironmentName"] = true, nil }
@@ -2488,13 +3269,24 @@ end
 -- * EnvironmentName [EnvironmentName] <p>The name of the environment to rebuild.</p> <p> Condition: You must specify either this or an EnvironmentId, or both. If you do not specify either, AWS Elastic Beanstalk returns <code>MissingRequiredParameter</code> error. </p>
 -- @return RebuildEnvironmentMessage structure as a key-value pair table
 function M.RebuildEnvironmentMessage(args)
-	assert(args, "You must provdide an argument table when creating RebuildEnvironmentMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating RebuildEnvironmentMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["EnvironmentId"] = args["EnvironmentId"],
 		["EnvironmentName"] = args["EnvironmentName"],
 	}
-	asserts.AssertRebuildEnvironmentMessage(t)
-	return t
+	asserts.AssertRebuildEnvironmentMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ConfigurationSettingsValidationMessages = { ["Messages"] = true, nil }
@@ -2515,12 +3307,23 @@ end
 -- * Messages [ValidationMessagesList] <p> A list of <a>ValidationMessage</a>. </p>
 -- @return ConfigurationSettingsValidationMessages structure as a key-value pair table
 function M.ConfigurationSettingsValidationMessages(args)
-	assert(args, "You must provdide an argument table when creating ConfigurationSettingsValidationMessages")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ConfigurationSettingsValidationMessages")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Messages"] = args["Messages"],
 	}
-	asserts.AssertConfigurationSettingsValidationMessages(t)
-	return t
+	asserts.AssertConfigurationSettingsValidationMessages(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeletePlatformVersionResult = { ["PlatformSummary"] = true, nil }
@@ -2541,12 +3344,23 @@ end
 -- * PlatformSummary [PlatformSummary] <p>Detailed information about the version of the custom platform.</p>
 -- @return DeletePlatformVersionResult structure as a key-value pair table
 function M.DeletePlatformVersionResult(args)
-	assert(args, "You must provdide an argument table when creating DeletePlatformVersionResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeletePlatformVersionResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["PlatformSummary"] = args["PlatformSummary"],
 	}
-	asserts.AssertDeletePlatformVersionResult(t)
-	return t
+	asserts.AssertDeletePlatformVersionResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.S3SubscriptionRequiredException = { nil }
@@ -2565,11 +3379,22 @@ end
 -- Valid keys:
 -- @return S3SubscriptionRequiredException structure as a key-value pair table
 function M.S3SubscriptionRequiredException(args)
-	assert(args, "You must provdide an argument table when creating S3SubscriptionRequiredException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating S3SubscriptionRequiredException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertS3SubscriptionRequiredException(t)
-	return t
+	asserts.AssertS3SubscriptionRequiredException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteApplicationVersionMessage = { ["ApplicationName"] = true, ["DeleteSourceBundle"] = true, ["VersionLabel"] = true, nil }
@@ -2598,14 +3423,25 @@ end
 -- Required key: VersionLabel
 -- @return DeleteApplicationVersionMessage structure as a key-value pair table
 function M.DeleteApplicationVersionMessage(args)
-	assert(args, "You must provdide an argument table when creating DeleteApplicationVersionMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteApplicationVersionMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ApplicationName"] = args["ApplicationName"],
 		["DeleteSourceBundle"] = args["DeleteSourceBundle"],
 		["VersionLabel"] = args["VersionLabel"],
 	}
-	asserts.AssertDeleteApplicationVersionMessage(t)
-	return t
+	asserts.AssertDeleteApplicationVersionMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdateApplicationMessage = { ["ApplicationName"] = true, ["Description"] = true, nil }
@@ -2630,13 +3466,24 @@ end
 -- Required key: ApplicationName
 -- @return UpdateApplicationMessage structure as a key-value pair table
 function M.UpdateApplicationMessage(args)
-	assert(args, "You must provdide an argument table when creating UpdateApplicationMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateApplicationMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ApplicationName"] = args["ApplicationName"],
 		["Description"] = args["Description"],
 	}
-	asserts.AssertUpdateApplicationMessage(t)
-	return t
+	asserts.AssertUpdateApplicationMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ValidationMessage = { ["OptionName"] = true, ["Message"] = true, ["Namespace"] = true, ["Severity"] = true, nil }
@@ -2663,15 +3510,26 @@ end
 -- * Severity [ValidationSeverity] <p>An indication of the severity of this message:</p> <ul> <li> <p> <code>error</code>: This message indicates that this is not a valid setting for an option.</p> </li> <li> <p> <code>warning</code>: This message is providing information you should take into account.</p> </li> </ul>
 -- @return ValidationMessage structure as a key-value pair table
 function M.ValidationMessage(args)
-	assert(args, "You must provdide an argument table when creating ValidationMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ValidationMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["OptionName"] = args["OptionName"],
 		["Message"] = args["Message"],
 		["Namespace"] = args["Namespace"],
 		["Severity"] = args["Severity"],
 	}
-	asserts.AssertValidationMessage(t)
-	return t
+	asserts.AssertValidationMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ApplyEnvironmentManagedActionResult = { ["Status"] = true, ["ActionType"] = true, ["ActionId"] = true, ["ActionDescription"] = true, nil }
@@ -2698,15 +3556,26 @@ end
 -- * ActionDescription [String] <p>A description of the managed action.</p>
 -- @return ApplyEnvironmentManagedActionResult structure as a key-value pair table
 function M.ApplyEnvironmentManagedActionResult(args)
-	assert(args, "You must provdide an argument table when creating ApplyEnvironmentManagedActionResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ApplyEnvironmentManagedActionResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Status"] = args["Status"],
 		["ActionType"] = args["ActionType"],
 		["ActionId"] = args["ActionId"],
 		["ActionDescription"] = args["ActionDescription"],
 	}
-	asserts.AssertApplyEnvironmentManagedActionResult(t)
-	return t
+	asserts.AssertApplyEnvironmentManagedActionResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ApplicationDescription = { ["ApplicationName"] = true, ["Description"] = true, ["Versions"] = true, ["DateCreated"] = true, ["ConfigurationTemplates"] = true, ["DateUpdated"] = true, ["ResourceLifecycleConfig"] = true, nil }
@@ -2739,8 +3608,14 @@ end
 -- * ResourceLifecycleConfig [ApplicationResourceLifecycleConfig] <p>The lifecycle settings for the application.</p>
 -- @return ApplicationDescription structure as a key-value pair table
 function M.ApplicationDescription(args)
-	assert(args, "You must provdide an argument table when creating ApplicationDescription")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ApplicationDescription")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ApplicationName"] = args["ApplicationName"],
 		["Description"] = args["Description"],
 		["Versions"] = args["Versions"],
@@ -2749,8 +3624,13 @@ function M.ApplicationDescription(args)
 		["DateUpdated"] = args["DateUpdated"],
 		["ResourceLifecycleConfig"] = args["ResourceLifecycleConfig"],
 	}
-	asserts.AssertApplicationDescription(t)
-	return t
+	asserts.AssertApplicationDescription(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CustomAmi = { ["VirtualizationType"] = true, ["ImageId"] = true, nil }
@@ -2773,13 +3653,24 @@ end
 -- * ImageId [ImageId] <p>THe ID of the image used to create the custom AMI.</p>
 -- @return CustomAmi structure as a key-value pair table
 function M.CustomAmi(args)
-	assert(args, "You must provdide an argument table when creating CustomAmi")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CustomAmi")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["VirtualizationType"] = args["VirtualizationType"],
 		["ImageId"] = args["ImageId"],
 	}
-	asserts.AssertCustomAmi(t)
-	return t
+	asserts.AssertCustomAmi(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.LaunchConfiguration = { ["Name"] = true, nil }
@@ -2800,12 +3691,23 @@ end
 -- * Name [ResourceId] <p>The name of the launch configuration.</p>
 -- @return LaunchConfiguration structure as a key-value pair table
 function M.LaunchConfiguration(args)
-	assert(args, "You must provdide an argument table when creating LaunchConfiguration")
-	local t = { 
+	assert(args, "You must provide an argument table when creating LaunchConfiguration")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Name"] = args["Name"],
 	}
-	asserts.AssertLaunchConfiguration(t)
-	return t
+	asserts.AssertLaunchConfiguration(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeEnvironmentManagedActionHistoryResult = { ["NextToken"] = true, ["ManagedActionHistoryItems"] = true, nil }
@@ -2828,13 +3730,24 @@ end
 -- * ManagedActionHistoryItems [ManagedActionHistoryItems] <p>A list of completed and failed managed actions.</p>
 -- @return DescribeEnvironmentManagedActionHistoryResult structure as a key-value pair table
 function M.DescribeEnvironmentManagedActionHistoryResult(args)
-	assert(args, "You must provdide an argument table when creating DescribeEnvironmentManagedActionHistoryResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeEnvironmentManagedActionHistoryResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NextToken"] = args["NextToken"],
 		["ManagedActionHistoryItems"] = args["ManagedActionHistoryItems"],
 	}
-	asserts.AssertDescribeEnvironmentManagedActionHistoryResult(t)
-	return t
+	asserts.AssertDescribeEnvironmentManagedActionHistoryResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeApplicationsMessage = { ["ApplicationNames"] = true, nil }
@@ -2855,12 +3768,23 @@ end
 -- * ApplicationNames [ApplicationNamesList] <p>If specified, AWS Elastic Beanstalk restricts the returned descriptions to only include those with the specified names.</p>
 -- @return DescribeApplicationsMessage structure as a key-value pair table
 function M.DescribeApplicationsMessage(args)
-	assert(args, "You must provdide an argument table when creating DescribeApplicationsMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeApplicationsMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ApplicationNames"] = args["ApplicationNames"],
 	}
-	asserts.AssertDescribeApplicationsMessage(t)
-	return t
+	asserts.AssertDescribeApplicationsMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteApplicationMessage = { ["ApplicationName"] = true, ["TerminateEnvByForce"] = true, nil }
@@ -2885,13 +3809,24 @@ end
 -- Required key: ApplicationName
 -- @return DeleteApplicationMessage structure as a key-value pair table
 function M.DeleteApplicationMessage(args)
-	assert(args, "You must provdide an argument table when creating DeleteApplicationMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteApplicationMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ApplicationName"] = args["ApplicationName"],
 		["TerminateEnvByForce"] = args["TerminateEnvByForce"],
 	}
-	asserts.AssertDeleteApplicationMessage(t)
-	return t
+	asserts.AssertDeleteApplicationMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.MaxCountRule = { ["DeleteSourceFromS3"] = true, ["Enabled"] = true, ["MaxCount"] = true, nil }
@@ -2918,14 +3853,25 @@ end
 -- Required key: Enabled
 -- @return MaxCountRule structure as a key-value pair table
 function M.MaxCountRule(args)
-	assert(args, "You must provdide an argument table when creating MaxCountRule")
-	local t = { 
+	assert(args, "You must provide an argument table when creating MaxCountRule")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DeleteSourceFromS3"] = args["DeleteSourceFromS3"],
 		["Enabled"] = args["Enabled"],
 		["MaxCount"] = args["MaxCount"],
 	}
-	asserts.AssertMaxCountRule(t)
-	return t
+	asserts.AssertMaxCountRule(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListPlatformVersionsRequest = { ["MaxRecords"] = true, ["NextToken"] = true, ["Filters"] = true, nil }
@@ -2950,14 +3896,25 @@ end
 -- * Filters [PlatformFilters] <p>List only the platforms where the platform member value relates to one of the supplied values.</p>
 -- @return ListPlatformVersionsRequest structure as a key-value pair table
 function M.ListPlatformVersionsRequest(args)
-	assert(args, "You must provdide an argument table when creating ListPlatformVersionsRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListPlatformVersionsRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["MaxRecords"] = args["MaxRecords"],
 		["NextToken"] = args["NextToken"],
 		["Filters"] = args["Filters"],
 	}
-	asserts.AssertListPlatformVersionsRequest(t)
-	return t
+	asserts.AssertListPlatformVersionsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ComposeEnvironmentsMessage = { ["ApplicationName"] = true, ["GroupName"] = true, ["VersionLabels"] = true, nil }
@@ -2982,14 +3939,25 @@ end
 -- * VersionLabels [VersionLabels] <p>A list of version labels, specifying one or more application source bundles that belong to the target application. Each source bundle must include an environment manifest that specifies the name of the environment and the name of the solution stack to use, and optionally can specify environment links to create.</p>
 -- @return ComposeEnvironmentsMessage structure as a key-value pair table
 function M.ComposeEnvironmentsMessage(args)
-	assert(args, "You must provdide an argument table when creating ComposeEnvironmentsMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ComposeEnvironmentsMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ApplicationName"] = args["ApplicationName"],
 		["GroupName"] = args["GroupName"],
 		["VersionLabels"] = args["VersionLabels"],
 	}
-	asserts.AssertComposeEnvironmentsMessage(t)
-	return t
+	asserts.AssertComposeEnvironmentsMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ElasticBeanstalkServiceException = { ["message"] = true, nil }
@@ -3010,12 +3978,23 @@ end
 -- * message [ExceptionMessage] <p>The exception error message.</p>
 -- @return ElasticBeanstalkServiceException structure as a key-value pair table
 function M.ElasticBeanstalkServiceException(args)
-	assert(args, "You must provdide an argument table when creating ElasticBeanstalkServiceException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ElasticBeanstalkServiceException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertElasticBeanstalkServiceException(t)
-	return t
+	asserts.AssertElasticBeanstalkServiceException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ConfigurationSettingsDescription = { ["ApplicationName"] = true, ["PlatformArn"] = true, ["Description"] = true, ["TemplateName"] = true, ["DeploymentStatus"] = true, ["SolutionStackName"] = true, ["OptionSettings"] = true, ["DateUpdated"] = true, ["DateCreated"] = true, ["EnvironmentName"] = true, nil }
@@ -3054,8 +4033,14 @@ end
 -- * EnvironmentName [EnvironmentName] <p> If not <code>null</code>, the name of the environment for this configuration set. </p>
 -- @return ConfigurationSettingsDescription structure as a key-value pair table
 function M.ConfigurationSettingsDescription(args)
-	assert(args, "You must provdide an argument table when creating ConfigurationSettingsDescription")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ConfigurationSettingsDescription")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ApplicationName"] = args["ApplicationName"],
 		["PlatformArn"] = args["PlatformArn"],
 		["Description"] = args["Description"],
@@ -3067,8 +4052,13 @@ function M.ConfigurationSettingsDescription(args)
 		["DateCreated"] = args["DateCreated"],
 		["EnvironmentName"] = args["EnvironmentName"],
 	}
-	asserts.AssertConfigurationSettingsDescription(t)
-	return t
+	asserts.AssertConfigurationSettingsDescription(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribePlatformVersionRequest = { ["PlatformArn"] = true, nil }
@@ -3089,12 +4079,23 @@ end
 -- * PlatformArn [PlatformArn] <p>The ARN of the version of the platform.</p>
 -- @return DescribePlatformVersionRequest structure as a key-value pair table
 function M.DescribePlatformVersionRequest(args)
-	assert(args, "You must provdide an argument table when creating DescribePlatformVersionRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribePlatformVersionRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["PlatformArn"] = args["PlatformArn"],
 	}
-	asserts.AssertDescribePlatformVersionRequest(t)
-	return t
+	asserts.AssertDescribePlatformVersionRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.TooManyEnvironmentsException = { nil }
@@ -3113,11 +4114,22 @@ end
 -- Valid keys:
 -- @return TooManyEnvironmentsException structure as a key-value pair table
 function M.TooManyEnvironmentsException(args)
-	assert(args, "You must provdide an argument table when creating TooManyEnvironmentsException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating TooManyEnvironmentsException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertTooManyEnvironmentsException(t)
-	return t
+	asserts.AssertTooManyEnvironmentsException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ManagedActionHistoryItem = { ["Status"] = true, ["FinishedTime"] = true, ["ExecutedTime"] = true, ["ActionDescription"] = true, ["FailureType"] = true, ["FailureDescription"] = true, ["ActionType"] = true, ["ActionId"] = true, nil }
@@ -3152,8 +4164,14 @@ end
 -- * ActionId [String] <p>A unique identifier for the managed action.</p>
 -- @return ManagedActionHistoryItem structure as a key-value pair table
 function M.ManagedActionHistoryItem(args)
-	assert(args, "You must provdide an argument table when creating ManagedActionHistoryItem")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ManagedActionHistoryItem")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Status"] = args["Status"],
 		["FinishedTime"] = args["FinishedTime"],
 		["ExecutedTime"] = args["ExecutedTime"],
@@ -3163,8 +4181,13 @@ function M.ManagedActionHistoryItem(args)
 		["ActionType"] = args["ActionType"],
 		["ActionId"] = args["ActionId"],
 	}
-	asserts.AssertManagedActionHistoryItem(t)
-	return t
+	asserts.AssertManagedActionHistoryItem(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.SourceBundleDeletionException = { nil }
@@ -3183,11 +4206,22 @@ end
 -- Valid keys:
 -- @return SourceBundleDeletionException structure as a key-value pair table
 function M.SourceBundleDeletionException(args)
-	assert(args, "You must provdide an argument table when creating SourceBundleDeletionException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating SourceBundleDeletionException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertSourceBundleDeletionException(t)
-	return t
+	asserts.AssertSourceBundleDeletionException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Latency = { ["P99"] = true, ["P75"] = true, ["P90"] = true, ["P95"] = true, ["P85"] = true, ["P10"] = true, ["P999"] = true, ["P50"] = true, nil }
@@ -3222,8 +4256,14 @@ end
 -- * P50 [NullableDouble] <p>The average latency for the slowest 50 percent of requests over the last 10 seconds.</p>
 -- @return Latency structure as a key-value pair table
 function M.Latency(args)
-	assert(args, "You must provdide an argument table when creating Latency")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Latency")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["P99"] = args["P99"],
 		["P75"] = args["P75"],
 		["P90"] = args["P90"],
@@ -3233,8 +4273,13 @@ function M.Latency(args)
 		["P999"] = args["P999"],
 		["P50"] = args["P50"],
 	}
-	asserts.AssertLatency(t)
-	return t
+	asserts.AssertLatency(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ApplicationVersionDescription = { ["ApplicationName"] = true, ["Status"] = true, ["VersionLabel"] = true, ["SourceBuildInformation"] = true, ["Description"] = true, ["DateCreated"] = true, ["DateUpdated"] = true, ["SourceBundle"] = true, ["BuildArn"] = true, nil }
@@ -3271,8 +4316,14 @@ end
 -- * BuildArn [String] <p>Reference to the artifact from the AWS CodeBuild build.</p>
 -- @return ApplicationVersionDescription structure as a key-value pair table
 function M.ApplicationVersionDescription(args)
-	assert(args, "You must provdide an argument table when creating ApplicationVersionDescription")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ApplicationVersionDescription")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ApplicationName"] = args["ApplicationName"],
 		["Status"] = args["Status"],
 		["VersionLabel"] = args["VersionLabel"],
@@ -3283,8 +4334,13 @@ function M.ApplicationVersionDescription(args)
 		["SourceBundle"] = args["SourceBundle"],
 		["BuildArn"] = args["BuildArn"],
 	}
-	asserts.AssertApplicationVersionDescription(t)
-	return t
+	asserts.AssertApplicationVersionDescription(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdateConfigurationTemplateMessage = { ["ApplicationName"] = true, ["OptionSettings"] = true, ["OptionsToRemove"] = true, ["Description"] = true, ["TemplateName"] = true, nil }
@@ -3317,16 +4373,27 @@ end
 -- Required key: TemplateName
 -- @return UpdateConfigurationTemplateMessage structure as a key-value pair table
 function M.UpdateConfigurationTemplateMessage(args)
-	assert(args, "You must provdide an argument table when creating UpdateConfigurationTemplateMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateConfigurationTemplateMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ApplicationName"] = args["ApplicationName"],
 		["OptionSettings"] = args["OptionSettings"],
 		["OptionsToRemove"] = args["OptionsToRemove"],
 		["Description"] = args["Description"],
 		["TemplateName"] = args["TemplateName"],
 	}
-	asserts.AssertUpdateConfigurationTemplateMessage(t)
-	return t
+	asserts.AssertUpdateConfigurationTemplateMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.RestartAppServerMessage = { ["EnvironmentId"] = true, ["EnvironmentName"] = true, nil }
@@ -3349,13 +4416,24 @@ end
 -- * EnvironmentName [EnvironmentName] <p>The name of the environment to restart the server for.</p> <p> Condition: You must specify either this or an EnvironmentId, or both. If you do not specify either, AWS Elastic Beanstalk returns <code>MissingRequiredParameter</code> error. </p>
 -- @return RestartAppServerMessage structure as a key-value pair table
 function M.RestartAppServerMessage(args)
-	assert(args, "You must provdide an argument table when creating RestartAppServerMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating RestartAppServerMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["EnvironmentId"] = args["EnvironmentId"],
 		["EnvironmentName"] = args["EnvironmentName"],
 	}
-	asserts.AssertRestartAppServerMessage(t)
-	return t
+	asserts.AssertRestartAppServerMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.SwapEnvironmentCNAMEsMessage = { ["DestinationEnvironmentName"] = true, ["DestinationEnvironmentId"] = true, ["SourceEnvironmentName"] = true, ["SourceEnvironmentId"] = true, nil }
@@ -3382,15 +4460,26 @@ end
 -- * SourceEnvironmentId [EnvironmentId] <p>The ID of the source environment.</p> <p> Condition: You must specify at least the <code>SourceEnvironmentID</code> or the <code>SourceEnvironmentName</code>. You may also specify both. If you specify the <code>SourceEnvironmentId</code>, you must specify the <code>DestinationEnvironmentId</code>. </p>
 -- @return SwapEnvironmentCNAMEsMessage structure as a key-value pair table
 function M.SwapEnvironmentCNAMEsMessage(args)
-	assert(args, "You must provdide an argument table when creating SwapEnvironmentCNAMEsMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating SwapEnvironmentCNAMEsMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DestinationEnvironmentName"] = args["DestinationEnvironmentName"],
 		["DestinationEnvironmentId"] = args["DestinationEnvironmentId"],
 		["SourceEnvironmentName"] = args["SourceEnvironmentName"],
 		["SourceEnvironmentId"] = args["SourceEnvironmentId"],
 	}
-	asserts.AssertSwapEnvironmentCNAMEsMessage(t)
-	return t
+	asserts.AssertSwapEnvironmentCNAMEsMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeInstancesHealthRequest = { ["EnvironmentName"] = true, ["NextToken"] = true, ["AttributeNames"] = true, ["EnvironmentId"] = true, nil }
@@ -3417,15 +4506,26 @@ end
 -- * EnvironmentId [EnvironmentId] <p>Specify the AWS Elastic Beanstalk environment by ID.</p>
 -- @return DescribeInstancesHealthRequest structure as a key-value pair table
 function M.DescribeInstancesHealthRequest(args)
-	assert(args, "You must provdide an argument table when creating DescribeInstancesHealthRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeInstancesHealthRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["EnvironmentName"] = args["EnvironmentName"],
 		["NextToken"] = args["NextToken"],
 		["AttributeNames"] = args["AttributeNames"],
 		["EnvironmentId"] = args["EnvironmentId"],
 	}
-	asserts.AssertDescribeInstancesHealthRequest(t)
-	return t
+	asserts.AssertDescribeInstancesHealthRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.EnvironmentLink = { ["LinkName"] = true, ["EnvironmentName"] = true, nil }
@@ -3448,13 +4548,24 @@ end
 -- * EnvironmentName [String] <p>The name of the linked environment (the dependency).</p>
 -- @return EnvironmentLink structure as a key-value pair table
 function M.EnvironmentLink(args)
-	assert(args, "You must provdide an argument table when creating EnvironmentLink")
-	local t = { 
+	assert(args, "You must provide an argument table when creating EnvironmentLink")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["LinkName"] = args["LinkName"],
 		["EnvironmentName"] = args["EnvironmentName"],
 	}
-	asserts.AssertEnvironmentLink(t)
-	return t
+	asserts.AssertEnvironmentLink(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.PlatformVersionStillReferencedException = { nil }
@@ -3473,11 +4584,22 @@ end
 -- Valid keys:
 -- @return PlatformVersionStillReferencedException structure as a key-value pair table
 function M.PlatformVersionStillReferencedException(args)
-	assert(args, "You must provdide an argument table when creating PlatformVersionStillReferencedException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating PlatformVersionStillReferencedException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertPlatformVersionStillReferencedException(t)
-	return t
+	asserts.AssertPlatformVersionStillReferencedException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.RetrieveEnvironmentInfoResultMessage = { ["EnvironmentInfo"] = true, nil }
@@ -3498,12 +4620,23 @@ end
 -- * EnvironmentInfo [EnvironmentInfoDescriptionList] <p> The <a>EnvironmentInfoDescription</a> of the environment. </p>
 -- @return RetrieveEnvironmentInfoResultMessage structure as a key-value pair table
 function M.RetrieveEnvironmentInfoResultMessage(args)
-	assert(args, "You must provdide an argument table when creating RetrieveEnvironmentInfoResultMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating RetrieveEnvironmentInfoResultMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["EnvironmentInfo"] = args["EnvironmentInfo"],
 	}
-	asserts.AssertRetrieveEnvironmentInfoResultMessage(t)
-	return t
+	asserts.AssertRetrieveEnvironmentInfoResultMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdateApplicationVersionMessage = { ["ApplicationName"] = true, ["VersionLabel"] = true, ["Description"] = true, nil }
@@ -3532,14 +4665,25 @@ end
 -- Required key: VersionLabel
 -- @return UpdateApplicationVersionMessage structure as a key-value pair table
 function M.UpdateApplicationVersionMessage(args)
-	assert(args, "You must provdide an argument table when creating UpdateApplicationVersionMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateApplicationVersionMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ApplicationName"] = args["ApplicationName"],
 		["VersionLabel"] = args["VersionLabel"],
 		["Description"] = args["Description"],
 	}
-	asserts.AssertUpdateApplicationVersionMessage(t)
-	return t
+	asserts.AssertUpdateApplicationVersionMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.EnvironmentResourcesDescription = { ["LoadBalancer"] = true, nil }
@@ -3560,12 +4704,23 @@ end
 -- * LoadBalancer [LoadBalancerDescription] <p>Describes the LoadBalancer.</p>
 -- @return EnvironmentResourcesDescription structure as a key-value pair table
 function M.EnvironmentResourcesDescription(args)
-	assert(args, "You must provdide an argument table when creating EnvironmentResourcesDescription")
-	local t = { 
+	assert(args, "You must provide an argument table when creating EnvironmentResourcesDescription")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["LoadBalancer"] = args["LoadBalancer"],
 	}
-	asserts.AssertEnvironmentResourcesDescription(t)
-	return t
+	asserts.AssertEnvironmentResourcesDescription(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.OptionRestrictionRegex = { ["Pattern"] = true, ["Label"] = true, nil }
@@ -3588,13 +4743,24 @@ end
 -- * Label [RegexLabel] <p>A unique name representing this regular expression.</p>
 -- @return OptionRestrictionRegex structure as a key-value pair table
 function M.OptionRestrictionRegex(args)
-	assert(args, "You must provdide an argument table when creating OptionRestrictionRegex")
-	local t = { 
+	assert(args, "You must provide an argument table when creating OptionRestrictionRegex")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Pattern"] = args["Pattern"],
 		["Label"] = args["Label"],
 	}
-	asserts.AssertOptionRestrictionRegex(t)
-	return t
+	asserts.AssertOptionRestrictionRegex(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.PlatformProgrammingLanguage = { ["Version"] = true, ["Name"] = true, nil }
@@ -3617,13 +4783,24 @@ end
 -- * Name [String] <p>The name of the programming language.</p>
 -- @return PlatformProgrammingLanguage structure as a key-value pair table
 function M.PlatformProgrammingLanguage(args)
-	assert(args, "You must provdide an argument table when creating PlatformProgrammingLanguage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating PlatformProgrammingLanguage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Version"] = args["Version"],
 		["Name"] = args["Name"],
 	}
-	asserts.AssertPlatformProgrammingLanguage(t)
-	return t
+	asserts.AssertPlatformProgrammingLanguage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.TooManyPlatformsException = { nil }
@@ -3642,11 +4819,22 @@ end
 -- Valid keys:
 -- @return TooManyPlatformsException structure as a key-value pair table
 function M.TooManyPlatformsException(args)
-	assert(args, "You must provdide an argument table when creating TooManyPlatformsException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating TooManyPlatformsException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertTooManyPlatformsException(t)
-	return t
+	asserts.AssertTooManyPlatformsException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ApplicationDescriptionMessage = { ["Application"] = true, nil }
@@ -3667,12 +4855,23 @@ end
 -- * Application [ApplicationDescription] <p> The <a>ApplicationDescription</a> of the application. </p>
 -- @return ApplicationDescriptionMessage structure as a key-value pair table
 function M.ApplicationDescriptionMessage(args)
-	assert(args, "You must provdide an argument table when creating ApplicationDescriptionMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ApplicationDescriptionMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Application"] = args["Application"],
 	}
-	asserts.AssertApplicationDescriptionMessage(t)
-	return t
+	asserts.AssertApplicationDescriptionMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.PlatformSummary = { ["PlatformArn"] = true, ["PlatformStatus"] = true, ["SupportedAddonList"] = true, ["OperatingSystemName"] = true, ["PlatformCategory"] = true, ["PlatformOwner"] = true, ["OperatingSystemVersion"] = true, ["SupportedTierList"] = true, nil }
@@ -3707,8 +4906,14 @@ end
 -- * SupportedTierList [SupportedTierList] <p>The tiers in which the platform runs.</p>
 -- @return PlatformSummary structure as a key-value pair table
 function M.PlatformSummary(args)
-	assert(args, "You must provdide an argument table when creating PlatformSummary")
-	local t = { 
+	assert(args, "You must provide an argument table when creating PlatformSummary")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["PlatformArn"] = args["PlatformArn"],
 		["PlatformStatus"] = args["PlatformStatus"],
 		["SupportedAddonList"] = args["SupportedAddonList"],
@@ -3718,8 +4923,13 @@ function M.PlatformSummary(args)
 		["OperatingSystemVersion"] = args["OperatingSystemVersion"],
 		["SupportedTierList"] = args["SupportedTierList"],
 	}
-	asserts.AssertPlatformSummary(t)
-	return t
+	asserts.AssertPlatformSummary(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreatePlatformVersionResult = { ["PlatformSummary"] = true, ["Builder"] = true, nil }
@@ -3742,13 +4952,24 @@ end
 -- * Builder [Builder] <p>The builder used to create the custom platform.</p>
 -- @return CreatePlatformVersionResult structure as a key-value pair table
 function M.CreatePlatformVersionResult(args)
-	assert(args, "You must provdide an argument table when creating CreatePlatformVersionResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreatePlatformVersionResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["PlatformSummary"] = args["PlatformSummary"],
 		["Builder"] = args["Builder"],
 	}
-	asserts.AssertCreatePlatformVersionResult(t)
-	return t
+	asserts.AssertCreatePlatformVersionResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ConfigurationOptionSetting = { ["OptionName"] = true, ["ResourceName"] = true, ["Namespace"] = true, ["Value"] = true, nil }
@@ -3775,15 +4996,26 @@ end
 -- * Value [ConfigurationOptionValue] <p>The current value for the configuration option.</p>
 -- @return ConfigurationOptionSetting structure as a key-value pair table
 function M.ConfigurationOptionSetting(args)
-	assert(args, "You must provdide an argument table when creating ConfigurationOptionSetting")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ConfigurationOptionSetting")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["OptionName"] = args["OptionName"],
 		["ResourceName"] = args["ResourceName"],
 		["Namespace"] = args["Namespace"],
 		["Value"] = args["Value"],
 	}
-	asserts.AssertConfigurationOptionSetting(t)
-	return t
+	asserts.AssertConfigurationOptionSetting(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Deployment = { ["Status"] = true, ["VersionLabel"] = true, ["DeploymentTime"] = true, ["DeploymentId"] = true, nil }
@@ -3810,15 +5042,26 @@ end
 -- * DeploymentId [NullableLong] <p>The ID of the deployment. This number increases by one each time that you deploy source code or change instance configuration settings.</p>
 -- @return Deployment structure as a key-value pair table
 function M.Deployment(args)
-	assert(args, "You must provdide an argument table when creating Deployment")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Deployment")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Status"] = args["Status"],
 		["VersionLabel"] = args["VersionLabel"],
 		["DeploymentTime"] = args["DeploymentTime"],
 		["DeploymentId"] = args["DeploymentId"],
 	}
-	asserts.AssertDeployment(t)
-	return t
+	asserts.AssertDeployment(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.PlatformFilter = { ["Operator"] = true, ["Values"] = true, ["Type"] = true, nil }
@@ -3843,14 +5086,25 @@ end
 -- * Type [PlatformFilterType] <p>The custom platform attribute to which the filter values are applied.</p> <p>Valid Values: <code>PlatformName</code> | <code>PlatformVersion</code> | <code>PlatformStatus</code> | <code>PlatformOwner</code> </p>
 -- @return PlatformFilter structure as a key-value pair table
 function M.PlatformFilter(args)
-	assert(args, "You must provdide an argument table when creating PlatformFilter")
-	local t = { 
+	assert(args, "You must provide an argument table when creating PlatformFilter")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Operator"] = args["Operator"],
 		["Values"] = args["Values"],
 		["Type"] = args["Type"],
 	}
-	asserts.AssertPlatformFilter(t)
-	return t
+	asserts.AssertPlatformFilter(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.RequestEnvironmentInfoMessage = { ["EnvironmentId"] = true, ["InfoType"] = true, ["EnvironmentName"] = true, nil }
@@ -3877,14 +5131,25 @@ end
 -- Required key: InfoType
 -- @return RequestEnvironmentInfoMessage structure as a key-value pair table
 function M.RequestEnvironmentInfoMessage(args)
-	assert(args, "You must provdide an argument table when creating RequestEnvironmentInfoMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating RequestEnvironmentInfoMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["EnvironmentId"] = args["EnvironmentId"],
 		["InfoType"] = args["InfoType"],
 		["EnvironmentName"] = args["EnvironmentName"],
 	}
-	asserts.AssertRequestEnvironmentInfoMessage(t)
-	return t
+	asserts.AssertRequestEnvironmentInfoMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.SolutionStackDescription = { ["PermittedFileTypes"] = true, ["SolutionStackName"] = true, nil }
@@ -3907,13 +5172,24 @@ end
 -- * SolutionStackName [SolutionStackName] <p>The name of the solution stack.</p>
 -- @return SolutionStackDescription structure as a key-value pair table
 function M.SolutionStackDescription(args)
-	assert(args, "You must provdide an argument table when creating SolutionStackDescription")
-	local t = { 
+	assert(args, "You must provide an argument table when creating SolutionStackDescription")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["PermittedFileTypes"] = args["PermittedFileTypes"],
 		["SolutionStackName"] = args["SolutionStackName"],
 	}
-	asserts.AssertSolutionStackDescription(t)
-	return t
+	asserts.AssertSolutionStackDescription(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InstanceHealthSummary = { ["Info"] = true, ["Ok"] = true, ["Unknown"] = true, ["Severe"] = true, ["Warning"] = true, ["Degraded"] = true, ["NoData"] = true, ["Pending"] = true, nil }
@@ -3948,8 +5224,14 @@ end
 -- * Pending [NullableInteger] <p> <b>Grey.</b> An operation is in progress on an instance within the command timeout.</p>
 -- @return InstanceHealthSummary structure as a key-value pair table
 function M.InstanceHealthSummary(args)
-	assert(args, "You must provdide an argument table when creating InstanceHealthSummary")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InstanceHealthSummary")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Info"] = args["Info"],
 		["Ok"] = args["Ok"],
 		["Unknown"] = args["Unknown"],
@@ -3959,8 +5241,13 @@ function M.InstanceHealthSummary(args)
 		["NoData"] = args["NoData"],
 		["Pending"] = args["Pending"],
 	}
-	asserts.AssertInstanceHealthSummary(t)
-	return t
+	asserts.AssertInstanceHealthSummary(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.EnvironmentDescriptionsMessage = { ["Environments"] = true, nil }
@@ -3981,12 +5268,23 @@ end
 -- * Environments [EnvironmentDescriptionsList] <p> Returns an <a>EnvironmentDescription</a> list. </p>
 -- @return EnvironmentDescriptionsMessage structure as a key-value pair table
 function M.EnvironmentDescriptionsMessage(args)
-	assert(args, "You must provdide an argument table when creating EnvironmentDescriptionsMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating EnvironmentDescriptionsMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Environments"] = args["Environments"],
 	}
-	asserts.AssertEnvironmentDescriptionsMessage(t)
-	return t
+	asserts.AssertEnvironmentDescriptionsMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.PlatformFramework = { ["Version"] = true, ["Name"] = true, nil }
@@ -4009,13 +5307,24 @@ end
 -- * Name [String] <p>The name of the framework.</p>
 -- @return PlatformFramework structure as a key-value pair table
 function M.PlatformFramework(args)
-	assert(args, "You must provdide an argument table when creating PlatformFramework")
-	local t = { 
+	assert(args, "You must provide an argument table when creating PlatformFramework")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Version"] = args["Version"],
 		["Name"] = args["Name"],
 	}
-	asserts.AssertPlatformFramework(t)
-	return t
+	asserts.AssertPlatformFramework(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdateApplicationResourceLifecycleMessage = { ["ApplicationName"] = true, ["ResourceLifecycleConfig"] = true, nil }
@@ -4042,13 +5351,24 @@ end
 -- Required key: ResourceLifecycleConfig
 -- @return UpdateApplicationResourceLifecycleMessage structure as a key-value pair table
 function M.UpdateApplicationResourceLifecycleMessage(args)
-	assert(args, "You must provdide an argument table when creating UpdateApplicationResourceLifecycleMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateApplicationResourceLifecycleMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ApplicationName"] = args["ApplicationName"],
 		["ResourceLifecycleConfig"] = args["ResourceLifecycleConfig"],
 	}
-	asserts.AssertUpdateApplicationResourceLifecycleMessage(t)
-	return t
+	asserts.AssertUpdateApplicationResourceLifecycleMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.LoadBalancerDescription = { ["Domain"] = true, ["Listeners"] = true, ["LoadBalancerName"] = true, nil }
@@ -4073,14 +5393,25 @@ end
 -- * LoadBalancerName [String] <p>The name of the LoadBalancer.</p>
 -- @return LoadBalancerDescription structure as a key-value pair table
 function M.LoadBalancerDescription(args)
-	assert(args, "You must provdide an argument table when creating LoadBalancerDescription")
-	local t = { 
+	assert(args, "You must provide an argument table when creating LoadBalancerDescription")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Domain"] = args["Domain"],
 		["Listeners"] = args["Listeners"],
 		["LoadBalancerName"] = args["LoadBalancerName"],
 	}
-	asserts.AssertLoadBalancerDescription(t)
-	return t
+	asserts.AssertLoadBalancerDescription(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.TooManyApplicationsException = { nil }
@@ -4099,11 +5430,22 @@ end
 -- Valid keys:
 -- @return TooManyApplicationsException structure as a key-value pair table
 function M.TooManyApplicationsException(args)
-	assert(args, "You must provdide an argument table when creating TooManyApplicationsException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating TooManyApplicationsException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertTooManyApplicationsException(t)
-	return t
+	asserts.AssertTooManyApplicationsException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListPlatformVersionsResult = { ["PlatformSummaryList"] = true, ["NextToken"] = true, nil }
@@ -4126,13 +5468,24 @@ end
 -- * NextToken [Token] <p>The starting index into the remaining list of platforms. if this value is not <code>null</code>, you can use it in a subsequent <code>ListPlatformVersion</code> call. </p>
 -- @return ListPlatformVersionsResult structure as a key-value pair table
 function M.ListPlatformVersionsResult(args)
-	assert(args, "You must provdide an argument table when creating ListPlatformVersionsResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListPlatformVersionsResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["PlatformSummaryList"] = args["PlatformSummaryList"],
 		["NextToken"] = args["NextToken"],
 	}
-	asserts.AssertListPlatformVersionsResult(t)
-	return t
+	asserts.AssertListPlatformVersionsResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.EnvironmentInfoDescription = { ["SampleTimestamp"] = true, ["Message"] = true, ["InfoType"] = true, ["Ec2InstanceId"] = true, nil }
@@ -4159,15 +5512,26 @@ end
 -- * Ec2InstanceId [Ec2InstanceId] <p>The Amazon EC2 Instance ID for this information.</p>
 -- @return EnvironmentInfoDescription structure as a key-value pair table
 function M.EnvironmentInfoDescription(args)
-	assert(args, "You must provdide an argument table when creating EnvironmentInfoDescription")
-	local t = { 
+	assert(args, "You must provide an argument table when creating EnvironmentInfoDescription")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["SampleTimestamp"] = args["SampleTimestamp"],
 		["Message"] = args["Message"],
 		["InfoType"] = args["InfoType"],
 		["Ec2InstanceId"] = args["Ec2InstanceId"],
 	}
-	asserts.AssertEnvironmentInfoDescription(t)
-	return t
+	asserts.AssertEnvironmentInfoDescription(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteConfigurationTemplateMessage = { ["ApplicationName"] = true, ["TemplateName"] = true, nil }
@@ -4194,13 +5558,24 @@ end
 -- Required key: TemplateName
 -- @return DeleteConfigurationTemplateMessage structure as a key-value pair table
 function M.DeleteConfigurationTemplateMessage(args)
-	assert(args, "You must provdide an argument table when creating DeleteConfigurationTemplateMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteConfigurationTemplateMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ApplicationName"] = args["ApplicationName"],
 		["TemplateName"] = args["TemplateName"],
 	}
-	asserts.AssertDeleteConfigurationTemplateMessage(t)
-	return t
+	asserts.AssertDeleteConfigurationTemplateMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ConfigurationOptionsDescription = { ["PlatformArn"] = true, ["Options"] = true, ["SolutionStackName"] = true, nil }
@@ -4225,14 +5600,25 @@ end
 -- * SolutionStackName [SolutionStackName] <p>The name of the solution stack these configuration options belong to.</p>
 -- @return ConfigurationOptionsDescription structure as a key-value pair table
 function M.ConfigurationOptionsDescription(args)
-	assert(args, "You must provdide an argument table when creating ConfigurationOptionsDescription")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ConfigurationOptionsDescription")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["PlatformArn"] = args["PlatformArn"],
 		["Options"] = args["Options"],
 		["SolutionStackName"] = args["SolutionStackName"],
 	}
-	asserts.AssertConfigurationOptionsDescription(t)
-	return t
+	asserts.AssertConfigurationOptionsDescription(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.LoadBalancer = { ["Name"] = true, nil }
@@ -4253,12 +5639,23 @@ end
 -- * Name [ResourceId] <p>The name of the LoadBalancer.</p>
 -- @return LoadBalancer structure as a key-value pair table
 function M.LoadBalancer(args)
-	assert(args, "You must provdide an argument table when creating LoadBalancer")
-	local t = { 
+	assert(args, "You must provide an argument table when creating LoadBalancer")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Name"] = args["Name"],
 	}
-	asserts.AssertLoadBalancer(t)
-	return t
+	asserts.AssertLoadBalancer(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeEnvironmentManagedActionsRequest = { ["Status"] = true, ["EnvironmentName"] = true, ["EnvironmentId"] = true, nil }
@@ -4283,14 +5680,25 @@ end
 -- * EnvironmentId [String] <p>The environment ID of the target environment.</p>
 -- @return DescribeEnvironmentManagedActionsRequest structure as a key-value pair table
 function M.DescribeEnvironmentManagedActionsRequest(args)
-	assert(args, "You must provdide an argument table when creating DescribeEnvironmentManagedActionsRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeEnvironmentManagedActionsRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Status"] = args["Status"],
 		["EnvironmentName"] = args["EnvironmentName"],
 		["EnvironmentId"] = args["EnvironmentId"],
 	}
-	asserts.AssertDescribeEnvironmentManagedActionsRequest(t)
-	return t
+	asserts.AssertDescribeEnvironmentManagedActionsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdateEnvironmentMessage = { ["ApplicationName"] = true, ["EnvironmentId"] = true, ["VersionLabel"] = true, ["Description"] = true, ["EnvironmentName"] = true, ["TemplateName"] = true, ["SolutionStackName"] = true, ["GroupName"] = true, ["OptionSettings"] = true, ["Tier"] = true, ["PlatformArn"] = true, ["OptionsToRemove"] = true, nil }
@@ -4333,8 +5741,14 @@ end
 -- * OptionsToRemove [OptionsSpecifierList] <p>A list of custom user-defined configuration options to remove from the configuration set for this environment.</p>
 -- @return UpdateEnvironmentMessage structure as a key-value pair table
 function M.UpdateEnvironmentMessage(args)
-	assert(args, "You must provdide an argument table when creating UpdateEnvironmentMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateEnvironmentMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ApplicationName"] = args["ApplicationName"],
 		["EnvironmentId"] = args["EnvironmentId"],
 		["VersionLabel"] = args["VersionLabel"],
@@ -4348,8 +5762,13 @@ function M.UpdateEnvironmentMessage(args)
 		["PlatformArn"] = args["PlatformArn"],
 		["OptionsToRemove"] = args["OptionsToRemove"],
 	}
-	asserts.AssertUpdateEnvironmentMessage(t)
-	return t
+	asserts.AssertUpdateEnvironmentMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 function asserts.AssertConfigurationOptionValueType(str)
@@ -6268,8 +7687,11 @@ function M.DescribeApplicationVersionsAsync(DescribeApplicationVersionsMessage, 
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DescribeApplicationVersions",
 	}
+	for header,value in pairs(DescribeApplicationVersionsMessage.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeApplicationVersionsMessage, headers, settings, cb)
 	else
@@ -6300,8 +7722,11 @@ function M.RequestEnvironmentInfoAsync(RequestEnvironmentInfoMessage, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".RequestEnvironmentInfo",
 	}
+	for header,value in pairs(RequestEnvironmentInfoMessage.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", RequestEnvironmentInfoMessage, headers, settings, cb)
 	else
@@ -6332,8 +7757,11 @@ function M.DescribeEnvironmentResourcesAsync(DescribeEnvironmentResourcesMessage
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DescribeEnvironmentResources",
 	}
+	for header,value in pairs(DescribeEnvironmentResourcesMessage.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeEnvironmentResourcesMessage, headers, settings, cb)
 	else
@@ -6364,8 +7792,11 @@ function M.DescribeEventsAsync(DescribeEventsMessage, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DescribeEvents",
 	}
+	for header,value in pairs(DescribeEventsMessage.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeEventsMessage, headers, settings, cb)
 	else
@@ -6396,8 +7827,11 @@ function M.DescribeEnvironmentHealthAsync(DescribeEnvironmentHealthRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DescribeEnvironmentHealth",
 	}
+	for header,value in pairs(DescribeEnvironmentHealthRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeEnvironmentHealthRequest, headers, settings, cb)
 	else
@@ -6428,8 +7862,11 @@ function M.UpdateApplicationResourceLifecycleAsync(UpdateApplicationResourceLife
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".UpdateApplicationResourceLifecycle",
 	}
+	for header,value in pairs(UpdateApplicationResourceLifecycleMessage.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateApplicationResourceLifecycleMessage, headers, settings, cb)
 	else
@@ -6460,8 +7897,11 @@ function M.UpdateApplicationVersionAsync(UpdateApplicationVersionMessage, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".UpdateApplicationVersion",
 	}
+	for header,value in pairs(UpdateApplicationVersionMessage.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateApplicationVersionMessage, headers, settings, cb)
 	else
@@ -6492,8 +7932,11 @@ function M.DeleteApplicationAsync(DeleteApplicationMessage, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DeleteApplication",
 	}
+	for header,value in pairs(DeleteApplicationMessage.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteApplicationMessage, headers, settings, cb)
 	else
@@ -6524,8 +7967,11 @@ function M.ApplyEnvironmentManagedActionAsync(ApplyEnvironmentManagedActionReque
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".ApplyEnvironmentManagedAction",
 	}
+	for header,value in pairs(ApplyEnvironmentManagedActionRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ApplyEnvironmentManagedActionRequest, headers, settings, cb)
 	else
@@ -6556,8 +8002,11 @@ function M.DescribeConfigurationOptionsAsync(DescribeConfigurationOptionsMessage
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DescribeConfigurationOptions",
 	}
+	for header,value in pairs(DescribeConfigurationOptionsMessage.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeConfigurationOptionsMessage, headers, settings, cb)
 	else
@@ -6588,8 +8037,11 @@ function M.DescribeEnvironmentManagedActionHistoryAsync(DescribeEnvironmentManag
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DescribeEnvironmentManagedActionHistory",
 	}
+	for header,value in pairs(DescribeEnvironmentManagedActionHistoryRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeEnvironmentManagedActionHistoryRequest, headers, settings, cb)
 	else
@@ -6620,8 +8072,11 @@ function M.DeleteConfigurationTemplateAsync(DeleteConfigurationTemplateMessage, 
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DeleteConfigurationTemplate",
 	}
+	for header,value in pairs(DeleteConfigurationTemplateMessage.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteConfigurationTemplateMessage, headers, settings, cb)
 	else
@@ -6652,8 +8107,11 @@ function M.ValidateConfigurationSettingsAsync(ValidateConfigurationSettingsMessa
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".ValidateConfigurationSettings",
 	}
+	for header,value in pairs(ValidateConfigurationSettingsMessage.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ValidateConfigurationSettingsMessage, headers, settings, cb)
 	else
@@ -6683,7 +8141,8 @@ function M.ListAvailableSolutionStacksAsync(cb)
 		[request_headers.AMZ_TARGET_HEADER] = ".ListAvailableSolutionStacks",
 	}
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", {}, headers, settings, cb)
 	else
@@ -6713,8 +8172,11 @@ function M.ComposeEnvironmentsAsync(ComposeEnvironmentsMessage, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".ComposeEnvironments",
 	}
+	for header,value in pairs(ComposeEnvironmentsMessage.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ComposeEnvironmentsMessage, headers, settings, cb)
 	else
@@ -6745,8 +8207,11 @@ function M.DescribeConfigurationSettingsAsync(DescribeConfigurationSettingsMessa
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DescribeConfigurationSettings",
 	}
+	for header,value in pairs(DescribeConfigurationSettingsMessage.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeConfigurationSettingsMessage, headers, settings, cb)
 	else
@@ -6777,8 +8242,11 @@ function M.CreateApplicationAsync(CreateApplicationMessage, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".CreateApplication",
 	}
+	for header,value in pairs(CreateApplicationMessage.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateApplicationMessage, headers, settings, cb)
 	else
@@ -6809,8 +8277,11 @@ function M.UpdateConfigurationTemplateAsync(UpdateConfigurationTemplateMessage, 
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".UpdateConfigurationTemplate",
 	}
+	for header,value in pairs(UpdateConfigurationTemplateMessage.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateConfigurationTemplateMessage, headers, settings, cb)
 	else
@@ -6841,8 +8312,11 @@ function M.DeleteApplicationVersionAsync(DeleteApplicationVersionMessage, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DeleteApplicationVersion",
 	}
+	for header,value in pairs(DeleteApplicationVersionMessage.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteApplicationVersionMessage, headers, settings, cb)
 	else
@@ -6873,8 +8347,11 @@ function M.RetrieveEnvironmentInfoAsync(RetrieveEnvironmentInfoMessage, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".RetrieveEnvironmentInfo",
 	}
+	for header,value in pairs(RetrieveEnvironmentInfoMessage.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", RetrieveEnvironmentInfoMessage, headers, settings, cb)
 	else
@@ -6905,8 +8382,11 @@ function M.UpdateApplicationAsync(UpdateApplicationMessage, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".UpdateApplication",
 	}
+	for header,value in pairs(UpdateApplicationMessage.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateApplicationMessage, headers, settings, cb)
 	else
@@ -6937,8 +8417,11 @@ function M.UpdateEnvironmentAsync(UpdateEnvironmentMessage, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".UpdateEnvironment",
 	}
+	for header,value in pairs(UpdateEnvironmentMessage.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateEnvironmentMessage, headers, settings, cb)
 	else
@@ -6969,8 +8452,11 @@ function M.DescribeEnvironmentsAsync(DescribeEnvironmentsMessage, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DescribeEnvironments",
 	}
+	for header,value in pairs(DescribeEnvironmentsMessage.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeEnvironmentsMessage, headers, settings, cb)
 	else
@@ -7001,8 +8487,11 @@ function M.ListPlatformVersionsAsync(ListPlatformVersionsRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".ListPlatformVersions",
 	}
+	for header,value in pairs(ListPlatformVersionsRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ListPlatformVersionsRequest, headers, settings, cb)
 	else
@@ -7033,8 +8522,11 @@ function M.DescribeEnvironmentManagedActionsAsync(DescribeEnvironmentManagedActi
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DescribeEnvironmentManagedActions",
 	}
+	for header,value in pairs(DescribeEnvironmentManagedActionsRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeEnvironmentManagedActionsRequest, headers, settings, cb)
 	else
@@ -7065,8 +8557,11 @@ function M.AbortEnvironmentUpdateAsync(AbortEnvironmentUpdateMessage, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".AbortEnvironmentUpdate",
 	}
+	for header,value in pairs(AbortEnvironmentUpdateMessage.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", AbortEnvironmentUpdateMessage, headers, settings, cb)
 	else
@@ -7097,8 +8592,11 @@ function M.TerminateEnvironmentAsync(TerminateEnvironmentMessage, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".TerminateEnvironment",
 	}
+	for header,value in pairs(TerminateEnvironmentMessage.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", TerminateEnvironmentMessage, headers, settings, cb)
 	else
@@ -7129,8 +8627,11 @@ function M.DeleteEnvironmentConfigurationAsync(DeleteEnvironmentConfigurationMes
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DeleteEnvironmentConfiguration",
 	}
+	for header,value in pairs(DeleteEnvironmentConfigurationMessage.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteEnvironmentConfigurationMessage, headers, settings, cb)
 	else
@@ -7161,8 +8662,11 @@ function M.CreateEnvironmentAsync(CreateEnvironmentMessage, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".CreateEnvironment",
 	}
+	for header,value in pairs(CreateEnvironmentMessage.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateEnvironmentMessage, headers, settings, cb)
 	else
@@ -7193,8 +8697,11 @@ function M.SwapEnvironmentCNAMEsAsync(SwapEnvironmentCNAMEsMessage, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".SwapEnvironmentCNAMEs",
 	}
+	for header,value in pairs(SwapEnvironmentCNAMEsMessage.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", SwapEnvironmentCNAMEsMessage, headers, settings, cb)
 	else
@@ -7225,8 +8732,11 @@ function M.DeletePlatformVersionAsync(DeletePlatformVersionRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DeletePlatformVersion",
 	}
+	for header,value in pairs(DeletePlatformVersionRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DeletePlatformVersionRequest, headers, settings, cb)
 	else
@@ -7256,7 +8766,8 @@ function M.CreateStorageLocationAsync(cb)
 		[request_headers.AMZ_TARGET_HEADER] = ".CreateStorageLocation",
 	}
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", {}, headers, settings, cb)
 	else
@@ -7286,8 +8797,11 @@ function M.RebuildEnvironmentAsync(RebuildEnvironmentMessage, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".RebuildEnvironment",
 	}
+	for header,value in pairs(RebuildEnvironmentMessage.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", RebuildEnvironmentMessage, headers, settings, cb)
 	else
@@ -7318,8 +8832,11 @@ function M.RestartAppServerAsync(RestartAppServerMessage, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".RestartAppServer",
 	}
+	for header,value in pairs(RestartAppServerMessage.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", RestartAppServerMessage, headers, settings, cb)
 	else
@@ -7350,8 +8867,11 @@ function M.DescribeApplicationsAsync(DescribeApplicationsMessage, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DescribeApplications",
 	}
+	for header,value in pairs(DescribeApplicationsMessage.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeApplicationsMessage, headers, settings, cb)
 	else
@@ -7382,8 +8902,11 @@ function M.CreatePlatformVersionAsync(CreatePlatformVersionRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".CreatePlatformVersion",
 	}
+	for header,value in pairs(CreatePlatformVersionRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", CreatePlatformVersionRequest, headers, settings, cb)
 	else
@@ -7414,8 +8937,11 @@ function M.DescribePlatformVersionAsync(DescribePlatformVersionRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DescribePlatformVersion",
 	}
+	for header,value in pairs(DescribePlatformVersionRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribePlatformVersionRequest, headers, settings, cb)
 	else
@@ -7446,8 +8972,11 @@ function M.DescribeInstancesHealthAsync(DescribeInstancesHealthRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DescribeInstancesHealth",
 	}
+	for header,value in pairs(DescribeInstancesHealthRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeInstancesHealthRequest, headers, settings, cb)
 	else
@@ -7478,8 +9007,11 @@ function M.CreateApplicationVersionAsync(CreateApplicationVersionMessage, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".CreateApplicationVersion",
 	}
+	for header,value in pairs(CreateApplicationVersionMessage.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateApplicationVersionMessage, headers, settings, cb)
 	else
@@ -7510,8 +9042,11 @@ function M.CreateConfigurationTemplateAsync(CreateConfigurationTemplateMessage, 
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".CreateConfigurationTemplate",
 	}
+	for header,value in pairs(CreateConfigurationTemplateMessage.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateConfigurationTemplateMessage, headers, settings, cb)
 	else
@@ -7542,8 +9077,11 @@ function M.CheckDNSAvailabilityAsync(CheckDNSAvailabilityMessage, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".CheckDNSAvailability",
 	}
+	for header,value in pairs(CheckDNSAvailabilityMessage.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", CheckDNSAvailabilityMessage, headers, settings, cb)
 	else

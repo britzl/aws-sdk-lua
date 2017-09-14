@@ -49,14 +49,28 @@ end
 -- Required key: botAlias
 -- @return GetBotChannelAssociationRequest structure as a key-value pair table
 function M.GetBotChannelAssociationRequest(args)
-	assert(args, "You must provdide an argument table when creating GetBotChannelAssociationRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetBotChannelAssociationRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{aliasName}"] = args["botAlias"],
+        ["{name}"] = args["name"],
+        ["{botName}"] = args["botName"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["botAlias"] = args["botAlias"],
 		["name"] = args["name"],
 		["botName"] = args["botName"],
 	}
-	asserts.AssertGetBotChannelAssociationRequest(t)
-	return t
+	asserts.AssertGetBotChannelAssociationRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.BadRequestException = { ["message"] = true, nil }
@@ -77,12 +91,23 @@ end
 -- * message [String] 
 -- @return BadRequestException structure as a key-value pair table
 function M.BadRequestException(args)
-	assert(args, "You must provdide an argument table when creating BadRequestException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating BadRequestException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertBadRequestException(t)
-	return t
+	asserts.AssertBadRequestException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetBuiltinSlotTypesResponse = { ["nextToken"] = true, ["slotTypes"] = true, nil }
@@ -105,13 +130,24 @@ end
 -- * slotTypes [BuiltinSlotTypeMetadataList] <p>An array of <code>BuiltInSlotTypeMetadata</code> objects, one entry for each slot type returned.</p>
 -- @return GetBuiltinSlotTypesResponse structure as a key-value pair table
 function M.GetBuiltinSlotTypesResponse(args)
-	assert(args, "You must provdide an argument table when creating GetBuiltinSlotTypesResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetBuiltinSlotTypesResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["nextToken"] = args["nextToken"],
 		["slotTypes"] = args["slotTypes"],
 	}
-	asserts.AssertGetBuiltinSlotTypesResponse(t)
-	return t
+	asserts.AssertGetBuiltinSlotTypesResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Statement = { ["messages"] = true, ["responseCard"] = true, nil }
@@ -136,13 +172,24 @@ end
 -- Required key: messages
 -- @return Statement structure as a key-value pair table
 function M.Statement(args)
-	assert(args, "You must provdide an argument table when creating Statement")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Statement")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["messages"] = args["messages"],
 		["responseCard"] = args["responseCard"],
 	}
-	asserts.AssertStatement(t)
-	return t
+	asserts.AssertStatement(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetBotChannelAssociationsRequest = { ["nameContains"] = true, ["nextToken"] = true, ["botName"] = true, ["maxResults"] = true, ["botAlias"] = true, nil }
@@ -175,16 +222,32 @@ end
 -- Required key: botAlias
 -- @return GetBotChannelAssociationsRequest structure as a key-value pair table
 function M.GetBotChannelAssociationsRequest(args)
-	assert(args, "You must provdide an argument table when creating GetBotChannelAssociationsRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetBotChannelAssociationsRequest")
+    local query_args = { 
+        ["nameContains"] = args["nameContains"],
+        ["nextToken"] = args["nextToken"],
+        ["maxResults"] = args["maxResults"],
+    }
+    local uri_args = { 
+        ["{botName}"] = args["botName"],
+        ["{aliasName}"] = args["botAlias"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["nameContains"] = args["nameContains"],
 		["nextToken"] = args["nextToken"],
 		["botName"] = args["botName"],
 		["maxResults"] = args["maxResults"],
 		["botAlias"] = args["botAlias"],
 	}
-	asserts.AssertGetBotChannelAssociationsRequest(t)
-	return t
+	asserts.AssertGetBotChannelAssociationsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateIntentVersionRequest = { ["checksum"] = true, ["name"] = true, nil }
@@ -209,13 +272,25 @@ end
 -- Required key: name
 -- @return CreateIntentVersionRequest structure as a key-value pair table
 function M.CreateIntentVersionRequest(args)
-	assert(args, "You must provdide an argument table when creating CreateIntentVersionRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateIntentVersionRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{name}"] = args["name"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["checksum"] = args["checksum"],
 		["name"] = args["name"],
 	}
-	asserts.AssertCreateIntentVersionRequest(t)
-	return t
+	asserts.AssertCreateIntentVersionRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetBotsResponse = { ["bots"] = true, ["nextToken"] = true, nil }
@@ -238,13 +313,24 @@ end
 -- * nextToken [NextToken] <p>If the response is truncated, it includes a pagination token that you can specify in your next request to fetch the next page of bots. </p>
 -- @return GetBotsResponse structure as a key-value pair table
 function M.GetBotsResponse(args)
-	assert(args, "You must provdide an argument table when creating GetBotsResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetBotsResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["bots"] = args["bots"],
 		["nextToken"] = args["nextToken"],
 	}
-	asserts.AssertGetBotsResponse(t)
-	return t
+	asserts.AssertGetBotsResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetSlotTypeVersionsResponse = { ["nextToken"] = true, ["slotTypes"] = true, nil }
@@ -267,13 +353,24 @@ end
 -- * slotTypes [SlotTypeMetadataList] <p>An array of <code>SlotTypeMetadata</code> objects, one for each numbered version of the slot type plus one for the <code>$LATEST</code> version.</p>
 -- @return GetSlotTypeVersionsResponse structure as a key-value pair table
 function M.GetSlotTypeVersionsResponse(args)
-	assert(args, "You must provdide an argument table when creating GetSlotTypeVersionsResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetSlotTypeVersionsResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["nextToken"] = args["nextToken"],
 		["slotTypes"] = args["slotTypes"],
 	}
-	asserts.AssertGetSlotTypeVersionsResponse(t)
-	return t
+	asserts.AssertGetSlotTypeVersionsResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Intent = { ["intentVersion"] = true, ["intentName"] = true, nil }
@@ -300,13 +397,24 @@ end
 -- Required key: intentVersion
 -- @return Intent structure as a key-value pair table
 function M.Intent(args)
-	assert(args, "You must provdide an argument table when creating Intent")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Intent")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["intentVersion"] = args["intentVersion"],
 		["intentName"] = args["intentName"],
 	}
-	asserts.AssertIntent(t)
-	return t
+	asserts.AssertIntent(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetBotChannelAssociationResponse = { ["name"] = true, ["botConfiguration"] = true, ["botAlias"] = true, ["createdDate"] = true, ["type"] = true, ["botName"] = true, ["description"] = true, nil }
@@ -339,8 +447,14 @@ end
 -- * description [Description] <p>A description of the association between the bot and the channel.</p>
 -- @return GetBotChannelAssociationResponse structure as a key-value pair table
 function M.GetBotChannelAssociationResponse(args)
-	assert(args, "You must provdide an argument table when creating GetBotChannelAssociationResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetBotChannelAssociationResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["name"] = args["name"],
 		["botConfiguration"] = args["botConfiguration"],
 		["botAlias"] = args["botAlias"],
@@ -349,8 +463,13 @@ function M.GetBotChannelAssociationResponse(args)
 		["botName"] = args["botName"],
 		["description"] = args["description"],
 	}
-	asserts.AssertGetBotChannelAssociationResponse(t)
-	return t
+	asserts.AssertGetBotChannelAssociationResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetBuiltinSlotTypesRequest = { ["locale"] = true, ["nextToken"] = true, ["signatureContains"] = true, ["maxResults"] = true, nil }
@@ -377,15 +496,30 @@ end
 -- * maxResults [MaxResults] <p>The maximum number of slot types to return in the response. The default is 10.</p>
 -- @return GetBuiltinSlotTypesRequest structure as a key-value pair table
 function M.GetBuiltinSlotTypesRequest(args)
-	assert(args, "You must provdide an argument table when creating GetBuiltinSlotTypesRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetBuiltinSlotTypesRequest")
+    local query_args = { 
+        ["locale"] = args["locale"],
+        ["nextToken"] = args["nextToken"],
+        ["signatureContains"] = args["signatureContains"],
+        ["maxResults"] = args["maxResults"],
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["locale"] = args["locale"],
 		["nextToken"] = args["nextToken"],
 		["signatureContains"] = args["signatureContains"],
 		["maxResults"] = args["maxResults"],
 	}
-	asserts.AssertGetBuiltinSlotTypesRequest(t)
-	return t
+	asserts.AssertGetBuiltinSlotTypesRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.BuiltinIntentMetadata = { ["supportedLocales"] = true, ["signature"] = true, nil }
@@ -408,13 +542,24 @@ end
 -- * signature [BuiltinIntentSignature] <p>A unique identifier for the built-in intent. To find the signature for an intent, see <a href="https://developer.amazon.com/public/solutions/alexa/alexa-skills-kit/docs/built-in-intent-ref/standard-intents">Standard Built-in Intents</a> in the <i>Alexa Skills Kit</i>.</p>
 -- @return BuiltinIntentMetadata structure as a key-value pair table
 function M.BuiltinIntentMetadata(args)
-	assert(args, "You must provdide an argument table when creating BuiltinIntentMetadata")
-	local t = { 
+	assert(args, "You must provide an argument table when creating BuiltinIntentMetadata")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["supportedLocales"] = args["supportedLocales"],
 		["signature"] = args["signature"],
 	}
-	asserts.AssertBuiltinIntentMetadata(t)
-	return t
+	asserts.AssertBuiltinIntentMetadata(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.PutBotAliasResponse = { ["name"] = true, ["checksum"] = true, ["description"] = true, ["lastUpdatedDate"] = true, ["createdDate"] = true, ["botName"] = true, ["botVersion"] = true, nil }
@@ -447,8 +592,14 @@ end
 -- * botVersion [Version] <p>The version of the bot that the alias points to.</p>
 -- @return PutBotAliasResponse structure as a key-value pair table
 function M.PutBotAliasResponse(args)
-	assert(args, "You must provdide an argument table when creating PutBotAliasResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating PutBotAliasResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["name"] = args["name"],
 		["checksum"] = args["checksum"],
 		["description"] = args["description"],
@@ -457,8 +608,13 @@ function M.PutBotAliasResponse(args)
 		["botName"] = args["botName"],
 		["botVersion"] = args["botVersion"],
 	}
-	asserts.AssertPutBotAliasResponse(t)
-	return t
+	asserts.AssertPutBotAliasResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.BotChannelAssociation = { ["name"] = true, ["botConfiguration"] = true, ["botAlias"] = true, ["createdDate"] = true, ["type"] = true, ["botName"] = true, ["description"] = true, nil }
@@ -491,8 +647,14 @@ end
 -- * description [Description] <p>A text description of the association you are creating. </p>
 -- @return BotChannelAssociation structure as a key-value pair table
 function M.BotChannelAssociation(args)
-	assert(args, "You must provdide an argument table when creating BotChannelAssociation")
-	local t = { 
+	assert(args, "You must provide an argument table when creating BotChannelAssociation")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["name"] = args["name"],
 		["botConfiguration"] = args["botConfiguration"],
 		["botAlias"] = args["botAlias"],
@@ -501,8 +663,13 @@ function M.BotChannelAssociation(args)
 		["botName"] = args["botName"],
 		["description"] = args["description"],
 	}
-	asserts.AssertBotChannelAssociation(t)
-	return t
+	asserts.AssertBotChannelAssociation(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CodeHook = { ["uri"] = true, ["messageVersion"] = true, nil }
@@ -529,13 +696,24 @@ end
 -- Required key: messageVersion
 -- @return CodeHook structure as a key-value pair table
 function M.CodeHook(args)
-	assert(args, "You must provdide an argument table when creating CodeHook")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CodeHook")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["uri"] = args["uri"],
 		["messageVersion"] = args["messageVersion"],
 	}
-	asserts.AssertCodeHook(t)
-	return t
+	asserts.AssertCodeHook(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteUtterancesRequest = { ["userId"] = true, ["botName"] = true, nil }
@@ -562,13 +740,26 @@ end
 -- Required key: userId
 -- @return DeleteUtterancesRequest structure as a key-value pair table
 function M.DeleteUtterancesRequest(args)
-	assert(args, "You must provdide an argument table when creating DeleteUtterancesRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteUtterancesRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{userId}"] = args["userId"],
+        ["{botName}"] = args["botName"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["userId"] = args["userId"],
 		["botName"] = args["botName"],
 	}
-	asserts.AssertDeleteUtterancesRequest(t)
-	return t
+	asserts.AssertDeleteUtterancesRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UtteranceData = { ["count"] = true, ["utteranceString"] = true, ["lastUtteredDate"] = true, ["distinctUsers"] = true, ["firstUtteredDate"] = true, nil }
@@ -597,16 +788,27 @@ end
 -- * firstUtteredDate [Timestamp] <p>The date that the utterance was first recorded.</p>
 -- @return UtteranceData structure as a key-value pair table
 function M.UtteranceData(args)
-	assert(args, "You must provdide an argument table when creating UtteranceData")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UtteranceData")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["count"] = args["count"],
 		["utteranceString"] = args["utteranceString"],
 		["lastUtteredDate"] = args["lastUtteredDate"],
 		["distinctUsers"] = args["distinctUsers"],
 		["firstUtteredDate"] = args["firstUtteredDate"],
 	}
-	asserts.AssertUtteranceData(t)
-	return t
+	asserts.AssertUtteranceData(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetBotResponse = { ["status"] = true, ["intents"] = true, ["name"] = true, ["locale"] = true, ["checksum"] = true, ["createdDate"] = true, ["version"] = true, ["lastUpdatedDate"] = true, ["abortStatement"] = true, ["clarificationPrompt"] = true, ["voiceId"] = true, ["failureReason"] = true, ["childDirected"] = true, ["idleSessionTTLInSeconds"] = true, ["description"] = true, nil }
@@ -655,8 +857,14 @@ end
 -- * description [Description] <p>A description of the bot.</p>
 -- @return GetBotResponse structure as a key-value pair table
 function M.GetBotResponse(args)
-	assert(args, "You must provdide an argument table when creating GetBotResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetBotResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["status"] = args["status"],
 		["intents"] = args["intents"],
 		["name"] = args["name"],
@@ -673,8 +881,13 @@ function M.GetBotResponse(args)
 		["idleSessionTTLInSeconds"] = args["idleSessionTTLInSeconds"],
 		["description"] = args["description"],
 	}
-	asserts.AssertGetBotResponse(t)
-	return t
+	asserts.AssertGetBotResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetIntentsResponse = { ["intents"] = true, ["nextToken"] = true, nil }
@@ -697,13 +910,24 @@ end
 -- * nextToken [NextToken] <p>If the response is truncated, the response includes a pagination token that you can specify in your next request to fetch the next page of intents. </p>
 -- @return GetIntentsResponse structure as a key-value pair table
 function M.GetIntentsResponse(args)
-	assert(args, "You must provdide an argument table when creating GetIntentsResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetIntentsResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["intents"] = args["intents"],
 		["nextToken"] = args["nextToken"],
 	}
-	asserts.AssertGetIntentsResponse(t)
-	return t
+	asserts.AssertGetIntentsResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteBotChannelAssociationRequest = { ["botAlias"] = true, ["name"] = true, ["botName"] = true, nil }
@@ -734,14 +958,28 @@ end
 -- Required key: botAlias
 -- @return DeleteBotChannelAssociationRequest structure as a key-value pair table
 function M.DeleteBotChannelAssociationRequest(args)
-	assert(args, "You must provdide an argument table when creating DeleteBotChannelAssociationRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteBotChannelAssociationRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{aliasName}"] = args["botAlias"],
+        ["{name}"] = args["name"],
+        ["{botName}"] = args["botName"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["botAlias"] = args["botAlias"],
 		["name"] = args["name"],
 		["botName"] = args["botName"],
 	}
-	asserts.AssertDeleteBotChannelAssociationRequest(t)
-	return t
+	asserts.AssertDeleteBotChannelAssociationRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Slot = { ["slotType"] = true, ["name"] = true, ["slotConstraint"] = true, ["valueElicitationPrompt"] = true, ["responseCard"] = true, ["priority"] = true, ["slotTypeVersion"] = true, ["sampleUtterances"] = true, ["description"] = true, nil }
@@ -782,8 +1020,14 @@ end
 -- Required key: slotConstraint
 -- @return Slot structure as a key-value pair table
 function M.Slot(args)
-	assert(args, "You must provdide an argument table when creating Slot")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Slot")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["slotType"] = args["slotType"],
 		["name"] = args["name"],
 		["slotConstraint"] = args["slotConstraint"],
@@ -794,8 +1038,13 @@ function M.Slot(args)
 		["sampleUtterances"] = args["sampleUtterances"],
 		["description"] = args["description"],
 	}
-	asserts.AssertSlot(t)
-	return t
+	asserts.AssertSlot(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.PutIntentResponse = { ["dialogCodeHook"] = true, ["confirmationPrompt"] = true, ["followUpPrompt"] = true, ["name"] = true, ["checksum"] = true, ["conclusionStatement"] = true, ["parentIntentSignature"] = true, ["version"] = true, ["rejectionStatement"] = true, ["createdDate"] = true, ["lastUpdatedDate"] = true, ["sampleUtterances"] = true, ["slots"] = true, ["fulfillmentActivity"] = true, ["description"] = true, nil }
@@ -844,8 +1093,14 @@ end
 -- * description [Description] <p>A description of the intent.</p>
 -- @return PutIntentResponse structure as a key-value pair table
 function M.PutIntentResponse(args)
-	assert(args, "You must provdide an argument table when creating PutIntentResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating PutIntentResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["dialogCodeHook"] = args["dialogCodeHook"],
 		["confirmationPrompt"] = args["confirmationPrompt"],
 		["followUpPrompt"] = args["followUpPrompt"],
@@ -862,8 +1117,13 @@ function M.PutIntentResponse(args)
 		["fulfillmentActivity"] = args["fulfillmentActivity"],
 		["description"] = args["description"],
 	}
-	asserts.AssertPutIntentResponse(t)
-	return t
+	asserts.AssertPutIntentResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetIntentVersionsRequest = { ["nextToken"] = true, ["name"] = true, ["maxResults"] = true, nil }
@@ -890,14 +1150,28 @@ end
 -- Required key: name
 -- @return GetIntentVersionsRequest structure as a key-value pair table
 function M.GetIntentVersionsRequest(args)
-	assert(args, "You must provdide an argument table when creating GetIntentVersionsRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetIntentVersionsRequest")
+    local query_args = { 
+        ["nextToken"] = args["nextToken"],
+        ["maxResults"] = args["maxResults"],
+    }
+    local uri_args = { 
+        ["{name}"] = args["name"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["nextToken"] = args["nextToken"],
 		["name"] = args["name"],
 		["maxResults"] = args["maxResults"],
 	}
-	asserts.AssertGetIntentVersionsRequest(t)
-	return t
+	asserts.AssertGetIntentVersionsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.LimitExceededException = { ["message"] = true, ["retryAfterSeconds"] = true, nil }
@@ -920,13 +1194,25 @@ end
 -- * retryAfterSeconds [String] 
 -- @return LimitExceededException structure as a key-value pair table
 function M.LimitExceededException(args)
-	assert(args, "You must provdide an argument table when creating LimitExceededException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating LimitExceededException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+        ["Retry-After"] = args["retryAfterSeconds"],
+    }
+	local all_args = { 
 		["message"] = args["message"],
 		["retryAfterSeconds"] = args["retryAfterSeconds"],
 	}
-	asserts.AssertLimitExceededException(t)
-	return t
+	asserts.AssertLimitExceededException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.BotMetadata = { ["status"] = true, ["name"] = true, ["version"] = true, ["lastUpdatedDate"] = true, ["createdDate"] = true, ["description"] = true, nil }
@@ -957,8 +1243,14 @@ end
 -- * description [Description] <p>A description of the bot.</p>
 -- @return BotMetadata structure as a key-value pair table
 function M.BotMetadata(args)
-	assert(args, "You must provdide an argument table when creating BotMetadata")
-	local t = { 
+	assert(args, "You must provide an argument table when creating BotMetadata")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["status"] = args["status"],
 		["name"] = args["name"],
 		["version"] = args["version"],
@@ -966,8 +1258,13 @@ function M.BotMetadata(args)
 		["createdDate"] = args["createdDate"],
 		["description"] = args["description"],
 	}
-	asserts.AssertBotMetadata(t)
-	return t
+	asserts.AssertBotMetadata(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteBotAliasRequest = { ["name"] = true, ["botName"] = true, nil }
@@ -994,13 +1291,26 @@ end
 -- Required key: botName
 -- @return DeleteBotAliasRequest structure as a key-value pair table
 function M.DeleteBotAliasRequest(args)
-	assert(args, "You must provdide an argument table when creating DeleteBotAliasRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteBotAliasRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{name}"] = args["name"],
+        ["{botName}"] = args["botName"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["name"] = args["name"],
 		["botName"] = args["botName"],
 	}
-	asserts.AssertDeleteBotAliasRequest(t)
-	return t
+	asserts.AssertDeleteBotAliasRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetSlotTypeRequest = { ["version"] = true, ["name"] = true, nil }
@@ -1027,13 +1337,26 @@ end
 -- Required key: version
 -- @return GetSlotTypeRequest structure as a key-value pair table
 function M.GetSlotTypeRequest(args)
-	assert(args, "You must provdide an argument table when creating GetSlotTypeRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetSlotTypeRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{version}"] = args["version"],
+        ["{name}"] = args["name"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["version"] = args["version"],
 		["name"] = args["name"],
 	}
-	asserts.AssertGetSlotTypeRequest(t)
-	return t
+	asserts.AssertGetSlotTypeRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteBotVersionRequest = { ["version"] = true, ["name"] = true, nil }
@@ -1060,13 +1383,26 @@ end
 -- Required key: version
 -- @return DeleteBotVersionRequest structure as a key-value pair table
 function M.DeleteBotVersionRequest(args)
-	assert(args, "You must provdide an argument table when creating DeleteBotVersionRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteBotVersionRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{version}"] = args["version"],
+        ["{name}"] = args["name"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["version"] = args["version"],
 		["name"] = args["name"],
 	}
-	asserts.AssertDeleteBotVersionRequest(t)
-	return t
+	asserts.AssertDeleteBotVersionRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.NotFoundException = { ["message"] = true, nil }
@@ -1087,12 +1423,23 @@ end
 -- * message [String] 
 -- @return NotFoundException structure as a key-value pair table
 function M.NotFoundException(args)
-	assert(args, "You must provdide an argument table when creating NotFoundException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating NotFoundException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertNotFoundException(t)
-	return t
+	asserts.AssertNotFoundException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.IntentMetadata = { ["version"] = true, ["createdDate"] = true, ["name"] = true, ["lastUpdatedDate"] = true, ["description"] = true, nil }
@@ -1121,16 +1468,27 @@ end
 -- * description [Description] <p>A description of the intent.</p>
 -- @return IntentMetadata structure as a key-value pair table
 function M.IntentMetadata(args)
-	assert(args, "You must provdide an argument table when creating IntentMetadata")
-	local t = { 
+	assert(args, "You must provide an argument table when creating IntentMetadata")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["version"] = args["version"],
 		["createdDate"] = args["createdDate"],
 		["name"] = args["name"],
 		["lastUpdatedDate"] = args["lastUpdatedDate"],
 		["description"] = args["description"],
 	}
-	asserts.AssertIntentMetadata(t)
-	return t
+	asserts.AssertIntentMetadata(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetSlotTypesRequest = { ["nameContains"] = true, ["nextToken"] = true, ["maxResults"] = true, nil }
@@ -1155,14 +1513,28 @@ end
 -- * maxResults [MaxResults] <p>The maximum number of slot types to return in the response. The default is 10.</p>
 -- @return GetSlotTypesRequest structure as a key-value pair table
 function M.GetSlotTypesRequest(args)
-	assert(args, "You must provdide an argument table when creating GetSlotTypesRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetSlotTypesRequest")
+    local query_args = { 
+        ["nameContains"] = args["nameContains"],
+        ["nextToken"] = args["nextToken"],
+        ["maxResults"] = args["maxResults"],
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["nameContains"] = args["nameContains"],
 		["nextToken"] = args["nextToken"],
 		["maxResults"] = args["maxResults"],
 	}
-	asserts.AssertGetSlotTypesRequest(t)
-	return t
+	asserts.AssertGetSlotTypesRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateBotVersionRequest = { ["checksum"] = true, ["name"] = true, nil }
@@ -1187,13 +1559,25 @@ end
 -- Required key: name
 -- @return CreateBotVersionRequest structure as a key-value pair table
 function M.CreateBotVersionRequest(args)
-	assert(args, "You must provdide an argument table when creating CreateBotVersionRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateBotVersionRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{name}"] = args["name"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["checksum"] = args["checksum"],
 		["name"] = args["name"],
 	}
-	asserts.AssertCreateBotVersionRequest(t)
-	return t
+	asserts.AssertCreateBotVersionRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetSlotTypeVersionsRequest = { ["nextToken"] = true, ["name"] = true, ["maxResults"] = true, nil }
@@ -1220,14 +1604,28 @@ end
 -- Required key: name
 -- @return GetSlotTypeVersionsRequest structure as a key-value pair table
 function M.GetSlotTypeVersionsRequest(args)
-	assert(args, "You must provdide an argument table when creating GetSlotTypeVersionsRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetSlotTypeVersionsRequest")
+    local query_args = { 
+        ["nextToken"] = args["nextToken"],
+        ["maxResults"] = args["maxResults"],
+    }
+    local uri_args = { 
+        ["{name}"] = args["name"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["nextToken"] = args["nextToken"],
 		["name"] = args["name"],
 		["maxResults"] = args["maxResults"],
 	}
-	asserts.AssertGetSlotTypeVersionsRequest(t)
-	return t
+	asserts.AssertGetSlotTypeVersionsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetSlotTypeResponse = { ["name"] = true, ["enumerationValues"] = true, ["checksum"] = true, ["version"] = true, ["lastUpdatedDate"] = true, ["createdDate"] = true, ["description"] = true, nil }
@@ -1260,8 +1658,14 @@ end
 -- * description [Description] <p>A description of the slot type.</p>
 -- @return GetSlotTypeResponse structure as a key-value pair table
 function M.GetSlotTypeResponse(args)
-	assert(args, "You must provdide an argument table when creating GetSlotTypeResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetSlotTypeResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["name"] = args["name"],
 		["enumerationValues"] = args["enumerationValues"],
 		["checksum"] = args["checksum"],
@@ -1270,8 +1674,13 @@ function M.GetSlotTypeResponse(args)
 		["createdDate"] = args["createdDate"],
 		["description"] = args["description"],
 	}
-	asserts.AssertGetSlotTypeResponse(t)
-	return t
+	asserts.AssertGetSlotTypeResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Prompt = { ["maxAttempts"] = true, ["messages"] = true, ["responseCard"] = true, nil }
@@ -1300,14 +1709,25 @@ end
 -- Required key: maxAttempts
 -- @return Prompt structure as a key-value pair table
 function M.Prompt(args)
-	assert(args, "You must provdide an argument table when creating Prompt")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Prompt")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["maxAttempts"] = args["maxAttempts"],
 		["messages"] = args["messages"],
 		["responseCard"] = args["responseCard"],
 	}
-	asserts.AssertPrompt(t)
-	return t
+	asserts.AssertPrompt(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteIntentRequest = { ["name"] = true, nil }
@@ -1330,12 +1750,24 @@ end
 -- Required key: name
 -- @return DeleteIntentRequest structure as a key-value pair table
 function M.DeleteIntentRequest(args)
-	assert(args, "You must provdide an argument table when creating DeleteIntentRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteIntentRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{name}"] = args["name"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["name"] = args["name"],
 	}
-	asserts.AssertDeleteIntentRequest(t)
-	return t
+	asserts.AssertDeleteIntentRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ResourceInUseException = { ["exampleReference"] = true, ["referenceType"] = true, nil }
@@ -1358,13 +1790,24 @@ end
 -- * referenceType [ReferenceType] 
 -- @return ResourceInUseException structure as a key-value pair table
 function M.ResourceInUseException(args)
-	assert(args, "You must provdide an argument table when creating ResourceInUseException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ResourceInUseException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["exampleReference"] = args["exampleReference"],
 		["referenceType"] = args["referenceType"],
 	}
-	asserts.AssertResourceInUseException(t)
-	return t
+	asserts.AssertResourceInUseException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetBuiltinIntentRequest = { ["signature"] = true, nil }
@@ -1387,12 +1830,24 @@ end
 -- Required key: signature
 -- @return GetBuiltinIntentRequest structure as a key-value pair table
 function M.GetBuiltinIntentRequest(args)
-	assert(args, "You must provdide an argument table when creating GetBuiltinIntentRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetBuiltinIntentRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{signature}"] = args["signature"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["signature"] = args["signature"],
 	}
-	asserts.AssertGetBuiltinIntentRequest(t)
-	return t
+	asserts.AssertGetBuiltinIntentRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Message = { ["content"] = true, ["contentType"] = true, nil }
@@ -1419,13 +1874,24 @@ end
 -- Required key: content
 -- @return Message structure as a key-value pair table
 function M.Message(args)
-	assert(args, "You must provdide an argument table when creating Message")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Message")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["content"] = args["content"],
 		["contentType"] = args["contentType"],
 	}
-	asserts.AssertMessage(t)
-	return t
+	asserts.AssertMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetIntentResponse = { ["dialogCodeHook"] = true, ["confirmationPrompt"] = true, ["followUpPrompt"] = true, ["name"] = true, ["checksum"] = true, ["conclusionStatement"] = true, ["parentIntentSignature"] = true, ["version"] = true, ["rejectionStatement"] = true, ["createdDate"] = true, ["lastUpdatedDate"] = true, ["sampleUtterances"] = true, ["slots"] = true, ["fulfillmentActivity"] = true, ["description"] = true, nil }
@@ -1474,8 +1940,14 @@ end
 -- * description [Description] <p>A description of the intent.</p>
 -- @return GetIntentResponse structure as a key-value pair table
 function M.GetIntentResponse(args)
-	assert(args, "You must provdide an argument table when creating GetIntentResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetIntentResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["dialogCodeHook"] = args["dialogCodeHook"],
 		["confirmationPrompt"] = args["confirmationPrompt"],
 		["followUpPrompt"] = args["followUpPrompt"],
@@ -1492,8 +1964,13 @@ function M.GetIntentResponse(args)
 		["fulfillmentActivity"] = args["fulfillmentActivity"],
 		["description"] = args["description"],
 	}
-	asserts.AssertGetIntentResponse(t)
-	return t
+	asserts.AssertGetIntentResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.PutIntentRequest = { ["dialogCodeHook"] = true, ["confirmationPrompt"] = true, ["followUpPrompt"] = true, ["name"] = true, ["checksum"] = true, ["conclusionStatement"] = true, ["parentIntentSignature"] = true, ["rejectionStatement"] = true, ["sampleUtterances"] = true, ["slots"] = true, ["fulfillmentActivity"] = true, ["description"] = true, nil }
@@ -1538,8 +2015,15 @@ end
 -- Required key: name
 -- @return PutIntentRequest structure as a key-value pair table
 function M.PutIntentRequest(args)
-	assert(args, "You must provdide an argument table when creating PutIntentRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating PutIntentRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{name}"] = args["name"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["dialogCodeHook"] = args["dialogCodeHook"],
 		["confirmationPrompt"] = args["confirmationPrompt"],
 		["followUpPrompt"] = args["followUpPrompt"],
@@ -1553,8 +2037,13 @@ function M.PutIntentRequest(args)
 		["fulfillmentActivity"] = args["fulfillmentActivity"],
 		["description"] = args["description"],
 	}
-	asserts.AssertPutIntentRequest(t)
-	return t
+	asserts.AssertPutIntentRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetBotChannelAssociationsResponse = { ["nextToken"] = true, ["botChannelAssociations"] = true, nil }
@@ -1577,13 +2066,24 @@ end
 -- * botChannelAssociations [BotChannelAssociationList] <p>An array of objects, one for each association, that provides information about the Amazon Lex bot and its association with the channel. </p>
 -- @return GetBotChannelAssociationsResponse structure as a key-value pair table
 function M.GetBotChannelAssociationsResponse(args)
-	assert(args, "You must provdide an argument table when creating GetBotChannelAssociationsResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetBotChannelAssociationsResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["nextToken"] = args["nextToken"],
 		["botChannelAssociations"] = args["botChannelAssociations"],
 	}
-	asserts.AssertGetBotChannelAssociationsResponse(t)
-	return t
+	asserts.AssertGetBotChannelAssociationsResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.PutBotResponse = { ["status"] = true, ["intents"] = true, ["name"] = true, ["locale"] = true, ["checksum"] = true, ["createdDate"] = true, ["version"] = true, ["lastUpdatedDate"] = true, ["abortStatement"] = true, ["clarificationPrompt"] = true, ["voiceId"] = true, ["failureReason"] = true, ["childDirected"] = true, ["idleSessionTTLInSeconds"] = true, ["description"] = true, nil }
@@ -1632,8 +2132,14 @@ end
 -- * description [Description] <p>A description of the bot.</p>
 -- @return PutBotResponse structure as a key-value pair table
 function M.PutBotResponse(args)
-	assert(args, "You must provdide an argument table when creating PutBotResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating PutBotResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["status"] = args["status"],
 		["intents"] = args["intents"],
 		["name"] = args["name"],
@@ -1650,8 +2156,13 @@ function M.PutBotResponse(args)
 		["idleSessionTTLInSeconds"] = args["idleSessionTTLInSeconds"],
 		["description"] = args["description"],
 	}
-	asserts.AssertPutBotResponse(t)
-	return t
+	asserts.AssertPutBotResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetIntentsRequest = { ["nameContains"] = true, ["nextToken"] = true, ["maxResults"] = true, nil }
@@ -1676,14 +2187,28 @@ end
 -- * maxResults [MaxResults] <p>The maximum number of intents to return in the response. The default is 10.</p>
 -- @return GetIntentsRequest structure as a key-value pair table
 function M.GetIntentsRequest(args)
-	assert(args, "You must provdide an argument table when creating GetIntentsRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetIntentsRequest")
+    local query_args = { 
+        ["nameContains"] = args["nameContains"],
+        ["nextToken"] = args["nextToken"],
+        ["maxResults"] = args["maxResults"],
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["nameContains"] = args["nameContains"],
 		["nextToken"] = args["nextToken"],
 		["maxResults"] = args["maxResults"],
 	}
-	asserts.AssertGetIntentsRequest(t)
-	return t
+	asserts.AssertGetIntentsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteBotRequest = { ["name"] = true, nil }
@@ -1706,12 +2231,24 @@ end
 -- Required key: name
 -- @return DeleteBotRequest structure as a key-value pair table
 function M.DeleteBotRequest(args)
-	assert(args, "You must provdide an argument table when creating DeleteBotRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteBotRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{name}"] = args["name"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["name"] = args["name"],
 	}
-	asserts.AssertDeleteBotRequest(t)
-	return t
+	asserts.AssertDeleteBotRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetUtterancesViewResponse = { ["botName"] = true, ["utterances"] = true, nil }
@@ -1734,13 +2271,24 @@ end
 -- * utterances [ListsOfUtterances] <p>An array of objects, each containing a list of objects describing the utterances that were processed by your bot. The response contains a maximum of 100 <code>UtteranceData</code> objects for each version.</p>
 -- @return GetUtterancesViewResponse structure as a key-value pair table
 function M.GetUtterancesViewResponse(args)
-	assert(args, "You must provdide an argument table when creating GetUtterancesViewResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetUtterancesViewResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["botName"] = args["botName"],
 		["utterances"] = args["utterances"],
 	}
-	asserts.AssertGetUtterancesViewResponse(t)
-	return t
+	asserts.AssertGetUtterancesViewResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetBotAliasRequest = { ["name"] = true, ["botName"] = true, nil }
@@ -1767,13 +2315,26 @@ end
 -- Required key: botName
 -- @return GetBotAliasRequest structure as a key-value pair table
 function M.GetBotAliasRequest(args)
-	assert(args, "You must provdide an argument table when creating GetBotAliasRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetBotAliasRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{name}"] = args["name"],
+        ["{botName}"] = args["botName"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["name"] = args["name"],
 		["botName"] = args["botName"],
 	}
-	asserts.AssertGetBotAliasRequest(t)
-	return t
+	asserts.AssertGetBotAliasRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.BotAliasMetadata = { ["name"] = true, ["checksum"] = true, ["description"] = true, ["lastUpdatedDate"] = true, ["createdDate"] = true, ["botName"] = true, ["botVersion"] = true, nil }
@@ -1806,8 +2367,14 @@ end
 -- * botVersion [Version] <p>The version of the Amazon Lex bot to which the alias points.</p>
 -- @return BotAliasMetadata structure as a key-value pair table
 function M.BotAliasMetadata(args)
-	assert(args, "You must provdide an argument table when creating BotAliasMetadata")
-	local t = { 
+	assert(args, "You must provide an argument table when creating BotAliasMetadata")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["name"] = args["name"],
 		["checksum"] = args["checksum"],
 		["description"] = args["description"],
@@ -1816,8 +2383,13 @@ function M.BotAliasMetadata(args)
 		["botName"] = args["botName"],
 		["botVersion"] = args["botVersion"],
 	}
-	asserts.AssertBotAliasMetadata(t)
-	return t
+	asserts.AssertBotAliasMetadata(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.EnumerationValue = { ["value"] = true, nil }
@@ -1840,12 +2412,23 @@ end
 -- Required key: value
 -- @return EnumerationValue structure as a key-value pair table
 function M.EnumerationValue(args)
-	assert(args, "You must provdide an argument table when creating EnumerationValue")
-	local t = { 
+	assert(args, "You must provide an argument table when creating EnumerationValue")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["value"] = args["value"],
 	}
-	asserts.AssertEnumerationValue(t)
-	return t
+	asserts.AssertEnumerationValue(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetSlotTypesResponse = { ["nextToken"] = true, ["slotTypes"] = true, nil }
@@ -1868,13 +2451,24 @@ end
 -- * slotTypes [SlotTypeMetadataList] <p>An array of objects, one for each slot type, that provides information such as the name of the slot type, the version, and a description.</p>
 -- @return GetSlotTypesResponse structure as a key-value pair table
 function M.GetSlotTypesResponse(args)
-	assert(args, "You must provdide an argument table when creating GetSlotTypesResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetSlotTypesResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["nextToken"] = args["nextToken"],
 		["slotTypes"] = args["slotTypes"],
 	}
-	asserts.AssertGetSlotTypesResponse(t)
-	return t
+	asserts.AssertGetSlotTypesResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.PutSlotTypeResponse = { ["name"] = true, ["enumerationValues"] = true, ["checksum"] = true, ["version"] = true, ["lastUpdatedDate"] = true, ["createdDate"] = true, ["description"] = true, nil }
@@ -1907,8 +2501,14 @@ end
 -- * description [Description] <p>A description of the slot type.</p>
 -- @return PutSlotTypeResponse structure as a key-value pair table
 function M.PutSlotTypeResponse(args)
-	assert(args, "You must provdide an argument table when creating PutSlotTypeResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating PutSlotTypeResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["name"] = args["name"],
 		["enumerationValues"] = args["enumerationValues"],
 		["checksum"] = args["checksum"],
@@ -1917,8 +2517,13 @@ function M.PutSlotTypeResponse(args)
 		["createdDate"] = args["createdDate"],
 		["description"] = args["description"],
 	}
-	asserts.AssertPutSlotTypeResponse(t)
-	return t
+	asserts.AssertPutSlotTypeResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetBuiltinIntentResponse = { ["slots"] = true, ["supportedLocales"] = true, ["signature"] = true, nil }
@@ -1943,14 +2548,25 @@ end
 -- * signature [BuiltinIntentSignature] <p>The unique identifier for a built-in intent.</p>
 -- @return GetBuiltinIntentResponse structure as a key-value pair table
 function M.GetBuiltinIntentResponse(args)
-	assert(args, "You must provdide an argument table when creating GetBuiltinIntentResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetBuiltinIntentResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["slots"] = args["slots"],
 		["supportedLocales"] = args["supportedLocales"],
 		["signature"] = args["signature"],
 	}
-	asserts.AssertGetBuiltinIntentResponse(t)
-	return t
+	asserts.AssertGetBuiltinIntentResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.FollowUpPrompt = { ["prompt"] = true, ["rejectionStatement"] = true, nil }
@@ -1977,13 +2593,24 @@ end
 -- Required key: rejectionStatement
 -- @return FollowUpPrompt structure as a key-value pair table
 function M.FollowUpPrompt(args)
-	assert(args, "You must provdide an argument table when creating FollowUpPrompt")
-	local t = { 
+	assert(args, "You must provide an argument table when creating FollowUpPrompt")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["prompt"] = args["prompt"],
 		["rejectionStatement"] = args["rejectionStatement"],
 	}
-	asserts.AssertFollowUpPrompt(t)
-	return t
+	asserts.AssertFollowUpPrompt(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.BuiltinSlotTypeMetadata = { ["supportedLocales"] = true, ["signature"] = true, nil }
@@ -2006,13 +2633,24 @@ end
 -- * signature [BuiltinSlotTypeSignature] <p>A unique identifier for the built-in slot type. To find the signature for a slot type, see <a href="https://developer.amazon.com/public/solutions/alexa/alexa-skills-kit/docs/built-in-intent-ref/slot-type-reference">Slot Type Reference</a> in the <i>Alexa Skills Kit</i>.</p>
 -- @return BuiltinSlotTypeMetadata structure as a key-value pair table
 function M.BuiltinSlotTypeMetadata(args)
-	assert(args, "You must provdide an argument table when creating BuiltinSlotTypeMetadata")
-	local t = { 
+	assert(args, "You must provide an argument table when creating BuiltinSlotTypeMetadata")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["supportedLocales"] = args["supportedLocales"],
 		["signature"] = args["signature"],
 	}
-	asserts.AssertBuiltinSlotTypeMetadata(t)
-	return t
+	asserts.AssertBuiltinSlotTypeMetadata(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InternalFailureException = { ["message"] = true, nil }
@@ -2033,12 +2671,23 @@ end
 -- * message [String] 
 -- @return InternalFailureException structure as a key-value pair table
 function M.InternalFailureException(args)
-	assert(args, "You must provdide an argument table when creating InternalFailureException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InternalFailureException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertInternalFailureException(t)
-	return t
+	asserts.AssertInternalFailureException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetIntentRequest = { ["version"] = true, ["name"] = true, nil }
@@ -2065,13 +2714,26 @@ end
 -- Required key: version
 -- @return GetIntentRequest structure as a key-value pair table
 function M.GetIntentRequest(args)
-	assert(args, "You must provdide an argument table when creating GetIntentRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetIntentRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{version}"] = args["version"],
+        ["{name}"] = args["name"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["version"] = args["version"],
 		["name"] = args["name"],
 	}
-	asserts.AssertGetIntentRequest(t)
-	return t
+	asserts.AssertGetIntentRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetBotAliasesResponse = { ["nextToken"] = true, ["BotAliases"] = true, nil }
@@ -2094,13 +2756,24 @@ end
 -- * BotAliases [BotAliasMetadataList] <p>An array of <code>BotAliasMetadata</code> objects, each describing a bot alias.</p>
 -- @return GetBotAliasesResponse structure as a key-value pair table
 function M.GetBotAliasesResponse(args)
-	assert(args, "You must provdide an argument table when creating GetBotAliasesResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetBotAliasesResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["nextToken"] = args["nextToken"],
 		["BotAliases"] = args["BotAliases"],
 	}
-	asserts.AssertGetBotAliasesResponse(t)
-	return t
+	asserts.AssertGetBotAliasesResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetBotsRequest = { ["nameContains"] = true, ["nextToken"] = true, ["maxResults"] = true, nil }
@@ -2125,14 +2798,28 @@ end
 -- * maxResults [MaxResults] <p>The maximum number of bots to return in the response that the request will return. The default is 10.</p>
 -- @return GetBotsRequest structure as a key-value pair table
 function M.GetBotsRequest(args)
-	assert(args, "You must provdide an argument table when creating GetBotsRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetBotsRequest")
+    local query_args = { 
+        ["nameContains"] = args["nameContains"],
+        ["nextToken"] = args["nextToken"],
+        ["maxResults"] = args["maxResults"],
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["nameContains"] = args["nameContains"],
 		["nextToken"] = args["nextToken"],
 		["maxResults"] = args["maxResults"],
 	}
-	asserts.AssertGetBotsRequest(t)
-	return t
+	asserts.AssertGetBotsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ConflictException = { ["message"] = true, nil }
@@ -2153,12 +2840,23 @@ end
 -- * message [String] 
 -- @return ConflictException structure as a key-value pair table
 function M.ConflictException(args)
-	assert(args, "You must provdide an argument table when creating ConflictException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ConflictException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertConflictException(t)
-	return t
+	asserts.AssertConflictException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetUtterancesViewRequest = { ["statusType"] = true, ["botName"] = true, ["botVersions"] = true, nil }
@@ -2189,14 +2887,28 @@ end
 -- Required key: statusType
 -- @return GetUtterancesViewRequest structure as a key-value pair table
 function M.GetUtterancesViewRequest(args)
-	assert(args, "You must provdide an argument table when creating GetUtterancesViewRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetUtterancesViewRequest")
+    local query_args = { 
+        ["status_type"] = args["statusType"],
+        ["bot_versions"] = args["botVersions"],
+    }
+    local uri_args = { 
+        ["{botname}"] = args["botName"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["statusType"] = args["statusType"],
 		["botName"] = args["botName"],
 		["botVersions"] = args["botVersions"],
 	}
-	asserts.AssertGetUtterancesViewRequest(t)
-	return t
+	asserts.AssertGetUtterancesViewRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetBotRequest = { ["name"] = true, ["versionOrAlias"] = true, nil }
@@ -2223,13 +2935,26 @@ end
 -- Required key: versionOrAlias
 -- @return GetBotRequest structure as a key-value pair table
 function M.GetBotRequest(args)
-	assert(args, "You must provdide an argument table when creating GetBotRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetBotRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{name}"] = args["name"],
+        ["{versionoralias}"] = args["versionOrAlias"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["name"] = args["name"],
 		["versionOrAlias"] = args["versionOrAlias"],
 	}
-	asserts.AssertGetBotRequest(t)
-	return t
+	asserts.AssertGetBotRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.SlotTypeMetadata = { ["version"] = true, ["createdDate"] = true, ["name"] = true, ["lastUpdatedDate"] = true, ["description"] = true, nil }
@@ -2258,16 +2983,27 @@ end
 -- * description [Description] <p>A description of the slot type.</p>
 -- @return SlotTypeMetadata structure as a key-value pair table
 function M.SlotTypeMetadata(args)
-	assert(args, "You must provdide an argument table when creating SlotTypeMetadata")
-	local t = { 
+	assert(args, "You must provide an argument table when creating SlotTypeMetadata")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["version"] = args["version"],
 		["createdDate"] = args["createdDate"],
 		["name"] = args["name"],
 		["lastUpdatedDate"] = args["lastUpdatedDate"],
 		["description"] = args["description"],
 	}
-	asserts.AssertSlotTypeMetadata(t)
-	return t
+	asserts.AssertSlotTypeMetadata(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetIntentVersionsResponse = { ["intents"] = true, ["nextToken"] = true, nil }
@@ -2290,13 +3026,24 @@ end
 -- * nextToken [NextToken] <p>A pagination token for fetching the next page of intent versions. If the response to this call is truncated, Amazon Lex returns a pagination token in the response. To fetch the next page of versions, specify the pagination token in the next request. </p>
 -- @return GetIntentVersionsResponse structure as a key-value pair table
 function M.GetIntentVersionsResponse(args)
-	assert(args, "You must provdide an argument table when creating GetIntentVersionsResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetIntentVersionsResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["intents"] = args["intents"],
 		["nextToken"] = args["nextToken"],
 	}
-	asserts.AssertGetIntentVersionsResponse(t)
-	return t
+	asserts.AssertGetIntentVersionsResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetBotAliasResponse = { ["name"] = true, ["checksum"] = true, ["description"] = true, ["lastUpdatedDate"] = true, ["createdDate"] = true, ["botName"] = true, ["botVersion"] = true, nil }
@@ -2329,8 +3076,14 @@ end
 -- * botVersion [Version] <p>The version of the bot that the alias points to.</p>
 -- @return GetBotAliasResponse structure as a key-value pair table
 function M.GetBotAliasResponse(args)
-	assert(args, "You must provdide an argument table when creating GetBotAliasResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetBotAliasResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["name"] = args["name"],
 		["checksum"] = args["checksum"],
 		["description"] = args["description"],
@@ -2339,8 +3092,13 @@ function M.GetBotAliasResponse(args)
 		["botName"] = args["botName"],
 		["botVersion"] = args["botVersion"],
 	}
-	asserts.AssertGetBotAliasResponse(t)
-	return t
+	asserts.AssertGetBotAliasResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteIntentVersionRequest = { ["version"] = true, ["name"] = true, nil }
@@ -2367,13 +3125,26 @@ end
 -- Required key: version
 -- @return DeleteIntentVersionRequest structure as a key-value pair table
 function M.DeleteIntentVersionRequest(args)
-	assert(args, "You must provdide an argument table when creating DeleteIntentVersionRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteIntentVersionRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{version}"] = args["version"],
+        ["{name}"] = args["name"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["version"] = args["version"],
 		["name"] = args["name"],
 	}
-	asserts.AssertDeleteIntentVersionRequest(t)
-	return t
+	asserts.AssertDeleteIntentVersionRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetBotAliasesRequest = { ["nameContains"] = true, ["nextToken"] = true, ["botName"] = true, ["maxResults"] = true, nil }
@@ -2402,15 +3173,30 @@ end
 -- Required key: botName
 -- @return GetBotAliasesRequest structure as a key-value pair table
 function M.GetBotAliasesRequest(args)
-	assert(args, "You must provdide an argument table when creating GetBotAliasesRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetBotAliasesRequest")
+    local query_args = { 
+        ["nameContains"] = args["nameContains"],
+        ["nextToken"] = args["nextToken"],
+        ["maxResults"] = args["maxResults"],
+    }
+    local uri_args = { 
+        ["{botName}"] = args["botName"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["nameContains"] = args["nameContains"],
 		["nextToken"] = args["nextToken"],
 		["botName"] = args["botName"],
 		["maxResults"] = args["maxResults"],
 	}
-	asserts.AssertGetBotAliasesRequest(t)
-	return t
+	asserts.AssertGetBotAliasesRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateSlotTypeVersionResponse = { ["name"] = true, ["enumerationValues"] = true, ["checksum"] = true, ["version"] = true, ["lastUpdatedDate"] = true, ["createdDate"] = true, ["description"] = true, nil }
@@ -2443,8 +3229,14 @@ end
 -- * description [Description] <p>A description of the slot type.</p>
 -- @return CreateSlotTypeVersionResponse structure as a key-value pair table
 function M.CreateSlotTypeVersionResponse(args)
-	assert(args, "You must provdide an argument table when creating CreateSlotTypeVersionResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateSlotTypeVersionResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["name"] = args["name"],
 		["enumerationValues"] = args["enumerationValues"],
 		["checksum"] = args["checksum"],
@@ -2453,8 +3245,13 @@ function M.CreateSlotTypeVersionResponse(args)
 		["createdDate"] = args["createdDate"],
 		["description"] = args["description"],
 	}
-	asserts.AssertCreateSlotTypeVersionResponse(t)
-	return t
+	asserts.AssertCreateSlotTypeVersionResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.PreconditionFailedException = { ["message"] = true, nil }
@@ -2475,12 +3272,23 @@ end
 -- * message [String] 
 -- @return PreconditionFailedException structure as a key-value pair table
 function M.PreconditionFailedException(args)
-	assert(args, "You must provdide an argument table when creating PreconditionFailedException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating PreconditionFailedException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertPreconditionFailedException(t)
-	return t
+	asserts.AssertPreconditionFailedException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.PutBotAliasRequest = { ["checksum"] = true, ["botVersion"] = true, ["name"] = true, ["botName"] = true, ["description"] = true, nil }
@@ -2515,16 +3323,29 @@ end
 -- Required key: botName
 -- @return PutBotAliasRequest structure as a key-value pair table
 function M.PutBotAliasRequest(args)
-	assert(args, "You must provdide an argument table when creating PutBotAliasRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating PutBotAliasRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{name}"] = args["name"],
+        ["{botName}"] = args["botName"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["checksum"] = args["checksum"],
 		["botVersion"] = args["botVersion"],
 		["name"] = args["name"],
 		["botName"] = args["botName"],
 		["description"] = args["description"],
 	}
-	asserts.AssertPutBotAliasRequest(t)
-	return t
+	asserts.AssertPutBotAliasRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteSlotTypeRequest = { ["name"] = true, nil }
@@ -2547,12 +3368,24 @@ end
 -- Required key: name
 -- @return DeleteSlotTypeRequest structure as a key-value pair table
 function M.DeleteSlotTypeRequest(args)
-	assert(args, "You must provdide an argument table when creating DeleteSlotTypeRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteSlotTypeRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{name}"] = args["name"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["name"] = args["name"],
 	}
-	asserts.AssertDeleteSlotTypeRequest(t)
-	return t
+	asserts.AssertDeleteSlotTypeRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateBotVersionResponse = { ["status"] = true, ["intents"] = true, ["name"] = true, ["locale"] = true, ["checksum"] = true, ["createdDate"] = true, ["version"] = true, ["lastUpdatedDate"] = true, ["abortStatement"] = true, ["clarificationPrompt"] = true, ["voiceId"] = true, ["failureReason"] = true, ["childDirected"] = true, ["idleSessionTTLInSeconds"] = true, ["description"] = true, nil }
@@ -2601,8 +3434,14 @@ end
 -- * description [Description] <p>A description of the bot.</p>
 -- @return CreateBotVersionResponse structure as a key-value pair table
 function M.CreateBotVersionResponse(args)
-	assert(args, "You must provdide an argument table when creating CreateBotVersionResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateBotVersionResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["status"] = args["status"],
 		["intents"] = args["intents"],
 		["name"] = args["name"],
@@ -2619,8 +3458,13 @@ function M.CreateBotVersionResponse(args)
 		["idleSessionTTLInSeconds"] = args["idleSessionTTLInSeconds"],
 		["description"] = args["description"],
 	}
-	asserts.AssertCreateBotVersionResponse(t)
-	return t
+	asserts.AssertCreateBotVersionResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateIntentVersionResponse = { ["dialogCodeHook"] = true, ["confirmationPrompt"] = true, ["followUpPrompt"] = true, ["name"] = true, ["checksum"] = true, ["conclusionStatement"] = true, ["parentIntentSignature"] = true, ["version"] = true, ["rejectionStatement"] = true, ["createdDate"] = true, ["lastUpdatedDate"] = true, ["sampleUtterances"] = true, ["slots"] = true, ["fulfillmentActivity"] = true, ["description"] = true, nil }
@@ -2669,8 +3513,14 @@ end
 -- * description [Description] <p>A description of the intent.</p>
 -- @return CreateIntentVersionResponse structure as a key-value pair table
 function M.CreateIntentVersionResponse(args)
-	assert(args, "You must provdide an argument table when creating CreateIntentVersionResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateIntentVersionResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["dialogCodeHook"] = args["dialogCodeHook"],
 		["confirmationPrompt"] = args["confirmationPrompt"],
 		["followUpPrompt"] = args["followUpPrompt"],
@@ -2687,8 +3537,13 @@ function M.CreateIntentVersionResponse(args)
 		["fulfillmentActivity"] = args["fulfillmentActivity"],
 		["description"] = args["description"],
 	}
-	asserts.AssertCreateIntentVersionResponse(t)
-	return t
+	asserts.AssertCreateIntentVersionResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.PutBotRequest = { ["intents"] = true, ["name"] = true, ["locale"] = true, ["checksum"] = true, ["processBehavior"] = true, ["childDirected"] = true, ["abortStatement"] = true, ["clarificationPrompt"] = true, ["voiceId"] = true, ["idleSessionTTLInSeconds"] = true, ["description"] = true, nil }
@@ -2735,8 +3590,15 @@ end
 -- Required key: childDirected
 -- @return PutBotRequest structure as a key-value pair table
 function M.PutBotRequest(args)
-	assert(args, "You must provdide an argument table when creating PutBotRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating PutBotRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{name}"] = args["name"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["intents"] = args["intents"],
 		["name"] = args["name"],
 		["locale"] = args["locale"],
@@ -2749,8 +3611,13 @@ function M.PutBotRequest(args)
 		["idleSessionTTLInSeconds"] = args["idleSessionTTLInSeconds"],
 		["description"] = args["description"],
 	}
-	asserts.AssertPutBotRequest(t)
-	return t
+	asserts.AssertPutBotRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ResourceReference = { ["version"] = true, ["name"] = true, nil }
@@ -2773,13 +3640,24 @@ end
 -- * name [Name] <p>The name of the resource that is using the resource that you are trying to delete.</p>
 -- @return ResourceReference structure as a key-value pair table
 function M.ResourceReference(args)
-	assert(args, "You must provdide an argument table when creating ResourceReference")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ResourceReference")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["version"] = args["version"],
 		["name"] = args["name"],
 	}
-	asserts.AssertResourceReference(t)
-	return t
+	asserts.AssertResourceReference(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetBotVersionsRequest = { ["nextToken"] = true, ["name"] = true, ["maxResults"] = true, nil }
@@ -2806,14 +3684,28 @@ end
 -- Required key: name
 -- @return GetBotVersionsRequest structure as a key-value pair table
 function M.GetBotVersionsRequest(args)
-	assert(args, "You must provdide an argument table when creating GetBotVersionsRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetBotVersionsRequest")
+    local query_args = { 
+        ["nextToken"] = args["nextToken"],
+        ["maxResults"] = args["maxResults"],
+    }
+    local uri_args = { 
+        ["{name}"] = args["name"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["nextToken"] = args["nextToken"],
 		["name"] = args["name"],
 		["maxResults"] = args["maxResults"],
 	}
-	asserts.AssertGetBotVersionsRequest(t)
-	return t
+	asserts.AssertGetBotVersionsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateSlotTypeVersionRequest = { ["checksum"] = true, ["name"] = true, nil }
@@ -2838,13 +3730,25 @@ end
 -- Required key: name
 -- @return CreateSlotTypeVersionRequest structure as a key-value pair table
 function M.CreateSlotTypeVersionRequest(args)
-	assert(args, "You must provdide an argument table when creating CreateSlotTypeVersionRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateSlotTypeVersionRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{name}"] = args["name"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["checksum"] = args["checksum"],
 		["name"] = args["name"],
 	}
-	asserts.AssertCreateSlotTypeVersionRequest(t)
-	return t
+	asserts.AssertCreateSlotTypeVersionRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.PutSlotTypeRequest = { ["checksum"] = true, ["name"] = true, ["enumerationValues"] = true, ["description"] = true, nil }
@@ -2873,15 +3777,27 @@ end
 -- Required key: name
 -- @return PutSlotTypeRequest structure as a key-value pair table
 function M.PutSlotTypeRequest(args)
-	assert(args, "You must provdide an argument table when creating PutSlotTypeRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating PutSlotTypeRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{name}"] = args["name"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["checksum"] = args["checksum"],
 		["name"] = args["name"],
 		["enumerationValues"] = args["enumerationValues"],
 		["description"] = args["description"],
 	}
-	asserts.AssertPutSlotTypeRequest(t)
-	return t
+	asserts.AssertPutSlotTypeRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetBuiltinIntentsRequest = { ["locale"] = true, ["nextToken"] = true, ["signatureContains"] = true, ["maxResults"] = true, nil }
@@ -2908,15 +3824,30 @@ end
 -- * maxResults [MaxResults] <p>The maximum number of intents to return in the response. The default is 10.</p>
 -- @return GetBuiltinIntentsRequest structure as a key-value pair table
 function M.GetBuiltinIntentsRequest(args)
-	assert(args, "You must provdide an argument table when creating GetBuiltinIntentsRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetBuiltinIntentsRequest")
+    local query_args = { 
+        ["locale"] = args["locale"],
+        ["nextToken"] = args["nextToken"],
+        ["signatureContains"] = args["signatureContains"],
+        ["maxResults"] = args["maxResults"],
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["locale"] = args["locale"],
 		["nextToken"] = args["nextToken"],
 		["signatureContains"] = args["signatureContains"],
 		["maxResults"] = args["maxResults"],
 	}
-	asserts.AssertGetBuiltinIntentsRequest(t)
-	return t
+	asserts.AssertGetBuiltinIntentsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetBotVersionsResponse = { ["bots"] = true, ["nextToken"] = true, nil }
@@ -2939,13 +3870,24 @@ end
 -- * nextToken [NextToken] <p>A pagination token for fetching the next page of bot versions. If the response to this call is truncated, Amazon Lex returns a pagination token in the response. To fetch the next page of versions, specify the pagination token in the next request. </p>
 -- @return GetBotVersionsResponse structure as a key-value pair table
 function M.GetBotVersionsResponse(args)
-	assert(args, "You must provdide an argument table when creating GetBotVersionsResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetBotVersionsResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["bots"] = args["bots"],
 		["nextToken"] = args["nextToken"],
 	}
-	asserts.AssertGetBotVersionsResponse(t)
-	return t
+	asserts.AssertGetBotVersionsResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteSlotTypeVersionRequest = { ["version"] = true, ["name"] = true, nil }
@@ -2972,13 +3914,26 @@ end
 -- Required key: version
 -- @return DeleteSlotTypeVersionRequest structure as a key-value pair table
 function M.DeleteSlotTypeVersionRequest(args)
-	assert(args, "You must provdide an argument table when creating DeleteSlotTypeVersionRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteSlotTypeVersionRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{version}"] = args["version"],
+        ["{name}"] = args["name"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["version"] = args["version"],
 		["name"] = args["name"],
 	}
-	asserts.AssertDeleteSlotTypeVersionRequest(t)
-	return t
+	asserts.AssertDeleteSlotTypeVersionRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UtteranceList = { ["utterances"] = true, ["botVersion"] = true, nil }
@@ -3001,13 +3956,24 @@ end
 -- * botVersion [Version] <p>The version of the bot that processed the list.</p>
 -- @return UtteranceList structure as a key-value pair table
 function M.UtteranceList(args)
-	assert(args, "You must provdide an argument table when creating UtteranceList")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UtteranceList")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["utterances"] = args["utterances"],
 		["botVersion"] = args["botVersion"],
 	}
-	asserts.AssertUtteranceList(t)
-	return t
+	asserts.AssertUtteranceList(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.BuiltinIntentSlot = { ["name"] = true, nil }
@@ -3028,12 +3994,23 @@ end
 -- * name [String] <p>A list of the slots defined for the intent.</p>
 -- @return BuiltinIntentSlot structure as a key-value pair table
 function M.BuiltinIntentSlot(args)
-	assert(args, "You must provdide an argument table when creating BuiltinIntentSlot")
-	local t = { 
+	assert(args, "You must provide an argument table when creating BuiltinIntentSlot")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["name"] = args["name"],
 	}
-	asserts.AssertBuiltinIntentSlot(t)
-	return t
+	asserts.AssertBuiltinIntentSlot(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.FulfillmentActivity = { ["type"] = true, ["codeHook"] = true, nil }
@@ -3058,13 +4035,24 @@ end
 -- Required key: type
 -- @return FulfillmentActivity structure as a key-value pair table
 function M.FulfillmentActivity(args)
-	assert(args, "You must provdide an argument table when creating FulfillmentActivity")
-	local t = { 
+	assert(args, "You must provide an argument table when creating FulfillmentActivity")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["type"] = args["type"],
 		["codeHook"] = args["codeHook"],
 	}
-	asserts.AssertFulfillmentActivity(t)
-	return t
+	asserts.AssertFulfillmentActivity(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetBuiltinIntentsResponse = { ["intents"] = true, ["nextToken"] = true, nil }
@@ -3087,13 +4075,24 @@ end
 -- * nextToken [NextToken] <p>A pagination token that fetches the next page of intents. If the response to this API call is truncated, Amazon Lex returns a pagination token in the response. To fetch the next page of intents, specify the pagination token in the next request.</p>
 -- @return GetBuiltinIntentsResponse structure as a key-value pair table
 function M.GetBuiltinIntentsResponse(args)
-	assert(args, "You must provdide an argument table when creating GetBuiltinIntentsResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetBuiltinIntentsResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["intents"] = args["intents"],
 		["nextToken"] = args["nextToken"],
 	}
-	asserts.AssertGetBuiltinIntentsResponse(t)
-	return t
+	asserts.AssertGetBuiltinIntentsResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 function asserts.AssertAliasName(str)
@@ -3927,8 +4926,11 @@ function M.CreateBotVersionAsync(CreateBotVersionRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".CreateBotVersion",
 	}
+	for header,value in pairs(CreateBotVersionRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/bots/{name}/versions", CreateBotVersionRequest, headers, settings, cb)
 	else
@@ -3959,8 +4961,11 @@ function M.DeleteBotAliasAsync(DeleteBotAliasRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DeleteBotAlias",
 	}
+	for header,value in pairs(DeleteBotAliasRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("DELETE")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE")
 	if request_handler then
 		request_handler(settings.uri, "/bots/{botName}/aliases/{name}", DeleteBotAliasRequest, headers, settings, cb)
 	else
@@ -3991,8 +4996,11 @@ function M.GetIntentsAsync(GetIntentsRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".GetIntents",
 	}
+	for header,value in pairs(GetIntentsRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
 	if request_handler then
 		request_handler(settings.uri, "/intents/", GetIntentsRequest, headers, settings, cb)
 	else
@@ -4023,8 +5031,11 @@ function M.GetSlotTypesAsync(GetSlotTypesRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".GetSlotTypes",
 	}
+	for header,value in pairs(GetSlotTypesRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
 	if request_handler then
 		request_handler(settings.uri, "/slottypes/", GetSlotTypesRequest, headers, settings, cb)
 	else
@@ -4055,8 +5066,11 @@ function M.DeleteSlotTypeVersionAsync(DeleteSlotTypeVersionRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DeleteSlotTypeVersion",
 	}
+	for header,value in pairs(DeleteSlotTypeVersionRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("DELETE")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE")
 	if request_handler then
 		request_handler(settings.uri, "/slottypes/{name}/version/{version}", DeleteSlotTypeVersionRequest, headers, settings, cb)
 	else
@@ -4087,8 +5101,11 @@ function M.CreateSlotTypeVersionAsync(CreateSlotTypeVersionRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".CreateSlotTypeVersion",
 	}
+	for header,value in pairs(CreateSlotTypeVersionRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/slottypes/{name}/versions", CreateSlotTypeVersionRequest, headers, settings, cb)
 	else
@@ -4119,8 +5136,11 @@ function M.GetIntentVersionsAsync(GetIntentVersionsRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".GetIntentVersions",
 	}
+	for header,value in pairs(GetIntentVersionsRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
 	if request_handler then
 		request_handler(settings.uri, "/intents/{name}/versions/", GetIntentVersionsRequest, headers, settings, cb)
 	else
@@ -4151,8 +5171,11 @@ function M.GetBuiltinSlotTypesAsync(GetBuiltinSlotTypesRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".GetBuiltinSlotTypes",
 	}
+	for header,value in pairs(GetBuiltinSlotTypesRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
 	if request_handler then
 		request_handler(settings.uri, "/builtins/slottypes/", GetBuiltinSlotTypesRequest, headers, settings, cb)
 	else
@@ -4183,8 +5206,11 @@ function M.CreateIntentVersionAsync(CreateIntentVersionRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".CreateIntentVersion",
 	}
+	for header,value in pairs(CreateIntentVersionRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/intents/{name}/versions", CreateIntentVersionRequest, headers, settings, cb)
 	else
@@ -4215,8 +5241,11 @@ function M.GetUtterancesViewAsync(GetUtterancesViewRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".GetUtterancesView",
 	}
+	for header,value in pairs(GetUtterancesViewRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
 	if request_handler then
 		request_handler(settings.uri, "/bots/{botname}/utterances?view=aggregation", GetUtterancesViewRequest, headers, settings, cb)
 	else
@@ -4247,8 +5276,11 @@ function M.GetBotAsync(GetBotRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".GetBot",
 	}
+	for header,value in pairs(GetBotRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
 	if request_handler then
 		request_handler(settings.uri, "/bots/{name}/versions/{versionoralias}", GetBotRequest, headers, settings, cb)
 	else
@@ -4279,8 +5311,11 @@ function M.GetSlotTypeVersionsAsync(GetSlotTypeVersionsRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".GetSlotTypeVersions",
 	}
+	for header,value in pairs(GetSlotTypeVersionsRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
 	if request_handler then
 		request_handler(settings.uri, "/slottypes/{name}/versions/", GetSlotTypeVersionsRequest, headers, settings, cb)
 	else
@@ -4311,8 +5346,11 @@ function M.DeleteIntentVersionAsync(DeleteIntentVersionRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DeleteIntentVersion",
 	}
+	for header,value in pairs(DeleteIntentVersionRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("DELETE")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE")
 	if request_handler then
 		request_handler(settings.uri, "/intents/{name}/versions/{version}", DeleteIntentVersionRequest, headers, settings, cb)
 	else
@@ -4343,8 +5381,11 @@ function M.DeleteUtterancesAsync(DeleteUtterancesRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DeleteUtterances",
 	}
+	for header,value in pairs(DeleteUtterancesRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("DELETE")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE")
 	if request_handler then
 		request_handler(settings.uri, "/bots/{botName}/utterances/{userId}", DeleteUtterancesRequest, headers, settings, cb)
 	else
@@ -4375,8 +5416,11 @@ function M.GetBotAliasAsync(GetBotAliasRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".GetBotAlias",
 	}
+	for header,value in pairs(GetBotAliasRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
 	if request_handler then
 		request_handler(settings.uri, "/bots/{botName}/aliases/{name}", GetBotAliasRequest, headers, settings, cb)
 	else
@@ -4407,8 +5451,11 @@ function M.DeleteIntentAsync(DeleteIntentRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DeleteIntent",
 	}
+	for header,value in pairs(DeleteIntentRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("DELETE")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE")
 	if request_handler then
 		request_handler(settings.uri, "/intents/{name}", DeleteIntentRequest, headers, settings, cb)
 	else
@@ -4439,8 +5486,11 @@ function M.GetBotVersionsAsync(GetBotVersionsRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".GetBotVersions",
 	}
+	for header,value in pairs(GetBotVersionsRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
 	if request_handler then
 		request_handler(settings.uri, "/bots/{name}/versions/", GetBotVersionsRequest, headers, settings, cb)
 	else
@@ -4471,8 +5521,11 @@ function M.PutBotAliasAsync(PutBotAliasRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".PutBotAlias",
 	}
+	for header,value in pairs(PutBotAliasRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("PUT")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT")
 	if request_handler then
 		request_handler(settings.uri, "/bots/{botName}/aliases/{name}", PutBotAliasRequest, headers, settings, cb)
 	else
@@ -4503,8 +5556,11 @@ function M.DeleteBotChannelAssociationAsync(DeleteBotChannelAssociationRequest, 
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DeleteBotChannelAssociation",
 	}
+	for header,value in pairs(DeleteBotChannelAssociationRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("DELETE")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE")
 	if request_handler then
 		request_handler(settings.uri, "/bots/{botName}/aliases/{aliasName}/channels/{name}", DeleteBotChannelAssociationRequest, headers, settings, cb)
 	else
@@ -4535,8 +5591,11 @@ function M.DeleteBotVersionAsync(DeleteBotVersionRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DeleteBotVersion",
 	}
+	for header,value in pairs(DeleteBotVersionRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("DELETE")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE")
 	if request_handler then
 		request_handler(settings.uri, "/bots/{name}/versions/{version}", DeleteBotVersionRequest, headers, settings, cb)
 	else
@@ -4567,8 +5626,11 @@ function M.GetBotChannelAssociationsAsync(GetBotChannelAssociationsRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".GetBotChannelAssociations",
 	}
+	for header,value in pairs(GetBotChannelAssociationsRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
 	if request_handler then
 		request_handler(settings.uri, "/bots/{botName}/aliases/{aliasName}/channels/", GetBotChannelAssociationsRequest, headers, settings, cb)
 	else
@@ -4599,8 +5661,11 @@ function M.PutBotAsync(PutBotRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".PutBot",
 	}
+	for header,value in pairs(PutBotRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("PUT")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT")
 	if request_handler then
 		request_handler(settings.uri, "/bots/{name}/versions/$LATEST", PutBotRequest, headers, settings, cb)
 	else
@@ -4631,8 +5696,11 @@ function M.GetBotChannelAssociationAsync(GetBotChannelAssociationRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".GetBotChannelAssociation",
 	}
+	for header,value in pairs(GetBotChannelAssociationRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
 	if request_handler then
 		request_handler(settings.uri, "/bots/{botName}/aliases/{aliasName}/channels/{name}", GetBotChannelAssociationRequest, headers, settings, cb)
 	else
@@ -4663,8 +5731,11 @@ function M.GetBotAliasesAsync(GetBotAliasesRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".GetBotAliases",
 	}
+	for header,value in pairs(GetBotAliasesRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
 	if request_handler then
 		request_handler(settings.uri, "/bots/{botName}/aliases/", GetBotAliasesRequest, headers, settings, cb)
 	else
@@ -4695,8 +5766,11 @@ function M.DeleteBotAsync(DeleteBotRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DeleteBot",
 	}
+	for header,value in pairs(DeleteBotRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("DELETE")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE")
 	if request_handler then
 		request_handler(settings.uri, "/bots/{name}", DeleteBotRequest, headers, settings, cb)
 	else
@@ -4727,8 +5801,11 @@ function M.GetBuiltinIntentsAsync(GetBuiltinIntentsRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".GetBuiltinIntents",
 	}
+	for header,value in pairs(GetBuiltinIntentsRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
 	if request_handler then
 		request_handler(settings.uri, "/builtins/intents/", GetBuiltinIntentsRequest, headers, settings, cb)
 	else
@@ -4759,8 +5836,11 @@ function M.GetBotsAsync(GetBotsRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".GetBots",
 	}
+	for header,value in pairs(GetBotsRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
 	if request_handler then
 		request_handler(settings.uri, "/bots/", GetBotsRequest, headers, settings, cb)
 	else
@@ -4791,8 +5871,11 @@ function M.DeleteSlotTypeAsync(DeleteSlotTypeRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DeleteSlotType",
 	}
+	for header,value in pairs(DeleteSlotTypeRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("DELETE")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE")
 	if request_handler then
 		request_handler(settings.uri, "/slottypes/{name}", DeleteSlotTypeRequest, headers, settings, cb)
 	else
@@ -4823,8 +5906,11 @@ function M.GetSlotTypeAsync(GetSlotTypeRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".GetSlotType",
 	}
+	for header,value in pairs(GetSlotTypeRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
 	if request_handler then
 		request_handler(settings.uri, "/slottypes/{name}/versions/{version}", GetSlotTypeRequest, headers, settings, cb)
 	else
@@ -4855,8 +5941,11 @@ function M.GetIntentAsync(GetIntentRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".GetIntent",
 	}
+	for header,value in pairs(GetIntentRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
 	if request_handler then
 		request_handler(settings.uri, "/intents/{name}/versions/{version}", GetIntentRequest, headers, settings, cb)
 	else
@@ -4887,8 +5976,11 @@ function M.PutSlotTypeAsync(PutSlotTypeRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".PutSlotType",
 	}
+	for header,value in pairs(PutSlotTypeRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("PUT")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT")
 	if request_handler then
 		request_handler(settings.uri, "/slottypes/{name}/versions/$LATEST", PutSlotTypeRequest, headers, settings, cb)
 	else
@@ -4919,8 +6011,11 @@ function M.GetBuiltinIntentAsync(GetBuiltinIntentRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".GetBuiltinIntent",
 	}
+	for header,value in pairs(GetBuiltinIntentRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
 	if request_handler then
 		request_handler(settings.uri, "/builtins/intents/{signature}", GetBuiltinIntentRequest, headers, settings, cb)
 	else
@@ -4951,8 +6046,11 @@ function M.PutIntentAsync(PutIntentRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".PutIntent",
 	}
+	for header,value in pairs(PutIntentRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("PUT")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT")
 	if request_handler then
 		request_handler(settings.uri, "/intents/{name}/versions/$LATEST", PutIntentRequest, headers, settings, cb)
 	else

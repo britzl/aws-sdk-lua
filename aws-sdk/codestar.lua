@@ -51,15 +51,26 @@ end
 -- Required key: emailAddress
 -- @return CreateUserProfileRequest structure as a key-value pair table
 function M.CreateUserProfileRequest(args)
-	assert(args, "You must provdide an argument table when creating CreateUserProfileRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateUserProfileRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["emailAddress"] = args["emailAddress"],
 		["sshPublicKey"] = args["sshPublicKey"],
 		["displayName"] = args["displayName"],
 		["userArn"] = args["userArn"],
 	}
-	asserts.AssertCreateUserProfileRequest(t)
-	return t
+	asserts.AssertCreateUserProfileRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UserProfileNotFoundException = { nil }
@@ -78,11 +89,22 @@ end
 -- Valid keys:
 -- @return UserProfileNotFoundException structure as a key-value pair table
 function M.UserProfileNotFoundException(args)
-	assert(args, "You must provdide an argument table when creating UserProfileNotFoundException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UserProfileNotFoundException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertUserProfileNotFoundException(t)
-	return t
+	asserts.AssertUserProfileNotFoundException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteProjectRequest = { ["deleteStack"] = true, ["id"] = true, ["clientRequestToken"] = true, nil }
@@ -109,14 +131,25 @@ end
 -- Required key: id
 -- @return DeleteProjectRequest structure as a key-value pair table
 function M.DeleteProjectRequest(args)
-	assert(args, "You must provdide an argument table when creating DeleteProjectRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteProjectRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["deleteStack"] = args["deleteStack"],
 		["id"] = args["id"],
 		["clientRequestToken"] = args["clientRequestToken"],
 	}
-	asserts.AssertDeleteProjectRequest(t)
-	return t
+	asserts.AssertDeleteProjectRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ConcurrentModificationException = { nil }
@@ -135,11 +168,22 @@ end
 -- Valid keys:
 -- @return ConcurrentModificationException structure as a key-value pair table
 function M.ConcurrentModificationException(args)
-	assert(args, "You must provdide an argument table when creating ConcurrentModificationException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ConcurrentModificationException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertConcurrentModificationException(t)
-	return t
+	asserts.AssertConcurrentModificationException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ValidationException = { nil }
@@ -158,11 +202,22 @@ end
 -- Valid keys:
 -- @return ValidationException structure as a key-value pair table
 function M.ValidationException(args)
-	assert(args, "You must provdide an argument table when creating ValidationException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ValidationException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertValidationException(t)
-	return t
+	asserts.AssertValidationException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ProjectNotFoundException = { nil }
@@ -181,11 +236,22 @@ end
 -- Valid keys:
 -- @return ProjectNotFoundException structure as a key-value pair table
 function M.ProjectNotFoundException(args)
-	assert(args, "You must provdide an argument table when creating ProjectNotFoundException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ProjectNotFoundException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertProjectNotFoundException(t)
-	return t
+	asserts.AssertProjectNotFoundException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdateTeamMemberRequest = { ["projectRole"] = true, ["projectId"] = true, ["remoteAccessAllowed"] = true, ["userArn"] = true, nil }
@@ -216,15 +282,26 @@ end
 -- Required key: userArn
 -- @return UpdateTeamMemberRequest structure as a key-value pair table
 function M.UpdateTeamMemberRequest(args)
-	assert(args, "You must provdide an argument table when creating UpdateTeamMemberRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateTeamMemberRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["projectRole"] = args["projectRole"],
 		["projectId"] = args["projectId"],
 		["remoteAccessAllowed"] = args["remoteAccessAllowed"],
 		["userArn"] = args["userArn"],
 	}
-	asserts.AssertUpdateTeamMemberRequest(t)
-	return t
+	asserts.AssertUpdateTeamMemberRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.LimitExceededException = { nil }
@@ -243,11 +320,22 @@ end
 -- Valid keys:
 -- @return LimitExceededException structure as a key-value pair table
 function M.LimitExceededException(args)
-	assert(args, "You must provdide an argument table when creating LimitExceededException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating LimitExceededException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertLimitExceededException(t)
-	return t
+	asserts.AssertLimitExceededException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdateProjectRequest = { ["description"] = true, ["id"] = true, ["name"] = true, nil }
@@ -274,14 +362,25 @@ end
 -- Required key: id
 -- @return UpdateProjectRequest structure as a key-value pair table
 function M.UpdateProjectRequest(args)
-	assert(args, "You must provdide an argument table when creating UpdateProjectRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateProjectRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["description"] = args["description"],
 		["id"] = args["id"],
 		["name"] = args["name"],
 	}
-	asserts.AssertUpdateProjectRequest(t)
-	return t
+	asserts.AssertUpdateProjectRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListTeamMembersRequest = { ["projectId"] = true, ["nextToken"] = true, ["maxResults"] = true, nil }
@@ -308,14 +407,25 @@ end
 -- Required key: projectId
 -- @return ListTeamMembersRequest structure as a key-value pair table
 function M.ListTeamMembersRequest(args)
-	assert(args, "You must provdide an argument table when creating ListTeamMembersRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListTeamMembersRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["projectId"] = args["projectId"],
 		["nextToken"] = args["nextToken"],
 		["maxResults"] = args["maxResults"],
 	}
-	asserts.AssertListTeamMembersRequest(t)
-	return t
+	asserts.AssertListTeamMembersRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidNextTokenException = { nil }
@@ -334,11 +444,22 @@ end
 -- Valid keys:
 -- @return InvalidNextTokenException structure as a key-value pair table
 function M.InvalidNextTokenException(args)
-	assert(args, "You must provdide an argument table when creating InvalidNextTokenException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidNextTokenException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertInvalidNextTokenException(t)
-	return t
+	asserts.AssertInvalidNextTokenException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListTeamMembersResult = { ["nextToken"] = true, ["teamMembers"] = true, nil }
@@ -363,13 +484,24 @@ end
 -- Required key: teamMembers
 -- @return ListTeamMembersResult structure as a key-value pair table
 function M.ListTeamMembersResult(args)
-	assert(args, "You must provdide an argument table when creating ListTeamMembersResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListTeamMembersResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["nextToken"] = args["nextToken"],
 		["teamMembers"] = args["teamMembers"],
 	}
-	asserts.AssertListTeamMembersResult(t)
-	return t
+	asserts.AssertListTeamMembersResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdateTeamMemberResult = { ["projectRole"] = true, ["remoteAccessAllowed"] = true, ["userArn"] = true, nil }
@@ -394,14 +526,25 @@ end
 -- * userArn [UserArn] <p>The Amazon Resource Name (ARN) of the user whose team membership attributes were updated.</p>
 -- @return UpdateTeamMemberResult structure as a key-value pair table
 function M.UpdateTeamMemberResult(args)
-	assert(args, "You must provdide an argument table when creating UpdateTeamMemberResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateTeamMemberResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["projectRole"] = args["projectRole"],
 		["remoteAccessAllowed"] = args["remoteAccessAllowed"],
 		["userArn"] = args["userArn"],
 	}
-	asserts.AssertUpdateTeamMemberResult(t)
-	return t
+	asserts.AssertUpdateTeamMemberResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ProjectConfigurationException = { nil }
@@ -420,11 +563,22 @@ end
 -- Valid keys:
 -- @return ProjectConfigurationException structure as a key-value pair table
 function M.ProjectConfigurationException(args)
-	assert(args, "You must provdide an argument table when creating ProjectConfigurationException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ProjectConfigurationException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertProjectConfigurationException(t)
-	return t
+	asserts.AssertProjectConfigurationException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteUserProfileRequest = { ["userArn"] = true, nil }
@@ -447,12 +601,23 @@ end
 -- Required key: userArn
 -- @return DeleteUserProfileRequest structure as a key-value pair table
 function M.DeleteUserProfileRequest(args)
-	assert(args, "You must provdide an argument table when creating DeleteUserProfileRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteUserProfileRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["userArn"] = args["userArn"],
 	}
-	asserts.AssertDeleteUserProfileRequest(t)
-	return t
+	asserts.AssertDeleteUserProfileRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.TeamMember = { ["projectRole"] = true, ["remoteAccessAllowed"] = true, ["userArn"] = true, nil }
@@ -481,14 +646,25 @@ end
 -- Required key: projectRole
 -- @return TeamMember structure as a key-value pair table
 function M.TeamMember(args)
-	assert(args, "You must provdide an argument table when creating TeamMember")
-	local t = { 
+	assert(args, "You must provide an argument table when creating TeamMember")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["projectRole"] = args["projectRole"],
 		["remoteAccessAllowed"] = args["remoteAccessAllowed"],
 		["userArn"] = args["userArn"],
 	}
-	asserts.AssertTeamMember(t)
-	return t
+	asserts.AssertTeamMember(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateUserProfileResult = { ["displayName"] = true, ["userArn"] = true, ["sshPublicKey"] = true, ["createdTimestamp"] = true, ["emailAddress"] = true, ["lastModifiedTimestamp"] = true, nil }
@@ -521,8 +697,14 @@ end
 -- Required key: userArn
 -- @return CreateUserProfileResult structure as a key-value pair table
 function M.CreateUserProfileResult(args)
-	assert(args, "You must provdide an argument table when creating CreateUserProfileResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateUserProfileResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["displayName"] = args["displayName"],
 		["userArn"] = args["userArn"],
 		["sshPublicKey"] = args["sshPublicKey"],
@@ -530,8 +712,13 @@ function M.CreateUserProfileResult(args)
 		["emailAddress"] = args["emailAddress"],
 		["lastModifiedTimestamp"] = args["lastModifiedTimestamp"],
 	}
-	asserts.AssertCreateUserProfileResult(t)
-	return t
+	asserts.AssertCreateUserProfileResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListProjectsRequest = { ["nextToken"] = true, ["maxResults"] = true, nil }
@@ -554,13 +741,24 @@ end
 -- * maxResults [MaxResults] <p>The maximum amount of data that can be contained in a single set of results.</p>
 -- @return ListProjectsRequest structure as a key-value pair table
 function M.ListProjectsRequest(args)
-	assert(args, "You must provdide an argument table when creating ListProjectsRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListProjectsRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["nextToken"] = args["nextToken"],
 		["maxResults"] = args["maxResults"],
 	}
-	asserts.AssertListProjectsRequest(t)
-	return t
+	asserts.AssertListProjectsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DisassociateTeamMemberResult = { nil }
@@ -579,11 +777,22 @@ end
 -- Valid keys:
 -- @return DisassociateTeamMemberResult structure as a key-value pair table
 function M.DisassociateTeamMemberResult(args)
-	assert(args, "You must provdide an argument table when creating DisassociateTeamMemberResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DisassociateTeamMemberResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertDisassociateTeamMemberResult(t)
-	return t
+	asserts.AssertDisassociateTeamMemberResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListProjectsResult = { ["nextToken"] = true, ["projects"] = true, nil }
@@ -608,13 +817,24 @@ end
 -- Required key: projects
 -- @return ListProjectsResult structure as a key-value pair table
 function M.ListProjectsResult(args)
-	assert(args, "You must provdide an argument table when creating ListProjectsResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListProjectsResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["nextToken"] = args["nextToken"],
 		["projects"] = args["projects"],
 	}
-	asserts.AssertListProjectsResult(t)
-	return t
+	asserts.AssertListProjectsResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListResourcesResult = { ["nextToken"] = true, ["resources"] = true, nil }
@@ -637,13 +857,24 @@ end
 -- * resources [ResourcesResult] <p>An array of resources associated with the project. </p>
 -- @return ListResourcesResult structure as a key-value pair table
 function M.ListResourcesResult(args)
-	assert(args, "You must provdide an argument table when creating ListResourcesResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListResourcesResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["nextToken"] = args["nextToken"],
 		["resources"] = args["resources"],
 	}
-	asserts.AssertListResourcesResult(t)
-	return t
+	asserts.AssertListResourcesResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListResourcesRequest = { ["projectId"] = true, ["nextToken"] = true, ["maxResults"] = true, nil }
@@ -670,14 +901,25 @@ end
 -- Required key: projectId
 -- @return ListResourcesRequest structure as a key-value pair table
 function M.ListResourcesRequest(args)
-	assert(args, "You must provdide an argument table when creating ListResourcesRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListResourcesRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["projectId"] = args["projectId"],
 		["nextToken"] = args["nextToken"],
 		["maxResults"] = args["maxResults"],
 	}
-	asserts.AssertListResourcesRequest(t)
-	return t
+	asserts.AssertListResourcesRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteUserProfileResult = { ["userArn"] = true, nil }
@@ -700,12 +942,23 @@ end
 -- Required key: userArn
 -- @return DeleteUserProfileResult structure as a key-value pair table
 function M.DeleteUserProfileResult(args)
-	assert(args, "You must provdide an argument table when creating DeleteUserProfileResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteUserProfileResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["userArn"] = args["userArn"],
 	}
-	asserts.AssertDeleteUserProfileResult(t)
-	return t
+	asserts.AssertDeleteUserProfileResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Resource = { ["id"] = true, nil }
@@ -728,12 +981,23 @@ end
 -- Required key: id
 -- @return Resource structure as a key-value pair table
 function M.Resource(args)
-	assert(args, "You must provdide an argument table when creating Resource")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Resource")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["id"] = args["id"],
 	}
-	asserts.AssertResource(t)
-	return t
+	asserts.AssertResource(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeUserProfileRequest = { ["userArn"] = true, nil }
@@ -756,12 +1020,23 @@ end
 -- Required key: userArn
 -- @return DescribeUserProfileRequest structure as a key-value pair table
 function M.DescribeUserProfileRequest(args)
-	assert(args, "You must provdide an argument table when creating DescribeUserProfileRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeUserProfileRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["userArn"] = args["userArn"],
 	}
-	asserts.AssertDescribeUserProfileRequest(t)
-	return t
+	asserts.AssertDescribeUserProfileRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteProjectResult = { ["stackId"] = true, ["projectArn"] = true, nil }
@@ -784,13 +1059,24 @@ end
 -- * projectArn [ProjectArn] <p>The Amazon Resource Name (ARN) of the deleted project.</p>
 -- @return DeleteProjectResult structure as a key-value pair table
 function M.DeleteProjectResult(args)
-	assert(args, "You must provdide an argument table when creating DeleteProjectResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteProjectResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["stackId"] = args["stackId"],
 		["projectArn"] = args["projectArn"],
 	}
-	asserts.AssertDeleteProjectResult(t)
-	return t
+	asserts.AssertDeleteProjectResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateProjectResult = { ["projectTemplateId"] = true, ["id"] = true, ["arn"] = true, ["clientRequestToken"] = true, nil }
@@ -821,15 +1107,26 @@ end
 -- Required key: arn
 -- @return CreateProjectResult structure as a key-value pair table
 function M.CreateProjectResult(args)
-	assert(args, "You must provdide an argument table when creating CreateProjectResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateProjectResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["projectTemplateId"] = args["projectTemplateId"],
 		["id"] = args["id"],
 		["arn"] = args["arn"],
 		["clientRequestToken"] = args["clientRequestToken"],
 	}
-	asserts.AssertCreateProjectResult(t)
-	return t
+	asserts.AssertCreateProjectResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdateUserProfileRequest = { ["emailAddress"] = true, ["sshPublicKey"] = true, ["displayName"] = true, ["userArn"] = true, nil }
@@ -858,15 +1155,26 @@ end
 -- Required key: userArn
 -- @return UpdateUserProfileRequest structure as a key-value pair table
 function M.UpdateUserProfileRequest(args)
-	assert(args, "You must provdide an argument table when creating UpdateUserProfileRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateUserProfileRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["emailAddress"] = args["emailAddress"],
 		["sshPublicKey"] = args["sshPublicKey"],
 		["displayName"] = args["displayName"],
 		["userArn"] = args["userArn"],
 	}
-	asserts.AssertUpdateUserProfileRequest(t)
-	return t
+	asserts.AssertUpdateUserProfileRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ProjectAlreadyExistsException = { nil }
@@ -885,11 +1193,22 @@ end
 -- Valid keys:
 -- @return ProjectAlreadyExistsException structure as a key-value pair table
 function M.ProjectAlreadyExistsException(args)
-	assert(args, "You must provdide an argument table when creating ProjectAlreadyExistsException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ProjectAlreadyExistsException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertProjectAlreadyExistsException(t)
-	return t
+	asserts.AssertProjectAlreadyExistsException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidServiceRoleException = { nil }
@@ -908,11 +1227,22 @@ end
 -- Valid keys:
 -- @return InvalidServiceRoleException structure as a key-value pair table
 function M.InvalidServiceRoleException(args)
-	assert(args, "You must provdide an argument table when creating InvalidServiceRoleException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidServiceRoleException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertInvalidServiceRoleException(t)
-	return t
+	asserts.AssertInvalidServiceRoleException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeProjectResult = { ["stackId"] = true, ["projectTemplateId"] = true, ["description"] = true, ["createdTimeStamp"] = true, ["clientRequestToken"] = true, ["id"] = true, ["arn"] = true, ["name"] = true, nil }
@@ -947,8 +1277,14 @@ end
 -- * name [ProjectName] <p>The display name for the project.</p>
 -- @return DescribeProjectResult structure as a key-value pair table
 function M.DescribeProjectResult(args)
-	assert(args, "You must provdide an argument table when creating DescribeProjectResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeProjectResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["stackId"] = args["stackId"],
 		["projectTemplateId"] = args["projectTemplateId"],
 		["description"] = args["description"],
@@ -958,8 +1294,13 @@ function M.DescribeProjectResult(args)
 		["arn"] = args["arn"],
 		["name"] = args["name"],
 	}
-	asserts.AssertDescribeProjectResult(t)
-	return t
+	asserts.AssertDescribeProjectResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListUserProfilesRequest = { ["nextToken"] = true, ["maxResults"] = true, nil }
@@ -982,13 +1323,24 @@ end
 -- * maxResults [MaxResults] <p>The maximum number of results to return in a response.</p>
 -- @return ListUserProfilesRequest structure as a key-value pair table
 function M.ListUserProfilesRequest(args)
-	assert(args, "You must provdide an argument table when creating ListUserProfilesRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListUserProfilesRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["nextToken"] = args["nextToken"],
 		["maxResults"] = args["maxResults"],
 	}
-	asserts.AssertListUserProfilesRequest(t)
-	return t
+	asserts.AssertListUserProfilesRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdateProjectResult = { nil }
@@ -1007,11 +1359,22 @@ end
 -- Valid keys:
 -- @return UpdateProjectResult structure as a key-value pair table
 function M.UpdateProjectResult(args)
-	assert(args, "You must provdide an argument table when creating UpdateProjectResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateProjectResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertUpdateProjectResult(t)
-	return t
+	asserts.AssertUpdateProjectResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UserProfileSummary = { ["emailAddress"] = true, ["sshPublicKey"] = true, ["displayName"] = true, ["userArn"] = true, nil }
@@ -1038,15 +1401,26 @@ end
 -- * userArn [UserArn] <p>The Amazon Resource Name (ARN) of the user in IAM.</p>
 -- @return UserProfileSummary structure as a key-value pair table
 function M.UserProfileSummary(args)
-	assert(args, "You must provdide an argument table when creating UserProfileSummary")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UserProfileSummary")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["emailAddress"] = args["emailAddress"],
 		["sshPublicKey"] = args["sshPublicKey"],
 		["displayName"] = args["displayName"],
 		["userArn"] = args["userArn"],
 	}
-	asserts.AssertUserProfileSummary(t)
-	return t
+	asserts.AssertUserProfileSummary(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeUserProfileResult = { ["displayName"] = true, ["userArn"] = true, ["sshPublicKey"] = true, ["createdTimestamp"] = true, ["emailAddress"] = true, ["lastModifiedTimestamp"] = true, nil }
@@ -1083,8 +1457,14 @@ end
 -- Required key: lastModifiedTimestamp
 -- @return DescribeUserProfileResult structure as a key-value pair table
 function M.DescribeUserProfileResult(args)
-	assert(args, "You must provdide an argument table when creating DescribeUserProfileResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeUserProfileResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["displayName"] = args["displayName"],
 		["userArn"] = args["userArn"],
 		["sshPublicKey"] = args["sshPublicKey"],
@@ -1092,8 +1472,13 @@ function M.DescribeUserProfileResult(args)
 		["emailAddress"] = args["emailAddress"],
 		["lastModifiedTimestamp"] = args["lastModifiedTimestamp"],
 	}
-	asserts.AssertDescribeUserProfileResult(t)
-	return t
+	asserts.AssertDescribeUserProfileResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AssociateTeamMemberRequest = { ["projectRole"] = true, ["projectId"] = true, ["remoteAccessAllowed"] = true, ["clientRequestToken"] = true, ["userArn"] = true, nil }
@@ -1128,16 +1513,27 @@ end
 -- Required key: projectRole
 -- @return AssociateTeamMemberRequest structure as a key-value pair table
 function M.AssociateTeamMemberRequest(args)
-	assert(args, "You must provdide an argument table when creating AssociateTeamMemberRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AssociateTeamMemberRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["projectRole"] = args["projectRole"],
 		["projectId"] = args["projectId"],
 		["remoteAccessAllowed"] = args["remoteAccessAllowed"],
 		["clientRequestToken"] = args["clientRequestToken"],
 		["userArn"] = args["userArn"],
 	}
-	asserts.AssertAssociateTeamMemberRequest(t)
-	return t
+	asserts.AssertAssociateTeamMemberRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ProjectCreationFailedException = { nil }
@@ -1156,11 +1552,22 @@ end
 -- Valid keys:
 -- @return ProjectCreationFailedException structure as a key-value pair table
 function M.ProjectCreationFailedException(args)
-	assert(args, "You must provdide an argument table when creating ProjectCreationFailedException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ProjectCreationFailedException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertProjectCreationFailedException(t)
-	return t
+	asserts.AssertProjectCreationFailedException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeProjectRequest = { ["id"] = true, nil }
@@ -1183,12 +1590,23 @@ end
 -- Required key: id
 -- @return DescribeProjectRequest structure as a key-value pair table
 function M.DescribeProjectRequest(args)
-	assert(args, "You must provdide an argument table when creating DescribeProjectRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeProjectRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["id"] = args["id"],
 	}
-	asserts.AssertDescribeProjectRequest(t)
-	return t
+	asserts.AssertDescribeProjectRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.TeamMemberNotFoundException = { nil }
@@ -1207,11 +1625,22 @@ end
 -- Valid keys:
 -- @return TeamMemberNotFoundException structure as a key-value pair table
 function M.TeamMemberNotFoundException(args)
-	assert(args, "You must provdide an argument table when creating TeamMemberNotFoundException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating TeamMemberNotFoundException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertTeamMemberNotFoundException(t)
-	return t
+	asserts.AssertTeamMemberNotFoundException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListUserProfilesResult = { ["nextToken"] = true, ["userProfiles"] = true, nil }
@@ -1236,13 +1665,24 @@ end
 -- Required key: userProfiles
 -- @return ListUserProfilesResult structure as a key-value pair table
 function M.ListUserProfilesResult(args)
-	assert(args, "You must provdide an argument table when creating ListUserProfilesResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListUserProfilesResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["nextToken"] = args["nextToken"],
 		["userProfiles"] = args["userProfiles"],
 	}
-	asserts.AssertListUserProfilesResult(t)
-	return t
+	asserts.AssertListUserProfilesResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DisassociateTeamMemberRequest = { ["projectId"] = true, ["userArn"] = true, nil }
@@ -1269,13 +1709,24 @@ end
 -- Required key: userArn
 -- @return DisassociateTeamMemberRequest structure as a key-value pair table
 function M.DisassociateTeamMemberRequest(args)
-	assert(args, "You must provdide an argument table when creating DisassociateTeamMemberRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DisassociateTeamMemberRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["projectId"] = args["projectId"],
 		["userArn"] = args["userArn"],
 	}
-	asserts.AssertDisassociateTeamMemberRequest(t)
-	return t
+	asserts.AssertDisassociateTeamMemberRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UserProfileAlreadyExistsException = { nil }
@@ -1294,11 +1745,22 @@ end
 -- Valid keys:
 -- @return UserProfileAlreadyExistsException structure as a key-value pair table
 function M.UserProfileAlreadyExistsException(args)
-	assert(args, "You must provdide an argument table when creating UserProfileAlreadyExistsException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UserProfileAlreadyExistsException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertUserProfileAlreadyExistsException(t)
-	return t
+	asserts.AssertUserProfileAlreadyExistsException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ProjectSummary = { ["projectId"] = true, ["projectArn"] = true, nil }
@@ -1321,13 +1783,24 @@ end
 -- * projectArn [ProjectArn] <p>The Amazon Resource Name (ARN) of the project.</p>
 -- @return ProjectSummary structure as a key-value pair table
 function M.ProjectSummary(args)
-	assert(args, "You must provdide an argument table when creating ProjectSummary")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ProjectSummary")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["projectId"] = args["projectId"],
 		["projectArn"] = args["projectArn"],
 	}
-	asserts.AssertProjectSummary(t)
-	return t
+	asserts.AssertProjectSummary(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AssociateTeamMemberResult = { ["clientRequestToken"] = true, nil }
@@ -1348,12 +1821,23 @@ end
 -- * clientRequestToken [ClientRequestToken] <p>The user- or system-generated token from the initial request that can be used to repeat the request. </p>
 -- @return AssociateTeamMemberResult structure as a key-value pair table
 function M.AssociateTeamMemberResult(args)
-	assert(args, "You must provdide an argument table when creating AssociateTeamMemberResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AssociateTeamMemberResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["clientRequestToken"] = args["clientRequestToken"],
 	}
-	asserts.AssertAssociateTeamMemberResult(t)
-	return t
+	asserts.AssertAssociateTeamMemberResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdateUserProfileResult = { ["displayName"] = true, ["userArn"] = true, ["sshPublicKey"] = true, ["createdTimestamp"] = true, ["emailAddress"] = true, ["lastModifiedTimestamp"] = true, nil }
@@ -1386,8 +1870,14 @@ end
 -- Required key: userArn
 -- @return UpdateUserProfileResult structure as a key-value pair table
 function M.UpdateUserProfileResult(args)
-	assert(args, "You must provdide an argument table when creating UpdateUserProfileResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateUserProfileResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["displayName"] = args["displayName"],
 		["userArn"] = args["userArn"],
 		["sshPublicKey"] = args["sshPublicKey"],
@@ -1395,8 +1885,13 @@ function M.UpdateUserProfileResult(args)
 		["emailAddress"] = args["emailAddress"],
 		["lastModifiedTimestamp"] = args["lastModifiedTimestamp"],
 	}
-	asserts.AssertUpdateUserProfileResult(t)
-	return t
+	asserts.AssertUpdateUserProfileResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.TeamMemberAlreadyAssociatedException = { nil }
@@ -1415,11 +1910,22 @@ end
 -- Valid keys:
 -- @return TeamMemberAlreadyAssociatedException structure as a key-value pair table
 function M.TeamMemberAlreadyAssociatedException(args)
-	assert(args, "You must provdide an argument table when creating TeamMemberAlreadyAssociatedException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating TeamMemberAlreadyAssociatedException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertTeamMemberAlreadyAssociatedException(t)
-	return t
+	asserts.AssertTeamMemberAlreadyAssociatedException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateProjectRequest = { ["clientRequestToken"] = true, ["description"] = true, ["name"] = true, ["id"] = true, nil }
@@ -1450,15 +1956,26 @@ end
 -- Required key: id
 -- @return CreateProjectRequest structure as a key-value pair table
 function M.CreateProjectRequest(args)
-	assert(args, "You must provdide an argument table when creating CreateProjectRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateProjectRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["clientRequestToken"] = args["clientRequestToken"],
 		["description"] = args["description"],
 		["name"] = args["name"],
 		["id"] = args["id"],
 	}
-	asserts.AssertCreateProjectRequest(t)
-	return t
+	asserts.AssertCreateProjectRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 function asserts.AssertStackId(str)
@@ -1798,8 +2315,11 @@ function M.AssociateTeamMemberAsync(AssociateTeamMemberRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "CodeStar_20170419.AssociateTeamMember",
 	}
+	for header,value in pairs(AssociateTeamMemberRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", AssociateTeamMemberRequest, headers, settings, cb)
 	else
@@ -1830,8 +2350,11 @@ function M.DisassociateTeamMemberAsync(DisassociateTeamMemberRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "CodeStar_20170419.DisassociateTeamMember",
 	}
+	for header,value in pairs(DisassociateTeamMemberRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DisassociateTeamMemberRequest, headers, settings, cb)
 	else
@@ -1862,8 +2385,11 @@ function M.UpdateTeamMemberAsync(UpdateTeamMemberRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "CodeStar_20170419.UpdateTeamMember",
 	}
+	for header,value in pairs(UpdateTeamMemberRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateTeamMemberRequest, headers, settings, cb)
 	else
@@ -1894,8 +2420,11 @@ function M.CreateUserProfileAsync(CreateUserProfileRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "CodeStar_20170419.CreateUserProfile",
 	}
+	for header,value in pairs(CreateUserProfileRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateUserProfileRequest, headers, settings, cb)
 	else
@@ -1926,8 +2455,11 @@ function M.UpdateUserProfileAsync(UpdateUserProfileRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "CodeStar_20170419.UpdateUserProfile",
 	}
+	for header,value in pairs(UpdateUserProfileRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateUserProfileRequest, headers, settings, cb)
 	else
@@ -1958,8 +2490,11 @@ function M.ListUserProfilesAsync(ListUserProfilesRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "CodeStar_20170419.ListUserProfiles",
 	}
+	for header,value in pairs(ListUserProfilesRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ListUserProfilesRequest, headers, settings, cb)
 	else
@@ -1990,8 +2525,11 @@ function M.ListResourcesAsync(ListResourcesRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "CodeStar_20170419.ListResources",
 	}
+	for header,value in pairs(ListResourcesRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ListResourcesRequest, headers, settings, cb)
 	else
@@ -2022,8 +2560,11 @@ function M.CreateProjectAsync(CreateProjectRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "CodeStar_20170419.CreateProject",
 	}
+	for header,value in pairs(CreateProjectRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateProjectRequest, headers, settings, cb)
 	else
@@ -2054,8 +2595,11 @@ function M.ListProjectsAsync(ListProjectsRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "CodeStar_20170419.ListProjects",
 	}
+	for header,value in pairs(ListProjectsRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ListProjectsRequest, headers, settings, cb)
 	else
@@ -2086,8 +2630,11 @@ function M.ListTeamMembersAsync(ListTeamMembersRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "CodeStar_20170419.ListTeamMembers",
 	}
+	for header,value in pairs(ListTeamMembersRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ListTeamMembersRequest, headers, settings, cb)
 	else
@@ -2118,8 +2665,11 @@ function M.DeleteProjectAsync(DeleteProjectRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "CodeStar_20170419.DeleteProject",
 	}
+	for header,value in pairs(DeleteProjectRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteProjectRequest, headers, settings, cb)
 	else
@@ -2150,8 +2700,11 @@ function M.DescribeProjectAsync(DescribeProjectRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "CodeStar_20170419.DescribeProject",
 	}
+	for header,value in pairs(DescribeProjectRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeProjectRequest, headers, settings, cb)
 	else
@@ -2182,8 +2735,11 @@ function M.UpdateProjectAsync(UpdateProjectRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "CodeStar_20170419.UpdateProject",
 	}
+	for header,value in pairs(UpdateProjectRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateProjectRequest, headers, settings, cb)
 	else
@@ -2214,8 +2770,11 @@ function M.DescribeUserProfileAsync(DescribeUserProfileRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "CodeStar_20170419.DescribeUserProfile",
 	}
+	for header,value in pairs(DescribeUserProfileRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeUserProfileRequest, headers, settings, cb)
 	else
@@ -2246,8 +2805,11 @@ function M.DeleteUserProfileAsync(DeleteUserProfileRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "CodeStar_20170419.DeleteUserProfile",
 	}
+	for header,value in pairs(DeleteUserProfileRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteUserProfileRequest, headers, settings, cb)
 	else

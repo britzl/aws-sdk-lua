@@ -41,12 +41,23 @@ end
 -- Required key: ProtectionId
 -- @return DeleteProtectionRequest structure as a key-value pair table
 function M.DeleteProtectionRequest(args)
-	assert(args, "You must provdide an argument table when creating DeleteProtectionRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteProtectionRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ProtectionId"] = args["ProtectionId"],
 	}
-	asserts.AssertDeleteProtectionRequest(t)
-	return t
+	asserts.AssertDeleteProtectionRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListProtectionsResponse = { ["Protections"] = true, ["NextToken"] = true, nil }
@@ -69,13 +80,24 @@ end
 -- * NextToken [Token] <p>If you specify a value for <code>MaxResults</code> and you have more Protections than the value of MaxResults, AWS Shield Advanced returns a NextToken value in the response that allows you to list another group of Protections. For the second and subsequent ListProtections requests, specify the value of NextToken from the previous response to get information about another batch of Protections.</p>
 -- @return ListProtectionsResponse structure as a key-value pair table
 function M.ListProtectionsResponse(args)
-	assert(args, "You must provdide an argument table when creating ListProtectionsResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListProtectionsResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Protections"] = args["Protections"],
 		["NextToken"] = args["NextToken"],
 	}
-	asserts.AssertListProtectionsResponse(t)
-	return t
+	asserts.AssertListProtectionsResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeAttackRequest = { ["AttackId"] = true, nil }
@@ -98,12 +120,23 @@ end
 -- Required key: AttackId
 -- @return DescribeAttackRequest structure as a key-value pair table
 function M.DescribeAttackRequest(args)
-	assert(args, "You must provdide an argument table when creating DescribeAttackRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeAttackRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["AttackId"] = args["AttackId"],
 	}
-	asserts.AssertDescribeAttackRequest(t)
-	return t
+	asserts.AssertDescribeAttackRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.TimeRange = { ["FromInclusive"] = true, ["ToExclusive"] = true, nil }
@@ -126,13 +159,24 @@ end
 -- * ToExclusive [AttackTimestamp] <p>The end time, in the format 2016-12-16T15:50Z.</p>
 -- @return TimeRange structure as a key-value pair table
 function M.TimeRange(args)
-	assert(args, "You must provdide an argument table when creating TimeRange")
-	local t = { 
+	assert(args, "You must provide an argument table when creating TimeRange")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["FromInclusive"] = args["FromInclusive"],
 		["ToExclusive"] = args["ToExclusive"],
 	}
-	asserts.AssertTimeRange(t)
-	return t
+	asserts.AssertTimeRange(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeSubscriptionResponse = { ["Subscription"] = true, nil }
@@ -153,12 +197,23 @@ end
 -- * Subscription [Subscription] <p>The AWS Shield Advanced subscription details for an account.</p>
 -- @return DescribeSubscriptionResponse structure as a key-value pair table
 function M.DescribeSubscriptionResponse(args)
-	assert(args, "You must provdide an argument table when creating DescribeSubscriptionResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeSubscriptionResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Subscription"] = args["Subscription"],
 	}
-	asserts.AssertDescribeSubscriptionResponse(t)
-	return t
+	asserts.AssertDescribeSubscriptionResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Mitigation = { ["MitigationName"] = true, nil }
@@ -179,12 +234,23 @@ end
 -- * MitigationName [String] <p>The name of the mitigation taken for this attack.</p>
 -- @return Mitigation structure as a key-value pair table
 function M.Mitigation(args)
-	assert(args, "You must provdide an argument table when creating Mitigation")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Mitigation")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["MitigationName"] = args["MitigationName"],
 	}
-	asserts.AssertMitigation(t)
-	return t
+	asserts.AssertMitigation(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InternalErrorException = { ["message"] = true, nil }
@@ -205,12 +271,23 @@ end
 -- * message [errorMessage] 
 -- @return InternalErrorException structure as a key-value pair table
 function M.InternalErrorException(args)
-	assert(args, "You must provdide an argument table when creating InternalErrorException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InternalErrorException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertInternalErrorException(t)
-	return t
+	asserts.AssertInternalErrorException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListAttacksResponse = { ["NextToken"] = true, ["AttackSummaries"] = true, nil }
@@ -233,13 +310,24 @@ end
 -- * AttackSummaries [AttackSummaries] <p>The attack information for the specified time range.</p>
 -- @return ListAttacksResponse structure as a key-value pair table
 function M.ListAttacksResponse(args)
-	assert(args, "You must provdide an argument table when creating ListAttacksResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListAttacksResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NextToken"] = args["NextToken"],
 		["AttackSummaries"] = args["AttackSummaries"],
 	}
-	asserts.AssertListAttacksResponse(t)
-	return t
+	asserts.AssertListAttacksResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListAttacksRequest = { ["NextToken"] = true, ["EndTime"] = true, ["ResourceArns"] = true, ["MaxResults"] = true, ["StartTime"] = true, nil }
@@ -268,16 +356,27 @@ end
 -- * StartTime [TimeRange] <p>The time period for the attacks.</p>
 -- @return ListAttacksRequest structure as a key-value pair table
 function M.ListAttacksRequest(args)
-	assert(args, "You must provdide an argument table when creating ListAttacksRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListAttacksRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NextToken"] = args["NextToken"],
 		["EndTime"] = args["EndTime"],
 		["ResourceArns"] = args["ResourceArns"],
 		["MaxResults"] = args["MaxResults"],
 		["StartTime"] = args["StartTime"],
 	}
-	asserts.AssertListAttacksRequest(t)
-	return t
+	asserts.AssertListAttacksRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.LockedSubscriptionException = { ["message"] = true, nil }
@@ -298,12 +397,23 @@ end
 -- * message [errorMessage] 
 -- @return LockedSubscriptionException structure as a key-value pair table
 function M.LockedSubscriptionException(args)
-	assert(args, "You must provdide an argument table when creating LockedSubscriptionException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating LockedSubscriptionException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertLockedSubscriptionException(t)
-	return t
+	asserts.AssertLockedSubscriptionException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteSubscriptionRequest = { nil }
@@ -322,11 +432,22 @@ end
 -- Valid keys:
 -- @return DeleteSubscriptionRequest structure as a key-value pair table
 function M.DeleteSubscriptionRequest(args)
-	assert(args, "You must provdide an argument table when creating DeleteSubscriptionRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteSubscriptionRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertDeleteSubscriptionRequest(t)
-	return t
+	asserts.AssertDeleteSubscriptionRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateProtectionResponse = { ["ProtectionId"] = true, nil }
@@ -347,12 +468,23 @@ end
 -- * ProtectionId [ProtectionId] <p>The unique identifier (ID) for the <a>Protection</a> object that is created.</p>
 -- @return CreateProtectionResponse structure as a key-value pair table
 function M.CreateProtectionResponse(args)
-	assert(args, "You must provdide an argument table when creating CreateProtectionResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateProtectionResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ProtectionId"] = args["ProtectionId"],
 	}
-	asserts.AssertCreateProtectionResponse(t)
-	return t
+	asserts.AssertCreateProtectionResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListProtectionsRequest = { ["NextToken"] = true, ["MaxResults"] = true, nil }
@@ -375,13 +507,24 @@ end
 -- * MaxResults [MaxResults] <p>The maximum number of <a>Protection</a> objects to be returned. If this is left blank the first 20 results will be returned.</p>
 -- @return ListProtectionsRequest structure as a key-value pair table
 function M.ListProtectionsRequest(args)
-	assert(args, "You must provdide an argument table when creating ListProtectionsRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListProtectionsRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NextToken"] = args["NextToken"],
 		["MaxResults"] = args["MaxResults"],
 	}
-	asserts.AssertListProtectionsRequest(t)
-	return t
+	asserts.AssertListProtectionsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.LimitsExceededException = { ["Limit"] = true, ["message"] = true, ["Type"] = true, nil }
@@ -406,14 +549,25 @@ end
 -- * Type [LimitType] 
 -- @return LimitsExceededException structure as a key-value pair table
 function M.LimitsExceededException(args)
-	assert(args, "You must provdide an argument table when creating LimitsExceededException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating LimitsExceededException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Limit"] = args["Limit"],
 		["message"] = args["message"],
 		["Type"] = args["Type"],
 	}
-	asserts.AssertLimitsExceededException(t)
-	return t
+	asserts.AssertLimitsExceededException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidParameterException = { ["message"] = true, nil }
@@ -434,12 +588,23 @@ end
 -- * message [errorMessage] 
 -- @return InvalidParameterException structure as a key-value pair table
 function M.InvalidParameterException(args)
-	assert(args, "You must provdide an argument table when creating InvalidParameterException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidParameterException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertInvalidParameterException(t)
-	return t
+	asserts.AssertInvalidParameterException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeSubscriptionRequest = { nil }
@@ -458,11 +623,22 @@ end
 -- Valid keys:
 -- @return DescribeSubscriptionRequest structure as a key-value pair table
 function M.DescribeSubscriptionRequest(args)
-	assert(args, "You must provdide an argument table when creating DescribeSubscriptionRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeSubscriptionRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertDescribeSubscriptionRequest(t)
-	return t
+	asserts.AssertDescribeSubscriptionRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Protection = { ["ResourceArn"] = true, ["Id"] = true, ["Name"] = true, nil }
@@ -487,14 +663,25 @@ end
 -- * Name [ProtectionName] <p>The friendly name of the protection. For example, <code>My CloudFront distributions</code>.</p>
 -- @return Protection structure as a key-value pair table
 function M.Protection(args)
-	assert(args, "You must provdide an argument table when creating Protection")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Protection")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ResourceArn"] = args["ResourceArn"],
 		["Id"] = args["Id"],
 		["Name"] = args["Name"],
 	}
-	asserts.AssertProtection(t)
-	return t
+	asserts.AssertProtection(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteSubscriptionResponse = { nil }
@@ -513,11 +700,22 @@ end
 -- Valid keys:
 -- @return DeleteSubscriptionResponse structure as a key-value pair table
 function M.DeleteSubscriptionResponse(args)
-	assert(args, "You must provdide an argument table when creating DeleteSubscriptionResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteSubscriptionResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertDeleteSubscriptionResponse(t)
-	return t
+	asserts.AssertDeleteSubscriptionResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateProtectionRequest = { ["ResourceArn"] = true, ["Name"] = true, nil }
@@ -544,13 +742,24 @@ end
 -- Required key: ResourceArn
 -- @return CreateProtectionRequest structure as a key-value pair table
 function M.CreateProtectionRequest(args)
-	assert(args, "You must provdide an argument table when creating CreateProtectionRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateProtectionRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ResourceArn"] = args["ResourceArn"],
 		["Name"] = args["Name"],
 	}
-	asserts.AssertCreateProtectionRequest(t)
-	return t
+	asserts.AssertCreateProtectionRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidOperationException = { ["message"] = true, nil }
@@ -571,12 +780,23 @@ end
 -- * message [errorMessage] 
 -- @return InvalidOperationException structure as a key-value pair table
 function M.InvalidOperationException(args)
-	assert(args, "You must provdide an argument table when creating InvalidOperationException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidOperationException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertInvalidOperationException(t)
-	return t
+	asserts.AssertInvalidOperationException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ResourceNotFoundException = { ["message"] = true, nil }
@@ -597,12 +817,23 @@ end
 -- * message [errorMessage] 
 -- @return ResourceNotFoundException structure as a key-value pair table
 function M.ResourceNotFoundException(args)
-	assert(args, "You must provdide an argument table when creating ResourceNotFoundException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ResourceNotFoundException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertResourceNotFoundException(t)
-	return t
+	asserts.AssertResourceNotFoundException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Subscription = { ["StartTime"] = true, ["TimeCommitmentInSeconds"] = true, nil }
@@ -625,13 +856,24 @@ end
 -- * TimeCommitmentInSeconds [DurationInSeconds] <p>The length, in seconds, of the AWS Shield Advanced subscription for the account.</p>
 -- @return Subscription structure as a key-value pair table
 function M.Subscription(args)
-	assert(args, "You must provdide an argument table when creating Subscription")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Subscription")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["StartTime"] = args["StartTime"],
 		["TimeCommitmentInSeconds"] = args["TimeCommitmentInSeconds"],
 	}
-	asserts.AssertSubscription(t)
-	return t
+	asserts.AssertSubscription(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.SubResourceSummary = { ["Counters"] = true, ["Type"] = true, ["Id"] = true, ["AttackVectors"] = true, nil }
@@ -658,15 +900,26 @@ end
 -- * AttackVectors [SummarizedAttackVectorList] <p>The list of attack types and associated counters.</p>
 -- @return SubResourceSummary structure as a key-value pair table
 function M.SubResourceSummary(args)
-	assert(args, "You must provdide an argument table when creating SubResourceSummary")
-	local t = { 
+	assert(args, "You must provide an argument table when creating SubResourceSummary")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Counters"] = args["Counters"],
 		["Type"] = args["Type"],
 		["Id"] = args["Id"],
 		["AttackVectors"] = args["AttackVectors"],
 	}
-	asserts.AssertSubResourceSummary(t)
-	return t
+	asserts.AssertSubResourceSummary(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AttackSummary = { ["EndTime"] = true, ["ResourceArn"] = true, ["AttackId"] = true, ["AttackVectors"] = true, ["StartTime"] = true, nil }
@@ -695,16 +948,27 @@ end
 -- * StartTime [AttackTimestamp] <p>The start time of the attack, in the format 2016-12-16T13:50Z.</p>
 -- @return AttackSummary structure as a key-value pair table
 function M.AttackSummary(args)
-	assert(args, "You must provdide an argument table when creating AttackSummary")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AttackSummary")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["EndTime"] = args["EndTime"],
 		["ResourceArn"] = args["ResourceArn"],
 		["AttackId"] = args["AttackId"],
 		["AttackVectors"] = args["AttackVectors"],
 		["StartTime"] = args["StartTime"],
 	}
-	asserts.AssertAttackSummary(t)
-	return t
+	asserts.AssertAttackSummary(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AttackDetail = { ["Mitigations"] = true, ["ResourceArn"] = true, ["AttackId"] = true, ["SubResources"] = true, ["StartTime"] = true, ["EndTime"] = true, ["AttackCounters"] = true, nil }
@@ -737,8 +1001,14 @@ end
 -- * AttackCounters [SummarizedCounterList] <p>List of counters that describe the attack for the specified time period.</p>
 -- @return AttackDetail structure as a key-value pair table
 function M.AttackDetail(args)
-	assert(args, "You must provdide an argument table when creating AttackDetail")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AttackDetail")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Mitigations"] = args["Mitigations"],
 		["ResourceArn"] = args["ResourceArn"],
 		["AttackId"] = args["AttackId"],
@@ -747,8 +1017,13 @@ function M.AttackDetail(args)
 		["EndTime"] = args["EndTime"],
 		["AttackCounters"] = args["AttackCounters"],
 	}
-	asserts.AssertAttackDetail(t)
-	return t
+	asserts.AssertAttackDetail(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.OptimisticLockException = { ["message"] = true, nil }
@@ -769,12 +1044,23 @@ end
 -- * message [errorMessage] 
 -- @return OptimisticLockException structure as a key-value pair table
 function M.OptimisticLockException(args)
-	assert(args, "You must provdide an argument table when creating OptimisticLockException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating OptimisticLockException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertOptimisticLockException(t)
-	return t
+	asserts.AssertOptimisticLockException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeAttackResponse = { ["Attack"] = true, nil }
@@ -795,12 +1081,23 @@ end
 -- * Attack [AttackDetail] <p>The attack that is described.</p>
 -- @return DescribeAttackResponse structure as a key-value pair table
 function M.DescribeAttackResponse(args)
-	assert(args, "You must provdide an argument table when creating DescribeAttackResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeAttackResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Attack"] = args["Attack"],
 	}
-	asserts.AssertDescribeAttackResponse(t)
-	return t
+	asserts.AssertDescribeAttackResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.SummarizedAttackVector = { ["VectorCounters"] = true, ["VectorType"] = true, nil }
@@ -825,13 +1122,24 @@ end
 -- Required key: VectorType
 -- @return SummarizedAttackVector structure as a key-value pair table
 function M.SummarizedAttackVector(args)
-	assert(args, "You must provdide an argument table when creating SummarizedAttackVector")
-	local t = { 
+	assert(args, "You must provide an argument table when creating SummarizedAttackVector")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["VectorCounters"] = args["VectorCounters"],
 		["VectorType"] = args["VectorType"],
 	}
-	asserts.AssertSummarizedAttackVector(t)
-	return t
+	asserts.AssertSummarizedAttackVector(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeProtectionResponse = { ["Protection"] = true, nil }
@@ -852,12 +1160,23 @@ end
 -- * Protection [Protection] <p>The <a>Protection</a> object that is described.</p>
 -- @return DescribeProtectionResponse structure as a key-value pair table
 function M.DescribeProtectionResponse(args)
-	assert(args, "You must provdide an argument table when creating DescribeProtectionResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeProtectionResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Protection"] = args["Protection"],
 	}
-	asserts.AssertDescribeProtectionResponse(t)
-	return t
+	asserts.AssertDescribeProtectionResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.SummarizedCounter = { ["Name"] = true, ["Max"] = true, ["Average"] = true, ["N"] = true, ["Sum"] = true, ["Unit"] = true, nil }
@@ -888,8 +1207,14 @@ end
 -- * Unit [String] <p>The unit of the counters.</p>
 -- @return SummarizedCounter structure as a key-value pair table
 function M.SummarizedCounter(args)
-	assert(args, "You must provdide an argument table when creating SummarizedCounter")
-	local t = { 
+	assert(args, "You must provide an argument table when creating SummarizedCounter")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Name"] = args["Name"],
 		["Max"] = args["Max"],
 		["Average"] = args["Average"],
@@ -897,8 +1222,13 @@ function M.SummarizedCounter(args)
 		["Sum"] = args["Sum"],
 		["Unit"] = args["Unit"],
 	}
-	asserts.AssertSummarizedCounter(t)
-	return t
+	asserts.AssertSummarizedCounter(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateSubscriptionRequest = { nil }
@@ -917,11 +1247,22 @@ end
 -- Valid keys:
 -- @return CreateSubscriptionRequest structure as a key-value pair table
 function M.CreateSubscriptionRequest(args)
-	assert(args, "You must provdide an argument table when creating CreateSubscriptionRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateSubscriptionRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertCreateSubscriptionRequest(t)
-	return t
+	asserts.AssertCreateSubscriptionRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidResourceException = { ["message"] = true, nil }
@@ -942,12 +1283,23 @@ end
 -- * message [errorMessage] 
 -- @return InvalidResourceException structure as a key-value pair table
 function M.InvalidResourceException(args)
-	assert(args, "You must provdide an argument table when creating InvalidResourceException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidResourceException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertInvalidResourceException(t)
-	return t
+	asserts.AssertInvalidResourceException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteProtectionResponse = { nil }
@@ -966,11 +1318,22 @@ end
 -- Valid keys:
 -- @return DeleteProtectionResponse structure as a key-value pair table
 function M.DeleteProtectionResponse(args)
-	assert(args, "You must provdide an argument table when creating DeleteProtectionResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteProtectionResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertDeleteProtectionResponse(t)
-	return t
+	asserts.AssertDeleteProtectionResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateSubscriptionResponse = { nil }
@@ -989,11 +1352,22 @@ end
 -- Valid keys:
 -- @return CreateSubscriptionResponse structure as a key-value pair table
 function M.CreateSubscriptionResponse(args)
-	assert(args, "You must provdide an argument table when creating CreateSubscriptionResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateSubscriptionResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertCreateSubscriptionResponse(t)
-	return t
+	asserts.AssertCreateSubscriptionResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeProtectionRequest = { ["ProtectionId"] = true, nil }
@@ -1016,12 +1390,23 @@ end
 -- Required key: ProtectionId
 -- @return DescribeProtectionRequest structure as a key-value pair table
 function M.DescribeProtectionRequest(args)
-	assert(args, "You must provdide an argument table when creating DescribeProtectionRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeProtectionRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ProtectionId"] = args["ProtectionId"],
 	}
-	asserts.AssertDescribeProtectionRequest(t)
-	return t
+	asserts.AssertDescribeProtectionRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AttackVectorDescription = { ["VectorType"] = true, nil }
@@ -1044,12 +1429,23 @@ end
 -- Required key: VectorType
 -- @return AttackVectorDescription structure as a key-value pair table
 function M.AttackVectorDescription(args)
-	assert(args, "You must provdide an argument table when creating AttackVectorDescription")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AttackVectorDescription")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["VectorType"] = args["VectorType"],
 	}
-	asserts.AssertAttackVectorDescription(t)
-	return t
+	asserts.AssertAttackVectorDescription(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ResourceAlreadyExistsException = { ["message"] = true, nil }
@@ -1070,12 +1466,23 @@ end
 -- * message [errorMessage] 
 -- @return ResourceAlreadyExistsException structure as a key-value pair table
 function M.ResourceAlreadyExistsException(args)
-	assert(args, "You must provdide an argument table when creating ResourceAlreadyExistsException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ResourceAlreadyExistsException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertResourceAlreadyExistsException(t)
-	return t
+	asserts.AssertResourceAlreadyExistsException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 function asserts.AssertProtectionId(str)
@@ -1432,8 +1839,11 @@ function M.DeleteProtectionAsync(DeleteProtectionRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AWSShield_20160616.DeleteProtection",
 	}
+	for header,value in pairs(DeleteProtectionRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteProtectionRequest, headers, settings, cb)
 	else
@@ -1464,8 +1874,11 @@ function M.DescribeSubscriptionAsync(DescribeSubscriptionRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AWSShield_20160616.DescribeSubscription",
 	}
+	for header,value in pairs(DescribeSubscriptionRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeSubscriptionRequest, headers, settings, cb)
 	else
@@ -1496,8 +1909,11 @@ function M.CreateSubscriptionAsync(CreateSubscriptionRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AWSShield_20160616.CreateSubscription",
 	}
+	for header,value in pairs(CreateSubscriptionRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateSubscriptionRequest, headers, settings, cb)
 	else
@@ -1528,8 +1944,11 @@ function M.DescribeProtectionAsync(DescribeProtectionRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AWSShield_20160616.DescribeProtection",
 	}
+	for header,value in pairs(DescribeProtectionRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeProtectionRequest, headers, settings, cb)
 	else
@@ -1560,8 +1979,11 @@ function M.DescribeAttackAsync(DescribeAttackRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AWSShield_20160616.DescribeAttack",
 	}
+	for header,value in pairs(DescribeAttackRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeAttackRequest, headers, settings, cb)
 	else
@@ -1592,8 +2014,11 @@ function M.DeleteSubscriptionAsync(DeleteSubscriptionRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AWSShield_20160616.DeleteSubscription",
 	}
+	for header,value in pairs(DeleteSubscriptionRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteSubscriptionRequest, headers, settings, cb)
 	else
@@ -1624,8 +2049,11 @@ function M.ListProtectionsAsync(ListProtectionsRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AWSShield_20160616.ListProtections",
 	}
+	for header,value in pairs(ListProtectionsRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ListProtectionsRequest, headers, settings, cb)
 	else
@@ -1656,8 +2084,11 @@ function M.ListAttacksAsync(ListAttacksRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AWSShield_20160616.ListAttacks",
 	}
+	for header,value in pairs(ListAttacksRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ListAttacksRequest, headers, settings, cb)
 	else
@@ -1688,8 +2119,11 @@ function M.CreateProtectionAsync(CreateProtectionRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AWSShield_20160616.CreateProtection",
 	}
+	for header,value in pairs(CreateProtectionRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateProtectionRequest, headers, settings, cb)
 	else

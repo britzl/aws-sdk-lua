@@ -39,12 +39,23 @@ end
 -- * message [ErrorMessage] <p>Too many operations for a given subscriber.</p>
 -- @return LimitExceededException structure as a key-value pair table
 function M.LimitExceededException(args)
-	assert(args, "You must provdide an argument table when creating LimitExceededException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating LimitExceededException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertLimitExceededException(t)
-	return t
+	asserts.AssertLimitExceededException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.SequenceNumberRange = { ["EndingSequenceNumber"] = true, ["StartingSequenceNumber"] = true, nil }
@@ -67,13 +78,24 @@ end
 -- * StartingSequenceNumber [SequenceNumber] <p>The first sequence number.</p>
 -- @return SequenceNumberRange structure as a key-value pair table
 function M.SequenceNumberRange(args)
-	assert(args, "You must provdide an argument table when creating SequenceNumberRange")
-	local t = { 
+	assert(args, "You must provide an argument table when creating SequenceNumberRange")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["EndingSequenceNumber"] = args["EndingSequenceNumber"],
 		["StartingSequenceNumber"] = args["StartingSequenceNumber"],
 	}
-	asserts.AssertSequenceNumberRange(t)
-	return t
+	asserts.AssertSequenceNumberRange(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListStreamsInput = { ["Limit"] = true, ["TableName"] = true, ["ExclusiveStartStreamArn"] = true, nil }
@@ -98,14 +120,25 @@ end
 -- * ExclusiveStartStreamArn [StreamArn] <p>The ARN (Amazon Resource Name) of the first item that this operation will evaluate. Use the value that was returned for <code>LastEvaluatedStreamArn</code> in the previous operation. </p>
 -- @return ListStreamsInput structure as a key-value pair table
 function M.ListStreamsInput(args)
-	assert(args, "You must provdide an argument table when creating ListStreamsInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListStreamsInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Limit"] = args["Limit"],
 		["TableName"] = args["TableName"],
 		["ExclusiveStartStreamArn"] = args["ExclusiveStartStreamArn"],
 	}
-	asserts.AssertListStreamsInput(t)
-	return t
+	asserts.AssertListStreamsInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.KeySchemaElement = { ["KeyType"] = true, ["AttributeName"] = true, nil }
@@ -132,13 +165,24 @@ end
 -- Required key: KeyType
 -- @return KeySchemaElement structure as a key-value pair table
 function M.KeySchemaElement(args)
-	assert(args, "You must provdide an argument table when creating KeySchemaElement")
-	local t = { 
+	assert(args, "You must provide an argument table when creating KeySchemaElement")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["KeyType"] = args["KeyType"],
 		["AttributeName"] = args["AttributeName"],
 	}
-	asserts.AssertKeySchemaElement(t)
-	return t
+	asserts.AssertKeySchemaElement(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Identity = { ["Type"] = true, ["PrincipalId"] = true, nil }
@@ -161,13 +205,24 @@ end
 -- * PrincipalId [String] <p>A unique identifier for the entity that made the call. For Time To Live, the principalId is "dynamodb.amazonaws.com".</p>
 -- @return Identity structure as a key-value pair table
 function M.Identity(args)
-	assert(args, "You must provdide an argument table when creating Identity")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Identity")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Type"] = args["Type"],
 		["PrincipalId"] = args["PrincipalId"],
 	}
-	asserts.AssertIdentity(t)
-	return t
+	asserts.AssertIdentity(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Shard = { ["ShardId"] = true, ["ParentShardId"] = true, ["SequenceNumberRange"] = true, nil }
@@ -192,14 +247,25 @@ end
 -- * SequenceNumberRange [SequenceNumberRange] <p>The range of possible sequence numbers for the shard.</p>
 -- @return Shard structure as a key-value pair table
 function M.Shard(args)
-	assert(args, "You must provdide an argument table when creating Shard")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Shard")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ShardId"] = args["ShardId"],
 		["ParentShardId"] = args["ParentShardId"],
 		["SequenceNumberRange"] = args["SequenceNumberRange"],
 	}
-	asserts.AssertShard(t)
-	return t
+	asserts.AssertShard(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetShardIteratorInput = { ["ShardId"] = true, ["StreamArn"] = true, ["SequenceNumber"] = true, ["ShardIteratorType"] = true, nil }
@@ -232,15 +298,26 @@ end
 -- Required key: ShardIteratorType
 -- @return GetShardIteratorInput structure as a key-value pair table
 function M.GetShardIteratorInput(args)
-	assert(args, "You must provdide an argument table when creating GetShardIteratorInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetShardIteratorInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ShardId"] = args["ShardId"],
 		["StreamArn"] = args["StreamArn"],
 		["SequenceNumber"] = args["SequenceNumber"],
 		["ShardIteratorType"] = args["ShardIteratorType"],
 	}
-	asserts.AssertGetShardIteratorInput(t)
-	return t
+	asserts.AssertGetShardIteratorInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ExpiredIteratorException = { ["message"] = true, nil }
@@ -261,12 +338,23 @@ end
 -- * message [ErrorMessage] <p>The provided iterator exceeds the maximum age allowed.</p>
 -- @return ExpiredIteratorException structure as a key-value pair table
 function M.ExpiredIteratorException(args)
-	assert(args, "You must provdide an argument table when creating ExpiredIteratorException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ExpiredIteratorException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertExpiredIteratorException(t)
-	return t
+	asserts.AssertExpiredIteratorException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetShardIteratorOutput = { ["ShardIterator"] = true, nil }
@@ -287,12 +375,23 @@ end
 -- * ShardIterator [ShardIterator] <p>The position in the shard from which to start reading stream records sequentially. A shard iterator specifies this position using the sequence number of a stream record in a shard.</p>
 -- @return GetShardIteratorOutput structure as a key-value pair table
 function M.GetShardIteratorOutput(args)
-	assert(args, "You must provdide an argument table when creating GetShardIteratorOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetShardIteratorOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ShardIterator"] = args["ShardIterator"],
 	}
-	asserts.AssertGetShardIteratorOutput(t)
-	return t
+	asserts.AssertGetShardIteratorOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeStreamOutput = { ["StreamDescription"] = true, nil }
@@ -313,12 +412,23 @@ end
 -- * StreamDescription [StreamDescription] <p>A complete description of the stream, including its creation date and time, the DynamoDB table associated with the stream, the shard IDs within the stream, and the beginning and ending sequence numbers of stream records within the shards.</p>
 -- @return DescribeStreamOutput structure as a key-value pair table
 function M.DescribeStreamOutput(args)
-	assert(args, "You must provdide an argument table when creating DescribeStreamOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeStreamOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["StreamDescription"] = args["StreamDescription"],
 	}
-	asserts.AssertDescribeStreamOutput(t)
-	return t
+	asserts.AssertDescribeStreamOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Record = { ["eventID"] = true, ["eventVersion"] = true, ["dynamodb"] = true, ["awsRegion"] = true, ["eventName"] = true, ["userIdentity"] = true, ["eventSource"] = true, nil }
@@ -351,8 +461,14 @@ end
 -- * eventSource [String] <p>The AWS service from which the stream record originated. For DynamoDB Streams, this is <code>aws:dynamodb</code>.</p>
 -- @return Record structure as a key-value pair table
 function M.Record(args)
-	assert(args, "You must provdide an argument table when creating Record")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Record")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["eventID"] = args["eventID"],
 		["eventVersion"] = args["eventVersion"],
 		["dynamodb"] = args["dynamodb"],
@@ -361,8 +477,13 @@ function M.Record(args)
 		["userIdentity"] = args["userIdentity"],
 		["eventSource"] = args["eventSource"],
 	}
-	asserts.AssertRecord(t)
-	return t
+	asserts.AssertRecord(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InternalServerError = { ["message"] = true, nil }
@@ -383,12 +504,23 @@ end
 -- * message [ErrorMessage] <p>The server encountered an internal error trying to fulfill the request.</p>
 -- @return InternalServerError structure as a key-value pair table
 function M.InternalServerError(args)
-	assert(args, "You must provdide an argument table when creating InternalServerError")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InternalServerError")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertInternalServerError(t)
-	return t
+	asserts.AssertInternalServerError(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetRecordsInput = { ["ShardIterator"] = true, ["Limit"] = true, nil }
@@ -413,13 +545,24 @@ end
 -- Required key: ShardIterator
 -- @return GetRecordsInput structure as a key-value pair table
 function M.GetRecordsInput(args)
-	assert(args, "You must provdide an argument table when creating GetRecordsInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetRecordsInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ShardIterator"] = args["ShardIterator"],
 		["Limit"] = args["Limit"],
 	}
-	asserts.AssertGetRecordsInput(t)
-	return t
+	asserts.AssertGetRecordsInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.StreamDescription = { ["StreamLabel"] = true, ["StreamStatus"] = true, ["TableName"] = true, ["Shards"] = true, ["CreationRequestDateTime"] = true, ["StreamArn"] = true, ["LastEvaluatedShardId"] = true, ["KeySchema"] = true, ["StreamViewType"] = true, nil }
@@ -456,8 +599,14 @@ end
 -- * StreamViewType [StreamViewType] <p>Indicates the format of the records within this stream:</p> <ul> <li> <p> <code>KEYS_ONLY</code> - only the key attributes of items that were modified in the DynamoDB table.</p> </li> <li> <p> <code>NEW_IMAGE</code> - entire items from the table, as they appeared after they were modified.</p> </li> <li> <p> <code>OLD_IMAGE</code> - entire items from the table, as they appeared before they were modified.</p> </li> <li> <p> <code>NEW_AND_OLD_IMAGES</code> - both the new and the old images of the items from the table.</p> </li> </ul>
 -- @return StreamDescription structure as a key-value pair table
 function M.StreamDescription(args)
-	assert(args, "You must provdide an argument table when creating StreamDescription")
-	local t = { 
+	assert(args, "You must provide an argument table when creating StreamDescription")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["StreamLabel"] = args["StreamLabel"],
 		["StreamStatus"] = args["StreamStatus"],
 		["TableName"] = args["TableName"],
@@ -468,8 +617,13 @@ function M.StreamDescription(args)
 		["KeySchema"] = args["KeySchema"],
 		["StreamViewType"] = args["StreamViewType"],
 	}
-	asserts.AssertStreamDescription(t)
-	return t
+	asserts.AssertStreamDescription(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AttributeValue = { ["B"] = true, ["NULL"] = true, ["SS"] = true, ["M"] = true, ["L"] = true, ["N"] = true, ["S"] = true, ["BOOL"] = true, ["BS"] = true, ["NS"] = true, nil }
@@ -508,8 +662,14 @@ end
 -- * NS [NumberSetAttributeValue] <p>A Number Set data type.</p>
 -- @return AttributeValue structure as a key-value pair table
 function M.AttributeValue(args)
-	assert(args, "You must provdide an argument table when creating AttributeValue")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AttributeValue")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["B"] = args["B"],
 		["NULL"] = args["NULL"],
 		["SS"] = args["SS"],
@@ -521,8 +681,13 @@ function M.AttributeValue(args)
 		["BS"] = args["BS"],
 		["NS"] = args["NS"],
 	}
-	asserts.AssertAttributeValue(t)
-	return t
+	asserts.AssertAttributeValue(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Stream = { ["TableName"] = true, ["StreamArn"] = true, ["StreamLabel"] = true, nil }
@@ -547,14 +712,25 @@ end
 -- * StreamLabel [String] <p>A timestamp, in ISO 8601 format, for this stream.</p> <p>Note that <code>LatestStreamLabel</code> is not a unique identifier for the stream, because it is possible that a stream from another table might have the same timestamp. However, the combination of the following three elements is guaranteed to be unique:</p> <ul> <li> <p>the AWS customer ID.</p> </li> <li> <p>the table name</p> </li> <li> <p>the <code>StreamLabel</code> </p> </li> </ul>
 -- @return Stream structure as a key-value pair table
 function M.Stream(args)
-	assert(args, "You must provdide an argument table when creating Stream")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Stream")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["TableName"] = args["TableName"],
 		["StreamArn"] = args["StreamArn"],
 		["StreamLabel"] = args["StreamLabel"],
 	}
-	asserts.AssertStream(t)
-	return t
+	asserts.AssertStream(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListStreamsOutput = { ["LastEvaluatedStreamArn"] = true, ["Streams"] = true, nil }
@@ -577,13 +753,24 @@ end
 -- * Streams [StreamList] <p>A list of stream descriptors associated with the current account and endpoint.</p>
 -- @return ListStreamsOutput structure as a key-value pair table
 function M.ListStreamsOutput(args)
-	assert(args, "You must provdide an argument table when creating ListStreamsOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListStreamsOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["LastEvaluatedStreamArn"] = args["LastEvaluatedStreamArn"],
 		["Streams"] = args["Streams"],
 	}
-	asserts.AssertListStreamsOutput(t)
-	return t
+	asserts.AssertListStreamsOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetRecordsOutput = { ["Records"] = true, ["NextShardIterator"] = true, nil }
@@ -606,13 +793,24 @@ end
 -- * NextShardIterator [ShardIterator] <p>The next position in the shard from which to start sequentially reading stream records. If set to <code>null</code>, the shard has been closed and the requested iterator will not return any more data.</p>
 -- @return GetRecordsOutput structure as a key-value pair table
 function M.GetRecordsOutput(args)
-	assert(args, "You must provdide an argument table when creating GetRecordsOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetRecordsOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Records"] = args["Records"],
 		["NextShardIterator"] = args["NextShardIterator"],
 	}
-	asserts.AssertGetRecordsOutput(t)
-	return t
+	asserts.AssertGetRecordsOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.TrimmedDataAccessException = { ["message"] = true, nil }
@@ -633,12 +831,23 @@ end
 -- * message [ErrorMessage] <p>"The data you are trying to access has been trimmed.</p>
 -- @return TrimmedDataAccessException structure as a key-value pair table
 function M.TrimmedDataAccessException(args)
-	assert(args, "You must provdide an argument table when creating TrimmedDataAccessException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating TrimmedDataAccessException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertTrimmedDataAccessException(t)
-	return t
+	asserts.AssertTrimmedDataAccessException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ResourceNotFoundException = { ["message"] = true, nil }
@@ -659,12 +868,23 @@ end
 -- * message [ErrorMessage] <p>The resource which is being requested does not exist.</p>
 -- @return ResourceNotFoundException structure as a key-value pair table
 function M.ResourceNotFoundException(args)
-	assert(args, "You must provdide an argument table when creating ResourceNotFoundException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ResourceNotFoundException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertResourceNotFoundException(t)
-	return t
+	asserts.AssertResourceNotFoundException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.StreamRecord = { ["OldImage"] = true, ["SequenceNumber"] = true, ["Keys"] = true, ["SizeBytes"] = true, ["NewImage"] = true, ["ApproximateCreationDateTime"] = true, ["StreamViewType"] = true, nil }
@@ -697,8 +917,14 @@ end
 -- * StreamViewType [StreamViewType] <p>The type of data from the modified DynamoDB item that was captured in this stream record:</p> <ul> <li> <p> <code>KEYS_ONLY</code> - only the key attributes of the modified item.</p> </li> <li> <p> <code>NEW_IMAGE</code> - the entire item, as it appeared after it was modified.</p> </li> <li> <p> <code>OLD_IMAGE</code> - the entire item, as it appeared before it was modified.</p> </li> <li> <p> <code>NEW_AND_OLD_IMAGES</code> - both the new and the old item images of the item.</p> </li> </ul>
 -- @return StreamRecord structure as a key-value pair table
 function M.StreamRecord(args)
-	assert(args, "You must provdide an argument table when creating StreamRecord")
-	local t = { 
+	assert(args, "You must provide an argument table when creating StreamRecord")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["OldImage"] = args["OldImage"],
 		["SequenceNumber"] = args["SequenceNumber"],
 		["Keys"] = args["Keys"],
@@ -707,8 +933,13 @@ function M.StreamRecord(args)
 		["ApproximateCreationDateTime"] = args["ApproximateCreationDateTime"],
 		["StreamViewType"] = args["StreamViewType"],
 	}
-	asserts.AssertStreamRecord(t)
-	return t
+	asserts.AssertStreamRecord(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeStreamInput = { ["Limit"] = true, ["StreamArn"] = true, ["ExclusiveStartShardId"] = true, nil }
@@ -735,14 +966,25 @@ end
 -- Required key: StreamArn
 -- @return DescribeStreamInput structure as a key-value pair table
 function M.DescribeStreamInput(args)
-	assert(args, "You must provdide an argument table when creating DescribeStreamInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeStreamInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Limit"] = args["Limit"],
 		["StreamArn"] = args["StreamArn"],
 		["ExclusiveStartShardId"] = args["ExclusiveStartShardId"],
 	}
-	asserts.AssertDescribeStreamInput(t)
-	return t
+	asserts.AssertDescribeStreamInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 function asserts.AssertTableName(str)
@@ -1199,8 +1441,11 @@ function M.GetRecordsAsync(GetRecordsInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "DynamoDBStreams_20120810.GetRecords",
 	}
+	for header,value in pairs(GetRecordsInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", GetRecordsInput, headers, settings, cb)
 	else
@@ -1231,8 +1476,11 @@ function M.ListStreamsAsync(ListStreamsInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "DynamoDBStreams_20120810.ListStreams",
 	}
+	for header,value in pairs(ListStreamsInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ListStreamsInput, headers, settings, cb)
 	else
@@ -1263,8 +1511,11 @@ function M.GetShardIteratorAsync(GetShardIteratorInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "DynamoDBStreams_20120810.GetShardIterator",
 	}
+	for header,value in pairs(GetShardIteratorInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", GetShardIteratorInput, headers, settings, cb)
 	else
@@ -1295,8 +1546,11 @@ function M.DescribeStreamAsync(DescribeStreamInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "DynamoDBStreams_20120810.DescribeStream",
 	}
+	for header,value in pairs(DescribeStreamInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeStreamInput, headers, settings, cb)
 	else

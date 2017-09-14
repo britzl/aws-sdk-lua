@@ -39,12 +39,23 @@ end
 -- * message [String] 
 -- @return LimitExceededException structure as a key-value pair table
 function M.LimitExceededException(args)
-	assert(args, "You must provdide an argument table when creating LimitExceededException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating LimitExceededException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertLimitExceededException(t)
-	return t
+	asserts.AssertLimitExceededException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteCertificateRequest = { ["CertificateArn"] = true, nil }
@@ -67,12 +78,23 @@ end
 -- Required key: CertificateArn
 -- @return DeleteCertificateRequest structure as a key-value pair table
 function M.DeleteCertificateRequest(args)
-	assert(args, "You must provdide an argument table when creating DeleteCertificateRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteCertificateRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["CertificateArn"] = args["CertificateArn"],
 	}
-	asserts.AssertDeleteCertificateRequest(t)
-	return t
+	asserts.AssertDeleteCertificateRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetCertificateResponse = { ["CertificateChain"] = true, ["Certificate"] = true, nil }
@@ -95,13 +117,24 @@ end
 -- * Certificate [CertificateBody] <p>String that contains the ACM Certificate represented by the ARN specified at input.</p>
 -- @return GetCertificateResponse structure as a key-value pair table
 function M.GetCertificateResponse(args)
-	assert(args, "You must provdide an argument table when creating GetCertificateResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetCertificateResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["CertificateChain"] = args["CertificateChain"],
 		["Certificate"] = args["Certificate"],
 	}
-	asserts.AssertGetCertificateResponse(t)
-	return t
+	asserts.AssertGetCertificateResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CertificateSummary = { ["CertificateArn"] = true, ["DomainName"] = true, nil }
@@ -124,13 +157,24 @@ end
 -- * DomainName [DomainNameString] <p>Fully qualified domain name (FQDN), such as www.example.com or example.com, for the certificate.</p>
 -- @return CertificateSummary structure as a key-value pair table
 function M.CertificateSummary(args)
-	assert(args, "You must provdide an argument table when creating CertificateSummary")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CertificateSummary")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["CertificateArn"] = args["CertificateArn"],
 		["DomainName"] = args["DomainName"],
 	}
-	asserts.AssertCertificateSummary(t)
-	return t
+	asserts.AssertCertificateSummary(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.TooManyTagsException = { ["message"] = true, nil }
@@ -151,12 +195,23 @@ end
 -- * message [String] 
 -- @return TooManyTagsException structure as a key-value pair table
 function M.TooManyTagsException(args)
-	assert(args, "You must provdide an argument table when creating TooManyTagsException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating TooManyTagsException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertTooManyTagsException(t)
-	return t
+	asserts.AssertTooManyTagsException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListCertificatesRequest = { ["NextToken"] = true, ["CertificateStatuses"] = true, ["MaxItems"] = true, nil }
@@ -181,14 +236,25 @@ end
 -- * MaxItems [MaxItems] <p>Use this parameter when paginating results to specify the maximum number of items to return in the response. If additional items exist beyond the number you specify, the <code>NextToken</code> element is sent in the response. Use this <code>NextToken</code> value in a subsequent request to retrieve additional items.</p>
 -- @return ListCertificatesRequest structure as a key-value pair table
 function M.ListCertificatesRequest(args)
-	assert(args, "You must provdide an argument table when creating ListCertificatesRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListCertificatesRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NextToken"] = args["NextToken"],
 		["CertificateStatuses"] = args["CertificateStatuses"],
 		["MaxItems"] = args["MaxItems"],
 	}
-	asserts.AssertListCertificatesRequest(t)
-	return t
+	asserts.AssertListCertificatesRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.RemoveTagsFromCertificateRequest = { ["CertificateArn"] = true, ["Tags"] = true, nil }
@@ -215,13 +281,24 @@ end
 -- Required key: Tags
 -- @return RemoveTagsFromCertificateRequest structure as a key-value pair table
 function M.RemoveTagsFromCertificateRequest(args)
-	assert(args, "You must provdide an argument table when creating RemoveTagsFromCertificateRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating RemoveTagsFromCertificateRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["CertificateArn"] = args["CertificateArn"],
 		["Tags"] = args["Tags"],
 	}
-	asserts.AssertRemoveTagsFromCertificateRequest(t)
-	return t
+	asserts.AssertRemoveTagsFromCertificateRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeCertificateResponse = { ["Certificate"] = true, nil }
@@ -242,12 +319,23 @@ end
 -- * Certificate [CertificateDetail] <p>Metadata about an ACM certificate.</p>
 -- @return DescribeCertificateResponse structure as a key-value pair table
 function M.DescribeCertificateResponse(args)
-	assert(args, "You must provdide an argument table when creating DescribeCertificateResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeCertificateResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Certificate"] = args["Certificate"],
 	}
-	asserts.AssertDescribeCertificateResponse(t)
-	return t
+	asserts.AssertDescribeCertificateResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.RequestCertificateRequest = { ["IdempotencyToken"] = true, ["SubjectAlternativeNames"] = true, ["DomainValidationOptions"] = true, ["DomainName"] = true, nil }
@@ -276,15 +364,26 @@ end
 -- Required key: DomainName
 -- @return RequestCertificateRequest structure as a key-value pair table
 function M.RequestCertificateRequest(args)
-	assert(args, "You must provdide an argument table when creating RequestCertificateRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating RequestCertificateRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["IdempotencyToken"] = args["IdempotencyToken"],
 		["SubjectAlternativeNames"] = args["SubjectAlternativeNames"],
 		["DomainValidationOptions"] = args["DomainValidationOptions"],
 		["DomainName"] = args["DomainName"],
 	}
-	asserts.AssertRequestCertificateRequest(t)
-	return t
+	asserts.AssertRequestCertificateRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DomainValidation = { ["ValidationEmails"] = true, ["ValidationStatus"] = true, ["ValidationDomain"] = true, ["DomainName"] = true, nil }
@@ -313,15 +412,26 @@ end
 -- Required key: DomainName
 -- @return DomainValidation structure as a key-value pair table
 function M.DomainValidation(args)
-	assert(args, "You must provdide an argument table when creating DomainValidation")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DomainValidation")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ValidationEmails"] = args["ValidationEmails"],
 		["ValidationStatus"] = args["ValidationStatus"],
 		["ValidationDomain"] = args["ValidationDomain"],
 		["DomainName"] = args["DomainName"],
 	}
-	asserts.AssertDomainValidation(t)
-	return t
+	asserts.AssertDomainValidation(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListTagsForCertificateResponse = { ["Tags"] = true, nil }
@@ -342,12 +452,23 @@ end
 -- * Tags [TagList] <p>The key-value pairs that define the applied tags.</p>
 -- @return ListTagsForCertificateResponse structure as a key-value pair table
 function M.ListTagsForCertificateResponse(args)
-	assert(args, "You must provdide an argument table when creating ListTagsForCertificateResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListTagsForCertificateResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Tags"] = args["Tags"],
 	}
-	asserts.AssertListTagsForCertificateResponse(t)
-	return t
+	asserts.AssertListTagsForCertificateResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ResourceInUseException = { ["message"] = true, nil }
@@ -368,12 +489,23 @@ end
 -- * message [String] 
 -- @return ResourceInUseException structure as a key-value pair table
 function M.ResourceInUseException(args)
-	assert(args, "You must provdide an argument table when creating ResourceInUseException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ResourceInUseException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertResourceInUseException(t)
-	return t
+	asserts.AssertResourceInUseException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListCertificatesResponse = { ["CertificateSummaryList"] = true, ["NextToken"] = true, nil }
@@ -396,13 +528,24 @@ end
 -- * NextToken [NextToken] <p>When the list is truncated, this value is present and contains the value to use for the <code>NextToken</code> parameter in a subsequent pagination request.</p>
 -- @return ListCertificatesResponse structure as a key-value pair table
 function M.ListCertificatesResponse(args)
-	assert(args, "You must provdide an argument table when creating ListCertificatesResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListCertificatesResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["CertificateSummaryList"] = args["CertificateSummaryList"],
 		["NextToken"] = args["NextToken"],
 	}
-	asserts.AssertListCertificatesResponse(t)
-	return t
+	asserts.AssertListCertificatesResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidTagException = { ["message"] = true, nil }
@@ -423,12 +566,23 @@ end
 -- * message [String] 
 -- @return InvalidTagException structure as a key-value pair table
 function M.InvalidTagException(args)
-	assert(args, "You must provdide an argument table when creating InvalidTagException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidTagException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertInvalidTagException(t)
-	return t
+	asserts.AssertInvalidTagException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Tag = { ["Value"] = true, ["Key"] = true, nil }
@@ -453,13 +607,24 @@ end
 -- Required key: Key
 -- @return Tag structure as a key-value pair table
 function M.Tag(args)
-	assert(args, "You must provdide an argument table when creating Tag")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Tag")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Value"] = args["Value"],
 		["Key"] = args["Key"],
 	}
-	asserts.AssertTag(t)
-	return t
+	asserts.AssertTag(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ImportCertificateRequest = { ["CertificateArn"] = true, ["CertificateChain"] = true, ["PrivateKey"] = true, ["Certificate"] = true, nil }
@@ -490,15 +655,26 @@ end
 -- Required key: PrivateKey
 -- @return ImportCertificateRequest structure as a key-value pair table
 function M.ImportCertificateRequest(args)
-	assert(args, "You must provdide an argument table when creating ImportCertificateRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ImportCertificateRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["CertificateArn"] = args["CertificateArn"],
 		["CertificateChain"] = args["CertificateChain"],
 		["PrivateKey"] = args["PrivateKey"],
 		["Certificate"] = args["Certificate"],
 	}
-	asserts.AssertImportCertificateRequest(t)
-	return t
+	asserts.AssertImportCertificateRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.RequestInProgressException = { ["message"] = true, nil }
@@ -519,12 +695,23 @@ end
 -- * message [String] 
 -- @return RequestInProgressException structure as a key-value pair table
 function M.RequestInProgressException(args)
-	assert(args, "You must provdide an argument table when creating RequestInProgressException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating RequestInProgressException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertRequestInProgressException(t)
-	return t
+	asserts.AssertRequestInProgressException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ImportCertificateResponse = { ["CertificateArn"] = true, nil }
@@ -545,12 +732,23 @@ end
 -- * CertificateArn [Arn] <p>The <a href="http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html">Amazon Resource Name (ARN)</a> of the imported certificate.</p>
 -- @return ImportCertificateResponse structure as a key-value pair table
 function M.ImportCertificateResponse(args)
-	assert(args, "You must provdide an argument table when creating ImportCertificateResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ImportCertificateResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["CertificateArn"] = args["CertificateArn"],
 	}
-	asserts.AssertImportCertificateResponse(t)
-	return t
+	asserts.AssertImportCertificateResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeCertificateRequest = { ["CertificateArn"] = true, nil }
@@ -573,12 +771,23 @@ end
 -- Required key: CertificateArn
 -- @return DescribeCertificateRequest structure as a key-value pair table
 function M.DescribeCertificateRequest(args)
-	assert(args, "You must provdide an argument table when creating DescribeCertificateRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeCertificateRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["CertificateArn"] = args["CertificateArn"],
 	}
-	asserts.AssertDescribeCertificateRequest(t)
-	return t
+	asserts.AssertDescribeCertificateRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DomainValidationOption = { ["ValidationDomain"] = true, ["DomainName"] = true, nil }
@@ -605,13 +814,24 @@ end
 -- Required key: ValidationDomain
 -- @return DomainValidationOption structure as a key-value pair table
 function M.DomainValidationOption(args)
-	assert(args, "You must provdide an argument table when creating DomainValidationOption")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DomainValidationOption")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ValidationDomain"] = args["ValidationDomain"],
 		["DomainName"] = args["DomainName"],
 	}
-	asserts.AssertDomainValidationOption(t)
-	return t
+	asserts.AssertDomainValidationOption(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ResendValidationEmailRequest = { ["CertificateArn"] = true, ["Domain"] = true, ["ValidationDomain"] = true, nil }
@@ -642,14 +862,25 @@ end
 -- Required key: ValidationDomain
 -- @return ResendValidationEmailRequest structure as a key-value pair table
 function M.ResendValidationEmailRequest(args)
-	assert(args, "You must provdide an argument table when creating ResendValidationEmailRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ResendValidationEmailRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["CertificateArn"] = args["CertificateArn"],
 		["Domain"] = args["Domain"],
 		["ValidationDomain"] = args["ValidationDomain"],
 	}
-	asserts.AssertResendValidationEmailRequest(t)
-	return t
+	asserts.AssertResendValidationEmailRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidArnException = { ["message"] = true, nil }
@@ -670,12 +901,23 @@ end
 -- * message [String] 
 -- @return InvalidArnException structure as a key-value pair table
 function M.InvalidArnException(args)
-	assert(args, "You must provdide an argument table when creating InvalidArnException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidArnException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertInvalidArnException(t)
-	return t
+	asserts.AssertInvalidArnException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.RenewalSummary = { ["RenewalStatus"] = true, ["DomainValidationOptions"] = true, nil }
@@ -702,13 +944,24 @@ end
 -- Required key: DomainValidationOptions
 -- @return RenewalSummary structure as a key-value pair table
 function M.RenewalSummary(args)
-	assert(args, "You must provdide an argument table when creating RenewalSummary")
-	local t = { 
+	assert(args, "You must provide an argument table when creating RenewalSummary")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["RenewalStatus"] = args["RenewalStatus"],
 		["DomainValidationOptions"] = args["DomainValidationOptions"],
 	}
-	asserts.AssertRenewalSummary(t)
-	return t
+	asserts.AssertRenewalSummary(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListTagsForCertificateRequest = { ["CertificateArn"] = true, nil }
@@ -731,12 +984,23 @@ end
 -- Required key: CertificateArn
 -- @return ListTagsForCertificateRequest structure as a key-value pair table
 function M.ListTagsForCertificateRequest(args)
-	assert(args, "You must provdide an argument table when creating ListTagsForCertificateRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListTagsForCertificateRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["CertificateArn"] = args["CertificateArn"],
 	}
-	asserts.AssertListTagsForCertificateRequest(t)
-	return t
+	asserts.AssertListTagsForCertificateRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.RequestCertificateResponse = { ["CertificateArn"] = true, nil }
@@ -757,12 +1021,23 @@ end
 -- * CertificateArn [Arn] <p>String that contains the ARN of the issued certificate. This must be of the form:</p> <p> <code>arn:aws:acm:us-east-1:123456789012:certificate/12345678-1234-1234-1234-123456789012</code> </p>
 -- @return RequestCertificateResponse structure as a key-value pair table
 function M.RequestCertificateResponse(args)
-	assert(args, "You must provdide an argument table when creating RequestCertificateResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating RequestCertificateResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["CertificateArn"] = args["CertificateArn"],
 	}
-	asserts.AssertRequestCertificateResponse(t)
-	return t
+	asserts.AssertRequestCertificateResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AddTagsToCertificateRequest = { ["CertificateArn"] = true, ["Tags"] = true, nil }
@@ -789,13 +1064,24 @@ end
 -- Required key: Tags
 -- @return AddTagsToCertificateRequest structure as a key-value pair table
 function M.AddTagsToCertificateRequest(args)
-	assert(args, "You must provdide an argument table when creating AddTagsToCertificateRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AddTagsToCertificateRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["CertificateArn"] = args["CertificateArn"],
 		["Tags"] = args["Tags"],
 	}
-	asserts.AssertAddTagsToCertificateRequest(t)
-	return t
+	asserts.AssertAddTagsToCertificateRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidDomainValidationOptionsException = { ["message"] = true, nil }
@@ -816,12 +1102,23 @@ end
 -- * message [String] 
 -- @return InvalidDomainValidationOptionsException structure as a key-value pair table
 function M.InvalidDomainValidationOptionsException(args)
-	assert(args, "You must provdide an argument table when creating InvalidDomainValidationOptionsException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidDomainValidationOptionsException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertInvalidDomainValidationOptionsException(t)
-	return t
+	asserts.AssertInvalidDomainValidationOptionsException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetCertificateRequest = { ["CertificateArn"] = true, nil }
@@ -844,12 +1141,23 @@ end
 -- Required key: CertificateArn
 -- @return GetCertificateRequest structure as a key-value pair table
 function M.GetCertificateRequest(args)
-	assert(args, "You must provdide an argument table when creating GetCertificateRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetCertificateRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["CertificateArn"] = args["CertificateArn"],
 	}
-	asserts.AssertGetCertificateRequest(t)
-	return t
+	asserts.AssertGetCertificateRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CertificateDetail = { ["CertificateArn"] = true, ["Status"] = true, ["SubjectAlternativeNames"] = true, ["RenewalSummary"] = true, ["DomainName"] = true, ["RevokedAt"] = true, ["Type"] = true, ["NotBefore"] = true, ["KeyAlgorithm"] = true, ["NotAfter"] = true, ["ImportedAt"] = true, ["InUseBy"] = true, ["SignatureAlgorithm"] = true, ["CreatedAt"] = true, ["IssuedAt"] = true, ["Serial"] = true, ["Issuer"] = true, ["RevocationReason"] = true, ["FailureReason"] = true, ["DomainValidationOptions"] = true, ["Subject"] = true, nil }
@@ -910,8 +1218,14 @@ end
 -- * Subject [String] <p>The name of the entity that is associated with the public key contained in the certificate.</p>
 -- @return CertificateDetail structure as a key-value pair table
 function M.CertificateDetail(args)
-	assert(args, "You must provdide an argument table when creating CertificateDetail")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CertificateDetail")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["CertificateArn"] = args["CertificateArn"],
 		["Status"] = args["Status"],
 		["SubjectAlternativeNames"] = args["SubjectAlternativeNames"],
@@ -934,8 +1248,13 @@ function M.CertificateDetail(args)
 		["DomainValidationOptions"] = args["DomainValidationOptions"],
 		["Subject"] = args["Subject"],
 	}
-	asserts.AssertCertificateDetail(t)
-	return t
+	asserts.AssertCertificateDetail(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidStateException = { ["message"] = true, nil }
@@ -956,12 +1275,23 @@ end
 -- * message [String] 
 -- @return InvalidStateException structure as a key-value pair table
 function M.InvalidStateException(args)
-	assert(args, "You must provdide an argument table when creating InvalidStateException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidStateException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertInvalidStateException(t)
-	return t
+	asserts.AssertInvalidStateException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ResourceNotFoundException = { ["message"] = true, nil }
@@ -982,12 +1312,23 @@ end
 -- * message [String] 
 -- @return ResourceNotFoundException structure as a key-value pair table
 function M.ResourceNotFoundException(args)
-	assert(args, "You must provdide an argument table when creating ResourceNotFoundException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ResourceNotFoundException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertResourceNotFoundException(t)
-	return t
+	asserts.AssertResourceNotFoundException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 function asserts.AssertDomainStatus(str)
@@ -1420,8 +1761,11 @@ function M.ResendValidationEmailAsync(ResendValidationEmailRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "CertificateManager.ResendValidationEmail",
 	}
+	for header,value in pairs(ResendValidationEmailRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ResendValidationEmailRequest, headers, settings, cb)
 	else
@@ -1452,8 +1796,11 @@ function M.AddTagsToCertificateAsync(AddTagsToCertificateRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "CertificateManager.AddTagsToCertificate",
 	}
+	for header,value in pairs(AddTagsToCertificateRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", AddTagsToCertificateRequest, headers, settings, cb)
 	else
@@ -1484,8 +1831,11 @@ function M.ListCertificatesAsync(ListCertificatesRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "CertificateManager.ListCertificates",
 	}
+	for header,value in pairs(ListCertificatesRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ListCertificatesRequest, headers, settings, cb)
 	else
@@ -1516,8 +1866,11 @@ function M.GetCertificateAsync(GetCertificateRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "CertificateManager.GetCertificate",
 	}
+	for header,value in pairs(GetCertificateRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", GetCertificateRequest, headers, settings, cb)
 	else
@@ -1548,8 +1901,11 @@ function M.ListTagsForCertificateAsync(ListTagsForCertificateRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "CertificateManager.ListTagsForCertificate",
 	}
+	for header,value in pairs(ListTagsForCertificateRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ListTagsForCertificateRequest, headers, settings, cb)
 	else
@@ -1580,8 +1936,11 @@ function M.RemoveTagsFromCertificateAsync(RemoveTagsFromCertificateRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "CertificateManager.RemoveTagsFromCertificate",
 	}
+	for header,value in pairs(RemoveTagsFromCertificateRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", RemoveTagsFromCertificateRequest, headers, settings, cb)
 	else
@@ -1612,8 +1971,11 @@ function M.RequestCertificateAsync(RequestCertificateRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "CertificateManager.RequestCertificate",
 	}
+	for header,value in pairs(RequestCertificateRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", RequestCertificateRequest, headers, settings, cb)
 	else
@@ -1644,8 +2006,11 @@ function M.ImportCertificateAsync(ImportCertificateRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "CertificateManager.ImportCertificate",
 	}
+	for header,value in pairs(ImportCertificateRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ImportCertificateRequest, headers, settings, cb)
 	else
@@ -1676,8 +2041,11 @@ function M.DeleteCertificateAsync(DeleteCertificateRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "CertificateManager.DeleteCertificate",
 	}
+	for header,value in pairs(DeleteCertificateRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteCertificateRequest, headers, settings, cb)
 	else
@@ -1708,8 +2076,11 @@ function M.DescribeCertificateAsync(DescribeCertificateRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "CertificateManager.DescribeCertificate",
 	}
+	for header,value in pairs(DescribeCertificateRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeCertificateRequest, headers, settings, cb)
 	else

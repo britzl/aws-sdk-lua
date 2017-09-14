@@ -39,12 +39,23 @@ end
 -- * AllowedByOrganizations [booleanType] <p>Specifies whether the simulated action is allowed by the AWS Organizations service control policies that impact the simulated user's account.</p>
 -- @return OrganizationsDecisionDetail structure as a key-value pair table
 function M.OrganizationsDecisionDetail(args)
-	assert(args, "You must provdide an argument table when creating OrganizationsDecisionDetail")
-	local t = { 
+	assert(args, "You must provide an argument table when creating OrganizationsDecisionDetail")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["AllowedByOrganizations"] = args["AllowedByOrganizations"],
 	}
-	asserts.AssertOrganizationsDecisionDetail(t)
-	return t
+	asserts.AssertOrganizationsDecisionDetail(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UploadSigningCertificateResponse = { ["Certificate"] = true, nil }
@@ -67,12 +78,23 @@ end
 -- Required key: Certificate
 -- @return UploadSigningCertificateResponse structure as a key-value pair table
 function M.UploadSigningCertificateResponse(args)
-	assert(args, "You must provdide an argument table when creating UploadSigningCertificateResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UploadSigningCertificateResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Certificate"] = args["Certificate"],
 	}
-	asserts.AssertUploadSigningCertificateResponse(t)
-	return t
+	asserts.AssertUploadSigningCertificateResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ServiceSpecificCredentialMetadata = { ["UserName"] = true, ["Status"] = true, ["CreateDate"] = true, ["ServiceName"] = true, ["ServiceSpecificCredentialId"] = true, ["ServiceUserName"] = true, nil }
@@ -115,8 +137,14 @@ end
 -- Required key: ServiceName
 -- @return ServiceSpecificCredentialMetadata structure as a key-value pair table
 function M.ServiceSpecificCredentialMetadata(args)
-	assert(args, "You must provdide an argument table when creating ServiceSpecificCredentialMetadata")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ServiceSpecificCredentialMetadata")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["UserName"] = args["UserName"],
 		["Status"] = args["Status"],
 		["CreateDate"] = args["CreateDate"],
@@ -124,8 +152,13 @@ function M.ServiceSpecificCredentialMetadata(args)
 		["ServiceSpecificCredentialId"] = args["ServiceSpecificCredentialId"],
 		["ServiceUserName"] = args["ServiceUserName"],
 	}
-	asserts.AssertServiceSpecificCredentialMetadata(t)
-	return t
+	asserts.AssertServiceSpecificCredentialMetadata(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.PutRolePolicyRequest = { ["RoleName"] = true, ["PolicyDocument"] = true, ["PolicyName"] = true, nil }
@@ -156,14 +189,25 @@ end
 -- Required key: PolicyDocument
 -- @return PutRolePolicyRequest structure as a key-value pair table
 function M.PutRolePolicyRequest(args)
-	assert(args, "You must provdide an argument table when creating PutRolePolicyRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating PutRolePolicyRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["RoleName"] = args["RoleName"],
 		["PolicyDocument"] = args["PolicyDocument"],
 		["PolicyName"] = args["PolicyName"],
 	}
-	asserts.AssertPutRolePolicyRequest(t)
-	return t
+	asserts.AssertPutRolePolicyRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetLoginProfileResponse = { ["LoginProfile"] = true, nil }
@@ -186,12 +230,23 @@ end
 -- Required key: LoginProfile
 -- @return GetLoginProfileResponse structure as a key-value pair table
 function M.GetLoginProfileResponse(args)
-	assert(args, "You must provdide an argument table when creating GetLoginProfileResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetLoginProfileResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["LoginProfile"] = args["LoginProfile"],
 	}
-	asserts.AssertGetLoginProfileResponse(t)
-	return t
+	asserts.AssertGetLoginProfileResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListGroupsForUserRequest = { ["UserName"] = true, ["Marker"] = true, ["MaxItems"] = true, nil }
@@ -218,14 +273,25 @@ end
 -- Required key: UserName
 -- @return ListGroupsForUserRequest structure as a key-value pair table
 function M.ListGroupsForUserRequest(args)
-	assert(args, "You must provdide an argument table when creating ListGroupsForUserRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListGroupsForUserRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["UserName"] = args["UserName"],
 		["Marker"] = args["Marker"],
 		["MaxItems"] = args["MaxItems"],
 	}
-	asserts.AssertListGroupsForUserRequest(t)
-	return t
+	asserts.AssertListGroupsForUserRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.RemoveClientIDFromOpenIDConnectProviderRequest = { ["OpenIDConnectProviderArn"] = true, ["ClientID"] = true, nil }
@@ -252,13 +318,24 @@ end
 -- Required key: ClientID
 -- @return RemoveClientIDFromOpenIDConnectProviderRequest structure as a key-value pair table
 function M.RemoveClientIDFromOpenIDConnectProviderRequest(args)
-	assert(args, "You must provdide an argument table when creating RemoveClientIDFromOpenIDConnectProviderRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating RemoveClientIDFromOpenIDConnectProviderRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["OpenIDConnectProviderArn"] = args["OpenIDConnectProviderArn"],
 		["ClientID"] = args["ClientID"],
 	}
-	asserts.AssertRemoveClientIDFromOpenIDConnectProviderRequest(t)
-	return t
+	asserts.AssertRemoveClientIDFromOpenIDConnectProviderRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetAccountAuthorizationDetailsRequest = { ["Filter"] = true, ["Marker"] = true, ["MaxItems"] = true, nil }
@@ -283,14 +360,25 @@ end
 -- * MaxItems [maxItemsType] <p>(Optional) Use this only when paginating results to indicate the maximum number of items you want in the response. If additional items exist beyond the maximum you specify, the <code>IsTruncated</code> response element is <code>true</code>.</p> <p>If you do not include this parameter, it defaults to 100. Note that IAM might return fewer results, even when there are more results available. In that case, the <code>IsTruncated</code> response element returns <code>true</code> and <code>Marker</code> contains a value to include in the subsequent call that tells the service where to continue from.</p>
 -- @return GetAccountAuthorizationDetailsRequest structure as a key-value pair table
 function M.GetAccountAuthorizationDetailsRequest(args)
-	assert(args, "You must provdide an argument table when creating GetAccountAuthorizationDetailsRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetAccountAuthorizationDetailsRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Filter"] = args["Filter"],
 		["Marker"] = args["Marker"],
 		["MaxItems"] = args["MaxItems"],
 	}
-	asserts.AssertGetAccountAuthorizationDetailsRequest(t)
-	return t
+	asserts.AssertGetAccountAuthorizationDetailsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteRolePolicyRequest = { ["RoleName"] = true, ["PolicyName"] = true, nil }
@@ -317,13 +405,24 @@ end
 -- Required key: PolicyName
 -- @return DeleteRolePolicyRequest structure as a key-value pair table
 function M.DeleteRolePolicyRequest(args)
-	assert(args, "You must provdide an argument table when creating DeleteRolePolicyRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteRolePolicyRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["RoleName"] = args["RoleName"],
 		["PolicyName"] = args["PolicyName"],
 	}
-	asserts.AssertDeleteRolePolicyRequest(t)
-	return t
+	asserts.AssertDeleteRolePolicyRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListVirtualMFADevicesRequest = { ["Marker"] = true, ["AssignmentStatus"] = true, ["MaxItems"] = true, nil }
@@ -348,14 +447,25 @@ end
 -- * MaxItems [maxItemsType] <p>(Optional) Use this only when paginating results to indicate the maximum number of items you want in the response. If additional items exist beyond the maximum you specify, the <code>IsTruncated</code> response element is <code>true</code>.</p> <p>If you do not include this parameter, it defaults to 100. Note that IAM might return fewer results, even when there are more results available. In that case, the <code>IsTruncated</code> response element returns <code>true</code> and <code>Marker</code> contains a value to include in the subsequent call that tells the service where to continue from.</p>
 -- @return ListVirtualMFADevicesRequest structure as a key-value pair table
 function M.ListVirtualMFADevicesRequest(args)
-	assert(args, "You must provdide an argument table when creating ListVirtualMFADevicesRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListVirtualMFADevicesRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Marker"] = args["Marker"],
 		["AssignmentStatus"] = args["AssignmentStatus"],
 		["MaxItems"] = args["MaxItems"],
 	}
-	asserts.AssertListVirtualMFADevicesRequest(t)
-	return t
+	asserts.AssertListVirtualMFADevicesRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateAccessKeyResponse = { ["AccessKey"] = true, nil }
@@ -378,12 +488,23 @@ end
 -- Required key: AccessKey
 -- @return CreateAccessKeyResponse structure as a key-value pair table
 function M.CreateAccessKeyResponse(args)
-	assert(args, "You must provdide an argument table when creating CreateAccessKeyResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateAccessKeyResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["AccessKey"] = args["AccessKey"],
 	}
-	asserts.AssertCreateAccessKeyResponse(t)
-	return t
+	asserts.AssertCreateAccessKeyResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InstanceProfile = { ["InstanceProfileId"] = true, ["Roles"] = true, ["CreateDate"] = true, ["InstanceProfileName"] = true, ["Path"] = true, ["Arn"] = true, nil }
@@ -426,8 +547,14 @@ end
 -- Required key: Roles
 -- @return InstanceProfile structure as a key-value pair table
 function M.InstanceProfile(args)
-	assert(args, "You must provdide an argument table when creating InstanceProfile")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InstanceProfile")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["InstanceProfileId"] = args["InstanceProfileId"],
 		["Roles"] = args["Roles"],
 		["CreateDate"] = args["CreateDate"],
@@ -435,8 +562,13 @@ function M.InstanceProfile(args)
 		["Path"] = args["Path"],
 		["Arn"] = args["Arn"],
 	}
-	asserts.AssertInstanceProfile(t)
-	return t
+	asserts.AssertInstanceProfile(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListGroupsForUserResponse = { ["Marker"] = true, ["IsTruncated"] = true, ["Groups"] = true, nil }
@@ -463,14 +595,25 @@ end
 -- Required key: Groups
 -- @return ListGroupsForUserResponse structure as a key-value pair table
 function M.ListGroupsForUserResponse(args)
-	assert(args, "You must provdide an argument table when creating ListGroupsForUserResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListGroupsForUserResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Marker"] = args["Marker"],
 		["IsTruncated"] = args["IsTruncated"],
 		["Groups"] = args["Groups"],
 	}
-	asserts.AssertListGroupsForUserResponse(t)
-	return t
+	asserts.AssertListGroupsForUserResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidInputException = { ["message"] = true, nil }
@@ -491,12 +634,23 @@ end
 -- * message [invalidInputMessage] 
 -- @return InvalidInputException structure as a key-value pair table
 function M.InvalidInputException(args)
-	assert(args, "You must provdide an argument table when creating InvalidInputException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidInputException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertInvalidInputException(t)
-	return t
+	asserts.AssertInvalidInputException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GenerateCredentialReportResponse = { ["State"] = true, ["Description"] = true, nil }
@@ -519,13 +673,24 @@ end
 -- * Description [ReportStateDescriptionType] <p>Information about the credential report.</p>
 -- @return GenerateCredentialReportResponse structure as a key-value pair table
 function M.GenerateCredentialReportResponse(args)
-	assert(args, "You must provdide an argument table when creating GenerateCredentialReportResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GenerateCredentialReportResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["State"] = args["State"],
 		["Description"] = args["Description"],
 	}
-	asserts.AssertGenerateCredentialReportResponse(t)
-	return t
+	asserts.AssertGenerateCredentialReportResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteAccessKeyRequest = { ["UserName"] = true, ["AccessKeyId"] = true, nil }
@@ -550,13 +715,24 @@ end
 -- Required key: AccessKeyId
 -- @return DeleteAccessKeyRequest structure as a key-value pair table
 function M.DeleteAccessKeyRequest(args)
-	assert(args, "You must provdide an argument table when creating DeleteAccessKeyRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteAccessKeyRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["UserName"] = args["UserName"],
 		["AccessKeyId"] = args["AccessKeyId"],
 	}
-	asserts.AssertDeleteAccessKeyRequest(t)
-	return t
+	asserts.AssertDeleteAccessKeyRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetContextKeysForCustomPolicyRequest = { ["PolicyInputList"] = true, nil }
@@ -579,12 +755,23 @@ end
 -- Required key: PolicyInputList
 -- @return GetContextKeysForCustomPolicyRequest structure as a key-value pair table
 function M.GetContextKeysForCustomPolicyRequest(args)
-	assert(args, "You must provdide an argument table when creating GetContextKeysForCustomPolicyRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetContextKeysForCustomPolicyRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["PolicyInputList"] = args["PolicyInputList"],
 	}
-	asserts.AssertGetContextKeysForCustomPolicyRequest(t)
-	return t
+	asserts.AssertGetContextKeysForCustomPolicyRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListServerCertificatesResponse = { ["ServerCertificateMetadataList"] = true, ["Marker"] = true, ["IsTruncated"] = true, nil }
@@ -611,14 +798,25 @@ end
 -- Required key: ServerCertificateMetadataList
 -- @return ListServerCertificatesResponse structure as a key-value pair table
 function M.ListServerCertificatesResponse(args)
-	assert(args, "You must provdide an argument table when creating ListServerCertificatesResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListServerCertificatesResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ServerCertificateMetadataList"] = args["ServerCertificateMetadataList"],
 		["Marker"] = args["Marker"],
 		["IsTruncated"] = args["IsTruncated"],
 	}
-	asserts.AssertListServerCertificatesResponse(t)
-	return t
+	asserts.AssertListServerCertificatesResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.MalformedPolicyDocumentException = { ["message"] = true, nil }
@@ -639,12 +837,23 @@ end
 -- * message [malformedPolicyDocumentMessage] 
 -- @return MalformedPolicyDocumentException structure as a key-value pair table
 function M.MalformedPolicyDocumentException(args)
-	assert(args, "You must provdide an argument table when creating MalformedPolicyDocumentException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating MalformedPolicyDocumentException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertMalformedPolicyDocumentException(t)
-	return t
+	asserts.AssertMalformedPolicyDocumentException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeactivateMFADeviceRequest = { ["UserName"] = true, ["SerialNumber"] = true, nil }
@@ -671,13 +880,24 @@ end
 -- Required key: SerialNumber
 -- @return DeactivateMFADeviceRequest structure as a key-value pair table
 function M.DeactivateMFADeviceRequest(args)
-	assert(args, "You must provdide an argument table when creating DeactivateMFADeviceRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeactivateMFADeviceRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["UserName"] = args["UserName"],
 		["SerialNumber"] = args["SerialNumber"],
 	}
-	asserts.AssertDeactivateMFADeviceRequest(t)
-	return t
+	asserts.AssertDeactivateMFADeviceRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ChangePasswordRequest = { ["NewPassword"] = true, ["OldPassword"] = true, nil }
@@ -704,13 +924,24 @@ end
 -- Required key: NewPassword
 -- @return ChangePasswordRequest structure as a key-value pair table
 function M.ChangePasswordRequest(args)
-	assert(args, "You must provdide an argument table when creating ChangePasswordRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ChangePasswordRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NewPassword"] = args["NewPassword"],
 		["OldPassword"] = args["OldPassword"],
 	}
-	asserts.AssertChangePasswordRequest(t)
-	return t
+	asserts.AssertChangePasswordRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListAccountAliasesResponse = { ["Marker"] = true, ["AccountAliases"] = true, ["IsTruncated"] = true, nil }
@@ -737,14 +968,25 @@ end
 -- Required key: AccountAliases
 -- @return ListAccountAliasesResponse structure as a key-value pair table
 function M.ListAccountAliasesResponse(args)
-	assert(args, "You must provdide an argument table when creating ListAccountAliasesResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListAccountAliasesResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Marker"] = args["Marker"],
 		["AccountAliases"] = args["AccountAliases"],
 		["IsTruncated"] = args["IsTruncated"],
 	}
-	asserts.AssertListAccountAliasesResponse(t)
-	return t
+	asserts.AssertListAccountAliasesResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListGroupsResponse = { ["Marker"] = true, ["IsTruncated"] = true, ["Groups"] = true, nil }
@@ -771,14 +1013,25 @@ end
 -- Required key: Groups
 -- @return ListGroupsResponse structure as a key-value pair table
 function M.ListGroupsResponse(args)
-	assert(args, "You must provdide an argument table when creating ListGroupsResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListGroupsResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Marker"] = args["Marker"],
 		["IsTruncated"] = args["IsTruncated"],
 		["Groups"] = args["Groups"],
 	}
-	asserts.AssertListGroupsResponse(t)
-	return t
+	asserts.AssertListGroupsResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UnrecognizedPublicKeyEncodingException = { ["message"] = true, nil }
@@ -799,12 +1052,23 @@ end
 -- * message [unrecognizedPublicKeyEncodingMessage] 
 -- @return UnrecognizedPublicKeyEncodingException structure as a key-value pair table
 function M.UnrecognizedPublicKeyEncodingException(args)
-	assert(args, "You must provdide an argument table when creating UnrecognizedPublicKeyEncodingException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UnrecognizedPublicKeyEncodingException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertUnrecognizedPublicKeyEncodingException(t)
-	return t
+	asserts.AssertUnrecognizedPublicKeyEncodingException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeletePolicyRequest = { ["PolicyArn"] = true, nil }
@@ -827,12 +1091,23 @@ end
 -- Required key: PolicyArn
 -- @return DeletePolicyRequest structure as a key-value pair table
 function M.DeletePolicyRequest(args)
-	assert(args, "You must provdide an argument table when creating DeletePolicyRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeletePolicyRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["PolicyArn"] = args["PolicyArn"],
 	}
-	asserts.AssertDeletePolicyRequest(t)
-	return t
+	asserts.AssertDeletePolicyRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteRoleRequest = { ["RoleName"] = true, nil }
@@ -855,12 +1130,23 @@ end
 -- Required key: RoleName
 -- @return DeleteRoleRequest structure as a key-value pair table
 function M.DeleteRoleRequest(args)
-	assert(args, "You must provdide an argument table when creating DeleteRoleRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteRoleRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["RoleName"] = args["RoleName"],
 	}
-	asserts.AssertDeleteRoleRequest(t)
-	return t
+	asserts.AssertDeleteRoleRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.EntityTemporarilyUnmodifiableException = { ["message"] = true, nil }
@@ -881,12 +1167,23 @@ end
 -- * message [entityTemporarilyUnmodifiableMessage] 
 -- @return EntityTemporarilyUnmodifiableException structure as a key-value pair table
 function M.EntityTemporarilyUnmodifiableException(args)
-	assert(args, "You must provdide an argument table when creating EntityTemporarilyUnmodifiableException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating EntityTemporarilyUnmodifiableException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertEntityTemporarilyUnmodifiableException(t)
-	return t
+	asserts.AssertEntityTemporarilyUnmodifiableException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdateSigningCertificateRequest = { ["UserName"] = true, ["Status"] = true, ["CertificateId"] = true, nil }
@@ -915,14 +1212,25 @@ end
 -- Required key: Status
 -- @return UpdateSigningCertificateRequest structure as a key-value pair table
 function M.UpdateSigningCertificateRequest(args)
-	assert(args, "You must provdide an argument table when creating UpdateSigningCertificateRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateSigningCertificateRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["UserName"] = args["UserName"],
 		["Status"] = args["Status"],
 		["CertificateId"] = args["CertificateId"],
 	}
-	asserts.AssertUpdateSigningCertificateRequest(t)
-	return t
+	asserts.AssertUpdateSigningCertificateRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteServiceSpecificCredentialRequest = { ["UserName"] = true, ["ServiceSpecificCredentialId"] = true, nil }
@@ -947,13 +1255,24 @@ end
 -- Required key: ServiceSpecificCredentialId
 -- @return DeleteServiceSpecificCredentialRequest structure as a key-value pair table
 function M.DeleteServiceSpecificCredentialRequest(args)
-	assert(args, "You must provdide an argument table when creating DeleteServiceSpecificCredentialRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteServiceSpecificCredentialRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["UserName"] = args["UserName"],
 		["ServiceSpecificCredentialId"] = args["ServiceSpecificCredentialId"],
 	}
-	asserts.AssertDeleteServiceSpecificCredentialRequest(t)
-	return t
+	asserts.AssertDeleteServiceSpecificCredentialRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Group = { ["Path"] = true, ["CreateDate"] = true, ["GroupId"] = true, ["Arn"] = true, ["GroupName"] = true, nil }
@@ -992,16 +1311,27 @@ end
 -- Required key: CreateDate
 -- @return Group structure as a key-value pair table
 function M.Group(args)
-	assert(args, "You must provdide an argument table when creating Group")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Group")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Path"] = args["Path"],
 		["CreateDate"] = args["CreateDate"],
 		["GroupId"] = args["GroupId"],
 		["Arn"] = args["Arn"],
 		["GroupName"] = args["GroupName"],
 	}
-	asserts.AssertGroup(t)
-	return t
+	asserts.AssertGroup(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.EnableMFADeviceRequest = { ["UserName"] = true, ["AuthenticationCode1"] = true, ["SerialNumber"] = true, ["AuthenticationCode2"] = true, nil }
@@ -1036,15 +1366,26 @@ end
 -- Required key: AuthenticationCode2
 -- @return EnableMFADeviceRequest structure as a key-value pair table
 function M.EnableMFADeviceRequest(args)
-	assert(args, "You must provdide an argument table when creating EnableMFADeviceRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating EnableMFADeviceRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["UserName"] = args["UserName"],
 		["AuthenticationCode1"] = args["AuthenticationCode1"],
 		["SerialNumber"] = args["SerialNumber"],
 		["AuthenticationCode2"] = args["AuthenticationCode2"],
 	}
-	asserts.AssertEnableMFADeviceRequest(t)
-	return t
+	asserts.AssertEnableMFADeviceRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListAttachedGroupPoliciesResponse = { ["Marker"] = true, ["AttachedPolicies"] = true, ["IsTruncated"] = true, nil }
@@ -1069,14 +1410,25 @@ end
 -- * IsTruncated [booleanType] <p>A flag that indicates whether there are more items to return. If your results were truncated, you can make a subsequent pagination request using the <code>Marker</code> request parameter to retrieve more items. Note that IAM might return fewer than the <code>MaxItems</code> number of results even when there are more results available. We recommend that you check <code>IsTruncated</code> after every call to ensure that you receive all of your results.</p>
 -- @return ListAttachedGroupPoliciesResponse structure as a key-value pair table
 function M.ListAttachedGroupPoliciesResponse(args)
-	assert(args, "You must provdide an argument table when creating ListAttachedGroupPoliciesResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListAttachedGroupPoliciesResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Marker"] = args["Marker"],
 		["AttachedPolicies"] = args["AttachedPolicies"],
 		["IsTruncated"] = args["IsTruncated"],
 	}
-	asserts.AssertListAttachedGroupPoliciesResponse(t)
-	return t
+	asserts.AssertListAttachedGroupPoliciesResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdateAccountPasswordPolicyRequest = { ["AllowUsersToChangePassword"] = true, ["RequireLowercaseCharacters"] = true, ["RequireUppercaseCharacters"] = true, ["MinimumPasswordLength"] = true, ["RequireNumbers"] = true, ["PasswordReusePrevention"] = true, ["HardExpiry"] = true, ["RequireSymbols"] = true, ["MaxPasswordAge"] = true, nil }
@@ -1113,8 +1465,14 @@ end
 -- * MaxPasswordAge [maxPasswordAgeType] <p>The number of days that an IAM user password is valid. The default value of 0 means IAM user passwords never expire.</p> <p>Default value: 0</p>
 -- @return UpdateAccountPasswordPolicyRequest structure as a key-value pair table
 function M.UpdateAccountPasswordPolicyRequest(args)
-	assert(args, "You must provdide an argument table when creating UpdateAccountPasswordPolicyRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateAccountPasswordPolicyRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["AllowUsersToChangePassword"] = args["AllowUsersToChangePassword"],
 		["RequireLowercaseCharacters"] = args["RequireLowercaseCharacters"],
 		["RequireUppercaseCharacters"] = args["RequireUppercaseCharacters"],
@@ -1125,8 +1483,13 @@ function M.UpdateAccountPasswordPolicyRequest(args)
 		["RequireSymbols"] = args["RequireSymbols"],
 		["MaxPasswordAge"] = args["MaxPasswordAge"],
 	}
-	asserts.AssertUpdateAccountPasswordPolicyRequest(t)
-	return t
+	asserts.AssertUpdateAccountPasswordPolicyRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetGroupResponse = { ["Marker"] = true, ["Group"] = true, ["Users"] = true, ["IsTruncated"] = true, nil }
@@ -1157,15 +1520,26 @@ end
 -- Required key: Users
 -- @return GetGroupResponse structure as a key-value pair table
 function M.GetGroupResponse(args)
-	assert(args, "You must provdide an argument table when creating GetGroupResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetGroupResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Marker"] = args["Marker"],
 		["Group"] = args["Group"],
 		["Users"] = args["Users"],
 		["IsTruncated"] = args["IsTruncated"],
 	}
-	asserts.AssertGetGroupResponse(t)
-	return t
+	asserts.AssertGetGroupResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetRolePolicyResponse = { ["RoleName"] = true, ["PolicyDocument"] = true, ["PolicyName"] = true, nil }
@@ -1196,14 +1570,25 @@ end
 -- Required key: PolicyDocument
 -- @return GetRolePolicyResponse structure as a key-value pair table
 function M.GetRolePolicyResponse(args)
-	assert(args, "You must provdide an argument table when creating GetRolePolicyResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetRolePolicyResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["RoleName"] = args["RoleName"],
 		["PolicyDocument"] = args["PolicyDocument"],
 		["PolicyName"] = args["PolicyName"],
 	}
-	asserts.AssertGetRolePolicyResponse(t)
-	return t
+	asserts.AssertGetRolePolicyResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteSAMLProviderRequest = { ["SAMLProviderArn"] = true, nil }
@@ -1226,12 +1611,23 @@ end
 -- Required key: SAMLProviderArn
 -- @return DeleteSAMLProviderRequest structure as a key-value pair table
 function M.DeleteSAMLProviderRequest(args)
-	assert(args, "You must provdide an argument table when creating DeleteSAMLProviderRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteSAMLProviderRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["SAMLProviderArn"] = args["SAMLProviderArn"],
 	}
-	asserts.AssertDeleteSAMLProviderRequest(t)
-	return t
+	asserts.AssertDeleteSAMLProviderRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateInstanceProfileResponse = { ["InstanceProfile"] = true, nil }
@@ -1254,12 +1650,23 @@ end
 -- Required key: InstanceProfile
 -- @return CreateInstanceProfileResponse structure as a key-value pair table
 function M.CreateInstanceProfileResponse(args)
-	assert(args, "You must provdide an argument table when creating CreateInstanceProfileResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateInstanceProfileResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["InstanceProfile"] = args["InstanceProfile"],
 	}
-	asserts.AssertCreateInstanceProfileResponse(t)
-	return t
+	asserts.AssertCreateInstanceProfileResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UploadSigningCertificateRequest = { ["UserName"] = true, ["CertificateBody"] = true, nil }
@@ -1284,13 +1691,24 @@ end
 -- Required key: CertificateBody
 -- @return UploadSigningCertificateRequest structure as a key-value pair table
 function M.UploadSigningCertificateRequest(args)
-	assert(args, "You must provdide an argument table when creating UploadSigningCertificateRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UploadSigningCertificateRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["UserName"] = args["UserName"],
 		["CertificateBody"] = args["CertificateBody"],
 	}
-	asserts.AssertUploadSigningCertificateRequest(t)
-	return t
+	asserts.AssertUploadSigningCertificateRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListRolePoliciesRequest = { ["Marker"] = true, ["RoleName"] = true, ["MaxItems"] = true, nil }
@@ -1317,14 +1735,25 @@ end
 -- Required key: RoleName
 -- @return ListRolePoliciesRequest structure as a key-value pair table
 function M.ListRolePoliciesRequest(args)
-	assert(args, "You must provdide an argument table when creating ListRolePoliciesRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListRolePoliciesRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Marker"] = args["Marker"],
 		["RoleName"] = args["RoleName"],
 		["MaxItems"] = args["MaxItems"],
 	}
-	asserts.AssertListRolePoliciesRequest(t)
-	return t
+	asserts.AssertListRolePoliciesRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UnmodifiableEntityException = { ["message"] = true, nil }
@@ -1345,12 +1774,23 @@ end
 -- * message [unmodifiableEntityMessage] 
 -- @return UnmodifiableEntityException structure as a key-value pair table
 function M.UnmodifiableEntityException(args)
-	assert(args, "You must provdide an argument table when creating UnmodifiableEntityException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UnmodifiableEntityException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertUnmodifiableEntityException(t)
-	return t
+	asserts.AssertUnmodifiableEntityException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.PolicyEvaluationException = { ["message"] = true, nil }
@@ -1371,12 +1811,23 @@ end
 -- * message [policyEvaluationErrorMessage] 
 -- @return PolicyEvaluationException structure as a key-value pair table
 function M.PolicyEvaluationException(args)
-	assert(args, "You must provdide an argument table when creating PolicyEvaluationException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating PolicyEvaluationException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertPolicyEvaluationException(t)
-	return t
+	asserts.AssertPolicyEvaluationException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CredentialReportNotReadyException = { ["message"] = true, nil }
@@ -1397,12 +1848,23 @@ end
 -- * message [credentialReportNotReadyExceptionMessage] 
 -- @return CredentialReportNotReadyException structure as a key-value pair table
 function M.CredentialReportNotReadyException(args)
-	assert(args, "You must provdide an argument table when creating CredentialReportNotReadyException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CredentialReportNotReadyException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertCredentialReportNotReadyException(t)
-	return t
+	asserts.AssertCredentialReportNotReadyException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.EvaluationResult = { ["OrganizationsDecisionDetail"] = true, ["MatchedStatements"] = true, ["EvalDecisionDetails"] = true, ["EvalResourceName"] = true, ["ResourceSpecificResults"] = true, ["EvalActionName"] = true, ["MissingContextValues"] = true, ["EvalDecision"] = true, nil }
@@ -1441,8 +1903,14 @@ end
 -- Required key: EvalDecision
 -- @return EvaluationResult structure as a key-value pair table
 function M.EvaluationResult(args)
-	assert(args, "You must provdide an argument table when creating EvaluationResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating EvaluationResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["OrganizationsDecisionDetail"] = args["OrganizationsDecisionDetail"],
 		["MatchedStatements"] = args["MatchedStatements"],
 		["EvalDecisionDetails"] = args["EvalDecisionDetails"],
@@ -1452,8 +1920,13 @@ function M.EvaluationResult(args)
 		["MissingContextValues"] = args["MissingContextValues"],
 		["EvalDecision"] = args["EvalDecision"],
 	}
-	asserts.AssertEvaluationResult(t)
-	return t
+	asserts.AssertEvaluationResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdateGroupRequest = { ["NewPath"] = true, ["GroupName"] = true, ["NewGroupName"] = true, nil }
@@ -1480,14 +1953,25 @@ end
 -- Required key: GroupName
 -- @return UpdateGroupRequest structure as a key-value pair table
 function M.UpdateGroupRequest(args)
-	assert(args, "You must provdide an argument table when creating UpdateGroupRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateGroupRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NewPath"] = args["NewPath"],
 		["GroupName"] = args["GroupName"],
 		["NewGroupName"] = args["NewGroupName"],
 	}
-	asserts.AssertUpdateGroupRequest(t)
-	return t
+	asserts.AssertUpdateGroupRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteAccountAliasRequest = { ["AccountAlias"] = true, nil }
@@ -1510,12 +1994,23 @@ end
 -- Required key: AccountAlias
 -- @return DeleteAccountAliasRequest structure as a key-value pair table
 function M.DeleteAccountAliasRequest(args)
-	assert(args, "You must provdide an argument table when creating DeleteAccountAliasRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteAccountAliasRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["AccountAlias"] = args["AccountAlias"],
 	}
-	asserts.AssertDeleteAccountAliasRequest(t)
-	return t
+	asserts.AssertDeleteAccountAliasRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListPolicyVersionsResponse = { ["Marker"] = true, ["IsTruncated"] = true, ["Versions"] = true, nil }
@@ -1540,14 +2035,25 @@ end
 -- * Versions [policyDocumentVersionListType] <p>A list of policy versions.</p> <p>For more information about managed policy versions, see <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-versions.html">Versioning for Managed Policies</a> in the <i>IAM User Guide</i>.</p>
 -- @return ListPolicyVersionsResponse structure as a key-value pair table
 function M.ListPolicyVersionsResponse(args)
-	assert(args, "You must provdide an argument table when creating ListPolicyVersionsResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListPolicyVersionsResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Marker"] = args["Marker"],
 		["IsTruncated"] = args["IsTruncated"],
 		["Versions"] = args["Versions"],
 	}
-	asserts.AssertListPolicyVersionsResponse(t)
-	return t
+	asserts.AssertListPolicyVersionsResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Policy = { ["PolicyName"] = true, ["Description"] = true, ["CreateDate"] = true, ["AttachmentCount"] = true, ["IsAttachable"] = true, ["PolicyId"] = true, ["DefaultVersionId"] = true, ["Path"] = true, ["Arn"] = true, ["UpdateDate"] = true, nil }
@@ -1586,8 +2092,14 @@ end
 -- * UpdateDate [dateType] <p>The date and time, in <a href="http://www.iso.org/iso/iso8601">ISO 8601 date-time format</a>, when the policy was last updated.</p> <p>When a policy has only one version, this field contains the date and time when the policy was created. When a policy has more than one version, this field contains the date and time when the most recent policy version was created.</p>
 -- @return Policy structure as a key-value pair table
 function M.Policy(args)
-	assert(args, "You must provdide an argument table when creating Policy")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Policy")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["PolicyName"] = args["PolicyName"],
 		["Description"] = args["Description"],
 		["CreateDate"] = args["CreateDate"],
@@ -1599,8 +2111,13 @@ function M.Policy(args)
 		["Arn"] = args["Arn"],
 		["UpdateDate"] = args["UpdateDate"],
 	}
-	asserts.AssertPolicy(t)
-	return t
+	asserts.AssertPolicy(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetCredentialReportResponse = { ["Content"] = true, ["GeneratedTime"] = true, ["ReportFormat"] = true, nil }
@@ -1625,14 +2142,25 @@ end
 -- * ReportFormat [ReportFormatType] <p>The format (MIME type) of the credential report.</p>
 -- @return GetCredentialReportResponse structure as a key-value pair table
 function M.GetCredentialReportResponse(args)
-	assert(args, "You must provdide an argument table when creating GetCredentialReportResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetCredentialReportResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Content"] = args["Content"],
 		["GeneratedTime"] = args["GeneratedTime"],
 		["ReportFormat"] = args["ReportFormat"],
 	}
-	asserts.AssertGetCredentialReportResponse(t)
-	return t
+	asserts.AssertGetCredentialReportResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetUserPolicyResponse = { ["UserName"] = true, ["PolicyName"] = true, ["PolicyDocument"] = true, nil }
@@ -1663,14 +2191,25 @@ end
 -- Required key: PolicyDocument
 -- @return GetUserPolicyResponse structure as a key-value pair table
 function M.GetUserPolicyResponse(args)
-	assert(args, "You must provdide an argument table when creating GetUserPolicyResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetUserPolicyResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["UserName"] = args["UserName"],
 		["PolicyName"] = args["PolicyName"],
 		["PolicyDocument"] = args["PolicyDocument"],
 	}
-	asserts.AssertGetUserPolicyResponse(t)
-	return t
+	asserts.AssertGetUserPolicyResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetSAMLProviderRequest = { ["SAMLProviderArn"] = true, nil }
@@ -1693,12 +2232,23 @@ end
 -- Required key: SAMLProviderArn
 -- @return GetSAMLProviderRequest structure as a key-value pair table
 function M.GetSAMLProviderRequest(args)
-	assert(args, "You must provdide an argument table when creating GetSAMLProviderRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetSAMLProviderRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["SAMLProviderArn"] = args["SAMLProviderArn"],
 	}
-	asserts.AssertGetSAMLProviderRequest(t)
-	return t
+	asserts.AssertGetSAMLProviderRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteInstanceProfileRequest = { ["InstanceProfileName"] = true, nil }
@@ -1721,12 +2271,23 @@ end
 -- Required key: InstanceProfileName
 -- @return DeleteInstanceProfileRequest structure as a key-value pair table
 function M.DeleteInstanceProfileRequest(args)
-	assert(args, "You must provdide an argument table when creating DeleteInstanceProfileRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteInstanceProfileRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["InstanceProfileName"] = args["InstanceProfileName"],
 	}
-	asserts.AssertDeleteInstanceProfileRequest(t)
-	return t
+	asserts.AssertDeleteInstanceProfileRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListInstanceProfilesForRoleResponse = { ["Marker"] = true, ["IsTruncated"] = true, ["InstanceProfiles"] = true, nil }
@@ -1753,14 +2314,25 @@ end
 -- Required key: InstanceProfiles
 -- @return ListInstanceProfilesForRoleResponse structure as a key-value pair table
 function M.ListInstanceProfilesForRoleResponse(args)
-	assert(args, "You must provdide an argument table when creating ListInstanceProfilesForRoleResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListInstanceProfilesForRoleResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Marker"] = args["Marker"],
 		["IsTruncated"] = args["IsTruncated"],
 		["InstanceProfiles"] = args["InstanceProfiles"],
 	}
-	asserts.AssertListInstanceProfilesForRoleResponse(t)
-	return t
+	asserts.AssertListInstanceProfilesForRoleResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListEntitiesForPolicyResponse = { ["Marker"] = true, ["PolicyGroups"] = true, ["PolicyUsers"] = true, ["PolicyRoles"] = true, ["IsTruncated"] = true, nil }
@@ -1789,16 +2361,27 @@ end
 -- * IsTruncated [booleanType] <p>A flag that indicates whether there are more items to return. If your results were truncated, you can make a subsequent pagination request using the <code>Marker</code> request parameter to retrieve more items. Note that IAM might return fewer than the <code>MaxItems</code> number of results even when there are more results available. We recommend that you check <code>IsTruncated</code> after every call to ensure that you receive all of your results.</p>
 -- @return ListEntitiesForPolicyResponse structure as a key-value pair table
 function M.ListEntitiesForPolicyResponse(args)
-	assert(args, "You must provdide an argument table when creating ListEntitiesForPolicyResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListEntitiesForPolicyResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Marker"] = args["Marker"],
 		["PolicyGroups"] = args["PolicyGroups"],
 		["PolicyUsers"] = args["PolicyUsers"],
 		["PolicyRoles"] = args["PolicyRoles"],
 		["IsTruncated"] = args["IsTruncated"],
 	}
-	asserts.AssertListEntitiesForPolicyResponse(t)
-	return t
+	asserts.AssertListEntitiesForPolicyResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetAccountAuthorizationDetailsResponse = { ["RoleDetailList"] = true, ["GroupDetailList"] = true, ["UserDetailList"] = true, ["Policies"] = true, ["Marker"] = true, ["IsTruncated"] = true, nil }
@@ -1829,8 +2412,14 @@ end
 -- * IsTruncated [booleanType] <p>A flag that indicates whether there are more items to return. If your results were truncated, you can make a subsequent pagination request using the <code>Marker</code> request parameter to retrieve more items. Note that IAM might return fewer than the <code>MaxItems</code> number of results even when there are more results available. We recommend that you check <code>IsTruncated</code> after every call to ensure that you receive all of your results.</p>
 -- @return GetAccountAuthorizationDetailsResponse structure as a key-value pair table
 function M.GetAccountAuthorizationDetailsResponse(args)
-	assert(args, "You must provdide an argument table when creating GetAccountAuthorizationDetailsResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetAccountAuthorizationDetailsResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["RoleDetailList"] = args["RoleDetailList"],
 		["GroupDetailList"] = args["GroupDetailList"],
 		["UserDetailList"] = args["UserDetailList"],
@@ -1838,8 +2427,13 @@ function M.GetAccountAuthorizationDetailsResponse(args)
 		["Marker"] = args["Marker"],
 		["IsTruncated"] = args["IsTruncated"],
 	}
-	asserts.AssertGetAccountAuthorizationDetailsResponse(t)
-	return t
+	asserts.AssertGetAccountAuthorizationDetailsResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ResourceSpecificResult = { ["EvalResourceDecision"] = true, ["MissingContextValues"] = true, ["MatchedStatements"] = true, ["EvalDecisionDetails"] = true, ["EvalResourceName"] = true, nil }
@@ -1872,16 +2466,27 @@ end
 -- Required key: EvalResourceDecision
 -- @return ResourceSpecificResult structure as a key-value pair table
 function M.ResourceSpecificResult(args)
-	assert(args, "You must provdide an argument table when creating ResourceSpecificResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ResourceSpecificResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["EvalResourceDecision"] = args["EvalResourceDecision"],
 		["MissingContextValues"] = args["MissingContextValues"],
 		["MatchedStatements"] = args["MatchedStatements"],
 		["EvalDecisionDetails"] = args["EvalDecisionDetails"],
 		["EvalResourceName"] = args["EvalResourceName"],
 	}
-	asserts.AssertResourceSpecificResult(t)
-	return t
+	asserts.AssertResourceSpecificResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteSigningCertificateRequest = { ["UserName"] = true, ["CertificateId"] = true, nil }
@@ -1906,13 +2511,24 @@ end
 -- Required key: CertificateId
 -- @return DeleteSigningCertificateRequest structure as a key-value pair table
 function M.DeleteSigningCertificateRequest(args)
-	assert(args, "You must provdide an argument table when creating DeleteSigningCertificateRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteSigningCertificateRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["UserName"] = args["UserName"],
 		["CertificateId"] = args["CertificateId"],
 	}
-	asserts.AssertDeleteSigningCertificateRequest(t)
-	return t
+	asserts.AssertDeleteSigningCertificateRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListInstanceProfilesRequest = { ["Marker"] = true, ["PathPrefix"] = true, ["MaxItems"] = true, nil }
@@ -1937,14 +2553,25 @@ end
 -- * MaxItems [maxItemsType] <p>(Optional) Use this only when paginating results to indicate the maximum number of items you want in the response. If additional items exist beyond the maximum you specify, the <code>IsTruncated</code> response element is <code>true</code>.</p> <p>If you do not include this parameter, it defaults to 100. Note that IAM might return fewer results, even when there are more results available. In that case, the <code>IsTruncated</code> response element returns <code>true</code> and <code>Marker</code> contains a value to include in the subsequent call that tells the service where to continue from.</p>
 -- @return ListInstanceProfilesRequest structure as a key-value pair table
 function M.ListInstanceProfilesRequest(args)
-	assert(args, "You must provdide an argument table when creating ListInstanceProfilesRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListInstanceProfilesRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Marker"] = args["Marker"],
 		["PathPrefix"] = args["PathPrefix"],
 		["MaxItems"] = args["MaxItems"],
 	}
-	asserts.AssertListInstanceProfilesRequest(t)
-	return t
+	asserts.AssertListInstanceProfilesRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.OpenIDConnectProviderListEntry = { ["Arn"] = true, nil }
@@ -1965,12 +2592,23 @@ end
 -- * Arn [arnType] 
 -- @return OpenIDConnectProviderListEntry structure as a key-value pair table
 function M.OpenIDConnectProviderListEntry(args)
-	assert(args, "You must provdide an argument table when creating OpenIDConnectProviderListEntry")
-	local t = { 
+	assert(args, "You must provide an argument table when creating OpenIDConnectProviderListEntry")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Arn"] = args["Arn"],
 	}
-	asserts.AssertOpenIDConnectProviderListEntry(t)
-	return t
+	asserts.AssertOpenIDConnectProviderListEntry(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListAccessKeysRequest = { ["UserName"] = true, ["Marker"] = true, ["MaxItems"] = true, nil }
@@ -1995,14 +2633,25 @@ end
 -- * MaxItems [maxItemsType] <p>(Optional) Use this only when paginating results to indicate the maximum number of items you want in the response. If additional items exist beyond the maximum you specify, the <code>IsTruncated</code> response element is <code>true</code>.</p> <p>If you do not include this parameter, it defaults to 100. Note that IAM might return fewer results, even when there are more results available. In that case, the <code>IsTruncated</code> response element returns <code>true</code> and <code>Marker</code> contains a value to include in the subsequent call that tells the service where to continue from.</p>
 -- @return ListAccessKeysRequest structure as a key-value pair table
 function M.ListAccessKeysRequest(args)
-	assert(args, "You must provdide an argument table when creating ListAccessKeysRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListAccessKeysRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["UserName"] = args["UserName"],
 		["Marker"] = args["Marker"],
 		["MaxItems"] = args["MaxItems"],
 	}
-	asserts.AssertListAccessKeysRequest(t)
-	return t
+	asserts.AssertListAccessKeysRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetSSHPublicKeyRequest = { ["UserName"] = true, ["SSHPublicKeyId"] = true, ["Encoding"] = true, nil }
@@ -2033,14 +2682,25 @@ end
 -- Required key: Encoding
 -- @return GetSSHPublicKeyRequest structure as a key-value pair table
 function M.GetSSHPublicKeyRequest(args)
-	assert(args, "You must provdide an argument table when creating GetSSHPublicKeyRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetSSHPublicKeyRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["UserName"] = args["UserName"],
 		["SSHPublicKeyId"] = args["SSHPublicKeyId"],
 		["Encoding"] = args["Encoding"],
 	}
-	asserts.AssertGetSSHPublicKeyRequest(t)
-	return t
+	asserts.AssertGetSSHPublicKeyRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdateSAMLProviderRequest = { ["SAMLProviderArn"] = true, ["SAMLMetadataDocument"] = true, nil }
@@ -2067,13 +2727,24 @@ end
 -- Required key: SAMLProviderArn
 -- @return UpdateSAMLProviderRequest structure as a key-value pair table
 function M.UpdateSAMLProviderRequest(args)
-	assert(args, "You must provdide an argument table when creating UpdateSAMLProviderRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateSAMLProviderRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["SAMLProviderArn"] = args["SAMLProviderArn"],
 		["SAMLMetadataDocument"] = args["SAMLMetadataDocument"],
 	}
-	asserts.AssertUpdateSAMLProviderRequest(t)
-	return t
+	asserts.AssertUpdateSAMLProviderRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetGroupPolicyResponse = { ["GroupName"] = true, ["PolicyDocument"] = true, ["PolicyName"] = true, nil }
@@ -2104,14 +2775,25 @@ end
 -- Required key: PolicyDocument
 -- @return GetGroupPolicyResponse structure as a key-value pair table
 function M.GetGroupPolicyResponse(args)
-	assert(args, "You must provdide an argument table when creating GetGroupPolicyResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetGroupPolicyResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["GroupName"] = args["GroupName"],
 		["PolicyDocument"] = args["PolicyDocument"],
 		["PolicyName"] = args["PolicyName"],
 	}
-	asserts.AssertGetGroupPolicyResponse(t)
-	return t
+	asserts.AssertGetGroupPolicyResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ServerCertificateMetadata = { ["ServerCertificateId"] = true, ["ServerCertificateName"] = true, ["Expiration"] = true, ["Path"] = true, ["Arn"] = true, ["UploadDate"] = true, nil }
@@ -2150,8 +2832,14 @@ end
 -- Required key: Arn
 -- @return ServerCertificateMetadata structure as a key-value pair table
 function M.ServerCertificateMetadata(args)
-	assert(args, "You must provdide an argument table when creating ServerCertificateMetadata")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ServerCertificateMetadata")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ServerCertificateId"] = args["ServerCertificateId"],
 		["ServerCertificateName"] = args["ServerCertificateName"],
 		["Expiration"] = args["Expiration"],
@@ -2159,8 +2847,13 @@ function M.ServerCertificateMetadata(args)
 		["Arn"] = args["Arn"],
 		["UploadDate"] = args["UploadDate"],
 	}
-	asserts.AssertServerCertificateMetadata(t)
-	return t
+	asserts.AssertServerCertificateMetadata(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteServerCertificateRequest = { ["ServerCertificateName"] = true, nil }
@@ -2183,12 +2876,23 @@ end
 -- Required key: ServerCertificateName
 -- @return DeleteServerCertificateRequest structure as a key-value pair table
 function M.DeleteServerCertificateRequest(args)
-	assert(args, "You must provdide an argument table when creating DeleteServerCertificateRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteServerCertificateRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ServerCertificateName"] = args["ServerCertificateName"],
 	}
-	asserts.AssertDeleteServerCertificateRequest(t)
-	return t
+	asserts.AssertDeleteServerCertificateRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateGroupRequest = { ["Path"] = true, ["GroupName"] = true, nil }
@@ -2213,13 +2917,24 @@ end
 -- Required key: GroupName
 -- @return CreateGroupRequest structure as a key-value pair table
 function M.CreateGroupRequest(args)
-	assert(args, "You must provdide an argument table when creating CreateGroupRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateGroupRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Path"] = args["Path"],
 		["GroupName"] = args["GroupName"],
 	}
-	asserts.AssertCreateGroupRequest(t)
-	return t
+	asserts.AssertCreateGroupRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.PolicyVersion = { ["CreateDate"] = true, ["VersionId"] = true, ["Document"] = true, ["IsDefaultVersion"] = true, nil }
@@ -2246,15 +2961,26 @@ end
 -- * IsDefaultVersion [booleanType] <p>Specifies whether the policy version is set as the policy's default version.</p>
 -- @return PolicyVersion structure as a key-value pair table
 function M.PolicyVersion(args)
-	assert(args, "You must provdide an argument table when creating PolicyVersion")
-	local t = { 
+	assert(args, "You must provide an argument table when creating PolicyVersion")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["CreateDate"] = args["CreateDate"],
 		["VersionId"] = args["VersionId"],
 		["Document"] = args["Document"],
 		["IsDefaultVersion"] = args["IsDefaultVersion"],
 	}
-	asserts.AssertPolicyVersion(t)
-	return t
+	asserts.AssertPolicyVersion(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetContextKeysForPrincipalPolicyRequest = { ["PolicySourceArn"] = true, ["PolicyInputList"] = true, nil }
@@ -2279,13 +3005,24 @@ end
 -- Required key: PolicySourceArn
 -- @return GetContextKeysForPrincipalPolicyRequest structure as a key-value pair table
 function M.GetContextKeysForPrincipalPolicyRequest(args)
-	assert(args, "You must provdide an argument table when creating GetContextKeysForPrincipalPolicyRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetContextKeysForPrincipalPolicyRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["PolicySourceArn"] = args["PolicySourceArn"],
 		["PolicyInputList"] = args["PolicyInputList"],
 	}
-	asserts.AssertGetContextKeysForPrincipalPolicyRequest(t)
-	return t
+	asserts.AssertGetContextKeysForPrincipalPolicyRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListUserPoliciesRequest = { ["UserName"] = true, ["Marker"] = true, ["MaxItems"] = true, nil }
@@ -2312,14 +3049,25 @@ end
 -- Required key: UserName
 -- @return ListUserPoliciesRequest structure as a key-value pair table
 function M.ListUserPoliciesRequest(args)
-	assert(args, "You must provdide an argument table when creating ListUserPoliciesRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListUserPoliciesRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["UserName"] = args["UserName"],
 		["Marker"] = args["Marker"],
 		["MaxItems"] = args["MaxItems"],
 	}
-	asserts.AssertListUserPoliciesRequest(t)
-	return t
+	asserts.AssertListUserPoliciesRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListServiceSpecificCredentialsRequest = { ["UserName"] = true, ["ServiceName"] = true, nil }
@@ -2342,13 +3090,24 @@ end
 -- * ServiceName [serviceName] <p>Filters the returned results to only those for the specified AWS service. If not specified, then AWS returns service-specific credentials for all services.</p>
 -- @return ListServiceSpecificCredentialsRequest structure as a key-value pair table
 function M.ListServiceSpecificCredentialsRequest(args)
-	assert(args, "You must provdide an argument table when creating ListServiceSpecificCredentialsRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListServiceSpecificCredentialsRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["UserName"] = args["UserName"],
 		["ServiceName"] = args["ServiceName"],
 	}
-	asserts.AssertListServiceSpecificCredentialsRequest(t)
-	return t
+	asserts.AssertListServiceSpecificCredentialsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListSSHPublicKeysRequest = { ["UserName"] = true, ["Marker"] = true, ["MaxItems"] = true, nil }
@@ -2373,14 +3132,25 @@ end
 -- * MaxItems [maxItemsType] <p>(Optional) Use this only when paginating results to indicate the maximum number of items you want in the response. If additional items exist beyond the maximum you specify, the <code>IsTruncated</code> response element is <code>true</code>.</p> <p>If you do not include this parameter, it defaults to 100. Note that IAM might return fewer results, even when there are more results available. In that case, the <code>IsTruncated</code> response element returns <code>true</code> and <code>Marker</code> contains a value to include in the subsequent call that tells the service where to continue from.</p>
 -- @return ListSSHPublicKeysRequest structure as a key-value pair table
 function M.ListSSHPublicKeysRequest(args)
-	assert(args, "You must provdide an argument table when creating ListSSHPublicKeysRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListSSHPublicKeysRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["UserName"] = args["UserName"],
 		["Marker"] = args["Marker"],
 		["MaxItems"] = args["MaxItems"],
 	}
-	asserts.AssertListSSHPublicKeysRequest(t)
-	return t
+	asserts.AssertListSSHPublicKeysRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListSAMLProvidersRequest = { nil }
@@ -2399,11 +3169,22 @@ end
 -- Valid keys:
 -- @return ListSAMLProvidersRequest structure as a key-value pair table
 function M.ListSAMLProvidersRequest(args)
-	assert(args, "You must provdide an argument table when creating ListSAMLProvidersRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListSAMLProvidersRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertListSAMLProvidersRequest(t)
-	return t
+	asserts.AssertListSAMLProvidersRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdateAssumeRolePolicyRequest = { ["RoleName"] = true, ["PolicyDocument"] = true, nil }
@@ -2430,13 +3211,24 @@ end
 -- Required key: PolicyDocument
 -- @return UpdateAssumeRolePolicyRequest structure as a key-value pair table
 function M.UpdateAssumeRolePolicyRequest(args)
-	assert(args, "You must provdide an argument table when creating UpdateAssumeRolePolicyRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateAssumeRolePolicyRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["RoleName"] = args["RoleName"],
 		["PolicyDocument"] = args["PolicyDocument"],
 	}
-	asserts.AssertUpdateAssumeRolePolicyRequest(t)
-	return t
+	asserts.AssertUpdateAssumeRolePolicyRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.RemoveUserFromGroupRequest = { ["UserName"] = true, ["GroupName"] = true, nil }
@@ -2463,13 +3255,24 @@ end
 -- Required key: UserName
 -- @return RemoveUserFromGroupRequest structure as a key-value pair table
 function M.RemoveUserFromGroupRequest(args)
-	assert(args, "You must provdide an argument table when creating RemoveUserFromGroupRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating RemoveUserFromGroupRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["UserName"] = args["UserName"],
 		["GroupName"] = args["GroupName"],
 	}
-	asserts.AssertRemoveUserFromGroupRequest(t)
-	return t
+	asserts.AssertRemoveUserFromGroupRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.SigningCertificate = { ["UserName"] = true, ["Status"] = true, ["CertificateBody"] = true, ["CertificateId"] = true, ["UploadDate"] = true, nil }
@@ -2506,16 +3309,27 @@ end
 -- Required key: Status
 -- @return SigningCertificate structure as a key-value pair table
 function M.SigningCertificate(args)
-	assert(args, "You must provdide an argument table when creating SigningCertificate")
-	local t = { 
+	assert(args, "You must provide an argument table when creating SigningCertificate")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["UserName"] = args["UserName"],
 		["Status"] = args["Status"],
 		["CertificateBody"] = args["CertificateBody"],
 		["CertificateId"] = args["CertificateId"],
 		["UploadDate"] = args["UploadDate"],
 	}
-	asserts.AssertSigningCertificate(t)
-	return t
+	asserts.AssertSigningCertificate(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ManagedPolicyDetail = { ["PolicyName"] = true, ["Description"] = true, ["CreateDate"] = true, ["AttachmentCount"] = true, ["IsAttachable"] = true, ["PolicyId"] = true, ["DefaultVersionId"] = true, ["PolicyVersionList"] = true, ["Path"] = true, ["Arn"] = true, ["UpdateDate"] = true, nil }
@@ -2556,8 +3370,14 @@ end
 -- * UpdateDate [dateType] <p>The date and time, in <a href="http://www.iso.org/iso/iso8601">ISO 8601 date-time format</a>, when the policy was last updated.</p> <p>When a policy has only one version, this field contains the date and time when the policy was created. When a policy has more than one version, this field contains the date and time when the most recent policy version was created.</p>
 -- @return ManagedPolicyDetail structure as a key-value pair table
 function M.ManagedPolicyDetail(args)
-	assert(args, "You must provdide an argument table when creating ManagedPolicyDetail")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ManagedPolicyDetail")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["PolicyName"] = args["PolicyName"],
 		["Description"] = args["Description"],
 		["CreateDate"] = args["CreateDate"],
@@ -2570,8 +3390,13 @@ function M.ManagedPolicyDetail(args)
 		["Arn"] = args["Arn"],
 		["UpdateDate"] = args["UpdateDate"],
 	}
-	asserts.AssertManagedPolicyDetail(t)
-	return t
+	asserts.AssertManagedPolicyDetail(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListAttachedRolePoliciesResponse = { ["Marker"] = true, ["AttachedPolicies"] = true, ["IsTruncated"] = true, nil }
@@ -2596,14 +3421,25 @@ end
 -- * IsTruncated [booleanType] <p>A flag that indicates whether there are more items to return. If your results were truncated, you can make a subsequent pagination request using the <code>Marker</code> request parameter to retrieve more items. Note that IAM might return fewer than the <code>MaxItems</code> number of results even when there are more results available. We recommend that you check <code>IsTruncated</code> after every call to ensure that you receive all of your results.</p>
 -- @return ListAttachedRolePoliciesResponse structure as a key-value pair table
 function M.ListAttachedRolePoliciesResponse(args)
-	assert(args, "You must provdide an argument table when creating ListAttachedRolePoliciesResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListAttachedRolePoliciesResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Marker"] = args["Marker"],
 		["AttachedPolicies"] = args["AttachedPolicies"],
 		["IsTruncated"] = args["IsTruncated"],
 	}
-	asserts.AssertListAttachedRolePoliciesResponse(t)
-	return t
+	asserts.AssertListAttachedRolePoliciesResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetAccessKeyLastUsedRequest = { ["AccessKeyId"] = true, nil }
@@ -2626,12 +3462,23 @@ end
 -- Required key: AccessKeyId
 -- @return GetAccessKeyLastUsedRequest structure as a key-value pair table
 function M.GetAccessKeyLastUsedRequest(args)
-	assert(args, "You must provdide an argument table when creating GetAccessKeyLastUsedRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetAccessKeyLastUsedRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["AccessKeyId"] = args["AccessKeyId"],
 	}
-	asserts.AssertGetAccessKeyLastUsedRequest(t)
-	return t
+	asserts.AssertGetAccessKeyLastUsedRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteUserPolicyRequest = { ["UserName"] = true, ["PolicyName"] = true, nil }
@@ -2658,13 +3505,24 @@ end
 -- Required key: PolicyName
 -- @return DeleteUserPolicyRequest structure as a key-value pair table
 function M.DeleteUserPolicyRequest(args)
-	assert(args, "You must provdide an argument table when creating DeleteUserPolicyRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteUserPolicyRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["UserName"] = args["UserName"],
 		["PolicyName"] = args["PolicyName"],
 	}
-	asserts.AssertDeleteUserPolicyRequest(t)
-	return t
+	asserts.AssertDeleteUserPolicyRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetServerCertificateResponse = { ["ServerCertificate"] = true, nil }
@@ -2687,12 +3545,23 @@ end
 -- Required key: ServerCertificate
 -- @return GetServerCertificateResponse structure as a key-value pair table
 function M.GetServerCertificateResponse(args)
-	assert(args, "You must provdide an argument table when creating GetServerCertificateResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetServerCertificateResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ServerCertificate"] = args["ServerCertificate"],
 	}
-	asserts.AssertGetServerCertificateResponse(t)
-	return t
+	asserts.AssertGetServerCertificateResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetOpenIDConnectProviderRequest = { ["OpenIDConnectProviderArn"] = true, nil }
@@ -2715,12 +3584,23 @@ end
 -- Required key: OpenIDConnectProviderArn
 -- @return GetOpenIDConnectProviderRequest structure as a key-value pair table
 function M.GetOpenIDConnectProviderRequest(args)
-	assert(args, "You must provdide an argument table when creating GetOpenIDConnectProviderRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetOpenIDConnectProviderRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["OpenIDConnectProviderArn"] = args["OpenIDConnectProviderArn"],
 	}
-	asserts.AssertGetOpenIDConnectProviderRequest(t)
-	return t
+	asserts.AssertGetOpenIDConnectProviderRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListOpenIDConnectProvidersResponse = { ["OpenIDConnectProviderList"] = true, nil }
@@ -2741,12 +3621,23 @@ end
 -- * OpenIDConnectProviderList [OpenIDConnectProviderListType] <p>The list of IAM OIDC provider resource objects defined in the AWS account.</p>
 -- @return ListOpenIDConnectProvidersResponse structure as a key-value pair table
 function M.ListOpenIDConnectProvidersResponse(args)
-	assert(args, "You must provdide an argument table when creating ListOpenIDConnectProvidersResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListOpenIDConnectProvidersResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["OpenIDConnectProviderList"] = args["OpenIDConnectProviderList"],
 	}
-	asserts.AssertListOpenIDConnectProvidersResponse(t)
-	return t
+	asserts.AssertListOpenIDConnectProvidersResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetUserRequest = { ["UserName"] = true, nil }
@@ -2767,12 +3658,23 @@ end
 -- * UserName [existingUserNameType] <p>The name of the user to get information about.</p> <p>This parameter is optional. If it is not included, it defaults to the user making the request. This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-</p>
 -- @return GetUserRequest structure as a key-value pair table
 function M.GetUserRequest(args)
-	assert(args, "You must provdide an argument table when creating GetUserRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetUserRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["UserName"] = args["UserName"],
 	}
-	asserts.AssertGetUserRequest(t)
-	return t
+	asserts.AssertGetUserRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateServiceSpecificCredentialResponse = { ["ServiceSpecificCredential"] = true, nil }
@@ -2793,12 +3695,23 @@ end
 -- * ServiceSpecificCredential [ServiceSpecificCredential] <p>A structure that contains information about the newly created service-specific credential.</p> <important> <p>This is the only time that the password for this credential set is available. It cannot be recovered later. Instead, you will have to reset the password with <a>ResetServiceSpecificCredential</a>.</p> </important>
 -- @return CreateServiceSpecificCredentialResponse structure as a key-value pair table
 function M.CreateServiceSpecificCredentialResponse(args)
-	assert(args, "You must provdide an argument table when creating CreateServiceSpecificCredentialResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateServiceSpecificCredentialResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ServiceSpecificCredential"] = args["ServiceSpecificCredential"],
 	}
-	asserts.AssertCreateServiceSpecificCredentialResponse(t)
-	return t
+	asserts.AssertCreateServiceSpecificCredentialResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AttachedPolicy = { ["PolicyName"] = true, ["PolicyArn"] = true, nil }
@@ -2821,13 +3734,24 @@ end
 -- * PolicyArn [arnType] 
 -- @return AttachedPolicy structure as a key-value pair table
 function M.AttachedPolicy(args)
-	assert(args, "You must provdide an argument table when creating AttachedPolicy")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AttachedPolicy")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["PolicyName"] = args["PolicyName"],
 		["PolicyArn"] = args["PolicyArn"],
 	}
-	asserts.AssertAttachedPolicy(t)
-	return t
+	asserts.AssertAttachedPolicy(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdateAccessKeyRequest = { ["UserName"] = true, ["Status"] = true, ["AccessKeyId"] = true, nil }
@@ -2856,14 +3780,25 @@ end
 -- Required key: Status
 -- @return UpdateAccessKeyRequest structure as a key-value pair table
 function M.UpdateAccessKeyRequest(args)
-	assert(args, "You must provdide an argument table when creating UpdateAccessKeyRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateAccessKeyRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["UserName"] = args["UserName"],
 		["Status"] = args["Status"],
 		["AccessKeyId"] = args["AccessKeyId"],
 	}
-	asserts.AssertUpdateAccessKeyRequest(t)
-	return t
+	asserts.AssertUpdateAccessKeyRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdateUserRequest = { ["UserName"] = true, ["NewPath"] = true, ["NewUserName"] = true, nil }
@@ -2890,14 +3825,25 @@ end
 -- Required key: UserName
 -- @return UpdateUserRequest structure as a key-value pair table
 function M.UpdateUserRequest(args)
-	assert(args, "You must provdide an argument table when creating UpdateUserRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateUserRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["UserName"] = args["UserName"],
 		["NewPath"] = args["NewPath"],
 		["NewUserName"] = args["NewUserName"],
 	}
-	asserts.AssertUpdateUserRequest(t)
-	return t
+	asserts.AssertUpdateUserRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListAttachedGroupPoliciesRequest = { ["Marker"] = true, ["GroupName"] = true, ["PathPrefix"] = true, ["MaxItems"] = true, nil }
@@ -2926,15 +3872,26 @@ end
 -- Required key: GroupName
 -- @return ListAttachedGroupPoliciesRequest structure as a key-value pair table
 function M.ListAttachedGroupPoliciesRequest(args)
-	assert(args, "You must provdide an argument table when creating ListAttachedGroupPoliciesRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListAttachedGroupPoliciesRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Marker"] = args["Marker"],
 		["GroupName"] = args["GroupName"],
 		["PathPrefix"] = args["PathPrefix"],
 		["MaxItems"] = args["MaxItems"],
 	}
-	asserts.AssertListAttachedGroupPoliciesRequest(t)
-	return t
+	asserts.AssertListAttachedGroupPoliciesRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.SSHPublicKey = { ["UserName"] = true, ["Status"] = true, ["SSHPublicKeyBody"] = true, ["UploadDate"] = true, ["Fingerprint"] = true, ["SSHPublicKeyId"] = true, nil }
@@ -2975,8 +3932,14 @@ end
 -- Required key: Status
 -- @return SSHPublicKey structure as a key-value pair table
 function M.SSHPublicKey(args)
-	assert(args, "You must provdide an argument table when creating SSHPublicKey")
-	local t = { 
+	assert(args, "You must provide an argument table when creating SSHPublicKey")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["UserName"] = args["UserName"],
 		["Status"] = args["Status"],
 		["SSHPublicKeyBody"] = args["SSHPublicKeyBody"],
@@ -2984,8 +3947,13 @@ function M.SSHPublicKey(args)
 		["Fingerprint"] = args["Fingerprint"],
 		["SSHPublicKeyId"] = args["SSHPublicKeyId"],
 	}
-	asserts.AssertSSHPublicKey(t)
-	return t
+	asserts.AssertSSHPublicKey(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListPoliciesResponse = { ["Marker"] = true, ["IsTruncated"] = true, ["Policies"] = true, nil }
@@ -3010,14 +3978,25 @@ end
 -- * Policies [policyListType] <p>A list of policies.</p>
 -- @return ListPoliciesResponse structure as a key-value pair table
 function M.ListPoliciesResponse(args)
-	assert(args, "You must provdide an argument table when creating ListPoliciesResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListPoliciesResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Marker"] = args["Marker"],
 		["IsTruncated"] = args["IsTruncated"],
 		["Policies"] = args["Policies"],
 	}
-	asserts.AssertListPoliciesResponse(t)
-	return t
+	asserts.AssertListPoliciesResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AttachUserPolicyRequest = { ["UserName"] = true, ["PolicyArn"] = true, nil }
@@ -3044,13 +4023,24 @@ end
 -- Required key: PolicyArn
 -- @return AttachUserPolicyRequest structure as a key-value pair table
 function M.AttachUserPolicyRequest(args)
-	assert(args, "You must provdide an argument table when creating AttachUserPolicyRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AttachUserPolicyRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["UserName"] = args["UserName"],
 		["PolicyArn"] = args["PolicyArn"],
 	}
-	asserts.AssertAttachUserPolicyRequest(t)
-	return t
+	asserts.AssertAttachUserPolicyRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ResetServiceSpecificCredentialResponse = { ["ServiceSpecificCredential"] = true, nil }
@@ -3071,12 +4061,23 @@ end
 -- * ServiceSpecificCredential [ServiceSpecificCredential] <p>A structure with details about the updated service-specific credential, including the new password.</p> <important> <p>This is the <b>only</b> time that you can access the password. You cannot recover the password later, but you can reset it again.</p> </important>
 -- @return ResetServiceSpecificCredentialResponse structure as a key-value pair table
 function M.ResetServiceSpecificCredentialResponse(args)
-	assert(args, "You must provdide an argument table when creating ResetServiceSpecificCredentialResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ResetServiceSpecificCredentialResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ServiceSpecificCredential"] = args["ServiceSpecificCredential"],
 	}
-	asserts.AssertResetServiceSpecificCredentialResponse(t)
-	return t
+	asserts.AssertResetServiceSpecificCredentialResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListRolePoliciesResponse = { ["Marker"] = true, ["PolicyNames"] = true, ["IsTruncated"] = true, nil }
@@ -3103,14 +4104,25 @@ end
 -- Required key: PolicyNames
 -- @return ListRolePoliciesResponse structure as a key-value pair table
 function M.ListRolePoliciesResponse(args)
-	assert(args, "You must provdide an argument table when creating ListRolePoliciesResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListRolePoliciesResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Marker"] = args["Marker"],
 		["PolicyNames"] = args["PolicyNames"],
 		["IsTruncated"] = args["IsTruncated"],
 	}
-	asserts.AssertListRolePoliciesResponse(t)
-	return t
+	asserts.AssertListRolePoliciesResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateServiceSpecificCredentialRequest = { ["UserName"] = true, ["ServiceName"] = true, nil }
@@ -3137,13 +4149,24 @@ end
 -- Required key: ServiceName
 -- @return CreateServiceSpecificCredentialRequest structure as a key-value pair table
 function M.CreateServiceSpecificCredentialRequest(args)
-	assert(args, "You must provdide an argument table when creating CreateServiceSpecificCredentialRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateServiceSpecificCredentialRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["UserName"] = args["UserName"],
 		["ServiceName"] = args["ServiceName"],
 	}
-	asserts.AssertCreateServiceSpecificCredentialRequest(t)
-	return t
+	asserts.AssertCreateServiceSpecificCredentialRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetContextKeysForPolicyResponse = { ["ContextKeyNames"] = true, nil }
@@ -3164,12 +4187,23 @@ end
 -- * ContextKeyNames [ContextKeyNamesResultListType] <p>The list of context keys that are referenced in the input policies.</p>
 -- @return GetContextKeysForPolicyResponse structure as a key-value pair table
 function M.GetContextKeysForPolicyResponse(args)
-	assert(args, "You must provdide an argument table when creating GetContextKeysForPolicyResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetContextKeysForPolicyResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ContextKeyNames"] = args["ContextKeyNames"],
 	}
-	asserts.AssertGetContextKeysForPolicyResponse(t)
-	return t
+	asserts.AssertGetContextKeysForPolicyResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListGroupPoliciesRequest = { ["Marker"] = true, ["GroupName"] = true, ["MaxItems"] = true, nil }
@@ -3196,14 +4230,25 @@ end
 -- Required key: GroupName
 -- @return ListGroupPoliciesRequest structure as a key-value pair table
 function M.ListGroupPoliciesRequest(args)
-	assert(args, "You must provdide an argument table when creating ListGroupPoliciesRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListGroupPoliciesRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Marker"] = args["Marker"],
 		["GroupName"] = args["GroupName"],
 		["MaxItems"] = args["MaxItems"],
 	}
-	asserts.AssertListGroupPoliciesRequest(t)
-	return t
+	asserts.AssertListGroupPoliciesRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListUsersRequest = { ["Marker"] = true, ["PathPrefix"] = true, ["MaxItems"] = true, nil }
@@ -3228,14 +4273,25 @@ end
 -- * MaxItems [maxItemsType] <p>(Optional) Use this only when paginating results to indicate the maximum number of items you want in the response. If additional items exist beyond the maximum you specify, the <code>IsTruncated</code> response element is <code>true</code>.</p> <p>If you do not include this parameter, it defaults to 100. Note that IAM might return fewer results, even when there are more results available. In that case, the <code>IsTruncated</code> response element returns <code>true</code> and <code>Marker</code> contains a value to include in the subsequent call that tells the service where to continue from.</p>
 -- @return ListUsersRequest structure as a key-value pair table
 function M.ListUsersRequest(args)
-	assert(args, "You must provdide an argument table when creating ListUsersRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListUsersRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Marker"] = args["Marker"],
 		["PathPrefix"] = args["PathPrefix"],
 		["MaxItems"] = args["MaxItems"],
 	}
-	asserts.AssertListUsersRequest(t)
-	return t
+	asserts.AssertListUsersRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdateRoleDescriptionRequest = { ["RoleName"] = true, ["Description"] = true, nil }
@@ -3262,13 +4318,24 @@ end
 -- Required key: Description
 -- @return UpdateRoleDescriptionRequest structure as a key-value pair table
 function M.UpdateRoleDescriptionRequest(args)
-	assert(args, "You must provdide an argument table when creating UpdateRoleDescriptionRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateRoleDescriptionRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["RoleName"] = args["RoleName"],
 		["Description"] = args["Description"],
 	}
-	asserts.AssertUpdateRoleDescriptionRequest(t)
-	return t
+	asserts.AssertUpdateRoleDescriptionRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UploadSSHPublicKeyRequest = { ["UserName"] = true, ["SSHPublicKeyBody"] = true, nil }
@@ -3295,13 +4362,24 @@ end
 -- Required key: SSHPublicKeyBody
 -- @return UploadSSHPublicKeyRequest structure as a key-value pair table
 function M.UploadSSHPublicKeyRequest(args)
-	assert(args, "You must provdide an argument table when creating UploadSSHPublicKeyRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UploadSSHPublicKeyRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["UserName"] = args["UserName"],
 		["SSHPublicKeyBody"] = args["SSHPublicKeyBody"],
 	}
-	asserts.AssertUploadSSHPublicKeyRequest(t)
-	return t
+	asserts.AssertUploadSSHPublicKeyRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.RoleDetail = { ["AssumeRolePolicyDocument"] = true, ["RoleId"] = true, ["CreateDate"] = true, ["InstanceProfileList"] = true, ["RoleName"] = true, ["Path"] = true, ["AttachedManagedPolicies"] = true, ["RolePolicyList"] = true, ["Arn"] = true, nil }
@@ -3338,8 +4416,14 @@ end
 -- * Arn [arnType] 
 -- @return RoleDetail structure as a key-value pair table
 function M.RoleDetail(args)
-	assert(args, "You must provdide an argument table when creating RoleDetail")
-	local t = { 
+	assert(args, "You must provide an argument table when creating RoleDetail")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["AssumeRolePolicyDocument"] = args["AssumeRolePolicyDocument"],
 		["RoleId"] = args["RoleId"],
 		["CreateDate"] = args["CreateDate"],
@@ -3350,8 +4434,13 @@ function M.RoleDetail(args)
 		["RolePolicyList"] = args["RolePolicyList"],
 		["Arn"] = args["Arn"],
 	}
-	asserts.AssertRoleDetail(t)
-	return t
+	asserts.AssertRoleDetail(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.PolicyDetail = { ["PolicyName"] = true, ["PolicyDocument"] = true, nil }
@@ -3374,13 +4463,24 @@ end
 -- * PolicyDocument [policyDocumentType] <p>The policy document.</p>
 -- @return PolicyDetail structure as a key-value pair table
 function M.PolicyDetail(args)
-	assert(args, "You must provdide an argument table when creating PolicyDetail")
-	local t = { 
+	assert(args, "You must provide an argument table when creating PolicyDetail")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["PolicyName"] = args["PolicyName"],
 		["PolicyDocument"] = args["PolicyDocument"],
 	}
-	asserts.AssertPolicyDetail(t)
-	return t
+	asserts.AssertPolicyDetail(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeletePolicyVersionRequest = { ["VersionId"] = true, ["PolicyArn"] = true, nil }
@@ -3407,13 +4507,24 @@ end
 -- Required key: VersionId
 -- @return DeletePolicyVersionRequest structure as a key-value pair table
 function M.DeletePolicyVersionRequest(args)
-	assert(args, "You must provdide an argument table when creating DeletePolicyVersionRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeletePolicyVersionRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["VersionId"] = args["VersionId"],
 		["PolicyArn"] = args["PolicyArn"],
 	}
-	asserts.AssertDeletePolicyVersionRequest(t)
-	return t
+	asserts.AssertDeletePolicyVersionRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetLoginProfileRequest = { ["UserName"] = true, nil }
@@ -3436,12 +4547,23 @@ end
 -- Required key: UserName
 -- @return GetLoginProfileRequest structure as a key-value pair table
 function M.GetLoginProfileRequest(args)
-	assert(args, "You must provdide an argument table when creating GetLoginProfileRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetLoginProfileRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["UserName"] = args["UserName"],
 	}
-	asserts.AssertGetLoginProfileRequest(t)
-	return t
+	asserts.AssertGetLoginProfileRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetPolicyRequest = { ["PolicyArn"] = true, nil }
@@ -3464,12 +4586,23 @@ end
 -- Required key: PolicyArn
 -- @return GetPolicyRequest structure as a key-value pair table
 function M.GetPolicyRequest(args)
-	assert(args, "You must provdide an argument table when creating GetPolicyRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetPolicyRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["PolicyArn"] = args["PolicyArn"],
 	}
-	asserts.AssertGetPolicyRequest(t)
-	return t
+	asserts.AssertGetPolicyRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListSigningCertificatesRequest = { ["UserName"] = true, ["Marker"] = true, ["MaxItems"] = true, nil }
@@ -3494,14 +4627,25 @@ end
 -- * MaxItems [maxItemsType] <p>(Optional) Use this only when paginating results to indicate the maximum number of items you want in the response. If additional items exist beyond the maximum you specify, the <code>IsTruncated</code> response element is <code>true</code>.</p> <p>If you do not include this parameter, it defaults to 100. Note that IAM might return fewer results, even when there are more results available. In that case, the <code>IsTruncated</code> response element returns <code>true</code> and <code>Marker</code> contains a value to include in the subsequent call that tells the service where to continue from.</p>
 -- @return ListSigningCertificatesRequest structure as a key-value pair table
 function M.ListSigningCertificatesRequest(args)
-	assert(args, "You must provdide an argument table when creating ListSigningCertificatesRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListSigningCertificatesRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["UserName"] = args["UserName"],
 		["Marker"] = args["Marker"],
 		["MaxItems"] = args["MaxItems"],
 	}
-	asserts.AssertListSigningCertificatesRequest(t)
-	return t
+	asserts.AssertListSigningCertificatesRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UploadServerCertificateResponse = { ["ServerCertificateMetadata"] = true, nil }
@@ -3522,12 +4666,23 @@ end
 -- * ServerCertificateMetadata [ServerCertificateMetadata] <p>The meta information of the uploaded server certificate without its certificate body, certificate chain, and private key.</p>
 -- @return UploadServerCertificateResponse structure as a key-value pair table
 function M.UploadServerCertificateResponse(args)
-	assert(args, "You must provdide an argument table when creating UploadServerCertificateResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UploadServerCertificateResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ServerCertificateMetadata"] = args["ServerCertificateMetadata"],
 	}
-	asserts.AssertUploadServerCertificateResponse(t)
-	return t
+	asserts.AssertUploadServerCertificateResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteGroupPolicyRequest = { ["GroupName"] = true, ["PolicyName"] = true, nil }
@@ -3554,13 +4709,24 @@ end
 -- Required key: PolicyName
 -- @return DeleteGroupPolicyRequest structure as a key-value pair table
 function M.DeleteGroupPolicyRequest(args)
-	assert(args, "You must provdide an argument table when creating DeleteGroupPolicyRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteGroupPolicyRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["GroupName"] = args["GroupName"],
 		["PolicyName"] = args["PolicyName"],
 	}
-	asserts.AssertDeleteGroupPolicyRequest(t)
-	return t
+	asserts.AssertDeleteGroupPolicyRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateRoleRequest = { ["Path"] = true, ["AssumeRolePolicyDocument"] = true, ["Description"] = true, ["RoleName"] = true, nil }
@@ -3591,15 +4757,26 @@ end
 -- Required key: AssumeRolePolicyDocument
 -- @return CreateRoleRequest structure as a key-value pair table
 function M.CreateRoleRequest(args)
-	assert(args, "You must provdide an argument table when creating CreateRoleRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateRoleRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Path"] = args["Path"],
 		["AssumeRolePolicyDocument"] = args["AssumeRolePolicyDocument"],
 		["Description"] = args["Description"],
 		["RoleName"] = args["RoleName"],
 	}
-	asserts.AssertCreateRoleRequest(t)
-	return t
+	asserts.AssertCreateRoleRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.SetDefaultPolicyVersionRequest = { ["VersionId"] = true, ["PolicyArn"] = true, nil }
@@ -3626,13 +4803,24 @@ end
 -- Required key: VersionId
 -- @return SetDefaultPolicyVersionRequest structure as a key-value pair table
 function M.SetDefaultPolicyVersionRequest(args)
-	assert(args, "You must provdide an argument table when creating SetDefaultPolicyVersionRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating SetDefaultPolicyVersionRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["VersionId"] = args["VersionId"],
 		["PolicyArn"] = args["PolicyArn"],
 	}
-	asserts.AssertSetDefaultPolicyVersionRequest(t)
-	return t
+	asserts.AssertSetDefaultPolicyVersionRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateLoginProfileResponse = { ["LoginProfile"] = true, nil }
@@ -3655,12 +4843,23 @@ end
 -- Required key: LoginProfile
 -- @return CreateLoginProfileResponse structure as a key-value pair table
 function M.CreateLoginProfileResponse(args)
-	assert(args, "You must provdide an argument table when creating CreateLoginProfileResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateLoginProfileResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["LoginProfile"] = args["LoginProfile"],
 	}
-	asserts.AssertCreateLoginProfileResponse(t)
-	return t
+	asserts.AssertCreateLoginProfileResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteOpenIDConnectProviderRequest = { ["OpenIDConnectProviderArn"] = true, nil }
@@ -3683,12 +4882,23 @@ end
 -- Required key: OpenIDConnectProviderArn
 -- @return DeleteOpenIDConnectProviderRequest structure as a key-value pair table
 function M.DeleteOpenIDConnectProviderRequest(args)
-	assert(args, "You must provdide an argument table when creating DeleteOpenIDConnectProviderRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteOpenIDConnectProviderRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["OpenIDConnectProviderArn"] = args["OpenIDConnectProviderArn"],
 	}
-	asserts.AssertDeleteOpenIDConnectProviderRequest(t)
-	return t
+	asserts.AssertDeleteOpenIDConnectProviderRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListServiceSpecificCredentialsResponse = { ["ServiceSpecificCredentials"] = true, nil }
@@ -3709,12 +4919,23 @@ end
 -- * ServiceSpecificCredentials [ServiceSpecificCredentialsListType] <p>A list of structures that each contain details about a service-specific credential.</p>
 -- @return ListServiceSpecificCredentialsResponse structure as a key-value pair table
 function M.ListServiceSpecificCredentialsResponse(args)
-	assert(args, "You must provdide an argument table when creating ListServiceSpecificCredentialsResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListServiceSpecificCredentialsResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ServiceSpecificCredentials"] = args["ServiceSpecificCredentials"],
 	}
-	asserts.AssertListServiceSpecificCredentialsResponse(t)
-	return t
+	asserts.AssertListServiceSpecificCredentialsResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.EntityAlreadyExistsException = { ["message"] = true, nil }
@@ -3735,12 +4956,23 @@ end
 -- * message [entityAlreadyExistsMessage] 
 -- @return EntityAlreadyExistsException structure as a key-value pair table
 function M.EntityAlreadyExistsException(args)
-	assert(args, "You must provdide an argument table when creating EntityAlreadyExistsException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating EntityAlreadyExistsException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertEntityAlreadyExistsException(t)
-	return t
+	asserts.AssertEntityAlreadyExistsException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListGroupPoliciesResponse = { ["Marker"] = true, ["PolicyNames"] = true, ["IsTruncated"] = true, nil }
@@ -3767,14 +4999,25 @@ end
 -- Required key: PolicyNames
 -- @return ListGroupPoliciesResponse structure as a key-value pair table
 function M.ListGroupPoliciesResponse(args)
-	assert(args, "You must provdide an argument table when creating ListGroupPoliciesResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListGroupPoliciesResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Marker"] = args["Marker"],
 		["PolicyNames"] = args["PolicyNames"],
 		["IsTruncated"] = args["IsTruncated"],
 	}
-	asserts.AssertListGroupPoliciesResponse(t)
-	return t
+	asserts.AssertListGroupPoliciesResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidCertificateException = { ["message"] = true, nil }
@@ -3795,12 +5038,23 @@ end
 -- * message [invalidCertificateMessage] 
 -- @return InvalidCertificateException structure as a key-value pair table
 function M.InvalidCertificateException(args)
-	assert(args, "You must provdide an argument table when creating InvalidCertificateException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidCertificateException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertInvalidCertificateException(t)
-	return t
+	asserts.AssertInvalidCertificateException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListSigningCertificatesResponse = { ["Certificates"] = true, ["Marker"] = true, ["IsTruncated"] = true, nil }
@@ -3827,14 +5081,25 @@ end
 -- Required key: Certificates
 -- @return ListSigningCertificatesResponse structure as a key-value pair table
 function M.ListSigningCertificatesResponse(args)
-	assert(args, "You must provdide an argument table when creating ListSigningCertificatesResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListSigningCertificatesResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Certificates"] = args["Certificates"],
 		["Marker"] = args["Marker"],
 		["IsTruncated"] = args["IsTruncated"],
 	}
-	asserts.AssertListSigningCertificatesResponse(t)
-	return t
+	asserts.AssertListSigningCertificatesResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GroupDetail = { ["GroupPolicyList"] = true, ["CreateDate"] = true, ["GroupName"] = true, ["Path"] = true, ["AttachedManagedPolicies"] = true, ["GroupId"] = true, ["Arn"] = true, nil }
@@ -3867,8 +5132,14 @@ end
 -- * Arn [arnType] 
 -- @return GroupDetail structure as a key-value pair table
 function M.GroupDetail(args)
-	assert(args, "You must provdide an argument table when creating GroupDetail")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GroupDetail")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["GroupPolicyList"] = args["GroupPolicyList"],
 		["CreateDate"] = args["CreateDate"],
 		["GroupName"] = args["GroupName"],
@@ -3877,8 +5148,13 @@ function M.GroupDetail(args)
 		["GroupId"] = args["GroupId"],
 		["Arn"] = args["Arn"],
 	}
-	asserts.AssertGroupDetail(t)
-	return t
+	asserts.AssertGroupDetail(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.VirtualMFADevice = { ["Base32StringSeed"] = true, ["SerialNumber"] = true, ["EnableDate"] = true, ["User"] = true, ["QRCodePNG"] = true, nil }
@@ -3909,16 +5185,27 @@ end
 -- Required key: SerialNumber
 -- @return VirtualMFADevice structure as a key-value pair table
 function M.VirtualMFADevice(args)
-	assert(args, "You must provdide an argument table when creating VirtualMFADevice")
-	local t = { 
+	assert(args, "You must provide an argument table when creating VirtualMFADevice")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Base32StringSeed"] = args["Base32StringSeed"],
 		["SerialNumber"] = args["SerialNumber"],
 		["EnableDate"] = args["EnableDate"],
 		["User"] = args["User"],
 		["QRCodePNG"] = args["QRCodePNG"],
 	}
-	asserts.AssertVirtualMFADevice(t)
-	return t
+	asserts.AssertVirtualMFADevice(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteUserRequest = { ["UserName"] = true, nil }
@@ -3941,12 +5228,23 @@ end
 -- Required key: UserName
 -- @return DeleteUserRequest structure as a key-value pair table
 function M.DeleteUserRequest(args)
-	assert(args, "You must provdide an argument table when creating DeleteUserRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteUserRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["UserName"] = args["UserName"],
 	}
-	asserts.AssertDeleteUserRequest(t)
-	return t
+	asserts.AssertDeleteUserRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Role = { ["Description"] = true, ["AssumeRolePolicyDocument"] = true, ["RoleId"] = true, ["CreateDate"] = true, ["RoleName"] = true, ["Path"] = true, ["Arn"] = true, nil }
@@ -3989,8 +5287,14 @@ end
 -- Required key: CreateDate
 -- @return Role structure as a key-value pair table
 function M.Role(args)
-	assert(args, "You must provdide an argument table when creating Role")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Role")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Description"] = args["Description"],
 		["AssumeRolePolicyDocument"] = args["AssumeRolePolicyDocument"],
 		["RoleId"] = args["RoleId"],
@@ -3999,8 +5303,13 @@ function M.Role(args)
 		["Path"] = args["Path"],
 		["Arn"] = args["Arn"],
 	}
-	asserts.AssertRole(t)
-	return t
+	asserts.AssertRole(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListUserPoliciesResponse = { ["Marker"] = true, ["PolicyNames"] = true, ["IsTruncated"] = true, nil }
@@ -4027,14 +5336,25 @@ end
 -- Required key: PolicyNames
 -- @return ListUserPoliciesResponse structure as a key-value pair table
 function M.ListUserPoliciesResponse(args)
-	assert(args, "You must provdide an argument table when creating ListUserPoliciesResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListUserPoliciesResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Marker"] = args["Marker"],
 		["PolicyNames"] = args["PolicyNames"],
 		["IsTruncated"] = args["IsTruncated"],
 	}
-	asserts.AssertListUserPoliciesResponse(t)
-	return t
+	asserts.AssertListUserPoliciesResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetServerCertificateRequest = { ["ServerCertificateName"] = true, nil }
@@ -4057,12 +5377,23 @@ end
 -- Required key: ServerCertificateName
 -- @return GetServerCertificateRequest structure as a key-value pair table
 function M.GetServerCertificateRequest(args)
-	assert(args, "You must provdide an argument table when creating GetServerCertificateRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetServerCertificateRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ServerCertificateName"] = args["ServerCertificateName"],
 	}
-	asserts.AssertGetServerCertificateRequest(t)
-	return t
+	asserts.AssertGetServerCertificateRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UserDetail = { ["UserName"] = true, ["GroupList"] = true, ["CreateDate"] = true, ["UserId"] = true, ["UserPolicyList"] = true, ["Path"] = true, ["AttachedManagedPolicies"] = true, ["Arn"] = true, nil }
@@ -4097,8 +5428,14 @@ end
 -- * Arn [arnType] 
 -- @return UserDetail structure as a key-value pair table
 function M.UserDetail(args)
-	assert(args, "You must provdide an argument table when creating UserDetail")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UserDetail")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["UserName"] = args["UserName"],
 		["GroupList"] = args["GroupList"],
 		["CreateDate"] = args["CreateDate"],
@@ -4108,8 +5445,13 @@ function M.UserDetail(args)
 		["AttachedManagedPolicies"] = args["AttachedManagedPolicies"],
 		["Arn"] = args["Arn"],
 	}
-	asserts.AssertUserDetail(t)
-	return t
+	asserts.AssertUserDetail(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateOpenIDConnectProviderRequest = { ["Url"] = true, ["ThumbprintList"] = true, ["ClientIDList"] = true, nil }
@@ -4138,14 +5480,25 @@ end
 -- Required key: ThumbprintList
 -- @return CreateOpenIDConnectProviderRequest structure as a key-value pair table
 function M.CreateOpenIDConnectProviderRequest(args)
-	assert(args, "You must provdide an argument table when creating CreateOpenIDConnectProviderRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateOpenIDConnectProviderRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Url"] = args["Url"],
 		["ThumbprintList"] = args["ThumbprintList"],
 		["ClientIDList"] = args["ClientIDList"],
 	}
-	asserts.AssertCreateOpenIDConnectProviderRequest(t)
-	return t
+	asserts.AssertCreateOpenIDConnectProviderRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListUsersResponse = { ["Marker"] = true, ["Users"] = true, ["IsTruncated"] = true, nil }
@@ -4172,14 +5525,25 @@ end
 -- Required key: Users
 -- @return ListUsersResponse structure as a key-value pair table
 function M.ListUsersResponse(args)
-	assert(args, "You must provdide an argument table when creating ListUsersResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListUsersResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Marker"] = args["Marker"],
 		["Users"] = args["Users"],
 		["IsTruncated"] = args["IsTruncated"],
 	}
-	asserts.AssertListUsersResponse(t)
-	return t
+	asserts.AssertListUsersResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ResyncMFADeviceRequest = { ["UserName"] = true, ["AuthenticationCode1"] = true, ["SerialNumber"] = true, ["AuthenticationCode2"] = true, nil }
@@ -4214,15 +5578,26 @@ end
 -- Required key: AuthenticationCode2
 -- @return ResyncMFADeviceRequest structure as a key-value pair table
 function M.ResyncMFADeviceRequest(args)
-	assert(args, "You must provdide an argument table when creating ResyncMFADeviceRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ResyncMFADeviceRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["UserName"] = args["UserName"],
 		["AuthenticationCode1"] = args["AuthenticationCode1"],
 		["SerialNumber"] = args["SerialNumber"],
 		["AuthenticationCode2"] = args["AuthenticationCode2"],
 	}
-	asserts.AssertResyncMFADeviceRequest(t)
-	return t
+	asserts.AssertResyncMFADeviceRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateOpenIDConnectProviderResponse = { ["OpenIDConnectProviderArn"] = true, nil }
@@ -4243,12 +5618,23 @@ end
 -- * OpenIDConnectProviderArn [arnType] <p>The Amazon Resource Name (ARN) of the new IAM OpenID Connect provider that is created. For more information, see <a>OpenIDConnectProviderListEntry</a>. </p>
 -- @return CreateOpenIDConnectProviderResponse structure as a key-value pair table
 function M.CreateOpenIDConnectProviderResponse(args)
-	assert(args, "You must provdide an argument table when creating CreateOpenIDConnectProviderResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateOpenIDConnectProviderResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["OpenIDConnectProviderArn"] = args["OpenIDConnectProviderArn"],
 	}
-	asserts.AssertCreateOpenIDConnectProviderResponse(t)
-	return t
+	asserts.AssertCreateOpenIDConnectProviderResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdateRoleDescriptionResponse = { ["Role"] = true, nil }
@@ -4269,12 +5655,23 @@ end
 -- * Role [Role] <p>A structure that contains details about the modified role.</p>
 -- @return UpdateRoleDescriptionResponse structure as a key-value pair table
 function M.UpdateRoleDescriptionResponse(args)
-	assert(args, "You must provdide an argument table when creating UpdateRoleDescriptionResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateRoleDescriptionResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Role"] = args["Role"],
 	}
-	asserts.AssertUpdateRoleDescriptionResponse(t)
-	return t
+	asserts.AssertUpdateRoleDescriptionResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetInstanceProfileResponse = { ["InstanceProfile"] = true, nil }
@@ -4297,12 +5694,23 @@ end
 -- Required key: InstanceProfile
 -- @return GetInstanceProfileResponse structure as a key-value pair table
 function M.GetInstanceProfileResponse(args)
-	assert(args, "You must provdide an argument table when creating GetInstanceProfileResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetInstanceProfileResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["InstanceProfile"] = args["InstanceProfile"],
 	}
-	asserts.AssertGetInstanceProfileResponse(t)
-	return t
+	asserts.AssertGetInstanceProfileResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListPolicyVersionsRequest = { ["Marker"] = true, ["MaxItems"] = true, ["PolicyArn"] = true, nil }
@@ -4329,14 +5737,25 @@ end
 -- Required key: PolicyArn
 -- @return ListPolicyVersionsRequest structure as a key-value pair table
 function M.ListPolicyVersionsRequest(args)
-	assert(args, "You must provdide an argument table when creating ListPolicyVersionsRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListPolicyVersionsRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Marker"] = args["Marker"],
 		["MaxItems"] = args["MaxItems"],
 		["PolicyArn"] = args["PolicyArn"],
 	}
-	asserts.AssertListPolicyVersionsRequest(t)
-	return t
+	asserts.AssertListPolicyVersionsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetGroupPolicyRequest = { ["GroupName"] = true, ["PolicyName"] = true, nil }
@@ -4363,13 +5782,24 @@ end
 -- Required key: PolicyName
 -- @return GetGroupPolicyRequest structure as a key-value pair table
 function M.GetGroupPolicyRequest(args)
-	assert(args, "You must provdide an argument table when creating GetGroupPolicyRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetGroupPolicyRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["GroupName"] = args["GroupName"],
 		["PolicyName"] = args["PolicyName"],
 	}
-	asserts.AssertGetGroupPolicyRequest(t)
-	return t
+	asserts.AssertGetGroupPolicyRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetGroupRequest = { ["Marker"] = true, ["GroupName"] = true, ["MaxItems"] = true, nil }
@@ -4396,14 +5826,25 @@ end
 -- Required key: GroupName
 -- @return GetGroupRequest structure as a key-value pair table
 function M.GetGroupRequest(args)
-	assert(args, "You must provdide an argument table when creating GetGroupRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetGroupRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Marker"] = args["Marker"],
 		["GroupName"] = args["GroupName"],
 		["MaxItems"] = args["MaxItems"],
 	}
-	asserts.AssertGetGroupRequest(t)
-	return t
+	asserts.AssertGetGroupRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListRolesRequest = { ["Marker"] = true, ["PathPrefix"] = true, ["MaxItems"] = true, nil }
@@ -4428,14 +5869,25 @@ end
 -- * MaxItems [maxItemsType] <p>(Optional) Use this only when paginating results to indicate the maximum number of items you want in the response. If additional items exist beyond the maximum you specify, the <code>IsTruncated</code> response element is <code>true</code>.</p> <p>If you do not include this parameter, it defaults to 100. Note that IAM might return fewer results, even when there are more results available. In that case, the <code>IsTruncated</code> response element returns <code>true</code> and <code>Marker</code> contains a value to include in the subsequent call that tells the service where to continue from.</p>
 -- @return ListRolesRequest structure as a key-value pair table
 function M.ListRolesRequest(args)
-	assert(args, "You must provdide an argument table when creating ListRolesRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListRolesRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Marker"] = args["Marker"],
 		["PathPrefix"] = args["PathPrefix"],
 		["MaxItems"] = args["MaxItems"],
 	}
-	asserts.AssertListRolesRequest(t)
-	return t
+	asserts.AssertListRolesRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdateLoginProfileRequest = { ["UserName"] = true, ["PasswordResetRequired"] = true, ["Password"] = true, nil }
@@ -4462,14 +5914,25 @@ end
 -- Required key: UserName
 -- @return UpdateLoginProfileRequest structure as a key-value pair table
 function M.UpdateLoginProfileRequest(args)
-	assert(args, "You must provdide an argument table when creating UpdateLoginProfileRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateLoginProfileRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["UserName"] = args["UserName"],
 		["PasswordResetRequired"] = args["PasswordResetRequired"],
 		["Password"] = args["Password"],
 	}
-	asserts.AssertUpdateLoginProfileRequest(t)
-	return t
+	asserts.AssertUpdateLoginProfileRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdateOpenIDConnectProviderThumbprintRequest = { ["ThumbprintList"] = true, ["OpenIDConnectProviderArn"] = true, nil }
@@ -4496,13 +5959,24 @@ end
 -- Required key: ThumbprintList
 -- @return UpdateOpenIDConnectProviderThumbprintRequest structure as a key-value pair table
 function M.UpdateOpenIDConnectProviderThumbprintRequest(args)
-	assert(args, "You must provdide an argument table when creating UpdateOpenIDConnectProviderThumbprintRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateOpenIDConnectProviderThumbprintRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ThumbprintList"] = args["ThumbprintList"],
 		["OpenIDConnectProviderArn"] = args["OpenIDConnectProviderArn"],
 	}
-	asserts.AssertUpdateOpenIDConnectProviderThumbprintRequest(t)
-	return t
+	asserts.AssertUpdateOpenIDConnectProviderThumbprintRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreatePolicyVersionResponse = { ["PolicyVersion"] = true, nil }
@@ -4523,12 +5997,23 @@ end
 -- * PolicyVersion [PolicyVersion] <p>A structure containing details about the new policy version.</p>
 -- @return CreatePolicyVersionResponse structure as a key-value pair table
 function M.CreatePolicyVersionResponse(args)
-	assert(args, "You must provdide an argument table when creating CreatePolicyVersionResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreatePolicyVersionResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["PolicyVersion"] = args["PolicyVersion"],
 	}
-	asserts.AssertCreatePolicyVersionResponse(t)
-	return t
+	asserts.AssertCreatePolicyVersionResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.PutUserPolicyRequest = { ["UserName"] = true, ["PolicyName"] = true, ["PolicyDocument"] = true, nil }
@@ -4559,14 +6044,25 @@ end
 -- Required key: PolicyDocument
 -- @return PutUserPolicyRequest structure as a key-value pair table
 function M.PutUserPolicyRequest(args)
-	assert(args, "You must provdide an argument table when creating PutUserPolicyRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating PutUserPolicyRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["UserName"] = args["UserName"],
 		["PolicyName"] = args["PolicyName"],
 		["PolicyDocument"] = args["PolicyDocument"],
 	}
-	asserts.AssertPutUserPolicyRequest(t)
-	return t
+	asserts.AssertPutUserPolicyRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.LimitExceededException = { ["message"] = true, nil }
@@ -4587,12 +6083,23 @@ end
 -- * message [limitExceededMessage] 
 -- @return LimitExceededException structure as a key-value pair table
 function M.LimitExceededException(args)
-	assert(args, "You must provdide an argument table when creating LimitExceededException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating LimitExceededException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertLimitExceededException(t)
-	return t
+	asserts.AssertLimitExceededException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidPublicKeyException = { ["message"] = true, nil }
@@ -4613,12 +6120,23 @@ end
 -- * message [invalidPublicKeyMessage] 
 -- @return InvalidPublicKeyException structure as a key-value pair table
 function M.InvalidPublicKeyException(args)
-	assert(args, "You must provdide an argument table when creating InvalidPublicKeyException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidPublicKeyException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertInvalidPublicKeyException(t)
-	return t
+	asserts.AssertInvalidPublicKeyException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AccessKeyLastUsed = { ["Region"] = true, ["ServiceName"] = true, ["LastUsedDate"] = true, nil }
@@ -4649,14 +6167,25 @@ end
 -- Required key: Region
 -- @return AccessKeyLastUsed structure as a key-value pair table
 function M.AccessKeyLastUsed(args)
-	assert(args, "You must provdide an argument table when creating AccessKeyLastUsed")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AccessKeyLastUsed")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Region"] = args["Region"],
 		["ServiceName"] = args["ServiceName"],
 		["LastUsedDate"] = args["LastUsedDate"],
 	}
-	asserts.AssertAccessKeyLastUsed(t)
-	return t
+	asserts.AssertAccessKeyLastUsed(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateUserResponse = { ["User"] = true, nil }
@@ -4677,12 +6206,23 @@ end
 -- * User [User] <p>A structure with details about the new IAM user.</p>
 -- @return CreateUserResponse structure as a key-value pair table
 function M.CreateUserResponse(args)
-	assert(args, "You must provdide an argument table when creating CreateUserResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateUserResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["User"] = args["User"],
 	}
-	asserts.AssertCreateUserResponse(t)
-	return t
+	asserts.AssertCreateUserResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreatePolicyVersionRequest = { ["SetAsDefault"] = true, ["PolicyDocument"] = true, ["PolicyArn"] = true, nil }
@@ -4711,14 +6251,25 @@ end
 -- Required key: PolicyDocument
 -- @return CreatePolicyVersionRequest structure as a key-value pair table
 function M.CreatePolicyVersionRequest(args)
-	assert(args, "You must provdide an argument table when creating CreatePolicyVersionRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreatePolicyVersionRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["SetAsDefault"] = args["SetAsDefault"],
 		["PolicyDocument"] = args["PolicyDocument"],
 		["PolicyArn"] = args["PolicyArn"],
 	}
-	asserts.AssertCreatePolicyVersionRequest(t)
-	return t
+	asserts.AssertCreatePolicyVersionRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetUserResponse = { ["User"] = true, nil }
@@ -4741,12 +6292,23 @@ end
 -- Required key: User
 -- @return GetUserResponse structure as a key-value pair table
 function M.GetUserResponse(args)
-	assert(args, "You must provdide an argument table when creating GetUserResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetUserResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["User"] = args["User"],
 	}
-	asserts.AssertGetUserResponse(t)
-	return t
+	asserts.AssertGetUserResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.SimulateCustomPolicyRequest = { ["ResourceHandlingOption"] = true, ["ContextEntries"] = true, ["CallerArn"] = true, ["PolicyInputList"] = true, ["ResourcePolicy"] = true, ["MaxItems"] = true, ["ActionNames"] = true, ["Marker"] = true, ["ResourceArns"] = true, ["ResourceOwner"] = true, nil }
@@ -4789,8 +6351,14 @@ end
 -- Required key: ActionNames
 -- @return SimulateCustomPolicyRequest structure as a key-value pair table
 function M.SimulateCustomPolicyRequest(args)
-	assert(args, "You must provdide an argument table when creating SimulateCustomPolicyRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating SimulateCustomPolicyRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ResourceHandlingOption"] = args["ResourceHandlingOption"],
 		["ContextEntries"] = args["ContextEntries"],
 		["CallerArn"] = args["CallerArn"],
@@ -4802,8 +6370,13 @@ function M.SimulateCustomPolicyRequest(args)
 		["ResourceArns"] = args["ResourceArns"],
 		["ResourceOwner"] = args["ResourceOwner"],
 	}
-	asserts.AssertSimulateCustomPolicyRequest(t)
-	return t
+	asserts.AssertSimulateCustomPolicyRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AccessKeyMetadata = { ["UserName"] = true, ["Status"] = true, ["CreateDate"] = true, ["AccessKeyId"] = true, nil }
@@ -4830,15 +6403,26 @@ end
 -- * AccessKeyId [accessKeyIdType] <p>The ID for this access key.</p>
 -- @return AccessKeyMetadata structure as a key-value pair table
 function M.AccessKeyMetadata(args)
-	assert(args, "You must provdide an argument table when creating AccessKeyMetadata")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AccessKeyMetadata")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["UserName"] = args["UserName"],
 		["Status"] = args["Status"],
 		["CreateDate"] = args["CreateDate"],
 		["AccessKeyId"] = args["AccessKeyId"],
 	}
-	asserts.AssertAccessKeyMetadata(t)
-	return t
+	asserts.AssertAccessKeyMetadata(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetAccountPasswordPolicyResponse = { ["PasswordPolicy"] = true, nil }
@@ -4861,12 +6445,23 @@ end
 -- Required key: PasswordPolicy
 -- @return GetAccountPasswordPolicyResponse structure as a key-value pair table
 function M.GetAccountPasswordPolicyResponse(args)
-	assert(args, "You must provdide an argument table when creating GetAccountPasswordPolicyResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetAccountPasswordPolicyResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["PasswordPolicy"] = args["PasswordPolicy"],
 	}
-	asserts.AssertGetAccountPasswordPolicyResponse(t)
-	return t
+	asserts.AssertGetAccountPasswordPolicyResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UploadSSHPublicKeyResponse = { ["SSHPublicKey"] = true, nil }
@@ -4887,12 +6482,23 @@ end
 -- * SSHPublicKey [SSHPublicKey] <p>Contains information about the SSH public key.</p>
 -- @return UploadSSHPublicKeyResponse structure as a key-value pair table
 function M.UploadSSHPublicKeyResponse(args)
-	assert(args, "You must provdide an argument table when creating UploadSSHPublicKeyResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UploadSSHPublicKeyResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["SSHPublicKey"] = args["SSHPublicKey"],
 	}
-	asserts.AssertUploadSSHPublicKeyResponse(t)
-	return t
+	asserts.AssertUploadSSHPublicKeyResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetPolicyVersionRequest = { ["VersionId"] = true, ["PolicyArn"] = true, nil }
@@ -4919,13 +6525,24 @@ end
 -- Required key: VersionId
 -- @return GetPolicyVersionRequest structure as a key-value pair table
 function M.GetPolicyVersionRequest(args)
-	assert(args, "You must provdide an argument table when creating GetPolicyVersionRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetPolicyVersionRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["VersionId"] = args["VersionId"],
 		["PolicyArn"] = args["PolicyArn"],
 	}
-	asserts.AssertGetPolicyVersionRequest(t)
-	return t
+	asserts.AssertGetPolicyVersionRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateSAMLProviderResponse = { ["SAMLProviderArn"] = true, nil }
@@ -4946,12 +6563,23 @@ end
 -- * SAMLProviderArn [arnType] <p>The Amazon Resource Name (ARN) of the new SAML provider resource in IAM.</p>
 -- @return CreateSAMLProviderResponse structure as a key-value pair table
 function M.CreateSAMLProviderResponse(args)
-	assert(args, "You must provdide an argument table when creating CreateSAMLProviderResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateSAMLProviderResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["SAMLProviderArn"] = args["SAMLProviderArn"],
 	}
-	asserts.AssertCreateSAMLProviderResponse(t)
-	return t
+	asserts.AssertCreateSAMLProviderResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.KeyPairMismatchException = { ["message"] = true, nil }
@@ -4972,12 +6600,23 @@ end
 -- * message [keyPairMismatchMessage] 
 -- @return KeyPairMismatchException structure as a key-value pair table
 function M.KeyPairMismatchException(args)
-	assert(args, "You must provdide an argument table when creating KeyPairMismatchException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating KeyPairMismatchException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertKeyPairMismatchException(t)
-	return t
+	asserts.AssertKeyPairMismatchException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CredentialReportNotPresentException = { ["message"] = true, nil }
@@ -4998,12 +6637,23 @@ end
 -- * message [credentialReportNotPresentExceptionMessage] 
 -- @return CredentialReportNotPresentException structure as a key-value pair table
 function M.CredentialReportNotPresentException(args)
-	assert(args, "You must provdide an argument table when creating CredentialReportNotPresentException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CredentialReportNotPresentException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertCredentialReportNotPresentException(t)
-	return t
+	asserts.AssertCredentialReportNotPresentException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.SAMLProviderListEntry = { ["CreateDate"] = true, ["ValidUntil"] = true, ["Arn"] = true, nil }
@@ -5028,14 +6678,25 @@ end
 -- * Arn [arnType] <p>The Amazon Resource Name (ARN) of the SAML provider.</p>
 -- @return SAMLProviderListEntry structure as a key-value pair table
 function M.SAMLProviderListEntry(args)
-	assert(args, "You must provdide an argument table when creating SAMLProviderListEntry")
-	local t = { 
+	assert(args, "You must provide an argument table when creating SAMLProviderListEntry")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["CreateDate"] = args["CreateDate"],
 		["ValidUntil"] = args["ValidUntil"],
 		["Arn"] = args["Arn"],
 	}
-	asserts.AssertSAMLProviderListEntry(t)
-	return t
+	asserts.AssertSAMLProviderListEntry(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ServiceFailureException = { ["message"] = true, nil }
@@ -5056,12 +6717,23 @@ end
 -- * message [serviceFailureExceptionMessage] 
 -- @return ServiceFailureException structure as a key-value pair table
 function M.ServiceFailureException(args)
-	assert(args, "You must provdide an argument table when creating ServiceFailureException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ServiceFailureException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertServiceFailureException(t)
-	return t
+	asserts.AssertServiceFailureException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListServerCertificatesRequest = { ["Marker"] = true, ["PathPrefix"] = true, ["MaxItems"] = true, nil }
@@ -5086,14 +6758,25 @@ end
 -- * MaxItems [maxItemsType] <p>(Optional) Use this only when paginating results to indicate the maximum number of items you want in the response. If additional items exist beyond the maximum you specify, the <code>IsTruncated</code> response element is <code>true</code>.</p> <p>If you do not include this parameter, it defaults to 100. Note that IAM might return fewer results, even when there are more results available. In that case, the <code>IsTruncated</code> response element returns <code>true</code> and <code>Marker</code> contains a value to include in the subsequent call that tells the service where to continue from.</p>
 -- @return ListServerCertificatesRequest structure as a key-value pair table
 function M.ListServerCertificatesRequest(args)
-	assert(args, "You must provdide an argument table when creating ListServerCertificatesRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListServerCertificatesRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Marker"] = args["Marker"],
 		["PathPrefix"] = args["PathPrefix"],
 		["MaxItems"] = args["MaxItems"],
 	}
-	asserts.AssertListServerCertificatesRequest(t)
-	return t
+	asserts.AssertListServerCertificatesRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidAuthenticationCodeException = { ["message"] = true, nil }
@@ -5114,12 +6797,23 @@ end
 -- * message [invalidAuthenticationCodeMessage] 
 -- @return InvalidAuthenticationCodeException structure as a key-value pair table
 function M.InvalidAuthenticationCodeException(args)
-	assert(args, "You must provdide an argument table when creating InvalidAuthenticationCodeException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidAuthenticationCodeException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertInvalidAuthenticationCodeException(t)
-	return t
+	asserts.AssertInvalidAuthenticationCodeException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AttachRolePolicyRequest = { ["RoleName"] = true, ["PolicyArn"] = true, nil }
@@ -5146,13 +6840,24 @@ end
 -- Required key: PolicyArn
 -- @return AttachRolePolicyRequest structure as a key-value pair table
 function M.AttachRolePolicyRequest(args)
-	assert(args, "You must provdide an argument table when creating AttachRolePolicyRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AttachRolePolicyRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["RoleName"] = args["RoleName"],
 		["PolicyArn"] = args["PolicyArn"],
 	}
-	asserts.AssertAttachRolePolicyRequest(t)
-	return t
+	asserts.AssertAttachRolePolicyRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListAttachedUserPoliciesResponse = { ["Marker"] = true, ["AttachedPolicies"] = true, ["IsTruncated"] = true, nil }
@@ -5177,14 +6882,25 @@ end
 -- * IsTruncated [booleanType] <p>A flag that indicates whether there are more items to return. If your results were truncated, you can make a subsequent pagination request using the <code>Marker</code> request parameter to retrieve more items. Note that IAM might return fewer than the <code>MaxItems</code> number of results even when there are more results available. We recommend that you check <code>IsTruncated</code> after every call to ensure that you receive all of your results.</p>
 -- @return ListAttachedUserPoliciesResponse structure as a key-value pair table
 function M.ListAttachedUserPoliciesResponse(args)
-	assert(args, "You must provdide an argument table when creating ListAttachedUserPoliciesResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListAttachedUserPoliciesResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Marker"] = args["Marker"],
 		["AttachedPolicies"] = args["AttachedPolicies"],
 		["IsTruncated"] = args["IsTruncated"],
 	}
-	asserts.AssertListAttachedUserPoliciesResponse(t)
-	return t
+	asserts.AssertListAttachedUserPoliciesResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListMFADevicesRequest = { ["UserName"] = true, ["Marker"] = true, ["MaxItems"] = true, nil }
@@ -5209,14 +6925,25 @@ end
 -- * MaxItems [maxItemsType] <p>(Optional) Use this only when paginating results to indicate the maximum number of items you want in the response. If additional items exist beyond the maximum you specify, the <code>IsTruncated</code> response element is <code>true</code>.</p> <p>If you do not include this parameter, it defaults to 100. Note that IAM might return fewer results, even when there are more results available. In that case, the <code>IsTruncated</code> response element returns <code>true</code> and <code>Marker</code> contains a value to include in the subsequent call that tells the service where to continue from.</p>
 -- @return ListMFADevicesRequest structure as a key-value pair table
 function M.ListMFADevicesRequest(args)
-	assert(args, "You must provdide an argument table when creating ListMFADevicesRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListMFADevicesRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["UserName"] = args["UserName"],
 		["Marker"] = args["Marker"],
 		["MaxItems"] = args["MaxItems"],
 	}
-	asserts.AssertListMFADevicesRequest(t)
-	return t
+	asserts.AssertListMFADevicesRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DuplicateCertificateException = { ["message"] = true, nil }
@@ -5237,12 +6964,23 @@ end
 -- * message [duplicateCertificateMessage] 
 -- @return DuplicateCertificateException structure as a key-value pair table
 function M.DuplicateCertificateException(args)
-	assert(args, "You must provdide an argument table when creating DuplicateCertificateException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DuplicateCertificateException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertDuplicateCertificateException(t)
-	return t
+	asserts.AssertDuplicateCertificateException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CredentialReportExpiredException = { ["message"] = true, nil }
@@ -5263,12 +7001,23 @@ end
 -- * message [credentialReportExpiredExceptionMessage] 
 -- @return CredentialReportExpiredException structure as a key-value pair table
 function M.CredentialReportExpiredException(args)
-	assert(args, "You must provdide an argument table when creating CredentialReportExpiredException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CredentialReportExpiredException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertCredentialReportExpiredException(t)
-	return t
+	asserts.AssertCredentialReportExpiredException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ResetServiceSpecificCredentialRequest = { ["UserName"] = true, ["ServiceSpecificCredentialId"] = true, nil }
@@ -5293,13 +7042,24 @@ end
 -- Required key: ServiceSpecificCredentialId
 -- @return ResetServiceSpecificCredentialRequest structure as a key-value pair table
 function M.ResetServiceSpecificCredentialRequest(args)
-	assert(args, "You must provdide an argument table when creating ResetServiceSpecificCredentialRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ResetServiceSpecificCredentialRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["UserName"] = args["UserName"],
 		["ServiceSpecificCredentialId"] = args["ServiceSpecificCredentialId"],
 	}
-	asserts.AssertResetServiceSpecificCredentialRequest(t)
-	return t
+	asserts.AssertResetServiceSpecificCredentialRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListSSHPublicKeysResponse = { ["Marker"] = true, ["SSHPublicKeys"] = true, ["IsTruncated"] = true, nil }
@@ -5324,14 +7084,25 @@ end
 -- * IsTruncated [booleanType] <p>A flag that indicates whether there are more items to return. If your results were truncated, you can make a subsequent pagination request using the <code>Marker</code> request parameter to retrieve more items. Note that IAM might return fewer than the <code>MaxItems</code> number of results even when there are more results available. We recommend that you check <code>IsTruncated</code> after every call to ensure that you receive all of your results.</p>
 -- @return ListSSHPublicKeysResponse structure as a key-value pair table
 function M.ListSSHPublicKeysResponse(args)
-	assert(args, "You must provdide an argument table when creating ListSSHPublicKeysResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListSSHPublicKeysResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Marker"] = args["Marker"],
 		["SSHPublicKeys"] = args["SSHPublicKeys"],
 		["IsTruncated"] = args["IsTruncated"],
 	}
-	asserts.AssertListSSHPublicKeysResponse(t)
-	return t
+	asserts.AssertListSSHPublicKeysResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetAccountSummaryResponse = { ["SummaryMap"] = true, nil }
@@ -5352,12 +7123,23 @@ end
 -- * SummaryMap [summaryMapType] <p>A set of key value pairs containing information about IAM entity usage and IAM quotas.</p>
 -- @return GetAccountSummaryResponse structure as a key-value pair table
 function M.GetAccountSummaryResponse(args)
-	assert(args, "You must provdide an argument table when creating GetAccountSummaryResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetAccountSummaryResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["SummaryMap"] = args["SummaryMap"],
 	}
-	asserts.AssertGetAccountSummaryResponse(t)
-	return t
+	asserts.AssertGetAccountSummaryResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateUserRequest = { ["UserName"] = true, ["Path"] = true, nil }
@@ -5382,13 +7164,24 @@ end
 -- Required key: UserName
 -- @return CreateUserRequest structure as a key-value pair table
 function M.CreateUserRequest(args)
-	assert(args, "You must provdide an argument table when creating CreateUserRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateUserRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["UserName"] = args["UserName"],
 		["Path"] = args["Path"],
 	}
-	asserts.AssertCreateUserRequest(t)
-	return t
+	asserts.AssertCreateUserRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.PolicyGroup = { ["GroupName"] = true, ["GroupId"] = true, nil }
@@ -5411,13 +7204,24 @@ end
 -- * GroupId [idType] <p>The stable and unique string identifying the group. For more information about IDs, see <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/reference_identifiers.html">IAM Identifiers</a> in the <i>IAM User Guide</i>.</p>
 -- @return PolicyGroup structure as a key-value pair table
 function M.PolicyGroup(args)
-	assert(args, "You must provdide an argument table when creating PolicyGroup")
-	local t = { 
+	assert(args, "You must provide an argument table when creating PolicyGroup")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["GroupName"] = args["GroupName"],
 		["GroupId"] = args["GroupId"],
 	}
-	asserts.AssertPolicyGroup(t)
-	return t
+	asserts.AssertPolicyGroup(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListPoliciesRequest = { ["Marker"] = true, ["Scope"] = true, ["OnlyAttached"] = true, ["PathPrefix"] = true, ["MaxItems"] = true, nil }
@@ -5446,16 +7250,27 @@ end
 -- * MaxItems [maxItemsType] <p>(Optional) Use this only when paginating results to indicate the maximum number of items you want in the response. If additional items exist beyond the maximum you specify, the <code>IsTruncated</code> response element is <code>true</code>.</p> <p>If you do not include this parameter, it defaults to 100. Note that IAM might return fewer results, even when there are more results available. In that case, the <code>IsTruncated</code> response element returns <code>true</code> and <code>Marker</code> contains a value to include in the subsequent call that tells the service where to continue from.</p>
 -- @return ListPoliciesRequest structure as a key-value pair table
 function M.ListPoliciesRequest(args)
-	assert(args, "You must provdide an argument table when creating ListPoliciesRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListPoliciesRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Marker"] = args["Marker"],
 		["Scope"] = args["Scope"],
 		["OnlyAttached"] = args["OnlyAttached"],
 		["PathPrefix"] = args["PathPrefix"],
 		["MaxItems"] = args["MaxItems"],
 	}
-	asserts.AssertListPoliciesRequest(t)
-	return t
+	asserts.AssertListPoliciesRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateAccountAliasRequest = { ["AccountAlias"] = true, nil }
@@ -5478,12 +7293,23 @@ end
 -- Required key: AccountAlias
 -- @return CreateAccountAliasRequest structure as a key-value pair table
 function M.CreateAccountAliasRequest(args)
-	assert(args, "You must provdide an argument table when creating CreateAccountAliasRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateAccountAliasRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["AccountAlias"] = args["AccountAlias"],
 	}
-	asserts.AssertCreateAccountAliasRequest(t)
-	return t
+	asserts.AssertCreateAccountAliasRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreatePolicyRequest = { ["PolicyName"] = true, ["PolicyDocument"] = true, ["Description"] = true, ["Path"] = true, nil }
@@ -5514,15 +7340,26 @@ end
 -- Required key: PolicyDocument
 -- @return CreatePolicyRequest structure as a key-value pair table
 function M.CreatePolicyRequest(args)
-	assert(args, "You must provdide an argument table when creating CreatePolicyRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreatePolicyRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["PolicyName"] = args["PolicyName"],
 		["PolicyDocument"] = args["PolicyDocument"],
 		["Description"] = args["Description"],
 		["Path"] = args["Path"],
 	}
-	asserts.AssertCreatePolicyRequest(t)
-	return t
+	asserts.AssertCreatePolicyRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListVirtualMFADevicesResponse = { ["Marker"] = true, ["IsTruncated"] = true, ["VirtualMFADevices"] = true, nil }
@@ -5549,14 +7386,25 @@ end
 -- Required key: VirtualMFADevices
 -- @return ListVirtualMFADevicesResponse structure as a key-value pair table
 function M.ListVirtualMFADevicesResponse(args)
-	assert(args, "You must provdide an argument table when creating ListVirtualMFADevicesResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListVirtualMFADevicesResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Marker"] = args["Marker"],
 		["IsTruncated"] = args["IsTruncated"],
 		["VirtualMFADevices"] = args["VirtualMFADevices"],
 	}
-	asserts.AssertListVirtualMFADevicesResponse(t)
-	return t
+	asserts.AssertListVirtualMFADevicesResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateRoleResponse = { ["Role"] = true, nil }
@@ -5579,12 +7427,23 @@ end
 -- Required key: Role
 -- @return CreateRoleResponse structure as a key-value pair table
 function M.CreateRoleResponse(args)
-	assert(args, "You must provdide an argument table when creating CreateRoleResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateRoleResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Role"] = args["Role"],
 	}
-	asserts.AssertCreateRoleResponse(t)
-	return t
+	asserts.AssertCreateRoleResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdateServerCertificateRequest = { ["NewPath"] = true, ["NewServerCertificateName"] = true, ["ServerCertificateName"] = true, nil }
@@ -5611,14 +7470,25 @@ end
 -- Required key: ServerCertificateName
 -- @return UpdateServerCertificateRequest structure as a key-value pair table
 function M.UpdateServerCertificateRequest(args)
-	assert(args, "You must provdide an argument table when creating UpdateServerCertificateRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateServerCertificateRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NewPath"] = args["NewPath"],
 		["NewServerCertificateName"] = args["NewServerCertificateName"],
 		["ServerCertificateName"] = args["ServerCertificateName"],
 	}
-	asserts.AssertUpdateServerCertificateRequest(t)
-	return t
+	asserts.AssertUpdateServerCertificateRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AttachGroupPolicyRequest = { ["GroupName"] = true, ["PolicyArn"] = true, nil }
@@ -5645,13 +7515,24 @@ end
 -- Required key: PolicyArn
 -- @return AttachGroupPolicyRequest structure as a key-value pair table
 function M.AttachGroupPolicyRequest(args)
-	assert(args, "You must provdide an argument table when creating AttachGroupPolicyRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AttachGroupPolicyRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["GroupName"] = args["GroupName"],
 		["PolicyArn"] = args["PolicyArn"],
 	}
-	asserts.AssertAttachGroupPolicyRequest(t)
-	return t
+	asserts.AssertAttachGroupPolicyRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListAccountAliasesRequest = { ["Marker"] = true, ["MaxItems"] = true, nil }
@@ -5674,13 +7555,24 @@ end
 -- * MaxItems [maxItemsType] <p>(Optional) Use this only when paginating results to indicate the maximum number of items you want in the response. If additional items exist beyond the maximum you specify, the <code>IsTruncated</code> response element is <code>true</code>.</p> <p>If you do not include this parameter, it defaults to 100. Note that IAM might return fewer results, even when there are more results available. In that case, the <code>IsTruncated</code> response element returns <code>true</code> and <code>Marker</code> contains a value to include in the subsequent call that tells the service where to continue from.</p>
 -- @return ListAccountAliasesRequest structure as a key-value pair table
 function M.ListAccountAliasesRequest(args)
-	assert(args, "You must provdide an argument table when creating ListAccountAliasesRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListAccountAliasesRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Marker"] = args["Marker"],
 		["MaxItems"] = args["MaxItems"],
 	}
-	asserts.AssertListAccountAliasesRequest(t)
-	return t
+	asserts.AssertListAccountAliasesRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AddUserToGroupRequest = { ["UserName"] = true, ["GroupName"] = true, nil }
@@ -5707,13 +7599,24 @@ end
 -- Required key: UserName
 -- @return AddUserToGroupRequest structure as a key-value pair table
 function M.AddUserToGroupRequest(args)
-	assert(args, "You must provdide an argument table when creating AddUserToGroupRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AddUserToGroupRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["UserName"] = args["UserName"],
 		["GroupName"] = args["GroupName"],
 	}
-	asserts.AssertAddUserToGroupRequest(t)
-	return t
+	asserts.AssertAddUserToGroupRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DetachUserPolicyRequest = { ["UserName"] = true, ["PolicyArn"] = true, nil }
@@ -5740,13 +7643,24 @@ end
 -- Required key: PolicyArn
 -- @return DetachUserPolicyRequest structure as a key-value pair table
 function M.DetachUserPolicyRequest(args)
-	assert(args, "You must provdide an argument table when creating DetachUserPolicyRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DetachUserPolicyRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["UserName"] = args["UserName"],
 		["PolicyArn"] = args["PolicyArn"],
 	}
-	asserts.AssertDetachUserPolicyRequest(t)
-	return t
+	asserts.AssertDetachUserPolicyRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListRolesResponse = { ["Marker"] = true, ["IsTruncated"] = true, ["Roles"] = true, nil }
@@ -5773,14 +7687,25 @@ end
 -- Required key: Roles
 -- @return ListRolesResponse structure as a key-value pair table
 function M.ListRolesResponse(args)
-	assert(args, "You must provdide an argument table when creating ListRolesResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListRolesResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Marker"] = args["Marker"],
 		["IsTruncated"] = args["IsTruncated"],
 		["Roles"] = args["Roles"],
 	}
-	asserts.AssertListRolesResponse(t)
-	return t
+	asserts.AssertListRolesResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.MFADevice = { ["UserName"] = true, ["SerialNumber"] = true, ["EnableDate"] = true, nil }
@@ -5811,14 +7736,25 @@ end
 -- Required key: EnableDate
 -- @return MFADevice structure as a key-value pair table
 function M.MFADevice(args)
-	assert(args, "You must provdide an argument table when creating MFADevice")
-	local t = { 
+	assert(args, "You must provide an argument table when creating MFADevice")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["UserName"] = args["UserName"],
 		["SerialNumber"] = args["SerialNumber"],
 		["EnableDate"] = args["EnableDate"],
 	}
-	asserts.AssertMFADevice(t)
-	return t
+	asserts.AssertMFADevice(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidUserTypeException = { ["message"] = true, nil }
@@ -5839,12 +7775,23 @@ end
 -- * message [invalidUserTypeMessage] 
 -- @return InvalidUserTypeException structure as a key-value pair table
 function M.InvalidUserTypeException(args)
-	assert(args, "You must provdide an argument table when creating InvalidUserTypeException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidUserTypeException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertInvalidUserTypeException(t)
-	return t
+	asserts.AssertInvalidUserTypeException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetRoleResponse = { ["Role"] = true, nil }
@@ -5867,12 +7814,23 @@ end
 -- Required key: Role
 -- @return GetRoleResponse structure as a key-value pair table
 function M.GetRoleResponse(args)
-	assert(args, "You must provdide an argument table when creating GetRoleResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetRoleResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Role"] = args["Role"],
 	}
-	asserts.AssertGetRoleResponse(t)
-	return t
+	asserts.AssertGetRoleResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ServiceSpecificCredential = { ["UserName"] = true, ["Status"] = true, ["CreateDate"] = true, ["ServiceName"] = true, ["ServicePassword"] = true, ["ServiceSpecificCredentialId"] = true, ["ServiceUserName"] = true, nil }
@@ -5919,8 +7877,14 @@ end
 -- Required key: Status
 -- @return ServiceSpecificCredential structure as a key-value pair table
 function M.ServiceSpecificCredential(args)
-	assert(args, "You must provdide an argument table when creating ServiceSpecificCredential")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ServiceSpecificCredential")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["UserName"] = args["UserName"],
 		["Status"] = args["Status"],
 		["CreateDate"] = args["CreateDate"],
@@ -5929,8 +7893,13 @@ function M.ServiceSpecificCredential(args)
 		["ServiceSpecificCredentialId"] = args["ServiceSpecificCredentialId"],
 		["ServiceUserName"] = args["ServiceUserName"],
 	}
-	asserts.AssertServiceSpecificCredential(t)
-	return t
+	asserts.AssertServiceSpecificCredential(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdateSAMLProviderResponse = { ["SAMLProviderArn"] = true, nil }
@@ -5951,12 +7920,23 @@ end
 -- * SAMLProviderArn [arnType] <p>The Amazon Resource Name (ARN) of the SAML provider that was updated.</p>
 -- @return UpdateSAMLProviderResponse structure as a key-value pair table
 function M.UpdateSAMLProviderResponse(args)
-	assert(args, "You must provdide an argument table when creating UpdateSAMLProviderResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateSAMLProviderResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["SAMLProviderArn"] = args["SAMLProviderArn"],
 	}
-	asserts.AssertUpdateSAMLProviderResponse(t)
-	return t
+	asserts.AssertUpdateSAMLProviderResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ServiceNotSupportedException = { ["message"] = true, nil }
@@ -5977,12 +7957,23 @@ end
 -- * message [serviceNotSupportedMessage] 
 -- @return ServiceNotSupportedException structure as a key-value pair table
 function M.ServiceNotSupportedException(args)
-	assert(args, "You must provdide an argument table when creating ServiceNotSupportedException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ServiceNotSupportedException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertServiceNotSupportedException(t)
-	return t
+	asserts.AssertServiceNotSupportedException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.PasswordPolicy = { ["AllowUsersToChangePassword"] = true, ["RequireLowercaseCharacters"] = true, ["RequireUppercaseCharacters"] = true, ["MinimumPasswordLength"] = true, ["RequireNumbers"] = true, ["PasswordReusePrevention"] = true, ["HardExpiry"] = true, ["RequireSymbols"] = true, ["MaxPasswordAge"] = true, ["ExpirePasswords"] = true, nil }
@@ -6021,8 +8012,14 @@ end
 -- * ExpirePasswords [booleanType] <p>Indicates whether passwords in the account expire. Returns true if MaxPasswordAge is contains a value greater than 0. Returns false if MaxPasswordAge is 0 or not present.</p>
 -- @return PasswordPolicy structure as a key-value pair table
 function M.PasswordPolicy(args)
-	assert(args, "You must provdide an argument table when creating PasswordPolicy")
-	local t = { 
+	assert(args, "You must provide an argument table when creating PasswordPolicy")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["AllowUsersToChangePassword"] = args["AllowUsersToChangePassword"],
 		["RequireLowercaseCharacters"] = args["RequireLowercaseCharacters"],
 		["RequireUppercaseCharacters"] = args["RequireUppercaseCharacters"],
@@ -6034,8 +8031,13 @@ function M.PasswordPolicy(args)
 		["MaxPasswordAge"] = args["MaxPasswordAge"],
 		["ExpirePasswords"] = args["ExpirePasswords"],
 	}
-	asserts.AssertPasswordPolicy(t)
-	return t
+	asserts.AssertPasswordPolicy(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListMFADevicesResponse = { ["Marker"] = true, ["MFADevices"] = true, ["IsTruncated"] = true, nil }
@@ -6062,14 +8064,25 @@ end
 -- Required key: MFADevices
 -- @return ListMFADevicesResponse structure as a key-value pair table
 function M.ListMFADevicesResponse(args)
-	assert(args, "You must provdide an argument table when creating ListMFADevicesResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListMFADevicesResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Marker"] = args["Marker"],
 		["MFADevices"] = args["MFADevices"],
 		["IsTruncated"] = args["IsTruncated"],
 	}
-	asserts.AssertListMFADevicesResponse(t)
-	return t
+	asserts.AssertListMFADevicesResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetSSHPublicKeyResponse = { ["SSHPublicKey"] = true, nil }
@@ -6090,12 +8103,23 @@ end
 -- * SSHPublicKey [SSHPublicKey] <p>A structure containing details about the SSH public key.</p>
 -- @return GetSSHPublicKeyResponse structure as a key-value pair table
 function M.GetSSHPublicKeyResponse(args)
-	assert(args, "You must provdide an argument table when creating GetSSHPublicKeyResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetSSHPublicKeyResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["SSHPublicKey"] = args["SSHPublicKey"],
 	}
-	asserts.AssertGetSSHPublicKeyResponse(t)
-	return t
+	asserts.AssertGetSSHPublicKeyResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListAccessKeysResponse = { ["Marker"] = true, ["AccessKeyMetadata"] = true, ["IsTruncated"] = true, nil }
@@ -6122,14 +8146,25 @@ end
 -- Required key: AccessKeyMetadata
 -- @return ListAccessKeysResponse structure as a key-value pair table
 function M.ListAccessKeysResponse(args)
-	assert(args, "You must provdide an argument table when creating ListAccessKeysResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListAccessKeysResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Marker"] = args["Marker"],
 		["AccessKeyMetadata"] = args["AccessKeyMetadata"],
 		["IsTruncated"] = args["IsTruncated"],
 	}
-	asserts.AssertListAccessKeysResponse(t)
-	return t
+	asserts.AssertListAccessKeysResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.PasswordPolicyViolationException = { ["message"] = true, nil }
@@ -6150,12 +8185,23 @@ end
 -- * message [passwordPolicyViolationMessage] 
 -- @return PasswordPolicyViolationException structure as a key-value pair table
 function M.PasswordPolicyViolationException(args)
-	assert(args, "You must provdide an argument table when creating PasswordPolicyViolationException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating PasswordPolicyViolationException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertPasswordPolicyViolationException(t)
-	return t
+	asserts.AssertPasswordPolicyViolationException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.PolicyUser = { ["UserName"] = true, ["UserId"] = true, nil }
@@ -6178,13 +8224,24 @@ end
 -- * UserId [idType] <p>The stable and unique string identifying the user. For more information about IDs, see <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/reference_identifiers.html">IAM Identifiers</a> in the <i>IAM User Guide</i>.</p>
 -- @return PolicyUser structure as a key-value pair table
 function M.PolicyUser(args)
-	assert(args, "You must provdide an argument table when creating PolicyUser")
-	local t = { 
+	assert(args, "You must provide an argument table when creating PolicyUser")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["UserName"] = args["UserName"],
 		["UserId"] = args["UserId"],
 	}
-	asserts.AssertPolicyUser(t)
-	return t
+	asserts.AssertPolicyUser(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListGroupsRequest = { ["Marker"] = true, ["PathPrefix"] = true, ["MaxItems"] = true, nil }
@@ -6209,14 +8266,25 @@ end
 -- * MaxItems [maxItemsType] <p>(Optional) Use this only when paginating results to indicate the maximum number of items you want in the response. If additional items exist beyond the maximum you specify, the <code>IsTruncated</code> response element is <code>true</code>.</p> <p>If you do not include this parameter, it defaults to 100. Note that IAM might return fewer results, even when there are more results available. In that case, the <code>IsTruncated</code> response element returns <code>true</code> and <code>Marker</code> contains a value to include in the subsequent call that tells the service where to continue from.</p>
 -- @return ListGroupsRequest structure as a key-value pair table
 function M.ListGroupsRequest(args)
-	assert(args, "You must provdide an argument table when creating ListGroupsRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListGroupsRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Marker"] = args["Marker"],
 		["PathPrefix"] = args["PathPrefix"],
 		["MaxItems"] = args["MaxItems"],
 	}
-	asserts.AssertListGroupsRequest(t)
-	return t
+	asserts.AssertListGroupsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DetachGroupPolicyRequest = { ["GroupName"] = true, ["PolicyArn"] = true, nil }
@@ -6243,13 +8311,24 @@ end
 -- Required key: PolicyArn
 -- @return DetachGroupPolicyRequest structure as a key-value pair table
 function M.DetachGroupPolicyRequest(args)
-	assert(args, "You must provdide an argument table when creating DetachGroupPolicyRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DetachGroupPolicyRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["GroupName"] = args["GroupName"],
 		["PolicyArn"] = args["PolicyArn"],
 	}
-	asserts.AssertDetachGroupPolicyRequest(t)
-	return t
+	asserts.AssertDetachGroupPolicyRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Statement = { ["SourcePolicyId"] = true, ["StartPosition"] = true, ["SourcePolicyType"] = true, ["EndPosition"] = true, nil }
@@ -6276,15 +8355,26 @@ end
 -- * EndPosition [Position] <p>The row and column of the end of a <code>Statement</code> in an IAM policy.</p>
 -- @return Statement structure as a key-value pair table
 function M.Statement(args)
-	assert(args, "You must provdide an argument table when creating Statement")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Statement")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["SourcePolicyId"] = args["SourcePolicyId"],
 		["StartPosition"] = args["StartPosition"],
 		["SourcePolicyType"] = args["SourcePolicyType"],
 		["EndPosition"] = args["EndPosition"],
 	}
-	asserts.AssertStatement(t)
-	return t
+	asserts.AssertStatement(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.PutGroupPolicyRequest = { ["GroupName"] = true, ["PolicyDocument"] = true, ["PolicyName"] = true, nil }
@@ -6315,14 +8405,25 @@ end
 -- Required key: PolicyDocument
 -- @return PutGroupPolicyRequest structure as a key-value pair table
 function M.PutGroupPolicyRequest(args)
-	assert(args, "You must provdide an argument table when creating PutGroupPolicyRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating PutGroupPolicyRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["GroupName"] = args["GroupName"],
 		["PolicyDocument"] = args["PolicyDocument"],
 		["PolicyName"] = args["PolicyName"],
 	}
-	asserts.AssertPutGroupPolicyRequest(t)
-	return t
+	asserts.AssertPutGroupPolicyRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetRoleRequest = { ["RoleName"] = true, nil }
@@ -6345,12 +8446,23 @@ end
 -- Required key: RoleName
 -- @return GetRoleRequest structure as a key-value pair table
 function M.GetRoleRequest(args)
-	assert(args, "You must provdide an argument table when creating GetRoleRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetRoleRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["RoleName"] = args["RoleName"],
 	}
-	asserts.AssertGetRoleRequest(t)
-	return t
+	asserts.AssertGetRoleRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateServiceLinkedRoleRequest = { ["AWSServiceName"] = true, ["Description"] = true, ["CustomSuffix"] = true, nil }
@@ -6377,14 +8489,25 @@ end
 -- Required key: AWSServiceName
 -- @return CreateServiceLinkedRoleRequest structure as a key-value pair table
 function M.CreateServiceLinkedRoleRequest(args)
-	assert(args, "You must provdide an argument table when creating CreateServiceLinkedRoleRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateServiceLinkedRoleRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["AWSServiceName"] = args["AWSServiceName"],
 		["Description"] = args["Description"],
 		["CustomSuffix"] = args["CustomSuffix"],
 	}
-	asserts.AssertCreateServiceLinkedRoleRequest(t)
-	return t
+	asserts.AssertCreateServiceLinkedRoleRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteVirtualMFADeviceRequest = { ["SerialNumber"] = true, nil }
@@ -6407,12 +8530,23 @@ end
 -- Required key: SerialNumber
 -- @return DeleteVirtualMFADeviceRequest structure as a key-value pair table
 function M.DeleteVirtualMFADeviceRequest(args)
-	assert(args, "You must provdide an argument table when creating DeleteVirtualMFADeviceRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteVirtualMFADeviceRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["SerialNumber"] = args["SerialNumber"],
 	}
-	asserts.AssertDeleteVirtualMFADeviceRequest(t)
-	return t
+	asserts.AssertDeleteVirtualMFADeviceRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AddRoleToInstanceProfileRequest = { ["RoleName"] = true, ["InstanceProfileName"] = true, nil }
@@ -6439,13 +8573,24 @@ end
 -- Required key: RoleName
 -- @return AddRoleToInstanceProfileRequest structure as a key-value pair table
 function M.AddRoleToInstanceProfileRequest(args)
-	assert(args, "You must provdide an argument table when creating AddRoleToInstanceProfileRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AddRoleToInstanceProfileRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["RoleName"] = args["RoleName"],
 		["InstanceProfileName"] = args["InstanceProfileName"],
 	}
-	asserts.AssertAddRoleToInstanceProfileRequest(t)
-	return t
+	asserts.AssertAddRoleToInstanceProfileRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetAccessKeyLastUsedResponse = { ["UserName"] = true, ["AccessKeyLastUsed"] = true, nil }
@@ -6468,13 +8613,24 @@ end
 -- * AccessKeyLastUsed [AccessKeyLastUsed] <p>Contains information about the last time the access key was used.</p>
 -- @return GetAccessKeyLastUsedResponse structure as a key-value pair table
 function M.GetAccessKeyLastUsedResponse(args)
-	assert(args, "You must provdide an argument table when creating GetAccessKeyLastUsedResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetAccessKeyLastUsedResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["UserName"] = args["UserName"],
 		["AccessKeyLastUsed"] = args["AccessKeyLastUsed"],
 	}
-	asserts.AssertGetAccessKeyLastUsedResponse(t)
-	return t
+	asserts.AssertGetAccessKeyLastUsedResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Position = { ["Column"] = true, ["Line"] = true, nil }
@@ -6497,13 +8653,24 @@ end
 -- * Line [LineNumber] <p>The line containing the specified position in the document.</p>
 -- @return Position structure as a key-value pair table
 function M.Position(args)
-	assert(args, "You must provdide an argument table when creating Position")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Position")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Column"] = args["Column"],
 		["Line"] = args["Line"],
 	}
-	asserts.AssertPosition(t)
-	return t
+	asserts.AssertPosition(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UploadServerCertificateRequest = { ["Path"] = true, ["CertificateBody"] = true, ["PrivateKey"] = true, ["ServerCertificateName"] = true, ["CertificateChain"] = true, nil }
@@ -6538,16 +8705,27 @@ end
 -- Required key: PrivateKey
 -- @return UploadServerCertificateRequest structure as a key-value pair table
 function M.UploadServerCertificateRequest(args)
-	assert(args, "You must provdide an argument table when creating UploadServerCertificateRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UploadServerCertificateRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Path"] = args["Path"],
 		["CertificateBody"] = args["CertificateBody"],
 		["PrivateKey"] = args["PrivateKey"],
 		["ServerCertificateName"] = args["ServerCertificateName"],
 		["CertificateChain"] = args["CertificateChain"],
 	}
-	asserts.AssertUploadServerCertificateRequest(t)
-	return t
+	asserts.AssertUploadServerCertificateRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.LoginProfile = { ["UserName"] = true, ["CreateDate"] = true, ["PasswordResetRequired"] = true, nil }
@@ -6576,14 +8754,25 @@ end
 -- Required key: CreateDate
 -- @return LoginProfile structure as a key-value pair table
 function M.LoginProfile(args)
-	assert(args, "You must provdide an argument table when creating LoginProfile")
-	local t = { 
+	assert(args, "You must provide an argument table when creating LoginProfile")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["UserName"] = args["UserName"],
 		["CreateDate"] = args["CreateDate"],
 		["PasswordResetRequired"] = args["PasswordResetRequired"],
 	}
-	asserts.AssertLoginProfile(t)
-	return t
+	asserts.AssertLoginProfile(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateAccessKeyRequest = { ["UserName"] = true, nil }
@@ -6604,12 +8793,23 @@ end
 -- * UserName [existingUserNameType] <p>The name of the IAM user that the new key will belong to.</p> <p>This parameter allows (per its <a href="http://wikipedia.org/wiki/regex">regex pattern</a>) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: =,.@-</p>
 -- @return CreateAccessKeyRequest structure as a key-value pair table
 function M.CreateAccessKeyRequest(args)
-	assert(args, "You must provdide an argument table when creating CreateAccessKeyRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateAccessKeyRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["UserName"] = args["UserName"],
 	}
-	asserts.AssertCreateAccessKeyRequest(t)
-	return t
+	asserts.AssertCreateAccessKeyRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ContextEntry = { ["ContextKeyValues"] = true, ["ContextKeyType"] = true, ["ContextKeyName"] = true, nil }
@@ -6634,14 +8834,25 @@ end
 -- * ContextKeyName [ContextKeyNameType] <p>The full name of a condition context key, including the service prefix. For example, <code>aws:SourceIp</code> or <code>s3:VersionId</code>.</p>
 -- @return ContextEntry structure as a key-value pair table
 function M.ContextEntry(args)
-	assert(args, "You must provdide an argument table when creating ContextEntry")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ContextEntry")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ContextKeyValues"] = args["ContextKeyValues"],
 		["ContextKeyType"] = args["ContextKeyType"],
 		["ContextKeyName"] = args["ContextKeyName"],
 	}
-	asserts.AssertContextEntry(t)
-	return t
+	asserts.AssertContextEntry(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.PolicyRole = { ["RoleName"] = true, ["RoleId"] = true, nil }
@@ -6664,13 +8875,24 @@ end
 -- * RoleId [idType] <p>The stable and unique string identifying the role. For more information about IDs, see <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/reference_identifiers.html">IAM Identifiers</a> in the <i>IAM User Guide</i>.</p>
 -- @return PolicyRole structure as a key-value pair table
 function M.PolicyRole(args)
-	assert(args, "You must provdide an argument table when creating PolicyRole")
-	local t = { 
+	assert(args, "You must provide an argument table when creating PolicyRole")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["RoleName"] = args["RoleName"],
 		["RoleId"] = args["RoleId"],
 	}
-	asserts.AssertPolicyRole(t)
-	return t
+	asserts.AssertPolicyRole(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateInstanceProfileRequest = { ["Path"] = true, ["InstanceProfileName"] = true, nil }
@@ -6695,13 +8917,24 @@ end
 -- Required key: InstanceProfileName
 -- @return CreateInstanceProfileRequest structure as a key-value pair table
 function M.CreateInstanceProfileRequest(args)
-	assert(args, "You must provdide an argument table when creating CreateInstanceProfileRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateInstanceProfileRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Path"] = args["Path"],
 		["InstanceProfileName"] = args["InstanceProfileName"],
 	}
-	asserts.AssertCreateInstanceProfileRequest(t)
-	return t
+	asserts.AssertCreateInstanceProfileRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteSSHPublicKeyRequest = { ["UserName"] = true, ["SSHPublicKeyId"] = true, nil }
@@ -6728,13 +8961,24 @@ end
 -- Required key: SSHPublicKeyId
 -- @return DeleteSSHPublicKeyRequest structure as a key-value pair table
 function M.DeleteSSHPublicKeyRequest(args)
-	assert(args, "You must provdide an argument table when creating DeleteSSHPublicKeyRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteSSHPublicKeyRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["UserName"] = args["UserName"],
 		["SSHPublicKeyId"] = args["SSHPublicKeyId"],
 	}
-	asserts.AssertDeleteSSHPublicKeyRequest(t)
-	return t
+	asserts.AssertDeleteSSHPublicKeyRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteGroupRequest = { ["GroupName"] = true, nil }
@@ -6757,12 +9001,23 @@ end
 -- Required key: GroupName
 -- @return DeleteGroupRequest structure as a key-value pair table
 function M.DeleteGroupRequest(args)
-	assert(args, "You must provdide an argument table when creating DeleteGroupRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteGroupRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["GroupName"] = args["GroupName"],
 	}
-	asserts.AssertDeleteGroupRequest(t)
-	return t
+	asserts.AssertDeleteGroupRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreatePolicyResponse = { ["Policy"] = true, nil }
@@ -6783,12 +9038,23 @@ end
 -- * Policy [Policy] <p>A structure containing details about the new policy.</p>
 -- @return CreatePolicyResponse structure as a key-value pair table
 function M.CreatePolicyResponse(args)
-	assert(args, "You must provdide an argument table when creating CreatePolicyResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreatePolicyResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Policy"] = args["Policy"],
 	}
-	asserts.AssertCreatePolicyResponse(t)
-	return t
+	asserts.AssertCreatePolicyResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DetachRolePolicyRequest = { ["RoleName"] = true, ["PolicyArn"] = true, nil }
@@ -6815,13 +9081,24 @@ end
 -- Required key: PolicyArn
 -- @return DetachRolePolicyRequest structure as a key-value pair table
 function M.DetachRolePolicyRequest(args)
-	assert(args, "You must provdide an argument table when creating DetachRolePolicyRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DetachRolePolicyRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["RoleName"] = args["RoleName"],
 		["PolicyArn"] = args["PolicyArn"],
 	}
-	asserts.AssertDetachRolePolicyRequest(t)
-	return t
+	asserts.AssertDetachRolePolicyRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdateSSHPublicKeyRequest = { ["UserName"] = true, ["Status"] = true, ["SSHPublicKeyId"] = true, nil }
@@ -6852,14 +9129,25 @@ end
 -- Required key: Status
 -- @return UpdateSSHPublicKeyRequest structure as a key-value pair table
 function M.UpdateSSHPublicKeyRequest(args)
-	assert(args, "You must provdide an argument table when creating UpdateSSHPublicKeyRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateSSHPublicKeyRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["UserName"] = args["UserName"],
 		["Status"] = args["Status"],
 		["SSHPublicKeyId"] = args["SSHPublicKeyId"],
 	}
-	asserts.AssertUpdateSSHPublicKeyRequest(t)
-	return t
+	asserts.AssertUpdateSSHPublicKeyRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.NoSuchEntityException = { ["message"] = true, nil }
@@ -6880,12 +9168,23 @@ end
 -- * message [noSuchEntityMessage] 
 -- @return NoSuchEntityException structure as a key-value pair table
 function M.NoSuchEntityException(args)
-	assert(args, "You must provdide an argument table when creating NoSuchEntityException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating NoSuchEntityException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertNoSuchEntityException(t)
-	return t
+	asserts.AssertNoSuchEntityException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.RemoveRoleFromInstanceProfileRequest = { ["RoleName"] = true, ["InstanceProfileName"] = true, nil }
@@ -6912,13 +9211,24 @@ end
 -- Required key: RoleName
 -- @return RemoveRoleFromInstanceProfileRequest structure as a key-value pair table
 function M.RemoveRoleFromInstanceProfileRequest(args)
-	assert(args, "You must provdide an argument table when creating RemoveRoleFromInstanceProfileRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating RemoveRoleFromInstanceProfileRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["RoleName"] = args["RoleName"],
 		["InstanceProfileName"] = args["InstanceProfileName"],
 	}
-	asserts.AssertRemoveRoleFromInstanceProfileRequest(t)
-	return t
+	asserts.AssertRemoveRoleFromInstanceProfileRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.SimulatePrincipalPolicyRequest = { ["PolicySourceArn"] = true, ["ResourceHandlingOption"] = true, ["ContextEntries"] = true, ["CallerArn"] = true, ["ResourceArns"] = true, ["PolicyInputList"] = true, ["ResourcePolicy"] = true, ["MaxItems"] = true, ["Marker"] = true, ["ActionNames"] = true, ["ResourceOwner"] = true, nil }
@@ -6963,8 +9273,14 @@ end
 -- Required key: ActionNames
 -- @return SimulatePrincipalPolicyRequest structure as a key-value pair table
 function M.SimulatePrincipalPolicyRequest(args)
-	assert(args, "You must provdide an argument table when creating SimulatePrincipalPolicyRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating SimulatePrincipalPolicyRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["PolicySourceArn"] = args["PolicySourceArn"],
 		["ResourceHandlingOption"] = args["ResourceHandlingOption"],
 		["ContextEntries"] = args["ContextEntries"],
@@ -6977,8 +9293,13 @@ function M.SimulatePrincipalPolicyRequest(args)
 		["ActionNames"] = args["ActionNames"],
 		["ResourceOwner"] = args["ResourceOwner"],
 	}
-	asserts.AssertSimulatePrincipalPolicyRequest(t)
-	return t
+	asserts.AssertSimulatePrincipalPolicyRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetUserPolicyRequest = { ["UserName"] = true, ["PolicyName"] = true, nil }
@@ -7005,13 +9326,24 @@ end
 -- Required key: PolicyName
 -- @return GetUserPolicyRequest structure as a key-value pair table
 function M.GetUserPolicyRequest(args)
-	assert(args, "You must provdide an argument table when creating GetUserPolicyRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetUserPolicyRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["UserName"] = args["UserName"],
 		["PolicyName"] = args["PolicyName"],
 	}
-	asserts.AssertGetUserPolicyRequest(t)
-	return t
+	asserts.AssertGetUserPolicyRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetRolePolicyRequest = { ["RoleName"] = true, ["PolicyName"] = true, nil }
@@ -7038,13 +9370,24 @@ end
 -- Required key: PolicyName
 -- @return GetRolePolicyRequest structure as a key-value pair table
 function M.GetRolePolicyRequest(args)
-	assert(args, "You must provdide an argument table when creating GetRolePolicyRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetRolePolicyRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["RoleName"] = args["RoleName"],
 		["PolicyName"] = args["PolicyName"],
 	}
-	asserts.AssertGetRolePolicyRequest(t)
-	return t
+	asserts.AssertGetRolePolicyRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteConflictException = { ["message"] = true, nil }
@@ -7065,12 +9408,23 @@ end
 -- * message [deleteConflictMessage] 
 -- @return DeleteConflictException structure as a key-value pair table
 function M.DeleteConflictException(args)
-	assert(args, "You must provdide an argument table when creating DeleteConflictException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteConflictException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertDeleteConflictException(t)
-	return t
+	asserts.AssertDeleteConflictException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateSAMLProviderRequest = { ["SAMLMetadataDocument"] = true, ["Name"] = true, nil }
@@ -7097,13 +9451,24 @@ end
 -- Required key: Name
 -- @return CreateSAMLProviderRequest structure as a key-value pair table
 function M.CreateSAMLProviderRequest(args)
-	assert(args, "You must provdide an argument table when creating CreateSAMLProviderRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateSAMLProviderRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["SAMLMetadataDocument"] = args["SAMLMetadataDocument"],
 		["Name"] = args["Name"],
 	}
-	asserts.AssertCreateSAMLProviderRequest(t)
-	return t
+	asserts.AssertCreateSAMLProviderRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteLoginProfileRequest = { ["UserName"] = true, nil }
@@ -7126,12 +9491,23 @@ end
 -- Required key: UserName
 -- @return DeleteLoginProfileRequest structure as a key-value pair table
 function M.DeleteLoginProfileRequest(args)
-	assert(args, "You must provdide an argument table when creating DeleteLoginProfileRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteLoginProfileRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["UserName"] = args["UserName"],
 	}
-	asserts.AssertDeleteLoginProfileRequest(t)
-	return t
+	asserts.AssertDeleteLoginProfileRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateVirtualMFADeviceRequest = { ["Path"] = true, ["VirtualMFADeviceName"] = true, nil }
@@ -7156,13 +9532,24 @@ end
 -- Required key: VirtualMFADeviceName
 -- @return CreateVirtualMFADeviceRequest structure as a key-value pair table
 function M.CreateVirtualMFADeviceRequest(args)
-	assert(args, "You must provdide an argument table when creating CreateVirtualMFADeviceRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateVirtualMFADeviceRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Path"] = args["Path"],
 		["VirtualMFADeviceName"] = args["VirtualMFADeviceName"],
 	}
-	asserts.AssertCreateVirtualMFADeviceRequest(t)
-	return t
+	asserts.AssertCreateVirtualMFADeviceRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.User = { ["UserName"] = true, ["PasswordLastUsed"] = true, ["CreateDate"] = true, ["UserId"] = true, ["Path"] = true, ["Arn"] = true, nil }
@@ -7203,8 +9590,14 @@ end
 -- Required key: CreateDate
 -- @return User structure as a key-value pair table
 function M.User(args)
-	assert(args, "You must provdide an argument table when creating User")
-	local t = { 
+	assert(args, "You must provide an argument table when creating User")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["UserName"] = args["UserName"],
 		["PasswordLastUsed"] = args["PasswordLastUsed"],
 		["CreateDate"] = args["CreateDate"],
@@ -7212,8 +9605,13 @@ function M.User(args)
 		["Path"] = args["Path"],
 		["Arn"] = args["Arn"],
 	}
-	asserts.AssertUser(t)
-	return t
+	asserts.AssertUser(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetInstanceProfileRequest = { ["InstanceProfileName"] = true, nil }
@@ -7236,12 +9634,23 @@ end
 -- Required key: InstanceProfileName
 -- @return GetInstanceProfileRequest structure as a key-value pair table
 function M.GetInstanceProfileRequest(args)
-	assert(args, "You must provdide an argument table when creating GetInstanceProfileRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetInstanceProfileRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["InstanceProfileName"] = args["InstanceProfileName"],
 	}
-	asserts.AssertGetInstanceProfileRequest(t)
-	return t
+	asserts.AssertGetInstanceProfileRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.SimulatePolicyResponse = { ["Marker"] = true, ["EvaluationResults"] = true, ["IsTruncated"] = true, nil }
@@ -7266,14 +9675,25 @@ end
 -- * IsTruncated [booleanType] <p>A flag that indicates whether there are more items to return. If your results were truncated, you can make a subsequent pagination request using the <code>Marker</code> request parameter to retrieve more items. Note that IAM might return fewer than the <code>MaxItems</code> number of results even when there are more results available. We recommend that you check <code>IsTruncated</code> after every call to ensure that you receive all of your results.</p>
 -- @return SimulatePolicyResponse structure as a key-value pair table
 function M.SimulatePolicyResponse(args)
-	assert(args, "You must provdide an argument table when creating SimulatePolicyResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating SimulatePolicyResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Marker"] = args["Marker"],
 		["EvaluationResults"] = args["EvaluationResults"],
 		["IsTruncated"] = args["IsTruncated"],
 	}
-	asserts.AssertSimulatePolicyResponse(t)
-	return t
+	asserts.AssertSimulatePolicyResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateServiceLinkedRoleResponse = { ["Role"] = true, nil }
@@ -7294,12 +9714,23 @@ end
 -- * Role [Role] <p>A <a>Role</a> object that contains details about the newly created role.</p>
 -- @return CreateServiceLinkedRoleResponse structure as a key-value pair table
 function M.CreateServiceLinkedRoleResponse(args)
-	assert(args, "You must provdide an argument table when creating CreateServiceLinkedRoleResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateServiceLinkedRoleResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Role"] = args["Role"],
 	}
-	asserts.AssertCreateServiceLinkedRoleResponse(t)
-	return t
+	asserts.AssertCreateServiceLinkedRoleResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListEntitiesForPolicyRequest = { ["Marker"] = true, ["EntityFilter"] = true, ["PathPrefix"] = true, ["PolicyArn"] = true, ["MaxItems"] = true, nil }
@@ -7330,16 +9761,27 @@ end
 -- Required key: PolicyArn
 -- @return ListEntitiesForPolicyRequest structure as a key-value pair table
 function M.ListEntitiesForPolicyRequest(args)
-	assert(args, "You must provdide an argument table when creating ListEntitiesForPolicyRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListEntitiesForPolicyRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Marker"] = args["Marker"],
 		["EntityFilter"] = args["EntityFilter"],
 		["PathPrefix"] = args["PathPrefix"],
 		["PolicyArn"] = args["PolicyArn"],
 		["MaxItems"] = args["MaxItems"],
 	}
-	asserts.AssertListEntitiesForPolicyRequest(t)
-	return t
+	asserts.AssertListEntitiesForPolicyRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListInstanceProfilesForRoleRequest = { ["Marker"] = true, ["RoleName"] = true, ["MaxItems"] = true, nil }
@@ -7366,14 +9808,25 @@ end
 -- Required key: RoleName
 -- @return ListInstanceProfilesForRoleRequest structure as a key-value pair table
 function M.ListInstanceProfilesForRoleRequest(args)
-	assert(args, "You must provdide an argument table when creating ListInstanceProfilesForRoleRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListInstanceProfilesForRoleRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Marker"] = args["Marker"],
 		["RoleName"] = args["RoleName"],
 		["MaxItems"] = args["MaxItems"],
 	}
-	asserts.AssertListInstanceProfilesForRoleRequest(t)
-	return t
+	asserts.AssertListInstanceProfilesForRoleRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetOpenIDConnectProviderResponse = { ["Url"] = true, ["CreateDate"] = true, ["ThumbprintList"] = true, ["ClientIDList"] = true, nil }
@@ -7400,15 +9853,26 @@ end
 -- * ClientIDList [clientIDListType] <p>A list of client IDs (also known as audiences) that are associated with the specified IAM OIDC provider resource object. For more information, see <a>CreateOpenIDConnectProvider</a>.</p>
 -- @return GetOpenIDConnectProviderResponse structure as a key-value pair table
 function M.GetOpenIDConnectProviderResponse(args)
-	assert(args, "You must provdide an argument table when creating GetOpenIDConnectProviderResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetOpenIDConnectProviderResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Url"] = args["Url"],
 		["CreateDate"] = args["CreateDate"],
 		["ThumbprintList"] = args["ThumbprintList"],
 		["ClientIDList"] = args["ClientIDList"],
 	}
-	asserts.AssertGetOpenIDConnectProviderResponse(t)
-	return t
+	asserts.AssertGetOpenIDConnectProviderResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AddClientIDToOpenIDConnectProviderRequest = { ["OpenIDConnectProviderArn"] = true, ["ClientID"] = true, nil }
@@ -7435,13 +9899,24 @@ end
 -- Required key: ClientID
 -- @return AddClientIDToOpenIDConnectProviderRequest structure as a key-value pair table
 function M.AddClientIDToOpenIDConnectProviderRequest(args)
-	assert(args, "You must provdide an argument table when creating AddClientIDToOpenIDConnectProviderRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AddClientIDToOpenIDConnectProviderRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["OpenIDConnectProviderArn"] = args["OpenIDConnectProviderArn"],
 		["ClientID"] = args["ClientID"],
 	}
-	asserts.AssertAddClientIDToOpenIDConnectProviderRequest(t)
-	return t
+	asserts.AssertAddClientIDToOpenIDConnectProviderRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.MalformedCertificateException = { ["message"] = true, nil }
@@ -7462,12 +9937,23 @@ end
 -- * message [malformedCertificateMessage] 
 -- @return MalformedCertificateException structure as a key-value pair table
 function M.MalformedCertificateException(args)
-	assert(args, "You must provdide an argument table when creating MalformedCertificateException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating MalformedCertificateException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertMalformedCertificateException(t)
-	return t
+	asserts.AssertMalformedCertificateException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetPolicyVersionResponse = { ["PolicyVersion"] = true, nil }
@@ -7488,12 +9974,23 @@ end
 -- * PolicyVersion [PolicyVersion] <p>A structure containing details about the policy version.</p>
 -- @return GetPolicyVersionResponse structure as a key-value pair table
 function M.GetPolicyVersionResponse(args)
-	assert(args, "You must provdide an argument table when creating GetPolicyVersionResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetPolicyVersionResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["PolicyVersion"] = args["PolicyVersion"],
 	}
-	asserts.AssertGetPolicyVersionResponse(t)
-	return t
+	asserts.AssertGetPolicyVersionResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetSAMLProviderResponse = { ["CreateDate"] = true, ["SAMLMetadataDocument"] = true, ["ValidUntil"] = true, nil }
@@ -7518,14 +10015,25 @@ end
 -- * ValidUntil [dateType] <p>The expiration date and time for the SAML provider.</p>
 -- @return GetSAMLProviderResponse structure as a key-value pair table
 function M.GetSAMLProviderResponse(args)
-	assert(args, "You must provdide an argument table when creating GetSAMLProviderResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetSAMLProviderResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["CreateDate"] = args["CreateDate"],
 		["SAMLMetadataDocument"] = args["SAMLMetadataDocument"],
 		["ValidUntil"] = args["ValidUntil"],
 	}
-	asserts.AssertGetSAMLProviderResponse(t)
-	return t
+	asserts.AssertGetSAMLProviderResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListOpenIDConnectProvidersRequest = { nil }
@@ -7544,11 +10052,22 @@ end
 -- Valid keys:
 -- @return ListOpenIDConnectProvidersRequest structure as a key-value pair table
 function M.ListOpenIDConnectProvidersRequest(args)
-	assert(args, "You must provdide an argument table when creating ListOpenIDConnectProvidersRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListOpenIDConnectProvidersRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertListOpenIDConnectProvidersRequest(t)
-	return t
+	asserts.AssertListOpenIDConnectProvidersRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListInstanceProfilesResponse = { ["Marker"] = true, ["IsTruncated"] = true, ["InstanceProfiles"] = true, nil }
@@ -7575,14 +10094,25 @@ end
 -- Required key: InstanceProfiles
 -- @return ListInstanceProfilesResponse structure as a key-value pair table
 function M.ListInstanceProfilesResponse(args)
-	assert(args, "You must provdide an argument table when creating ListInstanceProfilesResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListInstanceProfilesResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Marker"] = args["Marker"],
 		["IsTruncated"] = args["IsTruncated"],
 		["InstanceProfiles"] = args["InstanceProfiles"],
 	}
-	asserts.AssertListInstanceProfilesResponse(t)
-	return t
+	asserts.AssertListInstanceProfilesResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateLoginProfileRequest = { ["UserName"] = true, ["PasswordResetRequired"] = true, ["Password"] = true, nil }
@@ -7611,14 +10141,25 @@ end
 -- Required key: Password
 -- @return CreateLoginProfileRequest structure as a key-value pair table
 function M.CreateLoginProfileRequest(args)
-	assert(args, "You must provdide an argument table when creating CreateLoginProfileRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateLoginProfileRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["UserName"] = args["UserName"],
 		["PasswordResetRequired"] = args["PasswordResetRequired"],
 		["Password"] = args["Password"],
 	}
-	asserts.AssertCreateLoginProfileRequest(t)
-	return t
+	asserts.AssertCreateLoginProfileRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListSAMLProvidersResponse = { ["SAMLProviderList"] = true, nil }
@@ -7639,12 +10180,23 @@ end
 -- * SAMLProviderList [SAMLProviderListType] <p>The list of SAML provider resource objects defined in IAM for this AWS account.</p>
 -- @return ListSAMLProvidersResponse structure as a key-value pair table
 function M.ListSAMLProvidersResponse(args)
-	assert(args, "You must provdide an argument table when creating ListSAMLProvidersResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListSAMLProvidersResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["SAMLProviderList"] = args["SAMLProviderList"],
 	}
-	asserts.AssertListSAMLProvidersResponse(t)
-	return t
+	asserts.AssertListSAMLProvidersResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdateServiceSpecificCredentialRequest = { ["UserName"] = true, ["Status"] = true, ["ServiceSpecificCredentialId"] = true, nil }
@@ -7673,14 +10225,25 @@ end
 -- Required key: Status
 -- @return UpdateServiceSpecificCredentialRequest structure as a key-value pair table
 function M.UpdateServiceSpecificCredentialRequest(args)
-	assert(args, "You must provdide an argument table when creating UpdateServiceSpecificCredentialRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateServiceSpecificCredentialRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["UserName"] = args["UserName"],
 		["Status"] = args["Status"],
 		["ServiceSpecificCredentialId"] = args["ServiceSpecificCredentialId"],
 	}
-	asserts.AssertUpdateServiceSpecificCredentialRequest(t)
-	return t
+	asserts.AssertUpdateServiceSpecificCredentialRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListAttachedRolePoliciesRequest = { ["Marker"] = true, ["RoleName"] = true, ["PathPrefix"] = true, ["MaxItems"] = true, nil }
@@ -7709,15 +10272,26 @@ end
 -- Required key: RoleName
 -- @return ListAttachedRolePoliciesRequest structure as a key-value pair table
 function M.ListAttachedRolePoliciesRequest(args)
-	assert(args, "You must provdide an argument table when creating ListAttachedRolePoliciesRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListAttachedRolePoliciesRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Marker"] = args["Marker"],
 		["RoleName"] = args["RoleName"],
 		["PathPrefix"] = args["PathPrefix"],
 		["MaxItems"] = args["MaxItems"],
 	}
-	asserts.AssertListAttachedRolePoliciesRequest(t)
-	return t
+	asserts.AssertListAttachedRolePoliciesRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateVirtualMFADeviceResponse = { ["VirtualMFADevice"] = true, nil }
@@ -7740,12 +10314,23 @@ end
 -- Required key: VirtualMFADevice
 -- @return CreateVirtualMFADeviceResponse structure as a key-value pair table
 function M.CreateVirtualMFADeviceResponse(args)
-	assert(args, "You must provdide an argument table when creating CreateVirtualMFADeviceResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateVirtualMFADeviceResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["VirtualMFADevice"] = args["VirtualMFADevice"],
 	}
-	asserts.AssertCreateVirtualMFADeviceResponse(t)
-	return t
+	asserts.AssertCreateVirtualMFADeviceResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetPolicyResponse = { ["Policy"] = true, nil }
@@ -7766,12 +10351,23 @@ end
 -- * Policy [Policy] <p>A structure containing details about the policy.</p>
 -- @return GetPolicyResponse structure as a key-value pair table
 function M.GetPolicyResponse(args)
-	assert(args, "You must provdide an argument table when creating GetPolicyResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetPolicyResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Policy"] = args["Policy"],
 	}
-	asserts.AssertGetPolicyResponse(t)
-	return t
+	asserts.AssertGetPolicyResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AccessKey = { ["UserName"] = true, ["Status"] = true, ["CreateDate"] = true, ["SecretAccessKey"] = true, ["AccessKeyId"] = true, nil }
@@ -7808,16 +10404,27 @@ end
 -- Required key: SecretAccessKey
 -- @return AccessKey structure as a key-value pair table
 function M.AccessKey(args)
-	assert(args, "You must provdide an argument table when creating AccessKey")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AccessKey")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["UserName"] = args["UserName"],
 		["Status"] = args["Status"],
 		["CreateDate"] = args["CreateDate"],
 		["SecretAccessKey"] = args["SecretAccessKey"],
 		["AccessKeyId"] = args["AccessKeyId"],
 	}
-	asserts.AssertAccessKey(t)
-	return t
+	asserts.AssertAccessKey(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.SSHPublicKeyMetadata = { ["UserName"] = true, ["Status"] = true, ["SSHPublicKeyId"] = true, ["UploadDate"] = true, nil }
@@ -7852,15 +10459,26 @@ end
 -- Required key: UploadDate
 -- @return SSHPublicKeyMetadata structure as a key-value pair table
 function M.SSHPublicKeyMetadata(args)
-	assert(args, "You must provdide an argument table when creating SSHPublicKeyMetadata")
-	local t = { 
+	assert(args, "You must provide an argument table when creating SSHPublicKeyMetadata")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["UserName"] = args["UserName"],
 		["Status"] = args["Status"],
 		["SSHPublicKeyId"] = args["SSHPublicKeyId"],
 		["UploadDate"] = args["UploadDate"],
 	}
-	asserts.AssertSSHPublicKeyMetadata(t)
-	return t
+	asserts.AssertSSHPublicKeyMetadata(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DuplicateSSHPublicKeyException = { ["message"] = true, nil }
@@ -7881,12 +10499,23 @@ end
 -- * message [duplicateSSHPublicKeyMessage] 
 -- @return DuplicateSSHPublicKeyException structure as a key-value pair table
 function M.DuplicateSSHPublicKeyException(args)
-	assert(args, "You must provdide an argument table when creating DuplicateSSHPublicKeyException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DuplicateSSHPublicKeyException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertDuplicateSSHPublicKeyException(t)
-	return t
+	asserts.AssertDuplicateSSHPublicKeyException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListAttachedUserPoliciesRequest = { ["UserName"] = true, ["Marker"] = true, ["PathPrefix"] = true, ["MaxItems"] = true, nil }
@@ -7915,15 +10544,26 @@ end
 -- Required key: UserName
 -- @return ListAttachedUserPoliciesRequest structure as a key-value pair table
 function M.ListAttachedUserPoliciesRequest(args)
-	assert(args, "You must provdide an argument table when creating ListAttachedUserPoliciesRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListAttachedUserPoliciesRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["UserName"] = args["UserName"],
 		["Marker"] = args["Marker"],
 		["PathPrefix"] = args["PathPrefix"],
 		["MaxItems"] = args["MaxItems"],
 	}
-	asserts.AssertListAttachedUserPoliciesRequest(t)
-	return t
+	asserts.AssertListAttachedUserPoliciesRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateGroupResponse = { ["Group"] = true, nil }
@@ -7946,12 +10586,23 @@ end
 -- Required key: Group
 -- @return CreateGroupResponse structure as a key-value pair table
 function M.CreateGroupResponse(args)
-	assert(args, "You must provdide an argument table when creating CreateGroupResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateGroupResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Group"] = args["Group"],
 	}
-	asserts.AssertCreateGroupResponse(t)
-	return t
+	asserts.AssertCreateGroupResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ServerCertificate = { ["CertificateChain"] = true, ["CertificateBody"] = true, ["ServerCertificateMetadata"] = true, nil }
@@ -7980,14 +10631,25 @@ end
 -- Required key: CertificateBody
 -- @return ServerCertificate structure as a key-value pair table
 function M.ServerCertificate(args)
-	assert(args, "You must provdide an argument table when creating ServerCertificate")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ServerCertificate")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["CertificateChain"] = args["CertificateChain"],
 		["CertificateBody"] = args["CertificateBody"],
 		["ServerCertificateMetadata"] = args["ServerCertificateMetadata"],
 	}
-	asserts.AssertServerCertificate(t)
-	return t
+	asserts.AssertServerCertificate(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 function asserts.AssertstringType(str)
@@ -9815,8 +12477,11 @@ function M.GetUserPolicyAsync(GetUserPolicyRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".GetUserPolicy",
 	}
+	for header,value in pairs(GetUserPolicyRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", GetUserPolicyRequest, headers, settings, cb)
 	else
@@ -9847,8 +12512,11 @@ function M.CreateServiceLinkedRoleAsync(CreateServiceLinkedRoleRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".CreateServiceLinkedRole",
 	}
+	for header,value in pairs(CreateServiceLinkedRoleRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateServiceLinkedRoleRequest, headers, settings, cb)
 	else
@@ -9879,8 +12547,11 @@ function M.DeleteInstanceProfileAsync(DeleteInstanceProfileRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DeleteInstanceProfile",
 	}
+	for header,value in pairs(DeleteInstanceProfileRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteInstanceProfileRequest, headers, settings, cb)
 	else
@@ -9910,7 +12581,8 @@ function M.GetAccountSummaryAsync(cb)
 		[request_headers.AMZ_TARGET_HEADER] = ".GetAccountSummary",
 	}
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", {}, headers, settings, cb)
 	else
@@ -9940,8 +12612,11 @@ function M.ListAttachedGroupPoliciesAsync(ListAttachedGroupPoliciesRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".ListAttachedGroupPolicies",
 	}
+	for header,value in pairs(ListAttachedGroupPoliciesRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ListAttachedGroupPoliciesRequest, headers, settings, cb)
 	else
@@ -9972,8 +12647,11 @@ function M.UpdateUserAsync(UpdateUserRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".UpdateUser",
 	}
+	for header,value in pairs(UpdateUserRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateUserRequest, headers, settings, cb)
 	else
@@ -10004,8 +12682,11 @@ function M.ListAccountAliasesAsync(ListAccountAliasesRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".ListAccountAliases",
 	}
+	for header,value in pairs(ListAccountAliasesRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ListAccountAliasesRequest, headers, settings, cb)
 	else
@@ -10036,8 +12717,11 @@ function M.GetUserAsync(GetUserRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".GetUser",
 	}
+	for header,value in pairs(GetUserRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", GetUserRequest, headers, settings, cb)
 	else
@@ -10068,8 +12752,11 @@ function M.UploadSSHPublicKeyAsync(UploadSSHPublicKeyRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".UploadSSHPublicKey",
 	}
+	for header,value in pairs(UploadSSHPublicKeyRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", UploadSSHPublicKeyRequest, headers, settings, cb)
 	else
@@ -10100,8 +12787,11 @@ function M.ListGroupPoliciesAsync(ListGroupPoliciesRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".ListGroupPolicies",
 	}
+	for header,value in pairs(ListGroupPoliciesRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ListGroupPoliciesRequest, headers, settings, cb)
 	else
@@ -10132,8 +12822,11 @@ function M.CreateAccessKeyAsync(CreateAccessKeyRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".CreateAccessKey",
 	}
+	for header,value in pairs(CreateAccessKeyRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateAccessKeyRequest, headers, settings, cb)
 	else
@@ -10164,8 +12857,11 @@ function M.UpdateLoginProfileAsync(UpdateLoginProfileRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".UpdateLoginProfile",
 	}
+	for header,value in pairs(UpdateLoginProfileRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateLoginProfileRequest, headers, settings, cb)
 	else
@@ -10196,8 +12892,11 @@ function M.ListGroupsAsync(ListGroupsRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".ListGroups",
 	}
+	for header,value in pairs(ListGroupsRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ListGroupsRequest, headers, settings, cb)
 	else
@@ -10228,8 +12927,11 @@ function M.UpdateRoleDescriptionAsync(UpdateRoleDescriptionRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".UpdateRoleDescription",
 	}
+	for header,value in pairs(UpdateRoleDescriptionRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateRoleDescriptionRequest, headers, settings, cb)
 	else
@@ -10260,8 +12962,11 @@ function M.UpdateSAMLProviderAsync(UpdateSAMLProviderRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".UpdateSAMLProvider",
 	}
+	for header,value in pairs(UpdateSAMLProviderRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateSAMLProviderRequest, headers, settings, cb)
 	else
@@ -10292,8 +12997,11 @@ function M.ResetServiceSpecificCredentialAsync(ResetServiceSpecificCredentialReq
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".ResetServiceSpecificCredential",
 	}
+	for header,value in pairs(ResetServiceSpecificCredentialRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ResetServiceSpecificCredentialRequest, headers, settings, cb)
 	else
@@ -10324,8 +13032,11 @@ function M.DeleteSSHPublicKeyAsync(DeleteSSHPublicKeyRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DeleteSSHPublicKey",
 	}
+	for header,value in pairs(DeleteSSHPublicKeyRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteSSHPublicKeyRequest, headers, settings, cb)
 	else
@@ -10356,8 +13067,11 @@ function M.RemoveUserFromGroupAsync(RemoveUserFromGroupRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".RemoveUserFromGroup",
 	}
+	for header,value in pairs(RemoveUserFromGroupRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", RemoveUserFromGroupRequest, headers, settings, cb)
 	else
@@ -10388,8 +13102,11 @@ function M.ListSAMLProvidersAsync(ListSAMLProvidersRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".ListSAMLProviders",
 	}
+	for header,value in pairs(ListSAMLProvidersRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ListSAMLProvidersRequest, headers, settings, cb)
 	else
@@ -10420,8 +13137,11 @@ function M.DeleteRolePolicyAsync(DeleteRolePolicyRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DeleteRolePolicy",
 	}
+	for header,value in pairs(DeleteRolePolicyRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteRolePolicyRequest, headers, settings, cb)
 	else
@@ -10452,8 +13172,11 @@ function M.UploadServerCertificateAsync(UploadServerCertificateRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".UploadServerCertificate",
 	}
+	for header,value in pairs(UploadServerCertificateRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", UploadServerCertificateRequest, headers, settings, cb)
 	else
@@ -10484,8 +13207,11 @@ function M.GetContextKeysForPrincipalPolicyAsync(GetContextKeysForPrincipalPolic
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".GetContextKeysForPrincipalPolicy",
 	}
+	for header,value in pairs(GetContextKeysForPrincipalPolicyRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", GetContextKeysForPrincipalPolicyRequest, headers, settings, cb)
 	else
@@ -10516,8 +13242,11 @@ function M.UpdateAccessKeyAsync(UpdateAccessKeyRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".UpdateAccessKey",
 	}
+	for header,value in pairs(UpdateAccessKeyRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateAccessKeyRequest, headers, settings, cb)
 	else
@@ -10548,8 +13277,11 @@ function M.ListRolesAsync(ListRolesRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".ListRoles",
 	}
+	for header,value in pairs(ListRolesRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ListRolesRequest, headers, settings, cb)
 	else
@@ -10580,8 +13312,11 @@ function M.DeleteAccessKeyAsync(DeleteAccessKeyRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DeleteAccessKey",
 	}
+	for header,value in pairs(DeleteAccessKeyRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteAccessKeyRequest, headers, settings, cb)
 	else
@@ -10612,8 +13347,11 @@ function M.AddRoleToInstanceProfileAsync(AddRoleToInstanceProfileRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".AddRoleToInstanceProfile",
 	}
+	for header,value in pairs(AddRoleToInstanceProfileRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", AddRoleToInstanceProfileRequest, headers, settings, cb)
 	else
@@ -10644,8 +13382,11 @@ function M.GetContextKeysForCustomPolicyAsync(GetContextKeysForCustomPolicyReque
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".GetContextKeysForCustomPolicy",
 	}
+	for header,value in pairs(GetContextKeysForCustomPolicyRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", GetContextKeysForCustomPolicyRequest, headers, settings, cb)
 	else
@@ -10676,8 +13417,11 @@ function M.GetGroupPolicyAsync(GetGroupPolicyRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".GetGroupPolicy",
 	}
+	for header,value in pairs(GetGroupPolicyRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", GetGroupPolicyRequest, headers, settings, cb)
 	else
@@ -10708,8 +13452,11 @@ function M.CreateServiceSpecificCredentialAsync(CreateServiceSpecificCredentialR
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".CreateServiceSpecificCredential",
 	}
+	for header,value in pairs(CreateServiceSpecificCredentialRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateServiceSpecificCredentialRequest, headers, settings, cb)
 	else
@@ -10740,8 +13487,11 @@ function M.CreateLoginProfileAsync(CreateLoginProfileRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".CreateLoginProfile",
 	}
+	for header,value in pairs(CreateLoginProfileRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateLoginProfileRequest, headers, settings, cb)
 	else
@@ -10772,8 +13522,11 @@ function M.SimulateCustomPolicyAsync(SimulateCustomPolicyRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".SimulateCustomPolicy",
 	}
+	for header,value in pairs(SimulateCustomPolicyRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", SimulateCustomPolicyRequest, headers, settings, cb)
 	else
@@ -10804,8 +13557,11 @@ function M.DeactivateMFADeviceAsync(DeactivateMFADeviceRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DeactivateMFADevice",
 	}
+	for header,value in pairs(DeactivateMFADeviceRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DeactivateMFADeviceRequest, headers, settings, cb)
 	else
@@ -10836,8 +13592,11 @@ function M.DetachRolePolicyAsync(DetachRolePolicyRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DetachRolePolicy",
 	}
+	for header,value in pairs(DetachRolePolicyRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DetachRolePolicyRequest, headers, settings, cb)
 	else
@@ -10868,8 +13627,11 @@ function M.GetPolicyAsync(GetPolicyRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".GetPolicy",
 	}
+	for header,value in pairs(GetPolicyRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", GetPolicyRequest, headers, settings, cb)
 	else
@@ -10900,8 +13662,11 @@ function M.CreateSAMLProviderAsync(CreateSAMLProviderRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".CreateSAMLProvider",
 	}
+	for header,value in pairs(CreateSAMLProviderRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateSAMLProviderRequest, headers, settings, cb)
 	else
@@ -10932,8 +13697,11 @@ function M.ListOpenIDConnectProvidersAsync(ListOpenIDConnectProvidersRequest, cb
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".ListOpenIDConnectProviders",
 	}
+	for header,value in pairs(ListOpenIDConnectProvidersRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ListOpenIDConnectProvidersRequest, headers, settings, cb)
 	else
@@ -10964,8 +13732,11 @@ function M.DeleteAccountAliasAsync(DeleteAccountAliasRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DeleteAccountAlias",
 	}
+	for header,value in pairs(DeleteAccountAliasRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteAccountAliasRequest, headers, settings, cb)
 	else
@@ -10996,8 +13767,11 @@ function M.ListSigningCertificatesAsync(ListSigningCertificatesRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".ListSigningCertificates",
 	}
+	for header,value in pairs(ListSigningCertificatesRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ListSigningCertificatesRequest, headers, settings, cb)
 	else
@@ -11028,8 +13802,11 @@ function M.DeleteRoleAsync(DeleteRoleRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DeleteRole",
 	}
+	for header,value in pairs(DeleteRoleRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteRoleRequest, headers, settings, cb)
 	else
@@ -11060,8 +13837,11 @@ function M.UpdateGroupAsync(UpdateGroupRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".UpdateGroup",
 	}
+	for header,value in pairs(UpdateGroupRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateGroupRequest, headers, settings, cb)
 	else
@@ -11092,8 +13872,11 @@ function M.GetGroupAsync(GetGroupRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".GetGroup",
 	}
+	for header,value in pairs(GetGroupRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", GetGroupRequest, headers, settings, cb)
 	else
@@ -11124,8 +13907,11 @@ function M.GetRolePolicyAsync(GetRolePolicyRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".GetRolePolicy",
 	}
+	for header,value in pairs(GetRolePolicyRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", GetRolePolicyRequest, headers, settings, cb)
 	else
@@ -11156,8 +13942,11 @@ function M.CreateUserAsync(CreateUserRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".CreateUser",
 	}
+	for header,value in pairs(CreateUserRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateUserRequest, headers, settings, cb)
 	else
@@ -11188,8 +13977,11 @@ function M.AddUserToGroupAsync(AddUserToGroupRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".AddUserToGroup",
 	}
+	for header,value in pairs(AddUserToGroupRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", AddUserToGroupRequest, headers, settings, cb)
 	else
@@ -11220,8 +14012,11 @@ function M.RemoveRoleFromInstanceProfileAsync(RemoveRoleFromInstanceProfileReque
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".RemoveRoleFromInstanceProfile",
 	}
+	for header,value in pairs(RemoveRoleFromInstanceProfileRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", RemoveRoleFromInstanceProfileRequest, headers, settings, cb)
 	else
@@ -11252,8 +14047,11 @@ function M.ListInstanceProfilesAsync(ListInstanceProfilesRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".ListInstanceProfiles",
 	}
+	for header,value in pairs(ListInstanceProfilesRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ListInstanceProfilesRequest, headers, settings, cb)
 	else
@@ -11284,8 +14082,11 @@ function M.UpdateServiceSpecificCredentialAsync(UpdateServiceSpecificCredentialR
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".UpdateServiceSpecificCredential",
 	}
+	for header,value in pairs(UpdateServiceSpecificCredentialRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateServiceSpecificCredentialRequest, headers, settings, cb)
 	else
@@ -11316,8 +14117,11 @@ function M.ListAttachedUserPoliciesAsync(ListAttachedUserPoliciesRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".ListAttachedUserPolicies",
 	}
+	for header,value in pairs(ListAttachedUserPoliciesRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ListAttachedUserPoliciesRequest, headers, settings, cb)
 	else
@@ -11348,8 +14152,11 @@ function M.CreatePolicyVersionAsync(CreatePolicyVersionRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".CreatePolicyVersion",
 	}
+	for header,value in pairs(CreatePolicyVersionRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", CreatePolicyVersionRequest, headers, settings, cb)
 	else
@@ -11380,8 +14187,11 @@ function M.ListServiceSpecificCredentialsAsync(ListServiceSpecificCredentialsReq
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".ListServiceSpecificCredentials",
 	}
+	for header,value in pairs(ListServiceSpecificCredentialsRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ListServiceSpecificCredentialsRequest, headers, settings, cb)
 	else
@@ -11412,8 +14222,11 @@ function M.AttachUserPolicyAsync(AttachUserPolicyRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".AttachUserPolicy",
 	}
+	for header,value in pairs(AttachUserPolicyRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", AttachUserPolicyRequest, headers, settings, cb)
 	else
@@ -11444,8 +14257,11 @@ function M.ListVirtualMFADevicesAsync(ListVirtualMFADevicesRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".ListVirtualMFADevices",
 	}
+	for header,value in pairs(ListVirtualMFADevicesRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ListVirtualMFADevicesRequest, headers, settings, cb)
 	else
@@ -11476,8 +14292,11 @@ function M.UpdateAssumeRolePolicyAsync(UpdateAssumeRolePolicyRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".UpdateAssumeRolePolicy",
 	}
+	for header,value in pairs(UpdateAssumeRolePolicyRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateAssumeRolePolicyRequest, headers, settings, cb)
 	else
@@ -11508,8 +14327,11 @@ function M.ListServerCertificatesAsync(ListServerCertificatesRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".ListServerCertificates",
 	}
+	for header,value in pairs(ListServerCertificatesRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ListServerCertificatesRequest, headers, settings, cb)
 	else
@@ -11540,8 +14362,11 @@ function M.DeleteGroupAsync(DeleteGroupRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DeleteGroup",
 	}
+	for header,value in pairs(DeleteGroupRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteGroupRequest, headers, settings, cb)
 	else
@@ -11572,8 +14397,11 @@ function M.UpdateOpenIDConnectProviderThumbprintAsync(UpdateOpenIDConnectProvide
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".UpdateOpenIDConnectProviderThumbprint",
 	}
+	for header,value in pairs(UpdateOpenIDConnectProviderThumbprintRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateOpenIDConnectProviderThumbprintRequest, headers, settings, cb)
 	else
@@ -11604,8 +14432,11 @@ function M.CreateGroupAsync(CreateGroupRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".CreateGroup",
 	}
+	for header,value in pairs(CreateGroupRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateGroupRequest, headers, settings, cb)
 	else
@@ -11636,8 +14467,11 @@ function M.DeletePolicyAsync(DeletePolicyRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DeletePolicy",
 	}
+	for header,value in pairs(DeletePolicyRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DeletePolicyRequest, headers, settings, cb)
 	else
@@ -11668,8 +14502,11 @@ function M.DeleteUserPolicyAsync(DeleteUserPolicyRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DeleteUserPolicy",
 	}
+	for header,value in pairs(DeleteUserPolicyRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteUserPolicyRequest, headers, settings, cb)
 	else
@@ -11700,8 +14537,11 @@ function M.UpdateServerCertificateAsync(UpdateServerCertificateRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".UpdateServerCertificate",
 	}
+	for header,value in pairs(UpdateServerCertificateRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateServerCertificateRequest, headers, settings, cb)
 	else
@@ -11732,8 +14572,11 @@ function M.AddClientIDToOpenIDConnectProviderAsync(AddClientIDToOpenIDConnectPro
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".AddClientIDToOpenIDConnectProvider",
 	}
+	for header,value in pairs(AddClientIDToOpenIDConnectProviderRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", AddClientIDToOpenIDConnectProviderRequest, headers, settings, cb)
 	else
@@ -11764,8 +14607,11 @@ function M.DeleteVirtualMFADeviceAsync(DeleteVirtualMFADeviceRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DeleteVirtualMFADevice",
 	}
+	for header,value in pairs(DeleteVirtualMFADeviceRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteVirtualMFADeviceRequest, headers, settings, cb)
 	else
@@ -11796,8 +14642,11 @@ function M.SimulatePrincipalPolicyAsync(SimulatePrincipalPolicyRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".SimulatePrincipalPolicy",
 	}
+	for header,value in pairs(SimulatePrincipalPolicyRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", SimulatePrincipalPolicyRequest, headers, settings, cb)
 	else
@@ -11828,8 +14677,11 @@ function M.ListAccessKeysAsync(ListAccessKeysRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".ListAccessKeys",
 	}
+	for header,value in pairs(ListAccessKeysRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ListAccessKeysRequest, headers, settings, cb)
 	else
@@ -11860,8 +14712,11 @@ function M.GetSSHPublicKeyAsync(GetSSHPublicKeyRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".GetSSHPublicKey",
 	}
+	for header,value in pairs(GetSSHPublicKeyRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", GetSSHPublicKeyRequest, headers, settings, cb)
 	else
@@ -11892,8 +14747,11 @@ function M.ListSSHPublicKeysAsync(ListSSHPublicKeysRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".ListSSHPublicKeys",
 	}
+	for header,value in pairs(ListSSHPublicKeysRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ListSSHPublicKeysRequest, headers, settings, cb)
 	else
@@ -11924,8 +14782,11 @@ function M.DeleteSigningCertificateAsync(DeleteSigningCertificateRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DeleteSigningCertificate",
 	}
+	for header,value in pairs(DeleteSigningCertificateRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteSigningCertificateRequest, headers, settings, cb)
 	else
@@ -11956,8 +14817,11 @@ function M.GetPolicyVersionAsync(GetPolicyVersionRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".GetPolicyVersion",
 	}
+	for header,value in pairs(GetPolicyVersionRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", GetPolicyVersionRequest, headers, settings, cb)
 	else
@@ -11988,8 +14852,11 @@ function M.PutRolePolicyAsync(PutRolePolicyRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".PutRolePolicy",
 	}
+	for header,value in pairs(PutRolePolicyRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", PutRolePolicyRequest, headers, settings, cb)
 	else
@@ -12020,8 +14887,11 @@ function M.SetDefaultPolicyVersionAsync(SetDefaultPolicyVersionRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".SetDefaultPolicyVersion",
 	}
+	for header,value in pairs(SetDefaultPolicyVersionRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", SetDefaultPolicyVersionRequest, headers, settings, cb)
 	else
@@ -12052,8 +14922,11 @@ function M.GetAccessKeyLastUsedAsync(GetAccessKeyLastUsedRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".GetAccessKeyLastUsed",
 	}
+	for header,value in pairs(GetAccessKeyLastUsedRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", GetAccessKeyLastUsedRequest, headers, settings, cb)
 	else
@@ -12083,7 +14956,8 @@ function M.DeleteAccountPasswordPolicyAsync(cb)
 		[request_headers.AMZ_TARGET_HEADER] = ".DeleteAccountPasswordPolicy",
 	}
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", {}, headers, settings, cb)
 	else
@@ -12113,8 +14987,11 @@ function M.ListMFADevicesAsync(ListMFADevicesRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".ListMFADevices",
 	}
+	for header,value in pairs(ListMFADevicesRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ListMFADevicesRequest, headers, settings, cb)
 	else
@@ -12145,8 +15022,11 @@ function M.UpdateSigningCertificateAsync(UpdateSigningCertificateRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".UpdateSigningCertificate",
 	}
+	for header,value in pairs(UpdateSigningCertificateRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateSigningCertificateRequest, headers, settings, cb)
 	else
@@ -12177,8 +15057,11 @@ function M.DetachGroupPolicyAsync(DetachGroupPolicyRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DetachGroupPolicy",
 	}
+	for header,value in pairs(DetachGroupPolicyRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DetachGroupPolicyRequest, headers, settings, cb)
 	else
@@ -12209,8 +15092,11 @@ function M.UpdateSSHPublicKeyAsync(UpdateSSHPublicKeyRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".UpdateSSHPublicKey",
 	}
+	for header,value in pairs(UpdateSSHPublicKeyRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateSSHPublicKeyRequest, headers, settings, cb)
 	else
@@ -12241,8 +15127,11 @@ function M.GetInstanceProfileAsync(GetInstanceProfileRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".GetInstanceProfile",
 	}
+	for header,value in pairs(GetInstanceProfileRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", GetInstanceProfileRequest, headers, settings, cb)
 	else
@@ -12273,8 +15162,11 @@ function M.DeleteUserAsync(DeleteUserRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DeleteUser",
 	}
+	for header,value in pairs(DeleteUserRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteUserRequest, headers, settings, cb)
 	else
@@ -12305,8 +15197,11 @@ function M.GetOpenIDConnectProviderAsync(GetOpenIDConnectProviderRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".GetOpenIDConnectProvider",
 	}
+	for header,value in pairs(GetOpenIDConnectProviderRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", GetOpenIDConnectProviderRequest, headers, settings, cb)
 	else
@@ -12337,8 +15232,11 @@ function M.ListUsersAsync(ListUsersRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".ListUsers",
 	}
+	for header,value in pairs(ListUsersRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ListUsersRequest, headers, settings, cb)
 	else
@@ -12369,8 +15267,11 @@ function M.DeleteLoginProfileAsync(DeleteLoginProfileRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DeleteLoginProfile",
 	}
+	for header,value in pairs(DeleteLoginProfileRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteLoginProfileRequest, headers, settings, cb)
 	else
@@ -12401,8 +15302,11 @@ function M.ListPolicyVersionsAsync(ListPolicyVersionsRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".ListPolicyVersions",
 	}
+	for header,value in pairs(ListPolicyVersionsRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ListPolicyVersionsRequest, headers, settings, cb)
 	else
@@ -12433,8 +15337,11 @@ function M.AttachGroupPolicyAsync(AttachGroupPolicyRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".AttachGroupPolicy",
 	}
+	for header,value in pairs(AttachGroupPolicyRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", AttachGroupPolicyRequest, headers, settings, cb)
 	else
@@ -12465,8 +15372,11 @@ function M.DeleteServiceSpecificCredentialAsync(DeleteServiceSpecificCredentialR
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DeleteServiceSpecificCredential",
 	}
+	for header,value in pairs(DeleteServiceSpecificCredentialRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteServiceSpecificCredentialRequest, headers, settings, cb)
 	else
@@ -12497,8 +15407,11 @@ function M.CreatePolicyAsync(CreatePolicyRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".CreatePolicy",
 	}
+	for header,value in pairs(CreatePolicyRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", CreatePolicyRequest, headers, settings, cb)
 	else
@@ -12529,8 +15442,11 @@ function M.CreateOpenIDConnectProviderAsync(CreateOpenIDConnectProviderRequest, 
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".CreateOpenIDConnectProvider",
 	}
+	for header,value in pairs(CreateOpenIDConnectProviderRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateOpenIDConnectProviderRequest, headers, settings, cb)
 	else
@@ -12561,8 +15477,11 @@ function M.DetachUserPolicyAsync(DetachUserPolicyRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DetachUserPolicy",
 	}
+	for header,value in pairs(DetachUserPolicyRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DetachUserPolicyRequest, headers, settings, cb)
 	else
@@ -12593,8 +15512,11 @@ function M.ListGroupsForUserAsync(ListGroupsForUserRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".ListGroupsForUser",
 	}
+	for header,value in pairs(ListGroupsForUserRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ListGroupsForUserRequest, headers, settings, cb)
 	else
@@ -12624,7 +15546,8 @@ function M.GetCredentialReportAsync(cb)
 		[request_headers.AMZ_TARGET_HEADER] = ".GetCredentialReport",
 	}
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", {}, headers, settings, cb)
 	else
@@ -12654,8 +15577,11 @@ function M.CreateAccountAliasAsync(CreateAccountAliasRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".CreateAccountAlias",
 	}
+	for header,value in pairs(CreateAccountAliasRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateAccountAliasRequest, headers, settings, cb)
 	else
@@ -12686,8 +15612,11 @@ function M.GetAccountAuthorizationDetailsAsync(GetAccountAuthorizationDetailsReq
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".GetAccountAuthorizationDetails",
 	}
+	for header,value in pairs(GetAccountAuthorizationDetailsRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", GetAccountAuthorizationDetailsRequest, headers, settings, cb)
 	else
@@ -12718,8 +15647,11 @@ function M.GetSAMLProviderAsync(GetSAMLProviderRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".GetSAMLProvider",
 	}
+	for header,value in pairs(GetSAMLProviderRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", GetSAMLProviderRequest, headers, settings, cb)
 	else
@@ -12750,8 +15682,11 @@ function M.CreateRoleAsync(CreateRoleRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".CreateRole",
 	}
+	for header,value in pairs(CreateRoleRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateRoleRequest, headers, settings, cb)
 	else
@@ -12782,8 +15717,11 @@ function M.ListAttachedRolePoliciesAsync(ListAttachedRolePoliciesRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".ListAttachedRolePolicies",
 	}
+	for header,value in pairs(ListAttachedRolePoliciesRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ListAttachedRolePoliciesRequest, headers, settings, cb)
 	else
@@ -12814,8 +15752,11 @@ function M.EnableMFADeviceAsync(EnableMFADeviceRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".EnableMFADevice",
 	}
+	for header,value in pairs(EnableMFADeviceRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", EnableMFADeviceRequest, headers, settings, cb)
 	else
@@ -12846,8 +15787,11 @@ function M.DeleteSAMLProviderAsync(DeleteSAMLProviderRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DeleteSAMLProvider",
 	}
+	for header,value in pairs(DeleteSAMLProviderRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteSAMLProviderRequest, headers, settings, cb)
 	else
@@ -12878,8 +15822,11 @@ function M.ListUserPoliciesAsync(ListUserPoliciesRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".ListUserPolicies",
 	}
+	for header,value in pairs(ListUserPoliciesRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ListUserPoliciesRequest, headers, settings, cb)
 	else
@@ -12910,8 +15857,11 @@ function M.ListRolePoliciesAsync(ListRolePoliciesRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".ListRolePolicies",
 	}
+	for header,value in pairs(ListRolePoliciesRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ListRolePoliciesRequest, headers, settings, cb)
 	else
@@ -12942,8 +15892,11 @@ function M.PutGroupPolicyAsync(PutGroupPolicyRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".PutGroupPolicy",
 	}
+	for header,value in pairs(PutGroupPolicyRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", PutGroupPolicyRequest, headers, settings, cb)
 	else
@@ -12974,8 +15927,11 @@ function M.UploadSigningCertificateAsync(UploadSigningCertificateRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".UploadSigningCertificate",
 	}
+	for header,value in pairs(UploadSigningCertificateRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", UploadSigningCertificateRequest, headers, settings, cb)
 	else
@@ -13006,8 +15962,11 @@ function M.ListInstanceProfilesForRoleAsync(ListInstanceProfilesForRoleRequest, 
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".ListInstanceProfilesForRole",
 	}
+	for header,value in pairs(ListInstanceProfilesForRoleRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ListInstanceProfilesForRoleRequest, headers, settings, cb)
 	else
@@ -13037,7 +15996,8 @@ function M.GenerateCredentialReportAsync(cb)
 		[request_headers.AMZ_TARGET_HEADER] = ".GenerateCredentialReport",
 	}
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", {}, headers, settings, cb)
 	else
@@ -13067,8 +16027,11 @@ function M.ChangePasswordAsync(ChangePasswordRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".ChangePassword",
 	}
+	for header,value in pairs(ChangePasswordRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ChangePasswordRequest, headers, settings, cb)
 	else
@@ -13099,8 +16062,11 @@ function M.ListEntitiesForPolicyAsync(ListEntitiesForPolicyRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".ListEntitiesForPolicy",
 	}
+	for header,value in pairs(ListEntitiesForPolicyRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ListEntitiesForPolicyRequest, headers, settings, cb)
 	else
@@ -13131,8 +16097,11 @@ function M.GetLoginProfileAsync(GetLoginProfileRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".GetLoginProfile",
 	}
+	for header,value in pairs(GetLoginProfileRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", GetLoginProfileRequest, headers, settings, cb)
 	else
@@ -13163,8 +16132,11 @@ function M.CreateVirtualMFADeviceAsync(CreateVirtualMFADeviceRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".CreateVirtualMFADevice",
 	}
+	for header,value in pairs(CreateVirtualMFADeviceRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateVirtualMFADeviceRequest, headers, settings, cb)
 	else
@@ -13195,8 +16167,11 @@ function M.GetServerCertificateAsync(GetServerCertificateRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".GetServerCertificate",
 	}
+	for header,value in pairs(GetServerCertificateRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", GetServerCertificateRequest, headers, settings, cb)
 	else
@@ -13227,8 +16202,11 @@ function M.AttachRolePolicyAsync(AttachRolePolicyRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".AttachRolePolicy",
 	}
+	for header,value in pairs(AttachRolePolicyRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", AttachRolePolicyRequest, headers, settings, cb)
 	else
@@ -13259,8 +16237,11 @@ function M.RemoveClientIDFromOpenIDConnectProviderAsync(RemoveClientIDFromOpenID
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".RemoveClientIDFromOpenIDConnectProvider",
 	}
+	for header,value in pairs(RemoveClientIDFromOpenIDConnectProviderRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", RemoveClientIDFromOpenIDConnectProviderRequest, headers, settings, cb)
 	else
@@ -13291,8 +16272,11 @@ function M.UpdateAccountPasswordPolicyAsync(UpdateAccountPasswordPolicyRequest, 
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".UpdateAccountPasswordPolicy",
 	}
+	for header,value in pairs(UpdateAccountPasswordPolicyRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateAccountPasswordPolicyRequest, headers, settings, cb)
 	else
@@ -13323,8 +16307,11 @@ function M.GetRoleAsync(GetRoleRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".GetRole",
 	}
+	for header,value in pairs(GetRoleRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", GetRoleRequest, headers, settings, cb)
 	else
@@ -13355,8 +16342,11 @@ function M.DeletePolicyVersionAsync(DeletePolicyVersionRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DeletePolicyVersion",
 	}
+	for header,value in pairs(DeletePolicyVersionRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DeletePolicyVersionRequest, headers, settings, cb)
 	else
@@ -13387,8 +16377,11 @@ function M.ListPoliciesAsync(ListPoliciesRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".ListPolicies",
 	}
+	for header,value in pairs(ListPoliciesRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ListPoliciesRequest, headers, settings, cb)
 	else
@@ -13419,8 +16412,11 @@ function M.PutUserPolicyAsync(PutUserPolicyRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".PutUserPolicy",
 	}
+	for header,value in pairs(PutUserPolicyRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", PutUserPolicyRequest, headers, settings, cb)
 	else
@@ -13451,8 +16447,11 @@ function M.ResyncMFADeviceAsync(ResyncMFADeviceRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".ResyncMFADevice",
 	}
+	for header,value in pairs(ResyncMFADeviceRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ResyncMFADeviceRequest, headers, settings, cb)
 	else
@@ -13483,8 +16482,11 @@ function M.DeleteServerCertificateAsync(DeleteServerCertificateRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DeleteServerCertificate",
 	}
+	for header,value in pairs(DeleteServerCertificateRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteServerCertificateRequest, headers, settings, cb)
 	else
@@ -13514,7 +16516,8 @@ function M.GetAccountPasswordPolicyAsync(cb)
 		[request_headers.AMZ_TARGET_HEADER] = ".GetAccountPasswordPolicy",
 	}
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", {}, headers, settings, cb)
 	else
@@ -13544,8 +16547,11 @@ function M.CreateInstanceProfileAsync(CreateInstanceProfileRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".CreateInstanceProfile",
 	}
+	for header,value in pairs(CreateInstanceProfileRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateInstanceProfileRequest, headers, settings, cb)
 	else
@@ -13576,8 +16582,11 @@ function M.DeleteOpenIDConnectProviderAsync(DeleteOpenIDConnectProviderRequest, 
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DeleteOpenIDConnectProvider",
 	}
+	for header,value in pairs(DeleteOpenIDConnectProviderRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteOpenIDConnectProviderRequest, headers, settings, cb)
 	else
@@ -13608,8 +16617,11 @@ function M.DeleteGroupPolicyAsync(DeleteGroupPolicyRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DeleteGroupPolicy",
 	}
+	for header,value in pairs(DeleteGroupPolicyRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteGroupPolicyRequest, headers, settings, cb)
 	else

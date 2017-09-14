@@ -50,12 +50,25 @@ def parse_shapes(iterator_fn):
 
         if shape_type == "structure":
             members = []
+            query_string_members = []
+            uri_members = []
+            header_members = []
             for member_name, member in shape["members"].iteritems():
                 member["name"] = member_name
+                member["locationName"] = member.get("locationName", member_name)
                 member["documentation"] = member.get("documentation", "").replace("\n", "")
+                if member.get("location") == "querystring":
+                    query_string_members.append(member)
+                elif member.get("location") == "uri":
+                    uri_members.append(member)
+                elif member.get("location") == "header":
+                    header_members.append(member)
                 members.append(member)
             shape["member_names"] = ",".join(shape["members"].keys())
             shape["members"] = members
+            shape["query_string_members"] = query_string_members
+            shape["uri_members"] = uri_members
+            shape["header_members"] = header_members
             if shape.get("required"):
                 required = []
                 for required_name in shape["required"]:

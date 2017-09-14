@@ -39,12 +39,23 @@ end
 -- * configurationId [RepositoryTriggersConfigurationId] <p>The system-generated unique ID for the create or update operation.</p>
 -- @return PutRepositoryTriggersOutput structure as a key-value pair table
 function M.PutRepositoryTriggersOutput(args)
-	assert(args, "You must provdide an argument table when creating PutRepositoryTriggersOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating PutRepositoryTriggersOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["configurationId"] = args["configurationId"],
 	}
-	asserts.AssertPutRepositoryTriggersOutput(t)
-	return t
+	asserts.AssertPutRepositoryTriggersOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidRepositoryDescriptionException = { nil }
@@ -63,11 +74,22 @@ end
 -- Valid keys:
 -- @return InvalidRepositoryDescriptionException structure as a key-value pair table
 function M.InvalidRepositoryDescriptionException(args)
-	assert(args, "You must provdide an argument table when creating InvalidRepositoryDescriptionException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidRepositoryDescriptionException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertInvalidRepositoryDescriptionException(t)
-	return t
+	asserts.AssertInvalidRepositoryDescriptionException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.EncryptionKeyAccessDeniedException = { nil }
@@ -86,11 +108,22 @@ end
 -- Valid keys:
 -- @return EncryptionKeyAccessDeniedException structure as a key-value pair table
 function M.EncryptionKeyAccessDeniedException(args)
-	assert(args, "You must provdide an argument table when creating EncryptionKeyAccessDeniedException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating EncryptionKeyAccessDeniedException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertEncryptionKeyAccessDeniedException(t)
-	return t
+	asserts.AssertEncryptionKeyAccessDeniedException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListBranchesInput = { ["nextToken"] = true, ["repositoryName"] = true, nil }
@@ -115,13 +148,24 @@ end
 -- Required key: repositoryName
 -- @return ListBranchesInput structure as a key-value pair table
 function M.ListBranchesInput(args)
-	assert(args, "You must provdide an argument table when creating ListBranchesInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListBranchesInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["nextToken"] = args["nextToken"],
 		["repositoryName"] = args["repositoryName"],
 	}
-	asserts.AssertListBranchesInput(t)
-	return t
+	asserts.AssertListBranchesInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.TestRepositoryTriggersInput = { ["repositoryName"] = true, ["triggers"] = true, nil }
@@ -148,13 +192,24 @@ end
 -- Required key: triggers
 -- @return TestRepositoryTriggersInput structure as a key-value pair table
 function M.TestRepositoryTriggersInput(args)
-	assert(args, "You must provdide an argument table when creating TestRepositoryTriggersInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating TestRepositoryTriggersInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["repositoryName"] = args["repositoryName"],
 		["triggers"] = args["triggers"],
 	}
-	asserts.AssertTestRepositoryTriggersInput(t)
-	return t
+	asserts.AssertTestRepositoryTriggersInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CommitDoesNotExistException = { nil }
@@ -173,11 +228,22 @@ end
 -- Valid keys:
 -- @return CommitDoesNotExistException structure as a key-value pair table
 function M.CommitDoesNotExistException(args)
-	assert(args, "You must provdide an argument table when creating CommitDoesNotExistException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CommitDoesNotExistException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertCommitDoesNotExistException(t)
-	return t
+	asserts.AssertCommitDoesNotExistException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidBranchNameException = { nil }
@@ -196,11 +262,22 @@ end
 -- Valid keys:
 -- @return InvalidBranchNameException structure as a key-value pair table
 function M.InvalidBranchNameException(args)
-	assert(args, "You must provdide an argument table when creating InvalidBranchNameException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidBranchNameException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertInvalidBranchNameException(t)
-	return t
+	asserts.AssertInvalidBranchNameException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidSortByException = { nil }
@@ -219,11 +296,22 @@ end
 -- Valid keys:
 -- @return InvalidSortByException structure as a key-value pair table
 function M.InvalidSortByException(args)
-	assert(args, "You must provdide an argument table when creating InvalidSortByException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidSortByException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertInvalidSortByException(t)
-	return t
+	asserts.AssertInvalidSortByException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.PathDoesNotExistException = { nil }
@@ -242,11 +330,22 @@ end
 -- Valid keys:
 -- @return PathDoesNotExistException structure as a key-value pair table
 function M.PathDoesNotExistException(args)
-	assert(args, "You must provdide an argument table when creating PathDoesNotExistException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating PathDoesNotExistException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertPathDoesNotExistException(t)
-	return t
+	asserts.AssertPathDoesNotExistException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.BlobIdRequiredException = { nil }
@@ -265,11 +364,22 @@ end
 -- Valid keys:
 -- @return BlobIdRequiredException structure as a key-value pair table
 function M.BlobIdRequiredException(args)
-	assert(args, "You must provdide an argument table when creating BlobIdRequiredException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating BlobIdRequiredException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertBlobIdRequiredException(t)
-	return t
+	asserts.AssertBlobIdRequiredException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdateRepositoryDescriptionInput = { ["repositoryName"] = true, ["repositoryDescription"] = true, nil }
@@ -294,13 +404,24 @@ end
 -- Required key: repositoryName
 -- @return UpdateRepositoryDescriptionInput structure as a key-value pair table
 function M.UpdateRepositoryDescriptionInput(args)
-	assert(args, "You must provdide an argument table when creating UpdateRepositoryDescriptionInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateRepositoryDescriptionInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["repositoryName"] = args["repositoryName"],
 		["repositoryDescription"] = args["repositoryDescription"],
 	}
-	asserts.AssertUpdateRepositoryDescriptionInput(t)
-	return t
+	asserts.AssertUpdateRepositoryDescriptionInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetRepositoryOutput = { ["repositoryMetadata"] = true, nil }
@@ -321,12 +442,23 @@ end
 -- * repositoryMetadata [RepositoryMetadata] <p>Information about the repository.</p>
 -- @return GetRepositoryOutput structure as a key-value pair table
 function M.GetRepositoryOutput(args)
-	assert(args, "You must provdide an argument table when creating GetRepositoryOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetRepositoryOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["repositoryMetadata"] = args["repositoryMetadata"],
 	}
-	asserts.AssertGetRepositoryOutput(t)
-	return t
+	asserts.AssertGetRepositoryOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.EncryptionKeyUnavailableException = { nil }
@@ -345,11 +477,22 @@ end
 -- Valid keys:
 -- @return EncryptionKeyUnavailableException structure as a key-value pair table
 function M.EncryptionKeyUnavailableException(args)
-	assert(args, "You must provdide an argument table when creating EncryptionKeyUnavailableException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating EncryptionKeyUnavailableException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertEncryptionKeyUnavailableException(t)
-	return t
+	asserts.AssertEncryptionKeyUnavailableException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.BatchGetRepositoriesOutput = { ["repositories"] = true, ["repositoriesNotFound"] = true, nil }
@@ -372,13 +515,24 @@ end
 -- * repositoriesNotFound [RepositoryNotFoundList] <p>Returns a list of repository names for which information could not be found.</p>
 -- @return BatchGetRepositoriesOutput structure as a key-value pair table
 function M.BatchGetRepositoriesOutput(args)
-	assert(args, "You must provdide an argument table when creating BatchGetRepositoriesOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating BatchGetRepositoriesOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["repositories"] = args["repositories"],
 		["repositoriesNotFound"] = args["repositoriesNotFound"],
 	}
-	asserts.AssertBatchGetRepositoriesOutput(t)
-	return t
+	asserts.AssertBatchGetRepositoriesOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidRepositoryTriggerDestinationArnException = { nil }
@@ -397,11 +551,22 @@ end
 -- Valid keys:
 -- @return InvalidRepositoryTriggerDestinationArnException structure as a key-value pair table
 function M.InvalidRepositoryTriggerDestinationArnException(args)
-	assert(args, "You must provdide an argument table when creating InvalidRepositoryTriggerDestinationArnException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidRepositoryTriggerDestinationArnException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertInvalidRepositoryTriggerDestinationArnException(t)
-	return t
+	asserts.AssertInvalidRepositoryTriggerDestinationArnException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.RepositoryDoesNotExistException = { nil }
@@ -420,11 +585,22 @@ end
 -- Valid keys:
 -- @return RepositoryDoesNotExistException structure as a key-value pair table
 function M.RepositoryDoesNotExistException(args)
-	assert(args, "You must provdide an argument table when creating RepositoryDoesNotExistException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating RepositoryDoesNotExistException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertRepositoryDoesNotExistException(t)
-	return t
+	asserts.AssertRepositoryDoesNotExistException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.RepositoryLimitExceededException = { nil }
@@ -443,11 +619,22 @@ end
 -- Valid keys:
 -- @return RepositoryLimitExceededException structure as a key-value pair table
 function M.RepositoryLimitExceededException(args)
-	assert(args, "You must provdide an argument table when creating RepositoryLimitExceededException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating RepositoryLimitExceededException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertRepositoryLimitExceededException(t)
-	return t
+	asserts.AssertRepositoryLimitExceededException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Commit = { ["additionalData"] = true, ["committer"] = true, ["author"] = true, ["treeId"] = true, ["parents"] = true, ["message"] = true, nil }
@@ -478,8 +665,14 @@ end
 -- * message [Message] <p>The commit message associated with the specified commit.</p>
 -- @return Commit structure as a key-value pair table
 function M.Commit(args)
-	assert(args, "You must provdide an argument table when creating Commit")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Commit")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["additionalData"] = args["additionalData"],
 		["committer"] = args["committer"],
 		["author"] = args["author"],
@@ -487,8 +680,13 @@ function M.Commit(args)
 		["parents"] = args["parents"],
 		["message"] = args["message"],
 	}
-	asserts.AssertCommit(t)
-	return t
+	asserts.AssertCommit(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetCommitInput = { ["commitId"] = true, ["repositoryName"] = true, nil }
@@ -515,13 +713,24 @@ end
 -- Required key: commitId
 -- @return GetCommitInput structure as a key-value pair table
 function M.GetCommitInput(args)
-	assert(args, "You must provdide an argument table when creating GetCommitInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetCommitInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["commitId"] = args["commitId"],
 		["repositoryName"] = args["repositoryName"],
 	}
-	asserts.AssertGetCommitInput(t)
-	return t
+	asserts.AssertGetCommitInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidRepositoryTriggerNameException = { nil }
@@ -540,11 +749,22 @@ end
 -- Valid keys:
 -- @return InvalidRepositoryTriggerNameException structure as a key-value pair table
 function M.InvalidRepositoryTriggerNameException(args)
-	assert(args, "You must provdide an argument table when creating InvalidRepositoryTriggerNameException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidRepositoryTriggerNameException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertInvalidRepositoryTriggerNameException(t)
-	return t
+	asserts.AssertInvalidRepositoryTriggerNameException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.RepositoryNameExistsException = { nil }
@@ -563,11 +783,22 @@ end
 -- Valid keys:
 -- @return RepositoryNameExistsException structure as a key-value pair table
 function M.RepositoryNameExistsException(args)
-	assert(args, "You must provdide an argument table when creating RepositoryNameExistsException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating RepositoryNameExistsException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertRepositoryNameExistsException(t)
-	return t
+	asserts.AssertRepositoryNameExistsException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.RepositoryTrigger = { ["destinationArn"] = true, ["branches"] = true, ["name"] = true, ["customData"] = true, ["events"] = true, nil }
@@ -602,16 +833,27 @@ end
 -- Required key: events
 -- @return RepositoryTrigger structure as a key-value pair table
 function M.RepositoryTrigger(args)
-	assert(args, "You must provdide an argument table when creating RepositoryTrigger")
-	local t = { 
+	assert(args, "You must provide an argument table when creating RepositoryTrigger")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["destinationArn"] = args["destinationArn"],
 		["branches"] = args["branches"],
 		["name"] = args["name"],
 		["customData"] = args["customData"],
 		["events"] = args["events"],
 	}
-	asserts.AssertRepositoryTrigger(t)
-	return t
+	asserts.AssertRepositoryTrigger(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidOrderException = { nil }
@@ -630,11 +872,22 @@ end
 -- Valid keys:
 -- @return InvalidOrderException structure as a key-value pair table
 function M.InvalidOrderException(args)
-	assert(args, "You must provdide an argument table when creating InvalidOrderException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidOrderException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertInvalidOrderException(t)
-	return t
+	asserts.AssertInvalidOrderException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.BranchNameRequiredException = { nil }
@@ -653,11 +906,22 @@ end
 -- Valid keys:
 -- @return BranchNameRequiredException structure as a key-value pair table
 function M.BranchNameRequiredException(args)
-	assert(args, "You must provdide an argument table when creating BranchNameRequiredException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating BranchNameRequiredException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertBranchNameRequiredException(t)
-	return t
+	asserts.AssertBranchNameRequiredException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.PutRepositoryTriggersInput = { ["repositoryName"] = true, ["triggers"] = true, nil }
@@ -684,13 +948,24 @@ end
 -- Required key: triggers
 -- @return PutRepositoryTriggersInput structure as a key-value pair table
 function M.PutRepositoryTriggersInput(args)
-	assert(args, "You must provdide an argument table when creating PutRepositoryTriggersInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating PutRepositoryTriggersInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["repositoryName"] = args["repositoryName"],
 		["triggers"] = args["triggers"],
 	}
-	asserts.AssertPutRepositoryTriggersInput(t)
-	return t
+	asserts.AssertPutRepositoryTriggersInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.BranchInfo = { ["commitId"] = true, ["branchName"] = true, nil }
@@ -713,13 +988,24 @@ end
 -- * branchName [BranchName] <p>The name of the branch.</p>
 -- @return BranchInfo structure as a key-value pair table
 function M.BranchInfo(args)
-	assert(args, "You must provdide an argument table when creating BranchInfo")
-	local t = { 
+	assert(args, "You must provide an argument table when creating BranchInfo")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["commitId"] = args["commitId"],
 		["branchName"] = args["branchName"],
 	}
-	asserts.AssertBranchInfo(t)
-	return t
+	asserts.AssertBranchInfo(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetRepositoryTriggersOutput = { ["configurationId"] = true, ["triggers"] = true, nil }
@@ -742,13 +1028,24 @@ end
 -- * triggers [RepositoryTriggersList] <p>The JSON block of configuration information for each trigger.</p>
 -- @return GetRepositoryTriggersOutput structure as a key-value pair table
 function M.GetRepositoryTriggersOutput(args)
-	assert(args, "You must provdide an argument table when creating GetRepositoryTriggersOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetRepositoryTriggersOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["configurationId"] = args["configurationId"],
 		["triggers"] = args["triggers"],
 	}
-	asserts.AssertGetRepositoryTriggersOutput(t)
-	return t
+	asserts.AssertGetRepositoryTriggersOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteRepositoryOutput = { ["repositoryId"] = true, nil }
@@ -769,12 +1066,23 @@ end
 -- * repositoryId [RepositoryId] <p>The ID of the repository that was deleted.</p>
 -- @return DeleteRepositoryOutput structure as a key-value pair table
 function M.DeleteRepositoryOutput(args)
-	assert(args, "You must provdide an argument table when creating DeleteRepositoryOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteRepositoryOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["repositoryId"] = args["repositoryId"],
 	}
-	asserts.AssertDeleteRepositoryOutput(t)
-	return t
+	asserts.AssertDeleteRepositoryOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListRepositoriesOutput = { ["nextToken"] = true, ["repositories"] = true, nil }
@@ -797,13 +1105,24 @@ end
 -- * repositories [RepositoryNameIdPairList] <p>Lists the repositories called by the list repositories operation.</p>
 -- @return ListRepositoriesOutput structure as a key-value pair table
 function M.ListRepositoriesOutput(args)
-	assert(args, "You must provdide an argument table when creating ListRepositoriesOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListRepositoriesOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["nextToken"] = args["nextToken"],
 		["repositories"] = args["repositories"],
 	}
-	asserts.AssertListRepositoriesOutput(t)
-	return t
+	asserts.AssertListRepositoriesOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.RepositoryTriggerNameRequiredException = { nil }
@@ -822,11 +1141,22 @@ end
 -- Valid keys:
 -- @return RepositoryTriggerNameRequiredException structure as a key-value pair table
 function M.RepositoryTriggerNameRequiredException(args)
-	assert(args, "You must provdide an argument table when creating RepositoryTriggerNameRequiredException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating RepositoryTriggerNameRequiredException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertRepositoryTriggerNameRequiredException(t)
-	return t
+	asserts.AssertRepositoryTriggerNameRequiredException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.RepositoryTriggerBranchNameListRequiredException = { nil }
@@ -845,11 +1175,22 @@ end
 -- Valid keys:
 -- @return RepositoryTriggerBranchNameListRequiredException structure as a key-value pair table
 function M.RepositoryTriggerBranchNameListRequiredException(args)
-	assert(args, "You must provdide an argument table when creating RepositoryTriggerBranchNameListRequiredException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating RepositoryTriggerBranchNameListRequiredException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertRepositoryTriggerBranchNameListRequiredException(t)
-	return t
+	asserts.AssertRepositoryTriggerBranchNameListRequiredException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.EncryptionIntegrityChecksFailedException = { nil }
@@ -868,11 +1209,22 @@ end
 -- Valid keys:
 -- @return EncryptionIntegrityChecksFailedException structure as a key-value pair table
 function M.EncryptionIntegrityChecksFailedException(args)
-	assert(args, "You must provdide an argument table when creating EncryptionIntegrityChecksFailedException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating EncryptionIntegrityChecksFailedException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertEncryptionIntegrityChecksFailedException(t)
-	return t
+	asserts.AssertEncryptionIntegrityChecksFailedException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.RepositoryMetadata = { ["creationDate"] = true, ["defaultBranch"] = true, ["repositoryName"] = true, ["cloneUrlSsh"] = true, ["lastModifiedDate"] = true, ["repositoryDescription"] = true, ["cloneUrlHttp"] = true, ["repositoryId"] = true, ["Arn"] = true, ["accountId"] = true, nil }
@@ -911,8 +1263,14 @@ end
 -- * accountId [AccountId] <p>The ID of the AWS account associated with the repository.</p>
 -- @return RepositoryMetadata structure as a key-value pair table
 function M.RepositoryMetadata(args)
-	assert(args, "You must provdide an argument table when creating RepositoryMetadata")
-	local t = { 
+	assert(args, "You must provide an argument table when creating RepositoryMetadata")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["creationDate"] = args["creationDate"],
 		["defaultBranch"] = args["defaultBranch"],
 		["repositoryName"] = args["repositoryName"],
@@ -924,8 +1282,13 @@ function M.RepositoryMetadata(args)
 		["Arn"] = args["Arn"],
 		["accountId"] = args["accountId"],
 	}
-	asserts.AssertRepositoryMetadata(t)
-	return t
+	asserts.AssertRepositoryMetadata(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListBranchesOutput = { ["nextToken"] = true, ["branches"] = true, nil }
@@ -948,13 +1311,24 @@ end
 -- * branches [BranchNameList] <p>The list of branch names.</p>
 -- @return ListBranchesOutput structure as a key-value pair table
 function M.ListBranchesOutput(args)
-	assert(args, "You must provdide an argument table when creating ListBranchesOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListBranchesOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["nextToken"] = args["nextToken"],
 		["branches"] = args["branches"],
 	}
-	asserts.AssertListBranchesOutput(t)
-	return t
+	asserts.AssertListBranchesOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.TestRepositoryTriggersOutput = { ["successfulExecutions"] = true, ["failedExecutions"] = true, nil }
@@ -977,13 +1351,24 @@ end
 -- * failedExecutions [RepositoryTriggerExecutionFailureList] <p>The list of triggers that were not able to be tested. This list provides the names of the triggers that could not be tested, separated by commas.</p>
 -- @return TestRepositoryTriggersOutput structure as a key-value pair table
 function M.TestRepositoryTriggersOutput(args)
-	assert(args, "You must provdide an argument table when creating TestRepositoryTriggersOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating TestRepositoryTriggersOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["successfulExecutions"] = args["successfulExecutions"],
 		["failedExecutions"] = args["failedExecutions"],
 	}
-	asserts.AssertTestRepositoryTriggersOutput(t)
-	return t
+	asserts.AssertTestRepositoryTriggersOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListRepositoriesInput = { ["nextToken"] = true, ["sortBy"] = true, ["order"] = true, nil }
@@ -1008,14 +1393,25 @@ end
 -- * order [OrderEnum] <p>The order in which to sort the results of a list repositories operation.</p>
 -- @return ListRepositoriesInput structure as a key-value pair table
 function M.ListRepositoriesInput(args)
-	assert(args, "You must provdide an argument table when creating ListRepositoriesInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListRepositoriesInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["nextToken"] = args["nextToken"],
 		["sortBy"] = args["sortBy"],
 		["order"] = args["order"],
 	}
-	asserts.AssertListRepositoriesInput(t)
-	return t
+	asserts.AssertListRepositoriesInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetBlobInput = { ["repositoryName"] = true, ["blobId"] = true, nil }
@@ -1042,13 +1438,24 @@ end
 -- Required key: blobId
 -- @return GetBlobInput structure as a key-value pair table
 function M.GetBlobInput(args)
-	assert(args, "You must provdide an argument table when creating GetBlobInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetBlobInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["repositoryName"] = args["repositoryName"],
 		["blobId"] = args["blobId"],
 	}
-	asserts.AssertGetBlobInput(t)
-	return t
+	asserts.AssertGetBlobInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.RepositoryNameRequiredException = { nil }
@@ -1067,11 +1474,22 @@ end
 -- Valid keys:
 -- @return RepositoryNameRequiredException structure as a key-value pair table
 function M.RepositoryNameRequiredException(args)
-	assert(args, "You must provdide an argument table when creating RepositoryNameRequiredException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating RepositoryNameRequiredException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertRepositoryNameRequiredException(t)
-	return t
+	asserts.AssertRepositoryNameRequiredException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetBranchInput = { ["repositoryName"] = true, ["branchName"] = true, nil }
@@ -1094,13 +1512,24 @@ end
 -- * branchName [BranchName] <p>The name of the branch for which you want to retrieve information.</p>
 -- @return GetBranchInput structure as a key-value pair table
 function M.GetBranchInput(args)
-	assert(args, "You must provdide an argument table when creating GetBranchInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetBranchInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["repositoryName"] = args["repositoryName"],
 		["branchName"] = args["branchName"],
 	}
-	asserts.AssertGetBranchInput(t)
-	return t
+	asserts.AssertGetBranchInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.BranchDoesNotExistException = { nil }
@@ -1119,11 +1548,22 @@ end
 -- Valid keys:
 -- @return BranchDoesNotExistException structure as a key-value pair table
 function M.BranchDoesNotExistException(args)
-	assert(args, "You must provdide an argument table when creating BranchDoesNotExistException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating BranchDoesNotExistException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertBranchDoesNotExistException(t)
-	return t
+	asserts.AssertBranchDoesNotExistException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteRepositoryInput = { ["repositoryName"] = true, nil }
@@ -1146,12 +1586,23 @@ end
 -- Required key: repositoryName
 -- @return DeleteRepositoryInput structure as a key-value pair table
 function M.DeleteRepositoryInput(args)
-	assert(args, "You must provdide an argument table when creating DeleteRepositoryInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteRepositoryInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["repositoryName"] = args["repositoryName"],
 	}
-	asserts.AssertDeleteRepositoryInput(t)
-	return t
+	asserts.AssertDeleteRepositoryInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidCommitIdException = { nil }
@@ -1170,11 +1621,22 @@ end
 -- Valid keys:
 -- @return InvalidCommitIdException structure as a key-value pair table
 function M.InvalidCommitIdException(args)
-	assert(args, "You must provdide an argument table when creating InvalidCommitIdException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidCommitIdException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertInvalidCommitIdException(t)
-	return t
+	asserts.AssertInvalidCommitIdException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidRepositoryTriggerBranchNameException = { nil }
@@ -1193,11 +1655,22 @@ end
 -- Valid keys:
 -- @return InvalidRepositoryTriggerBranchNameException structure as a key-value pair table
 function M.InvalidRepositoryTriggerBranchNameException(args)
-	assert(args, "You must provdide an argument table when creating InvalidRepositoryTriggerBranchNameException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidRepositoryTriggerBranchNameException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertInvalidRepositoryTriggerBranchNameException(t)
-	return t
+	asserts.AssertInvalidRepositoryTriggerBranchNameException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.MaximumBranchesExceededException = { nil }
@@ -1216,11 +1689,22 @@ end
 -- Valid keys:
 -- @return MaximumBranchesExceededException structure as a key-value pair table
 function M.MaximumBranchesExceededException(args)
-	assert(args, "You must provdide an argument table when creating MaximumBranchesExceededException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating MaximumBranchesExceededException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertMaximumBranchesExceededException(t)
-	return t
+	asserts.AssertMaximumBranchesExceededException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidPathException = { nil }
@@ -1239,11 +1723,22 @@ end
 -- Valid keys:
 -- @return InvalidPathException structure as a key-value pair table
 function M.InvalidPathException(args)
-	assert(args, "You must provdide an argument table when creating InvalidPathException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidPathException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertInvalidPathException(t)
-	return t
+	asserts.AssertInvalidPathException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.BranchNameExistsException = { nil }
@@ -1262,11 +1757,22 @@ end
 -- Valid keys:
 -- @return BranchNameExistsException structure as a key-value pair table
 function M.BranchNameExistsException(args)
-	assert(args, "You must provdide an argument table when creating BranchNameExistsException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating BranchNameExistsException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertBranchNameExistsException(t)
-	return t
+	asserts.AssertBranchNameExistsException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetRepositoryInput = { ["repositoryName"] = true, nil }
@@ -1289,12 +1795,23 @@ end
 -- Required key: repositoryName
 -- @return GetRepositoryInput structure as a key-value pair table
 function M.GetRepositoryInput(args)
-	assert(args, "You must provdide an argument table when creating GetRepositoryInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetRepositoryInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["repositoryName"] = args["repositoryName"],
 	}
-	asserts.AssertGetRepositoryInput(t)
-	return t
+	asserts.AssertGetRepositoryInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.RepositoryNameIdPair = { ["repositoryName"] = true, ["repositoryId"] = true, nil }
@@ -1317,13 +1834,24 @@ end
 -- * repositoryId [RepositoryId] <p>The ID associated with the repository.</p>
 -- @return RepositoryNameIdPair structure as a key-value pair table
 function M.RepositoryNameIdPair(args)
-	assert(args, "You must provdide an argument table when creating RepositoryNameIdPair")
-	local t = { 
+	assert(args, "You must provide an argument table when creating RepositoryNameIdPair")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["repositoryName"] = args["repositoryName"],
 		["repositoryId"] = args["repositoryId"],
 	}
-	asserts.AssertRepositoryNameIdPair(t)
-	return t
+	asserts.AssertRepositoryNameIdPair(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UserInfo = { ["date"] = true, ["name"] = true, ["email"] = true, nil }
@@ -1348,14 +1876,25 @@ end
 -- * email [Email] <p>The email address associated with the user who made the commit, if any.</p>
 -- @return UserInfo structure as a key-value pair table
 function M.UserInfo(args)
-	assert(args, "You must provdide an argument table when creating UserInfo")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UserInfo")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["date"] = args["date"],
 		["name"] = args["name"],
 		["email"] = args["email"],
 	}
-	asserts.AssertUserInfo(t)
-	return t
+	asserts.AssertUserInfo(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.FileTooLargeException = { nil }
@@ -1374,11 +1913,22 @@ end
 -- Valid keys:
 -- @return FileTooLargeException structure as a key-value pair table
 function M.FileTooLargeException(args)
-	assert(args, "You must provdide an argument table when creating FileTooLargeException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating FileTooLargeException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertFileTooLargeException(t)
-	return t
+	asserts.AssertFileTooLargeException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CommitIdRequiredException = { nil }
@@ -1397,11 +1947,22 @@ end
 -- Valid keys:
 -- @return CommitIdRequiredException structure as a key-value pair table
 function M.CommitIdRequiredException(args)
-	assert(args, "You must provdide an argument table when creating CommitIdRequiredException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CommitIdRequiredException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertCommitIdRequiredException(t)
-	return t
+	asserts.AssertCommitIdRequiredException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.MaximumRepositoryTriggersExceededException = { nil }
@@ -1420,11 +1981,22 @@ end
 -- Valid keys:
 -- @return MaximumRepositoryTriggersExceededException structure as a key-value pair table
 function M.MaximumRepositoryTriggersExceededException(args)
-	assert(args, "You must provdide an argument table when creating MaximumRepositoryTriggersExceededException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating MaximumRepositoryTriggersExceededException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertMaximumRepositoryTriggersExceededException(t)
-	return t
+	asserts.AssertMaximumRepositoryTriggersExceededException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.RepositoryTriggersListRequiredException = { nil }
@@ -1443,11 +2015,22 @@ end
 -- Valid keys:
 -- @return RepositoryTriggersListRequiredException structure as a key-value pair table
 function M.RepositoryTriggersListRequiredException(args)
-	assert(args, "You must provdide an argument table when creating RepositoryTriggersListRequiredException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating RepositoryTriggersListRequiredException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertRepositoryTriggersListRequiredException(t)
-	return t
+	asserts.AssertRepositoryTriggersListRequiredException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.RepositoryTriggerDestinationArnRequiredException = { nil }
@@ -1466,11 +2049,22 @@ end
 -- Valid keys:
 -- @return RepositoryTriggerDestinationArnRequiredException structure as a key-value pair table
 function M.RepositoryTriggerDestinationArnRequiredException(args)
-	assert(args, "You must provdide an argument table when creating RepositoryTriggerDestinationArnRequiredException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating RepositoryTriggerDestinationArnRequiredException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertRepositoryTriggerDestinationArnRequiredException(t)
-	return t
+	asserts.AssertRepositoryTriggerDestinationArnRequiredException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidCommitException = { nil }
@@ -1489,11 +2083,22 @@ end
 -- Valid keys:
 -- @return InvalidCommitException structure as a key-value pair table
 function M.InvalidCommitException(args)
-	assert(args, "You must provdide an argument table when creating InvalidCommitException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidCommitException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertInvalidCommitException(t)
-	return t
+	asserts.AssertInvalidCommitException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdateDefaultBranchInput = { ["defaultBranchName"] = true, ["repositoryName"] = true, nil }
@@ -1520,13 +2125,24 @@ end
 -- Required key: defaultBranchName
 -- @return UpdateDefaultBranchInput structure as a key-value pair table
 function M.UpdateDefaultBranchInput(args)
-	assert(args, "You must provdide an argument table when creating UpdateDefaultBranchInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateDefaultBranchInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["defaultBranchName"] = args["defaultBranchName"],
 		["repositoryName"] = args["repositoryName"],
 	}
-	asserts.AssertUpdateDefaultBranchInput(t)
-	return t
+	asserts.AssertUpdateDefaultBranchInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateBranchInput = { ["commitId"] = true, ["repositoryName"] = true, ["branchName"] = true, nil }
@@ -1557,14 +2173,25 @@ end
 -- Required key: commitId
 -- @return CreateBranchInput structure as a key-value pair table
 function M.CreateBranchInput(args)
-	assert(args, "You must provdide an argument table when creating CreateBranchInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateBranchInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["commitId"] = args["commitId"],
 		["repositoryName"] = args["repositoryName"],
 		["branchName"] = args["branchName"],
 	}
-	asserts.AssertCreateBranchInput(t)
-	return t
+	asserts.AssertCreateBranchInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetBranchOutput = { ["branch"] = true, nil }
@@ -1585,12 +2212,23 @@ end
 -- * branch [BranchInfo] <p>The name of the branch.</p>
 -- @return GetBranchOutput structure as a key-value pair table
 function M.GetBranchOutput(args)
-	assert(args, "You must provdide an argument table when creating GetBranchOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetBranchOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["branch"] = args["branch"],
 	}
-	asserts.AssertGetBranchOutput(t)
-	return t
+	asserts.AssertGetBranchOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetCommitOutput = { ["commit"] = true, nil }
@@ -1613,12 +2251,23 @@ end
 -- Required key: commit
 -- @return GetCommitOutput structure as a key-value pair table
 function M.GetCommitOutput(args)
-	assert(args, "You must provdide an argument table when creating GetCommitOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetCommitOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["commit"] = args["commit"],
 	}
-	asserts.AssertGetCommitOutput(t)
-	return t
+	asserts.AssertGetCommitOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetDifferencesInput = { ["repositoryName"] = true, ["NextToken"] = true, ["afterPath"] = true, ["MaxResults"] = true, ["beforeCommitSpecifier"] = true, ["beforePath"] = true, ["afterCommitSpecifier"] = true, nil }
@@ -1655,8 +2304,14 @@ end
 -- Required key: afterCommitSpecifier
 -- @return GetDifferencesInput structure as a key-value pair table
 function M.GetDifferencesInput(args)
-	assert(args, "You must provdide an argument table when creating GetDifferencesInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetDifferencesInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["repositoryName"] = args["repositoryName"],
 		["NextToken"] = args["NextToken"],
 		["afterPath"] = args["afterPath"],
@@ -1665,8 +2320,13 @@ function M.GetDifferencesInput(args)
 		["beforePath"] = args["beforePath"],
 		["afterCommitSpecifier"] = args["afterCommitSpecifier"],
 	}
-	asserts.AssertGetDifferencesInput(t)
-	return t
+	asserts.AssertGetDifferencesInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetRepositoryTriggersInput = { ["repositoryName"] = true, nil }
@@ -1689,12 +2349,23 @@ end
 -- Required key: repositoryName
 -- @return GetRepositoryTriggersInput structure as a key-value pair table
 function M.GetRepositoryTriggersInput(args)
-	assert(args, "You must provdide an argument table when creating GetRepositoryTriggersInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetRepositoryTriggersInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["repositoryName"] = args["repositoryName"],
 	}
-	asserts.AssertGetRepositoryTriggersInput(t)
-	return t
+	asserts.AssertGetRepositoryTriggersInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdateRepositoryNameInput = { ["newName"] = true, ["oldName"] = true, nil }
@@ -1721,13 +2392,24 @@ end
 -- Required key: newName
 -- @return UpdateRepositoryNameInput structure as a key-value pair table
 function M.UpdateRepositoryNameInput(args)
-	assert(args, "You must provdide an argument table when creating UpdateRepositoryNameInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateRepositoryNameInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["newName"] = args["newName"],
 		["oldName"] = args["oldName"],
 	}
-	asserts.AssertUpdateRepositoryNameInput(t)
-	return t
+	asserts.AssertUpdateRepositoryNameInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.MaximumRepositoryNamesExceededException = { nil }
@@ -1746,11 +2428,22 @@ end
 -- Valid keys:
 -- @return MaximumRepositoryNamesExceededException structure as a key-value pair table
 function M.MaximumRepositoryNamesExceededException(args)
-	assert(args, "You must provdide an argument table when creating MaximumRepositoryNamesExceededException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating MaximumRepositoryNamesExceededException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertMaximumRepositoryNamesExceededException(t)
-	return t
+	asserts.AssertMaximumRepositoryNamesExceededException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.RepositoryNamesRequiredException = { nil }
@@ -1769,11 +2462,22 @@ end
 -- Valid keys:
 -- @return RepositoryNamesRequiredException structure as a key-value pair table
 function M.RepositoryNamesRequiredException(args)
-	assert(args, "You must provdide an argument table when creating RepositoryNamesRequiredException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating RepositoryNamesRequiredException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertRepositoryNamesRequiredException(t)
-	return t
+	asserts.AssertRepositoryNamesRequiredException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetDifferencesOutput = { ["differences"] = true, ["NextToken"] = true, nil }
@@ -1796,13 +2500,24 @@ end
 -- * NextToken [NextToken] <p>An enumeration token that can be used in a request to return the next batch of the results.</p>
 -- @return GetDifferencesOutput structure as a key-value pair table
 function M.GetDifferencesOutput(args)
-	assert(args, "You must provdide an argument table when creating GetDifferencesOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetDifferencesOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["differences"] = args["differences"],
 		["NextToken"] = args["NextToken"],
 	}
-	asserts.AssertGetDifferencesOutput(t)
-	return t
+	asserts.AssertGetDifferencesOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateRepositoryInput = { ["repositoryName"] = true, ["repositoryDescription"] = true, nil }
@@ -1827,13 +2542,24 @@ end
 -- Required key: repositoryName
 -- @return CreateRepositoryInput structure as a key-value pair table
 function M.CreateRepositoryInput(args)
-	assert(args, "You must provdide an argument table when creating CreateRepositoryInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateRepositoryInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["repositoryName"] = args["repositoryName"],
 		["repositoryDescription"] = args["repositoryDescription"],
 	}
-	asserts.AssertCreateRepositoryInput(t)
-	return t
+	asserts.AssertCreateRepositoryInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidRepositoryTriggerCustomDataException = { nil }
@@ -1852,11 +2578,22 @@ end
 -- Valid keys:
 -- @return InvalidRepositoryTriggerCustomDataException structure as a key-value pair table
 function M.InvalidRepositoryTriggerCustomDataException(args)
-	assert(args, "You must provdide an argument table when creating InvalidRepositoryTriggerCustomDataException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidRepositoryTriggerCustomDataException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertInvalidRepositoryTriggerCustomDataException(t)
-	return t
+	asserts.AssertInvalidRepositoryTriggerCustomDataException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.EncryptionKeyDisabledException = { nil }
@@ -1875,11 +2612,22 @@ end
 -- Valid keys:
 -- @return EncryptionKeyDisabledException structure as a key-value pair table
 function M.EncryptionKeyDisabledException(args)
-	assert(args, "You must provdide an argument table when creating EncryptionKeyDisabledException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating EncryptionKeyDisabledException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertEncryptionKeyDisabledException(t)
-	return t
+	asserts.AssertEncryptionKeyDisabledException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CommitRequiredException = { nil }
@@ -1898,11 +2646,22 @@ end
 -- Valid keys:
 -- @return CommitRequiredException structure as a key-value pair table
 function M.CommitRequiredException(args)
-	assert(args, "You must provdide an argument table when creating CommitRequiredException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CommitRequiredException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertCommitRequiredException(t)
-	return t
+	asserts.AssertCommitRequiredException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidMaxResultsException = { nil }
@@ -1921,11 +2680,22 @@ end
 -- Valid keys:
 -- @return InvalidMaxResultsException structure as a key-value pair table
 function M.InvalidMaxResultsException(args)
-	assert(args, "You must provdide an argument table when creating InvalidMaxResultsException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidMaxResultsException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertInvalidMaxResultsException(t)
-	return t
+	asserts.AssertInvalidMaxResultsException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidBlobIdException = { nil }
@@ -1944,11 +2714,22 @@ end
 -- Valid keys:
 -- @return InvalidBlobIdException structure as a key-value pair table
 function M.InvalidBlobIdException(args)
-	assert(args, "You must provdide an argument table when creating InvalidBlobIdException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidBlobIdException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertInvalidBlobIdException(t)
-	return t
+	asserts.AssertInvalidBlobIdException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidContinuationTokenException = { nil }
@@ -1967,11 +2748,22 @@ end
 -- Valid keys:
 -- @return InvalidContinuationTokenException structure as a key-value pair table
 function M.InvalidContinuationTokenException(args)
-	assert(args, "You must provdide an argument table when creating InvalidContinuationTokenException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidContinuationTokenException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertInvalidContinuationTokenException(t)
-	return t
+	asserts.AssertInvalidContinuationTokenException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.EncryptionKeyNotFoundException = { nil }
@@ -1990,11 +2782,22 @@ end
 -- Valid keys:
 -- @return EncryptionKeyNotFoundException structure as a key-value pair table
 function M.EncryptionKeyNotFoundException(args)
-	assert(args, "You must provdide an argument table when creating EncryptionKeyNotFoundException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating EncryptionKeyNotFoundException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertEncryptionKeyNotFoundException(t)
-	return t
+	asserts.AssertEncryptionKeyNotFoundException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetBlobOutput = { ["content"] = true, nil }
@@ -2017,12 +2820,23 @@ end
 -- Required key: content
 -- @return GetBlobOutput structure as a key-value pair table
 function M.GetBlobOutput(args)
-	assert(args, "You must provdide an argument table when creating GetBlobOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetBlobOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["content"] = args["content"],
 	}
-	asserts.AssertGetBlobOutput(t)
-	return t
+	asserts.AssertGetBlobOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.RepositoryTriggerEventsListRequiredException = { nil }
@@ -2041,11 +2855,22 @@ end
 -- Valid keys:
 -- @return RepositoryTriggerEventsListRequiredException structure as a key-value pair table
 function M.RepositoryTriggerEventsListRequiredException(args)
-	assert(args, "You must provdide an argument table when creating RepositoryTriggerEventsListRequiredException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating RepositoryTriggerEventsListRequiredException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertRepositoryTriggerEventsListRequiredException(t)
-	return t
+	asserts.AssertRepositoryTriggerEventsListRequiredException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.RepositoryTriggerExecutionFailure = { ["trigger"] = true, ["failureMessage"] = true, nil }
@@ -2068,13 +2893,24 @@ end
 -- * failureMessage [RepositoryTriggerExecutionFailureMessage] <p>Additional message information about the trigger that did not run.</p>
 -- @return RepositoryTriggerExecutionFailure structure as a key-value pair table
 function M.RepositoryTriggerExecutionFailure(args)
-	assert(args, "You must provdide an argument table when creating RepositoryTriggerExecutionFailure")
-	local t = { 
+	assert(args, "You must provide an argument table when creating RepositoryTriggerExecutionFailure")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["trigger"] = args["trigger"],
 		["failureMessage"] = args["failureMessage"],
 	}
-	asserts.AssertRepositoryTriggerExecutionFailure(t)
-	return t
+	asserts.AssertRepositoryTriggerExecutionFailure(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidRepositoryTriggerEventsException = { nil }
@@ -2093,11 +2929,22 @@ end
 -- Valid keys:
 -- @return InvalidRepositoryTriggerEventsException structure as a key-value pair table
 function M.InvalidRepositoryTriggerEventsException(args)
-	assert(args, "You must provdide an argument table when creating InvalidRepositoryTriggerEventsException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidRepositoryTriggerEventsException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertInvalidRepositoryTriggerEventsException(t)
-	return t
+	asserts.AssertInvalidRepositoryTriggerEventsException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Difference = { ["afterBlob"] = true, ["changeType"] = true, ["beforeBlob"] = true, nil }
@@ -2122,14 +2969,25 @@ end
 -- * beforeBlob [BlobMetadata] <p>Information about a <code>beforeBlob</code> data type object, including the ID, the file mode permission code, and the path.</p>
 -- @return Difference structure as a key-value pair table
 function M.Difference(args)
-	assert(args, "You must provdide an argument table when creating Difference")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Difference")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["afterBlob"] = args["afterBlob"],
 		["changeType"] = args["changeType"],
 		["beforeBlob"] = args["beforeBlob"],
 	}
-	asserts.AssertDifference(t)
-	return t
+	asserts.AssertDifference(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateRepositoryOutput = { ["repositoryMetadata"] = true, nil }
@@ -2150,12 +3008,23 @@ end
 -- * repositoryMetadata [RepositoryMetadata] <p>Information about the newly created repository.</p>
 -- @return CreateRepositoryOutput structure as a key-value pair table
 function M.CreateRepositoryOutput(args)
-	assert(args, "You must provdide an argument table when creating CreateRepositoryOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateRepositoryOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["repositoryMetadata"] = args["repositoryMetadata"],
 	}
-	asserts.AssertCreateRepositoryOutput(t)
-	return t
+	asserts.AssertCreateRepositoryOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.BatchGetRepositoriesInput = { ["repositoryNames"] = true, nil }
@@ -2178,12 +3047,23 @@ end
 -- Required key: repositoryNames
 -- @return BatchGetRepositoriesInput structure as a key-value pair table
 function M.BatchGetRepositoriesInput(args)
-	assert(args, "You must provdide an argument table when creating BatchGetRepositoriesInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating BatchGetRepositoriesInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["repositoryNames"] = args["repositoryNames"],
 	}
-	asserts.AssertBatchGetRepositoriesInput(t)
-	return t
+	asserts.AssertBatchGetRepositoriesInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidRepositoryNameException = { nil }
@@ -2202,11 +3082,22 @@ end
 -- Valid keys:
 -- @return InvalidRepositoryNameException structure as a key-value pair table
 function M.InvalidRepositoryNameException(args)
-	assert(args, "You must provdide an argument table when creating InvalidRepositoryNameException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidRepositoryNameException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertInvalidRepositoryNameException(t)
-	return t
+	asserts.AssertInvalidRepositoryNameException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.BlobIdDoesNotExistException = { nil }
@@ -2225,11 +3116,22 @@ end
 -- Valid keys:
 -- @return BlobIdDoesNotExistException structure as a key-value pair table
 function M.BlobIdDoesNotExistException(args)
-	assert(args, "You must provdide an argument table when creating BlobIdDoesNotExistException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating BlobIdDoesNotExistException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertBlobIdDoesNotExistException(t)
-	return t
+	asserts.AssertBlobIdDoesNotExistException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.BlobMetadata = { ["path"] = true, ["blobId"] = true, ["mode"] = true, nil }
@@ -2254,14 +3156,25 @@ end
 -- * mode [Mode] <p>The file mode permissions of the blob. File mode permission codes include:</p> <ul> <li> <p> <code>100644</code> indicates read/write</p> </li> <li> <p> <code>100755</code> indicates read/write/execute</p> </li> <li> <p> <code>160000</code> indicates a submodule</p> </li> <li> <p> <code>120000</code> indicates a symlink</p> </li> </ul>
 -- @return BlobMetadata structure as a key-value pair table
 function M.BlobMetadata(args)
-	assert(args, "You must provdide an argument table when creating BlobMetadata")
-	local t = { 
+	assert(args, "You must provide an argument table when creating BlobMetadata")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["path"] = args["path"],
 		["blobId"] = args["blobId"],
 		["mode"] = args["mode"],
 	}
-	asserts.AssertBlobMetadata(t)
-	return t
+	asserts.AssertBlobMetadata(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidRepositoryTriggerRegionException = { nil }
@@ -2280,11 +3193,22 @@ end
 -- Valid keys:
 -- @return InvalidRepositoryTriggerRegionException structure as a key-value pair table
 function M.InvalidRepositoryTriggerRegionException(args)
-	assert(args, "You must provdide an argument table when creating InvalidRepositoryTriggerRegionException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidRepositoryTriggerRegionException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertInvalidRepositoryTriggerRegionException(t)
-	return t
+	asserts.AssertInvalidRepositoryTriggerRegionException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CommitIdDoesNotExistException = { nil }
@@ -2303,11 +3227,22 @@ end
 -- Valid keys:
 -- @return CommitIdDoesNotExistException structure as a key-value pair table
 function M.CommitIdDoesNotExistException(args)
-	assert(args, "You must provdide an argument table when creating CommitIdDoesNotExistException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CommitIdDoesNotExistException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertCommitIdDoesNotExistException(t)
-	return t
+	asserts.AssertCommitIdDoesNotExistException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 function asserts.AssertOrderEnum(str)
@@ -2870,8 +3805,11 @@ function M.TestRepositoryTriggersAsync(TestRepositoryTriggersInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "CodeCommit_20150413.TestRepositoryTriggers",
 	}
+	for header,value in pairs(TestRepositoryTriggersInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", TestRepositoryTriggersInput, headers, settings, cb)
 	else
@@ -2902,8 +3840,11 @@ function M.GetRepositoryTriggersAsync(GetRepositoryTriggersInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "CodeCommit_20150413.GetRepositoryTriggers",
 	}
+	for header,value in pairs(GetRepositoryTriggersInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", GetRepositoryTriggersInput, headers, settings, cb)
 	else
@@ -2934,8 +3875,11 @@ function M.DeleteRepositoryAsync(DeleteRepositoryInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "CodeCommit_20150413.DeleteRepository",
 	}
+	for header,value in pairs(DeleteRepositoryInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteRepositoryInput, headers, settings, cb)
 	else
@@ -2966,8 +3910,11 @@ function M.UpdateRepositoryNameAsync(UpdateRepositoryNameInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "CodeCommit_20150413.UpdateRepositoryName",
 	}
+	for header,value in pairs(UpdateRepositoryNameInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateRepositoryNameInput, headers, settings, cb)
 	else
@@ -2998,8 +3945,11 @@ function M.PutRepositoryTriggersAsync(PutRepositoryTriggersInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "CodeCommit_20150413.PutRepositoryTriggers",
 	}
+	for header,value in pairs(PutRepositoryTriggersInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", PutRepositoryTriggersInput, headers, settings, cb)
 	else
@@ -3030,8 +3980,11 @@ function M.CreateBranchAsync(CreateBranchInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "CodeCommit_20150413.CreateBranch",
 	}
+	for header,value in pairs(CreateBranchInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateBranchInput, headers, settings, cb)
 	else
@@ -3062,8 +4015,11 @@ function M.ListRepositoriesAsync(ListRepositoriesInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "CodeCommit_20150413.ListRepositories",
 	}
+	for header,value in pairs(ListRepositoriesInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ListRepositoriesInput, headers, settings, cb)
 	else
@@ -3094,8 +4050,11 @@ function M.UpdateRepositoryDescriptionAsync(UpdateRepositoryDescriptionInput, cb
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "CodeCommit_20150413.UpdateRepositoryDescription",
 	}
+	for header,value in pairs(UpdateRepositoryDescriptionInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateRepositoryDescriptionInput, headers, settings, cb)
 	else
@@ -3126,8 +4085,11 @@ function M.GetRepositoryAsync(GetRepositoryInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "CodeCommit_20150413.GetRepository",
 	}
+	for header,value in pairs(GetRepositoryInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", GetRepositoryInput, headers, settings, cb)
 	else
@@ -3158,8 +4120,11 @@ function M.UpdateDefaultBranchAsync(UpdateDefaultBranchInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "CodeCommit_20150413.UpdateDefaultBranch",
 	}
+	for header,value in pairs(UpdateDefaultBranchInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateDefaultBranchInput, headers, settings, cb)
 	else
@@ -3190,8 +4155,11 @@ function M.BatchGetRepositoriesAsync(BatchGetRepositoriesInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "CodeCommit_20150413.BatchGetRepositories",
 	}
+	for header,value in pairs(BatchGetRepositoriesInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", BatchGetRepositoriesInput, headers, settings, cb)
 	else
@@ -3222,8 +4190,11 @@ function M.ListBranchesAsync(ListBranchesInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "CodeCommit_20150413.ListBranches",
 	}
+	for header,value in pairs(ListBranchesInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ListBranchesInput, headers, settings, cb)
 	else
@@ -3254,8 +4225,11 @@ function M.GetBlobAsync(GetBlobInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "CodeCommit_20150413.GetBlob",
 	}
+	for header,value in pairs(GetBlobInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", GetBlobInput, headers, settings, cb)
 	else
@@ -3286,8 +4260,11 @@ function M.GetBranchAsync(GetBranchInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "CodeCommit_20150413.GetBranch",
 	}
+	for header,value in pairs(GetBranchInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", GetBranchInput, headers, settings, cb)
 	else
@@ -3318,8 +4295,11 @@ function M.CreateRepositoryAsync(CreateRepositoryInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "CodeCommit_20150413.CreateRepository",
 	}
+	for header,value in pairs(CreateRepositoryInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateRepositoryInput, headers, settings, cb)
 	else
@@ -3350,8 +4330,11 @@ function M.GetCommitAsync(GetCommitInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "CodeCommit_20150413.GetCommit",
 	}
+	for header,value in pairs(GetCommitInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", GetCommitInput, headers, settings, cb)
 	else
@@ -3382,8 +4365,11 @@ function M.GetDifferencesAsync(GetDifferencesInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "CodeCommit_20150413.GetDifferences",
 	}
+	for header,value in pairs(GetDifferencesInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", GetDifferencesInput, headers, settings, cb)
 	else

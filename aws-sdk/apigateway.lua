@@ -51,15 +51,29 @@ end
 -- Required key: httpMethod
 -- @return UpdateIntegrationRequest structure as a key-value pair table
 function M.UpdateIntegrationRequest(args)
-	assert(args, "You must provdide an argument table when creating UpdateIntegrationRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateIntegrationRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{resource_id}"] = args["resourceId"],
+        ["{restapi_id}"] = args["restApiId"],
+        ["{http_method}"] = args["httpMethod"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["resourceId"] = args["resourceId"],
 		["patchOperations"] = args["patchOperations"],
 		["restApiId"] = args["restApiId"],
 		["httpMethod"] = args["httpMethod"],
 	}
-	asserts.AssertUpdateIntegrationRequest(t)
-	return t
+	asserts.AssertUpdateIntegrationRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateResourceRequest = { ["restApiId"] = true, ["pathPart"] = true, ["parentId"] = true, nil }
@@ -90,14 +104,27 @@ end
 -- Required key: pathPart
 -- @return CreateResourceRequest structure as a key-value pair table
 function M.CreateResourceRequest(args)
-	assert(args, "You must provdide an argument table when creating CreateResourceRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateResourceRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{restapi_id}"] = args["restApiId"],
+        ["{parent_id}"] = args["parentId"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["restApiId"] = args["restApiId"],
 		["pathPart"] = args["pathPart"],
 		["parentId"] = args["parentId"],
 	}
-	asserts.AssertCreateResourceRequest(t)
-	return t
+	asserts.AssertCreateResourceRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdateStageRequest = { ["restApiId"] = true, ["stageName"] = true, ["patchOperations"] = true, nil }
@@ -126,14 +153,27 @@ end
 -- Required key: stageName
 -- @return UpdateStageRequest structure as a key-value pair table
 function M.UpdateStageRequest(args)
-	assert(args, "You must provdide an argument table when creating UpdateStageRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateStageRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{restapi_id}"] = args["restApiId"],
+        ["{stage_name}"] = args["stageName"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["restApiId"] = args["restApiId"],
 		["stageName"] = args["stageName"],
 		["patchOperations"] = args["patchOperations"],
 	}
-	asserts.AssertUpdateStageRequest(t)
-	return t
+	asserts.AssertUpdateStageRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ServiceUnavailableException = { ["message"] = true, ["retryAfterSeconds"] = true, nil }
@@ -156,13 +196,25 @@ end
 -- * retryAfterSeconds [String] 
 -- @return ServiceUnavailableException structure as a key-value pair table
 function M.ServiceUnavailableException(args)
-	assert(args, "You must provdide an argument table when creating ServiceUnavailableException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ServiceUnavailableException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+        ["Retry-After"] = args["retryAfterSeconds"],
+    }
+	local all_args = { 
 		["message"] = args["message"],
 		["retryAfterSeconds"] = args["retryAfterSeconds"],
 	}
-	asserts.AssertServiceUnavailableException(t)
-	return t
+	asserts.AssertServiceUnavailableException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.BadRequestException = { ["message"] = true, nil }
@@ -183,12 +235,23 @@ end
 -- * message [String] 
 -- @return BadRequestException structure as a key-value pair table
 function M.BadRequestException(args)
-	assert(args, "You must provdide an argument table when creating BadRequestException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating BadRequestException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertBadRequestException(t)
-	return t
+	asserts.AssertBadRequestException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ClientCertificates = { ["position"] = true, ["items"] = true, nil }
@@ -211,13 +274,24 @@ end
 -- * items [ListOfClientCertificate] <p>The current page of any <a>ClientCertificate</a> resources in the collection of <a>ClientCertificate</a> resources.</p>
 -- @return ClientCertificates structure as a key-value pair table
 function M.ClientCertificates(args)
-	assert(args, "You must provdide an argument table when creating ClientCertificates")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ClientCertificates")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["position"] = args["position"],
 		["items"] = args["items"],
 	}
-	asserts.AssertClientCertificates(t)
-	return t
+	asserts.AssertClientCertificates(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UnauthorizedException = { ["message"] = true, nil }
@@ -238,12 +312,23 @@ end
 -- * message [String] 
 -- @return UnauthorizedException structure as a key-value pair table
 function M.UnauthorizedException(args)
-	assert(args, "You must provdide an argument table when creating UnauthorizedException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UnauthorizedException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertUnauthorizedException(t)
-	return t
+	asserts.AssertUnauthorizedException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetApiKeyRequest = { ["apiKey"] = true, ["includeValue"] = true, nil }
@@ -268,13 +353,26 @@ end
 -- Required key: apiKey
 -- @return GetApiKeyRequest structure as a key-value pair table
 function M.GetApiKeyRequest(args)
-	assert(args, "You must provdide an argument table when creating GetApiKeyRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetApiKeyRequest")
+    local query_args = { 
+        ["includeValue"] = args["includeValue"],
+    }
+    local uri_args = { 
+        ["{api_Key}"] = args["apiKey"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["apiKey"] = args["apiKey"],
 		["includeValue"] = args["includeValue"],
 	}
-	asserts.AssertGetApiKeyRequest(t)
-	return t
+	asserts.AssertGetApiKeyRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Template = { ["value"] = true, nil }
@@ -295,12 +393,23 @@ end
 -- * value [String] <p>The Apache <a href="http://velocity.apache.org/engine/devel/vtl-reference-guide.html" target="_blank">Velocity Template Language (VTL)</a> template content used for the template resource.</p>
 -- @return Template structure as a key-value pair table
 function M.Template(args)
-	assert(args, "You must provdide an argument table when creating Template")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Template")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["value"] = args["value"],
 	}
-	asserts.AssertTemplate(t)
-	return t
+	asserts.AssertTemplate(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GenerateClientCertificateRequest = { ["description"] = true, nil }
@@ -321,12 +430,23 @@ end
 -- * description [String] <p>The description of the <a>ClientCertificate</a>.</p>
 -- @return GenerateClientCertificateRequest structure as a key-value pair table
 function M.GenerateClientCertificateRequest(args)
-	assert(args, "You must provdide an argument table when creating GenerateClientCertificateRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GenerateClientCertificateRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["description"] = args["description"],
 	}
-	asserts.AssertGenerateClientCertificateRequest(t)
-	return t
+	asserts.AssertGenerateClientCertificateRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Resources = { ["position"] = true, ["items"] = true, nil }
@@ -349,13 +469,24 @@ end
 -- * items [ListOfResource] <p>Gets the current <a>Resource</a> resource in the collection.</p>
 -- @return Resources structure as a key-value pair table
 function M.Resources(args)
-	assert(args, "You must provdide an argument table when creating Resources")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Resources")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["position"] = args["position"],
 		["items"] = args["items"],
 	}
-	asserts.AssertResources(t)
-	return t
+	asserts.AssertResources(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetDomainNameRequest = { ["domainName"] = true, nil }
@@ -378,12 +509,24 @@ end
 -- Required key: domainName
 -- @return GetDomainNameRequest structure as a key-value pair table
 function M.GetDomainNameRequest(args)
-	assert(args, "You must provdide an argument table when creating GetDomainNameRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetDomainNameRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{domain_name}"] = args["domainName"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["domainName"] = args["domainName"],
 	}
-	asserts.AssertGetDomainNameRequest(t)
-	return t
+	asserts.AssertGetDomainNameRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.PutMethodRequest = { ["restApiId"] = true, ["requestParameters"] = true, ["requestModels"] = true, ["resourceId"] = true, ["authorizationType"] = true, ["operationName"] = true, ["apiKeyRequired"] = true, ["httpMethod"] = true, ["requestValidatorId"] = true, ["authorizerId"] = true, nil }
@@ -430,8 +573,17 @@ end
 -- Required key: authorizationType
 -- @return PutMethodRequest structure as a key-value pair table
 function M.PutMethodRequest(args)
-	assert(args, "You must provdide an argument table when creating PutMethodRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating PutMethodRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{restapi_id}"] = args["restApiId"],
+        ["{resource_id}"] = args["resourceId"],
+        ["{http_method}"] = args["httpMethod"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["restApiId"] = args["restApiId"],
 		["requestParameters"] = args["requestParameters"],
 		["requestModels"] = args["requestModels"],
@@ -443,8 +595,13 @@ function M.PutMethodRequest(args)
 		["requestValidatorId"] = args["requestValidatorId"],
 		["authorizerId"] = args["authorizerId"],
 	}
-	asserts.AssertPutMethodRequest(t)
-	return t
+	asserts.AssertPutMethodRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DocumentationPart = { ["properties"] = true, ["id"] = true, ["location"] = true, nil }
@@ -469,14 +626,25 @@ end
 -- * location [DocumentationPartLocation] <p>The location of the API entity to which the documentation applies. Valid fields depend on the targeted API entity type. All the valid location fields are not required. If not explicitly specified, a valid location field is treated as a wildcard and associated documentation content may be inherited by matching entities, unless overridden.</p>
 -- @return DocumentationPart structure as a key-value pair table
 function M.DocumentationPart(args)
-	assert(args, "You must provdide an argument table when creating DocumentationPart")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DocumentationPart")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["properties"] = args["properties"],
 		["id"] = args["id"],
 		["location"] = args["location"],
 	}
-	asserts.AssertDocumentationPart(t)
-	return t
+	asserts.AssertDocumentationPart(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.TestInvokeAuthorizerResponse = { ["latency"] = true, ["log"] = true, ["principalId"] = true, ["policy"] = true, ["claims"] = true, ["authorization"] = true, ["clientStatus"] = true, nil }
@@ -509,8 +677,14 @@ end
 -- * clientStatus [Integer] <p>The HTTP status code that the client would have received. Value is 0 if the authorizer succeeded.</p>
 -- @return TestInvokeAuthorizerResponse structure as a key-value pair table
 function M.TestInvokeAuthorizerResponse(args)
-	assert(args, "You must provdide an argument table when creating TestInvokeAuthorizerResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating TestInvokeAuthorizerResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["latency"] = args["latency"],
 		["log"] = args["log"],
 		["principalId"] = args["principalId"],
@@ -519,8 +693,13 @@ function M.TestInvokeAuthorizerResponse(args)
 		["authorization"] = args["authorization"],
 		["clientStatus"] = args["clientStatus"],
 	}
-	asserts.AssertTestInvokeAuthorizerResponse(t)
-	return t
+	asserts.AssertTestInvokeAuthorizerResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetClientCertificateRequest = { ["clientCertificateId"] = true, nil }
@@ -543,12 +722,24 @@ end
 -- Required key: clientCertificateId
 -- @return GetClientCertificateRequest structure as a key-value pair table
 function M.GetClientCertificateRequest(args)
-	assert(args, "You must provdide an argument table when creating GetClientCertificateRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetClientCertificateRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{clientcertificate_id}"] = args["clientCertificateId"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["clientCertificateId"] = args["clientCertificateId"],
 	}
-	asserts.AssertGetClientCertificateRequest(t)
-	return t
+	asserts.AssertGetClientCertificateRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetIntegrationRequest = { ["resourceId"] = true, ["restApiId"] = true, ["httpMethod"] = true, nil }
@@ -579,14 +770,28 @@ end
 -- Required key: httpMethod
 -- @return GetIntegrationRequest structure as a key-value pair table
 function M.GetIntegrationRequest(args)
-	assert(args, "You must provdide an argument table when creating GetIntegrationRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetIntegrationRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{resource_id}"] = args["resourceId"],
+        ["{restapi_id}"] = args["restApiId"],
+        ["{http_method}"] = args["httpMethod"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["resourceId"] = args["resourceId"],
 		["restApiId"] = args["restApiId"],
 		["httpMethod"] = args["httpMethod"],
 	}
-	asserts.AssertGetIntegrationRequest(t)
-	return t
+	asserts.AssertGetIntegrationRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.SdkResponse = { ["body"] = true, ["contentType"] = true, ["contentDisposition"] = true, nil }
@@ -611,14 +816,27 @@ end
 -- * contentDisposition [String] <p>The content-disposition header value in the HTTP response.</p>
 -- @return SdkResponse structure as a key-value pair table
 function M.SdkResponse(args)
-	assert(args, "You must provdide an argument table when creating SdkResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating SdkResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+        ["Content-Type"] = args["contentType"],
+        ["Content-Disposition"] = args["contentDisposition"],
+    }
+	local all_args = { 
 		["body"] = args["body"],
 		["contentType"] = args["contentType"],
 		["contentDisposition"] = args["contentDisposition"],
 	}
-	asserts.AssertSdkResponse(t)
-	return t
+	asserts.AssertSdkResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Account = { ["cloudwatchRoleArn"] = true, ["throttleSettings"] = true, ["features"] = true, ["apiKeyVersion"] = true, nil }
@@ -645,15 +863,26 @@ end
 -- * apiKeyVersion [String] <p>The version of the API keys used for the account.</p>
 -- @return Account structure as a key-value pair table
 function M.Account(args)
-	assert(args, "You must provdide an argument table when creating Account")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Account")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["cloudwatchRoleArn"] = args["cloudwatchRoleArn"],
 		["throttleSettings"] = args["throttleSettings"],
 		["features"] = args["features"],
 		["apiKeyVersion"] = args["apiKeyVersion"],
 	}
-	asserts.AssertAccount(t)
-	return t
+	asserts.AssertAccount(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdateBasePathMappingRequest = { ["basePath"] = true, ["patchOperations"] = true, ["domainName"] = true, nil }
@@ -682,14 +911,27 @@ end
 -- Required key: basePath
 -- @return UpdateBasePathMappingRequest structure as a key-value pair table
 function M.UpdateBasePathMappingRequest(args)
-	assert(args, "You must provdide an argument table when creating UpdateBasePathMappingRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateBasePathMappingRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{base_path}"] = args["basePath"],
+        ["{domain_name}"] = args["domainName"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["basePath"] = args["basePath"],
 		["patchOperations"] = args["patchOperations"],
 		["domainName"] = args["domainName"],
 	}
-	asserts.AssertUpdateBasePathMappingRequest(t)
-	return t
+	asserts.AssertUpdateBasePathMappingRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetStagesRequest = { ["deploymentId"] = true, ["restApiId"] = true, nil }
@@ -714,13 +956,26 @@ end
 -- Required key: restApiId
 -- @return GetStagesRequest structure as a key-value pair table
 function M.GetStagesRequest(args)
-	assert(args, "You must provdide an argument table when creating GetStagesRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetStagesRequest")
+    local query_args = { 
+        ["deploymentId"] = args["deploymentId"],
+    }
+    local uri_args = { 
+        ["{restapi_id}"] = args["restApiId"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["deploymentId"] = args["deploymentId"],
 		["restApiId"] = args["restApiId"],
 	}
-	asserts.AssertGetStagesRequest(t)
-	return t
+	asserts.AssertGetStagesRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetRestApisRequest = { ["position"] = true, ["limit"] = true, nil }
@@ -743,13 +998,26 @@ end
 -- * limit [NullableInteger] <p>The maximum number of returned results per page. The value is 25 by default and could be between 1 - 500.</p>
 -- @return GetRestApisRequest structure as a key-value pair table
 function M.GetRestApisRequest(args)
-	assert(args, "You must provdide an argument table when creating GetRestApisRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetRestApisRequest")
+    local query_args = { 
+        ["position"] = args["position"],
+        ["limit"] = args["limit"],
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["position"] = args["position"],
 		["limit"] = args["limit"],
 	}
-	asserts.AssertGetRestApisRequest(t)
-	return t
+	asserts.AssertGetRestApisRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteDocumentationPartRequest = { ["documentationPartId"] = true, ["restApiId"] = true, nil }
@@ -776,13 +1044,26 @@ end
 -- Required key: documentationPartId
 -- @return DeleteDocumentationPartRequest structure as a key-value pair table
 function M.DeleteDocumentationPartRequest(args)
-	assert(args, "You must provdide an argument table when creating DeleteDocumentationPartRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteDocumentationPartRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{part_id}"] = args["documentationPartId"],
+        ["{restapi_id}"] = args["restApiId"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["documentationPartId"] = args["documentationPartId"],
 		["restApiId"] = args["restApiId"],
 	}
-	asserts.AssertDeleteDocumentationPartRequest(t)
-	return t
+	asserts.AssertDeleteDocumentationPartRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetStageRequest = { ["restApiId"] = true, ["stageName"] = true, nil }
@@ -809,13 +1090,26 @@ end
 -- Required key: stageName
 -- @return GetStageRequest structure as a key-value pair table
 function M.GetStageRequest(args)
-	assert(args, "You must provdide an argument table when creating GetStageRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetStageRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{restapi_id}"] = args["restApiId"],
+        ["{stage_name}"] = args["stageName"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["restApiId"] = args["restApiId"],
 		["stageName"] = args["stageName"],
 	}
-	asserts.AssertGetStageRequest(t)
-	return t
+	asserts.AssertGetStageRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteUsagePlanRequest = { ["usagePlanId"] = true, nil }
@@ -838,12 +1132,24 @@ end
 -- Required key: usagePlanId
 -- @return DeleteUsagePlanRequest structure as a key-value pair table
 function M.DeleteUsagePlanRequest(args)
-	assert(args, "You must provdide an argument table when creating DeleteUsagePlanRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteUsagePlanRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{usageplanId}"] = args["usagePlanId"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["usagePlanId"] = args["usagePlanId"],
 	}
-	asserts.AssertDeleteUsagePlanRequest(t)
-	return t
+	asserts.AssertDeleteUsagePlanRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Deployments = { ["position"] = true, ["items"] = true, nil }
@@ -866,13 +1172,24 @@ end
 -- * items [ListOfDeployment] <p>The current page of any <a>Deployment</a> resources in the collection of deployment resources.</p>
 -- @return Deployments structure as a key-value pair table
 function M.Deployments(args)
-	assert(args, "You must provdide an argument table when creating Deployments")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Deployments")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["position"] = args["position"],
 		["items"] = args["items"],
 	}
-	asserts.AssertDeployments(t)
-	return t
+	asserts.AssertDeployments(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ApiKeys = { ["position"] = true, ["items"] = true, ["warnings"] = true, nil }
@@ -897,14 +1214,25 @@ end
 -- * warnings [ListOfString] <p>A list of warning messages logged during the import of API keys when the <code>failOnWarnings</code> option is set to true.</p>
 -- @return ApiKeys structure as a key-value pair table
 function M.ApiKeys(args)
-	assert(args, "You must provdide an argument table when creating ApiKeys")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ApiKeys")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["position"] = args["position"],
 		["items"] = args["items"],
 		["warnings"] = args["warnings"],
 	}
-	asserts.AssertApiKeys(t)
-	return t
+	asserts.AssertApiKeys(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ImportRestApiRequest = { ["body"] = true, ["failOnWarnings"] = true, ["parameters"] = true, nil }
@@ -931,14 +1259,27 @@ end
 -- Required key: body
 -- @return ImportRestApiRequest structure as a key-value pair table
 function M.ImportRestApiRequest(args)
-	assert(args, "You must provdide an argument table when creating ImportRestApiRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ImportRestApiRequest")
+    local query_args = { 
+        ["failonwarnings"] = args["failOnWarnings"],
+        ["parameters"] = args["parameters"],
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["body"] = args["body"],
 		["failOnWarnings"] = args["failOnWarnings"],
 		["parameters"] = args["parameters"],
 	}
-	asserts.AssertImportRestApiRequest(t)
-	return t
+	asserts.AssertImportRestApiRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdateDomainNameRequest = { ["patchOperations"] = true, ["domainName"] = true, nil }
@@ -963,13 +1304,25 @@ end
 -- Required key: domainName
 -- @return UpdateDomainNameRequest structure as a key-value pair table
 function M.UpdateDomainNameRequest(args)
-	assert(args, "You must provdide an argument table when creating UpdateDomainNameRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateDomainNameRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{domain_name}"] = args["domainName"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["patchOperations"] = args["patchOperations"],
 		["domainName"] = args["domainName"],
 	}
-	asserts.AssertUpdateDomainNameRequest(t)
-	return t
+	asserts.AssertUpdateDomainNameRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateRequestValidatorRequest = { ["validateRequestParameters"] = true, ["validateRequestBody"] = true, ["restApiId"] = true, ["name"] = true, nil }
@@ -998,15 +1351,27 @@ end
 -- Required key: restApiId
 -- @return CreateRequestValidatorRequest structure as a key-value pair table
 function M.CreateRequestValidatorRequest(args)
-	assert(args, "You must provdide an argument table when creating CreateRequestValidatorRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateRequestValidatorRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{restapi_id}"] = args["restApiId"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["validateRequestParameters"] = args["validateRequestParameters"],
 		["validateRequestBody"] = args["validateRequestBody"],
 		["restApiId"] = args["restApiId"],
 		["name"] = args["name"],
 	}
-	asserts.AssertCreateRequestValidatorRequest(t)
-	return t
+	asserts.AssertCreateRequestValidatorRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteDeploymentRequest = { ["deploymentId"] = true, ["restApiId"] = true, nil }
@@ -1033,13 +1398,26 @@ end
 -- Required key: deploymentId
 -- @return DeleteDeploymentRequest structure as a key-value pair table
 function M.DeleteDeploymentRequest(args)
-	assert(args, "You must provdide an argument table when creating DeleteDeploymentRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteDeploymentRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{deployment_id}"] = args["deploymentId"],
+        ["{restapi_id}"] = args["restApiId"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["deploymentId"] = args["deploymentId"],
 		["restApiId"] = args["restApiId"],
 	}
-	asserts.AssertDeleteDeploymentRequest(t)
-	return t
+	asserts.AssertDeleteDeploymentRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UsagePlanKey = { ["type"] = true, ["id"] = true, ["value"] = true, ["name"] = true, nil }
@@ -1066,15 +1444,26 @@ end
 -- * name [String] <p>The name of a usage plan key.</p>
 -- @return UsagePlanKey structure as a key-value pair table
 function M.UsagePlanKey(args)
-	assert(args, "You must provdide an argument table when creating UsagePlanKey")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UsagePlanKey")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["type"] = args["type"],
 		["id"] = args["id"],
 		["value"] = args["value"],
 		["name"] = args["name"],
 	}
-	asserts.AssertUsagePlanKey(t)
-	return t
+	asserts.AssertUsagePlanKey(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteStageRequest = { ["restApiId"] = true, ["stageName"] = true, nil }
@@ -1101,13 +1490,26 @@ end
 -- Required key: stageName
 -- @return DeleteStageRequest structure as a key-value pair table
 function M.DeleteStageRequest(args)
-	assert(args, "You must provdide an argument table when creating DeleteStageRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteStageRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{restapi_id}"] = args["restApiId"],
+        ["{stage_name}"] = args["stageName"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["restApiId"] = args["restApiId"],
 		["stageName"] = args["stageName"],
 	}
-	asserts.AssertDeleteStageRequest(t)
-	return t
+	asserts.AssertDeleteStageRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetExportRequest = { ["exportType"] = true, ["accepts"] = true, ["restApiId"] = true, ["parameters"] = true, ["stageName"] = true, nil }
@@ -1142,16 +1544,32 @@ end
 -- Required key: exportType
 -- @return GetExportRequest structure as a key-value pair table
 function M.GetExportRequest(args)
-	assert(args, "You must provdide an argument table when creating GetExportRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetExportRequest")
+    local query_args = { 
+        ["parameters"] = args["parameters"],
+    }
+    local uri_args = { 
+        ["{export_type}"] = args["exportType"],
+        ["{restapi_id}"] = args["restApiId"],
+        ["{stage_name}"] = args["stageName"],
+    }
+    local header_args = { 
+        ["Accept"] = args["accepts"],
+    }
+	local all_args = { 
 		["exportType"] = args["exportType"],
 		["accepts"] = args["accepts"],
 		["restApiId"] = args["restApiId"],
 		["parameters"] = args["parameters"],
 		["stageName"] = args["stageName"],
 	}
-	asserts.AssertGetExportRequest(t)
-	return t
+	asserts.AssertGetExportRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetDomainNamesRequest = { ["position"] = true, ["limit"] = true, nil }
@@ -1174,13 +1592,26 @@ end
 -- * limit [NullableInteger] <p>The maximum number of returned results per page. The value is 25 by default and could be between 1 - 500.</p>
 -- @return GetDomainNamesRequest structure as a key-value pair table
 function M.GetDomainNamesRequest(args)
-	assert(args, "You must provdide an argument table when creating GetDomainNamesRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetDomainNamesRequest")
+    local query_args = { 
+        ["position"] = args["position"],
+        ["limit"] = args["limit"],
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["position"] = args["position"],
 		["limit"] = args["limit"],
 	}
-	asserts.AssertGetDomainNamesRequest(t)
-	return t
+	asserts.AssertGetDomainNamesRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateStageRequest = { ["restApiId"] = true, ["description"] = true, ["stageName"] = true, ["cacheClusterSize"] = true, ["variables"] = true, ["cacheClusterEnabled"] = true, ["documentationVersion"] = true, ["deploymentId"] = true, nil }
@@ -1221,8 +1652,15 @@ end
 -- Required key: deploymentId
 -- @return CreateStageRequest structure as a key-value pair table
 function M.CreateStageRequest(args)
-	assert(args, "You must provdide an argument table when creating CreateStageRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateStageRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{restapi_id}"] = args["restApiId"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["restApiId"] = args["restApiId"],
 		["description"] = args["description"],
 		["stageName"] = args["stageName"],
@@ -1232,8 +1670,13 @@ function M.CreateStageRequest(args)
 		["documentationVersion"] = args["documentationVersion"],
 		["deploymentId"] = args["deploymentId"],
 	}
-	asserts.AssertCreateStageRequest(t)
-	return t
+	asserts.AssertCreateStageRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ApiKeyIds = { ["ids"] = true, ["warnings"] = true, nil }
@@ -1256,13 +1699,24 @@ end
 -- * warnings [ListOfString] <p>A list of warning messages.</p>
 -- @return ApiKeyIds structure as a key-value pair table
 function M.ApiKeyIds(args)
-	assert(args, "You must provdide an argument table when creating ApiKeyIds")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ApiKeyIds")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ids"] = args["ids"],
 		["warnings"] = args["warnings"],
 	}
-	asserts.AssertApiKeyIds(t)
-	return t
+	asserts.AssertApiKeyIds(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetMethodResponseRequest = { ["resourceId"] = true, ["statusCode"] = true, ["restApiId"] = true, ["httpMethod"] = true, nil }
@@ -1297,15 +1751,30 @@ end
 -- Required key: statusCode
 -- @return GetMethodResponseRequest structure as a key-value pair table
 function M.GetMethodResponseRequest(args)
-	assert(args, "You must provdide an argument table when creating GetMethodResponseRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetMethodResponseRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{resource_id}"] = args["resourceId"],
+        ["{status_code}"] = args["statusCode"],
+        ["{restapi_id}"] = args["restApiId"],
+        ["{http_method}"] = args["httpMethod"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["resourceId"] = args["resourceId"],
 		["statusCode"] = args["statusCode"],
 		["restApiId"] = args["restApiId"],
 		["httpMethod"] = args["httpMethod"],
 	}
-	asserts.AssertGetMethodResponseRequest(t)
-	return t
+	asserts.AssertGetMethodResponseRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdateClientCertificateRequest = { ["clientCertificateId"] = true, ["patchOperations"] = true, nil }
@@ -1330,13 +1799,25 @@ end
 -- Required key: clientCertificateId
 -- @return UpdateClientCertificateRequest structure as a key-value pair table
 function M.UpdateClientCertificateRequest(args)
-	assert(args, "You must provdide an argument table when creating UpdateClientCertificateRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateClientCertificateRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{clientcertificate_id}"] = args["clientCertificateId"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["clientCertificateId"] = args["clientCertificateId"],
 		["patchOperations"] = args["patchOperations"],
 	}
-	asserts.AssertUpdateClientCertificateRequest(t)
-	return t
+	asserts.AssertUpdateClientCertificateRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteDomainNameRequest = { ["domainName"] = true, nil }
@@ -1359,12 +1840,24 @@ end
 -- Required key: domainName
 -- @return DeleteDomainNameRequest structure as a key-value pair table
 function M.DeleteDomainNameRequest(args)
-	assert(args, "You must provdide an argument table when creating DeleteDomainNameRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteDomainNameRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{domain_name}"] = args["domainName"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["domainName"] = args["domainName"],
 	}
-	asserts.AssertDeleteDomainNameRequest(t)
-	return t
+	asserts.AssertDeleteDomainNameRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteModelRequest = { ["modelName"] = true, ["restApiId"] = true, nil }
@@ -1391,13 +1884,26 @@ end
 -- Required key: modelName
 -- @return DeleteModelRequest structure as a key-value pair table
 function M.DeleteModelRequest(args)
-	assert(args, "You must provdide an argument table when creating DeleteModelRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteModelRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{model_name}"] = args["modelName"],
+        ["{restapi_id}"] = args["restApiId"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["modelName"] = args["modelName"],
 		["restApiId"] = args["restApiId"],
 	}
-	asserts.AssertDeleteModelRequest(t)
-	return t
+	asserts.AssertDeleteModelRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Authorizer = { ["authType"] = true, ["name"] = true, ["providerARNs"] = true, ["authorizerUri"] = true, ["identityValidationExpression"] = true, ["authorizerResultTtlInSeconds"] = true, ["authorizerCredentials"] = true, ["identitySource"] = true, ["type"] = true, ["id"] = true, nil }
@@ -1436,8 +1942,14 @@ end
 -- * id [String] <p>The identifier for the authorizer resource.</p>
 -- @return Authorizer structure as a key-value pair table
 function M.Authorizer(args)
-	assert(args, "You must provdide an argument table when creating Authorizer")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Authorizer")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["authType"] = args["authType"],
 		["name"] = args["name"],
 		["providerARNs"] = args["providerARNs"],
@@ -1449,8 +1961,13 @@ function M.Authorizer(args)
 		["type"] = args["type"],
 		["id"] = args["id"],
 	}
-	asserts.AssertAuthorizer(t)
-	return t
+	asserts.AssertAuthorizer(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ImportDocumentationPartsRequest = { ["body"] = true, ["failOnWarnings"] = true, ["restApiId"] = true, ["mode"] = true, nil }
@@ -1481,15 +1998,29 @@ end
 -- Required key: body
 -- @return ImportDocumentationPartsRequest structure as a key-value pair table
 function M.ImportDocumentationPartsRequest(args)
-	assert(args, "You must provdide an argument table when creating ImportDocumentationPartsRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ImportDocumentationPartsRequest")
+    local query_args = { 
+        ["failonwarnings"] = args["failOnWarnings"],
+        ["mode"] = args["mode"],
+    }
+    local uri_args = { 
+        ["{restapi_id}"] = args["restApiId"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["body"] = args["body"],
 		["failOnWarnings"] = args["failOnWarnings"],
 		["restApiId"] = args["restApiId"],
 		["mode"] = args["mode"],
 	}
-	asserts.AssertImportDocumentationPartsRequest(t)
-	return t
+	asserts.AssertImportDocumentationPartsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DomainName = { ["certificateArn"] = true, ["distributionDomainName"] = true, ["certificateUploadDate"] = true, ["certificateName"] = true, ["domainName"] = true, nil }
@@ -1518,16 +2049,27 @@ end
 -- * domainName [String] <p>The name of the <a>DomainName</a> resource.</p>
 -- @return DomainName structure as a key-value pair table
 function M.DomainName(args)
-	assert(args, "You must provdide an argument table when creating DomainName")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DomainName")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["certificateArn"] = args["certificateArn"],
 		["distributionDomainName"] = args["distributionDomainName"],
 		["certificateUploadDate"] = args["certificateUploadDate"],
 		["certificateName"] = args["certificateName"],
 		["domainName"] = args["domainName"],
 	}
-	asserts.AssertDomainName(t)
-	return t
+	asserts.AssertDomainName(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateDeploymentRequest = { ["stageDescription"] = true, ["restApiId"] = true, ["description"] = true, ["stageName"] = true, ["cacheClusterSize"] = true, ["variables"] = true, ["cacheClusterEnabled"] = true, nil }
@@ -1562,8 +2104,15 @@ end
 -- Required key: restApiId
 -- @return CreateDeploymentRequest structure as a key-value pair table
 function M.CreateDeploymentRequest(args)
-	assert(args, "You must provdide an argument table when creating CreateDeploymentRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateDeploymentRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{restapi_id}"] = args["restApiId"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["stageDescription"] = args["stageDescription"],
 		["restApiId"] = args["restApiId"],
 		["description"] = args["description"],
@@ -1572,8 +2121,13 @@ function M.CreateDeploymentRequest(args)
 		["variables"] = args["variables"],
 		["cacheClusterEnabled"] = args["cacheClusterEnabled"],
 	}
-	asserts.AssertCreateDeploymentRequest(t)
-	return t
+	asserts.AssertCreateDeploymentRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteBasePathMappingRequest = { ["basePath"] = true, ["domainName"] = true, nil }
@@ -1600,13 +2154,26 @@ end
 -- Required key: basePath
 -- @return DeleteBasePathMappingRequest structure as a key-value pair table
 function M.DeleteBasePathMappingRequest(args)
-	assert(args, "You must provdide an argument table when creating DeleteBasePathMappingRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteBasePathMappingRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{base_path}"] = args["basePath"],
+        ["{domain_name}"] = args["domainName"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["basePath"] = args["basePath"],
 		["domainName"] = args["domainName"],
 	}
-	asserts.AssertDeleteBasePathMappingRequest(t)
-	return t
+	asserts.AssertDeleteBasePathMappingRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Usage = { ["startDate"] = true, ["items"] = true, ["usagePlanId"] = true, ["endDate"] = true, ["position"] = true, nil }
@@ -1635,16 +2202,27 @@ end
 -- * position [String] 
 -- @return Usage structure as a key-value pair table
 function M.Usage(args)
-	assert(args, "You must provdide an argument table when creating Usage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Usage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["startDate"] = args["startDate"],
 		["items"] = args["items"],
 		["usagePlanId"] = args["usagePlanId"],
 		["endDate"] = args["endDate"],
 		["position"] = args["position"],
 	}
-	asserts.AssertUsage(t)
-	return t
+	asserts.AssertUsage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.SdkType = { ["friendlyName"] = true, ["configurationProperties"] = true, ["id"] = true, ["description"] = true, nil }
@@ -1671,15 +2249,26 @@ end
 -- * description [String] <p>The description of an <a>SdkType</a>.</p>
 -- @return SdkType structure as a key-value pair table
 function M.SdkType(args)
-	assert(args, "You must provdide an argument table when creating SdkType")
-	local t = { 
+	assert(args, "You must provide an argument table when creating SdkType")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["friendlyName"] = args["friendlyName"],
 		["configurationProperties"] = args["configurationProperties"],
 		["id"] = args["id"],
 		["description"] = args["description"],
 	}
-	asserts.AssertSdkType(t)
-	return t
+	asserts.AssertSdkType(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.MethodSnapshot = { ["apiKeyRequired"] = true, ["authorizationType"] = true, nil }
@@ -1702,13 +2291,24 @@ end
 -- * authorizationType [String] <p>The method's authorization type. Valid values are <code>NONE</code> for open access, <code>AWS_IAM</code> for using AWS IAM permissions, <code>CUSTOM</code> for using a custom authorizer, or <code>COGNITO_USER_POOLS</code> for using a Cognito user pool.</p>
 -- @return MethodSnapshot structure as a key-value pair table
 function M.MethodSnapshot(args)
-	assert(args, "You must provdide an argument table when creating MethodSnapshot")
-	local t = { 
+	assert(args, "You must provide an argument table when creating MethodSnapshot")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["apiKeyRequired"] = args["apiKeyRequired"],
 		["authorizationType"] = args["authorizationType"],
 	}
-	asserts.AssertMethodSnapshot(t)
-	return t
+	asserts.AssertMethodSnapshot(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Resource = { ["path"] = true, ["resourceMethods"] = true, ["id"] = true, ["pathPart"] = true, ["parentId"] = true, nil }
@@ -1737,16 +2337,27 @@ end
 -- * parentId [String] <p>The parent resource's identifier.</p>
 -- @return Resource structure as a key-value pair table
 function M.Resource(args)
-	assert(args, "You must provdide an argument table when creating Resource")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Resource")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["path"] = args["path"],
 		["resourceMethods"] = args["resourceMethods"],
 		["id"] = args["id"],
 		["pathPart"] = args["pathPart"],
 		["parentId"] = args["parentId"],
 	}
-	asserts.AssertResource(t)
-	return t
+	asserts.AssertResource(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteUsagePlanKeyRequest = { ["keyId"] = true, ["usagePlanId"] = true, nil }
@@ -1773,13 +2384,26 @@ end
 -- Required key: keyId
 -- @return DeleteUsagePlanKeyRequest structure as a key-value pair table
 function M.DeleteUsagePlanKeyRequest(args)
-	assert(args, "You must provdide an argument table when creating DeleteUsagePlanKeyRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteUsagePlanKeyRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{keyId}"] = args["keyId"],
+        ["{usageplanId}"] = args["usagePlanId"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["keyId"] = args["keyId"],
 		["usagePlanId"] = args["usagePlanId"],
 	}
-	asserts.AssertDeleteUsagePlanKeyRequest(t)
-	return t
+	asserts.AssertDeleteUsagePlanKeyRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DomainNames = { ["position"] = true, ["items"] = true, nil }
@@ -1802,13 +2426,24 @@ end
 -- * items [ListOfDomainName] <p>The current page of any <a>DomainName</a> resources in the collection of <a>DomainName</a> resources.</p>
 -- @return DomainNames structure as a key-value pair table
 function M.DomainNames(args)
-	assert(args, "You must provdide an argument table when creating DomainNames")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DomainNames")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["position"] = args["position"],
 		["items"] = args["items"],
 	}
-	asserts.AssertDomainNames(t)
-	return t
+	asserts.AssertDomainNames(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.FlushStageAuthorizersCacheRequest = { ["restApiId"] = true, ["stageName"] = true, nil }
@@ -1835,13 +2470,26 @@ end
 -- Required key: stageName
 -- @return FlushStageAuthorizersCacheRequest structure as a key-value pair table
 function M.FlushStageAuthorizersCacheRequest(args)
-	assert(args, "You must provdide an argument table when creating FlushStageAuthorizersCacheRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating FlushStageAuthorizersCacheRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{restapi_id}"] = args["restApiId"],
+        ["{stage_name}"] = args["stageName"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["restApiId"] = args["restApiId"],
 		["stageName"] = args["stageName"],
 	}
-	asserts.AssertFlushStageAuthorizersCacheRequest(t)
-	return t
+	asserts.AssertFlushStageAuthorizersCacheRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteClientCertificateRequest = { ["clientCertificateId"] = true, nil }
@@ -1864,12 +2512,24 @@ end
 -- Required key: clientCertificateId
 -- @return DeleteClientCertificateRequest structure as a key-value pair table
 function M.DeleteClientCertificateRequest(args)
-	assert(args, "You must provdide an argument table when creating DeleteClientCertificateRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteClientCertificateRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{clientcertificate_id}"] = args["clientCertificateId"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["clientCertificateId"] = args["clientCertificateId"],
 	}
-	asserts.AssertDeleteClientCertificateRequest(t)
-	return t
+	asserts.AssertDeleteClientCertificateRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DocumentationVersion = { ["version"] = true, ["description"] = true, ["createdDate"] = true, nil }
@@ -1894,14 +2554,25 @@ end
 -- * createdDate [Timestamp] <p>The date when the API documentation snapshot is created.</p>
 -- @return DocumentationVersion structure as a key-value pair table
 function M.DocumentationVersion(args)
-	assert(args, "You must provdide an argument table when creating DocumentationVersion")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DocumentationVersion")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["version"] = args["version"],
 		["description"] = args["description"],
 		["createdDate"] = args["createdDate"],
 	}
-	asserts.AssertDocumentationVersion(t)
-	return t
+	asserts.AssertDocumentationVersion(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetModelsRequest = { ["position"] = true, ["restApiId"] = true, ["limit"] = true, nil }
@@ -1928,14 +2599,28 @@ end
 -- Required key: restApiId
 -- @return GetModelsRequest structure as a key-value pair table
 function M.GetModelsRequest(args)
-	assert(args, "You must provdide an argument table when creating GetModelsRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetModelsRequest")
+    local query_args = { 
+        ["position"] = args["position"],
+        ["limit"] = args["limit"],
+    }
+    local uri_args = { 
+        ["{restapi_id}"] = args["restApiId"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["position"] = args["position"],
 		["restApiId"] = args["restApiId"],
 		["limit"] = args["limit"],
 	}
-	asserts.AssertGetModelsRequest(t)
-	return t
+	asserts.AssertGetModelsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ThrottleSettings = { ["rateLimit"] = true, ["burstLimit"] = true, nil }
@@ -1958,13 +2643,24 @@ end
 -- * burstLimit [Integer] <p>The API request burst limit, the maximum rate limit over a time ranging from one to a few seconds, depending upon whether the underlying token bucket is at its full capacity.</p>
 -- @return ThrottleSettings structure as a key-value pair table
 function M.ThrottleSettings(args)
-	assert(args, "You must provdide an argument table when creating ThrottleSettings")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ThrottleSettings")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["rateLimit"] = args["rateLimit"],
 		["burstLimit"] = args["burstLimit"],
 	}
-	asserts.AssertThrottleSettings(t)
-	return t
+	asserts.AssertThrottleSettings(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UsagePlan = { ["productCode"] = true, ["throttle"] = true, ["description"] = true, ["quota"] = true, ["apiStages"] = true, ["id"] = true, ["name"] = true, nil }
@@ -1997,8 +2693,14 @@ end
 -- * name [String] <p>The name of a usage plan.</p>
 -- @return UsagePlan structure as a key-value pair table
 function M.UsagePlan(args)
-	assert(args, "You must provdide an argument table when creating UsagePlan")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UsagePlan")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["productCode"] = args["productCode"],
 		["throttle"] = args["throttle"],
 		["description"] = args["description"],
@@ -2007,8 +2709,13 @@ function M.UsagePlan(args)
 		["id"] = args["id"],
 		["name"] = args["name"],
 	}
-	asserts.AssertUsagePlan(t)
-	return t
+	asserts.AssertUsagePlan(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateRestApiRequest = { ["binaryMediaTypes"] = true, ["version"] = true, ["name"] = true, ["cloneFrom"] = true, ["description"] = true, nil }
@@ -2039,16 +2746,27 @@ end
 -- Required key: name
 -- @return CreateRestApiRequest structure as a key-value pair table
 function M.CreateRestApiRequest(args)
-	assert(args, "You must provdide an argument table when creating CreateRestApiRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateRestApiRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["binaryMediaTypes"] = args["binaryMediaTypes"],
 		["version"] = args["version"],
 		["name"] = args["name"],
 		["cloneFrom"] = args["cloneFrom"],
 		["description"] = args["description"],
 	}
-	asserts.AssertCreateRestApiRequest(t)
-	return t
+	asserts.AssertCreateRestApiRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Stage = { ["clientCertificateId"] = true, ["description"] = true, ["stageName"] = true, ["cacheClusterSize"] = true, ["variables"] = true, ["cacheClusterEnabled"] = true, ["documentationVersion"] = true, ["cacheClusterStatus"] = true, ["deploymentId"] = true, ["lastUpdatedDate"] = true, ["createdDate"] = true, ["methodSettings"] = true, nil }
@@ -2091,8 +2809,14 @@ end
 -- * methodSettings [MapOfMethodSettings] <p>A map that defines the method settings for a <a>Stage</a> resource. Keys (designated as <code>/{method_setting_key</code> below) are method paths defined as <code>{resource_path}/{http_method}</code> for an individual method override, or <code>/\*/\*</code> for overriding all methods in the stage. </p>
 -- @return Stage structure as a key-value pair table
 function M.Stage(args)
-	assert(args, "You must provdide an argument table when creating Stage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Stage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["clientCertificateId"] = args["clientCertificateId"],
 		["description"] = args["description"],
 		["stageName"] = args["stageName"],
@@ -2106,8 +2830,13 @@ function M.Stage(args)
 		["createdDate"] = args["createdDate"],
 		["methodSettings"] = args["methodSettings"],
 	}
-	asserts.AssertStage(t)
-	return t
+	asserts.AssertStage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DocumentationParts = { ["position"] = true, ["items"] = true, nil }
@@ -2130,13 +2859,24 @@ end
 -- * items [ListOfDocumentationPart] <p>The current page of <a>DocumentationPart</a> resources in the <a>DocumentationParts</a> collection.</p>
 -- @return DocumentationParts structure as a key-value pair table
 function M.DocumentationParts(args)
-	assert(args, "You must provdide an argument table when creating DocumentationParts")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DocumentationParts")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["position"] = args["position"],
 		["items"] = args["items"],
 	}
-	asserts.AssertDocumentationParts(t)
-	return t
+	asserts.AssertDocumentationParts(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetMethodRequest = { ["resourceId"] = true, ["restApiId"] = true, ["httpMethod"] = true, nil }
@@ -2167,14 +2907,28 @@ end
 -- Required key: httpMethod
 -- @return GetMethodRequest structure as a key-value pair table
 function M.GetMethodRequest(args)
-	assert(args, "You must provdide an argument table when creating GetMethodRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetMethodRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{resource_id}"] = args["resourceId"],
+        ["{restapi_id}"] = args["restApiId"],
+        ["{http_method}"] = args["httpMethod"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["resourceId"] = args["resourceId"],
 		["restApiId"] = args["restApiId"],
 		["httpMethod"] = args["httpMethod"],
 	}
-	asserts.AssertGetMethodRequest(t)
-	return t
+	asserts.AssertGetMethodRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.SdkTypes = { ["position"] = true, ["items"] = true, nil }
@@ -2197,13 +2951,24 @@ end
 -- * items [ListOfSdkType] <p>The set of <a>SdkType</a> items that comprise this view of the <a>SdkTypes</a> collection.</p>
 -- @return SdkTypes structure as a key-value pair table
 function M.SdkTypes(args)
-	assert(args, "You must provdide an argument table when creating SdkTypes")
-	local t = { 
+	assert(args, "You must provide an argument table when creating SdkTypes")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["position"] = args["position"],
 		["items"] = args["items"],
 	}
-	asserts.AssertSdkTypes(t)
-	return t
+	asserts.AssertSdkTypes(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DocumentationVersions = { ["position"] = true, ["items"] = true, nil }
@@ -2226,13 +2991,24 @@ end
 -- * items [ListOfDocumentationVersion] <p>The current page of <a>DocumentationVersion</a> items from the <a>DocumentationVersions</a> collection of an API.</p>
 -- @return DocumentationVersions structure as a key-value pair table
 function M.DocumentationVersions(args)
-	assert(args, "You must provdide an argument table when creating DocumentationVersions")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DocumentationVersions")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["position"] = args["position"],
 		["items"] = args["items"],
 	}
-	asserts.AssertDocumentationVersions(t)
-	return t
+	asserts.AssertDocumentationVersions(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.RestApi = { ["description"] = true, ["warnings"] = true, ["version"] = true, ["createdDate"] = true, ["binaryMediaTypes"] = true, ["id"] = true, ["name"] = true, nil }
@@ -2265,8 +3041,14 @@ end
 -- * name [String] <p>The API's name.</p>
 -- @return RestApi structure as a key-value pair table
 function M.RestApi(args)
-	assert(args, "You must provdide an argument table when creating RestApi")
-	local t = { 
+	assert(args, "You must provide an argument table when creating RestApi")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["description"] = args["description"],
 		["warnings"] = args["warnings"],
 		["version"] = args["version"],
@@ -2275,8 +3057,13 @@ function M.RestApi(args)
 		["id"] = args["id"],
 		["name"] = args["name"],
 	}
-	asserts.AssertRestApi(t)
-	return t
+	asserts.AssertRestApi(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.BasePathMapping = { ["basePath"] = true, ["restApiId"] = true, ["stage"] = true, nil }
@@ -2301,14 +3088,25 @@ end
 -- * stage [String] <p>The name of the API's stage.</p>
 -- @return BasePathMapping structure as a key-value pair table
 function M.BasePathMapping(args)
-	assert(args, "You must provdide an argument table when creating BasePathMapping")
-	local t = { 
+	assert(args, "You must provide an argument table when creating BasePathMapping")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["basePath"] = args["basePath"],
 		["restApiId"] = args["restApiId"],
 		["stage"] = args["stage"],
 	}
-	asserts.AssertBasePathMapping(t)
-	return t
+	asserts.AssertBasePathMapping(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.TooManyRequestsException = { ["message"] = true, ["retryAfterSeconds"] = true, nil }
@@ -2331,13 +3129,25 @@ end
 -- * retryAfterSeconds [String] 
 -- @return TooManyRequestsException structure as a key-value pair table
 function M.TooManyRequestsException(args)
-	assert(args, "You must provdide an argument table when creating TooManyRequestsException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating TooManyRequestsException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+        ["Retry-After"] = args["retryAfterSeconds"],
+    }
+	local all_args = { 
 		["message"] = args["message"],
 		["retryAfterSeconds"] = args["retryAfterSeconds"],
 	}
-	asserts.AssertTooManyRequestsException(t)
-	return t
+	asserts.AssertTooManyRequestsException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetDocumentationPartsRequest = { ["restApiId"] = true, ["nameQuery"] = true, ["limit"] = true, ["path"] = true, ["position"] = true, ["type"] = true, nil }
@@ -2370,8 +3180,20 @@ end
 -- Required key: restApiId
 -- @return GetDocumentationPartsRequest structure as a key-value pair table
 function M.GetDocumentationPartsRequest(args)
-	assert(args, "You must provdide an argument table when creating GetDocumentationPartsRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetDocumentationPartsRequest")
+    local query_args = { 
+        ["name"] = args["nameQuery"],
+        ["limit"] = args["limit"],
+        ["path"] = args["path"],
+        ["position"] = args["position"],
+        ["type"] = args["type"],
+    }
+    local uri_args = { 
+        ["{restapi_id}"] = args["restApiId"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["restApiId"] = args["restApiId"],
 		["nameQuery"] = args["nameQuery"],
 		["limit"] = args["limit"],
@@ -2379,8 +3201,13 @@ function M.GetDocumentationPartsRequest(args)
 		["position"] = args["position"],
 		["type"] = args["type"],
 	}
-	asserts.AssertGetDocumentationPartsRequest(t)
-	return t
+	asserts.AssertGetDocumentationPartsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateUsagePlanRequest = { ["throttle"] = true, ["quota"] = true, ["apiStages"] = true, ["name"] = true, ["description"] = true, nil }
@@ -2411,16 +3238,27 @@ end
 -- Required key: name
 -- @return CreateUsagePlanRequest structure as a key-value pair table
 function M.CreateUsagePlanRequest(args)
-	assert(args, "You must provdide an argument table when creating CreateUsagePlanRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateUsagePlanRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["throttle"] = args["throttle"],
 		["quota"] = args["quota"],
 		["apiStages"] = args["apiStages"],
 		["name"] = args["name"],
 		["description"] = args["description"],
 	}
-	asserts.AssertCreateUsagePlanRequest(t)
-	return t
+	asserts.AssertCreateUsagePlanRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.QuotaSettings = { ["limit"] = true, ["period"] = true, ["offset"] = true, nil }
@@ -2445,14 +3283,25 @@ end
 -- * offset [Integer] <p>The number of requests subtracted from the given limit in the initial time period.</p>
 -- @return QuotaSettings structure as a key-value pair table
 function M.QuotaSettings(args)
-	assert(args, "You must provdide an argument table when creating QuotaSettings")
-	local t = { 
+	assert(args, "You must provide an argument table when creating QuotaSettings")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["limit"] = args["limit"],
 		["period"] = args["period"],
 		["offset"] = args["offset"],
 	}
-	asserts.AssertQuotaSettings(t)
-	return t
+	asserts.AssertQuotaSettings(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Stages = { ["item"] = true, nil }
@@ -2473,12 +3322,23 @@ end
 -- * item [ListOfStage] <p>An individual <a>Stage</a> resource.</p>
 -- @return Stages structure as a key-value pair table
 function M.Stages(args)
-	assert(args, "You must provdide an argument table when creating Stages")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Stages")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["item"] = args["item"],
 	}
-	asserts.AssertStages(t)
-	return t
+	asserts.AssertStages(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetDeploymentRequest = { ["deploymentId"] = true, ["restApiId"] = true, ["embed"] = true, nil }
@@ -2507,14 +3367,28 @@ end
 -- Required key: deploymentId
 -- @return GetDeploymentRequest structure as a key-value pair table
 function M.GetDeploymentRequest(args)
-	assert(args, "You must provdide an argument table when creating GetDeploymentRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetDeploymentRequest")
+    local query_args = { 
+        ["embed"] = args["embed"],
+    }
+    local uri_args = { 
+        ["{deployment_id}"] = args["deploymentId"],
+        ["{restapi_id}"] = args["restApiId"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["deploymentId"] = args["deploymentId"],
 		["restApiId"] = args["restApiId"],
 		["embed"] = args["embed"],
 	}
-	asserts.AssertGetDeploymentRequest(t)
-	return t
+	asserts.AssertGetDeploymentRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateDomainNameRequest = { ["certificateArn"] = true, ["certificateName"] = true, ["domainName"] = true, ["certificateChain"] = true, ["certificatePrivateKey"] = true, ["certificateBody"] = true, nil }
@@ -2547,8 +3421,14 @@ end
 -- Required key: domainName
 -- @return CreateDomainNameRequest structure as a key-value pair table
 function M.CreateDomainNameRequest(args)
-	assert(args, "You must provdide an argument table when creating CreateDomainNameRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateDomainNameRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["certificateArn"] = args["certificateArn"],
 		["certificateName"] = args["certificateName"],
 		["domainName"] = args["domainName"],
@@ -2556,8 +3436,13 @@ function M.CreateDomainNameRequest(args)
 		["certificatePrivateKey"] = args["certificatePrivateKey"],
 		["certificateBody"] = args["certificateBody"],
 	}
-	asserts.AssertCreateDomainNameRequest(t)
-	return t
+	asserts.AssertCreateDomainNameRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteApiKeyRequest = { ["apiKey"] = true, nil }
@@ -2580,12 +3465,24 @@ end
 -- Required key: apiKey
 -- @return DeleteApiKeyRequest structure as a key-value pair table
 function M.DeleteApiKeyRequest(args)
-	assert(args, "You must provdide an argument table when creating DeleteApiKeyRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteApiKeyRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{api_Key}"] = args["apiKey"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["apiKey"] = args["apiKey"],
 	}
-	asserts.AssertDeleteApiKeyRequest(t)
-	return t
+	asserts.AssertDeleteApiKeyRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DocumentationPartIds = { ["ids"] = true, ["warnings"] = true, nil }
@@ -2608,13 +3505,24 @@ end
 -- * warnings [ListOfString] <p>A list of warning messages reported during import of documentation parts.</p>
 -- @return DocumentationPartIds structure as a key-value pair table
 function M.DocumentationPartIds(args)
-	assert(args, "You must provdide an argument table when creating DocumentationPartIds")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DocumentationPartIds")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ids"] = args["ids"],
 		["warnings"] = args["warnings"],
 	}
-	asserts.AssertDocumentationPartIds(t)
-	return t
+	asserts.AssertDocumentationPartIds(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetApiKeysRequest = { ["position"] = true, ["nameQuery"] = true, ["includeValues"] = true, ["limit"] = true, ["customerId"] = true, nil }
@@ -2643,16 +3551,32 @@ end
 -- * customerId [String] <p>The identifier of a customer in AWS Marketplace or an external system, such as a developer portal.</p>
 -- @return GetApiKeysRequest structure as a key-value pair table
 function M.GetApiKeysRequest(args)
-	assert(args, "You must provdide an argument table when creating GetApiKeysRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetApiKeysRequest")
+    local query_args = { 
+        ["position"] = args["position"],
+        ["name"] = args["nameQuery"],
+        ["includeValues"] = args["includeValues"],
+        ["limit"] = args["limit"],
+        ["customerId"] = args["customerId"],
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["position"] = args["position"],
 		["nameQuery"] = args["nameQuery"],
 		["includeValues"] = args["includeValues"],
 		["limit"] = args["limit"],
 		["customerId"] = args["customerId"],
 	}
-	asserts.AssertGetApiKeysRequest(t)
-	return t
+	asserts.AssertGetApiKeysRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteMethodRequest = { ["resourceId"] = true, ["restApiId"] = true, ["httpMethod"] = true, nil }
@@ -2683,14 +3607,28 @@ end
 -- Required key: httpMethod
 -- @return DeleteMethodRequest structure as a key-value pair table
 function M.DeleteMethodRequest(args)
-	assert(args, "You must provdide an argument table when creating DeleteMethodRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteMethodRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{resource_id}"] = args["resourceId"],
+        ["{restapi_id}"] = args["restApiId"],
+        ["{http_method}"] = args["httpMethod"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["resourceId"] = args["resourceId"],
 		["restApiId"] = args["restApiId"],
 		["httpMethod"] = args["httpMethod"],
 	}
-	asserts.AssertDeleteMethodRequest(t)
-	return t
+	asserts.AssertDeleteMethodRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteDocumentationVersionRequest = { ["restApiId"] = true, ["documentationVersion"] = true, nil }
@@ -2717,13 +3655,26 @@ end
 -- Required key: documentationVersion
 -- @return DeleteDocumentationVersionRequest structure as a key-value pair table
 function M.DeleteDocumentationVersionRequest(args)
-	assert(args, "You must provdide an argument table when creating DeleteDocumentationVersionRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteDocumentationVersionRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{restapi_id}"] = args["restApiId"],
+        ["{doc_version}"] = args["documentationVersion"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["restApiId"] = args["restApiId"],
 		["documentationVersion"] = args["documentationVersion"],
 	}
-	asserts.AssertDeleteDocumentationVersionRequest(t)
-	return t
+	asserts.AssertDeleteDocumentationVersionRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetUsagePlanRequest = { ["usagePlanId"] = true, nil }
@@ -2746,12 +3697,24 @@ end
 -- Required key: usagePlanId
 -- @return GetUsagePlanRequest structure as a key-value pair table
 function M.GetUsagePlanRequest(args)
-	assert(args, "You must provdide an argument table when creating GetUsagePlanRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetUsagePlanRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{usageplanId}"] = args["usagePlanId"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["usagePlanId"] = args["usagePlanId"],
 	}
-	asserts.AssertGetUsagePlanRequest(t)
-	return t
+	asserts.AssertGetUsagePlanRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UsagePlans = { ["position"] = true, ["items"] = true, nil }
@@ -2774,13 +3737,24 @@ end
 -- * items [ListOfUsagePlan] <p>Gets the current item when enumerating the collection of <a>UsagePlan</a>.</p>
 -- @return UsagePlans structure as a key-value pair table
 function M.UsagePlans(args)
-	assert(args, "You must provdide an argument table when creating UsagePlans")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UsagePlans")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["position"] = args["position"],
 		["items"] = args["items"],
 	}
-	asserts.AssertUsagePlans(t)
-	return t
+	asserts.AssertUsagePlans(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdateUsagePlanRequest = { ["usagePlanId"] = true, ["patchOperations"] = true, nil }
@@ -2805,13 +3779,25 @@ end
 -- Required key: usagePlanId
 -- @return UpdateUsagePlanRequest structure as a key-value pair table
 function M.UpdateUsagePlanRequest(args)
-	assert(args, "You must provdide an argument table when creating UpdateUsagePlanRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateUsagePlanRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{usageplanId}"] = args["usagePlanId"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["usagePlanId"] = args["usagePlanId"],
 		["patchOperations"] = args["patchOperations"],
 	}
-	asserts.AssertUpdateUsagePlanRequest(t)
-	return t
+	asserts.AssertUpdateUsagePlanRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetDocumentationPartRequest = { ["documentationPartId"] = true, ["restApiId"] = true, nil }
@@ -2838,13 +3824,26 @@ end
 -- Required key: documentationPartId
 -- @return GetDocumentationPartRequest structure as a key-value pair table
 function M.GetDocumentationPartRequest(args)
-	assert(args, "You must provdide an argument table when creating GetDocumentationPartRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetDocumentationPartRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{part_id}"] = args["documentationPartId"],
+        ["{restapi_id}"] = args["restApiId"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["documentationPartId"] = args["documentationPartId"],
 		["restApiId"] = args["restApiId"],
 	}
-	asserts.AssertGetDocumentationPartRequest(t)
-	return t
+	asserts.AssertGetDocumentationPartRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdateAccountRequest = { ["patchOperations"] = true, nil }
@@ -2865,12 +3864,23 @@ end
 -- * patchOperations [ListOfPatchOperation] <p>A list of update operations to be applied to the specified resource and in the order specified in this list.</p>
 -- @return UpdateAccountRequest structure as a key-value pair table
 function M.UpdateAccountRequest(args)
-	assert(args, "You must provdide an argument table when creating UpdateAccountRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateAccountRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["patchOperations"] = args["patchOperations"],
 	}
-	asserts.AssertUpdateAccountRequest(t)
-	return t
+	asserts.AssertUpdateAccountRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetRestApiRequest = { ["restApiId"] = true, nil }
@@ -2893,12 +3903,24 @@ end
 -- Required key: restApiId
 -- @return GetRestApiRequest structure as a key-value pair table
 function M.GetRestApiRequest(args)
-	assert(args, "You must provdide an argument table when creating GetRestApiRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetRestApiRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{restapi_id}"] = args["restApiId"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["restApiId"] = args["restApiId"],
 	}
-	asserts.AssertGetRestApiRequest(t)
-	return t
+	asserts.AssertGetRestApiRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetSdkTypesRequest = { ["position"] = true, ["limit"] = true, nil }
@@ -2921,13 +3943,26 @@ end
 -- * limit [NullableInteger] <p>The maximum number of returned results per page.</p>
 -- @return GetSdkTypesRequest structure as a key-value pair table
 function M.GetSdkTypesRequest(args)
-	assert(args, "You must provdide an argument table when creating GetSdkTypesRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetSdkTypesRequest")
+    local query_args = { 
+        ["position"] = args["position"],
+        ["limit"] = args["limit"],
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["position"] = args["position"],
 		["limit"] = args["limit"],
 	}
-	asserts.AssertGetSdkTypesRequest(t)
-	return t
+	asserts.AssertGetSdkTypesRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetAccountRequest = { nil }
@@ -2946,11 +3981,22 @@ end
 -- Valid keys:
 -- @return GetAccountRequest structure as a key-value pair table
 function M.GetAccountRequest(args)
-	assert(args, "You must provdide an argument table when creating GetAccountRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetAccountRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertGetAccountRequest(t)
-	return t
+	asserts.AssertGetAccountRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetUsagePlanKeyRequest = { ["keyId"] = true, ["usagePlanId"] = true, nil }
@@ -2977,13 +4023,26 @@ end
 -- Required key: keyId
 -- @return GetUsagePlanKeyRequest structure as a key-value pair table
 function M.GetUsagePlanKeyRequest(args)
-	assert(args, "You must provdide an argument table when creating GetUsagePlanKeyRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetUsagePlanKeyRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{keyId}"] = args["keyId"],
+        ["{usageplanId}"] = args["usagePlanId"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["keyId"] = args["keyId"],
 		["usagePlanId"] = args["usagePlanId"],
 	}
-	asserts.AssertGetUsagePlanKeyRequest(t)
-	return t
+	asserts.AssertGetUsagePlanKeyRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteRequestValidatorRequest = { ["requestValidatorId"] = true, ["restApiId"] = true, nil }
@@ -3010,13 +4069,26 @@ end
 -- Required key: requestValidatorId
 -- @return DeleteRequestValidatorRequest structure as a key-value pair table
 function M.DeleteRequestValidatorRequest(args)
-	assert(args, "You must provdide an argument table when creating DeleteRequestValidatorRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteRequestValidatorRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{requestvalidator_id}"] = args["requestValidatorId"],
+        ["{restapi_id}"] = args["restApiId"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["requestValidatorId"] = args["requestValidatorId"],
 		["restApiId"] = args["restApiId"],
 	}
-	asserts.AssertDeleteRequestValidatorRequest(t)
-	return t
+	asserts.AssertDeleteRequestValidatorRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.BasePathMappings = { ["position"] = true, ["items"] = true, nil }
@@ -3039,13 +4111,24 @@ end
 -- * items [ListOfBasePathMapping] <p>The current page of any <a>BasePathMapping</a> resources in the collection of base path mapping resources.</p>
 -- @return BasePathMappings structure as a key-value pair table
 function M.BasePathMappings(args)
-	assert(args, "You must provdide an argument table when creating BasePathMappings")
-	local t = { 
+	assert(args, "You must provide an argument table when creating BasePathMappings")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["position"] = args["position"],
 		["items"] = args["items"],
 	}
-	asserts.AssertBasePathMappings(t)
-	return t
+	asserts.AssertBasePathMappings(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.RequestValidator = { ["validateRequestParameters"] = true, ["validateRequestBody"] = true, ["id"] = true, ["name"] = true, nil }
@@ -3072,15 +4155,26 @@ end
 -- * name [String] <p>The name of this <a>RequestValidator</a></p>
 -- @return RequestValidator structure as a key-value pair table
 function M.RequestValidator(args)
-	assert(args, "You must provdide an argument table when creating RequestValidator")
-	local t = { 
+	assert(args, "You must provide an argument table when creating RequestValidator")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["validateRequestParameters"] = args["validateRequestParameters"],
 		["validateRequestBody"] = args["validateRequestBody"],
 		["id"] = args["id"],
 		["name"] = args["name"],
 	}
-	asserts.AssertRequestValidator(t)
-	return t
+	asserts.AssertRequestValidator(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.MethodResponse = { ["responseModels"] = true, ["responseParameters"] = true, ["statusCode"] = true, nil }
@@ -3105,14 +4199,25 @@ end
 -- * statusCode [StatusCode] <p>The method response's status code.</p>
 -- @return MethodResponse structure as a key-value pair table
 function M.MethodResponse(args)
-	assert(args, "You must provdide an argument table when creating MethodResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating MethodResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["responseModels"] = args["responseModels"],
 		["responseParameters"] = args["responseParameters"],
 		["statusCode"] = args["statusCode"],
 	}
-	asserts.AssertMethodResponse(t)
-	return t
+	asserts.AssertMethodResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.LimitExceededException = { ["message"] = true, ["retryAfterSeconds"] = true, nil }
@@ -3135,13 +4240,25 @@ end
 -- * retryAfterSeconds [String] 
 -- @return LimitExceededException structure as a key-value pair table
 function M.LimitExceededException(args)
-	assert(args, "You must provdide an argument table when creating LimitExceededException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating LimitExceededException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+        ["Retry-After"] = args["retryAfterSeconds"],
+    }
+	local all_args = { 
 		["message"] = args["message"],
 		["retryAfterSeconds"] = args["retryAfterSeconds"],
 	}
-	asserts.AssertLimitExceededException(t)
-	return t
+	asserts.AssertLimitExceededException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.TestInvokeAuthorizerRequest = { ["body"] = true, ["restApiId"] = true, ["pathWithQueryString"] = true, ["additionalContext"] = true, ["headers"] = true, ["stageVariables"] = true, ["authorizerId"] = true, nil }
@@ -3178,8 +4295,16 @@ end
 -- Required key: authorizerId
 -- @return TestInvokeAuthorizerRequest structure as a key-value pair table
 function M.TestInvokeAuthorizerRequest(args)
-	assert(args, "You must provdide an argument table when creating TestInvokeAuthorizerRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating TestInvokeAuthorizerRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{restapi_id}"] = args["restApiId"],
+        ["{authorizer_id}"] = args["authorizerId"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["body"] = args["body"],
 		["restApiId"] = args["restApiId"],
 		["pathWithQueryString"] = args["pathWithQueryString"],
@@ -3188,8 +4313,13 @@ function M.TestInvokeAuthorizerRequest(args)
 		["stageVariables"] = args["stageVariables"],
 		["authorizerId"] = args["authorizerId"],
 	}
-	asserts.AssertTestInvokeAuthorizerRequest(t)
-	return t
+	asserts.AssertTestInvokeAuthorizerRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.FlushStageCacheRequest = { ["restApiId"] = true, ["stageName"] = true, nil }
@@ -3216,13 +4346,26 @@ end
 -- Required key: stageName
 -- @return FlushStageCacheRequest structure as a key-value pair table
 function M.FlushStageCacheRequest(args)
-	assert(args, "You must provdide an argument table when creating FlushStageCacheRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating FlushStageCacheRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{restapi_id}"] = args["restApiId"],
+        ["{stage_name}"] = args["stageName"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["restApiId"] = args["restApiId"],
 		["stageName"] = args["stageName"],
 	}
-	asserts.AssertFlushStageCacheRequest(t)
-	return t
+	asserts.AssertFlushStageCacheRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetAuthorizerRequest = { ["restApiId"] = true, ["authorizerId"] = true, nil }
@@ -3249,13 +4392,26 @@ end
 -- Required key: authorizerId
 -- @return GetAuthorizerRequest structure as a key-value pair table
 function M.GetAuthorizerRequest(args)
-	assert(args, "You must provdide an argument table when creating GetAuthorizerRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetAuthorizerRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{restapi_id}"] = args["restApiId"],
+        ["{authorizer_id}"] = args["authorizerId"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["restApiId"] = args["restApiId"],
 		["authorizerId"] = args["authorizerId"],
 	}
-	asserts.AssertGetAuthorizerRequest(t)
-	return t
+	asserts.AssertGetAuthorizerRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Method = { ["methodResponses"] = true, ["requestParameters"] = true, ["requestModels"] = true, ["authorizationType"] = true, ["operationName"] = true, ["apiKeyRequired"] = true, ["httpMethod"] = true, ["methodIntegration"] = true, ["requestValidatorId"] = true, ["authorizerId"] = true, nil }
@@ -3294,8 +4450,14 @@ end
 -- * authorizerId [String] <p>The identifier of an <a>Authorizer</a> to use on this method. The <code>authorizationType</code> must be <code>CUSTOM</code>.</p>
 -- @return Method structure as a key-value pair table
 function M.Method(args)
-	assert(args, "You must provdide an argument table when creating Method")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Method")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["methodResponses"] = args["methodResponses"],
 		["requestParameters"] = args["requestParameters"],
 		["requestModels"] = args["requestModels"],
@@ -3307,8 +4469,13 @@ function M.Method(args)
 		["requestValidatorId"] = args["requestValidatorId"],
 		["authorizerId"] = args["authorizerId"],
 	}
-	asserts.AssertMethod(t)
-	return t
+	asserts.AssertMethod(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Models = { ["position"] = true, ["items"] = true, nil }
@@ -3331,13 +4498,24 @@ end
 -- * items [ListOfModel] <p>Gets the current <a>Model</a> resource in the collection.</p>
 -- @return Models structure as a key-value pair table
 function M.Models(args)
-	assert(args, "You must provdide an argument table when creating Models")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Models")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["position"] = args["position"],
 		["items"] = args["items"],
 	}
-	asserts.AssertModels(t)
-	return t
+	asserts.AssertModels(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdateMethodResponseRequest = { ["resourceId"] = true, ["statusCode"] = true, ["restApiId"] = true, ["patchOperations"] = true, ["httpMethod"] = true, nil }
@@ -3374,16 +4552,31 @@ end
 -- Required key: statusCode
 -- @return UpdateMethodResponseRequest structure as a key-value pair table
 function M.UpdateMethodResponseRequest(args)
-	assert(args, "You must provdide an argument table when creating UpdateMethodResponseRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateMethodResponseRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{resource_id}"] = args["resourceId"],
+        ["{status_code}"] = args["statusCode"],
+        ["{restapi_id}"] = args["restApiId"],
+        ["{http_method}"] = args["httpMethod"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["resourceId"] = args["resourceId"],
 		["statusCode"] = args["statusCode"],
 		["restApiId"] = args["restApiId"],
 		["patchOperations"] = args["patchOperations"],
 		["httpMethod"] = args["httpMethod"],
 	}
-	asserts.AssertUpdateMethodResponseRequest(t)
-	return t
+	asserts.AssertUpdateMethodResponseRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteAuthorizerRequest = { ["restApiId"] = true, ["authorizerId"] = true, nil }
@@ -3410,13 +4603,26 @@ end
 -- Required key: authorizerId
 -- @return DeleteAuthorizerRequest structure as a key-value pair table
 function M.DeleteAuthorizerRequest(args)
-	assert(args, "You must provdide an argument table when creating DeleteAuthorizerRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteAuthorizerRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{restapi_id}"] = args["restApiId"],
+        ["{authorizer_id}"] = args["authorizerId"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["restApiId"] = args["restApiId"],
 		["authorizerId"] = args["authorizerId"],
 	}
-	asserts.AssertDeleteAuthorizerRequest(t)
-	return t
+	asserts.AssertDeleteAuthorizerRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateAuthorizerRequest = { ["authType"] = true, ["restApiId"] = true, ["name"] = true, ["providerARNs"] = true, ["authorizerUri"] = true, ["identityValidationExpression"] = true, ["authorizerResultTtlInSeconds"] = true, ["authorizerCredentials"] = true, ["identitySource"] = true, ["type"] = true, nil }
@@ -3463,8 +4669,15 @@ end
 -- Required key: identitySource
 -- @return CreateAuthorizerRequest structure as a key-value pair table
 function M.CreateAuthorizerRequest(args)
-	assert(args, "You must provdide an argument table when creating CreateAuthorizerRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateAuthorizerRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{restapi_id}"] = args["restApiId"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["authType"] = args["authType"],
 		["restApiId"] = args["restApiId"],
 		["name"] = args["name"],
@@ -3476,8 +4689,13 @@ function M.CreateAuthorizerRequest(args)
 		["identitySource"] = args["identitySource"],
 		["type"] = args["type"],
 	}
-	asserts.AssertCreateAuthorizerRequest(t)
-	return t
+	asserts.AssertCreateAuthorizerRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.MethodSetting = { ["cacheTtlInSeconds"] = true, ["loggingLevel"] = true, ["dataTraceEnabled"] = true, ["metricsEnabled"] = true, ["unauthorizedCacheControlHeaderStrategy"] = true, ["throttlingRateLimit"] = true, ["cacheDataEncrypted"] = true, ["cachingEnabled"] = true, ["throttlingBurstLimit"] = true, ["requireAuthorizationForCacheControl"] = true, nil }
@@ -3516,8 +4734,14 @@ end
 -- * requireAuthorizationForCacheControl [Boolean] <p>Specifies whether authorization is required for a cache invalidation request. The PATCH path for this setting is <code>/{method_setting_key}/caching/requireAuthorizationForCacheControl</code>, and the value is a Boolean.</p>
 -- @return MethodSetting structure as a key-value pair table
 function M.MethodSetting(args)
-	assert(args, "You must provdide an argument table when creating MethodSetting")
-	local t = { 
+	assert(args, "You must provide an argument table when creating MethodSetting")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["cacheTtlInSeconds"] = args["cacheTtlInSeconds"],
 		["loggingLevel"] = args["loggingLevel"],
 		["dataTraceEnabled"] = args["dataTraceEnabled"],
@@ -3529,8 +4753,13 @@ function M.MethodSetting(args)
 		["throttlingBurstLimit"] = args["throttlingBurstLimit"],
 		["requireAuthorizationForCacheControl"] = args["requireAuthorizationForCacheControl"],
 	}
-	asserts.AssertMethodSetting(t)
-	return t
+	asserts.AssertMethodSetting(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetDocumentationVersionsRequest = { ["position"] = true, ["restApiId"] = true, ["limit"] = true, nil }
@@ -3557,14 +4786,28 @@ end
 -- Required key: restApiId
 -- @return GetDocumentationVersionsRequest structure as a key-value pair table
 function M.GetDocumentationVersionsRequest(args)
-	assert(args, "You must provdide an argument table when creating GetDocumentationVersionsRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetDocumentationVersionsRequest")
+    local query_args = { 
+        ["position"] = args["position"],
+        ["limit"] = args["limit"],
+    }
+    local uri_args = { 
+        ["{restapi_id}"] = args["restApiId"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["position"] = args["position"],
 		["restApiId"] = args["restApiId"],
 		["limit"] = args["limit"],
 	}
-	asserts.AssertGetDocumentationVersionsRequest(t)
-	return t
+	asserts.AssertGetDocumentationVersionsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteMethodResponseRequest = { ["resourceId"] = true, ["statusCode"] = true, ["restApiId"] = true, ["httpMethod"] = true, nil }
@@ -3599,15 +4842,30 @@ end
 -- Required key: statusCode
 -- @return DeleteMethodResponseRequest structure as a key-value pair table
 function M.DeleteMethodResponseRequest(args)
-	assert(args, "You must provdide an argument table when creating DeleteMethodResponseRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteMethodResponseRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{resource_id}"] = args["resourceId"],
+        ["{status_code}"] = args["statusCode"],
+        ["{restapi_id}"] = args["restApiId"],
+        ["{http_method}"] = args["httpMethod"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["resourceId"] = args["resourceId"],
 		["statusCode"] = args["statusCode"],
 		["restApiId"] = args["restApiId"],
 		["httpMethod"] = args["httpMethod"],
 	}
-	asserts.AssertDeleteMethodResponseRequest(t)
-	return t
+	asserts.AssertDeleteMethodResponseRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetUsageRequest = { ["startDate"] = true, ["keyId"] = true, ["usagePlanId"] = true, ["limit"] = true, ["position"] = true, ["endDate"] = true, nil }
@@ -3644,8 +4902,20 @@ end
 -- Required key: endDate
 -- @return GetUsageRequest structure as a key-value pair table
 function M.GetUsageRequest(args)
-	assert(args, "You must provdide an argument table when creating GetUsageRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetUsageRequest")
+    local query_args = { 
+        ["startDate"] = args["startDate"],
+        ["keyId"] = args["keyId"],
+        ["limit"] = args["limit"],
+        ["position"] = args["position"],
+        ["endDate"] = args["endDate"],
+    }
+    local uri_args = { 
+        ["{usageplanId}"] = args["usagePlanId"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["startDate"] = args["startDate"],
 		["keyId"] = args["keyId"],
 		["usagePlanId"] = args["usagePlanId"],
@@ -3653,8 +4923,13 @@ function M.GetUsageRequest(args)
 		["position"] = args["position"],
 		["endDate"] = args["endDate"],
 	}
-	asserts.AssertGetUsageRequest(t)
-	return t
+	asserts.AssertGetUsageRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdateRequestValidatorRequest = { ["requestValidatorId"] = true, ["restApiId"] = true, ["patchOperations"] = true, nil }
@@ -3683,14 +4958,27 @@ end
 -- Required key: requestValidatorId
 -- @return UpdateRequestValidatorRequest structure as a key-value pair table
 function M.UpdateRequestValidatorRequest(args)
-	assert(args, "You must provdide an argument table when creating UpdateRequestValidatorRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateRequestValidatorRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{requestvalidator_id}"] = args["requestValidatorId"],
+        ["{restapi_id}"] = args["restApiId"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["requestValidatorId"] = args["requestValidatorId"],
 		["restApiId"] = args["restApiId"],
 		["patchOperations"] = args["patchOperations"],
 	}
-	asserts.AssertUpdateRequestValidatorRequest(t)
-	return t
+	asserts.AssertUpdateRequestValidatorRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteIntegrationRequest = { ["resourceId"] = true, ["restApiId"] = true, ["httpMethod"] = true, nil }
@@ -3721,14 +5009,28 @@ end
 -- Required key: httpMethod
 -- @return DeleteIntegrationRequest structure as a key-value pair table
 function M.DeleteIntegrationRequest(args)
-	assert(args, "You must provdide an argument table when creating DeleteIntegrationRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteIntegrationRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{resource_id}"] = args["resourceId"],
+        ["{restapi_id}"] = args["restApiId"],
+        ["{http_method}"] = args["httpMethod"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["resourceId"] = args["resourceId"],
 		["restApiId"] = args["restApiId"],
 		["httpMethod"] = args["httpMethod"],
 	}
-	asserts.AssertDeleteIntegrationRequest(t)
-	return t
+	asserts.AssertDeleteIntegrationRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdateApiKeyRequest = { ["apiKey"] = true, ["patchOperations"] = true, nil }
@@ -3753,13 +5055,25 @@ end
 -- Required key: apiKey
 -- @return UpdateApiKeyRequest structure as a key-value pair table
 function M.UpdateApiKeyRequest(args)
-	assert(args, "You must provdide an argument table when creating UpdateApiKeyRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateApiKeyRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{api_Key}"] = args["apiKey"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["apiKey"] = args["apiKey"],
 		["patchOperations"] = args["patchOperations"],
 	}
-	asserts.AssertUpdateApiKeyRequest(t)
-	return t
+	asserts.AssertUpdateApiKeyRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.TestInvokeMethodRequest = { ["body"] = true, ["clientCertificateId"] = true, ["restApiId"] = true, ["httpMethod"] = true, ["resourceId"] = true, ["pathWithQueryString"] = true, ["headers"] = true, ["stageVariables"] = true, nil }
@@ -3800,8 +5114,17 @@ end
 -- Required key: httpMethod
 -- @return TestInvokeMethodRequest structure as a key-value pair table
 function M.TestInvokeMethodRequest(args)
-	assert(args, "You must provdide an argument table when creating TestInvokeMethodRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating TestInvokeMethodRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{restapi_id}"] = args["restApiId"],
+        ["{http_method}"] = args["httpMethod"],
+        ["{resource_id}"] = args["resourceId"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["body"] = args["body"],
 		["clientCertificateId"] = args["clientCertificateId"],
 		["restApiId"] = args["restApiId"],
@@ -3811,8 +5134,13 @@ function M.TestInvokeMethodRequest(args)
 		["headers"] = args["headers"],
 		["stageVariables"] = args["stageVariables"],
 	}
-	asserts.AssertTestInvokeMethodRequest(t)
-	return t
+	asserts.AssertTestInvokeMethodRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ConflictException = { ["message"] = true, nil }
@@ -3833,12 +5161,23 @@ end
 -- * message [String] 
 -- @return ConflictException structure as a key-value pair table
 function M.ConflictException(args)
-	assert(args, "You must provdide an argument table when creating ConflictException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ConflictException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertConflictException(t)
-	return t
+	asserts.AssertConflictException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdateModelRequest = { ["modelName"] = true, ["restApiId"] = true, ["patchOperations"] = true, nil }
@@ -3867,14 +5206,27 @@ end
 -- Required key: modelName
 -- @return UpdateModelRequest structure as a key-value pair table
 function M.UpdateModelRequest(args)
-	assert(args, "You must provdide an argument table when creating UpdateModelRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateModelRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{model_name}"] = args["modelName"],
+        ["{restapi_id}"] = args["restApiId"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["modelName"] = args["modelName"],
 		["restApiId"] = args["restApiId"],
 		["patchOperations"] = args["patchOperations"],
 	}
-	asserts.AssertUpdateModelRequest(t)
-	return t
+	asserts.AssertUpdateModelRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdateDeploymentRequest = { ["deploymentId"] = true, ["restApiId"] = true, ["patchOperations"] = true, nil }
@@ -3903,14 +5255,27 @@ end
 -- Required key: deploymentId
 -- @return UpdateDeploymentRequest structure as a key-value pair table
 function M.UpdateDeploymentRequest(args)
-	assert(args, "You must provdide an argument table when creating UpdateDeploymentRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateDeploymentRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{deployment_id}"] = args["deploymentId"],
+        ["{restapi_id}"] = args["restApiId"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["deploymentId"] = args["deploymentId"],
 		["restApiId"] = args["restApiId"],
 		["patchOperations"] = args["patchOperations"],
 	}
-	asserts.AssertUpdateDeploymentRequest(t)
-	return t
+	asserts.AssertUpdateDeploymentRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.PutRestApiRequest = { ["body"] = true, ["failOnWarnings"] = true, ["restApiId"] = true, ["mode"] = true, ["parameters"] = true, nil }
@@ -3943,16 +5308,31 @@ end
 -- Required key: body
 -- @return PutRestApiRequest structure as a key-value pair table
 function M.PutRestApiRequest(args)
-	assert(args, "You must provdide an argument table when creating PutRestApiRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating PutRestApiRequest")
+    local query_args = { 
+        ["failonwarnings"] = args["failOnWarnings"],
+        ["mode"] = args["mode"],
+        ["parameters"] = args["parameters"],
+    }
+    local uri_args = { 
+        ["{restapi_id}"] = args["restApiId"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["body"] = args["body"],
 		["failOnWarnings"] = args["failOnWarnings"],
 		["restApiId"] = args["restApiId"],
 		["mode"] = args["mode"],
 		["parameters"] = args["parameters"],
 	}
-	asserts.AssertPutRestApiRequest(t)
-	return t
+	asserts.AssertPutRestApiRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetSdkRequest = { ["sdkType"] = true, ["restApiId"] = true, ["parameters"] = true, ["stageName"] = true, nil }
@@ -3985,15 +5365,30 @@ end
 -- Required key: sdkType
 -- @return GetSdkRequest structure as a key-value pair table
 function M.GetSdkRequest(args)
-	assert(args, "You must provdide an argument table when creating GetSdkRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetSdkRequest")
+    local query_args = { 
+        ["parameters"] = args["parameters"],
+    }
+    local uri_args = { 
+        ["{sdk_type}"] = args["sdkType"],
+        ["{restapi_id}"] = args["restApiId"],
+        ["{stage_name}"] = args["stageName"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["sdkType"] = args["sdkType"],
 		["restApiId"] = args["restApiId"],
 		["parameters"] = args["parameters"],
 		["stageName"] = args["stageName"],
 	}
-	asserts.AssertGetSdkRequest(t)
-	return t
+	asserts.AssertGetSdkRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdateUsageRequest = { ["keyId"] = true, ["usagePlanId"] = true, ["patchOperations"] = true, nil }
@@ -4022,14 +5417,27 @@ end
 -- Required key: keyId
 -- @return UpdateUsageRequest structure as a key-value pair table
 function M.UpdateUsageRequest(args)
-	assert(args, "You must provdide an argument table when creating UpdateUsageRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateUsageRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{keyId}"] = args["keyId"],
+        ["{usageplanId}"] = args["usagePlanId"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["keyId"] = args["keyId"],
 		["usagePlanId"] = args["usagePlanId"],
 		["patchOperations"] = args["patchOperations"],
 	}
-	asserts.AssertUpdateUsageRequest(t)
-	return t
+	asserts.AssertUpdateUsageRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.StageKey = { ["restApiId"] = true, ["stageName"] = true, nil }
@@ -4052,13 +5460,24 @@ end
 -- * stageName [String] <p>The stage name in the <a>RestApi</a> that the stage key references.</p>
 -- @return StageKey structure as a key-value pair table
 function M.StageKey(args)
-	assert(args, "You must provdide an argument table when creating StageKey")
-	local t = { 
+	assert(args, "You must provide an argument table when creating StageKey")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["restApiId"] = args["restApiId"],
 		["stageName"] = args["stageName"],
 	}
-	asserts.AssertStageKey(t)
-	return t
+	asserts.AssertStageKey(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateModelRequest = { ["contentType"] = true, ["schema"] = true, ["restApiId"] = true, ["name"] = true, ["description"] = true, nil }
@@ -4093,16 +5512,28 @@ end
 -- Required key: contentType
 -- @return CreateModelRequest structure as a key-value pair table
 function M.CreateModelRequest(args)
-	assert(args, "You must provdide an argument table when creating CreateModelRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateModelRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{restapi_id}"] = args["restApiId"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["contentType"] = args["contentType"],
 		["schema"] = args["schema"],
 		["restApiId"] = args["restApiId"],
 		["name"] = args["name"],
 		["description"] = args["description"],
 	}
-	asserts.AssertCreateModelRequest(t)
-	return t
+	asserts.AssertCreateModelRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.RequestValidators = { ["position"] = true, ["items"] = true, nil }
@@ -4125,13 +5556,24 @@ end
 -- * items [ListOfRequestValidator] <p>The current page of <a>RequestValidator</a> resources in the <a>RequestValidators</a> collection.</p>
 -- @return RequestValidators structure as a key-value pair table
 function M.RequestValidators(args)
-	assert(args, "You must provdide an argument table when creating RequestValidators")
-	local t = { 
+	assert(args, "You must provide an argument table when creating RequestValidators")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["position"] = args["position"],
 		["items"] = args["items"],
 	}
-	asserts.AssertRequestValidators(t)
-	return t
+	asserts.AssertRequestValidators(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.PutMethodResponseRequest = { ["responseModels"] = true, ["restApiId"] = true, ["resourceId"] = true, ["httpMethod"] = true, ["responseParameters"] = true, ["statusCode"] = true, nil }
@@ -4170,8 +5612,18 @@ end
 -- Required key: statusCode
 -- @return PutMethodResponseRequest structure as a key-value pair table
 function M.PutMethodResponseRequest(args)
-	assert(args, "You must provdide an argument table when creating PutMethodResponseRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating PutMethodResponseRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{restapi_id}"] = args["restApiId"],
+        ["{resource_id}"] = args["resourceId"],
+        ["{http_method}"] = args["httpMethod"],
+        ["{status_code}"] = args["statusCode"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["responseModels"] = args["responseModels"],
 		["restApiId"] = args["restApiId"],
 		["resourceId"] = args["resourceId"],
@@ -4179,8 +5631,13 @@ function M.PutMethodResponseRequest(args)
 		["responseParameters"] = args["responseParameters"],
 		["statusCode"] = args["statusCode"],
 	}
-	asserts.AssertPutMethodResponseRequest(t)
-	return t
+	asserts.AssertPutMethodResponseRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetDeploymentsRequest = { ["position"] = true, ["restApiId"] = true, ["limit"] = true, nil }
@@ -4207,14 +5664,28 @@ end
 -- Required key: restApiId
 -- @return GetDeploymentsRequest structure as a key-value pair table
 function M.GetDeploymentsRequest(args)
-	assert(args, "You must provdide an argument table when creating GetDeploymentsRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetDeploymentsRequest")
+    local query_args = { 
+        ["position"] = args["position"],
+        ["limit"] = args["limit"],
+    }
+    local uri_args = { 
+        ["{restapi_id}"] = args["restApiId"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["position"] = args["position"],
 		["restApiId"] = args["restApiId"],
 		["limit"] = args["limit"],
 	}
-	asserts.AssertGetDeploymentsRequest(t)
-	return t
+	asserts.AssertGetDeploymentsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.PutIntegrationRequest = { ["passthroughBehavior"] = true, ["restApiId"] = true, ["cacheKeyParameters"] = true, ["requestParameters"] = true, ["integrationHttpMethod"] = true, ["resourceId"] = true, ["uri"] = true, ["httpMethod"] = true, ["contentHandling"] = true, ["requestTemplates"] = true, ["cacheNamespace"] = true, ["credentials"] = true, ["type"] = true, nil }
@@ -4267,8 +5738,17 @@ end
 -- Required key: type
 -- @return PutIntegrationRequest structure as a key-value pair table
 function M.PutIntegrationRequest(args)
-	assert(args, "You must provdide an argument table when creating PutIntegrationRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating PutIntegrationRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{restapi_id}"] = args["restApiId"],
+        ["{resource_id}"] = args["resourceId"],
+        ["{http_method}"] = args["httpMethod"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["passthroughBehavior"] = args["passthroughBehavior"],
 		["restApiId"] = args["restApiId"],
 		["cacheKeyParameters"] = args["cacheKeyParameters"],
@@ -4283,8 +5763,13 @@ function M.PutIntegrationRequest(args)
 		["credentials"] = args["credentials"],
 		["type"] = args["type"],
 	}
-	asserts.AssertPutIntegrationRequest(t)
-	return t
+	asserts.AssertPutIntegrationRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdateAuthorizerRequest = { ["restApiId"] = true, ["authorizerId"] = true, ["patchOperations"] = true, nil }
@@ -4313,14 +5798,27 @@ end
 -- Required key: authorizerId
 -- @return UpdateAuthorizerRequest structure as a key-value pair table
 function M.UpdateAuthorizerRequest(args)
-	assert(args, "You must provdide an argument table when creating UpdateAuthorizerRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateAuthorizerRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{restapi_id}"] = args["restApiId"],
+        ["{authorizer_id}"] = args["authorizerId"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["restApiId"] = args["restApiId"],
 		["authorizerId"] = args["authorizerId"],
 		["patchOperations"] = args["patchOperations"],
 	}
-	asserts.AssertUpdateAuthorizerRequest(t)
-	return t
+	asserts.AssertUpdateAuthorizerRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetDocumentationVersionRequest = { ["restApiId"] = true, ["documentationVersion"] = true, nil }
@@ -4347,13 +5845,26 @@ end
 -- Required key: documentationVersion
 -- @return GetDocumentationVersionRequest structure as a key-value pair table
 function M.GetDocumentationVersionRequest(args)
-	assert(args, "You must provdide an argument table when creating GetDocumentationVersionRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetDocumentationVersionRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{restapi_id}"] = args["restApiId"],
+        ["{doc_version}"] = args["documentationVersion"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["restApiId"] = args["restApiId"],
 		["documentationVersion"] = args["documentationVersion"],
 	}
-	asserts.AssertGetDocumentationVersionRequest(t)
-	return t
+	asserts.AssertGetDocumentationVersionRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateDocumentationVersionRequest = { ["restApiId"] = true, ["stageName"] = true, ["documentationVersion"] = true, ["description"] = true, nil }
@@ -4384,15 +5895,27 @@ end
 -- Required key: documentationVersion
 -- @return CreateDocumentationVersionRequest structure as a key-value pair table
 function M.CreateDocumentationVersionRequest(args)
-	assert(args, "You must provdide an argument table when creating CreateDocumentationVersionRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateDocumentationVersionRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{restapi_id}"] = args["restApiId"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["restApiId"] = args["restApiId"],
 		["stageName"] = args["stageName"],
 		["documentationVersion"] = args["documentationVersion"],
 		["description"] = args["description"],
 	}
-	asserts.AssertCreateDocumentationVersionRequest(t)
-	return t
+	asserts.AssertCreateDocumentationVersionRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdateRestApiRequest = { ["restApiId"] = true, ["patchOperations"] = true, nil }
@@ -4417,13 +5940,25 @@ end
 -- Required key: restApiId
 -- @return UpdateRestApiRequest structure as a key-value pair table
 function M.UpdateRestApiRequest(args)
-	assert(args, "You must provdide an argument table when creating UpdateRestApiRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateRestApiRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{restapi_id}"] = args["restApiId"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["restApiId"] = args["restApiId"],
 		["patchOperations"] = args["patchOperations"],
 	}
-	asserts.AssertUpdateRestApiRequest(t)
-	return t
+	asserts.AssertUpdateRestApiRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdateResourceRequest = { ["resourceId"] = true, ["restApiId"] = true, ["patchOperations"] = true, nil }
@@ -4452,14 +5987,27 @@ end
 -- Required key: resourceId
 -- @return UpdateResourceRequest structure as a key-value pair table
 function M.UpdateResourceRequest(args)
-	assert(args, "You must provdide an argument table when creating UpdateResourceRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateResourceRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{resource_id}"] = args["resourceId"],
+        ["{restapi_id}"] = args["restApiId"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["resourceId"] = args["resourceId"],
 		["restApiId"] = args["restApiId"],
 		["patchOperations"] = args["patchOperations"],
 	}
-	asserts.AssertUpdateResourceRequest(t)
-	return t
+	asserts.AssertUpdateResourceRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.PutIntegrationResponseRequest = { ["contentHandling"] = true, ["restApiId"] = true, ["resourceId"] = true, ["responseTemplates"] = true, ["httpMethod"] = true, ["selectionPattern"] = true, ["statusCode"] = true, ["responseParameters"] = true, nil }
@@ -4502,8 +6050,18 @@ end
 -- Required key: statusCode
 -- @return PutIntegrationResponseRequest structure as a key-value pair table
 function M.PutIntegrationResponseRequest(args)
-	assert(args, "You must provdide an argument table when creating PutIntegrationResponseRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating PutIntegrationResponseRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{restapi_id}"] = args["restApiId"],
+        ["{resource_id}"] = args["resourceId"],
+        ["{http_method}"] = args["httpMethod"],
+        ["{status_code}"] = args["statusCode"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["contentHandling"] = args["contentHandling"],
 		["restApiId"] = args["restApiId"],
 		["resourceId"] = args["resourceId"],
@@ -4513,8 +6071,13 @@ function M.PutIntegrationResponseRequest(args)
 		["statusCode"] = args["statusCode"],
 		["responseParameters"] = args["responseParameters"],
 	}
-	asserts.AssertPutIntegrationResponseRequest(t)
-	return t
+	asserts.AssertPutIntegrationResponseRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetResourcesRequest = { ["position"] = true, ["embed"] = true, ["restApiId"] = true, ["limit"] = true, nil }
@@ -4543,15 +6106,30 @@ end
 -- Required key: restApiId
 -- @return GetResourcesRequest structure as a key-value pair table
 function M.GetResourcesRequest(args)
-	assert(args, "You must provdide an argument table when creating GetResourcesRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetResourcesRequest")
+    local query_args = { 
+        ["position"] = args["position"],
+        ["embed"] = args["embed"],
+        ["limit"] = args["limit"],
+    }
+    local uri_args = { 
+        ["{restapi_id}"] = args["restApiId"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["position"] = args["position"],
 		["embed"] = args["embed"],
 		["restApiId"] = args["restApiId"],
 		["limit"] = args["limit"],
 	}
-	asserts.AssertGetResourcesRequest(t)
-	return t
+	asserts.AssertGetResourcesRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetBasePathMappingsRequest = { ["position"] = true, ["limit"] = true, ["domainName"] = true, nil }
@@ -4578,14 +6156,28 @@ end
 -- Required key: domainName
 -- @return GetBasePathMappingsRequest structure as a key-value pair table
 function M.GetBasePathMappingsRequest(args)
-	assert(args, "You must provdide an argument table when creating GetBasePathMappingsRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetBasePathMappingsRequest")
+    local query_args = { 
+        ["position"] = args["position"],
+        ["limit"] = args["limit"],
+    }
+    local uri_args = { 
+        ["{domain_name}"] = args["domainName"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["position"] = args["position"],
 		["limit"] = args["limit"],
 		["domainName"] = args["domainName"],
 	}
-	asserts.AssertGetBasePathMappingsRequest(t)
-	return t
+	asserts.AssertGetBasePathMappingsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Integration = { ["integrationResponses"] = true, ["passthroughBehavior"] = true, ["cacheKeyParameters"] = true, ["requestParameters"] = true, ["uri"] = true, ["httpMethod"] = true, ["contentHandling"] = true, ["requestTemplates"] = true, ["cacheNamespace"] = true, ["credentials"] = true, ["type"] = true, nil }
@@ -4626,8 +6218,14 @@ end
 -- * type [IntegrationType] <p>Specifies the integration's type. The valid value is <code>HTTP</code> for integrating with an HTTP back end, <code>AWS</code> for any AWS service endpoints, <code>MOCK</code> for testing without actually invoking the back end, <code>HTTP_PROXY</code> for integrating with the HTTP proxy integration, or <code>AWS_PROXY</code> for integrating with the Lambda proxy integration type.</p>
 -- @return Integration structure as a key-value pair table
 function M.Integration(args)
-	assert(args, "You must provdide an argument table when creating Integration")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Integration")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["integrationResponses"] = args["integrationResponses"],
 		["passthroughBehavior"] = args["passthroughBehavior"],
 		["cacheKeyParameters"] = args["cacheKeyParameters"],
@@ -4640,8 +6238,13 @@ function M.Integration(args)
 		["credentials"] = args["credentials"],
 		["type"] = args["type"],
 	}
-	asserts.AssertIntegration(t)
-	return t
+	asserts.AssertIntegration(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.RestApis = { ["position"] = true, ["items"] = true, nil }
@@ -4664,13 +6267,24 @@ end
 -- * items [ListOfRestApi] <p>An array of links to the current page of <a>RestApi</a> resources.</p>
 -- @return RestApis structure as a key-value pair table
 function M.RestApis(args)
-	assert(args, "You must provdide an argument table when creating RestApis")
-	local t = { 
+	assert(args, "You must provide an argument table when creating RestApis")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["position"] = args["position"],
 		["items"] = args["items"],
 	}
-	asserts.AssertRestApis(t)
-	return t
+	asserts.AssertRestApis(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateDocumentationPartRequest = { ["restApiId"] = true, ["location"] = true, ["properties"] = true, nil }
@@ -4701,14 +6315,26 @@ end
 -- Required key: properties
 -- @return CreateDocumentationPartRequest structure as a key-value pair table
 function M.CreateDocumentationPartRequest(args)
-	assert(args, "You must provdide an argument table when creating CreateDocumentationPartRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateDocumentationPartRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{restapi_id}"] = args["restApiId"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["restApiId"] = args["restApiId"],
 		["location"] = args["location"],
 		["properties"] = args["properties"],
 	}
-	asserts.AssertCreateDocumentationPartRequest(t)
-	return t
+	asserts.AssertCreateDocumentationPartRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateBasePathMappingRequest = { ["basePath"] = true, ["stage"] = true, ["restApiId"] = true, ["domainName"] = true, nil }
@@ -4739,15 +6365,27 @@ end
 -- Required key: restApiId
 -- @return CreateBasePathMappingRequest structure as a key-value pair table
 function M.CreateBasePathMappingRequest(args)
-	assert(args, "You must provdide an argument table when creating CreateBasePathMappingRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateBasePathMappingRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{domain_name}"] = args["domainName"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["basePath"] = args["basePath"],
 		["stage"] = args["stage"],
 		["restApiId"] = args["restApiId"],
 		["domainName"] = args["domainName"],
 	}
-	asserts.AssertCreateBasePathMappingRequest(t)
-	return t
+	asserts.AssertCreateBasePathMappingRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetUsagePlansRequest = { ["position"] = true, ["keyId"] = true, ["limit"] = true, nil }
@@ -4772,14 +6410,28 @@ end
 -- * limit [NullableInteger] <p>The maximum number of returned results per page.</p>
 -- @return GetUsagePlansRequest structure as a key-value pair table
 function M.GetUsagePlansRequest(args)
-	assert(args, "You must provdide an argument table when creating GetUsagePlansRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetUsagePlansRequest")
+    local query_args = { 
+        ["position"] = args["position"],
+        ["keyId"] = args["keyId"],
+        ["limit"] = args["limit"],
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["position"] = args["position"],
 		["keyId"] = args["keyId"],
 		["limit"] = args["limit"],
 	}
-	asserts.AssertGetUsagePlansRequest(t)
-	return t
+	asserts.AssertGetUsagePlansRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetSdkTypeRequest = { ["id"] = true, nil }
@@ -4802,12 +6454,24 @@ end
 -- Required key: id
 -- @return GetSdkTypeRequest structure as a key-value pair table
 function M.GetSdkTypeRequest(args)
-	assert(args, "You must provdide an argument table when creating GetSdkTypeRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetSdkTypeRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{sdktype_id}"] = args["id"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["id"] = args["id"],
 	}
-	asserts.AssertGetSdkTypeRequest(t)
-	return t
+	asserts.AssertGetSdkTypeRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.SdkConfigurationProperty = { ["friendlyName"] = true, ["defaultValue"] = true, ["required"] = true, ["name"] = true, ["description"] = true, nil }
@@ -4836,16 +6500,27 @@ end
 -- * description [String] <p>The description of an <a>SdkType</a> configuration property.</p>
 -- @return SdkConfigurationProperty structure as a key-value pair table
 function M.SdkConfigurationProperty(args)
-	assert(args, "You must provdide an argument table when creating SdkConfigurationProperty")
-	local t = { 
+	assert(args, "You must provide an argument table when creating SdkConfigurationProperty")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["friendlyName"] = args["friendlyName"],
 		["defaultValue"] = args["defaultValue"],
 		["required"] = args["required"],
 		["name"] = args["name"],
 		["description"] = args["description"],
 	}
-	asserts.AssertSdkConfigurationProperty(t)
-	return t
+	asserts.AssertSdkConfigurationProperty(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ApiKey = { ["description"] = true, ["enabled"] = true, ["value"] = true, ["id"] = true, ["lastUpdatedDate"] = true, ["createdDate"] = true, ["stageKeys"] = true, ["customerId"] = true, ["name"] = true, nil }
@@ -4882,8 +6557,14 @@ end
 -- * name [String] <p>The name of the API Key.</p>
 -- @return ApiKey structure as a key-value pair table
 function M.ApiKey(args)
-	assert(args, "You must provdide an argument table when creating ApiKey")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ApiKey")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["description"] = args["description"],
 		["enabled"] = args["enabled"],
 		["value"] = args["value"],
@@ -4894,8 +6575,13 @@ function M.ApiKey(args)
 		["customerId"] = args["customerId"],
 		["name"] = args["name"],
 	}
-	asserts.AssertApiKey(t)
-	return t
+	asserts.AssertApiKey(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdateIntegrationResponseRequest = { ["resourceId"] = true, ["statusCode"] = true, ["restApiId"] = true, ["patchOperations"] = true, ["httpMethod"] = true, nil }
@@ -4932,16 +6618,31 @@ end
 -- Required key: statusCode
 -- @return UpdateIntegrationResponseRequest structure as a key-value pair table
 function M.UpdateIntegrationResponseRequest(args)
-	assert(args, "You must provdide an argument table when creating UpdateIntegrationResponseRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateIntegrationResponseRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{resource_id}"] = args["resourceId"],
+        ["{status_code}"] = args["statusCode"],
+        ["{restapi_id}"] = args["restApiId"],
+        ["{http_method}"] = args["httpMethod"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["resourceId"] = args["resourceId"],
 		["statusCode"] = args["statusCode"],
 		["restApiId"] = args["restApiId"],
 		["patchOperations"] = args["patchOperations"],
 		["httpMethod"] = args["httpMethod"],
 	}
-	asserts.AssertUpdateIntegrationResponseRequest(t)
-	return t
+	asserts.AssertUpdateIntegrationResponseRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetClientCertificatesRequest = { ["position"] = true, ["limit"] = true, nil }
@@ -4964,13 +6665,26 @@ end
 -- * limit [NullableInteger] <p>The maximum number of returned results per page. The value is 25 by default and could be between 1 - 500.</p>
 -- @return GetClientCertificatesRequest structure as a key-value pair table
 function M.GetClientCertificatesRequest(args)
-	assert(args, "You must provdide an argument table when creating GetClientCertificatesRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetClientCertificatesRequest")
+    local query_args = { 
+        ["position"] = args["position"],
+        ["limit"] = args["limit"],
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["position"] = args["position"],
 		["limit"] = args["limit"],
 	}
-	asserts.AssertGetClientCertificatesRequest(t)
-	return t
+	asserts.AssertGetClientCertificatesRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetAuthorizersRequest = { ["position"] = true, ["restApiId"] = true, ["limit"] = true, nil }
@@ -4997,14 +6711,28 @@ end
 -- Required key: restApiId
 -- @return GetAuthorizersRequest structure as a key-value pair table
 function M.GetAuthorizersRequest(args)
-	assert(args, "You must provdide an argument table when creating GetAuthorizersRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetAuthorizersRequest")
+    local query_args = { 
+        ["position"] = args["position"],
+        ["limit"] = args["limit"],
+    }
+    local uri_args = { 
+        ["{restapi_id}"] = args["restApiId"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["position"] = args["position"],
 		["restApiId"] = args["restApiId"],
 		["limit"] = args["limit"],
 	}
-	asserts.AssertGetAuthorizersRequest(t)
-	return t
+	asserts.AssertGetAuthorizersRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteRestApiRequest = { ["restApiId"] = true, nil }
@@ -5027,12 +6755,24 @@ end
 -- Required key: restApiId
 -- @return DeleteRestApiRequest structure as a key-value pair table
 function M.DeleteRestApiRequest(args)
-	assert(args, "You must provdide an argument table when creating DeleteRestApiRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteRestApiRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{restapi_id}"] = args["restApiId"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["restApiId"] = args["restApiId"],
 	}
-	asserts.AssertDeleteRestApiRequest(t)
-	return t
+	asserts.AssertDeleteRestApiRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Deployment = { ["apiSummary"] = true, ["createdDate"] = true, ["id"] = true, ["description"] = true, nil }
@@ -5059,15 +6799,26 @@ end
 -- * description [String] <p>The description for the deployment resource.</p>
 -- @return Deployment structure as a key-value pair table
 function M.Deployment(args)
-	assert(args, "You must provdide an argument table when creating Deployment")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Deployment")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["apiSummary"] = args["apiSummary"],
 		["createdDate"] = args["createdDate"],
 		["id"] = args["id"],
 		["description"] = args["description"],
 	}
-	asserts.AssertDeployment(t)
-	return t
+	asserts.AssertDeployment(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetResourceRequest = { ["resourceId"] = true, ["embed"] = true, ["restApiId"] = true, nil }
@@ -5096,14 +6847,28 @@ end
 -- Required key: resourceId
 -- @return GetResourceRequest structure as a key-value pair table
 function M.GetResourceRequest(args)
-	assert(args, "You must provdide an argument table when creating GetResourceRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetResourceRequest")
+    local query_args = { 
+        ["embed"] = args["embed"],
+    }
+    local uri_args = { 
+        ["{resource_id}"] = args["resourceId"],
+        ["{restapi_id}"] = args["restApiId"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["resourceId"] = args["resourceId"],
 		["embed"] = args["embed"],
 		["restApiId"] = args["restApiId"],
 	}
-	asserts.AssertGetResourceRequest(t)
-	return t
+	asserts.AssertGetResourceRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteResourceRequest = { ["resourceId"] = true, ["restApiId"] = true, nil }
@@ -5130,13 +6895,26 @@ end
 -- Required key: resourceId
 -- @return DeleteResourceRequest structure as a key-value pair table
 function M.DeleteResourceRequest(args)
-	assert(args, "You must provdide an argument table when creating DeleteResourceRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteResourceRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{resource_id}"] = args["resourceId"],
+        ["{restapi_id}"] = args["restApiId"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["resourceId"] = args["resourceId"],
 		["restApiId"] = args["restApiId"],
 	}
-	asserts.AssertDeleteResourceRequest(t)
-	return t
+	asserts.AssertDeleteResourceRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.PatchOperation = { ["path"] = true, ["from"] = true, ["value"] = true, ["op"] = true, nil }
@@ -5163,15 +6941,26 @@ end
 -- * op [Op] <p>An update operation to be performed with this PATCH request. The valid value can be "add", "remove", or "replace". Not all valid operations are supported for a given resource. Support of the operations depends on specific operational contexts. Attempts to apply an unsupported operation on a resource will return an error message.</p>
 -- @return PatchOperation structure as a key-value pair table
 function M.PatchOperation(args)
-	assert(args, "You must provdide an argument table when creating PatchOperation")
-	local t = { 
+	assert(args, "You must provide an argument table when creating PatchOperation")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["path"] = args["path"],
 		["from"] = args["from"],
 		["value"] = args["value"],
 		["op"] = args["op"],
 	}
-	asserts.AssertPatchOperation(t)
-	return t
+	asserts.AssertPatchOperation(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ApiStage = { ["apiId"] = true, ["stage"] = true, nil }
@@ -5194,13 +6983,24 @@ end
 -- * stage [String] <p>API stage name of the associated API stage in a usage plan.</p>
 -- @return ApiStage structure as a key-value pair table
 function M.ApiStage(args)
-	assert(args, "You must provdide an argument table when creating ApiStage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ApiStage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["apiId"] = args["apiId"],
 		["stage"] = args["stage"],
 	}
-	asserts.AssertApiStage(t)
-	return t
+	asserts.AssertApiStage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ImportApiKeysRequest = { ["body"] = true, ["failOnWarnings"] = true, ["format"] = true, nil }
@@ -5229,14 +7029,27 @@ end
 -- Required key: format
 -- @return ImportApiKeysRequest structure as a key-value pair table
 function M.ImportApiKeysRequest(args)
-	assert(args, "You must provdide an argument table when creating ImportApiKeysRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ImportApiKeysRequest")
+    local query_args = { 
+        ["failonwarnings"] = args["failOnWarnings"],
+        ["format"] = args["format"],
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["body"] = args["body"],
 		["failOnWarnings"] = args["failOnWarnings"],
 		["format"] = args["format"],
 	}
-	asserts.AssertImportApiKeysRequest(t)
-	return t
+	asserts.AssertImportApiKeysRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetModelRequest = { ["modelName"] = true, ["restApiId"] = true, ["flatten"] = true, nil }
@@ -5265,14 +7078,28 @@ end
 -- Required key: modelName
 -- @return GetModelRequest structure as a key-value pair table
 function M.GetModelRequest(args)
-	assert(args, "You must provdide an argument table when creating GetModelRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetModelRequest")
+    local query_args = { 
+        ["flatten"] = args["flatten"],
+    }
+    local uri_args = { 
+        ["{model_name}"] = args["modelName"],
+        ["{restapi_id}"] = args["restApiId"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["modelName"] = args["modelName"],
 		["restApiId"] = args["restApiId"],
 		["flatten"] = args["flatten"],
 	}
-	asserts.AssertGetModelRequest(t)
-	return t
+	asserts.AssertGetModelRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetModelTemplateRequest = { ["modelName"] = true, ["restApiId"] = true, nil }
@@ -5299,13 +7126,26 @@ end
 -- Required key: modelName
 -- @return GetModelTemplateRequest structure as a key-value pair table
 function M.GetModelTemplateRequest(args)
-	assert(args, "You must provdide an argument table when creating GetModelTemplateRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetModelTemplateRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{model_name}"] = args["modelName"],
+        ["{restapi_id}"] = args["restApiId"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["modelName"] = args["modelName"],
 		["restApiId"] = args["restApiId"],
 	}
-	asserts.AssertGetModelTemplateRequest(t)
-	return t
+	asserts.AssertGetModelTemplateRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.TestInvokeMethodResponse = { ["status"] = true, ["body"] = true, ["log"] = true, ["latency"] = true, ["headers"] = true, nil }
@@ -5334,16 +7174,27 @@ end
 -- * headers [MapOfHeaderValues] <p>The headers of the HTTP response.</p>
 -- @return TestInvokeMethodResponse structure as a key-value pair table
 function M.TestInvokeMethodResponse(args)
-	assert(args, "You must provdide an argument table when creating TestInvokeMethodResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating TestInvokeMethodResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["status"] = args["status"],
 		["body"] = args["body"],
 		["log"] = args["log"],
 		["latency"] = args["latency"],
 		["headers"] = args["headers"],
 	}
-	asserts.AssertTestInvokeMethodResponse(t)
-	return t
+	asserts.AssertTestInvokeMethodResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Authorizers = { ["position"] = true, ["items"] = true, nil }
@@ -5366,13 +7217,24 @@ end
 -- * items [ListOfAuthorizer] <p>Gets the current list of <a>Authorizer</a> resources in the collection.</p>
 -- @return Authorizers structure as a key-value pair table
 function M.Authorizers(args)
-	assert(args, "You must provdide an argument table when creating Authorizers")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Authorizers")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["position"] = args["position"],
 		["items"] = args["items"],
 	}
-	asserts.AssertAuthorizers(t)
-	return t
+	asserts.AssertAuthorizers(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UsagePlanKeys = { ["position"] = true, ["items"] = true, nil }
@@ -5395,13 +7257,24 @@ end
 -- * items [ListOfUsagePlanKey] <p>Gets the current item of the usage plan keys collection.</p>
 -- @return UsagePlanKeys structure as a key-value pair table
 function M.UsagePlanKeys(args)
-	assert(args, "You must provdide an argument table when creating UsagePlanKeys")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UsagePlanKeys")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["position"] = args["position"],
 		["items"] = args["items"],
 	}
-	asserts.AssertUsagePlanKeys(t)
-	return t
+	asserts.AssertUsagePlanKeys(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Model = { ["description"] = true, ["schema"] = true, ["contentType"] = true, ["id"] = true, ["name"] = true, nil }
@@ -5430,16 +7303,27 @@ end
 -- * name [String] <p>The name of the model.</p>
 -- @return Model structure as a key-value pair table
 function M.Model(args)
-	assert(args, "You must provdide an argument table when creating Model")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Model")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["description"] = args["description"],
 		["schema"] = args["schema"],
 		["contentType"] = args["contentType"],
 		["id"] = args["id"],
 		["name"] = args["name"],
 	}
-	asserts.AssertModel(t)
-	return t
+	asserts.AssertModel(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdateMethodRequest = { ["resourceId"] = true, ["patchOperations"] = true, ["restApiId"] = true, ["httpMethod"] = true, nil }
@@ -5472,15 +7356,29 @@ end
 -- Required key: httpMethod
 -- @return UpdateMethodRequest structure as a key-value pair table
 function M.UpdateMethodRequest(args)
-	assert(args, "You must provdide an argument table when creating UpdateMethodRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateMethodRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{resource_id}"] = args["resourceId"],
+        ["{restapi_id}"] = args["restApiId"],
+        ["{http_method}"] = args["httpMethod"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["resourceId"] = args["resourceId"],
 		["patchOperations"] = args["patchOperations"],
 		["restApiId"] = args["restApiId"],
 		["httpMethod"] = args["httpMethod"],
 	}
-	asserts.AssertUpdateMethodRequest(t)
-	return t
+	asserts.AssertUpdateMethodRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.NotFoundException = { ["message"] = true, nil }
@@ -5501,12 +7399,23 @@ end
 -- * message [String] 
 -- @return NotFoundException structure as a key-value pair table
 function M.NotFoundException(args)
-	assert(args, "You must provdide an argument table when creating NotFoundException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating NotFoundException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertNotFoundException(t)
-	return t
+	asserts.AssertNotFoundException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetRequestValidatorsRequest = { ["position"] = true, ["restApiId"] = true, ["limit"] = true, nil }
@@ -5533,14 +7442,28 @@ end
 -- Required key: restApiId
 -- @return GetRequestValidatorsRequest structure as a key-value pair table
 function M.GetRequestValidatorsRequest(args)
-	assert(args, "You must provdide an argument table when creating GetRequestValidatorsRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetRequestValidatorsRequest")
+    local query_args = { 
+        ["position"] = args["position"],
+        ["limit"] = args["limit"],
+    }
+    local uri_args = { 
+        ["{restapi_id}"] = args["restApiId"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["position"] = args["position"],
 		["restApiId"] = args["restApiId"],
 		["limit"] = args["limit"],
 	}
-	asserts.AssertGetRequestValidatorsRequest(t)
-	return t
+	asserts.AssertGetRequestValidatorsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteIntegrationResponseRequest = { ["resourceId"] = true, ["statusCode"] = true, ["restApiId"] = true, ["httpMethod"] = true, nil }
@@ -5575,15 +7498,30 @@ end
 -- Required key: statusCode
 -- @return DeleteIntegrationResponseRequest structure as a key-value pair table
 function M.DeleteIntegrationResponseRequest(args)
-	assert(args, "You must provdide an argument table when creating DeleteIntegrationResponseRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteIntegrationResponseRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{resource_id}"] = args["resourceId"],
+        ["{status_code}"] = args["statusCode"],
+        ["{restapi_id}"] = args["restApiId"],
+        ["{http_method}"] = args["httpMethod"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["resourceId"] = args["resourceId"],
 		["statusCode"] = args["statusCode"],
 		["restApiId"] = args["restApiId"],
 		["httpMethod"] = args["httpMethod"],
 	}
-	asserts.AssertDeleteIntegrationResponseRequest(t)
-	return t
+	asserts.AssertDeleteIntegrationResponseRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.IntegrationResponse = { ["contentHandling"] = true, ["responseParameters"] = true, ["selectionPattern"] = true, ["responseTemplates"] = true, ["statusCode"] = true, nil }
@@ -5612,16 +7550,27 @@ end
 -- * statusCode [StatusCode] <p>Specifies the status code that is used to map the integration response to an existing <a>MethodResponse</a>.</p>
 -- @return IntegrationResponse structure as a key-value pair table
 function M.IntegrationResponse(args)
-	assert(args, "You must provdide an argument table when creating IntegrationResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating IntegrationResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["contentHandling"] = args["contentHandling"],
 		["responseParameters"] = args["responseParameters"],
 		["selectionPattern"] = args["selectionPattern"],
 		["responseTemplates"] = args["responseTemplates"],
 		["statusCode"] = args["statusCode"],
 	}
-	asserts.AssertIntegrationResponse(t)
-	return t
+	asserts.AssertIntegrationResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetBasePathMappingRequest = { ["basePath"] = true, ["domainName"] = true, nil }
@@ -5648,13 +7597,26 @@ end
 -- Required key: basePath
 -- @return GetBasePathMappingRequest structure as a key-value pair table
 function M.GetBasePathMappingRequest(args)
-	assert(args, "You must provdide an argument table when creating GetBasePathMappingRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetBasePathMappingRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{base_path}"] = args["basePath"],
+        ["{domain_name}"] = args["domainName"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["basePath"] = args["basePath"],
 		["domainName"] = args["domainName"],
 	}
-	asserts.AssertGetBasePathMappingRequest(t)
-	return t
+	asserts.AssertGetBasePathMappingRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetRequestValidatorRequest = { ["requestValidatorId"] = true, ["restApiId"] = true, nil }
@@ -5681,13 +7643,26 @@ end
 -- Required key: requestValidatorId
 -- @return GetRequestValidatorRequest structure as a key-value pair table
 function M.GetRequestValidatorRequest(args)
-	assert(args, "You must provdide an argument table when creating GetRequestValidatorRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetRequestValidatorRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{requestvalidator_id}"] = args["requestValidatorId"],
+        ["{restapi_id}"] = args["restApiId"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["requestValidatorId"] = args["requestValidatorId"],
 		["restApiId"] = args["restApiId"],
 	}
-	asserts.AssertGetRequestValidatorRequest(t)
-	return t
+	asserts.AssertGetRequestValidatorRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ClientCertificate = { ["pemEncodedCertificate"] = true, ["clientCertificateId"] = true, ["expirationDate"] = true, ["description"] = true, ["createdDate"] = true, nil }
@@ -5716,16 +7691,27 @@ end
 -- * createdDate [Timestamp] <p>The timestamp when the client certificate was created.</p>
 -- @return ClientCertificate structure as a key-value pair table
 function M.ClientCertificate(args)
-	assert(args, "You must provdide an argument table when creating ClientCertificate")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ClientCertificate")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["pemEncodedCertificate"] = args["pemEncodedCertificate"],
 		["clientCertificateId"] = args["clientCertificateId"],
 		["expirationDate"] = args["expirationDate"],
 		["description"] = args["description"],
 		["createdDate"] = args["createdDate"],
 	}
-	asserts.AssertClientCertificate(t)
-	return t
+	asserts.AssertClientCertificate(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateUsagePlanKeyRequest = { ["keyType"] = true, ["keyId"] = true, ["usagePlanId"] = true, nil }
@@ -5756,14 +7742,26 @@ end
 -- Required key: keyType
 -- @return CreateUsagePlanKeyRequest structure as a key-value pair table
 function M.CreateUsagePlanKeyRequest(args)
-	assert(args, "You must provdide an argument table when creating CreateUsagePlanKeyRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateUsagePlanKeyRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{usageplanId}"] = args["usagePlanId"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["keyType"] = args["keyType"],
 		["keyId"] = args["keyId"],
 		["usagePlanId"] = args["usagePlanId"],
 	}
-	asserts.AssertCreateUsagePlanKeyRequest(t)
-	return t
+	asserts.AssertCreateUsagePlanKeyRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetIntegrationResponseRequest = { ["resourceId"] = true, ["statusCode"] = true, ["restApiId"] = true, ["httpMethod"] = true, nil }
@@ -5798,15 +7796,30 @@ end
 -- Required key: statusCode
 -- @return GetIntegrationResponseRequest structure as a key-value pair table
 function M.GetIntegrationResponseRequest(args)
-	assert(args, "You must provdide an argument table when creating GetIntegrationResponseRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetIntegrationResponseRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{resource_id}"] = args["resourceId"],
+        ["{status_code}"] = args["statusCode"],
+        ["{restapi_id}"] = args["restApiId"],
+        ["{http_method}"] = args["httpMethod"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["resourceId"] = args["resourceId"],
 		["statusCode"] = args["statusCode"],
 		["restApiId"] = args["restApiId"],
 		["httpMethod"] = args["httpMethod"],
 	}
-	asserts.AssertGetIntegrationResponseRequest(t)
-	return t
+	asserts.AssertGetIntegrationResponseRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdateDocumentationPartRequest = { ["documentationPartId"] = true, ["restApiId"] = true, ["patchOperations"] = true, nil }
@@ -5835,14 +7848,27 @@ end
 -- Required key: documentationPartId
 -- @return UpdateDocumentationPartRequest structure as a key-value pair table
 function M.UpdateDocumentationPartRequest(args)
-	assert(args, "You must provdide an argument table when creating UpdateDocumentationPartRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateDocumentationPartRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{part_id}"] = args["documentationPartId"],
+        ["{restapi_id}"] = args["restApiId"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["documentationPartId"] = args["documentationPartId"],
 		["restApiId"] = args["restApiId"],
 		["patchOperations"] = args["patchOperations"],
 	}
-	asserts.AssertUpdateDocumentationPartRequest(t)
-	return t
+	asserts.AssertUpdateDocumentationPartRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetUsagePlanKeysRequest = { ["position"] = true, ["nameQuery"] = true, ["usagePlanId"] = true, ["limit"] = true, nil }
@@ -5871,15 +7897,30 @@ end
 -- Required key: usagePlanId
 -- @return GetUsagePlanKeysRequest structure as a key-value pair table
 function M.GetUsagePlanKeysRequest(args)
-	assert(args, "You must provdide an argument table when creating GetUsagePlanKeysRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetUsagePlanKeysRequest")
+    local query_args = { 
+        ["position"] = args["position"],
+        ["name"] = args["nameQuery"],
+        ["limit"] = args["limit"],
+    }
+    local uri_args = { 
+        ["{usageplanId}"] = args["usagePlanId"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["position"] = args["position"],
 		["nameQuery"] = args["nameQuery"],
 		["usagePlanId"] = args["usagePlanId"],
 		["limit"] = args["limit"],
 	}
-	asserts.AssertGetUsagePlanKeysRequest(t)
-	return t
+	asserts.AssertGetUsagePlanKeysRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DocumentationPartLocation = { ["path"] = true, ["type"] = true, ["method"] = true, ["name"] = true, ["statusCode"] = true, nil }
@@ -5910,16 +7951,27 @@ end
 -- Required key: type
 -- @return DocumentationPartLocation structure as a key-value pair table
 function M.DocumentationPartLocation(args)
-	assert(args, "You must provdide an argument table when creating DocumentationPartLocation")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DocumentationPartLocation")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["path"] = args["path"],
 		["type"] = args["type"],
 		["method"] = args["method"],
 		["name"] = args["name"],
 		["statusCode"] = args["statusCode"],
 	}
-	asserts.AssertDocumentationPartLocation(t)
-	return t
+	asserts.AssertDocumentationPartLocation(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdateDocumentationVersionRequest = { ["restApiId"] = true, ["documentationVersion"] = true, ["patchOperations"] = true, nil }
@@ -5948,14 +8000,27 @@ end
 -- Required key: documentationVersion
 -- @return UpdateDocumentationVersionRequest structure as a key-value pair table
 function M.UpdateDocumentationVersionRequest(args)
-	assert(args, "You must provdide an argument table when creating UpdateDocumentationVersionRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateDocumentationVersionRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{restapi_id}"] = args["restApiId"],
+        ["{doc_version}"] = args["documentationVersion"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["restApiId"] = args["restApiId"],
 		["documentationVersion"] = args["documentationVersion"],
 		["patchOperations"] = args["patchOperations"],
 	}
-	asserts.AssertUpdateDocumentationVersionRequest(t)
-	return t
+	asserts.AssertUpdateDocumentationVersionRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ExportResponse = { ["body"] = true, ["contentType"] = true, ["contentDisposition"] = true, nil }
@@ -5980,14 +8045,27 @@ end
 -- * contentDisposition [String] <p>The content-disposition header value in the HTTP response.</p>
 -- @return ExportResponse structure as a key-value pair table
 function M.ExportResponse(args)
-	assert(args, "You must provdide an argument table when creating ExportResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ExportResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+        ["Content-Type"] = args["contentType"],
+        ["Content-Disposition"] = args["contentDisposition"],
+    }
+	local all_args = { 
 		["body"] = args["body"],
 		["contentType"] = args["contentType"],
 		["contentDisposition"] = args["contentDisposition"],
 	}
-	asserts.AssertExportResponse(t)
-	return t
+	asserts.AssertExportResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateApiKeyRequest = { ["name"] = true, ["enabled"] = true, ["value"] = true, ["stageKeys"] = true, ["generateDistinctId"] = true, ["customerId"] = true, ["description"] = true, nil }
@@ -6020,8 +8098,14 @@ end
 -- * description [String] <p>The description of the <a>ApiKey</a>.</p>
 -- @return CreateApiKeyRequest structure as a key-value pair table
 function M.CreateApiKeyRequest(args)
-	assert(args, "You must provdide an argument table when creating CreateApiKeyRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateApiKeyRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["name"] = args["name"],
 		["enabled"] = args["enabled"],
 		["value"] = args["value"],
@@ -6030,8 +8114,13 @@ function M.CreateApiKeyRequest(args)
 		["customerId"] = args["customerId"],
 		["description"] = args["description"],
 	}
-	asserts.AssertCreateApiKeyRequest(t)
-	return t
+	asserts.AssertCreateApiKeyRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 function asserts.AssertDocumentationPartLocationStatusCode(str)
@@ -6848,8 +8937,11 @@ function M.ImportDocumentationPartsAsync(ImportDocumentationPartsRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".ImportDocumentationParts",
 	}
+	for header,value in pairs(ImportDocumentationPartsRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("PUT")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT")
 	if request_handler then
 		request_handler(settings.uri, "/restapis/{restapi_id}/documentation/parts", ImportDocumentationPartsRequest, headers, settings, cb)
 	else
@@ -6880,8 +8972,11 @@ function M.DeleteAuthorizerAsync(DeleteAuthorizerRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DeleteAuthorizer",
 	}
+	for header,value in pairs(DeleteAuthorizerRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("DELETE")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE")
 	if request_handler then
 		request_handler(settings.uri, "/restapis/{restapi_id}/authorizers/{authorizer_id}", DeleteAuthorizerRequest, headers, settings, cb)
 	else
@@ -6912,8 +9007,11 @@ function M.UpdateModelAsync(UpdateModelRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".UpdateModel",
 	}
+	for header,value in pairs(UpdateModelRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("PATCH")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PATCH")
 	if request_handler then
 		request_handler(settings.uri, "/restapis/{restapi_id}/models/{model_name}", UpdateModelRequest, headers, settings, cb)
 	else
@@ -6944,8 +9042,11 @@ function M.CreateDeploymentAsync(CreateDeploymentRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".CreateDeployment",
 	}
+	for header,value in pairs(CreateDeploymentRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/restapis/{restapi_id}/deployments", CreateDeploymentRequest, headers, settings, cb)
 	else
@@ -6976,8 +9077,11 @@ function M.GetRestApiAsync(GetRestApiRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".GetRestApi",
 	}
+	for header,value in pairs(GetRestApiRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
 	if request_handler then
 		request_handler(settings.uri, "/restapis/{restapi_id}", GetRestApiRequest, headers, settings, cb)
 	else
@@ -7008,8 +9112,11 @@ function M.UpdateRequestValidatorAsync(UpdateRequestValidatorRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".UpdateRequestValidator",
 	}
+	for header,value in pairs(UpdateRequestValidatorRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("PATCH")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PATCH")
 	if request_handler then
 		request_handler(settings.uri, "/restapis/{restapi_id}/requestvalidators/{requestvalidator_id}", UpdateRequestValidatorRequest, headers, settings, cb)
 	else
@@ -7040,8 +9147,11 @@ function M.DeleteClientCertificateAsync(DeleteClientCertificateRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DeleteClientCertificate",
 	}
+	for header,value in pairs(DeleteClientCertificateRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("DELETE")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE")
 	if request_handler then
 		request_handler(settings.uri, "/clientcertificates/{clientcertificate_id}", DeleteClientCertificateRequest, headers, settings, cb)
 	else
@@ -7072,8 +9182,11 @@ function M.GetAuthorizerAsync(GetAuthorizerRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".GetAuthorizer",
 	}
+	for header,value in pairs(GetAuthorizerRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
 	if request_handler then
 		request_handler(settings.uri, "/restapis/{restapi_id}/authorizers/{authorizer_id}", GetAuthorizerRequest, headers, settings, cb)
 	else
@@ -7104,8 +9217,11 @@ function M.GetModelsAsync(GetModelsRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".GetModels",
 	}
+	for header,value in pairs(GetModelsRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
 	if request_handler then
 		request_handler(settings.uri, "/restapis/{restapi_id}/models", GetModelsRequest, headers, settings, cb)
 	else
@@ -7136,8 +9252,11 @@ function M.GenerateClientCertificateAsync(GenerateClientCertificateRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".GenerateClientCertificate",
 	}
+	for header,value in pairs(GenerateClientCertificateRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/clientcertificates", GenerateClientCertificateRequest, headers, settings, cb)
 	else
@@ -7168,8 +9287,11 @@ function M.DeleteRestApiAsync(DeleteRestApiRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DeleteRestApi",
 	}
+	for header,value in pairs(DeleteRestApiRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("DELETE")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE")
 	if request_handler then
 		request_handler(settings.uri, "/restapis/{restapi_id}", DeleteRestApiRequest, headers, settings, cb)
 	else
@@ -7200,8 +9322,11 @@ function M.GetMethodAsync(GetMethodRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".GetMethod",
 	}
+	for header,value in pairs(GetMethodRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
 	if request_handler then
 		request_handler(settings.uri, "/restapis/{restapi_id}/resources/{resource_id}/methods/{http_method}", GetMethodRequest, headers, settings, cb)
 	else
@@ -7232,8 +9357,11 @@ function M.GetSdkTypesAsync(GetSdkTypesRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".GetSdkTypes",
 	}
+	for header,value in pairs(GetSdkTypesRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
 	if request_handler then
 		request_handler(settings.uri, "/sdktypes", GetSdkTypesRequest, headers, settings, cb)
 	else
@@ -7264,8 +9392,11 @@ function M.UpdateDocumentationVersionAsync(UpdateDocumentationVersionRequest, cb
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".UpdateDocumentationVersion",
 	}
+	for header,value in pairs(UpdateDocumentationVersionRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("PATCH")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PATCH")
 	if request_handler then
 		request_handler(settings.uri, "/restapis/{restapi_id}/documentation/versions/{doc_version}", UpdateDocumentationVersionRequest, headers, settings, cb)
 	else
@@ -7296,8 +9427,11 @@ function M.CreateModelAsync(CreateModelRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".CreateModel",
 	}
+	for header,value in pairs(CreateModelRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/restapis/{restapi_id}/models", CreateModelRequest, headers, settings, cb)
 	else
@@ -7328,8 +9462,11 @@ function M.FlushStageCacheAsync(FlushStageCacheRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".FlushStageCache",
 	}
+	for header,value in pairs(FlushStageCacheRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("DELETE")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE")
 	if request_handler then
 		request_handler(settings.uri, "/restapis/{restapi_id}/stages/{stage_name}/cache/data", FlushStageCacheRequest, headers, settings, cb)
 	else
@@ -7360,8 +9497,11 @@ function M.CreateUsagePlanKeyAsync(CreateUsagePlanKeyRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".CreateUsagePlanKey",
 	}
+	for header,value in pairs(CreateUsagePlanKeyRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/usageplans/{usageplanId}/keys", CreateUsagePlanKeyRequest, headers, settings, cb)
 	else
@@ -7392,8 +9532,11 @@ function M.GetUsagePlanKeyAsync(GetUsagePlanKeyRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".GetUsagePlanKey",
 	}
+	for header,value in pairs(GetUsagePlanKeyRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
 	if request_handler then
 		request_handler(settings.uri, "/usageplans/{usageplanId}/keys/{keyId}", GetUsagePlanKeyRequest, headers, settings, cb)
 	else
@@ -7424,8 +9567,11 @@ function M.DeleteIntegrationAsync(DeleteIntegrationRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DeleteIntegration",
 	}
+	for header,value in pairs(DeleteIntegrationRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("DELETE")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE")
 	if request_handler then
 		request_handler(settings.uri, "/restapis/{restapi_id}/resources/{resource_id}/methods/{http_method}/integration", DeleteIntegrationRequest, headers, settings, cb)
 	else
@@ -7456,8 +9602,11 @@ function M.GetMethodResponseAsync(GetMethodResponseRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".GetMethodResponse",
 	}
+	for header,value in pairs(GetMethodResponseRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
 	if request_handler then
 		request_handler(settings.uri, "/restapis/{restapi_id}/resources/{resource_id}/methods/{http_method}/responses/{status_code}", GetMethodResponseRequest, headers, settings, cb)
 	else
@@ -7488,8 +9637,11 @@ function M.PutMethodResponseAsync(PutMethodResponseRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".PutMethodResponse",
 	}
+	for header,value in pairs(PutMethodResponseRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("PUT")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT")
 	if request_handler then
 		request_handler(settings.uri, "/restapis/{restapi_id}/resources/{resource_id}/methods/{http_method}/responses/{status_code}", PutMethodResponseRequest, headers, settings, cb)
 	else
@@ -7520,8 +9672,11 @@ function M.DeleteModelAsync(DeleteModelRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DeleteModel",
 	}
+	for header,value in pairs(DeleteModelRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("DELETE")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE")
 	if request_handler then
 		request_handler(settings.uri, "/restapis/{restapi_id}/models/{model_name}", DeleteModelRequest, headers, settings, cb)
 	else
@@ -7552,8 +9707,11 @@ function M.GetStageAsync(GetStageRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".GetStage",
 	}
+	for header,value in pairs(GetStageRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
 	if request_handler then
 		request_handler(settings.uri, "/restapis/{restapi_id}/stages/{stage_name}", GetStageRequest, headers, settings, cb)
 	else
@@ -7584,8 +9742,11 @@ function M.GetStagesAsync(GetStagesRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".GetStages",
 	}
+	for header,value in pairs(GetStagesRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
 	if request_handler then
 		request_handler(settings.uri, "/restapis/{restapi_id}/stages", GetStagesRequest, headers, settings, cb)
 	else
@@ -7616,8 +9777,11 @@ function M.DeleteDocumentationVersionAsync(DeleteDocumentationVersionRequest, cb
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DeleteDocumentationVersion",
 	}
+	for header,value in pairs(DeleteDocumentationVersionRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("DELETE")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE")
 	if request_handler then
 		request_handler(settings.uri, "/restapis/{restapi_id}/documentation/versions/{doc_version}", DeleteDocumentationVersionRequest, headers, settings, cb)
 	else
@@ -7648,8 +9812,11 @@ function M.UpdateIntegrationAsync(UpdateIntegrationRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".UpdateIntegration",
 	}
+	for header,value in pairs(UpdateIntegrationRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("PATCH")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PATCH")
 	if request_handler then
 		request_handler(settings.uri, "/restapis/{restapi_id}/resources/{resource_id}/methods/{http_method}/integration", UpdateIntegrationRequest, headers, settings, cb)
 	else
@@ -7680,8 +9847,11 @@ function M.DeleteUsagePlanAsync(DeleteUsagePlanRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DeleteUsagePlan",
 	}
+	for header,value in pairs(DeleteUsagePlanRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("DELETE")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE")
 	if request_handler then
 		request_handler(settings.uri, "/usageplans/{usageplanId}", DeleteUsagePlanRequest, headers, settings, cb)
 	else
@@ -7712,8 +9882,11 @@ function M.GetDomainNamesAsync(GetDomainNamesRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".GetDomainNames",
 	}
+	for header,value in pairs(GetDomainNamesRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
 	if request_handler then
 		request_handler(settings.uri, "/domainnames", GetDomainNamesRequest, headers, settings, cb)
 	else
@@ -7744,8 +9917,11 @@ function M.UpdateDocumentationPartAsync(UpdateDocumentationPartRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".UpdateDocumentationPart",
 	}
+	for header,value in pairs(UpdateDocumentationPartRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("PATCH")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PATCH")
 	if request_handler then
 		request_handler(settings.uri, "/restapis/{restapi_id}/documentation/parts/{part_id}", UpdateDocumentationPartRequest, headers, settings, cb)
 	else
@@ -7776,8 +9952,11 @@ function M.TestInvokeMethodAsync(TestInvokeMethodRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".TestInvokeMethod",
 	}
+	for header,value in pairs(TestInvokeMethodRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/restapis/{restapi_id}/resources/{resource_id}/methods/{http_method}", TestInvokeMethodRequest, headers, settings, cb)
 	else
@@ -7808,8 +9987,11 @@ function M.UpdateStageAsync(UpdateStageRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".UpdateStage",
 	}
+	for header,value in pairs(UpdateStageRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("PATCH")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PATCH")
 	if request_handler then
 		request_handler(settings.uri, "/restapis/{restapi_id}/stages/{stage_name}", UpdateStageRequest, headers, settings, cb)
 	else
@@ -7840,8 +10022,11 @@ function M.DeleteBasePathMappingAsync(DeleteBasePathMappingRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DeleteBasePathMapping",
 	}
+	for header,value in pairs(DeleteBasePathMappingRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("DELETE")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE")
 	if request_handler then
 		request_handler(settings.uri, "/domainnames/{domain_name}/basepathmappings/{base_path}", DeleteBasePathMappingRequest, headers, settings, cb)
 	else
@@ -7872,8 +10057,11 @@ function M.CreateRequestValidatorAsync(CreateRequestValidatorRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".CreateRequestValidator",
 	}
+	for header,value in pairs(CreateRequestValidatorRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/restapis/{restapi_id}/requestvalidators", CreateRequestValidatorRequest, headers, settings, cb)
 	else
@@ -7904,8 +10092,11 @@ function M.TestInvokeAuthorizerAsync(TestInvokeAuthorizerRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".TestInvokeAuthorizer",
 	}
+	for header,value in pairs(TestInvokeAuthorizerRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/restapis/{restapi_id}/authorizers/{authorizer_id}", TestInvokeAuthorizerRequest, headers, settings, cb)
 	else
@@ -7936,8 +10127,11 @@ function M.GetDocumentationVersionAsync(GetDocumentationVersionRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".GetDocumentationVersion",
 	}
+	for header,value in pairs(GetDocumentationVersionRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
 	if request_handler then
 		request_handler(settings.uri, "/restapis/{restapi_id}/documentation/versions/{doc_version}", GetDocumentationVersionRequest, headers, settings, cb)
 	else
@@ -7968,8 +10162,11 @@ function M.UpdateMethodAsync(UpdateMethodRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".UpdateMethod",
 	}
+	for header,value in pairs(UpdateMethodRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("PATCH")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PATCH")
 	if request_handler then
 		request_handler(settings.uri, "/restapis/{restapi_id}/resources/{resource_id}/methods/{http_method}", UpdateMethodRequest, headers, settings, cb)
 	else
@@ -8000,8 +10197,11 @@ function M.GetApiKeyAsync(GetApiKeyRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".GetApiKey",
 	}
+	for header,value in pairs(GetApiKeyRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
 	if request_handler then
 		request_handler(settings.uri, "/apikeys/{api_Key}", GetApiKeyRequest, headers, settings, cb)
 	else
@@ -8032,8 +10232,11 @@ function M.GetSdkTypeAsync(GetSdkTypeRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".GetSdkType",
 	}
+	for header,value in pairs(GetSdkTypeRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
 	if request_handler then
 		request_handler(settings.uri, "/sdktypes/{sdktype_id}", GetSdkTypeRequest, headers, settings, cb)
 	else
@@ -8064,8 +10267,11 @@ function M.GetIntegrationAsync(GetIntegrationRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".GetIntegration",
 	}
+	for header,value in pairs(GetIntegrationRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
 	if request_handler then
 		request_handler(settings.uri, "/restapis/{restapi_id}/resources/{resource_id}/methods/{http_method}/integration", GetIntegrationRequest, headers, settings, cb)
 	else
@@ -8096,8 +10302,11 @@ function M.DeleteDeploymentAsync(DeleteDeploymentRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DeleteDeployment",
 	}
+	for header,value in pairs(DeleteDeploymentRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("DELETE")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE")
 	if request_handler then
 		request_handler(settings.uri, "/restapis/{restapi_id}/deployments/{deployment_id}", DeleteDeploymentRequest, headers, settings, cb)
 	else
@@ -8128,8 +10337,11 @@ function M.GetUsagePlanAsync(GetUsagePlanRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".GetUsagePlan",
 	}
+	for header,value in pairs(GetUsagePlanRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
 	if request_handler then
 		request_handler(settings.uri, "/usageplans/{usageplanId}", GetUsagePlanRequest, headers, settings, cb)
 	else
@@ -8160,8 +10372,11 @@ function M.UpdateUsagePlanAsync(UpdateUsagePlanRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".UpdateUsagePlan",
 	}
+	for header,value in pairs(UpdateUsagePlanRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("PATCH")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PATCH")
 	if request_handler then
 		request_handler(settings.uri, "/usageplans/{usageplanId}", UpdateUsagePlanRequest, headers, settings, cb)
 	else
@@ -8192,8 +10407,11 @@ function M.CreateAuthorizerAsync(CreateAuthorizerRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".CreateAuthorizer",
 	}
+	for header,value in pairs(CreateAuthorizerRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/restapis/{restapi_id}/authorizers", CreateAuthorizerRequest, headers, settings, cb)
 	else
@@ -8224,8 +10442,11 @@ function M.GetClientCertificateAsync(GetClientCertificateRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".GetClientCertificate",
 	}
+	for header,value in pairs(GetClientCertificateRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
 	if request_handler then
 		request_handler(settings.uri, "/clientcertificates/{clientcertificate_id}", GetClientCertificateRequest, headers, settings, cb)
 	else
@@ -8256,8 +10477,11 @@ function M.UpdateDeploymentAsync(UpdateDeploymentRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".UpdateDeployment",
 	}
+	for header,value in pairs(UpdateDeploymentRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("PATCH")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PATCH")
 	if request_handler then
 		request_handler(settings.uri, "/restapis/{restapi_id}/deployments/{deployment_id}", UpdateDeploymentRequest, headers, settings, cb)
 	else
@@ -8288,8 +10512,11 @@ function M.GetModelTemplateAsync(GetModelTemplateRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".GetModelTemplate",
 	}
+	for header,value in pairs(GetModelTemplateRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
 	if request_handler then
 		request_handler(settings.uri, "/restapis/{restapi_id}/models/{model_name}/default_template", GetModelTemplateRequest, headers, settings, cb)
 	else
@@ -8320,8 +10547,11 @@ function M.GetBasePathMappingsAsync(GetBasePathMappingsRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".GetBasePathMappings",
 	}
+	for header,value in pairs(GetBasePathMappingsRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
 	if request_handler then
 		request_handler(settings.uri, "/domainnames/{domain_name}/basepathmappings", GetBasePathMappingsRequest, headers, settings, cb)
 	else
@@ -8352,8 +10582,11 @@ function M.GetSdkAsync(GetSdkRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".GetSdk",
 	}
+	for header,value in pairs(GetSdkRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
 	if request_handler then
 		request_handler(settings.uri, "/restapis/{restapi_id}/stages/{stage_name}/sdks/{sdk_type}", GetSdkRequest, headers, settings, cb)
 	else
@@ -8384,8 +10617,11 @@ function M.GetRequestValidatorAsync(GetRequestValidatorRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".GetRequestValidator",
 	}
+	for header,value in pairs(GetRequestValidatorRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
 	if request_handler then
 		request_handler(settings.uri, "/restapis/{restapi_id}/requestvalidators/{requestvalidator_id}", GetRequestValidatorRequest, headers, settings, cb)
 	else
@@ -8416,8 +10652,11 @@ function M.FlushStageAuthorizersCacheAsync(FlushStageAuthorizersCacheRequest, cb
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".FlushStageAuthorizersCache",
 	}
+	for header,value in pairs(FlushStageAuthorizersCacheRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("DELETE")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE")
 	if request_handler then
 		request_handler(settings.uri, "/restapis/{restapi_id}/stages/{stage_name}/cache/authorizers", FlushStageAuthorizersCacheRequest, headers, settings, cb)
 	else
@@ -8448,8 +10687,11 @@ function M.GetIntegrationResponseAsync(GetIntegrationResponseRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".GetIntegrationResponse",
 	}
+	for header,value in pairs(GetIntegrationResponseRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
 	if request_handler then
 		request_handler(settings.uri, "/restapis/{restapi_id}/resources/{resource_id}/methods/{http_method}/integration/responses/{status_code}", GetIntegrationResponseRequest, headers, settings, cb)
 	else
@@ -8480,8 +10722,11 @@ function M.GetDeploymentsAsync(GetDeploymentsRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".GetDeployments",
 	}
+	for header,value in pairs(GetDeploymentsRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
 	if request_handler then
 		request_handler(settings.uri, "/restapis/{restapi_id}/deployments", GetDeploymentsRequest, headers, settings, cb)
 	else
@@ -8512,8 +10757,11 @@ function M.CreateResourceAsync(CreateResourceRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".CreateResource",
 	}
+	for header,value in pairs(CreateResourceRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/restapis/{restapi_id}/resources/{parent_id}", CreateResourceRequest, headers, settings, cb)
 	else
@@ -8544,8 +10792,11 @@ function M.GetApiKeysAsync(GetApiKeysRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".GetApiKeys",
 	}
+	for header,value in pairs(GetApiKeysRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
 	if request_handler then
 		request_handler(settings.uri, "/apikeys", GetApiKeysRequest, headers, settings, cb)
 	else
@@ -8576,8 +10827,11 @@ function M.DeleteApiKeyAsync(DeleteApiKeyRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DeleteApiKey",
 	}
+	for header,value in pairs(DeleteApiKeyRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("DELETE")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE")
 	if request_handler then
 		request_handler(settings.uri, "/apikeys/{api_Key}", DeleteApiKeyRequest, headers, settings, cb)
 	else
@@ -8608,8 +10862,11 @@ function M.CreateApiKeyAsync(CreateApiKeyRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".CreateApiKey",
 	}
+	for header,value in pairs(CreateApiKeyRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/apikeys", CreateApiKeyRequest, headers, settings, cb)
 	else
@@ -8640,8 +10897,11 @@ function M.UpdateAuthorizerAsync(UpdateAuthorizerRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".UpdateAuthorizer",
 	}
+	for header,value in pairs(UpdateAuthorizerRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("PATCH")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PATCH")
 	if request_handler then
 		request_handler(settings.uri, "/restapis/{restapi_id}/authorizers/{authorizer_id}", UpdateAuthorizerRequest, headers, settings, cb)
 	else
@@ -8672,8 +10932,11 @@ function M.GetModelAsync(GetModelRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".GetModel",
 	}
+	for header,value in pairs(GetModelRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
 	if request_handler then
 		request_handler(settings.uri, "/restapis/{restapi_id}/models/{model_name}", GetModelRequest, headers, settings, cb)
 	else
@@ -8704,8 +10967,11 @@ function M.GetUsagePlanKeysAsync(GetUsagePlanKeysRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".GetUsagePlanKeys",
 	}
+	for header,value in pairs(GetUsagePlanKeysRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
 	if request_handler then
 		request_handler(settings.uri, "/usageplans/{usageplanId}/keys", GetUsagePlanKeysRequest, headers, settings, cb)
 	else
@@ -8736,8 +11002,11 @@ function M.DeleteMethodResponseAsync(DeleteMethodResponseRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DeleteMethodResponse",
 	}
+	for header,value in pairs(DeleteMethodResponseRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("DELETE")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE")
 	if request_handler then
 		request_handler(settings.uri, "/restapis/{restapi_id}/resources/{resource_id}/methods/{http_method}/responses/{status_code}", DeleteMethodResponseRequest, headers, settings, cb)
 	else
@@ -8768,8 +11037,11 @@ function M.GetResourcesAsync(GetResourcesRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".GetResources",
 	}
+	for header,value in pairs(GetResourcesRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
 	if request_handler then
 		request_handler(settings.uri, "/restapis/{restapi_id}/resources", GetResourcesRequest, headers, settings, cb)
 	else
@@ -8800,8 +11072,11 @@ function M.GetRestApisAsync(GetRestApisRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".GetRestApis",
 	}
+	for header,value in pairs(GetRestApisRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
 	if request_handler then
 		request_handler(settings.uri, "/restapis", GetRestApisRequest, headers, settings, cb)
 	else
@@ -8832,8 +11107,11 @@ function M.GetResourceAsync(GetResourceRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".GetResource",
 	}
+	for header,value in pairs(GetResourceRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
 	if request_handler then
 		request_handler(settings.uri, "/restapis/{restapi_id}/resources/{resource_id}", GetResourceRequest, headers, settings, cb)
 	else
@@ -8864,8 +11142,11 @@ function M.DeleteIntegrationResponseAsync(DeleteIntegrationResponseRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DeleteIntegrationResponse",
 	}
+	for header,value in pairs(DeleteIntegrationResponseRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("DELETE")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE")
 	if request_handler then
 		request_handler(settings.uri, "/restapis/{restapi_id}/resources/{resource_id}/methods/{http_method}/integration/responses/{status_code}", DeleteIntegrationResponseRequest, headers, settings, cb)
 	else
@@ -8896,8 +11177,11 @@ function M.GetUsagePlansAsync(GetUsagePlansRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".GetUsagePlans",
 	}
+	for header,value in pairs(GetUsagePlansRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
 	if request_handler then
 		request_handler(settings.uri, "/usageplans", GetUsagePlansRequest, headers, settings, cb)
 	else
@@ -8928,8 +11212,11 @@ function M.ImportApiKeysAsync(ImportApiKeysRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".ImportApiKeys",
 	}
+	for header,value in pairs(ImportApiKeysRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/apikeys?mode=import", ImportApiKeysRequest, headers, settings, cb)
 	else
@@ -8960,8 +11247,11 @@ function M.GetBasePathMappingAsync(GetBasePathMappingRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".GetBasePathMapping",
 	}
+	for header,value in pairs(GetBasePathMappingRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
 	if request_handler then
 		request_handler(settings.uri, "/domainnames/{domain_name}/basepathmappings/{base_path}", GetBasePathMappingRequest, headers, settings, cb)
 	else
@@ -8992,8 +11282,11 @@ function M.GetExportAsync(GetExportRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".GetExport",
 	}
+	for header,value in pairs(GetExportRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
 	if request_handler then
 		request_handler(settings.uri, "/restapis/{restapi_id}/stages/{stage_name}/exports/{export_type}", GetExportRequest, headers, settings, cb)
 	else
@@ -9024,8 +11317,11 @@ function M.UpdateResourceAsync(UpdateResourceRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".UpdateResource",
 	}
+	for header,value in pairs(UpdateResourceRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("PATCH")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PATCH")
 	if request_handler then
 		request_handler(settings.uri, "/restapis/{restapi_id}/resources/{resource_id}", UpdateResourceRequest, headers, settings, cb)
 	else
@@ -9056,8 +11352,11 @@ function M.GetDomainNameAsync(GetDomainNameRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".GetDomainName",
 	}
+	for header,value in pairs(GetDomainNameRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
 	if request_handler then
 		request_handler(settings.uri, "/domainnames/{domain_name}", GetDomainNameRequest, headers, settings, cb)
 	else
@@ -9088,8 +11387,11 @@ function M.UpdateDomainNameAsync(UpdateDomainNameRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".UpdateDomainName",
 	}
+	for header,value in pairs(UpdateDomainNameRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("PATCH")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PATCH")
 	if request_handler then
 		request_handler(settings.uri, "/domainnames/{domain_name}", UpdateDomainNameRequest, headers, settings, cb)
 	else
@@ -9120,8 +11422,11 @@ function M.UpdateClientCertificateAsync(UpdateClientCertificateRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".UpdateClientCertificate",
 	}
+	for header,value in pairs(UpdateClientCertificateRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("PATCH")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PATCH")
 	if request_handler then
 		request_handler(settings.uri, "/clientcertificates/{clientcertificate_id}", UpdateClientCertificateRequest, headers, settings, cb)
 	else
@@ -9152,8 +11457,11 @@ function M.CreateDomainNameAsync(CreateDomainNameRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".CreateDomainName",
 	}
+	for header,value in pairs(CreateDomainNameRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/domainnames", CreateDomainNameRequest, headers, settings, cb)
 	else
@@ -9184,8 +11492,11 @@ function M.DeleteDomainNameAsync(DeleteDomainNameRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DeleteDomainName",
 	}
+	for header,value in pairs(DeleteDomainNameRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("DELETE")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE")
 	if request_handler then
 		request_handler(settings.uri, "/domainnames/{domain_name}", DeleteDomainNameRequest, headers, settings, cb)
 	else
@@ -9216,8 +11527,11 @@ function M.PutMethodAsync(PutMethodRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".PutMethod",
 	}
+	for header,value in pairs(PutMethodRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("PUT")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT")
 	if request_handler then
 		request_handler(settings.uri, "/restapis/{restapi_id}/resources/{resource_id}/methods/{http_method}", PutMethodRequest, headers, settings, cb)
 	else
@@ -9248,8 +11562,11 @@ function M.DeleteStageAsync(DeleteStageRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DeleteStage",
 	}
+	for header,value in pairs(DeleteStageRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("DELETE")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE")
 	if request_handler then
 		request_handler(settings.uri, "/restapis/{restapi_id}/stages/{stage_name}", DeleteStageRequest, headers, settings, cb)
 	else
@@ -9280,8 +11597,11 @@ function M.GetDocumentationPartAsync(GetDocumentationPartRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".GetDocumentationPart",
 	}
+	for header,value in pairs(GetDocumentationPartRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
 	if request_handler then
 		request_handler(settings.uri, "/restapis/{restapi_id}/documentation/parts/{part_id}", GetDocumentationPartRequest, headers, settings, cb)
 	else
@@ -9312,8 +11632,11 @@ function M.UpdateAccountAsync(UpdateAccountRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".UpdateAccount",
 	}
+	for header,value in pairs(UpdateAccountRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("PATCH")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PATCH")
 	if request_handler then
 		request_handler(settings.uri, "/account", UpdateAccountRequest, headers, settings, cb)
 	else
@@ -9344,8 +11667,11 @@ function M.PutRestApiAsync(PutRestApiRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".PutRestApi",
 	}
+	for header,value in pairs(PutRestApiRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("PUT")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT")
 	if request_handler then
 		request_handler(settings.uri, "/restapis/{restapi_id}", PutRestApiRequest, headers, settings, cb)
 	else
@@ -9376,8 +11702,11 @@ function M.GetUsageAsync(GetUsageRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".GetUsage",
 	}
+	for header,value in pairs(GetUsageRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
 	if request_handler then
 		request_handler(settings.uri, "/usageplans/{usageplanId}/usage", GetUsageRequest, headers, settings, cb)
 	else
@@ -9408,8 +11737,11 @@ function M.GetDeploymentAsync(GetDeploymentRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".GetDeployment",
 	}
+	for header,value in pairs(GetDeploymentRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
 	if request_handler then
 		request_handler(settings.uri, "/restapis/{restapi_id}/deployments/{deployment_id}", GetDeploymentRequest, headers, settings, cb)
 	else
@@ -9440,8 +11772,11 @@ function M.CreateRestApiAsync(CreateRestApiRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".CreateRestApi",
 	}
+	for header,value in pairs(CreateRestApiRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/restapis", CreateRestApiRequest, headers, settings, cb)
 	else
@@ -9472,8 +11807,11 @@ function M.GetAuthorizersAsync(GetAuthorizersRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".GetAuthorizers",
 	}
+	for header,value in pairs(GetAuthorizersRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
 	if request_handler then
 		request_handler(settings.uri, "/restapis/{restapi_id}/authorizers", GetAuthorizersRequest, headers, settings, cb)
 	else
@@ -9504,8 +11842,11 @@ function M.GetClientCertificatesAsync(GetClientCertificatesRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".GetClientCertificates",
 	}
+	for header,value in pairs(GetClientCertificatesRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
 	if request_handler then
 		request_handler(settings.uri, "/clientcertificates", GetClientCertificatesRequest, headers, settings, cb)
 	else
@@ -9536,8 +11877,11 @@ function M.DeleteDocumentationPartAsync(DeleteDocumentationPartRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DeleteDocumentationPart",
 	}
+	for header,value in pairs(DeleteDocumentationPartRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("DELETE")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE")
 	if request_handler then
 		request_handler(settings.uri, "/restapis/{restapi_id}/documentation/parts/{part_id}", DeleteDocumentationPartRequest, headers, settings, cb)
 	else
@@ -9568,8 +11912,11 @@ function M.DeleteResourceAsync(DeleteResourceRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DeleteResource",
 	}
+	for header,value in pairs(DeleteResourceRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("DELETE")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE")
 	if request_handler then
 		request_handler(settings.uri, "/restapis/{restapi_id}/resources/{resource_id}", DeleteResourceRequest, headers, settings, cb)
 	else
@@ -9600,8 +11947,11 @@ function M.CreateStageAsync(CreateStageRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".CreateStage",
 	}
+	for header,value in pairs(CreateStageRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/restapis/{restapi_id}/stages", CreateStageRequest, headers, settings, cb)
 	else
@@ -9632,8 +11982,11 @@ function M.UpdateBasePathMappingAsync(UpdateBasePathMappingRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".UpdateBasePathMapping",
 	}
+	for header,value in pairs(UpdateBasePathMappingRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("PATCH")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PATCH")
 	if request_handler then
 		request_handler(settings.uri, "/domainnames/{domain_name}/basepathmappings/{base_path}", UpdateBasePathMappingRequest, headers, settings, cb)
 	else
@@ -9664,8 +12017,11 @@ function M.UpdateMethodResponseAsync(UpdateMethodResponseRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".UpdateMethodResponse",
 	}
+	for header,value in pairs(UpdateMethodResponseRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("PATCH")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PATCH")
 	if request_handler then
 		request_handler(settings.uri, "/restapis/{restapi_id}/resources/{resource_id}/methods/{http_method}/responses/{status_code}", UpdateMethodResponseRequest, headers, settings, cb)
 	else
@@ -9696,8 +12052,11 @@ function M.UpdateUsageAsync(UpdateUsageRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".UpdateUsage",
 	}
+	for header,value in pairs(UpdateUsageRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("PATCH")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PATCH")
 	if request_handler then
 		request_handler(settings.uri, "/usageplans/{usageplanId}/keys/{keyId}/usage", UpdateUsageRequest, headers, settings, cb)
 	else
@@ -9728,8 +12087,11 @@ function M.GetDocumentationPartsAsync(GetDocumentationPartsRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".GetDocumentationParts",
 	}
+	for header,value in pairs(GetDocumentationPartsRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
 	if request_handler then
 		request_handler(settings.uri, "/restapis/{restapi_id}/documentation/parts", GetDocumentationPartsRequest, headers, settings, cb)
 	else
@@ -9760,8 +12122,11 @@ function M.CreateDocumentationPartAsync(CreateDocumentationPartRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".CreateDocumentationPart",
 	}
+	for header,value in pairs(CreateDocumentationPartRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/restapis/{restapi_id}/documentation/parts", CreateDocumentationPartRequest, headers, settings, cb)
 	else
@@ -9792,8 +12157,11 @@ function M.CreateBasePathMappingAsync(CreateBasePathMappingRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".CreateBasePathMapping",
 	}
+	for header,value in pairs(CreateBasePathMappingRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/domainnames/{domain_name}/basepathmappings", CreateBasePathMappingRequest, headers, settings, cb)
 	else
@@ -9824,8 +12192,11 @@ function M.CreateUsagePlanAsync(CreateUsagePlanRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".CreateUsagePlan",
 	}
+	for header,value in pairs(CreateUsagePlanRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/usageplans", CreateUsagePlanRequest, headers, settings, cb)
 	else
@@ -9856,8 +12227,11 @@ function M.UpdateApiKeyAsync(UpdateApiKeyRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".UpdateApiKey",
 	}
+	for header,value in pairs(UpdateApiKeyRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("PATCH")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PATCH")
 	if request_handler then
 		request_handler(settings.uri, "/apikeys/{api_Key}", UpdateApiKeyRequest, headers, settings, cb)
 	else
@@ -9888,8 +12262,11 @@ function M.ImportRestApiAsync(ImportRestApiRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".ImportRestApi",
 	}
+	for header,value in pairs(ImportRestApiRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/restapis?mode=import", ImportRestApiRequest, headers, settings, cb)
 	else
@@ -9920,8 +12297,11 @@ function M.UpdateRestApiAsync(UpdateRestApiRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".UpdateRestApi",
 	}
+	for header,value in pairs(UpdateRestApiRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("PATCH")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PATCH")
 	if request_handler then
 		request_handler(settings.uri, "/restapis/{restapi_id}", UpdateRestApiRequest, headers, settings, cb)
 	else
@@ -9952,8 +12332,11 @@ function M.CreateDocumentationVersionAsync(CreateDocumentationVersionRequest, cb
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".CreateDocumentationVersion",
 	}
+	for header,value in pairs(CreateDocumentationVersionRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/restapis/{restapi_id}/documentation/versions", CreateDocumentationVersionRequest, headers, settings, cb)
 	else
@@ -9984,8 +12367,11 @@ function M.PutIntegrationResponseAsync(PutIntegrationResponseRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".PutIntegrationResponse",
 	}
+	for header,value in pairs(PutIntegrationResponseRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("PUT")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT")
 	if request_handler then
 		request_handler(settings.uri, "/restapis/{restapi_id}/resources/{resource_id}/methods/{http_method}/integration/responses/{status_code}", PutIntegrationResponseRequest, headers, settings, cb)
 	else
@@ -10016,8 +12402,11 @@ function M.GetDocumentationVersionsAsync(GetDocumentationVersionsRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".GetDocumentationVersions",
 	}
+	for header,value in pairs(GetDocumentationVersionsRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
 	if request_handler then
 		request_handler(settings.uri, "/restapis/{restapi_id}/documentation/versions", GetDocumentationVersionsRequest, headers, settings, cb)
 	else
@@ -10048,8 +12437,11 @@ function M.DeleteMethodAsync(DeleteMethodRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DeleteMethod",
 	}
+	for header,value in pairs(DeleteMethodRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("DELETE")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE")
 	if request_handler then
 		request_handler(settings.uri, "/restapis/{restapi_id}/resources/{resource_id}/methods/{http_method}", DeleteMethodRequest, headers, settings, cb)
 	else
@@ -10080,8 +12472,11 @@ function M.GetRequestValidatorsAsync(GetRequestValidatorsRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".GetRequestValidators",
 	}
+	for header,value in pairs(GetRequestValidatorsRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
 	if request_handler then
 		request_handler(settings.uri, "/restapis/{restapi_id}/requestvalidators", GetRequestValidatorsRequest, headers, settings, cb)
 	else
@@ -10112,8 +12507,11 @@ function M.GetAccountAsync(GetAccountRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".GetAccount",
 	}
+	for header,value in pairs(GetAccountRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
 	if request_handler then
 		request_handler(settings.uri, "/account", GetAccountRequest, headers, settings, cb)
 	else
@@ -10144,8 +12542,11 @@ function M.DeleteUsagePlanKeyAsync(DeleteUsagePlanKeyRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DeleteUsagePlanKey",
 	}
+	for header,value in pairs(DeleteUsagePlanKeyRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("DELETE")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE")
 	if request_handler then
 		request_handler(settings.uri, "/usageplans/{usageplanId}/keys/{keyId}", DeleteUsagePlanKeyRequest, headers, settings, cb)
 	else
@@ -10176,8 +12577,11 @@ function M.DeleteRequestValidatorAsync(DeleteRequestValidatorRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DeleteRequestValidator",
 	}
+	for header,value in pairs(DeleteRequestValidatorRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("DELETE")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE")
 	if request_handler then
 		request_handler(settings.uri, "/restapis/{restapi_id}/requestvalidators/{requestvalidator_id}", DeleteRequestValidatorRequest, headers, settings, cb)
 	else
@@ -10208,8 +12612,11 @@ function M.PutIntegrationAsync(PutIntegrationRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".PutIntegration",
 	}
+	for header,value in pairs(PutIntegrationRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("PUT")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT")
 	if request_handler then
 		request_handler(settings.uri, "/restapis/{restapi_id}/resources/{resource_id}/methods/{http_method}/integration", PutIntegrationRequest, headers, settings, cb)
 	else
@@ -10240,8 +12647,11 @@ function M.UpdateIntegrationResponseAsync(UpdateIntegrationResponseRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".UpdateIntegrationResponse",
 	}
+	for header,value in pairs(UpdateIntegrationResponseRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("PATCH")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PATCH")
 	if request_handler then
 		request_handler(settings.uri, "/restapis/{restapi_id}/resources/{resource_id}/methods/{http_method}/integration/responses/{status_code}", UpdateIntegrationResponseRequest, headers, settings, cb)
 	else

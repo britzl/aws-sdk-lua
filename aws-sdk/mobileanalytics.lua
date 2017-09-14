@@ -39,12 +39,23 @@ end
 -- * message [String] <p>A text description associated with the BadRequestException object.</p>
 -- @return BadRequestException structure as a key-value pair table
 function M.BadRequestException(args)
-	assert(args, "You must provdide an argument table when creating BadRequestException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating BadRequestException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertBadRequestException(t)
-	return t
+	asserts.AssertBadRequestException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Session = { ["duration"] = true, ["startTimestamp"] = true, ["id"] = true, ["stopTimestamp"] = true, nil }
@@ -71,15 +82,26 @@ end
 -- * stopTimestamp [ISO8601Timestamp] <p>The time the event terminated in ISO 8601 standard date time format. For example, 2014-06-30T19:07:47.885Z</p>
 -- @return Session structure as a key-value pair table
 function M.Session(args)
-	assert(args, "You must provdide an argument table when creating Session")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Session")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["duration"] = args["duration"],
 		["startTimestamp"] = args["startTimestamp"],
 		["id"] = args["id"],
 		["stopTimestamp"] = args["stopTimestamp"],
 	}
-	asserts.AssertSession(t)
-	return t
+	asserts.AssertSession(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.PutEventsInput = { ["clientContextEncoding"] = true, ["events"] = true, ["clientContext"] = true, nil }
@@ -108,14 +130,27 @@ end
 -- Required key: clientContext
 -- @return PutEventsInput structure as a key-value pair table
 function M.PutEventsInput(args)
-	assert(args, "You must provdide an argument table when creating PutEventsInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating PutEventsInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+        ["x-amz-Client-Context-Encoding"] = args["clientContextEncoding"],
+        ["x-amz-Client-Context"] = args["clientContext"],
+    }
+	local all_args = { 
 		["clientContextEncoding"] = args["clientContextEncoding"],
 		["events"] = args["events"],
 		["clientContext"] = args["clientContext"],
 	}
-	asserts.AssertPutEventsInput(t)
-	return t
+	asserts.AssertPutEventsInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Event = { ["version"] = true, ["eventType"] = true, ["metrics"] = true, ["session"] = true, ["timestamp"] = true, ["attributes"] = true, nil }
@@ -150,8 +185,14 @@ end
 -- Required key: timestamp
 -- @return Event structure as a key-value pair table
 function M.Event(args)
-	assert(args, "You must provdide an argument table when creating Event")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Event")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["version"] = args["version"],
 		["eventType"] = args["eventType"],
 		["metrics"] = args["metrics"],
@@ -159,8 +200,13 @@ function M.Event(args)
 		["timestamp"] = args["timestamp"],
 		["attributes"] = args["attributes"],
 	}
-	asserts.AssertEvent(t)
-	return t
+	asserts.AssertEvent(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 function asserts.AssertString(str)
@@ -339,8 +385,11 @@ function M.PutEventsAsync(PutEventsInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".PutEvents",
 	}
+	for header,value in pairs(PutEventsInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/2014-06-05/events", PutEventsInput, headers, settings, cb)
 	else

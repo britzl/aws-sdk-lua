@@ -53,8 +53,14 @@ end
 -- * mean [String] <p>The average of the values found in the specified field in the result set.</p> <p>If the field is numeric (<code>int</code>, <code>int-array</code>, <code>double</code>, or <code>double-array</code>), <code>mean</code> is the string representation of a double-precision 64-bit floating point value. If the field is <code>date</code> or <code>date-array</code>, <code>mean</code> is the string representation of a date with the format specified in <a href="http://tools.ietf.org/html/rfc3339">IETF RFC3339</a>: yyyy-mm-ddTHH:mm:ss.SSSZ.</p>
 -- @return FieldStats structure as a key-value pair table
 function M.FieldStats(args)
-	assert(args, "You must provdide an argument table when creating FieldStats")
-	local t = { 
+	assert(args, "You must provide an argument table when creating FieldStats")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["count"] = args["count"],
 		["missing"] = args["missing"],
 		["max"] = args["max"],
@@ -64,8 +70,13 @@ function M.FieldStats(args)
 		["stddev"] = args["stddev"],
 		["mean"] = args["mean"],
 	}
-	asserts.AssertFieldStats(t)
-	return t
+	asserts.AssertFieldStats(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DocumentServiceException = { ["status"] = true, ["message"] = true, nil }
@@ -88,13 +99,24 @@ end
 -- * message [String] <p>The description of the errors returned by the document service.</p>
 -- @return DocumentServiceException structure as a key-value pair table
 function M.DocumentServiceException(args)
-	assert(args, "You must provdide an argument table when creating DocumentServiceException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DocumentServiceException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["status"] = args["status"],
 		["message"] = args["message"],
 	}
-	asserts.AssertDocumentServiceException(t)
-	return t
+	asserts.AssertDocumentServiceException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.BucketInfo = { ["buckets"] = true, nil }
@@ -115,12 +137,23 @@ end
 -- * buckets [BucketList] <p>A list of the calculated facet values and counts.</p>
 -- @return BucketInfo structure as a key-value pair table
 function M.BucketInfo(args)
-	assert(args, "You must provdide an argument table when creating BucketInfo")
-	local t = { 
+	assert(args, "You must provide an argument table when creating BucketInfo")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["buckets"] = args["buckets"],
 	}
-	asserts.AssertBucketInfo(t)
-	return t
+	asserts.AssertBucketInfo(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Hit = { ["fields"] = true, ["highlights"] = true, ["id"] = true, ["exprs"] = true, nil }
@@ -147,15 +180,26 @@ end
 -- * exprs [Exprs] <p>The expressions returned from a document that matches the search request.</p>
 -- @return Hit structure as a key-value pair table
 function M.Hit(args)
-	assert(args, "You must provdide an argument table when creating Hit")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Hit")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["fields"] = args["fields"],
 		["highlights"] = args["highlights"],
 		["id"] = args["id"],
 		["exprs"] = args["exprs"],
 	}
-	asserts.AssertHit(t)
-	return t
+	asserts.AssertHit(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UploadDocumentsResponse = { ["status"] = true, ["warnings"] = true, ["adds"] = true, ["deletes"] = true, nil }
@@ -182,15 +226,26 @@ end
 -- * deletes [Deletes] <p>The number of documents that were deleted from the search domain.</p>
 -- @return UploadDocumentsResponse structure as a key-value pair table
 function M.UploadDocumentsResponse(args)
-	assert(args, "You must provdide an argument table when creating UploadDocumentsResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UploadDocumentsResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["status"] = args["status"],
 		["warnings"] = args["warnings"],
 		["adds"] = args["adds"],
 		["deletes"] = args["deletes"],
 	}
-	asserts.AssertUploadDocumentsResponse(t)
-	return t
+	asserts.AssertUploadDocumentsResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.SearchStatus = { ["timems"] = true, ["rid"] = true, nil }
@@ -213,13 +268,24 @@ end
 -- * rid [String] <p>The encrypted resource ID for the request.</p>
 -- @return SearchStatus structure as a key-value pair table
 function M.SearchStatus(args)
-	assert(args, "You must provdide an argument table when creating SearchStatus")
-	local t = { 
+	assert(args, "You must provide an argument table when creating SearchStatus")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["timems"] = args["timems"],
 		["rid"] = args["rid"],
 	}
-	asserts.AssertSearchStatus(t)
-	return t
+	asserts.AssertSearchStatus(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.SuggestResponse = { ["status"] = true, ["suggest"] = true, nil }
@@ -242,13 +308,24 @@ end
 -- * suggest [SuggestModel] <p>Container for the matching search suggestion information.</p>
 -- @return SuggestResponse structure as a key-value pair table
 function M.SuggestResponse(args)
-	assert(args, "You must provdide an argument table when creating SuggestResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating SuggestResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["status"] = args["status"],
 		["suggest"] = args["suggest"],
 	}
-	asserts.AssertSuggestResponse(t)
-	return t
+	asserts.AssertSuggestResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UploadDocumentsRequest = { ["documents"] = true, ["contentType"] = true, nil }
@@ -275,13 +352,25 @@ end
 -- Required key: contentType
 -- @return UploadDocumentsRequest structure as a key-value pair table
 function M.UploadDocumentsRequest(args)
-	assert(args, "You must provdide an argument table when creating UploadDocumentsRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UploadDocumentsRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+        ["Content-Type"] = args["contentType"],
+    }
+	local all_args = { 
 		["documents"] = args["documents"],
 		["contentType"] = args["contentType"],
 	}
-	asserts.AssertUploadDocumentsRequest(t)
-	return t
+	asserts.AssertUploadDocumentsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.SearchException = { ["message"] = true, nil }
@@ -302,12 +391,23 @@ end
 -- * message [String] <p>A description of the error returned by the search service.</p>
 -- @return SearchException structure as a key-value pair table
 function M.SearchException(args)
-	assert(args, "You must provdide an argument table when creating SearchException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating SearchException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertSearchException(t)
-	return t
+	asserts.AssertSearchException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Hits = { ["cursor"] = true, ["found"] = true, ["hit"] = true, ["start"] = true, nil }
@@ -334,15 +434,26 @@ end
 -- * start [Long] <p>The index of the first matching document.</p>
 -- @return Hits structure as a key-value pair table
 function M.Hits(args)
-	assert(args, "You must provdide an argument table when creating Hits")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Hits")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["cursor"] = args["cursor"],
 		["found"] = args["found"],
 		["hit"] = args["hit"],
 		["start"] = args["start"],
 	}
-	asserts.AssertHits(t)
-	return t
+	asserts.AssertHits(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.SuggestStatus = { ["timems"] = true, ["rid"] = true, nil }
@@ -365,13 +476,24 @@ end
 -- * rid [String] <p>The encrypted resource ID for the request.</p>
 -- @return SuggestStatus structure as a key-value pair table
 function M.SuggestStatus(args)
-	assert(args, "You must provdide an argument table when creating SuggestStatus")
-	local t = { 
+	assert(args, "You must provide an argument table when creating SuggestStatus")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["timems"] = args["timems"],
 		["rid"] = args["rid"],
 	}
-	asserts.AssertSuggestStatus(t)
-	return t
+	asserts.AssertSuggestStatus(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Bucket = { ["count"] = true, ["value"] = true, nil }
@@ -394,13 +516,24 @@ end
 -- * value [String] <p>The facet value being counted.</p>
 -- @return Bucket structure as a key-value pair table
 function M.Bucket(args)
-	assert(args, "You must provdide an argument table when creating Bucket")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Bucket")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["count"] = args["count"],
 		["value"] = args["value"],
 	}
-	asserts.AssertBucket(t)
-	return t
+	asserts.AssertBucket(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.SearchResponse = { ["status"] = true, ["hits"] = true, ["stats"] = true, ["facets"] = true, nil }
@@ -427,15 +560,26 @@ end
 -- * facets [Facets] <p>The requested facet information.</p>
 -- @return SearchResponse structure as a key-value pair table
 function M.SearchResponse(args)
-	assert(args, "You must provdide an argument table when creating SearchResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating SearchResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["status"] = args["status"],
 		["hits"] = args["hits"],
 		["stats"] = args["stats"],
 		["facets"] = args["facets"],
 	}
-	asserts.AssertSearchResponse(t)
-	return t
+	asserts.AssertSearchResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DocumentServiceWarning = { ["message"] = true, nil }
@@ -456,12 +600,23 @@ end
 -- * message [String] <p>The description for a warning returned by the document service.</p>
 -- @return DocumentServiceWarning structure as a key-value pair table
 function M.DocumentServiceWarning(args)
-	assert(args, "You must provdide an argument table when creating DocumentServiceWarning")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DocumentServiceWarning")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertDocumentServiceWarning(t)
-	return t
+	asserts.AssertDocumentServiceWarning(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.SuggestRequest = { ["query"] = true, ["suggester"] = true, ["size"] = true, nil }
@@ -490,14 +645,28 @@ end
 -- Required key: suggester
 -- @return SuggestRequest structure as a key-value pair table
 function M.SuggestRequest(args)
-	assert(args, "You must provdide an argument table when creating SuggestRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating SuggestRequest")
+    local query_args = { 
+        ["q"] = args["query"],
+        ["suggester"] = args["suggester"],
+        ["size"] = args["size"],
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["query"] = args["query"],
 		["suggester"] = args["suggester"],
 		["size"] = args["size"],
 	}
-	asserts.AssertSuggestRequest(t)
-	return t
+	asserts.AssertSuggestRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.SearchRequest = { ["sort"] = true, ["facet"] = true, ["stats"] = true, ["partial"] = true, ["filterQuery"] = true, ["expr"] = true, ["return"] = true, ["cursor"] = true, ["start"] = true, ["queryOptions"] = true, ["query"] = true, ["highlight"] = true, ["queryParser"] = true, ["size"] = true, nil }
@@ -546,8 +715,28 @@ end
 -- Required key: query
 -- @return SearchRequest structure as a key-value pair table
 function M.SearchRequest(args)
-	assert(args, "You must provdide an argument table when creating SearchRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating SearchRequest")
+    local query_args = { 
+        ["sort"] = args["sort"],
+        ["facet"] = args["facet"],
+        ["stats"] = args["stats"],
+        ["partial"] = args["partial"],
+        ["fq"] = args["filterQuery"],
+        ["expr"] = args["expr"],
+        ["return"] = args["return"],
+        ["cursor"] = args["cursor"],
+        ["start"] = args["start"],
+        ["q.options"] = args["queryOptions"],
+        ["q"] = args["query"],
+        ["highlight"] = args["highlight"],
+        ["q.parser"] = args["queryParser"],
+        ["size"] = args["size"],
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["sort"] = args["sort"],
 		["facet"] = args["facet"],
 		["stats"] = args["stats"],
@@ -563,8 +752,13 @@ function M.SearchRequest(args)
 		["queryParser"] = args["queryParser"],
 		["size"] = args["size"],
 	}
-	asserts.AssertSearchRequest(t)
-	return t
+	asserts.AssertSearchRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.SuggestionMatch = { ["score"] = true, ["id"] = true, ["suggestion"] = true, nil }
@@ -589,14 +783,25 @@ end
 -- * suggestion [String] <p>The string that matches the query string specified in the <code>SuggestRequest</code>. </p>
 -- @return SuggestionMatch structure as a key-value pair table
 function M.SuggestionMatch(args)
-	assert(args, "You must provdide an argument table when creating SuggestionMatch")
-	local t = { 
+	assert(args, "You must provide an argument table when creating SuggestionMatch")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["score"] = args["score"],
 		["id"] = args["id"],
 		["suggestion"] = args["suggestion"],
 	}
-	asserts.AssertSuggestionMatch(t)
-	return t
+	asserts.AssertSuggestionMatch(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.SuggestModel = { ["query"] = true, ["suggestions"] = true, ["found"] = true, nil }
@@ -621,14 +826,25 @@ end
 -- * found [Long] <p>The number of documents that were found to match the query string.</p>
 -- @return SuggestModel structure as a key-value pair table
 function M.SuggestModel(args)
-	assert(args, "You must provdide an argument table when creating SuggestModel")
-	local t = { 
+	assert(args, "You must provide an argument table when creating SuggestModel")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["query"] = args["query"],
 		["suggestions"] = args["suggestions"],
 		["found"] = args["found"],
 	}
-	asserts.AssertSuggestModel(t)
-	return t
+	asserts.AssertSuggestModel(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 function asserts.AssertExpr(str)
@@ -1078,8 +1294,11 @@ function M.SuggestAsync(SuggestRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".Suggest",
 	}
+	for header,value in pairs(SuggestRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
 	if request_handler then
 		request_handler(settings.uri, "/2013-01-01/suggest?format=sdk&pretty=true", SuggestRequest, headers, settings, cb)
 	else
@@ -1110,8 +1329,11 @@ function M.SearchAsync(SearchRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".Search",
 	}
+	for header,value in pairs(SearchRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
 	if request_handler then
 		request_handler(settings.uri, "/2013-01-01/search?format=sdk&pretty=true", SearchRequest, headers, settings, cb)
 	else
@@ -1142,8 +1364,11 @@ function M.UploadDocumentsAsync(UploadDocumentsRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".UploadDocuments",
 	}
+	for header,value in pairs(UploadDocumentsRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/2013-01-01/documents/batch?format=sdk", UploadDocumentsRequest, headers, settings, cb)
 	else

@@ -39,12 +39,23 @@ end
 -- * Message [errorMessage] 
 -- @return DuplicateRecordException structure as a key-value pair table
 function M.DuplicateRecordException(args)
-	assert(args, "You must provdide an argument table when creating DuplicateRecordException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DuplicateRecordException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Message"] = args["Message"],
 	}
-	asserts.AssertDuplicateRecordException(t)
-	return t
+	asserts.AssertDuplicateRecordException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CalculatedSpend = { ["ForecastedSpend"] = true, ["ActualSpend"] = true, nil }
@@ -69,13 +80,24 @@ end
 -- Required key: ActualSpend
 -- @return CalculatedSpend structure as a key-value pair table
 function M.CalculatedSpend(args)
-	assert(args, "You must provdide an argument table when creating CalculatedSpend")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CalculatedSpend")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ForecastedSpend"] = args["ForecastedSpend"],
 		["ActualSpend"] = args["ActualSpend"],
 	}
-	asserts.AssertCalculatedSpend(t)
-	return t
+	asserts.AssertCalculatedSpend(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Subscriber = { ["SubscriptionType"] = true, ["Address"] = true, nil }
@@ -102,13 +124,24 @@ end
 -- Required key: Address
 -- @return Subscriber structure as a key-value pair table
 function M.Subscriber(args)
-	assert(args, "You must provdide an argument table when creating Subscriber")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Subscriber")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["SubscriptionType"] = args["SubscriptionType"],
 		["Address"] = args["Address"],
 	}
-	asserts.AssertSubscriber(t)
-	return t
+	asserts.AssertSubscriber(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateNotificationResponse = { nil }
@@ -127,11 +160,22 @@ end
 -- Valid keys:
 -- @return CreateNotificationResponse structure as a key-value pair table
 function M.CreateNotificationResponse(args)
-	assert(args, "You must provdide an argument table when creating CreateNotificationResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateNotificationResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertCreateNotificationResponse(t)
-	return t
+	asserts.AssertCreateNotificationResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InternalErrorException = { ["Message"] = true, nil }
@@ -152,12 +196,23 @@ end
 -- * Message [errorMessage] 
 -- @return InternalErrorException structure as a key-value pair table
 function M.InternalErrorException(args)
-	assert(args, "You must provdide an argument table when creating InternalErrorException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InternalErrorException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Message"] = args["Message"],
 	}
-	asserts.AssertInternalErrorException(t)
-	return t
+	asserts.AssertInternalErrorException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeNotificationsForBudgetRequest = { ["NextToken"] = true, ["BudgetName"] = true, ["MaxResults"] = true, ["AccountId"] = true, nil }
@@ -188,15 +243,26 @@ end
 -- Required key: BudgetName
 -- @return DescribeNotificationsForBudgetRequest structure as a key-value pair table
 function M.DescribeNotificationsForBudgetRequest(args)
-	assert(args, "You must provdide an argument table when creating DescribeNotificationsForBudgetRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeNotificationsForBudgetRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NextToken"] = args["NextToken"],
 		["BudgetName"] = args["BudgetName"],
 		["MaxResults"] = args["MaxResults"],
 		["AccountId"] = args["AccountId"],
 	}
-	asserts.AssertDescribeNotificationsForBudgetRequest(t)
-	return t
+	asserts.AssertDescribeNotificationsForBudgetRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CostTypes = { ["IncludeTax"] = true, ["UseBlended"] = true, ["IncludeSubscription"] = true, nil }
@@ -227,14 +293,25 @@ end
 -- Required key: UseBlended
 -- @return CostTypes structure as a key-value pair table
 function M.CostTypes(args)
-	assert(args, "You must provdide an argument table when creating CostTypes")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CostTypes")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["IncludeTax"] = args["IncludeTax"],
 		["UseBlended"] = args["UseBlended"],
 		["IncludeSubscription"] = args["IncludeSubscription"],
 	}
-	asserts.AssertCostTypes(t)
-	return t
+	asserts.AssertCostTypes(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidNextTokenException = { ["Message"] = true, nil }
@@ -255,12 +332,23 @@ end
 -- * Message [errorMessage] 
 -- @return InvalidNextTokenException structure as a key-value pair table
 function M.InvalidNextTokenException(args)
-	assert(args, "You must provdide an argument table when creating InvalidNextTokenException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidNextTokenException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Message"] = args["Message"],
 	}
-	asserts.AssertInvalidNextTokenException(t)
-	return t
+	asserts.AssertInvalidNextTokenException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteBudgetRequest = { ["BudgetName"] = true, ["AccountId"] = true, nil }
@@ -287,13 +375,24 @@ end
 -- Required key: BudgetName
 -- @return DeleteBudgetRequest structure as a key-value pair table
 function M.DeleteBudgetRequest(args)
-	assert(args, "You must provdide an argument table when creating DeleteBudgetRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteBudgetRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["BudgetName"] = args["BudgetName"],
 		["AccountId"] = args["AccountId"],
 	}
-	asserts.AssertDeleteBudgetRequest(t)
-	return t
+	asserts.AssertDeleteBudgetRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeNotificationsForBudgetResponse = { ["Notifications"] = true, ["NextToken"] = true, nil }
@@ -316,13 +415,24 @@ end
 -- * NextToken [GenericString] 
 -- @return DescribeNotificationsForBudgetResponse structure as a key-value pair table
 function M.DescribeNotificationsForBudgetResponse(args)
-	assert(args, "You must provdide an argument table when creating DescribeNotificationsForBudgetResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeNotificationsForBudgetResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Notifications"] = args["Notifications"],
 		["NextToken"] = args["NextToken"],
 	}
-	asserts.AssertDescribeNotificationsForBudgetResponse(t)
-	return t
+	asserts.AssertDescribeNotificationsForBudgetResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdateSubscriberRequest = { ["Notification"] = true, ["OldSubscriber"] = true, ["BudgetName"] = true, ["NewSubscriber"] = true, ["AccountId"] = true, nil }
@@ -361,16 +471,27 @@ end
 -- Required key: NewSubscriber
 -- @return UpdateSubscriberRequest structure as a key-value pair table
 function M.UpdateSubscriberRequest(args)
-	assert(args, "You must provdide an argument table when creating UpdateSubscriberRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateSubscriberRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Notification"] = args["Notification"],
 		["OldSubscriber"] = args["OldSubscriber"],
 		["BudgetName"] = args["BudgetName"],
 		["NewSubscriber"] = args["NewSubscriber"],
 		["AccountId"] = args["AccountId"],
 	}
-	asserts.AssertUpdateSubscriberRequest(t)
-	return t
+	asserts.AssertUpdateSubscriberRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ExpiredNextTokenException = { ["Message"] = true, nil }
@@ -391,12 +512,23 @@ end
 -- * Message [errorMessage] 
 -- @return ExpiredNextTokenException structure as a key-value pair table
 function M.ExpiredNextTokenException(args)
-	assert(args, "You must provdide an argument table when creating ExpiredNextTokenException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ExpiredNextTokenException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Message"] = args["Message"],
 	}
-	asserts.AssertExpiredNextTokenException(t)
-	return t
+	asserts.AssertExpiredNextTokenException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeBudgetRequest = { ["BudgetName"] = true, ["AccountId"] = true, nil }
@@ -423,13 +555,24 @@ end
 -- Required key: BudgetName
 -- @return DescribeBudgetRequest structure as a key-value pair table
 function M.DescribeBudgetRequest(args)
-	assert(args, "You must provdide an argument table when creating DescribeBudgetRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeBudgetRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["BudgetName"] = args["BudgetName"],
 		["AccountId"] = args["AccountId"],
 	}
-	asserts.AssertDescribeBudgetRequest(t)
-	return t
+	asserts.AssertDescribeBudgetRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidParameterException = { ["Message"] = true, nil }
@@ -450,12 +593,23 @@ end
 -- * Message [errorMessage] 
 -- @return InvalidParameterException structure as a key-value pair table
 function M.InvalidParameterException(args)
-	assert(args, "You must provdide an argument table when creating InvalidParameterException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidParameterException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Message"] = args["Message"],
 	}
-	asserts.AssertInvalidParameterException(t)
-	return t
+	asserts.AssertInvalidParameterException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateNotificationRequest = { ["Notification"] = true, ["BudgetName"] = true, ["Subscribers"] = true, ["AccountId"] = true, nil }
@@ -490,15 +644,26 @@ end
 -- Required key: Subscribers
 -- @return CreateNotificationRequest structure as a key-value pair table
 function M.CreateNotificationRequest(args)
-	assert(args, "You must provdide an argument table when creating CreateNotificationRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateNotificationRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Notification"] = args["Notification"],
 		["BudgetName"] = args["BudgetName"],
 		["Subscribers"] = args["Subscribers"],
 		["AccountId"] = args["AccountId"],
 	}
-	asserts.AssertCreateNotificationRequest(t)
-	return t
+	asserts.AssertCreateNotificationRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Notification = { ["Threshold"] = true, ["ComparisonOperator"] = true, ["NotificationType"] = true, nil }
@@ -529,14 +694,25 @@ end
 -- Required key: Threshold
 -- @return Notification structure as a key-value pair table
 function M.Notification(args)
-	assert(args, "You must provdide an argument table when creating Notification")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Notification")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Threshold"] = args["Threshold"],
 		["ComparisonOperator"] = args["ComparisonOperator"],
 		["NotificationType"] = args["NotificationType"],
 	}
-	asserts.AssertNotification(t)
-	return t
+	asserts.AssertNotification(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.TimePeriod = { ["Start"] = true, ["End"] = true, nil }
@@ -563,13 +739,24 @@ end
 -- Required key: End
 -- @return TimePeriod structure as a key-value pair table
 function M.TimePeriod(args)
-	assert(args, "You must provdide an argument table when creating TimePeriod")
-	local t = { 
+	assert(args, "You must provide an argument table when creating TimePeriod")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Start"] = args["Start"],
 		["End"] = args["End"],
 	}
-	asserts.AssertTimePeriod(t)
-	return t
+	asserts.AssertTimePeriod(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteNotificationResponse = { nil }
@@ -588,11 +775,22 @@ end
 -- Valid keys:
 -- @return DeleteNotificationResponse structure as a key-value pair table
 function M.DeleteNotificationResponse(args)
-	assert(args, "You must provdide an argument table when creating DeleteNotificationResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteNotificationResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertDeleteNotificationResponse(t)
-	return t
+	asserts.AssertDeleteNotificationResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdateBudgetResponse = { nil }
@@ -611,11 +809,22 @@ end
 -- Valid keys:
 -- @return UpdateBudgetResponse structure as a key-value pair table
 function M.UpdateBudgetResponse(args)
-	assert(args, "You must provdide an argument table when creating UpdateBudgetResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateBudgetResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertUpdateBudgetResponse(t)
-	return t
+	asserts.AssertUpdateBudgetResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateBudgetRequest = { ["NotificationsWithSubscribers"] = true, ["Budget"] = true, ["AccountId"] = true, nil }
@@ -644,14 +853,25 @@ end
 -- Required key: Budget
 -- @return CreateBudgetRequest structure as a key-value pair table
 function M.CreateBudgetRequest(args)
-	assert(args, "You must provdide an argument table when creating CreateBudgetRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateBudgetRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NotificationsWithSubscribers"] = args["NotificationsWithSubscribers"],
 		["Budget"] = args["Budget"],
 		["AccountId"] = args["AccountId"],
 	}
-	asserts.AssertCreateBudgetRequest(t)
-	return t
+	asserts.AssertCreateBudgetRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateSubscriberResponse = { nil }
@@ -670,11 +890,22 @@ end
 -- Valid keys:
 -- @return CreateSubscriberResponse structure as a key-value pair table
 function M.CreateSubscriberResponse(args)
-	assert(args, "You must provdide an argument table when creating CreateSubscriberResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateSubscriberResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertCreateSubscriberResponse(t)
-	return t
+	asserts.AssertCreateSubscriberResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeBudgetsRequest = { ["NextToken"] = true, ["MaxResults"] = true, ["AccountId"] = true, nil }
@@ -701,14 +932,25 @@ end
 -- Required key: AccountId
 -- @return DescribeBudgetsRequest structure as a key-value pair table
 function M.DescribeBudgetsRequest(args)
-	assert(args, "You must provdide an argument table when creating DescribeBudgetsRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeBudgetsRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NextToken"] = args["NextToken"],
 		["MaxResults"] = args["MaxResults"],
 		["AccountId"] = args["AccountId"],
 	}
-	asserts.AssertDescribeBudgetsRequest(t)
-	return t
+	asserts.AssertDescribeBudgetsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteSubscriberResponse = { nil }
@@ -727,11 +969,22 @@ end
 -- Valid keys:
 -- @return DeleteSubscriberResponse structure as a key-value pair table
 function M.DeleteSubscriberResponse(args)
-	assert(args, "You must provdide an argument table when creating DeleteSubscriberResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteSubscriberResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertDeleteSubscriberResponse(t)
-	return t
+	asserts.AssertDeleteSubscriberResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeSubscribersForNotificationResponse = { ["NextToken"] = true, ["Subscribers"] = true, nil }
@@ -754,13 +1007,24 @@ end
 -- * Subscribers [Subscribers] 
 -- @return DescribeSubscribersForNotificationResponse structure as a key-value pair table
 function M.DescribeSubscribersForNotificationResponse(args)
-	assert(args, "You must provdide an argument table when creating DescribeSubscribersForNotificationResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeSubscribersForNotificationResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NextToken"] = args["NextToken"],
 		["Subscribers"] = args["Subscribers"],
 	}
-	asserts.AssertDescribeSubscribersForNotificationResponse(t)
-	return t
+	asserts.AssertDescribeSubscribersForNotificationResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdateNotificationRequest = { ["NewNotification"] = true, ["BudgetName"] = true, ["OldNotification"] = true, ["AccountId"] = true, nil }
@@ -795,15 +1059,26 @@ end
 -- Required key: NewNotification
 -- @return UpdateNotificationRequest structure as a key-value pair table
 function M.UpdateNotificationRequest(args)
-	assert(args, "You must provdide an argument table when creating UpdateNotificationRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateNotificationRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NewNotification"] = args["NewNotification"],
 		["BudgetName"] = args["BudgetName"],
 		["OldNotification"] = args["OldNotification"],
 		["AccountId"] = args["AccountId"],
 	}
-	asserts.AssertUpdateNotificationRequest(t)
-	return t
+	asserts.AssertUpdateNotificationRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateBudgetResponse = { nil }
@@ -822,11 +1097,22 @@ end
 -- Valid keys:
 -- @return CreateBudgetResponse structure as a key-value pair table
 function M.CreateBudgetResponse(args)
-	assert(args, "You must provdide an argument table when creating CreateBudgetResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateBudgetResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertCreateBudgetResponse(t)
-	return t
+	asserts.AssertCreateBudgetResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteBudgetResponse = { nil }
@@ -845,11 +1131,22 @@ end
 -- Valid keys:
 -- @return DeleteBudgetResponse structure as a key-value pair table
 function M.DeleteBudgetResponse(args)
-	assert(args, "You must provdide an argument table when creating DeleteBudgetResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteBudgetResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertDeleteBudgetResponse(t)
-	return t
+	asserts.AssertDeleteBudgetResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdateSubscriberResponse = { nil }
@@ -868,11 +1165,22 @@ end
 -- Valid keys:
 -- @return UpdateSubscriberResponse structure as a key-value pair table
 function M.UpdateSubscriberResponse(args)
-	assert(args, "You must provdide an argument table when creating UpdateSubscriberResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateSubscriberResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertUpdateSubscriberResponse(t)
-	return t
+	asserts.AssertUpdateSubscriberResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Budget = { ["CalculatedSpend"] = true, ["BudgetType"] = true, ["BudgetLimit"] = true, ["BudgetName"] = true, ["CostTypes"] = true, ["TimeUnit"] = true, ["TimePeriod"] = true, ["CostFilters"] = true, nil }
@@ -919,8 +1227,14 @@ end
 -- Required key: BudgetType
 -- @return Budget structure as a key-value pair table
 function M.Budget(args)
-	assert(args, "You must provdide an argument table when creating Budget")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Budget")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["CalculatedSpend"] = args["CalculatedSpend"],
 		["BudgetType"] = args["BudgetType"],
 		["BudgetLimit"] = args["BudgetLimit"],
@@ -930,8 +1244,13 @@ function M.Budget(args)
 		["TimePeriod"] = args["TimePeriod"],
 		["CostFilters"] = args["CostFilters"],
 	}
-	asserts.AssertBudget(t)
-	return t
+	asserts.AssertBudget(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteSubscriberRequest = { ["Subscriber"] = true, ["Notification"] = true, ["BudgetName"] = true, ["AccountId"] = true, nil }
@@ -966,15 +1285,26 @@ end
 -- Required key: Subscriber
 -- @return DeleteSubscriberRequest structure as a key-value pair table
 function M.DeleteSubscriberRequest(args)
-	assert(args, "You must provdide an argument table when creating DeleteSubscriberRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteSubscriberRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Subscriber"] = args["Subscriber"],
 		["Notification"] = args["Notification"],
 		["BudgetName"] = args["BudgetName"],
 		["AccountId"] = args["AccountId"],
 	}
-	asserts.AssertDeleteSubscriberRequest(t)
-	return t
+	asserts.AssertDeleteSubscriberRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateSubscriberRequest = { ["Subscriber"] = true, ["Notification"] = true, ["BudgetName"] = true, ["AccountId"] = true, nil }
@@ -1009,15 +1339,26 @@ end
 -- Required key: Subscriber
 -- @return CreateSubscriberRequest structure as a key-value pair table
 function M.CreateSubscriberRequest(args)
-	assert(args, "You must provdide an argument table when creating CreateSubscriberRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateSubscriberRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Subscriber"] = args["Subscriber"],
 		["Notification"] = args["Notification"],
 		["BudgetName"] = args["BudgetName"],
 		["AccountId"] = args["AccountId"],
 	}
-	asserts.AssertCreateSubscriberRequest(t)
-	return t
+	asserts.AssertCreateSubscriberRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdateBudgetRequest = { ["NewBudget"] = true, ["AccountId"] = true, nil }
@@ -1044,13 +1385,24 @@ end
 -- Required key: NewBudget
 -- @return UpdateBudgetRequest structure as a key-value pair table
 function M.UpdateBudgetRequest(args)
-	assert(args, "You must provdide an argument table when creating UpdateBudgetRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateBudgetRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NewBudget"] = args["NewBudget"],
 		["AccountId"] = args["AccountId"],
 	}
-	asserts.AssertUpdateBudgetRequest(t)
-	return t
+	asserts.AssertUpdateBudgetRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Spend = { ["Amount"] = true, ["Unit"] = true, nil }
@@ -1077,13 +1429,24 @@ end
 -- Required key: Unit
 -- @return Spend structure as a key-value pair table
 function M.Spend(args)
-	assert(args, "You must provdide an argument table when creating Spend")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Spend")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Amount"] = args["Amount"],
 		["Unit"] = args["Unit"],
 	}
-	asserts.AssertSpend(t)
-	return t
+	asserts.AssertSpend(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeSubscribersForNotificationRequest = { ["Notification"] = true, ["NextToken"] = true, ["BudgetName"] = true, ["MaxResults"] = true, ["AccountId"] = true, nil }
@@ -1118,16 +1481,27 @@ end
 -- Required key: Notification
 -- @return DescribeSubscribersForNotificationRequest structure as a key-value pair table
 function M.DescribeSubscribersForNotificationRequest(args)
-	assert(args, "You must provdide an argument table when creating DescribeSubscribersForNotificationRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeSubscribersForNotificationRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Notification"] = args["Notification"],
 		["NextToken"] = args["NextToken"],
 		["BudgetName"] = args["BudgetName"],
 		["MaxResults"] = args["MaxResults"],
 		["AccountId"] = args["AccountId"],
 	}
-	asserts.AssertDescribeSubscribersForNotificationRequest(t)
-	return t
+	asserts.AssertDescribeSubscribersForNotificationRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.NotFoundException = { ["Message"] = true, nil }
@@ -1148,12 +1522,23 @@ end
 -- * Message [errorMessage] 
 -- @return NotFoundException structure as a key-value pair table
 function M.NotFoundException(args)
-	assert(args, "You must provdide an argument table when creating NotFoundException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating NotFoundException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Message"] = args["Message"],
 	}
-	asserts.AssertNotFoundException(t)
-	return t
+	asserts.AssertNotFoundException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteNotificationRequest = { ["Notification"] = true, ["BudgetName"] = true, ["AccountId"] = true, nil }
@@ -1184,14 +1569,25 @@ end
 -- Required key: Notification
 -- @return DeleteNotificationRequest structure as a key-value pair table
 function M.DeleteNotificationRequest(args)
-	assert(args, "You must provdide an argument table when creating DeleteNotificationRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteNotificationRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Notification"] = args["Notification"],
 		["BudgetName"] = args["BudgetName"],
 		["AccountId"] = args["AccountId"],
 	}
-	asserts.AssertDeleteNotificationRequest(t)
-	return t
+	asserts.AssertDeleteNotificationRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.NotificationWithSubscribers = { ["Notification"] = true, ["Subscribers"] = true, nil }
@@ -1218,13 +1614,24 @@ end
 -- Required key: Subscribers
 -- @return NotificationWithSubscribers structure as a key-value pair table
 function M.NotificationWithSubscribers(args)
-	assert(args, "You must provdide an argument table when creating NotificationWithSubscribers")
-	local t = { 
+	assert(args, "You must provide an argument table when creating NotificationWithSubscribers")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Notification"] = args["Notification"],
 		["Subscribers"] = args["Subscribers"],
 	}
-	asserts.AssertNotificationWithSubscribers(t)
-	return t
+	asserts.AssertNotificationWithSubscribers(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreationLimitExceededException = { ["Message"] = true, nil }
@@ -1245,12 +1652,23 @@ end
 -- * Message [errorMessage] 
 -- @return CreationLimitExceededException structure as a key-value pair table
 function M.CreationLimitExceededException(args)
-	assert(args, "You must provdide an argument table when creating CreationLimitExceededException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreationLimitExceededException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Message"] = args["Message"],
 	}
-	asserts.AssertCreationLimitExceededException(t)
-	return t
+	asserts.AssertCreationLimitExceededException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeBudgetsResponse = { ["NextToken"] = true, ["Budgets"] = true, nil }
@@ -1273,13 +1691,24 @@ end
 -- * Budgets [Budgets] 
 -- @return DescribeBudgetsResponse structure as a key-value pair table
 function M.DescribeBudgetsResponse(args)
-	assert(args, "You must provdide an argument table when creating DescribeBudgetsResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeBudgetsResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NextToken"] = args["NextToken"],
 		["Budgets"] = args["Budgets"],
 	}
-	asserts.AssertDescribeBudgetsResponse(t)
-	return t
+	asserts.AssertDescribeBudgetsResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdateNotificationResponse = { nil }
@@ -1298,11 +1727,22 @@ end
 -- Valid keys:
 -- @return UpdateNotificationResponse structure as a key-value pair table
 function M.UpdateNotificationResponse(args)
-	assert(args, "You must provdide an argument table when creating UpdateNotificationResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateNotificationResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertUpdateNotificationResponse(t)
-	return t
+	asserts.AssertUpdateNotificationResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeBudgetResponse = { ["Budget"] = true, nil }
@@ -1323,12 +1763,23 @@ end
 -- * Budget [Budget] 
 -- @return DescribeBudgetResponse structure as a key-value pair table
 function M.DescribeBudgetResponse(args)
-	assert(args, "You must provdide an argument table when creating DescribeBudgetResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeBudgetResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Budget"] = args["Budget"],
 	}
-	asserts.AssertDescribeBudgetResponse(t)
-	return t
+	asserts.AssertDescribeBudgetResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 function asserts.AssertNumericValue(str)
@@ -1631,8 +2082,11 @@ function M.DescribeBudgetAsync(DescribeBudgetRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AWSBudgetServiceGateway.DescribeBudget",
 	}
+	for header,value in pairs(DescribeBudgetRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeBudgetRequest, headers, settings, cb)
 	else
@@ -1663,8 +2117,11 @@ function M.DescribeNotificationsForBudgetAsync(DescribeNotificationsForBudgetReq
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AWSBudgetServiceGateway.DescribeNotificationsForBudget",
 	}
+	for header,value in pairs(DescribeNotificationsForBudgetRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeNotificationsForBudgetRequest, headers, settings, cb)
 	else
@@ -1695,8 +2152,11 @@ function M.CreateSubscriberAsync(CreateSubscriberRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AWSBudgetServiceGateway.CreateSubscriber",
 	}
+	for header,value in pairs(CreateSubscriberRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateSubscriberRequest, headers, settings, cb)
 	else
@@ -1727,8 +2187,11 @@ function M.CreateNotificationAsync(CreateNotificationRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AWSBudgetServiceGateway.CreateNotification",
 	}
+	for header,value in pairs(CreateNotificationRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateNotificationRequest, headers, settings, cb)
 	else
@@ -1759,8 +2222,11 @@ function M.UpdateNotificationAsync(UpdateNotificationRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AWSBudgetServiceGateway.UpdateNotification",
 	}
+	for header,value in pairs(UpdateNotificationRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateNotificationRequest, headers, settings, cb)
 	else
@@ -1791,8 +2257,11 @@ function M.UpdateBudgetAsync(UpdateBudgetRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AWSBudgetServiceGateway.UpdateBudget",
 	}
+	for header,value in pairs(UpdateBudgetRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateBudgetRequest, headers, settings, cb)
 	else
@@ -1823,8 +2292,11 @@ function M.CreateBudgetAsync(CreateBudgetRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AWSBudgetServiceGateway.CreateBudget",
 	}
+	for header,value in pairs(CreateBudgetRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateBudgetRequest, headers, settings, cb)
 	else
@@ -1855,8 +2327,11 @@ function M.DeleteNotificationAsync(DeleteNotificationRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AWSBudgetServiceGateway.DeleteNotification",
 	}
+	for header,value in pairs(DeleteNotificationRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteNotificationRequest, headers, settings, cb)
 	else
@@ -1887,8 +2362,11 @@ function M.DescribeSubscribersForNotificationAsync(DescribeSubscribersForNotific
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AWSBudgetServiceGateway.DescribeSubscribersForNotification",
 	}
+	for header,value in pairs(DescribeSubscribersForNotificationRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeSubscribersForNotificationRequest, headers, settings, cb)
 	else
@@ -1919,8 +2397,11 @@ function M.DeleteSubscriberAsync(DeleteSubscriberRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AWSBudgetServiceGateway.DeleteSubscriber",
 	}
+	for header,value in pairs(DeleteSubscriberRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteSubscriberRequest, headers, settings, cb)
 	else
@@ -1951,8 +2432,11 @@ function M.DescribeBudgetsAsync(DescribeBudgetsRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AWSBudgetServiceGateway.DescribeBudgets",
 	}
+	for header,value in pairs(DescribeBudgetsRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeBudgetsRequest, headers, settings, cb)
 	else
@@ -1983,8 +2467,11 @@ function M.DeleteBudgetAsync(DeleteBudgetRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AWSBudgetServiceGateway.DeleteBudget",
 	}
+	for header,value in pairs(DeleteBudgetRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteBudgetRequest, headers, settings, cb)
 	else
@@ -2015,8 +2502,11 @@ function M.UpdateSubscriberAsync(UpdateSubscriberRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AWSBudgetServiceGateway.UpdateSubscriber",
 	}
+	for header,value in pairs(UpdateSubscriberRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateSubscriberRequest, headers, settings, cb)
 	else

@@ -39,12 +39,23 @@ end
 -- * message [string] 
 -- @return UnsupportedLocale structure as a key-value pair table
 function M.UnsupportedLocale(args)
-	assert(args, "You must provdide an argument table when creating UnsupportedLocale")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UnsupportedLocale")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertUnsupportedLocale(t)
-	return t
+	asserts.AssertUnsupportedLocale(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeEventAggregatesResponse = { ["nextToken"] = true, ["eventAggregates"] = true, nil }
@@ -67,13 +78,24 @@ end
 -- * eventAggregates [EventAggregateList] <p>The number of events in each category that meet the optional filter criteria.</p>
 -- @return DescribeEventAggregatesResponse structure as a key-value pair table
 function M.DescribeEventAggregatesResponse(args)
-	assert(args, "You must provdide an argument table when creating DescribeEventAggregatesResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeEventAggregatesResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["nextToken"] = args["nextToken"],
 		["eventAggregates"] = args["eventAggregates"],
 	}
-	asserts.AssertDescribeEventAggregatesResponse(t)
-	return t
+	asserts.AssertDescribeEventAggregatesResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.EntityFilter = { ["eventArns"] = true, ["statusCodes"] = true, ["entityValues"] = true, ["entityArns"] = true, ["lastUpdatedTimes"] = true, ["tags"] = true, nil }
@@ -106,8 +128,14 @@ end
 -- Required key: eventArns
 -- @return EntityFilter structure as a key-value pair table
 function M.EntityFilter(args)
-	assert(args, "You must provdide an argument table when creating EntityFilter")
-	local t = { 
+	assert(args, "You must provide an argument table when creating EntityFilter")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["eventArns"] = args["eventArns"],
 		["statusCodes"] = args["statusCodes"],
 		["entityValues"] = args["entityValues"],
@@ -115,8 +143,13 @@ function M.EntityFilter(args)
 		["lastUpdatedTimes"] = args["lastUpdatedTimes"],
 		["tags"] = args["tags"],
 	}
-	asserts.AssertEntityFilter(t)
-	return t
+	asserts.AssertEntityFilter(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.EventDetails = { ["eventMetadata"] = true, ["event"] = true, ["eventDescription"] = true, nil }
@@ -141,14 +174,25 @@ end
 -- * eventDescription [EventDescription] <p>The most recent description of the event.</p>
 -- @return EventDetails structure as a key-value pair table
 function M.EventDetails(args)
-	assert(args, "You must provdide an argument table when creating EventDetails")
-	local t = { 
+	assert(args, "You must provide an argument table when creating EventDetails")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["eventMetadata"] = args["eventMetadata"],
 		["event"] = args["event"],
 		["eventDescription"] = args["eventDescription"],
 	}
-	asserts.AssertEventDetails(t)
-	return t
+	asserts.AssertEventDetails(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeEventTypesResponse = { ["eventTypes"] = true, ["nextToken"] = true, nil }
@@ -171,13 +215,24 @@ end
 -- * nextToken [nextToken] <p>If the results of a search are large, only a portion of the results are returned, and a <code>nextToken</code> pagination token is returned in the response. To retrieve the next batch of results, reissue the search request and include the returned token. When all results have been returned, the response does not contain a pagination token value.</p>
 -- @return DescribeEventTypesResponse structure as a key-value pair table
 function M.DescribeEventTypesResponse(args)
-	assert(args, "You must provdide an argument table when creating DescribeEventTypesResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeEventTypesResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["eventTypes"] = args["eventTypes"],
 		["nextToken"] = args["nextToken"],
 	}
-	asserts.AssertDescribeEventTypesResponse(t)
-	return t
+	asserts.AssertDescribeEventTypesResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeAffectedEntitiesRequest = { ["filter"] = true, ["locale"] = true, ["nextToken"] = true, ["maxResults"] = true, nil }
@@ -206,15 +261,26 @@ end
 -- Required key: filter
 -- @return DescribeAffectedEntitiesRequest structure as a key-value pair table
 function M.DescribeAffectedEntitiesRequest(args)
-	assert(args, "You must provdide an argument table when creating DescribeAffectedEntitiesRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeAffectedEntitiesRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["filter"] = args["filter"],
 		["locale"] = args["locale"],
 		["nextToken"] = args["nextToken"],
 		["maxResults"] = args["maxResults"],
 	}
-	asserts.AssertDescribeAffectedEntitiesRequest(t)
-	return t
+	asserts.AssertDescribeAffectedEntitiesRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AffectedEntity = { ["entityValue"] = true, ["lastUpdatedTime"] = true, ["tags"] = true, ["entityArn"] = true, ["awsAccountId"] = true, ["eventArn"] = true, ["statusCode"] = true, nil }
@@ -247,8 +313,14 @@ end
 -- * statusCode [entityStatusCode] <p>The most recent status of the entity affected by the event. The possible values are <code>IMPAIRED</code>, <code>UNIMPAIRED</code>, and <code>UNKNOWN</code>.</p>
 -- @return AffectedEntity structure as a key-value pair table
 function M.AffectedEntity(args)
-	assert(args, "You must provdide an argument table when creating AffectedEntity")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AffectedEntity")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["entityValue"] = args["entityValue"],
 		["lastUpdatedTime"] = args["lastUpdatedTime"],
 		["tags"] = args["tags"],
@@ -257,8 +329,13 @@ function M.AffectedEntity(args)
 		["eventArn"] = args["eventArn"],
 		["statusCode"] = args["statusCode"],
 	}
-	asserts.AssertAffectedEntity(t)
-	return t
+	asserts.AssertAffectedEntity(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeEventAggregatesRequest = { ["filter"] = true, ["aggregateField"] = true, ["nextToken"] = true, ["maxResults"] = true, nil }
@@ -287,15 +364,26 @@ end
 -- Required key: aggregateField
 -- @return DescribeEventAggregatesRequest structure as a key-value pair table
 function M.DescribeEventAggregatesRequest(args)
-	assert(args, "You must provdide an argument table when creating DescribeEventAggregatesRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeEventAggregatesRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["filter"] = args["filter"],
 		["aggregateField"] = args["aggregateField"],
 		["nextToken"] = args["nextToken"],
 		["maxResults"] = args["maxResults"],
 	}
-	asserts.AssertDescribeEventAggregatesRequest(t)
-	return t
+	asserts.AssertDescribeEventAggregatesRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeEventsResponse = { ["nextToken"] = true, ["events"] = true, nil }
@@ -318,13 +406,24 @@ end
 -- * events [EventList] <p>The events that match the specified filter criteria.</p>
 -- @return DescribeEventsResponse structure as a key-value pair table
 function M.DescribeEventsResponse(args)
-	assert(args, "You must provdide an argument table when creating DescribeEventsResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeEventsResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["nextToken"] = args["nextToken"],
 		["events"] = args["events"],
 	}
-	asserts.AssertDescribeEventsResponse(t)
-	return t
+	asserts.AssertDescribeEventsResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.EventDescription = { ["latestDescription"] = true, nil }
@@ -345,12 +444,23 @@ end
 -- * latestDescription [eventDescription] <p>The most recent description of the event.</p>
 -- @return EventDescription structure as a key-value pair table
 function M.EventDescription(args)
-	assert(args, "You must provdide an argument table when creating EventDescription")
-	local t = { 
+	assert(args, "You must provide an argument table when creating EventDescription")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["latestDescription"] = args["latestDescription"],
 	}
-	asserts.AssertEventDescription(t)
-	return t
+	asserts.AssertEventDescription(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.EventType = { ["category"] = true, ["code"] = true, ["service"] = true, nil }
@@ -375,14 +485,25 @@ end
 -- * service [service] <p>The AWS service that is affected by the event. For example, <code>EC2</code>, <code>RDS</code>.</p>
 -- @return EventType structure as a key-value pair table
 function M.EventType(args)
-	assert(args, "You must provdide an argument table when creating EventType")
-	local t = { 
+	assert(args, "You must provide an argument table when creating EventType")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["category"] = args["category"],
 		["code"] = args["code"],
 		["service"] = args["service"],
 	}
-	asserts.AssertEventType(t)
-	return t
+	asserts.AssertEventType(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeEntityAggregatesResponse = { ["entityAggregates"] = true, nil }
@@ -403,12 +524,23 @@ end
 -- * entityAggregates [EntityAggregateList] <p>The number of entities that are affected by each of the specified events.</p>
 -- @return DescribeEntityAggregatesResponse structure as a key-value pair table
 function M.DescribeEntityAggregatesResponse(args)
-	assert(args, "You must provdide an argument table when creating DescribeEntityAggregatesResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeEntityAggregatesResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["entityAggregates"] = args["entityAggregates"],
 	}
-	asserts.AssertDescribeEntityAggregatesResponse(t)
-	return t
+	asserts.AssertDescribeEntityAggregatesResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.EventDetailsErrorItem = { ["errorMessage"] = true, ["eventArn"] = true, ["errorName"] = true, nil }
@@ -433,14 +565,25 @@ end
 -- * errorName [string] <p>The name of the error.</p>
 -- @return EventDetailsErrorItem structure as a key-value pair table
 function M.EventDetailsErrorItem(args)
-	assert(args, "You must provdide an argument table when creating EventDetailsErrorItem")
-	local t = { 
+	assert(args, "You must provide an argument table when creating EventDetailsErrorItem")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["errorMessage"] = args["errorMessage"],
 		["eventArn"] = args["eventArn"],
 		["errorName"] = args["errorName"],
 	}
-	asserts.AssertEventDetailsErrorItem(t)
-	return t
+	asserts.AssertEventDetailsErrorItem(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.EventTypeFilter = { ["eventTypeCodes"] = true, ["services"] = true, ["eventTypeCategories"] = true, nil }
@@ -465,14 +608,25 @@ end
 -- * eventTypeCategories [EventTypeCategoryList] <p>A list of event type category codes (<code>issue</code>, <code>scheduledChange</code>, or <code>accountNotification</code>).</p>
 -- @return EventTypeFilter structure as a key-value pair table
 function M.EventTypeFilter(args)
-	assert(args, "You must provdide an argument table when creating EventTypeFilter")
-	local t = { 
+	assert(args, "You must provide an argument table when creating EventTypeFilter")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["eventTypeCodes"] = args["eventTypeCodes"],
 		["services"] = args["services"],
 		["eventTypeCategories"] = args["eventTypeCategories"],
 	}
-	asserts.AssertEventTypeFilter(t)
-	return t
+	asserts.AssertEventTypeFilter(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DateTimeRange = { ["to"] = true, ["from"] = true, nil }
@@ -495,13 +649,24 @@ end
 -- * from [timestamp] <p>The starting date and time of a time range.</p>
 -- @return DateTimeRange structure as a key-value pair table
 function M.DateTimeRange(args)
-	assert(args, "You must provdide an argument table when creating DateTimeRange")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DateTimeRange")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["to"] = args["to"],
 		["from"] = args["from"],
 	}
-	asserts.AssertDateTimeRange(t)
-	return t
+	asserts.AssertDateTimeRange(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidPaginationToken = { ["message"] = true, nil }
@@ -522,12 +687,23 @@ end
 -- * message [string] 
 -- @return InvalidPaginationToken structure as a key-value pair table
 function M.InvalidPaginationToken(args)
-	assert(args, "You must provdide an argument table when creating InvalidPaginationToken")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidPaginationToken")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertInvalidPaginationToken(t)
-	return t
+	asserts.AssertInvalidPaginationToken(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.EventFilter = { ["startTimes"] = true, ["eventArns"] = true, ["entityValues"] = true, ["eventTypeCodes"] = true, ["eventTypeCategories"] = true, ["endTimes"] = true, ["regions"] = true, ["eventStatusCodes"] = true, ["entityArns"] = true, ["services"] = true, ["availabilityZones"] = true, ["lastUpdatedTimes"] = true, ["tags"] = true, nil }
@@ -572,8 +748,14 @@ end
 -- * tags [tagFilter] <p>A map of entity tags attached to the affected entity.</p>
 -- @return EventFilter structure as a key-value pair table
 function M.EventFilter(args)
-	assert(args, "You must provdide an argument table when creating EventFilter")
-	local t = { 
+	assert(args, "You must provide an argument table when creating EventFilter")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["startTimes"] = args["startTimes"],
 		["eventArns"] = args["eventArns"],
 		["entityValues"] = args["entityValues"],
@@ -588,8 +770,13 @@ function M.EventFilter(args)
 		["lastUpdatedTimes"] = args["lastUpdatedTimes"],
 		["tags"] = args["tags"],
 	}
-	asserts.AssertEventFilter(t)
-	return t
+	asserts.AssertEventFilter(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeAffectedEntitiesResponse = { ["entities"] = true, ["nextToken"] = true, nil }
@@ -612,13 +799,24 @@ end
 -- * nextToken [nextToken] <p>If the results of a search are large, only a portion of the results are returned, and a <code>nextToken</code> pagination token is returned in the response. To retrieve the next batch of results, reissue the search request and include the returned token. When all results have been returned, the response does not contain a pagination token value.</p>
 -- @return DescribeAffectedEntitiesResponse structure as a key-value pair table
 function M.DescribeAffectedEntitiesResponse(args)
-	assert(args, "You must provdide an argument table when creating DescribeAffectedEntitiesResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeAffectedEntitiesResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["entities"] = args["entities"],
 		["nextToken"] = args["nextToken"],
 	}
-	asserts.AssertDescribeAffectedEntitiesResponse(t)
-	return t
+	asserts.AssertDescribeAffectedEntitiesResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeEventTypesRequest = { ["filter"] = true, ["locale"] = true, ["nextToken"] = true, ["maxResults"] = true, nil }
@@ -645,15 +843,26 @@ end
 -- * maxResults [maxResults] <p>The maximum number of items to return in one batch, between 10 and 100, inclusive.</p>
 -- @return DescribeEventTypesRequest structure as a key-value pair table
 function M.DescribeEventTypesRequest(args)
-	assert(args, "You must provdide an argument table when creating DescribeEventTypesRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeEventTypesRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["filter"] = args["filter"],
 		["locale"] = args["locale"],
 		["nextToken"] = args["nextToken"],
 		["maxResults"] = args["maxResults"],
 	}
-	asserts.AssertDescribeEventTypesRequest(t)
-	return t
+	asserts.AssertDescribeEventTypesRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeEventDetailsRequest = { ["locale"] = true, ["eventArns"] = true, nil }
@@ -678,13 +887,24 @@ end
 -- Required key: eventArns
 -- @return DescribeEventDetailsRequest structure as a key-value pair table
 function M.DescribeEventDetailsRequest(args)
-	assert(args, "You must provdide an argument table when creating DescribeEventDetailsRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeEventDetailsRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["locale"] = args["locale"],
 		["eventArns"] = args["eventArns"],
 	}
-	asserts.AssertDescribeEventDetailsRequest(t)
-	return t
+	asserts.AssertDescribeEventDetailsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeEventDetailsResponse = { ["failedSet"] = true, ["successfulSet"] = true, nil }
@@ -707,13 +927,24 @@ end
 -- * successfulSet [DescribeEventDetailsSuccessfulSet] <p>Information about the events that could be retrieved.</p>
 -- @return DescribeEventDetailsResponse structure as a key-value pair table
 function M.DescribeEventDetailsResponse(args)
-	assert(args, "You must provdide an argument table when creating DescribeEventDetailsResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeEventDetailsResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["failedSet"] = args["failedSet"],
 		["successfulSet"] = args["successfulSet"],
 	}
-	asserts.AssertDescribeEventDetailsResponse(t)
-	return t
+	asserts.AssertDescribeEventDetailsResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeEventsRequest = { ["filter"] = true, ["locale"] = true, ["nextToken"] = true, ["maxResults"] = true, nil }
@@ -740,15 +971,26 @@ end
 -- * maxResults [maxResults] <p>The maximum number of items to return in one batch, between 10 and 100, inclusive.</p>
 -- @return DescribeEventsRequest structure as a key-value pair table
 function M.DescribeEventsRequest(args)
-	assert(args, "You must provdide an argument table when creating DescribeEventsRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeEventsRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["filter"] = args["filter"],
 		["locale"] = args["locale"],
 		["nextToken"] = args["nextToken"],
 		["maxResults"] = args["maxResults"],
 	}
-	asserts.AssertDescribeEventsRequest(t)
-	return t
+	asserts.AssertDescribeEventsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.EntityAggregate = { ["count"] = true, ["eventArn"] = true, nil }
@@ -771,13 +1013,24 @@ end
 -- * eventArn [eventArn] <p>The unique identifier for the event. Format: <code>arn:aws:health:<i>event-region</i>::event/<i>EVENT_TYPE_PLUS_ID</i> </code>. Example: <code>arn:aws:health:us-east-1::event/AWS_EC2_MAINTENANCE_5331</code> </p>
 -- @return EntityAggregate structure as a key-value pair table
 function M.EntityAggregate(args)
-	assert(args, "You must provdide an argument table when creating EntityAggregate")
-	local t = { 
+	assert(args, "You must provide an argument table when creating EntityAggregate")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["count"] = args["count"],
 		["eventArn"] = args["eventArn"],
 	}
-	asserts.AssertEntityAggregate(t)
-	return t
+	asserts.AssertEntityAggregate(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeEntityAggregatesRequest = { ["eventArns"] = true, nil }
@@ -798,12 +1051,23 @@ end
 -- * eventArns [EventArnsList] <p>A list of event ARNs (unique identifiers). For example: <code>"arn:aws:health:us-east-1::event/AWS_EC2_MAINTENANCE_5331", "arn:aws:health:us-west-1::event/AWS_EBS_LOST_VOLUME_xyz"</code> </p>
 -- @return DescribeEntityAggregatesRequest structure as a key-value pair table
 function M.DescribeEntityAggregatesRequest(args)
-	assert(args, "You must provdide an argument table when creating DescribeEntityAggregatesRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeEntityAggregatesRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["eventArns"] = args["eventArns"],
 	}
-	asserts.AssertDescribeEntityAggregatesRequest(t)
-	return t
+	asserts.AssertDescribeEntityAggregatesRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.EventAggregate = { ["count"] = true, ["aggregateValue"] = true, nil }
@@ -826,13 +1090,24 @@ end
 -- * aggregateValue [aggregateValue] <p>The issue type for the associated count.</p>
 -- @return EventAggregate structure as a key-value pair table
 function M.EventAggregate(args)
-	assert(args, "You must provdide an argument table when creating EventAggregate")
-	local t = { 
+	assert(args, "You must provide an argument table when creating EventAggregate")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["count"] = args["count"],
 		["aggregateValue"] = args["aggregateValue"],
 	}
-	asserts.AssertEventAggregate(t)
-	return t
+	asserts.AssertEventAggregate(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Event = { ["availabilityZone"] = true, ["lastUpdatedTime"] = true, ["service"] = true, ["eventTypeCode"] = true, ["startTime"] = true, ["eventTypeCategory"] = true, ["endTime"] = true, ["region"] = true, ["arn"] = true, ["statusCode"] = true, nil }
@@ -871,8 +1146,14 @@ end
 -- * statusCode [eventStatusCode] <p>The most recent status of the event. Possible values are <code>open</code>, <code>closed</code>, and <code>upcoming</code>.</p>
 -- @return Event structure as a key-value pair table
 function M.Event(args)
-	assert(args, "You must provdide an argument table when creating Event")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Event")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["availabilityZone"] = args["availabilityZone"],
 		["lastUpdatedTime"] = args["lastUpdatedTime"],
 		["service"] = args["service"],
@@ -884,8 +1165,13 @@ function M.Event(args)
 		["arn"] = args["arn"],
 		["statusCode"] = args["statusCode"],
 	}
-	asserts.AssertEvent(t)
-	return t
+	asserts.AssertEvent(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 function asserts.AsserttagKey(str)
@@ -1617,8 +1903,11 @@ function M.DescribeAffectedEntitiesAsync(DescribeAffectedEntitiesRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AWSHealth_20160804.DescribeAffectedEntities",
 	}
+	for header,value in pairs(DescribeAffectedEntitiesRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeAffectedEntitiesRequest, headers, settings, cb)
 	else
@@ -1649,8 +1938,11 @@ function M.DescribeEventDetailsAsync(DescribeEventDetailsRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AWSHealth_20160804.DescribeEventDetails",
 	}
+	for header,value in pairs(DescribeEventDetailsRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeEventDetailsRequest, headers, settings, cb)
 	else
@@ -1681,8 +1973,11 @@ function M.DescribeEventTypesAsync(DescribeEventTypesRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AWSHealth_20160804.DescribeEventTypes",
 	}
+	for header,value in pairs(DescribeEventTypesRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeEventTypesRequest, headers, settings, cb)
 	else
@@ -1713,8 +2008,11 @@ function M.DescribeEventsAsync(DescribeEventsRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AWSHealth_20160804.DescribeEvents",
 	}
+	for header,value in pairs(DescribeEventsRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeEventsRequest, headers, settings, cb)
 	else
@@ -1745,8 +2043,11 @@ function M.DescribeEntityAggregatesAsync(DescribeEntityAggregatesRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AWSHealth_20160804.DescribeEntityAggregates",
 	}
+	for header,value in pairs(DescribeEntityAggregatesRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeEntityAggregatesRequest, headers, settings, cb)
 	else
@@ -1777,8 +2078,11 @@ function M.DescribeEventAggregatesAsync(DescribeEventAggregatesRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AWSHealth_20160804.DescribeEventAggregates",
 	}
+	for header,value in pairs(DescribeEventAggregatesRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeEventAggregatesRequest, headers, settings, cb)
 	else

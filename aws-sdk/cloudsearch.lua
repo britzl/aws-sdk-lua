@@ -45,13 +45,24 @@ end
 -- Required key: Status
 -- @return ExpressionStatus structure as a key-value pair table
 function M.ExpressionStatus(args)
-	assert(args, "You must provdide an argument table when creating ExpressionStatus")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ExpressionStatus")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Status"] = args["Status"],
 		["Options"] = args["Options"],
 	}
-	asserts.AssertExpressionStatus(t)
-	return t
+	asserts.AssertExpressionStatus(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeAnalysisSchemesResponse = { ["AnalysisSchemes"] = true, nil }
@@ -74,12 +85,23 @@ end
 -- Required key: AnalysisSchemes
 -- @return DescribeAnalysisSchemesResponse structure as a key-value pair table
 function M.DescribeAnalysisSchemesResponse(args)
-	assert(args, "You must provdide an argument table when creating DescribeAnalysisSchemesResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeAnalysisSchemesResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["AnalysisSchemes"] = args["AnalysisSchemes"],
 	}
-	asserts.AssertDescribeAnalysisSchemesResponse(t)
-	return t
+	asserts.AssertDescribeAnalysisSchemesResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteAnalysisSchemeRequest = { ["AnalysisSchemeName"] = true, ["DomainName"] = true, nil }
@@ -106,13 +128,24 @@ end
 -- Required key: AnalysisSchemeName
 -- @return DeleteAnalysisSchemeRequest structure as a key-value pair table
 function M.DeleteAnalysisSchemeRequest(args)
-	assert(args, "You must provdide an argument table when creating DeleteAnalysisSchemeRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteAnalysisSchemeRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["AnalysisSchemeName"] = args["AnalysisSchemeName"],
 		["DomainName"] = args["DomainName"],
 	}
-	asserts.AssertDeleteAnalysisSchemeRequest(t)
-	return t
+	asserts.AssertDeleteAnalysisSchemeRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.IndexDocumentsResponse = { ["FieldNames"] = true, nil }
@@ -133,12 +166,23 @@ end
 -- * FieldNames [FieldNameList] <p>The names of the fields that are currently being indexed.</p>
 -- @return IndexDocumentsResponse structure as a key-value pair table
 function M.IndexDocumentsResponse(args)
-	assert(args, "You must provdide an argument table when creating IndexDocumentsResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating IndexDocumentsResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["FieldNames"] = args["FieldNames"],
 	}
-	asserts.AssertIndexDocumentsResponse(t)
-	return t
+	asserts.AssertIndexDocumentsResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdateServiceAccessPoliciesRequest = { ["AccessPolicies"] = true, ["DomainName"] = true, nil }
@@ -165,13 +209,24 @@ end
 -- Required key: AccessPolicies
 -- @return UpdateServiceAccessPoliciesRequest structure as a key-value pair table
 function M.UpdateServiceAccessPoliciesRequest(args)
-	assert(args, "You must provdide an argument table when creating UpdateServiceAccessPoliciesRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateServiceAccessPoliciesRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["AccessPolicies"] = args["AccessPolicies"],
 		["DomainName"] = args["DomainName"],
 	}
-	asserts.AssertUpdateServiceAccessPoliciesRequest(t)
-	return t
+	asserts.AssertUpdateServiceAccessPoliciesRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteIndexFieldResponse = { ["IndexField"] = true, nil }
@@ -194,12 +249,23 @@ end
 -- Required key: IndexField
 -- @return DeleteIndexFieldResponse structure as a key-value pair table
 function M.DeleteIndexFieldResponse(args)
-	assert(args, "You must provdide an argument table when creating DeleteIndexFieldResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteIndexFieldResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["IndexField"] = args["IndexField"],
 	}
-	asserts.AssertDeleteIndexFieldResponse(t)
-	return t
+	asserts.AssertDeleteIndexFieldResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DoubleOptions = { ["SourceField"] = true, ["DefaultValue"] = true, ["FacetEnabled"] = true, ["SearchEnabled"] = true, ["SortEnabled"] = true, ["ReturnEnabled"] = true, nil }
@@ -230,8 +296,14 @@ end
 -- * ReturnEnabled [Boolean] <p>Whether the contents of the field can be returned in the search results.</p>
 -- @return DoubleOptions structure as a key-value pair table
 function M.DoubleOptions(args)
-	assert(args, "You must provdide an argument table when creating DoubleOptions")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DoubleOptions")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["SourceField"] = args["SourceField"],
 		["DefaultValue"] = args["DefaultValue"],
 		["FacetEnabled"] = args["FacetEnabled"],
@@ -239,8 +311,13 @@ function M.DoubleOptions(args)
 		["SortEnabled"] = args["SortEnabled"],
 		["ReturnEnabled"] = args["ReturnEnabled"],
 	}
-	asserts.AssertDoubleOptions(t)
-	return t
+	asserts.AssertDoubleOptions(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListDomainNamesResponse = { ["DomainNames"] = true, nil }
@@ -261,12 +338,23 @@ end
 -- * DomainNames [DomainNameMap] <p>The names of the search domains owned by an account.</p>
 -- @return ListDomainNamesResponse structure as a key-value pair table
 function M.ListDomainNamesResponse(args)
-	assert(args, "You must provdide an argument table when creating ListDomainNamesResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListDomainNamesResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DomainNames"] = args["DomainNames"],
 	}
-	asserts.AssertListDomainNamesResponse(t)
-	return t
+	asserts.AssertListDomainNamesResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AnalysisSchemeStatus = { ["Status"] = true, ["Options"] = true, nil }
@@ -293,13 +381,24 @@ end
 -- Required key: Status
 -- @return AnalysisSchemeStatus structure as a key-value pair table
 function M.AnalysisSchemeStatus(args)
-	assert(args, "You must provdide an argument table when creating AnalysisSchemeStatus")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AnalysisSchemeStatus")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Status"] = args["Status"],
 		["Options"] = args["Options"],
 	}
-	asserts.AssertAnalysisSchemeStatus(t)
-	return t
+	asserts.AssertAnalysisSchemeStatus(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DateArrayOptions = { ["SourceFields"] = true, ["FacetEnabled"] = true, ["DefaultValue"] = true, ["ReturnEnabled"] = true, ["SearchEnabled"] = true, nil }
@@ -328,16 +427,27 @@ end
 -- * SearchEnabled [Boolean] <p>Whether the contents of the field are searchable.</p>
 -- @return DateArrayOptions structure as a key-value pair table
 function M.DateArrayOptions(args)
-	assert(args, "You must provdide an argument table when creating DateArrayOptions")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DateArrayOptions")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["SourceFields"] = args["SourceFields"],
 		["FacetEnabled"] = args["FacetEnabled"],
 		["DefaultValue"] = args["DefaultValue"],
 		["ReturnEnabled"] = args["ReturnEnabled"],
 		["SearchEnabled"] = args["SearchEnabled"],
 	}
-	asserts.AssertDateArrayOptions(t)
-	return t
+	asserts.AssertDateArrayOptions(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeDomainsResponse = { ["DomainStatusList"] = true, nil }
@@ -360,12 +470,23 @@ end
 -- Required key: DomainStatusList
 -- @return DescribeDomainsResponse structure as a key-value pair table
 function M.DescribeDomainsResponse(args)
-	assert(args, "You must provdide an argument table when creating DescribeDomainsResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeDomainsResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DomainStatusList"] = args["DomainStatusList"],
 	}
-	asserts.AssertDescribeDomainsResponse(t)
-	return t
+	asserts.AssertDescribeDomainsResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AvailabilityOptionsStatus = { ["Status"] = true, ["Options"] = true, nil }
@@ -392,13 +513,24 @@ end
 -- Required key: Status
 -- @return AvailabilityOptionsStatus structure as a key-value pair table
 function M.AvailabilityOptionsStatus(args)
-	assert(args, "You must provdide an argument table when creating AvailabilityOptionsStatus")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AvailabilityOptionsStatus")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Status"] = args["Status"],
 		["Options"] = args["Options"],
 	}
-	asserts.AssertAvailabilityOptionsStatus(t)
-	return t
+	asserts.AssertAvailabilityOptionsStatus(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeServiceAccessPoliciesRequest = { ["Deployed"] = true, ["DomainName"] = true, nil }
@@ -423,13 +555,24 @@ end
 -- Required key: DomainName
 -- @return DescribeServiceAccessPoliciesRequest structure as a key-value pair table
 function M.DescribeServiceAccessPoliciesRequest(args)
-	assert(args, "You must provdide an argument table when creating DescribeServiceAccessPoliciesRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeServiceAccessPoliciesRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Deployed"] = args["Deployed"],
 		["DomainName"] = args["DomainName"],
 	}
-	asserts.AssertDescribeServiceAccessPoliciesRequest(t)
-	return t
+	asserts.AssertDescribeServiceAccessPoliciesRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DefineExpressionRequest = { ["Expression"] = true, ["DomainName"] = true, nil }
@@ -456,13 +599,24 @@ end
 -- Required key: Expression
 -- @return DefineExpressionRequest structure as a key-value pair table
 function M.DefineExpressionRequest(args)
-	assert(args, "You must provdide an argument table when creating DefineExpressionRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DefineExpressionRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Expression"] = args["Expression"],
 		["DomainName"] = args["DomainName"],
 	}
-	asserts.AssertDefineExpressionRequest(t)
-	return t
+	asserts.AssertDefineExpressionRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteIndexFieldRequest = { ["IndexFieldName"] = true, ["DomainName"] = true, nil }
@@ -489,13 +643,24 @@ end
 -- Required key: IndexFieldName
 -- @return DeleteIndexFieldRequest structure as a key-value pair table
 function M.DeleteIndexFieldRequest(args)
-	assert(args, "You must provdide an argument table when creating DeleteIndexFieldRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteIndexFieldRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["IndexFieldName"] = args["IndexFieldName"],
 		["DomainName"] = args["DomainName"],
 	}
-	asserts.AssertDeleteIndexFieldRequest(t)
-	return t
+	asserts.AssertDeleteIndexFieldRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.LiteralArrayOptions = { ["SourceFields"] = true, ["FacetEnabled"] = true, ["DefaultValue"] = true, ["ReturnEnabled"] = true, ["SearchEnabled"] = true, nil }
@@ -524,16 +689,27 @@ end
 -- * SearchEnabled [Boolean] <p>Whether the contents of the field are searchable.</p>
 -- @return LiteralArrayOptions structure as a key-value pair table
 function M.LiteralArrayOptions(args)
-	assert(args, "You must provdide an argument table when creating LiteralArrayOptions")
-	local t = { 
+	assert(args, "You must provide an argument table when creating LiteralArrayOptions")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["SourceFields"] = args["SourceFields"],
 		["FacetEnabled"] = args["FacetEnabled"],
 		["DefaultValue"] = args["DefaultValue"],
 		["ReturnEnabled"] = args["ReturnEnabled"],
 		["SearchEnabled"] = args["SearchEnabled"],
 	}
-	asserts.AssertLiteralArrayOptions(t)
-	return t
+	asserts.AssertLiteralArrayOptions(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AccessPoliciesStatus = { ["Status"] = true, ["Options"] = true, nil }
@@ -560,13 +736,24 @@ end
 -- Required key: Status
 -- @return AccessPoliciesStatus structure as a key-value pair table
 function M.AccessPoliciesStatus(args)
-	assert(args, "You must provdide an argument table when creating AccessPoliciesStatus")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AccessPoliciesStatus")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Status"] = args["Status"],
 		["Options"] = args["Options"],
 	}
-	asserts.AssertAccessPoliciesStatus(t)
-	return t
+	asserts.AssertAccessPoliciesStatus(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdateAvailabilityOptionsResponse = { ["AvailabilityOptions"] = true, nil }
@@ -587,12 +774,23 @@ end
 -- * AvailabilityOptions [AvailabilityOptionsStatus] <p>The newly-configured availability options. Indicates whether Multi-AZ is enabled for the domain. </p>
 -- @return UpdateAvailabilityOptionsResponse structure as a key-value pair table
 function M.UpdateAvailabilityOptionsResponse(args)
-	assert(args, "You must provdide an argument table when creating UpdateAvailabilityOptionsResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateAvailabilityOptionsResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["AvailabilityOptions"] = args["AvailabilityOptions"],
 	}
-	asserts.AssertUpdateAvailabilityOptionsResponse(t)
-	return t
+	asserts.AssertUpdateAvailabilityOptionsResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DefineExpressionResponse = { ["Expression"] = true, nil }
@@ -615,12 +813,23 @@ end
 -- Required key: Expression
 -- @return DefineExpressionResponse structure as a key-value pair table
 function M.DefineExpressionResponse(args)
-	assert(args, "You must provdide an argument table when creating DefineExpressionResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DefineExpressionResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Expression"] = args["Expression"],
 	}
-	asserts.AssertDefineExpressionResponse(t)
-	return t
+	asserts.AssertDefineExpressionResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DocumentSuggesterOptions = { ["SortExpression"] = true, ["FuzzyMatching"] = true, ["SourceField"] = true, nil }
@@ -647,14 +856,25 @@ end
 -- Required key: SourceField
 -- @return DocumentSuggesterOptions structure as a key-value pair table
 function M.DocumentSuggesterOptions(args)
-	assert(args, "You must provdide an argument table when creating DocumentSuggesterOptions")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DocumentSuggesterOptions")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["SortExpression"] = args["SortExpression"],
 		["FuzzyMatching"] = args["FuzzyMatching"],
 		["SourceField"] = args["SourceField"],
 	}
-	asserts.AssertDocumentSuggesterOptions(t)
-	return t
+	asserts.AssertDocumentSuggesterOptions(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DefineAnalysisSchemeResponse = { ["AnalysisScheme"] = true, nil }
@@ -677,12 +897,23 @@ end
 -- Required key: AnalysisScheme
 -- @return DefineAnalysisSchemeResponse structure as a key-value pair table
 function M.DefineAnalysisSchemeResponse(args)
-	assert(args, "You must provdide an argument table when creating DefineAnalysisSchemeResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DefineAnalysisSchemeResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["AnalysisScheme"] = args["AnalysisScheme"],
 	}
-	asserts.AssertDefineAnalysisSchemeResponse(t)
-	return t
+	asserts.AssertDefineAnalysisSchemeResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteDomainRequest = { ["DomainName"] = true, nil }
@@ -705,12 +936,23 @@ end
 -- Required key: DomainName
 -- @return DeleteDomainRequest structure as a key-value pair table
 function M.DeleteDomainRequest(args)
-	assert(args, "You must provdide an argument table when creating DeleteDomainRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteDomainRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DomainName"] = args["DomainName"],
 	}
-	asserts.AssertDeleteDomainRequest(t)
-	return t
+	asserts.AssertDeleteDomainRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdateScalingParametersResponse = { ["ScalingParameters"] = true, nil }
@@ -733,12 +975,23 @@ end
 -- Required key: ScalingParameters
 -- @return UpdateScalingParametersResponse structure as a key-value pair table
 function M.UpdateScalingParametersResponse(args)
-	assert(args, "You must provdide an argument table when creating UpdateScalingParametersResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateScalingParametersResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ScalingParameters"] = args["ScalingParameters"],
 	}
-	asserts.AssertUpdateScalingParametersResponse(t)
-	return t
+	asserts.AssertUpdateScalingParametersResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.SuggesterStatus = { ["Status"] = true, ["Options"] = true, nil }
@@ -765,13 +1018,24 @@ end
 -- Required key: Status
 -- @return SuggesterStatus structure as a key-value pair table
 function M.SuggesterStatus(args)
-	assert(args, "You must provdide an argument table when creating SuggesterStatus")
-	local t = { 
+	assert(args, "You must provide an argument table when creating SuggesterStatus")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Status"] = args["Status"],
 		["Options"] = args["Options"],
 	}
-	asserts.AssertSuggesterStatus(t)
-	return t
+	asserts.AssertSuggesterStatus(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeScalingParametersRequest = { ["DomainName"] = true, nil }
@@ -794,12 +1058,23 @@ end
 -- Required key: DomainName
 -- @return DescribeScalingParametersRequest structure as a key-value pair table
 function M.DescribeScalingParametersRequest(args)
-	assert(args, "You must provdide an argument table when creating DescribeScalingParametersRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeScalingParametersRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DomainName"] = args["DomainName"],
 	}
-	asserts.AssertDescribeScalingParametersRequest(t)
-	return t
+	asserts.AssertDescribeScalingParametersRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteSuggesterResponse = { ["Suggester"] = true, nil }
@@ -822,12 +1097,23 @@ end
 -- Required key: Suggester
 -- @return DeleteSuggesterResponse structure as a key-value pair table
 function M.DeleteSuggesterResponse(args)
-	assert(args, "You must provdide an argument table when creating DeleteSuggesterResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteSuggesterResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Suggester"] = args["Suggester"],
 	}
-	asserts.AssertDeleteSuggesterResponse(t)
-	return t
+	asserts.AssertDeleteSuggesterResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteExpressionResponse = { ["Expression"] = true, nil }
@@ -850,12 +1136,23 @@ end
 -- Required key: Expression
 -- @return DeleteExpressionResponse structure as a key-value pair table
 function M.DeleteExpressionResponse(args)
-	assert(args, "You must provdide an argument table when creating DeleteExpressionResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteExpressionResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Expression"] = args["Expression"],
 	}
-	asserts.AssertDeleteExpressionResponse(t)
-	return t
+	asserts.AssertDeleteExpressionResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ScalingParameters = { ["DesiredPartitionCount"] = true, ["DesiredInstanceType"] = true, ["DesiredReplicationCount"] = true, nil }
@@ -880,14 +1177,25 @@ end
 -- * DesiredReplicationCount [UIntValue] <p>The number of replicas you want to preconfigure for each index partition.</p>
 -- @return ScalingParameters structure as a key-value pair table
 function M.ScalingParameters(args)
-	assert(args, "You must provdide an argument table when creating ScalingParameters")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ScalingParameters")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DesiredPartitionCount"] = args["DesiredPartitionCount"],
 		["DesiredInstanceType"] = args["DesiredInstanceType"],
 		["DesiredReplicationCount"] = args["DesiredReplicationCount"],
 	}
-	asserts.AssertScalingParameters(t)
-	return t
+	asserts.AssertScalingParameters(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteAnalysisSchemeResponse = { ["AnalysisScheme"] = true, nil }
@@ -910,12 +1218,23 @@ end
 -- Required key: AnalysisScheme
 -- @return DeleteAnalysisSchemeResponse structure as a key-value pair table
 function M.DeleteAnalysisSchemeResponse(args)
-	assert(args, "You must provdide an argument table when creating DeleteAnalysisSchemeResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteAnalysisSchemeResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["AnalysisScheme"] = args["AnalysisScheme"],
 	}
-	asserts.AssertDeleteAnalysisSchemeResponse(t)
-	return t
+	asserts.AssertDeleteAnalysisSchemeResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DefineSuggesterRequest = { ["Suggester"] = true, ["DomainName"] = true, nil }
@@ -942,13 +1261,24 @@ end
 -- Required key: Suggester
 -- @return DefineSuggesterRequest structure as a key-value pair table
 function M.DefineSuggesterRequest(args)
-	assert(args, "You must provdide an argument table when creating DefineSuggesterRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DefineSuggesterRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Suggester"] = args["Suggester"],
 		["DomainName"] = args["DomainName"],
 	}
-	asserts.AssertDefineSuggesterRequest(t)
-	return t
+	asserts.AssertDefineSuggesterRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.LimitExceededException = { nil }
@@ -967,11 +1297,22 @@ end
 -- Valid keys:
 -- @return LimitExceededException structure as a key-value pair table
 function M.LimitExceededException(args)
-	assert(args, "You must provdide an argument table when creating LimitExceededException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating LimitExceededException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertLimitExceededException(t)
-	return t
+	asserts.AssertLimitExceededException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Suggester = { ["DocumentSuggesterOptions"] = true, ["SuggesterName"] = true, nil }
@@ -998,13 +1339,24 @@ end
 -- Required key: DocumentSuggesterOptions
 -- @return Suggester structure as a key-value pair table
 function M.Suggester(args)
-	assert(args, "You must provdide an argument table when creating Suggester")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Suggester")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DocumentSuggesterOptions"] = args["DocumentSuggesterOptions"],
 		["SuggesterName"] = args["SuggesterName"],
 	}
-	asserts.AssertSuggester(t)
-	return t
+	asserts.AssertSuggester(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeExpressionsResponse = { ["Expressions"] = true, nil }
@@ -1027,12 +1379,23 @@ end
 -- Required key: Expressions
 -- @return DescribeExpressionsResponse structure as a key-value pair table
 function M.DescribeExpressionsResponse(args)
-	assert(args, "You must provdide an argument table when creating DescribeExpressionsResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeExpressionsResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Expressions"] = args["Expressions"],
 	}
-	asserts.AssertDescribeExpressionsResponse(t)
-	return t
+	asserts.AssertDescribeExpressionsResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdateScalingParametersRequest = { ["ScalingParameters"] = true, ["DomainName"] = true, nil }
@@ -1059,13 +1422,24 @@ end
 -- Required key: ScalingParameters
 -- @return UpdateScalingParametersRequest structure as a key-value pair table
 function M.UpdateScalingParametersRequest(args)
-	assert(args, "You must provdide an argument table when creating UpdateScalingParametersRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateScalingParametersRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ScalingParameters"] = args["ScalingParameters"],
 		["DomainName"] = args["DomainName"],
 	}
-	asserts.AssertUpdateScalingParametersRequest(t)
-	return t
+	asserts.AssertUpdateScalingParametersRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.LiteralOptions = { ["SourceField"] = true, ["DefaultValue"] = true, ["FacetEnabled"] = true, ["SearchEnabled"] = true, ["SortEnabled"] = true, ["ReturnEnabled"] = true, nil }
@@ -1096,8 +1470,14 @@ end
 -- * ReturnEnabled [Boolean] <p>Whether the contents of the field can be returned in the search results.</p>
 -- @return LiteralOptions structure as a key-value pair table
 function M.LiteralOptions(args)
-	assert(args, "You must provdide an argument table when creating LiteralOptions")
-	local t = { 
+	assert(args, "You must provide an argument table when creating LiteralOptions")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["SourceField"] = args["SourceField"],
 		["DefaultValue"] = args["DefaultValue"],
 		["FacetEnabled"] = args["FacetEnabled"],
@@ -1105,8 +1485,13 @@ function M.LiteralOptions(args)
 		["SortEnabled"] = args["SortEnabled"],
 		["ReturnEnabled"] = args["ReturnEnabled"],
 	}
-	asserts.AssertLiteralOptions(t)
-	return t
+	asserts.AssertLiteralOptions(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateDomainResponse = { ["DomainStatus"] = true, nil }
@@ -1127,12 +1512,23 @@ end
 -- * DomainStatus [DomainStatus] 
 -- @return CreateDomainResponse structure as a key-value pair table
 function M.CreateDomainResponse(args)
-	assert(args, "You must provdide an argument table when creating CreateDomainResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateDomainResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DomainStatus"] = args["DomainStatus"],
 	}
-	asserts.AssertCreateDomainResponse(t)
-	return t
+	asserts.AssertCreateDomainResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ServiceEndpoint = { ["Endpoint"] = true, nil }
@@ -1153,12 +1549,23 @@ end
 -- * Endpoint [ServiceUrl] 
 -- @return ServiceEndpoint structure as a key-value pair table
 function M.ServiceEndpoint(args)
-	assert(args, "You must provdide an argument table when creating ServiceEndpoint")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ServiceEndpoint")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Endpoint"] = args["Endpoint"],
 	}
-	asserts.AssertServiceEndpoint(t)
-	return t
+	asserts.AssertServiceEndpoint(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.BaseException = { ["Message"] = true, ["Code"] = true, nil }
@@ -1181,13 +1588,24 @@ end
 -- * Code [ErrorCode] 
 -- @return BaseException structure as a key-value pair table
 function M.BaseException(args)
-	assert(args, "You must provdide an argument table when creating BaseException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating BaseException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Message"] = args["Message"],
 		["Code"] = args["Code"],
 	}
-	asserts.AssertBaseException(t)
-	return t
+	asserts.AssertBaseException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteSuggesterRequest = { ["SuggesterName"] = true, ["DomainName"] = true, nil }
@@ -1214,13 +1632,24 @@ end
 -- Required key: SuggesterName
 -- @return DeleteSuggesterRequest structure as a key-value pair table
 function M.DeleteSuggesterRequest(args)
-	assert(args, "You must provdide an argument table when creating DeleteSuggesterRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteSuggesterRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["SuggesterName"] = args["SuggesterName"],
 		["DomainName"] = args["DomainName"],
 	}
-	asserts.AssertDeleteSuggesterRequest(t)
-	return t
+	asserts.AssertDeleteSuggesterRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeExpressionsRequest = { ["ExpressionNames"] = true, ["Deployed"] = true, ["DomainName"] = true, nil }
@@ -1247,14 +1676,25 @@ end
 -- Required key: DomainName
 -- @return DescribeExpressionsRequest structure as a key-value pair table
 function M.DescribeExpressionsRequest(args)
-	assert(args, "You must provdide an argument table when creating DescribeExpressionsRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeExpressionsRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ExpressionNames"] = args["ExpressionNames"],
 		["Deployed"] = args["Deployed"],
 		["DomainName"] = args["DomainName"],
 	}
-	asserts.AssertDescribeExpressionsRequest(t)
-	return t
+	asserts.AssertDescribeExpressionsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.LatLonOptions = { ["SourceField"] = true, ["DefaultValue"] = true, ["FacetEnabled"] = true, ["SearchEnabled"] = true, ["SortEnabled"] = true, ["ReturnEnabled"] = true, nil }
@@ -1285,8 +1725,14 @@ end
 -- * ReturnEnabled [Boolean] <p>Whether the contents of the field can be returned in the search results.</p>
 -- @return LatLonOptions structure as a key-value pair table
 function M.LatLonOptions(args)
-	assert(args, "You must provdide an argument table when creating LatLonOptions")
-	local t = { 
+	assert(args, "You must provide an argument table when creating LatLonOptions")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["SourceField"] = args["SourceField"],
 		["DefaultValue"] = args["DefaultValue"],
 		["FacetEnabled"] = args["FacetEnabled"],
@@ -1294,8 +1740,13 @@ function M.LatLonOptions(args)
 		["SortEnabled"] = args["SortEnabled"],
 		["ReturnEnabled"] = args["ReturnEnabled"],
 	}
-	asserts.AssertLatLonOptions(t)
-	return t
+	asserts.AssertLatLonOptions(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DateOptions = { ["SourceField"] = true, ["DefaultValue"] = true, ["FacetEnabled"] = true, ["SearchEnabled"] = true, ["SortEnabled"] = true, ["ReturnEnabled"] = true, nil }
@@ -1326,8 +1777,14 @@ end
 -- * ReturnEnabled [Boolean] <p>Whether the contents of the field can be returned in the search results.</p>
 -- @return DateOptions structure as a key-value pair table
 function M.DateOptions(args)
-	assert(args, "You must provdide an argument table when creating DateOptions")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DateOptions")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["SourceField"] = args["SourceField"],
 		["DefaultValue"] = args["DefaultValue"],
 		["FacetEnabled"] = args["FacetEnabled"],
@@ -1335,8 +1792,13 @@ function M.DateOptions(args)
 		["SortEnabled"] = args["SortEnabled"],
 		["ReturnEnabled"] = args["ReturnEnabled"],
 	}
-	asserts.AssertDateOptions(t)
-	return t
+	asserts.AssertDateOptions(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DefineIndexFieldRequest = { ["IndexField"] = true, ["DomainName"] = true, nil }
@@ -1363,13 +1825,24 @@ end
 -- Required key: IndexField
 -- @return DefineIndexFieldRequest structure as a key-value pair table
 function M.DefineIndexFieldRequest(args)
-	assert(args, "You must provdide an argument table when creating DefineIndexFieldRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DefineIndexFieldRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["IndexField"] = args["IndexField"],
 		["DomainName"] = args["DomainName"],
 	}
-	asserts.AssertDefineIndexFieldRequest(t)
-	return t
+	asserts.AssertDefineIndexFieldRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeScalingParametersResponse = { ["ScalingParameters"] = true, nil }
@@ -1392,12 +1865,23 @@ end
 -- Required key: ScalingParameters
 -- @return DescribeScalingParametersResponse structure as a key-value pair table
 function M.DescribeScalingParametersResponse(args)
-	assert(args, "You must provdide an argument table when creating DescribeScalingParametersResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeScalingParametersResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ScalingParameters"] = args["ScalingParameters"],
 	}
-	asserts.AssertDescribeScalingParametersResponse(t)
-	return t
+	asserts.AssertDescribeScalingParametersResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateDomainRequest = { ["DomainName"] = true, nil }
@@ -1420,12 +1904,23 @@ end
 -- Required key: DomainName
 -- @return CreateDomainRequest structure as a key-value pair table
 function M.CreateDomainRequest(args)
-	assert(args, "You must provdide an argument table when creating CreateDomainRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateDomainRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DomainName"] = args["DomainName"],
 	}
-	asserts.AssertCreateDomainRequest(t)
-	return t
+	asserts.AssertCreateDomainRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Limits = { ["MaximumReplicationCount"] = true, ["MaximumPartitionCount"] = true, nil }
@@ -1452,13 +1947,24 @@ end
 -- Required key: MaximumPartitionCount
 -- @return Limits structure as a key-value pair table
 function M.Limits(args)
-	assert(args, "You must provdide an argument table when creating Limits")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Limits")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["MaximumReplicationCount"] = args["MaximumReplicationCount"],
 		["MaximumPartitionCount"] = args["MaximumPartitionCount"],
 	}
-	asserts.AssertLimits(t)
-	return t
+	asserts.AssertLimits(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InternalException = { nil }
@@ -1477,11 +1983,22 @@ end
 -- Valid keys:
 -- @return InternalException structure as a key-value pair table
 function M.InternalException(args)
-	assert(args, "You must provdide an argument table when creating InternalException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InternalException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertInternalException(t)
-	return t
+	asserts.AssertInternalException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DomainStatus = { ["SearchInstanceType"] = true, ["DomainId"] = true, ["Limits"] = true, ["Created"] = true, ["Deleted"] = true, ["SearchInstanceCount"] = true, ["DomainName"] = true, ["SearchService"] = true, ["RequiresIndexDocuments"] = true, ["Processing"] = true, ["DocService"] = true, ["ARN"] = true, ["SearchPartitionCount"] = true, nil }
@@ -1532,8 +2049,14 @@ end
 -- Required key: RequiresIndexDocuments
 -- @return DomainStatus structure as a key-value pair table
 function M.DomainStatus(args)
-	assert(args, "You must provdide an argument table when creating DomainStatus")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DomainStatus")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["SearchInstanceType"] = args["SearchInstanceType"],
 		["DomainId"] = args["DomainId"],
 		["Limits"] = args["Limits"],
@@ -1548,8 +2071,13 @@ function M.DomainStatus(args)
 		["ARN"] = args["ARN"],
 		["SearchPartitionCount"] = args["SearchPartitionCount"],
 	}
-	asserts.AssertDomainStatus(t)
-	return t
+	asserts.AssertDomainStatus(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdateServiceAccessPoliciesResponse = { ["AccessPolicies"] = true, nil }
@@ -1572,12 +2100,23 @@ end
 -- Required key: AccessPolicies
 -- @return UpdateServiceAccessPoliciesResponse structure as a key-value pair table
 function M.UpdateServiceAccessPoliciesResponse(args)
-	assert(args, "You must provdide an argument table when creating UpdateServiceAccessPoliciesResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateServiceAccessPoliciesResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["AccessPolicies"] = args["AccessPolicies"],
 	}
-	asserts.AssertUpdateServiceAccessPoliciesResponse(t)
-	return t
+	asserts.AssertUpdateServiceAccessPoliciesResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Expression = { ["ExpressionName"] = true, ["ExpressionValue"] = true, nil }
@@ -1604,13 +2143,24 @@ end
 -- Required key: ExpressionValue
 -- @return Expression structure as a key-value pair table
 function M.Expression(args)
-	assert(args, "You must provdide an argument table when creating Expression")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Expression")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ExpressionName"] = args["ExpressionName"],
 		["ExpressionValue"] = args["ExpressionValue"],
 	}
-	asserts.AssertExpression(t)
-	return t
+	asserts.AssertExpression(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DefineSuggesterResponse = { ["Suggester"] = true, nil }
@@ -1633,12 +2183,23 @@ end
 -- Required key: Suggester
 -- @return DefineSuggesterResponse structure as a key-value pair table
 function M.DefineSuggesterResponse(args)
-	assert(args, "You must provdide an argument table when creating DefineSuggesterResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DefineSuggesterResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Suggester"] = args["Suggester"],
 	}
-	asserts.AssertDefineSuggesterResponse(t)
-	return t
+	asserts.AssertDefineSuggesterResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AnalysisScheme = { ["AnalysisSchemeLanguage"] = true, ["AnalysisSchemeName"] = true, ["AnalysisOptions"] = true, nil }
@@ -1667,14 +2228,25 @@ end
 -- Required key: AnalysisSchemeLanguage
 -- @return AnalysisScheme structure as a key-value pair table
 function M.AnalysisScheme(args)
-	assert(args, "You must provdide an argument table when creating AnalysisScheme")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AnalysisScheme")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["AnalysisSchemeLanguage"] = args["AnalysisSchemeLanguage"],
 		["AnalysisSchemeName"] = args["AnalysisSchemeName"],
 		["AnalysisOptions"] = args["AnalysisOptions"],
 	}
-	asserts.AssertAnalysisScheme(t)
-	return t
+	asserts.AssertAnalysisScheme(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AnalysisOptions = { ["AlgorithmicStemming"] = true, ["Synonyms"] = true, ["StemmingDictionary"] = true, ["Stopwords"] = true, ["JapaneseTokenizationDictionary"] = true, nil }
@@ -1703,16 +2275,27 @@ end
 -- * JapaneseTokenizationDictionary [String] <p>A JSON array that contains a collection of terms, tokens, readings and part of speech for Japanese Tokenizaiton. The Japanese tokenization dictionary enables you to override the default tokenization for selected terms. This is only valid for Japanese language fields.</p>
 -- @return AnalysisOptions structure as a key-value pair table
 function M.AnalysisOptions(args)
-	assert(args, "You must provdide an argument table when creating AnalysisOptions")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AnalysisOptions")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["AlgorithmicStemming"] = args["AlgorithmicStemming"],
 		["Synonyms"] = args["Synonyms"],
 		["StemmingDictionary"] = args["StemmingDictionary"],
 		["Stopwords"] = args["Stopwords"],
 		["JapaneseTokenizationDictionary"] = args["JapaneseTokenizationDictionary"],
 	}
-	asserts.AssertAnalysisOptions(t)
-	return t
+	asserts.AssertAnalysisOptions(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteDomainResponse = { ["DomainStatus"] = true, nil }
@@ -1733,12 +2316,23 @@ end
 -- * DomainStatus [DomainStatus] 
 -- @return DeleteDomainResponse structure as a key-value pair table
 function M.DeleteDomainResponse(args)
-	assert(args, "You must provdide an argument table when creating DeleteDomainResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteDomainResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DomainStatus"] = args["DomainStatus"],
 	}
-	asserts.AssertDeleteDomainResponse(t)
-	return t
+	asserts.AssertDeleteDomainResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ResourceNotFoundException = { nil }
@@ -1757,11 +2351,22 @@ end
 -- Valid keys:
 -- @return ResourceNotFoundException structure as a key-value pair table
 function M.ResourceNotFoundException(args)
-	assert(args, "You must provdide an argument table when creating ResourceNotFoundException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ResourceNotFoundException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertResourceNotFoundException(t)
-	return t
+	asserts.AssertResourceNotFoundException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeServiceAccessPoliciesResponse = { ["AccessPolicies"] = true, nil }
@@ -1784,12 +2389,23 @@ end
 -- Required key: AccessPolicies
 -- @return DescribeServiceAccessPoliciesResponse structure as a key-value pair table
 function M.DescribeServiceAccessPoliciesResponse(args)
-	assert(args, "You must provdide an argument table when creating DescribeServiceAccessPoliciesResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeServiceAccessPoliciesResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["AccessPolicies"] = args["AccessPolicies"],
 	}
-	asserts.AssertDescribeServiceAccessPoliciesResponse(t)
-	return t
+	asserts.AssertDescribeServiceAccessPoliciesResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DisabledOperationException = { nil }
@@ -1808,11 +2424,22 @@ end
 -- Valid keys:
 -- @return DisabledOperationException structure as a key-value pair table
 function M.DisabledOperationException(args)
-	assert(args, "You must provdide an argument table when creating DisabledOperationException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DisabledOperationException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertDisabledOperationException(t)
-	return t
+	asserts.AssertDisabledOperationException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.TextArrayOptions = { ["SourceFields"] = true, ["DefaultValue"] = true, ["HighlightEnabled"] = true, ["ReturnEnabled"] = true, ["AnalysisScheme"] = true, nil }
@@ -1841,16 +2468,27 @@ end
 -- * AnalysisScheme [Word] <p>The name of an analysis scheme for a <code>text-array</code> field.</p>
 -- @return TextArrayOptions structure as a key-value pair table
 function M.TextArrayOptions(args)
-	assert(args, "You must provdide an argument table when creating TextArrayOptions")
-	local t = { 
+	assert(args, "You must provide an argument table when creating TextArrayOptions")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["SourceFields"] = args["SourceFields"],
 		["DefaultValue"] = args["DefaultValue"],
 		["HighlightEnabled"] = args["HighlightEnabled"],
 		["ReturnEnabled"] = args["ReturnEnabled"],
 		["AnalysisScheme"] = args["AnalysisScheme"],
 	}
-	asserts.AssertTextArrayOptions(t)
-	return t
+	asserts.AssertTextArrayOptions(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeAvailabilityOptionsResponse = { ["AvailabilityOptions"] = true, nil }
@@ -1871,12 +2509,23 @@ end
 -- * AvailabilityOptions [AvailabilityOptionsStatus] <p>The availability options configured for the domain. Indicates whether Multi-AZ is enabled for the domain. </p>
 -- @return DescribeAvailabilityOptionsResponse structure as a key-value pair table
 function M.DescribeAvailabilityOptionsResponse(args)
-	assert(args, "You must provdide an argument table when creating DescribeAvailabilityOptionsResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeAvailabilityOptionsResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["AvailabilityOptions"] = args["AvailabilityOptions"],
 	}
-	asserts.AssertDescribeAvailabilityOptionsResponse(t)
-	return t
+	asserts.AssertDescribeAvailabilityOptionsResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.IndexFieldStatus = { ["Status"] = true, ["Options"] = true, nil }
@@ -1903,13 +2552,24 @@ end
 -- Required key: Status
 -- @return IndexFieldStatus structure as a key-value pair table
 function M.IndexFieldStatus(args)
-	assert(args, "You must provdide an argument table when creating IndexFieldStatus")
-	local t = { 
+	assert(args, "You must provide an argument table when creating IndexFieldStatus")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Status"] = args["Status"],
 		["Options"] = args["Options"],
 	}
-	asserts.AssertIndexFieldStatus(t)
-	return t
+	asserts.AssertIndexFieldStatus(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeAnalysisSchemesRequest = { ["AnalysisSchemeNames"] = true, ["Deployed"] = true, ["DomainName"] = true, nil }
@@ -1936,14 +2596,25 @@ end
 -- Required key: DomainName
 -- @return DescribeAnalysisSchemesRequest structure as a key-value pair table
 function M.DescribeAnalysisSchemesRequest(args)
-	assert(args, "You must provdide an argument table when creating DescribeAnalysisSchemesRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeAnalysisSchemesRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["AnalysisSchemeNames"] = args["AnalysisSchemeNames"],
 		["Deployed"] = args["Deployed"],
 		["DomainName"] = args["DomainName"],
 	}
-	asserts.AssertDescribeAnalysisSchemesRequest(t)
-	return t
+	asserts.AssertDescribeAnalysisSchemesRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteExpressionRequest = { ["ExpressionName"] = true, ["DomainName"] = true, nil }
@@ -1970,13 +2641,24 @@ end
 -- Required key: ExpressionName
 -- @return DeleteExpressionRequest structure as a key-value pair table
 function M.DeleteExpressionRequest(args)
-	assert(args, "You must provdide an argument table when creating DeleteExpressionRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteExpressionRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ExpressionName"] = args["ExpressionName"],
 		["DomainName"] = args["DomainName"],
 	}
-	asserts.AssertDeleteExpressionRequest(t)
-	return t
+	asserts.AssertDeleteExpressionRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidTypeException = { nil }
@@ -1995,11 +2677,22 @@ end
 -- Valid keys:
 -- @return InvalidTypeException structure as a key-value pair table
 function M.InvalidTypeException(args)
-	assert(args, "You must provdide an argument table when creating InvalidTypeException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidTypeException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertInvalidTypeException(t)
-	return t
+	asserts.AssertInvalidTypeException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.OptionStatus = { ["PendingDeletion"] = true, ["State"] = true, ["CreationDate"] = true, ["UpdateVersion"] = true, ["UpdateDate"] = true, nil }
@@ -2034,16 +2727,27 @@ end
 -- Required key: State
 -- @return OptionStatus structure as a key-value pair table
 function M.OptionStatus(args)
-	assert(args, "You must provdide an argument table when creating OptionStatus")
-	local t = { 
+	assert(args, "You must provide an argument table when creating OptionStatus")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["PendingDeletion"] = args["PendingDeletion"],
 		["State"] = args["State"],
 		["CreationDate"] = args["CreationDate"],
 		["UpdateVersion"] = args["UpdateVersion"],
 		["UpdateDate"] = args["UpdateDate"],
 	}
-	asserts.AssertOptionStatus(t)
-	return t
+	asserts.AssertOptionStatus(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.IndexField = { ["IntArrayOptions"] = true, ["LiteralArrayOptions"] = true, ["LiteralOptions"] = true, ["LatLonOptions"] = true, ["DateArrayOptions"] = true, ["DoubleArrayOptions"] = true, ["TextArrayOptions"] = true, ["IndexFieldName"] = true, ["DoubleOptions"] = true, ["DateOptions"] = true, ["IndexFieldType"] = true, ["IntOptions"] = true, ["TextOptions"] = true, nil }
@@ -2092,8 +2796,14 @@ end
 -- Required key: IndexFieldType
 -- @return IndexField structure as a key-value pair table
 function M.IndexField(args)
-	assert(args, "You must provdide an argument table when creating IndexField")
-	local t = { 
+	assert(args, "You must provide an argument table when creating IndexField")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["IntArrayOptions"] = args["IntArrayOptions"],
 		["LiteralArrayOptions"] = args["LiteralArrayOptions"],
 		["LiteralOptions"] = args["LiteralOptions"],
@@ -2108,8 +2818,13 @@ function M.IndexField(args)
 		["IntOptions"] = args["IntOptions"],
 		["TextOptions"] = args["TextOptions"],
 	}
-	asserts.AssertIndexField(t)
-	return t
+	asserts.AssertIndexField(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeSuggestersRequest = { ["SuggesterNames"] = true, ["Deployed"] = true, ["DomainName"] = true, nil }
@@ -2136,14 +2851,25 @@ end
 -- Required key: DomainName
 -- @return DescribeSuggestersRequest structure as a key-value pair table
 function M.DescribeSuggestersRequest(args)
-	assert(args, "You must provdide an argument table when creating DescribeSuggestersRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeSuggestersRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["SuggesterNames"] = args["SuggesterNames"],
 		["Deployed"] = args["Deployed"],
 		["DomainName"] = args["DomainName"],
 	}
-	asserts.AssertDescribeSuggestersRequest(t)
-	return t
+	asserts.AssertDescribeSuggestersRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeIndexFieldsRequest = { ["Deployed"] = true, ["FieldNames"] = true, ["DomainName"] = true, nil }
@@ -2170,14 +2896,25 @@ end
 -- Required key: DomainName
 -- @return DescribeIndexFieldsRequest structure as a key-value pair table
 function M.DescribeIndexFieldsRequest(args)
-	assert(args, "You must provdide an argument table when creating DescribeIndexFieldsRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeIndexFieldsRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Deployed"] = args["Deployed"],
 		["FieldNames"] = args["FieldNames"],
 		["DomainName"] = args["DomainName"],
 	}
-	asserts.AssertDescribeIndexFieldsRequest(t)
-	return t
+	asserts.AssertDescribeIndexFieldsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ScalingParametersStatus = { ["Status"] = true, ["Options"] = true, nil }
@@ -2204,13 +2941,24 @@ end
 -- Required key: Status
 -- @return ScalingParametersStatus structure as a key-value pair table
 function M.ScalingParametersStatus(args)
-	assert(args, "You must provdide an argument table when creating ScalingParametersStatus")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ScalingParametersStatus")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Status"] = args["Status"],
 		["Options"] = args["Options"],
 	}
-	asserts.AssertScalingParametersStatus(t)
-	return t
+	asserts.AssertScalingParametersStatus(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.BuildSuggestersRequest = { ["DomainName"] = true, nil }
@@ -2233,12 +2981,23 @@ end
 -- Required key: DomainName
 -- @return BuildSuggestersRequest structure as a key-value pair table
 function M.BuildSuggestersRequest(args)
-	assert(args, "You must provdide an argument table when creating BuildSuggestersRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating BuildSuggestersRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DomainName"] = args["DomainName"],
 	}
-	asserts.AssertBuildSuggestersRequest(t)
-	return t
+	asserts.AssertBuildSuggestersRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DefineAnalysisSchemeRequest = { ["AnalysisScheme"] = true, ["DomainName"] = true, nil }
@@ -2265,13 +3024,24 @@ end
 -- Required key: AnalysisScheme
 -- @return DefineAnalysisSchemeRequest structure as a key-value pair table
 function M.DefineAnalysisSchemeRequest(args)
-	assert(args, "You must provdide an argument table when creating DefineAnalysisSchemeRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DefineAnalysisSchemeRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["AnalysisScheme"] = args["AnalysisScheme"],
 		["DomainName"] = args["DomainName"],
 	}
-	asserts.AssertDefineAnalysisSchemeRequest(t)
-	return t
+	asserts.AssertDefineAnalysisSchemeRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.IntArrayOptions = { ["SourceFields"] = true, ["FacetEnabled"] = true, ["DefaultValue"] = true, ["ReturnEnabled"] = true, ["SearchEnabled"] = true, nil }
@@ -2300,16 +3070,27 @@ end
 -- * SearchEnabled [Boolean] <p>Whether the contents of the field are searchable.</p>
 -- @return IntArrayOptions structure as a key-value pair table
 function M.IntArrayOptions(args)
-	assert(args, "You must provdide an argument table when creating IntArrayOptions")
-	local t = { 
+	assert(args, "You must provide an argument table when creating IntArrayOptions")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["SourceFields"] = args["SourceFields"],
 		["FacetEnabled"] = args["FacetEnabled"],
 		["DefaultValue"] = args["DefaultValue"],
 		["ReturnEnabled"] = args["ReturnEnabled"],
 		["SearchEnabled"] = args["SearchEnabled"],
 	}
-	asserts.AssertIntArrayOptions(t)
-	return t
+	asserts.AssertIntArrayOptions(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.TextOptions = { ["AnalysisScheme"] = true, ["SourceField"] = true, ["DefaultValue"] = true, ["HighlightEnabled"] = true, ["SortEnabled"] = true, ["ReturnEnabled"] = true, nil }
@@ -2340,8 +3121,14 @@ end
 -- * ReturnEnabled [Boolean] <p>Whether the contents of the field can be returned in the search results.</p>
 -- @return TextOptions structure as a key-value pair table
 function M.TextOptions(args)
-	assert(args, "You must provdide an argument table when creating TextOptions")
-	local t = { 
+	assert(args, "You must provide an argument table when creating TextOptions")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["AnalysisScheme"] = args["AnalysisScheme"],
 		["SourceField"] = args["SourceField"],
 		["DefaultValue"] = args["DefaultValue"],
@@ -2349,8 +3136,13 @@ function M.TextOptions(args)
 		["SortEnabled"] = args["SortEnabled"],
 		["ReturnEnabled"] = args["ReturnEnabled"],
 	}
-	asserts.AssertTextOptions(t)
-	return t
+	asserts.AssertTextOptions(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.IndexDocumentsRequest = { ["DomainName"] = true, nil }
@@ -2373,12 +3165,23 @@ end
 -- Required key: DomainName
 -- @return IndexDocumentsRequest structure as a key-value pair table
 function M.IndexDocumentsRequest(args)
-	assert(args, "You must provdide an argument table when creating IndexDocumentsRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating IndexDocumentsRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DomainName"] = args["DomainName"],
 	}
-	asserts.AssertIndexDocumentsRequest(t)
-	return t
+	asserts.AssertIndexDocumentsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeAvailabilityOptionsRequest = { ["Deployed"] = true, ["DomainName"] = true, nil }
@@ -2403,13 +3206,24 @@ end
 -- Required key: DomainName
 -- @return DescribeAvailabilityOptionsRequest structure as a key-value pair table
 function M.DescribeAvailabilityOptionsRequest(args)
-	assert(args, "You must provdide an argument table when creating DescribeAvailabilityOptionsRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeAvailabilityOptionsRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Deployed"] = args["Deployed"],
 		["DomainName"] = args["DomainName"],
 	}
-	asserts.AssertDescribeAvailabilityOptionsRequest(t)
-	return t
+	asserts.AssertDescribeAvailabilityOptionsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DefineIndexFieldResponse = { ["IndexField"] = true, nil }
@@ -2432,12 +3246,23 @@ end
 -- Required key: IndexField
 -- @return DefineIndexFieldResponse structure as a key-value pair table
 function M.DefineIndexFieldResponse(args)
-	assert(args, "You must provdide an argument table when creating DefineIndexFieldResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DefineIndexFieldResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["IndexField"] = args["IndexField"],
 	}
-	asserts.AssertDefineIndexFieldResponse(t)
-	return t
+	asserts.AssertDefineIndexFieldResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeIndexFieldsResponse = { ["IndexFields"] = true, nil }
@@ -2460,12 +3285,23 @@ end
 -- Required key: IndexFields
 -- @return DescribeIndexFieldsResponse structure as a key-value pair table
 function M.DescribeIndexFieldsResponse(args)
-	assert(args, "You must provdide an argument table when creating DescribeIndexFieldsResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeIndexFieldsResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["IndexFields"] = args["IndexFields"],
 	}
-	asserts.AssertDescribeIndexFieldsResponse(t)
-	return t
+	asserts.AssertDescribeIndexFieldsResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DoubleArrayOptions = { ["SourceFields"] = true, ["FacetEnabled"] = true, ["DefaultValue"] = true, ["ReturnEnabled"] = true, ["SearchEnabled"] = true, nil }
@@ -2494,16 +3330,27 @@ end
 -- * SearchEnabled [Boolean] <p>Whether the contents of the field are searchable.</p>
 -- @return DoubleArrayOptions structure as a key-value pair table
 function M.DoubleArrayOptions(args)
-	assert(args, "You must provdide an argument table when creating DoubleArrayOptions")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DoubleArrayOptions")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["SourceFields"] = args["SourceFields"],
 		["FacetEnabled"] = args["FacetEnabled"],
 		["DefaultValue"] = args["DefaultValue"],
 		["ReturnEnabled"] = args["ReturnEnabled"],
 		["SearchEnabled"] = args["SearchEnabled"],
 	}
-	asserts.AssertDoubleArrayOptions(t)
-	return t
+	asserts.AssertDoubleArrayOptions(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeDomainsRequest = { ["DomainNames"] = true, nil }
@@ -2524,12 +3371,23 @@ end
 -- * DomainNames [DomainNameList] <p>The names of the domains you want to include in the response.</p>
 -- @return DescribeDomainsRequest structure as a key-value pair table
 function M.DescribeDomainsRequest(args)
-	assert(args, "You must provdide an argument table when creating DescribeDomainsRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeDomainsRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DomainNames"] = args["DomainNames"],
 	}
-	asserts.AssertDescribeDomainsRequest(t)
-	return t
+	asserts.AssertDescribeDomainsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdateAvailabilityOptionsRequest = { ["MultiAZ"] = true, ["DomainName"] = true, nil }
@@ -2556,13 +3414,24 @@ end
 -- Required key: MultiAZ
 -- @return UpdateAvailabilityOptionsRequest structure as a key-value pair table
 function M.UpdateAvailabilityOptionsRequest(args)
-	assert(args, "You must provdide an argument table when creating UpdateAvailabilityOptionsRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateAvailabilityOptionsRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["MultiAZ"] = args["MultiAZ"],
 		["DomainName"] = args["DomainName"],
 	}
-	asserts.AssertUpdateAvailabilityOptionsRequest(t)
-	return t
+	asserts.AssertUpdateAvailabilityOptionsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.BuildSuggestersResponse = { ["FieldNames"] = true, nil }
@@ -2583,12 +3452,23 @@ end
 -- * FieldNames [FieldNameList] 
 -- @return BuildSuggestersResponse structure as a key-value pair table
 function M.BuildSuggestersResponse(args)
-	assert(args, "You must provdide an argument table when creating BuildSuggestersResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating BuildSuggestersResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["FieldNames"] = args["FieldNames"],
 	}
-	asserts.AssertBuildSuggestersResponse(t)
-	return t
+	asserts.AssertBuildSuggestersResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.IntOptions = { ["SourceField"] = true, ["DefaultValue"] = true, ["FacetEnabled"] = true, ["SearchEnabled"] = true, ["SortEnabled"] = true, ["ReturnEnabled"] = true, nil }
@@ -2619,8 +3499,14 @@ end
 -- * ReturnEnabled [Boolean] <p>Whether the contents of the field can be returned in the search results.</p>
 -- @return IntOptions structure as a key-value pair table
 function M.IntOptions(args)
-	assert(args, "You must provdide an argument table when creating IntOptions")
-	local t = { 
+	assert(args, "You must provide an argument table when creating IntOptions")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["SourceField"] = args["SourceField"],
 		["DefaultValue"] = args["DefaultValue"],
 		["FacetEnabled"] = args["FacetEnabled"],
@@ -2628,8 +3514,13 @@ function M.IntOptions(args)
 		["SortEnabled"] = args["SortEnabled"],
 		["ReturnEnabled"] = args["ReturnEnabled"],
 	}
-	asserts.AssertIntOptions(t)
-	return t
+	asserts.AssertIntOptions(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeSuggestersResponse = { ["Suggesters"] = true, nil }
@@ -2652,12 +3543,23 @@ end
 -- Required key: Suggesters
 -- @return DescribeSuggestersResponse structure as a key-value pair table
 function M.DescribeSuggestersResponse(args)
-	assert(args, "You must provdide an argument table when creating DescribeSuggestersResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeSuggestersResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Suggesters"] = args["Suggesters"],
 	}
-	asserts.AssertDescribeSuggestersResponse(t)
-	return t
+	asserts.AssertDescribeSuggestersResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 function asserts.AssertOptionState(str)
@@ -3237,8 +4139,11 @@ function M.DescribeServiceAccessPoliciesAsync(DescribeServiceAccessPoliciesReque
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DescribeServiceAccessPolicies",
 	}
+	for header,value in pairs(DescribeServiceAccessPoliciesRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeServiceAccessPoliciesRequest, headers, settings, cb)
 	else
@@ -3269,8 +4174,11 @@ function M.UpdateScalingParametersAsync(UpdateScalingParametersRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".UpdateScalingParameters",
 	}
+	for header,value in pairs(UpdateScalingParametersRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateScalingParametersRequest, headers, settings, cb)
 	else
@@ -3301,8 +4209,11 @@ function M.DescribeDomainsAsync(DescribeDomainsRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DescribeDomains",
 	}
+	for header,value in pairs(DescribeDomainsRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeDomainsRequest, headers, settings, cb)
 	else
@@ -3333,8 +4244,11 @@ function M.DescribeScalingParametersAsync(DescribeScalingParametersRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DescribeScalingParameters",
 	}
+	for header,value in pairs(DescribeScalingParametersRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeScalingParametersRequest, headers, settings, cb)
 	else
@@ -3365,8 +4279,11 @@ function M.DescribeExpressionsAsync(DescribeExpressionsRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DescribeExpressions",
 	}
+	for header,value in pairs(DescribeExpressionsRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeExpressionsRequest, headers, settings, cb)
 	else
@@ -3397,8 +4314,11 @@ function M.DescribeIndexFieldsAsync(DescribeIndexFieldsRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DescribeIndexFields",
 	}
+	for header,value in pairs(DescribeIndexFieldsRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeIndexFieldsRequest, headers, settings, cb)
 	else
@@ -3428,7 +4348,8 @@ function M.ListDomainNamesAsync(cb)
 		[request_headers.AMZ_TARGET_HEADER] = ".ListDomainNames",
 	}
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", {}, headers, settings, cb)
 	else
@@ -3458,8 +4379,11 @@ function M.DescribeAvailabilityOptionsAsync(DescribeAvailabilityOptionsRequest, 
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DescribeAvailabilityOptions",
 	}
+	for header,value in pairs(DescribeAvailabilityOptionsRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeAvailabilityOptionsRequest, headers, settings, cb)
 	else
@@ -3490,8 +4414,11 @@ function M.DefineIndexFieldAsync(DefineIndexFieldRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DefineIndexField",
 	}
+	for header,value in pairs(DefineIndexFieldRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DefineIndexFieldRequest, headers, settings, cb)
 	else
@@ -3522,8 +4449,11 @@ function M.DeleteAnalysisSchemeAsync(DeleteAnalysisSchemeRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DeleteAnalysisScheme",
 	}
+	for header,value in pairs(DeleteAnalysisSchemeRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteAnalysisSchemeRequest, headers, settings, cb)
 	else
@@ -3554,8 +4484,11 @@ function M.UpdateAvailabilityOptionsAsync(UpdateAvailabilityOptionsRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".UpdateAvailabilityOptions",
 	}
+	for header,value in pairs(UpdateAvailabilityOptionsRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateAvailabilityOptionsRequest, headers, settings, cb)
 	else
@@ -3586,8 +4519,11 @@ function M.DeleteExpressionAsync(DeleteExpressionRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DeleteExpression",
 	}
+	for header,value in pairs(DeleteExpressionRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteExpressionRequest, headers, settings, cb)
 	else
@@ -3618,8 +4554,11 @@ function M.DescribeAnalysisSchemesAsync(DescribeAnalysisSchemesRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DescribeAnalysisSchemes",
 	}
+	for header,value in pairs(DescribeAnalysisSchemesRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeAnalysisSchemesRequest, headers, settings, cb)
 	else
@@ -3650,8 +4589,11 @@ function M.DefineSuggesterAsync(DefineSuggesterRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DefineSuggester",
 	}
+	for header,value in pairs(DefineSuggesterRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DefineSuggesterRequest, headers, settings, cb)
 	else
@@ -3682,8 +4624,11 @@ function M.CreateDomainAsync(CreateDomainRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".CreateDomain",
 	}
+	for header,value in pairs(CreateDomainRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateDomainRequest, headers, settings, cb)
 	else
@@ -3714,8 +4659,11 @@ function M.IndexDocumentsAsync(IndexDocumentsRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".IndexDocuments",
 	}
+	for header,value in pairs(IndexDocumentsRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", IndexDocumentsRequest, headers, settings, cb)
 	else
@@ -3746,8 +4694,11 @@ function M.DescribeSuggestersAsync(DescribeSuggestersRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DescribeSuggesters",
 	}
+	for header,value in pairs(DescribeSuggestersRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeSuggestersRequest, headers, settings, cb)
 	else
@@ -3778,8 +4729,11 @@ function M.UpdateServiceAccessPoliciesAsync(UpdateServiceAccessPoliciesRequest, 
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".UpdateServiceAccessPolicies",
 	}
+	for header,value in pairs(UpdateServiceAccessPoliciesRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateServiceAccessPoliciesRequest, headers, settings, cb)
 	else
@@ -3810,8 +4764,11 @@ function M.DeleteIndexFieldAsync(DeleteIndexFieldRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DeleteIndexField",
 	}
+	for header,value in pairs(DeleteIndexFieldRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteIndexFieldRequest, headers, settings, cb)
 	else
@@ -3842,8 +4799,11 @@ function M.DefineAnalysisSchemeAsync(DefineAnalysisSchemeRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DefineAnalysisScheme",
 	}
+	for header,value in pairs(DefineAnalysisSchemeRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DefineAnalysisSchemeRequest, headers, settings, cb)
 	else
@@ -3874,8 +4834,11 @@ function M.DefineExpressionAsync(DefineExpressionRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DefineExpression",
 	}
+	for header,value in pairs(DefineExpressionRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DefineExpressionRequest, headers, settings, cb)
 	else
@@ -3906,8 +4869,11 @@ function M.BuildSuggestersAsync(BuildSuggestersRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".BuildSuggesters",
 	}
+	for header,value in pairs(BuildSuggestersRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", BuildSuggestersRequest, headers, settings, cb)
 	else
@@ -3938,8 +4904,11 @@ function M.DeleteDomainAsync(DeleteDomainRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DeleteDomain",
 	}
+	for header,value in pairs(DeleteDomainRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteDomainRequest, headers, settings, cb)
 	else
@@ -3970,8 +4939,11 @@ function M.DeleteSuggesterAsync(DeleteSuggesterRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DeleteSuggester",
 	}
+	for header,value in pairs(DeleteSuggesterRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteSuggesterRequest, headers, settings, cb)
 	else

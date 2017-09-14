@@ -39,12 +39,23 @@ end
 -- * message [errorMessage] <p>The message for the exception.</p>
 -- @return InvalidRequestException structure as a key-value pair table
 function M.InvalidRequestException(args)
-	assert(args, "You must provdide an argument table when creating InvalidRequestException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidRequestException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertInvalidRequestException(t)
-	return t
+	asserts.AssertInvalidRequestException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ServiceUnavailableException = { ["message"] = true, nil }
@@ -65,12 +76,23 @@ end
 -- * message [errorMessage] <p>The message for the exception.</p>
 -- @return ServiceUnavailableException structure as a key-value pair table
 function M.ServiceUnavailableException(args)
-	assert(args, "You must provdide an argument table when creating ServiceUnavailableException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ServiceUnavailableException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertServiceUnavailableException(t)
-	return t
+	asserts.AssertServiceUnavailableException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.RequestEntityTooLargeException = { ["message"] = true, nil }
@@ -91,12 +113,23 @@ end
 -- * message [ErrorMessage] <p>The message for the exception.</p>
 -- @return RequestEntityTooLargeException structure as a key-value pair table
 function M.RequestEntityTooLargeException(args)
-	assert(args, "You must provdide an argument table when creating RequestEntityTooLargeException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating RequestEntityTooLargeException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertRequestEntityTooLargeException(t)
-	return t
+	asserts.AssertRequestEntityTooLargeException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UnauthorizedException = { ["message"] = true, nil }
@@ -117,12 +150,23 @@ end
 -- * message [errorMessage] <p>The message for the exception.</p>
 -- @return UnauthorizedException structure as a key-value pair table
 function M.UnauthorizedException(args)
-	assert(args, "You must provdide an argument table when creating UnauthorizedException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UnauthorizedException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertUnauthorizedException(t)
-	return t
+	asserts.AssertUnauthorizedException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.PublishRequest = { ["topic"] = true, ["qos"] = true, ["payload"] = true, nil }
@@ -149,14 +193,27 @@ end
 -- Required key: topic
 -- @return PublishRequest structure as a key-value pair table
 function M.PublishRequest(args)
-	assert(args, "You must provdide an argument table when creating PublishRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating PublishRequest")
+    local query_args = { 
+        ["qos"] = args["qos"],
+    }
+    local uri_args = { 
+        ["{topic}"] = args["topic"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["topic"] = args["topic"],
 		["qos"] = args["qos"],
 		["payload"] = args["payload"],
 	}
-	asserts.AssertPublishRequest(t)
-	return t
+	asserts.AssertPublishRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdateThingShadowRequest = { ["thingName"] = true, ["payload"] = true, nil }
@@ -183,13 +240,25 @@ end
 -- Required key: payload
 -- @return UpdateThingShadowRequest structure as a key-value pair table
 function M.UpdateThingShadowRequest(args)
-	assert(args, "You must provdide an argument table when creating UpdateThingShadowRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateThingShadowRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{thingName}"] = args["thingName"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["thingName"] = args["thingName"],
 		["payload"] = args["payload"],
 	}
-	asserts.AssertUpdateThingShadowRequest(t)
-	return t
+	asserts.AssertUpdateThingShadowRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UnsupportedDocumentEncodingException = { ["message"] = true, nil }
@@ -210,12 +279,23 @@ end
 -- * message [errorMessage] <p>The message for the exception.</p>
 -- @return UnsupportedDocumentEncodingException structure as a key-value pair table
 function M.UnsupportedDocumentEncodingException(args)
-	assert(args, "You must provdide an argument table when creating UnsupportedDocumentEncodingException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UnsupportedDocumentEncodingException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertUnsupportedDocumentEncodingException(t)
-	return t
+	asserts.AssertUnsupportedDocumentEncodingException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdateThingShadowResponse = { ["payload"] = true, nil }
@@ -236,12 +316,23 @@ end
 -- * payload [JsonDocument] <p>The state information, in JSON format.</p>
 -- @return UpdateThingShadowResponse structure as a key-value pair table
 function M.UpdateThingShadowResponse(args)
-	assert(args, "You must provdide an argument table when creating UpdateThingShadowResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateThingShadowResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["payload"] = args["payload"],
 	}
-	asserts.AssertUpdateThingShadowResponse(t)
-	return t
+	asserts.AssertUpdateThingShadowResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetThingShadowRequest = { ["thingName"] = true, nil }
@@ -264,12 +355,24 @@ end
 -- Required key: thingName
 -- @return GetThingShadowRequest structure as a key-value pair table
 function M.GetThingShadowRequest(args)
-	assert(args, "You must provdide an argument table when creating GetThingShadowRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetThingShadowRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{thingName}"] = args["thingName"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["thingName"] = args["thingName"],
 	}
-	asserts.AssertGetThingShadowRequest(t)
-	return t
+	asserts.AssertGetThingShadowRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteThingShadowResponse = { ["payload"] = true, nil }
@@ -292,12 +395,23 @@ end
 -- Required key: payload
 -- @return DeleteThingShadowResponse structure as a key-value pair table
 function M.DeleteThingShadowResponse(args)
-	assert(args, "You must provdide an argument table when creating DeleteThingShadowResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteThingShadowResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["payload"] = args["payload"],
 	}
-	asserts.AssertDeleteThingShadowResponse(t)
-	return t
+	asserts.AssertDeleteThingShadowResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InternalFailureException = { ["message"] = true, nil }
@@ -318,12 +432,23 @@ end
 -- * message [errorMessage] <p>The message for the exception.</p>
 -- @return InternalFailureException structure as a key-value pair table
 function M.InternalFailureException(args)
-	assert(args, "You must provdide an argument table when creating InternalFailureException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InternalFailureException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertInternalFailureException(t)
-	return t
+	asserts.AssertInternalFailureException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ConflictException = { ["message"] = true, nil }
@@ -344,12 +469,23 @@ end
 -- * message [ErrorMessage] <p>The message for the exception.</p>
 -- @return ConflictException structure as a key-value pair table
 function M.ConflictException(args)
-	assert(args, "You must provdide an argument table when creating ConflictException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ConflictException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertConflictException(t)
-	return t
+	asserts.AssertConflictException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetThingShadowResponse = { ["payload"] = true, nil }
@@ -370,12 +506,23 @@ end
 -- * payload [JsonDocument] <p>The state information, in JSON format.</p>
 -- @return GetThingShadowResponse structure as a key-value pair table
 function M.GetThingShadowResponse(args)
-	assert(args, "You must provdide an argument table when creating GetThingShadowResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetThingShadowResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["payload"] = args["payload"],
 	}
-	asserts.AssertGetThingShadowResponse(t)
-	return t
+	asserts.AssertGetThingShadowResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.MethodNotAllowedException = { ["message"] = true, nil }
@@ -396,12 +543,23 @@ end
 -- * message [ErrorMessage] <p>The message for the exception.</p>
 -- @return MethodNotAllowedException structure as a key-value pair table
 function M.MethodNotAllowedException(args)
-	assert(args, "You must provdide an argument table when creating MethodNotAllowedException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating MethodNotAllowedException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertMethodNotAllowedException(t)
-	return t
+	asserts.AssertMethodNotAllowedException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ResourceNotFoundException = { ["message"] = true, nil }
@@ -422,12 +580,23 @@ end
 -- * message [errorMessage] <p>The message for the exception.</p>
 -- @return ResourceNotFoundException structure as a key-value pair table
 function M.ResourceNotFoundException(args)
-	assert(args, "You must provdide an argument table when creating ResourceNotFoundException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ResourceNotFoundException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertResourceNotFoundException(t)
-	return t
+	asserts.AssertResourceNotFoundException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ThrottlingException = { ["message"] = true, nil }
@@ -448,12 +617,23 @@ end
 -- * message [errorMessage] <p>The message for the exception.</p>
 -- @return ThrottlingException structure as a key-value pair table
 function M.ThrottlingException(args)
-	assert(args, "You must provdide an argument table when creating ThrottlingException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ThrottlingException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertThrottlingException(t)
-	return t
+	asserts.AssertThrottlingException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteThingShadowRequest = { ["thingName"] = true, nil }
@@ -476,12 +656,24 @@ end
 -- Required key: thingName
 -- @return DeleteThingShadowRequest structure as a key-value pair table
 function M.DeleteThingShadowRequest(args)
-	assert(args, "You must provdide an argument table when creating DeleteThingShadowRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteThingShadowRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{thingName}"] = args["thingName"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["thingName"] = args["thingName"],
 	}
-	asserts.AssertDeleteThingShadowRequest(t)
-	return t
+	asserts.AssertDeleteThingShadowRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 function asserts.AssertThingName(str)
@@ -614,8 +806,11 @@ function M.UpdateThingShadowAsync(UpdateThingShadowRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".UpdateThingShadow",
 	}
+	for header,value in pairs(UpdateThingShadowRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/things/{thingName}/shadow", UpdateThingShadowRequest, headers, settings, cb)
 	else
@@ -646,8 +841,11 @@ function M.GetThingShadowAsync(GetThingShadowRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".GetThingShadow",
 	}
+	for header,value in pairs(GetThingShadowRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
 	if request_handler then
 		request_handler(settings.uri, "/things/{thingName}/shadow", GetThingShadowRequest, headers, settings, cb)
 	else
@@ -678,8 +876,11 @@ function M.PublishAsync(PublishRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".Publish",
 	}
+	for header,value in pairs(PublishRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/topics/{topic}", PublishRequest, headers, settings, cb)
 	else
@@ -710,8 +911,11 @@ function M.DeleteThingShadowAsync(DeleteThingShadowRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DeleteThingShadow",
 	}
+	for header,value in pairs(DeleteThingShadowRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("DELETE")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE")
 	if request_handler then
 		request_handler(settings.uri, "/things/{thingName}/shadow", DeleteThingShadowRequest, headers, settings, cb)
 	else

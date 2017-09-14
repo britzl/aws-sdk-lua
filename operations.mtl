@@ -43,12 +43,26 @@ end
 {{/required}}
 -- @return {{name}} structure as a key-value pair table
 function M.{{name}}(args)
-	assert(args, "You must provdide an argument table when creating {{name}}")
-	local t = { {{#members}}
+	assert(args, "You must provide an argument table when creating {{name}}")
+    local query_args = { {{#query_string_members}}
+        ["{{locationName}}"] = args["{{name}}"],{{/query_string_members}}
+    }
+    local uri_args = { {{#uri_members}}
+        ["&#123;{{locationName}}&#125;"] = args["{{name}}"],{{/uri_members}}
+    }
+    local header_args = { {{#header_members}}
+        ["{{locationName}}"] = args["{{name}}"],{{/header_members}}
+    }
+	local all_args = { {{#members}}
 		["{{name}}"] = args["{{name}}"],{{/members}}
 	}
-	asserts.Assert{{name}}(t)
-	return t
+	asserts.Assert{{name}}(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 {{/shapes.structure}}
@@ -246,8 +260,12 @@ function M.{{name}}Async({{#input}}{{shape}}, {{/input}}cb){{#input}}
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "{{metadata.targetPrefix}}.{{name}}",
 	}
+	{{#input}}
+	for header,value in pairs({{shape}}.headers) do
+		headers[header] = value
+	end{{/input}}
 
-	local request_handler, err = request_handlers.from_http_method("{{http.method}}")
+	local request_handler, err = request_handlers.from_protocol_and_method("{{metadata.protocol}}", "{{http.method}}")
 	if request_handler then
 		request_handler(settings.uri, "{{http.requestUri}}", {{input_shape_or_empty.shape}}, headers, settings, cb)
 	else

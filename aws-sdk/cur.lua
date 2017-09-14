@@ -71,8 +71,14 @@ end
 -- Required key: S3Region
 -- @return ReportDefinition structure as a key-value pair table
 function M.ReportDefinition(args)
-	assert(args, "You must provdide an argument table when creating ReportDefinition")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ReportDefinition")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ReportName"] = args["ReportName"],
 		["Compression"] = args["Compression"],
 		["S3Region"] = args["S3Region"],
@@ -83,8 +89,13 @@ function M.ReportDefinition(args)
 		["AdditionalArtifacts"] = args["AdditionalArtifacts"],
 		["AdditionalSchemaElements"] = args["AdditionalSchemaElements"],
 	}
-	asserts.AssertReportDefinition(t)
-	return t
+	asserts.AssertReportDefinition(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.PutReportDefinitionResponse = { nil }
@@ -103,11 +114,22 @@ end
 -- Valid keys:
 -- @return PutReportDefinitionResponse structure as a key-value pair table
 function M.PutReportDefinitionResponse(args)
-	assert(args, "You must provdide an argument table when creating PutReportDefinitionResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating PutReportDefinitionResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertPutReportDefinitionResponse(t)
-	return t
+	asserts.AssertPutReportDefinitionResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ReportLimitReachedException = { ["Message"] = true, nil }
@@ -128,12 +150,23 @@ end
 -- * Message [ErrorMessage] 
 -- @return ReportLimitReachedException structure as a key-value pair table
 function M.ReportLimitReachedException(args)
-	assert(args, "You must provdide an argument table when creating ReportLimitReachedException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ReportLimitReachedException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Message"] = args["Message"],
 	}
-	asserts.AssertReportLimitReachedException(t)
-	return t
+	asserts.AssertReportLimitReachedException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InternalErrorException = { ["Message"] = true, nil }
@@ -154,12 +187,23 @@ end
 -- * Message [ErrorMessage] 
 -- @return InternalErrorException structure as a key-value pair table
 function M.InternalErrorException(args)
-	assert(args, "You must provdide an argument table when creating InternalErrorException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InternalErrorException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Message"] = args["Message"],
 	}
-	asserts.AssertInternalErrorException(t)
-	return t
+	asserts.AssertInternalErrorException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ValidationException = { ["Message"] = true, nil }
@@ -180,12 +224,23 @@ end
 -- * Message [ErrorMessage] 
 -- @return ValidationException structure as a key-value pair table
 function M.ValidationException(args)
-	assert(args, "You must provdide an argument table when creating ValidationException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ValidationException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Message"] = args["Message"],
 	}
-	asserts.AssertValidationException(t)
-	return t
+	asserts.AssertValidationException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DuplicateReportNameException = { ["Message"] = true, nil }
@@ -206,12 +261,23 @@ end
 -- * Message [ErrorMessage] 
 -- @return DuplicateReportNameException structure as a key-value pair table
 function M.DuplicateReportNameException(args)
-	assert(args, "You must provdide an argument table when creating DuplicateReportNameException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DuplicateReportNameException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Message"] = args["Message"],
 	}
-	asserts.AssertDuplicateReportNameException(t)
-	return t
+	asserts.AssertDuplicateReportNameException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteReportDefinitionResponse = { ["ResponseMessage"] = true, nil }
@@ -232,12 +298,23 @@ end
 -- * ResponseMessage [DeleteResponseMessage] 
 -- @return DeleteReportDefinitionResponse structure as a key-value pair table
 function M.DeleteReportDefinitionResponse(args)
-	assert(args, "You must provdide an argument table when creating DeleteReportDefinitionResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteReportDefinitionResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ResponseMessage"] = args["ResponseMessage"],
 	}
-	asserts.AssertDeleteReportDefinitionResponse(t)
-	return t
+	asserts.AssertDeleteReportDefinitionResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeReportDefinitionsRequest = { ["NextToken"] = true, ["MaxResults"] = true, nil }
@@ -260,13 +337,24 @@ end
 -- * MaxResults [MaxResults] 
 -- @return DescribeReportDefinitionsRequest structure as a key-value pair table
 function M.DescribeReportDefinitionsRequest(args)
-	assert(args, "You must provdide an argument table when creating DescribeReportDefinitionsRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeReportDefinitionsRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NextToken"] = args["NextToken"],
 		["MaxResults"] = args["MaxResults"],
 	}
-	asserts.AssertDescribeReportDefinitionsRequest(t)
-	return t
+	asserts.AssertDescribeReportDefinitionsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeReportDefinitionsResponse = { ["ReportDefinitions"] = true, ["NextToken"] = true, nil }
@@ -289,13 +377,24 @@ end
 -- * NextToken [GenericString] 
 -- @return DescribeReportDefinitionsResponse structure as a key-value pair table
 function M.DescribeReportDefinitionsResponse(args)
-	assert(args, "You must provdide an argument table when creating DescribeReportDefinitionsResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeReportDefinitionsResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ReportDefinitions"] = args["ReportDefinitions"],
 		["NextToken"] = args["NextToken"],
 	}
-	asserts.AssertDescribeReportDefinitionsResponse(t)
-	return t
+	asserts.AssertDescribeReportDefinitionsResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteReportDefinitionRequest = { ["ReportName"] = true, nil }
@@ -316,12 +415,23 @@ end
 -- * ReportName [ReportName] 
 -- @return DeleteReportDefinitionRequest structure as a key-value pair table
 function M.DeleteReportDefinitionRequest(args)
-	assert(args, "You must provdide an argument table when creating DeleteReportDefinitionRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteReportDefinitionRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ReportName"] = args["ReportName"],
 	}
-	asserts.AssertDeleteReportDefinitionRequest(t)
-	return t
+	asserts.AssertDeleteReportDefinitionRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.PutReportDefinitionRequest = { ["ReportDefinition"] = true, nil }
@@ -344,12 +454,23 @@ end
 -- Required key: ReportDefinition
 -- @return PutReportDefinitionRequest structure as a key-value pair table
 function M.PutReportDefinitionRequest(args)
-	assert(args, "You must provdide an argument table when creating PutReportDefinitionRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating PutReportDefinitionRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ReportDefinition"] = args["ReportDefinition"],
 	}
-	asserts.AssertPutReportDefinitionRequest(t)
-	return t
+	asserts.AssertPutReportDefinitionRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 function asserts.AssertAWSRegion(str)
@@ -597,8 +718,11 @@ function M.DescribeReportDefinitionsAsync(DescribeReportDefinitionsRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AWSOrigamiServiceGatewayService.DescribeReportDefinitions",
 	}
+	for header,value in pairs(DescribeReportDefinitionsRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeReportDefinitionsRequest, headers, settings, cb)
 	else
@@ -629,8 +753,11 @@ function M.PutReportDefinitionAsync(PutReportDefinitionRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AWSOrigamiServiceGatewayService.PutReportDefinition",
 	}
+	for header,value in pairs(PutReportDefinitionRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", PutReportDefinitionRequest, headers, settings, cb)
 	else
@@ -661,8 +788,11 @@ function M.DeleteReportDefinitionAsync(DeleteReportDefinitionRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AWSOrigamiServiceGatewayService.DeleteReportDefinition",
 	}
+	for header,value in pairs(DeleteReportDefinitionRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteReportDefinitionRequest, headers, settings, cb)
 	else

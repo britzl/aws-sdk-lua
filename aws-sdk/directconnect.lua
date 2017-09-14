@@ -55,8 +55,14 @@ end
 -- * interconnectState [InterconnectState] 
 -- @return Interconnect structure as a key-value pair table
 function M.Interconnect(args)
-	assert(args, "You must provdide an argument table when creating Interconnect")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Interconnect")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["awsDevice"] = args["awsDevice"],
 		["region"] = args["region"],
 		["lagId"] = args["lagId"],
@@ -67,8 +73,13 @@ function M.Interconnect(args)
 		["loaIssueTime"] = args["loaIssueTime"],
 		["interconnectState"] = args["interconnectState"],
 	}
-	asserts.AssertInterconnect(t)
-	return t
+	asserts.AssertInterconnect(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DuplicateTagKeysException = { nil }
@@ -87,11 +98,22 @@ end
 -- Valid keys:
 -- @return DuplicateTagKeysException structure as a key-value pair table
 function M.DuplicateTagKeysException(args)
-	assert(args, "You must provdide an argument table when creating DuplicateTagKeysException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DuplicateTagKeysException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertDuplicateTagKeysException(t)
-	return t
+	asserts.AssertDuplicateTagKeysException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteInterconnectRequest = { ["interconnectId"] = true, nil }
@@ -114,12 +136,23 @@ end
 -- Required key: interconnectId
 -- @return DeleteInterconnectRequest structure as a key-value pair table
 function M.DeleteInterconnectRequest(args)
-	assert(args, "You must provdide an argument table when creating DeleteInterconnectRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteInterconnectRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["interconnectId"] = args["interconnectId"],
 	}
-	asserts.AssertDeleteInterconnectRequest(t)
-	return t
+	asserts.AssertDeleteInterconnectRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ConfirmPublicVirtualInterfaceRequest = { ["virtualInterfaceId"] = true, nil }
@@ -142,12 +175,23 @@ end
 -- Required key: virtualInterfaceId
 -- @return ConfirmPublicVirtualInterfaceRequest structure as a key-value pair table
 function M.ConfirmPublicVirtualInterfaceRequest(args)
-	assert(args, "You must provdide an argument table when creating ConfirmPublicVirtualInterfaceRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ConfirmPublicVirtualInterfaceRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["virtualInterfaceId"] = args["virtualInterfaceId"],
 	}
-	asserts.AssertConfirmPublicVirtualInterfaceRequest(t)
-	return t
+	asserts.AssertConfirmPublicVirtualInterfaceRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeConnectionLoaRequest = { ["loaContentType"] = true, ["connectionId"] = true, ["providerName"] = true, nil }
@@ -174,14 +218,25 @@ end
 -- Required key: connectionId
 -- @return DescribeConnectionLoaRequest structure as a key-value pair table
 function M.DescribeConnectionLoaRequest(args)
-	assert(args, "You must provdide an argument table when creating DescribeConnectionLoaRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeConnectionLoaRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["loaContentType"] = args["loaContentType"],
 		["connectionId"] = args["connectionId"],
 		["providerName"] = args["providerName"],
 	}
-	asserts.AssertDescribeConnectionLoaRequest(t)
-	return t
+	asserts.AssertDescribeConnectionLoaRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AssociateConnectionWithLagRequest = { ["lagId"] = true, ["connectionId"] = true, nil }
@@ -208,13 +263,24 @@ end
 -- Required key: lagId
 -- @return AssociateConnectionWithLagRequest structure as a key-value pair table
 function M.AssociateConnectionWithLagRequest(args)
-	assert(args, "You must provdide an argument table when creating AssociateConnectionWithLagRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AssociateConnectionWithLagRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["lagId"] = args["lagId"],
 		["connectionId"] = args["connectionId"],
 	}
-	asserts.AssertAssociateConnectionWithLagRequest(t)
-	return t
+	asserts.AssertAssociateConnectionWithLagRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteInterconnectResponse = { ["interconnectState"] = true, nil }
@@ -235,12 +301,23 @@ end
 -- * interconnectState [InterconnectState] 
 -- @return DeleteInterconnectResponse structure as a key-value pair table
 function M.DeleteInterconnectResponse(args)
-	assert(args, "You must provdide an argument table when creating DeleteInterconnectResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteInterconnectResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["interconnectState"] = args["interconnectState"],
 	}
-	asserts.AssertDeleteInterconnectResponse(t)
-	return t
+	asserts.AssertDeleteInterconnectResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeVirtualInterfacesRequest = { ["connectionId"] = true, ["virtualInterfaceId"] = true, nil }
@@ -263,13 +340,24 @@ end
 -- * virtualInterfaceId [VirtualInterfaceId] 
 -- @return DescribeVirtualInterfacesRequest structure as a key-value pair table
 function M.DescribeVirtualInterfacesRequest(args)
-	assert(args, "You must provdide an argument table when creating DescribeVirtualInterfacesRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeVirtualInterfacesRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["connectionId"] = args["connectionId"],
 		["virtualInterfaceId"] = args["virtualInterfaceId"],
 	}
-	asserts.AssertDescribeVirtualInterfacesRequest(t)
-	return t
+	asserts.AssertDescribeVirtualInterfacesRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeLagsRequest = { ["lagId"] = true, nil }
@@ -290,12 +378,23 @@ end
 -- * lagId [LagId] <p>The ID of the LAG.</p> <p>Example: dxlag-abc123</p> <p>Default: None</p>
 -- @return DescribeLagsRequest structure as a key-value pair table
 function M.DescribeLagsRequest(args)
-	assert(args, "You must provdide an argument table when creating DescribeLagsRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeLagsRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["lagId"] = args["lagId"],
 	}
-	asserts.AssertDescribeLagsRequest(t)
-	return t
+	asserts.AssertDescribeLagsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Interconnects = { ["interconnects"] = true, nil }
@@ -316,12 +415,23 @@ end
 -- * interconnects [InterconnectList] <p>A list of interconnects.</p>
 -- @return Interconnects structure as a key-value pair table
 function M.Interconnects(args)
-	assert(args, "You must provdide an argument table when creating Interconnects")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Interconnects")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["interconnects"] = args["interconnects"],
 	}
-	asserts.AssertInterconnects(t)
-	return t
+	asserts.AssertInterconnects(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeInterconnectLoaResponse = { ["loa"] = true, nil }
@@ -342,12 +452,23 @@ end
 -- * loa [Loa] 
 -- @return DescribeInterconnectLoaResponse structure as a key-value pair table
 function M.DescribeInterconnectLoaResponse(args)
-	assert(args, "You must provdide an argument table when creating DescribeInterconnectLoaResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeInterconnectLoaResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["loa"] = args["loa"],
 	}
-	asserts.AssertDescribeInterconnectLoaResponse(t)
-	return t
+	asserts.AssertDescribeInterconnectLoaResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DisassociateConnectionFromLagRequest = { ["lagId"] = true, ["connectionId"] = true, nil }
@@ -374,13 +495,24 @@ end
 -- Required key: lagId
 -- @return DisassociateConnectionFromLagRequest structure as a key-value pair table
 function M.DisassociateConnectionFromLagRequest(args)
-	assert(args, "You must provdide an argument table when creating DisassociateConnectionFromLagRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DisassociateConnectionFromLagRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["lagId"] = args["lagId"],
 		["connectionId"] = args["connectionId"],
 	}
-	asserts.AssertDisassociateConnectionFromLagRequest(t)
-	return t
+	asserts.AssertDisassociateConnectionFromLagRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateLagRequest = { ["connectionId"] = true, ["lagName"] = true, ["numberOfConnections"] = true, ["location"] = true, ["connectionsBandwidth"] = true, nil }
@@ -417,16 +549,27 @@ end
 -- Required key: lagName
 -- @return CreateLagRequest structure as a key-value pair table
 function M.CreateLagRequest(args)
-	assert(args, "You must provdide an argument table when creating CreateLagRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateLagRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["connectionId"] = args["connectionId"],
 		["lagName"] = args["lagName"],
 		["numberOfConnections"] = args["numberOfConnections"],
 		["location"] = args["location"],
 		["connectionsBandwidth"] = args["connectionsBandwidth"],
 	}
-	asserts.AssertCreateLagRequest(t)
-	return t
+	asserts.AssertCreateLagRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Connections = { ["connections"] = true, nil }
@@ -447,12 +590,23 @@ end
 -- * connections [ConnectionList] <p>A list of connections.</p>
 -- @return Connections structure as a key-value pair table
 function M.Connections(args)
-	assert(args, "You must provdide an argument table when creating Connections")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Connections")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["connections"] = args["connections"],
 	}
-	asserts.AssertConnections(t)
-	return t
+	asserts.AssertConnections(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Tag = { ["value"] = true, ["key"] = true, nil }
@@ -477,13 +631,24 @@ end
 -- Required key: key
 -- @return Tag structure as a key-value pair table
 function M.Tag(args)
-	assert(args, "You must provdide an argument table when creating Tag")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Tag")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["value"] = args["value"],
 		["key"] = args["key"],
 	}
-	asserts.AssertTag(t)
-	return t
+	asserts.AssertTag(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeConnectionsOnInterconnectRequest = { ["interconnectId"] = true, nil }
@@ -506,12 +671,23 @@ end
 -- Required key: interconnectId
 -- @return DescribeConnectionsOnInterconnectRequest structure as a key-value pair table
 function M.DescribeConnectionsOnInterconnectRequest(args)
-	assert(args, "You must provdide an argument table when creating DescribeConnectionsOnInterconnectRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeConnectionsOnInterconnectRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["interconnectId"] = args["interconnectId"],
 	}
-	asserts.AssertDescribeConnectionsOnInterconnectRequest(t)
-	return t
+	asserts.AssertDescribeConnectionsOnInterconnectRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Lags = { ["lags"] = true, nil }
@@ -532,12 +708,23 @@ end
 -- * lags [LagList] <p>A list of LAGs.</p>
 -- @return Lags structure as a key-value pair table
 function M.Lags(args)
-	assert(args, "You must provdide an argument table when creating Lags")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Lags")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["lags"] = args["lags"],
 	}
-	asserts.AssertLags(t)
-	return t
+	asserts.AssertLags(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteBGPPeerResponse = { ["virtualInterface"] = true, nil }
@@ -558,12 +745,23 @@ end
 -- * virtualInterface [VirtualInterface] 
 -- @return DeleteBGPPeerResponse structure as a key-value pair table
 function M.DeleteBGPPeerResponse(args)
-	assert(args, "You must provdide an argument table when creating DeleteBGPPeerResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteBGPPeerResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["virtualInterface"] = args["virtualInterface"],
 	}
-	asserts.AssertDeleteBGPPeerResponse(t)
-	return t
+	asserts.AssertDeleteBGPPeerResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ConfirmPrivateVirtualInterfaceRequest = { ["virtualGatewayId"] = true, ["virtualInterfaceId"] = true, nil }
@@ -590,13 +788,24 @@ end
 -- Required key: virtualGatewayId
 -- @return ConfirmPrivateVirtualInterfaceRequest structure as a key-value pair table
 function M.ConfirmPrivateVirtualInterfaceRequest(args)
-	assert(args, "You must provdide an argument table when creating ConfirmPrivateVirtualInterfaceRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ConfirmPrivateVirtualInterfaceRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["virtualGatewayId"] = args["virtualGatewayId"],
 		["virtualInterfaceId"] = args["virtualInterfaceId"],
 	}
-	asserts.AssertConfirmPrivateVirtualInterfaceRequest(t)
-	return t
+	asserts.AssertConfirmPrivateVirtualInterfaceRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Location = { ["locationName"] = true, ["locationCode"] = true, nil }
@@ -619,13 +828,24 @@ end
 -- * locationCode [LocationCode] <p>The code used to indicate the AWS Direct Connect location.</p>
 -- @return Location structure as a key-value pair table
 function M.Location(args)
-	assert(args, "You must provdide an argument table when creating Location")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Location")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["locationName"] = args["locationName"],
 		["locationCode"] = args["locationCode"],
 	}
-	asserts.AssertLocation(t)
-	return t
+	asserts.AssertLocation(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeConnectionLoaResponse = { ["loa"] = true, nil }
@@ -646,12 +866,23 @@ end
 -- * loa [Loa] 
 -- @return DescribeConnectionLoaResponse structure as a key-value pair table
 function M.DescribeConnectionLoaResponse(args)
-	assert(args, "You must provdide an argument table when creating DescribeConnectionLoaResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeConnectionLoaResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["loa"] = args["loa"],
 	}
-	asserts.AssertDescribeConnectionLoaResponse(t)
-	return t
+	asserts.AssertDescribeConnectionLoaResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ConfirmConnectionRequest = { ["connectionId"] = true, nil }
@@ -674,12 +905,23 @@ end
 -- Required key: connectionId
 -- @return ConfirmConnectionRequest structure as a key-value pair table
 function M.ConfirmConnectionRequest(args)
-	assert(args, "You must provdide an argument table when creating ConfirmConnectionRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ConfirmConnectionRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["connectionId"] = args["connectionId"],
 	}
-	asserts.AssertConfirmConnectionRequest(t)
-	return t
+	asserts.AssertConfirmConnectionRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.VirtualInterface = { ["virtualInterfaceState"] = true, ["asn"] = true, ["vlan"] = true, ["customerAddress"] = true, ["ownerAccount"] = true, ["connectionId"] = true, ["addressFamily"] = true, ["virtualGatewayId"] = true, ["virtualInterfaceId"] = true, ["authKey"] = true, ["routeFilterPrefixes"] = true, ["location"] = true, ["bgpPeers"] = true, ["customerRouterConfig"] = true, ["amazonAddress"] = true, ["virtualInterfaceType"] = true, ["virtualInterfaceName"] = true, nil }
@@ -732,8 +974,14 @@ end
 -- * virtualInterfaceName [VirtualInterfaceName] 
 -- @return VirtualInterface structure as a key-value pair table
 function M.VirtualInterface(args)
-	assert(args, "You must provdide an argument table when creating VirtualInterface")
-	local t = { 
+	assert(args, "You must provide an argument table when creating VirtualInterface")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["virtualInterfaceState"] = args["virtualInterfaceState"],
 		["asn"] = args["asn"],
 		["vlan"] = args["vlan"],
@@ -752,8 +1000,13 @@ function M.VirtualInterface(args)
 		["virtualInterfaceType"] = args["virtualInterfaceType"],
 		["virtualInterfaceName"] = args["virtualInterfaceName"],
 	}
-	asserts.AssertVirtualInterface(t)
-	return t
+	asserts.AssertVirtualInterface(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteVirtualInterfaceRequest = { ["virtualInterfaceId"] = true, nil }
@@ -776,12 +1029,23 @@ end
 -- Required key: virtualInterfaceId
 -- @return DeleteVirtualInterfaceRequest structure as a key-value pair table
 function M.DeleteVirtualInterfaceRequest(args)
-	assert(args, "You must provdide an argument table when creating DeleteVirtualInterfaceRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteVirtualInterfaceRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["virtualInterfaceId"] = args["virtualInterfaceId"],
 	}
-	asserts.AssertDeleteVirtualInterfaceRequest(t)
-	return t
+	asserts.AssertDeleteVirtualInterfaceRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AllocateHostedConnectionRequest = { ["ownerAccount"] = true, ["connectionId"] = true, ["bandwidth"] = true, ["vlan"] = true, ["connectionName"] = true, nil }
@@ -820,16 +1084,27 @@ end
 -- Required key: vlan
 -- @return AllocateHostedConnectionRequest structure as a key-value pair table
 function M.AllocateHostedConnectionRequest(args)
-	assert(args, "You must provdide an argument table when creating AllocateHostedConnectionRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AllocateHostedConnectionRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ownerAccount"] = args["ownerAccount"],
 		["connectionId"] = args["connectionId"],
 		["bandwidth"] = args["bandwidth"],
 		["vlan"] = args["vlan"],
 		["connectionName"] = args["connectionName"],
 	}
-	asserts.AssertAllocateHostedConnectionRequest(t)
-	return t
+	asserts.AssertAllocateHostedConnectionRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.BGPPeer = { ["bgpStatus"] = true, ["customerAddress"] = true, ["addressFamily"] = true, ["authKey"] = true, ["bgpPeerState"] = true, ["amazonAddress"] = true, ["asn"] = true, nil }
@@ -862,8 +1137,14 @@ end
 -- * asn [ASN] 
 -- @return BGPPeer structure as a key-value pair table
 function M.BGPPeer(args)
-	assert(args, "You must provdide an argument table when creating BGPPeer")
-	local t = { 
+	assert(args, "You must provide an argument table when creating BGPPeer")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["bgpStatus"] = args["bgpStatus"],
 		["customerAddress"] = args["customerAddress"],
 		["addressFamily"] = args["addressFamily"],
@@ -872,8 +1153,13 @@ function M.BGPPeer(args)
 		["amazonAddress"] = args["amazonAddress"],
 		["asn"] = args["asn"],
 	}
-	asserts.AssertBGPPeer(t)
-	return t
+	asserts.AssertBGPPeer(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateBGPPeerRequest = { ["newBGPPeer"] = true, ["virtualInterfaceId"] = true, nil }
@@ -896,13 +1182,24 @@ end
 -- * virtualInterfaceId [VirtualInterfaceId] <p>The ID of the virtual interface on which the BGP peer will be provisioned.</p> <p>Example: dxvif-456abc78</p> <p>Default: None</p>
 -- @return CreateBGPPeerRequest structure as a key-value pair table
 function M.CreateBGPPeerRequest(args)
-	assert(args, "You must provdide an argument table when creating CreateBGPPeerRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateBGPPeerRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["newBGPPeer"] = args["newBGPPeer"],
 		["virtualInterfaceId"] = args["virtualInterfaceId"],
 	}
-	asserts.AssertCreateBGPPeerRequest(t)
-	return t
+	asserts.AssertCreateBGPPeerRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AllocatePrivateVirtualInterfaceRequest = { ["ownerAccount"] = true, ["connectionId"] = true, ["newPrivateVirtualInterfaceAllocation"] = true, nil }
@@ -933,14 +1230,25 @@ end
 -- Required key: newPrivateVirtualInterfaceAllocation
 -- @return AllocatePrivateVirtualInterfaceRequest structure as a key-value pair table
 function M.AllocatePrivateVirtualInterfaceRequest(args)
-	assert(args, "You must provdide an argument table when creating AllocatePrivateVirtualInterfaceRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AllocatePrivateVirtualInterfaceRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ownerAccount"] = args["ownerAccount"],
 		["connectionId"] = args["connectionId"],
 		["newPrivateVirtualInterfaceAllocation"] = args["newPrivateVirtualInterfaceAllocation"],
 	}
-	asserts.AssertAllocatePrivateVirtualInterfaceRequest(t)
-	return t
+	asserts.AssertAllocatePrivateVirtualInterfaceRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UntagResourceRequest = { ["resourceArn"] = true, ["tagKeys"] = true, nil }
@@ -967,13 +1275,24 @@ end
 -- Required key: tagKeys
 -- @return UntagResourceRequest structure as a key-value pair table
 function M.UntagResourceRequest(args)
-	assert(args, "You must provdide an argument table when creating UntagResourceRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UntagResourceRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["resourceArn"] = args["resourceArn"],
 		["tagKeys"] = args["tagKeys"],
 	}
-	asserts.AssertUntagResourceRequest(t)
-	return t
+	asserts.AssertUntagResourceRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeInterconnectLoaRequest = { ["interconnectId"] = true, ["providerName"] = true, ["loaContentType"] = true, nil }
@@ -1000,14 +1319,25 @@ end
 -- Required key: interconnectId
 -- @return DescribeInterconnectLoaRequest structure as a key-value pair table
 function M.DescribeInterconnectLoaRequest(args)
-	assert(args, "You must provdide an argument table when creating DescribeInterconnectLoaRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeInterconnectLoaRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["interconnectId"] = args["interconnectId"],
 		["providerName"] = args["providerName"],
 		["loaContentType"] = args["loaContentType"],
 	}
-	asserts.AssertDescribeInterconnectLoaRequest(t)
-	return t
+	asserts.AssertDescribeInterconnectLoaRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Loa = { ["loaContentType"] = true, ["loaContent"] = true, nil }
@@ -1030,13 +1360,24 @@ end
 -- * loaContent [LoaContent] 
 -- @return Loa structure as a key-value pair table
 function M.Loa(args)
-	assert(args, "You must provdide an argument table when creating Loa")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Loa")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["loaContentType"] = args["loaContentType"],
 		["loaContent"] = args["loaContent"],
 	}
-	asserts.AssertLoa(t)
-	return t
+	asserts.AssertLoa(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeInterconnectsRequest = { ["interconnectId"] = true, nil }
@@ -1057,12 +1398,23 @@ end
 -- * interconnectId [InterconnectId] 
 -- @return DescribeInterconnectsRequest structure as a key-value pair table
 function M.DescribeInterconnectsRequest(args)
-	assert(args, "You must provdide an argument table when creating DescribeInterconnectsRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeInterconnectsRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["interconnectId"] = args["interconnectId"],
 	}
-	asserts.AssertDescribeInterconnectsRequest(t)
-	return t
+	asserts.AssertDescribeInterconnectsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AssociateVirtualInterfaceRequest = { ["connectionId"] = true, ["virtualInterfaceId"] = true, nil }
@@ -1089,13 +1441,24 @@ end
 -- Required key: connectionId
 -- @return AssociateVirtualInterfaceRequest structure as a key-value pair table
 function M.AssociateVirtualInterfaceRequest(args)
-	assert(args, "You must provdide an argument table when creating AssociateVirtualInterfaceRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AssociateVirtualInterfaceRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["connectionId"] = args["connectionId"],
 		["virtualInterfaceId"] = args["virtualInterfaceId"],
 	}
-	asserts.AssertAssociateVirtualInterfaceRequest(t)
-	return t
+	asserts.AssertAssociateVirtualInterfaceRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AllocatePublicVirtualInterfaceRequest = { ["ownerAccount"] = true, ["connectionId"] = true, ["newPublicVirtualInterfaceAllocation"] = true, nil }
@@ -1126,14 +1489,25 @@ end
 -- Required key: newPublicVirtualInterfaceAllocation
 -- @return AllocatePublicVirtualInterfaceRequest structure as a key-value pair table
 function M.AllocatePublicVirtualInterfaceRequest(args)
-	assert(args, "You must provdide an argument table when creating AllocatePublicVirtualInterfaceRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AllocatePublicVirtualInterfaceRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ownerAccount"] = args["ownerAccount"],
 		["connectionId"] = args["connectionId"],
 		["newPublicVirtualInterfaceAllocation"] = args["newPublicVirtualInterfaceAllocation"],
 	}
-	asserts.AssertAllocatePublicVirtualInterfaceRequest(t)
-	return t
+	asserts.AssertAllocatePublicVirtualInterfaceRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeConnectionsRequest = { ["connectionId"] = true, nil }
@@ -1154,12 +1528,23 @@ end
 -- * connectionId [ConnectionId] 
 -- @return DescribeConnectionsRequest structure as a key-value pair table
 function M.DescribeConnectionsRequest(args)
-	assert(args, "You must provdide an argument table when creating DescribeConnectionsRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeConnectionsRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["connectionId"] = args["connectionId"],
 	}
-	asserts.AssertDescribeConnectionsRequest(t)
-	return t
+	asserts.AssertDescribeConnectionsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ConfirmPublicVirtualInterfaceResponse = { ["virtualInterfaceState"] = true, nil }
@@ -1180,12 +1565,23 @@ end
 -- * virtualInterfaceState [VirtualInterfaceState] 
 -- @return ConfirmPublicVirtualInterfaceResponse structure as a key-value pair table
 function M.ConfirmPublicVirtualInterfaceResponse(args)
-	assert(args, "You must provdide an argument table when creating ConfirmPublicVirtualInterfaceResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ConfirmPublicVirtualInterfaceResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["virtualInterfaceState"] = args["virtualInterfaceState"],
 	}
-	asserts.AssertConfirmPublicVirtualInterfaceResponse(t)
-	return t
+	asserts.AssertConfirmPublicVirtualInterfaceResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.RouteFilterPrefix = { ["cidr"] = true, nil }
@@ -1206,12 +1602,23 @@ end
 -- * cidr [CIDR] <p>CIDR notation for the advertised route. Multiple routes are separated by commas.</p> <p>IPv6 CIDRs must be at least a /64 or shorter</p> <p>Example: 10.10.10.0/24,10.10.11.0/24,2001:db8::/64</p>
 -- @return RouteFilterPrefix structure as a key-value pair table
 function M.RouteFilterPrefix(args)
-	assert(args, "You must provdide an argument table when creating RouteFilterPrefix")
-	local t = { 
+	assert(args, "You must provide an argument table when creating RouteFilterPrefix")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["cidr"] = args["cidr"],
 	}
-	asserts.AssertRouteFilterPrefix(t)
-	return t
+	asserts.AssertRouteFilterPrefix(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.VirtualGateway = { ["virtualGatewayId"] = true, ["virtualGatewayState"] = true, nil }
@@ -1234,13 +1641,24 @@ end
 -- * virtualGatewayState [VirtualGatewayState] 
 -- @return VirtualGateway structure as a key-value pair table
 function M.VirtualGateway(args)
-	assert(args, "You must provdide an argument table when creating VirtualGateway")
-	local t = { 
+	assert(args, "You must provide an argument table when creating VirtualGateway")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["virtualGatewayId"] = args["virtualGatewayId"],
 		["virtualGatewayState"] = args["virtualGatewayState"],
 	}
-	asserts.AssertVirtualGateway(t)
-	return t
+	asserts.AssertVirtualGateway(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.NewBGPPeer = { ["authKey"] = true, ["amazonAddress"] = true, ["customerAddress"] = true, ["asn"] = true, ["addressFamily"] = true, nil }
@@ -1269,16 +1687,27 @@ end
 -- * addressFamily [AddressFamily] 
 -- @return NewBGPPeer structure as a key-value pair table
 function M.NewBGPPeer(args)
-	assert(args, "You must provdide an argument table when creating NewBGPPeer")
-	local t = { 
+	assert(args, "You must provide an argument table when creating NewBGPPeer")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["authKey"] = args["authKey"],
 		["amazonAddress"] = args["amazonAddress"],
 		["customerAddress"] = args["customerAddress"],
 		["asn"] = args["asn"],
 		["addressFamily"] = args["addressFamily"],
 	}
-	asserts.AssertNewBGPPeer(t)
-	return t
+	asserts.AssertNewBGPPeer(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeLoaRequest = { ["loaContentType"] = true, ["connectionId"] = true, ["providerName"] = true, nil }
@@ -1305,14 +1734,25 @@ end
 -- Required key: connectionId
 -- @return DescribeLoaRequest structure as a key-value pair table
 function M.DescribeLoaRequest(args)
-	assert(args, "You must provdide an argument table when creating DescribeLoaRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeLoaRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["loaContentType"] = args["loaContentType"],
 		["connectionId"] = args["connectionId"],
 		["providerName"] = args["providerName"],
 	}
-	asserts.AssertDescribeLoaRequest(t)
-	return t
+	asserts.AssertDescribeLoaRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UntagResourceResponse = { nil }
@@ -1331,11 +1771,22 @@ end
 -- Valid keys:
 -- @return UntagResourceResponse structure as a key-value pair table
 function M.UntagResourceResponse(args)
-	assert(args, "You must provdide an argument table when creating UntagResourceResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UntagResourceResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertUntagResourceResponse(t)
-	return t
+	asserts.AssertUntagResourceResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteBGPPeerRequest = { ["customerAddress"] = true, ["asn"] = true, ["virtualInterfaceId"] = true, nil }
@@ -1360,14 +1811,25 @@ end
 -- * virtualInterfaceId [VirtualInterfaceId] <p>The ID of the virtual interface from which the BGP peer will be deleted.</p> <p>Example: dxvif-456abc78</p> <p>Default: None</p>
 -- @return DeleteBGPPeerRequest structure as a key-value pair table
 function M.DeleteBGPPeerRequest(args)
-	assert(args, "You must provdide an argument table when creating DeleteBGPPeerRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteBGPPeerRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["customerAddress"] = args["customerAddress"],
 		["asn"] = args["asn"],
 		["virtualInterfaceId"] = args["virtualInterfaceId"],
 	}
-	asserts.AssertDeleteBGPPeerRequest(t)
-	return t
+	asserts.AssertDeleteBGPPeerRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Connection = { ["partnerName"] = true, ["awsDevice"] = true, ["vlan"] = true, ["ownerAccount"] = true, ["connectionId"] = true, ["lagId"] = true, ["connectionState"] = true, ["bandwidth"] = true, ["location"] = true, ["connectionName"] = true, ["loaIssueTime"] = true, ["region"] = true, nil }
@@ -1410,8 +1872,14 @@ end
 -- * region [Region] 
 -- @return Connection structure as a key-value pair table
 function M.Connection(args)
-	assert(args, "You must provdide an argument table when creating Connection")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Connection")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["partnerName"] = args["partnerName"],
 		["awsDevice"] = args["awsDevice"],
 		["vlan"] = args["vlan"],
@@ -1425,8 +1893,13 @@ function M.Connection(args)
 		["loaIssueTime"] = args["loaIssueTime"],
 		["region"] = args["region"],
 	}
-	asserts.AssertConnection(t)
-	return t
+	asserts.AssertConnection(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.NewPrivateVirtualInterfaceAllocation = { ["customerAddress"] = true, ["vlan"] = true, ["asn"] = true, ["authKey"] = true, ["amazonAddress"] = true, ["addressFamily"] = true, ["virtualInterfaceName"] = true, nil }
@@ -1465,8 +1938,14 @@ end
 -- Required key: asn
 -- @return NewPrivateVirtualInterfaceAllocation structure as a key-value pair table
 function M.NewPrivateVirtualInterfaceAllocation(args)
-	assert(args, "You must provdide an argument table when creating NewPrivateVirtualInterfaceAllocation")
-	local t = { 
+	assert(args, "You must provide an argument table when creating NewPrivateVirtualInterfaceAllocation")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["customerAddress"] = args["customerAddress"],
 		["vlan"] = args["vlan"],
 		["asn"] = args["asn"],
@@ -1475,8 +1954,13 @@ function M.NewPrivateVirtualInterfaceAllocation(args)
 		["addressFamily"] = args["addressFamily"],
 		["virtualInterfaceName"] = args["virtualInterfaceName"],
 	}
-	asserts.AssertNewPrivateVirtualInterfaceAllocation(t)
-	return t
+	asserts.AssertNewPrivateVirtualInterfaceAllocation(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteConnectionRequest = { ["connectionId"] = true, nil }
@@ -1499,12 +1983,23 @@ end
 -- Required key: connectionId
 -- @return DeleteConnectionRequest structure as a key-value pair table
 function M.DeleteConnectionRequest(args)
-	assert(args, "You must provdide an argument table when creating DeleteConnectionRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteConnectionRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["connectionId"] = args["connectionId"],
 	}
-	asserts.AssertDeleteConnectionRequest(t)
-	return t
+	asserts.AssertDeleteConnectionRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeTagsRequest = { ["resourceArns"] = true, nil }
@@ -1527,12 +2022,23 @@ end
 -- Required key: resourceArns
 -- @return DescribeTagsRequest structure as a key-value pair table
 function M.DescribeTagsRequest(args)
-	assert(args, "You must provdide an argument table when creating DescribeTagsRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeTagsRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["resourceArns"] = args["resourceArns"],
 	}
-	asserts.AssertDescribeTagsRequest(t)
-	return t
+	asserts.AssertDescribeTagsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.NewPublicVirtualInterface = { ["customerAddress"] = true, ["vlan"] = true, ["addressFamily"] = true, ["authKey"] = true, ["routeFilterPrefixes"] = true, ["amazonAddress"] = true, ["asn"] = true, ["virtualInterfaceName"] = true, nil }
@@ -1573,8 +2079,14 @@ end
 -- Required key: asn
 -- @return NewPublicVirtualInterface structure as a key-value pair table
 function M.NewPublicVirtualInterface(args)
-	assert(args, "You must provdide an argument table when creating NewPublicVirtualInterface")
-	local t = { 
+	assert(args, "You must provide an argument table when creating NewPublicVirtualInterface")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["customerAddress"] = args["customerAddress"],
 		["vlan"] = args["vlan"],
 		["addressFamily"] = args["addressFamily"],
@@ -1584,8 +2096,13 @@ function M.NewPublicVirtualInterface(args)
 		["asn"] = args["asn"],
 		["virtualInterfaceName"] = args["virtualInterfaceName"],
 	}
-	asserts.AssertNewPublicVirtualInterface(t)
-	return t
+	asserts.AssertNewPublicVirtualInterface(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Locations = { ["locations"] = true, nil }
@@ -1606,12 +2123,23 @@ end
 -- * locations [LocationList] <p>A list of colocation hubs where network providers have equipment. Most regions have multiple locations available.</p>
 -- @return Locations structure as a key-value pair table
 function M.Locations(args)
-	assert(args, "You must provdide an argument table when creating Locations")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Locations")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["locations"] = args["locations"],
 	}
-	asserts.AssertLocations(t)
-	return t
+	asserts.AssertLocations(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AllocateConnectionOnInterconnectRequest = { ["interconnectId"] = true, ["bandwidth"] = true, ["vlan"] = true, ["ownerAccount"] = true, ["connectionName"] = true, nil }
@@ -1650,16 +2178,27 @@ end
 -- Required key: vlan
 -- @return AllocateConnectionOnInterconnectRequest structure as a key-value pair table
 function M.AllocateConnectionOnInterconnectRequest(args)
-	assert(args, "You must provdide an argument table when creating AllocateConnectionOnInterconnectRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AllocateConnectionOnInterconnectRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["interconnectId"] = args["interconnectId"],
 		["bandwidth"] = args["bandwidth"],
 		["vlan"] = args["vlan"],
 		["ownerAccount"] = args["ownerAccount"],
 		["connectionName"] = args["connectionName"],
 	}
-	asserts.AssertAllocateConnectionOnInterconnectRequest(t)
-	return t
+	asserts.AssertAllocateConnectionOnInterconnectRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ResourceTag = { ["resourceArn"] = true, ["tags"] = true, nil }
@@ -1682,13 +2221,24 @@ end
 -- * tags [TagList] <p>The tags.</p>
 -- @return ResourceTag structure as a key-value pair table
 function M.ResourceTag(args)
-	assert(args, "You must provdide an argument table when creating ResourceTag")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ResourceTag")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["resourceArn"] = args["resourceArn"],
 		["tags"] = args["tags"],
 	}
-	asserts.AssertResourceTag(t)
-	return t
+	asserts.AssertResourceTag(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdateLagRequest = { ["lagId"] = true, ["minimumLinks"] = true, ["lagName"] = true, nil }
@@ -1715,14 +2265,25 @@ end
 -- Required key: lagId
 -- @return UpdateLagRequest structure as a key-value pair table
 function M.UpdateLagRequest(args)
-	assert(args, "You must provdide an argument table when creating UpdateLagRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateLagRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["lagId"] = args["lagId"],
 		["minimumLinks"] = args["minimumLinks"],
 		["lagName"] = args["lagName"],
 	}
-	asserts.AssertUpdateLagRequest(t)
-	return t
+	asserts.AssertUpdateLagRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreatePublicVirtualInterfaceRequest = { ["newPublicVirtualInterface"] = true, ["connectionId"] = true, nil }
@@ -1749,13 +2310,24 @@ end
 -- Required key: newPublicVirtualInterface
 -- @return CreatePublicVirtualInterfaceRequest structure as a key-value pair table
 function M.CreatePublicVirtualInterfaceRequest(args)
-	assert(args, "You must provdide an argument table when creating CreatePublicVirtualInterfaceRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreatePublicVirtualInterfaceRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["newPublicVirtualInterface"] = args["newPublicVirtualInterface"],
 		["connectionId"] = args["connectionId"],
 	}
-	asserts.AssertCreatePublicVirtualInterfaceRequest(t)
-	return t
+	asserts.AssertCreatePublicVirtualInterfaceRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeTagsResponse = { ["resourceTags"] = true, nil }
@@ -1776,12 +2348,23 @@ end
 -- * resourceTags [ResourceTagList] <p>Information about the tags.</p>
 -- @return DescribeTagsResponse structure as a key-value pair table
 function M.DescribeTagsResponse(args)
-	assert(args, "You must provdide an argument table when creating DescribeTagsResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeTagsResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["resourceTags"] = args["resourceTags"],
 	}
-	asserts.AssertDescribeTagsResponse(t)
-	return t
+	asserts.AssertDescribeTagsResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.TooManyTagsException = { nil }
@@ -1800,11 +2383,22 @@ end
 -- Valid keys:
 -- @return TooManyTagsException structure as a key-value pair table
 function M.TooManyTagsException(args)
-	assert(args, "You must provdide an argument table when creating TooManyTagsException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating TooManyTagsException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertTooManyTagsException(t)
-	return t
+	asserts.AssertTooManyTagsException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateBGPPeerResponse = { ["virtualInterface"] = true, nil }
@@ -1825,12 +2419,23 @@ end
 -- * virtualInterface [VirtualInterface] 
 -- @return CreateBGPPeerResponse structure as a key-value pair table
 function M.CreateBGPPeerResponse(args)
-	assert(args, "You must provdide an argument table when creating CreateBGPPeerResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateBGPPeerResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["virtualInterface"] = args["virtualInterface"],
 	}
-	asserts.AssertCreateBGPPeerResponse(t)
-	return t
+	asserts.AssertCreateBGPPeerResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.TagResourceResponse = { nil }
@@ -1849,11 +2454,22 @@ end
 -- Valid keys:
 -- @return TagResourceResponse structure as a key-value pair table
 function M.TagResourceResponse(args)
-	assert(args, "You must provdide an argument table when creating TagResourceResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating TagResourceResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertTagResourceResponse(t)
-	return t
+	asserts.AssertTagResourceResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteVirtualInterfaceResponse = { ["virtualInterfaceState"] = true, nil }
@@ -1874,12 +2490,23 @@ end
 -- * virtualInterfaceState [VirtualInterfaceState] 
 -- @return DeleteVirtualInterfaceResponse structure as a key-value pair table
 function M.DeleteVirtualInterfaceResponse(args)
-	assert(args, "You must provdide an argument table when creating DeleteVirtualInterfaceResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteVirtualInterfaceResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["virtualInterfaceState"] = args["virtualInterfaceState"],
 	}
-	asserts.AssertDeleteVirtualInterfaceResponse(t)
-	return t
+	asserts.AssertDeleteVirtualInterfaceResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.NewPublicVirtualInterfaceAllocation = { ["customerAddress"] = true, ["vlan"] = true, ["addressFamily"] = true, ["authKey"] = true, ["routeFilterPrefixes"] = true, ["amazonAddress"] = true, ["asn"] = true, ["virtualInterfaceName"] = true, nil }
@@ -1920,8 +2547,14 @@ end
 -- Required key: asn
 -- @return NewPublicVirtualInterfaceAllocation structure as a key-value pair table
 function M.NewPublicVirtualInterfaceAllocation(args)
-	assert(args, "You must provdide an argument table when creating NewPublicVirtualInterfaceAllocation")
-	local t = { 
+	assert(args, "You must provide an argument table when creating NewPublicVirtualInterfaceAllocation")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["customerAddress"] = args["customerAddress"],
 		["vlan"] = args["vlan"],
 		["addressFamily"] = args["addressFamily"],
@@ -1931,8 +2564,13 @@ function M.NewPublicVirtualInterfaceAllocation(args)
 		["asn"] = args["asn"],
 		["virtualInterfaceName"] = args["virtualInterfaceName"],
 	}
-	asserts.AssertNewPublicVirtualInterfaceAllocation(t)
-	return t
+	asserts.AssertNewPublicVirtualInterfaceAllocation(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Lag = { ["awsDevice"] = true, ["allowsHostedConnections"] = true, ["numberOfConnections"] = true, ["lagState"] = true, ["ownerAccount"] = true, ["lagName"] = true, ["connections"] = true, ["lagId"] = true, ["minimumLinks"] = true, ["connectionsBandwidth"] = true, ["region"] = true, ["location"] = true, nil }
@@ -1975,8 +2613,14 @@ end
 -- * location [LocationCode] 
 -- @return Lag structure as a key-value pair table
 function M.Lag(args)
-	assert(args, "You must provdide an argument table when creating Lag")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Lag")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["awsDevice"] = args["awsDevice"],
 		["allowsHostedConnections"] = args["allowsHostedConnections"],
 		["numberOfConnections"] = args["numberOfConnections"],
@@ -1990,8 +2634,13 @@ function M.Lag(args)
 		["region"] = args["region"],
 		["location"] = args["location"],
 	}
-	asserts.AssertLag(t)
-	return t
+	asserts.AssertLag(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ConfirmPrivateVirtualInterfaceResponse = { ["virtualInterfaceState"] = true, nil }
@@ -2012,12 +2661,23 @@ end
 -- * virtualInterfaceState [VirtualInterfaceState] 
 -- @return ConfirmPrivateVirtualInterfaceResponse structure as a key-value pair table
 function M.ConfirmPrivateVirtualInterfaceResponse(args)
-	assert(args, "You must provdide an argument table when creating ConfirmPrivateVirtualInterfaceResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ConfirmPrivateVirtualInterfaceResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["virtualInterfaceState"] = args["virtualInterfaceState"],
 	}
-	asserts.AssertConfirmPrivateVirtualInterfaceResponse(t)
-	return t
+	asserts.AssertConfirmPrivateVirtualInterfaceResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AssociateHostedConnectionRequest = { ["connectionId"] = true, ["parentConnectionId"] = true, nil }
@@ -2044,13 +2704,24 @@ end
 -- Required key: parentConnectionId
 -- @return AssociateHostedConnectionRequest structure as a key-value pair table
 function M.AssociateHostedConnectionRequest(args)
-	assert(args, "You must provdide an argument table when creating AssociateHostedConnectionRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AssociateHostedConnectionRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["connectionId"] = args["connectionId"],
 		["parentConnectionId"] = args["parentConnectionId"],
 	}
-	asserts.AssertAssociateHostedConnectionRequest(t)
-	return t
+	asserts.AssertAssociateHostedConnectionRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateInterconnectRequest = { ["interconnectName"] = true, ["bandwidth"] = true, ["lagId"] = true, ["location"] = true, nil }
@@ -2083,15 +2754,26 @@ end
 -- Required key: location
 -- @return CreateInterconnectRequest structure as a key-value pair table
 function M.CreateInterconnectRequest(args)
-	assert(args, "You must provdide an argument table when creating CreateInterconnectRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateInterconnectRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["interconnectName"] = args["interconnectName"],
 		["bandwidth"] = args["bandwidth"],
 		["lagId"] = args["lagId"],
 		["location"] = args["location"],
 	}
-	asserts.AssertCreateInterconnectRequest(t)
-	return t
+	asserts.AssertCreateInterconnectRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DirectConnectClientException = { ["message"] = true, nil }
@@ -2112,12 +2794,23 @@ end
 -- * message [ErrorMessage] <p>This is an exception thrown when there is an issue with the input provided by the API call. For example, the name provided for a connection contains a pound sign (#). This can also occur when a valid value is provided, but is otherwise constrained. For example, the valid VLAN tag range is 1-4096 but each can only be used once per connection.</p>
 -- @return DirectConnectClientException structure as a key-value pair table
 function M.DirectConnectClientException(args)
-	assert(args, "You must provdide an argument table when creating DirectConnectClientException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DirectConnectClientException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertDirectConnectClientException(t)
-	return t
+	asserts.AssertDirectConnectClientException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.VirtualGateways = { ["virtualGateways"] = true, nil }
@@ -2138,12 +2831,23 @@ end
 -- * virtualGateways [VirtualGatewayList] <p>A list of virtual private gateways.</p>
 -- @return VirtualGateways structure as a key-value pair table
 function M.VirtualGateways(args)
-	assert(args, "You must provdide an argument table when creating VirtualGateways")
-	local t = { 
+	assert(args, "You must provide an argument table when creating VirtualGateways")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["virtualGateways"] = args["virtualGateways"],
 	}
-	asserts.AssertVirtualGateways(t)
-	return t
+	asserts.AssertVirtualGateways(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateConnectionRequest = { ["lagId"] = true, ["bandwidth"] = true, ["location"] = true, ["connectionName"] = true, nil }
@@ -2176,15 +2880,26 @@ end
 -- Required key: connectionName
 -- @return CreateConnectionRequest structure as a key-value pair table
 function M.CreateConnectionRequest(args)
-	assert(args, "You must provdide an argument table when creating CreateConnectionRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateConnectionRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["lagId"] = args["lagId"],
 		["bandwidth"] = args["bandwidth"],
 		["location"] = args["location"],
 		["connectionName"] = args["connectionName"],
 	}
-	asserts.AssertCreateConnectionRequest(t)
-	return t
+	asserts.AssertCreateConnectionRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.NewPrivateVirtualInterface = { ["virtualGatewayId"] = true, ["customerAddress"] = true, ["vlan"] = true, ["addressFamily"] = true, ["authKey"] = true, ["amazonAddress"] = true, ["asn"] = true, ["virtualInterfaceName"] = true, nil }
@@ -2227,8 +2942,14 @@ end
 -- Required key: virtualGatewayId
 -- @return NewPrivateVirtualInterface structure as a key-value pair table
 function M.NewPrivateVirtualInterface(args)
-	assert(args, "You must provdide an argument table when creating NewPrivateVirtualInterface")
-	local t = { 
+	assert(args, "You must provide an argument table when creating NewPrivateVirtualInterface")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["virtualGatewayId"] = args["virtualGatewayId"],
 		["customerAddress"] = args["customerAddress"],
 		["vlan"] = args["vlan"],
@@ -2238,8 +2959,13 @@ function M.NewPrivateVirtualInterface(args)
 		["asn"] = args["asn"],
 		["virtualInterfaceName"] = args["virtualInterfaceName"],
 	}
-	asserts.AssertNewPrivateVirtualInterface(t)
-	return t
+	asserts.AssertNewPrivateVirtualInterface(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DirectConnectServerException = { ["message"] = true, nil }
@@ -2260,12 +2986,23 @@ end
 -- * message [ErrorMessage] <p>This is an exception thrown when there is a backend issue on the server side.</p>
 -- @return DirectConnectServerException structure as a key-value pair table
 function M.DirectConnectServerException(args)
-	assert(args, "You must provdide an argument table when creating DirectConnectServerException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DirectConnectServerException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertDirectConnectServerException(t)
-	return t
+	asserts.AssertDirectConnectServerException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.VirtualInterfaces = { ["virtualInterfaces"] = true, nil }
@@ -2286,12 +3023,23 @@ end
 -- * virtualInterfaces [VirtualInterfaceList] <p>A list of virtual interfaces.</p>
 -- @return VirtualInterfaces structure as a key-value pair table
 function M.VirtualInterfaces(args)
-	assert(args, "You must provdide an argument table when creating VirtualInterfaces")
-	local t = { 
+	assert(args, "You must provide an argument table when creating VirtualInterfaces")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["virtualInterfaces"] = args["virtualInterfaces"],
 	}
-	asserts.AssertVirtualInterfaces(t)
-	return t
+	asserts.AssertVirtualInterfaces(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.TagResourceRequest = { ["resourceArn"] = true, ["tags"] = true, nil }
@@ -2318,13 +3066,24 @@ end
 -- Required key: tags
 -- @return TagResourceRequest structure as a key-value pair table
 function M.TagResourceRequest(args)
-	assert(args, "You must provdide an argument table when creating TagResourceRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating TagResourceRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["resourceArn"] = args["resourceArn"],
 		["tags"] = args["tags"],
 	}
-	asserts.AssertTagResourceRequest(t)
-	return t
+	asserts.AssertTagResourceRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteLagRequest = { ["lagId"] = true, nil }
@@ -2347,12 +3106,23 @@ end
 -- Required key: lagId
 -- @return DeleteLagRequest structure as a key-value pair table
 function M.DeleteLagRequest(args)
-	assert(args, "You must provdide an argument table when creating DeleteLagRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteLagRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["lagId"] = args["lagId"],
 	}
-	asserts.AssertDeleteLagRequest(t)
-	return t
+	asserts.AssertDeleteLagRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeHostedConnectionsRequest = { ["connectionId"] = true, nil }
@@ -2375,12 +3145,23 @@ end
 -- Required key: connectionId
 -- @return DescribeHostedConnectionsRequest structure as a key-value pair table
 function M.DescribeHostedConnectionsRequest(args)
-	assert(args, "You must provdide an argument table when creating DescribeHostedConnectionsRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeHostedConnectionsRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["connectionId"] = args["connectionId"],
 	}
-	asserts.AssertDescribeHostedConnectionsRequest(t)
-	return t
+	asserts.AssertDescribeHostedConnectionsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ConfirmConnectionResponse = { ["connectionState"] = true, nil }
@@ -2401,12 +3182,23 @@ end
 -- * connectionState [ConnectionState] 
 -- @return ConfirmConnectionResponse structure as a key-value pair table
 function M.ConfirmConnectionResponse(args)
-	assert(args, "You must provdide an argument table when creating ConfirmConnectionResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ConfirmConnectionResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["connectionState"] = args["connectionState"],
 	}
-	asserts.AssertConfirmConnectionResponse(t)
-	return t
+	asserts.AssertConfirmConnectionResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreatePrivateVirtualInterfaceRequest = { ["connectionId"] = true, ["newPrivateVirtualInterface"] = true, nil }
@@ -2433,13 +3225,24 @@ end
 -- Required key: newPrivateVirtualInterface
 -- @return CreatePrivateVirtualInterfaceRequest structure as a key-value pair table
 function M.CreatePrivateVirtualInterfaceRequest(args)
-	assert(args, "You must provdide an argument table when creating CreatePrivateVirtualInterfaceRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreatePrivateVirtualInterfaceRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["connectionId"] = args["connectionId"],
 		["newPrivateVirtualInterface"] = args["newPrivateVirtualInterface"],
 	}
-	asserts.AssertCreatePrivateVirtualInterfaceRequest(t)
-	return t
+	asserts.AssertCreatePrivateVirtualInterfaceRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 function asserts.AssertVirtualGatewayState(str)
@@ -3136,7 +3939,8 @@ function M.DescribeVirtualGatewaysAsync(cb)
 		[request_headers.AMZ_TARGET_HEADER] = "OvertureService.DescribeVirtualGateways",
 	}
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", {}, headers, settings, cb)
 	else
@@ -3166,8 +3970,11 @@ function M.CreateBGPPeerAsync(CreateBGPPeerRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "OvertureService.CreateBGPPeer",
 	}
+	for header,value in pairs(CreateBGPPeerRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateBGPPeerRequest, headers, settings, cb)
 	else
@@ -3198,8 +4005,11 @@ function M.AllocateHostedConnectionAsync(AllocateHostedConnectionRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "OvertureService.AllocateHostedConnection",
 	}
+	for header,value in pairs(AllocateHostedConnectionRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", AllocateHostedConnectionRequest, headers, settings, cb)
 	else
@@ -3230,8 +4040,11 @@ function M.AssociateHostedConnectionAsync(AssociateHostedConnectionRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "OvertureService.AssociateHostedConnection",
 	}
+	for header,value in pairs(AssociateHostedConnectionRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", AssociateHostedConnectionRequest, headers, settings, cb)
 	else
@@ -3262,8 +4075,11 @@ function M.AllocatePublicVirtualInterfaceAsync(AllocatePublicVirtualInterfaceReq
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "OvertureService.AllocatePublicVirtualInterface",
 	}
+	for header,value in pairs(AllocatePublicVirtualInterfaceRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", AllocatePublicVirtualInterfaceRequest, headers, settings, cb)
 	else
@@ -3294,8 +4110,11 @@ function M.DeleteVirtualInterfaceAsync(DeleteVirtualInterfaceRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "OvertureService.DeleteVirtualInterface",
 	}
+	for header,value in pairs(DeleteVirtualInterfaceRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteVirtualInterfaceRequest, headers, settings, cb)
 	else
@@ -3326,8 +4145,11 @@ function M.CreateInterconnectAsync(CreateInterconnectRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "OvertureService.CreateInterconnect",
 	}
+	for header,value in pairs(CreateInterconnectRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateInterconnectRequest, headers, settings, cb)
 	else
@@ -3358,8 +4180,11 @@ function M.DescribeLagsAsync(DescribeLagsRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "OvertureService.DescribeLags",
 	}
+	for header,value in pairs(DescribeLagsRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeLagsRequest, headers, settings, cb)
 	else
@@ -3390,8 +4215,11 @@ function M.DeleteBGPPeerAsync(DeleteBGPPeerRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "OvertureService.DeleteBGPPeer",
 	}
+	for header,value in pairs(DeleteBGPPeerRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteBGPPeerRequest, headers, settings, cb)
 	else
@@ -3422,8 +4250,11 @@ function M.AllocatePrivateVirtualInterfaceAsync(AllocatePrivateVirtualInterfaceR
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "OvertureService.AllocatePrivateVirtualInterface",
 	}
+	for header,value in pairs(AllocatePrivateVirtualInterfaceRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", AllocatePrivateVirtualInterfaceRequest, headers, settings, cb)
 	else
@@ -3454,8 +4285,11 @@ function M.AssociateConnectionWithLagAsync(AssociateConnectionWithLagRequest, cb
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "OvertureService.AssociateConnectionWithLag",
 	}
+	for header,value in pairs(AssociateConnectionWithLagRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", AssociateConnectionWithLagRequest, headers, settings, cb)
 	else
@@ -3486,8 +4320,11 @@ function M.CreateLagAsync(CreateLagRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "OvertureService.CreateLag",
 	}
+	for header,value in pairs(CreateLagRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateLagRequest, headers, settings, cb)
 	else
@@ -3518,8 +4355,11 @@ function M.ConfirmPublicVirtualInterfaceAsync(ConfirmPublicVirtualInterfaceReque
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "OvertureService.ConfirmPublicVirtualInterface",
 	}
+	for header,value in pairs(ConfirmPublicVirtualInterfaceRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ConfirmPublicVirtualInterfaceRequest, headers, settings, cb)
 	else
@@ -3550,8 +4390,11 @@ function M.DescribeLoaAsync(DescribeLoaRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "OvertureService.DescribeLoa",
 	}
+	for header,value in pairs(DescribeLoaRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeLoaRequest, headers, settings, cb)
 	else
@@ -3582,8 +4425,11 @@ function M.DescribeHostedConnectionsAsync(DescribeHostedConnectionsRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "OvertureService.DescribeHostedConnections",
 	}
+	for header,value in pairs(DescribeHostedConnectionsRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeHostedConnectionsRequest, headers, settings, cb)
 	else
@@ -3614,8 +4460,11 @@ function M.DeleteInterconnectAsync(DeleteInterconnectRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "OvertureService.DeleteInterconnect",
 	}
+	for header,value in pairs(DeleteInterconnectRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteInterconnectRequest, headers, settings, cb)
 	else
@@ -3646,8 +4495,11 @@ function M.DescribeVirtualInterfacesAsync(DescribeVirtualInterfacesRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "OvertureService.DescribeVirtualInterfaces",
 	}
+	for header,value in pairs(DescribeVirtualInterfacesRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeVirtualInterfacesRequest, headers, settings, cb)
 	else
@@ -3678,8 +4530,11 @@ function M.UpdateLagAsync(UpdateLagRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "OvertureService.UpdateLag",
 	}
+	for header,value in pairs(UpdateLagRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateLagRequest, headers, settings, cb)
 	else
@@ -3710,8 +4565,11 @@ function M.ConfirmPrivateVirtualInterfaceAsync(ConfirmPrivateVirtualInterfaceReq
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "OvertureService.ConfirmPrivateVirtualInterface",
 	}
+	for header,value in pairs(ConfirmPrivateVirtualInterfaceRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ConfirmPrivateVirtualInterfaceRequest, headers, settings, cb)
 	else
@@ -3742,8 +4600,11 @@ function M.DisassociateConnectionFromLagAsync(DisassociateConnectionFromLagReque
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "OvertureService.DisassociateConnectionFromLag",
 	}
+	for header,value in pairs(DisassociateConnectionFromLagRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DisassociateConnectionFromLagRequest, headers, settings, cb)
 	else
@@ -3774,8 +4635,11 @@ function M.ConfirmConnectionAsync(ConfirmConnectionRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "OvertureService.ConfirmConnection",
 	}
+	for header,value in pairs(ConfirmConnectionRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ConfirmConnectionRequest, headers, settings, cb)
 	else
@@ -3806,8 +4670,11 @@ function M.DescribeInterconnectsAsync(DescribeInterconnectsRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "OvertureService.DescribeInterconnects",
 	}
+	for header,value in pairs(DescribeInterconnectsRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeInterconnectsRequest, headers, settings, cb)
 	else
@@ -3838,8 +4705,11 @@ function M.DescribeTagsAsync(DescribeTagsRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "OvertureService.DescribeTags",
 	}
+	for header,value in pairs(DescribeTagsRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeTagsRequest, headers, settings, cb)
 	else
@@ -3870,8 +4740,11 @@ function M.DescribeConnectionsAsync(DescribeConnectionsRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "OvertureService.DescribeConnections",
 	}
+	for header,value in pairs(DescribeConnectionsRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeConnectionsRequest, headers, settings, cb)
 	else
@@ -3902,8 +4775,11 @@ function M.CreatePublicVirtualInterfaceAsync(CreatePublicVirtualInterfaceRequest
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "OvertureService.CreatePublicVirtualInterface",
 	}
+	for header,value in pairs(CreatePublicVirtualInterfaceRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", CreatePublicVirtualInterfaceRequest, headers, settings, cb)
 	else
@@ -3934,8 +4810,11 @@ function M.CreateConnectionAsync(CreateConnectionRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "OvertureService.CreateConnection",
 	}
+	for header,value in pairs(CreateConnectionRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateConnectionRequest, headers, settings, cb)
 	else
@@ -3966,8 +4845,11 @@ function M.TagResourceAsync(TagResourceRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "OvertureService.TagResource",
 	}
+	for header,value in pairs(TagResourceRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", TagResourceRequest, headers, settings, cb)
 	else
@@ -3997,7 +4879,8 @@ function M.DescribeLocationsAsync(cb)
 		[request_headers.AMZ_TARGET_HEADER] = "OvertureService.DescribeLocations",
 	}
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", {}, headers, settings, cb)
 	else
@@ -4027,8 +4910,11 @@ function M.UntagResourceAsync(UntagResourceRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "OvertureService.UntagResource",
 	}
+	for header,value in pairs(UntagResourceRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", UntagResourceRequest, headers, settings, cb)
 	else
@@ -4059,8 +4945,11 @@ function M.CreatePrivateVirtualInterfaceAsync(CreatePrivateVirtualInterfaceReque
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "OvertureService.CreatePrivateVirtualInterface",
 	}
+	for header,value in pairs(CreatePrivateVirtualInterfaceRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", CreatePrivateVirtualInterfaceRequest, headers, settings, cb)
 	else
@@ -4091,8 +4980,11 @@ function M.DeleteConnectionAsync(DeleteConnectionRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "OvertureService.DeleteConnection",
 	}
+	for header,value in pairs(DeleteConnectionRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteConnectionRequest, headers, settings, cb)
 	else
@@ -4123,8 +5015,11 @@ function M.DeleteLagAsync(DeleteLagRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "OvertureService.DeleteLag",
 	}
+	for header,value in pairs(DeleteLagRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteLagRequest, headers, settings, cb)
 	else
@@ -4155,8 +5050,11 @@ function M.AssociateVirtualInterfaceAsync(AssociateVirtualInterfaceRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "OvertureService.AssociateVirtualInterface",
 	}
+	for header,value in pairs(AssociateVirtualInterfaceRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", AssociateVirtualInterfaceRequest, headers, settings, cb)
 	else

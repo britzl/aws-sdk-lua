@@ -45,13 +45,24 @@ end
 -- Required key: TagOptionId
 -- @return DisassociateTagOptionFromResourceInput structure as a key-value pair table
 function M.DisassociateTagOptionFromResourceInput(args)
-	assert(args, "You must provdide an argument table when creating DisassociateTagOptionFromResourceInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DisassociateTagOptionFromResourceInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ResourceId"] = args["ResourceId"],
 		["TagOptionId"] = args["TagOptionId"],
 	}
-	asserts.AssertDisassociateTagOptionFromResourceInput(t)
-	return t
+	asserts.AssertDisassociateTagOptionFromResourceInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateTagOptionInput = { ["Value"] = true, ["Key"] = true, nil }
@@ -78,13 +89,24 @@ end
 -- Required key: Value
 -- @return CreateTagOptionInput structure as a key-value pair table
 function M.CreateTagOptionInput(args)
-	assert(args, "You must provdide an argument table when creating CreateTagOptionInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateTagOptionInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Value"] = args["Value"],
 		["Key"] = args["Key"],
 	}
-	asserts.AssertCreateTagOptionInput(t)
-	return t
+	asserts.AssertCreateTagOptionInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeTagOptionOutput = { ["TagOptionDetail"] = true, nil }
@@ -105,12 +127,23 @@ end
 -- * TagOptionDetail [TagOptionDetail] <p>The resulting detailed TagOption information.</p>
 -- @return DescribeTagOptionOutput structure as a key-value pair table
 function M.DescribeTagOptionOutput(args)
-	assert(args, "You must provdide an argument table when creating DescribeTagOptionOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeTagOptionOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["TagOptionDetail"] = args["TagOptionDetail"],
 	}
-	asserts.AssertDescribeTagOptionOutput(t)
-	return t
+	asserts.AssertDescribeTagOptionOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribePortfolioOutput = { ["TagOptions"] = true, ["PortfolioDetail"] = true, ["Tags"] = true, nil }
@@ -135,14 +168,25 @@ end
 -- * Tags [Tags] <p>Tags associated with the portfolio.</p>
 -- @return DescribePortfolioOutput structure as a key-value pair table
 function M.DescribePortfolioOutput(args)
-	assert(args, "You must provdide an argument table when creating DescribePortfolioOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribePortfolioOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["TagOptions"] = args["TagOptions"],
 		["PortfolioDetail"] = args["PortfolioDetail"],
 		["Tags"] = args["Tags"],
 	}
-	asserts.AssertDescribePortfolioOutput(t)
-	return t
+	asserts.AssertDescribePortfolioOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.RejectPortfolioShareOutput = { nil }
@@ -161,11 +205,22 @@ end
 -- Valid keys:
 -- @return RejectPortfolioShareOutput structure as a key-value pair table
 function M.RejectPortfolioShareOutput(args)
-	assert(args, "You must provdide an argument table when creating RejectPortfolioShareOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating RejectPortfolioShareOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertRejectPortfolioShareOutput(t)
-	return t
+	asserts.AssertRejectPortfolioShareOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.RejectPortfolioShareInput = { ["AcceptLanguage"] = true, ["PortfolioId"] = true, nil }
@@ -190,13 +245,24 @@ end
 -- Required key: PortfolioId
 -- @return RejectPortfolioShareInput structure as a key-value pair table
 function M.RejectPortfolioShareInput(args)
-	assert(args, "You must provdide an argument table when creating RejectPortfolioShareInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating RejectPortfolioShareInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["AcceptLanguage"] = args["AcceptLanguage"],
 		["PortfolioId"] = args["PortfolioId"],
 	}
-	asserts.AssertRejectPortfolioShareInput(t)
-	return t
+	asserts.AssertRejectPortfolioShareInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UsageInstruction = { ["Type"] = true, ["Value"] = true, nil }
@@ -219,13 +285,24 @@ end
 -- * Value [InstructionValue] <p>The usage instruction value for this type.</p>
 -- @return UsageInstruction structure as a key-value pair table
 function M.UsageInstruction(args)
-	assert(args, "You must provdide an argument table when creating UsageInstruction")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UsageInstruction")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Type"] = args["Type"],
 		["Value"] = args["Value"],
 	}
-	asserts.AssertUsageInstruction(t)
-	return t
+	asserts.AssertUsageInstruction(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdateProvisionedProductInput = { ["ProvisioningArtifactId"] = true, ["ProvisionedProductId"] = true, ["ProvisioningParameters"] = true, ["PathId"] = true, ["UpdateToken"] = true, ["AcceptLanguage"] = true, ["ProvisionedProductName"] = true, ["ProductId"] = true, nil }
@@ -262,8 +339,14 @@ end
 -- Required key: UpdateToken
 -- @return UpdateProvisionedProductInput structure as a key-value pair table
 function M.UpdateProvisionedProductInput(args)
-	assert(args, "You must provdide an argument table when creating UpdateProvisionedProductInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateProvisionedProductInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ProvisioningArtifactId"] = args["ProvisioningArtifactId"],
 		["ProvisionedProductId"] = args["ProvisionedProductId"],
 		["ProvisioningParameters"] = args["ProvisioningParameters"],
@@ -273,8 +356,13 @@ function M.UpdateProvisionedProductInput(args)
 		["ProvisionedProductName"] = args["ProvisionedProductName"],
 		["ProductId"] = args["ProductId"],
 	}
-	asserts.AssertUpdateProvisionedProductInput(t)
-	return t
+	asserts.AssertUpdateProvisionedProductInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ProvisionProductInput = { ["ProvisioningArtifactId"] = true, ["ProvisionedProductName"] = true, ["Tags"] = true, ["ProvisioningParameters"] = true, ["PathId"] = true, ["ProvisionToken"] = true, ["AcceptLanguage"] = true, ["NotificationArns"] = true, ["ProductId"] = true, nil }
@@ -319,8 +407,14 @@ end
 -- Required key: ProvisionToken
 -- @return ProvisionProductInput structure as a key-value pair table
 function M.ProvisionProductInput(args)
-	assert(args, "You must provdide an argument table when creating ProvisionProductInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ProvisionProductInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ProvisioningArtifactId"] = args["ProvisioningArtifactId"],
 		["ProvisionedProductName"] = args["ProvisionedProductName"],
 		["Tags"] = args["Tags"],
@@ -331,8 +425,13 @@ function M.ProvisionProductInput(args)
 		["NotificationArns"] = args["NotificationArns"],
 		["ProductId"] = args["ProductId"],
 	}
-	asserts.AssertProvisionProductInput(t)
-	return t
+	asserts.AssertProvisionProductInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.SearchProductsInput = { ["PageSize"] = true, ["PageToken"] = true, ["SortOrder"] = true, ["Filters"] = true, ["AcceptLanguage"] = true, ["SortBy"] = true, nil }
@@ -363,8 +462,14 @@ end
 -- * SortBy [ProductViewSortBy] <p>The sort field specifier. If no value is specified, results are not sorted.</p>
 -- @return SearchProductsInput structure as a key-value pair table
 function M.SearchProductsInput(args)
-	assert(args, "You must provdide an argument table when creating SearchProductsInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating SearchProductsInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["PageSize"] = args["PageSize"],
 		["PageToken"] = args["PageToken"],
 		["SortOrder"] = args["SortOrder"],
@@ -372,8 +477,13 @@ function M.SearchProductsInput(args)
 		["AcceptLanguage"] = args["AcceptLanguage"],
 		["SortBy"] = args["SortBy"],
 	}
-	asserts.AssertSearchProductsInput(t)
-	return t
+	asserts.AssertSearchProductsInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateConstraintOutput = { ["Status"] = true, ["ConstraintParameters"] = true, ["ConstraintDetail"] = true, nil }
@@ -398,14 +508,25 @@ end
 -- * ConstraintDetail [ConstraintDetail] <p>The resulting detailed constraint information.</p>
 -- @return CreateConstraintOutput structure as a key-value pair table
 function M.CreateConstraintOutput(args)
-	assert(args, "You must provdide an argument table when creating CreateConstraintOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateConstraintOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Status"] = args["Status"],
 		["ConstraintParameters"] = args["ConstraintParameters"],
 		["ConstraintDetail"] = args["ConstraintDetail"],
 	}
-	asserts.AssertCreateConstraintOutput(t)
-	return t
+	asserts.AssertCreateConstraintOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListPortfoliosInput = { ["AcceptLanguage"] = true, ["PageToken"] = true, ["PageSize"] = true, nil }
@@ -430,14 +551,25 @@ end
 -- * PageSize [PageSize] <p>The maximum number of items to return in the results. If more results exist than fit in the specified <code>PageSize</code>, the value of <code>NextPageToken</code> in the response is non-null.</p>
 -- @return ListPortfoliosInput structure as a key-value pair table
 function M.ListPortfoliosInput(args)
-	assert(args, "You must provdide an argument table when creating ListPortfoliosInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListPortfoliosInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["AcceptLanguage"] = args["AcceptLanguage"],
 		["PageToken"] = args["PageToken"],
 		["PageSize"] = args["PageSize"],
 	}
-	asserts.AssertListPortfoliosInput(t)
-	return t
+	asserts.AssertListPortfoliosInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ProductViewAggregationValue = { ["ApproximateCount"] = true, ["Value"] = true, nil }
@@ -460,13 +592,24 @@ end
 -- * Value [AttributeValue] <p>The value of the product view aggregation.</p>
 -- @return ProductViewAggregationValue structure as a key-value pair table
 function M.ProductViewAggregationValue(args)
-	assert(args, "You must provdide an argument table when creating ProductViewAggregationValue")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ProductViewAggregationValue")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ApproximateCount"] = args["ApproximateCount"],
 		["Value"] = args["Value"],
 	}
-	asserts.AssertProductViewAggregationValue(t)
-	return t
+	asserts.AssertProductViewAggregationValue(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeletePortfolioInput = { ["AcceptLanguage"] = true, ["Id"] = true, nil }
@@ -491,13 +634,24 @@ end
 -- Required key: Id
 -- @return DeletePortfolioInput structure as a key-value pair table
 function M.DeletePortfolioInput(args)
-	assert(args, "You must provdide an argument table when creating DeletePortfolioInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeletePortfolioInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["AcceptLanguage"] = args["AcceptLanguage"],
 		["Id"] = args["Id"],
 	}
-	asserts.AssertDeletePortfolioInput(t)
-	return t
+	asserts.AssertDeletePortfolioInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ConstraintSummary = { ["Type"] = true, ["Description"] = true, nil }
@@ -520,13 +674,24 @@ end
 -- * Description [ConstraintDescription] <p>The text description of the constraint.</p>
 -- @return ConstraintSummary structure as a key-value pair table
 function M.ConstraintSummary(args)
-	assert(args, "You must provdide an argument table when creating ConstraintSummary")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ConstraintSummary")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Type"] = args["Type"],
 		["Description"] = args["Description"],
 	}
-	asserts.AssertConstraintSummary(t)
-	return t
+	asserts.AssertConstraintSummary(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreatePortfolioShareInput = { ["AcceptLanguage"] = true, ["PortfolioId"] = true, ["AccountId"] = true, nil }
@@ -555,14 +720,25 @@ end
 -- Required key: AccountId
 -- @return CreatePortfolioShareInput structure as a key-value pair table
 function M.CreatePortfolioShareInput(args)
-	assert(args, "You must provdide an argument table when creating CreatePortfolioShareInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreatePortfolioShareInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["AcceptLanguage"] = args["AcceptLanguage"],
 		["PortfolioId"] = args["PortfolioId"],
 		["AccountId"] = args["AccountId"],
 	}
-	asserts.AssertCreatePortfolioShareInput(t)
-	return t
+	asserts.AssertCreatePortfolioShareInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AccessLevelFilter = { ["Value"] = true, ["Key"] = true, nil }
@@ -585,13 +761,24 @@ end
 -- * Key [AccessLevelFilterKey] <p>Specifies the access level.</p> <p> <code>Account</code> allows results at the account level. </p> <p> <code>Role</code> allows results based on the federated role of the specified user.</p> <p> <code>User</code> allows results limited to the specified user. </p>
 -- @return AccessLevelFilter structure as a key-value pair table
 function M.AccessLevelFilter(args)
-	assert(args, "You must provdide an argument table when creating AccessLevelFilter")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AccessLevelFilter")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Value"] = args["Value"],
 		["Key"] = args["Key"],
 	}
-	asserts.AssertAccessLevelFilter(t)
-	return t
+	asserts.AssertAccessLevelFilter(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeProvisioningParametersOutput = { ["TagOptions"] = true, ["ProvisioningArtifactParameters"] = true, ["ConstraintSummaries"] = true, ["UsageInstructions"] = true, nil }
@@ -618,15 +805,26 @@ end
 -- * UsageInstructions [UsageInstructions] <p>Any additional metadata specifically related to the provisioning of the product. For example, see the <code>Version</code> field of the CloudFormation template.</p>
 -- @return DescribeProvisioningParametersOutput structure as a key-value pair table
 function M.DescribeProvisioningParametersOutput(args)
-	assert(args, "You must provdide an argument table when creating DescribeProvisioningParametersOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeProvisioningParametersOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["TagOptions"] = args["TagOptions"],
 		["ProvisioningArtifactParameters"] = args["ProvisioningArtifactParameters"],
 		["ConstraintSummaries"] = args["ConstraintSummaries"],
 		["UsageInstructions"] = args["UsageInstructions"],
 	}
-	asserts.AssertDescribeProvisioningParametersOutput(t)
-	return t
+	asserts.AssertDescribeProvisioningParametersOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdateTagOptionOutput = { ["TagOptionDetail"] = true, nil }
@@ -647,12 +845,23 @@ end
 -- * TagOptionDetail [TagOptionDetail] <p>The resulting detailed TagOption information.</p>
 -- @return UpdateTagOptionOutput structure as a key-value pair table
 function M.UpdateTagOptionOutput(args)
-	assert(args, "You must provdide an argument table when creating UpdateTagOptionOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateTagOptionOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["TagOptionDetail"] = args["TagOptionDetail"],
 	}
-	asserts.AssertUpdateTagOptionOutput(t)
-	return t
+	asserts.AssertUpdateTagOptionOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.TerminateProvisionedProductInput = { ["AcceptLanguage"] = true, ["ProvisionedProductId"] = true, ["TerminateToken"] = true, ["IgnoreErrors"] = true, ["ProvisionedProductName"] = true, nil }
@@ -683,16 +892,27 @@ end
 -- Required key: TerminateToken
 -- @return TerminateProvisionedProductInput structure as a key-value pair table
 function M.TerminateProvisionedProductInput(args)
-	assert(args, "You must provdide an argument table when creating TerminateProvisionedProductInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating TerminateProvisionedProductInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["AcceptLanguage"] = args["AcceptLanguage"],
 		["ProvisionedProductId"] = args["ProvisionedProductId"],
 		["TerminateToken"] = args["TerminateToken"],
 		["IgnoreErrors"] = args["IgnoreErrors"],
 		["ProvisionedProductName"] = args["ProvisionedProductName"],
 	}
-	asserts.AssertTerminateProvisionedProductInput(t)
-	return t
+	asserts.AssertTerminateProvisionedProductInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeRecordInput = { ["AcceptLanguage"] = true, ["PageToken"] = true, ["Id"] = true, ["PageSize"] = true, nil }
@@ -721,15 +941,26 @@ end
 -- Required key: Id
 -- @return DescribeRecordInput structure as a key-value pair table
 function M.DescribeRecordInput(args)
-	assert(args, "You must provdide an argument table when creating DescribeRecordInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeRecordInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["AcceptLanguage"] = args["AcceptLanguage"],
 		["PageToken"] = args["PageToken"],
 		["Id"] = args["Id"],
 		["PageSize"] = args["PageSize"],
 	}
-	asserts.AssertDescribeRecordInput(t)
-	return t
+	asserts.AssertDescribeRecordInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeConstraintInput = { ["AcceptLanguage"] = true, ["Id"] = true, nil }
@@ -754,13 +985,24 @@ end
 -- Required key: Id
 -- @return DescribeConstraintInput structure as a key-value pair table
 function M.DescribeConstraintInput(args)
-	assert(args, "You must provdide an argument table when creating DescribeConstraintInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeConstraintInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["AcceptLanguage"] = args["AcceptLanguage"],
 		["Id"] = args["Id"],
 	}
-	asserts.AssertDescribeConstraintInput(t)
-	return t
+	asserts.AssertDescribeConstraintInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidStateException = { nil }
@@ -779,11 +1021,22 @@ end
 -- Valid keys:
 -- @return InvalidStateException structure as a key-value pair table
 function M.InvalidStateException(args)
-	assert(args, "You must provdide an argument table when creating InvalidStateException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidStateException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertInvalidStateException(t)
-	return t
+	asserts.AssertInvalidStateException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.TagOptionSummary = { ["Values"] = true, ["Key"] = true, nil }
@@ -806,13 +1059,24 @@ end
 -- * Key [TagOptionKey] <p>The TagOptionSummary key.</p>
 -- @return TagOptionSummary structure as a key-value pair table
 function M.TagOptionSummary(args)
-	assert(args, "You must provdide an argument table when creating TagOptionSummary")
-	local t = { 
+	assert(args, "You must provide an argument table when creating TagOptionSummary")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Values"] = args["Values"],
 		["Key"] = args["Key"],
 	}
-	asserts.AssertTagOptionSummary(t)
-	return t
+	asserts.AssertTagOptionSummary(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdateProductOutput = { ["ProductViewDetail"] = true, ["Tags"] = true, nil }
@@ -835,13 +1099,24 @@ end
 -- * Tags [Tags] <p>Tags associated with the product.</p>
 -- @return UpdateProductOutput structure as a key-value pair table
 function M.UpdateProductOutput(args)
-	assert(args, "You must provdide an argument table when creating UpdateProductOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateProductOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ProductViewDetail"] = args["ProductViewDetail"],
 		["Tags"] = args["Tags"],
 	}
-	asserts.AssertUpdateProductOutput(t)
-	return t
+	asserts.AssertUpdateProductOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeletePortfolioOutput = { nil }
@@ -860,11 +1135,22 @@ end
 -- Valid keys:
 -- @return DeletePortfolioOutput structure as a key-value pair table
 function M.DeletePortfolioOutput(args)
-	assert(args, "You must provdide an argument table when creating DeletePortfolioOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeletePortfolioOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertDeletePortfolioOutput(t)
-	return t
+	asserts.AssertDeletePortfolioOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeProvisioningArtifactInput = { ["AcceptLanguage"] = true, ["ProvisioningArtifactId"] = true, ["Verbose"] = true, ["ProductId"] = true, nil }
@@ -895,15 +1181,26 @@ end
 -- Required key: ProductId
 -- @return DescribeProvisioningArtifactInput structure as a key-value pair table
 function M.DescribeProvisioningArtifactInput(args)
-	assert(args, "You must provdide an argument table when creating DescribeProvisioningArtifactInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeProvisioningArtifactInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["AcceptLanguage"] = args["AcceptLanguage"],
 		["ProvisioningArtifactId"] = args["ProvisioningArtifactId"],
 		["Verbose"] = args["Verbose"],
 		["ProductId"] = args["ProductId"],
 	}
-	asserts.AssertDescribeProvisioningArtifactInput(t)
-	return t
+	asserts.AssertDescribeProvisioningArtifactInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateProductOutput = { ["ProductViewDetail"] = true, ["ProvisioningArtifactDetail"] = true, ["Tags"] = true, nil }
@@ -928,14 +1225,25 @@ end
 -- * Tags [Tags] <p>Tags successfully associated with the new product.</p>
 -- @return CreateProductOutput structure as a key-value pair table
 function M.CreateProductOutput(args)
-	assert(args, "You must provdide an argument table when creating CreateProductOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateProductOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ProductViewDetail"] = args["ProductViewDetail"],
 		["ProvisioningArtifactDetail"] = args["ProvisioningArtifactDetail"],
 		["Tags"] = args["Tags"],
 	}
-	asserts.AssertCreateProductOutput(t)
-	return t
+	asserts.AssertCreateProductOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ProvisioningParameter = { ["Value"] = true, ["Key"] = true, nil }
@@ -958,13 +1266,24 @@ end
 -- * Key [ParameterKey] <p>The <code>ProvisioningArtifactParameter.ParameterKey</code> parameter from <a>DescribeProvisioningParameters</a>.</p>
 -- @return ProvisioningParameter structure as a key-value pair table
 function M.ProvisioningParameter(args)
-	assert(args, "You must provdide an argument table when creating ProvisioningParameter")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ProvisioningParameter")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Value"] = args["Value"],
 		["Key"] = args["Key"],
 	}
-	asserts.AssertProvisioningParameter(t)
-	return t
+	asserts.AssertProvisioningParameter(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListPortfoliosForProductOutput = { ["NextPageToken"] = true, ["PortfolioDetails"] = true, nil }
@@ -987,13 +1306,24 @@ end
 -- * PortfolioDetails [PortfolioDetails] <p>List of detailed portfolio information objects.</p>
 -- @return ListPortfoliosForProductOutput structure as a key-value pair table
 function M.ListPortfoliosForProductOutput(args)
-	assert(args, "You must provdide an argument table when creating ListPortfoliosForProductOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListPortfoliosForProductOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NextPageToken"] = args["NextPageToken"],
 		["PortfolioDetails"] = args["PortfolioDetails"],
 	}
-	asserts.AssertListPortfoliosForProductOutput(t)
-	return t
+	asserts.AssertListPortfoliosForProductOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteProductInput = { ["AcceptLanguage"] = true, ["Id"] = true, nil }
@@ -1018,13 +1348,24 @@ end
 -- Required key: Id
 -- @return DeleteProductInput structure as a key-value pair table
 function M.DeleteProductInput(args)
-	assert(args, "You must provdide an argument table when creating DeleteProductInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteProductInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["AcceptLanguage"] = args["AcceptLanguage"],
 		["Id"] = args["Id"],
 	}
-	asserts.AssertDeleteProductInput(t)
-	return t
+	asserts.AssertDeleteProductInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteProductOutput = { nil }
@@ -1043,11 +1384,22 @@ end
 -- Valid keys:
 -- @return DeleteProductOutput structure as a key-value pair table
 function M.DeleteProductOutput(args)
-	assert(args, "You must provdide an argument table when creating DeleteProductOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteProductOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertDeleteProductOutput(t)
-	return t
+	asserts.AssertDeleteProductOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdatePortfolioInput = { ["RemoveTags"] = true, ["DisplayName"] = true, ["AddTags"] = true, ["ProviderName"] = true, ["AcceptLanguage"] = true, ["Id"] = true, ["Description"] = true, nil }
@@ -1082,8 +1434,14 @@ end
 -- Required key: Id
 -- @return UpdatePortfolioInput structure as a key-value pair table
 function M.UpdatePortfolioInput(args)
-	assert(args, "You must provdide an argument table when creating UpdatePortfolioInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdatePortfolioInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["RemoveTags"] = args["RemoveTags"],
 		["DisplayName"] = args["DisplayName"],
 		["AddTags"] = args["AddTags"],
@@ -1092,8 +1450,13 @@ function M.UpdatePortfolioInput(args)
 		["Id"] = args["Id"],
 		["Description"] = args["Description"],
 	}
-	asserts.AssertUpdatePortfolioInput(t)
-	return t
+	asserts.AssertUpdatePortfolioInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ProvisionProductOutput = { ["RecordDetail"] = true, nil }
@@ -1114,12 +1477,23 @@ end
 -- * RecordDetail [RecordDetail] <p>The detailed result of the <a>ProvisionProduct</a> request, containing the inputs made to that request, the current state of the request, a pointer to the ProvisionedProduct object of the request, and a list of any errors that the request encountered. </p>
 -- @return ProvisionProductOutput structure as a key-value pair table
 function M.ProvisionProductOutput(args)
-	assert(args, "You must provdide an argument table when creating ProvisionProductOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ProvisionProductOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["RecordDetail"] = args["RecordDetail"],
 	}
-	asserts.AssertProvisionProductOutput(t)
-	return t
+	asserts.AssertProvisionProductOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DuplicateResourceException = { nil }
@@ -1138,11 +1512,22 @@ end
 -- Valid keys:
 -- @return DuplicateResourceException structure as a key-value pair table
 function M.DuplicateResourceException(args)
-	assert(args, "You must provdide an argument table when creating DuplicateResourceException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DuplicateResourceException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertDuplicateResourceException(t)
-	return t
+	asserts.AssertDuplicateResourceException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidParametersException = { nil }
@@ -1161,11 +1546,22 @@ end
 -- Valid keys:
 -- @return InvalidParametersException structure as a key-value pair table
 function M.InvalidParametersException(args)
-	assert(args, "You must provdide an argument table when creating InvalidParametersException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidParametersException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertInvalidParametersException(t)
-	return t
+	asserts.AssertInvalidParametersException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListLaunchPathsOutput = { ["NextPageToken"] = true, ["LaunchPathSummaries"] = true, nil }
@@ -1188,13 +1584,24 @@ end
 -- * LaunchPathSummaries [LaunchPathSummaries] <p>List of launch path information summaries for the specified <code>PageToken</code>.</p>
 -- @return ListLaunchPathsOutput structure as a key-value pair table
 function M.ListLaunchPathsOutput(args)
-	assert(args, "You must provdide an argument table when creating ListLaunchPathsOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListLaunchPathsOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NextPageToken"] = args["NextPageToken"],
 		["LaunchPathSummaries"] = args["LaunchPathSummaries"],
 	}
-	asserts.AssertListLaunchPathsOutput(t)
-	return t
+	asserts.AssertListLaunchPathsOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ProductViewSummary = { ["SupportDescription"] = true, ["Name"] = true, ["HasDefaultPath"] = true, ["ShortDescription"] = true, ["SupportUrl"] = true, ["Distributor"] = true, ["Owner"] = true, ["SupportEmail"] = true, ["Type"] = true, ["Id"] = true, ["ProductId"] = true, nil }
@@ -1235,8 +1642,14 @@ end
 -- * ProductId [Id] <p>The product identifier.</p>
 -- @return ProductViewSummary structure as a key-value pair table
 function M.ProductViewSummary(args)
-	assert(args, "You must provdide an argument table when creating ProductViewSummary")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ProductViewSummary")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["SupportDescription"] = args["SupportDescription"],
 		["Name"] = args["Name"],
 		["HasDefaultPath"] = args["HasDefaultPath"],
@@ -1249,8 +1662,13 @@ function M.ProductViewSummary(args)
 		["Id"] = args["Id"],
 		["ProductId"] = args["ProductId"],
 	}
-	asserts.AssertProductViewSummary(t)
-	return t
+	asserts.AssertProductViewSummary(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ConstraintDetail = { ["Owner"] = true, ["ConstraintId"] = true, ["Type"] = true, ["Description"] = true, nil }
@@ -1277,15 +1695,26 @@ end
 -- * Description [ConstraintDescription] <p>The text description of the constraint.</p>
 -- @return ConstraintDetail structure as a key-value pair table
 function M.ConstraintDetail(args)
-	assert(args, "You must provdide an argument table when creating ConstraintDetail")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ConstraintDetail")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Owner"] = args["Owner"],
 		["ConstraintId"] = args["ConstraintId"],
 		["Type"] = args["Type"],
 		["Description"] = args["Description"],
 	}
-	asserts.AssertConstraintDetail(t)
-	return t
+	asserts.AssertConstraintDetail(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Tag = { ["Value"] = true, ["Key"] = true, nil }
@@ -1312,13 +1741,24 @@ end
 -- Required key: Value
 -- @return Tag structure as a key-value pair table
 function M.Tag(args)
-	assert(args, "You must provdide an argument table when creating Tag")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Tag")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Value"] = args["Value"],
 		["Key"] = args["Key"],
 	}
-	asserts.AssertTag(t)
-	return t
+	asserts.AssertTag(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListProvisioningArtifactsInput = { ["AcceptLanguage"] = true, ["ProductId"] = true, nil }
@@ -1343,13 +1783,24 @@ end
 -- Required key: ProductId
 -- @return ListProvisioningArtifactsInput structure as a key-value pair table
 function M.ListProvisioningArtifactsInput(args)
-	assert(args, "You must provdide an argument table when creating ListProvisioningArtifactsInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListProvisioningArtifactsInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["AcceptLanguage"] = args["AcceptLanguage"],
 		["ProductId"] = args["ProductId"],
 	}
-	asserts.AssertListProvisioningArtifactsInput(t)
-	return t
+	asserts.AssertListProvisioningArtifactsInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DisassociateProductFromPortfolioInput = { ["AcceptLanguage"] = true, ["PortfolioId"] = true, ["ProductId"] = true, nil }
@@ -1378,14 +1829,25 @@ end
 -- Required key: PortfolioId
 -- @return DisassociateProductFromPortfolioInput structure as a key-value pair table
 function M.DisassociateProductFromPortfolioInput(args)
-	assert(args, "You must provdide an argument table when creating DisassociateProductFromPortfolioInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DisassociateProductFromPortfolioInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["AcceptLanguage"] = args["AcceptLanguage"],
 		["PortfolioId"] = args["PortfolioId"],
 		["ProductId"] = args["ProductId"],
 	}
-	asserts.AssertDisassociateProductFromPortfolioInput(t)
-	return t
+	asserts.AssertDisassociateProductFromPortfolioInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeRecordOutput = { ["RecordDetail"] = true, ["NextPageToken"] = true, ["RecordOutputs"] = true, nil }
@@ -1410,14 +1872,25 @@ end
 -- * RecordOutputs [RecordOutputs] <p>A list of outputs for the specified Product object created as the result of a request. For example, a CloudFormation-backed product that creates an S3 bucket would have an output for the S3 bucket URL.</p>
 -- @return DescribeRecordOutput structure as a key-value pair table
 function M.DescribeRecordOutput(args)
-	assert(args, "You must provdide an argument table when creating DescribeRecordOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeRecordOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["RecordDetail"] = args["RecordDetail"],
 		["NextPageToken"] = args["NextPageToken"],
 		["RecordOutputs"] = args["RecordOutputs"],
 	}
-	asserts.AssertDescribeRecordOutput(t)
-	return t
+	asserts.AssertDescribeRecordOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ProvisioningArtifactSummary = { ["CreatedTime"] = true, ["Description"] = true, ["ProvisioningArtifactMetadata"] = true, ["Id"] = true, ["Name"] = true, nil }
@@ -1446,16 +1919,27 @@ end
 -- * Name [ProvisioningArtifactName] <p>The name of the provisioning artifact.</p>
 -- @return ProvisioningArtifactSummary structure as a key-value pair table
 function M.ProvisioningArtifactSummary(args)
-	assert(args, "You must provdide an argument table when creating ProvisioningArtifactSummary")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ProvisioningArtifactSummary")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["CreatedTime"] = args["CreatedTime"],
 		["Description"] = args["Description"],
 		["ProvisioningArtifactMetadata"] = args["ProvisioningArtifactMetadata"],
 		["Id"] = args["Id"],
 		["Name"] = args["Name"],
 	}
-	asserts.AssertProvisioningArtifactSummary(t)
-	return t
+	asserts.AssertProvisioningArtifactSummary(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.SearchProductsAsAdminInput = { ["ProductSource"] = true, ["PortfolioId"] = true, ["PageSize"] = true, ["PageToken"] = true, ["SortBy"] = true, ["Filters"] = true, ["AcceptLanguage"] = true, ["SortOrder"] = true, nil }
@@ -1490,8 +1974,14 @@ end
 -- * SortOrder [SortOrder] <p>The sort order specifier. If no value is specified, results are not sorted.</p>
 -- @return SearchProductsAsAdminInput structure as a key-value pair table
 function M.SearchProductsAsAdminInput(args)
-	assert(args, "You must provdide an argument table when creating SearchProductsAsAdminInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating SearchProductsAsAdminInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ProductSource"] = args["ProductSource"],
 		["PortfolioId"] = args["PortfolioId"],
 		["PageSize"] = args["PageSize"],
@@ -1501,8 +1991,13 @@ function M.SearchProductsAsAdminInput(args)
 		["AcceptLanguage"] = args["AcceptLanguage"],
 		["SortOrder"] = args["SortOrder"],
 	}
-	asserts.AssertSearchProductsAsAdminInput(t)
-	return t
+	asserts.AssertSearchProductsAsAdminInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdateProvisioningArtifactOutput = { ["ProvisioningArtifactDetail"] = true, ["Info"] = true, ["Status"] = true, nil }
@@ -1527,14 +2022,25 @@ end
 -- * Status [Status] <p>The status of the current request.</p>
 -- @return UpdateProvisioningArtifactOutput structure as a key-value pair table
 function M.UpdateProvisioningArtifactOutput(args)
-	assert(args, "You must provdide an argument table when creating UpdateProvisioningArtifactOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateProvisioningArtifactOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ProvisioningArtifactDetail"] = args["ProvisioningArtifactDetail"],
 		["Info"] = args["Info"],
 		["Status"] = args["Status"],
 	}
-	asserts.AssertUpdateProvisioningArtifactOutput(t)
-	return t
+	asserts.AssertUpdateProvisioningArtifactOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AssociateProductWithPortfolioInput = { ["AcceptLanguage"] = true, ["SourcePortfolioId"] = true, ["PortfolioId"] = true, ["ProductId"] = true, nil }
@@ -1565,15 +2071,26 @@ end
 -- Required key: PortfolioId
 -- @return AssociateProductWithPortfolioInput structure as a key-value pair table
 function M.AssociateProductWithPortfolioInput(args)
-	assert(args, "You must provdide an argument table when creating AssociateProductWithPortfolioInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AssociateProductWithPortfolioInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["AcceptLanguage"] = args["AcceptLanguage"],
 		["SourcePortfolioId"] = args["SourcePortfolioId"],
 		["PortfolioId"] = args["PortfolioId"],
 		["ProductId"] = args["ProductId"],
 	}
-	asserts.AssertAssociateProductWithPortfolioInput(t)
-	return t
+	asserts.AssertAssociateProductWithPortfolioInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ParameterConstraints = { ["AllowedValues"] = true, nil }
@@ -1594,12 +2111,23 @@ end
 -- * AllowedValues [AllowedValues] <p>The values that the administrator has allowed for the parameter.</p>
 -- @return ParameterConstraints structure as a key-value pair table
 function M.ParameterConstraints(args)
-	assert(args, "You must provdide an argument table when creating ParameterConstraints")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ParameterConstraints")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["AllowedValues"] = args["AllowedValues"],
 	}
-	asserts.AssertParameterConstraints(t)
-	return t
+	asserts.AssertParameterConstraints(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListResourcesForTagOptionInput = { ["ResourceType"] = true, ["PageToken"] = true, ["PageSize"] = true, ["TagOptionId"] = true, nil }
@@ -1628,15 +2156,26 @@ end
 -- Required key: TagOptionId
 -- @return ListResourcesForTagOptionInput structure as a key-value pair table
 function M.ListResourcesForTagOptionInput(args)
-	assert(args, "You must provdide an argument table when creating ListResourcesForTagOptionInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListResourcesForTagOptionInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ResourceType"] = args["ResourceType"],
 		["PageToken"] = args["PageToken"],
 		["PageSize"] = args["PageSize"],
 		["TagOptionId"] = args["TagOptionId"],
 	}
-	asserts.AssertListResourcesForTagOptionInput(t)
-	return t
+	asserts.AssertListResourcesForTagOptionInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdateTagOptionInput = { ["Active"] = true, ["Id"] = true, ["Value"] = true, nil }
@@ -1663,14 +2202,25 @@ end
 -- Required key: Id
 -- @return UpdateTagOptionInput structure as a key-value pair table
 function M.UpdateTagOptionInput(args)
-	assert(args, "You must provdide an argument table when creating UpdateTagOptionInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateTagOptionInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Active"] = args["Active"],
 		["Id"] = args["Id"],
 		["Value"] = args["Value"],
 	}
-	asserts.AssertUpdateTagOptionInput(t)
-	return t
+	asserts.AssertUpdateTagOptionInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.RecordTag = { ["Value"] = true, ["Key"] = true, nil }
@@ -1693,13 +2243,24 @@ end
 -- * Key [RecordTagKey] <p>The key for this tag.</p>
 -- @return RecordTag structure as a key-value pair table
 function M.RecordTag(args)
-	assert(args, "You must provdide an argument table when creating RecordTag")
-	local t = { 
+	assert(args, "You must provide an argument table when creating RecordTag")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Value"] = args["Value"],
 		["Key"] = args["Key"],
 	}
-	asserts.AssertRecordTag(t)
-	return t
+	asserts.AssertRecordTag(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.TagOptionNotMigratedException = { nil }
@@ -1718,11 +2279,22 @@ end
 -- Valid keys:
 -- @return TagOptionNotMigratedException structure as a key-value pair table
 function M.TagOptionNotMigratedException(args)
-	assert(args, "You must provdide an argument table when creating TagOptionNotMigratedException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating TagOptionNotMigratedException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertTagOptionNotMigratedException(t)
-	return t
+	asserts.AssertTagOptionNotMigratedException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListPortfoliosForProductInput = { ["AcceptLanguage"] = true, ["PageToken"] = true, ["PageSize"] = true, ["ProductId"] = true, nil }
@@ -1751,15 +2323,26 @@ end
 -- Required key: ProductId
 -- @return ListPortfoliosForProductInput structure as a key-value pair table
 function M.ListPortfoliosForProductInput(args)
-	assert(args, "You must provdide an argument table when creating ListPortfoliosForProductInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListPortfoliosForProductInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["AcceptLanguage"] = args["AcceptLanguage"],
 		["PageToken"] = args["PageToken"],
 		["PageSize"] = args["PageSize"],
 		["ProductId"] = args["ProductId"],
 	}
-	asserts.AssertListPortfoliosForProductInput(t)
-	return t
+	asserts.AssertListPortfoliosForProductInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ScanProvisionedProductsOutput = { ["NextPageToken"] = true, ["ProvisionedProducts"] = true, nil }
@@ -1782,13 +2365,24 @@ end
 -- * ProvisionedProducts [ProvisionedProductDetails] <p>A list of ProvisionedProduct detail objects.</p>
 -- @return ScanProvisionedProductsOutput structure as a key-value pair table
 function M.ScanProvisionedProductsOutput(args)
-	assert(args, "You must provdide an argument table when creating ScanProvisionedProductsOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ScanProvisionedProductsOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NextPageToken"] = args["NextPageToken"],
 		["ProvisionedProducts"] = args["ProvisionedProducts"],
 	}
-	asserts.AssertScanProvisionedProductsOutput(t)
-	return t
+	asserts.AssertScanProvisionedProductsOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreatePortfolioShareOutput = { nil }
@@ -1807,11 +2401,22 @@ end
 -- Valid keys:
 -- @return CreatePortfolioShareOutput structure as a key-value pair table
 function M.CreatePortfolioShareOutput(args)
-	assert(args, "You must provdide an argument table when creating CreatePortfolioShareOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreatePortfolioShareOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertCreatePortfolioShareOutput(t)
-	return t
+	asserts.AssertCreatePortfolioShareOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateProductInput = { ["SupportEmail"] = true, ["Name"] = true, ["Tags"] = true, ["SupportUrl"] = true, ["Owner"] = true, ["IdempotencyToken"] = true, ["ProvisioningArtifactParameters"] = true, ["ProductType"] = true, ["AcceptLanguage"] = true, ["Distributor"] = true, ["SupportDescription"] = true, ["Description"] = true, nil }
@@ -1864,8 +2469,14 @@ end
 -- Required key: IdempotencyToken
 -- @return CreateProductInput structure as a key-value pair table
 function M.CreateProductInput(args)
-	assert(args, "You must provdide an argument table when creating CreateProductInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateProductInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["SupportEmail"] = args["SupportEmail"],
 		["Name"] = args["Name"],
 		["Tags"] = args["Tags"],
@@ -1879,8 +2490,13 @@ function M.CreateProductInput(args)
 		["SupportDescription"] = args["SupportDescription"],
 		["Description"] = args["Description"],
 	}
-	asserts.AssertCreateProductInput(t)
-	return t
+	asserts.AssertCreateProductInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ProvisioningArtifact = { ["CreatedTime"] = true, ["Description"] = true, ["Id"] = true, ["Name"] = true, nil }
@@ -1907,15 +2523,26 @@ end
 -- * Name [ProvisioningArtifactName] <p>The name of the artifact.</p>
 -- @return ProvisioningArtifact structure as a key-value pair table
 function M.ProvisioningArtifact(args)
-	assert(args, "You must provdide an argument table when creating ProvisioningArtifact")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ProvisioningArtifact")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["CreatedTime"] = args["CreatedTime"],
 		["Description"] = args["Description"],
 		["Id"] = args["Id"],
 		["Name"] = args["Name"],
 	}
-	asserts.AssertProvisioningArtifact(t)
-	return t
+	asserts.AssertProvisioningArtifact(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeProductAsAdminInput = { ["AcceptLanguage"] = true, ["Id"] = true, nil }
@@ -1940,13 +2567,24 @@ end
 -- Required key: Id
 -- @return DescribeProductAsAdminInput structure as a key-value pair table
 function M.DescribeProductAsAdminInput(args)
-	assert(args, "You must provdide an argument table when creating DescribeProductAsAdminInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeProductAsAdminInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["AcceptLanguage"] = args["AcceptLanguage"],
 		["Id"] = args["Id"],
 	}
-	asserts.AssertDescribeProductAsAdminInput(t)
-	return t
+	asserts.AssertDescribeProductAsAdminInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ResourceDetail = { ["CreatedTime"] = true, ["Description"] = true, ["Id"] = true, ["ARN"] = true, ["Name"] = true, nil }
@@ -1975,16 +2613,27 @@ end
 -- * Name [ResourceDetailName] <p>Name of the resource.</p>
 -- @return ResourceDetail structure as a key-value pair table
 function M.ResourceDetail(args)
-	assert(args, "You must provdide an argument table when creating ResourceDetail")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ResourceDetail")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["CreatedTime"] = args["CreatedTime"],
 		["Description"] = args["Description"],
 		["Id"] = args["Id"],
 		["ARN"] = args["ARN"],
 		["Name"] = args["Name"],
 	}
-	asserts.AssertResourceDetail(t)
-	return t
+	asserts.AssertResourceDetail(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListConstraintsForPortfolioOutput = { ["NextPageToken"] = true, ["ConstraintDetails"] = true, nil }
@@ -2007,13 +2656,24 @@ end
 -- * ConstraintDetails [ConstraintDetails] <p>List of detailed constraint information objects.</p>
 -- @return ListConstraintsForPortfolioOutput structure as a key-value pair table
 function M.ListConstraintsForPortfolioOutput(args)
-	assert(args, "You must provdide an argument table when creating ListConstraintsForPortfolioOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListConstraintsForPortfolioOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NextPageToken"] = args["NextPageToken"],
 		["ConstraintDetails"] = args["ConstraintDetails"],
 	}
-	asserts.AssertListConstraintsForPortfolioOutput(t)
-	return t
+	asserts.AssertListConstraintsForPortfolioOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeProductViewInput = { ["AcceptLanguage"] = true, ["Id"] = true, nil }
@@ -2038,13 +2698,24 @@ end
 -- Required key: Id
 -- @return DescribeProductViewInput structure as a key-value pair table
 function M.DescribeProductViewInput(args)
-	assert(args, "You must provdide an argument table when creating DescribeProductViewInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeProductViewInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["AcceptLanguage"] = args["AcceptLanguage"],
 		["Id"] = args["Id"],
 	}
-	asserts.AssertDescribeProductViewInput(t)
-	return t
+	asserts.AssertDescribeProductViewInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.RecordError = { ["Code"] = true, ["Description"] = true, nil }
@@ -2067,13 +2738,24 @@ end
 -- * Description [ErrorDescription] <p>The text description of the error.</p>
 -- @return RecordError structure as a key-value pair table
 function M.RecordError(args)
-	assert(args, "You must provdide an argument table when creating RecordError")
-	local t = { 
+	assert(args, "You must provide an argument table when creating RecordError")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Code"] = args["Code"],
 		["Description"] = args["Description"],
 	}
-	asserts.AssertRecordError(t)
-	return t
+	asserts.AssertRecordError(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ProvisioningArtifactDetail = { ["CreatedTime"] = true, ["Description"] = true, ["Type"] = true, ["Id"] = true, ["Name"] = true, nil }
@@ -2102,16 +2784,27 @@ end
 -- * Name [ProvisioningArtifactName] <p>The name assigned to the provisioning artifact.</p>
 -- @return ProvisioningArtifactDetail structure as a key-value pair table
 function M.ProvisioningArtifactDetail(args)
-	assert(args, "You must provdide an argument table when creating ProvisioningArtifactDetail")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ProvisioningArtifactDetail")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["CreatedTime"] = args["CreatedTime"],
 		["Description"] = args["Description"],
 		["Type"] = args["Type"],
 		["Id"] = args["Id"],
 		["Name"] = args["Name"],
 	}
-	asserts.AssertProvisioningArtifactDetail(t)
-	return t
+	asserts.AssertProvisioningArtifactDetail(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AssociateProductWithPortfolioOutput = { nil }
@@ -2130,11 +2823,22 @@ end
 -- Valid keys:
 -- @return AssociateProductWithPortfolioOutput structure as a key-value pair table
 function M.AssociateProductWithPortfolioOutput(args)
-	assert(args, "You must provdide an argument table when creating AssociateProductWithPortfolioOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AssociateProductWithPortfolioOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertAssociateProductWithPortfolioOutput(t)
-	return t
+	asserts.AssertAssociateProductWithPortfolioOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AssociatePrincipalWithPortfolioInput = { ["AcceptLanguage"] = true, ["PrincipalType"] = true, ["PrincipalARN"] = true, ["PortfolioId"] = true, nil }
@@ -2167,15 +2871,26 @@ end
 -- Required key: PrincipalType
 -- @return AssociatePrincipalWithPortfolioInput structure as a key-value pair table
 function M.AssociatePrincipalWithPortfolioInput(args)
-	assert(args, "You must provdide an argument table when creating AssociatePrincipalWithPortfolioInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AssociatePrincipalWithPortfolioInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["AcceptLanguage"] = args["AcceptLanguage"],
 		["PrincipalType"] = args["PrincipalType"],
 		["PrincipalARN"] = args["PrincipalARN"],
 		["PortfolioId"] = args["PortfolioId"],
 	}
-	asserts.AssertAssociatePrincipalWithPortfolioInput(t)
-	return t
+	asserts.AssertAssociatePrincipalWithPortfolioInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdateProvisioningArtifactInput = { ["AcceptLanguage"] = true, ["ProvisioningArtifactId"] = true, ["Description"] = true, ["Name"] = true, ["ProductId"] = true, nil }
@@ -2208,16 +2923,27 @@ end
 -- Required key: ProvisioningArtifactId
 -- @return UpdateProvisioningArtifactInput structure as a key-value pair table
 function M.UpdateProvisioningArtifactInput(args)
-	assert(args, "You must provdide an argument table when creating UpdateProvisioningArtifactInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateProvisioningArtifactInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["AcceptLanguage"] = args["AcceptLanguage"],
 		["ProvisioningArtifactId"] = args["ProvisioningArtifactId"],
 		["Description"] = args["Description"],
 		["Name"] = args["Name"],
 		["ProductId"] = args["ProductId"],
 	}
-	asserts.AssertUpdateProvisioningArtifactInput(t)
-	return t
+	asserts.AssertUpdateProvisioningArtifactInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DisassociateProductFromPortfolioOutput = { nil }
@@ -2236,11 +2962,22 @@ end
 -- Valid keys:
 -- @return DisassociateProductFromPortfolioOutput structure as a key-value pair table
 function M.DisassociateProductFromPortfolioOutput(args)
-	assert(args, "You must provdide an argument table when creating DisassociateProductFromPortfolioOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DisassociateProductFromPortfolioOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertDisassociateProductFromPortfolioOutput(t)
-	return t
+	asserts.AssertDisassociateProductFromPortfolioOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.RecordOutput = { ["Description"] = true, ["OutputKey"] = true, ["OutputValue"] = true, nil }
@@ -2265,14 +3002,25 @@ end
 -- * OutputValue [OutputValue] <p>The output value.</p>
 -- @return RecordOutput structure as a key-value pair table
 function M.RecordOutput(args)
-	assert(args, "You must provdide an argument table when creating RecordOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating RecordOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Description"] = args["Description"],
 		["OutputKey"] = args["OutputKey"],
 		["OutputValue"] = args["OutputValue"],
 	}
-	asserts.AssertRecordOutput(t)
-	return t
+	asserts.AssertRecordOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeProductOutput = { ["ProductViewSummary"] = true, ["ProvisioningArtifacts"] = true, nil }
@@ -2295,13 +3043,24 @@ end
 -- * ProvisioningArtifacts [ProvisioningArtifacts] <p>A list of provisioning artifact objects for the specified product. The <code>ProvisioningArtifacts</code> parameter represent the ways the specified product can be provisioned.</p>
 -- @return DescribeProductOutput structure as a key-value pair table
 function M.DescribeProductOutput(args)
-	assert(args, "You must provdide an argument table when creating DescribeProductOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeProductOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ProductViewSummary"] = args["ProductViewSummary"],
 		["ProvisioningArtifacts"] = args["ProvisioningArtifacts"],
 	}
-	asserts.AssertDescribeProductOutput(t)
-	return t
+	asserts.AssertDescribeProductOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.LimitExceededException = { nil }
@@ -2320,11 +3079,22 @@ end
 -- Valid keys:
 -- @return LimitExceededException structure as a key-value pair table
 function M.LimitExceededException(args)
-	assert(args, "You must provdide an argument table when creating LimitExceededException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating LimitExceededException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertLimitExceededException(t)
-	return t
+	asserts.AssertLimitExceededException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.PortfolioDetail = { ["DisplayName"] = true, ["Description"] = true, ["ProviderName"] = true, ["CreatedTime"] = true, ["Id"] = true, ["ARN"] = true, nil }
@@ -2355,8 +3125,14 @@ end
 -- * ARN [ResourceARN] <p>The ARN assigned to the portfolio.</p>
 -- @return PortfolioDetail structure as a key-value pair table
 function M.PortfolioDetail(args)
-	assert(args, "You must provdide an argument table when creating PortfolioDetail")
-	local t = { 
+	assert(args, "You must provide an argument table when creating PortfolioDetail")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DisplayName"] = args["DisplayName"],
 		["Description"] = args["Description"],
 		["ProviderName"] = args["ProviderName"],
@@ -2364,8 +3140,13 @@ function M.PortfolioDetail(args)
 		["Id"] = args["Id"],
 		["ARN"] = args["ARN"],
 	}
-	asserts.AssertPortfolioDetail(t)
-	return t
+	asserts.AssertPortfolioDetail(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdateProductInput = { ["RemoveTags"] = true, ["SupportEmail"] = true, ["Description"] = true, ["SupportUrl"] = true, ["Owner"] = true, ["AddTags"] = true, ["AcceptLanguage"] = true, ["Distributor"] = true, ["SupportDescription"] = true, ["Id"] = true, ["Name"] = true, nil }
@@ -2408,8 +3189,14 @@ end
 -- Required key: Id
 -- @return UpdateProductInput structure as a key-value pair table
 function M.UpdateProductInput(args)
-	assert(args, "You must provdide an argument table when creating UpdateProductInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateProductInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["RemoveTags"] = args["RemoveTags"],
 		["SupportEmail"] = args["SupportEmail"],
 		["Description"] = args["Description"],
@@ -2422,8 +3209,13 @@ function M.UpdateProductInput(args)
 		["Id"] = args["Id"],
 		["Name"] = args["Name"],
 	}
-	asserts.AssertUpdateProductInput(t)
-	return t
+	asserts.AssertUpdateProductInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteProvisioningArtifactOutput = { nil }
@@ -2442,11 +3234,22 @@ end
 -- Valid keys:
 -- @return DeleteProvisioningArtifactOutput structure as a key-value pair table
 function M.DeleteProvisioningArtifactOutput(args)
-	assert(args, "You must provdide an argument table when creating DeleteProvisioningArtifactOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteProvisioningArtifactOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertDeleteProvisioningArtifactOutput(t)
-	return t
+	asserts.AssertDeleteProvisioningArtifactOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.TerminateProvisionedProductOutput = { ["RecordDetail"] = true, nil }
@@ -2467,12 +3270,23 @@ end
 -- * RecordDetail [RecordDetail] <p>The detailed result of the <a>TerminateProvisionedProduct</a> request, containing the inputs made to that request, the current state of the request, a pointer to the ProvisionedProduct object that the request is modifying, and a list of any errors that the request encountered.</p>
 -- @return TerminateProvisionedProductOutput structure as a key-value pair table
 function M.TerminateProvisionedProductOutput(args)
-	assert(args, "You must provdide an argument table when creating TerminateProvisionedProductOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating TerminateProvisionedProductOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["RecordDetail"] = args["RecordDetail"],
 	}
-	asserts.AssertTerminateProvisionedProductOutput(t)
-	return t
+	asserts.AssertTerminateProvisionedProductOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListPortfoliosOutput = { ["NextPageToken"] = true, ["PortfolioDetails"] = true, nil }
@@ -2495,13 +3309,24 @@ end
 -- * PortfolioDetails [PortfolioDetails] <p>List of detailed portfolio information objects.</p>
 -- @return ListPortfoliosOutput structure as a key-value pair table
 function M.ListPortfoliosOutput(args)
-	assert(args, "You must provdide an argument table when creating ListPortfoliosOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListPortfoliosOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NextPageToken"] = args["NextPageToken"],
 		["PortfolioDetails"] = args["PortfolioDetails"],
 	}
-	asserts.AssertListPortfoliosOutput(t)
-	return t
+	asserts.AssertListPortfoliosOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeProvisioningParametersInput = { ["AcceptLanguage"] = true, ["ProvisioningArtifactId"] = true, ["PathId"] = true, ["ProductId"] = true, nil }
@@ -2532,15 +3357,26 @@ end
 -- Required key: ProvisioningArtifactId
 -- @return DescribeProvisioningParametersInput structure as a key-value pair table
 function M.DescribeProvisioningParametersInput(args)
-	assert(args, "You must provdide an argument table when creating DescribeProvisioningParametersInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeProvisioningParametersInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["AcceptLanguage"] = args["AcceptLanguage"],
 		["ProvisioningArtifactId"] = args["ProvisioningArtifactId"],
 		["PathId"] = args["PathId"],
 		["ProductId"] = args["ProductId"],
 	}
-	asserts.AssertDescribeProvisioningParametersInput(t)
-	return t
+	asserts.AssertDescribeProvisioningParametersInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.RecordDetail = { ["Status"] = true, ["UpdatedTime"] = true, ["ProvisionedProductName"] = true, ["RecordType"] = true, ["ProvisioningArtifactId"] = true, ["RecordId"] = true, ["ProvisionedProductType"] = true, ["RecordTags"] = true, ["RecordErrors"] = true, ["PathId"] = true, ["CreatedTime"] = true, ["ProvisionedProductId"] = true, ["ProductId"] = true, nil }
@@ -2585,8 +3421,14 @@ end
 -- * ProductId [Id] <p>The product identifier.</p>
 -- @return RecordDetail structure as a key-value pair table
 function M.RecordDetail(args)
-	assert(args, "You must provdide an argument table when creating RecordDetail")
-	local t = { 
+	assert(args, "You must provide an argument table when creating RecordDetail")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Status"] = args["Status"],
 		["UpdatedTime"] = args["UpdatedTime"],
 		["ProvisionedProductName"] = args["ProvisionedProductName"],
@@ -2601,8 +3443,13 @@ function M.RecordDetail(args)
 		["ProvisionedProductId"] = args["ProvisionedProductId"],
 		["ProductId"] = args["ProductId"],
 	}
-	asserts.AssertRecordDetail(t)
-	return t
+	asserts.AssertRecordDetail(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListTagOptionsFilters = { ["Active"] = true, ["Value"] = true, ["Key"] = true, nil }
@@ -2627,14 +3474,25 @@ end
 -- * Key [TagOptionKey] <p>The ListTagOptionsFilters key.</p>
 -- @return ListTagOptionsFilters structure as a key-value pair table
 function M.ListTagOptionsFilters(args)
-	assert(args, "You must provdide an argument table when creating ListTagOptionsFilters")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListTagOptionsFilters")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Active"] = args["Active"],
 		["Value"] = args["Value"],
 		["Key"] = args["Key"],
 	}
-	asserts.AssertListTagOptionsFilters(t)
-	return t
+	asserts.AssertListTagOptionsFilters(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ResourceInUseException = { nil }
@@ -2653,11 +3511,22 @@ end
 -- Valid keys:
 -- @return ResourceInUseException structure as a key-value pair table
 function M.ResourceInUseException(args)
-	assert(args, "You must provdide an argument table when creating ResourceInUseException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ResourceInUseException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertResourceInUseException(t)
-	return t
+	asserts.AssertResourceInUseException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeletePortfolioShareOutput = { nil }
@@ -2676,11 +3545,22 @@ end
 -- Valid keys:
 -- @return DeletePortfolioShareOutput structure as a key-value pair table
 function M.DeletePortfolioShareOutput(args)
-	assert(args, "You must provdide an argument table when creating DeletePortfolioShareOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeletePortfolioShareOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertDeletePortfolioShareOutput(t)
-	return t
+	asserts.AssertDeletePortfolioShareOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeProductAsAdminOutput = { ["ProductViewDetail"] = true, ["TagOptions"] = true, ["ProvisioningArtifactSummaries"] = true, ["Tags"] = true, nil }
@@ -2707,15 +3587,26 @@ end
 -- * Tags [Tags] <p>Tags associated with the product.</p>
 -- @return DescribeProductAsAdminOutput structure as a key-value pair table
 function M.DescribeProductAsAdminOutput(args)
-	assert(args, "You must provdide an argument table when creating DescribeProductAsAdminOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeProductAsAdminOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ProductViewDetail"] = args["ProductViewDetail"],
 		["TagOptions"] = args["TagOptions"],
 		["ProvisioningArtifactSummaries"] = args["ProvisioningArtifactSummaries"],
 		["Tags"] = args["Tags"],
 	}
-	asserts.AssertDescribeProductAsAdminOutput(t)
-	return t
+	asserts.AssertDescribeProductAsAdminOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListTagOptionsInput = { ["PageToken"] = true, ["PageSize"] = true, ["Filters"] = true, nil }
@@ -2740,14 +3631,25 @@ end
 -- * Filters [ListTagOptionsFilters] <p>The list of filters with which to limit search results. If no search filters are specified, the output is all TagOptions. </p>
 -- @return ListTagOptionsInput structure as a key-value pair table
 function M.ListTagOptionsInput(args)
-	assert(args, "You must provdide an argument table when creating ListTagOptionsInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListTagOptionsInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["PageToken"] = args["PageToken"],
 		["PageSize"] = args["PageSize"],
 		["Filters"] = args["Filters"],
 	}
-	asserts.AssertListTagOptionsInput(t)
-	return t
+	asserts.AssertListTagOptionsInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListTagOptionsOutput = { ["PageToken"] = true, ["TagOptionDetails"] = true, nil }
@@ -2770,13 +3672,24 @@ end
 -- * TagOptionDetails [TagOptionDetails] <p>The resulting detailed TagOption information.</p>
 -- @return ListTagOptionsOutput structure as a key-value pair table
 function M.ListTagOptionsOutput(args)
-	assert(args, "You must provdide an argument table when creating ListTagOptionsOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListTagOptionsOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["PageToken"] = args["PageToken"],
 		["TagOptionDetails"] = args["TagOptionDetails"],
 	}
-	asserts.AssertListTagOptionsOutput(t)
-	return t
+	asserts.AssertListTagOptionsOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeProvisionedProductInput = { ["AcceptLanguage"] = true, ["Id"] = true, nil }
@@ -2801,13 +3714,24 @@ end
 -- Required key: Id
 -- @return DescribeProvisionedProductInput structure as a key-value pair table
 function M.DescribeProvisionedProductInput(args)
-	assert(args, "You must provdide an argument table when creating DescribeProvisionedProductInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeProvisionedProductInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["AcceptLanguage"] = args["AcceptLanguage"],
 		["Id"] = args["Id"],
 	}
-	asserts.AssertDescribeProvisionedProductInput(t)
-	return t
+	asserts.AssertDescribeProvisionedProductInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListPrincipalsForPortfolioInput = { ["AcceptLanguage"] = true, ["PageToken"] = true, ["PortfolioId"] = true, ["PageSize"] = true, nil }
@@ -2836,15 +3760,26 @@ end
 -- Required key: PortfolioId
 -- @return ListPrincipalsForPortfolioInput structure as a key-value pair table
 function M.ListPrincipalsForPortfolioInput(args)
-	assert(args, "You must provdide an argument table when creating ListPrincipalsForPortfolioInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListPrincipalsForPortfolioInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["AcceptLanguage"] = args["AcceptLanguage"],
 		["PageToken"] = args["PageToken"],
 		["PortfolioId"] = args["PortfolioId"],
 		["PageSize"] = args["PageSize"],
 	}
-	asserts.AssertListPrincipalsForPortfolioInput(t)
-	return t
+	asserts.AssertListPrincipalsForPortfolioInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListPortfolioAccessOutput = { ["NextPageToken"] = true, ["AccountIds"] = true, nil }
@@ -2867,13 +3802,24 @@ end
 -- * AccountIds [AccountIds] <p>List of account IDs associated with access to the portfolio.</p>
 -- @return ListPortfolioAccessOutput structure as a key-value pair table
 function M.ListPortfolioAccessOutput(args)
-	assert(args, "You must provdide an argument table when creating ListPortfolioAccessOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListPortfolioAccessOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NextPageToken"] = args["NextPageToken"],
 		["AccountIds"] = args["AccountIds"],
 	}
-	asserts.AssertListPortfolioAccessOutput(t)
-	return t
+	asserts.AssertListPortfolioAccessOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.LaunchPathSummary = { ["Name"] = true, ["ConstraintSummaries"] = true, ["Id"] = true, ["Tags"] = true, nil }
@@ -2900,15 +3846,26 @@ end
 -- * Tags [Tags] <p>List of tags used by this launch path.</p>
 -- @return LaunchPathSummary structure as a key-value pair table
 function M.LaunchPathSummary(args)
-	assert(args, "You must provdide an argument table when creating LaunchPathSummary")
-	local t = { 
+	assert(args, "You must provide an argument table when creating LaunchPathSummary")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Name"] = args["Name"],
 		["ConstraintSummaries"] = args["ConstraintSummaries"],
 		["Id"] = args["Id"],
 		["Tags"] = args["Tags"],
 	}
-	asserts.AssertLaunchPathSummary(t)
-	return t
+	asserts.AssertLaunchPathSummary(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DisassociateTagOptionFromResourceOutput = { nil }
@@ -2927,11 +3884,22 @@ end
 -- Valid keys:
 -- @return DisassociateTagOptionFromResourceOutput structure as a key-value pair table
 function M.DisassociateTagOptionFromResourceOutput(args)
-	assert(args, "You must provdide an argument table when creating DisassociateTagOptionFromResourceOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DisassociateTagOptionFromResourceOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertDisassociateTagOptionFromResourceOutput(t)
-	return t
+	asserts.AssertDisassociateTagOptionFromResourceOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DisassociatePrincipalFromPortfolioOutput = { nil }
@@ -2950,11 +3918,22 @@ end
 -- Valid keys:
 -- @return DisassociatePrincipalFromPortfolioOutput structure as a key-value pair table
 function M.DisassociatePrincipalFromPortfolioOutput(args)
-	assert(args, "You must provdide an argument table when creating DisassociatePrincipalFromPortfolioOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DisassociatePrincipalFromPortfolioOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertDisassociatePrincipalFromPortfolioOutput(t)
-	return t
+	asserts.AssertDisassociatePrincipalFromPortfolioOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListAcceptedPortfolioSharesInput = { ["AcceptLanguage"] = true, ["PageToken"] = true, ["PageSize"] = true, nil }
@@ -2979,14 +3958,25 @@ end
 -- * PageSize [PageSize] <p>The maximum number of items to return in the results. If more results exist than fit in the specified <code>PageSize</code>, the value of <code>NextPageToken</code> in the response is non-null.</p>
 -- @return ListAcceptedPortfolioSharesInput structure as a key-value pair table
 function M.ListAcceptedPortfolioSharesInput(args)
-	assert(args, "You must provdide an argument table when creating ListAcceptedPortfolioSharesInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListAcceptedPortfolioSharesInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["AcceptLanguage"] = args["AcceptLanguage"],
 		["PageToken"] = args["PageToken"],
 		["PageSize"] = args["PageSize"],
 	}
-	asserts.AssertListAcceptedPortfolioSharesInput(t)
-	return t
+	asserts.AssertListAcceptedPortfolioSharesInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeProvisioningArtifactOutput = { ["ProvisioningArtifactDetail"] = true, ["Info"] = true, ["Status"] = true, nil }
@@ -3011,14 +4001,25 @@ end
 -- * Status [Status] <p>The status of the current request.</p>
 -- @return DescribeProvisioningArtifactOutput structure as a key-value pair table
 function M.DescribeProvisioningArtifactOutput(args)
-	assert(args, "You must provdide an argument table when creating DescribeProvisioningArtifactOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeProvisioningArtifactOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ProvisioningArtifactDetail"] = args["ProvisioningArtifactDetail"],
 		["Info"] = args["Info"],
 		["Status"] = args["Status"],
 	}
-	asserts.AssertDescribeProvisioningArtifactOutput(t)
-	return t
+	asserts.AssertDescribeProvisioningArtifactOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AssociatePrincipalWithPortfolioOutput = { nil }
@@ -3037,11 +4038,22 @@ end
 -- Valid keys:
 -- @return AssociatePrincipalWithPortfolioOutput structure as a key-value pair table
 function M.AssociatePrincipalWithPortfolioOutput(args)
-	assert(args, "You must provdide an argument table when creating AssociatePrincipalWithPortfolioOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AssociatePrincipalWithPortfolioOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertAssociatePrincipalWithPortfolioOutput(t)
-	return t
+	asserts.AssertAssociatePrincipalWithPortfolioOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListAcceptedPortfolioSharesOutput = { ["NextPageToken"] = true, ["PortfolioDetails"] = true, nil }
@@ -3064,13 +4076,24 @@ end
 -- * PortfolioDetails [PortfolioDetails] <p>List of detailed portfolio information objects.</p>
 -- @return ListAcceptedPortfolioSharesOutput structure as a key-value pair table
 function M.ListAcceptedPortfolioSharesOutput(args)
-	assert(args, "You must provdide an argument table when creating ListAcceptedPortfolioSharesOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListAcceptedPortfolioSharesOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NextPageToken"] = args["NextPageToken"],
 		["PortfolioDetails"] = args["PortfolioDetails"],
 	}
-	asserts.AssertListAcceptedPortfolioSharesOutput(t)
-	return t
+	asserts.AssertListAcceptedPortfolioSharesOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ResourceNotFoundException = { nil }
@@ -3089,11 +4112,22 @@ end
 -- Valid keys:
 -- @return ResourceNotFoundException structure as a key-value pair table
 function M.ResourceNotFoundException(args)
-	assert(args, "You must provdide an argument table when creating ResourceNotFoundException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ResourceNotFoundException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertResourceNotFoundException(t)
-	return t
+	asserts.AssertResourceNotFoundException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AcceptPortfolioShareInput = { ["AcceptLanguage"] = true, ["PortfolioId"] = true, nil }
@@ -3118,13 +4152,24 @@ end
 -- Required key: PortfolioId
 -- @return AcceptPortfolioShareInput structure as a key-value pair table
 function M.AcceptPortfolioShareInput(args)
-	assert(args, "You must provdide an argument table when creating AcceptPortfolioShareInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AcceptPortfolioShareInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["AcceptLanguage"] = args["AcceptLanguage"],
 		["PortfolioId"] = args["PortfolioId"],
 	}
-	asserts.AssertAcceptPortfolioShareInput(t)
-	return t
+	asserts.AssertAcceptPortfolioShareInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeProvisionedProductOutput = { ["ProvisionedProductDetail"] = true, nil }
@@ -3145,12 +4190,23 @@ end
 -- * ProvisionedProductDetail [ProvisionedProductDetail] <p>Detailed provisioned product information.</p>
 -- @return DescribeProvisionedProductOutput structure as a key-value pair table
 function M.DescribeProvisionedProductOutput(args)
-	assert(args, "You must provdide an argument table when creating DescribeProvisionedProductOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeProvisionedProductOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ProvisionedProductDetail"] = args["ProvisionedProductDetail"],
 	}
-	asserts.AssertDescribeProvisionedProductOutput(t)
-	return t
+	asserts.AssertDescribeProvisionedProductOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.TagOptionDetail = { ["Active"] = true, ["Value"] = true, ["Key"] = true, ["Id"] = true, nil }
@@ -3177,15 +4233,26 @@ end
 -- * Id [TagOptionId] <p>The TagOptionDetail identifier.</p>
 -- @return TagOptionDetail structure as a key-value pair table
 function M.TagOptionDetail(args)
-	assert(args, "You must provdide an argument table when creating TagOptionDetail")
-	local t = { 
+	assert(args, "You must provide an argument table when creating TagOptionDetail")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Active"] = args["Active"],
 		["Value"] = args["Value"],
 		["Key"] = args["Key"],
 		["Id"] = args["Id"],
 	}
-	asserts.AssertTagOptionDetail(t)
-	return t
+	asserts.AssertTagOptionDetail(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListRecordHistoryOutput = { ["NextPageToken"] = true, ["RecordDetails"] = true, nil }
@@ -3208,13 +4275,24 @@ end
 -- * RecordDetails [RecordDetails] <p>A list of record detail objects, listed in reverse chronological order.</p>
 -- @return ListRecordHistoryOutput structure as a key-value pair table
 function M.ListRecordHistoryOutput(args)
-	assert(args, "You must provdide an argument table when creating ListRecordHistoryOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListRecordHistoryOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NextPageToken"] = args["NextPageToken"],
 		["RecordDetails"] = args["RecordDetails"],
 	}
-	asserts.AssertListRecordHistoryOutput(t)
-	return t
+	asserts.AssertListRecordHistoryOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.SearchProductsOutput = { ["NextPageToken"] = true, ["ProductViewAggregations"] = true, ["ProductViewSummaries"] = true, nil }
@@ -3239,14 +4317,25 @@ end
 -- * ProductViewSummaries [ProductViewSummaries] <p>A list of the product view summary objects.</p>
 -- @return SearchProductsOutput structure as a key-value pair table
 function M.SearchProductsOutput(args)
-	assert(args, "You must provdide an argument table when creating SearchProductsOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating SearchProductsOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NextPageToken"] = args["NextPageToken"],
 		["ProductViewAggregations"] = args["ProductViewAggregations"],
 		["ProductViewSummaries"] = args["ProductViewSummaries"],
 	}
-	asserts.AssertSearchProductsOutput(t)
-	return t
+	asserts.AssertSearchProductsOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateProvisioningArtifactInput = { ["AcceptLanguage"] = true, ["IdempotencyToken"] = true, ["Parameters"] = true, ["ProductId"] = true, nil }
@@ -3279,15 +4368,26 @@ end
 -- Required key: IdempotencyToken
 -- @return CreateProvisioningArtifactInput structure as a key-value pair table
 function M.CreateProvisioningArtifactInput(args)
-	assert(args, "You must provdide an argument table when creating CreateProvisioningArtifactInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateProvisioningArtifactInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["AcceptLanguage"] = args["AcceptLanguage"],
 		["IdempotencyToken"] = args["IdempotencyToken"],
 		["Parameters"] = args["Parameters"],
 		["ProductId"] = args["ProductId"],
 	}
-	asserts.AssertCreateProvisioningArtifactInput(t)
-	return t
+	asserts.AssertCreateProvisioningArtifactInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeConstraintOutput = { ["Status"] = true, ["ConstraintParameters"] = true, ["ConstraintDetail"] = true, nil }
@@ -3312,14 +4412,25 @@ end
 -- * ConstraintDetail [ConstraintDetail] <p>Detailed constraint information.</p>
 -- @return DescribeConstraintOutput structure as a key-value pair table
 function M.DescribeConstraintOutput(args)
-	assert(args, "You must provdide an argument table when creating DescribeConstraintOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeConstraintOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Status"] = args["Status"],
 		["ConstraintParameters"] = args["ConstraintParameters"],
 		["ConstraintDetail"] = args["ConstraintDetail"],
 	}
-	asserts.AssertDescribeConstraintOutput(t)
-	return t
+	asserts.AssertDescribeConstraintOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreatePortfolioOutput = { ["PortfolioDetail"] = true, ["Tags"] = true, nil }
@@ -3342,13 +4453,24 @@ end
 -- * Tags [Tags] <p>Tags successfully associated with the new portfolio.</p>
 -- @return CreatePortfolioOutput structure as a key-value pair table
 function M.CreatePortfolioOutput(args)
-	assert(args, "You must provdide an argument table when creating CreatePortfolioOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreatePortfolioOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["PortfolioDetail"] = args["PortfolioDetail"],
 		["Tags"] = args["Tags"],
 	}
-	asserts.AssertCreatePortfolioOutput(t)
-	return t
+	asserts.AssertCreatePortfolioOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AcceptPortfolioShareOutput = { nil }
@@ -3367,11 +4489,22 @@ end
 -- Valid keys:
 -- @return AcceptPortfolioShareOutput structure as a key-value pair table
 function M.AcceptPortfolioShareOutput(args)
-	assert(args, "You must provdide an argument table when creating AcceptPortfolioShareOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AcceptPortfolioShareOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertAcceptPortfolioShareOutput(t)
-	return t
+	asserts.AssertAcceptPortfolioShareOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdateConstraintInput = { ["AcceptLanguage"] = true, ["Id"] = true, ["Description"] = true, nil }
@@ -3398,14 +4531,25 @@ end
 -- Required key: Id
 -- @return UpdateConstraintInput structure as a key-value pair table
 function M.UpdateConstraintInput(args)
-	assert(args, "You must provdide an argument table when creating UpdateConstraintInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateConstraintInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["AcceptLanguage"] = args["AcceptLanguage"],
 		["Id"] = args["Id"],
 		["Description"] = args["Description"],
 	}
-	asserts.AssertUpdateConstraintInput(t)
-	return t
+	asserts.AssertUpdateConstraintInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListRecordHistorySearchFilter = { ["Value"] = true, ["Key"] = true, nil }
@@ -3428,13 +4572,24 @@ end
 -- * Key [SearchFilterKey] <p>The filter key.</p>
 -- @return ListRecordHistorySearchFilter structure as a key-value pair table
 function M.ListRecordHistorySearchFilter(args)
-	assert(args, "You must provdide an argument table when creating ListRecordHistorySearchFilter")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListRecordHistorySearchFilter")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Value"] = args["Value"],
 		["Key"] = args["Key"],
 	}
-	asserts.AssertListRecordHistorySearchFilter(t)
-	return t
+	asserts.AssertListRecordHistorySearchFilter(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribePortfolioInput = { ["AcceptLanguage"] = true, ["Id"] = true, nil }
@@ -3459,13 +4614,24 @@ end
 -- Required key: Id
 -- @return DescribePortfolioInput structure as a key-value pair table
 function M.DescribePortfolioInput(args)
-	assert(args, "You must provdide an argument table when creating DescribePortfolioInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribePortfolioInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["AcceptLanguage"] = args["AcceptLanguage"],
 		["Id"] = args["Id"],
 	}
-	asserts.AssertDescribePortfolioInput(t)
-	return t
+	asserts.AssertDescribePortfolioInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeTagOptionInput = { ["Id"] = true, nil }
@@ -3488,12 +4654,23 @@ end
 -- Required key: Id
 -- @return DescribeTagOptionInput structure as a key-value pair table
 function M.DescribeTagOptionInput(args)
-	assert(args, "You must provdide an argument table when creating DescribeTagOptionInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeTagOptionInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Id"] = args["Id"],
 	}
-	asserts.AssertDescribeTagOptionInput(t)
-	return t
+	asserts.AssertDescribeTagOptionInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateConstraintInput = { ["PortfolioId"] = true, ["Description"] = true, ["Parameters"] = true, ["IdempotencyToken"] = true, ["AcceptLanguage"] = true, ["Type"] = true, ["ProductId"] = true, nil }
@@ -3536,8 +4713,14 @@ end
 -- Required key: IdempotencyToken
 -- @return CreateConstraintInput structure as a key-value pair table
 function M.CreateConstraintInput(args)
-	assert(args, "You must provdide an argument table when creating CreateConstraintInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateConstraintInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["PortfolioId"] = args["PortfolioId"],
 		["Description"] = args["Description"],
 		["Parameters"] = args["Parameters"],
@@ -3546,8 +4729,13 @@ function M.CreateConstraintInput(args)
 		["Type"] = args["Type"],
 		["ProductId"] = args["ProductId"],
 	}
-	asserts.AssertCreateConstraintInput(t)
-	return t
+	asserts.AssertCreateConstraintInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AssociateTagOptionWithResourceInput = { ["ResourceId"] = true, ["TagOptionId"] = true, nil }
@@ -3574,13 +4762,24 @@ end
 -- Required key: TagOptionId
 -- @return AssociateTagOptionWithResourceInput structure as a key-value pair table
 function M.AssociateTagOptionWithResourceInput(args)
-	assert(args, "You must provdide an argument table when creating AssociateTagOptionWithResourceInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AssociateTagOptionWithResourceInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ResourceId"] = args["ResourceId"],
 		["TagOptionId"] = args["TagOptionId"],
 	}
-	asserts.AssertAssociateTagOptionWithResourceInput(t)
-	return t
+	asserts.AssertAssociateTagOptionWithResourceInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeletePortfolioShareInput = { ["AcceptLanguage"] = true, ["PortfolioId"] = true, ["AccountId"] = true, nil }
@@ -3609,14 +4808,25 @@ end
 -- Required key: AccountId
 -- @return DeletePortfolioShareInput structure as a key-value pair table
 function M.DeletePortfolioShareInput(args)
-	assert(args, "You must provdide an argument table when creating DeletePortfolioShareInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeletePortfolioShareInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["AcceptLanguage"] = args["AcceptLanguage"],
 		["PortfolioId"] = args["PortfolioId"],
 		["AccountId"] = args["AccountId"],
 	}
-	asserts.AssertDeletePortfolioShareInput(t)
-	return t
+	asserts.AssertDeletePortfolioShareInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateProvisioningArtifactOutput = { ["ProvisioningArtifactDetail"] = true, ["Info"] = true, ["Status"] = true, nil }
@@ -3641,14 +4851,25 @@ end
 -- * Status [Status] <p>The status of the current request.</p>
 -- @return CreateProvisioningArtifactOutput structure as a key-value pair table
 function M.CreateProvisioningArtifactOutput(args)
-	assert(args, "You must provdide an argument table when creating CreateProvisioningArtifactOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateProvisioningArtifactOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ProvisioningArtifactDetail"] = args["ProvisioningArtifactDetail"],
 		["Info"] = args["Info"],
 		["Status"] = args["Status"],
 	}
-	asserts.AssertCreateProvisioningArtifactOutput(t)
-	return t
+	asserts.AssertCreateProvisioningArtifactOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateTagOptionOutput = { ["TagOptionDetail"] = true, nil }
@@ -3669,12 +4890,23 @@ end
 -- * TagOptionDetail [TagOptionDetail] <p>The resulting detailed TagOption information.</p>
 -- @return CreateTagOptionOutput structure as a key-value pair table
 function M.CreateTagOptionOutput(args)
-	assert(args, "You must provdide an argument table when creating CreateTagOptionOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateTagOptionOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["TagOptionDetail"] = args["TagOptionDetail"],
 	}
-	asserts.AssertCreateTagOptionOutput(t)
-	return t
+	asserts.AssertCreateTagOptionOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteConstraintOutput = { nil }
@@ -3693,11 +4925,22 @@ end
 -- Valid keys:
 -- @return DeleteConstraintOutput structure as a key-value pair table
 function M.DeleteConstraintOutput(args)
-	assert(args, "You must provdide an argument table when creating DeleteConstraintOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteConstraintOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertDeleteConstraintOutput(t)
-	return t
+	asserts.AssertDeleteConstraintOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListRecordHistoryInput = { ["AcceptLanguage"] = true, ["PageToken"] = true, ["PageSize"] = true, ["SearchFilter"] = true, ["AccessLevelFilter"] = true, nil }
@@ -3726,16 +4969,27 @@ end
 -- * AccessLevelFilter [AccessLevelFilter] <p>The access level for obtaining results. If left unspecified, <code>User</code> level access is used.</p>
 -- @return ListRecordHistoryInput structure as a key-value pair table
 function M.ListRecordHistoryInput(args)
-	assert(args, "You must provdide an argument table when creating ListRecordHistoryInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListRecordHistoryInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["AcceptLanguage"] = args["AcceptLanguage"],
 		["PageToken"] = args["PageToken"],
 		["PageSize"] = args["PageSize"],
 		["SearchFilter"] = args["SearchFilter"],
 		["AccessLevelFilter"] = args["AccessLevelFilter"],
 	}
-	asserts.AssertListRecordHistoryInput(t)
-	return t
+	asserts.AssertListRecordHistoryInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ProductViewDetail = { ["ProductViewSummary"] = true, ["Status"] = true, ["ProductARN"] = true, ["CreatedTime"] = true, nil }
@@ -3762,15 +5016,26 @@ end
 -- * CreatedTime [CreatedTime] <p>The UTC timestamp of the creation time.</p>
 -- @return ProductViewDetail structure as a key-value pair table
 function M.ProductViewDetail(args)
-	assert(args, "You must provdide an argument table when creating ProductViewDetail")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ProductViewDetail")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ProductViewSummary"] = args["ProductViewSummary"],
 		["Status"] = args["Status"],
 		["ProductARN"] = args["ProductARN"],
 		["CreatedTime"] = args["CreatedTime"],
 	}
-	asserts.AssertProductViewDetail(t)
-	return t
+	asserts.AssertProductViewDetail(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeProductViewOutput = { ["ProductViewSummary"] = true, ["ProvisioningArtifacts"] = true, nil }
@@ -3793,13 +5058,24 @@ end
 -- * ProvisioningArtifacts [ProvisioningArtifacts] <p>A list of provisioning artifact objects for the specified product. The <code>ProvisioningArtifacts</code> represent the ways in which the specified product can be provisioned.</p>
 -- @return DescribeProductViewOutput structure as a key-value pair table
 function M.DescribeProductViewOutput(args)
-	assert(args, "You must provdide an argument table when creating DescribeProductViewOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeProductViewOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ProductViewSummary"] = args["ProductViewSummary"],
 		["ProvisioningArtifacts"] = args["ProvisioningArtifacts"],
 	}
-	asserts.AssertDescribeProductViewOutput(t)
-	return t
+	asserts.AssertDescribeProductViewOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdatePortfolioOutput = { ["PortfolioDetail"] = true, ["Tags"] = true, nil }
@@ -3822,13 +5098,24 @@ end
 -- * Tags [Tags] <p>Tags associated with the portfolio.</p>
 -- @return UpdatePortfolioOutput structure as a key-value pair table
 function M.UpdatePortfolioOutput(args)
-	assert(args, "You must provdide an argument table when creating UpdatePortfolioOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdatePortfolioOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["PortfolioDetail"] = args["PortfolioDetail"],
 		["Tags"] = args["Tags"],
 	}
-	asserts.AssertUpdatePortfolioOutput(t)
-	return t
+	asserts.AssertUpdatePortfolioOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListPrincipalsForPortfolioOutput = { ["NextPageToken"] = true, ["Principals"] = true, nil }
@@ -3851,13 +5138,24 @@ end
 -- * Principals [Principals] <p>The IAM principals (users or roles) associated with the portfolio.</p>
 -- @return ListPrincipalsForPortfolioOutput structure as a key-value pair table
 function M.ListPrincipalsForPortfolioOutput(args)
-	assert(args, "You must provdide an argument table when creating ListPrincipalsForPortfolioOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListPrincipalsForPortfolioOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NextPageToken"] = args["NextPageToken"],
 		["Principals"] = args["Principals"],
 	}
-	asserts.AssertListPrincipalsForPortfolioOutput(t)
-	return t
+	asserts.AssertListPrincipalsForPortfolioOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdateProvisioningParameter = { ["Value"] = true, ["Key"] = true, ["UsePreviousValue"] = true, nil }
@@ -3882,14 +5180,25 @@ end
 -- * UsePreviousValue [UsePreviousValue] <p>If true, uses the currently set value for <code>Key</code>, ignoring <code>UpdateProvisioningParameter.Value</code>.</p>
 -- @return UpdateProvisioningParameter structure as a key-value pair table
 function M.UpdateProvisioningParameter(args)
-	assert(args, "You must provdide an argument table when creating UpdateProvisioningParameter")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateProvisioningParameter")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Value"] = args["Value"],
 		["Key"] = args["Key"],
 		["UsePreviousValue"] = args["UsePreviousValue"],
 	}
-	asserts.AssertUpdateProvisioningParameter(t)
-	return t
+	asserts.AssertUpdateProvisioningParameter(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DisassociatePrincipalFromPortfolioInput = { ["AcceptLanguage"] = true, ["PrincipalARN"] = true, ["PortfolioId"] = true, nil }
@@ -3918,14 +5227,25 @@ end
 -- Required key: PrincipalARN
 -- @return DisassociatePrincipalFromPortfolioInput structure as a key-value pair table
 function M.DisassociatePrincipalFromPortfolioInput(args)
-	assert(args, "You must provdide an argument table when creating DisassociatePrincipalFromPortfolioInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DisassociatePrincipalFromPortfolioInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["AcceptLanguage"] = args["AcceptLanguage"],
 		["PrincipalARN"] = args["PrincipalARN"],
 		["PortfolioId"] = args["PortfolioId"],
 	}
-	asserts.AssertDisassociatePrincipalFromPortfolioInput(t)
-	return t
+	asserts.AssertDisassociatePrincipalFromPortfolioInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListProvisioningArtifactsOutput = { ["NextPageToken"] = true, ["ProvisioningArtifactDetails"] = true, nil }
@@ -3948,13 +5268,24 @@ end
 -- * ProvisioningArtifactDetails [ProvisioningArtifactDetails] <p>List of detailed provisioning artifact information objects.</p>
 -- @return ListProvisioningArtifactsOutput structure as a key-value pair table
 function M.ListProvisioningArtifactsOutput(args)
-	assert(args, "You must provdide an argument table when creating ListProvisioningArtifactsOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListProvisioningArtifactsOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NextPageToken"] = args["NextPageToken"],
 		["ProvisioningArtifactDetails"] = args["ProvisioningArtifactDetails"],
 	}
-	asserts.AssertListProvisioningArtifactsOutput(t)
-	return t
+	asserts.AssertListProvisioningArtifactsOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ScanProvisionedProductsInput = { ["AcceptLanguage"] = true, ["PageToken"] = true, ["PageSize"] = true, ["AccessLevelFilter"] = true, nil }
@@ -3981,15 +5312,26 @@ end
 -- * AccessLevelFilter [AccessLevelFilter] <p>The access level for obtaining results. If left unspecified, <code>User</code> level access is used.</p>
 -- @return ScanProvisionedProductsInput structure as a key-value pair table
 function M.ScanProvisionedProductsInput(args)
-	assert(args, "You must provdide an argument table when creating ScanProvisionedProductsInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ScanProvisionedProductsInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["AcceptLanguage"] = args["AcceptLanguage"],
 		["PageToken"] = args["PageToken"],
 		["PageSize"] = args["PageSize"],
 		["AccessLevelFilter"] = args["AccessLevelFilter"],
 	}
-	asserts.AssertScanProvisionedProductsInput(t)
-	return t
+	asserts.AssertScanProvisionedProductsInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListResourcesForTagOptionOutput = { ["ResourceDetails"] = true, ["PageToken"] = true, nil }
@@ -4012,13 +5354,24 @@ end
 -- * PageToken [PageToken] <p>The page token of the first page retrieved. If null, this retrieves the first page of size <code>PageSize</code>.</p>
 -- @return ListResourcesForTagOptionOutput structure as a key-value pair table
 function M.ListResourcesForTagOptionOutput(args)
-	assert(args, "You must provdide an argument table when creating ListResourcesForTagOptionOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListResourcesForTagOptionOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ResourceDetails"] = args["ResourceDetails"],
 		["PageToken"] = args["PageToken"],
 	}
-	asserts.AssertListResourcesForTagOptionOutput(t)
-	return t
+	asserts.AssertListResourcesForTagOptionOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ProvisionedProductDetail = { ["Status"] = true, ["Name"] = true, ["LastRecordId"] = true, ["IdempotencyToken"] = true, ["Arn"] = true, ["CreatedTime"] = true, ["Type"] = true, ["Id"] = true, ["StatusMessage"] = true, nil }
@@ -4055,8 +5408,14 @@ end
 -- * StatusMessage [ProvisionedProductStatusMessage] <p>The current status message of the ProvisionedProduct.</p>
 -- @return ProvisionedProductDetail structure as a key-value pair table
 function M.ProvisionedProductDetail(args)
-	assert(args, "You must provdide an argument table when creating ProvisionedProductDetail")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ProvisionedProductDetail")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Status"] = args["Status"],
 		["Name"] = args["Name"],
 		["LastRecordId"] = args["LastRecordId"],
@@ -4067,8 +5426,13 @@ function M.ProvisionedProductDetail(args)
 		["Id"] = args["Id"],
 		["StatusMessage"] = args["StatusMessage"],
 	}
-	asserts.AssertProvisionedProductDetail(t)
-	return t
+	asserts.AssertProvisionedProductDetail(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ProvisioningArtifactProperties = { ["Info"] = true, ["Type"] = true, ["Name"] = true, ["Description"] = true, nil }
@@ -4097,15 +5461,26 @@ end
 -- Required key: Info
 -- @return ProvisioningArtifactProperties structure as a key-value pair table
 function M.ProvisioningArtifactProperties(args)
-	assert(args, "You must provdide an argument table when creating ProvisioningArtifactProperties")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ProvisioningArtifactProperties")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Info"] = args["Info"],
 		["Type"] = args["Type"],
 		["Name"] = args["Name"],
 		["Description"] = args["Description"],
 	}
-	asserts.AssertProvisioningArtifactProperties(t)
-	return t
+	asserts.AssertProvisioningArtifactProperties(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdateProvisionedProductOutput = { ["RecordDetail"] = true, nil }
@@ -4126,12 +5501,23 @@ end
 -- * RecordDetail [RecordDetail] <p>The detailed result of the <a>UpdateProvisionedProduct</a> request, containing the inputs made to that request, the current state of the request, a pointer to the ProvisionedProduct object that the request is modifying, and a list of any errors that the request encountered.</p>
 -- @return UpdateProvisionedProductOutput structure as a key-value pair table
 function M.UpdateProvisionedProductOutput(args)
-	assert(args, "You must provdide an argument table when creating UpdateProvisionedProductOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateProvisionedProductOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["RecordDetail"] = args["RecordDetail"],
 	}
-	asserts.AssertUpdateProvisionedProductOutput(t)
-	return t
+	asserts.AssertUpdateProvisionedProductOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdateConstraintOutput = { ["Status"] = true, ["ConstraintParameters"] = true, ["ConstraintDetail"] = true, nil }
@@ -4156,14 +5542,25 @@ end
 -- * ConstraintDetail [ConstraintDetail] <p>The resulting detailed constraint information.</p>
 -- @return UpdateConstraintOutput structure as a key-value pair table
 function M.UpdateConstraintOutput(args)
-	assert(args, "You must provdide an argument table when creating UpdateConstraintOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateConstraintOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Status"] = args["Status"],
 		["ConstraintParameters"] = args["ConstraintParameters"],
 		["ConstraintDetail"] = args["ConstraintDetail"],
 	}
-	asserts.AssertUpdateConstraintOutput(t)
-	return t
+	asserts.AssertUpdateConstraintOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteConstraintInput = { ["AcceptLanguage"] = true, ["Id"] = true, nil }
@@ -4188,13 +5585,24 @@ end
 -- Required key: Id
 -- @return DeleteConstraintInput structure as a key-value pair table
 function M.DeleteConstraintInput(args)
-	assert(args, "You must provdide an argument table when creating DeleteConstraintInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteConstraintInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["AcceptLanguage"] = args["AcceptLanguage"],
 		["Id"] = args["Id"],
 	}
-	asserts.AssertDeleteConstraintInput(t)
-	return t
+	asserts.AssertDeleteConstraintInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListPortfolioAccessInput = { ["AcceptLanguage"] = true, ["PortfolioId"] = true, nil }
@@ -4219,13 +5627,24 @@ end
 -- Required key: PortfolioId
 -- @return ListPortfolioAccessInput structure as a key-value pair table
 function M.ListPortfolioAccessInput(args)
-	assert(args, "You must provdide an argument table when creating ListPortfolioAccessInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListPortfolioAccessInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["AcceptLanguage"] = args["AcceptLanguage"],
 		["PortfolioId"] = args["PortfolioId"],
 	}
-	asserts.AssertListPortfolioAccessInput(t)
-	return t
+	asserts.AssertListPortfolioAccessInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AssociateTagOptionWithResourceOutput = { nil }
@@ -4244,11 +5663,22 @@ end
 -- Valid keys:
 -- @return AssociateTagOptionWithResourceOutput structure as a key-value pair table
 function M.AssociateTagOptionWithResourceOutput(args)
-	assert(args, "You must provdide an argument table when creating AssociateTagOptionWithResourceOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AssociateTagOptionWithResourceOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertAssociateTagOptionWithResourceOutput(t)
-	return t
+	asserts.AssertAssociateTagOptionWithResourceOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListConstraintsForPortfolioInput = { ["AcceptLanguage"] = true, ["PageToken"] = true, ["PortfolioId"] = true, ["PageSize"] = true, ["ProductId"] = true, nil }
@@ -4279,16 +5709,27 @@ end
 -- Required key: PortfolioId
 -- @return ListConstraintsForPortfolioInput structure as a key-value pair table
 function M.ListConstraintsForPortfolioInput(args)
-	assert(args, "You must provdide an argument table when creating ListConstraintsForPortfolioInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListConstraintsForPortfolioInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["AcceptLanguage"] = args["AcceptLanguage"],
 		["PageToken"] = args["PageToken"],
 		["PortfolioId"] = args["PortfolioId"],
 		["PageSize"] = args["PageSize"],
 		["ProductId"] = args["ProductId"],
 	}
-	asserts.AssertListConstraintsForPortfolioInput(t)
-	return t
+	asserts.AssertListConstraintsForPortfolioInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeProductInput = { ["AcceptLanguage"] = true, ["Id"] = true, nil }
@@ -4313,13 +5754,24 @@ end
 -- Required key: Id
 -- @return DescribeProductInput structure as a key-value pair table
 function M.DescribeProductInput(args)
-	assert(args, "You must provdide an argument table when creating DescribeProductInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeProductInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["AcceptLanguage"] = args["AcceptLanguage"],
 		["Id"] = args["Id"],
 	}
-	asserts.AssertDescribeProductInput(t)
-	return t
+	asserts.AssertDescribeProductInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreatePortfolioInput = { ["DisplayName"] = true, ["Description"] = true, ["ProviderName"] = true, ["Tags"] = true, ["IdempotencyToken"] = true, ["AcceptLanguage"] = true, nil }
@@ -4356,8 +5808,14 @@ end
 -- Required key: IdempotencyToken
 -- @return CreatePortfolioInput structure as a key-value pair table
 function M.CreatePortfolioInput(args)
-	assert(args, "You must provdide an argument table when creating CreatePortfolioInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreatePortfolioInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DisplayName"] = args["DisplayName"],
 		["Description"] = args["Description"],
 		["ProviderName"] = args["ProviderName"],
@@ -4365,8 +5823,13 @@ function M.CreatePortfolioInput(args)
 		["IdempotencyToken"] = args["IdempotencyToken"],
 		["AcceptLanguage"] = args["AcceptLanguage"],
 	}
-	asserts.AssertCreatePortfolioInput(t)
-	return t
+	asserts.AssertCreatePortfolioInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.SearchProductsAsAdminOutput = { ["NextPageToken"] = true, ["ProductViewDetails"] = true, nil }
@@ -4389,13 +5852,24 @@ end
 -- * ProductViewDetails [ProductViewDetails] <p>List of detailed product view information objects.</p>
 -- @return SearchProductsAsAdminOutput structure as a key-value pair table
 function M.SearchProductsAsAdminOutput(args)
-	assert(args, "You must provdide an argument table when creating SearchProductsAsAdminOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating SearchProductsAsAdminOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NextPageToken"] = args["NextPageToken"],
 		["ProductViewDetails"] = args["ProductViewDetails"],
 	}
-	asserts.AssertSearchProductsAsAdminOutput(t)
-	return t
+	asserts.AssertSearchProductsAsAdminOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ProvisioningArtifactParameter = { ["ParameterType"] = true, ["ParameterConstraints"] = true, ["Description"] = true, ["DefaultValue"] = true, ["IsNoEcho"] = true, ["ParameterKey"] = true, nil }
@@ -4426,8 +5900,14 @@ end
 -- * ParameterKey [ParameterKey] <p>The parameter key. </p>
 -- @return ProvisioningArtifactParameter structure as a key-value pair table
 function M.ProvisioningArtifactParameter(args)
-	assert(args, "You must provdide an argument table when creating ProvisioningArtifactParameter")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ProvisioningArtifactParameter")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ParameterType"] = args["ParameterType"],
 		["ParameterConstraints"] = args["ParameterConstraints"],
 		["Description"] = args["Description"],
@@ -4435,8 +5915,13 @@ function M.ProvisioningArtifactParameter(args)
 		["IsNoEcho"] = args["IsNoEcho"],
 		["ParameterKey"] = args["ParameterKey"],
 	}
-	asserts.AssertProvisioningArtifactParameter(t)
-	return t
+	asserts.AssertProvisioningArtifactParameter(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteProvisioningArtifactInput = { ["AcceptLanguage"] = true, ["ProvisioningArtifactId"] = true, ["ProductId"] = true, nil }
@@ -4465,14 +5950,25 @@ end
 -- Required key: ProvisioningArtifactId
 -- @return DeleteProvisioningArtifactInput structure as a key-value pair table
 function M.DeleteProvisioningArtifactInput(args)
-	assert(args, "You must provdide an argument table when creating DeleteProvisioningArtifactInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteProvisioningArtifactInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["AcceptLanguage"] = args["AcceptLanguage"],
 		["ProvisioningArtifactId"] = args["ProvisioningArtifactId"],
 		["ProductId"] = args["ProductId"],
 	}
-	asserts.AssertDeleteProvisioningArtifactInput(t)
-	return t
+	asserts.AssertDeleteProvisioningArtifactInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListLaunchPathsInput = { ["AcceptLanguage"] = true, ["PageToken"] = true, ["PageSize"] = true, ["ProductId"] = true, nil }
@@ -4501,15 +5997,26 @@ end
 -- Required key: ProductId
 -- @return ListLaunchPathsInput structure as a key-value pair table
 function M.ListLaunchPathsInput(args)
-	assert(args, "You must provdide an argument table when creating ListLaunchPathsInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListLaunchPathsInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["AcceptLanguage"] = args["AcceptLanguage"],
 		["PageToken"] = args["PageToken"],
 		["PageSize"] = args["PageSize"],
 		["ProductId"] = args["ProductId"],
 	}
-	asserts.AssertListLaunchPathsInput(t)
-	return t
+	asserts.AssertListLaunchPathsInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Principal = { ["PrincipalType"] = true, ["PrincipalARN"] = true, nil }
@@ -4532,13 +6039,24 @@ end
 -- * PrincipalARN [PrincipalARN] <p>The ARN representing the principal (IAM user, role, or group).</p>
 -- @return Principal structure as a key-value pair table
 function M.Principal(args)
-	assert(args, "You must provdide an argument table when creating Principal")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Principal")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["PrincipalType"] = args["PrincipalType"],
 		["PrincipalARN"] = args["PrincipalARN"],
 	}
-	asserts.AssertPrincipal(t)
-	return t
+	asserts.AssertPrincipal(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 function asserts.AssertResourceDetailId(str)
@@ -6101,8 +7619,11 @@ function M.CreateConstraintAsync(CreateConstraintInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AWS242ServiceCatalogService.CreateConstraint",
 	}
+	for header,value in pairs(CreateConstraintInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateConstraintInput, headers, settings, cb)
 	else
@@ -6133,8 +7654,11 @@ function M.DescribeProductAsAdminAsync(DescribeProductAsAdminInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AWS242ServiceCatalogService.DescribeProductAsAdmin",
 	}
+	for header,value in pairs(DescribeProductAsAdminInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeProductAsAdminInput, headers, settings, cb)
 	else
@@ -6165,8 +7689,11 @@ function M.AssociateProductWithPortfolioAsync(AssociateProductWithPortfolioInput
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AWS242ServiceCatalogService.AssociateProductWithPortfolio",
 	}
+	for header,value in pairs(AssociateProductWithPortfolioInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", AssociateProductWithPortfolioInput, headers, settings, cb)
 	else
@@ -6197,8 +7724,11 @@ function M.ListPrincipalsForPortfolioAsync(ListPrincipalsForPortfolioInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AWS242ServiceCatalogService.ListPrincipalsForPortfolio",
 	}
+	for header,value in pairs(ListPrincipalsForPortfolioInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ListPrincipalsForPortfolioInput, headers, settings, cb)
 	else
@@ -6229,8 +7759,11 @@ function M.UpdateTagOptionAsync(UpdateTagOptionInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AWS242ServiceCatalogService.UpdateTagOption",
 	}
+	for header,value in pairs(UpdateTagOptionInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateTagOptionInput, headers, settings, cb)
 	else
@@ -6261,8 +7794,11 @@ function M.DisassociatePrincipalFromPortfolioAsync(DisassociatePrincipalFromPort
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AWS242ServiceCatalogService.DisassociatePrincipalFromPortfolio",
 	}
+	for header,value in pairs(DisassociatePrincipalFromPortfolioInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DisassociatePrincipalFromPortfolioInput, headers, settings, cb)
 	else
@@ -6293,8 +7829,11 @@ function M.AssociatePrincipalWithPortfolioAsync(AssociatePrincipalWithPortfolioI
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AWS242ServiceCatalogService.AssociatePrincipalWithPortfolio",
 	}
+	for header,value in pairs(AssociatePrincipalWithPortfolioInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", AssociatePrincipalWithPortfolioInput, headers, settings, cb)
 	else
@@ -6325,8 +7864,11 @@ function M.ListRecordHistoryAsync(ListRecordHistoryInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AWS242ServiceCatalogService.ListRecordHistory",
 	}
+	for header,value in pairs(ListRecordHistoryInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ListRecordHistoryInput, headers, settings, cb)
 	else
@@ -6357,8 +7899,11 @@ function M.SearchProductsAsAdminAsync(SearchProductsAsAdminInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AWS242ServiceCatalogService.SearchProductsAsAdmin",
 	}
+	for header,value in pairs(SearchProductsAsAdminInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", SearchProductsAsAdminInput, headers, settings, cb)
 	else
@@ -6389,8 +7934,11 @@ function M.ListResourcesForTagOptionAsync(ListResourcesForTagOptionInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AWS242ServiceCatalogService.ListResourcesForTagOption",
 	}
+	for header,value in pairs(ListResourcesForTagOptionInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ListResourcesForTagOptionInput, headers, settings, cb)
 	else
@@ -6421,8 +7969,11 @@ function M.CreateProvisioningArtifactAsync(CreateProvisioningArtifactInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AWS242ServiceCatalogService.CreateProvisioningArtifact",
 	}
+	for header,value in pairs(CreateProvisioningArtifactInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateProvisioningArtifactInput, headers, settings, cb)
 	else
@@ -6453,8 +8004,11 @@ function M.ListPortfoliosAsync(ListPortfoliosInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AWS242ServiceCatalogService.ListPortfolios",
 	}
+	for header,value in pairs(ListPortfoliosInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ListPortfoliosInput, headers, settings, cb)
 	else
@@ -6485,8 +8039,11 @@ function M.DescribeProductAsync(DescribeProductInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AWS242ServiceCatalogService.DescribeProduct",
 	}
+	for header,value in pairs(DescribeProductInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeProductInput, headers, settings, cb)
 	else
@@ -6517,8 +8074,11 @@ function M.CreatePortfolioShareAsync(CreatePortfolioShareInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AWS242ServiceCatalogService.CreatePortfolioShare",
 	}
+	for header,value in pairs(CreatePortfolioShareInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", CreatePortfolioShareInput, headers, settings, cb)
 	else
@@ -6549,8 +8109,11 @@ function M.ListTagOptionsAsync(ListTagOptionsInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AWS242ServiceCatalogService.ListTagOptions",
 	}
+	for header,value in pairs(ListTagOptionsInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ListTagOptionsInput, headers, settings, cb)
 	else
@@ -6581,8 +8144,11 @@ function M.ListLaunchPathsAsync(ListLaunchPathsInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AWS242ServiceCatalogService.ListLaunchPaths",
 	}
+	for header,value in pairs(ListLaunchPathsInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ListLaunchPathsInput, headers, settings, cb)
 	else
@@ -6613,8 +8179,11 @@ function M.CreateProductAsync(CreateProductInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AWS242ServiceCatalogService.CreateProduct",
 	}
+	for header,value in pairs(CreateProductInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateProductInput, headers, settings, cb)
 	else
@@ -6645,8 +8214,11 @@ function M.ListAcceptedPortfolioSharesAsync(ListAcceptedPortfolioSharesInput, cb
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AWS242ServiceCatalogService.ListAcceptedPortfolioShares",
 	}
+	for header,value in pairs(ListAcceptedPortfolioSharesInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ListAcceptedPortfolioSharesInput, headers, settings, cb)
 	else
@@ -6677,8 +8249,11 @@ function M.ListPortfoliosForProductAsync(ListPortfoliosForProductInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AWS242ServiceCatalogService.ListPortfoliosForProduct",
 	}
+	for header,value in pairs(ListPortfoliosForProductInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ListPortfoliosForProductInput, headers, settings, cb)
 	else
@@ -6709,8 +8284,11 @@ function M.ListProvisioningArtifactsAsync(ListProvisioningArtifactsInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AWS242ServiceCatalogService.ListProvisioningArtifacts",
 	}
+	for header,value in pairs(ListProvisioningArtifactsInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ListProvisioningArtifactsInput, headers, settings, cb)
 	else
@@ -6741,8 +8319,11 @@ function M.RejectPortfolioShareAsync(RejectPortfolioShareInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AWS242ServiceCatalogService.RejectPortfolioShare",
 	}
+	for header,value in pairs(RejectPortfolioShareInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", RejectPortfolioShareInput, headers, settings, cb)
 	else
@@ -6773,8 +8354,11 @@ function M.DisassociateProductFromPortfolioAsync(DisassociateProductFromPortfoli
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AWS242ServiceCatalogService.DisassociateProductFromPortfolio",
 	}
+	for header,value in pairs(DisassociateProductFromPortfolioInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DisassociateProductFromPortfolioInput, headers, settings, cb)
 	else
@@ -6805,8 +8389,11 @@ function M.AcceptPortfolioShareAsync(AcceptPortfolioShareInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AWS242ServiceCatalogService.AcceptPortfolioShare",
 	}
+	for header,value in pairs(AcceptPortfolioShareInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", AcceptPortfolioShareInput, headers, settings, cb)
 	else
@@ -6837,8 +8424,11 @@ function M.DescribeProvisionedProductAsync(DescribeProvisionedProductInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AWS242ServiceCatalogService.DescribeProvisionedProduct",
 	}
+	for header,value in pairs(DescribeProvisionedProductInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeProvisionedProductInput, headers, settings, cb)
 	else
@@ -6869,8 +8459,11 @@ function M.ListPortfolioAccessAsync(ListPortfolioAccessInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AWS242ServiceCatalogService.ListPortfolioAccess",
 	}
+	for header,value in pairs(ListPortfolioAccessInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ListPortfolioAccessInput, headers, settings, cb)
 	else
@@ -6901,8 +8494,11 @@ function M.DeleteProvisioningArtifactAsync(DeleteProvisioningArtifactInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AWS242ServiceCatalogService.DeleteProvisioningArtifact",
 	}
+	for header,value in pairs(DeleteProvisioningArtifactInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteProvisioningArtifactInput, headers, settings, cb)
 	else
@@ -6933,8 +8529,11 @@ function M.UpdateProvisioningArtifactAsync(UpdateProvisioningArtifactInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AWS242ServiceCatalogService.UpdateProvisioningArtifact",
 	}
+	for header,value in pairs(UpdateProvisioningArtifactInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateProvisioningArtifactInput, headers, settings, cb)
 	else
@@ -6965,8 +8564,11 @@ function M.DescribeConstraintAsync(DescribeConstraintInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AWS242ServiceCatalogService.DescribeConstraint",
 	}
+	for header,value in pairs(DescribeConstraintInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeConstraintInput, headers, settings, cb)
 	else
@@ -6997,8 +8599,11 @@ function M.UpdatePortfolioAsync(UpdatePortfolioInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AWS242ServiceCatalogService.UpdatePortfolio",
 	}
+	for header,value in pairs(UpdatePortfolioInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdatePortfolioInput, headers, settings, cb)
 	else
@@ -7029,8 +8634,11 @@ function M.DeletePortfolioAsync(DeletePortfolioInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AWS242ServiceCatalogService.DeletePortfolio",
 	}
+	for header,value in pairs(DeletePortfolioInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DeletePortfolioInput, headers, settings, cb)
 	else
@@ -7061,8 +8669,11 @@ function M.DescribeRecordAsync(DescribeRecordInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AWS242ServiceCatalogService.DescribeRecord",
 	}
+	for header,value in pairs(DescribeRecordInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeRecordInput, headers, settings, cb)
 	else
@@ -7093,8 +8704,11 @@ function M.AssociateTagOptionWithResourceAsync(AssociateTagOptionWithResourceInp
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AWS242ServiceCatalogService.AssociateTagOptionWithResource",
 	}
+	for header,value in pairs(AssociateTagOptionWithResourceInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", AssociateTagOptionWithResourceInput, headers, settings, cb)
 	else
@@ -7125,8 +8739,11 @@ function M.UpdateConstraintAsync(UpdateConstraintInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AWS242ServiceCatalogService.UpdateConstraint",
 	}
+	for header,value in pairs(UpdateConstraintInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateConstraintInput, headers, settings, cb)
 	else
@@ -7157,8 +8774,11 @@ function M.DeleteProductAsync(DeleteProductInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AWS242ServiceCatalogService.DeleteProduct",
 	}
+	for header,value in pairs(DeleteProductInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteProductInput, headers, settings, cb)
 	else
@@ -7189,8 +8809,11 @@ function M.DescribeProductViewAsync(DescribeProductViewInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AWS242ServiceCatalogService.DescribeProductView",
 	}
+	for header,value in pairs(DescribeProductViewInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeProductViewInput, headers, settings, cb)
 	else
@@ -7221,8 +8844,11 @@ function M.TerminateProvisionedProductAsync(TerminateProvisionedProductInput, cb
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AWS242ServiceCatalogService.TerminateProvisionedProduct",
 	}
+	for header,value in pairs(TerminateProvisionedProductInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", TerminateProvisionedProductInput, headers, settings, cb)
 	else
@@ -7253,8 +8879,11 @@ function M.DescribePortfolioAsync(DescribePortfolioInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AWS242ServiceCatalogService.DescribePortfolio",
 	}
+	for header,value in pairs(DescribePortfolioInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribePortfolioInput, headers, settings, cb)
 	else
@@ -7285,8 +8914,11 @@ function M.DeletePortfolioShareAsync(DeletePortfolioShareInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AWS242ServiceCatalogService.DeletePortfolioShare",
 	}
+	for header,value in pairs(DeletePortfolioShareInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DeletePortfolioShareInput, headers, settings, cb)
 	else
@@ -7317,8 +8949,11 @@ function M.ScanProvisionedProductsAsync(ScanProvisionedProductsInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AWS242ServiceCatalogService.ScanProvisionedProducts",
 	}
+	for header,value in pairs(ScanProvisionedProductsInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ScanProvisionedProductsInput, headers, settings, cb)
 	else
@@ -7349,8 +8984,11 @@ function M.CreateTagOptionAsync(CreateTagOptionInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AWS242ServiceCatalogService.CreateTagOption",
 	}
+	for header,value in pairs(CreateTagOptionInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateTagOptionInput, headers, settings, cb)
 	else
@@ -7381,8 +9019,11 @@ function M.UpdateProvisionedProductAsync(UpdateProvisionedProductInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AWS242ServiceCatalogService.UpdateProvisionedProduct",
 	}
+	for header,value in pairs(UpdateProvisionedProductInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateProvisionedProductInput, headers, settings, cb)
 	else
@@ -7413,8 +9054,11 @@ function M.UpdateProductAsync(UpdateProductInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AWS242ServiceCatalogService.UpdateProduct",
 	}
+	for header,value in pairs(UpdateProductInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateProductInput, headers, settings, cb)
 	else
@@ -7445,8 +9089,11 @@ function M.DescribeProvisioningArtifactAsync(DescribeProvisioningArtifactInput, 
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AWS242ServiceCatalogService.DescribeProvisioningArtifact",
 	}
+	for header,value in pairs(DescribeProvisioningArtifactInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeProvisioningArtifactInput, headers, settings, cb)
 	else
@@ -7477,8 +9124,11 @@ function M.ListConstraintsForPortfolioAsync(ListConstraintsForPortfolioInput, cb
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AWS242ServiceCatalogService.ListConstraintsForPortfolio",
 	}
+	for header,value in pairs(ListConstraintsForPortfolioInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ListConstraintsForPortfolioInput, headers, settings, cb)
 	else
@@ -7509,8 +9159,11 @@ function M.DisassociateTagOptionFromResourceAsync(DisassociateTagOptionFromResou
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AWS242ServiceCatalogService.DisassociateTagOptionFromResource",
 	}
+	for header,value in pairs(DisassociateTagOptionFromResourceInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DisassociateTagOptionFromResourceInput, headers, settings, cb)
 	else
@@ -7541,8 +9194,11 @@ function M.SearchProductsAsync(SearchProductsInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AWS242ServiceCatalogService.SearchProducts",
 	}
+	for header,value in pairs(SearchProductsInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", SearchProductsInput, headers, settings, cb)
 	else
@@ -7573,8 +9229,11 @@ function M.DeleteConstraintAsync(DeleteConstraintInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AWS242ServiceCatalogService.DeleteConstraint",
 	}
+	for header,value in pairs(DeleteConstraintInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteConstraintInput, headers, settings, cb)
 	else
@@ -7605,8 +9264,11 @@ function M.ProvisionProductAsync(ProvisionProductInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AWS242ServiceCatalogService.ProvisionProduct",
 	}
+	for header,value in pairs(ProvisionProductInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ProvisionProductInput, headers, settings, cb)
 	else
@@ -7637,8 +9299,11 @@ function M.CreatePortfolioAsync(CreatePortfolioInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AWS242ServiceCatalogService.CreatePortfolio",
 	}
+	for header,value in pairs(CreatePortfolioInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", CreatePortfolioInput, headers, settings, cb)
 	else
@@ -7669,8 +9334,11 @@ function M.DescribeProvisioningParametersAsync(DescribeProvisioningParametersInp
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AWS242ServiceCatalogService.DescribeProvisioningParameters",
 	}
+	for header,value in pairs(DescribeProvisioningParametersInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeProvisioningParametersInput, headers, settings, cb)
 	else
@@ -7701,8 +9369,11 @@ function M.DescribeTagOptionAsync(DescribeTagOptionInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AWS242ServiceCatalogService.DescribeTagOption",
 	}
+	for header,value in pairs(DescribeTagOptionInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeTagOptionInput, headers, settings, cb)
 	else

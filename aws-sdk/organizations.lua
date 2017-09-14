@@ -39,12 +39,23 @@ end
 -- * Message [ExceptionMessage] 
 -- @return DuplicateOrganizationalUnitException structure as a key-value pair table
 function M.DuplicateOrganizationalUnitException(args)
-	assert(args, "You must provdide an argument table when creating DuplicateOrganizationalUnitException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DuplicateOrganizationalUnitException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Message"] = args["Message"],
 	}
-	asserts.AssertDuplicateOrganizationalUnitException(t)
-	return t
+	asserts.AssertDuplicateOrganizationalUnitException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteOrganizationalUnitRequest = { ["OrganizationalUnitId"] = true, nil }
@@ -67,12 +78,23 @@ end
 -- Required key: OrganizationalUnitId
 -- @return DeleteOrganizationalUnitRequest structure as a key-value pair table
 function M.DeleteOrganizationalUnitRequest(args)
-	assert(args, "You must provdide an argument table when creating DeleteOrganizationalUnitRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteOrganizationalUnitRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["OrganizationalUnitId"] = args["OrganizationalUnitId"],
 	}
-	asserts.AssertDeleteOrganizationalUnitRequest(t)
-	return t
+	asserts.AssertDeleteOrganizationalUnitRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListCreateAccountStatusResponse = { ["NextToken"] = true, ["CreateAccountStatuses"] = true, nil }
@@ -95,13 +117,24 @@ end
 -- * CreateAccountStatuses [CreateAccountStatuses] <p>A list of objects with details about the requests. Certain elements, such as the accountId number, are present in the output only after the account has been successfully created.</p>
 -- @return ListCreateAccountStatusResponse structure as a key-value pair table
 function M.ListCreateAccountStatusResponse(args)
-	assert(args, "You must provdide an argument table when creating ListCreateAccountStatusResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListCreateAccountStatusResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NextToken"] = args["NextToken"],
 		["CreateAccountStatuses"] = args["CreateAccountStatuses"],
 	}
-	asserts.AssertListCreateAccountStatusResponse(t)
-	return t
+	asserts.AssertListCreateAccountStatusResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Handshake = { ["Id"] = true, ["State"] = true, ["Resources"] = true, ["Parties"] = true, ["Action"] = true, ["RequestedTimestamp"] = true, ["ExpirationTimestamp"] = true, ["Arn"] = true, nil }
@@ -136,8 +169,14 @@ end
 -- * Arn [HandshakeArn] <p>The Amazon Resource Name (ARN) of a handshake.</p> <p>For more information about ARNs in Organizations, see <a href="http://docs.aws.amazon.com/organizations/latest/userguide/orgs_permissions.html#orgs-permissions-arns">ARN Formats Supported by Organizations</a> in the <i>AWS Organizations User Guide</i>.</p>
 -- @return Handshake structure as a key-value pair table
 function M.Handshake(args)
-	assert(args, "You must provdide an argument table when creating Handshake")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Handshake")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Id"] = args["Id"],
 		["State"] = args["State"],
 		["Resources"] = args["Resources"],
@@ -147,8 +186,13 @@ function M.Handshake(args)
 		["ExpirationTimestamp"] = args["ExpirationTimestamp"],
 		["Arn"] = args["Arn"],
 	}
-	asserts.AssertHandshake(t)
-	return t
+	asserts.AssertHandshake(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.EnablePolicyTypeResponse = { ["Root"] = true, nil }
@@ -169,12 +213,23 @@ end
 -- * Root [Root] <p>A structure that shows the root with the updated list of enabled policy types.</p>
 -- @return EnablePolicyTypeResponse structure as a key-value pair table
 function M.EnablePolicyTypeResponse(args)
-	assert(args, "You must provdide an argument table when creating EnablePolicyTypeResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating EnablePolicyTypeResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Root"] = args["Root"],
 	}
-	asserts.AssertEnablePolicyTypeResponse(t)
-	return t
+	asserts.AssertEnablePolicyTypeResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListTargetsForPolicyResponse = { ["NextToken"] = true, ["Targets"] = true, nil }
@@ -197,13 +252,24 @@ end
 -- * Targets [PolicyTargets] <p>A list of structures, each of which contains details about one of the entities to which the specified policy is attached.</p>
 -- @return ListTargetsForPolicyResponse structure as a key-value pair table
 function M.ListTargetsForPolicyResponse(args)
-	assert(args, "You must provdide an argument table when creating ListTargetsForPolicyResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListTargetsForPolicyResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NextToken"] = args["NextToken"],
 		["Targets"] = args["Targets"],
 	}
-	asserts.AssertListTargetsForPolicyResponse(t)
-	return t
+	asserts.AssertListTargetsForPolicyResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.PolicyTypeSummary = { ["Status"] = true, ["Type"] = true, nil }
@@ -226,13 +292,24 @@ end
 -- * Type [PolicyType] <p>The name of the policy type.</p>
 -- @return PolicyTypeSummary structure as a key-value pair table
 function M.PolicyTypeSummary(args)
-	assert(args, "You must provdide an argument table when creating PolicyTypeSummary")
-	local t = { 
+	assert(args, "You must provide an argument table when creating PolicyTypeSummary")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Status"] = args["Status"],
 		["Type"] = args["Type"],
 	}
-	asserts.AssertPolicyTypeSummary(t)
-	return t
+	asserts.AssertPolicyTypeSummary(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ParentNotFoundException = { ["Message"] = true, nil }
@@ -253,12 +330,23 @@ end
 -- * Message [ExceptionMessage] 
 -- @return ParentNotFoundException structure as a key-value pair table
 function M.ParentNotFoundException(args)
-	assert(args, "You must provdide an argument table when creating ParentNotFoundException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ParentNotFoundException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Message"] = args["Message"],
 	}
-	asserts.AssertParentNotFoundException(t)
-	return t
+	asserts.AssertParentNotFoundException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AccountNotFoundException = { ["Message"] = true, nil }
@@ -279,12 +367,23 @@ end
 -- * Message [ExceptionMessage] 
 -- @return AccountNotFoundException structure as a key-value pair table
 function M.AccountNotFoundException(args)
-	assert(args, "You must provdide an argument table when creating AccountNotFoundException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AccountNotFoundException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Message"] = args["Message"],
 	}
-	asserts.AssertAccountNotFoundException(t)
-	return t
+	asserts.AssertAccountNotFoundException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Parent = { ["Type"] = true, ["Id"] = true, nil }
@@ -307,13 +406,24 @@ end
 -- * Id [ParentId] <p>The unique identifier (ID) of the parent entity.</p> <p>The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> for a parent ID string requires one of the following:</p> <ul> <li> <p>Root: a string that begins with "r-" followed by from 4 to 32 lower-case letters or digits.</p> </li> <li> <p>Organizational unit (OU): a string that begins with "ou-" followed by from 4 to 32 lower-case letters or digits (the ID of the root that the OU is in) followed by a second "-" dash and from 8 to 32 additional lower-case letters or digits.</p> </li> </ul>
 -- @return Parent structure as a key-value pair table
 function M.Parent(args)
-	assert(args, "You must provdide an argument table when creating Parent")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Parent")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Type"] = args["Type"],
 		["Id"] = args["Id"],
 	}
-	asserts.AssertParent(t)
-	return t
+	asserts.AssertParent(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.PolicyNotFoundException = { ["Message"] = true, nil }
@@ -334,12 +444,23 @@ end
 -- * Message [ExceptionMessage] 
 -- @return PolicyNotFoundException structure as a key-value pair table
 function M.PolicyNotFoundException(args)
-	assert(args, "You must provdide an argument table when creating PolicyNotFoundException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating PolicyNotFoundException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Message"] = args["Message"],
 	}
-	asserts.AssertPolicyNotFoundException(t)
-	return t
+	asserts.AssertPolicyNotFoundException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateOrganizationResponse = { ["Organization"] = true, nil }
@@ -360,12 +481,23 @@ end
 -- * Organization [Organization] <p>A structure that contains details about the newly created organization.</p>
 -- @return CreateOrganizationResponse structure as a key-value pair table
 function M.CreateOrganizationResponse(args)
-	assert(args, "You must provdide an argument table when creating CreateOrganizationResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateOrganizationResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Organization"] = args["Organization"],
 	}
-	asserts.AssertCreateOrganizationResponse(t)
-	return t
+	asserts.AssertCreateOrganizationResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DestinationParentNotFoundException = { ["Message"] = true, nil }
@@ -386,12 +518,23 @@ end
 -- * Message [ExceptionMessage] 
 -- @return DestinationParentNotFoundException structure as a key-value pair table
 function M.DestinationParentNotFoundException(args)
-	assert(args, "You must provdide an argument table when creating DestinationParentNotFoundException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DestinationParentNotFoundException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Message"] = args["Message"],
 	}
-	asserts.AssertDestinationParentNotFoundException(t)
-	return t
+	asserts.AssertDestinationParentNotFoundException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.SourceParentNotFoundException = { ["Message"] = true, nil }
@@ -412,12 +555,23 @@ end
 -- * Message [ExceptionMessage] 
 -- @return SourceParentNotFoundException structure as a key-value pair table
 function M.SourceParentNotFoundException(args)
-	assert(args, "You must provdide an argument table when creating SourceParentNotFoundException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating SourceParentNotFoundException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Message"] = args["Message"],
 	}
-	asserts.AssertSourceParentNotFoundException(t)
-	return t
+	asserts.AssertSourceParentNotFoundException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AttachPolicyRequest = { ["TargetId"] = true, ["PolicyId"] = true, nil }
@@ -444,13 +598,24 @@ end
 -- Required key: TargetId
 -- @return AttachPolicyRequest structure as a key-value pair table
 function M.AttachPolicyRequest(args)
-	assert(args, "You must provdide an argument table when creating AttachPolicyRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AttachPolicyRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["TargetId"] = args["TargetId"],
 		["PolicyId"] = args["PolicyId"],
 	}
-	asserts.AssertAttachPolicyRequest(t)
-	return t
+	asserts.AssertAttachPolicyRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListAccountsForParentResponse = { ["NextToken"] = true, ["Accounts"] = true, nil }
@@ -473,13 +638,24 @@ end
 -- * Accounts [Accounts] <p>A list of the accounts in the specified root or OU.</p>
 -- @return ListAccountsForParentResponse structure as a key-value pair table
 function M.ListAccountsForParentResponse(args)
-	assert(args, "You must provdide an argument table when creating ListAccountsForParentResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListAccountsForParentResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NextToken"] = args["NextToken"],
 		["Accounts"] = args["Accounts"],
 	}
-	asserts.AssertListAccountsForParentResponse(t)
-	return t
+	asserts.AssertListAccountsForParentResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListChildrenResponse = { ["NextToken"] = true, ["Children"] = true, nil }
@@ -502,13 +678,24 @@ end
 -- * Children [Children] <p>The list of children of the specified parent container.</p>
 -- @return ListChildrenResponse structure as a key-value pair table
 function M.ListChildrenResponse(args)
-	assert(args, "You must provdide an argument table when creating ListChildrenResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListChildrenResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NextToken"] = args["NextToken"],
 		["Children"] = args["Children"],
 	}
-	asserts.AssertListChildrenResponse(t)
-	return t
+	asserts.AssertListChildrenResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdateOrganizationalUnitResponse = { ["OrganizationalUnit"] = true, nil }
@@ -529,12 +716,23 @@ end
 -- * OrganizationalUnit [OrganizationalUnit] <p>A structure that contains the details about the specified OU, including its new name.</p>
 -- @return UpdateOrganizationalUnitResponse structure as a key-value pair table
 function M.UpdateOrganizationalUnitResponse(args)
-	assert(args, "You must provdide an argument table when creating UpdateOrganizationalUnitResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateOrganizationalUnitResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["OrganizationalUnit"] = args["OrganizationalUnit"],
 	}
-	asserts.AssertUpdateOrganizationalUnitResponse(t)
-	return t
+	asserts.AssertUpdateOrganizationalUnitResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CancelHandshakeResponse = { ["Handshake"] = true, nil }
@@ -555,12 +753,23 @@ end
 -- * Handshake [Handshake] <p>A structure that contains details about the handshake that you canceled.</p>
 -- @return CancelHandshakeResponse structure as a key-value pair table
 function M.CancelHandshakeResponse(args)
-	assert(args, "You must provdide an argument table when creating CancelHandshakeResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CancelHandshakeResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Handshake"] = args["Handshake"],
 	}
-	asserts.AssertCancelHandshakeResponse(t)
-	return t
+	asserts.AssertCancelHandshakeResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Account = { ["Status"] = true, ["Name"] = true, ["Email"] = true, ["JoinedMethod"] = true, ["JoinedTimestamp"] = true, ["Id"] = true, ["Arn"] = true, nil }
@@ -593,8 +802,14 @@ end
 -- * Arn [AccountArn] <p>The Amazon Resource Name (ARN) of the account.</p> <p>For more information about ARNs in Organizations, see <a href="http://docs.aws.amazon.com/organizations/latest/userguide/orgs_permissions.html#orgs-permissions-arns">ARN Formats Supported by Organizations</a> in the <i>AWS Organizations User Guide</i>.</p>
 -- @return Account structure as a key-value pair table
 function M.Account(args)
-	assert(args, "You must provdide an argument table when creating Account")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Account")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Status"] = args["Status"],
 		["Name"] = args["Name"],
 		["Email"] = args["Email"],
@@ -603,8 +818,13 @@ function M.Account(args)
 		["Id"] = args["Id"],
 		["Arn"] = args["Arn"],
 	}
-	asserts.AssertAccount(t)
-	return t
+	asserts.AssertAccount(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeOrganizationResponse = { ["Organization"] = true, nil }
@@ -625,12 +845,23 @@ end
 -- * Organization [Organization] <p>A structure that contains information about the organization.</p>
 -- @return DescribeOrganizationResponse structure as a key-value pair table
 function M.DescribeOrganizationResponse(args)
-	assert(args, "You must provdide an argument table when creating DescribeOrganizationResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeOrganizationResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Organization"] = args["Organization"],
 	}
-	asserts.AssertDescribeOrganizationResponse(t)
-	return t
+	asserts.AssertDescribeOrganizationResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateAccountRequest = { ["RoleName"] = true, ["Email"] = true, ["IamUserAccessToBilling"] = true, ["AccountName"] = true, nil }
@@ -661,15 +892,26 @@ end
 -- Required key: AccountName
 -- @return CreateAccountRequest structure as a key-value pair table
 function M.CreateAccountRequest(args)
-	assert(args, "You must provdide an argument table when creating CreateAccountRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateAccountRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["RoleName"] = args["RoleName"],
 		["Email"] = args["Email"],
 		["IamUserAccessToBilling"] = args["IamUserAccessToBilling"],
 		["AccountName"] = args["AccountName"],
 	}
-	asserts.AssertCreateAccountRequest(t)
-	return t
+	asserts.AssertCreateAccountRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DisablePolicyTypeResponse = { ["Root"] = true, nil }
@@ -690,12 +932,23 @@ end
 -- * Root [Root] <p>A structure that shows the root with the updated list of enabled policy types.</p>
 -- @return DisablePolicyTypeResponse structure as a key-value pair table
 function M.DisablePolicyTypeResponse(args)
-	assert(args, "You must provdide an argument table when creating DisablePolicyTypeResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DisablePolicyTypeResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Root"] = args["Root"],
 	}
-	asserts.AssertDisablePolicyTypeResponse(t)
-	return t
+	asserts.AssertDisablePolicyTypeResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.PolicyTypeNotEnabledException = { ["Message"] = true, nil }
@@ -716,12 +969,23 @@ end
 -- * Message [ExceptionMessage] 
 -- @return PolicyTypeNotEnabledException structure as a key-value pair table
 function M.PolicyTypeNotEnabledException(args)
-	assert(args, "You must provdide an argument table when creating PolicyTypeNotEnabledException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating PolicyTypeNotEnabledException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Message"] = args["Message"],
 	}
-	asserts.AssertPolicyTypeNotEnabledException(t)
-	return t
+	asserts.AssertPolicyTypeNotEnabledException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeOrganizationalUnitResponse = { ["OrganizationalUnit"] = true, nil }
@@ -742,12 +1006,23 @@ end
 -- * OrganizationalUnit [OrganizationalUnit] <p>A structure that contains details about the specified OU.</p>
 -- @return DescribeOrganizationalUnitResponse structure as a key-value pair table
 function M.DescribeOrganizationalUnitResponse(args)
-	assert(args, "You must provdide an argument table when creating DescribeOrganizationalUnitResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeOrganizationalUnitResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["OrganizationalUnit"] = args["OrganizationalUnit"],
 	}
-	asserts.AssertDescribeOrganizationalUnitResponse(t)
-	return t
+	asserts.AssertDescribeOrganizationalUnitResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Organization = { ["AvailablePolicyTypes"] = true, ["MasterAccountId"] = true, ["MasterAccountArn"] = true, ["FeatureSet"] = true, ["MasterAccountEmail"] = true, ["Id"] = true, ["Arn"] = true, nil }
@@ -780,8 +1055,14 @@ end
 -- * Arn [OrganizationArn] <p>The Amazon Resource Name (ARN) of an organization.</p> <p>For more information about ARNs in Organizations, see <a href="http://docs.aws.amazon.com/organizations/latest/userguide/orgs_permissions.html#orgs-permissions-arns">ARN Formats Supported by Organizations</a> in the <i>AWS Organizations User Guide</i>.</p>
 -- @return Organization structure as a key-value pair table
 function M.Organization(args)
-	assert(args, "You must provdide an argument table when creating Organization")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Organization")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["AvailablePolicyTypes"] = args["AvailablePolicyTypes"],
 		["MasterAccountId"] = args["MasterAccountId"],
 		["MasterAccountArn"] = args["MasterAccountArn"],
@@ -790,8 +1071,13 @@ function M.Organization(args)
 		["Id"] = args["Id"],
 		["Arn"] = args["Arn"],
 	}
-	asserts.AssertOrganization(t)
-	return t
+	asserts.AssertOrganization(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CancelHandshakeRequest = { ["HandshakeId"] = true, nil }
@@ -814,12 +1100,23 @@ end
 -- Required key: HandshakeId
 -- @return CancelHandshakeRequest structure as a key-value pair table
 function M.CancelHandshakeRequest(args)
-	assert(args, "You must provdide an argument table when creating CancelHandshakeRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CancelHandshakeRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["HandshakeId"] = args["HandshakeId"],
 	}
-	asserts.AssertCancelHandshakeRequest(t)
-	return t
+	asserts.AssertCancelHandshakeRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.MoveAccountRequest = { ["DestinationParentId"] = true, ["SourceParentId"] = true, ["AccountId"] = true, nil }
@@ -850,14 +1147,25 @@ end
 -- Required key: DestinationParentId
 -- @return MoveAccountRequest structure as a key-value pair table
 function M.MoveAccountRequest(args)
-	assert(args, "You must provdide an argument table when creating MoveAccountRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating MoveAccountRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DestinationParentId"] = args["DestinationParentId"],
 		["SourceParentId"] = args["SourceParentId"],
 		["AccountId"] = args["AccountId"],
 	}
-	asserts.AssertMoveAccountRequest(t)
-	return t
+	asserts.AssertMoveAccountRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListPoliciesRequest = { ["Filter"] = true, ["NextToken"] = true, ["MaxResults"] = true, nil }
@@ -884,14 +1192,25 @@ end
 -- Required key: Filter
 -- @return ListPoliciesRequest structure as a key-value pair table
 function M.ListPoliciesRequest(args)
-	assert(args, "You must provdide an argument table when creating ListPoliciesRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListPoliciesRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Filter"] = args["Filter"],
 		["NextToken"] = args["NextToken"],
 		["MaxResults"] = args["MaxResults"],
 	}
-	asserts.AssertListPoliciesRequest(t)
-	return t
+	asserts.AssertListPoliciesRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.HandshakeResource = { ["Type"] = true, ["Resources"] = true, ["Value"] = true, nil }
@@ -916,14 +1235,25 @@ end
 -- * Value [HandshakeResourceValue] <p>The information that is passed to the other party in the handshake. The format of the value string must match the requirements of the specified type.</p>
 -- @return HandshakeResource structure as a key-value pair table
 function M.HandshakeResource(args)
-	assert(args, "You must provdide an argument table when creating HandshakeResource")
-	local t = { 
+	assert(args, "You must provide an argument table when creating HandshakeResource")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Type"] = args["Type"],
 		["Resources"] = args["Resources"],
 		["Value"] = args["Value"],
 	}
-	asserts.AssertHandshakeResource(t)
-	return t
+	asserts.AssertHandshakeResource(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeHandshakeResponse = { ["Handshake"] = true, nil }
@@ -944,12 +1274,23 @@ end
 -- * Handshake [Handshake] <p>A structure that contains information about the specified handshake.</p>
 -- @return DescribeHandshakeResponse structure as a key-value pair table
 function M.DescribeHandshakeResponse(args)
-	assert(args, "You must provdide an argument table when creating DescribeHandshakeResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeHandshakeResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Handshake"] = args["Handshake"],
 	}
-	asserts.AssertDescribeHandshakeResponse(t)
-	return t
+	asserts.AssertDescribeHandshakeResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidInputException = { ["Message"] = true, ["Reason"] = true, nil }
@@ -972,13 +1313,24 @@ end
 -- * Reason [InvalidInputExceptionReason] 
 -- @return InvalidInputException structure as a key-value pair table
 function M.InvalidInputException(args)
-	assert(args, "You must provdide an argument table when creating InvalidInputException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidInputException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Message"] = args["Message"],
 		["Reason"] = args["Reason"],
 	}
-	asserts.AssertInvalidInputException(t)
-	return t
+	asserts.AssertInvalidInputException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.HandshakeParty = { ["Type"] = true, ["Id"] = true, nil }
@@ -1001,13 +1353,24 @@ end
 -- * Id [HandshakePartyId] <p>The unique identifier (ID) for the party.</p> <p>The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> for handshake ID string requires "h-" followed by from 8 to 32 lower-case letters or digits.</p>
 -- @return HandshakeParty structure as a key-value pair table
 function M.HandshakeParty(args)
-	assert(args, "You must provdide an argument table when creating HandshakeParty")
-	local t = { 
+	assert(args, "You must provide an argument table when creating HandshakeParty")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Type"] = args["Type"],
 		["Id"] = args["Id"],
 	}
-	asserts.AssertHandshakeParty(t)
-	return t
+	asserts.AssertHandshakeParty(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListPoliciesResponse = { ["NextToken"] = true, ["Policies"] = true, nil }
@@ -1030,13 +1393,24 @@ end
 -- * Policies [Policies] <p>A list of policies that match the filter criteria in the request. The output list does not include the policy contents. To see the content for a policy, see <a>DescribePolicy</a>.</p>
 -- @return ListPoliciesResponse structure as a key-value pair table
 function M.ListPoliciesResponse(args)
-	assert(args, "You must provdide an argument table when creating ListPoliciesResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListPoliciesResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NextToken"] = args["NextToken"],
 		["Policies"] = args["Policies"],
 	}
-	asserts.AssertListPoliciesResponse(t)
-	return t
+	asserts.AssertListPoliciesResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListRootsResponse = { ["NextToken"] = true, ["Roots"] = true, nil }
@@ -1059,13 +1433,24 @@ end
 -- * Roots [Roots] <p>A list of roots that are defined in an organization.</p>
 -- @return ListRootsResponse structure as a key-value pair table
 function M.ListRootsResponse(args)
-	assert(args, "You must provdide an argument table when creating ListRootsResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListRootsResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NextToken"] = args["NextToken"],
 		["Roots"] = args["Roots"],
 	}
-	asserts.AssertListRootsResponse(t)
-	return t
+	asserts.AssertListRootsResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ConcurrentModificationException = { ["Message"] = true, nil }
@@ -1086,12 +1471,23 @@ end
 -- * Message [ExceptionMessage] 
 -- @return ConcurrentModificationException structure as a key-value pair table
 function M.ConcurrentModificationException(args)
-	assert(args, "You must provdide an argument table when creating ConcurrentModificationException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ConcurrentModificationException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Message"] = args["Message"],
 	}
-	asserts.AssertConcurrentModificationException(t)
-	return t
+	asserts.AssertConcurrentModificationException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribePolicyResponse = { ["Policy"] = true, nil }
@@ -1112,12 +1508,23 @@ end
 -- * Policy [Policy] <p>A structure that contains details about the specified policy.</p>
 -- @return DescribePolicyResponse structure as a key-value pair table
 function M.DescribePolicyResponse(args)
-	assert(args, "You must provdide an argument table when creating DescribePolicyResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribePolicyResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Policy"] = args["Policy"],
 	}
-	asserts.AssertDescribePolicyResponse(t)
-	return t
+	asserts.AssertDescribePolicyResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeclineHandshakeResponse = { ["Handshake"] = true, nil }
@@ -1138,12 +1545,23 @@ end
 -- * Handshake [Handshake] <p>A structure that contains details about the declined handshake. The state is updated to show the value <code>DECLINED</code>.</p>
 -- @return DeclineHandshakeResponse structure as a key-value pair table
 function M.DeclineHandshakeResponse(args)
-	assert(args, "You must provdide an argument table when creating DeclineHandshakeResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeclineHandshakeResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Handshake"] = args["Handshake"],
 	}
-	asserts.AssertDeclineHandshakeResponse(t)
-	return t
+	asserts.AssertDeclineHandshakeResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.MalformedPolicyDocumentException = { ["Message"] = true, nil }
@@ -1164,12 +1582,23 @@ end
 -- * Message [ExceptionMessage] 
 -- @return MalformedPolicyDocumentException structure as a key-value pair table
 function M.MalformedPolicyDocumentException(args)
-	assert(args, "You must provdide an argument table when creating MalformedPolicyDocumentException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating MalformedPolicyDocumentException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Message"] = args["Message"],
 	}
-	asserts.AssertMalformedPolicyDocumentException(t)
-	return t
+	asserts.AssertMalformedPolicyDocumentException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.EnableAllFeaturesResponse = { ["Handshake"] = true, nil }
@@ -1190,12 +1619,23 @@ end
 -- * Handshake [Handshake] <p>A structure that contains details about the handshake created to support this request to enable all features in the organization.</p>
 -- @return EnableAllFeaturesResponse structure as a key-value pair table
 function M.EnableAllFeaturesResponse(args)
-	assert(args, "You must provdide an argument table when creating EnableAllFeaturesResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating EnableAllFeaturesResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Handshake"] = args["Handshake"],
 	}
-	asserts.AssertEnableAllFeaturesResponse(t)
-	return t
+	asserts.AssertEnableAllFeaturesResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.EnablePolicyTypeRequest = { ["RootId"] = true, ["PolicyType"] = true, nil }
@@ -1222,13 +1662,24 @@ end
 -- Required key: PolicyType
 -- @return EnablePolicyTypeRequest structure as a key-value pair table
 function M.EnablePolicyTypeRequest(args)
-	assert(args, "You must provdide an argument table when creating EnablePolicyTypeRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating EnablePolicyTypeRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["RootId"] = args["RootId"],
 		["PolicyType"] = args["PolicyType"],
 	}
-	asserts.AssertEnablePolicyTypeRequest(t)
-	return t
+	asserts.AssertEnablePolicyTypeRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreatePolicyResponse = { ["Policy"] = true, nil }
@@ -1249,12 +1700,23 @@ end
 -- * Policy [Policy] <p>A structure that contains details about the newly created policy.</p>
 -- @return CreatePolicyResponse structure as a key-value pair table
 function M.CreatePolicyResponse(args)
-	assert(args, "You must provdide an argument table when creating CreatePolicyResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreatePolicyResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Policy"] = args["Policy"],
 	}
-	asserts.AssertCreatePolicyResponse(t)
-	return t
+	asserts.AssertCreatePolicyResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.TargetNotFoundException = { ["Message"] = true, nil }
@@ -1275,12 +1737,23 @@ end
 -- * Message [ExceptionMessage] 
 -- @return TargetNotFoundException structure as a key-value pair table
 function M.TargetNotFoundException(args)
-	assert(args, "You must provdide an argument table when creating TargetNotFoundException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating TargetNotFoundException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Message"] = args["Message"],
 	}
-	asserts.AssertTargetNotFoundException(t)
-	return t
+	asserts.AssertTargetNotFoundException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.HandshakeConstraintViolationException = { ["Message"] = true, ["Reason"] = true, nil }
@@ -1303,13 +1776,24 @@ end
 -- * Reason [HandshakeConstraintViolationExceptionReason] 
 -- @return HandshakeConstraintViolationException structure as a key-value pair table
 function M.HandshakeConstraintViolationException(args)
-	assert(args, "You must provdide an argument table when creating HandshakeConstraintViolationException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating HandshakeConstraintViolationException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Message"] = args["Message"],
 		["Reason"] = args["Reason"],
 	}
-	asserts.AssertHandshakeConstraintViolationException(t)
-	return t
+	asserts.AssertHandshakeConstraintViolationException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeCreateAccountStatusRequest = { ["CreateAccountRequestId"] = true, nil }
@@ -1332,12 +1816,23 @@ end
 -- Required key: CreateAccountRequestId
 -- @return DescribeCreateAccountStatusRequest structure as a key-value pair table
 function M.DescribeCreateAccountStatusRequest(args)
-	assert(args, "You must provdide an argument table when creating DescribeCreateAccountStatusRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeCreateAccountStatusRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["CreateAccountRequestId"] = args["CreateAccountRequestId"],
 	}
-	asserts.AssertDescribeCreateAccountStatusRequest(t)
-	return t
+	asserts.AssertDescribeCreateAccountStatusRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeletePolicyRequest = { ["PolicyId"] = true, nil }
@@ -1360,12 +1855,23 @@ end
 -- Required key: PolicyId
 -- @return DeletePolicyRequest structure as a key-value pair table
 function M.DeletePolicyRequest(args)
-	assert(args, "You must provdide an argument table when creating DeletePolicyRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeletePolicyRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["PolicyId"] = args["PolicyId"],
 	}
-	asserts.AssertDeletePolicyRequest(t)
-	return t
+	asserts.AssertDeletePolicyRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListHandshakesForAccountResponse = { ["Handshakes"] = true, ["NextToken"] = true, nil }
@@ -1388,13 +1894,24 @@ end
 -- * NextToken [NextToken] <p>If present, this value indicates that there is more output available than is included in the current response. Use this value in the <code>NextToken</code> request parameter in a subsequent call to the operation to get the next part of the output. You should repeat this until the <code>NextToken</code> response element comes back as <code>null</code>.</p>
 -- @return ListHandshakesForAccountResponse structure as a key-value pair table
 function M.ListHandshakesForAccountResponse(args)
-	assert(args, "You must provdide an argument table when creating ListHandshakesForAccountResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListHandshakesForAccountResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Handshakes"] = args["Handshakes"],
 		["NextToken"] = args["NextToken"],
 	}
-	asserts.AssertListHandshakesForAccountResponse(t)
-	return t
+	asserts.AssertListHandshakesForAccountResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.TooManyRequestsException = { ["Message"] = true, ["Type"] = true, nil }
@@ -1417,13 +1934,24 @@ end
 -- * Type [ExceptionType] 
 -- @return TooManyRequestsException structure as a key-value pair table
 function M.TooManyRequestsException(args)
-	assert(args, "You must provdide an argument table when creating TooManyRequestsException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating TooManyRequestsException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Message"] = args["Message"],
 		["Type"] = args["Type"],
 	}
-	asserts.AssertTooManyRequestsException(t)
-	return t
+	asserts.AssertTooManyRequestsException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListAccountsResponse = { ["NextToken"] = true, ["Accounts"] = true, nil }
@@ -1446,13 +1974,24 @@ end
 -- * Accounts [Accounts] <p>A list of objects in the organization.</p>
 -- @return ListAccountsResponse structure as a key-value pair table
 function M.ListAccountsResponse(args)
-	assert(args, "You must provdide an argument table when creating ListAccountsResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListAccountsResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NextToken"] = args["NextToken"],
 		["Accounts"] = args["Accounts"],
 	}
-	asserts.AssertListAccountsResponse(t)
-	return t
+	asserts.AssertListAccountsResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InviteAccountToOrganizationResponse = { ["Handshake"] = true, nil }
@@ -1473,12 +2012,23 @@ end
 -- * Handshake [Handshake] <p>A structure that contains details about the handshake that is created to support this invitation request.</p>
 -- @return InviteAccountToOrganizationResponse structure as a key-value pair table
 function M.InviteAccountToOrganizationResponse(args)
-	assert(args, "You must provdide an argument table when creating InviteAccountToOrganizationResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InviteAccountToOrganizationResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Handshake"] = args["Handshake"],
 	}
-	asserts.AssertInviteAccountToOrganizationResponse(t)
-	return t
+	asserts.AssertInviteAccountToOrganizationResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ServiceException = { ["Message"] = true, nil }
@@ -1499,12 +2049,23 @@ end
 -- * Message [ExceptionMessage] 
 -- @return ServiceException structure as a key-value pair table
 function M.ServiceException(args)
-	assert(args, "You must provdide an argument table when creating ServiceException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ServiceException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Message"] = args["Message"],
 	}
-	asserts.AssertServiceException(t)
-	return t
+	asserts.AssertServiceException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.PolicySummary = { ["AwsManaged"] = true, ["Description"] = true, ["Type"] = true, ["Id"] = true, ["Arn"] = true, ["Name"] = true, nil }
@@ -1535,8 +2096,14 @@ end
 -- * Name [PolicyName] <p>The friendly name of the policy.</p> <p>The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> that is used to validate this parameter is a string of any of the characters in the ASCII character range.</p>
 -- @return PolicySummary structure as a key-value pair table
 function M.PolicySummary(args)
-	assert(args, "You must provdide an argument table when creating PolicySummary")
-	local t = { 
+	assert(args, "You must provide an argument table when creating PolicySummary")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["AwsManaged"] = args["AwsManaged"],
 		["Description"] = args["Description"],
 		["Type"] = args["Type"],
@@ -1544,8 +2111,13 @@ function M.PolicySummary(args)
 		["Arn"] = args["Arn"],
 		["Name"] = args["Name"],
 	}
-	asserts.AssertPolicySummary(t)
-	return t
+	asserts.AssertPolicySummary(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AcceptHandshakeRequest = { ["HandshakeId"] = true, nil }
@@ -1568,12 +2140,23 @@ end
 -- Required key: HandshakeId
 -- @return AcceptHandshakeRequest structure as a key-value pair table
 function M.AcceptHandshakeRequest(args)
-	assert(args, "You must provdide an argument table when creating AcceptHandshakeRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AcceptHandshakeRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["HandshakeId"] = args["HandshakeId"],
 	}
-	asserts.AssertAcceptHandshakeRequest(t)
-	return t
+	asserts.AssertAcceptHandshakeRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.RootNotFoundException = { ["Message"] = true, nil }
@@ -1594,12 +2177,23 @@ end
 -- * Message [ExceptionMessage] 
 -- @return RootNotFoundException structure as a key-value pair table
 function M.RootNotFoundException(args)
-	assert(args, "You must provdide an argument table when creating RootNotFoundException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating RootNotFoundException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Message"] = args["Message"],
 	}
-	asserts.AssertRootNotFoundException(t)
-	return t
+	asserts.AssertRootNotFoundException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DuplicateAccountException = { ["Message"] = true, nil }
@@ -1620,12 +2214,23 @@ end
 -- * Message [ExceptionMessage] 
 -- @return DuplicateAccountException structure as a key-value pair table
 function M.DuplicateAccountException(args)
-	assert(args, "You must provdide an argument table when creating DuplicateAccountException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DuplicateAccountException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Message"] = args["Message"],
 	}
-	asserts.AssertDuplicateAccountException(t)
-	return t
+	asserts.AssertDuplicateAccountException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListChildrenRequest = { ["ChildType"] = true, ["NextToken"] = true, ["MaxResults"] = true, ["ParentId"] = true, nil }
@@ -1656,15 +2261,26 @@ end
 -- Required key: ChildType
 -- @return ListChildrenRequest structure as a key-value pair table
 function M.ListChildrenRequest(args)
-	assert(args, "You must provdide an argument table when creating ListChildrenRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListChildrenRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ChildType"] = args["ChildType"],
 		["NextToken"] = args["NextToken"],
 		["MaxResults"] = args["MaxResults"],
 		["ParentId"] = args["ParentId"],
 	}
-	asserts.AssertListChildrenRequest(t)
-	return t
+	asserts.AssertListChildrenRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.PolicyTypeNotAvailableForOrganizationException = { ["Message"] = true, nil }
@@ -1685,12 +2301,23 @@ end
 -- * Message [ExceptionMessage] 
 -- @return PolicyTypeNotAvailableForOrganizationException structure as a key-value pair table
 function M.PolicyTypeNotAvailableForOrganizationException(args)
-	assert(args, "You must provdide an argument table when creating PolicyTypeNotAvailableForOrganizationException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating PolicyTypeNotAvailableForOrganizationException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Message"] = args["Message"],
 	}
-	asserts.AssertPolicyTypeNotAvailableForOrganizationException(t)
-	return t
+	asserts.AssertPolicyTypeNotAvailableForOrganizationException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListHandshakesForAccountRequest = { ["Filter"] = true, ["NextToken"] = true, ["MaxResults"] = true, nil }
@@ -1715,14 +2342,25 @@ end
 -- * MaxResults [MaxResults] <p>(Optional) Use this to limit the number of results you want included in the response. If you do not include this parameter, it defaults to a value that is specific to the operation. If additional items exist beyond the maximum you specify, the <code>NextToken</code> response element is present and has a value (is not null). Include that value as the <code>NextToken</code> request parameter in the next call to the operation to get the next part of the results. Note that Organizations might return fewer results than the maximum even when there are more results available. You should check <code>NextToken</code> after every operation to ensure that you receive all of the results.</p>
 -- @return ListHandshakesForAccountRequest structure as a key-value pair table
 function M.ListHandshakesForAccountRequest(args)
-	assert(args, "You must provdide an argument table when creating ListHandshakesForAccountRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListHandshakesForAccountRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Filter"] = args["Filter"],
 		["NextToken"] = args["NextToken"],
 		["MaxResults"] = args["MaxResults"],
 	}
-	asserts.AssertListHandshakesForAccountRequest(t)
-	return t
+	asserts.AssertListHandshakesForAccountRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListPoliciesForTargetRequest = { ["Filter"] = true, ["NextToken"] = true, ["TargetId"] = true, ["MaxResults"] = true, nil }
@@ -1753,15 +2391,26 @@ end
 -- Required key: Filter
 -- @return ListPoliciesForTargetRequest structure as a key-value pair table
 function M.ListPoliciesForTargetRequest(args)
-	assert(args, "You must provdide an argument table when creating ListPoliciesForTargetRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListPoliciesForTargetRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Filter"] = args["Filter"],
 		["NextToken"] = args["NextToken"],
 		["TargetId"] = args["TargetId"],
 		["MaxResults"] = args["MaxResults"],
 	}
-	asserts.AssertListPoliciesForTargetRequest(t)
-	return t
+	asserts.AssertListPoliciesForTargetRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.MasterCannotLeaveOrganizationException = { ["Message"] = true, nil }
@@ -1782,12 +2431,23 @@ end
 -- * Message [ExceptionMessage] 
 -- @return MasterCannotLeaveOrganizationException structure as a key-value pair table
 function M.MasterCannotLeaveOrganizationException(args)
-	assert(args, "You must provdide an argument table when creating MasterCannotLeaveOrganizationException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating MasterCannotLeaveOrganizationException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Message"] = args["Message"],
 	}
-	asserts.AssertMasterCannotLeaveOrganizationException(t)
-	return t
+	asserts.AssertMasterCannotLeaveOrganizationException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListRootsRequest = { ["NextToken"] = true, ["MaxResults"] = true, nil }
@@ -1810,13 +2470,24 @@ end
 -- * MaxResults [MaxResults] <p>(Optional) Use this to limit the number of results you want included in the response. If you do not include this parameter, it defaults to a value that is specific to the operation. If additional items exist beyond the maximum you specify, the <code>NextToken</code> response element is present and has a value (is not null). Include that value as the <code>NextToken</code> request parameter in the next call to the operation to get the next part of the results. Note that Organizations might return fewer results than the maximum even when there are more results available. You should check <code>NextToken</code> after every operation to ensure that you receive all of the results.</p>
 -- @return ListRootsRequest structure as a key-value pair table
 function M.ListRootsRequest(args)
-	assert(args, "You must provdide an argument table when creating ListRootsRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListRootsRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NextToken"] = args["NextToken"],
 		["MaxResults"] = args["MaxResults"],
 	}
-	asserts.AssertListRootsRequest(t)
-	return t
+	asserts.AssertListRootsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.OrganizationalUnitNotEmptyException = { ["Message"] = true, nil }
@@ -1837,12 +2508,23 @@ end
 -- * Message [ExceptionMessage] 
 -- @return OrganizationalUnitNotEmptyException structure as a key-value pair table
 function M.OrganizationalUnitNotEmptyException(args)
-	assert(args, "You must provdide an argument table when creating OrganizationalUnitNotEmptyException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating OrganizationalUnitNotEmptyException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Message"] = args["Message"],
 	}
-	asserts.AssertOrganizationalUnitNotEmptyException(t)
-	return t
+	asserts.AssertOrganizationalUnitNotEmptyException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AWSOrganizationsNotInUseException = { ["Message"] = true, nil }
@@ -1863,12 +2545,23 @@ end
 -- * Message [ExceptionMessage] 
 -- @return AWSOrganizationsNotInUseException structure as a key-value pair table
 function M.AWSOrganizationsNotInUseException(args)
-	assert(args, "You must provdide an argument table when creating AWSOrganizationsNotInUseException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AWSOrganizationsNotInUseException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Message"] = args["Message"],
 	}
-	asserts.AssertAWSOrganizationsNotInUseException(t)
-	return t
+	asserts.AssertAWSOrganizationsNotInUseException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DetachPolicyRequest = { ["TargetId"] = true, ["PolicyId"] = true, nil }
@@ -1895,13 +2588,24 @@ end
 -- Required key: TargetId
 -- @return DetachPolicyRequest structure as a key-value pair table
 function M.DetachPolicyRequest(args)
-	assert(args, "You must provdide an argument table when creating DetachPolicyRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DetachPolicyRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["TargetId"] = args["TargetId"],
 		["PolicyId"] = args["PolicyId"],
 	}
-	asserts.AssertDetachPolicyRequest(t)
-	return t
+	asserts.AssertDetachPolicyRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InviteAccountToOrganizationRequest = { ["Notes"] = true, ["Target"] = true, nil }
@@ -1926,13 +2630,24 @@ end
 -- Required key: Target
 -- @return InviteAccountToOrganizationRequest structure as a key-value pair table
 function M.InviteAccountToOrganizationRequest(args)
-	assert(args, "You must provdide an argument table when creating InviteAccountToOrganizationRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InviteAccountToOrganizationRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Notes"] = args["Notes"],
 		["Target"] = args["Target"],
 	}
-	asserts.AssertInviteAccountToOrganizationRequest(t)
-	return t
+	asserts.AssertInviteAccountToOrganizationRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListParentsResponse = { ["NextToken"] = true, ["Parents"] = true, nil }
@@ -1955,13 +2670,24 @@ end
 -- * Parents [Parents] <p>A list of parents for the specified child account or OU.</p>
 -- @return ListParentsResponse structure as a key-value pair table
 function M.ListParentsResponse(args)
-	assert(args, "You must provdide an argument table when creating ListParentsResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListParentsResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NextToken"] = args["NextToken"],
 		["Parents"] = args["Parents"],
 	}
-	asserts.AssertListParentsResponse(t)
-	return t
+	asserts.AssertListParentsResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DisablePolicyTypeRequest = { ["RootId"] = true, ["PolicyType"] = true, nil }
@@ -1988,13 +2714,24 @@ end
 -- Required key: PolicyType
 -- @return DisablePolicyTypeRequest structure as a key-value pair table
 function M.DisablePolicyTypeRequest(args)
-	assert(args, "You must provdide an argument table when creating DisablePolicyTypeRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DisablePolicyTypeRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["RootId"] = args["RootId"],
 		["PolicyType"] = args["PolicyType"],
 	}
-	asserts.AssertDisablePolicyTypeRequest(t)
-	return t
+	asserts.AssertDisablePolicyTypeRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeAccountRequest = { ["AccountId"] = true, nil }
@@ -2017,12 +2754,23 @@ end
 -- Required key: AccountId
 -- @return DescribeAccountRequest structure as a key-value pair table
 function M.DescribeAccountRequest(args)
-	assert(args, "You must provdide an argument table when creating DescribeAccountRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeAccountRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["AccountId"] = args["AccountId"],
 	}
-	asserts.AssertDescribeAccountRequest(t)
-	return t
+	asserts.AssertDescribeAccountRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateOrganizationRequest = { ["FeatureSet"] = true, nil }
@@ -2043,12 +2791,23 @@ end
 -- * FeatureSet [OrganizationFeatureSet] <p>Specifies the feature set supported by the new organization. Each feature set supports different levels of functionality.</p> <ul> <li> <p> <i>CONSOLIDATED_BILLING</i>: All member accounts have their bills consolidated to and paid by the master account. For more information, see <a href="http://docs.aws.amazon.com/organizations/latest/userguide/orgs_getting-started_concepts.html#feature-set-cb-only">Consolidated Billing</a> in the <i>AWS Organizations User Guide</i>.</p> </li> <li> <p> <i>ALL</i>: In addition to all the features supported by the consolidated billing feature set, the master account can also apply any type of policy to any member account in the organization. For more information, see <a href="http://docs.aws.amazon.com/organizations/latest/userguide/orgs_getting-started_concepts.html#feature-set-all">All features</a> in the <i>AWS Organizations User Guide</i>.</p> </li> </ul>
 -- @return CreateOrganizationRequest structure as a key-value pair table
 function M.CreateOrganizationRequest(args)
-	assert(args, "You must provdide an argument table when creating CreateOrganizationRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateOrganizationRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["FeatureSet"] = args["FeatureSet"],
 	}
-	asserts.AssertCreateOrganizationRequest(t)
-	return t
+	asserts.AssertCreateOrganizationRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.PolicyTypeAlreadyEnabledException = { ["Message"] = true, nil }
@@ -2069,12 +2828,23 @@ end
 -- * Message [ExceptionMessage] 
 -- @return PolicyTypeAlreadyEnabledException structure as a key-value pair table
 function M.PolicyTypeAlreadyEnabledException(args)
-	assert(args, "You must provdide an argument table when creating PolicyTypeAlreadyEnabledException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating PolicyTypeAlreadyEnabledException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Message"] = args["Message"],
 	}
-	asserts.AssertPolicyTypeAlreadyEnabledException(t)
-	return t
+	asserts.AssertPolicyTypeAlreadyEnabledException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListCreateAccountStatusRequest = { ["States"] = true, ["NextToken"] = true, ["MaxResults"] = true, nil }
@@ -2099,14 +2869,25 @@ end
 -- * MaxResults [MaxResults] <p>(Optional) Use this to limit the number of results you want included in the response. If you do not include this parameter, it defaults to a value that is specific to the operation. If additional items exist beyond the maximum you specify, the <code>NextToken</code> response element is present and has a value (is not null). Include that value as the <code>NextToken</code> request parameter in the next call to the operation to get the next part of the results. Note that Organizations might return fewer results than the maximum even when there are more results available. You should check <code>NextToken</code> after every operation to ensure that you receive all of the results.</p>
 -- @return ListCreateAccountStatusRequest structure as a key-value pair table
 function M.ListCreateAccountStatusRequest(args)
-	assert(args, "You must provdide an argument table when creating ListCreateAccountStatusRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListCreateAccountStatusRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["States"] = args["States"],
 		["NextToken"] = args["NextToken"],
 		["MaxResults"] = args["MaxResults"],
 	}
-	asserts.AssertListCreateAccountStatusRequest(t)
-	return t
+	asserts.AssertListCreateAccountStatusRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ConstraintViolationException = { ["Message"] = true, ["Reason"] = true, nil }
@@ -2129,13 +2910,24 @@ end
 -- * Reason [ConstraintViolationExceptionReason] 
 -- @return ConstraintViolationException structure as a key-value pair table
 function M.ConstraintViolationException(args)
-	assert(args, "You must provdide an argument table when creating ConstraintViolationException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ConstraintViolationException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Message"] = args["Message"],
 		["Reason"] = args["Reason"],
 	}
-	asserts.AssertConstraintViolationException(t)
-	return t
+	asserts.AssertConstraintViolationException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.PolicyInUseException = { ["Message"] = true, nil }
@@ -2156,12 +2948,23 @@ end
 -- * Message [ExceptionMessage] 
 -- @return PolicyInUseException structure as a key-value pair table
 function M.PolicyInUseException(args)
-	assert(args, "You must provdide an argument table when creating PolicyInUseException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating PolicyInUseException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Message"] = args["Message"],
 	}
-	asserts.AssertPolicyInUseException(t)
-	return t
+	asserts.AssertPolicyInUseException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Child = { ["Type"] = true, ["Id"] = true, nil }
@@ -2184,13 +2987,24 @@ end
 -- * Id [ChildId] <p>The unique identifier (ID) of this child entity.</p> <p>The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> for a child ID string requires one of the following:</p> <ul> <li> <p>Account: a string that consists of exactly 12 digits.</p> </li> <li> <p>Organizational unit (OU): a string that begins with "ou-" followed by from 4 to 32 lower-case letters or digits (the ID of the root that contains the OU) followed by a second "-" dash and from 8 to 32 additional lower-case letters or digits.</p> </li> </ul>
 -- @return Child structure as a key-value pair table
 function M.Child(args)
-	assert(args, "You must provdide an argument table when creating Child")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Child")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Type"] = args["Type"],
 		["Id"] = args["Id"],
 	}
-	asserts.AssertChild(t)
-	return t
+	asserts.AssertChild(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidHandshakeTransitionException = { ["Message"] = true, nil }
@@ -2211,12 +3025,23 @@ end
 -- * Message [ExceptionMessage] 
 -- @return InvalidHandshakeTransitionException structure as a key-value pair table
 function M.InvalidHandshakeTransitionException(args)
-	assert(args, "You must provdide an argument table when creating InvalidHandshakeTransitionException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidHandshakeTransitionException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Message"] = args["Message"],
 	}
-	asserts.AssertInvalidHandshakeTransitionException(t)
-	return t
+	asserts.AssertInvalidHandshakeTransitionException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.PolicyTargetSummary = { ["Type"] = true, ["TargetId"] = true, ["Name"] = true, ["Arn"] = true, nil }
@@ -2243,15 +3068,26 @@ end
 -- * Arn [GenericArn] <p>The Amazon Resource Name (ARN) of the policy target.</p> <p>For more information about ARNs in Organizations, see <a href="http://docs.aws.amazon.com/organizations/latest/userguide/orgs_permissions.html#orgs-permissions-arns">ARN Formats Supported by Organizations</a> in the <i>AWS Organizations User Guide</i>.</p>
 -- @return PolicyTargetSummary structure as a key-value pair table
 function M.PolicyTargetSummary(args)
-	assert(args, "You must provdide an argument table when creating PolicyTargetSummary")
-	local t = { 
+	assert(args, "You must provide an argument table when creating PolicyTargetSummary")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Type"] = args["Type"],
 		["TargetId"] = args["TargetId"],
 		["Name"] = args["Name"],
 		["Arn"] = args["Arn"],
 	}
-	asserts.AssertPolicyTargetSummary(t)
-	return t
+	asserts.AssertPolicyTargetSummary(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateAccountStatusNotFoundException = { ["Message"] = true, nil }
@@ -2272,12 +3108,23 @@ end
 -- * Message [ExceptionMessage] 
 -- @return CreateAccountStatusNotFoundException structure as a key-value pair table
 function M.CreateAccountStatusNotFoundException(args)
-	assert(args, "You must provdide an argument table when creating CreateAccountStatusNotFoundException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateAccountStatusNotFoundException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Message"] = args["Message"],
 	}
-	asserts.AssertCreateAccountStatusNotFoundException(t)
-	return t
+	asserts.AssertCreateAccountStatusNotFoundException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.OrganizationNotEmptyException = { ["Message"] = true, nil }
@@ -2298,12 +3145,23 @@ end
 -- * Message [ExceptionMessage] 
 -- @return OrganizationNotEmptyException structure as a key-value pair table
 function M.OrganizationNotEmptyException(args)
-	assert(args, "You must provdide an argument table when creating OrganizationNotEmptyException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating OrganizationNotEmptyException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Message"] = args["Message"],
 	}
-	asserts.AssertOrganizationNotEmptyException(t)
-	return t
+	asserts.AssertOrganizationNotEmptyException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListPoliciesForTargetResponse = { ["NextToken"] = true, ["Policies"] = true, nil }
@@ -2326,13 +3184,24 @@ end
 -- * Policies [Policies] <p>The list of policies that match the criteria in the request.</p>
 -- @return ListPoliciesForTargetResponse structure as a key-value pair table
 function M.ListPoliciesForTargetResponse(args)
-	assert(args, "You must provdide an argument table when creating ListPoliciesForTargetResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListPoliciesForTargetResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NextToken"] = args["NextToken"],
 		["Policies"] = args["Policies"],
 	}
-	asserts.AssertListPoliciesForTargetResponse(t)
-	return t
+	asserts.AssertListPoliciesForTargetResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdateOrganizationalUnitRequest = { ["Name"] = true, ["OrganizationalUnitId"] = true, nil }
@@ -2357,13 +3226,24 @@ end
 -- Required key: OrganizationalUnitId
 -- @return UpdateOrganizationalUnitRequest structure as a key-value pair table
 function M.UpdateOrganizationalUnitRequest(args)
-	assert(args, "You must provdide an argument table when creating UpdateOrganizationalUnitRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateOrganizationalUnitRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Name"] = args["Name"],
 		["OrganizationalUnitId"] = args["OrganizationalUnitId"],
 	}
-	asserts.AssertUpdateOrganizationalUnitRequest(t)
-	return t
+	asserts.AssertUpdateOrganizationalUnitRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.PolicyNotAttachedException = { ["Message"] = true, nil }
@@ -2384,12 +3264,23 @@ end
 -- * Message [ExceptionMessage] 
 -- @return PolicyNotAttachedException structure as a key-value pair table
 function M.PolicyNotAttachedException(args)
-	assert(args, "You must provdide an argument table when creating PolicyNotAttachedException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating PolicyNotAttachedException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Message"] = args["Message"],
 	}
-	asserts.AssertPolicyNotAttachedException(t)
-	return t
+	asserts.AssertPolicyNotAttachedException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.HandshakeAlreadyInStateException = { ["Message"] = true, nil }
@@ -2410,12 +3301,23 @@ end
 -- * Message [ExceptionMessage] 
 -- @return HandshakeAlreadyInStateException structure as a key-value pair table
 function M.HandshakeAlreadyInStateException(args)
-	assert(args, "You must provdide an argument table when creating HandshakeAlreadyInStateException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating HandshakeAlreadyInStateException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Message"] = args["Message"],
 	}
-	asserts.AssertHandshakeAlreadyInStateException(t)
-	return t
+	asserts.AssertHandshakeAlreadyInStateException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DuplicatePolicyException = { ["Message"] = true, nil }
@@ -2436,12 +3338,23 @@ end
 -- * Message [ExceptionMessage] 
 -- @return DuplicatePolicyException structure as a key-value pair table
 function M.DuplicatePolicyException(args)
-	assert(args, "You must provdide an argument table when creating DuplicatePolicyException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DuplicatePolicyException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Message"] = args["Message"],
 	}
-	asserts.AssertDuplicatePolicyException(t)
-	return t
+	asserts.AssertDuplicatePolicyException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListOrganizationalUnitsForParentResponse = { ["NextToken"] = true, ["OrganizationalUnits"] = true, nil }
@@ -2464,13 +3377,24 @@ end
 -- * OrganizationalUnits [OrganizationalUnits] <p>A list of the OUs in the specified root or parent OU.</p>
 -- @return ListOrganizationalUnitsForParentResponse structure as a key-value pair table
 function M.ListOrganizationalUnitsForParentResponse(args)
-	assert(args, "You must provdide an argument table when creating ListOrganizationalUnitsForParentResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListOrganizationalUnitsForParentResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NextToken"] = args["NextToken"],
 		["OrganizationalUnits"] = args["OrganizationalUnits"],
 	}
-	asserts.AssertListOrganizationalUnitsForParentResponse(t)
-	return t
+	asserts.AssertListOrganizationalUnitsForParentResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdatePolicyResponse = { ["Policy"] = true, nil }
@@ -2491,12 +3415,23 @@ end
 -- * Policy [Policy] <p>A structure that contains details about the updated policy, showing the requested changes.</p>
 -- @return UpdatePolicyResponse structure as a key-value pair table
 function M.UpdatePolicyResponse(args)
-	assert(args, "You must provdide an argument table when creating UpdatePolicyResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdatePolicyResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Policy"] = args["Policy"],
 	}
-	asserts.AssertUpdatePolicyResponse(t)
-	return t
+	asserts.AssertUpdatePolicyResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DuplicateHandshakeException = { ["Message"] = true, nil }
@@ -2517,12 +3452,23 @@ end
 -- * Message [ExceptionMessage] 
 -- @return DuplicateHandshakeException structure as a key-value pair table
 function M.DuplicateHandshakeException(args)
-	assert(args, "You must provdide an argument table when creating DuplicateHandshakeException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DuplicateHandshakeException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Message"] = args["Message"],
 	}
-	asserts.AssertDuplicateHandshakeException(t)
-	return t
+	asserts.AssertDuplicateHandshakeException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.FinalizingOrganizationException = { ["Message"] = true, nil }
@@ -2543,12 +3489,23 @@ end
 -- * Message [ExceptionMessage] 
 -- @return FinalizingOrganizationException structure as a key-value pair table
 function M.FinalizingOrganizationException(args)
-	assert(args, "You must provdide an argument table when creating FinalizingOrganizationException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating FinalizingOrganizationException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Message"] = args["Message"],
 	}
-	asserts.AssertFinalizingOrganizationException(t)
-	return t
+	asserts.AssertFinalizingOrganizationException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AlreadyInOrganizationException = { ["Message"] = true, nil }
@@ -2569,12 +3526,23 @@ end
 -- * Message [ExceptionMessage] 
 -- @return AlreadyInOrganizationException structure as a key-value pair table
 function M.AlreadyInOrganizationException(args)
-	assert(args, "You must provdide an argument table when creating AlreadyInOrganizationException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AlreadyInOrganizationException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Message"] = args["Message"],
 	}
-	asserts.AssertAlreadyInOrganizationException(t)
-	return t
+	asserts.AssertAlreadyInOrganizationException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.OrganizationalUnitNotFoundException = { ["Message"] = true, nil }
@@ -2595,12 +3563,23 @@ end
 -- * Message [ExceptionMessage] 
 -- @return OrganizationalUnitNotFoundException structure as a key-value pair table
 function M.OrganizationalUnitNotFoundException(args)
-	assert(args, "You must provdide an argument table when creating OrganizationalUnitNotFoundException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating OrganizationalUnitNotFoundException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Message"] = args["Message"],
 	}
-	asserts.AssertOrganizationalUnitNotFoundException(t)
-	return t
+	asserts.AssertOrganizationalUnitNotFoundException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeCreateAccountStatusResponse = { ["CreateAccountStatus"] = true, nil }
@@ -2621,12 +3600,23 @@ end
 -- * CreateAccountStatus [CreateAccountStatus] <p>A structure that contains the current status of an account creation request.</p>
 -- @return DescribeCreateAccountStatusResponse structure as a key-value pair table
 function M.DescribeCreateAccountStatusResponse(args)
-	assert(args, "You must provdide an argument table when creating DescribeCreateAccountStatusResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeCreateAccountStatusResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["CreateAccountStatus"] = args["CreateAccountStatus"],
 	}
-	asserts.AssertDescribeCreateAccountStatusResponse(t)
-	return t
+	asserts.AssertDescribeCreateAccountStatusResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateOrganizationalUnitResponse = { ["OrganizationalUnit"] = true, nil }
@@ -2647,12 +3637,23 @@ end
 -- * OrganizationalUnit [OrganizationalUnit] <p>A structure that contains details about the newly created OU.</p>
 -- @return CreateOrganizationalUnitResponse structure as a key-value pair table
 function M.CreateOrganizationalUnitResponse(args)
-	assert(args, "You must provdide an argument table when creating CreateOrganizationalUnitResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateOrganizationalUnitResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["OrganizationalUnit"] = args["OrganizationalUnit"],
 	}
-	asserts.AssertCreateOrganizationalUnitResponse(t)
-	return t
+	asserts.AssertCreateOrganizationalUnitResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreatePolicyRequest = { ["Content"] = true, ["Type"] = true, ["Description"] = true, ["Name"] = true, nil }
@@ -2687,15 +3688,26 @@ end
 -- Required key: Type
 -- @return CreatePolicyRequest structure as a key-value pair table
 function M.CreatePolicyRequest(args)
-	assert(args, "You must provdide an argument table when creating CreatePolicyRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreatePolicyRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Content"] = args["Content"],
 		["Type"] = args["Type"],
 		["Description"] = args["Description"],
 		["Name"] = args["Name"],
 	}
-	asserts.AssertCreatePolicyRequest(t)
-	return t
+	asserts.AssertCreatePolicyRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ChildNotFoundException = { ["Message"] = true, nil }
@@ -2716,12 +3728,23 @@ end
 -- * Message [ExceptionMessage] 
 -- @return ChildNotFoundException structure as a key-value pair table
 function M.ChildNotFoundException(args)
-	assert(args, "You must provdide an argument table when creating ChildNotFoundException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ChildNotFoundException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Message"] = args["Message"],
 	}
-	asserts.AssertChildNotFoundException(t)
-	return t
+	asserts.AssertChildNotFoundException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DuplicatePolicyAttachmentException = { ["Message"] = true, nil }
@@ -2742,12 +3765,23 @@ end
 -- * Message [ExceptionMessage] 
 -- @return DuplicatePolicyAttachmentException structure as a key-value pair table
 function M.DuplicatePolicyAttachmentException(args)
-	assert(args, "You must provdide an argument table when creating DuplicatePolicyAttachmentException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DuplicatePolicyAttachmentException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Message"] = args["Message"],
 	}
-	asserts.AssertDuplicatePolicyAttachmentException(t)
-	return t
+	asserts.AssertDuplicatePolicyAttachmentException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.RemoveAccountFromOrganizationRequest = { ["AccountId"] = true, nil }
@@ -2770,12 +3804,23 @@ end
 -- Required key: AccountId
 -- @return RemoveAccountFromOrganizationRequest structure as a key-value pair table
 function M.RemoveAccountFromOrganizationRequest(args)
-	assert(args, "You must provdide an argument table when creating RemoveAccountFromOrganizationRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating RemoveAccountFromOrganizationRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["AccountId"] = args["AccountId"],
 	}
-	asserts.AssertRemoveAccountFromOrganizationRequest(t)
-	return t
+	asserts.AssertRemoveAccountFromOrganizationRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateOrganizationalUnitRequest = { ["Name"] = true, ["ParentId"] = true, nil }
@@ -2802,13 +3847,24 @@ end
 -- Required key: Name
 -- @return CreateOrganizationalUnitRequest structure as a key-value pair table
 function M.CreateOrganizationalUnitRequest(args)
-	assert(args, "You must provdide an argument table when creating CreateOrganizationalUnitRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateOrganizationalUnitRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Name"] = args["Name"],
 		["ParentId"] = args["ParentId"],
 	}
-	asserts.AssertCreateOrganizationalUnitRequest(t)
-	return t
+	asserts.AssertCreateOrganizationalUnitRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.EnableAllFeaturesRequest = { nil }
@@ -2827,11 +3883,22 @@ end
 -- Valid keys:
 -- @return EnableAllFeaturesRequest structure as a key-value pair table
 function M.EnableAllFeaturesRequest(args)
-	assert(args, "You must provdide an argument table when creating EnableAllFeaturesRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating EnableAllFeaturesRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertEnableAllFeaturesRequest(t)
-	return t
+	asserts.AssertEnableAllFeaturesRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Policy = { ["Content"] = true, ["PolicySummary"] = true, nil }
@@ -2854,13 +3921,24 @@ end
 -- * PolicySummary [PolicySummary] <p>A structure that contains additional details about the policy.</p>
 -- @return Policy structure as a key-value pair table
 function M.Policy(args)
-	assert(args, "You must provdide an argument table when creating Policy")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Policy")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Content"] = args["Content"],
 		["PolicySummary"] = args["PolicySummary"],
 	}
-	asserts.AssertPolicy(t)
-	return t
+	asserts.AssertPolicy(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListHandshakesForOrganizationResponse = { ["Handshakes"] = true, ["NextToken"] = true, nil }
@@ -2883,13 +3961,24 @@ end
 -- * NextToken [NextToken] <p>If present, this value indicates that there is more output available than is included in the current response. Use this value in the <code>NextToken</code> request parameter in a subsequent call to the operation to get the next part of the output. You should repeat this until the <code>NextToken</code> response element comes back as <code>null</code>.</p>
 -- @return ListHandshakesForOrganizationResponse structure as a key-value pair table
 function M.ListHandshakesForOrganizationResponse(args)
-	assert(args, "You must provdide an argument table when creating ListHandshakesForOrganizationResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListHandshakesForOrganizationResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Handshakes"] = args["Handshakes"],
 		["NextToken"] = args["NextToken"],
 	}
-	asserts.AssertListHandshakesForOrganizationResponse(t)
-	return t
+	asserts.AssertListHandshakesForOrganizationResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeAccountResponse = { ["Account"] = true, nil }
@@ -2910,12 +3999,23 @@ end
 -- * Account [Account] <p>A structure that contains information about the requested account.</p>
 -- @return DescribeAccountResponse structure as a key-value pair table
 function M.DescribeAccountResponse(args)
-	assert(args, "You must provdide an argument table when creating DescribeAccountResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeAccountResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Account"] = args["Account"],
 	}
-	asserts.AssertDescribeAccountResponse(t)
-	return t
+	asserts.AssertDescribeAccountResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.HandshakeFilter = { ["ActionType"] = true, ["ParentHandshakeId"] = true, nil }
@@ -2938,13 +4038,24 @@ end
 -- * ParentHandshakeId [HandshakeId] <p>Specifies the parent handshake. Only used for handshake types that are a child of another type.</p> <p>If you specify <code>ParentHandshakeId</code>, you cannot also specify <code>ActionType</code>.</p> <p>The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> for handshake ID string requires "h-" followed by from 8 to 32 lower-case letters or digits.</p>
 -- @return HandshakeFilter structure as a key-value pair table
 function M.HandshakeFilter(args)
-	assert(args, "You must provdide an argument table when creating HandshakeFilter")
-	local t = { 
+	assert(args, "You must provide an argument table when creating HandshakeFilter")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ActionType"] = args["ActionType"],
 		["ParentHandshakeId"] = args["ParentHandshakeId"],
 	}
-	asserts.AssertHandshakeFilter(t)
-	return t
+	asserts.AssertHandshakeFilter(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateAccountResponse = { ["CreateAccountStatus"] = true, nil }
@@ -2965,12 +4076,23 @@ end
 -- * CreateAccountStatus [CreateAccountStatus] <p>A structure that contains details about the request to create an account. This response structure might not be fully populated when you first receive it because account creation is an asynchronous process. You can pass the returned CreateAccountStatus ID as a parameter to <code> <a>DescribeCreateAccountStatus</a> </code> to get status about the progress of the request at later times. </p>
 -- @return CreateAccountResponse structure as a key-value pair table
 function M.CreateAccountResponse(args)
-	assert(args, "You must provdide an argument table when creating CreateAccountResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateAccountResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["CreateAccountStatus"] = args["CreateAccountStatus"],
 	}
-	asserts.AssertCreateAccountResponse(t)
-	return t
+	asserts.AssertCreateAccountResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AcceptHandshakeResponse = { ["Handshake"] = true, nil }
@@ -2991,12 +4113,23 @@ end
 -- * Handshake [Handshake] <p>A structure that contains details about the accepted handshake.</p>
 -- @return AcceptHandshakeResponse structure as a key-value pair table
 function M.AcceptHandshakeResponse(args)
-	assert(args, "You must provdide an argument table when creating AcceptHandshakeResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AcceptHandshakeResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Handshake"] = args["Handshake"],
 	}
-	asserts.AssertAcceptHandshakeResponse(t)
-	return t
+	asserts.AssertAcceptHandshakeResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListHandshakesForOrganizationRequest = { ["Filter"] = true, ["NextToken"] = true, ["MaxResults"] = true, nil }
@@ -3021,14 +4154,25 @@ end
 -- * MaxResults [MaxResults] <p>(Optional) Use this to limit the number of results you want included in the response. If you do not include this parameter, it defaults to a value that is specific to the operation. If additional items exist beyond the maximum you specify, the <code>NextToken</code> response element is present and has a value (is not null). Include that value as the <code>NextToken</code> request parameter in the next call to the operation to get the next part of the results. Note that Organizations might return fewer results than the maximum even when there are more results available. You should check <code>NextToken</code> after every operation to ensure that you receive all of the results.</p>
 -- @return ListHandshakesForOrganizationRequest structure as a key-value pair table
 function M.ListHandshakesForOrganizationRequest(args)
-	assert(args, "You must provdide an argument table when creating ListHandshakesForOrganizationRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListHandshakesForOrganizationRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Filter"] = args["Filter"],
 		["NextToken"] = args["NextToken"],
 		["MaxResults"] = args["MaxResults"],
 	}
-	asserts.AssertListHandshakesForOrganizationRequest(t)
-	return t
+	asserts.AssertListHandshakesForOrganizationRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeOrganizationalUnitRequest = { ["OrganizationalUnitId"] = true, nil }
@@ -3051,12 +4195,23 @@ end
 -- Required key: OrganizationalUnitId
 -- @return DescribeOrganizationalUnitRequest structure as a key-value pair table
 function M.DescribeOrganizationalUnitRequest(args)
-	assert(args, "You must provdide an argument table when creating DescribeOrganizationalUnitRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeOrganizationalUnitRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["OrganizationalUnitId"] = args["OrganizationalUnitId"],
 	}
-	asserts.AssertDescribeOrganizationalUnitRequest(t)
-	return t
+	asserts.AssertDescribeOrganizationalUnitRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribePolicyRequest = { ["PolicyId"] = true, nil }
@@ -3079,12 +4234,23 @@ end
 -- Required key: PolicyId
 -- @return DescribePolicyRequest structure as a key-value pair table
 function M.DescribePolicyRequest(args)
-	assert(args, "You must provdide an argument table when creating DescribePolicyRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribePolicyRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["PolicyId"] = args["PolicyId"],
 	}
-	asserts.AssertDescribePolicyRequest(t)
-	return t
+	asserts.AssertDescribePolicyRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeclineHandshakeRequest = { ["HandshakeId"] = true, nil }
@@ -3107,12 +4273,23 @@ end
 -- Required key: HandshakeId
 -- @return DeclineHandshakeRequest structure as a key-value pair table
 function M.DeclineHandshakeRequest(args)
-	assert(args, "You must provdide an argument table when creating DeclineHandshakeRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeclineHandshakeRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["HandshakeId"] = args["HandshakeId"],
 	}
-	asserts.AssertDeclineHandshakeRequest(t)
-	return t
+	asserts.AssertDeclineHandshakeRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeHandshakeRequest = { ["HandshakeId"] = true, nil }
@@ -3135,12 +4312,23 @@ end
 -- Required key: HandshakeId
 -- @return DescribeHandshakeRequest structure as a key-value pair table
 function M.DescribeHandshakeRequest(args)
-	assert(args, "You must provdide an argument table when creating DescribeHandshakeRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeHandshakeRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["HandshakeId"] = args["HandshakeId"],
 	}
-	asserts.AssertDescribeHandshakeRequest(t)
-	return t
+	asserts.AssertDescribeHandshakeRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AccessDeniedException = { ["Message"] = true, nil }
@@ -3161,12 +4349,23 @@ end
 -- * Message [ExceptionMessage] 
 -- @return AccessDeniedException structure as a key-value pair table
 function M.AccessDeniedException(args)
-	assert(args, "You must provdide an argument table when creating AccessDeniedException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AccessDeniedException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Message"] = args["Message"],
 	}
-	asserts.AssertAccessDeniedException(t)
-	return t
+	asserts.AssertAccessDeniedException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateAccountStatus = { ["FailureReason"] = true, ["AccountName"] = true, ["State"] = true, ["RequestedTimestamp"] = true, ["CompletedTimestamp"] = true, ["Id"] = true, ["AccountId"] = true, nil }
@@ -3199,8 +4398,14 @@ end
 -- * AccountId [AccountId] <p>If the account was created successfully, the unique identifier (ID) of the new account.</p> <p>The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> for an account ID string requires exactly 12 digits.</p>
 -- @return CreateAccountStatus structure as a key-value pair table
 function M.CreateAccountStatus(args)
-	assert(args, "You must provdide an argument table when creating CreateAccountStatus")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateAccountStatus")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["FailureReason"] = args["FailureReason"],
 		["AccountName"] = args["AccountName"],
 		["State"] = args["State"],
@@ -3209,8 +4414,13 @@ function M.CreateAccountStatus(args)
 		["Id"] = args["Id"],
 		["AccountId"] = args["AccountId"],
 	}
-	asserts.AssertCreateAccountStatus(t)
-	return t
+	asserts.AssertCreateAccountStatus(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListTargetsForPolicyRequest = { ["NextToken"] = true, ["PolicyId"] = true, ["MaxResults"] = true, nil }
@@ -3237,14 +4447,25 @@ end
 -- Required key: PolicyId
 -- @return ListTargetsForPolicyRequest structure as a key-value pair table
 function M.ListTargetsForPolicyRequest(args)
-	assert(args, "You must provdide an argument table when creating ListTargetsForPolicyRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListTargetsForPolicyRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NextToken"] = args["NextToken"],
 		["PolicyId"] = args["PolicyId"],
 		["MaxResults"] = args["MaxResults"],
 	}
-	asserts.AssertListTargetsForPolicyRequest(t)
-	return t
+	asserts.AssertListTargetsForPolicyRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Root = { ["PolicyTypes"] = true, ["Id"] = true, ["Arn"] = true, ["Name"] = true, nil }
@@ -3271,15 +4492,26 @@ end
 -- * Name [RootName] <p>The friendly name of the root.</p> <p>The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> that is used to validate this parameter is a string of any of the characters in the ASCII character range.</p>
 -- @return Root structure as a key-value pair table
 function M.Root(args)
-	assert(args, "You must provdide an argument table when creating Root")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Root")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["PolicyTypes"] = args["PolicyTypes"],
 		["Id"] = args["Id"],
 		["Arn"] = args["Arn"],
 		["Name"] = args["Name"],
 	}
-	asserts.AssertRoot(t)
-	return t
+	asserts.AssertRoot(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListParentsRequest = { ["NextToken"] = true, ["MaxResults"] = true, ["ChildId"] = true, nil }
@@ -3306,14 +4538,25 @@ end
 -- Required key: ChildId
 -- @return ListParentsRequest structure as a key-value pair table
 function M.ListParentsRequest(args)
-	assert(args, "You must provdide an argument table when creating ListParentsRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListParentsRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NextToken"] = args["NextToken"],
 		["MaxResults"] = args["MaxResults"],
 		["ChildId"] = args["ChildId"],
 	}
-	asserts.AssertListParentsRequest(t)
-	return t
+	asserts.AssertListParentsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListAccountsForParentRequest = { ["NextToken"] = true, ["MaxResults"] = true, ["ParentId"] = true, nil }
@@ -3340,14 +4583,25 @@ end
 -- Required key: ParentId
 -- @return ListAccountsForParentRequest structure as a key-value pair table
 function M.ListAccountsForParentRequest(args)
-	assert(args, "You must provdide an argument table when creating ListAccountsForParentRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListAccountsForParentRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NextToken"] = args["NextToken"],
 		["MaxResults"] = args["MaxResults"],
 		["ParentId"] = args["ParentId"],
 	}
-	asserts.AssertListAccountsForParentRequest(t)
-	return t
+	asserts.AssertListAccountsForParentRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.HandshakeNotFoundException = { ["Message"] = true, nil }
@@ -3368,12 +4622,23 @@ end
 -- * Message [ExceptionMessage] 
 -- @return HandshakeNotFoundException structure as a key-value pair table
 function M.HandshakeNotFoundException(args)
-	assert(args, "You must provdide an argument table when creating HandshakeNotFoundException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating HandshakeNotFoundException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Message"] = args["Message"],
 	}
-	asserts.AssertHandshakeNotFoundException(t)
-	return t
+	asserts.AssertHandshakeNotFoundException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListOrganizationalUnitsForParentRequest = { ["NextToken"] = true, ["MaxResults"] = true, ["ParentId"] = true, nil }
@@ -3400,14 +4665,25 @@ end
 -- Required key: ParentId
 -- @return ListOrganizationalUnitsForParentRequest structure as a key-value pair table
 function M.ListOrganizationalUnitsForParentRequest(args)
-	assert(args, "You must provdide an argument table when creating ListOrganizationalUnitsForParentRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListOrganizationalUnitsForParentRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NextToken"] = args["NextToken"],
 		["MaxResults"] = args["MaxResults"],
 		["ParentId"] = args["ParentId"],
 	}
-	asserts.AssertListOrganizationalUnitsForParentRequest(t)
-	return t
+	asserts.AssertListOrganizationalUnitsForParentRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListAccountsRequest = { ["NextToken"] = true, ["MaxResults"] = true, nil }
@@ -3430,13 +4706,24 @@ end
 -- * MaxResults [MaxResults] <p>(Optional) Use this to limit the number of results you want included in the response. If you do not include this parameter, it defaults to a value that is specific to the operation. If additional items exist beyond the maximum you specify, the <code>NextToken</code> response element is present and has a value (is not null). Include that value as the <code>NextToken</code> request parameter in the next call to the operation to get the next part of the results. Note that Organizations might return fewer results than the maximum even when there are more results available. You should check <code>NextToken</code> after every operation to ensure that you receive all of the results.</p>
 -- @return ListAccountsRequest structure as a key-value pair table
 function M.ListAccountsRequest(args)
-	assert(args, "You must provdide an argument table when creating ListAccountsRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListAccountsRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NextToken"] = args["NextToken"],
 		["MaxResults"] = args["MaxResults"],
 	}
-	asserts.AssertListAccountsRequest(t)
-	return t
+	asserts.AssertListAccountsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.OrganizationalUnit = { ["Id"] = true, ["Arn"] = true, ["Name"] = true, nil }
@@ -3461,14 +4748,25 @@ end
 -- * Name [OrganizationalUnitName] <p>The friendly name of this OU.</p> <p>The <a href="http://wikipedia.org/wiki/regex">regex pattern</a> that is used to validate this parameter is a string of any of the characters in the ASCII character range.</p>
 -- @return OrganizationalUnit structure as a key-value pair table
 function M.OrganizationalUnit(args)
-	assert(args, "You must provdide an argument table when creating OrganizationalUnit")
-	local t = { 
+	assert(args, "You must provide an argument table when creating OrganizationalUnit")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Id"] = args["Id"],
 		["Arn"] = args["Arn"],
 		["Name"] = args["Name"],
 	}
-	asserts.AssertOrganizationalUnit(t)
-	return t
+	asserts.AssertOrganizationalUnit(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdatePolicyRequest = { ["Content"] = true, ["Description"] = true, ["PolicyId"] = true, ["Name"] = true, nil }
@@ -3497,15 +4795,26 @@ end
 -- Required key: PolicyId
 -- @return UpdatePolicyRequest structure as a key-value pair table
 function M.UpdatePolicyRequest(args)
-	assert(args, "You must provdide an argument table when creating UpdatePolicyRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdatePolicyRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Content"] = args["Content"],
 		["Description"] = args["Description"],
 		["PolicyId"] = args["PolicyId"],
 		["Name"] = args["Name"],
 	}
-	asserts.AssertUpdatePolicyRequest(t)
-	return t
+	asserts.AssertUpdatePolicyRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 function asserts.AssertGenericArn(str)
@@ -4356,8 +5665,11 @@ function M.DeclineHandshakeAsync(DeclineHandshakeRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AWSOrganizationsV20161128.DeclineHandshake",
 	}
+	for header,value in pairs(DeclineHandshakeRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DeclineHandshakeRequest, headers, settings, cb)
 	else
@@ -4388,8 +5700,11 @@ function M.DisablePolicyTypeAsync(DisablePolicyTypeRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AWSOrganizationsV20161128.DisablePolicyType",
 	}
+	for header,value in pairs(DisablePolicyTypeRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DisablePolicyTypeRequest, headers, settings, cb)
 	else
@@ -4420,8 +5735,11 @@ function M.DescribeCreateAccountStatusAsync(DescribeCreateAccountStatusRequest, 
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AWSOrganizationsV20161128.DescribeCreateAccountStatus",
 	}
+	for header,value in pairs(DescribeCreateAccountStatusRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeCreateAccountStatusRequest, headers, settings, cb)
 	else
@@ -4452,8 +5770,11 @@ function M.ListOrganizationalUnitsForParentAsync(ListOrganizationalUnitsForParen
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AWSOrganizationsV20161128.ListOrganizationalUnitsForParent",
 	}
+	for header,value in pairs(ListOrganizationalUnitsForParentRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ListOrganizationalUnitsForParentRequest, headers, settings, cb)
 	else
@@ -4484,8 +5805,11 @@ function M.DescribeOrganizationalUnitAsync(DescribeOrganizationalUnitRequest, cb
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AWSOrganizationsV20161128.DescribeOrganizationalUnit",
 	}
+	for header,value in pairs(DescribeOrganizationalUnitRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeOrganizationalUnitRequest, headers, settings, cb)
 	else
@@ -4516,8 +5840,11 @@ function M.AcceptHandshakeAsync(AcceptHandshakeRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AWSOrganizationsV20161128.AcceptHandshake",
 	}
+	for header,value in pairs(AcceptHandshakeRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", AcceptHandshakeRequest, headers, settings, cb)
 	else
@@ -4548,8 +5875,11 @@ function M.DeleteOrganizationalUnitAsync(DeleteOrganizationalUnitRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AWSOrganizationsV20161128.DeleteOrganizationalUnit",
 	}
+	for header,value in pairs(DeleteOrganizationalUnitRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteOrganizationalUnitRequest, headers, settings, cb)
 	else
@@ -4580,8 +5910,11 @@ function M.DeletePolicyAsync(DeletePolicyRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AWSOrganizationsV20161128.DeletePolicy",
 	}
+	for header,value in pairs(DeletePolicyRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DeletePolicyRequest, headers, settings, cb)
 	else
@@ -4612,8 +5945,11 @@ function M.DetachPolicyAsync(DetachPolicyRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AWSOrganizationsV20161128.DetachPolicy",
 	}
+	for header,value in pairs(DetachPolicyRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DetachPolicyRequest, headers, settings, cb)
 	else
@@ -4644,8 +5980,11 @@ function M.ListHandshakesForAccountAsync(ListHandshakesForAccountRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AWSOrganizationsV20161128.ListHandshakesForAccount",
 	}
+	for header,value in pairs(ListHandshakesForAccountRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ListHandshakesForAccountRequest, headers, settings, cb)
 	else
@@ -4676,8 +6015,11 @@ function M.RemoveAccountFromOrganizationAsync(RemoveAccountFromOrganizationReque
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AWSOrganizationsV20161128.RemoveAccountFromOrganization",
 	}
+	for header,value in pairs(RemoveAccountFromOrganizationRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", RemoveAccountFromOrganizationRequest, headers, settings, cb)
 	else
@@ -4708,8 +6050,11 @@ function M.EnableAllFeaturesAsync(EnableAllFeaturesRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AWSOrganizationsV20161128.EnableAllFeatures",
 	}
+	for header,value in pairs(EnableAllFeaturesRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", EnableAllFeaturesRequest, headers, settings, cb)
 	else
@@ -4739,7 +6084,8 @@ function M.DeleteOrganizationAsync(cb)
 		[request_headers.AMZ_TARGET_HEADER] = "AWSOrganizationsV20161128.DeleteOrganization",
 	}
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", {}, headers, settings, cb)
 	else
@@ -4769,8 +6115,11 @@ function M.ListPoliciesForTargetAsync(ListPoliciesForTargetRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AWSOrganizationsV20161128.ListPoliciesForTarget",
 	}
+	for header,value in pairs(ListPoliciesForTargetRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ListPoliciesForTargetRequest, headers, settings, cb)
 	else
@@ -4801,8 +6150,11 @@ function M.DescribePolicyAsync(DescribePolicyRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AWSOrganizationsV20161128.DescribePolicy",
 	}
+	for header,value in pairs(DescribePolicyRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribePolicyRequest, headers, settings, cb)
 	else
@@ -4833,8 +6185,11 @@ function M.ListCreateAccountStatusAsync(ListCreateAccountStatusRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AWSOrganizationsV20161128.ListCreateAccountStatus",
 	}
+	for header,value in pairs(ListCreateAccountStatusRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ListCreateAccountStatusRequest, headers, settings, cb)
 	else
@@ -4865,8 +6220,11 @@ function M.CreateAccountAsync(CreateAccountRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AWSOrganizationsV20161128.CreateAccount",
 	}
+	for header,value in pairs(CreateAccountRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateAccountRequest, headers, settings, cb)
 	else
@@ -4897,8 +6255,11 @@ function M.CancelHandshakeAsync(CancelHandshakeRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AWSOrganizationsV20161128.CancelHandshake",
 	}
+	for header,value in pairs(CancelHandshakeRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", CancelHandshakeRequest, headers, settings, cb)
 	else
@@ -4929,8 +6290,11 @@ function M.ListAccountsAsync(ListAccountsRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AWSOrganizationsV20161128.ListAccounts",
 	}
+	for header,value in pairs(ListAccountsRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ListAccountsRequest, headers, settings, cb)
 	else
@@ -4961,8 +6325,11 @@ function M.AttachPolicyAsync(AttachPolicyRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AWSOrganizationsV20161128.AttachPolicy",
 	}
+	for header,value in pairs(AttachPolicyRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", AttachPolicyRequest, headers, settings, cb)
 	else
@@ -4993,8 +6360,11 @@ function M.MoveAccountAsync(MoveAccountRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AWSOrganizationsV20161128.MoveAccount",
 	}
+	for header,value in pairs(MoveAccountRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", MoveAccountRequest, headers, settings, cb)
 	else
@@ -5024,7 +6394,8 @@ function M.DescribeOrganizationAsync(cb)
 		[request_headers.AMZ_TARGET_HEADER] = "AWSOrganizationsV20161128.DescribeOrganization",
 	}
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", {}, headers, settings, cb)
 	else
@@ -5054,8 +6425,11 @@ function M.ListChildrenAsync(ListChildrenRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AWSOrganizationsV20161128.ListChildren",
 	}
+	for header,value in pairs(ListChildrenRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ListChildrenRequest, headers, settings, cb)
 	else
@@ -5086,8 +6460,11 @@ function M.CreateOrganizationAsync(CreateOrganizationRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AWSOrganizationsV20161128.CreateOrganization",
 	}
+	for header,value in pairs(CreateOrganizationRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateOrganizationRequest, headers, settings, cb)
 	else
@@ -5118,8 +6495,11 @@ function M.UpdatePolicyAsync(UpdatePolicyRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AWSOrganizationsV20161128.UpdatePolicy",
 	}
+	for header,value in pairs(UpdatePolicyRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdatePolicyRequest, headers, settings, cb)
 	else
@@ -5149,7 +6529,8 @@ function M.LeaveOrganizationAsync(cb)
 		[request_headers.AMZ_TARGET_HEADER] = "AWSOrganizationsV20161128.LeaveOrganization",
 	}
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", {}, headers, settings, cb)
 	else
@@ -5179,8 +6560,11 @@ function M.CreateOrganizationalUnitAsync(CreateOrganizationalUnitRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AWSOrganizationsV20161128.CreateOrganizationalUnit",
 	}
+	for header,value in pairs(CreateOrganizationalUnitRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateOrganizationalUnitRequest, headers, settings, cb)
 	else
@@ -5211,8 +6595,11 @@ function M.EnablePolicyTypeAsync(EnablePolicyTypeRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AWSOrganizationsV20161128.EnablePolicyType",
 	}
+	for header,value in pairs(EnablePolicyTypeRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", EnablePolicyTypeRequest, headers, settings, cb)
 	else
@@ -5243,8 +6630,11 @@ function M.DescribeAccountAsync(DescribeAccountRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AWSOrganizationsV20161128.DescribeAccount",
 	}
+	for header,value in pairs(DescribeAccountRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeAccountRequest, headers, settings, cb)
 	else
@@ -5275,8 +6665,11 @@ function M.InviteAccountToOrganizationAsync(InviteAccountToOrganizationRequest, 
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AWSOrganizationsV20161128.InviteAccountToOrganization",
 	}
+	for header,value in pairs(InviteAccountToOrganizationRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", InviteAccountToOrganizationRequest, headers, settings, cb)
 	else
@@ -5307,8 +6700,11 @@ function M.ListPoliciesAsync(ListPoliciesRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AWSOrganizationsV20161128.ListPolicies",
 	}
+	for header,value in pairs(ListPoliciesRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ListPoliciesRequest, headers, settings, cb)
 	else
@@ -5339,8 +6735,11 @@ function M.ListAccountsForParentAsync(ListAccountsForParentRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AWSOrganizationsV20161128.ListAccountsForParent",
 	}
+	for header,value in pairs(ListAccountsForParentRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ListAccountsForParentRequest, headers, settings, cb)
 	else
@@ -5371,8 +6770,11 @@ function M.DescribeHandshakeAsync(DescribeHandshakeRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AWSOrganizationsV20161128.DescribeHandshake",
 	}
+	for header,value in pairs(DescribeHandshakeRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeHandshakeRequest, headers, settings, cb)
 	else
@@ -5403,8 +6805,11 @@ function M.ListParentsAsync(ListParentsRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AWSOrganizationsV20161128.ListParents",
 	}
+	for header,value in pairs(ListParentsRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ListParentsRequest, headers, settings, cb)
 	else
@@ -5435,8 +6840,11 @@ function M.UpdateOrganizationalUnitAsync(UpdateOrganizationalUnitRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AWSOrganizationsV20161128.UpdateOrganizationalUnit",
 	}
+	for header,value in pairs(UpdateOrganizationalUnitRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateOrganizationalUnitRequest, headers, settings, cb)
 	else
@@ -5467,8 +6875,11 @@ function M.ListHandshakesForOrganizationAsync(ListHandshakesForOrganizationReque
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AWSOrganizationsV20161128.ListHandshakesForOrganization",
 	}
+	for header,value in pairs(ListHandshakesForOrganizationRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ListHandshakesForOrganizationRequest, headers, settings, cb)
 	else
@@ -5499,8 +6910,11 @@ function M.CreatePolicyAsync(CreatePolicyRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AWSOrganizationsV20161128.CreatePolicy",
 	}
+	for header,value in pairs(CreatePolicyRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", CreatePolicyRequest, headers, settings, cb)
 	else
@@ -5531,8 +6945,11 @@ function M.ListTargetsForPolicyAsync(ListTargetsForPolicyRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AWSOrganizationsV20161128.ListTargetsForPolicy",
 	}
+	for header,value in pairs(ListTargetsForPolicyRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ListTargetsForPolicyRequest, headers, settings, cb)
 	else
@@ -5563,8 +6980,11 @@ function M.ListRootsAsync(ListRootsRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AWSOrganizationsV20161128.ListRoots",
 	}
+	for header,value in pairs(ListRootsRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ListRootsRequest, headers, settings, cb)
 	else

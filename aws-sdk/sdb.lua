@@ -39,12 +39,23 @@ end
 -- * BoxUsage [Float] 
 -- @return NumberDomainAttributesExceeded structure as a key-value pair table
 function M.NumberDomainAttributesExceeded(args)
-	assert(args, "You must provdide an argument table when creating NumberDomainAttributesExceeded")
-	local t = { 
+	assert(args, "You must provide an argument table when creating NumberDomainAttributesExceeded")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["BoxUsage"] = args["BoxUsage"],
 	}
-	asserts.AssertNumberDomainAttributesExceeded(t)
-	return t
+	asserts.AssertNumberDomainAttributesExceeded(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteDomainRequest = { ["DomainName"] = true, nil }
@@ -67,12 +78,23 @@ end
 -- Required key: DomainName
 -- @return DeleteDomainRequest structure as a key-value pair table
 function M.DeleteDomainRequest(args)
-	assert(args, "You must provdide an argument table when creating DeleteDomainRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteDomainRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DomainName"] = args["DomainName"],
 	}
-	asserts.AssertDeleteDomainRequest(t)
-	return t
+	asserts.AssertDeleteDomainRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidQueryExpression = { ["BoxUsage"] = true, nil }
@@ -93,12 +115,23 @@ end
 -- * BoxUsage [Float] 
 -- @return InvalidQueryExpression structure as a key-value pair table
 function M.InvalidQueryExpression(args)
-	assert(args, "You must provdide an argument table when creating InvalidQueryExpression")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidQueryExpression")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["BoxUsage"] = args["BoxUsage"],
 	}
-	asserts.AssertInvalidQueryExpression(t)
-	return t
+	asserts.AssertInvalidQueryExpression(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.RequestTimeout = { ["BoxUsage"] = true, nil }
@@ -119,12 +152,23 @@ end
 -- * BoxUsage [Float] 
 -- @return RequestTimeout structure as a key-value pair table
 function M.RequestTimeout(args)
-	assert(args, "You must provdide an argument table when creating RequestTimeout")
-	local t = { 
+	assert(args, "You must provide an argument table when creating RequestTimeout")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["BoxUsage"] = args["BoxUsage"],
 	}
-	asserts.AssertRequestTimeout(t)
-	return t
+	asserts.AssertRequestTimeout(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeletableAttribute = { ["Name"] = true, ["Value"] = true, nil }
@@ -149,13 +193,24 @@ end
 -- Required key: Name
 -- @return DeletableAttribute structure as a key-value pair table
 function M.DeletableAttribute(args)
-	assert(args, "You must provdide an argument table when creating DeletableAttribute")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeletableAttribute")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Name"] = args["Name"],
 		["Value"] = args["Value"],
 	}
-	asserts.AssertDeletableAttribute(t)
-	return t
+	asserts.AssertDeletableAttribute(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidNumberValueTests = { ["BoxUsage"] = true, nil }
@@ -176,12 +231,23 @@ end
 -- * BoxUsage [Float] 
 -- @return InvalidNumberValueTests structure as a key-value pair table
 function M.InvalidNumberValueTests(args)
-	assert(args, "You must provdide an argument table when creating InvalidNumberValueTests")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidNumberValueTests")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["BoxUsage"] = args["BoxUsage"],
 	}
-	asserts.AssertInvalidNumberValueTests(t)
-	return t
+	asserts.AssertInvalidNumberValueTests(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.NumberDomainsExceeded = { ["BoxUsage"] = true, nil }
@@ -202,12 +268,23 @@ end
 -- * BoxUsage [Float] 
 -- @return NumberDomainsExceeded structure as a key-value pair table
 function M.NumberDomainsExceeded(args)
-	assert(args, "You must provdide an argument table when creating NumberDomainsExceeded")
-	local t = { 
+	assert(args, "You must provide an argument table when creating NumberDomainsExceeded")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["BoxUsage"] = args["BoxUsage"],
 	}
-	asserts.AssertNumberDomainsExceeded(t)
-	return t
+	asserts.AssertNumberDomainsExceeded(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.NumberItemAttributesExceeded = { ["BoxUsage"] = true, nil }
@@ -228,12 +305,23 @@ end
 -- * BoxUsage [Float] 
 -- @return NumberItemAttributesExceeded structure as a key-value pair table
 function M.NumberItemAttributesExceeded(args)
-	assert(args, "You must provdide an argument table when creating NumberItemAttributesExceeded")
-	local t = { 
+	assert(args, "You must provide an argument table when creating NumberItemAttributesExceeded")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["BoxUsage"] = args["BoxUsage"],
 	}
-	asserts.AssertNumberItemAttributesExceeded(t)
-	return t
+	asserts.AssertNumberItemAttributesExceeded(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.SelectRequest = { ["ConsistentRead"] = true, ["NextToken"] = true, ["SelectExpression"] = true, nil }
@@ -260,14 +348,25 @@ end
 -- Required key: SelectExpression
 -- @return SelectRequest structure as a key-value pair table
 function M.SelectRequest(args)
-	assert(args, "You must provdide an argument table when creating SelectRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating SelectRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ConsistentRead"] = args["ConsistentRead"],
 		["NextToken"] = args["NextToken"],
 		["SelectExpression"] = args["SelectExpression"],
 	}
-	asserts.AssertSelectRequest(t)
-	return t
+	asserts.AssertSelectRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AttributeDoesNotExist = { ["BoxUsage"] = true, nil }
@@ -288,12 +387,23 @@ end
 -- * BoxUsage [Float] 
 -- @return AttributeDoesNotExist structure as a key-value pair table
 function M.AttributeDoesNotExist(args)
-	assert(args, "You must provdide an argument table when creating AttributeDoesNotExist")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AttributeDoesNotExist")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["BoxUsage"] = args["BoxUsage"],
 	}
-	asserts.AssertAttributeDoesNotExist(t)
-	return t
+	asserts.AssertAttributeDoesNotExist(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeletableItem = { ["Attributes"] = true, ["Name"] = true, nil }
@@ -318,13 +428,24 @@ end
 -- Required key: Name
 -- @return DeletableItem structure as a key-value pair table
 function M.DeletableItem(args)
-	assert(args, "You must provdide an argument table when creating DeletableItem")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeletableItem")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Attributes"] = args["Attributes"],
 		["Name"] = args["Name"],
 	}
-	asserts.AssertDeletableItem(t)
-	return t
+	asserts.AssertDeletableItem(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateDomainRequest = { ["DomainName"] = true, nil }
@@ -347,12 +468,23 @@ end
 -- Required key: DomainName
 -- @return CreateDomainRequest structure as a key-value pair table
 function M.CreateDomainRequest(args)
-	assert(args, "You must provdide an argument table when creating CreateDomainRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateDomainRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DomainName"] = args["DomainName"],
 	}
-	asserts.AssertCreateDomainRequest(t)
-	return t
+	asserts.AssertCreateDomainRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdateCondition = { ["Exists"] = true, ["Name"] = true, ["Value"] = true, nil }
@@ -377,14 +509,25 @@ end
 -- * Value [String] <p>The value of an attribute. This value can only be specified when the <code>Exists</code> parameter is equal to <code>true</code>.</p>
 -- @return UpdateCondition structure as a key-value pair table
 function M.UpdateCondition(args)
-	assert(args, "You must provdide an argument table when creating UpdateCondition")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateCondition")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Exists"] = args["Exists"],
 		["Name"] = args["Name"],
 		["Value"] = args["Value"],
 	}
-	asserts.AssertUpdateCondition(t)
-	return t
+	asserts.AssertUpdateCondition(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.NumberSubmittedAttributesExceeded = { ["BoxUsage"] = true, nil }
@@ -405,12 +548,23 @@ end
 -- * BoxUsage [Float] 
 -- @return NumberSubmittedAttributesExceeded structure as a key-value pair table
 function M.NumberSubmittedAttributesExceeded(args)
-	assert(args, "You must provdide an argument table when creating NumberSubmittedAttributesExceeded")
-	local t = { 
+	assert(args, "You must provide an argument table when creating NumberSubmittedAttributesExceeded")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["BoxUsage"] = args["BoxUsage"],
 	}
-	asserts.AssertNumberSubmittedAttributesExceeded(t)
-	return t
+	asserts.AssertNumberSubmittedAttributesExceeded(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidNextToken = { ["BoxUsage"] = true, nil }
@@ -431,12 +585,23 @@ end
 -- * BoxUsage [Float] 
 -- @return InvalidNextToken structure as a key-value pair table
 function M.InvalidNextToken(args)
-	assert(args, "You must provdide an argument table when creating InvalidNextToken")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidNextToken")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["BoxUsage"] = args["BoxUsage"],
 	}
-	asserts.AssertInvalidNextToken(t)
-	return t
+	asserts.AssertInvalidNextToken(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidNumberPredicates = { ["BoxUsage"] = true, nil }
@@ -457,12 +622,23 @@ end
 -- * BoxUsage [Float] 
 -- @return InvalidNumberPredicates structure as a key-value pair table
 function M.InvalidNumberPredicates(args)
-	assert(args, "You must provdide an argument table when creating InvalidNumberPredicates")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidNumberPredicates")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["BoxUsage"] = args["BoxUsage"],
 	}
-	asserts.AssertInvalidNumberPredicates(t)
-	return t
+	asserts.AssertInvalidNumberPredicates(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetAttributesResult = { ["Attributes"] = true, nil }
@@ -483,12 +659,23 @@ end
 -- * Attributes [AttributeList] The list of attributes returned by the operation.
 -- @return GetAttributesResult structure as a key-value pair table
 function M.GetAttributesResult(args)
-	assert(args, "You must provdide an argument table when creating GetAttributesResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetAttributesResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Attributes"] = args["Attributes"],
 	}
-	asserts.AssertGetAttributesResult(t)
-	return t
+	asserts.AssertGetAttributesResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetAttributesRequest = { ["ConsistentRead"] = true, ["ItemName"] = true, ["AttributeNames"] = true, ["DomainName"] = true, nil }
@@ -519,15 +706,26 @@ end
 -- Required key: ItemName
 -- @return GetAttributesRequest structure as a key-value pair table
 function M.GetAttributesRequest(args)
-	assert(args, "You must provdide an argument table when creating GetAttributesRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetAttributesRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ConsistentRead"] = args["ConsistentRead"],
 		["ItemName"] = args["ItemName"],
 		["AttributeNames"] = args["AttributeNames"],
 		["DomainName"] = args["DomainName"],
 	}
-	asserts.AssertGetAttributesRequest(t)
-	return t
+	asserts.AssertGetAttributesRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListDomainsResult = { ["NextToken"] = true, ["DomainNames"] = true, nil }
@@ -550,13 +748,24 @@ end
 -- * DomainNames [DomainNameList] A list of domain names that match the expression.
 -- @return ListDomainsResult structure as a key-value pair table
 function M.ListDomainsResult(args)
-	assert(args, "You must provdide an argument table when creating ListDomainsResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListDomainsResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NextToken"] = args["NextToken"],
 		["DomainNames"] = args["DomainNames"],
 	}
-	asserts.AssertListDomainsResult(t)
-	return t
+	asserts.AssertListDomainsResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.NoSuchDomain = { ["BoxUsage"] = true, nil }
@@ -577,12 +786,23 @@ end
 -- * BoxUsage [Float] 
 -- @return NoSuchDomain structure as a key-value pair table
 function M.NoSuchDomain(args)
-	assert(args, "You must provdide an argument table when creating NoSuchDomain")
-	local t = { 
+	assert(args, "You must provide an argument table when creating NoSuchDomain")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["BoxUsage"] = args["BoxUsage"],
 	}
-	asserts.AssertNoSuchDomain(t)
-	return t
+	asserts.AssertNoSuchDomain(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.PutAttributesRequest = { ["Expected"] = true, ["Attributes"] = true, ["ItemName"] = true, ["DomainName"] = true, nil }
@@ -615,15 +835,26 @@ end
 -- Required key: Attributes
 -- @return PutAttributesRequest structure as a key-value pair table
 function M.PutAttributesRequest(args)
-	assert(args, "You must provdide an argument table when creating PutAttributesRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating PutAttributesRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Expected"] = args["Expected"],
 		["Attributes"] = args["Attributes"],
 		["ItemName"] = args["ItemName"],
 		["DomainName"] = args["DomainName"],
 	}
-	asserts.AssertPutAttributesRequest(t)
-	return t
+	asserts.AssertPutAttributesRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DomainMetadataResult = { ["Timestamp"] = true, ["AttributeValueCount"] = true, ["AttributeValuesSizeBytes"] = true, ["ItemNamesSizeBytes"] = true, ["AttributeNameCount"] = true, ["ItemCount"] = true, ["AttributeNamesSizeBytes"] = true, nil }
@@ -656,8 +887,14 @@ end
 -- * AttributeNamesSizeBytes [Long] The total size of all unique attribute names in the domain, in bytes.
 -- @return DomainMetadataResult structure as a key-value pair table
 function M.DomainMetadataResult(args)
-	assert(args, "You must provdide an argument table when creating DomainMetadataResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DomainMetadataResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Timestamp"] = args["Timestamp"],
 		["AttributeValueCount"] = args["AttributeValueCount"],
 		["AttributeValuesSizeBytes"] = args["AttributeValuesSizeBytes"],
@@ -666,8 +903,13 @@ function M.DomainMetadataResult(args)
 		["ItemCount"] = args["ItemCount"],
 		["AttributeNamesSizeBytes"] = args["AttributeNamesSizeBytes"],
 	}
-	asserts.AssertDomainMetadataResult(t)
-	return t
+	asserts.AssertDomainMetadataResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.BatchPutAttributesRequest = { ["Items"] = true, ["DomainName"] = true, nil }
@@ -694,13 +936,24 @@ end
 -- Required key: Items
 -- @return BatchPutAttributesRequest structure as a key-value pair table
 function M.BatchPutAttributesRequest(args)
-	assert(args, "You must provdide an argument table when creating BatchPutAttributesRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating BatchPutAttributesRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Items"] = args["Items"],
 		["DomainName"] = args["DomainName"],
 	}
-	asserts.AssertBatchPutAttributesRequest(t)
-	return t
+	asserts.AssertBatchPutAttributesRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Item = { ["Attributes"] = true, ["Name"] = true, ["AlternateNameEncoding"] = true, nil }
@@ -729,14 +982,25 @@ end
 -- Required key: Attributes
 -- @return Item structure as a key-value pair table
 function M.Item(args)
-	assert(args, "You must provdide an argument table when creating Item")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Item")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Attributes"] = args["Attributes"],
 		["Name"] = args["Name"],
 		["AlternateNameEncoding"] = args["AlternateNameEncoding"],
 	}
-	asserts.AssertItem(t)
-	return t
+	asserts.AssertItem(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ReplaceableAttribute = { ["Name"] = true, ["Value"] = true, ["Replace"] = true, nil }
@@ -765,14 +1029,25 @@ end
 -- Required key: Value
 -- @return ReplaceableAttribute structure as a key-value pair table
 function M.ReplaceableAttribute(args)
-	assert(args, "You must provdide an argument table when creating ReplaceableAttribute")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ReplaceableAttribute")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Name"] = args["Name"],
 		["Value"] = args["Value"],
 		["Replace"] = args["Replace"],
 	}
-	asserts.AssertReplaceableAttribute(t)
-	return t
+	asserts.AssertReplaceableAttribute(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.SelectResult = { ["Items"] = true, ["NextToken"] = true, nil }
@@ -795,13 +1070,24 @@ end
 -- * NextToken [String] An opaque token indicating that more items than <code>MaxNumberOfItems</code> were matched, the response size exceeded 1 megabyte, or the execution time exceeded 5 seconds.
 -- @return SelectResult structure as a key-value pair table
 function M.SelectResult(args)
-	assert(args, "You must provdide an argument table when creating SelectResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating SelectResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Items"] = args["Items"],
 		["NextToken"] = args["NextToken"],
 	}
-	asserts.AssertSelectResult(t)
-	return t
+	asserts.AssertSelectResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DuplicateItemName = { ["BoxUsage"] = true, nil }
@@ -822,12 +1108,23 @@ end
 -- * BoxUsage [Float] 
 -- @return DuplicateItemName structure as a key-value pair table
 function M.DuplicateItemName(args)
-	assert(args, "You must provdide an argument table when creating DuplicateItemName")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DuplicateItemName")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["BoxUsage"] = args["BoxUsage"],
 	}
-	asserts.AssertDuplicateItemName(t)
-	return t
+	asserts.AssertDuplicateItemName(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidParameterValue = { ["BoxUsage"] = true, nil }
@@ -848,12 +1145,23 @@ end
 -- * BoxUsage [Float] 
 -- @return InvalidParameterValue structure as a key-value pair table
 function M.InvalidParameterValue(args)
-	assert(args, "You must provdide an argument table when creating InvalidParameterValue")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidParameterValue")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["BoxUsage"] = args["BoxUsage"],
 	}
-	asserts.AssertInvalidParameterValue(t)
-	return t
+	asserts.AssertInvalidParameterValue(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.BatchDeleteAttributesRequest = { ["Items"] = true, ["DomainName"] = true, nil }
@@ -880,13 +1188,24 @@ end
 -- Required key: Items
 -- @return BatchDeleteAttributesRequest structure as a key-value pair table
 function M.BatchDeleteAttributesRequest(args)
-	assert(args, "You must provdide an argument table when creating BatchDeleteAttributesRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating BatchDeleteAttributesRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Items"] = args["Items"],
 		["DomainName"] = args["DomainName"],
 	}
-	asserts.AssertBatchDeleteAttributesRequest(t)
-	return t
+	asserts.AssertBatchDeleteAttributesRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteAttributesRequest = { ["Expected"] = true, ["Attributes"] = true, ["ItemName"] = true, ["DomainName"] = true, nil }
@@ -917,15 +1236,26 @@ end
 -- Required key: ItemName
 -- @return DeleteAttributesRequest structure as a key-value pair table
 function M.DeleteAttributesRequest(args)
-	assert(args, "You must provdide an argument table when creating DeleteAttributesRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteAttributesRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Expected"] = args["Expected"],
 		["Attributes"] = args["Attributes"],
 		["ItemName"] = args["ItemName"],
 		["DomainName"] = args["DomainName"],
 	}
-	asserts.AssertDeleteAttributesRequest(t)
-	return t
+	asserts.AssertDeleteAttributesRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.MissingParameter = { ["BoxUsage"] = true, nil }
@@ -946,12 +1276,23 @@ end
 -- * BoxUsage [Float] 
 -- @return MissingParameter structure as a key-value pair table
 function M.MissingParameter(args)
-	assert(args, "You must provdide an argument table when creating MissingParameter")
-	local t = { 
+	assert(args, "You must provide an argument table when creating MissingParameter")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["BoxUsage"] = args["BoxUsage"],
 	}
-	asserts.AssertMissingParameter(t)
-	return t
+	asserts.AssertMissingParameter(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.TooManyRequestedAttributes = { ["BoxUsage"] = true, nil }
@@ -972,12 +1313,23 @@ end
 -- * BoxUsage [Float] 
 -- @return TooManyRequestedAttributes structure as a key-value pair table
 function M.TooManyRequestedAttributes(args)
-	assert(args, "You must provdide an argument table when creating TooManyRequestedAttributes")
-	local t = { 
+	assert(args, "You must provide an argument table when creating TooManyRequestedAttributes")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["BoxUsage"] = args["BoxUsage"],
 	}
-	asserts.AssertTooManyRequestedAttributes(t)
-	return t
+	asserts.AssertTooManyRequestedAttributes(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListDomainsRequest = { ["MaxNumberOfDomains"] = true, ["NextToken"] = true, nil }
@@ -1000,13 +1352,24 @@ end
 -- * NextToken [String] A string informing Amazon SimpleDB where to start the next list of domain names.
 -- @return ListDomainsRequest structure as a key-value pair table
 function M.ListDomainsRequest(args)
-	assert(args, "You must provdide an argument table when creating ListDomainsRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListDomainsRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["MaxNumberOfDomains"] = args["MaxNumberOfDomains"],
 		["NextToken"] = args["NextToken"],
 	}
-	asserts.AssertListDomainsRequest(t)
-	return t
+	asserts.AssertListDomainsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Attribute = { ["AlternateValueEncoding"] = true, ["Name"] = true, ["Value"] = true, ["AlternateNameEncoding"] = true, nil }
@@ -1037,15 +1400,26 @@ end
 -- Required key: Value
 -- @return Attribute structure as a key-value pair table
 function M.Attribute(args)
-	assert(args, "You must provdide an argument table when creating Attribute")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Attribute")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["AlternateValueEncoding"] = args["AlternateValueEncoding"],
 		["Name"] = args["Name"],
 		["Value"] = args["Value"],
 		["AlternateNameEncoding"] = args["AlternateNameEncoding"],
 	}
-	asserts.AssertAttribute(t)
-	return t
+	asserts.AssertAttribute(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.NumberDomainBytesExceeded = { ["BoxUsage"] = true, nil }
@@ -1066,12 +1440,23 @@ end
 -- * BoxUsage [Float] 
 -- @return NumberDomainBytesExceeded structure as a key-value pair table
 function M.NumberDomainBytesExceeded(args)
-	assert(args, "You must provdide an argument table when creating NumberDomainBytesExceeded")
-	local t = { 
+	assert(args, "You must provide an argument table when creating NumberDomainBytesExceeded")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["BoxUsage"] = args["BoxUsage"],
 	}
-	asserts.AssertNumberDomainBytesExceeded(t)
-	return t
+	asserts.AssertNumberDomainBytesExceeded(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.NumberSubmittedItemsExceeded = { ["BoxUsage"] = true, nil }
@@ -1092,12 +1477,23 @@ end
 -- * BoxUsage [Float] 
 -- @return NumberSubmittedItemsExceeded structure as a key-value pair table
 function M.NumberSubmittedItemsExceeded(args)
-	assert(args, "You must provdide an argument table when creating NumberSubmittedItemsExceeded")
-	local t = { 
+	assert(args, "You must provide an argument table when creating NumberSubmittedItemsExceeded")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["BoxUsage"] = args["BoxUsage"],
 	}
-	asserts.AssertNumberSubmittedItemsExceeded(t)
-	return t
+	asserts.AssertNumberSubmittedItemsExceeded(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ReplaceableItem = { ["Attributes"] = true, ["Name"] = true, nil }
@@ -1124,13 +1520,24 @@ end
 -- Required key: Attributes
 -- @return ReplaceableItem structure as a key-value pair table
 function M.ReplaceableItem(args)
-	assert(args, "You must provdide an argument table when creating ReplaceableItem")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ReplaceableItem")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Attributes"] = args["Attributes"],
 		["Name"] = args["Name"],
 	}
-	asserts.AssertReplaceableItem(t)
-	return t
+	asserts.AssertReplaceableItem(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DomainMetadataRequest = { ["DomainName"] = true, nil }
@@ -1153,12 +1560,23 @@ end
 -- Required key: DomainName
 -- @return DomainMetadataRequest structure as a key-value pair table
 function M.DomainMetadataRequest(args)
-	assert(args, "You must provdide an argument table when creating DomainMetadataRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DomainMetadataRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DomainName"] = args["DomainName"],
 	}
-	asserts.AssertDomainMetadataRequest(t)
-	return t
+	asserts.AssertDomainMetadataRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 function asserts.AssertString(str)
@@ -1386,8 +1804,11 @@ function M.DeleteAttributesAsync(DeleteAttributesRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DeleteAttributes",
 	}
+	for header,value in pairs(DeleteAttributesRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteAttributesRequest, headers, settings, cb)
 	else
@@ -1418,8 +1839,11 @@ function M.BatchPutAttributesAsync(BatchPutAttributesRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".BatchPutAttributes",
 	}
+	for header,value in pairs(BatchPutAttributesRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", BatchPutAttributesRequest, headers, settings, cb)
 	else
@@ -1450,8 +1874,11 @@ function M.PutAttributesAsync(PutAttributesRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".PutAttributes",
 	}
+	for header,value in pairs(PutAttributesRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", PutAttributesRequest, headers, settings, cb)
 	else
@@ -1482,8 +1909,11 @@ function M.ListDomainsAsync(ListDomainsRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".ListDomains",
 	}
+	for header,value in pairs(ListDomainsRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ListDomainsRequest, headers, settings, cb)
 	else
@@ -1514,8 +1944,11 @@ function M.DomainMetadataAsync(DomainMetadataRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DomainMetadata",
 	}
+	for header,value in pairs(DomainMetadataRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DomainMetadataRequest, headers, settings, cb)
 	else
@@ -1546,8 +1979,11 @@ function M.BatchDeleteAttributesAsync(BatchDeleteAttributesRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".BatchDeleteAttributes",
 	}
+	for header,value in pairs(BatchDeleteAttributesRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", BatchDeleteAttributesRequest, headers, settings, cb)
 	else
@@ -1578,8 +2014,11 @@ function M.GetAttributesAsync(GetAttributesRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".GetAttributes",
 	}
+	for header,value in pairs(GetAttributesRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", GetAttributesRequest, headers, settings, cb)
 	else
@@ -1610,8 +2049,11 @@ function M.DeleteDomainAsync(DeleteDomainRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DeleteDomain",
 	}
+	for header,value in pairs(DeleteDomainRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteDomainRequest, headers, settings, cb)
 	else
@@ -1642,8 +2084,11 @@ function M.CreateDomainAsync(CreateDomainRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".CreateDomain",
 	}
+	for header,value in pairs(CreateDomainRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateDomainRequest, headers, settings, cb)
 	else
@@ -1674,8 +2119,11 @@ function M.SelectAsync(SelectRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".Select",
 	}
+	for header,value in pairs(SelectRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", SelectRequest, headers, settings, cb)
 	else

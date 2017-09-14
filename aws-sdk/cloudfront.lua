@@ -41,12 +41,24 @@ end
 -- Required key: Id
 -- @return GetCloudFrontOriginAccessIdentityRequest structure as a key-value pair table
 function M.GetCloudFrontOriginAccessIdentityRequest(args)
-	assert(args, "You must provdide an argument table when creating GetCloudFrontOriginAccessIdentityRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetCloudFrontOriginAccessIdentityRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{Id}"] = args["Id"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Id"] = args["Id"],
 	}
-	asserts.AssertGetCloudFrontOriginAccessIdentityRequest(t)
-	return t
+	asserts.AssertGetCloudFrontOriginAccessIdentityRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CustomErrorResponse = { ["ErrorCode"] = true, ["ResponsePagePath"] = true, ["ResponseCode"] = true, ["ErrorCachingMinTTL"] = true, nil }
@@ -75,15 +87,26 @@ end
 -- Required key: ErrorCode
 -- @return CustomErrorResponse structure as a key-value pair table
 function M.CustomErrorResponse(args)
-	assert(args, "You must provdide an argument table when creating CustomErrorResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CustomErrorResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ErrorCode"] = args["ErrorCode"],
 		["ResponsePagePath"] = args["ResponsePagePath"],
 		["ResponseCode"] = args["ResponseCode"],
 		["ErrorCachingMinTTL"] = args["ErrorCachingMinTTL"],
 	}
-	asserts.AssertCustomErrorResponse(t)
-	return t
+	asserts.AssertCustomErrorResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidArgument = { ["Message"] = true, nil }
@@ -104,12 +127,23 @@ end
 -- * Message [string] 
 -- @return InvalidArgument structure as a key-value pair table
 function M.InvalidArgument(args)
-	assert(args, "You must provdide an argument table when creating InvalidArgument")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidArgument")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Message"] = args["Message"],
 	}
-	asserts.AssertInvalidArgument(t)
-	return t
+	asserts.AssertInvalidArgument(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.StreamingDistributionAlreadyExists = { ["Message"] = true, nil }
@@ -130,12 +164,23 @@ end
 -- * Message [string] 
 -- @return StreamingDistributionAlreadyExists structure as a key-value pair table
 function M.StreamingDistributionAlreadyExists(args)
-	assert(args, "You must provdide an argument table when creating StreamingDistributionAlreadyExists")
-	local t = { 
+	assert(args, "You must provide an argument table when creating StreamingDistributionAlreadyExists")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Message"] = args["Message"],
 	}
-	asserts.AssertStreamingDistributionAlreadyExists(t)
-	return t
+	asserts.AssertStreamingDistributionAlreadyExists(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidWebACLId = { ["Message"] = true, nil }
@@ -156,12 +201,23 @@ end
 -- * Message [string] 
 -- @return InvalidWebACLId structure as a key-value pair table
 function M.InvalidWebACLId(args)
-	assert(args, "You must provdide an argument table when creating InvalidWebACLId")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidWebACLId")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Message"] = args["Message"],
 	}
-	asserts.AssertInvalidWebACLId(t)
-	return t
+	asserts.AssertInvalidWebACLId(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.TooManyQueryStringParameters = { ["Message"] = true, nil }
@@ -182,12 +238,23 @@ end
 -- * Message [string] 
 -- @return TooManyQueryStringParameters structure as a key-value pair table
 function M.TooManyQueryStringParameters(args)
-	assert(args, "You must provdide an argument table when creating TooManyQueryStringParameters")
-	local t = { 
+	assert(args, "You must provide an argument table when creating TooManyQueryStringParameters")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Message"] = args["Message"],
 	}
-	asserts.AssertTooManyQueryStringParameters(t)
-	return t
+	asserts.AssertTooManyQueryStringParameters(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidRelativePath = { ["Message"] = true, nil }
@@ -208,12 +275,23 @@ end
 -- * Message [string] 
 -- @return InvalidRelativePath structure as a key-value pair table
 function M.InvalidRelativePath(args)
-	assert(args, "You must provdide an argument table when creating InvalidRelativePath")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidRelativePath")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Message"] = args["Message"],
 	}
-	asserts.AssertInvalidRelativePath(t)
-	return t
+	asserts.AssertInvalidRelativePath(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CloudFrontOriginAccessIdentityConfig = { ["Comment"] = true, ["CallerReference"] = true, nil }
@@ -240,13 +318,24 @@ end
 -- Required key: Comment
 -- @return CloudFrontOriginAccessIdentityConfig structure as a key-value pair table
 function M.CloudFrontOriginAccessIdentityConfig(args)
-	assert(args, "You must provdide an argument table when creating CloudFrontOriginAccessIdentityConfig")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CloudFrontOriginAccessIdentityConfig")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Comment"] = args["Comment"],
 		["CallerReference"] = args["CallerReference"],
 	}
-	asserts.AssertCloudFrontOriginAccessIdentityConfig(t)
-	return t
+	asserts.AssertCloudFrontOriginAccessIdentityConfig(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListTagsForResourceResult = { ["Tags"] = true, nil }
@@ -269,12 +358,23 @@ end
 -- Required key: Tags
 -- @return ListTagsForResourceResult structure as a key-value pair table
 function M.ListTagsForResourceResult(args)
-	assert(args, "You must provdide an argument table when creating ListTagsForResourceResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListTagsForResourceResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Tags"] = args["Tags"],
 	}
-	asserts.AssertListTagsForResourceResult(t)
-	return t
+	asserts.AssertListTagsForResourceResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.TooManyDistributionsWithLambdaAssociations = { ["Message"] = true, nil }
@@ -295,12 +395,23 @@ end
 -- * Message [string] 
 -- @return TooManyDistributionsWithLambdaAssociations structure as a key-value pair table
 function M.TooManyDistributionsWithLambdaAssociations(args)
-	assert(args, "You must provdide an argument table when creating TooManyDistributionsWithLambdaAssociations")
-	local t = { 
+	assert(args, "You must provide an argument table when creating TooManyDistributionsWithLambdaAssociations")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Message"] = args["Message"],
 	}
-	asserts.AssertTooManyDistributionsWithLambdaAssociations(t)
-	return t
+	asserts.AssertTooManyDistributionsWithLambdaAssociations(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetDistributionRequest = { ["Id"] = true, nil }
@@ -323,12 +434,24 @@ end
 -- Required key: Id
 -- @return GetDistributionRequest structure as a key-value pair table
 function M.GetDistributionRequest(args)
-	assert(args, "You must provdide an argument table when creating GetDistributionRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetDistributionRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{Id}"] = args["Id"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Id"] = args["Id"],
 	}
-	asserts.AssertGetDistributionRequest(t)
-	return t
+	asserts.AssertGetDistributionRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidMinimumProtocolVersion = { ["Message"] = true, nil }
@@ -349,12 +472,23 @@ end
 -- * Message [string] 
 -- @return InvalidMinimumProtocolVersion structure as a key-value pair table
 function M.InvalidMinimumProtocolVersion(args)
-	assert(args, "You must provdide an argument table when creating InvalidMinimumProtocolVersion")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidMinimumProtocolVersion")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Message"] = args["Message"],
 	}
-	asserts.AssertInvalidMinimumProtocolVersion(t)
-	return t
+	asserts.AssertInvalidMinimumProtocolVersion(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.NoSuchCloudFrontOriginAccessIdentity = { ["Message"] = true, nil }
@@ -375,12 +509,23 @@ end
 -- * Message [string] 
 -- @return NoSuchCloudFrontOriginAccessIdentity structure as a key-value pair table
 function M.NoSuchCloudFrontOriginAccessIdentity(args)
-	assert(args, "You must provdide an argument table when creating NoSuchCloudFrontOriginAccessIdentity")
-	local t = { 
+	assert(args, "You must provide an argument table when creating NoSuchCloudFrontOriginAccessIdentity")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Message"] = args["Message"],
 	}
-	asserts.AssertNoSuchCloudFrontOriginAccessIdentity(t)
-	return t
+	asserts.AssertNoSuchCloudFrontOriginAccessIdentity(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.TooManyLambdaFunctionAssociations = { ["Message"] = true, nil }
@@ -401,12 +546,23 @@ end
 -- * Message [string] 
 -- @return TooManyLambdaFunctionAssociations structure as a key-value pair table
 function M.TooManyLambdaFunctionAssociations(args)
-	assert(args, "You must provdide an argument table when creating TooManyLambdaFunctionAssociations")
-	local t = { 
+	assert(args, "You must provide an argument table when creating TooManyLambdaFunctionAssociations")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Message"] = args["Message"],
 	}
-	asserts.AssertTooManyLambdaFunctionAssociations(t)
-	return t
+	asserts.AssertTooManyLambdaFunctionAssociations(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidRequiredProtocol = { ["Message"] = true, nil }
@@ -427,12 +583,23 @@ end
 -- * Message [string] 
 -- @return InvalidRequiredProtocol structure as a key-value pair table
 function M.InvalidRequiredProtocol(args)
-	assert(args, "You must provdide an argument table when creating InvalidRequiredProtocol")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidRequiredProtocol")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Message"] = args["Message"],
 	}
-	asserts.AssertInvalidRequiredProtocol(t)
-	return t
+	asserts.AssertInvalidRequiredProtocol(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.OriginSslProtocols = { ["Items"] = true, ["Quantity"] = true, nil }
@@ -459,13 +626,24 @@ end
 -- Required key: Items
 -- @return OriginSslProtocols structure as a key-value pair table
 function M.OriginSslProtocols(args)
-	assert(args, "You must provdide an argument table when creating OriginSslProtocols")
-	local t = { 
+	assert(args, "You must provide an argument table when creating OriginSslProtocols")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Items"] = args["Items"],
 		["Quantity"] = args["Quantity"],
 	}
-	asserts.AssertOriginSslProtocols(t)
-	return t
+	asserts.AssertOriginSslProtocols(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidationList = { ["Items"] = true, ["NextMarker"] = true, ["MaxItems"] = true, ["Marker"] = true, ["IsTruncated"] = true, ["Quantity"] = true, nil }
@@ -504,8 +682,14 @@ end
 -- Required key: Quantity
 -- @return InvalidationList structure as a key-value pair table
 function M.InvalidationList(args)
-	assert(args, "You must provdide an argument table when creating InvalidationList")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidationList")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Items"] = args["Items"],
 		["NextMarker"] = args["NextMarker"],
 		["MaxItems"] = args["MaxItems"],
@@ -513,8 +697,13 @@ function M.InvalidationList(args)
 		["IsTruncated"] = args["IsTruncated"],
 		["Quantity"] = args["Quantity"],
 	}
-	asserts.AssertInvalidationList(t)
-	return t
+	asserts.AssertInvalidationList(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Origin = { ["OriginPath"] = true, ["DomainName"] = true, ["CustomOriginConfig"] = true, ["CustomHeaders"] = true, ["S3OriginConfig"] = true, ["Id"] = true, nil }
@@ -549,8 +738,14 @@ end
 -- Required key: DomainName
 -- @return Origin structure as a key-value pair table
 function M.Origin(args)
-	assert(args, "You must provdide an argument table when creating Origin")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Origin")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["OriginPath"] = args["OriginPath"],
 		["DomainName"] = args["DomainName"],
 		["CustomOriginConfig"] = args["CustomOriginConfig"],
@@ -558,8 +753,13 @@ function M.Origin(args)
 		["S3OriginConfig"] = args["S3OriginConfig"],
 		["Id"] = args["Id"],
 	}
-	asserts.AssertOrigin(t)
-	return t
+	asserts.AssertOrigin(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdateCloudFrontOriginAccessIdentityResult = { ["CloudFrontOriginAccessIdentity"] = true, ["ETag"] = true, nil }
@@ -582,13 +782,25 @@ end
 -- * ETag [string] <p>The current version of the configuration. For example: <code>E2QWRUHAPOMQZL</code>.</p>
 -- @return UpdateCloudFrontOriginAccessIdentityResult structure as a key-value pair table
 function M.UpdateCloudFrontOriginAccessIdentityResult(args)
-	assert(args, "You must provdide an argument table when creating UpdateCloudFrontOriginAccessIdentityResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateCloudFrontOriginAccessIdentityResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+        ["ETag"] = args["ETag"],
+    }
+	local all_args = { 
 		["CloudFrontOriginAccessIdentity"] = args["CloudFrontOriginAccessIdentity"],
 		["ETag"] = args["ETag"],
 	}
-	asserts.AssertUpdateCloudFrontOriginAccessIdentityResult(t)
-	return t
+	asserts.AssertUpdateCloudFrontOriginAccessIdentityResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DistributionConfigWithTags = { ["DistributionConfig"] = true, ["Tags"] = true, nil }
@@ -615,13 +827,24 @@ end
 -- Required key: Tags
 -- @return DistributionConfigWithTags structure as a key-value pair table
 function M.DistributionConfigWithTags(args)
-	assert(args, "You must provdide an argument table when creating DistributionConfigWithTags")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DistributionConfigWithTags")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DistributionConfig"] = args["DistributionConfig"],
 		["Tags"] = args["Tags"],
 	}
-	asserts.AssertDistributionConfigWithTags(t)
-	return t
+	asserts.AssertDistributionConfigWithTags(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetCloudFrontOriginAccessIdentityConfigResult = { ["CloudFrontOriginAccessIdentityConfig"] = true, ["ETag"] = true, nil }
@@ -644,13 +867,25 @@ end
 -- * ETag [string] <p>The current version of the configuration. For example: <code>E2QWRUHAPOMQZL</code>.</p>
 -- @return GetCloudFrontOriginAccessIdentityConfigResult structure as a key-value pair table
 function M.GetCloudFrontOriginAccessIdentityConfigResult(args)
-	assert(args, "You must provdide an argument table when creating GetCloudFrontOriginAccessIdentityConfigResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetCloudFrontOriginAccessIdentityConfigResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+        ["ETag"] = args["ETag"],
+    }
+	local all_args = { 
 		["CloudFrontOriginAccessIdentityConfig"] = args["CloudFrontOriginAccessIdentityConfig"],
 		["ETag"] = args["ETag"],
 	}
-	asserts.AssertGetCloudFrontOriginAccessIdentityConfigResult(t)
-	return t
+	asserts.AssertGetCloudFrontOriginAccessIdentityConfigResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidForwardCookies = { ["Message"] = true, nil }
@@ -671,12 +906,23 @@ end
 -- * Message [string] 
 -- @return InvalidForwardCookies structure as a key-value pair table
 function M.InvalidForwardCookies(args)
-	assert(args, "You must provdide an argument table when creating InvalidForwardCookies")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidForwardCookies")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Message"] = args["Message"],
 	}
-	asserts.AssertInvalidForwardCookies(t)
-	return t
+	asserts.AssertInvalidForwardCookies(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Headers = { ["Items"] = true, ["Quantity"] = true, nil }
@@ -701,13 +947,24 @@ end
 -- Required key: Quantity
 -- @return Headers structure as a key-value pair table
 function M.Headers(args)
-	assert(args, "You must provdide an argument table when creating Headers")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Headers")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Items"] = args["Items"],
 		["Quantity"] = args["Quantity"],
 	}
-	asserts.AssertHeaders(t)
-	return t
+	asserts.AssertHeaders(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetCloudFrontOriginAccessIdentityConfigRequest = { ["Id"] = true, nil }
@@ -730,12 +987,24 @@ end
 -- Required key: Id
 -- @return GetCloudFrontOriginAccessIdentityConfigRequest structure as a key-value pair table
 function M.GetCloudFrontOriginAccessIdentityConfigRequest(args)
-	assert(args, "You must provdide an argument table when creating GetCloudFrontOriginAccessIdentityConfigRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetCloudFrontOriginAccessIdentityConfigRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{Id}"] = args["Id"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Id"] = args["Id"],
 	}
-	asserts.AssertGetCloudFrontOriginAccessIdentityConfigRequest(t)
-	return t
+	asserts.AssertGetCloudFrontOriginAccessIdentityConfigRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DistributionConfig = { ["Comment"] = true, ["CacheBehaviors"] = true, ["IsIPV6Enabled"] = true, ["Logging"] = true, ["WebACLId"] = true, ["Origins"] = true, ["DefaultRootObject"] = true, ["PriceClass"] = true, ["Enabled"] = true, ["DefaultCacheBehavior"] = true, ["CallerReference"] = true, ["ViewerCertificate"] = true, ["CustomErrorResponses"] = true, ["HttpVersion"] = true, ["Restrictions"] = true, ["Aliases"] = true, nil }
@@ -796,8 +1065,14 @@ end
 -- Required key: Enabled
 -- @return DistributionConfig structure as a key-value pair table
 function M.DistributionConfig(args)
-	assert(args, "You must provdide an argument table when creating DistributionConfig")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DistributionConfig")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Comment"] = args["Comment"],
 		["CacheBehaviors"] = args["CacheBehaviors"],
 		["IsIPV6Enabled"] = args["IsIPV6Enabled"],
@@ -815,8 +1090,13 @@ function M.DistributionConfig(args)
 		["Restrictions"] = args["Restrictions"],
 		["Aliases"] = args["Aliases"],
 	}
-	asserts.AssertDistributionConfig(t)
-	return t
+	asserts.AssertDistributionConfig(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CustomErrorResponses = { ["Items"] = true, ["Quantity"] = true, nil }
@@ -841,13 +1121,24 @@ end
 -- Required key: Quantity
 -- @return CustomErrorResponses structure as a key-value pair table
 function M.CustomErrorResponses(args)
-	assert(args, "You must provdide an argument table when creating CustomErrorResponses")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CustomErrorResponses")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Items"] = args["Items"],
 		["Quantity"] = args["Quantity"],
 	}
-	asserts.AssertCustomErrorResponses(t)
-	return t
+	asserts.AssertCustomErrorResponses(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CloudFrontOriginAccessIdentity = { ["CloudFrontOriginAccessIdentityConfig"] = true, ["S3CanonicalUserId"] = true, ["Id"] = true, nil }
@@ -876,14 +1167,25 @@ end
 -- Required key: S3CanonicalUserId
 -- @return CloudFrontOriginAccessIdentity structure as a key-value pair table
 function M.CloudFrontOriginAccessIdentity(args)
-	assert(args, "You must provdide an argument table when creating CloudFrontOriginAccessIdentity")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CloudFrontOriginAccessIdentity")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["CloudFrontOriginAccessIdentityConfig"] = args["CloudFrontOriginAccessIdentityConfig"],
 		["S3CanonicalUserId"] = args["S3CanonicalUserId"],
 		["Id"] = args["Id"],
 	}
-	asserts.AssertCloudFrontOriginAccessIdentity(t)
-	return t
+	asserts.AssertCloudFrontOriginAccessIdentity(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.MissingBody = { ["Message"] = true, nil }
@@ -904,12 +1206,23 @@ end
 -- * Message [string] 
 -- @return MissingBody structure as a key-value pair table
 function M.MissingBody(args)
-	assert(args, "You must provdide an argument table when creating MissingBody")
-	local t = { 
+	assert(args, "You must provide an argument table when creating MissingBody")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Message"] = args["Message"],
 	}
-	asserts.AssertMissingBody(t)
-	return t
+	asserts.AssertMissingBody(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.S3OriginConfig = { ["OriginAccessIdentity"] = true, nil }
@@ -932,12 +1245,23 @@ end
 -- Required key: OriginAccessIdentity
 -- @return S3OriginConfig structure as a key-value pair table
 function M.S3OriginConfig(args)
-	assert(args, "You must provdide an argument table when creating S3OriginConfig")
-	local t = { 
+	assert(args, "You must provide an argument table when creating S3OriginConfig")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["OriginAccessIdentity"] = args["OriginAccessIdentity"],
 	}
-	asserts.AssertS3OriginConfig(t)
-	return t
+	asserts.AssertS3OriginConfig(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.StreamingDistributionNotDisabled = { ["Message"] = true, nil }
@@ -958,12 +1282,23 @@ end
 -- * Message [string] 
 -- @return StreamingDistributionNotDisabled structure as a key-value pair table
 function M.StreamingDistributionNotDisabled(args)
-	assert(args, "You must provdide an argument table when creating StreamingDistributionNotDisabled")
-	local t = { 
+	assert(args, "You must provide an argument table when creating StreamingDistributionNotDisabled")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Message"] = args["Message"],
 	}
-	asserts.AssertStreamingDistributionNotDisabled(t)
-	return t
+	asserts.AssertStreamingDistributionNotDisabled(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CNAMEAlreadyExists = { ["Message"] = true, nil }
@@ -984,12 +1319,23 @@ end
 -- * Message [string] 
 -- @return CNAMEAlreadyExists structure as a key-value pair table
 function M.CNAMEAlreadyExists(args)
-	assert(args, "You must provdide an argument table when creating CNAMEAlreadyExists")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CNAMEAlreadyExists")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Message"] = args["Message"],
 	}
-	asserts.AssertCNAMEAlreadyExists(t)
-	return t
+	asserts.AssertCNAMEAlreadyExists(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.TooManyCacheBehaviors = { ["Message"] = true, nil }
@@ -1010,12 +1356,23 @@ end
 -- * Message [string] 
 -- @return TooManyCacheBehaviors structure as a key-value pair table
 function M.TooManyCacheBehaviors(args)
-	assert(args, "You must provdide an argument table when creating TooManyCacheBehaviors")
-	local t = { 
+	assert(args, "You must provide an argument table when creating TooManyCacheBehaviors")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Message"] = args["Message"],
 	}
-	asserts.AssertTooManyCacheBehaviors(t)
-	return t
+	asserts.AssertTooManyCacheBehaviors(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidTTLOrder = { ["Message"] = true, nil }
@@ -1036,12 +1393,23 @@ end
 -- * Message [string] 
 -- @return InvalidTTLOrder structure as a key-value pair table
 function M.InvalidTTLOrder(args)
-	assert(args, "You must provdide an argument table when creating InvalidTTLOrder")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidTTLOrder")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Message"] = args["Message"],
 	}
-	asserts.AssertInvalidTTLOrder(t)
-	return t
+	asserts.AssertInvalidTTLOrder(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.TooManyDistributions = { ["Message"] = true, nil }
@@ -1062,12 +1430,23 @@ end
 -- * Message [string] 
 -- @return TooManyDistributions structure as a key-value pair table
 function M.TooManyDistributions(args)
-	assert(args, "You must provdide an argument table when creating TooManyDistributions")
-	local t = { 
+	assert(args, "You must provide an argument table when creating TooManyDistributions")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Message"] = args["Message"],
 	}
-	asserts.AssertTooManyDistributions(t)
-	return t
+	asserts.AssertTooManyDistributions(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidLocationCode = { ["Message"] = true, nil }
@@ -1088,12 +1467,23 @@ end
 -- * Message [string] 
 -- @return InvalidLocationCode structure as a key-value pair table
 function M.InvalidLocationCode(args)
-	assert(args, "You must provdide an argument table when creating InvalidLocationCode")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidLocationCode")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Message"] = args["Message"],
 	}
-	asserts.AssertInvalidLocationCode(t)
-	return t
+	asserts.AssertInvalidLocationCode(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DefaultCacheBehavior = { ["TrustedSigners"] = true, ["LambdaFunctionAssociations"] = true, ["TargetOriginId"] = true, ["ViewerProtocolPolicy"] = true, ["ForwardedValues"] = true, ["MaxTTL"] = true, ["SmoothStreaming"] = true, ["DefaultTTL"] = true, ["AllowedMethods"] = true, ["MinTTL"] = true, ["Compress"] = true, nil }
@@ -1144,8 +1534,14 @@ end
 -- Required key: MinTTL
 -- @return DefaultCacheBehavior structure as a key-value pair table
 function M.DefaultCacheBehavior(args)
-	assert(args, "You must provdide an argument table when creating DefaultCacheBehavior")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DefaultCacheBehavior")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["TrustedSigners"] = args["TrustedSigners"],
 		["LambdaFunctionAssociations"] = args["LambdaFunctionAssociations"],
 		["TargetOriginId"] = args["TargetOriginId"],
@@ -1158,8 +1554,13 @@ function M.DefaultCacheBehavior(args)
 		["MinTTL"] = args["MinTTL"],
 		["Compress"] = args["Compress"],
 	}
-	asserts.AssertDefaultCacheBehavior(t)
-	return t
+	asserts.AssertDefaultCacheBehavior(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Tag = { ["Value"] = true, ["Key"] = true, nil }
@@ -1184,13 +1585,24 @@ end
 -- Required key: Key
 -- @return Tag structure as a key-value pair table
 function M.Tag(args)
-	assert(args, "You must provdide an argument table when creating Tag")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Tag")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Value"] = args["Value"],
 		["Key"] = args["Key"],
 	}
-	asserts.AssertTag(t)
-	return t
+	asserts.AssertTag(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CachedMethods = { ["Items"] = true, ["Quantity"] = true, nil }
@@ -1217,13 +1629,24 @@ end
 -- Required key: Items
 -- @return CachedMethods structure as a key-value pair table
 function M.CachedMethods(args)
-	assert(args, "You must provdide an argument table when creating CachedMethods")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CachedMethods")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Items"] = args["Items"],
 		["Quantity"] = args["Quantity"],
 	}
-	asserts.AssertCachedMethods(t)
-	return t
+	asserts.AssertCachedMethods(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AllowedMethods = { ["Items"] = true, ["CachedMethods"] = true, ["Quantity"] = true, nil }
@@ -1252,14 +1675,25 @@ end
 -- Required key: Items
 -- @return AllowedMethods structure as a key-value pair table
 function M.AllowedMethods(args)
-	assert(args, "You must provdide an argument table when creating AllowedMethods")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AllowedMethods")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Items"] = args["Items"],
 		["CachedMethods"] = args["CachedMethods"],
 		["Quantity"] = args["Quantity"],
 	}
-	asserts.AssertAllowedMethods(t)
-	return t
+	asserts.AssertAllowedMethods(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListInvalidationsResult = { ["InvalidationList"] = true, nil }
@@ -1280,12 +1714,23 @@ end
 -- * InvalidationList [InvalidationList] <p>Information about invalidation batches. </p>
 -- @return ListInvalidationsResult structure as a key-value pair table
 function M.ListInvalidationsResult(args)
-	assert(args, "You must provdide an argument table when creating ListInvalidationsResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListInvalidationsResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["InvalidationList"] = args["InvalidationList"],
 	}
-	asserts.AssertListInvalidationsResult(t)
-	return t
+	asserts.AssertListInvalidationsResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidOrigin = { ["Message"] = true, nil }
@@ -1306,12 +1751,23 @@ end
 -- * Message [string] 
 -- @return InvalidOrigin structure as a key-value pair table
 function M.InvalidOrigin(args)
-	assert(args, "You must provdide an argument table when creating InvalidOrigin")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidOrigin")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Message"] = args["Message"],
 	}
-	asserts.AssertInvalidOrigin(t)
-	return t
+	asserts.AssertInvalidOrigin(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.TooManyInvalidationsInProgress = { ["Message"] = true, nil }
@@ -1332,12 +1788,23 @@ end
 -- * Message [string] 
 -- @return TooManyInvalidationsInProgress structure as a key-value pair table
 function M.TooManyInvalidationsInProgress(args)
-	assert(args, "You must provdide an argument table when creating TooManyInvalidationsInProgress")
-	local t = { 
+	assert(args, "You must provide an argument table when creating TooManyInvalidationsInProgress")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Message"] = args["Message"],
 	}
-	asserts.AssertTooManyInvalidationsInProgress(t)
-	return t
+	asserts.AssertTooManyInvalidationsInProgress(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.NoSuchStreamingDistribution = { ["Message"] = true, nil }
@@ -1358,12 +1825,23 @@ end
 -- * Message [string] 
 -- @return NoSuchStreamingDistribution structure as a key-value pair table
 function M.NoSuchStreamingDistribution(args)
-	assert(args, "You must provdide an argument table when creating NoSuchStreamingDistribution")
-	local t = { 
+	assert(args, "You must provide an argument table when creating NoSuchStreamingDistribution")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Message"] = args["Message"],
 	}
-	asserts.AssertNoSuchStreamingDistribution(t)
-	return t
+	asserts.AssertNoSuchStreamingDistribution(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdateDistributionRequest = { ["Id"] = true, ["DistributionConfig"] = true, ["IfMatch"] = true, nil }
@@ -1392,14 +1870,27 @@ end
 -- Required key: Id
 -- @return UpdateDistributionRequest structure as a key-value pair table
 function M.UpdateDistributionRequest(args)
-	assert(args, "You must provdide an argument table when creating UpdateDistributionRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateDistributionRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{Id}"] = args["Id"],
+    }
+    local header_args = { 
+        ["If-Match"] = args["IfMatch"],
+    }
+	local all_args = { 
 		["Id"] = args["Id"],
 		["DistributionConfig"] = args["DistributionConfig"],
 		["IfMatch"] = args["IfMatch"],
 	}
-	asserts.AssertUpdateDistributionRequest(t)
-	return t
+	asserts.AssertUpdateDistributionRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ViewerCertificate = { ["Certificate"] = true, ["CloudFrontDefaultCertificate"] = true, ["ACMCertificateArn"] = true, ["SSLSupportMethod"] = true, ["IAMCertificateId"] = true, ["CertificateSource"] = true, ["MinimumProtocolVersion"] = true, nil }
@@ -1432,8 +1923,14 @@ end
 -- * MinimumProtocolVersion [MinimumProtocolVersion] <p>Specify the minimum version of the SSL/TLS protocol that you want CloudFront to use for HTTPS connections between viewers and CloudFront: <code>SSLv3</code> or <code>TLSv1</code>. CloudFront serves your objects only to viewers that support SSL/TLS version that you specify and later versions. The <code>TLSv1</code> protocol is more secure, so we recommend that you specify <code>SSLv3</code> only if your users are using browsers or devices that don't support <code>TLSv1</code>. Note the following:</p> <ul> <li> <p>If you specify &lt;CloudFrontDefaultCertificate&gt;true&lt;CloudFrontDefaultCertificate&gt;, the minimum SSL protocol version is <code>TLSv1</code> and can't be changed.</p> </li> <li> <p>If you're using a custom certificate (if you specify a value for <code>ACMCertificateArn</code> or for <code>IAMCertificateId</code>) and if you're using SNI (if you specify <code>sni-only</code> for <code>SSLSupportMethod</code>), you must specify <code>TLSv1</code> for <code>MinimumProtocolVersion</code>.</p> </li> </ul>
 -- @return ViewerCertificate structure as a key-value pair table
 function M.ViewerCertificate(args)
-	assert(args, "You must provdide an argument table when creating ViewerCertificate")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ViewerCertificate")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Certificate"] = args["Certificate"],
 		["CloudFrontDefaultCertificate"] = args["CloudFrontDefaultCertificate"],
 		["ACMCertificateArn"] = args["ACMCertificateArn"],
@@ -1442,8 +1939,13 @@ function M.ViewerCertificate(args)
 		["CertificateSource"] = args["CertificateSource"],
 		["MinimumProtocolVersion"] = args["MinimumProtocolVersion"],
 	}
-	asserts.AssertViewerCertificate(t)
-	return t
+	asserts.AssertViewerCertificate(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InconsistentQuantities = { ["Message"] = true, nil }
@@ -1464,12 +1966,23 @@ end
 -- * Message [string] 
 -- @return InconsistentQuantities structure as a key-value pair table
 function M.InconsistentQuantities(args)
-	assert(args, "You must provdide an argument table when creating InconsistentQuantities")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InconsistentQuantities")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Message"] = args["Message"],
 	}
-	asserts.AssertInconsistentQuantities(t)
-	return t
+	asserts.AssertInconsistentQuantities(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.StreamingDistribution = { ["Status"] = true, ["DomainName"] = true, ["StreamingDistributionConfig"] = true, ["ActiveTrustedSigners"] = true, ["LastModifiedTime"] = true, ["Id"] = true, ["ARN"] = true, nil }
@@ -1514,8 +2027,14 @@ end
 -- Required key: StreamingDistributionConfig
 -- @return StreamingDistribution structure as a key-value pair table
 function M.StreamingDistribution(args)
-	assert(args, "You must provdide an argument table when creating StreamingDistribution")
-	local t = { 
+	assert(args, "You must provide an argument table when creating StreamingDistribution")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Status"] = args["Status"],
 		["DomainName"] = args["DomainName"],
 		["StreamingDistributionConfig"] = args["StreamingDistributionConfig"],
@@ -1524,8 +2043,13 @@ function M.StreamingDistribution(args)
 		["Id"] = args["Id"],
 		["ARN"] = args["ARN"],
 	}
-	asserts.AssertStreamingDistribution(t)
-	return t
+	asserts.AssertStreamingDistribution(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidProtocolSettings = { ["Message"] = true, nil }
@@ -1546,12 +2070,23 @@ end
 -- * Message [string] 
 -- @return InvalidProtocolSettings structure as a key-value pair table
 function M.InvalidProtocolSettings(args)
-	assert(args, "You must provdide an argument table when creating InvalidProtocolSettings")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidProtocolSettings")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Message"] = args["Message"],
 	}
-	asserts.AssertInvalidProtocolSettings(t)
-	return t
+	asserts.AssertInvalidProtocolSettings(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.NoSuchOrigin = { ["Message"] = true, nil }
@@ -1572,12 +2107,23 @@ end
 -- * Message [string] 
 -- @return NoSuchOrigin structure as a key-value pair table
 function M.NoSuchOrigin(args)
-	assert(args, "You must provdide an argument table when creating NoSuchOrigin")
-	local t = { 
+	assert(args, "You must provide an argument table when creating NoSuchOrigin")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Message"] = args["Message"],
 	}
-	asserts.AssertNoSuchOrigin(t)
-	return t
+	asserts.AssertNoSuchOrigin(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListCloudFrontOriginAccessIdentitiesRequest = { ["Marker"] = true, ["MaxItems"] = true, nil }
@@ -1600,13 +2146,26 @@ end
 -- * MaxItems [string] <p>The maximum number of origin access identities you want in the response body. </p>
 -- @return ListCloudFrontOriginAccessIdentitiesRequest structure as a key-value pair table
 function M.ListCloudFrontOriginAccessIdentitiesRequest(args)
-	assert(args, "You must provdide an argument table when creating ListCloudFrontOriginAccessIdentitiesRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListCloudFrontOriginAccessIdentitiesRequest")
+    local query_args = { 
+        ["Marker"] = args["Marker"],
+        ["MaxItems"] = args["MaxItems"],
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Marker"] = args["Marker"],
 		["MaxItems"] = args["MaxItems"],
 	}
-	asserts.AssertListCloudFrontOriginAccessIdentitiesRequest(t)
-	return t
+	asserts.AssertListCloudFrontOriginAccessIdentitiesRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetStreamingDistributionConfigResult = { ["ETag"] = true, ["StreamingDistributionConfig"] = true, nil }
@@ -1629,13 +2188,25 @@ end
 -- * StreamingDistributionConfig [StreamingDistributionConfig] <p>The streaming distribution's configuration information.</p>
 -- @return GetStreamingDistributionConfigResult structure as a key-value pair table
 function M.GetStreamingDistributionConfigResult(args)
-	assert(args, "You must provdide an argument table when creating GetStreamingDistributionConfigResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetStreamingDistributionConfigResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+        ["ETag"] = args["ETag"],
+    }
+	local all_args = { 
 		["ETag"] = args["ETag"],
 		["StreamingDistributionConfig"] = args["StreamingDistributionConfig"],
 	}
-	asserts.AssertGetStreamingDistributionConfigResult(t)
-	return t
+	asserts.AssertGetStreamingDistributionConfigResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DistributionAlreadyExists = { ["Message"] = true, nil }
@@ -1656,12 +2227,23 @@ end
 -- * Message [string] 
 -- @return DistributionAlreadyExists structure as a key-value pair table
 function M.DistributionAlreadyExists(args)
-	assert(args, "You must provdide an argument table when creating DistributionAlreadyExists")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DistributionAlreadyExists")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Message"] = args["Message"],
 	}
-	asserts.AssertDistributionAlreadyExists(t)
-	return t
+	asserts.AssertDistributionAlreadyExists(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateDistributionResult = { ["Distribution"] = true, ["ETag"] = true, ["Location"] = true, nil }
@@ -1686,14 +2268,27 @@ end
 -- * Location [string] <p>The fully qualified URI of the new distribution resource just created. For example: <code>https://cloudfront.amazonaws.com/2010-11-01/distribution/EDFDVBD632BHDS5</code>.</p>
 -- @return CreateDistributionResult structure as a key-value pair table
 function M.CreateDistributionResult(args)
-	assert(args, "You must provdide an argument table when creating CreateDistributionResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateDistributionResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+        ["ETag"] = args["ETag"],
+        ["Location"] = args["Location"],
+    }
+	local all_args = { 
 		["Distribution"] = args["Distribution"],
 		["ETag"] = args["ETag"],
 		["Location"] = args["Location"],
 	}
-	asserts.AssertCreateDistributionResult(t)
-	return t
+	asserts.AssertCreateDistributionResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidOriginReadTimeout = { ["Message"] = true, nil }
@@ -1714,12 +2309,23 @@ end
 -- * Message [string] 
 -- @return InvalidOriginReadTimeout structure as a key-value pair table
 function M.InvalidOriginReadTimeout(args)
-	assert(args, "You must provdide an argument table when creating InvalidOriginReadTimeout")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidOriginReadTimeout")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Message"] = args["Message"],
 	}
-	asserts.AssertInvalidOriginReadTimeout(t)
-	return t
+	asserts.AssertInvalidOriginReadTimeout(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidationSummary = { ["Status"] = true, ["Id"] = true, ["CreateTime"] = true, nil }
@@ -1750,14 +2356,25 @@ end
 -- Required key: Status
 -- @return InvalidationSummary structure as a key-value pair table
 function M.InvalidationSummary(args)
-	assert(args, "You must provdide an argument table when creating InvalidationSummary")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidationSummary")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Status"] = args["Status"],
 		["Id"] = args["Id"],
 		["CreateTime"] = args["CreateTime"],
 	}
-	asserts.AssertInvalidationSummary(t)
-	return t
+	asserts.AssertInvalidationSummary(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidResponseCode = { ["Message"] = true, nil }
@@ -1778,12 +2395,23 @@ end
 -- * Message [string] 
 -- @return InvalidResponseCode structure as a key-value pair table
 function M.InvalidResponseCode(args)
-	assert(args, "You must provdide an argument table when creating InvalidResponseCode")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidResponseCode")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Message"] = args["Message"],
 	}
-	asserts.AssertInvalidResponseCode(t)
-	return t
+	asserts.AssertInvalidResponseCode(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DistributionList = { ["Items"] = true, ["NextMarker"] = true, ["MaxItems"] = true, ["Marker"] = true, ["IsTruncated"] = true, ["Quantity"] = true, nil }
@@ -1822,8 +2450,14 @@ end
 -- Required key: Quantity
 -- @return DistributionList structure as a key-value pair table
 function M.DistributionList(args)
-	assert(args, "You must provdide an argument table when creating DistributionList")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DistributionList")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Items"] = args["Items"],
 		["NextMarker"] = args["NextMarker"],
 		["MaxItems"] = args["MaxItems"],
@@ -1831,8 +2465,13 @@ function M.DistributionList(args)
 		["IsTruncated"] = args["IsTruncated"],
 		["Quantity"] = args["Quantity"],
 	}
-	asserts.AssertDistributionList(t)
-	return t
+	asserts.AssertDistributionList(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.StreamingDistributionSummary = { ["Status"] = true, ["S3Origin"] = true, ["DomainName"] = true, ["Enabled"] = true, ["PriceClass"] = true, ["TrustedSigners"] = true, ["Comment"] = true, ["LastModifiedTime"] = true, ["Id"] = true, ["ARN"] = true, ["Aliases"] = true, nil }
@@ -1895,8 +2534,14 @@ end
 -- Required key: Enabled
 -- @return StreamingDistributionSummary structure as a key-value pair table
 function M.StreamingDistributionSummary(args)
-	assert(args, "You must provdide an argument table when creating StreamingDistributionSummary")
-	local t = { 
+	assert(args, "You must provide an argument table when creating StreamingDistributionSummary")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Status"] = args["Status"],
 		["S3Origin"] = args["S3Origin"],
 		["DomainName"] = args["DomainName"],
@@ -1909,8 +2554,13 @@ function M.StreamingDistributionSummary(args)
 		["ARN"] = args["ARN"],
 		["Aliases"] = args["Aliases"],
 	}
-	asserts.AssertStreamingDistributionSummary(t)
-	return t
+	asserts.AssertStreamingDistributionSummary(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetDistributionConfigRequest = { ["Id"] = true, nil }
@@ -1933,12 +2583,24 @@ end
 -- Required key: Id
 -- @return GetDistributionConfigRequest structure as a key-value pair table
 function M.GetDistributionConfigRequest(args)
-	assert(args, "You must provdide an argument table when creating GetDistributionConfigRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetDistributionConfigRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{Id}"] = args["Id"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Id"] = args["Id"],
 	}
-	asserts.AssertGetDistributionConfigRequest(t)
-	return t
+	asserts.AssertGetDistributionConfigRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.TooManyCertificates = { ["Message"] = true, nil }
@@ -1959,12 +2621,23 @@ end
 -- * Message [string] 
 -- @return TooManyCertificates structure as a key-value pair table
 function M.TooManyCertificates(args)
-	assert(args, "You must provdide an argument table when creating TooManyCertificates")
-	local t = { 
+	assert(args, "You must provide an argument table when creating TooManyCertificates")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Message"] = args["Message"],
 	}
-	asserts.AssertTooManyCertificates(t)
-	return t
+	asserts.AssertTooManyCertificates(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.PreconditionFailed = { ["Message"] = true, nil }
@@ -1985,12 +2658,23 @@ end
 -- * Message [string] 
 -- @return PreconditionFailed structure as a key-value pair table
 function M.PreconditionFailed(args)
-	assert(args, "You must provdide an argument table when creating PreconditionFailed")
-	local t = { 
+	assert(args, "You must provide an argument table when creating PreconditionFailed")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Message"] = args["Message"],
 	}
-	asserts.AssertPreconditionFailed(t)
-	return t
+	asserts.AssertPreconditionFailed(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Origins = { ["Items"] = true, ["Quantity"] = true, nil }
@@ -2015,13 +2699,24 @@ end
 -- Required key: Quantity
 -- @return Origins structure as a key-value pair table
 function M.Origins(args)
-	assert(args, "You must provdide an argument table when creating Origins")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Origins")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Items"] = args["Items"],
 		["Quantity"] = args["Quantity"],
 	}
-	asserts.AssertOrigins(t)
-	return t
+	asserts.AssertOrigins(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetInvalidationResult = { ["Invalidation"] = true, nil }
@@ -2042,12 +2737,23 @@ end
 -- * Invalidation [Invalidation] <p>The invalidation's information. For more information, see <a href="http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/InvalidationDatatype.html">Invalidation Complex Type</a>. </p>
 -- @return GetInvalidationResult structure as a key-value pair table
 function M.GetInvalidationResult(args)
-	assert(args, "You must provdide an argument table when creating GetInvalidationResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetInvalidationResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Invalidation"] = args["Invalidation"],
 	}
-	asserts.AssertGetInvalidationResult(t)
-	return t
+	asserts.AssertGetInvalidationResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.TooManyStreamingDistributions = { ["Message"] = true, nil }
@@ -2068,12 +2774,23 @@ end
 -- * Message [string] 
 -- @return TooManyStreamingDistributions structure as a key-value pair table
 function M.TooManyStreamingDistributions(args)
-	assert(args, "You must provdide an argument table when creating TooManyStreamingDistributions")
-	local t = { 
+	assert(args, "You must provide an argument table when creating TooManyStreamingDistributions")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Message"] = args["Message"],
 	}
-	asserts.AssertTooManyStreamingDistributions(t)
-	return t
+	asserts.AssertTooManyStreamingDistributions(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CookieNames = { ["Items"] = true, ["Quantity"] = true, nil }
@@ -2098,13 +2815,24 @@ end
 -- Required key: Quantity
 -- @return CookieNames structure as a key-value pair table
 function M.CookieNames(args)
-	assert(args, "You must provdide an argument table when creating CookieNames")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CookieNames")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Items"] = args["Items"],
 		["Quantity"] = args["Quantity"],
 	}
-	asserts.AssertCookieNames(t)
-	return t
+	asserts.AssertCookieNames(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListDistributionsByWebACLIdResult = { ["DistributionList"] = true, nil }
@@ -2125,12 +2853,23 @@ end
 -- * DistributionList [DistributionList] <p>The <code>DistributionList</code> type. </p>
 -- @return ListDistributionsByWebACLIdResult structure as a key-value pair table
 function M.ListDistributionsByWebACLIdResult(args)
-	assert(args, "You must provdide an argument table when creating ListDistributionsByWebACLIdResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListDistributionsByWebACLIdResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DistributionList"] = args["DistributionList"],
 	}
-	asserts.AssertListDistributionsByWebACLIdResult(t)
-	return t
+	asserts.AssertListDistributionsByWebACLIdResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Signer = { ["KeyPairIds"] = true, ["AwsAccountNumber"] = true, nil }
@@ -2153,13 +2892,24 @@ end
 -- * AwsAccountNumber [string] <p>An AWS account that is included in the <code>TrustedSigners</code> complex type for this RTMP distribution. Valid values include:</p> <ul> <li> <p> <code>self</code>, which is the AWS account used to create the distribution.</p> </li> <li> <p>An AWS account number.</p> </li> </ul>
 -- @return Signer structure as a key-value pair table
 function M.Signer(args)
-	assert(args, "You must provdide an argument table when creating Signer")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Signer")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["KeyPairIds"] = args["KeyPairIds"],
 		["AwsAccountNumber"] = args["AwsAccountNumber"],
 	}
-	asserts.AssertSigner(t)
-	return t
+	asserts.AssertSigner(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Distribution = { ["Status"] = true, ["DomainName"] = true, ["InProgressInvalidationBatches"] = true, ["DistributionConfig"] = true, ["ActiveTrustedSigners"] = true, ["LastModifiedTime"] = true, ["Id"] = true, ["ARN"] = true, nil }
@@ -2210,8 +2960,14 @@ end
 -- Required key: DistributionConfig
 -- @return Distribution structure as a key-value pair table
 function M.Distribution(args)
-	assert(args, "You must provdide an argument table when creating Distribution")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Distribution")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Status"] = args["Status"],
 		["DomainName"] = args["DomainName"],
 		["InProgressInvalidationBatches"] = args["InProgressInvalidationBatches"],
@@ -2221,8 +2977,13 @@ function M.Distribution(args)
 		["Id"] = args["Id"],
 		["ARN"] = args["ARN"],
 	}
-	asserts.AssertDistribution(t)
-	return t
+	asserts.AssertDistribution(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidOriginAccessIdentity = { ["Message"] = true, nil }
@@ -2243,12 +3004,23 @@ end
 -- * Message [string] 
 -- @return InvalidOriginAccessIdentity structure as a key-value pair table
 function M.InvalidOriginAccessIdentity(args)
-	assert(args, "You must provdide an argument table when creating InvalidOriginAccessIdentity")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidOriginAccessIdentity")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Message"] = args["Message"],
 	}
-	asserts.AssertInvalidOriginAccessIdentity(t)
-	return t
+	asserts.AssertInvalidOriginAccessIdentity(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidDefaultRootObject = { ["Message"] = true, nil }
@@ -2269,12 +3041,23 @@ end
 -- * Message [string] 
 -- @return InvalidDefaultRootObject structure as a key-value pair table
 function M.InvalidDefaultRootObject(args)
-	assert(args, "You must provdide an argument table when creating InvalidDefaultRootObject")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidDefaultRootObject")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Message"] = args["Message"],
 	}
-	asserts.AssertInvalidDefaultRootObject(t)
-	return t
+	asserts.AssertInvalidDefaultRootObject(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CloudFrontOriginAccessIdentityInUse = { ["Message"] = true, nil }
@@ -2295,12 +3078,23 @@ end
 -- * Message [string] 
 -- @return CloudFrontOriginAccessIdentityInUse structure as a key-value pair table
 function M.CloudFrontOriginAccessIdentityInUse(args)
-	assert(args, "You must provdide an argument table when creating CloudFrontOriginAccessIdentityInUse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CloudFrontOriginAccessIdentityInUse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Message"] = args["Message"],
 	}
-	asserts.AssertCloudFrontOriginAccessIdentityInUse(t)
-	return t
+	asserts.AssertCloudFrontOriginAccessIdentityInUse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.TrustedSigners = { ["Items"] = true, ["Enabled"] = true, ["Quantity"] = true, nil }
@@ -2329,14 +3123,25 @@ end
 -- Required key: Quantity
 -- @return TrustedSigners structure as a key-value pair table
 function M.TrustedSigners(args)
-	assert(args, "You must provdide an argument table when creating TrustedSigners")
-	local t = { 
+	assert(args, "You must provide an argument table when creating TrustedSigners")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Items"] = args["Items"],
 		["Enabled"] = args["Enabled"],
 		["Quantity"] = args["Quantity"],
 	}
-	asserts.AssertTrustedSigners(t)
-	return t
+	asserts.AssertTrustedSigners(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.TooManyOrigins = { ["Message"] = true, nil }
@@ -2357,12 +3162,23 @@ end
 -- * Message [string] 
 -- @return TooManyOrigins structure as a key-value pair table
 function M.TooManyOrigins(args)
-	assert(args, "You must provdide an argument table when creating TooManyOrigins")
-	local t = { 
+	assert(args, "You must provide an argument table when creating TooManyOrigins")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Message"] = args["Message"],
 	}
-	asserts.AssertTooManyOrigins(t)
-	return t
+	asserts.AssertTooManyOrigins(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CloudFrontOriginAccessIdentitySummary = { ["Comment"] = true, ["S3CanonicalUserId"] = true, ["Id"] = true, nil }
@@ -2393,14 +3209,25 @@ end
 -- Required key: Comment
 -- @return CloudFrontOriginAccessIdentitySummary structure as a key-value pair table
 function M.CloudFrontOriginAccessIdentitySummary(args)
-	assert(args, "You must provdide an argument table when creating CloudFrontOriginAccessIdentitySummary")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CloudFrontOriginAccessIdentitySummary")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Comment"] = args["Comment"],
 		["S3CanonicalUserId"] = args["S3CanonicalUserId"],
 		["Id"] = args["Id"],
 	}
-	asserts.AssertCloudFrontOriginAccessIdentitySummary(t)
-	return t
+	asserts.AssertCloudFrontOriginAccessIdentitySummary(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateDistributionRequest = { ["DistributionConfig"] = true, nil }
@@ -2423,12 +3250,23 @@ end
 -- Required key: DistributionConfig
 -- @return CreateDistributionRequest structure as a key-value pair table
 function M.CreateDistributionRequest(args)
-	assert(args, "You must provdide an argument table when creating CreateDistributionRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateDistributionRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DistributionConfig"] = args["DistributionConfig"],
 	}
-	asserts.AssertCreateDistributionRequest(t)
-	return t
+	asserts.AssertCreateDistributionRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UntagResourceRequest = { ["TagKeys"] = true, ["Resource"] = true, nil }
@@ -2455,13 +3293,25 @@ end
 -- Required key: TagKeys
 -- @return UntagResourceRequest structure as a key-value pair table
 function M.UntagResourceRequest(args)
-	assert(args, "You must provdide an argument table when creating UntagResourceRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UntagResourceRequest")
+    local query_args = { 
+        ["Resource"] = args["Resource"],
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["TagKeys"] = args["TagKeys"],
 		["Resource"] = args["Resource"],
 	}
-	asserts.AssertUntagResourceRequest(t)
-	return t
+	asserts.AssertUntagResourceRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CloudFrontOriginAccessIdentityAlreadyExists = { ["Message"] = true, nil }
@@ -2482,12 +3332,23 @@ end
 -- * Message [string] 
 -- @return CloudFrontOriginAccessIdentityAlreadyExists structure as a key-value pair table
 function M.CloudFrontOriginAccessIdentityAlreadyExists(args)
-	assert(args, "You must provdide an argument table when creating CloudFrontOriginAccessIdentityAlreadyExists")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CloudFrontOriginAccessIdentityAlreadyExists")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Message"] = args["Message"],
 	}
-	asserts.AssertCloudFrontOriginAccessIdentityAlreadyExists(t)
-	return t
+	asserts.AssertCloudFrontOriginAccessIdentityAlreadyExists(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidTagging = { ["Message"] = true, nil }
@@ -2508,12 +3369,23 @@ end
 -- * Message [string] 
 -- @return InvalidTagging structure as a key-value pair table
 function M.InvalidTagging(args)
-	assert(args, "You must provdide an argument table when creating InvalidTagging")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidTagging")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Message"] = args["Message"],
 	}
-	asserts.AssertInvalidTagging(t)
-	return t
+	asserts.AssertInvalidTagging(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Aliases = { ["Items"] = true, ["Quantity"] = true, nil }
@@ -2538,13 +3410,24 @@ end
 -- Required key: Quantity
 -- @return Aliases structure as a key-value pair table
 function M.Aliases(args)
-	assert(args, "You must provdide an argument table when creating Aliases")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Aliases")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Items"] = args["Items"],
 		["Quantity"] = args["Quantity"],
 	}
-	asserts.AssertAliases(t)
-	return t
+	asserts.AssertAliases(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Invalidation = { ["Status"] = true, ["InvalidationBatch"] = true, ["Id"] = true, ["CreateTime"] = true, nil }
@@ -2579,15 +3462,26 @@ end
 -- Required key: InvalidationBatch
 -- @return Invalidation structure as a key-value pair table
 function M.Invalidation(args)
-	assert(args, "You must provdide an argument table when creating Invalidation")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Invalidation")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Status"] = args["Status"],
 		["InvalidationBatch"] = args["InvalidationBatch"],
 		["Id"] = args["Id"],
 		["CreateTime"] = args["CreateTime"],
 	}
-	asserts.AssertInvalidation(t)
-	return t
+	asserts.AssertInvalidation(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidHeadersForS3Origin = { ["Message"] = true, nil }
@@ -2608,12 +3502,23 @@ end
 -- * Message [string] 
 -- @return InvalidHeadersForS3Origin structure as a key-value pair table
 function M.InvalidHeadersForS3Origin(args)
-	assert(args, "You must provdide an argument table when creating InvalidHeadersForS3Origin")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidHeadersForS3Origin")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Message"] = args["Message"],
 	}
-	asserts.AssertInvalidHeadersForS3Origin(t)
-	return t
+	asserts.AssertInvalidHeadersForS3Origin(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListStreamingDistributionsRequest = { ["Marker"] = true, ["MaxItems"] = true, nil }
@@ -2636,13 +3541,26 @@ end
 -- * MaxItems [string] <p>The value that you provided for the <code>MaxItems</code> request parameter.</p>
 -- @return ListStreamingDistributionsRequest structure as a key-value pair table
 function M.ListStreamingDistributionsRequest(args)
-	assert(args, "You must provdide an argument table when creating ListStreamingDistributionsRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListStreamingDistributionsRequest")
+    local query_args = { 
+        ["Marker"] = args["Marker"],
+        ["MaxItems"] = args["MaxItems"],
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Marker"] = args["Marker"],
 		["MaxItems"] = args["MaxItems"],
 	}
-	asserts.AssertListStreamingDistributionsRequest(t)
-	return t
+	asserts.AssertListStreamingDistributionsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.LambdaFunctionAssociations = { ["Items"] = true, ["Quantity"] = true, nil }
@@ -2667,13 +3585,24 @@ end
 -- Required key: Quantity
 -- @return LambdaFunctionAssociations structure as a key-value pair table
 function M.LambdaFunctionAssociations(args)
-	assert(args, "You must provdide an argument table when creating LambdaFunctionAssociations")
-	local t = { 
+	assert(args, "You must provide an argument table when creating LambdaFunctionAssociations")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Items"] = args["Items"],
 		["Quantity"] = args["Quantity"],
 	}
-	asserts.AssertLambdaFunctionAssociations(t)
-	return t
+	asserts.AssertLambdaFunctionAssociations(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.NoSuchResource = { ["Message"] = true, nil }
@@ -2694,12 +3623,23 @@ end
 -- * Message [string] 
 -- @return NoSuchResource structure as a key-value pair table
 function M.NoSuchResource(args)
-	assert(args, "You must provdide an argument table when creating NoSuchResource")
-	local t = { 
+	assert(args, "You must provide an argument table when creating NoSuchResource")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Message"] = args["Message"],
 	}
-	asserts.AssertNoSuchResource(t)
-	return t
+	asserts.AssertNoSuchResource(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListTagsForResourceRequest = { ["Resource"] = true, nil }
@@ -2722,12 +3662,24 @@ end
 -- Required key: Resource
 -- @return ListTagsForResourceRequest structure as a key-value pair table
 function M.ListTagsForResourceRequest(args)
-	assert(args, "You must provdide an argument table when creating ListTagsForResourceRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListTagsForResourceRequest")
+    local query_args = { 
+        ["Resource"] = args["Resource"],
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Resource"] = args["Resource"],
 	}
-	asserts.AssertListTagsForResourceRequest(t)
-	return t
+	asserts.AssertListTagsForResourceRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateInvalidationResult = { ["Invalidation"] = true, ["Location"] = true, nil }
@@ -2750,13 +3702,25 @@ end
 -- * Location [string] <p>The fully qualified URI of the distribution and invalidation batch request, including the <code>Invalidation ID</code>.</p>
 -- @return CreateInvalidationResult structure as a key-value pair table
 function M.CreateInvalidationResult(args)
-	assert(args, "You must provdide an argument table when creating CreateInvalidationResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateInvalidationResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+        ["Location"] = args["Location"],
+    }
+	local all_args = { 
 		["Invalidation"] = args["Invalidation"],
 		["Location"] = args["Location"],
 	}
-	asserts.AssertCreateInvalidationResult(t)
-	return t
+	asserts.AssertCreateInvalidationResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CacheBehaviors = { ["Items"] = true, ["Quantity"] = true, nil }
@@ -2781,13 +3745,24 @@ end
 -- Required key: Quantity
 -- @return CacheBehaviors structure as a key-value pair table
 function M.CacheBehaviors(args)
-	assert(args, "You must provdide an argument table when creating CacheBehaviors")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CacheBehaviors")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Items"] = args["Items"],
 		["Quantity"] = args["Quantity"],
 	}
-	asserts.AssertCacheBehaviors(t)
-	return t
+	asserts.AssertCacheBehaviors(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.TagKeys = { ["Items"] = true, nil }
@@ -2808,12 +3783,23 @@ end
 -- * Items [TagKeyList] <p> A complex type that contains <code>Tag</code> key elements.</p>
 -- @return TagKeys structure as a key-value pair table
 function M.TagKeys(args)
-	assert(args, "You must provdide an argument table when creating TagKeys")
-	local t = { 
+	assert(args, "You must provide an argument table when creating TagKeys")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Items"] = args["Items"],
 	}
-	asserts.AssertTagKeys(t)
-	return t
+	asserts.AssertTagKeys(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.OriginCustomHeader = { ["HeaderName"] = true, ["HeaderValue"] = true, nil }
@@ -2840,13 +3826,24 @@ end
 -- Required key: HeaderValue
 -- @return OriginCustomHeader structure as a key-value pair table
 function M.OriginCustomHeader(args)
-	assert(args, "You must provdide an argument table when creating OriginCustomHeader")
-	local t = { 
+	assert(args, "You must provide an argument table when creating OriginCustomHeader")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["HeaderName"] = args["HeaderName"],
 		["HeaderValue"] = args["HeaderValue"],
 	}
-	asserts.AssertOriginCustomHeader(t)
-	return t
+	asserts.AssertOriginCustomHeader(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Tags = { ["Items"] = true, nil }
@@ -2867,12 +3864,23 @@ end
 -- * Items [TagList] <p> A complex type that contains <code>Tag</code> elements.</p>
 -- @return Tags structure as a key-value pair table
 function M.Tags(args)
-	assert(args, "You must provdide an argument table when creating Tags")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Tags")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Items"] = args["Items"],
 	}
-	asserts.AssertTags(t)
-	return t
+	asserts.AssertTags(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CloudFrontOriginAccessIdentityList = { ["Items"] = true, ["NextMarker"] = true, ["MaxItems"] = true, ["Marker"] = true, ["IsTruncated"] = true, ["Quantity"] = true, nil }
@@ -2911,8 +3919,14 @@ end
 -- Required key: Quantity
 -- @return CloudFrontOriginAccessIdentityList structure as a key-value pair table
 function M.CloudFrontOriginAccessIdentityList(args)
-	assert(args, "You must provdide an argument table when creating CloudFrontOriginAccessIdentityList")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CloudFrontOriginAccessIdentityList")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Items"] = args["Items"],
 		["NextMarker"] = args["NextMarker"],
 		["MaxItems"] = args["MaxItems"],
@@ -2920,8 +3934,13 @@ function M.CloudFrontOriginAccessIdentityList(args)
 		["IsTruncated"] = args["IsTruncated"],
 		["Quantity"] = args["Quantity"],
 	}
-	asserts.AssertCloudFrontOriginAccessIdentityList(t)
-	return t
+	asserts.AssertCloudFrontOriginAccessIdentityList(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidGeoRestrictionParameter = { ["Message"] = true, nil }
@@ -2942,12 +3961,23 @@ end
 -- * Message [string] 
 -- @return InvalidGeoRestrictionParameter structure as a key-value pair table
 function M.InvalidGeoRestrictionParameter(args)
-	assert(args, "You must provdide an argument table when creating InvalidGeoRestrictionParameter")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidGeoRestrictionParameter")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Message"] = args["Message"],
 	}
-	asserts.AssertInvalidGeoRestrictionParameter(t)
-	return t
+	asserts.AssertInvalidGeoRestrictionParameter(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.NoSuchInvalidation = { ["Message"] = true, nil }
@@ -2968,12 +3998,23 @@ end
 -- * Message [string] 
 -- @return NoSuchInvalidation structure as a key-value pair table
 function M.NoSuchInvalidation(args)
-	assert(args, "You must provdide an argument table when creating NoSuchInvalidation")
-	local t = { 
+	assert(args, "You must provide an argument table when creating NoSuchInvalidation")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Message"] = args["Message"],
 	}
-	asserts.AssertNoSuchInvalidation(t)
-	return t
+	asserts.AssertNoSuchInvalidation(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidIfMatchVersion = { ["Message"] = true, nil }
@@ -2994,12 +4035,23 @@ end
 -- * Message [string] 
 -- @return InvalidIfMatchVersion structure as a key-value pair table
 function M.InvalidIfMatchVersion(args)
-	assert(args, "You must provdide an argument table when creating InvalidIfMatchVersion")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidIfMatchVersion")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Message"] = args["Message"],
 	}
-	asserts.AssertInvalidIfMatchVersion(t)
-	return t
+	asserts.AssertInvalidIfMatchVersion(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.TagResourceRequest = { ["Resource"] = true, ["Tags"] = true, nil }
@@ -3026,13 +4078,25 @@ end
 -- Required key: Tags
 -- @return TagResourceRequest structure as a key-value pair table
 function M.TagResourceRequest(args)
-	assert(args, "You must provdide an argument table when creating TagResourceRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating TagResourceRequest")
+    local query_args = { 
+        ["Resource"] = args["Resource"],
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Resource"] = args["Resource"],
 		["Tags"] = args["Tags"],
 	}
-	asserts.AssertTagResourceRequest(t)
-	return t
+	asserts.AssertTagResourceRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetDistributionConfigResult = { ["ETag"] = true, ["DistributionConfig"] = true, nil }
@@ -3055,13 +4119,25 @@ end
 -- * DistributionConfig [DistributionConfig] <p>The distribution's configuration information.</p>
 -- @return GetDistributionConfigResult structure as a key-value pair table
 function M.GetDistributionConfigResult(args)
-	assert(args, "You must provdide an argument table when creating GetDistributionConfigResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetDistributionConfigResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+        ["ETag"] = args["ETag"],
+    }
+	local all_args = { 
 		["ETag"] = args["ETag"],
 		["DistributionConfig"] = args["DistributionConfig"],
 	}
-	asserts.AssertGetDistributionConfigResult(t)
-	return t
+	asserts.AssertGetDistributionConfigResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateStreamingDistributionRequest = { ["StreamingDistributionConfig"] = true, nil }
@@ -3084,12 +4160,23 @@ end
 -- Required key: StreamingDistributionConfig
 -- @return CreateStreamingDistributionRequest structure as a key-value pair table
 function M.CreateStreamingDistributionRequest(args)
-	assert(args, "You must provdide an argument table when creating CreateStreamingDistributionRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateStreamingDistributionRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["StreamingDistributionConfig"] = args["StreamingDistributionConfig"],
 	}
-	asserts.AssertCreateStreamingDistributionRequest(t)
-	return t
+	asserts.AssertCreateStreamingDistributionRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidQueryStringParameters = { ["Message"] = true, nil }
@@ -3110,12 +4197,23 @@ end
 -- * Message [string] 
 -- @return InvalidQueryStringParameters structure as a key-value pair table
 function M.InvalidQueryStringParameters(args)
-	assert(args, "You must provdide an argument table when creating InvalidQueryStringParameters")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidQueryStringParameters")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Message"] = args["Message"],
 	}
-	asserts.AssertInvalidQueryStringParameters(t)
-	return t
+	asserts.AssertInvalidQueryStringParameters(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateStreamingDistributionWithTagsResult = { ["StreamingDistribution"] = true, ["Location"] = true, ["ETag"] = true, nil }
@@ -3140,14 +4238,27 @@ end
 -- * ETag [string] 
 -- @return CreateStreamingDistributionWithTagsResult structure as a key-value pair table
 function M.CreateStreamingDistributionWithTagsResult(args)
-	assert(args, "You must provdide an argument table when creating CreateStreamingDistributionWithTagsResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateStreamingDistributionWithTagsResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+        ["Location"] = args["Location"],
+        ["ETag"] = args["ETag"],
+    }
+	local all_args = { 
 		["StreamingDistribution"] = args["StreamingDistribution"],
 		["Location"] = args["Location"],
 		["ETag"] = args["ETag"],
 	}
-	asserts.AssertCreateStreamingDistributionWithTagsResult(t)
-	return t
+	asserts.AssertCreateStreamingDistributionWithTagsResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListDistributionsRequest = { ["Marker"] = true, ["MaxItems"] = true, nil }
@@ -3170,13 +4281,26 @@ end
 -- * MaxItems [string] <p>The maximum number of distributions you want in the response body.</p>
 -- @return ListDistributionsRequest structure as a key-value pair table
 function M.ListDistributionsRequest(args)
-	assert(args, "You must provdide an argument table when creating ListDistributionsRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListDistributionsRequest")
+    local query_args = { 
+        ["Marker"] = args["Marker"],
+        ["MaxItems"] = args["MaxItems"],
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Marker"] = args["Marker"],
 		["MaxItems"] = args["MaxItems"],
 	}
-	asserts.AssertListDistributionsRequest(t)
-	return t
+	asserts.AssertListDistributionsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.StreamingDistributionList = { ["Items"] = true, ["NextMarker"] = true, ["MaxItems"] = true, ["Marker"] = true, ["IsTruncated"] = true, ["Quantity"] = true, nil }
@@ -3215,8 +4339,14 @@ end
 -- Required key: Quantity
 -- @return StreamingDistributionList structure as a key-value pair table
 function M.StreamingDistributionList(args)
-	assert(args, "You must provdide an argument table when creating StreamingDistributionList")
-	local t = { 
+	assert(args, "You must provide an argument table when creating StreamingDistributionList")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Items"] = args["Items"],
 		["NextMarker"] = args["NextMarker"],
 		["MaxItems"] = args["MaxItems"],
@@ -3224,8 +4354,13 @@ function M.StreamingDistributionList(args)
 		["IsTruncated"] = args["IsTruncated"],
 		["Quantity"] = args["Quantity"],
 	}
-	asserts.AssertStreamingDistributionList(t)
-	return t
+	asserts.AssertStreamingDistributionList(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetStreamingDistributionConfigRequest = { ["Id"] = true, nil }
@@ -3248,12 +4383,24 @@ end
 -- Required key: Id
 -- @return GetStreamingDistributionConfigRequest structure as a key-value pair table
 function M.GetStreamingDistributionConfigRequest(args)
-	assert(args, "You must provdide an argument table when creating GetStreamingDistributionConfigRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetStreamingDistributionConfigRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{Id}"] = args["Id"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Id"] = args["Id"],
 	}
-	asserts.AssertGetStreamingDistributionConfigRequest(t)
-	return t
+	asserts.AssertGetStreamingDistributionConfigRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Restrictions = { ["GeoRestriction"] = true, nil }
@@ -3276,12 +4423,23 @@ end
 -- Required key: GeoRestriction
 -- @return Restrictions structure as a key-value pair table
 function M.Restrictions(args)
-	assert(args, "You must provdide an argument table when creating Restrictions")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Restrictions")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["GeoRestriction"] = args["GeoRestriction"],
 	}
-	asserts.AssertRestrictions(t)
-	return t
+	asserts.AssertRestrictions(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidViewerCertificate = { ["Message"] = true, nil }
@@ -3302,12 +4460,23 @@ end
 -- * Message [string] 
 -- @return InvalidViewerCertificate structure as a key-value pair table
 function M.InvalidViewerCertificate(args)
-	assert(args, "You must provdide an argument table when creating InvalidViewerCertificate")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidViewerCertificate")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Message"] = args["Message"],
 	}
-	asserts.AssertInvalidViewerCertificate(t)
-	return t
+	asserts.AssertInvalidViewerCertificate(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.TooManyStreamingDistributionCNAMEs = { ["Message"] = true, nil }
@@ -3328,12 +4497,23 @@ end
 -- * Message [string] 
 -- @return TooManyStreamingDistributionCNAMEs structure as a key-value pair table
 function M.TooManyStreamingDistributionCNAMEs(args)
-	assert(args, "You must provdide an argument table when creating TooManyStreamingDistributionCNAMEs")
-	local t = { 
+	assert(args, "You must provide an argument table when creating TooManyStreamingDistributionCNAMEs")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Message"] = args["Message"],
 	}
-	asserts.AssertTooManyStreamingDistributionCNAMEs(t)
-	return t
+	asserts.AssertTooManyStreamingDistributionCNAMEs(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.TrustedSignerDoesNotExist = { ["Message"] = true, nil }
@@ -3354,12 +4534,23 @@ end
 -- * Message [string] 
 -- @return TrustedSignerDoesNotExist structure as a key-value pair table
 function M.TrustedSignerDoesNotExist(args)
-	assert(args, "You must provdide an argument table when creating TrustedSignerDoesNotExist")
-	local t = { 
+	assert(args, "You must provide an argument table when creating TrustedSignerDoesNotExist")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Message"] = args["Message"],
 	}
-	asserts.AssertTrustedSignerDoesNotExist(t)
-	return t
+	asserts.AssertTrustedSignerDoesNotExist(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.TooManyOriginCustomHeaders = { ["Message"] = true, nil }
@@ -3380,12 +4571,23 @@ end
 -- * Message [string] 
 -- @return TooManyOriginCustomHeaders structure as a key-value pair table
 function M.TooManyOriginCustomHeaders(args)
-	assert(args, "You must provdide an argument table when creating TooManyOriginCustomHeaders")
-	local t = { 
+	assert(args, "You must provide an argument table when creating TooManyOriginCustomHeaders")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Message"] = args["Message"],
 	}
-	asserts.AssertTooManyOriginCustomHeaders(t)
-	return t
+	asserts.AssertTooManyOriginCustomHeaders(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListDistributionsResult = { ["DistributionList"] = true, nil }
@@ -3406,12 +4608,23 @@ end
 -- * DistributionList [DistributionList] <p>The <code>DistributionList</code> type. </p>
 -- @return ListDistributionsResult structure as a key-value pair table
 function M.ListDistributionsResult(args)
-	assert(args, "You must provdide an argument table when creating ListDistributionsResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListDistributionsResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DistributionList"] = args["DistributionList"],
 	}
-	asserts.AssertListDistributionsResult(t)
-	return t
+	asserts.AssertListDistributionsResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidationBatch = { ["Paths"] = true, ["CallerReference"] = true, nil }
@@ -3438,13 +4651,24 @@ end
 -- Required key: CallerReference
 -- @return InvalidationBatch structure as a key-value pair table
 function M.InvalidationBatch(args)
-	assert(args, "You must provdide an argument table when creating InvalidationBatch")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidationBatch")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Paths"] = args["Paths"],
 		["CallerReference"] = args["CallerReference"],
 	}
-	asserts.AssertInvalidationBatch(t)
-	return t
+	asserts.AssertInvalidationBatch(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetDistributionResult = { ["Distribution"] = true, ["ETag"] = true, nil }
@@ -3467,13 +4691,25 @@ end
 -- * ETag [string] <p>The current version of the distribution's information. For example: <code>E2QWRUHAPOMQZL</code>.</p>
 -- @return GetDistributionResult structure as a key-value pair table
 function M.GetDistributionResult(args)
-	assert(args, "You must provdide an argument table when creating GetDistributionResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetDistributionResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+        ["ETag"] = args["ETag"],
+    }
+	local all_args = { 
 		["Distribution"] = args["Distribution"],
 		["ETag"] = args["ETag"],
 	}
-	asserts.AssertGetDistributionResult(t)
-	return t
+	asserts.AssertGetDistributionResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdateStreamingDistributionRequest = { ["IfMatch"] = true, ["Id"] = true, ["StreamingDistributionConfig"] = true, nil }
@@ -3502,14 +4738,27 @@ end
 -- Required key: Id
 -- @return UpdateStreamingDistributionRequest structure as a key-value pair table
 function M.UpdateStreamingDistributionRequest(args)
-	assert(args, "You must provdide an argument table when creating UpdateStreamingDistributionRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateStreamingDistributionRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{Id}"] = args["Id"],
+    }
+    local header_args = { 
+        ["If-Match"] = args["IfMatch"],
+    }
+	local all_args = { 
 		["IfMatch"] = args["IfMatch"],
 		["Id"] = args["Id"],
 		["StreamingDistributionConfig"] = args["StreamingDistributionConfig"],
 	}
-	asserts.AssertUpdateStreamingDistributionRequest(t)
-	return t
+	asserts.AssertUpdateStreamingDistributionRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListCloudFrontOriginAccessIdentitiesResult = { ["CloudFrontOriginAccessIdentityList"] = true, nil }
@@ -3530,12 +4779,23 @@ end
 -- * CloudFrontOriginAccessIdentityList [CloudFrontOriginAccessIdentityList] <p>The <code>CloudFrontOriginAccessIdentityList</code> type. </p>
 -- @return ListCloudFrontOriginAccessIdentitiesResult structure as a key-value pair table
 function M.ListCloudFrontOriginAccessIdentitiesResult(args)
-	assert(args, "You must provdide an argument table when creating ListCloudFrontOriginAccessIdentitiesResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListCloudFrontOriginAccessIdentitiesResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["CloudFrontOriginAccessIdentityList"] = args["CloudFrontOriginAccessIdentityList"],
 	}
-	asserts.AssertListCloudFrontOriginAccessIdentitiesResult(t)
-	return t
+	asserts.AssertListCloudFrontOriginAccessIdentitiesResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateInvalidationRequest = { ["InvalidationBatch"] = true, ["DistributionId"] = true, nil }
@@ -3562,13 +4822,25 @@ end
 -- Required key: InvalidationBatch
 -- @return CreateInvalidationRequest structure as a key-value pair table
 function M.CreateInvalidationRequest(args)
-	assert(args, "You must provdide an argument table when creating CreateInvalidationRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateInvalidationRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{DistributionId}"] = args["DistributionId"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["InvalidationBatch"] = args["InvalidationBatch"],
 		["DistributionId"] = args["DistributionId"],
 	}
-	asserts.AssertCreateInvalidationRequest(t)
-	return t
+	asserts.AssertCreateInvalidationRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.TooManyDistributionCNAMEs = { ["Message"] = true, nil }
@@ -3589,12 +4861,23 @@ end
 -- * Message [string] 
 -- @return TooManyDistributionCNAMEs structure as a key-value pair table
 function M.TooManyDistributionCNAMEs(args)
-	assert(args, "You must provdide an argument table when creating TooManyDistributionCNAMEs")
-	local t = { 
+	assert(args, "You must provide an argument table when creating TooManyDistributionCNAMEs")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Message"] = args["Message"],
 	}
-	asserts.AssertTooManyDistributionCNAMEs(t)
-	return t
+	asserts.AssertTooManyDistributionCNAMEs(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.TooManyHeadersInForwardedValues = { ["Message"] = true, nil }
@@ -3615,12 +4898,23 @@ end
 -- * Message [string] 
 -- @return TooManyHeadersInForwardedValues structure as a key-value pair table
 function M.TooManyHeadersInForwardedValues(args)
-	assert(args, "You must provdide an argument table when creating TooManyHeadersInForwardedValues")
-	local t = { 
+	assert(args, "You must provide an argument table when creating TooManyHeadersInForwardedValues")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Message"] = args["Message"],
 	}
-	asserts.AssertTooManyHeadersInForwardedValues(t)
-	return t
+	asserts.AssertTooManyHeadersInForwardedValues(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DistributionSummary = { ["Status"] = true, ["CacheBehaviors"] = true, ["Restrictions"] = true, ["Origins"] = true, ["DomainName"] = true, ["WebACLId"] = true, ["PriceClass"] = true, ["Enabled"] = true, ["DefaultCacheBehavior"] = true, ["IsIPV6Enabled"] = true, ["Comment"] = true, ["ViewerCertificate"] = true, ["CustomErrorResponses"] = true, ["LastModifiedTime"] = true, ["HttpVersion"] = true, ["Id"] = true, ["ARN"] = true, ["Aliases"] = true, nil }
@@ -3711,8 +5005,14 @@ end
 -- Required key: IsIPV6Enabled
 -- @return DistributionSummary structure as a key-value pair table
 function M.DistributionSummary(args)
-	assert(args, "You must provdide an argument table when creating DistributionSummary")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DistributionSummary")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Status"] = args["Status"],
 		["CacheBehaviors"] = args["CacheBehaviors"],
 		["Restrictions"] = args["Restrictions"],
@@ -3732,8 +5032,13 @@ function M.DistributionSummary(args)
 		["ARN"] = args["ARN"],
 		["Aliases"] = args["Aliases"],
 	}
-	asserts.AssertDistributionSummary(t)
-	return t
+	asserts.AssertDistributionSummary(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.StreamingDistributionConfig = { ["S3Origin"] = true, ["Comment"] = true, ["Logging"] = true, ["PriceClass"] = true, ["Enabled"] = true, ["TrustedSigners"] = true, ["CallerReference"] = true, ["Aliases"] = true, nil }
@@ -3778,8 +5083,14 @@ end
 -- Required key: Enabled
 -- @return StreamingDistributionConfig structure as a key-value pair table
 function M.StreamingDistributionConfig(args)
-	assert(args, "You must provdide an argument table when creating StreamingDistributionConfig")
-	local t = { 
+	assert(args, "You must provide an argument table when creating StreamingDistributionConfig")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["S3Origin"] = args["S3Origin"],
 		["Comment"] = args["Comment"],
 		["Logging"] = args["Logging"],
@@ -3789,8 +5100,13 @@ function M.StreamingDistributionConfig(args)
 		["CallerReference"] = args["CallerReference"],
 		["Aliases"] = args["Aliases"],
 	}
-	asserts.AssertStreamingDistributionConfig(t)
-	return t
+	asserts.AssertStreamingDistributionConfig(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateDistributionWithTagsRequest = { ["DistributionConfigWithTags"] = true, nil }
@@ -3813,12 +5129,23 @@ end
 -- Required key: DistributionConfigWithTags
 -- @return CreateDistributionWithTagsRequest structure as a key-value pair table
 function M.CreateDistributionWithTagsRequest(args)
-	assert(args, "You must provdide an argument table when creating CreateDistributionWithTagsRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateDistributionWithTagsRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DistributionConfigWithTags"] = args["DistributionConfigWithTags"],
 	}
-	asserts.AssertCreateDistributionWithTagsRequest(t)
-	return t
+	asserts.AssertCreateDistributionWithTagsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteStreamingDistributionRequest = { ["Id"] = true, ["IfMatch"] = true, nil }
@@ -3843,13 +5170,26 @@ end
 -- Required key: Id
 -- @return DeleteStreamingDistributionRequest structure as a key-value pair table
 function M.DeleteStreamingDistributionRequest(args)
-	assert(args, "You must provdide an argument table when creating DeleteStreamingDistributionRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteStreamingDistributionRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{Id}"] = args["Id"],
+    }
+    local header_args = { 
+        ["If-Match"] = args["IfMatch"],
+    }
+	local all_args = { 
 		["Id"] = args["Id"],
 		["IfMatch"] = args["IfMatch"],
 	}
-	asserts.AssertDeleteStreamingDistributionRequest(t)
-	return t
+	asserts.AssertDeleteStreamingDistributionRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.StreamingLoggingConfig = { ["Bucket"] = true, ["Prefix"] = true, ["Enabled"] = true, nil }
@@ -3880,14 +5220,25 @@ end
 -- Required key: Prefix
 -- @return StreamingLoggingConfig structure as a key-value pair table
 function M.StreamingLoggingConfig(args)
-	assert(args, "You must provdide an argument table when creating StreamingLoggingConfig")
-	local t = { 
+	assert(args, "You must provide an argument table when creating StreamingLoggingConfig")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Bucket"] = args["Bucket"],
 		["Prefix"] = args["Prefix"],
 		["Enabled"] = args["Enabled"],
 	}
-	asserts.AssertStreamingLoggingConfig(t)
-	return t
+	asserts.AssertStreamingLoggingConfig(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CacheBehavior = { ["TrustedSigners"] = true, ["LambdaFunctionAssociations"] = true, ["TargetOriginId"] = true, ["ViewerProtocolPolicy"] = true, ["ForwardedValues"] = true, ["MaxTTL"] = true, ["PathPattern"] = true, ["SmoothStreaming"] = true, ["DefaultTTL"] = true, ["AllowedMethods"] = true, ["MinTTL"] = true, ["Compress"] = true, nil }
@@ -3942,8 +5293,14 @@ end
 -- Required key: MinTTL
 -- @return CacheBehavior structure as a key-value pair table
 function M.CacheBehavior(args)
-	assert(args, "You must provdide an argument table when creating CacheBehavior")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CacheBehavior")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["TrustedSigners"] = args["TrustedSigners"],
 		["LambdaFunctionAssociations"] = args["LambdaFunctionAssociations"],
 		["TargetOriginId"] = args["TargetOriginId"],
@@ -3957,8 +5314,13 @@ function M.CacheBehavior(args)
 		["MinTTL"] = args["MinTTL"],
 		["Compress"] = args["Compress"],
 	}
-	asserts.AssertCacheBehavior(t)
-	return t
+	asserts.AssertCacheBehavior(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.BatchTooLarge = { ["Message"] = true, nil }
@@ -3979,12 +5341,23 @@ end
 -- * Message [string] 
 -- @return BatchTooLarge structure as a key-value pair table
 function M.BatchTooLarge(args)
-	assert(args, "You must provdide an argument table when creating BatchTooLarge")
-	local t = { 
+	assert(args, "You must provide an argument table when creating BatchTooLarge")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Message"] = args["Message"],
 	}
-	asserts.AssertBatchTooLarge(t)
-	return t
+	asserts.AssertBatchTooLarge(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.S3Origin = { ["OriginAccessIdentity"] = true, ["DomainName"] = true, nil }
@@ -4011,13 +5384,24 @@ end
 -- Required key: OriginAccessIdentity
 -- @return S3Origin structure as a key-value pair table
 function M.S3Origin(args)
-	assert(args, "You must provdide an argument table when creating S3Origin")
-	local t = { 
+	assert(args, "You must provide an argument table when creating S3Origin")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["OriginAccessIdentity"] = args["OriginAccessIdentity"],
 		["DomainName"] = args["DomainName"],
 	}
-	asserts.AssertS3Origin(t)
-	return t
+	asserts.AssertS3Origin(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Paths = { ["Items"] = true, ["Quantity"] = true, nil }
@@ -4042,13 +5426,24 @@ end
 -- Required key: Quantity
 -- @return Paths structure as a key-value pair table
 function M.Paths(args)
-	assert(args, "You must provdide an argument table when creating Paths")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Paths")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Items"] = args["Items"],
 		["Quantity"] = args["Quantity"],
 	}
-	asserts.AssertPaths(t)
-	return t
+	asserts.AssertPaths(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdateDistributionResult = { ["Distribution"] = true, ["ETag"] = true, nil }
@@ -4071,13 +5466,25 @@ end
 -- * ETag [string] <p>The current version of the configuration. For example: <code>E2QWRUHAPOMQZL</code>.</p>
 -- @return UpdateDistributionResult structure as a key-value pair table
 function M.UpdateDistributionResult(args)
-	assert(args, "You must provdide an argument table when creating UpdateDistributionResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateDistributionResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+        ["ETag"] = args["ETag"],
+    }
+	local all_args = { 
 		["Distribution"] = args["Distribution"],
 		["ETag"] = args["ETag"],
 	}
-	asserts.AssertUpdateDistributionResult(t)
-	return t
+	asserts.AssertUpdateDistributionResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.KeyPairIds = { ["Items"] = true, ["Quantity"] = true, nil }
@@ -4102,13 +5509,24 @@ end
 -- Required key: Quantity
 -- @return KeyPairIds structure as a key-value pair table
 function M.KeyPairIds(args)
-	assert(args, "You must provdide an argument table when creating KeyPairIds")
-	local t = { 
+	assert(args, "You must provide an argument table when creating KeyPairIds")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Items"] = args["Items"],
 		["Quantity"] = args["Quantity"],
 	}
-	asserts.AssertKeyPairIds(t)
-	return t
+	asserts.AssertKeyPairIds(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.TooManyCookieNamesInWhiteList = { ["Message"] = true, nil }
@@ -4129,12 +5547,23 @@ end
 -- * Message [string] 
 -- @return TooManyCookieNamesInWhiteList structure as a key-value pair table
 function M.TooManyCookieNamesInWhiteList(args)
-	assert(args, "You must provdide an argument table when creating TooManyCookieNamesInWhiteList")
-	local t = { 
+	assert(args, "You must provide an argument table when creating TooManyCookieNamesInWhiteList")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Message"] = args["Message"],
 	}
-	asserts.AssertTooManyCookieNamesInWhiteList(t)
-	return t
+	asserts.AssertTooManyCookieNamesInWhiteList(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateDistributionWithTagsResult = { ["Distribution"] = true, ["ETag"] = true, ["Location"] = true, nil }
@@ -4159,14 +5588,27 @@ end
 -- * Location [string] <p>The fully qualified URI of the new distribution resource just created. For example: <code>https://cloudfront.amazonaws.com/2010-11-01/distribution/EDFDVBD632BHDS5</code>. </p>
 -- @return CreateDistributionWithTagsResult structure as a key-value pair table
 function M.CreateDistributionWithTagsResult(args)
-	assert(args, "You must provdide an argument table when creating CreateDistributionWithTagsResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateDistributionWithTagsResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+        ["ETag"] = args["ETag"],
+        ["Location"] = args["Location"],
+    }
+	local all_args = { 
 		["Distribution"] = args["Distribution"],
 		["ETag"] = args["ETag"],
 		["Location"] = args["Location"],
 	}
-	asserts.AssertCreateDistributionWithTagsResult(t)
-	return t
+	asserts.AssertCreateDistributionWithTagsResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateCloudFrontOriginAccessIdentityResult = { ["CloudFrontOriginAccessIdentity"] = true, ["ETag"] = true, ["Location"] = true, nil }
@@ -4191,14 +5633,27 @@ end
 -- * Location [string] <p>The fully qualified URI of the new origin access identity just created. For example: <code>https://cloudfront.amazonaws.com/2010-11-01/origin-access-identity/cloudfront/E74FTE3AJFJ256A</code>.</p>
 -- @return CreateCloudFrontOriginAccessIdentityResult structure as a key-value pair table
 function M.CreateCloudFrontOriginAccessIdentityResult(args)
-	assert(args, "You must provdide an argument table when creating CreateCloudFrontOriginAccessIdentityResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateCloudFrontOriginAccessIdentityResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+        ["ETag"] = args["ETag"],
+        ["Location"] = args["Location"],
+    }
+	local all_args = { 
 		["CloudFrontOriginAccessIdentity"] = args["CloudFrontOriginAccessIdentity"],
 		["ETag"] = args["ETag"],
 		["Location"] = args["Location"],
 	}
-	asserts.AssertCreateCloudFrontOriginAccessIdentityResult(t)
-	return t
+	asserts.AssertCreateCloudFrontOriginAccessIdentityResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.QueryStringCacheKeys = { ["Items"] = true, ["Quantity"] = true, nil }
@@ -4223,13 +5678,24 @@ end
 -- Required key: Quantity
 -- @return QueryStringCacheKeys structure as a key-value pair table
 function M.QueryStringCacheKeys(args)
-	assert(args, "You must provdide an argument table when creating QueryStringCacheKeys")
-	local t = { 
+	assert(args, "You must provide an argument table when creating QueryStringCacheKeys")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Items"] = args["Items"],
 		["Quantity"] = args["Quantity"],
 	}
-	asserts.AssertQueryStringCacheKeys(t)
-	return t
+	asserts.AssertQueryStringCacheKeys(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.IllegalUpdate = { ["Message"] = true, nil }
@@ -4250,12 +5716,23 @@ end
 -- * Message [string] 
 -- @return IllegalUpdate structure as a key-value pair table
 function M.IllegalUpdate(args)
-	assert(args, "You must provdide an argument table when creating IllegalUpdate")
-	local t = { 
+	assert(args, "You must provide an argument table when creating IllegalUpdate")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Message"] = args["Message"],
 	}
-	asserts.AssertIllegalUpdate(t)
-	return t
+	asserts.AssertIllegalUpdate(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CustomHeaders = { ["Items"] = true, ["Quantity"] = true, nil }
@@ -4280,13 +5757,24 @@ end
 -- Required key: Quantity
 -- @return CustomHeaders structure as a key-value pair table
 function M.CustomHeaders(args)
-	assert(args, "You must provdide an argument table when creating CustomHeaders")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CustomHeaders")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Items"] = args["Items"],
 		["Quantity"] = args["Quantity"],
 	}
-	asserts.AssertCustomHeaders(t)
-	return t
+	asserts.AssertCustomHeaders(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetStreamingDistributionRequest = { ["Id"] = true, nil }
@@ -4309,12 +5797,24 @@ end
 -- Required key: Id
 -- @return GetStreamingDistributionRequest structure as a key-value pair table
 function M.GetStreamingDistributionRequest(args)
-	assert(args, "You must provdide an argument table when creating GetStreamingDistributionRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetStreamingDistributionRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{Id}"] = args["Id"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Id"] = args["Id"],
 	}
-	asserts.AssertGetStreamingDistributionRequest(t)
-	return t
+	asserts.AssertGetStreamingDistributionRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ActiveTrustedSigners = { ["Items"] = true, ["Enabled"] = true, ["Quantity"] = true, nil }
@@ -4343,14 +5843,25 @@ end
 -- Required key: Quantity
 -- @return ActiveTrustedSigners structure as a key-value pair table
 function M.ActiveTrustedSigners(args)
-	assert(args, "You must provdide an argument table when creating ActiveTrustedSigners")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ActiveTrustedSigners")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Items"] = args["Items"],
 		["Enabled"] = args["Enabled"],
 		["Quantity"] = args["Quantity"],
 	}
-	asserts.AssertActiveTrustedSigners(t)
-	return t
+	asserts.AssertActiveTrustedSigners(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.TooManyCloudFrontOriginAccessIdentities = { ["Message"] = true, nil }
@@ -4371,12 +5882,23 @@ end
 -- * Message [string] 
 -- @return TooManyCloudFrontOriginAccessIdentities structure as a key-value pair table
 function M.TooManyCloudFrontOriginAccessIdentities(args)
-	assert(args, "You must provdide an argument table when creating TooManyCloudFrontOriginAccessIdentities")
-	local t = { 
+	assert(args, "You must provide an argument table when creating TooManyCloudFrontOriginAccessIdentities")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Message"] = args["Message"],
 	}
-	asserts.AssertTooManyCloudFrontOriginAccessIdentities(t)
-	return t
+	asserts.AssertTooManyCloudFrontOriginAccessIdentities(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateStreamingDistributionWithTagsRequest = { ["StreamingDistributionConfigWithTags"] = true, nil }
@@ -4399,12 +5921,23 @@ end
 -- Required key: StreamingDistributionConfigWithTags
 -- @return CreateStreamingDistributionWithTagsRequest structure as a key-value pair table
 function M.CreateStreamingDistributionWithTagsRequest(args)
-	assert(args, "You must provdide an argument table when creating CreateStreamingDistributionWithTagsRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateStreamingDistributionWithTagsRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["StreamingDistributionConfigWithTags"] = args["StreamingDistributionConfigWithTags"],
 	}
-	asserts.AssertCreateStreamingDistributionWithTagsRequest(t)
-	return t
+	asserts.AssertCreateStreamingDistributionWithTagsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AccessDenied = { ["Message"] = true, nil }
@@ -4425,12 +5958,23 @@ end
 -- * Message [string] 
 -- @return AccessDenied structure as a key-value pair table
 function M.AccessDenied(args)
-	assert(args, "You must provdide an argument table when creating AccessDenied")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AccessDenied")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Message"] = args["Message"],
 	}
-	asserts.AssertAccessDenied(t)
-	return t
+	asserts.AssertAccessDenied(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.LoggingConfig = { ["Bucket"] = true, ["Prefix"] = true, ["Enabled"] = true, ["IncludeCookies"] = true, nil }
@@ -4465,15 +6009,26 @@ end
 -- Required key: Prefix
 -- @return LoggingConfig structure as a key-value pair table
 function M.LoggingConfig(args)
-	assert(args, "You must provdide an argument table when creating LoggingConfig")
-	local t = { 
+	assert(args, "You must provide an argument table when creating LoggingConfig")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Bucket"] = args["Bucket"],
 		["Prefix"] = args["Prefix"],
 		["Enabled"] = args["Enabled"],
 		["IncludeCookies"] = args["IncludeCookies"],
 	}
-	asserts.AssertLoggingConfig(t)
-	return t
+	asserts.AssertLoggingConfig(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ForwardedValues = { ["Headers"] = true, ["Cookies"] = true, ["QueryStringCacheKeys"] = true, ["QueryString"] = true, nil }
@@ -4504,15 +6059,26 @@ end
 -- Required key: Cookies
 -- @return ForwardedValues structure as a key-value pair table
 function M.ForwardedValues(args)
-	assert(args, "You must provdide an argument table when creating ForwardedValues")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ForwardedValues")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Headers"] = args["Headers"],
 		["Cookies"] = args["Cookies"],
 		["QueryStringCacheKeys"] = args["QueryStringCacheKeys"],
 		["QueryString"] = args["QueryString"],
 	}
-	asserts.AssertForwardedValues(t)
-	return t
+	asserts.AssertForwardedValues(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.TooManyTrustedSigners = { ["Message"] = true, nil }
@@ -4533,12 +6099,23 @@ end
 -- * Message [string] 
 -- @return TooManyTrustedSigners structure as a key-value pair table
 function M.TooManyTrustedSigners(args)
-	assert(args, "You must provdide an argument table when creating TooManyTrustedSigners")
-	local t = { 
+	assert(args, "You must provide an argument table when creating TooManyTrustedSigners")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Message"] = args["Message"],
 	}
-	asserts.AssertTooManyTrustedSigners(t)
-	return t
+	asserts.AssertTooManyTrustedSigners(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListInvalidationsRequest = { ["Marker"] = true, ["DistributionId"] = true, ["MaxItems"] = true, nil }
@@ -4565,14 +6142,28 @@ end
 -- Required key: DistributionId
 -- @return ListInvalidationsRequest structure as a key-value pair table
 function M.ListInvalidationsRequest(args)
-	assert(args, "You must provdide an argument table when creating ListInvalidationsRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListInvalidationsRequest")
+    local query_args = { 
+        ["Marker"] = args["Marker"],
+        ["MaxItems"] = args["MaxItems"],
+    }
+    local uri_args = { 
+        ["{DistributionId}"] = args["DistributionId"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Marker"] = args["Marker"],
 		["DistributionId"] = args["DistributionId"],
 		["MaxItems"] = args["MaxItems"],
 	}
-	asserts.AssertListInvalidationsRequest(t)
-	return t
+	asserts.AssertListInvalidationsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidErrorCode = { ["Message"] = true, nil }
@@ -4593,12 +6184,23 @@ end
 -- * Message [string] 
 -- @return InvalidErrorCode structure as a key-value pair table
 function M.InvalidErrorCode(args)
-	assert(args, "You must provdide an argument table when creating InvalidErrorCode")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidErrorCode")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Message"] = args["Message"],
 	}
-	asserts.AssertInvalidErrorCode(t)
-	return t
+	asserts.AssertInvalidErrorCode(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdateCloudFrontOriginAccessIdentityRequest = { ["CloudFrontOriginAccessIdentityConfig"] = true, ["Id"] = true, ["IfMatch"] = true, nil }
@@ -4627,14 +6229,27 @@ end
 -- Required key: Id
 -- @return UpdateCloudFrontOriginAccessIdentityRequest structure as a key-value pair table
 function M.UpdateCloudFrontOriginAccessIdentityRequest(args)
-	assert(args, "You must provdide an argument table when creating UpdateCloudFrontOriginAccessIdentityRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateCloudFrontOriginAccessIdentityRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{Id}"] = args["Id"],
+    }
+    local header_args = { 
+        ["If-Match"] = args["IfMatch"],
+    }
+	local all_args = { 
 		["CloudFrontOriginAccessIdentityConfig"] = args["CloudFrontOriginAccessIdentityConfig"],
 		["Id"] = args["Id"],
 		["IfMatch"] = args["IfMatch"],
 	}
-	asserts.AssertUpdateCloudFrontOriginAccessIdentityRequest(t)
-	return t
+	asserts.AssertUpdateCloudFrontOriginAccessIdentityRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DistributionNotDisabled = { ["Message"] = true, nil }
@@ -4655,12 +6270,23 @@ end
 -- * Message [string] 
 -- @return DistributionNotDisabled structure as a key-value pair table
 function M.DistributionNotDisabled(args)
-	assert(args, "You must provdide an argument table when creating DistributionNotDisabled")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DistributionNotDisabled")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Message"] = args["Message"],
 	}
-	asserts.AssertDistributionNotDisabled(t)
-	return t
+	asserts.AssertDistributionNotDisabled(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.LambdaFunctionAssociation = { ["EventType"] = true, ["LambdaFunctionARN"] = true, nil }
@@ -4683,13 +6309,24 @@ end
 -- * LambdaFunctionARN [string] <p>The ARN of the Lambda function.</p>
 -- @return LambdaFunctionAssociation structure as a key-value pair table
 function M.LambdaFunctionAssociation(args)
-	assert(args, "You must provdide an argument table when creating LambdaFunctionAssociation")
-	local t = { 
+	assert(args, "You must provide an argument table when creating LambdaFunctionAssociation")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["EventType"] = args["EventType"],
 		["LambdaFunctionARN"] = args["LambdaFunctionARN"],
 	}
-	asserts.AssertLambdaFunctionAssociation(t)
-	return t
+	asserts.AssertLambdaFunctionAssociation(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.StreamingDistributionConfigWithTags = { ["Tags"] = true, ["StreamingDistributionConfig"] = true, nil }
@@ -4716,13 +6353,24 @@ end
 -- Required key: Tags
 -- @return StreamingDistributionConfigWithTags structure as a key-value pair table
 function M.StreamingDistributionConfigWithTags(args)
-	assert(args, "You must provdide an argument table when creating StreamingDistributionConfigWithTags")
-	local t = { 
+	assert(args, "You must provide an argument table when creating StreamingDistributionConfigWithTags")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Tags"] = args["Tags"],
 		["StreamingDistributionConfig"] = args["StreamingDistributionConfig"],
 	}
-	asserts.AssertStreamingDistributionConfigWithTags(t)
-	return t
+	asserts.AssertStreamingDistributionConfigWithTags(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdateStreamingDistributionResult = { ["StreamingDistribution"] = true, ["ETag"] = true, nil }
@@ -4745,13 +6393,25 @@ end
 -- * ETag [string] <p>The current version of the configuration. For example: <code>E2QWRUHAPOMQZL</code>.</p>
 -- @return UpdateStreamingDistributionResult structure as a key-value pair table
 function M.UpdateStreamingDistributionResult(args)
-	assert(args, "You must provdide an argument table when creating UpdateStreamingDistributionResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateStreamingDistributionResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+        ["ETag"] = args["ETag"],
+    }
+	local all_args = { 
 		["StreamingDistribution"] = args["StreamingDistribution"],
 		["ETag"] = args["ETag"],
 	}
-	asserts.AssertUpdateStreamingDistributionResult(t)
-	return t
+	asserts.AssertUpdateStreamingDistributionResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteDistributionRequest = { ["Id"] = true, ["IfMatch"] = true, nil }
@@ -4776,13 +6436,26 @@ end
 -- Required key: Id
 -- @return DeleteDistributionRequest structure as a key-value pair table
 function M.DeleteDistributionRequest(args)
-	assert(args, "You must provdide an argument table when creating DeleteDistributionRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteDistributionRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{Id}"] = args["Id"],
+    }
+    local header_args = { 
+        ["If-Match"] = args["IfMatch"],
+    }
+	local all_args = { 
 		["Id"] = args["Id"],
 		["IfMatch"] = args["IfMatch"],
 	}
-	asserts.AssertDeleteDistributionRequest(t)
-	return t
+	asserts.AssertDeleteDistributionRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateStreamingDistributionResult = { ["StreamingDistribution"] = true, ["Location"] = true, ["ETag"] = true, nil }
@@ -4807,14 +6480,27 @@ end
 -- * ETag [string] <p>The current version of the streaming distribution created.</p>
 -- @return CreateStreamingDistributionResult structure as a key-value pair table
 function M.CreateStreamingDistributionResult(args)
-	assert(args, "You must provdide an argument table when creating CreateStreamingDistributionResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateStreamingDistributionResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+        ["Location"] = args["Location"],
+        ["ETag"] = args["ETag"],
+    }
+	local all_args = { 
 		["StreamingDistribution"] = args["StreamingDistribution"],
 		["Location"] = args["Location"],
 		["ETag"] = args["ETag"],
 	}
-	asserts.AssertCreateStreamingDistributionResult(t)
-	return t
+	asserts.AssertCreateStreamingDistributionResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListStreamingDistributionsResult = { ["StreamingDistributionList"] = true, nil }
@@ -4835,12 +6521,23 @@ end
 -- * StreamingDistributionList [StreamingDistributionList] <p>The <code>StreamingDistributionList</code> type. </p>
 -- @return ListStreamingDistributionsResult structure as a key-value pair table
 function M.ListStreamingDistributionsResult(args)
-	assert(args, "You must provdide an argument table when creating ListStreamingDistributionsResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListStreamingDistributionsResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["StreamingDistributionList"] = args["StreamingDistributionList"],
 	}
-	asserts.AssertListStreamingDistributionsResult(t)
-	return t
+	asserts.AssertListStreamingDistributionsResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteCloudFrontOriginAccessIdentityRequest = { ["Id"] = true, ["IfMatch"] = true, nil }
@@ -4865,13 +6562,26 @@ end
 -- Required key: Id
 -- @return DeleteCloudFrontOriginAccessIdentityRequest structure as a key-value pair table
 function M.DeleteCloudFrontOriginAccessIdentityRequest(args)
-	assert(args, "You must provdide an argument table when creating DeleteCloudFrontOriginAccessIdentityRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteCloudFrontOriginAccessIdentityRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{Id}"] = args["Id"],
+    }
+    local header_args = { 
+        ["If-Match"] = args["IfMatch"],
+    }
+	local all_args = { 
 		["Id"] = args["Id"],
 		["IfMatch"] = args["IfMatch"],
 	}
-	asserts.AssertDeleteCloudFrontOriginAccessIdentityRequest(t)
-	return t
+	asserts.AssertDeleteCloudFrontOriginAccessIdentityRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListDistributionsByWebACLIdRequest = { ["Marker"] = true, ["WebACLId"] = true, ["MaxItems"] = true, nil }
@@ -4898,14 +6608,28 @@ end
 -- Required key: WebACLId
 -- @return ListDistributionsByWebACLIdRequest structure as a key-value pair table
 function M.ListDistributionsByWebACLIdRequest(args)
-	assert(args, "You must provdide an argument table when creating ListDistributionsByWebACLIdRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListDistributionsByWebACLIdRequest")
+    local query_args = { 
+        ["Marker"] = args["Marker"],
+        ["MaxItems"] = args["MaxItems"],
+    }
+    local uri_args = { 
+        ["{WebACLId}"] = args["WebACLId"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Marker"] = args["Marker"],
 		["WebACLId"] = args["WebACLId"],
 		["MaxItems"] = args["MaxItems"],
 	}
-	asserts.AssertListDistributionsByWebACLIdRequest(t)
-	return t
+	asserts.AssertListDistributionsByWebACLIdRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetInvalidationRequest = { ["DistributionId"] = true, ["Id"] = true, nil }
@@ -4932,13 +6656,26 @@ end
 -- Required key: Id
 -- @return GetInvalidationRequest structure as a key-value pair table
 function M.GetInvalidationRequest(args)
-	assert(args, "You must provdide an argument table when creating GetInvalidationRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetInvalidationRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{DistributionId}"] = args["DistributionId"],
+        ["{Id}"] = args["Id"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DistributionId"] = args["DistributionId"],
 		["Id"] = args["Id"],
 	}
-	asserts.AssertGetInvalidationRequest(t)
-	return t
+	asserts.AssertGetInvalidationRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateCloudFrontOriginAccessIdentityRequest = { ["CloudFrontOriginAccessIdentityConfig"] = true, nil }
@@ -4961,12 +6698,23 @@ end
 -- Required key: CloudFrontOriginAccessIdentityConfig
 -- @return CreateCloudFrontOriginAccessIdentityRequest structure as a key-value pair table
 function M.CreateCloudFrontOriginAccessIdentityRequest(args)
-	assert(args, "You must provdide an argument table when creating CreateCloudFrontOriginAccessIdentityRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateCloudFrontOriginAccessIdentityRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["CloudFrontOriginAccessIdentityConfig"] = args["CloudFrontOriginAccessIdentityConfig"],
 	}
-	asserts.AssertCreateCloudFrontOriginAccessIdentityRequest(t)
-	return t
+	asserts.AssertCreateCloudFrontOriginAccessIdentityRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetStreamingDistributionResult = { ["StreamingDistribution"] = true, ["ETag"] = true, nil }
@@ -4989,13 +6737,25 @@ end
 -- * ETag [string] <p>The current version of the streaming distribution's information. For example: <code>E2QWRUHAPOMQZL</code>.</p>
 -- @return GetStreamingDistributionResult structure as a key-value pair table
 function M.GetStreamingDistributionResult(args)
-	assert(args, "You must provdide an argument table when creating GetStreamingDistributionResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetStreamingDistributionResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+        ["ETag"] = args["ETag"],
+    }
+	local all_args = { 
 		["StreamingDistribution"] = args["StreamingDistribution"],
 		["ETag"] = args["ETag"],
 	}
-	asserts.AssertGetStreamingDistributionResult(t)
-	return t
+	asserts.AssertGetStreamingDistributionResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CustomOriginConfig = { ["OriginSslProtocols"] = true, ["OriginProtocolPolicy"] = true, ["OriginReadTimeout"] = true, ["HTTPPort"] = true, ["HTTPSPort"] = true, ["OriginKeepaliveTimeout"] = true, nil }
@@ -5032,8 +6792,14 @@ end
 -- Required key: OriginProtocolPolicy
 -- @return CustomOriginConfig structure as a key-value pair table
 function M.CustomOriginConfig(args)
-	assert(args, "You must provdide an argument table when creating CustomOriginConfig")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CustomOriginConfig")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["OriginSslProtocols"] = args["OriginSslProtocols"],
 		["OriginProtocolPolicy"] = args["OriginProtocolPolicy"],
 		["OriginReadTimeout"] = args["OriginReadTimeout"],
@@ -5041,8 +6807,13 @@ function M.CustomOriginConfig(args)
 		["HTTPSPort"] = args["HTTPSPort"],
 		["OriginKeepaliveTimeout"] = args["OriginKeepaliveTimeout"],
 	}
-	asserts.AssertCustomOriginConfig(t)
-	return t
+	asserts.AssertCustomOriginConfig(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetCloudFrontOriginAccessIdentityResult = { ["CloudFrontOriginAccessIdentity"] = true, ["ETag"] = true, nil }
@@ -5065,13 +6836,25 @@ end
 -- * ETag [string] <p>The current version of the origin access identity's information. For example: <code>E2QWRUHAPOMQZL</code>.</p>
 -- @return GetCloudFrontOriginAccessIdentityResult structure as a key-value pair table
 function M.GetCloudFrontOriginAccessIdentityResult(args)
-	assert(args, "You must provdide an argument table when creating GetCloudFrontOriginAccessIdentityResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetCloudFrontOriginAccessIdentityResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+        ["ETag"] = args["ETag"],
+    }
+	local all_args = { 
 		["CloudFrontOriginAccessIdentity"] = args["CloudFrontOriginAccessIdentity"],
 		["ETag"] = args["ETag"],
 	}
-	asserts.AssertGetCloudFrontOriginAccessIdentityResult(t)
-	return t
+	asserts.AssertGetCloudFrontOriginAccessIdentityResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidOriginKeepaliveTimeout = { ["Message"] = true, nil }
@@ -5092,12 +6875,23 @@ end
 -- * Message [string] 
 -- @return InvalidOriginKeepaliveTimeout structure as a key-value pair table
 function M.InvalidOriginKeepaliveTimeout(args)
-	assert(args, "You must provdide an argument table when creating InvalidOriginKeepaliveTimeout")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidOriginKeepaliveTimeout")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Message"] = args["Message"],
 	}
-	asserts.AssertInvalidOriginKeepaliveTimeout(t)
-	return t
+	asserts.AssertInvalidOriginKeepaliveTimeout(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GeoRestriction = { ["Items"] = true, ["RestrictionType"] = true, ["Quantity"] = true, nil }
@@ -5126,14 +6920,25 @@ end
 -- Required key: Quantity
 -- @return GeoRestriction structure as a key-value pair table
 function M.GeoRestriction(args)
-	assert(args, "You must provdide an argument table when creating GeoRestriction")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GeoRestriction")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Items"] = args["Items"],
 		["RestrictionType"] = args["RestrictionType"],
 		["Quantity"] = args["Quantity"],
 	}
-	asserts.AssertGeoRestriction(t)
-	return t
+	asserts.AssertGeoRestriction(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CookiePreference = { ["Forward"] = true, ["WhitelistedNames"] = true, nil }
@@ -5158,13 +6963,24 @@ end
 -- Required key: Forward
 -- @return CookiePreference structure as a key-value pair table
 function M.CookiePreference(args)
-	assert(args, "You must provdide an argument table when creating CookiePreference")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CookiePreference")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Forward"] = args["Forward"],
 		["WhitelistedNames"] = args["WhitelistedNames"],
 	}
-	asserts.AssertCookiePreference(t)
-	return t
+	asserts.AssertCookiePreference(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidLambdaFunctionAssociation = { ["Message"] = true, nil }
@@ -5185,12 +7001,23 @@ end
 -- * Message [string] 
 -- @return InvalidLambdaFunctionAssociation structure as a key-value pair table
 function M.InvalidLambdaFunctionAssociation(args)
-	assert(args, "You must provdide an argument table when creating InvalidLambdaFunctionAssociation")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidLambdaFunctionAssociation")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Message"] = args["Message"],
 	}
-	asserts.AssertInvalidLambdaFunctionAssociation(t)
-	return t
+	asserts.AssertInvalidLambdaFunctionAssociation(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.NoSuchDistribution = { ["Message"] = true, nil }
@@ -5211,12 +7038,23 @@ end
 -- * Message [string] 
 -- @return NoSuchDistribution structure as a key-value pair table
 function M.NoSuchDistribution(args)
-	assert(args, "You must provdide an argument table when creating NoSuchDistribution")
-	local t = { 
+	assert(args, "You must provide an argument table when creating NoSuchDistribution")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Message"] = args["Message"],
 	}
-	asserts.AssertNoSuchDistribution(t)
-	return t
+	asserts.AssertNoSuchDistribution(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 function asserts.AssertTagKey(str)
@@ -5823,8 +7661,11 @@ function M.UpdateStreamingDistribution2017_03_25Async(UpdateStreamingDistributio
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".UpdateStreamingDistribution2017_03_25",
 	}
+	for header,value in pairs(UpdateStreamingDistributionRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("PUT")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "PUT")
 	if request_handler then
 		request_handler(settings.uri, "/2017-03-25/streaming-distribution/{Id}/config", UpdateStreamingDistributionRequest, headers, settings, cb)
 	else
@@ -5855,8 +7696,11 @@ function M.ListDistributions2017_03_25Async(ListDistributionsRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".ListDistributions2017_03_25",
 	}
+	for header,value in pairs(ListDistributionsRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "GET")
 	if request_handler then
 		request_handler(settings.uri, "/2017-03-25/distribution", ListDistributionsRequest, headers, settings, cb)
 	else
@@ -5887,8 +7731,11 @@ function M.GetStreamingDistribution2017_03_25Async(GetStreamingDistributionReque
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".GetStreamingDistribution2017_03_25",
 	}
+	for header,value in pairs(GetStreamingDistributionRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "GET")
 	if request_handler then
 		request_handler(settings.uri, "/2017-03-25/streaming-distribution/{Id}", GetStreamingDistributionRequest, headers, settings, cb)
 	else
@@ -5919,8 +7766,11 @@ function M.CreateStreamingDistributionWithTags2017_03_25Async(CreateStreamingDis
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".CreateStreamingDistributionWithTags2017_03_25",
 	}
+	for header,value in pairs(CreateStreamingDistributionWithTagsRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/2017-03-25/streaming-distribution?WithTags", CreateStreamingDistributionWithTagsRequest, headers, settings, cb)
 	else
@@ -5951,8 +7801,11 @@ function M.CreateDistribution2017_03_25Async(CreateDistributionRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".CreateDistribution2017_03_25",
 	}
+	for header,value in pairs(CreateDistributionRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/2017-03-25/distribution", CreateDistributionRequest, headers, settings, cb)
 	else
@@ -5983,8 +7836,11 @@ function M.ListInvalidations2017_03_25Async(ListInvalidationsRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".ListInvalidations2017_03_25",
 	}
+	for header,value in pairs(ListInvalidationsRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "GET")
 	if request_handler then
 		request_handler(settings.uri, "/2017-03-25/distribution/{DistributionId}/invalidation", ListInvalidationsRequest, headers, settings, cb)
 	else
@@ -6015,8 +7871,11 @@ function M.ListStreamingDistributions2017_03_25Async(ListStreamingDistributionsR
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".ListStreamingDistributions2017_03_25",
 	}
+	for header,value in pairs(ListStreamingDistributionsRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "GET")
 	if request_handler then
 		request_handler(settings.uri, "/2017-03-25/streaming-distribution", ListStreamingDistributionsRequest, headers, settings, cb)
 	else
@@ -6047,8 +7906,11 @@ function M.UpdateDistribution2017_03_25Async(UpdateDistributionRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".UpdateDistribution2017_03_25",
 	}
+	for header,value in pairs(UpdateDistributionRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("PUT")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "PUT")
 	if request_handler then
 		request_handler(settings.uri, "/2017-03-25/distribution/{Id}/config", UpdateDistributionRequest, headers, settings, cb)
 	else
@@ -6079,8 +7941,11 @@ function M.CreateStreamingDistribution2017_03_25Async(CreateStreamingDistributio
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".CreateStreamingDistribution2017_03_25",
 	}
+	for header,value in pairs(CreateStreamingDistributionRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/2017-03-25/streaming-distribution", CreateStreamingDistributionRequest, headers, settings, cb)
 	else
@@ -6111,8 +7976,11 @@ function M.DeleteDistribution2017_03_25Async(DeleteDistributionRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DeleteDistribution2017_03_25",
 	}
+	for header,value in pairs(DeleteDistributionRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("DELETE")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "DELETE")
 	if request_handler then
 		request_handler(settings.uri, "/2017-03-25/distribution/{Id}", DeleteDistributionRequest, headers, settings, cb)
 	else
@@ -6143,8 +8011,11 @@ function M.TagResource2017_03_25Async(TagResourceRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".TagResource2017_03_25",
 	}
+	for header,value in pairs(TagResourceRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/2017-03-25/tagging?Operation=Tag", TagResourceRequest, headers, settings, cb)
 	else
@@ -6175,8 +8046,11 @@ function M.GetInvalidation2017_03_25Async(GetInvalidationRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".GetInvalidation2017_03_25",
 	}
+	for header,value in pairs(GetInvalidationRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "GET")
 	if request_handler then
 		request_handler(settings.uri, "/2017-03-25/distribution/{DistributionId}/invalidation/{Id}", GetInvalidationRequest, headers, settings, cb)
 	else
@@ -6207,8 +8081,11 @@ function M.DeleteCloudFrontOriginAccessIdentity2017_03_25Async(DeleteCloudFrontO
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DeleteCloudFrontOriginAccessIdentity2017_03_25",
 	}
+	for header,value in pairs(DeleteCloudFrontOriginAccessIdentityRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("DELETE")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "DELETE")
 	if request_handler then
 		request_handler(settings.uri, "/2017-03-25/origin-access-identity/cloudfront/{Id}", DeleteCloudFrontOriginAccessIdentityRequest, headers, settings, cb)
 	else
@@ -6239,8 +8116,11 @@ function M.ListCloudFrontOriginAccessIdentities2017_03_25Async(ListCloudFrontOri
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".ListCloudFrontOriginAccessIdentities2017_03_25",
 	}
+	for header,value in pairs(ListCloudFrontOriginAccessIdentitiesRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "GET")
 	if request_handler then
 		request_handler(settings.uri, "/2017-03-25/origin-access-identity/cloudfront", ListCloudFrontOriginAccessIdentitiesRequest, headers, settings, cb)
 	else
@@ -6271,8 +8151,11 @@ function M.GetStreamingDistributionConfig2017_03_25Async(GetStreamingDistributio
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".GetStreamingDistributionConfig2017_03_25",
 	}
+	for header,value in pairs(GetStreamingDistributionConfigRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "GET")
 	if request_handler then
 		request_handler(settings.uri, "/2017-03-25/streaming-distribution/{Id}/config", GetStreamingDistributionConfigRequest, headers, settings, cb)
 	else
@@ -6303,8 +8186,11 @@ function M.GetCloudFrontOriginAccessIdentity2017_03_25Async(GetCloudFrontOriginA
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".GetCloudFrontOriginAccessIdentity2017_03_25",
 	}
+	for header,value in pairs(GetCloudFrontOriginAccessIdentityRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "GET")
 	if request_handler then
 		request_handler(settings.uri, "/2017-03-25/origin-access-identity/cloudfront/{Id}", GetCloudFrontOriginAccessIdentityRequest, headers, settings, cb)
 	else
@@ -6335,8 +8221,11 @@ function M.GetDistribution2017_03_25Async(GetDistributionRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".GetDistribution2017_03_25",
 	}
+	for header,value in pairs(GetDistributionRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "GET")
 	if request_handler then
 		request_handler(settings.uri, "/2017-03-25/distribution/{Id}", GetDistributionRequest, headers, settings, cb)
 	else
@@ -6367,8 +8256,11 @@ function M.GetCloudFrontOriginAccessIdentityConfig2017_03_25Async(GetCloudFrontO
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".GetCloudFrontOriginAccessIdentityConfig2017_03_25",
 	}
+	for header,value in pairs(GetCloudFrontOriginAccessIdentityConfigRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "GET")
 	if request_handler then
 		request_handler(settings.uri, "/2017-03-25/origin-access-identity/cloudfront/{Id}/config", GetCloudFrontOriginAccessIdentityConfigRequest, headers, settings, cb)
 	else
@@ -6399,8 +8291,11 @@ function M.GetDistributionConfig2017_03_25Async(GetDistributionConfigRequest, cb
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".GetDistributionConfig2017_03_25",
 	}
+	for header,value in pairs(GetDistributionConfigRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "GET")
 	if request_handler then
 		request_handler(settings.uri, "/2017-03-25/distribution/{Id}/config", GetDistributionConfigRequest, headers, settings, cb)
 	else
@@ -6431,8 +8326,11 @@ function M.CreateCloudFrontOriginAccessIdentity2017_03_25Async(CreateCloudFrontO
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".CreateCloudFrontOriginAccessIdentity2017_03_25",
 	}
+	for header,value in pairs(CreateCloudFrontOriginAccessIdentityRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/2017-03-25/origin-access-identity/cloudfront", CreateCloudFrontOriginAccessIdentityRequest, headers, settings, cb)
 	else
@@ -6463,8 +8361,11 @@ function M.DeleteStreamingDistribution2017_03_25Async(DeleteStreamingDistributio
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DeleteStreamingDistribution2017_03_25",
 	}
+	for header,value in pairs(DeleteStreamingDistributionRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("DELETE")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "DELETE")
 	if request_handler then
 		request_handler(settings.uri, "/2017-03-25/streaming-distribution/{Id}", DeleteStreamingDistributionRequest, headers, settings, cb)
 	else
@@ -6495,8 +8396,11 @@ function M.CreateDistributionWithTags2017_03_25Async(CreateDistributionWithTagsR
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".CreateDistributionWithTags2017_03_25",
 	}
+	for header,value in pairs(CreateDistributionWithTagsRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/2017-03-25/distribution?WithTags", CreateDistributionWithTagsRequest, headers, settings, cb)
 	else
@@ -6527,8 +8431,11 @@ function M.UpdateCloudFrontOriginAccessIdentity2017_03_25Async(UpdateCloudFrontO
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".UpdateCloudFrontOriginAccessIdentity2017_03_25",
 	}
+	for header,value in pairs(UpdateCloudFrontOriginAccessIdentityRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("PUT")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "PUT")
 	if request_handler then
 		request_handler(settings.uri, "/2017-03-25/origin-access-identity/cloudfront/{Id}/config", UpdateCloudFrontOriginAccessIdentityRequest, headers, settings, cb)
 	else
@@ -6559,8 +8466,11 @@ function M.UntagResource2017_03_25Async(UntagResourceRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".UntagResource2017_03_25",
 	}
+	for header,value in pairs(UntagResourceRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/2017-03-25/tagging?Operation=Untag", UntagResourceRequest, headers, settings, cb)
 	else
@@ -6591,8 +8501,11 @@ function M.CreateInvalidation2017_03_25Async(CreateInvalidationRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".CreateInvalidation2017_03_25",
 	}
+	for header,value in pairs(CreateInvalidationRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/2017-03-25/distribution/{DistributionId}/invalidation", CreateInvalidationRequest, headers, settings, cb)
 	else
@@ -6623,8 +8536,11 @@ function M.ListDistributionsByWebACLId2017_03_25Async(ListDistributionsByWebACLI
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".ListDistributionsByWebACLId2017_03_25",
 	}
+	for header,value in pairs(ListDistributionsByWebACLIdRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "GET")
 	if request_handler then
 		request_handler(settings.uri, "/2017-03-25/distributionsByWebACLId/{WebACLId}", ListDistributionsByWebACLIdRequest, headers, settings, cb)
 	else
@@ -6655,8 +8571,11 @@ function M.ListTagsForResource2017_03_25Async(ListTagsForResourceRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".ListTagsForResource2017_03_25",
 	}
+	for header,value in pairs(ListTagsForResourceRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "GET")
 	if request_handler then
 		request_handler(settings.uri, "/2017-03-25/tagging", ListTagsForResourceRequest, headers, settings, cb)
 	else

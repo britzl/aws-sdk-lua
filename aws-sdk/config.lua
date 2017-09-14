@@ -37,11 +37,22 @@ end
 -- Valid keys:
 -- @return NoSuchBucketException structure as a key-value pair table
 function M.NoSuchBucketException(args)
-	assert(args, "You must provdide an argument table when creating NoSuchBucketException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating NoSuchBucketException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertNoSuchBucketException(t)
-	return t
+	asserts.AssertNoSuchBucketException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.PutConfigurationRecorderRequest = { ["ConfigurationRecorder"] = true, nil }
@@ -64,12 +75,23 @@ end
 -- Required key: ConfigurationRecorder
 -- @return PutConfigurationRecorderRequest structure as a key-value pair table
 function M.PutConfigurationRecorderRequest(args)
-	assert(args, "You must provdide an argument table when creating PutConfigurationRecorderRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating PutConfigurationRecorderRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ConfigurationRecorder"] = args["ConfigurationRecorder"],
 	}
-	asserts.AssertPutConfigurationRecorderRequest(t)
-	return t
+	asserts.AssertPutConfigurationRecorderRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.StartConfigurationRecorderRequest = { ["ConfigurationRecorderName"] = true, nil }
@@ -92,12 +114,23 @@ end
 -- Required key: ConfigurationRecorderName
 -- @return StartConfigurationRecorderRequest structure as a key-value pair table
 function M.StartConfigurationRecorderRequest(args)
-	assert(args, "You must provdide an argument table when creating StartConfigurationRecorderRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating StartConfigurationRecorderRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ConfigurationRecorderName"] = args["ConfigurationRecorderName"],
 	}
-	asserts.AssertStartConfigurationRecorderRequest(t)
-	return t
+	asserts.AssertStartConfigurationRecorderRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeComplianceByConfigRuleResponse = { ["ComplianceByConfigRules"] = true, ["NextToken"] = true, nil }
@@ -120,13 +153,24 @@ end
 -- * NextToken [String] <p>The string that you use in a subsequent request to get the next page of results in a paginated response.</p>
 -- @return DescribeComplianceByConfigRuleResponse structure as a key-value pair table
 function M.DescribeComplianceByConfigRuleResponse(args)
-	assert(args, "You must provdide an argument table when creating DescribeComplianceByConfigRuleResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeComplianceByConfigRuleResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ComplianceByConfigRules"] = args["ComplianceByConfigRules"],
 		["NextToken"] = args["NextToken"],
 	}
-	asserts.AssertDescribeComplianceByConfigRuleResponse(t)
-	return t
+	asserts.AssertDescribeComplianceByConfigRuleResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.PutEvaluationsResponse = { ["FailedEvaluations"] = true, nil }
@@ -147,12 +191,23 @@ end
 -- * FailedEvaluations [Evaluations] <p>Requests that failed because of a client or server error.</p>
 -- @return PutEvaluationsResponse structure as a key-value pair table
 function M.PutEvaluationsResponse(args)
-	assert(args, "You must provdide an argument table when creating PutEvaluationsResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating PutEvaluationsResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["FailedEvaluations"] = args["FailedEvaluations"],
 	}
-	asserts.AssertPutEvaluationsResponse(t)
-	return t
+	asserts.AssertPutEvaluationsResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.StartConfigRulesEvaluationResponse = { nil }
@@ -171,11 +226,22 @@ end
 -- Valid keys:
 -- @return StartConfigRulesEvaluationResponse structure as a key-value pair table
 function M.StartConfigRulesEvaluationResponse(args)
-	assert(args, "You must provdide an argument table when creating StartConfigRulesEvaluationResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating StartConfigRulesEvaluationResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertStartConfigRulesEvaluationResponse(t)
-	return t
+	asserts.AssertStartConfigRulesEvaluationResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ConfigurationRecorder = { ["recordingGroup"] = true, ["roleARN"] = true, ["name"] = true, nil }
@@ -200,14 +266,25 @@ end
 -- * name [RecorderName] <p>The name of the recorder. By default, AWS Config automatically assigns the name "default" when creating the configuration recorder. You cannot change the assigned name.</p>
 -- @return ConfigurationRecorder structure as a key-value pair table
 function M.ConfigurationRecorder(args)
-	assert(args, "You must provdide an argument table when creating ConfigurationRecorder")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ConfigurationRecorder")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["recordingGroup"] = args["recordingGroup"],
 		["roleARN"] = args["roleARN"],
 		["name"] = args["name"],
 	}
-	asserts.AssertConfigurationRecorder(t)
-	return t
+	asserts.AssertConfigurationRecorder(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetComplianceSummaryByResourceTypeResponse = { ["ComplianceSummariesByResourceType"] = true, nil }
@@ -228,12 +305,23 @@ end
 -- * ComplianceSummariesByResourceType [ComplianceSummariesByResourceType] <p>The number of resources that are compliant and the number that are noncompliant. If one or more resource types were provided with the request, the numbers are returned for each resource type. The maximum number returned is 100.</p>
 -- @return GetComplianceSummaryByResourceTypeResponse structure as a key-value pair table
 function M.GetComplianceSummaryByResourceTypeResponse(args)
-	assert(args, "You must provdide an argument table when creating GetComplianceSummaryByResourceTypeResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetComplianceSummaryByResourceTypeResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ComplianceSummariesByResourceType"] = args["ComplianceSummariesByResourceType"],
 	}
-	asserts.AssertGetComplianceSummaryByResourceTypeResponse(t)
-	return t
+	asserts.AssertGetComplianceSummaryByResourceTypeResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteEvaluationResultsRequest = { ["ConfigRuleName"] = true, nil }
@@ -256,12 +344,23 @@ end
 -- Required key: ConfigRuleName
 -- @return DeleteEvaluationResultsRequest structure as a key-value pair table
 function M.DeleteEvaluationResultsRequest(args)
-	assert(args, "You must provdide an argument table when creating DeleteEvaluationResultsRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteEvaluationResultsRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ConfigRuleName"] = args["ConfigRuleName"],
 	}
-	asserts.AssertDeleteEvaluationResultsRequest(t)
-	return t
+	asserts.AssertDeleteEvaluationResultsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidConfigurationRecorderNameException = { nil }
@@ -280,11 +379,22 @@ end
 -- Valid keys:
 -- @return InvalidConfigurationRecorderNameException structure as a key-value pair table
 function M.InvalidConfigurationRecorderNameException(args)
-	assert(args, "You must provdide an argument table when creating InvalidConfigurationRecorderNameException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidConfigurationRecorderNameException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertInvalidConfigurationRecorderNameException(t)
-	return t
+	asserts.AssertInvalidConfigurationRecorderNameException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeliverConfigSnapshotRequest = { ["deliveryChannelName"] = true, nil }
@@ -307,12 +417,23 @@ end
 -- Required key: deliveryChannelName
 -- @return DeliverConfigSnapshotRequest structure as a key-value pair table
 function M.DeliverConfigSnapshotRequest(args)
-	assert(args, "You must provdide an argument table when creating DeliverConfigSnapshotRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeliverConfigSnapshotRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["deliveryChannelName"] = args["deliveryChannelName"],
 	}
-	asserts.AssertDeliverConfigSnapshotRequest(t)
-	return t
+	asserts.AssertDeliverConfigSnapshotRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeDeliveryChannelStatusResponse = { ["DeliveryChannelsStatus"] = true, nil }
@@ -333,12 +454,23 @@ end
 -- * DeliveryChannelsStatus [DeliveryChannelStatusList] <p>A list that contains the status of a specified delivery channel.</p>
 -- @return DescribeDeliveryChannelStatusResponse structure as a key-value pair table
 function M.DescribeDeliveryChannelStatusResponse(args)
-	assert(args, "You must provdide an argument table when creating DescribeDeliveryChannelStatusResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeDeliveryChannelStatusResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DeliveryChannelsStatus"] = args["DeliveryChannelsStatus"],
 	}
-	asserts.AssertDescribeDeliveryChannelStatusResponse(t)
-	return t
+	asserts.AssertDescribeDeliveryChannelStatusResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Compliance = { ["ComplianceContributorCount"] = true, ["ComplianceType"] = true, nil }
@@ -361,13 +493,24 @@ end
 -- * ComplianceType [ComplianceType] <p>Indicates whether an AWS resource or AWS Config rule is compliant.</p> <p>A resource is compliant if it complies with all of the AWS Config rules that evaluate it, and it is noncompliant if it does not comply with one or more of these rules.</p> <p>A rule is compliant if all of the resources that the rule evaluates comply with it, and it is noncompliant if any of these resources do not comply.</p> <p>AWS Config returns the <code>INSUFFICIENT_DATA</code> value when no evaluation results are available for the AWS resource or Config rule.</p> <p>For the <code>Compliance</code> data type, AWS Config supports only <code>COMPLIANT</code>, <code>NON_COMPLIANT</code>, and <code>INSUFFICIENT_DATA</code> values. AWS Config does not support the <code>NOT_APPLICABLE</code> value for the <code>Compliance</code> data type.</p>
 -- @return Compliance structure as a key-value pair table
 function M.Compliance(args)
-	assert(args, "You must provdide an argument table when creating Compliance")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Compliance")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ComplianceContributorCount"] = args["ComplianceContributorCount"],
 		["ComplianceType"] = args["ComplianceType"],
 	}
-	asserts.AssertCompliance(t)
-	return t
+	asserts.AssertCompliance(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.MaxNumberOfConfigRulesExceededException = { nil }
@@ -386,11 +529,22 @@ end
 -- Valid keys:
 -- @return MaxNumberOfConfigRulesExceededException structure as a key-value pair table
 function M.MaxNumberOfConfigRulesExceededException(args)
-	assert(args, "You must provdide an argument table when creating MaxNumberOfConfigRulesExceededException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating MaxNumberOfConfigRulesExceededException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertMaxNumberOfConfigRulesExceededException(t)
-	return t
+	asserts.AssertMaxNumberOfConfigRulesExceededException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.NoSuchDeliveryChannelException = { nil }
@@ -409,11 +563,22 @@ end
 -- Valid keys:
 -- @return NoSuchDeliveryChannelException structure as a key-value pair table
 function M.NoSuchDeliveryChannelException(args)
-	assert(args, "You must provdide an argument table when creating NoSuchDeliveryChannelException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating NoSuchDeliveryChannelException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertNoSuchDeliveryChannelException(t)
-	return t
+	asserts.AssertNoSuchDeliveryChannelException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetComplianceDetailsByResourceResponse = { ["EvaluationResults"] = true, ["NextToken"] = true, nil }
@@ -436,13 +601,24 @@ end
 -- * NextToken [String] <p>The string that you use in a subsequent request to get the next page of results in a paginated response.</p>
 -- @return GetComplianceDetailsByResourceResponse structure as a key-value pair table
 function M.GetComplianceDetailsByResourceResponse(args)
-	assert(args, "You must provdide an argument table when creating GetComplianceDetailsByResourceResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetComplianceDetailsByResourceResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["EvaluationResults"] = args["EvaluationResults"],
 		["NextToken"] = args["NextToken"],
 	}
-	asserts.AssertGetComplianceDetailsByResourceResponse(t)
-	return t
+	asserts.AssertGetComplianceDetailsByResourceResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteConfigurationRecorderRequest = { ["ConfigurationRecorderName"] = true, nil }
@@ -465,12 +641,23 @@ end
 -- Required key: ConfigurationRecorderName
 -- @return DeleteConfigurationRecorderRequest structure as a key-value pair table
 function M.DeleteConfigurationRecorderRequest(args)
-	assert(args, "You must provdide an argument table when creating DeleteConfigurationRecorderRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteConfigurationRecorderRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ConfigurationRecorderName"] = args["ConfigurationRecorderName"],
 	}
-	asserts.AssertDeleteConfigurationRecorderRequest(t)
-	return t
+	asserts.AssertDeleteConfigurationRecorderRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeConfigurationRecorderStatusResponse = { ["ConfigurationRecordersStatus"] = true, nil }
@@ -491,12 +678,23 @@ end
 -- * ConfigurationRecordersStatus [ConfigurationRecorderStatusList] <p>A list that contains status of the specified recorders.</p>
 -- @return DescribeConfigurationRecorderStatusResponse structure as a key-value pair table
 function M.DescribeConfigurationRecorderStatusResponse(args)
-	assert(args, "You must provdide an argument table when creating DescribeConfigurationRecorderStatusResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeConfigurationRecorderStatusResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ConfigurationRecordersStatus"] = args["ConfigurationRecordersStatus"],
 	}
-	asserts.AssertDescribeConfigurationRecorderStatusResponse(t)
-	return t
+	asserts.AssertDescribeConfigurationRecorderStatusResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.LastDeliveryChannelDeleteFailedException = { nil }
@@ -515,11 +713,22 @@ end
 -- Valid keys:
 -- @return LastDeliveryChannelDeleteFailedException structure as a key-value pair table
 function M.LastDeliveryChannelDeleteFailedException(args)
-	assert(args, "You must provdide an argument table when creating LastDeliveryChannelDeleteFailedException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating LastDeliveryChannelDeleteFailedException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertLastDeliveryChannelDeleteFailedException(t)
-	return t
+	asserts.AssertLastDeliveryChannelDeleteFailedException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidResultTokenException = { nil }
@@ -538,11 +747,22 @@ end
 -- Valid keys:
 -- @return InvalidResultTokenException structure as a key-value pair table
 function M.InvalidResultTokenException(args)
-	assert(args, "You must provdide an argument table when creating InvalidResultTokenException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidResultTokenException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertInvalidResultTokenException(t)
-	return t
+	asserts.AssertInvalidResultTokenException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeComplianceByResourceResponse = { ["ComplianceByResources"] = true, ["NextToken"] = true, nil }
@@ -565,13 +785,24 @@ end
 -- * NextToken [NextToken] <p>The string that you use in a subsequent request to get the next page of results in a paginated response.</p>
 -- @return DescribeComplianceByResourceResponse structure as a key-value pair table
 function M.DescribeComplianceByResourceResponse(args)
-	assert(args, "You must provdide an argument table when creating DescribeComplianceByResourceResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeComplianceByResourceResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ComplianceByResources"] = args["ComplianceByResources"],
 		["NextToken"] = args["NextToken"],
 	}
-	asserts.AssertDescribeComplianceByResourceResponse(t)
-	return t
+	asserts.AssertDescribeComplianceByResourceResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeDeliveryChannelsResponse = { ["DeliveryChannels"] = true, nil }
@@ -592,12 +823,23 @@ end
 -- * DeliveryChannels [DeliveryChannelList] <p>A list that contains the descriptions of the specified delivery channel.</p>
 -- @return DescribeDeliveryChannelsResponse structure as a key-value pair table
 function M.DescribeDeliveryChannelsResponse(args)
-	assert(args, "You must provdide an argument table when creating DescribeDeliveryChannelsResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeDeliveryChannelsResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DeliveryChannels"] = args["DeliveryChannels"],
 	}
-	asserts.AssertDescribeDeliveryChannelsResponse(t)
-	return t
+	asserts.AssertDescribeDeliveryChannelsResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListDiscoveredResourcesResponse = { ["nextToken"] = true, ["resourceIdentifiers"] = true, nil }
@@ -620,13 +862,24 @@ end
 -- * resourceIdentifiers [ResourceIdentifierList] <p>The details that identify a resource that is discovered by AWS Config, including the resource type, ID, and (if available) the custom resource name.</p>
 -- @return ListDiscoveredResourcesResponse structure as a key-value pair table
 function M.ListDiscoveredResourcesResponse(args)
-	assert(args, "You must provdide an argument table when creating ListDiscoveredResourcesResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListDiscoveredResourcesResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["nextToken"] = args["nextToken"],
 		["resourceIdentifiers"] = args["resourceIdentifiers"],
 	}
-	asserts.AssertListDiscoveredResourcesResponse(t)
-	return t
+	asserts.AssertListDiscoveredResourcesResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeConfigurationRecordersRequest = { ["ConfigurationRecorderNames"] = true, nil }
@@ -647,12 +900,23 @@ end
 -- * ConfigurationRecorderNames [ConfigurationRecorderNameList] <p>A list of configuration recorder names.</p>
 -- @return DescribeConfigurationRecordersRequest structure as a key-value pair table
 function M.DescribeConfigurationRecordersRequest(args)
-	assert(args, "You must provdide an argument table when creating DescribeConfigurationRecordersRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeConfigurationRecordersRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ConfigurationRecorderNames"] = args["ConfigurationRecorderNames"],
 	}
-	asserts.AssertDescribeConfigurationRecordersRequest(t)
-	return t
+	asserts.AssertDescribeConfigurationRecordersRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeDeliveryChannelStatusRequest = { ["DeliveryChannelNames"] = true, nil }
@@ -673,12 +937,23 @@ end
 -- * DeliveryChannelNames [DeliveryChannelNameList] <p>A list of delivery channel names.</p>
 -- @return DescribeDeliveryChannelStatusRequest structure as a key-value pair table
 function M.DescribeDeliveryChannelStatusRequest(args)
-	assert(args, "You must provdide an argument table when creating DescribeDeliveryChannelStatusRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeDeliveryChannelStatusRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DeliveryChannelNames"] = args["DeliveryChannelNames"],
 	}
-	asserts.AssertDescribeDeliveryChannelStatusRequest(t)
-	return t
+	asserts.AssertDescribeDeliveryChannelStatusRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.NoAvailableDeliveryChannelException = { nil }
@@ -697,11 +972,22 @@ end
 -- Valid keys:
 -- @return NoAvailableDeliveryChannelException structure as a key-value pair table
 function M.NoAvailableDeliveryChannelException(args)
-	assert(args, "You must provdide an argument table when creating NoAvailableDeliveryChannelException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating NoAvailableDeliveryChannelException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertNoAvailableDeliveryChannelException(t)
-	return t
+	asserts.AssertNoAvailableDeliveryChannelException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.MaxNumberOfConfigurationRecordersExceededException = { nil }
@@ -720,11 +1006,22 @@ end
 -- Valid keys:
 -- @return MaxNumberOfConfigurationRecordersExceededException structure as a key-value pair table
 function M.MaxNumberOfConfigurationRecordersExceededException(args)
-	assert(args, "You must provdide an argument table when creating MaxNumberOfConfigurationRecordersExceededException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating MaxNumberOfConfigurationRecordersExceededException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertMaxNumberOfConfigurationRecordersExceededException(t)
-	return t
+	asserts.AssertMaxNumberOfConfigurationRecordersExceededException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.LimitExceededException = { nil }
@@ -743,11 +1040,22 @@ end
 -- Valid keys:
 -- @return LimitExceededException structure as a key-value pair table
 function M.LimitExceededException(args)
-	assert(args, "You must provdide an argument table when creating LimitExceededException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating LimitExceededException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertLimitExceededException(t)
-	return t
+	asserts.AssertLimitExceededException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteEvaluationResultsResponse = { nil }
@@ -766,11 +1074,22 @@ end
 -- Valid keys:
 -- @return DeleteEvaluationResultsResponse structure as a key-value pair table
 function M.DeleteEvaluationResultsResponse(args)
-	assert(args, "You must provdide an argument table when creating DeleteEvaluationResultsResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteEvaluationResultsResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertDeleteEvaluationResultsResponse(t)
-	return t
+	asserts.AssertDeleteEvaluationResultsResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Source = { ["Owner"] = true, ["SourceIdentifier"] = true, ["SourceDetails"] = true, nil }
@@ -799,14 +1118,25 @@ end
 -- Required key: SourceIdentifier
 -- @return Source structure as a key-value pair table
 function M.Source(args)
-	assert(args, "You must provdide an argument table when creating Source")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Source")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Owner"] = args["Owner"],
 		["SourceIdentifier"] = args["SourceIdentifier"],
 		["SourceDetails"] = args["SourceDetails"],
 	}
-	asserts.AssertSource(t)
-	return t
+	asserts.AssertSource(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ComplianceByConfigRule = { ["Compliance"] = true, ["ConfigRuleName"] = true, nil }
@@ -829,13 +1159,24 @@ end
 -- * ConfigRuleName [StringWithCharLimit64] <p>The name of the AWS Config rule.</p>
 -- @return ComplianceByConfigRule structure as a key-value pair table
 function M.ComplianceByConfigRule(args)
-	assert(args, "You must provdide an argument table when creating ComplianceByConfigRule")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ComplianceByConfigRule")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Compliance"] = args["Compliance"],
 		["ConfigRuleName"] = args["ConfigRuleName"],
 	}
-	asserts.AssertComplianceByConfigRule(t)
-	return t
+	asserts.AssertComplianceByConfigRule(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidDeliveryChannelNameException = { nil }
@@ -854,11 +1195,22 @@ end
 -- Valid keys:
 -- @return InvalidDeliveryChannelNameException structure as a key-value pair table
 function M.InvalidDeliveryChannelNameException(args)
-	assert(args, "You must provdide an argument table when creating InvalidDeliveryChannelNameException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidDeliveryChannelNameException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertInvalidDeliveryChannelNameException(t)
-	return t
+	asserts.AssertInvalidDeliveryChannelNameException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidNextTokenException = { nil }
@@ -877,11 +1229,22 @@ end
 -- Valid keys:
 -- @return InvalidNextTokenException structure as a key-value pair table
 function M.InvalidNextTokenException(args)
-	assert(args, "You must provdide an argument table when creating InvalidNextTokenException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidNextTokenException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertInvalidNextTokenException(t)
-	return t
+	asserts.AssertInvalidNextTokenException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.StartConfigRulesEvaluationRequest = { ["ConfigRuleNames"] = true, nil }
@@ -902,12 +1265,23 @@ end
 -- * ConfigRuleNames [ReevaluateConfigRuleNames] <p>The list of names of Config rules that you want to run evaluations for.</p>
 -- @return StartConfigRulesEvaluationRequest structure as a key-value pair table
 function M.StartConfigRulesEvaluationRequest(args)
-	assert(args, "You must provdide an argument table when creating StartConfigRulesEvaluationRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating StartConfigRulesEvaluationRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ConfigRuleNames"] = args["ConfigRuleNames"],
 	}
-	asserts.AssertStartConfigRulesEvaluationRequest(t)
-	return t
+	asserts.AssertStartConfigRulesEvaluationRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ConfigRuleEvaluationStatus = { ["LastFailedEvaluationTime"] = true, ["LastSuccessfulInvocationTime"] = true, ["FirstEvaluationStarted"] = true, ["LastFailedInvocationTime"] = true, ["ConfigRuleName"] = true, ["ConfigRuleArn"] = true, ["FirstActivatedTime"] = true, ["LastSuccessfulEvaluationTime"] = true, ["LastErrorCode"] = true, ["LastErrorMessage"] = true, ["ConfigRuleId"] = true, nil }
@@ -948,8 +1322,14 @@ end
 -- * ConfigRuleId [String] <p>The ID of the AWS Config rule.</p>
 -- @return ConfigRuleEvaluationStatus structure as a key-value pair table
 function M.ConfigRuleEvaluationStatus(args)
-	assert(args, "You must provdide an argument table when creating ConfigRuleEvaluationStatus")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ConfigRuleEvaluationStatus")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["LastFailedEvaluationTime"] = args["LastFailedEvaluationTime"],
 		["LastSuccessfulInvocationTime"] = args["LastSuccessfulInvocationTime"],
 		["FirstEvaluationStarted"] = args["FirstEvaluationStarted"],
@@ -962,8 +1342,13 @@ function M.ConfigRuleEvaluationStatus(args)
 		["LastErrorMessage"] = args["LastErrorMessage"],
 		["ConfigRuleId"] = args["ConfigRuleId"],
 	}
-	asserts.AssertConfigRuleEvaluationStatus(t)
-	return t
+	asserts.AssertConfigRuleEvaluationStatus(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.NoSuchConfigurationRecorderException = { nil }
@@ -982,11 +1367,22 @@ end
 -- Valid keys:
 -- @return NoSuchConfigurationRecorderException structure as a key-value pair table
 function M.NoSuchConfigurationRecorderException(args)
-	assert(args, "You must provdide an argument table when creating NoSuchConfigurationRecorderException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating NoSuchConfigurationRecorderException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertNoSuchConfigurationRecorderException(t)
-	return t
+	asserts.AssertNoSuchConfigurationRecorderException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.NoRunningConfigurationRecorderException = { nil }
@@ -1005,11 +1401,22 @@ end
 -- Valid keys:
 -- @return NoRunningConfigurationRecorderException structure as a key-value pair table
 function M.NoRunningConfigurationRecorderException(args)
-	assert(args, "You must provdide an argument table when creating NoRunningConfigurationRecorderException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating NoRunningConfigurationRecorderException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertNoRunningConfigurationRecorderException(t)
-	return t
+	asserts.AssertNoRunningConfigurationRecorderException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InsufficientPermissionsException = { nil }
@@ -1028,11 +1435,22 @@ end
 -- Valid keys:
 -- @return InsufficientPermissionsException structure as a key-value pair table
 function M.InsufficientPermissionsException(args)
-	assert(args, "You must provdide an argument table when creating InsufficientPermissionsException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InsufficientPermissionsException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertInsufficientPermissionsException(t)
-	return t
+	asserts.AssertInsufficientPermissionsException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ResourceNotDiscoveredException = { nil }
@@ -1051,11 +1469,22 @@ end
 -- Valid keys:
 -- @return ResourceNotDiscoveredException structure as a key-value pair table
 function M.ResourceNotDiscoveredException(args)
-	assert(args, "You must provdide an argument table when creating ResourceNotDiscoveredException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ResourceNotDiscoveredException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertResourceNotDiscoveredException(t)
-	return t
+	asserts.AssertResourceNotDiscoveredException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidS3KeyPrefixException = { nil }
@@ -1074,11 +1503,22 @@ end
 -- Valid keys:
 -- @return InvalidS3KeyPrefixException structure as a key-value pair table
 function M.InvalidS3KeyPrefixException(args)
-	assert(args, "You must provdide an argument table when creating InvalidS3KeyPrefixException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidS3KeyPrefixException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertInvalidS3KeyPrefixException(t)
-	return t
+	asserts.AssertInvalidS3KeyPrefixException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeliverConfigSnapshotResponse = { ["configSnapshotId"] = true, nil }
@@ -1099,12 +1539,23 @@ end
 -- * configSnapshotId [String] <p>The ID of the snapshot that is being created.</p>
 -- @return DeliverConfigSnapshotResponse structure as a key-value pair table
 function M.DeliverConfigSnapshotResponse(args)
-	assert(args, "You must provdide an argument table when creating DeliverConfigSnapshotResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeliverConfigSnapshotResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["configSnapshotId"] = args["configSnapshotId"],
 	}
-	asserts.AssertDeliverConfigSnapshotResponse(t)
-	return t
+	asserts.AssertDeliverConfigSnapshotResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeliveryChannel = { ["s3KeyPrefix"] = true, ["configSnapshotDeliveryProperties"] = true, ["snsTopicARN"] = true, ["name"] = true, ["s3BucketName"] = true, nil }
@@ -1133,16 +1584,27 @@ end
 -- * s3BucketName [String] <p>The name of the Amazon S3 bucket to which AWS Config delivers configuration snapshots and configuration history files.</p> <p>If you specify a bucket that belongs to another AWS account, that bucket must have policies that grant access permissions to AWS Config. For more information, see <a href="http://docs.aws.amazon.com/config/latest/developerguide/s3-bucket-policy.html">Permissions for the Amazon S3 Bucket</a> in the AWS Config Developer Guide.</p>
 -- @return DeliveryChannel structure as a key-value pair table
 function M.DeliveryChannel(args)
-	assert(args, "You must provdide an argument table when creating DeliveryChannel")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeliveryChannel")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["s3KeyPrefix"] = args["s3KeyPrefix"],
 		["configSnapshotDeliveryProperties"] = args["configSnapshotDeliveryProperties"],
 		["snsTopicARN"] = args["snsTopicARN"],
 		["name"] = args["name"],
 		["s3BucketName"] = args["s3BucketName"],
 	}
-	asserts.AssertDeliveryChannel(t)
-	return t
+	asserts.AssertDeliveryChannel(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeComplianceByResourceRequest = { ["ResourceType"] = true, ["ResourceId"] = true, ["NextToken"] = true, ["Limit"] = true, ["ComplianceTypes"] = true, nil }
@@ -1171,16 +1633,27 @@ end
 -- * ComplianceTypes [ComplianceTypes] <p>Filters the results by compliance.</p> <p>The allowed values are <code>COMPLIANT</code>, <code>NON_COMPLIANT</code>, and <code>INSUFFICIENT_DATA</code>.</p>
 -- @return DescribeComplianceByResourceRequest structure as a key-value pair table
 function M.DescribeComplianceByResourceRequest(args)
-	assert(args, "You must provdide an argument table when creating DescribeComplianceByResourceRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeComplianceByResourceRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ResourceType"] = args["ResourceType"],
 		["ResourceId"] = args["ResourceId"],
 		["NextToken"] = args["NextToken"],
 		["Limit"] = args["Limit"],
 		["ComplianceTypes"] = args["ComplianceTypes"],
 	}
-	asserts.AssertDescribeComplianceByResourceRequest(t)
-	return t
+	asserts.AssertDescribeComplianceByResourceRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidTimeRangeException = { nil }
@@ -1199,11 +1672,22 @@ end
 -- Valid keys:
 -- @return InvalidTimeRangeException structure as a key-value pair table
 function M.InvalidTimeRangeException(args)
-	assert(args, "You must provdide an argument table when creating InvalidTimeRangeException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidTimeRangeException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertInvalidTimeRangeException(t)
-	return t
+	asserts.AssertInvalidTimeRangeException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ComplianceSummaryByResourceType = { ["ResourceType"] = true, ["ComplianceSummary"] = true, nil }
@@ -1226,13 +1710,24 @@ end
 -- * ComplianceSummary [ComplianceSummary] <p>The number of AWS resources that are compliant or noncompliant, up to a maximum of 100 for each compliance.</p>
 -- @return ComplianceSummaryByResourceType structure as a key-value pair table
 function M.ComplianceSummaryByResourceType(args)
-	assert(args, "You must provdide an argument table when creating ComplianceSummaryByResourceType")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ComplianceSummaryByResourceType")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ResourceType"] = args["ResourceType"],
 		["ComplianceSummary"] = args["ComplianceSummary"],
 	}
-	asserts.AssertComplianceSummaryByResourceType(t)
-	return t
+	asserts.AssertComplianceSummaryByResourceType(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ResourceIdentifier = { ["resourceType"] = true, ["resourceId"] = true, ["resourceDeletionTime"] = true, ["resourceName"] = true, nil }
@@ -1259,15 +1754,26 @@ end
 -- * resourceName [ResourceName] <p>The custom name of the resource (if available).</p>
 -- @return ResourceIdentifier structure as a key-value pair table
 function M.ResourceIdentifier(args)
-	assert(args, "You must provdide an argument table when creating ResourceIdentifier")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ResourceIdentifier")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["resourceType"] = args["resourceType"],
 		["resourceId"] = args["resourceId"],
 		["resourceDeletionTime"] = args["resourceDeletionTime"],
 		["resourceName"] = args["resourceName"],
 	}
-	asserts.AssertResourceIdentifier(t)
-	return t
+	asserts.AssertResourceIdentifier(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeConfigRulesRequest = { ["NextToken"] = true, ["ConfigRuleNames"] = true, nil }
@@ -1290,13 +1796,24 @@ end
 -- * ConfigRuleNames [ConfigRuleNames] <p>The names of the AWS Config rules for which you want details. If you do not specify any names, AWS Config returns details for all your rules.</p>
 -- @return DescribeConfigRulesRequest structure as a key-value pair table
 function M.DescribeConfigRulesRequest(args)
-	assert(args, "You must provdide an argument table when creating DescribeConfigRulesRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeConfigRulesRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NextToken"] = args["NextToken"],
 		["ConfigRuleNames"] = args["ConfigRuleNames"],
 	}
-	asserts.AssertDescribeConfigRulesRequest(t)
-	return t
+	asserts.AssertDescribeConfigRulesRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.NoSuchConfigRuleException = { nil }
@@ -1315,11 +1832,22 @@ end
 -- Valid keys:
 -- @return NoSuchConfigRuleException structure as a key-value pair table
 function M.NoSuchConfigRuleException(args)
-	assert(args, "You must provdide an argument table when creating NoSuchConfigRuleException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating NoSuchConfigRuleException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertNoSuchConfigRuleException(t)
-	return t
+	asserts.AssertNoSuchConfigRuleException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ComplianceContributorCount = { ["CappedCount"] = true, ["CapExceeded"] = true, nil }
@@ -1342,13 +1870,24 @@ end
 -- * CapExceeded [Boolean] <p>Indicates whether the maximum count is reached.</p>
 -- @return ComplianceContributorCount structure as a key-value pair table
 function M.ComplianceContributorCount(args)
-	assert(args, "You must provdide an argument table when creating ComplianceContributorCount")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ComplianceContributorCount")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["CappedCount"] = args["CappedCount"],
 		["CapExceeded"] = args["CapExceeded"],
 	}
-	asserts.AssertComplianceContributorCount(t)
-	return t
+	asserts.AssertComplianceContributorCount(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.PutConfigRuleRequest = { ["ConfigRule"] = true, nil }
@@ -1371,12 +1910,23 @@ end
 -- Required key: ConfigRule
 -- @return PutConfigRuleRequest structure as a key-value pair table
 function M.PutConfigRuleRequest(args)
-	assert(args, "You must provdide an argument table when creating PutConfigRuleRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating PutConfigRuleRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ConfigRule"] = args["ConfigRule"],
 	}
-	asserts.AssertPutConfigRuleRequest(t)
-	return t
+	asserts.AssertPutConfigRuleRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.SourceDetail = { ["EventSource"] = true, ["MessageType"] = true, ["MaximumExecutionFrequency"] = true, nil }
@@ -1401,14 +1951,25 @@ end
 -- * MaximumExecutionFrequency [MaximumExecutionFrequency] <p>The frequency that you want AWS Config to run evaluations for a custom rule with a periodic trigger. If you specify a value for <code>MaximumExecutionFrequency</code>, then <code>MessageType</code> must use the <code>ScheduledNotification</code> value.</p> <note> <p>By default, rules with a periodic trigger are evaluated every 24 hours. To change the frequency, specify a valid value for the <code>MaximumExecutionFrequency</code> parameter.</p> </note>
 -- @return SourceDetail structure as a key-value pair table
 function M.SourceDetail(args)
-	assert(args, "You must provdide an argument table when creating SourceDetail")
-	local t = { 
+	assert(args, "You must provide an argument table when creating SourceDetail")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["EventSource"] = args["EventSource"],
 		["MessageType"] = args["MessageType"],
 		["MaximumExecutionFrequency"] = args["MaximumExecutionFrequency"],
 	}
-	asserts.AssertSourceDetail(t)
-	return t
+	asserts.AssertSourceDetail(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.NoAvailableConfigurationRecorderException = { nil }
@@ -1427,11 +1988,22 @@ end
 -- Valid keys:
 -- @return NoAvailableConfigurationRecorderException structure as a key-value pair table
 function M.NoAvailableConfigurationRecorderException(args)
-	assert(args, "You must provdide an argument table when creating NoAvailableConfigurationRecorderException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating NoAvailableConfigurationRecorderException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertNoAvailableConfigurationRecorderException(t)
-	return t
+	asserts.AssertNoAvailableConfigurationRecorderException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidLimitException = { nil }
@@ -1450,11 +2022,22 @@ end
 -- Valid keys:
 -- @return InvalidLimitException structure as a key-value pair table
 function M.InvalidLimitException(args)
-	assert(args, "You must provdide an argument table when creating InvalidLimitException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidLimitException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertInvalidLimitException(t)
-	return t
+	asserts.AssertInvalidLimitException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ConfigSnapshotDeliveryProperties = { ["deliveryFrequency"] = true, nil }
@@ -1475,12 +2058,23 @@ end
 -- * deliveryFrequency [MaximumExecutionFrequency] <p>The frequency with which AWS Config delivers configuration snapshots.</p>
 -- @return ConfigSnapshotDeliveryProperties structure as a key-value pair table
 function M.ConfigSnapshotDeliveryProperties(args)
-	assert(args, "You must provdide an argument table when creating ConfigSnapshotDeliveryProperties")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ConfigSnapshotDeliveryProperties")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["deliveryFrequency"] = args["deliveryFrequency"],
 	}
-	asserts.AssertConfigSnapshotDeliveryProperties(t)
-	return t
+	asserts.AssertConfigSnapshotDeliveryProperties(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ValidationException = { nil }
@@ -1499,11 +2093,22 @@ end
 -- Valid keys:
 -- @return ValidationException structure as a key-value pair table
 function M.ValidationException(args)
-	assert(args, "You must provdide an argument table when creating ValidationException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ValidationException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertValidationException(t)
-	return t
+	asserts.AssertValidationException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.EvaluationResultQualifier = { ["ResourceType"] = true, ["ResourceId"] = true, ["ConfigRuleName"] = true, nil }
@@ -1528,14 +2133,25 @@ end
 -- * ConfigRuleName [StringWithCharLimit64] <p>The name of the AWS Config rule that was used in the evaluation.</p>
 -- @return EvaluationResultQualifier structure as a key-value pair table
 function M.EvaluationResultQualifier(args)
-	assert(args, "You must provdide an argument table when creating EvaluationResultQualifier")
-	local t = { 
+	assert(args, "You must provide an argument table when creating EvaluationResultQualifier")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ResourceType"] = args["ResourceType"],
 		["ResourceId"] = args["ResourceId"],
 		["ConfigRuleName"] = args["ConfigRuleName"],
 	}
-	asserts.AssertEvaluationResultQualifier(t)
-	return t
+	asserts.AssertEvaluationResultQualifier(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeComplianceByConfigRuleRequest = { ["ComplianceTypes"] = true, ["NextToken"] = true, ["ConfigRuleNames"] = true, nil }
@@ -1560,14 +2176,25 @@ end
 -- * ConfigRuleNames [ConfigRuleNames] <p>Specify one or more AWS Config rule names to filter the results by rule.</p>
 -- @return DescribeComplianceByConfigRuleRequest structure as a key-value pair table
 function M.DescribeComplianceByConfigRuleRequest(args)
-	assert(args, "You must provdide an argument table when creating DescribeComplianceByConfigRuleRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeComplianceByConfigRuleRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ComplianceTypes"] = args["ComplianceTypes"],
 		["NextToken"] = args["NextToken"],
 		["ConfigRuleNames"] = args["ConfigRuleNames"],
 	}
-	asserts.AssertDescribeComplianceByConfigRuleRequest(t)
-	return t
+	asserts.AssertDescribeComplianceByConfigRuleRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Evaluation = { ["OrderingTimestamp"] = true, ["ComplianceResourceId"] = true, ["ComplianceResourceType"] = true, ["Annotation"] = true, ["ComplianceType"] = true, nil }
@@ -1604,16 +2231,27 @@ end
 -- Required key: OrderingTimestamp
 -- @return Evaluation structure as a key-value pair table
 function M.Evaluation(args)
-	assert(args, "You must provdide an argument table when creating Evaluation")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Evaluation")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["OrderingTimestamp"] = args["OrderingTimestamp"],
 		["ComplianceResourceId"] = args["ComplianceResourceId"],
 		["ComplianceResourceType"] = args["ComplianceResourceType"],
 		["Annotation"] = args["Annotation"],
 		["ComplianceType"] = args["ComplianceType"],
 	}
-	asserts.AssertEvaluation(t)
-	return t
+	asserts.AssertEvaluation(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteDeliveryChannelRequest = { ["DeliveryChannelName"] = true, nil }
@@ -1636,12 +2274,23 @@ end
 -- Required key: DeliveryChannelName
 -- @return DeleteDeliveryChannelRequest structure as a key-value pair table
 function M.DeleteDeliveryChannelRequest(args)
-	assert(args, "You must provdide an argument table when creating DeleteDeliveryChannelRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteDeliveryChannelRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DeliveryChannelName"] = args["DeliveryChannelName"],
 	}
-	asserts.AssertDeleteDeliveryChannelRequest(t)
-	return t
+	asserts.AssertDeleteDeliveryChannelRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InsufficientDeliveryPolicyException = { nil }
@@ -1660,11 +2309,22 @@ end
 -- Valid keys:
 -- @return InsufficientDeliveryPolicyException structure as a key-value pair table
 function M.InsufficientDeliveryPolicyException(args)
-	assert(args, "You must provdide an argument table when creating InsufficientDeliveryPolicyException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InsufficientDeliveryPolicyException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertInsufficientDeliveryPolicyException(t)
-	return t
+	asserts.AssertInsufficientDeliveryPolicyException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ResourceInUseException = { nil }
@@ -1683,11 +2343,22 @@ end
 -- Valid keys:
 -- @return ResourceInUseException structure as a key-value pair table
 function M.ResourceInUseException(args)
-	assert(args, "You must provdide an argument table when creating ResourceInUseException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ResourceInUseException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertResourceInUseException(t)
-	return t
+	asserts.AssertResourceInUseException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeConfigurationRecordersResponse = { ["ConfigurationRecorders"] = true, nil }
@@ -1708,12 +2379,23 @@ end
 -- * ConfigurationRecorders [ConfigurationRecorderList] <p>A list that contains the descriptions of the specified configuration recorders.</p>
 -- @return DescribeConfigurationRecordersResponse structure as a key-value pair table
 function M.DescribeConfigurationRecordersResponse(args)
-	assert(args, "You must provdide an argument table when creating DescribeConfigurationRecordersResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeConfigurationRecordersResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ConfigurationRecorders"] = args["ConfigurationRecorders"],
 	}
-	asserts.AssertDescribeConfigurationRecordersResponse(t)
-	return t
+	asserts.AssertDescribeConfigurationRecordersResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeConfigRuleEvaluationStatusResponse = { ["NextToken"] = true, ["ConfigRulesEvaluationStatus"] = true, nil }
@@ -1736,13 +2418,24 @@ end
 -- * ConfigRulesEvaluationStatus [ConfigRuleEvaluationStatusList] <p>Status information about your AWS managed Config rules.</p>
 -- @return DescribeConfigRuleEvaluationStatusResponse structure as a key-value pair table
 function M.DescribeConfigRuleEvaluationStatusResponse(args)
-	assert(args, "You must provdide an argument table when creating DescribeConfigRuleEvaluationStatusResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeConfigRuleEvaluationStatusResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NextToken"] = args["NextToken"],
 		["ConfigRulesEvaluationStatus"] = args["ConfigRulesEvaluationStatus"],
 	}
-	asserts.AssertDescribeConfigRuleEvaluationStatusResponse(t)
-	return t
+	asserts.AssertDescribeConfigRuleEvaluationStatusResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ComplianceSummary = { ["NonCompliantResourceCount"] = true, ["ComplianceSummaryTimestamp"] = true, ["CompliantResourceCount"] = true, nil }
@@ -1767,14 +2460,25 @@ end
 -- * CompliantResourceCount [ComplianceContributorCount] <p>The number of AWS Config rules or AWS resources that are compliant, up to a maximum of 25 for rules and 100 for resources.</p>
 -- @return ComplianceSummary structure as a key-value pair table
 function M.ComplianceSummary(args)
-	assert(args, "You must provdide an argument table when creating ComplianceSummary")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ComplianceSummary")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NonCompliantResourceCount"] = args["NonCompliantResourceCount"],
 		["ComplianceSummaryTimestamp"] = args["ComplianceSummaryTimestamp"],
 		["CompliantResourceCount"] = args["CompliantResourceCount"],
 	}
-	asserts.AssertComplianceSummary(t)
-	return t
+	asserts.AssertComplianceSummary(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidRecordingGroupException = { nil }
@@ -1793,11 +2497,22 @@ end
 -- Valid keys:
 -- @return InvalidRecordingGroupException structure as a key-value pair table
 function M.InvalidRecordingGroupException(args)
-	assert(args, "You must provdide an argument table when creating InvalidRecordingGroupException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidRecordingGroupException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertInvalidRecordingGroupException(t)
-	return t
+	asserts.AssertInvalidRecordingGroupException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteConfigRuleRequest = { ["ConfigRuleName"] = true, nil }
@@ -1820,12 +2535,23 @@ end
 -- Required key: ConfigRuleName
 -- @return DeleteConfigRuleRequest structure as a key-value pair table
 function M.DeleteConfigRuleRequest(args)
-	assert(args, "You must provdide an argument table when creating DeleteConfigRuleRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteConfigRuleRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ConfigRuleName"] = args["ConfigRuleName"],
 	}
-	asserts.AssertDeleteConfigRuleRequest(t)
-	return t
+	asserts.AssertDeleteConfigRuleRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetComplianceDetailsByConfigRuleRequest = { ["NextToken"] = true, ["ComplianceTypes"] = true, ["Limit"] = true, ["ConfigRuleName"] = true, nil }
@@ -1854,15 +2580,26 @@ end
 -- Required key: ConfigRuleName
 -- @return GetComplianceDetailsByConfigRuleRequest structure as a key-value pair table
 function M.GetComplianceDetailsByConfigRuleRequest(args)
-	assert(args, "You must provdide an argument table when creating GetComplianceDetailsByConfigRuleRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetComplianceDetailsByConfigRuleRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NextToken"] = args["NextToken"],
 		["ComplianceTypes"] = args["ComplianceTypes"],
 		["Limit"] = args["Limit"],
 		["ConfigRuleName"] = args["ConfigRuleName"],
 	}
-	asserts.AssertGetComplianceDetailsByConfigRuleRequest(t)
-	return t
+	asserts.AssertGetComplianceDetailsByConfigRuleRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.StopConfigurationRecorderRequest = { ["ConfigurationRecorderName"] = true, nil }
@@ -1885,12 +2622,23 @@ end
 -- Required key: ConfigurationRecorderName
 -- @return StopConfigurationRecorderRequest structure as a key-value pair table
 function M.StopConfigurationRecorderRequest(args)
-	assert(args, "You must provdide an argument table when creating StopConfigurationRecorderRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating StopConfigurationRecorderRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ConfigurationRecorderName"] = args["ConfigurationRecorderName"],
 	}
-	asserts.AssertStopConfigurationRecorderRequest(t)
-	return t
+	asserts.AssertStopConfigurationRecorderRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidParameterValueException = { nil }
@@ -1909,11 +2657,22 @@ end
 -- Valid keys:
 -- @return InvalidParameterValueException structure as a key-value pair table
 function M.InvalidParameterValueException(args)
-	assert(args, "You must provdide an argument table when creating InvalidParameterValueException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidParameterValueException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertInvalidParameterValueException(t)
-	return t
+	asserts.AssertInvalidParameterValueException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetResourceConfigHistoryRequest = { ["resourceType"] = true, ["resourceId"] = true, ["laterTime"] = true, ["chronologicalOrder"] = true, ["limit"] = true, ["nextToken"] = true, ["earlierTime"] = true, nil }
@@ -1950,8 +2709,14 @@ end
 -- Required key: resourceId
 -- @return GetResourceConfigHistoryRequest structure as a key-value pair table
 function M.GetResourceConfigHistoryRequest(args)
-	assert(args, "You must provdide an argument table when creating GetResourceConfigHistoryRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetResourceConfigHistoryRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["resourceType"] = args["resourceType"],
 		["resourceId"] = args["resourceId"],
 		["laterTime"] = args["laterTime"],
@@ -1960,8 +2725,13 @@ function M.GetResourceConfigHistoryRequest(args)
 		["nextToken"] = args["nextToken"],
 		["earlierTime"] = args["earlierTime"],
 	}
-	asserts.AssertGetResourceConfigHistoryRequest(t)
-	return t
+	asserts.AssertGetResourceConfigHistoryRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ConfigurationRecorderStatus = { ["name"] = true, ["lastErrorMessage"] = true, ["lastStatus"] = true, ["recording"] = true, ["lastStatusChangeTime"] = true, ["lastStartTime"] = true, ["lastErrorCode"] = true, ["lastStopTime"] = true, nil }
@@ -1996,8 +2766,14 @@ end
 -- * lastStopTime [Date] <p>The time the recorder was last stopped.</p>
 -- @return ConfigurationRecorderStatus structure as a key-value pair table
 function M.ConfigurationRecorderStatus(args)
-	assert(args, "You must provdide an argument table when creating ConfigurationRecorderStatus")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ConfigurationRecorderStatus")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["name"] = args["name"],
 		["lastErrorMessage"] = args["lastErrorMessage"],
 		["lastStatus"] = args["lastStatus"],
@@ -2007,8 +2783,13 @@ function M.ConfigurationRecorderStatus(args)
 		["lastErrorCode"] = args["lastErrorCode"],
 		["lastStopTime"] = args["lastStopTime"],
 	}
-	asserts.AssertConfigurationRecorderStatus(t)
-	return t
+	asserts.AssertConfigurationRecorderStatus(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ConfigExportDeliveryInfo = { ["lastSuccessfulTime"] = true, ["lastStatus"] = true, ["lastAttemptTime"] = true, ["nextDeliveryTime"] = true, ["lastErrorCode"] = true, ["lastErrorMessage"] = true, nil }
@@ -2039,8 +2820,14 @@ end
 -- * lastErrorMessage [String] <p>The error message from the last attempted delivery.</p>
 -- @return ConfigExportDeliveryInfo structure as a key-value pair table
 function M.ConfigExportDeliveryInfo(args)
-	assert(args, "You must provdide an argument table when creating ConfigExportDeliveryInfo")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ConfigExportDeliveryInfo")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["lastSuccessfulTime"] = args["lastSuccessfulTime"],
 		["lastStatus"] = args["lastStatus"],
 		["lastAttemptTime"] = args["lastAttemptTime"],
@@ -2048,8 +2835,13 @@ function M.ConfigExportDeliveryInfo(args)
 		["lastErrorCode"] = args["lastErrorCode"],
 		["lastErrorMessage"] = args["lastErrorMessage"],
 	}
-	asserts.AssertConfigExportDeliveryInfo(t)
-	return t
+	asserts.AssertConfigExportDeliveryInfo(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Scope = { ["TagKey"] = true, ["ComplianceResourceId"] = true, ["ComplianceResourceTypes"] = true, ["TagValue"] = true, nil }
@@ -2076,15 +2868,26 @@ end
 -- * TagValue [StringWithCharLimit256] <p>The tag value applied to only those AWS resources that you want to trigger an evaluation for the rule. If you specify a value for <code>TagValue</code>, you must also specify a value for <code>TagKey</code>.</p>
 -- @return Scope structure as a key-value pair table
 function M.Scope(args)
-	assert(args, "You must provdide an argument table when creating Scope")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Scope")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["TagKey"] = args["TagKey"],
 		["ComplianceResourceId"] = args["ComplianceResourceId"],
 		["ComplianceResourceTypes"] = args["ComplianceResourceTypes"],
 		["TagValue"] = args["TagValue"],
 	}
-	asserts.AssertScope(t)
-	return t
+	asserts.AssertScope(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidSNSTopicARNException = { nil }
@@ -2103,11 +2906,22 @@ end
 -- Valid keys:
 -- @return InvalidSNSTopicARNException structure as a key-value pair table
 function M.InvalidSNSTopicARNException(args)
-	assert(args, "You must provdide an argument table when creating InvalidSNSTopicARNException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidSNSTopicARNException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertInvalidSNSTopicARNException(t)
-	return t
+	asserts.AssertInvalidSNSTopicARNException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.MaxNumberOfDeliveryChannelsExceededException = { nil }
@@ -2126,11 +2940,22 @@ end
 -- Valid keys:
 -- @return MaxNumberOfDeliveryChannelsExceededException structure as a key-value pair table
 function M.MaxNumberOfDeliveryChannelsExceededException(args)
-	assert(args, "You must provdide an argument table when creating MaxNumberOfDeliveryChannelsExceededException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating MaxNumberOfDeliveryChannelsExceededException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertMaxNumberOfDeliveryChannelsExceededException(t)
-	return t
+	asserts.AssertMaxNumberOfDeliveryChannelsExceededException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ComplianceByResource = { ["ResourceType"] = true, ["ResourceId"] = true, ["Compliance"] = true, nil }
@@ -2155,14 +2980,25 @@ end
 -- * Compliance [Compliance] <p>Indicates whether the AWS resource complies with all of the AWS Config rules that evaluated it.</p>
 -- @return ComplianceByResource structure as a key-value pair table
 function M.ComplianceByResource(args)
-	assert(args, "You must provdide an argument table when creating ComplianceByResource")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ComplianceByResource")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ResourceType"] = args["ResourceType"],
 		["ResourceId"] = args["ResourceId"],
 		["Compliance"] = args["Compliance"],
 	}
-	asserts.AssertComplianceByResource(t)
-	return t
+	asserts.AssertComplianceByResource(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.EvaluationResult = { ["ComplianceType"] = true, ["EvaluationResultIdentifier"] = true, ["ConfigRuleInvokedTime"] = true, ["ResultToken"] = true, ["ResultRecordedTime"] = true, ["Annotation"] = true, nil }
@@ -2193,8 +3029,14 @@ end
 -- * Annotation [StringWithCharLimit256] <p>Supplementary information about how the evaluation determined the compliance.</p>
 -- @return EvaluationResult structure as a key-value pair table
 function M.EvaluationResult(args)
-	assert(args, "You must provdide an argument table when creating EvaluationResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating EvaluationResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ComplianceType"] = args["ComplianceType"],
 		["EvaluationResultIdentifier"] = args["EvaluationResultIdentifier"],
 		["ConfigRuleInvokedTime"] = args["ConfigRuleInvokedTime"],
@@ -2202,8 +3044,13 @@ function M.EvaluationResult(args)
 		["ResultRecordedTime"] = args["ResultRecordedTime"],
 		["Annotation"] = args["Annotation"],
 	}
-	asserts.AssertEvaluationResult(t)
-	return t
+	asserts.AssertEvaluationResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetComplianceSummaryByConfigRuleResponse = { ["ComplianceSummary"] = true, nil }
@@ -2224,12 +3071,23 @@ end
 -- * ComplianceSummary [ComplianceSummary] <p>The number of AWS Config rules that are compliant and the number that are noncompliant, up to a maximum of 25 for each.</p>
 -- @return GetComplianceSummaryByConfigRuleResponse structure as a key-value pair table
 function M.GetComplianceSummaryByConfigRuleResponse(args)
-	assert(args, "You must provdide an argument table when creating GetComplianceSummaryByConfigRuleResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetComplianceSummaryByConfigRuleResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ComplianceSummary"] = args["ComplianceSummary"],
 	}
-	asserts.AssertGetComplianceSummaryByConfigRuleResponse(t)
-	return t
+	asserts.AssertGetComplianceSummaryByConfigRuleResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidRoleException = { nil }
@@ -2248,11 +3106,22 @@ end
 -- Valid keys:
 -- @return InvalidRoleException structure as a key-value pair table
 function M.InvalidRoleException(args)
-	assert(args, "You must provdide an argument table when creating InvalidRoleException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidRoleException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertInvalidRoleException(t)
-	return t
+	asserts.AssertInvalidRoleException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ConfigurationItem = { ["configurationItemCaptureTime"] = true, ["resourceCreationTime"] = true, ["availabilityZone"] = true, ["awsRegion"] = true, ["tags"] = true, ["resourceType"] = true, ["resourceId"] = true, ["configurationStateId"] = true, ["relatedEvents"] = true, ["relationships"] = true, ["arn"] = true, ["version"] = true, ["configurationItemMD5Hash"] = true, ["supplementaryConfiguration"] = true, ["resourceName"] = true, ["configuration"] = true, ["configurationItemStatus"] = true, ["accountId"] = true, nil }
@@ -2307,8 +3176,14 @@ end
 -- * accountId [AccountId] <p>The 12 digit AWS account ID associated with the resource.</p>
 -- @return ConfigurationItem structure as a key-value pair table
 function M.ConfigurationItem(args)
-	assert(args, "You must provdide an argument table when creating ConfigurationItem")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ConfigurationItem")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["configurationItemCaptureTime"] = args["configurationItemCaptureTime"],
 		["resourceCreationTime"] = args["resourceCreationTime"],
 		["availabilityZone"] = args["availabilityZone"],
@@ -2328,8 +3203,13 @@ function M.ConfigurationItem(args)
 		["configurationItemStatus"] = args["configurationItemStatus"],
 		["accountId"] = args["accountId"],
 	}
-	asserts.AssertConfigurationItem(t)
-	return t
+	asserts.AssertConfigurationItem(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeConfigRuleEvaluationStatusRequest = { ["NextToken"] = true, ["Limit"] = true, ["ConfigRuleNames"] = true, nil }
@@ -2354,14 +3234,25 @@ end
 -- * ConfigRuleNames [ConfigRuleNames] <p>The name of the AWS managed Config rules for which you want status information. If you do not specify any names, AWS Config returns status information for all AWS managed Config rules that you use.</p>
 -- @return DescribeConfigRuleEvaluationStatusRequest structure as a key-value pair table
 function M.DescribeConfigRuleEvaluationStatusRequest(args)
-	assert(args, "You must provdide an argument table when creating DescribeConfigRuleEvaluationStatusRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeConfigRuleEvaluationStatusRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NextToken"] = args["NextToken"],
 		["Limit"] = args["Limit"],
 		["ConfigRuleNames"] = args["ConfigRuleNames"],
 	}
-	asserts.AssertDescribeConfigRuleEvaluationStatusRequest(t)
-	return t
+	asserts.AssertDescribeConfigRuleEvaluationStatusRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetComplianceDetailsByConfigRuleResponse = { ["EvaluationResults"] = true, ["NextToken"] = true, nil }
@@ -2384,13 +3275,24 @@ end
 -- * NextToken [NextToken] <p>The string that you use in a subsequent request to get the next page of results in a paginated response.</p>
 -- @return GetComplianceDetailsByConfigRuleResponse structure as a key-value pair table
 function M.GetComplianceDetailsByConfigRuleResponse(args)
-	assert(args, "You must provdide an argument table when creating GetComplianceDetailsByConfigRuleResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetComplianceDetailsByConfigRuleResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["EvaluationResults"] = args["EvaluationResults"],
 		["NextToken"] = args["NextToken"],
 	}
-	asserts.AssertGetComplianceDetailsByConfigRuleResponse(t)
-	return t
+	asserts.AssertGetComplianceDetailsByConfigRuleResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeDeliveryChannelsRequest = { ["DeliveryChannelNames"] = true, nil }
@@ -2411,12 +3313,23 @@ end
 -- * DeliveryChannelNames [DeliveryChannelNameList] <p>A list of delivery channel names.</p>
 -- @return DescribeDeliveryChannelsRequest structure as a key-value pair table
 function M.DescribeDeliveryChannelsRequest(args)
-	assert(args, "You must provdide an argument table when creating DescribeDeliveryChannelsRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeDeliveryChannelsRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DeliveryChannelNames"] = args["DeliveryChannelNames"],
 	}
-	asserts.AssertDescribeDeliveryChannelsRequest(t)
-	return t
+	asserts.AssertDescribeDeliveryChannelsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ConfigStreamDeliveryInfo = { ["lastStatusChangeTime"] = true, ["lastErrorCode"] = true, ["lastStatus"] = true, ["lastErrorMessage"] = true, nil }
@@ -2443,15 +3356,26 @@ end
 -- * lastErrorMessage [String] <p>The error message from the last attempted delivery.</p>
 -- @return ConfigStreamDeliveryInfo structure as a key-value pair table
 function M.ConfigStreamDeliveryInfo(args)
-	assert(args, "You must provdide an argument table when creating ConfigStreamDeliveryInfo")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ConfigStreamDeliveryInfo")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["lastStatusChangeTime"] = args["lastStatusChangeTime"],
 		["lastErrorCode"] = args["lastErrorCode"],
 		["lastStatus"] = args["lastStatus"],
 		["lastErrorMessage"] = args["lastErrorMessage"],
 	}
-	asserts.AssertConfigStreamDeliveryInfo(t)
-	return t
+	asserts.AssertConfigStreamDeliveryInfo(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.RecordingGroup = { ["allSupported"] = true, ["resourceTypes"] = true, ["includeGlobalResourceTypes"] = true, nil }
@@ -2476,14 +3400,25 @@ end
 -- * includeGlobalResourceTypes [IncludeGlobalResourceTypes] <p>Specifies whether AWS Config includes all supported types of global resources (for example, IAM resources) with the resources that it records.</p> <p>Before you can set this option to <code>true</code>, you must set the <code>allSupported</code> option to <code>true</code>.</p> <p>If you set this option to <code>true</code>, when AWS Config adds support for a new type of global resource, it automatically starts recording resources of that type.</p> <p>The configuration details for any global resource are the same in all regions. To prevent duplicate configuration items, you should consider customizing AWS Config in only one region to record global resources.</p>
 -- @return RecordingGroup structure as a key-value pair table
 function M.RecordingGroup(args)
-	assert(args, "You must provdide an argument table when creating RecordingGroup")
-	local t = { 
+	assert(args, "You must provide an argument table when creating RecordingGroup")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["allSupported"] = args["allSupported"],
 		["resourceTypes"] = args["resourceTypes"],
 		["includeGlobalResourceTypes"] = args["includeGlobalResourceTypes"],
 	}
-	asserts.AssertRecordingGroup(t)
-	return t
+	asserts.AssertRecordingGroup(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.EvaluationResultIdentifier = { ["OrderingTimestamp"] = true, ["EvaluationResultQualifier"] = true, nil }
@@ -2506,13 +3441,24 @@ end
 -- * EvaluationResultQualifier [EvaluationResultQualifier] <p>Identifies an AWS Config rule used to evaluate an AWS resource, and provides the type and ID of the evaluated resource.</p>
 -- @return EvaluationResultIdentifier structure as a key-value pair table
 function M.EvaluationResultIdentifier(args)
-	assert(args, "You must provdide an argument table when creating EvaluationResultIdentifier")
-	local t = { 
+	assert(args, "You must provide an argument table when creating EvaluationResultIdentifier")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["OrderingTimestamp"] = args["OrderingTimestamp"],
 		["EvaluationResultQualifier"] = args["EvaluationResultQualifier"],
 	}
-	asserts.AssertEvaluationResultIdentifier(t)
-	return t
+	asserts.AssertEvaluationResultIdentifier(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetResourceConfigHistoryResponse = { ["configurationItems"] = true, ["nextToken"] = true, nil }
@@ -2535,13 +3481,24 @@ end
 -- * nextToken [NextToken] <p>The string that you use in a subsequent request to get the next page of results in a paginated response.</p>
 -- @return GetResourceConfigHistoryResponse structure as a key-value pair table
 function M.GetResourceConfigHistoryResponse(args)
-	assert(args, "You must provdide an argument table when creating GetResourceConfigHistoryResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetResourceConfigHistoryResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["configurationItems"] = args["configurationItems"],
 		["nextToken"] = args["nextToken"],
 	}
-	asserts.AssertGetResourceConfigHistoryResponse(t)
-	return t
+	asserts.AssertGetResourceConfigHistoryResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListDiscoveredResourcesRequest = { ["resourceType"] = true, ["resourceIds"] = true, ["limit"] = true, ["includeDeletedResources"] = true, ["resourceName"] = true, ["nextToken"] = true, nil }
@@ -2574,8 +3531,14 @@ end
 -- Required key: resourceType
 -- @return ListDiscoveredResourcesRequest structure as a key-value pair table
 function M.ListDiscoveredResourcesRequest(args)
-	assert(args, "You must provdide an argument table when creating ListDiscoveredResourcesRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListDiscoveredResourcesRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["resourceType"] = args["resourceType"],
 		["resourceIds"] = args["resourceIds"],
 		["limit"] = args["limit"],
@@ -2583,8 +3546,13 @@ function M.ListDiscoveredResourcesRequest(args)
 		["resourceName"] = args["resourceName"],
 		["nextToken"] = args["nextToken"],
 	}
-	asserts.AssertListDiscoveredResourcesRequest(t)
-	return t
+	asserts.AssertListDiscoveredResourcesRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeConfigRulesResponse = { ["ConfigRules"] = true, ["NextToken"] = true, nil }
@@ -2607,13 +3575,24 @@ end
 -- * NextToken [String] <p>The string that you use in a subsequent request to get the next page of results in a paginated response.</p>
 -- @return DescribeConfigRulesResponse structure as a key-value pair table
 function M.DescribeConfigRulesResponse(args)
-	assert(args, "You must provdide an argument table when creating DescribeConfigRulesResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeConfigRulesResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ConfigRules"] = args["ConfigRules"],
 		["NextToken"] = args["NextToken"],
 	}
-	asserts.AssertDescribeConfigRulesResponse(t)
-	return t
+	asserts.AssertDescribeConfigRulesResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetComplianceSummaryByResourceTypeRequest = { ["ResourceTypes"] = true, nil }
@@ -2634,12 +3613,23 @@ end
 -- * ResourceTypes [ResourceTypes] <p>Specify one or more resource types to get the number of resources that are compliant and the number that are noncompliant for each resource type.</p> <p>For this request, you can specify an AWS resource type such as <code>AWS::EC2::Instance</code>, and you can specify that the resource type is an AWS account by specifying <code>AWS::::Account</code>.</p>
 -- @return GetComplianceSummaryByResourceTypeRequest structure as a key-value pair table
 function M.GetComplianceSummaryByResourceTypeRequest(args)
-	assert(args, "You must provdide an argument table when creating GetComplianceSummaryByResourceTypeRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetComplianceSummaryByResourceTypeRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ResourceTypes"] = args["ResourceTypes"],
 	}
-	asserts.AssertGetComplianceSummaryByResourceTypeRequest(t)
-	return t
+	asserts.AssertGetComplianceSummaryByResourceTypeRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetComplianceDetailsByResourceRequest = { ["ResourceType"] = true, ["ResourceId"] = true, ["NextToken"] = true, ["ComplianceTypes"] = true, nil }
@@ -2670,15 +3660,26 @@ end
 -- Required key: ResourceId
 -- @return GetComplianceDetailsByResourceRequest structure as a key-value pair table
 function M.GetComplianceDetailsByResourceRequest(args)
-	assert(args, "You must provdide an argument table when creating GetComplianceDetailsByResourceRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetComplianceDetailsByResourceRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ResourceType"] = args["ResourceType"],
 		["ResourceId"] = args["ResourceId"],
 		["NextToken"] = args["NextToken"],
 		["ComplianceTypes"] = args["ComplianceTypes"],
 	}
-	asserts.AssertGetComplianceDetailsByResourceRequest(t)
-	return t
+	asserts.AssertGetComplianceDetailsByResourceRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ConfigRule = { ["ConfigRuleState"] = true, ["Description"] = true, ["ConfigRuleName"] = true, ["ConfigRuleArn"] = true, ["MaximumExecutionFrequency"] = true, ["Source"] = true, ["InputParameters"] = true, ["Scope"] = true, ["ConfigRuleId"] = true, nil }
@@ -2717,8 +3718,14 @@ end
 -- Required key: Source
 -- @return ConfigRule structure as a key-value pair table
 function M.ConfigRule(args)
-	assert(args, "You must provdide an argument table when creating ConfigRule")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ConfigRule")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ConfigRuleState"] = args["ConfigRuleState"],
 		["Description"] = args["Description"],
 		["ConfigRuleName"] = args["ConfigRuleName"],
@@ -2729,8 +3736,13 @@ function M.ConfigRule(args)
 		["Scope"] = args["Scope"],
 		["ConfigRuleId"] = args["ConfigRuleId"],
 	}
-	asserts.AssertConfigRule(t)
-	return t
+	asserts.AssertConfigRule(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeliveryChannelStatus = { ["configStreamDeliveryInfo"] = true, ["configHistoryDeliveryInfo"] = true, ["configSnapshotDeliveryInfo"] = true, ["name"] = true, nil }
@@ -2757,15 +3769,26 @@ end
 -- * name [String] <p>The name of the delivery channel.</p>
 -- @return DeliveryChannelStatus structure as a key-value pair table
 function M.DeliveryChannelStatus(args)
-	assert(args, "You must provdide an argument table when creating DeliveryChannelStatus")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeliveryChannelStatus")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["configStreamDeliveryInfo"] = args["configStreamDeliveryInfo"],
 		["configHistoryDeliveryInfo"] = args["configHistoryDeliveryInfo"],
 		["configSnapshotDeliveryInfo"] = args["configSnapshotDeliveryInfo"],
 		["name"] = args["name"],
 	}
-	asserts.AssertDeliveryChannelStatus(t)
-	return t
+	asserts.AssertDeliveryChannelStatus(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.PutEvaluationsRequest = { ["ResultToken"] = true, ["Evaluations"] = true, ["TestMode"] = true, nil }
@@ -2792,14 +3815,25 @@ end
 -- Required key: ResultToken
 -- @return PutEvaluationsRequest structure as a key-value pair table
 function M.PutEvaluationsRequest(args)
-	assert(args, "You must provdide an argument table when creating PutEvaluationsRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating PutEvaluationsRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ResultToken"] = args["ResultToken"],
 		["Evaluations"] = args["Evaluations"],
 		["TestMode"] = args["TestMode"],
 	}
-	asserts.AssertPutEvaluationsRequest(t)
-	return t
+	asserts.AssertPutEvaluationsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Relationship = { ["resourceType"] = true, ["resourceId"] = true, ["relationshipName"] = true, ["resourceName"] = true, nil }
@@ -2826,15 +3860,26 @@ end
 -- * resourceName [ResourceName] <p>The custom name of the related resource, if available.</p>
 -- @return Relationship structure as a key-value pair table
 function M.Relationship(args)
-	assert(args, "You must provdide an argument table when creating Relationship")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Relationship")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["resourceType"] = args["resourceType"],
 		["resourceId"] = args["resourceId"],
 		["relationshipName"] = args["relationshipName"],
 		["resourceName"] = args["resourceName"],
 	}
-	asserts.AssertRelationship(t)
-	return t
+	asserts.AssertRelationship(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.PutDeliveryChannelRequest = { ["DeliveryChannel"] = true, nil }
@@ -2857,12 +3902,23 @@ end
 -- Required key: DeliveryChannel
 -- @return PutDeliveryChannelRequest structure as a key-value pair table
 function M.PutDeliveryChannelRequest(args)
-	assert(args, "You must provdide an argument table when creating PutDeliveryChannelRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating PutDeliveryChannelRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DeliveryChannel"] = args["DeliveryChannel"],
 	}
-	asserts.AssertPutDeliveryChannelRequest(t)
-	return t
+	asserts.AssertPutDeliveryChannelRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeConfigurationRecorderStatusRequest = { ["ConfigurationRecorderNames"] = true, nil }
@@ -2883,12 +3939,23 @@ end
 -- * ConfigurationRecorderNames [ConfigurationRecorderNameList] <p>The name(s) of the configuration recorder. If the name is not specified, the action returns the current status of all the configuration recorders associated with the account.</p>
 -- @return DescribeConfigurationRecorderStatusRequest structure as a key-value pair table
 function M.DescribeConfigurationRecorderStatusRequest(args)
-	assert(args, "You must provdide an argument table when creating DescribeConfigurationRecorderStatusRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeConfigurationRecorderStatusRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ConfigurationRecorderNames"] = args["ConfigurationRecorderNames"],
 	}
-	asserts.AssertDescribeConfigurationRecorderStatusRequest(t)
-	return t
+	asserts.AssertDescribeConfigurationRecorderStatusRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 function asserts.AssertResourceType(str)
@@ -3898,8 +4965,11 @@ function M.StopConfigurationRecorderAsync(StopConfigurationRecorderRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "StarlingDoveService.StopConfigurationRecorder",
 	}
+	for header,value in pairs(StopConfigurationRecorderRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", StopConfigurationRecorderRequest, headers, settings, cb)
 	else
@@ -3930,8 +5000,11 @@ function M.GetComplianceDetailsByResourceAsync(GetComplianceDetailsByResourceReq
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "StarlingDoveService.GetComplianceDetailsByResource",
 	}
+	for header,value in pairs(GetComplianceDetailsByResourceRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", GetComplianceDetailsByResourceRequest, headers, settings, cb)
 	else
@@ -3962,8 +5035,11 @@ function M.ListDiscoveredResourcesAsync(ListDiscoveredResourcesRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "StarlingDoveService.ListDiscoveredResources",
 	}
+	for header,value in pairs(ListDiscoveredResourcesRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ListDiscoveredResourcesRequest, headers, settings, cb)
 	else
@@ -3994,8 +5070,11 @@ function M.DeleteDeliveryChannelAsync(DeleteDeliveryChannelRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "StarlingDoveService.DeleteDeliveryChannel",
 	}
+	for header,value in pairs(DeleteDeliveryChannelRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteDeliveryChannelRequest, headers, settings, cb)
 	else
@@ -4026,8 +5105,11 @@ function M.PutEvaluationsAsync(PutEvaluationsRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "StarlingDoveService.PutEvaluations",
 	}
+	for header,value in pairs(PutEvaluationsRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", PutEvaluationsRequest, headers, settings, cb)
 	else
@@ -4058,8 +5140,11 @@ function M.DeleteConfigRuleAsync(DeleteConfigRuleRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "StarlingDoveService.DeleteConfigRule",
 	}
+	for header,value in pairs(DeleteConfigRuleRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteConfigRuleRequest, headers, settings, cb)
 	else
@@ -4090,8 +5175,11 @@ function M.DescribeConfigurationRecordersAsync(DescribeConfigurationRecordersReq
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "StarlingDoveService.DescribeConfigurationRecorders",
 	}
+	for header,value in pairs(DescribeConfigurationRecordersRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeConfigurationRecordersRequest, headers, settings, cb)
 	else
@@ -4122,8 +5210,11 @@ function M.PutConfigurationRecorderAsync(PutConfigurationRecorderRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "StarlingDoveService.PutConfigurationRecorder",
 	}
+	for header,value in pairs(PutConfigurationRecorderRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", PutConfigurationRecorderRequest, headers, settings, cb)
 	else
@@ -4154,8 +5245,11 @@ function M.DescribeConfigurationRecorderStatusAsync(DescribeConfigurationRecorde
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "StarlingDoveService.DescribeConfigurationRecorderStatus",
 	}
+	for header,value in pairs(DescribeConfigurationRecorderStatusRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeConfigurationRecorderStatusRequest, headers, settings, cb)
 	else
@@ -4186,8 +5280,11 @@ function M.GetComplianceDetailsByConfigRuleAsync(GetComplianceDetailsByConfigRul
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "StarlingDoveService.GetComplianceDetailsByConfigRule",
 	}
+	for header,value in pairs(GetComplianceDetailsByConfigRuleRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", GetComplianceDetailsByConfigRuleRequest, headers, settings, cb)
 	else
@@ -4218,8 +5315,11 @@ function M.DescribeDeliveryChannelStatusAsync(DescribeDeliveryChannelStatusReque
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "StarlingDoveService.DescribeDeliveryChannelStatus",
 	}
+	for header,value in pairs(DescribeDeliveryChannelStatusRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeDeliveryChannelStatusRequest, headers, settings, cb)
 	else
@@ -4250,8 +5350,11 @@ function M.DeliverConfigSnapshotAsync(DeliverConfigSnapshotRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "StarlingDoveService.DeliverConfigSnapshot",
 	}
+	for header,value in pairs(DeliverConfigSnapshotRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DeliverConfigSnapshotRequest, headers, settings, cb)
 	else
@@ -4282,8 +5385,11 @@ function M.StartConfigRulesEvaluationAsync(StartConfigRulesEvaluationRequest, cb
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "StarlingDoveService.StartConfigRulesEvaluation",
 	}
+	for header,value in pairs(StartConfigRulesEvaluationRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", StartConfigRulesEvaluationRequest, headers, settings, cb)
 	else
@@ -4313,7 +5419,8 @@ function M.GetComplianceSummaryByConfigRuleAsync(cb)
 		[request_headers.AMZ_TARGET_HEADER] = "StarlingDoveService.GetComplianceSummaryByConfigRule",
 	}
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", {}, headers, settings, cb)
 	else
@@ -4343,8 +5450,11 @@ function M.StartConfigurationRecorderAsync(StartConfigurationRecorderRequest, cb
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "StarlingDoveService.StartConfigurationRecorder",
 	}
+	for header,value in pairs(StartConfigurationRecorderRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", StartConfigurationRecorderRequest, headers, settings, cb)
 	else
@@ -4375,8 +5485,11 @@ function M.DescribeComplianceByResourceAsync(DescribeComplianceByResourceRequest
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "StarlingDoveService.DescribeComplianceByResource",
 	}
+	for header,value in pairs(DescribeComplianceByResourceRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeComplianceByResourceRequest, headers, settings, cb)
 	else
@@ -4407,8 +5520,11 @@ function M.GetResourceConfigHistoryAsync(GetResourceConfigHistoryRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "StarlingDoveService.GetResourceConfigHistory",
 	}
+	for header,value in pairs(GetResourceConfigHistoryRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", GetResourceConfigHistoryRequest, headers, settings, cb)
 	else
@@ -4439,8 +5555,11 @@ function M.DescribeConfigRuleEvaluationStatusAsync(DescribeConfigRuleEvaluationS
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "StarlingDoveService.DescribeConfigRuleEvaluationStatus",
 	}
+	for header,value in pairs(DescribeConfigRuleEvaluationStatusRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeConfigRuleEvaluationStatusRequest, headers, settings, cb)
 	else
@@ -4471,8 +5590,11 @@ function M.DescribeDeliveryChannelsAsync(DescribeDeliveryChannelsRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "StarlingDoveService.DescribeDeliveryChannels",
 	}
+	for header,value in pairs(DescribeDeliveryChannelsRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeDeliveryChannelsRequest, headers, settings, cb)
 	else
@@ -4503,8 +5625,11 @@ function M.GetComplianceSummaryByResourceTypeAsync(GetComplianceSummaryByResourc
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "StarlingDoveService.GetComplianceSummaryByResourceType",
 	}
+	for header,value in pairs(GetComplianceSummaryByResourceTypeRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", GetComplianceSummaryByResourceTypeRequest, headers, settings, cb)
 	else
@@ -4535,8 +5660,11 @@ function M.DescribeConfigRulesAsync(DescribeConfigRulesRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "StarlingDoveService.DescribeConfigRules",
 	}
+	for header,value in pairs(DescribeConfigRulesRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeConfigRulesRequest, headers, settings, cb)
 	else
@@ -4567,8 +5695,11 @@ function M.PutConfigRuleAsync(PutConfigRuleRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "StarlingDoveService.PutConfigRule",
 	}
+	for header,value in pairs(PutConfigRuleRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", PutConfigRuleRequest, headers, settings, cb)
 	else
@@ -4599,8 +5730,11 @@ function M.DeleteEvaluationResultsAsync(DeleteEvaluationResultsRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "StarlingDoveService.DeleteEvaluationResults",
 	}
+	for header,value in pairs(DeleteEvaluationResultsRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteEvaluationResultsRequest, headers, settings, cb)
 	else
@@ -4631,8 +5765,11 @@ function M.DescribeComplianceByConfigRuleAsync(DescribeComplianceByConfigRuleReq
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "StarlingDoveService.DescribeComplianceByConfigRule",
 	}
+	for header,value in pairs(DescribeComplianceByConfigRuleRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeComplianceByConfigRuleRequest, headers, settings, cb)
 	else
@@ -4663,8 +5800,11 @@ function M.PutDeliveryChannelAsync(PutDeliveryChannelRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "StarlingDoveService.PutDeliveryChannel",
 	}
+	for header,value in pairs(PutDeliveryChannelRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", PutDeliveryChannelRequest, headers, settings, cb)
 	else
@@ -4695,8 +5835,11 @@ function M.DeleteConfigurationRecorderAsync(DeleteConfigurationRecorderRequest, 
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "StarlingDoveService.DeleteConfigurationRecorder",
 	}
+	for header,value in pairs(DeleteConfigurationRecorderRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteConfigurationRecorderRequest, headers, settings, cb)
 	else

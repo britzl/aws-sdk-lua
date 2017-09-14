@@ -41,12 +41,23 @@ end
 -- Required key: Name
 -- @return StopLoggingRequest structure as a key-value pair table
 function M.StopLoggingRequest(args)
-	assert(args, "You must provdide an argument table when creating StopLoggingRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating StopLoggingRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Name"] = args["Name"],
 	}
-	asserts.AssertStopLoggingRequest(t)
-	return t
+	asserts.AssertStopLoggingRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UnsupportedOperationException = { nil }
@@ -65,11 +76,22 @@ end
 -- Valid keys:
 -- @return UnsupportedOperationException structure as a key-value pair table
 function M.UnsupportedOperationException(args)
-	assert(args, "You must provdide an argument table when creating UnsupportedOperationException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UnsupportedOperationException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertUnsupportedOperationException(t)
-	return t
+	asserts.AssertUnsupportedOperationException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AddTagsResponse = { nil }
@@ -88,11 +110,22 @@ end
 -- Valid keys:
 -- @return AddTagsResponse structure as a key-value pair table
 function M.AddTagsResponse(args)
-	assert(args, "You must provdide an argument table when creating AddTagsResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AddTagsResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertAddTagsResponse(t)
-	return t
+	asserts.AssertAddTagsResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListTagsRequest = { ["ResourceIdList"] = true, ["NextToken"] = true, nil }
@@ -117,13 +150,24 @@ end
 -- Required key: ResourceIdList
 -- @return ListTagsRequest structure as a key-value pair table
 function M.ListTagsRequest(args)
-	assert(args, "You must provdide an argument table when creating ListTagsRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListTagsRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ResourceIdList"] = args["ResourceIdList"],
 		["NextToken"] = args["NextToken"],
 	}
-	asserts.AssertListTagsRequest(t)
-	return t
+	asserts.AssertListTagsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.RemoveTagsRequest = { ["ResourceId"] = true, ["TagsList"] = true, nil }
@@ -148,13 +192,24 @@ end
 -- Required key: ResourceId
 -- @return RemoveTagsRequest structure as a key-value pair table
 function M.RemoveTagsRequest(args)
-	assert(args, "You must provdide an argument table when creating RemoveTagsRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating RemoveTagsRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ResourceId"] = args["ResourceId"],
 		["TagsList"] = args["TagsList"],
 	}
-	asserts.AssertRemoveTagsRequest(t)
-	return t
+	asserts.AssertRemoveTagsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.TrailNotProvidedException = { nil }
@@ -173,11 +228,22 @@ end
 -- Valid keys:
 -- @return TrailNotProvidedException structure as a key-value pair table
 function M.TrailNotProvidedException(args)
-	assert(args, "You must provdide an argument table when creating TrailNotProvidedException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating TrailNotProvidedException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertTrailNotProvidedException(t)
-	return t
+	asserts.AssertTrailNotProvidedException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteTrailRequest = { ["Name"] = true, nil }
@@ -200,12 +266,23 @@ end
 -- Required key: Name
 -- @return DeleteTrailRequest structure as a key-value pair table
 function M.DeleteTrailRequest(args)
-	assert(args, "You must provdide an argument table when creating DeleteTrailRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteTrailRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Name"] = args["Name"],
 	}
-	asserts.AssertDeleteTrailRequest(t)
-	return t
+	asserts.AssertDeleteTrailRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InsufficientEncryptionPolicyException = { nil }
@@ -224,11 +301,22 @@ end
 -- Valid keys:
 -- @return InsufficientEncryptionPolicyException structure as a key-value pair table
 function M.InsufficientEncryptionPolicyException(args)
-	assert(args, "You must provdide an argument table when creating InsufficientEncryptionPolicyException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InsufficientEncryptionPolicyException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertInsufficientEncryptionPolicyException(t)
-	return t
+	asserts.AssertInsufficientEncryptionPolicyException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.OperationNotPermittedException = { nil }
@@ -247,11 +335,22 @@ end
 -- Valid keys:
 -- @return OperationNotPermittedException structure as a key-value pair table
 function M.OperationNotPermittedException(args)
-	assert(args, "You must provdide an argument table when creating OperationNotPermittedException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating OperationNotPermittedException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertOperationNotPermittedException(t)
-	return t
+	asserts.AssertOperationNotPermittedException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.StartLoggingResponse = { nil }
@@ -270,11 +369,22 @@ end
 -- Valid keys:
 -- @return StartLoggingResponse structure as a key-value pair table
 function M.StartLoggingResponse(args)
-	assert(args, "You must provdide an argument table when creating StartLoggingResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating StartLoggingResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertStartLoggingResponse(t)
-	return t
+	asserts.AssertStartLoggingResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeTrailsRequest = { ["trailNameList"] = true, ["includeShadowTrails"] = true, nil }
@@ -297,13 +407,24 @@ end
 -- * includeShadowTrails [Boolean] <p>Specifies whether to include shadow trails in the response. A shadow trail is the replication in a region of a trail that was created in a different region. The default is true.</p>
 -- @return DescribeTrailsRequest structure as a key-value pair table
 function M.DescribeTrailsRequest(args)
-	assert(args, "You must provdide an argument table when creating DescribeTrailsRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeTrailsRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["trailNameList"] = args["trailNameList"],
 		["includeShadowTrails"] = args["includeShadowTrails"],
 	}
-	asserts.AssertDescribeTrailsRequest(t)
-	return t
+	asserts.AssertDescribeTrailsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetTrailStatusRequest = { ["Name"] = true, nil }
@@ -326,12 +447,23 @@ end
 -- Required key: Name
 -- @return GetTrailStatusRequest structure as a key-value pair table
 function M.GetTrailStatusRequest(args)
-	assert(args, "You must provdide an argument table when creating GetTrailStatusRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetTrailStatusRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Name"] = args["Name"],
 	}
-	asserts.AssertGetTrailStatusRequest(t)
-	return t
+	asserts.AssertGetTrailStatusRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.MaximumNumberOfTrailsExceededException = { nil }
@@ -350,11 +482,22 @@ end
 -- Valid keys:
 -- @return MaximumNumberOfTrailsExceededException structure as a key-value pair table
 function M.MaximumNumberOfTrailsExceededException(args)
-	assert(args, "You must provdide an argument table when creating MaximumNumberOfTrailsExceededException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating MaximumNumberOfTrailsExceededException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertMaximumNumberOfTrailsExceededException(t)
-	return t
+	asserts.AssertMaximumNumberOfTrailsExceededException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ResourceTypeNotSupportedException = { nil }
@@ -373,11 +516,22 @@ end
 -- Valid keys:
 -- @return ResourceTypeNotSupportedException structure as a key-value pair table
 function M.ResourceTypeNotSupportedException(args)
-	assert(args, "You must provdide an argument table when creating ResourceTypeNotSupportedException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ResourceTypeNotSupportedException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertResourceTypeNotSupportedException(t)
-	return t
+	asserts.AssertResourceTypeNotSupportedException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Trail = { ["IncludeGlobalServiceEvents"] = true, ["Name"] = true, ["S3KeyPrefix"] = true, ["TrailARN"] = true, ["LogFileValidationEnabled"] = true, ["SnsTopicARN"] = true, ["IsMultiRegionTrail"] = true, ["HasCustomEventSelectors"] = true, ["S3BucketName"] = true, ["CloudWatchLogsRoleArn"] = true, ["KmsKeyId"] = true, ["CloudWatchLogsLogGroupArn"] = true, ["SnsTopicName"] = true, ["HomeRegion"] = true, nil }
@@ -424,8 +578,14 @@ end
 -- * HomeRegion [String] <p>The region in which the trail was created.</p>
 -- @return Trail structure as a key-value pair table
 function M.Trail(args)
-	assert(args, "You must provdide an argument table when creating Trail")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Trail")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["IncludeGlobalServiceEvents"] = args["IncludeGlobalServiceEvents"],
 		["Name"] = args["Name"],
 		["S3KeyPrefix"] = args["S3KeyPrefix"],
@@ -441,8 +601,13 @@ function M.Trail(args)
 		["SnsTopicName"] = args["SnsTopicName"],
 		["HomeRegion"] = args["HomeRegion"],
 	}
-	asserts.AssertTrail(t)
-	return t
+	asserts.AssertTrail(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.KmsKeyDisabledException = { nil }
@@ -461,11 +626,22 @@ end
 -- Valid keys:
 -- @return KmsKeyDisabledException structure as a key-value pair table
 function M.KmsKeyDisabledException(args)
-	assert(args, "You must provdide an argument table when creating KmsKeyDisabledException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating KmsKeyDisabledException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertKmsKeyDisabledException(t)
-	return t
+	asserts.AssertKmsKeyDisabledException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidEventSelectorsException = { nil }
@@ -484,11 +660,22 @@ end
 -- Valid keys:
 -- @return InvalidEventSelectorsException structure as a key-value pair table
 function M.InvalidEventSelectorsException(args)
-	assert(args, "You must provdide an argument table when creating InvalidEventSelectorsException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidEventSelectorsException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertInvalidEventSelectorsException(t)
-	return t
+	asserts.AssertInvalidEventSelectorsException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Tag = { ["Value"] = true, ["Key"] = true, nil }
@@ -513,13 +700,24 @@ end
 -- Required key: Key
 -- @return Tag structure as a key-value pair table
 function M.Tag(args)
-	assert(args, "You must provdide an argument table when creating Tag")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Tag")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Value"] = args["Value"],
 		["Key"] = args["Key"],
 	}
-	asserts.AssertTag(t)
-	return t
+	asserts.AssertTag(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Event = { ["EventId"] = true, ["Username"] = true, ["EventTime"] = true, ["CloudTrailEvent"] = true, ["EventName"] = true, ["EventSource"] = true, ["Resources"] = true, nil }
@@ -552,8 +750,14 @@ end
 -- * Resources [ResourceList] <p>A list of resources referenced by the event returned.</p>
 -- @return Event structure as a key-value pair table
 function M.Event(args)
-	assert(args, "You must provdide an argument table when creating Event")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Event")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["EventId"] = args["EventId"],
 		["Username"] = args["Username"],
 		["EventTime"] = args["EventTime"],
@@ -562,8 +766,13 @@ function M.Event(args)
 		["EventSource"] = args["EventSource"],
 		["Resources"] = args["Resources"],
 	}
-	asserts.AssertEvent(t)
-	return t
+	asserts.AssertEvent(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.TrailAlreadyExistsException = { nil }
@@ -582,11 +791,22 @@ end
 -- Valid keys:
 -- @return TrailAlreadyExistsException structure as a key-value pair table
 function M.TrailAlreadyExistsException(args)
-	assert(args, "You must provdide an argument table when creating TrailAlreadyExistsException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating TrailAlreadyExistsException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertTrailAlreadyExistsException(t)
-	return t
+	asserts.AssertTrailAlreadyExistsException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CloudTrailARNInvalidException = { nil }
@@ -605,11 +825,22 @@ end
 -- Valid keys:
 -- @return CloudTrailARNInvalidException structure as a key-value pair table
 function M.CloudTrailARNInvalidException(args)
-	assert(args, "You must provdide an argument table when creating CloudTrailARNInvalidException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CloudTrailARNInvalidException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertCloudTrailARNInvalidException(t)
-	return t
+	asserts.AssertCloudTrailARNInvalidException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidNextTokenException = { nil }
@@ -628,11 +859,22 @@ end
 -- Valid keys:
 -- @return InvalidNextTokenException structure as a key-value pair table
 function M.InvalidNextTokenException(args)
-	assert(args, "You must provdide an argument table when creating InvalidNextTokenException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidNextTokenException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertInvalidNextTokenException(t)
-	return t
+	asserts.AssertInvalidNextTokenException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateTrailRequest = { ["IncludeGlobalServiceEvents"] = true, ["Name"] = true, ["S3KeyPrefix"] = true, ["KmsKeyId"] = true, ["IsMultiRegionTrail"] = true, ["S3BucketName"] = true, ["CloudWatchLogsRoleArn"] = true, ["CloudWatchLogsLogGroupArn"] = true, ["SnsTopicName"] = true, ["EnableLogFileValidation"] = true, nil }
@@ -675,8 +917,14 @@ end
 -- Required key: S3BucketName
 -- @return CreateTrailRequest structure as a key-value pair table
 function M.CreateTrailRequest(args)
-	assert(args, "You must provdide an argument table when creating CreateTrailRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateTrailRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["IncludeGlobalServiceEvents"] = args["IncludeGlobalServiceEvents"],
 		["Name"] = args["Name"],
 		["S3KeyPrefix"] = args["S3KeyPrefix"],
@@ -688,8 +936,13 @@ function M.CreateTrailRequest(args)
 		["SnsTopicName"] = args["SnsTopicName"],
 		["EnableLogFileValidation"] = args["EnableLogFileValidation"],
 	}
-	asserts.AssertCreateTrailRequest(t)
-	return t
+	asserts.AssertCreateTrailRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidCloudWatchLogsLogGroupArnException = { nil }
@@ -708,11 +961,22 @@ end
 -- Valid keys:
 -- @return InvalidCloudWatchLogsLogGroupArnException structure as a key-value pair table
 function M.InvalidCloudWatchLogsLogGroupArnException(args)
-	assert(args, "You must provdide an argument table when creating InvalidCloudWatchLogsLogGroupArnException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidCloudWatchLogsLogGroupArnException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertInvalidCloudWatchLogsLogGroupArnException(t)
-	return t
+	asserts.AssertInvalidCloudWatchLogsLogGroupArnException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.PutEventSelectorsResponse = { ["EventSelectors"] = true, ["TrailARN"] = true, nil }
@@ -735,13 +999,24 @@ end
 -- * TrailARN [String] <p>Specifies the ARN of the trail that was updated with event selectors. The format of a trail ARN is:</p> <p> <code>arn:aws:cloudtrail:us-east-1:123456789012:trail/MyTrail</code> </p>
 -- @return PutEventSelectorsResponse structure as a key-value pair table
 function M.PutEventSelectorsResponse(args)
-	assert(args, "You must provdide an argument table when creating PutEventSelectorsResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating PutEventSelectorsResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["EventSelectors"] = args["EventSelectors"],
 		["TrailARN"] = args["TrailARN"],
 	}
-	asserts.AssertPutEventSelectorsResponse(t)
-	return t
+	asserts.AssertPutEventSelectorsResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidParameterCombinationException = { nil }
@@ -760,11 +1035,22 @@ end
 -- Valid keys:
 -- @return InvalidParameterCombinationException structure as a key-value pair table
 function M.InvalidParameterCombinationException(args)
-	assert(args, "You must provdide an argument table when creating InvalidParameterCombinationException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidParameterCombinationException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertInvalidParameterCombinationException(t)
-	return t
+	asserts.AssertInvalidParameterCombinationException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidLookupAttributesException = { nil }
@@ -783,11 +1069,22 @@ end
 -- Valid keys:
 -- @return InvalidLookupAttributesException structure as a key-value pair table
 function M.InvalidLookupAttributesException(args)
-	assert(args, "You must provdide an argument table when creating InvalidLookupAttributesException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidLookupAttributesException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertInvalidLookupAttributesException(t)
-	return t
+	asserts.AssertInvalidLookupAttributesException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdateTrailResponse = { ["IncludeGlobalServiceEvents"] = true, ["Name"] = true, ["S3KeyPrefix"] = true, ["TrailARN"] = true, ["LogFileValidationEnabled"] = true, ["SnsTopicARN"] = true, ["IsMultiRegionTrail"] = true, ["S3BucketName"] = true, ["CloudWatchLogsRoleArn"] = true, ["KmsKeyId"] = true, ["CloudWatchLogsLogGroupArn"] = true, ["SnsTopicName"] = true, nil }
@@ -830,8 +1127,14 @@ end
 -- * SnsTopicName [String] <p>This field is deprecated. Use SnsTopicARN.</p>
 -- @return UpdateTrailResponse structure as a key-value pair table
 function M.UpdateTrailResponse(args)
-	assert(args, "You must provdide an argument table when creating UpdateTrailResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateTrailResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["IncludeGlobalServiceEvents"] = args["IncludeGlobalServiceEvents"],
 		["Name"] = args["Name"],
 		["S3KeyPrefix"] = args["S3KeyPrefix"],
@@ -845,8 +1148,13 @@ function M.UpdateTrailResponse(args)
 		["CloudWatchLogsLogGroupArn"] = args["CloudWatchLogsLogGroupArn"],
 		["SnsTopicName"] = args["SnsTopicName"],
 	}
-	asserts.AssertUpdateTrailResponse(t)
-	return t
+	asserts.AssertUpdateTrailResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidSnsTopicNameException = { nil }
@@ -865,11 +1173,22 @@ end
 -- Valid keys:
 -- @return InvalidSnsTopicNameException structure as a key-value pair table
 function M.InvalidSnsTopicNameException(args)
-	assert(args, "You must provdide an argument table when creating InvalidSnsTopicNameException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidSnsTopicNameException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertInvalidSnsTopicNameException(t)
-	return t
+	asserts.AssertInvalidSnsTopicNameException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.LookupEventsRequest = { ["LookupAttributes"] = true, ["EndTime"] = true, ["NextToken"] = true, ["MaxResults"] = true, ["StartTime"] = true, nil }
@@ -898,16 +1217,27 @@ end
 -- * StartTime [Date] <p>Specifies that only events that occur after or at the specified time are returned. If the specified start time is after the specified end time, an error is returned.</p>
 -- @return LookupEventsRequest structure as a key-value pair table
 function M.LookupEventsRequest(args)
-	assert(args, "You must provdide an argument table when creating LookupEventsRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating LookupEventsRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["LookupAttributes"] = args["LookupAttributes"],
 		["EndTime"] = args["EndTime"],
 		["NextToken"] = args["NextToken"],
 		["MaxResults"] = args["MaxResults"],
 		["StartTime"] = args["StartTime"],
 	}
-	asserts.AssertLookupEventsRequest(t)
-	return t
+	asserts.AssertLookupEventsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.StopLoggingResponse = { nil }
@@ -926,11 +1256,22 @@ end
 -- Valid keys:
 -- @return StopLoggingResponse structure as a key-value pair table
 function M.StopLoggingResponse(args)
-	assert(args, "You must provdide an argument table when creating StopLoggingResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating StopLoggingResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertStopLoggingResponse(t)
-	return t
+	asserts.AssertStopLoggingResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidTimeRangeException = { nil }
@@ -949,11 +1290,22 @@ end
 -- Valid keys:
 -- @return InvalidTimeRangeException structure as a key-value pair table
 function M.InvalidTimeRangeException(args)
-	assert(args, "You must provdide an argument table when creating InvalidTimeRangeException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidTimeRangeException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertInvalidTimeRangeException(t)
-	return t
+	asserts.AssertInvalidTimeRangeException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.TrailNotFoundException = { nil }
@@ -972,11 +1324,22 @@ end
 -- Valid keys:
 -- @return TrailNotFoundException structure as a key-value pair table
 function M.TrailNotFoundException(args)
-	assert(args, "You must provdide an argument table when creating TrailNotFoundException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating TrailNotFoundException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertTrailNotFoundException(t)
-	return t
+	asserts.AssertTrailNotFoundException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidS3BucketNameException = { nil }
@@ -995,11 +1358,22 @@ end
 -- Valid keys:
 -- @return InvalidS3BucketNameException structure as a key-value pair table
 function M.InvalidS3BucketNameException(args)
-	assert(args, "You must provdide an argument table when creating InvalidS3BucketNameException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidS3BucketNameException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertInvalidS3BucketNameException(t)
-	return t
+	asserts.AssertInvalidS3BucketNameException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.S3BucketDoesNotExistException = { nil }
@@ -1018,11 +1392,22 @@ end
 -- Valid keys:
 -- @return S3BucketDoesNotExistException structure as a key-value pair table
 function M.S3BucketDoesNotExistException(args)
-	assert(args, "You must provdide an argument table when creating S3BucketDoesNotExistException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating S3BucketDoesNotExistException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertS3BucketDoesNotExistException(t)
-	return t
+	asserts.AssertS3BucketDoesNotExistException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdateTrailRequest = { ["IncludeGlobalServiceEvents"] = true, ["Name"] = true, ["S3KeyPrefix"] = true, ["KmsKeyId"] = true, ["IsMultiRegionTrail"] = true, ["S3BucketName"] = true, ["CloudWatchLogsRoleArn"] = true, ["CloudWatchLogsLogGroupArn"] = true, ["SnsTopicName"] = true, ["EnableLogFileValidation"] = true, nil }
@@ -1063,8 +1448,14 @@ end
 -- Required key: Name
 -- @return UpdateTrailRequest structure as a key-value pair table
 function M.UpdateTrailRequest(args)
-	assert(args, "You must provdide an argument table when creating UpdateTrailRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateTrailRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["IncludeGlobalServiceEvents"] = args["IncludeGlobalServiceEvents"],
 		["Name"] = args["Name"],
 		["S3KeyPrefix"] = args["S3KeyPrefix"],
@@ -1076,8 +1467,13 @@ function M.UpdateTrailRequest(args)
 		["SnsTopicName"] = args["SnsTopicName"],
 		["EnableLogFileValidation"] = args["EnableLogFileValidation"],
 	}
-	asserts.AssertUpdateTrailRequest(t)
-	return t
+	asserts.AssertUpdateTrailRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.EventSelector = { ["IncludeManagementEvents"] = true, ["DataResources"] = true, ["ReadWriteType"] = true, nil }
@@ -1102,14 +1498,25 @@ end
 -- * ReadWriteType [ReadWriteType] <p>Specify if you want your trail to log read-only events, write-only events, or all. For example, the EC2 <code>GetConsoleOutput</code> is a read-only API operation and <code>RunInstances</code> is a write-only API operation.</p> <p> By default, the value is <code>All</code>.</p>
 -- @return EventSelector structure as a key-value pair table
 function M.EventSelector(args)
-	assert(args, "You must provdide an argument table when creating EventSelector")
-	local t = { 
+	assert(args, "You must provide an argument table when creating EventSelector")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["IncludeManagementEvents"] = args["IncludeManagementEvents"],
 		["DataResources"] = args["DataResources"],
 		["ReadWriteType"] = args["ReadWriteType"],
 	}
-	asserts.AssertEventSelector(t)
-	return t
+	asserts.AssertEventSelector(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InsufficientS3BucketPolicyException = { nil }
@@ -1128,11 +1535,22 @@ end
 -- Valid keys:
 -- @return InsufficientS3BucketPolicyException structure as a key-value pair table
 function M.InsufficientS3BucketPolicyException(args)
-	assert(args, "You must provdide an argument table when creating InsufficientS3BucketPolicyException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InsufficientS3BucketPolicyException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertInsufficientS3BucketPolicyException(t)
-	return t
+	asserts.AssertInsufficientS3BucketPolicyException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeTrailsResponse = { ["trailList"] = true, nil }
@@ -1153,12 +1571,23 @@ end
 -- * trailList [TrailList] <p>The list of trail objects.</p>
 -- @return DescribeTrailsResponse structure as a key-value pair table
 function M.DescribeTrailsResponse(args)
-	assert(args, "You must provdide an argument table when creating DescribeTrailsResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeTrailsResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["trailList"] = args["trailList"],
 	}
-	asserts.AssertDescribeTrailsResponse(t)
-	return t
+	asserts.AssertDescribeTrailsResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidCloudWatchLogsRoleArnException = { nil }
@@ -1177,11 +1606,22 @@ end
 -- Valid keys:
 -- @return InvalidCloudWatchLogsRoleArnException structure as a key-value pair table
 function M.InvalidCloudWatchLogsRoleArnException(args)
-	assert(args, "You must provdide an argument table when creating InvalidCloudWatchLogsRoleArnException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidCloudWatchLogsRoleArnException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertInvalidCloudWatchLogsRoleArnException(t)
-	return t
+	asserts.AssertInvalidCloudWatchLogsRoleArnException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CloudWatchLogsDeliveryUnavailableException = { nil }
@@ -1200,11 +1640,22 @@ end
 -- Valid keys:
 -- @return CloudWatchLogsDeliveryUnavailableException structure as a key-value pair table
 function M.CloudWatchLogsDeliveryUnavailableException(args)
-	assert(args, "You must provdide an argument table when creating CloudWatchLogsDeliveryUnavailableException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CloudWatchLogsDeliveryUnavailableException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertCloudWatchLogsDeliveryUnavailableException(t)
-	return t
+	asserts.AssertCloudWatchLogsDeliveryUnavailableException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidTrailNameException = { nil }
@@ -1223,11 +1674,22 @@ end
 -- Valid keys:
 -- @return InvalidTrailNameException structure as a key-value pair table
 function M.InvalidTrailNameException(args)
-	assert(args, "You must provdide an argument table when creating InvalidTrailNameException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidTrailNameException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertInvalidTrailNameException(t)
-	return t
+	asserts.AssertInvalidTrailNameException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListPublicKeysResponse = { ["NextToken"] = true, ["PublicKeyList"] = true, nil }
@@ -1250,13 +1712,24 @@ end
 -- * PublicKeyList [PublicKeyList] <p>Contains an array of PublicKey objects.</p> <note> <p>The returned public keys may have validity time ranges that overlap.</p> </note>
 -- @return ListPublicKeysResponse structure as a key-value pair table
 function M.ListPublicKeysResponse(args)
-	assert(args, "You must provdide an argument table when creating ListPublicKeysResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListPublicKeysResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NextToken"] = args["NextToken"],
 		["PublicKeyList"] = args["PublicKeyList"],
 	}
-	asserts.AssertListPublicKeysResponse(t)
-	return t
+	asserts.AssertListPublicKeysResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ResourceNotFoundException = { nil }
@@ -1275,11 +1748,22 @@ end
 -- Valid keys:
 -- @return ResourceNotFoundException structure as a key-value pair table
 function M.ResourceNotFoundException(args)
-	assert(args, "You must provdide an argument table when creating ResourceNotFoundException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ResourceNotFoundException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertResourceNotFoundException(t)
-	return t
+	asserts.AssertResourceNotFoundException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteTrailResponse = { nil }
@@ -1298,11 +1782,22 @@ end
 -- Valid keys:
 -- @return DeleteTrailResponse structure as a key-value pair table
 function M.DeleteTrailResponse(args)
-	assert(args, "You must provdide an argument table when creating DeleteTrailResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteTrailResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertDeleteTrailResponse(t)
-	return t
+	asserts.AssertDeleteTrailResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ResourceTag = { ["ResourceId"] = true, ["TagsList"] = true, nil }
@@ -1325,13 +1820,24 @@ end
 -- * TagsList [TagsList] <p>A list of tags.</p>
 -- @return ResourceTag structure as a key-value pair table
 function M.ResourceTag(args)
-	assert(args, "You must provdide an argument table when creating ResourceTag")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ResourceTag")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ResourceId"] = args["ResourceId"],
 		["TagsList"] = args["TagsList"],
 	}
-	asserts.AssertResourceTag(t)
-	return t
+	asserts.AssertResourceTag(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetTrailStatusResponse = { ["LatestNotificationError"] = true, ["LatestCloudWatchLogsDeliveryTime"] = true, ["LatestNotificationTime"] = true, ["LatestNotificationAttemptSucceeded"] = true, ["LatestDeliveryError"] = true, ["LatestDeliveryTime"] = true, ["TimeLoggingStarted"] = true, ["LatestDigestDeliveryError"] = true, ["LatestDeliveryAttemptSucceeded"] = true, ["IsLogging"] = true, ["LatestCloudWatchLogsDeliveryError"] = true, ["StartLoggingTime"] = true, ["LatestDigestDeliveryTime"] = true, ["StopLoggingTime"] = true, ["LatestNotificationAttemptTime"] = true, ["LatestDeliveryAttemptTime"] = true, ["TimeLoggingStopped"] = true, nil }
@@ -1384,8 +1890,14 @@ end
 -- * TimeLoggingStopped [String] <p>This field is deprecated.</p>
 -- @return GetTrailStatusResponse structure as a key-value pair table
 function M.GetTrailStatusResponse(args)
-	assert(args, "You must provdide an argument table when creating GetTrailStatusResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetTrailStatusResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["LatestNotificationError"] = args["LatestNotificationError"],
 		["LatestCloudWatchLogsDeliveryTime"] = args["LatestCloudWatchLogsDeliveryTime"],
 		["LatestNotificationTime"] = args["LatestNotificationTime"],
@@ -1404,8 +1916,13 @@ function M.GetTrailStatusResponse(args)
 		["LatestDeliveryAttemptTime"] = args["LatestDeliveryAttemptTime"],
 		["TimeLoggingStopped"] = args["TimeLoggingStopped"],
 	}
-	asserts.AssertGetTrailStatusResponse(t)
-	return t
+	asserts.AssertGetTrailStatusResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidTokenException = { nil }
@@ -1424,11 +1941,22 @@ end
 -- Valid keys:
 -- @return InvalidTokenException structure as a key-value pair table
 function M.InvalidTokenException(args)
-	assert(args, "You must provdide an argument table when creating InvalidTokenException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidTokenException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertInvalidTokenException(t)
-	return t
+	asserts.AssertInvalidTokenException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidTagParameterException = { nil }
@@ -1447,11 +1975,22 @@ end
 -- Valid keys:
 -- @return InvalidTagParameterException structure as a key-value pair table
 function M.InvalidTagParameterException(args)
-	assert(args, "You must provdide an argument table when creating InvalidTagParameterException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidTagParameterException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertInvalidTagParameterException(t)
-	return t
+	asserts.AssertInvalidTagParameterException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.LookupEventsResponse = { ["NextToken"] = true, ["Events"] = true, nil }
@@ -1474,13 +2013,24 @@ end
 -- * Events [EventsList] <p>A list of events returned based on the lookup attributes specified and the CloudTrail event. The events list is sorted by time. The most recent event is listed first.</p>
 -- @return LookupEventsResponse structure as a key-value pair table
 function M.LookupEventsResponse(args)
-	assert(args, "You must provdide an argument table when creating LookupEventsResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating LookupEventsResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NextToken"] = args["NextToken"],
 		["Events"] = args["Events"],
 	}
-	asserts.AssertLookupEventsResponse(t)
-	return t
+	asserts.AssertLookupEventsResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidMaxResultsException = { nil }
@@ -1499,11 +2049,22 @@ end
 -- Valid keys:
 -- @return InvalidMaxResultsException structure as a key-value pair table
 function M.InvalidMaxResultsException(args)
-	assert(args, "You must provdide an argument table when creating InvalidMaxResultsException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidMaxResultsException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertInvalidMaxResultsException(t)
-	return t
+	asserts.AssertInvalidMaxResultsException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DataResource = { ["Values"] = true, ["Type"] = true, nil }
@@ -1526,13 +2087,24 @@ end
 -- * Type [String] <p>The resource type in which you want to log data events. You can specify only the following value: <code>AWS::S3::Object</code>.</p>
 -- @return DataResource structure as a key-value pair table
 function M.DataResource(args)
-	assert(args, "You must provdide an argument table when creating DataResource")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DataResource")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Values"] = args["Values"],
 		["Type"] = args["Type"],
 	}
-	asserts.AssertDataResource(t)
-	return t
+	asserts.AssertDataResource(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.KmsException = { nil }
@@ -1551,11 +2123,22 @@ end
 -- Valid keys:
 -- @return KmsException structure as a key-value pair table
 function M.KmsException(args)
-	assert(args, "You must provdide an argument table when creating KmsException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating KmsException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertKmsException(t)
-	return t
+	asserts.AssertKmsException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListPublicKeysRequest = { ["EndTime"] = true, ["NextToken"] = true, ["StartTime"] = true, nil }
@@ -1580,14 +2163,25 @@ end
 -- * StartTime [Date] <p>Optionally specifies, in UTC, the start of the time range to look up public keys for CloudTrail digest files. If not specified, the current time is used, and the current public key is returned.</p>
 -- @return ListPublicKeysRequest structure as a key-value pair table
 function M.ListPublicKeysRequest(args)
-	assert(args, "You must provdide an argument table when creating ListPublicKeysRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListPublicKeysRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["EndTime"] = args["EndTime"],
 		["NextToken"] = args["NextToken"],
 		["StartTime"] = args["StartTime"],
 	}
-	asserts.AssertListPublicKeysRequest(t)
-	return t
+	asserts.AssertListPublicKeysRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetEventSelectorsRequest = { ["TrailName"] = true, nil }
@@ -1610,12 +2204,23 @@ end
 -- Required key: TrailName
 -- @return GetEventSelectorsRequest structure as a key-value pair table
 function M.GetEventSelectorsRequest(args)
-	assert(args, "You must provdide an argument table when creating GetEventSelectorsRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetEventSelectorsRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["TrailName"] = args["TrailName"],
 	}
-	asserts.AssertGetEventSelectorsRequest(t)
-	return t
+	asserts.AssertGetEventSelectorsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.TagsLimitExceededException = { nil }
@@ -1634,11 +2239,22 @@ end
 -- Valid keys:
 -- @return TagsLimitExceededException structure as a key-value pair table
 function M.TagsLimitExceededException(args)
-	assert(args, "You must provdide an argument table when creating TagsLimitExceededException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating TagsLimitExceededException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertTagsLimitExceededException(t)
-	return t
+	asserts.AssertTagsLimitExceededException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetEventSelectorsResponse = { ["EventSelectors"] = true, ["TrailARN"] = true, nil }
@@ -1661,13 +2277,24 @@ end
 -- * TrailARN [String] <p>The specified trail ARN that has the event selectors.</p>
 -- @return GetEventSelectorsResponse structure as a key-value pair table
 function M.GetEventSelectorsResponse(args)
-	assert(args, "You must provdide an argument table when creating GetEventSelectorsResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetEventSelectorsResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["EventSelectors"] = args["EventSelectors"],
 		["TrailARN"] = args["TrailARN"],
 	}
-	asserts.AssertGetEventSelectorsResponse(t)
-	return t
+	asserts.AssertGetEventSelectorsResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InsufficientSnsTopicPolicyException = { nil }
@@ -1686,11 +2313,22 @@ end
 -- Valid keys:
 -- @return InsufficientSnsTopicPolicyException structure as a key-value pair table
 function M.InsufficientSnsTopicPolicyException(args)
-	assert(args, "You must provdide an argument table when creating InsufficientSnsTopicPolicyException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InsufficientSnsTopicPolicyException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertInsufficientSnsTopicPolicyException(t)
-	return t
+	asserts.AssertInsufficientSnsTopicPolicyException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.StartLoggingRequest = { ["Name"] = true, nil }
@@ -1713,12 +2351,23 @@ end
 -- Required key: Name
 -- @return StartLoggingRequest structure as a key-value pair table
 function M.StartLoggingRequest(args)
-	assert(args, "You must provdide an argument table when creating StartLoggingRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating StartLoggingRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Name"] = args["Name"],
 	}
-	asserts.AssertStartLoggingRequest(t)
-	return t
+	asserts.AssertStartLoggingRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.LookupAttribute = { ["AttributeKey"] = true, ["AttributeValue"] = true, nil }
@@ -1745,13 +2394,24 @@ end
 -- Required key: AttributeValue
 -- @return LookupAttribute structure as a key-value pair table
 function M.LookupAttribute(args)
-	assert(args, "You must provdide an argument table when creating LookupAttribute")
-	local t = { 
+	assert(args, "You must provide an argument table when creating LookupAttribute")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["AttributeKey"] = args["AttributeKey"],
 		["AttributeValue"] = args["AttributeValue"],
 	}
-	asserts.AssertLookupAttribute(t)
-	return t
+	asserts.AssertLookupAttribute(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Resource = { ["ResourceType"] = true, ["ResourceName"] = true, nil }
@@ -1774,13 +2434,24 @@ end
 -- * ResourceName [String] <p>The name of the resource referenced by the event returned. These are user-created names whose values will depend on the environment. For example, the resource name might be "auto-scaling-test-group" for an Auto Scaling Group or "i-1234567" for an EC2 Instance.</p>
 -- @return Resource structure as a key-value pair table
 function M.Resource(args)
-	assert(args, "You must provdide an argument table when creating Resource")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Resource")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ResourceType"] = args["ResourceType"],
 		["ResourceName"] = args["ResourceName"],
 	}
-	asserts.AssertResource(t)
-	return t
+	asserts.AssertResource(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.KmsKeyNotFoundException = { nil }
@@ -1799,11 +2470,22 @@ end
 -- Valid keys:
 -- @return KmsKeyNotFoundException structure as a key-value pair table
 function M.KmsKeyNotFoundException(args)
-	assert(args, "You must provdide an argument table when creating KmsKeyNotFoundException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating KmsKeyNotFoundException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertKmsKeyNotFoundException(t)
-	return t
+	asserts.AssertKmsKeyNotFoundException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.PutEventSelectorsRequest = { ["EventSelectors"] = true, ["TrailName"] = true, nil }
@@ -1830,13 +2512,24 @@ end
 -- Required key: EventSelectors
 -- @return PutEventSelectorsRequest structure as a key-value pair table
 function M.PutEventSelectorsRequest(args)
-	assert(args, "You must provdide an argument table when creating PutEventSelectorsRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating PutEventSelectorsRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["EventSelectors"] = args["EventSelectors"],
 		["TrailName"] = args["TrailName"],
 	}
-	asserts.AssertPutEventSelectorsRequest(t)
-	return t
+	asserts.AssertPutEventSelectorsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidHomeRegionException = { nil }
@@ -1855,11 +2548,22 @@ end
 -- Valid keys:
 -- @return InvalidHomeRegionException structure as a key-value pair table
 function M.InvalidHomeRegionException(args)
-	assert(args, "You must provdide an argument table when creating InvalidHomeRegionException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidHomeRegionException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertInvalidHomeRegionException(t)
-	return t
+	asserts.AssertInvalidHomeRegionException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AddTagsRequest = { ["ResourceId"] = true, ["TagsList"] = true, nil }
@@ -1884,13 +2588,24 @@ end
 -- Required key: ResourceId
 -- @return AddTagsRequest structure as a key-value pair table
 function M.AddTagsRequest(args)
-	assert(args, "You must provdide an argument table when creating AddTagsRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AddTagsRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ResourceId"] = args["ResourceId"],
 		["TagsList"] = args["TagsList"],
 	}
-	asserts.AssertAddTagsRequest(t)
-	return t
+	asserts.AssertAddTagsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidS3PrefixException = { nil }
@@ -1909,11 +2624,22 @@ end
 -- Valid keys:
 -- @return InvalidS3PrefixException structure as a key-value pair table
 function M.InvalidS3PrefixException(args)
-	assert(args, "You must provdide an argument table when creating InvalidS3PrefixException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidS3PrefixException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertInvalidS3PrefixException(t)
-	return t
+	asserts.AssertInvalidS3PrefixException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.RemoveTagsResponse = { nil }
@@ -1932,11 +2658,22 @@ end
 -- Valid keys:
 -- @return RemoveTagsResponse structure as a key-value pair table
 function M.RemoveTagsResponse(args)
-	assert(args, "You must provdide an argument table when creating RemoveTagsResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating RemoveTagsResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertRemoveTagsResponse(t)
-	return t
+	asserts.AssertRemoveTagsResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListTagsResponse = { ["ResourceTagList"] = true, ["NextToken"] = true, nil }
@@ -1959,13 +2696,24 @@ end
 -- * NextToken [String] <p>Reserved for future use.</p>
 -- @return ListTagsResponse structure as a key-value pair table
 function M.ListTagsResponse(args)
-	assert(args, "You must provdide an argument table when creating ListTagsResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListTagsResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ResourceTagList"] = args["ResourceTagList"],
 		["NextToken"] = args["NextToken"],
 	}
-	asserts.AssertListTagsResponse(t)
-	return t
+	asserts.AssertListTagsResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.PublicKey = { ["ValidityStartTime"] = true, ["ValidityEndTime"] = true, ["Value"] = true, ["Fingerprint"] = true, nil }
@@ -1992,15 +2740,26 @@ end
 -- * Fingerprint [String] <p>The fingerprint of the public key.</p>
 -- @return PublicKey structure as a key-value pair table
 function M.PublicKey(args)
-	assert(args, "You must provdide an argument table when creating PublicKey")
-	local t = { 
+	assert(args, "You must provide an argument table when creating PublicKey")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ValidityStartTime"] = args["ValidityStartTime"],
 		["ValidityEndTime"] = args["ValidityEndTime"],
 		["Value"] = args["Value"],
 		["Fingerprint"] = args["Fingerprint"],
 	}
-	asserts.AssertPublicKey(t)
-	return t
+	asserts.AssertPublicKey(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidKmsKeyIdException = { nil }
@@ -2019,11 +2778,22 @@ end
 -- Valid keys:
 -- @return InvalidKmsKeyIdException structure as a key-value pair table
 function M.InvalidKmsKeyIdException(args)
-	assert(args, "You must provdide an argument table when creating InvalidKmsKeyIdException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidKmsKeyIdException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertInvalidKmsKeyIdException(t)
-	return t
+	asserts.AssertInvalidKmsKeyIdException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateTrailResponse = { ["IncludeGlobalServiceEvents"] = true, ["Name"] = true, ["S3KeyPrefix"] = true, ["TrailARN"] = true, ["LogFileValidationEnabled"] = true, ["SnsTopicARN"] = true, ["IsMultiRegionTrail"] = true, ["S3BucketName"] = true, ["CloudWatchLogsRoleArn"] = true, ["KmsKeyId"] = true, ["CloudWatchLogsLogGroupArn"] = true, ["SnsTopicName"] = true, nil }
@@ -2066,8 +2836,14 @@ end
 -- * SnsTopicName [String] <p>This field is deprecated. Use SnsTopicARN.</p>
 -- @return CreateTrailResponse structure as a key-value pair table
 function M.CreateTrailResponse(args)
-	assert(args, "You must provdide an argument table when creating CreateTrailResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateTrailResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["IncludeGlobalServiceEvents"] = args["IncludeGlobalServiceEvents"],
 		["Name"] = args["Name"],
 		["S3KeyPrefix"] = args["S3KeyPrefix"],
@@ -2081,8 +2857,13 @@ function M.CreateTrailResponse(args)
 		["CloudWatchLogsLogGroupArn"] = args["CloudWatchLogsLogGroupArn"],
 		["SnsTopicName"] = args["SnsTopicName"],
 	}
-	asserts.AssertCreateTrailResponse(t)
-	return t
+	asserts.AssertCreateTrailResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 function asserts.AssertReadWriteType(str)
@@ -2404,8 +3185,11 @@ function M.DeleteTrailAsync(DeleteTrailRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "com.amazonaws.cloudtrail.v20131101.CloudTrail_20131101.DeleteTrail",
 	}
+	for header,value in pairs(DeleteTrailRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteTrailRequest, headers, settings, cb)
 	else
@@ -2436,8 +3220,11 @@ function M.RemoveTagsAsync(RemoveTagsRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "com.amazonaws.cloudtrail.v20131101.CloudTrail_20131101.RemoveTags",
 	}
+	for header,value in pairs(RemoveTagsRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", RemoveTagsRequest, headers, settings, cb)
 	else
@@ -2468,8 +3255,11 @@ function M.GetEventSelectorsAsync(GetEventSelectorsRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "com.amazonaws.cloudtrail.v20131101.CloudTrail_20131101.GetEventSelectors",
 	}
+	for header,value in pairs(GetEventSelectorsRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", GetEventSelectorsRequest, headers, settings, cb)
 	else
@@ -2500,8 +3290,11 @@ function M.AddTagsAsync(AddTagsRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "com.amazonaws.cloudtrail.v20131101.CloudTrail_20131101.AddTags",
 	}
+	for header,value in pairs(AddTagsRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", AddTagsRequest, headers, settings, cb)
 	else
@@ -2532,8 +3325,11 @@ function M.StartLoggingAsync(StartLoggingRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "com.amazonaws.cloudtrail.v20131101.CloudTrail_20131101.StartLogging",
 	}
+	for header,value in pairs(StartLoggingRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", StartLoggingRequest, headers, settings, cb)
 	else
@@ -2564,8 +3360,11 @@ function M.GetTrailStatusAsync(GetTrailStatusRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "com.amazonaws.cloudtrail.v20131101.CloudTrail_20131101.GetTrailStatus",
 	}
+	for header,value in pairs(GetTrailStatusRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", GetTrailStatusRequest, headers, settings, cb)
 	else
@@ -2596,8 +3395,11 @@ function M.ListPublicKeysAsync(ListPublicKeysRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "com.amazonaws.cloudtrail.v20131101.CloudTrail_20131101.ListPublicKeys",
 	}
+	for header,value in pairs(ListPublicKeysRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ListPublicKeysRequest, headers, settings, cb)
 	else
@@ -2628,8 +3430,11 @@ function M.StopLoggingAsync(StopLoggingRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "com.amazonaws.cloudtrail.v20131101.CloudTrail_20131101.StopLogging",
 	}
+	for header,value in pairs(StopLoggingRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", StopLoggingRequest, headers, settings, cb)
 	else
@@ -2660,8 +3465,11 @@ function M.PutEventSelectorsAsync(PutEventSelectorsRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "com.amazonaws.cloudtrail.v20131101.CloudTrail_20131101.PutEventSelectors",
 	}
+	for header,value in pairs(PutEventSelectorsRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", PutEventSelectorsRequest, headers, settings, cb)
 	else
@@ -2692,8 +3500,11 @@ function M.DescribeTrailsAsync(DescribeTrailsRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "com.amazonaws.cloudtrail.v20131101.CloudTrail_20131101.DescribeTrails",
 	}
+	for header,value in pairs(DescribeTrailsRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeTrailsRequest, headers, settings, cb)
 	else
@@ -2724,8 +3535,11 @@ function M.CreateTrailAsync(CreateTrailRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "com.amazonaws.cloudtrail.v20131101.CloudTrail_20131101.CreateTrail",
 	}
+	for header,value in pairs(CreateTrailRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateTrailRequest, headers, settings, cb)
 	else
@@ -2756,8 +3570,11 @@ function M.UpdateTrailAsync(UpdateTrailRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "com.amazonaws.cloudtrail.v20131101.CloudTrail_20131101.UpdateTrail",
 	}
+	for header,value in pairs(UpdateTrailRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateTrailRequest, headers, settings, cb)
 	else
@@ -2788,8 +3605,11 @@ function M.ListTagsAsync(ListTagsRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "com.amazonaws.cloudtrail.v20131101.CloudTrail_20131101.ListTags",
 	}
+	for header,value in pairs(ListTagsRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ListTagsRequest, headers, settings, cb)
 	else
@@ -2820,8 +3640,11 @@ function M.LookupEventsAsync(LookupEventsRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "com.amazonaws.cloudtrail.v20131101.CloudTrail_20131101.LookupEvents",
 	}
+	for header,value in pairs(LookupEventsRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", LookupEventsRequest, headers, settings, cb)
 	else

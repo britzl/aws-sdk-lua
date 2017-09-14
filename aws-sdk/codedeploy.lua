@@ -39,12 +39,23 @@ end
 -- * deploymentConfigInfo [DeploymentConfigInfo] <p>Information about the deployment configuration.</p>
 -- @return GetDeploymentConfigOutput structure as a key-value pair table
 function M.GetDeploymentConfigOutput(args)
-	assert(args, "You must provdide an argument table when creating GetDeploymentConfigOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetDeploymentConfigOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["deploymentConfigInfo"] = args["deploymentConfigInfo"],
 	}
-	asserts.AssertGetDeploymentConfigOutput(t)
-	return t
+	asserts.AssertGetDeploymentConfigOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AddTagsToOnPremisesInstancesInput = { ["instanceNames"] = true, ["tags"] = true, nil }
@@ -71,13 +82,24 @@ end
 -- Required key: instanceNames
 -- @return AddTagsToOnPremisesInstancesInput structure as a key-value pair table
 function M.AddTagsToOnPremisesInstancesInput(args)
-	assert(args, "You must provdide an argument table when creating AddTagsToOnPremisesInstancesInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AddTagsToOnPremisesInstancesInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["instanceNames"] = args["instanceNames"],
 		["tags"] = args["tags"],
 	}
-	asserts.AssertAddTagsToOnPremisesInstancesInput(t)
-	return t
+	asserts.AssertAddTagsToOnPremisesInstancesInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListGitHubAccountTokenNamesInput = { ["nextToken"] = true, nil }
@@ -98,12 +120,23 @@ end
 -- * nextToken [NextToken] <p>An identifier returned from the previous ListGitHubAccountTokenNames call. It can be used to return the next set of names in the list. </p>
 -- @return ListGitHubAccountTokenNamesInput structure as a key-value pair table
 function M.ListGitHubAccountTokenNamesInput(args)
-	assert(args, "You must provdide an argument table when creating ListGitHubAccountTokenNamesInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListGitHubAccountTokenNamesInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["nextToken"] = args["nextToken"],
 	}
-	asserts.AssertListGitHubAccountTokenNamesInput(t)
-	return t
+	asserts.AssertListGitHubAccountTokenNamesInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.RevisionInfo = { ["revisionLocation"] = true, ["genericRevisionInfo"] = true, nil }
@@ -126,13 +159,24 @@ end
 -- * genericRevisionInfo [GenericRevisionInfo] <p>Information about an application revision, including usage details and associated deployment groups.</p>
 -- @return RevisionInfo structure as a key-value pair table
 function M.RevisionInfo(args)
-	assert(args, "You must provdide an argument table when creating RevisionInfo")
-	local t = { 
+	assert(args, "You must provide an argument table when creating RevisionInfo")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["revisionLocation"] = args["revisionLocation"],
 		["genericRevisionInfo"] = args["genericRevisionInfo"],
 	}
-	asserts.AssertRevisionInfo(t)
-	return t
+	asserts.AssertRevisionInfo(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidNextTokenException = { nil }
@@ -151,11 +195,22 @@ end
 -- Valid keys:
 -- @return InvalidNextTokenException structure as a key-value pair table
 function M.InvalidNextTokenException(args)
-	assert(args, "You must provdide an argument table when creating InvalidNextTokenException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidNextTokenException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertInvalidNextTokenException(t)
-	return t
+	asserts.AssertInvalidNextTokenException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidDeploymentInstanceTypeException = { nil }
@@ -174,11 +229,22 @@ end
 -- Valid keys:
 -- @return InvalidDeploymentInstanceTypeException structure as a key-value pair table
 function M.InvalidDeploymentInstanceTypeException(args)
-	assert(args, "You must provdide an argument table when creating InvalidDeploymentInstanceTypeException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidDeploymentInstanceTypeException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertInvalidDeploymentInstanceTypeException(t)
-	return t
+	asserts.AssertInvalidDeploymentInstanceTypeException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidTagException = { nil }
@@ -197,11 +263,22 @@ end
 -- Valid keys:
 -- @return InvalidTagException structure as a key-value pair table
 function M.InvalidTagException(args)
-	assert(args, "You must provdide an argument table when creating InvalidTagException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidTagException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertInvalidTagException(t)
-	return t
+	asserts.AssertInvalidTagException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InstanceNotRegisteredException = { nil }
@@ -220,11 +297,22 @@ end
 -- Valid keys:
 -- @return InstanceNotRegisteredException structure as a key-value pair table
 function M.InstanceNotRegisteredException(args)
-	assert(args, "You must provdide an argument table when creating InstanceNotRegisteredException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InstanceNotRegisteredException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertInstanceNotRegisteredException(t)
-	return t
+	asserts.AssertInstanceNotRegisteredException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListOnPremisesInstancesInput = { ["nextToken"] = true, ["registrationStatus"] = true, ["tagFilters"] = true, nil }
@@ -249,14 +337,25 @@ end
 -- * tagFilters [TagFilterList] <p>The on-premises instance tags that will be used to restrict the corresponding on-premises instance names returned.</p>
 -- @return ListOnPremisesInstancesInput structure as a key-value pair table
 function M.ListOnPremisesInstancesInput(args)
-	assert(args, "You must provdide an argument table when creating ListOnPremisesInstancesInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListOnPremisesInstancesInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["nextToken"] = args["nextToken"],
 		["registrationStatus"] = args["registrationStatus"],
 		["tagFilters"] = args["tagFilters"],
 	}
-	asserts.AssertListOnPremisesInstancesInput(t)
-	return t
+	asserts.AssertListOnPremisesInstancesInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.MultipleIamArnsProvidedException = { nil }
@@ -275,11 +374,22 @@ end
 -- Valid keys:
 -- @return MultipleIamArnsProvidedException structure as a key-value pair table
 function M.MultipleIamArnsProvidedException(args)
-	assert(args, "You must provdide an argument table when creating MultipleIamArnsProvidedException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating MultipleIamArnsProvidedException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertMultipleIamArnsProvidedException(t)
-	return t
+	asserts.AssertMultipleIamArnsProvidedException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidDeploymentStyleException = { nil }
@@ -298,11 +408,22 @@ end
 -- Valid keys:
 -- @return InvalidDeploymentStyleException structure as a key-value pair table
 function M.InvalidDeploymentStyleException(args)
-	assert(args, "You must provdide an argument table when creating InvalidDeploymentStyleException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidDeploymentStyleException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertInvalidDeploymentStyleException(t)
-	return t
+	asserts.AssertInvalidDeploymentStyleException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidAutoRollbackConfigException = { nil }
@@ -321,11 +442,22 @@ end
 -- Valid keys:
 -- @return InvalidAutoRollbackConfigException structure as a key-value pair table
 function M.InvalidAutoRollbackConfigException(args)
-	assert(args, "You must provdide an argument table when creating InvalidAutoRollbackConfigException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidAutoRollbackConfigException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertInvalidAutoRollbackConfigException(t)
-	return t
+	asserts.AssertInvalidAutoRollbackConfigException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateDeploymentConfigOutput = { ["deploymentConfigId"] = true, nil }
@@ -346,12 +478,23 @@ end
 -- * deploymentConfigId [DeploymentConfigId] <p>A unique deployment configuration ID.</p>
 -- @return CreateDeploymentConfigOutput structure as a key-value pair table
 function M.CreateDeploymentConfigOutput(args)
-	assert(args, "You must provdide an argument table when creating CreateDeploymentConfigOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateDeploymentConfigOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["deploymentConfigId"] = args["deploymentConfigId"],
 	}
-	asserts.AssertCreateDeploymentConfigOutput(t)
-	return t
+	asserts.AssertCreateDeploymentConfigOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetDeploymentGroupInput = { ["applicationName"] = true, ["deploymentGroupName"] = true, nil }
@@ -378,13 +521,24 @@ end
 -- Required key: deploymentGroupName
 -- @return GetDeploymentGroupInput structure as a key-value pair table
 function M.GetDeploymentGroupInput(args)
-	assert(args, "You must provdide an argument table when creating GetDeploymentGroupInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetDeploymentGroupInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["applicationName"] = args["applicationName"],
 		["deploymentGroupName"] = args["deploymentGroupName"],
 	}
-	asserts.AssertGetDeploymentGroupInput(t)
-	return t
+	asserts.AssertGetDeploymentGroupInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetDeploymentConfigInput = { ["deploymentConfigName"] = true, nil }
@@ -407,12 +561,23 @@ end
 -- Required key: deploymentConfigName
 -- @return GetDeploymentConfigInput structure as a key-value pair table
 function M.GetDeploymentConfigInput(args)
-	assert(args, "You must provdide an argument table when creating GetDeploymentConfigInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetDeploymentConfigInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["deploymentConfigName"] = args["deploymentConfigName"],
 	}
-	asserts.AssertGetDeploymentConfigInput(t)
-	return t
+	asserts.AssertGetDeploymentConfigInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.S3Location = { ["bundleType"] = true, ["version"] = true, ["bucket"] = true, ["key"] = true, ["eTag"] = true, nil }
@@ -441,16 +606,27 @@ end
 -- * eTag [ETag] <p>The ETag of the Amazon S3 object that represents the bundled artifacts for the application revision.</p> <p>If the ETag is not specified as an input parameter, ETag validation of the object will be skipped.</p>
 -- @return S3Location structure as a key-value pair table
 function M.S3Location(args)
-	assert(args, "You must provdide an argument table when creating S3Location")
-	local t = { 
+	assert(args, "You must provide an argument table when creating S3Location")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["bundleType"] = args["bundleType"],
 		["version"] = args["version"],
 		["bucket"] = args["bucket"],
 		["key"] = args["key"],
 		["eTag"] = args["eTag"],
 	}
-	asserts.AssertS3Location(t)
-	return t
+	asserts.AssertS3Location(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListApplicationRevisionsOutput = { ["nextToken"] = true, ["revisions"] = true, nil }
@@ -473,13 +649,24 @@ end
 -- * revisions [RevisionLocationList] <p>A list of locations that contain the matching revisions.</p>
 -- @return ListApplicationRevisionsOutput structure as a key-value pair table
 function M.ListApplicationRevisionsOutput(args)
-	assert(args, "You must provdide an argument table when creating ListApplicationRevisionsOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListApplicationRevisionsOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["nextToken"] = args["nextToken"],
 		["revisions"] = args["revisions"],
 	}
-	asserts.AssertListApplicationRevisionsOutput(t)
-	return t
+	asserts.AssertListApplicationRevisionsOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeploymentAlreadyCompletedException = { nil }
@@ -498,11 +685,22 @@ end
 -- Valid keys:
 -- @return DeploymentAlreadyCompletedException structure as a key-value pair table
 function M.DeploymentAlreadyCompletedException(args)
-	assert(args, "You must provdide an argument table when creating DeploymentAlreadyCompletedException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeploymentAlreadyCompletedException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertDeploymentAlreadyCompletedException(t)
-	return t
+	asserts.AssertDeploymentAlreadyCompletedException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InstanceNameRequiredException = { nil }
@@ -521,11 +719,22 @@ end
 -- Valid keys:
 -- @return InstanceNameRequiredException structure as a key-value pair table
 function M.InstanceNameRequiredException(args)
-	assert(args, "You must provdide an argument table when creating InstanceNameRequiredException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InstanceNameRequiredException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertInstanceNameRequiredException(t)
-	return t
+	asserts.AssertInstanceNameRequiredException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ELBInfo = { ["name"] = true, nil }
@@ -546,12 +755,23 @@ end
 -- * name [ELBName] <p>For blue/green deployments, the name of the load balancer that will be used to route traffic from original instances to replacement instances in a blue/green deployment. For in-place deployments, the name of the load balancer that instances are deregistered from so they are not serving traffic during a deployment, and then re-registered with after the deployment completes.</p>
 -- @return ELBInfo structure as a key-value pair table
 function M.ELBInfo(args)
-	assert(args, "You must provdide an argument table when creating ELBInfo")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ELBInfo")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["name"] = args["name"],
 	}
-	asserts.AssertELBInfo(t)
-	return t
+	asserts.AssertELBInfo(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListDeploymentGroupsInput = { ["applicationName"] = true, ["nextToken"] = true, nil }
@@ -576,13 +796,24 @@ end
 -- Required key: applicationName
 -- @return ListDeploymentGroupsInput structure as a key-value pair table
 function M.ListDeploymentGroupsInput(args)
-	assert(args, "You must provdide an argument table when creating ListDeploymentGroupsInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListDeploymentGroupsInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["applicationName"] = args["applicationName"],
 		["nextToken"] = args["nextToken"],
 	}
-	asserts.AssertListDeploymentGroupsInput(t)
-	return t
+	asserts.AssertListDeploymentGroupsInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AlarmConfiguration = { ["ignorePollAlarmFailure"] = true, ["alarms"] = true, ["enabled"] = true, nil }
@@ -607,14 +838,25 @@ end
 -- * enabled [Boolean] <p>Indicates whether the alarm configuration is enabled.</p>
 -- @return AlarmConfiguration structure as a key-value pair table
 function M.AlarmConfiguration(args)
-	assert(args, "You must provdide an argument table when creating AlarmConfiguration")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AlarmConfiguration")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ignorePollAlarmFailure"] = args["ignorePollAlarmFailure"],
 		["alarms"] = args["alarms"],
 		["enabled"] = args["enabled"],
 	}
-	asserts.AssertAlarmConfiguration(t)
-	return t
+	asserts.AssertAlarmConfiguration(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeploymentConfigDoesNotExistException = { nil }
@@ -633,11 +875,22 @@ end
 -- Valid keys:
 -- @return DeploymentConfigDoesNotExistException structure as a key-value pair table
 function M.DeploymentConfigDoesNotExistException(args)
-	assert(args, "You must provdide an argument table when creating DeploymentConfigDoesNotExistException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeploymentConfigDoesNotExistException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertDeploymentConfigDoesNotExistException(t)
-	return t
+	asserts.AssertDeploymentConfigDoesNotExistException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.BucketNameFilterRequiredException = { nil }
@@ -656,11 +909,22 @@ end
 -- Valid keys:
 -- @return BucketNameFilterRequiredException structure as a key-value pair table
 function M.BucketNameFilterRequiredException(args)
-	assert(args, "You must provdide an argument table when creating BucketNameFilterRequiredException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating BucketNameFilterRequiredException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertBucketNameFilterRequiredException(t)
-	return t
+	asserts.AssertBucketNameFilterRequiredException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListOnPremisesInstancesOutput = { ["nextToken"] = true, ["instanceNames"] = true, nil }
@@ -683,13 +947,24 @@ end
 -- * instanceNames [InstanceNameList] <p>The list of matching on-premises instance names.</p>
 -- @return ListOnPremisesInstancesOutput structure as a key-value pair table
 function M.ListOnPremisesInstancesOutput(args)
-	assert(args, "You must provdide an argument table when creating ListOnPremisesInstancesOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListOnPremisesInstancesOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["nextToken"] = args["nextToken"],
 		["instanceNames"] = args["instanceNames"],
 	}
-	asserts.AssertListOnPremisesInstancesOutput(t)
-	return t
+	asserts.AssertListOnPremisesInstancesOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GreenFleetProvisioningOption = { ["action"] = true, nil }
@@ -710,12 +985,23 @@ end
 -- * action [GreenFleetProvisioningAction] <p>The method used to add instances to a replacement environment.</p> <ul> <li> <p>DISCOVER_EXISTING: Use instances that already exist or will be created manually.</p> </li> <li> <p>COPY_AUTO_SCALING_GROUP: Use settings from a specified Auto Scaling group to define and create instances in a new Auto Scaling group.</p> </li> </ul>
 -- @return GreenFleetProvisioningOption structure as a key-value pair table
 function M.GreenFleetProvisioningOption(args)
-	assert(args, "You must provdide an argument table when creating GreenFleetProvisioningOption")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GreenFleetProvisioningOption")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["action"] = args["action"],
 	}
-	asserts.AssertGreenFleetProvisioningOption(t)
-	return t
+	asserts.AssertGreenFleetProvisioningOption(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetApplicationRevisionInput = { ["applicationName"] = true, ["revision"] = true, nil }
@@ -742,13 +1028,24 @@ end
 -- Required key: revision
 -- @return GetApplicationRevisionInput structure as a key-value pair table
 function M.GetApplicationRevisionInput(args)
-	assert(args, "You must provdide an argument table when creating GetApplicationRevisionInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetApplicationRevisionInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["applicationName"] = args["applicationName"],
 		["revision"] = args["revision"],
 	}
-	asserts.AssertGetApplicationRevisionInput(t)
-	return t
+	asserts.AssertGetApplicationRevisionInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeploymentGroupInfo = { ["applicationName"] = true, ["deploymentGroupId"] = true, ["loadBalancerInfo"] = true, ["blueGreenDeploymentConfiguration"] = true, ["deploymentConfigName"] = true, ["autoScalingGroups"] = true, ["alarmConfiguration"] = true, ["ec2TagFilters"] = true, ["lastSuccessfulDeployment"] = true, ["autoRollbackConfiguration"] = true, ["deploymentStyle"] = true, ["triggerConfigurations"] = true, ["lastAttemptedDeployment"] = true, ["serviceRoleArn"] = true, ["deploymentGroupName"] = true, ["targetRevision"] = true, ["onPremisesInstanceTagFilters"] = true, nil }
@@ -801,8 +1098,14 @@ end
 -- * onPremisesInstanceTagFilters [TagFilterList] <p>The on-premises instance tags on which to filter.</p>
 -- @return DeploymentGroupInfo structure as a key-value pair table
 function M.DeploymentGroupInfo(args)
-	assert(args, "You must provdide an argument table when creating DeploymentGroupInfo")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeploymentGroupInfo")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["applicationName"] = args["applicationName"],
 		["deploymentGroupId"] = args["deploymentGroupId"],
 		["loadBalancerInfo"] = args["loadBalancerInfo"],
@@ -821,8 +1124,13 @@ function M.DeploymentGroupInfo(args)
 		["targetRevision"] = args["targetRevision"],
 		["onPremisesInstanceTagFilters"] = args["onPremisesInstanceTagFilters"],
 	}
-	asserts.AssertDeploymentGroupInfo(t)
-	return t
+	asserts.AssertDeploymentGroupInfo(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidSortOrderException = { nil }
@@ -841,11 +1149,22 @@ end
 -- Valid keys:
 -- @return InvalidSortOrderException structure as a key-value pair table
 function M.InvalidSortOrderException(args)
-	assert(args, "You must provdide an argument table when creating InvalidSortOrderException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidSortOrderException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertInvalidSortOrderException(t)
-	return t
+	asserts.AssertInvalidSortOrderException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeploymentIsNotInReadyStateException = { nil }
@@ -864,11 +1183,22 @@ end
 -- Valid keys:
 -- @return DeploymentIsNotInReadyStateException structure as a key-value pair table
 function M.DeploymentIsNotInReadyStateException(args)
-	assert(args, "You must provdide an argument table when creating DeploymentIsNotInReadyStateException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeploymentIsNotInReadyStateException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertDeploymentIsNotInReadyStateException(t)
-	return t
+	asserts.AssertDeploymentIsNotInReadyStateException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.IamSessionArnAlreadyRegisteredException = { nil }
@@ -887,11 +1217,22 @@ end
 -- Valid keys:
 -- @return IamSessionArnAlreadyRegisteredException structure as a key-value pair table
 function M.IamSessionArnAlreadyRegisteredException(args)
-	assert(args, "You must provdide an argument table when creating IamSessionArnAlreadyRegisteredException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating IamSessionArnAlreadyRegisteredException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertIamSessionArnAlreadyRegisteredException(t)
-	return t
+	asserts.AssertIamSessionArnAlreadyRegisteredException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.TriggerTargetsLimitExceededException = { nil }
@@ -910,11 +1251,22 @@ end
 -- Valid keys:
 -- @return TriggerTargetsLimitExceededException structure as a key-value pair table
 function M.TriggerTargetsLimitExceededException(args)
-	assert(args, "You must provdide an argument table when creating TriggerTargetsLimitExceededException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating TriggerTargetsLimitExceededException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertTriggerTargetsLimitExceededException(t)
-	return t
+	asserts.AssertTriggerTargetsLimitExceededException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeploymentConfigInfo = { ["deploymentConfigId"] = true, ["minimumHealthyHosts"] = true, ["createTime"] = true, ["deploymentConfigName"] = true, nil }
@@ -941,15 +1293,26 @@ end
 -- * deploymentConfigName [DeploymentConfigName] <p>The deployment configuration name.</p>
 -- @return DeploymentConfigInfo structure as a key-value pair table
 function M.DeploymentConfigInfo(args)
-	assert(args, "You must provdide an argument table when creating DeploymentConfigInfo")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeploymentConfigInfo")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["deploymentConfigId"] = args["deploymentConfigId"],
 		["minimumHealthyHosts"] = args["minimumHealthyHosts"],
 		["createTime"] = args["createTime"],
 		["deploymentConfigName"] = args["deploymentConfigName"],
 	}
-	asserts.AssertDeploymentConfigInfo(t)
-	return t
+	asserts.AssertDeploymentConfigInfo(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ApplicationAlreadyExistsException = { nil }
@@ -968,11 +1331,22 @@ end
 -- Valid keys:
 -- @return ApplicationAlreadyExistsException structure as a key-value pair table
 function M.ApplicationAlreadyExistsException(args)
-	assert(args, "You must provdide an argument table when creating ApplicationAlreadyExistsException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ApplicationAlreadyExistsException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertApplicationAlreadyExistsException(t)
-	return t
+	asserts.AssertApplicationAlreadyExistsException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidDeployedStateFilterException = { nil }
@@ -991,11 +1365,22 @@ end
 -- Valid keys:
 -- @return InvalidDeployedStateFilterException structure as a key-value pair table
 function M.InvalidDeployedStateFilterException(args)
-	assert(args, "You must provdide an argument table when creating InvalidDeployedStateFilterException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidDeployedStateFilterException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertInvalidDeployedStateFilterException(t)
-	return t
+	asserts.AssertInvalidDeployedStateFilterException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidAlarmConfigException = { nil }
@@ -1014,11 +1399,22 @@ end
 -- Valid keys:
 -- @return InvalidAlarmConfigException structure as a key-value pair table
 function M.InvalidAlarmConfigException(args)
-	assert(args, "You must provdide an argument table when creating InvalidAlarmConfigException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidAlarmConfigException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertInvalidAlarmConfigException(t)
-	return t
+	asserts.AssertInvalidAlarmConfigException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeploymentConfigInUseException = { nil }
@@ -1037,11 +1433,22 @@ end
 -- Valid keys:
 -- @return DeploymentConfigInUseException structure as a key-value pair table
 function M.DeploymentConfigInUseException(args)
-	assert(args, "You must provdide an argument table when creating DeploymentConfigInUseException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeploymentConfigInUseException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertDeploymentConfigInUseException(t)
-	return t
+	asserts.AssertDeploymentConfigInUseException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetOnPremisesInstanceOutput = { ["instanceInfo"] = true, nil }
@@ -1062,12 +1469,23 @@ end
 -- * instanceInfo [InstanceInfo] <p>Information about the on-premises instance.</p>
 -- @return GetOnPremisesInstanceOutput structure as a key-value pair table
 function M.GetOnPremisesInstanceOutput(args)
-	assert(args, "You must provdide an argument table when creating GetOnPremisesInstanceOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetOnPremisesInstanceOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["instanceInfo"] = args["instanceInfo"],
 	}
-	asserts.AssertGetOnPremisesInstanceOutput(t)
-	return t
+	asserts.AssertGetOnPremisesInstanceOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InstanceIdRequiredException = { nil }
@@ -1086,11 +1504,22 @@ end
 -- Valid keys:
 -- @return InstanceIdRequiredException structure as a key-value pair table
 function M.InstanceIdRequiredException(args)
-	assert(args, "You must provdide an argument table when creating InstanceIdRequiredException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InstanceIdRequiredException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertInstanceIdRequiredException(t)
-	return t
+	asserts.AssertInstanceIdRequiredException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.IamUserArnRequiredException = { nil }
@@ -1109,11 +1538,22 @@ end
 -- Valid keys:
 -- @return IamUserArnRequiredException structure as a key-value pair table
 function M.IamUserArnRequiredException(args)
-	assert(args, "You must provdide an argument table when creating IamUserArnRequiredException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating IamUserArnRequiredException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertIamUserArnRequiredException(t)
-	return t
+	asserts.AssertIamUserArnRequiredException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.RemoveTagsFromOnPremisesInstancesInput = { ["instanceNames"] = true, ["tags"] = true, nil }
@@ -1140,13 +1580,24 @@ end
 -- Required key: instanceNames
 -- @return RemoveTagsFromOnPremisesInstancesInput structure as a key-value pair table
 function M.RemoveTagsFromOnPremisesInstancesInput(args)
-	assert(args, "You must provdide an argument table when creating RemoveTagsFromOnPremisesInstancesInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating RemoveTagsFromOnPremisesInstancesInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["instanceNames"] = args["instanceNames"],
 		["tags"] = args["tags"],
 	}
-	asserts.AssertRemoveTagsFromOnPremisesInstancesInput(t)
-	return t
+	asserts.AssertRemoveTagsFromOnPremisesInstancesInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.StopDeploymentInput = { ["deploymentId"] = true, ["autoRollbackEnabled"] = true, nil }
@@ -1171,13 +1622,24 @@ end
 -- Required key: deploymentId
 -- @return StopDeploymentInput structure as a key-value pair table
 function M.StopDeploymentInput(args)
-	assert(args, "You must provdide an argument table when creating StopDeploymentInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating StopDeploymentInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["deploymentId"] = args["deploymentId"],
 		["autoRollbackEnabled"] = args["autoRollbackEnabled"],
 	}
-	asserts.AssertStopDeploymentInput(t)
-	return t
+	asserts.AssertStopDeploymentInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.TagRequiredException = { nil }
@@ -1196,11 +1658,22 @@ end
 -- Valid keys:
 -- @return TagRequiredException structure as a key-value pair table
 function M.TagRequiredException(args)
-	assert(args, "You must provdide an argument table when creating TagRequiredException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating TagRequiredException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertTagRequiredException(t)
-	return t
+	asserts.AssertTagRequiredException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateDeploymentConfigInput = { ["minimumHealthyHosts"] = true, ["deploymentConfigName"] = true, nil }
@@ -1225,13 +1698,24 @@ end
 -- Required key: deploymentConfigName
 -- @return CreateDeploymentConfigInput structure as a key-value pair table
 function M.CreateDeploymentConfigInput(args)
-	assert(args, "You must provdide an argument table when creating CreateDeploymentConfigInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateDeploymentConfigInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["minimumHealthyHosts"] = args["minimumHealthyHosts"],
 		["deploymentConfigName"] = args["deploymentConfigName"],
 	}
-	asserts.AssertCreateDeploymentConfigInput(t)
-	return t
+	asserts.AssertCreateDeploymentConfigInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.TriggerConfig = { ["triggerEvents"] = true, ["triggerTargetArn"] = true, ["triggerName"] = true, nil }
@@ -1256,14 +1740,25 @@ end
 -- * triggerName [TriggerName] <p>The name of the notification trigger.</p>
 -- @return TriggerConfig structure as a key-value pair table
 function M.TriggerConfig(args)
-	assert(args, "You must provdide an argument table when creating TriggerConfig")
-	local t = { 
+	assert(args, "You must provide an argument table when creating TriggerConfig")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["triggerEvents"] = args["triggerEvents"],
 		["triggerTargetArn"] = args["triggerTargetArn"],
 		["triggerName"] = args["triggerName"],
 	}
-	asserts.AssertTriggerConfig(t)
-	return t
+	asserts.AssertTriggerConfig(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.TimeRange = { ["start"] = true, ["end"] = true, nil }
@@ -1286,13 +1781,24 @@ end
 -- * end [Timestamp] <p>The end time of the time range.</p> <note> <p>Specify null to leave the end time open-ended.</p> </note>
 -- @return TimeRange structure as a key-value pair table
 function M.TimeRange(args)
-	assert(args, "You must provdide an argument table when creating TimeRange")
-	local t = { 
+	assert(args, "You must provide an argument table when creating TimeRange")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["start"] = args["start"],
 		["end"] = args["end"],
 	}
-	asserts.AssertTimeRange(t)
-	return t
+	asserts.AssertTimeRange(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidTriggerConfigException = { nil }
@@ -1311,11 +1817,22 @@ end
 -- Valid keys:
 -- @return InvalidTriggerConfigException structure as a key-value pair table
 function M.InvalidTriggerConfigException(args)
-	assert(args, "You must provdide an argument table when creating InvalidTriggerConfigException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidTriggerConfigException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertInvalidTriggerConfigException(t)
-	return t
+	asserts.AssertInvalidTriggerConfigException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AutoScalingGroup = { ["hook"] = true, ["name"] = true, nil }
@@ -1338,13 +1855,24 @@ end
 -- * name [AutoScalingGroupName] <p>The Auto Scaling group name.</p>
 -- @return AutoScalingGroup structure as a key-value pair table
 function M.AutoScalingGroup(args)
-	assert(args, "You must provdide an argument table when creating AutoScalingGroup")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AutoScalingGroup")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["hook"] = args["hook"],
 		["name"] = args["name"],
 	}
-	asserts.AssertAutoScalingGroup(t)
-	return t
+	asserts.AssertAutoScalingGroup(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UnsupportedActionForDeploymentTypeException = { nil }
@@ -1363,11 +1891,22 @@ end
 -- Valid keys:
 -- @return UnsupportedActionForDeploymentTypeException structure as a key-value pair table
 function M.UnsupportedActionForDeploymentTypeException(args)
-	assert(args, "You must provdide an argument table when creating UnsupportedActionForDeploymentTypeException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UnsupportedActionForDeploymentTypeException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertUnsupportedActionForDeploymentTypeException(t)
-	return t
+	asserts.AssertUnsupportedActionForDeploymentTypeException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeploymentStyle = { ["deploymentType"] = true, ["deploymentOption"] = true, nil }
@@ -1390,13 +1929,24 @@ end
 -- * deploymentOption [DeploymentOption] <p>Indicates whether to route deployment traffic behind a load balancer.</p>
 -- @return DeploymentStyle structure as a key-value pair table
 function M.DeploymentStyle(args)
-	assert(args, "You must provdide an argument table when creating DeploymentStyle")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeploymentStyle")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["deploymentType"] = args["deploymentType"],
 		["deploymentOption"] = args["deploymentOption"],
 	}
-	asserts.AssertDeploymentStyle(t)
-	return t
+	asserts.AssertDeploymentStyle(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidIamSessionArnException = { nil }
@@ -1415,11 +1965,22 @@ end
 -- Valid keys:
 -- @return InvalidIamSessionArnException structure as a key-value pair table
 function M.InvalidIamSessionArnException(args)
-	assert(args, "You must provdide an argument table when creating InvalidIamSessionArnException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidIamSessionArnException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertInvalidIamSessionArnException(t)
-	return t
+	asserts.AssertInvalidIamSessionArnException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeploymentDoesNotExistException = { nil }
@@ -1438,11 +1999,22 @@ end
 -- Valid keys:
 -- @return DeploymentDoesNotExistException structure as a key-value pair table
 function M.DeploymentDoesNotExistException(args)
-	assert(args, "You must provdide an argument table when creating DeploymentDoesNotExistException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeploymentDoesNotExistException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertDeploymentDoesNotExistException(t)
-	return t
+	asserts.AssertDeploymentDoesNotExistException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidDeploymentConfigNameException = { nil }
@@ -1461,11 +2033,22 @@ end
 -- Valid keys:
 -- @return InvalidDeploymentConfigNameException structure as a key-value pair table
 function M.InvalidDeploymentConfigNameException(args)
-	assert(args, "You must provdide an argument table when creating InvalidDeploymentConfigNameException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidDeploymentConfigNameException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertInvalidDeploymentConfigNameException(t)
-	return t
+	asserts.AssertInvalidDeploymentConfigNameException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.SkipWaitTimeForInstanceTerminationInput = { ["deploymentId"] = true, nil }
@@ -1486,12 +2069,23 @@ end
 -- * deploymentId [DeploymentId] <p>The ID of the blue/green deployment for which you want to skip the instance termination wait time.</p>
 -- @return SkipWaitTimeForInstanceTerminationInput structure as a key-value pair table
 function M.SkipWaitTimeForInstanceTerminationInput(args)
-	assert(args, "You must provdide an argument table when creating SkipWaitTimeForInstanceTerminationInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating SkipWaitTimeForInstanceTerminationInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["deploymentId"] = args["deploymentId"],
 	}
-	asserts.AssertSkipWaitTimeForInstanceTerminationInput(t)
-	return t
+	asserts.AssertSkipWaitTimeForInstanceTerminationInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AutoRollbackConfiguration = { ["enabled"] = true, ["events"] = true, nil }
@@ -1514,13 +2108,24 @@ end
 -- * events [AutoRollbackEventsList] <p>The event type or types that trigger a rollback.</p>
 -- @return AutoRollbackConfiguration structure as a key-value pair table
 function M.AutoRollbackConfiguration(args)
-	assert(args, "You must provdide an argument table when creating AutoRollbackConfiguration")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AutoRollbackConfiguration")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["enabled"] = args["enabled"],
 		["events"] = args["events"],
 	}
-	asserts.AssertAutoRollbackConfiguration(t)
-	return t
+	asserts.AssertAutoRollbackConfiguration(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidSortByException = { nil }
@@ -1539,11 +2144,22 @@ end
 -- Valid keys:
 -- @return InvalidSortByException structure as a key-value pair table
 function M.InvalidSortByException(args)
-	assert(args, "You must provdide an argument table when creating InvalidSortByException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidSortByException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertInvalidSortByException(t)
-	return t
+	asserts.AssertInvalidSortByException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GenericRevisionInfo = { ["lastUsedTime"] = true, ["firstUsedTime"] = true, ["registerTime"] = true, ["description"] = true, ["deploymentGroups"] = true, nil }
@@ -1572,16 +2188,27 @@ end
 -- * deploymentGroups [DeploymentGroupsList] <p>The deployment groups for which this is the current target revision.</p>
 -- @return GenericRevisionInfo structure as a key-value pair table
 function M.GenericRevisionInfo(args)
-	assert(args, "You must provdide an argument table when creating GenericRevisionInfo")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GenericRevisionInfo")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["lastUsedTime"] = args["lastUsedTime"],
 		["firstUsedTime"] = args["firstUsedTime"],
 		["registerTime"] = args["registerTime"],
 		["description"] = args["description"],
 		["deploymentGroups"] = args["deploymentGroups"],
 	}
-	asserts.AssertGenericRevisionInfo(t)
-	return t
+	asserts.AssertGenericRevisionInfo(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidEC2TagException = { nil }
@@ -1600,11 +2227,22 @@ end
 -- Valid keys:
 -- @return InvalidEC2TagException structure as a key-value pair table
 function M.InvalidEC2TagException(args)
-	assert(args, "You must provdide an argument table when creating InvalidEC2TagException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidEC2TagException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertInvalidEC2TagException(t)
-	return t
+	asserts.AssertInvalidEC2TagException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteDeploymentConfigInput = { ["deploymentConfigName"] = true, nil }
@@ -1627,12 +2265,23 @@ end
 -- Required key: deploymentConfigName
 -- @return DeleteDeploymentConfigInput structure as a key-value pair table
 function M.DeleteDeploymentConfigInput(args)
-	assert(args, "You must provdide an argument table when creating DeleteDeploymentConfigInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteDeploymentConfigInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["deploymentConfigName"] = args["deploymentConfigName"],
 	}
-	asserts.AssertDeleteDeploymentConfigInput(t)
-	return t
+	asserts.AssertDeleteDeploymentConfigInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeploymentReadyOption = { ["actionOnTimeout"] = true, ["waitTimeInMinutes"] = true, nil }
@@ -1655,13 +2304,24 @@ end
 -- * waitTimeInMinutes [Duration] <p>The number of minutes to wait before the status of a blue/green deployment changed to Stopped if rerouting is not started manually. Applies only to the STOP_DEPLOYMENT option for actionOnTimeout</p>
 -- @return DeploymentReadyOption structure as a key-value pair table
 function M.DeploymentReadyOption(args)
-	assert(args, "You must provdide an argument table when creating DeploymentReadyOption")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeploymentReadyOption")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["actionOnTimeout"] = args["actionOnTimeout"],
 		["waitTimeInMinutes"] = args["waitTimeInMinutes"],
 	}
-	asserts.AssertDeploymentReadyOption(t)
-	return t
+	asserts.AssertDeploymentReadyOption(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.LifecycleEvent = { ["endTime"] = true, ["status"] = true, ["diagnostics"] = true, ["startTime"] = true, ["lifecycleEventName"] = true, nil }
@@ -1690,16 +2350,27 @@ end
 -- * lifecycleEventName [LifecycleEventName] <p>The deployment lifecycle event name, such as ApplicationStop, BeforeInstall, AfterInstall, ApplicationStart, or ValidateService.</p>
 -- @return LifecycleEvent structure as a key-value pair table
 function M.LifecycleEvent(args)
-	assert(args, "You must provdide an argument table when creating LifecycleEvent")
-	local t = { 
+	assert(args, "You must provide an argument table when creating LifecycleEvent")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["endTime"] = args["endTime"],
 		["status"] = args["status"],
 		["diagnostics"] = args["diagnostics"],
 		["startTime"] = args["startTime"],
 		["lifecycleEventName"] = args["lifecycleEventName"],
 	}
-	asserts.AssertLifecycleEvent(t)
-	return t
+	asserts.AssertLifecycleEvent(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AlarmsLimitExceededException = { nil }
@@ -1718,11 +2389,22 @@ end
 -- Valid keys:
 -- @return AlarmsLimitExceededException structure as a key-value pair table
 function M.AlarmsLimitExceededException(args)
-	assert(args, "You must provdide an argument table when creating AlarmsLimitExceededException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AlarmsLimitExceededException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertAlarmsLimitExceededException(t)
-	return t
+	asserts.AssertAlarmsLimitExceededException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InstanceSummary = { ["status"] = true, ["instanceId"] = true, ["lifecycleEvents"] = true, ["deploymentId"] = true, ["lastUpdatedAt"] = true, ["instanceType"] = true, nil }
@@ -1753,8 +2435,14 @@ end
 -- * instanceType [InstanceType] <p>Information about which environment an instance belongs to in a blue/green deployment.</p> <ul> <li> <p>BLUE: The instance is part of the original environment.</p> </li> <li> <p>GREEN: The instance is part of the replacement environment.</p> </li> </ul>
 -- @return InstanceSummary structure as a key-value pair table
 function M.InstanceSummary(args)
-	assert(args, "You must provdide an argument table when creating InstanceSummary")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InstanceSummary")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["status"] = args["status"],
 		["instanceId"] = args["instanceId"],
 		["lifecycleEvents"] = args["lifecycleEvents"],
@@ -1762,8 +2450,13 @@ function M.InstanceSummary(args)
 		["lastUpdatedAt"] = args["lastUpdatedAt"],
 		["instanceType"] = args["instanceType"],
 	}
-	asserts.AssertInstanceSummary(t)
-	return t
+	asserts.AssertInstanceSummary(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.LastDeploymentInfo = { ["status"] = true, ["deploymentId"] = true, ["endTime"] = true, ["createTime"] = true, nil }
@@ -1790,15 +2483,26 @@ end
 -- * createTime [Timestamp] <p>A timestamp indicating when the most recent deployment to the deployment group started.</p>
 -- @return LastDeploymentInfo structure as a key-value pair table
 function M.LastDeploymentInfo(args)
-	assert(args, "You must provdide an argument table when creating LastDeploymentInfo")
-	local t = { 
+	assert(args, "You must provide an argument table when creating LastDeploymentInfo")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["status"] = args["status"],
 		["deploymentId"] = args["deploymentId"],
 		["endTime"] = args["endTime"],
 		["createTime"] = args["createTime"],
 	}
-	asserts.AssertLastDeploymentInfo(t)
-	return t
+	asserts.AssertLastDeploymentInfo(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidBucketNameFilterException = { nil }
@@ -1817,11 +2521,22 @@ end
 -- Valid keys:
 -- @return InvalidBucketNameFilterException structure as a key-value pair table
 function M.InvalidBucketNameFilterException(args)
-	assert(args, "You must provdide an argument table when creating InvalidBucketNameFilterException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidBucketNameFilterException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertInvalidBucketNameFilterException(t)
-	return t
+	asserts.AssertInvalidBucketNameFilterException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.LifecycleHookLimitExceededException = { nil }
@@ -1840,11 +2555,22 @@ end
 -- Valid keys:
 -- @return LifecycleHookLimitExceededException structure as a key-value pair table
 function M.LifecycleHookLimitExceededException(args)
-	assert(args, "You must provdide an argument table when creating LifecycleHookLimitExceededException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating LifecycleHookLimitExceededException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertLifecycleHookLimitExceededException(t)
-	return t
+	asserts.AssertLifecycleHookLimitExceededException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.BatchGetDeploymentGroupsInput = { ["applicationName"] = true, ["deploymentGroupNames"] = true, nil }
@@ -1871,13 +2597,24 @@ end
 -- Required key: deploymentGroupNames
 -- @return BatchGetDeploymentGroupsInput structure as a key-value pair table
 function M.BatchGetDeploymentGroupsInput(args)
-	assert(args, "You must provdide an argument table when creating BatchGetDeploymentGroupsInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating BatchGetDeploymentGroupsInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["applicationName"] = args["applicationName"],
 		["deploymentGroupNames"] = args["deploymentGroupNames"],
 	}
-	asserts.AssertBatchGetDeploymentGroupsInput(t)
-	return t
+	asserts.AssertBatchGetDeploymentGroupsInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.BatchGetApplicationsOutput = { ["applicationsInfo"] = true, nil }
@@ -1898,12 +2635,23 @@ end
 -- * applicationsInfo [ApplicationsInfoList] <p>Information about the applications.</p>
 -- @return BatchGetApplicationsOutput structure as a key-value pair table
 function M.BatchGetApplicationsOutput(args)
-	assert(args, "You must provdide an argument table when creating BatchGetApplicationsOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating BatchGetApplicationsOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["applicationsInfo"] = args["applicationsInfo"],
 	}
-	asserts.AssertBatchGetApplicationsOutput(t)
-	return t
+	asserts.AssertBatchGetApplicationsOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidFileExistsBehaviorException = { nil }
@@ -1922,11 +2670,22 @@ end
 -- Valid keys:
 -- @return InvalidFileExistsBehaviorException structure as a key-value pair table
 function M.InvalidFileExistsBehaviorException(args)
-	assert(args, "You must provdide an argument table when creating InvalidFileExistsBehaviorException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidFileExistsBehaviorException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertInvalidFileExistsBehaviorException(t)
-	return t
+	asserts.AssertInvalidFileExistsBehaviorException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidTimeRangeException = { nil }
@@ -1945,11 +2704,22 @@ end
 -- Valid keys:
 -- @return InvalidTimeRangeException structure as a key-value pair table
 function M.InvalidTimeRangeException(args)
-	assert(args, "You must provdide an argument table when creating InvalidTimeRangeException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidTimeRangeException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertInvalidTimeRangeException(t)
-	return t
+	asserts.AssertInvalidTimeRangeException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdateApplicationInput = { ["applicationName"] = true, ["newApplicationName"] = true, nil }
@@ -1972,13 +2742,24 @@ end
 -- * newApplicationName [ApplicationName] <p>The new name to give the application.</p>
 -- @return UpdateApplicationInput structure as a key-value pair table
 function M.UpdateApplicationInput(args)
-	assert(args, "You must provdide an argument table when creating UpdateApplicationInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateApplicationInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["applicationName"] = args["applicationName"],
 		["newApplicationName"] = args["newApplicationName"],
 	}
-	asserts.AssertUpdateApplicationInput(t)
-	return t
+	asserts.AssertUpdateApplicationInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.IamUserArnAlreadyRegisteredException = { nil }
@@ -1997,11 +2778,22 @@ end
 -- Valid keys:
 -- @return IamUserArnAlreadyRegisteredException structure as a key-value pair table
 function M.IamUserArnAlreadyRegisteredException(args)
-	assert(args, "You must provdide an argument table when creating IamUserArnAlreadyRegisteredException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating IamUserArnAlreadyRegisteredException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertIamUserArnAlreadyRegisteredException(t)
-	return t
+	asserts.AssertIamUserArnAlreadyRegisteredException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetApplicationOutput = { ["application"] = true, nil }
@@ -2022,12 +2814,23 @@ end
 -- * application [ApplicationInfo] <p>Information about the application.</p>
 -- @return GetApplicationOutput structure as a key-value pair table
 function M.GetApplicationOutput(args)
-	assert(args, "You must provdide an argument table when creating GetApplicationOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetApplicationOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["application"] = args["application"],
 	}
-	asserts.AssertGetApplicationOutput(t)
-	return t
+	asserts.AssertGetApplicationOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListApplicationsInput = { ["nextToken"] = true, nil }
@@ -2048,12 +2851,23 @@ end
 -- * nextToken [NextToken] <p>An identifier returned from the previous list applications call. It can be used to return the next set of applications in the list.</p>
 -- @return ListApplicationsInput structure as a key-value pair table
 function M.ListApplicationsInput(args)
-	assert(args, "You must provdide an argument table when creating ListApplicationsInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListApplicationsInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["nextToken"] = args["nextToken"],
 	}
-	asserts.AssertListApplicationsInput(t)
-	return t
+	asserts.AssertListApplicationsInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ApplicationDoesNotExistException = { nil }
@@ -2072,11 +2886,22 @@ end
 -- Valid keys:
 -- @return ApplicationDoesNotExistException structure as a key-value pair table
 function M.ApplicationDoesNotExistException(args)
-	assert(args, "You must provdide an argument table when creating ApplicationDoesNotExistException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ApplicationDoesNotExistException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertApplicationDoesNotExistException(t)
-	return t
+	asserts.AssertApplicationDoesNotExistException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.TargetInstances = { ["autoScalingGroups"] = true, ["tagFilters"] = true, nil }
@@ -2099,13 +2924,24 @@ end
 -- * tagFilters [EC2TagFilterList] <p>The tag filter key, type, and value used to identify Amazon EC2 instances in a replacement environment for a blue/green deployment.</p>
 -- @return TargetInstances structure as a key-value pair table
 function M.TargetInstances(args)
-	assert(args, "You must provdide an argument table when creating TargetInstances")
-	local t = { 
+	assert(args, "You must provide an argument table when creating TargetInstances")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["autoScalingGroups"] = args["autoScalingGroups"],
 		["tagFilters"] = args["tagFilters"],
 	}
-	asserts.AssertTargetInstances(t)
-	return t
+	asserts.AssertTargetInstances(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ResourceValidationException = { nil }
@@ -2124,11 +2960,22 @@ end
 -- Valid keys:
 -- @return ResourceValidationException structure as a key-value pair table
 function M.ResourceValidationException(args)
-	assert(args, "You must provdide an argument table when creating ResourceValidationException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ResourceValidationException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertResourceValidationException(t)
-	return t
+	asserts.AssertResourceValidationException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetOnPremisesInstanceInput = { ["instanceName"] = true, nil }
@@ -2151,12 +2998,23 @@ end
 -- Required key: instanceName
 -- @return GetOnPremisesInstanceInput structure as a key-value pair table
 function M.GetOnPremisesInstanceInput(args)
-	assert(args, "You must provdide an argument table when creating GetOnPremisesInstanceInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetOnPremisesInstanceInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["instanceName"] = args["instanceName"],
 	}
-	asserts.AssertGetOnPremisesInstanceInput(t)
-	return t
+	asserts.AssertGetOnPremisesInstanceInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidApplicationNameException = { nil }
@@ -2175,11 +3033,22 @@ end
 -- Valid keys:
 -- @return InvalidApplicationNameException structure as a key-value pair table
 function M.InvalidApplicationNameException(args)
-	assert(args, "You must provdide an argument table when creating InvalidApplicationNameException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidApplicationNameException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertInvalidApplicationNameException(t)
-	return t
+	asserts.AssertInvalidApplicationNameException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ApplicationInfo = { ["applicationName"] = true, ["gitHubAccountName"] = true, ["linkedToGitHub"] = true, ["applicationId"] = true, ["createTime"] = true, nil }
@@ -2208,16 +3077,27 @@ end
 -- * createTime [Timestamp] <p>The time at which the application was created.</p>
 -- @return ApplicationInfo structure as a key-value pair table
 function M.ApplicationInfo(args)
-	assert(args, "You must provdide an argument table when creating ApplicationInfo")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ApplicationInfo")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["applicationName"] = args["applicationName"],
 		["gitHubAccountName"] = args["gitHubAccountName"],
 		["linkedToGitHub"] = args["linkedToGitHub"],
 		["applicationId"] = args["applicationId"],
 		["createTime"] = args["createTime"],
 	}
-	asserts.AssertApplicationInfo(t)
-	return t
+	asserts.AssertApplicationInfo(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Tag = { ["Value"] = true, ["Key"] = true, nil }
@@ -2240,13 +3120,24 @@ end
 -- * Key [Key] <p>The tag's key.</p>
 -- @return Tag structure as a key-value pair table
 function M.Tag(args)
-	assert(args, "You must provdide an argument table when creating Tag")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Tag")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Value"] = args["Value"],
 		["Key"] = args["Key"],
 	}
-	asserts.AssertTag(t)
-	return t
+	asserts.AssertTag(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListDeploymentsInput = { ["applicationName"] = true, ["createTimeRange"] = true, ["nextToken"] = true, ["deploymentGroupName"] = true, ["includeOnlyStatuses"] = true, nil }
@@ -2275,16 +3166,27 @@ end
 -- * includeOnlyStatuses [DeploymentStatusList] <p>A subset of deployments to list by status:</p> <ul> <li> <p>Created: Include created deployments in the resulting list.</p> </li> <li> <p>Queued: Include queued deployments in the resulting list.</p> </li> <li> <p>In Progress: Include in-progress deployments in the resulting list.</p> </li> <li> <p>Succeeded: Include successful deployments in the resulting list.</p> </li> <li> <p>Failed: Include failed deployments in the resulting list.</p> </li> <li> <p>Stopped: Include stopped deployments in the resulting list.</p> </li> </ul>
 -- @return ListDeploymentsInput structure as a key-value pair table
 function M.ListDeploymentsInput(args)
-	assert(args, "You must provdide an argument table when creating ListDeploymentsInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListDeploymentsInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["applicationName"] = args["applicationName"],
 		["createTimeRange"] = args["createTimeRange"],
 		["nextToken"] = args["nextToken"],
 		["deploymentGroupName"] = args["deploymentGroupName"],
 		["includeOnlyStatuses"] = args["includeOnlyStatuses"],
 	}
-	asserts.AssertListDeploymentsInput(t)
-	return t
+	asserts.AssertListDeploymentsInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListGitHubAccountTokenNamesOutput = { ["nextToken"] = true, ["tokenNameList"] = true, nil }
@@ -2307,13 +3209,24 @@ end
 -- * tokenNameList [GitHubAccountTokenNameList] <p>A list of names of connections to GitHub accounts.</p>
 -- @return ListGitHubAccountTokenNamesOutput structure as a key-value pair table
 function M.ListGitHubAccountTokenNamesOutput(args)
-	assert(args, "You must provdide an argument table when creating ListGitHubAccountTokenNamesOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListGitHubAccountTokenNamesOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["nextToken"] = args["nextToken"],
 		["tokenNameList"] = args["tokenNameList"],
 	}
-	asserts.AssertListGitHubAccountTokenNamesOutput(t)
-	return t
+	asserts.AssertListGitHubAccountTokenNamesOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetDeploymentGroupOutput = { ["deploymentGroupInfo"] = true, nil }
@@ -2334,12 +3247,23 @@ end
 -- * deploymentGroupInfo [DeploymentGroupInfo] <p>Information about the deployment group.</p>
 -- @return GetDeploymentGroupOutput structure as a key-value pair table
 function M.GetDeploymentGroupOutput(args)
-	assert(args, "You must provdide an argument table when creating GetDeploymentGroupOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetDeploymentGroupOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["deploymentGroupInfo"] = args["deploymentGroupInfo"],
 	}
-	asserts.AssertGetDeploymentGroupOutput(t)
-	return t
+	asserts.AssertGetDeploymentGroupOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidTargetInstancesException = { nil }
@@ -2358,11 +3282,22 @@ end
 -- Valid keys:
 -- @return InvalidTargetInstancesException structure as a key-value pair table
 function M.InvalidTargetInstancesException(args)
-	assert(args, "You must provdide an argument table when creating InvalidTargetInstancesException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidTargetInstancesException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertInvalidTargetInstancesException(t)
-	return t
+	asserts.AssertInvalidTargetInstancesException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidOperationException = { nil }
@@ -2381,11 +3316,22 @@ end
 -- Valid keys:
 -- @return InvalidOperationException structure as a key-value pair table
 function M.InvalidOperationException(args)
-	assert(args, "You must provdide an argument table when creating InvalidOperationException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidOperationException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertInvalidOperationException(t)
-	return t
+	asserts.AssertInvalidOperationException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidIamUserArnException = { nil }
@@ -2404,11 +3350,22 @@ end
 -- Valid keys:
 -- @return InvalidIamUserArnException structure as a key-value pair table
 function M.InvalidIamUserArnException(args)
-	assert(args, "You must provdide an argument table when creating InvalidIamUserArnException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidIamUserArnException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertInvalidIamUserArnException(t)
-	return t
+	asserts.AssertInvalidIamUserArnException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.BatchGetDeploymentInstancesOutput = { ["instancesSummary"] = true, ["errorMessage"] = true, nil }
@@ -2431,13 +3388,24 @@ end
 -- * errorMessage [ErrorMessage] <p>Information about errors that may have occurred during the API call.</p>
 -- @return BatchGetDeploymentInstancesOutput structure as a key-value pair table
 function M.BatchGetDeploymentInstancesOutput(args)
-	assert(args, "You must provdide an argument table when creating BatchGetDeploymentInstancesOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating BatchGetDeploymentInstancesOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["instancesSummary"] = args["instancesSummary"],
 		["errorMessage"] = args["errorMessage"],
 	}
-	asserts.AssertBatchGetDeploymentInstancesOutput(t)
-	return t
+	asserts.AssertBatchGetDeploymentInstancesOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidDeploymentGroupNameException = { nil }
@@ -2456,11 +3424,22 @@ end
 -- Valid keys:
 -- @return InvalidDeploymentGroupNameException structure as a key-value pair table
 function M.InvalidDeploymentGroupNameException(args)
-	assert(args, "You must provdide an argument table when creating InvalidDeploymentGroupNameException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidDeploymentGroupNameException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertInvalidDeploymentGroupNameException(t)
-	return t
+	asserts.AssertInvalidDeploymentGroupNameException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidBlueGreenDeploymentConfigurationException = { nil }
@@ -2479,11 +3458,22 @@ end
 -- Valid keys:
 -- @return InvalidBlueGreenDeploymentConfigurationException structure as a key-value pair table
 function M.InvalidBlueGreenDeploymentConfigurationException(args)
-	assert(args, "You must provdide an argument table when creating InvalidBlueGreenDeploymentConfigurationException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidBlueGreenDeploymentConfigurationException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertInvalidBlueGreenDeploymentConfigurationException(t)
-	return t
+	asserts.AssertInvalidBlueGreenDeploymentConfigurationException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdateDeploymentGroupInput = { ["applicationName"] = true, ["autoScalingGroups"] = true, ["loadBalancerInfo"] = true, ["currentDeploymentGroupName"] = true, ["blueGreenDeploymentConfiguration"] = true, ["deploymentConfigName"] = true, ["triggerConfigurations"] = true, ["alarmConfiguration"] = true, ["ec2TagFilters"] = true, ["serviceRoleArn"] = true, ["autoRollbackConfiguration"] = true, ["deploymentStyle"] = true, ["newDeploymentGroupName"] = true, ["onPremisesInstanceTagFilters"] = true, nil }
@@ -2534,8 +3524,14 @@ end
 -- Required key: currentDeploymentGroupName
 -- @return UpdateDeploymentGroupInput structure as a key-value pair table
 function M.UpdateDeploymentGroupInput(args)
-	assert(args, "You must provdide an argument table when creating UpdateDeploymentGroupInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateDeploymentGroupInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["applicationName"] = args["applicationName"],
 		["autoScalingGroups"] = args["autoScalingGroups"],
 		["loadBalancerInfo"] = args["loadBalancerInfo"],
@@ -2551,8 +3547,13 @@ function M.UpdateDeploymentGroupInput(args)
 		["newDeploymentGroupName"] = args["newDeploymentGroupName"],
 		["onPremisesInstanceTagFilters"] = args["onPremisesInstanceTagFilters"],
 	}
-	asserts.AssertUpdateDeploymentGroupInput(t)
-	return t
+	asserts.AssertUpdateDeploymentGroupInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeploymentLimitExceededException = { nil }
@@ -2571,11 +3572,22 @@ end
 -- Valid keys:
 -- @return DeploymentLimitExceededException structure as a key-value pair table
 function M.DeploymentLimitExceededException(args)
-	assert(args, "You must provdide an argument table when creating DeploymentLimitExceededException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeploymentLimitExceededException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertDeploymentLimitExceededException(t)
-	return t
+	asserts.AssertDeploymentLimitExceededException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.RegisterApplicationRevisionInput = { ["applicationName"] = true, ["description"] = true, ["revision"] = true, nil }
@@ -2604,14 +3616,25 @@ end
 -- Required key: revision
 -- @return RegisterApplicationRevisionInput structure as a key-value pair table
 function M.RegisterApplicationRevisionInput(args)
-	assert(args, "You must provdide an argument table when creating RegisterApplicationRevisionInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating RegisterApplicationRevisionInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["applicationName"] = args["applicationName"],
 		["description"] = args["description"],
 		["revision"] = args["revision"],
 	}
-	asserts.AssertRegisterApplicationRevisionInput(t)
-	return t
+	asserts.AssertRegisterApplicationRevisionInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidDeploymentIdException = { nil }
@@ -2630,11 +3653,22 @@ end
 -- Valid keys:
 -- @return InvalidDeploymentIdException structure as a key-value pair table
 function M.InvalidDeploymentIdException(args)
-	assert(args, "You must provdide an argument table when creating InvalidDeploymentIdException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidDeploymentIdException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertInvalidDeploymentIdException(t)
-	return t
+	asserts.AssertInvalidDeploymentIdException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetApplicationRevisionOutput = { ["applicationName"] = true, ["revisionInfo"] = true, ["revision"] = true, nil }
@@ -2659,14 +3693,25 @@ end
 -- * revision [RevisionLocation] <p>Additional information about the revision, including type and location.</p>
 -- @return GetApplicationRevisionOutput structure as a key-value pair table
 function M.GetApplicationRevisionOutput(args)
-	assert(args, "You must provdide an argument table when creating GetApplicationRevisionOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetApplicationRevisionOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["applicationName"] = args["applicationName"],
 		["revisionInfo"] = args["revisionInfo"],
 		["revision"] = args["revision"],
 	}
-	asserts.AssertGetApplicationRevisionOutput(t)
-	return t
+	asserts.AssertGetApplicationRevisionOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeploymentConfigLimitExceededException = { nil }
@@ -2685,11 +3730,22 @@ end
 -- Valid keys:
 -- @return DeploymentConfigLimitExceededException structure as a key-value pair table
 function M.DeploymentConfigLimitExceededException(args)
-	assert(args, "You must provdide an argument table when creating DeploymentConfigLimitExceededException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeploymentConfigLimitExceededException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertDeploymentConfigLimitExceededException(t)
-	return t
+	asserts.AssertDeploymentConfigLimitExceededException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidRoleException = { nil }
@@ -2708,11 +3764,22 @@ end
 -- Valid keys:
 -- @return InvalidRoleException structure as a key-value pair table
 function M.InvalidRoleException(args)
-	assert(args, "You must provdide an argument table when creating InvalidRoleException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidRoleException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertInvalidRoleException(t)
-	return t
+	asserts.AssertInvalidRoleException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidRevisionException = { nil }
@@ -2731,11 +3798,22 @@ end
 -- Valid keys:
 -- @return InvalidRevisionException structure as a key-value pair table
 function M.InvalidRevisionException(args)
-	assert(args, "You must provdide an argument table when creating InvalidRevisionException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidRevisionException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertInvalidRevisionException(t)
-	return t
+	asserts.AssertInvalidRevisionException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InstanceNameAlreadyRegisteredException = { nil }
@@ -2754,11 +3832,22 @@ end
 -- Valid keys:
 -- @return InstanceNameAlreadyRegisteredException structure as a key-value pair table
 function M.InstanceNameAlreadyRegisteredException(args)
-	assert(args, "You must provdide an argument table when creating InstanceNameAlreadyRegisteredException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InstanceNameAlreadyRegisteredException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertInstanceNameAlreadyRegisteredException(t)
-	return t
+	asserts.AssertInstanceNameAlreadyRegisteredException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.BatchGetApplicationsInput = { ["applicationNames"] = true, nil }
@@ -2779,12 +3868,23 @@ end
 -- * applicationNames [ApplicationsList] <p>A list of application names separated by spaces.</p>
 -- @return BatchGetApplicationsInput structure as a key-value pair table
 function M.BatchGetApplicationsInput(args)
-	assert(args, "You must provdide an argument table when creating BatchGetApplicationsInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating BatchGetApplicationsInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["applicationNames"] = args["applicationNames"],
 	}
-	asserts.AssertBatchGetApplicationsInput(t)
-	return t
+	asserts.AssertBatchGetApplicationsInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InstanceDoesNotExistException = { nil }
@@ -2803,11 +3903,22 @@ end
 -- Valid keys:
 -- @return InstanceDoesNotExistException structure as a key-value pair table
 function M.InstanceDoesNotExistException(args)
-	assert(args, "You must provdide an argument table when creating InstanceDoesNotExistException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InstanceDoesNotExistException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertInstanceDoesNotExistException(t)
-	return t
+	asserts.AssertInstanceDoesNotExistException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListDeploymentInstancesInput = { ["instanceStatusFilter"] = true, ["deploymentId"] = true, ["nextToken"] = true, ["instanceTypeFilter"] = true, nil }
@@ -2836,15 +3947,26 @@ end
 -- Required key: deploymentId
 -- @return ListDeploymentInstancesInput structure as a key-value pair table
 function M.ListDeploymentInstancesInput(args)
-	assert(args, "You must provdide an argument table when creating ListDeploymentInstancesInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListDeploymentInstancesInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["instanceStatusFilter"] = args["instanceStatusFilter"],
 		["deploymentId"] = args["deploymentId"],
 		["nextToken"] = args["nextToken"],
 		["instanceTypeFilter"] = args["instanceTypeFilter"],
 	}
-	asserts.AssertListDeploymentInstancesInput(t)
-	return t
+	asserts.AssertListDeploymentInstancesInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ApplicationLimitExceededException = { nil }
@@ -2863,11 +3985,22 @@ end
 -- Valid keys:
 -- @return ApplicationLimitExceededException structure as a key-value pair table
 function M.ApplicationLimitExceededException(args)
-	assert(args, "You must provdide an argument table when creating ApplicationLimitExceededException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ApplicationLimitExceededException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertApplicationLimitExceededException(t)
-	return t
+	asserts.AssertApplicationLimitExceededException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidInstanceNameException = { nil }
@@ -2886,11 +4019,22 @@ end
 -- Valid keys:
 -- @return InvalidInstanceNameException structure as a key-value pair table
 function M.InvalidInstanceNameException(args)
-	assert(args, "You must provdide an argument table when creating InvalidInstanceNameException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidInstanceNameException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertInvalidInstanceNameException(t)
-	return t
+	asserts.AssertInvalidInstanceNameException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ApplicationNameRequiredException = { nil }
@@ -2909,11 +4053,22 @@ end
 -- Valid keys:
 -- @return ApplicationNameRequiredException structure as a key-value pair table
 function M.ApplicationNameRequiredException(args)
-	assert(args, "You must provdide an argument table when creating ApplicationNameRequiredException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ApplicationNameRequiredException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertApplicationNameRequiredException(t)
-	return t
+	asserts.AssertApplicationNameRequiredException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetDeploymentInstanceOutput = { ["instanceSummary"] = true, nil }
@@ -2934,12 +4089,23 @@ end
 -- * instanceSummary [InstanceSummary] <p>Information about the instance.</p>
 -- @return GetDeploymentInstanceOutput structure as a key-value pair table
 function M.GetDeploymentInstanceOutput(args)
-	assert(args, "You must provdide an argument table when creating GetDeploymentInstanceOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetDeploymentInstanceOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["instanceSummary"] = args["instanceSummary"],
 	}
-	asserts.AssertGetDeploymentInstanceOutput(t)
-	return t
+	asserts.AssertGetDeploymentInstanceOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidTagFilterException = { nil }
@@ -2958,11 +4124,22 @@ end
 -- Valid keys:
 -- @return InvalidTagFilterException structure as a key-value pair table
 function M.InvalidTagFilterException(args)
-	assert(args, "You must provdide an argument table when creating InvalidTagFilterException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidTagFilterException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertInvalidTagFilterException(t)
-	return t
+	asserts.AssertInvalidTagFilterException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateApplicationInput = { ["applicationName"] = true, nil }
@@ -2985,12 +4162,23 @@ end
 -- Required key: applicationName
 -- @return CreateApplicationInput structure as a key-value pair table
 function M.CreateApplicationInput(args)
-	assert(args, "You must provdide an argument table when creating CreateApplicationInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateApplicationInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["applicationName"] = args["applicationName"],
 	}
-	asserts.AssertCreateApplicationInput(t)
-	return t
+	asserts.AssertCreateApplicationInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateApplicationOutput = { ["applicationId"] = true, nil }
@@ -3011,12 +4199,23 @@ end
 -- * applicationId [ApplicationId] <p>A unique application ID.</p>
 -- @return CreateApplicationOutput structure as a key-value pair table
 function M.CreateApplicationOutput(args)
-	assert(args, "You must provdide an argument table when creating CreateApplicationOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateApplicationOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["applicationId"] = args["applicationId"],
 	}
-	asserts.AssertCreateApplicationOutput(t)
-	return t
+	asserts.AssertCreateApplicationOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeploymentInfo = { ["autoRollbackConfiguration"] = true, ["additionalDeploymentStatusInfo"] = true, ["creator"] = true, ["previousRevision"] = true, ["fileExistsBehavior"] = true, ["completeTime"] = true, ["applicationName"] = true, ["deploymentOverview"] = true, ["deploymentId"] = true, ["ignoreApplicationStopFailures"] = true, ["updateOutdatedInstancesOnly"] = true, ["rollbackInfo"] = true, ["targetInstances"] = true, ["revision"] = true, ["status"] = true, ["description"] = true, ["errorInformation"] = true, ["startTime"] = true, ["instanceTerminationWaitTimeStarted"] = true, ["deploymentGroupName"] = true, ["createTime"] = true, ["loadBalancerInfo"] = true, ["blueGreenDeploymentConfiguration"] = true, ["deploymentConfigName"] = true, ["deploymentStyle"] = true, nil }
@@ -3085,8 +4284,14 @@ end
 -- * deploymentStyle [DeploymentStyle] <p>Information about the type of deployment, either in-place or blue/green, you want to run and whether to route deployment traffic behind a load balancer.</p>
 -- @return DeploymentInfo structure as a key-value pair table
 function M.DeploymentInfo(args)
-	assert(args, "You must provdide an argument table when creating DeploymentInfo")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeploymentInfo")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["autoRollbackConfiguration"] = args["autoRollbackConfiguration"],
 		["additionalDeploymentStatusInfo"] = args["additionalDeploymentStatusInfo"],
 		["creator"] = args["creator"],
@@ -3113,8 +4318,13 @@ function M.DeploymentInfo(args)
 		["deploymentConfigName"] = args["deploymentConfigName"],
 		["deploymentStyle"] = args["deploymentStyle"],
 	}
-	asserts.AssertDeploymentInfo(t)
-	return t
+	asserts.AssertDeploymentInfo(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.RevisionRequiredException = { nil }
@@ -3133,11 +4343,22 @@ end
 -- Valid keys:
 -- @return RevisionRequiredException structure as a key-value pair table
 function M.RevisionRequiredException(args)
-	assert(args, "You must provdide an argument table when creating RevisionRequiredException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating RevisionRequiredException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertRevisionRequiredException(t)
-	return t
+	asserts.AssertRevisionRequiredException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InstanceLimitExceededException = { nil }
@@ -3156,11 +4377,22 @@ end
 -- Valid keys:
 -- @return InstanceLimitExceededException structure as a key-value pair table
 function M.InstanceLimitExceededException(args)
-	assert(args, "You must provdide an argument table when creating InstanceLimitExceededException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InstanceLimitExceededException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertInstanceLimitExceededException(t)
-	return t
+	asserts.AssertInstanceLimitExceededException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InstanceInfo = { ["instanceArn"] = true, ["iamSessionArn"] = true, ["tags"] = true, ["registerTime"] = true, ["iamUserArn"] = true, ["deregisterTime"] = true, ["instanceName"] = true, nil }
@@ -3193,8 +4425,14 @@ end
 -- * instanceName [InstanceName] <p>The name of the on-premises instance.</p>
 -- @return InstanceInfo structure as a key-value pair table
 function M.InstanceInfo(args)
-	assert(args, "You must provdide an argument table when creating InstanceInfo")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InstanceInfo")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["instanceArn"] = args["instanceArn"],
 		["iamSessionArn"] = args["iamSessionArn"],
 		["tags"] = args["tags"],
@@ -3203,8 +4441,13 @@ function M.InstanceInfo(args)
 		["deregisterTime"] = args["deregisterTime"],
 		["instanceName"] = args["instanceName"],
 	}
-	asserts.AssertInstanceInfo(t)
-	return t
+	asserts.AssertInstanceInfo(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeploymentGroupLimitExceededException = { nil }
@@ -3223,11 +4466,22 @@ end
 -- Valid keys:
 -- @return DeploymentGroupLimitExceededException structure as a key-value pair table
 function M.DeploymentGroupLimitExceededException(args)
-	assert(args, "You must provdide an argument table when creating DeploymentGroupLimitExceededException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeploymentGroupLimitExceededException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertDeploymentGroupLimitExceededException(t)
-	return t
+	asserts.AssertDeploymentGroupLimitExceededException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.BatchGetOnPremisesInstancesOutput = { ["instanceInfos"] = true, nil }
@@ -3248,12 +4502,23 @@ end
 -- * instanceInfos [InstanceInfoList] <p>Information about the on-premises instances.</p>
 -- @return BatchGetOnPremisesInstancesOutput structure as a key-value pair table
 function M.BatchGetOnPremisesInstancesOutput(args)
-	assert(args, "You must provdide an argument table when creating BatchGetOnPremisesInstancesOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating BatchGetOnPremisesInstancesOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["instanceInfos"] = args["instanceInfos"],
 	}
-	asserts.AssertBatchGetOnPremisesInstancesOutput(t)
-	return t
+	asserts.AssertBatchGetOnPremisesInstancesOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeploymentGroupDoesNotExistException = { nil }
@@ -3272,11 +4537,22 @@ end
 -- Valid keys:
 -- @return DeploymentGroupDoesNotExistException structure as a key-value pair table
 function M.DeploymentGroupDoesNotExistException(args)
-	assert(args, "You must provdide an argument table when creating DeploymentGroupDoesNotExistException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeploymentGroupDoesNotExistException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertDeploymentGroupDoesNotExistException(t)
-	return t
+	asserts.AssertDeploymentGroupDoesNotExistException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListApplicationsOutput = { ["applications"] = true, ["nextToken"] = true, nil }
@@ -3299,13 +4575,24 @@ end
 -- * nextToken [NextToken] <p>If a large amount of information is returned, an identifier is also returned. It can be used in a subsequent list applications call to return the next set of applications, will also be returned. in the list.</p>
 -- @return ListApplicationsOutput structure as a key-value pair table
 function M.ListApplicationsOutput(args)
-	assert(args, "You must provdide an argument table when creating ListApplicationsOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListApplicationsOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["applications"] = args["applications"],
 		["nextToken"] = args["nextToken"],
 	}
-	asserts.AssertListApplicationsOutput(t)
-	return t
+	asserts.AssertListApplicationsOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.LoadBalancerInfo = { ["elbInfoList"] = true, nil }
@@ -3326,12 +4613,23 @@ end
 -- * elbInfoList [ELBInfoList] <p>An array containing information about the load balancer in Elastic Load Balancing to use in a deployment.</p>
 -- @return LoadBalancerInfo structure as a key-value pair table
 function M.LoadBalancerInfo(args)
-	assert(args, "You must provdide an argument table when creating LoadBalancerInfo")
-	local t = { 
+	assert(args, "You must provide an argument table when creating LoadBalancerInfo")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["elbInfoList"] = args["elbInfoList"],
 	}
-	asserts.AssertLoadBalancerInfo(t)
-	return t
+	asserts.AssertLoadBalancerInfo(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeploymentIdRequiredException = { nil }
@@ -3350,11 +4648,22 @@ end
 -- Valid keys:
 -- @return DeploymentIdRequiredException structure as a key-value pair table
 function M.DeploymentIdRequiredException(args)
-	assert(args, "You must provdide an argument table when creating DeploymentIdRequiredException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeploymentIdRequiredException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertDeploymentIdRequiredException(t)
-	return t
+	asserts.AssertDeploymentIdRequiredException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.BlueInstanceTerminationOption = { ["action"] = true, ["terminationWaitTimeInMinutes"] = true, nil }
@@ -3377,13 +4686,24 @@ end
 -- * terminationWaitTimeInMinutes [Duration] <p>The number of minutes to wait after a successful blue/green deployment before terminating instances from the original environment.</p>
 -- @return BlueInstanceTerminationOption structure as a key-value pair table
 function M.BlueInstanceTerminationOption(args)
-	assert(args, "You must provdide an argument table when creating BlueInstanceTerminationOption")
-	local t = { 
+	assert(args, "You must provide an argument table when creating BlueInstanceTerminationOption")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["action"] = args["action"],
 		["terminationWaitTimeInMinutes"] = args["terminationWaitTimeInMinutes"],
 	}
-	asserts.AssertBlueInstanceTerminationOption(t)
-	return t
+	asserts.AssertBlueInstanceTerminationOption(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.RevisionLocation = { ["revisionType"] = true, ["s3Location"] = true, ["gitHubLocation"] = true, nil }
@@ -3408,14 +4728,25 @@ end
 -- * gitHubLocation [GitHubLocation] <p>Information about the location of application artifacts stored in GitHub.</p>
 -- @return RevisionLocation structure as a key-value pair table
 function M.RevisionLocation(args)
-	assert(args, "You must provdide an argument table when creating RevisionLocation")
-	local t = { 
+	assert(args, "You must provide an argument table when creating RevisionLocation")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["revisionType"] = args["revisionType"],
 		["s3Location"] = args["s3Location"],
 		["gitHubLocation"] = args["gitHubLocation"],
 	}
-	asserts.AssertRevisionLocation(t)
-	return t
+	asserts.AssertRevisionLocation(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidInstanceStatusException = { nil }
@@ -3434,11 +4765,22 @@ end
 -- Valid keys:
 -- @return InvalidInstanceStatusException structure as a key-value pair table
 function M.InvalidInstanceStatusException(args)
-	assert(args, "You must provdide an argument table when creating InvalidInstanceStatusException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidInstanceStatusException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertInvalidInstanceStatusException(t)
-	return t
+	asserts.AssertInvalidInstanceStatusException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.RevisionDoesNotExistException = { nil }
@@ -3457,11 +4799,22 @@ end
 -- Valid keys:
 -- @return RevisionDoesNotExistException structure as a key-value pair table
 function M.RevisionDoesNotExistException(args)
-	assert(args, "You must provdide an argument table when creating RevisionDoesNotExistException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating RevisionDoesNotExistException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertRevisionDoesNotExistException(t)
-	return t
+	asserts.AssertRevisionDoesNotExistException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeregisterOnPremisesInstanceInput = { ["instanceName"] = true, nil }
@@ -3484,12 +4837,23 @@ end
 -- Required key: instanceName
 -- @return DeregisterOnPremisesInstanceInput structure as a key-value pair table
 function M.DeregisterOnPremisesInstanceInput(args)
-	assert(args, "You must provdide an argument table when creating DeregisterOnPremisesInstanceInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeregisterOnPremisesInstanceInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["instanceName"] = args["instanceName"],
 	}
-	asserts.AssertDeregisterOnPremisesInstanceInput(t)
-	return t
+	asserts.AssertDeregisterOnPremisesInstanceInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GitHubAccountTokenDoesNotExistException = { nil }
@@ -3508,11 +4872,22 @@ end
 -- Valid keys:
 -- @return GitHubAccountTokenDoesNotExistException structure as a key-value pair table
 function M.GitHubAccountTokenDoesNotExistException(args)
-	assert(args, "You must provdide an argument table when creating GitHubAccountTokenDoesNotExistException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GitHubAccountTokenDoesNotExistException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertGitHubAccountTokenDoesNotExistException(t)
-	return t
+	asserts.AssertGitHubAccountTokenDoesNotExistException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.BatchGetDeploymentsInput = { ["deploymentIds"] = true, nil }
@@ -3533,12 +4908,23 @@ end
 -- * deploymentIds [DeploymentsList] <p>A list of deployment IDs, separated by spaces.</p>
 -- @return BatchGetDeploymentsInput structure as a key-value pair table
 function M.BatchGetDeploymentsInput(args)
-	assert(args, "You must provdide an argument table when creating BatchGetDeploymentsInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating BatchGetDeploymentsInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["deploymentIds"] = args["deploymentIds"],
 	}
-	asserts.AssertBatchGetDeploymentsInput(t)
-	return t
+	asserts.AssertBatchGetDeploymentsInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ContinueDeploymentInput = { ["deploymentId"] = true, nil }
@@ -3559,12 +4945,23 @@ end
 -- * deploymentId [DeploymentId] <p>The deployment ID of the blue/green deployment for which you want to start rerouting traffic to the replacement environment.</p>
 -- @return ContinueDeploymentInput structure as a key-value pair table
 function M.ContinueDeploymentInput(args)
-	assert(args, "You must provdide an argument table when creating ContinueDeploymentInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ContinueDeploymentInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["deploymentId"] = args["deploymentId"],
 	}
-	asserts.AssertContinueDeploymentInput(t)
-	return t
+	asserts.AssertContinueDeploymentInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListDeploymentConfigsInput = { ["nextToken"] = true, nil }
@@ -3585,12 +4982,23 @@ end
 -- * nextToken [NextToken] <p>An identifier returned from the previous list deployment configurations call. It can be used to return the next set of deployment configurations in the list. </p>
 -- @return ListDeploymentConfigsInput structure as a key-value pair table
 function M.ListDeploymentConfigsInput(args)
-	assert(args, "You must provdide an argument table when creating ListDeploymentConfigsInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListDeploymentConfigsInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["nextToken"] = args["nextToken"],
 	}
-	asserts.AssertListDeploymentConfigsInput(t)
-	return t
+	asserts.AssertListDeploymentConfigsInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetDeploymentInstanceInput = { ["instanceId"] = true, ["deploymentId"] = true, nil }
@@ -3617,13 +5025,24 @@ end
 -- Required key: instanceId
 -- @return GetDeploymentInstanceInput structure as a key-value pair table
 function M.GetDeploymentInstanceInput(args)
-	assert(args, "You must provdide an argument table when creating GetDeploymentInstanceInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetDeploymentInstanceInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["instanceId"] = args["instanceId"],
 		["deploymentId"] = args["deploymentId"],
 	}
-	asserts.AssertGetDeploymentInstanceInput(t)
-	return t
+	asserts.AssertGetDeploymentInstanceInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GitHubLocation = { ["commitId"] = true, ["repository"] = true, nil }
@@ -3646,13 +5065,24 @@ end
 -- * repository [Repository] <p>The GitHub account and repository pair that stores a reference to the commit that represents the bundled artifacts for the application revision. </p> <p>Specified as account/repository.</p>
 -- @return GitHubLocation structure as a key-value pair table
 function M.GitHubLocation(args)
-	assert(args, "You must provdide an argument table when creating GitHubLocation")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GitHubLocation")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["commitId"] = args["commitId"],
 		["repository"] = args["repository"],
 	}
-	asserts.AssertGitHubLocation(t)
-	return t
+	asserts.AssertGitHubLocation(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateDeploymentGroupOutput = { ["deploymentGroupId"] = true, nil }
@@ -3673,12 +5103,23 @@ end
 -- * deploymentGroupId [DeploymentGroupId] <p>A unique deployment group ID.</p>
 -- @return CreateDeploymentGroupOutput structure as a key-value pair table
 function M.CreateDeploymentGroupOutput(args)
-	assert(args, "You must provdide an argument table when creating CreateDeploymentGroupOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateDeploymentGroupOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["deploymentGroupId"] = args["deploymentGroupId"],
 	}
-	asserts.AssertCreateDeploymentGroupOutput(t)
-	return t
+	asserts.AssertCreateDeploymentGroupOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.BatchGetApplicationRevisionsOutput = { ["applicationName"] = true, ["errorMessage"] = true, ["revisions"] = true, nil }
@@ -3703,14 +5144,25 @@ end
 -- * revisions [RevisionInfoList] <p>Additional information about the revisions, including the type and location.</p>
 -- @return BatchGetApplicationRevisionsOutput structure as a key-value pair table
 function M.BatchGetApplicationRevisionsOutput(args)
-	assert(args, "You must provdide an argument table when creating BatchGetApplicationRevisionsOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating BatchGetApplicationRevisionsOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["applicationName"] = args["applicationName"],
 		["errorMessage"] = args["errorMessage"],
 		["revisions"] = args["revisions"],
 	}
-	asserts.AssertBatchGetApplicationRevisionsOutput(t)
-	return t
+	asserts.AssertBatchGetApplicationRevisionsOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidLoadBalancerInfoException = { nil }
@@ -3729,11 +5181,22 @@ end
 -- Valid keys:
 -- @return InvalidLoadBalancerInfoException structure as a key-value pair table
 function M.InvalidLoadBalancerInfoException(args)
-	assert(args, "You must provdide an argument table when creating InvalidLoadBalancerInfoException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidLoadBalancerInfoException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertInvalidLoadBalancerInfoException(t)
-	return t
+	asserts.AssertInvalidLoadBalancerInfoException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateDeploymentInput = { ["applicationName"] = true, ["autoRollbackConfiguration"] = true, ["description"] = true, ["deploymentConfigName"] = true, ["ignoreApplicationStopFailures"] = true, ["updateOutdatedInstancesOnly"] = true, ["targetInstances"] = true, ["deploymentGroupName"] = true, ["fileExistsBehavior"] = true, ["revision"] = true, nil }
@@ -3774,8 +5237,14 @@ end
 -- Required key: applicationName
 -- @return CreateDeploymentInput structure as a key-value pair table
 function M.CreateDeploymentInput(args)
-	assert(args, "You must provdide an argument table when creating CreateDeploymentInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateDeploymentInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["applicationName"] = args["applicationName"],
 		["autoRollbackConfiguration"] = args["autoRollbackConfiguration"],
 		["description"] = args["description"],
@@ -3787,8 +5256,13 @@ function M.CreateDeploymentInput(args)
 		["fileExistsBehavior"] = args["fileExistsBehavior"],
 		["revision"] = args["revision"],
 	}
-	asserts.AssertCreateDeploymentInput(t)
-	return t
+	asserts.AssertCreateDeploymentInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteDeploymentGroupOutput = { ["hooksNotCleanedUp"] = true, nil }
@@ -3809,12 +5283,23 @@ end
 -- * hooksNotCleanedUp [AutoScalingGroupList] <p>If the output contains no data, and the corresponding deployment group contained at least one Auto Scaling group, AWS CodeDeploy successfully removed all corresponding Auto Scaling lifecycle event hooks from the Amazon EC2 instances in the Auto Scaling group. If the output contains data, AWS CodeDeploy could not remove some Auto Scaling lifecycle event hooks from the Amazon EC2 instances in the Auto Scaling group.</p>
 -- @return DeleteDeploymentGroupOutput structure as a key-value pair table
 function M.DeleteDeploymentGroupOutput(args)
-	assert(args, "You must provdide an argument table when creating DeleteDeploymentGroupOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteDeploymentGroupOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["hooksNotCleanedUp"] = args["hooksNotCleanedUp"],
 	}
-	asserts.AssertDeleteDeploymentGroupOutput(t)
-	return t
+	asserts.AssertDeleteDeploymentGroupOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.BatchGetDeploymentGroupsOutput = { ["errorMessage"] = true, ["deploymentGroupsInfo"] = true, nil }
@@ -3837,13 +5322,24 @@ end
 -- * deploymentGroupsInfo [DeploymentGroupInfoList] <p>Information about the deployment groups.</p>
 -- @return BatchGetDeploymentGroupsOutput structure as a key-value pair table
 function M.BatchGetDeploymentGroupsOutput(args)
-	assert(args, "You must provdide an argument table when creating BatchGetDeploymentGroupsOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating BatchGetDeploymentGroupsOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["errorMessage"] = args["errorMessage"],
 		["deploymentGroupsInfo"] = args["deploymentGroupsInfo"],
 	}
-	asserts.AssertBatchGetDeploymentGroupsOutput(t)
-	return t
+	asserts.AssertBatchGetDeploymentGroupsOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeploymentConfigAlreadyExistsException = { nil }
@@ -3862,11 +5358,22 @@ end
 -- Valid keys:
 -- @return DeploymentConfigAlreadyExistsException structure as a key-value pair table
 function M.DeploymentConfigAlreadyExistsException(args)
-	assert(args, "You must provdide an argument table when creating DeploymentConfigAlreadyExistsException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeploymentConfigAlreadyExistsException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertDeploymentConfigAlreadyExistsException(t)
-	return t
+	asserts.AssertDeploymentConfigAlreadyExistsException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidInstanceTypeException = { nil }
@@ -3885,11 +5392,22 @@ end
 -- Valid keys:
 -- @return InvalidInstanceTypeException structure as a key-value pair table
 function M.InvalidInstanceTypeException(args)
-	assert(args, "You must provdide an argument table when creating InvalidInstanceTypeException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidInstanceTypeException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertInvalidInstanceTypeException(t)
-	return t
+	asserts.AssertInvalidInstanceTypeException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateDeploymentGroupInput = { ["applicationName"] = true, ["autoScalingGroups"] = true, ["loadBalancerInfo"] = true, ["blueGreenDeploymentConfiguration"] = true, ["deploymentConfigName"] = true, ["triggerConfigurations"] = true, ["alarmConfiguration"] = true, ["ec2TagFilters"] = true, ["autoRollbackConfiguration"] = true, ["deploymentStyle"] = true, ["serviceRoleArn"] = true, ["deploymentGroupName"] = true, ["onPremisesInstanceTagFilters"] = true, nil }
@@ -3940,8 +5458,14 @@ end
 -- Required key: serviceRoleArn
 -- @return CreateDeploymentGroupInput structure as a key-value pair table
 function M.CreateDeploymentGroupInput(args)
-	assert(args, "You must provdide an argument table when creating CreateDeploymentGroupInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateDeploymentGroupInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["applicationName"] = args["applicationName"],
 		["autoScalingGroups"] = args["autoScalingGroups"],
 		["loadBalancerInfo"] = args["loadBalancerInfo"],
@@ -3956,8 +5480,13 @@ function M.CreateDeploymentGroupInput(args)
 		["deploymentGroupName"] = args["deploymentGroupName"],
 		["onPremisesInstanceTagFilters"] = args["onPremisesInstanceTagFilters"],
 	}
-	asserts.AssertCreateDeploymentGroupInput(t)
-	return t
+	asserts.AssertCreateDeploymentGroupInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeploymentGroupAlreadyExistsException = { nil }
@@ -3976,11 +5505,22 @@ end
 -- Valid keys:
 -- @return DeploymentGroupAlreadyExistsException structure as a key-value pair table
 function M.DeploymentGroupAlreadyExistsException(args)
-	assert(args, "You must provdide an argument table when creating DeploymentGroupAlreadyExistsException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeploymentGroupAlreadyExistsException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertDeploymentGroupAlreadyExistsException(t)
-	return t
+	asserts.AssertDeploymentGroupAlreadyExistsException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.BatchGetApplicationRevisionsInput = { ["applicationName"] = true, ["revisions"] = true, nil }
@@ -4007,13 +5547,24 @@ end
 -- Required key: revisions
 -- @return BatchGetApplicationRevisionsInput structure as a key-value pair table
 function M.BatchGetApplicationRevisionsInput(args)
-	assert(args, "You must provdide an argument table when creating BatchGetApplicationRevisionsInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating BatchGetApplicationRevisionsInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["applicationName"] = args["applicationName"],
 		["revisions"] = args["revisions"],
 	}
-	asserts.AssertBatchGetApplicationRevisionsInput(t)
-	return t
+	asserts.AssertBatchGetApplicationRevisionsInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdateDeploymentGroupOutput = { ["hooksNotCleanedUp"] = true, nil }
@@ -4034,12 +5585,23 @@ end
 -- * hooksNotCleanedUp [AutoScalingGroupList] <p>If the output contains no data, and the corresponding deployment group contained at least one Auto Scaling group, AWS CodeDeploy successfully removed all corresponding Auto Scaling lifecycle event hooks from the AWS account. If the output contains data, AWS CodeDeploy could not remove some Auto Scaling lifecycle event hooks from the AWS account.</p>
 -- @return UpdateDeploymentGroupOutput structure as a key-value pair table
 function M.UpdateDeploymentGroupOutput(args)
-	assert(args, "You must provdide an argument table when creating UpdateDeploymentGroupOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateDeploymentGroupOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["hooksNotCleanedUp"] = args["hooksNotCleanedUp"],
 	}
-	asserts.AssertUpdateDeploymentGroupOutput(t)
-	return t
+	asserts.AssertUpdateDeploymentGroupOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListDeploymentConfigsOutput = { ["nextToken"] = true, ["deploymentConfigsList"] = true, nil }
@@ -4062,13 +5624,24 @@ end
 -- * deploymentConfigsList [DeploymentConfigsList] <p>A list of deployment configurations, including built-in configurations such as CodeDeployDefault.OneAtATime.</p>
 -- @return ListDeploymentConfigsOutput structure as a key-value pair table
 function M.ListDeploymentConfigsOutput(args)
-	assert(args, "You must provdide an argument table when creating ListDeploymentConfigsOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListDeploymentConfigsOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["nextToken"] = args["nextToken"],
 		["deploymentConfigsList"] = args["deploymentConfigsList"],
 	}
-	asserts.AssertListDeploymentConfigsOutput(t)
-	return t
+	asserts.AssertListDeploymentConfigsOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteDeploymentGroupInput = { ["applicationName"] = true, ["deploymentGroupName"] = true, nil }
@@ -4095,13 +5668,24 @@ end
 -- Required key: deploymentGroupName
 -- @return DeleteDeploymentGroupInput structure as a key-value pair table
 function M.DeleteDeploymentGroupInput(args)
-	assert(args, "You must provdide an argument table when creating DeleteDeploymentGroupInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteDeploymentGroupInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["applicationName"] = args["applicationName"],
 		["deploymentGroupName"] = args["deploymentGroupName"],
 	}
-	asserts.AssertDeleteDeploymentGroupInput(t)
-	return t
+	asserts.AssertDeleteDeploymentGroupInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.StopDeploymentOutput = { ["status"] = true, ["statusMessage"] = true, nil }
@@ -4124,13 +5708,24 @@ end
 -- * statusMessage [Message] <p>An accompanying status message.</p>
 -- @return StopDeploymentOutput structure as a key-value pair table
 function M.StopDeploymentOutput(args)
-	assert(args, "You must provdide an argument table when creating StopDeploymentOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating StopDeploymentOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["status"] = args["status"],
 		["statusMessage"] = args["statusMessage"],
 	}
-	asserts.AssertStopDeploymentOutput(t)
-	return t
+	asserts.AssertStopDeploymentOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateDeploymentOutput = { ["deploymentId"] = true, nil }
@@ -4151,12 +5746,23 @@ end
 -- * deploymentId [DeploymentId] <p>A unique deployment ID.</p>
 -- @return CreateDeploymentOutput structure as a key-value pair table
 function M.CreateDeploymentOutput(args)
-	assert(args, "You must provdide an argument table when creating CreateDeploymentOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateDeploymentOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["deploymentId"] = args["deploymentId"],
 	}
-	asserts.AssertCreateDeploymentOutput(t)
-	return t
+	asserts.AssertCreateDeploymentOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListDeploymentsOutput = { ["nextToken"] = true, ["deployments"] = true, nil }
@@ -4179,13 +5785,24 @@ end
 -- * deployments [DeploymentsList] <p>A list of deployment IDs.</p>
 -- @return ListDeploymentsOutput structure as a key-value pair table
 function M.ListDeploymentsOutput(args)
-	assert(args, "You must provdide an argument table when creating ListDeploymentsOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListDeploymentsOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["nextToken"] = args["nextToken"],
 		["deployments"] = args["deployments"],
 	}
-	asserts.AssertListDeploymentsOutput(t)
-	return t
+	asserts.AssertListDeploymentsOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidMinimumHealthyHostValueException = { nil }
@@ -4204,11 +5821,22 @@ end
 -- Valid keys:
 -- @return InvalidMinimumHealthyHostValueException structure as a key-value pair table
 function M.InvalidMinimumHealthyHostValueException(args)
-	assert(args, "You must provdide an argument table when creating InvalidMinimumHealthyHostValueException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidMinimumHealthyHostValueException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertInvalidMinimumHealthyHostValueException(t)
-	return t
+	asserts.AssertInvalidMinimumHealthyHostValueException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.BatchGetDeploymentsOutput = { ["deploymentsInfo"] = true, nil }
@@ -4229,12 +5857,23 @@ end
 -- * deploymentsInfo [DeploymentsInfoList] <p>Information about the deployments.</p>
 -- @return BatchGetDeploymentsOutput structure as a key-value pair table
 function M.BatchGetDeploymentsOutput(args)
-	assert(args, "You must provdide an argument table when creating BatchGetDeploymentsOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating BatchGetDeploymentsOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["deploymentsInfo"] = args["deploymentsInfo"],
 	}
-	asserts.AssertBatchGetDeploymentsOutput(t)
-	return t
+	asserts.AssertBatchGetDeploymentsOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.IamArnRequiredException = { nil }
@@ -4253,11 +5892,22 @@ end
 -- Valid keys:
 -- @return IamArnRequiredException structure as a key-value pair table
 function M.IamArnRequiredException(args)
-	assert(args, "You must provdide an argument table when creating IamArnRequiredException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating IamArnRequiredException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertIamArnRequiredException(t)
-	return t
+	asserts.AssertIamArnRequiredException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeploymentConfigNameRequiredException = { nil }
@@ -4276,11 +5926,22 @@ end
 -- Valid keys:
 -- @return DeploymentConfigNameRequiredException structure as a key-value pair table
 function M.DeploymentConfigNameRequiredException(args)
-	assert(args, "You must provdide an argument table when creating DeploymentConfigNameRequiredException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeploymentConfigNameRequiredException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertDeploymentConfigNameRequiredException(t)
-	return t
+	asserts.AssertDeploymentConfigNameRequiredException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeploymentOverview = { ["Skipped"] = true, ["Succeeded"] = true, ["Failed"] = true, ["Ready"] = true, ["InProgress"] = true, ["Pending"] = true, nil }
@@ -4311,8 +5972,14 @@ end
 -- * Pending [InstanceCount] <p>The number of instances in the deployment in a pending state.</p>
 -- @return DeploymentOverview structure as a key-value pair table
 function M.DeploymentOverview(args)
-	assert(args, "You must provdide an argument table when creating DeploymentOverview")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeploymentOverview")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Skipped"] = args["Skipped"],
 		["Succeeded"] = args["Succeeded"],
 		["Failed"] = args["Failed"],
@@ -4320,8 +5987,13 @@ function M.DeploymentOverview(args)
 		["InProgress"] = args["InProgress"],
 		["Pending"] = args["Pending"],
 	}
-	asserts.AssertDeploymentOverview(t)
-	return t
+	asserts.AssertDeploymentOverview(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidRegistrationStatusException = { nil }
@@ -4340,11 +6012,22 @@ end
 -- Valid keys:
 -- @return InvalidRegistrationStatusException structure as a key-value pair table
 function M.InvalidRegistrationStatusException(args)
-	assert(args, "You must provdide an argument table when creating InvalidRegistrationStatusException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidRegistrationStatusException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertInvalidRegistrationStatusException(t)
-	return t
+	asserts.AssertInvalidRegistrationStatusException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListApplicationRevisionsInput = { ["applicationName"] = true, ["s3KeyPrefix"] = true, ["s3Bucket"] = true, ["sortBy"] = true, ["nextToken"] = true, ["deployed"] = true, ["sortOrder"] = true, nil }
@@ -4379,8 +6062,14 @@ end
 -- Required key: applicationName
 -- @return ListApplicationRevisionsInput structure as a key-value pair table
 function M.ListApplicationRevisionsInput(args)
-	assert(args, "You must provdide an argument table when creating ListApplicationRevisionsInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListApplicationRevisionsInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["applicationName"] = args["applicationName"],
 		["s3KeyPrefix"] = args["s3KeyPrefix"],
 		["s3Bucket"] = args["s3Bucket"],
@@ -4389,8 +6078,13 @@ function M.ListApplicationRevisionsInput(args)
 		["deployed"] = args["deployed"],
 		["sortOrder"] = args["sortOrder"],
 	}
-	asserts.AssertListApplicationRevisionsInput(t)
-	return t
+	asserts.AssertListApplicationRevisionsInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.BlueGreenDeploymentConfiguration = { ["terminateBlueInstancesOnDeploymentSuccess"] = true, ["deploymentReadyOption"] = true, ["greenFleetProvisioningOption"] = true, nil }
@@ -4415,14 +6109,25 @@ end
 -- * greenFleetProvisioningOption [GreenFleetProvisioningOption] <p>Information about how instances are provisioned for a replacement environment in a blue/green deployment.</p>
 -- @return BlueGreenDeploymentConfiguration structure as a key-value pair table
 function M.BlueGreenDeploymentConfiguration(args)
-	assert(args, "You must provdide an argument table when creating BlueGreenDeploymentConfiguration")
-	local t = { 
+	assert(args, "You must provide an argument table when creating BlueGreenDeploymentConfiguration")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["terminateBlueInstancesOnDeploymentSuccess"] = args["terminateBlueInstancesOnDeploymentSuccess"],
 		["deploymentReadyOption"] = args["deploymentReadyOption"],
 		["greenFleetProvisioningOption"] = args["greenFleetProvisioningOption"],
 	}
-	asserts.AssertBlueGreenDeploymentConfiguration(t)
-	return t
+	asserts.AssertBlueGreenDeploymentConfiguration(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeploymentGroupNameRequiredException = { nil }
@@ -4441,11 +6146,22 @@ end
 -- Valid keys:
 -- @return DeploymentGroupNameRequiredException structure as a key-value pair table
 function M.DeploymentGroupNameRequiredException(args)
-	assert(args, "You must provdide an argument table when creating DeploymentGroupNameRequiredException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeploymentGroupNameRequiredException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertDeploymentGroupNameRequiredException(t)
-	return t
+	asserts.AssertDeploymentGroupNameRequiredException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Alarm = { ["name"] = true, nil }
@@ -4466,12 +6182,23 @@ end
 -- * name [AlarmName] <p>The name of the alarm. Maximum length is 255 characters. Each alarm name can be used only once in a list of alarms.</p>
 -- @return Alarm structure as a key-value pair table
 function M.Alarm(args)
-	assert(args, "You must provdide an argument table when creating Alarm")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Alarm")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["name"] = args["name"],
 	}
-	asserts.AssertAlarm(t)
-	return t
+	asserts.AssertAlarm(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.BatchGetOnPremisesInstancesInput = { ["instanceNames"] = true, nil }
@@ -4492,12 +6219,23 @@ end
 -- * instanceNames [InstanceNameList] <p>The names of the on-premises instances about which to get information.</p>
 -- @return BatchGetOnPremisesInstancesInput structure as a key-value pair table
 function M.BatchGetOnPremisesInstancesInput(args)
-	assert(args, "You must provdide an argument table when creating BatchGetOnPremisesInstancesInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating BatchGetOnPremisesInstancesInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["instanceNames"] = args["instanceNames"],
 	}
-	asserts.AssertBatchGetOnPremisesInstancesInput(t)
-	return t
+	asserts.AssertBatchGetOnPremisesInstancesInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.BatchGetDeploymentInstancesInput = { ["deploymentId"] = true, ["instanceIds"] = true, nil }
@@ -4524,13 +6262,24 @@ end
 -- Required key: instanceIds
 -- @return BatchGetDeploymentInstancesInput structure as a key-value pair table
 function M.BatchGetDeploymentInstancesInput(args)
-	assert(args, "You must provdide an argument table when creating BatchGetDeploymentInstancesInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating BatchGetDeploymentInstancesInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["deploymentId"] = args["deploymentId"],
 		["instanceIds"] = args["instanceIds"],
 	}
-	asserts.AssertBatchGetDeploymentInstancesInput(t)
-	return t
+	asserts.AssertBatchGetDeploymentInstancesInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.TagFilter = { ["Type"] = true, ["Value"] = true, ["Key"] = true, nil }
@@ -4555,14 +6304,25 @@ end
 -- * Key [Key] <p>The on-premises instance tag filter key.</p>
 -- @return TagFilter structure as a key-value pair table
 function M.TagFilter(args)
-	assert(args, "You must provdide an argument table when creating TagFilter")
-	local t = { 
+	assert(args, "You must provide an argument table when creating TagFilter")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Type"] = args["Type"],
 		["Value"] = args["Value"],
 		["Key"] = args["Key"],
 	}
-	asserts.AssertTagFilter(t)
-	return t
+	asserts.AssertTagFilter(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.RoleRequiredException = { nil }
@@ -4581,11 +6341,22 @@ end
 -- Valid keys:
 -- @return RoleRequiredException structure as a key-value pair table
 function M.RoleRequiredException(args)
-	assert(args, "You must provdide an argument table when creating RoleRequiredException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating RoleRequiredException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertRoleRequiredException(t)
-	return t
+	asserts.AssertRoleRequiredException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetApplicationInput = { ["applicationName"] = true, nil }
@@ -4608,12 +6379,23 @@ end
 -- Required key: applicationName
 -- @return GetApplicationInput structure as a key-value pair table
 function M.GetApplicationInput(args)
-	assert(args, "You must provdide an argument table when creating GetApplicationInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetApplicationInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["applicationName"] = args["applicationName"],
 	}
-	asserts.AssertGetApplicationInput(t)
-	return t
+	asserts.AssertGetApplicationInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.MinimumHealthyHosts = { ["type"] = true, ["value"] = true, nil }
@@ -4636,13 +6418,24 @@ end
 -- * value [MinimumHealthyHostsValue] <p>The minimum healthy instance value.</p>
 -- @return MinimumHealthyHosts structure as a key-value pair table
 function M.MinimumHealthyHosts(args)
-	assert(args, "You must provdide an argument table when creating MinimumHealthyHosts")
-	local t = { 
+	assert(args, "You must provide an argument table when creating MinimumHealthyHosts")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["type"] = args["type"],
 		["value"] = args["value"],
 	}
-	asserts.AssertMinimumHealthyHosts(t)
-	return t
+	asserts.AssertMinimumHealthyHosts(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.RollbackInfo = { ["rollbackTriggeringDeploymentId"] = true, ["rollbackMessage"] = true, ["rollbackDeploymentId"] = true, nil }
@@ -4667,14 +6460,25 @@ end
 -- * rollbackDeploymentId [DeploymentId] <p>The ID of the deployment rollback.</p>
 -- @return RollbackInfo structure as a key-value pair table
 function M.RollbackInfo(args)
-	assert(args, "You must provdide an argument table when creating RollbackInfo")
-	local t = { 
+	assert(args, "You must provide an argument table when creating RollbackInfo")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["rollbackTriggeringDeploymentId"] = args["rollbackTriggeringDeploymentId"],
 		["rollbackMessage"] = args["rollbackMessage"],
 		["rollbackDeploymentId"] = args["rollbackDeploymentId"],
 	}
-	asserts.AssertRollbackInfo(t)
-	return t
+	asserts.AssertRollbackInfo(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListDeploymentInstancesOutput = { ["nextToken"] = true, ["instancesList"] = true, nil }
@@ -4697,13 +6501,24 @@ end
 -- * instancesList [InstancesList] <p>A list of instance IDs.</p>
 -- @return ListDeploymentInstancesOutput structure as a key-value pair table
 function M.ListDeploymentInstancesOutput(args)
-	assert(args, "You must provdide an argument table when creating ListDeploymentInstancesOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListDeploymentInstancesOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["nextToken"] = args["nextToken"],
 		["instancesList"] = args["instancesList"],
 	}
-	asserts.AssertListDeploymentInstancesOutput(t)
-	return t
+	asserts.AssertListDeploymentInstancesOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Diagnostics = { ["errorCode"] = true, ["scriptName"] = true, ["logTail"] = true, ["message"] = true, nil }
@@ -4730,15 +6545,26 @@ end
 -- * message [LifecycleMessage] <p>The message associated with the error.</p>
 -- @return Diagnostics structure as a key-value pair table
 function M.Diagnostics(args)
-	assert(args, "You must provdide an argument table when creating Diagnostics")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Diagnostics")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["errorCode"] = args["errorCode"],
 		["scriptName"] = args["scriptName"],
 		["logTail"] = args["logTail"],
 		["message"] = args["message"],
 	}
-	asserts.AssertDiagnostics(t)
-	return t
+	asserts.AssertDiagnostics(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.RegisterOnPremisesInstanceInput = { ["iamUserArn"] = true, ["instanceName"] = true, ["iamSessionArn"] = true, nil }
@@ -4765,14 +6591,25 @@ end
 -- Required key: instanceName
 -- @return RegisterOnPremisesInstanceInput structure as a key-value pair table
 function M.RegisterOnPremisesInstanceInput(args)
-	assert(args, "You must provdide an argument table when creating RegisterOnPremisesInstanceInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating RegisterOnPremisesInstanceInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["iamUserArn"] = args["iamUserArn"],
 		["instanceName"] = args["instanceName"],
 		["iamSessionArn"] = args["iamSessionArn"],
 	}
-	asserts.AssertRegisterOnPremisesInstanceInput(t)
-	return t
+	asserts.AssertRegisterOnPremisesInstanceInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetDeploymentOutput = { ["deploymentInfo"] = true, nil }
@@ -4793,12 +6630,23 @@ end
 -- * deploymentInfo [DeploymentInfo] <p>Information about the deployment.</p>
 -- @return GetDeploymentOutput structure as a key-value pair table
 function M.GetDeploymentOutput(args)
-	assert(args, "You must provdide an argument table when creating GetDeploymentOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetDeploymentOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["deploymentInfo"] = args["deploymentInfo"],
 	}
-	asserts.AssertGetDeploymentOutput(t)
-	return t
+	asserts.AssertGetDeploymentOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListDeploymentGroupsOutput = { ["applicationName"] = true, ["nextToken"] = true, ["deploymentGroups"] = true, nil }
@@ -4823,14 +6671,25 @@ end
 -- * deploymentGroups [DeploymentGroupsList] <p>A list of corresponding deployment group names.</p>
 -- @return ListDeploymentGroupsOutput structure as a key-value pair table
 function M.ListDeploymentGroupsOutput(args)
-	assert(args, "You must provdide an argument table when creating ListDeploymentGroupsOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListDeploymentGroupsOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["applicationName"] = args["applicationName"],
 		["nextToken"] = args["nextToken"],
 		["deploymentGroups"] = args["deploymentGroups"],
 	}
-	asserts.AssertListDeploymentGroupsOutput(t)
-	return t
+	asserts.AssertListDeploymentGroupsOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidDeploymentStatusException = { nil }
@@ -4849,11 +6708,22 @@ end
 -- Valid keys:
 -- @return InvalidDeploymentStatusException structure as a key-value pair table
 function M.InvalidDeploymentStatusException(args)
-	assert(args, "You must provdide an argument table when creating InvalidDeploymentStatusException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidDeploymentStatusException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertInvalidDeploymentStatusException(t)
-	return t
+	asserts.AssertInvalidDeploymentStatusException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidAutoScalingGroupException = { nil }
@@ -4872,11 +6742,22 @@ end
 -- Valid keys:
 -- @return InvalidAutoScalingGroupException structure as a key-value pair table
 function M.InvalidAutoScalingGroupException(args)
-	assert(args, "You must provdide an argument table when creating InvalidAutoScalingGroupException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidAutoScalingGroupException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertInvalidAutoScalingGroupException(t)
-	return t
+	asserts.AssertInvalidAutoScalingGroupException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.EC2TagFilter = { ["Type"] = true, ["Value"] = true, ["Key"] = true, nil }
@@ -4901,14 +6782,25 @@ end
 -- * Key [Key] <p>The tag filter key.</p>
 -- @return EC2TagFilter structure as a key-value pair table
 function M.EC2TagFilter(args)
-	assert(args, "You must provdide an argument table when creating EC2TagFilter")
-	local t = { 
+	assert(args, "You must provide an argument table when creating EC2TagFilter")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Type"] = args["Type"],
 		["Value"] = args["Value"],
 		["Key"] = args["Key"],
 	}
-	asserts.AssertEC2TagFilter(t)
-	return t
+	asserts.AssertEC2TagFilter(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescriptionTooLongException = { nil }
@@ -4927,11 +6819,22 @@ end
 -- Valid keys:
 -- @return DescriptionTooLongException structure as a key-value pair table
 function M.DescriptionTooLongException(args)
-	assert(args, "You must provdide an argument table when creating DescriptionTooLongException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescriptionTooLongException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertDescriptionTooLongException(t)
-	return t
+	asserts.AssertDescriptionTooLongException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ErrorInformation = { ["message"] = true, ["code"] = true, nil }
@@ -4954,13 +6857,24 @@ end
 -- * code [ErrorCode] <p>For information about additional error codes, see <a href="http://docs.aws.amazon.com/codedeploy/latest/userguide/error-codes.html">Error Codes for AWS CodeDeploy</a> in the <a href="http://docs.aws.amazon.com/codedeploy/latest/userguide">AWS CodeDeploy User Guide</a>.</p> <p>The error code:</p> <ul> <li> <p>APPLICATION_MISSING: The application was missing. This error code will most likely be raised if the application is deleted after the deployment is created but before it is started.</p> </li> <li> <p>DEPLOYMENT_GROUP_MISSING: The deployment group was missing. This error code will most likely be raised if the deployment group is deleted after the deployment is created but before it is started.</p> </li> <li> <p>HEALTH_CONSTRAINTS: The deployment failed on too many instances to be successfully deployed within the instance health constraints specified.</p> </li> <li> <p>HEALTH_CONSTRAINTS_INVALID: The revision cannot be successfully deployed within the instance health constraints specified.</p> </li> <li> <p>IAM_ROLE_MISSING: The service role cannot be accessed.</p> </li> <li> <p>IAM_ROLE_PERMISSIONS: The service role does not have the correct permissions.</p> </li> <li> <p>INTERNAL_ERROR: There was an internal error.</p> </li> <li> <p>NO_EC2_SUBSCRIPTION: The calling account is not subscribed to the Amazon EC2 service.</p> </li> <li> <p>NO_INSTANCES: No instance were specified, or no instance can be found.</p> </li> <li> <p>OVER_MAX_INSTANCES: The maximum number of instance was exceeded.</p> </li> <li> <p>THROTTLED: The operation was throttled because the calling account exceeded the throttling limits of one or more AWS services.</p> </li> <li> <p>TIMEOUT: The deployment has timed out.</p> </li> <li> <p>REVISION_MISSING: The revision ID was missing. This error code will most likely be raised if the revision is deleted after the deployment is created but before it is started.</p> </li> </ul>
 -- @return ErrorInformation structure as a key-value pair table
 function M.ErrorInformation(args)
-	assert(args, "You must provdide an argument table when creating ErrorInformation")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ErrorInformation")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 		["code"] = args["code"],
 	}
-	asserts.AssertErrorInformation(t)
-	return t
+	asserts.AssertErrorInformation(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeploymentNotStartedException = { nil }
@@ -4979,11 +6893,22 @@ end
 -- Valid keys:
 -- @return DeploymentNotStartedException structure as a key-value pair table
 function M.DeploymentNotStartedException(args)
-	assert(args, "You must provdide an argument table when creating DeploymentNotStartedException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeploymentNotStartedException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertDeploymentNotStartedException(t)
-	return t
+	asserts.AssertDeploymentNotStartedException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidKeyPrefixFilterException = { nil }
@@ -5002,11 +6927,22 @@ end
 -- Valid keys:
 -- @return InvalidKeyPrefixFilterException structure as a key-value pair table
 function M.InvalidKeyPrefixFilterException(args)
-	assert(args, "You must provdide an argument table when creating InvalidKeyPrefixFilterException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidKeyPrefixFilterException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertInvalidKeyPrefixFilterException(t)
-	return t
+	asserts.AssertInvalidKeyPrefixFilterException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteApplicationInput = { ["applicationName"] = true, nil }
@@ -5029,12 +6965,23 @@ end
 -- Required key: applicationName
 -- @return DeleteApplicationInput structure as a key-value pair table
 function M.DeleteApplicationInput(args)
-	assert(args, "You must provdide an argument table when creating DeleteApplicationInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteApplicationInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["applicationName"] = args["applicationName"],
 	}
-	asserts.AssertDeleteApplicationInput(t)
-	return t
+	asserts.AssertDeleteApplicationInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.BatchLimitExceededException = { nil }
@@ -5053,11 +7000,22 @@ end
 -- Valid keys:
 -- @return BatchLimitExceededException structure as a key-value pair table
 function M.BatchLimitExceededException(args)
-	assert(args, "You must provdide an argument table when creating BatchLimitExceededException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating BatchLimitExceededException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertBatchLimitExceededException(t)
-	return t
+	asserts.AssertBatchLimitExceededException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetDeploymentInput = { ["deploymentId"] = true, nil }
@@ -5080,12 +7038,23 @@ end
 -- Required key: deploymentId
 -- @return GetDeploymentInput structure as a key-value pair table
 function M.GetDeploymentInput(args)
-	assert(args, "You must provdide an argument table when creating GetDeploymentInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetDeploymentInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["deploymentId"] = args["deploymentId"],
 	}
-	asserts.AssertGetDeploymentInput(t)
-	return t
+	asserts.AssertGetDeploymentInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.TagLimitExceededException = { nil }
@@ -5104,11 +7073,22 @@ end
 -- Valid keys:
 -- @return TagLimitExceededException structure as a key-value pair table
 function M.TagLimitExceededException(args)
-	assert(args, "You must provdide an argument table when creating TagLimitExceededException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating TagLimitExceededException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertTagLimitExceededException(t)
-	return t
+	asserts.AssertTagLimitExceededException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 function asserts.AssertDeploymentGroupId(str)
@@ -6334,8 +8314,11 @@ function M.GetDeploymentConfigAsync(GetDeploymentConfigInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "CodeDeploy_20141006.GetDeploymentConfig",
 	}
+	for header,value in pairs(GetDeploymentConfigInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", GetDeploymentConfigInput, headers, settings, cb)
 	else
@@ -6366,8 +8349,11 @@ function M.UpdateDeploymentGroupAsync(UpdateDeploymentGroupInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "CodeDeploy_20141006.UpdateDeploymentGroup",
 	}
+	for header,value in pairs(UpdateDeploymentGroupInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateDeploymentGroupInput, headers, settings, cb)
 	else
@@ -6398,8 +8384,11 @@ function M.BatchGetDeploymentsAsync(BatchGetDeploymentsInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "CodeDeploy_20141006.BatchGetDeployments",
 	}
+	for header,value in pairs(BatchGetDeploymentsInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", BatchGetDeploymentsInput, headers, settings, cb)
 	else
@@ -6430,8 +8419,11 @@ function M.ContinueDeploymentAsync(ContinueDeploymentInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "CodeDeploy_20141006.ContinueDeployment",
 	}
+	for header,value in pairs(ContinueDeploymentInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ContinueDeploymentInput, headers, settings, cb)
 	else
@@ -6462,8 +8454,11 @@ function M.GetDeploymentGroupAsync(GetDeploymentGroupInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "CodeDeploy_20141006.GetDeploymentGroup",
 	}
+	for header,value in pairs(GetDeploymentGroupInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", GetDeploymentGroupInput, headers, settings, cb)
 	else
@@ -6494,8 +8489,11 @@ function M.ListDeploymentGroupsAsync(ListDeploymentGroupsInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "CodeDeploy_20141006.ListDeploymentGroups",
 	}
+	for header,value in pairs(ListDeploymentGroupsInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ListDeploymentGroupsInput, headers, settings, cb)
 	else
@@ -6526,8 +8524,11 @@ function M.DeleteApplicationAsync(DeleteApplicationInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "CodeDeploy_20141006.DeleteApplication",
 	}
+	for header,value in pairs(DeleteApplicationInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteApplicationInput, headers, settings, cb)
 	else
@@ -6558,8 +8559,11 @@ function M.CreateDeploymentAsync(CreateDeploymentInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "CodeDeploy_20141006.CreateDeployment",
 	}
+	for header,value in pairs(CreateDeploymentInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateDeploymentInput, headers, settings, cb)
 	else
@@ -6590,8 +8594,11 @@ function M.StopDeploymentAsync(StopDeploymentInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "CodeDeploy_20141006.StopDeployment",
 	}
+	for header,value in pairs(StopDeploymentInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", StopDeploymentInput, headers, settings, cb)
 	else
@@ -6622,8 +8629,11 @@ function M.DeleteDeploymentConfigAsync(DeleteDeploymentConfigInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "CodeDeploy_20141006.DeleteDeploymentConfig",
 	}
+	for header,value in pairs(DeleteDeploymentConfigInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteDeploymentConfigInput, headers, settings, cb)
 	else
@@ -6654,8 +8664,11 @@ function M.RemoveTagsFromOnPremisesInstancesAsync(RemoveTagsFromOnPremisesInstan
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "CodeDeploy_20141006.RemoveTagsFromOnPremisesInstances",
 	}
+	for header,value in pairs(RemoveTagsFromOnPremisesInstancesInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", RemoveTagsFromOnPremisesInstancesInput, headers, settings, cb)
 	else
@@ -6686,8 +8699,11 @@ function M.RegisterOnPremisesInstanceAsync(RegisterOnPremisesInstanceInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "CodeDeploy_20141006.RegisterOnPremisesInstance",
 	}
+	for header,value in pairs(RegisterOnPremisesInstanceInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", RegisterOnPremisesInstanceInput, headers, settings, cb)
 	else
@@ -6718,8 +8734,11 @@ function M.ListOnPremisesInstancesAsync(ListOnPremisesInstancesInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "CodeDeploy_20141006.ListOnPremisesInstances",
 	}
+	for header,value in pairs(ListOnPremisesInstancesInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ListOnPremisesInstancesInput, headers, settings, cb)
 	else
@@ -6750,8 +8769,11 @@ function M.ListDeploymentConfigsAsync(ListDeploymentConfigsInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "CodeDeploy_20141006.ListDeploymentConfigs",
 	}
+	for header,value in pairs(ListDeploymentConfigsInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ListDeploymentConfigsInput, headers, settings, cb)
 	else
@@ -6782,8 +8804,11 @@ function M.GetApplicationAsync(GetApplicationInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "CodeDeploy_20141006.GetApplication",
 	}
+	for header,value in pairs(GetApplicationInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", GetApplicationInput, headers, settings, cb)
 	else
@@ -6814,8 +8839,11 @@ function M.GetDeploymentInstanceAsync(GetDeploymentInstanceInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "CodeDeploy_20141006.GetDeploymentInstance",
 	}
+	for header,value in pairs(GetDeploymentInstanceInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", GetDeploymentInstanceInput, headers, settings, cb)
 	else
@@ -6846,8 +8874,11 @@ function M.SkipWaitTimeForInstanceTerminationAsync(SkipWaitTimeForInstanceTermin
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "CodeDeploy_20141006.SkipWaitTimeForInstanceTermination",
 	}
+	for header,value in pairs(SkipWaitTimeForInstanceTerminationInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", SkipWaitTimeForInstanceTerminationInput, headers, settings, cb)
 	else
@@ -6878,8 +8909,11 @@ function M.BatchGetDeploymentGroupsAsync(BatchGetDeploymentGroupsInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "CodeDeploy_20141006.BatchGetDeploymentGroups",
 	}
+	for header,value in pairs(BatchGetDeploymentGroupsInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", BatchGetDeploymentGroupsInput, headers, settings, cb)
 	else
@@ -6910,8 +8944,11 @@ function M.BatchGetOnPremisesInstancesAsync(BatchGetOnPremisesInstancesInput, cb
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "CodeDeploy_20141006.BatchGetOnPremisesInstances",
 	}
+	for header,value in pairs(BatchGetOnPremisesInstancesInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", BatchGetOnPremisesInstancesInput, headers, settings, cb)
 	else
@@ -6942,8 +8979,11 @@ function M.GetApplicationRevisionAsync(GetApplicationRevisionInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "CodeDeploy_20141006.GetApplicationRevision",
 	}
+	for header,value in pairs(GetApplicationRevisionInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", GetApplicationRevisionInput, headers, settings, cb)
 	else
@@ -6974,8 +9014,11 @@ function M.BatchGetDeploymentInstancesAsync(BatchGetDeploymentInstancesInput, cb
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "CodeDeploy_20141006.BatchGetDeploymentInstances",
 	}
+	for header,value in pairs(BatchGetDeploymentInstancesInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", BatchGetDeploymentInstancesInput, headers, settings, cb)
 	else
@@ -7006,8 +9049,11 @@ function M.UpdateApplicationAsync(UpdateApplicationInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "CodeDeploy_20141006.UpdateApplication",
 	}
+	for header,value in pairs(UpdateApplicationInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateApplicationInput, headers, settings, cb)
 	else
@@ -7038,8 +9084,11 @@ function M.CreateDeploymentGroupAsync(CreateDeploymentGroupInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "CodeDeploy_20141006.CreateDeploymentGroup",
 	}
+	for header,value in pairs(CreateDeploymentGroupInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateDeploymentGroupInput, headers, settings, cb)
 	else
@@ -7070,8 +9119,11 @@ function M.ListApplicationRevisionsAsync(ListApplicationRevisionsInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "CodeDeploy_20141006.ListApplicationRevisions",
 	}
+	for header,value in pairs(ListApplicationRevisionsInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ListApplicationRevisionsInput, headers, settings, cb)
 	else
@@ -7102,8 +9154,11 @@ function M.ListDeploymentInstancesAsync(ListDeploymentInstancesInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "CodeDeploy_20141006.ListDeploymentInstances",
 	}
+	for header,value in pairs(ListDeploymentInstancesInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ListDeploymentInstancesInput, headers, settings, cb)
 	else
@@ -7134,8 +9189,11 @@ function M.BatchGetApplicationRevisionsAsync(BatchGetApplicationRevisionsInput, 
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "CodeDeploy_20141006.BatchGetApplicationRevisions",
 	}
+	for header,value in pairs(BatchGetApplicationRevisionsInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", BatchGetApplicationRevisionsInput, headers, settings, cb)
 	else
@@ -7166,8 +9224,11 @@ function M.DeregisterOnPremisesInstanceAsync(DeregisterOnPremisesInstanceInput, 
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "CodeDeploy_20141006.DeregisterOnPremisesInstance",
 	}
+	for header,value in pairs(DeregisterOnPremisesInstanceInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DeregisterOnPremisesInstanceInput, headers, settings, cb)
 	else
@@ -7198,8 +9259,11 @@ function M.CreateDeploymentConfigAsync(CreateDeploymentConfigInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "CodeDeploy_20141006.CreateDeploymentConfig",
 	}
+	for header,value in pairs(CreateDeploymentConfigInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateDeploymentConfigInput, headers, settings, cb)
 	else
@@ -7230,8 +9294,11 @@ function M.GetOnPremisesInstanceAsync(GetOnPremisesInstanceInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "CodeDeploy_20141006.GetOnPremisesInstance",
 	}
+	for header,value in pairs(GetOnPremisesInstanceInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", GetOnPremisesInstanceInput, headers, settings, cb)
 	else
@@ -7262,8 +9329,11 @@ function M.AddTagsToOnPremisesInstancesAsync(AddTagsToOnPremisesInstancesInput, 
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "CodeDeploy_20141006.AddTagsToOnPremisesInstances",
 	}
+	for header,value in pairs(AddTagsToOnPremisesInstancesInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", AddTagsToOnPremisesInstancesInput, headers, settings, cb)
 	else
@@ -7294,8 +9364,11 @@ function M.CreateApplicationAsync(CreateApplicationInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "CodeDeploy_20141006.CreateApplication",
 	}
+	for header,value in pairs(CreateApplicationInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateApplicationInput, headers, settings, cb)
 	else
@@ -7326,8 +9399,11 @@ function M.ListDeploymentsAsync(ListDeploymentsInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "CodeDeploy_20141006.ListDeployments",
 	}
+	for header,value in pairs(ListDeploymentsInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ListDeploymentsInput, headers, settings, cb)
 	else
@@ -7358,8 +9434,11 @@ function M.ListApplicationsAsync(ListApplicationsInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "CodeDeploy_20141006.ListApplications",
 	}
+	for header,value in pairs(ListApplicationsInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ListApplicationsInput, headers, settings, cb)
 	else
@@ -7390,8 +9469,11 @@ function M.DeleteDeploymentGroupAsync(DeleteDeploymentGroupInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "CodeDeploy_20141006.DeleteDeploymentGroup",
 	}
+	for header,value in pairs(DeleteDeploymentGroupInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteDeploymentGroupInput, headers, settings, cb)
 	else
@@ -7422,8 +9504,11 @@ function M.ListGitHubAccountTokenNamesAsync(ListGitHubAccountTokenNamesInput, cb
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "CodeDeploy_20141006.ListGitHubAccountTokenNames",
 	}
+	for header,value in pairs(ListGitHubAccountTokenNamesInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ListGitHubAccountTokenNamesInput, headers, settings, cb)
 	else
@@ -7454,8 +9539,11 @@ function M.RegisterApplicationRevisionAsync(RegisterApplicationRevisionInput, cb
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "CodeDeploy_20141006.RegisterApplicationRevision",
 	}
+	for header,value in pairs(RegisterApplicationRevisionInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", RegisterApplicationRevisionInput, headers, settings, cb)
 	else
@@ -7486,8 +9574,11 @@ function M.GetDeploymentAsync(GetDeploymentInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "CodeDeploy_20141006.GetDeployment",
 	}
+	for header,value in pairs(GetDeploymentInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", GetDeploymentInput, headers, settings, cb)
 	else
@@ -7518,8 +9609,11 @@ function M.BatchGetApplicationsAsync(BatchGetApplicationsInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "CodeDeploy_20141006.BatchGetApplications",
 	}
+	for header,value in pairs(BatchGetApplicationsInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", BatchGetApplicationsInput, headers, settings, cb)
 	else

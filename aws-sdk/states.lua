@@ -39,12 +39,23 @@ end
 -- * message [ErrorMessage] 
 -- @return ExecutionDoesNotExist structure as a key-value pair table
 function M.ExecutionDoesNotExist(args)
-	assert(args, "You must provdide an argument table when creating ExecutionDoesNotExist")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ExecutionDoesNotExist")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertExecutionDoesNotExist(t)
-	return t
+	asserts.AssertExecutionDoesNotExist(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.StartExecutionInput = { ["input"] = true, ["stateMachineArn"] = true, ["name"] = true, nil }
@@ -71,14 +82,25 @@ end
 -- Required key: stateMachineArn
 -- @return StartExecutionInput structure as a key-value pair table
 function M.StartExecutionInput(args)
-	assert(args, "You must provdide an argument table when creating StartExecutionInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating StartExecutionInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["input"] = args["input"],
 		["stateMachineArn"] = args["stateMachineArn"],
 		["name"] = args["name"],
 	}
-	asserts.AssertStartExecutionInput(t)
-	return t
+	asserts.AssertStartExecutionInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.StateExitedEventDetails = { ["output"] = true, ["name"] = true, nil }
@@ -103,13 +125,24 @@ end
 -- Required key: name
 -- @return StateExitedEventDetails structure as a key-value pair table
 function M.StateExitedEventDetails(args)
-	assert(args, "You must provdide an argument table when creating StateExitedEventDetails")
-	local t = { 
+	assert(args, "You must provide an argument table when creating StateExitedEventDetails")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["output"] = args["output"],
 		["name"] = args["name"],
 	}
-	asserts.AssertStateExitedEventDetails(t)
-	return t
+	asserts.AssertStateExitedEventDetails(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ActivityListItem = { ["creationDate"] = true, ["name"] = true, ["activityArn"] = true, nil }
@@ -140,14 +173,25 @@ end
 -- Required key: creationDate
 -- @return ActivityListItem structure as a key-value pair table
 function M.ActivityListItem(args)
-	assert(args, "You must provdide an argument table when creating ActivityListItem")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ActivityListItem")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["creationDate"] = args["creationDate"],
 		["name"] = args["name"],
 		["activityArn"] = args["activityArn"],
 	}
-	asserts.AssertActivityListItem(t)
-	return t
+	asserts.AssertActivityListItem(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ActivityStartedEventDetails = { ["workerName"] = true, nil }
@@ -168,12 +212,23 @@ end
 -- * workerName [Identity] <p>The name of the worker that the task was assigned to. These names are provided by the workers when calling <a>GetActivityTask</a>.</p>
 -- @return ActivityStartedEventDetails structure as a key-value pair table
 function M.ActivityStartedEventDetails(args)
-	assert(args, "You must provdide an argument table when creating ActivityStartedEventDetails")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ActivityStartedEventDetails")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["workerName"] = args["workerName"],
 	}
-	asserts.AssertActivityStartedEventDetails(t)
-	return t
+	asserts.AssertActivityStartedEventDetails(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListExecutionsInput = { ["statusFilter"] = true, ["nextToken"] = true, ["stateMachineArn"] = true, ["maxResults"] = true, nil }
@@ -202,15 +257,26 @@ end
 -- Required key: stateMachineArn
 -- @return ListExecutionsInput structure as a key-value pair table
 function M.ListExecutionsInput(args)
-	assert(args, "You must provdide an argument table when creating ListExecutionsInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListExecutionsInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["statusFilter"] = args["statusFilter"],
 		["nextToken"] = args["nextToken"],
 		["stateMachineArn"] = args["stateMachineArn"],
 		["maxResults"] = args["maxResults"],
 	}
-	asserts.AssertListExecutionsInput(t)
-	return t
+	asserts.AssertListExecutionsInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.StateMachineLimitExceeded = { ["message"] = true, nil }
@@ -231,12 +297,23 @@ end
 -- * message [ErrorMessage] 
 -- @return StateMachineLimitExceeded structure as a key-value pair table
 function M.StateMachineLimitExceeded(args)
-	assert(args, "You must provdide an argument table when creating StateMachineLimitExceeded")
-	local t = { 
+	assert(args, "You must provide an argument table when creating StateMachineLimitExceeded")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertStateMachineLimitExceeded(t)
-	return t
+	asserts.AssertStateMachineLimitExceeded(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeStateMachineInput = { ["stateMachineArn"] = true, nil }
@@ -259,12 +336,23 @@ end
 -- Required key: stateMachineArn
 -- @return DescribeStateMachineInput structure as a key-value pair table
 function M.DescribeStateMachineInput(args)
-	assert(args, "You must provdide an argument table when creating DescribeStateMachineInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeStateMachineInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["stateMachineArn"] = args["stateMachineArn"],
 	}
-	asserts.AssertDescribeStateMachineInput(t)
-	return t
+	asserts.AssertDescribeStateMachineInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateStateMachineInput = { ["definition"] = true, ["roleArn"] = true, ["name"] = true, nil }
@@ -295,14 +383,25 @@ end
 -- Required key: roleArn
 -- @return CreateStateMachineInput structure as a key-value pair table
 function M.CreateStateMachineInput(args)
-	assert(args, "You must provdide an argument table when creating CreateStateMachineInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateStateMachineInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["definition"] = args["definition"],
 		["roleArn"] = args["roleArn"],
 		["name"] = args["name"],
 	}
-	asserts.AssertCreateStateMachineInput(t)
-	return t
+	asserts.AssertCreateStateMachineInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateStateMachineOutput = { ["creationDate"] = true, ["stateMachineArn"] = true, nil }
@@ -329,13 +428,24 @@ end
 -- Required key: creationDate
 -- @return CreateStateMachineOutput structure as a key-value pair table
 function M.CreateStateMachineOutput(args)
-	assert(args, "You must provdide an argument table when creating CreateStateMachineOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateStateMachineOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["creationDate"] = args["creationDate"],
 		["stateMachineArn"] = args["stateMachineArn"],
 	}
-	asserts.AssertCreateStateMachineOutput(t)
-	return t
+	asserts.AssertCreateStateMachineOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeActivityInput = { ["activityArn"] = true, nil }
@@ -358,12 +468,23 @@ end
 -- Required key: activityArn
 -- @return DescribeActivityInput structure as a key-value pair table
 function M.DescribeActivityInput(args)
-	assert(args, "You must provdide an argument table when creating DescribeActivityInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeActivityInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["activityArn"] = args["activityArn"],
 	}
-	asserts.AssertDescribeActivityInput(t)
-	return t
+	asserts.AssertDescribeActivityInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ActivityLimitExceeded = { ["message"] = true, nil }
@@ -384,12 +505,23 @@ end
 -- * message [ErrorMessage] 
 -- @return ActivityLimitExceeded structure as a key-value pair table
 function M.ActivityLimitExceeded(args)
-	assert(args, "You must provdide an argument table when creating ActivityLimitExceeded")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ActivityLimitExceeded")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertActivityLimitExceeded(t)
-	return t
+	asserts.AssertActivityLimitExceeded(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetExecutionHistoryInput = { ["nextToken"] = true, ["reverseOrder"] = true, ["maxResults"] = true, ["executionArn"] = true, nil }
@@ -418,15 +550,26 @@ end
 -- Required key: executionArn
 -- @return GetExecutionHistoryInput structure as a key-value pair table
 function M.GetExecutionHistoryInput(args)
-	assert(args, "You must provdide an argument table when creating GetExecutionHistoryInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetExecutionHistoryInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["nextToken"] = args["nextToken"],
 		["reverseOrder"] = args["reverseOrder"],
 		["maxResults"] = args["maxResults"],
 		["executionArn"] = args["executionArn"],
 	}
-	asserts.AssertGetExecutionHistoryInput(t)
-	return t
+	asserts.AssertGetExecutionHistoryInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.StopExecutionInput = { ["error"] = true, ["cause"] = true, ["executionArn"] = true, nil }
@@ -453,14 +596,25 @@ end
 -- Required key: executionArn
 -- @return StopExecutionInput structure as a key-value pair table
 function M.StopExecutionInput(args)
-	assert(args, "You must provdide an argument table when creating StopExecutionInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating StopExecutionInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["error"] = args["error"],
 		["cause"] = args["cause"],
 		["executionArn"] = args["executionArn"],
 	}
-	asserts.AssertStopExecutionInput(t)
-	return t
+	asserts.AssertStopExecutionInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.StateEnteredEventDetails = { ["input"] = true, ["name"] = true, nil }
@@ -485,13 +639,24 @@ end
 -- Required key: name
 -- @return StateEnteredEventDetails structure as a key-value pair table
 function M.StateEnteredEventDetails(args)
-	assert(args, "You must provdide an argument table when creating StateEnteredEventDetails")
-	local t = { 
+	assert(args, "You must provide an argument table when creating StateEnteredEventDetails")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["input"] = args["input"],
 		["name"] = args["name"],
 	}
-	asserts.AssertStateEnteredEventDetails(t)
-	return t
+	asserts.AssertStateEnteredEventDetails(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetActivityTaskInput = { ["workerName"] = true, ["activityArn"] = true, nil }
@@ -516,13 +681,24 @@ end
 -- Required key: activityArn
 -- @return GetActivityTaskInput structure as a key-value pair table
 function M.GetActivityTaskInput(args)
-	assert(args, "You must provdide an argument table when creating GetActivityTaskInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetActivityTaskInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["workerName"] = args["workerName"],
 		["activityArn"] = args["activityArn"],
 	}
-	asserts.AssertGetActivityTaskInput(t)
-	return t
+	asserts.AssertGetActivityTaskInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListExecutionsOutput = { ["nextToken"] = true, ["executions"] = true, nil }
@@ -547,13 +723,24 @@ end
 -- Required key: executions
 -- @return ListExecutionsOutput structure as a key-value pair table
 function M.ListExecutionsOutput(args)
-	assert(args, "You must provdide an argument table when creating ListExecutionsOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListExecutionsOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["nextToken"] = args["nextToken"],
 		["executions"] = args["executions"],
 	}
-	asserts.AssertListExecutionsOutput(t)
-	return t
+	asserts.AssertListExecutionsOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ActivityFailedEventDetails = { ["cause"] = true, ["error"] = true, nil }
@@ -576,13 +763,24 @@ end
 -- * error [Error] <p>The error code of the failure.</p>
 -- @return ActivityFailedEventDetails structure as a key-value pair table
 function M.ActivityFailedEventDetails(args)
-	assert(args, "You must provdide an argument table when creating ActivityFailedEventDetails")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ActivityFailedEventDetails")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["cause"] = args["cause"],
 		["error"] = args["error"],
 	}
-	asserts.AssertActivityFailedEventDetails(t)
-	return t
+	asserts.AssertActivityFailedEventDetails(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListActivitiesInput = { ["nextToken"] = true, ["maxResults"] = true, nil }
@@ -605,13 +803,24 @@ end
 -- * maxResults [PageSize] <p>The maximum number of results that will be returned per call. <code>nextToken</code> can be used to obtain further pages of results. The default is 100 and the maximum allowed page size is 1000.</p> <p>This is an upper limit only; the actual number of results returned per call may be fewer than the specified maximum.</p>
 -- @return ListActivitiesInput structure as a key-value pair table
 function M.ListActivitiesInput(args)
-	assert(args, "You must provdide an argument table when creating ListActivitiesInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListActivitiesInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["nextToken"] = args["nextToken"],
 		["maxResults"] = args["maxResults"],
 	}
-	asserts.AssertListActivitiesInput(t)
-	return t
+	asserts.AssertListActivitiesInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidToken = { ["message"] = true, nil }
@@ -632,12 +841,23 @@ end
 -- * message [ErrorMessage] 
 -- @return InvalidToken structure as a key-value pair table
 function M.InvalidToken(args)
-	assert(args, "You must provdide an argument table when creating InvalidToken")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidToken")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertInvalidToken(t)
-	return t
+	asserts.AssertInvalidToken(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.SendTaskHeartbeatInput = { ["taskToken"] = true, nil }
@@ -660,12 +880,23 @@ end
 -- Required key: taskToken
 -- @return SendTaskHeartbeatInput structure as a key-value pair table
 function M.SendTaskHeartbeatInput(args)
-	assert(args, "You must provdide an argument table when creating SendTaskHeartbeatInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating SendTaskHeartbeatInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["taskToken"] = args["taskToken"],
 	}
-	asserts.AssertSendTaskHeartbeatInput(t)
-	return t
+	asserts.AssertSendTaskHeartbeatInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListStateMachinesInput = { ["nextToken"] = true, ["maxResults"] = true, nil }
@@ -688,13 +919,24 @@ end
 -- * maxResults [PageSize] <p>The maximum number of results that will be returned per call. <code>nextToken</code> can be used to obtain further pages of results. The default is 100 and the maximum allowed page size is 1000.</p> <p>This is an upper limit only; the actual number of results returned per call may be fewer than the specified maximum.</p>
 -- @return ListStateMachinesInput structure as a key-value pair table
 function M.ListStateMachinesInput(args)
-	assert(args, "You must provdide an argument table when creating ListStateMachinesInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListStateMachinesInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["nextToken"] = args["nextToken"],
 		["maxResults"] = args["maxResults"],
 	}
-	asserts.AssertListStateMachinesInput(t)
-	return t
+	asserts.AssertListStateMachinesInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteStateMachineOutput = { nil }
@@ -713,11 +955,22 @@ end
 -- Valid keys:
 -- @return DeleteStateMachineOutput structure as a key-value pair table
 function M.DeleteStateMachineOutput(args)
-	assert(args, "You must provdide an argument table when creating DeleteStateMachineOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteStateMachineOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertDeleteStateMachineOutput(t)
-	return t
+	asserts.AssertDeleteStateMachineOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeExecutionInput = { ["executionArn"] = true, nil }
@@ -740,12 +993,23 @@ end
 -- Required key: executionArn
 -- @return DescribeExecutionInput structure as a key-value pair table
 function M.DescribeExecutionInput(args)
-	assert(args, "You must provdide an argument table when creating DescribeExecutionInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeExecutionInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["executionArn"] = args["executionArn"],
 	}
-	asserts.AssertDescribeExecutionInput(t)
-	return t
+	asserts.AssertDescribeExecutionInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.HistoryEvent = { ["lambdaFunctionSucceededEventDetails"] = true, ["lambdaFunctionTimedOutEventDetails"] = true, ["activityScheduleFailedEventDetails"] = true, ["lambdaFunctionStartFailedEventDetails"] = true, ["id"] = true, ["activityScheduledEventDetails"] = true, ["executionSucceededEventDetails"] = true, ["activitySucceededEventDetails"] = true, ["type"] = true, ["executionTimedOutEventDetails"] = true, ["timestamp"] = true, ["activityTimedOutEventDetails"] = true, ["executionFailedEventDetails"] = true, ["lambdaFunctionFailedEventDetails"] = true, ["executionAbortedEventDetails"] = true, ["stateEnteredEventDetails"] = true, ["previousEventId"] = true, ["activityStartedEventDetails"] = true, ["lambdaFunctionScheduleFailedEventDetails"] = true, ["activityFailedEventDetails"] = true, ["stateExitedEventDetails"] = true, ["executionStartedEventDetails"] = true, ["lambdaFunctionScheduledEventDetails"] = true, nil }
@@ -816,8 +1080,14 @@ end
 -- Required key: id
 -- @return HistoryEvent structure as a key-value pair table
 function M.HistoryEvent(args)
-	assert(args, "You must provdide an argument table when creating HistoryEvent")
-	local t = { 
+	assert(args, "You must provide an argument table when creating HistoryEvent")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["lambdaFunctionSucceededEventDetails"] = args["lambdaFunctionSucceededEventDetails"],
 		["lambdaFunctionTimedOutEventDetails"] = args["lambdaFunctionTimedOutEventDetails"],
 		["activityScheduleFailedEventDetails"] = args["activityScheduleFailedEventDetails"],
@@ -842,8 +1112,13 @@ function M.HistoryEvent(args)
 		["executionStartedEventDetails"] = args["executionStartedEventDetails"],
 		["lambdaFunctionScheduledEventDetails"] = args["lambdaFunctionScheduledEventDetails"],
 	}
-	asserts.AssertHistoryEvent(t)
-	return t
+	asserts.AssertHistoryEvent(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.TaskTimedOut = { ["message"] = true, nil }
@@ -864,12 +1139,23 @@ end
 -- * message [ErrorMessage] 
 -- @return TaskTimedOut structure as a key-value pair table
 function M.TaskTimedOut(args)
-	assert(args, "You must provdide an argument table when creating TaskTimedOut")
-	local t = { 
+	assert(args, "You must provide an argument table when creating TaskTimedOut")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertTaskTimedOut(t)
-	return t
+	asserts.AssertTaskTimedOut(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeActivityOutput = { ["creationDate"] = true, ["name"] = true, ["activityArn"] = true, nil }
@@ -900,14 +1186,25 @@ end
 -- Required key: creationDate
 -- @return DescribeActivityOutput structure as a key-value pair table
 function M.DescribeActivityOutput(args)
-	assert(args, "You must provdide an argument table when creating DescribeActivityOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeActivityOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["creationDate"] = args["creationDate"],
 		["name"] = args["name"],
 		["activityArn"] = args["activityArn"],
 	}
-	asserts.AssertDescribeActivityOutput(t)
-	return t
+	asserts.AssertDescribeActivityOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListActivitiesOutput = { ["activities"] = true, ["nextToken"] = true, nil }
@@ -932,13 +1229,24 @@ end
 -- Required key: activities
 -- @return ListActivitiesOutput structure as a key-value pair table
 function M.ListActivitiesOutput(args)
-	assert(args, "You must provdide an argument table when creating ListActivitiesOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListActivitiesOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["activities"] = args["activities"],
 		["nextToken"] = args["nextToken"],
 	}
-	asserts.AssertListActivitiesOutput(t)
-	return t
+	asserts.AssertListActivitiesOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateActivityInput = { ["name"] = true, nil }
@@ -961,12 +1269,23 @@ end
 -- Required key: name
 -- @return CreateActivityInput structure as a key-value pair table
 function M.CreateActivityInput(args)
-	assert(args, "You must provdide an argument table when creating CreateActivityInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateActivityInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["name"] = args["name"],
 	}
-	asserts.AssertCreateActivityInput(t)
-	return t
+	asserts.AssertCreateActivityInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.StateMachineDeleting = { ["message"] = true, nil }
@@ -987,12 +1306,23 @@ end
 -- * message [ErrorMessage] 
 -- @return StateMachineDeleting structure as a key-value pair table
 function M.StateMachineDeleting(args)
-	assert(args, "You must provdide an argument table when creating StateMachineDeleting")
-	local t = { 
+	assert(args, "You must provide an argument table when creating StateMachineDeleting")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertStateMachineDeleting(t)
-	return t
+	asserts.AssertStateMachineDeleting(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateActivityOutput = { ["creationDate"] = true, ["activityArn"] = true, nil }
@@ -1019,13 +1349,24 @@ end
 -- Required key: creationDate
 -- @return CreateActivityOutput structure as a key-value pair table
 function M.CreateActivityOutput(args)
-	assert(args, "You must provdide an argument table when creating CreateActivityOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateActivityOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["creationDate"] = args["creationDate"],
 		["activityArn"] = args["activityArn"],
 	}
-	asserts.AssertCreateActivityOutput(t)
-	return t
+	asserts.AssertCreateActivityOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ExecutionSucceededEventDetails = { ["output"] = true, nil }
@@ -1046,12 +1387,23 @@ end
 -- * output [Data] <p>The JSON data output by the execution.</p>
 -- @return ExecutionSucceededEventDetails structure as a key-value pair table
 function M.ExecutionSucceededEventDetails(args)
-	assert(args, "You must provdide an argument table when creating ExecutionSucceededEventDetails")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ExecutionSucceededEventDetails")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["output"] = args["output"],
 	}
-	asserts.AssertExecutionSucceededEventDetails(t)
-	return t
+	asserts.AssertExecutionSucceededEventDetails(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ActivitySucceededEventDetails = { ["output"] = true, nil }
@@ -1072,12 +1424,23 @@ end
 -- * output [Data] <p>The JSON data output by the activity task.</p>
 -- @return ActivitySucceededEventDetails structure as a key-value pair table
 function M.ActivitySucceededEventDetails(args)
-	assert(args, "You must provdide an argument table when creating ActivitySucceededEventDetails")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ActivitySucceededEventDetails")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["output"] = args["output"],
 	}
-	asserts.AssertActivitySucceededEventDetails(t)
-	return t
+	asserts.AssertActivitySucceededEventDetails(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.StopExecutionOutput = { ["stopDate"] = true, nil }
@@ -1100,12 +1463,23 @@ end
 -- Required key: stopDate
 -- @return StopExecutionOutput structure as a key-value pair table
 function M.StopExecutionOutput(args)
-	assert(args, "You must provdide an argument table when creating StopExecutionOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating StopExecutionOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["stopDate"] = args["stopDate"],
 	}
-	asserts.AssertStopExecutionOutput(t)
-	return t
+	asserts.AssertStopExecutionOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.SendTaskFailureInput = { ["error"] = true, ["cause"] = true, ["taskToken"] = true, nil }
@@ -1132,14 +1506,25 @@ end
 -- Required key: taskToken
 -- @return SendTaskFailureInput structure as a key-value pair table
 function M.SendTaskFailureInput(args)
-	assert(args, "You must provdide an argument table when creating SendTaskFailureInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating SendTaskFailureInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["error"] = args["error"],
 		["cause"] = args["cause"],
 		["taskToken"] = args["taskToken"],
 	}
-	asserts.AssertSendTaskFailureInput(t)
-	return t
+	asserts.AssertSendTaskFailureInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.TaskDoesNotExist = { ["message"] = true, nil }
@@ -1160,12 +1545,23 @@ end
 -- * message [ErrorMessage] 
 -- @return TaskDoesNotExist structure as a key-value pair table
 function M.TaskDoesNotExist(args)
-	assert(args, "You must provdide an argument table when creating TaskDoesNotExist")
-	local t = { 
+	assert(args, "You must provide an argument table when creating TaskDoesNotExist")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertTaskDoesNotExist(t)
-	return t
+	asserts.AssertTaskDoesNotExist(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.LambdaFunctionTimedOutEventDetails = { ["cause"] = true, ["error"] = true, nil }
@@ -1188,13 +1584,24 @@ end
 -- * error [Error] <p>The error code of the failure.</p>
 -- @return LambdaFunctionTimedOutEventDetails structure as a key-value pair table
 function M.LambdaFunctionTimedOutEventDetails(args)
-	assert(args, "You must provdide an argument table when creating LambdaFunctionTimedOutEventDetails")
-	local t = { 
+	assert(args, "You must provide an argument table when creating LambdaFunctionTimedOutEventDetails")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["cause"] = args["cause"],
 		["error"] = args["error"],
 	}
-	asserts.AssertLambdaFunctionTimedOutEventDetails(t)
-	return t
+	asserts.AssertLambdaFunctionTimedOutEventDetails(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ExecutionAbortedEventDetails = { ["cause"] = true, ["error"] = true, nil }
@@ -1217,13 +1624,24 @@ end
 -- * error [Error] <p>The error code of the failure.</p>
 -- @return ExecutionAbortedEventDetails structure as a key-value pair table
 function M.ExecutionAbortedEventDetails(args)
-	assert(args, "You must provdide an argument table when creating ExecutionAbortedEventDetails")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ExecutionAbortedEventDetails")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["cause"] = args["cause"],
 		["error"] = args["error"],
 	}
-	asserts.AssertExecutionAbortedEventDetails(t)
-	return t
+	asserts.AssertExecutionAbortedEventDetails(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ActivityWorkerLimitExceeded = { ["message"] = true, nil }
@@ -1244,12 +1662,23 @@ end
 -- * message [ErrorMessage] 
 -- @return ActivityWorkerLimitExceeded structure as a key-value pair table
 function M.ActivityWorkerLimitExceeded(args)
-	assert(args, "You must provdide an argument table when creating ActivityWorkerLimitExceeded")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ActivityWorkerLimitExceeded")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertActivityWorkerLimitExceeded(t)
-	return t
+	asserts.AssertActivityWorkerLimitExceeded(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidName = { ["message"] = true, nil }
@@ -1270,12 +1699,23 @@ end
 -- * message [ErrorMessage] 
 -- @return InvalidName structure as a key-value pair table
 function M.InvalidName(args)
-	assert(args, "You must provdide an argument table when creating InvalidName")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidName")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertInvalidName(t)
-	return t
+	asserts.AssertInvalidName(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ExecutionStartedEventDetails = { ["input"] = true, ["roleArn"] = true, nil }
@@ -1298,13 +1738,24 @@ end
 -- * roleArn [Arn] <p>The Amazon Resource Name (ARN) of the IAM role used for executing AWS Lambda tasks.</p>
 -- @return ExecutionStartedEventDetails structure as a key-value pair table
 function M.ExecutionStartedEventDetails(args)
-	assert(args, "You must provdide an argument table when creating ExecutionStartedEventDetails")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ExecutionStartedEventDetails")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["input"] = args["input"],
 		["roleArn"] = args["roleArn"],
 	}
-	asserts.AssertExecutionStartedEventDetails(t)
-	return t
+	asserts.AssertExecutionStartedEventDetails(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.SendTaskFailureOutput = { nil }
@@ -1323,11 +1774,22 @@ end
 -- Valid keys:
 -- @return SendTaskFailureOutput structure as a key-value pair table
 function M.SendTaskFailureOutput(args)
-	assert(args, "You must provdide an argument table when creating SendTaskFailureOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating SendTaskFailureOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertSendTaskFailureOutput(t)
-	return t
+	asserts.AssertSendTaskFailureOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.LambdaFunctionSucceededEventDetails = { ["output"] = true, nil }
@@ -1348,12 +1810,23 @@ end
 -- * output [Data] <p>The JSON data output by the lambda function.</p>
 -- @return LambdaFunctionSucceededEventDetails structure as a key-value pair table
 function M.LambdaFunctionSucceededEventDetails(args)
-	assert(args, "You must provdide an argument table when creating LambdaFunctionSucceededEventDetails")
-	local t = { 
+	assert(args, "You must provide an argument table when creating LambdaFunctionSucceededEventDetails")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["output"] = args["output"],
 	}
-	asserts.AssertLambdaFunctionSucceededEventDetails(t)
-	return t
+	asserts.AssertLambdaFunctionSucceededEventDetails(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ActivityScheduleFailedEventDetails = { ["cause"] = true, ["error"] = true, nil }
@@ -1376,13 +1849,24 @@ end
 -- * error [Error] <p>The error code of the failure.</p>
 -- @return ActivityScheduleFailedEventDetails structure as a key-value pair table
 function M.ActivityScheduleFailedEventDetails(args)
-	assert(args, "You must provdide an argument table when creating ActivityScheduleFailedEventDetails")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ActivityScheduleFailedEventDetails")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["cause"] = args["cause"],
 		["error"] = args["error"],
 	}
-	asserts.AssertActivityScheduleFailedEventDetails(t)
-	return t
+	asserts.AssertActivityScheduleFailedEventDetails(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidOutput = { ["message"] = true, nil }
@@ -1403,12 +1887,23 @@ end
 -- * message [ErrorMessage] 
 -- @return InvalidOutput structure as a key-value pair table
 function M.InvalidOutput(args)
-	assert(args, "You must provdide an argument table when creating InvalidOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertInvalidOutput(t)
-	return t
+	asserts.AssertInvalidOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetActivityTaskOutput = { ["input"] = true, ["taskToken"] = true, nil }
@@ -1431,13 +1926,24 @@ end
 -- * taskToken [TaskToken] <p>A token that identifies the scheduled task. This token must be copied and included in subsequent calls to <a>SendTaskHeartbeat</a>, <a>SendTaskSuccess</a> or <a>SendTaskFailure</a> in order to report the progress or completion of the task.</p>
 -- @return GetActivityTaskOutput structure as a key-value pair table
 function M.GetActivityTaskOutput(args)
-	assert(args, "You must provdide an argument table when creating GetActivityTaskOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetActivityTaskOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["input"] = args["input"],
 		["taskToken"] = args["taskToken"],
 	}
-	asserts.AssertGetActivityTaskOutput(t)
-	return t
+	asserts.AssertGetActivityTaskOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidExecutionInput = { ["message"] = true, nil }
@@ -1458,12 +1964,23 @@ end
 -- * message [ErrorMessage] 
 -- @return InvalidExecutionInput structure as a key-value pair table
 function M.InvalidExecutionInput(args)
-	assert(args, "You must provdide an argument table when creating InvalidExecutionInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidExecutionInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertInvalidExecutionInput(t)
-	return t
+	asserts.AssertInvalidExecutionInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.StateMachineDoesNotExist = { ["message"] = true, nil }
@@ -1484,12 +2001,23 @@ end
 -- * message [ErrorMessage] 
 -- @return StateMachineDoesNotExist structure as a key-value pair table
 function M.StateMachineDoesNotExist(args)
-	assert(args, "You must provdide an argument table when creating StateMachineDoesNotExist")
-	local t = { 
+	assert(args, "You must provide an argument table when creating StateMachineDoesNotExist")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertStateMachineDoesNotExist(t)
-	return t
+	asserts.AssertStateMachineDoesNotExist(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.StateMachineAlreadyExists = { ["message"] = true, nil }
@@ -1510,12 +2038,23 @@ end
 -- * message [ErrorMessage] 
 -- @return StateMachineAlreadyExists structure as a key-value pair table
 function M.StateMachineAlreadyExists(args)
-	assert(args, "You must provdide an argument table when creating StateMachineAlreadyExists")
-	local t = { 
+	assert(args, "You must provide an argument table when creating StateMachineAlreadyExists")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertStateMachineAlreadyExists(t)
-	return t
+	asserts.AssertStateMachineAlreadyExists(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ExecutionAlreadyExists = { ["message"] = true, nil }
@@ -1536,12 +2075,23 @@ end
 -- * message [ErrorMessage] 
 -- @return ExecutionAlreadyExists structure as a key-value pair table
 function M.ExecutionAlreadyExists(args)
-	assert(args, "You must provdide an argument table when creating ExecutionAlreadyExists")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ExecutionAlreadyExists")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertExecutionAlreadyExists(t)
-	return t
+	asserts.AssertExecutionAlreadyExists(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteActivityOutput = { nil }
@@ -1560,11 +2110,22 @@ end
 -- Valid keys:
 -- @return DeleteActivityOutput structure as a key-value pair table
 function M.DeleteActivityOutput(args)
-	assert(args, "You must provdide an argument table when creating DeleteActivityOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteActivityOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertDeleteActivityOutput(t)
-	return t
+	asserts.AssertDeleteActivityOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.LambdaFunctionStartFailedEventDetails = { ["cause"] = true, ["error"] = true, nil }
@@ -1587,13 +2148,24 @@ end
 -- * error [Error] <p>The error code of the failure.</p>
 -- @return LambdaFunctionStartFailedEventDetails structure as a key-value pair table
 function M.LambdaFunctionStartFailedEventDetails(args)
-	assert(args, "You must provdide an argument table when creating LambdaFunctionStartFailedEventDetails")
-	local t = { 
+	assert(args, "You must provide an argument table when creating LambdaFunctionStartFailedEventDetails")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["cause"] = args["cause"],
 		["error"] = args["error"],
 	}
-	asserts.AssertLambdaFunctionStartFailedEventDetails(t)
-	return t
+	asserts.AssertLambdaFunctionStartFailedEventDetails(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.StateMachineListItem = { ["creationDate"] = true, ["stateMachineArn"] = true, ["name"] = true, nil }
@@ -1624,14 +2196,25 @@ end
 -- Required key: creationDate
 -- @return StateMachineListItem structure as a key-value pair table
 function M.StateMachineListItem(args)
-	assert(args, "You must provdide an argument table when creating StateMachineListItem")
-	local t = { 
+	assert(args, "You must provide an argument table when creating StateMachineListItem")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["creationDate"] = args["creationDate"],
 		["stateMachineArn"] = args["stateMachineArn"],
 		["name"] = args["name"],
 	}
-	asserts.AssertStateMachineListItem(t)
-	return t
+	asserts.AssertStateMachineListItem(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteStateMachineInput = { ["stateMachineArn"] = true, nil }
@@ -1654,12 +2237,23 @@ end
 -- Required key: stateMachineArn
 -- @return DeleteStateMachineInput structure as a key-value pair table
 function M.DeleteStateMachineInput(args)
-	assert(args, "You must provdide an argument table when creating DeleteStateMachineInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteStateMachineInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["stateMachineArn"] = args["stateMachineArn"],
 	}
-	asserts.AssertDeleteStateMachineInput(t)
-	return t
+	asserts.AssertDeleteStateMachineInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.StartExecutionOutput = { ["startDate"] = true, ["executionArn"] = true, nil }
@@ -1686,13 +2280,24 @@ end
 -- Required key: startDate
 -- @return StartExecutionOutput structure as a key-value pair table
 function M.StartExecutionOutput(args)
-	assert(args, "You must provdide an argument table when creating StartExecutionOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating StartExecutionOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["startDate"] = args["startDate"],
 		["executionArn"] = args["executionArn"],
 	}
-	asserts.AssertStartExecutionOutput(t)
-	return t
+	asserts.AssertStartExecutionOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeExecutionOutput = { ["status"] = true, ["startDate"] = true, ["name"] = true, ["executionArn"] = true, ["stateMachineArn"] = true, ["stopDate"] = true, ["output"] = true, ["input"] = true, nil }
@@ -1737,8 +2342,14 @@ end
 -- Required key: input
 -- @return DescribeExecutionOutput structure as a key-value pair table
 function M.DescribeExecutionOutput(args)
-	assert(args, "You must provdide an argument table when creating DescribeExecutionOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeExecutionOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["status"] = args["status"],
 		["startDate"] = args["startDate"],
 		["name"] = args["name"],
@@ -1748,8 +2359,13 @@ function M.DescribeExecutionOutput(args)
 		["output"] = args["output"],
 		["input"] = args["input"],
 	}
-	asserts.AssertDescribeExecutionOutput(t)
-	return t
+	asserts.AssertDescribeExecutionOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetExecutionHistoryOutput = { ["nextToken"] = true, ["events"] = true, nil }
@@ -1774,13 +2390,24 @@ end
 -- Required key: events
 -- @return GetExecutionHistoryOutput structure as a key-value pair table
 function M.GetExecutionHistoryOutput(args)
-	assert(args, "You must provdide an argument table when creating GetExecutionHistoryOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetExecutionHistoryOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["nextToken"] = args["nextToken"],
 		["events"] = args["events"],
 	}
-	asserts.AssertGetExecutionHistoryOutput(t)
-	return t
+	asserts.AssertGetExecutionHistoryOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ExecutionLimitExceeded = { ["message"] = true, nil }
@@ -1801,12 +2428,23 @@ end
 -- * message [ErrorMessage] 
 -- @return ExecutionLimitExceeded structure as a key-value pair table
 function M.ExecutionLimitExceeded(args)
-	assert(args, "You must provdide an argument table when creating ExecutionLimitExceeded")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ExecutionLimitExceeded")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertExecutionLimitExceeded(t)
-	return t
+	asserts.AssertExecutionLimitExceeded(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.LambdaFunctionScheduledEventDetails = { ["input"] = true, ["resource"] = true, ["timeoutInSeconds"] = true, nil }
@@ -1833,14 +2471,25 @@ end
 -- Required key: resource
 -- @return LambdaFunctionScheduledEventDetails structure as a key-value pair table
 function M.LambdaFunctionScheduledEventDetails(args)
-	assert(args, "You must provdide an argument table when creating LambdaFunctionScheduledEventDetails")
-	local t = { 
+	assert(args, "You must provide an argument table when creating LambdaFunctionScheduledEventDetails")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["input"] = args["input"],
 		["resource"] = args["resource"],
 		["timeoutInSeconds"] = args["timeoutInSeconds"],
 	}
-	asserts.AssertLambdaFunctionScheduledEventDetails(t)
-	return t
+	asserts.AssertLambdaFunctionScheduledEventDetails(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ExecutionTimedOutEventDetails = { ["cause"] = true, ["error"] = true, nil }
@@ -1863,13 +2512,24 @@ end
 -- * error [Error] <p>The error code of the failure.</p>
 -- @return ExecutionTimedOutEventDetails structure as a key-value pair table
 function M.ExecutionTimedOutEventDetails(args)
-	assert(args, "You must provdide an argument table when creating ExecutionTimedOutEventDetails")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ExecutionTimedOutEventDetails")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["cause"] = args["cause"],
 		["error"] = args["error"],
 	}
-	asserts.AssertExecutionTimedOutEventDetails(t)
-	return t
+	asserts.AssertExecutionTimedOutEventDetails(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ActivityTimedOutEventDetails = { ["cause"] = true, ["error"] = true, nil }
@@ -1892,13 +2552,24 @@ end
 -- * error [Error] <p>The error code of the failure.</p>
 -- @return ActivityTimedOutEventDetails structure as a key-value pair table
 function M.ActivityTimedOutEventDetails(args)
-	assert(args, "You must provdide an argument table when creating ActivityTimedOutEventDetails")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ActivityTimedOutEventDetails")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["cause"] = args["cause"],
 		["error"] = args["error"],
 	}
-	asserts.AssertActivityTimedOutEventDetails(t)
-	return t
+	asserts.AssertActivityTimedOutEventDetails(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListStateMachinesOutput = { ["stateMachines"] = true, ["nextToken"] = true, nil }
@@ -1923,13 +2594,24 @@ end
 -- Required key: stateMachines
 -- @return ListStateMachinesOutput structure as a key-value pair table
 function M.ListStateMachinesOutput(args)
-	assert(args, "You must provdide an argument table when creating ListStateMachinesOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListStateMachinesOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["stateMachines"] = args["stateMachines"],
 		["nextToken"] = args["nextToken"],
 	}
-	asserts.AssertListStateMachinesOutput(t)
-	return t
+	asserts.AssertListStateMachinesOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ExecutionListItem = { ["status"] = true, ["startDate"] = true, ["name"] = true, ["executionArn"] = true, ["stateMachineArn"] = true, ["stopDate"] = true, nil }
@@ -1970,8 +2652,14 @@ end
 -- Required key: startDate
 -- @return ExecutionListItem structure as a key-value pair table
 function M.ExecutionListItem(args)
-	assert(args, "You must provdide an argument table when creating ExecutionListItem")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ExecutionListItem")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["status"] = args["status"],
 		["startDate"] = args["startDate"],
 		["name"] = args["name"],
@@ -1979,8 +2667,13 @@ function M.ExecutionListItem(args)
 		["stateMachineArn"] = args["stateMachineArn"],
 		["stopDate"] = args["stopDate"],
 	}
-	asserts.AssertExecutionListItem(t)
-	return t
+	asserts.AssertExecutionListItem(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ActivityScheduledEventDetails = { ["input"] = true, ["resource"] = true, ["heartbeatInSeconds"] = true, ["timeoutInSeconds"] = true, nil }
@@ -2009,15 +2702,26 @@ end
 -- Required key: resource
 -- @return ActivityScheduledEventDetails structure as a key-value pair table
 function M.ActivityScheduledEventDetails(args)
-	assert(args, "You must provdide an argument table when creating ActivityScheduledEventDetails")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ActivityScheduledEventDetails")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["input"] = args["input"],
 		["resource"] = args["resource"],
 		["heartbeatInSeconds"] = args["heartbeatInSeconds"],
 		["timeoutInSeconds"] = args["timeoutInSeconds"],
 	}
-	asserts.AssertActivityScheduledEventDetails(t)
-	return t
+	asserts.AssertActivityScheduledEventDetails(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.LambdaFunctionScheduleFailedEventDetails = { ["cause"] = true, ["error"] = true, nil }
@@ -2040,13 +2744,24 @@ end
 -- * error [Error] <p>The error code of the failure.</p>
 -- @return LambdaFunctionScheduleFailedEventDetails structure as a key-value pair table
 function M.LambdaFunctionScheduleFailedEventDetails(args)
-	assert(args, "You must provdide an argument table when creating LambdaFunctionScheduleFailedEventDetails")
-	local t = { 
+	assert(args, "You must provide an argument table when creating LambdaFunctionScheduleFailedEventDetails")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["cause"] = args["cause"],
 		["error"] = args["error"],
 	}
-	asserts.AssertLambdaFunctionScheduleFailedEventDetails(t)
-	return t
+	asserts.AssertLambdaFunctionScheduleFailedEventDetails(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidArn = { ["message"] = true, nil }
@@ -2067,12 +2782,23 @@ end
 -- * message [ErrorMessage] 
 -- @return InvalidArn structure as a key-value pair table
 function M.InvalidArn(args)
-	assert(args, "You must provdide an argument table when creating InvalidArn")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidArn")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertInvalidArn(t)
-	return t
+	asserts.AssertInvalidArn(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ActivityDoesNotExist = { ["message"] = true, nil }
@@ -2093,12 +2819,23 @@ end
 -- * message [ErrorMessage] 
 -- @return ActivityDoesNotExist structure as a key-value pair table
 function M.ActivityDoesNotExist(args)
-	assert(args, "You must provdide an argument table when creating ActivityDoesNotExist")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ActivityDoesNotExist")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertActivityDoesNotExist(t)
-	return t
+	asserts.AssertActivityDoesNotExist(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeStateMachineOutput = { ["status"] = true, ["definition"] = true, ["name"] = true, ["roleArn"] = true, ["stateMachineArn"] = true, ["creationDate"] = true, nil }
@@ -2139,8 +2876,14 @@ end
 -- Required key: creationDate
 -- @return DescribeStateMachineOutput structure as a key-value pair table
 function M.DescribeStateMachineOutput(args)
-	assert(args, "You must provdide an argument table when creating DescribeStateMachineOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeStateMachineOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["status"] = args["status"],
 		["definition"] = args["definition"],
 		["name"] = args["name"],
@@ -2148,8 +2891,13 @@ function M.DescribeStateMachineOutput(args)
 		["stateMachineArn"] = args["stateMachineArn"],
 		["creationDate"] = args["creationDate"],
 	}
-	asserts.AssertDescribeStateMachineOutput(t)
-	return t
+	asserts.AssertDescribeStateMachineOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.SendTaskSuccessInput = { ["output"] = true, ["taskToken"] = true, nil }
@@ -2176,13 +2924,24 @@ end
 -- Required key: output
 -- @return SendTaskSuccessInput structure as a key-value pair table
 function M.SendTaskSuccessInput(args)
-	assert(args, "You must provdide an argument table when creating SendTaskSuccessInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating SendTaskSuccessInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["output"] = args["output"],
 		["taskToken"] = args["taskToken"],
 	}
-	asserts.AssertSendTaskSuccessInput(t)
-	return t
+	asserts.AssertSendTaskSuccessInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidDefinition = { ["message"] = true, nil }
@@ -2203,12 +2962,23 @@ end
 -- * message [ErrorMessage] 
 -- @return InvalidDefinition structure as a key-value pair table
 function M.InvalidDefinition(args)
-	assert(args, "You must provdide an argument table when creating InvalidDefinition")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidDefinition")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertInvalidDefinition(t)
-	return t
+	asserts.AssertInvalidDefinition(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.SendTaskSuccessOutput = { nil }
@@ -2227,11 +2997,22 @@ end
 -- Valid keys:
 -- @return SendTaskSuccessOutput structure as a key-value pair table
 function M.SendTaskSuccessOutput(args)
-	assert(args, "You must provdide an argument table when creating SendTaskSuccessOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating SendTaskSuccessOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertSendTaskSuccessOutput(t)
-	return t
+	asserts.AssertSendTaskSuccessOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ExecutionFailedEventDetails = { ["cause"] = true, ["error"] = true, nil }
@@ -2254,13 +3035,24 @@ end
 -- * error [Error] <p>The error code of the failure.</p>
 -- @return ExecutionFailedEventDetails structure as a key-value pair table
 function M.ExecutionFailedEventDetails(args)
-	assert(args, "You must provdide an argument table when creating ExecutionFailedEventDetails")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ExecutionFailedEventDetails")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["cause"] = args["cause"],
 		["error"] = args["error"],
 	}
-	asserts.AssertExecutionFailedEventDetails(t)
-	return t
+	asserts.AssertExecutionFailedEventDetails(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.SendTaskHeartbeatOutput = { nil }
@@ -2279,11 +3071,22 @@ end
 -- Valid keys:
 -- @return SendTaskHeartbeatOutput structure as a key-value pair table
 function M.SendTaskHeartbeatOutput(args)
-	assert(args, "You must provdide an argument table when creating SendTaskHeartbeatOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating SendTaskHeartbeatOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertSendTaskHeartbeatOutput(t)
-	return t
+	asserts.AssertSendTaskHeartbeatOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.LambdaFunctionFailedEventDetails = { ["cause"] = true, ["error"] = true, nil }
@@ -2306,13 +3109,24 @@ end
 -- * error [Error] <p>The error code of the failure.</p>
 -- @return LambdaFunctionFailedEventDetails structure as a key-value pair table
 function M.LambdaFunctionFailedEventDetails(args)
-	assert(args, "You must provdide an argument table when creating LambdaFunctionFailedEventDetails")
-	local t = { 
+	assert(args, "You must provide an argument table when creating LambdaFunctionFailedEventDetails")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["cause"] = args["cause"],
 		["error"] = args["error"],
 	}
-	asserts.AssertLambdaFunctionFailedEventDetails(t)
-	return t
+	asserts.AssertLambdaFunctionFailedEventDetails(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteActivityInput = { ["activityArn"] = true, nil }
@@ -2335,12 +3149,23 @@ end
 -- Required key: activityArn
 -- @return DeleteActivityInput structure as a key-value pair table
 function M.DeleteActivityInput(args)
-	assert(args, "You must provdide an argument table when creating DeleteActivityInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteActivityInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["activityArn"] = args["activityArn"],
 	}
-	asserts.AssertDeleteActivityInput(t)
-	return t
+	asserts.AssertDeleteActivityInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 function asserts.AssertError(str)
@@ -2666,8 +3491,11 @@ function M.StartExecutionAsync(StartExecutionInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AWSStepFunctions.StartExecution",
 	}
+	for header,value in pairs(StartExecutionInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", StartExecutionInput, headers, settings, cb)
 	else
@@ -2698,8 +3526,11 @@ function M.ListExecutionsAsync(ListExecutionsInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AWSStepFunctions.ListExecutions",
 	}
+	for header,value in pairs(ListExecutionsInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ListExecutionsInput, headers, settings, cb)
 	else
@@ -2730,8 +3561,11 @@ function M.StopExecutionAsync(StopExecutionInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AWSStepFunctions.StopExecution",
 	}
+	for header,value in pairs(StopExecutionInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", StopExecutionInput, headers, settings, cb)
 	else
@@ -2762,8 +3596,11 @@ function M.DeleteActivityAsync(DeleteActivityInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AWSStepFunctions.DeleteActivity",
 	}
+	for header,value in pairs(DeleteActivityInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteActivityInput, headers, settings, cb)
 	else
@@ -2794,8 +3631,11 @@ function M.SendTaskHeartbeatAsync(SendTaskHeartbeatInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AWSStepFunctions.SendTaskHeartbeat",
 	}
+	for header,value in pairs(SendTaskHeartbeatInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", SendTaskHeartbeatInput, headers, settings, cb)
 	else
@@ -2826,8 +3666,11 @@ function M.DescribeExecutionAsync(DescribeExecutionInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AWSStepFunctions.DescribeExecution",
 	}
+	for header,value in pairs(DescribeExecutionInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeExecutionInput, headers, settings, cb)
 	else
@@ -2858,8 +3701,11 @@ function M.ListStateMachinesAsync(ListStateMachinesInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AWSStepFunctions.ListStateMachines",
 	}
+	for header,value in pairs(ListStateMachinesInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ListStateMachinesInput, headers, settings, cb)
 	else
@@ -2890,8 +3736,11 @@ function M.GetExecutionHistoryAsync(GetExecutionHistoryInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AWSStepFunctions.GetExecutionHistory",
 	}
+	for header,value in pairs(GetExecutionHistoryInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", GetExecutionHistoryInput, headers, settings, cb)
 	else
@@ -2922,8 +3771,11 @@ function M.GetActivityTaskAsync(GetActivityTaskInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AWSStepFunctions.GetActivityTask",
 	}
+	for header,value in pairs(GetActivityTaskInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", GetActivityTaskInput, headers, settings, cb)
 	else
@@ -2954,8 +3806,11 @@ function M.ListActivitiesAsync(ListActivitiesInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AWSStepFunctions.ListActivities",
 	}
+	for header,value in pairs(ListActivitiesInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ListActivitiesInput, headers, settings, cb)
 	else
@@ -2986,8 +3841,11 @@ function M.CreateStateMachineAsync(CreateStateMachineInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AWSStepFunctions.CreateStateMachine",
 	}
+	for header,value in pairs(CreateStateMachineInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateStateMachineInput, headers, settings, cb)
 	else
@@ -3018,8 +3876,11 @@ function M.DescribeStateMachineAsync(DescribeStateMachineInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AWSStepFunctions.DescribeStateMachine",
 	}
+	for header,value in pairs(DescribeStateMachineInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeStateMachineInput, headers, settings, cb)
 	else
@@ -3050,8 +3911,11 @@ function M.DescribeActivityAsync(DescribeActivityInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AWSStepFunctions.DescribeActivity",
 	}
+	for header,value in pairs(DescribeActivityInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeActivityInput, headers, settings, cb)
 	else
@@ -3082,8 +3946,11 @@ function M.DeleteStateMachineAsync(DeleteStateMachineInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AWSStepFunctions.DeleteStateMachine",
 	}
+	for header,value in pairs(DeleteStateMachineInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteStateMachineInput, headers, settings, cb)
 	else
@@ -3114,8 +3981,11 @@ function M.CreateActivityAsync(CreateActivityInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AWSStepFunctions.CreateActivity",
 	}
+	for header,value in pairs(CreateActivityInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateActivityInput, headers, settings, cb)
 	else
@@ -3146,8 +4016,11 @@ function M.SendTaskFailureAsync(SendTaskFailureInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AWSStepFunctions.SendTaskFailure",
 	}
+	for header,value in pairs(SendTaskFailureInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", SendTaskFailureInput, headers, settings, cb)
 	else
@@ -3178,8 +4051,11 @@ function M.SendTaskSuccessAsync(SendTaskSuccessInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AWSStepFunctions.SendTaskSuccess",
 	}
+	for header,value in pairs(SendTaskSuccessInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", SendTaskSuccessInput, headers, settings, cb)
 	else

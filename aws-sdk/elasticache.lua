@@ -47,16 +47,27 @@ end
 -- * CacheClusterId [String] <p>The ID of the cache cluster to which the node belongs.</p>
 -- @return NodeGroupMember structure as a key-value pair table
 function M.NodeGroupMember(args)
-	assert(args, "You must provdide an argument table when creating NodeGroupMember")
-	local t = { 
+	assert(args, "You must provide an argument table when creating NodeGroupMember")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["CurrentRole"] = args["CurrentRole"],
 		["PreferredAvailabilityZone"] = args["PreferredAvailabilityZone"],
 		["CacheNodeId"] = args["CacheNodeId"],
 		["ReadEndpoint"] = args["ReadEndpoint"],
 		["CacheClusterId"] = args["CacheClusterId"],
 	}
-	asserts.AssertNodeGroupMember(t)
-	return t
+	asserts.AssertNodeGroupMember(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.RebootCacheClusterResult = { ["CacheCluster"] = true, nil }
@@ -77,12 +88,23 @@ end
 -- * CacheCluster [CacheCluster] 
 -- @return RebootCacheClusterResult structure as a key-value pair table
 function M.RebootCacheClusterResult(args)
-	assert(args, "You must provdide an argument table when creating RebootCacheClusterResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating RebootCacheClusterResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["CacheCluster"] = args["CacheCluster"],
 	}
-	asserts.AssertRebootCacheClusterResult(t)
-	return t
+	asserts.AssertRebootCacheClusterResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CacheSubnetGroup = { ["VpcId"] = true, ["CacheSubnetGroupDescription"] = true, ["Subnets"] = true, ["CacheSubnetGroupName"] = true, nil }
@@ -109,15 +131,26 @@ end
 -- * CacheSubnetGroupName [String] <p>The name of the cache subnet group.</p>
 -- @return CacheSubnetGroup structure as a key-value pair table
 function M.CacheSubnetGroup(args)
-	assert(args, "You must provdide an argument table when creating CacheSubnetGroup")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CacheSubnetGroup")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["VpcId"] = args["VpcId"],
 		["CacheSubnetGroupDescription"] = args["CacheSubnetGroupDescription"],
 		["Subnets"] = args["Subnets"],
 		["CacheSubnetGroupName"] = args["CacheSubnetGroupName"],
 	}
-	asserts.AssertCacheSubnetGroup(t)
-	return t
+	asserts.AssertCacheSubnetGroup(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateSnapshotMessage = { ["SnapshotName"] = true, ["CacheClusterId"] = true, ["ReplicationGroupId"] = true, nil }
@@ -144,14 +177,25 @@ end
 -- Required key: SnapshotName
 -- @return CreateSnapshotMessage structure as a key-value pair table
 function M.CreateSnapshotMessage(args)
-	assert(args, "You must provdide an argument table when creating CreateSnapshotMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateSnapshotMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["SnapshotName"] = args["SnapshotName"],
 		["CacheClusterId"] = args["CacheClusterId"],
 		["ReplicationGroupId"] = args["ReplicationGroupId"],
 	}
-	asserts.AssertCreateSnapshotMessage(t)
-	return t
+	asserts.AssertCreateSnapshotMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ResetCacheParameterGroupMessage = { ["CacheParameterGroupName"] = true, ["ResetAllParameters"] = true, ["ParameterNameValues"] = true, nil }
@@ -178,14 +222,25 @@ end
 -- Required key: CacheParameterGroupName
 -- @return ResetCacheParameterGroupMessage structure as a key-value pair table
 function M.ResetCacheParameterGroupMessage(args)
-	assert(args, "You must provdide an argument table when creating ResetCacheParameterGroupMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ResetCacheParameterGroupMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["CacheParameterGroupName"] = args["CacheParameterGroupName"],
 		["ResetAllParameters"] = args["ResetAllParameters"],
 		["ParameterNameValues"] = args["ParameterNameValues"],
 	}
-	asserts.AssertResetCacheParameterGroupMessage(t)
-	return t
+	asserts.AssertResetCacheParameterGroupMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CacheSubnetGroupMessage = { ["Marker"] = true, ["CacheSubnetGroups"] = true, nil }
@@ -208,13 +263,24 @@ end
 -- * CacheSubnetGroups [CacheSubnetGroups] <p>A list of cache subnet groups. Each element in the list contains detailed information about one group.</p>
 -- @return CacheSubnetGroupMessage structure as a key-value pair table
 function M.CacheSubnetGroupMessage(args)
-	assert(args, "You must provdide an argument table when creating CacheSubnetGroupMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CacheSubnetGroupMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Marker"] = args["Marker"],
 		["CacheSubnetGroups"] = args["CacheSubnetGroups"],
 	}
-	asserts.AssertCacheSubnetGroupMessage(t)
-	return t
+	asserts.AssertCacheSubnetGroupMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.RevokeCacheSecurityGroupIngressResult = { ["CacheSecurityGroup"] = true, nil }
@@ -235,12 +301,23 @@ end
 -- * CacheSecurityGroup [CacheSecurityGroup] 
 -- @return RevokeCacheSecurityGroupIngressResult structure as a key-value pair table
 function M.RevokeCacheSecurityGroupIngressResult(args)
-	assert(args, "You must provdide an argument table when creating RevokeCacheSecurityGroupIngressResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating RevokeCacheSecurityGroupIngressResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["CacheSecurityGroup"] = args["CacheSecurityGroup"],
 	}
-	asserts.AssertRevokeCacheSecurityGroupIngressResult(t)
-	return t
+	asserts.AssertRevokeCacheSecurityGroupIngressResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.TestFailoverMessage = { ["NodeGroupId"] = true, ["ReplicationGroupId"] = true, nil }
@@ -267,13 +344,24 @@ end
 -- Required key: NodeGroupId
 -- @return TestFailoverMessage structure as a key-value pair table
 function M.TestFailoverMessage(args)
-	assert(args, "You must provdide an argument table when creating TestFailoverMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating TestFailoverMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NodeGroupId"] = args["NodeGroupId"],
 		["ReplicationGroupId"] = args["ReplicationGroupId"],
 	}
-	asserts.AssertTestFailoverMessage(t)
-	return t
+	asserts.AssertTestFailoverMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.SnapshotNotFoundFault = { nil }
@@ -292,11 +380,22 @@ end
 -- Valid keys:
 -- @return SnapshotNotFoundFault structure as a key-value pair table
 function M.SnapshotNotFoundFault(args)
-	assert(args, "You must provdide an argument table when creating SnapshotNotFoundFault")
-	local t = { 
+	assert(args, "You must provide an argument table when creating SnapshotNotFoundFault")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertSnapshotNotFoundFault(t)
-	return t
+	asserts.AssertSnapshotNotFoundFault(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidSnapshotStateFault = { nil }
@@ -315,11 +414,22 @@ end
 -- Valid keys:
 -- @return InvalidSnapshotStateFault structure as a key-value pair table
 function M.InvalidSnapshotStateFault(args)
-	assert(args, "You must provdide an argument table when creating InvalidSnapshotStateFault")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidSnapshotStateFault")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertInvalidSnapshotStateFault(t)
-	return t
+	asserts.AssertInvalidSnapshotStateFault(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AllowedNodeTypeModificationsMessage = { ["ScaleUpModifications"] = true, nil }
@@ -340,12 +450,23 @@ end
 -- * ScaleUpModifications [NodeTypeList] <p>A string list, each element of which specifies a cache node type which you can use to scale your cache cluster or replication group.</p> <p>When scaling up a Redis cluster or replication group using <code>ModifyCacheCluster</code> or <code>ModifyReplicationGroup</code>, use a value from this list for the <code>CacheNodeType</code> parameter.</p>
 -- @return AllowedNodeTypeModificationsMessage structure as a key-value pair table
 function M.AllowedNodeTypeModificationsMessage(args)
-	assert(args, "You must provdide an argument table when creating AllowedNodeTypeModificationsMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AllowedNodeTypeModificationsMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ScaleUpModifications"] = args["ScaleUpModifications"],
 	}
-	asserts.AssertAllowedNodeTypeModificationsMessage(t)
-	return t
+	asserts.AssertAllowedNodeTypeModificationsMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateCacheClusterMessage = { ["CacheParameterGroupName"] = true, ["CacheClusterId"] = true, ["ReplicationGroupId"] = true, ["SnapshotRetentionLimit"] = true, ["NotificationTopicArn"] = true, ["CacheNodeType"] = true, ["Engine"] = true, ["AuthToken"] = true, ["Tags"] = true, ["NumCacheNodes"] = true, ["AutoMinorVersionUpgrade"] = true, ["PreferredMaintenanceWindow"] = true, ["CacheSubnetGroupName"] = true, ["CacheSecurityGroupNames"] = true, ["SnapshotName"] = true, ["SecurityGroupIds"] = true, ["PreferredAvailabilityZones"] = true, ["EngineVersion"] = true, ["AZMode"] = true, ["SnapshotArns"] = true, ["PreferredAvailabilityZone"] = true, ["SnapshotWindow"] = true, ["Port"] = true, nil }
@@ -412,8 +533,14 @@ end
 -- Required key: CacheClusterId
 -- @return CreateCacheClusterMessage structure as a key-value pair table
 function M.CreateCacheClusterMessage(args)
-	assert(args, "You must provdide an argument table when creating CreateCacheClusterMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateCacheClusterMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["CacheParameterGroupName"] = args["CacheParameterGroupName"],
 		["CacheClusterId"] = args["CacheClusterId"],
 		["ReplicationGroupId"] = args["ReplicationGroupId"],
@@ -438,8 +565,13 @@ function M.CreateCacheClusterMessage(args)
 		["SnapshotWindow"] = args["SnapshotWindow"],
 		["Port"] = args["Port"],
 	}
-	asserts.AssertCreateCacheClusterMessage(t)
-	return t
+	asserts.AssertCreateCacheClusterMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidCacheClusterStateFault = { nil }
@@ -458,11 +590,22 @@ end
 -- Valid keys:
 -- @return InvalidCacheClusterStateFault structure as a key-value pair table
 function M.InvalidCacheClusterStateFault(args)
-	assert(args, "You must provdide an argument table when creating InvalidCacheClusterStateFault")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidCacheClusterStateFault")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertInvalidCacheClusterStateFault(t)
-	return t
+	asserts.AssertInvalidCacheClusterStateFault(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CacheParameterGroupDetails = { ["Marker"] = true, ["CacheNodeTypeSpecificParameters"] = true, ["Parameters"] = true, nil }
@@ -487,14 +630,25 @@ end
 -- * Parameters [ParametersList] <p>A list of <a>Parameter</a> instances.</p>
 -- @return CacheParameterGroupDetails structure as a key-value pair table
 function M.CacheParameterGroupDetails(args)
-	assert(args, "You must provdide an argument table when creating CacheParameterGroupDetails")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CacheParameterGroupDetails")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Marker"] = args["Marker"],
 		["CacheNodeTypeSpecificParameters"] = args["CacheNodeTypeSpecificParameters"],
 		["Parameters"] = args["Parameters"],
 	}
-	asserts.AssertCacheParameterGroupDetails(t)
-	return t
+	asserts.AssertCacheParameterGroupDetails(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CacheSecurityGroup = { ["OwnerId"] = true, ["CacheSecurityGroupName"] = true, ["Description"] = true, ["EC2SecurityGroups"] = true, nil }
@@ -521,15 +675,26 @@ end
 -- * EC2SecurityGroups [EC2SecurityGroupList] <p>A list of Amazon EC2 security groups that are associated with this cache security group.</p>
 -- @return CacheSecurityGroup structure as a key-value pair table
 function M.CacheSecurityGroup(args)
-	assert(args, "You must provdide an argument table when creating CacheSecurityGroup")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CacheSecurityGroup")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["OwnerId"] = args["OwnerId"],
 		["CacheSecurityGroupName"] = args["CacheSecurityGroupName"],
 		["Description"] = args["Description"],
 		["EC2SecurityGroups"] = args["EC2SecurityGroups"],
 	}
-	asserts.AssertCacheSecurityGroup(t)
-	return t
+	asserts.AssertCacheSecurityGroup(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteCacheClusterMessage = { ["FinalSnapshotIdentifier"] = true, ["CacheClusterId"] = true, nil }
@@ -554,13 +719,24 @@ end
 -- Required key: CacheClusterId
 -- @return DeleteCacheClusterMessage structure as a key-value pair table
 function M.DeleteCacheClusterMessage(args)
-	assert(args, "You must provdide an argument table when creating DeleteCacheClusterMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteCacheClusterMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["FinalSnapshotIdentifier"] = args["FinalSnapshotIdentifier"],
 		["CacheClusterId"] = args["CacheClusterId"],
 	}
-	asserts.AssertDeleteCacheClusterMessage(t)
-	return t
+	asserts.AssertDeleteCacheClusterMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeCacheSubnetGroupsMessage = { ["Marker"] = true, ["MaxRecords"] = true, ["CacheSubnetGroupName"] = true, nil }
@@ -585,14 +761,25 @@ end
 -- * CacheSubnetGroupName [String] <p>The name of the cache subnet group to return details for.</p>
 -- @return DescribeCacheSubnetGroupsMessage structure as a key-value pair table
 function M.DescribeCacheSubnetGroupsMessage(args)
-	assert(args, "You must provdide an argument table when creating DescribeCacheSubnetGroupsMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeCacheSubnetGroupsMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Marker"] = args["Marker"],
 		["MaxRecords"] = args["MaxRecords"],
 		["CacheSubnetGroupName"] = args["CacheSubnetGroupName"],
 	}
-	asserts.AssertDescribeCacheSubnetGroupsMessage(t)
-	return t
+	asserts.AssertDescribeCacheSubnetGroupsMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateCacheParameterGroupResult = { ["CacheParameterGroup"] = true, nil }
@@ -613,12 +800,23 @@ end
 -- * CacheParameterGroup [CacheParameterGroup] 
 -- @return CreateCacheParameterGroupResult structure as a key-value pair table
 function M.CreateCacheParameterGroupResult(args)
-	assert(args, "You must provdide an argument table when creating CreateCacheParameterGroupResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateCacheParameterGroupResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["CacheParameterGroup"] = args["CacheParameterGroup"],
 	}
-	asserts.AssertCreateCacheParameterGroupResult(t)
-	return t
+	asserts.AssertCreateCacheParameterGroupResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateCacheSecurityGroupResult = { ["CacheSecurityGroup"] = true, nil }
@@ -639,12 +837,23 @@ end
 -- * CacheSecurityGroup [CacheSecurityGroup] 
 -- @return CreateCacheSecurityGroupResult structure as a key-value pair table
 function M.CreateCacheSecurityGroupResult(args)
-	assert(args, "You must provdide an argument table when creating CreateCacheSecurityGroupResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateCacheSecurityGroupResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["CacheSecurityGroup"] = args["CacheSecurityGroup"],
 	}
-	asserts.AssertCreateCacheSecurityGroupResult(t)
-	return t
+	asserts.AssertCreateCacheSecurityGroupResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Tag = { ["Value"] = true, ["Key"] = true, nil }
@@ -667,13 +876,24 @@ end
 -- * Key [String] <p>The key for the tag. May not be null.</p>
 -- @return Tag structure as a key-value pair table
 function M.Tag(args)
-	assert(args, "You must provdide an argument table when creating Tag")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Tag")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Value"] = args["Value"],
 		["Key"] = args["Key"],
 	}
-	asserts.AssertTag(t)
-	return t
+	asserts.AssertTag(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.RevokeCacheSecurityGroupIngressMessage = { ["EC2SecurityGroupName"] = true, ["CacheSecurityGroupName"] = true, ["EC2SecurityGroupOwnerId"] = true, nil }
@@ -704,14 +924,25 @@ end
 -- Required key: EC2SecurityGroupOwnerId
 -- @return RevokeCacheSecurityGroupIngressMessage structure as a key-value pair table
 function M.RevokeCacheSecurityGroupIngressMessage(args)
-	assert(args, "You must provdide an argument table when creating RevokeCacheSecurityGroupIngressMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating RevokeCacheSecurityGroupIngressMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["EC2SecurityGroupName"] = args["EC2SecurityGroupName"],
 		["CacheSecurityGroupName"] = args["CacheSecurityGroupName"],
 		["EC2SecurityGroupOwnerId"] = args["EC2SecurityGroupOwnerId"],
 	}
-	asserts.AssertRevokeCacheSecurityGroupIngressMessage(t)
-	return t
+	asserts.AssertRevokeCacheSecurityGroupIngressMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeEngineDefaultParametersResult = { ["EngineDefaults"] = true, nil }
@@ -732,12 +963,23 @@ end
 -- * EngineDefaults [EngineDefaults] 
 -- @return DescribeEngineDefaultParametersResult structure as a key-value pair table
 function M.DescribeEngineDefaultParametersResult(args)
-	assert(args, "You must provdide an argument table when creating DescribeEngineDefaultParametersResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeEngineDefaultParametersResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["EngineDefaults"] = args["EngineDefaults"],
 	}
-	asserts.AssertDescribeEngineDefaultParametersResult(t)
-	return t
+	asserts.AssertDescribeEngineDefaultParametersResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateCacheSecurityGroupMessage = { ["CacheSecurityGroupName"] = true, ["Description"] = true, nil }
@@ -764,13 +1006,24 @@ end
 -- Required key: Description
 -- @return CreateCacheSecurityGroupMessage structure as a key-value pair table
 function M.CreateCacheSecurityGroupMessage(args)
-	assert(args, "You must provdide an argument table when creating CreateCacheSecurityGroupMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateCacheSecurityGroupMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["CacheSecurityGroupName"] = args["CacheSecurityGroupName"],
 		["Description"] = args["Description"],
 	}
-	asserts.AssertCreateCacheSecurityGroupMessage(t)
-	return t
+	asserts.AssertCreateCacheSecurityGroupMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AuthorizeCacheSecurityGroupIngressMessage = { ["EC2SecurityGroupName"] = true, ["CacheSecurityGroupName"] = true, ["EC2SecurityGroupOwnerId"] = true, nil }
@@ -801,14 +1054,25 @@ end
 -- Required key: EC2SecurityGroupOwnerId
 -- @return AuthorizeCacheSecurityGroupIngressMessage structure as a key-value pair table
 function M.AuthorizeCacheSecurityGroupIngressMessage(args)
-	assert(args, "You must provdide an argument table when creating AuthorizeCacheSecurityGroupIngressMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AuthorizeCacheSecurityGroupIngressMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["EC2SecurityGroupName"] = args["EC2SecurityGroupName"],
 		["CacheSecurityGroupName"] = args["CacheSecurityGroupName"],
 		["EC2SecurityGroupOwnerId"] = args["EC2SecurityGroupOwnerId"],
 	}
-	asserts.AssertAuthorizeCacheSecurityGroupIngressMessage(t)
-	return t
+	asserts.AssertAuthorizeCacheSecurityGroupIngressMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.EventsMessage = { ["Marker"] = true, ["Events"] = true, nil }
@@ -831,13 +1095,24 @@ end
 -- * Events [EventList] <p>A list of events. Each element in the list contains detailed information about one event.</p>
 -- @return EventsMessage structure as a key-value pair table
 function M.EventsMessage(args)
-	assert(args, "You must provdide an argument table when creating EventsMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating EventsMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Marker"] = args["Marker"],
 		["Events"] = args["Events"],
 	}
-	asserts.AssertEventsMessage(t)
-	return t
+	asserts.AssertEventsMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InsufficientCacheClusterCapacityFault = { nil }
@@ -856,11 +1131,22 @@ end
 -- Valid keys:
 -- @return InsufficientCacheClusterCapacityFault structure as a key-value pair table
 function M.InsufficientCacheClusterCapacityFault(args)
-	assert(args, "You must provdide an argument table when creating InsufficientCacheClusterCapacityFault")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InsufficientCacheClusterCapacityFault")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertInsufficientCacheClusterCapacityFault(t)
-	return t
+	asserts.AssertInsufficientCacheClusterCapacityFault(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CacheSecurityGroupNotFoundFault = { nil }
@@ -879,11 +1165,22 @@ end
 -- Valid keys:
 -- @return CacheSecurityGroupNotFoundFault structure as a key-value pair table
 function M.CacheSecurityGroupNotFoundFault(args)
-	assert(args, "You must provdide an argument table when creating CacheSecurityGroupNotFoundFault")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CacheSecurityGroupNotFoundFault")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertCacheSecurityGroupNotFoundFault(t)
-	return t
+	asserts.AssertCacheSecurityGroupNotFoundFault(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeEventsMessage = { ["SourceType"] = true, ["Marker"] = true, ["MaxRecords"] = true, ["StartTime"] = true, ["Duration"] = true, ["SourceIdentifier"] = true, ["EndTime"] = true, nil }
@@ -916,8 +1213,14 @@ end
 -- * EndTime [TStamp] <p>The end of the time interval for which to retrieve events, specified in ISO 8601 format.</p> <p> <b>Example:</b> 2017-03-30T07:03:49.555Z</p>
 -- @return DescribeEventsMessage structure as a key-value pair table
 function M.DescribeEventsMessage(args)
-	assert(args, "You must provdide an argument table when creating DescribeEventsMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeEventsMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["SourceType"] = args["SourceType"],
 		["Marker"] = args["Marker"],
 		["MaxRecords"] = args["MaxRecords"],
@@ -926,8 +1229,13 @@ function M.DescribeEventsMessage(args)
 		["SourceIdentifier"] = args["SourceIdentifier"],
 		["EndTime"] = args["EndTime"],
 	}
-	asserts.AssertDescribeEventsMessage(t)
-	return t
+	asserts.AssertDescribeEventsMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CacheSubnetQuotaExceededFault = { nil }
@@ -946,11 +1254,22 @@ end
 -- Valid keys:
 -- @return CacheSubnetQuotaExceededFault structure as a key-value pair table
 function M.CacheSubnetQuotaExceededFault(args)
-	assert(args, "You must provdide an argument table when creating CacheSubnetQuotaExceededFault")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CacheSubnetQuotaExceededFault")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertCacheSubnetQuotaExceededFault(t)
-	return t
+	asserts.AssertCacheSubnetQuotaExceededFault(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeEngineDefaultParametersMessage = { ["Marker"] = true, ["MaxRecords"] = true, ["CacheParameterGroupFamily"] = true, nil }
@@ -977,14 +1296,25 @@ end
 -- Required key: CacheParameterGroupFamily
 -- @return DescribeEngineDefaultParametersMessage structure as a key-value pair table
 function M.DescribeEngineDefaultParametersMessage(args)
-	assert(args, "You must provdide an argument table when creating DescribeEngineDefaultParametersMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeEngineDefaultParametersMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Marker"] = args["Marker"],
 		["MaxRecords"] = args["MaxRecords"],
 		["CacheParameterGroupFamily"] = args["CacheParameterGroupFamily"],
 	}
-	asserts.AssertDescribeEngineDefaultParametersMessage(t)
-	return t
+	asserts.AssertDescribeEngineDefaultParametersMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.SnapshotFeatureNotSupportedFault = { nil }
@@ -1003,11 +1333,22 @@ end
 -- Valid keys:
 -- @return SnapshotFeatureNotSupportedFault structure as a key-value pair table
 function M.SnapshotFeatureNotSupportedFault(args)
-	assert(args, "You must provdide an argument table when creating SnapshotFeatureNotSupportedFault")
-	local t = { 
+	assert(args, "You must provide an argument table when creating SnapshotFeatureNotSupportedFault")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertSnapshotFeatureNotSupportedFault(t)
-	return t
+	asserts.AssertSnapshotFeatureNotSupportedFault(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteSnapshotResult = { ["Snapshot"] = true, nil }
@@ -1028,12 +1369,23 @@ end
 -- * Snapshot [Snapshot] 
 -- @return DeleteSnapshotResult structure as a key-value pair table
 function M.DeleteSnapshotResult(args)
-	assert(args, "You must provdide an argument table when creating DeleteSnapshotResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteSnapshotResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Snapshot"] = args["Snapshot"],
 	}
-	asserts.AssertDeleteSnapshotResult(t)
-	return t
+	asserts.AssertDeleteSnapshotResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.SnapshotQuotaExceededFault = { nil }
@@ -1052,11 +1404,22 @@ end
 -- Valid keys:
 -- @return SnapshotQuotaExceededFault structure as a key-value pair table
 function M.SnapshotQuotaExceededFault(args)
-	assert(args, "You must provdide an argument table when creating SnapshotQuotaExceededFault")
-	local t = { 
+	assert(args, "You must provide an argument table when creating SnapshotQuotaExceededFault")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertSnapshotQuotaExceededFault(t)
-	return t
+	asserts.AssertSnapshotQuotaExceededFault(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeReservedCacheNodesMessage = { ["OfferingType"] = true, ["ProductDescription"] = true, ["ReservedCacheNodesOfferingId"] = true, ["ReservedCacheNodeId"] = true, ["Marker"] = true, ["MaxRecords"] = true, ["Duration"] = true, ["CacheNodeType"] = true, nil }
@@ -1091,8 +1454,14 @@ end
 -- * CacheNodeType [String] <p>The cache node type filter value. Use this parameter to show only those reservations matching the specified cache node type.</p> <p>Valid node types are as follows:</p> <ul> <li> <p>General purpose:</p> <ul> <li> <p>Current generation: <code>cache.t2.micro</code>, <code>cache.t2.small</code>, <code>cache.t2.medium</code>, <code>cache.m3.medium</code>, <code>cache.m3.large</code>, <code>cache.m3.xlarge</code>, <code>cache.m3.2xlarge</code>, <code>cache.m4.large</code>, <code>cache.m4.xlarge</code>, <code>cache.m4.2xlarge</code>, <code>cache.m4.4xlarge</code>, <code>cache.m4.10xlarge</code> </p> </li> <li> <p>Previous generation: <code>cache.t1.micro</code>, <code>cache.m1.small</code>, <code>cache.m1.medium</code>, <code>cache.m1.large</code>, <code>cache.m1.xlarge</code> </p> </li> </ul> </li> <li> <p>Compute optimized: <code>cache.c1.xlarge</code> </p> </li> <li> <p>Memory optimized:</p> <ul> <li> <p>Current generation: <code>cache.r3.large</code>, <code>cache.r3.xlarge</code>, <code>cache.r3.2xlarge</code>, <code>cache.r3.4xlarge</code>, <code>cache.r3.8xlarge</code> </p> </li> <li> <p>Previous generation: <code>cache.m2.xlarge</code>, <code>cache.m2.2xlarge</code>, <code>cache.m2.4xlarge</code> </p> </li> </ul> </li> </ul> <p> <b>Notes:</b> </p> <ul> <li> <p>All T2 instances are created in an Amazon Virtual Private Cloud (Amazon VPC).</p> </li> <li> <p>Redis backup/restore is not supported for Redis (cluster mode disabled) T1 and T2 instances. Backup/restore is supported on Redis (cluster mode enabled) T2 instances.</p> </li> <li> <p>Redis Append-only files (AOF) functionality is not supported for T1 or T2 instances.</p> </li> </ul> <p>For a complete listing of node types and specifications, see <a href="http://aws.amazon.com/elasticache/details">Amazon ElastiCache Product Features and Details</a> and either <a href="http://docs.aws.amazon.com/AmazonElastiCache/latest/UserGuide/CacheParameterGroups.Memcached.html#ParameterGroups.Memcached.NodeSpecific">Cache Node Type-Specific Parameters for Memcached</a> or <a href="http://docs.aws.amazon.com/AmazonElastiCache/latest/UserGuide/CacheParameterGroups.Redis.html#ParameterGroups.Redis.NodeSpecific">Cache Node Type-Specific Parameters for Redis</a>.</p>
 -- @return DescribeReservedCacheNodesMessage structure as a key-value pair table
 function M.DescribeReservedCacheNodesMessage(args)
-	assert(args, "You must provdide an argument table when creating DescribeReservedCacheNodesMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeReservedCacheNodesMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["OfferingType"] = args["OfferingType"],
 		["ProductDescription"] = args["ProductDescription"],
 		["ReservedCacheNodesOfferingId"] = args["ReservedCacheNodesOfferingId"],
@@ -1102,8 +1471,13 @@ function M.DescribeReservedCacheNodesMessage(args)
 		["Duration"] = args["Duration"],
 		["CacheNodeType"] = args["CacheNodeType"],
 	}
-	asserts.AssertDescribeReservedCacheNodesMessage(t)
-	return t
+	asserts.AssertDescribeReservedCacheNodesMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.NodeGroupsPerReplicationGroupQuotaExceededFault = { nil }
@@ -1122,11 +1496,22 @@ end
 -- Valid keys:
 -- @return NodeGroupsPerReplicationGroupQuotaExceededFault structure as a key-value pair table
 function M.NodeGroupsPerReplicationGroupQuotaExceededFault(args)
-	assert(args, "You must provdide an argument table when creating NodeGroupsPerReplicationGroupQuotaExceededFault")
-	local t = { 
+	assert(args, "You must provide an argument table when creating NodeGroupsPerReplicationGroupQuotaExceededFault")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertNodeGroupsPerReplicationGroupQuotaExceededFault(t)
-	return t
+	asserts.AssertNodeGroupsPerReplicationGroupQuotaExceededFault(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AddTagsToResourceMessage = { ["ResourceName"] = true, ["Tags"] = true, nil }
@@ -1153,13 +1538,24 @@ end
 -- Required key: Tags
 -- @return AddTagsToResourceMessage structure as a key-value pair table
 function M.AddTagsToResourceMessage(args)
-	assert(args, "You must provdide an argument table when creating AddTagsToResourceMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AddTagsToResourceMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ResourceName"] = args["ResourceName"],
 		["Tags"] = args["Tags"],
 	}
-	asserts.AssertAddTagsToResourceMessage(t)
-	return t
+	asserts.AssertAddTagsToResourceMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.NotificationConfiguration = { ["TopicStatus"] = true, ["TopicArn"] = true, nil }
@@ -1182,13 +1578,24 @@ end
 -- * TopicArn [String] <p>The Amazon Resource Name (ARN) that identifies the topic.</p>
 -- @return NotificationConfiguration structure as a key-value pair table
 function M.NotificationConfiguration(args)
-	assert(args, "You must provdide an argument table when creating NotificationConfiguration")
-	local t = { 
+	assert(args, "You must provide an argument table when creating NotificationConfiguration")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["TopicStatus"] = args["TopicStatus"],
 		["TopicArn"] = args["TopicArn"],
 	}
-	asserts.AssertNotificationConfiguration(t)
-	return t
+	asserts.AssertNotificationConfiguration(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteCacheSubnetGroupMessage = { ["CacheSubnetGroupName"] = true, nil }
@@ -1211,12 +1618,23 @@ end
 -- Required key: CacheSubnetGroupName
 -- @return DeleteCacheSubnetGroupMessage structure as a key-value pair table
 function M.DeleteCacheSubnetGroupMessage(args)
-	assert(args, "You must provdide an argument table when creating DeleteCacheSubnetGroupMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteCacheSubnetGroupMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["CacheSubnetGroupName"] = args["CacheSubnetGroupName"],
 	}
-	asserts.AssertDeleteCacheSubnetGroupMessage(t)
-	return t
+	asserts.AssertDeleteCacheSubnetGroupMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CacheSubnetGroupAlreadyExistsFault = { nil }
@@ -1235,11 +1653,22 @@ end
 -- Valid keys:
 -- @return CacheSubnetGroupAlreadyExistsFault structure as a key-value pair table
 function M.CacheSubnetGroupAlreadyExistsFault(args)
-	assert(args, "You must provdide an argument table when creating CacheSubnetGroupAlreadyExistsFault")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CacheSubnetGroupAlreadyExistsFault")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertCacheSubnetGroupAlreadyExistsFault(t)
-	return t
+	asserts.AssertCacheSubnetGroupAlreadyExistsFault(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidSubnet = { nil }
@@ -1258,11 +1687,22 @@ end
 -- Valid keys:
 -- @return InvalidSubnet structure as a key-value pair table
 function M.InvalidSubnet(args)
-	assert(args, "You must provdide an argument table when creating InvalidSubnet")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidSubnet")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertInvalidSubnet(t)
-	return t
+	asserts.AssertInvalidSubnet(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Endpoint = { ["Port"] = true, ["Address"] = true, nil }
@@ -1285,13 +1725,24 @@ end
 -- * Address [String] <p>The DNS hostname of the cache node.</p>
 -- @return Endpoint structure as a key-value pair table
 function M.Endpoint(args)
-	assert(args, "You must provdide an argument table when creating Endpoint")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Endpoint")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Port"] = args["Port"],
 		["Address"] = args["Address"],
 	}
-	asserts.AssertEndpoint(t)
-	return t
+	asserts.AssertEndpoint(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ReplicationGroupPendingModifiedValues = { ["AutomaticFailoverStatus"] = true, ["PrimaryClusterId"] = true, nil }
@@ -1314,13 +1765,24 @@ end
 -- * PrimaryClusterId [String] <p>The primary cluster ID that is applied immediately (if <code>--apply-immediately</code> was specified), or during the next maintenance window.</p>
 -- @return ReplicationGroupPendingModifiedValues structure as a key-value pair table
 function M.ReplicationGroupPendingModifiedValues(args)
-	assert(args, "You must provdide an argument table when creating ReplicationGroupPendingModifiedValues")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ReplicationGroupPendingModifiedValues")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["AutomaticFailoverStatus"] = args["AutomaticFailoverStatus"],
 		["PrimaryClusterId"] = args["PrimaryClusterId"],
 	}
-	asserts.AssertReplicationGroupPendingModifiedValues(t)
-	return t
+	asserts.AssertReplicationGroupPendingModifiedValues(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ModifyCacheParameterGroupMessage = { ["CacheParameterGroupName"] = true, ["ParameterNameValues"] = true, nil }
@@ -1347,13 +1809,24 @@ end
 -- Required key: ParameterNameValues
 -- @return ModifyCacheParameterGroupMessage structure as a key-value pair table
 function M.ModifyCacheParameterGroupMessage(args)
-	assert(args, "You must provdide an argument table when creating ModifyCacheParameterGroupMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ModifyCacheParameterGroupMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["CacheParameterGroupName"] = args["CacheParameterGroupName"],
 		["ParameterNameValues"] = args["ParameterNameValues"],
 	}
-	asserts.AssertModifyCacheParameterGroupMessage(t)
-	return t
+	asserts.AssertModifyCacheParameterGroupMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Parameter = { ["Description"] = true, ["DataType"] = true, ["ChangeType"] = true, ["IsModifiable"] = true, ["AllowedValues"] = true, ["Source"] = true, ["ParameterValue"] = true, ["ParameterName"] = true, ["MinimumEngineVersion"] = true, nil }
@@ -1390,8 +1863,14 @@ end
 -- * MinimumEngineVersion [String] <p>The earliest cache engine version to which the parameter can apply.</p>
 -- @return Parameter structure as a key-value pair table
 function M.Parameter(args)
-	assert(args, "You must provdide an argument table when creating Parameter")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Parameter")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Description"] = args["Description"],
 		["DataType"] = args["DataType"],
 		["ChangeType"] = args["ChangeType"],
@@ -1402,8 +1881,13 @@ function M.Parameter(args)
 		["ParameterName"] = args["ParameterName"],
 		["MinimumEngineVersion"] = args["MinimumEngineVersion"],
 	}
-	asserts.AssertParameter(t)
-	return t
+	asserts.AssertParameter(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CacheSubnetGroupQuotaExceededFault = { nil }
@@ -1422,11 +1906,22 @@ end
 -- Valid keys:
 -- @return CacheSubnetGroupQuotaExceededFault structure as a key-value pair table
 function M.CacheSubnetGroupQuotaExceededFault(args)
-	assert(args, "You must provdide an argument table when creating CacheSubnetGroupQuotaExceededFault")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CacheSubnetGroupQuotaExceededFault")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertCacheSubnetGroupQuotaExceededFault(t)
-	return t
+	asserts.AssertCacheSubnetGroupQuotaExceededFault(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CopySnapshotResult = { ["Snapshot"] = true, nil }
@@ -1447,12 +1942,23 @@ end
 -- * Snapshot [Snapshot] 
 -- @return CopySnapshotResult structure as a key-value pair table
 function M.CopySnapshotResult(args)
-	assert(args, "You must provdide an argument table when creating CopySnapshotResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CopySnapshotResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Snapshot"] = args["Snapshot"],
 	}
-	asserts.AssertCopySnapshotResult(t)
-	return t
+	asserts.AssertCopySnapshotResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ReplicationGroupMessage = { ["Marker"] = true, ["ReplicationGroups"] = true, nil }
@@ -1475,13 +1981,24 @@ end
 -- * ReplicationGroups [ReplicationGroupList] <p>A list of replication groups. Each item in the list contains detailed information about one replication group.</p>
 -- @return ReplicationGroupMessage structure as a key-value pair table
 function M.ReplicationGroupMessage(args)
-	assert(args, "You must provdide an argument table when creating ReplicationGroupMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ReplicationGroupMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Marker"] = args["Marker"],
 		["ReplicationGroups"] = args["ReplicationGroups"],
 	}
-	asserts.AssertReplicationGroupMessage(t)
-	return t
+	asserts.AssertReplicationGroupMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteSnapshotMessage = { ["SnapshotName"] = true, nil }
@@ -1504,12 +2021,23 @@ end
 -- Required key: SnapshotName
 -- @return DeleteSnapshotMessage structure as a key-value pair table
 function M.DeleteSnapshotMessage(args)
-	assert(args, "You must provdide an argument table when creating DeleteSnapshotMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteSnapshotMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["SnapshotName"] = args["SnapshotName"],
 	}
-	asserts.AssertDeleteSnapshotMessage(t)
-	return t
+	asserts.AssertDeleteSnapshotMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteReplicationGroupResult = { ["ReplicationGroup"] = true, nil }
@@ -1530,12 +2058,23 @@ end
 -- * ReplicationGroup [ReplicationGroup] 
 -- @return DeleteReplicationGroupResult structure as a key-value pair table
 function M.DeleteReplicationGroupResult(args)
-	assert(args, "You must provdide an argument table when creating DeleteReplicationGroupResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteReplicationGroupResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ReplicationGroup"] = args["ReplicationGroup"],
 	}
-	asserts.AssertDeleteReplicationGroupResult(t)
-	return t
+	asserts.AssertDeleteReplicationGroupResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidParameterCombinationException = { ["message"] = true, nil }
@@ -1556,12 +2095,23 @@ end
 -- * message [AwsQueryErrorMessage] <p>Two or more parameters that must not be used together were used together.</p>
 -- @return InvalidParameterCombinationException structure as a key-value pair table
 function M.InvalidParameterCombinationException(args)
-	assert(args, "You must provdide an argument table when creating InvalidParameterCombinationException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidParameterCombinationException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertInvalidParameterCombinationException(t)
-	return t
+	asserts.AssertInvalidParameterCombinationException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.PendingModifiedValues = { ["NumCacheNodes"] = true, ["CacheNodeType"] = true, ["EngineVersion"] = true, ["CacheNodeIdsToRemove"] = true, nil }
@@ -1588,15 +2138,26 @@ end
 -- * CacheNodeIdsToRemove [CacheNodeIdsList] <p>A list of cache node IDs that are being removed (or will be removed) from the cache cluster. A node ID is a numeric identifier (0001, 0002, etc.).</p>
 -- @return PendingModifiedValues structure as a key-value pair table
 function M.PendingModifiedValues(args)
-	assert(args, "You must provdide an argument table when creating PendingModifiedValues")
-	local t = { 
+	assert(args, "You must provide an argument table when creating PendingModifiedValues")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NumCacheNodes"] = args["NumCacheNodes"],
 		["CacheNodeType"] = args["CacheNodeType"],
 		["EngineVersion"] = args["EngineVersion"],
 		["CacheNodeIdsToRemove"] = args["CacheNodeIdsToRemove"],
 	}
-	asserts.AssertPendingModifiedValues(t)
-	return t
+	asserts.AssertPendingModifiedValues(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.NodeGroup = { ["Status"] = true, ["NodeGroupMembers"] = true, ["Slots"] = true, ["NodeGroupId"] = true, ["PrimaryEndpoint"] = true, nil }
@@ -1625,16 +2186,27 @@ end
 -- * PrimaryEndpoint [Endpoint] <p>The endpoint of the primary node in this node group (shard).</p>
 -- @return NodeGroup structure as a key-value pair table
 function M.NodeGroup(args)
-	assert(args, "You must provdide an argument table when creating NodeGroup")
-	local t = { 
+	assert(args, "You must provide an argument table when creating NodeGroup")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Status"] = args["Status"],
 		["NodeGroupMembers"] = args["NodeGroupMembers"],
 		["Slots"] = args["Slots"],
 		["NodeGroupId"] = args["NodeGroupId"],
 		["PrimaryEndpoint"] = args["PrimaryEndpoint"],
 	}
-	asserts.AssertNodeGroup(t)
-	return t
+	asserts.AssertNodeGroup(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.RecurringCharge = { ["RecurringChargeAmount"] = true, ["RecurringChargeFrequency"] = true, nil }
@@ -1657,13 +2229,24 @@ end
 -- * RecurringChargeFrequency [String] <p>The frequency of the recurring charge.</p>
 -- @return RecurringCharge structure as a key-value pair table
 function M.RecurringCharge(args)
-	assert(args, "You must provdide an argument table when creating RecurringCharge")
-	local t = { 
+	assert(args, "You must provide an argument table when creating RecurringCharge")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["RecurringChargeAmount"] = args["RecurringChargeAmount"],
 		["RecurringChargeFrequency"] = args["RecurringChargeFrequency"],
 	}
-	asserts.AssertRecurringCharge(t)
-	return t
+	asserts.AssertRecurringCharge(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.NodeGroupNotFoundFault = { nil }
@@ -1682,11 +2265,22 @@ end
 -- Valid keys:
 -- @return NodeGroupNotFoundFault structure as a key-value pair table
 function M.NodeGroupNotFoundFault(args)
-	assert(args, "You must provdide an argument table when creating NodeGroupNotFoundFault")
-	local t = { 
+	assert(args, "You must provide an argument table when creating NodeGroupNotFoundFault")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertNodeGroupNotFoundFault(t)
-	return t
+	asserts.AssertNodeGroupNotFoundFault(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.SnapshotAlreadyExistsFault = { nil }
@@ -1705,11 +2299,22 @@ end
 -- Valid keys:
 -- @return SnapshotAlreadyExistsFault structure as a key-value pair table
 function M.SnapshotAlreadyExistsFault(args)
-	assert(args, "You must provdide an argument table when creating SnapshotAlreadyExistsFault")
-	local t = { 
+	assert(args, "You must provide an argument table when creating SnapshotAlreadyExistsFault")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertSnapshotAlreadyExistsFault(t)
-	return t
+	asserts.AssertSnapshotAlreadyExistsFault(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ModifyReplicationGroupResult = { ["ReplicationGroup"] = true, nil }
@@ -1730,12 +2335,23 @@ end
 -- * ReplicationGroup [ReplicationGroup] 
 -- @return ModifyReplicationGroupResult structure as a key-value pair table
 function M.ModifyReplicationGroupResult(args)
-	assert(args, "You must provdide an argument table when creating ModifyReplicationGroupResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ModifyReplicationGroupResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ReplicationGroup"] = args["ReplicationGroup"],
 	}
-	asserts.AssertModifyReplicationGroupResult(t)
-	return t
+	asserts.AssertModifyReplicationGroupResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.RemoveTagsFromResourceMessage = { ["ResourceName"] = true, ["TagKeys"] = true, nil }
@@ -1762,13 +2378,24 @@ end
 -- Required key: TagKeys
 -- @return RemoveTagsFromResourceMessage structure as a key-value pair table
 function M.RemoveTagsFromResourceMessage(args)
-	assert(args, "You must provdide an argument table when creating RemoveTagsFromResourceMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating RemoveTagsFromResourceMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ResourceName"] = args["ResourceName"],
 		["TagKeys"] = args["TagKeys"],
 	}
-	asserts.AssertRemoveTagsFromResourceMessage(t)
-	return t
+	asserts.AssertRemoveTagsFromResourceMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeSnapshotsListMessage = { ["Marker"] = true, ["Snapshots"] = true, nil }
@@ -1791,13 +2418,24 @@ end
 -- * Snapshots [SnapshotList] <p>A list of snapshots. Each item in the list contains detailed information about one snapshot.</p>
 -- @return DescribeSnapshotsListMessage structure as a key-value pair table
 function M.DescribeSnapshotsListMessage(args)
-	assert(args, "You must provdide an argument table when creating DescribeSnapshotsListMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeSnapshotsListMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Marker"] = args["Marker"],
 		["Snapshots"] = args["Snapshots"],
 	}
-	asserts.AssertDescribeSnapshotsListMessage(t)
-	return t
+	asserts.AssertDescribeSnapshotsListMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CacheSubnetGroupInUse = { nil }
@@ -1816,11 +2454,22 @@ end
 -- Valid keys:
 -- @return CacheSubnetGroupInUse structure as a key-value pair table
 function M.CacheSubnetGroupInUse(args)
-	assert(args, "You must provdide an argument table when creating CacheSubnetGroupInUse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CacheSubnetGroupInUse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertCacheSubnetGroupInUse(t)
-	return t
+	asserts.AssertCacheSubnetGroupInUse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateCacheClusterResult = { ["CacheCluster"] = true, nil }
@@ -1841,12 +2490,23 @@ end
 -- * CacheCluster [CacheCluster] 
 -- @return CreateCacheClusterResult structure as a key-value pair table
 function M.CreateCacheClusterResult(args)
-	assert(args, "You must provdide an argument table when creating CreateCacheClusterResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateCacheClusterResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["CacheCluster"] = args["CacheCluster"],
 	}
-	asserts.AssertCreateCacheClusterResult(t)
-	return t
+	asserts.AssertCreateCacheClusterResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListAllowedNodeTypeModificationsMessage = { ["CacheClusterId"] = true, ["ReplicationGroupId"] = true, nil }
@@ -1869,13 +2529,24 @@ end
 -- * ReplicationGroupId [String] <p>The name of the replication group want to scale up to a larger node type. ElastiCache uses the replication group id to identify the current node type being used by this replication group, and from that to create a list of node types you can scale up to.</p> <important> <p>You must provide a value for either the <code>CacheClusterId</code> or the <code>ReplicationGroupId</code>.</p> </important>
 -- @return ListAllowedNodeTypeModificationsMessage structure as a key-value pair table
 function M.ListAllowedNodeTypeModificationsMessage(args)
-	assert(args, "You must provdide an argument table when creating ListAllowedNodeTypeModificationsMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListAllowedNodeTypeModificationsMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["CacheClusterId"] = args["CacheClusterId"],
 		["ReplicationGroupId"] = args["ReplicationGroupId"],
 	}
-	asserts.AssertListAllowedNodeTypeModificationsMessage(t)
-	return t
+	asserts.AssertListAllowedNodeTypeModificationsMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CacheCluster = { ["CacheClusterId"] = true, ["ReplicationGroupId"] = true, ["CacheClusterStatus"] = true, ["SnapshotRetentionLimit"] = true, ["ClientDownloadLandingPage"] = true, ["PendingModifiedValues"] = true, ["Engine"] = true, ["CacheSecurityGroups"] = true, ["NumCacheNodes"] = true, ["AutoMinorVersionUpgrade"] = true, ["SecurityGroups"] = true, ["CacheNodeType"] = true, ["PreferredMaintenanceWindow"] = true, ["CacheSubnetGroupName"] = true, ["EngineVersion"] = true, ["CacheNodes"] = true, ["ConfigurationEndpoint"] = true, ["CacheClusterCreateTime"] = true, ["PreferredAvailabilityZone"] = true, ["SnapshotWindow"] = true, ["NotificationConfiguration"] = true, ["CacheParameterGroup"] = true, nil }
@@ -1938,8 +2609,14 @@ end
 -- * CacheParameterGroup [CacheParameterGroupStatus] 
 -- @return CacheCluster structure as a key-value pair table
 function M.CacheCluster(args)
-	assert(args, "You must provdide an argument table when creating CacheCluster")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CacheCluster")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["CacheClusterId"] = args["CacheClusterId"],
 		["ReplicationGroupId"] = args["ReplicationGroupId"],
 		["CacheClusterStatus"] = args["CacheClusterStatus"],
@@ -1963,8 +2640,13 @@ function M.CacheCluster(args)
 		["NotificationConfiguration"] = args["NotificationConfiguration"],
 		["CacheParameterGroup"] = args["CacheParameterGroup"],
 	}
-	asserts.AssertCacheCluster(t)
-	return t
+	asserts.AssertCacheCluster(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CacheNode = { ["CacheNodeId"] = true, ["Endpoint"] = true, ["CacheNodeStatus"] = true, ["ParameterGroupStatus"] = true, ["CacheNodeCreateTime"] = true, ["CustomerAvailabilityZone"] = true, ["SourceCacheNodeId"] = true, nil }
@@ -1997,8 +2679,14 @@ end
 -- * SourceCacheNodeId [String] <p>The ID of the primary node to which this read replica node is synchronized. If this field is empty, this node is not associated with a primary cache cluster.</p>
 -- @return CacheNode structure as a key-value pair table
 function M.CacheNode(args)
-	assert(args, "You must provdide an argument table when creating CacheNode")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CacheNode")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["CacheNodeId"] = args["CacheNodeId"],
 		["Endpoint"] = args["Endpoint"],
 		["CacheNodeStatus"] = args["CacheNodeStatus"],
@@ -2007,8 +2695,13 @@ function M.CacheNode(args)
 		["CustomerAvailabilityZone"] = args["CustomerAvailabilityZone"],
 		["SourceCacheNodeId"] = args["SourceCacheNodeId"],
 	}
-	asserts.AssertCacheNode(t)
-	return t
+	asserts.AssertCacheNode(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Event = { ["Date"] = true, ["Message"] = true, ["SourceIdentifier"] = true, ["SourceType"] = true, nil }
@@ -2035,15 +2728,26 @@ end
 -- * SourceType [SourceType] <p>Specifies the origin of this event - a cache cluster, a parameter group, a security group, etc.</p>
 -- @return Event structure as a key-value pair table
 function M.Event(args)
-	assert(args, "You must provdide an argument table when creating Event")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Event")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Date"] = args["Date"],
 		["Message"] = args["Message"],
 		["SourceIdentifier"] = args["SourceIdentifier"],
 		["SourceType"] = args["SourceType"],
 	}
-	asserts.AssertEvent(t)
-	return t
+	asserts.AssertEvent(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ModifyCacheSubnetGroupResult = { ["CacheSubnetGroup"] = true, nil }
@@ -2064,12 +2768,23 @@ end
 -- * CacheSubnetGroup [CacheSubnetGroup] 
 -- @return ModifyCacheSubnetGroupResult structure as a key-value pair table
 function M.ModifyCacheSubnetGroupResult(args)
-	assert(args, "You must provdide an argument table when creating ModifyCacheSubnetGroupResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ModifyCacheSubnetGroupResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["CacheSubnetGroup"] = args["CacheSubnetGroup"],
 	}
-	asserts.AssertModifyCacheSubnetGroupResult(t)
-	return t
+	asserts.AssertModifyCacheSubnetGroupResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CacheParameterGroupQuotaExceededFault = { nil }
@@ -2088,11 +2803,22 @@ end
 -- Valid keys:
 -- @return CacheParameterGroupQuotaExceededFault structure as a key-value pair table
 function M.CacheParameterGroupQuotaExceededFault(args)
-	assert(args, "You must provdide an argument table when creating CacheParameterGroupQuotaExceededFault")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CacheParameterGroupQuotaExceededFault")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertCacheParameterGroupQuotaExceededFault(t)
-	return t
+	asserts.AssertCacheParameterGroupQuotaExceededFault(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CacheEngineVersionMessage = { ["Marker"] = true, ["CacheEngineVersions"] = true, nil }
@@ -2115,13 +2841,24 @@ end
 -- * CacheEngineVersions [CacheEngineVersionList] <p>A list of cache engine version details. Each element in the list contains detailed information about one cache engine version.</p>
 -- @return CacheEngineVersionMessage structure as a key-value pair table
 function M.CacheEngineVersionMessage(args)
-	assert(args, "You must provdide an argument table when creating CacheEngineVersionMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CacheEngineVersionMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Marker"] = args["Marker"],
 		["CacheEngineVersions"] = args["CacheEngineVersions"],
 	}
-	asserts.AssertCacheEngineVersionMessage(t)
-	return t
+	asserts.AssertCacheEngineVersionMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Subnet = { ["SubnetIdentifier"] = true, ["SubnetAvailabilityZone"] = true, nil }
@@ -2144,13 +2881,24 @@ end
 -- * SubnetAvailabilityZone [AvailabilityZone] <p>The Availability Zone associated with the subnet.</p>
 -- @return Subnet structure as a key-value pair table
 function M.Subnet(args)
-	assert(args, "You must provdide an argument table when creating Subnet")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Subnet")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["SubnetIdentifier"] = args["SubnetIdentifier"],
 		["SubnetAvailabilityZone"] = args["SubnetAvailabilityZone"],
 	}
-	asserts.AssertSubnet(t)
-	return t
+	asserts.AssertSubnet(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ModifyReplicationGroupMessage = { ["CacheSecurityGroupNames"] = true, ["CacheParameterGroupName"] = true, ["NodeGroupId"] = true, ["PrimaryClusterId"] = true, ["AutoMinorVersionUpgrade"] = true, ["ReplicationGroupId"] = true, ["SecurityGroupIds"] = true, ["SnapshotRetentionLimit"] = true, ["NotificationTopicStatus"] = true, ["PreferredMaintenanceWindow"] = true, ["SnapshotWindow"] = true, ["EngineVersion"] = true, ["SnapshottingClusterId"] = true, ["NotificationTopicArn"] = true, ["ReplicationGroupDescription"] = true, ["ApplyImmediately"] = true, ["AutomaticFailoverEnabled"] = true, ["CacheNodeType"] = true, nil }
@@ -2207,8 +2955,14 @@ end
 -- Required key: ReplicationGroupId
 -- @return ModifyReplicationGroupMessage structure as a key-value pair table
 function M.ModifyReplicationGroupMessage(args)
-	assert(args, "You must provdide an argument table when creating ModifyReplicationGroupMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ModifyReplicationGroupMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["CacheSecurityGroupNames"] = args["CacheSecurityGroupNames"],
 		["CacheParameterGroupName"] = args["CacheParameterGroupName"],
 		["NodeGroupId"] = args["NodeGroupId"],
@@ -2228,8 +2982,13 @@ function M.ModifyReplicationGroupMessage(args)
 		["AutomaticFailoverEnabled"] = args["AutomaticFailoverEnabled"],
 		["CacheNodeType"] = args["CacheNodeType"],
 	}
-	asserts.AssertModifyReplicationGroupMessage(t)
-	return t
+	asserts.AssertModifyReplicationGroupMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AuthorizationNotFoundFault = { nil }
@@ -2248,11 +3007,22 @@ end
 -- Valid keys:
 -- @return AuthorizationNotFoundFault structure as a key-value pair table
 function M.AuthorizationNotFoundFault(args)
-	assert(args, "You must provdide an argument table when creating AuthorizationNotFoundFault")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AuthorizationNotFoundFault")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertAuthorizationNotFoundFault(t)
-	return t
+	asserts.AssertAuthorizationNotFoundFault(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CacheParameterGroupAlreadyExistsFault = { nil }
@@ -2271,11 +3041,22 @@ end
 -- Valid keys:
 -- @return CacheParameterGroupAlreadyExistsFault structure as a key-value pair table
 function M.CacheParameterGroupAlreadyExistsFault(args)
-	assert(args, "You must provdide an argument table when creating CacheParameterGroupAlreadyExistsFault")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CacheParameterGroupAlreadyExistsFault")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertCacheParameterGroupAlreadyExistsFault(t)
-	return t
+	asserts.AssertCacheParameterGroupAlreadyExistsFault(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeReplicationGroupsMessage = { ["Marker"] = true, ["MaxRecords"] = true, ["ReplicationGroupId"] = true, nil }
@@ -2300,14 +3081,25 @@ end
 -- * ReplicationGroupId [String] <p>The identifier for the replication group to be described. This parameter is not case sensitive.</p> <p>If you do not specify this parameter, information about all replication groups is returned.</p>
 -- @return DescribeReplicationGroupsMessage structure as a key-value pair table
 function M.DescribeReplicationGroupsMessage(args)
-	assert(args, "You must provdide an argument table when creating DescribeReplicationGroupsMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeReplicationGroupsMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Marker"] = args["Marker"],
 		["MaxRecords"] = args["MaxRecords"],
 		["ReplicationGroupId"] = args["ReplicationGroupId"],
 	}
-	asserts.AssertDescribeReplicationGroupsMessage(t)
-	return t
+	asserts.AssertDescribeReplicationGroupsMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CacheSecurityGroupAlreadyExistsFault = { nil }
@@ -2326,11 +3118,22 @@ end
 -- Valid keys:
 -- @return CacheSecurityGroupAlreadyExistsFault structure as a key-value pair table
 function M.CacheSecurityGroupAlreadyExistsFault(args)
-	assert(args, "You must provdide an argument table when creating CacheSecurityGroupAlreadyExistsFault")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CacheSecurityGroupAlreadyExistsFault")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertCacheSecurityGroupAlreadyExistsFault(t)
-	return t
+	asserts.AssertCacheSecurityGroupAlreadyExistsFault(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateCacheSubnetGroupMessage = { ["SubnetIds"] = true, ["CacheSubnetGroupDescription"] = true, ["CacheSubnetGroupName"] = true, nil }
@@ -2361,14 +3164,25 @@ end
 -- Required key: SubnetIds
 -- @return CreateCacheSubnetGroupMessage structure as a key-value pair table
 function M.CreateCacheSubnetGroupMessage(args)
-	assert(args, "You must provdide an argument table when creating CreateCacheSubnetGroupMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateCacheSubnetGroupMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["SubnetIds"] = args["SubnetIds"],
 		["CacheSubnetGroupDescription"] = args["CacheSubnetGroupDescription"],
 		["CacheSubnetGroupName"] = args["CacheSubnetGroupName"],
 	}
-	asserts.AssertCreateCacheSubnetGroupMessage(t)
-	return t
+	asserts.AssertCreateCacheSubnetGroupMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CacheParameterGroupStatus = { ["CacheNodeIdsToReboot"] = true, ["CacheParameterGroupName"] = true, ["ParameterApplyStatus"] = true, nil }
@@ -2393,14 +3207,25 @@ end
 -- * ParameterApplyStatus [String] <p>The status of parameter updates.</p>
 -- @return CacheParameterGroupStatus structure as a key-value pair table
 function M.CacheParameterGroupStatus(args)
-	assert(args, "You must provdide an argument table when creating CacheParameterGroupStatus")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CacheParameterGroupStatus")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["CacheNodeIdsToReboot"] = args["CacheNodeIdsToReboot"],
 		["CacheParameterGroupName"] = args["CacheParameterGroupName"],
 		["ParameterApplyStatus"] = args["ParameterApplyStatus"],
 	}
-	asserts.AssertCacheParameterGroupStatus(t)
-	return t
+	asserts.AssertCacheParameterGroupStatus(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidARNFault = { nil }
@@ -2419,11 +3244,22 @@ end
 -- Valid keys:
 -- @return InvalidARNFault structure as a key-value pair table
 function M.InvalidARNFault(args)
-	assert(args, "You must provdide an argument table when creating InvalidARNFault")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidARNFault")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertInvalidARNFault(t)
-	return t
+	asserts.AssertInvalidARNFault(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.TagListMessage = { ["TagList"] = true, nil }
@@ -2444,12 +3280,23 @@ end
 -- * TagList [TagList] <p>A list of cost allocation tags as key-value pairs.</p>
 -- @return TagListMessage structure as a key-value pair table
 function M.TagListMessage(args)
-	assert(args, "You must provdide an argument table when creating TagListMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating TagListMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["TagList"] = args["TagList"],
 	}
-	asserts.AssertTagListMessage(t)
-	return t
+	asserts.AssertTagListMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.EngineDefaults = { ["Marker"] = true, ["CacheParameterGroupFamily"] = true, ["Parameters"] = true, ["CacheNodeTypeSpecificParameters"] = true, nil }
@@ -2476,15 +3323,26 @@ end
 -- * CacheNodeTypeSpecificParameters [CacheNodeTypeSpecificParametersList] <p>A list of parameters specific to a particular cache node type. Each element in the list contains detailed information about one parameter.</p>
 -- @return EngineDefaults structure as a key-value pair table
 function M.EngineDefaults(args)
-	assert(args, "You must provdide an argument table when creating EngineDefaults")
-	local t = { 
+	assert(args, "You must provide an argument table when creating EngineDefaults")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Marker"] = args["Marker"],
 		["CacheParameterGroupFamily"] = args["CacheParameterGroupFamily"],
 		["Parameters"] = args["Parameters"],
 		["CacheNodeTypeSpecificParameters"] = args["CacheNodeTypeSpecificParameters"],
 	}
-	asserts.AssertEngineDefaults(t)
-	return t
+	asserts.AssertEngineDefaults(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateReplicationGroupResult = { ["ReplicationGroup"] = true, nil }
@@ -2505,12 +3363,23 @@ end
 -- * ReplicationGroup [ReplicationGroup] 
 -- @return CreateReplicationGroupResult structure as a key-value pair table
 function M.CreateReplicationGroupResult(args)
-	assert(args, "You must provdide an argument table when creating CreateReplicationGroupResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateReplicationGroupResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ReplicationGroup"] = args["ReplicationGroup"],
 	}
-	asserts.AssertCreateReplicationGroupResult(t)
-	return t
+	asserts.AssertCreateReplicationGroupResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.RebootCacheClusterMessage = { ["CacheNodeIdsToReboot"] = true, ["CacheClusterId"] = true, nil }
@@ -2537,13 +3406,24 @@ end
 -- Required key: CacheNodeIdsToReboot
 -- @return RebootCacheClusterMessage structure as a key-value pair table
 function M.RebootCacheClusterMessage(args)
-	assert(args, "You must provdide an argument table when creating RebootCacheClusterMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating RebootCacheClusterMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["CacheNodeIdsToReboot"] = args["CacheNodeIdsToReboot"],
 		["CacheClusterId"] = args["CacheClusterId"],
 	}
-	asserts.AssertRebootCacheClusterMessage(t)
-	return t
+	asserts.AssertRebootCacheClusterMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CacheParameterGroupNameMessage = { ["CacheParameterGroupName"] = true, nil }
@@ -2564,12 +3444,23 @@ end
 -- * CacheParameterGroupName [String] <p>The name of the cache parameter group.</p>
 -- @return CacheParameterGroupNameMessage structure as a key-value pair table
 function M.CacheParameterGroupNameMessage(args)
-	assert(args, "You must provdide an argument table when creating CacheParameterGroupNameMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CacheParameterGroupNameMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["CacheParameterGroupName"] = args["CacheParameterGroupName"],
 	}
-	asserts.AssertCacheParameterGroupNameMessage(t)
-	return t
+	asserts.AssertCacheParameterGroupNameMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ReservedCacheNodesOfferingMessage = { ["Marker"] = true, ["ReservedCacheNodesOfferings"] = true, nil }
@@ -2592,13 +3483,24 @@ end
 -- * ReservedCacheNodesOfferings [ReservedCacheNodesOfferingList] <p>A list of reserved cache node offerings. Each element in the list contains detailed information about one offering.</p>
 -- @return ReservedCacheNodesOfferingMessage structure as a key-value pair table
 function M.ReservedCacheNodesOfferingMessage(args)
-	assert(args, "You must provdide an argument table when creating ReservedCacheNodesOfferingMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ReservedCacheNodesOfferingMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Marker"] = args["Marker"],
 		["ReservedCacheNodesOfferings"] = args["ReservedCacheNodesOfferings"],
 	}
-	asserts.AssertReservedCacheNodesOfferingMessage(t)
-	return t
+	asserts.AssertReservedCacheNodesOfferingMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeReservedCacheNodesOfferingsMessage = { ["OfferingType"] = true, ["ProductDescription"] = true, ["ReservedCacheNodesOfferingId"] = true, ["Marker"] = true, ["MaxRecords"] = true, ["Duration"] = true, ["CacheNodeType"] = true, nil }
@@ -2631,8 +3533,14 @@ end
 -- * CacheNodeType [String] <p>The cache node type filter value. Use this parameter to show only the available offerings matching the specified cache node type.</p> <p>Valid node types are as follows:</p> <ul> <li> <p>General purpose:</p> <ul> <li> <p>Current generation: <code>cache.t2.micro</code>, <code>cache.t2.small</code>, <code>cache.t2.medium</code>, <code>cache.m3.medium</code>, <code>cache.m3.large</code>, <code>cache.m3.xlarge</code>, <code>cache.m3.2xlarge</code>, <code>cache.m4.large</code>, <code>cache.m4.xlarge</code>, <code>cache.m4.2xlarge</code>, <code>cache.m4.4xlarge</code>, <code>cache.m4.10xlarge</code> </p> </li> <li> <p>Previous generation: <code>cache.t1.micro</code>, <code>cache.m1.small</code>, <code>cache.m1.medium</code>, <code>cache.m1.large</code>, <code>cache.m1.xlarge</code> </p> </li> </ul> </li> <li> <p>Compute optimized: <code>cache.c1.xlarge</code> </p> </li> <li> <p>Memory optimized:</p> <ul> <li> <p>Current generation: <code>cache.r3.large</code>, <code>cache.r3.xlarge</code>, <code>cache.r3.2xlarge</code>, <code>cache.r3.4xlarge</code>, <code>cache.r3.8xlarge</code> </p> </li> <li> <p>Previous generation: <code>cache.m2.xlarge</code>, <code>cache.m2.2xlarge</code>, <code>cache.m2.4xlarge</code> </p> </li> </ul> </li> </ul> <p> <b>Notes:</b> </p> <ul> <li> <p>All T2 instances are created in an Amazon Virtual Private Cloud (Amazon VPC).</p> </li> <li> <p>Redis backup/restore is not supported for Redis (cluster mode disabled) T1 and T2 instances. Backup/restore is supported on Redis (cluster mode enabled) T2 instances.</p> </li> <li> <p>Redis Append-only files (AOF) functionality is not supported for T1 or T2 instances.</p> </li> </ul> <p>For a complete listing of node types and specifications, see <a href="http://aws.amazon.com/elasticache/details">Amazon ElastiCache Product Features and Details</a> and either <a href="http://docs.aws.amazon.com/AmazonElastiCache/latest/UserGuide/CacheParameterGroups.Memcached.html#ParameterGroups.Memcached.NodeSpecific">Cache Node Type-Specific Parameters for Memcached</a> or <a href="http://docs.aws.amazon.com/AmazonElastiCache/latest/UserGuide/CacheParameterGroups.Redis.html#ParameterGroups.Redis.NodeSpecific">Cache Node Type-Specific Parameters for Redis</a>.</p>
 -- @return DescribeReservedCacheNodesOfferingsMessage structure as a key-value pair table
 function M.DescribeReservedCacheNodesOfferingsMessage(args)
-	assert(args, "You must provdide an argument table when creating DescribeReservedCacheNodesOfferingsMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeReservedCacheNodesOfferingsMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["OfferingType"] = args["OfferingType"],
 		["ProductDescription"] = args["ProductDescription"],
 		["ReservedCacheNodesOfferingId"] = args["ReservedCacheNodesOfferingId"],
@@ -2641,8 +3549,13 @@ function M.DescribeReservedCacheNodesOfferingsMessage(args)
 		["Duration"] = args["Duration"],
 		["CacheNodeType"] = args["CacheNodeType"],
 	}
-	asserts.AssertDescribeReservedCacheNodesOfferingsMessage(t)
-	return t
+	asserts.AssertDescribeReservedCacheNodesOfferingsMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeCacheClustersMessage = { ["Marker"] = true, ["ShowCacheNodeInfo"] = true, ["MaxRecords"] = true, ["CacheClusterId"] = true, ["ShowCacheClustersNotInReplicationGroups"] = true, nil }
@@ -2671,16 +3584,27 @@ end
 -- * ShowCacheClustersNotInReplicationGroups [BooleanOptional] <p>An optional flag that can be included in the <code>DescribeCacheCluster</code> request to show only nodes (API/CLI: clusters) that are not members of a replication group. In practice, this mean Memcached and single node Redis clusters.</p>
 -- @return DescribeCacheClustersMessage structure as a key-value pair table
 function M.DescribeCacheClustersMessage(args)
-	assert(args, "You must provdide an argument table when creating DescribeCacheClustersMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeCacheClustersMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Marker"] = args["Marker"],
 		["ShowCacheNodeInfo"] = args["ShowCacheNodeInfo"],
 		["MaxRecords"] = args["MaxRecords"],
 		["CacheClusterId"] = args["CacheClusterId"],
 		["ShowCacheClustersNotInReplicationGroups"] = args["ShowCacheClustersNotInReplicationGroups"],
 	}
-	asserts.AssertDescribeCacheClustersMessage(t)
-	return t
+	asserts.AssertDescribeCacheClustersMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidReplicationGroupStateFault = { nil }
@@ -2699,11 +3623,22 @@ end
 -- Valid keys:
 -- @return InvalidReplicationGroupStateFault structure as a key-value pair table
 function M.InvalidReplicationGroupStateFault(args)
-	assert(args, "You must provdide an argument table when creating InvalidReplicationGroupStateFault")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidReplicationGroupStateFault")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertInvalidReplicationGroupStateFault(t)
-	return t
+	asserts.AssertInvalidReplicationGroupStateFault(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListTagsForResourceMessage = { ["ResourceName"] = true, nil }
@@ -2726,12 +3661,23 @@ end
 -- Required key: ResourceName
 -- @return ListTagsForResourceMessage structure as a key-value pair table
 function M.ListTagsForResourceMessage(args)
-	assert(args, "You must provdide an argument table when creating ListTagsForResourceMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListTagsForResourceMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ResourceName"] = args["ResourceName"],
 	}
-	asserts.AssertListTagsForResourceMessage(t)
-	return t
+	asserts.AssertListTagsForResourceMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ParameterNameValue = { ["ParameterName"] = true, ["ParameterValue"] = true, nil }
@@ -2754,13 +3700,24 @@ end
 -- * ParameterValue [String] <p>The value of the parameter.</p>
 -- @return ParameterNameValue structure as a key-value pair table
 function M.ParameterNameValue(args)
-	assert(args, "You must provdide an argument table when creating ParameterNameValue")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ParameterNameValue")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ParameterName"] = args["ParameterName"],
 		["ParameterValue"] = args["ParameterValue"],
 	}
-	asserts.AssertParameterNameValue(t)
-	return t
+	asserts.AssertParameterNameValue(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CacheParameterGroupsMessage = { ["Marker"] = true, ["CacheParameterGroups"] = true, nil }
@@ -2783,13 +3740,24 @@ end
 -- * CacheParameterGroups [CacheParameterGroupList] <p>A list of cache parameter groups. Each element in the list contains detailed information about one cache parameter group.</p>
 -- @return CacheParameterGroupsMessage structure as a key-value pair table
 function M.CacheParameterGroupsMessage(args)
-	assert(args, "You must provdide an argument table when creating CacheParameterGroupsMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CacheParameterGroupsMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Marker"] = args["Marker"],
 		["CacheParameterGroups"] = args["CacheParameterGroups"],
 	}
-	asserts.AssertCacheParameterGroupsMessage(t)
-	return t
+	asserts.AssertCacheParameterGroupsMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ReservedCacheNode = { ["OfferingType"] = true, ["FixedPrice"] = true, ["ReservedCacheNodesOfferingId"] = true, ["CacheNodeCount"] = true, ["UsagePrice"] = true, ["RecurringCharges"] = true, ["ReservedCacheNodeId"] = true, ["State"] = true, ["ProductDescription"] = true, ["StartTime"] = true, ["Duration"] = true, ["CacheNodeType"] = true, nil }
@@ -2832,8 +3800,14 @@ end
 -- * CacheNodeType [String] <p>The cache node type for the reserved cache nodes.</p> <p>Valid node types are as follows:</p> <ul> <li> <p>General purpose:</p> <ul> <li> <p>Current generation: <code>cache.t2.micro</code>, <code>cache.t2.small</code>, <code>cache.t2.medium</code>, <code>cache.m3.medium</code>, <code>cache.m3.large</code>, <code>cache.m3.xlarge</code>, <code>cache.m3.2xlarge</code>, <code>cache.m4.large</code>, <code>cache.m4.xlarge</code>, <code>cache.m4.2xlarge</code>, <code>cache.m4.4xlarge</code>, <code>cache.m4.10xlarge</code> </p> </li> <li> <p>Previous generation: <code>cache.t1.micro</code>, <code>cache.m1.small</code>, <code>cache.m1.medium</code>, <code>cache.m1.large</code>, <code>cache.m1.xlarge</code> </p> </li> </ul> </li> <li> <p>Compute optimized: <code>cache.c1.xlarge</code> </p> </li> <li> <p>Memory optimized:</p> <ul> <li> <p>Current generation: <code>cache.r3.large</code>, <code>cache.r3.xlarge</code>, <code>cache.r3.2xlarge</code>, <code>cache.r3.4xlarge</code>, <code>cache.r3.8xlarge</code> </p> </li> <li> <p>Previous generation: <code>cache.m2.xlarge</code>, <code>cache.m2.2xlarge</code>, <code>cache.m2.4xlarge</code> </p> </li> </ul> </li> </ul> <p> <b>Notes:</b> </p> <ul> <li> <p>All T2 instances are created in an Amazon Virtual Private Cloud (Amazon VPC).</p> </li> <li> <p>Redis backup/restore is not supported for Redis (cluster mode disabled) T1 and T2 instances. Backup/restore is supported on Redis (cluster mode enabled) T2 instances.</p> </li> <li> <p>Redis Append-only files (AOF) functionality is not supported for T1 or T2 instances.</p> </li> </ul> <p>For a complete listing of node types and specifications, see <a href="http://aws.amazon.com/elasticache/details">Amazon ElastiCache Product Features and Details</a> and either <a href="http://docs.aws.amazon.com/AmazonElastiCache/latest/UserGuide/CacheParameterGroups.Memcached.html#ParameterGroups.Memcached.NodeSpecific">Cache Node Type-Specific Parameters for Memcached</a> or <a href="http://docs.aws.amazon.com/AmazonElastiCache/latest/UserGuide/CacheParameterGroups.Redis.html#ParameterGroups.Redis.NodeSpecific">Cache Node Type-Specific Parameters for Redis</a>.</p>
 -- @return ReservedCacheNode structure as a key-value pair table
 function M.ReservedCacheNode(args)
-	assert(args, "You must provdide an argument table when creating ReservedCacheNode")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ReservedCacheNode")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["OfferingType"] = args["OfferingType"],
 		["FixedPrice"] = args["FixedPrice"],
 		["ReservedCacheNodesOfferingId"] = args["ReservedCacheNodesOfferingId"],
@@ -2847,8 +3821,13 @@ function M.ReservedCacheNode(args)
 		["Duration"] = args["Duration"],
 		["CacheNodeType"] = args["CacheNodeType"],
 	}
-	asserts.AssertReservedCacheNode(t)
-	return t
+	asserts.AssertReservedCacheNode(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateCacheSubnetGroupResult = { ["CacheSubnetGroup"] = true, nil }
@@ -2869,12 +3848,23 @@ end
 -- * CacheSubnetGroup [CacheSubnetGroup] 
 -- @return CreateCacheSubnetGroupResult structure as a key-value pair table
 function M.CreateCacheSubnetGroupResult(args)
-	assert(args, "You must provdide an argument table when creating CreateCacheSubnetGroupResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateCacheSubnetGroupResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["CacheSubnetGroup"] = args["CacheSubnetGroup"],
 	}
-	asserts.AssertCreateCacheSubnetGroupResult(t)
-	return t
+	asserts.AssertCreateCacheSubnetGroupResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidParameterValueException = { ["message"] = true, nil }
@@ -2895,12 +3885,23 @@ end
 -- * message [AwsQueryErrorMessage] <p>A parameter value is invalid.</p>
 -- @return InvalidParameterValueException structure as a key-value pair table
 function M.InvalidParameterValueException(args)
-	assert(args, "You must provdide an argument table when creating InvalidParameterValueException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidParameterValueException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertInvalidParameterValueException(t)
-	return t
+	asserts.AssertInvalidParameterValueException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AvailabilityZone = { ["Name"] = true, nil }
@@ -2921,12 +3922,23 @@ end
 -- * Name [String] <p>The name of the Availability Zone.</p>
 -- @return AvailabilityZone structure as a key-value pair table
 function M.AvailabilityZone(args)
-	assert(args, "You must provdide an argument table when creating AvailabilityZone")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AvailabilityZone")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Name"] = args["Name"],
 	}
-	asserts.AssertAvailabilityZone(t)
-	return t
+	asserts.AssertAvailabilityZone(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Snapshot = { ["CacheParameterGroupName"] = true, ["CacheClusterId"] = true, ["ReplicationGroupId"] = true, ["SnapshotRetentionLimit"] = true, ["NodeSnapshots"] = true, ["CacheNodeType"] = true, ["Engine"] = true, ["VpcId"] = true, ["NumCacheNodes"] = true, ["AutoMinorVersionUpgrade"] = true, ["AutomaticFailover"] = true, ["PreferredMaintenanceWindow"] = true, ["CacheSubnetGroupName"] = true, ["SnapshotName"] = true, ["SnapshotStatus"] = true, ["EngineVersion"] = true, ["ReplicationGroupDescription"] = true, ["TopicArn"] = true, ["NumNodeGroups"] = true, ["CacheClusterCreateTime"] = true, ["PreferredAvailabilityZone"] = true, ["SnapshotSource"] = true, ["SnapshotWindow"] = true, ["Port"] = true, nil }
@@ -2993,8 +4005,14 @@ end
 -- * Port [IntegerOptional] <p>The port number used by each cache nodes in the source cache cluster.</p>
 -- @return Snapshot structure as a key-value pair table
 function M.Snapshot(args)
-	assert(args, "You must provdide an argument table when creating Snapshot")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Snapshot")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["CacheParameterGroupName"] = args["CacheParameterGroupName"],
 		["CacheClusterId"] = args["CacheClusterId"],
 		["ReplicationGroupId"] = args["ReplicationGroupId"],
@@ -3020,8 +4038,13 @@ function M.Snapshot(args)
 		["SnapshotWindow"] = args["SnapshotWindow"],
 		["Port"] = args["Port"],
 	}
-	asserts.AssertSnapshot(t)
-	return t
+	asserts.AssertSnapshot(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.PurchaseReservedCacheNodesOfferingResult = { ["ReservedCacheNode"] = true, nil }
@@ -3042,12 +4065,23 @@ end
 -- * ReservedCacheNode [ReservedCacheNode] 
 -- @return PurchaseReservedCacheNodesOfferingResult structure as a key-value pair table
 function M.PurchaseReservedCacheNodesOfferingResult(args)
-	assert(args, "You must provdide an argument table when creating PurchaseReservedCacheNodesOfferingResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating PurchaseReservedCacheNodesOfferingResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ReservedCacheNode"] = args["ReservedCacheNode"],
 	}
-	asserts.AssertPurchaseReservedCacheNodesOfferingResult(t)
-	return t
+	asserts.AssertPurchaseReservedCacheNodesOfferingResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.NodeQuotaForCustomerExceededFault = { nil }
@@ -3066,11 +4100,22 @@ end
 -- Valid keys:
 -- @return NodeQuotaForCustomerExceededFault structure as a key-value pair table
 function M.NodeQuotaForCustomerExceededFault(args)
-	assert(args, "You must provdide an argument table when creating NodeQuotaForCustomerExceededFault")
-	local t = { 
+	assert(args, "You must provide an argument table when creating NodeQuotaForCustomerExceededFault")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertNodeQuotaForCustomerExceededFault(t)
-	return t
+	asserts.AssertNodeQuotaForCustomerExceededFault(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidVPCNetworkStateFault = { nil }
@@ -3089,11 +4134,22 @@ end
 -- Valid keys:
 -- @return InvalidVPCNetworkStateFault structure as a key-value pair table
 function M.InvalidVPCNetworkStateFault(args)
-	assert(args, "You must provdide an argument table when creating InvalidVPCNetworkStateFault")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidVPCNetworkStateFault")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertInvalidVPCNetworkStateFault(t)
-	return t
+	asserts.AssertInvalidVPCNetworkStateFault(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CacheClusterNotFoundFault = { nil }
@@ -3112,11 +4168,22 @@ end
 -- Valid keys:
 -- @return CacheClusterNotFoundFault structure as a key-value pair table
 function M.CacheClusterNotFoundFault(args)
-	assert(args, "You must provdide an argument table when creating CacheClusterNotFoundFault")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CacheClusterNotFoundFault")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertCacheClusterNotFoundFault(t)
-	return t
+	asserts.AssertCacheClusterNotFoundFault(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CacheClusterAlreadyExistsFault = { nil }
@@ -3135,11 +4202,22 @@ end
 -- Valid keys:
 -- @return CacheClusterAlreadyExistsFault structure as a key-value pair table
 function M.CacheClusterAlreadyExistsFault(args)
-	assert(args, "You must provdide an argument table when creating CacheClusterAlreadyExistsFault")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CacheClusterAlreadyExistsFault")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertCacheClusterAlreadyExistsFault(t)
-	return t
+	asserts.AssertCacheClusterAlreadyExistsFault(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CacheNodeTypeSpecificValue = { ["Value"] = true, ["CacheNodeType"] = true, nil }
@@ -3162,13 +4240,24 @@ end
 -- * CacheNodeType [String] <p>The cache node type for which this value applies.</p>
 -- @return CacheNodeTypeSpecificValue structure as a key-value pair table
 function M.CacheNodeTypeSpecificValue(args)
-	assert(args, "You must provdide an argument table when creating CacheNodeTypeSpecificValue")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CacheNodeTypeSpecificValue")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Value"] = args["Value"],
 		["CacheNodeType"] = args["CacheNodeType"],
 	}
-	asserts.AssertCacheNodeTypeSpecificValue(t)
-	return t
+	asserts.AssertCacheNodeTypeSpecificValue(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeCacheSecurityGroupsMessage = { ["Marker"] = true, ["CacheSecurityGroupName"] = true, ["MaxRecords"] = true, nil }
@@ -3193,14 +4282,25 @@ end
 -- * MaxRecords [IntegerOptional] <p>The maximum number of records to include in the response. If more records exist than the specified <code>MaxRecords</code> value, a marker is included in the response so that the remaining results can be retrieved.</p> <p>Default: 100</p> <p>Constraints: minimum 20; maximum 100.</p>
 -- @return DescribeCacheSecurityGroupsMessage structure as a key-value pair table
 function M.DescribeCacheSecurityGroupsMessage(args)
-	assert(args, "You must provdide an argument table when creating DescribeCacheSecurityGroupsMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeCacheSecurityGroupsMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Marker"] = args["Marker"],
 		["CacheSecurityGroupName"] = args["CacheSecurityGroupName"],
 		["MaxRecords"] = args["MaxRecords"],
 	}
-	asserts.AssertDescribeCacheSecurityGroupsMessage(t)
-	return t
+	asserts.AssertDescribeCacheSecurityGroupsMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.SecurityGroupMembership = { ["Status"] = true, ["SecurityGroupId"] = true, nil }
@@ -3223,13 +4323,24 @@ end
 -- * SecurityGroupId [String] <p>The identifier of the cache security group.</p>
 -- @return SecurityGroupMembership structure as a key-value pair table
 function M.SecurityGroupMembership(args)
-	assert(args, "You must provdide an argument table when creating SecurityGroupMembership")
-	local t = { 
+	assert(args, "You must provide an argument table when creating SecurityGroupMembership")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Status"] = args["Status"],
 		["SecurityGroupId"] = args["SecurityGroupId"],
 	}
-	asserts.AssertSecurityGroupMembership(t)
-	return t
+	asserts.AssertSecurityGroupMembership(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteCacheSecurityGroupMessage = { ["CacheSecurityGroupName"] = true, nil }
@@ -3252,12 +4363,23 @@ end
 -- Required key: CacheSecurityGroupName
 -- @return DeleteCacheSecurityGroupMessage structure as a key-value pair table
 function M.DeleteCacheSecurityGroupMessage(args)
-	assert(args, "You must provdide an argument table when creating DeleteCacheSecurityGroupMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteCacheSecurityGroupMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["CacheSecurityGroupName"] = args["CacheSecurityGroupName"],
 	}
-	asserts.AssertDeleteCacheSecurityGroupMessage(t)
-	return t
+	asserts.AssertDeleteCacheSecurityGroupMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.NodeSnapshot = { ["SnapshotCreateTime"] = true, ["CacheNodeId"] = true, ["NodeGroupConfiguration"] = true, ["CacheClusterId"] = true, ["NodeGroupId"] = true, ["CacheNodeCreateTime"] = true, ["CacheSize"] = true, nil }
@@ -3290,8 +4412,14 @@ end
 -- * CacheSize [String] <p>The size of the cache on the source cache node.</p>
 -- @return NodeSnapshot structure as a key-value pair table
 function M.NodeSnapshot(args)
-	assert(args, "You must provdide an argument table when creating NodeSnapshot")
-	local t = { 
+	assert(args, "You must provide an argument table when creating NodeSnapshot")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["SnapshotCreateTime"] = args["SnapshotCreateTime"],
 		["CacheNodeId"] = args["CacheNodeId"],
 		["NodeGroupConfiguration"] = args["NodeGroupConfiguration"],
@@ -3300,8 +4428,13 @@ function M.NodeSnapshot(args)
 		["CacheNodeCreateTime"] = args["CacheNodeCreateTime"],
 		["CacheSize"] = args["CacheSize"],
 	}
-	asserts.AssertNodeSnapshot(t)
-	return t
+	asserts.AssertNodeSnapshot(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CacheEngineVersion = { ["Engine"] = true, ["CacheEngineDescription"] = true, ["CacheEngineVersionDescription"] = true, ["CacheParameterGroupFamily"] = true, ["EngineVersion"] = true, nil }
@@ -3330,16 +4463,27 @@ end
 -- * EngineVersion [String] <p>The version number of the cache engine.</p>
 -- @return CacheEngineVersion structure as a key-value pair table
 function M.CacheEngineVersion(args)
-	assert(args, "You must provdide an argument table when creating CacheEngineVersion")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CacheEngineVersion")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Engine"] = args["Engine"],
 		["CacheEngineDescription"] = args["CacheEngineDescription"],
 		["CacheEngineVersionDescription"] = args["CacheEngineVersionDescription"],
 		["CacheParameterGroupFamily"] = args["CacheParameterGroupFamily"],
 		["EngineVersion"] = args["EngineVersion"],
 	}
-	asserts.AssertCacheEngineVersion(t)
-	return t
+	asserts.AssertCacheEngineVersion(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateSnapshotResult = { ["Snapshot"] = true, nil }
@@ -3360,12 +4504,23 @@ end
 -- * Snapshot [Snapshot] 
 -- @return CreateSnapshotResult structure as a key-value pair table
 function M.CreateSnapshotResult(args)
-	assert(args, "You must provdide an argument table when creating CreateSnapshotResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateSnapshotResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Snapshot"] = args["Snapshot"],
 	}
-	asserts.AssertCreateSnapshotResult(t)
-	return t
+	asserts.AssertCreateSnapshotResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CopySnapshotMessage = { ["SourceSnapshotName"] = true, ["TargetSnapshotName"] = true, ["TargetBucket"] = true, nil }
@@ -3394,14 +4549,25 @@ end
 -- Required key: TargetSnapshotName
 -- @return CopySnapshotMessage structure as a key-value pair table
 function M.CopySnapshotMessage(args)
-	assert(args, "You must provdide an argument table when creating CopySnapshotMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CopySnapshotMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["SourceSnapshotName"] = args["SourceSnapshotName"],
 		["TargetSnapshotName"] = args["TargetSnapshotName"],
 		["TargetBucket"] = args["TargetBucket"],
 	}
-	asserts.AssertCopySnapshotMessage(t)
-	return t
+	asserts.AssertCopySnapshotMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateCacheParameterGroupMessage = { ["CacheParameterGroupName"] = true, ["CacheParameterGroupFamily"] = true, ["Description"] = true, nil }
@@ -3432,14 +4598,25 @@ end
 -- Required key: Description
 -- @return CreateCacheParameterGroupMessage structure as a key-value pair table
 function M.CreateCacheParameterGroupMessage(args)
-	assert(args, "You must provdide an argument table when creating CreateCacheParameterGroupMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateCacheParameterGroupMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["CacheParameterGroupName"] = args["CacheParameterGroupName"],
 		["CacheParameterGroupFamily"] = args["CacheParameterGroupFamily"],
 		["Description"] = args["Description"],
 	}
-	asserts.AssertCreateCacheParameterGroupMessage(t)
-	return t
+	asserts.AssertCreateCacheParameterGroupMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CacheParameterGroup = { ["CacheParameterGroupName"] = true, ["CacheParameterGroupFamily"] = true, ["Description"] = true, nil }
@@ -3464,14 +4641,25 @@ end
 -- * Description [String] <p>The description for this cache parameter group.</p>
 -- @return CacheParameterGroup structure as a key-value pair table
 function M.CacheParameterGroup(args)
-	assert(args, "You must provdide an argument table when creating CacheParameterGroup")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CacheParameterGroup")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["CacheParameterGroupName"] = args["CacheParameterGroupName"],
 		["CacheParameterGroupFamily"] = args["CacheParameterGroupFamily"],
 		["Description"] = args["Description"],
 	}
-	asserts.AssertCacheParameterGroup(t)
-	return t
+	asserts.AssertCacheParameterGroup(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.APICallRateForCustomerExceededFault = { nil }
@@ -3490,11 +4678,22 @@ end
 -- Valid keys:
 -- @return APICallRateForCustomerExceededFault structure as a key-value pair table
 function M.APICallRateForCustomerExceededFault(args)
-	assert(args, "You must provdide an argument table when creating APICallRateForCustomerExceededFault")
-	local t = { 
+	assert(args, "You must provide an argument table when creating APICallRateForCustomerExceededFault")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertAPICallRateForCustomerExceededFault(t)
-	return t
+	asserts.AssertAPICallRateForCustomerExceededFault(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CacheSubnetGroupNotFoundFault = { nil }
@@ -3513,11 +4712,22 @@ end
 -- Valid keys:
 -- @return CacheSubnetGroupNotFoundFault structure as a key-value pair table
 function M.CacheSubnetGroupNotFoundFault(args)
-	assert(args, "You must provdide an argument table when creating CacheSubnetGroupNotFoundFault")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CacheSubnetGroupNotFoundFault")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertCacheSubnetGroupNotFoundFault(t)
-	return t
+	asserts.AssertCacheSubnetGroupNotFoundFault(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CacheClusterMessage = { ["Marker"] = true, ["CacheClusters"] = true, nil }
@@ -3540,13 +4750,24 @@ end
 -- * CacheClusters [CacheClusterList] <p>A list of cache clusters. Each item in the list contains detailed information about one cache cluster.</p>
 -- @return CacheClusterMessage structure as a key-value pair table
 function M.CacheClusterMessage(args)
-	assert(args, "You must provdide an argument table when creating CacheClusterMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CacheClusterMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Marker"] = args["Marker"],
 		["CacheClusters"] = args["CacheClusters"],
 	}
-	asserts.AssertCacheClusterMessage(t)
-	return t
+	asserts.AssertCacheClusterMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ModifyCacheClusterMessage = { ["CacheSecurityGroupNames"] = true, ["CacheParameterGroupName"] = true, ["CacheClusterId"] = true, ["NumCacheNodes"] = true, ["AutoMinorVersionUpgrade"] = true, ["ApplyImmediately"] = true, ["SecurityGroupIds"] = true, ["SnapshotRetentionLimit"] = true, ["NotificationTopicStatus"] = true, ["SnapshotWindow"] = true, ["EngineVersion"] = true, ["CacheNodeType"] = true, ["AZMode"] = true, ["NotificationTopicArn"] = true, ["NewAvailabilityZones"] = true, ["PreferredMaintenanceWindow"] = true, ["CacheNodeIdsToRemove"] = true, nil }
@@ -3601,8 +4822,14 @@ end
 -- Required key: CacheClusterId
 -- @return ModifyCacheClusterMessage structure as a key-value pair table
 function M.ModifyCacheClusterMessage(args)
-	assert(args, "You must provdide an argument table when creating ModifyCacheClusterMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ModifyCacheClusterMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["CacheSecurityGroupNames"] = args["CacheSecurityGroupNames"],
 		["CacheParameterGroupName"] = args["CacheParameterGroupName"],
 		["CacheClusterId"] = args["CacheClusterId"],
@@ -3621,8 +4848,13 @@ function M.ModifyCacheClusterMessage(args)
 		["PreferredMaintenanceWindow"] = args["PreferredMaintenanceWindow"],
 		["CacheNodeIdsToRemove"] = args["CacheNodeIdsToRemove"],
 	}
-	asserts.AssertModifyCacheClusterMessage(t)
-	return t
+	asserts.AssertModifyCacheClusterMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ReservedCacheNodesOfferingNotFoundFault = { nil }
@@ -3641,11 +4873,22 @@ end
 -- Valid keys:
 -- @return ReservedCacheNodesOfferingNotFoundFault structure as a key-value pair table
 function M.ReservedCacheNodesOfferingNotFoundFault(args)
-	assert(args, "You must provdide an argument table when creating ReservedCacheNodesOfferingNotFoundFault")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ReservedCacheNodesOfferingNotFoundFault")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertReservedCacheNodesOfferingNotFoundFault(t)
-	return t
+	asserts.AssertReservedCacheNodesOfferingNotFoundFault(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ModifyCacheSubnetGroupMessage = { ["SubnetIds"] = true, ["CacheSubnetGroupDescription"] = true, ["CacheSubnetGroupName"] = true, nil }
@@ -3672,14 +4915,25 @@ end
 -- Required key: CacheSubnetGroupName
 -- @return ModifyCacheSubnetGroupMessage structure as a key-value pair table
 function M.ModifyCacheSubnetGroupMessage(args)
-	assert(args, "You must provdide an argument table when creating ModifyCacheSubnetGroupMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ModifyCacheSubnetGroupMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["SubnetIds"] = args["SubnetIds"],
 		["CacheSubnetGroupDescription"] = args["CacheSubnetGroupDescription"],
 		["CacheSubnetGroupName"] = args["CacheSubnetGroupName"],
 	}
-	asserts.AssertModifyCacheSubnetGroupMessage(t)
-	return t
+	asserts.AssertModifyCacheSubnetGroupMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ReplicationGroupAlreadyExistsFault = { nil }
@@ -3698,11 +4952,22 @@ end
 -- Valid keys:
 -- @return ReplicationGroupAlreadyExistsFault structure as a key-value pair table
 function M.ReplicationGroupAlreadyExistsFault(args)
-	assert(args, "You must provdide an argument table when creating ReplicationGroupAlreadyExistsFault")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ReplicationGroupAlreadyExistsFault")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertReplicationGroupAlreadyExistsFault(t)
-	return t
+	asserts.AssertReplicationGroupAlreadyExistsFault(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ReplicationGroup = { ["Status"] = true, ["Description"] = true, ["NodeGroups"] = true, ["ConfigurationEndpoint"] = true, ["ClusterEnabled"] = true, ["ReplicationGroupId"] = true, ["SnapshotRetentionLimit"] = true, ["AutomaticFailover"] = true, ["SnapshotWindow"] = true, ["SnapshottingClusterId"] = true, ["MemberClusters"] = true, ["CacheNodeType"] = true, ["PendingModifiedValues"] = true, nil }
@@ -3747,8 +5012,14 @@ end
 -- * PendingModifiedValues [ReplicationGroupPendingModifiedValues] <p>A group of settings to be applied to the replication group, either immediately or during the next maintenance window.</p>
 -- @return ReplicationGroup structure as a key-value pair table
 function M.ReplicationGroup(args)
-	assert(args, "You must provdide an argument table when creating ReplicationGroup")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ReplicationGroup")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Status"] = args["Status"],
 		["Description"] = args["Description"],
 		["NodeGroups"] = args["NodeGroups"],
@@ -3763,8 +5034,13 @@ function M.ReplicationGroup(args)
 		["CacheNodeType"] = args["CacheNodeType"],
 		["PendingModifiedValues"] = args["PendingModifiedValues"],
 	}
-	asserts.AssertReplicationGroup(t)
-	return t
+	asserts.AssertReplicationGroup(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.EC2SecurityGroup = { ["Status"] = true, ["EC2SecurityGroupName"] = true, ["EC2SecurityGroupOwnerId"] = true, nil }
@@ -3789,14 +5065,25 @@ end
 -- * EC2SecurityGroupOwnerId [String] <p>The AWS account ID of the Amazon EC2 security group owner.</p>
 -- @return EC2SecurityGroup structure as a key-value pair table
 function M.EC2SecurityGroup(args)
-	assert(args, "You must provdide an argument table when creating EC2SecurityGroup")
-	local t = { 
+	assert(args, "You must provide an argument table when creating EC2SecurityGroup")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Status"] = args["Status"],
 		["EC2SecurityGroupName"] = args["EC2SecurityGroupName"],
 		["EC2SecurityGroupOwnerId"] = args["EC2SecurityGroupOwnerId"],
 	}
-	asserts.AssertEC2SecurityGroup(t)
-	return t
+	asserts.AssertEC2SecurityGroup(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.SubnetInUse = { nil }
@@ -3815,11 +5102,22 @@ end
 -- Valid keys:
 -- @return SubnetInUse structure as a key-value pair table
 function M.SubnetInUse(args)
-	assert(args, "You must provdide an argument table when creating SubnetInUse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating SubnetInUse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertSubnetInUse(t)
-	return t
+	asserts.AssertSubnetInUse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CacheSecurityGroupMessage = { ["Marker"] = true, ["CacheSecurityGroups"] = true, nil }
@@ -3842,13 +5140,24 @@ end
 -- * CacheSecurityGroups [CacheSecurityGroups] <p>A list of cache security groups. Each element in the list contains detailed information about one group.</p>
 -- @return CacheSecurityGroupMessage structure as a key-value pair table
 function M.CacheSecurityGroupMessage(args)
-	assert(args, "You must provdide an argument table when creating CacheSecurityGroupMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CacheSecurityGroupMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Marker"] = args["Marker"],
 		["CacheSecurityGroups"] = args["CacheSecurityGroups"],
 	}
-	asserts.AssertCacheSecurityGroupMessage(t)
-	return t
+	asserts.AssertCacheSecurityGroupMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidCacheParameterGroupStateFault = { nil }
@@ -3867,11 +5176,22 @@ end
 -- Valid keys:
 -- @return InvalidCacheParameterGroupStateFault structure as a key-value pair table
 function M.InvalidCacheParameterGroupStateFault(args)
-	assert(args, "You must provdide an argument table when creating InvalidCacheParameterGroupStateFault")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidCacheParameterGroupStateFault")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertInvalidCacheParameterGroupStateFault(t)
-	return t
+	asserts.AssertInvalidCacheParameterGroupStateFault(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.TagNotFoundFault = { nil }
@@ -3890,11 +5210,22 @@ end
 -- Valid keys:
 -- @return TagNotFoundFault structure as a key-value pair table
 function M.TagNotFoundFault(args)
-	assert(args, "You must provdide an argument table when creating TagNotFoundFault")
-	local t = { 
+	assert(args, "You must provide an argument table when creating TagNotFoundFault")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertTagNotFoundFault(t)
-	return t
+	asserts.AssertTagNotFoundFault(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateReplicationGroupMessage = { ["CacheParameterGroupName"] = true, ["NodeGroupConfiguration"] = true, ["ReplicationGroupId"] = true, ["NumNodeGroups"] = true, ["NotificationTopicArn"] = true, ["CacheNodeType"] = true, ["Engine"] = true, ["AuthToken"] = true, ["PrimaryClusterId"] = true, ["AutoMinorVersionUpgrade"] = true, ["PreferredMaintenanceWindow"] = true, ["CacheSubnetGroupName"] = true, ["CacheSecurityGroupNames"] = true, ["SnapshotName"] = true, ["ReplicasPerNodeGroup"] = true, ["SecurityGroupIds"] = true, ["PreferredCacheClusterAZs"] = true, ["EngineVersion"] = true, ["ReplicationGroupDescription"] = true, ["NumCacheClusters"] = true, ["SnapshotArns"] = true, ["SnapshotRetentionLimit"] = true, ["Tags"] = true, ["SnapshotWindow"] = true, ["Port"] = true, ["AutomaticFailoverEnabled"] = true, nil }
@@ -3969,8 +5300,14 @@ end
 -- Required key: ReplicationGroupDescription
 -- @return CreateReplicationGroupMessage structure as a key-value pair table
 function M.CreateReplicationGroupMessage(args)
-	assert(args, "You must provdide an argument table when creating CreateReplicationGroupMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateReplicationGroupMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["CacheParameterGroupName"] = args["CacheParameterGroupName"],
 		["NodeGroupConfiguration"] = args["NodeGroupConfiguration"],
 		["ReplicationGroupId"] = args["ReplicationGroupId"],
@@ -3998,8 +5335,13 @@ function M.CreateReplicationGroupMessage(args)
 		["Port"] = args["Port"],
 		["AutomaticFailoverEnabled"] = args["AutomaticFailoverEnabled"],
 	}
-	asserts.AssertCreateReplicationGroupMessage(t)
-	return t
+	asserts.AssertCreateReplicationGroupMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ReservedCacheNodeMessage = { ["Marker"] = true, ["ReservedCacheNodes"] = true, nil }
@@ -4022,13 +5364,24 @@ end
 -- * ReservedCacheNodes [ReservedCacheNodeList] <p>A list of reserved cache nodes. Each element in the list contains detailed information about one node.</p>
 -- @return ReservedCacheNodeMessage structure as a key-value pair table
 function M.ReservedCacheNodeMessage(args)
-	assert(args, "You must provdide an argument table when creating ReservedCacheNodeMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ReservedCacheNodeMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Marker"] = args["Marker"],
 		["ReservedCacheNodes"] = args["ReservedCacheNodes"],
 	}
-	asserts.AssertReservedCacheNodeMessage(t)
-	return t
+	asserts.AssertReservedCacheNodeMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidCacheSecurityGroupStateFault = { nil }
@@ -4047,11 +5400,22 @@ end
 -- Valid keys:
 -- @return InvalidCacheSecurityGroupStateFault structure as a key-value pair table
 function M.InvalidCacheSecurityGroupStateFault(args)
-	assert(args, "You must provdide an argument table when creating InvalidCacheSecurityGroupStateFault")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidCacheSecurityGroupStateFault")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertInvalidCacheSecurityGroupStateFault(t)
-	return t
+	asserts.AssertInvalidCacheSecurityGroupStateFault(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ReplicationGroupNotFoundFault = { nil }
@@ -4070,11 +5434,22 @@ end
 -- Valid keys:
 -- @return ReplicationGroupNotFoundFault structure as a key-value pair table
 function M.ReplicationGroupNotFoundFault(args)
-	assert(args, "You must provdide an argument table when creating ReplicationGroupNotFoundFault")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ReplicationGroupNotFoundFault")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertReplicationGroupNotFoundFault(t)
-	return t
+	asserts.AssertReplicationGroupNotFoundFault(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.NodeGroupConfiguration = { ["Slots"] = true, ["ReplicaCount"] = true, ["PrimaryAvailabilityZone"] = true, ["ReplicaAvailabilityZones"] = true, nil }
@@ -4101,15 +5476,26 @@ end
 -- * ReplicaAvailabilityZones [AvailabilityZonesList] <p>A list of Availability Zones to be used for the read replicas. The number of Availability Zones in this list must match the value of <code>ReplicaCount</code> or <code>ReplicasPerNodeGroup</code> if not specified.</p>
 -- @return NodeGroupConfiguration structure as a key-value pair table
 function M.NodeGroupConfiguration(args)
-	assert(args, "You must provdide an argument table when creating NodeGroupConfiguration")
-	local t = { 
+	assert(args, "You must provide an argument table when creating NodeGroupConfiguration")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Slots"] = args["Slots"],
 		["ReplicaCount"] = args["ReplicaCount"],
 		["PrimaryAvailabilityZone"] = args["PrimaryAvailabilityZone"],
 		["ReplicaAvailabilityZones"] = args["ReplicaAvailabilityZones"],
 	}
-	asserts.AssertNodeGroupConfiguration(t)
-	return t
+	asserts.AssertNodeGroupConfiguration(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ModifyCacheClusterResult = { ["CacheCluster"] = true, nil }
@@ -4130,12 +5516,23 @@ end
 -- * CacheCluster [CacheCluster] 
 -- @return ModifyCacheClusterResult structure as a key-value pair table
 function M.ModifyCacheClusterResult(args)
-	assert(args, "You must provdide an argument table when creating ModifyCacheClusterResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ModifyCacheClusterResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["CacheCluster"] = args["CacheCluster"],
 	}
-	asserts.AssertModifyCacheClusterResult(t)
-	return t
+	asserts.AssertModifyCacheClusterResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteReplicationGroupMessage = { ["FinalSnapshotIdentifier"] = true, ["ReplicationGroupId"] = true, ["RetainPrimaryCluster"] = true, nil }
@@ -4162,14 +5559,25 @@ end
 -- Required key: ReplicationGroupId
 -- @return DeleteReplicationGroupMessage structure as a key-value pair table
 function M.DeleteReplicationGroupMessage(args)
-	assert(args, "You must provdide an argument table when creating DeleteReplicationGroupMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteReplicationGroupMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["FinalSnapshotIdentifier"] = args["FinalSnapshotIdentifier"],
 		["ReplicationGroupId"] = args["ReplicationGroupId"],
 		["RetainPrimaryCluster"] = args["RetainPrimaryCluster"],
 	}
-	asserts.AssertDeleteReplicationGroupMessage(t)
-	return t
+	asserts.AssertDeleteReplicationGroupMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AuthorizationAlreadyExistsFault = { nil }
@@ -4188,11 +5596,22 @@ end
 -- Valid keys:
 -- @return AuthorizationAlreadyExistsFault structure as a key-value pair table
 function M.AuthorizationAlreadyExistsFault(args)
-	assert(args, "You must provdide an argument table when creating AuthorizationAlreadyExistsFault")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AuthorizationAlreadyExistsFault")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertAuthorizationAlreadyExistsFault(t)
-	return t
+	asserts.AssertAuthorizationAlreadyExistsFault(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.TagQuotaPerResourceExceeded = { nil }
@@ -4211,11 +5630,22 @@ end
 -- Valid keys:
 -- @return TagQuotaPerResourceExceeded structure as a key-value pair table
 function M.TagQuotaPerResourceExceeded(args)
-	assert(args, "You must provdide an argument table when creating TagQuotaPerResourceExceeded")
-	local t = { 
+	assert(args, "You must provide an argument table when creating TagQuotaPerResourceExceeded")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertTagQuotaPerResourceExceeded(t)
-	return t
+	asserts.AssertTagQuotaPerResourceExceeded(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CacheParameterGroupNotFoundFault = { nil }
@@ -4234,11 +5664,22 @@ end
 -- Valid keys:
 -- @return CacheParameterGroupNotFoundFault structure as a key-value pair table
 function M.CacheParameterGroupNotFoundFault(args)
-	assert(args, "You must provdide an argument table when creating CacheParameterGroupNotFoundFault")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CacheParameterGroupNotFoundFault")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertCacheParameterGroupNotFoundFault(t)
-	return t
+	asserts.AssertCacheParameterGroupNotFoundFault(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.TestFailoverNotAvailableFault = { nil }
@@ -4257,11 +5698,22 @@ end
 -- Valid keys:
 -- @return TestFailoverNotAvailableFault structure as a key-value pair table
 function M.TestFailoverNotAvailableFault(args)
-	assert(args, "You must provdide an argument table when creating TestFailoverNotAvailableFault")
-	local t = { 
+	assert(args, "You must provide an argument table when creating TestFailoverNotAvailableFault")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertTestFailoverNotAvailableFault(t)
-	return t
+	asserts.AssertTestFailoverNotAvailableFault(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeSnapshotsMessage = { ["ShowNodeGroupConfig"] = true, ["CacheClusterId"] = true, ["SnapshotName"] = true, ["ReplicationGroupId"] = true, ["MaxRecords"] = true, ["SnapshotSource"] = true, ["Marker"] = true, nil }
@@ -4294,8 +5746,14 @@ end
 -- * Marker [String] <p>An optional marker returned from a prior request. Use this marker for pagination of results from this operation. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by <code>MaxRecords</code>.</p>
 -- @return DescribeSnapshotsMessage structure as a key-value pair table
 function M.DescribeSnapshotsMessage(args)
-	assert(args, "You must provdide an argument table when creating DescribeSnapshotsMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeSnapshotsMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ShowNodeGroupConfig"] = args["ShowNodeGroupConfig"],
 		["CacheClusterId"] = args["CacheClusterId"],
 		["SnapshotName"] = args["SnapshotName"],
@@ -4304,8 +5762,13 @@ function M.DescribeSnapshotsMessage(args)
 		["SnapshotSource"] = args["SnapshotSource"],
 		["Marker"] = args["Marker"],
 	}
-	asserts.AssertDescribeSnapshotsMessage(t)
-	return t
+	asserts.AssertDescribeSnapshotsMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CacheSecurityGroupQuotaExceededFault = { nil }
@@ -4324,11 +5787,22 @@ end
 -- Valid keys:
 -- @return CacheSecurityGroupQuotaExceededFault structure as a key-value pair table
 function M.CacheSecurityGroupQuotaExceededFault(args)
-	assert(args, "You must provdide an argument table when creating CacheSecurityGroupQuotaExceededFault")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CacheSecurityGroupQuotaExceededFault")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertCacheSecurityGroupQuotaExceededFault(t)
-	return t
+	asserts.AssertCacheSecurityGroupQuotaExceededFault(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.TestFailoverResult = { ["ReplicationGroup"] = true, nil }
@@ -4349,12 +5823,23 @@ end
 -- * ReplicationGroup [ReplicationGroup] 
 -- @return TestFailoverResult structure as a key-value pair table
 function M.TestFailoverResult(args)
-	assert(args, "You must provdide an argument table when creating TestFailoverResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating TestFailoverResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ReplicationGroup"] = args["ReplicationGroup"],
 	}
-	asserts.AssertTestFailoverResult(t)
-	return t
+	asserts.AssertTestFailoverResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ReservedCacheNodeQuotaExceededFault = { nil }
@@ -4373,11 +5858,22 @@ end
 -- Valid keys:
 -- @return ReservedCacheNodeQuotaExceededFault structure as a key-value pair table
 function M.ReservedCacheNodeQuotaExceededFault(args)
-	assert(args, "You must provdide an argument table when creating ReservedCacheNodeQuotaExceededFault")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ReservedCacheNodeQuotaExceededFault")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertReservedCacheNodeQuotaExceededFault(t)
-	return t
+	asserts.AssertReservedCacheNodeQuotaExceededFault(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CacheNodeTypeSpecificParameter = { ["Description"] = true, ["DataType"] = true, ["ChangeType"] = true, ["AllowedValues"] = true, ["Source"] = true, ["IsModifiable"] = true, ["CacheNodeTypeSpecificValues"] = true, ["ParameterName"] = true, ["MinimumEngineVersion"] = true, nil }
@@ -4414,8 +5910,14 @@ end
 -- * MinimumEngineVersion [String] <p>The earliest cache engine version to which the parameter can apply.</p>
 -- @return CacheNodeTypeSpecificParameter structure as a key-value pair table
 function M.CacheNodeTypeSpecificParameter(args)
-	assert(args, "You must provdide an argument table when creating CacheNodeTypeSpecificParameter")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CacheNodeTypeSpecificParameter")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Description"] = args["Description"],
 		["DataType"] = args["DataType"],
 		["ChangeType"] = args["ChangeType"],
@@ -4426,8 +5928,13 @@ function M.CacheNodeTypeSpecificParameter(args)
 		["ParameterName"] = args["ParameterName"],
 		["MinimumEngineVersion"] = args["MinimumEngineVersion"],
 	}
-	asserts.AssertCacheNodeTypeSpecificParameter(t)
-	return t
+	asserts.AssertCacheNodeTypeSpecificParameter(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.NodeQuotaForClusterExceededFault = { nil }
@@ -4446,11 +5953,22 @@ end
 -- Valid keys:
 -- @return NodeQuotaForClusterExceededFault structure as a key-value pair table
 function M.NodeQuotaForClusterExceededFault(args)
-	assert(args, "You must provdide an argument table when creating NodeQuotaForClusterExceededFault")
-	local t = { 
+	assert(args, "You must provide an argument table when creating NodeQuotaForClusterExceededFault")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertNodeQuotaForClusterExceededFault(t)
-	return t
+	asserts.AssertNodeQuotaForClusterExceededFault(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteCacheClusterResult = { ["CacheCluster"] = true, nil }
@@ -4471,12 +5989,23 @@ end
 -- * CacheCluster [CacheCluster] 
 -- @return DeleteCacheClusterResult structure as a key-value pair table
 function M.DeleteCacheClusterResult(args)
-	assert(args, "You must provdide an argument table when creating DeleteCacheClusterResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteCacheClusterResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["CacheCluster"] = args["CacheCluster"],
 	}
-	asserts.AssertDeleteCacheClusterResult(t)
-	return t
+	asserts.AssertDeleteCacheClusterResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ReservedCacheNodeAlreadyExistsFault = { nil }
@@ -4495,11 +6024,22 @@ end
 -- Valid keys:
 -- @return ReservedCacheNodeAlreadyExistsFault structure as a key-value pair table
 function M.ReservedCacheNodeAlreadyExistsFault(args)
-	assert(args, "You must provdide an argument table when creating ReservedCacheNodeAlreadyExistsFault")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ReservedCacheNodeAlreadyExistsFault")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertReservedCacheNodeAlreadyExistsFault(t)
-	return t
+	asserts.AssertReservedCacheNodeAlreadyExistsFault(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ClusterQuotaForCustomerExceededFault = { nil }
@@ -4518,11 +6058,22 @@ end
 -- Valid keys:
 -- @return ClusterQuotaForCustomerExceededFault structure as a key-value pair table
 function M.ClusterQuotaForCustomerExceededFault(args)
-	assert(args, "You must provdide an argument table when creating ClusterQuotaForCustomerExceededFault")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ClusterQuotaForCustomerExceededFault")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertClusterQuotaForCustomerExceededFault(t)
-	return t
+	asserts.AssertClusterQuotaForCustomerExceededFault(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteCacheParameterGroupMessage = { ["CacheParameterGroupName"] = true, nil }
@@ -4545,12 +6096,23 @@ end
 -- Required key: CacheParameterGroupName
 -- @return DeleteCacheParameterGroupMessage structure as a key-value pair table
 function M.DeleteCacheParameterGroupMessage(args)
-	assert(args, "You must provdide an argument table when creating DeleteCacheParameterGroupMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteCacheParameterGroupMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["CacheParameterGroupName"] = args["CacheParameterGroupName"],
 	}
-	asserts.AssertDeleteCacheParameterGroupMessage(t)
-	return t
+	asserts.AssertDeleteCacheParameterGroupMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ReservedCacheNodesOffering = { ["OfferingType"] = true, ["FixedPrice"] = true, ["ReservedCacheNodesOfferingId"] = true, ["UsagePrice"] = true, ["RecurringCharges"] = true, ["ProductDescription"] = true, ["Duration"] = true, ["CacheNodeType"] = true, nil }
@@ -4585,8 +6147,14 @@ end
 -- * CacheNodeType [String] <p>The cache node type for the reserved cache node.</p> <p>Valid node types are as follows:</p> <ul> <li> <p>General purpose:</p> <ul> <li> <p>Current generation: <code>cache.t2.micro</code>, <code>cache.t2.small</code>, <code>cache.t2.medium</code>, <code>cache.m3.medium</code>, <code>cache.m3.large</code>, <code>cache.m3.xlarge</code>, <code>cache.m3.2xlarge</code>, <code>cache.m4.large</code>, <code>cache.m4.xlarge</code>, <code>cache.m4.2xlarge</code>, <code>cache.m4.4xlarge</code>, <code>cache.m4.10xlarge</code> </p> </li> <li> <p>Previous generation: <code>cache.t1.micro</code>, <code>cache.m1.small</code>, <code>cache.m1.medium</code>, <code>cache.m1.large</code>, <code>cache.m1.xlarge</code> </p> </li> </ul> </li> <li> <p>Compute optimized: <code>cache.c1.xlarge</code> </p> </li> <li> <p>Memory optimized:</p> <ul> <li> <p>Current generation: <code>cache.r3.large</code>, <code>cache.r3.xlarge</code>, <code>cache.r3.2xlarge</code>, <code>cache.r3.4xlarge</code>, <code>cache.r3.8xlarge</code> </p> </li> <li> <p>Previous generation: <code>cache.m2.xlarge</code>, <code>cache.m2.2xlarge</code>, <code>cache.m2.4xlarge</code> </p> </li> </ul> </li> </ul> <p> <b>Notes:</b> </p> <ul> <li> <p>All T2 instances are created in an Amazon Virtual Private Cloud (Amazon VPC).</p> </li> <li> <p>Redis backup/restore is not supported for Redis (cluster mode disabled) T1 and T2 instances. Backup/restore is supported on Redis (cluster mode enabled) T2 instances.</p> </li> <li> <p>Redis Append-only files (AOF) functionality is not supported for T1 or T2 instances.</p> </li> </ul> <p>For a complete listing of node types and specifications, see <a href="http://aws.amazon.com/elasticache/details">Amazon ElastiCache Product Features and Details</a> and either <a href="http://docs.aws.amazon.com/AmazonElastiCache/latest/UserGuide/CacheParameterGroups.Memcached.html#ParameterGroups.Memcached.NodeSpecific">Cache Node Type-Specific Parameters for Memcached</a> or <a href="http://docs.aws.amazon.com/AmazonElastiCache/latest/UserGuide/CacheParameterGroups.Redis.html#ParameterGroups.Redis.NodeSpecific">Cache Node Type-Specific Parameters for Redis</a>.</p>
 -- @return ReservedCacheNodesOffering structure as a key-value pair table
 function M.ReservedCacheNodesOffering(args)
-	assert(args, "You must provdide an argument table when creating ReservedCacheNodesOffering")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ReservedCacheNodesOffering")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["OfferingType"] = args["OfferingType"],
 		["FixedPrice"] = args["FixedPrice"],
 		["ReservedCacheNodesOfferingId"] = args["ReservedCacheNodesOfferingId"],
@@ -4596,8 +6164,13 @@ function M.ReservedCacheNodesOffering(args)
 		["Duration"] = args["Duration"],
 		["CacheNodeType"] = args["CacheNodeType"],
 	}
-	asserts.AssertReservedCacheNodesOffering(t)
-	return t
+	asserts.AssertReservedCacheNodesOffering(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeCacheParametersMessage = { ["Marker"] = true, ["Source"] = true, ["CacheParameterGroupName"] = true, ["MaxRecords"] = true, nil }
@@ -4626,15 +6199,26 @@ end
 -- Required key: CacheParameterGroupName
 -- @return DescribeCacheParametersMessage structure as a key-value pair table
 function M.DescribeCacheParametersMessage(args)
-	assert(args, "You must provdide an argument table when creating DescribeCacheParametersMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeCacheParametersMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Marker"] = args["Marker"],
 		["Source"] = args["Source"],
 		["CacheParameterGroupName"] = args["CacheParameterGroupName"],
 		["MaxRecords"] = args["MaxRecords"],
 	}
-	asserts.AssertDescribeCacheParametersMessage(t)
-	return t
+	asserts.AssertDescribeCacheParametersMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ReservedCacheNodeNotFoundFault = { nil }
@@ -4653,11 +6237,22 @@ end
 -- Valid keys:
 -- @return ReservedCacheNodeNotFoundFault structure as a key-value pair table
 function M.ReservedCacheNodeNotFoundFault(args)
-	assert(args, "You must provdide an argument table when creating ReservedCacheNodeNotFoundFault")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ReservedCacheNodeNotFoundFault")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertReservedCacheNodeNotFoundFault(t)
-	return t
+	asserts.AssertReservedCacheNodeNotFoundFault(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeCacheEngineVersionsMessage = { ["Engine"] = true, ["CacheParameterGroupFamily"] = true, ["DefaultOnly"] = true, ["MaxRecords"] = true, ["EngineVersion"] = true, ["Marker"] = true, nil }
@@ -4688,8 +6283,14 @@ end
 -- * Marker [String] <p>An optional marker returned from a prior request. Use this marker for pagination of results from this operation. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by <code>MaxRecords</code>.</p>
 -- @return DescribeCacheEngineVersionsMessage structure as a key-value pair table
 function M.DescribeCacheEngineVersionsMessage(args)
-	assert(args, "You must provdide an argument table when creating DescribeCacheEngineVersionsMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeCacheEngineVersionsMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Engine"] = args["Engine"],
 		["CacheParameterGroupFamily"] = args["CacheParameterGroupFamily"],
 		["DefaultOnly"] = args["DefaultOnly"],
@@ -4697,8 +6298,13 @@ function M.DescribeCacheEngineVersionsMessage(args)
 		["EngineVersion"] = args["EngineVersion"],
 		["Marker"] = args["Marker"],
 	}
-	asserts.AssertDescribeCacheEngineVersionsMessage(t)
-	return t
+	asserts.AssertDescribeCacheEngineVersionsMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeCacheParameterGroupsMessage = { ["Marker"] = true, ["CacheParameterGroupName"] = true, ["MaxRecords"] = true, nil }
@@ -4723,14 +6329,25 @@ end
 -- * MaxRecords [IntegerOptional] <p>The maximum number of records to include in the response. If more records exist than the specified <code>MaxRecords</code> value, a marker is included in the response so that the remaining results can be retrieved.</p> <p>Default: 100</p> <p>Constraints: minimum 20; maximum 100.</p>
 -- @return DescribeCacheParameterGroupsMessage structure as a key-value pair table
 function M.DescribeCacheParameterGroupsMessage(args)
-	assert(args, "You must provdide an argument table when creating DescribeCacheParameterGroupsMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeCacheParameterGroupsMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Marker"] = args["Marker"],
 		["CacheParameterGroupName"] = args["CacheParameterGroupName"],
 		["MaxRecords"] = args["MaxRecords"],
 	}
-	asserts.AssertDescribeCacheParameterGroupsMessage(t)
-	return t
+	asserts.AssertDescribeCacheParameterGroupsMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.PurchaseReservedCacheNodesOfferingMessage = { ["ReservedCacheNodesOfferingId"] = true, ["CacheNodeCount"] = true, ["ReservedCacheNodeId"] = true, nil }
@@ -4757,14 +6374,25 @@ end
 -- Required key: ReservedCacheNodesOfferingId
 -- @return PurchaseReservedCacheNodesOfferingMessage structure as a key-value pair table
 function M.PurchaseReservedCacheNodesOfferingMessage(args)
-	assert(args, "You must provdide an argument table when creating PurchaseReservedCacheNodesOfferingMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating PurchaseReservedCacheNodesOfferingMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ReservedCacheNodesOfferingId"] = args["ReservedCacheNodesOfferingId"],
 		["CacheNodeCount"] = args["CacheNodeCount"],
 		["ReservedCacheNodeId"] = args["ReservedCacheNodeId"],
 	}
-	asserts.AssertPurchaseReservedCacheNodesOfferingMessage(t)
-	return t
+	asserts.AssertPurchaseReservedCacheNodesOfferingMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CacheSecurityGroupMembership = { ["Status"] = true, ["CacheSecurityGroupName"] = true, nil }
@@ -4787,13 +6415,24 @@ end
 -- * CacheSecurityGroupName [String] <p>The name of the cache security group.</p>
 -- @return CacheSecurityGroupMembership structure as a key-value pair table
 function M.CacheSecurityGroupMembership(args)
-	assert(args, "You must provdide an argument table when creating CacheSecurityGroupMembership")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CacheSecurityGroupMembership")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Status"] = args["Status"],
 		["CacheSecurityGroupName"] = args["CacheSecurityGroupName"],
 	}
-	asserts.AssertCacheSecurityGroupMembership(t)
-	return t
+	asserts.AssertCacheSecurityGroupMembership(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AuthorizeCacheSecurityGroupIngressResult = { ["CacheSecurityGroup"] = true, nil }
@@ -4814,12 +6453,23 @@ end
 -- * CacheSecurityGroup [CacheSecurityGroup] 
 -- @return AuthorizeCacheSecurityGroupIngressResult structure as a key-value pair table
 function M.AuthorizeCacheSecurityGroupIngressResult(args)
-	assert(args, "You must provdide an argument table when creating AuthorizeCacheSecurityGroupIngressResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AuthorizeCacheSecurityGroupIngressResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["CacheSecurityGroup"] = args["CacheSecurityGroup"],
 	}
-	asserts.AssertAuthorizeCacheSecurityGroupIngressResult(t)
-	return t
+	asserts.AssertAuthorizeCacheSecurityGroupIngressResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 function asserts.AssertString(str)
@@ -5538,8 +7188,11 @@ function M.DescribeCacheEngineVersionsAsync(DescribeCacheEngineVersionsMessage, 
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DescribeCacheEngineVersions",
 	}
+	for header,value in pairs(DescribeCacheEngineVersionsMessage.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeCacheEngineVersionsMessage, headers, settings, cb)
 	else
@@ -5570,8 +7223,11 @@ function M.DeleteCacheSubnetGroupAsync(DeleteCacheSubnetGroupMessage, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DeleteCacheSubnetGroup",
 	}
+	for header,value in pairs(DeleteCacheSubnetGroupMessage.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteCacheSubnetGroupMessage, headers, settings, cb)
 	else
@@ -5602,8 +7258,11 @@ function M.ResetCacheParameterGroupAsync(ResetCacheParameterGroupMessage, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".ResetCacheParameterGroup",
 	}
+	for header,value in pairs(ResetCacheParameterGroupMessage.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ResetCacheParameterGroupMessage, headers, settings, cb)
 	else
@@ -5634,8 +7293,11 @@ function M.DeleteCacheSecurityGroupAsync(DeleteCacheSecurityGroupMessage, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DeleteCacheSecurityGroup",
 	}
+	for header,value in pairs(DeleteCacheSecurityGroupMessage.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteCacheSecurityGroupMessage, headers, settings, cb)
 	else
@@ -5666,8 +7328,11 @@ function M.DescribeEventsAsync(DescribeEventsMessage, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DescribeEvents",
 	}
+	for header,value in pairs(DescribeEventsMessage.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeEventsMessage, headers, settings, cb)
 	else
@@ -5698,8 +7363,11 @@ function M.DescribeEngineDefaultParametersAsync(DescribeEngineDefaultParametersM
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DescribeEngineDefaultParameters",
 	}
+	for header,value in pairs(DescribeEngineDefaultParametersMessage.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeEngineDefaultParametersMessage, headers, settings, cb)
 	else
@@ -5730,8 +7398,11 @@ function M.DescribeCacheSubnetGroupsAsync(DescribeCacheSubnetGroupsMessage, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DescribeCacheSubnetGroups",
 	}
+	for header,value in pairs(DescribeCacheSubnetGroupsMessage.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeCacheSubnetGroupsMessage, headers, settings, cb)
 	else
@@ -5762,8 +7433,11 @@ function M.DescribeCacheSecurityGroupsAsync(DescribeCacheSecurityGroupsMessage, 
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DescribeCacheSecurityGroups",
 	}
+	for header,value in pairs(DescribeCacheSecurityGroupsMessage.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeCacheSecurityGroupsMessage, headers, settings, cb)
 	else
@@ -5794,8 +7468,11 @@ function M.RebootCacheClusterAsync(RebootCacheClusterMessage, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".RebootCacheCluster",
 	}
+	for header,value in pairs(RebootCacheClusterMessage.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", RebootCacheClusterMessage, headers, settings, cb)
 	else
@@ -5826,8 +7503,11 @@ function M.ModifyCacheSubnetGroupAsync(ModifyCacheSubnetGroupMessage, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".ModifyCacheSubnetGroup",
 	}
+	for header,value in pairs(ModifyCacheSubnetGroupMessage.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ModifyCacheSubnetGroupMessage, headers, settings, cb)
 	else
@@ -5858,8 +7538,11 @@ function M.DescribeCacheParameterGroupsAsync(DescribeCacheParameterGroupsMessage
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DescribeCacheParameterGroups",
 	}
+	for header,value in pairs(DescribeCacheParameterGroupsMessage.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeCacheParameterGroupsMessage, headers, settings, cb)
 	else
@@ -5890,8 +7573,11 @@ function M.DeleteCacheParameterGroupAsync(DeleteCacheParameterGroupMessage, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DeleteCacheParameterGroup",
 	}
+	for header,value in pairs(DeleteCacheParameterGroupMessage.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteCacheParameterGroupMessage, headers, settings, cb)
 	else
@@ -5922,8 +7608,11 @@ function M.AuthorizeCacheSecurityGroupIngressAsync(AuthorizeCacheSecurityGroupIn
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".AuthorizeCacheSecurityGroupIngress",
 	}
+	for header,value in pairs(AuthorizeCacheSecurityGroupIngressMessage.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", AuthorizeCacheSecurityGroupIngressMessage, headers, settings, cb)
 	else
@@ -5954,8 +7643,11 @@ function M.CopySnapshotAsync(CopySnapshotMessage, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".CopySnapshot",
 	}
+	for header,value in pairs(CopySnapshotMessage.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", CopySnapshotMessage, headers, settings, cb)
 	else
@@ -5986,8 +7678,11 @@ function M.AddTagsToResourceAsync(AddTagsToResourceMessage, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".AddTagsToResource",
 	}
+	for header,value in pairs(AddTagsToResourceMessage.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", AddTagsToResourceMessage, headers, settings, cb)
 	else
@@ -6018,8 +7713,11 @@ function M.DescribeCacheClustersAsync(DescribeCacheClustersMessage, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DescribeCacheClusters",
 	}
+	for header,value in pairs(DescribeCacheClustersMessage.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeCacheClustersMessage, headers, settings, cb)
 	else
@@ -6050,8 +7748,11 @@ function M.ModifyCacheClusterAsync(ModifyCacheClusterMessage, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".ModifyCacheCluster",
 	}
+	for header,value in pairs(ModifyCacheClusterMessage.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ModifyCacheClusterMessage, headers, settings, cb)
 	else
@@ -6082,8 +7783,11 @@ function M.CreateReplicationGroupAsync(CreateReplicationGroupMessage, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".CreateReplicationGroup",
 	}
+	for header,value in pairs(CreateReplicationGroupMessage.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateReplicationGroupMessage, headers, settings, cb)
 	else
@@ -6114,8 +7818,11 @@ function M.RemoveTagsFromResourceAsync(RemoveTagsFromResourceMessage, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".RemoveTagsFromResource",
 	}
+	for header,value in pairs(RemoveTagsFromResourceMessage.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", RemoveTagsFromResourceMessage, headers, settings, cb)
 	else
@@ -6146,8 +7853,11 @@ function M.DescribeCacheParametersAsync(DescribeCacheParametersMessage, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DescribeCacheParameters",
 	}
+	for header,value in pairs(DescribeCacheParametersMessage.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeCacheParametersMessage, headers, settings, cb)
 	else
@@ -6178,8 +7888,11 @@ function M.CreateCacheParameterGroupAsync(CreateCacheParameterGroupMessage, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".CreateCacheParameterGroup",
 	}
+	for header,value in pairs(CreateCacheParameterGroupMessage.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateCacheParameterGroupMessage, headers, settings, cb)
 	else
@@ -6210,8 +7923,11 @@ function M.TestFailoverAsync(TestFailoverMessage, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".TestFailover",
 	}
+	for header,value in pairs(TestFailoverMessage.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", TestFailoverMessage, headers, settings, cb)
 	else
@@ -6242,8 +7958,11 @@ function M.DescribeReplicationGroupsAsync(DescribeReplicationGroupsMessage, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DescribeReplicationGroups",
 	}
+	for header,value in pairs(DescribeReplicationGroupsMessage.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeReplicationGroupsMessage, headers, settings, cb)
 	else
@@ -6274,8 +7993,11 @@ function M.DeleteReplicationGroupAsync(DeleteReplicationGroupMessage, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DeleteReplicationGroup",
 	}
+	for header,value in pairs(DeleteReplicationGroupMessage.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteReplicationGroupMessage, headers, settings, cb)
 	else
@@ -6306,8 +8028,11 @@ function M.DescribeReservedCacheNodesOfferingsAsync(DescribeReservedCacheNodesOf
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DescribeReservedCacheNodesOfferings",
 	}
+	for header,value in pairs(DescribeReservedCacheNodesOfferingsMessage.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeReservedCacheNodesOfferingsMessage, headers, settings, cb)
 	else
@@ -6338,8 +8063,11 @@ function M.CreateCacheClusterAsync(CreateCacheClusterMessage, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".CreateCacheCluster",
 	}
+	for header,value in pairs(CreateCacheClusterMessage.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateCacheClusterMessage, headers, settings, cb)
 	else
@@ -6370,8 +8098,11 @@ function M.CreateCacheSubnetGroupAsync(CreateCacheSubnetGroupMessage, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".CreateCacheSubnetGroup",
 	}
+	for header,value in pairs(CreateCacheSubnetGroupMessage.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateCacheSubnetGroupMessage, headers, settings, cb)
 	else
@@ -6402,8 +8133,11 @@ function M.ModifyReplicationGroupAsync(ModifyReplicationGroupMessage, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".ModifyReplicationGroup",
 	}
+	for header,value in pairs(ModifyReplicationGroupMessage.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ModifyReplicationGroupMessage, headers, settings, cb)
 	else
@@ -6434,8 +8168,11 @@ function M.ModifyCacheParameterGroupAsync(ModifyCacheParameterGroupMessage, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".ModifyCacheParameterGroup",
 	}
+	for header,value in pairs(ModifyCacheParameterGroupMessage.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ModifyCacheParameterGroupMessage, headers, settings, cb)
 	else
@@ -6466,8 +8203,11 @@ function M.DescribeSnapshotsAsync(DescribeSnapshotsMessage, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DescribeSnapshots",
 	}
+	for header,value in pairs(DescribeSnapshotsMessage.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeSnapshotsMessage, headers, settings, cb)
 	else
@@ -6498,8 +8238,11 @@ function M.DeleteCacheClusterAsync(DeleteCacheClusterMessage, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DeleteCacheCluster",
 	}
+	for header,value in pairs(DeleteCacheClusterMessage.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteCacheClusterMessage, headers, settings, cb)
 	else
@@ -6530,8 +8273,11 @@ function M.PurchaseReservedCacheNodesOfferingAsync(PurchaseReservedCacheNodesOff
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".PurchaseReservedCacheNodesOffering",
 	}
+	for header,value in pairs(PurchaseReservedCacheNodesOfferingMessage.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", PurchaseReservedCacheNodesOfferingMessage, headers, settings, cb)
 	else
@@ -6562,8 +8308,11 @@ function M.DeleteSnapshotAsync(DeleteSnapshotMessage, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DeleteSnapshot",
 	}
+	for header,value in pairs(DeleteSnapshotMessage.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteSnapshotMessage, headers, settings, cb)
 	else
@@ -6594,8 +8343,11 @@ function M.RevokeCacheSecurityGroupIngressAsync(RevokeCacheSecurityGroupIngressM
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".RevokeCacheSecurityGroupIngress",
 	}
+	for header,value in pairs(RevokeCacheSecurityGroupIngressMessage.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", RevokeCacheSecurityGroupIngressMessage, headers, settings, cb)
 	else
@@ -6626,8 +8378,11 @@ function M.ListAllowedNodeTypeModificationsAsync(ListAllowedNodeTypeModification
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".ListAllowedNodeTypeModifications",
 	}
+	for header,value in pairs(ListAllowedNodeTypeModificationsMessage.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ListAllowedNodeTypeModificationsMessage, headers, settings, cb)
 	else
@@ -6658,8 +8413,11 @@ function M.DescribeReservedCacheNodesAsync(DescribeReservedCacheNodesMessage, cb
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DescribeReservedCacheNodes",
 	}
+	for header,value in pairs(DescribeReservedCacheNodesMessage.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeReservedCacheNodesMessage, headers, settings, cb)
 	else
@@ -6690,8 +8448,11 @@ function M.CreateCacheSecurityGroupAsync(CreateCacheSecurityGroupMessage, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".CreateCacheSecurityGroup",
 	}
+	for header,value in pairs(CreateCacheSecurityGroupMessage.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateCacheSecurityGroupMessage, headers, settings, cb)
 	else
@@ -6722,8 +8483,11 @@ function M.ListTagsForResourceAsync(ListTagsForResourceMessage, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".ListTagsForResource",
 	}
+	for header,value in pairs(ListTagsForResourceMessage.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ListTagsForResourceMessage, headers, settings, cb)
 	else
@@ -6754,8 +8518,11 @@ function M.CreateSnapshotAsync(CreateSnapshotMessage, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".CreateSnapshot",
 	}
+	for header,value in pairs(CreateSnapshotMessage.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateSnapshotMessage, headers, settings, cb)
 	else

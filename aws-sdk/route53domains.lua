@@ -43,13 +43,24 @@ end
 -- Required key: DomainName
 -- @return UpdateTagsForDomainRequest structure as a key-value pair table
 function M.UpdateTagsForDomainRequest(args)
-	assert(args, "You must provdide an argument table when creating UpdateTagsForDomainRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateTagsForDomainRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["TagsToUpdate"] = args["TagsToUpdate"],
 		["DomainName"] = args["DomainName"],
 	}
-	asserts.AssertUpdateTagsForDomainRequest(t)
-	return t
+	asserts.AssertUpdateTagsForDomainRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DisableDomainAutoRenewRequest = { ["DomainName"] = true, nil }
@@ -72,12 +83,23 @@ end
 -- Required key: DomainName
 -- @return DisableDomainAutoRenewRequest structure as a key-value pair table
 function M.DisableDomainAutoRenewRequest(args)
-	assert(args, "You must provdide an argument table when creating DisableDomainAutoRenewRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DisableDomainAutoRenewRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DomainName"] = args["DomainName"],
 	}
-	asserts.AssertDisableDomainAutoRenewRequest(t)
-	return t
+	asserts.AssertDisableDomainAutoRenewRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.BillingRecord = { ["Operation"] = true, ["InvoiceId"] = true, ["Price"] = true, ["BillDate"] = true, ["DomainName"] = true, nil }
@@ -106,16 +128,27 @@ end
 -- * DomainName [DomainName] <p>The name of the domain that the billing record applies to. If the domain name contains characters other than a-z, 0-9, and - (hyphen), such as an internationalized domain name, then this value is in Punycode. For more information, see <a href="http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/DomainNameFormat.html">DNS Domain Name Format</a> in the <i>Amazon Route 53 Developer Guidezzz</i>.</p>
 -- @return BillingRecord structure as a key-value pair table
 function M.BillingRecord(args)
-	assert(args, "You must provdide an argument table when creating BillingRecord")
-	local t = { 
+	assert(args, "You must provide an argument table when creating BillingRecord")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Operation"] = args["Operation"],
 		["InvoiceId"] = args["InvoiceId"],
 		["Price"] = args["Price"],
 		["BillDate"] = args["BillDate"],
 		["DomainName"] = args["DomainName"],
 	}
-	asserts.AssertBillingRecord(t)
-	return t
+	asserts.AssertBillingRecord(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DomainSummary = { ["TransferLock"] = true, ["AutoRenew"] = true, ["Expiry"] = true, ["DomainName"] = true, nil }
@@ -144,15 +177,26 @@ end
 -- Required key: DomainName
 -- @return DomainSummary structure as a key-value pair table
 function M.DomainSummary(args)
-	assert(args, "You must provdide an argument table when creating DomainSummary")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DomainSummary")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["TransferLock"] = args["TransferLock"],
 		["AutoRenew"] = args["AutoRenew"],
 		["Expiry"] = args["Expiry"],
 		["DomainName"] = args["DomainName"],
 	}
-	asserts.AssertDomainSummary(t)
-	return t
+	asserts.AssertDomainSummary(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListOperationsRequest = { ["Marker"] = true, ["MaxItems"] = true, nil }
@@ -175,13 +219,24 @@ end
 -- * MaxItems [PageMaxItems] <p>Number of domains to be returned.</p> <p>Default: 20</p>
 -- @return ListOperationsRequest structure as a key-value pair table
 function M.ListOperationsRequest(args)
-	assert(args, "You must provdide an argument table when creating ListOperationsRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListOperationsRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Marker"] = args["Marker"],
 		["MaxItems"] = args["MaxItems"],
 	}
-	asserts.AssertListOperationsRequest(t)
-	return t
+	asserts.AssertListOperationsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UnsupportedTLD = { ["message"] = true, nil }
@@ -202,12 +257,23 @@ end
 -- * message [ErrorMessage] <p>Amazon Route 53 does not support this top-level domain.</p>
 -- @return UnsupportedTLD structure as a key-value pair table
 function M.UnsupportedTLD(args)
-	assert(args, "You must provdide an argument table when creating UnsupportedTLD")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UnsupportedTLD")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertUnsupportedTLD(t)
-	return t
+	asserts.AssertUnsupportedTLD(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListTagsForDomainResponse = { ["TagList"] = true, nil }
@@ -230,12 +296,23 @@ end
 -- Required key: TagList
 -- @return ListTagsForDomainResponse structure as a key-value pair table
 function M.ListTagsForDomainResponse(args)
-	assert(args, "You must provdide an argument table when creating ListTagsForDomainResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListTagsForDomainResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["TagList"] = args["TagList"],
 	}
-	asserts.AssertListTagsForDomainResponse(t)
-	return t
+	asserts.AssertListTagsForDomainResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.RenewDomainResponse = { ["OperationId"] = true, nil }
@@ -258,12 +335,23 @@ end
 -- Required key: OperationId
 -- @return RenewDomainResponse structure as a key-value pair table
 function M.RenewDomainResponse(args)
-	assert(args, "You must provdide an argument table when creating RenewDomainResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating RenewDomainResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["OperationId"] = args["OperationId"],
 	}
-	asserts.AssertRenewDomainResponse(t)
-	return t
+	asserts.AssertRenewDomainResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ExtraParam = { ["Name"] = true, ["Value"] = true, nil }
@@ -290,13 +378,24 @@ end
 -- Required key: Value
 -- @return ExtraParam structure as a key-value pair table
 function M.ExtraParam(args)
-	assert(args, "You must provdide an argument table when creating ExtraParam")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ExtraParam")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Name"] = args["Name"],
 		["Value"] = args["Value"],
 	}
-	asserts.AssertExtraParam(t)
-	return t
+	asserts.AssertExtraParam(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetOperationDetailResponse = { ["Status"] = true, ["DomainName"] = true, ["SubmittedDate"] = true, ["Message"] = true, ["Type"] = true, ["OperationId"] = true, nil }
@@ -327,8 +426,14 @@ end
 -- * OperationId [OperationId] <p>The identifier for the operation.</p>
 -- @return GetOperationDetailResponse structure as a key-value pair table
 function M.GetOperationDetailResponse(args)
-	assert(args, "You must provdide an argument table when creating GetOperationDetailResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetOperationDetailResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Status"] = args["Status"],
 		["DomainName"] = args["DomainName"],
 		["SubmittedDate"] = args["SubmittedDate"],
@@ -336,8 +441,13 @@ function M.GetOperationDetailResponse(args)
 		["Type"] = args["Type"],
 		["OperationId"] = args["OperationId"],
 	}
-	asserts.AssertGetOperationDetailResponse(t)
-	return t
+	asserts.AssertGetOperationDetailResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetOperationDetailRequest = { ["OperationId"] = true, nil }
@@ -360,12 +470,23 @@ end
 -- Required key: OperationId
 -- @return GetOperationDetailRequest structure as a key-value pair table
 function M.GetOperationDetailRequest(args)
-	assert(args, "You must provdide an argument table when creating GetOperationDetailRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetOperationDetailRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["OperationId"] = args["OperationId"],
 	}
-	asserts.AssertGetOperationDetailRequest(t)
-	return t
+	asserts.AssertGetOperationDetailRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DisableDomainTransferLockRequest = { ["DomainName"] = true, nil }
@@ -388,12 +509,23 @@ end
 -- Required key: DomainName
 -- @return DisableDomainTransferLockRequest structure as a key-value pair table
 function M.DisableDomainTransferLockRequest(args)
-	assert(args, "You must provdide an argument table when creating DisableDomainTransferLockRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DisableDomainTransferLockRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DomainName"] = args["DomainName"],
 	}
-	asserts.AssertDisableDomainTransferLockRequest(t)
-	return t
+	asserts.AssertDisableDomainTransferLockRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Tag = { ["Value"] = true, ["Key"] = true, nil }
@@ -416,13 +548,24 @@ end
 -- * Key [TagKey] <p>The key (name) of a tag.</p> <p>Valid values: A-Z, a-z, 0-9, space, ".:/=+\-@"</p> <p>Constraints: Each key can be 1-128 characters long.</p>
 -- @return Tag structure as a key-value pair table
 function M.Tag(args)
-	assert(args, "You must provdide an argument table when creating Tag")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Tag")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Value"] = args["Value"],
 		["Key"] = args["Key"],
 	}
-	asserts.AssertTag(t)
-	return t
+	asserts.AssertTag(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.RenewDomainRequest = { ["CurrentExpiryYear"] = true, ["DurationInYears"] = true, ["DomainName"] = true, nil }
@@ -451,14 +594,25 @@ end
 -- Required key: CurrentExpiryYear
 -- @return RenewDomainRequest structure as a key-value pair table
 function M.RenewDomainRequest(args)
-	assert(args, "You must provdide an argument table when creating RenewDomainRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating RenewDomainRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["CurrentExpiryYear"] = args["CurrentExpiryYear"],
 		["DurationInYears"] = args["DurationInYears"],
 		["DomainName"] = args["DomainName"],
 	}
-	asserts.AssertRenewDomainRequest(t)
-	return t
+	asserts.AssertRenewDomainRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DisableDomainAutoRenewResponse = { nil }
@@ -477,11 +631,22 @@ end
 -- Valid keys:
 -- @return DisableDomainAutoRenewResponse structure as a key-value pair table
 function M.DisableDomainAutoRenewResponse(args)
-	assert(args, "You must provdide an argument table when creating DisableDomainAutoRenewResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DisableDomainAutoRenewResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertDisableDomainAutoRenewResponse(t)
-	return t
+	asserts.AssertDisableDomainAutoRenewResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetContactReachabilityStatusResponse = { ["status"] = true, ["domainName"] = true, nil }
@@ -504,13 +669,24 @@ end
 -- * domainName [DomainName] <p>The domain name for which you requested the reachability status.</p>
 -- @return GetContactReachabilityStatusResponse structure as a key-value pair table
 function M.GetContactReachabilityStatusResponse(args)
-	assert(args, "You must provdide an argument table when creating GetContactReachabilityStatusResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetContactReachabilityStatusResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["status"] = args["status"],
 		["domainName"] = args["domainName"],
 	}
-	asserts.AssertGetContactReachabilityStatusResponse(t)
-	return t
+	asserts.AssertGetContactReachabilityStatusResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteTagsForDomainRequest = { ["TagsToDelete"] = true, ["DomainName"] = true, nil }
@@ -537,13 +713,24 @@ end
 -- Required key: TagsToDelete
 -- @return DeleteTagsForDomainRequest structure as a key-value pair table
 function M.DeleteTagsForDomainRequest(args)
-	assert(args, "You must provdide an argument table when creating DeleteTagsForDomainRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteTagsForDomainRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["TagsToDelete"] = args["TagsToDelete"],
 		["DomainName"] = args["DomainName"],
 	}
-	asserts.AssertDeleteTagsForDomainRequest(t)
-	return t
+	asserts.AssertDeleteTagsForDomainRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetDomainSuggestionsRequest = { ["OnlyAvailable"] = true, ["SuggestionCount"] = true, ["DomainName"] = true, nil }
@@ -574,14 +761,25 @@ end
 -- Required key: OnlyAvailable
 -- @return GetDomainSuggestionsRequest structure as a key-value pair table
 function M.GetDomainSuggestionsRequest(args)
-	assert(args, "You must provdide an argument table when creating GetDomainSuggestionsRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetDomainSuggestionsRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["OnlyAvailable"] = args["OnlyAvailable"],
 		["SuggestionCount"] = args["SuggestionCount"],
 		["DomainName"] = args["DomainName"],
 	}
-	asserts.AssertGetDomainSuggestionsRequest(t)
-	return t
+	asserts.AssertGetDomainSuggestionsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.RetrieveDomainAuthCodeRequest = { ["DomainName"] = true, nil }
@@ -604,12 +802,23 @@ end
 -- Required key: DomainName
 -- @return RetrieveDomainAuthCodeRequest structure as a key-value pair table
 function M.RetrieveDomainAuthCodeRequest(args)
-	assert(args, "You must provdide an argument table when creating RetrieveDomainAuthCodeRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating RetrieveDomainAuthCodeRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DomainName"] = args["DomainName"],
 	}
-	asserts.AssertRetrieveDomainAuthCodeRequest(t)
-	return t
+	asserts.AssertRetrieveDomainAuthCodeRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.OperationLimitExceeded = { ["message"] = true, nil }
@@ -630,12 +839,23 @@ end
 -- * message [ErrorMessage] <p>The number of operations or jobs running exceeded the allowed threshold for the account.</p>
 -- @return OperationLimitExceeded structure as a key-value pair table
 function M.OperationLimitExceeded(args)
-	assert(args, "You must provdide an argument table when creating OperationLimitExceeded")
-	local t = { 
+	assert(args, "You must provide an argument table when creating OperationLimitExceeded")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertOperationLimitExceeded(t)
-	return t
+	asserts.AssertOperationLimitExceeded(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdateDomainContactRequest = { ["RegistrantContact"] = true, ["AdminContact"] = true, ["TechContact"] = true, ["DomainName"] = true, nil }
@@ -664,15 +884,26 @@ end
 -- Required key: DomainName
 -- @return UpdateDomainContactRequest structure as a key-value pair table
 function M.UpdateDomainContactRequest(args)
-	assert(args, "You must provdide an argument table when creating UpdateDomainContactRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateDomainContactRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["RegistrantContact"] = args["RegistrantContact"],
 		["AdminContact"] = args["AdminContact"],
 		["TechContact"] = args["TechContact"],
 		["DomainName"] = args["DomainName"],
 	}
-	asserts.AssertUpdateDomainContactRequest(t)
-	return t
+	asserts.AssertUpdateDomainContactRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DomainSuggestion = { ["Availability"] = true, ["DomainName"] = true, nil }
@@ -695,13 +926,24 @@ end
 -- * DomainName [DomainName] <p>A suggested domain name.</p>
 -- @return DomainSuggestion structure as a key-value pair table
 function M.DomainSuggestion(args)
-	assert(args, "You must provdide an argument table when creating DomainSuggestion")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DomainSuggestion")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Availability"] = args["Availability"],
 		["DomainName"] = args["DomainName"],
 	}
-	asserts.AssertDomainSuggestion(t)
-	return t
+	asserts.AssertDomainSuggestion(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ViewBillingRequest = { ["Marker"] = true, ["Start"] = true, ["End"] = true, ["MaxItems"] = true, nil }
@@ -728,15 +970,26 @@ end
 -- * MaxItems [PageMaxItems] <p>The number of billing records to be returned.</p> <p>Default: 20</p>
 -- @return ViewBillingRequest structure as a key-value pair table
 function M.ViewBillingRequest(args)
-	assert(args, "You must provdide an argument table when creating ViewBillingRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ViewBillingRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Marker"] = args["Marker"],
 		["Start"] = args["Start"],
 		["End"] = args["End"],
 		["MaxItems"] = args["MaxItems"],
 	}
-	asserts.AssertViewBillingRequest(t)
-	return t
+	asserts.AssertViewBillingRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.TransferDomainResponse = { ["OperationId"] = true, nil }
@@ -759,12 +1012,23 @@ end
 -- Required key: OperationId
 -- @return TransferDomainResponse structure as a key-value pair table
 function M.TransferDomainResponse(args)
-	assert(args, "You must provdide an argument table when creating TransferDomainResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating TransferDomainResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["OperationId"] = args["OperationId"],
 	}
-	asserts.AssertTransferDomainResponse(t)
-	return t
+	asserts.AssertTransferDomainResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.TLDRulesViolation = { ["message"] = true, nil }
@@ -785,12 +1049,23 @@ end
 -- * message [ErrorMessage] <p>The top-level domain does not support this operation.</p>
 -- @return TLDRulesViolation structure as a key-value pair table
 function M.TLDRulesViolation(args)
-	assert(args, "You must provdide an argument table when creating TLDRulesViolation")
-	local t = { 
+	assert(args, "You must provide an argument table when creating TLDRulesViolation")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertTLDRulesViolation(t)
-	return t
+	asserts.AssertTLDRulesViolation(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ResendContactReachabilityEmailRequest = { ["domainName"] = true, nil }
@@ -811,12 +1086,23 @@ end
 -- * domainName [DomainName] <p>The name of the domain for which you want Amazon Route 53 to resend a confirmation email to the registrant contact.</p>
 -- @return ResendContactReachabilityEmailRequest structure as a key-value pair table
 function M.ResendContactReachabilityEmailRequest(args)
-	assert(args, "You must provdide an argument table when creating ResendContactReachabilityEmailRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ResendContactReachabilityEmailRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["domainName"] = args["domainName"],
 	}
-	asserts.AssertResendContactReachabilityEmailRequest(t)
-	return t
+	asserts.AssertResendContactReachabilityEmailRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.RegisterDomainRequest = { ["RegistrantContact"] = true, ["IdnLangCode"] = true, ["DomainName"] = true, ["PrivacyProtectRegistrantContact"] = true, ["PrivacyProtectTechContact"] = true, ["TechContact"] = true, ["PrivacyProtectAdminContact"] = true, ["AutoRenew"] = true, ["DurationInYears"] = true, ["AdminContact"] = true, nil }
@@ -865,8 +1151,14 @@ end
 -- Required key: TechContact
 -- @return RegisterDomainRequest structure as a key-value pair table
 function M.RegisterDomainRequest(args)
-	assert(args, "You must provdide an argument table when creating RegisterDomainRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating RegisterDomainRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["RegistrantContact"] = args["RegistrantContact"],
 		["IdnLangCode"] = args["IdnLangCode"],
 		["DomainName"] = args["DomainName"],
@@ -878,8 +1170,13 @@ function M.RegisterDomainRequest(args)
 		["DurationInYears"] = args["DurationInYears"],
 		["AdminContact"] = args["AdminContact"],
 	}
-	asserts.AssertRegisterDomainRequest(t)
-	return t
+	asserts.AssertRegisterDomainRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.OperationSummary = { ["Status"] = true, ["Type"] = true, ["SubmittedDate"] = true, ["OperationId"] = true, nil }
@@ -914,15 +1211,26 @@ end
 -- Required key: SubmittedDate
 -- @return OperationSummary structure as a key-value pair table
 function M.OperationSummary(args)
-	assert(args, "You must provdide an argument table when creating OperationSummary")
-	local t = { 
+	assert(args, "You must provide an argument table when creating OperationSummary")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Status"] = args["Status"],
 		["Type"] = args["Type"],
 		["SubmittedDate"] = args["SubmittedDate"],
 		["OperationId"] = args["OperationId"],
 	}
-	asserts.AssertOperationSummary(t)
-	return t
+	asserts.AssertOperationSummary(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdateDomainNameserversResponse = { ["OperationId"] = true, nil }
@@ -945,12 +1253,23 @@ end
 -- Required key: OperationId
 -- @return UpdateDomainNameserversResponse structure as a key-value pair table
 function M.UpdateDomainNameserversResponse(args)
-	assert(args, "You must provdide an argument table when creating UpdateDomainNameserversResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateDomainNameserversResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["OperationId"] = args["OperationId"],
 	}
-	asserts.AssertUpdateDomainNameserversResponse(t)
-	return t
+	asserts.AssertUpdateDomainNameserversResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.TransferDomainRequest = { ["RegistrantContact"] = true, ["IdnLangCode"] = true, ["DomainName"] = true, ["Nameservers"] = true, ["AuthCode"] = true, ["PrivacyProtectRegistrantContact"] = true, ["TechContact"] = true, ["PrivacyProtectAdminContact"] = true, ["AutoRenew"] = true, ["DurationInYears"] = true, ["AdminContact"] = true, ["PrivacyProtectTechContact"] = true, nil }
@@ -1003,8 +1322,14 @@ end
 -- Required key: TechContact
 -- @return TransferDomainRequest structure as a key-value pair table
 function M.TransferDomainRequest(args)
-	assert(args, "You must provdide an argument table when creating TransferDomainRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating TransferDomainRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["RegistrantContact"] = args["RegistrantContact"],
 		["IdnLangCode"] = args["IdnLangCode"],
 		["DomainName"] = args["DomainName"],
@@ -1018,8 +1343,13 @@ function M.TransferDomainRequest(args)
 		["AdminContact"] = args["AdminContact"],
 		["PrivacyProtectTechContact"] = args["PrivacyProtectTechContact"],
 	}
-	asserts.AssertTransferDomainRequest(t)
-	return t
+	asserts.AssertTransferDomainRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ContactDetail = { ["City"] = true, ["Fax"] = true, ["OrganizationName"] = true, ["CountryCode"] = true, ["FirstName"] = true, ["LastName"] = true, ["ContactType"] = true, ["ZipCode"] = true, ["ExtraParams"] = true, ["State"] = true, ["AddressLine2"] = true, ["AddressLine1"] = true, ["PhoneNumber"] = true, ["Email"] = true, nil }
@@ -1066,8 +1396,14 @@ end
 -- * Email [Email] <p>Email address of the contact.</p>
 -- @return ContactDetail structure as a key-value pair table
 function M.ContactDetail(args)
-	assert(args, "You must provdide an argument table when creating ContactDetail")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ContactDetail")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["City"] = args["City"],
 		["Fax"] = args["Fax"],
 		["OrganizationName"] = args["OrganizationName"],
@@ -1083,8 +1419,13 @@ function M.ContactDetail(args)
 		["PhoneNumber"] = args["PhoneNumber"],
 		["Email"] = args["Email"],
 	}
-	asserts.AssertContactDetail(t)
-	return t
+	asserts.AssertContactDetail(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DisableDomainTransferLockResponse = { ["OperationId"] = true, nil }
@@ -1107,12 +1448,23 @@ end
 -- Required key: OperationId
 -- @return DisableDomainTransferLockResponse structure as a key-value pair table
 function M.DisableDomainTransferLockResponse(args)
-	assert(args, "You must provdide an argument table when creating DisableDomainTransferLockResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DisableDomainTransferLockResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["OperationId"] = args["OperationId"],
 	}
-	asserts.AssertDisableDomainTransferLockResponse(t)
-	return t
+	asserts.AssertDisableDomainTransferLockResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdateDomainContactResponse = { ["OperationId"] = true, nil }
@@ -1135,12 +1487,23 @@ end
 -- Required key: OperationId
 -- @return UpdateDomainContactResponse structure as a key-value pair table
 function M.UpdateDomainContactResponse(args)
-	assert(args, "You must provdide an argument table when creating UpdateDomainContactResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateDomainContactResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["OperationId"] = args["OperationId"],
 	}
-	asserts.AssertUpdateDomainContactResponse(t)
-	return t
+	asserts.AssertUpdateDomainContactResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.RegisterDomainResponse = { ["OperationId"] = true, nil }
@@ -1163,12 +1526,23 @@ end
 -- Required key: OperationId
 -- @return RegisterDomainResponse structure as a key-value pair table
 function M.RegisterDomainResponse(args)
-	assert(args, "You must provdide an argument table when creating RegisterDomainResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating RegisterDomainResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["OperationId"] = args["OperationId"],
 	}
-	asserts.AssertRegisterDomainResponse(t)
-	return t
+	asserts.AssertRegisterDomainResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetDomainDetailResponse = { ["RegistrantContact"] = true, ["StatusList"] = true, ["WhoIsServer"] = true, ["AbuseContactEmail"] = true, ["Reseller"] = true, ["RegistrarName"] = true, ["DomainName"] = true, ["Nameservers"] = true, ["RegistrarUrl"] = true, ["AdminPrivacy"] = true, ["RegistryDomainId"] = true, ["TechContact"] = true, ["CreationDate"] = true, ["AutoRenew"] = true, ["UpdatedDate"] = true, ["ExpirationDate"] = true, ["DnsSec"] = true, ["AdminContact"] = true, ["TechPrivacy"] = true, ["RegistrantPrivacy"] = true, ["AbuseContactPhone"] = true, nil }
@@ -1239,8 +1613,14 @@ end
 -- Required key: TechContact
 -- @return GetDomainDetailResponse structure as a key-value pair table
 function M.GetDomainDetailResponse(args)
-	assert(args, "You must provdide an argument table when creating GetDomainDetailResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetDomainDetailResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["RegistrantContact"] = args["RegistrantContact"],
 		["StatusList"] = args["StatusList"],
 		["WhoIsServer"] = args["WhoIsServer"],
@@ -1263,8 +1643,13 @@ function M.GetDomainDetailResponse(args)
 		["RegistrantPrivacy"] = args["RegistrantPrivacy"],
 		["AbuseContactPhone"] = args["AbuseContactPhone"],
 	}
-	asserts.AssertGetDomainDetailResponse(t)
-	return t
+	asserts.AssertGetDomainDetailResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.EnableDomainAutoRenewRequest = { ["DomainName"] = true, nil }
@@ -1287,12 +1672,23 @@ end
 -- Required key: DomainName
 -- @return EnableDomainAutoRenewRequest structure as a key-value pair table
 function M.EnableDomainAutoRenewRequest(args)
-	assert(args, "You must provdide an argument table when creating EnableDomainAutoRenewRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating EnableDomainAutoRenewRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DomainName"] = args["DomainName"],
 	}
-	asserts.AssertEnableDomainAutoRenewRequest(t)
-	return t
+	asserts.AssertEnableDomainAutoRenewRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CheckDomainAvailabilityResponse = { ["Availability"] = true, nil }
@@ -1315,12 +1711,23 @@ end
 -- Required key: Availability
 -- @return CheckDomainAvailabilityResponse structure as a key-value pair table
 function M.CheckDomainAvailabilityResponse(args)
-	assert(args, "You must provdide an argument table when creating CheckDomainAvailabilityResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CheckDomainAvailabilityResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Availability"] = args["Availability"],
 	}
-	asserts.AssertCheckDomainAvailabilityResponse(t)
-	return t
+	asserts.AssertCheckDomainAvailabilityResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.EnableDomainTransferLockResponse = { ["OperationId"] = true, nil }
@@ -1343,12 +1750,23 @@ end
 -- Required key: OperationId
 -- @return EnableDomainTransferLockResponse structure as a key-value pair table
 function M.EnableDomainTransferLockResponse(args)
-	assert(args, "You must provdide an argument table when creating EnableDomainTransferLockResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating EnableDomainTransferLockResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["OperationId"] = args["OperationId"],
 	}
-	asserts.AssertEnableDomainTransferLockResponse(t)
-	return t
+	asserts.AssertEnableDomainTransferLockResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.EnableDomainAutoRenewResponse = { nil }
@@ -1367,11 +1785,22 @@ end
 -- Valid keys:
 -- @return EnableDomainAutoRenewResponse structure as a key-value pair table
 function M.EnableDomainAutoRenewResponse(args)
-	assert(args, "You must provdide an argument table when creating EnableDomainAutoRenewResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating EnableDomainAutoRenewResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertEnableDomainAutoRenewResponse(t)
-	return t
+	asserts.AssertEnableDomainAutoRenewResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DomainLimitExceeded = { ["message"] = true, nil }
@@ -1392,12 +1821,23 @@ end
 -- * message [ErrorMessage] <p>The number of domains has exceeded the allowed threshold for the account.</p>
 -- @return DomainLimitExceeded structure as a key-value pair table
 function M.DomainLimitExceeded(args)
-	assert(args, "You must provdide an argument table when creating DomainLimitExceeded")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DomainLimitExceeded")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertDomainLimitExceeded(t)
-	return t
+	asserts.AssertDomainLimitExceeded(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdateDomainContactPrivacyResponse = { ["OperationId"] = true, nil }
@@ -1420,12 +1860,23 @@ end
 -- Required key: OperationId
 -- @return UpdateDomainContactPrivacyResponse structure as a key-value pair table
 function M.UpdateDomainContactPrivacyResponse(args)
-	assert(args, "You must provdide an argument table when creating UpdateDomainContactPrivacyResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateDomainContactPrivacyResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["OperationId"] = args["OperationId"],
 	}
-	asserts.AssertUpdateDomainContactPrivacyResponse(t)
-	return t
+	asserts.AssertUpdateDomainContactPrivacyResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdateDomainContactPrivacyRequest = { ["TechPrivacy"] = true, ["AdminPrivacy"] = true, ["RegistrantPrivacy"] = true, ["DomainName"] = true, nil }
@@ -1454,15 +1905,26 @@ end
 -- Required key: DomainName
 -- @return UpdateDomainContactPrivacyRequest structure as a key-value pair table
 function M.UpdateDomainContactPrivacyRequest(args)
-	assert(args, "You must provdide an argument table when creating UpdateDomainContactPrivacyRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateDomainContactPrivacyRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["TechPrivacy"] = args["TechPrivacy"],
 		["AdminPrivacy"] = args["AdminPrivacy"],
 		["RegistrantPrivacy"] = args["RegistrantPrivacy"],
 		["DomainName"] = args["DomainName"],
 	}
-	asserts.AssertUpdateDomainContactPrivacyRequest(t)
-	return t
+	asserts.AssertUpdateDomainContactPrivacyRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteTagsForDomainResponse = { nil }
@@ -1481,11 +1943,22 @@ end
 -- Valid keys:
 -- @return DeleteTagsForDomainResponse structure as a key-value pair table
 function M.DeleteTagsForDomainResponse(args)
-	assert(args, "You must provdide an argument table when creating DeleteTagsForDomainResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteTagsForDomainResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertDeleteTagsForDomainResponse(t)
-	return t
+	asserts.AssertDeleteTagsForDomainResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Nameserver = { ["GlueIps"] = true, ["Name"] = true, nil }
@@ -1510,13 +1983,24 @@ end
 -- Required key: Name
 -- @return Nameserver structure as a key-value pair table
 function M.Nameserver(args)
-	assert(args, "You must provdide an argument table when creating Nameserver")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Nameserver")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["GlueIps"] = args["GlueIps"],
 		["Name"] = args["Name"],
 	}
-	asserts.AssertNameserver(t)
-	return t
+	asserts.AssertNameserver(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ResendContactReachabilityEmailResponse = { ["isAlreadyVerified"] = true, ["emailAddress"] = true, ["domainName"] = true, nil }
@@ -1541,14 +2025,25 @@ end
 -- * domainName [DomainName] <p>The domain name for which you requested a confirmation email.</p>
 -- @return ResendContactReachabilityEmailResponse structure as a key-value pair table
 function M.ResendContactReachabilityEmailResponse(args)
-	assert(args, "You must provdide an argument table when creating ResendContactReachabilityEmailResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ResendContactReachabilityEmailResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["isAlreadyVerified"] = args["isAlreadyVerified"],
 		["emailAddress"] = args["emailAddress"],
 		["domainName"] = args["domainName"],
 	}
-	asserts.AssertResendContactReachabilityEmailResponse(t)
-	return t
+	asserts.AssertResendContactReachabilityEmailResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdateTagsForDomainResponse = { nil }
@@ -1567,11 +2062,22 @@ end
 -- Valid keys:
 -- @return UpdateTagsForDomainResponse structure as a key-value pair table
 function M.UpdateTagsForDomainResponse(args)
-	assert(args, "You must provdide an argument table when creating UpdateTagsForDomainResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateTagsForDomainResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertUpdateTagsForDomainResponse(t)
-	return t
+	asserts.AssertUpdateTagsForDomainResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListTagsForDomainRequest = { ["DomainName"] = true, nil }
@@ -1594,12 +2100,23 @@ end
 -- Required key: DomainName
 -- @return ListTagsForDomainRequest structure as a key-value pair table
 function M.ListTagsForDomainRequest(args)
-	assert(args, "You must provdide an argument table when creating ListTagsForDomainRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListTagsForDomainRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DomainName"] = args["DomainName"],
 	}
-	asserts.AssertListTagsForDomainRequest(t)
-	return t
+	asserts.AssertListTagsForDomainRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ViewBillingResponse = { ["NextPageMarker"] = true, ["BillingRecords"] = true, nil }
@@ -1622,13 +2139,24 @@ end
 -- * BillingRecords [BillingRecords] <p>A summary of billing records.</p>
 -- @return ViewBillingResponse structure as a key-value pair table
 function M.ViewBillingResponse(args)
-	assert(args, "You must provdide an argument table when creating ViewBillingResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ViewBillingResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NextPageMarker"] = args["NextPageMarker"],
 		["BillingRecords"] = args["BillingRecords"],
 	}
-	asserts.AssertViewBillingResponse(t)
-	return t
+	asserts.AssertViewBillingResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetContactReachabilityStatusRequest = { ["domainName"] = true, nil }
@@ -1649,12 +2177,23 @@ end
 -- * domainName [DomainName] <p>The name of the domain for which you want to know whether the registrant contact has confirmed that the email address is valid.</p>
 -- @return GetContactReachabilityStatusRequest structure as a key-value pair table
 function M.GetContactReachabilityStatusRequest(args)
-	assert(args, "You must provdide an argument table when creating GetContactReachabilityStatusRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetContactReachabilityStatusRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["domainName"] = args["domainName"],
 	}
-	asserts.AssertGetContactReachabilityStatusRequest(t)
-	return t
+	asserts.AssertGetContactReachabilityStatusRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DuplicateRequest = { ["message"] = true, nil }
@@ -1675,12 +2214,23 @@ end
 -- * message [ErrorMessage] <p>The request is already in progress for the domain.</p>
 -- @return DuplicateRequest structure as a key-value pair table
 function M.DuplicateRequest(args)
-	assert(args, "You must provdide an argument table when creating DuplicateRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DuplicateRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertDuplicateRequest(t)
-	return t
+	asserts.AssertDuplicateRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CheckDomainAvailabilityRequest = { ["IdnLangCode"] = true, ["DomainName"] = true, nil }
@@ -1705,13 +2255,24 @@ end
 -- Required key: DomainName
 -- @return CheckDomainAvailabilityRequest structure as a key-value pair table
 function M.CheckDomainAvailabilityRequest(args)
-	assert(args, "You must provdide an argument table when creating CheckDomainAvailabilityRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CheckDomainAvailabilityRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["IdnLangCode"] = args["IdnLangCode"],
 		["DomainName"] = args["DomainName"],
 	}
-	asserts.AssertCheckDomainAvailabilityRequest(t)
-	return t
+	asserts.AssertCheckDomainAvailabilityRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.EnableDomainTransferLockRequest = { ["DomainName"] = true, nil }
@@ -1734,12 +2295,23 @@ end
 -- Required key: DomainName
 -- @return EnableDomainTransferLockRequest structure as a key-value pair table
 function M.EnableDomainTransferLockRequest(args)
-	assert(args, "You must provdide an argument table when creating EnableDomainTransferLockRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating EnableDomainTransferLockRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DomainName"] = args["DomainName"],
 	}
-	asserts.AssertEnableDomainTransferLockRequest(t)
-	return t
+	asserts.AssertEnableDomainTransferLockRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetDomainSuggestionsResponse = { ["SuggestionsList"] = true, nil }
@@ -1760,12 +2332,23 @@ end
 -- * SuggestionsList [DomainSuggestionsList] <p>A list of possible domain names. If you specified <code>true</code> for <code>OnlyAvailable</code> in the request, the list contains only domains that are available for registration.</p>
 -- @return GetDomainSuggestionsResponse structure as a key-value pair table
 function M.GetDomainSuggestionsResponse(args)
-	assert(args, "You must provdide an argument table when creating GetDomainSuggestionsResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetDomainSuggestionsResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["SuggestionsList"] = args["SuggestionsList"],
 	}
-	asserts.AssertGetDomainSuggestionsResponse(t)
-	return t
+	asserts.AssertGetDomainSuggestionsResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdateDomainNameserversRequest = { ["Nameservers"] = true, ["FIAuthKey"] = true, ["DomainName"] = true, nil }
@@ -1794,14 +2377,25 @@ end
 -- Required key: Nameservers
 -- @return UpdateDomainNameserversRequest structure as a key-value pair table
 function M.UpdateDomainNameserversRequest(args)
-	assert(args, "You must provdide an argument table when creating UpdateDomainNameserversRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateDomainNameserversRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Nameservers"] = args["Nameservers"],
 		["FIAuthKey"] = args["FIAuthKey"],
 		["DomainName"] = args["DomainName"],
 	}
-	asserts.AssertUpdateDomainNameserversRequest(t)
-	return t
+	asserts.AssertUpdateDomainNameserversRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetDomainDetailRequest = { ["DomainName"] = true, nil }
@@ -1824,12 +2418,23 @@ end
 -- Required key: DomainName
 -- @return GetDomainDetailRequest structure as a key-value pair table
 function M.GetDomainDetailRequest(args)
-	assert(args, "You must provdide an argument table when creating GetDomainDetailRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetDomainDetailRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DomainName"] = args["DomainName"],
 	}
-	asserts.AssertGetDomainDetailRequest(t)
-	return t
+	asserts.AssertGetDomainDetailRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListDomainsResponse = { ["Domains"] = true, ["NextPageMarker"] = true, nil }
@@ -1854,13 +2459,24 @@ end
 -- Required key: Domains
 -- @return ListDomainsResponse structure as a key-value pair table
 function M.ListDomainsResponse(args)
-	assert(args, "You must provdide an argument table when creating ListDomainsResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListDomainsResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Domains"] = args["Domains"],
 		["NextPageMarker"] = args["NextPageMarker"],
 	}
-	asserts.AssertListDomainsResponse(t)
-	return t
+	asserts.AssertListDomainsResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListDomainsRequest = { ["Marker"] = true, ["MaxItems"] = true, nil }
@@ -1883,13 +2499,24 @@ end
 -- * MaxItems [PageMaxItems] <p>Number of domains to be returned.</p> <p>Default: 20</p>
 -- @return ListDomainsRequest structure as a key-value pair table
 function M.ListDomainsRequest(args)
-	assert(args, "You must provdide an argument table when creating ListDomainsRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListDomainsRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Marker"] = args["Marker"],
 		["MaxItems"] = args["MaxItems"],
 	}
-	asserts.AssertListDomainsRequest(t)
-	return t
+	asserts.AssertListDomainsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListOperationsResponse = { ["Operations"] = true, ["NextPageMarker"] = true, nil }
@@ -1914,13 +2541,24 @@ end
 -- Required key: Operations
 -- @return ListOperationsResponse structure as a key-value pair table
 function M.ListOperationsResponse(args)
-	assert(args, "You must provdide an argument table when creating ListOperationsResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListOperationsResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Operations"] = args["Operations"],
 		["NextPageMarker"] = args["NextPageMarker"],
 	}
-	asserts.AssertListOperationsResponse(t)
-	return t
+	asserts.AssertListOperationsResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidInput = { ["message"] = true, nil }
@@ -1941,12 +2579,23 @@ end
 -- * message [ErrorMessage] <p>The requested item is not acceptable. For example, for an OperationId it may refer to the ID of an operation that is already completed. For a domain name, it may not be a valid domain name or belong to the requester account.</p>
 -- @return InvalidInput structure as a key-value pair table
 function M.InvalidInput(args)
-	assert(args, "You must provdide an argument table when creating InvalidInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertInvalidInput(t)
-	return t
+	asserts.AssertInvalidInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.RetrieveDomainAuthCodeResponse = { ["AuthCode"] = true, nil }
@@ -1969,12 +2618,23 @@ end
 -- Required key: AuthCode
 -- @return RetrieveDomainAuthCodeResponse structure as a key-value pair table
 function M.RetrieveDomainAuthCodeResponse(args)
-	assert(args, "You must provdide an argument table when creating RetrieveDomainAuthCodeResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating RetrieveDomainAuthCodeResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["AuthCode"] = args["AuthCode"],
 	}
-	asserts.AssertRetrieveDomainAuthCodeResponse(t)
-	return t
+	asserts.AssertRetrieveDomainAuthCodeResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 function asserts.AssertOperationStatus(str)
@@ -2656,8 +3316,11 @@ function M.ResendContactReachabilityEmailAsync(ResendContactReachabilityEmailReq
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "Route53Domains_v20140515.ResendContactReachabilityEmail",
 	}
+	for header,value in pairs(ResendContactReachabilityEmailRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ResendContactReachabilityEmailRequest, headers, settings, cb)
 	else
@@ -2688,8 +3351,11 @@ function M.ListDomainsAsync(ListDomainsRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "Route53Domains_v20140515.ListDomains",
 	}
+	for header,value in pairs(ListDomainsRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ListDomainsRequest, headers, settings, cb)
 	else
@@ -2720,8 +3386,11 @@ function M.DisableDomainTransferLockAsync(DisableDomainTransferLockRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "Route53Domains_v20140515.DisableDomainTransferLock",
 	}
+	for header,value in pairs(DisableDomainTransferLockRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DisableDomainTransferLockRequest, headers, settings, cb)
 	else
@@ -2752,8 +3421,11 @@ function M.RetrieveDomainAuthCodeAsync(RetrieveDomainAuthCodeRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "Route53Domains_v20140515.RetrieveDomainAuthCode",
 	}
+	for header,value in pairs(RetrieveDomainAuthCodeRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", RetrieveDomainAuthCodeRequest, headers, settings, cb)
 	else
@@ -2784,8 +3456,11 @@ function M.ViewBillingAsync(ViewBillingRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "Route53Domains_v20140515.ViewBilling",
 	}
+	for header,value in pairs(ViewBillingRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ViewBillingRequest, headers, settings, cb)
 	else
@@ -2816,8 +3491,11 @@ function M.UpdateDomainNameserversAsync(UpdateDomainNameserversRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "Route53Domains_v20140515.UpdateDomainNameservers",
 	}
+	for header,value in pairs(UpdateDomainNameserversRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateDomainNameserversRequest, headers, settings, cb)
 	else
@@ -2848,8 +3526,11 @@ function M.UpdateTagsForDomainAsync(UpdateTagsForDomainRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "Route53Domains_v20140515.UpdateTagsForDomain",
 	}
+	for header,value in pairs(UpdateTagsForDomainRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateTagsForDomainRequest, headers, settings, cb)
 	else
@@ -2880,8 +3561,11 @@ function M.EnableDomainAutoRenewAsync(EnableDomainAutoRenewRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "Route53Domains_v20140515.EnableDomainAutoRenew",
 	}
+	for header,value in pairs(EnableDomainAutoRenewRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", EnableDomainAutoRenewRequest, headers, settings, cb)
 	else
@@ -2912,8 +3596,11 @@ function M.GetDomainSuggestionsAsync(GetDomainSuggestionsRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "Route53Domains_v20140515.GetDomainSuggestions",
 	}
+	for header,value in pairs(GetDomainSuggestionsRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", GetDomainSuggestionsRequest, headers, settings, cb)
 	else
@@ -2944,8 +3631,11 @@ function M.GetOperationDetailAsync(GetOperationDetailRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "Route53Domains_v20140515.GetOperationDetail",
 	}
+	for header,value in pairs(GetOperationDetailRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", GetOperationDetailRequest, headers, settings, cb)
 	else
@@ -2976,8 +3666,11 @@ function M.RenewDomainAsync(RenewDomainRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "Route53Domains_v20140515.RenewDomain",
 	}
+	for header,value in pairs(RenewDomainRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", RenewDomainRequest, headers, settings, cb)
 	else
@@ -3008,8 +3701,11 @@ function M.TransferDomainAsync(TransferDomainRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "Route53Domains_v20140515.TransferDomain",
 	}
+	for header,value in pairs(TransferDomainRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", TransferDomainRequest, headers, settings, cb)
 	else
@@ -3040,8 +3736,11 @@ function M.DisableDomainAutoRenewAsync(DisableDomainAutoRenewRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "Route53Domains_v20140515.DisableDomainAutoRenew",
 	}
+	for header,value in pairs(DisableDomainAutoRenewRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DisableDomainAutoRenewRequest, headers, settings, cb)
 	else
@@ -3072,8 +3771,11 @@ function M.DeleteTagsForDomainAsync(DeleteTagsForDomainRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "Route53Domains_v20140515.DeleteTagsForDomain",
 	}
+	for header,value in pairs(DeleteTagsForDomainRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteTagsForDomainRequest, headers, settings, cb)
 	else
@@ -3104,8 +3806,11 @@ function M.RegisterDomainAsync(RegisterDomainRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "Route53Domains_v20140515.RegisterDomain",
 	}
+	for header,value in pairs(RegisterDomainRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", RegisterDomainRequest, headers, settings, cb)
 	else
@@ -3136,8 +3841,11 @@ function M.GetDomainDetailAsync(GetDomainDetailRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "Route53Domains_v20140515.GetDomainDetail",
 	}
+	for header,value in pairs(GetDomainDetailRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", GetDomainDetailRequest, headers, settings, cb)
 	else
@@ -3168,8 +3876,11 @@ function M.CheckDomainAvailabilityAsync(CheckDomainAvailabilityRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "Route53Domains_v20140515.CheckDomainAvailability",
 	}
+	for header,value in pairs(CheckDomainAvailabilityRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", CheckDomainAvailabilityRequest, headers, settings, cb)
 	else
@@ -3200,8 +3911,11 @@ function M.UpdateDomainContactPrivacyAsync(UpdateDomainContactPrivacyRequest, cb
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "Route53Domains_v20140515.UpdateDomainContactPrivacy",
 	}
+	for header,value in pairs(UpdateDomainContactPrivacyRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateDomainContactPrivacyRequest, headers, settings, cb)
 	else
@@ -3232,8 +3946,11 @@ function M.ListTagsForDomainAsync(ListTagsForDomainRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "Route53Domains_v20140515.ListTagsForDomain",
 	}
+	for header,value in pairs(ListTagsForDomainRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ListTagsForDomainRequest, headers, settings, cb)
 	else
@@ -3264,8 +3981,11 @@ function M.GetContactReachabilityStatusAsync(GetContactReachabilityStatusRequest
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "Route53Domains_v20140515.GetContactReachabilityStatus",
 	}
+	for header,value in pairs(GetContactReachabilityStatusRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", GetContactReachabilityStatusRequest, headers, settings, cb)
 	else
@@ -3296,8 +4016,11 @@ function M.UpdateDomainContactAsync(UpdateDomainContactRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "Route53Domains_v20140515.UpdateDomainContact",
 	}
+	for header,value in pairs(UpdateDomainContactRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateDomainContactRequest, headers, settings, cb)
 	else
@@ -3328,8 +4051,11 @@ function M.ListOperationsAsync(ListOperationsRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "Route53Domains_v20140515.ListOperations",
 	}
+	for header,value in pairs(ListOperationsRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ListOperationsRequest, headers, settings, cb)
 	else
@@ -3360,8 +4086,11 @@ function M.EnableDomainTransferLockAsync(EnableDomainTransferLockRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "Route53Domains_v20140515.EnableDomainTransferLock",
 	}
+	for header,value in pairs(EnableDomainTransferLockRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", EnableDomainTransferLockRequest, headers, settings, cb)
 	else

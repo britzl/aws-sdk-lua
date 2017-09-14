@@ -41,12 +41,24 @@ end
 -- Required key: Resource
 -- @return ListTagsRequest structure as a key-value pair table
 function M.ListTagsRequest(args)
-	assert(args, "You must provdide an argument table when creating ListTagsRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListTagsRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{ARN}"] = args["Resource"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Resource"] = args["Resource"],
 	}
-	asserts.AssertListTagsRequest(t)
-	return t
+	asserts.AssertListTagsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListAliasesResponse = { ["NextMarker"] = true, ["Aliases"] = true, nil }
@@ -69,13 +81,24 @@ end
 -- * Aliases [AliasList] <p>A list of aliases.</p>
 -- @return ListAliasesResponse structure as a key-value pair table
 function M.ListAliasesResponse(args)
-	assert(args, "You must provdide an argument table when creating ListAliasesResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListAliasesResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NextMarker"] = args["NextMarker"],
 		["Aliases"] = args["Aliases"],
 	}
-	asserts.AssertListAliasesResponse(t)
-	return t
+	asserts.AssertListAliasesResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListVersionsByFunctionRequest = { ["Marker"] = true, ["FunctionName"] = true, ["MaxItems"] = true, nil }
@@ -102,14 +125,28 @@ end
 -- Required key: FunctionName
 -- @return ListVersionsByFunctionRequest structure as a key-value pair table
 function M.ListVersionsByFunctionRequest(args)
-	assert(args, "You must provdide an argument table when creating ListVersionsByFunctionRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListVersionsByFunctionRequest")
+    local query_args = { 
+        ["Marker"] = args["Marker"],
+        ["MaxItems"] = args["MaxItems"],
+    }
+    local uri_args = { 
+        ["{FunctionName}"] = args["FunctionName"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Marker"] = args["Marker"],
 		["FunctionName"] = args["FunctionName"],
 		["MaxItems"] = args["MaxItems"],
 	}
-	asserts.AssertListVersionsByFunctionRequest(t)
-	return t
+	asserts.AssertListVersionsByFunctionRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.TracingConfig = { ["Mode"] = true, nil }
@@ -130,12 +167,23 @@ end
 -- * Mode [TracingMode] <p>Can be either PassThrough or Active. If PassThrough, Lambda will only trace the request from an upstream service if it contains a tracing header with "sampled=1". If Active, Lambda will respect any tracing header it receives from an upstream service. If no tracing header is received, Lambda will call X-Ray for a tracing decision.</p>
 -- @return TracingConfig structure as a key-value pair table
 function M.TracingConfig(args)
-	assert(args, "You must provdide an argument table when creating TracingConfig")
-	local t = { 
+	assert(args, "You must provide an argument table when creating TracingConfig")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Mode"] = args["Mode"],
 	}
-	asserts.AssertTracingConfig(t)
-	return t
+	asserts.AssertTracingConfig(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdateAliasRequest = { ["Description"] = true, ["FunctionVersion"] = true, ["FunctionName"] = true, ["Name"] = true, nil }
@@ -166,15 +214,28 @@ end
 -- Required key: Name
 -- @return UpdateAliasRequest structure as a key-value pair table
 function M.UpdateAliasRequest(args)
-	assert(args, "You must provdide an argument table when creating UpdateAliasRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateAliasRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{FunctionName}"] = args["FunctionName"],
+        ["{Name}"] = args["Name"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Description"] = args["Description"],
 		["FunctionVersion"] = args["FunctionVersion"],
 		["FunctionName"] = args["FunctionName"],
 		["Name"] = args["Name"],
 	}
-	asserts.AssertUpdateAliasRequest(t)
-	return t
+	asserts.AssertUpdateAliasRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.KMSInvalidStateException = { ["Message"] = true, ["Type"] = true, nil }
@@ -197,13 +258,24 @@ end
 -- * Type [String] 
 -- @return KMSInvalidStateException structure as a key-value pair table
 function M.KMSInvalidStateException(args)
-	assert(args, "You must provdide an argument table when creating KMSInvalidStateException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating KMSInvalidStateException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Message"] = args["Message"],
 		["Type"] = args["Type"],
 	}
-	asserts.AssertKMSInvalidStateException(t)
-	return t
+	asserts.AssertKMSInvalidStateException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvokeAsyncRequest = { ["FunctionName"] = true, ["InvokeArgs"] = true, nil }
@@ -230,13 +302,25 @@ end
 -- Required key: InvokeArgs
 -- @return InvokeAsyncRequest structure as a key-value pair table
 function M.InvokeAsyncRequest(args)
-	assert(args, "You must provdide an argument table when creating InvokeAsyncRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvokeAsyncRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{FunctionName}"] = args["FunctionName"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["FunctionName"] = args["FunctionName"],
 		["InvokeArgs"] = args["InvokeArgs"],
 	}
-	asserts.AssertInvokeAsyncRequest(t)
-	return t
+	asserts.AssertInvokeAsyncRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Environment = { ["Variables"] = true, nil }
@@ -257,12 +341,23 @@ end
 -- * Variables [EnvironmentVariables] <p>The key-value pairs that represent your environment's configuration settings.</p>
 -- @return Environment structure as a key-value pair table
 function M.Environment(args)
-	assert(args, "You must provdide an argument table when creating Environment")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Environment")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Variables"] = args["Variables"],
 	}
-	asserts.AssertEnvironment(t)
-	return t
+	asserts.AssertEnvironment(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListVersionsByFunctionResponse = { ["NextMarker"] = true, ["Versions"] = true, nil }
@@ -285,13 +380,24 @@ end
 -- * Versions [FunctionList] <p>A list of Lambda function versions.</p>
 -- @return ListVersionsByFunctionResponse structure as a key-value pair table
 function M.ListVersionsByFunctionResponse(args)
-	assert(args, "You must provdide an argument table when creating ListVersionsByFunctionResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListVersionsByFunctionResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NextMarker"] = args["NextMarker"],
 		["Versions"] = args["Versions"],
 	}
-	asserts.AssertListVersionsByFunctionResponse(t)
-	return t
+	asserts.AssertListVersionsByFunctionResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListEventSourceMappingsRequest = { ["Marker"] = true, ["EventSourceArn"] = true, ["FunctionName"] = true, ["MaxItems"] = true, nil }
@@ -318,15 +424,30 @@ end
 -- * MaxItems [MaxListItems] <p>Optional integer. Specifies the maximum number of event sources to return in response. This value must be greater than 0.</p>
 -- @return ListEventSourceMappingsRequest structure as a key-value pair table
 function M.ListEventSourceMappingsRequest(args)
-	assert(args, "You must provdide an argument table when creating ListEventSourceMappingsRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListEventSourceMappingsRequest")
+    local query_args = { 
+        ["Marker"] = args["Marker"],
+        ["EventSourceArn"] = args["EventSourceArn"],
+        ["FunctionName"] = args["FunctionName"],
+        ["MaxItems"] = args["MaxItems"],
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Marker"] = args["Marker"],
 		["EventSourceArn"] = args["EventSourceArn"],
 		["FunctionName"] = args["FunctionName"],
 		["MaxItems"] = args["MaxItems"],
 	}
-	asserts.AssertListEventSourceMappingsRequest(t)
-	return t
+	asserts.AssertListEventSourceMappingsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AccountUsage = { ["FunctionCount"] = true, ["TotalCodeSize"] = true, nil }
@@ -349,13 +470,24 @@ end
 -- * TotalCodeSize [Long] <p>Total size, in bytes, of the account's deployment packages per region.</p>
 -- @return AccountUsage structure as a key-value pair table
 function M.AccountUsage(args)
-	assert(args, "You must provdide an argument table when creating AccountUsage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AccountUsage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["FunctionCount"] = args["FunctionCount"],
 		["TotalCodeSize"] = args["TotalCodeSize"],
 	}
-	asserts.AssertAccountUsage(t)
-	return t
+	asserts.AssertAccountUsage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.KMSNotFoundException = { ["Message"] = true, ["Type"] = true, nil }
@@ -378,13 +510,24 @@ end
 -- * Type [String] 
 -- @return KMSNotFoundException structure as a key-value pair table
 function M.KMSNotFoundException(args)
-	assert(args, "You must provdide an argument table when creating KMSNotFoundException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating KMSNotFoundException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Message"] = args["Message"],
 		["Type"] = args["Type"],
 	}
-	asserts.AssertKMSNotFoundException(t)
-	return t
+	asserts.AssertKMSNotFoundException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteFunctionRequest = { ["FunctionName"] = true, ["Qualifier"] = true, nil }
@@ -409,13 +552,26 @@ end
 -- Required key: FunctionName
 -- @return DeleteFunctionRequest structure as a key-value pair table
 function M.DeleteFunctionRequest(args)
-	assert(args, "You must provdide an argument table when creating DeleteFunctionRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteFunctionRequest")
+    local query_args = { 
+        ["Qualifier"] = args["Qualifier"],
+    }
+    local uri_args = { 
+        ["{FunctionName}"] = args["FunctionName"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["FunctionName"] = args["FunctionName"],
 		["Qualifier"] = args["Qualifier"],
 	}
-	asserts.AssertDeleteFunctionRequest(t)
-	return t
+	asserts.AssertDeleteFunctionRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetFunctionRequest = { ["FunctionName"] = true, ["Qualifier"] = true, nil }
@@ -440,13 +596,26 @@ end
 -- Required key: FunctionName
 -- @return GetFunctionRequest structure as a key-value pair table
 function M.GetFunctionRequest(args)
-	assert(args, "You must provdide an argument table when creating GetFunctionRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetFunctionRequest")
+    local query_args = { 
+        ["Qualifier"] = args["Qualifier"],
+    }
+    local uri_args = { 
+        ["{FunctionName}"] = args["FunctionName"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["FunctionName"] = args["FunctionName"],
 		["Qualifier"] = args["Qualifier"],
 	}
-	asserts.AssertGetFunctionRequest(t)
-	return t
+	asserts.AssertGetFunctionRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.PublishVersionRequest = { ["CodeSha256"] = true, ["FunctionName"] = true, ["Description"] = true, nil }
@@ -473,14 +642,26 @@ end
 -- Required key: FunctionName
 -- @return PublishVersionRequest structure as a key-value pair table
 function M.PublishVersionRequest(args)
-	assert(args, "You must provdide an argument table when creating PublishVersionRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating PublishVersionRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{FunctionName}"] = args["FunctionName"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["CodeSha256"] = args["CodeSha256"],
 		["FunctionName"] = args["FunctionName"],
 		["Description"] = args["Description"],
 	}
-	asserts.AssertPublishVersionRequest(t)
-	return t
+	asserts.AssertPublishVersionRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteAliasRequest = { ["FunctionName"] = true, ["Name"] = true, nil }
@@ -507,13 +688,26 @@ end
 -- Required key: Name
 -- @return DeleteAliasRequest structure as a key-value pair table
 function M.DeleteAliasRequest(args)
-	assert(args, "You must provdide an argument table when creating DeleteAliasRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteAliasRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{FunctionName}"] = args["FunctionName"],
+        ["{Name}"] = args["Name"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["FunctionName"] = args["FunctionName"],
 		["Name"] = args["Name"],
 	}
-	asserts.AssertDeleteAliasRequest(t)
-	return t
+	asserts.AssertDeleteAliasRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvocationRequest = { ["FunctionName"] = true, ["InvocationType"] = true, ["LogType"] = true, ["ClientContext"] = true, ["Payload"] = true, ["Qualifier"] = true, nil }
@@ -546,8 +740,19 @@ end
 -- Required key: FunctionName
 -- @return InvocationRequest structure as a key-value pair table
 function M.InvocationRequest(args)
-	assert(args, "You must provdide an argument table when creating InvocationRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvocationRequest")
+    local query_args = { 
+        ["Qualifier"] = args["Qualifier"],
+    }
+    local uri_args = { 
+        ["{FunctionName}"] = args["FunctionName"],
+    }
+    local header_args = { 
+        ["X-Amz-Invocation-Type"] = args["InvocationType"],
+        ["X-Amz-Log-Type"] = args["LogType"],
+        ["X-Amz-Client-Context"] = args["ClientContext"],
+    }
+	local all_args = { 
 		["FunctionName"] = args["FunctionName"],
 		["InvocationType"] = args["InvocationType"],
 		["LogType"] = args["LogType"],
@@ -555,8 +760,13 @@ function M.InvocationRequest(args)
 		["Payload"] = args["Payload"],
 		["Qualifier"] = args["Qualifier"],
 	}
-	asserts.AssertInvocationRequest(t)
-	return t
+	asserts.AssertInvocationRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetAliasRequest = { ["FunctionName"] = true, ["Name"] = true, nil }
@@ -583,13 +793,26 @@ end
 -- Required key: Name
 -- @return GetAliasRequest structure as a key-value pair table
 function M.GetAliasRequest(args)
-	assert(args, "You must provdide an argument table when creating GetAliasRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetAliasRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{FunctionName}"] = args["FunctionName"],
+        ["{Name}"] = args["Name"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["FunctionName"] = args["FunctionName"],
 		["Name"] = args["Name"],
 	}
-	asserts.AssertGetAliasRequest(t)
-	return t
+	asserts.AssertGetAliasRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdateFunctionCodeRequest = { ["DryRun"] = true, ["FunctionName"] = true, ["ZipFile"] = true, ["Publish"] = true, ["S3Bucket"] = true, ["S3Key"] = true, ["S3ObjectVersion"] = true, nil }
@@ -624,8 +847,15 @@ end
 -- Required key: FunctionName
 -- @return UpdateFunctionCodeRequest structure as a key-value pair table
 function M.UpdateFunctionCodeRequest(args)
-	assert(args, "You must provdide an argument table when creating UpdateFunctionCodeRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateFunctionCodeRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{FunctionName}"] = args["FunctionName"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DryRun"] = args["DryRun"],
 		["FunctionName"] = args["FunctionName"],
 		["ZipFile"] = args["ZipFile"],
@@ -634,8 +864,13 @@ function M.UpdateFunctionCodeRequest(args)
 		["S3Key"] = args["S3Key"],
 		["S3ObjectVersion"] = args["S3ObjectVersion"],
 	}
-	asserts.AssertUpdateFunctionCodeRequest(t)
-	return t
+	asserts.AssertUpdateFunctionCodeRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdateFunctionConfigurationRequest = { ["TracingConfig"] = true, ["DeadLetterConfig"] = true, ["FunctionName"] = true, ["VpcConfig"] = true, ["KMSKeyArn"] = true, ["MemorySize"] = true, ["Environment"] = true, ["Handler"] = true, ["Role"] = true, ["Timeout"] = true, ["Runtime"] = true, ["Description"] = true, nil }
@@ -680,8 +915,15 @@ end
 -- Required key: FunctionName
 -- @return UpdateFunctionConfigurationRequest structure as a key-value pair table
 function M.UpdateFunctionConfigurationRequest(args)
-	assert(args, "You must provdide an argument table when creating UpdateFunctionConfigurationRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateFunctionConfigurationRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{FunctionName}"] = args["FunctionName"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["TracingConfig"] = args["TracingConfig"],
 		["DeadLetterConfig"] = args["DeadLetterConfig"],
 		["FunctionName"] = args["FunctionName"],
@@ -695,8 +937,13 @@ function M.UpdateFunctionConfigurationRequest(args)
 		["Runtime"] = args["Runtime"],
 		["Description"] = args["Description"],
 	}
-	asserts.AssertUpdateFunctionConfigurationRequest(t)
-	return t
+	asserts.AssertUpdateFunctionConfigurationRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AliasConfiguration = { ["AliasArn"] = true, ["FunctionVersion"] = true, ["Name"] = true, ["Description"] = true, nil }
@@ -723,15 +970,26 @@ end
 -- * Description [Description] <p>Alias description.</p>
 -- @return AliasConfiguration structure as a key-value pair table
 function M.AliasConfiguration(args)
-	assert(args, "You must provdide an argument table when creating AliasConfiguration")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AliasConfiguration")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["AliasArn"] = args["AliasArn"],
 		["FunctionVersion"] = args["FunctionVersion"],
 		["Name"] = args["Name"],
 		["Description"] = args["Description"],
 	}
-	asserts.AssertAliasConfiguration(t)
-	return t
+	asserts.AssertAliasConfiguration(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetAccountSettingsResponse = { ["AccountLimit"] = true, ["AccountUsage"] = true, nil }
@@ -754,13 +1012,24 @@ end
 -- * AccountUsage [AccountUsage] 
 -- @return GetAccountSettingsResponse structure as a key-value pair table
 function M.GetAccountSettingsResponse(args)
-	assert(args, "You must provdide an argument table when creating GetAccountSettingsResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetAccountSettingsResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["AccountLimit"] = args["AccountLimit"],
 		["AccountUsage"] = args["AccountUsage"],
 	}
-	asserts.AssertGetAccountSettingsResponse(t)
-	return t
+	asserts.AssertGetAccountSettingsResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.VpcConfigResponse = { ["SubnetIds"] = true, ["VpcId"] = true, ["SecurityGroupIds"] = true, nil }
@@ -785,14 +1054,25 @@ end
 -- * SecurityGroupIds [SecurityGroupIds] <p>A list of security group IDs associated with the Lambda function.</p>
 -- @return VpcConfigResponse structure as a key-value pair table
 function M.VpcConfigResponse(args)
-	assert(args, "You must provdide an argument table when creating VpcConfigResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating VpcConfigResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["SubnetIds"] = args["SubnetIds"],
 		["VpcId"] = args["VpcId"],
 		["SecurityGroupIds"] = args["SecurityGroupIds"],
 	}
-	asserts.AssertVpcConfigResponse(t)
-	return t
+	asserts.AssertVpcConfigResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvocationResponse = { ["LogResult"] = true, ["FunctionError"] = true, ["Payload"] = true, ["StatusCode"] = true, nil }
@@ -819,15 +1099,28 @@ end
 -- * StatusCode [Integer] <p>The HTTP status code will be in the 200 range for successful request. For the <code>RequestResponse</code> invocation type this status code will be 200. For the <code>Event</code> invocation type this status code will be 202. For the <code>DryRun</code> invocation type the status code will be 204. </p>
 -- @return InvocationResponse structure as a key-value pair table
 function M.InvocationResponse(args)
-	assert(args, "You must provdide an argument table when creating InvocationResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvocationResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+        ["X-Amz-Log-Result"] = args["LogResult"],
+        ["X-Amz-Function-Error"] = args["FunctionError"],
+    }
+	local all_args = { 
 		["LogResult"] = args["LogResult"],
 		["FunctionError"] = args["FunctionError"],
 		["Payload"] = args["Payload"],
 		["StatusCode"] = args["StatusCode"],
 	}
-	asserts.AssertInvocationResponse(t)
-	return t
+	asserts.AssertInvocationResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CodeStorageExceededException = { ["message"] = true, ["Type"] = true, nil }
@@ -850,13 +1143,24 @@ end
 -- * Type [String] <p/>
 -- @return CodeStorageExceededException structure as a key-value pair table
 function M.CodeStorageExceededException(args)
-	assert(args, "You must provdide an argument table when creating CodeStorageExceededException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CodeStorageExceededException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 		["Type"] = args["Type"],
 	}
-	asserts.AssertCodeStorageExceededException(t)
-	return t
+	asserts.AssertCodeStorageExceededException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.TooManyRequestsException = { ["message"] = true, ["Type"] = true, ["Reason"] = true, ["retryAfterSeconds"] = true, nil }
@@ -883,15 +1187,27 @@ end
 -- * retryAfterSeconds [String] <p>The number of seconds the caller should wait before retrying.</p>
 -- @return TooManyRequestsException structure as a key-value pair table
 function M.TooManyRequestsException(args)
-	assert(args, "You must provdide an argument table when creating TooManyRequestsException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating TooManyRequestsException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+        ["Retry-After"] = args["retryAfterSeconds"],
+    }
+	local all_args = { 
 		["message"] = args["message"],
 		["Type"] = args["Type"],
 		["Reason"] = args["Reason"],
 		["retryAfterSeconds"] = args["retryAfterSeconds"],
 	}
-	asserts.AssertTooManyRequestsException(t)
-	return t
+	asserts.AssertTooManyRequestsException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ENILimitReachedException = { ["Message"] = true, ["Type"] = true, nil }
@@ -914,13 +1230,24 @@ end
 -- * Type [String] 
 -- @return ENILimitReachedException structure as a key-value pair table
 function M.ENILimitReachedException(args)
-	assert(args, "You must provdide an argument table when creating ENILimitReachedException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ENILimitReachedException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Message"] = args["Message"],
 		["Type"] = args["Type"],
 	}
-	asserts.AssertENILimitReachedException(t)
-	return t
+	asserts.AssertENILimitReachedException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateEventSourceMappingRequest = { ["FunctionName"] = true, ["StartingPositionTimestamp"] = true, ["BatchSize"] = true, ["Enabled"] = true, ["EventSourceArn"] = true, ["StartingPosition"] = true, nil }
@@ -957,8 +1284,14 @@ end
 -- Required key: StartingPosition
 -- @return CreateEventSourceMappingRequest structure as a key-value pair table
 function M.CreateEventSourceMappingRequest(args)
-	assert(args, "You must provdide an argument table when creating CreateEventSourceMappingRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateEventSourceMappingRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["FunctionName"] = args["FunctionName"],
 		["StartingPositionTimestamp"] = args["StartingPositionTimestamp"],
 		["BatchSize"] = args["BatchSize"],
@@ -966,8 +1299,13 @@ function M.CreateEventSourceMappingRequest(args)
 		["EventSourceArn"] = args["EventSourceArn"],
 		["StartingPosition"] = args["StartingPosition"],
 	}
-	asserts.AssertCreateEventSourceMappingRequest(t)
-	return t
+	asserts.AssertCreateEventSourceMappingRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.RemovePermissionRequest = { ["StatementId"] = true, ["FunctionName"] = true, ["Qualifier"] = true, nil }
@@ -996,14 +1334,28 @@ end
 -- Required key: StatementId
 -- @return RemovePermissionRequest structure as a key-value pair table
 function M.RemovePermissionRequest(args)
-	assert(args, "You must provdide an argument table when creating RemovePermissionRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating RemovePermissionRequest")
+    local query_args = { 
+        ["Qualifier"] = args["Qualifier"],
+    }
+    local uri_args = { 
+        ["{StatementId}"] = args["StatementId"],
+        ["{FunctionName}"] = args["FunctionName"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["StatementId"] = args["StatementId"],
 		["FunctionName"] = args["FunctionName"],
 		["Qualifier"] = args["Qualifier"],
 	}
-	asserts.AssertRemovePermissionRequest(t)
-	return t
+	asserts.AssertRemovePermissionRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListFunctionsRequest = { ["Marker"] = true, ["MaxItems"] = true, nil }
@@ -1026,13 +1378,26 @@ end
 -- * MaxItems [MaxListItems] <p>Optional integer. Specifies the maximum number of AWS Lambda functions to return in response. This parameter value must be greater than 0.</p>
 -- @return ListFunctionsRequest structure as a key-value pair table
 function M.ListFunctionsRequest(args)
-	assert(args, "You must provdide an argument table when creating ListFunctionsRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListFunctionsRequest")
+    local query_args = { 
+        ["Marker"] = args["Marker"],
+        ["MaxItems"] = args["MaxItems"],
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Marker"] = args["Marker"],
 		["MaxItems"] = args["MaxItems"],
 	}
-	asserts.AssertListFunctionsRequest(t)
-	return t
+	asserts.AssertListFunctionsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.EC2UnexpectedException = { ["Message"] = true, ["Type"] = true, ["EC2ErrorCode"] = true, nil }
@@ -1057,14 +1422,25 @@ end
 -- * EC2ErrorCode [String] 
 -- @return EC2UnexpectedException structure as a key-value pair table
 function M.EC2UnexpectedException(args)
-	assert(args, "You must provdide an argument table when creating EC2UnexpectedException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating EC2UnexpectedException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Message"] = args["Message"],
 		["Type"] = args["Type"],
 		["EC2ErrorCode"] = args["EC2ErrorCode"],
 	}
-	asserts.AssertEC2UnexpectedException(t)
-	return t
+	asserts.AssertEC2UnexpectedException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UntagResourceRequest = { ["TagKeys"] = true, ["Resource"] = true, nil }
@@ -1091,13 +1467,26 @@ end
 -- Required key: TagKeys
 -- @return UntagResourceRequest structure as a key-value pair table
 function M.UntagResourceRequest(args)
-	assert(args, "You must provdide an argument table when creating UntagResourceRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UntagResourceRequest")
+    local query_args = { 
+        ["tagKeys"] = args["TagKeys"],
+    }
+    local uri_args = { 
+        ["{ARN}"] = args["Resource"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["TagKeys"] = args["TagKeys"],
 		["Resource"] = args["Resource"],
 	}
-	asserts.AssertUntagResourceRequest(t)
-	return t
+	asserts.AssertUntagResourceRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateFunctionRequest = { ["TracingConfig"] = true, ["Code"] = true, ["DeadLetterConfig"] = true, ["FunctionName"] = true, ["VpcConfig"] = true, ["Tags"] = true, ["KMSKeyArn"] = true, ["MemorySize"] = true, ["Publish"] = true, ["Environment"] = true, ["Handler"] = true, ["Role"] = true, ["Timeout"] = true, ["Runtime"] = true, ["Description"] = true, nil }
@@ -1156,8 +1545,14 @@ end
 -- Required key: Code
 -- @return CreateFunctionRequest structure as a key-value pair table
 function M.CreateFunctionRequest(args)
-	assert(args, "You must provdide an argument table when creating CreateFunctionRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateFunctionRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["TracingConfig"] = args["TracingConfig"],
 		["Code"] = args["Code"],
 		["DeadLetterConfig"] = args["DeadLetterConfig"],
@@ -1174,8 +1569,13 @@ function M.CreateFunctionRequest(args)
 		["Runtime"] = args["Runtime"],
 		["Description"] = args["Description"],
 	}
-	asserts.AssertCreateFunctionRequest(t)
-	return t
+	asserts.AssertCreateFunctionRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.KMSDisabledException = { ["Message"] = true, ["Type"] = true, nil }
@@ -1198,13 +1598,24 @@ end
 -- * Type [String] 
 -- @return KMSDisabledException structure as a key-value pair table
 function M.KMSDisabledException(args)
-	assert(args, "You must provdide an argument table when creating KMSDisabledException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating KMSDisabledException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Message"] = args["Message"],
 		["Type"] = args["Type"],
 	}
-	asserts.AssertKMSDisabledException(t)
-	return t
+	asserts.AssertKMSDisabledException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.KMSAccessDeniedException = { ["Message"] = true, ["Type"] = true, nil }
@@ -1227,13 +1638,24 @@ end
 -- * Type [String] 
 -- @return KMSAccessDeniedException structure as a key-value pair table
 function M.KMSAccessDeniedException(args)
-	assert(args, "You must provdide an argument table when creating KMSAccessDeniedException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating KMSAccessDeniedException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Message"] = args["Message"],
 		["Type"] = args["Type"],
 	}
-	asserts.AssertKMSAccessDeniedException(t)
-	return t
+	asserts.AssertKMSAccessDeniedException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.EnvironmentResponse = { ["Variables"] = true, ["Error"] = true, nil }
@@ -1256,13 +1678,24 @@ end
 -- * Error [EnvironmentError] 
 -- @return EnvironmentResponse structure as a key-value pair table
 function M.EnvironmentResponse(args)
-	assert(args, "You must provdide an argument table when creating EnvironmentResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating EnvironmentResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Variables"] = args["Variables"],
 		["Error"] = args["Error"],
 	}
-	asserts.AssertEnvironmentResponse(t)
-	return t
+	asserts.AssertEnvironmentResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.EC2AccessDeniedException = { ["Message"] = true, ["Type"] = true, nil }
@@ -1285,13 +1718,24 @@ end
 -- * Type [String] 
 -- @return EC2AccessDeniedException structure as a key-value pair table
 function M.EC2AccessDeniedException(args)
-	assert(args, "You must provdide an argument table when creating EC2AccessDeniedException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating EC2AccessDeniedException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Message"] = args["Message"],
 		["Type"] = args["Type"],
 	}
-	asserts.AssertEC2AccessDeniedException(t)
-	return t
+	asserts.AssertEC2AccessDeniedException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidRequestContentException = { ["message"] = true, ["Type"] = true, nil }
@@ -1314,13 +1758,24 @@ end
 -- * Type [String] <p/>
 -- @return InvalidRequestContentException structure as a key-value pair table
 function M.InvalidRequestContentException(args)
-	assert(args, "You must provdide an argument table when creating InvalidRequestContentException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidRequestContentException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 		["Type"] = args["Type"],
 	}
-	asserts.AssertInvalidRequestContentException(t)
-	return t
+	asserts.AssertInvalidRequestContentException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.FunctionConfiguration = { ["TracingConfig"] = true, ["Version"] = true, ["CodeSha256"] = true, ["FunctionName"] = true, ["VpcConfig"] = true, ["KMSKeyArn"] = true, ["MemorySize"] = true, ["CodeSize"] = true, ["FunctionArn"] = true, ["Environment"] = true, ["Handler"] = true, ["Role"] = true, ["Timeout"] = true, ["LastModified"] = true, ["DeadLetterConfig"] = true, ["Runtime"] = true, ["Description"] = true, nil }
@@ -1373,8 +1828,14 @@ end
 -- * Description [Description] <p>The user-provided description.</p>
 -- @return FunctionConfiguration structure as a key-value pair table
 function M.FunctionConfiguration(args)
-	assert(args, "You must provdide an argument table when creating FunctionConfiguration")
-	local t = { 
+	assert(args, "You must provide an argument table when creating FunctionConfiguration")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["TracingConfig"] = args["TracingConfig"],
 		["Version"] = args["Version"],
 		["CodeSha256"] = args["CodeSha256"],
@@ -1393,8 +1854,13 @@ function M.FunctionConfiguration(args)
 		["Runtime"] = args["Runtime"],
 		["Description"] = args["Description"],
 	}
-	asserts.AssertFunctionConfiguration(t)
-	return t
+	asserts.AssertFunctionConfiguration(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidSecurityGroupIDException = { ["Message"] = true, ["Type"] = true, nil }
@@ -1417,13 +1883,24 @@ end
 -- * Type [String] 
 -- @return InvalidSecurityGroupIDException structure as a key-value pair table
 function M.InvalidSecurityGroupIDException(args)
-	assert(args, "You must provdide an argument table when creating InvalidSecurityGroupIDException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidSecurityGroupIDException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Message"] = args["Message"],
 		["Type"] = args["Type"],
 	}
-	asserts.AssertInvalidSecurityGroupIDException(t)
-	return t
+	asserts.AssertInvalidSecurityGroupIDException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvokeAsyncResponse = { ["Status"] = true, nil }
@@ -1444,12 +1921,23 @@ end
 -- * Status [HttpStatus] <p>It will be 202 upon success.</p>
 -- @return InvokeAsyncResponse structure as a key-value pair table
 function M.InvokeAsyncResponse(args)
-	assert(args, "You must provdide an argument table when creating InvokeAsyncResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvokeAsyncResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Status"] = args["Status"],
 	}
-	asserts.AssertInvokeAsyncResponse(t)
-	return t
+	asserts.AssertInvokeAsyncResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ServiceException = { ["Message"] = true, ["Type"] = true, nil }
@@ -1472,13 +1960,24 @@ end
 -- * Type [String] 
 -- @return ServiceException structure as a key-value pair table
 function M.ServiceException(args)
-	assert(args, "You must provdide an argument table when creating ServiceException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ServiceException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Message"] = args["Message"],
 		["Type"] = args["Type"],
 	}
-	asserts.AssertServiceException(t)
-	return t
+	asserts.AssertServiceException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateAliasRequest = { ["Description"] = true, ["FunctionVersion"] = true, ["FunctionName"] = true, ["Name"] = true, nil }
@@ -1511,15 +2010,27 @@ end
 -- Required key: FunctionVersion
 -- @return CreateAliasRequest structure as a key-value pair table
 function M.CreateAliasRequest(args)
-	assert(args, "You must provdide an argument table when creating CreateAliasRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateAliasRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{FunctionName}"] = args["FunctionName"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Description"] = args["Description"],
 		["FunctionVersion"] = args["FunctionVersion"],
 		["FunctionName"] = args["FunctionName"],
 		["Name"] = args["Name"],
 	}
-	asserts.AssertCreateAliasRequest(t)
-	return t
+	asserts.AssertCreateAliasRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteEventSourceMappingRequest = { ["UUID"] = true, nil }
@@ -1542,12 +2053,24 @@ end
 -- Required key: UUID
 -- @return DeleteEventSourceMappingRequest structure as a key-value pair table
 function M.DeleteEventSourceMappingRequest(args)
-	assert(args, "You must provdide an argument table when creating DeleteEventSourceMappingRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteEventSourceMappingRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{UUID}"] = args["UUID"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["UUID"] = args["UUID"],
 	}
-	asserts.AssertDeleteEventSourceMappingRequest(t)
-	return t
+	asserts.AssertDeleteEventSourceMappingRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UnsupportedMediaTypeException = { ["message"] = true, ["Type"] = true, nil }
@@ -1570,13 +2093,24 @@ end
 -- * Type [String] 
 -- @return UnsupportedMediaTypeException structure as a key-value pair table
 function M.UnsupportedMediaTypeException(args)
-	assert(args, "You must provdide an argument table when creating UnsupportedMediaTypeException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UnsupportedMediaTypeException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 		["Type"] = args["Type"],
 	}
-	asserts.AssertUnsupportedMediaTypeException(t)
-	return t
+	asserts.AssertUnsupportedMediaTypeException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdateEventSourceMappingRequest = { ["BatchSize"] = true, ["Enabled"] = true, ["UUID"] = true, ["FunctionName"] = true, nil }
@@ -1605,15 +2139,27 @@ end
 -- Required key: UUID
 -- @return UpdateEventSourceMappingRequest structure as a key-value pair table
 function M.UpdateEventSourceMappingRequest(args)
-	assert(args, "You must provdide an argument table when creating UpdateEventSourceMappingRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateEventSourceMappingRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{UUID}"] = args["UUID"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["BatchSize"] = args["BatchSize"],
 		["Enabled"] = args["Enabled"],
 		["UUID"] = args["UUID"],
 		["FunctionName"] = args["FunctionName"],
 	}
-	asserts.AssertUpdateEventSourceMappingRequest(t)
-	return t
+	asserts.AssertUpdateEventSourceMappingRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetAccountSettingsRequest = { nil }
@@ -1632,11 +2178,22 @@ end
 -- Valid keys:
 -- @return GetAccountSettingsRequest structure as a key-value pair table
 function M.GetAccountSettingsRequest(args)
-	assert(args, "You must provdide an argument table when creating GetAccountSettingsRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetAccountSettingsRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertGetAccountSettingsRequest(t)
-	return t
+	asserts.AssertGetAccountSettingsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidRuntimeException = { ["Message"] = true, ["Type"] = true, nil }
@@ -1659,13 +2216,24 @@ end
 -- * Type [String] 
 -- @return InvalidRuntimeException structure as a key-value pair table
 function M.InvalidRuntimeException(args)
-	assert(args, "You must provdide an argument table when creating InvalidRuntimeException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidRuntimeException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Message"] = args["Message"],
 		["Type"] = args["Type"],
 	}
-	asserts.AssertInvalidRuntimeException(t)
-	return t
+	asserts.AssertInvalidRuntimeException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetFunctionResponse = { ["Code"] = true, ["Configuration"] = true, ["Tags"] = true, nil }
@@ -1690,14 +2258,25 @@ end
 -- * Tags [Tags] <p>Returns the list of tags associated with the function.</p>
 -- @return GetFunctionResponse structure as a key-value pair table
 function M.GetFunctionResponse(args)
-	assert(args, "You must provdide an argument table when creating GetFunctionResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetFunctionResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Code"] = args["Code"],
 		["Configuration"] = args["Configuration"],
 		["Tags"] = args["Tags"],
 	}
-	asserts.AssertGetFunctionResponse(t)
-	return t
+	asserts.AssertGetFunctionResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.FunctionCode = { ["S3Bucket"] = true, ["S3Key"] = true, ["ZipFile"] = true, ["S3ObjectVersion"] = true, nil }
@@ -1724,15 +2303,26 @@ end
 -- * S3ObjectVersion [S3ObjectVersion] <p>The Amazon S3 object (the deployment package) version you want to upload.</p>
 -- @return FunctionCode structure as a key-value pair table
 function M.FunctionCode(args)
-	assert(args, "You must provdide an argument table when creating FunctionCode")
-	local t = { 
+	assert(args, "You must provide an argument table when creating FunctionCode")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["S3Bucket"] = args["S3Bucket"],
 		["S3Key"] = args["S3Key"],
 		["ZipFile"] = args["ZipFile"],
 		["S3ObjectVersion"] = args["S3ObjectVersion"],
 	}
-	asserts.AssertFunctionCode(t)
-	return t
+	asserts.AssertFunctionCode(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ResourceNotFoundException = { ["Message"] = true, ["Type"] = true, nil }
@@ -1755,13 +2345,24 @@ end
 -- * Type [String] 
 -- @return ResourceNotFoundException structure as a key-value pair table
 function M.ResourceNotFoundException(args)
-	assert(args, "You must provdide an argument table when creating ResourceNotFoundException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ResourceNotFoundException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Message"] = args["Message"],
 		["Type"] = args["Type"],
 	}
-	asserts.AssertResourceNotFoundException(t)
-	return t
+	asserts.AssertResourceNotFoundException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.TracingConfigResponse = { ["Mode"] = true, nil }
@@ -1782,12 +2383,23 @@ end
 -- * Mode [TracingMode] <p>The tracing mode associated with your Lambda function.</p>
 -- @return TracingConfigResponse structure as a key-value pair table
 function M.TracingConfigResponse(args)
-	assert(args, "You must provdide an argument table when creating TracingConfigResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating TracingConfigResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Mode"] = args["Mode"],
 	}
-	asserts.AssertTracingConfigResponse(t)
-	return t
+	asserts.AssertTracingConfigResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.FunctionCodeLocation = { ["RepositoryType"] = true, ["Location"] = true, nil }
@@ -1810,13 +2422,24 @@ end
 -- * Location [String] <p>The presigned URL you can use to download the function's .zip file that you previously uploaded. The URL is valid for up to 10 minutes.</p>
 -- @return FunctionCodeLocation structure as a key-value pair table
 function M.FunctionCodeLocation(args)
-	assert(args, "You must provdide an argument table when creating FunctionCodeLocation")
-	local t = { 
+	assert(args, "You must provide an argument table when creating FunctionCodeLocation")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["RepositoryType"] = args["RepositoryType"],
 		["Location"] = args["Location"],
 	}
-	asserts.AssertFunctionCodeLocation(t)
-	return t
+	asserts.AssertFunctionCodeLocation(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AccountLimit = { ["CodeSizeUnzipped"] = true, ["ConcurrentExecutions"] = true, ["CodeSizeZipped"] = true, ["TotalCodeSize"] = true, nil }
@@ -1843,15 +2466,26 @@ end
 -- * TotalCodeSize [Long] <p>Maximum size, in bytes, of a code package you can upload per region. The default size is 75 GB. </p>
 -- @return AccountLimit structure as a key-value pair table
 function M.AccountLimit(args)
-	assert(args, "You must provdide an argument table when creating AccountLimit")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AccountLimit")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["CodeSizeUnzipped"] = args["CodeSizeUnzipped"],
 		["ConcurrentExecutions"] = args["ConcurrentExecutions"],
 		["CodeSizeZipped"] = args["CodeSizeZipped"],
 		["TotalCodeSize"] = args["TotalCodeSize"],
 	}
-	asserts.AssertAccountLimit(t)
-	return t
+	asserts.AssertAccountLimit(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.EventSourceMappingConfiguration = { ["UUID"] = true, ["StateTransitionReason"] = true, ["LastModified"] = true, ["BatchSize"] = true, ["State"] = true, ["FunctionArn"] = true, ["EventSourceArn"] = true, ["LastProcessingResult"] = true, nil }
@@ -1886,8 +2520,14 @@ end
 -- * LastProcessingResult [String] <p>The result of the last AWS Lambda invocation of your Lambda function.</p>
 -- @return EventSourceMappingConfiguration structure as a key-value pair table
 function M.EventSourceMappingConfiguration(args)
-	assert(args, "You must provdide an argument table when creating EventSourceMappingConfiguration")
-	local t = { 
+	assert(args, "You must provide an argument table when creating EventSourceMappingConfiguration")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["UUID"] = args["UUID"],
 		["StateTransitionReason"] = args["StateTransitionReason"],
 		["LastModified"] = args["LastModified"],
@@ -1897,8 +2537,13 @@ function M.EventSourceMappingConfiguration(args)
 		["EventSourceArn"] = args["EventSourceArn"],
 		["LastProcessingResult"] = args["LastProcessingResult"],
 	}
-	asserts.AssertEventSourceMappingConfiguration(t)
-	return t
+	asserts.AssertEventSourceMappingConfiguration(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.EnvironmentError = { ["ErrorCode"] = true, ["Message"] = true, nil }
@@ -1921,13 +2566,24 @@ end
 -- * Message [SensitiveString] <p>The message returned by the environment error object.</p>
 -- @return EnvironmentError structure as a key-value pair table
 function M.EnvironmentError(args)
-	assert(args, "You must provdide an argument table when creating EnvironmentError")
-	local t = { 
+	assert(args, "You must provide an argument table when creating EnvironmentError")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ErrorCode"] = args["ErrorCode"],
 		["Message"] = args["Message"],
 	}
-	asserts.AssertEnvironmentError(t)
-	return t
+	asserts.AssertEnvironmentError(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetPolicyRequest = { ["FunctionName"] = true, ["Qualifier"] = true, nil }
@@ -1952,13 +2608,26 @@ end
 -- Required key: FunctionName
 -- @return GetPolicyRequest structure as a key-value pair table
 function M.GetPolicyRequest(args)
-	assert(args, "You must provdide an argument table when creating GetPolicyRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetPolicyRequest")
+    local query_args = { 
+        ["Qualifier"] = args["Qualifier"],
+    }
+    local uri_args = { 
+        ["{FunctionName}"] = args["FunctionName"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["FunctionName"] = args["FunctionName"],
 		["Qualifier"] = args["Qualifier"],
 	}
-	asserts.AssertGetPolicyRequest(t)
-	return t
+	asserts.AssertGetPolicyRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.SubnetIPAddressLimitReachedException = { ["Message"] = true, ["Type"] = true, nil }
@@ -1981,13 +2650,24 @@ end
 -- * Type [String] 
 -- @return SubnetIPAddressLimitReachedException structure as a key-value pair table
 function M.SubnetIPAddressLimitReachedException(args)
-	assert(args, "You must provdide an argument table when creating SubnetIPAddressLimitReachedException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating SubnetIPAddressLimitReachedException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Message"] = args["Message"],
 		["Type"] = args["Type"],
 	}
-	asserts.AssertSubnetIPAddressLimitReachedException(t)
-	return t
+	asserts.AssertSubnetIPAddressLimitReachedException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetEventSourceMappingRequest = { ["UUID"] = true, nil }
@@ -2010,12 +2690,24 @@ end
 -- Required key: UUID
 -- @return GetEventSourceMappingRequest structure as a key-value pair table
 function M.GetEventSourceMappingRequest(args)
-	assert(args, "You must provdide an argument table when creating GetEventSourceMappingRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetEventSourceMappingRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{UUID}"] = args["UUID"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["UUID"] = args["UUID"],
 	}
-	asserts.AssertGetEventSourceMappingRequest(t)
-	return t
+	asserts.AssertGetEventSourceMappingRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.EC2ThrottledException = { ["Message"] = true, ["Type"] = true, nil }
@@ -2038,13 +2730,24 @@ end
 -- * Type [String] 
 -- @return EC2ThrottledException structure as a key-value pair table
 function M.EC2ThrottledException(args)
-	assert(args, "You must provdide an argument table when creating EC2ThrottledException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating EC2ThrottledException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Message"] = args["Message"],
 		["Type"] = args["Type"],
 	}
-	asserts.AssertEC2ThrottledException(t)
-	return t
+	asserts.AssertEC2ThrottledException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AddPermissionResponse = { ["Statement"] = true, nil }
@@ -2065,12 +2768,23 @@ end
 -- * Statement [String] <p>The permission statement you specified in the request. The response returns the same as a string using a backslash ("\") as an escape character in the JSON.</p>
 -- @return AddPermissionResponse structure as a key-value pair table
 function M.AddPermissionResponse(args)
-	assert(args, "You must provdide an argument table when creating AddPermissionResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AddPermissionResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Statement"] = args["Statement"],
 	}
-	asserts.AssertAddPermissionResponse(t)
-	return t
+	asserts.AssertAddPermissionResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetFunctionConfigurationRequest = { ["FunctionName"] = true, ["Qualifier"] = true, nil }
@@ -2095,13 +2809,26 @@ end
 -- Required key: FunctionName
 -- @return GetFunctionConfigurationRequest structure as a key-value pair table
 function M.GetFunctionConfigurationRequest(args)
-	assert(args, "You must provdide an argument table when creating GetFunctionConfigurationRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetFunctionConfigurationRequest")
+    local query_args = { 
+        ["Qualifier"] = args["Qualifier"],
+    }
+    local uri_args = { 
+        ["{FunctionName}"] = args["FunctionName"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["FunctionName"] = args["FunctionName"],
 		["Qualifier"] = args["Qualifier"],
 	}
-	asserts.AssertGetFunctionConfigurationRequest(t)
-	return t
+	asserts.AssertGetFunctionConfigurationRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListFunctionsResponse = { ["Functions"] = true, ["NextMarker"] = true, nil }
@@ -2124,13 +2851,24 @@ end
 -- * NextMarker [String] <p>A string, present if there are more functions.</p>
 -- @return ListFunctionsResponse structure as a key-value pair table
 function M.ListFunctionsResponse(args)
-	assert(args, "You must provdide an argument table when creating ListFunctionsResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListFunctionsResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Functions"] = args["Functions"],
 		["NextMarker"] = args["NextMarker"],
 	}
-	asserts.AssertListFunctionsResponse(t)
-	return t
+	asserts.AssertListFunctionsResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidSubnetIDException = { ["Message"] = true, ["Type"] = true, nil }
@@ -2153,13 +2891,24 @@ end
 -- * Type [String] 
 -- @return InvalidSubnetIDException structure as a key-value pair table
 function M.InvalidSubnetIDException(args)
-	assert(args, "You must provdide an argument table when creating InvalidSubnetIDException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidSubnetIDException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Message"] = args["Message"],
 		["Type"] = args["Type"],
 	}
-	asserts.AssertInvalidSubnetIDException(t)
-	return t
+	asserts.AssertInvalidSubnetIDException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetPolicyResponse = { ["Policy"] = true, nil }
@@ -2180,12 +2929,23 @@ end
 -- * Policy [String] <p>The resource policy associated with the specified function. The response returns the same as a string using a backslash ("\") as an escape character in the JSON.</p>
 -- @return GetPolicyResponse structure as a key-value pair table
 function M.GetPolicyResponse(args)
-	assert(args, "You must provdide an argument table when creating GetPolicyResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetPolicyResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Policy"] = args["Policy"],
 	}
-	asserts.AssertGetPolicyResponse(t)
-	return t
+	asserts.AssertGetPolicyResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListAliasesRequest = { ["Marker"] = true, ["FunctionVersion"] = true, ["FunctionName"] = true, ["MaxItems"] = true, nil }
@@ -2214,15 +2974,30 @@ end
 -- Required key: FunctionName
 -- @return ListAliasesRequest structure as a key-value pair table
 function M.ListAliasesRequest(args)
-	assert(args, "You must provdide an argument table when creating ListAliasesRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListAliasesRequest")
+    local query_args = { 
+        ["Marker"] = args["Marker"],
+        ["FunctionVersion"] = args["FunctionVersion"],
+        ["MaxItems"] = args["MaxItems"],
+    }
+    local uri_args = { 
+        ["{FunctionName}"] = args["FunctionName"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Marker"] = args["Marker"],
 		["FunctionVersion"] = args["FunctionVersion"],
 		["FunctionName"] = args["FunctionName"],
 		["MaxItems"] = args["MaxItems"],
 	}
-	asserts.AssertListAliasesRequest(t)
-	return t
+	asserts.AssertListAliasesRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.RequestTooLargeException = { ["message"] = true, ["Type"] = true, nil }
@@ -2245,13 +3020,24 @@ end
 -- * Type [String] 
 -- @return RequestTooLargeException structure as a key-value pair table
 function M.RequestTooLargeException(args)
-	assert(args, "You must provdide an argument table when creating RequestTooLargeException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating RequestTooLargeException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 		["Type"] = args["Type"],
 	}
-	asserts.AssertRequestTooLargeException(t)
-	return t
+	asserts.AssertRequestTooLargeException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListEventSourceMappingsResponse = { ["NextMarker"] = true, ["EventSourceMappings"] = true, nil }
@@ -2274,13 +3060,24 @@ end
 -- * EventSourceMappings [EventSourceMappingsList] <p>An array of <code>EventSourceMappingConfiguration</code> objects.</p>
 -- @return ListEventSourceMappingsResponse structure as a key-value pair table
 function M.ListEventSourceMappingsResponse(args)
-	assert(args, "You must provdide an argument table when creating ListEventSourceMappingsResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListEventSourceMappingsResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NextMarker"] = args["NextMarker"],
 		["EventSourceMappings"] = args["EventSourceMappings"],
 	}
-	asserts.AssertListEventSourceMappingsResponse(t)
-	return t
+	asserts.AssertListEventSourceMappingsResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeadLetterConfig = { ["TargetArn"] = true, nil }
@@ -2301,12 +3098,23 @@ end
 -- * TargetArn [ResourceArn] <p>The Amazon Resource Name (ARN) of an Amazon SQS queue or Amazon SNS topic you specify as your Dead Letter Queue (DLQ).</p>
 -- @return DeadLetterConfig structure as a key-value pair table
 function M.DeadLetterConfig(args)
-	assert(args, "You must provdide an argument table when creating DeadLetterConfig")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeadLetterConfig")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["TargetArn"] = args["TargetArn"],
 	}
-	asserts.AssertDeadLetterConfig(t)
-	return t
+	asserts.AssertDeadLetterConfig(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AddPermissionRequest = { ["FunctionName"] = true, ["Qualifier"] = true, ["StatementId"] = true, ["Action"] = true, ["SourceAccount"] = true, ["SourceArn"] = true, ["EventSourceToken"] = true, ["Principal"] = true, nil }
@@ -2349,8 +3157,16 @@ end
 -- Required key: Principal
 -- @return AddPermissionRequest structure as a key-value pair table
 function M.AddPermissionRequest(args)
-	assert(args, "You must provdide an argument table when creating AddPermissionRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AddPermissionRequest")
+    local query_args = { 
+        ["Qualifier"] = args["Qualifier"],
+    }
+    local uri_args = { 
+        ["{FunctionName}"] = args["FunctionName"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["FunctionName"] = args["FunctionName"],
 		["Qualifier"] = args["Qualifier"],
 		["StatementId"] = args["StatementId"],
@@ -2360,8 +3176,13 @@ function M.AddPermissionRequest(args)
 		["EventSourceToken"] = args["EventSourceToken"],
 		["Principal"] = args["Principal"],
 	}
-	asserts.AssertAddPermissionRequest(t)
-	return t
+	asserts.AssertAddPermissionRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.TagResourceRequest = { ["Resource"] = true, ["Tags"] = true, nil }
@@ -2388,13 +3209,25 @@ end
 -- Required key: Tags
 -- @return TagResourceRequest structure as a key-value pair table
 function M.TagResourceRequest(args)
-	assert(args, "You must provdide an argument table when creating TagResourceRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating TagResourceRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{ARN}"] = args["Resource"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Resource"] = args["Resource"],
 		["Tags"] = args["Tags"],
 	}
-	asserts.AssertTagResourceRequest(t)
-	return t
+	asserts.AssertTagResourceRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListTagsResponse = { ["Tags"] = true, nil }
@@ -2415,12 +3248,23 @@ end
 -- * Tags [Tags] <p>The list of tags assigned to the function.</p>
 -- @return ListTagsResponse structure as a key-value pair table
 function M.ListTagsResponse(args)
-	assert(args, "You must provdide an argument table when creating ListTagsResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListTagsResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Tags"] = args["Tags"],
 	}
-	asserts.AssertListTagsResponse(t)
-	return t
+	asserts.AssertListTagsResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ResourceConflictException = { ["message"] = true, ["Type"] = true, nil }
@@ -2443,13 +3287,24 @@ end
 -- * Type [String] <p/>
 -- @return ResourceConflictException structure as a key-value pair table
 function M.ResourceConflictException(args)
-	assert(args, "You must provdide an argument table when creating ResourceConflictException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ResourceConflictException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 		["Type"] = args["Type"],
 	}
-	asserts.AssertResourceConflictException(t)
-	return t
+	asserts.AssertResourceConflictException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.VpcConfig = { ["SubnetIds"] = true, ["SecurityGroupIds"] = true, nil }
@@ -2472,13 +3327,24 @@ end
 -- * SecurityGroupIds [SecurityGroupIds] <p>A list of one or more security groups IDs in your VPC.</p>
 -- @return VpcConfig structure as a key-value pair table
 function M.VpcConfig(args)
-	assert(args, "You must provdide an argument table when creating VpcConfig")
-	local t = { 
+	assert(args, "You must provide an argument table when creating VpcConfig")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["SubnetIds"] = args["SubnetIds"],
 		["SecurityGroupIds"] = args["SecurityGroupIds"],
 	}
-	asserts.AssertVpcConfig(t)
-	return t
+	asserts.AssertVpcConfig(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidParameterValueException = { ["message"] = true, ["Type"] = true, nil }
@@ -2501,13 +3367,24 @@ end
 -- * Type [String] <p/>
 -- @return InvalidParameterValueException structure as a key-value pair table
 function M.InvalidParameterValueException(args)
-	assert(args, "You must provdide an argument table when creating InvalidParameterValueException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidParameterValueException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 		["Type"] = args["Type"],
 	}
-	asserts.AssertInvalidParameterValueException(t)
-	return t
+	asserts.AssertInvalidParameterValueException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidZipFileException = { ["Message"] = true, ["Type"] = true, nil }
@@ -2530,13 +3407,24 @@ end
 -- * Type [String] 
 -- @return InvalidZipFileException structure as a key-value pair table
 function M.InvalidZipFileException(args)
-	assert(args, "You must provdide an argument table when creating InvalidZipFileException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidZipFileException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Message"] = args["Message"],
 		["Type"] = args["Type"],
 	}
-	asserts.AssertInvalidZipFileException(t)
-	return t
+	asserts.AssertInvalidZipFileException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.PolicyLengthExceededException = { ["message"] = true, ["Type"] = true, nil }
@@ -2559,13 +3447,24 @@ end
 -- * Type [String] 
 -- @return PolicyLengthExceededException structure as a key-value pair table
 function M.PolicyLengthExceededException(args)
-	assert(args, "You must provdide an argument table when creating PolicyLengthExceededException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating PolicyLengthExceededException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 		["Type"] = args["Type"],
 	}
-	asserts.AssertPolicyLengthExceededException(t)
-	return t
+	asserts.AssertPolicyLengthExceededException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 function asserts.AssertSensitiveString(str)
@@ -3278,8 +4177,11 @@ function M.ListEventSourceMappingsAsync(ListEventSourceMappingsRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".ListEventSourceMappings",
 	}
+	for header,value in pairs(ListEventSourceMappingsRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
 	if request_handler then
 		request_handler(settings.uri, "/2015-03-31/event-source-mappings/", ListEventSourceMappingsRequest, headers, settings, cb)
 	else
@@ -3310,8 +4212,11 @@ function M.DeleteFunctionAsync(DeleteFunctionRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DeleteFunction",
 	}
+	for header,value in pairs(DeleteFunctionRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("DELETE")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE")
 	if request_handler then
 		request_handler(settings.uri, "/2015-03-31/functions/{FunctionName}", DeleteFunctionRequest, headers, settings, cb)
 	else
@@ -3342,8 +4247,11 @@ function M.UpdateEventSourceMappingAsync(UpdateEventSourceMappingRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".UpdateEventSourceMapping",
 	}
+	for header,value in pairs(UpdateEventSourceMappingRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("PUT")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT")
 	if request_handler then
 		request_handler(settings.uri, "/2015-03-31/event-source-mappings/{UUID}", UpdateEventSourceMappingRequest, headers, settings, cb)
 	else
@@ -3374,8 +4282,11 @@ function M.UpdateAliasAsync(UpdateAliasRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".UpdateAlias",
 	}
+	for header,value in pairs(UpdateAliasRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("PUT")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT")
 	if request_handler then
 		request_handler(settings.uri, "/2015-03-31/functions/{FunctionName}/aliases/{Name}", UpdateAliasRequest, headers, settings, cb)
 	else
@@ -3406,8 +4317,11 @@ function M.ListFunctionsAsync(ListFunctionsRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".ListFunctions",
 	}
+	for header,value in pairs(ListFunctionsRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
 	if request_handler then
 		request_handler(settings.uri, "/2015-03-31/functions/", ListFunctionsRequest, headers, settings, cb)
 	else
@@ -3438,8 +4352,11 @@ function M.CreateEventSourceMappingAsync(CreateEventSourceMappingRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".CreateEventSourceMapping",
 	}
+	for header,value in pairs(CreateEventSourceMappingRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/2015-03-31/event-source-mappings/", CreateEventSourceMappingRequest, headers, settings, cb)
 	else
@@ -3470,8 +4387,11 @@ function M.GetFunctionConfigurationAsync(GetFunctionConfigurationRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".GetFunctionConfiguration",
 	}
+	for header,value in pairs(GetFunctionConfigurationRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
 	if request_handler then
 		request_handler(settings.uri, "/2015-03-31/functions/{FunctionName}/configuration", GetFunctionConfigurationRequest, headers, settings, cb)
 	else
@@ -3502,8 +4422,11 @@ function M.ListAliasesAsync(ListAliasesRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".ListAliases",
 	}
+	for header,value in pairs(ListAliasesRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
 	if request_handler then
 		request_handler(settings.uri, "/2015-03-31/functions/{FunctionName}/aliases", ListAliasesRequest, headers, settings, cb)
 	else
@@ -3534,8 +4457,11 @@ function M.GetPolicyAsync(GetPolicyRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".GetPolicy",
 	}
+	for header,value in pairs(GetPolicyRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
 	if request_handler then
 		request_handler(settings.uri, "/2015-03-31/functions/{FunctionName}/policy", GetPolicyRequest, headers, settings, cb)
 	else
@@ -3566,8 +4492,11 @@ function M.InvokeAsync(InvocationRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".Invoke",
 	}
+	for header,value in pairs(InvocationRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/2015-03-31/functions/{FunctionName}/invocations", InvocationRequest, headers, settings, cb)
 	else
@@ -3598,8 +4527,11 @@ function M.PublishVersionAsync(PublishVersionRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".PublishVersion",
 	}
+	for header,value in pairs(PublishVersionRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/2015-03-31/functions/{FunctionName}/versions", PublishVersionRequest, headers, settings, cb)
 	else
@@ -3630,8 +4562,11 @@ function M.GetFunctionAsync(GetFunctionRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".GetFunction",
 	}
+	for header,value in pairs(GetFunctionRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
 	if request_handler then
 		request_handler(settings.uri, "/2015-03-31/functions/{FunctionName}", GetFunctionRequest, headers, settings, cb)
 	else
@@ -3662,8 +4597,11 @@ function M.DeleteAliasAsync(DeleteAliasRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DeleteAlias",
 	}
+	for header,value in pairs(DeleteAliasRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("DELETE")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE")
 	if request_handler then
 		request_handler(settings.uri, "/2015-03-31/functions/{FunctionName}/aliases/{Name}", DeleteAliasRequest, headers, settings, cb)
 	else
@@ -3694,8 +4632,11 @@ function M.AddPermissionAsync(AddPermissionRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".AddPermission",
 	}
+	for header,value in pairs(AddPermissionRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/2015-03-31/functions/{FunctionName}/policy", AddPermissionRequest, headers, settings, cb)
 	else
@@ -3726,8 +4667,11 @@ function M.ListVersionsByFunctionAsync(ListVersionsByFunctionRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".ListVersionsByFunction",
 	}
+	for header,value in pairs(ListVersionsByFunctionRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
 	if request_handler then
 		request_handler(settings.uri, "/2015-03-31/functions/{FunctionName}/versions", ListVersionsByFunctionRequest, headers, settings, cb)
 	else
@@ -3758,8 +4702,11 @@ function M.RemovePermissionAsync(RemovePermissionRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".RemovePermission",
 	}
+	for header,value in pairs(RemovePermissionRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("DELETE")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE")
 	if request_handler then
 		request_handler(settings.uri, "/2015-03-31/functions/{FunctionName}/policy/{StatementId}", RemovePermissionRequest, headers, settings, cb)
 	else
@@ -3790,8 +4737,11 @@ function M.CreateAliasAsync(CreateAliasRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".CreateAlias",
 	}
+	for header,value in pairs(CreateAliasRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/2015-03-31/functions/{FunctionName}/aliases", CreateAliasRequest, headers, settings, cb)
 	else
@@ -3822,8 +4772,11 @@ function M.ListTagsAsync(ListTagsRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".ListTags",
 	}
+	for header,value in pairs(ListTagsRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
 	if request_handler then
 		request_handler(settings.uri, "/2017-03-31/tags/{ARN}", ListTagsRequest, headers, settings, cb)
 	else
@@ -3854,8 +4807,11 @@ function M.TagResourceAsync(TagResourceRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".TagResource",
 	}
+	for header,value in pairs(TagResourceRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/2017-03-31/tags/{ARN}", TagResourceRequest, headers, settings, cb)
 	else
@@ -3886,8 +4842,11 @@ function M.DeleteEventSourceMappingAsync(DeleteEventSourceMappingRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DeleteEventSourceMapping",
 	}
+	for header,value in pairs(DeleteEventSourceMappingRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("DELETE")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE")
 	if request_handler then
 		request_handler(settings.uri, "/2015-03-31/event-source-mappings/{UUID}", DeleteEventSourceMappingRequest, headers, settings, cb)
 	else
@@ -3918,8 +4877,11 @@ function M.UpdateFunctionConfigurationAsync(UpdateFunctionConfigurationRequest, 
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".UpdateFunctionConfiguration",
 	}
+	for header,value in pairs(UpdateFunctionConfigurationRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("PUT")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT")
 	if request_handler then
 		request_handler(settings.uri, "/2015-03-31/functions/{FunctionName}/configuration", UpdateFunctionConfigurationRequest, headers, settings, cb)
 	else
@@ -3950,8 +4912,11 @@ function M.GetEventSourceMappingAsync(GetEventSourceMappingRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".GetEventSourceMapping",
 	}
+	for header,value in pairs(GetEventSourceMappingRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
 	if request_handler then
 		request_handler(settings.uri, "/2015-03-31/event-source-mappings/{UUID}", GetEventSourceMappingRequest, headers, settings, cb)
 	else
@@ -3982,8 +4947,11 @@ function M.UntagResourceAsync(UntagResourceRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".UntagResource",
 	}
+	for header,value in pairs(UntagResourceRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("DELETE")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE")
 	if request_handler then
 		request_handler(settings.uri, "/2017-03-31/tags/{ARN}", UntagResourceRequest, headers, settings, cb)
 	else
@@ -4014,8 +4982,11 @@ function M.GetAliasAsync(GetAliasRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".GetAlias",
 	}
+	for header,value in pairs(GetAliasRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
 	if request_handler then
 		request_handler(settings.uri, "/2015-03-31/functions/{FunctionName}/aliases/{Name}", GetAliasRequest, headers, settings, cb)
 	else
@@ -4046,8 +5017,11 @@ function M.GetAccountSettingsAsync(GetAccountSettingsRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".GetAccountSettings",
 	}
+	for header,value in pairs(GetAccountSettingsRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
 	if request_handler then
 		request_handler(settings.uri, "/2016-08-19/account-settings/", GetAccountSettingsRequest, headers, settings, cb)
 	else
@@ -4078,8 +5052,11 @@ function M.CreateFunctionAsync(CreateFunctionRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".CreateFunction",
 	}
+	for header,value in pairs(CreateFunctionRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/2015-03-31/functions", CreateFunctionRequest, headers, settings, cb)
 	else
@@ -4110,8 +5087,11 @@ function M.UpdateFunctionCodeAsync(UpdateFunctionCodeRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".UpdateFunctionCode",
 	}
+	for header,value in pairs(UpdateFunctionCodeRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("PUT")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT")
 	if request_handler then
 		request_handler(settings.uri, "/2015-03-31/functions/{FunctionName}/code", UpdateFunctionCodeRequest, headers, settings, cb)
 	else

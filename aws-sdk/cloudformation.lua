@@ -43,13 +43,24 @@ end
 -- Required key: StackName
 -- @return ListStackResourcesInput structure as a key-value pair table
 function M.ListStackResourcesInput(args)
-	assert(args, "You must provdide an argument table when creating ListStackResourcesInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListStackResourcesInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["StackName"] = args["StackName"],
 		["NextToken"] = args["NextToken"],
 	}
-	asserts.AssertListStackResourcesInput(t)
-	return t
+	asserts.AssertListStackResourcesInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ParameterConstraints = { ["AllowedValues"] = true, nil }
@@ -70,12 +81,23 @@ end
 -- * AllowedValues [AllowedValues] <p>A list of values that are permitted for a parameter.</p>
 -- @return ParameterConstraints structure as a key-value pair table
 function M.ParameterConstraints(args)
-	assert(args, "You must provdide an argument table when creating ParameterConstraints")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ParameterConstraints")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["AllowedValues"] = args["AllowedValues"],
 	}
-	asserts.AssertParameterConstraints(t)
-	return t
+	asserts.AssertParameterConstraints(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetTemplateSummaryInput = { ["StackName"] = true, ["TemplateURL"] = true, ["TemplateBody"] = true, nil }
@@ -100,14 +122,25 @@ end
 -- * TemplateBody [TemplateBody] <p>Structure containing the template body with a minimum length of 1 byte and a maximum length of 51,200 bytes. For more information about templates, see <a href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-anatomy.html">Template Anatomy</a> in the AWS CloudFormation User Guide.</p> <p>Conditional: You must specify only one of the following parameters: <code>StackName</code>, <code>TemplateBody</code>, or <code>TemplateURL</code>.</p>
 -- @return GetTemplateSummaryInput structure as a key-value pair table
 function M.GetTemplateSummaryInput(args)
-	assert(args, "You must provdide an argument table when creating GetTemplateSummaryInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetTemplateSummaryInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["StackName"] = args["StackName"],
 		["TemplateURL"] = args["TemplateURL"],
 		["TemplateBody"] = args["TemplateBody"],
 	}
-	asserts.AssertGetTemplateSummaryInput(t)
-	return t
+	asserts.AssertGetTemplateSummaryInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeChangeSetInput = { ["StackName"] = true, ["NextToken"] = true, ["ChangeSetName"] = true, nil }
@@ -134,14 +167,25 @@ end
 -- Required key: ChangeSetName
 -- @return DescribeChangeSetInput structure as a key-value pair table
 function M.DescribeChangeSetInput(args)
-	assert(args, "You must provdide an argument table when creating DescribeChangeSetInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeChangeSetInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["StackName"] = args["StackName"],
 		["NextToken"] = args["NextToken"],
 		["ChangeSetName"] = args["ChangeSetName"],
 	}
-	asserts.AssertDescribeChangeSetInput(t)
-	return t
+	asserts.AssertDescribeChangeSetInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Change = { ["ResourceChange"] = true, ["Type"] = true, nil }
@@ -164,13 +208,24 @@ end
 -- * Type [ChangeType] <p>The type of entity that AWS CloudFormation changes. Currently, the only entity type is <code>Resource</code>.</p>
 -- @return Change structure as a key-value pair table
 function M.Change(args)
-	assert(args, "You must provdide an argument table when creating Change")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Change")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ResourceChange"] = args["ResourceChange"],
 		["Type"] = args["Type"],
 	}
-	asserts.AssertChange(t)
-	return t
+	asserts.AssertChange(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.StackSummary = { ["StackId"] = true, ["DeletionTime"] = true, ["TemplateDescription"] = true, ["StackStatusReason"] = true, ["CreationTime"] = true, ["StackName"] = true, ["StackStatus"] = true, ["LastUpdatedTime"] = true, nil }
@@ -211,8 +266,14 @@ end
 -- Required key: StackStatus
 -- @return StackSummary structure as a key-value pair table
 function M.StackSummary(args)
-	assert(args, "You must provdide an argument table when creating StackSummary")
-	local t = { 
+	assert(args, "You must provide an argument table when creating StackSummary")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["StackId"] = args["StackId"],
 		["DeletionTime"] = args["DeletionTime"],
 		["TemplateDescription"] = args["TemplateDescription"],
@@ -222,8 +283,13 @@ function M.StackSummary(args)
 		["StackStatus"] = args["StackStatus"],
 		["LastUpdatedTime"] = args["LastUpdatedTime"],
 	}
-	asserts.AssertStackSummary(t)
-	return t
+	asserts.AssertStackSummary(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.TokenAlreadyExistsException = { nil }
@@ -242,11 +308,22 @@ end
 -- Valid keys:
 -- @return TokenAlreadyExistsException structure as a key-value pair table
 function M.TokenAlreadyExistsException(args)
-	assert(args, "You must provdide an argument table when creating TokenAlreadyExistsException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating TokenAlreadyExistsException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertTokenAlreadyExistsException(t)
-	return t
+	asserts.AssertTokenAlreadyExistsException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeAccountLimitsInput = { ["NextToken"] = true, nil }
@@ -267,12 +344,23 @@ end
 -- * NextToken [NextToken] <p>A string that identifies the next page of limits that you want to retrieve.</p>
 -- @return DescribeAccountLimitsInput structure as a key-value pair table
 function M.DescribeAccountLimitsInput(args)
-	assert(args, "You must provdide an argument table when creating DescribeAccountLimitsInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeAccountLimitsInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NextToken"] = args["NextToken"],
 	}
-	asserts.AssertDescribeAccountLimitsInput(t)
-	return t
+	asserts.AssertDescribeAccountLimitsInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.StackResourceDetail = { ["StackId"] = true, ["ResourceStatus"] = true, ["Description"] = true, ["ResourceType"] = true, ["ResourceStatusReason"] = true, ["LastUpdatedTimestamp"] = true, ["StackName"] = true, ["PhysicalResourceId"] = true, ["Metadata"] = true, ["LogicalResourceId"] = true, nil }
@@ -319,8 +407,14 @@ end
 -- Required key: ResourceStatus
 -- @return StackResourceDetail structure as a key-value pair table
 function M.StackResourceDetail(args)
-	assert(args, "You must provdide an argument table when creating StackResourceDetail")
-	local t = { 
+	assert(args, "You must provide an argument table when creating StackResourceDetail")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["StackId"] = args["StackId"],
 		["ResourceStatus"] = args["ResourceStatus"],
 		["Description"] = args["Description"],
@@ -332,8 +426,13 @@ function M.StackResourceDetail(args)
 		["Metadata"] = args["Metadata"],
 		["LogicalResourceId"] = args["LogicalResourceId"],
 	}
-	asserts.AssertStackResourceDetail(t)
-	return t
+	asserts.AssertStackResourceDetail(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ContinueUpdateRollbackOutput = { nil }
@@ -352,11 +451,22 @@ end
 -- Valid keys:
 -- @return ContinueUpdateRollbackOutput structure as a key-value pair table
 function M.ContinueUpdateRollbackOutput(args)
-	assert(args, "You must provdide an argument table when creating ContinueUpdateRollbackOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ContinueUpdateRollbackOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertContinueUpdateRollbackOutput(t)
-	return t
+	asserts.AssertContinueUpdateRollbackOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListChangeSetsInput = { ["StackName"] = true, ["NextToken"] = true, nil }
@@ -381,13 +491,24 @@ end
 -- Required key: StackName
 -- @return ListChangeSetsInput structure as a key-value pair table
 function M.ListChangeSetsInput(args)
-	assert(args, "You must provdide an argument table when creating ListChangeSetsInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListChangeSetsInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["StackName"] = args["StackName"],
 		["NextToken"] = args["NextToken"],
 	}
-	asserts.AssertListChangeSetsInput(t)
-	return t
+	asserts.AssertListChangeSetsInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteStackInput = { ["StackName"] = true, ["RetainResources"] = true, ["RoleARN"] = true, ["ClientRequestToken"] = true, nil }
@@ -416,15 +537,26 @@ end
 -- Required key: StackName
 -- @return DeleteStackInput structure as a key-value pair table
 function M.DeleteStackInput(args)
-	assert(args, "You must provdide an argument table when creating DeleteStackInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteStackInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["StackName"] = args["StackName"],
 		["RetainResources"] = args["RetainResources"],
 		["RoleARN"] = args["RoleARN"],
 		["ClientRequestToken"] = args["ClientRequestToken"],
 	}
-	asserts.AssertDeleteStackInput(t)
-	return t
+	asserts.AssertDeleteStackInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Tag = { ["Value"] = true, ["Key"] = true, nil }
@@ -447,13 +579,24 @@ end
 -- * Key [TagKey] <p> <i>Required</i>. A string used to identify this tag. You can specify a maximum of 128 characters for a tag key. Tags owned by Amazon Web Services (AWS) have the reserved prefix: <code>aws:</code>.</p>
 -- @return Tag structure as a key-value pair table
 function M.Tag(args)
-	assert(args, "You must provdide an argument table when creating Tag")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Tag")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Value"] = args["Value"],
 		["Key"] = args["Key"],
 	}
-	asserts.AssertTag(t)
-	return t
+	asserts.AssertTag(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateChangeSetInput = { ["ChangeSetName"] = true, ["TemplateBody"] = true, ["Parameters"] = true, ["Tags"] = true, ["RoleARN"] = true, ["UsePreviousTemplate"] = true, ["Capabilities"] = true, ["StackName"] = true, ["NotificationARNs"] = true, ["ResourceTypes"] = true, ["ClientToken"] = true, ["TemplateURL"] = true, ["ChangeSetType"] = true, ["Description"] = true, nil }
@@ -504,8 +647,14 @@ end
 -- Required key: ChangeSetName
 -- @return CreateChangeSetInput structure as a key-value pair table
 function M.CreateChangeSetInput(args)
-	assert(args, "You must provdide an argument table when creating CreateChangeSetInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateChangeSetInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ChangeSetName"] = args["ChangeSetName"],
 		["TemplateBody"] = args["TemplateBody"],
 		["Parameters"] = args["Parameters"],
@@ -521,8 +670,13 @@ function M.CreateChangeSetInput(args)
 		["ChangeSetType"] = args["ChangeSetType"],
 		["Description"] = args["Description"],
 	}
-	asserts.AssertCreateChangeSetInput(t)
-	return t
+	asserts.AssertCreateChangeSetInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeStackEventsOutput = { ["StackEvents"] = true, ["NextToken"] = true, nil }
@@ -545,13 +699,24 @@ end
 -- * NextToken [NextToken] <p>If the output exceeds 1 MB in size, a string that identifies the next page of events. If no additional page exists, this value is null.</p>
 -- @return DescribeStackEventsOutput structure as a key-value pair table
 function M.DescribeStackEventsOutput(args)
-	assert(args, "You must provdide an argument table when creating DescribeStackEventsOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeStackEventsOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["StackEvents"] = args["StackEvents"],
 		["NextToken"] = args["NextToken"],
 	}
-	asserts.AssertDescribeStackEventsOutput(t)
-	return t
+	asserts.AssertDescribeStackEventsOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ValidateTemplateOutput = { ["DeclaredTransforms"] = true, ["CapabilitiesReason"] = true, ["Description"] = true, ["Parameters"] = true, ["Capabilities"] = true, nil }
@@ -580,16 +745,27 @@ end
 -- * Capabilities [Capabilities] <p>The capabilities found within the template. If your template contains IAM resources, you must specify the CAPABILITY_IAM or CAPABILITY_NAMED_IAM value for this parameter when you use the <a>CreateStack</a> or <a>UpdateStack</a> actions with your template; otherwise, those actions return an InsufficientCapabilities error.</p> <p>For more information, see <a href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-iam-template.html#capabilities">Acknowledging IAM Resources in AWS CloudFormation Templates</a>.</p>
 -- @return ValidateTemplateOutput structure as a key-value pair table
 function M.ValidateTemplateOutput(args)
-	assert(args, "You must provdide an argument table when creating ValidateTemplateOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ValidateTemplateOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DeclaredTransforms"] = args["DeclaredTransforms"],
 		["CapabilitiesReason"] = args["CapabilitiesReason"],
 		["Description"] = args["Description"],
 		["Parameters"] = args["Parameters"],
 		["Capabilities"] = args["Capabilities"],
 	}
-	asserts.AssertValidateTemplateOutput(t)
-	return t
+	asserts.AssertValidateTemplateOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ResourceTargetDefinition = { ["Attribute"] = true, ["Name"] = true, ["RequiresRecreation"] = true, nil }
@@ -614,14 +790,25 @@ end
 -- * RequiresRecreation [RequiresRecreation] <p>If the <code>Attribute</code> value is <code>Properties</code>, indicates whether a change to this property causes the resource to be recreated. The value can be <code>Never</code>, <code>Always</code>, or <code>Conditionally</code>. To determine the conditions for a <code>Conditionally</code> recreation, see the update behavior for that <a href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-template-resource-type-ref.html">property</a> in the AWS CloudFormation User Guide.</p>
 -- @return ResourceTargetDefinition structure as a key-value pair table
 function M.ResourceTargetDefinition(args)
-	assert(args, "You must provdide an argument table when creating ResourceTargetDefinition")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ResourceTargetDefinition")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Attribute"] = args["Attribute"],
 		["Name"] = args["Name"],
 		["RequiresRecreation"] = args["RequiresRecreation"],
 	}
-	asserts.AssertResourceTargetDefinition(t)
-	return t
+	asserts.AssertResourceTargetDefinition(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.LimitExceededException = { nil }
@@ -640,11 +827,22 @@ end
 -- Valid keys:
 -- @return LimitExceededException structure as a key-value pair table
 function M.LimitExceededException(args)
-	assert(args, "You must provdide an argument table when creating LimitExceededException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating LimitExceededException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertLimitExceededException(t)
-	return t
+	asserts.AssertLimitExceededException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.TemplateParameter = { ["DefaultValue"] = true, ["NoEcho"] = true, ["Description"] = true, ["ParameterKey"] = true, nil }
@@ -671,15 +869,26 @@ end
 -- * ParameterKey [ParameterKey] <p>The name associated with the parameter.</p>
 -- @return TemplateParameter structure as a key-value pair table
 function M.TemplateParameter(args)
-	assert(args, "You must provdide an argument table when creating TemplateParameter")
-	local t = { 
+	assert(args, "You must provide an argument table when creating TemplateParameter")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DefaultValue"] = args["DefaultValue"],
 		["NoEcho"] = args["NoEcho"],
 		["Description"] = args["Description"],
 		["ParameterKey"] = args["ParameterKey"],
 	}
-	asserts.AssertTemplateParameter(t)
-	return t
+	asserts.AssertTemplateParameter(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListStacksOutput = { ["StackSummaries"] = true, ["NextToken"] = true, nil }
@@ -702,13 +911,24 @@ end
 -- * NextToken [NextToken] <p>If the output exceeds 1 MB in size, a string that identifies the next page of stacks. If no additional page exists, this value is null.</p>
 -- @return ListStacksOutput structure as a key-value pair table
 function M.ListStacksOutput(args)
-	assert(args, "You must provdide an argument table when creating ListStacksOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListStacksOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["StackSummaries"] = args["StackSummaries"],
 		["NextToken"] = args["NextToken"],
 	}
-	asserts.AssertListStacksOutput(t)
-	return t
+	asserts.AssertListStacksOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeChangeSetOutput = { ["StackId"] = true, ["Status"] = true, ["ChangeSetName"] = true, ["Description"] = true, ["Parameters"] = true, ["Tags"] = true, ["Changes"] = true, ["CreationTime"] = true, ["StatusReason"] = true, ["StackName"] = true, ["NotificationARNs"] = true, ["Capabilities"] = true, ["ExecutionStatus"] = true, ["NextToken"] = true, ["ChangeSetId"] = true, nil }
@@ -757,8 +977,14 @@ end
 -- * ChangeSetId [ChangeSetId] <p>The ARN of the change set.</p>
 -- @return DescribeChangeSetOutput structure as a key-value pair table
 function M.DescribeChangeSetOutput(args)
-	assert(args, "You must provdide an argument table when creating DescribeChangeSetOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeChangeSetOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["StackId"] = args["StackId"],
 		["Status"] = args["Status"],
 		["ChangeSetName"] = args["ChangeSetName"],
@@ -775,8 +1001,13 @@ function M.DescribeChangeSetOutput(args)
 		["NextToken"] = args["NextToken"],
 		["ChangeSetId"] = args["ChangeSetId"],
 	}
-	asserts.AssertDescribeChangeSetOutput(t)
-	return t
+	asserts.AssertDescribeChangeSetOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdateStackInput = { ["Tags"] = true, ["StackPolicyDuringUpdateURL"] = true, ["Parameters"] = true, ["TemplateBody"] = true, ["StackPolicyURL"] = true, ["RoleARN"] = true, ["UsePreviousTemplate"] = true, ["StackPolicyBody"] = true, ["Capabilities"] = true, ["StackName"] = true, ["StackPolicyDuringUpdateBody"] = true, ["ResourceTypes"] = true, ["NotificationARNs"] = true, ["ClientRequestToken"] = true, ["TemplateURL"] = true, nil }
@@ -827,8 +1058,14 @@ end
 -- Required key: StackName
 -- @return UpdateStackInput structure as a key-value pair table
 function M.UpdateStackInput(args)
-	assert(args, "You must provdide an argument table when creating UpdateStackInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateStackInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Tags"] = args["Tags"],
 		["StackPolicyDuringUpdateURL"] = args["StackPolicyDuringUpdateURL"],
 		["Parameters"] = args["Parameters"],
@@ -845,8 +1082,13 @@ function M.UpdateStackInput(args)
 		["ClientRequestToken"] = args["ClientRequestToken"],
 		["TemplateURL"] = args["TemplateURL"],
 	}
-	asserts.AssertUpdateStackInput(t)
-	return t
+	asserts.AssertUpdateStackInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.StackResource = { ["StackId"] = true, ["ResourceStatus"] = true, ["Description"] = true, ["ResourceType"] = true, ["Timestamp"] = true, ["ResourceStatusReason"] = true, ["StackName"] = true, ["PhysicalResourceId"] = true, ["LogicalResourceId"] = true, nil }
@@ -891,8 +1133,14 @@ end
 -- Required key: ResourceStatus
 -- @return StackResource structure as a key-value pair table
 function M.StackResource(args)
-	assert(args, "You must provdide an argument table when creating StackResource")
-	local t = { 
+	assert(args, "You must provide an argument table when creating StackResource")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["StackId"] = args["StackId"],
 		["ResourceStatus"] = args["ResourceStatus"],
 		["Description"] = args["Description"],
@@ -903,8 +1151,13 @@ function M.StackResource(args)
 		["PhysicalResourceId"] = args["PhysicalResourceId"],
 		["LogicalResourceId"] = args["LogicalResourceId"],
 	}
-	asserts.AssertStackResource(t)
-	return t
+	asserts.AssertStackResource(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Parameter = { ["ParameterValue"] = true, ["UsePreviousValue"] = true, ["ParameterKey"] = true, nil }
@@ -929,14 +1182,25 @@ end
 -- * ParameterKey [ParameterKey] <p>The key associated with the parameter. If you don't specify a key and value for a particular parameter, AWS CloudFormation uses the default value that is specified in your template.</p>
 -- @return Parameter structure as a key-value pair table
 function M.Parameter(args)
-	assert(args, "You must provdide an argument table when creating Parameter")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Parameter")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ParameterValue"] = args["ParameterValue"],
 		["UsePreviousValue"] = args["UsePreviousValue"],
 		["ParameterKey"] = args["ParameterKey"],
 	}
-	asserts.AssertParameter(t)
-	return t
+	asserts.AssertParameter(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListImportsOutput = { ["Imports"] = true, ["NextToken"] = true, nil }
@@ -959,13 +1223,24 @@ end
 -- * NextToken [NextToken] <p>A string that identifies the next page of exports. If there is no additional page, this value is null.</p>
 -- @return ListImportsOutput structure as a key-value pair table
 function M.ListImportsOutput(args)
-	assert(args, "You must provdide an argument table when creating ListImportsOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListImportsOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Imports"] = args["Imports"],
 		["NextToken"] = args["NextToken"],
 	}
-	asserts.AssertListImportsOutput(t)
-	return t
+	asserts.AssertListImportsOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeStackResourceOutput = { ["StackResourceDetail"] = true, nil }
@@ -986,12 +1261,23 @@ end
 -- * StackResourceDetail [StackResourceDetail] <p>A <code>StackResourceDetail</code> structure containing the description of the specified resource in the specified stack.</p>
 -- @return DescribeStackResourceOutput structure as a key-value pair table
 function M.DescribeStackResourceOutput(args)
-	assert(args, "You must provdide an argument table when creating DescribeStackResourceOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeStackResourceOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["StackResourceDetail"] = args["StackResourceDetail"],
 	}
-	asserts.AssertDescribeStackResourceOutput(t)
-	return t
+	asserts.AssertDescribeStackResourceOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetTemplateSummaryOutput = { ["CapabilitiesReason"] = true, ["Description"] = true, ["Parameters"] = true, ["Capabilities"] = true, ["ResourceTypes"] = true, ["Version"] = true, ["DeclaredTransforms"] = true, ["Metadata"] = true, nil }
@@ -1026,8 +1312,14 @@ end
 -- * Metadata [Metadata] <p>The value that is defined for the <code>Metadata</code> property of the template.</p>
 -- @return GetTemplateSummaryOutput structure as a key-value pair table
 function M.GetTemplateSummaryOutput(args)
-	assert(args, "You must provdide an argument table when creating GetTemplateSummaryOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetTemplateSummaryOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["CapabilitiesReason"] = args["CapabilitiesReason"],
 		["Description"] = args["Description"],
 		["Parameters"] = args["Parameters"],
@@ -1037,8 +1329,13 @@ function M.GetTemplateSummaryOutput(args)
 		["DeclaredTransforms"] = args["DeclaredTransforms"],
 		["Metadata"] = args["Metadata"],
 	}
-	asserts.AssertGetTemplateSummaryOutput(t)
-	return t
+	asserts.AssertGetTemplateSummaryOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ResourceChangeDetail = { ["CausingEntity"] = true, ["ChangeSource"] = true, ["Evaluation"] = true, ["Target"] = true, nil }
@@ -1065,15 +1362,26 @@ end
 -- * Target [ResourceTargetDefinition] <p>A <code>ResourceTargetDefinition</code> structure that describes the field that AWS CloudFormation will change and whether the resource will be recreated.</p>
 -- @return ResourceChangeDetail structure as a key-value pair table
 function M.ResourceChangeDetail(args)
-	assert(args, "You must provdide an argument table when creating ResourceChangeDetail")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ResourceChangeDetail")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["CausingEntity"] = args["CausingEntity"],
 		["ChangeSource"] = args["ChangeSource"],
 		["Evaluation"] = args["Evaluation"],
 		["Target"] = args["Target"],
 	}
-	asserts.AssertResourceChangeDetail(t)
-	return t
+	asserts.AssertResourceChangeDetail(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetTemplateInput = { ["StackName"] = true, ["TemplateStage"] = true, ["ChangeSetName"] = true, nil }
@@ -1098,14 +1406,25 @@ end
 -- * ChangeSetName [ChangeSetNameOrId] <p>The name or Amazon Resource Name (ARN) of a change set for which AWS CloudFormation returns the associated template. If you specify a name, you must also specify the <code>StackName</code>.</p>
 -- @return GetTemplateInput structure as a key-value pair table
 function M.GetTemplateInput(args)
-	assert(args, "You must provdide an argument table when creating GetTemplateInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetTemplateInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["StackName"] = args["StackName"],
 		["TemplateStage"] = args["TemplateStage"],
 		["ChangeSetName"] = args["ChangeSetName"],
 	}
-	asserts.AssertGetTemplateInput(t)
-	return t
+	asserts.AssertGetTemplateInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListImportsInput = { ["NextToken"] = true, ["ExportName"] = true, nil }
@@ -1130,13 +1449,24 @@ end
 -- Required key: ExportName
 -- @return ListImportsInput structure as a key-value pair table
 function M.ListImportsInput(args)
-	assert(args, "You must provdide an argument table when creating ListImportsInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListImportsInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NextToken"] = args["NextToken"],
 		["ExportName"] = args["ExportName"],
 	}
-	asserts.AssertListImportsInput(t)
-	return t
+	asserts.AssertListImportsInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListStackResourcesOutput = { ["NextToken"] = true, ["StackResourceSummaries"] = true, nil }
@@ -1159,13 +1489,24 @@ end
 -- * StackResourceSummaries [StackResourceSummaries] <p>A list of <code>StackResourceSummary</code> structures.</p>
 -- @return ListStackResourcesOutput structure as a key-value pair table
 function M.ListStackResourcesOutput(args)
-	assert(args, "You must provdide an argument table when creating ListStackResourcesOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListStackResourcesOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NextToken"] = args["NextToken"],
 		["StackResourceSummaries"] = args["StackResourceSummaries"],
 	}
-	asserts.AssertListStackResourcesOutput(t)
-	return t
+	asserts.AssertListStackResourcesOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ResourceChange = { ["ResourceType"] = true, ["PhysicalResourceId"] = true, ["Details"] = true, ["Action"] = true, ["Scope"] = true, ["LogicalResourceId"] = true, ["Replacement"] = true, nil }
@@ -1198,8 +1539,14 @@ end
 -- * Replacement [Replacement] <p>For the <code>Modify</code> action, indicates whether AWS CloudFormation will replace the resource by creating a new one and deleting the old one. This value depends on the value of the <code>RequiresRecreation</code> property in the <code>ResourceTargetDefinition</code> structure. For example, if the <code>RequiresRecreation</code> field is <code>Always</code> and the <code>Evaluation</code> field is <code>Static</code>, <code>Replacement</code> is <code>True</code>. If the <code>RequiresRecreation</code> field is <code>Always</code> and the <code>Evaluation</code> field is <code>Dynamic</code>, <code>Replacement</code> is <code>Conditionally</code>.</p> <p>If you have multiple changes with different <code>RequiresRecreation</code> values, the <code>Replacement</code> value depends on the change with the most impact. A <code>RequiresRecreation</code> value of <code>Always</code> has the most impact, followed by <code>Conditionally</code>, and then <code>Never</code>.</p>
 -- @return ResourceChange structure as a key-value pair table
 function M.ResourceChange(args)
-	assert(args, "You must provdide an argument table when creating ResourceChange")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ResourceChange")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ResourceType"] = args["ResourceType"],
 		["PhysicalResourceId"] = args["PhysicalResourceId"],
 		["Details"] = args["Details"],
@@ -1208,8 +1555,13 @@ function M.ResourceChange(args)
 		["LogicalResourceId"] = args["LogicalResourceId"],
 		["Replacement"] = args["Replacement"],
 	}
-	asserts.AssertResourceChange(t)
-	return t
+	asserts.AssertResourceChange(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeStackResourcesInput = { ["StackName"] = true, ["PhysicalResourceId"] = true, ["LogicalResourceId"] = true, nil }
@@ -1234,14 +1586,25 @@ end
 -- * LogicalResourceId [LogicalResourceId] <p>The logical name of the resource as specified in the template.</p> <p>Default: There is no default value.</p>
 -- @return DescribeStackResourcesInput structure as a key-value pair table
 function M.DescribeStackResourcesInput(args)
-	assert(args, "You must provdide an argument table when creating DescribeStackResourcesInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeStackResourcesInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["StackName"] = args["StackName"],
 		["PhysicalResourceId"] = args["PhysicalResourceId"],
 		["LogicalResourceId"] = args["LogicalResourceId"],
 	}
-	asserts.AssertDescribeStackResourcesInput(t)
-	return t
+	asserts.AssertDescribeStackResourcesInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteChangeSetInput = { ["StackName"] = true, ["ChangeSetName"] = true, nil }
@@ -1266,13 +1629,24 @@ end
 -- Required key: ChangeSetName
 -- @return DeleteChangeSetInput structure as a key-value pair table
 function M.DeleteChangeSetInput(args)
-	assert(args, "You must provdide an argument table when creating DeleteChangeSetInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteChangeSetInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["StackName"] = args["StackName"],
 		["ChangeSetName"] = args["ChangeSetName"],
 	}
-	asserts.AssertDeleteChangeSetInput(t)
-	return t
+	asserts.AssertDeleteChangeSetInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ExecuteChangeSetInput = { ["StackName"] = true, ["ChangeSetName"] = true, ["ClientRequestToken"] = true, nil }
@@ -1299,14 +1673,25 @@ end
 -- Required key: ChangeSetName
 -- @return ExecuteChangeSetInput structure as a key-value pair table
 function M.ExecuteChangeSetInput(args)
-	assert(args, "You must provdide an argument table when creating ExecuteChangeSetInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ExecuteChangeSetInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["StackName"] = args["StackName"],
 		["ChangeSetName"] = args["ChangeSetName"],
 		["ClientRequestToken"] = args["ClientRequestToken"],
 	}
-	asserts.AssertExecuteChangeSetInput(t)
-	return t
+	asserts.AssertExecuteChangeSetInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ParameterDeclaration = { ["ParameterType"] = true, ["ParameterConstraints"] = true, ["Description"] = true, ["DefaultValue"] = true, ["NoEcho"] = true, ["ParameterKey"] = true, nil }
@@ -1337,8 +1722,14 @@ end
 -- * ParameterKey [ParameterKey] <p>The name that is associated with the parameter.</p>
 -- @return ParameterDeclaration structure as a key-value pair table
 function M.ParameterDeclaration(args)
-	assert(args, "You must provdide an argument table when creating ParameterDeclaration")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ParameterDeclaration")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ParameterType"] = args["ParameterType"],
 		["ParameterConstraints"] = args["ParameterConstraints"],
 		["Description"] = args["Description"],
@@ -1346,8 +1737,13 @@ function M.ParameterDeclaration(args)
 		["NoEcho"] = args["NoEcho"],
 		["ParameterKey"] = args["ParameterKey"],
 	}
-	asserts.AssertParameterDeclaration(t)
-	return t
+	asserts.AssertParameterDeclaration(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeStacksInput = { ["StackName"] = true, ["NextToken"] = true, nil }
@@ -1370,13 +1766,24 @@ end
 -- * NextToken [NextToken] <p>A string that identifies the next page of stacks that you want to retrieve.</p>
 -- @return DescribeStacksInput structure as a key-value pair table
 function M.DescribeStacksInput(args)
-	assert(args, "You must provdide an argument table when creating DescribeStacksInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeStacksInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["StackName"] = args["StackName"],
 		["NextToken"] = args["NextToken"],
 	}
-	asserts.AssertDescribeStacksInput(t)
-	return t
+	asserts.AssertDescribeStacksInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ExecuteChangeSetOutput = { nil }
@@ -1395,11 +1802,22 @@ end
 -- Valid keys:
 -- @return ExecuteChangeSetOutput structure as a key-value pair table
 function M.ExecuteChangeSetOutput(args)
-	assert(args, "You must provdide an argument table when creating ExecuteChangeSetOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ExecuteChangeSetOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertExecuteChangeSetOutput(t)
-	return t
+	asserts.AssertExecuteChangeSetOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AlreadyExistsException = { nil }
@@ -1418,11 +1836,22 @@ end
 -- Valid keys:
 -- @return AlreadyExistsException structure as a key-value pair table
 function M.AlreadyExistsException(args)
-	assert(args, "You must provdide an argument table when creating AlreadyExistsException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AlreadyExistsException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertAlreadyExistsException(t)
-	return t
+	asserts.AssertAlreadyExistsException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.StackEvent = { ["StackId"] = true, ["EventId"] = true, ["ResourceStatus"] = true, ["ResourceType"] = true, ["Timestamp"] = true, ["ResourceStatusReason"] = true, ["StackName"] = true, ["ResourceProperties"] = true, ["PhysicalResourceId"] = true, ["ClientRequestToken"] = true, ["LogicalResourceId"] = true, nil }
@@ -1471,8 +1900,14 @@ end
 -- Required key: Timestamp
 -- @return StackEvent structure as a key-value pair table
 function M.StackEvent(args)
-	assert(args, "You must provdide an argument table when creating StackEvent")
-	local t = { 
+	assert(args, "You must provide an argument table when creating StackEvent")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["StackId"] = args["StackId"],
 		["EventId"] = args["EventId"],
 		["ResourceStatus"] = args["ResourceStatus"],
@@ -1485,8 +1920,13 @@ function M.StackEvent(args)
 		["ClientRequestToken"] = args["ClientRequestToken"],
 		["LogicalResourceId"] = args["LogicalResourceId"],
 	}
-	asserts.AssertStackEvent(t)
-	return t
+	asserts.AssertStackEvent(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ChangeSetSummary = { ["StackId"] = true, ["Status"] = true, ["ChangeSetName"] = true, ["Description"] = true, ["CreationTime"] = true, ["StatusReason"] = true, ["StackName"] = true, ["ExecutionStatus"] = true, ["ChangeSetId"] = true, nil }
@@ -1523,8 +1963,14 @@ end
 -- * ChangeSetId [ChangeSetId] <p>The ID of the change set.</p>
 -- @return ChangeSetSummary structure as a key-value pair table
 function M.ChangeSetSummary(args)
-	assert(args, "You must provdide an argument table when creating ChangeSetSummary")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ChangeSetSummary")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["StackId"] = args["StackId"],
 		["Status"] = args["Status"],
 		["ChangeSetName"] = args["ChangeSetName"],
@@ -1535,8 +1981,13 @@ function M.ChangeSetSummary(args)
 		["ExecutionStatus"] = args["ExecutionStatus"],
 		["ChangeSetId"] = args["ChangeSetId"],
 	}
-	asserts.AssertChangeSetSummary(t)
-	return t
+	asserts.AssertChangeSetSummary(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ValidateTemplateInput = { ["TemplateURL"] = true, ["TemplateBody"] = true, nil }
@@ -1559,13 +2010,24 @@ end
 -- * TemplateBody [TemplateBody] <p>Structure containing the template body with a minimum length of 1 byte and a maximum length of 51,200 bytes. For more information, go to <a href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-anatomy.html">Template Anatomy</a> in the AWS CloudFormation User Guide.</p> <p>Conditional: You must pass <code>TemplateURL</code> or <code>TemplateBody</code>. If both are passed, only <code>TemplateBody</code> is used.</p>
 -- @return ValidateTemplateInput structure as a key-value pair table
 function M.ValidateTemplateInput(args)
-	assert(args, "You must provdide an argument table when creating ValidateTemplateInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ValidateTemplateInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["TemplateURL"] = args["TemplateURL"],
 		["TemplateBody"] = args["TemplateBody"],
 	}
-	asserts.AssertValidateTemplateInput(t)
-	return t
+	asserts.AssertValidateTemplateInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetStackPolicyInput = { ["StackName"] = true, nil }
@@ -1588,12 +2050,23 @@ end
 -- Required key: StackName
 -- @return GetStackPolicyInput structure as a key-value pair table
 function M.GetStackPolicyInput(args)
-	assert(args, "You must provdide an argument table when creating GetStackPolicyInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetStackPolicyInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["StackName"] = args["StackName"],
 	}
-	asserts.AssertGetStackPolicyInput(t)
-	return t
+	asserts.AssertGetStackPolicyInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetStackPolicyOutput = { ["StackPolicyBody"] = true, nil }
@@ -1614,12 +2087,23 @@ end
 -- * StackPolicyBody [StackPolicyBody] <p>Structure containing the stack policy body. (For more information, go to <a href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/protect-stack-resources.html"> Prevent Updates to Stack Resources</a> in the AWS CloudFormation User Guide.)</p>
 -- @return GetStackPolicyOutput structure as a key-value pair table
 function M.GetStackPolicyOutput(args)
-	assert(args, "You must provdide an argument table when creating GetStackPolicyOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetStackPolicyOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["StackPolicyBody"] = args["StackPolicyBody"],
 	}
-	asserts.AssertGetStackPolicyOutput(t)
-	return t
+	asserts.AssertGetStackPolicyOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeAccountLimitsOutput = { ["NextToken"] = true, ["AccountLimits"] = true, nil }
@@ -1642,13 +2126,24 @@ end
 -- * AccountLimits [AccountLimitList] <p>An account limit structure that contain a list of AWS CloudFormation account limits and their values.</p>
 -- @return DescribeAccountLimitsOutput structure as a key-value pair table
 function M.DescribeAccountLimitsOutput(args)
-	assert(args, "You must provdide an argument table when creating DescribeAccountLimitsOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeAccountLimitsOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NextToken"] = args["NextToken"],
 		["AccountLimits"] = args["AccountLimits"],
 	}
-	asserts.AssertDescribeAccountLimitsOutput(t)
-	return t
+	asserts.AssertDescribeAccountLimitsOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateStackInput = { ["Tags"] = true, ["TemplateBody"] = true, ["Parameters"] = true, ["StackPolicyURL"] = true, ["RoleARN"] = true, ["TimeoutInMinutes"] = true, ["StackPolicyBody"] = true, ["Capabilities"] = true, ["OnFailure"] = true, ["StackName"] = true, ["NotificationARNs"] = true, ["ResourceTypes"] = true, ["ClientRequestToken"] = true, ["DisableRollback"] = true, ["TemplateURL"] = true, nil }
@@ -1699,8 +2194,14 @@ end
 -- Required key: StackName
 -- @return CreateStackInput structure as a key-value pair table
 function M.CreateStackInput(args)
-	assert(args, "You must provdide an argument table when creating CreateStackInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateStackInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Tags"] = args["Tags"],
 		["TemplateBody"] = args["TemplateBody"],
 		["Parameters"] = args["Parameters"],
@@ -1717,8 +2218,13 @@ function M.CreateStackInput(args)
 		["DisableRollback"] = args["DisableRollback"],
 		["TemplateURL"] = args["TemplateURL"],
 	}
-	asserts.AssertCreateStackInput(t)
-	return t
+	asserts.AssertCreateStackInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdateStackOutput = { ["StackId"] = true, nil }
@@ -1739,12 +2245,23 @@ end
 -- * StackId [StackId] <p>Unique identifier of the stack.</p>
 -- @return UpdateStackOutput structure as a key-value pair table
 function M.UpdateStackOutput(args)
-	assert(args, "You must provdide an argument table when creating UpdateStackOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateStackOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["StackId"] = args["StackId"],
 	}
-	asserts.AssertUpdateStackOutput(t)
-	return t
+	asserts.AssertUpdateStackOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InsufficientCapabilitiesException = { nil }
@@ -1763,11 +2280,22 @@ end
 -- Valid keys:
 -- @return InsufficientCapabilitiesException structure as a key-value pair table
 function M.InsufficientCapabilitiesException(args)
-	assert(args, "You must provdide an argument table when creating InsufficientCapabilitiesException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InsufficientCapabilitiesException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertInsufficientCapabilitiesException(t)
-	return t
+	asserts.AssertInsufficientCapabilitiesException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListExportsInput = { ["NextToken"] = true, nil }
@@ -1788,12 +2316,23 @@ end
 -- * NextToken [NextToken] <p>A string (provided by the <a>ListExports</a> response output) that identifies the next page of exported output values that you asked to retrieve.</p>
 -- @return ListExportsInput structure as a key-value pair table
 function M.ListExportsInput(args)
-	assert(args, "You must provdide an argument table when creating ListExportsInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListExportsInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NextToken"] = args["NextToken"],
 	}
-	asserts.AssertListExportsInput(t)
-	return t
+	asserts.AssertListExportsInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.StackResourceSummary = { ["ResourceStatus"] = true, ["ResourceType"] = true, ["ResourceStatusReason"] = true, ["LastUpdatedTimestamp"] = true, ["PhysicalResourceId"] = true, ["LogicalResourceId"] = true, nil }
@@ -1832,8 +2371,14 @@ end
 -- Required key: ResourceStatus
 -- @return StackResourceSummary structure as a key-value pair table
 function M.StackResourceSummary(args)
-	assert(args, "You must provdide an argument table when creating StackResourceSummary")
-	local t = { 
+	assert(args, "You must provide an argument table when creating StackResourceSummary")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ResourceStatus"] = args["ResourceStatus"],
 		["ResourceType"] = args["ResourceType"],
 		["ResourceStatusReason"] = args["ResourceStatusReason"],
@@ -1841,8 +2386,13 @@ function M.StackResourceSummary(args)
 		["PhysicalResourceId"] = args["PhysicalResourceId"],
 		["LogicalResourceId"] = args["LogicalResourceId"],
 	}
-	asserts.AssertStackResourceSummary(t)
-	return t
+	asserts.AssertStackResourceSummary(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateStackOutput = { ["StackId"] = true, nil }
@@ -1863,12 +2413,23 @@ end
 -- * StackId [StackId] <p>Unique identifier of the stack.</p>
 -- @return CreateStackOutput structure as a key-value pair table
 function M.CreateStackOutput(args)
-	assert(args, "You must provdide an argument table when creating CreateStackOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateStackOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["StackId"] = args["StackId"],
 	}
-	asserts.AssertCreateStackOutput(t)
-	return t
+	asserts.AssertCreateStackOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListExportsOutput = { ["Exports"] = true, ["NextToken"] = true, nil }
@@ -1891,13 +2452,24 @@ end
 -- * NextToken [NextToken] <p>If the output exceeds 100 exported output values, a string that identifies the next page of exports. If there is no additional page, this value is null.</p>
 -- @return ListExportsOutput structure as a key-value pair table
 function M.ListExportsOutput(args)
-	assert(args, "You must provdide an argument table when creating ListExportsOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListExportsOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Exports"] = args["Exports"],
 		["NextToken"] = args["NextToken"],
 	}
-	asserts.AssertListExportsOutput(t)
-	return t
+	asserts.AssertListExportsOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.SetStackPolicyInput = { ["StackName"] = true, ["StackPolicyBody"] = true, ["StackPolicyURL"] = true, nil }
@@ -1924,14 +2496,25 @@ end
 -- Required key: StackName
 -- @return SetStackPolicyInput structure as a key-value pair table
 function M.SetStackPolicyInput(args)
-	assert(args, "You must provdide an argument table when creating SetStackPolicyInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating SetStackPolicyInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["StackName"] = args["StackName"],
 		["StackPolicyBody"] = args["StackPolicyBody"],
 		["StackPolicyURL"] = args["StackPolicyURL"],
 	}
-	asserts.AssertSetStackPolicyInput(t)
-	return t
+	asserts.AssertSetStackPolicyInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ContinueUpdateRollbackInput = { ["StackName"] = true, ["RoleARN"] = true, ["ClientRequestToken"] = true, ["ResourcesToSkip"] = true, nil }
@@ -1960,15 +2543,26 @@ end
 -- Required key: StackName
 -- @return ContinueUpdateRollbackInput structure as a key-value pair table
 function M.ContinueUpdateRollbackInput(args)
-	assert(args, "You must provdide an argument table when creating ContinueUpdateRollbackInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ContinueUpdateRollbackInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["StackName"] = args["StackName"],
 		["RoleARN"] = args["RoleARN"],
 		["ClientRequestToken"] = args["ClientRequestToken"],
 		["ResourcesToSkip"] = args["ResourcesToSkip"],
 	}
-	asserts.AssertContinueUpdateRollbackInput(t)
-	return t
+	asserts.AssertContinueUpdateRollbackInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeStackEventsInput = { ["StackName"] = true, ["NextToken"] = true, nil }
@@ -1991,13 +2585,24 @@ end
 -- * NextToken [NextToken] <p>A string that identifies the next page of events that you want to retrieve.</p>
 -- @return DescribeStackEventsInput structure as a key-value pair table
 function M.DescribeStackEventsInput(args)
-	assert(args, "You must provdide an argument table when creating DescribeStackEventsInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeStackEventsInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["StackName"] = args["StackName"],
 		["NextToken"] = args["NextToken"],
 	}
-	asserts.AssertDescribeStackEventsInput(t)
-	return t
+	asserts.AssertDescribeStackEventsInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeStackResourcesOutput = { ["StackResources"] = true, nil }
@@ -2018,12 +2623,23 @@ end
 -- * StackResources [StackResources] <p>A list of <code>StackResource</code> structures.</p>
 -- @return DescribeStackResourcesOutput structure as a key-value pair table
 function M.DescribeStackResourcesOutput(args)
-	assert(args, "You must provdide an argument table when creating DescribeStackResourcesOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeStackResourcesOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["StackResources"] = args["StackResources"],
 	}
-	asserts.AssertDescribeStackResourcesOutput(t)
-	return t
+	asserts.AssertDescribeStackResourcesOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeStackResourceInput = { ["StackName"] = true, ["LogicalResourceId"] = true, nil }
@@ -2050,13 +2666,24 @@ end
 -- Required key: LogicalResourceId
 -- @return DescribeStackResourceInput structure as a key-value pair table
 function M.DescribeStackResourceInput(args)
-	assert(args, "You must provdide an argument table when creating DescribeStackResourceInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeStackResourceInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["StackName"] = args["StackName"],
 		["LogicalResourceId"] = args["LogicalResourceId"],
 	}
-	asserts.AssertDescribeStackResourceInput(t)
-	return t
+	asserts.AssertDescribeStackResourceInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CancelUpdateStackInput = { ["StackName"] = true, ["ClientRequestToken"] = true, nil }
@@ -2081,13 +2708,24 @@ end
 -- Required key: StackName
 -- @return CancelUpdateStackInput structure as a key-value pair table
 function M.CancelUpdateStackInput(args)
-	assert(args, "You must provdide an argument table when creating CancelUpdateStackInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CancelUpdateStackInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["StackName"] = args["StackName"],
 		["ClientRequestToken"] = args["ClientRequestToken"],
 	}
-	asserts.AssertCancelUpdateStackInput(t)
-	return t
+	asserts.AssertCancelUpdateStackInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.EstimateTemplateCostInput = { ["TemplateURL"] = true, ["Parameters"] = true, ["TemplateBody"] = true, nil }
@@ -2112,14 +2750,25 @@ end
 -- * TemplateBody [TemplateBody] <p>Structure containing the template body with a minimum length of 1 byte and a maximum length of 51,200 bytes. (For more information, go to <a href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-anatomy.html">Template Anatomy</a> in the AWS CloudFormation User Guide.)</p> <p>Conditional: You must pass <code>TemplateBody</code> or <code>TemplateURL</code>. If both are passed, only <code>TemplateBody</code> is used.</p>
 -- @return EstimateTemplateCostInput structure as a key-value pair table
 function M.EstimateTemplateCostInput(args)
-	assert(args, "You must provdide an argument table when creating EstimateTemplateCostInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating EstimateTemplateCostInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["TemplateURL"] = args["TemplateURL"],
 		["Parameters"] = args["Parameters"],
 		["TemplateBody"] = args["TemplateBody"],
 	}
-	asserts.AssertEstimateTemplateCostInput(t)
-	return t
+	asserts.AssertEstimateTemplateCostInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteChangeSetOutput = { nil }
@@ -2138,11 +2787,22 @@ end
 -- Valid keys:
 -- @return DeleteChangeSetOutput structure as a key-value pair table
 function M.DeleteChangeSetOutput(args)
-	assert(args, "You must provdide an argument table when creating DeleteChangeSetOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteChangeSetOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertDeleteChangeSetOutput(t)
-	return t
+	asserts.AssertDeleteChangeSetOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AccountLimit = { ["Name"] = true, ["Value"] = true, nil }
@@ -2165,13 +2825,24 @@ end
 -- * Value [LimitValue] <p>The value that is associated with the account limit name.</p>
 -- @return AccountLimit structure as a key-value pair table
 function M.AccountLimit(args)
-	assert(args, "You must provdide an argument table when creating AccountLimit")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AccountLimit")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Name"] = args["Name"],
 		["Value"] = args["Value"],
 	}
-	asserts.AssertAccountLimit(t)
-	return t
+	asserts.AssertAccountLimit(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidChangeSetStatusException = { nil }
@@ -2190,11 +2861,22 @@ end
 -- Valid keys:
 -- @return InvalidChangeSetStatusException structure as a key-value pair table
 function M.InvalidChangeSetStatusException(args)
-	assert(args, "You must provdide an argument table when creating InvalidChangeSetStatusException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidChangeSetStatusException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertInvalidChangeSetStatusException(t)
-	return t
+	asserts.AssertInvalidChangeSetStatusException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListStacksInput = { ["NextToken"] = true, ["StackStatusFilter"] = true, nil }
@@ -2217,13 +2899,24 @@ end
 -- * StackStatusFilter [StackStatusFilter] <p>Stack status to use as a filter. Specify one or more stack status codes to list only stacks with the specified status codes. For a complete list of stack status codes, see the <code>StackStatus</code> parameter of the <a>Stack</a> data type.</p>
 -- @return ListStacksInput structure as a key-value pair table
 function M.ListStacksInput(args)
-	assert(args, "You must provdide an argument table when creating ListStacksInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListStacksInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NextToken"] = args["NextToken"],
 		["StackStatusFilter"] = args["StackStatusFilter"],
 	}
-	asserts.AssertListStacksInput(t)
-	return t
+	asserts.AssertListStacksInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeStacksOutput = { ["NextToken"] = true, ["Stacks"] = true, nil }
@@ -2246,13 +2939,24 @@ end
 -- * Stacks [Stacks] <p>A list of stack structures.</p>
 -- @return DescribeStacksOutput structure as a key-value pair table
 function M.DescribeStacksOutput(args)
-	assert(args, "You must provdide an argument table when creating DescribeStacksOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeStacksOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NextToken"] = args["NextToken"],
 		["Stacks"] = args["Stacks"],
 	}
-	asserts.AssertDescribeStacksOutput(t)
-	return t
+	asserts.AssertDescribeStacksOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateChangeSetOutput = { ["StackId"] = true, ["Id"] = true, nil }
@@ -2275,13 +2979,24 @@ end
 -- * Id [ChangeSetId] <p>The Amazon Resource Name (ARN) of the change set.</p>
 -- @return CreateChangeSetOutput structure as a key-value pair table
 function M.CreateChangeSetOutput(args)
-	assert(args, "You must provdide an argument table when creating CreateChangeSetOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateChangeSetOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["StackId"] = args["StackId"],
 		["Id"] = args["Id"],
 	}
-	asserts.AssertCreateChangeSetOutput(t)
-	return t
+	asserts.AssertCreateChangeSetOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.SignalResourceInput = { ["StackName"] = true, ["Status"] = true, ["UniqueId"] = true, ["LogicalResourceId"] = true, nil }
@@ -2316,15 +3031,26 @@ end
 -- Required key: Status
 -- @return SignalResourceInput structure as a key-value pair table
 function M.SignalResourceInput(args)
-	assert(args, "You must provdide an argument table when creating SignalResourceInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating SignalResourceInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["StackName"] = args["StackName"],
 		["Status"] = args["Status"],
 		["UniqueId"] = args["UniqueId"],
 		["LogicalResourceId"] = args["LogicalResourceId"],
 	}
-	asserts.AssertSignalResourceInput(t)
-	return t
+	asserts.AssertSignalResourceInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Export = { ["ExportingStackId"] = true, ["Value"] = true, ["Name"] = true, nil }
@@ -2349,14 +3075,25 @@ end
 -- * Name [ExportName] <p>The name of exported output value. Use this name and the <code>Fn::ImportValue</code> function to import the associated value into other stacks. The name is defined in the <code>Export</code> field in the associated stack's <code>Outputs</code> section.</p>
 -- @return Export structure as a key-value pair table
 function M.Export(args)
-	assert(args, "You must provdide an argument table when creating Export")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Export")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ExportingStackId"] = args["ExportingStackId"],
 		["Value"] = args["Value"],
 		["Name"] = args["Name"],
 	}
-	asserts.AssertExport(t)
-	return t
+	asserts.AssertExport(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Stack = { ["StackId"] = true, ["TimeoutInMinutes"] = true, ["Description"] = true, ["Parameters"] = true, ["Tags"] = true, ["Outputs"] = true, ["RoleARN"] = true, ["StackStatusReason"] = true, ["CreationTime"] = true, ["Capabilities"] = true, ["StackName"] = true, ["NotificationARNs"] = true, ["StackStatus"] = true, ["DisableRollback"] = true, ["ChangeSetId"] = true, ["LastUpdatedTime"] = true, nil }
@@ -2413,8 +3150,14 @@ end
 -- Required key: StackStatus
 -- @return Stack structure as a key-value pair table
 function M.Stack(args)
-	assert(args, "You must provdide an argument table when creating Stack")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Stack")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["StackId"] = args["StackId"],
 		["TimeoutInMinutes"] = args["TimeoutInMinutes"],
 		["Description"] = args["Description"],
@@ -2432,8 +3175,13 @@ function M.Stack(args)
 		["ChangeSetId"] = args["ChangeSetId"],
 		["LastUpdatedTime"] = args["LastUpdatedTime"],
 	}
-	asserts.AssertStack(t)
-	return t
+	asserts.AssertStack(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ChangeSetNotFoundException = { nil }
@@ -2452,11 +3200,22 @@ end
 -- Valid keys:
 -- @return ChangeSetNotFoundException structure as a key-value pair table
 function M.ChangeSetNotFoundException(args)
-	assert(args, "You must provdide an argument table when creating ChangeSetNotFoundException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ChangeSetNotFoundException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertChangeSetNotFoundException(t)
-	return t
+	asserts.AssertChangeSetNotFoundException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Output = { ["Description"] = true, ["OutputKey"] = true, ["OutputValue"] = true, nil }
@@ -2481,14 +3240,25 @@ end
 -- * OutputValue [OutputValue] <p>The value associated with the output.</p>
 -- @return Output structure as a key-value pair table
 function M.Output(args)
-	assert(args, "You must provdide an argument table when creating Output")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Output")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Description"] = args["Description"],
 		["OutputKey"] = args["OutputKey"],
 		["OutputValue"] = args["OutputValue"],
 	}
-	asserts.AssertOutput(t)
-	return t
+	asserts.AssertOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.EstimateTemplateCostOutput = { ["Url"] = true, nil }
@@ -2509,12 +3279,23 @@ end
 -- * Url [Url] <p>An AWS Simple Monthly Calculator URL with a query string that describes the resources required to run the template.</p>
 -- @return EstimateTemplateCostOutput structure as a key-value pair table
 function M.EstimateTemplateCostOutput(args)
-	assert(args, "You must provdide an argument table when creating EstimateTemplateCostOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating EstimateTemplateCostOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Url"] = args["Url"],
 	}
-	asserts.AssertEstimateTemplateCostOutput(t)
-	return t
+	asserts.AssertEstimateTemplateCostOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetTemplateOutput = { ["StagesAvailable"] = true, ["TemplateBody"] = true, nil }
@@ -2537,13 +3318,24 @@ end
 -- * TemplateBody [TemplateBody] <p>Structure containing the template body. (For more information, go to <a href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-anatomy.html">Template Anatomy</a> in the AWS CloudFormation User Guide.)</p> <p>AWS CloudFormation returns the same template that was used when the stack was created.</p>
 -- @return GetTemplateOutput structure as a key-value pair table
 function M.GetTemplateOutput(args)
-	assert(args, "You must provdide an argument table when creating GetTemplateOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetTemplateOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["StagesAvailable"] = args["StagesAvailable"],
 		["TemplateBody"] = args["TemplateBody"],
 	}
-	asserts.AssertGetTemplateOutput(t)
-	return t
+	asserts.AssertGetTemplateOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListChangeSetsOutput = { ["NextToken"] = true, ["Summaries"] = true, nil }
@@ -2566,13 +3358,24 @@ end
 -- * Summaries [ChangeSetSummaries] <p>A list of <code>ChangeSetSummary</code> structures that provides the ID and status of each change set for the specified stack.</p>
 -- @return ListChangeSetsOutput structure as a key-value pair table
 function M.ListChangeSetsOutput(args)
-	assert(args, "You must provdide an argument table when creating ListChangeSetsOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListChangeSetsOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NextToken"] = args["NextToken"],
 		["Summaries"] = args["Summaries"],
 	}
-	asserts.AssertListChangeSetsOutput(t)
-	return t
+	asserts.AssertListChangeSetsOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 function asserts.AssertCausingEntity(str)
@@ -3845,8 +4648,11 @@ function M.DescribeStackResourceAsync(DescribeStackResourceInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DescribeStackResource",
 	}
+	for header,value in pairs(DescribeStackResourceInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeStackResourceInput, headers, settings, cb)
 	else
@@ -3877,8 +4683,11 @@ function M.ListStackResourcesAsync(ListStackResourcesInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".ListStackResources",
 	}
+	for header,value in pairs(ListStackResourcesInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ListStackResourcesInput, headers, settings, cb)
 	else
@@ -3909,8 +4718,11 @@ function M.ValidateTemplateAsync(ValidateTemplateInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".ValidateTemplate",
 	}
+	for header,value in pairs(ValidateTemplateInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ValidateTemplateInput, headers, settings, cb)
 	else
@@ -3941,8 +4753,11 @@ function M.DescribeStackResourcesAsync(DescribeStackResourcesInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DescribeStackResources",
 	}
+	for header,value in pairs(DescribeStackResourcesInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeStackResourcesInput, headers, settings, cb)
 	else
@@ -3973,8 +4788,11 @@ function M.ListImportsAsync(ListImportsInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".ListImports",
 	}
+	for header,value in pairs(ListImportsInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ListImportsInput, headers, settings, cb)
 	else
@@ -4005,8 +4823,11 @@ function M.CreateStackAsync(CreateStackInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".CreateStack",
 	}
+	for header,value in pairs(CreateStackInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateStackInput, headers, settings, cb)
 	else
@@ -4037,8 +4858,11 @@ function M.GetTemplateSummaryAsync(GetTemplateSummaryInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".GetTemplateSummary",
 	}
+	for header,value in pairs(GetTemplateSummaryInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", GetTemplateSummaryInput, headers, settings, cb)
 	else
@@ -4069,8 +4893,11 @@ function M.CancelUpdateStackAsync(CancelUpdateStackInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".CancelUpdateStack",
 	}
+	for header,value in pairs(CancelUpdateStackInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", CancelUpdateStackInput, headers, settings, cb)
 	else
@@ -4101,8 +4928,11 @@ function M.ContinueUpdateRollbackAsync(ContinueUpdateRollbackInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".ContinueUpdateRollback",
 	}
+	for header,value in pairs(ContinueUpdateRollbackInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ContinueUpdateRollbackInput, headers, settings, cb)
 	else
@@ -4133,8 +4963,11 @@ function M.ListChangeSetsAsync(ListChangeSetsInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".ListChangeSets",
 	}
+	for header,value in pairs(ListChangeSetsInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ListChangeSetsInput, headers, settings, cb)
 	else
@@ -4165,8 +4998,11 @@ function M.GetStackPolicyAsync(GetStackPolicyInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".GetStackPolicy",
 	}
+	for header,value in pairs(GetStackPolicyInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", GetStackPolicyInput, headers, settings, cb)
 	else
@@ -4197,8 +5033,11 @@ function M.ListExportsAsync(ListExportsInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".ListExports",
 	}
+	for header,value in pairs(ListExportsInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ListExportsInput, headers, settings, cb)
 	else
@@ -4229,8 +5068,11 @@ function M.DescribeStackEventsAsync(DescribeStackEventsInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DescribeStackEvents",
 	}
+	for header,value in pairs(DescribeStackEventsInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeStackEventsInput, headers, settings, cb)
 	else
@@ -4261,8 +5103,11 @@ function M.SignalResourceAsync(SignalResourceInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".SignalResource",
 	}
+	for header,value in pairs(SignalResourceInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", SignalResourceInput, headers, settings, cb)
 	else
@@ -4293,8 +5138,11 @@ function M.GetTemplateAsync(GetTemplateInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".GetTemplate",
 	}
+	for header,value in pairs(GetTemplateInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", GetTemplateInput, headers, settings, cb)
 	else
@@ -4325,8 +5173,11 @@ function M.DescribeChangeSetAsync(DescribeChangeSetInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DescribeChangeSet",
 	}
+	for header,value in pairs(DescribeChangeSetInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeChangeSetInput, headers, settings, cb)
 	else
@@ -4357,8 +5208,11 @@ function M.DeleteChangeSetAsync(DeleteChangeSetInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DeleteChangeSet",
 	}
+	for header,value in pairs(DeleteChangeSetInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteChangeSetInput, headers, settings, cb)
 	else
@@ -4389,8 +5243,11 @@ function M.CreateChangeSetAsync(CreateChangeSetInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".CreateChangeSet",
 	}
+	for header,value in pairs(CreateChangeSetInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateChangeSetInput, headers, settings, cb)
 	else
@@ -4421,8 +5278,11 @@ function M.DescribeStacksAsync(DescribeStacksInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DescribeStacks",
 	}
+	for header,value in pairs(DescribeStacksInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeStacksInput, headers, settings, cb)
 	else
@@ -4453,8 +5313,11 @@ function M.UpdateStackAsync(UpdateStackInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".UpdateStack",
 	}
+	for header,value in pairs(UpdateStackInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateStackInput, headers, settings, cb)
 	else
@@ -4485,8 +5348,11 @@ function M.ExecuteChangeSetAsync(ExecuteChangeSetInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".ExecuteChangeSet",
 	}
+	for header,value in pairs(ExecuteChangeSetInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ExecuteChangeSetInput, headers, settings, cb)
 	else
@@ -4517,8 +5383,11 @@ function M.DeleteStackAsync(DeleteStackInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DeleteStack",
 	}
+	for header,value in pairs(DeleteStackInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteStackInput, headers, settings, cb)
 	else
@@ -4549,8 +5418,11 @@ function M.SetStackPolicyAsync(SetStackPolicyInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".SetStackPolicy",
 	}
+	for header,value in pairs(SetStackPolicyInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", SetStackPolicyInput, headers, settings, cb)
 	else
@@ -4581,8 +5453,11 @@ function M.ListStacksAsync(ListStacksInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".ListStacks",
 	}
+	for header,value in pairs(ListStacksInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ListStacksInput, headers, settings, cb)
 	else
@@ -4613,8 +5488,11 @@ function M.EstimateTemplateCostAsync(EstimateTemplateCostInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".EstimateTemplateCost",
 	}
+	for header,value in pairs(EstimateTemplateCostInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", EstimateTemplateCostInput, headers, settings, cb)
 	else
@@ -4645,8 +5523,11 @@ function M.DescribeAccountLimitsAsync(DescribeAccountLimitsInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DescribeAccountLimits",
 	}
+	for header,value in pairs(DescribeAccountLimitsInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeAccountLimitsInput, headers, settings, cb)
 	else

@@ -49,15 +49,29 @@ end
 -- Required key: VersioningConfiguration
 -- @return PutBucketVersioningRequest structure as a key-value pair table
 function M.PutBucketVersioningRequest(args)
-	assert(args, "You must provdide an argument table when creating PutBucketVersioningRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating PutBucketVersioningRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{Bucket}"] = args["Bucket"],
+    }
+    local header_args = { 
+        ["x-amz-mfa"] = args["MFA"],
+        ["Content-MD5"] = args["ContentMD5"],
+    }
+	local all_args = { 
 		["MFA"] = args["MFA"],
 		["ContentMD5"] = args["ContentMD5"],
 		["Bucket"] = args["Bucket"],
 		["VersioningConfiguration"] = args["VersioningConfiguration"],
 	}
-	asserts.AssertPutBucketVersioningRequest(t)
-	return t
+	asserts.AssertPutBucketVersioningRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteObjectTaggingOutput = { ["VersionId"] = true, nil }
@@ -78,12 +92,24 @@ end
 -- * VersionId [ObjectVersionId] The versionId of the object the tag-set was removed from.
 -- @return DeleteObjectTaggingOutput structure as a key-value pair table
 function M.DeleteObjectTaggingOutput(args)
-	assert(args, "You must provdide an argument table when creating DeleteObjectTaggingOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteObjectTaggingOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+        ["x-amz-version-id"] = args["VersionId"],
+    }
+	local all_args = { 
 		["VersionId"] = args["VersionId"],
 	}
-	asserts.AssertDeleteObjectTaggingOutput(t)
-	return t
+	asserts.AssertDeleteObjectTaggingOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.PutBucketReplicationRequest = { ["ReplicationConfiguration"] = true, ["ContentMD5"] = true, ["Bucket"] = true, nil }
@@ -112,14 +138,27 @@ end
 -- Required key: ReplicationConfiguration
 -- @return PutBucketReplicationRequest structure as a key-value pair table
 function M.PutBucketReplicationRequest(args)
-	assert(args, "You must provdide an argument table when creating PutBucketReplicationRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating PutBucketReplicationRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{Bucket}"] = args["Bucket"],
+    }
+    local header_args = { 
+        ["Content-MD5"] = args["ContentMD5"],
+    }
+	local all_args = { 
 		["ReplicationConfiguration"] = args["ReplicationConfiguration"],
 		["ContentMD5"] = args["ContentMD5"],
 		["Bucket"] = args["Bucket"],
 	}
-	asserts.AssertPutBucketReplicationRequest(t)
-	return t
+	asserts.AssertPutBucketReplicationRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.PutObjectOutput = { ["SSECustomerAlgorithm"] = true, ["RequestCharged"] = true, ["VersionId"] = true, ["ETag"] = true, ["Expiration"] = true, ["ServerSideEncryption"] = true, ["SSECustomerKeyMD5"] = true, ["SSEKMSKeyId"] = true, nil }
@@ -154,8 +193,22 @@ end
 -- * SSEKMSKeyId [SSEKMSKeyId] If present, specifies the ID of the AWS Key Management Service (KMS) master encryption key that was used for the object.
 -- @return PutObjectOutput structure as a key-value pair table
 function M.PutObjectOutput(args)
-	assert(args, "You must provdide an argument table when creating PutObjectOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating PutObjectOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+        ["x-amz-server-side-encryption-customer-algorithm"] = args["SSECustomerAlgorithm"],
+        ["x-amz-request-charged"] = args["RequestCharged"],
+        ["x-amz-version-id"] = args["VersionId"],
+        ["ETag"] = args["ETag"],
+        ["x-amz-expiration"] = args["Expiration"],
+        ["x-amz-server-side-encryption"] = args["ServerSideEncryption"],
+        ["x-amz-server-side-encryption-customer-key-MD5"] = args["SSECustomerKeyMD5"],
+        ["x-amz-server-side-encryption-aws-kms-key-id"] = args["SSEKMSKeyId"],
+    }
+	local all_args = { 
 		["SSECustomerAlgorithm"] = args["SSECustomerAlgorithm"],
 		["RequestCharged"] = args["RequestCharged"],
 		["VersionId"] = args["VersionId"],
@@ -165,8 +218,13 @@ function M.PutObjectOutput(args)
 		["SSECustomerKeyMD5"] = args["SSECustomerKeyMD5"],
 		["SSEKMSKeyId"] = args["SSEKMSKeyId"],
 	}
-	asserts.AssertPutObjectOutput(t)
-	return t
+	asserts.AssertPutObjectOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ReplicationRule = { ["Status"] = true, ["Prefix"] = true, ["Destination"] = true, ["ID"] = true, nil }
@@ -199,15 +257,26 @@ end
 -- Required key: Destination
 -- @return ReplicationRule structure as a key-value pair table
 function M.ReplicationRule(args)
-	assert(args, "You must provdide an argument table when creating ReplicationRule")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ReplicationRule")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Status"] = args["Status"],
 		["Prefix"] = args["Prefix"],
 		["Destination"] = args["Destination"],
 		["ID"] = args["ID"],
 	}
-	asserts.AssertReplicationRule(t)
-	return t
+	asserts.AssertReplicationRule(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Object = { ["LastModified"] = true, ["ETag"] = true, ["StorageClass"] = true, ["Key"] = true, ["Owner"] = true, ["Size"] = true, nil }
@@ -238,8 +307,14 @@ end
 -- * Size [Size] 
 -- @return Object structure as a key-value pair table
 function M.Object(args)
-	assert(args, "You must provdide an argument table when creating Object")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Object")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["LastModified"] = args["LastModified"],
 		["ETag"] = args["ETag"],
 		["StorageClass"] = args["StorageClass"],
@@ -247,8 +322,13 @@ function M.Object(args)
 		["Owner"] = args["Owner"],
 		["Size"] = args["Size"],
 	}
-	asserts.AssertObject(t)
-	return t
+	asserts.AssertObject(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteMarkerEntry = { ["Owner"] = true, ["IsLatest"] = true, ["VersionId"] = true, ["Key"] = true, ["LastModified"] = true, nil }
@@ -277,16 +357,27 @@ end
 -- * LastModified [LastModified] Date and time the object was last modified.
 -- @return DeleteMarkerEntry structure as a key-value pair table
 function M.DeleteMarkerEntry(args)
-	assert(args, "You must provdide an argument table when creating DeleteMarkerEntry")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteMarkerEntry")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Owner"] = args["Owner"],
 		["IsLatest"] = args["IsLatest"],
 		["VersionId"] = args["VersionId"],
 		["Key"] = args["Key"],
 		["LastModified"] = args["LastModified"],
 	}
-	asserts.AssertDeleteMarkerEntry(t)
-	return t
+	asserts.AssertDeleteMarkerEntry(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteBucketAnalyticsConfigurationRequest = { ["Bucket"] = true, ["Id"] = true, nil }
@@ -313,13 +404,26 @@ end
 -- Required key: Id
 -- @return DeleteBucketAnalyticsConfigurationRequest structure as a key-value pair table
 function M.DeleteBucketAnalyticsConfigurationRequest(args)
-	assert(args, "You must provdide an argument table when creating DeleteBucketAnalyticsConfigurationRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteBucketAnalyticsConfigurationRequest")
+    local query_args = { 
+        ["id"] = args["Id"],
+    }
+    local uri_args = { 
+        ["{Bucket}"] = args["Bucket"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Bucket"] = args["Bucket"],
 		["Id"] = args["Id"],
 	}
-	asserts.AssertDeleteBucketAnalyticsConfigurationRequest(t)
-	return t
+	asserts.AssertDeleteBucketAnalyticsConfigurationRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AnalyticsConfiguration = { ["Filter"] = true, ["StorageClassAnalysis"] = true, ["Id"] = true, nil }
@@ -348,14 +452,25 @@ end
 -- Required key: StorageClassAnalysis
 -- @return AnalyticsConfiguration structure as a key-value pair table
 function M.AnalyticsConfiguration(args)
-	assert(args, "You must provdide an argument table when creating AnalyticsConfiguration")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AnalyticsConfiguration")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Filter"] = args["Filter"],
 		["StorageClassAnalysis"] = args["StorageClassAnalysis"],
 		["Id"] = args["Id"],
 	}
-	asserts.AssertAnalyticsConfiguration(t)
-	return t
+	asserts.AssertAnalyticsConfiguration(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteBucketLifecycleRequest = { ["Bucket"] = true, nil }
@@ -378,12 +493,24 @@ end
 -- Required key: Bucket
 -- @return DeleteBucketLifecycleRequest structure as a key-value pair table
 function M.DeleteBucketLifecycleRequest(args)
-	assert(args, "You must provdide an argument table when creating DeleteBucketLifecycleRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteBucketLifecycleRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{Bucket}"] = args["Bucket"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Bucket"] = args["Bucket"],
 	}
-	asserts.AssertDeleteBucketLifecycleRequest(t)
-	return t
+	asserts.AssertDeleteBucketLifecycleRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InventoryDestination = { ["S3BucketDestination"] = true, nil }
@@ -406,12 +533,23 @@ end
 -- Required key: S3BucketDestination
 -- @return InventoryDestination structure as a key-value pair table
 function M.InventoryDestination(args)
-	assert(args, "You must provdide an argument table when creating InventoryDestination")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InventoryDestination")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["S3BucketDestination"] = args["S3BucketDestination"],
 	}
-	asserts.AssertInventoryDestination(t)
-	return t
+	asserts.AssertInventoryDestination(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UploadPartRequest = { ["Body"] = true, ["SSECustomerAlgorithm"] = true, ["RequestPayer"] = true, ["ContentLength"] = true, ["ContentMD5"] = true, ["Bucket"] = true, ["SSECustomerKey"] = true, ["UploadId"] = true, ["Key"] = true, ["SSECustomerKeyMD5"] = true, ["PartNumber"] = true, nil }
@@ -460,8 +598,24 @@ end
 -- Required key: UploadId
 -- @return UploadPartRequest structure as a key-value pair table
 function M.UploadPartRequest(args)
-	assert(args, "You must provdide an argument table when creating UploadPartRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UploadPartRequest")
+    local query_args = { 
+        ["uploadId"] = args["UploadId"],
+        ["partNumber"] = args["PartNumber"],
+    }
+    local uri_args = { 
+        ["{Bucket}"] = args["Bucket"],
+        ["{Key}"] = args["Key"],
+    }
+    local header_args = { 
+        ["x-amz-server-side-encryption-customer-algorithm"] = args["SSECustomerAlgorithm"],
+        ["x-amz-request-payer"] = args["RequestPayer"],
+        ["Content-Length"] = args["ContentLength"],
+        ["Content-MD5"] = args["ContentMD5"],
+        ["x-amz-server-side-encryption-customer-key"] = args["SSECustomerKey"],
+        ["x-amz-server-side-encryption-customer-key-MD5"] = args["SSECustomerKeyMD5"],
+    }
+	local all_args = { 
 		["Body"] = args["Body"],
 		["SSECustomerAlgorithm"] = args["SSECustomerAlgorithm"],
 		["RequestPayer"] = args["RequestPayer"],
@@ -474,8 +628,13 @@ function M.UploadPartRequest(args)
 		["SSECustomerKeyMD5"] = args["SSECustomerKeyMD5"],
 		["PartNumber"] = args["PartNumber"],
 	}
-	asserts.AssertUploadPartRequest(t)
-	return t
+	asserts.AssertUploadPartRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UploadPartCopyOutput = { ["SSECustomerAlgorithm"] = true, ["CopySourceVersionId"] = true, ["ServerSideEncryption"] = true, ["RequestCharged"] = true, ["SSECustomerKeyMD5"] = true, ["CopyPartResult"] = true, ["SSEKMSKeyId"] = true, nil }
@@ -508,8 +667,20 @@ end
 -- * SSEKMSKeyId [SSEKMSKeyId] If present, specifies the ID of the AWS Key Management Service (KMS) master encryption key that was used for the object.
 -- @return UploadPartCopyOutput structure as a key-value pair table
 function M.UploadPartCopyOutput(args)
-	assert(args, "You must provdide an argument table when creating UploadPartCopyOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UploadPartCopyOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+        ["x-amz-server-side-encryption-customer-algorithm"] = args["SSECustomerAlgorithm"],
+        ["x-amz-copy-source-version-id"] = args["CopySourceVersionId"],
+        ["x-amz-server-side-encryption"] = args["ServerSideEncryption"],
+        ["x-amz-request-charged"] = args["RequestCharged"],
+        ["x-amz-server-side-encryption-customer-key-MD5"] = args["SSECustomerKeyMD5"],
+        ["x-amz-server-side-encryption-aws-kms-key-id"] = args["SSEKMSKeyId"],
+    }
+	local all_args = { 
 		["SSECustomerAlgorithm"] = args["SSECustomerAlgorithm"],
 		["CopySourceVersionId"] = args["CopySourceVersionId"],
 		["ServerSideEncryption"] = args["ServerSideEncryption"],
@@ -518,8 +689,13 @@ function M.UploadPartCopyOutput(args)
 		["CopyPartResult"] = args["CopyPartResult"],
 		["SSEKMSKeyId"] = args["SSEKMSKeyId"],
 	}
-	asserts.AssertUploadPartCopyOutput(t)
-	return t
+	asserts.AssertUploadPartCopyOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.PutObjectTaggingRequest = { ["VersionId"] = true, ["ContentMD5"] = true, ["Bucket"] = true, ["Tagging"] = true, ["Key"] = true, nil }
@@ -554,16 +730,31 @@ end
 -- Required key: Tagging
 -- @return PutObjectTaggingRequest structure as a key-value pair table
 function M.PutObjectTaggingRequest(args)
-	assert(args, "You must provdide an argument table when creating PutObjectTaggingRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating PutObjectTaggingRequest")
+    local query_args = { 
+        ["versionId"] = args["VersionId"],
+    }
+    local uri_args = { 
+        ["{Bucket}"] = args["Bucket"],
+        ["{Key}"] = args["Key"],
+    }
+    local header_args = { 
+        ["Content-MD5"] = args["ContentMD5"],
+    }
+	local all_args = { 
 		["VersionId"] = args["VersionId"],
 		["ContentMD5"] = args["ContentMD5"],
 		["Bucket"] = args["Bucket"],
 		["Tagging"] = args["Tagging"],
 		["Key"] = args["Key"],
 	}
-	asserts.AssertPutObjectTaggingRequest(t)
-	return t
+	asserts.AssertPutObjectTaggingRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Tag = { ["Value"] = true, ["Key"] = true, nil }
@@ -590,13 +781,24 @@ end
 -- Required key: Value
 -- @return Tag structure as a key-value pair table
 function M.Tag(args)
-	assert(args, "You must provdide an argument table when creating Tag")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Tag")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Value"] = args["Value"],
 		["Key"] = args["Key"],
 	}
-	asserts.AssertTag(t)
-	return t
+	asserts.AssertTag(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetBucketNotificationConfigurationRequest = { ["Bucket"] = true, nil }
@@ -619,12 +821,24 @@ end
 -- Required key: Bucket
 -- @return GetBucketNotificationConfigurationRequest structure as a key-value pair table
 function M.GetBucketNotificationConfigurationRequest(args)
-	assert(args, "You must provdide an argument table when creating GetBucketNotificationConfigurationRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetBucketNotificationConfigurationRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{Bucket}"] = args["Bucket"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Bucket"] = args["Bucket"],
 	}
-	asserts.AssertGetBucketNotificationConfigurationRequest(t)
-	return t
+	asserts.AssertGetBucketNotificationConfigurationRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.PutBucketMetricsConfigurationRequest = { ["Bucket"] = true, ["Id"] = true, ["MetricsConfiguration"] = true, nil }
@@ -655,14 +869,27 @@ end
 -- Required key: MetricsConfiguration
 -- @return PutBucketMetricsConfigurationRequest structure as a key-value pair table
 function M.PutBucketMetricsConfigurationRequest(args)
-	assert(args, "You must provdide an argument table when creating PutBucketMetricsConfigurationRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating PutBucketMetricsConfigurationRequest")
+    local query_args = { 
+        ["id"] = args["Id"],
+    }
+    local uri_args = { 
+        ["{Bucket}"] = args["Bucket"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Bucket"] = args["Bucket"],
 		["Id"] = args["Id"],
 		["MetricsConfiguration"] = args["MetricsConfiguration"],
 	}
-	asserts.AssertPutBucketMetricsConfigurationRequest(t)
-	return t
+	asserts.AssertPutBucketMetricsConfigurationRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListObjectVersionsRequest = { ["Bucket"] = true, ["Prefix"] = true, ["MaxKeys"] = true, ["Delimiter"] = true, ["KeyMarker"] = true, ["EncodingType"] = true, ["VersionIdMarker"] = true, nil }
@@ -697,8 +924,21 @@ end
 -- Required key: Bucket
 -- @return ListObjectVersionsRequest structure as a key-value pair table
 function M.ListObjectVersionsRequest(args)
-	assert(args, "You must provdide an argument table when creating ListObjectVersionsRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListObjectVersionsRequest")
+    local query_args = { 
+        ["prefix"] = args["Prefix"],
+        ["max-keys"] = args["MaxKeys"],
+        ["delimiter"] = args["Delimiter"],
+        ["key-marker"] = args["KeyMarker"],
+        ["encoding-type"] = args["EncodingType"],
+        ["version-id-marker"] = args["VersionIdMarker"],
+    }
+    local uri_args = { 
+        ["{Bucket}"] = args["Bucket"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Bucket"] = args["Bucket"],
 		["Prefix"] = args["Prefix"],
 		["MaxKeys"] = args["MaxKeys"],
@@ -707,8 +947,13 @@ function M.ListObjectVersionsRequest(args)
 		["EncodingType"] = args["EncodingType"],
 		["VersionIdMarker"] = args["VersionIdMarker"],
 	}
-	asserts.AssertListObjectVersionsRequest(t)
-	return t
+	asserts.AssertListObjectVersionsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetBucketLoggingOutput = { ["LoggingEnabled"] = true, nil }
@@ -729,12 +974,23 @@ end
 -- * LoggingEnabled [LoggingEnabled] 
 -- @return GetBucketLoggingOutput structure as a key-value pair table
 function M.GetBucketLoggingOutput(args)
-	assert(args, "You must provdide an argument table when creating GetBucketLoggingOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetBucketLoggingOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["LoggingEnabled"] = args["LoggingEnabled"],
 	}
-	asserts.AssertGetBucketLoggingOutput(t)
-	return t
+	asserts.AssertGetBucketLoggingOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GlacierJobParameters = { ["Tier"] = true, nil }
@@ -757,12 +1013,23 @@ end
 -- Required key: Tier
 -- @return GlacierJobParameters structure as a key-value pair table
 function M.GlacierJobParameters(args)
-	assert(args, "You must provdide an argument table when creating GlacierJobParameters")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GlacierJobParameters")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Tier"] = args["Tier"],
 	}
-	asserts.AssertGlacierJobParameters(t)
-	return t
+	asserts.AssertGlacierJobParameters(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.TargetGrant = { ["Grantee"] = true, ["Permission"] = true, nil }
@@ -785,13 +1052,24 @@ end
 -- * Permission [BucketLogsPermission] Logging permissions assigned to the Grantee for the bucket.
 -- @return TargetGrant structure as a key-value pair table
 function M.TargetGrant(args)
-	assert(args, "You must provdide an argument table when creating TargetGrant")
-	local t = { 
+	assert(args, "You must provide an argument table when creating TargetGrant")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Grantee"] = args["Grantee"],
 		["Permission"] = args["Permission"],
 	}
-	asserts.AssertTargetGrant(t)
-	return t
+	asserts.AssertTargetGrant(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.MetricsAndOperator = { ["Prefix"] = true, ["Tags"] = true, nil }
@@ -814,13 +1092,24 @@ end
 -- * Tags [TagSet] The list of tags used when evaluating an AND predicate.
 -- @return MetricsAndOperator structure as a key-value pair table
 function M.MetricsAndOperator(args)
-	assert(args, "You must provdide an argument table when creating MetricsAndOperator")
-	local t = { 
+	assert(args, "You must provide an argument table when creating MetricsAndOperator")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Prefix"] = args["Prefix"],
 		["Tags"] = args["Tags"],
 	}
-	asserts.AssertMetricsAndOperator(t)
-	return t
+	asserts.AssertMetricsAndOperator(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListObjectsOutput = { ["Name"] = true, ["NextMarker"] = true, ["Delimiter"] = true, ["MaxKeys"] = true, ["Prefix"] = true, ["Marker"] = true, ["EncodingType"] = true, ["IsTruncated"] = true, ["Contents"] = true, ["CommonPrefixes"] = true, nil }
@@ -859,8 +1148,14 @@ end
 -- * CommonPrefixes [CommonPrefixList] 
 -- @return ListObjectsOutput structure as a key-value pair table
 function M.ListObjectsOutput(args)
-	assert(args, "You must provdide an argument table when creating ListObjectsOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListObjectsOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Name"] = args["Name"],
 		["NextMarker"] = args["NextMarker"],
 		["Delimiter"] = args["Delimiter"],
@@ -872,8 +1167,13 @@ function M.ListObjectsOutput(args)
 		["Contents"] = args["Contents"],
 		["CommonPrefixes"] = args["CommonPrefixes"],
 	}
-	asserts.AssertListObjectsOutput(t)
-	return t
+	asserts.AssertListObjectsOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteObjectRequest = { ["MFA"] = true, ["VersionId"] = true, ["Bucket"] = true, ["RequestPayer"] = true, ["Key"] = true, nil }
@@ -906,16 +1206,32 @@ end
 -- Required key: Key
 -- @return DeleteObjectRequest structure as a key-value pair table
 function M.DeleteObjectRequest(args)
-	assert(args, "You must provdide an argument table when creating DeleteObjectRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteObjectRequest")
+    local query_args = { 
+        ["versionId"] = args["VersionId"],
+    }
+    local uri_args = { 
+        ["{Bucket}"] = args["Bucket"],
+        ["{Key}"] = args["Key"],
+    }
+    local header_args = { 
+        ["x-amz-mfa"] = args["MFA"],
+        ["x-amz-request-payer"] = args["RequestPayer"],
+    }
+	local all_args = { 
 		["MFA"] = args["MFA"],
 		["VersionId"] = args["VersionId"],
 		["Bucket"] = args["Bucket"],
 		["RequestPayer"] = args["RequestPayer"],
 		["Key"] = args["Key"],
 	}
-	asserts.AssertDeleteObjectRequest(t)
-	return t
+	asserts.AssertDeleteObjectRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.LifecycleRuleAndOperator = { ["Prefix"] = true, ["Tags"] = true, nil }
@@ -938,13 +1254,24 @@ end
 -- * Tags [TagSet] All of these tags must exist in the object's tag set in order for the rule to apply.
 -- @return LifecycleRuleAndOperator structure as a key-value pair table
 function M.LifecycleRuleAndOperator(args)
-	assert(args, "You must provdide an argument table when creating LifecycleRuleAndOperator")
-	local t = { 
+	assert(args, "You must provide an argument table when creating LifecycleRuleAndOperator")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Prefix"] = args["Prefix"],
 		["Tags"] = args["Tags"],
 	}
-	asserts.AssertLifecycleRuleAndOperator(t)
-	return t
+	asserts.AssertLifecycleRuleAndOperator(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetBucketWebsiteRequest = { ["Bucket"] = true, nil }
@@ -967,12 +1294,24 @@ end
 -- Required key: Bucket
 -- @return GetBucketWebsiteRequest structure as a key-value pair table
 function M.GetBucketWebsiteRequest(args)
-	assert(args, "You must provdide an argument table when creating GetBucketWebsiteRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetBucketWebsiteRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{Bucket}"] = args["Bucket"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Bucket"] = args["Bucket"],
 	}
-	asserts.AssertGetBucketWebsiteRequest(t)
-	return t
+	asserts.AssertGetBucketWebsiteRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetBucketRequestPaymentOutput = { ["Payer"] = true, nil }
@@ -993,12 +1332,23 @@ end
 -- * Payer [Payer] Specifies who pays for the download and request fees.
 -- @return GetBucketRequestPaymentOutput structure as a key-value pair table
 function M.GetBucketRequestPaymentOutput(args)
-	assert(args, "You must provdide an argument table when creating GetBucketRequestPaymentOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetBucketRequestPaymentOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Payer"] = args["Payer"],
 	}
-	asserts.AssertGetBucketRequestPaymentOutput(t)
-	return t
+	asserts.AssertGetBucketRequestPaymentOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListBucketMetricsConfigurationsRequest = { ["Bucket"] = true, ["ContinuationToken"] = true, nil }
@@ -1023,13 +1373,26 @@ end
 -- Required key: Bucket
 -- @return ListBucketMetricsConfigurationsRequest structure as a key-value pair table
 function M.ListBucketMetricsConfigurationsRequest(args)
-	assert(args, "You must provdide an argument table when creating ListBucketMetricsConfigurationsRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListBucketMetricsConfigurationsRequest")
+    local query_args = { 
+        ["continuation-token"] = args["ContinuationToken"],
+    }
+    local uri_args = { 
+        ["{Bucket}"] = args["Bucket"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Bucket"] = args["Bucket"],
 		["ContinuationToken"] = args["ContinuationToken"],
 	}
-	asserts.AssertListBucketMetricsConfigurationsRequest(t)
-	return t
+	asserts.AssertListBucketMetricsConfigurationsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Owner = { ["DisplayName"] = true, ["ID"] = true, nil }
@@ -1052,13 +1415,24 @@ end
 -- * ID [ID] 
 -- @return Owner structure as a key-value pair table
 function M.Owner(args)
-	assert(args, "You must provdide an argument table when creating Owner")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Owner")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DisplayName"] = args["DisplayName"],
 		["ID"] = args["ID"],
 	}
-	asserts.AssertOwner(t)
-	return t
+	asserts.AssertOwner(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CopyObjectResult = { ["LastModified"] = true, ["ETag"] = true, nil }
@@ -1081,13 +1455,24 @@ end
 -- * ETag [ETag] 
 -- @return CopyObjectResult structure as a key-value pair table
 function M.CopyObjectResult(args)
-	assert(args, "You must provdide an argument table when creating CopyObjectResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CopyObjectResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["LastModified"] = args["LastModified"],
 		["ETag"] = args["ETag"],
 	}
-	asserts.AssertCopyObjectResult(t)
-	return t
+	asserts.AssertCopyObjectResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.LifecycleRule = { ["Status"] = true, ["NoncurrentVersionExpiration"] = true, ["NoncurrentVersionTransitions"] = true, ["Filter"] = true, ["Prefix"] = true, ["Expiration"] = true, ["AbortIncompleteMultipartUpload"] = true, ["Transitions"] = true, ["ID"] = true, nil }
@@ -1126,8 +1511,14 @@ end
 -- Required key: Status
 -- @return LifecycleRule structure as a key-value pair table
 function M.LifecycleRule(args)
-	assert(args, "You must provdide an argument table when creating LifecycleRule")
-	local t = { 
+	assert(args, "You must provide an argument table when creating LifecycleRule")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Status"] = args["Status"],
 		["NoncurrentVersionExpiration"] = args["NoncurrentVersionExpiration"],
 		["NoncurrentVersionTransitions"] = args["NoncurrentVersionTransitions"],
@@ -1138,8 +1529,13 @@ function M.LifecycleRule(args)
 		["Transitions"] = args["Transitions"],
 		["ID"] = args["ID"],
 	}
-	asserts.AssertLifecycleRule(t)
-	return t
+	asserts.AssertLifecycleRule(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetBucketLifecycleOutput = { ["Rules"] = true, nil }
@@ -1160,12 +1556,23 @@ end
 -- * Rules [Rules] 
 -- @return GetBucketLifecycleOutput structure as a key-value pair table
 function M.GetBucketLifecycleOutput(args)
-	assert(args, "You must provdide an argument table when creating GetBucketLifecycleOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetBucketLifecycleOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Rules"] = args["Rules"],
 	}
-	asserts.AssertGetBucketLifecycleOutput(t)
-	return t
+	asserts.AssertGetBucketLifecycleOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetObjectTaggingRequest = { ["VersionId"] = true, ["Bucket"] = true, ["Key"] = true, nil }
@@ -1194,14 +1601,28 @@ end
 -- Required key: Key
 -- @return GetObjectTaggingRequest structure as a key-value pair table
 function M.GetObjectTaggingRequest(args)
-	assert(args, "You must provdide an argument table when creating GetObjectTaggingRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetObjectTaggingRequest")
+    local query_args = { 
+        ["versionId"] = args["VersionId"],
+    }
+    local uri_args = { 
+        ["{Bucket}"] = args["Bucket"],
+        ["{Key}"] = args["Key"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["VersionId"] = args["VersionId"],
 		["Bucket"] = args["Bucket"],
 		["Key"] = args["Key"],
 	}
-	asserts.AssertGetObjectTaggingRequest(t)
-	return t
+	asserts.AssertGetObjectTaggingRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CompleteMultipartUploadOutput = { ["RequestCharged"] = true, ["Bucket"] = true, ["VersionId"] = true, ["ETag"] = true, ["Location"] = true, ["Key"] = true, ["ServerSideEncryption"] = true, ["SSEKMSKeyId"] = true, ["Expiration"] = true, nil }
@@ -1238,8 +1659,19 @@ end
 -- * Expiration [Expiration] If the object expiration is configured, this will contain the expiration date (expiry-date) and rule ID (rule-id). The value of rule-id is URL encoded.
 -- @return CompleteMultipartUploadOutput structure as a key-value pair table
 function M.CompleteMultipartUploadOutput(args)
-	assert(args, "You must provdide an argument table when creating CompleteMultipartUploadOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CompleteMultipartUploadOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+        ["x-amz-request-charged"] = args["RequestCharged"],
+        ["x-amz-version-id"] = args["VersionId"],
+        ["x-amz-server-side-encryption"] = args["ServerSideEncryption"],
+        ["x-amz-server-side-encryption-aws-kms-key-id"] = args["SSEKMSKeyId"],
+        ["x-amz-expiration"] = args["Expiration"],
+    }
+	local all_args = { 
 		["RequestCharged"] = args["RequestCharged"],
 		["Bucket"] = args["Bucket"],
 		["VersionId"] = args["VersionId"],
@@ -1250,8 +1682,13 @@ function M.CompleteMultipartUploadOutput(args)
 		["SSEKMSKeyId"] = args["SSEKMSKeyId"],
 		["Expiration"] = args["Expiration"],
 	}
-	asserts.AssertCompleteMultipartUploadOutput(t)
-	return t
+	asserts.AssertCompleteMultipartUploadOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ObjectAlreadyInActiveTierError = { nil }
@@ -1270,11 +1707,22 @@ end
 -- Valid keys:
 -- @return ObjectAlreadyInActiveTierError structure as a key-value pair table
 function M.ObjectAlreadyInActiveTierError(args)
-	assert(args, "You must provdide an argument table when creating ObjectAlreadyInActiveTierError")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ObjectAlreadyInActiveTierError")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertObjectAlreadyInActiveTierError(t)
-	return t
+	asserts.AssertObjectAlreadyInActiveTierError(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteBucketInventoryConfigurationRequest = { ["Bucket"] = true, ["Id"] = true, nil }
@@ -1301,13 +1749,26 @@ end
 -- Required key: Id
 -- @return DeleteBucketInventoryConfigurationRequest structure as a key-value pair table
 function M.DeleteBucketInventoryConfigurationRequest(args)
-	assert(args, "You must provdide an argument table when creating DeleteBucketInventoryConfigurationRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteBucketInventoryConfigurationRequest")
+    local query_args = { 
+        ["id"] = args["Id"],
+    }
+    local uri_args = { 
+        ["{Bucket}"] = args["Bucket"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Bucket"] = args["Bucket"],
 		["Id"] = args["Id"],
 	}
-	asserts.AssertDeleteBucketInventoryConfigurationRequest(t)
-	return t
+	asserts.AssertDeleteBucketInventoryConfigurationRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Grantee = { ["EmailAddress"] = true, ["Type"] = true, ["DisplayName"] = true, ["ID"] = true, ["URI"] = true, nil }
@@ -1338,16 +1799,27 @@ end
 -- Required key: Type
 -- @return Grantee structure as a key-value pair table
 function M.Grantee(args)
-	assert(args, "You must provdide an argument table when creating Grantee")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Grantee")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["EmailAddress"] = args["EmailAddress"],
 		["Type"] = args["Type"],
 		["DisplayName"] = args["DisplayName"],
 		["ID"] = args["ID"],
 		["URI"] = args["URI"],
 	}
-	asserts.AssertGrantee(t)
-	return t
+	asserts.AssertGrantee(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.PutBucketLifecycleRequest = { ["LifecycleConfiguration"] = true, ["ContentMD5"] = true, ["Bucket"] = true, nil }
@@ -1374,14 +1846,27 @@ end
 -- Required key: Bucket
 -- @return PutBucketLifecycleRequest structure as a key-value pair table
 function M.PutBucketLifecycleRequest(args)
-	assert(args, "You must provdide an argument table when creating PutBucketLifecycleRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating PutBucketLifecycleRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{Bucket}"] = args["Bucket"],
+    }
+    local header_args = { 
+        ["Content-MD5"] = args["ContentMD5"],
+    }
+	local all_args = { 
 		["LifecycleConfiguration"] = args["LifecycleConfiguration"],
 		["ContentMD5"] = args["ContentMD5"],
 		["Bucket"] = args["Bucket"],
 	}
-	asserts.AssertPutBucketLifecycleRequest(t)
-	return t
+	asserts.AssertPutBucketLifecycleRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetObjectTorrentOutput = { ["Body"] = true, ["RequestCharged"] = true, nil }
@@ -1404,13 +1889,25 @@ end
 -- * RequestCharged [RequestCharged] 
 -- @return GetObjectTorrentOutput structure as a key-value pair table
 function M.GetObjectTorrentOutput(args)
-	assert(args, "You must provdide an argument table when creating GetObjectTorrentOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetObjectTorrentOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+        ["x-amz-request-charged"] = args["RequestCharged"],
+    }
+	local all_args = { 
 		["Body"] = args["Body"],
 		["RequestCharged"] = args["RequestCharged"],
 	}
-	asserts.AssertGetObjectTorrentOutput(t)
-	return t
+	asserts.AssertGetObjectTorrentOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Rule = { ["Status"] = true, ["NoncurrentVersionExpiration"] = true, ["Transition"] = true, ["Prefix"] = true, ["Expiration"] = true, ["AbortIncompleteMultipartUpload"] = true, ["NoncurrentVersionTransition"] = true, ["ID"] = true, nil }
@@ -1449,8 +1946,14 @@ end
 -- Required key: Status
 -- @return Rule structure as a key-value pair table
 function M.Rule(args)
-	assert(args, "You must provdide an argument table when creating Rule")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Rule")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Status"] = args["Status"],
 		["NoncurrentVersionExpiration"] = args["NoncurrentVersionExpiration"],
 		["Transition"] = args["Transition"],
@@ -1460,8 +1963,13 @@ function M.Rule(args)
 		["NoncurrentVersionTransition"] = args["NoncurrentVersionTransition"],
 		["ID"] = args["ID"],
 	}
-	asserts.AssertRule(t)
-	return t
+	asserts.AssertRule(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteObjectTaggingRequest = { ["VersionId"] = true, ["Bucket"] = true, ["Key"] = true, nil }
@@ -1490,14 +1998,28 @@ end
 -- Required key: Key
 -- @return DeleteObjectTaggingRequest structure as a key-value pair table
 function M.DeleteObjectTaggingRequest(args)
-	assert(args, "You must provdide an argument table when creating DeleteObjectTaggingRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteObjectTaggingRequest")
+    local query_args = { 
+        ["versionId"] = args["VersionId"],
+    }
+    local uri_args = { 
+        ["{Bucket}"] = args["Bucket"],
+        ["{Key}"] = args["Key"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["VersionId"] = args["VersionId"],
 		["Bucket"] = args["Bucket"],
 		["Key"] = args["Key"],
 	}
-	asserts.AssertDeleteObjectTaggingRequest(t)
-	return t
+	asserts.AssertDeleteObjectTaggingRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.HeadObjectRequest = { ["SSECustomerAlgorithm"] = true, ["SSECustomerKey"] = true, ["IfUnmodifiedSince"] = true, ["VersionId"] = true, ["RequestPayer"] = true, ["Bucket"] = true, ["IfNoneMatch"] = true, ["Range"] = true, ["Key"] = true, ["IfMatch"] = true, ["SSECustomerKeyMD5"] = true, ["PartNumber"] = true, ["IfModifiedSince"] = true, nil }
@@ -1546,8 +2068,27 @@ end
 -- Required key: Key
 -- @return HeadObjectRequest structure as a key-value pair table
 function M.HeadObjectRequest(args)
-	assert(args, "You must provdide an argument table when creating HeadObjectRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating HeadObjectRequest")
+    local query_args = { 
+        ["versionId"] = args["VersionId"],
+        ["partNumber"] = args["PartNumber"],
+    }
+    local uri_args = { 
+        ["{Bucket}"] = args["Bucket"],
+        ["{Key}"] = args["Key"],
+    }
+    local header_args = { 
+        ["x-amz-server-side-encryption-customer-algorithm"] = args["SSECustomerAlgorithm"],
+        ["x-amz-server-side-encryption-customer-key"] = args["SSECustomerKey"],
+        ["If-Unmodified-Since"] = args["IfUnmodifiedSince"],
+        ["x-amz-request-payer"] = args["RequestPayer"],
+        ["If-None-Match"] = args["IfNoneMatch"],
+        ["Range"] = args["Range"],
+        ["If-Match"] = args["IfMatch"],
+        ["x-amz-server-side-encryption-customer-key-MD5"] = args["SSECustomerKeyMD5"],
+        ["If-Modified-Since"] = args["IfModifiedSince"],
+    }
+	local all_args = { 
 		["SSECustomerAlgorithm"] = args["SSECustomerAlgorithm"],
 		["SSECustomerKey"] = args["SSECustomerKey"],
 		["IfUnmodifiedSince"] = args["IfUnmodifiedSince"],
@@ -1562,8 +2103,13 @@ function M.HeadObjectRequest(args)
 		["PartNumber"] = args["PartNumber"],
 		["IfModifiedSince"] = args["IfModifiedSince"],
 	}
-	asserts.AssertHeadObjectRequest(t)
-	return t
+	asserts.AssertHeadObjectRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.BucketAlreadyOwnedByYou = { nil }
@@ -1582,11 +2128,22 @@ end
 -- Valid keys:
 -- @return BucketAlreadyOwnedByYou structure as a key-value pair table
 function M.BucketAlreadyOwnedByYou(args)
-	assert(args, "You must provdide an argument table when creating BucketAlreadyOwnedByYou")
-	local t = { 
+	assert(args, "You must provide an argument table when creating BucketAlreadyOwnedByYou")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertBucketAlreadyOwnedByYou(t)
-	return t
+	asserts.AssertBucketAlreadyOwnedByYou(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListPartsOutput = { ["Initiator"] = true, ["AbortRuleId"] = true, ["AbortDate"] = true, ["Bucket"] = true, ["NextPartNumberMarker"] = true, ["Parts"] = true, ["UploadId"] = true, ["StorageClass"] = true, ["Key"] = true, ["RequestCharged"] = true, ["Owner"] = true, ["MaxParts"] = true, ["IsTruncated"] = true, ["PartNumberMarker"] = true, nil }
@@ -1633,8 +2190,17 @@ end
 -- * PartNumberMarker [PartNumberMarker] Part number after which listing begins.
 -- @return ListPartsOutput structure as a key-value pair table
 function M.ListPartsOutput(args)
-	assert(args, "You must provdide an argument table when creating ListPartsOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListPartsOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+        ["x-amz-abort-rule-id"] = args["AbortRuleId"],
+        ["x-amz-abort-date"] = args["AbortDate"],
+        ["x-amz-request-charged"] = args["RequestCharged"],
+    }
+	local all_args = { 
 		["Initiator"] = args["Initiator"],
 		["AbortRuleId"] = args["AbortRuleId"],
 		["AbortDate"] = args["AbortDate"],
@@ -1650,8 +2216,13 @@ function M.ListPartsOutput(args)
 		["IsTruncated"] = args["IsTruncated"],
 		["PartNumberMarker"] = args["PartNumberMarker"],
 	}
-	asserts.AssertListPartsOutput(t)
-	return t
+	asserts.AssertListPartsOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CompletedPart = { ["PartNumber"] = true, ["ETag"] = true, nil }
@@ -1674,13 +2245,24 @@ end
 -- * ETag [ETag] Entity tag returned when the part was uploaded.
 -- @return CompletedPart structure as a key-value pair table
 function M.CompletedPart(args)
-	assert(args, "You must provdide an argument table when creating CompletedPart")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CompletedPart")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["PartNumber"] = args["PartNumber"],
 		["ETag"] = args["ETag"],
 	}
-	asserts.AssertCompletedPart(t)
-	return t
+	asserts.AssertCompletedPart(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.PutBucketAnalyticsConfigurationRequest = { ["AnalyticsConfiguration"] = true, ["Bucket"] = true, ["Id"] = true, nil }
@@ -1711,14 +2293,27 @@ end
 -- Required key: AnalyticsConfiguration
 -- @return PutBucketAnalyticsConfigurationRequest structure as a key-value pair table
 function M.PutBucketAnalyticsConfigurationRequest(args)
-	assert(args, "You must provdide an argument table when creating PutBucketAnalyticsConfigurationRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating PutBucketAnalyticsConfigurationRequest")
+    local query_args = { 
+        ["id"] = args["Id"],
+    }
+    local uri_args = { 
+        ["{Bucket}"] = args["Bucket"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["AnalyticsConfiguration"] = args["AnalyticsConfiguration"],
 		["Bucket"] = args["Bucket"],
 		["Id"] = args["Id"],
 	}
-	asserts.AssertPutBucketAnalyticsConfigurationRequest(t)
-	return t
+	asserts.AssertPutBucketAnalyticsConfigurationRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CORSConfiguration = { ["CORSRules"] = true, nil }
@@ -1741,12 +2336,23 @@ end
 -- Required key: CORSRules
 -- @return CORSConfiguration structure as a key-value pair table
 function M.CORSConfiguration(args)
-	assert(args, "You must provdide an argument table when creating CORSConfiguration")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CORSConfiguration")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["CORSRules"] = args["CORSRules"],
 	}
-	asserts.AssertCORSConfiguration(t)
-	return t
+	asserts.AssertCORSConfiguration(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetObjectOutput = { ["LastModified"] = true, ["ContentRange"] = true, ["RequestCharged"] = true, ["ContentEncoding"] = true, ["ReplicationStatus"] = true, ["StorageClass"] = true, ["ServerSideEncryption"] = true, ["SSEKMSKeyId"] = true, ["TagCount"] = true, ["ContentDisposition"] = true, ["Metadata"] = true, ["Body"] = true, ["AcceptRanges"] = true, ["WebsiteRedirectLocation"] = true, ["Expires"] = true, ["DeleteMarker"] = true, ["CacheControl"] = true, ["PartsCount"] = true, ["ContentLength"] = true, ["Expiration"] = true, ["MissingMeta"] = true, ["Restore"] = true, ["SSECustomerAlgorithm"] = true, ["ContentType"] = true, ["ContentLanguage"] = true, ["VersionId"] = true, ["ETag"] = true, ["SSECustomerKeyMD5"] = true, nil }
@@ -1821,8 +2427,40 @@ end
 -- * SSECustomerKeyMD5 [SSECustomerKeyMD5] If server-side encryption with a customer-provided encryption key was requested, the response will include this header to provide round trip message integrity verification of the customer-provided encryption key.
 -- @return GetObjectOutput structure as a key-value pair table
 function M.GetObjectOutput(args)
-	assert(args, "You must provdide an argument table when creating GetObjectOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetObjectOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+        ["Last-Modified"] = args["LastModified"],
+        ["Content-Range"] = args["ContentRange"],
+        ["x-amz-request-charged"] = args["RequestCharged"],
+        ["Content-Encoding"] = args["ContentEncoding"],
+        ["x-amz-replication-status"] = args["ReplicationStatus"],
+        ["x-amz-storage-class"] = args["StorageClass"],
+        ["x-amz-server-side-encryption"] = args["ServerSideEncryption"],
+        ["x-amz-server-side-encryption-aws-kms-key-id"] = args["SSEKMSKeyId"],
+        ["x-amz-tagging-count"] = args["TagCount"],
+        ["Content-Disposition"] = args["ContentDisposition"],
+        ["accept-ranges"] = args["AcceptRanges"],
+        ["x-amz-website-redirect-location"] = args["WebsiteRedirectLocation"],
+        ["Expires"] = args["Expires"],
+        ["x-amz-delete-marker"] = args["DeleteMarker"],
+        ["Cache-Control"] = args["CacheControl"],
+        ["x-amz-mp-parts-count"] = args["PartsCount"],
+        ["Content-Length"] = args["ContentLength"],
+        ["x-amz-expiration"] = args["Expiration"],
+        ["x-amz-missing-meta"] = args["MissingMeta"],
+        ["x-amz-restore"] = args["Restore"],
+        ["x-amz-server-side-encryption-customer-algorithm"] = args["SSECustomerAlgorithm"],
+        ["Content-Type"] = args["ContentType"],
+        ["Content-Language"] = args["ContentLanguage"],
+        ["x-amz-version-id"] = args["VersionId"],
+        ["ETag"] = args["ETag"],
+        ["x-amz-server-side-encryption-customer-key-MD5"] = args["SSECustomerKeyMD5"],
+    }
+	local all_args = { 
 		["LastModified"] = args["LastModified"],
 		["ContentRange"] = args["ContentRange"],
 		["RequestCharged"] = args["RequestCharged"],
@@ -1852,8 +2490,13 @@ function M.GetObjectOutput(args)
 		["ETag"] = args["ETag"],
 		["SSECustomerKeyMD5"] = args["SSECustomerKeyMD5"],
 	}
-	asserts.AssertGetObjectOutput(t)
-	return t
+	asserts.AssertGetObjectOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetBucketVersioningRequest = { ["Bucket"] = true, nil }
@@ -1876,12 +2519,24 @@ end
 -- Required key: Bucket
 -- @return GetBucketVersioningRequest structure as a key-value pair table
 function M.GetBucketVersioningRequest(args)
-	assert(args, "You must provdide an argument table when creating GetBucketVersioningRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetBucketVersioningRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{Bucket}"] = args["Bucket"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Bucket"] = args["Bucket"],
 	}
-	asserts.AssertGetBucketVersioningRequest(t)
-	return t
+	asserts.AssertGetBucketVersioningRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.PutBucketAccelerateConfigurationRequest = { ["AccelerateConfiguration"] = true, ["Bucket"] = true, nil }
@@ -1908,13 +2563,25 @@ end
 -- Required key: AccelerateConfiguration
 -- @return PutBucketAccelerateConfigurationRequest structure as a key-value pair table
 function M.PutBucketAccelerateConfigurationRequest(args)
-	assert(args, "You must provdide an argument table when creating PutBucketAccelerateConfigurationRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating PutBucketAccelerateConfigurationRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{Bucket}"] = args["Bucket"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["AccelerateConfiguration"] = args["AccelerateConfiguration"],
 		["Bucket"] = args["Bucket"],
 	}
-	asserts.AssertPutBucketAccelerateConfigurationRequest(t)
-	return t
+	asserts.AssertPutBucketAccelerateConfigurationRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.PutBucketRequestPaymentRequest = { ["RequestPaymentConfiguration"] = true, ["ContentMD5"] = true, ["Bucket"] = true, nil }
@@ -1943,14 +2610,27 @@ end
 -- Required key: RequestPaymentConfiguration
 -- @return PutBucketRequestPaymentRequest structure as a key-value pair table
 function M.PutBucketRequestPaymentRequest(args)
-	assert(args, "You must provdide an argument table when creating PutBucketRequestPaymentRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating PutBucketRequestPaymentRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{Bucket}"] = args["Bucket"],
+    }
+    local header_args = { 
+        ["Content-MD5"] = args["ContentMD5"],
+    }
+	local all_args = { 
 		["RequestPaymentConfiguration"] = args["RequestPaymentConfiguration"],
 		["ContentMD5"] = args["ContentMD5"],
 		["Bucket"] = args["Bucket"],
 	}
-	asserts.AssertPutBucketRequestPaymentRequest(t)
-	return t
+	asserts.AssertPutBucketRequestPaymentRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetBucketLocationOutput = { ["LocationConstraint"] = true, nil }
@@ -1971,12 +2651,23 @@ end
 -- * LocationConstraint [BucketLocationConstraint] 
 -- @return GetBucketLocationOutput structure as a key-value pair table
 function M.GetBucketLocationOutput(args)
-	assert(args, "You must provdide an argument table when creating GetBucketLocationOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetBucketLocationOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["LocationConstraint"] = args["LocationConstraint"],
 	}
-	asserts.AssertGetBucketLocationOutput(t)
-	return t
+	asserts.AssertGetBucketLocationOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetBucketInventoryConfigurationRequest = { ["Bucket"] = true, ["Id"] = true, nil }
@@ -2003,13 +2694,26 @@ end
 -- Required key: Id
 -- @return GetBucketInventoryConfigurationRequest structure as a key-value pair table
 function M.GetBucketInventoryConfigurationRequest(args)
-	assert(args, "You must provdide an argument table when creating GetBucketInventoryConfigurationRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetBucketInventoryConfigurationRequest")
+    local query_args = { 
+        ["id"] = args["Id"],
+    }
+    local uri_args = { 
+        ["{Bucket}"] = args["Bucket"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Bucket"] = args["Bucket"],
 		["Id"] = args["Id"],
 	}
-	asserts.AssertGetBucketInventoryConfigurationRequest(t)
-	return t
+	asserts.AssertGetBucketInventoryConfigurationRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetBucketTaggingRequest = { ["Bucket"] = true, nil }
@@ -2032,12 +2736,24 @@ end
 -- Required key: Bucket
 -- @return GetBucketTaggingRequest structure as a key-value pair table
 function M.GetBucketTaggingRequest(args)
-	assert(args, "You must provdide an argument table when creating GetBucketTaggingRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetBucketTaggingRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{Bucket}"] = args["Bucket"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Bucket"] = args["Bucket"],
 	}
-	asserts.AssertGetBucketTaggingRequest(t)
-	return t
+	asserts.AssertGetBucketTaggingRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AnalyticsFilter = { ["And"] = true, ["Prefix"] = true, ["Tag"] = true, nil }
@@ -2062,14 +2778,25 @@ end
 -- * Tag [Tag] The tag to use when evaluating an analytics filter.
 -- @return AnalyticsFilter structure as a key-value pair table
 function M.AnalyticsFilter(args)
-	assert(args, "You must provdide an argument table when creating AnalyticsFilter")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AnalyticsFilter")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["And"] = args["And"],
 		["Prefix"] = args["Prefix"],
 		["Tag"] = args["Tag"],
 	}
-	asserts.AssertAnalyticsFilter(t)
-	return t
+	asserts.AssertAnalyticsFilter(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CommonPrefix = { ["Prefix"] = true, nil }
@@ -2090,12 +2817,23 @@ end
 -- * Prefix [Prefix] 
 -- @return CommonPrefix structure as a key-value pair table
 function M.CommonPrefix(args)
-	assert(args, "You must provdide an argument table when creating CommonPrefix")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CommonPrefix")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Prefix"] = args["Prefix"],
 	}
-	asserts.AssertCommonPrefix(t)
-	return t
+	asserts.AssertCommonPrefix(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.LifecycleConfiguration = { ["Rules"] = true, nil }
@@ -2118,12 +2856,23 @@ end
 -- Required key: Rules
 -- @return LifecycleConfiguration structure as a key-value pair table
 function M.LifecycleConfiguration(args)
-	assert(args, "You must provdide an argument table when creating LifecycleConfiguration")
-	local t = { 
+	assert(args, "You must provide an argument table when creating LifecycleConfiguration")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Rules"] = args["Rules"],
 	}
-	asserts.AssertLifecycleConfiguration(t)
-	return t
+	asserts.AssertLifecycleConfiguration(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteBucketTaggingRequest = { ["Bucket"] = true, nil }
@@ -2146,12 +2895,24 @@ end
 -- Required key: Bucket
 -- @return DeleteBucketTaggingRequest structure as a key-value pair table
 function M.DeleteBucketTaggingRequest(args)
-	assert(args, "You must provdide an argument table when creating DeleteBucketTaggingRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteBucketTaggingRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{Bucket}"] = args["Bucket"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Bucket"] = args["Bucket"],
 	}
-	asserts.AssertDeleteBucketTaggingRequest(t)
-	return t
+	asserts.AssertDeleteBucketTaggingRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetBucketWebsiteOutput = { ["RedirectAllRequestsTo"] = true, ["IndexDocument"] = true, ["ErrorDocument"] = true, ["RoutingRules"] = true, nil }
@@ -2178,15 +2939,26 @@ end
 -- * RoutingRules [RoutingRules] 
 -- @return GetBucketWebsiteOutput structure as a key-value pair table
 function M.GetBucketWebsiteOutput(args)
-	assert(args, "You must provdide an argument table when creating GetBucketWebsiteOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetBucketWebsiteOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["RedirectAllRequestsTo"] = args["RedirectAllRequestsTo"],
 		["IndexDocument"] = args["IndexDocument"],
 		["ErrorDocument"] = args["ErrorDocument"],
 		["RoutingRules"] = args["RoutingRules"],
 	}
-	asserts.AssertGetBucketWebsiteOutput(t)
-	return t
+	asserts.AssertGetBucketWebsiteOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.S3KeyFilter = { ["FilterRules"] = true, nil }
@@ -2207,12 +2979,23 @@ end
 -- * FilterRules [FilterRuleList] 
 -- @return S3KeyFilter structure as a key-value pair table
 function M.S3KeyFilter(args)
-	assert(args, "You must provdide an argument table when creating S3KeyFilter")
-	local t = { 
+	assert(args, "You must provide an argument table when creating S3KeyFilter")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["FilterRules"] = args["FilterRules"],
 	}
-	asserts.AssertS3KeyFilter(t)
-	return t
+	asserts.AssertS3KeyFilter(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetBucketLocationRequest = { ["Bucket"] = true, nil }
@@ -2235,12 +3018,24 @@ end
 -- Required key: Bucket
 -- @return GetBucketLocationRequest structure as a key-value pair table
 function M.GetBucketLocationRequest(args)
-	assert(args, "You must provdide an argument table when creating GetBucketLocationRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetBucketLocationRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{Bucket}"] = args["Bucket"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Bucket"] = args["Bucket"],
 	}
-	asserts.AssertGetBucketLocationRequest(t)
-	return t
+	asserts.AssertGetBucketLocationRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.RedirectAllRequestsTo = { ["HostName"] = true, ["Protocol"] = true, nil }
@@ -2265,13 +3060,24 @@ end
 -- Required key: HostName
 -- @return RedirectAllRequestsTo structure as a key-value pair table
 function M.RedirectAllRequestsTo(args)
-	assert(args, "You must provdide an argument table when creating RedirectAllRequestsTo")
-	local t = { 
+	assert(args, "You must provide an argument table when creating RedirectAllRequestsTo")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["HostName"] = args["HostName"],
 		["Protocol"] = args["Protocol"],
 	}
-	asserts.AssertRedirectAllRequestsTo(t)
-	return t
+	asserts.AssertRedirectAllRequestsTo(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateBucketOutput = { ["Location"] = true, nil }
@@ -2292,12 +3098,24 @@ end
 -- * Location [Location] 
 -- @return CreateBucketOutput structure as a key-value pair table
 function M.CreateBucketOutput(args)
-	assert(args, "You must provdide an argument table when creating CreateBucketOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateBucketOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+        ["Location"] = args["Location"],
+    }
+	local all_args = { 
 		["Location"] = args["Location"],
 	}
-	asserts.AssertCreateBucketOutput(t)
-	return t
+	asserts.AssertCreateBucketOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.PutBucketAclRequest = { ["GrantFullControl"] = true, ["GrantWriteACP"] = true, ["ContentMD5"] = true, ["Bucket"] = true, ["ACL"] = true, ["AccessControlPolicy"] = true, ["GrantWrite"] = true, ["GrantRead"] = true, ["GrantReadACP"] = true, nil }
@@ -2336,8 +3154,22 @@ end
 -- Required key: Bucket
 -- @return PutBucketAclRequest structure as a key-value pair table
 function M.PutBucketAclRequest(args)
-	assert(args, "You must provdide an argument table when creating PutBucketAclRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating PutBucketAclRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{Bucket}"] = args["Bucket"],
+    }
+    local header_args = { 
+        ["x-amz-grant-full-control"] = args["GrantFullControl"],
+        ["x-amz-grant-write-acp"] = args["GrantWriteACP"],
+        ["Content-MD5"] = args["ContentMD5"],
+        ["x-amz-acl"] = args["ACL"],
+        ["x-amz-grant-write"] = args["GrantWrite"],
+        ["x-amz-grant-read"] = args["GrantRead"],
+        ["x-amz-grant-read-acp"] = args["GrantReadACP"],
+    }
+	local all_args = { 
 		["GrantFullControl"] = args["GrantFullControl"],
 		["GrantWriteACP"] = args["GrantWriteACP"],
 		["ContentMD5"] = args["ContentMD5"],
@@ -2348,8 +3180,13 @@ function M.PutBucketAclRequest(args)
 		["GrantRead"] = args["GrantRead"],
 		["GrantReadACP"] = args["GrantReadACP"],
 	}
-	asserts.AssertPutBucketAclRequest(t)
-	return t
+	asserts.AssertPutBucketAclRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.PutBucketPolicyRequest = { ["Policy"] = true, ["ContentMD5"] = true, ["Bucket"] = true, nil }
@@ -2378,14 +3215,27 @@ end
 -- Required key: Policy
 -- @return PutBucketPolicyRequest structure as a key-value pair table
 function M.PutBucketPolicyRequest(args)
-	assert(args, "You must provdide an argument table when creating PutBucketPolicyRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating PutBucketPolicyRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{Bucket}"] = args["Bucket"],
+    }
+    local header_args = { 
+        ["Content-MD5"] = args["ContentMD5"],
+    }
+	local all_args = { 
 		["Policy"] = args["Policy"],
 		["ContentMD5"] = args["ContentMD5"],
 		["Bucket"] = args["Bucket"],
 	}
-	asserts.AssertPutBucketPolicyRequest(t)
-	return t
+	asserts.AssertPutBucketPolicyRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetBucketCorsRequest = { ["Bucket"] = true, nil }
@@ -2408,12 +3258,24 @@ end
 -- Required key: Bucket
 -- @return GetBucketCorsRequest structure as a key-value pair table
 function M.GetBucketCorsRequest(args)
-	assert(args, "You must provdide an argument table when creating GetBucketCorsRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetBucketCorsRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{Bucket}"] = args["Bucket"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Bucket"] = args["Bucket"],
 	}
-	asserts.AssertGetBucketCorsRequest(t)
-	return t
+	asserts.AssertGetBucketCorsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.StorageClassAnalysis = { ["DataExport"] = true, nil }
@@ -2434,12 +3296,23 @@ end
 -- * DataExport [StorageClassAnalysisDataExport] A container used to describe how data related to the storage class analysis should be exported.
 -- @return StorageClassAnalysis structure as a key-value pair table
 function M.StorageClassAnalysis(args)
-	assert(args, "You must provdide an argument table when creating StorageClassAnalysis")
-	local t = { 
+	assert(args, "You must provide an argument table when creating StorageClassAnalysis")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DataExport"] = args["DataExport"],
 	}
-	asserts.AssertStorageClassAnalysis(t)
-	return t
+	asserts.AssertStorageClassAnalysis(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AccelerateConfiguration = { ["Status"] = true, nil }
@@ -2460,12 +3333,23 @@ end
 -- * Status [BucketAccelerateStatus] The accelerate configuration of the bucket.
 -- @return AccelerateConfiguration structure as a key-value pair table
 function M.AccelerateConfiguration(args)
-	assert(args, "You must provdide an argument table when creating AccelerateConfiguration")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AccelerateConfiguration")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Status"] = args["Status"],
 	}
-	asserts.AssertAccelerateConfiguration(t)
-	return t
+	asserts.AssertAccelerateConfiguration(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.PutBucketCorsRequest = { ["ContentMD5"] = true, ["Bucket"] = true, ["CORSConfiguration"] = true, nil }
@@ -2494,14 +3378,27 @@ end
 -- Required key: CORSConfiguration
 -- @return PutBucketCorsRequest structure as a key-value pair table
 function M.PutBucketCorsRequest(args)
-	assert(args, "You must provdide an argument table when creating PutBucketCorsRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating PutBucketCorsRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{Bucket}"] = args["Bucket"],
+    }
+    local header_args = { 
+        ["Content-MD5"] = args["ContentMD5"],
+    }
+	local all_args = { 
 		["ContentMD5"] = args["ContentMD5"],
 		["Bucket"] = args["Bucket"],
 		["CORSConfiguration"] = args["CORSConfiguration"],
 	}
-	asserts.AssertPutBucketCorsRequest(t)
-	return t
+	asserts.AssertPutBucketCorsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.PutBucketWebsiteRequest = { ["ContentMD5"] = true, ["Bucket"] = true, ["WebsiteConfiguration"] = true, nil }
@@ -2530,14 +3427,27 @@ end
 -- Required key: WebsiteConfiguration
 -- @return PutBucketWebsiteRequest structure as a key-value pair table
 function M.PutBucketWebsiteRequest(args)
-	assert(args, "You must provdide an argument table when creating PutBucketWebsiteRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating PutBucketWebsiteRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{Bucket}"] = args["Bucket"],
+    }
+    local header_args = { 
+        ["Content-MD5"] = args["ContentMD5"],
+    }
+	local all_args = { 
 		["ContentMD5"] = args["ContentMD5"],
 		["Bucket"] = args["Bucket"],
 		["WebsiteConfiguration"] = args["WebsiteConfiguration"],
 	}
-	asserts.AssertPutBucketWebsiteRequest(t)
-	return t
+	asserts.AssertPutBucketWebsiteRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.TopicConfigurationDeprecated = { ["Topic"] = true, ["Id"] = true, ["Event"] = true, ["Events"] = true, nil }
@@ -2564,15 +3474,26 @@ end
 -- * Events [EventList] 
 -- @return TopicConfigurationDeprecated structure as a key-value pair table
 function M.TopicConfigurationDeprecated(args)
-	assert(args, "You must provdide an argument table when creating TopicConfigurationDeprecated")
-	local t = { 
+	assert(args, "You must provide an argument table when creating TopicConfigurationDeprecated")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Topic"] = args["Topic"],
 		["Id"] = args["Id"],
 		["Event"] = args["Event"],
 		["Events"] = args["Events"],
 	}
-	asserts.AssertTopicConfigurationDeprecated(t)
-	return t
+	asserts.AssertTopicConfigurationDeprecated(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.BucketAlreadyExists = { nil }
@@ -2591,11 +3512,22 @@ end
 -- Valid keys:
 -- @return BucketAlreadyExists structure as a key-value pair table
 function M.BucketAlreadyExists(args)
-	assert(args, "You must provdide an argument table when creating BucketAlreadyExists")
-	local t = { 
+	assert(args, "You must provide an argument table when creating BucketAlreadyExists")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertBucketAlreadyExists(t)
-	return t
+	asserts.AssertBucketAlreadyExists(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.PutObjectAclRequest = { ["GrantFullControl"] = true, ["GrantWriteACP"] = true, ["Key"] = true, ["RequestPayer"] = true, ["ContentMD5"] = true, ["Bucket"] = true, ["ACL"] = true, ["AccessControlPolicy"] = true, ["GrantWrite"] = true, ["VersionId"] = true, ["GrantRead"] = true, ["GrantReadACP"] = true, nil }
@@ -2642,8 +3574,25 @@ end
 -- Required key: Key
 -- @return PutObjectAclRequest structure as a key-value pair table
 function M.PutObjectAclRequest(args)
-	assert(args, "You must provdide an argument table when creating PutObjectAclRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating PutObjectAclRequest")
+    local query_args = { 
+        ["versionId"] = args["VersionId"],
+    }
+    local uri_args = { 
+        ["{Key}"] = args["Key"],
+        ["{Bucket}"] = args["Bucket"],
+    }
+    local header_args = { 
+        ["x-amz-grant-full-control"] = args["GrantFullControl"],
+        ["x-amz-grant-write-acp"] = args["GrantWriteACP"],
+        ["x-amz-request-payer"] = args["RequestPayer"],
+        ["Content-MD5"] = args["ContentMD5"],
+        ["x-amz-acl"] = args["ACL"],
+        ["x-amz-grant-write"] = args["GrantWrite"],
+        ["x-amz-grant-read"] = args["GrantRead"],
+        ["x-amz-grant-read-acp"] = args["GrantReadACP"],
+    }
+	local all_args = { 
 		["GrantFullControl"] = args["GrantFullControl"],
 		["GrantWriteACP"] = args["GrantWriteACP"],
 		["Key"] = args["Key"],
@@ -2657,8 +3606,13 @@ function M.PutObjectAclRequest(args)
 		["GrantRead"] = args["GrantRead"],
 		["GrantReadACP"] = args["GrantReadACP"],
 	}
-	asserts.AssertPutObjectAclRequest(t)
-	return t
+	asserts.AssertPutObjectAclRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteObjectOutput = { ["VersionId"] = true, ["RequestCharged"] = true, ["DeleteMarker"] = true, nil }
@@ -2683,14 +3637,28 @@ end
 -- * DeleteMarker [DeleteMarker] Specifies whether the versioned object that was permanently deleted was (true) or was not (false) a delete marker.
 -- @return DeleteObjectOutput structure as a key-value pair table
 function M.DeleteObjectOutput(args)
-	assert(args, "You must provdide an argument table when creating DeleteObjectOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteObjectOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+        ["x-amz-version-id"] = args["VersionId"],
+        ["x-amz-request-charged"] = args["RequestCharged"],
+        ["x-amz-delete-marker"] = args["DeleteMarker"],
+    }
+	local all_args = { 
 		["VersionId"] = args["VersionId"],
 		["RequestCharged"] = args["RequestCharged"],
 		["DeleteMarker"] = args["DeleteMarker"],
 	}
-	asserts.AssertDeleteObjectOutput(t)
-	return t
+	asserts.AssertDeleteObjectOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateBucketConfiguration = { ["LocationConstraint"] = true, nil }
@@ -2711,12 +3679,23 @@ end
 -- * LocationConstraint [BucketLocationConstraint] Specifies the region where the bucket will be created. If you don't specify a region, the bucket will be created in US Standard.
 -- @return CreateBucketConfiguration structure as a key-value pair table
 function M.CreateBucketConfiguration(args)
-	assert(args, "You must provdide an argument table when creating CreateBucketConfiguration")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateBucketConfiguration")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["LocationConstraint"] = args["LocationConstraint"],
 	}
-	asserts.AssertCreateBucketConfiguration(t)
-	return t
+	asserts.AssertCreateBucketConfiguration(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetBucketAccelerateConfigurationOutput = { ["Status"] = true, nil }
@@ -2737,12 +3716,23 @@ end
 -- * Status [BucketAccelerateStatus] The accelerate configuration of the bucket.
 -- @return GetBucketAccelerateConfigurationOutput structure as a key-value pair table
 function M.GetBucketAccelerateConfigurationOutput(args)
-	assert(args, "You must provdide an argument table when creating GetBucketAccelerateConfigurationOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetBucketAccelerateConfigurationOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Status"] = args["Status"],
 	}
-	asserts.AssertGetBucketAccelerateConfigurationOutput(t)
-	return t
+	asserts.AssertGetBucketAccelerateConfigurationOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListObjectsRequest = { ["RequestPayer"] = true, ["Bucket"] = true, ["Prefix"] = true, ["MaxKeys"] = true, ["Delimiter"] = true, ["Marker"] = true, ["EncodingType"] = true, nil }
@@ -2777,8 +3767,21 @@ end
 -- Required key: Bucket
 -- @return ListObjectsRequest structure as a key-value pair table
 function M.ListObjectsRequest(args)
-	assert(args, "You must provdide an argument table when creating ListObjectsRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListObjectsRequest")
+    local query_args = { 
+        ["prefix"] = args["Prefix"],
+        ["max-keys"] = args["MaxKeys"],
+        ["delimiter"] = args["Delimiter"],
+        ["marker"] = args["Marker"],
+        ["encoding-type"] = args["EncodingType"],
+    }
+    local uri_args = { 
+        ["{Bucket}"] = args["Bucket"],
+    }
+    local header_args = { 
+        ["x-amz-request-payer"] = args["RequestPayer"],
+    }
+	local all_args = { 
 		["RequestPayer"] = args["RequestPayer"],
 		["Bucket"] = args["Bucket"],
 		["Prefix"] = args["Prefix"],
@@ -2787,8 +3790,13 @@ function M.ListObjectsRequest(args)
 		["Marker"] = args["Marker"],
 		["EncodingType"] = args["EncodingType"],
 	}
-	asserts.AssertListObjectsRequest(t)
-	return t
+	asserts.AssertListObjectsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteBucketRequest = { ["Bucket"] = true, nil }
@@ -2811,12 +3819,24 @@ end
 -- Required key: Bucket
 -- @return DeleteBucketRequest structure as a key-value pair table
 function M.DeleteBucketRequest(args)
-	assert(args, "You must provdide an argument table when creating DeleteBucketRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteBucketRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{Bucket}"] = args["Bucket"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Bucket"] = args["Bucket"],
 	}
-	asserts.AssertDeleteBucketRequest(t)
-	return t
+	asserts.AssertDeleteBucketRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteBucketPolicyRequest = { ["Bucket"] = true, nil }
@@ -2839,12 +3859,24 @@ end
 -- Required key: Bucket
 -- @return DeleteBucketPolicyRequest structure as a key-value pair table
 function M.DeleteBucketPolicyRequest(args)
-	assert(args, "You must provdide an argument table when creating DeleteBucketPolicyRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteBucketPolicyRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{Bucket}"] = args["Bucket"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Bucket"] = args["Bucket"],
 	}
-	asserts.AssertDeleteBucketPolicyRequest(t)
-	return t
+	asserts.AssertDeleteBucketPolicyRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.VersioningConfiguration = { ["Status"] = true, ["MFADelete"] = true, nil }
@@ -2867,13 +3899,24 @@ end
 -- * MFADelete [MFADelete] Specifies whether MFA delete is enabled in the bucket versioning configuration. This element is only returned if the bucket has been configured with MFA delete. If the bucket has never been so configured, this element is not returned.
 -- @return VersioningConfiguration structure as a key-value pair table
 function M.VersioningConfiguration(args)
-	assert(args, "You must provdide an argument table when creating VersioningConfiguration")
-	local t = { 
+	assert(args, "You must provide an argument table when creating VersioningConfiguration")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Status"] = args["Status"],
 		["MFADelete"] = args["MFADelete"],
 	}
-	asserts.AssertVersioningConfiguration(t)
-	return t
+	asserts.AssertVersioningConfiguration(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateBucketRequest = { ["GrantFullControl"] = true, ["CreateBucketConfiguration"] = true, ["GrantWriteACP"] = true, ["Bucket"] = true, ["ACL"] = true, ["GrantWrite"] = true, ["GrantRead"] = true, ["GrantReadACP"] = true, nil }
@@ -2910,8 +3953,21 @@ end
 -- Required key: Bucket
 -- @return CreateBucketRequest structure as a key-value pair table
 function M.CreateBucketRequest(args)
-	assert(args, "You must provdide an argument table when creating CreateBucketRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateBucketRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{Bucket}"] = args["Bucket"],
+    }
+    local header_args = { 
+        ["x-amz-grant-full-control"] = args["GrantFullControl"],
+        ["x-amz-grant-write-acp"] = args["GrantWriteACP"],
+        ["x-amz-acl"] = args["ACL"],
+        ["x-amz-grant-write"] = args["GrantWrite"],
+        ["x-amz-grant-read"] = args["GrantRead"],
+        ["x-amz-grant-read-acp"] = args["GrantReadACP"],
+    }
+	local all_args = { 
 		["GrantFullControl"] = args["GrantFullControl"],
 		["CreateBucketConfiguration"] = args["CreateBucketConfiguration"],
 		["GrantWriteACP"] = args["GrantWriteACP"],
@@ -2921,8 +3977,13 @@ function M.CreateBucketRequest(args)
 		["GrantRead"] = args["GrantRead"],
 		["GrantReadACP"] = args["GrantReadACP"],
 	}
-	asserts.AssertCreateBucketRequest(t)
-	return t
+	asserts.AssertCreateBucketRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.NotificationConfigurationFilter = { ["Key"] = true, nil }
@@ -2943,12 +4004,23 @@ end
 -- * Key [S3KeyFilter] 
 -- @return NotificationConfigurationFilter structure as a key-value pair table
 function M.NotificationConfigurationFilter(args)
-	assert(args, "You must provdide an argument table when creating NotificationConfigurationFilter")
-	local t = { 
+	assert(args, "You must provide an argument table when creating NotificationConfigurationFilter")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Key"] = args["Key"],
 	}
-	asserts.AssertNotificationConfigurationFilter(t)
-	return t
+	asserts.AssertNotificationConfigurationFilter(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetBucketInventoryConfigurationOutput = { ["InventoryConfiguration"] = true, nil }
@@ -2969,12 +4041,23 @@ end
 -- * InventoryConfiguration [InventoryConfiguration] Specifies the inventory configuration.
 -- @return GetBucketInventoryConfigurationOutput structure as a key-value pair table
 function M.GetBucketInventoryConfigurationOutput(args)
-	assert(args, "You must provdide an argument table when creating GetBucketInventoryConfigurationOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetBucketInventoryConfigurationOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["InventoryConfiguration"] = args["InventoryConfiguration"],
 	}
-	asserts.AssertGetBucketInventoryConfigurationOutput(t)
-	return t
+	asserts.AssertGetBucketInventoryConfigurationOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AccessControlPolicy = { ["Owner"] = true, ["Grants"] = true, nil }
@@ -2997,13 +4080,24 @@ end
 -- * Grants [Grants] A list of grants.
 -- @return AccessControlPolicy structure as a key-value pair table
 function M.AccessControlPolicy(args)
-	assert(args, "You must provdide an argument table when creating AccessControlPolicy")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AccessControlPolicy")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Owner"] = args["Owner"],
 		["Grants"] = args["Grants"],
 	}
-	asserts.AssertAccessControlPolicy(t)
-	return t
+	asserts.AssertAccessControlPolicy(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Delete = { ["Objects"] = true, ["Quiet"] = true, nil }
@@ -3028,13 +4122,24 @@ end
 -- Required key: Objects
 -- @return Delete structure as a key-value pair table
 function M.Delete(args)
-	assert(args, "You must provdide an argument table when creating Delete")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Delete")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Objects"] = args["Objects"],
 		["Quiet"] = args["Quiet"],
 	}
-	asserts.AssertDelete(t)
-	return t
+	asserts.AssertDelete(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.PutBucketNotificationConfigurationRequest = { ["NotificationConfiguration"] = true, ["Bucket"] = true, nil }
@@ -3061,13 +4166,25 @@ end
 -- Required key: NotificationConfiguration
 -- @return PutBucketNotificationConfigurationRequest structure as a key-value pair table
 function M.PutBucketNotificationConfigurationRequest(args)
-	assert(args, "You must provdide an argument table when creating PutBucketNotificationConfigurationRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating PutBucketNotificationConfigurationRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{Bucket}"] = args["Bucket"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NotificationConfiguration"] = args["NotificationConfiguration"],
 		["Bucket"] = args["Bucket"],
 	}
-	asserts.AssertPutBucketNotificationConfigurationRequest(t)
-	return t
+	asserts.AssertPutBucketNotificationConfigurationRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AnalyticsExportDestination = { ["S3BucketDestination"] = true, nil }
@@ -3090,12 +4207,23 @@ end
 -- Required key: S3BucketDestination
 -- @return AnalyticsExportDestination structure as a key-value pair table
 function M.AnalyticsExportDestination(args)
-	assert(args, "You must provdide an argument table when creating AnalyticsExportDestination")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AnalyticsExportDestination")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["S3BucketDestination"] = args["S3BucketDestination"],
 	}
-	asserts.AssertAnalyticsExportDestination(t)
-	return t
+	asserts.AssertAnalyticsExportDestination(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InventoryConfiguration = { ["Schedule"] = true, ["IsEnabled"] = true, ["Destination"] = true, ["OptionalFields"] = true, ["Filter"] = true, ["IncludedObjectVersions"] = true, ["Id"] = true, nil }
@@ -3138,8 +4266,14 @@ end
 -- Required key: Schedule
 -- @return InventoryConfiguration structure as a key-value pair table
 function M.InventoryConfiguration(args)
-	assert(args, "You must provdide an argument table when creating InventoryConfiguration")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InventoryConfiguration")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Schedule"] = args["Schedule"],
 		["IsEnabled"] = args["IsEnabled"],
 		["Destination"] = args["Destination"],
@@ -3148,8 +4282,13 @@ function M.InventoryConfiguration(args)
 		["IncludedObjectVersions"] = args["IncludedObjectVersions"],
 		["Id"] = args["Id"],
 	}
-	asserts.AssertInventoryConfiguration(t)
-	return t
+	asserts.AssertInventoryConfiguration(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.LambdaFunctionConfiguration = { ["Filter"] = true, ["LambdaFunctionArn"] = true, ["Id"] = true, ["Events"] = true, nil }
@@ -3180,15 +4319,26 @@ end
 -- Required key: Events
 -- @return LambdaFunctionConfiguration structure as a key-value pair table
 function M.LambdaFunctionConfiguration(args)
-	assert(args, "You must provdide an argument table when creating LambdaFunctionConfiguration")
-	local t = { 
+	assert(args, "You must provide an argument table when creating LambdaFunctionConfiguration")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Filter"] = args["Filter"],
 		["LambdaFunctionArn"] = args["LambdaFunctionArn"],
 		["Id"] = args["Id"],
 		["Events"] = args["Events"],
 	}
-	asserts.AssertLambdaFunctionConfiguration(t)
-	return t
+	asserts.AssertLambdaFunctionConfiguration(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetBucketLifecycleConfigurationOutput = { ["Rules"] = true, nil }
@@ -3209,12 +4359,23 @@ end
 -- * Rules [LifecycleRules] 
 -- @return GetBucketLifecycleConfigurationOutput structure as a key-value pair table
 function M.GetBucketLifecycleConfigurationOutput(args)
-	assert(args, "You must provdide an argument table when creating GetBucketLifecycleConfigurationOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetBucketLifecycleConfigurationOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Rules"] = args["Rules"],
 	}
-	asserts.AssertGetBucketLifecycleConfigurationOutput(t)
-	return t
+	asserts.AssertGetBucketLifecycleConfigurationOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.NoncurrentVersionExpiration = { ["NoncurrentDays"] = true, nil }
@@ -3235,12 +4396,23 @@ end
 -- * NoncurrentDays [Days] Specifies the number of days an object is noncurrent before Amazon S3 can perform the associated action. For information about the noncurrent days calculations, see <a href="http://docs.aws.amazon.com/AmazonS3/latest/dev/s3-access-control.html">How Amazon S3 Calculates When an Object Became Noncurrent</a> in the Amazon Simple Storage Service Developer Guide.
 -- @return NoncurrentVersionExpiration structure as a key-value pair table
 function M.NoncurrentVersionExpiration(args)
-	assert(args, "You must provdide an argument table when creating NoncurrentVersionExpiration")
-	local t = { 
+	assert(args, "You must provide an argument table when creating NoncurrentVersionExpiration")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NoncurrentDays"] = args["NoncurrentDays"],
 	}
-	asserts.AssertNoncurrentVersionExpiration(t)
-	return t
+	asserts.AssertNoncurrentVersionExpiration(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.FilterRule = { ["Name"] = true, ["Value"] = true, nil }
@@ -3263,13 +4435,24 @@ end
 -- * Value [FilterRuleValue] 
 -- @return FilterRule structure as a key-value pair table
 function M.FilterRule(args)
-	assert(args, "You must provdide an argument table when creating FilterRule")
-	local t = { 
+	assert(args, "You must provide an argument table when creating FilterRule")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Name"] = args["Name"],
 		["Value"] = args["Value"],
 	}
-	asserts.AssertFilterRule(t)
-	return t
+	asserts.AssertFilterRule(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.HeadObjectOutput = { ["LastModified"] = true, ["RequestCharged"] = true, ["ContentEncoding"] = true, ["ReplicationStatus"] = true, ["StorageClass"] = true, ["ServerSideEncryption"] = true, ["SSEKMSKeyId"] = true, ["ContentDisposition"] = true, ["Metadata"] = true, ["AcceptRanges"] = true, ["WebsiteRedirectLocation"] = true, ["Expires"] = true, ["DeleteMarker"] = true, ["CacheControl"] = true, ["PartsCount"] = true, ["ContentLength"] = true, ["Expiration"] = true, ["MissingMeta"] = true, ["Restore"] = true, ["SSECustomerAlgorithm"] = true, ["ContentType"] = true, ["ContentLanguage"] = true, ["VersionId"] = true, ["ETag"] = true, ["SSECustomerKeyMD5"] = true, nil }
@@ -3338,8 +4521,38 @@ end
 -- * SSECustomerKeyMD5 [SSECustomerKeyMD5] If server-side encryption with a customer-provided encryption key was requested, the response will include this header to provide round trip message integrity verification of the customer-provided encryption key.
 -- @return HeadObjectOutput structure as a key-value pair table
 function M.HeadObjectOutput(args)
-	assert(args, "You must provdide an argument table when creating HeadObjectOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating HeadObjectOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+        ["Last-Modified"] = args["LastModified"],
+        ["x-amz-request-charged"] = args["RequestCharged"],
+        ["Content-Encoding"] = args["ContentEncoding"],
+        ["x-amz-replication-status"] = args["ReplicationStatus"],
+        ["x-amz-storage-class"] = args["StorageClass"],
+        ["x-amz-server-side-encryption"] = args["ServerSideEncryption"],
+        ["x-amz-server-side-encryption-aws-kms-key-id"] = args["SSEKMSKeyId"],
+        ["Content-Disposition"] = args["ContentDisposition"],
+        ["accept-ranges"] = args["AcceptRanges"],
+        ["x-amz-website-redirect-location"] = args["WebsiteRedirectLocation"],
+        ["Expires"] = args["Expires"],
+        ["x-amz-delete-marker"] = args["DeleteMarker"],
+        ["Cache-Control"] = args["CacheControl"],
+        ["x-amz-mp-parts-count"] = args["PartsCount"],
+        ["Content-Length"] = args["ContentLength"],
+        ["x-amz-expiration"] = args["Expiration"],
+        ["x-amz-missing-meta"] = args["MissingMeta"],
+        ["x-amz-restore"] = args["Restore"],
+        ["x-amz-server-side-encryption-customer-algorithm"] = args["SSECustomerAlgorithm"],
+        ["Content-Type"] = args["ContentType"],
+        ["Content-Language"] = args["ContentLanguage"],
+        ["x-amz-version-id"] = args["VersionId"],
+        ["ETag"] = args["ETag"],
+        ["x-amz-server-side-encryption-customer-key-MD5"] = args["SSECustomerKeyMD5"],
+    }
+	local all_args = { 
 		["LastModified"] = args["LastModified"],
 		["RequestCharged"] = args["RequestCharged"],
 		["ContentEncoding"] = args["ContentEncoding"],
@@ -3366,8 +4579,13 @@ function M.HeadObjectOutput(args)
 		["ETag"] = args["ETag"],
 		["SSECustomerKeyMD5"] = args["SSECustomerKeyMD5"],
 	}
-	asserts.AssertHeadObjectOutput(t)
-	return t
+	asserts.AssertHeadObjectOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetBucketAnalyticsConfigurationOutput = { ["AnalyticsConfiguration"] = true, nil }
@@ -3388,12 +4606,23 @@ end
 -- * AnalyticsConfiguration [AnalyticsConfiguration] The configuration and any analyses for the analytics filter.
 -- @return GetBucketAnalyticsConfigurationOutput structure as a key-value pair table
 function M.GetBucketAnalyticsConfigurationOutput(args)
-	assert(args, "You must provdide an argument table when creating GetBucketAnalyticsConfigurationOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetBucketAnalyticsConfigurationOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["AnalyticsConfiguration"] = args["AnalyticsConfiguration"],
 	}
-	asserts.AssertGetBucketAnalyticsConfigurationOutput(t)
-	return t
+	asserts.AssertGetBucketAnalyticsConfigurationOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.NoncurrentVersionTransition = { ["NoncurrentDays"] = true, ["StorageClass"] = true, nil }
@@ -3416,13 +4645,24 @@ end
 -- * StorageClass [TransitionStorageClass] The class of storage used to store the object.
 -- @return NoncurrentVersionTransition structure as a key-value pair table
 function M.NoncurrentVersionTransition(args)
-	assert(args, "You must provdide an argument table when creating NoncurrentVersionTransition")
-	local t = { 
+	assert(args, "You must provide an argument table when creating NoncurrentVersionTransition")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NoncurrentDays"] = args["NoncurrentDays"],
 		["StorageClass"] = args["StorageClass"],
 	}
-	asserts.AssertNoncurrentVersionTransition(t)
-	return t
+	asserts.AssertNoncurrentVersionTransition(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.PutBucketNotificationRequest = { ["NotificationConfiguration"] = true, ["ContentMD5"] = true, ["Bucket"] = true, nil }
@@ -3451,14 +4691,27 @@ end
 -- Required key: NotificationConfiguration
 -- @return PutBucketNotificationRequest structure as a key-value pair table
 function M.PutBucketNotificationRequest(args)
-	assert(args, "You must provdide an argument table when creating PutBucketNotificationRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating PutBucketNotificationRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{Bucket}"] = args["Bucket"],
+    }
+    local header_args = { 
+        ["Content-MD5"] = args["ContentMD5"],
+    }
+	local all_args = { 
 		["NotificationConfiguration"] = args["NotificationConfiguration"],
 		["ContentMD5"] = args["ContentMD5"],
 		["Bucket"] = args["Bucket"],
 	}
-	asserts.AssertPutBucketNotificationRequest(t)
-	return t
+	asserts.AssertPutBucketNotificationRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteObjectsRequest = { ["MFA"] = true, ["Bucket"] = true, ["RequestPayer"] = true, ["Delete"] = true, nil }
@@ -3489,15 +4742,29 @@ end
 -- Required key: Delete
 -- @return DeleteObjectsRequest structure as a key-value pair table
 function M.DeleteObjectsRequest(args)
-	assert(args, "You must provdide an argument table when creating DeleteObjectsRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteObjectsRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{Bucket}"] = args["Bucket"],
+    }
+    local header_args = { 
+        ["x-amz-mfa"] = args["MFA"],
+        ["x-amz-request-payer"] = args["RequestPayer"],
+    }
+	local all_args = { 
 		["MFA"] = args["MFA"],
 		["Bucket"] = args["Bucket"],
 		["RequestPayer"] = args["RequestPayer"],
 		["Delete"] = args["Delete"],
 	}
-	asserts.AssertDeleteObjectsRequest(t)
-	return t
+	asserts.AssertDeleteObjectsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Redirect = { ["ReplaceKeyWith"] = true, ["HostName"] = true, ["Protocol"] = true, ["ReplaceKeyPrefixWith"] = true, ["HttpRedirectCode"] = true, nil }
@@ -3526,16 +4793,27 @@ end
 -- * HttpRedirectCode [HttpRedirectCode] The HTTP redirect code to use on the response. Not required if one of the siblings is present.
 -- @return Redirect structure as a key-value pair table
 function M.Redirect(args)
-	assert(args, "You must provdide an argument table when creating Redirect")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Redirect")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ReplaceKeyWith"] = args["ReplaceKeyWith"],
 		["HostName"] = args["HostName"],
 		["Protocol"] = args["Protocol"],
 		["ReplaceKeyPrefixWith"] = args["ReplaceKeyPrefixWith"],
 		["HttpRedirectCode"] = args["HttpRedirectCode"],
 	}
-	asserts.AssertRedirect(t)
-	return t
+	asserts.AssertRedirect(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UploadPartCopyRequest = { ["CopySourceIfMatch"] = true, ["SSECustomerAlgorithm"] = true, ["CopySourceSSECustomerKeyMD5"] = true, ["RequestPayer"] = true, ["CopySourceSSECustomerKey"] = true, ["CopySourceSSECustomerAlgorithm"] = true, ["CopySource"] = true, ["CopySourceIfModifiedSince"] = true, ["Bucket"] = true, ["SSECustomerKey"] = true, ["CopySourceIfUnmodifiedSince"] = true, ["CopySourceIfNoneMatch"] = true, ["UploadId"] = true, ["Key"] = true, ["CopySourceRange"] = true, ["SSECustomerKeyMD5"] = true, ["PartNumber"] = true, nil }
@@ -3598,8 +4876,31 @@ end
 -- Required key: UploadId
 -- @return UploadPartCopyRequest structure as a key-value pair table
 function M.UploadPartCopyRequest(args)
-	assert(args, "You must provdide an argument table when creating UploadPartCopyRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UploadPartCopyRequest")
+    local query_args = { 
+        ["uploadId"] = args["UploadId"],
+        ["partNumber"] = args["PartNumber"],
+    }
+    local uri_args = { 
+        ["{Bucket}"] = args["Bucket"],
+        ["{Key}"] = args["Key"],
+    }
+    local header_args = { 
+        ["x-amz-copy-source-if-match"] = args["CopySourceIfMatch"],
+        ["x-amz-server-side-encryption-customer-algorithm"] = args["SSECustomerAlgorithm"],
+        ["x-amz-copy-source-server-side-encryption-customer-key-MD5"] = args["CopySourceSSECustomerKeyMD5"],
+        ["x-amz-request-payer"] = args["RequestPayer"],
+        ["x-amz-copy-source-server-side-encryption-customer-key"] = args["CopySourceSSECustomerKey"],
+        ["x-amz-copy-source-server-side-encryption-customer-algorithm"] = args["CopySourceSSECustomerAlgorithm"],
+        ["x-amz-copy-source"] = args["CopySource"],
+        ["x-amz-copy-source-if-modified-since"] = args["CopySourceIfModifiedSince"],
+        ["x-amz-server-side-encryption-customer-key"] = args["SSECustomerKey"],
+        ["x-amz-copy-source-if-unmodified-since"] = args["CopySourceIfUnmodifiedSince"],
+        ["x-amz-copy-source-if-none-match"] = args["CopySourceIfNoneMatch"],
+        ["x-amz-copy-source-range"] = args["CopySourceRange"],
+        ["x-amz-server-side-encryption-customer-key-MD5"] = args["SSECustomerKeyMD5"],
+    }
+	local all_args = { 
 		["CopySourceIfMatch"] = args["CopySourceIfMatch"],
 		["SSECustomerAlgorithm"] = args["SSECustomerAlgorithm"],
 		["CopySourceSSECustomerKeyMD5"] = args["CopySourceSSECustomerKeyMD5"],
@@ -3618,8 +4919,13 @@ function M.UploadPartCopyRequest(args)
 		["SSECustomerKeyMD5"] = args["SSECustomerKeyMD5"],
 		["PartNumber"] = args["PartNumber"],
 	}
-	asserts.AssertUploadPartCopyRequest(t)
-	return t
+	asserts.AssertUploadPartCopyRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CompletedMultipartUpload = { ["Parts"] = true, nil }
@@ -3640,12 +4946,23 @@ end
 -- * Parts [CompletedPartList] 
 -- @return CompletedMultipartUpload structure as a key-value pair table
 function M.CompletedMultipartUpload(args)
-	assert(args, "You must provdide an argument table when creating CompletedMultipartUpload")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CompletedMultipartUpload")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Parts"] = args["Parts"],
 	}
-	asserts.AssertCompletedMultipartUpload(t)
-	return t
+	asserts.AssertCompletedMultipartUpload(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteBucketReplicationRequest = { ["Bucket"] = true, nil }
@@ -3668,12 +4985,24 @@ end
 -- Required key: Bucket
 -- @return DeleteBucketReplicationRequest structure as a key-value pair table
 function M.DeleteBucketReplicationRequest(args)
-	assert(args, "You must provdide an argument table when creating DeleteBucketReplicationRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteBucketReplicationRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{Bucket}"] = args["Bucket"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Bucket"] = args["Bucket"],
 	}
-	asserts.AssertDeleteBucketReplicationRequest(t)
-	return t
+	asserts.AssertDeleteBucketReplicationRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Tagging = { ["TagSet"] = true, nil }
@@ -3696,12 +5025,23 @@ end
 -- Required key: TagSet
 -- @return Tagging structure as a key-value pair table
 function M.Tagging(args)
-	assert(args, "You must provdide an argument table when creating Tagging")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Tagging")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["TagSet"] = args["TagSet"],
 	}
-	asserts.AssertTagging(t)
-	return t
+	asserts.AssertTagging(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AnalyticsAndOperator = { ["Prefix"] = true, ["Tags"] = true, nil }
@@ -3724,13 +5064,24 @@ end
 -- * Tags [TagSet] The list of tags to use when evaluating an AND predicate.
 -- @return AnalyticsAndOperator structure as a key-value pair table
 function M.AnalyticsAndOperator(args)
-	assert(args, "You must provdide an argument table when creating AnalyticsAndOperator")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AnalyticsAndOperator")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Prefix"] = args["Prefix"],
 		["Tags"] = args["Tags"],
 	}
-	asserts.AssertAnalyticsAndOperator(t)
-	return t
+	asserts.AssertAnalyticsAndOperator(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.RestoreObjectRequest = { ["VersionId"] = true, ["RestoreRequest"] = true, ["Bucket"] = true, ["RequestPayer"] = true, ["Key"] = true, nil }
@@ -3763,16 +5114,31 @@ end
 -- Required key: Key
 -- @return RestoreObjectRequest structure as a key-value pair table
 function M.RestoreObjectRequest(args)
-	assert(args, "You must provdide an argument table when creating RestoreObjectRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating RestoreObjectRequest")
+    local query_args = { 
+        ["versionId"] = args["VersionId"],
+    }
+    local uri_args = { 
+        ["{Bucket}"] = args["Bucket"],
+        ["{Key}"] = args["Key"],
+    }
+    local header_args = { 
+        ["x-amz-request-payer"] = args["RequestPayer"],
+    }
+	local all_args = { 
 		["VersionId"] = args["VersionId"],
 		["RestoreRequest"] = args["RestoreRequest"],
 		["Bucket"] = args["Bucket"],
 		["RequestPayer"] = args["RequestPayer"],
 		["Key"] = args["Key"],
 	}
-	asserts.AssertRestoreObjectRequest(t)
-	return t
+	asserts.AssertRestoreObjectRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetObjectTorrentRequest = { ["Bucket"] = true, ["RequestPayer"] = true, ["Key"] = true, nil }
@@ -3801,14 +5167,28 @@ end
 -- Required key: Key
 -- @return GetObjectTorrentRequest structure as a key-value pair table
 function M.GetObjectTorrentRequest(args)
-	assert(args, "You must provdide an argument table when creating GetObjectTorrentRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetObjectTorrentRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{Bucket}"] = args["Bucket"],
+        ["{Key}"] = args["Key"],
+    }
+    local header_args = { 
+        ["x-amz-request-payer"] = args["RequestPayer"],
+    }
+	local all_args = { 
 		["Bucket"] = args["Bucket"],
 		["RequestPayer"] = args["RequestPayer"],
 		["Key"] = args["Key"],
 	}
-	asserts.AssertGetObjectTorrentRequest(t)
-	return t
+	asserts.AssertGetObjectTorrentRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetBucketLifecycleConfigurationRequest = { ["Bucket"] = true, nil }
@@ -3831,12 +5211,24 @@ end
 -- Required key: Bucket
 -- @return GetBucketLifecycleConfigurationRequest structure as a key-value pair table
 function M.GetBucketLifecycleConfigurationRequest(args)
-	assert(args, "You must provdide an argument table when creating GetBucketLifecycleConfigurationRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetBucketLifecycleConfigurationRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{Bucket}"] = args["Bucket"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Bucket"] = args["Bucket"],
 	}
-	asserts.AssertGetBucketLifecycleConfigurationRequest(t)
-	return t
+	asserts.AssertGetBucketLifecycleConfigurationRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListBucketMetricsConfigurationsOutput = { ["MetricsConfigurationList"] = true, ["NextContinuationToken"] = true, ["IsTruncated"] = true, ["ContinuationToken"] = true, nil }
@@ -3863,15 +5255,26 @@ end
 -- * ContinuationToken [Token] The marker that is used as a starting point for this metrics configuration list response. This value is present if it was sent in the request.
 -- @return ListBucketMetricsConfigurationsOutput structure as a key-value pair table
 function M.ListBucketMetricsConfigurationsOutput(args)
-	assert(args, "You must provdide an argument table when creating ListBucketMetricsConfigurationsOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListBucketMetricsConfigurationsOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["MetricsConfigurationList"] = args["MetricsConfigurationList"],
 		["NextContinuationToken"] = args["NextContinuationToken"],
 		["IsTruncated"] = args["IsTruncated"],
 		["ContinuationToken"] = args["ContinuationToken"],
 	}
-	asserts.AssertListBucketMetricsConfigurationsOutput(t)
-	return t
+	asserts.AssertListBucketMetricsConfigurationsOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListMultipartUploadsOutput = { ["UploadIdMarker"] = true, ["CommonPrefixes"] = true, ["NextKeyMarker"] = true, ["Bucket"] = true, ["Delimiter"] = true, ["NextUploadIdMarker"] = true, ["Prefix"] = true, ["Uploads"] = true, ["KeyMarker"] = true, ["MaxUploads"] = true, ["EncodingType"] = true, ["IsTruncated"] = true, nil }
@@ -3914,8 +5317,14 @@ end
 -- * IsTruncated [IsTruncated] Indicates whether the returned list of multipart uploads is truncated. A value of true indicates that the list was truncated. The list can be truncated if the number of multipart uploads exceeds the limit allowed or specified by max uploads.
 -- @return ListMultipartUploadsOutput structure as a key-value pair table
 function M.ListMultipartUploadsOutput(args)
-	assert(args, "You must provdide an argument table when creating ListMultipartUploadsOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListMultipartUploadsOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["UploadIdMarker"] = args["UploadIdMarker"],
 		["CommonPrefixes"] = args["CommonPrefixes"],
 		["NextKeyMarker"] = args["NextKeyMarker"],
@@ -3929,8 +5338,13 @@ function M.ListMultipartUploadsOutput(args)
 		["EncodingType"] = args["EncodingType"],
 		["IsTruncated"] = args["IsTruncated"],
 	}
-	asserts.AssertListMultipartUploadsOutput(t)
-	return t
+	asserts.AssertListMultipartUploadsOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetBucketLifecycleRequest = { ["Bucket"] = true, nil }
@@ -3953,12 +5367,24 @@ end
 -- Required key: Bucket
 -- @return GetBucketLifecycleRequest structure as a key-value pair table
 function M.GetBucketLifecycleRequest(args)
-	assert(args, "You must provdide an argument table when creating GetBucketLifecycleRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetBucketLifecycleRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{Bucket}"] = args["Bucket"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Bucket"] = args["Bucket"],
 	}
-	asserts.AssertGetBucketLifecycleRequest(t)
-	return t
+	asserts.AssertGetBucketLifecycleRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.PutBucketLifecycleConfigurationRequest = { ["LifecycleConfiguration"] = true, ["Bucket"] = true, nil }
@@ -3983,13 +5409,25 @@ end
 -- Required key: Bucket
 -- @return PutBucketLifecycleConfigurationRequest structure as a key-value pair table
 function M.PutBucketLifecycleConfigurationRequest(args)
-	assert(args, "You must provdide an argument table when creating PutBucketLifecycleConfigurationRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating PutBucketLifecycleConfigurationRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{Bucket}"] = args["Bucket"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["LifecycleConfiguration"] = args["LifecycleConfiguration"],
 		["Bucket"] = args["Bucket"],
 	}
-	asserts.AssertPutBucketLifecycleConfigurationRequest(t)
-	return t
+	asserts.AssertPutBucketLifecycleConfigurationRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.PutBucketLoggingRequest = { ["BucketLoggingStatus"] = true, ["ContentMD5"] = true, ["Bucket"] = true, nil }
@@ -4018,14 +5456,27 @@ end
 -- Required key: BucketLoggingStatus
 -- @return PutBucketLoggingRequest structure as a key-value pair table
 function M.PutBucketLoggingRequest(args)
-	assert(args, "You must provdide an argument table when creating PutBucketLoggingRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating PutBucketLoggingRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{Bucket}"] = args["Bucket"],
+    }
+    local header_args = { 
+        ["Content-MD5"] = args["ContentMD5"],
+    }
+	local all_args = { 
 		["BucketLoggingStatus"] = args["BucketLoggingStatus"],
 		["ContentMD5"] = args["ContentMD5"],
 		["Bucket"] = args["Bucket"],
 	}
-	asserts.AssertPutBucketLoggingRequest(t)
-	return t
+	asserts.AssertPutBucketLoggingRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetBucketAccelerateConfigurationRequest = { ["Bucket"] = true, nil }
@@ -4048,12 +5499,24 @@ end
 -- Required key: Bucket
 -- @return GetBucketAccelerateConfigurationRequest structure as a key-value pair table
 function M.GetBucketAccelerateConfigurationRequest(args)
-	assert(args, "You must provdide an argument table when creating GetBucketAccelerateConfigurationRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetBucketAccelerateConfigurationRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{Bucket}"] = args["Bucket"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Bucket"] = args["Bucket"],
 	}
-	asserts.AssertGetBucketAccelerateConfigurationRequest(t)
-	return t
+	asserts.AssertGetBucketAccelerateConfigurationRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetBucketMetricsConfigurationOutput = { ["MetricsConfiguration"] = true, nil }
@@ -4074,12 +5537,23 @@ end
 -- * MetricsConfiguration [MetricsConfiguration] Specifies the metrics configuration.
 -- @return GetBucketMetricsConfigurationOutput structure as a key-value pair table
 function M.GetBucketMetricsConfigurationOutput(args)
-	assert(args, "You must provdide an argument table when creating GetBucketMetricsConfigurationOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetBucketMetricsConfigurationOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["MetricsConfiguration"] = args["MetricsConfiguration"],
 	}
-	asserts.AssertGetBucketMetricsConfigurationOutput(t)
-	return t
+	asserts.AssertGetBucketMetricsConfigurationOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AbortIncompleteMultipartUpload = { ["DaysAfterInitiation"] = true, nil }
@@ -4100,12 +5574,23 @@ end
 -- * DaysAfterInitiation [DaysAfterInitiation] Indicates the number of days that must pass since initiation for Lifecycle to abort an Incomplete Multipart Upload.
 -- @return AbortIncompleteMultipartUpload structure as a key-value pair table
 function M.AbortIncompleteMultipartUpload(args)
-	assert(args, "You must provdide an argument table when creating AbortIncompleteMultipartUpload")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AbortIncompleteMultipartUpload")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DaysAfterInitiation"] = args["DaysAfterInitiation"],
 	}
-	asserts.AssertAbortIncompleteMultipartUpload(t)
-	return t
+	asserts.AssertAbortIncompleteMultipartUpload(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetBucketReplicationRequest = { ["Bucket"] = true, nil }
@@ -4128,12 +5613,24 @@ end
 -- Required key: Bucket
 -- @return GetBucketReplicationRequest structure as a key-value pair table
 function M.GetBucketReplicationRequest(args)
-	assert(args, "You must provdide an argument table when creating GetBucketReplicationRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetBucketReplicationRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{Bucket}"] = args["Bucket"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Bucket"] = args["Bucket"],
 	}
-	asserts.AssertGetBucketReplicationRequest(t)
-	return t
+	asserts.AssertGetBucketReplicationRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.PutObjectAclOutput = { ["RequestCharged"] = true, nil }
@@ -4154,12 +5651,24 @@ end
 -- * RequestCharged [RequestCharged] 
 -- @return PutObjectAclOutput structure as a key-value pair table
 function M.PutObjectAclOutput(args)
-	assert(args, "You must provdide an argument table when creating PutObjectAclOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating PutObjectAclOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+        ["x-amz-request-charged"] = args["RequestCharged"],
+    }
+	local all_args = { 
 		["RequestCharged"] = args["RequestCharged"],
 	}
-	asserts.AssertPutObjectAclOutput(t)
-	return t
+	asserts.AssertPutObjectAclOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.IndexDocument = { ["Suffix"] = true, nil }
@@ -4182,12 +5691,23 @@ end
 -- Required key: Suffix
 -- @return IndexDocument structure as a key-value pair table
 function M.IndexDocument(args)
-	assert(args, "You must provdide an argument table when creating IndexDocument")
-	local t = { 
+	assert(args, "You must provide an argument table when creating IndexDocument")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Suffix"] = args["Suffix"],
 	}
-	asserts.AssertIndexDocument(t)
-	return t
+	asserts.AssertIndexDocument(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateMultipartUploadRequest = { ["RequestPayer"] = true, ["ContentEncoding"] = true, ["StorageClass"] = true, ["GrantReadACP"] = true, ["ServerSideEncryption"] = true, ["SSEKMSKeyId"] = true, ["ContentDisposition"] = true, ["Metadata"] = true, ["SSECustomerKey"] = true, ["WebsiteRedirectLocation"] = true, ["Expires"] = true, ["Key"] = true, ["CacheControl"] = true, ["Bucket"] = true, ["GrantRead"] = true, ["GrantWriteACP"] = true, ["ACL"] = true, ["GrantFullControl"] = true, ["SSECustomerAlgorithm"] = true, ["ContentType"] = true, ["ContentLanguage"] = true, ["SSECustomerKeyMD5"] = true, nil }
@@ -4254,8 +5774,35 @@ end
 -- Required key: Key
 -- @return CreateMultipartUploadRequest structure as a key-value pair table
 function M.CreateMultipartUploadRequest(args)
-	assert(args, "You must provdide an argument table when creating CreateMultipartUploadRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateMultipartUploadRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{Key}"] = args["Key"],
+        ["{Bucket}"] = args["Bucket"],
+    }
+    local header_args = { 
+        ["x-amz-request-payer"] = args["RequestPayer"],
+        ["Content-Encoding"] = args["ContentEncoding"],
+        ["x-amz-storage-class"] = args["StorageClass"],
+        ["x-amz-grant-read-acp"] = args["GrantReadACP"],
+        ["x-amz-server-side-encryption"] = args["ServerSideEncryption"],
+        ["x-amz-server-side-encryption-aws-kms-key-id"] = args["SSEKMSKeyId"],
+        ["Content-Disposition"] = args["ContentDisposition"],
+        ["x-amz-server-side-encryption-customer-key"] = args["SSECustomerKey"],
+        ["x-amz-website-redirect-location"] = args["WebsiteRedirectLocation"],
+        ["Expires"] = args["Expires"],
+        ["Cache-Control"] = args["CacheControl"],
+        ["x-amz-grant-read"] = args["GrantRead"],
+        ["x-amz-grant-write-acp"] = args["GrantWriteACP"],
+        ["x-amz-acl"] = args["ACL"],
+        ["x-amz-grant-full-control"] = args["GrantFullControl"],
+        ["x-amz-server-side-encryption-customer-algorithm"] = args["SSECustomerAlgorithm"],
+        ["Content-Type"] = args["ContentType"],
+        ["Content-Language"] = args["ContentLanguage"],
+        ["x-amz-server-side-encryption-customer-key-MD5"] = args["SSECustomerKeyMD5"],
+    }
+	local all_args = { 
 		["RequestPayer"] = args["RequestPayer"],
 		["ContentEncoding"] = args["ContentEncoding"],
 		["StorageClass"] = args["StorageClass"],
@@ -4279,8 +5826,13 @@ function M.CreateMultipartUploadRequest(args)
 		["ContentLanguage"] = args["ContentLanguage"],
 		["SSECustomerKeyMD5"] = args["SSECustomerKeyMD5"],
 	}
-	asserts.AssertCreateMultipartUploadRequest(t)
-	return t
+	asserts.AssertCreateMultipartUploadRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetBucketMetricsConfigurationRequest = { ["Bucket"] = true, ["Id"] = true, nil }
@@ -4307,13 +5859,26 @@ end
 -- Required key: Id
 -- @return GetBucketMetricsConfigurationRequest structure as a key-value pair table
 function M.GetBucketMetricsConfigurationRequest(args)
-	assert(args, "You must provdide an argument table when creating GetBucketMetricsConfigurationRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetBucketMetricsConfigurationRequest")
+    local query_args = { 
+        ["id"] = args["Id"],
+    }
+    local uri_args = { 
+        ["{Bucket}"] = args["Bucket"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Bucket"] = args["Bucket"],
 		["Id"] = args["Id"],
 	}
-	asserts.AssertGetBucketMetricsConfigurationRequest(t)
-	return t
+	asserts.AssertGetBucketMetricsConfigurationRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetBucketCorsOutput = { ["CORSRules"] = true, nil }
@@ -4334,12 +5899,23 @@ end
 -- * CORSRules [CORSRules] 
 -- @return GetBucketCorsOutput structure as a key-value pair table
 function M.GetBucketCorsOutput(args)
-	assert(args, "You must provdide an argument table when creating GetBucketCorsOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetBucketCorsOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["CORSRules"] = args["CORSRules"],
 	}
-	asserts.AssertGetBucketCorsOutput(t)
-	return t
+	asserts.AssertGetBucketCorsOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.BucketLifecycleConfiguration = { ["Rules"] = true, nil }
@@ -4362,12 +5938,23 @@ end
 -- Required key: Rules
 -- @return BucketLifecycleConfiguration structure as a key-value pair table
 function M.BucketLifecycleConfiguration(args)
-	assert(args, "You must provdide an argument table when creating BucketLifecycleConfiguration")
-	local t = { 
+	assert(args, "You must provide an argument table when creating BucketLifecycleConfiguration")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Rules"] = args["Rules"],
 	}
-	asserts.AssertBucketLifecycleConfiguration(t)
-	return t
+	asserts.AssertBucketLifecycleConfiguration(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteBucketMetricsConfigurationRequest = { ["Bucket"] = true, ["Id"] = true, nil }
@@ -4394,13 +5981,26 @@ end
 -- Required key: Id
 -- @return DeleteBucketMetricsConfigurationRequest structure as a key-value pair table
 function M.DeleteBucketMetricsConfigurationRequest(args)
-	assert(args, "You must provdide an argument table when creating DeleteBucketMetricsConfigurationRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteBucketMetricsConfigurationRequest")
+    local query_args = { 
+        ["id"] = args["Id"],
+    }
+    local uri_args = { 
+        ["{Bucket}"] = args["Bucket"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Bucket"] = args["Bucket"],
 		["Id"] = args["Id"],
 	}
-	asserts.AssertDeleteBucketMetricsConfigurationRequest(t)
-	return t
+	asserts.AssertDeleteBucketMetricsConfigurationRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.HeadBucketRequest = { ["Bucket"] = true, nil }
@@ -4423,12 +6023,24 @@ end
 -- Required key: Bucket
 -- @return HeadBucketRequest structure as a key-value pair table
 function M.HeadBucketRequest(args)
-	assert(args, "You must provdide an argument table when creating HeadBucketRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating HeadBucketRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{Bucket}"] = args["Bucket"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Bucket"] = args["Bucket"],
 	}
-	asserts.AssertHeadBucketRequest(t)
-	return t
+	asserts.AssertHeadBucketRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AbortMultipartUploadRequest = { ["UploadId"] = true, ["Bucket"] = true, ["RequestPayer"] = true, ["Key"] = true, nil }
@@ -4461,15 +6073,30 @@ end
 -- Required key: UploadId
 -- @return AbortMultipartUploadRequest structure as a key-value pair table
 function M.AbortMultipartUploadRequest(args)
-	assert(args, "You must provdide an argument table when creating AbortMultipartUploadRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AbortMultipartUploadRequest")
+    local query_args = { 
+        ["uploadId"] = args["UploadId"],
+    }
+    local uri_args = { 
+        ["{Bucket}"] = args["Bucket"],
+        ["{Key}"] = args["Key"],
+    }
+    local header_args = { 
+        ["x-amz-request-payer"] = args["RequestPayer"],
+    }
+	local all_args = { 
 		["UploadId"] = args["UploadId"],
 		["Bucket"] = args["Bucket"],
 		["RequestPayer"] = args["RequestPayer"],
 		["Key"] = args["Key"],
 	}
-	asserts.AssertAbortMultipartUploadRequest(t)
-	return t
+	asserts.AssertAbortMultipartUploadRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.LifecycleRuleFilter = { ["And"] = true, ["Prefix"] = true, ["Tag"] = true, nil }
@@ -4494,14 +6121,25 @@ end
 -- * Tag [Tag] This tag must exist in the object's tag set in order for the rule to apply.
 -- @return LifecycleRuleFilter structure as a key-value pair table
 function M.LifecycleRuleFilter(args)
-	assert(args, "You must provdide an argument table when creating LifecycleRuleFilter")
-	local t = { 
+	assert(args, "You must provide an argument table when creating LifecycleRuleFilter")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["And"] = args["And"],
 		["Prefix"] = args["Prefix"],
 		["Tag"] = args["Tag"],
 	}
-	asserts.AssertLifecycleRuleFilter(t)
-	return t
+	asserts.AssertLifecycleRuleFilter(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Grant = { ["Grantee"] = true, ["Permission"] = true, nil }
@@ -4524,13 +6162,24 @@ end
 -- * Permission [Permission] Specifies the permission given to the grantee.
 -- @return Grant structure as a key-value pair table
 function M.Grant(args)
-	assert(args, "You must provdide an argument table when creating Grant")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Grant")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Grantee"] = args["Grantee"],
 		["Permission"] = args["Permission"],
 	}
-	asserts.AssertGrant(t)
-	return t
+	asserts.AssertGrant(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InventoryFilter = { ["Prefix"] = true, nil }
@@ -4553,12 +6202,23 @@ end
 -- Required key: Prefix
 -- @return InventoryFilter structure as a key-value pair table
 function M.InventoryFilter(args)
-	assert(args, "You must provdide an argument table when creating InventoryFilter")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InventoryFilter")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Prefix"] = args["Prefix"],
 	}
-	asserts.AssertInventoryFilter(t)
-	return t
+	asserts.AssertInventoryFilter(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.MultipartUpload = { ["Initiator"] = true, ["Initiated"] = true, ["UploadId"] = true, ["StorageClass"] = true, ["Key"] = true, ["Owner"] = true, nil }
@@ -4589,8 +6249,14 @@ end
 -- * Owner [Owner] 
 -- @return MultipartUpload structure as a key-value pair table
 function M.MultipartUpload(args)
-	assert(args, "You must provdide an argument table when creating MultipartUpload")
-	local t = { 
+	assert(args, "You must provide an argument table when creating MultipartUpload")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Initiator"] = args["Initiator"],
 		["Initiated"] = args["Initiated"],
 		["UploadId"] = args["UploadId"],
@@ -4598,8 +6264,13 @@ function M.MultipartUpload(args)
 		["Key"] = args["Key"],
 		["Owner"] = args["Owner"],
 	}
-	asserts.AssertMultipartUpload(t)
-	return t
+	asserts.AssertMultipartUpload(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Part = { ["LastModified"] = true, ["PartNumber"] = true, ["ETag"] = true, ["Size"] = true, nil }
@@ -4626,15 +6297,26 @@ end
 -- * Size [Size] Size of the uploaded part data.
 -- @return Part structure as a key-value pair table
 function M.Part(args)
-	assert(args, "You must provdide an argument table when creating Part")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Part")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["LastModified"] = args["LastModified"],
 		["PartNumber"] = args["PartNumber"],
 		["ETag"] = args["ETag"],
 		["Size"] = args["Size"],
 	}
-	asserts.AssertPart(t)
-	return t
+	asserts.AssertPart(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListBucketAnalyticsConfigurationsRequest = { ["Bucket"] = true, ["ContinuationToken"] = true, nil }
@@ -4659,13 +6341,26 @@ end
 -- Required key: Bucket
 -- @return ListBucketAnalyticsConfigurationsRequest structure as a key-value pair table
 function M.ListBucketAnalyticsConfigurationsRequest(args)
-	assert(args, "You must provdide an argument table when creating ListBucketAnalyticsConfigurationsRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListBucketAnalyticsConfigurationsRequest")
+    local query_args = { 
+        ["continuation-token"] = args["ContinuationToken"],
+    }
+    local uri_args = { 
+        ["{Bucket}"] = args["Bucket"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Bucket"] = args["Bucket"],
 		["ContinuationToken"] = args["ContinuationToken"],
 	}
-	asserts.AssertListBucketAnalyticsConfigurationsRequest(t)
-	return t
+	asserts.AssertListBucketAnalyticsConfigurationsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CloudFunctionConfiguration = { ["InvocationRole"] = true, ["CloudFunction"] = true, ["Events"] = true, ["Id"] = true, ["Event"] = true, nil }
@@ -4694,16 +6389,27 @@ end
 -- * Event [Event] 
 -- @return CloudFunctionConfiguration structure as a key-value pair table
 function M.CloudFunctionConfiguration(args)
-	assert(args, "You must provdide an argument table when creating CloudFunctionConfiguration")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CloudFunctionConfiguration")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["InvocationRole"] = args["InvocationRole"],
 		["CloudFunction"] = args["CloudFunction"],
 		["Events"] = args["Events"],
 		["Id"] = args["Id"],
 		["Event"] = args["Event"],
 	}
-	asserts.AssertCloudFunctionConfiguration(t)
-	return t
+	asserts.AssertCloudFunctionConfiguration(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CopyObjectRequest = { ["RequestPayer"] = true, ["CopySourceIfModifiedSince"] = true, ["CopySourceIfUnmodifiedSince"] = true, ["ContentEncoding"] = true, ["CopySourceSSECustomerKey"] = true, ["StorageClass"] = true, ["GrantReadACP"] = true, ["ServerSideEncryption"] = true, ["SSEKMSKeyId"] = true, ["ContentDisposition"] = true, ["Metadata"] = true, ["SSECustomerKey"] = true, ["WebsiteRedirectLocation"] = true, ["CopySource"] = true, ["Expires"] = true, ["Key"] = true, ["CacheControl"] = true, ["Tagging"] = true, ["CopySourceSSECustomerAlgorithm"] = true, ["Bucket"] = true, ["GrantRead"] = true, ["GrantWriteACP"] = true, ["CopySourceSSECustomerKeyMD5"] = true, ["ACL"] = true, ["GrantFullControl"] = true, ["CopySourceIfMatch"] = true, ["SSECustomerAlgorithm"] = true, ["ContentType"] = true, ["ContentLanguage"] = true, ["TaggingDirective"] = true, ["MetadataDirective"] = true, ["CopySourceIfNoneMatch"] = true, ["SSECustomerKeyMD5"] = true, nil }
@@ -4794,8 +6500,46 @@ end
 -- Required key: Key
 -- @return CopyObjectRequest structure as a key-value pair table
 function M.CopyObjectRequest(args)
-	assert(args, "You must provdide an argument table when creating CopyObjectRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CopyObjectRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{Key}"] = args["Key"],
+        ["{Bucket}"] = args["Bucket"],
+    }
+    local header_args = { 
+        ["x-amz-request-payer"] = args["RequestPayer"],
+        ["x-amz-copy-source-if-modified-since"] = args["CopySourceIfModifiedSince"],
+        ["x-amz-copy-source-if-unmodified-since"] = args["CopySourceIfUnmodifiedSince"],
+        ["Content-Encoding"] = args["ContentEncoding"],
+        ["x-amz-copy-source-server-side-encryption-customer-key"] = args["CopySourceSSECustomerKey"],
+        ["x-amz-storage-class"] = args["StorageClass"],
+        ["x-amz-grant-read-acp"] = args["GrantReadACP"],
+        ["x-amz-server-side-encryption"] = args["ServerSideEncryption"],
+        ["x-amz-server-side-encryption-aws-kms-key-id"] = args["SSEKMSKeyId"],
+        ["Content-Disposition"] = args["ContentDisposition"],
+        ["x-amz-server-side-encryption-customer-key"] = args["SSECustomerKey"],
+        ["x-amz-website-redirect-location"] = args["WebsiteRedirectLocation"],
+        ["x-amz-copy-source"] = args["CopySource"],
+        ["Expires"] = args["Expires"],
+        ["Cache-Control"] = args["CacheControl"],
+        ["x-amz-tagging"] = args["Tagging"],
+        ["x-amz-copy-source-server-side-encryption-customer-algorithm"] = args["CopySourceSSECustomerAlgorithm"],
+        ["x-amz-grant-read"] = args["GrantRead"],
+        ["x-amz-grant-write-acp"] = args["GrantWriteACP"],
+        ["x-amz-copy-source-server-side-encryption-customer-key-MD5"] = args["CopySourceSSECustomerKeyMD5"],
+        ["x-amz-acl"] = args["ACL"],
+        ["x-amz-grant-full-control"] = args["GrantFullControl"],
+        ["x-amz-copy-source-if-match"] = args["CopySourceIfMatch"],
+        ["x-amz-server-side-encryption-customer-algorithm"] = args["SSECustomerAlgorithm"],
+        ["Content-Type"] = args["ContentType"],
+        ["Content-Language"] = args["ContentLanguage"],
+        ["x-amz-tagging-directive"] = args["TaggingDirective"],
+        ["x-amz-metadata-directive"] = args["MetadataDirective"],
+        ["x-amz-copy-source-if-none-match"] = args["CopySourceIfNoneMatch"],
+        ["x-amz-server-side-encryption-customer-key-MD5"] = args["SSECustomerKeyMD5"],
+    }
+	local all_args = { 
 		["RequestPayer"] = args["RequestPayer"],
 		["CopySourceIfModifiedSince"] = args["CopySourceIfModifiedSince"],
 		["CopySourceIfUnmodifiedSince"] = args["CopySourceIfUnmodifiedSince"],
@@ -4830,8 +6574,13 @@ function M.CopyObjectRequest(args)
 		["CopySourceIfNoneMatch"] = args["CopySourceIfNoneMatch"],
 		["SSECustomerKeyMD5"] = args["SSECustomerKeyMD5"],
 	}
-	asserts.AssertCopyObjectRequest(t)
-	return t
+	asserts.AssertCopyObjectRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateMultipartUploadOutput = { ["SSECustomerAlgorithm"] = true, ["AbortRuleId"] = true, ["AbortDate"] = true, ["Bucket"] = true, ["RequestCharged"] = true, ["UploadId"] = true, ["Key"] = true, ["ServerSideEncryption"] = true, ["SSECustomerKeyMD5"] = true, ["SSEKMSKeyId"] = true, nil }
@@ -4870,8 +6619,21 @@ end
 -- * SSEKMSKeyId [SSEKMSKeyId] If present, specifies the ID of the AWS Key Management Service (KMS) master encryption key that was used for the object.
 -- @return CreateMultipartUploadOutput structure as a key-value pair table
 function M.CreateMultipartUploadOutput(args)
-	assert(args, "You must provdide an argument table when creating CreateMultipartUploadOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateMultipartUploadOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+        ["x-amz-server-side-encryption-customer-algorithm"] = args["SSECustomerAlgorithm"],
+        ["x-amz-abort-rule-id"] = args["AbortRuleId"],
+        ["x-amz-abort-date"] = args["AbortDate"],
+        ["x-amz-request-charged"] = args["RequestCharged"],
+        ["x-amz-server-side-encryption"] = args["ServerSideEncryption"],
+        ["x-amz-server-side-encryption-customer-key-MD5"] = args["SSECustomerKeyMD5"],
+        ["x-amz-server-side-encryption-aws-kms-key-id"] = args["SSEKMSKeyId"],
+    }
+	local all_args = { 
 		["SSECustomerAlgorithm"] = args["SSECustomerAlgorithm"],
 		["AbortRuleId"] = args["AbortRuleId"],
 		["AbortDate"] = args["AbortDate"],
@@ -4883,8 +6645,13 @@ function M.CreateMultipartUploadOutput(args)
 		["SSECustomerKeyMD5"] = args["SSECustomerKeyMD5"],
 		["SSEKMSKeyId"] = args["SSEKMSKeyId"],
 	}
-	asserts.AssertCreateMultipartUploadOutput(t)
-	return t
+	asserts.AssertCreateMultipartUploadOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AnalyticsS3BucketDestination = { ["Prefix"] = true, ["BucketAccountId"] = true, ["Bucket"] = true, ["Format"] = true, nil }
@@ -4915,15 +6682,26 @@ end
 -- Required key: Bucket
 -- @return AnalyticsS3BucketDestination structure as a key-value pair table
 function M.AnalyticsS3BucketDestination(args)
-	assert(args, "You must provdide an argument table when creating AnalyticsS3BucketDestination")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AnalyticsS3BucketDestination")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Prefix"] = args["Prefix"],
 		["BucketAccountId"] = args["BucketAccountId"],
 		["Bucket"] = args["Bucket"],
 		["Format"] = args["Format"],
 	}
-	asserts.AssertAnalyticsS3BucketDestination(t)
-	return t
+	asserts.AssertAnalyticsS3BucketDestination(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetBucketAnalyticsConfigurationRequest = { ["Bucket"] = true, ["Id"] = true, nil }
@@ -4950,13 +6728,26 @@ end
 -- Required key: Id
 -- @return GetBucketAnalyticsConfigurationRequest structure as a key-value pair table
 function M.GetBucketAnalyticsConfigurationRequest(args)
-	assert(args, "You must provdide an argument table when creating GetBucketAnalyticsConfigurationRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetBucketAnalyticsConfigurationRequest")
+    local query_args = { 
+        ["id"] = args["Id"],
+    }
+    local uri_args = { 
+        ["{Bucket}"] = args["Bucket"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Bucket"] = args["Bucket"],
 		["Id"] = args["Id"],
 	}
-	asserts.AssertGetBucketAnalyticsConfigurationRequest(t)
-	return t
+	asserts.AssertGetBucketAnalyticsConfigurationRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeletedObject = { ["VersionId"] = true, ["DeleteMarkerVersionId"] = true, ["Key"] = true, ["DeleteMarker"] = true, nil }
@@ -4983,15 +6774,26 @@ end
 -- * DeleteMarker [DeleteMarker] 
 -- @return DeletedObject structure as a key-value pair table
 function M.DeletedObject(args)
-	assert(args, "You must provdide an argument table when creating DeletedObject")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeletedObject")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["VersionId"] = args["VersionId"],
 		["DeleteMarkerVersionId"] = args["DeleteMarkerVersionId"],
 		["Key"] = args["Key"],
 		["DeleteMarker"] = args["DeleteMarker"],
 	}
-	asserts.AssertDeletedObject(t)
-	return t
+	asserts.AssertDeletedObject(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CompleteMultipartUploadRequest = { ["MultipartUpload"] = true, ["UploadId"] = true, ["Bucket"] = true, ["RequestPayer"] = true, ["Key"] = true, nil }
@@ -5026,16 +6828,31 @@ end
 -- Required key: UploadId
 -- @return CompleteMultipartUploadRequest structure as a key-value pair table
 function M.CompleteMultipartUploadRequest(args)
-	assert(args, "You must provdide an argument table when creating CompleteMultipartUploadRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CompleteMultipartUploadRequest")
+    local query_args = { 
+        ["uploadId"] = args["UploadId"],
+    }
+    local uri_args = { 
+        ["{Bucket}"] = args["Bucket"],
+        ["{Key}"] = args["Key"],
+    }
+    local header_args = { 
+        ["x-amz-request-payer"] = args["RequestPayer"],
+    }
+	local all_args = { 
 		["MultipartUpload"] = args["MultipartUpload"],
 		["UploadId"] = args["UploadId"],
 		["Bucket"] = args["Bucket"],
 		["RequestPayer"] = args["RequestPayer"],
 		["Key"] = args["Key"],
 	}
-	asserts.AssertCompleteMultipartUploadRequest(t)
-	return t
+	asserts.AssertCompleteMultipartUploadRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListPartsRequest = { ["RequestPayer"] = true, ["Bucket"] = true, ["UploadId"] = true, ["Key"] = true, ["MaxParts"] = true, ["PartNumberMarker"] = true, nil }
@@ -5072,8 +6889,20 @@ end
 -- Required key: UploadId
 -- @return ListPartsRequest structure as a key-value pair table
 function M.ListPartsRequest(args)
-	assert(args, "You must provdide an argument table when creating ListPartsRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListPartsRequest")
+    local query_args = { 
+        ["uploadId"] = args["UploadId"],
+        ["max-parts"] = args["MaxParts"],
+        ["part-number-marker"] = args["PartNumberMarker"],
+    }
+    local uri_args = { 
+        ["{Bucket}"] = args["Bucket"],
+        ["{Key}"] = args["Key"],
+    }
+    local header_args = { 
+        ["x-amz-request-payer"] = args["RequestPayer"],
+    }
+	local all_args = { 
 		["RequestPayer"] = args["RequestPayer"],
 		["Bucket"] = args["Bucket"],
 		["UploadId"] = args["UploadId"],
@@ -5081,8 +6910,13 @@ function M.ListPartsRequest(args)
 		["MaxParts"] = args["MaxParts"],
 		["PartNumberMarker"] = args["PartNumberMarker"],
 	}
-	asserts.AssertListPartsRequest(t)
-	return t
+	asserts.AssertListPartsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InventoryS3BucketDestination = { ["Prefix"] = true, ["Format"] = true, ["Bucket"] = true, ["AccountId"] = true, nil }
@@ -5113,15 +6947,26 @@ end
 -- Required key: Format
 -- @return InventoryS3BucketDestination structure as a key-value pair table
 function M.InventoryS3BucketDestination(args)
-	assert(args, "You must provdide an argument table when creating InventoryS3BucketDestination")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InventoryS3BucketDestination")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Prefix"] = args["Prefix"],
 		["Format"] = args["Format"],
 		["Bucket"] = args["Bucket"],
 		["AccountId"] = args["AccountId"],
 	}
-	asserts.AssertInventoryS3BucketDestination(t)
-	return t
+	asserts.AssertInventoryS3BucketDestination(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.WebsiteConfiguration = { ["RedirectAllRequestsTo"] = true, ["IndexDocument"] = true, ["ErrorDocument"] = true, ["RoutingRules"] = true, nil }
@@ -5148,15 +6993,26 @@ end
 -- * RoutingRules [RoutingRules] 
 -- @return WebsiteConfiguration structure as a key-value pair table
 function M.WebsiteConfiguration(args)
-	assert(args, "You must provdide an argument table when creating WebsiteConfiguration")
-	local t = { 
+	assert(args, "You must provide an argument table when creating WebsiteConfiguration")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["RedirectAllRequestsTo"] = args["RedirectAllRequestsTo"],
 		["IndexDocument"] = args["IndexDocument"],
 		["ErrorDocument"] = args["ErrorDocument"],
 		["RoutingRules"] = args["RoutingRules"],
 	}
-	asserts.AssertWebsiteConfiguration(t)
-	return t
+	asserts.AssertWebsiteConfiguration(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UploadPartOutput = { ["SSECustomerAlgorithm"] = true, ["ServerSideEncryption"] = true, ["ETag"] = true, ["RequestCharged"] = true, ["SSECustomerKeyMD5"] = true, ["SSEKMSKeyId"] = true, nil }
@@ -5187,8 +7043,20 @@ end
 -- * SSEKMSKeyId [SSEKMSKeyId] If present, specifies the ID of the AWS Key Management Service (KMS) master encryption key that was used for the object.
 -- @return UploadPartOutput structure as a key-value pair table
 function M.UploadPartOutput(args)
-	assert(args, "You must provdide an argument table when creating UploadPartOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UploadPartOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+        ["x-amz-server-side-encryption-customer-algorithm"] = args["SSECustomerAlgorithm"],
+        ["x-amz-server-side-encryption"] = args["ServerSideEncryption"],
+        ["ETag"] = args["ETag"],
+        ["x-amz-request-charged"] = args["RequestCharged"],
+        ["x-amz-server-side-encryption-customer-key-MD5"] = args["SSECustomerKeyMD5"],
+        ["x-amz-server-side-encryption-aws-kms-key-id"] = args["SSEKMSKeyId"],
+    }
+	local all_args = { 
 		["SSECustomerAlgorithm"] = args["SSECustomerAlgorithm"],
 		["ServerSideEncryption"] = args["ServerSideEncryption"],
 		["ETag"] = args["ETag"],
@@ -5196,8 +7064,13 @@ function M.UploadPartOutput(args)
 		["SSECustomerKeyMD5"] = args["SSECustomerKeyMD5"],
 		["SSEKMSKeyId"] = args["SSEKMSKeyId"],
 	}
-	asserts.AssertUploadPartOutput(t)
-	return t
+	asserts.AssertUploadPartOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InventorySchedule = { ["Frequency"] = true, nil }
@@ -5220,12 +7093,23 @@ end
 -- Required key: Frequency
 -- @return InventorySchedule structure as a key-value pair table
 function M.InventorySchedule(args)
-	assert(args, "You must provdide an argument table when creating InventorySchedule")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InventorySchedule")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Frequency"] = args["Frequency"],
 	}
-	asserts.AssertInventorySchedule(t)
-	return t
+	asserts.AssertInventorySchedule(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteObjectsOutput = { ["Deleted"] = true, ["Errors"] = true, ["RequestCharged"] = true, nil }
@@ -5250,14 +7134,26 @@ end
 -- * RequestCharged [RequestCharged] 
 -- @return DeleteObjectsOutput structure as a key-value pair table
 function M.DeleteObjectsOutput(args)
-	assert(args, "You must provdide an argument table when creating DeleteObjectsOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteObjectsOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+        ["x-amz-request-charged"] = args["RequestCharged"],
+    }
+	local all_args = { 
 		["Deleted"] = args["Deleted"],
 		["Errors"] = args["Errors"],
 		["RequestCharged"] = args["RequestCharged"],
 	}
-	asserts.AssertDeleteObjectsOutput(t)
-	return t
+	asserts.AssertDeleteObjectsOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.StorageClassAnalysisDataExport = { ["Destination"] = true, ["OutputSchemaVersion"] = true, nil }
@@ -5284,13 +7180,24 @@ end
 -- Required key: Destination
 -- @return StorageClassAnalysisDataExport structure as a key-value pair table
 function M.StorageClassAnalysisDataExport(args)
-	assert(args, "You must provdide an argument table when creating StorageClassAnalysisDataExport")
-	local t = { 
+	assert(args, "You must provide an argument table when creating StorageClassAnalysisDataExport")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Destination"] = args["Destination"],
 		["OutputSchemaVersion"] = args["OutputSchemaVersion"],
 	}
-	asserts.AssertStorageClassAnalysisDataExport(t)
-	return t
+	asserts.AssertStorageClassAnalysisDataExport(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.RoutingRule = { ["Redirect"] = true, ["Condition"] = true, nil }
@@ -5315,13 +7222,24 @@ end
 -- Required key: Redirect
 -- @return RoutingRule structure as a key-value pair table
 function M.RoutingRule(args)
-	assert(args, "You must provdide an argument table when creating RoutingRule")
-	local t = { 
+	assert(args, "You must provide an argument table when creating RoutingRule")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Redirect"] = args["Redirect"],
 		["Condition"] = args["Condition"],
 	}
-	asserts.AssertRoutingRule(t)
-	return t
+	asserts.AssertRoutingRule(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.PutObjectRequest = { ["RequestPayer"] = true, ["ContentEncoding"] = true, ["StorageClass"] = true, ["GrantReadACP"] = true, ["ServerSideEncryption"] = true, ["SSEKMSKeyId"] = true, ["ContentDisposition"] = true, ["Metadata"] = true, ["Body"] = true, ["SSECustomerKey"] = true, ["WebsiteRedirectLocation"] = true, ["Expires"] = true, ["Key"] = true, ["CacheControl"] = true, ["Tagging"] = true, ["ContentLength"] = true, ["Bucket"] = true, ["GrantRead"] = true, ["GrantWriteACP"] = true, ["ACL"] = true, ["GrantFullControl"] = true, ["SSECustomerAlgorithm"] = true, ["ContentType"] = true, ["ContentLanguage"] = true, ["ContentMD5"] = true, ["SSECustomerKeyMD5"] = true, nil }
@@ -5396,8 +7314,38 @@ end
 -- Required key: Key
 -- @return PutObjectRequest structure as a key-value pair table
 function M.PutObjectRequest(args)
-	assert(args, "You must provdide an argument table when creating PutObjectRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating PutObjectRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{Key}"] = args["Key"],
+        ["{Bucket}"] = args["Bucket"],
+    }
+    local header_args = { 
+        ["x-amz-request-payer"] = args["RequestPayer"],
+        ["Content-Encoding"] = args["ContentEncoding"],
+        ["x-amz-storage-class"] = args["StorageClass"],
+        ["x-amz-grant-read-acp"] = args["GrantReadACP"],
+        ["x-amz-server-side-encryption"] = args["ServerSideEncryption"],
+        ["x-amz-server-side-encryption-aws-kms-key-id"] = args["SSEKMSKeyId"],
+        ["Content-Disposition"] = args["ContentDisposition"],
+        ["x-amz-server-side-encryption-customer-key"] = args["SSECustomerKey"],
+        ["x-amz-website-redirect-location"] = args["WebsiteRedirectLocation"],
+        ["Expires"] = args["Expires"],
+        ["Cache-Control"] = args["CacheControl"],
+        ["x-amz-tagging"] = args["Tagging"],
+        ["Content-Length"] = args["ContentLength"],
+        ["x-amz-grant-read"] = args["GrantRead"],
+        ["x-amz-grant-write-acp"] = args["GrantWriteACP"],
+        ["x-amz-acl"] = args["ACL"],
+        ["x-amz-grant-full-control"] = args["GrantFullControl"],
+        ["x-amz-server-side-encryption-customer-algorithm"] = args["SSECustomerAlgorithm"],
+        ["Content-Type"] = args["ContentType"],
+        ["Content-Language"] = args["ContentLanguage"],
+        ["Content-MD5"] = args["ContentMD5"],
+        ["x-amz-server-side-encryption-customer-key-MD5"] = args["SSECustomerKeyMD5"],
+    }
+	local all_args = { 
 		["RequestPayer"] = args["RequestPayer"],
 		["ContentEncoding"] = args["ContentEncoding"],
 		["StorageClass"] = args["StorageClass"],
@@ -5425,8 +7373,13 @@ function M.PutObjectRequest(args)
 		["ContentMD5"] = args["ContentMD5"],
 		["SSECustomerKeyMD5"] = args["SSECustomerKeyMD5"],
 	}
-	asserts.AssertPutObjectRequest(t)
-	return t
+	asserts.AssertPutObjectRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ObjectVersion = { ["LastModified"] = true, ["VersionId"] = true, ["ETag"] = true, ["StorageClass"] = true, ["Key"] = true, ["Owner"] = true, ["IsLatest"] = true, ["Size"] = true, nil }
@@ -5461,8 +7414,14 @@ end
 -- * Size [Size] Size in bytes of the object.
 -- @return ObjectVersion structure as a key-value pair table
 function M.ObjectVersion(args)
-	assert(args, "You must provdide an argument table when creating ObjectVersion")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ObjectVersion")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["LastModified"] = args["LastModified"],
 		["VersionId"] = args["VersionId"],
 		["ETag"] = args["ETag"],
@@ -5472,8 +7431,13 @@ function M.ObjectVersion(args)
 		["IsLatest"] = args["IsLatest"],
 		["Size"] = args["Size"],
 	}
-	asserts.AssertObjectVersion(t)
-	return t
+	asserts.AssertObjectVersion(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListBucketInventoryConfigurationsOutput = { ["NextContinuationToken"] = true, ["InventoryConfigurationList"] = true, ["ContinuationToken"] = true, ["IsTruncated"] = true, nil }
@@ -5500,15 +7464,26 @@ end
 -- * IsTruncated [IsTruncated] Indicates whether the returned list of inventory configurations is truncated in this response. A value of true indicates that the list is truncated.
 -- @return ListBucketInventoryConfigurationsOutput structure as a key-value pair table
 function M.ListBucketInventoryConfigurationsOutput(args)
-	assert(args, "You must provdide an argument table when creating ListBucketInventoryConfigurationsOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListBucketInventoryConfigurationsOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NextContinuationToken"] = args["NextContinuationToken"],
 		["InventoryConfigurationList"] = args["InventoryConfigurationList"],
 		["ContinuationToken"] = args["ContinuationToken"],
 		["IsTruncated"] = args["IsTruncated"],
 	}
-	asserts.AssertListBucketInventoryConfigurationsOutput(t)
-	return t
+	asserts.AssertListBucketInventoryConfigurationsOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetObjectTaggingOutput = { ["VersionId"] = true, ["TagSet"] = true, nil }
@@ -5533,13 +7508,25 @@ end
 -- Required key: TagSet
 -- @return GetObjectTaggingOutput structure as a key-value pair table
 function M.GetObjectTaggingOutput(args)
-	assert(args, "You must provdide an argument table when creating GetObjectTaggingOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetObjectTaggingOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+        ["x-amz-version-id"] = args["VersionId"],
+    }
+	local all_args = { 
 		["VersionId"] = args["VersionId"],
 		["TagSet"] = args["TagSet"],
 	}
-	asserts.AssertGetObjectTaggingOutput(t)
-	return t
+	asserts.AssertGetObjectTaggingOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.RestoreObjectOutput = { ["RequestCharged"] = true, nil }
@@ -5560,12 +7547,24 @@ end
 -- * RequestCharged [RequestCharged] 
 -- @return RestoreObjectOutput structure as a key-value pair table
 function M.RestoreObjectOutput(args)
-	assert(args, "You must provdide an argument table when creating RestoreObjectOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating RestoreObjectOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+        ["x-amz-request-charged"] = args["RequestCharged"],
+    }
+	local all_args = { 
 		["RequestCharged"] = args["RequestCharged"],
 	}
-	asserts.AssertRestoreObjectOutput(t)
-	return t
+	asserts.AssertRestoreObjectOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetBucketLoggingRequest = { ["Bucket"] = true, nil }
@@ -5588,12 +7587,24 @@ end
 -- Required key: Bucket
 -- @return GetBucketLoggingRequest structure as a key-value pair table
 function M.GetBucketLoggingRequest(args)
-	assert(args, "You must provdide an argument table when creating GetBucketLoggingRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetBucketLoggingRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{Bucket}"] = args["Bucket"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Bucket"] = args["Bucket"],
 	}
-	asserts.AssertGetBucketLoggingRequest(t)
-	return t
+	asserts.AssertGetBucketLoggingRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.TopicConfiguration = { ["Filter"] = true, ["Id"] = true, ["TopicArn"] = true, ["Events"] = true, nil }
@@ -5624,15 +7635,26 @@ end
 -- Required key: Events
 -- @return TopicConfiguration structure as a key-value pair table
 function M.TopicConfiguration(args)
-	assert(args, "You must provdide an argument table when creating TopicConfiguration")
-	local t = { 
+	assert(args, "You must provide an argument table when creating TopicConfiguration")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Filter"] = args["Filter"],
 		["Id"] = args["Id"],
 		["TopicArn"] = args["TopicArn"],
 		["Events"] = args["Events"],
 	}
-	asserts.AssertTopicConfiguration(t)
-	return t
+	asserts.AssertTopicConfiguration(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.PutBucketTaggingRequest = { ["ContentMD5"] = true, ["Bucket"] = true, ["Tagging"] = true, nil }
@@ -5661,14 +7683,27 @@ end
 -- Required key: Tagging
 -- @return PutBucketTaggingRequest structure as a key-value pair table
 function M.PutBucketTaggingRequest(args)
-	assert(args, "You must provdide an argument table when creating PutBucketTaggingRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating PutBucketTaggingRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{Bucket}"] = args["Bucket"],
+    }
+    local header_args = { 
+        ["Content-MD5"] = args["ContentMD5"],
+    }
+	local all_args = { 
 		["ContentMD5"] = args["ContentMD5"],
 		["Bucket"] = args["Bucket"],
 		["Tagging"] = args["Tagging"],
 	}
-	asserts.AssertPutBucketTaggingRequest(t)
-	return t
+	asserts.AssertPutBucketTaggingRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Bucket = { ["CreationDate"] = true, ["Name"] = true, nil }
@@ -5691,13 +7726,24 @@ end
 -- * Name [BucketName] The name of the bucket.
 -- @return Bucket structure as a key-value pair table
 function M.Bucket(args)
-	assert(args, "You must provdide an argument table when creating Bucket")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Bucket")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["CreationDate"] = args["CreationDate"],
 		["Name"] = args["Name"],
 	}
-	asserts.AssertBucket(t)
-	return t
+	asserts.AssertBucket(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.NoSuchUpload = { nil }
@@ -5716,11 +7762,22 @@ end
 -- Valid keys:
 -- @return NoSuchUpload structure as a key-value pair table
 function M.NoSuchUpload(args)
-	assert(args, "You must provdide an argument table when creating NoSuchUpload")
-	local t = { 
+	assert(args, "You must provide an argument table when creating NoSuchUpload")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertNoSuchUpload(t)
-	return t
+	asserts.AssertNoSuchUpload(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.LifecycleExpiration = { ["Date"] = true, ["ExpiredObjectDeleteMarker"] = true, ["Days"] = true, nil }
@@ -5745,14 +7802,25 @@ end
 -- * Days [Days] Indicates the lifetime, in days, of the objects that are subject to the rule. The value must be a non-zero positive integer.
 -- @return LifecycleExpiration structure as a key-value pair table
 function M.LifecycleExpiration(args)
-	assert(args, "You must provdide an argument table when creating LifecycleExpiration")
-	local t = { 
+	assert(args, "You must provide an argument table when creating LifecycleExpiration")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Date"] = args["Date"],
 		["ExpiredObjectDeleteMarker"] = args["ExpiredObjectDeleteMarker"],
 		["Days"] = args["Days"],
 	}
-	asserts.AssertLifecycleExpiration(t)
-	return t
+	asserts.AssertLifecycleExpiration(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Destination = { ["Bucket"] = true, ["StorageClass"] = true, nil }
@@ -5777,13 +7845,24 @@ end
 -- Required key: Bucket
 -- @return Destination structure as a key-value pair table
 function M.Destination(args)
-	assert(args, "You must provdide an argument table when creating Destination")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Destination")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Bucket"] = args["Bucket"],
 		["StorageClass"] = args["StorageClass"],
 	}
-	asserts.AssertDestination(t)
-	return t
+	asserts.AssertDestination(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.NoSuchBucket = { nil }
@@ -5802,11 +7881,22 @@ end
 -- Valid keys:
 -- @return NoSuchBucket structure as a key-value pair table
 function M.NoSuchBucket(args)
-	assert(args, "You must provdide an argument table when creating NoSuchBucket")
-	local t = { 
+	assert(args, "You must provide an argument table when creating NoSuchBucket")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertNoSuchBucket(t)
-	return t
+	asserts.AssertNoSuchBucket(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetBucketTaggingOutput = { ["TagSet"] = true, nil }
@@ -5829,12 +7919,23 @@ end
 -- Required key: TagSet
 -- @return GetBucketTaggingOutput structure as a key-value pair table
 function M.GetBucketTaggingOutput(args)
-	assert(args, "You must provdide an argument table when creating GetBucketTaggingOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetBucketTaggingOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["TagSet"] = args["TagSet"],
 	}
-	asserts.AssertGetBucketTaggingOutput(t)
-	return t
+	asserts.AssertGetBucketTaggingOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.MetricsFilter = { ["And"] = true, ["Prefix"] = true, ["Tag"] = true, nil }
@@ -5859,14 +7960,25 @@ end
 -- * Tag [Tag] The tag used when evaluating a metrics filter.
 -- @return MetricsFilter structure as a key-value pair table
 function M.MetricsFilter(args)
-	assert(args, "You must provdide an argument table when creating MetricsFilter")
-	local t = { 
+	assert(args, "You must provide an argument table when creating MetricsFilter")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["And"] = args["And"],
 		["Prefix"] = args["Prefix"],
 		["Tag"] = args["Tag"],
 	}
-	asserts.AssertMetricsFilter(t)
-	return t
+	asserts.AssertMetricsFilter(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ReplicationConfiguration = { ["Rules"] = true, ["Role"] = true, nil }
@@ -5893,13 +8005,24 @@ end
 -- Required key: Rules
 -- @return ReplicationConfiguration structure as a key-value pair table
 function M.ReplicationConfiguration(args)
-	assert(args, "You must provdide an argument table when creating ReplicationConfiguration")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ReplicationConfiguration")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Rules"] = args["Rules"],
 		["Role"] = args["Role"],
 	}
-	asserts.AssertReplicationConfiguration(t)
-	return t
+	asserts.AssertReplicationConfiguration(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListMultipartUploadsRequest = { ["UploadIdMarker"] = true, ["Bucket"] = true, ["Delimiter"] = true, ["Prefix"] = true, ["KeyMarker"] = true, ["MaxUploads"] = true, ["EncodingType"] = true, nil }
@@ -5934,8 +8057,21 @@ end
 -- Required key: Bucket
 -- @return ListMultipartUploadsRequest structure as a key-value pair table
 function M.ListMultipartUploadsRequest(args)
-	assert(args, "You must provdide an argument table when creating ListMultipartUploadsRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListMultipartUploadsRequest")
+    local query_args = { 
+        ["upload-id-marker"] = args["UploadIdMarker"],
+        ["delimiter"] = args["Delimiter"],
+        ["prefix"] = args["Prefix"],
+        ["key-marker"] = args["KeyMarker"],
+        ["max-uploads"] = args["MaxUploads"],
+        ["encoding-type"] = args["EncodingType"],
+    }
+    local uri_args = { 
+        ["{Bucket}"] = args["Bucket"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["UploadIdMarker"] = args["UploadIdMarker"],
 		["Bucket"] = args["Bucket"],
 		["Delimiter"] = args["Delimiter"],
@@ -5944,8 +8080,13 @@ function M.ListMultipartUploadsRequest(args)
 		["MaxUploads"] = args["MaxUploads"],
 		["EncodingType"] = args["EncodingType"],
 	}
-	asserts.AssertListMultipartUploadsRequest(t)
-	return t
+	asserts.AssertListMultipartUploadsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetBucketPolicyRequest = { ["Bucket"] = true, nil }
@@ -5968,12 +8109,24 @@ end
 -- Required key: Bucket
 -- @return GetBucketPolicyRequest structure as a key-value pair table
 function M.GetBucketPolicyRequest(args)
-	assert(args, "You must provdide an argument table when creating GetBucketPolicyRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetBucketPolicyRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{Bucket}"] = args["Bucket"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Bucket"] = args["Bucket"],
 	}
-	asserts.AssertGetBucketPolicyRequest(t)
-	return t
+	asserts.AssertGetBucketPolicyRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteBucketWebsiteRequest = { ["Bucket"] = true, nil }
@@ -5996,12 +8149,24 @@ end
 -- Required key: Bucket
 -- @return DeleteBucketWebsiteRequest structure as a key-value pair table
 function M.DeleteBucketWebsiteRequest(args)
-	assert(args, "You must provdide an argument table when creating DeleteBucketWebsiteRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteBucketWebsiteRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{Bucket}"] = args["Bucket"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Bucket"] = args["Bucket"],
 	}
-	asserts.AssertDeleteBucketWebsiteRequest(t)
-	return t
+	asserts.AssertDeleteBucketWebsiteRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetObjectAclRequest = { ["VersionId"] = true, ["Bucket"] = true, ["RequestPayer"] = true, ["Key"] = true, nil }
@@ -6032,15 +8197,30 @@ end
 -- Required key: Key
 -- @return GetObjectAclRequest structure as a key-value pair table
 function M.GetObjectAclRequest(args)
-	assert(args, "You must provdide an argument table when creating GetObjectAclRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetObjectAclRequest")
+    local query_args = { 
+        ["versionId"] = args["VersionId"],
+    }
+    local uri_args = { 
+        ["{Bucket}"] = args["Bucket"],
+        ["{Key}"] = args["Key"],
+    }
+    local header_args = { 
+        ["x-amz-request-payer"] = args["RequestPayer"],
+    }
+	local all_args = { 
 		["VersionId"] = args["VersionId"],
 		["Bucket"] = args["Bucket"],
 		["RequestPayer"] = args["RequestPayer"],
 		["Key"] = args["Key"],
 	}
-	asserts.AssertGetObjectAclRequest(t)
-	return t
+	asserts.AssertGetObjectAclRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AbortMultipartUploadOutput = { ["RequestCharged"] = true, nil }
@@ -6061,12 +8241,24 @@ end
 -- * RequestCharged [RequestCharged] 
 -- @return AbortMultipartUploadOutput structure as a key-value pair table
 function M.AbortMultipartUploadOutput(args)
-	assert(args, "You must provdide an argument table when creating AbortMultipartUploadOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AbortMultipartUploadOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+        ["x-amz-request-charged"] = args["RequestCharged"],
+    }
+	local all_args = { 
 		["RequestCharged"] = args["RequestCharged"],
 	}
-	asserts.AssertAbortMultipartUploadOutput(t)
-	return t
+	asserts.AssertAbortMultipartUploadOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.PutObjectTaggingOutput = { ["VersionId"] = true, nil }
@@ -6087,12 +8279,24 @@ end
 -- * VersionId [ObjectVersionId] 
 -- @return PutObjectTaggingOutput structure as a key-value pair table
 function M.PutObjectTaggingOutput(args)
-	assert(args, "You must provdide an argument table when creating PutObjectTaggingOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating PutObjectTaggingOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+        ["x-amz-version-id"] = args["VersionId"],
+    }
+	local all_args = { 
 		["VersionId"] = args["VersionId"],
 	}
-	asserts.AssertPutObjectTaggingOutput(t)
-	return t
+	asserts.AssertPutObjectTaggingOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.QueueConfiguration = { ["Filter"] = true, ["Id"] = true, ["QueueArn"] = true, ["Events"] = true, nil }
@@ -6123,15 +8327,26 @@ end
 -- Required key: Events
 -- @return QueueConfiguration structure as a key-value pair table
 function M.QueueConfiguration(args)
-	assert(args, "You must provdide an argument table when creating QueueConfiguration")
-	local t = { 
+	assert(args, "You must provide an argument table when creating QueueConfiguration")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Filter"] = args["Filter"],
 		["Id"] = args["Id"],
 		["QueueArn"] = args["QueueArn"],
 		["Events"] = args["Events"],
 	}
-	asserts.AssertQueueConfiguration(t)
-	return t
+	asserts.AssertQueueConfiguration(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListObjectsV2Output = { ["Name"] = true, ["StartAfter"] = true, ["Prefix"] = true, ["ContinuationToken"] = true, ["MaxKeys"] = true, ["Delimiter"] = true, ["KeyCount"] = true, ["EncodingType"] = true, ["NextContinuationToken"] = true, ["IsTruncated"] = true, ["Contents"] = true, ["CommonPrefixes"] = true, nil }
@@ -6174,8 +8389,14 @@ end
 -- * CommonPrefixes [CommonPrefixList] CommonPrefixes contains all (if there are any) keys between Prefix and the next occurrence of the string specified by delimiter
 -- @return ListObjectsV2Output structure as a key-value pair table
 function M.ListObjectsV2Output(args)
-	assert(args, "You must provdide an argument table when creating ListObjectsV2Output")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListObjectsV2Output")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Name"] = args["Name"],
 		["StartAfter"] = args["StartAfter"],
 		["Prefix"] = args["Prefix"],
@@ -6189,8 +8410,13 @@ function M.ListObjectsV2Output(args)
 		["Contents"] = args["Contents"],
 		["CommonPrefixes"] = args["CommonPrefixes"],
 	}
-	asserts.AssertListObjectsV2Output(t)
-	return t
+	asserts.AssertListObjectsV2Output(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteBucketCorsRequest = { ["Bucket"] = true, nil }
@@ -6213,12 +8439,24 @@ end
 -- Required key: Bucket
 -- @return DeleteBucketCorsRequest structure as a key-value pair table
 function M.DeleteBucketCorsRequest(args)
-	assert(args, "You must provdide an argument table when creating DeleteBucketCorsRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteBucketCorsRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{Bucket}"] = args["Bucket"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Bucket"] = args["Bucket"],
 	}
-	asserts.AssertDeleteBucketCorsRequest(t)
-	return t
+	asserts.AssertDeleteBucketCorsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CORSRule = { ["AllowedHeaders"] = true, ["ExposeHeaders"] = true, ["AllowedMethods"] = true, ["MaxAgeSeconds"] = true, ["AllowedOrigins"] = true, nil }
@@ -6251,16 +8489,27 @@ end
 -- Required key: AllowedOrigins
 -- @return CORSRule structure as a key-value pair table
 function M.CORSRule(args)
-	assert(args, "You must provdide an argument table when creating CORSRule")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CORSRule")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["AllowedHeaders"] = args["AllowedHeaders"],
 		["ExposeHeaders"] = args["ExposeHeaders"],
 		["AllowedMethods"] = args["AllowedMethods"],
 		["MaxAgeSeconds"] = args["MaxAgeSeconds"],
 		["AllowedOrigins"] = args["AllowedOrigins"],
 	}
-	asserts.AssertCORSRule(t)
-	return t
+	asserts.AssertCORSRule(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetBucketRequestPaymentRequest = { ["Bucket"] = true, nil }
@@ -6283,12 +8532,24 @@ end
 -- Required key: Bucket
 -- @return GetBucketRequestPaymentRequest structure as a key-value pair table
 function M.GetBucketRequestPaymentRequest(args)
-	assert(args, "You must provdide an argument table when creating GetBucketRequestPaymentRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetBucketRequestPaymentRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{Bucket}"] = args["Bucket"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Bucket"] = args["Bucket"],
 	}
-	asserts.AssertGetBucketRequestPaymentRequest(t)
-	return t
+	asserts.AssertGetBucketRequestPaymentRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetBucketReplicationOutput = { ["ReplicationConfiguration"] = true, nil }
@@ -6309,12 +8570,23 @@ end
 -- * ReplicationConfiguration [ReplicationConfiguration] 
 -- @return GetBucketReplicationOutput structure as a key-value pair table
 function M.GetBucketReplicationOutput(args)
-	assert(args, "You must provdide an argument table when creating GetBucketReplicationOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetBucketReplicationOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ReplicationConfiguration"] = args["ReplicationConfiguration"],
 	}
-	asserts.AssertGetBucketReplicationOutput(t)
-	return t
+	asserts.AssertGetBucketReplicationOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetBucketAclOutput = { ["Owner"] = true, ["Grants"] = true, nil }
@@ -6337,13 +8609,24 @@ end
 -- * Grants [Grants] A list of grants.
 -- @return GetBucketAclOutput structure as a key-value pair table
 function M.GetBucketAclOutput(args)
-	assert(args, "You must provdide an argument table when creating GetBucketAclOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetBucketAclOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Owner"] = args["Owner"],
 		["Grants"] = args["Grants"],
 	}
-	asserts.AssertGetBucketAclOutput(t)
-	return t
+	asserts.AssertGetBucketAclOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListBucketAnalyticsConfigurationsOutput = { ["AnalyticsConfigurationList"] = true, ["NextContinuationToken"] = true, ["IsTruncated"] = true, ["ContinuationToken"] = true, nil }
@@ -6370,15 +8653,26 @@ end
 -- * ContinuationToken [Token] The ContinuationToken that represents where this request began.
 -- @return ListBucketAnalyticsConfigurationsOutput structure as a key-value pair table
 function M.ListBucketAnalyticsConfigurationsOutput(args)
-	assert(args, "You must provdide an argument table when creating ListBucketAnalyticsConfigurationsOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListBucketAnalyticsConfigurationsOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["AnalyticsConfigurationList"] = args["AnalyticsConfigurationList"],
 		["NextContinuationToken"] = args["NextContinuationToken"],
 		["IsTruncated"] = args["IsTruncated"],
 		["ContinuationToken"] = args["ContinuationToken"],
 	}
-	asserts.AssertListBucketAnalyticsConfigurationsOutput(t)
-	return t
+	asserts.AssertListBucketAnalyticsConfigurationsOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListBucketsOutput = { ["Owner"] = true, ["Buckets"] = true, nil }
@@ -6401,13 +8695,24 @@ end
 -- * Buckets [Buckets] 
 -- @return ListBucketsOutput structure as a key-value pair table
 function M.ListBucketsOutput(args)
-	assert(args, "You must provdide an argument table when creating ListBucketsOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListBucketsOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Owner"] = args["Owner"],
 		["Buckets"] = args["Buckets"],
 	}
-	asserts.AssertListBucketsOutput(t)
-	return t
+	asserts.AssertListBucketsOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.NotificationConfiguration = { ["QueueConfigurations"] = true, ["LambdaFunctionConfigurations"] = true, ["TopicConfigurations"] = true, nil }
@@ -6432,14 +8737,25 @@ end
 -- * TopicConfigurations [TopicConfigurationList] 
 -- @return NotificationConfiguration structure as a key-value pair table
 function M.NotificationConfiguration(args)
-	assert(args, "You must provdide an argument table when creating NotificationConfiguration")
-	local t = { 
+	assert(args, "You must provide an argument table when creating NotificationConfiguration")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["QueueConfigurations"] = args["QueueConfigurations"],
 		["LambdaFunctionConfigurations"] = args["LambdaFunctionConfigurations"],
 		["TopicConfigurations"] = args["TopicConfigurations"],
 	}
-	asserts.AssertNotificationConfiguration(t)
-	return t
+	asserts.AssertNotificationConfiguration(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListObjectsV2Request = { ["RequestPayer"] = true, ["StartAfter"] = true, ["Bucket"] = true, ["Prefix"] = true, ["FetchOwner"] = true, ["MaxKeys"] = true, ["Delimiter"] = true, ["EncodingType"] = true, ["ContinuationToken"] = true, nil }
@@ -6478,8 +8794,23 @@ end
 -- Required key: Bucket
 -- @return ListObjectsV2Request structure as a key-value pair table
 function M.ListObjectsV2Request(args)
-	assert(args, "You must provdide an argument table when creating ListObjectsV2Request")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListObjectsV2Request")
+    local query_args = { 
+        ["start-after"] = args["StartAfter"],
+        ["prefix"] = args["Prefix"],
+        ["fetch-owner"] = args["FetchOwner"],
+        ["max-keys"] = args["MaxKeys"],
+        ["delimiter"] = args["Delimiter"],
+        ["encoding-type"] = args["EncodingType"],
+        ["continuation-token"] = args["ContinuationToken"],
+    }
+    local uri_args = { 
+        ["{Bucket}"] = args["Bucket"],
+    }
+    local header_args = { 
+        ["x-amz-request-payer"] = args["RequestPayer"],
+    }
+	local all_args = { 
 		["RequestPayer"] = args["RequestPayer"],
 		["StartAfter"] = args["StartAfter"],
 		["Bucket"] = args["Bucket"],
@@ -6490,8 +8821,13 @@ function M.ListObjectsV2Request(args)
 		["EncodingType"] = args["EncodingType"],
 		["ContinuationToken"] = args["ContinuationToken"],
 	}
-	asserts.AssertListObjectsV2Request(t)
-	return t
+	asserts.AssertListObjectsV2Request(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListBucketInventoryConfigurationsRequest = { ["Bucket"] = true, ["ContinuationToken"] = true, nil }
@@ -6516,13 +8852,26 @@ end
 -- Required key: Bucket
 -- @return ListBucketInventoryConfigurationsRequest structure as a key-value pair table
 function M.ListBucketInventoryConfigurationsRequest(args)
-	assert(args, "You must provdide an argument table when creating ListBucketInventoryConfigurationsRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListBucketInventoryConfigurationsRequest")
+    local query_args = { 
+        ["continuation-token"] = args["ContinuationToken"],
+    }
+    local uri_args = { 
+        ["{Bucket}"] = args["Bucket"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Bucket"] = args["Bucket"],
 		["ContinuationToken"] = args["ContinuationToken"],
 	}
-	asserts.AssertListBucketInventoryConfigurationsRequest(t)
-	return t
+	asserts.AssertListBucketInventoryConfigurationsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CopyPartResult = { ["LastModified"] = true, ["ETag"] = true, nil }
@@ -6545,13 +8894,24 @@ end
 -- * ETag [ETag] Entity tag of the object.
 -- @return CopyPartResult structure as a key-value pair table
 function M.CopyPartResult(args)
-	assert(args, "You must provdide an argument table when creating CopyPartResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CopyPartResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["LastModified"] = args["LastModified"],
 		["ETag"] = args["ETag"],
 	}
-	asserts.AssertCopyPartResult(t)
-	return t
+	asserts.AssertCopyPartResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetBucketAclRequest = { ["Bucket"] = true, nil }
@@ -6574,12 +8934,24 @@ end
 -- Required key: Bucket
 -- @return GetBucketAclRequest structure as a key-value pair table
 function M.GetBucketAclRequest(args)
-	assert(args, "You must provdide an argument table when creating GetBucketAclRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetBucketAclRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{Bucket}"] = args["Bucket"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Bucket"] = args["Bucket"],
 	}
-	asserts.AssertGetBucketAclRequest(t)
-	return t
+	asserts.AssertGetBucketAclRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CopyObjectOutput = { ["SSECustomerAlgorithm"] = true, ["CopySourceVersionId"] = true, ["RequestCharged"] = true, ["VersionId"] = true, ["Expiration"] = true, ["ServerSideEncryption"] = true, ["CopyObjectResult"] = true, ["SSEKMSKeyId"] = true, ["SSECustomerKeyMD5"] = true, nil }
@@ -6616,8 +8988,22 @@ end
 -- * SSECustomerKeyMD5 [SSECustomerKeyMD5] If server-side encryption with a customer-provided encryption key was requested, the response will include this header to provide round trip message integrity verification of the customer-provided encryption key.
 -- @return CopyObjectOutput structure as a key-value pair table
 function M.CopyObjectOutput(args)
-	assert(args, "You must provdide an argument table when creating CopyObjectOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CopyObjectOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+        ["x-amz-server-side-encryption-customer-algorithm"] = args["SSECustomerAlgorithm"],
+        ["x-amz-copy-source-version-id"] = args["CopySourceVersionId"],
+        ["x-amz-request-charged"] = args["RequestCharged"],
+        ["x-amz-version-id"] = args["VersionId"],
+        ["x-amz-expiration"] = args["Expiration"],
+        ["x-amz-server-side-encryption"] = args["ServerSideEncryption"],
+        ["x-amz-server-side-encryption-aws-kms-key-id"] = args["SSEKMSKeyId"],
+        ["x-amz-server-side-encryption-customer-key-MD5"] = args["SSECustomerKeyMD5"],
+    }
+	local all_args = { 
 		["SSECustomerAlgorithm"] = args["SSECustomerAlgorithm"],
 		["CopySourceVersionId"] = args["CopySourceVersionId"],
 		["RequestCharged"] = args["RequestCharged"],
@@ -6628,8 +9014,13 @@ function M.CopyObjectOutput(args)
 		["SSEKMSKeyId"] = args["SSEKMSKeyId"],
 		["SSECustomerKeyMD5"] = args["SSECustomerKeyMD5"],
 	}
-	asserts.AssertCopyObjectOutput(t)
-	return t
+	asserts.AssertCopyObjectOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetObjectAclOutput = { ["Owner"] = true, ["Grants"] = true, ["RequestCharged"] = true, nil }
@@ -6654,14 +9045,26 @@ end
 -- * RequestCharged [RequestCharged] 
 -- @return GetObjectAclOutput structure as a key-value pair table
 function M.GetObjectAclOutput(args)
-	assert(args, "You must provdide an argument table when creating GetObjectAclOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetObjectAclOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+        ["x-amz-request-charged"] = args["RequestCharged"],
+    }
+	local all_args = { 
 		["Owner"] = args["Owner"],
 		["Grants"] = args["Grants"],
 		["RequestCharged"] = args["RequestCharged"],
 	}
-	asserts.AssertGetObjectAclOutput(t)
-	return t
+	asserts.AssertGetObjectAclOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ObjectNotInActiveTierError = { nil }
@@ -6680,11 +9083,22 @@ end
 -- Valid keys:
 -- @return ObjectNotInActiveTierError structure as a key-value pair table
 function M.ObjectNotInActiveTierError(args)
-	assert(args, "You must provdide an argument table when creating ObjectNotInActiveTierError")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ObjectNotInActiveTierError")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertObjectNotInActiveTierError(t)
-	return t
+	asserts.AssertObjectNotInActiveTierError(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListObjectVersionsOutput = { ["Name"] = true, ["Versions"] = true, ["DeleteMarkers"] = true, ["NextKeyMarker"] = true, ["Delimiter"] = true, ["MaxKeys"] = true, ["Prefix"] = true, ["KeyMarker"] = true, ["NextVersionIdMarker"] = true, ["EncodingType"] = true, ["IsTruncated"] = true, ["VersionIdMarker"] = true, ["CommonPrefixes"] = true, nil }
@@ -6729,8 +9143,14 @@ end
 -- * CommonPrefixes [CommonPrefixList] 
 -- @return ListObjectVersionsOutput structure as a key-value pair table
 function M.ListObjectVersionsOutput(args)
-	assert(args, "You must provdide an argument table when creating ListObjectVersionsOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListObjectVersionsOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Name"] = args["Name"],
 		["Versions"] = args["Versions"],
 		["DeleteMarkers"] = args["DeleteMarkers"],
@@ -6745,8 +9165,13 @@ function M.ListObjectVersionsOutput(args)
 		["VersionIdMarker"] = args["VersionIdMarker"],
 		["CommonPrefixes"] = args["CommonPrefixes"],
 	}
-	asserts.AssertListObjectVersionsOutput(t)
-	return t
+	asserts.AssertListObjectVersionsOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Condition = { ["HttpErrorCodeReturnedEquals"] = true, ["KeyPrefixEquals"] = true, nil }
@@ -6769,13 +9194,24 @@ end
 -- * KeyPrefixEquals [KeyPrefixEquals] The object key name prefix when the redirect is applied. For example, to redirect requests for ExamplePage.html, the key prefix will be ExamplePage.html. To redirect request for all pages with the prefix docs/, the key prefix will be /docs, which identifies all objects in the docs/ folder. Required when the parent element Condition is specified and sibling HttpErrorCodeReturnedEquals is not specified. If both conditions are specified, both must be true for the redirect to be applied.
 -- @return Condition structure as a key-value pair table
 function M.Condition(args)
-	assert(args, "You must provdide an argument table when creating Condition")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Condition")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["HttpErrorCodeReturnedEquals"] = args["HttpErrorCodeReturnedEquals"],
 		["KeyPrefixEquals"] = args["KeyPrefixEquals"],
 	}
-	asserts.AssertCondition(t)
-	return t
+	asserts.AssertCondition(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ErrorDocument = { ["Key"] = true, nil }
@@ -6798,12 +9234,23 @@ end
 -- Required key: Key
 -- @return ErrorDocument structure as a key-value pair table
 function M.ErrorDocument(args)
-	assert(args, "You must provdide an argument table when creating ErrorDocument")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ErrorDocument")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Key"] = args["Key"],
 	}
-	asserts.AssertErrorDocument(t)
-	return t
+	asserts.AssertErrorDocument(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.MetricsConfiguration = { ["Filter"] = true, ["Id"] = true, nil }
@@ -6828,13 +9275,24 @@ end
 -- Required key: Id
 -- @return MetricsConfiguration structure as a key-value pair table
 function M.MetricsConfiguration(args)
-	assert(args, "You must provdide an argument table when creating MetricsConfiguration")
-	local t = { 
+	assert(args, "You must provide an argument table when creating MetricsConfiguration")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Filter"] = args["Filter"],
 		["Id"] = args["Id"],
 	}
-	asserts.AssertMetricsConfiguration(t)
-	return t
+	asserts.AssertMetricsConfiguration(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.LoggingEnabled = { ["TargetPrefix"] = true, ["TargetBucket"] = true, ["TargetGrants"] = true, nil }
@@ -6859,14 +9317,25 @@ end
 -- * TargetGrants [TargetGrants] 
 -- @return LoggingEnabled structure as a key-value pair table
 function M.LoggingEnabled(args)
-	assert(args, "You must provdide an argument table when creating LoggingEnabled")
-	local t = { 
+	assert(args, "You must provide an argument table when creating LoggingEnabled")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["TargetPrefix"] = args["TargetPrefix"],
 		["TargetBucket"] = args["TargetBucket"],
 		["TargetGrants"] = args["TargetGrants"],
 	}
-	asserts.AssertLoggingEnabled(t)
-	return t
+	asserts.AssertLoggingEnabled(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Transition = { ["Date"] = true, ["Days"] = true, ["StorageClass"] = true, nil }
@@ -6891,14 +9360,25 @@ end
 -- * StorageClass [TransitionStorageClass] The class of storage used to store the object.
 -- @return Transition structure as a key-value pair table
 function M.Transition(args)
-	assert(args, "You must provdide an argument table when creating Transition")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Transition")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Date"] = args["Date"],
 		["Days"] = args["Days"],
 		["StorageClass"] = args["StorageClass"],
 	}
-	asserts.AssertTransition(t)
-	return t
+	asserts.AssertTransition(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.QueueConfigurationDeprecated = { ["Queue"] = true, ["Events"] = true, ["Id"] = true, ["Event"] = true, nil }
@@ -6925,15 +9405,26 @@ end
 -- * Event [Event] 
 -- @return QueueConfigurationDeprecated structure as a key-value pair table
 function M.QueueConfigurationDeprecated(args)
-	assert(args, "You must provdide an argument table when creating QueueConfigurationDeprecated")
-	local t = { 
+	assert(args, "You must provide an argument table when creating QueueConfigurationDeprecated")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Queue"] = args["Queue"],
 		["Events"] = args["Events"],
 		["Id"] = args["Id"],
 		["Event"] = args["Event"],
 	}
-	asserts.AssertQueueConfigurationDeprecated(t)
-	return t
+	asserts.AssertQueueConfigurationDeprecated(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Error = { ["VersionId"] = true, ["Code"] = true, ["Message"] = true, ["Key"] = true, nil }
@@ -6960,15 +9451,26 @@ end
 -- * Key [ObjectKey] 
 -- @return Error structure as a key-value pair table
 function M.Error(args)
-	assert(args, "You must provdide an argument table when creating Error")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Error")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["VersionId"] = args["VersionId"],
 		["Code"] = args["Code"],
 		["Message"] = args["Message"],
 		["Key"] = args["Key"],
 	}
-	asserts.AssertError(t)
-	return t
+	asserts.AssertError(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.BucketLoggingStatus = { ["LoggingEnabled"] = true, nil }
@@ -6989,12 +9491,23 @@ end
 -- * LoggingEnabled [LoggingEnabled] 
 -- @return BucketLoggingStatus structure as a key-value pair table
 function M.BucketLoggingStatus(args)
-	assert(args, "You must provdide an argument table when creating BucketLoggingStatus")
-	local t = { 
+	assert(args, "You must provide an argument table when creating BucketLoggingStatus")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["LoggingEnabled"] = args["LoggingEnabled"],
 	}
-	asserts.AssertBucketLoggingStatus(t)
-	return t
+	asserts.AssertBucketLoggingStatus(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.PutBucketInventoryConfigurationRequest = { ["InventoryConfiguration"] = true, ["Bucket"] = true, ["Id"] = true, nil }
@@ -7025,14 +9538,27 @@ end
 -- Required key: InventoryConfiguration
 -- @return PutBucketInventoryConfigurationRequest structure as a key-value pair table
 function M.PutBucketInventoryConfigurationRequest(args)
-	assert(args, "You must provdide an argument table when creating PutBucketInventoryConfigurationRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating PutBucketInventoryConfigurationRequest")
+    local query_args = { 
+        ["id"] = args["Id"],
+    }
+    local uri_args = { 
+        ["{Bucket}"] = args["Bucket"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["InventoryConfiguration"] = args["InventoryConfiguration"],
 		["Bucket"] = args["Bucket"],
 		["Id"] = args["Id"],
 	}
-	asserts.AssertPutBucketInventoryConfigurationRequest(t)
-	return t
+	asserts.AssertPutBucketInventoryConfigurationRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.RestoreRequest = { ["GlacierJobParameters"] = true, ["Days"] = true, nil }
@@ -7057,13 +9583,24 @@ end
 -- Required key: Days
 -- @return RestoreRequest structure as a key-value pair table
 function M.RestoreRequest(args)
-	assert(args, "You must provdide an argument table when creating RestoreRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating RestoreRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["GlacierJobParameters"] = args["GlacierJobParameters"],
 		["Days"] = args["Days"],
 	}
-	asserts.AssertRestoreRequest(t)
-	return t
+	asserts.AssertRestoreRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.NotificationConfigurationDeprecated = { ["CloudFunctionConfiguration"] = true, ["QueueConfiguration"] = true, ["TopicConfiguration"] = true, nil }
@@ -7088,14 +9625,25 @@ end
 -- * TopicConfiguration [TopicConfigurationDeprecated] 
 -- @return NotificationConfigurationDeprecated structure as a key-value pair table
 function M.NotificationConfigurationDeprecated(args)
-	assert(args, "You must provdide an argument table when creating NotificationConfigurationDeprecated")
-	local t = { 
+	assert(args, "You must provide an argument table when creating NotificationConfigurationDeprecated")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["CloudFunctionConfiguration"] = args["CloudFunctionConfiguration"],
 		["QueueConfiguration"] = args["QueueConfiguration"],
 		["TopicConfiguration"] = args["TopicConfiguration"],
 	}
-	asserts.AssertNotificationConfigurationDeprecated(t)
-	return t
+	asserts.AssertNotificationConfigurationDeprecated(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetBucketVersioningOutput = { ["Status"] = true, ["MFADelete"] = true, nil }
@@ -7118,13 +9666,24 @@ end
 -- * MFADelete [MFADeleteStatus] Specifies whether MFA delete is enabled in the bucket versioning configuration. This element is only returned if the bucket has been configured with MFA delete. If the bucket has never been so configured, this element is not returned.
 -- @return GetBucketVersioningOutput structure as a key-value pair table
 function M.GetBucketVersioningOutput(args)
-	assert(args, "You must provdide an argument table when creating GetBucketVersioningOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetBucketVersioningOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Status"] = args["Status"],
 		["MFADelete"] = args["MFADelete"],
 	}
-	asserts.AssertGetBucketVersioningOutput(t)
-	return t
+	asserts.AssertGetBucketVersioningOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetObjectRequest = { ["ResponseContentEncoding"] = true, ["ResponseContentLanguage"] = true, ["SSECustomerAlgorithm"] = true, ["ResponseContentType"] = true, ["IfUnmodifiedSince"] = true, ["VersionId"] = true, ["RequestPayer"] = true, ["ResponseCacheControl"] = true, ["SSECustomerKey"] = true, ["Bucket"] = true, ["IfNoneMatch"] = true, ["ResponseContentDisposition"] = true, ["Range"] = true, ["Key"] = true, ["IfMatch"] = true, ["ResponseExpires"] = true, ["PartNumber"] = true, ["IfModifiedSince"] = true, ["SSECustomerKeyMD5"] = true, nil }
@@ -7185,8 +9744,33 @@ end
 -- Required key: Key
 -- @return GetObjectRequest structure as a key-value pair table
 function M.GetObjectRequest(args)
-	assert(args, "You must provdide an argument table when creating GetObjectRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetObjectRequest")
+    local query_args = { 
+        ["response-content-encoding"] = args["ResponseContentEncoding"],
+        ["response-content-language"] = args["ResponseContentLanguage"],
+        ["response-content-type"] = args["ResponseContentType"],
+        ["versionId"] = args["VersionId"],
+        ["response-cache-control"] = args["ResponseCacheControl"],
+        ["response-content-disposition"] = args["ResponseContentDisposition"],
+        ["response-expires"] = args["ResponseExpires"],
+        ["partNumber"] = args["PartNumber"],
+    }
+    local uri_args = { 
+        ["{Bucket}"] = args["Bucket"],
+        ["{Key}"] = args["Key"],
+    }
+    local header_args = { 
+        ["x-amz-server-side-encryption-customer-algorithm"] = args["SSECustomerAlgorithm"],
+        ["If-Unmodified-Since"] = args["IfUnmodifiedSince"],
+        ["x-amz-request-payer"] = args["RequestPayer"],
+        ["x-amz-server-side-encryption-customer-key"] = args["SSECustomerKey"],
+        ["If-None-Match"] = args["IfNoneMatch"],
+        ["Range"] = args["Range"],
+        ["If-Match"] = args["IfMatch"],
+        ["If-Modified-Since"] = args["IfModifiedSince"],
+        ["x-amz-server-side-encryption-customer-key-MD5"] = args["SSECustomerKeyMD5"],
+    }
+	local all_args = { 
 		["ResponseContentEncoding"] = args["ResponseContentEncoding"],
 		["ResponseContentLanguage"] = args["ResponseContentLanguage"],
 		["SSECustomerAlgorithm"] = args["SSECustomerAlgorithm"],
@@ -7207,8 +9791,13 @@ function M.GetObjectRequest(args)
 		["IfModifiedSince"] = args["IfModifiedSince"],
 		["SSECustomerKeyMD5"] = args["SSECustomerKeyMD5"],
 	}
-	asserts.AssertGetObjectRequest(t)
-	return t
+	asserts.AssertGetObjectRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetBucketPolicyOutput = { ["Policy"] = true, nil }
@@ -7229,12 +9818,23 @@ end
 -- * Policy [Policy] The bucket policy as a JSON document.
 -- @return GetBucketPolicyOutput structure as a key-value pair table
 function M.GetBucketPolicyOutput(args)
-	assert(args, "You must provdide an argument table when creating GetBucketPolicyOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetBucketPolicyOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Policy"] = args["Policy"],
 	}
-	asserts.AssertGetBucketPolicyOutput(t)
-	return t
+	asserts.AssertGetBucketPolicyOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ObjectIdentifier = { ["VersionId"] = true, ["Key"] = true, nil }
@@ -7259,13 +9859,24 @@ end
 -- Required key: Key
 -- @return ObjectIdentifier structure as a key-value pair table
 function M.ObjectIdentifier(args)
-	assert(args, "You must provdide an argument table when creating ObjectIdentifier")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ObjectIdentifier")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["VersionId"] = args["VersionId"],
 		["Key"] = args["Key"],
 	}
-	asserts.AssertObjectIdentifier(t)
-	return t
+	asserts.AssertObjectIdentifier(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Initiator = { ["DisplayName"] = true, ["ID"] = true, nil }
@@ -7288,13 +9899,24 @@ end
 -- * ID [ID] If the principal is an AWS account, it provides the Canonical User ID. If the principal is an IAM User, it provides a user ARN value.
 -- @return Initiator structure as a key-value pair table
 function M.Initiator(args)
-	assert(args, "You must provdide an argument table when creating Initiator")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Initiator")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DisplayName"] = args["DisplayName"],
 		["ID"] = args["ID"],
 	}
-	asserts.AssertInitiator(t)
-	return t
+	asserts.AssertInitiator(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.NoSuchKey = { nil }
@@ -7313,11 +9935,22 @@ end
 -- Valid keys:
 -- @return NoSuchKey structure as a key-value pair table
 function M.NoSuchKey(args)
-	assert(args, "You must provdide an argument table when creating NoSuchKey")
-	local t = { 
+	assert(args, "You must provide an argument table when creating NoSuchKey")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertNoSuchKey(t)
-	return t
+	asserts.AssertNoSuchKey(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.RequestPaymentConfiguration = { ["Payer"] = true, nil }
@@ -7340,12 +9973,23 @@ end
 -- Required key: Payer
 -- @return RequestPaymentConfiguration structure as a key-value pair table
 function M.RequestPaymentConfiguration(args)
-	assert(args, "You must provdide an argument table when creating RequestPaymentConfiguration")
-	local t = { 
+	assert(args, "You must provide an argument table when creating RequestPaymentConfiguration")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Payer"] = args["Payer"],
 	}
-	asserts.AssertRequestPaymentConfiguration(t)
-	return t
+	asserts.AssertRequestPaymentConfiguration(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 function asserts.AssertRestore(str)
@@ -9686,8 +12330,11 @@ function M.ListObjectVersionsAsync(ListObjectVersionsRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".ListObjectVersions",
 	}
+	for header,value in pairs(ListObjectVersionsRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "GET")
 	if request_handler then
 		request_handler(settings.uri, "/{Bucket}?versions", ListObjectVersionsRequest, headers, settings, cb)
 	else
@@ -9718,8 +12365,11 @@ function M.PutBucketPolicyAsync(PutBucketPolicyRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".PutBucketPolicy",
 	}
+	for header,value in pairs(PutBucketPolicyRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("PUT")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "PUT")
 	if request_handler then
 		request_handler(settings.uri, "/{Bucket}?policy", PutBucketPolicyRequest, headers, settings, cb)
 	else
@@ -9750,8 +12400,11 @@ function M.ListBucketInventoryConfigurationsAsync(ListBucketInventoryConfigurati
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".ListBucketInventoryConfigurations",
 	}
+	for header,value in pairs(ListBucketInventoryConfigurationsRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "GET")
 	if request_handler then
 		request_handler(settings.uri, "/{Bucket}?inventory", ListBucketInventoryConfigurationsRequest, headers, settings, cb)
 	else
@@ -9782,8 +12435,11 @@ function M.DeleteBucketPolicyAsync(DeleteBucketPolicyRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DeleteBucketPolicy",
 	}
+	for header,value in pairs(DeleteBucketPolicyRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("DELETE")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "DELETE")
 	if request_handler then
 		request_handler(settings.uri, "/{Bucket}?policy", DeleteBucketPolicyRequest, headers, settings, cb)
 	else
@@ -9814,8 +12470,11 @@ function M.PutBucketLifecycleConfigurationAsync(PutBucketLifecycleConfigurationR
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".PutBucketLifecycleConfiguration",
 	}
+	for header,value in pairs(PutBucketLifecycleConfigurationRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("PUT")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "PUT")
 	if request_handler then
 		request_handler(settings.uri, "/{Bucket}?lifecycle", PutBucketLifecycleConfigurationRequest, headers, settings, cb)
 	else
@@ -9846,8 +12505,11 @@ function M.PutBucketRequestPaymentAsync(PutBucketRequestPaymentRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".PutBucketRequestPayment",
 	}
+	for header,value in pairs(PutBucketRequestPaymentRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("PUT")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "PUT")
 	if request_handler then
 		request_handler(settings.uri, "/{Bucket}?requestPayment", PutBucketRequestPaymentRequest, headers, settings, cb)
 	else
@@ -9878,8 +12540,11 @@ function M.ListObjectsAsync(ListObjectsRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".ListObjects",
 	}
+	for header,value in pairs(ListObjectsRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "GET")
 	if request_handler then
 		request_handler(settings.uri, "/{Bucket}", ListObjectsRequest, headers, settings, cb)
 	else
@@ -9910,8 +12575,11 @@ function M.GetBucketMetricsConfigurationAsync(GetBucketMetricsConfigurationReque
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".GetBucketMetricsConfiguration",
 	}
+	for header,value in pairs(GetBucketMetricsConfigurationRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "GET")
 	if request_handler then
 		request_handler(settings.uri, "/{Bucket}?metrics", GetBucketMetricsConfigurationRequest, headers, settings, cb)
 	else
@@ -9942,8 +12610,11 @@ function M.PutBucketInventoryConfigurationAsync(PutBucketInventoryConfigurationR
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".PutBucketInventoryConfiguration",
 	}
+	for header,value in pairs(PutBucketInventoryConfigurationRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("PUT")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "PUT")
 	if request_handler then
 		request_handler(settings.uri, "/{Bucket}?inventory", PutBucketInventoryConfigurationRequest, headers, settings, cb)
 	else
@@ -9974,8 +12645,11 @@ function M.PutBucketLoggingAsync(PutBucketLoggingRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".PutBucketLogging",
 	}
+	for header,value in pairs(PutBucketLoggingRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("PUT")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "PUT")
 	if request_handler then
 		request_handler(settings.uri, "/{Bucket}?logging", PutBucketLoggingRequest, headers, settings, cb)
 	else
@@ -10006,8 +12680,11 @@ function M.PutBucketReplicationAsync(PutBucketReplicationRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".PutBucketReplication",
 	}
+	for header,value in pairs(PutBucketReplicationRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("PUT")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "PUT")
 	if request_handler then
 		request_handler(settings.uri, "/{Bucket}?replication", PutBucketReplicationRequest, headers, settings, cb)
 	else
@@ -10038,8 +12715,11 @@ function M.PutBucketAccelerateConfigurationAsync(PutBucketAccelerateConfiguratio
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".PutBucketAccelerateConfiguration",
 	}
+	for header,value in pairs(PutBucketAccelerateConfigurationRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("PUT")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "PUT")
 	if request_handler then
 		request_handler(settings.uri, "/{Bucket}?accelerate", PutBucketAccelerateConfigurationRequest, headers, settings, cb)
 	else
@@ -10070,8 +12750,11 @@ function M.PutBucketAclAsync(PutBucketAclRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".PutBucketAcl",
 	}
+	for header,value in pairs(PutBucketAclRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("PUT")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "PUT")
 	if request_handler then
 		request_handler(settings.uri, "/{Bucket}?acl", PutBucketAclRequest, headers, settings, cb)
 	else
@@ -10102,8 +12785,11 @@ function M.UploadPartAsync(UploadPartRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".UploadPart",
 	}
+	for header,value in pairs(UploadPartRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("PUT")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "PUT")
 	if request_handler then
 		request_handler(settings.uri, "/{Bucket}/{Key+}", UploadPartRequest, headers, settings, cb)
 	else
@@ -10134,8 +12820,11 @@ function M.PutObjectAsync(PutObjectRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".PutObject",
 	}
+	for header,value in pairs(PutObjectRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("PUT")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "PUT")
 	if request_handler then
 		request_handler(settings.uri, "/{Bucket}/{Key+}", PutObjectRequest, headers, settings, cb)
 	else
@@ -10166,8 +12855,11 @@ function M.DeleteBucketCorsAsync(DeleteBucketCorsRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DeleteBucketCors",
 	}
+	for header,value in pairs(DeleteBucketCorsRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("DELETE")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "DELETE")
 	if request_handler then
 		request_handler(settings.uri, "/{Bucket}?cors", DeleteBucketCorsRequest, headers, settings, cb)
 	else
@@ -10198,8 +12890,11 @@ function M.PutBucketVersioningAsync(PutBucketVersioningRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".PutBucketVersioning",
 	}
+	for header,value in pairs(PutBucketVersioningRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("PUT")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "PUT")
 	if request_handler then
 		request_handler(settings.uri, "/{Bucket}?versioning", PutBucketVersioningRequest, headers, settings, cb)
 	else
@@ -10230,8 +12925,11 @@ function M.GetBucketCorsAsync(GetBucketCorsRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".GetBucketCors",
 	}
+	for header,value in pairs(GetBucketCorsRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "GET")
 	if request_handler then
 		request_handler(settings.uri, "/{Bucket}?cors", GetBucketCorsRequest, headers, settings, cb)
 	else
@@ -10262,8 +12960,11 @@ function M.GetBucketAclAsync(GetBucketAclRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".GetBucketAcl",
 	}
+	for header,value in pairs(GetBucketAclRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "GET")
 	if request_handler then
 		request_handler(settings.uri, "/{Bucket}?acl", GetBucketAclRequest, headers, settings, cb)
 	else
@@ -10294,8 +12995,11 @@ function M.DeleteBucketMetricsConfigurationAsync(DeleteBucketMetricsConfiguratio
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DeleteBucketMetricsConfiguration",
 	}
+	for header,value in pairs(DeleteBucketMetricsConfigurationRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("DELETE")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "DELETE")
 	if request_handler then
 		request_handler(settings.uri, "/{Bucket}?metrics", DeleteBucketMetricsConfigurationRequest, headers, settings, cb)
 	else
@@ -10326,8 +13030,11 @@ function M.GetBucketLoggingAsync(GetBucketLoggingRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".GetBucketLogging",
 	}
+	for header,value in pairs(GetBucketLoggingRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "GET")
 	if request_handler then
 		request_handler(settings.uri, "/{Bucket}?logging", GetBucketLoggingRequest, headers, settings, cb)
 	else
@@ -10358,8 +13065,11 @@ function M.GetObjectTaggingAsync(GetObjectTaggingRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".GetObjectTagging",
 	}
+	for header,value in pairs(GetObjectTaggingRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "GET")
 	if request_handler then
 		request_handler(settings.uri, "/{Bucket}/{Key+}?tagging", GetObjectTaggingRequest, headers, settings, cb)
 	else
@@ -10390,8 +13100,11 @@ function M.HeadBucketAsync(HeadBucketRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".HeadBucket",
 	}
+	for header,value in pairs(HeadBucketRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("HEAD")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "HEAD")
 	if request_handler then
 		request_handler(settings.uri, "/{Bucket}", HeadBucketRequest, headers, settings, cb)
 	else
@@ -10422,8 +13135,11 @@ function M.ListBucketMetricsConfigurationsAsync(ListBucketMetricsConfigurationsR
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".ListBucketMetricsConfigurations",
 	}
+	for header,value in pairs(ListBucketMetricsConfigurationsRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "GET")
 	if request_handler then
 		request_handler(settings.uri, "/{Bucket}?metrics", ListBucketMetricsConfigurationsRequest, headers, settings, cb)
 	else
@@ -10453,7 +13169,8 @@ function M.ListBucketsAsync(cb)
 		[request_headers.AMZ_TARGET_HEADER] = ".ListBuckets",
 	}
 
-	local request_handler, err = request_handlers.from_http_method("GET")
+
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "GET")
 	if request_handler then
 		request_handler(settings.uri, "/", {}, headers, settings, cb)
 	else
@@ -10483,8 +13200,11 @@ function M.DeleteBucketWebsiteAsync(DeleteBucketWebsiteRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DeleteBucketWebsite",
 	}
+	for header,value in pairs(DeleteBucketWebsiteRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("DELETE")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "DELETE")
 	if request_handler then
 		request_handler(settings.uri, "/{Bucket}?website", DeleteBucketWebsiteRequest, headers, settings, cb)
 	else
@@ -10515,8 +13235,11 @@ function M.DeleteBucketInventoryConfigurationAsync(DeleteBucketInventoryConfigur
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DeleteBucketInventoryConfiguration",
 	}
+	for header,value in pairs(DeleteBucketInventoryConfigurationRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("DELETE")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "DELETE")
 	if request_handler then
 		request_handler(settings.uri, "/{Bucket}?inventory", DeleteBucketInventoryConfigurationRequest, headers, settings, cb)
 	else
@@ -10547,8 +13270,11 @@ function M.GetBucketNotificationConfigurationAsync(GetBucketNotificationConfigur
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".GetBucketNotificationConfiguration",
 	}
+	for header,value in pairs(GetBucketNotificationConfigurationRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "GET")
 	if request_handler then
 		request_handler(settings.uri, "/{Bucket}?notification", GetBucketNotificationConfigurationRequest, headers, settings, cb)
 	else
@@ -10579,8 +13305,11 @@ function M.DeleteObjectsAsync(DeleteObjectsRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DeleteObjects",
 	}
+	for header,value in pairs(DeleteObjectsRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/{Bucket}?delete", DeleteObjectsRequest, headers, settings, cb)
 	else
@@ -10611,8 +13340,11 @@ function M.DeleteBucketReplicationAsync(DeleteBucketReplicationRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DeleteBucketReplication",
 	}
+	for header,value in pairs(DeleteBucketReplicationRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("DELETE")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "DELETE")
 	if request_handler then
 		request_handler(settings.uri, "/{Bucket}?replication", DeleteBucketReplicationRequest, headers, settings, cb)
 	else
@@ -10643,8 +13375,11 @@ function M.PutBucketWebsiteAsync(PutBucketWebsiteRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".PutBucketWebsite",
 	}
+	for header,value in pairs(PutBucketWebsiteRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("PUT")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "PUT")
 	if request_handler then
 		request_handler(settings.uri, "/{Bucket}?website", PutBucketWebsiteRequest, headers, settings, cb)
 	else
@@ -10675,8 +13410,11 @@ function M.CopyObjectAsync(CopyObjectRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".CopyObject",
 	}
+	for header,value in pairs(CopyObjectRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("PUT")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "PUT")
 	if request_handler then
 		request_handler(settings.uri, "/{Bucket}/{Key+}", CopyObjectRequest, headers, settings, cb)
 	else
@@ -10707,8 +13445,11 @@ function M.GetBucketReplicationAsync(GetBucketReplicationRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".GetBucketReplication",
 	}
+	for header,value in pairs(GetBucketReplicationRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "GET")
 	if request_handler then
 		request_handler(settings.uri, "/{Bucket}?replication", GetBucketReplicationRequest, headers, settings, cb)
 	else
@@ -10739,8 +13480,11 @@ function M.GetBucketAnalyticsConfigurationAsync(GetBucketAnalyticsConfigurationR
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".GetBucketAnalyticsConfiguration",
 	}
+	for header,value in pairs(GetBucketAnalyticsConfigurationRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "GET")
 	if request_handler then
 		request_handler(settings.uri, "/{Bucket}?analytics", GetBucketAnalyticsConfigurationRequest, headers, settings, cb)
 	else
@@ -10771,8 +13515,11 @@ function M.PutBucketNotificationConfigurationAsync(PutBucketNotificationConfigur
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".PutBucketNotificationConfiguration",
 	}
+	for header,value in pairs(PutBucketNotificationConfigurationRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("PUT")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "PUT")
 	if request_handler then
 		request_handler(settings.uri, "/{Bucket}?notification", PutBucketNotificationConfigurationRequest, headers, settings, cb)
 	else
@@ -10803,8 +13550,11 @@ function M.GetBucketAccelerateConfigurationAsync(GetBucketAccelerateConfiguratio
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".GetBucketAccelerateConfiguration",
 	}
+	for header,value in pairs(GetBucketAccelerateConfigurationRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "GET")
 	if request_handler then
 		request_handler(settings.uri, "/{Bucket}?accelerate", GetBucketAccelerateConfigurationRequest, headers, settings, cb)
 	else
@@ -10835,8 +13585,11 @@ function M.DeleteObjectTaggingAsync(DeleteObjectTaggingRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DeleteObjectTagging",
 	}
+	for header,value in pairs(DeleteObjectTaggingRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("DELETE")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "DELETE")
 	if request_handler then
 		request_handler(settings.uri, "/{Bucket}/{Key+}?tagging", DeleteObjectTaggingRequest, headers, settings, cb)
 	else
@@ -10867,8 +13620,11 @@ function M.DeleteBucketTaggingAsync(DeleteBucketTaggingRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DeleteBucketTagging",
 	}
+	for header,value in pairs(DeleteBucketTaggingRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("DELETE")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "DELETE")
 	if request_handler then
 		request_handler(settings.uri, "/{Bucket}?tagging", DeleteBucketTaggingRequest, headers, settings, cb)
 	else
@@ -10899,8 +13655,11 @@ function M.GetObjectTorrentAsync(GetObjectTorrentRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".GetObjectTorrent",
 	}
+	for header,value in pairs(GetObjectTorrentRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "GET")
 	if request_handler then
 		request_handler(settings.uri, "/{Bucket}/{Key+}?torrent", GetObjectTorrentRequest, headers, settings, cb)
 	else
@@ -10931,8 +13690,11 @@ function M.CreateBucketAsync(CreateBucketRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".CreateBucket",
 	}
+	for header,value in pairs(CreateBucketRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("PUT")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "PUT")
 	if request_handler then
 		request_handler(settings.uri, "/{Bucket}", CreateBucketRequest, headers, settings, cb)
 	else
@@ -10963,8 +13725,11 @@ function M.CompleteMultipartUploadAsync(CompleteMultipartUploadRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".CompleteMultipartUpload",
 	}
+	for header,value in pairs(CompleteMultipartUploadRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/{Bucket}/{Key+}", CompleteMultipartUploadRequest, headers, settings, cb)
 	else
@@ -10995,8 +13760,11 @@ function M.GetBucketWebsiteAsync(GetBucketWebsiteRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".GetBucketWebsite",
 	}
+	for header,value in pairs(GetBucketWebsiteRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "GET")
 	if request_handler then
 		request_handler(settings.uri, "/{Bucket}?website", GetBucketWebsiteRequest, headers, settings, cb)
 	else
@@ -11027,8 +13795,11 @@ function M.CreateMultipartUploadAsync(CreateMultipartUploadRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".CreateMultipartUpload",
 	}
+	for header,value in pairs(CreateMultipartUploadRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/{Bucket}/{Key+}?uploads", CreateMultipartUploadRequest, headers, settings, cb)
 	else
@@ -11059,8 +13830,11 @@ function M.DeleteBucketAsync(DeleteBucketRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DeleteBucket",
 	}
+	for header,value in pairs(DeleteBucketRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("DELETE")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "DELETE")
 	if request_handler then
 		request_handler(settings.uri, "/{Bucket}", DeleteBucketRequest, headers, settings, cb)
 	else
@@ -11091,8 +13865,11 @@ function M.GetObjectAsync(GetObjectRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".GetObject",
 	}
+	for header,value in pairs(GetObjectRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "GET")
 	if request_handler then
 		request_handler(settings.uri, "/{Bucket}/{Key+}", GetObjectRequest, headers, settings, cb)
 	else
@@ -11123,8 +13900,11 @@ function M.PutObjectTaggingAsync(PutObjectTaggingRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".PutObjectTagging",
 	}
+	for header,value in pairs(PutObjectTaggingRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("PUT")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "PUT")
 	if request_handler then
 		request_handler(settings.uri, "/{Bucket}/{Key+}?tagging", PutObjectTaggingRequest, headers, settings, cb)
 	else
@@ -11155,8 +13935,11 @@ function M.GetBucketPolicyAsync(GetBucketPolicyRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".GetBucketPolicy",
 	}
+	for header,value in pairs(GetBucketPolicyRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "GET")
 	if request_handler then
 		request_handler(settings.uri, "/{Bucket}?policy", GetBucketPolicyRequest, headers, settings, cb)
 	else
@@ -11187,8 +13970,11 @@ function M.GetBucketVersioningAsync(GetBucketVersioningRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".GetBucketVersioning",
 	}
+	for header,value in pairs(GetBucketVersioningRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "GET")
 	if request_handler then
 		request_handler(settings.uri, "/{Bucket}?versioning", GetBucketVersioningRequest, headers, settings, cb)
 	else
@@ -11219,8 +14005,11 @@ function M.HeadObjectAsync(HeadObjectRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".HeadObject",
 	}
+	for header,value in pairs(HeadObjectRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("HEAD")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "HEAD")
 	if request_handler then
 		request_handler(settings.uri, "/{Bucket}/{Key+}", HeadObjectRequest, headers, settings, cb)
 	else
@@ -11251,8 +14040,11 @@ function M.ListMultipartUploadsAsync(ListMultipartUploadsRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".ListMultipartUploads",
 	}
+	for header,value in pairs(ListMultipartUploadsRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "GET")
 	if request_handler then
 		request_handler(settings.uri, "/{Bucket}?uploads", ListMultipartUploadsRequest, headers, settings, cb)
 	else
@@ -11283,8 +14075,11 @@ function M.GetBucketLifecycleConfigurationAsync(GetBucketLifecycleConfigurationR
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".GetBucketLifecycleConfiguration",
 	}
+	for header,value in pairs(GetBucketLifecycleConfigurationRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "GET")
 	if request_handler then
 		request_handler(settings.uri, "/{Bucket}?lifecycle", GetBucketLifecycleConfigurationRequest, headers, settings, cb)
 	else
@@ -11315,8 +14110,11 @@ function M.GetBucketRequestPaymentAsync(GetBucketRequestPaymentRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".GetBucketRequestPayment",
 	}
+	for header,value in pairs(GetBucketRequestPaymentRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "GET")
 	if request_handler then
 		request_handler(settings.uri, "/{Bucket}?requestPayment", GetBucketRequestPaymentRequest, headers, settings, cb)
 	else
@@ -11347,8 +14145,11 @@ function M.PutBucketCorsAsync(PutBucketCorsRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".PutBucketCors",
 	}
+	for header,value in pairs(PutBucketCorsRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("PUT")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "PUT")
 	if request_handler then
 		request_handler(settings.uri, "/{Bucket}?cors", PutBucketCorsRequest, headers, settings, cb)
 	else
@@ -11379,8 +14180,11 @@ function M.PutBucketTaggingAsync(PutBucketTaggingRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".PutBucketTagging",
 	}
+	for header,value in pairs(PutBucketTaggingRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("PUT")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "PUT")
 	if request_handler then
 		request_handler(settings.uri, "/{Bucket}?tagging", PutBucketTaggingRequest, headers, settings, cb)
 	else
@@ -11411,8 +14215,11 @@ function M.GetBucketTaggingAsync(GetBucketTaggingRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".GetBucketTagging",
 	}
+	for header,value in pairs(GetBucketTaggingRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "GET")
 	if request_handler then
 		request_handler(settings.uri, "/{Bucket}?tagging", GetBucketTaggingRequest, headers, settings, cb)
 	else
@@ -11443,8 +14250,11 @@ function M.AbortMultipartUploadAsync(AbortMultipartUploadRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".AbortMultipartUpload",
 	}
+	for header,value in pairs(AbortMultipartUploadRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("DELETE")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "DELETE")
 	if request_handler then
 		request_handler(settings.uri, "/{Bucket}/{Key+}", AbortMultipartUploadRequest, headers, settings, cb)
 	else
@@ -11475,8 +14285,11 @@ function M.PutObjectAclAsync(PutObjectAclRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".PutObjectAcl",
 	}
+	for header,value in pairs(PutObjectAclRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("PUT")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "PUT")
 	if request_handler then
 		request_handler(settings.uri, "/{Bucket}/{Key+}?acl", PutObjectAclRequest, headers, settings, cb)
 	else
@@ -11507,8 +14320,11 @@ function M.ListObjectsV2Async(ListObjectsV2Request, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".ListObjectsV2",
 	}
+	for header,value in pairs(ListObjectsV2Request.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "GET")
 	if request_handler then
 		request_handler(settings.uri, "/{Bucket}?list-type=2", ListObjectsV2Request, headers, settings, cb)
 	else
@@ -11539,8 +14355,11 @@ function M.GetBucketLocationAsync(GetBucketLocationRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".GetBucketLocation",
 	}
+	for header,value in pairs(GetBucketLocationRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "GET")
 	if request_handler then
 		request_handler(settings.uri, "/{Bucket}?location", GetBucketLocationRequest, headers, settings, cb)
 	else
@@ -11571,8 +14390,11 @@ function M.GetBucketInventoryConfigurationAsync(GetBucketInventoryConfigurationR
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".GetBucketInventoryConfiguration",
 	}
+	for header,value in pairs(GetBucketInventoryConfigurationRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "GET")
 	if request_handler then
 		request_handler(settings.uri, "/{Bucket}?inventory", GetBucketInventoryConfigurationRequest, headers, settings, cb)
 	else
@@ -11603,8 +14425,11 @@ function M.DeleteBucketLifecycleAsync(DeleteBucketLifecycleRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DeleteBucketLifecycle",
 	}
+	for header,value in pairs(DeleteBucketLifecycleRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("DELETE")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "DELETE")
 	if request_handler then
 		request_handler(settings.uri, "/{Bucket}?lifecycle", DeleteBucketLifecycleRequest, headers, settings, cb)
 	else
@@ -11635,8 +14460,11 @@ function M.PutBucketAnalyticsConfigurationAsync(PutBucketAnalyticsConfigurationR
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".PutBucketAnalyticsConfiguration",
 	}
+	for header,value in pairs(PutBucketAnalyticsConfigurationRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("PUT")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "PUT")
 	if request_handler then
 		request_handler(settings.uri, "/{Bucket}?analytics", PutBucketAnalyticsConfigurationRequest, headers, settings, cb)
 	else
@@ -11667,8 +14495,11 @@ function M.ListPartsAsync(ListPartsRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".ListParts",
 	}
+	for header,value in pairs(ListPartsRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "GET")
 	if request_handler then
 		request_handler(settings.uri, "/{Bucket}/{Key+}", ListPartsRequest, headers, settings, cb)
 	else
@@ -11699,8 +14530,11 @@ function M.ListBucketAnalyticsConfigurationsAsync(ListBucketAnalyticsConfigurati
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".ListBucketAnalyticsConfigurations",
 	}
+	for header,value in pairs(ListBucketAnalyticsConfigurationsRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "GET")
 	if request_handler then
 		request_handler(settings.uri, "/{Bucket}?analytics", ListBucketAnalyticsConfigurationsRequest, headers, settings, cb)
 	else
@@ -11731,8 +14565,11 @@ function M.GetObjectAclAsync(GetObjectAclRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".GetObjectAcl",
 	}
+	for header,value in pairs(GetObjectAclRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "GET")
 	if request_handler then
 		request_handler(settings.uri, "/{Bucket}/{Key+}?acl", GetObjectAclRequest, headers, settings, cb)
 	else
@@ -11763,8 +14600,11 @@ function M.UploadPartCopyAsync(UploadPartCopyRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".UploadPartCopy",
 	}
+	for header,value in pairs(UploadPartCopyRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("PUT")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "PUT")
 	if request_handler then
 		request_handler(settings.uri, "/{Bucket}/{Key+}", UploadPartCopyRequest, headers, settings, cb)
 	else
@@ -11795,8 +14635,11 @@ function M.PutBucketMetricsConfigurationAsync(PutBucketMetricsConfigurationReque
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".PutBucketMetricsConfiguration",
 	}
+	for header,value in pairs(PutBucketMetricsConfigurationRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("PUT")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "PUT")
 	if request_handler then
 		request_handler(settings.uri, "/{Bucket}?metrics", PutBucketMetricsConfigurationRequest, headers, settings, cb)
 	else
@@ -11827,8 +14670,11 @@ function M.DeleteObjectAsync(DeleteObjectRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DeleteObject",
 	}
+	for header,value in pairs(DeleteObjectRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("DELETE")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "DELETE")
 	if request_handler then
 		request_handler(settings.uri, "/{Bucket}/{Key+}", DeleteObjectRequest, headers, settings, cb)
 	else
@@ -11859,8 +14705,11 @@ function M.RestoreObjectAsync(RestoreObjectRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".RestoreObject",
 	}
+	for header,value in pairs(RestoreObjectRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/{Bucket}/{Key+}?restore", RestoreObjectRequest, headers, settings, cb)
 	else
@@ -11891,8 +14740,11 @@ function M.DeleteBucketAnalyticsConfigurationAsync(DeleteBucketAnalyticsConfigur
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DeleteBucketAnalyticsConfiguration",
 	}
+	for header,value in pairs(DeleteBucketAnalyticsConfigurationRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("DELETE")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-xml", "DELETE")
 	if request_handler then
 		request_handler(settings.uri, "/{Bucket}?analytics", DeleteBucketAnalyticsConfigurationRequest, headers, settings, cb)
 	else

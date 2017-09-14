@@ -55,8 +55,14 @@ end
 -- Required key: decisionTaskCompletedEventId
 -- @return SignalExternalWorkflowExecutionInitiatedEventAttributes structure as a key-value pair table
 function M.SignalExternalWorkflowExecutionInitiatedEventAttributes(args)
-	assert(args, "You must provdide an argument table when creating SignalExternalWorkflowExecutionInitiatedEventAttributes")
-	local t = { 
+	assert(args, "You must provide an argument table when creating SignalExternalWorkflowExecutionInitiatedEventAttributes")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["control"] = args["control"],
 		["workflowId"] = args["workflowId"],
 		["runId"] = args["runId"],
@@ -64,8 +70,13 @@ function M.SignalExternalWorkflowExecutionInitiatedEventAttributes(args)
 		["input"] = args["input"],
 		["signalName"] = args["signalName"],
 	}
-	asserts.AssertSignalExternalWorkflowExecutionInitiatedEventAttributes(t)
-	return t
+	asserts.AssertSignalExternalWorkflowExecutionInitiatedEventAttributes(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DecisionTask = { ["nextPageToken"] = true, ["previousStartedEventId"] = true, ["workflowExecution"] = true, ["startedEventId"] = true, ["workflowType"] = true, ["events"] = true, ["taskToken"] = true, nil }
@@ -108,8 +119,14 @@ end
 -- Required key: events
 -- @return DecisionTask structure as a key-value pair table
 function M.DecisionTask(args)
-	assert(args, "You must provdide an argument table when creating DecisionTask")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DecisionTask")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["nextPageToken"] = args["nextPageToken"],
 		["previousStartedEventId"] = args["previousStartedEventId"],
 		["workflowExecution"] = args["workflowExecution"],
@@ -118,8 +135,13 @@ function M.DecisionTask(args)
 		["events"] = args["events"],
 		["taskToken"] = args["taskToken"],
 	}
-	asserts.AssertDecisionTask(t)
-	return t
+	asserts.AssertDecisionTask(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.RequestCancelActivityTaskDecisionAttributes = { ["activityId"] = true, nil }
@@ -142,12 +164,23 @@ end
 -- Required key: activityId
 -- @return RequestCancelActivityTaskDecisionAttributes structure as a key-value pair table
 function M.RequestCancelActivityTaskDecisionAttributes(args)
-	assert(args, "You must provdide an argument table when creating RequestCancelActivityTaskDecisionAttributes")
-	local t = { 
+	assert(args, "You must provide an argument table when creating RequestCancelActivityTaskDecisionAttributes")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["activityId"] = args["activityId"],
 	}
-	asserts.AssertRequestCancelActivityTaskDecisionAttributes(t)
-	return t
+	asserts.AssertRequestCancelActivityTaskDecisionAttributes(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.WorkflowExecutionFilter = { ["workflowId"] = true, nil }
@@ -170,12 +203,23 @@ end
 -- Required key: workflowId
 -- @return WorkflowExecutionFilter structure as a key-value pair table
 function M.WorkflowExecutionFilter(args)
-	assert(args, "You must provdide an argument table when creating WorkflowExecutionFilter")
-	local t = { 
+	assert(args, "You must provide an argument table when creating WorkflowExecutionFilter")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["workflowId"] = args["workflowId"],
 	}
-	asserts.AssertWorkflowExecutionFilter(t)
-	return t
+	asserts.AssertWorkflowExecutionFilter(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.StartChildWorkflowExecutionInitiatedEventAttributes = { ["control"] = true, ["workflowId"] = true, ["taskList"] = true, ["taskStartToCloseTimeout"] = true, ["taskPriority"] = true, ["lambdaRole"] = true, ["childPolicy"] = true, ["decisionTaskCompletedEventId"] = true, ["executionStartToCloseTimeout"] = true, ["input"] = true, ["workflowType"] = true, ["tagList"] = true, nil }
@@ -228,8 +272,14 @@ end
 -- Required key: childPolicy
 -- @return StartChildWorkflowExecutionInitiatedEventAttributes structure as a key-value pair table
 function M.StartChildWorkflowExecutionInitiatedEventAttributes(args)
-	assert(args, "You must provdide an argument table when creating StartChildWorkflowExecutionInitiatedEventAttributes")
-	local t = { 
+	assert(args, "You must provide an argument table when creating StartChildWorkflowExecutionInitiatedEventAttributes")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["control"] = args["control"],
 		["workflowId"] = args["workflowId"],
 		["taskList"] = args["taskList"],
@@ -243,8 +293,13 @@ function M.StartChildWorkflowExecutionInitiatedEventAttributes(args)
 		["workflowType"] = args["workflowType"],
 		["tagList"] = args["tagList"],
 	}
-	asserts.AssertStartChildWorkflowExecutionInitiatedEventAttributes(t)
-	return t
+	asserts.AssertStartChildWorkflowExecutionInitiatedEventAttributes(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ExternalWorkflowExecutionSignaledEventAttributes = { ["initiatedEventId"] = true, ["workflowExecution"] = true, nil }
@@ -271,13 +326,24 @@ end
 -- Required key: initiatedEventId
 -- @return ExternalWorkflowExecutionSignaledEventAttributes structure as a key-value pair table
 function M.ExternalWorkflowExecutionSignaledEventAttributes(args)
-	assert(args, "You must provdide an argument table when creating ExternalWorkflowExecutionSignaledEventAttributes")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ExternalWorkflowExecutionSignaledEventAttributes")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["initiatedEventId"] = args["initiatedEventId"],
 		["workflowExecution"] = args["workflowExecution"],
 	}
-	asserts.AssertExternalWorkflowExecutionSignaledEventAttributes(t)
-	return t
+	asserts.AssertExternalWorkflowExecutionSignaledEventAttributes(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeprecateActivityTypeInput = { ["domain"] = true, ["activityType"] = true, nil }
@@ -304,13 +370,24 @@ end
 -- Required key: activityType
 -- @return DeprecateActivityTypeInput structure as a key-value pair table
 function M.DeprecateActivityTypeInput(args)
-	assert(args, "You must provdide an argument table when creating DeprecateActivityTypeInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeprecateActivityTypeInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["domain"] = args["domain"],
 		["activityType"] = args["activityType"],
 	}
-	asserts.AssertDeprecateActivityTypeInput(t)
-	return t
+	asserts.AssertDeprecateActivityTypeInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.RegisterActivityTypeInput = { ["domain"] = true, ["defaultTaskScheduleToStartTimeout"] = true, ["name"] = true, ["defaultTaskHeartbeatTimeout"] = true, ["defaultTaskPriority"] = true, ["defaultTaskStartToCloseTimeout"] = true, ["defaultTaskScheduleToCloseTimeout"] = true, ["version"] = true, ["defaultTaskList"] = true, ["description"] = true, nil }
@@ -355,8 +432,14 @@ end
 -- Required key: version
 -- @return RegisterActivityTypeInput structure as a key-value pair table
 function M.RegisterActivityTypeInput(args)
-	assert(args, "You must provdide an argument table when creating RegisterActivityTypeInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating RegisterActivityTypeInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["domain"] = args["domain"],
 		["defaultTaskScheduleToStartTimeout"] = args["defaultTaskScheduleToStartTimeout"],
 		["name"] = args["name"],
@@ -368,8 +451,13 @@ function M.RegisterActivityTypeInput(args)
 		["defaultTaskList"] = args["defaultTaskList"],
 		["description"] = args["description"],
 	}
-	asserts.AssertRegisterActivityTypeInput(t)
-	return t
+	asserts.AssertRegisterActivityTypeInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ContinueAsNewWorkflowExecutionDecisionAttributes = { ["taskList"] = true, ["taskStartToCloseTimeout"] = true, ["workflowTypeVersion"] = true, ["taskPriority"] = true, ["childPolicy"] = true, ["executionStartToCloseTimeout"] = true, ["input"] = true, ["lambdaRole"] = true, ["tagList"] = true, nil }
@@ -406,8 +494,14 @@ end
 -- * tagList [TagList] <p>The list of tags to associate with the new workflow execution. A maximum of 5 tags can be specified. You can list workflow executions with a specific tag by calling <a>ListOpenWorkflowExecutions</a> or <a>ListClosedWorkflowExecutions</a> and specifying a <a>TagFilter</a>.</p>
 -- @return ContinueAsNewWorkflowExecutionDecisionAttributes structure as a key-value pair table
 function M.ContinueAsNewWorkflowExecutionDecisionAttributes(args)
-	assert(args, "You must provdide an argument table when creating ContinueAsNewWorkflowExecutionDecisionAttributes")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ContinueAsNewWorkflowExecutionDecisionAttributes")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["taskList"] = args["taskList"],
 		["taskStartToCloseTimeout"] = args["taskStartToCloseTimeout"],
 		["workflowTypeVersion"] = args["workflowTypeVersion"],
@@ -418,8 +512,13 @@ function M.ContinueAsNewWorkflowExecutionDecisionAttributes(args)
 		["lambdaRole"] = args["lambdaRole"],
 		["tagList"] = args["tagList"],
 	}
-	asserts.AssertContinueAsNewWorkflowExecutionDecisionAttributes(t)
-	return t
+	asserts.AssertContinueAsNewWorkflowExecutionDecisionAttributes(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ActivityTypeConfiguration = { ["defaultTaskScheduleToStartTimeout"] = true, ["defaultTaskHeartbeatTimeout"] = true, ["defaultTaskPriority"] = true, ["defaultTaskStartToCloseTimeout"] = true, ["defaultTaskScheduleToCloseTimeout"] = true, ["defaultTaskList"] = true, nil }
@@ -450,8 +549,14 @@ end
 -- * defaultTaskList [TaskList] <p><i>Optional.</i> The default task list specified for this activity type at registration. This default is used if a task list is not provided when a task is scheduled through the <code>ScheduleActivityTask</code> decision. You can override the default registered task list when scheduling a task through the <code>ScheduleActivityTask</code> decision.</p>
 -- @return ActivityTypeConfiguration structure as a key-value pair table
 function M.ActivityTypeConfiguration(args)
-	assert(args, "You must provdide an argument table when creating ActivityTypeConfiguration")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ActivityTypeConfiguration")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["defaultTaskScheduleToStartTimeout"] = args["defaultTaskScheduleToStartTimeout"],
 		["defaultTaskHeartbeatTimeout"] = args["defaultTaskHeartbeatTimeout"],
 		["defaultTaskPriority"] = args["defaultTaskPriority"],
@@ -459,8 +564,13 @@ function M.ActivityTypeConfiguration(args)
 		["defaultTaskScheduleToCloseTimeout"] = args["defaultTaskScheduleToCloseTimeout"],
 		["defaultTaskList"] = args["defaultTaskList"],
 	}
-	asserts.AssertActivityTypeConfiguration(t)
-	return t
+	asserts.AssertActivityTypeConfiguration(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.StartTimerDecisionAttributes = { ["control"] = true, ["timerId"] = true, ["startToFireTimeout"] = true, nil }
@@ -489,14 +599,25 @@ end
 -- Required key: startToFireTimeout
 -- @return StartTimerDecisionAttributes structure as a key-value pair table
 function M.StartTimerDecisionAttributes(args)
-	assert(args, "You must provdide an argument table when creating StartTimerDecisionAttributes")
-	local t = { 
+	assert(args, "You must provide an argument table when creating StartTimerDecisionAttributes")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["control"] = args["control"],
 		["timerId"] = args["timerId"],
 		["startToFireTimeout"] = args["startToFireTimeout"],
 	}
-	asserts.AssertStartTimerDecisionAttributes(t)
-	return t
+	asserts.AssertStartTimerDecisionAttributes(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CountPendingActivityTasksInput = { ["domain"] = true, ["taskList"] = true, nil }
@@ -523,13 +644,24 @@ end
 -- Required key: taskList
 -- @return CountPendingActivityTasksInput structure as a key-value pair table
 function M.CountPendingActivityTasksInput(args)
-	assert(args, "You must provdide an argument table when creating CountPendingActivityTasksInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CountPendingActivityTasksInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["domain"] = args["domain"],
 		["taskList"] = args["taskList"],
 	}
-	asserts.AssertCountPendingActivityTasksInput(t)
-	return t
+	asserts.AssertCountPendingActivityTasksInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeprecateDomainInput = { ["name"] = true, nil }
@@ -552,12 +684,23 @@ end
 -- Required key: name
 -- @return DeprecateDomainInput structure as a key-value pair table
 function M.DeprecateDomainInput(args)
-	assert(args, "You must provdide an argument table when creating DeprecateDomainInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeprecateDomainInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["name"] = args["name"],
 	}
-	asserts.AssertDeprecateDomainInput(t)
-	return t
+	asserts.AssertDeprecateDomainInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.RequestCancelExternalWorkflowExecutionFailedEventAttributes = { ["control"] = true, ["workflowId"] = true, ["initiatedEventId"] = true, ["runId"] = true, ["decisionTaskCompletedEventId"] = true, ["cause"] = true, nil }
@@ -596,8 +739,14 @@ end
 -- Required key: decisionTaskCompletedEventId
 -- @return RequestCancelExternalWorkflowExecutionFailedEventAttributes structure as a key-value pair table
 function M.RequestCancelExternalWorkflowExecutionFailedEventAttributes(args)
-	assert(args, "You must provdide an argument table when creating RequestCancelExternalWorkflowExecutionFailedEventAttributes")
-	local t = { 
+	assert(args, "You must provide an argument table when creating RequestCancelExternalWorkflowExecutionFailedEventAttributes")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["control"] = args["control"],
 		["workflowId"] = args["workflowId"],
 		["initiatedEventId"] = args["initiatedEventId"],
@@ -605,8 +754,13 @@ function M.RequestCancelExternalWorkflowExecutionFailedEventAttributes(args)
 		["decisionTaskCompletedEventId"] = args["decisionTaskCompletedEventId"],
 		["cause"] = args["cause"],
 	}
-	asserts.AssertRequestCancelExternalWorkflowExecutionFailedEventAttributes(t)
-	return t
+	asserts.AssertRequestCancelExternalWorkflowExecutionFailedEventAttributes(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.RegisterWorkflowTypeInput = { ["defaultExecutionStartToCloseTimeout"] = true, ["domain"] = true, ["name"] = true, ["defaultTaskPriority"] = true, ["defaultTaskStartToCloseTimeout"] = true, ["defaultChildPolicy"] = true, ["version"] = true, ["defaultLambdaRole"] = true, ["defaultTaskList"] = true, ["description"] = true, nil }
@@ -651,8 +805,14 @@ end
 -- Required key: version
 -- @return RegisterWorkflowTypeInput structure as a key-value pair table
 function M.RegisterWorkflowTypeInput(args)
-	assert(args, "You must provdide an argument table when creating RegisterWorkflowTypeInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating RegisterWorkflowTypeInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["defaultExecutionStartToCloseTimeout"] = args["defaultExecutionStartToCloseTimeout"],
 		["domain"] = args["domain"],
 		["name"] = args["name"],
@@ -664,8 +824,13 @@ function M.RegisterWorkflowTypeInput(args)
 		["defaultTaskList"] = args["defaultTaskList"],
 		["description"] = args["description"],
 	}
-	asserts.AssertRegisterWorkflowTypeInput(t)
-	return t
+	asserts.AssertRegisterWorkflowTypeInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.RespondActivityTaskFailedInput = { ["reason"] = true, ["details"] = true, ["taskToken"] = true, nil }
@@ -692,14 +857,25 @@ end
 -- Required key: taskToken
 -- @return RespondActivityTaskFailedInput structure as a key-value pair table
 function M.RespondActivityTaskFailedInput(args)
-	assert(args, "You must provdide an argument table when creating RespondActivityTaskFailedInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating RespondActivityTaskFailedInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["reason"] = args["reason"],
 		["details"] = args["details"],
 		["taskToken"] = args["taskToken"],
 	}
-	asserts.AssertRespondActivityTaskFailedInput(t)
-	return t
+	asserts.AssertRespondActivityTaskFailedInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ActivityType = { ["version"] = true, ["name"] = true, nil }
@@ -726,13 +902,24 @@ end
 -- Required key: version
 -- @return ActivityType structure as a key-value pair table
 function M.ActivityType(args)
-	assert(args, "You must provdide an argument table when creating ActivityType")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ActivityType")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["version"] = args["version"],
 		["name"] = args["name"],
 	}
-	asserts.AssertActivityType(t)
-	return t
+	asserts.AssertActivityType(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.TerminateWorkflowExecutionInput = { ["domain"] = true, ["workflowId"] = true, ["reason"] = true, ["childPolicy"] = true, ["details"] = true, ["runId"] = true, nil }
@@ -767,8 +954,14 @@ end
 -- Required key: workflowId
 -- @return TerminateWorkflowExecutionInput structure as a key-value pair table
 function M.TerminateWorkflowExecutionInput(args)
-	assert(args, "You must provdide an argument table when creating TerminateWorkflowExecutionInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating TerminateWorkflowExecutionInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["domain"] = args["domain"],
 		["workflowId"] = args["workflowId"],
 		["reason"] = args["reason"],
@@ -776,8 +969,13 @@ function M.TerminateWorkflowExecutionInput(args)
 		["details"] = args["details"],
 		["runId"] = args["runId"],
 	}
-	asserts.AssertTerminateWorkflowExecutionInput(t)
-	return t
+	asserts.AssertTerminateWorkflowExecutionInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ActivityTask = { ["activityType"] = true, ["workflowExecution"] = true, ["startedEventId"] = true, ["activityId"] = true, ["input"] = true, ["taskToken"] = true, nil }
@@ -818,8 +1016,14 @@ end
 -- Required key: activityType
 -- @return ActivityTask structure as a key-value pair table
 function M.ActivityTask(args)
-	assert(args, "You must provdide an argument table when creating ActivityTask")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ActivityTask")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["activityType"] = args["activityType"],
 		["workflowExecution"] = args["workflowExecution"],
 		["startedEventId"] = args["startedEventId"],
@@ -827,8 +1031,13 @@ function M.ActivityTask(args)
 		["input"] = args["input"],
 		["taskToken"] = args["taskToken"],
 	}
-	asserts.AssertActivityTask(t)
-	return t
+	asserts.AssertActivityTask(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ChildWorkflowExecutionStartedEventAttributes = { ["workflowType"] = true, ["initiatedEventId"] = true, ["workflowExecution"] = true, nil }
@@ -859,14 +1068,25 @@ end
 -- Required key: initiatedEventId
 -- @return ChildWorkflowExecutionStartedEventAttributes structure as a key-value pair table
 function M.ChildWorkflowExecutionStartedEventAttributes(args)
-	assert(args, "You must provdide an argument table when creating ChildWorkflowExecutionStartedEventAttributes")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ChildWorkflowExecutionStartedEventAttributes")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["workflowType"] = args["workflowType"],
 		["initiatedEventId"] = args["initiatedEventId"],
 		["workflowExecution"] = args["workflowExecution"],
 	}
-	asserts.AssertChildWorkflowExecutionStartedEventAttributes(t)
-	return t
+	asserts.AssertChildWorkflowExecutionStartedEventAttributes(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Decision = { ["scheduleActivityTaskDecisionAttributes"] = true, ["cancelWorkflowExecutionDecisionAttributes"] = true, ["cancelTimerDecisionAttributes"] = true, ["scheduleLambdaFunctionDecisionAttributes"] = true, ["signalExternalWorkflowExecutionDecisionAttributes"] = true, ["failWorkflowExecutionDecisionAttributes"] = true, ["recordMarkerDecisionAttributes"] = true, ["requestCancelActivityTaskDecisionAttributes"] = true, ["completeWorkflowExecutionDecisionAttributes"] = true, ["startTimerDecisionAttributes"] = true, ["requestCancelExternalWorkflowExecutionDecisionAttributes"] = true, ["continueAsNewWorkflowExecutionDecisionAttributes"] = true, ["decisionType"] = true, ["startChildWorkflowExecutionDecisionAttributes"] = true, nil }
@@ -915,8 +1135,14 @@ end
 -- Required key: decisionType
 -- @return Decision structure as a key-value pair table
 function M.Decision(args)
-	assert(args, "You must provdide an argument table when creating Decision")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Decision")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["scheduleActivityTaskDecisionAttributes"] = args["scheduleActivityTaskDecisionAttributes"],
 		["cancelWorkflowExecutionDecisionAttributes"] = args["cancelWorkflowExecutionDecisionAttributes"],
 		["cancelTimerDecisionAttributes"] = args["cancelTimerDecisionAttributes"],
@@ -932,8 +1158,13 @@ function M.Decision(args)
 		["decisionType"] = args["decisionType"],
 		["startChildWorkflowExecutionDecisionAttributes"] = args["startChildWorkflowExecutionDecisionAttributes"],
 	}
-	asserts.AssertDecision(t)
-	return t
+	asserts.AssertDecision(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ActivityTypeDetail = { ["configuration"] = true, ["typeInfo"] = true, nil }
@@ -960,13 +1191,24 @@ end
 -- Required key: configuration
 -- @return ActivityTypeDetail structure as a key-value pair table
 function M.ActivityTypeDetail(args)
-	assert(args, "You must provdide an argument table when creating ActivityTypeDetail")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ActivityTypeDetail")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["configuration"] = args["configuration"],
 		["typeInfo"] = args["typeInfo"],
 	}
-	asserts.AssertActivityTypeDetail(t)
-	return t
+	asserts.AssertActivityTypeDetail(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ChildWorkflowExecutionTimedOutEventAttributes = { ["startedEventId"] = true, ["timeoutType"] = true, ["workflowType"] = true, ["initiatedEventId"] = true, ["workflowExecution"] = true, nil }
@@ -1005,16 +1247,27 @@ end
 -- Required key: startedEventId
 -- @return ChildWorkflowExecutionTimedOutEventAttributes structure as a key-value pair table
 function M.ChildWorkflowExecutionTimedOutEventAttributes(args)
-	assert(args, "You must provdide an argument table when creating ChildWorkflowExecutionTimedOutEventAttributes")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ChildWorkflowExecutionTimedOutEventAttributes")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["startedEventId"] = args["startedEventId"],
 		["timeoutType"] = args["timeoutType"],
 		["workflowType"] = args["workflowType"],
 		["initiatedEventId"] = args["initiatedEventId"],
 		["workflowExecution"] = args["workflowExecution"],
 	}
-	asserts.AssertChildWorkflowExecutionTimedOutEventAttributes(t)
-	return t
+	asserts.AssertChildWorkflowExecutionTimedOutEventAttributes(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.PollForActivityTaskInput = { ["domain"] = true, ["taskList"] = true, ["identity"] = true, nil }
@@ -1043,14 +1296,25 @@ end
 -- Required key: taskList
 -- @return PollForActivityTaskInput structure as a key-value pair table
 function M.PollForActivityTaskInput(args)
-	assert(args, "You must provdide an argument table when creating PollForActivityTaskInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating PollForActivityTaskInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["domain"] = args["domain"],
 		["taskList"] = args["taskList"],
 		["identity"] = args["identity"],
 	}
-	asserts.AssertPollForActivityTaskInput(t)
-	return t
+	asserts.AssertPollForActivityTaskInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.FailWorkflowExecutionDecisionAttributes = { ["reason"] = true, ["details"] = true, nil }
@@ -1073,13 +1337,24 @@ end
 -- * details [Data] <p><i>Optional.</i> Details of the failure.</p>
 -- @return FailWorkflowExecutionDecisionAttributes structure as a key-value pair table
 function M.FailWorkflowExecutionDecisionAttributes(args)
-	assert(args, "You must provdide an argument table when creating FailWorkflowExecutionDecisionAttributes")
-	local t = { 
+	assert(args, "You must provide an argument table when creating FailWorkflowExecutionDecisionAttributes")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["reason"] = args["reason"],
 		["details"] = args["details"],
 	}
-	asserts.AssertFailWorkflowExecutionDecisionAttributes(t)
-	return t
+	asserts.AssertFailWorkflowExecutionDecisionAttributes(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DomainInfo = { ["status"] = true, ["name"] = true, ["description"] = true, nil }
@@ -1108,14 +1383,25 @@ end
 -- Required key: status
 -- @return DomainInfo structure as a key-value pair table
 function M.DomainInfo(args)
-	assert(args, "You must provdide an argument table when creating DomainInfo")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DomainInfo")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["status"] = args["status"],
 		["name"] = args["name"],
 		["description"] = args["description"],
 	}
-	asserts.AssertDomainInfo(t)
-	return t
+	asserts.AssertDomainInfo(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ActivityTaskFailedEventAttributes = { ["startedEventId"] = true, ["reason"] = true, ["scheduledEventId"] = true, ["details"] = true, nil }
@@ -1146,15 +1432,26 @@ end
 -- Required key: startedEventId
 -- @return ActivityTaskFailedEventAttributes structure as a key-value pair table
 function M.ActivityTaskFailedEventAttributes(args)
-	assert(args, "You must provdide an argument table when creating ActivityTaskFailedEventAttributes")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ActivityTaskFailedEventAttributes")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["startedEventId"] = args["startedEventId"],
 		["reason"] = args["reason"],
 		["scheduledEventId"] = args["scheduledEventId"],
 		["details"] = args["details"],
 	}
-	asserts.AssertActivityTaskFailedEventAttributes(t)
-	return t
+	asserts.AssertActivityTaskFailedEventAttributes(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ExternalWorkflowExecutionCancelRequestedEventAttributes = { ["initiatedEventId"] = true, ["workflowExecution"] = true, nil }
@@ -1181,13 +1478,24 @@ end
 -- Required key: initiatedEventId
 -- @return ExternalWorkflowExecutionCancelRequestedEventAttributes structure as a key-value pair table
 function M.ExternalWorkflowExecutionCancelRequestedEventAttributes(args)
-	assert(args, "You must provdide an argument table when creating ExternalWorkflowExecutionCancelRequestedEventAttributes")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ExternalWorkflowExecutionCancelRequestedEventAttributes")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["initiatedEventId"] = args["initiatedEventId"],
 		["workflowExecution"] = args["workflowExecution"],
 	}
-	asserts.AssertExternalWorkflowExecutionCancelRequestedEventAttributes(t)
-	return t
+	asserts.AssertExternalWorkflowExecutionCancelRequestedEventAttributes(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ChildWorkflowExecutionFailedEventAttributes = { ["workflowExecution"] = true, ["initiatedEventId"] = true, ["startedEventId"] = true, ["reason"] = true, ["details"] = true, ["workflowType"] = true, nil }
@@ -1226,8 +1534,14 @@ end
 -- Required key: startedEventId
 -- @return ChildWorkflowExecutionFailedEventAttributes structure as a key-value pair table
 function M.ChildWorkflowExecutionFailedEventAttributes(args)
-	assert(args, "You must provdide an argument table when creating ChildWorkflowExecutionFailedEventAttributes")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ChildWorkflowExecutionFailedEventAttributes")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["workflowExecution"] = args["workflowExecution"],
 		["initiatedEventId"] = args["initiatedEventId"],
 		["startedEventId"] = args["startedEventId"],
@@ -1235,8 +1549,13 @@ function M.ChildWorkflowExecutionFailedEventAttributes(args)
 		["details"] = args["details"],
 		["workflowType"] = args["workflowType"],
 	}
-	asserts.AssertChildWorkflowExecutionFailedEventAttributes(t)
-	return t
+	asserts.AssertChildWorkflowExecutionFailedEventAttributes(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ActivityTaskCancelRequestedEventAttributes = { ["activityId"] = true, ["decisionTaskCompletedEventId"] = true, nil }
@@ -1263,13 +1582,24 @@ end
 -- Required key: activityId
 -- @return ActivityTaskCancelRequestedEventAttributes structure as a key-value pair table
 function M.ActivityTaskCancelRequestedEventAttributes(args)
-	assert(args, "You must provdide an argument table when creating ActivityTaskCancelRequestedEventAttributes")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ActivityTaskCancelRequestedEventAttributes")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["activityId"] = args["activityId"],
 		["decisionTaskCompletedEventId"] = args["decisionTaskCompletedEventId"],
 	}
-	asserts.AssertActivityTaskCancelRequestedEventAttributes(t)
-	return t
+	asserts.AssertActivityTaskCancelRequestedEventAttributes(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DomainDeprecatedFault = { ["message"] = true, nil }
@@ -1290,12 +1620,23 @@ end
 -- * message [ErrorMessage] <p>A description that may help with diagnosing the cause of the fault.</p>
 -- @return DomainDeprecatedFault structure as a key-value pair table
 function M.DomainDeprecatedFault(args)
-	assert(args, "You must provdide an argument table when creating DomainDeprecatedFault")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DomainDeprecatedFault")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertDomainDeprecatedFault(t)
-	return t
+	asserts.AssertDomainDeprecatedFault(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CompleteWorkflowExecutionFailedEventAttributes = { ["cause"] = true, ["decisionTaskCompletedEventId"] = true, nil }
@@ -1322,13 +1663,24 @@ end
 -- Required key: decisionTaskCompletedEventId
 -- @return CompleteWorkflowExecutionFailedEventAttributes structure as a key-value pair table
 function M.CompleteWorkflowExecutionFailedEventAttributes(args)
-	assert(args, "You must provdide an argument table when creating CompleteWorkflowExecutionFailedEventAttributes")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CompleteWorkflowExecutionFailedEventAttributes")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["cause"] = args["cause"],
 		["decisionTaskCompletedEventId"] = args["decisionTaskCompletedEventId"],
 	}
-	asserts.AssertCompleteWorkflowExecutionFailedEventAttributes(t)
-	return t
+	asserts.AssertCompleteWorkflowExecutionFailedEventAttributes(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ChildWorkflowExecutionCanceledEventAttributes = { ["startedEventId"] = true, ["workflowType"] = true, ["initiatedEventId"] = true, ["details"] = true, ["workflowExecution"] = true, nil }
@@ -1365,16 +1717,27 @@ end
 -- Required key: startedEventId
 -- @return ChildWorkflowExecutionCanceledEventAttributes structure as a key-value pair table
 function M.ChildWorkflowExecutionCanceledEventAttributes(args)
-	assert(args, "You must provdide an argument table when creating ChildWorkflowExecutionCanceledEventAttributes")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ChildWorkflowExecutionCanceledEventAttributes")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["startedEventId"] = args["startedEventId"],
 		["workflowType"] = args["workflowType"],
 		["initiatedEventId"] = args["initiatedEventId"],
 		["details"] = args["details"],
 		["workflowExecution"] = args["workflowExecution"],
 	}
-	asserts.AssertChildWorkflowExecutionCanceledEventAttributes(t)
-	return t
+	asserts.AssertChildWorkflowExecutionCanceledEventAttributes(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.LambdaFunctionTimedOutEventAttributes = { ["startedEventId"] = true, ["timeoutType"] = true, ["scheduledEventId"] = true, nil }
@@ -1403,14 +1766,25 @@ end
 -- Required key: startedEventId
 -- @return LambdaFunctionTimedOutEventAttributes structure as a key-value pair table
 function M.LambdaFunctionTimedOutEventAttributes(args)
-	assert(args, "You must provdide an argument table when creating LambdaFunctionTimedOutEventAttributes")
-	local t = { 
+	assert(args, "You must provide an argument table when creating LambdaFunctionTimedOutEventAttributes")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["startedEventId"] = args["startedEventId"],
 		["timeoutType"] = args["timeoutType"],
 		["scheduledEventId"] = args["scheduledEventId"],
 	}
-	asserts.AssertLambdaFunctionTimedOutEventAttributes(t)
-	return t
+	asserts.AssertLambdaFunctionTimedOutEventAttributes(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.WorkflowExecutionTerminatedEventAttributes = { ["reason"] = true, ["childPolicy"] = true, ["cause"] = true, ["details"] = true, nil }
@@ -1439,15 +1813,26 @@ end
 -- Required key: childPolicy
 -- @return WorkflowExecutionTerminatedEventAttributes structure as a key-value pair table
 function M.WorkflowExecutionTerminatedEventAttributes(args)
-	assert(args, "You must provdide an argument table when creating WorkflowExecutionTerminatedEventAttributes")
-	local t = { 
+	assert(args, "You must provide an argument table when creating WorkflowExecutionTerminatedEventAttributes")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["reason"] = args["reason"],
 		["childPolicy"] = args["childPolicy"],
 		["cause"] = args["cause"],
 		["details"] = args["details"],
 	}
-	asserts.AssertWorkflowExecutionTerminatedEventAttributes(t)
-	return t
+	asserts.AssertWorkflowExecutionTerminatedEventAttributes(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.WorkflowTypeConfiguration = { ["defaultExecutionStartToCloseTimeout"] = true, ["defaultChildPolicy"] = true, ["defaultTaskStartToCloseTimeout"] = true, ["defaultTaskPriority"] = true, ["defaultLambdaRole"] = true, ["defaultTaskList"] = true, nil }
@@ -1478,8 +1863,14 @@ end
 -- * defaultTaskList [TaskList] <p><i>Optional.</i> The default task list, specified when registering the workflow type, for decisions tasks scheduled for workflow executions of this type. This default can be overridden when starting a workflow execution using the <a>StartWorkflowExecution</a> action or the <code>StartChildWorkflowExecution</code> decision.</p>
 -- @return WorkflowTypeConfiguration structure as a key-value pair table
 function M.WorkflowTypeConfiguration(args)
-	assert(args, "You must provdide an argument table when creating WorkflowTypeConfiguration")
-	local t = { 
+	assert(args, "You must provide an argument table when creating WorkflowTypeConfiguration")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["defaultExecutionStartToCloseTimeout"] = args["defaultExecutionStartToCloseTimeout"],
 		["defaultChildPolicy"] = args["defaultChildPolicy"],
 		["defaultTaskStartToCloseTimeout"] = args["defaultTaskStartToCloseTimeout"],
@@ -1487,8 +1878,13 @@ function M.WorkflowTypeConfiguration(args)
 		["defaultLambdaRole"] = args["defaultLambdaRole"],
 		["defaultTaskList"] = args["defaultTaskList"],
 	}
-	asserts.AssertWorkflowTypeConfiguration(t)
-	return t
+	asserts.AssertWorkflowTypeConfiguration(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.RespondActivityTaskCanceledInput = { ["details"] = true, ["taskToken"] = true, nil }
@@ -1513,13 +1909,24 @@ end
 -- Required key: taskToken
 -- @return RespondActivityTaskCanceledInput structure as a key-value pair table
 function M.RespondActivityTaskCanceledInput(args)
-	assert(args, "You must provdide an argument table when creating RespondActivityTaskCanceledInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating RespondActivityTaskCanceledInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["details"] = args["details"],
 		["taskToken"] = args["taskToken"],
 	}
-	asserts.AssertRespondActivityTaskCanceledInput(t)
-	return t
+	asserts.AssertRespondActivityTaskCanceledInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.WorkflowExecutionTimedOutEventAttributes = { ["timeoutType"] = true, ["childPolicy"] = true, nil }
@@ -1546,13 +1953,24 @@ end
 -- Required key: childPolicy
 -- @return WorkflowExecutionTimedOutEventAttributes structure as a key-value pair table
 function M.WorkflowExecutionTimedOutEventAttributes(args)
-	assert(args, "You must provdide an argument table when creating WorkflowExecutionTimedOutEventAttributes")
-	local t = { 
+	assert(args, "You must provide an argument table when creating WorkflowExecutionTimedOutEventAttributes")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["timeoutType"] = args["timeoutType"],
 		["childPolicy"] = args["childPolicy"],
 	}
-	asserts.AssertWorkflowExecutionTimedOutEventAttributes(t)
-	return t
+	asserts.AssertWorkflowExecutionTimedOutEventAttributes(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CancelWorkflowExecutionFailedEventAttributes = { ["cause"] = true, ["decisionTaskCompletedEventId"] = true, nil }
@@ -1579,13 +1997,24 @@ end
 -- Required key: decisionTaskCompletedEventId
 -- @return CancelWorkflowExecutionFailedEventAttributes structure as a key-value pair table
 function M.CancelWorkflowExecutionFailedEventAttributes(args)
-	assert(args, "You must provdide an argument table when creating CancelWorkflowExecutionFailedEventAttributes")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CancelWorkflowExecutionFailedEventAttributes")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["cause"] = args["cause"],
 		["decisionTaskCompletedEventId"] = args["decisionTaskCompletedEventId"],
 	}
-	asserts.AssertCancelWorkflowExecutionFailedEventAttributes(t)
-	return t
+	asserts.AssertCancelWorkflowExecutionFailedEventAttributes(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.WorkflowExecutionConfiguration = { ["taskList"] = true, ["taskStartToCloseTimeout"] = true, ["lambdaRole"] = true, ["childPolicy"] = true, ["executionStartToCloseTimeout"] = true, ["taskPriority"] = true, nil }
@@ -1624,8 +2053,14 @@ end
 -- Required key: childPolicy
 -- @return WorkflowExecutionConfiguration structure as a key-value pair table
 function M.WorkflowExecutionConfiguration(args)
-	assert(args, "You must provdide an argument table when creating WorkflowExecutionConfiguration")
-	local t = { 
+	assert(args, "You must provide an argument table when creating WorkflowExecutionConfiguration")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["taskList"] = args["taskList"],
 		["taskStartToCloseTimeout"] = args["taskStartToCloseTimeout"],
 		["lambdaRole"] = args["lambdaRole"],
@@ -1633,8 +2068,13 @@ function M.WorkflowExecutionConfiguration(args)
 		["executionStartToCloseTimeout"] = args["executionStartToCloseTimeout"],
 		["taskPriority"] = args["taskPriority"],
 	}
-	asserts.AssertWorkflowExecutionConfiguration(t)
-	return t
+	asserts.AssertWorkflowExecutionConfiguration(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.LambdaFunctionCompletedEventAttributes = { ["startedEventId"] = true, ["scheduledEventId"] = true, ["result"] = true, nil }
@@ -1663,14 +2103,25 @@ end
 -- Required key: startedEventId
 -- @return LambdaFunctionCompletedEventAttributes structure as a key-value pair table
 function M.LambdaFunctionCompletedEventAttributes(args)
-	assert(args, "You must provdide an argument table when creating LambdaFunctionCompletedEventAttributes")
-	local t = { 
+	assert(args, "You must provide an argument table when creating LambdaFunctionCompletedEventAttributes")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["startedEventId"] = args["startedEventId"],
 		["scheduledEventId"] = args["scheduledEventId"],
 		["result"] = args["result"],
 	}
-	asserts.AssertLambdaFunctionCompletedEventAttributes(t)
-	return t
+	asserts.AssertLambdaFunctionCompletedEventAttributes(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeDomainInput = { ["name"] = true, nil }
@@ -1693,12 +2144,23 @@ end
 -- Required key: name
 -- @return DescribeDomainInput structure as a key-value pair table
 function M.DescribeDomainInput(args)
-	assert(args, "You must provdide an argument table when creating DescribeDomainInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeDomainInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["name"] = args["name"],
 	}
-	asserts.AssertDescribeDomainInput(t)
-	return t
+	asserts.AssertDescribeDomainInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeprecateWorkflowTypeInput = { ["domain"] = true, ["workflowType"] = true, nil }
@@ -1725,13 +2187,24 @@ end
 -- Required key: workflowType
 -- @return DeprecateWorkflowTypeInput structure as a key-value pair table
 function M.DeprecateWorkflowTypeInput(args)
-	assert(args, "You must provdide an argument table when creating DeprecateWorkflowTypeInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeprecateWorkflowTypeInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["domain"] = args["domain"],
 		["workflowType"] = args["workflowType"],
 	}
-	asserts.AssertDeprecateWorkflowTypeInput(t)
-	return t
+	asserts.AssertDeprecateWorkflowTypeInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ScheduleActivityTaskDecisionAttributes = { ["control"] = true, ["taskList"] = true, ["scheduleToCloseTimeout"] = true, ["activityType"] = true, ["taskPriority"] = true, ["heartbeatTimeout"] = true, ["activityId"] = true, ["scheduleToStartTimeout"] = true, ["startToCloseTimeout"] = true, ["input"] = true, nil }
@@ -1774,8 +2247,14 @@ end
 -- Required key: activityId
 -- @return ScheduleActivityTaskDecisionAttributes structure as a key-value pair table
 function M.ScheduleActivityTaskDecisionAttributes(args)
-	assert(args, "You must provdide an argument table when creating ScheduleActivityTaskDecisionAttributes")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ScheduleActivityTaskDecisionAttributes")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["control"] = args["control"],
 		["taskList"] = args["taskList"],
 		["scheduleToCloseTimeout"] = args["scheduleToCloseTimeout"],
@@ -1787,8 +2266,13 @@ function M.ScheduleActivityTaskDecisionAttributes(args)
 		["startToCloseTimeout"] = args["startToCloseTimeout"],
 		["input"] = args["input"],
 	}
-	asserts.AssertScheduleActivityTaskDecisionAttributes(t)
-	return t
+	asserts.AssertScheduleActivityTaskDecisionAttributes(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.WorkflowExecutionCanceledEventAttributes = { ["details"] = true, ["decisionTaskCompletedEventId"] = true, nil }
@@ -1813,13 +2297,24 @@ end
 -- Required key: decisionTaskCompletedEventId
 -- @return WorkflowExecutionCanceledEventAttributes structure as a key-value pair table
 function M.WorkflowExecutionCanceledEventAttributes(args)
-	assert(args, "You must provdide an argument table when creating WorkflowExecutionCanceledEventAttributes")
-	local t = { 
+	assert(args, "You must provide an argument table when creating WorkflowExecutionCanceledEventAttributes")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["details"] = args["details"],
 		["decisionTaskCompletedEventId"] = args["decisionTaskCompletedEventId"],
 	}
-	asserts.AssertWorkflowExecutionCanceledEventAttributes(t)
-	return t
+	asserts.AssertWorkflowExecutionCanceledEventAttributes(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.StartWorkflowExecutionInput = { ["domain"] = true, ["taskList"] = true, ["taskStartToCloseTimeout"] = true, ["workflowId"] = true, ["taskPriority"] = true, ["lambdaRole"] = true, ["childPolicy"] = true, ["executionStartToCloseTimeout"] = true, ["input"] = true, ["workflowType"] = true, ["tagList"] = true, nil }
@@ -1866,8 +2361,14 @@ end
 -- Required key: workflowType
 -- @return StartWorkflowExecutionInput structure as a key-value pair table
 function M.StartWorkflowExecutionInput(args)
-	assert(args, "You must provdide an argument table when creating StartWorkflowExecutionInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating StartWorkflowExecutionInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["domain"] = args["domain"],
 		["taskList"] = args["taskList"],
 		["taskStartToCloseTimeout"] = args["taskStartToCloseTimeout"],
@@ -1880,8 +2381,13 @@ function M.StartWorkflowExecutionInput(args)
 		["workflowType"] = args["workflowType"],
 		["tagList"] = args["tagList"],
 	}
-	asserts.AssertStartWorkflowExecutionInput(t)
-	return t
+	asserts.AssertStartWorkflowExecutionInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.RecordMarkerDecisionAttributes = { ["markerName"] = true, ["details"] = true, nil }
@@ -1906,13 +2412,24 @@ end
 -- Required key: markerName
 -- @return RecordMarkerDecisionAttributes structure as a key-value pair table
 function M.RecordMarkerDecisionAttributes(args)
-	assert(args, "You must provdide an argument table when creating RecordMarkerDecisionAttributes")
-	local t = { 
+	assert(args, "You must provide an argument table when creating RecordMarkerDecisionAttributes")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["markerName"] = args["markerName"],
 		["details"] = args["details"],
 	}
-	asserts.AssertRecordMarkerDecisionAttributes(t)
-	return t
+	asserts.AssertRecordMarkerDecisionAttributes(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.RequestCancelExternalWorkflowExecutionInitiatedEventAttributes = { ["control"] = true, ["workflowId"] = true, ["runId"] = true, ["decisionTaskCompletedEventId"] = true, nil }
@@ -1943,15 +2460,26 @@ end
 -- Required key: decisionTaskCompletedEventId
 -- @return RequestCancelExternalWorkflowExecutionInitiatedEventAttributes structure as a key-value pair table
 function M.RequestCancelExternalWorkflowExecutionInitiatedEventAttributes(args)
-	assert(args, "You must provdide an argument table when creating RequestCancelExternalWorkflowExecutionInitiatedEventAttributes")
-	local t = { 
+	assert(args, "You must provide an argument table when creating RequestCancelExternalWorkflowExecutionInitiatedEventAttributes")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["control"] = args["control"],
 		["workflowId"] = args["workflowId"],
 		["runId"] = args["runId"],
 		["decisionTaskCompletedEventId"] = args["decisionTaskCompletedEventId"],
 	}
-	asserts.AssertRequestCancelExternalWorkflowExecutionInitiatedEventAttributes(t)
-	return t
+	asserts.AssertRequestCancelExternalWorkflowExecutionInitiatedEventAttributes(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.PendingTaskCount = { ["count"] = true, ["truncated"] = true, nil }
@@ -1976,13 +2504,24 @@ end
 -- Required key: count
 -- @return PendingTaskCount structure as a key-value pair table
 function M.PendingTaskCount(args)
-	assert(args, "You must provdide an argument table when creating PendingTaskCount")
-	local t = { 
+	assert(args, "You must provide an argument table when creating PendingTaskCount")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["count"] = args["count"],
 		["truncated"] = args["truncated"],
 	}
-	asserts.AssertPendingTaskCount(t)
-	return t
+	asserts.AssertPendingTaskCount(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.WorkflowTypeInfo = { ["status"] = true, ["deprecationDate"] = true, ["creationDate"] = true, ["workflowType"] = true, ["description"] = true, nil }
@@ -2017,16 +2556,27 @@ end
 -- Required key: creationDate
 -- @return WorkflowTypeInfo structure as a key-value pair table
 function M.WorkflowTypeInfo(args)
-	assert(args, "You must provdide an argument table when creating WorkflowTypeInfo")
-	local t = { 
+	assert(args, "You must provide an argument table when creating WorkflowTypeInfo")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["status"] = args["status"],
 		["deprecationDate"] = args["deprecationDate"],
 		["creationDate"] = args["creationDate"],
 		["workflowType"] = args["workflowType"],
 		["description"] = args["description"],
 	}
-	asserts.AssertWorkflowTypeInfo(t)
-	return t
+	asserts.AssertWorkflowTypeInfo(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DecisionTaskStartedEventAttributes = { ["scheduledEventId"] = true, ["identity"] = true, nil }
@@ -2051,13 +2601,24 @@ end
 -- Required key: scheduledEventId
 -- @return DecisionTaskStartedEventAttributes structure as a key-value pair table
 function M.DecisionTaskStartedEventAttributes(args)
-	assert(args, "You must provdide an argument table when creating DecisionTaskStartedEventAttributes")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DecisionTaskStartedEventAttributes")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["scheduledEventId"] = args["scheduledEventId"],
 		["identity"] = args["identity"],
 	}
-	asserts.AssertDecisionTaskStartedEventAttributes(t)
-	return t
+	asserts.AssertDecisionTaskStartedEventAttributes(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.WorkflowType = { ["version"] = true, ["name"] = true, nil }
@@ -2084,13 +2645,24 @@ end
 -- Required key: version
 -- @return WorkflowType structure as a key-value pair table
 function M.WorkflowType(args)
-	assert(args, "You must provdide an argument table when creating WorkflowType")
-	local t = { 
+	assert(args, "You must provide an argument table when creating WorkflowType")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["version"] = args["version"],
 		["name"] = args["name"],
 	}
-	asserts.AssertWorkflowType(t)
-	return t
+	asserts.AssertWorkflowType(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ChildWorkflowExecutionTerminatedEventAttributes = { ["startedEventId"] = true, ["workflowType"] = true, ["initiatedEventId"] = true, ["workflowExecution"] = true, nil }
@@ -2125,15 +2697,26 @@ end
 -- Required key: startedEventId
 -- @return ChildWorkflowExecutionTerminatedEventAttributes structure as a key-value pair table
 function M.ChildWorkflowExecutionTerminatedEventAttributes(args)
-	assert(args, "You must provdide an argument table when creating ChildWorkflowExecutionTerminatedEventAttributes")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ChildWorkflowExecutionTerminatedEventAttributes")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["startedEventId"] = args["startedEventId"],
 		["workflowType"] = args["workflowType"],
 		["initiatedEventId"] = args["initiatedEventId"],
 		["workflowExecution"] = args["workflowExecution"],
 	}
-	asserts.AssertChildWorkflowExecutionTerminatedEventAttributes(t)
-	return t
+	asserts.AssertChildWorkflowExecutionTerminatedEventAttributes(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DomainConfiguration = { ["workflowExecutionRetentionPeriodInDays"] = true, nil }
@@ -2156,12 +2739,23 @@ end
 -- Required key: workflowExecutionRetentionPeriodInDays
 -- @return DomainConfiguration structure as a key-value pair table
 function M.DomainConfiguration(args)
-	assert(args, "You must provdide an argument table when creating DomainConfiguration")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DomainConfiguration")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["workflowExecutionRetentionPeriodInDays"] = args["workflowExecutionRetentionPeriodInDays"],
 	}
-	asserts.AssertDomainConfiguration(t)
-	return t
+	asserts.AssertDomainConfiguration(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.RequestCancelWorkflowExecutionInput = { ["domain"] = true, ["workflowId"] = true, ["runId"] = true, nil }
@@ -2190,14 +2784,25 @@ end
 -- Required key: workflowId
 -- @return RequestCancelWorkflowExecutionInput structure as a key-value pair table
 function M.RequestCancelWorkflowExecutionInput(args)
-	assert(args, "You must provdide an argument table when creating RequestCancelWorkflowExecutionInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating RequestCancelWorkflowExecutionInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["domain"] = args["domain"],
 		["workflowId"] = args["workflowId"],
 		["runId"] = args["runId"],
 	}
-	asserts.AssertRequestCancelWorkflowExecutionInput(t)
-	return t
+	asserts.AssertRequestCancelWorkflowExecutionInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Run = { ["runId"] = true, nil }
@@ -2218,12 +2823,23 @@ end
 -- * runId [RunId] <p>The <code>runId</code> of a workflow execution. This ID is generated by the service and can be used to uniquely identify the workflow execution within a domain.</p>
 -- @return Run structure as a key-value pair table
 function M.Run(args)
-	assert(args, "You must provdide an argument table when creating Run")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Run")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["runId"] = args["runId"],
 	}
-	asserts.AssertRun(t)
-	return t
+	asserts.AssertRun(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.RecordMarkerFailedEventAttributes = { ["markerName"] = true, ["cause"] = true, ["decisionTaskCompletedEventId"] = true, nil }
@@ -2254,14 +2870,25 @@ end
 -- Required key: decisionTaskCompletedEventId
 -- @return RecordMarkerFailedEventAttributes structure as a key-value pair table
 function M.RecordMarkerFailedEventAttributes(args)
-	assert(args, "You must provdide an argument table when creating RecordMarkerFailedEventAttributes")
-	local t = { 
+	assert(args, "You must provide an argument table when creating RecordMarkerFailedEventAttributes")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["markerName"] = args["markerName"],
 		["cause"] = args["cause"],
 		["decisionTaskCompletedEventId"] = args["decisionTaskCompletedEventId"],
 	}
-	asserts.AssertRecordMarkerFailedEventAttributes(t)
-	return t
+	asserts.AssertRecordMarkerFailedEventAttributes(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.WorkflowExecutionContinuedAsNewEventAttributes = { ["taskList"] = true, ["taskStartToCloseTimeout"] = true, ["newExecutionRunId"] = true, ["taskPriority"] = true, ["lambdaRole"] = true, ["childPolicy"] = true, ["decisionTaskCompletedEventId"] = true, ["executionStartToCloseTimeout"] = true, ["input"] = true, ["workflowType"] = true, ["tagList"] = true, nil }
@@ -2312,8 +2939,14 @@ end
 -- Required key: workflowType
 -- @return WorkflowExecutionContinuedAsNewEventAttributes structure as a key-value pair table
 function M.WorkflowExecutionContinuedAsNewEventAttributes(args)
-	assert(args, "You must provdide an argument table when creating WorkflowExecutionContinuedAsNewEventAttributes")
-	local t = { 
+	assert(args, "You must provide an argument table when creating WorkflowExecutionContinuedAsNewEventAttributes")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["taskList"] = args["taskList"],
 		["taskStartToCloseTimeout"] = args["taskStartToCloseTimeout"],
 		["newExecutionRunId"] = args["newExecutionRunId"],
@@ -2326,8 +2959,13 @@ function M.WorkflowExecutionContinuedAsNewEventAttributes(args)
 		["workflowType"] = args["workflowType"],
 		["tagList"] = args["tagList"],
 	}
-	asserts.AssertWorkflowExecutionContinuedAsNewEventAttributes(t)
-	return t
+	asserts.AssertWorkflowExecutionContinuedAsNewEventAttributes(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.MarkerRecordedEventAttributes = { ["markerName"] = true, ["details"] = true, ["decisionTaskCompletedEventId"] = true, nil }
@@ -2356,14 +2994,25 @@ end
 -- Required key: decisionTaskCompletedEventId
 -- @return MarkerRecordedEventAttributes structure as a key-value pair table
 function M.MarkerRecordedEventAttributes(args)
-	assert(args, "You must provdide an argument table when creating MarkerRecordedEventAttributes")
-	local t = { 
+	assert(args, "You must provide an argument table when creating MarkerRecordedEventAttributes")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["markerName"] = args["markerName"],
 		["details"] = args["details"],
 		["decisionTaskCompletedEventId"] = args["decisionTaskCompletedEventId"],
 	}
-	asserts.AssertMarkerRecordedEventAttributes(t)
-	return t
+	asserts.AssertMarkerRecordedEventAttributes(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DomainDetail = { ["domainInfo"] = true, ["configuration"] = true, nil }
@@ -2390,13 +3039,24 @@ end
 -- Required key: configuration
 -- @return DomainDetail structure as a key-value pair table
 function M.DomainDetail(args)
-	assert(args, "You must provdide an argument table when creating DomainDetail")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DomainDetail")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["domainInfo"] = args["domainInfo"],
 		["configuration"] = args["configuration"],
 	}
-	asserts.AssertDomainDetail(t)
-	return t
+	asserts.AssertDomainDetail(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DomainInfos = { ["domainInfos"] = true, ["nextPageToken"] = true, nil }
@@ -2421,13 +3081,24 @@ end
 -- Required key: domainInfos
 -- @return DomainInfos structure as a key-value pair table
 function M.DomainInfos(args)
-	assert(args, "You must provdide an argument table when creating DomainInfos")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DomainInfos")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["domainInfos"] = args["domainInfos"],
 		["nextPageToken"] = args["nextPageToken"],
 	}
-	asserts.AssertDomainInfos(t)
-	return t
+	asserts.AssertDomainInfos(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.FailWorkflowExecutionFailedEventAttributes = { ["cause"] = true, ["decisionTaskCompletedEventId"] = true, nil }
@@ -2454,13 +3125,24 @@ end
 -- Required key: decisionTaskCompletedEventId
 -- @return FailWorkflowExecutionFailedEventAttributes structure as a key-value pair table
 function M.FailWorkflowExecutionFailedEventAttributes(args)
-	assert(args, "You must provdide an argument table when creating FailWorkflowExecutionFailedEventAttributes")
-	local t = { 
+	assert(args, "You must provide an argument table when creating FailWorkflowExecutionFailedEventAttributes")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["cause"] = args["cause"],
 		["decisionTaskCompletedEventId"] = args["decisionTaskCompletedEventId"],
 	}
-	asserts.AssertFailWorkflowExecutionFailedEventAttributes(t)
-	return t
+	asserts.AssertFailWorkflowExecutionFailedEventAttributes(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.SignalExternalWorkflowExecutionFailedEventAttributes = { ["control"] = true, ["workflowId"] = true, ["initiatedEventId"] = true, ["runId"] = true, ["decisionTaskCompletedEventId"] = true, ["cause"] = true, nil }
@@ -2499,8 +3181,14 @@ end
 -- Required key: decisionTaskCompletedEventId
 -- @return SignalExternalWorkflowExecutionFailedEventAttributes structure as a key-value pair table
 function M.SignalExternalWorkflowExecutionFailedEventAttributes(args)
-	assert(args, "You must provdide an argument table when creating SignalExternalWorkflowExecutionFailedEventAttributes")
-	local t = { 
+	assert(args, "You must provide an argument table when creating SignalExternalWorkflowExecutionFailedEventAttributes")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["control"] = args["control"],
 		["workflowId"] = args["workflowId"],
 		["initiatedEventId"] = args["initiatedEventId"],
@@ -2508,8 +3196,13 @@ function M.SignalExternalWorkflowExecutionFailedEventAttributes(args)
 		["decisionTaskCompletedEventId"] = args["decisionTaskCompletedEventId"],
 		["cause"] = args["cause"],
 	}
-	asserts.AssertSignalExternalWorkflowExecutionFailedEventAttributes(t)
-	return t
+	asserts.AssertSignalExternalWorkflowExecutionFailedEventAttributes(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetWorkflowExecutionHistoryInput = { ["nextPageToken"] = true, ["domain"] = true, ["execution"] = true, ["reverseOrder"] = true, ["maximumPageSize"] = true, nil }
@@ -2542,16 +3235,27 @@ end
 -- Required key: execution
 -- @return GetWorkflowExecutionHistoryInput structure as a key-value pair table
 function M.GetWorkflowExecutionHistoryInput(args)
-	assert(args, "You must provdide an argument table when creating GetWorkflowExecutionHistoryInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetWorkflowExecutionHistoryInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["nextPageToken"] = args["nextPageToken"],
 		["domain"] = args["domain"],
 		["execution"] = args["execution"],
 		["reverseOrder"] = args["reverseOrder"],
 		["maximumPageSize"] = args["maximumPageSize"],
 	}
-	asserts.AssertGetWorkflowExecutionHistoryInput(t)
-	return t
+	asserts.AssertGetWorkflowExecutionHistoryInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.HistoryEvent = { ["workflowExecutionCancelRequestedEventAttributes"] = true, ["requestCancelExternalWorkflowExecutionInitiatedEventAttributes"] = true, ["completeWorkflowExecutionFailedEventAttributes"] = true, ["childWorkflowExecutionStartedEventAttributes"] = true, ["activityTaskScheduledEventAttributes"] = true, ["eventType"] = true, ["decisionTaskTimedOutEventAttributes"] = true, ["workflowExecutionTimedOutEventAttributes"] = true, ["cancelWorkflowExecutionFailedEventAttributes"] = true, ["eventTimestamp"] = true, ["lambdaFunctionCompletedEventAttributes"] = true, ["timerCanceledEventAttributes"] = true, ["startChildWorkflowExecutionFailedEventAttributes"] = true, ["eventId"] = true, ["workflowExecutionContinuedAsNewEventAttributes"] = true, ["childWorkflowExecutionTimedOutEventAttributes"] = true, ["childWorkflowExecutionCanceledEventAttributes"] = true, ["activityTaskStartedEventAttributes"] = true, ["activityTaskCompletedEventAttributes"] = true, ["activityTaskFailedEventAttributes"] = true, ["signalExternalWorkflowExecutionInitiatedEventAttributes"] = true, ["recordMarkerFailedEventAttributes"] = true, ["externalWorkflowExecutionSignaledEventAttributes"] = true, ["lambdaFunctionTimedOutEventAttributes"] = true, ["childWorkflowExecutionCompletedEventAttributes"] = true, ["startLambdaFunctionFailedEventAttributes"] = true, ["workflowExecutionSignaledEventAttributes"] = true, ["scheduleActivityTaskFailedEventAttributes"] = true, ["childWorkflowExecutionTerminatedEventAttributes"] = true, ["externalWorkflowExecutionCancelRequestedEventAttributes"] = true, ["workflowExecutionCanceledEventAttributes"] = true, ["requestCancelExternalWorkflowExecutionFailedEventAttributes"] = true, ["workflowExecutionTerminatedEventAttributes"] = true, ["decisionTaskScheduledEventAttributes"] = true, ["lambdaFunctionFailedEventAttributes"] = true, ["activityTaskCanceledEventAttributes"] = true, ["cancelTimerFailedEventAttributes"] = true, ["startTimerFailedEventAttributes"] = true, ["timerFiredEventAttributes"] = true, ["failWorkflowExecutionFailedEventAttributes"] = true, ["workflowExecutionStartedEventAttributes"] = true, ["decisionTaskCompletedEventAttributes"] = true, ["workflowExecutionFailedEventAttributes"] = true, ["timerStartedEventAttributes"] = true, ["requestCancelActivityTaskFailedEventAttributes"] = true, ["activityTaskTimedOutEventAttributes"] = true, ["continueAsNewWorkflowExecutionFailedEventAttributes"] = true, ["signalExternalWorkflowExecutionFailedEventAttributes"] = true, ["startChildWorkflowExecutionInitiatedEventAttributes"] = true, ["markerRecordedEventAttributes"] = true, ["lambdaFunctionScheduledEventAttributes"] = true, ["scheduleLambdaFunctionFailedEventAttributes"] = true, ["workflowExecutionCompletedEventAttributes"] = true, ["decisionTaskStartedEventAttributes"] = true, ["childWorkflowExecutionFailedEventAttributes"] = true, ["activityTaskCancelRequestedEventAttributes"] = true, ["lambdaFunctionStartedEventAttributes"] = true, nil }
@@ -2690,8 +3394,14 @@ end
 -- Required key: eventId
 -- @return HistoryEvent structure as a key-value pair table
 function M.HistoryEvent(args)
-	assert(args, "You must provdide an argument table when creating HistoryEvent")
-	local t = { 
+	assert(args, "You must provide an argument table when creating HistoryEvent")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["workflowExecutionCancelRequestedEventAttributes"] = args["workflowExecutionCancelRequestedEventAttributes"],
 		["requestCancelExternalWorkflowExecutionInitiatedEventAttributes"] = args["requestCancelExternalWorkflowExecutionInitiatedEventAttributes"],
 		["completeWorkflowExecutionFailedEventAttributes"] = args["completeWorkflowExecutionFailedEventAttributes"],
@@ -2750,8 +3460,13 @@ function M.HistoryEvent(args)
 		["activityTaskCancelRequestedEventAttributes"] = args["activityTaskCancelRequestedEventAttributes"],
 		["lambdaFunctionStartedEventAttributes"] = args["lambdaFunctionStartedEventAttributes"],
 	}
-	asserts.AssertHistoryEvent(t)
-	return t
+	asserts.AssertHistoryEvent(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CountOpenWorkflowExecutionsInput = { ["domain"] = true, ["executionFilter"] = true, ["typeFilter"] = true, ["startTimeFilter"] = true, ["tagFilter"] = true, nil }
@@ -2784,16 +3499,27 @@ end
 -- Required key: startTimeFilter
 -- @return CountOpenWorkflowExecutionsInput structure as a key-value pair table
 function M.CountOpenWorkflowExecutionsInput(args)
-	assert(args, "You must provdide an argument table when creating CountOpenWorkflowExecutionsInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CountOpenWorkflowExecutionsInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["domain"] = args["domain"],
 		["executionFilter"] = args["executionFilter"],
 		["typeFilter"] = args["typeFilter"],
 		["startTimeFilter"] = args["startTimeFilter"],
 		["tagFilter"] = args["tagFilter"],
 	}
-	asserts.AssertCountOpenWorkflowExecutionsInput(t)
-	return t
+	asserts.AssertCountOpenWorkflowExecutionsInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.StartChildWorkflowExecutionFailedEventAttributes = { ["control"] = true, ["workflowId"] = true, ["initiatedEventId"] = true, ["decisionTaskCompletedEventId"] = true, ["workflowType"] = true, ["cause"] = true, nil }
@@ -2834,8 +3560,14 @@ end
 -- Required key: decisionTaskCompletedEventId
 -- @return StartChildWorkflowExecutionFailedEventAttributes structure as a key-value pair table
 function M.StartChildWorkflowExecutionFailedEventAttributes(args)
-	assert(args, "You must provdide an argument table when creating StartChildWorkflowExecutionFailedEventAttributes")
-	local t = { 
+	assert(args, "You must provide an argument table when creating StartChildWorkflowExecutionFailedEventAttributes")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["control"] = args["control"],
 		["workflowId"] = args["workflowId"],
 		["initiatedEventId"] = args["initiatedEventId"],
@@ -2843,8 +3575,13 @@ function M.StartChildWorkflowExecutionFailedEventAttributes(args)
 		["workflowType"] = args["workflowType"],
 		["cause"] = args["cause"],
 	}
-	asserts.AssertStartChildWorkflowExecutionFailedEventAttributes(t)
-	return t
+	asserts.AssertStartChildWorkflowExecutionFailedEventAttributes(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListOpenWorkflowExecutionsInput = { ["nextPageToken"] = true, ["domain"] = true, ["typeFilter"] = true, ["tagFilter"] = true, ["executionFilter"] = true, ["reverseOrder"] = true, ["startTimeFilter"] = true, ["maximumPageSize"] = true, nil }
@@ -2883,8 +3620,14 @@ end
 -- Required key: startTimeFilter
 -- @return ListOpenWorkflowExecutionsInput structure as a key-value pair table
 function M.ListOpenWorkflowExecutionsInput(args)
-	assert(args, "You must provdide an argument table when creating ListOpenWorkflowExecutionsInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListOpenWorkflowExecutionsInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["nextPageToken"] = args["nextPageToken"],
 		["domain"] = args["domain"],
 		["typeFilter"] = args["typeFilter"],
@@ -2894,8 +3637,13 @@ function M.ListOpenWorkflowExecutionsInput(args)
 		["startTimeFilter"] = args["startTimeFilter"],
 		["maximumPageSize"] = args["maximumPageSize"],
 	}
-	asserts.AssertListOpenWorkflowExecutionsInput(t)
-	return t
+	asserts.AssertListOpenWorkflowExecutionsInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DefaultUndefinedFault = { ["message"] = true, nil }
@@ -2916,12 +3664,23 @@ end
 -- * message [ErrorMessage] 
 -- @return DefaultUndefinedFault structure as a key-value pair table
 function M.DefaultUndefinedFault(args)
-	assert(args, "You must provdide an argument table when creating DefaultUndefinedFault")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DefaultUndefinedFault")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertDefaultUndefinedFault(t)
-	return t
+	asserts.AssertDefaultUndefinedFault(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.WorkflowExecution = { ["workflowId"] = true, ["runId"] = true, nil }
@@ -2948,13 +3707,24 @@ end
 -- Required key: runId
 -- @return WorkflowExecution structure as a key-value pair table
 function M.WorkflowExecution(args)
-	assert(args, "You must provdide an argument table when creating WorkflowExecution")
-	local t = { 
+	assert(args, "You must provide an argument table when creating WorkflowExecution")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["workflowId"] = args["workflowId"],
 		["runId"] = args["runId"],
 	}
-	asserts.AssertWorkflowExecution(t)
-	return t
+	asserts.AssertWorkflowExecution(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.WorkflowExecutionInfos = { ["nextPageToken"] = true, ["executionInfos"] = true, nil }
@@ -2979,13 +3749,24 @@ end
 -- Required key: executionInfos
 -- @return WorkflowExecutionInfos structure as a key-value pair table
 function M.WorkflowExecutionInfos(args)
-	assert(args, "You must provdide an argument table when creating WorkflowExecutionInfos")
-	local t = { 
+	assert(args, "You must provide an argument table when creating WorkflowExecutionInfos")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["nextPageToken"] = args["nextPageToken"],
 		["executionInfos"] = args["executionInfos"],
 	}
-	asserts.AssertWorkflowExecutionInfos(t)
-	return t
+	asserts.AssertWorkflowExecutionInfos(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeWorkflowExecutionInput = { ["domain"] = true, ["execution"] = true, nil }
@@ -3012,13 +3793,24 @@ end
 -- Required key: execution
 -- @return DescribeWorkflowExecutionInput structure as a key-value pair table
 function M.DescribeWorkflowExecutionInput(args)
-	assert(args, "You must provdide an argument table when creating DescribeWorkflowExecutionInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeWorkflowExecutionInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["domain"] = args["domain"],
 		["execution"] = args["execution"],
 	}
-	asserts.AssertDescribeWorkflowExecutionInput(t)
-	return t
+	asserts.AssertDescribeWorkflowExecutionInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.RequestCancelExternalWorkflowExecutionDecisionAttributes = { ["control"] = true, ["workflowId"] = true, ["runId"] = true, nil }
@@ -3045,14 +3837,25 @@ end
 -- Required key: workflowId
 -- @return RequestCancelExternalWorkflowExecutionDecisionAttributes structure as a key-value pair table
 function M.RequestCancelExternalWorkflowExecutionDecisionAttributes(args)
-	assert(args, "You must provdide an argument table when creating RequestCancelExternalWorkflowExecutionDecisionAttributes")
-	local t = { 
+	assert(args, "You must provide an argument table when creating RequestCancelExternalWorkflowExecutionDecisionAttributes")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["control"] = args["control"],
 		["workflowId"] = args["workflowId"],
 		["runId"] = args["runId"],
 	}
-	asserts.AssertRequestCancelExternalWorkflowExecutionDecisionAttributes(t)
-	return t
+	asserts.AssertRequestCancelExternalWorkflowExecutionDecisionAttributes(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.WorkflowTypeInfos = { ["nextPageToken"] = true, ["typeInfos"] = true, nil }
@@ -3077,13 +3880,24 @@ end
 -- Required key: typeInfos
 -- @return WorkflowTypeInfos structure as a key-value pair table
 function M.WorkflowTypeInfos(args)
-	assert(args, "You must provdide an argument table when creating WorkflowTypeInfos")
-	local t = { 
+	assert(args, "You must provide an argument table when creating WorkflowTypeInfos")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["nextPageToken"] = args["nextPageToken"],
 		["typeInfos"] = args["typeInfos"],
 	}
-	asserts.AssertWorkflowTypeInfos(t)
-	return t
+	asserts.AssertWorkflowTypeInfos(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.RegisterDomainInput = { ["name"] = true, ["workflowExecutionRetentionPeriodInDays"] = true, ["description"] = true, nil }
@@ -3112,14 +3926,25 @@ end
 -- Required key: workflowExecutionRetentionPeriodInDays
 -- @return RegisterDomainInput structure as a key-value pair table
 function M.RegisterDomainInput(args)
-	assert(args, "You must provdide an argument table when creating RegisterDomainInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating RegisterDomainInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["name"] = args["name"],
 		["workflowExecutionRetentionPeriodInDays"] = args["workflowExecutionRetentionPeriodInDays"],
 		["description"] = args["description"],
 	}
-	asserts.AssertRegisterDomainInput(t)
-	return t
+	asserts.AssertRegisterDomainInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.RequestCancelActivityTaskFailedEventAttributes = { ["activityId"] = true, ["cause"] = true, ["decisionTaskCompletedEventId"] = true, nil }
@@ -3150,14 +3975,25 @@ end
 -- Required key: decisionTaskCompletedEventId
 -- @return RequestCancelActivityTaskFailedEventAttributes structure as a key-value pair table
 function M.RequestCancelActivityTaskFailedEventAttributes(args)
-	assert(args, "You must provdide an argument table when creating RequestCancelActivityTaskFailedEventAttributes")
-	local t = { 
+	assert(args, "You must provide an argument table when creating RequestCancelActivityTaskFailedEventAttributes")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["activityId"] = args["activityId"],
 		["cause"] = args["cause"],
 		["decisionTaskCompletedEventId"] = args["decisionTaskCompletedEventId"],
 	}
-	asserts.AssertRequestCancelActivityTaskFailedEventAttributes(t)
-	return t
+	asserts.AssertRequestCancelActivityTaskFailedEventAttributes(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.WorkflowExecutionStartedEventAttributes = { ["taskList"] = true, ["parentWorkflowExecution"] = true, ["parentInitiatedEventId"] = true, ["taskStartToCloseTimeout"] = true, ["taskPriority"] = true, ["lambdaRole"] = true, ["continuedExecutionRunId"] = true, ["childPolicy"] = true, ["executionStartToCloseTimeout"] = true, ["input"] = true, ["workflowType"] = true, ["tagList"] = true, nil }
@@ -3206,8 +4042,14 @@ end
 -- Required key: workflowType
 -- @return WorkflowExecutionStartedEventAttributes structure as a key-value pair table
 function M.WorkflowExecutionStartedEventAttributes(args)
-	assert(args, "You must provdide an argument table when creating WorkflowExecutionStartedEventAttributes")
-	local t = { 
+	assert(args, "You must provide an argument table when creating WorkflowExecutionStartedEventAttributes")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["taskList"] = args["taskList"],
 		["parentWorkflowExecution"] = args["parentWorkflowExecution"],
 		["parentInitiatedEventId"] = args["parentInitiatedEventId"],
@@ -3221,8 +4063,13 @@ function M.WorkflowExecutionStartedEventAttributes(args)
 		["workflowType"] = args["workflowType"],
 		["tagList"] = args["tagList"],
 	}
-	asserts.AssertWorkflowExecutionStartedEventAttributes(t)
-	return t
+	asserts.AssertWorkflowExecutionStartedEventAttributes(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.WorkflowTypeFilter = { ["version"] = true, ["name"] = true, nil }
@@ -3247,13 +4094,24 @@ end
 -- Required key: name
 -- @return WorkflowTypeFilter structure as a key-value pair table
 function M.WorkflowTypeFilter(args)
-	assert(args, "You must provdide an argument table when creating WorkflowTypeFilter")
-	local t = { 
+	assert(args, "You must provide an argument table when creating WorkflowTypeFilter")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["version"] = args["version"],
 		["name"] = args["name"],
 	}
-	asserts.AssertWorkflowTypeFilter(t)
-	return t
+	asserts.AssertWorkflowTypeFilter(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CountPendingDecisionTasksInput = { ["domain"] = true, ["taskList"] = true, nil }
@@ -3280,13 +4138,24 @@ end
 -- Required key: taskList
 -- @return CountPendingDecisionTasksInput structure as a key-value pair table
 function M.CountPendingDecisionTasksInput(args)
-	assert(args, "You must provdide an argument table when creating CountPendingDecisionTasksInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CountPendingDecisionTasksInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["domain"] = args["domain"],
 		["taskList"] = args["taskList"],
 	}
-	asserts.AssertCountPendingDecisionTasksInput(t)
-	return t
+	asserts.AssertCountPendingDecisionTasksInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CancelWorkflowExecutionDecisionAttributes = { ["details"] = true, nil }
@@ -3307,12 +4176,23 @@ end
 -- * details [Data] <p><i>Optional.</i> details of the cancellation.</p>
 -- @return CancelWorkflowExecutionDecisionAttributes structure as a key-value pair table
 function M.CancelWorkflowExecutionDecisionAttributes(args)
-	assert(args, "You must provdide an argument table when creating CancelWorkflowExecutionDecisionAttributes")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CancelWorkflowExecutionDecisionAttributes")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["details"] = args["details"],
 	}
-	asserts.AssertCancelWorkflowExecutionDecisionAttributes(t)
-	return t
+	asserts.AssertCancelWorkflowExecutionDecisionAttributes(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ActivityTypeInfos = { ["nextPageToken"] = true, ["typeInfos"] = true, nil }
@@ -3337,13 +4217,24 @@ end
 -- Required key: typeInfos
 -- @return ActivityTypeInfos structure as a key-value pair table
 function M.ActivityTypeInfos(args)
-	assert(args, "You must provdide an argument table when creating ActivityTypeInfos")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ActivityTypeInfos")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["nextPageToken"] = args["nextPageToken"],
 		["typeInfos"] = args["typeInfos"],
 	}
-	asserts.AssertActivityTypeInfos(t)
-	return t
+	asserts.AssertActivityTypeInfos(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ActivityTaskStatus = { ["cancelRequested"] = true, nil }
@@ -3366,12 +4257,23 @@ end
 -- Required key: cancelRequested
 -- @return ActivityTaskStatus structure as a key-value pair table
 function M.ActivityTaskStatus(args)
-	assert(args, "You must provdide an argument table when creating ActivityTaskStatus")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ActivityTaskStatus")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["cancelRequested"] = args["cancelRequested"],
 	}
-	asserts.AssertActivityTaskStatus(t)
-	return t
+	asserts.AssertActivityTaskStatus(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CancelTimerFailedEventAttributes = { ["timerId"] = true, ["cause"] = true, ["decisionTaskCompletedEventId"] = true, nil }
@@ -3402,14 +4304,25 @@ end
 -- Required key: decisionTaskCompletedEventId
 -- @return CancelTimerFailedEventAttributes structure as a key-value pair table
 function M.CancelTimerFailedEventAttributes(args)
-	assert(args, "You must provdide an argument table when creating CancelTimerFailedEventAttributes")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CancelTimerFailedEventAttributes")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["timerId"] = args["timerId"],
 		["cause"] = args["cause"],
 		["decisionTaskCompletedEventId"] = args["decisionTaskCompletedEventId"],
 	}
-	asserts.AssertCancelTimerFailedEventAttributes(t)
-	return t
+	asserts.AssertCancelTimerFailedEventAttributes(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DecisionTaskTimedOutEventAttributes = { ["startedEventId"] = true, ["timeoutType"] = true, ["scheduledEventId"] = true, nil }
@@ -3440,14 +4353,25 @@ end
 -- Required key: startedEventId
 -- @return DecisionTaskTimedOutEventAttributes structure as a key-value pair table
 function M.DecisionTaskTimedOutEventAttributes(args)
-	assert(args, "You must provdide an argument table when creating DecisionTaskTimedOutEventAttributes")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DecisionTaskTimedOutEventAttributes")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["startedEventId"] = args["startedEventId"],
 		["timeoutType"] = args["timeoutType"],
 		["scheduledEventId"] = args["scheduledEventId"],
 	}
-	asserts.AssertDecisionTaskTimedOutEventAttributes(t)
-	return t
+	asserts.AssertDecisionTaskTimedOutEventAttributes(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.PollForDecisionTaskInput = { ["nextPageToken"] = true, ["domain"] = true, ["taskList"] = true, ["reverseOrder"] = true, ["maximumPageSize"] = true, ["identity"] = true, nil }
@@ -3482,8 +4406,14 @@ end
 -- Required key: taskList
 -- @return PollForDecisionTaskInput structure as a key-value pair table
 function M.PollForDecisionTaskInput(args)
-	assert(args, "You must provdide an argument table when creating PollForDecisionTaskInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating PollForDecisionTaskInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["nextPageToken"] = args["nextPageToken"],
 		["domain"] = args["domain"],
 		["taskList"] = args["taskList"],
@@ -3491,8 +4421,13 @@ function M.PollForDecisionTaskInput(args)
 		["maximumPageSize"] = args["maximumPageSize"],
 		["identity"] = args["identity"],
 	}
-	asserts.AssertPollForDecisionTaskInput(t)
-	return t
+	asserts.AssertPollForDecisionTaskInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CloseStatusFilter = { ["status"] = true, nil }
@@ -3515,12 +4450,23 @@ end
 -- Required key: status
 -- @return CloseStatusFilter structure as a key-value pair table
 function M.CloseStatusFilter(args)
-	assert(args, "You must provdide an argument table when creating CloseStatusFilter")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CloseStatusFilter")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["status"] = args["status"],
 	}
-	asserts.AssertCloseStatusFilter(t)
-	return t
+	asserts.AssertCloseStatusFilter(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UnknownResourceFault = { ["message"] = true, nil }
@@ -3541,12 +4487,23 @@ end
 -- * message [ErrorMessage] <p>A description that may help with diagnosing the cause of the fault.</p>
 -- @return UnknownResourceFault structure as a key-value pair table
 function M.UnknownResourceFault(args)
-	assert(args, "You must provdide an argument table when creating UnknownResourceFault")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UnknownResourceFault")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertUnknownResourceFault(t)
-	return t
+	asserts.AssertUnknownResourceFault(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.TimerFiredEventAttributes = { ["startedEventId"] = true, ["timerId"] = true, nil }
@@ -3573,13 +4530,24 @@ end
 -- Required key: startedEventId
 -- @return TimerFiredEventAttributes structure as a key-value pair table
 function M.TimerFiredEventAttributes(args)
-	assert(args, "You must provdide an argument table when creating TimerFiredEventAttributes")
-	local t = { 
+	assert(args, "You must provide an argument table when creating TimerFiredEventAttributes")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["startedEventId"] = args["startedEventId"],
 		["timerId"] = args["timerId"],
 	}
-	asserts.AssertTimerFiredEventAttributes(t)
-	return t
+	asserts.AssertTimerFiredEventAttributes(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.TimerStartedEventAttributes = { ["control"] = true, ["timerId"] = true, ["startToFireTimeout"] = true, ["decisionTaskCompletedEventId"] = true, nil }
@@ -3612,15 +4580,26 @@ end
 -- Required key: decisionTaskCompletedEventId
 -- @return TimerStartedEventAttributes structure as a key-value pair table
 function M.TimerStartedEventAttributes(args)
-	assert(args, "You must provdide an argument table when creating TimerStartedEventAttributes")
-	local t = { 
+	assert(args, "You must provide an argument table when creating TimerStartedEventAttributes")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["control"] = args["control"],
 		["timerId"] = args["timerId"],
 		["startToFireTimeout"] = args["startToFireTimeout"],
 		["decisionTaskCompletedEventId"] = args["decisionTaskCompletedEventId"],
 	}
-	asserts.AssertTimerStartedEventAttributes(t)
-	return t
+	asserts.AssertTimerStartedEventAttributes(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.TaskList = { ["name"] = true, nil }
@@ -3643,12 +4622,23 @@ end
 -- Required key: name
 -- @return TaskList structure as a key-value pair table
 function M.TaskList(args)
-	assert(args, "You must provdide an argument table when creating TaskList")
-	local t = { 
+	assert(args, "You must provide an argument table when creating TaskList")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["name"] = args["name"],
 	}
-	asserts.AssertTaskList(t)
-	return t
+	asserts.AssertTaskList(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.WorkflowExecutionFailedEventAttributes = { ["reason"] = true, ["details"] = true, ["decisionTaskCompletedEventId"] = true, nil }
@@ -3675,14 +4665,25 @@ end
 -- Required key: decisionTaskCompletedEventId
 -- @return WorkflowExecutionFailedEventAttributes structure as a key-value pair table
 function M.WorkflowExecutionFailedEventAttributes(args)
-	assert(args, "You must provdide an argument table when creating WorkflowExecutionFailedEventAttributes")
-	local t = { 
+	assert(args, "You must provide an argument table when creating WorkflowExecutionFailedEventAttributes")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["reason"] = args["reason"],
 		["details"] = args["details"],
 		["decisionTaskCompletedEventId"] = args["decisionTaskCompletedEventId"],
 	}
-	asserts.AssertWorkflowExecutionFailedEventAttributes(t)
-	return t
+	asserts.AssertWorkflowExecutionFailedEventAttributes(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ScheduleLambdaFunctionFailedEventAttributes = { ["decisionTaskCompletedEventId"] = true, ["cause"] = true, ["id"] = true, ["name"] = true, nil }
@@ -3717,15 +4718,26 @@ end
 -- Required key: decisionTaskCompletedEventId
 -- @return ScheduleLambdaFunctionFailedEventAttributes structure as a key-value pair table
 function M.ScheduleLambdaFunctionFailedEventAttributes(args)
-	assert(args, "You must provdide an argument table when creating ScheduleLambdaFunctionFailedEventAttributes")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ScheduleLambdaFunctionFailedEventAttributes")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["decisionTaskCompletedEventId"] = args["decisionTaskCompletedEventId"],
 		["cause"] = args["cause"],
 		["id"] = args["id"],
 		["name"] = args["name"],
 	}
-	asserts.AssertScheduleLambdaFunctionFailedEventAttributes(t)
-	return t
+	asserts.AssertScheduleLambdaFunctionFailedEventAttributes(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeWorkflowTypeInput = { ["domain"] = true, ["workflowType"] = true, nil }
@@ -3752,13 +4764,24 @@ end
 -- Required key: workflowType
 -- @return DescribeWorkflowTypeInput structure as a key-value pair table
 function M.DescribeWorkflowTypeInput(args)
-	assert(args, "You must provdide an argument table when creating DescribeWorkflowTypeInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeWorkflowTypeInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["domain"] = args["domain"],
 		["workflowType"] = args["workflowType"],
 	}
-	asserts.AssertDescribeWorkflowTypeInput(t)
-	return t
+	asserts.AssertDescribeWorkflowTypeInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListWorkflowTypesInput = { ["nextPageToken"] = true, ["domain"] = true, ["name"] = true, ["registrationStatus"] = true, ["reverseOrder"] = true, ["maximumPageSize"] = true, nil }
@@ -3793,8 +4816,14 @@ end
 -- Required key: registrationStatus
 -- @return ListWorkflowTypesInput structure as a key-value pair table
 function M.ListWorkflowTypesInput(args)
-	assert(args, "You must provdide an argument table when creating ListWorkflowTypesInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListWorkflowTypesInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["nextPageToken"] = args["nextPageToken"],
 		["domain"] = args["domain"],
 		["name"] = args["name"],
@@ -3802,8 +4831,13 @@ function M.ListWorkflowTypesInput(args)
 		["reverseOrder"] = args["reverseOrder"],
 		["maximumPageSize"] = args["maximumPageSize"],
 	}
-	asserts.AssertListWorkflowTypesInput(t)
-	return t
+	asserts.AssertListWorkflowTypesInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.LambdaFunctionStartedEventAttributes = { ["scheduledEventId"] = true, nil }
@@ -3826,12 +4860,23 @@ end
 -- Required key: scheduledEventId
 -- @return LambdaFunctionStartedEventAttributes structure as a key-value pair table
 function M.LambdaFunctionStartedEventAttributes(args)
-	assert(args, "You must provdide an argument table when creating LambdaFunctionStartedEventAttributes")
-	local t = { 
+	assert(args, "You must provide an argument table when creating LambdaFunctionStartedEventAttributes")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["scheduledEventId"] = args["scheduledEventId"],
 	}
-	asserts.AssertLambdaFunctionStartedEventAttributes(t)
-	return t
+	asserts.AssertLambdaFunctionStartedEventAttributes(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ExecutionTimeFilter = { ["oldestDate"] = true, ["latestDate"] = true, nil }
@@ -3856,13 +4901,24 @@ end
 -- Required key: oldestDate
 -- @return ExecutionTimeFilter structure as a key-value pair table
 function M.ExecutionTimeFilter(args)
-	assert(args, "You must provdide an argument table when creating ExecutionTimeFilter")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ExecutionTimeFilter")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["oldestDate"] = args["oldestDate"],
 		["latestDate"] = args["latestDate"],
 	}
-	asserts.AssertExecutionTimeFilter(t)
-	return t
+	asserts.AssertExecutionTimeFilter(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.LimitExceededFault = { ["message"] = true, nil }
@@ -3883,12 +4939,23 @@ end
 -- * message [ErrorMessage] <p>A description that may help with diagnosing the cause of the fault.</p>
 -- @return LimitExceededFault structure as a key-value pair table
 function M.LimitExceededFault(args)
-	assert(args, "You must provdide an argument table when creating LimitExceededFault")
-	local t = { 
+	assert(args, "You must provide an argument table when creating LimitExceededFault")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertLimitExceededFault(t)
-	return t
+	asserts.AssertLimitExceededFault(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.SignalExternalWorkflowExecutionDecisionAttributes = { ["control"] = true, ["input"] = true, ["workflowId"] = true, ["runId"] = true, ["signalName"] = true, nil }
@@ -3921,16 +4988,27 @@ end
 -- Required key: signalName
 -- @return SignalExternalWorkflowExecutionDecisionAttributes structure as a key-value pair table
 function M.SignalExternalWorkflowExecutionDecisionAttributes(args)
-	assert(args, "You must provdide an argument table when creating SignalExternalWorkflowExecutionDecisionAttributes")
-	local t = { 
+	assert(args, "You must provide an argument table when creating SignalExternalWorkflowExecutionDecisionAttributes")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["control"] = args["control"],
 		["input"] = args["input"],
 		["workflowId"] = args["workflowId"],
 		["runId"] = args["runId"],
 		["signalName"] = args["signalName"],
 	}
-	asserts.AssertSignalExternalWorkflowExecutionDecisionAttributes(t)
-	return t
+	asserts.AssertSignalExternalWorkflowExecutionDecisionAttributes(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.OperationNotPermittedFault = { ["message"] = true, nil }
@@ -3951,12 +5029,23 @@ end
 -- * message [ErrorMessage] <p>A description that may help with diagnosing the cause of the fault.</p>
 -- @return OperationNotPermittedFault structure as a key-value pair table
 function M.OperationNotPermittedFault(args)
-	assert(args, "You must provdide an argument table when creating OperationNotPermittedFault")
-	local t = { 
+	assert(args, "You must provide an argument table when creating OperationNotPermittedFault")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertOperationNotPermittedFault(t)
-	return t
+	asserts.AssertOperationNotPermittedFault(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ScheduleActivityTaskFailedEventAttributes = { ["activityId"] = true, ["activityType"] = true, ["cause"] = true, ["decisionTaskCompletedEventId"] = true, nil }
@@ -3991,15 +5080,26 @@ end
 -- Required key: decisionTaskCompletedEventId
 -- @return ScheduleActivityTaskFailedEventAttributes structure as a key-value pair table
 function M.ScheduleActivityTaskFailedEventAttributes(args)
-	assert(args, "You must provdide an argument table when creating ScheduleActivityTaskFailedEventAttributes")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ScheduleActivityTaskFailedEventAttributes")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["activityId"] = args["activityId"],
 		["activityType"] = args["activityType"],
 		["cause"] = args["cause"],
 		["decisionTaskCompletedEventId"] = args["decisionTaskCompletedEventId"],
 	}
-	asserts.AssertScheduleActivityTaskFailedEventAttributes(t)
-	return t
+	asserts.AssertScheduleActivityTaskFailedEventAttributes(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ActivityTaskTimedOutEventAttributes = { ["startedEventId"] = true, ["timeoutType"] = true, ["scheduledEventId"] = true, ["details"] = true, nil }
@@ -4032,15 +5132,26 @@ end
 -- Required key: startedEventId
 -- @return ActivityTaskTimedOutEventAttributes structure as a key-value pair table
 function M.ActivityTaskTimedOutEventAttributes(args)
-	assert(args, "You must provdide an argument table when creating ActivityTaskTimedOutEventAttributes")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ActivityTaskTimedOutEventAttributes")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["startedEventId"] = args["startedEventId"],
 		["timeoutType"] = args["timeoutType"],
 		["scheduledEventId"] = args["scheduledEventId"],
 		["details"] = args["details"],
 	}
-	asserts.AssertActivityTaskTimedOutEventAttributes(t)
-	return t
+	asserts.AssertActivityTaskTimedOutEventAttributes(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ContinueAsNewWorkflowExecutionFailedEventAttributes = { ["cause"] = true, ["decisionTaskCompletedEventId"] = true, nil }
@@ -4067,13 +5178,24 @@ end
 -- Required key: decisionTaskCompletedEventId
 -- @return ContinueAsNewWorkflowExecutionFailedEventAttributes structure as a key-value pair table
 function M.ContinueAsNewWorkflowExecutionFailedEventAttributes(args)
-	assert(args, "You must provdide an argument table when creating ContinueAsNewWorkflowExecutionFailedEventAttributes")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ContinueAsNewWorkflowExecutionFailedEventAttributes")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["cause"] = args["cause"],
 		["decisionTaskCompletedEventId"] = args["decisionTaskCompletedEventId"],
 	}
-	asserts.AssertContinueAsNewWorkflowExecutionFailedEventAttributes(t)
-	return t
+	asserts.AssertContinueAsNewWorkflowExecutionFailedEventAttributes(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.RecordActivityTaskHeartbeatInput = { ["details"] = true, ["taskToken"] = true, nil }
@@ -4098,13 +5220,24 @@ end
 -- Required key: taskToken
 -- @return RecordActivityTaskHeartbeatInput structure as a key-value pair table
 function M.RecordActivityTaskHeartbeatInput(args)
-	assert(args, "You must provdide an argument table when creating RecordActivityTaskHeartbeatInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating RecordActivityTaskHeartbeatInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["details"] = args["details"],
 		["taskToken"] = args["taskToken"],
 	}
-	asserts.AssertRecordActivityTaskHeartbeatInput(t)
-	return t
+	asserts.AssertRecordActivityTaskHeartbeatInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.TypeDeprecatedFault = { ["message"] = true, nil }
@@ -4125,12 +5258,23 @@ end
 -- * message [ErrorMessage] <p>A description that may help with diagnosing the cause of the fault.</p>
 -- @return TypeDeprecatedFault structure as a key-value pair table
 function M.TypeDeprecatedFault(args)
-	assert(args, "You must provdide an argument table when creating TypeDeprecatedFault")
-	local t = { 
+	assert(args, "You must provide an argument table when creating TypeDeprecatedFault")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertTypeDeprecatedFault(t)
-	return t
+	asserts.AssertTypeDeprecatedFault(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.WorkflowExecutionDetail = { ["latestExecutionContext"] = true, ["executionConfiguration"] = true, ["latestActivityTaskTimestamp"] = true, ["openCounts"] = true, ["executionInfo"] = true, nil }
@@ -4165,16 +5309,27 @@ end
 -- Required key: openCounts
 -- @return WorkflowExecutionDetail structure as a key-value pair table
 function M.WorkflowExecutionDetail(args)
-	assert(args, "You must provdide an argument table when creating WorkflowExecutionDetail")
-	local t = { 
+	assert(args, "You must provide an argument table when creating WorkflowExecutionDetail")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["latestExecutionContext"] = args["latestExecutionContext"],
 		["executionConfiguration"] = args["executionConfiguration"],
 		["latestActivityTaskTimestamp"] = args["latestActivityTaskTimestamp"],
 		["openCounts"] = args["openCounts"],
 		["executionInfo"] = args["executionInfo"],
 	}
-	asserts.AssertWorkflowExecutionDetail(t)
-	return t
+	asserts.AssertWorkflowExecutionDetail(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.WorkflowExecutionSignaledEventAttributes = { ["input"] = true, ["externalInitiatedEventId"] = true, ["externalWorkflowExecution"] = true, ["signalName"] = true, nil }
@@ -4203,15 +5358,26 @@ end
 -- Required key: signalName
 -- @return WorkflowExecutionSignaledEventAttributes structure as a key-value pair table
 function M.WorkflowExecutionSignaledEventAttributes(args)
-	assert(args, "You must provdide an argument table when creating WorkflowExecutionSignaledEventAttributes")
-	local t = { 
+	assert(args, "You must provide an argument table when creating WorkflowExecutionSignaledEventAttributes")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["input"] = args["input"],
 		["externalInitiatedEventId"] = args["externalInitiatedEventId"],
 		["externalWorkflowExecution"] = args["externalWorkflowExecution"],
 		["signalName"] = args["signalName"],
 	}
-	asserts.AssertWorkflowExecutionSignaledEventAttributes(t)
-	return t
+	asserts.AssertWorkflowExecutionSignaledEventAttributes(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.History = { ["nextPageToken"] = true, ["events"] = true, nil }
@@ -4236,13 +5402,24 @@ end
 -- Required key: events
 -- @return History structure as a key-value pair table
 function M.History(args)
-	assert(args, "You must provdide an argument table when creating History")
-	local t = { 
+	assert(args, "You must provide an argument table when creating History")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["nextPageToken"] = args["nextPageToken"],
 		["events"] = args["events"],
 	}
-	asserts.AssertHistory(t)
-	return t
+	asserts.AssertHistory(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CancelTimerDecisionAttributes = { ["timerId"] = true, nil }
@@ -4265,12 +5442,23 @@ end
 -- Required key: timerId
 -- @return CancelTimerDecisionAttributes structure as a key-value pair table
 function M.CancelTimerDecisionAttributes(args)
-	assert(args, "You must provdide an argument table when creating CancelTimerDecisionAttributes")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CancelTimerDecisionAttributes")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["timerId"] = args["timerId"],
 	}
-	asserts.AssertCancelTimerDecisionAttributes(t)
-	return t
+	asserts.AssertCancelTimerDecisionAttributes(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.RespondDecisionTaskCompletedInput = { ["executionContext"] = true, ["decisions"] = true, ["taskToken"] = true, nil }
@@ -4297,14 +5485,25 @@ end
 -- Required key: taskToken
 -- @return RespondDecisionTaskCompletedInput structure as a key-value pair table
 function M.RespondDecisionTaskCompletedInput(args)
-	assert(args, "You must provdide an argument table when creating RespondDecisionTaskCompletedInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating RespondDecisionTaskCompletedInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["executionContext"] = args["executionContext"],
 		["decisions"] = args["decisions"],
 		["taskToken"] = args["taskToken"],
 	}
-	asserts.AssertRespondDecisionTaskCompletedInput(t)
-	return t
+	asserts.AssertRespondDecisionTaskCompletedInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListActivityTypesInput = { ["nextPageToken"] = true, ["domain"] = true, ["name"] = true, ["registrationStatus"] = true, ["reverseOrder"] = true, ["maximumPageSize"] = true, nil }
@@ -4339,8 +5538,14 @@ end
 -- Required key: registrationStatus
 -- @return ListActivityTypesInput structure as a key-value pair table
 function M.ListActivityTypesInput(args)
-	assert(args, "You must provdide an argument table when creating ListActivityTypesInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListActivityTypesInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["nextPageToken"] = args["nextPageToken"],
 		["domain"] = args["domain"],
 		["name"] = args["name"],
@@ -4348,8 +5553,13 @@ function M.ListActivityTypesInput(args)
 		["reverseOrder"] = args["reverseOrder"],
 		["maximumPageSize"] = args["maximumPageSize"],
 	}
-	asserts.AssertListActivityTypesInput(t)
-	return t
+	asserts.AssertListActivityTypesInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DomainAlreadyExistsFault = { ["message"] = true, nil }
@@ -4370,12 +5580,23 @@ end
 -- * message [ErrorMessage] <p>A description that may help with diagnosing the cause of the fault.</p>
 -- @return DomainAlreadyExistsFault structure as a key-value pair table
 function M.DomainAlreadyExistsFault(args)
-	assert(args, "You must provdide an argument table when creating DomainAlreadyExistsFault")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DomainAlreadyExistsFault")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertDomainAlreadyExistsFault(t)
-	return t
+	asserts.AssertDomainAlreadyExistsFault(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DecisionTaskScheduledEventAttributes = { ["startToCloseTimeout"] = true, ["taskList"] = true, ["taskPriority"] = true, nil }
@@ -4402,14 +5623,25 @@ end
 -- Required key: taskList
 -- @return DecisionTaskScheduledEventAttributes structure as a key-value pair table
 function M.DecisionTaskScheduledEventAttributes(args)
-	assert(args, "You must provdide an argument table when creating DecisionTaskScheduledEventAttributes")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DecisionTaskScheduledEventAttributes")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["startToCloseTimeout"] = args["startToCloseTimeout"],
 		["taskList"] = args["taskList"],
 		["taskPriority"] = args["taskPriority"],
 	}
-	asserts.AssertDecisionTaskScheduledEventAttributes(t)
-	return t
+	asserts.AssertDecisionTaskScheduledEventAttributes(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.LambdaFunctionFailedEventAttributes = { ["startedEventId"] = true, ["reason"] = true, ["scheduledEventId"] = true, ["details"] = true, nil }
@@ -4440,15 +5672,26 @@ end
 -- Required key: startedEventId
 -- @return LambdaFunctionFailedEventAttributes structure as a key-value pair table
 function M.LambdaFunctionFailedEventAttributes(args)
-	assert(args, "You must provdide an argument table when creating LambdaFunctionFailedEventAttributes")
-	local t = { 
+	assert(args, "You must provide an argument table when creating LambdaFunctionFailedEventAttributes")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["startedEventId"] = args["startedEventId"],
 		["reason"] = args["reason"],
 		["scheduledEventId"] = args["scheduledEventId"],
 		["details"] = args["details"],
 	}
-	asserts.AssertLambdaFunctionFailedEventAttributes(t)
-	return t
+	asserts.AssertLambdaFunctionFailedEventAttributes(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ActivityTaskCanceledEventAttributes = { ["startedEventId"] = true, ["latestCancelRequestedEventId"] = true, ["scheduledEventId"] = true, ["details"] = true, nil }
@@ -4479,15 +5722,26 @@ end
 -- Required key: startedEventId
 -- @return ActivityTaskCanceledEventAttributes structure as a key-value pair table
 function M.ActivityTaskCanceledEventAttributes(args)
-	assert(args, "You must provdide an argument table when creating ActivityTaskCanceledEventAttributes")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ActivityTaskCanceledEventAttributes")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["startedEventId"] = args["startedEventId"],
 		["latestCancelRequestedEventId"] = args["latestCancelRequestedEventId"],
 		["scheduledEventId"] = args["scheduledEventId"],
 		["details"] = args["details"],
 	}
-	asserts.AssertActivityTaskCanceledEventAttributes(t)
-	return t
+	asserts.AssertActivityTaskCanceledEventAttributes(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeActivityTypeInput = { ["domain"] = true, ["activityType"] = true, nil }
@@ -4514,13 +5768,24 @@ end
 -- Required key: activityType
 -- @return DescribeActivityTypeInput structure as a key-value pair table
 function M.DescribeActivityTypeInput(args)
-	assert(args, "You must provdide an argument table when creating DescribeActivityTypeInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeActivityTypeInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["domain"] = args["domain"],
 		["activityType"] = args["activityType"],
 	}
-	asserts.AssertDescribeActivityTypeInput(t)
-	return t
+	asserts.AssertDescribeActivityTypeInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.SignalWorkflowExecutionInput = { ["input"] = true, ["domain"] = true, ["signalName"] = true, ["workflowId"] = true, ["runId"] = true, nil }
@@ -4555,16 +5820,27 @@ end
 -- Required key: signalName
 -- @return SignalWorkflowExecutionInput structure as a key-value pair table
 function M.SignalWorkflowExecutionInput(args)
-	assert(args, "You must provdide an argument table when creating SignalWorkflowExecutionInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating SignalWorkflowExecutionInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["input"] = args["input"],
 		["domain"] = args["domain"],
 		["signalName"] = args["signalName"],
 		["workflowId"] = args["workflowId"],
 		["runId"] = args["runId"],
 	}
-	asserts.AssertSignalWorkflowExecutionInput(t)
-	return t
+	asserts.AssertSignalWorkflowExecutionInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.StartChildWorkflowExecutionDecisionAttributes = { ["control"] = true, ["workflowId"] = true, ["taskList"] = true, ["taskStartToCloseTimeout"] = true, ["taskPriority"] = true, ["lambdaRole"] = true, ["childPolicy"] = true, ["executionStartToCloseTimeout"] = true, ["input"] = true, ["workflowType"] = true, ["tagList"] = true, nil }
@@ -4609,8 +5885,14 @@ end
 -- Required key: workflowId
 -- @return StartChildWorkflowExecutionDecisionAttributes structure as a key-value pair table
 function M.StartChildWorkflowExecutionDecisionAttributes(args)
-	assert(args, "You must provdide an argument table when creating StartChildWorkflowExecutionDecisionAttributes")
-	local t = { 
+	assert(args, "You must provide an argument table when creating StartChildWorkflowExecutionDecisionAttributes")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["control"] = args["control"],
 		["workflowId"] = args["workflowId"],
 		["taskList"] = args["taskList"],
@@ -4623,8 +5905,13 @@ function M.StartChildWorkflowExecutionDecisionAttributes(args)
 		["workflowType"] = args["workflowType"],
 		["tagList"] = args["tagList"],
 	}
-	asserts.AssertStartChildWorkflowExecutionDecisionAttributes(t)
-	return t
+	asserts.AssertStartChildWorkflowExecutionDecisionAttributes(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.WorkflowTypeDetail = { ["configuration"] = true, ["typeInfo"] = true, nil }
@@ -4651,13 +5938,24 @@ end
 -- Required key: configuration
 -- @return WorkflowTypeDetail structure as a key-value pair table
 function M.WorkflowTypeDetail(args)
-	assert(args, "You must provdide an argument table when creating WorkflowTypeDetail")
-	local t = { 
+	assert(args, "You must provide an argument table when creating WorkflowTypeDetail")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["configuration"] = args["configuration"],
 		["typeInfo"] = args["typeInfo"],
 	}
-	asserts.AssertWorkflowTypeDetail(t)
-	return t
+	asserts.AssertWorkflowTypeDetail(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListClosedWorkflowExecutionsInput = { ["nextPageToken"] = true, ["domain"] = true, ["maximumPageSize"] = true, ["typeFilter"] = true, ["executionFilter"] = true, ["closeTimeFilter"] = true, ["reverseOrder"] = true, ["closeStatusFilter"] = true, ["startTimeFilter"] = true, ["tagFilter"] = true, nil }
@@ -4698,8 +5996,14 @@ end
 -- Required key: domain
 -- @return ListClosedWorkflowExecutionsInput structure as a key-value pair table
 function M.ListClosedWorkflowExecutionsInput(args)
-	assert(args, "You must provdide an argument table when creating ListClosedWorkflowExecutionsInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListClosedWorkflowExecutionsInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["nextPageToken"] = args["nextPageToken"],
 		["domain"] = args["domain"],
 		["maximumPageSize"] = args["maximumPageSize"],
@@ -4711,8 +6015,13 @@ function M.ListClosedWorkflowExecutionsInput(args)
 		["startTimeFilter"] = args["startTimeFilter"],
 		["tagFilter"] = args["tagFilter"],
 	}
-	asserts.AssertListClosedWorkflowExecutionsInput(t)
-	return t
+	asserts.AssertListClosedWorkflowExecutionsInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.WorkflowExecutionInfo = { ["closeTimestamp"] = true, ["workflowType"] = true, ["parent"] = true, ["startTimestamp"] = true, ["closeStatus"] = true, ["executionStatus"] = true, ["execution"] = true, ["cancelRequested"] = true, ["tagList"] = true, nil }
@@ -4757,8 +6066,14 @@ end
 -- Required key: executionStatus
 -- @return WorkflowExecutionInfo structure as a key-value pair table
 function M.WorkflowExecutionInfo(args)
-	assert(args, "You must provdide an argument table when creating WorkflowExecutionInfo")
-	local t = { 
+	assert(args, "You must provide an argument table when creating WorkflowExecutionInfo")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["closeTimestamp"] = args["closeTimestamp"],
 		["workflowType"] = args["workflowType"],
 		["parent"] = args["parent"],
@@ -4769,8 +6084,13 @@ function M.WorkflowExecutionInfo(args)
 		["cancelRequested"] = args["cancelRequested"],
 		["tagList"] = args["tagList"],
 	}
-	asserts.AssertWorkflowExecutionInfo(t)
-	return t
+	asserts.AssertWorkflowExecutionInfo(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ActivityTypeInfo = { ["status"] = true, ["deprecationDate"] = true, ["creationDate"] = true, ["activityType"] = true, ["description"] = true, nil }
@@ -4805,16 +6125,27 @@ end
 -- Required key: creationDate
 -- @return ActivityTypeInfo structure as a key-value pair table
 function M.ActivityTypeInfo(args)
-	assert(args, "You must provdide an argument table when creating ActivityTypeInfo")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ActivityTypeInfo")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["status"] = args["status"],
 		["deprecationDate"] = args["deprecationDate"],
 		["creationDate"] = args["creationDate"],
 		["activityType"] = args["activityType"],
 		["description"] = args["description"],
 	}
-	asserts.AssertActivityTypeInfo(t)
-	return t
+	asserts.AssertActivityTypeInfo(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.TypeAlreadyExistsFault = { ["message"] = true, nil }
@@ -4835,12 +6166,23 @@ end
 -- * message [ErrorMessage] <p>A description that may help with diagnosing the cause of the fault.</p>
 -- @return TypeAlreadyExistsFault structure as a key-value pair table
 function M.TypeAlreadyExistsFault(args)
-	assert(args, "You must provdide an argument table when creating TypeAlreadyExistsFault")
-	local t = { 
+	assert(args, "You must provide an argument table when creating TypeAlreadyExistsFault")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertTypeAlreadyExistsFault(t)
-	return t
+	asserts.AssertTypeAlreadyExistsFault(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.StartLambdaFunctionFailedEventAttributes = { ["cause"] = true, ["message"] = true, ["scheduledEventId"] = true, nil }
@@ -4865,14 +6207,25 @@ end
 -- * scheduledEventId [EventId] <p>The ID of the <code>LambdaFunctionScheduled</code> event that was recorded when this AWS Lambda function was scheduled. This information can be useful for diagnosing problems by tracing back the chain of events leading up to this event.</p>
 -- @return StartLambdaFunctionFailedEventAttributes structure as a key-value pair table
 function M.StartLambdaFunctionFailedEventAttributes(args)
-	assert(args, "You must provdide an argument table when creating StartLambdaFunctionFailedEventAttributes")
-	local t = { 
+	assert(args, "You must provide an argument table when creating StartLambdaFunctionFailedEventAttributes")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["cause"] = args["cause"],
 		["message"] = args["message"],
 		["scheduledEventId"] = args["scheduledEventId"],
 	}
-	asserts.AssertStartLambdaFunctionFailedEventAttributes(t)
-	return t
+	asserts.AssertStartLambdaFunctionFailedEventAttributes(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.WorkflowExecutionCompletedEventAttributes = { ["result"] = true, ["decisionTaskCompletedEventId"] = true, nil }
@@ -4897,13 +6250,24 @@ end
 -- Required key: decisionTaskCompletedEventId
 -- @return WorkflowExecutionCompletedEventAttributes structure as a key-value pair table
 function M.WorkflowExecutionCompletedEventAttributes(args)
-	assert(args, "You must provdide an argument table when creating WorkflowExecutionCompletedEventAttributes")
-	local t = { 
+	assert(args, "You must provide an argument table when creating WorkflowExecutionCompletedEventAttributes")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["result"] = args["result"],
 		["decisionTaskCompletedEventId"] = args["decisionTaskCompletedEventId"],
 	}
-	asserts.AssertWorkflowExecutionCompletedEventAttributes(t)
-	return t
+	asserts.AssertWorkflowExecutionCompletedEventAttributes(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListDomainsInput = { ["nextPageToken"] = true, ["maximumPageSize"] = true, ["registrationStatus"] = true, ["reverseOrder"] = true, nil }
@@ -4932,15 +6296,26 @@ end
 -- Required key: registrationStatus
 -- @return ListDomainsInput structure as a key-value pair table
 function M.ListDomainsInput(args)
-	assert(args, "You must provdide an argument table when creating ListDomainsInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListDomainsInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["nextPageToken"] = args["nextPageToken"],
 		["maximumPageSize"] = args["maximumPageSize"],
 		["registrationStatus"] = args["registrationStatus"],
 		["reverseOrder"] = args["reverseOrder"],
 	}
-	asserts.AssertListDomainsInput(t)
-	return t
+	asserts.AssertListDomainsInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ActivityTaskScheduledEventAttributes = { ["control"] = true, ["taskList"] = true, ["scheduleToCloseTimeout"] = true, ["activityType"] = true, ["decisionTaskCompletedEventId"] = true, ["taskPriority"] = true, ["heartbeatTimeout"] = true, ["activityId"] = true, ["scheduleToStartTimeout"] = true, ["startToCloseTimeout"] = true, ["input"] = true, nil }
@@ -4989,8 +6364,14 @@ end
 -- Required key: decisionTaskCompletedEventId
 -- @return ActivityTaskScheduledEventAttributes structure as a key-value pair table
 function M.ActivityTaskScheduledEventAttributes(args)
-	assert(args, "You must provdide an argument table when creating ActivityTaskScheduledEventAttributes")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ActivityTaskScheduledEventAttributes")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["control"] = args["control"],
 		["taskList"] = args["taskList"],
 		["scheduleToCloseTimeout"] = args["scheduleToCloseTimeout"],
@@ -5003,8 +6384,13 @@ function M.ActivityTaskScheduledEventAttributes(args)
 		["startToCloseTimeout"] = args["startToCloseTimeout"],
 		["input"] = args["input"],
 	}
-	asserts.AssertActivityTaskScheduledEventAttributes(t)
-	return t
+	asserts.AssertActivityTaskScheduledEventAttributes(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ChildWorkflowExecutionCompletedEventAttributes = { ["startedEventId"] = true, ["workflowType"] = true, ["initiatedEventId"] = true, ["result"] = true, ["workflowExecution"] = true, nil }
@@ -5041,16 +6427,27 @@ end
 -- Required key: startedEventId
 -- @return ChildWorkflowExecutionCompletedEventAttributes structure as a key-value pair table
 function M.ChildWorkflowExecutionCompletedEventAttributes(args)
-	assert(args, "You must provdide an argument table when creating ChildWorkflowExecutionCompletedEventAttributes")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ChildWorkflowExecutionCompletedEventAttributes")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["startedEventId"] = args["startedEventId"],
 		["workflowType"] = args["workflowType"],
 		["initiatedEventId"] = args["initiatedEventId"],
 		["result"] = args["result"],
 		["workflowExecution"] = args["workflowExecution"],
 	}
-	asserts.AssertChildWorkflowExecutionCompletedEventAttributes(t)
-	return t
+	asserts.AssertChildWorkflowExecutionCompletedEventAttributes(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.RespondActivityTaskCompletedInput = { ["result"] = true, ["taskToken"] = true, nil }
@@ -5075,13 +6472,24 @@ end
 -- Required key: taskToken
 -- @return RespondActivityTaskCompletedInput structure as a key-value pair table
 function M.RespondActivityTaskCompletedInput(args)
-	assert(args, "You must provdide an argument table when creating RespondActivityTaskCompletedInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating RespondActivityTaskCompletedInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["result"] = args["result"],
 		["taskToken"] = args["taskToken"],
 	}
-	asserts.AssertRespondActivityTaskCompletedInput(t)
-	return t
+	asserts.AssertRespondActivityTaskCompletedInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.TimerCanceledEventAttributes = { ["startedEventId"] = true, ["timerId"] = true, ["decisionTaskCompletedEventId"] = true, nil }
@@ -5112,14 +6520,25 @@ end
 -- Required key: decisionTaskCompletedEventId
 -- @return TimerCanceledEventAttributes structure as a key-value pair table
 function M.TimerCanceledEventAttributes(args)
-	assert(args, "You must provdide an argument table when creating TimerCanceledEventAttributes")
-	local t = { 
+	assert(args, "You must provide an argument table when creating TimerCanceledEventAttributes")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["startedEventId"] = args["startedEventId"],
 		["timerId"] = args["timerId"],
 		["decisionTaskCompletedEventId"] = args["decisionTaskCompletedEventId"],
 	}
-	asserts.AssertTimerCanceledEventAttributes(t)
-	return t
+	asserts.AssertTimerCanceledEventAttributes(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ActivityTaskCompletedEventAttributes = { ["startedEventId"] = true, ["scheduledEventId"] = true, ["result"] = true, nil }
@@ -5148,14 +6567,25 @@ end
 -- Required key: startedEventId
 -- @return ActivityTaskCompletedEventAttributes structure as a key-value pair table
 function M.ActivityTaskCompletedEventAttributes(args)
-	assert(args, "You must provdide an argument table when creating ActivityTaskCompletedEventAttributes")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ActivityTaskCompletedEventAttributes")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["startedEventId"] = args["startedEventId"],
 		["scheduledEventId"] = args["scheduledEventId"],
 		["result"] = args["result"],
 	}
-	asserts.AssertActivityTaskCompletedEventAttributes(t)
-	return t
+	asserts.AssertActivityTaskCompletedEventAttributes(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ScheduleLambdaFunctionDecisionAttributes = { ["input"] = true, ["startToCloseTimeout"] = true, ["id"] = true, ["name"] = true, nil }
@@ -5186,15 +6616,26 @@ end
 -- Required key: name
 -- @return ScheduleLambdaFunctionDecisionAttributes structure as a key-value pair table
 function M.ScheduleLambdaFunctionDecisionAttributes(args)
-	assert(args, "You must provdide an argument table when creating ScheduleLambdaFunctionDecisionAttributes")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ScheduleLambdaFunctionDecisionAttributes")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["input"] = args["input"],
 		["startToCloseTimeout"] = args["startToCloseTimeout"],
 		["id"] = args["id"],
 		["name"] = args["name"],
 	}
-	asserts.AssertScheduleLambdaFunctionDecisionAttributes(t)
-	return t
+	asserts.AssertScheduleLambdaFunctionDecisionAttributes(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ActivityTaskStartedEventAttributes = { ["scheduledEventId"] = true, ["identity"] = true, nil }
@@ -5219,13 +6660,24 @@ end
 -- Required key: scheduledEventId
 -- @return ActivityTaskStartedEventAttributes structure as a key-value pair table
 function M.ActivityTaskStartedEventAttributes(args)
-	assert(args, "You must provdide an argument table when creating ActivityTaskStartedEventAttributes")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ActivityTaskStartedEventAttributes")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["scheduledEventId"] = args["scheduledEventId"],
 		["identity"] = args["identity"],
 	}
-	asserts.AssertActivityTaskStartedEventAttributes(t)
-	return t
+	asserts.AssertActivityTaskStartedEventAttributes(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.TagFilter = { ["tag"] = true, nil }
@@ -5248,12 +6700,23 @@ end
 -- Required key: tag
 -- @return TagFilter structure as a key-value pair table
 function M.TagFilter(args)
-	assert(args, "You must provdide an argument table when creating TagFilter")
-	local t = { 
+	assert(args, "You must provide an argument table when creating TagFilter")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["tag"] = args["tag"],
 	}
-	asserts.AssertTagFilter(t)
-	return t
+	asserts.AssertTagFilter(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.WorkflowExecutionCount = { ["count"] = true, ["truncated"] = true, nil }
@@ -5278,13 +6741,24 @@ end
 -- Required key: count
 -- @return WorkflowExecutionCount structure as a key-value pair table
 function M.WorkflowExecutionCount(args)
-	assert(args, "You must provdide an argument table when creating WorkflowExecutionCount")
-	local t = { 
+	assert(args, "You must provide an argument table when creating WorkflowExecutionCount")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["count"] = args["count"],
 		["truncated"] = args["truncated"],
 	}
-	asserts.AssertWorkflowExecutionCount(t)
-	return t
+	asserts.AssertWorkflowExecutionCount(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CountClosedWorkflowExecutionsInput = { ["domain"] = true, ["typeFilter"] = true, ["tagFilter"] = true, ["closeTimeFilter"] = true, ["closeStatusFilter"] = true, ["startTimeFilter"] = true, ["executionFilter"] = true, nil }
@@ -5319,8 +6793,14 @@ end
 -- Required key: domain
 -- @return CountClosedWorkflowExecutionsInput structure as a key-value pair table
 function M.CountClosedWorkflowExecutionsInput(args)
-	assert(args, "You must provdide an argument table when creating CountClosedWorkflowExecutionsInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CountClosedWorkflowExecutionsInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["domain"] = args["domain"],
 		["typeFilter"] = args["typeFilter"],
 		["tagFilter"] = args["tagFilter"],
@@ -5329,8 +6809,13 @@ function M.CountClosedWorkflowExecutionsInput(args)
 		["startTimeFilter"] = args["startTimeFilter"],
 		["executionFilter"] = args["executionFilter"],
 	}
-	asserts.AssertCountClosedWorkflowExecutionsInput(t)
-	return t
+	asserts.AssertCountClosedWorkflowExecutionsInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.WorkflowExecutionOpenCounts = { ["openTimers"] = true, ["openDecisionTasks"] = true, ["openLambdaFunctions"] = true, ["openActivityTasks"] = true, ["openChildWorkflowExecutions"] = true, nil }
@@ -5367,16 +6852,27 @@ end
 -- Required key: openChildWorkflowExecutions
 -- @return WorkflowExecutionOpenCounts structure as a key-value pair table
 function M.WorkflowExecutionOpenCounts(args)
-	assert(args, "You must provdide an argument table when creating WorkflowExecutionOpenCounts")
-	local t = { 
+	assert(args, "You must provide an argument table when creating WorkflowExecutionOpenCounts")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["openTimers"] = args["openTimers"],
 		["openDecisionTasks"] = args["openDecisionTasks"],
 		["openLambdaFunctions"] = args["openLambdaFunctions"],
 		["openActivityTasks"] = args["openActivityTasks"],
 		["openChildWorkflowExecutions"] = args["openChildWorkflowExecutions"],
 	}
-	asserts.AssertWorkflowExecutionOpenCounts(t)
-	return t
+	asserts.AssertWorkflowExecutionOpenCounts(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.WorkflowExecutionCancelRequestedEventAttributes = { ["externalInitiatedEventId"] = true, ["cause"] = true, ["externalWorkflowExecution"] = true, nil }
@@ -5401,14 +6897,25 @@ end
 -- * externalWorkflowExecution [WorkflowExecution] <p>The external workflow execution for which the cancellation was requested.</p>
 -- @return WorkflowExecutionCancelRequestedEventAttributes structure as a key-value pair table
 function M.WorkflowExecutionCancelRequestedEventAttributes(args)
-	assert(args, "You must provdide an argument table when creating WorkflowExecutionCancelRequestedEventAttributes")
-	local t = { 
+	assert(args, "You must provide an argument table when creating WorkflowExecutionCancelRequestedEventAttributes")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["externalInitiatedEventId"] = args["externalInitiatedEventId"],
 		["cause"] = args["cause"],
 		["externalWorkflowExecution"] = args["externalWorkflowExecution"],
 	}
-	asserts.AssertWorkflowExecutionCancelRequestedEventAttributes(t)
-	return t
+	asserts.AssertWorkflowExecutionCancelRequestedEventAttributes(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.StartTimerFailedEventAttributes = { ["timerId"] = true, ["cause"] = true, ["decisionTaskCompletedEventId"] = true, nil }
@@ -5439,14 +6946,25 @@ end
 -- Required key: decisionTaskCompletedEventId
 -- @return StartTimerFailedEventAttributes structure as a key-value pair table
 function M.StartTimerFailedEventAttributes(args)
-	assert(args, "You must provdide an argument table when creating StartTimerFailedEventAttributes")
-	local t = { 
+	assert(args, "You must provide an argument table when creating StartTimerFailedEventAttributes")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["timerId"] = args["timerId"],
 		["cause"] = args["cause"],
 		["decisionTaskCompletedEventId"] = args["decisionTaskCompletedEventId"],
 	}
-	asserts.AssertStartTimerFailedEventAttributes(t)
-	return t
+	asserts.AssertStartTimerFailedEventAttributes(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.WorkflowExecutionAlreadyStartedFault = { ["message"] = true, nil }
@@ -5467,12 +6985,23 @@ end
 -- * message [ErrorMessage] <p>A description that may help with diagnosing the cause of the fault.</p>
 -- @return WorkflowExecutionAlreadyStartedFault structure as a key-value pair table
 function M.WorkflowExecutionAlreadyStartedFault(args)
-	assert(args, "You must provdide an argument table when creating WorkflowExecutionAlreadyStartedFault")
-	local t = { 
+	assert(args, "You must provide an argument table when creating WorkflowExecutionAlreadyStartedFault")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertWorkflowExecutionAlreadyStartedFault(t)
-	return t
+	asserts.AssertWorkflowExecutionAlreadyStartedFault(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CompleteWorkflowExecutionDecisionAttributes = { ["result"] = true, nil }
@@ -5493,12 +7022,23 @@ end
 -- * result [Data] <p>The result of the workflow execution. The form of the result is implementation defined.</p>
 -- @return CompleteWorkflowExecutionDecisionAttributes structure as a key-value pair table
 function M.CompleteWorkflowExecutionDecisionAttributes(args)
-	assert(args, "You must provdide an argument table when creating CompleteWorkflowExecutionDecisionAttributes")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CompleteWorkflowExecutionDecisionAttributes")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["result"] = args["result"],
 	}
-	asserts.AssertCompleteWorkflowExecutionDecisionAttributes(t)
-	return t
+	asserts.AssertCompleteWorkflowExecutionDecisionAttributes(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.LambdaFunctionScheduledEventAttributes = { ["input"] = true, ["startToCloseTimeout"] = true, ["decisionTaskCompletedEventId"] = true, ["id"] = true, ["name"] = true, nil }
@@ -5533,16 +7073,27 @@ end
 -- Required key: decisionTaskCompletedEventId
 -- @return LambdaFunctionScheduledEventAttributes structure as a key-value pair table
 function M.LambdaFunctionScheduledEventAttributes(args)
-	assert(args, "You must provdide an argument table when creating LambdaFunctionScheduledEventAttributes")
-	local t = { 
+	assert(args, "You must provide an argument table when creating LambdaFunctionScheduledEventAttributes")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["input"] = args["input"],
 		["startToCloseTimeout"] = args["startToCloseTimeout"],
 		["decisionTaskCompletedEventId"] = args["decisionTaskCompletedEventId"],
 		["id"] = args["id"],
 		["name"] = args["name"],
 	}
-	asserts.AssertLambdaFunctionScheduledEventAttributes(t)
-	return t
+	asserts.AssertLambdaFunctionScheduledEventAttributes(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DecisionTaskCompletedEventAttributes = { ["startedEventId"] = true, ["executionContext"] = true, ["scheduledEventId"] = true, nil }
@@ -5571,14 +7122,25 @@ end
 -- Required key: startedEventId
 -- @return DecisionTaskCompletedEventAttributes structure as a key-value pair table
 function M.DecisionTaskCompletedEventAttributes(args)
-	assert(args, "You must provdide an argument table when creating DecisionTaskCompletedEventAttributes")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DecisionTaskCompletedEventAttributes")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["startedEventId"] = args["startedEventId"],
 		["executionContext"] = args["executionContext"],
 		["scheduledEventId"] = args["scheduledEventId"],
 	}
-	asserts.AssertDecisionTaskCompletedEventAttributes(t)
-	return t
+	asserts.AssertDecisionTaskCompletedEventAttributes(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 function asserts.AssertStartChildWorkflowExecutionFailedCause(str)
@@ -6487,8 +8049,11 @@ function M.SignalWorkflowExecutionAsync(SignalWorkflowExecutionInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "SimpleWorkflowService.SignalWorkflowExecution",
 	}
+	for header,value in pairs(SignalWorkflowExecutionInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", SignalWorkflowExecutionInput, headers, settings, cb)
 	else
@@ -6519,8 +8084,11 @@ function M.DescribeWorkflowExecutionAsync(DescribeWorkflowExecutionInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "SimpleWorkflowService.DescribeWorkflowExecution",
 	}
+	for header,value in pairs(DescribeWorkflowExecutionInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeWorkflowExecutionInput, headers, settings, cb)
 	else
@@ -6551,8 +8119,11 @@ function M.GetWorkflowExecutionHistoryAsync(GetWorkflowExecutionHistoryInput, cb
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "SimpleWorkflowService.GetWorkflowExecutionHistory",
 	}
+	for header,value in pairs(GetWorkflowExecutionHistoryInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", GetWorkflowExecutionHistoryInput, headers, settings, cb)
 	else
@@ -6583,8 +8154,11 @@ function M.CountOpenWorkflowExecutionsAsync(CountOpenWorkflowExecutionsInput, cb
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "SimpleWorkflowService.CountOpenWorkflowExecutions",
 	}
+	for header,value in pairs(CountOpenWorkflowExecutionsInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", CountOpenWorkflowExecutionsInput, headers, settings, cb)
 	else
@@ -6615,8 +8189,11 @@ function M.RespondActivityTaskFailedAsync(RespondActivityTaskFailedInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "SimpleWorkflowService.RespondActivityTaskFailed",
 	}
+	for header,value in pairs(RespondActivityTaskFailedInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", RespondActivityTaskFailedInput, headers, settings, cb)
 	else
@@ -6647,8 +8224,11 @@ function M.PollForActivityTaskAsync(PollForActivityTaskInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "SimpleWorkflowService.PollForActivityTask",
 	}
+	for header,value in pairs(PollForActivityTaskInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", PollForActivityTaskInput, headers, settings, cb)
 	else
@@ -6679,8 +8259,11 @@ function M.ListDomainsAsync(ListDomainsInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "SimpleWorkflowService.ListDomains",
 	}
+	for header,value in pairs(ListDomainsInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ListDomainsInput, headers, settings, cb)
 	else
@@ -6711,8 +8294,11 @@ function M.StartWorkflowExecutionAsync(StartWorkflowExecutionInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "SimpleWorkflowService.StartWorkflowExecution",
 	}
+	for header,value in pairs(StartWorkflowExecutionInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", StartWorkflowExecutionInput, headers, settings, cb)
 	else
@@ -6743,8 +8329,11 @@ function M.RespondDecisionTaskCompletedAsync(RespondDecisionTaskCompletedInput, 
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "SimpleWorkflowService.RespondDecisionTaskCompleted",
 	}
+	for header,value in pairs(RespondDecisionTaskCompletedInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", RespondDecisionTaskCompletedInput, headers, settings, cb)
 	else
@@ -6775,8 +8364,11 @@ function M.RegisterActivityTypeAsync(RegisterActivityTypeInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "SimpleWorkflowService.RegisterActivityType",
 	}
+	for header,value in pairs(RegisterActivityTypeInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", RegisterActivityTypeInput, headers, settings, cb)
 	else
@@ -6807,8 +8399,11 @@ function M.RequestCancelWorkflowExecutionAsync(RequestCancelWorkflowExecutionInp
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "SimpleWorkflowService.RequestCancelWorkflowExecution",
 	}
+	for header,value in pairs(RequestCancelWorkflowExecutionInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", RequestCancelWorkflowExecutionInput, headers, settings, cb)
 	else
@@ -6839,8 +8434,11 @@ function M.ListActivityTypesAsync(ListActivityTypesInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "SimpleWorkflowService.ListActivityTypes",
 	}
+	for header,value in pairs(ListActivityTypesInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ListActivityTypesInput, headers, settings, cb)
 	else
@@ -6871,8 +8469,11 @@ function M.PollForDecisionTaskAsync(PollForDecisionTaskInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "SimpleWorkflowService.PollForDecisionTask",
 	}
+	for header,value in pairs(PollForDecisionTaskInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", PollForDecisionTaskInput, headers, settings, cb)
 	else
@@ -6903,8 +8504,11 @@ function M.ListOpenWorkflowExecutionsAsync(ListOpenWorkflowExecutionsInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "SimpleWorkflowService.ListOpenWorkflowExecutions",
 	}
+	for header,value in pairs(ListOpenWorkflowExecutionsInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ListOpenWorkflowExecutionsInput, headers, settings, cb)
 	else
@@ -6935,8 +8539,11 @@ function M.CountClosedWorkflowExecutionsAsync(CountClosedWorkflowExecutionsInput
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "SimpleWorkflowService.CountClosedWorkflowExecutions",
 	}
+	for header,value in pairs(CountClosedWorkflowExecutionsInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", CountClosedWorkflowExecutionsInput, headers, settings, cb)
 	else
@@ -6967,8 +8574,11 @@ function M.RegisterWorkflowTypeAsync(RegisterWorkflowTypeInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "SimpleWorkflowService.RegisterWorkflowType",
 	}
+	for header,value in pairs(RegisterWorkflowTypeInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", RegisterWorkflowTypeInput, headers, settings, cb)
 	else
@@ -6999,8 +8609,11 @@ function M.DescribeDomainAsync(DescribeDomainInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "SimpleWorkflowService.DescribeDomain",
 	}
+	for header,value in pairs(DescribeDomainInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeDomainInput, headers, settings, cb)
 	else
@@ -7031,8 +8644,11 @@ function M.ListClosedWorkflowExecutionsAsync(ListClosedWorkflowExecutionsInput, 
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "SimpleWorkflowService.ListClosedWorkflowExecutions",
 	}
+	for header,value in pairs(ListClosedWorkflowExecutionsInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ListClosedWorkflowExecutionsInput, headers, settings, cb)
 	else
@@ -7063,8 +8679,11 @@ function M.TerminateWorkflowExecutionAsync(TerminateWorkflowExecutionInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "SimpleWorkflowService.TerminateWorkflowExecution",
 	}
+	for header,value in pairs(TerminateWorkflowExecutionInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", TerminateWorkflowExecutionInput, headers, settings, cb)
 	else
@@ -7095,8 +8714,11 @@ function M.DeprecateWorkflowTypeAsync(DeprecateWorkflowTypeInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "SimpleWorkflowService.DeprecateWorkflowType",
 	}
+	for header,value in pairs(DeprecateWorkflowTypeInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DeprecateWorkflowTypeInput, headers, settings, cb)
 	else
@@ -7127,8 +8749,11 @@ function M.DescribeActivityTypeAsync(DescribeActivityTypeInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "SimpleWorkflowService.DescribeActivityType",
 	}
+	for header,value in pairs(DescribeActivityTypeInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeActivityTypeInput, headers, settings, cb)
 	else
@@ -7159,8 +8784,11 @@ function M.CountPendingDecisionTasksAsync(CountPendingDecisionTasksInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "SimpleWorkflowService.CountPendingDecisionTasks",
 	}
+	for header,value in pairs(CountPendingDecisionTasksInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", CountPendingDecisionTasksInput, headers, settings, cb)
 	else
@@ -7191,8 +8819,11 @@ function M.ListWorkflowTypesAsync(ListWorkflowTypesInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "SimpleWorkflowService.ListWorkflowTypes",
 	}
+	for header,value in pairs(ListWorkflowTypesInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ListWorkflowTypesInput, headers, settings, cb)
 	else
@@ -7223,8 +8854,11 @@ function M.DeprecateDomainAsync(DeprecateDomainInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "SimpleWorkflowService.DeprecateDomain",
 	}
+	for header,value in pairs(DeprecateDomainInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DeprecateDomainInput, headers, settings, cb)
 	else
@@ -7255,8 +8889,11 @@ function M.RespondActivityTaskCanceledAsync(RespondActivityTaskCanceledInput, cb
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "SimpleWorkflowService.RespondActivityTaskCanceled",
 	}
+	for header,value in pairs(RespondActivityTaskCanceledInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", RespondActivityTaskCanceledInput, headers, settings, cb)
 	else
@@ -7287,8 +8924,11 @@ function M.DescribeWorkflowTypeAsync(DescribeWorkflowTypeInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "SimpleWorkflowService.DescribeWorkflowType",
 	}
+	for header,value in pairs(DescribeWorkflowTypeInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeWorkflowTypeInput, headers, settings, cb)
 	else
@@ -7319,8 +8959,11 @@ function M.RegisterDomainAsync(RegisterDomainInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "SimpleWorkflowService.RegisterDomain",
 	}
+	for header,value in pairs(RegisterDomainInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", RegisterDomainInput, headers, settings, cb)
 	else
@@ -7351,8 +8994,11 @@ function M.RecordActivityTaskHeartbeatAsync(RecordActivityTaskHeartbeatInput, cb
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "SimpleWorkflowService.RecordActivityTaskHeartbeat",
 	}
+	for header,value in pairs(RecordActivityTaskHeartbeatInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", RecordActivityTaskHeartbeatInput, headers, settings, cb)
 	else
@@ -7383,8 +9029,11 @@ function M.CountPendingActivityTasksAsync(CountPendingActivityTasksInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "SimpleWorkflowService.CountPendingActivityTasks",
 	}
+	for header,value in pairs(CountPendingActivityTasksInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", CountPendingActivityTasksInput, headers, settings, cb)
 	else
@@ -7415,8 +9064,11 @@ function M.DeprecateActivityTypeAsync(DeprecateActivityTypeInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "SimpleWorkflowService.DeprecateActivityType",
 	}
+	for header,value in pairs(DeprecateActivityTypeInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DeprecateActivityTypeInput, headers, settings, cb)
 	else
@@ -7447,8 +9099,11 @@ function M.RespondActivityTaskCompletedAsync(RespondActivityTaskCompletedInput, 
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "SimpleWorkflowService.RespondActivityTaskCompleted",
 	}
+	for header,value in pairs(RespondActivityTaskCompletedInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", RespondActivityTaskCompletedInput, headers, settings, cb)
 	else

@@ -51,8 +51,14 @@ end
 -- * stateChangeTimeRange [TimestampRange] <p>For a record to match a filter, the value that is specified for this data type property must match the <b>stateChangedAt</b> property of the <a>AssessmentRun</a> data type.</p>
 -- @return AssessmentRunFilter structure as a key-value pair table
 function M.AssessmentRunFilter(args)
-	assert(args, "You must provdide an argument table when creating AssessmentRunFilter")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AssessmentRunFilter")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["startTimeRange"] = args["startTimeRange"],
 		["durationRange"] = args["durationRange"],
 		["rulesPackageArns"] = args["rulesPackageArns"],
@@ -61,8 +67,13 @@ function M.AssessmentRunFilter(args)
 		["completionTimeRange"] = args["completionTimeRange"],
 		["stateChangeTimeRange"] = args["stateChangeTimeRange"],
 	}
-	asserts.AssertAssessmentRunFilter(t)
-	return t
+	asserts.AssertAssessmentRunFilter(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.TelemetryMetadata = { ["count"] = true, ["dataSize"] = true, ["messageType"] = true, nil }
@@ -91,14 +102,25 @@ end
 -- Required key: count
 -- @return TelemetryMetadata structure as a key-value pair table
 function M.TelemetryMetadata(args)
-	assert(args, "You must provdide an argument table when creating TelemetryMetadata")
-	local t = { 
+	assert(args, "You must provide an argument table when creating TelemetryMetadata")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["count"] = args["count"],
 		["dataSize"] = args["dataSize"],
 		["messageType"] = args["messageType"],
 	}
-	asserts.AssertTelemetryMetadata(t)
-	return t
+	asserts.AssertTelemetryMetadata(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AgentsAlreadyRunningAssessmentException = { ["canRetry"] = true, ["message"] = true, ["agents"] = true, ["agentsTruncated"] = true, nil }
@@ -133,15 +155,26 @@ end
 -- Required key: canRetry
 -- @return AgentsAlreadyRunningAssessmentException structure as a key-value pair table
 function M.AgentsAlreadyRunningAssessmentException(args)
-	assert(args, "You must provdide an argument table when creating AgentsAlreadyRunningAssessmentException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AgentsAlreadyRunningAssessmentException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["canRetry"] = args["canRetry"],
 		["message"] = args["message"],
 		["agents"] = args["agents"],
 		["agentsTruncated"] = args["agentsTruncated"],
 	}
-	asserts.AssertAgentsAlreadyRunningAssessmentException(t)
-	return t
+	asserts.AssertAgentsAlreadyRunningAssessmentException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.FailedItemDetails = { ["retryable"] = true, ["failureCode"] = true, nil }
@@ -168,13 +201,24 @@ end
 -- Required key: retryable
 -- @return FailedItemDetails structure as a key-value pair table
 function M.FailedItemDetails(args)
-	assert(args, "You must provdide an argument table when creating FailedItemDetails")
-	local t = { 
+	assert(args, "You must provide an argument table when creating FailedItemDetails")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["retryable"] = args["retryable"],
 		["failureCode"] = args["failureCode"],
 	}
-	asserts.AssertFailedItemDetails(t)
-	return t
+	asserts.AssertFailedItemDetails(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.PreviewAgentsResponse = { ["nextToken"] = true, ["agentPreviews"] = true, nil }
@@ -199,13 +243,24 @@ end
 -- Required key: agentPreviews
 -- @return PreviewAgentsResponse structure as a key-value pair table
 function M.PreviewAgentsResponse(args)
-	assert(args, "You must provdide an argument table when creating PreviewAgentsResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating PreviewAgentsResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["nextToken"] = args["nextToken"],
 		["agentPreviews"] = args["agentPreviews"],
 	}
-	asserts.AssertPreviewAgentsResponse(t)
-	return t
+	asserts.AssertPreviewAgentsResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetAssessmentReportRequest = { ["assessmentRunArn"] = true, ["reportType"] = true, ["reportFileFormat"] = true, nil }
@@ -236,14 +291,25 @@ end
 -- Required key: reportType
 -- @return GetAssessmentReportRequest structure as a key-value pair table
 function M.GetAssessmentReportRequest(args)
-	assert(args, "You must provdide an argument table when creating GetAssessmentReportRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetAssessmentReportRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["assessmentRunArn"] = args["assessmentRunArn"],
 		["reportType"] = args["reportType"],
 		["reportFileFormat"] = args["reportFileFormat"],
 	}
-	asserts.AssertGetAssessmentReportRequest(t)
-	return t
+	asserts.AssertGetAssessmentReportRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.SubscribeToEventRequest = { ["resourceArn"] = true, ["event"] = true, ["topicArn"] = true, nil }
@@ -274,14 +340,25 @@ end
 -- Required key: topicArn
 -- @return SubscribeToEventRequest structure as a key-value pair table
 function M.SubscribeToEventRequest(args)
-	assert(args, "You must provdide an argument table when creating SubscribeToEventRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating SubscribeToEventRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["resourceArn"] = args["resourceArn"],
 		["event"] = args["event"],
 		["topicArn"] = args["topicArn"],
 	}
-	asserts.AssertSubscribeToEventRequest(t)
-	return t
+	asserts.AssertSubscribeToEventRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.RemoveAttributesFromFindingsResponse = { ["failedItems"] = true, nil }
@@ -304,12 +381,23 @@ end
 -- Required key: failedItems
 -- @return RemoveAttributesFromFindingsResponse structure as a key-value pair table
 function M.RemoveAttributesFromFindingsResponse(args)
-	assert(args, "You must provdide an argument table when creating RemoveAttributesFromFindingsResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating RemoveAttributesFromFindingsResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["failedItems"] = args["failedItems"],
 	}
-	asserts.AssertRemoveAttributesFromFindingsResponse(t)
-	return t
+	asserts.AssertRemoveAttributesFromFindingsResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AssessmentRunAgent = { ["assessmentRunArn"] = true, ["agentHealthCode"] = true, ["agentHealth"] = true, ["autoScalingGroup"] = true, ["agentHealthDetails"] = true, ["telemetryMetadata"] = true, ["agentId"] = true, nil }
@@ -352,8 +440,14 @@ end
 -- Required key: telemetryMetadata
 -- @return AssessmentRunAgent structure as a key-value pair table
 function M.AssessmentRunAgent(args)
-	assert(args, "You must provdide an argument table when creating AssessmentRunAgent")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AssessmentRunAgent")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["assessmentRunArn"] = args["assessmentRunArn"],
 		["agentHealthCode"] = args["agentHealthCode"],
 		["agentHealth"] = args["agentHealth"],
@@ -362,8 +456,13 @@ function M.AssessmentRunAgent(args)
 		["telemetryMetadata"] = args["telemetryMetadata"],
 		["agentId"] = args["agentId"],
 	}
-	asserts.AssertAssessmentRunAgent(t)
-	return t
+	asserts.AssertAssessmentRunAgent(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeResourceGroupsRequest = { ["resourceGroupArns"] = true, nil }
@@ -386,12 +485,23 @@ end
 -- Required key: resourceGroupArns
 -- @return DescribeResourceGroupsRequest structure as a key-value pair table
 function M.DescribeResourceGroupsRequest(args)
-	assert(args, "You must provdide an argument table when creating DescribeResourceGroupsRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeResourceGroupsRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["resourceGroupArns"] = args["resourceGroupArns"],
 	}
-	asserts.AssertDescribeResourceGroupsRequest(t)
-	return t
+	asserts.AssertDescribeResourceGroupsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListAssessmentTargetsRequest = { ["filter"] = true, ["nextToken"] = true, ["maxResults"] = true, nil }
@@ -416,14 +526,25 @@ end
 -- * maxResults [ListMaxResults] <p>You can use this parameter to indicate the maximum number of items you want in the response. The default value is 10. The maximum value is 500.</p>
 -- @return ListAssessmentTargetsRequest structure as a key-value pair table
 function M.ListAssessmentTargetsRequest(args)
-	assert(args, "You must provdide an argument table when creating ListAssessmentTargetsRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListAssessmentTargetsRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["filter"] = args["filter"],
 		["nextToken"] = args["nextToken"],
 		["maxResults"] = args["maxResults"],
 	}
-	asserts.AssertListAssessmentTargetsRequest(t)
-	return t
+	asserts.AssertListAssessmentTargetsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AssessmentRunNotification = { ["snsPublishStatusCode"] = true, ["snsTopicArn"] = true, ["error"] = true, ["date"] = true, ["message"] = true, ["event"] = true, nil }
@@ -460,8 +581,14 @@ end
 -- Required key: error
 -- @return AssessmentRunNotification structure as a key-value pair table
 function M.AssessmentRunNotification(args)
-	assert(args, "You must provdide an argument table when creating AssessmentRunNotification")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AssessmentRunNotification")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["snsPublishStatusCode"] = args["snsPublishStatusCode"],
 		["snsTopicArn"] = args["snsTopicArn"],
 		["error"] = args["error"],
@@ -469,8 +596,13 @@ function M.AssessmentRunNotification(args)
 		["message"] = args["message"],
 		["event"] = args["event"],
 	}
-	asserts.AssertAssessmentRunNotification(t)
-	return t
+	asserts.AssertAssessmentRunNotification(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListEventSubscriptionsRequest = { ["resourceArn"] = true, ["nextToken"] = true, ["maxResults"] = true, nil }
@@ -495,14 +627,25 @@ end
 -- * maxResults [ListEventSubscriptionsMaxResults] <p>You can use this parameter to indicate the maximum number of items you want in the response. The default value is 10. The maximum value is 500.</p>
 -- @return ListEventSubscriptionsRequest structure as a key-value pair table
 function M.ListEventSubscriptionsRequest(args)
-	assert(args, "You must provdide an argument table when creating ListEventSubscriptionsRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListEventSubscriptionsRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["resourceArn"] = args["resourceArn"],
 		["nextToken"] = args["nextToken"],
 		["maxResults"] = args["maxResults"],
 	}
-	asserts.AssertListEventSubscriptionsRequest(t)
-	return t
+	asserts.AssertListEventSubscriptionsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AgentFilter = { ["agentHealthCodes"] = true, ["agentHealths"] = true, nil }
@@ -529,13 +672,24 @@ end
 -- Required key: agentHealthCodes
 -- @return AgentFilter structure as a key-value pair table
 function M.AgentFilter(args)
-	assert(args, "You must provdide an argument table when creating AgentFilter")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AgentFilter")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["agentHealthCodes"] = args["agentHealthCodes"],
 		["agentHealths"] = args["agentHealths"],
 	}
-	asserts.AssertAgentFilter(t)
-	return t
+	asserts.AssertAgentFilter(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeAssessmentRunsResponse = { ["failedItems"] = true, ["assessmentRuns"] = true, nil }
@@ -562,13 +716,24 @@ end
 -- Required key: failedItems
 -- @return DescribeAssessmentRunsResponse structure as a key-value pair table
 function M.DescribeAssessmentRunsResponse(args)
-	assert(args, "You must provdide an argument table when creating DescribeAssessmentRunsResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeAssessmentRunsResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["failedItems"] = args["failedItems"],
 		["assessmentRuns"] = args["assessmentRuns"],
 	}
-	asserts.AssertDescribeAssessmentRunsResponse(t)
-	return t
+	asserts.AssertDescribeAssessmentRunsResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Subscription = { ["eventSubscriptions"] = true, ["resourceArn"] = true, ["topicArn"] = true, nil }
@@ -599,14 +764,25 @@ end
 -- Required key: eventSubscriptions
 -- @return Subscription structure as a key-value pair table
 function M.Subscription(args)
-	assert(args, "You must provdide an argument table when creating Subscription")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Subscription")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["eventSubscriptions"] = args["eventSubscriptions"],
 		["resourceArn"] = args["resourceArn"],
 		["topicArn"] = args["topicArn"],
 	}
-	asserts.AssertSubscription(t)
-	return t
+	asserts.AssertSubscription(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetTelemetryMetadataResponse = { ["telemetryMetadata"] = true, nil }
@@ -629,12 +805,23 @@ end
 -- Required key: telemetryMetadata
 -- @return GetTelemetryMetadataResponse structure as a key-value pair table
 function M.GetTelemetryMetadataResponse(args)
-	assert(args, "You must provdide an argument table when creating GetTelemetryMetadataResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetTelemetryMetadataResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["telemetryMetadata"] = args["telemetryMetadata"],
 	}
-	asserts.AssertGetTelemetryMetadataResponse(t)
-	return t
+	asserts.AssertGetTelemetryMetadataResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.RulesPackage = { ["description"] = true, ["version"] = true, ["name"] = true, ["arn"] = true, ["provider"] = true, nil }
@@ -671,16 +858,27 @@ end
 -- Required key: provider
 -- @return RulesPackage structure as a key-value pair table
 function M.RulesPackage(args)
-	assert(args, "You must provdide an argument table when creating RulesPackage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating RulesPackage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["description"] = args["description"],
 		["version"] = args["version"],
 		["name"] = args["name"],
 		["arn"] = args["arn"],
 		["provider"] = args["provider"],
 	}
-	asserts.AssertRulesPackage(t)
-	return t
+	asserts.AssertRulesPackage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AssessmentRunInProgressException = { ["canRetry"] = true, ["message"] = true, ["assessmentRunArnsTruncated"] = true, ["assessmentRunArns"] = true, nil }
@@ -715,15 +913,26 @@ end
 -- Required key: canRetry
 -- @return AssessmentRunInProgressException structure as a key-value pair table
 function M.AssessmentRunInProgressException(args)
-	assert(args, "You must provdide an argument table when creating AssessmentRunInProgressException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AssessmentRunInProgressException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["canRetry"] = args["canRetry"],
 		["message"] = args["message"],
 		["assessmentRunArnsTruncated"] = args["assessmentRunArnsTruncated"],
 		["assessmentRunArns"] = args["assessmentRunArns"],
 	}
-	asserts.AssertAssessmentRunInProgressException(t)
-	return t
+	asserts.AssertAssessmentRunInProgressException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateResourceGroupResponse = { ["resourceGroupArn"] = true, nil }
@@ -746,12 +955,23 @@ end
 -- Required key: resourceGroupArn
 -- @return CreateResourceGroupResponse structure as a key-value pair table
 function M.CreateResourceGroupResponse(args)
-	assert(args, "You must provdide an argument table when creating CreateResourceGroupResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateResourceGroupResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["resourceGroupArn"] = args["resourceGroupArn"],
 	}
-	asserts.AssertCreateResourceGroupResponse(t)
-	return t
+	asserts.AssertCreateResourceGroupResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListFindingsRequest = { ["filter"] = true, ["nextToken"] = true, ["assessmentRunArns"] = true, ["maxResults"] = true, nil }
@@ -778,15 +998,26 @@ end
 -- * maxResults [ListMaxResults] <p>You can use this parameter to indicate the maximum number of items you want in the response. The default value is 10. The maximum value is 500.</p>
 -- @return ListFindingsRequest structure as a key-value pair table
 function M.ListFindingsRequest(args)
-	assert(args, "You must provdide an argument table when creating ListFindingsRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListFindingsRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["filter"] = args["filter"],
 		["nextToken"] = args["nextToken"],
 		["assessmentRunArns"] = args["assessmentRunArns"],
 		["maxResults"] = args["maxResults"],
 	}
-	asserts.AssertListFindingsRequest(t)
-	return t
+	asserts.AssertListFindingsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AssessmentRun = { ["dataCollected"] = true, ["name"] = true, ["completedAt"] = true, ["userAttributesForFindings"] = true, ["stateChanges"] = true, ["createdAt"] = true, ["findingCounts"] = true, ["notifications"] = true, ["state"] = true, ["stateChangedAt"] = true, ["durationInSeconds"] = true, ["rulesPackageArns"] = true, ["startedAt"] = true, ["assessmentTemplateArn"] = true, ["arn"] = true, nil }
@@ -861,8 +1092,14 @@ end
 -- Required key: findingCounts
 -- @return AssessmentRun structure as a key-value pair table
 function M.AssessmentRun(args)
-	assert(args, "You must provdide an argument table when creating AssessmentRun")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AssessmentRun")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["dataCollected"] = args["dataCollected"],
 		["name"] = args["name"],
 		["completedAt"] = args["completedAt"],
@@ -879,8 +1116,13 @@ function M.AssessmentRun(args)
 		["assessmentTemplateArn"] = args["assessmentTemplateArn"],
 		["arn"] = args["arn"],
 	}
-	asserts.AssertAssessmentRun(t)
-	return t
+	asserts.AssertAssessmentRun(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AssessmentTemplate = { ["assessmentTargetArn"] = true, ["name"] = true, ["createdAt"] = true, ["durationInSeconds"] = true, ["rulesPackageArns"] = true, ["userAttributesForFindings"] = true, ["arn"] = true, nil }
@@ -927,8 +1169,14 @@ end
 -- Required key: createdAt
 -- @return AssessmentTemplate structure as a key-value pair table
 function M.AssessmentTemplate(args)
-	assert(args, "You must provdide an argument table when creating AssessmentTemplate")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AssessmentTemplate")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["assessmentTargetArn"] = args["assessmentTargetArn"],
 		["name"] = args["name"],
 		["createdAt"] = args["createdAt"],
@@ -937,8 +1185,13 @@ function M.AssessmentTemplate(args)
 		["userAttributesForFindings"] = args["userAttributesForFindings"],
 		["arn"] = args["arn"],
 	}
-	asserts.AssertAssessmentTemplate(t)
-	return t
+	asserts.AssertAssessmentTemplate(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Tag = { ["value"] = true, ["key"] = true, nil }
@@ -963,13 +1216,24 @@ end
 -- Required key: key
 -- @return Tag structure as a key-value pair table
 function M.Tag(args)
-	assert(args, "You must provdide an argument table when creating Tag")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Tag")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["value"] = args["value"],
 		["key"] = args["key"],
 	}
-	asserts.AssertTag(t)
-	return t
+	asserts.AssertTag(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Attribute = { ["value"] = true, ["key"] = true, nil }
@@ -994,13 +1258,24 @@ end
 -- Required key: key
 -- @return Attribute structure as a key-value pair table
 function M.Attribute(args)
-	assert(args, "You must provdide an argument table when creating Attribute")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Attribute")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["value"] = args["value"],
 		["key"] = args["key"],
 	}
-	asserts.AssertAttribute(t)
-	return t
+	asserts.AssertAttribute(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdateAssessmentTargetRequest = { ["assessmentTargetArn"] = true, ["assessmentTargetName"] = true, ["resourceGroupArn"] = true, nil }
@@ -1031,14 +1306,25 @@ end
 -- Required key: resourceGroupArn
 -- @return UpdateAssessmentTargetRequest structure as a key-value pair table
 function M.UpdateAssessmentTargetRequest(args)
-	assert(args, "You must provdide an argument table when creating UpdateAssessmentTargetRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateAssessmentTargetRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["assessmentTargetArn"] = args["assessmentTargetArn"],
 		["assessmentTargetName"] = args["assessmentTargetName"],
 		["resourceGroupArn"] = args["resourceGroupArn"],
 	}
-	asserts.AssertUpdateAssessmentTargetRequest(t)
-	return t
+	asserts.AssertUpdateAssessmentTargetRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetAssessmentReportResponse = { ["status"] = true, ["url"] = true, nil }
@@ -1063,13 +1349,24 @@ end
 -- Required key: status
 -- @return GetAssessmentReportResponse structure as a key-value pair table
 function M.GetAssessmentReportResponse(args)
-	assert(args, "You must provdide an argument table when creating GetAssessmentReportResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetAssessmentReportResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["status"] = args["status"],
 		["url"] = args["url"],
 	}
-	asserts.AssertGetAssessmentReportResponse(t)
-	return t
+	asserts.AssertGetAssessmentReportResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidInputException = { ["errorCode"] = true, ["canRetry"] = true, ["message"] = true, nil }
@@ -1100,14 +1397,25 @@ end
 -- Required key: canRetry
 -- @return InvalidInputException structure as a key-value pair table
 function M.InvalidInputException(args)
-	assert(args, "You must provdide an argument table when creating InvalidInputException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidInputException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["errorCode"] = args["errorCode"],
 		["canRetry"] = args["canRetry"],
 		["message"] = args["message"],
 	}
-	asserts.AssertInvalidInputException(t)
-	return t
+	asserts.AssertInvalidInputException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeRulesPackagesResponse = { ["rulesPackages"] = true, ["failedItems"] = true, nil }
@@ -1134,13 +1442,24 @@ end
 -- Required key: failedItems
 -- @return DescribeRulesPackagesResponse structure as a key-value pair table
 function M.DescribeRulesPackagesResponse(args)
-	assert(args, "You must provdide an argument table when creating DescribeRulesPackagesResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeRulesPackagesResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["rulesPackages"] = args["rulesPackages"],
 		["failedItems"] = args["failedItems"],
 	}
-	asserts.AssertDescribeRulesPackagesResponse(t)
-	return t
+	asserts.AssertDescribeRulesPackagesResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.LimitExceededException = { ["errorCode"] = true, ["canRetry"] = true, ["message"] = true, nil }
@@ -1171,14 +1490,25 @@ end
 -- Required key: canRetry
 -- @return LimitExceededException structure as a key-value pair table
 function M.LimitExceededException(args)
-	assert(args, "You must provdide an argument table when creating LimitExceededException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating LimitExceededException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["errorCode"] = args["errorCode"],
 		["canRetry"] = args["canRetry"],
 		["message"] = args["message"],
 	}
-	asserts.AssertLimitExceededException(t)
-	return t
+	asserts.AssertLimitExceededException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.NoSuchEntityException = { ["errorCode"] = true, ["canRetry"] = true, ["message"] = true, nil }
@@ -1209,14 +1539,25 @@ end
 -- Required key: canRetry
 -- @return NoSuchEntityException structure as a key-value pair table
 function M.NoSuchEntityException(args)
-	assert(args, "You must provdide an argument table when creating NoSuchEntityException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating NoSuchEntityException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["errorCode"] = args["errorCode"],
 		["canRetry"] = args["canRetry"],
 		["message"] = args["message"],
 	}
-	asserts.AssertNoSuchEntityException(t)
-	return t
+	asserts.AssertNoSuchEntityException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AssessmentTargetFilter = { ["assessmentTargetNamePattern"] = true, nil }
@@ -1237,12 +1578,23 @@ end
 -- * assessmentTargetNamePattern [NamePattern] <p>For a record to match a filter, an explicit value or a string that contains a wildcard that is specified for this data type property must match the value of the <b>assessmentTargetName</b> property of the <a>AssessmentTarget</a> data type.</p>
 -- @return AssessmentTargetFilter structure as a key-value pair table
 function M.AssessmentTargetFilter(args)
-	assert(args, "You must provdide an argument table when creating AssessmentTargetFilter")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AssessmentTargetFilter")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["assessmentTargetNamePattern"] = args["assessmentTargetNamePattern"],
 	}
-	asserts.AssertAssessmentTargetFilter(t)
-	return t
+	asserts.AssertAssessmentTargetFilter(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListRulesPackagesResponse = { ["nextToken"] = true, ["rulesPackageArns"] = true, nil }
@@ -1267,13 +1619,24 @@ end
 -- Required key: rulesPackageArns
 -- @return ListRulesPackagesResponse structure as a key-value pair table
 function M.ListRulesPackagesResponse(args)
-	assert(args, "You must provdide an argument table when creating ListRulesPackagesResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListRulesPackagesResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["nextToken"] = args["nextToken"],
 		["rulesPackageArns"] = args["rulesPackageArns"],
 	}
-	asserts.AssertListRulesPackagesResponse(t)
-	return t
+	asserts.AssertListRulesPackagesResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Finding = { ["assetType"] = true, ["confidence"] = true, ["numericSeverity"] = true, ["description"] = true, ["service"] = true, ["title"] = true, ["indicatorOfCompromise"] = true, ["assetAttributes"] = true, ["userAttributes"] = true, ["createdAt"] = true, ["recommendation"] = true, ["updatedAt"] = true, ["attributes"] = true, ["schemaVersion"] = true, ["serviceAttributes"] = true, ["id"] = true, ["arn"] = true, ["severity"] = true, nil }
@@ -1338,8 +1701,14 @@ end
 -- Required key: updatedAt
 -- @return Finding structure as a key-value pair table
 function M.Finding(args)
-	assert(args, "You must provdide an argument table when creating Finding")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Finding")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["assetType"] = args["assetType"],
 		["confidence"] = args["confidence"],
 		["numericSeverity"] = args["numericSeverity"],
@@ -1359,8 +1728,13 @@ function M.Finding(args)
 		["arn"] = args["arn"],
 		["severity"] = args["severity"],
 	}
-	asserts.AssertFinding(t)
-	return t
+	asserts.AssertFinding(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListFindingsResponse = { ["nextToken"] = true, ["findingArns"] = true, nil }
@@ -1385,13 +1759,24 @@ end
 -- Required key: findingArns
 -- @return ListFindingsResponse structure as a key-value pair table
 function M.ListFindingsResponse(args)
-	assert(args, "You must provdide an argument table when creating ListFindingsResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListFindingsResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["nextToken"] = args["nextToken"],
 		["findingArns"] = args["findingArns"],
 	}
-	asserts.AssertListFindingsResponse(t)
-	return t
+	asserts.AssertListFindingsResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AgentPreview = { ["autoScalingGroup"] = true, ["agentId"] = true, nil }
@@ -1416,13 +1801,24 @@ end
 -- Required key: agentId
 -- @return AgentPreview structure as a key-value pair table
 function M.AgentPreview(args)
-	assert(args, "You must provdide an argument table when creating AgentPreview")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AgentPreview")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["autoScalingGroup"] = args["autoScalingGroup"],
 		["agentId"] = args["agentId"],
 	}
-	asserts.AssertAgentPreview(t)
-	return t
+	asserts.AssertAgentPreview(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateAssessmentTargetResponse = { ["assessmentTargetArn"] = true, nil }
@@ -1445,12 +1841,23 @@ end
 -- Required key: assessmentTargetArn
 -- @return CreateAssessmentTargetResponse structure as a key-value pair table
 function M.CreateAssessmentTargetResponse(args)
-	assert(args, "You must provdide an argument table when creating CreateAssessmentTargetResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateAssessmentTargetResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["assessmentTargetArn"] = args["assessmentTargetArn"],
 	}
-	asserts.AssertCreateAssessmentTargetResponse(t)
-	return t
+	asserts.AssertCreateAssessmentTargetResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListAssessmentTemplatesResponse = { ["nextToken"] = true, ["assessmentTemplateArns"] = true, nil }
@@ -1475,13 +1882,24 @@ end
 -- Required key: assessmentTemplateArns
 -- @return ListAssessmentTemplatesResponse structure as a key-value pair table
 function M.ListAssessmentTemplatesResponse(args)
-	assert(args, "You must provdide an argument table when creating ListAssessmentTemplatesResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListAssessmentTemplatesResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["nextToken"] = args["nextToken"],
 		["assessmentTemplateArns"] = args["assessmentTemplateArns"],
 	}
-	asserts.AssertListAssessmentTemplatesResponse(t)
-	return t
+	asserts.AssertListAssessmentTemplatesResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AddAttributesToFindingsResponse = { ["failedItems"] = true, nil }
@@ -1504,12 +1922,23 @@ end
 -- Required key: failedItems
 -- @return AddAttributesToFindingsResponse structure as a key-value pair table
 function M.AddAttributesToFindingsResponse(args)
-	assert(args, "You must provdide an argument table when creating AddAttributesToFindingsResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AddAttributesToFindingsResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["failedItems"] = args["failedItems"],
 	}
-	asserts.AssertAddAttributesToFindingsResponse(t)
-	return t
+	asserts.AssertAddAttributesToFindingsResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeAssessmentRunsRequest = { ["assessmentRunArns"] = true, nil }
@@ -1532,12 +1961,23 @@ end
 -- Required key: assessmentRunArns
 -- @return DescribeAssessmentRunsRequest structure as a key-value pair table
 function M.DescribeAssessmentRunsRequest(args)
-	assert(args, "You must provdide an argument table when creating DescribeAssessmentRunsRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeAssessmentRunsRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["assessmentRunArns"] = args["assessmentRunArns"],
 	}
-	asserts.AssertDescribeAssessmentRunsRequest(t)
-	return t
+	asserts.AssertDescribeAssessmentRunsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateAssessmentTargetRequest = { ["assessmentTargetName"] = true, ["resourceGroupArn"] = true, nil }
@@ -1564,13 +2004,24 @@ end
 -- Required key: resourceGroupArn
 -- @return CreateAssessmentTargetRequest structure as a key-value pair table
 function M.CreateAssessmentTargetRequest(args)
-	assert(args, "You must provdide an argument table when creating CreateAssessmentTargetRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateAssessmentTargetRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["assessmentTargetName"] = args["assessmentTargetName"],
 		["resourceGroupArn"] = args["resourceGroupArn"],
 	}
-	asserts.AssertCreateAssessmentTargetRequest(t)
-	return t
+	asserts.AssertCreateAssessmentTargetRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AccessDeniedException = { ["errorCode"] = true, ["canRetry"] = true, ["message"] = true, nil }
@@ -1601,14 +2052,25 @@ end
 -- Required key: canRetry
 -- @return AccessDeniedException structure as a key-value pair table
 function M.AccessDeniedException(args)
-	assert(args, "You must provdide an argument table when creating AccessDeniedException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AccessDeniedException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["errorCode"] = args["errorCode"],
 		["canRetry"] = args["canRetry"],
 		["message"] = args["message"],
 	}
-	asserts.AssertAccessDeniedException(t)
-	return t
+	asserts.AssertAccessDeniedException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteAssessmentTemplateRequest = { ["assessmentTemplateArn"] = true, nil }
@@ -1631,12 +2093,23 @@ end
 -- Required key: assessmentTemplateArn
 -- @return DeleteAssessmentTemplateRequest structure as a key-value pair table
 function M.DeleteAssessmentTemplateRequest(args)
-	assert(args, "You must provdide an argument table when creating DeleteAssessmentTemplateRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteAssessmentTemplateRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["assessmentTemplateArn"] = args["assessmentTemplateArn"],
 	}
-	asserts.AssertDeleteAssessmentTemplateRequest(t)
-	return t
+	asserts.AssertDeleteAssessmentTemplateRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.FindingFilter = { ["autoScalingGroups"] = true, ["creationTimeRange"] = true, ["ruleNames"] = true, ["severities"] = true, ["userAttributes"] = true, ["rulesPackageArns"] = true, ["attributes"] = true, ["agentIds"] = true, nil }
@@ -1671,8 +2144,14 @@ end
 -- * agentIds [AgentIdList] <p>For a record to match a filter, one of the values that is specified for this data type property must be the exact match of the value of the <b>agentId</b> property of the <a>Finding</a> data type.</p>
 -- @return FindingFilter structure as a key-value pair table
 function M.FindingFilter(args)
-	assert(args, "You must provdide an argument table when creating FindingFilter")
-	local t = { 
+	assert(args, "You must provide an argument table when creating FindingFilter")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["autoScalingGroups"] = args["autoScalingGroups"],
 		["creationTimeRange"] = args["creationTimeRange"],
 		["ruleNames"] = args["ruleNames"],
@@ -1682,8 +2161,13 @@ function M.FindingFilter(args)
 		["attributes"] = args["attributes"],
 		["agentIds"] = args["agentIds"],
 	}
-	asserts.AssertFindingFilter(t)
-	return t
+	asserts.AssertFindingFilter(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListAssessmentTargetsResponse = { ["assessmentTargetArns"] = true, ["nextToken"] = true, nil }
@@ -1708,13 +2192,24 @@ end
 -- Required key: assessmentTargetArns
 -- @return ListAssessmentTargetsResponse structure as a key-value pair table
 function M.ListAssessmentTargetsResponse(args)
-	assert(args, "You must provdide an argument table when creating ListAssessmentTargetsResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListAssessmentTargetsResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["assessmentTargetArns"] = args["assessmentTargetArns"],
 		["nextToken"] = args["nextToken"],
 	}
-	asserts.AssertListAssessmentTargetsResponse(t)
-	return t
+	asserts.AssertListAssessmentTargetsResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.SetTagsForResourceRequest = { ["resourceArn"] = true, ["tags"] = true, nil }
@@ -1739,13 +2234,24 @@ end
 -- Required key: resourceArn
 -- @return SetTagsForResourceRequest structure as a key-value pair table
 function M.SetTagsForResourceRequest(args)
-	assert(args, "You must provdide an argument table when creating SetTagsForResourceRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating SetTagsForResourceRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["resourceArn"] = args["resourceArn"],
 		["tags"] = args["tags"],
 	}
-	asserts.AssertSetTagsForResourceRequest(t)
-	return t
+	asserts.AssertSetTagsForResourceRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteAssessmentTargetRequest = { ["assessmentTargetArn"] = true, nil }
@@ -1768,12 +2274,23 @@ end
 -- Required key: assessmentTargetArn
 -- @return DeleteAssessmentTargetRequest structure as a key-value pair table
 function M.DeleteAssessmentTargetRequest(args)
-	assert(args, "You must provdide an argument table when creating DeleteAssessmentTargetRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteAssessmentTargetRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["assessmentTargetArn"] = args["assessmentTargetArn"],
 	}
-	asserts.AssertDeleteAssessmentTargetRequest(t)
-	return t
+	asserts.AssertDeleteAssessmentTargetRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.StartAssessmentRunResponse = { ["assessmentRunArn"] = true, nil }
@@ -1796,12 +2313,23 @@ end
 -- Required key: assessmentRunArn
 -- @return StartAssessmentRunResponse structure as a key-value pair table
 function M.StartAssessmentRunResponse(args)
-	assert(args, "You must provdide an argument table when creating StartAssessmentRunResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating StartAssessmentRunResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["assessmentRunArn"] = args["assessmentRunArn"],
 	}
-	asserts.AssertStartAssessmentRunResponse(t)
-	return t
+	asserts.AssertStartAssessmentRunResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AssessmentTarget = { ["resourceGroupArn"] = true, ["createdAt"] = true, ["name"] = true, ["arn"] = true, ["updatedAt"] = true, nil }
@@ -1840,16 +2368,27 @@ end
 -- Required key: updatedAt
 -- @return AssessmentTarget structure as a key-value pair table
 function M.AssessmentTarget(args)
-	assert(args, "You must provdide an argument table when creating AssessmentTarget")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AssessmentTarget")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["resourceGroupArn"] = args["resourceGroupArn"],
 		["createdAt"] = args["createdAt"],
 		["name"] = args["name"],
 		["arn"] = args["arn"],
 		["updatedAt"] = args["updatedAt"],
 	}
-	asserts.AssertAssessmentTarget(t)
-	return t
+	asserts.AssertAssessmentTarget(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeAssessmentTemplatesRequest = { ["assessmentTemplateArns"] = true, nil }
@@ -1872,12 +2411,23 @@ end
 -- Required key: assessmentTemplateArns
 -- @return DescribeAssessmentTemplatesRequest structure as a key-value pair table
 function M.DescribeAssessmentTemplatesRequest(args)
-	assert(args, "You must provdide an argument table when creating DescribeAssessmentTemplatesRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeAssessmentTemplatesRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["assessmentTemplateArns"] = args["assessmentTemplateArns"],
 	}
-	asserts.AssertDescribeAssessmentTemplatesRequest(t)
-	return t
+	asserts.AssertDescribeAssessmentTemplatesRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.StartAssessmentRunRequest = { ["assessmentRunName"] = true, ["assessmentTemplateArn"] = true, nil }
@@ -1902,13 +2452,24 @@ end
 -- Required key: assessmentTemplateArn
 -- @return StartAssessmentRunRequest structure as a key-value pair table
 function M.StartAssessmentRunRequest(args)
-	assert(args, "You must provdide an argument table when creating StartAssessmentRunRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating StartAssessmentRunRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["assessmentRunName"] = args["assessmentRunName"],
 		["assessmentTemplateArn"] = args["assessmentTemplateArn"],
 	}
-	asserts.AssertStartAssessmentRunRequest(t)
-	return t
+	asserts.AssertStartAssessmentRunRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeAssessmentTargetsResponse = { ["assessmentTargets"] = true, ["failedItems"] = true, nil }
@@ -1935,13 +2496,24 @@ end
 -- Required key: failedItems
 -- @return DescribeAssessmentTargetsResponse structure as a key-value pair table
 function M.DescribeAssessmentTargetsResponse(args)
-	assert(args, "You must provdide an argument table when creating DescribeAssessmentTargetsResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeAssessmentTargetsResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["assessmentTargets"] = args["assessmentTargets"],
 		["failedItems"] = args["failedItems"],
 	}
-	asserts.AssertDescribeAssessmentTargetsResponse(t)
-	return t
+	asserts.AssertDescribeAssessmentTargetsResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListEventSubscriptionsResponse = { ["nextToken"] = true, ["subscriptions"] = true, nil }
@@ -1966,13 +2538,24 @@ end
 -- Required key: subscriptions
 -- @return ListEventSubscriptionsResponse structure as a key-value pair table
 function M.ListEventSubscriptionsResponse(args)
-	assert(args, "You must provdide an argument table when creating ListEventSubscriptionsResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListEventSubscriptionsResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["nextToken"] = args["nextToken"],
 		["subscriptions"] = args["subscriptions"],
 	}
-	asserts.AssertListEventSubscriptionsResponse(t)
-	return t
+	asserts.AssertListEventSubscriptionsResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeAssessmentTemplatesResponse = { ["assessmentTemplates"] = true, ["failedItems"] = true, nil }
@@ -1999,13 +2582,24 @@ end
 -- Required key: failedItems
 -- @return DescribeAssessmentTemplatesResponse structure as a key-value pair table
 function M.DescribeAssessmentTemplatesResponse(args)
-	assert(args, "You must provdide an argument table when creating DescribeAssessmentTemplatesResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeAssessmentTemplatesResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["assessmentTemplates"] = args["assessmentTemplates"],
 		["failedItems"] = args["failedItems"],
 	}
-	asserts.AssertDescribeAssessmentTemplatesResponse(t)
-	return t
+	asserts.AssertDescribeAssessmentTemplatesResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DurationRange = { ["minSeconds"] = true, ["maxSeconds"] = true, nil }
@@ -2028,13 +2622,24 @@ end
 -- * maxSeconds [AssessmentRunDuration] <p>The maximum value of the duration range. Must be less than or equal to 604800 seconds (1 week).</p>
 -- @return DurationRange structure as a key-value pair table
 function M.DurationRange(args)
-	assert(args, "You must provdide an argument table when creating DurationRange")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DurationRange")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["minSeconds"] = args["minSeconds"],
 		["maxSeconds"] = args["maxSeconds"],
 	}
-	asserts.AssertDurationRange(t)
-	return t
+	asserts.AssertDurationRange(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetTelemetryMetadataRequest = { ["assessmentRunArn"] = true, nil }
@@ -2057,12 +2662,23 @@ end
 -- Required key: assessmentRunArn
 -- @return GetTelemetryMetadataRequest structure as a key-value pair table
 function M.GetTelemetryMetadataRequest(args)
-	assert(args, "You must provdide an argument table when creating GetTelemetryMetadataRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetTelemetryMetadataRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["assessmentRunArn"] = args["assessmentRunArn"],
 	}
-	asserts.AssertGetTelemetryMetadataRequest(t)
-	return t
+	asserts.AssertGetTelemetryMetadataRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListTagsForResourceRequest = { ["resourceArn"] = true, nil }
@@ -2085,12 +2701,23 @@ end
 -- Required key: resourceArn
 -- @return ListTagsForResourceRequest structure as a key-value pair table
 function M.ListTagsForResourceRequest(args)
-	assert(args, "You must provdide an argument table when creating ListTagsForResourceRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListTagsForResourceRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["resourceArn"] = args["resourceArn"],
 	}
-	asserts.AssertListTagsForResourceRequest(t)
-	return t
+	asserts.AssertListTagsForResourceRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListAssessmentRunAgentsResponse = { ["assessmentRunAgents"] = true, ["nextToken"] = true, nil }
@@ -2115,13 +2742,24 @@ end
 -- Required key: assessmentRunAgents
 -- @return ListAssessmentRunAgentsResponse structure as a key-value pair table
 function M.ListAssessmentRunAgentsResponse(args)
-	assert(args, "You must provdide an argument table when creating ListAssessmentRunAgentsResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListAssessmentRunAgentsResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["assessmentRunAgents"] = args["assessmentRunAgents"],
 		["nextToken"] = args["nextToken"],
 	}
-	asserts.AssertListAssessmentRunAgentsResponse(t)
-	return t
+	asserts.AssertListAssessmentRunAgentsResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UnsupportedFeatureException = { ["canRetry"] = true, ["message"] = true, nil }
@@ -2148,13 +2786,24 @@ end
 -- Required key: canRetry
 -- @return UnsupportedFeatureException structure as a key-value pair table
 function M.UnsupportedFeatureException(args)
-	assert(args, "You must provdide an argument table when creating UnsupportedFeatureException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UnsupportedFeatureException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["canRetry"] = args["canRetry"],
 		["message"] = args["message"],
 	}
-	asserts.AssertUnsupportedFeatureException(t)
-	return t
+	asserts.AssertUnsupportedFeatureException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InspectorServiceAttributes = { ["schemaVersion"] = true, ["rulesPackageArn"] = true, ["assessmentRunArn"] = true, nil }
@@ -2181,14 +2830,25 @@ end
 -- Required key: schemaVersion
 -- @return InspectorServiceAttributes structure as a key-value pair table
 function M.InspectorServiceAttributes(args)
-	assert(args, "You must provdide an argument table when creating InspectorServiceAttributes")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InspectorServiceAttributes")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["schemaVersion"] = args["schemaVersion"],
 		["rulesPackageArn"] = args["rulesPackageArn"],
 		["assessmentRunArn"] = args["assessmentRunArn"],
 	}
-	asserts.AssertInspectorServiceAttributes(t)
-	return t
+	asserts.AssertInspectorServiceAttributes(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ResourceGroup = { ["createdAt"] = true, ["arn"] = true, ["tags"] = true, nil }
@@ -2219,14 +2879,25 @@ end
 -- Required key: createdAt
 -- @return ResourceGroup structure as a key-value pair table
 function M.ResourceGroup(args)
-	assert(args, "You must provdide an argument table when creating ResourceGroup")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ResourceGroup")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["createdAt"] = args["createdAt"],
 		["arn"] = args["arn"],
 		["tags"] = args["tags"],
 	}
-	asserts.AssertResourceGroup(t)
-	return t
+	asserts.AssertResourceGroup(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UnsubscribeFromEventRequest = { ["resourceArn"] = true, ["event"] = true, ["topicArn"] = true, nil }
@@ -2257,14 +2928,25 @@ end
 -- Required key: topicArn
 -- @return UnsubscribeFromEventRequest structure as a key-value pair table
 function M.UnsubscribeFromEventRequest(args)
-	assert(args, "You must provdide an argument table when creating UnsubscribeFromEventRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UnsubscribeFromEventRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["resourceArn"] = args["resourceArn"],
 		["event"] = args["event"],
 		["topicArn"] = args["topicArn"],
 	}
-	asserts.AssertUnsubscribeFromEventRequest(t)
-	return t
+	asserts.AssertUnsubscribeFromEventRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ResourceGroupTag = { ["value"] = true, ["key"] = true, nil }
@@ -2289,13 +2971,24 @@ end
 -- Required key: key
 -- @return ResourceGroupTag structure as a key-value pair table
 function M.ResourceGroupTag(args)
-	assert(args, "You must provdide an argument table when creating ResourceGroupTag")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ResourceGroupTag")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["value"] = args["value"],
 		["key"] = args["key"],
 	}
-	asserts.AssertResourceGroupTag(t)
-	return t
+	asserts.AssertResourceGroupTag(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeRulesPackagesRequest = { ["locale"] = true, ["rulesPackageArns"] = true, nil }
@@ -2320,13 +3013,24 @@ end
 -- Required key: rulesPackageArns
 -- @return DescribeRulesPackagesRequest structure as a key-value pair table
 function M.DescribeRulesPackagesRequest(args)
-	assert(args, "You must provdide an argument table when creating DescribeRulesPackagesRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeRulesPackagesRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["locale"] = args["locale"],
 		["rulesPackageArns"] = args["rulesPackageArns"],
 	}
-	asserts.AssertDescribeRulesPackagesRequest(t)
-	return t
+	asserts.AssertDescribeRulesPackagesRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AssetAttributes = { ["amiId"] = true, ["hostname"] = true, ["autoScalingGroup"] = true, ["ipv4Addresses"] = true, ["schemaVersion"] = true, ["agentId"] = true, nil }
@@ -2359,8 +3063,14 @@ end
 -- Required key: schemaVersion
 -- @return AssetAttributes structure as a key-value pair table
 function M.AssetAttributes(args)
-	assert(args, "You must provdide an argument table when creating AssetAttributes")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AssetAttributes")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["amiId"] = args["amiId"],
 		["hostname"] = args["hostname"],
 		["autoScalingGroup"] = args["autoScalingGroup"],
@@ -2368,8 +3078,13 @@ function M.AssetAttributes(args)
 		["schemaVersion"] = args["schemaVersion"],
 		["agentId"] = args["agentId"],
 	}
-	asserts.AssertAssetAttributes(t)
-	return t
+	asserts.AssertAssetAttributes(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeFindingsResponse = { ["failedItems"] = true, ["findings"] = true, nil }
@@ -2396,13 +3111,24 @@ end
 -- Required key: failedItems
 -- @return DescribeFindingsResponse structure as a key-value pair table
 function M.DescribeFindingsResponse(args)
-	assert(args, "You must provdide an argument table when creating DescribeFindingsResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeFindingsResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["failedItems"] = args["failedItems"],
 		["findings"] = args["findings"],
 	}
-	asserts.AssertDescribeFindingsResponse(t)
-	return t
+	asserts.AssertDescribeFindingsResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AgentAlreadyRunningAssessment = { ["assessmentRunArn"] = true, ["agentId"] = true, nil }
@@ -2429,13 +3155,24 @@ end
 -- Required key: assessmentRunArn
 -- @return AgentAlreadyRunningAssessment structure as a key-value pair table
 function M.AgentAlreadyRunningAssessment(args)
-	assert(args, "You must provdide an argument table when creating AgentAlreadyRunningAssessment")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AgentAlreadyRunningAssessment")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["assessmentRunArn"] = args["assessmentRunArn"],
 		["agentId"] = args["agentId"],
 	}
-	asserts.AssertAgentAlreadyRunningAssessment(t)
-	return t
+	asserts.AssertAgentAlreadyRunningAssessment(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AddAttributesToFindingsRequest = { ["attributes"] = true, ["findingArns"] = true, nil }
@@ -2462,13 +3199,24 @@ end
 -- Required key: attributes
 -- @return AddAttributesToFindingsRequest structure as a key-value pair table
 function M.AddAttributesToFindingsRequest(args)
-	assert(args, "You must provdide an argument table when creating AddAttributesToFindingsRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AddAttributesToFindingsRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["attributes"] = args["attributes"],
 		["findingArns"] = args["findingArns"],
 	}
-	asserts.AssertAddAttributesToFindingsRequest(t)
-	return t
+	asserts.AssertAddAttributesToFindingsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.StopAssessmentRunRequest = { ["assessmentRunArn"] = true, nil }
@@ -2491,12 +3239,23 @@ end
 -- Required key: assessmentRunArn
 -- @return StopAssessmentRunRequest structure as a key-value pair table
 function M.StopAssessmentRunRequest(args)
-	assert(args, "You must provdide an argument table when creating StopAssessmentRunRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating StopAssessmentRunRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["assessmentRunArn"] = args["assessmentRunArn"],
 	}
-	asserts.AssertStopAssessmentRunRequest(t)
-	return t
+	asserts.AssertStopAssessmentRunRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.RemoveAttributesFromFindingsRequest = { ["attributeKeys"] = true, ["findingArns"] = true, nil }
@@ -2523,13 +3282,24 @@ end
 -- Required key: attributeKeys
 -- @return RemoveAttributesFromFindingsRequest structure as a key-value pair table
 function M.RemoveAttributesFromFindingsRequest(args)
-	assert(args, "You must provdide an argument table when creating RemoveAttributesFromFindingsRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating RemoveAttributesFromFindingsRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["attributeKeys"] = args["attributeKeys"],
 		["findingArns"] = args["findingArns"],
 	}
-	asserts.AssertRemoveAttributesFromFindingsRequest(t)
-	return t
+	asserts.AssertRemoveAttributesFromFindingsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListAssessmentTemplatesRequest = { ["filter"] = true, ["assessmentTargetArns"] = true, ["nextToken"] = true, ["maxResults"] = true, nil }
@@ -2556,15 +3326,26 @@ end
 -- * maxResults [ListMaxResults] <p>You can use this parameter to indicate the maximum number of items you want in the response. The default value is 10. The maximum value is 500.</p>
 -- @return ListAssessmentTemplatesRequest structure as a key-value pair table
 function M.ListAssessmentTemplatesRequest(args)
-	assert(args, "You must provdide an argument table when creating ListAssessmentTemplatesRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListAssessmentTemplatesRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["filter"] = args["filter"],
 		["assessmentTargetArns"] = args["assessmentTargetArns"],
 		["nextToken"] = args["nextToken"],
 		["maxResults"] = args["maxResults"],
 	}
-	asserts.AssertListAssessmentTemplatesRequest(t)
-	return t
+	asserts.AssertListAssessmentTemplatesRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidCrossAccountRoleException = { ["errorCode"] = true, ["canRetry"] = true, ["message"] = true, nil }
@@ -2595,14 +3376,25 @@ end
 -- Required key: canRetry
 -- @return InvalidCrossAccountRoleException structure as a key-value pair table
 function M.InvalidCrossAccountRoleException(args)
-	assert(args, "You must provdide an argument table when creating InvalidCrossAccountRoleException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidCrossAccountRoleException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["errorCode"] = args["errorCode"],
 		["canRetry"] = args["canRetry"],
 		["message"] = args["message"],
 	}
-	asserts.AssertInvalidCrossAccountRoleException(t)
-	return t
+	asserts.AssertInvalidCrossAccountRoleException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeResourceGroupsResponse = { ["resourceGroups"] = true, ["failedItems"] = true, nil }
@@ -2629,13 +3421,24 @@ end
 -- Required key: failedItems
 -- @return DescribeResourceGroupsResponse structure as a key-value pair table
 function M.DescribeResourceGroupsResponse(args)
-	assert(args, "You must provdide an argument table when creating DescribeResourceGroupsResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeResourceGroupsResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["resourceGroups"] = args["resourceGroups"],
 		["failedItems"] = args["failedItems"],
 	}
-	asserts.AssertDescribeResourceGroupsResponse(t)
-	return t
+	asserts.AssertDescribeResourceGroupsResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeFindingsRequest = { ["locale"] = true, ["findingArns"] = true, nil }
@@ -2660,13 +3463,24 @@ end
 -- Required key: findingArns
 -- @return DescribeFindingsRequest structure as a key-value pair table
 function M.DescribeFindingsRequest(args)
-	assert(args, "You must provdide an argument table when creating DescribeFindingsRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeFindingsRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["locale"] = args["locale"],
 		["findingArns"] = args["findingArns"],
 	}
-	asserts.AssertDescribeFindingsRequest(t)
-	return t
+	asserts.AssertDescribeFindingsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListTagsForResourceResponse = { ["tags"] = true, nil }
@@ -2689,12 +3503,23 @@ end
 -- Required key: tags
 -- @return ListTagsForResourceResponse structure as a key-value pair table
 function M.ListTagsForResourceResponse(args)
-	assert(args, "You must provdide an argument table when creating ListTagsForResourceResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListTagsForResourceResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["tags"] = args["tags"],
 	}
-	asserts.AssertListTagsForResourceResponse(t)
-	return t
+	asserts.AssertListTagsForResourceResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.RegisterCrossAccountAccessRoleRequest = { ["roleArn"] = true, nil }
@@ -2717,12 +3542,23 @@ end
 -- Required key: roleArn
 -- @return RegisterCrossAccountAccessRoleRequest structure as a key-value pair table
 function M.RegisterCrossAccountAccessRoleRequest(args)
-	assert(args, "You must provdide an argument table when creating RegisterCrossAccountAccessRoleRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating RegisterCrossAccountAccessRoleRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["roleArn"] = args["roleArn"],
 	}
-	asserts.AssertRegisterCrossAccountAccessRoleRequest(t)
-	return t
+	asserts.AssertRegisterCrossAccountAccessRoleRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InternalException = { ["canRetry"] = true, ["message"] = true, nil }
@@ -2749,13 +3585,24 @@ end
 -- Required key: canRetry
 -- @return InternalException structure as a key-value pair table
 function M.InternalException(args)
-	assert(args, "You must provdide an argument table when creating InternalException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InternalException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["canRetry"] = args["canRetry"],
 		["message"] = args["message"],
 	}
-	asserts.AssertInternalException(t)
-	return t
+	asserts.AssertInternalException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.TimestampRange = { ["beginDate"] = true, ["endDate"] = true, nil }
@@ -2778,13 +3625,24 @@ end
 -- * endDate [Timestamp] <p>The maximum value of the timestamp range.</p>
 -- @return TimestampRange structure as a key-value pair table
 function M.TimestampRange(args)
-	assert(args, "You must provdide an argument table when creating TimestampRange")
-	local t = { 
+	assert(args, "You must provide an argument table when creating TimestampRange")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["beginDate"] = args["beginDate"],
 		["endDate"] = args["endDate"],
 	}
-	asserts.AssertTimestampRange(t)
-	return t
+	asserts.AssertTimestampRange(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AssessmentTemplateFilter = { ["namePattern"] = true, ["durationRange"] = true, ["rulesPackageArns"] = true, nil }
@@ -2809,14 +3667,25 @@ end
 -- * rulesPackageArns [FilterRulesPackageArnList] <p>For a record to match a filter, the values that are specified for this data type property must be contained in the list of values of the <b>rulesPackageArns</b> property of the <a>AssessmentTemplate</a> data type.</p>
 -- @return AssessmentTemplateFilter structure as a key-value pair table
 function M.AssessmentTemplateFilter(args)
-	assert(args, "You must provdide an argument table when creating AssessmentTemplateFilter")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AssessmentTemplateFilter")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["namePattern"] = args["namePattern"],
 		["durationRange"] = args["durationRange"],
 		["rulesPackageArns"] = args["rulesPackageArns"],
 	}
-	asserts.AssertAssessmentTemplateFilter(t)
-	return t
+	asserts.AssertAssessmentTemplateFilter(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListAssessmentRunsResponse = { ["nextToken"] = true, ["assessmentRunArns"] = true, nil }
@@ -2841,13 +3710,24 @@ end
 -- Required key: assessmentRunArns
 -- @return ListAssessmentRunsResponse structure as a key-value pair table
 function M.ListAssessmentRunsResponse(args)
-	assert(args, "You must provdide an argument table when creating ListAssessmentRunsResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListAssessmentRunsResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["nextToken"] = args["nextToken"],
 		["assessmentRunArns"] = args["assessmentRunArns"],
 	}
-	asserts.AssertListAssessmentRunsResponse(t)
-	return t
+	asserts.AssertListAssessmentRunsResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeCrossAccountAccessRoleResponse = { ["roleArn"] = true, ["valid"] = true, ["registeredAt"] = true, nil }
@@ -2878,14 +3758,25 @@ end
 -- Required key: registeredAt
 -- @return DescribeCrossAccountAccessRoleResponse structure as a key-value pair table
 function M.DescribeCrossAccountAccessRoleResponse(args)
-	assert(args, "You must provdide an argument table when creating DescribeCrossAccountAccessRoleResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeCrossAccountAccessRoleResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["roleArn"] = args["roleArn"],
 		["valid"] = args["valid"],
 		["registeredAt"] = args["registeredAt"],
 	}
-	asserts.AssertDescribeCrossAccountAccessRoleResponse(t)
-	return t
+	asserts.AssertDescribeCrossAccountAccessRoleResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListRulesPackagesRequest = { ["nextToken"] = true, ["maxResults"] = true, nil }
@@ -2908,13 +3799,24 @@ end
 -- * maxResults [ListMaxResults] <p>You can use this parameter to indicate the maximum number of items you want in the response. The default value is 10. The maximum value is 500.</p>
 -- @return ListRulesPackagesRequest structure as a key-value pair table
 function M.ListRulesPackagesRequest(args)
-	assert(args, "You must provdide an argument table when creating ListRulesPackagesRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListRulesPackagesRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["nextToken"] = args["nextToken"],
 		["maxResults"] = args["maxResults"],
 	}
-	asserts.AssertListRulesPackagesRequest(t)
-	return t
+	asserts.AssertListRulesPackagesRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateResourceGroupRequest = { ["resourceGroupTags"] = true, nil }
@@ -2937,12 +3839,23 @@ end
 -- Required key: resourceGroupTags
 -- @return CreateResourceGroupRequest structure as a key-value pair table
 function M.CreateResourceGroupRequest(args)
-	assert(args, "You must provdide an argument table when creating CreateResourceGroupRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateResourceGroupRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["resourceGroupTags"] = args["resourceGroupTags"],
 	}
-	asserts.AssertCreateResourceGroupRequest(t)
-	return t
+	asserts.AssertCreateResourceGroupRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AssessmentRunStateChange = { ["state"] = true, ["stateChangedAt"] = true, nil }
@@ -2969,13 +3882,24 @@ end
 -- Required key: state
 -- @return AssessmentRunStateChange structure as a key-value pair table
 function M.AssessmentRunStateChange(args)
-	assert(args, "You must provdide an argument table when creating AssessmentRunStateChange")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AssessmentRunStateChange")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["state"] = args["state"],
 		["stateChangedAt"] = args["stateChangedAt"],
 	}
-	asserts.AssertAssessmentRunStateChange(t)
-	return t
+	asserts.AssertAssessmentRunStateChange(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteAssessmentRunRequest = { ["assessmentRunArn"] = true, nil }
@@ -2998,12 +3922,23 @@ end
 -- Required key: assessmentRunArn
 -- @return DeleteAssessmentRunRequest structure as a key-value pair table
 function M.DeleteAssessmentRunRequest(args)
-	assert(args, "You must provdide an argument table when creating DeleteAssessmentRunRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteAssessmentRunRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["assessmentRunArn"] = args["assessmentRunArn"],
 	}
-	asserts.AssertDeleteAssessmentRunRequest(t)
-	return t
+	asserts.AssertDeleteAssessmentRunRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.PreviewAgentsRequest = { ["nextToken"] = true, ["maxResults"] = true, ["previewAgentsArn"] = true, nil }
@@ -3030,14 +3965,25 @@ end
 -- Required key: previewAgentsArn
 -- @return PreviewAgentsRequest structure as a key-value pair table
 function M.PreviewAgentsRequest(args)
-	assert(args, "You must provdide an argument table when creating PreviewAgentsRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating PreviewAgentsRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["nextToken"] = args["nextToken"],
 		["maxResults"] = args["maxResults"],
 		["previewAgentsArn"] = args["previewAgentsArn"],
 	}
-	asserts.AssertPreviewAgentsRequest(t)
-	return t
+	asserts.AssertPreviewAgentsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateAssessmentTemplateRequest = { ["assessmentTargetArn"] = true, ["assessmentTemplateName"] = true, ["userAttributesForFindings"] = true, ["durationInSeconds"] = true, ["rulesPackageArns"] = true, nil }
@@ -3074,16 +4020,27 @@ end
 -- Required key: rulesPackageArns
 -- @return CreateAssessmentTemplateRequest structure as a key-value pair table
 function M.CreateAssessmentTemplateRequest(args)
-	assert(args, "You must provdide an argument table when creating CreateAssessmentTemplateRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateAssessmentTemplateRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["assessmentTargetArn"] = args["assessmentTargetArn"],
 		["assessmentTemplateName"] = args["assessmentTemplateName"],
 		["userAttributesForFindings"] = args["userAttributesForFindings"],
 		["durationInSeconds"] = args["durationInSeconds"],
 		["rulesPackageArns"] = args["rulesPackageArns"],
 	}
-	asserts.AssertCreateAssessmentTemplateRequest(t)
-	return t
+	asserts.AssertCreateAssessmentTemplateRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateAssessmentTemplateResponse = { ["assessmentTemplateArn"] = true, nil }
@@ -3106,12 +4063,23 @@ end
 -- Required key: assessmentTemplateArn
 -- @return CreateAssessmentTemplateResponse structure as a key-value pair table
 function M.CreateAssessmentTemplateResponse(args)
-	assert(args, "You must provdide an argument table when creating CreateAssessmentTemplateResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateAssessmentTemplateResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["assessmentTemplateArn"] = args["assessmentTemplateArn"],
 	}
-	asserts.AssertCreateAssessmentTemplateResponse(t)
-	return t
+	asserts.AssertCreateAssessmentTemplateResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeAssessmentTargetsRequest = { ["assessmentTargetArns"] = true, nil }
@@ -3134,12 +4102,23 @@ end
 -- Required key: assessmentTargetArns
 -- @return DescribeAssessmentTargetsRequest structure as a key-value pair table
 function M.DescribeAssessmentTargetsRequest(args)
-	assert(args, "You must provdide an argument table when creating DescribeAssessmentTargetsRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeAssessmentTargetsRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["assessmentTargetArns"] = args["assessmentTargetArns"],
 	}
-	asserts.AssertDescribeAssessmentTargetsRequest(t)
-	return t
+	asserts.AssertDescribeAssessmentTargetsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.EventSubscription = { ["event"] = true, ["subscribedAt"] = true, nil }
@@ -3166,13 +4145,24 @@ end
 -- Required key: subscribedAt
 -- @return EventSubscription structure as a key-value pair table
 function M.EventSubscription(args)
-	assert(args, "You must provdide an argument table when creating EventSubscription")
-	local t = { 
+	assert(args, "You must provide an argument table when creating EventSubscription")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["event"] = args["event"],
 		["subscribedAt"] = args["subscribedAt"],
 	}
-	asserts.AssertEventSubscription(t)
-	return t
+	asserts.AssertEventSubscription(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListAssessmentRunAgentsRequest = { ["filter"] = true, ["assessmentRunArn"] = true, ["nextToken"] = true, ["maxResults"] = true, nil }
@@ -3201,15 +4191,26 @@ end
 -- Required key: assessmentRunArn
 -- @return ListAssessmentRunAgentsRequest structure as a key-value pair table
 function M.ListAssessmentRunAgentsRequest(args)
-	assert(args, "You must provdide an argument table when creating ListAssessmentRunAgentsRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListAssessmentRunAgentsRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["filter"] = args["filter"],
 		["assessmentRunArn"] = args["assessmentRunArn"],
 		["nextToken"] = args["nextToken"],
 		["maxResults"] = args["maxResults"],
 	}
-	asserts.AssertListAssessmentRunAgentsRequest(t)
-	return t
+	asserts.AssertListAssessmentRunAgentsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListAssessmentRunsRequest = { ["filter"] = true, ["nextToken"] = true, ["maxResults"] = true, ["assessmentTemplateArns"] = true, nil }
@@ -3236,15 +4237,26 @@ end
 -- * assessmentTemplateArns [ListParentArnList] <p>The ARNs that specify the assessment templates whose assessment runs you want to list.</p>
 -- @return ListAssessmentRunsRequest structure as a key-value pair table
 function M.ListAssessmentRunsRequest(args)
-	assert(args, "You must provdide an argument table when creating ListAssessmentRunsRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListAssessmentRunsRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["filter"] = args["filter"],
 		["nextToken"] = args["nextToken"],
 		["maxResults"] = args["maxResults"],
 		["assessmentTemplateArns"] = args["assessmentTemplateArns"],
 	}
-	asserts.AssertListAssessmentRunsRequest(t)
-	return t
+	asserts.AssertListAssessmentRunsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 function asserts.AssertSeverity(str)
@@ -4528,8 +5540,11 @@ function M.DeleteAssessmentTargetAsync(DeleteAssessmentTargetRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "InspectorService.DeleteAssessmentTarget",
 	}
+	for header,value in pairs(DeleteAssessmentTargetRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteAssessmentTargetRequest, headers, settings, cb)
 	else
@@ -4560,8 +5575,11 @@ function M.UpdateAssessmentTargetAsync(UpdateAssessmentTargetRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "InspectorService.UpdateAssessmentTarget",
 	}
+	for header,value in pairs(UpdateAssessmentTargetRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateAssessmentTargetRequest, headers, settings, cb)
 	else
@@ -4592,8 +5610,11 @@ function M.RemoveAttributesFromFindingsAsync(RemoveAttributesFromFindingsRequest
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "InspectorService.RemoveAttributesFromFindings",
 	}
+	for header,value in pairs(RemoveAttributesFromFindingsRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", RemoveAttributesFromFindingsRequest, headers, settings, cb)
 	else
@@ -4624,8 +5645,11 @@ function M.GetTelemetryMetadataAsync(GetTelemetryMetadataRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "InspectorService.GetTelemetryMetadata",
 	}
+	for header,value in pairs(GetTelemetryMetadataRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", GetTelemetryMetadataRequest, headers, settings, cb)
 	else
@@ -4656,8 +5680,11 @@ function M.DescribeAssessmentRunsAsync(DescribeAssessmentRunsRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "InspectorService.DescribeAssessmentRuns",
 	}
+	for header,value in pairs(DescribeAssessmentRunsRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeAssessmentRunsRequest, headers, settings, cb)
 	else
@@ -4688,8 +5715,11 @@ function M.StartAssessmentRunAsync(StartAssessmentRunRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "InspectorService.StartAssessmentRun",
 	}
+	for header,value in pairs(StartAssessmentRunRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", StartAssessmentRunRequest, headers, settings, cb)
 	else
@@ -4719,7 +5749,8 @@ function M.DescribeCrossAccountAccessRoleAsync(cb)
 		[request_headers.AMZ_TARGET_HEADER] = "InspectorService.DescribeCrossAccountAccessRole",
 	}
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", {}, headers, settings, cb)
 	else
@@ -4749,8 +5780,11 @@ function M.DescribeAssessmentTargetsAsync(DescribeAssessmentTargetsRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "InspectorService.DescribeAssessmentTargets",
 	}
+	for header,value in pairs(DescribeAssessmentTargetsRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeAssessmentTargetsRequest, headers, settings, cb)
 	else
@@ -4781,8 +5815,11 @@ function M.ListRulesPackagesAsync(ListRulesPackagesRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "InspectorService.ListRulesPackages",
 	}
+	for header,value in pairs(ListRulesPackagesRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ListRulesPackagesRequest, headers, settings, cb)
 	else
@@ -4813,8 +5850,11 @@ function M.StopAssessmentRunAsync(StopAssessmentRunRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "InspectorService.StopAssessmentRun",
 	}
+	for header,value in pairs(StopAssessmentRunRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", StopAssessmentRunRequest, headers, settings, cb)
 	else
@@ -4845,8 +5885,11 @@ function M.ListAssessmentTemplatesAsync(ListAssessmentTemplatesRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "InspectorService.ListAssessmentTemplates",
 	}
+	for header,value in pairs(ListAssessmentTemplatesRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ListAssessmentTemplatesRequest, headers, settings, cb)
 	else
@@ -4877,8 +5920,11 @@ function M.DescribeFindingsAsync(DescribeFindingsRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "InspectorService.DescribeFindings",
 	}
+	for header,value in pairs(DescribeFindingsRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeFindingsRequest, headers, settings, cb)
 	else
@@ -4909,8 +5955,11 @@ function M.DeleteAssessmentTemplateAsync(DeleteAssessmentTemplateRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "InspectorService.DeleteAssessmentTemplate",
 	}
+	for header,value in pairs(DeleteAssessmentTemplateRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteAssessmentTemplateRequest, headers, settings, cb)
 	else
@@ -4941,8 +5990,11 @@ function M.DescribeResourceGroupsAsync(DescribeResourceGroupsRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "InspectorService.DescribeResourceGroups",
 	}
+	for header,value in pairs(DescribeResourceGroupsRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeResourceGroupsRequest, headers, settings, cb)
 	else
@@ -4973,8 +6025,11 @@ function M.ListFindingsAsync(ListFindingsRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "InspectorService.ListFindings",
 	}
+	for header,value in pairs(ListFindingsRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ListFindingsRequest, headers, settings, cb)
 	else
@@ -5005,8 +6060,11 @@ function M.ListEventSubscriptionsAsync(ListEventSubscriptionsRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "InspectorService.ListEventSubscriptions",
 	}
+	for header,value in pairs(ListEventSubscriptionsRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ListEventSubscriptionsRequest, headers, settings, cb)
 	else
@@ -5037,8 +6095,11 @@ function M.ListAssessmentTargetsAsync(ListAssessmentTargetsRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "InspectorService.ListAssessmentTargets",
 	}
+	for header,value in pairs(ListAssessmentTargetsRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ListAssessmentTargetsRequest, headers, settings, cb)
 	else
@@ -5069,8 +6130,11 @@ function M.SetTagsForResourceAsync(SetTagsForResourceRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "InspectorService.SetTagsForResource",
 	}
+	for header,value in pairs(SetTagsForResourceRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", SetTagsForResourceRequest, headers, settings, cb)
 	else
@@ -5101,8 +6165,11 @@ function M.DeleteAssessmentRunAsync(DeleteAssessmentRunRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "InspectorService.DeleteAssessmentRun",
 	}
+	for header,value in pairs(DeleteAssessmentRunRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteAssessmentRunRequest, headers, settings, cb)
 	else
@@ -5133,8 +6200,11 @@ function M.CreateAssessmentTargetAsync(CreateAssessmentTargetRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "InspectorService.CreateAssessmentTarget",
 	}
+	for header,value in pairs(CreateAssessmentTargetRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateAssessmentTargetRequest, headers, settings, cb)
 	else
@@ -5165,8 +6235,11 @@ function M.UnsubscribeFromEventAsync(UnsubscribeFromEventRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "InspectorService.UnsubscribeFromEvent",
 	}
+	for header,value in pairs(UnsubscribeFromEventRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", UnsubscribeFromEventRequest, headers, settings, cb)
 	else
@@ -5197,8 +6270,11 @@ function M.ListAssessmentRunsAsync(ListAssessmentRunsRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "InspectorService.ListAssessmentRuns",
 	}
+	for header,value in pairs(ListAssessmentRunsRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ListAssessmentRunsRequest, headers, settings, cb)
 	else
@@ -5229,8 +6305,11 @@ function M.RegisterCrossAccountAccessRoleAsync(RegisterCrossAccountAccessRoleReq
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "InspectorService.RegisterCrossAccountAccessRole",
 	}
+	for header,value in pairs(RegisterCrossAccountAccessRoleRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", RegisterCrossAccountAccessRoleRequest, headers, settings, cb)
 	else
@@ -5261,8 +6340,11 @@ function M.AddAttributesToFindingsAsync(AddAttributesToFindingsRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "InspectorService.AddAttributesToFindings",
 	}
+	for header,value in pairs(AddAttributesToFindingsRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", AddAttributesToFindingsRequest, headers, settings, cb)
 	else
@@ -5293,8 +6375,11 @@ function M.CreateResourceGroupAsync(CreateResourceGroupRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "InspectorService.CreateResourceGroup",
 	}
+	for header,value in pairs(CreateResourceGroupRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateResourceGroupRequest, headers, settings, cb)
 	else
@@ -5325,8 +6410,11 @@ function M.DescribeAssessmentTemplatesAsync(DescribeAssessmentTemplatesRequest, 
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "InspectorService.DescribeAssessmentTemplates",
 	}
+	for header,value in pairs(DescribeAssessmentTemplatesRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeAssessmentTemplatesRequest, headers, settings, cb)
 	else
@@ -5357,8 +6445,11 @@ function M.PreviewAgentsAsync(PreviewAgentsRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "InspectorService.PreviewAgents",
 	}
+	for header,value in pairs(PreviewAgentsRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", PreviewAgentsRequest, headers, settings, cb)
 	else
@@ -5389,8 +6480,11 @@ function M.CreateAssessmentTemplateAsync(CreateAssessmentTemplateRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "InspectorService.CreateAssessmentTemplate",
 	}
+	for header,value in pairs(CreateAssessmentTemplateRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateAssessmentTemplateRequest, headers, settings, cb)
 	else
@@ -5421,8 +6515,11 @@ function M.SubscribeToEventAsync(SubscribeToEventRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "InspectorService.SubscribeToEvent",
 	}
+	for header,value in pairs(SubscribeToEventRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", SubscribeToEventRequest, headers, settings, cb)
 	else
@@ -5453,8 +6550,11 @@ function M.DescribeRulesPackagesAsync(DescribeRulesPackagesRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "InspectorService.DescribeRulesPackages",
 	}
+	for header,value in pairs(DescribeRulesPackagesRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeRulesPackagesRequest, headers, settings, cb)
 	else
@@ -5485,8 +6585,11 @@ function M.ListTagsForResourceAsync(ListTagsForResourceRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "InspectorService.ListTagsForResource",
 	}
+	for header,value in pairs(ListTagsForResourceRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ListTagsForResourceRequest, headers, settings, cb)
 	else
@@ -5517,8 +6620,11 @@ function M.ListAssessmentRunAgentsAsync(ListAssessmentRunAgentsRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "InspectorService.ListAssessmentRunAgents",
 	}
+	for header,value in pairs(ListAssessmentRunAgentsRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ListAssessmentRunAgentsRequest, headers, settings, cb)
 	else
@@ -5549,8 +6655,11 @@ function M.GetAssessmentReportAsync(GetAssessmentReportRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "InspectorService.GetAssessmentReport",
 	}
+	for header,value in pairs(GetAssessmentReportRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", GetAssessmentReportRequest, headers, settings, cb)
 	else

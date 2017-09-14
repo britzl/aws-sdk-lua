@@ -45,14 +45,25 @@ end
 -- Required key: RetiringPrincipal
 -- @return ListRetirableGrantsRequest structure as a key-value pair table
 function M.ListRetirableGrantsRequest(args)
-	assert(args, "You must provdide an argument table when creating ListRetirableGrantsRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListRetirableGrantsRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Marker"] = args["Marker"],
 		["Limit"] = args["Limit"],
 		["RetiringPrincipal"] = args["RetiringPrincipal"],
 	}
-	asserts.AssertListRetirableGrantsRequest(t)
-	return t
+	asserts.AssertListRetirableGrantsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DependencyTimeoutException = { ["message"] = true, nil }
@@ -73,12 +84,23 @@ end
 -- * message [ErrorMessageType] 
 -- @return DependencyTimeoutException structure as a key-value pair table
 function M.DependencyTimeoutException(args)
-	assert(args, "You must provdide an argument table when creating DependencyTimeoutException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DependencyTimeoutException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertDependencyTimeoutException(t)
-	return t
+	asserts.AssertDependencyTimeoutException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UnsupportedOperationException = { ["message"] = true, nil }
@@ -99,12 +121,23 @@ end
 -- * message [ErrorMessageType] 
 -- @return UnsupportedOperationException structure as a key-value pair table
 function M.UnsupportedOperationException(args)
-	assert(args, "You must provdide an argument table when creating UnsupportedOperationException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UnsupportedOperationException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertUnsupportedOperationException(t)
-	return t
+	asserts.AssertUnsupportedOperationException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidArnException = { ["message"] = true, nil }
@@ -125,12 +158,23 @@ end
 -- * message [ErrorMessageType] 
 -- @return InvalidArnException structure as a key-value pair table
 function M.InvalidArnException(args)
-	assert(args, "You must provdide an argument table when creating InvalidArnException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidArnException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertInvalidArnException(t)
-	return t
+	asserts.AssertInvalidArnException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.EnableKeyRotationRequest = { ["KeyId"] = true, nil }
@@ -153,12 +197,23 @@ end
 -- Required key: KeyId
 -- @return EnableKeyRotationRequest structure as a key-value pair table
 function M.EnableKeyRotationRequest(args)
-	assert(args, "You must provdide an argument table when creating EnableKeyRotationRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating EnableKeyRotationRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["KeyId"] = args["KeyId"],
 	}
-	asserts.AssertEnableKeyRotationRequest(t)
-	return t
+	asserts.AssertEnableKeyRotationRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidKeyUsageException = { ["message"] = true, nil }
@@ -179,12 +234,23 @@ end
 -- * message [ErrorMessageType] 
 -- @return InvalidKeyUsageException structure as a key-value pair table
 function M.InvalidKeyUsageException(args)
-	assert(args, "You must provdide an argument table when creating InvalidKeyUsageException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidKeyUsageException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertInvalidKeyUsageException(t)
-	return t
+	asserts.AssertInvalidKeyUsageException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateKeyRequest = { ["Origin"] = true, ["Description"] = true, ["Tags"] = true, ["BypassPolicyLockoutSafetyCheck"] = true, ["KeyUsage"] = true, ["Policy"] = true, nil }
@@ -215,8 +281,14 @@ end
 -- * Policy [PolicyType] <p>The key policy to attach to the CMK.</p> <p>If you specify a policy and do not set <code>BypassPolicyLockoutSafetyCheck</code> to true, the policy must meet the following criteria:</p> <ul> <li> <p>It must allow the principal that is making the <code>CreateKey</code> request to make a subsequent <a>PutKeyPolicy</a> request on the CMK. This reduces the likelihood that the CMK becomes unmanageable. For more information, refer to the scenario in the <a href="http://docs.aws.amazon.com/kms/latest/developerguide/key-policies.html#key-policy-default-allow-root-enable-iam">Default Key Policy</a> section in the <i>AWS Key Management Service Developer Guide</i>.</p> </li> <li> <p>The principals that are specified in the key policy must exist and be visible to AWS KMS. When you create a new AWS principal (for example, an IAM user or role), you might need to enforce a delay before specifying the new principal in a key policy because the new principal might not immediately be visible to AWS KMS. For more information, see <a href="http://docs.aws.amazon.com/IAM/latest/UserGuide/troubleshoot_general.html#troubleshoot_general_eventual-consistency">Changes that I make are not always immediately visible</a> in the <i>IAM User Guide</i>.</p> </li> </ul> <p>If you do not specify a policy, AWS KMS attaches a default key policy to the CMK. For more information, see <a href="http://docs.aws.amazon.com/kms/latest/developerguide/key-policies.html#key-policy-default">Default Key Policy</a> in the <i>AWS Key Management Service Developer Guide</i>.</p> <p>The policy size limit is 32 KiB (32768 bytes).</p>
 -- @return CreateKeyRequest structure as a key-value pair table
 function M.CreateKeyRequest(args)
-	assert(args, "You must provdide an argument table when creating CreateKeyRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateKeyRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Origin"] = args["Origin"],
 		["Description"] = args["Description"],
 		["Tags"] = args["Tags"],
@@ -224,8 +296,13 @@ function M.CreateKeyRequest(args)
 		["KeyUsage"] = args["KeyUsage"],
 		["Policy"] = args["Policy"],
 	}
-	asserts.AssertCreateKeyRequest(t)
-	return t
+	asserts.AssertCreateKeyRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetKeyPolicyResponse = { ["Policy"] = true, nil }
@@ -246,12 +323,23 @@ end
 -- * Policy [PolicyType] <p>A policy document in JSON format.</p>
 -- @return GetKeyPolicyResponse structure as a key-value pair table
 function M.GetKeyPolicyResponse(args)
-	assert(args, "You must provdide an argument table when creating GetKeyPolicyResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetKeyPolicyResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Policy"] = args["Policy"],
 	}
-	asserts.AssertGetKeyPolicyResponse(t)
-	return t
+	asserts.AssertGetKeyPolicyResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DisabledException = { ["message"] = true, nil }
@@ -272,12 +360,23 @@ end
 -- * message [ErrorMessageType] 
 -- @return DisabledException structure as a key-value pair table
 function M.DisabledException(args)
-	assert(args, "You must provdide an argument table when creating DisabledException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DisabledException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertDisabledException(t)
-	return t
+	asserts.AssertDisabledException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GenerateDataKeyWithoutPlaintextResponse = { ["KeyId"] = true, ["CiphertextBlob"] = true, nil }
@@ -300,13 +399,24 @@ end
 -- * CiphertextBlob [CiphertextType] <p>The encrypted data encryption key.</p>
 -- @return GenerateDataKeyWithoutPlaintextResponse structure as a key-value pair table
 function M.GenerateDataKeyWithoutPlaintextResponse(args)
-	assert(args, "You must provdide an argument table when creating GenerateDataKeyWithoutPlaintextResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GenerateDataKeyWithoutPlaintextResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["KeyId"] = args["KeyId"],
 		["CiphertextBlob"] = args["CiphertextBlob"],
 	}
-	asserts.AssertGenerateDataKeyWithoutPlaintextResponse(t)
-	return t
+	asserts.AssertGenerateDataKeyWithoutPlaintextResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeKeyRequest = { ["KeyId"] = true, ["GrantTokens"] = true, nil }
@@ -331,13 +441,24 @@ end
 -- Required key: KeyId
 -- @return DescribeKeyRequest structure as a key-value pair table
 function M.DescribeKeyRequest(args)
-	assert(args, "You must provdide an argument table when creating DescribeKeyRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeKeyRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["KeyId"] = args["KeyId"],
 		["GrantTokens"] = args["GrantTokens"],
 	}
-	asserts.AssertDescribeKeyRequest(t)
-	return t
+	asserts.AssertDescribeKeyRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidGrantIdException = { ["message"] = true, nil }
@@ -358,12 +479,23 @@ end
 -- * message [ErrorMessageType] 
 -- @return InvalidGrantIdException structure as a key-value pair table
 function M.InvalidGrantIdException(args)
-	assert(args, "You must provdide an argument table when creating InvalidGrantIdException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidGrantIdException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertInvalidGrantIdException(t)
-	return t
+	asserts.AssertInvalidGrantIdException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.EnableKeyRequest = { ["KeyId"] = true, nil }
@@ -386,12 +518,23 @@ end
 -- Required key: KeyId
 -- @return EnableKeyRequest structure as a key-value pair table
 function M.EnableKeyRequest(args)
-	assert(args, "You must provdide an argument table when creating EnableKeyRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating EnableKeyRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["KeyId"] = args["KeyId"],
 	}
-	asserts.AssertEnableKeyRequest(t)
-	return t
+	asserts.AssertEnableKeyRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ImportKeyMaterialResponse = { nil }
@@ -410,11 +553,22 @@ end
 -- Valid keys:
 -- @return ImportKeyMaterialResponse structure as a key-value pair table
 function M.ImportKeyMaterialResponse(args)
-	assert(args, "You must provdide an argument table when creating ImportKeyMaterialResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ImportKeyMaterialResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertImportKeyMaterialResponse(t)
-	return t
+	asserts.AssertImportKeyMaterialResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdateAliasRequest = { ["TargetKeyId"] = true, ["AliasName"] = true, nil }
@@ -441,13 +595,24 @@ end
 -- Required key: TargetKeyId
 -- @return UpdateAliasRequest structure as a key-value pair table
 function M.UpdateAliasRequest(args)
-	assert(args, "You must provdide an argument table when creating UpdateAliasRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateAliasRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["TargetKeyId"] = args["TargetKeyId"],
 		["AliasName"] = args["AliasName"],
 	}
-	asserts.AssertUpdateAliasRequest(t)
-	return t
+	asserts.AssertUpdateAliasRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GenerateDataKeyRequest = { ["NumberOfBytes"] = true, ["EncryptionContext"] = true, ["KeyId"] = true, ["GrantTokens"] = true, ["KeySpec"] = true, nil }
@@ -478,16 +643,27 @@ end
 -- Required key: KeyId
 -- @return GenerateDataKeyRequest structure as a key-value pair table
 function M.GenerateDataKeyRequest(args)
-	assert(args, "You must provdide an argument table when creating GenerateDataKeyRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GenerateDataKeyRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NumberOfBytes"] = args["NumberOfBytes"],
 		["EncryptionContext"] = args["EncryptionContext"],
 		["KeyId"] = args["KeyId"],
 		["GrantTokens"] = args["GrantTokens"],
 		["KeySpec"] = args["KeySpec"],
 	}
-	asserts.AssertGenerateDataKeyRequest(t)
-	return t
+	asserts.AssertGenerateDataKeyRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.KMSInvalidStateException = { ["message"] = true, nil }
@@ -508,12 +684,23 @@ end
 -- * message [ErrorMessageType] 
 -- @return KMSInvalidStateException structure as a key-value pair table
 function M.KMSInvalidStateException(args)
-	assert(args, "You must provdide an argument table when creating KMSInvalidStateException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating KMSInvalidStateException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertKMSInvalidStateException(t)
-	return t
+	asserts.AssertKMSInvalidStateException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GenerateDataKeyWithoutPlaintextRequest = { ["NumberOfBytes"] = true, ["EncryptionContext"] = true, ["KeyId"] = true, ["GrantTokens"] = true, ["KeySpec"] = true, nil }
@@ -544,16 +731,27 @@ end
 -- Required key: KeyId
 -- @return GenerateDataKeyWithoutPlaintextRequest structure as a key-value pair table
 function M.GenerateDataKeyWithoutPlaintextRequest(args)
-	assert(args, "You must provdide an argument table when creating GenerateDataKeyWithoutPlaintextRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GenerateDataKeyWithoutPlaintextRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NumberOfBytes"] = args["NumberOfBytes"],
 		["EncryptionContext"] = args["EncryptionContext"],
 		["KeyId"] = args["KeyId"],
 		["GrantTokens"] = args["GrantTokens"],
 		["KeySpec"] = args["KeySpec"],
 	}
-	asserts.AssertGenerateDataKeyWithoutPlaintextRequest(t)
-	return t
+	asserts.AssertGenerateDataKeyWithoutPlaintextRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ScheduleKeyDeletionResponse = { ["KeyId"] = true, ["DeletionDate"] = true, nil }
@@ -576,13 +774,24 @@ end
 -- * DeletionDate [DateType] <p>The date and time after which AWS KMS deletes the customer master key (CMK).</p>
 -- @return ScheduleKeyDeletionResponse structure as a key-value pair table
 function M.ScheduleKeyDeletionResponse(args)
-	assert(args, "You must provdide an argument table when creating ScheduleKeyDeletionResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ScheduleKeyDeletionResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["KeyId"] = args["KeyId"],
 		["DeletionDate"] = args["DeletionDate"],
 	}
-	asserts.AssertScheduleKeyDeletionResponse(t)
-	return t
+	asserts.AssertScheduleKeyDeletionResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.NotFoundException = { ["message"] = true, nil }
@@ -603,12 +812,23 @@ end
 -- * message [ErrorMessageType] 
 -- @return NotFoundException structure as a key-value pair table
 function M.NotFoundException(args)
-	assert(args, "You must provdide an argument table when creating NotFoundException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating NotFoundException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertNotFoundException(t)
-	return t
+	asserts.AssertNotFoundException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GenerateRandomResponse = { ["Plaintext"] = true, nil }
@@ -629,12 +849,23 @@ end
 -- * Plaintext [PlaintextType] <p>The random byte string.</p>
 -- @return GenerateRandomResponse structure as a key-value pair table
 function M.GenerateRandomResponse(args)
-	assert(args, "You must provdide an argument table when creating GenerateRandomResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GenerateRandomResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Plaintext"] = args["Plaintext"],
 	}
-	asserts.AssertGenerateRandomResponse(t)
-	return t
+	asserts.AssertGenerateRandomResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ReEncryptRequest = { ["SourceEncryptionContext"] = true, ["GrantTokens"] = true, ["DestinationEncryptionContext"] = true, ["DestinationKeyId"] = true, ["CiphertextBlob"] = true, nil }
@@ -667,16 +898,27 @@ end
 -- Required key: DestinationKeyId
 -- @return ReEncryptRequest structure as a key-value pair table
 function M.ReEncryptRequest(args)
-	assert(args, "You must provdide an argument table when creating ReEncryptRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ReEncryptRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["SourceEncryptionContext"] = args["SourceEncryptionContext"],
 		["GrantTokens"] = args["GrantTokens"],
 		["DestinationEncryptionContext"] = args["DestinationEncryptionContext"],
 		["DestinationKeyId"] = args["DestinationKeyId"],
 		["CiphertextBlob"] = args["CiphertextBlob"],
 	}
-	asserts.AssertReEncryptRequest(t)
-	return t
+	asserts.AssertReEncryptRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidGrantTokenException = { ["message"] = true, nil }
@@ -697,12 +939,23 @@ end
 -- * message [ErrorMessageType] 
 -- @return InvalidGrantTokenException structure as a key-value pair table
 function M.InvalidGrantTokenException(args)
-	assert(args, "You must provdide an argument table when creating InvalidGrantTokenException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidGrantTokenException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertInvalidGrantTokenException(t)
-	return t
+	asserts.AssertInvalidGrantTokenException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.LimitExceededException = { ["message"] = true, nil }
@@ -723,12 +976,23 @@ end
 -- * message [ErrorMessageType] 
 -- @return LimitExceededException structure as a key-value pair table
 function M.LimitExceededException(args)
-	assert(args, "You must provdide an argument table when creating LimitExceededException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating LimitExceededException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertLimitExceededException(t)
-	return t
+	asserts.AssertLimitExceededException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListAliasesResponse = { ["Truncated"] = true, ["NextMarker"] = true, ["Aliases"] = true, nil }
@@ -753,14 +1017,25 @@ end
 -- * Aliases [AliasList] <p>A list of key aliases in the user's account.</p>
 -- @return ListAliasesResponse structure as a key-value pair table
 function M.ListAliasesResponse(args)
-	assert(args, "You must provdide an argument table when creating ListAliasesResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListAliasesResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Truncated"] = args["Truncated"],
 		["NextMarker"] = args["NextMarker"],
 		["Aliases"] = args["Aliases"],
 	}
-	asserts.AssertListAliasesResponse(t)
-	return t
+	asserts.AssertListAliasesResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidMarkerException = { ["message"] = true, nil }
@@ -781,12 +1056,23 @@ end
 -- * message [ErrorMessageType] 
 -- @return InvalidMarkerException structure as a key-value pair table
 function M.InvalidMarkerException(args)
-	assert(args, "You must provdide an argument table when creating InvalidMarkerException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidMarkerException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertInvalidMarkerException(t)
-	return t
+	asserts.AssertInvalidMarkerException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListKeyPoliciesRequest = { ["Marker"] = true, ["KeyId"] = true, ["Limit"] = true, nil }
@@ -813,14 +1099,25 @@ end
 -- Required key: KeyId
 -- @return ListKeyPoliciesRequest structure as a key-value pair table
 function M.ListKeyPoliciesRequest(args)
-	assert(args, "You must provdide an argument table when creating ListKeyPoliciesRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListKeyPoliciesRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Marker"] = args["Marker"],
 		["KeyId"] = args["KeyId"],
 		["Limit"] = args["Limit"],
 	}
-	asserts.AssertListKeyPoliciesRequest(t)
-	return t
+	asserts.AssertListKeyPoliciesRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteAliasRequest = { ["AliasName"] = true, nil }
@@ -843,12 +1140,23 @@ end
 -- Required key: AliasName
 -- @return DeleteAliasRequest structure as a key-value pair table
 function M.DeleteAliasRequest(args)
-	assert(args, "You must provdide an argument table when creating DeleteAliasRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteAliasRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["AliasName"] = args["AliasName"],
 	}
-	asserts.AssertDeleteAliasRequest(t)
-	return t
+	asserts.AssertDeleteAliasRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.MalformedPolicyDocumentException = { ["message"] = true, nil }
@@ -869,12 +1177,23 @@ end
 -- * message [ErrorMessageType] 
 -- @return MalformedPolicyDocumentException structure as a key-value pair table
 function M.MalformedPolicyDocumentException(args)
-	assert(args, "You must provdide an argument table when creating MalformedPolicyDocumentException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating MalformedPolicyDocumentException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertMalformedPolicyDocumentException(t)
-	return t
+	asserts.AssertMalformedPolicyDocumentException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DecryptResponse = { ["Plaintext"] = true, ["KeyId"] = true, nil }
@@ -897,13 +1216,24 @@ end
 -- * KeyId [KeyIdType] <p>ARN of the key used to perform the decryption. This value is returned if no errors are encountered during the operation.</p>
 -- @return DecryptResponse structure as a key-value pair table
 function M.DecryptResponse(args)
-	assert(args, "You must provdide an argument table when creating DecryptResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DecryptResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Plaintext"] = args["Plaintext"],
 		["KeyId"] = args["KeyId"],
 	}
-	asserts.AssertDecryptResponse(t)
-	return t
+	asserts.AssertDecryptResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListResourceTagsResponse = { ["Truncated"] = true, ["NextMarker"] = true, ["Tags"] = true, nil }
@@ -928,14 +1258,25 @@ end
 -- * Tags [TagList] <p>A list of tags. Each tag consists of a tag key and a tag value.</p>
 -- @return ListResourceTagsResponse structure as a key-value pair table
 function M.ListResourceTagsResponse(args)
-	assert(args, "You must provdide an argument table when creating ListResourceTagsResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListResourceTagsResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Truncated"] = args["Truncated"],
 		["NextMarker"] = args["NextMarker"],
 		["Tags"] = args["Tags"],
 	}
-	asserts.AssertListResourceTagsResponse(t)
-	return t
+	asserts.AssertListResourceTagsResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GrantConstraints = { ["EncryptionContextSubset"] = true, ["EncryptionContextEquals"] = true, nil }
@@ -958,13 +1299,24 @@ end
 -- * EncryptionContextEquals [EncryptionContextType] <p>A list of key-value pairs that must be present in the encryption context of certain subsequent operations that the grant allows. When certain subsequent operations allowed by the grant include encryption context that matches this list, the grant allows the operation. Otherwise, the grant does not allow the operation.</p>
 -- @return GrantConstraints structure as a key-value pair table
 function M.GrantConstraints(args)
-	assert(args, "You must provdide an argument table when creating GrantConstraints")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GrantConstraints")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["EncryptionContextSubset"] = args["EncryptionContextSubset"],
 		["EncryptionContextEquals"] = args["EncryptionContextEquals"],
 	}
-	asserts.AssertGrantConstraints(t)
-	return t
+	asserts.AssertGrantConstraints(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Tag = { ["TagKey"] = true, ["TagValue"] = true, nil }
@@ -991,13 +1343,24 @@ end
 -- Required key: TagValue
 -- @return Tag structure as a key-value pair table
 function M.Tag(args)
-	assert(args, "You must provdide an argument table when creating Tag")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Tag")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["TagKey"] = args["TagKey"],
 		["TagValue"] = args["TagValue"],
 	}
-	asserts.AssertTag(t)
-	return t
+	asserts.AssertTag(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ImportKeyMaterialRequest = { ["ExpirationModel"] = true, ["ValidTo"] = true, ["KeyId"] = true, ["ImportToken"] = true, ["EncryptedKeyMaterial"] = true, nil }
@@ -1032,16 +1395,27 @@ end
 -- Required key: EncryptedKeyMaterial
 -- @return ImportKeyMaterialRequest structure as a key-value pair table
 function M.ImportKeyMaterialRequest(args)
-	assert(args, "You must provdide an argument table when creating ImportKeyMaterialRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ImportKeyMaterialRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ExpirationModel"] = args["ExpirationModel"],
 		["ValidTo"] = args["ValidTo"],
 		["KeyId"] = args["KeyId"],
 		["ImportToken"] = args["ImportToken"],
 		["EncryptedKeyMaterial"] = args["EncryptedKeyMaterial"],
 	}
-	asserts.AssertImportKeyMaterialRequest(t)
-	return t
+	asserts.AssertImportKeyMaterialRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.RetireGrantRequest = { ["GrantToken"] = true, ["KeyId"] = true, ["GrantId"] = true, nil }
@@ -1066,14 +1440,25 @@ end
 -- * GrantId [GrantIdType] <p>Unique identifier of the grant to retire. The grant ID is returned in the response to a <code>CreateGrant</code> operation.</p> <ul> <li> <p>Grant ID Example - 0123456789012345678901234567890123456789012345678901234567890123</p> </li> </ul>
 -- @return RetireGrantRequest structure as a key-value pair table
 function M.RetireGrantRequest(args)
-	assert(args, "You must provdide an argument table when creating RetireGrantRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating RetireGrantRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["GrantToken"] = args["GrantToken"],
 		["KeyId"] = args["KeyId"],
 		["GrantId"] = args["GrantId"],
 	}
-	asserts.AssertRetireGrantRequest(t)
-	return t
+	asserts.AssertRetireGrantRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListKeysResponse = { ["Keys"] = true, ["NextMarker"] = true, ["Truncated"] = true, nil }
@@ -1098,14 +1483,25 @@ end
 -- * Truncated [BooleanType] <p>A flag that indicates whether there are more items in the list. When this value is true, the list in this response is truncated. To retrieve more items, pass the value of the <code>NextMarker</code> element in this response to the <code>Marker</code> parameter in a subsequent request.</p>
 -- @return ListKeysResponse structure as a key-value pair table
 function M.ListKeysResponse(args)
-	assert(args, "You must provdide an argument table when creating ListKeysResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListKeysResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Keys"] = args["Keys"],
 		["NextMarker"] = args["NextMarker"],
 		["Truncated"] = args["Truncated"],
 	}
-	asserts.AssertListKeysResponse(t)
-	return t
+	asserts.AssertListKeysResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UntagResourceRequest = { ["KeyId"] = true, ["TagKeys"] = true, nil }
@@ -1132,13 +1528,24 @@ end
 -- Required key: TagKeys
 -- @return UntagResourceRequest structure as a key-value pair table
 function M.UntagResourceRequest(args)
-	assert(args, "You must provdide an argument table when creating UntagResourceRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UntagResourceRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["KeyId"] = args["KeyId"],
 		["TagKeys"] = args["TagKeys"],
 	}
-	asserts.AssertUntagResourceRequest(t)
-	return t
+	asserts.AssertUntagResourceRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.EncryptResponse = { ["KeyId"] = true, ["CiphertextBlob"] = true, nil }
@@ -1161,13 +1568,24 @@ end
 -- * CiphertextBlob [CiphertextType] <p>The encrypted plaintext. If you are using the CLI, the value is Base64 encoded. Otherwise, it is not encoded.</p>
 -- @return EncryptResponse structure as a key-value pair table
 function M.EncryptResponse(args)
-	assert(args, "You must provdide an argument table when creating EncryptResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating EncryptResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["KeyId"] = args["KeyId"],
 		["CiphertextBlob"] = args["CiphertextBlob"],
 	}
-	asserts.AssertEncryptResponse(t)
-	return t
+	asserts.AssertEncryptResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AlreadyExistsException = { ["message"] = true, nil }
@@ -1188,12 +1606,23 @@ end
 -- * message [ErrorMessageType] 
 -- @return AlreadyExistsException structure as a key-value pair table
 function M.AlreadyExistsException(args)
-	assert(args, "You must provdide an argument table when creating AlreadyExistsException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AlreadyExistsException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertAlreadyExistsException(t)
-	return t
+	asserts.AssertAlreadyExistsException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GenerateDataKeyResponse = { ["Plaintext"] = true, ["KeyId"] = true, ["CiphertextBlob"] = true, nil }
@@ -1218,14 +1647,25 @@ end
 -- * CiphertextBlob [CiphertextType] <p>The encrypted data encryption key.</p>
 -- @return GenerateDataKeyResponse structure as a key-value pair table
 function M.GenerateDataKeyResponse(args)
-	assert(args, "You must provdide an argument table when creating GenerateDataKeyResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GenerateDataKeyResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Plaintext"] = args["Plaintext"],
 		["KeyId"] = args["KeyId"],
 		["CiphertextBlob"] = args["CiphertextBlob"],
 	}
-	asserts.AssertGenerateDataKeyResponse(t)
-	return t
+	asserts.AssertGenerateDataKeyResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListKeyPoliciesResponse = { ["PolicyNames"] = true, ["NextMarker"] = true, ["Truncated"] = true, nil }
@@ -1250,14 +1690,25 @@ end
 -- * Truncated [BooleanType] <p>A flag that indicates whether there are more items in the list. When this value is true, the list in this response is truncated. To retrieve more items, pass the value of the <code>NextMarker</code> element in this response to the <code>Marker</code> parameter in a subsequent request.</p>
 -- @return ListKeyPoliciesResponse structure as a key-value pair table
 function M.ListKeyPoliciesResponse(args)
-	assert(args, "You must provdide an argument table when creating ListKeyPoliciesResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListKeyPoliciesResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["PolicyNames"] = args["PolicyNames"],
 		["NextMarker"] = args["NextMarker"],
 		["Truncated"] = args["Truncated"],
 	}
-	asserts.AssertListKeyPoliciesResponse(t)
-	return t
+	asserts.AssertListKeyPoliciesResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetParametersForImportRequest = { ["WrappingAlgorithm"] = true, ["KeyId"] = true, ["WrappingKeySpec"] = true, nil }
@@ -1288,14 +1739,25 @@ end
 -- Required key: WrappingKeySpec
 -- @return GetParametersForImportRequest structure as a key-value pair table
 function M.GetParametersForImportRequest(args)
-	assert(args, "You must provdide an argument table when creating GetParametersForImportRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetParametersForImportRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["WrappingAlgorithm"] = args["WrappingAlgorithm"],
 		["KeyId"] = args["KeyId"],
 		["WrappingKeySpec"] = args["WrappingKeySpec"],
 	}
-	asserts.AssertGetParametersForImportRequest(t)
-	return t
+	asserts.AssertGetParametersForImportRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateKeyResponse = { ["KeyMetadata"] = true, nil }
@@ -1316,12 +1778,23 @@ end
 -- * KeyMetadata [KeyMetadata] <p>Metadata associated with the CMK.</p>
 -- @return CreateKeyResponse structure as a key-value pair table
 function M.CreateKeyResponse(args)
-	assert(args, "You must provdide an argument table when creating CreateKeyResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateKeyResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["KeyMetadata"] = args["KeyMetadata"],
 	}
-	asserts.AssertCreateKeyResponse(t)
-	return t
+	asserts.AssertCreateKeyResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ReEncryptResponse = { ["SourceKeyId"] = true, ["KeyId"] = true, ["CiphertextBlob"] = true, nil }
@@ -1346,14 +1819,25 @@ end
 -- * CiphertextBlob [CiphertextType] <p>The reencrypted data.</p>
 -- @return ReEncryptResponse structure as a key-value pair table
 function M.ReEncryptResponse(args)
-	assert(args, "You must provdide an argument table when creating ReEncryptResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ReEncryptResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["SourceKeyId"] = args["SourceKeyId"],
 		["KeyId"] = args["KeyId"],
 		["CiphertextBlob"] = args["CiphertextBlob"],
 	}
-	asserts.AssertReEncryptResponse(t)
-	return t
+	asserts.AssertReEncryptResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateAliasRequest = { ["TargetKeyId"] = true, ["AliasName"] = true, nil }
@@ -1380,13 +1864,24 @@ end
 -- Required key: TargetKeyId
 -- @return CreateAliasRequest structure as a key-value pair table
 function M.CreateAliasRequest(args)
-	assert(args, "You must provdide an argument table when creating CreateAliasRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateAliasRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["TargetKeyId"] = args["TargetKeyId"],
 		["AliasName"] = args["AliasName"],
 	}
-	asserts.AssertCreateAliasRequest(t)
-	return t
+	asserts.AssertCreateAliasRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.KeyUnavailableException = { ["message"] = true, nil }
@@ -1407,12 +1902,23 @@ end
 -- * message [ErrorMessageType] 
 -- @return KeyUnavailableException structure as a key-value pair table
 function M.KeyUnavailableException(args)
-	assert(args, "You must provdide an argument table when creating KeyUnavailableException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating KeyUnavailableException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertKeyUnavailableException(t)
-	return t
+	asserts.AssertKeyUnavailableException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CancelKeyDeletionRequest = { ["KeyId"] = true, nil }
@@ -1435,12 +1941,23 @@ end
 -- Required key: KeyId
 -- @return CancelKeyDeletionRequest structure as a key-value pair table
 function M.CancelKeyDeletionRequest(args)
-	assert(args, "You must provdide an argument table when creating CancelKeyDeletionRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CancelKeyDeletionRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["KeyId"] = args["KeyId"],
 	}
-	asserts.AssertCancelKeyDeletionRequest(t)
-	return t
+	asserts.AssertCancelKeyDeletionRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.IncorrectKeyMaterialException = { ["message"] = true, nil }
@@ -1461,12 +1978,23 @@ end
 -- * message [ErrorMessageType] 
 -- @return IncorrectKeyMaterialException structure as a key-value pair table
 function M.IncorrectKeyMaterialException(args)
-	assert(args, "You must provdide an argument table when creating IncorrectKeyMaterialException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating IncorrectKeyMaterialException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertIncorrectKeyMaterialException(t)
-	return t
+	asserts.AssertIncorrectKeyMaterialException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteImportedKeyMaterialRequest = { ["KeyId"] = true, nil }
@@ -1489,12 +2017,23 @@ end
 -- Required key: KeyId
 -- @return DeleteImportedKeyMaterialRequest structure as a key-value pair table
 function M.DeleteImportedKeyMaterialRequest(args)
-	assert(args, "You must provdide an argument table when creating DeleteImportedKeyMaterialRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteImportedKeyMaterialRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["KeyId"] = args["KeyId"],
 	}
-	asserts.AssertDeleteImportedKeyMaterialRequest(t)
-	return t
+	asserts.AssertDeleteImportedKeyMaterialRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetKeyRotationStatusResponse = { ["KeyRotationEnabled"] = true, nil }
@@ -1515,12 +2054,23 @@ end
 -- * KeyRotationEnabled [BooleanType] <p>A Boolean value that specifies whether key rotation is enabled.</p>
 -- @return GetKeyRotationStatusResponse structure as a key-value pair table
 function M.GetKeyRotationStatusResponse(args)
-	assert(args, "You must provdide an argument table when creating GetKeyRotationStatusResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetKeyRotationStatusResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["KeyRotationEnabled"] = args["KeyRotationEnabled"],
 	}
-	asserts.AssertGetKeyRotationStatusResponse(t)
-	return t
+	asserts.AssertGetKeyRotationStatusResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.EncryptRequest = { ["Plaintext"] = true, ["EncryptionContext"] = true, ["KeyId"] = true, ["GrantTokens"] = true, nil }
@@ -1551,15 +2101,26 @@ end
 -- Required key: Plaintext
 -- @return EncryptRequest structure as a key-value pair table
 function M.EncryptRequest(args)
-	assert(args, "You must provdide an argument table when creating EncryptRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating EncryptRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Plaintext"] = args["Plaintext"],
 		["EncryptionContext"] = args["EncryptionContext"],
 		["KeyId"] = args["KeyId"],
 		["GrantTokens"] = args["GrantTokens"],
 	}
-	asserts.AssertEncryptRequest(t)
-	return t
+	asserts.AssertEncryptRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.KeyListEntry = { ["KeyArn"] = true, ["KeyId"] = true, nil }
@@ -1582,13 +2143,24 @@ end
 -- * KeyId [KeyIdType] <p>Unique identifier of the key.</p>
 -- @return KeyListEntry structure as a key-value pair table
 function M.KeyListEntry(args)
-	assert(args, "You must provdide an argument table when creating KeyListEntry")
-	local t = { 
+	assert(args, "You must provide an argument table when creating KeyListEntry")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["KeyArn"] = args["KeyArn"],
 		["KeyId"] = args["KeyId"],
 	}
-	asserts.AssertKeyListEntry(t)
-	return t
+	asserts.AssertKeyListEntry(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListKeysRequest = { ["Marker"] = true, ["Limit"] = true, nil }
@@ -1611,13 +2183,24 @@ end
 -- * Limit [LimitType] <p>Use this parameter to specify the maximum number of items to return. When this value is present, AWS KMS does not return more than the specified number of items, but it might return fewer.</p> <p>This value is optional. If you include a value, it must be between 1 and 1000, inclusive. If you do not include a value, it defaults to 100.</p>
 -- @return ListKeysRequest structure as a key-value pair table
 function M.ListKeysRequest(args)
-	assert(args, "You must provdide an argument table when creating ListKeysRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListKeysRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Marker"] = args["Marker"],
 		["Limit"] = args["Limit"],
 	}
-	asserts.AssertListKeysRequest(t)
-	return t
+	asserts.AssertListKeysRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.KeyMetadata = { ["Origin"] = true, ["KeyId"] = true, ["Description"] = true, ["DeletionDate"] = true, ["ExpirationModel"] = true, ["ValidTo"] = true, ["Enabled"] = true, ["KeyUsage"] = true, ["KeyState"] = true, ["CreationDate"] = true, ["Arn"] = true, ["AWSAccountId"] = true, nil }
@@ -1662,8 +2245,14 @@ end
 -- Required key: KeyId
 -- @return KeyMetadata structure as a key-value pair table
 function M.KeyMetadata(args)
-	assert(args, "You must provdide an argument table when creating KeyMetadata")
-	local t = { 
+	assert(args, "You must provide an argument table when creating KeyMetadata")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Origin"] = args["Origin"],
 		["KeyId"] = args["KeyId"],
 		["Description"] = args["Description"],
@@ -1677,8 +2266,13 @@ function M.KeyMetadata(args)
 		["Arn"] = args["Arn"],
 		["AWSAccountId"] = args["AWSAccountId"],
 	}
-	asserts.AssertKeyMetadata(t)
-	return t
+	asserts.AssertKeyMetadata(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListGrantsRequest = { ["Marker"] = true, ["KeyId"] = true, ["Limit"] = true, nil }
@@ -1705,14 +2299,25 @@ end
 -- Required key: KeyId
 -- @return ListGrantsRequest structure as a key-value pair table
 function M.ListGrantsRequest(args)
-	assert(args, "You must provdide an argument table when creating ListGrantsRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListGrantsRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Marker"] = args["Marker"],
 		["KeyId"] = args["KeyId"],
 		["Limit"] = args["Limit"],
 	}
-	asserts.AssertListGrantsRequest(t)
-	return t
+	asserts.AssertListGrantsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DecryptRequest = { ["EncryptionContext"] = true, ["GrantTokens"] = true, ["CiphertextBlob"] = true, nil }
@@ -1739,14 +2344,25 @@ end
 -- Required key: CiphertextBlob
 -- @return DecryptRequest structure as a key-value pair table
 function M.DecryptRequest(args)
-	assert(args, "You must provdide an argument table when creating DecryptRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DecryptRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["EncryptionContext"] = args["EncryptionContext"],
 		["GrantTokens"] = args["GrantTokens"],
 		["CiphertextBlob"] = args["CiphertextBlob"],
 	}
-	asserts.AssertDecryptRequest(t)
-	return t
+	asserts.AssertDecryptRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CancelKeyDeletionResponse = { ["KeyId"] = true, nil }
@@ -1767,12 +2383,23 @@ end
 -- * KeyId [KeyIdType] <p>The unique identifier of the master key for which deletion is canceled.</p>
 -- @return CancelKeyDeletionResponse structure as a key-value pair table
 function M.CancelKeyDeletionResponse(args)
-	assert(args, "You must provdide an argument table when creating CancelKeyDeletionResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CancelKeyDeletionResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["KeyId"] = args["KeyId"],
 	}
-	asserts.AssertCancelKeyDeletionResponse(t)
-	return t
+	asserts.AssertCancelKeyDeletionResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AliasListEntry = { ["AliasArn"] = true, ["AliasName"] = true, ["TargetKeyId"] = true, nil }
@@ -1797,14 +2424,25 @@ end
 -- * TargetKeyId [KeyIdType] <p>String that contains the key identifier referred to by the alias.</p>
 -- @return AliasListEntry structure as a key-value pair table
 function M.AliasListEntry(args)
-	assert(args, "You must provdide an argument table when creating AliasListEntry")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AliasListEntry")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["AliasArn"] = args["AliasArn"],
 		["AliasName"] = args["AliasName"],
 		["TargetKeyId"] = args["TargetKeyId"],
 	}
-	asserts.AssertAliasListEntry(t)
-	return t
+	asserts.AssertAliasListEntry(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetKeyPolicyRequest = { ["PolicyName"] = true, ["KeyId"] = true, nil }
@@ -1831,13 +2469,24 @@ end
 -- Required key: PolicyName
 -- @return GetKeyPolicyRequest structure as a key-value pair table
 function M.GetKeyPolicyRequest(args)
-	assert(args, "You must provdide an argument table when creating GetKeyPolicyRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetKeyPolicyRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["PolicyName"] = args["PolicyName"],
 		["KeyId"] = args["KeyId"],
 	}
-	asserts.AssertGetKeyPolicyRequest(t)
-	return t
+	asserts.AssertGetKeyPolicyRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdateKeyDescriptionRequest = { ["KeyId"] = true, ["Description"] = true, nil }
@@ -1864,13 +2513,24 @@ end
 -- Required key: Description
 -- @return UpdateKeyDescriptionRequest structure as a key-value pair table
 function M.UpdateKeyDescriptionRequest(args)
-	assert(args, "You must provdide an argument table when creating UpdateKeyDescriptionRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateKeyDescriptionRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["KeyId"] = args["KeyId"],
 		["Description"] = args["Description"],
 	}
-	asserts.AssertUpdateKeyDescriptionRequest(t)
-	return t
+	asserts.AssertUpdateKeyDescriptionRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.PutKeyPolicyRequest = { ["Policy"] = true, ["PolicyName"] = true, ["KeyId"] = true, ["BypassPolicyLockoutSafetyCheck"] = true, nil }
@@ -1903,15 +2563,26 @@ end
 -- Required key: Policy
 -- @return PutKeyPolicyRequest structure as a key-value pair table
 function M.PutKeyPolicyRequest(args)
-	assert(args, "You must provdide an argument table when creating PutKeyPolicyRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating PutKeyPolicyRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Policy"] = args["Policy"],
 		["PolicyName"] = args["PolicyName"],
 		["KeyId"] = args["KeyId"],
 		["BypassPolicyLockoutSafetyCheck"] = args["BypassPolicyLockoutSafetyCheck"],
 	}
-	asserts.AssertPutKeyPolicyRequest(t)
-	return t
+	asserts.AssertPutKeyPolicyRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.RevokeGrantRequest = { ["KeyId"] = true, ["GrantId"] = true, nil }
@@ -1938,13 +2609,24 @@ end
 -- Required key: GrantId
 -- @return RevokeGrantRequest structure as a key-value pair table
 function M.RevokeGrantRequest(args)
-	assert(args, "You must provdide an argument table when creating RevokeGrantRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating RevokeGrantRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["KeyId"] = args["KeyId"],
 		["GrantId"] = args["GrantId"],
 	}
-	asserts.AssertRevokeGrantRequest(t)
-	return t
+	asserts.AssertRevokeGrantRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidAliasNameException = { ["message"] = true, nil }
@@ -1965,12 +2647,23 @@ end
 -- * message [ErrorMessageType] 
 -- @return InvalidAliasNameException structure as a key-value pair table
 function M.InvalidAliasNameException(args)
-	assert(args, "You must provdide an argument table when creating InvalidAliasNameException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidAliasNameException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertInvalidAliasNameException(t)
-	return t
+	asserts.AssertInvalidAliasNameException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GenerateRandomRequest = { ["NumberOfBytes"] = true, nil }
@@ -1991,12 +2684,23 @@ end
 -- * NumberOfBytes [NumberOfBytesType] <p>The length of the byte string.</p>
 -- @return GenerateRandomRequest structure as a key-value pair table
 function M.GenerateRandomRequest(args)
-	assert(args, "You must provdide an argument table when creating GenerateRandomRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GenerateRandomRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NumberOfBytes"] = args["NumberOfBytes"],
 	}
-	asserts.AssertGenerateRandomRequest(t)
-	return t
+	asserts.AssertGenerateRandomRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListResourceTagsRequest = { ["Marker"] = true, ["KeyId"] = true, ["Limit"] = true, nil }
@@ -2023,14 +2727,25 @@ end
 -- Required key: KeyId
 -- @return ListResourceTagsRequest structure as a key-value pair table
 function M.ListResourceTagsRequest(args)
-	assert(args, "You must provdide an argument table when creating ListResourceTagsRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListResourceTagsRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Marker"] = args["Marker"],
 		["KeyId"] = args["KeyId"],
 		["Limit"] = args["Limit"],
 	}
-	asserts.AssertListResourceTagsRequest(t)
-	return t
+	asserts.AssertListResourceTagsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ScheduleKeyDeletionRequest = { ["PendingWindowInDays"] = true, ["KeyId"] = true, nil }
@@ -2055,13 +2770,24 @@ end
 -- Required key: KeyId
 -- @return ScheduleKeyDeletionRequest structure as a key-value pair table
 function M.ScheduleKeyDeletionRequest(args)
-	assert(args, "You must provdide an argument table when creating ScheduleKeyDeletionRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ScheduleKeyDeletionRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["PendingWindowInDays"] = args["PendingWindowInDays"],
 		["KeyId"] = args["KeyId"],
 	}
-	asserts.AssertScheduleKeyDeletionRequest(t)
-	return t
+	asserts.AssertScheduleKeyDeletionRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.TagException = { ["message"] = true, nil }
@@ -2082,12 +2808,23 @@ end
 -- * message [ErrorMessageType] 
 -- @return TagException structure as a key-value pair table
 function M.TagException(args)
-	assert(args, "You must provdide an argument table when creating TagException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating TagException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertTagException(t)
-	return t
+	asserts.AssertTagException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DisableKeyRequest = { ["KeyId"] = true, nil }
@@ -2110,12 +2847,23 @@ end
 -- Required key: KeyId
 -- @return DisableKeyRequest structure as a key-value pair table
 function M.DisableKeyRequest(args)
-	assert(args, "You must provdide an argument table when creating DisableKeyRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DisableKeyRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["KeyId"] = args["KeyId"],
 	}
-	asserts.AssertDisableKeyRequest(t)
-	return t
+	asserts.AssertDisableKeyRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateGrantRequest = { ["Operations"] = true, ["KeyId"] = true, ["Name"] = true, ["RetiringPrincipal"] = true, ["GranteePrincipal"] = true, ["GrantTokens"] = true, ["Constraints"] = true, nil }
@@ -2152,8 +2900,14 @@ end
 -- Required key: GranteePrincipal
 -- @return CreateGrantRequest structure as a key-value pair table
 function M.CreateGrantRequest(args)
-	assert(args, "You must provdide an argument table when creating CreateGrantRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateGrantRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Operations"] = args["Operations"],
 		["KeyId"] = args["KeyId"],
 		["Name"] = args["Name"],
@@ -2162,8 +2916,13 @@ function M.CreateGrantRequest(args)
 		["GrantTokens"] = args["GrantTokens"],
 		["Constraints"] = args["Constraints"],
 	}
-	asserts.AssertCreateGrantRequest(t)
-	return t
+	asserts.AssertCreateGrantRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ExpiredImportTokenException = { ["message"] = true, nil }
@@ -2184,12 +2943,23 @@ end
 -- * message [ErrorMessageType] 
 -- @return ExpiredImportTokenException structure as a key-value pair table
 function M.ExpiredImportTokenException(args)
-	assert(args, "You must provdide an argument table when creating ExpiredImportTokenException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ExpiredImportTokenException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertExpiredImportTokenException(t)
-	return t
+	asserts.AssertExpiredImportTokenException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetKeyRotationStatusRequest = { ["KeyId"] = true, nil }
@@ -2212,12 +2982,23 @@ end
 -- Required key: KeyId
 -- @return GetKeyRotationStatusRequest structure as a key-value pair table
 function M.GetKeyRotationStatusRequest(args)
-	assert(args, "You must provdide an argument table when creating GetKeyRotationStatusRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetKeyRotationStatusRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["KeyId"] = args["KeyId"],
 	}
-	asserts.AssertGetKeyRotationStatusRequest(t)
-	return t
+	asserts.AssertGetKeyRotationStatusRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetParametersForImportResponse = { ["ParametersValidTo"] = true, ["PublicKey"] = true, ["KeyId"] = true, ["ImportToken"] = true, nil }
@@ -2244,15 +3025,26 @@ end
 -- * ImportToken [CiphertextType] <p>The import token to send in a subsequent <a>ImportKeyMaterial</a> request.</p>
 -- @return GetParametersForImportResponse structure as a key-value pair table
 function M.GetParametersForImportResponse(args)
-	assert(args, "You must provdide an argument table when creating GetParametersForImportResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetParametersForImportResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ParametersValidTo"] = args["ParametersValidTo"],
 		["PublicKey"] = args["PublicKey"],
 		["KeyId"] = args["KeyId"],
 		["ImportToken"] = args["ImportToken"],
 	}
-	asserts.AssertGetParametersForImportResponse(t)
-	return t
+	asserts.AssertGetParametersForImportResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListAliasesRequest = { ["Marker"] = true, ["Limit"] = true, nil }
@@ -2275,13 +3067,24 @@ end
 -- * Limit [LimitType] <p>Use this parameter to specify the maximum number of items to return. When this value is present, AWS KMS does not return more than the specified number of items, but it might return fewer.</p> <p>This value is optional. If you include a value, it must be between 1 and 100, inclusive. If you do not include a value, it defaults to 50.</p>
 -- @return ListAliasesRequest structure as a key-value pair table
 function M.ListAliasesRequest(args)
-	assert(args, "You must provdide an argument table when creating ListAliasesRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListAliasesRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Marker"] = args["Marker"],
 		["Limit"] = args["Limit"],
 	}
-	asserts.AssertListAliasesRequest(t)
-	return t
+	asserts.AssertListAliasesRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidCiphertextException = { ["message"] = true, nil }
@@ -2302,12 +3105,23 @@ end
 -- * message [ErrorMessageType] 
 -- @return InvalidCiphertextException structure as a key-value pair table
 function M.InvalidCiphertextException(args)
-	assert(args, "You must provdide an argument table when creating InvalidCiphertextException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidCiphertextException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertInvalidCiphertextException(t)
-	return t
+	asserts.AssertInvalidCiphertextException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.TagResourceRequest = { ["KeyId"] = true, ["Tags"] = true, nil }
@@ -2334,13 +3148,24 @@ end
 -- Required key: Tags
 -- @return TagResourceRequest structure as a key-value pair table
 function M.TagResourceRequest(args)
-	assert(args, "You must provdide an argument table when creating TagResourceRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating TagResourceRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["KeyId"] = args["KeyId"],
 		["Tags"] = args["Tags"],
 	}
-	asserts.AssertTagResourceRequest(t)
-	return t
+	asserts.AssertTagResourceRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GrantListEntry = { ["Operations"] = true, ["KeyId"] = true, ["Name"] = true, ["RetiringPrincipal"] = true, ["GranteePrincipal"] = true, ["GrantId"] = true, ["IssuingAccount"] = true, ["CreationDate"] = true, ["Constraints"] = true, nil }
@@ -2377,8 +3202,14 @@ end
 -- * Constraints [GrantConstraints] <p>A list of key-value pairs that must be present in the encryption context of certain subsequent operations that the grant allows.</p>
 -- @return GrantListEntry structure as a key-value pair table
 function M.GrantListEntry(args)
-	assert(args, "You must provdide an argument table when creating GrantListEntry")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GrantListEntry")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Operations"] = args["Operations"],
 		["KeyId"] = args["KeyId"],
 		["Name"] = args["Name"],
@@ -2389,8 +3220,13 @@ function M.GrantListEntry(args)
 		["CreationDate"] = args["CreationDate"],
 		["Constraints"] = args["Constraints"],
 	}
-	asserts.AssertGrantListEntry(t)
-	return t
+	asserts.AssertGrantListEntry(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateGrantResponse = { ["GrantToken"] = true, ["GrantId"] = true, nil }
@@ -2413,13 +3249,24 @@ end
 -- * GrantId [GrantIdType] <p>The unique identifier for the grant.</p> <p>You can use the <code>GrantId</code> in a subsequent <a>RetireGrant</a> or <a>RevokeGrant</a> operation.</p>
 -- @return CreateGrantResponse structure as a key-value pair table
 function M.CreateGrantResponse(args)
-	assert(args, "You must provdide an argument table when creating CreateGrantResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateGrantResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["GrantToken"] = args["GrantToken"],
 		["GrantId"] = args["GrantId"],
 	}
-	asserts.AssertCreateGrantResponse(t)
-	return t
+	asserts.AssertCreateGrantResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListGrantsResponse = { ["NextMarker"] = true, ["Grants"] = true, ["Truncated"] = true, nil }
@@ -2444,14 +3291,25 @@ end
 -- * Truncated [BooleanType] <p>A flag that indicates whether there are more items in the list. When this value is true, the list in this response is truncated. To retrieve more items, pass the value of the <code>NextMarker</code> element in this response to the <code>Marker</code> parameter in a subsequent request.</p>
 -- @return ListGrantsResponse structure as a key-value pair table
 function M.ListGrantsResponse(args)
-	assert(args, "You must provdide an argument table when creating ListGrantsResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListGrantsResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NextMarker"] = args["NextMarker"],
 		["Grants"] = args["Grants"],
 		["Truncated"] = args["Truncated"],
 	}
-	asserts.AssertListGrantsResponse(t)
-	return t
+	asserts.AssertListGrantsResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.KMSInternalException = { ["message"] = true, nil }
@@ -2472,12 +3330,23 @@ end
 -- * message [ErrorMessageType] 
 -- @return KMSInternalException structure as a key-value pair table
 function M.KMSInternalException(args)
-	assert(args, "You must provdide an argument table when creating KMSInternalException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating KMSInternalException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertKMSInternalException(t)
-	return t
+	asserts.AssertKMSInternalException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeKeyResponse = { ["KeyMetadata"] = true, nil }
@@ -2498,12 +3367,23 @@ end
 -- * KeyMetadata [KeyMetadata] <p>Metadata associated with the key.</p>
 -- @return DescribeKeyResponse structure as a key-value pair table
 function M.DescribeKeyResponse(args)
-	assert(args, "You must provdide an argument table when creating DescribeKeyResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeKeyResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["KeyMetadata"] = args["KeyMetadata"],
 	}
-	asserts.AssertDescribeKeyResponse(t)
-	return t
+	asserts.AssertDescribeKeyResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidImportTokenException = { ["message"] = true, nil }
@@ -2524,12 +3404,23 @@ end
 -- * message [ErrorMessageType] 
 -- @return InvalidImportTokenException structure as a key-value pair table
 function M.InvalidImportTokenException(args)
-	assert(args, "You must provdide an argument table when creating InvalidImportTokenException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidImportTokenException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertInvalidImportTokenException(t)
-	return t
+	asserts.AssertInvalidImportTokenException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DisableKeyRotationRequest = { ["KeyId"] = true, nil }
@@ -2552,12 +3443,23 @@ end
 -- Required key: KeyId
 -- @return DisableKeyRotationRequest structure as a key-value pair table
 function M.DisableKeyRotationRequest(args)
-	assert(args, "You must provdide an argument table when creating DisableKeyRotationRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DisableKeyRotationRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["KeyId"] = args["KeyId"],
 	}
-	asserts.AssertDisableKeyRotationRequest(t)
-	return t
+	asserts.AssertDisableKeyRotationRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 function asserts.AssertTagKeyType(str)
@@ -3129,8 +4031,11 @@ function M.EncryptAsync(EncryptRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "TrentService.Encrypt",
 	}
+	for header,value in pairs(EncryptRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", EncryptRequest, headers, settings, cb)
 	else
@@ -3161,8 +4066,11 @@ function M.DecryptAsync(DecryptRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "TrentService.Decrypt",
 	}
+	for header,value in pairs(DecryptRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DecryptRequest, headers, settings, cb)
 	else
@@ -3193,8 +4101,11 @@ function M.UpdateAliasAsync(UpdateAliasRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "TrentService.UpdateAlias",
 	}
+	for header,value in pairs(UpdateAliasRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateAliasRequest, headers, settings, cb)
 	else
@@ -3225,8 +4136,11 @@ function M.ImportKeyMaterialAsync(ImportKeyMaterialRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "TrentService.ImportKeyMaterial",
 	}
+	for header,value in pairs(ImportKeyMaterialRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ImportKeyMaterialRequest, headers, settings, cb)
 	else
@@ -3257,8 +4171,11 @@ function M.DisableKeyAsync(DisableKeyRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "TrentService.DisableKey",
 	}
+	for header,value in pairs(DisableKeyRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DisableKeyRequest, headers, settings, cb)
 	else
@@ -3289,8 +4206,11 @@ function M.GenerateDataKeyWithoutPlaintextAsync(GenerateDataKeyWithoutPlaintextR
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "TrentService.GenerateDataKeyWithoutPlaintext",
 	}
+	for header,value in pairs(GenerateDataKeyWithoutPlaintextRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", GenerateDataKeyWithoutPlaintextRequest, headers, settings, cb)
 	else
@@ -3321,8 +4241,11 @@ function M.GenerateDataKeyAsync(GenerateDataKeyRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "TrentService.GenerateDataKey",
 	}
+	for header,value in pairs(GenerateDataKeyRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", GenerateDataKeyRequest, headers, settings, cb)
 	else
@@ -3353,8 +4276,11 @@ function M.ListResourceTagsAsync(ListResourceTagsRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "TrentService.ListResourceTags",
 	}
+	for header,value in pairs(ListResourceTagsRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ListResourceTagsRequest, headers, settings, cb)
 	else
@@ -3385,8 +4311,11 @@ function M.ListAliasesAsync(ListAliasesRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "TrentService.ListAliases",
 	}
+	for header,value in pairs(ListAliasesRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ListAliasesRequest, headers, settings, cb)
 	else
@@ -3417,8 +4346,11 @@ function M.CancelKeyDeletionAsync(CancelKeyDeletionRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "TrentService.CancelKeyDeletion",
 	}
+	for header,value in pairs(CancelKeyDeletionRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", CancelKeyDeletionRequest, headers, settings, cb)
 	else
@@ -3449,8 +4381,11 @@ function M.GetKeyRotationStatusAsync(GetKeyRotationStatusRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "TrentService.GetKeyRotationStatus",
 	}
+	for header,value in pairs(GetKeyRotationStatusRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", GetKeyRotationStatusRequest, headers, settings, cb)
 	else
@@ -3481,8 +4416,11 @@ function M.ListKeyPoliciesAsync(ListKeyPoliciesRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "TrentService.ListKeyPolicies",
 	}
+	for header,value in pairs(ListKeyPoliciesRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ListKeyPoliciesRequest, headers, settings, cb)
 	else
@@ -3513,8 +4451,11 @@ function M.DeleteAliasAsync(DeleteAliasRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "TrentService.DeleteAlias",
 	}
+	for header,value in pairs(DeleteAliasRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteAliasRequest, headers, settings, cb)
 	else
@@ -3545,8 +4486,11 @@ function M.RetireGrantAsync(RetireGrantRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "TrentService.RetireGrant",
 	}
+	for header,value in pairs(RetireGrantRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", RetireGrantRequest, headers, settings, cb)
 	else
@@ -3577,8 +4521,11 @@ function M.TagResourceAsync(TagResourceRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "TrentService.TagResource",
 	}
+	for header,value in pairs(TagResourceRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", TagResourceRequest, headers, settings, cb)
 	else
@@ -3609,8 +4556,11 @@ function M.DescribeKeyAsync(DescribeKeyRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "TrentService.DescribeKey",
 	}
+	for header,value in pairs(DescribeKeyRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeKeyRequest, headers, settings, cb)
 	else
@@ -3641,8 +4591,11 @@ function M.ListKeysAsync(ListKeysRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "TrentService.ListKeys",
 	}
+	for header,value in pairs(ListKeysRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ListKeysRequest, headers, settings, cb)
 	else
@@ -3673,8 +4626,11 @@ function M.GenerateRandomAsync(GenerateRandomRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "TrentService.GenerateRandom",
 	}
+	for header,value in pairs(GenerateRandomRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", GenerateRandomRequest, headers, settings, cb)
 	else
@@ -3705,8 +4661,11 @@ function M.GetKeyPolicyAsync(GetKeyPolicyRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "TrentService.GetKeyPolicy",
 	}
+	for header,value in pairs(GetKeyPolicyRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", GetKeyPolicyRequest, headers, settings, cb)
 	else
@@ -3737,8 +4696,11 @@ function M.CreateGrantAsync(CreateGrantRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "TrentService.CreateGrant",
 	}
+	for header,value in pairs(CreateGrantRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateGrantRequest, headers, settings, cb)
 	else
@@ -3769,8 +4731,11 @@ function M.CreateKeyAsync(CreateKeyRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "TrentService.CreateKey",
 	}
+	for header,value in pairs(CreateKeyRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateKeyRequest, headers, settings, cb)
 	else
@@ -3801,8 +4766,11 @@ function M.ReEncryptAsync(ReEncryptRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "TrentService.ReEncrypt",
 	}
+	for header,value in pairs(ReEncryptRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ReEncryptRequest, headers, settings, cb)
 	else
@@ -3833,8 +4801,11 @@ function M.GetParametersForImportAsync(GetParametersForImportRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "TrentService.GetParametersForImport",
 	}
+	for header,value in pairs(GetParametersForImportRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", GetParametersForImportRequest, headers, settings, cb)
 	else
@@ -3865,8 +4836,11 @@ function M.DisableKeyRotationAsync(DisableKeyRotationRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "TrentService.DisableKeyRotation",
 	}
+	for header,value in pairs(DisableKeyRotationRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DisableKeyRotationRequest, headers, settings, cb)
 	else
@@ -3897,8 +4871,11 @@ function M.ListRetirableGrantsAsync(ListRetirableGrantsRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "TrentService.ListRetirableGrants",
 	}
+	for header,value in pairs(ListRetirableGrantsRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ListRetirableGrantsRequest, headers, settings, cb)
 	else
@@ -3929,8 +4906,11 @@ function M.ScheduleKeyDeletionAsync(ScheduleKeyDeletionRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "TrentService.ScheduleKeyDeletion",
 	}
+	for header,value in pairs(ScheduleKeyDeletionRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ScheduleKeyDeletionRequest, headers, settings, cb)
 	else
@@ -3961,8 +4941,11 @@ function M.CreateAliasAsync(CreateAliasRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "TrentService.CreateAlias",
 	}
+	for header,value in pairs(CreateAliasRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateAliasRequest, headers, settings, cb)
 	else
@@ -3993,8 +4976,11 @@ function M.EnableKeyRotationAsync(EnableKeyRotationRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "TrentService.EnableKeyRotation",
 	}
+	for header,value in pairs(EnableKeyRotationRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", EnableKeyRotationRequest, headers, settings, cb)
 	else
@@ -4025,8 +5011,11 @@ function M.UntagResourceAsync(UntagResourceRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "TrentService.UntagResource",
 	}
+	for header,value in pairs(UntagResourceRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", UntagResourceRequest, headers, settings, cb)
 	else
@@ -4057,8 +5046,11 @@ function M.ListGrantsAsync(ListGrantsRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "TrentService.ListGrants",
 	}
+	for header,value in pairs(ListGrantsRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ListGrantsRequest, headers, settings, cb)
 	else
@@ -4089,8 +5081,11 @@ function M.EnableKeyAsync(EnableKeyRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "TrentService.EnableKey",
 	}
+	for header,value in pairs(EnableKeyRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", EnableKeyRequest, headers, settings, cb)
 	else
@@ -4121,8 +5116,11 @@ function M.DeleteImportedKeyMaterialAsync(DeleteImportedKeyMaterialRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "TrentService.DeleteImportedKeyMaterial",
 	}
+	for header,value in pairs(DeleteImportedKeyMaterialRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteImportedKeyMaterialRequest, headers, settings, cb)
 	else
@@ -4153,8 +5151,11 @@ function M.UpdateKeyDescriptionAsync(UpdateKeyDescriptionRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "TrentService.UpdateKeyDescription",
 	}
+	for header,value in pairs(UpdateKeyDescriptionRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateKeyDescriptionRequest, headers, settings, cb)
 	else
@@ -4185,8 +5186,11 @@ function M.RevokeGrantAsync(RevokeGrantRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "TrentService.RevokeGrant",
 	}
+	for header,value in pairs(RevokeGrantRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", RevokeGrantRequest, headers, settings, cb)
 	else
@@ -4217,8 +5221,11 @@ function M.PutKeyPolicyAsync(PutKeyPolicyRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "TrentService.PutKeyPolicy",
 	}
+	for header,value in pairs(PutKeyPolicyRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", PutKeyPolicyRequest, headers, settings, cb)
 	else

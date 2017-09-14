@@ -51,8 +51,14 @@ end
 -- * Id [ResourceIdType] <p>The ID of the resource.</p>
 -- @return ResourceMetadata structure as a key-value pair table
 function M.ResourceMetadata(args)
-	assert(args, "You must provdide an argument table when creating ResourceMetadata")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ResourceMetadata")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Name"] = args["Name"],
 		["Owner"] = args["Owner"],
 		["VersionId"] = args["VersionId"],
@@ -61,8 +67,13 @@ function M.ResourceMetadata(args)
 		["Type"] = args["Type"],
 		["Id"] = args["Id"],
 	}
-	asserts.AssertResourceMetadata(t)
-	return t
+	asserts.AssertResourceMetadata(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ServiceUnavailableException = { ["Message"] = true, nil }
@@ -83,12 +94,23 @@ end
 -- * Message [ErrorMessageType] 
 -- @return ServiceUnavailableException structure as a key-value pair table
 function M.ServiceUnavailableException(args)
-	assert(args, "You must provdide an argument table when creating ServiceUnavailableException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ServiceUnavailableException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Message"] = args["Message"],
 	}
-	asserts.AssertServiceUnavailableException(t)
-	return t
+	asserts.AssertServiceUnavailableException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetCurrentUserRequest = { ["AuthenticationToken"] = true, nil }
@@ -111,12 +133,24 @@ end
 -- Required key: AuthenticationToken
 -- @return GetCurrentUserRequest structure as a key-value pair table
 function M.GetCurrentUserRequest(args)
-	assert(args, "You must provdide an argument table when creating GetCurrentUserRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetCurrentUserRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+        ["Authentication"] = args["AuthenticationToken"],
+    }
+	local all_args = { 
 		["AuthenticationToken"] = args["AuthenticationToken"],
 	}
-	asserts.AssertGetCurrentUserRequest(t)
-	return t
+	asserts.AssertGetCurrentUserRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.RemoveAllResourcePermissionsRequest = { ["AuthenticationToken"] = true, ["ResourceId"] = true, nil }
@@ -141,13 +175,26 @@ end
 -- Required key: ResourceId
 -- @return RemoveAllResourcePermissionsRequest structure as a key-value pair table
 function M.RemoveAllResourcePermissionsRequest(args)
-	assert(args, "You must provdide an argument table when creating RemoveAllResourcePermissionsRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating RemoveAllResourcePermissionsRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{ResourceId}"] = args["ResourceId"],
+    }
+    local header_args = { 
+        ["Authentication"] = args["AuthenticationToken"],
+    }
+	local all_args = { 
 		["AuthenticationToken"] = args["AuthenticationToken"],
 		["ResourceId"] = args["ResourceId"],
 	}
-	asserts.AssertRemoveAllResourcePermissionsRequest(t)
-	return t
+	asserts.AssertRemoveAllResourcePermissionsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeResourcePermissionsRequest = { ["AuthenticationToken"] = true, ["ResourceId"] = true, ["Marker"] = true, ["Limit"] = true, nil }
@@ -176,15 +223,30 @@ end
 -- Required key: ResourceId
 -- @return DescribeResourcePermissionsRequest structure as a key-value pair table
 function M.DescribeResourcePermissionsRequest(args)
-	assert(args, "You must provdide an argument table when creating DescribeResourcePermissionsRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeResourcePermissionsRequest")
+    local query_args = { 
+        ["marker"] = args["Marker"],
+        ["limit"] = args["Limit"],
+    }
+    local uri_args = { 
+        ["{ResourceId}"] = args["ResourceId"],
+    }
+    local header_args = { 
+        ["Authentication"] = args["AuthenticationToken"],
+    }
+	local all_args = { 
 		["AuthenticationToken"] = args["AuthenticationToken"],
 		["ResourceId"] = args["ResourceId"],
 		["Marker"] = args["Marker"],
 		["Limit"] = args["Limit"],
 	}
-	asserts.AssertDescribeResourcePermissionsRequest(t)
-	return t
+	asserts.AssertDescribeResourcePermissionsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateLabelsResponse = { nil }
@@ -203,11 +265,22 @@ end
 -- Valid keys:
 -- @return CreateLabelsResponse structure as a key-value pair table
 function M.CreateLabelsResponse(args)
-	assert(args, "You must provdide an argument table when creating CreateLabelsResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateLabelsResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertCreateLabelsResponse(t)
-	return t
+	asserts.AssertCreateLabelsResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeRootFoldersResponse = { ["Folders"] = true, ["Marker"] = true, nil }
@@ -230,13 +303,24 @@ end
 -- * Marker [PageMarkerType] <p>The marker for the next set of results.</p>
 -- @return DescribeRootFoldersResponse structure as a key-value pair table
 function M.DescribeRootFoldersResponse(args)
-	assert(args, "You must provdide an argument table when creating DescribeRootFoldersResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeRootFoldersResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Folders"] = args["Folders"],
 		["Marker"] = args["Marker"],
 	}
-	asserts.AssertDescribeRootFoldersResponse(t)
-	return t
+	asserts.AssertDescribeRootFoldersResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetDocumentVersionResponse = { ["CustomMetadata"] = true, ["Metadata"] = true, nil }
@@ -259,13 +343,24 @@ end
 -- * Metadata [DocumentVersionMetadata] <p>The version metadata.</p>
 -- @return GetDocumentVersionResponse structure as a key-value pair table
 function M.GetDocumentVersionResponse(args)
-	assert(args, "You must provdide an argument table when creating GetDocumentVersionResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetDocumentVersionResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["CustomMetadata"] = args["CustomMetadata"],
 		["Metadata"] = args["Metadata"],
 	}
-	asserts.AssertGetDocumentVersionResponse(t)
-	return t
+	asserts.AssertGetDocumentVersionResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ProhibitedStateException = { ["Message"] = true, nil }
@@ -286,12 +381,23 @@ end
 -- * Message [ErrorMessageType] 
 -- @return ProhibitedStateException structure as a key-value pair table
 function M.ProhibitedStateException(args)
-	assert(args, "You must provdide an argument table when creating ProhibitedStateException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ProhibitedStateException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Message"] = args["Message"],
 	}
-	asserts.AssertProhibitedStateException(t)
-	return t
+	asserts.AssertProhibitedStateException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InitiateDocumentVersionUploadRequest = { ["ContentType"] = true, ["Name"] = true, ["ParentFolderId"] = true, ["ContentCreatedTimestamp"] = true, ["DocumentSizeInBytes"] = true, ["ContentModifiedTimestamp"] = true, ["AuthenticationToken"] = true, ["Id"] = true, nil }
@@ -328,8 +434,15 @@ end
 -- Required key: ParentFolderId
 -- @return InitiateDocumentVersionUploadRequest structure as a key-value pair table
 function M.InitiateDocumentVersionUploadRequest(args)
-	assert(args, "You must provdide an argument table when creating InitiateDocumentVersionUploadRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InitiateDocumentVersionUploadRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+        ["Authentication"] = args["AuthenticationToken"],
+    }
+	local all_args = { 
 		["ContentType"] = args["ContentType"],
 		["Name"] = args["Name"],
 		["ParentFolderId"] = args["ParentFolderId"],
@@ -339,8 +452,13 @@ function M.InitiateDocumentVersionUploadRequest(args)
 		["AuthenticationToken"] = args["AuthenticationToken"],
 		["Id"] = args["Id"],
 	}
-	asserts.AssertInitiateDocumentVersionUploadRequest(t)
-	return t
+	asserts.AssertInitiateDocumentVersionUploadRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeFolderContentsResponse = { ["Folders"] = true, ["Marker"] = true, ["Documents"] = true, nil }
@@ -365,14 +483,25 @@ end
 -- * Documents [DocumentMetadataList] <p>The documents in the specified folder.</p>
 -- @return DescribeFolderContentsResponse structure as a key-value pair table
 function M.DescribeFolderContentsResponse(args)
-	assert(args, "You must provdide an argument table when creating DescribeFolderContentsResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeFolderContentsResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Folders"] = args["Folders"],
 		["Marker"] = args["Marker"],
 		["Documents"] = args["Documents"],
 	}
-	asserts.AssertDescribeFolderContentsResponse(t)
-	return t
+	asserts.AssertDescribeFolderContentsResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UserMetadata = { ["Username"] = true, ["EmailAddress"] = true, ["GivenName"] = true, ["Surname"] = true, ["Id"] = true, nil }
@@ -401,16 +530,27 @@ end
 -- * Id [IdType] <p>The ID of the user.</p>
 -- @return UserMetadata structure as a key-value pair table
 function M.UserMetadata(args)
-	assert(args, "You must provdide an argument table when creating UserMetadata")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UserMetadata")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Username"] = args["Username"],
 		["EmailAddress"] = args["EmailAddress"],
 		["GivenName"] = args["GivenName"],
 		["Surname"] = args["Surname"],
 		["Id"] = args["Id"],
 	}
-	asserts.AssertUserMetadata(t)
-	return t
+	asserts.AssertUserMetadata(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteFolderContentsRequest = { ["AuthenticationToken"] = true, ["FolderId"] = true, nil }
@@ -435,13 +575,26 @@ end
 -- Required key: FolderId
 -- @return DeleteFolderContentsRequest structure as a key-value pair table
 function M.DeleteFolderContentsRequest(args)
-	assert(args, "You must provdide an argument table when creating DeleteFolderContentsRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteFolderContentsRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{FolderId}"] = args["FolderId"],
+    }
+    local header_args = { 
+        ["Authentication"] = args["AuthenticationToken"],
+    }
+	local all_args = { 
 		["AuthenticationToken"] = args["AuthenticationToken"],
 		["FolderId"] = args["FolderId"],
 	}
-	asserts.AssertDeleteFolderContentsRequest(t)
-	return t
+	asserts.AssertDeleteFolderContentsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ActivateUserResponse = { ["User"] = true, nil }
@@ -462,12 +615,23 @@ end
 -- * User [User] <p>The user information.</p>
 -- @return ActivateUserResponse structure as a key-value pair table
 function M.ActivateUserResponse(args)
-	assert(args, "You must provdide an argument table when creating ActivateUserResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ActivateUserResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["User"] = args["User"],
 	}
-	asserts.AssertActivateUserResponse(t)
-	return t
+	asserts.AssertActivateUserResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.TooManyLabelsException = { ["Message"] = true, nil }
@@ -488,12 +652,23 @@ end
 -- * Message [ErrorMessageType] 
 -- @return TooManyLabelsException structure as a key-value pair table
 function M.TooManyLabelsException(args)
-	assert(args, "You must provdide an argument table when creating TooManyLabelsException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating TooManyLabelsException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Message"] = args["Message"],
 	}
-	asserts.AssertTooManyLabelsException(t)
-	return t
+	asserts.AssertTooManyLabelsException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.SharePrincipal = { ["Role"] = true, ["Type"] = true, ["Id"] = true, nil }
@@ -524,14 +699,25 @@ end
 -- Required key: Role
 -- @return SharePrincipal structure as a key-value pair table
 function M.SharePrincipal(args)
-	assert(args, "You must provdide an argument table when creating SharePrincipal")
-	local t = { 
+	assert(args, "You must provide an argument table when creating SharePrincipal")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Role"] = args["Role"],
 		["Type"] = args["Type"],
 		["Id"] = args["Id"],
 	}
-	asserts.AssertSharePrincipal(t)
-	return t
+	asserts.AssertSharePrincipal(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteCustomMetadataRequest = { ["AuthenticationToken"] = true, ["ResourceId"] = true, ["VersionId"] = true, ["DeleteAll"] = true, ["Keys"] = true, nil }
@@ -562,16 +748,32 @@ end
 -- Required key: ResourceId
 -- @return DeleteCustomMetadataRequest structure as a key-value pair table
 function M.DeleteCustomMetadataRequest(args)
-	assert(args, "You must provdide an argument table when creating DeleteCustomMetadataRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteCustomMetadataRequest")
+    local query_args = { 
+        ["versionId"] = args["VersionId"],
+        ["deleteAll"] = args["DeleteAll"],
+        ["keys"] = args["Keys"],
+    }
+    local uri_args = { 
+        ["{ResourceId}"] = args["ResourceId"],
+    }
+    local header_args = { 
+        ["Authentication"] = args["AuthenticationToken"],
+    }
+	local all_args = { 
 		["AuthenticationToken"] = args["AuthenticationToken"],
 		["ResourceId"] = args["ResourceId"],
 		["VersionId"] = args["VersionId"],
 		["DeleteAll"] = args["DeleteAll"],
 		["Keys"] = args["Keys"],
 	}
-	asserts.AssertDeleteCustomMetadataRequest(t)
-	return t
+	asserts.AssertDeleteCustomMetadataRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateLabelsRequest = { ["AuthenticationToken"] = true, ["ResourceId"] = true, ["Labels"] = true, nil }
@@ -600,14 +802,27 @@ end
 -- Required key: Labels
 -- @return CreateLabelsRequest structure as a key-value pair table
 function M.CreateLabelsRequest(args)
-	assert(args, "You must provdide an argument table when creating CreateLabelsRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateLabelsRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{ResourceId}"] = args["ResourceId"],
+    }
+    local header_args = { 
+        ["Authentication"] = args["AuthenticationToken"],
+    }
+	local all_args = { 
 		["AuthenticationToken"] = args["AuthenticationToken"],
 		["ResourceId"] = args["ResourceId"],
 		["Labels"] = args["Labels"],
 	}
-	asserts.AssertCreateLabelsRequest(t)
-	return t
+	asserts.AssertCreateLabelsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteNotificationSubscriptionRequest = { ["OrganizationId"] = true, ["SubscriptionId"] = true, nil }
@@ -634,13 +849,26 @@ end
 -- Required key: OrganizationId
 -- @return DeleteNotificationSubscriptionRequest structure as a key-value pair table
 function M.DeleteNotificationSubscriptionRequest(args)
-	assert(args, "You must provdide an argument table when creating DeleteNotificationSubscriptionRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteNotificationSubscriptionRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{OrganizationId}"] = args["OrganizationId"],
+        ["{SubscriptionId}"] = args["SubscriptionId"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["OrganizationId"] = args["OrganizationId"],
 		["SubscriptionId"] = args["SubscriptionId"],
 	}
-	asserts.AssertDeleteNotificationSubscriptionRequest(t)
-	return t
+	asserts.AssertDeleteNotificationSubscriptionRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateNotificationSubscriptionRequest = { ["OrganizationId"] = true, ["SubscriptionType"] = true, ["Endpoint"] = true, ["Protocol"] = true, nil }
@@ -675,15 +903,27 @@ end
 -- Required key: SubscriptionType
 -- @return CreateNotificationSubscriptionRequest structure as a key-value pair table
 function M.CreateNotificationSubscriptionRequest(args)
-	assert(args, "You must provdide an argument table when creating CreateNotificationSubscriptionRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateNotificationSubscriptionRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{OrganizationId}"] = args["OrganizationId"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["OrganizationId"] = args["OrganizationId"],
 		["SubscriptionType"] = args["SubscriptionType"],
 		["Endpoint"] = args["Endpoint"],
 		["Protocol"] = args["Protocol"],
 	}
-	asserts.AssertCreateNotificationSubscriptionRequest(t)
-	return t
+	asserts.AssertCreateNotificationSubscriptionRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DocumentVersionMetadata = { ["Status"] = true, ["ContentType"] = true, ["Name"] = true, ["ModifiedTimestamp"] = true, ["Thumbnail"] = true, ["CreatedTimestamp"] = true, ["Source"] = true, ["CreatorId"] = true, ["ContentCreatedTimestamp"] = true, ["ContentModifiedTimestamp"] = true, ["Signature"] = true, ["Id"] = true, ["Size"] = true, nil }
@@ -728,8 +968,14 @@ end
 -- * Size [SizeType] <p>The size of the document, in bytes.</p>
 -- @return DocumentVersionMetadata structure as a key-value pair table
 function M.DocumentVersionMetadata(args)
-	assert(args, "You must provdide an argument table when creating DocumentVersionMetadata")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DocumentVersionMetadata")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Status"] = args["Status"],
 		["ContentType"] = args["ContentType"],
 		["Name"] = args["Name"],
@@ -744,8 +990,13 @@ function M.DocumentVersionMetadata(args)
 		["Id"] = args["Id"],
 		["Size"] = args["Size"],
 	}
-	asserts.AssertDocumentVersionMetadata(t)
-	return t
+	asserts.AssertDocumentVersionMetadata(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InitiateDocumentVersionUploadResponse = { ["UploadMetadata"] = true, ["Metadata"] = true, nil }
@@ -768,13 +1019,24 @@ end
 -- * Metadata [DocumentMetadata] <p>The document metadata.</p>
 -- @return InitiateDocumentVersionUploadResponse structure as a key-value pair table
 function M.InitiateDocumentVersionUploadResponse(args)
-	assert(args, "You must provdide an argument table when creating InitiateDocumentVersionUploadResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InitiateDocumentVersionUploadResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["UploadMetadata"] = args["UploadMetadata"],
 		["Metadata"] = args["Metadata"],
 	}
-	asserts.AssertInitiateDocumentVersionUploadResponse(t)
-	return t
+	asserts.AssertInitiateDocumentVersionUploadResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteUserRequest = { ["AuthenticationToken"] = true, ["UserId"] = true, nil }
@@ -799,13 +1061,26 @@ end
 -- Required key: UserId
 -- @return DeleteUserRequest structure as a key-value pair table
 function M.DeleteUserRequest(args)
-	assert(args, "You must provdide an argument table when creating DeleteUserRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteUserRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{UserId}"] = args["UserId"],
+    }
+    local header_args = { 
+        ["Authentication"] = args["AuthenticationToken"],
+    }
+	local all_args = { 
 		["AuthenticationToken"] = args["AuthenticationToken"],
 		["UserId"] = args["UserId"],
 	}
-	asserts.AssertDeleteUserRequest(t)
-	return t
+	asserts.AssertDeleteUserRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteLabelsRequest = { ["AuthenticationToken"] = true, ["ResourceId"] = true, ["Labels"] = true, ["DeleteAll"] = true, nil }
@@ -834,15 +1109,30 @@ end
 -- Required key: ResourceId
 -- @return DeleteLabelsRequest structure as a key-value pair table
 function M.DeleteLabelsRequest(args)
-	assert(args, "You must provdide an argument table when creating DeleteLabelsRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteLabelsRequest")
+    local query_args = { 
+        ["labels"] = args["Labels"],
+        ["deleteAll"] = args["DeleteAll"],
+    }
+    local uri_args = { 
+        ["{ResourceId}"] = args["ResourceId"],
+    }
+    local header_args = { 
+        ["Authentication"] = args["AuthenticationToken"],
+    }
+	local all_args = { 
 		["AuthenticationToken"] = args["AuthenticationToken"],
 		["ResourceId"] = args["ResourceId"],
 		["Labels"] = args["Labels"],
 		["DeleteAll"] = args["DeleteAll"],
 	}
-	asserts.AssertDeleteLabelsRequest(t)
-	return t
+	asserts.AssertDeleteLabelsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdateUserResponse = { ["User"] = true, nil }
@@ -863,12 +1153,23 @@ end
 -- * User [User] <p>The user information.</p>
 -- @return UpdateUserResponse structure as a key-value pair table
 function M.UpdateUserResponse(args)
-	assert(args, "You must provdide an argument table when creating UpdateUserResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateUserResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["User"] = args["User"],
 	}
-	asserts.AssertUpdateUserResponse(t)
-	return t
+	asserts.AssertUpdateUserResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetDocumentPathRequest = { ["AuthenticationToken"] = true, ["Fields"] = true, ["Marker"] = true, ["Limit"] = true, ["DocumentId"] = true, nil }
@@ -899,16 +1200,32 @@ end
 -- Required key: DocumentId
 -- @return GetDocumentPathRequest structure as a key-value pair table
 function M.GetDocumentPathRequest(args)
-	assert(args, "You must provdide an argument table when creating GetDocumentPathRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetDocumentPathRequest")
+    local query_args = { 
+        ["fields"] = args["Fields"],
+        ["marker"] = args["Marker"],
+        ["limit"] = args["Limit"],
+    }
+    local uri_args = { 
+        ["{DocumentId}"] = args["DocumentId"],
+    }
+    local header_args = { 
+        ["Authentication"] = args["AuthenticationToken"],
+    }
+	local all_args = { 
 		["AuthenticationToken"] = args["AuthenticationToken"],
 		["Fields"] = args["Fields"],
 		["Marker"] = args["Marker"],
 		["Limit"] = args["Limit"],
 		["DocumentId"] = args["DocumentId"],
 	}
-	asserts.AssertGetDocumentPathRequest(t)
-	return t
+	asserts.AssertGetDocumentPathRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UnauthorizedResourceAccessException = { ["Message"] = true, nil }
@@ -929,12 +1246,23 @@ end
 -- * Message [ErrorMessageType] 
 -- @return UnauthorizedResourceAccessException structure as a key-value pair table
 function M.UnauthorizedResourceAccessException(args)
-	assert(args, "You must provdide an argument table when creating UnauthorizedResourceAccessException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UnauthorizedResourceAccessException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Message"] = args["Message"],
 	}
-	asserts.AssertUnauthorizedResourceAccessException(t)
-	return t
+	asserts.AssertUnauthorizedResourceAccessException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ConcurrentModificationException = { ["Message"] = true, nil }
@@ -955,12 +1283,23 @@ end
 -- * Message [ErrorMessageType] 
 -- @return ConcurrentModificationException structure as a key-value pair table
 function M.ConcurrentModificationException(args)
-	assert(args, "You must provdide an argument table when creating ConcurrentModificationException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ConcurrentModificationException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Message"] = args["Message"],
 	}
-	asserts.AssertConcurrentModificationException(t)
-	return t
+	asserts.AssertConcurrentModificationException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ActivateUserRequest = { ["AuthenticationToken"] = true, ["UserId"] = true, nil }
@@ -985,13 +1324,26 @@ end
 -- Required key: UserId
 -- @return ActivateUserRequest structure as a key-value pair table
 function M.ActivateUserRequest(args)
-	assert(args, "You must provdide an argument table when creating ActivateUserRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ActivateUserRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{UserId}"] = args["UserId"],
+    }
+    local header_args = { 
+        ["Authentication"] = args["AuthenticationToken"],
+    }
+	local all_args = { 
 		["AuthenticationToken"] = args["AuthenticationToken"],
 		["UserId"] = args["UserId"],
 	}
-	asserts.AssertActivateUserRequest(t)
-	return t
+	asserts.AssertActivateUserRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeActivitiesRequest = { ["OrganizationId"] = true, ["UserId"] = true, ["Marker"] = true, ["Limit"] = true, ["StartTime"] = true, ["AuthenticationToken"] = true, ["EndTime"] = true, nil }
@@ -1024,8 +1376,21 @@ end
 -- * EndTime [TimestampType] <p>The timestamp that determines the end time of the activities; the response includes the activities performed before the specified timestamp.</p>
 -- @return DescribeActivitiesRequest structure as a key-value pair table
 function M.DescribeActivitiesRequest(args)
-	assert(args, "You must provdide an argument table when creating DescribeActivitiesRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeActivitiesRequest")
+    local query_args = { 
+        ["organizationId"] = args["OrganizationId"],
+        ["userId"] = args["UserId"],
+        ["marker"] = args["Marker"],
+        ["limit"] = args["Limit"],
+        ["startTime"] = args["StartTime"],
+        ["endTime"] = args["EndTime"],
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+        ["Authentication"] = args["AuthenticationToken"],
+    }
+	local all_args = { 
 		["OrganizationId"] = args["OrganizationId"],
 		["UserId"] = args["UserId"],
 		["Marker"] = args["Marker"],
@@ -1034,8 +1399,13 @@ function M.DescribeActivitiesRequest(args)
 		["AuthenticationToken"] = args["AuthenticationToken"],
 		["EndTime"] = args["EndTime"],
 	}
-	asserts.AssertDescribeActivitiesRequest(t)
-	return t
+	asserts.AssertDescribeActivitiesRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeNotificationSubscriptionsResponse = { ["Marker"] = true, ["Subscriptions"] = true, nil }
@@ -1058,13 +1428,24 @@ end
 -- * Subscriptions [SubscriptionList] <p>The subscriptions.</p>
 -- @return DescribeNotificationSubscriptionsResponse structure as a key-value pair table
 function M.DescribeNotificationSubscriptionsResponse(args)
-	assert(args, "You must provdide an argument table when creating DescribeNotificationSubscriptionsResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeNotificationSubscriptionsResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Marker"] = args["Marker"],
 		["Subscriptions"] = args["Subscriptions"],
 	}
-	asserts.AssertDescribeNotificationSubscriptionsResponse(t)
-	return t
+	asserts.AssertDescribeNotificationSubscriptionsResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateCommentRequest = { ["Text"] = true, ["ParentId"] = true, ["Visibility"] = true, ["NotifyCollaborators"] = true, ["VersionId"] = true, ["ThreadId"] = true, ["AuthenticationToken"] = true, ["DocumentId"] = true, nil }
@@ -1105,8 +1486,17 @@ end
 -- Required key: Text
 -- @return CreateCommentRequest structure as a key-value pair table
 function M.CreateCommentRequest(args)
-	assert(args, "You must provdide an argument table when creating CreateCommentRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateCommentRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{VersionId}"] = args["VersionId"],
+        ["{DocumentId}"] = args["DocumentId"],
+    }
+    local header_args = { 
+        ["Authentication"] = args["AuthenticationToken"],
+    }
+	local all_args = { 
 		["Text"] = args["Text"],
 		["ParentId"] = args["ParentId"],
 		["Visibility"] = args["Visibility"],
@@ -1116,8 +1506,13 @@ function M.CreateCommentRequest(args)
 		["AuthenticationToken"] = args["AuthenticationToken"],
 		["DocumentId"] = args["DocumentId"],
 	}
-	asserts.AssertCreateCommentRequest(t)
-	return t
+	asserts.AssertCreateCommentRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateFolderRequest = { ["AuthenticationToken"] = true, ["Name"] = true, ["ParentFolderId"] = true, nil }
@@ -1144,14 +1539,26 @@ end
 -- Required key: ParentFolderId
 -- @return CreateFolderRequest structure as a key-value pair table
 function M.CreateFolderRequest(args)
-	assert(args, "You must provdide an argument table when creating CreateFolderRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateFolderRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+        ["Authentication"] = args["AuthenticationToken"],
+    }
+	local all_args = { 
 		["AuthenticationToken"] = args["AuthenticationToken"],
 		["Name"] = args["Name"],
 		["ParentFolderId"] = args["ParentFolderId"],
 	}
-	asserts.AssertCreateFolderRequest(t)
-	return t
+	asserts.AssertCreateFolderRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateUserResponse = { ["User"] = true, nil }
@@ -1172,12 +1579,23 @@ end
 -- * User [User] <p>The user information.</p>
 -- @return CreateUserResponse structure as a key-value pair table
 function M.CreateUserResponse(args)
-	assert(args, "You must provdide an argument table when creating CreateUserResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateUserResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["User"] = args["User"],
 	}
-	asserts.AssertCreateUserResponse(t)
-	return t
+	asserts.AssertCreateUserResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeCommentsResponse = { ["Marker"] = true, ["Comments"] = true, nil }
@@ -1200,13 +1618,24 @@ end
 -- * Comments [CommentList] <p>The list of comments for the specified document version.</p>
 -- @return DescribeCommentsResponse structure as a key-value pair table
 function M.DescribeCommentsResponse(args)
-	assert(args, "You must provdide an argument table when creating DescribeCommentsResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeCommentsResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Marker"] = args["Marker"],
 		["Comments"] = args["Comments"],
 	}
-	asserts.AssertDescribeCommentsResponse(t)
-	return t
+	asserts.AssertDescribeCommentsResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetFolderPathResponse = { ["Path"] = true, nil }
@@ -1227,12 +1656,23 @@ end
 -- * Path [ResourcePath] <p>The path information.</p>
 -- @return GetFolderPathResponse structure as a key-value pair table
 function M.GetFolderPathResponse(args)
-	assert(args, "You must provdide an argument table when creating GetFolderPathResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetFolderPathResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Path"] = args["Path"],
 	}
-	asserts.AssertGetFolderPathResponse(t)
-	return t
+	asserts.AssertGetFolderPathResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteFolderRequest = { ["AuthenticationToken"] = true, ["FolderId"] = true, nil }
@@ -1257,13 +1697,26 @@ end
 -- Required key: FolderId
 -- @return DeleteFolderRequest structure as a key-value pair table
 function M.DeleteFolderRequest(args)
-	assert(args, "You must provdide an argument table when creating DeleteFolderRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteFolderRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{FolderId}"] = args["FolderId"],
+    }
+    local header_args = { 
+        ["Authentication"] = args["AuthenticationToken"],
+    }
+	local all_args = { 
 		["AuthenticationToken"] = args["AuthenticationToken"],
 		["FolderId"] = args["FolderId"],
 	}
-	asserts.AssertDeleteFolderRequest(t)
-	return t
+	asserts.AssertDeleteFolderRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DocumentMetadata = { ["ResourceState"] = true, ["Labels"] = true, ["ModifiedTimestamp"] = true, ["ParentFolderId"] = true, ["CreatedTimestamp"] = true, ["LatestVersionMetadata"] = true, ["CreatorId"] = true, ["Id"] = true, nil }
@@ -1298,8 +1751,14 @@ end
 -- * Id [ResourceIdType] <p>The ID of the document.</p>
 -- @return DocumentMetadata structure as a key-value pair table
 function M.DocumentMetadata(args)
-	assert(args, "You must provdide an argument table when creating DocumentMetadata")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DocumentMetadata")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ResourceState"] = args["ResourceState"],
 		["Labels"] = args["Labels"],
 		["ModifiedTimestamp"] = args["ModifiedTimestamp"],
@@ -1309,8 +1768,13 @@ function M.DocumentMetadata(args)
 		["CreatorId"] = args["CreatorId"],
 		["Id"] = args["Id"],
 	}
-	asserts.AssertDocumentMetadata(t)
-	return t
+	asserts.AssertDocumentMetadata(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DocumentLockedForCommentsException = { ["Message"] = true, nil }
@@ -1331,12 +1795,23 @@ end
 -- * Message [ErrorMessageType] 
 -- @return DocumentLockedForCommentsException structure as a key-value pair table
 function M.DocumentLockedForCommentsException(args)
-	assert(args, "You must provdide an argument table when creating DocumentLockedForCommentsException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DocumentLockedForCommentsException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Message"] = args["Message"],
 	}
-	asserts.AssertDocumentLockedForCommentsException(t)
-	return t
+	asserts.AssertDocumentLockedForCommentsException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdateDocumentRequest = { ["AuthenticationToken"] = true, ["ResourceState"] = true, ["Name"] = true, ["DocumentId"] = true, ["ParentFolderId"] = true, nil }
@@ -1367,16 +1842,29 @@ end
 -- Required key: DocumentId
 -- @return UpdateDocumentRequest structure as a key-value pair table
 function M.UpdateDocumentRequest(args)
-	assert(args, "You must provdide an argument table when creating UpdateDocumentRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateDocumentRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{DocumentId}"] = args["DocumentId"],
+    }
+    local header_args = { 
+        ["Authentication"] = args["AuthenticationToken"],
+    }
+	local all_args = { 
 		["AuthenticationToken"] = args["AuthenticationToken"],
 		["ResourceState"] = args["ResourceState"],
 		["Name"] = args["Name"],
 		["DocumentId"] = args["DocumentId"],
 		["ParentFolderId"] = args["ParentFolderId"],
 	}
-	asserts.AssertUpdateDocumentRequest(t)
-	return t
+	asserts.AssertUpdateDocumentRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeResourcePermissionsResponse = { ["Marker"] = true, ["Principals"] = true, nil }
@@ -1399,13 +1887,24 @@ end
 -- * Principals [PrincipalList] <p>The principals.</p>
 -- @return DescribeResourcePermissionsResponse structure as a key-value pair table
 function M.DescribeResourcePermissionsResponse(args)
-	assert(args, "You must provdide an argument table when creating DescribeResourcePermissionsResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeResourcePermissionsResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Marker"] = args["Marker"],
 		["Principals"] = args["Principals"],
 	}
-	asserts.AssertDescribeResourcePermissionsResponse(t)
-	return t
+	asserts.AssertDescribeResourcePermissionsResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetDocumentVersionRequest = { ["AuthenticationToken"] = true, ["Fields"] = true, ["VersionId"] = true, ["IncludeCustomMetadata"] = true, ["DocumentId"] = true, nil }
@@ -1438,16 +1937,32 @@ end
 -- Required key: VersionId
 -- @return GetDocumentVersionRequest structure as a key-value pair table
 function M.GetDocumentVersionRequest(args)
-	assert(args, "You must provdide an argument table when creating GetDocumentVersionRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetDocumentVersionRequest")
+    local query_args = { 
+        ["fields"] = args["Fields"],
+        ["includeCustomMetadata"] = args["IncludeCustomMetadata"],
+    }
+    local uri_args = { 
+        ["{VersionId}"] = args["VersionId"],
+        ["{DocumentId}"] = args["DocumentId"],
+    }
+    local header_args = { 
+        ["Authentication"] = args["AuthenticationToken"],
+    }
+	local all_args = { 
 		["AuthenticationToken"] = args["AuthenticationToken"],
 		["Fields"] = args["Fields"],
 		["VersionId"] = args["VersionId"],
 		["IncludeCustomMetadata"] = args["IncludeCustomMetadata"],
 		["DocumentId"] = args["DocumentId"],
 	}
-	asserts.AssertGetDocumentVersionRequest(t)
-	return t
+	asserts.AssertGetDocumentVersionRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeactivatingLastSystemUserException = { nil }
@@ -1466,11 +1981,22 @@ end
 -- Valid keys:
 -- @return DeactivatingLastSystemUserException structure as a key-value pair table
 function M.DeactivatingLastSystemUserException(args)
-	assert(args, "You must provdide an argument table when creating DeactivatingLastSystemUserException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeactivatingLastSystemUserException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertDeactivatingLastSystemUserException(t)
-	return t
+	asserts.AssertDeactivatingLastSystemUserException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ShareResult = { ["Status"] = true, ["StatusMessage"] = true, ["Role"] = true, ["ShareId"] = true, ["PrincipalId"] = true, nil }
@@ -1499,16 +2025,27 @@ end
 -- * PrincipalId [IdType] <p>The ID of the principal.</p>
 -- @return ShareResult structure as a key-value pair table
 function M.ShareResult(args)
-	assert(args, "You must provdide an argument table when creating ShareResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ShareResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Status"] = args["Status"],
 		["StatusMessage"] = args["StatusMessage"],
 		["Role"] = args["Role"],
 		["ShareId"] = args["ShareId"],
 		["PrincipalId"] = args["PrincipalId"],
 	}
-	asserts.AssertShareResult(t)
-	return t
+	asserts.AssertShareResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetDocumentResponse = { ["CustomMetadata"] = true, ["Metadata"] = true, nil }
@@ -1531,13 +2068,24 @@ end
 -- * Metadata [DocumentMetadata] <p>The metadata details of the document.</p>
 -- @return GetDocumentResponse structure as a key-value pair table
 function M.GetDocumentResponse(args)
-	assert(args, "You must provdide an argument table when creating GetDocumentResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetDocumentResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["CustomMetadata"] = args["CustomMetadata"],
 		["Metadata"] = args["Metadata"],
 	}
-	asserts.AssertGetDocumentResponse(t)
-	return t
+	asserts.AssertGetDocumentResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetFolderPathRequest = { ["AuthenticationToken"] = true, ["Fields"] = true, ["FolderId"] = true, ["Limit"] = true, ["Marker"] = true, nil }
@@ -1568,16 +2116,32 @@ end
 -- Required key: FolderId
 -- @return GetFolderPathRequest structure as a key-value pair table
 function M.GetFolderPathRequest(args)
-	assert(args, "You must provdide an argument table when creating GetFolderPathRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetFolderPathRequest")
+    local query_args = { 
+        ["fields"] = args["Fields"],
+        ["limit"] = args["Limit"],
+        ["marker"] = args["Marker"],
+    }
+    local uri_args = { 
+        ["{FolderId}"] = args["FolderId"],
+    }
+    local header_args = { 
+        ["Authentication"] = args["AuthenticationToken"],
+    }
+	local all_args = { 
 		["AuthenticationToken"] = args["AuthenticationToken"],
 		["Fields"] = args["Fields"],
 		["FolderId"] = args["FolderId"],
 		["Limit"] = args["Limit"],
 		["Marker"] = args["Marker"],
 	}
-	asserts.AssertGetFolderPathRequest(t)
-	return t
+	asserts.AssertGetFolderPathRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AddResourcePermissionsResponse = { ["ShareResults"] = true, nil }
@@ -1598,12 +2162,23 @@ end
 -- * ShareResults [ShareResultsList] <p>The share results.</p>
 -- @return AddResourcePermissionsResponse structure as a key-value pair table
 function M.AddResourcePermissionsResponse(args)
-	assert(args, "You must provdide an argument table when creating AddResourcePermissionsResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AddResourcePermissionsResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ShareResults"] = args["ShareResults"],
 	}
-	asserts.AssertAddResourcePermissionsResponse(t)
-	return t
+	asserts.AssertAddResourcePermissionsResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetFolderResponse = { ["CustomMetadata"] = true, ["Metadata"] = true, nil }
@@ -1626,13 +2201,24 @@ end
 -- * Metadata [FolderMetadata] <p>The metadata of the folder.</p>
 -- @return GetFolderResponse structure as a key-value pair table
 function M.GetFolderResponse(args)
-	assert(args, "You must provdide an argument table when creating GetFolderResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetFolderResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["CustomMetadata"] = args["CustomMetadata"],
 		["Metadata"] = args["Metadata"],
 	}
-	asserts.AssertGetFolderResponse(t)
-	return t
+	asserts.AssertGetFolderResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Subscription = { ["SubscriptionId"] = true, ["EndPoint"] = true, ["Protocol"] = true, nil }
@@ -1657,14 +2243,25 @@ end
 -- * Protocol [SubscriptionProtocolType] <p>The protocol of the subscription.</p>
 -- @return Subscription structure as a key-value pair table
 function M.Subscription(args)
-	assert(args, "You must provdide an argument table when creating Subscription")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Subscription")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["SubscriptionId"] = args["SubscriptionId"],
 		["EndPoint"] = args["EndPoint"],
 		["Protocol"] = args["Protocol"],
 	}
-	asserts.AssertSubscription(t)
-	return t
+	asserts.AssertSubscription(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.LimitExceededException = { ["Message"] = true, nil }
@@ -1685,12 +2282,23 @@ end
 -- * Message [ErrorMessageType] 
 -- @return LimitExceededException structure as a key-value pair table
 function M.LimitExceededException(args)
-	assert(args, "You must provdide an argument table when creating LimitExceededException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating LimitExceededException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Message"] = args["Message"],
 	}
-	asserts.AssertLimitExceededException(t)
-	return t
+	asserts.AssertLimitExceededException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ResourcePathComponent = { ["Id"] = true, ["Name"] = true, nil }
@@ -1713,13 +2321,24 @@ end
 -- * Name [ResourceNameType] <p>The name of the resource path.</p>
 -- @return ResourcePathComponent structure as a key-value pair table
 function M.ResourcePathComponent(args)
-	assert(args, "You must provdide an argument table when creating ResourcePathComponent")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ResourcePathComponent")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Id"] = args["Id"],
 		["Name"] = args["Name"],
 	}
-	asserts.AssertResourcePathComponent(t)
-	return t
+	asserts.AssertResourcePathComponent(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeactivateUserRequest = { ["AuthenticationToken"] = true, ["UserId"] = true, nil }
@@ -1744,13 +2363,26 @@ end
 -- Required key: UserId
 -- @return DeactivateUserRequest structure as a key-value pair table
 function M.DeactivateUserRequest(args)
-	assert(args, "You must provdide an argument table when creating DeactivateUserRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeactivateUserRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{UserId}"] = args["UserId"],
+    }
+    local header_args = { 
+        ["Authentication"] = args["AuthenticationToken"],
+    }
+	local all_args = { 
 		["AuthenticationToken"] = args["AuthenticationToken"],
 		["UserId"] = args["UserId"],
 	}
-	asserts.AssertDeactivateUserRequest(t)
-	return t
+	asserts.AssertDeactivateUserRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateFolderResponse = { ["Metadata"] = true, nil }
@@ -1771,12 +2403,23 @@ end
 -- * Metadata [FolderMetadata] <p>The metadata of the folder.</p>
 -- @return CreateFolderResponse structure as a key-value pair table
 function M.CreateFolderResponse(args)
-	assert(args, "You must provdide an argument table when creating CreateFolderResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateFolderResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Metadata"] = args["Metadata"],
 	}
-	asserts.AssertCreateFolderResponse(t)
-	return t
+	asserts.AssertCreateFolderResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UnauthorizedOperationException = { nil }
@@ -1795,11 +2438,22 @@ end
 -- Valid keys:
 -- @return UnauthorizedOperationException structure as a key-value pair table
 function M.UnauthorizedOperationException(args)
-	assert(args, "You must provdide an argument table when creating UnauthorizedOperationException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UnauthorizedOperationException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertUnauthorizedOperationException(t)
-	return t
+	asserts.AssertUnauthorizedOperationException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeUsersRequest = { ["Sort"] = true, ["OrganizationId"] = true, ["Fields"] = true, ["UserIds"] = true, ["Marker"] = true, ["Limit"] = true, ["AuthenticationToken"] = true, ["Query"] = true, ["Include"] = true, ["Order"] = true, nil }
@@ -1838,8 +2492,24 @@ end
 -- * Order [OrderType] <p>The order for the results.</p>
 -- @return DescribeUsersRequest structure as a key-value pair table
 function M.DescribeUsersRequest(args)
-	assert(args, "You must provdide an argument table when creating DescribeUsersRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeUsersRequest")
+    local query_args = { 
+        ["sort"] = args["Sort"],
+        ["organizationId"] = args["OrganizationId"],
+        ["fields"] = args["Fields"],
+        ["userIds"] = args["UserIds"],
+        ["marker"] = args["Marker"],
+        ["limit"] = args["Limit"],
+        ["query"] = args["Query"],
+        ["include"] = args["Include"],
+        ["order"] = args["Order"],
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+        ["Authentication"] = args["AuthenticationToken"],
+    }
+	local all_args = { 
 		["Sort"] = args["Sort"],
 		["OrganizationId"] = args["OrganizationId"],
 		["Fields"] = args["Fields"],
@@ -1851,8 +2521,13 @@ function M.DescribeUsersRequest(args)
 		["Include"] = args["Include"],
 		["Order"] = args["Order"],
 	}
-	asserts.AssertDescribeUsersRequest(t)
-	return t
+	asserts.AssertDescribeUsersRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.RemoveResourcePermissionRequest = { ["AuthenticationToken"] = true, ["ResourceId"] = true, ["PrincipalType"] = true, ["PrincipalId"] = true, nil }
@@ -1883,15 +2558,30 @@ end
 -- Required key: PrincipalId
 -- @return RemoveResourcePermissionRequest structure as a key-value pair table
 function M.RemoveResourcePermissionRequest(args)
-	assert(args, "You must provdide an argument table when creating RemoveResourcePermissionRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating RemoveResourcePermissionRequest")
+    local query_args = { 
+        ["type"] = args["PrincipalType"],
+    }
+    local uri_args = { 
+        ["{ResourceId}"] = args["ResourceId"],
+        ["{PrincipalId}"] = args["PrincipalId"],
+    }
+    local header_args = { 
+        ["Authentication"] = args["AuthenticationToken"],
+    }
+	local all_args = { 
 		["AuthenticationToken"] = args["AuthenticationToken"],
 		["ResourceId"] = args["ResourceId"],
 		["PrincipalType"] = args["PrincipalType"],
 		["PrincipalId"] = args["PrincipalId"],
 	}
-	asserts.AssertRemoveResourcePermissionRequest(t)
-	return t
+	asserts.AssertRemoveResourcePermissionRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ResourcePath = { ["Components"] = true, nil }
@@ -1912,12 +2602,23 @@ end
 -- * Components [ResourcePathComponentList] <p>The components of the resource path.</p>
 -- @return ResourcePath structure as a key-value pair table
 function M.ResourcePath(args)
-	assert(args, "You must provdide an argument table when creating ResourcePath")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ResourcePath")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Components"] = args["Components"],
 	}
-	asserts.AssertResourcePath(t)
-	return t
+	asserts.AssertResourcePath(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.IllegalUserStateException = { ["Message"] = true, nil }
@@ -1938,12 +2639,23 @@ end
 -- * Message [ErrorMessageType] 
 -- @return IllegalUserStateException structure as a key-value pair table
 function M.IllegalUserStateException(args)
-	assert(args, "You must provdide an argument table when creating IllegalUserStateException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating IllegalUserStateException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Message"] = args["Message"],
 	}
-	asserts.AssertIllegalUserStateException(t)
-	return t
+	asserts.AssertIllegalUserStateException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeFolderContentsRequest = { ["Sort"] = true, ["Include"] = true, ["Marker"] = true, ["Limit"] = true, ["AuthenticationToken"] = true, ["FolderId"] = true, ["Type"] = true, ["Order"] = true, nil }
@@ -1980,8 +2692,22 @@ end
 -- Required key: FolderId
 -- @return DescribeFolderContentsRequest structure as a key-value pair table
 function M.DescribeFolderContentsRequest(args)
-	assert(args, "You must provdide an argument table when creating DescribeFolderContentsRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeFolderContentsRequest")
+    local query_args = { 
+        ["sort"] = args["Sort"],
+        ["include"] = args["Include"],
+        ["marker"] = args["Marker"],
+        ["limit"] = args["Limit"],
+        ["type"] = args["Type"],
+        ["order"] = args["Order"],
+    }
+    local uri_args = { 
+        ["{FolderId}"] = args["FolderId"],
+    }
+    local header_args = { 
+        ["Authentication"] = args["AuthenticationToken"],
+    }
+	local all_args = { 
 		["Sort"] = args["Sort"],
 		["Include"] = args["Include"],
 		["Marker"] = args["Marker"],
@@ -1991,8 +2717,13 @@ function M.DescribeFolderContentsRequest(args)
 		["Type"] = args["Type"],
 		["Order"] = args["Order"],
 	}
-	asserts.AssertDescribeFolderContentsRequest(t)
-	return t
+	asserts.AssertDescribeFolderContentsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ResourceAlreadyCheckedOutException = { ["Message"] = true, nil }
@@ -2013,12 +2744,23 @@ end
 -- * Message [ErrorMessageType] 
 -- @return ResourceAlreadyCheckedOutException structure as a key-value pair table
 function M.ResourceAlreadyCheckedOutException(args)
-	assert(args, "You must provdide an argument table when creating ResourceAlreadyCheckedOutException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ResourceAlreadyCheckedOutException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Message"] = args["Message"],
 	}
-	asserts.AssertResourceAlreadyCheckedOutException(t)
-	return t
+	asserts.AssertResourceAlreadyCheckedOutException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetDocumentPathResponse = { ["Path"] = true, nil }
@@ -2039,12 +2781,23 @@ end
 -- * Path [ResourcePath] <p>The path information.</p>
 -- @return GetDocumentPathResponse structure as a key-value pair table
 function M.GetDocumentPathResponse(args)
-	assert(args, "You must provdide an argument table when creating GetDocumentPathResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetDocumentPathResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Path"] = args["Path"],
 	}
-	asserts.AssertGetDocumentPathResponse(t)
-	return t
+	asserts.AssertGetDocumentPathResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdateUserRequest = { ["TimeZoneId"] = true, ["Surname"] = true, ["Locale"] = true, ["UserId"] = true, ["StorageRule"] = true, ["AuthenticationToken"] = true, ["GivenName"] = true, ["Type"] = true, nil }
@@ -2081,8 +2834,16 @@ end
 -- Required key: UserId
 -- @return UpdateUserRequest structure as a key-value pair table
 function M.UpdateUserRequest(args)
-	assert(args, "You must provdide an argument table when creating UpdateUserRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateUserRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{UserId}"] = args["UserId"],
+    }
+    local header_args = { 
+        ["Authentication"] = args["AuthenticationToken"],
+    }
+	local all_args = { 
 		["TimeZoneId"] = args["TimeZoneId"],
 		["Surname"] = args["Surname"],
 		["Locale"] = args["Locale"],
@@ -2092,8 +2853,13 @@ function M.UpdateUserRequest(args)
 		["GivenName"] = args["GivenName"],
 		["Type"] = args["Type"],
 	}
-	asserts.AssertUpdateUserRequest(t)
-	return t
+	asserts.AssertUpdateUserRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AddResourcePermissionsRequest = { ["AuthenticationToken"] = true, ["ResourceId"] = true, ["Principals"] = true, nil }
@@ -2122,14 +2888,27 @@ end
 -- Required key: Principals
 -- @return AddResourcePermissionsRequest structure as a key-value pair table
 function M.AddResourcePermissionsRequest(args)
-	assert(args, "You must provdide an argument table when creating AddResourcePermissionsRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AddResourcePermissionsRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{ResourceId}"] = args["ResourceId"],
+    }
+    local header_args = { 
+        ["Authentication"] = args["AuthenticationToken"],
+    }
+	local all_args = { 
 		["AuthenticationToken"] = args["AuthenticationToken"],
 		["ResourceId"] = args["ResourceId"],
 		["Principals"] = args["Principals"],
 	}
-	asserts.AssertAddResourcePermissionsRequest(t)
-	return t
+	asserts.AssertAddResourcePermissionsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Participants = { ["Users"] = true, ["Groups"] = true, nil }
@@ -2152,13 +2931,24 @@ end
 -- * Groups [GroupMetadataList] <p>The list of user groups.</p>
 -- @return Participants structure as a key-value pair table
 function M.Participants(args)
-	assert(args, "You must provdide an argument table when creating Participants")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Participants")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Users"] = args["Users"],
 		["Groups"] = args["Groups"],
 	}
-	asserts.AssertParticipants(t)
-	return t
+	asserts.AssertParticipants(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeActivitiesResponse = { ["UserActivities"] = true, ["Marker"] = true, nil }
@@ -2181,13 +2971,24 @@ end
 -- * Marker [MarkerType] <p>The marker for the next set of results.</p>
 -- @return DescribeActivitiesResponse structure as a key-value pair table
 function M.DescribeActivitiesResponse(args)
-	assert(args, "You must provdide an argument table when creating DescribeActivitiesResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeActivitiesResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["UserActivities"] = args["UserActivities"],
 		["Marker"] = args["Marker"],
 	}
-	asserts.AssertDescribeActivitiesResponse(t)
-	return t
+	asserts.AssertDescribeActivitiesResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UserStorageMetadata = { ["StorageRule"] = true, ["StorageUtilizedInBytes"] = true, nil }
@@ -2210,13 +3011,24 @@ end
 -- * StorageUtilizedInBytes [SizeType] <p>The amount of storage utilized, in bytes.</p>
 -- @return UserStorageMetadata structure as a key-value pair table
 function M.UserStorageMetadata(args)
-	assert(args, "You must provdide an argument table when creating UserStorageMetadata")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UserStorageMetadata")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["StorageRule"] = args["StorageRule"],
 		["StorageUtilizedInBytes"] = args["StorageUtilizedInBytes"],
 	}
-	asserts.AssertUserStorageMetadata(t)
-	return t
+	asserts.AssertUserStorageMetadata(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.FolderMetadata = { ["Name"] = true, ["LatestVersionSize"] = true, ["Labels"] = true, ["ModifiedTimestamp"] = true, ["Id"] = true, ["CreatedTimestamp"] = true, ["ResourceState"] = true, ["CreatorId"] = true, ["Signature"] = true, ["ParentFolderId"] = true, ["Size"] = true, nil }
@@ -2257,8 +3069,14 @@ end
 -- * Size [SizeType] <p>The size of the folder metadata.</p>
 -- @return FolderMetadata structure as a key-value pair table
 function M.FolderMetadata(args)
-	assert(args, "You must provdide an argument table when creating FolderMetadata")
-	local t = { 
+	assert(args, "You must provide an argument table when creating FolderMetadata")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Name"] = args["Name"],
 		["LatestVersionSize"] = args["LatestVersionSize"],
 		["Labels"] = args["Labels"],
@@ -2271,8 +3089,13 @@ function M.FolderMetadata(args)
 		["ParentFolderId"] = args["ParentFolderId"],
 		["Size"] = args["Size"],
 	}
-	asserts.AssertFolderMetadata(t)
-	return t
+	asserts.AssertFolderMetadata(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GroupMetadata = { ["Id"] = true, ["Name"] = true, nil }
@@ -2295,13 +3118,24 @@ end
 -- * Name [GroupNameType] <p>The name of the group.</p>
 -- @return GroupMetadata structure as a key-value pair table
 function M.GroupMetadata(args)
-	assert(args, "You must provdide an argument table when creating GroupMetadata")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GroupMetadata")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Id"] = args["Id"],
 		["Name"] = args["Name"],
 	}
-	asserts.AssertGroupMetadata(t)
-	return t
+	asserts.AssertGroupMetadata(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UploadMetadata = { ["SignedHeaders"] = true, ["UploadUrl"] = true, nil }
@@ -2324,13 +3158,24 @@ end
 -- * UploadUrl [UrlType] <p>The URL of the upload.</p>
 -- @return UploadMetadata structure as a key-value pair table
 function M.UploadMetadata(args)
-	assert(args, "You must provdide an argument table when creating UploadMetadata")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UploadMetadata")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["SignedHeaders"] = args["SignedHeaders"],
 		["UploadUrl"] = args["UploadUrl"],
 	}
-	asserts.AssertUploadMetadata(t)
-	return t
+	asserts.AssertUploadMetadata(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CustomMetadataLimitExceededException = { ["Message"] = true, nil }
@@ -2351,12 +3196,23 @@ end
 -- * Message [ErrorMessageType] 
 -- @return CustomMetadataLimitExceededException structure as a key-value pair table
 function M.CustomMetadataLimitExceededException(args)
-	assert(args, "You must provdide an argument table when creating CustomMetadataLimitExceededException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CustomMetadataLimitExceededException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Message"] = args["Message"],
 	}
-	asserts.AssertCustomMetadataLimitExceededException(t)
-	return t
+	asserts.AssertCustomMetadataLimitExceededException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.User = { ["Username"] = true, ["Status"] = true, ["Surname"] = true, ["OrganizationId"] = true, ["Storage"] = true, ["RecycleBinFolderId"] = true, ["TimeZoneId"] = true, ["ModifiedTimestamp"] = true, ["CreatedTimestamp"] = true, ["Locale"] = true, ["EmailAddress"] = true, ["RootFolderId"] = true, ["GivenName"] = true, ["Type"] = true, ["Id"] = true, nil }
@@ -2405,8 +3261,14 @@ end
 -- * Id [IdType] <p>The ID of the user.</p>
 -- @return User structure as a key-value pair table
 function M.User(args)
-	assert(args, "You must provdide an argument table when creating User")
-	local t = { 
+	assert(args, "You must provide an argument table when creating User")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Username"] = args["Username"],
 		["Status"] = args["Status"],
 		["Surname"] = args["Surname"],
@@ -2423,8 +3285,13 @@ function M.User(args)
 		["Type"] = args["Type"],
 		["Id"] = args["Id"],
 	}
-	asserts.AssertUser(t)
-	return t
+	asserts.AssertUser(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidOperationException = { ["Message"] = true, nil }
@@ -2445,12 +3312,23 @@ end
 -- * Message [ErrorMessageType] 
 -- @return InvalidOperationException structure as a key-value pair table
 function M.InvalidOperationException(args)
-	assert(args, "You must provdide an argument table when creating InvalidOperationException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidOperationException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Message"] = args["Message"],
 	}
-	asserts.AssertInvalidOperationException(t)
-	return t
+	asserts.AssertInvalidOperationException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateCustomMetadataResponse = { nil }
@@ -2469,11 +3347,22 @@ end
 -- Valid keys:
 -- @return CreateCustomMetadataResponse structure as a key-value pair table
 function M.CreateCustomMetadataResponse(args)
-	assert(args, "You must provdide an argument table when creating CreateCustomMetadataResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateCustomMetadataResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertCreateCustomMetadataResponse(t)
-	return t
+	asserts.AssertCreateCustomMetadataResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CommentMetadata = { ["Contributor"] = true, ["CommentId"] = true, ["CreatedTimestamp"] = true, ["RecipientId"] = true, ["CommentStatus"] = true, nil }
@@ -2502,16 +3391,27 @@ end
 -- * CommentStatus [CommentStatusType] 
 -- @return CommentMetadata structure as a key-value pair table
 function M.CommentMetadata(args)
-	assert(args, "You must provdide an argument table when creating CommentMetadata")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CommentMetadata")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Contributor"] = args["Contributor"],
 		["CommentId"] = args["CommentId"],
 		["CreatedTimestamp"] = args["CreatedTimestamp"],
 		["RecipientId"] = args["RecipientId"],
 		["CommentStatus"] = args["CommentStatus"],
 	}
-	asserts.AssertCommentMetadata(t)
-	return t
+	asserts.AssertCommentMetadata(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteLabelsResponse = { nil }
@@ -2530,11 +3430,22 @@ end
 -- Valid keys:
 -- @return DeleteLabelsResponse structure as a key-value pair table
 function M.DeleteLabelsResponse(args)
-	assert(args, "You must provdide an argument table when creating DeleteLabelsResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteLabelsResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertDeleteLabelsResponse(t)
-	return t
+	asserts.AssertDeleteLabelsResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteCommentRequest = { ["AuthenticationToken"] = true, ["CommentId"] = true, ["VersionId"] = true, ["DocumentId"] = true, nil }
@@ -2567,15 +3478,30 @@ end
 -- Required key: CommentId
 -- @return DeleteCommentRequest structure as a key-value pair table
 function M.DeleteCommentRequest(args)
-	assert(args, "You must provdide an argument table when creating DeleteCommentRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteCommentRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{CommentId}"] = args["CommentId"],
+        ["{VersionId}"] = args["VersionId"],
+        ["{DocumentId}"] = args["DocumentId"],
+    }
+    local header_args = { 
+        ["Authentication"] = args["AuthenticationToken"],
+    }
+	local all_args = { 
 		["AuthenticationToken"] = args["AuthenticationToken"],
 		["CommentId"] = args["CommentId"],
 		["VersionId"] = args["VersionId"],
 		["DocumentId"] = args["DocumentId"],
 	}
-	asserts.AssertDeleteCommentRequest(t)
-	return t
+	asserts.AssertDeleteCommentRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteDocumentRequest = { ["AuthenticationToken"] = true, ["DocumentId"] = true, nil }
@@ -2600,13 +3526,26 @@ end
 -- Required key: DocumentId
 -- @return DeleteDocumentRequest structure as a key-value pair table
 function M.DeleteDocumentRequest(args)
-	assert(args, "You must provdide an argument table when creating DeleteDocumentRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteDocumentRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{DocumentId}"] = args["DocumentId"],
+    }
+    local header_args = { 
+        ["Authentication"] = args["AuthenticationToken"],
+    }
+	local all_args = { 
 		["AuthenticationToken"] = args["AuthenticationToken"],
 		["DocumentId"] = args["DocumentId"],
 	}
-	asserts.AssertDeleteDocumentRequest(t)
-	return t
+	asserts.AssertDeleteDocumentRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeCommentsRequest = { ["AuthenticationToken"] = true, ["Marker"] = true, ["VersionId"] = true, ["Limit"] = true, ["DocumentId"] = true, nil }
@@ -2639,16 +3578,32 @@ end
 -- Required key: VersionId
 -- @return DescribeCommentsRequest structure as a key-value pair table
 function M.DescribeCommentsRequest(args)
-	assert(args, "You must provdide an argument table when creating DescribeCommentsRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeCommentsRequest")
+    local query_args = { 
+        ["marker"] = args["Marker"],
+        ["limit"] = args["Limit"],
+    }
+    local uri_args = { 
+        ["{VersionId}"] = args["VersionId"],
+        ["{DocumentId}"] = args["DocumentId"],
+    }
+    local header_args = { 
+        ["Authentication"] = args["AuthenticationToken"],
+    }
+	local all_args = { 
 		["AuthenticationToken"] = args["AuthenticationToken"],
 		["Marker"] = args["Marker"],
 		["VersionId"] = args["VersionId"],
 		["Limit"] = args["Limit"],
 		["DocumentId"] = args["DocumentId"],
 	}
-	asserts.AssertDescribeCommentsRequest(t)
-	return t
+	asserts.AssertDescribeCommentsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeUsersResponse = { ["Marker"] = true, ["TotalNumberOfUsers"] = true, ["Users"] = true, nil }
@@ -2673,14 +3628,25 @@ end
 -- * Users [OrganizationUserList] <p>The users.</p>
 -- @return DescribeUsersResponse structure as a key-value pair table
 function M.DescribeUsersResponse(args)
-	assert(args, "You must provdide an argument table when creating DescribeUsersResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeUsersResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Marker"] = args["Marker"],
 		["TotalNumberOfUsers"] = args["TotalNumberOfUsers"],
 		["Users"] = args["Users"],
 	}
-	asserts.AssertDescribeUsersResponse(t)
-	return t
+	asserts.AssertDescribeUsersResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateUserRequest = { ["Username"] = true, ["TimeZoneId"] = true, ["Password"] = true, ["Surname"] = true, ["OrganizationId"] = true, ["EmailAddress"] = true, ["StorageRule"] = true, ["AuthenticationToken"] = true, ["GivenName"] = true, nil }
@@ -2725,8 +3691,15 @@ end
 -- Required key: Password
 -- @return CreateUserRequest structure as a key-value pair table
 function M.CreateUserRequest(args)
-	assert(args, "You must provdide an argument table when creating CreateUserRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateUserRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+        ["Authentication"] = args["AuthenticationToken"],
+    }
+	local all_args = { 
 		["Username"] = args["Username"],
 		["TimeZoneId"] = args["TimeZoneId"],
 		["Password"] = args["Password"],
@@ -2737,8 +3710,13 @@ function M.CreateUserRequest(args)
 		["AuthenticationToken"] = args["AuthenticationToken"],
 		["GivenName"] = args["GivenName"],
 	}
-	asserts.AssertCreateUserRequest(t)
-	return t
+	asserts.AssertCreateUserRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateCommentResponse = { ["Comment"] = true, nil }
@@ -2759,12 +3737,23 @@ end
 -- * Comment [Comment] <p>The comment that has been created.</p>
 -- @return CreateCommentResponse structure as a key-value pair table
 function M.CreateCommentResponse(args)
-	assert(args, "You must provdide an argument table when creating CreateCommentResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateCommentResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Comment"] = args["Comment"],
 	}
-	asserts.AssertCreateCommentResponse(t)
-	return t
+	asserts.AssertCreateCommentResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateCustomMetadataRequest = { ["AuthenticationToken"] = true, ["ResourceId"] = true, ["VersionId"] = true, ["CustomMetadata"] = true, nil }
@@ -2795,15 +3784,29 @@ end
 -- Required key: CustomMetadata
 -- @return CreateCustomMetadataRequest structure as a key-value pair table
 function M.CreateCustomMetadataRequest(args)
-	assert(args, "You must provdide an argument table when creating CreateCustomMetadataRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateCustomMetadataRequest")
+    local query_args = { 
+        ["versionid"] = args["VersionId"],
+    }
+    local uri_args = { 
+        ["{ResourceId}"] = args["ResourceId"],
+    }
+    local header_args = { 
+        ["Authentication"] = args["AuthenticationToken"],
+    }
+	local all_args = { 
 		["AuthenticationToken"] = args["AuthenticationToken"],
 		["ResourceId"] = args["ResourceId"],
 		["VersionId"] = args["VersionId"],
 		["CustomMetadata"] = args["CustomMetadata"],
 	}
-	asserts.AssertCreateCustomMetadataRequest(t)
-	return t
+	asserts.AssertCreateCustomMetadataRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetFolderRequest = { ["AuthenticationToken"] = true, ["IncludeCustomMetadata"] = true, ["FolderId"] = true, nil }
@@ -2830,14 +3833,28 @@ end
 -- Required key: FolderId
 -- @return GetFolderRequest structure as a key-value pair table
 function M.GetFolderRequest(args)
-	assert(args, "You must provdide an argument table when creating GetFolderRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetFolderRequest")
+    local query_args = { 
+        ["includeCustomMetadata"] = args["IncludeCustomMetadata"],
+    }
+    local uri_args = { 
+        ["{FolderId}"] = args["FolderId"],
+    }
+    local header_args = { 
+        ["Authentication"] = args["AuthenticationToken"],
+    }
+	local all_args = { 
 		["AuthenticationToken"] = args["AuthenticationToken"],
 		["IncludeCustomMetadata"] = args["IncludeCustomMetadata"],
 		["FolderId"] = args["FolderId"],
 	}
-	asserts.AssertGetFolderRequest(t)
-	return t
+	asserts.AssertGetFolderRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateNotificationSubscriptionResponse = { ["Subscription"] = true, nil }
@@ -2858,12 +3875,23 @@ end
 -- * Subscription [Subscription] <p>The subscription.</p>
 -- @return CreateNotificationSubscriptionResponse structure as a key-value pair table
 function M.CreateNotificationSubscriptionResponse(args)
-	assert(args, "You must provdide an argument table when creating CreateNotificationSubscriptionResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateNotificationSubscriptionResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Subscription"] = args["Subscription"],
 	}
-	asserts.AssertCreateNotificationSubscriptionResponse(t)
-	return t
+	asserts.AssertCreateNotificationSubscriptionResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeNotificationSubscriptionsRequest = { ["OrganizationId"] = true, ["Marker"] = true, ["Limit"] = true, nil }
@@ -2890,14 +3918,28 @@ end
 -- Required key: OrganizationId
 -- @return DescribeNotificationSubscriptionsRequest structure as a key-value pair table
 function M.DescribeNotificationSubscriptionsRequest(args)
-	assert(args, "You must provdide an argument table when creating DescribeNotificationSubscriptionsRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeNotificationSubscriptionsRequest")
+    local query_args = { 
+        ["marker"] = args["Marker"],
+        ["limit"] = args["Limit"],
+    }
+    local uri_args = { 
+        ["{OrganizationId}"] = args["OrganizationId"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["OrganizationId"] = args["OrganizationId"],
 		["Marker"] = args["Marker"],
 		["Limit"] = args["Limit"],
 	}
-	asserts.AssertDescribeNotificationSubscriptionsRequest(t)
-	return t
+	asserts.AssertDescribeNotificationSubscriptionsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.StorageLimitExceededException = { ["Message"] = true, nil }
@@ -2918,12 +3960,23 @@ end
 -- * Message [ErrorMessageType] 
 -- @return StorageLimitExceededException structure as a key-value pair table
 function M.StorageLimitExceededException(args)
-	assert(args, "You must provdide an argument table when creating StorageLimitExceededException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating StorageLimitExceededException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Message"] = args["Message"],
 	}
-	asserts.AssertStorageLimitExceededException(t)
-	return t
+	asserts.AssertStorageLimitExceededException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.TooManySubscriptionsException = { ["Message"] = true, nil }
@@ -2944,12 +3997,23 @@ end
 -- * Message [ErrorMessageType] 
 -- @return TooManySubscriptionsException structure as a key-value pair table
 function M.TooManySubscriptionsException(args)
-	assert(args, "You must provdide an argument table when creating TooManySubscriptionsException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating TooManySubscriptionsException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Message"] = args["Message"],
 	}
-	asserts.AssertTooManySubscriptionsException(t)
-	return t
+	asserts.AssertTooManySubscriptionsException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdateDocumentVersionRequest = { ["AuthenticationToken"] = true, ["VersionId"] = true, ["DocumentId"] = true, ["VersionStatus"] = true, nil }
@@ -2980,15 +4044,29 @@ end
 -- Required key: VersionId
 -- @return UpdateDocumentVersionRequest structure as a key-value pair table
 function M.UpdateDocumentVersionRequest(args)
-	assert(args, "You must provdide an argument table when creating UpdateDocumentVersionRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateDocumentVersionRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{VersionId}"] = args["VersionId"],
+        ["{DocumentId}"] = args["DocumentId"],
+    }
+    local header_args = { 
+        ["Authentication"] = args["AuthenticationToken"],
+    }
+	local all_args = { 
 		["AuthenticationToken"] = args["AuthenticationToken"],
 		["VersionId"] = args["VersionId"],
 		["DocumentId"] = args["DocumentId"],
 		["VersionStatus"] = args["VersionStatus"],
 	}
-	asserts.AssertUpdateDocumentVersionRequest(t)
-	return t
+	asserts.AssertUpdateDocumentVersionRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.EntityNotExistsException = { ["Message"] = true, ["EntityIds"] = true, nil }
@@ -3011,13 +4089,24 @@ end
 -- * EntityIds [EntityIdList] 
 -- @return EntityNotExistsException structure as a key-value pair table
 function M.EntityNotExistsException(args)
-	assert(args, "You must provdide an argument table when creating EntityNotExistsException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating EntityNotExistsException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Message"] = args["Message"],
 		["EntityIds"] = args["EntityIds"],
 	}
-	asserts.AssertEntityNotExistsException(t)
-	return t
+	asserts.AssertEntityNotExistsException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AbortDocumentVersionUploadRequest = { ["AuthenticationToken"] = true, ["VersionId"] = true, ["DocumentId"] = true, nil }
@@ -3046,14 +4135,28 @@ end
 -- Required key: VersionId
 -- @return AbortDocumentVersionUploadRequest structure as a key-value pair table
 function M.AbortDocumentVersionUploadRequest(args)
-	assert(args, "You must provdide an argument table when creating AbortDocumentVersionUploadRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AbortDocumentVersionUploadRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{VersionId}"] = args["VersionId"],
+        ["{DocumentId}"] = args["DocumentId"],
+    }
+    local header_args = { 
+        ["Authentication"] = args["AuthenticationToken"],
+    }
+	local all_args = { 
 		["AuthenticationToken"] = args["AuthenticationToken"],
 		["VersionId"] = args["VersionId"],
 		["DocumentId"] = args["DocumentId"],
 	}
-	asserts.AssertAbortDocumentVersionUploadRequest(t)
-	return t
+	asserts.AssertAbortDocumentVersionUploadRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.PermissionInfo = { ["Type"] = true, ["Role"] = true, nil }
@@ -3076,13 +4179,24 @@ end
 -- * Role [RoleType] <p>The role of the user.</p>
 -- @return PermissionInfo structure as a key-value pair table
 function M.PermissionInfo(args)
-	assert(args, "You must provdide an argument table when creating PermissionInfo")
-	local t = { 
+	assert(args, "You must provide an argument table when creating PermissionInfo")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Type"] = args["Type"],
 		["Role"] = args["Role"],
 	}
-	asserts.AssertPermissionInfo(t)
-	return t
+	asserts.AssertPermissionInfo(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdateFolderRequest = { ["AuthenticationToken"] = true, ["FolderId"] = true, ["Name"] = true, ["ResourceState"] = true, ["ParentFolderId"] = true, nil }
@@ -3113,16 +4227,29 @@ end
 -- Required key: FolderId
 -- @return UpdateFolderRequest structure as a key-value pair table
 function M.UpdateFolderRequest(args)
-	assert(args, "You must provdide an argument table when creating UpdateFolderRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateFolderRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{FolderId}"] = args["FolderId"],
+    }
+    local header_args = { 
+        ["Authentication"] = args["AuthenticationToken"],
+    }
+	local all_args = { 
 		["AuthenticationToken"] = args["AuthenticationToken"],
 		["FolderId"] = args["FolderId"],
 		["Name"] = args["Name"],
 		["ResourceState"] = args["ResourceState"],
 		["ParentFolderId"] = args["ParentFolderId"],
 	}
-	asserts.AssertUpdateFolderRequest(t)
-	return t
+	asserts.AssertUpdateFolderRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeRootFoldersRequest = { ["AuthenticationToken"] = true, ["Marker"] = true, ["Limit"] = true, nil }
@@ -3149,14 +4276,28 @@ end
 -- Required key: AuthenticationToken
 -- @return DescribeRootFoldersRequest structure as a key-value pair table
 function M.DescribeRootFoldersRequest(args)
-	assert(args, "You must provdide an argument table when creating DescribeRootFoldersRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeRootFoldersRequest")
+    local query_args = { 
+        ["marker"] = args["Marker"],
+        ["limit"] = args["Limit"],
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+        ["Authentication"] = args["AuthenticationToken"],
+    }
+	local all_args = { 
 		["AuthenticationToken"] = args["AuthenticationToken"],
 		["Marker"] = args["Marker"],
 		["Limit"] = args["Limit"],
 	}
-	asserts.AssertDescribeRootFoldersRequest(t)
-	return t
+	asserts.AssertDescribeRootFoldersRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetDocumentRequest = { ["AuthenticationToken"] = true, ["IncludeCustomMetadata"] = true, ["DocumentId"] = true, nil }
@@ -3183,14 +4324,28 @@ end
 -- Required key: DocumentId
 -- @return GetDocumentRequest structure as a key-value pair table
 function M.GetDocumentRequest(args)
-	assert(args, "You must provdide an argument table when creating GetDocumentRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetDocumentRequest")
+    local query_args = { 
+        ["includeCustomMetadata"] = args["IncludeCustomMetadata"],
+    }
+    local uri_args = { 
+        ["{DocumentId}"] = args["DocumentId"],
+    }
+    local header_args = { 
+        ["Authentication"] = args["AuthenticationToken"],
+    }
+	local all_args = { 
 		["AuthenticationToken"] = args["AuthenticationToken"],
 		["IncludeCustomMetadata"] = args["IncludeCustomMetadata"],
 		["DocumentId"] = args["DocumentId"],
 	}
-	asserts.AssertGetDocumentRequest(t)
-	return t
+	asserts.AssertGetDocumentRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DraftUploadOutOfSyncException = { ["Message"] = true, nil }
@@ -3211,12 +4366,23 @@ end
 -- * Message [ErrorMessageType] 
 -- @return DraftUploadOutOfSyncException structure as a key-value pair table
 function M.DraftUploadOutOfSyncException(args)
-	assert(args, "You must provdide an argument table when creating DraftUploadOutOfSyncException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DraftUploadOutOfSyncException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Message"] = args["Message"],
 	}
-	asserts.AssertDraftUploadOutOfSyncException(t)
-	return t
+	asserts.AssertDraftUploadOutOfSyncException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.StorageLimitWillExceedException = { ["Message"] = true, nil }
@@ -3237,12 +4403,23 @@ end
 -- * Message [ErrorMessageType] 
 -- @return StorageLimitWillExceedException structure as a key-value pair table
 function M.StorageLimitWillExceedException(args)
-	assert(args, "You must provdide an argument table when creating StorageLimitWillExceedException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating StorageLimitWillExceedException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Message"] = args["Message"],
 	}
-	asserts.AssertStorageLimitWillExceedException(t)
-	return t
+	asserts.AssertStorageLimitWillExceedException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeDocumentVersionsResponse = { ["DocumentVersions"] = true, ["Marker"] = true, nil }
@@ -3265,13 +4442,24 @@ end
 -- * Marker [PageMarkerType] <p>The marker to use when requesting the next set of results. If there are no additional results, the string is empty.</p>
 -- @return DescribeDocumentVersionsResponse structure as a key-value pair table
 function M.DescribeDocumentVersionsResponse(args)
-	assert(args, "You must provdide an argument table when creating DescribeDocumentVersionsResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeDocumentVersionsResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DocumentVersions"] = args["DocumentVersions"],
 		["Marker"] = args["Marker"],
 	}
-	asserts.AssertDescribeDocumentVersionsResponse(t)
-	return t
+	asserts.AssertDescribeDocumentVersionsResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.StorageRuleType = { ["StorageType"] = true, ["StorageAllocatedInBytes"] = true, nil }
@@ -3294,13 +4482,24 @@ end
 -- * StorageAllocatedInBytes [PositiveSizeType] <p>The amount of storage allocated, in bytes.</p>
 -- @return StorageRuleType structure as a key-value pair table
 function M.StorageRuleType(args)
-	assert(args, "You must provdide an argument table when creating StorageRuleType")
-	local t = { 
+	assert(args, "You must provide an argument table when creating StorageRuleType")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["StorageType"] = args["StorageType"],
 		["StorageAllocatedInBytes"] = args["StorageAllocatedInBytes"],
 	}
-	asserts.AssertStorageRuleType(t)
-	return t
+	asserts.AssertStorageRuleType(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Activity = { ["Initiator"] = true, ["OriginalParent"] = true, ["OrganizationId"] = true, ["TimeStamp"] = true, ["ResourceMetadata"] = true, ["Participants"] = true, ["Type"] = true, ["CommentMetadata"] = true, nil }
@@ -3335,8 +4534,14 @@ end
 -- * CommentMetadata [CommentMetadata] <p>Metadata of the commenting activity. This is an optional field and is filled for commenting activities.</p>
 -- @return Activity structure as a key-value pair table
 function M.Activity(args)
-	assert(args, "You must provdide an argument table when creating Activity")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Activity")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Initiator"] = args["Initiator"],
 		["OriginalParent"] = args["OriginalParent"],
 		["OrganizationId"] = args["OrganizationId"],
@@ -3346,8 +4551,13 @@ function M.Activity(args)
 		["Type"] = args["Type"],
 		["CommentMetadata"] = args["CommentMetadata"],
 	}
-	asserts.AssertActivity(t)
-	return t
+	asserts.AssertActivity(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidArgumentException = { ["Message"] = true, nil }
@@ -3368,12 +4578,23 @@ end
 -- * Message [ErrorMessageType] 
 -- @return InvalidArgumentException structure as a key-value pair table
 function M.InvalidArgumentException(args)
-	assert(args, "You must provdide an argument table when creating InvalidArgumentException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidArgumentException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Message"] = args["Message"],
 	}
-	asserts.AssertInvalidArgumentException(t)
-	return t
+	asserts.AssertInvalidArgumentException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteCustomMetadataResponse = { nil }
@@ -3392,11 +4613,22 @@ end
 -- Valid keys:
 -- @return DeleteCustomMetadataResponse structure as a key-value pair table
 function M.DeleteCustomMetadataResponse(args)
-	assert(args, "You must provdide an argument table when creating DeleteCustomMetadataResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteCustomMetadataResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertDeleteCustomMetadataResponse(t)
-	return t
+	asserts.AssertDeleteCustomMetadataResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeDocumentVersionsRequest = { ["Fields"] = true, ["Marker"] = true, ["Limit"] = true, ["AuthenticationToken"] = true, ["Include"] = true, ["DocumentId"] = true, nil }
@@ -3429,8 +4661,20 @@ end
 -- Required key: DocumentId
 -- @return DescribeDocumentVersionsRequest structure as a key-value pair table
 function M.DescribeDocumentVersionsRequest(args)
-	assert(args, "You must provdide an argument table when creating DescribeDocumentVersionsRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeDocumentVersionsRequest")
+    local query_args = { 
+        ["fields"] = args["Fields"],
+        ["marker"] = args["Marker"],
+        ["limit"] = args["Limit"],
+        ["include"] = args["Include"],
+    }
+    local uri_args = { 
+        ["{DocumentId}"] = args["DocumentId"],
+    }
+    local header_args = { 
+        ["Authentication"] = args["AuthenticationToken"],
+    }
+	local all_args = { 
 		["Fields"] = args["Fields"],
 		["Marker"] = args["Marker"],
 		["Limit"] = args["Limit"],
@@ -3438,8 +4682,13 @@ function M.DescribeDocumentVersionsRequest(args)
 		["Include"] = args["Include"],
 		["DocumentId"] = args["DocumentId"],
 	}
-	asserts.AssertDescribeDocumentVersionsRequest(t)
-	return t
+	asserts.AssertDescribeDocumentVersionsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetCurrentUserResponse = { ["User"] = true, nil }
@@ -3460,12 +4709,23 @@ end
 -- * User [User] <p>Metadata of the user.</p>
 -- @return GetCurrentUserResponse structure as a key-value pair table
 function M.GetCurrentUserResponse(args)
-	assert(args, "You must provdide an argument table when creating GetCurrentUserResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetCurrentUserResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["User"] = args["User"],
 	}
-	asserts.AssertGetCurrentUserResponse(t)
-	return t
+	asserts.AssertGetCurrentUserResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.EntityAlreadyExistsException = { ["Message"] = true, nil }
@@ -3486,12 +4746,23 @@ end
 -- * Message [ErrorMessageType] 
 -- @return EntityAlreadyExistsException structure as a key-value pair table
 function M.EntityAlreadyExistsException(args)
-	assert(args, "You must provdide an argument table when creating EntityAlreadyExistsException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating EntityAlreadyExistsException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Message"] = args["Message"],
 	}
-	asserts.AssertEntityAlreadyExistsException(t)
-	return t
+	asserts.AssertEntityAlreadyExistsException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Comment = { ["Status"] = true, ["Text"] = true, ["ParentId"] = true, ["RecipientId"] = true, ["Visibility"] = true, ["CreatedTimestamp"] = true, ["ThreadId"] = true, ["Contributor"] = true, ["CommentId"] = true, nil }
@@ -3530,8 +4801,14 @@ end
 -- Required key: CommentId
 -- @return Comment structure as a key-value pair table
 function M.Comment(args)
-	assert(args, "You must provdide an argument table when creating Comment")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Comment")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Status"] = args["Status"],
 		["Text"] = args["Text"],
 		["ParentId"] = args["ParentId"],
@@ -3542,8 +4819,13 @@ function M.Comment(args)
 		["Contributor"] = args["Contributor"],
 		["CommentId"] = args["CommentId"],
 	}
-	asserts.AssertComment(t)
-	return t
+	asserts.AssertComment(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.FailedDependencyException = { ["Message"] = true, nil }
@@ -3564,12 +4846,23 @@ end
 -- * Message [ErrorMessageType] 
 -- @return FailedDependencyException structure as a key-value pair table
 function M.FailedDependencyException(args)
-	assert(args, "You must provdide an argument table when creating FailedDependencyException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating FailedDependencyException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Message"] = args["Message"],
 	}
-	asserts.AssertFailedDependencyException(t)
-	return t
+	asserts.AssertFailedDependencyException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Principal = { ["Type"] = true, ["Id"] = true, ["Roles"] = true, nil }
@@ -3594,14 +4887,25 @@ end
 -- * Roles [PermissionInfoList] <p>The permission information for the resource.</p>
 -- @return Principal structure as a key-value pair table
 function M.Principal(args)
-	assert(args, "You must provdide an argument table when creating Principal")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Principal")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Type"] = args["Type"],
 		["Id"] = args["Id"],
 		["Roles"] = args["Roles"],
 	}
-	asserts.AssertPrincipal(t)
-	return t
+	asserts.AssertPrincipal(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 function asserts.AssertUserFilterType(str)
@@ -4660,8 +5964,11 @@ function M.DeactivateUserAsync(DeactivateUserRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DeactivateUser",
 	}
+	for header,value in pairs(DeactivateUserRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("DELETE")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE")
 	if request_handler then
 		request_handler(settings.uri, "/api/v1/users/{UserId}/activation", DeactivateUserRequest, headers, settings, cb)
 	else
@@ -4692,8 +5999,11 @@ function M.DescribeRootFoldersAsync(DescribeRootFoldersRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DescribeRootFolders",
 	}
+	for header,value in pairs(DescribeRootFoldersRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
 	if request_handler then
 		request_handler(settings.uri, "/api/v1/me/root", DescribeRootFoldersRequest, headers, settings, cb)
 	else
@@ -4724,8 +6034,11 @@ function M.AddResourcePermissionsAsync(AddResourcePermissionsRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".AddResourcePermissions",
 	}
+	for header,value in pairs(AddResourcePermissionsRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/api/v1/resources/{ResourceId}/permissions", AddResourcePermissionsRequest, headers, settings, cb)
 	else
@@ -4756,8 +6069,11 @@ function M.DeleteFolderAsync(DeleteFolderRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DeleteFolder",
 	}
+	for header,value in pairs(DeleteFolderRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("DELETE")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE")
 	if request_handler then
 		request_handler(settings.uri, "/api/v1/folders/{FolderId}", DeleteFolderRequest, headers, settings, cb)
 	else
@@ -4788,8 +6104,11 @@ function M.DescribeUsersAsync(DescribeUsersRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DescribeUsers",
 	}
+	for header,value in pairs(DescribeUsersRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
 	if request_handler then
 		request_handler(settings.uri, "/api/v1/users", DescribeUsersRequest, headers, settings, cb)
 	else
@@ -4820,8 +6139,11 @@ function M.UpdateDocumentVersionAsync(UpdateDocumentVersionRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".UpdateDocumentVersion",
 	}
+	for header,value in pairs(UpdateDocumentVersionRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("PATCH")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PATCH")
 	if request_handler then
 		request_handler(settings.uri, "/api/v1/documents/{DocumentId}/versions/{VersionId}", UpdateDocumentVersionRequest, headers, settings, cb)
 	else
@@ -4852,8 +6174,11 @@ function M.DeleteCustomMetadataAsync(DeleteCustomMetadataRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DeleteCustomMetadata",
 	}
+	for header,value in pairs(DeleteCustomMetadataRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("DELETE")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE")
 	if request_handler then
 		request_handler(settings.uri, "/api/v1/resources/{ResourceId}/customMetadata", DeleteCustomMetadataRequest, headers, settings, cb)
 	else
@@ -4884,8 +6209,11 @@ function M.CreateLabelsAsync(CreateLabelsRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".CreateLabels",
 	}
+	for header,value in pairs(CreateLabelsRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("PUT")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT")
 	if request_handler then
 		request_handler(settings.uri, "/api/v1/resources/{ResourceId}/labels", CreateLabelsRequest, headers, settings, cb)
 	else
@@ -4916,8 +6244,11 @@ function M.InitiateDocumentVersionUploadAsync(InitiateDocumentVersionUploadReque
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".InitiateDocumentVersionUpload",
 	}
+	for header,value in pairs(InitiateDocumentVersionUploadRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/api/v1/documents", InitiateDocumentVersionUploadRequest, headers, settings, cb)
 	else
@@ -4948,8 +6279,11 @@ function M.CreateCustomMetadataAsync(CreateCustomMetadataRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".CreateCustomMetadata",
 	}
+	for header,value in pairs(CreateCustomMetadataRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("PUT")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT")
 	if request_handler then
 		request_handler(settings.uri, "/api/v1/resources/{ResourceId}/customMetadata", CreateCustomMetadataRequest, headers, settings, cb)
 	else
@@ -4980,8 +6314,11 @@ function M.GetDocumentAsync(GetDocumentRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".GetDocument",
 	}
+	for header,value in pairs(GetDocumentRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
 	if request_handler then
 		request_handler(settings.uri, "/api/v1/documents/{DocumentId}", GetDocumentRequest, headers, settings, cb)
 	else
@@ -5012,8 +6349,11 @@ function M.GetDocumentPathAsync(GetDocumentPathRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".GetDocumentPath",
 	}
+	for header,value in pairs(GetDocumentPathRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
 	if request_handler then
 		request_handler(settings.uri, "/api/v1/documents/{DocumentId}/path", GetDocumentPathRequest, headers, settings, cb)
 	else
@@ -5044,8 +6384,11 @@ function M.RemoveAllResourcePermissionsAsync(RemoveAllResourcePermissionsRequest
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".RemoveAllResourcePermissions",
 	}
+	for header,value in pairs(RemoveAllResourcePermissionsRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("DELETE")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE")
 	if request_handler then
 		request_handler(settings.uri, "/api/v1/resources/{ResourceId}/permissions", RemoveAllResourcePermissionsRequest, headers, settings, cb)
 	else
@@ -5076,8 +6419,11 @@ function M.UpdateUserAsync(UpdateUserRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".UpdateUser",
 	}
+	for header,value in pairs(UpdateUserRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("PATCH")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PATCH")
 	if request_handler then
 		request_handler(settings.uri, "/api/v1/users/{UserId}", UpdateUserRequest, headers, settings, cb)
 	else
@@ -5108,8 +6454,11 @@ function M.GetCurrentUserAsync(GetCurrentUserRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".GetCurrentUser",
 	}
+	for header,value in pairs(GetCurrentUserRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
 	if request_handler then
 		request_handler(settings.uri, "/api/v1/me", GetCurrentUserRequest, headers, settings, cb)
 	else
@@ -5140,8 +6489,11 @@ function M.UpdateFolderAsync(UpdateFolderRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".UpdateFolder",
 	}
+	for header,value in pairs(UpdateFolderRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("PATCH")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PATCH")
 	if request_handler then
 		request_handler(settings.uri, "/api/v1/folders/{FolderId}", UpdateFolderRequest, headers, settings, cb)
 	else
@@ -5172,8 +6524,11 @@ function M.DeleteCommentAsync(DeleteCommentRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DeleteComment",
 	}
+	for header,value in pairs(DeleteCommentRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("DELETE")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE")
 	if request_handler then
 		request_handler(settings.uri, "/api/v1/documents/{DocumentId}/versions/{VersionId}/comment/{CommentId}", DeleteCommentRequest, headers, settings, cb)
 	else
@@ -5204,8 +6559,11 @@ function M.CreateUserAsync(CreateUserRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".CreateUser",
 	}
+	for header,value in pairs(CreateUserRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/api/v1/users", CreateUserRequest, headers, settings, cb)
 	else
@@ -5236,8 +6594,11 @@ function M.DeleteFolderContentsAsync(DeleteFolderContentsRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DeleteFolderContents",
 	}
+	for header,value in pairs(DeleteFolderContentsRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("DELETE")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE")
 	if request_handler then
 		request_handler(settings.uri, "/api/v1/folders/{FolderId}/contents", DeleteFolderContentsRequest, headers, settings, cb)
 	else
@@ -5268,8 +6629,11 @@ function M.DeleteNotificationSubscriptionAsync(DeleteNotificationSubscriptionReq
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DeleteNotificationSubscription",
 	}
+	for header,value in pairs(DeleteNotificationSubscriptionRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("DELETE")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE")
 	if request_handler then
 		request_handler(settings.uri, "/api/v1/organizations/{OrganizationId}/subscriptions/{SubscriptionId}", DeleteNotificationSubscriptionRequest, headers, settings, cb)
 	else
@@ -5300,8 +6664,11 @@ function M.AbortDocumentVersionUploadAsync(AbortDocumentVersionUploadRequest, cb
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".AbortDocumentVersionUpload",
 	}
+	for header,value in pairs(AbortDocumentVersionUploadRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("DELETE")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE")
 	if request_handler then
 		request_handler(settings.uri, "/api/v1/documents/{DocumentId}/versions/{VersionId}", AbortDocumentVersionUploadRequest, headers, settings, cb)
 	else
@@ -5332,8 +6699,11 @@ function M.DescribeNotificationSubscriptionsAsync(DescribeNotificationSubscripti
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DescribeNotificationSubscriptions",
 	}
+	for header,value in pairs(DescribeNotificationSubscriptionsRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
 	if request_handler then
 		request_handler(settings.uri, "/api/v1/organizations/{OrganizationId}/subscriptions", DescribeNotificationSubscriptionsRequest, headers, settings, cb)
 	else
@@ -5364,8 +6734,11 @@ function M.CreateCommentAsync(CreateCommentRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".CreateComment",
 	}
+	for header,value in pairs(CreateCommentRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/api/v1/documents/{DocumentId}/versions/{VersionId}/comment", CreateCommentRequest, headers, settings, cb)
 	else
@@ -5396,8 +6769,11 @@ function M.GetDocumentVersionAsync(GetDocumentVersionRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".GetDocumentVersion",
 	}
+	for header,value in pairs(GetDocumentVersionRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
 	if request_handler then
 		request_handler(settings.uri, "/api/v1/documents/{DocumentId}/versions/{VersionId}", GetDocumentVersionRequest, headers, settings, cb)
 	else
@@ -5428,8 +6804,11 @@ function M.GetFolderPathAsync(GetFolderPathRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".GetFolderPath",
 	}
+	for header,value in pairs(GetFolderPathRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
 	if request_handler then
 		request_handler(settings.uri, "/api/v1/folders/{FolderId}/path", GetFolderPathRequest, headers, settings, cb)
 	else
@@ -5460,8 +6839,11 @@ function M.DescribeFolderContentsAsync(DescribeFolderContentsRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DescribeFolderContents",
 	}
+	for header,value in pairs(DescribeFolderContentsRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
 	if request_handler then
 		request_handler(settings.uri, "/api/v1/folders/{FolderId}/contents", DescribeFolderContentsRequest, headers, settings, cb)
 	else
@@ -5492,8 +6874,11 @@ function M.CreateFolderAsync(CreateFolderRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".CreateFolder",
 	}
+	for header,value in pairs(CreateFolderRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/api/v1/folders", CreateFolderRequest, headers, settings, cb)
 	else
@@ -5524,8 +6909,11 @@ function M.DescribeResourcePermissionsAsync(DescribeResourcePermissionsRequest, 
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DescribeResourcePermissions",
 	}
+	for header,value in pairs(DescribeResourcePermissionsRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
 	if request_handler then
 		request_handler(settings.uri, "/api/v1/resources/{ResourceId}/permissions", DescribeResourcePermissionsRequest, headers, settings, cb)
 	else
@@ -5556,8 +6944,11 @@ function M.CreateNotificationSubscriptionAsync(CreateNotificationSubscriptionReq
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".CreateNotificationSubscription",
 	}
+	for header,value in pairs(CreateNotificationSubscriptionRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/api/v1/organizations/{OrganizationId}/subscriptions", CreateNotificationSubscriptionRequest, headers, settings, cb)
 	else
@@ -5588,8 +6979,11 @@ function M.UpdateDocumentAsync(UpdateDocumentRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".UpdateDocument",
 	}
+	for header,value in pairs(UpdateDocumentRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("PATCH")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PATCH")
 	if request_handler then
 		request_handler(settings.uri, "/api/v1/documents/{DocumentId}", UpdateDocumentRequest, headers, settings, cb)
 	else
@@ -5620,8 +7014,11 @@ function M.DescribeCommentsAsync(DescribeCommentsRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DescribeComments",
 	}
+	for header,value in pairs(DescribeCommentsRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
 	if request_handler then
 		request_handler(settings.uri, "/api/v1/documents/{DocumentId}/versions/{VersionId}/comments", DescribeCommentsRequest, headers, settings, cb)
 	else
@@ -5652,8 +7049,11 @@ function M.DeleteUserAsync(DeleteUserRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DeleteUser",
 	}
+	for header,value in pairs(DeleteUserRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("DELETE")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE")
 	if request_handler then
 		request_handler(settings.uri, "/api/v1/users/{UserId}", DeleteUserRequest, headers, settings, cb)
 	else
@@ -5684,8 +7084,11 @@ function M.DeleteDocumentAsync(DeleteDocumentRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DeleteDocument",
 	}
+	for header,value in pairs(DeleteDocumentRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("DELETE")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE")
 	if request_handler then
 		request_handler(settings.uri, "/api/v1/documents/{DocumentId}", DeleteDocumentRequest, headers, settings, cb)
 	else
@@ -5716,8 +7119,11 @@ function M.DescribeActivitiesAsync(DescribeActivitiesRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DescribeActivities",
 	}
+	for header,value in pairs(DescribeActivitiesRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
 	if request_handler then
 		request_handler(settings.uri, "/api/v1/activities", DescribeActivitiesRequest, headers, settings, cb)
 	else
@@ -5748,8 +7154,11 @@ function M.ActivateUserAsync(ActivateUserRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".ActivateUser",
 	}
+	for header,value in pairs(ActivateUserRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/api/v1/users/{UserId}/activation", ActivateUserRequest, headers, settings, cb)
 	else
@@ -5780,8 +7189,11 @@ function M.GetFolderAsync(GetFolderRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".GetFolder",
 	}
+	for header,value in pairs(GetFolderRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
 	if request_handler then
 		request_handler(settings.uri, "/api/v1/folders/{FolderId}", GetFolderRequest, headers, settings, cb)
 	else
@@ -5812,8 +7224,11 @@ function M.RemoveResourcePermissionAsync(RemoveResourcePermissionRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".RemoveResourcePermission",
 	}
+	for header,value in pairs(RemoveResourcePermissionRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("DELETE")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE")
 	if request_handler then
 		request_handler(settings.uri, "/api/v1/resources/{ResourceId}/permissions/{PrincipalId}", RemoveResourcePermissionRequest, headers, settings, cb)
 	else
@@ -5844,8 +7259,11 @@ function M.DeleteLabelsAsync(DeleteLabelsRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DeleteLabels",
 	}
+	for header,value in pairs(DeleteLabelsRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("DELETE")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE")
 	if request_handler then
 		request_handler(settings.uri, "/api/v1/resources/{ResourceId}/labels", DeleteLabelsRequest, headers, settings, cb)
 	else
@@ -5876,8 +7294,11 @@ function M.DescribeDocumentVersionsAsync(DescribeDocumentVersionsRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DescribeDocumentVersions",
 	}
+	for header,value in pairs(DescribeDocumentVersionsRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
 	if request_handler then
 		request_handler(settings.uri, "/api/v1/documents/{DocumentId}/versions", DescribeDocumentVersionsRequest, headers, settings, cb)
 	else

@@ -49,15 +49,26 @@ end
 -- Required key: uniqueId
 -- @return CreatePipelineInput structure as a key-value pair table
 function M.CreatePipelineInput(args)
-	assert(args, "You must provdide an argument table when creating CreatePipelineInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreatePipelineInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["tags"] = args["tags"],
 		["name"] = args["name"],
 		["uniqueId"] = args["uniqueId"],
 		["description"] = args["description"],
 	}
-	asserts.AssertCreatePipelineInput(t)
-	return t
+	asserts.AssertCreatePipelineInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.QueryObjectsInput = { ["marker"] = true, ["query"] = true, ["pipelineId"] = true, ["limit"] = true, ["sphere"] = true, nil }
@@ -90,16 +101,27 @@ end
 -- Required key: sphere
 -- @return QueryObjectsInput structure as a key-value pair table
 function M.QueryObjectsInput(args)
-	assert(args, "You must provdide an argument table when creating QueryObjectsInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating QueryObjectsInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["marker"] = args["marker"],
 		["query"] = args["query"],
 		["pipelineId"] = args["pipelineId"],
 		["limit"] = args["limit"],
 		["sphere"] = args["sphere"],
 	}
-	asserts.AssertQueryObjectsInput(t)
-	return t
+	asserts.AssertQueryObjectsInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListPipelinesOutput = { ["marker"] = true, ["hasMoreResults"] = true, ["pipelineIdList"] = true, nil }
@@ -126,14 +148,25 @@ end
 -- Required key: pipelineIdList
 -- @return ListPipelinesOutput structure as a key-value pair table
 function M.ListPipelinesOutput(args)
-	assert(args, "You must provdide an argument table when creating ListPipelinesOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListPipelinesOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["marker"] = args["marker"],
 		["hasMoreResults"] = args["hasMoreResults"],
 		["pipelineIdList"] = args["pipelineIdList"],
 	}
-	asserts.AssertListPipelinesOutput(t)
-	return t
+	asserts.AssertListPipelinesOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.SetTaskStatusInput = { ["errorStackTrace"] = true, ["errorMessage"] = true, ["errorId"] = true, ["taskId"] = true, ["taskStatus"] = true, nil }
@@ -166,16 +199,27 @@ end
 -- Required key: taskStatus
 -- @return SetTaskStatusInput structure as a key-value pair table
 function M.SetTaskStatusInput(args)
-	assert(args, "You must provdide an argument table when creating SetTaskStatusInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating SetTaskStatusInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["errorStackTrace"] = args["errorStackTrace"],
 		["errorMessage"] = args["errorMessage"],
 		["errorId"] = args["errorId"],
 		["taskId"] = args["taskId"],
 		["taskStatus"] = args["taskStatus"],
 	}
-	asserts.AssertSetTaskStatusInput(t)
-	return t
+	asserts.AssertSetTaskStatusInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.EvaluateExpressionInput = { ["pipelineId"] = true, ["expression"] = true, ["objectId"] = true, nil }
@@ -206,14 +250,25 @@ end
 -- Required key: expression
 -- @return EvaluateExpressionInput structure as a key-value pair table
 function M.EvaluateExpressionInput(args)
-	assert(args, "You must provdide an argument table when creating EvaluateExpressionInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating EvaluateExpressionInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["pipelineId"] = args["pipelineId"],
 		["expression"] = args["expression"],
 		["objectId"] = args["objectId"],
 	}
-	asserts.AssertEvaluateExpressionInput(t)
-	return t
+	asserts.AssertEvaluateExpressionInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.SetTaskStatusOutput = { nil }
@@ -232,11 +287,22 @@ end
 -- Valid keys:
 -- @return SetTaskStatusOutput structure as a key-value pair table
 function M.SetTaskStatusOutput(args)
-	assert(args, "You must provdide an argument table when creating SetTaskStatusOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating SetTaskStatusOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertSetTaskStatusOutput(t)
-	return t
+	asserts.AssertSetTaskStatusOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InstanceIdentity = { ["document"] = true, ["signature"] = true, nil }
@@ -259,13 +325,24 @@ end
 -- * signature [string] <p>A signature which can be used to verify the accuracy and authenticity of the information provided in the instance identity document.</p>
 -- @return InstanceIdentity structure as a key-value pair table
 function M.InstanceIdentity(args)
-	assert(args, "You must provdide an argument table when creating InstanceIdentity")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InstanceIdentity")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["document"] = args["document"],
 		["signature"] = args["signature"],
 	}
-	asserts.AssertInstanceIdentity(t)
-	return t
+	asserts.AssertInstanceIdentity(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ParameterAttribute = { ["stringValue"] = true, ["key"] = true, nil }
@@ -292,13 +369,24 @@ end
 -- Required key: stringValue
 -- @return ParameterAttribute structure as a key-value pair table
 function M.ParameterAttribute(args)
-	assert(args, "You must provdide an argument table when creating ParameterAttribute")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ParameterAttribute")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["stringValue"] = args["stringValue"],
 		["key"] = args["key"],
 	}
-	asserts.AssertParameterAttribute(t)
-	return t
+	asserts.AssertParameterAttribute(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ValidationError = { ["errors"] = true, ["id"] = true, nil }
@@ -321,13 +409,24 @@ end
 -- * id [id] <p>The identifier of the object that contains the validation error.</p>
 -- @return ValidationError structure as a key-value pair table
 function M.ValidationError(args)
-	assert(args, "You must provdide an argument table when creating ValidationError")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ValidationError")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["errors"] = args["errors"],
 		["id"] = args["id"],
 	}
-	asserts.AssertValidationError(t)
-	return t
+	asserts.AssertValidationError(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.PipelineDeletedException = { ["message"] = true, nil }
@@ -348,12 +447,23 @@ end
 -- * message [errorMessage] <p>Description of the error message.</p>
 -- @return PipelineDeletedException structure as a key-value pair table
 function M.PipelineDeletedException(args)
-	assert(args, "You must provdide an argument table when creating PipelineDeletedException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating PipelineDeletedException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertPipelineDeletedException(t)
-	return t
+	asserts.AssertPipelineDeletedException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetPipelineDefinitionOutput = { ["parameterValues"] = true, ["pipelineObjects"] = true, ["parameterObjects"] = true, nil }
@@ -378,14 +488,25 @@ end
 -- * parameterObjects [ParameterObjectList] <p>The parameter objects used in the pipeline definition.</p>
 -- @return GetPipelineDefinitionOutput structure as a key-value pair table
 function M.GetPipelineDefinitionOutput(args)
-	assert(args, "You must provdide an argument table when creating GetPipelineDefinitionOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetPipelineDefinitionOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["parameterValues"] = args["parameterValues"],
 		["pipelineObjects"] = args["pipelineObjects"],
 		["parameterObjects"] = args["parameterObjects"],
 	}
-	asserts.AssertGetPipelineDefinitionOutput(t)
-	return t
+	asserts.AssertGetPipelineDefinitionOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.TaskNotFoundException = { ["message"] = true, nil }
@@ -406,12 +527,23 @@ end
 -- * message [errorMessage] <p>Description of the error message.</p>
 -- @return TaskNotFoundException structure as a key-value pair table
 function M.TaskNotFoundException(args)
-	assert(args, "You must provdide an argument table when creating TaskNotFoundException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating TaskNotFoundException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertTaskNotFoundException(t)
-	return t
+	asserts.AssertTaskNotFoundException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeObjectsOutput = { ["marker"] = true, ["pipelineObjects"] = true, ["hasMoreResults"] = true, nil }
@@ -438,14 +570,25 @@ end
 -- Required key: pipelineObjects
 -- @return DescribeObjectsOutput structure as a key-value pair table
 function M.DescribeObjectsOutput(args)
-	assert(args, "You must provdide an argument table when creating DescribeObjectsOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeObjectsOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["marker"] = args["marker"],
 		["pipelineObjects"] = args["pipelineObjects"],
 		["hasMoreResults"] = args["hasMoreResults"],
 	}
-	asserts.AssertDescribeObjectsOutput(t)
-	return t
+	asserts.AssertDescribeObjectsOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ReportTaskProgressInput = { ["fields"] = true, ["taskId"] = true, nil }
@@ -470,13 +613,24 @@ end
 -- Required key: taskId
 -- @return ReportTaskProgressInput structure as a key-value pair table
 function M.ReportTaskProgressInput(args)
-	assert(args, "You must provdide an argument table when creating ReportTaskProgressInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ReportTaskProgressInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["fields"] = args["fields"],
 		["taskId"] = args["taskId"],
 	}
-	asserts.AssertReportTaskProgressInput(t)
-	return t
+	asserts.AssertReportTaskProgressInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Tag = { ["value"] = true, ["key"] = true, nil }
@@ -503,13 +657,24 @@ end
 -- Required key: value
 -- @return Tag structure as a key-value pair table
 function M.Tag(args)
-	assert(args, "You must provdide an argument table when creating Tag")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Tag")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["value"] = args["value"],
 		["key"] = args["key"],
 	}
-	asserts.AssertTag(t)
-	return t
+	asserts.AssertTag(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Operator = { ["values"] = true, ["type"] = true, nil }
@@ -532,13 +697,24 @@ end
 -- * type [OperatorType] <p> The logical operation to be performed: equal (<code>EQ</code>), equal reference (<code>REF_EQ</code>), less than or equal (<code>LE</code>), greater than or equal (<code>GE</code>), or between (<code>BETWEEN</code>). Equal reference (<code>REF_EQ</code>) can be used only with reference fields. The other comparison types can be used only with String fields. The comparison types you can use apply only to certain object fields, as detailed below. </p> <p> The comparison operators EQ and REF_EQ act on the following fields: </p> <ul> <li>name</li> <li>@sphere</li> <li>parent</li> <li>@componentParent</li> <li>@instanceParent</li> <li>@status</li> <li>@scheduledStartTime</li> <li>@scheduledEndTime</li> <li>@actualStartTime</li> <li>@actualEndTime</li> </ul> <p> The comparison operators <code>GE</code>, <code>LE</code>, and <code>BETWEEN</code> act on the following fields: </p> <ul> <li>@scheduledStartTime</li> <li>@scheduledEndTime</li> <li>@actualStartTime</li> <li>@actualEndTime</li> </ul> <p>Note that fields beginning with the at sign (@) are read-only and set by the web service. When you name fields, you should choose names containing only alpha-numeric values, as symbols may be reserved by AWS Data Pipeline. User-defined fields that you add to a pipeline should prefix their name with the string "my".</p>
 -- @return Operator structure as a key-value pair table
 function M.Operator(args)
-	assert(args, "You must provdide an argument table when creating Operator")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Operator")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["values"] = args["values"],
 		["type"] = args["type"],
 	}
-	asserts.AssertOperator(t)
-	return t
+	asserts.AssertOperator(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InternalServiceError = { ["message"] = true, nil }
@@ -559,12 +735,23 @@ end
 -- * message [errorMessage] <p>Description of the error message.</p>
 -- @return InternalServiceError structure as a key-value pair table
 function M.InternalServiceError(args)
-	assert(args, "You must provdide an argument table when creating InternalServiceError")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InternalServiceError")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertInternalServiceError(t)
-	return t
+	asserts.AssertInternalServiceError(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribePipelinesInput = { ["pipelineIds"] = true, nil }
@@ -587,12 +774,23 @@ end
 -- Required key: pipelineIds
 -- @return DescribePipelinesInput structure as a key-value pair table
 function M.DescribePipelinesInput(args)
-	assert(args, "You must provdide an argument table when creating DescribePipelinesInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribePipelinesInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["pipelineIds"] = args["pipelineIds"],
 	}
-	asserts.AssertDescribePipelinesInput(t)
-	return t
+	asserts.AssertDescribePipelinesInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Selector = { ["operator"] = true, ["fieldName"] = true, nil }
@@ -615,13 +813,24 @@ end
 -- * fieldName [string] <p>The name of the field that the operator will be applied to. The field name is the "key" portion of the field definition in the pipeline definition syntax that is used by the AWS Data Pipeline API. If the field is not set on the object, the condition fails.</p>
 -- @return Selector structure as a key-value pair table
 function M.Selector(args)
-	assert(args, "You must provdide an argument table when creating Selector")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Selector")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["operator"] = args["operator"],
 		["fieldName"] = args["fieldName"],
 	}
-	asserts.AssertSelector(t)
-	return t
+	asserts.AssertSelector(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.PipelineDescription = { ["fields"] = true, ["pipelineId"] = true, ["name"] = true, ["tags"] = true, ["description"] = true, nil }
@@ -656,16 +865,27 @@ end
 -- Required key: fields
 -- @return PipelineDescription structure as a key-value pair table
 function M.PipelineDescription(args)
-	assert(args, "You must provdide an argument table when creating PipelineDescription")
-	local t = { 
+	assert(args, "You must provide an argument table when creating PipelineDescription")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["fields"] = args["fields"],
 		["pipelineId"] = args["pipelineId"],
 		["name"] = args["name"],
 		["tags"] = args["tags"],
 		["description"] = args["description"],
 	}
-	asserts.AssertPipelineDescription(t)
-	return t
+	asserts.AssertPipelineDescription(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.TaskObject = { ["objects"] = true, ["pipelineId"] = true, ["attemptId"] = true, ["taskId"] = true, nil }
@@ -692,15 +912,26 @@ end
 -- * taskId [taskId] <p>An internal identifier for the task. This ID is passed to the <a>SetTaskStatus</a> and <a>ReportTaskProgress</a> actions.</p>
 -- @return TaskObject structure as a key-value pair table
 function M.TaskObject(args)
-	assert(args, "You must provdide an argument table when creating TaskObject")
-	local t = { 
+	assert(args, "You must provide an argument table when creating TaskObject")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["objects"] = args["objects"],
 		["pipelineId"] = args["pipelineId"],
 		["attemptId"] = args["attemptId"],
 		["taskId"] = args["taskId"],
 	}
-	asserts.AssertTaskObject(t)
-	return t
+	asserts.AssertTaskObject(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.PipelineObject = { ["fields"] = true, ["id"] = true, ["name"] = true, nil }
@@ -731,14 +962,25 @@ end
 -- Required key: fields
 -- @return PipelineObject structure as a key-value pair table
 function M.PipelineObject(args)
-	assert(args, "You must provdide an argument table when creating PipelineObject")
-	local t = { 
+	assert(args, "You must provide an argument table when creating PipelineObject")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["fields"] = args["fields"],
 		["id"] = args["id"],
 		["name"] = args["name"],
 	}
-	asserts.AssertPipelineObject(t)
-	return t
+	asserts.AssertPipelineObject(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ValidatePipelineDefinitionInput = { ["parameterValues"] = true, ["pipelineObjects"] = true, ["pipelineId"] = true, ["parameterObjects"] = true, nil }
@@ -769,15 +1011,26 @@ end
 -- Required key: pipelineObjects
 -- @return ValidatePipelineDefinitionInput structure as a key-value pair table
 function M.ValidatePipelineDefinitionInput(args)
-	assert(args, "You must provdide an argument table when creating ValidatePipelineDefinitionInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ValidatePipelineDefinitionInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["parameterValues"] = args["parameterValues"],
 		["pipelineObjects"] = args["pipelineObjects"],
 		["pipelineId"] = args["pipelineId"],
 		["parameterObjects"] = args["parameterObjects"],
 	}
-	asserts.AssertValidatePipelineDefinitionInput(t)
-	return t
+	asserts.AssertValidatePipelineDefinitionInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeletePipelineInput = { ["pipelineId"] = true, nil }
@@ -800,12 +1053,23 @@ end
 -- Required key: pipelineId
 -- @return DeletePipelineInput structure as a key-value pair table
 function M.DeletePipelineInput(args)
-	assert(args, "You must provdide an argument table when creating DeletePipelineInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeletePipelineInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["pipelineId"] = args["pipelineId"],
 	}
-	asserts.AssertDeletePipelineInput(t)
-	return t
+	asserts.AssertDeletePipelineInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ReportTaskProgressOutput = { ["canceled"] = true, nil }
@@ -828,12 +1092,23 @@ end
 -- Required key: canceled
 -- @return ReportTaskProgressOutput structure as a key-value pair table
 function M.ReportTaskProgressOutput(args)
-	assert(args, "You must provdide an argument table when creating ReportTaskProgressOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ReportTaskProgressOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["canceled"] = args["canceled"],
 	}
-	asserts.AssertReportTaskProgressOutput(t)
-	return t
+	asserts.AssertReportTaskProgressOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.PutPipelineDefinitionOutput = { ["validationErrors"] = true, ["errored"] = true, ["validationWarnings"] = true, nil }
@@ -860,14 +1135,25 @@ end
 -- Required key: errored
 -- @return PutPipelineDefinitionOutput structure as a key-value pair table
 function M.PutPipelineDefinitionOutput(args)
-	assert(args, "You must provdide an argument table when creating PutPipelineDefinitionOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating PutPipelineDefinitionOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["validationErrors"] = args["validationErrors"],
 		["errored"] = args["errored"],
 		["validationWarnings"] = args["validationWarnings"],
 	}
-	asserts.AssertPutPipelineDefinitionOutput(t)
-	return t
+	asserts.AssertPutPipelineDefinitionOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreatePipelineOutput = { ["pipelineId"] = true, nil }
@@ -890,12 +1176,23 @@ end
 -- Required key: pipelineId
 -- @return CreatePipelineOutput structure as a key-value pair table
 function M.CreatePipelineOutput(args)
-	assert(args, "You must provdide an argument table when creating CreatePipelineOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreatePipelineOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["pipelineId"] = args["pipelineId"],
 	}
-	asserts.AssertCreatePipelineOutput(t)
-	return t
+	asserts.AssertCreatePipelineOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ReportTaskRunnerHeartbeatOutput = { ["terminate"] = true, nil }
@@ -918,12 +1215,23 @@ end
 -- Required key: terminate
 -- @return ReportTaskRunnerHeartbeatOutput structure as a key-value pair table
 function M.ReportTaskRunnerHeartbeatOutput(args)
-	assert(args, "You must provdide an argument table when creating ReportTaskRunnerHeartbeatOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ReportTaskRunnerHeartbeatOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["terminate"] = args["terminate"],
 	}
-	asserts.AssertReportTaskRunnerHeartbeatOutput(t)
-	return t
+	asserts.AssertReportTaskRunnerHeartbeatOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.RemoveTagsInput = { ["tagKeys"] = true, ["pipelineId"] = true, nil }
@@ -950,13 +1258,24 @@ end
 -- Required key: tagKeys
 -- @return RemoveTagsInput structure as a key-value pair table
 function M.RemoveTagsInput(args)
-	assert(args, "You must provdide an argument table when creating RemoveTagsInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating RemoveTagsInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["tagKeys"] = args["tagKeys"],
 		["pipelineId"] = args["pipelineId"],
 	}
-	asserts.AssertRemoveTagsInput(t)
-	return t
+	asserts.AssertRemoveTagsInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ActivatePipelineOutput = { nil }
@@ -975,11 +1294,22 @@ end
 -- Valid keys:
 -- @return ActivatePipelineOutput structure as a key-value pair table
 function M.ActivatePipelineOutput(args)
-	assert(args, "You must provdide an argument table when creating ActivatePipelineOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ActivatePipelineOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertActivatePipelineOutput(t)
-	return t
+	asserts.AssertActivatePipelineOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.RemoveTagsOutput = { nil }
@@ -998,11 +1328,22 @@ end
 -- Valid keys:
 -- @return RemoveTagsOutput structure as a key-value pair table
 function M.RemoveTagsOutput(args)
-	assert(args, "You must provdide an argument table when creating RemoveTagsOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating RemoveTagsOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertRemoveTagsOutput(t)
-	return t
+	asserts.AssertRemoveTagsOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Query = { ["selectors"] = true, nil }
@@ -1023,12 +1364,23 @@ end
 -- * selectors [SelectorList] <p>List of selectors that define the query. An object must satisfy all of the selectors to match the query.</p>
 -- @return Query structure as a key-value pair table
 function M.Query(args)
-	assert(args, "You must provdide an argument table when creating Query")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Query")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["selectors"] = args["selectors"],
 	}
-	asserts.AssertQuery(t)
-	return t
+	asserts.AssertQuery(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidRequestException = { ["message"] = true, nil }
@@ -1049,12 +1401,23 @@ end
 -- * message [errorMessage] <p>Description of the error message.</p>
 -- @return InvalidRequestException structure as a key-value pair table
 function M.InvalidRequestException(args)
-	assert(args, "You must provdide an argument table when creating InvalidRequestException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidRequestException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertInvalidRequestException(t)
-	return t
+	asserts.AssertInvalidRequestException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.SetStatusInput = { ["objectIds"] = true, ["status"] = true, ["pipelineId"] = true, nil }
@@ -1085,14 +1448,25 @@ end
 -- Required key: status
 -- @return SetStatusInput structure as a key-value pair table
 function M.SetStatusInput(args)
-	assert(args, "You must provdide an argument table when creating SetStatusInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating SetStatusInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["objectIds"] = args["objectIds"],
 		["status"] = args["status"],
 		["pipelineId"] = args["pipelineId"],
 	}
-	asserts.AssertSetStatusInput(t)
-	return t
+	asserts.AssertSetStatusInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.PollForTaskOutput = { ["taskObject"] = true, nil }
@@ -1113,12 +1487,23 @@ end
 -- * taskObject [TaskObject] <p>The information needed to complete the task that is being assigned to the task runner. One of the fields returned in this object is <code>taskId</code>, which contains an identifier for the task being assigned. The calling task runner uses <code>taskId</code> in subsequent calls to <a>ReportTaskProgress</a> and <a>SetTaskStatus</a>.</p>
 -- @return PollForTaskOutput structure as a key-value pair table
 function M.PollForTaskOutput(args)
-	assert(args, "You must provdide an argument table when creating PollForTaskOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating PollForTaskOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["taskObject"] = args["taskObject"],
 	}
-	asserts.AssertPollForTaskOutput(t)
-	return t
+	asserts.AssertPollForTaskOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.EvaluateExpressionOutput = { ["evaluatedExpression"] = true, nil }
@@ -1141,12 +1526,23 @@ end
 -- Required key: evaluatedExpression
 -- @return EvaluateExpressionOutput structure as a key-value pair table
 function M.EvaluateExpressionOutput(args)
-	assert(args, "You must provdide an argument table when creating EvaluateExpressionOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating EvaluateExpressionOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["evaluatedExpression"] = args["evaluatedExpression"],
 	}
-	asserts.AssertEvaluateExpressionOutput(t)
-	return t
+	asserts.AssertEvaluateExpressionOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeactivatePipelineOutput = { nil }
@@ -1165,11 +1561,22 @@ end
 -- Valid keys:
 -- @return DeactivatePipelineOutput structure as a key-value pair table
 function M.DeactivatePipelineOutput(args)
-	assert(args, "You must provdide an argument table when creating DeactivatePipelineOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeactivatePipelineOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertDeactivatePipelineOutput(t)
-	return t
+	asserts.AssertDeactivatePipelineOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AddTagsOutput = { nil }
@@ -1188,11 +1595,22 @@ end
 -- Valid keys:
 -- @return AddTagsOutput structure as a key-value pair table
 function M.AddTagsOutput(args)
-	assert(args, "You must provdide an argument table when creating AddTagsOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AddTagsOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertAddTagsOutput(t)
-	return t
+	asserts.AssertAddTagsOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.PipelineNotFoundException = { ["message"] = true, nil }
@@ -1213,12 +1631,23 @@ end
 -- * message [errorMessage] <p>Description of the error message.</p>
 -- @return PipelineNotFoundException structure as a key-value pair table
 function M.PipelineNotFoundException(args)
-	assert(args, "You must provdide an argument table when creating PipelineNotFoundException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating PipelineNotFoundException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertPipelineNotFoundException(t)
-	return t
+	asserts.AssertPipelineNotFoundException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.PollForTaskInput = { ["workerGroup"] = true, ["hostname"] = true, ["instanceIdentity"] = true, nil }
@@ -1245,14 +1674,25 @@ end
 -- Required key: workerGroup
 -- @return PollForTaskInput structure as a key-value pair table
 function M.PollForTaskInput(args)
-	assert(args, "You must provdide an argument table when creating PollForTaskInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating PollForTaskInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["workerGroup"] = args["workerGroup"],
 		["hostname"] = args["hostname"],
 		["instanceIdentity"] = args["instanceIdentity"],
 	}
-	asserts.AssertPollForTaskInput(t)
-	return t
+	asserts.AssertPollForTaskInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.PipelineIdName = { ["id"] = true, ["name"] = true, nil }
@@ -1275,13 +1715,24 @@ end
 -- * name [id] <p>The name of the pipeline.</p>
 -- @return PipelineIdName structure as a key-value pair table
 function M.PipelineIdName(args)
-	assert(args, "You must provdide an argument table when creating PipelineIdName")
-	local t = { 
+	assert(args, "You must provide an argument table when creating PipelineIdName")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["id"] = args["id"],
 		["name"] = args["name"],
 	}
-	asserts.AssertPipelineIdName(t)
-	return t
+	asserts.AssertPipelineIdName(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AddTagsInput = { ["pipelineId"] = true, ["tags"] = true, nil }
@@ -1308,13 +1759,24 @@ end
 -- Required key: tags
 -- @return AddTagsInput structure as a key-value pair table
 function M.AddTagsInput(args)
-	assert(args, "You must provdide an argument table when creating AddTagsInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AddTagsInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["pipelineId"] = args["pipelineId"],
 		["tags"] = args["tags"],
 	}
-	asserts.AssertAddTagsInput(t)
-	return t
+	asserts.AssertAddTagsInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ParameterObject = { ["attributes"] = true, ["id"] = true, nil }
@@ -1341,13 +1803,24 @@ end
 -- Required key: attributes
 -- @return ParameterObject structure as a key-value pair table
 function M.ParameterObject(args)
-	assert(args, "You must provdide an argument table when creating ParameterObject")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ParameterObject")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["attributes"] = args["attributes"],
 		["id"] = args["id"],
 	}
-	asserts.AssertParameterObject(t)
-	return t
+	asserts.AssertParameterObject(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListPipelinesInput = { ["marker"] = true, nil }
@@ -1368,12 +1841,23 @@ end
 -- * marker [string] <p>The starting point for the results to be returned. For the first call, this value should be empty. As long as there are more results, continue to call <code>ListPipelines</code> with the marker value from the previous call to retrieve the next set of results.</p>
 -- @return ListPipelinesInput structure as a key-value pair table
 function M.ListPipelinesInput(args)
-	assert(args, "You must provdide an argument table when creating ListPipelinesInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListPipelinesInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["marker"] = args["marker"],
 	}
-	asserts.AssertListPipelinesInput(t)
-	return t
+	asserts.AssertListPipelinesInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Field = { ["stringValue"] = true, ["refValue"] = true, ["key"] = true, nil }
@@ -1400,14 +1884,25 @@ end
 -- Required key: key
 -- @return Field structure as a key-value pair table
 function M.Field(args)
-	assert(args, "You must provdide an argument table when creating Field")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Field")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["stringValue"] = args["stringValue"],
 		["refValue"] = args["refValue"],
 		["key"] = args["key"],
 	}
-	asserts.AssertField(t)
-	return t
+	asserts.AssertField(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetPipelineDefinitionInput = { ["pipelineId"] = true, ["version"] = true, nil }
@@ -1432,13 +1927,24 @@ end
 -- Required key: pipelineId
 -- @return GetPipelineDefinitionInput structure as a key-value pair table
 function M.GetPipelineDefinitionInput(args)
-	assert(args, "You must provdide an argument table when creating GetPipelineDefinitionInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetPipelineDefinitionInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["pipelineId"] = args["pipelineId"],
 		["version"] = args["version"],
 	}
-	asserts.AssertGetPipelineDefinitionInput(t)
-	return t
+	asserts.AssertGetPipelineDefinitionInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribePipelinesOutput = { ["pipelineDescriptionList"] = true, nil }
@@ -1461,12 +1967,23 @@ end
 -- Required key: pipelineDescriptionList
 -- @return DescribePipelinesOutput structure as a key-value pair table
 function M.DescribePipelinesOutput(args)
-	assert(args, "You must provdide an argument table when creating DescribePipelinesOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribePipelinesOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["pipelineDescriptionList"] = args["pipelineDescriptionList"],
 	}
-	asserts.AssertDescribePipelinesOutput(t)
-	return t
+	asserts.AssertDescribePipelinesOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ReportTaskRunnerHeartbeatInput = { ["workerGroup"] = true, ["hostname"] = true, ["taskrunnerId"] = true, nil }
@@ -1493,14 +2010,25 @@ end
 -- Required key: taskrunnerId
 -- @return ReportTaskRunnerHeartbeatInput structure as a key-value pair table
 function M.ReportTaskRunnerHeartbeatInput(args)
-	assert(args, "You must provdide an argument table when creating ReportTaskRunnerHeartbeatInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ReportTaskRunnerHeartbeatInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["workerGroup"] = args["workerGroup"],
 		["hostname"] = args["hostname"],
 		["taskrunnerId"] = args["taskrunnerId"],
 	}
-	asserts.AssertReportTaskRunnerHeartbeatInput(t)
-	return t
+	asserts.AssertReportTaskRunnerHeartbeatInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeactivatePipelineInput = { ["cancelActive"] = true, ["pipelineId"] = true, nil }
@@ -1525,13 +2053,24 @@ end
 -- Required key: pipelineId
 -- @return DeactivatePipelineInput structure as a key-value pair table
 function M.DeactivatePipelineInput(args)
-	assert(args, "You must provdide an argument table when creating DeactivatePipelineInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeactivatePipelineInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["cancelActive"] = args["cancelActive"],
 		["pipelineId"] = args["pipelineId"],
 	}
-	asserts.AssertDeactivatePipelineInput(t)
-	return t
+	asserts.AssertDeactivatePipelineInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ValidatePipelineDefinitionOutput = { ["validationErrors"] = true, ["errored"] = true, ["validationWarnings"] = true, nil }
@@ -1558,14 +2097,25 @@ end
 -- Required key: errored
 -- @return ValidatePipelineDefinitionOutput structure as a key-value pair table
 function M.ValidatePipelineDefinitionOutput(args)
-	assert(args, "You must provdide an argument table when creating ValidatePipelineDefinitionOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ValidatePipelineDefinitionOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["validationErrors"] = args["validationErrors"],
 		["errored"] = args["errored"],
 		["validationWarnings"] = args["validationWarnings"],
 	}
-	asserts.AssertValidatePipelineDefinitionOutput(t)
-	return t
+	asserts.AssertValidatePipelineDefinitionOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeObjectsInput = { ["objectIds"] = true, ["marker"] = true, ["pipelineId"] = true, ["evaluateExpressions"] = true, nil }
@@ -1596,15 +2146,26 @@ end
 -- Required key: objectIds
 -- @return DescribeObjectsInput structure as a key-value pair table
 function M.DescribeObjectsInput(args)
-	assert(args, "You must provdide an argument table when creating DescribeObjectsInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeObjectsInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["objectIds"] = args["objectIds"],
 		["marker"] = args["marker"],
 		["pipelineId"] = args["pipelineId"],
 		["evaluateExpressions"] = args["evaluateExpressions"],
 	}
-	asserts.AssertDescribeObjectsInput(t)
-	return t
+	asserts.AssertDescribeObjectsInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.QueryObjectsOutput = { ["marker"] = true, ["ids"] = true, ["hasMoreResults"] = true, nil }
@@ -1629,14 +2190,25 @@ end
 -- * hasMoreResults [boolean] <p>Indicates whether there are more results that can be obtained by a subsequent call.</p>
 -- @return QueryObjectsOutput structure as a key-value pair table
 function M.QueryObjectsOutput(args)
-	assert(args, "You must provdide an argument table when creating QueryObjectsOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating QueryObjectsOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["marker"] = args["marker"],
 		["ids"] = args["ids"],
 		["hasMoreResults"] = args["hasMoreResults"],
 	}
-	asserts.AssertQueryObjectsOutput(t)
-	return t
+	asserts.AssertQueryObjectsOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ParameterValue = { ["stringValue"] = true, ["id"] = true, nil }
@@ -1663,13 +2235,24 @@ end
 -- Required key: stringValue
 -- @return ParameterValue structure as a key-value pair table
 function M.ParameterValue(args)
-	assert(args, "You must provdide an argument table when creating ParameterValue")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ParameterValue")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["stringValue"] = args["stringValue"],
 		["id"] = args["id"],
 	}
-	asserts.AssertParameterValue(t)
-	return t
+	asserts.AssertParameterValue(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ValidationWarning = { ["id"] = true, ["warnings"] = true, nil }
@@ -1692,13 +2275,24 @@ end
 -- * warnings [validationMessages] <p>A description of the validation warning.</p>
 -- @return ValidationWarning structure as a key-value pair table
 function M.ValidationWarning(args)
-	assert(args, "You must provdide an argument table when creating ValidationWarning")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ValidationWarning")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["id"] = args["id"],
 		["warnings"] = args["warnings"],
 	}
-	asserts.AssertValidationWarning(t)
-	return t
+	asserts.AssertValidationWarning(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.PutPipelineDefinitionInput = { ["parameterValues"] = true, ["pipelineObjects"] = true, ["pipelineId"] = true, ["parameterObjects"] = true, nil }
@@ -1729,15 +2323,26 @@ end
 -- Required key: pipelineObjects
 -- @return PutPipelineDefinitionInput structure as a key-value pair table
 function M.PutPipelineDefinitionInput(args)
-	assert(args, "You must provdide an argument table when creating PutPipelineDefinitionInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating PutPipelineDefinitionInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["parameterValues"] = args["parameterValues"],
 		["pipelineObjects"] = args["pipelineObjects"],
 		["pipelineId"] = args["pipelineId"],
 		["parameterObjects"] = args["parameterObjects"],
 	}
-	asserts.AssertPutPipelineDefinitionInput(t)
-	return t
+	asserts.AssertPutPipelineDefinitionInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ActivatePipelineInput = { ["parameterValues"] = true, ["startTimestamp"] = true, ["pipelineId"] = true, nil }
@@ -1764,14 +2369,25 @@ end
 -- Required key: pipelineId
 -- @return ActivatePipelineInput structure as a key-value pair table
 function M.ActivatePipelineInput(args)
-	assert(args, "You must provdide an argument table when creating ActivatePipelineInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ActivatePipelineInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["parameterValues"] = args["parameterValues"],
 		["startTimestamp"] = args["startTimestamp"],
 		["pipelineId"] = args["pipelineId"],
 	}
-	asserts.AssertActivatePipelineInput(t)
-	return t
+	asserts.AssertActivatePipelineInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 function asserts.AsserttagKey(str)
@@ -2262,8 +2878,11 @@ function M.RemoveTagsAsync(RemoveTagsInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "DataPipeline.RemoveTags",
 	}
+	for header,value in pairs(RemoveTagsInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", RemoveTagsInput, headers, settings, cb)
 	else
@@ -2294,8 +2913,11 @@ function M.DeactivatePipelineAsync(DeactivatePipelineInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "DataPipeline.DeactivatePipeline",
 	}
+	for header,value in pairs(DeactivatePipelineInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DeactivatePipelineInput, headers, settings, cb)
 	else
@@ -2326,8 +2948,11 @@ function M.AddTagsAsync(AddTagsInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "DataPipeline.AddTags",
 	}
+	for header,value in pairs(AddTagsInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", AddTagsInput, headers, settings, cb)
 	else
@@ -2358,8 +2983,11 @@ function M.ValidatePipelineDefinitionAsync(ValidatePipelineDefinitionInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "DataPipeline.ValidatePipelineDefinition",
 	}
+	for header,value in pairs(ValidatePipelineDefinitionInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ValidatePipelineDefinitionInput, headers, settings, cb)
 	else
@@ -2390,8 +3018,11 @@ function M.ListPipelinesAsync(ListPipelinesInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "DataPipeline.ListPipelines",
 	}
+	for header,value in pairs(ListPipelinesInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ListPipelinesInput, headers, settings, cb)
 	else
@@ -2422,8 +3053,11 @@ function M.DeletePipelineAsync(DeletePipelineInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "DataPipeline.DeletePipeline",
 	}
+	for header,value in pairs(DeletePipelineInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DeletePipelineInput, headers, settings, cb)
 	else
@@ -2454,8 +3088,11 @@ function M.DescribeObjectsAsync(DescribeObjectsInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "DataPipeline.DescribeObjects",
 	}
+	for header,value in pairs(DescribeObjectsInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeObjectsInput, headers, settings, cb)
 	else
@@ -2486,8 +3123,11 @@ function M.QueryObjectsAsync(QueryObjectsInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "DataPipeline.QueryObjects",
 	}
+	for header,value in pairs(QueryObjectsInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", QueryObjectsInput, headers, settings, cb)
 	else
@@ -2518,8 +3158,11 @@ function M.SetStatusAsync(SetStatusInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "DataPipeline.SetStatus",
 	}
+	for header,value in pairs(SetStatusInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", SetStatusInput, headers, settings, cb)
 	else
@@ -2550,8 +3193,11 @@ function M.SetTaskStatusAsync(SetTaskStatusInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "DataPipeline.SetTaskStatus",
 	}
+	for header,value in pairs(SetTaskStatusInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", SetTaskStatusInput, headers, settings, cb)
 	else
@@ -2582,8 +3228,11 @@ function M.PutPipelineDefinitionAsync(PutPipelineDefinitionInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "DataPipeline.PutPipelineDefinition",
 	}
+	for header,value in pairs(PutPipelineDefinitionInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", PutPipelineDefinitionInput, headers, settings, cb)
 	else
@@ -2614,8 +3263,11 @@ function M.PollForTaskAsync(PollForTaskInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "DataPipeline.PollForTask",
 	}
+	for header,value in pairs(PollForTaskInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", PollForTaskInput, headers, settings, cb)
 	else
@@ -2646,8 +3298,11 @@ function M.ActivatePipelineAsync(ActivatePipelineInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "DataPipeline.ActivatePipeline",
 	}
+	for header,value in pairs(ActivatePipelineInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ActivatePipelineInput, headers, settings, cb)
 	else
@@ -2678,8 +3333,11 @@ function M.CreatePipelineAsync(CreatePipelineInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "DataPipeline.CreatePipeline",
 	}
+	for header,value in pairs(CreatePipelineInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", CreatePipelineInput, headers, settings, cb)
 	else
@@ -2710,8 +3368,11 @@ function M.EvaluateExpressionAsync(EvaluateExpressionInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "DataPipeline.EvaluateExpression",
 	}
+	for header,value in pairs(EvaluateExpressionInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", EvaluateExpressionInput, headers, settings, cb)
 	else
@@ -2742,8 +3403,11 @@ function M.GetPipelineDefinitionAsync(GetPipelineDefinitionInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "DataPipeline.GetPipelineDefinition",
 	}
+	for header,value in pairs(GetPipelineDefinitionInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", GetPipelineDefinitionInput, headers, settings, cb)
 	else
@@ -2774,8 +3438,11 @@ function M.ReportTaskProgressAsync(ReportTaskProgressInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "DataPipeline.ReportTaskProgress",
 	}
+	for header,value in pairs(ReportTaskProgressInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ReportTaskProgressInput, headers, settings, cb)
 	else
@@ -2806,8 +3473,11 @@ function M.ReportTaskRunnerHeartbeatAsync(ReportTaskRunnerHeartbeatInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "DataPipeline.ReportTaskRunnerHeartbeat",
 	}
+	for header,value in pairs(ReportTaskRunnerHeartbeatInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ReportTaskRunnerHeartbeatInput, headers, settings, cb)
 	else
@@ -2838,8 +3508,11 @@ function M.DescribePipelinesAsync(DescribePipelinesInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "DataPipeline.DescribePipelines",
 	}
+	for header,value in pairs(DescribePipelinesInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribePipelinesInput, headers, settings, cb)
 	else

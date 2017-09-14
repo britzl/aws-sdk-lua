@@ -69,8 +69,14 @@ end
 -- * placementStrategy [PlacementStrategies] <p>The placement strategy that determines how tasks for the service are placed.</p>
 -- @return Service structure as a key-value pair table
 function M.Service(args)
-	assert(args, "You must provdide an argument table when creating Service")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Service")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["status"] = args["status"],
 		["taskDefinition"] = args["taskDefinition"],
 		["pendingCount"] = args["pendingCount"],
@@ -88,8 +94,13 @@ function M.Service(args)
 		["runningCount"] = args["runningCount"],
 		["placementStrategy"] = args["placementStrategy"],
 	}
-	asserts.AssertService(t)
-	return t
+	asserts.AssertService(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteAttributesResponse = { ["attributes"] = true, nil }
@@ -110,12 +121,23 @@ end
 -- * attributes [Attributes] <p>A list of attribute objects that were successfully deleted from your resource.</p>
 -- @return DeleteAttributesResponse structure as a key-value pair table
 function M.DeleteAttributesResponse(args)
-	assert(args, "You must provdide an argument table when creating DeleteAttributesResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteAttributesResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["attributes"] = args["attributes"],
 	}
-	asserts.AssertDeleteAttributesResponse(t)
-	return t
+	asserts.AssertDeleteAttributesResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteClusterResponse = { ["cluster"] = true, nil }
@@ -136,12 +158,23 @@ end
 -- * cluster [Cluster] <p>The full description of the deleted cluster.</p>
 -- @return DeleteClusterResponse structure as a key-value pair table
 function M.DeleteClusterResponse(args)
-	assert(args, "You must provdide an argument table when creating DeleteClusterResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteClusterResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["cluster"] = args["cluster"],
 	}
-	asserts.AssertDeleteClusterResponse(t)
-	return t
+	asserts.AssertDeleteClusterResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.MountPoint = { ["sourceVolume"] = true, ["readOnly"] = true, ["containerPath"] = true, nil }
@@ -166,14 +199,25 @@ end
 -- * containerPath [String] <p>The path on the container to mount the host volume at.</p>
 -- @return MountPoint structure as a key-value pair table
 function M.MountPoint(args)
-	assert(args, "You must provdide an argument table when creating MountPoint")
-	local t = { 
+	assert(args, "You must provide an argument table when creating MountPoint")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["sourceVolume"] = args["sourceVolume"],
 		["readOnly"] = args["readOnly"],
 		["containerPath"] = args["containerPath"],
 	}
-	asserts.AssertMountPoint(t)
-	return t
+	asserts.AssertMountPoint(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Volume = { ["host"] = true, ["name"] = true, nil }
@@ -196,13 +240,24 @@ end
 -- * name [String] <p>The name of the volume. Up to 255 letters (uppercase and lowercase), numbers, hyphens, and underscores are allowed. This name is referenced in the <code>sourceVolume</code> parameter of container definition <code>mountPoints</code>.</p>
 -- @return Volume structure as a key-value pair table
 function M.Volume(args)
-	assert(args, "You must provdide an argument table when creating Volume")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Volume")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["host"] = args["host"],
 		["name"] = args["name"],
 	}
-	asserts.AssertVolume(t)
-	return t
+	asserts.AssertVolume(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdateContainerAgentRequest = { ["cluster"] = true, ["containerInstance"] = true, nil }
@@ -227,13 +282,24 @@ end
 -- Required key: containerInstance
 -- @return UpdateContainerAgentRequest structure as a key-value pair table
 function M.UpdateContainerAgentRequest(args)
-	assert(args, "You must provdide an argument table when creating UpdateContainerAgentRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateContainerAgentRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["cluster"] = args["cluster"],
 		["containerInstance"] = args["containerInstance"],
 	}
-	asserts.AssertUpdateContainerAgentRequest(t)
-	return t
+	asserts.AssertUpdateContainerAgentRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ServiceNotActiveException = { nil }
@@ -252,11 +318,22 @@ end
 -- Valid keys:
 -- @return ServiceNotActiveException structure as a key-value pair table
 function M.ServiceNotActiveException(args)
-	assert(args, "You must provdide an argument table when creating ServiceNotActiveException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ServiceNotActiveException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertServiceNotActiveException(t)
-	return t
+	asserts.AssertServiceNotActiveException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AttributeLimitExceededException = { nil }
@@ -275,11 +352,22 @@ end
 -- Valid keys:
 -- @return AttributeLimitExceededException structure as a key-value pair table
 function M.AttributeLimitExceededException(args)
-	assert(args, "You must provdide an argument table when creating AttributeLimitExceededException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AttributeLimitExceededException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertAttributeLimitExceededException(t)
-	return t
+	asserts.AssertAttributeLimitExceededException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Failure = { ["reason"] = true, ["arn"] = true, nil }
@@ -302,13 +390,24 @@ end
 -- * arn [String] <p>The Amazon Resource Name (ARN) of the failed resource.</p>
 -- @return Failure structure as a key-value pair table
 function M.Failure(args)
-	assert(args, "You must provdide an argument table when creating Failure")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Failure")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["reason"] = args["reason"],
 		["arn"] = args["arn"],
 	}
-	asserts.AssertFailure(t)
-	return t
+	asserts.AssertFailure(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.PutAttributesRequest = { ["cluster"] = true, ["attributes"] = true, nil }
@@ -333,13 +432,24 @@ end
 -- Required key: attributes
 -- @return PutAttributesRequest structure as a key-value pair table
 function M.PutAttributesRequest(args)
-	assert(args, "You must provdide an argument table when creating PutAttributesRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating PutAttributesRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["cluster"] = args["cluster"],
 		["attributes"] = args["attributes"],
 	}
-	asserts.AssertPutAttributesRequest(t)
-	return t
+	asserts.AssertPutAttributesRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.RegisterContainerInstanceRequest = { ["instanceIdentityDocument"] = true, ["instanceIdentityDocumentSignature"] = true, ["containerInstanceArn"] = true, ["cluster"] = true, ["attributes"] = true, ["versionInfo"] = true, ["totalResources"] = true, nil }
@@ -372,8 +482,14 @@ end
 -- * totalResources [Resources] <p>The resources available on the instance.</p>
 -- @return RegisterContainerInstanceRequest structure as a key-value pair table
 function M.RegisterContainerInstanceRequest(args)
-	assert(args, "You must provdide an argument table when creating RegisterContainerInstanceRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating RegisterContainerInstanceRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["instanceIdentityDocument"] = args["instanceIdentityDocument"],
 		["instanceIdentityDocumentSignature"] = args["instanceIdentityDocumentSignature"],
 		["containerInstanceArn"] = args["containerInstanceArn"],
@@ -382,8 +498,13 @@ function M.RegisterContainerInstanceRequest(args)
 		["versionInfo"] = args["versionInfo"],
 		["totalResources"] = args["totalResources"],
 	}
-	asserts.AssertRegisterContainerInstanceRequest(t)
-	return t
+	asserts.AssertRegisterContainerInstanceRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ServiceNotFoundException = { nil }
@@ -402,11 +523,22 @@ end
 -- Valid keys:
 -- @return ServiceNotFoundException structure as a key-value pair table
 function M.ServiceNotFoundException(args)
-	assert(args, "You must provdide an argument table when creating ServiceNotFoundException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ServiceNotFoundException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertServiceNotFoundException(t)
-	return t
+	asserts.AssertServiceNotFoundException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.RegisterContainerInstanceResponse = { ["containerInstance"] = true, nil }
@@ -427,12 +559,23 @@ end
 -- * containerInstance [ContainerInstance] <p>The container instance that was registered.</p>
 -- @return RegisterContainerInstanceResponse structure as a key-value pair table
 function M.RegisterContainerInstanceResponse(args)
-	assert(args, "You must provdide an argument table when creating RegisterContainerInstanceResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating RegisterContainerInstanceResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["containerInstance"] = args["containerInstance"],
 	}
-	asserts.AssertRegisterContainerInstanceResponse(t)
-	return t
+	asserts.AssertRegisterContainerInstanceResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdateContainerAgentResponse = { ["containerInstance"] = true, nil }
@@ -453,12 +596,23 @@ end
 -- * containerInstance [ContainerInstance] <p>The container instance for which the container agent was updated.</p>
 -- @return UpdateContainerAgentResponse structure as a key-value pair table
 function M.UpdateContainerAgentResponse(args)
-	assert(args, "You must provdide an argument table when creating UpdateContainerAgentResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateContainerAgentResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["containerInstance"] = args["containerInstance"],
 	}
-	asserts.AssertUpdateContainerAgentResponse(t)
-	return t
+	asserts.AssertUpdateContainerAgentResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteClusterRequest = { ["cluster"] = true, nil }
@@ -481,12 +635,23 @@ end
 -- Required key: cluster
 -- @return DeleteClusterRequest structure as a key-value pair table
 function M.DeleteClusterRequest(args)
-	assert(args, "You must provdide an argument table when creating DeleteClusterRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteClusterRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["cluster"] = args["cluster"],
 	}
-	asserts.AssertDeleteClusterRequest(t)
-	return t
+	asserts.AssertDeleteClusterRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Task = { ["taskArn"] = true, ["group"] = true, ["overrides"] = true, ["lastStatus"] = true, ["containerInstanceArn"] = true, ["createdAt"] = true, ["version"] = true, ["clusterArn"] = true, ["startedAt"] = true, ["desiredStatus"] = true, ["stoppedReason"] = true, ["taskDefinitionArn"] = true, ["startedBy"] = true, ["containers"] = true, ["stoppedAt"] = true, nil }
@@ -535,8 +700,14 @@ end
 -- * stoppedAt [Timestamp] <p>The Unix timestamp for when the task was stopped (the task transitioned from the <code>RUNNING</code> state to the <code>STOPPED</code> state).</p>
 -- @return Task structure as a key-value pair table
 function M.Task(args)
-	assert(args, "You must provdide an argument table when creating Task")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Task")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["taskArn"] = args["taskArn"],
 		["group"] = args["group"],
 		["overrides"] = args["overrides"],
@@ -553,8 +724,13 @@ function M.Task(args)
 		["containers"] = args["containers"],
 		["stoppedAt"] = args["stoppedAt"],
 	}
-	asserts.AssertTask(t)
-	return t
+	asserts.AssertTask(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeTasksResponse = { ["failures"] = true, ["tasks"] = true, nil }
@@ -577,13 +753,24 @@ end
 -- * tasks [Tasks] <p>The list of tasks.</p>
 -- @return DescribeTasksResponse structure as a key-value pair table
 function M.DescribeTasksResponse(args)
-	assert(args, "You must provdide an argument table when creating DescribeTasksResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeTasksResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["failures"] = args["failures"],
 		["tasks"] = args["tasks"],
 	}
-	asserts.AssertDescribeTasksResponse(t)
-	return t
+	asserts.AssertDescribeTasksResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeregisterContainerInstanceResponse = { ["containerInstance"] = true, nil }
@@ -604,12 +791,23 @@ end
 -- * containerInstance [ContainerInstance] <p>The container instance that was deregistered.</p>
 -- @return DeregisterContainerInstanceResponse structure as a key-value pair table
 function M.DeregisterContainerInstanceResponse(args)
-	assert(args, "You must provdide an argument table when creating DeregisterContainerInstanceResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeregisterContainerInstanceResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["containerInstance"] = args["containerInstance"],
 	}
-	asserts.AssertDeregisterContainerInstanceResponse(t)
-	return t
+	asserts.AssertDeregisterContainerInstanceResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteServiceResponse = { ["service"] = true, nil }
@@ -630,12 +828,23 @@ end
 -- * service [Service] <p>The full description of the deleted service.</p>
 -- @return DeleteServiceResponse structure as a key-value pair table
 function M.DeleteServiceResponse(args)
-	assert(args, "You must provdide an argument table when creating DeleteServiceResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteServiceResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["service"] = args["service"],
 	}
-	asserts.AssertDeleteServiceResponse(t)
-	return t
+	asserts.AssertDeleteServiceResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListTaskDefinitionFamiliesRequest = { ["familyPrefix"] = true, ["status"] = true, ["nextToken"] = true, ["maxResults"] = true, nil }
@@ -662,15 +871,26 @@ end
 -- * maxResults [BoxedInteger] <p>The maximum number of task definition family results returned by <code>ListTaskDefinitionFamilies</code> in paginated output. When this parameter is used, <code>ListTaskDefinitions</code> only returns <code>maxResults</code> results in a single page along with a <code>nextToken</code> response element. The remaining results of the initial request can be seen by sending another <code>ListTaskDefinitionFamilies</code> request with the returned <code>nextToken</code> value. This value can be between 1 and 100. If this parameter is not used, then <code>ListTaskDefinitionFamilies</code> returns up to 100 results and a <code>nextToken</code> value if applicable.</p>
 -- @return ListTaskDefinitionFamiliesRequest structure as a key-value pair table
 function M.ListTaskDefinitionFamiliesRequest(args)
-	assert(args, "You must provdide an argument table when creating ListTaskDefinitionFamiliesRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListTaskDefinitionFamiliesRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["familyPrefix"] = args["familyPrefix"],
 		["status"] = args["status"],
 		["nextToken"] = args["nextToken"],
 		["maxResults"] = args["maxResults"],
 	}
-	asserts.AssertListTaskDefinitionFamiliesRequest(t)
-	return t
+	asserts.AssertListTaskDefinitionFamiliesRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListContainerInstancesResponse = { ["nextToken"] = true, ["containerInstanceArns"] = true, nil }
@@ -693,13 +913,24 @@ end
 -- * containerInstanceArns [StringList] <p>The list of container instances with full Amazon Resource Name (ARN) entries for each container instance associated with the specified cluster.</p>
 -- @return ListContainerInstancesResponse structure as a key-value pair table
 function M.ListContainerInstancesResponse(args)
-	assert(args, "You must provdide an argument table when creating ListContainerInstancesResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListContainerInstancesResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["nextToken"] = args["nextToken"],
 		["containerInstanceArns"] = args["containerInstanceArns"],
 	}
-	asserts.AssertListContainerInstancesResponse(t)
-	return t
+	asserts.AssertListContainerInstancesResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.HostEntry = { ["hostname"] = true, ["ipAddress"] = true, nil }
@@ -726,13 +957,24 @@ end
 -- Required key: ipAddress
 -- @return HostEntry structure as a key-value pair table
 function M.HostEntry(args)
-	assert(args, "You must provdide an argument table when creating HostEntry")
-	local t = { 
+	assert(args, "You must provide an argument table when creating HostEntry")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["hostname"] = args["hostname"],
 		["ipAddress"] = args["ipAddress"],
 	}
-	asserts.AssertHostEntry(t)
-	return t
+	asserts.AssertHostEntry(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ServiceEvent = { ["message"] = true, ["id"] = true, ["createdAt"] = true, nil }
@@ -757,14 +999,25 @@ end
 -- * createdAt [Timestamp] <p>The Unix timestamp for when the event was triggered.</p>
 -- @return ServiceEvent structure as a key-value pair table
 function M.ServiceEvent(args)
-	assert(args, "You must provdide an argument table when creating ServiceEvent")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ServiceEvent")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 		["id"] = args["id"],
 		["createdAt"] = args["createdAt"],
 	}
-	asserts.AssertServiceEvent(t)
-	return t
+	asserts.AssertServiceEvent(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ContainerOverride = { ["memoryReservation"] = true, ["name"] = true, ["environment"] = true, ["command"] = true, ["memory"] = true, ["cpu"] = true, nil }
@@ -795,8 +1048,14 @@ end
 -- * cpu [BoxedInteger] <p>The number of <code>cpu</code> units reserved for the container, instead of the default value from the task definition. You must also specify a container name.</p>
 -- @return ContainerOverride structure as a key-value pair table
 function M.ContainerOverride(args)
-	assert(args, "You must provdide an argument table when creating ContainerOverride")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ContainerOverride")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["memoryReservation"] = args["memoryReservation"],
 		["name"] = args["name"],
 		["environment"] = args["environment"],
@@ -804,8 +1063,13 @@ function M.ContainerOverride(args)
 		["memory"] = args["memory"],
 		["cpu"] = args["cpu"],
 	}
-	asserts.AssertContainerOverride(t)
-	return t
+	asserts.AssertContainerOverride(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ContainerDefinition = { ["hostname"] = true, ["links"] = true, ["image"] = true, ["memoryReservation"] = true, ["workingDirectory"] = true, ["disableNetworking"] = true, ["environment"] = true, ["memory"] = true, ["extraHosts"] = true, ["privileged"] = true, ["volumesFrom"] = true, ["dnsSearchDomains"] = true, ["readonlyRootFilesystem"] = true, ["logConfiguration"] = true, ["dockerSecurityOptions"] = true, ["entryPoint"] = true, ["user"] = true, ["mountPoints"] = true, ["name"] = true, ["dockerLabels"] = true, ["dnsServers"] = true, ["portMappings"] = true, ["command"] = true, ["cpu"] = true, ["essential"] = true, ["ulimits"] = true, nil }
@@ -876,8 +1140,14 @@ end
 -- * ulimits [UlimitList] <p>A list of <code>ulimits</code> to set in the container. This parameter maps to <code>Ulimits</code> in the <a href="https://docs.docker.com/engine/reference/api/docker_remote_api_v1.23/#create-a-container">Create a container</a> section of the <a href="https://docs.docker.com/engine/reference/api/docker_remote_api_v1.23/">Docker Remote API</a> and the <code>--ulimit</code> option to <a href="https://docs.docker.com/engine/reference/run/">docker run</a>. Valid naming values are displayed in the <a>Ulimit</a> data type. This parameter requires version 1.18 of the Docker Remote API or greater on your container instance. To check the Docker Remote API version on your container instance, log into your container instance and run the following command: <code>sudo docker version | grep "Server API version"</code> </p>
 -- @return ContainerDefinition structure as a key-value pair table
 function M.ContainerDefinition(args)
-	assert(args, "You must provdide an argument table when creating ContainerDefinition")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ContainerDefinition")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["hostname"] = args["hostname"],
 		["links"] = args["links"],
 		["image"] = args["image"],
@@ -905,8 +1175,13 @@ function M.ContainerDefinition(args)
 		["essential"] = args["essential"],
 		["ulimits"] = args["ulimits"],
 	}
-	asserts.AssertContainerDefinition(t)
-	return t
+	asserts.AssertContainerDefinition(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.PlacementConstraint = { ["expression"] = true, ["type"] = true, nil }
@@ -929,13 +1204,24 @@ end
 -- * type [PlacementConstraintType] <p>The type of constraint. Use <code>distinctInstance</code> to ensure that each task in a particular group is running on a different container instance. Use <code>memberOf</code> to restrict selection to a group of valid candidates. Note that <code>distinctInstance</code> is not supported in task definitions.</p>
 -- @return PlacementConstraint structure as a key-value pair table
 function M.PlacementConstraint(args)
-	assert(args, "You must provdide an argument table when creating PlacementConstraint")
-	local t = { 
+	assert(args, "You must provide an argument table when creating PlacementConstraint")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["expression"] = args["expression"],
 		["type"] = args["type"],
 	}
-	asserts.AssertPlacementConstraint(t)
-	return t
+	asserts.AssertPlacementConstraint(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeTaskDefinitionResponse = { ["taskDefinition"] = true, nil }
@@ -956,12 +1242,23 @@ end
 -- * taskDefinition [TaskDefinition] <p>The full task definition description.</p>
 -- @return DescribeTaskDefinitionResponse structure as a key-value pair table
 function M.DescribeTaskDefinitionResponse(args)
-	assert(args, "You must provdide an argument table when creating DescribeTaskDefinitionResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeTaskDefinitionResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["taskDefinition"] = args["taskDefinition"],
 	}
-	asserts.AssertDescribeTaskDefinitionResponse(t)
-	return t
+	asserts.AssertDescribeTaskDefinitionResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.PlacementStrategy = { ["field"] = true, ["type"] = true, nil }
@@ -984,13 +1281,24 @@ end
 -- * type [PlacementStrategyType] <p>The type of placement strategy. The <code>random</code> placement strategy randomly places tasks on available candidates. The <code>spread</code> placement strategy spreads placement across available candidates evenly based on the <code>field</code> parameter. The <code>binpack</code> strategy places tasks on available candidates that have the least available amount of the resource that is specified with the <code>field</code> parameter. For example, if you binpack on memory, a task is placed on the instance with the least amount of remaining memory (but still enough to run the task).</p>
 -- @return PlacementStrategy structure as a key-value pair table
 function M.PlacementStrategy(args)
-	assert(args, "You must provdide an argument table when creating PlacementStrategy")
-	local t = { 
+	assert(args, "You must provide an argument table when creating PlacementStrategy")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["field"] = args["field"],
 		["type"] = args["type"],
 	}
-	asserts.AssertPlacementStrategy(t)
-	return t
+	asserts.AssertPlacementStrategy(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeClustersRequest = { ["clusters"] = true, nil }
@@ -1011,12 +1319,23 @@ end
 -- * clusters [StringList] <p>A list of up to 100 cluster names or full cluster Amazon Resource Name (ARN) entries. If you do not specify a cluster, the default cluster is assumed.</p>
 -- @return DescribeClustersRequest structure as a key-value pair table
 function M.DescribeClustersRequest(args)
-	assert(args, "You must provdide an argument table when creating DescribeClustersRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeClustersRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["clusters"] = args["clusters"],
 	}
-	asserts.AssertDescribeClustersRequest(t)
-	return t
+	asserts.AssertDescribeClustersRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Ulimit = { ["softLimit"] = true, ["name"] = true, ["hardLimit"] = true, nil }
@@ -1047,14 +1366,25 @@ end
 -- Required key: hardLimit
 -- @return Ulimit structure as a key-value pair table
 function M.Ulimit(args)
-	assert(args, "You must provdide an argument table when creating Ulimit")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Ulimit")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["softLimit"] = args["softLimit"],
 		["name"] = args["name"],
 		["hardLimit"] = args["hardLimit"],
 	}
-	asserts.AssertUlimit(t)
-	return t
+	asserts.AssertUlimit(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ServerException = { ["message"] = true, nil }
@@ -1075,12 +1405,23 @@ end
 -- * message [String] 
 -- @return ServerException structure as a key-value pair table
 function M.ServerException(args)
-	assert(args, "You must provdide an argument table when creating ServerException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ServerException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertServerException(t)
-	return t
+	asserts.AssertServerException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.KeyValuePair = { ["name"] = true, ["value"] = true, nil }
@@ -1103,13 +1444,24 @@ end
 -- * value [String] <p>The value of the key value pair. For environment variables, this is the value of the environment variable.</p>
 -- @return KeyValuePair structure as a key-value pair table
 function M.KeyValuePair(args)
-	assert(args, "You must provdide an argument table when creating KeyValuePair")
-	local t = { 
+	assert(args, "You must provide an argument table when creating KeyValuePair")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["name"] = args["name"],
 		["value"] = args["value"],
 	}
-	asserts.AssertKeyValuePair(t)
-	return t
+	asserts.AssertKeyValuePair(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeTaskDefinitionRequest = { ["taskDefinition"] = true, nil }
@@ -1132,12 +1484,23 @@ end
 -- Required key: taskDefinition
 -- @return DescribeTaskDefinitionRequest structure as a key-value pair table
 function M.DescribeTaskDefinitionRequest(args)
-	assert(args, "You must provdide an argument table when creating DescribeTaskDefinitionRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeTaskDefinitionRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["taskDefinition"] = args["taskDefinition"],
 	}
-	asserts.AssertDescribeTaskDefinitionRequest(t)
-	return t
+	asserts.AssertDescribeTaskDefinitionRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.SubmitTaskStateChangeRequest = { ["status"] = true, ["cluster"] = true, ["reason"] = true, ["task"] = true, nil }
@@ -1164,15 +1527,26 @@ end
 -- * task [String] <p>The task ID or full Amazon Resource Name (ARN) of the task in the state change request.</p>
 -- @return SubmitTaskStateChangeRequest structure as a key-value pair table
 function M.SubmitTaskStateChangeRequest(args)
-	assert(args, "You must provdide an argument table when creating SubmitTaskStateChangeRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating SubmitTaskStateChangeRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["status"] = args["status"],
 		["cluster"] = args["cluster"],
 		["reason"] = args["reason"],
 		["task"] = args["task"],
 	}
-	asserts.AssertSubmitTaskStateChangeRequest(t)
-	return t
+	asserts.AssertSubmitTaskStateChangeRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.StopTaskResponse = { ["task"] = true, nil }
@@ -1193,12 +1567,23 @@ end
 -- * task [Task] <p>The task that was stopped.</p>
 -- @return StopTaskResponse structure as a key-value pair table
 function M.StopTaskResponse(args)
-	assert(args, "You must provdide an argument table when creating StopTaskResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating StopTaskResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["task"] = args["task"],
 	}
-	asserts.AssertStopTaskResponse(t)
-	return t
+	asserts.AssertStopTaskResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeContainerInstancesResponse = { ["failures"] = true, ["containerInstances"] = true, nil }
@@ -1221,13 +1606,24 @@ end
 -- * containerInstances [ContainerInstances] <p>The list of container instances.</p>
 -- @return DescribeContainerInstancesResponse structure as a key-value pair table
 function M.DescribeContainerInstancesResponse(args)
-	assert(args, "You must provdide an argument table when creating DescribeContainerInstancesResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeContainerInstancesResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["failures"] = args["failures"],
 		["containerInstances"] = args["containerInstances"],
 	}
-	asserts.AssertDescribeContainerInstancesResponse(t)
-	return t
+	asserts.AssertDescribeContainerInstancesResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateClusterResponse = { ["cluster"] = true, nil }
@@ -1248,12 +1644,23 @@ end
 -- * cluster [Cluster] <p>The full description of your new cluster.</p>
 -- @return CreateClusterResponse structure as a key-value pair table
 function M.CreateClusterResponse(args)
-	assert(args, "You must provdide an argument table when creating CreateClusterResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateClusterResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["cluster"] = args["cluster"],
 	}
-	asserts.AssertCreateClusterResponse(t)
-	return t
+	asserts.AssertCreateClusterResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.TargetNotFoundException = { nil }
@@ -1272,11 +1679,22 @@ end
 -- Valid keys:
 -- @return TargetNotFoundException structure as a key-value pair table
 function M.TargetNotFoundException(args)
-	assert(args, "You must provdide an argument table when creating TargetNotFoundException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating TargetNotFoundException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertTargetNotFoundException(t)
-	return t
+	asserts.AssertTargetNotFoundException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateServiceResponse = { ["service"] = true, nil }
@@ -1297,12 +1715,23 @@ end
 -- * service [Service] <p>The full description of your service following the create call.</p>
 -- @return CreateServiceResponse structure as a key-value pair table
 function M.CreateServiceResponse(args)
-	assert(args, "You must provdide an argument table when creating CreateServiceResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateServiceResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["service"] = args["service"],
 	}
-	asserts.AssertCreateServiceResponse(t)
-	return t
+	asserts.AssertCreateServiceResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListTaskDefinitionsRequest = { ["familyPrefix"] = true, ["status"] = true, ["nextToken"] = true, ["maxResults"] = true, ["sort"] = true, nil }
@@ -1331,16 +1760,27 @@ end
 -- * sort [SortOrder] <p>The order in which to sort the results. Valid values are <code>ASC</code> and <code>DESC</code>. By default (<code>ASC</code>), task definitions are listed lexicographically by family name and in ascending numerical order by revision so that the newest task definitions in a family are listed last. Setting this parameter to <code>DESC</code> reverses the sort order on family name and revision so that the newest task definitions in a family are listed first.</p>
 -- @return ListTaskDefinitionsRequest structure as a key-value pair table
 function M.ListTaskDefinitionsRequest(args)
-	assert(args, "You must provdide an argument table when creating ListTaskDefinitionsRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListTaskDefinitionsRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["familyPrefix"] = args["familyPrefix"],
 		["status"] = args["status"],
 		["nextToken"] = args["nextToken"],
 		["maxResults"] = args["maxResults"],
 		["sort"] = args["sort"],
 	}
-	asserts.AssertListTaskDefinitionsRequest(t)
-	return t
+	asserts.AssertListTaskDefinitionsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeploymentConfiguration = { ["maximumPercent"] = true, ["minimumHealthyPercent"] = true, nil }
@@ -1363,13 +1803,24 @@ end
 -- * minimumHealthyPercent [BoxedInteger] <p>The lower limit (as a percentage of the service's <code>desiredCount</code>) of the number of running tasks that must remain in the <code>RUNNING</code> state in a service during a deployment. The minimum healthy tasks during a deployment is the <code>desiredCount</code> multiplied by <code>minimumHealthyPercent</code>/100, rounded up to the nearest integer value.</p>
 -- @return DeploymentConfiguration structure as a key-value pair table
 function M.DeploymentConfiguration(args)
-	assert(args, "You must provdide an argument table when creating DeploymentConfiguration")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeploymentConfiguration")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["maximumPercent"] = args["maximumPercent"],
 		["minimumHealthyPercent"] = args["minimumHealthyPercent"],
 	}
-	asserts.AssertDeploymentConfiguration(t)
-	return t
+	asserts.AssertDeploymentConfiguration(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateServiceRequest = { ["loadBalancers"] = true, ["placementConstraints"] = true, ["desiredCount"] = true, ["cluster"] = true, ["serviceName"] = true, ["role"] = true, ["clientToken"] = true, ["deploymentConfiguration"] = true, ["taskDefinition"] = true, ["placementStrategy"] = true, nil }
@@ -1414,8 +1865,14 @@ end
 -- Required key: desiredCount
 -- @return CreateServiceRequest structure as a key-value pair table
 function M.CreateServiceRequest(args)
-	assert(args, "You must provdide an argument table when creating CreateServiceRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateServiceRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["loadBalancers"] = args["loadBalancers"],
 		["placementConstraints"] = args["placementConstraints"],
 		["desiredCount"] = args["desiredCount"],
@@ -1427,8 +1884,13 @@ function M.CreateServiceRequest(args)
 		["taskDefinition"] = args["taskDefinition"],
 		["placementStrategy"] = args["placementStrategy"],
 	}
-	asserts.AssertCreateServiceRequest(t)
-	return t
+	asserts.AssertCreateServiceRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.StartTaskResponse = { ["failures"] = true, ["tasks"] = true, nil }
@@ -1451,13 +1913,24 @@ end
 -- * tasks [Tasks] <p>A full description of the tasks that were started. Each task that was successfully placed on your container instances are described here.</p>
 -- @return StartTaskResponse structure as a key-value pair table
 function M.StartTaskResponse(args)
-	assert(args, "You must provdide an argument table when creating StartTaskResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating StartTaskResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["failures"] = args["failures"],
 		["tasks"] = args["tasks"],
 	}
-	asserts.AssertStartTaskResponse(t)
-	return t
+	asserts.AssertStartTaskResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListClustersResponse = { ["nextToken"] = true, ["clusterArns"] = true, nil }
@@ -1480,13 +1953,24 @@ end
 -- * clusterArns [StringList] <p>The list of full Amazon Resource Name (ARN) entries for each cluster associated with your account.</p>
 -- @return ListClustersResponse structure as a key-value pair table
 function M.ListClustersResponse(args)
-	assert(args, "You must provdide an argument table when creating ListClustersResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListClustersResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["nextToken"] = args["nextToken"],
 		["clusterArns"] = args["clusterArns"],
 	}
-	asserts.AssertListClustersResponse(t)
-	return t
+	asserts.AssertListClustersResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListTasksResponse = { ["nextToken"] = true, ["taskArns"] = true, nil }
@@ -1509,13 +1993,24 @@ end
 -- * taskArns [StringList] <p>The list of task Amazon Resource Name (ARN) entries for the <code>ListTasks</code> request.</p>
 -- @return ListTasksResponse structure as a key-value pair table
 function M.ListTasksResponse(args)
-	assert(args, "You must provdide an argument table when creating ListTasksResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListTasksResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["nextToken"] = args["nextToken"],
 		["taskArns"] = args["taskArns"],
 	}
-	asserts.AssertListTasksResponse(t)
-	return t
+	asserts.AssertListTasksResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdateServiceRequest = { ["cluster"] = true, ["deploymentConfiguration"] = true, ["taskDefinition"] = true, ["service"] = true, ["desiredCount"] = true, nil }
@@ -1546,16 +2041,27 @@ end
 -- Required key: service
 -- @return UpdateServiceRequest structure as a key-value pair table
 function M.UpdateServiceRequest(args)
-	assert(args, "You must provdide an argument table when creating UpdateServiceRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateServiceRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["cluster"] = args["cluster"],
 		["deploymentConfiguration"] = args["deploymentConfiguration"],
 		["taskDefinition"] = args["taskDefinition"],
 		["service"] = args["service"],
 		["desiredCount"] = args["desiredCount"],
 	}
-	asserts.AssertUpdateServiceRequest(t)
-	return t
+	asserts.AssertUpdateServiceRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.SubmitContainerStateChangeRequest = { ["status"] = true, ["containerName"] = true, ["task"] = true, ["networkBindings"] = true, ["cluster"] = true, ["reason"] = true, ["exitCode"] = true, nil }
@@ -1588,8 +2094,14 @@ end
 -- * exitCode [BoxedInteger] <p>The exit code returned for the state change request.</p>
 -- @return SubmitContainerStateChangeRequest structure as a key-value pair table
 function M.SubmitContainerStateChangeRequest(args)
-	assert(args, "You must provdide an argument table when creating SubmitContainerStateChangeRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating SubmitContainerStateChangeRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["status"] = args["status"],
 		["containerName"] = args["containerName"],
 		["task"] = args["task"],
@@ -1598,8 +2110,13 @@ function M.SubmitContainerStateChangeRequest(args)
 		["reason"] = args["reason"],
 		["exitCode"] = args["exitCode"],
 	}
-	asserts.AssertSubmitContainerStateChangeRequest(t)
-	return t
+	asserts.AssertSubmitContainerStateChangeRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ClusterContainsContainerInstancesException = { nil }
@@ -1618,11 +2135,22 @@ end
 -- Valid keys:
 -- @return ClusterContainsContainerInstancesException structure as a key-value pair table
 function M.ClusterContainsContainerInstancesException(args)
-	assert(args, "You must provdide an argument table when creating ClusterContainsContainerInstancesException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ClusterContainsContainerInstancesException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertClusterContainsContainerInstancesException(t)
-	return t
+	asserts.AssertClusterContainsContainerInstancesException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ClusterContainsServicesException = { nil }
@@ -1641,11 +2169,22 @@ end
 -- Valid keys:
 -- @return ClusterContainsServicesException structure as a key-value pair table
 function M.ClusterContainsServicesException(args)
-	assert(args, "You must provdide an argument table when creating ClusterContainsServicesException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ClusterContainsServicesException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertClusterContainsServicesException(t)
-	return t
+	asserts.AssertClusterContainsServicesException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeServicesRequest = { ["services"] = true, ["cluster"] = true, nil }
@@ -1670,13 +2209,24 @@ end
 -- Required key: services
 -- @return DescribeServicesRequest structure as a key-value pair table
 function M.DescribeServicesRequest(args)
-	assert(args, "You must provdide an argument table when creating DescribeServicesRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeServicesRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["services"] = args["services"],
 		["cluster"] = args["cluster"],
 	}
-	asserts.AssertDescribeServicesRequest(t)
-	return t
+	asserts.AssertDescribeServicesRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteAttributesRequest = { ["cluster"] = true, ["attributes"] = true, nil }
@@ -1701,13 +2251,24 @@ end
 -- Required key: attributes
 -- @return DeleteAttributesRequest structure as a key-value pair table
 function M.DeleteAttributesRequest(args)
-	assert(args, "You must provdide an argument table when creating DeleteAttributesRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteAttributesRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["cluster"] = args["cluster"],
 		["attributes"] = args["attributes"],
 	}
-	asserts.AssertDeleteAttributesRequest(t)
-	return t
+	asserts.AssertDeleteAttributesRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.NoUpdateAvailableException = { nil }
@@ -1726,11 +2287,22 @@ end
 -- Valid keys:
 -- @return NoUpdateAvailableException structure as a key-value pair table
 function M.NoUpdateAvailableException(args)
-	assert(args, "You must provdide an argument table when creating NoUpdateAvailableException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating NoUpdateAvailableException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertNoUpdateAvailableException(t)
-	return t
+	asserts.AssertNoUpdateAvailableException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.SubmitTaskStateChangeResponse = { ["acknowledgment"] = true, nil }
@@ -1751,12 +2323,23 @@ end
 -- * acknowledgment [String] <p>Acknowledgement of the state change.</p>
 -- @return SubmitTaskStateChangeResponse structure as a key-value pair table
 function M.SubmitTaskStateChangeResponse(args)
-	assert(args, "You must provdide an argument table when creating SubmitTaskStateChangeResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating SubmitTaskStateChangeResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["acknowledgment"] = args["acknowledgment"],
 	}
-	asserts.AssertSubmitTaskStateChangeResponse(t)
-	return t
+	asserts.AssertSubmitTaskStateChangeResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListClustersRequest = { ["nextToken"] = true, ["maxResults"] = true, nil }
@@ -1779,13 +2362,24 @@ end
 -- * maxResults [BoxedInteger] <p>The maximum number of cluster results returned by <code>ListClusters</code> in paginated output. When this parameter is used, <code>ListClusters</code> only returns <code>maxResults</code> results in a single page along with a <code>nextToken</code> response element. The remaining results of the initial request can be seen by sending another <code>ListClusters</code> request with the returned <code>nextToken</code> value. This value can be between 1 and 100. If this parameter is not used, then <code>ListClusters</code> returns up to 100 results and a <code>nextToken</code> value if applicable.</p>
 -- @return ListClustersRequest structure as a key-value pair table
 function M.ListClustersRequest(args)
-	assert(args, "You must provdide an argument table when creating ListClustersRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListClustersRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["nextToken"] = args["nextToken"],
 		["maxResults"] = args["maxResults"],
 	}
-	asserts.AssertListClustersRequest(t)
-	return t
+	asserts.AssertListClustersRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeClustersResponse = { ["clusters"] = true, ["failures"] = true, nil }
@@ -1808,13 +2402,24 @@ end
 -- * failures [Failures] <p>Any failures associated with the call.</p>
 -- @return DescribeClustersResponse structure as a key-value pair table
 function M.DescribeClustersResponse(args)
-	assert(args, "You must provdide an argument table when creating DescribeClustersResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeClustersResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["clusters"] = args["clusters"],
 		["failures"] = args["failures"],
 	}
-	asserts.AssertDescribeClustersResponse(t)
-	return t
+	asserts.AssertDescribeClustersResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListTaskDefinitionsResponse = { ["nextToken"] = true, ["taskDefinitionArns"] = true, nil }
@@ -1837,13 +2442,24 @@ end
 -- * taskDefinitionArns [StringList] <p>The list of task definition Amazon Resource Name (ARN) entries for the <code>ListTaskDefinitions</code> request.</p>
 -- @return ListTaskDefinitionsResponse structure as a key-value pair table
 function M.ListTaskDefinitionsResponse(args)
-	assert(args, "You must provdide an argument table when creating ListTaskDefinitionsResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListTaskDefinitionsResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["nextToken"] = args["nextToken"],
 		["taskDefinitionArns"] = args["taskDefinitionArns"],
 	}
-	asserts.AssertListTaskDefinitionsResponse(t)
-	return t
+	asserts.AssertListTaskDefinitionsResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ContainerInstance = { ["status"] = true, ["registeredAt"] = true, ["registeredResources"] = true, ["ec2InstanceId"] = true, ["agentConnected"] = true, ["containerInstanceArn"] = true, ["pendingTasksCount"] = true, ["remainingResources"] = true, ["version"] = true, ["agentUpdateStatus"] = true, ["attributes"] = true, ["versionInfo"] = true, ["runningTasksCount"] = true, nil }
@@ -1888,8 +2504,14 @@ end
 -- * runningTasksCount [Integer] <p>The number of tasks on the container instance that are in the <code>RUNNING</code> status.</p>
 -- @return ContainerInstance structure as a key-value pair table
 function M.ContainerInstance(args)
-	assert(args, "You must provdide an argument table when creating ContainerInstance")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ContainerInstance")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["status"] = args["status"],
 		["registeredAt"] = args["registeredAt"],
 		["registeredResources"] = args["registeredResources"],
@@ -1904,8 +2526,13 @@ function M.ContainerInstance(args)
 		["versionInfo"] = args["versionInfo"],
 		["runningTasksCount"] = args["runningTasksCount"],
 	}
-	asserts.AssertContainerInstance(t)
-	return t
+	asserts.AssertContainerInstance(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DiscoverPollEndpointResponse = { ["endpoint"] = true, ["telemetryEndpoint"] = true, nil }
@@ -1928,13 +2555,24 @@ end
 -- * telemetryEndpoint [String] <p>The telemetry endpoint for the Amazon ECS agent.</p>
 -- @return DiscoverPollEndpointResponse structure as a key-value pair table
 function M.DiscoverPollEndpointResponse(args)
-	assert(args, "You must provdide an argument table when creating DiscoverPollEndpointResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DiscoverPollEndpointResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["endpoint"] = args["endpoint"],
 		["telemetryEndpoint"] = args["telemetryEndpoint"],
 	}
-	asserts.AssertDiscoverPollEndpointResponse(t)
-	return t
+	asserts.AssertDiscoverPollEndpointResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeregisterTaskDefinitionRequest = { ["taskDefinition"] = true, nil }
@@ -1957,12 +2595,23 @@ end
 -- Required key: taskDefinition
 -- @return DeregisterTaskDefinitionRequest structure as a key-value pair table
 function M.DeregisterTaskDefinitionRequest(args)
-	assert(args, "You must provdide an argument table when creating DeregisterTaskDefinitionRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeregisterTaskDefinitionRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["taskDefinition"] = args["taskDefinition"],
 	}
-	asserts.AssertDeregisterTaskDefinitionRequest(t)
-	return t
+	asserts.AssertDeregisterTaskDefinitionRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.SubmitContainerStateChangeResponse = { ["acknowledgment"] = true, nil }
@@ -1983,12 +2632,23 @@ end
 -- * acknowledgment [String] <p>Acknowledgement of the state change.</p>
 -- @return SubmitContainerStateChangeResponse structure as a key-value pair table
 function M.SubmitContainerStateChangeResponse(args)
-	assert(args, "You must provdide an argument table when creating SubmitContainerStateChangeResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating SubmitContainerStateChangeResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["acknowledgment"] = args["acknowledgment"],
 	}
-	asserts.AssertSubmitContainerStateChangeResponse(t)
-	return t
+	asserts.AssertSubmitContainerStateChangeResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdateServiceResponse = { ["service"] = true, nil }
@@ -2009,12 +2669,23 @@ end
 -- * service [Service] <p>The full description of your service following the update call.</p>
 -- @return UpdateServiceResponse structure as a key-value pair table
 function M.UpdateServiceResponse(args)
-	assert(args, "You must provdide an argument table when creating UpdateServiceResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateServiceResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["service"] = args["service"],
 	}
-	asserts.AssertUpdateServiceResponse(t)
-	return t
+	asserts.AssertUpdateServiceResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdateInProgressException = { nil }
@@ -2033,11 +2704,22 @@ end
 -- Valid keys:
 -- @return UpdateInProgressException structure as a key-value pair table
 function M.UpdateInProgressException(args)
-	assert(args, "You must provdide an argument table when creating UpdateInProgressException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateInProgressException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertUpdateInProgressException(t)
-	return t
+	asserts.AssertUpdateInProgressException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListAttributesResponse = { ["attributes"] = true, ["nextToken"] = true, nil }
@@ -2060,13 +2742,24 @@ end
 -- * nextToken [String] <p>The <code>nextToken</code> value to include in a future <code>ListAttributes</code> request. When the results of a <code>ListAttributes</code> request exceed <code>maxResults</code>, this value can be used to retrieve the next page of results. This value is <code>null</code> when there are no more results to return.</p>
 -- @return ListAttributesResponse structure as a key-value pair table
 function M.ListAttributesResponse(args)
-	assert(args, "You must provdide an argument table when creating ListAttributesResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListAttributesResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["attributes"] = args["attributes"],
 		["nextToken"] = args["nextToken"],
 	}
-	asserts.AssertListAttributesResponse(t)
-	return t
+	asserts.AssertListAttributesResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListTasksRequest = { ["family"] = true, ["maxResults"] = true, ["startedBy"] = true, ["cluster"] = true, ["serviceName"] = true, ["desiredStatus"] = true, ["nextToken"] = true, ["containerInstance"] = true, nil }
@@ -2101,8 +2794,14 @@ end
 -- * containerInstance [String] <p>The container instance ID or full Amazon Resource Name (ARN) of the container instance with which to filter the <code>ListTasks</code> results. Specifying a <code>containerInstance</code> limits the results to tasks that belong to that container instance.</p>
 -- @return ListTasksRequest structure as a key-value pair table
 function M.ListTasksRequest(args)
-	assert(args, "You must provdide an argument table when creating ListTasksRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListTasksRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["family"] = args["family"],
 		["maxResults"] = args["maxResults"],
 		["startedBy"] = args["startedBy"],
@@ -2112,8 +2811,13 @@ function M.ListTasksRequest(args)
 		["nextToken"] = args["nextToken"],
 		["containerInstance"] = args["containerInstance"],
 	}
-	asserts.AssertListTasksRequest(t)
-	return t
+	asserts.AssertListTasksRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ClusterNotFoundException = { nil }
@@ -2132,11 +2836,22 @@ end
 -- Valid keys:
 -- @return ClusterNotFoundException structure as a key-value pair table
 function M.ClusterNotFoundException(args)
-	assert(args, "You must provdide an argument table when creating ClusterNotFoundException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ClusterNotFoundException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertClusterNotFoundException(t)
-	return t
+	asserts.AssertClusterNotFoundException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.TaskDefinitionPlacementConstraint = { ["expression"] = true, ["type"] = true, nil }
@@ -2159,13 +2874,24 @@ end
 -- * type [TaskDefinitionPlacementConstraintType] <p>The type of constraint. The <code>DistinctInstance</code> constraint ensures that each task in a particular group is running on a different container instance. The <code>MemberOf</code> constraint restricts selection to be from a group of valid candidates.</p>
 -- @return TaskDefinitionPlacementConstraint structure as a key-value pair table
 function M.TaskDefinitionPlacementConstraint(args)
-	assert(args, "You must provdide an argument table when creating TaskDefinitionPlacementConstraint")
-	local t = { 
+	assert(args, "You must provide an argument table when creating TaskDefinitionPlacementConstraint")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["expression"] = args["expression"],
 		["type"] = args["type"],
 	}
-	asserts.AssertTaskDefinitionPlacementConstraint(t)
-	return t
+	asserts.AssertTaskDefinitionPlacementConstraint(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateClusterRequest = { ["clusterName"] = true, nil }
@@ -2186,12 +2912,23 @@ end
 -- * clusterName [String] <p>The name of your cluster. If you do not specify a name for your cluster, you create a cluster named <code>default</code>. Up to 255 letters (uppercase and lowercase), numbers, hyphens, and underscores are allowed.</p>
 -- @return CreateClusterRequest structure as a key-value pair table
 function M.CreateClusterRequest(args)
-	assert(args, "You must provdide an argument table when creating CreateClusterRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateClusterRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["clusterName"] = args["clusterName"],
 	}
-	asserts.AssertCreateClusterRequest(t)
-	return t
+	asserts.AssertCreateClusterRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DiscoverPollEndpointRequest = { ["cluster"] = true, ["containerInstance"] = true, nil }
@@ -2214,13 +2951,24 @@ end
 -- * containerInstance [String] <p>The container instance ID or full Amazon Resource Name (ARN) of the container instance. The ARN contains the <code>arn:aws:ecs</code> namespace, followed by the region of the container instance, the AWS account ID of the container instance owner, the <code>container-instance</code> namespace, and then the container instance ID. For example, <code>arn:aws:ecs:<i>region</i>:<i>aws_account_id</i>:container-instance/<i>container_instance_ID</i> </code>.</p>
 -- @return DiscoverPollEndpointRequest structure as a key-value pair table
 function M.DiscoverPollEndpointRequest(args)
-	assert(args, "You must provdide an argument table when creating DiscoverPollEndpointRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DiscoverPollEndpointRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["cluster"] = args["cluster"],
 		["containerInstance"] = args["containerInstance"],
 	}
-	asserts.AssertDiscoverPollEndpointRequest(t)
-	return t
+	asserts.AssertDiscoverPollEndpointRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListServicesRequest = { ["cluster"] = true, ["nextToken"] = true, ["maxResults"] = true, nil }
@@ -2245,14 +2993,25 @@ end
 -- * maxResults [BoxedInteger] <p>The maximum number of container instance results returned by <code>ListServices</code> in paginated output. When this parameter is used, <code>ListServices</code> only returns <code>maxResults</code> results in a single page along with a <code>nextToken</code> response element. The remaining results of the initial request can be seen by sending another <code>ListServices</code> request with the returned <code>nextToken</code> value. This value can be between 1 and 10. If this parameter is not used, then <code>ListServices</code> returns up to 10 results and a <code>nextToken</code> value if applicable.</p>
 -- @return ListServicesRequest structure as a key-value pair table
 function M.ListServicesRequest(args)
-	assert(args, "You must provdide an argument table when creating ListServicesRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListServicesRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["cluster"] = args["cluster"],
 		["nextToken"] = args["nextToken"],
 		["maxResults"] = args["maxResults"],
 	}
-	asserts.AssertListServicesRequest(t)
-	return t
+	asserts.AssertListServicesRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeContainerInstancesRequest = { ["cluster"] = true, ["containerInstances"] = true, nil }
@@ -2277,13 +3036,24 @@ end
 -- Required key: containerInstances
 -- @return DescribeContainerInstancesRequest structure as a key-value pair table
 function M.DescribeContainerInstancesRequest(args)
-	assert(args, "You must provdide an argument table when creating DescribeContainerInstancesRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeContainerInstancesRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["cluster"] = args["cluster"],
 		["containerInstances"] = args["containerInstances"],
 	}
-	asserts.AssertDescribeContainerInstancesRequest(t)
-	return t
+	asserts.AssertDescribeContainerInstancesRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.TaskDefinition = { ["status"] = true, ["networkMode"] = true, ["family"] = true, ["placementConstraints"] = true, ["requiresAttributes"] = true, ["volumes"] = true, ["taskRoleArn"] = true, ["taskDefinitionArn"] = true, ["containerDefinitions"] = true, ["revision"] = true, nil }
@@ -2322,8 +3092,14 @@ end
 -- * revision [Integer] <p>The revision of the task in a particular family. The revision is a version number of a task definition in a family. When you register a task definition for the first time, the revision is <code>1</code>; each time you register a new revision of a task definition in the same family, the revision value always increases by one (even if you have deregistered previous revisions in this family).</p>
 -- @return TaskDefinition structure as a key-value pair table
 function M.TaskDefinition(args)
-	assert(args, "You must provdide an argument table when creating TaskDefinition")
-	local t = { 
+	assert(args, "You must provide an argument table when creating TaskDefinition")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["status"] = args["status"],
 		["networkMode"] = args["networkMode"],
 		["family"] = args["family"],
@@ -2335,8 +3111,13 @@ function M.TaskDefinition(args)
 		["containerDefinitions"] = args["containerDefinitions"],
 		["revision"] = args["revision"],
 	}
-	asserts.AssertTaskDefinition(t)
-	return t
+	asserts.AssertTaskDefinition(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdateContainerInstancesStateResponse = { ["failures"] = true, ["containerInstances"] = true, nil }
@@ -2359,13 +3140,24 @@ end
 -- * containerInstances [ContainerInstances] <p>The list of container instances.</p>
 -- @return UpdateContainerInstancesStateResponse structure as a key-value pair table
 function M.UpdateContainerInstancesStateResponse(args)
-	assert(args, "You must provdide an argument table when creating UpdateContainerInstancesStateResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateContainerInstancesStateResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["failures"] = args["failures"],
 		["containerInstances"] = args["containerInstances"],
 	}
-	asserts.AssertUpdateContainerInstancesStateResponse(t)
-	return t
+	asserts.AssertUpdateContainerInstancesStateResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.PutAttributesResponse = { ["attributes"] = true, nil }
@@ -2386,12 +3178,23 @@ end
 -- * attributes [Attributes] <p>The attributes applied to your resource.</p>
 -- @return PutAttributesResponse structure as a key-value pair table
 function M.PutAttributesResponse(args)
-	assert(args, "You must provdide an argument table when creating PutAttributesResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating PutAttributesResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["attributes"] = args["attributes"],
 	}
-	asserts.AssertPutAttributesResponse(t)
-	return t
+	asserts.AssertPutAttributesResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListTaskDefinitionFamiliesResponse = { ["nextToken"] = true, ["families"] = true, nil }
@@ -2414,13 +3217,24 @@ end
 -- * families [StringList] <p>The list of task definition family names that match the <code>ListTaskDefinitionFamilies</code> request.</p>
 -- @return ListTaskDefinitionFamiliesResponse structure as a key-value pair table
 function M.ListTaskDefinitionFamiliesResponse(args)
-	assert(args, "You must provdide an argument table when creating ListTaskDefinitionFamiliesResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListTaskDefinitionFamiliesResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["nextToken"] = args["nextToken"],
 		["families"] = args["families"],
 	}
-	asserts.AssertListTaskDefinitionFamiliesResponse(t)
-	return t
+	asserts.AssertListTaskDefinitionFamiliesResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListAttributesRequest = { ["targetType"] = true, ["attributeValue"] = true, ["attributeName"] = true, ["maxResults"] = true, ["cluster"] = true, ["nextToken"] = true, nil }
@@ -2453,8 +3267,14 @@ end
 -- Required key: targetType
 -- @return ListAttributesRequest structure as a key-value pair table
 function M.ListAttributesRequest(args)
-	assert(args, "You must provdide an argument table when creating ListAttributesRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListAttributesRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["targetType"] = args["targetType"],
 		["attributeValue"] = args["attributeValue"],
 		["attributeName"] = args["attributeName"],
@@ -2462,8 +3282,13 @@ function M.ListAttributesRequest(args)
 		["cluster"] = args["cluster"],
 		["nextToken"] = args["nextToken"],
 	}
-	asserts.AssertListAttributesRequest(t)
-	return t
+	asserts.AssertListAttributesRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.RunTaskRequest = { ["count"] = true, ["group"] = true, ["overrides"] = true, ["placementConstraints"] = true, ["cluster"] = true, ["startedBy"] = true, ["taskDefinition"] = true, ["placementStrategy"] = true, nil }
@@ -2500,8 +3325,14 @@ end
 -- Required key: taskDefinition
 -- @return RunTaskRequest structure as a key-value pair table
 function M.RunTaskRequest(args)
-	assert(args, "You must provdide an argument table when creating RunTaskRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating RunTaskRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["count"] = args["count"],
 		["group"] = args["group"],
 		["overrides"] = args["overrides"],
@@ -2511,8 +3342,13 @@ function M.RunTaskRequest(args)
 		["taskDefinition"] = args["taskDefinition"],
 		["placementStrategy"] = args["placementStrategy"],
 	}
-	asserts.AssertRunTaskRequest(t)
-	return t
+	asserts.AssertRunTaskRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.HostVolumeProperties = { ["sourcePath"] = true, nil }
@@ -2533,12 +3369,23 @@ end
 -- * sourcePath [String] <p>The path on the host container instance that is presented to the container. If this parameter is empty, then the Docker daemon has assigned a host path for you. If the <code>host</code> parameter contains a <code>sourcePath</code> file location, then the data volume persists at the specified location on the host container instance until you delete it manually. If the <code>sourcePath</code> value does not exist on the host container instance, the Docker daemon creates it. If the location does exist, the contents of the source path folder are exported.</p>
 -- @return HostVolumeProperties structure as a key-value pair table
 function M.HostVolumeProperties(args)
-	assert(args, "You must provdide an argument table when creating HostVolumeProperties")
-	local t = { 
+	assert(args, "You must provide an argument table when creating HostVolumeProperties")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["sourcePath"] = args["sourcePath"],
 	}
-	asserts.AssertHostVolumeProperties(t)
-	return t
+	asserts.AssertHostVolumeProperties(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Attribute = { ["targetType"] = true, ["targetId"] = true, ["name"] = true, ["value"] = true, nil }
@@ -2567,15 +3414,26 @@ end
 -- Required key: name
 -- @return Attribute structure as a key-value pair table
 function M.Attribute(args)
-	assert(args, "You must provdide an argument table when creating Attribute")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Attribute")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["targetType"] = args["targetType"],
 		["targetId"] = args["targetId"],
 		["name"] = args["name"],
 		["value"] = args["value"],
 	}
-	asserts.AssertAttribute(t)
-	return t
+	asserts.AssertAttribute(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeTasksRequest = { ["cluster"] = true, ["tasks"] = true, nil }
@@ -2600,13 +3458,24 @@ end
 -- Required key: tasks
 -- @return DescribeTasksRequest structure as a key-value pair table
 function M.DescribeTasksRequest(args)
-	assert(args, "You must provdide an argument table when creating DescribeTasksRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeTasksRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["cluster"] = args["cluster"],
 		["tasks"] = args["tasks"],
 	}
-	asserts.AssertDescribeTasksRequest(t)
-	return t
+	asserts.AssertDescribeTasksRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Cluster = { ["status"] = true, ["clusterName"] = true, ["registeredContainerInstancesCount"] = true, ["pendingTasksCount"] = true, ["runningTasksCount"] = true, ["activeServicesCount"] = true, ["clusterArn"] = true, nil }
@@ -2639,8 +3508,14 @@ end
 -- * clusterArn [String] <p>The Amazon Resource Name (ARN) that identifies the cluster. The ARN contains the <code>arn:aws:ecs</code> namespace, followed by the region of the cluster, the AWS account ID of the cluster owner, the <code>cluster</code> namespace, and then the cluster name. For example, <code>arn:aws:ecs:<i>region</i>:<i>012345678910</i>:cluster/<i>test</i> </code>..</p>
 -- @return Cluster structure as a key-value pair table
 function M.Cluster(args)
-	assert(args, "You must provdide an argument table when creating Cluster")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Cluster")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["status"] = args["status"],
 		["clusterName"] = args["clusterName"],
 		["registeredContainerInstancesCount"] = args["registeredContainerInstancesCount"],
@@ -2649,8 +3524,13 @@ function M.Cluster(args)
 		["activeServicesCount"] = args["activeServicesCount"],
 		["clusterArn"] = args["clusterArn"],
 	}
-	asserts.AssertCluster(t)
-	return t
+	asserts.AssertCluster(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListServicesResponse = { ["nextToken"] = true, ["serviceArns"] = true, nil }
@@ -2673,13 +3553,24 @@ end
 -- * serviceArns [StringList] <p>The list of full Amazon Resource Name (ARN) entries for each service associated with the specified cluster.</p>
 -- @return ListServicesResponse structure as a key-value pair table
 function M.ListServicesResponse(args)
-	assert(args, "You must provdide an argument table when creating ListServicesResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListServicesResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["nextToken"] = args["nextToken"],
 		["serviceArns"] = args["serviceArns"],
 	}
-	asserts.AssertListServicesResponse(t)
-	return t
+	asserts.AssertListServicesResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ClientException = { ["message"] = true, nil }
@@ -2700,12 +3591,23 @@ end
 -- * message [String] 
 -- @return ClientException structure as a key-value pair table
 function M.ClientException(args)
-	assert(args, "You must provdide an argument table when creating ClientException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ClientException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertClientException(t)
-	return t
+	asserts.AssertClientException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.VersionInfo = { ["agentVersion"] = true, ["agentHash"] = true, ["dockerVersion"] = true, nil }
@@ -2730,14 +3632,25 @@ end
 -- * dockerVersion [String] <p>The Docker version running on the container instance.</p>
 -- @return VersionInfo structure as a key-value pair table
 function M.VersionInfo(args)
-	assert(args, "You must provdide an argument table when creating VersionInfo")
-	local t = { 
+	assert(args, "You must provide an argument table when creating VersionInfo")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["agentVersion"] = args["agentVersion"],
 		["agentHash"] = args["agentHash"],
 		["dockerVersion"] = args["dockerVersion"],
 	}
-	asserts.AssertVersionInfo(t)
-	return t
+	asserts.AssertVersionInfo(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.StopTaskRequest = { ["cluster"] = true, ["reason"] = true, ["task"] = true, nil }
@@ -2764,14 +3677,25 @@ end
 -- Required key: task
 -- @return StopTaskRequest structure as a key-value pair table
 function M.StopTaskRequest(args)
-	assert(args, "You must provdide an argument table when creating StopTaskRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating StopTaskRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["cluster"] = args["cluster"],
 		["reason"] = args["reason"],
 		["task"] = args["task"],
 	}
-	asserts.AssertStopTaskRequest(t)
-	return t
+	asserts.AssertStopTaskRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.TaskOverride = { ["taskRoleArn"] = true, ["containerOverrides"] = true, nil }
@@ -2794,13 +3718,24 @@ end
 -- * containerOverrides [ContainerOverrides] <p>One or more container overrides sent to a task.</p>
 -- @return TaskOverride structure as a key-value pair table
 function M.TaskOverride(args)
-	assert(args, "You must provdide an argument table when creating TaskOverride")
-	local t = { 
+	assert(args, "You must provide an argument table when creating TaskOverride")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["taskRoleArn"] = args["taskRoleArn"],
 		["containerOverrides"] = args["containerOverrides"],
 	}
-	asserts.AssertTaskOverride(t)
-	return t
+	asserts.AssertTaskOverride(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Container = { ["containerArn"] = true, ["taskArn"] = true, ["name"] = true, ["networkBindings"] = true, ["lastStatus"] = true, ["reason"] = true, ["exitCode"] = true, nil }
@@ -2833,8 +3768,14 @@ end
 -- * exitCode [BoxedInteger] <p>The exit code returned from the container.</p>
 -- @return Container structure as a key-value pair table
 function M.Container(args)
-	assert(args, "You must provdide an argument table when creating Container")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Container")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["containerArn"] = args["containerArn"],
 		["taskArn"] = args["taskArn"],
 		["name"] = args["name"],
@@ -2843,8 +3784,13 @@ function M.Container(args)
 		["reason"] = args["reason"],
 		["exitCode"] = args["exitCode"],
 	}
-	asserts.AssertContainer(t)
-	return t
+	asserts.AssertContainer(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.RunTaskResponse = { ["failures"] = true, ["tasks"] = true, nil }
@@ -2867,13 +3813,24 @@ end
 -- * tasks [Tasks] <p>A full description of the tasks that were run. Each task that was successfully placed on your cluster are described here.</p>
 -- @return RunTaskResponse structure as a key-value pair table
 function M.RunTaskResponse(args)
-	assert(args, "You must provdide an argument table when creating RunTaskResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating RunTaskResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["failures"] = args["failures"],
 		["tasks"] = args["tasks"],
 	}
-	asserts.AssertRunTaskResponse(t)
-	return t
+	asserts.AssertRunTaskResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeregisterTaskDefinitionResponse = { ["taskDefinition"] = true, nil }
@@ -2894,12 +3851,23 @@ end
 -- * taskDefinition [TaskDefinition] <p>The full description of the deregistered task.</p>
 -- @return DeregisterTaskDefinitionResponse structure as a key-value pair table
 function M.DeregisterTaskDefinitionResponse(args)
-	assert(args, "You must provdide an argument table when creating DeregisterTaskDefinitionResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeregisterTaskDefinitionResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["taskDefinition"] = args["taskDefinition"],
 	}
-	asserts.AssertDeregisterTaskDefinitionResponse(t)
-	return t
+	asserts.AssertDeregisterTaskDefinitionResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeServicesResponse = { ["services"] = true, ["failures"] = true, nil }
@@ -2922,13 +3890,24 @@ end
 -- * failures [Failures] <p>Any failures associated with the call.</p>
 -- @return DescribeServicesResponse structure as a key-value pair table
 function M.DescribeServicesResponse(args)
-	assert(args, "You must provdide an argument table when creating DescribeServicesResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeServicesResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["services"] = args["services"],
 		["failures"] = args["failures"],
 	}
-	asserts.AssertDescribeServicesResponse(t)
-	return t
+	asserts.AssertDescribeServicesResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.RegisterTaskDefinitionResponse = { ["taskDefinition"] = true, nil }
@@ -2949,12 +3928,23 @@ end
 -- * taskDefinition [TaskDefinition] <p>The full description of the registered task definition.</p>
 -- @return RegisterTaskDefinitionResponse structure as a key-value pair table
 function M.RegisterTaskDefinitionResponse(args)
-	assert(args, "You must provdide an argument table when creating RegisterTaskDefinitionResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating RegisterTaskDefinitionResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["taskDefinition"] = args["taskDefinition"],
 	}
-	asserts.AssertRegisterTaskDefinitionResponse(t)
-	return t
+	asserts.AssertRegisterTaskDefinitionResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.StartTaskRequest = { ["group"] = true, ["containerInstances"] = true, ["overrides"] = true, ["cluster"] = true, ["startedBy"] = true, ["taskDefinition"] = true, nil }
@@ -2989,8 +3979,14 @@ end
 -- Required key: containerInstances
 -- @return StartTaskRequest structure as a key-value pair table
 function M.StartTaskRequest(args)
-	assert(args, "You must provdide an argument table when creating StartTaskRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating StartTaskRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["group"] = args["group"],
 		["containerInstances"] = args["containerInstances"],
 		["overrides"] = args["overrides"],
@@ -2998,8 +3994,13 @@ function M.StartTaskRequest(args)
 		["startedBy"] = args["startedBy"],
 		["taskDefinition"] = args["taskDefinition"],
 	}
-	asserts.AssertStartTaskRequest(t)
-	return t
+	asserts.AssertStartTaskRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.MissingVersionException = { nil }
@@ -3018,11 +4019,22 @@ end
 -- Valid keys:
 -- @return MissingVersionException structure as a key-value pair table
 function M.MissingVersionException(args)
-	assert(args, "You must provdide an argument table when creating MissingVersionException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating MissingVersionException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertMissingVersionException(t)
-	return t
+	asserts.AssertMissingVersionException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.RegisterTaskDefinitionRequest = { ["networkMode"] = true, ["family"] = true, ["placementConstraints"] = true, ["volumes"] = true, ["taskRoleArn"] = true, ["containerDefinitions"] = true, nil }
@@ -3057,8 +4069,14 @@ end
 -- Required key: containerDefinitions
 -- @return RegisterTaskDefinitionRequest structure as a key-value pair table
 function M.RegisterTaskDefinitionRequest(args)
-	assert(args, "You must provdide an argument table when creating RegisterTaskDefinitionRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating RegisterTaskDefinitionRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["networkMode"] = args["networkMode"],
 		["family"] = args["family"],
 		["placementConstraints"] = args["placementConstraints"],
@@ -3066,8 +4084,13 @@ function M.RegisterTaskDefinitionRequest(args)
 		["taskRoleArn"] = args["taskRoleArn"],
 		["containerDefinitions"] = args["containerDefinitions"],
 	}
-	asserts.AssertRegisterTaskDefinitionRequest(t)
-	return t
+	asserts.AssertRegisterTaskDefinitionRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdateContainerInstancesStateRequest = { ["status"] = true, ["cluster"] = true, ["containerInstances"] = true, nil }
@@ -3096,14 +4119,25 @@ end
 -- Required key: status
 -- @return UpdateContainerInstancesStateRequest structure as a key-value pair table
 function M.UpdateContainerInstancesStateRequest(args)
-	assert(args, "You must provdide an argument table when creating UpdateContainerInstancesStateRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateContainerInstancesStateRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["status"] = args["status"],
 		["cluster"] = args["cluster"],
 		["containerInstances"] = args["containerInstances"],
 	}
-	asserts.AssertUpdateContainerInstancesStateRequest(t)
-	return t
+	asserts.AssertUpdateContainerInstancesStateRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidParameterException = { nil }
@@ -3122,11 +4156,22 @@ end
 -- Valid keys:
 -- @return InvalidParameterException structure as a key-value pair table
 function M.InvalidParameterException(args)
-	assert(args, "You must provdide an argument table when creating InvalidParameterException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidParameterException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertInvalidParameterException(t)
-	return t
+	asserts.AssertInvalidParameterException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Deployment = { ["status"] = true, ["pendingCount"] = true, ["createdAt"] = true, ["desiredCount"] = true, ["taskDefinition"] = true, ["updatedAt"] = true, ["id"] = true, ["runningCount"] = true, nil }
@@ -3161,8 +4206,14 @@ end
 -- * runningCount [Integer] <p>The number of tasks in the deployment that are in the <code>RUNNING</code> status.</p>
 -- @return Deployment structure as a key-value pair table
 function M.Deployment(args)
-	assert(args, "You must provdide an argument table when creating Deployment")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Deployment")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["status"] = args["status"],
 		["pendingCount"] = args["pendingCount"],
 		["createdAt"] = args["createdAt"],
@@ -3172,8 +4223,13 @@ function M.Deployment(args)
 		["id"] = args["id"],
 		["runningCount"] = args["runningCount"],
 	}
-	asserts.AssertDeployment(t)
-	return t
+	asserts.AssertDeployment(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListContainerInstancesRequest = { ["filter"] = true, ["cluster"] = true, ["nextToken"] = true, ["status"] = true, ["maxResults"] = true, nil }
@@ -3202,16 +4258,27 @@ end
 -- * maxResults [BoxedInteger] <p>The maximum number of container instance results returned by <code>ListContainerInstances</code> in paginated output. When this parameter is used, <code>ListContainerInstances</code> only returns <code>maxResults</code> results in a single page along with a <code>nextToken</code> response element. The remaining results of the initial request can be seen by sending another <code>ListContainerInstances</code> request with the returned <code>nextToken</code> value. This value can be between 1 and 100. If this parameter is not used, then <code>ListContainerInstances</code> returns up to 100 results and a <code>nextToken</code> value if applicable.</p>
 -- @return ListContainerInstancesRequest structure as a key-value pair table
 function M.ListContainerInstancesRequest(args)
-	assert(args, "You must provdide an argument table when creating ListContainerInstancesRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListContainerInstancesRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["filter"] = args["filter"],
 		["cluster"] = args["cluster"],
 		["nextToken"] = args["nextToken"],
 		["status"] = args["status"],
 		["maxResults"] = args["maxResults"],
 	}
-	asserts.AssertListContainerInstancesRequest(t)
-	return t
+	asserts.AssertListContainerInstancesRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Resource = { ["name"] = true, ["longValue"] = true, ["doubleValue"] = true, ["stringSetValue"] = true, ["type"] = true, ["integerValue"] = true, nil }
@@ -3242,8 +4309,14 @@ end
 -- * integerValue [Integer] <p>When the <code>integerValue</code> type is set, the value of the resource must be an integer.</p>
 -- @return Resource structure as a key-value pair table
 function M.Resource(args)
-	assert(args, "You must provdide an argument table when creating Resource")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Resource")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["name"] = args["name"],
 		["longValue"] = args["longValue"],
 		["doubleValue"] = args["doubleValue"],
@@ -3251,8 +4324,13 @@ function M.Resource(args)
 		["type"] = args["type"],
 		["integerValue"] = args["integerValue"],
 	}
-	asserts.AssertResource(t)
-	return t
+	asserts.AssertResource(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.NetworkBinding = { ["protocol"] = true, ["bindIP"] = true, ["containerPort"] = true, ["hostPort"] = true, nil }
@@ -3279,15 +4357,26 @@ end
 -- * hostPort [BoxedInteger] <p>The port number on the host that is used with the network binding.</p>
 -- @return NetworkBinding structure as a key-value pair table
 function M.NetworkBinding(args)
-	assert(args, "You must provdide an argument table when creating NetworkBinding")
-	local t = { 
+	assert(args, "You must provide an argument table when creating NetworkBinding")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["protocol"] = args["protocol"],
 		["bindIP"] = args["bindIP"],
 		["containerPort"] = args["containerPort"],
 		["hostPort"] = args["hostPort"],
 	}
-	asserts.AssertNetworkBinding(t)
-	return t
+	asserts.AssertNetworkBinding(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.PortMapping = { ["protocol"] = true, ["containerPort"] = true, ["hostPort"] = true, nil }
@@ -3312,14 +4401,25 @@ end
 -- * hostPort [BoxedInteger] <p>The port number on the container instance to reserve for your container. You can specify a non-reserved host port for your container port mapping, or you can omit the <code>hostPort</code> (or set it to <code>0</code>) while specifying a <code>containerPort</code> and your container automatically receives a port in the ephemeral port range for your container instance operating system and Docker version.</p> <p>The default ephemeral port range for Docker version 1.6.0 and later is listed on the instance under <code>/proc/sys/net/ipv4/ip_local_port_range</code>; if this kernel parameter is unavailable, the default ephemeral port range of 49153 to 65535 is used. You should not attempt to specify a host port in the ephemeral port range as these are reserved for automatic assignment. In general, ports below 32768 are outside of the ephemeral port range.</p> <note> <p>The default ephemeral port range of 49153 to 65535 will always be used for Docker versions prior to 1.6.0.</p> </note> <p>The default reserved ports are 22 for SSH, the Docker ports 2375 and 2376, and the Amazon ECS container agent ports 51678 and 51679. Any host port that was previously specified in a running task is also reserved while the task is running (after a task stops, the host port is released).The current reserved ports are displayed in the <code>remainingResources</code> of <a>DescribeContainerInstances</a> output, and a container instance may have up to 100 reserved ports at a time, including the default reserved ports (automatically assigned ports do not count toward the 100 reserved ports limit).</p>
 -- @return PortMapping structure as a key-value pair table
 function M.PortMapping(args)
-	assert(args, "You must provdide an argument table when creating PortMapping")
-	local t = { 
+	assert(args, "You must provide an argument table when creating PortMapping")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["protocol"] = args["protocol"],
 		["containerPort"] = args["containerPort"],
 		["hostPort"] = args["hostPort"],
 	}
-	asserts.AssertPortMapping(t)
-	return t
+	asserts.AssertPortMapping(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.LogConfiguration = { ["logDriver"] = true, ["options"] = true, nil }
@@ -3344,13 +4444,24 @@ end
 -- Required key: logDriver
 -- @return LogConfiguration structure as a key-value pair table
 function M.LogConfiguration(args)
-	assert(args, "You must provdide an argument table when creating LogConfiguration")
-	local t = { 
+	assert(args, "You must provide an argument table when creating LogConfiguration")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["logDriver"] = args["logDriver"],
 		["options"] = args["options"],
 	}
-	asserts.AssertLogConfiguration(t)
-	return t
+	asserts.AssertLogConfiguration(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.VolumeFrom = { ["readOnly"] = true, ["sourceContainer"] = true, nil }
@@ -3373,13 +4484,24 @@ end
 -- * sourceContainer [String] <p>The name of another container within the same task definition to mount volumes from.</p>
 -- @return VolumeFrom structure as a key-value pair table
 function M.VolumeFrom(args)
-	assert(args, "You must provdide an argument table when creating VolumeFrom")
-	local t = { 
+	assert(args, "You must provide an argument table when creating VolumeFrom")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["readOnly"] = args["readOnly"],
 		["sourceContainer"] = args["sourceContainer"],
 	}
-	asserts.AssertVolumeFrom(t)
-	return t
+	asserts.AssertVolumeFrom(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeregisterContainerInstanceRequest = { ["cluster"] = true, ["force"] = true, ["containerInstance"] = true, nil }
@@ -3406,14 +4528,25 @@ end
 -- Required key: containerInstance
 -- @return DeregisterContainerInstanceRequest structure as a key-value pair table
 function M.DeregisterContainerInstanceRequest(args)
-	assert(args, "You must provdide an argument table when creating DeregisterContainerInstanceRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeregisterContainerInstanceRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["cluster"] = args["cluster"],
 		["force"] = args["force"],
 		["containerInstance"] = args["containerInstance"],
 	}
-	asserts.AssertDeregisterContainerInstanceRequest(t)
-	return t
+	asserts.AssertDeregisterContainerInstanceRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.LoadBalancer = { ["containerName"] = true, ["targetGroupArn"] = true, ["containerPort"] = true, ["loadBalancerName"] = true, nil }
@@ -3440,15 +4573,26 @@ end
 -- * loadBalancerName [String] <p>The name of a Classic load balancer.</p>
 -- @return LoadBalancer structure as a key-value pair table
 function M.LoadBalancer(args)
-	assert(args, "You must provdide an argument table when creating LoadBalancer")
-	local t = { 
+	assert(args, "You must provide an argument table when creating LoadBalancer")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["containerName"] = args["containerName"],
 		["targetGroupArn"] = args["targetGroupArn"],
 		["containerPort"] = args["containerPort"],
 		["loadBalancerName"] = args["loadBalancerName"],
 	}
-	asserts.AssertLoadBalancer(t)
-	return t
+	asserts.AssertLoadBalancer(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteServiceRequest = { ["cluster"] = true, ["service"] = true, nil }
@@ -3473,13 +4617,24 @@ end
 -- Required key: service
 -- @return DeleteServiceRequest structure as a key-value pair table
 function M.DeleteServiceRequest(args)
-	assert(args, "You must provdide an argument table when creating DeleteServiceRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteServiceRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["cluster"] = args["cluster"],
 		["service"] = args["service"],
 	}
-	asserts.AssertDeleteServiceRequest(t)
-	return t
+	asserts.AssertDeleteServiceRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 function asserts.AssertTaskDefinitionFamilyStatus(str)
@@ -4190,8 +5345,11 @@ function M.CreateServiceAsync(CreateServiceRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AmazonEC2ContainerServiceV20141113.CreateService",
 	}
+	for header,value in pairs(CreateServiceRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateServiceRequest, headers, settings, cb)
 	else
@@ -4222,8 +5380,11 @@ function M.SubmitContainerStateChangeAsync(SubmitContainerStateChangeRequest, cb
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AmazonEC2ContainerServiceV20141113.SubmitContainerStateChange",
 	}
+	for header,value in pairs(SubmitContainerStateChangeRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", SubmitContainerStateChangeRequest, headers, settings, cb)
 	else
@@ -4254,8 +5415,11 @@ function M.ListAttributesAsync(ListAttributesRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AmazonEC2ContainerServiceV20141113.ListAttributes",
 	}
+	for header,value in pairs(ListAttributesRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ListAttributesRequest, headers, settings, cb)
 	else
@@ -4286,8 +5450,11 @@ function M.CreateClusterAsync(CreateClusterRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AmazonEC2ContainerServiceV20141113.CreateCluster",
 	}
+	for header,value in pairs(CreateClusterRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateClusterRequest, headers, settings, cb)
 	else
@@ -4318,8 +5485,11 @@ function M.SubmitTaskStateChangeAsync(SubmitTaskStateChangeRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AmazonEC2ContainerServiceV20141113.SubmitTaskStateChange",
 	}
+	for header,value in pairs(SubmitTaskStateChangeRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", SubmitTaskStateChangeRequest, headers, settings, cb)
 	else
@@ -4350,8 +5520,11 @@ function M.ListTaskDefinitionFamiliesAsync(ListTaskDefinitionFamiliesRequest, cb
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AmazonEC2ContainerServiceV20141113.ListTaskDefinitionFamilies",
 	}
+	for header,value in pairs(ListTaskDefinitionFamiliesRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ListTaskDefinitionFamiliesRequest, headers, settings, cb)
 	else
@@ -4382,8 +5555,11 @@ function M.DeleteServiceAsync(DeleteServiceRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AmazonEC2ContainerServiceV20141113.DeleteService",
 	}
+	for header,value in pairs(DeleteServiceRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteServiceRequest, headers, settings, cb)
 	else
@@ -4414,8 +5590,11 @@ function M.ListContainerInstancesAsync(ListContainerInstancesRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AmazonEC2ContainerServiceV20141113.ListContainerInstances",
 	}
+	for header,value in pairs(ListContainerInstancesRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ListContainerInstancesRequest, headers, settings, cb)
 	else
@@ -4446,8 +5625,11 @@ function M.DescribeServicesAsync(DescribeServicesRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AmazonEC2ContainerServiceV20141113.DescribeServices",
 	}
+	for header,value in pairs(DescribeServicesRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeServicesRequest, headers, settings, cb)
 	else
@@ -4478,8 +5660,11 @@ function M.DeleteClusterAsync(DeleteClusterRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AmazonEC2ContainerServiceV20141113.DeleteCluster",
 	}
+	for header,value in pairs(DeleteClusterRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteClusterRequest, headers, settings, cb)
 	else
@@ -4510,8 +5695,11 @@ function M.UpdateServiceAsync(UpdateServiceRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AmazonEC2ContainerServiceV20141113.UpdateService",
 	}
+	for header,value in pairs(UpdateServiceRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateServiceRequest, headers, settings, cb)
 	else
@@ -4542,8 +5730,11 @@ function M.ListClustersAsync(ListClustersRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AmazonEC2ContainerServiceV20141113.ListClusters",
 	}
+	for header,value in pairs(ListClustersRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ListClustersRequest, headers, settings, cb)
 	else
@@ -4574,8 +5765,11 @@ function M.DeregisterTaskDefinitionAsync(DeregisterTaskDefinitionRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AmazonEC2ContainerServiceV20141113.DeregisterTaskDefinition",
 	}
+	for header,value in pairs(DeregisterTaskDefinitionRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DeregisterTaskDefinitionRequest, headers, settings, cb)
 	else
@@ -4606,8 +5800,11 @@ function M.RegisterTaskDefinitionAsync(RegisterTaskDefinitionRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AmazonEC2ContainerServiceV20141113.RegisterTaskDefinition",
 	}
+	for header,value in pairs(RegisterTaskDefinitionRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", RegisterTaskDefinitionRequest, headers, settings, cb)
 	else
@@ -4638,8 +5835,11 @@ function M.StopTaskAsync(StopTaskRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AmazonEC2ContainerServiceV20141113.StopTask",
 	}
+	for header,value in pairs(StopTaskRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", StopTaskRequest, headers, settings, cb)
 	else
@@ -4670,8 +5870,11 @@ function M.ListTaskDefinitionsAsync(ListTaskDefinitionsRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AmazonEC2ContainerServiceV20141113.ListTaskDefinitions",
 	}
+	for header,value in pairs(ListTaskDefinitionsRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ListTaskDefinitionsRequest, headers, settings, cb)
 	else
@@ -4702,8 +5905,11 @@ function M.DescribeClustersAsync(DescribeClustersRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AmazonEC2ContainerServiceV20141113.DescribeClusters",
 	}
+	for header,value in pairs(DescribeClustersRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeClustersRequest, headers, settings, cb)
 	else
@@ -4734,8 +5940,11 @@ function M.UpdateContainerAgentAsync(UpdateContainerAgentRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AmazonEC2ContainerServiceV20141113.UpdateContainerAgent",
 	}
+	for header,value in pairs(UpdateContainerAgentRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateContainerAgentRequest, headers, settings, cb)
 	else
@@ -4766,8 +5975,11 @@ function M.DeleteAttributesAsync(DeleteAttributesRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AmazonEC2ContainerServiceV20141113.DeleteAttributes",
 	}
+	for header,value in pairs(DeleteAttributesRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteAttributesRequest, headers, settings, cb)
 	else
@@ -4798,8 +6010,11 @@ function M.ListServicesAsync(ListServicesRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AmazonEC2ContainerServiceV20141113.ListServices",
 	}
+	for header,value in pairs(ListServicesRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ListServicesRequest, headers, settings, cb)
 	else
@@ -4830,8 +6045,11 @@ function M.PutAttributesAsync(PutAttributesRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AmazonEC2ContainerServiceV20141113.PutAttributes",
 	}
+	for header,value in pairs(PutAttributesRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", PutAttributesRequest, headers, settings, cb)
 	else
@@ -4862,8 +6080,11 @@ function M.StartTaskAsync(StartTaskRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AmazonEC2ContainerServiceV20141113.StartTask",
 	}
+	for header,value in pairs(StartTaskRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", StartTaskRequest, headers, settings, cb)
 	else
@@ -4894,8 +6115,11 @@ function M.RegisterContainerInstanceAsync(RegisterContainerInstanceRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AmazonEC2ContainerServiceV20141113.RegisterContainerInstance",
 	}
+	for header,value in pairs(RegisterContainerInstanceRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", RegisterContainerInstanceRequest, headers, settings, cb)
 	else
@@ -4926,8 +6150,11 @@ function M.DescribeTaskDefinitionAsync(DescribeTaskDefinitionRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AmazonEC2ContainerServiceV20141113.DescribeTaskDefinition",
 	}
+	for header,value in pairs(DescribeTaskDefinitionRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeTaskDefinitionRequest, headers, settings, cb)
 	else
@@ -4958,8 +6185,11 @@ function M.DescribeTasksAsync(DescribeTasksRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AmazonEC2ContainerServiceV20141113.DescribeTasks",
 	}
+	for header,value in pairs(DescribeTasksRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeTasksRequest, headers, settings, cb)
 	else
@@ -4990,8 +6220,11 @@ function M.UpdateContainerInstancesStateAsync(UpdateContainerInstancesStateReque
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AmazonEC2ContainerServiceV20141113.UpdateContainerInstancesState",
 	}
+	for header,value in pairs(UpdateContainerInstancesStateRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateContainerInstancesStateRequest, headers, settings, cb)
 	else
@@ -5022,8 +6255,11 @@ function M.DeregisterContainerInstanceAsync(DeregisterContainerInstanceRequest, 
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AmazonEC2ContainerServiceV20141113.DeregisterContainerInstance",
 	}
+	for header,value in pairs(DeregisterContainerInstanceRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DeregisterContainerInstanceRequest, headers, settings, cb)
 	else
@@ -5054,8 +6290,11 @@ function M.ListTasksAsync(ListTasksRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AmazonEC2ContainerServiceV20141113.ListTasks",
 	}
+	for header,value in pairs(ListTasksRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ListTasksRequest, headers, settings, cb)
 	else
@@ -5086,8 +6325,11 @@ function M.DescribeContainerInstancesAsync(DescribeContainerInstancesRequest, cb
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AmazonEC2ContainerServiceV20141113.DescribeContainerInstances",
 	}
+	for header,value in pairs(DescribeContainerInstancesRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeContainerInstancesRequest, headers, settings, cb)
 	else
@@ -5118,8 +6360,11 @@ function M.RunTaskAsync(RunTaskRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AmazonEC2ContainerServiceV20141113.RunTask",
 	}
+	for header,value in pairs(RunTaskRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", RunTaskRequest, headers, settings, cb)
 	else
@@ -5150,8 +6395,11 @@ function M.DiscoverPollEndpointAsync(DiscoverPollEndpointRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AmazonEC2ContainerServiceV20141113.DiscoverPollEndpoint",
 	}
+	for header,value in pairs(DiscoverPollEndpointRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DiscoverPollEndpointRequest, headers, settings, cb)
 	else

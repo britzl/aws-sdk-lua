@@ -41,13 +41,24 @@ end
 -- * logGroups [LogGroups] <p>The log groups.</p>
 -- @return DescribeLogGroupsResponse structure as a key-value pair table
 function M.DescribeLogGroupsResponse(args)
-	assert(args, "You must provdide an argument table when creating DescribeLogGroupsResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeLogGroupsResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["nextToken"] = args["nextToken"],
 		["logGroups"] = args["logGroups"],
 	}
-	asserts.AssertDescribeLogGroupsResponse(t)
-	return t
+	asserts.AssertDescribeLogGroupsResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeDestinationsResponse = { ["nextToken"] = true, ["destinations"] = true, nil }
@@ -70,13 +81,24 @@ end
 -- * destinations [Destinations] <p>The destinations.</p>
 -- @return DescribeDestinationsResponse structure as a key-value pair table
 function M.DescribeDestinationsResponse(args)
-	assert(args, "You must provdide an argument table when creating DescribeDestinationsResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeDestinationsResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["nextToken"] = args["nextToken"],
 		["destinations"] = args["destinations"],
 	}
-	asserts.AssertDescribeDestinationsResponse(t)
-	return t
+	asserts.AssertDescribeDestinationsResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Destination = { ["roleArn"] = true, ["creationTime"] = true, ["destinationName"] = true, ["accessPolicy"] = true, ["targetArn"] = true, ["arn"] = true, nil }
@@ -107,8 +129,14 @@ end
 -- * arn [Arn] <p>The ARN of this destination.</p>
 -- @return Destination structure as a key-value pair table
 function M.Destination(args)
-	assert(args, "You must provdide an argument table when creating Destination")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Destination")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["roleArn"] = args["roleArn"],
 		["creationTime"] = args["creationTime"],
 		["destinationName"] = args["destinationName"],
@@ -116,8 +144,13 @@ function M.Destination(args)
 		["targetArn"] = args["targetArn"],
 		["arn"] = args["arn"],
 	}
-	asserts.AssertDestination(t)
-	return t
+	asserts.AssertDestination(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.FilterLogEventsRequest = { ["endTime"] = true, ["filterPattern"] = true, ["logStreamNames"] = true, ["logGroupName"] = true, ["limit"] = true, ["startTime"] = true, ["nextToken"] = true, ["interleaved"] = true, nil }
@@ -154,8 +187,14 @@ end
 -- Required key: logGroupName
 -- @return FilterLogEventsRequest structure as a key-value pair table
 function M.FilterLogEventsRequest(args)
-	assert(args, "You must provdide an argument table when creating FilterLogEventsRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating FilterLogEventsRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["endTime"] = args["endTime"],
 		["filterPattern"] = args["filterPattern"],
 		["logStreamNames"] = args["logStreamNames"],
@@ -165,8 +204,13 @@ function M.FilterLogEventsRequest(args)
 		["nextToken"] = args["nextToken"],
 		["interleaved"] = args["interleaved"],
 	}
-	asserts.AssertFilterLogEventsRequest(t)
-	return t
+	asserts.AssertFilterLogEventsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.LogStream = { ["firstEventTimestamp"] = true, ["lastEventTimestamp"] = true, ["creationTime"] = true, ["uploadSequenceToken"] = true, ["logStreamName"] = true, ["lastIngestionTime"] = true, ["arn"] = true, ["storedBytes"] = true, nil }
@@ -201,8 +245,14 @@ end
 -- * storedBytes [StoredBytes] <p>The number of bytes stored.</p>
 -- @return LogStream structure as a key-value pair table
 function M.LogStream(args)
-	assert(args, "You must provdide an argument table when creating LogStream")
-	local t = { 
+	assert(args, "You must provide an argument table when creating LogStream")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["firstEventTimestamp"] = args["firstEventTimestamp"],
 		["lastEventTimestamp"] = args["lastEventTimestamp"],
 		["creationTime"] = args["creationTime"],
@@ -212,8 +262,13 @@ function M.LogStream(args)
 		["arn"] = args["arn"],
 		["storedBytes"] = args["storedBytes"],
 	}
-	asserts.AssertLogStream(t)
-	return t
+	asserts.AssertLogStream(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeDestinationsRequest = { ["DestinationNamePrefix"] = true, ["nextToken"] = true, ["limit"] = true, nil }
@@ -238,14 +293,25 @@ end
 -- * limit [DescribeLimit] <p>The maximum number of items returned. If you don't specify a value, the default is up to 50 items.</p>
 -- @return DescribeDestinationsRequest structure as a key-value pair table
 function M.DescribeDestinationsRequest(args)
-	assert(args, "You must provdide an argument table when creating DescribeDestinationsRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeDestinationsRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DestinationNamePrefix"] = args["DestinationNamePrefix"],
 		["nextToken"] = args["nextToken"],
 		["limit"] = args["limit"],
 	}
-	asserts.AssertDescribeDestinationsRequest(t)
-	return t
+	asserts.AssertDescribeDestinationsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.TestMetricFilterRequest = { ["filterPattern"] = true, ["logEventMessages"] = true, nil }
@@ -272,13 +338,24 @@ end
 -- Required key: logEventMessages
 -- @return TestMetricFilterRequest structure as a key-value pair table
 function M.TestMetricFilterRequest(args)
-	assert(args, "You must provdide an argument table when creating TestMetricFilterRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating TestMetricFilterRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["filterPattern"] = args["filterPattern"],
 		["logEventMessages"] = args["logEventMessages"],
 	}
-	asserts.AssertTestMetricFilterRequest(t)
-	return t
+	asserts.AssertTestMetricFilterRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ServiceUnavailableException = { nil }
@@ -297,11 +374,22 @@ end
 -- Valid keys:
 -- @return ServiceUnavailableException structure as a key-value pair table
 function M.ServiceUnavailableException(args)
-	assert(args, "You must provdide an argument table when creating ServiceUnavailableException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ServiceUnavailableException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertServiceUnavailableException(t)
-	return t
+	asserts.AssertServiceUnavailableException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteSubscriptionFilterRequest = { ["filterName"] = true, ["logGroupName"] = true, nil }
@@ -328,13 +416,24 @@ end
 -- Required key: filterName
 -- @return DeleteSubscriptionFilterRequest structure as a key-value pair table
 function M.DeleteSubscriptionFilterRequest(args)
-	assert(args, "You must provdide an argument table when creating DeleteSubscriptionFilterRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteSubscriptionFilterRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["filterName"] = args["filterName"],
 		["logGroupName"] = args["logGroupName"],
 	}
-	asserts.AssertDeleteSubscriptionFilterRequest(t)
-	return t
+	asserts.AssertDeleteSubscriptionFilterRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.OutputLogEvent = { ["ingestionTime"] = true, ["timestamp"] = true, ["message"] = true, nil }
@@ -359,14 +458,25 @@ end
 -- * message [EventMessage] <p>The data contained in the log event.</p>
 -- @return OutputLogEvent structure as a key-value pair table
 function M.OutputLogEvent(args)
-	assert(args, "You must provdide an argument table when creating OutputLogEvent")
-	local t = { 
+	assert(args, "You must provide an argument table when creating OutputLogEvent")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ingestionTime"] = args["ingestionTime"],
 		["timestamp"] = args["timestamp"],
 		["message"] = args["message"],
 	}
-	asserts.AssertOutputLogEvent(t)
-	return t
+	asserts.AssertOutputLogEvent(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidSequenceTokenException = { ["expectedSequenceToken"] = true, nil }
@@ -387,12 +497,23 @@ end
 -- * expectedSequenceToken [SequenceToken] 
 -- @return InvalidSequenceTokenException structure as a key-value pair table
 function M.InvalidSequenceTokenException(args)
-	assert(args, "You must provdide an argument table when creating InvalidSequenceTokenException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidSequenceTokenException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["expectedSequenceToken"] = args["expectedSequenceToken"],
 	}
-	asserts.AssertInvalidSequenceTokenException(t)
-	return t
+	asserts.AssertInvalidSequenceTokenException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.MetricFilter = { ["filterName"] = true, ["metricTransformations"] = true, ["creationTime"] = true, ["filterPattern"] = true, ["logGroupName"] = true, nil }
@@ -421,16 +542,27 @@ end
 -- * logGroupName [LogGroupName] <p>The name of the log group.</p>
 -- @return MetricFilter structure as a key-value pair table
 function M.MetricFilter(args)
-	assert(args, "You must provdide an argument table when creating MetricFilter")
-	local t = { 
+	assert(args, "You must provide an argument table when creating MetricFilter")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["filterName"] = args["filterName"],
 		["metricTransformations"] = args["metricTransformations"],
 		["creationTime"] = args["creationTime"],
 		["filterPattern"] = args["filterPattern"],
 		["logGroupName"] = args["logGroupName"],
 	}
-	asserts.AssertMetricFilter(t)
-	return t
+	asserts.AssertMetricFilter(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeLogStreamsResponse = { ["nextToken"] = true, ["logStreams"] = true, nil }
@@ -453,13 +585,24 @@ end
 -- * logStreams [LogStreams] <p>The log streams.</p>
 -- @return DescribeLogStreamsResponse structure as a key-value pair table
 function M.DescribeLogStreamsResponse(args)
-	assert(args, "You must provdide an argument table when creating DescribeLogStreamsResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeLogStreamsResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["nextToken"] = args["nextToken"],
 		["logStreams"] = args["logStreams"],
 	}
-	asserts.AssertDescribeLogStreamsResponse(t)
-	return t
+	asserts.AssertDescribeLogStreamsResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.PutDestinationResponse = { ["destination"] = true, nil }
@@ -480,12 +623,23 @@ end
 -- * destination [Destination] <p>The destination.</p>
 -- @return PutDestinationResponse structure as a key-value pair table
 function M.PutDestinationResponse(args)
-	assert(args, "You must provdide an argument table when creating PutDestinationResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating PutDestinationResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["destination"] = args["destination"],
 	}
-	asserts.AssertPutDestinationResponse(t)
-	return t
+	asserts.AssertPutDestinationResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListTagsLogGroupRequest = { ["logGroupName"] = true, nil }
@@ -508,12 +662,23 @@ end
 -- Required key: logGroupName
 -- @return ListTagsLogGroupRequest structure as a key-value pair table
 function M.ListTagsLogGroupRequest(args)
-	assert(args, "You must provdide an argument table when creating ListTagsLogGroupRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListTagsLogGroupRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["logGroupName"] = args["logGroupName"],
 	}
-	asserts.AssertListTagsLogGroupRequest(t)
-	return t
+	asserts.AssertListTagsLogGroupRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ExportTaskStatus = { ["message"] = true, ["code"] = true, nil }
@@ -536,13 +701,24 @@ end
 -- * code [ExportTaskStatusCode] <p>The status code of the export task.</p>
 -- @return ExportTaskStatus structure as a key-value pair table
 function M.ExportTaskStatus(args)
-	assert(args, "You must provdide an argument table when creating ExportTaskStatus")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ExportTaskStatus")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 		["code"] = args["code"],
 	}
-	asserts.AssertExportTaskStatus(t)
-	return t
+	asserts.AssertExportTaskStatus(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.LimitExceededException = { nil }
@@ -561,11 +737,22 @@ end
 -- Valid keys:
 -- @return LimitExceededException structure as a key-value pair table
 function M.LimitExceededException(args)
-	assert(args, "You must provdide an argument table when creating LimitExceededException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating LimitExceededException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertLimitExceededException(t)
-	return t
+	asserts.AssertLimitExceededException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.PutDestinationPolicyRequest = { ["accessPolicy"] = true, ["destinationName"] = true, nil }
@@ -592,13 +779,24 @@ end
 -- Required key: accessPolicy
 -- @return PutDestinationPolicyRequest structure as a key-value pair table
 function M.PutDestinationPolicyRequest(args)
-	assert(args, "You must provdide an argument table when creating PutDestinationPolicyRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating PutDestinationPolicyRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["accessPolicy"] = args["accessPolicy"],
 		["destinationName"] = args["destinationName"],
 	}
-	asserts.AssertPutDestinationPolicyRequest(t)
-	return t
+	asserts.AssertPutDestinationPolicyRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CancelExportTaskRequest = { ["taskId"] = true, nil }
@@ -621,12 +819,23 @@ end
 -- Required key: taskId
 -- @return CancelExportTaskRequest structure as a key-value pair table
 function M.CancelExportTaskRequest(args)
-	assert(args, "You must provdide an argument table when creating CancelExportTaskRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CancelExportTaskRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["taskId"] = args["taskId"],
 	}
-	asserts.AssertCancelExportTaskRequest(t)
-	return t
+	asserts.AssertCancelExportTaskRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateLogGroupRequest = { ["logGroupName"] = true, ["tags"] = true, nil }
@@ -651,13 +860,24 @@ end
 -- Required key: logGroupName
 -- @return CreateLogGroupRequest structure as a key-value pair table
 function M.CreateLogGroupRequest(args)
-	assert(args, "You must provdide an argument table when creating CreateLogGroupRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateLogGroupRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["logGroupName"] = args["logGroupName"],
 		["tags"] = args["tags"],
 	}
-	asserts.AssertCreateLogGroupRequest(t)
-	return t
+	asserts.AssertCreateLogGroupRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteMetricFilterRequest = { ["filterName"] = true, ["logGroupName"] = true, nil }
@@ -684,13 +904,24 @@ end
 -- Required key: filterName
 -- @return DeleteMetricFilterRequest structure as a key-value pair table
 function M.DeleteMetricFilterRequest(args)
-	assert(args, "You must provdide an argument table when creating DeleteMetricFilterRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteMetricFilterRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["filterName"] = args["filterName"],
 		["logGroupName"] = args["logGroupName"],
 	}
-	asserts.AssertDeleteMetricFilterRequest(t)
-	return t
+	asserts.AssertDeleteMetricFilterRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.RejectedLogEventsInfo = { ["tooNewLogEventStartIndex"] = true, ["tooOldLogEventEndIndex"] = true, ["expiredLogEventEndIndex"] = true, nil }
@@ -715,14 +946,25 @@ end
 -- * expiredLogEventEndIndex [LogEventIndex] <p>The expired log events.</p>
 -- @return RejectedLogEventsInfo structure as a key-value pair table
 function M.RejectedLogEventsInfo(args)
-	assert(args, "You must provdide an argument table when creating RejectedLogEventsInfo")
-	local t = { 
+	assert(args, "You must provide an argument table when creating RejectedLogEventsInfo")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["tooNewLogEventStartIndex"] = args["tooNewLogEventStartIndex"],
 		["tooOldLogEventEndIndex"] = args["tooOldLogEventEndIndex"],
 		["expiredLogEventEndIndex"] = args["expiredLogEventEndIndex"],
 	}
-	asserts.AssertRejectedLogEventsInfo(t)
-	return t
+	asserts.AssertRejectedLogEventsInfo(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.PutRetentionPolicyRequest = { ["retentionInDays"] = true, ["logGroupName"] = true, nil }
@@ -749,13 +991,24 @@ end
 -- Required key: retentionInDays
 -- @return PutRetentionPolicyRequest structure as a key-value pair table
 function M.PutRetentionPolicyRequest(args)
-	assert(args, "You must provdide an argument table when creating PutRetentionPolicyRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating PutRetentionPolicyRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["retentionInDays"] = args["retentionInDays"],
 		["logGroupName"] = args["logGroupName"],
 	}
-	asserts.AssertPutRetentionPolicyRequest(t)
-	return t
+	asserts.AssertPutRetentionPolicyRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.MetricTransformation = { ["defaultValue"] = true, ["metricValue"] = true, ["metricNamespace"] = true, ["metricName"] = true, nil }
@@ -788,15 +1041,26 @@ end
 -- Required key: metricValue
 -- @return MetricTransformation structure as a key-value pair table
 function M.MetricTransformation(args)
-	assert(args, "You must provdide an argument table when creating MetricTransformation")
-	local t = { 
+	assert(args, "You must provide an argument table when creating MetricTransformation")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["defaultValue"] = args["defaultValue"],
 		["metricValue"] = args["metricValue"],
 		["metricNamespace"] = args["metricNamespace"],
 		["metricName"] = args["metricName"],
 	}
-	asserts.AssertMetricTransformation(t)
-	return t
+	asserts.AssertMetricTransformation(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteLogStreamRequest = { ["logStreamName"] = true, ["logGroupName"] = true, nil }
@@ -823,13 +1087,24 @@ end
 -- Required key: logStreamName
 -- @return DeleteLogStreamRequest structure as a key-value pair table
 function M.DeleteLogStreamRequest(args)
-	assert(args, "You must provdide an argument table when creating DeleteLogStreamRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteLogStreamRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["logStreamName"] = args["logStreamName"],
 		["logGroupName"] = args["logGroupName"],
 	}
-	asserts.AssertDeleteLogStreamRequest(t)
-	return t
+	asserts.AssertDeleteLogStreamRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.PutMetricFilterRequest = { ["filterName"] = true, ["metricTransformations"] = true, ["filterPattern"] = true, ["logGroupName"] = true, nil }
@@ -864,15 +1139,26 @@ end
 -- Required key: metricTransformations
 -- @return PutMetricFilterRequest structure as a key-value pair table
 function M.PutMetricFilterRequest(args)
-	assert(args, "You must provdide an argument table when creating PutMetricFilterRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating PutMetricFilterRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["filterName"] = args["filterName"],
 		["metricTransformations"] = args["metricTransformations"],
 		["filterPattern"] = args["filterPattern"],
 		["logGroupName"] = args["logGroupName"],
 	}
-	asserts.AssertPutMetricFilterRequest(t)
-	return t
+	asserts.AssertPutMetricFilterRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.TagLogGroupRequest = { ["logGroupName"] = true, ["tags"] = true, nil }
@@ -899,13 +1185,24 @@ end
 -- Required key: tags
 -- @return TagLogGroupRequest structure as a key-value pair table
 function M.TagLogGroupRequest(args)
-	assert(args, "You must provdide an argument table when creating TagLogGroupRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating TagLogGroupRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["logGroupName"] = args["logGroupName"],
 		["tags"] = args["tags"],
 	}
-	asserts.AssertTagLogGroupRequest(t)
-	return t
+	asserts.AssertTagLogGroupRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.MetricFilterMatchRecord = { ["eventNumber"] = true, ["eventMessage"] = true, ["extractedValues"] = true, nil }
@@ -930,14 +1227,25 @@ end
 -- * extractedValues [ExtractedValues] <p>The values extracted from the event data by the filter.</p>
 -- @return MetricFilterMatchRecord structure as a key-value pair table
 function M.MetricFilterMatchRecord(args)
-	assert(args, "You must provdide an argument table when creating MetricFilterMatchRecord")
-	local t = { 
+	assert(args, "You must provide an argument table when creating MetricFilterMatchRecord")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["eventNumber"] = args["eventNumber"],
 		["eventMessage"] = args["eventMessage"],
 		["extractedValues"] = args["extractedValues"],
 	}
-	asserts.AssertMetricFilterMatchRecord(t)
-	return t
+	asserts.AssertMetricFilterMatchRecord(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetLogEventsResponse = { ["nextForwardToken"] = true, ["events"] = true, ["nextBackwardToken"] = true, nil }
@@ -962,14 +1270,25 @@ end
 -- * nextBackwardToken [NextToken] <p>The token for the next set of items in the backward direction. The token expires after 24 hours.</p>
 -- @return GetLogEventsResponse structure as a key-value pair table
 function M.GetLogEventsResponse(args)
-	assert(args, "You must provdide an argument table when creating GetLogEventsResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetLogEventsResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["nextForwardToken"] = args["nextForwardToken"],
 		["events"] = args["events"],
 		["nextBackwardToken"] = args["nextBackwardToken"],
 	}
-	asserts.AssertGetLogEventsResponse(t)
-	return t
+	asserts.AssertGetLogEventsResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DataAlreadyAcceptedException = { ["expectedSequenceToken"] = true, nil }
@@ -990,12 +1309,23 @@ end
 -- * expectedSequenceToken [SequenceToken] 
 -- @return DataAlreadyAcceptedException structure as a key-value pair table
 function M.DataAlreadyAcceptedException(args)
-	assert(args, "You must provdide an argument table when creating DataAlreadyAcceptedException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DataAlreadyAcceptedException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["expectedSequenceToken"] = args["expectedSequenceToken"],
 	}
-	asserts.AssertDataAlreadyAcceptedException(t)
-	return t
+	asserts.AssertDataAlreadyAcceptedException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.FilteredLogEvent = { ["ingestionTime"] = true, ["timestamp"] = true, ["message"] = true, ["eventId"] = true, ["logStreamName"] = true, nil }
@@ -1024,16 +1354,27 @@ end
 -- * logStreamName [LogStreamName] <p>The name of the log stream this event belongs to.</p>
 -- @return FilteredLogEvent structure as a key-value pair table
 function M.FilteredLogEvent(args)
-	assert(args, "You must provdide an argument table when creating FilteredLogEvent")
-	local t = { 
+	assert(args, "You must provide an argument table when creating FilteredLogEvent")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ingestionTime"] = args["ingestionTime"],
 		["timestamp"] = args["timestamp"],
 		["message"] = args["message"],
 		["eventId"] = args["eventId"],
 		["logStreamName"] = args["logStreamName"],
 	}
-	asserts.AssertFilteredLogEvent(t)
-	return t
+	asserts.AssertFilteredLogEvent(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ResourceAlreadyExistsException = { nil }
@@ -1052,11 +1393,22 @@ end
 -- Valid keys:
 -- @return ResourceAlreadyExistsException structure as a key-value pair table
 function M.ResourceAlreadyExistsException(args)
-	assert(args, "You must provdide an argument table when creating ResourceAlreadyExistsException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ResourceAlreadyExistsException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertResourceAlreadyExistsException(t)
-	return t
+	asserts.AssertResourceAlreadyExistsException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeMetricFiltersResponse = { ["metricFilters"] = true, ["nextToken"] = true, nil }
@@ -1079,13 +1431,24 @@ end
 -- * nextToken [NextToken] 
 -- @return DescribeMetricFiltersResponse structure as a key-value pair table
 function M.DescribeMetricFiltersResponse(args)
-	assert(args, "You must provdide an argument table when creating DescribeMetricFiltersResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeMetricFiltersResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["metricFilters"] = args["metricFilters"],
 		["nextToken"] = args["nextToken"],
 	}
-	asserts.AssertDescribeMetricFiltersResponse(t)
-	return t
+	asserts.AssertDescribeMetricFiltersResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateLogStreamRequest = { ["logStreamName"] = true, ["logGroupName"] = true, nil }
@@ -1112,13 +1475,24 @@ end
 -- Required key: logStreamName
 -- @return CreateLogStreamRequest structure as a key-value pair table
 function M.CreateLogStreamRequest(args)
-	assert(args, "You must provdide an argument table when creating CreateLogStreamRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateLogStreamRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["logStreamName"] = args["logStreamName"],
 		["logGroupName"] = args["logGroupName"],
 	}
-	asserts.AssertCreateLogStreamRequest(t)
-	return t
+	asserts.AssertCreateLogStreamRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.OperationAbortedException = { nil }
@@ -1137,11 +1511,22 @@ end
 -- Valid keys:
 -- @return OperationAbortedException structure as a key-value pair table
 function M.OperationAbortedException(args)
-	assert(args, "You must provdide an argument table when creating OperationAbortedException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating OperationAbortedException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertOperationAbortedException(t)
-	return t
+	asserts.AssertOperationAbortedException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.SubscriptionFilter = { ["filterPattern"] = true, ["filterName"] = true, ["roleArn"] = true, ["creationTime"] = true, ["logGroupName"] = true, ["destinationArn"] = true, ["distribution"] = true, nil }
@@ -1174,8 +1559,14 @@ end
 -- * distribution [Distribution] <p>The method used to distribute log data to the destination, when the destination is an Amazon Kinesis stream.</p>
 -- @return SubscriptionFilter structure as a key-value pair table
 function M.SubscriptionFilter(args)
-	assert(args, "You must provdide an argument table when creating SubscriptionFilter")
-	local t = { 
+	assert(args, "You must provide an argument table when creating SubscriptionFilter")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["filterPattern"] = args["filterPattern"],
 		["filterName"] = args["filterName"],
 		["roleArn"] = args["roleArn"],
@@ -1184,8 +1575,13 @@ function M.SubscriptionFilter(args)
 		["destinationArn"] = args["destinationArn"],
 		["distribution"] = args["distribution"],
 	}
-	asserts.AssertSubscriptionFilter(t)
-	return t
+	asserts.AssertSubscriptionFilter(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateExportTaskResponse = { ["taskId"] = true, nil }
@@ -1206,12 +1602,23 @@ end
 -- * taskId [ExportTaskId] <p>The ID of the export task.</p>
 -- @return CreateExportTaskResponse structure as a key-value pair table
 function M.CreateExportTaskResponse(args)
-	assert(args, "You must provdide an argument table when creating CreateExportTaskResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateExportTaskResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["taskId"] = args["taskId"],
 	}
-	asserts.AssertCreateExportTaskResponse(t)
-	return t
+	asserts.AssertCreateExportTaskResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.PutLogEventsResponse = { ["nextSequenceToken"] = true, ["rejectedLogEventsInfo"] = true, nil }
@@ -1234,13 +1641,24 @@ end
 -- * rejectedLogEventsInfo [RejectedLogEventsInfo] <p>The rejected events.</p>
 -- @return PutLogEventsResponse structure as a key-value pair table
 function M.PutLogEventsResponse(args)
-	assert(args, "You must provdide an argument table when creating PutLogEventsResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating PutLogEventsResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["nextSequenceToken"] = args["nextSequenceToken"],
 		["rejectedLogEventsInfo"] = args["rejectedLogEventsInfo"],
 	}
-	asserts.AssertPutLogEventsResponse(t)
-	return t
+	asserts.AssertPutLogEventsResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateExportTaskRequest = { ["from"] = true, ["destinationPrefix"] = true, ["destination"] = true, ["logGroupName"] = true, ["to"] = true, ["logStreamNamePrefix"] = true, ["taskName"] = true, nil }
@@ -1281,8 +1699,14 @@ end
 -- Required key: destination
 -- @return CreateExportTaskRequest structure as a key-value pair table
 function M.CreateExportTaskRequest(args)
-	assert(args, "You must provdide an argument table when creating CreateExportTaskRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateExportTaskRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["from"] = args["from"],
 		["destinationPrefix"] = args["destinationPrefix"],
 		["destination"] = args["destination"],
@@ -1291,8 +1715,13 @@ function M.CreateExportTaskRequest(args)
 		["logStreamNamePrefix"] = args["logStreamNamePrefix"],
 		["taskName"] = args["taskName"],
 	}
-	asserts.AssertCreateExportTaskRequest(t)
-	return t
+	asserts.AssertCreateExportTaskRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeMetricFiltersRequest = { ["logGroupName"] = true, ["filterNamePrefix"] = true, ["limit"] = true, ["metricNamespace"] = true, ["nextToken"] = true, ["metricName"] = true, nil }
@@ -1323,8 +1752,14 @@ end
 -- * metricName [MetricName] <p>The name of the CloudWatch metric.</p>
 -- @return DescribeMetricFiltersRequest structure as a key-value pair table
 function M.DescribeMetricFiltersRequest(args)
-	assert(args, "You must provdide an argument table when creating DescribeMetricFiltersRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeMetricFiltersRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["logGroupName"] = args["logGroupName"],
 		["filterNamePrefix"] = args["filterNamePrefix"],
 		["limit"] = args["limit"],
@@ -1332,8 +1767,13 @@ function M.DescribeMetricFiltersRequest(args)
 		["nextToken"] = args["nextToken"],
 		["metricName"] = args["metricName"],
 	}
-	asserts.AssertDescribeMetricFiltersRequest(t)
-	return t
+	asserts.AssertDescribeMetricFiltersRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.PutDestinationRequest = { ["targetArn"] = true, ["roleArn"] = true, ["destinationName"] = true, nil }
@@ -1364,14 +1804,25 @@ end
 -- Required key: roleArn
 -- @return PutDestinationRequest structure as a key-value pair table
 function M.PutDestinationRequest(args)
-	assert(args, "You must provdide an argument table when creating PutDestinationRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating PutDestinationRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["targetArn"] = args["targetArn"],
 		["roleArn"] = args["roleArn"],
 		["destinationName"] = args["destinationName"],
 	}
-	asserts.AssertPutDestinationRequest(t)
-	return t
+	asserts.AssertPutDestinationRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UntagLogGroupRequest = { ["logGroupName"] = true, ["tags"] = true, nil }
@@ -1398,13 +1849,24 @@ end
 -- Required key: tags
 -- @return UntagLogGroupRequest structure as a key-value pair table
 function M.UntagLogGroupRequest(args)
-	assert(args, "You must provdide an argument table when creating UntagLogGroupRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UntagLogGroupRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["logGroupName"] = args["logGroupName"],
 		["tags"] = args["tags"],
 	}
-	asserts.AssertUntagLogGroupRequest(t)
-	return t
+	asserts.AssertUntagLogGroupRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeExportTasksResponse = { ["nextToken"] = true, ["exportTasks"] = true, nil }
@@ -1427,13 +1889,24 @@ end
 -- * exportTasks [ExportTasks] <p>The export tasks.</p>
 -- @return DescribeExportTasksResponse structure as a key-value pair table
 function M.DescribeExportTasksResponse(args)
-	assert(args, "You must provdide an argument table when creating DescribeExportTasksResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeExportTasksResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["nextToken"] = args["nextToken"],
 		["exportTasks"] = args["exportTasks"],
 	}
-	asserts.AssertDescribeExportTasksResponse(t)
-	return t
+	asserts.AssertDescribeExportTasksResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.PutSubscriptionFilterRequest = { ["filterPattern"] = true, ["filterName"] = true, ["roleArn"] = true, ["logGroupName"] = true, ["destinationArn"] = true, ["distribution"] = true, nil }
@@ -1472,8 +1945,14 @@ end
 -- Required key: destinationArn
 -- @return PutSubscriptionFilterRequest structure as a key-value pair table
 function M.PutSubscriptionFilterRequest(args)
-	assert(args, "You must provdide an argument table when creating PutSubscriptionFilterRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating PutSubscriptionFilterRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["filterPattern"] = args["filterPattern"],
 		["filterName"] = args["filterName"],
 		["roleArn"] = args["roleArn"],
@@ -1481,8 +1960,13 @@ function M.PutSubscriptionFilterRequest(args)
 		["destinationArn"] = args["destinationArn"],
 		["distribution"] = args["distribution"],
 	}
-	asserts.AssertPutSubscriptionFilterRequest(t)
-	return t
+	asserts.AssertPutSubscriptionFilterRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidOperationException = { nil }
@@ -1501,11 +1985,22 @@ end
 -- Valid keys:
 -- @return InvalidOperationException structure as a key-value pair table
 function M.InvalidOperationException(args)
-	assert(args, "You must provdide an argument table when creating InvalidOperationException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidOperationException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertInvalidOperationException(t)
-	return t
+	asserts.AssertInvalidOperationException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeSubscriptionFiltersRequest = { ["nextToken"] = true, ["limit"] = true, ["logGroupName"] = true, ["filterNamePrefix"] = true, nil }
@@ -1534,15 +2029,26 @@ end
 -- Required key: logGroupName
 -- @return DescribeSubscriptionFiltersRequest structure as a key-value pair table
 function M.DescribeSubscriptionFiltersRequest(args)
-	assert(args, "You must provdide an argument table when creating DescribeSubscriptionFiltersRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeSubscriptionFiltersRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["nextToken"] = args["nextToken"],
 		["limit"] = args["limit"],
 		["logGroupName"] = args["logGroupName"],
 		["filterNamePrefix"] = args["filterNamePrefix"],
 	}
-	asserts.AssertDescribeSubscriptionFiltersRequest(t)
-	return t
+	asserts.AssertDescribeSubscriptionFiltersRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ExportTaskExecutionInfo = { ["completionTime"] = true, ["creationTime"] = true, nil }
@@ -1565,13 +2071,24 @@ end
 -- * creationTime [Timestamp] <p>The creation time of the export task, expressed as the number of milliseconds since Jan 1, 1970 00:00:00 UTC.</p>
 -- @return ExportTaskExecutionInfo structure as a key-value pair table
 function M.ExportTaskExecutionInfo(args)
-	assert(args, "You must provdide an argument table when creating ExportTaskExecutionInfo")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ExportTaskExecutionInfo")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["completionTime"] = args["completionTime"],
 		["creationTime"] = args["creationTime"],
 	}
-	asserts.AssertExportTaskExecutionInfo(t)
-	return t
+	asserts.AssertExportTaskExecutionInfo(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ResourceNotFoundException = { nil }
@@ -1590,11 +2107,22 @@ end
 -- Valid keys:
 -- @return ResourceNotFoundException structure as a key-value pair table
 function M.ResourceNotFoundException(args)
-	assert(args, "You must provdide an argument table when creating ResourceNotFoundException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ResourceNotFoundException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertResourceNotFoundException(t)
-	return t
+	asserts.AssertResourceNotFoundException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.PutLogEventsRequest = { ["sequenceToken"] = true, ["logEvents"] = true, ["logStreamName"] = true, ["logGroupName"] = true, nil }
@@ -1627,15 +2155,26 @@ end
 -- Required key: logEvents
 -- @return PutLogEventsRequest structure as a key-value pair table
 function M.PutLogEventsRequest(args)
-	assert(args, "You must provdide an argument table when creating PutLogEventsRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating PutLogEventsRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["sequenceToken"] = args["sequenceToken"],
 		["logEvents"] = args["logEvents"],
 		["logStreamName"] = args["logStreamName"],
 		["logGroupName"] = args["logGroupName"],
 	}
-	asserts.AssertPutLogEventsRequest(t)
-	return t
+	asserts.AssertPutLogEventsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeLogGroupsRequest = { ["limit"] = true, ["nextToken"] = true, ["logGroupNamePrefix"] = true, nil }
@@ -1660,14 +2199,25 @@ end
 -- * logGroupNamePrefix [LogGroupName] <p>The prefix to match.</p>
 -- @return DescribeLogGroupsRequest structure as a key-value pair table
 function M.DescribeLogGroupsRequest(args)
-	assert(args, "You must provdide an argument table when creating DescribeLogGroupsRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeLogGroupsRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["limit"] = args["limit"],
 		["nextToken"] = args["nextToken"],
 		["logGroupNamePrefix"] = args["logGroupNamePrefix"],
 	}
-	asserts.AssertDescribeLogGroupsRequest(t)
-	return t
+	asserts.AssertDescribeLogGroupsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.SearchedLogStream = { ["searchedCompletely"] = true, ["logStreamName"] = true, nil }
@@ -1690,13 +2240,24 @@ end
 -- * logStreamName [LogStreamName] <p>The name of the log stream.</p>
 -- @return SearchedLogStream structure as a key-value pair table
 function M.SearchedLogStream(args)
-	assert(args, "You must provdide an argument table when creating SearchedLogStream")
-	local t = { 
+	assert(args, "You must provide an argument table when creating SearchedLogStream")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["searchedCompletely"] = args["searchedCompletely"],
 		["logStreamName"] = args["logStreamName"],
 	}
-	asserts.AssertSearchedLogStream(t)
-	return t
+	asserts.AssertSearchedLogStream(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeExportTasksRequest = { ["nextToken"] = true, ["limit"] = true, ["taskId"] = true, ["statusCode"] = true, nil }
@@ -1723,15 +2284,26 @@ end
 -- * statusCode [ExportTaskStatusCode] <p>The status code of the export task. Specifying a status code filters the results to zero or more export tasks.</p>
 -- @return DescribeExportTasksRequest structure as a key-value pair table
 function M.DescribeExportTasksRequest(args)
-	assert(args, "You must provdide an argument table when creating DescribeExportTasksRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeExportTasksRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["nextToken"] = args["nextToken"],
 		["limit"] = args["limit"],
 		["taskId"] = args["taskId"],
 		["statusCode"] = args["statusCode"],
 	}
-	asserts.AssertDescribeExportTasksRequest(t)
-	return t
+	asserts.AssertDescribeExportTasksRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidParameterException = { nil }
@@ -1750,11 +2322,22 @@ end
 -- Valid keys:
 -- @return InvalidParameterException structure as a key-value pair table
 function M.InvalidParameterException(args)
-	assert(args, "You must provdide an argument table when creating InvalidParameterException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidParameterException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertInvalidParameterException(t)
-	return t
+	asserts.AssertInvalidParameterException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InputLogEvent = { ["timestamp"] = true, ["message"] = true, nil }
@@ -1781,13 +2364,24 @@ end
 -- Required key: message
 -- @return InputLogEvent structure as a key-value pair table
 function M.InputLogEvent(args)
-	assert(args, "You must provdide an argument table when creating InputLogEvent")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InputLogEvent")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["timestamp"] = args["timestamp"],
 		["message"] = args["message"],
 	}
-	asserts.AssertInputLogEvent(t)
-	return t
+	asserts.AssertInputLogEvent(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.LogGroup = { ["storedBytes"] = true, ["metricFilterCount"] = true, ["creationTime"] = true, ["logGroupName"] = true, ["retentionInDays"] = true, ["arn"] = true, nil }
@@ -1818,8 +2412,14 @@ end
 -- * arn [Arn] <p>The Amazon Resource Name (ARN) of the log group.</p>
 -- @return LogGroup structure as a key-value pair table
 function M.LogGroup(args)
-	assert(args, "You must provdide an argument table when creating LogGroup")
-	local t = { 
+	assert(args, "You must provide an argument table when creating LogGroup")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["storedBytes"] = args["storedBytes"],
 		["metricFilterCount"] = args["metricFilterCount"],
 		["creationTime"] = args["creationTime"],
@@ -1827,8 +2427,13 @@ function M.LogGroup(args)
 		["retentionInDays"] = args["retentionInDays"],
 		["arn"] = args["arn"],
 	}
-	asserts.AssertLogGroup(t)
-	return t
+	asserts.AssertLogGroup(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListTagsLogGroupResponse = { ["tags"] = true, nil }
@@ -1849,12 +2454,23 @@ end
 -- * tags [Tags] <p>The tags.</p>
 -- @return ListTagsLogGroupResponse structure as a key-value pair table
 function M.ListTagsLogGroupResponse(args)
-	assert(args, "You must provdide an argument table when creating ListTagsLogGroupResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListTagsLogGroupResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["tags"] = args["tags"],
 	}
-	asserts.AssertListTagsLogGroupResponse(t)
-	return t
+	asserts.AssertListTagsLogGroupResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteDestinationRequest = { ["destinationName"] = true, nil }
@@ -1877,12 +2493,23 @@ end
 -- Required key: destinationName
 -- @return DeleteDestinationRequest structure as a key-value pair table
 function M.DeleteDestinationRequest(args)
-	assert(args, "You must provdide an argument table when creating DeleteDestinationRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteDestinationRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["destinationName"] = args["destinationName"],
 	}
-	asserts.AssertDeleteDestinationRequest(t)
-	return t
+	asserts.AssertDeleteDestinationRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeLogStreamsRequest = { ["orderBy"] = true, ["logStreamNamePrefix"] = true, ["logGroupName"] = true, ["descending"] = true, ["limit"] = true, ["nextToken"] = true, nil }
@@ -1915,8 +2542,14 @@ end
 -- Required key: logGroupName
 -- @return DescribeLogStreamsRequest structure as a key-value pair table
 function M.DescribeLogStreamsRequest(args)
-	assert(args, "You must provdide an argument table when creating DescribeLogStreamsRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeLogStreamsRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["orderBy"] = args["orderBy"],
 		["logStreamNamePrefix"] = args["logStreamNamePrefix"],
 		["logGroupName"] = args["logGroupName"],
@@ -1924,8 +2557,13 @@ function M.DescribeLogStreamsRequest(args)
 		["limit"] = args["limit"],
 		["nextToken"] = args["nextToken"],
 	}
-	asserts.AssertDescribeLogStreamsRequest(t)
-	return t
+	asserts.AssertDescribeLogStreamsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteRetentionPolicyRequest = { ["logGroupName"] = true, nil }
@@ -1948,12 +2586,23 @@ end
 -- Required key: logGroupName
 -- @return DeleteRetentionPolicyRequest structure as a key-value pair table
 function M.DeleteRetentionPolicyRequest(args)
-	assert(args, "You must provdide an argument table when creating DeleteRetentionPolicyRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteRetentionPolicyRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["logGroupName"] = args["logGroupName"],
 	}
-	asserts.AssertDeleteRetentionPolicyRequest(t)
-	return t
+	asserts.AssertDeleteRetentionPolicyRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetLogEventsRequest = { ["endTime"] = true, ["logStreamName"] = true, ["logGroupName"] = true, ["limit"] = true, ["startTime"] = true, ["nextToken"] = true, ["startFromHead"] = true, nil }
@@ -1990,8 +2639,14 @@ end
 -- Required key: logStreamName
 -- @return GetLogEventsRequest structure as a key-value pair table
 function M.GetLogEventsRequest(args)
-	assert(args, "You must provdide an argument table when creating GetLogEventsRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetLogEventsRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["endTime"] = args["endTime"],
 		["logStreamName"] = args["logStreamName"],
 		["logGroupName"] = args["logGroupName"],
@@ -2000,8 +2655,13 @@ function M.GetLogEventsRequest(args)
 		["nextToken"] = args["nextToken"],
 		["startFromHead"] = args["startFromHead"],
 	}
-	asserts.AssertGetLogEventsRequest(t)
-	return t
+	asserts.AssertGetLogEventsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.FilterLogEventsResponse = { ["searchedLogStreams"] = true, ["nextToken"] = true, ["events"] = true, nil }
@@ -2026,14 +2686,25 @@ end
 -- * events [FilteredLogEvents] <p>The matched events.</p>
 -- @return FilterLogEventsResponse structure as a key-value pair table
 function M.FilterLogEventsResponse(args)
-	assert(args, "You must provdide an argument table when creating FilterLogEventsResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating FilterLogEventsResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["searchedLogStreams"] = args["searchedLogStreams"],
 		["nextToken"] = args["nextToken"],
 		["events"] = args["events"],
 	}
-	asserts.AssertFilterLogEventsResponse(t)
-	return t
+	asserts.AssertFilterLogEventsResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeSubscriptionFiltersResponse = { ["nextToken"] = true, ["subscriptionFilters"] = true, nil }
@@ -2056,13 +2727,24 @@ end
 -- * subscriptionFilters [SubscriptionFilters] <p>The subscription filters.</p>
 -- @return DescribeSubscriptionFiltersResponse structure as a key-value pair table
 function M.DescribeSubscriptionFiltersResponse(args)
-	assert(args, "You must provdide an argument table when creating DescribeSubscriptionFiltersResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeSubscriptionFiltersResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["nextToken"] = args["nextToken"],
 		["subscriptionFilters"] = args["subscriptionFilters"],
 	}
-	asserts.AssertDescribeSubscriptionFiltersResponse(t)
-	return t
+	asserts.AssertDescribeSubscriptionFiltersResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.TestMetricFilterResponse = { ["matches"] = true, nil }
@@ -2083,12 +2765,23 @@ end
 -- * matches [MetricFilterMatches] <p>The matched events.</p>
 -- @return TestMetricFilterResponse structure as a key-value pair table
 function M.TestMetricFilterResponse(args)
-	assert(args, "You must provdide an argument table when creating TestMetricFilterResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating TestMetricFilterResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["matches"] = args["matches"],
 	}
-	asserts.AssertTestMetricFilterResponse(t)
-	return t
+	asserts.AssertTestMetricFilterResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteLogGroupRequest = { ["logGroupName"] = true, nil }
@@ -2111,12 +2804,23 @@ end
 -- Required key: logGroupName
 -- @return DeleteLogGroupRequest structure as a key-value pair table
 function M.DeleteLogGroupRequest(args)
-	assert(args, "You must provdide an argument table when creating DeleteLogGroupRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteLogGroupRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["logGroupName"] = args["logGroupName"],
 	}
-	asserts.AssertDeleteLogGroupRequest(t)
-	return t
+	asserts.AssertDeleteLogGroupRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ExportTask = { ["status"] = true, ["from"] = true, ["destinationPrefix"] = true, ["destination"] = true, ["logGroupName"] = true, ["to"] = true, ["taskId"] = true, ["taskName"] = true, ["executionInfo"] = true, nil }
@@ -2153,8 +2857,14 @@ end
 -- * executionInfo [ExportTaskExecutionInfo] <p>Execution info about the export task.</p>
 -- @return ExportTask structure as a key-value pair table
 function M.ExportTask(args)
-	assert(args, "You must provdide an argument table when creating ExportTask")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ExportTask")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["status"] = args["status"],
 		["from"] = args["from"],
 		["destinationPrefix"] = args["destinationPrefix"],
@@ -2165,8 +2875,13 @@ function M.ExportTask(args)
 		["taskName"] = args["taskName"],
 		["executionInfo"] = args["executionInfo"],
 	}
-	asserts.AssertExportTask(t)
-	return t
+	asserts.AssertExportTask(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 function asserts.AssertTagKey(str)
@@ -2972,8 +3687,11 @@ function M.PutDestinationAsync(PutDestinationRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "Logs_20140328.PutDestination",
 	}
+	for header,value in pairs(PutDestinationRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", PutDestinationRequest, headers, settings, cb)
 	else
@@ -3004,8 +3722,11 @@ function M.DeleteDestinationAsync(DeleteDestinationRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "Logs_20140328.DeleteDestination",
 	}
+	for header,value in pairs(DeleteDestinationRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteDestinationRequest, headers, settings, cb)
 	else
@@ -3036,8 +3757,11 @@ function M.ListTagsLogGroupAsync(ListTagsLogGroupRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "Logs_20140328.ListTagsLogGroup",
 	}
+	for header,value in pairs(ListTagsLogGroupRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ListTagsLogGroupRequest, headers, settings, cb)
 	else
@@ -3068,8 +3792,11 @@ function M.DescribeLogStreamsAsync(DescribeLogStreamsRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "Logs_20140328.DescribeLogStreams",
 	}
+	for header,value in pairs(DescribeLogStreamsRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeLogStreamsRequest, headers, settings, cb)
 	else
@@ -3100,8 +3827,11 @@ function M.CreateExportTaskAsync(CreateExportTaskRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "Logs_20140328.CreateExportTask",
 	}
+	for header,value in pairs(CreateExportTaskRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateExportTaskRequest, headers, settings, cb)
 	else
@@ -3132,8 +3862,11 @@ function M.TestMetricFilterAsync(TestMetricFilterRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "Logs_20140328.TestMetricFilter",
 	}
+	for header,value in pairs(TestMetricFilterRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", TestMetricFilterRequest, headers, settings, cb)
 	else
@@ -3164,8 +3897,11 @@ function M.DeleteLogGroupAsync(DeleteLogGroupRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "Logs_20140328.DeleteLogGroup",
 	}
+	for header,value in pairs(DeleteLogGroupRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteLogGroupRequest, headers, settings, cb)
 	else
@@ -3196,8 +3932,11 @@ function M.DescribeMetricFiltersAsync(DescribeMetricFiltersRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "Logs_20140328.DescribeMetricFilters",
 	}
+	for header,value in pairs(DescribeMetricFiltersRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeMetricFiltersRequest, headers, settings, cb)
 	else
@@ -3228,8 +3967,11 @@ function M.FilterLogEventsAsync(FilterLogEventsRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "Logs_20140328.FilterLogEvents",
 	}
+	for header,value in pairs(FilterLogEventsRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", FilterLogEventsRequest, headers, settings, cb)
 	else
@@ -3260,8 +4002,11 @@ function M.CreateLogGroupAsync(CreateLogGroupRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "Logs_20140328.CreateLogGroup",
 	}
+	for header,value in pairs(CreateLogGroupRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateLogGroupRequest, headers, settings, cb)
 	else
@@ -3292,8 +4037,11 @@ function M.DeleteSubscriptionFilterAsync(DeleteSubscriptionFilterRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "Logs_20140328.DeleteSubscriptionFilter",
 	}
+	for header,value in pairs(DeleteSubscriptionFilterRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteSubscriptionFilterRequest, headers, settings, cb)
 	else
@@ -3324,8 +4072,11 @@ function M.PutMetricFilterAsync(PutMetricFilterRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "Logs_20140328.PutMetricFilter",
 	}
+	for header,value in pairs(PutMetricFilterRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", PutMetricFilterRequest, headers, settings, cb)
 	else
@@ -3356,8 +4107,11 @@ function M.PutLogEventsAsync(PutLogEventsRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "Logs_20140328.PutLogEvents",
 	}
+	for header,value in pairs(PutLogEventsRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", PutLogEventsRequest, headers, settings, cb)
 	else
@@ -3388,8 +4142,11 @@ function M.DescribeLogGroupsAsync(DescribeLogGroupsRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "Logs_20140328.DescribeLogGroups",
 	}
+	for header,value in pairs(DescribeLogGroupsRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeLogGroupsRequest, headers, settings, cb)
 	else
@@ -3420,8 +4177,11 @@ function M.DescribeDestinationsAsync(DescribeDestinationsRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "Logs_20140328.DescribeDestinations",
 	}
+	for header,value in pairs(DescribeDestinationsRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeDestinationsRequest, headers, settings, cb)
 	else
@@ -3452,8 +4212,11 @@ function M.PutRetentionPolicyAsync(PutRetentionPolicyRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "Logs_20140328.PutRetentionPolicy",
 	}
+	for header,value in pairs(PutRetentionPolicyRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", PutRetentionPolicyRequest, headers, settings, cb)
 	else
@@ -3484,8 +4247,11 @@ function M.DescribeSubscriptionFiltersAsync(DescribeSubscriptionFiltersRequest, 
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "Logs_20140328.DescribeSubscriptionFilters",
 	}
+	for header,value in pairs(DescribeSubscriptionFiltersRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeSubscriptionFiltersRequest, headers, settings, cb)
 	else
@@ -3516,8 +4282,11 @@ function M.DescribeExportTasksAsync(DescribeExportTasksRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "Logs_20140328.DescribeExportTasks",
 	}
+	for header,value in pairs(DescribeExportTasksRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeExportTasksRequest, headers, settings, cb)
 	else
@@ -3548,8 +4317,11 @@ function M.TagLogGroupAsync(TagLogGroupRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "Logs_20140328.TagLogGroup",
 	}
+	for header,value in pairs(TagLogGroupRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", TagLogGroupRequest, headers, settings, cb)
 	else
@@ -3580,8 +4352,11 @@ function M.PutSubscriptionFilterAsync(PutSubscriptionFilterRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "Logs_20140328.PutSubscriptionFilter",
 	}
+	for header,value in pairs(PutSubscriptionFilterRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", PutSubscriptionFilterRequest, headers, settings, cb)
 	else
@@ -3612,8 +4387,11 @@ function M.DeleteMetricFilterAsync(DeleteMetricFilterRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "Logs_20140328.DeleteMetricFilter",
 	}
+	for header,value in pairs(DeleteMetricFilterRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteMetricFilterRequest, headers, settings, cb)
 	else
@@ -3644,8 +4422,11 @@ function M.PutDestinationPolicyAsync(PutDestinationPolicyRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "Logs_20140328.PutDestinationPolicy",
 	}
+	for header,value in pairs(PutDestinationPolicyRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", PutDestinationPolicyRequest, headers, settings, cb)
 	else
@@ -3676,8 +4457,11 @@ function M.CreateLogStreamAsync(CreateLogStreamRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "Logs_20140328.CreateLogStream",
 	}
+	for header,value in pairs(CreateLogStreamRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateLogStreamRequest, headers, settings, cb)
 	else
@@ -3708,8 +4492,11 @@ function M.CancelExportTaskAsync(CancelExportTaskRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "Logs_20140328.CancelExportTask",
 	}
+	for header,value in pairs(CancelExportTaskRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", CancelExportTaskRequest, headers, settings, cb)
 	else
@@ -3740,8 +4527,11 @@ function M.UntagLogGroupAsync(UntagLogGroupRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "Logs_20140328.UntagLogGroup",
 	}
+	for header,value in pairs(UntagLogGroupRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", UntagLogGroupRequest, headers, settings, cb)
 	else
@@ -3772,8 +4562,11 @@ function M.DeleteRetentionPolicyAsync(DeleteRetentionPolicyRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "Logs_20140328.DeleteRetentionPolicy",
 	}
+	for header,value in pairs(DeleteRetentionPolicyRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteRetentionPolicyRequest, headers, settings, cb)
 	else
@@ -3804,8 +4597,11 @@ function M.GetLogEventsAsync(GetLogEventsRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "Logs_20140328.GetLogEvents",
 	}
+	for header,value in pairs(GetLogEventsRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", GetLogEventsRequest, headers, settings, cb)
 	else
@@ -3836,8 +4632,11 @@ function M.DeleteLogStreamAsync(DeleteLogStreamRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "Logs_20140328.DeleteLogStream",
 	}
+	for header,value in pairs(DeleteLogStreamRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteLogStreamRequest, headers, settings, cb)
 	else

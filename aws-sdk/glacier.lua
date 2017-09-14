@@ -41,12 +41,24 @@ end
 -- Required key: accountId
 -- @return GetDataRetrievalPolicyInput structure as a key-value pair table
 function M.GetDataRetrievalPolicyInput(args)
-	assert(args, "You must provdide an argument table when creating GetDataRetrievalPolicyInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetDataRetrievalPolicyInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{accountId}"] = args["accountId"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["accountId"] = args["accountId"],
 	}
-	asserts.AssertGetDataRetrievalPolicyInput(t)
-	return t
+	asserts.AssertGetDataRetrievalPolicyInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ProvisionedCapacityDescription = { ["CapacityId"] = true, ["ExpirationDate"] = true, ["StartDate"] = true, nil }
@@ -71,14 +83,25 @@ end
 -- * StartDate [string] <p>The date that the provisioned capacity unit was purchased, in Universal Coordinated Time (UTC).</p>
 -- @return ProvisionedCapacityDescription structure as a key-value pair table
 function M.ProvisionedCapacityDescription(args)
-	assert(args, "You must provdide an argument table when creating ProvisionedCapacityDescription")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ProvisionedCapacityDescription")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["CapacityId"] = args["CapacityId"],
 		["ExpirationDate"] = args["ExpirationDate"],
 		["StartDate"] = args["StartDate"],
 	}
-	asserts.AssertProvisionedCapacityDescription(t)
-	return t
+	asserts.AssertProvisionedCapacityDescription(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetJobOutputInput = { ["range"] = true, ["jobId"] = true, ["vaultName"] = true, ["accountId"] = true, nil }
@@ -111,15 +134,30 @@ end
 -- Required key: jobId
 -- @return GetJobOutputInput structure as a key-value pair table
 function M.GetJobOutputInput(args)
-	assert(args, "You must provdide an argument table when creating GetJobOutputInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetJobOutputInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{jobId}"] = args["jobId"],
+        ["{vaultName}"] = args["vaultName"],
+        ["{accountId}"] = args["accountId"],
+    }
+    local header_args = { 
+        ["Range"] = args["range"],
+    }
+	local all_args = { 
 		["range"] = args["range"],
 		["jobId"] = args["jobId"],
 		["vaultName"] = args["vaultName"],
 		["accountId"] = args["accountId"],
 	}
-	asserts.AssertGetJobOutputInput(t)
-	return t
+	asserts.AssertGetJobOutputInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UploadArchiveInput = { ["body"] = true, ["checksum"] = true, ["archiveDescription"] = true, ["vaultName"] = true, ["accountId"] = true, nil }
@@ -152,16 +190,31 @@ end
 -- Required key: accountId
 -- @return UploadArchiveInput structure as a key-value pair table
 function M.UploadArchiveInput(args)
-	assert(args, "You must provdide an argument table when creating UploadArchiveInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UploadArchiveInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{vaultName}"] = args["vaultName"],
+        ["{accountId}"] = args["accountId"],
+    }
+    local header_args = { 
+        ["x-amz-sha256-tree-hash"] = args["checksum"],
+        ["x-amz-archive-description"] = args["archiveDescription"],
+    }
+	local all_args = { 
 		["body"] = args["body"],
 		["checksum"] = args["checksum"],
 		["archiveDescription"] = args["archiveDescription"],
 		["vaultName"] = args["vaultName"],
 		["accountId"] = args["accountId"],
 	}
-	asserts.AssertUploadArchiveInput(t)
-	return t
+	asserts.AssertUploadArchiveInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UploadMultipartPartInput = { ["body"] = true, ["checksum"] = true, ["vaultName"] = true, ["range"] = true, ["uploadId"] = true, ["accountId"] = true, nil }
@@ -198,8 +251,19 @@ end
 -- Required key: uploadId
 -- @return UploadMultipartPartInput structure as a key-value pair table
 function M.UploadMultipartPartInput(args)
-	assert(args, "You must provdide an argument table when creating UploadMultipartPartInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UploadMultipartPartInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{vaultName}"] = args["vaultName"],
+        ["{uploadId}"] = args["uploadId"],
+        ["{accountId}"] = args["accountId"],
+    }
+    local header_args = { 
+        ["x-amz-sha256-tree-hash"] = args["checksum"],
+        ["Content-Range"] = args["range"],
+    }
+	local all_args = { 
 		["body"] = args["body"],
 		["checksum"] = args["checksum"],
 		["vaultName"] = args["vaultName"],
@@ -207,8 +271,13 @@ function M.UploadMultipartPartInput(args)
 		["uploadId"] = args["uploadId"],
 		["accountId"] = args["accountId"],
 	}
-	asserts.AssertUploadMultipartPartInput(t)
-	return t
+	asserts.AssertUploadMultipartPartInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ServiceUnavailableException = { ["message"] = true, ["code"] = true, ["type"] = true, nil }
@@ -233,14 +302,25 @@ end
 -- * type [string] <p>Server</p>
 -- @return ServiceUnavailableException structure as a key-value pair table
 function M.ServiceUnavailableException(args)
-	assert(args, "You must provdide an argument table when creating ServiceUnavailableException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ServiceUnavailableException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 		["code"] = args["code"],
 		["type"] = args["type"],
 	}
-	asserts.AssertServiceUnavailableException(t)
-	return t
+	asserts.AssertServiceUnavailableException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.RequestTimeoutException = { ["message"] = true, ["code"] = true, ["type"] = true, nil }
@@ -265,14 +345,25 @@ end
 -- * type [string] <p>Client</p>
 -- @return RequestTimeoutException structure as a key-value pair table
 function M.RequestTimeoutException(args)
-	assert(args, "You must provdide an argument table when creating RequestTimeoutException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating RequestTimeoutException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 		["code"] = args["code"],
 		["type"] = args["type"],
 	}
-	asserts.AssertRequestTimeoutException(t)
-	return t
+	asserts.AssertRequestTimeoutException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteArchiveInput = { ["archiveId"] = true, ["vaultName"] = true, ["accountId"] = true, nil }
@@ -303,14 +394,28 @@ end
 -- Required key: archiveId
 -- @return DeleteArchiveInput structure as a key-value pair table
 function M.DeleteArchiveInput(args)
-	assert(args, "You must provdide an argument table when creating DeleteArchiveInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteArchiveInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{archiveId}"] = args["archiveId"],
+        ["{vaultName}"] = args["vaultName"],
+        ["{accountId}"] = args["accountId"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["archiveId"] = args["archiveId"],
 		["vaultName"] = args["vaultName"],
 		["accountId"] = args["accountId"],
 	}
-	asserts.AssertDeleteArchiveInput(t)
-	return t
+	asserts.AssertDeleteArchiveInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AbortMultipartUploadInput = { ["uploadId"] = true, ["vaultName"] = true, ["accountId"] = true, nil }
@@ -341,14 +446,28 @@ end
 -- Required key: uploadId
 -- @return AbortMultipartUploadInput structure as a key-value pair table
 function M.AbortMultipartUploadInput(args)
-	assert(args, "You must provdide an argument table when creating AbortMultipartUploadInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AbortMultipartUploadInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{uploadId}"] = args["uploadId"],
+        ["{vaultName}"] = args["vaultName"],
+        ["{accountId}"] = args["accountId"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["uploadId"] = args["uploadId"],
 		["vaultName"] = args["vaultName"],
 		["accountId"] = args["accountId"],
 	}
-	asserts.AssertAbortMultipartUploadInput(t)
-	return t
+	asserts.AssertAbortMultipartUploadInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListVaultsInput = { ["marker"] = true, ["limit"] = true, ["accountId"] = true, nil }
@@ -375,14 +494,28 @@ end
 -- Required key: accountId
 -- @return ListVaultsInput structure as a key-value pair table
 function M.ListVaultsInput(args)
-	assert(args, "You must provdide an argument table when creating ListVaultsInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListVaultsInput")
+    local query_args = { 
+        ["marker"] = args["marker"],
+        ["limit"] = args["limit"],
+    }
+    local uri_args = { 
+        ["{accountId}"] = args["accountId"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["marker"] = args["marker"],
 		["limit"] = args["limit"],
 		["accountId"] = args["accountId"],
 	}
-	asserts.AssertListVaultsInput(t)
-	return t
+	asserts.AssertListVaultsInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetVaultNotificationsOutput = { ["vaultNotificationConfig"] = true, nil }
@@ -403,12 +536,23 @@ end
 -- * vaultNotificationConfig [VaultNotificationConfig] <p>Returns the notification configuration set on the vault.</p>
 -- @return GetVaultNotificationsOutput structure as a key-value pair table
 function M.GetVaultNotificationsOutput(args)
-	assert(args, "You must provdide an argument table when creating GetVaultNotificationsOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetVaultNotificationsOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["vaultNotificationConfig"] = args["vaultNotificationConfig"],
 	}
-	asserts.AssertGetVaultNotificationsOutput(t)
-	return t
+	asserts.AssertGetVaultNotificationsOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetVaultLockInput = { ["vaultName"] = true, ["accountId"] = true, nil }
@@ -435,13 +579,26 @@ end
 -- Required key: vaultName
 -- @return GetVaultLockInput structure as a key-value pair table
 function M.GetVaultLockInput(args)
-	assert(args, "You must provdide an argument table when creating GetVaultLockInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetVaultLockInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{vaultName}"] = args["vaultName"],
+        ["{accountId}"] = args["accountId"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["vaultName"] = args["vaultName"],
 		["accountId"] = args["accountId"],
 	}
-	asserts.AssertGetVaultLockInput(t)
-	return t
+	asserts.AssertGetVaultLockInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InitiateVaultLockInput = { ["policy"] = true, ["vaultName"] = true, ["accountId"] = true, nil }
@@ -470,14 +627,27 @@ end
 -- Required key: vaultName
 -- @return InitiateVaultLockInput structure as a key-value pair table
 function M.InitiateVaultLockInput(args)
-	assert(args, "You must provdide an argument table when creating InitiateVaultLockInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InitiateVaultLockInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{vaultName}"] = args["vaultName"],
+        ["{accountId}"] = args["accountId"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["policy"] = args["policy"],
 		["vaultName"] = args["vaultName"],
 		["accountId"] = args["accountId"],
 	}
-	asserts.AssertInitiateVaultLockInput(t)
-	return t
+	asserts.AssertInitiateVaultLockInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListProvisionedCapacityInput = { ["accountId"] = true, nil }
@@ -500,12 +670,24 @@ end
 -- Required key: accountId
 -- @return ListProvisionedCapacityInput structure as a key-value pair table
 function M.ListProvisionedCapacityInput(args)
-	assert(args, "You must provdide an argument table when creating ListProvisionedCapacityInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListProvisionedCapacityInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{accountId}"] = args["accountId"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["accountId"] = args["accountId"],
 	}
-	asserts.AssertListProvisionedCapacityInput(t)
-	return t
+	asserts.AssertListProvisionedCapacityInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListJobsOutput = { ["Marker"] = true, ["JobList"] = true, nil }
@@ -528,13 +710,24 @@ end
 -- * JobList [JobList] <p>A list of job objects. Each job object contains metadata describing the job.</p>
 -- @return ListJobsOutput structure as a key-value pair table
 function M.ListJobsOutput(args)
-	assert(args, "You must provdide an argument table when creating ListJobsOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListJobsOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Marker"] = args["Marker"],
 		["JobList"] = args["JobList"],
 	}
-	asserts.AssertListJobsOutput(t)
-	return t
+	asserts.AssertListJobsOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.PartListElement = { ["RangeInBytes"] = true, ["SHA256TreeHash"] = true, nil }
@@ -557,13 +750,24 @@ end
 -- * SHA256TreeHash [string] <p>The SHA256 tree hash value that Amazon Glacier calculated for the part. This field is never <code>null</code>.</p>
 -- @return PartListElement structure as a key-value pair table
 function M.PartListElement(args)
-	assert(args, "You must provdide an argument table when creating PartListElement")
-	local t = { 
+	assert(args, "You must provide an argument table when creating PartListElement")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["RangeInBytes"] = args["RangeInBytes"],
 		["SHA256TreeHash"] = args["SHA256TreeHash"],
 	}
-	asserts.AssertPartListElement(t)
-	return t
+	asserts.AssertPartListElement(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteVaultInput = { ["vaultName"] = true, ["accountId"] = true, nil }
@@ -590,13 +794,26 @@ end
 -- Required key: vaultName
 -- @return DeleteVaultInput structure as a key-value pair table
 function M.DeleteVaultInput(args)
-	assert(args, "You must provdide an argument table when creating DeleteVaultInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteVaultInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{vaultName}"] = args["vaultName"],
+        ["{accountId}"] = args["accountId"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["vaultName"] = args["vaultName"],
 		["accountId"] = args["accountId"],
 	}
-	asserts.AssertDeleteVaultInput(t)
-	return t
+	asserts.AssertDeleteVaultInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InitiateJobInput = { ["jobParameters"] = true, ["vaultName"] = true, ["accountId"] = true, nil }
@@ -625,14 +842,27 @@ end
 -- Required key: vaultName
 -- @return InitiateJobInput structure as a key-value pair table
 function M.InitiateJobInput(args)
-	assert(args, "You must provdide an argument table when creating InitiateJobInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InitiateJobInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{vaultName}"] = args["vaultName"],
+        ["{accountId}"] = args["accountId"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["jobParameters"] = args["jobParameters"],
 		["vaultName"] = args["vaultName"],
 		["accountId"] = args["accountId"],
 	}
-	asserts.AssertInitiateJobInput(t)
-	return t
+	asserts.AssertInitiateJobInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListPartsInput = { ["marker"] = true, ["uploadId"] = true, ["vaultName"] = true, ["limit"] = true, ["accountId"] = true, nil }
@@ -667,16 +897,32 @@ end
 -- Required key: uploadId
 -- @return ListPartsInput structure as a key-value pair table
 function M.ListPartsInput(args)
-	assert(args, "You must provdide an argument table when creating ListPartsInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListPartsInput")
+    local query_args = { 
+        ["marker"] = args["marker"],
+        ["limit"] = args["limit"],
+    }
+    local uri_args = { 
+        ["{uploadId}"] = args["uploadId"],
+        ["{vaultName}"] = args["vaultName"],
+        ["{accountId}"] = args["accountId"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["marker"] = args["marker"],
 		["uploadId"] = args["uploadId"],
 		["vaultName"] = args["vaultName"],
 		["limit"] = args["limit"],
 		["accountId"] = args["accountId"],
 	}
-	asserts.AssertListPartsInput(t)
-	return t
+	asserts.AssertListPartsInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetVaultAccessPolicyInput = { ["vaultName"] = true, ["accountId"] = true, nil }
@@ -703,13 +949,26 @@ end
 -- Required key: vaultName
 -- @return GetVaultAccessPolicyInput structure as a key-value pair table
 function M.GetVaultAccessPolicyInput(args)
-	assert(args, "You must provdide an argument table when creating GetVaultAccessPolicyInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetVaultAccessPolicyInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{vaultName}"] = args["vaultName"],
+        ["{accountId}"] = args["accountId"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["vaultName"] = args["vaultName"],
 		["accountId"] = args["accountId"],
 	}
-	asserts.AssertGetVaultAccessPolicyInput(t)
-	return t
+	asserts.AssertGetVaultAccessPolicyInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ArchiveCreationOutput = { ["archiveId"] = true, ["checksum"] = true, ["location"] = true, nil }
@@ -734,14 +993,28 @@ end
 -- * location [string] <p>The relative URI path of the newly added archive resource.</p>
 -- @return ArchiveCreationOutput structure as a key-value pair table
 function M.ArchiveCreationOutput(args)
-	assert(args, "You must provdide an argument table when creating ArchiveCreationOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ArchiveCreationOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+        ["x-amz-archive-id"] = args["archiveId"],
+        ["x-amz-sha256-tree-hash"] = args["checksum"],
+        ["Location"] = args["location"],
+    }
+	local all_args = { 
 		["archiveId"] = args["archiveId"],
 		["checksum"] = args["checksum"],
 		["location"] = args["location"],
 	}
-	asserts.AssertArchiveCreationOutput(t)
-	return t
+	asserts.AssertArchiveCreationOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.RemoveTagsFromVaultInput = { ["TagKeys"] = true, ["vaultName"] = true, ["accountId"] = true, nil }
@@ -770,14 +1043,27 @@ end
 -- Required key: vaultName
 -- @return RemoveTagsFromVaultInput structure as a key-value pair table
 function M.RemoveTagsFromVaultInput(args)
-	assert(args, "You must provdide an argument table when creating RemoveTagsFromVaultInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating RemoveTagsFromVaultInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{vaultName}"] = args["vaultName"],
+        ["{accountId}"] = args["accountId"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["TagKeys"] = args["TagKeys"],
 		["vaultName"] = args["vaultName"],
 		["accountId"] = args["accountId"],
 	}
-	asserts.AssertRemoveTagsFromVaultInput(t)
-	return t
+	asserts.AssertRemoveTagsFromVaultInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InventoryRetrievalJobDescription = { ["Limit"] = true, ["StartDate"] = true, ["Marker"] = true, ["EndDate"] = true, ["Format"] = true, nil }
@@ -806,16 +1092,27 @@ end
 -- * Format [string] <p>The output format for the vault inventory list, which is set by the <b>InitiateJob</b> request when initiating a job to retrieve a vault inventory. Valid values are <code>CSV</code> and <code>JSON</code>.</p>
 -- @return InventoryRetrievalJobDescription structure as a key-value pair table
 function M.InventoryRetrievalJobDescription(args)
-	assert(args, "You must provdide an argument table when creating InventoryRetrievalJobDescription")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InventoryRetrievalJobDescription")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Limit"] = args["Limit"],
 		["StartDate"] = args["StartDate"],
 		["Marker"] = args["Marker"],
 		["EndDate"] = args["EndDate"],
 		["Format"] = args["Format"],
 	}
-	asserts.AssertInventoryRetrievalJobDescription(t)
-	return t
+	asserts.AssertInventoryRetrievalJobDescription(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UploadListElement = { ["MultipartUploadId"] = true, ["ArchiveDescription"] = true, ["CreationDate"] = true, ["PartSizeInBytes"] = true, ["VaultARN"] = true, nil }
@@ -844,16 +1141,27 @@ end
 -- * VaultARN [string] <p>The Amazon Resource Name (ARN) of the vault that contains the archive.</p>
 -- @return UploadListElement structure as a key-value pair table
 function M.UploadListElement(args)
-	assert(args, "You must provdide an argument table when creating UploadListElement")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UploadListElement")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["MultipartUploadId"] = args["MultipartUploadId"],
 		["ArchiveDescription"] = args["ArchiveDescription"],
 		["CreationDate"] = args["CreationDate"],
 		["PartSizeInBytes"] = args["PartSizeInBytes"],
 		["VaultARN"] = args["VaultARN"],
 	}
-	asserts.AssertUploadListElement(t)
-	return t
+	asserts.AssertUploadListElement(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetVaultNotificationsInput = { ["vaultName"] = true, ["accountId"] = true, nil }
@@ -880,13 +1188,26 @@ end
 -- Required key: vaultName
 -- @return GetVaultNotificationsInput structure as a key-value pair table
 function M.GetVaultNotificationsInput(args)
-	assert(args, "You must provdide an argument table when creating GetVaultNotificationsInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetVaultNotificationsInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{vaultName}"] = args["vaultName"],
+        ["{accountId}"] = args["accountId"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["vaultName"] = args["vaultName"],
 		["accountId"] = args["accountId"],
 	}
-	asserts.AssertGetVaultNotificationsInput(t)
-	return t
+	asserts.AssertGetVaultNotificationsInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InitiateMultipartUploadInput = { ["partSize"] = true, ["archiveDescription"] = true, ["vaultName"] = true, ["accountId"] = true, nil }
@@ -917,15 +1238,30 @@ end
 -- Required key: vaultName
 -- @return InitiateMultipartUploadInput structure as a key-value pair table
 function M.InitiateMultipartUploadInput(args)
-	assert(args, "You must provdide an argument table when creating InitiateMultipartUploadInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InitiateMultipartUploadInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{vaultName}"] = args["vaultName"],
+        ["{accountId}"] = args["accountId"],
+    }
+    local header_args = { 
+        ["x-amz-part-size"] = args["partSize"],
+        ["x-amz-archive-description"] = args["archiveDescription"],
+    }
+	local all_args = { 
 		["partSize"] = args["partSize"],
 		["archiveDescription"] = args["archiveDescription"],
 		["vaultName"] = args["vaultName"],
 		["accountId"] = args["accountId"],
 	}
-	asserts.AssertInitiateMultipartUploadInput(t)
-	return t
+	asserts.AssertInitiateMultipartUploadInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListMultipartUploadsOutput = { ["Marker"] = true, ["UploadsList"] = true, nil }
@@ -948,13 +1284,24 @@ end
 -- * UploadsList [UploadsList] <p>A list of in-progress multipart uploads.</p>
 -- @return ListMultipartUploadsOutput structure as a key-value pair table
 function M.ListMultipartUploadsOutput(args)
-	assert(args, "You must provdide an argument table when creating ListMultipartUploadsOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListMultipartUploadsOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Marker"] = args["Marker"],
 		["UploadsList"] = args["UploadsList"],
 	}
-	asserts.AssertListMultipartUploadsOutput(t)
-	return t
+	asserts.AssertListMultipartUploadsOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteVaultAccessPolicyInput = { ["vaultName"] = true, ["accountId"] = true, nil }
@@ -981,13 +1328,26 @@ end
 -- Required key: vaultName
 -- @return DeleteVaultAccessPolicyInput structure as a key-value pair table
 function M.DeleteVaultAccessPolicyInput(args)
-	assert(args, "You must provdide an argument table when creating DeleteVaultAccessPolicyInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteVaultAccessPolicyInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{vaultName}"] = args["vaultName"],
+        ["{accountId}"] = args["accountId"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["vaultName"] = args["vaultName"],
 		["accountId"] = args["accountId"],
 	}
-	asserts.AssertDeleteVaultAccessPolicyInput(t)
-	return t
+	asserts.AssertDeleteVaultAccessPolicyInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ResourceNotFoundException = { ["message"] = true, ["code"] = true, ["type"] = true, nil }
@@ -1012,14 +1372,25 @@ end
 -- * type [string] <p>Client</p>
 -- @return ResourceNotFoundException structure as a key-value pair table
 function M.ResourceNotFoundException(args)
-	assert(args, "You must provdide an argument table when creating ResourceNotFoundException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ResourceNotFoundException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 		["code"] = args["code"],
 		["type"] = args["type"],
 	}
-	asserts.AssertResourceNotFoundException(t)
-	return t
+	asserts.AssertResourceNotFoundException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateVaultInput = { ["vaultName"] = true, ["accountId"] = true, nil }
@@ -1046,13 +1417,26 @@ end
 -- Required key: vaultName
 -- @return CreateVaultInput structure as a key-value pair table
 function M.CreateVaultInput(args)
-	assert(args, "You must provdide an argument table when creating CreateVaultInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateVaultInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{vaultName}"] = args["vaultName"],
+        ["{accountId}"] = args["accountId"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["vaultName"] = args["vaultName"],
 		["accountId"] = args["accountId"],
 	}
-	asserts.AssertCreateVaultInput(t)
-	return t
+	asserts.AssertCreateVaultInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.SetDataRetrievalPolicyInput = { ["Policy"] = true, ["accountId"] = true, nil }
@@ -1077,13 +1461,25 @@ end
 -- Required key: accountId
 -- @return SetDataRetrievalPolicyInput structure as a key-value pair table
 function M.SetDataRetrievalPolicyInput(args)
-	assert(args, "You must provdide an argument table when creating SetDataRetrievalPolicyInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating SetDataRetrievalPolicyInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{accountId}"] = args["accountId"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Policy"] = args["Policy"],
 		["accountId"] = args["accountId"],
 	}
-	asserts.AssertSetDataRetrievalPolicyInput(t)
-	return t
+	asserts.AssertSetDataRetrievalPolicyInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InitiateMultipartUploadOutput = { ["uploadId"] = true, ["location"] = true, nil }
@@ -1106,13 +1502,26 @@ end
 -- * location [string] <p>The relative URI path of the multipart upload ID Amazon Glacier created.</p>
 -- @return InitiateMultipartUploadOutput structure as a key-value pair table
 function M.InitiateMultipartUploadOutput(args)
-	assert(args, "You must provdide an argument table when creating InitiateMultipartUploadOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InitiateMultipartUploadOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+        ["x-amz-multipart-upload-id"] = args["uploadId"],
+        ["Location"] = args["location"],
+    }
+	local all_args = { 
 		["uploadId"] = args["uploadId"],
 		["location"] = args["location"],
 	}
-	asserts.AssertInitiateMultipartUploadOutput(t)
-	return t
+	asserts.AssertInitiateMultipartUploadOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetJobOutputOutput = { ["body"] = true, ["status"] = true, ["acceptRanges"] = true, ["contentType"] = true, ["checksum"] = true, ["contentRange"] = true, ["archiveDescription"] = true, nil }
@@ -1145,8 +1554,19 @@ end
 -- * archiveDescription [string] <p>The description of an archive.</p>
 -- @return GetJobOutputOutput structure as a key-value pair table
 function M.GetJobOutputOutput(args)
-	assert(args, "You must provdide an argument table when creating GetJobOutputOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetJobOutputOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+        ["Accept-Ranges"] = args["acceptRanges"],
+        ["Content-Type"] = args["contentType"],
+        ["x-amz-sha256-tree-hash"] = args["checksum"],
+        ["Content-Range"] = args["contentRange"],
+        ["x-amz-archive-description"] = args["archiveDescription"],
+    }
+	local all_args = { 
 		["body"] = args["body"],
 		["status"] = args["status"],
 		["acceptRanges"] = args["acceptRanges"],
@@ -1155,8 +1575,13 @@ function M.GetJobOutputOutput(args)
 		["contentRange"] = args["contentRange"],
 		["archiveDescription"] = args["archiveDescription"],
 	}
-	asserts.AssertGetJobOutputOutput(t)
-	return t
+	asserts.AssertGetJobOutputOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListVaultsOutput = { ["Marker"] = true, ["VaultList"] = true, nil }
@@ -1179,13 +1604,24 @@ end
 -- * VaultList [VaultList] <p>List of vaults.</p>
 -- @return ListVaultsOutput structure as a key-value pair table
 function M.ListVaultsOutput(args)
-	assert(args, "You must provdide an argument table when creating ListVaultsOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListVaultsOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Marker"] = args["Marker"],
 		["VaultList"] = args["VaultList"],
 	}
-	asserts.AssertListVaultsOutput(t)
-	return t
+	asserts.AssertListVaultsOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UploadMultipartPartOutput = { ["checksum"] = true, nil }
@@ -1206,12 +1642,24 @@ end
 -- * checksum [string] <p>The SHA256 tree hash that Amazon Glacier computed for the uploaded part.</p>
 -- @return UploadMultipartPartOutput structure as a key-value pair table
 function M.UploadMultipartPartOutput(args)
-	assert(args, "You must provdide an argument table when creating UploadMultipartPartOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UploadMultipartPartOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+        ["x-amz-sha256-tree-hash"] = args["checksum"],
+    }
+	local all_args = { 
 		["checksum"] = args["checksum"],
 	}
-	asserts.AssertUploadMultipartPartOutput(t)
-	return t
+	asserts.AssertUploadMultipartPartOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateVaultOutput = { ["location"] = true, nil }
@@ -1232,12 +1680,24 @@ end
 -- * location [string] <p>The URI of the vault that was created.</p>
 -- @return CreateVaultOutput structure as a key-value pair table
 function M.CreateVaultOutput(args)
-	assert(args, "You must provdide an argument table when creating CreateVaultOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateVaultOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+        ["Location"] = args["location"],
+    }
+	local all_args = { 
 		["location"] = args["location"],
 	}
-	asserts.AssertCreateVaultOutput(t)
-	return t
+	asserts.AssertCreateVaultOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InitiateJobOutput = { ["location"] = true, ["jobId"] = true, nil }
@@ -1260,13 +1720,26 @@ end
 -- * jobId [string] <p>The ID of the job.</p>
 -- @return InitiateJobOutput structure as a key-value pair table
 function M.InitiateJobOutput(args)
-	assert(args, "You must provdide an argument table when creating InitiateJobOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InitiateJobOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+        ["Location"] = args["location"],
+        ["x-amz-job-id"] = args["jobId"],
+    }
+	local all_args = { 
 		["location"] = args["location"],
 		["jobId"] = args["jobId"],
 	}
-	asserts.AssertInitiateJobOutput(t)
-	return t
+	asserts.AssertInitiateJobOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListProvisionedCapacityOutput = { ["ProvisionedCapacityList"] = true, nil }
@@ -1287,12 +1760,23 @@ end
 -- * ProvisionedCapacityList [ProvisionedCapacityList] <p>The response body contains the following JSON fields.</p>
 -- @return ListProvisionedCapacityOutput structure as a key-value pair table
 function M.ListProvisionedCapacityOutput(args)
-	assert(args, "You must provdide an argument table when creating ListProvisionedCapacityOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListProvisionedCapacityOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ProvisionedCapacityList"] = args["ProvisionedCapacityList"],
 	}
-	asserts.AssertListProvisionedCapacityOutput(t)
-	return t
+	asserts.AssertListProvisionedCapacityOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.SetVaultAccessPolicyInput = { ["policy"] = true, ["vaultName"] = true, ["accountId"] = true, nil }
@@ -1321,14 +1805,27 @@ end
 -- Required key: vaultName
 -- @return SetVaultAccessPolicyInput structure as a key-value pair table
 function M.SetVaultAccessPolicyInput(args)
-	assert(args, "You must provdide an argument table when creating SetVaultAccessPolicyInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating SetVaultAccessPolicyInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{vaultName}"] = args["vaultName"],
+        ["{accountId}"] = args["accountId"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["policy"] = args["policy"],
 		["vaultName"] = args["vaultName"],
 		["accountId"] = args["accountId"],
 	}
-	asserts.AssertSetVaultAccessPolicyInput(t)
-	return t
+	asserts.AssertSetVaultAccessPolicyInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListJobsInput = { ["completed"] = true, ["vaultName"] = true, ["limit"] = true, ["marker"] = true, ["accountId"] = true, ["statuscode"] = true, nil }
@@ -1363,8 +1860,20 @@ end
 -- Required key: vaultName
 -- @return ListJobsInput structure as a key-value pair table
 function M.ListJobsInput(args)
-	assert(args, "You must provdide an argument table when creating ListJobsInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListJobsInput")
+    local query_args = { 
+        ["completed"] = args["completed"],
+        ["limit"] = args["limit"],
+        ["marker"] = args["marker"],
+        ["statuscode"] = args["statuscode"],
+    }
+    local uri_args = { 
+        ["{vaultName}"] = args["vaultName"],
+        ["{accountId}"] = args["accountId"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["completed"] = args["completed"],
 		["vaultName"] = args["vaultName"],
 		["limit"] = args["limit"],
@@ -1372,8 +1881,13 @@ function M.ListJobsInput(args)
 		["accountId"] = args["accountId"],
 		["statuscode"] = args["statuscode"],
 	}
-	asserts.AssertListJobsInput(t)
-	return t
+	asserts.AssertListJobsInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CompleteMultipartUploadInput = { ["uploadId"] = true, ["checksum"] = true, ["vaultName"] = true, ["archiveSize"] = true, ["accountId"] = true, nil }
@@ -1408,16 +1922,32 @@ end
 -- Required key: uploadId
 -- @return CompleteMultipartUploadInput structure as a key-value pair table
 function M.CompleteMultipartUploadInput(args)
-	assert(args, "You must provdide an argument table when creating CompleteMultipartUploadInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CompleteMultipartUploadInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{uploadId}"] = args["uploadId"],
+        ["{vaultName}"] = args["vaultName"],
+        ["{accountId}"] = args["accountId"],
+    }
+    local header_args = { 
+        ["x-amz-sha256-tree-hash"] = args["checksum"],
+        ["x-amz-archive-size"] = args["archiveSize"],
+    }
+	local all_args = { 
 		["uploadId"] = args["uploadId"],
 		["checksum"] = args["checksum"],
 		["vaultName"] = args["vaultName"],
 		["archiveSize"] = args["archiveSize"],
 		["accountId"] = args["accountId"],
 	}
-	asserts.AssertCompleteMultipartUploadInput(t)
-	return t
+	asserts.AssertCompleteMultipartUploadInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetVaultLockOutput = { ["Policy"] = true, ["State"] = true, ["CreationDate"] = true, ["ExpirationDate"] = true, nil }
@@ -1444,15 +1974,26 @@ end
 -- * ExpirationDate [string] <p>The UTC date and time at which the lock ID expires. This value can be <code>null</code> if the vault lock is in a <code>Locked</code> state.</p>
 -- @return GetVaultLockOutput structure as a key-value pair table
 function M.GetVaultLockOutput(args)
-	assert(args, "You must provdide an argument table when creating GetVaultLockOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetVaultLockOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Policy"] = args["Policy"],
 		["State"] = args["State"],
 		["CreationDate"] = args["CreationDate"],
 		["ExpirationDate"] = args["ExpirationDate"],
 	}
-	asserts.AssertGetVaultLockOutput(t)
-	return t
+	asserts.AssertGetVaultLockOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.LimitExceededException = { ["message"] = true, ["code"] = true, ["type"] = true, nil }
@@ -1477,14 +2018,25 @@ end
 -- * type [string] <p>Client</p>
 -- @return LimitExceededException structure as a key-value pair table
 function M.LimitExceededException(args)
-	assert(args, "You must provdide an argument table when creating LimitExceededException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating LimitExceededException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 		["code"] = args["code"],
 		["type"] = args["type"],
 	}
-	asserts.AssertLimitExceededException(t)
-	return t
+	asserts.AssertLimitExceededException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DataRetrievalRule = { ["BytesPerHour"] = true, ["Strategy"] = true, nil }
@@ -1507,13 +2059,24 @@ end
 -- * Strategy [string] <p>The type of data retrieval policy to set.</p> <p>Valid values: BytesPerHour|FreeTier|None</p>
 -- @return DataRetrievalRule structure as a key-value pair table
 function M.DataRetrievalRule(args)
-	assert(args, "You must provdide an argument table when creating DataRetrievalRule")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DataRetrievalRule")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["BytesPerHour"] = args["BytesPerHour"],
 		["Strategy"] = args["Strategy"],
 	}
-	asserts.AssertDataRetrievalRule(t)
-	return t
+	asserts.AssertDataRetrievalRule(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.MissingParameterValueException = { ["message"] = true, ["code"] = true, ["type"] = true, nil }
@@ -1538,14 +2101,25 @@ end
 -- * type [string] <p>Client.</p>
 -- @return MissingParameterValueException structure as a key-value pair table
 function M.MissingParameterValueException(args)
-	assert(args, "You must provdide an argument table when creating MissingParameterValueException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating MissingParameterValueException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 		["code"] = args["code"],
 		["type"] = args["type"],
 	}
-	asserts.AssertMissingParameterValueException(t)
-	return t
+	asserts.AssertMissingParameterValueException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DataRetrievalPolicy = { ["Rules"] = true, nil }
@@ -1566,12 +2140,23 @@ end
 -- * Rules [DataRetrievalRulesList] <p>The policy rule. Although this is a list type, currently there must be only one rule, which contains a Strategy field and optionally a BytesPerHour field.</p>
 -- @return DataRetrievalPolicy structure as a key-value pair table
 function M.DataRetrievalPolicy(args)
-	assert(args, "You must provdide an argument table when creating DataRetrievalPolicy")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DataRetrievalPolicy")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Rules"] = args["Rules"],
 	}
-	asserts.AssertDataRetrievalPolicy(t)
-	return t
+	asserts.AssertDataRetrievalPolicy(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.PolicyEnforcedException = { ["message"] = true, ["code"] = true, ["type"] = true, nil }
@@ -1596,14 +2181,25 @@ end
 -- * type [string] <p>Client</p>
 -- @return PolicyEnforcedException structure as a key-value pair table
 function M.PolicyEnforcedException(args)
-	assert(args, "You must provdide an argument table when creating PolicyEnforcedException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating PolicyEnforcedException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 		["code"] = args["code"],
 		["type"] = args["type"],
 	}
-	asserts.AssertPolicyEnforcedException(t)
-	return t
+	asserts.AssertPolicyEnforcedException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AddTagsToVaultInput = { ["Tags"] = true, ["vaultName"] = true, ["accountId"] = true, nil }
@@ -1632,14 +2228,27 @@ end
 -- Required key: vaultName
 -- @return AddTagsToVaultInput structure as a key-value pair table
 function M.AddTagsToVaultInput(args)
-	assert(args, "You must provdide an argument table when creating AddTagsToVaultInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AddTagsToVaultInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{vaultName}"] = args["vaultName"],
+        ["{accountId}"] = args["accountId"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Tags"] = args["Tags"],
 		["vaultName"] = args["vaultName"],
 		["accountId"] = args["accountId"],
 	}
-	asserts.AssertAddTagsToVaultInput(t)
-	return t
+	asserts.AssertAddTagsToVaultInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.SetVaultNotificationsInput = { ["vaultNotificationConfig"] = true, ["vaultName"] = true, ["accountId"] = true, nil }
@@ -1668,14 +2277,27 @@ end
 -- Required key: vaultName
 -- @return SetVaultNotificationsInput structure as a key-value pair table
 function M.SetVaultNotificationsInput(args)
-	assert(args, "You must provdide an argument table when creating SetVaultNotificationsInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating SetVaultNotificationsInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{vaultName}"] = args["vaultName"],
+        ["{accountId}"] = args["accountId"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["vaultNotificationConfig"] = args["vaultNotificationConfig"],
 		["vaultName"] = args["vaultName"],
 		["accountId"] = args["accountId"],
 	}
-	asserts.AssertSetVaultNotificationsInput(t)
-	return t
+	asserts.AssertSetVaultNotificationsInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CompleteVaultLockInput = { ["lockId"] = true, ["vaultName"] = true, ["accountId"] = true, nil }
@@ -1706,14 +2328,28 @@ end
 -- Required key: lockId
 -- @return CompleteVaultLockInput structure as a key-value pair table
 function M.CompleteVaultLockInput(args)
-	assert(args, "You must provdide an argument table when creating CompleteVaultLockInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CompleteVaultLockInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{lockId}"] = args["lockId"],
+        ["{vaultName}"] = args["vaultName"],
+        ["{accountId}"] = args["accountId"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["lockId"] = args["lockId"],
 		["vaultName"] = args["vaultName"],
 		["accountId"] = args["accountId"],
 	}
-	asserts.AssertCompleteVaultLockInput(t)
-	return t
+	asserts.AssertCompleteVaultLockInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidParameterValueException = { ["message"] = true, ["code"] = true, ["type"] = true, nil }
@@ -1738,14 +2374,25 @@ end
 -- * type [string] <p>Client</p>
 -- @return InvalidParameterValueException structure as a key-value pair table
 function M.InvalidParameterValueException(args)
-	assert(args, "You must provdide an argument table when creating InvalidParameterValueException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidParameterValueException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 		["code"] = args["code"],
 		["type"] = args["type"],
 	}
-	asserts.AssertInvalidParameterValueException(t)
-	return t
+	asserts.AssertInvalidParameterValueException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListTagsForVaultOutput = { ["Tags"] = true, nil }
@@ -1766,12 +2413,23 @@ end
 -- * Tags [TagMap] <p>The tags attached to the vault. Each tag is composed of a key and a value.</p>
 -- @return ListTagsForVaultOutput structure as a key-value pair table
 function M.ListTagsForVaultOutput(args)
-	assert(args, "You must provdide an argument table when creating ListTagsForVaultOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListTagsForVaultOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Tags"] = args["Tags"],
 	}
-	asserts.AssertListTagsForVaultOutput(t)
-	return t
+	asserts.AssertListTagsForVaultOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InitiateVaultLockOutput = { ["lockId"] = true, nil }
@@ -1792,12 +2450,24 @@ end
 -- * lockId [string] <p>The lock ID, which is used to complete the vault locking process.</p>
 -- @return InitiateVaultLockOutput structure as a key-value pair table
 function M.InitiateVaultLockOutput(args)
-	assert(args, "You must provdide an argument table when creating InitiateVaultLockOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InitiateVaultLockOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+        ["x-amz-lock-id"] = args["lockId"],
+    }
+	local all_args = { 
 		["lockId"] = args["lockId"],
 	}
-	asserts.AssertInitiateVaultLockOutput(t)
-	return t
+	asserts.AssertInitiateVaultLockOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.PurchaseProvisionedCapacityOutput = { ["capacityId"] = true, nil }
@@ -1818,12 +2488,24 @@ end
 -- * capacityId [string] <p>The ID that identifies the provisioned capacity unit.</p>
 -- @return PurchaseProvisionedCapacityOutput structure as a key-value pair table
 function M.PurchaseProvisionedCapacityOutput(args)
-	assert(args, "You must provdide an argument table when creating PurchaseProvisionedCapacityOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating PurchaseProvisionedCapacityOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+        ["x-amz-capacity-id"] = args["capacityId"],
+    }
+	local all_args = { 
 		["capacityId"] = args["capacityId"],
 	}
-	asserts.AssertPurchaseProvisionedCapacityOutput(t)
-	return t
+	asserts.AssertPurchaseProvisionedCapacityOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GlacierJobDescription = { ["CompletionDate"] = true, ["VaultARN"] = true, ["RetrievalByteRange"] = true, ["Tier"] = true, ["SHA256TreeHash"] = true, ["SNSTopic"] = true, ["Completed"] = true, ["InventorySizeInBytes"] = true, ["InventoryRetrievalParameters"] = true, ["JobId"] = true, ["ArchiveId"] = true, ["JobDescription"] = true, ["ArchiveSizeInBytes"] = true, ["Action"] = true, ["ArchiveSHA256TreeHash"] = true, ["CreationDate"] = true, ["StatusMessage"] = true, ["StatusCode"] = true, nil }
@@ -1878,8 +2560,14 @@ end
 -- * StatusCode [StatusCode] <p>The status code can be InProgress, Succeeded, or Failed, and indicates the status of the job.</p>
 -- @return GlacierJobDescription structure as a key-value pair table
 function M.GlacierJobDescription(args)
-	assert(args, "You must provdide an argument table when creating GlacierJobDescription")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GlacierJobDescription")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["CompletionDate"] = args["CompletionDate"],
 		["VaultARN"] = args["VaultARN"],
 		["RetrievalByteRange"] = args["RetrievalByteRange"],
@@ -1899,8 +2587,13 @@ function M.GlacierJobDescription(args)
 		["StatusMessage"] = args["StatusMessage"],
 		["StatusCode"] = args["StatusCode"],
 	}
-	asserts.AssertGlacierJobDescription(t)
-	return t
+	asserts.AssertGlacierJobDescription(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InventoryRetrievalJobInput = { ["Limit"] = true, ["StartDate"] = true, ["Marker"] = true, ["EndDate"] = true, nil }
@@ -1927,15 +2620,26 @@ end
 -- * EndDate [string] <p>The end of the date range in UTC for vault inventory retrieval that includes archives created before this date. This value should be a string in the ISO 8601 date format, for example <code>2013-03-20T17:03:43Z</code>.</p>
 -- @return InventoryRetrievalJobInput structure as a key-value pair table
 function M.InventoryRetrievalJobInput(args)
-	assert(args, "You must provdide an argument table when creating InventoryRetrievalJobInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InventoryRetrievalJobInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Limit"] = args["Limit"],
 		["StartDate"] = args["StartDate"],
 		["Marker"] = args["Marker"],
 		["EndDate"] = args["EndDate"],
 	}
-	asserts.AssertInventoryRetrievalJobInput(t)
-	return t
+	asserts.AssertInventoryRetrievalJobInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.VaultNotificationConfig = { ["Events"] = true, ["SNSTopic"] = true, nil }
@@ -1958,13 +2662,24 @@ end
 -- * SNSTopic [string] <p>The Amazon Simple Notification Service (Amazon SNS) topic Amazon Resource Name (ARN).</p>
 -- @return VaultNotificationConfig structure as a key-value pair table
 function M.VaultNotificationConfig(args)
-	assert(args, "You must provdide an argument table when creating VaultNotificationConfig")
-	local t = { 
+	assert(args, "You must provide an argument table when creating VaultNotificationConfig")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Events"] = args["Events"],
 		["SNSTopic"] = args["SNSTopic"],
 	}
-	asserts.AssertVaultNotificationConfig(t)
-	return t
+	asserts.AssertVaultNotificationConfig(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListPartsOutput = { ["VaultARN"] = true, ["ArchiveDescription"] = true, ["PartSizeInBytes"] = true, ["MultipartUploadId"] = true, ["Parts"] = true, ["Marker"] = true, ["CreationDate"] = true, nil }
@@ -1997,8 +2712,14 @@ end
 -- * CreationDate [string] <p>The UTC time at which the multipart upload was initiated.</p>
 -- @return ListPartsOutput structure as a key-value pair table
 function M.ListPartsOutput(args)
-	assert(args, "You must provdide an argument table when creating ListPartsOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListPartsOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["VaultARN"] = args["VaultARN"],
 		["ArchiveDescription"] = args["ArchiveDescription"],
 		["PartSizeInBytes"] = args["PartSizeInBytes"],
@@ -2007,8 +2728,13 @@ function M.ListPartsOutput(args)
 		["Marker"] = args["Marker"],
 		["CreationDate"] = args["CreationDate"],
 	}
-	asserts.AssertListPartsOutput(t)
-	return t
+	asserts.AssertListPartsOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.JobParameters = { ["InventoryRetrievalParameters"] = true, ["RetrievalByteRange"] = true, ["Description"] = true, ["Format"] = true, ["SNSTopic"] = true, ["Tier"] = true, ["ArchiveId"] = true, ["Type"] = true, nil }
@@ -2043,8 +2769,14 @@ end
 -- * Type [string] <p>The job type. You can initiate a job to retrieve an archive or get an inventory of a vault. Valid values are "archive-retrieval" and "inventory-retrieval".</p>
 -- @return JobParameters structure as a key-value pair table
 function M.JobParameters(args)
-	assert(args, "You must provdide an argument table when creating JobParameters")
-	local t = { 
+	assert(args, "You must provide an argument table when creating JobParameters")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["InventoryRetrievalParameters"] = args["InventoryRetrievalParameters"],
 		["RetrievalByteRange"] = args["RetrievalByteRange"],
 		["Description"] = args["Description"],
@@ -2054,8 +2786,13 @@ function M.JobParameters(args)
 		["ArchiveId"] = args["ArchiveId"],
 		["Type"] = args["Type"],
 	}
-	asserts.AssertJobParameters(t)
-	return t
+	asserts.AssertJobParameters(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetDataRetrievalPolicyOutput = { ["Policy"] = true, nil }
@@ -2076,12 +2813,23 @@ end
 -- * Policy [DataRetrievalPolicy] <p>Contains the returned data retrieval policy in JSON format.</p>
 -- @return GetDataRetrievalPolicyOutput structure as a key-value pair table
 function M.GetDataRetrievalPolicyOutput(args)
-	assert(args, "You must provdide an argument table when creating GetDataRetrievalPolicyOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetDataRetrievalPolicyOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Policy"] = args["Policy"],
 	}
-	asserts.AssertGetDataRetrievalPolicyOutput(t)
-	return t
+	asserts.AssertGetDataRetrievalPolicyOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetVaultAccessPolicyOutput = { ["policy"] = true, nil }
@@ -2102,12 +2850,23 @@ end
 -- * policy [VaultAccessPolicy] <p>Contains the returned vault access policy as a JSON string.</p>
 -- @return GetVaultAccessPolicyOutput structure as a key-value pair table
 function M.GetVaultAccessPolicyOutput(args)
-	assert(args, "You must provdide an argument table when creating GetVaultAccessPolicyOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetVaultAccessPolicyOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["policy"] = args["policy"],
 	}
-	asserts.AssertGetVaultAccessPolicyOutput(t)
-	return t
+	asserts.AssertGetVaultAccessPolicyOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeJobInput = { ["jobId"] = true, ["vaultName"] = true, ["accountId"] = true, nil }
@@ -2138,14 +2897,28 @@ end
 -- Required key: jobId
 -- @return DescribeJobInput structure as a key-value pair table
 function M.DescribeJobInput(args)
-	assert(args, "You must provdide an argument table when creating DescribeJobInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeJobInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{jobId}"] = args["jobId"],
+        ["{vaultName}"] = args["vaultName"],
+        ["{accountId}"] = args["accountId"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["jobId"] = args["jobId"],
 		["vaultName"] = args["vaultName"],
 		["accountId"] = args["accountId"],
 	}
-	asserts.AssertDescribeJobInput(t)
-	return t
+	asserts.AssertDescribeJobInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeVaultInput = { ["vaultName"] = true, ["accountId"] = true, nil }
@@ -2172,13 +2945,26 @@ end
 -- Required key: vaultName
 -- @return DescribeVaultInput structure as a key-value pair table
 function M.DescribeVaultInput(args)
-	assert(args, "You must provdide an argument table when creating DescribeVaultInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeVaultInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{vaultName}"] = args["vaultName"],
+        ["{accountId}"] = args["accountId"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["vaultName"] = args["vaultName"],
 		["accountId"] = args["accountId"],
 	}
-	asserts.AssertDescribeVaultInput(t)
-	return t
+	asserts.AssertDescribeVaultInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListMultipartUploadsInput = { ["marker"] = true, ["limit"] = true, ["vaultName"] = true, ["accountId"] = true, nil }
@@ -2209,15 +2995,30 @@ end
 -- Required key: vaultName
 -- @return ListMultipartUploadsInput structure as a key-value pair table
 function M.ListMultipartUploadsInput(args)
-	assert(args, "You must provdide an argument table when creating ListMultipartUploadsInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListMultipartUploadsInput")
+    local query_args = { 
+        ["marker"] = args["marker"],
+        ["limit"] = args["limit"],
+    }
+    local uri_args = { 
+        ["{vaultName}"] = args["vaultName"],
+        ["{accountId}"] = args["accountId"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["marker"] = args["marker"],
 		["limit"] = args["limit"],
 		["vaultName"] = args["vaultName"],
 		["accountId"] = args["accountId"],
 	}
-	asserts.AssertListMultipartUploadsInput(t)
-	return t
+	asserts.AssertListMultipartUploadsInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AbortVaultLockInput = { ["vaultName"] = true, ["accountId"] = true, nil }
@@ -2244,13 +3045,26 @@ end
 -- Required key: vaultName
 -- @return AbortVaultLockInput structure as a key-value pair table
 function M.AbortVaultLockInput(args)
-	assert(args, "You must provdide an argument table when creating AbortVaultLockInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AbortVaultLockInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{vaultName}"] = args["vaultName"],
+        ["{accountId}"] = args["accountId"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["vaultName"] = args["vaultName"],
 		["accountId"] = args["accountId"],
 	}
-	asserts.AssertAbortVaultLockInput(t)
-	return t
+	asserts.AssertAbortVaultLockInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.PurchaseProvisionedCapacityInput = { ["accountId"] = true, nil }
@@ -2273,12 +3087,24 @@ end
 -- Required key: accountId
 -- @return PurchaseProvisionedCapacityInput structure as a key-value pair table
 function M.PurchaseProvisionedCapacityInput(args)
-	assert(args, "You must provdide an argument table when creating PurchaseProvisionedCapacityInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating PurchaseProvisionedCapacityInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{accountId}"] = args["accountId"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["accountId"] = args["accountId"],
 	}
-	asserts.AssertPurchaseProvisionedCapacityInput(t)
-	return t
+	asserts.AssertPurchaseProvisionedCapacityInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListTagsForVaultInput = { ["vaultName"] = true, ["accountId"] = true, nil }
@@ -2305,13 +3131,26 @@ end
 -- Required key: vaultName
 -- @return ListTagsForVaultInput structure as a key-value pair table
 function M.ListTagsForVaultInput(args)
-	assert(args, "You must provdide an argument table when creating ListTagsForVaultInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListTagsForVaultInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{vaultName}"] = args["vaultName"],
+        ["{accountId}"] = args["accountId"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["vaultName"] = args["vaultName"],
 		["accountId"] = args["accountId"],
 	}
-	asserts.AssertListTagsForVaultInput(t)
-	return t
+	asserts.AssertListTagsForVaultInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.VaultLockPolicy = { ["Policy"] = true, nil }
@@ -2332,12 +3171,23 @@ end
 -- * Policy [string] <p>The vault lock policy.</p>
 -- @return VaultLockPolicy structure as a key-value pair table
 function M.VaultLockPolicy(args)
-	assert(args, "You must provdide an argument table when creating VaultLockPolicy")
-	local t = { 
+	assert(args, "You must provide an argument table when creating VaultLockPolicy")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Policy"] = args["Policy"],
 	}
-	asserts.AssertVaultLockPolicy(t)
-	return t
+	asserts.AssertVaultLockPolicy(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.VaultAccessPolicy = { ["Policy"] = true, nil }
@@ -2358,12 +3208,23 @@ end
 -- * Policy [string] <p>The vault access policy.</p>
 -- @return VaultAccessPolicy structure as a key-value pair table
 function M.VaultAccessPolicy(args)
-	assert(args, "You must provdide an argument table when creating VaultAccessPolicy")
-	local t = { 
+	assert(args, "You must provide an argument table when creating VaultAccessPolicy")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Policy"] = args["Policy"],
 	}
-	asserts.AssertVaultAccessPolicy(t)
-	return t
+	asserts.AssertVaultAccessPolicy(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InsufficientCapacityException = { ["message"] = true, ["code"] = true, ["type"] = true, nil }
@@ -2388,14 +3249,25 @@ end
 -- * type [string] 
 -- @return InsufficientCapacityException structure as a key-value pair table
 function M.InsufficientCapacityException(args)
-	assert(args, "You must provdide an argument table when creating InsufficientCapacityException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InsufficientCapacityException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 		["code"] = args["code"],
 		["type"] = args["type"],
 	}
-	asserts.AssertInsufficientCapacityException(t)
-	return t
+	asserts.AssertInsufficientCapacityException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeVaultOutput = { ["SizeInBytes"] = true, ["VaultARN"] = true, ["LastInventoryDate"] = true, ["VaultName"] = true, ["NumberOfArchives"] = true, ["CreationDate"] = true, nil }
@@ -2426,8 +3298,14 @@ end
 -- * CreationDate [string] <p>The Universal Coordinated Time (UTC) date when the vault was created. This value should be a string in the ISO 8601 date format, for example <code>2012-03-20T17:03:43.221Z</code>.</p>
 -- @return DescribeVaultOutput structure as a key-value pair table
 function M.DescribeVaultOutput(args)
-	assert(args, "You must provdide an argument table when creating DescribeVaultOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeVaultOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["SizeInBytes"] = args["SizeInBytes"],
 		["VaultARN"] = args["VaultARN"],
 		["LastInventoryDate"] = args["LastInventoryDate"],
@@ -2435,8 +3313,13 @@ function M.DescribeVaultOutput(args)
 		["NumberOfArchives"] = args["NumberOfArchives"],
 		["CreationDate"] = args["CreationDate"],
 	}
-	asserts.AssertDescribeVaultOutput(t)
-	return t
+	asserts.AssertDescribeVaultOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteVaultNotificationsInput = { ["vaultName"] = true, ["accountId"] = true, nil }
@@ -2463,13 +3346,26 @@ end
 -- Required key: vaultName
 -- @return DeleteVaultNotificationsInput structure as a key-value pair table
 function M.DeleteVaultNotificationsInput(args)
-	assert(args, "You must provdide an argument table when creating DeleteVaultNotificationsInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteVaultNotificationsInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{vaultName}"] = args["vaultName"],
+        ["{accountId}"] = args["accountId"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["vaultName"] = args["vaultName"],
 		["accountId"] = args["accountId"],
 	}
-	asserts.AssertDeleteVaultNotificationsInput(t)
-	return t
+	asserts.AssertDeleteVaultNotificationsInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 function asserts.AssertDateTime(str)
@@ -2788,8 +3684,11 @@ function M.ListTagsForVaultAsync(ListTagsForVaultInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".ListTagsForVault",
 	}
+	for header,value in pairs(ListTagsForVaultInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
 	if request_handler then
 		request_handler(settings.uri, "/{accountId}/vaults/{vaultName}/tags", ListTagsForVaultInput, headers, settings, cb)
 	else
@@ -2820,8 +3719,11 @@ function M.ListJobsAsync(ListJobsInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".ListJobs",
 	}
+	for header,value in pairs(ListJobsInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
 	if request_handler then
 		request_handler(settings.uri, "/{accountId}/vaults/{vaultName}/jobs", ListJobsInput, headers, settings, cb)
 	else
@@ -2852,8 +3754,11 @@ function M.DeleteVaultAsync(DeleteVaultInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DeleteVault",
 	}
+	for header,value in pairs(DeleteVaultInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("DELETE")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE")
 	if request_handler then
 		request_handler(settings.uri, "/{accountId}/vaults/{vaultName}", DeleteVaultInput, headers, settings, cb)
 	else
@@ -2884,8 +3789,11 @@ function M.DeleteVaultNotificationsAsync(DeleteVaultNotificationsInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DeleteVaultNotifications",
 	}
+	for header,value in pairs(DeleteVaultNotificationsInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("DELETE")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE")
 	if request_handler then
 		request_handler(settings.uri, "/{accountId}/vaults/{vaultName}/notification-configuration", DeleteVaultNotificationsInput, headers, settings, cb)
 	else
@@ -2916,8 +3824,11 @@ function M.ListPartsAsync(ListPartsInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".ListParts",
 	}
+	for header,value in pairs(ListPartsInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
 	if request_handler then
 		request_handler(settings.uri, "/{accountId}/vaults/{vaultName}/multipart-uploads/{uploadId}", ListPartsInput, headers, settings, cb)
 	else
@@ -2948,8 +3859,11 @@ function M.ListProvisionedCapacityAsync(ListProvisionedCapacityInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".ListProvisionedCapacity",
 	}
+	for header,value in pairs(ListProvisionedCapacityInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
 	if request_handler then
 		request_handler(settings.uri, "/{accountId}/provisioned-capacity", ListProvisionedCapacityInput, headers, settings, cb)
 	else
@@ -2980,8 +3894,11 @@ function M.DeleteArchiveAsync(DeleteArchiveInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DeleteArchive",
 	}
+	for header,value in pairs(DeleteArchiveInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("DELETE")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE")
 	if request_handler then
 		request_handler(settings.uri, "/{accountId}/vaults/{vaultName}/archives/{archiveId}", DeleteArchiveInput, headers, settings, cb)
 	else
@@ -3012,8 +3929,11 @@ function M.PurchaseProvisionedCapacityAsync(PurchaseProvisionedCapacityInput, cb
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".PurchaseProvisionedCapacity",
 	}
+	for header,value in pairs(PurchaseProvisionedCapacityInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/{accountId}/provisioned-capacity", PurchaseProvisionedCapacityInput, headers, settings, cb)
 	else
@@ -3044,8 +3964,11 @@ function M.GetJobOutputAsync(GetJobOutputInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".GetJobOutput",
 	}
+	for header,value in pairs(GetJobOutputInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
 	if request_handler then
 		request_handler(settings.uri, "/{accountId}/vaults/{vaultName}/jobs/{jobId}/output", GetJobOutputInput, headers, settings, cb)
 	else
@@ -3076,8 +3999,11 @@ function M.AddTagsToVaultAsync(AddTagsToVaultInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".AddTagsToVault",
 	}
+	for header,value in pairs(AddTagsToVaultInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/{accountId}/vaults/{vaultName}/tags?operation=add", AddTagsToVaultInput, headers, settings, cb)
 	else
@@ -3108,8 +4034,11 @@ function M.InitiateVaultLockAsync(InitiateVaultLockInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".InitiateVaultLock",
 	}
+	for header,value in pairs(InitiateVaultLockInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/{accountId}/vaults/{vaultName}/lock-policy", InitiateVaultLockInput, headers, settings, cb)
 	else
@@ -3140,8 +4069,11 @@ function M.ListVaultsAsync(ListVaultsInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".ListVaults",
 	}
+	for header,value in pairs(ListVaultsInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
 	if request_handler then
 		request_handler(settings.uri, "/{accountId}/vaults", ListVaultsInput, headers, settings, cb)
 	else
@@ -3172,8 +4104,11 @@ function M.GetVaultLockAsync(GetVaultLockInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".GetVaultLock",
 	}
+	for header,value in pairs(GetVaultLockInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
 	if request_handler then
 		request_handler(settings.uri, "/{accountId}/vaults/{vaultName}/lock-policy", GetVaultLockInput, headers, settings, cb)
 	else
@@ -3204,8 +4139,11 @@ function M.DescribeJobAsync(DescribeJobInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DescribeJob",
 	}
+	for header,value in pairs(DescribeJobInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
 	if request_handler then
 		request_handler(settings.uri, "/{accountId}/vaults/{vaultName}/jobs/{jobId}", DescribeJobInput, headers, settings, cb)
 	else
@@ -3236,8 +4174,11 @@ function M.GetVaultAccessPolicyAsync(GetVaultAccessPolicyInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".GetVaultAccessPolicy",
 	}
+	for header,value in pairs(GetVaultAccessPolicyInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
 	if request_handler then
 		request_handler(settings.uri, "/{accountId}/vaults/{vaultName}/access-policy", GetVaultAccessPolicyInput, headers, settings, cb)
 	else
@@ -3268,8 +4209,11 @@ function M.CompleteMultipartUploadAsync(CompleteMultipartUploadInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".CompleteMultipartUpload",
 	}
+	for header,value in pairs(CompleteMultipartUploadInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/{accountId}/vaults/{vaultName}/multipart-uploads/{uploadId}", CompleteMultipartUploadInput, headers, settings, cb)
 	else
@@ -3300,8 +4244,11 @@ function M.SetVaultAccessPolicyAsync(SetVaultAccessPolicyInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".SetVaultAccessPolicy",
 	}
+	for header,value in pairs(SetVaultAccessPolicyInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("PUT")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT")
 	if request_handler then
 		request_handler(settings.uri, "/{accountId}/vaults/{vaultName}/access-policy", SetVaultAccessPolicyInput, headers, settings, cb)
 	else
@@ -3332,8 +4279,11 @@ function M.UploadMultipartPartAsync(UploadMultipartPartInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".UploadMultipartPart",
 	}
+	for header,value in pairs(UploadMultipartPartInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("PUT")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT")
 	if request_handler then
 		request_handler(settings.uri, "/{accountId}/vaults/{vaultName}/multipart-uploads/{uploadId}", UploadMultipartPartInput, headers, settings, cb)
 	else
@@ -3364,8 +4314,11 @@ function M.GetVaultNotificationsAsync(GetVaultNotificationsInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".GetVaultNotifications",
 	}
+	for header,value in pairs(GetVaultNotificationsInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
 	if request_handler then
 		request_handler(settings.uri, "/{accountId}/vaults/{vaultName}/notification-configuration", GetVaultNotificationsInput, headers, settings, cb)
 	else
@@ -3396,8 +4349,11 @@ function M.DeleteVaultAccessPolicyAsync(DeleteVaultAccessPolicyInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DeleteVaultAccessPolicy",
 	}
+	for header,value in pairs(DeleteVaultAccessPolicyInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("DELETE")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE")
 	if request_handler then
 		request_handler(settings.uri, "/{accountId}/vaults/{vaultName}/access-policy", DeleteVaultAccessPolicyInput, headers, settings, cb)
 	else
@@ -3428,8 +4384,11 @@ function M.DescribeVaultAsync(DescribeVaultInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DescribeVault",
 	}
+	for header,value in pairs(DescribeVaultInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
 	if request_handler then
 		request_handler(settings.uri, "/{accountId}/vaults/{vaultName}", DescribeVaultInput, headers, settings, cb)
 	else
@@ -3460,8 +4419,11 @@ function M.ListMultipartUploadsAsync(ListMultipartUploadsInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".ListMultipartUploads",
 	}
+	for header,value in pairs(ListMultipartUploadsInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
 	if request_handler then
 		request_handler(settings.uri, "/{accountId}/vaults/{vaultName}/multipart-uploads", ListMultipartUploadsInput, headers, settings, cb)
 	else
@@ -3492,8 +4454,11 @@ function M.CompleteVaultLockAsync(CompleteVaultLockInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".CompleteVaultLock",
 	}
+	for header,value in pairs(CompleteVaultLockInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/{accountId}/vaults/{vaultName}/lock-policy/{lockId}", CompleteVaultLockInput, headers, settings, cb)
 	else
@@ -3524,8 +4489,11 @@ function M.SetDataRetrievalPolicyAsync(SetDataRetrievalPolicyInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".SetDataRetrievalPolicy",
 	}
+	for header,value in pairs(SetDataRetrievalPolicyInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("PUT")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT")
 	if request_handler then
 		request_handler(settings.uri, "/{accountId}/policies/data-retrieval", SetDataRetrievalPolicyInput, headers, settings, cb)
 	else
@@ -3556,8 +4524,11 @@ function M.AbortVaultLockAsync(AbortVaultLockInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".AbortVaultLock",
 	}
+	for header,value in pairs(AbortVaultLockInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("DELETE")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE")
 	if request_handler then
 		request_handler(settings.uri, "/{accountId}/vaults/{vaultName}/lock-policy", AbortVaultLockInput, headers, settings, cb)
 	else
@@ -3588,8 +4559,11 @@ function M.AbortMultipartUploadAsync(AbortMultipartUploadInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".AbortMultipartUpload",
 	}
+	for header,value in pairs(AbortMultipartUploadInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("DELETE")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE")
 	if request_handler then
 		request_handler(settings.uri, "/{accountId}/vaults/{vaultName}/multipart-uploads/{uploadId}", AbortMultipartUploadInput, headers, settings, cb)
 	else
@@ -3620,8 +4594,11 @@ function M.RemoveTagsFromVaultAsync(RemoveTagsFromVaultInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".RemoveTagsFromVault",
 	}
+	for header,value in pairs(RemoveTagsFromVaultInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/{accountId}/vaults/{vaultName}/tags?operation=remove", RemoveTagsFromVaultInput, headers, settings, cb)
 	else
@@ -3652,8 +4629,11 @@ function M.CreateVaultAsync(CreateVaultInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".CreateVault",
 	}
+	for header,value in pairs(CreateVaultInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("PUT")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT")
 	if request_handler then
 		request_handler(settings.uri, "/{accountId}/vaults/{vaultName}", CreateVaultInput, headers, settings, cb)
 	else
@@ -3684,8 +4664,11 @@ function M.InitiateJobAsync(InitiateJobInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".InitiateJob",
 	}
+	for header,value in pairs(InitiateJobInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/{accountId}/vaults/{vaultName}/jobs", InitiateJobInput, headers, settings, cb)
 	else
@@ -3716,8 +4699,11 @@ function M.InitiateMultipartUploadAsync(InitiateMultipartUploadInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".InitiateMultipartUpload",
 	}
+	for header,value in pairs(InitiateMultipartUploadInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/{accountId}/vaults/{vaultName}/multipart-uploads", InitiateMultipartUploadInput, headers, settings, cb)
 	else
@@ -3748,8 +4734,11 @@ function M.GetDataRetrievalPolicyAsync(GetDataRetrievalPolicyInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".GetDataRetrievalPolicy",
 	}
+	for header,value in pairs(GetDataRetrievalPolicyInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
 	if request_handler then
 		request_handler(settings.uri, "/{accountId}/policies/data-retrieval", GetDataRetrievalPolicyInput, headers, settings, cb)
 	else
@@ -3780,8 +4769,11 @@ function M.SetVaultNotificationsAsync(SetVaultNotificationsInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".SetVaultNotifications",
 	}
+	for header,value in pairs(SetVaultNotificationsInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("PUT")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT")
 	if request_handler then
 		request_handler(settings.uri, "/{accountId}/vaults/{vaultName}/notification-configuration", SetVaultNotificationsInput, headers, settings, cb)
 	else
@@ -3812,8 +4804,11 @@ function M.UploadArchiveAsync(UploadArchiveInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".UploadArchive",
 	}
+	for header,value in pairs(UploadArchiveInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/{accountId}/vaults/{vaultName}/archives", UploadArchiveInput, headers, settings, cb)
 	else

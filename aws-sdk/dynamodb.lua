@@ -43,14 +43,25 @@ end
 -- * ConsumedCapacity [ConsumedCapacity] <p>The capacity units consumed by the <code>PutItem</code> operation. The data returned includes the total provisioned throughput consumed, along with statistics for the table and any indexes involved in the operation. <code>ConsumedCapacity</code> is only returned if the <code>ReturnConsumedCapacity</code> parameter was specified. For more information, see <a href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/ProvisionedThroughputIntro.html">Provisioned Throughput</a> in the <i>Amazon DynamoDB Developer Guide</i>.</p>
 -- @return PutItemOutput structure as a key-value pair table
 function M.PutItemOutput(args)
-	assert(args, "You must provdide an argument table when creating PutItemOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating PutItemOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Attributes"] = args["Attributes"],
 		["ItemCollectionMetrics"] = args["ItemCollectionMetrics"],
 		["ConsumedCapacity"] = args["ConsumedCapacity"],
 	}
-	asserts.AssertPutItemOutput(t)
-	return t
+	asserts.AssertPutItemOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.PutItemInput = { ["ConditionalOperator"] = true, ["ExpressionAttributeNames"] = true, ["ReturnValues"] = true, ["ConditionExpression"] = true, ["TableName"] = true, ["ReturnItemCollectionMetrics"] = true, ["ReturnConsumedCapacity"] = true, ["Item"] = true, ["ExpressionAttributeValues"] = true, ["Expected"] = true, nil }
@@ -93,8 +104,14 @@ end
 -- Required key: Item
 -- @return PutItemInput structure as a key-value pair table
 function M.PutItemInput(args)
-	assert(args, "You must provdide an argument table when creating PutItemInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating PutItemInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ConditionalOperator"] = args["ConditionalOperator"],
 		["ExpressionAttributeNames"] = args["ExpressionAttributeNames"],
 		["ReturnValues"] = args["ReturnValues"],
@@ -106,8 +123,13 @@ function M.PutItemInput(args)
 		["ExpressionAttributeValues"] = args["ExpressionAttributeValues"],
 		["Expected"] = args["Expected"],
 	}
-	asserts.AssertPutItemInput(t)
-	return t
+	asserts.AssertPutItemInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListTagsOfResourceInput = { ["ResourceArn"] = true, ["NextToken"] = true, nil }
@@ -132,13 +154,24 @@ end
 -- Required key: ResourceArn
 -- @return ListTagsOfResourceInput structure as a key-value pair table
 function M.ListTagsOfResourceInput(args)
-	assert(args, "You must provdide an argument table when creating ListTagsOfResourceInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListTagsOfResourceInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ResourceArn"] = args["ResourceArn"],
 		["NextToken"] = args["NextToken"],
 	}
-	asserts.AssertListTagsOfResourceInput(t)
-	return t
+	asserts.AssertListTagsOfResourceInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UntagResourceInput = { ["ResourceArn"] = true, ["TagKeys"] = true, nil }
@@ -165,13 +198,24 @@ end
 -- Required key: TagKeys
 -- @return UntagResourceInput structure as a key-value pair table
 function M.UntagResourceInput(args)
-	assert(args, "You must provdide an argument table when creating UntagResourceInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UntagResourceInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ResourceArn"] = args["ResourceArn"],
 		["TagKeys"] = args["TagKeys"],
 	}
-	asserts.AssertUntagResourceInput(t)
-	return t
+	asserts.AssertUntagResourceInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.KeySchemaElement = { ["KeyType"] = true, ["AttributeName"] = true, nil }
@@ -198,13 +242,24 @@ end
 -- Required key: KeyType
 -- @return KeySchemaElement structure as a key-value pair table
 function M.KeySchemaElement(args)
-	assert(args, "You must provdide an argument table when creating KeySchemaElement")
-	local t = { 
+	assert(args, "You must provide an argument table when creating KeySchemaElement")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["KeyType"] = args["KeyType"],
 		["AttributeName"] = args["AttributeName"],
 	}
-	asserts.AssertKeySchemaElement(t)
-	return t
+	asserts.AssertKeySchemaElement(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.BatchWriteItemOutput = { ["UnprocessedItems"] = true, ["ItemCollectionMetrics"] = true, ["ConsumedCapacity"] = true, nil }
@@ -229,14 +284,25 @@ end
 -- * ConsumedCapacity [ConsumedCapacityMultiple] <p>The capacity units consumed by the entire <code>BatchWriteItem</code> operation.</p> <p>Each element consists of:</p> <ul> <li> <p> <code>TableName</code> - The table that consumed the provisioned throughput.</p> </li> <li> <p> <code>CapacityUnits</code> - The total number of capacity units consumed.</p> </li> </ul>
 -- @return BatchWriteItemOutput structure as a key-value pair table
 function M.BatchWriteItemOutput(args)
-	assert(args, "You must provdide an argument table when creating BatchWriteItemOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating BatchWriteItemOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["UnprocessedItems"] = args["UnprocessedItems"],
 		["ItemCollectionMetrics"] = args["ItemCollectionMetrics"],
 		["ConsumedCapacity"] = args["ConsumedCapacity"],
 	}
-	asserts.AssertBatchWriteItemOutput(t)
-	return t
+	asserts.AssertBatchWriteItemOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdateGlobalSecondaryIndexAction = { ["ProvisionedThroughput"] = true, ["IndexName"] = true, nil }
@@ -263,13 +329,24 @@ end
 -- Required key: ProvisionedThroughput
 -- @return UpdateGlobalSecondaryIndexAction structure as a key-value pair table
 function M.UpdateGlobalSecondaryIndexAction(args)
-	assert(args, "You must provdide an argument table when creating UpdateGlobalSecondaryIndexAction")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateGlobalSecondaryIndexAction")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ProvisionedThroughput"] = args["ProvisionedThroughput"],
 		["IndexName"] = args["IndexName"],
 	}
-	asserts.AssertUpdateGlobalSecondaryIndexAction(t)
-	return t
+	asserts.AssertUpdateGlobalSecondaryIndexAction(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.BatchGetItemInput = { ["RequestItems"] = true, ["ReturnConsumedCapacity"] = true, nil }
@@ -294,13 +371,24 @@ end
 -- Required key: RequestItems
 -- @return BatchGetItemInput structure as a key-value pair table
 function M.BatchGetItemInput(args)
-	assert(args, "You must provdide an argument table when creating BatchGetItemInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating BatchGetItemInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["RequestItems"] = args["RequestItems"],
 		["ReturnConsumedCapacity"] = args["ReturnConsumedCapacity"],
 	}
-	asserts.AssertBatchGetItemInput(t)
-	return t
+	asserts.AssertBatchGetItemInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetItemInput = { ["ConsistentRead"] = true, ["ProjectionExpression"] = true, ["ExpressionAttributeNames"] = true, ["TableName"] = true, ["ReturnConsumedCapacity"] = true, ["AttributesToGet"] = true, ["Key"] = true, nil }
@@ -337,8 +425,14 @@ end
 -- Required key: Key
 -- @return GetItemInput structure as a key-value pair table
 function M.GetItemInput(args)
-	assert(args, "You must provdide an argument table when creating GetItemInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetItemInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ConsistentRead"] = args["ConsistentRead"],
 		["ProjectionExpression"] = args["ProjectionExpression"],
 		["ExpressionAttributeNames"] = args["ExpressionAttributeNames"],
@@ -347,8 +441,13 @@ function M.GetItemInput(args)
 		["AttributesToGet"] = args["AttributesToGet"],
 		["Key"] = args["Key"],
 	}
-	asserts.AssertGetItemInput(t)
-	return t
+	asserts.AssertGetItemInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ProvisionedThroughputExceededException = { ["message"] = true, nil }
@@ -369,12 +468,23 @@ end
 -- * message [ErrorMessage] <p>You exceeded your maximum allowed provisioned throughput.</p>
 -- @return ProvisionedThroughputExceededException structure as a key-value pair table
 function M.ProvisionedThroughputExceededException(args)
-	assert(args, "You must provdide an argument table when creating ProvisionedThroughputExceededException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ProvisionedThroughputExceededException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertProvisionedThroughputExceededException(t)
-	return t
+	asserts.AssertProvisionedThroughputExceededException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListTablesOutput = { ["LastEvaluatedTableName"] = true, ["TableNames"] = true, nil }
@@ -397,13 +507,24 @@ end
 -- * TableNames [TableNameList] <p>The names of the tables associated with the current account at the current endpoint. The maximum size of this array is 100.</p> <p>If <code>LastEvaluatedTableName</code> also appears in the output, you can use this value as the <code>ExclusiveStartTableName</code> parameter in a subsequent <code>ListTables</code> request and obtain the next page of results.</p>
 -- @return ListTablesOutput structure as a key-value pair table
 function M.ListTablesOutput(args)
-	assert(args, "You must provdide an argument table when creating ListTablesOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListTablesOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["LastEvaluatedTableName"] = args["LastEvaluatedTableName"],
 		["TableNames"] = args["TableNames"],
 	}
-	asserts.AssertListTablesOutput(t)
-	return t
+	asserts.AssertListTablesOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetItemOutput = { ["Item"] = true, ["ConsumedCapacity"] = true, nil }
@@ -426,13 +547,24 @@ end
 -- * ConsumedCapacity [ConsumedCapacity] <p>The capacity units consumed by the <code>GetItem</code> operation. The data returned includes the total provisioned throughput consumed, along with statistics for the table and any indexes involved in the operation. <code>ConsumedCapacity</code> is only returned if the <code>ReturnConsumedCapacity</code> parameter was specified. For more information, see <a href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/ProvisionedThroughputIntro.html">Provisioned Throughput</a> in the <i>Amazon DynamoDB Developer Guide</i>.</p>
 -- @return GetItemOutput structure as a key-value pair table
 function M.GetItemOutput(args)
-	assert(args, "You must provdide an argument table when creating GetItemOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetItemOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Item"] = args["Item"],
 		["ConsumedCapacity"] = args["ConsumedCapacity"],
 	}
-	asserts.AssertGetItemOutput(t)
-	return t
+	asserts.AssertGetItemOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.KeysAndAttributes = { ["Keys"] = true, ["ConsistentRead"] = true, ["AttributesToGet"] = true, ["ProjectionExpression"] = true, ["ExpressionAttributeNames"] = true, nil }
@@ -463,16 +595,27 @@ end
 -- Required key: Keys
 -- @return KeysAndAttributes structure as a key-value pair table
 function M.KeysAndAttributes(args)
-	assert(args, "You must provdide an argument table when creating KeysAndAttributes")
-	local t = { 
+	assert(args, "You must provide an argument table when creating KeysAndAttributes")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Keys"] = args["Keys"],
 		["ConsistentRead"] = args["ConsistentRead"],
 		["AttributesToGet"] = args["AttributesToGet"],
 		["ProjectionExpression"] = args["ProjectionExpression"],
 		["ExpressionAttributeNames"] = args["ExpressionAttributeNames"],
 	}
-	asserts.AssertKeysAndAttributes(t)
-	return t
+	asserts.AssertKeysAndAttributes(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InternalServerError = { ["message"] = true, nil }
@@ -493,12 +636,23 @@ end
 -- * message [ErrorMessage] <p>The server encountered an internal error trying to fulfill the request.</p>
 -- @return InternalServerError structure as a key-value pair table
 function M.InternalServerError(args)
-	assert(args, "You must provdide an argument table when creating InternalServerError")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InternalServerError")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertInternalServerError(t)
-	return t
+	asserts.AssertInternalServerError(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateTableInput = { ["GlobalSecondaryIndexes"] = true, ["AttributeDefinitions"] = true, ["LocalSecondaryIndexes"] = true, ["ProvisionedThroughput"] = true, ["TableName"] = true, ["StreamSpecification"] = true, ["KeySchema"] = true, nil }
@@ -539,8 +693,14 @@ end
 -- Required key: ProvisionedThroughput
 -- @return CreateTableInput structure as a key-value pair table
 function M.CreateTableInput(args)
-	assert(args, "You must provdide an argument table when creating CreateTableInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateTableInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["GlobalSecondaryIndexes"] = args["GlobalSecondaryIndexes"],
 		["AttributeDefinitions"] = args["AttributeDefinitions"],
 		["LocalSecondaryIndexes"] = args["LocalSecondaryIndexes"],
@@ -549,8 +709,13 @@ function M.CreateTableInput(args)
 		["StreamSpecification"] = args["StreamSpecification"],
 		["KeySchema"] = args["KeySchema"],
 	}
-	asserts.AssertCreateTableInput(t)
-	return t
+	asserts.AssertCreateTableInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListTagsOfResourceOutput = { ["NextToken"] = true, ["Tags"] = true, nil }
@@ -573,13 +738,24 @@ end
 -- * Tags [TagList] <p>The tags currently associated with the Amazon DynamoDB resource.</p>
 -- @return ListTagsOfResourceOutput structure as a key-value pair table
 function M.ListTagsOfResourceOutput(args)
-	assert(args, "You must provdide an argument table when creating ListTagsOfResourceOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListTagsOfResourceOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NextToken"] = args["NextToken"],
 		["Tags"] = args["Tags"],
 	}
-	asserts.AssertListTagsOfResourceOutput(t)
-	return t
+	asserts.AssertListTagsOfResourceOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeTimeToLiveInput = { ["TableName"] = true, nil }
@@ -602,12 +778,23 @@ end
 -- Required key: TableName
 -- @return DescribeTimeToLiveInput structure as a key-value pair table
 function M.DescribeTimeToLiveInput(args)
-	assert(args, "You must provdide an argument table when creating DescribeTimeToLiveInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeTimeToLiveInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["TableName"] = args["TableName"],
 	}
-	asserts.AssertDescribeTimeToLiveInput(t)
-	return t
+	asserts.AssertDescribeTimeToLiveInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AttributeValue = { ["B"] = true, ["NULL"] = true, ["SS"] = true, ["M"] = true, ["L"] = true, ["N"] = true, ["S"] = true, ["BOOL"] = true, ["BS"] = true, ["NS"] = true, nil }
@@ -646,8 +833,14 @@ end
 -- * NS [NumberSetAttributeValue] <p>An attribute of type Number Set. For example:</p> <p> <code>"NS": ["42.2", "-19", "7.5", "3.14"]</code> </p> <p>Numbers are sent across the network to DynamoDB as strings, to maximize compatibility across languages and libraries. However, DynamoDB treats them as number type attributes for mathematical operations.</p>
 -- @return AttributeValue structure as a key-value pair table
 function M.AttributeValue(args)
-	assert(args, "You must provdide an argument table when creating AttributeValue")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AttributeValue")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["B"] = args["B"],
 		["NULL"] = args["NULL"],
 		["SS"] = args["SS"],
@@ -659,8 +852,13 @@ function M.AttributeValue(args)
 		["BS"] = args["BS"],
 		["NS"] = args["NS"],
 	}
-	asserts.AssertAttributeValue(t)
-	return t
+	asserts.AssertAttributeValue(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.LocalSecondaryIndex = { ["KeySchema"] = true, ["IndexName"] = true, ["Projection"] = true, nil }
@@ -691,14 +889,25 @@ end
 -- Required key: Projection
 -- @return LocalSecondaryIndex structure as a key-value pair table
 function M.LocalSecondaryIndex(args)
-	assert(args, "You must provdide an argument table when creating LocalSecondaryIndex")
-	local t = { 
+	assert(args, "You must provide an argument table when creating LocalSecondaryIndex")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["KeySchema"] = args["KeySchema"],
 		["IndexName"] = args["IndexName"],
 		["Projection"] = args["Projection"],
 	}
-	asserts.AssertLocalSecondaryIndex(t)
-	return t
+	asserts.AssertLocalSecondaryIndex(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Tag = { ["Value"] = true, ["Key"] = true, nil }
@@ -725,13 +934,24 @@ end
 -- Required key: Value
 -- @return Tag structure as a key-value pair table
 function M.Tag(args)
-	assert(args, "You must provdide an argument table when creating Tag")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Tag")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Value"] = args["Value"],
 		["Key"] = args["Key"],
 	}
-	asserts.AssertTag(t)
-	return t
+	asserts.AssertTag(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GlobalSecondaryIndexDescription = { ["IndexSizeBytes"] = true, ["IndexName"] = true, ["Projection"] = true, ["ProvisionedThroughput"] = true, ["IndexStatus"] = true, ["Backfilling"] = true, ["KeySchema"] = true, ["IndexArn"] = true, ["ItemCount"] = true, nil }
@@ -768,8 +988,14 @@ end
 -- * ItemCount [Long] <p>The number of items in the specified index. DynamoDB updates this value approximately every six hours. Recent changes might not be reflected in this value.</p>
 -- @return GlobalSecondaryIndexDescription structure as a key-value pair table
 function M.GlobalSecondaryIndexDescription(args)
-	assert(args, "You must provdide an argument table when creating GlobalSecondaryIndexDescription")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GlobalSecondaryIndexDescription")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["IndexSizeBytes"] = args["IndexSizeBytes"],
 		["IndexName"] = args["IndexName"],
 		["Projection"] = args["Projection"],
@@ -780,8 +1006,13 @@ function M.GlobalSecondaryIndexDescription(args)
 		["IndexArn"] = args["IndexArn"],
 		["ItemCount"] = args["ItemCount"],
 	}
-	asserts.AssertGlobalSecondaryIndexDescription(t)
-	return t
+	asserts.AssertGlobalSecondaryIndexDescription(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateTableOutput = { ["TableDescription"] = true, nil }
@@ -802,12 +1033,23 @@ end
 -- * TableDescription [TableDescription] <p>Represents the properties of the table.</p>
 -- @return CreateTableOutput structure as a key-value pair table
 function M.CreateTableOutput(args)
-	assert(args, "You must provdide an argument table when creating CreateTableOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateTableOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["TableDescription"] = args["TableDescription"],
 	}
-	asserts.AssertCreateTableOutput(t)
-	return t
+	asserts.AssertCreateTableOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GlobalSecondaryIndex = { ["KeySchema"] = true, ["IndexName"] = true, ["Projection"] = true, ["ProvisionedThroughput"] = true, nil }
@@ -842,15 +1084,26 @@ end
 -- Required key: ProvisionedThroughput
 -- @return GlobalSecondaryIndex structure as a key-value pair table
 function M.GlobalSecondaryIndex(args)
-	assert(args, "You must provdide an argument table when creating GlobalSecondaryIndex")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GlobalSecondaryIndex")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["KeySchema"] = args["KeySchema"],
 		["IndexName"] = args["IndexName"],
 		["Projection"] = args["Projection"],
 		["ProvisionedThroughput"] = args["ProvisionedThroughput"],
 	}
-	asserts.AssertGlobalSecondaryIndex(t)
-	return t
+	asserts.AssertGlobalSecondaryIndex(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdateTimeToLiveOutput = { ["TimeToLiveSpecification"] = true, nil }
@@ -871,12 +1124,23 @@ end
 -- * TimeToLiveSpecification [TimeToLiveSpecification] <p>Represents the output of an <code>UpdateTimeToLive</code> operation.</p>
 -- @return UpdateTimeToLiveOutput structure as a key-value pair table
 function M.UpdateTimeToLiveOutput(args)
-	assert(args, "You must provdide an argument table when creating UpdateTimeToLiveOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateTimeToLiveOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["TimeToLiveSpecification"] = args["TimeToLiveSpecification"],
 	}
-	asserts.AssertUpdateTimeToLiveOutput(t)
-	return t
+	asserts.AssertUpdateTimeToLiveOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ResourceNotFoundException = { ["message"] = true, nil }
@@ -897,12 +1161,23 @@ end
 -- * message [ErrorMessage] <p>The resource which is being requested does not exist.</p>
 -- @return ResourceNotFoundException structure as a key-value pair table
 function M.ResourceNotFoundException(args)
-	assert(args, "You must provdide an argument table when creating ResourceNotFoundException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ResourceNotFoundException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertResourceNotFoundException(t)
-	return t
+	asserts.AssertResourceNotFoundException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.StreamSpecification = { ["StreamViewType"] = true, ["StreamEnabled"] = true, nil }
@@ -925,13 +1200,24 @@ end
 -- * StreamEnabled [StreamEnabled] <p>Indicates whether DynamoDB Streams is enabled (true) or disabled (false) on the table.</p>
 -- @return StreamSpecification structure as a key-value pair table
 function M.StreamSpecification(args)
-	assert(args, "You must provdide an argument table when creating StreamSpecification")
-	local t = { 
+	assert(args, "You must provide an argument table when creating StreamSpecification")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["StreamViewType"] = args["StreamViewType"],
 		["StreamEnabled"] = args["StreamEnabled"],
 	}
-	asserts.AssertStreamSpecification(t)
-	return t
+	asserts.AssertStreamSpecification(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdateItemInput = { ["AttributeUpdates"] = true, ["ConditionalOperator"] = true, ["ExpressionAttributeNames"] = true, ["ReturnValues"] = true, ["ConditionExpression"] = true, ["TableName"] = true, ["ReturnItemCollectionMetrics"] = true, ["ReturnConsumedCapacity"] = true, ["UpdateExpression"] = true, ["ExpressionAttributeValues"] = true, ["Key"] = true, ["Expected"] = true, nil }
@@ -978,8 +1264,14 @@ end
 -- Required key: Key
 -- @return UpdateItemInput structure as a key-value pair table
 function M.UpdateItemInput(args)
-	assert(args, "You must provdide an argument table when creating UpdateItemInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateItemInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["AttributeUpdates"] = args["AttributeUpdates"],
 		["ConditionalOperator"] = args["ConditionalOperator"],
 		["ExpressionAttributeNames"] = args["ExpressionAttributeNames"],
@@ -993,8 +1285,13 @@ function M.UpdateItemInput(args)
 		["Key"] = args["Key"],
 		["Expected"] = args["Expected"],
 	}
-	asserts.AssertUpdateItemInput(t)
-	return t
+	asserts.AssertUpdateItemInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ConditionalCheckFailedException = { ["message"] = true, nil }
@@ -1015,12 +1312,23 @@ end
 -- * message [ErrorMessage] <p>The conditional request failed.</p>
 -- @return ConditionalCheckFailedException structure as a key-value pair table
 function M.ConditionalCheckFailedException(args)
-	assert(args, "You must provdide an argument table when creating ConditionalCheckFailedException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ConditionalCheckFailedException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertConditionalCheckFailedException(t)
-	return t
+	asserts.AssertConditionalCheckFailedException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdateTableInput = { ["GlobalSecondaryIndexUpdates"] = true, ["ProvisionedThroughput"] = true, ["StreamSpecification"] = true, ["TableName"] = true, ["AttributeDefinitions"] = true, nil }
@@ -1051,16 +1359,27 @@ end
 -- Required key: TableName
 -- @return UpdateTableInput structure as a key-value pair table
 function M.UpdateTableInput(args)
-	assert(args, "You must provdide an argument table when creating UpdateTableInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateTableInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["GlobalSecondaryIndexUpdates"] = args["GlobalSecondaryIndexUpdates"],
 		["ProvisionedThroughput"] = args["ProvisionedThroughput"],
 		["StreamSpecification"] = args["StreamSpecification"],
 		["TableName"] = args["TableName"],
 		["AttributeDefinitions"] = args["AttributeDefinitions"],
 	}
-	asserts.AssertUpdateTableInput(t)
-	return t
+	asserts.AssertUpdateTableInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeTableInput = { ["TableName"] = true, nil }
@@ -1083,12 +1402,23 @@ end
 -- Required key: TableName
 -- @return DescribeTableInput structure as a key-value pair table
 function M.DescribeTableInput(args)
-	assert(args, "You must provdide an argument table when creating DescribeTableInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeTableInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["TableName"] = args["TableName"],
 	}
-	asserts.AssertDescribeTableInput(t)
-	return t
+	asserts.AssertDescribeTableInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ProvisionedThroughputDescription = { ["NumberOfDecreasesToday"] = true, ["WriteCapacityUnits"] = true, ["LastIncreaseDateTime"] = true, ["ReadCapacityUnits"] = true, ["LastDecreaseDateTime"] = true, nil }
@@ -1117,16 +1447,27 @@ end
 -- * LastDecreaseDateTime [Date] <p>The date and time of the last provisioned throughput decrease for this table.</p>
 -- @return ProvisionedThroughputDescription structure as a key-value pair table
 function M.ProvisionedThroughputDescription(args)
-	assert(args, "You must provdide an argument table when creating ProvisionedThroughputDescription")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ProvisionedThroughputDescription")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NumberOfDecreasesToday"] = args["NumberOfDecreasesToday"],
 		["WriteCapacityUnits"] = args["WriteCapacityUnits"],
 		["LastIncreaseDateTime"] = args["LastIncreaseDateTime"],
 		["ReadCapacityUnits"] = args["ReadCapacityUnits"],
 		["LastDecreaseDateTime"] = args["LastDecreaseDateTime"],
 	}
-	asserts.AssertProvisionedThroughputDescription(t)
-	return t
+	asserts.AssertProvisionedThroughputDescription(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.BatchWriteItemInput = { ["RequestItems"] = true, ["ReturnConsumedCapacity"] = true, ["ReturnItemCollectionMetrics"] = true, nil }
@@ -1153,14 +1494,25 @@ end
 -- Required key: RequestItems
 -- @return BatchWriteItemInput structure as a key-value pair table
 function M.BatchWriteItemInput(args)
-	assert(args, "You must provdide an argument table when creating BatchWriteItemInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating BatchWriteItemInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["RequestItems"] = args["RequestItems"],
 		["ReturnConsumedCapacity"] = args["ReturnConsumedCapacity"],
 		["ReturnItemCollectionMetrics"] = args["ReturnItemCollectionMetrics"],
 	}
-	asserts.AssertBatchWriteItemInput(t)
-	return t
+	asserts.AssertBatchWriteItemInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ItemCollectionMetrics = { ["ItemCollectionKey"] = true, ["SizeEstimateRangeGB"] = true, nil }
@@ -1183,13 +1535,24 @@ end
 -- * SizeEstimateRangeGB [ItemCollectionSizeEstimateRange] <p>An estimate of item collection size, in gigabytes. This value is a two-element array containing a lower bound and an upper bound for the estimate. The estimate includes the size of all the items in the table, plus the size of all attributes projected into all of the local secondary indexes on that table. Use this estimate to measure whether a local secondary index is approaching its size limit.</p> <p>The estimate is subject to change over time; therefore, do not rely on the precision or accuracy of the estimate.</p>
 -- @return ItemCollectionMetrics structure as a key-value pair table
 function M.ItemCollectionMetrics(args)
-	assert(args, "You must provdide an argument table when creating ItemCollectionMetrics")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ItemCollectionMetrics")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ItemCollectionKey"] = args["ItemCollectionKey"],
 		["SizeEstimateRangeGB"] = args["SizeEstimateRangeGB"],
 	}
-	asserts.AssertItemCollectionMetrics(t)
-	return t
+	asserts.AssertItemCollectionMetrics(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AttributeDefinition = { ["AttributeName"] = true, ["AttributeType"] = true, nil }
@@ -1216,13 +1579,24 @@ end
 -- Required key: AttributeType
 -- @return AttributeDefinition structure as a key-value pair table
 function M.AttributeDefinition(args)
-	assert(args, "You must provdide an argument table when creating AttributeDefinition")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AttributeDefinition")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["AttributeName"] = args["AttributeName"],
 		["AttributeType"] = args["AttributeType"],
 	}
-	asserts.AssertAttributeDefinition(t)
-	return t
+	asserts.AssertAttributeDefinition(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteTableOutput = { ["TableDescription"] = true, nil }
@@ -1243,12 +1617,23 @@ end
 -- * TableDescription [TableDescription] <p>Represents the properties of a table.</p>
 -- @return DeleteTableOutput structure as a key-value pair table
 function M.DeleteTableOutput(args)
-	assert(args, "You must provdide an argument table when creating DeleteTableOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteTableOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["TableDescription"] = args["TableDescription"],
 	}
-	asserts.AssertDeleteTableOutput(t)
-	return t
+	asserts.AssertDeleteTableOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Capacity = { ["CapacityUnits"] = true, nil }
@@ -1269,12 +1654,23 @@ end
 -- * CapacityUnits [ConsumedCapacityUnits] <p>The total number of capacity units consumed on a table or an index.</p>
 -- @return Capacity structure as a key-value pair table
 function M.Capacity(args)
-	assert(args, "You must provdide an argument table when creating Capacity")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Capacity")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["CapacityUnits"] = args["CapacityUnits"],
 	}
-	asserts.AssertCapacity(t)
-	return t
+	asserts.AssertCapacity(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.QueryOutput = { ["Count"] = true, ["Items"] = true, ["LastEvaluatedKey"] = true, ["ScannedCount"] = true, ["ConsumedCapacity"] = true, nil }
@@ -1303,16 +1699,27 @@ end
 -- * ConsumedCapacity [ConsumedCapacity] <p>The capacity units consumed by the <code>Query</code> operation. The data returned includes the total provisioned throughput consumed, along with statistics for the table and any indexes involved in the operation. <code>ConsumedCapacity</code> is only returned if the <code>ReturnConsumedCapacity</code> parameter was specified For more information, see <a href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/ProvisionedThroughputIntro.html">Provisioned Throughput</a> in the <i>Amazon DynamoDB Developer Guide</i>.</p>
 -- @return QueryOutput structure as a key-value pair table
 function M.QueryOutput(args)
-	assert(args, "You must provdide an argument table when creating QueryOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating QueryOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Count"] = args["Count"],
 		["Items"] = args["Items"],
 		["LastEvaluatedKey"] = args["LastEvaluatedKey"],
 		["ScannedCount"] = args["ScannedCount"],
 		["ConsumedCapacity"] = args["ConsumedCapacity"],
 	}
-	asserts.AssertQueryOutput(t)
-	return t
+	asserts.AssertQueryOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListTablesInput = { ["Limit"] = true, ["ExclusiveStartTableName"] = true, nil }
@@ -1335,13 +1742,24 @@ end
 -- * ExclusiveStartTableName [TableName] <p>The first table name that this operation will evaluate. Use the value that was returned for <code>LastEvaluatedTableName</code> in a previous operation, so that you can obtain the next page of results.</p>
 -- @return ListTablesInput structure as a key-value pair table
 function M.ListTablesInput(args)
-	assert(args, "You must provdide an argument table when creating ListTablesInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListTablesInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Limit"] = args["Limit"],
 		["ExclusiveStartTableName"] = args["ExclusiveStartTableName"],
 	}
-	asserts.AssertListTablesInput(t)
-	return t
+	asserts.AssertListTablesInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.LimitExceededException = { ["message"] = true, nil }
@@ -1362,12 +1780,23 @@ end
 -- * message [ErrorMessage] <p>Too many operations for a given subscriber.</p>
 -- @return LimitExceededException structure as a key-value pair table
 function M.LimitExceededException(args)
-	assert(args, "You must provdide an argument table when creating LimitExceededException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating LimitExceededException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertLimitExceededException(t)
-	return t
+	asserts.AssertLimitExceededException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GlobalSecondaryIndexUpdate = { ["Create"] = true, ["Update"] = true, ["Delete"] = true, nil }
@@ -1392,14 +1821,25 @@ end
 -- * Delete [DeleteGlobalSecondaryIndexAction] <p>The name of an existing global secondary index to be removed.</p>
 -- @return GlobalSecondaryIndexUpdate structure as a key-value pair table
 function M.GlobalSecondaryIndexUpdate(args)
-	assert(args, "You must provdide an argument table when creating GlobalSecondaryIndexUpdate")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GlobalSecondaryIndexUpdate")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Create"] = args["Create"],
 		["Update"] = args["Update"],
 		["Delete"] = args["Delete"],
 	}
-	asserts.AssertGlobalSecondaryIndexUpdate(t)
-	return t
+	asserts.AssertGlobalSecondaryIndexUpdate(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ResourceInUseException = { ["message"] = true, nil }
@@ -1420,12 +1860,23 @@ end
 -- * message [ErrorMessage] <p>The resource which is being attempted to be changed is in use.</p>
 -- @return ResourceInUseException structure as a key-value pair table
 function M.ResourceInUseException(args)
-	assert(args, "You must provdide an argument table when creating ResourceInUseException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ResourceInUseException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertResourceInUseException(t)
-	return t
+	asserts.AssertResourceInUseException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.QueryInput = { ["FilterExpression"] = true, ["ConsistentRead"] = true, ["ConditionalOperator"] = true, ["IndexName"] = true, ["ProjectionExpression"] = true, ["ExpressionAttributeNames"] = true, ["QueryFilter"] = true, ["TableName"] = true, ["ReturnConsumedCapacity"] = true, ["ExclusiveStartKey"] = true, ["AttributesToGet"] = true, ["Limit"] = true, ["ExpressionAttributeValues"] = true, ["KeyConditions"] = true, ["KeyConditionExpression"] = true, ["ScanIndexForward"] = true, ["Select"] = true, nil }
@@ -1480,8 +1931,14 @@ end
 -- Required key: TableName
 -- @return QueryInput structure as a key-value pair table
 function M.QueryInput(args)
-	assert(args, "You must provdide an argument table when creating QueryInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating QueryInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["FilterExpression"] = args["FilterExpression"],
 		["ConsistentRead"] = args["ConsistentRead"],
 		["ConditionalOperator"] = args["ConditionalOperator"],
@@ -1500,8 +1957,13 @@ function M.QueryInput(args)
 		["ScanIndexForward"] = args["ScanIndexForward"],
 		["Select"] = args["Select"],
 	}
-	asserts.AssertQueryInput(t)
-	return t
+	asserts.AssertQueryInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AttributeValueUpdate = { ["Action"] = true, ["Value"] = true, nil }
@@ -1524,13 +1986,24 @@ end
 -- * Value [AttributeValue] <p>Represents the data for an attribute.</p> <p>Each attribute value is described as a name-value pair. The name is the data type, and the value is the data itself.</p> <p>For more information, see <a href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/HowItWorks.NamingRulesDataTypes.html#HowItWorks.DataTypes">Data TYpes</a> in the <i>Amazon DynamoDB Developer Guide</i>. </p>
 -- @return AttributeValueUpdate structure as a key-value pair table
 function M.AttributeValueUpdate(args)
-	assert(args, "You must provdide an argument table when creating AttributeValueUpdate")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AttributeValueUpdate")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Action"] = args["Action"],
 		["Value"] = args["Value"],
 	}
-	asserts.AssertAttributeValueUpdate(t)
-	return t
+	asserts.AssertAttributeValueUpdate(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.TimeToLiveSpecification = { ["AttributeName"] = true, ["Enabled"] = true, nil }
@@ -1557,13 +2030,24 @@ end
 -- Required key: AttributeName
 -- @return TimeToLiveSpecification structure as a key-value pair table
 function M.TimeToLiveSpecification(args)
-	assert(args, "You must provdide an argument table when creating TimeToLiveSpecification")
-	local t = { 
+	assert(args, "You must provide an argument table when creating TimeToLiveSpecification")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["AttributeName"] = args["AttributeName"],
 		["Enabled"] = args["Enabled"],
 	}
-	asserts.AssertTimeToLiveSpecification(t)
-	return t
+	asserts.AssertTimeToLiveSpecification(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteItemOutput = { ["Attributes"] = true, ["ItemCollectionMetrics"] = true, ["ConsumedCapacity"] = true, nil }
@@ -1588,14 +2072,25 @@ end
 -- * ConsumedCapacity [ConsumedCapacity] <p>The capacity units consumed by the <code>DeleteItem</code> operation. The data returned includes the total provisioned throughput consumed, along with statistics for the table and any indexes involved in the operation. <code>ConsumedCapacity</code> is only returned if the <code>ReturnConsumedCapacity</code> parameter was specified. For more information, see <a href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/ProvisionedThroughputIntro.html">Provisioned Throughput</a> in the <i>Amazon DynamoDB Developer Guide</i>.</p>
 -- @return DeleteItemOutput structure as a key-value pair table
 function M.DeleteItemOutput(args)
-	assert(args, "You must provdide an argument table when creating DeleteItemOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteItemOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Attributes"] = args["Attributes"],
 		["ItemCollectionMetrics"] = args["ItemCollectionMetrics"],
 		["ConsumedCapacity"] = args["ConsumedCapacity"],
 	}
-	asserts.AssertDeleteItemOutput(t)
-	return t
+	asserts.AssertDeleteItemOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Condition = { ["ComparisonOperator"] = true, ["AttributeValueList"] = true, nil }
@@ -1620,13 +2115,24 @@ end
 -- Required key: ComparisonOperator
 -- @return Condition structure as a key-value pair table
 function M.Condition(args)
-	assert(args, "You must provdide an argument table when creating Condition")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Condition")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ComparisonOperator"] = args["ComparisonOperator"],
 		["AttributeValueList"] = args["AttributeValueList"],
 	}
-	asserts.AssertCondition(t)
-	return t
+	asserts.AssertCondition(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ScanInput = { ["FilterExpression"] = true, ["ConsistentRead"] = true, ["ConditionalOperator"] = true, ["IndexName"] = true, ["ProjectionExpression"] = true, ["ExpressionAttributeNames"] = true, ["TableName"] = true, ["ReturnConsumedCapacity"] = true, ["ExclusiveStartKey"] = true, ["AttributesToGet"] = true, ["Limit"] = true, ["TotalSegments"] = true, ["Segment"] = true, ["ScanFilter"] = true, ["Select"] = true, ["ExpressionAttributeValues"] = true, nil }
@@ -1679,8 +2185,14 @@ end
 -- Required key: TableName
 -- @return ScanInput structure as a key-value pair table
 function M.ScanInput(args)
-	assert(args, "You must provdide an argument table when creating ScanInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ScanInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["FilterExpression"] = args["FilterExpression"],
 		["ConsistentRead"] = args["ConsistentRead"],
 		["ConditionalOperator"] = args["ConditionalOperator"],
@@ -1698,8 +2210,13 @@ function M.ScanInput(args)
 		["Select"] = args["Select"],
 		["ExpressionAttributeValues"] = args["ExpressionAttributeValues"],
 	}
-	asserts.AssertScanInput(t)
-	return t
+	asserts.AssertScanInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.BatchGetItemOutput = { ["UnprocessedKeys"] = true, ["Responses"] = true, ["ConsumedCapacity"] = true, nil }
@@ -1724,14 +2241,25 @@ end
 -- * ConsumedCapacity [ConsumedCapacityMultiple] <p>The read capacity units consumed by the entire <code>BatchGetItem</code> operation.</p> <p>Each element consists of:</p> <ul> <li> <p> <code>TableName</code> - The table that consumed the provisioned throughput.</p> </li> <li> <p> <code>CapacityUnits</code> - The total number of capacity units consumed.</p> </li> </ul>
 -- @return BatchGetItemOutput structure as a key-value pair table
 function M.BatchGetItemOutput(args)
-	assert(args, "You must provdide an argument table when creating BatchGetItemOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating BatchGetItemOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["UnprocessedKeys"] = args["UnprocessedKeys"],
 		["Responses"] = args["Responses"],
 		["ConsumedCapacity"] = args["ConsumedCapacity"],
 	}
-	asserts.AssertBatchGetItemOutput(t)
-	return t
+	asserts.AssertBatchGetItemOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Projection = { ["ProjectionType"] = true, ["NonKeyAttributes"] = true, nil }
@@ -1754,13 +2282,24 @@ end
 -- * NonKeyAttributes [NonKeyAttributeNameList] <p>Represents the non-key attribute names which will be projected into the index.</p> <p>For local secondary indexes, the total count of <code>NonKeyAttributes</code> summed across all of the local secondary indexes, must not exceed 20. If you project the same attribute into two different indexes, this counts as two distinct attributes when determining the total.</p>
 -- @return Projection structure as a key-value pair table
 function M.Projection(args)
-	assert(args, "You must provdide an argument table when creating Projection")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Projection")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ProjectionType"] = args["ProjectionType"],
 		["NonKeyAttributes"] = args["NonKeyAttributes"],
 	}
-	asserts.AssertProjection(t)
-	return t
+	asserts.AssertProjection(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeTableOutput = { ["Table"] = true, nil }
@@ -1781,12 +2320,23 @@ end
 -- * Table [TableDescription] <p>The properties of the table.</p>
 -- @return DescribeTableOutput structure as a key-value pair table
 function M.DescribeTableOutput(args)
-	assert(args, "You must provdide an argument table when creating DescribeTableOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeTableOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Table"] = args["Table"],
 	}
-	asserts.AssertDescribeTableOutput(t)
-	return t
+	asserts.AssertDescribeTableOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdateTimeToLiveInput = { ["TableName"] = true, ["TimeToLiveSpecification"] = true, nil }
@@ -1813,13 +2363,24 @@ end
 -- Required key: TimeToLiveSpecification
 -- @return UpdateTimeToLiveInput structure as a key-value pair table
 function M.UpdateTimeToLiveInput(args)
-	assert(args, "You must provdide an argument table when creating UpdateTimeToLiveInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateTimeToLiveInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["TableName"] = args["TableName"],
 		["TimeToLiveSpecification"] = args["TimeToLiveSpecification"],
 	}
-	asserts.AssertUpdateTimeToLiveInput(t)
-	return t
+	asserts.AssertUpdateTimeToLiveInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteTableInput = { ["TableName"] = true, nil }
@@ -1842,12 +2403,23 @@ end
 -- Required key: TableName
 -- @return DeleteTableInput structure as a key-value pair table
 function M.DeleteTableInput(args)
-	assert(args, "You must provdide an argument table when creating DeleteTableInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteTableInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["TableName"] = args["TableName"],
 	}
-	asserts.AssertDeleteTableInput(t)
-	return t
+	asserts.AssertDeleteTableInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.TimeToLiveDescription = { ["AttributeName"] = true, ["TimeToLiveStatus"] = true, nil }
@@ -1870,13 +2442,24 @@ end
 -- * TimeToLiveStatus [TimeToLiveStatus] <p> The Time to Live status for the table.</p>
 -- @return TimeToLiveDescription structure as a key-value pair table
 function M.TimeToLiveDescription(args)
-	assert(args, "You must provdide an argument table when creating TimeToLiveDescription")
-	local t = { 
+	assert(args, "You must provide an argument table when creating TimeToLiveDescription")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["AttributeName"] = args["AttributeName"],
 		["TimeToLiveStatus"] = args["TimeToLiveStatus"],
 	}
-	asserts.AssertTimeToLiveDescription(t)
-	return t
+	asserts.AssertTimeToLiveDescription(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ProvisionedThroughput = { ["WriteCapacityUnits"] = true, ["ReadCapacityUnits"] = true, nil }
@@ -1903,13 +2486,24 @@ end
 -- Required key: WriteCapacityUnits
 -- @return ProvisionedThroughput structure as a key-value pair table
 function M.ProvisionedThroughput(args)
-	assert(args, "You must provdide an argument table when creating ProvisionedThroughput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ProvisionedThroughput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["WriteCapacityUnits"] = args["WriteCapacityUnits"],
 		["ReadCapacityUnits"] = args["ReadCapacityUnits"],
 	}
-	asserts.AssertProvisionedThroughput(t)
-	return t
+	asserts.AssertProvisionedThroughput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ExpectedAttributeValue = { ["ComparisonOperator"] = true, ["Exists"] = true, ["Value"] = true, ["AttributeValueList"] = true, nil }
@@ -1936,15 +2530,26 @@ end
 -- * AttributeValueList [AttributeValueList] <p>One or more values to evaluate against the supplied attribute. The number of values in the list depends on the <code>ComparisonOperator</code> being used.</p> <p>For type Number, value comparisons are numeric.</p> <p>String value comparisons for greater than, equals, or less than are based on ASCII character code values. For example, <code>a</code> is greater than <code>A</code>, and <code>a</code> is greater than <code>B</code>. For a list of code values, see <a href="http://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters">http://en.wikipedia.org/wiki/ASCII#ASCII_printable_characters</a>.</p> <p>For Binary, DynamoDB treats each byte of the binary data as unsigned when it compares binary values.</p> <p>For information on specifying data types in JSON, see <a href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/DataFormat.html">JSON Data Format</a> in the <i>Amazon DynamoDB Developer Guide</i>.</p>
 -- @return ExpectedAttributeValue structure as a key-value pair table
 function M.ExpectedAttributeValue(args)
-	assert(args, "You must provdide an argument table when creating ExpectedAttributeValue")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ExpectedAttributeValue")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ComparisonOperator"] = args["ComparisonOperator"],
 		["Exists"] = args["Exists"],
 		["Value"] = args["Value"],
 		["AttributeValueList"] = args["AttributeValueList"],
 	}
-	asserts.AssertExpectedAttributeValue(t)
-	return t
+	asserts.AssertExpectedAttributeValue(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteItemInput = { ["ConditionalOperator"] = true, ["ExpressionAttributeNames"] = true, ["ReturnValues"] = true, ["ConditionExpression"] = true, ["TableName"] = true, ["ReturnItemCollectionMetrics"] = true, ["ReturnConsumedCapacity"] = true, ["ExpressionAttributeValues"] = true, ["Key"] = true, ["Expected"] = true, nil }
@@ -1987,8 +2592,14 @@ end
 -- Required key: Key
 -- @return DeleteItemInput structure as a key-value pair table
 function M.DeleteItemInput(args)
-	assert(args, "You must provdide an argument table when creating DeleteItemInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteItemInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ConditionalOperator"] = args["ConditionalOperator"],
 		["ExpressionAttributeNames"] = args["ExpressionAttributeNames"],
 		["ReturnValues"] = args["ReturnValues"],
@@ -2000,8 +2611,13 @@ function M.DeleteItemInput(args)
 		["Key"] = args["Key"],
 		["Expected"] = args["Expected"],
 	}
-	asserts.AssertDeleteItemInput(t)
-	return t
+	asserts.AssertDeleteItemInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateGlobalSecondaryIndexAction = { ["KeySchema"] = true, ["IndexName"] = true, ["Projection"] = true, ["ProvisionedThroughput"] = true, nil }
@@ -2036,15 +2652,26 @@ end
 -- Required key: ProvisionedThroughput
 -- @return CreateGlobalSecondaryIndexAction structure as a key-value pair table
 function M.CreateGlobalSecondaryIndexAction(args)
-	assert(args, "You must provdide an argument table when creating CreateGlobalSecondaryIndexAction")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateGlobalSecondaryIndexAction")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["KeySchema"] = args["KeySchema"],
 		["IndexName"] = args["IndexName"],
 		["Projection"] = args["Projection"],
 		["ProvisionedThroughput"] = args["ProvisionedThroughput"],
 	}
-	asserts.AssertCreateGlobalSecondaryIndexAction(t)
-	return t
+	asserts.AssertCreateGlobalSecondaryIndexAction(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ScanOutput = { ["Count"] = true, ["Items"] = true, ["LastEvaluatedKey"] = true, ["ScannedCount"] = true, ["ConsumedCapacity"] = true, nil }
@@ -2073,16 +2700,27 @@ end
 -- * ConsumedCapacity [ConsumedCapacity] <p>The capacity units consumed by the <code>Scan</code> operation. The data returned includes the total provisioned throughput consumed, along with statistics for the table and any indexes involved in the operation. <code>ConsumedCapacity</code> is only returned if the <code>ReturnConsumedCapacity</code> parameter was specified. For more information, see <a href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/ProvisionedThroughputIntro.html">Provisioned Throughput</a> in the <i>Amazon DynamoDB Developer Guide</i>.</p>
 -- @return ScanOutput structure as a key-value pair table
 function M.ScanOutput(args)
-	assert(args, "You must provdide an argument table when creating ScanOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ScanOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Count"] = args["Count"],
 		["Items"] = args["Items"],
 		["LastEvaluatedKey"] = args["LastEvaluatedKey"],
 		["ScannedCount"] = args["ScannedCount"],
 		["ConsumedCapacity"] = args["ConsumedCapacity"],
 	}
-	asserts.AssertScanOutput(t)
-	return t
+	asserts.AssertScanOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeLimitsOutput = { ["TableMaxWriteCapacityUnits"] = true, ["TableMaxReadCapacityUnits"] = true, ["AccountMaxReadCapacityUnits"] = true, ["AccountMaxWriteCapacityUnits"] = true, nil }
@@ -2109,15 +2747,26 @@ end
 -- * AccountMaxWriteCapacityUnits [PositiveLongObject] <p>The maximum total write capacity units that your account allows you to provision across all of your tables in this region.</p>
 -- @return DescribeLimitsOutput structure as a key-value pair table
 function M.DescribeLimitsOutput(args)
-	assert(args, "You must provdide an argument table when creating DescribeLimitsOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeLimitsOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["TableMaxWriteCapacityUnits"] = args["TableMaxWriteCapacityUnits"],
 		["TableMaxReadCapacityUnits"] = args["TableMaxReadCapacityUnits"],
 		["AccountMaxReadCapacityUnits"] = args["AccountMaxReadCapacityUnits"],
 		["AccountMaxWriteCapacityUnits"] = args["AccountMaxWriteCapacityUnits"],
 	}
-	asserts.AssertDescribeLimitsOutput(t)
-	return t
+	asserts.AssertDescribeLimitsOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdateTableOutput = { ["TableDescription"] = true, nil }
@@ -2138,12 +2787,23 @@ end
 -- * TableDescription [TableDescription] <p>Represents the properties of the table.</p>
 -- @return UpdateTableOutput structure as a key-value pair table
 function M.UpdateTableOutput(args)
-	assert(args, "You must provdide an argument table when creating UpdateTableOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateTableOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["TableDescription"] = args["TableDescription"],
 	}
-	asserts.AssertUpdateTableOutput(t)
-	return t
+	asserts.AssertUpdateTableOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdateItemOutput = { ["Attributes"] = true, ["ItemCollectionMetrics"] = true, ["ConsumedCapacity"] = true, nil }
@@ -2168,14 +2828,25 @@ end
 -- * ConsumedCapacity [ConsumedCapacity] <p>The capacity units consumed by the <code>UpdateItem</code> operation. The data returned includes the total provisioned throughput consumed, along with statistics for the table and any indexes involved in the operation. <code>ConsumedCapacity</code> is only returned if the <code>ReturnConsumedCapacity</code> parameter was specified. For more information, see <a href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/ProvisionedThroughputIntro.html">Provisioned Throughput</a> in the <i>Amazon DynamoDB Developer Guide</i>.</p>
 -- @return UpdateItemOutput structure as a key-value pair table
 function M.UpdateItemOutput(args)
-	assert(args, "You must provdide an argument table when creating UpdateItemOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateItemOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Attributes"] = args["Attributes"],
 		["ItemCollectionMetrics"] = args["ItemCollectionMetrics"],
 		["ConsumedCapacity"] = args["ConsumedCapacity"],
 	}
-	asserts.AssertUpdateItemOutput(t)
-	return t
+	asserts.AssertUpdateItemOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.LocalSecondaryIndexDescription = { ["IndexSizeBytes"] = true, ["IndexName"] = true, ["Projection"] = true, ["IndexArn"] = true, ["KeySchema"] = true, ["ItemCount"] = true, nil }
@@ -2206,8 +2877,14 @@ end
 -- * ItemCount [Long] <p>The number of items in the specified index. DynamoDB updates this value approximately every six hours. Recent changes might not be reflected in this value.</p>
 -- @return LocalSecondaryIndexDescription structure as a key-value pair table
 function M.LocalSecondaryIndexDescription(args)
-	assert(args, "You must provdide an argument table when creating LocalSecondaryIndexDescription")
-	local t = { 
+	assert(args, "You must provide an argument table when creating LocalSecondaryIndexDescription")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["IndexSizeBytes"] = args["IndexSizeBytes"],
 		["IndexName"] = args["IndexName"],
 		["Projection"] = args["Projection"],
@@ -2215,8 +2892,13 @@ function M.LocalSecondaryIndexDescription(args)
 		["KeySchema"] = args["KeySchema"],
 		["ItemCount"] = args["ItemCount"],
 	}
-	asserts.AssertLocalSecondaryIndexDescription(t)
-	return t
+	asserts.AssertLocalSecondaryIndexDescription(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.PutRequest = { ["Item"] = true, nil }
@@ -2239,12 +2921,23 @@ end
 -- Required key: Item
 -- @return PutRequest structure as a key-value pair table
 function M.PutRequest(args)
-	assert(args, "You must provdide an argument table when creating PutRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating PutRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Item"] = args["Item"],
 	}
-	asserts.AssertPutRequest(t)
-	return t
+	asserts.AssertPutRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeTimeToLiveOutput = { ["TimeToLiveDescription"] = true, nil }
@@ -2265,12 +2958,23 @@ end
 -- * TimeToLiveDescription [TimeToLiveDescription] <p/>
 -- @return DescribeTimeToLiveOutput structure as a key-value pair table
 function M.DescribeTimeToLiveOutput(args)
-	assert(args, "You must provdide an argument table when creating DescribeTimeToLiveOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeTimeToLiveOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["TimeToLiveDescription"] = args["TimeToLiveDescription"],
 	}
-	asserts.AssertDescribeTimeToLiveOutput(t)
-	return t
+	asserts.AssertDescribeTimeToLiveOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ConsumedCapacity = { ["CapacityUnits"] = true, ["GlobalSecondaryIndexes"] = true, ["TableName"] = true, ["LocalSecondaryIndexes"] = true, ["Table"] = true, nil }
@@ -2299,16 +3003,27 @@ end
 -- * Table [Capacity] <p>The amount of throughput consumed on the table affected by the operation.</p>
 -- @return ConsumedCapacity structure as a key-value pair table
 function M.ConsumedCapacity(args)
-	assert(args, "You must provdide an argument table when creating ConsumedCapacity")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ConsumedCapacity")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["CapacityUnits"] = args["CapacityUnits"],
 		["GlobalSecondaryIndexes"] = args["GlobalSecondaryIndexes"],
 		["TableName"] = args["TableName"],
 		["LocalSecondaryIndexes"] = args["LocalSecondaryIndexes"],
 		["Table"] = args["Table"],
 	}
-	asserts.AssertConsumedCapacity(t)
-	return t
+	asserts.AssertConsumedCapacity(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ItemCollectionSizeLimitExceededException = { ["message"] = true, nil }
@@ -2329,12 +3044,23 @@ end
 -- * message [ErrorMessage] <p>The total size of an item collection has exceeded the maximum limit of 10 gigabytes.</p>
 -- @return ItemCollectionSizeLimitExceededException structure as a key-value pair table
 function M.ItemCollectionSizeLimitExceededException(args)
-	assert(args, "You must provdide an argument table when creating ItemCollectionSizeLimitExceededException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ItemCollectionSizeLimitExceededException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertItemCollectionSizeLimitExceededException(t)
-	return t
+	asserts.AssertItemCollectionSizeLimitExceededException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteRequest = { ["Key"] = true, nil }
@@ -2357,12 +3083,23 @@ end
 -- Required key: Key
 -- @return DeleteRequest structure as a key-value pair table
 function M.DeleteRequest(args)
-	assert(args, "You must provdide an argument table when creating DeleteRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Key"] = args["Key"],
 	}
-	asserts.AssertDeleteRequest(t)
-	return t
+	asserts.AssertDeleteRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.TagResourceInput = { ["ResourceArn"] = true, ["Tags"] = true, nil }
@@ -2389,13 +3126,24 @@ end
 -- Required key: Tags
 -- @return TagResourceInput structure as a key-value pair table
 function M.TagResourceInput(args)
-	assert(args, "You must provdide an argument table when creating TagResourceInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating TagResourceInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ResourceArn"] = args["ResourceArn"],
 		["Tags"] = args["Tags"],
 	}
-	asserts.AssertTagResourceInput(t)
-	return t
+	asserts.AssertTagResourceInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeLimitsInput = { nil }
@@ -2414,11 +3162,22 @@ end
 -- Valid keys:
 -- @return DescribeLimitsInput structure as a key-value pair table
 function M.DescribeLimitsInput(args)
-	assert(args, "You must provdide an argument table when creating DescribeLimitsInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeLimitsInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertDescribeLimitsInput(t)
-	return t
+	asserts.AssertDescribeLimitsInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteGlobalSecondaryIndexAction = { ["IndexName"] = true, nil }
@@ -2441,12 +3200,23 @@ end
 -- Required key: IndexName
 -- @return DeleteGlobalSecondaryIndexAction structure as a key-value pair table
 function M.DeleteGlobalSecondaryIndexAction(args)
-	assert(args, "You must provdide an argument table when creating DeleteGlobalSecondaryIndexAction")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteGlobalSecondaryIndexAction")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["IndexName"] = args["IndexName"],
 	}
-	asserts.AssertDeleteGlobalSecondaryIndexAction(t)
-	return t
+	asserts.AssertDeleteGlobalSecondaryIndexAction(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.TableDescription = { ["TableArn"] = true, ["LocalSecondaryIndexes"] = true, ["AttributeDefinitions"] = true, ["GlobalSecondaryIndexes"] = true, ["ProvisionedThroughput"] = true, ["TableSizeBytes"] = true, ["TableName"] = true, ["TableStatus"] = true, ["StreamSpecification"] = true, ["LatestStreamLabel"] = true, ["KeySchema"] = true, ["ItemCount"] = true, ["CreationDateTime"] = true, ["LatestStreamArn"] = true, nil }
@@ -2493,8 +3263,14 @@ end
 -- * LatestStreamArn [StreamArn] <p>The Amazon Resource Name (ARN) that uniquely identifies the latest stream for this table.</p>
 -- @return TableDescription structure as a key-value pair table
 function M.TableDescription(args)
-	assert(args, "You must provdide an argument table when creating TableDescription")
-	local t = { 
+	assert(args, "You must provide an argument table when creating TableDescription")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["TableArn"] = args["TableArn"],
 		["LocalSecondaryIndexes"] = args["LocalSecondaryIndexes"],
 		["AttributeDefinitions"] = args["AttributeDefinitions"],
@@ -2510,8 +3286,13 @@ function M.TableDescription(args)
 		["CreationDateTime"] = args["CreationDateTime"],
 		["LatestStreamArn"] = args["LatestStreamArn"],
 	}
-	asserts.AssertTableDescription(t)
-	return t
+	asserts.AssertTableDescription(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.WriteRequest = { ["PutRequest"] = true, ["DeleteRequest"] = true, nil }
@@ -2534,13 +3315,24 @@ end
 -- * DeleteRequest [DeleteRequest] <p>A request to perform a <code>DeleteItem</code> operation.</p>
 -- @return WriteRequest structure as a key-value pair table
 function M.WriteRequest(args)
-	assert(args, "You must provdide an argument table when creating WriteRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating WriteRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["PutRequest"] = args["PutRequest"],
 		["DeleteRequest"] = args["DeleteRequest"],
 	}
-	asserts.AssertWriteRequest(t)
-	return t
+	asserts.AssertWriteRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 function asserts.AssertKeyExpression(str)
@@ -3769,8 +4561,11 @@ function M.UpdateTimeToLiveAsync(UpdateTimeToLiveInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "DynamoDB_20120810.UpdateTimeToLive",
 	}
+	for header,value in pairs(UpdateTimeToLiveInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateTimeToLiveInput, headers, settings, cb)
 	else
@@ -3801,8 +4596,11 @@ function M.UpdateTableAsync(UpdateTableInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "DynamoDB_20120810.UpdateTable",
 	}
+	for header,value in pairs(UpdateTableInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateTableInput, headers, settings, cb)
 	else
@@ -3833,8 +4631,11 @@ function M.DeleteTableAsync(DeleteTableInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "DynamoDB_20120810.DeleteTable",
 	}
+	for header,value in pairs(DeleteTableInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteTableInput, headers, settings, cb)
 	else
@@ -3865,8 +4666,11 @@ function M.DescribeLimitsAsync(DescribeLimitsInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "DynamoDB_20120810.DescribeLimits",
 	}
+	for header,value in pairs(DescribeLimitsInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeLimitsInput, headers, settings, cb)
 	else
@@ -3897,8 +4701,11 @@ function M.UntagResourceAsync(UntagResourceInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "DynamoDB_20120810.UntagResource",
 	}
+	for header,value in pairs(UntagResourceInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", UntagResourceInput, headers, settings, cb)
 	else
@@ -3929,8 +4736,11 @@ function M.ScanAsync(ScanInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "DynamoDB_20120810.Scan",
 	}
+	for header,value in pairs(ScanInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ScanInput, headers, settings, cb)
 	else
@@ -3961,8 +4771,11 @@ function M.ListTagsOfResourceAsync(ListTagsOfResourceInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "DynamoDB_20120810.ListTagsOfResource",
 	}
+	for header,value in pairs(ListTagsOfResourceInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ListTagsOfResourceInput, headers, settings, cb)
 	else
@@ -3993,8 +4806,11 @@ function M.DescribeTimeToLiveAsync(DescribeTimeToLiveInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "DynamoDB_20120810.DescribeTimeToLive",
 	}
+	for header,value in pairs(DescribeTimeToLiveInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeTimeToLiveInput, headers, settings, cb)
 	else
@@ -4025,8 +4841,11 @@ function M.DescribeTableAsync(DescribeTableInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "DynamoDB_20120810.DescribeTable",
 	}
+	for header,value in pairs(DescribeTableInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeTableInput, headers, settings, cb)
 	else
@@ -4057,8 +4876,11 @@ function M.BatchWriteItemAsync(BatchWriteItemInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "DynamoDB_20120810.BatchWriteItem",
 	}
+	for header,value in pairs(BatchWriteItemInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", BatchWriteItemInput, headers, settings, cb)
 	else
@@ -4089,8 +4911,11 @@ function M.CreateTableAsync(CreateTableInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "DynamoDB_20120810.CreateTable",
 	}
+	for header,value in pairs(CreateTableInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateTableInput, headers, settings, cb)
 	else
@@ -4121,8 +4946,11 @@ function M.ListTablesAsync(ListTablesInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "DynamoDB_20120810.ListTables",
 	}
+	for header,value in pairs(ListTablesInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ListTablesInput, headers, settings, cb)
 	else
@@ -4153,8 +4981,11 @@ function M.GetItemAsync(GetItemInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "DynamoDB_20120810.GetItem",
 	}
+	for header,value in pairs(GetItemInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", GetItemInput, headers, settings, cb)
 	else
@@ -4185,8 +5016,11 @@ function M.QueryAsync(QueryInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "DynamoDB_20120810.Query",
 	}
+	for header,value in pairs(QueryInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", QueryInput, headers, settings, cb)
 	else
@@ -4217,8 +5051,11 @@ function M.PutItemAsync(PutItemInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "DynamoDB_20120810.PutItem",
 	}
+	for header,value in pairs(PutItemInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", PutItemInput, headers, settings, cb)
 	else
@@ -4249,8 +5086,11 @@ function M.UpdateItemAsync(UpdateItemInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "DynamoDB_20120810.UpdateItem",
 	}
+	for header,value in pairs(UpdateItemInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateItemInput, headers, settings, cb)
 	else
@@ -4281,8 +5121,11 @@ function M.TagResourceAsync(TagResourceInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "DynamoDB_20120810.TagResource",
 	}
+	for header,value in pairs(TagResourceInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", TagResourceInput, headers, settings, cb)
 	else
@@ -4313,8 +5156,11 @@ function M.DeleteItemAsync(DeleteItemInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "DynamoDB_20120810.DeleteItem",
 	}
+	for header,value in pairs(DeleteItemInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteItemInput, headers, settings, cb)
 	else
@@ -4345,8 +5191,11 @@ function M.BatchGetItemAsync(BatchGetItemInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "DynamoDB_20120810.BatchGetItem",
 	}
+	for header,value in pairs(BatchGetItemInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", BatchGetItemInput, headers, settings, cb)
 	else

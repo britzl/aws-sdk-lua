@@ -39,12 +39,23 @@ end
 -- * Message [ErrorMessage] <p>The message associated with the exception.</p>
 -- @return InternalServerException structure as a key-value pair table
 function M.InternalServerException(args)
-	assert(args, "You must provdide an argument table when creating InternalServerException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InternalServerException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Message"] = args["Message"],
 	}
-	asserts.AssertInternalServerException(t)
-	return t
+	asserts.AssertInternalServerException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CancelStepsInfo = { ["Status"] = true, ["Reason"] = true, ["StepId"] = true, nil }
@@ -69,14 +80,25 @@ end
 -- * StepId [StepId] <p>The encrypted StepId of a step.</p>
 -- @return CancelStepsInfo structure as a key-value pair table
 function M.CancelStepsInfo(args)
-	assert(args, "You must provdide an argument table when creating CancelStepsInfo")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CancelStepsInfo")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Status"] = args["Status"],
 		["Reason"] = args["Reason"],
 		["StepId"] = args["StepId"],
 	}
-	asserts.AssertCancelStepsInfo(t)
-	return t
+	asserts.AssertCancelStepsInfo(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InstanceFleetTimeline = { ["ReadyDateTime"] = true, ["CreationDateTime"] = true, ["EndDateTime"] = true, nil }
@@ -101,14 +123,25 @@ end
 -- * EndDateTime [Date] <p>The time and date the instance fleet terminated.</p>
 -- @return InstanceFleetTimeline structure as a key-value pair table
 function M.InstanceFleetTimeline(args)
-	assert(args, "You must provdide an argument table when creating InstanceFleetTimeline")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InstanceFleetTimeline")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ReadyDateTime"] = args["ReadyDateTime"],
 		["CreationDateTime"] = args["CreationDateTime"],
 		["EndDateTime"] = args["EndDateTime"],
 	}
-	asserts.AssertInstanceFleetTimeline(t)
-	return t
+	asserts.AssertInstanceFleetTimeline(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListStepsInput = { ["Marker"] = true, ["StepIds"] = true, ["ClusterId"] = true, ["StepStates"] = true, nil }
@@ -137,15 +170,26 @@ end
 -- Required key: ClusterId
 -- @return ListStepsInput structure as a key-value pair table
 function M.ListStepsInput(args)
-	assert(args, "You must provdide an argument table when creating ListStepsInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListStepsInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Marker"] = args["Marker"],
 		["StepIds"] = args["StepIds"],
 		["ClusterId"] = args["ClusterId"],
 		["StepStates"] = args["StepStates"],
 	}
-	asserts.AssertListStepsInput(t)
-	return t
+	asserts.AssertListStepsInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.JobFlowInstancesDetail = { ["InstanceCount"] = true, ["Placement"] = true, ["MasterPublicDnsName"] = true, ["NormalizedInstanceHours"] = true, ["MasterInstanceId"] = true, ["InstanceGroups"] = true, ["MasterInstanceType"] = true, ["TerminationProtected"] = true, ["HadoopVersion"] = true, ["Ec2SubnetId"] = true, ["KeepJobFlowAliveWhenNoSteps"] = true, ["SlaveInstanceType"] = true, ["Ec2KeyName"] = true, nil }
@@ -196,8 +240,14 @@ end
 -- Required key: InstanceCount
 -- @return JobFlowInstancesDetail structure as a key-value pair table
 function M.JobFlowInstancesDetail(args)
-	assert(args, "You must provdide an argument table when creating JobFlowInstancesDetail")
-	local t = { 
+	assert(args, "You must provide an argument table when creating JobFlowInstancesDetail")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["InstanceCount"] = args["InstanceCount"],
 		["Placement"] = args["Placement"],
 		["MasterPublicDnsName"] = args["MasterPublicDnsName"],
@@ -212,8 +262,13 @@ function M.JobFlowInstancesDetail(args)
 		["SlaveInstanceType"] = args["SlaveInstanceType"],
 		["Ec2KeyName"] = args["Ec2KeyName"],
 	}
-	asserts.AssertJobFlowInstancesDetail(t)
-	return t
+	asserts.AssertJobFlowInstancesDetail(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.JobFlowInstancesConfig = { ["ServiceAccessSecurityGroup"] = true, ["InstanceCount"] = true, ["Placement"] = true, ["TerminationProtected"] = true, ["Ec2SubnetIds"] = true, ["InstanceGroups"] = true, ["InstanceFleets"] = true, ["MasterInstanceType"] = true, ["AdditionalSlaveSecurityGroups"] = true, ["HadoopVersion"] = true, ["AdditionalMasterSecurityGroups"] = true, ["Ec2SubnetId"] = true, ["KeepJobFlowAliveWhenNoSteps"] = true, ["SlaveInstanceType"] = true, ["EmrManagedMasterSecurityGroup"] = true, ["Ec2KeyName"] = true, ["EmrManagedSlaveSecurityGroup"] = true, nil }
@@ -266,8 +321,14 @@ end
 -- * EmrManagedSlaveSecurityGroup [XmlStringMaxLen256] <p>The identifier of the Amazon EC2 security group for the slave nodes.</p>
 -- @return JobFlowInstancesConfig structure as a key-value pair table
 function M.JobFlowInstancesConfig(args)
-	assert(args, "You must provdide an argument table when creating JobFlowInstancesConfig")
-	local t = { 
+	assert(args, "You must provide an argument table when creating JobFlowInstancesConfig")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ServiceAccessSecurityGroup"] = args["ServiceAccessSecurityGroup"],
 		["InstanceCount"] = args["InstanceCount"],
 		["Placement"] = args["Placement"],
@@ -286,8 +347,13 @@ function M.JobFlowInstancesConfig(args)
 		["Ec2KeyName"] = args["Ec2KeyName"],
 		["EmrManagedSlaveSecurityGroup"] = args["EmrManagedSlaveSecurityGroup"],
 	}
-	asserts.AssertJobFlowInstancesConfig(t)
-	return t
+	asserts.AssertJobFlowInstancesConfig(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InstanceFleetStateChangeReason = { ["Message"] = true, ["Code"] = true, nil }
@@ -310,13 +376,24 @@ end
 -- * Code [InstanceFleetStateChangeReasonCode] <p>A code corresponding to the reason the state change occurred.</p>
 -- @return InstanceFleetStateChangeReason structure as a key-value pair table
 function M.InstanceFleetStateChangeReason(args)
-	assert(args, "You must provdide an argument table when creating InstanceFleetStateChangeReason")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InstanceFleetStateChangeReason")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Message"] = args["Message"],
 		["Code"] = args["Code"],
 	}
-	asserts.AssertInstanceFleetStateChangeReason(t)
-	return t
+	asserts.AssertInstanceFleetStateChangeReason(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.StepStateChangeReason = { ["Message"] = true, ["Code"] = true, nil }
@@ -339,13 +416,24 @@ end
 -- * Code [StepStateChangeReasonCode] <p>The programmable code for the state change reason. Note: Currently, the service provides no code for the state change.</p>
 -- @return StepStateChangeReason structure as a key-value pair table
 function M.StepStateChangeReason(args)
-	assert(args, "You must provdide an argument table when creating StepStateChangeReason")
-	local t = { 
+	assert(args, "You must provide an argument table when creating StepStateChangeReason")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Message"] = args["Message"],
 		["Code"] = args["Code"],
 	}
-	asserts.AssertStepStateChangeReason(t)
-	return t
+	asserts.AssertStepStateChangeReason(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.PlacementType = { ["AvailabilityZone"] = true, ["AvailabilityZones"] = true, nil }
@@ -368,13 +456,24 @@ end
 -- * AvailabilityZones [XmlStringMaxLen256List] <p>When multiple Availability Zones are specified, Amazon EMR evaluates them and launches instances in the optimal Availability Zone. <code>AvailabilityZones</code> is used for instance fleets, while <code>AvailabilityZone</code> (singular) is used for uniform instance groups.</p> <note> <p>The instance fleet configuration is available only in Amazon EMR versions 4.8.0 and later, excluding 5.0.x versions.</p> </note>
 -- @return PlacementType structure as a key-value pair table
 function M.PlacementType(args)
-	assert(args, "You must provdide an argument table when creating PlacementType")
-	local t = { 
+	assert(args, "You must provide an argument table when creating PlacementType")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["AvailabilityZone"] = args["AvailabilityZone"],
 		["AvailabilityZones"] = args["AvailabilityZones"],
 	}
-	asserts.AssertPlacementType(t)
-	return t
+	asserts.AssertPlacementType(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListInstanceFleetsOutput = { ["InstanceFleets"] = true, ["Marker"] = true, nil }
@@ -397,13 +496,24 @@ end
 -- * Marker [Marker] <p>The pagination token that indicates the next set of results to retrieve.</p>
 -- @return ListInstanceFleetsOutput structure as a key-value pair table
 function M.ListInstanceFleetsOutput(args)
-	assert(args, "You must provdide an argument table when creating ListInstanceFleetsOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListInstanceFleetsOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["InstanceFleets"] = args["InstanceFleets"],
 		["Marker"] = args["Marker"],
 	}
-	asserts.AssertListInstanceFleetsOutput(t)
-	return t
+	asserts.AssertListInstanceFleetsOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListBootstrapActionsOutput = { ["Marker"] = true, ["BootstrapActions"] = true, nil }
@@ -426,13 +536,24 @@ end
 -- * BootstrapActions [CommandList] <p>The bootstrap actions associated with the cluster.</p>
 -- @return ListBootstrapActionsOutput structure as a key-value pair table
 function M.ListBootstrapActionsOutput(args)
-	assert(args, "You must provdide an argument table when creating ListBootstrapActionsOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListBootstrapActionsOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Marker"] = args["Marker"],
 		["BootstrapActions"] = args["BootstrapActions"],
 	}
-	asserts.AssertListBootstrapActionsOutput(t)
-	return t
+	asserts.AssertListBootstrapActionsOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeStepInput = { ["StepId"] = true, ["ClusterId"] = true, nil }
@@ -459,13 +580,24 @@ end
 -- Required key: StepId
 -- @return DescribeStepInput structure as a key-value pair table
 function M.DescribeStepInput(args)
-	assert(args, "You must provdide an argument table when creating DescribeStepInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeStepInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["StepId"] = args["StepId"],
 		["ClusterId"] = args["ClusterId"],
 	}
-	asserts.AssertDescribeStepInput(t)
-	return t
+	asserts.AssertDescribeStepInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ModifyInstanceGroupsInput = { ["ClusterId"] = true, ["InstanceGroups"] = true, nil }
@@ -488,13 +620,24 @@ end
 -- * InstanceGroups [InstanceGroupModifyConfigList] <p>Instance groups to change.</p>
 -- @return ModifyInstanceGroupsInput structure as a key-value pair table
 function M.ModifyInstanceGroupsInput(args)
-	assert(args, "You must provdide an argument table when creating ModifyInstanceGroupsInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ModifyInstanceGroupsInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ClusterId"] = args["ClusterId"],
 		["InstanceGroups"] = args["InstanceGroups"],
 	}
-	asserts.AssertModifyInstanceGroupsInput(t)
-	return t
+	asserts.AssertModifyInstanceGroupsInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeJobFlowsOutput = { ["JobFlows"] = true, nil }
@@ -515,12 +658,23 @@ end
 -- * JobFlows [JobFlowDetailList] <p>A list of job flows matching the parameters supplied.</p>
 -- @return DescribeJobFlowsOutput structure as a key-value pair table
 function M.DescribeJobFlowsOutput(args)
-	assert(args, "You must provdide an argument table when creating DescribeJobFlowsOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeJobFlowsOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["JobFlows"] = args["JobFlows"],
 	}
-	asserts.AssertDescribeJobFlowsOutput(t)
-	return t
+	asserts.AssertDescribeJobFlowsOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.StepTimeline = { ["EndDateTime"] = true, ["CreationDateTime"] = true, ["StartDateTime"] = true, nil }
@@ -545,14 +699,25 @@ end
 -- * StartDateTime [Date] <p>The date and time when the cluster step execution started.</p>
 -- @return StepTimeline structure as a key-value pair table
 function M.StepTimeline(args)
-	assert(args, "You must provdide an argument table when creating StepTimeline")
-	local t = { 
+	assert(args, "You must provide an argument table when creating StepTimeline")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["EndDateTime"] = args["EndDateTime"],
 		["CreationDateTime"] = args["CreationDateTime"],
 		["StartDateTime"] = args["StartDateTime"],
 	}
-	asserts.AssertStepTimeline(t)
-	return t
+	asserts.AssertStepTimeline(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Step = { ["Status"] = true, ["Config"] = true, ["Id"] = true, ["ActionOnFailure"] = true, ["Name"] = true, nil }
@@ -581,16 +746,27 @@ end
 -- * Name [String] <p>The name of the cluster step.</p>
 -- @return Step structure as a key-value pair table
 function M.Step(args)
-	assert(args, "You must provdide an argument table when creating Step")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Step")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Status"] = args["Status"],
 		["Config"] = args["Config"],
 		["Id"] = args["Id"],
 		["ActionOnFailure"] = args["ActionOnFailure"],
 		["Name"] = args["Name"],
 	}
-	asserts.AssertStep(t)
-	return t
+	asserts.AssertStep(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.KeyValue = { ["Value"] = true, ["Key"] = true, nil }
@@ -613,13 +789,24 @@ end
 -- * Key [XmlString] <p>The unique identifier of a key value pair.</p>
 -- @return KeyValue structure as a key-value pair table
 function M.KeyValue(args)
-	assert(args, "You must provdide an argument table when creating KeyValue")
-	local t = { 
+	assert(args, "You must provide an argument table when creating KeyValue")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Value"] = args["Value"],
 		["Key"] = args["Key"],
 	}
-	asserts.AssertKeyValue(t)
-	return t
+	asserts.AssertKeyValue(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ClusterStateChangeReason = { ["Message"] = true, ["Code"] = true, nil }
@@ -642,13 +829,24 @@ end
 -- * Code [ClusterStateChangeReasonCode] <p>The programmatic code for the state change reason.</p>
 -- @return ClusterStateChangeReason structure as a key-value pair table
 function M.ClusterStateChangeReason(args)
-	assert(args, "You must provdide an argument table when creating ClusterStateChangeReason")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ClusterStateChangeReason")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Message"] = args["Message"],
 		["Code"] = args["Code"],
 	}
-	asserts.AssertClusterStateChangeReason(t)
-	return t
+	asserts.AssertClusterStateChangeReason(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InstanceStateChangeReason = { ["Message"] = true, ["Code"] = true, nil }
@@ -671,13 +869,24 @@ end
 -- * Code [InstanceStateChangeReasonCode] <p>The programmable code for the state change reason.</p>
 -- @return InstanceStateChangeReason structure as a key-value pair table
 function M.InstanceStateChangeReason(args)
-	assert(args, "You must provdide an argument table when creating InstanceStateChangeReason")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InstanceStateChangeReason")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Message"] = args["Message"],
 		["Code"] = args["Code"],
 	}
-	asserts.AssertInstanceStateChangeReason(t)
-	return t
+	asserts.AssertInstanceStateChangeReason(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Ec2InstanceAttributes = { ["ServiceAccessSecurityGroup"] = true, ["EmrManagedMasterSecurityGroup"] = true, ["RequestedEc2AvailabilityZones"] = true, ["AdditionalSlaveSecurityGroups"] = true, ["AdditionalMasterSecurityGroups"] = true, ["RequestedEc2SubnetIds"] = true, ["Ec2SubnetId"] = true, ["IamInstanceProfile"] = true, ["Ec2KeyName"] = true, ["Ec2AvailabilityZone"] = true, ["EmrManagedSlaveSecurityGroup"] = true, nil }
@@ -718,8 +927,14 @@ end
 -- * EmrManagedSlaveSecurityGroup [String] <p>The identifier of the Amazon EC2 security group for the slave nodes.</p>
 -- @return Ec2InstanceAttributes structure as a key-value pair table
 function M.Ec2InstanceAttributes(args)
-	assert(args, "You must provdide an argument table when creating Ec2InstanceAttributes")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Ec2InstanceAttributes")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ServiceAccessSecurityGroup"] = args["ServiceAccessSecurityGroup"],
 		["EmrManagedMasterSecurityGroup"] = args["EmrManagedMasterSecurityGroup"],
 		["RequestedEc2AvailabilityZones"] = args["RequestedEc2AvailabilityZones"],
@@ -732,8 +947,13 @@ function M.Ec2InstanceAttributes(args)
 		["Ec2AvailabilityZone"] = args["Ec2AvailabilityZone"],
 		["EmrManagedSlaveSecurityGroup"] = args["EmrManagedSlaveSecurityGroup"],
 	}
-	asserts.AssertEc2InstanceAttributes(t)
-	return t
+	asserts.AssertEc2InstanceAttributes(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InstanceFleet = { ["Status"] = true, ["ProvisionedSpotCapacity"] = true, ["Name"] = true, ["InstanceFleetType"] = true, ["LaunchSpecifications"] = true, ["TargetSpotCapacity"] = true, ["ProvisionedOnDemandCapacity"] = true, ["InstanceTypeSpecifications"] = true, ["Id"] = true, ["TargetOnDemandCapacity"] = true, nil }
@@ -772,8 +992,14 @@ end
 -- * TargetOnDemandCapacity [WholeNumber] <p>The target capacity of On-Demand units for the instance fleet, which determines how many On-Demand instances to provision. When the instance fleet launches, Amazon EMR tries to provision On-Demand instances as specified by <a>InstanceTypeConfig</a>. Each instance configuration has a specified <code>WeightedCapacity</code>. When an On-Demand instance is provisioned, the <code>WeightedCapacity</code> units count toward the target capacity. Amazon EMR provisions instances until the target capacity is totally fulfilled, even if this results in an overage. For example, if there are 2 units remaining to fulfill capacity, and Amazon EMR can only provision an instance with a <code>WeightedCapacity</code> of 5 units, the instance is provisioned, and the target capacity is exceeded by 3 units. You can use <a>InstanceFleet$ProvisionedOnDemandCapacity</a> to determine the Spot capacity units that have been provisioned for the instance fleet.</p> <note> <p>If not specified or set to 0, only Spot instances are provisioned for the instance fleet using <code>TargetSpotCapacity</code>. At least one of <code>TargetSpotCapacity</code> and <code>TargetOnDemandCapacity</code> should be greater than 0. For a master instance fleet, only one of <code>TargetSpotCapacity</code> and <code>TargetOnDemandCapacity</code> can be specified, and its value must be 1.</p> </note>
 -- @return InstanceFleet structure as a key-value pair table
 function M.InstanceFleet(args)
-	assert(args, "You must provdide an argument table when creating InstanceFleet")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InstanceFleet")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Status"] = args["Status"],
 		["ProvisionedSpotCapacity"] = args["ProvisionedSpotCapacity"],
 		["Name"] = args["Name"],
@@ -785,8 +1011,13 @@ function M.InstanceFleet(args)
 		["Id"] = args["Id"],
 		["TargetOnDemandCapacity"] = args["TargetOnDemandCapacity"],
 	}
-	asserts.AssertInstanceFleet(t)
-	return t
+	asserts.AssertInstanceFleet(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InstanceGroupStateChangeReason = { ["Message"] = true, ["Code"] = true, nil }
@@ -809,13 +1040,24 @@ end
 -- * Code [InstanceGroupStateChangeReasonCode] <p>The programmable code for the state change reason.</p>
 -- @return InstanceGroupStateChangeReason structure as a key-value pair table
 function M.InstanceGroupStateChangeReason(args)
-	assert(args, "You must provdide an argument table when creating InstanceGroupStateChangeReason")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InstanceGroupStateChangeReason")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Message"] = args["Message"],
 		["Code"] = args["Code"],
 	}
-	asserts.AssertInstanceGroupStateChangeReason(t)
-	return t
+	asserts.AssertInstanceGroupStateChangeReason(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ShrinkPolicy = { ["DecommissionTimeout"] = true, ["InstanceResizePolicy"] = true, nil }
@@ -838,13 +1080,24 @@ end
 -- * InstanceResizePolicy [InstanceResizePolicy] <p>Custom policy for requesting termination protection or termination of specific instances when shrinking an instance group.</p>
 -- @return ShrinkPolicy structure as a key-value pair table
 function M.ShrinkPolicy(args)
-	assert(args, "You must provdide an argument table when creating ShrinkPolicy")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ShrinkPolicy")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DecommissionTimeout"] = args["DecommissionTimeout"],
 		["InstanceResizePolicy"] = args["InstanceResizePolicy"],
 	}
-	asserts.AssertShrinkPolicy(t)
-	return t
+	asserts.AssertShrinkPolicy(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InstanceTypeConfig = { ["WeightedCapacity"] = true, ["EbsConfiguration"] = true, ["BidPrice"] = true, ["BidPriceAsPercentageOfOnDemandPrice"] = true, ["InstanceType"] = true, ["Configurations"] = true, nil }
@@ -877,8 +1130,14 @@ end
 -- Required key: InstanceType
 -- @return InstanceTypeConfig structure as a key-value pair table
 function M.InstanceTypeConfig(args)
-	assert(args, "You must provdide an argument table when creating InstanceTypeConfig")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InstanceTypeConfig")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["WeightedCapacity"] = args["WeightedCapacity"],
 		["EbsConfiguration"] = args["EbsConfiguration"],
 		["BidPrice"] = args["BidPrice"],
@@ -886,8 +1145,13 @@ function M.InstanceTypeConfig(args)
 		["InstanceType"] = args["InstanceType"],
 		["Configurations"] = args["Configurations"],
 	}
-	asserts.AssertInstanceTypeConfig(t)
-	return t
+	asserts.AssertInstanceTypeConfig(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AutoScalingPolicyStatus = { ["State"] = true, ["StateChangeReason"] = true, nil }
@@ -910,13 +1174,24 @@ end
 -- * StateChangeReason [AutoScalingPolicyStateChangeReason] <p>The reason for a change in status.</p>
 -- @return AutoScalingPolicyStatus structure as a key-value pair table
 function M.AutoScalingPolicyStatus(args)
-	assert(args, "You must provdide an argument table when creating AutoScalingPolicyStatus")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AutoScalingPolicyStatus")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["State"] = args["State"],
 		["StateChangeReason"] = args["StateChangeReason"],
 	}
-	asserts.AssertAutoScalingPolicyStatus(t)
-	return t
+	asserts.AssertAutoScalingPolicyStatus(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateSecurityConfigurationOutput = { ["CreationDateTime"] = true, ["Name"] = true, nil }
@@ -943,13 +1218,24 @@ end
 -- Required key: CreationDateTime
 -- @return CreateSecurityConfigurationOutput structure as a key-value pair table
 function M.CreateSecurityConfigurationOutput(args)
-	assert(args, "You must provdide an argument table when creating CreateSecurityConfigurationOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateSecurityConfigurationOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["CreationDateTime"] = args["CreationDateTime"],
 		["Name"] = args["Name"],
 	}
-	asserts.AssertCreateSecurityConfigurationOutput(t)
-	return t
+	asserts.AssertCreateSecurityConfigurationOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InternalServerError = { nil }
@@ -968,11 +1254,22 @@ end
 -- Valid keys:
 -- @return InternalServerError structure as a key-value pair table
 function M.InternalServerError(args)
-	assert(args, "You must provdide an argument table when creating InternalServerError")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InternalServerError")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertInternalServerError(t)
-	return t
+	asserts.AssertInternalServerError(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeStepOutput = { ["Step"] = true, nil }
@@ -993,12 +1290,23 @@ end
 -- * Step [Step] <p>The step details for the requested step identifier.</p>
 -- @return DescribeStepOutput structure as a key-value pair table
 function M.DescribeStepOutput(args)
-	assert(args, "You must provdide an argument table when creating DescribeStepOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeStepOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Step"] = args["Step"],
 	}
-	asserts.AssertDescribeStepOutput(t)
-	return t
+	asserts.AssertDescribeStepOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListSecurityConfigurationsInput = { ["Marker"] = true, nil }
@@ -1019,12 +1327,23 @@ end
 -- * Marker [Marker] <p>The pagination token that indicates the set of results to retrieve.</p>
 -- @return ListSecurityConfigurationsInput structure as a key-value pair table
 function M.ListSecurityConfigurationsInput(args)
-	assert(args, "You must provdide an argument table when creating ListSecurityConfigurationsInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListSecurityConfigurationsInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Marker"] = args["Marker"],
 	}
-	asserts.AssertListSecurityConfigurationsInput(t)
-	return t
+	asserts.AssertListSecurityConfigurationsInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ClusterTimeline = { ["ReadyDateTime"] = true, ["CreationDateTime"] = true, ["EndDateTime"] = true, nil }
@@ -1049,14 +1368,25 @@ end
 -- * EndDateTime [Date] <p>The date and time when the cluster was terminated.</p>
 -- @return ClusterTimeline structure as a key-value pair table
 function M.ClusterTimeline(args)
-	assert(args, "You must provdide an argument table when creating ClusterTimeline")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ClusterTimeline")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ReadyDateTime"] = args["ReadyDateTime"],
 		["CreationDateTime"] = args["CreationDateTime"],
 		["EndDateTime"] = args["EndDateTime"],
 	}
-	asserts.AssertClusterTimeline(t)
-	return t
+	asserts.AssertClusterTimeline(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Tag = { ["Value"] = true, ["Key"] = true, nil }
@@ -1079,13 +1409,24 @@ end
 -- * Key [String] <p>A user-defined key, which is the minimum required information for a valid tag. For more information, see <a href="http://docs.aws.amazon.com/ElasticMapReduce/latest/DeveloperGuide/emr-plan-tags.html">Tagging Amazon EMR Resources</a>. </p>
 -- @return Tag structure as a key-value pair table
 function M.Tag(args)
-	assert(args, "You must provdide an argument table when creating Tag")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Tag")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Value"] = args["Value"],
 		["Key"] = args["Key"],
 	}
-	asserts.AssertTag(t)
-	return t
+	asserts.AssertTag(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListInstanceGroupsInput = { ["Marker"] = true, ["ClusterId"] = true, nil }
@@ -1110,13 +1451,24 @@ end
 -- Required key: ClusterId
 -- @return ListInstanceGroupsInput structure as a key-value pair table
 function M.ListInstanceGroupsInput(args)
-	assert(args, "You must provdide an argument table when creating ListInstanceGroupsInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListInstanceGroupsInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Marker"] = args["Marker"],
 		["ClusterId"] = args["ClusterId"],
 	}
-	asserts.AssertListInstanceGroupsInput(t)
-	return t
+	asserts.AssertListInstanceGroupsInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InstanceFleetModifyConfig = { ["TargetOnDemandCapacity"] = true, ["TargetSpotCapacity"] = true, ["InstanceFleetId"] = true, nil }
@@ -1143,14 +1495,25 @@ end
 -- Required key: InstanceFleetId
 -- @return InstanceFleetModifyConfig structure as a key-value pair table
 function M.InstanceFleetModifyConfig(args)
-	assert(args, "You must provdide an argument table when creating InstanceFleetModifyConfig")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InstanceFleetModifyConfig")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["TargetOnDemandCapacity"] = args["TargetOnDemandCapacity"],
 		["TargetSpotCapacity"] = args["TargetSpotCapacity"],
 		["InstanceFleetId"] = args["InstanceFleetId"],
 	}
-	asserts.AssertInstanceFleetModifyConfig(t)
-	return t
+	asserts.AssertInstanceFleetModifyConfig(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.EbsBlockDevice = { ["Device"] = true, ["VolumeSpecification"] = true, nil }
@@ -1173,13 +1536,24 @@ end
 -- * VolumeSpecification [VolumeSpecification] <p>EBS volume specifications such as volume type, IOPS, and size (GiB) that will be requested for the EBS volume attached to an EC2 instance in the cluster.</p>
 -- @return EbsBlockDevice structure as a key-value pair table
 function M.EbsBlockDevice(args)
-	assert(args, "You must provdide an argument table when creating EbsBlockDevice")
-	local t = { 
+	assert(args, "You must provide an argument table when creating EbsBlockDevice")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Device"] = args["Device"],
 		["VolumeSpecification"] = args["VolumeSpecification"],
 	}
-	asserts.AssertEbsBlockDevice(t)
-	return t
+	asserts.AssertEbsBlockDevice(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InstanceGroupConfig = { ["InstanceCount"] = true, ["Name"] = true, ["InstanceRole"] = true, ["AutoScalingPolicy"] = true, ["EbsConfiguration"] = true, ["BidPrice"] = true, ["InstanceType"] = true, ["Market"] = true, ["Configurations"] = true, nil }
@@ -1222,8 +1596,14 @@ end
 -- Required key: InstanceCount
 -- @return InstanceGroupConfig structure as a key-value pair table
 function M.InstanceGroupConfig(args)
-	assert(args, "You must provdide an argument table when creating InstanceGroupConfig")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InstanceGroupConfig")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["InstanceCount"] = args["InstanceCount"],
 		["Name"] = args["Name"],
 		["InstanceRole"] = args["InstanceRole"],
@@ -1234,8 +1614,13 @@ function M.InstanceGroupConfig(args)
 		["Market"] = args["Market"],
 		["Configurations"] = args["Configurations"],
 	}
-	asserts.AssertInstanceGroupConfig(t)
-	return t
+	asserts.AssertInstanceGroupConfig(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AutoScalingPolicyDescription = { ["Status"] = true, ["Rules"] = true, ["Constraints"] = true, nil }
@@ -1260,14 +1645,25 @@ end
 -- * Constraints [ScalingConstraints] <p>The upper and lower EC2 instance limits for an automatic scaling policy. Automatic scaling activity will not cause an instance group to grow above or below these limits.</p>
 -- @return AutoScalingPolicyDescription structure as a key-value pair table
 function M.AutoScalingPolicyDescription(args)
-	assert(args, "You must provdide an argument table when creating AutoScalingPolicyDescription")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AutoScalingPolicyDescription")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Status"] = args["Status"],
 		["Rules"] = args["Rules"],
 		["Constraints"] = args["Constraints"],
 	}
-	asserts.AssertAutoScalingPolicyDescription(t)
-	return t
+	asserts.AssertAutoScalingPolicyDescription(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.JobFlowExecutionStatusDetail = { ["ReadyDateTime"] = true, ["EndDateTime"] = true, ["State"] = true, ["StartDateTime"] = true, ["CreationDateTime"] = true, ["LastStateChangeReason"] = true, nil }
@@ -1302,8 +1698,14 @@ end
 -- Required key: CreationDateTime
 -- @return JobFlowExecutionStatusDetail structure as a key-value pair table
 function M.JobFlowExecutionStatusDetail(args)
-	assert(args, "You must provdide an argument table when creating JobFlowExecutionStatusDetail")
-	local t = { 
+	assert(args, "You must provide an argument table when creating JobFlowExecutionStatusDetail")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ReadyDateTime"] = args["ReadyDateTime"],
 		["EndDateTime"] = args["EndDateTime"],
 		["State"] = args["State"],
@@ -1311,8 +1713,13 @@ function M.JobFlowExecutionStatusDetail(args)
 		["CreationDateTime"] = args["CreationDateTime"],
 		["LastStateChangeReason"] = args["LastStateChangeReason"],
 	}
-	asserts.AssertJobFlowExecutionStatusDetail(t)
-	return t
+	asserts.AssertJobFlowExecutionStatusDetail(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Application = { ["Args"] = true, ["Version"] = true, ["Name"] = true, ["AdditionalInfo"] = true, nil }
@@ -1339,15 +1746,26 @@ end
 -- * AdditionalInfo [StringMap] <p>This option is for advanced users only. This is meta information about third-party applications that third-party vendors use for testing purposes.</p>
 -- @return Application structure as a key-value pair table
 function M.Application(args)
-	assert(args, "You must provdide an argument table when creating Application")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Application")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Args"] = args["Args"],
 		["Version"] = args["Version"],
 		["Name"] = args["Name"],
 		["AdditionalInfo"] = args["AdditionalInfo"],
 	}
-	asserts.AssertApplication(t)
-	return t
+	asserts.AssertApplication(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.EbsConfiguration = { ["EbsOptimized"] = true, ["EbsBlockDeviceConfigs"] = true, nil }
@@ -1370,13 +1788,24 @@ end
 -- * EbsBlockDeviceConfigs [EbsBlockDeviceConfigList] <p>An array of Amazon EBS volume specifications attached to a cluster instance.</p>
 -- @return EbsConfiguration structure as a key-value pair table
 function M.EbsConfiguration(args)
-	assert(args, "You must provdide an argument table when creating EbsConfiguration")
-	local t = { 
+	assert(args, "You must provide an argument table when creating EbsConfiguration")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["EbsOptimized"] = args["EbsOptimized"],
 		["EbsBlockDeviceConfigs"] = args["EbsBlockDeviceConfigs"],
 	}
-	asserts.AssertEbsConfiguration(t)
-	return t
+	asserts.AssertEbsConfiguration(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.RunJobFlowInput = { ["AutoScalingRole"] = true, ["AdditionalInfo"] = true, ["SecurityConfiguration"] = true, ["Name"] = true, ["ServiceRole"] = true, ["Applications"] = true, ["ReleaseLabel"] = true, ["Tags"] = true, ["BootstrapActions"] = true, ["Instances"] = true, ["JobFlowRole"] = true, ["Steps"] = true, ["ScaleDownBehavior"] = true, ["Configurations"] = true, ["VisibleToAllUsers"] = true, ["LogUri"] = true, ["AmiVersion"] = true, ["NewSupportedProducts"] = true, ["SupportedProducts"] = true, nil }
@@ -1437,8 +1866,14 @@ end
 -- Required key: Instances
 -- @return RunJobFlowInput structure as a key-value pair table
 function M.RunJobFlowInput(args)
-	assert(args, "You must provdide an argument table when creating RunJobFlowInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating RunJobFlowInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["AutoScalingRole"] = args["AutoScalingRole"],
 		["AdditionalInfo"] = args["AdditionalInfo"],
 		["SecurityConfiguration"] = args["SecurityConfiguration"],
@@ -1459,8 +1894,13 @@ function M.RunJobFlowInput(args)
 		["NewSupportedProducts"] = args["NewSupportedProducts"],
 		["SupportedProducts"] = args["SupportedProducts"],
 	}
-	asserts.AssertRunJobFlowInput(t)
-	return t
+	asserts.AssertRunJobFlowInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.SetVisibleToAllUsersInput = { ["JobFlowIds"] = true, ["VisibleToAllUsers"] = true, nil }
@@ -1487,13 +1927,24 @@ end
 -- Required key: VisibleToAllUsers
 -- @return SetVisibleToAllUsersInput structure as a key-value pair table
 function M.SetVisibleToAllUsersInput(args)
-	assert(args, "You must provdide an argument table when creating SetVisibleToAllUsersInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating SetVisibleToAllUsersInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["JobFlowIds"] = args["JobFlowIds"],
 		["VisibleToAllUsers"] = args["VisibleToAllUsers"],
 	}
-	asserts.AssertSetVisibleToAllUsersInput(t)
-	return t
+	asserts.AssertSetVisibleToAllUsersInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.HadoopJarStepConfig = { ["MainClass"] = true, ["Args"] = true, ["Jar"] = true, ["Properties"] = true, nil }
@@ -1522,15 +1973,26 @@ end
 -- Required key: Jar
 -- @return HadoopJarStepConfig structure as a key-value pair table
 function M.HadoopJarStepConfig(args)
-	assert(args, "You must provdide an argument table when creating HadoopJarStepConfig")
-	local t = { 
+	assert(args, "You must provide an argument table when creating HadoopJarStepConfig")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["MainClass"] = args["MainClass"],
 		["Args"] = args["Args"],
 		["Jar"] = args["Jar"],
 		["Properties"] = args["Properties"],
 	}
-	asserts.AssertHadoopJarStepConfig(t)
-	return t
+	asserts.AssertHadoopJarStepConfig(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InstanceGroupTimeline = { ["ReadyDateTime"] = true, ["CreationDateTime"] = true, ["EndDateTime"] = true, nil }
@@ -1555,14 +2017,25 @@ end
 -- * EndDateTime [Date] <p>The date and time when the instance group terminated.</p>
 -- @return InstanceGroupTimeline structure as a key-value pair table
 function M.InstanceGroupTimeline(args)
-	assert(args, "You must provdide an argument table when creating InstanceGroupTimeline")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InstanceGroupTimeline")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ReadyDateTime"] = args["ReadyDateTime"],
 		["CreationDateTime"] = args["CreationDateTime"],
 		["EndDateTime"] = args["EndDateTime"],
 	}
-	asserts.AssertInstanceGroupTimeline(t)
-	return t
+	asserts.AssertInstanceGroupTimeline(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Cluster = { ["Status"] = true, ["Ec2InstanceAttributes"] = true, ["Name"] = true, ["ServiceRole"] = true, ["Tags"] = true, ["TerminationProtected"] = true, ["RunningAmiVersion"] = true, ["ReleaseLabel"] = true, ["NormalizedInstanceHours"] = true, ["InstanceCollectionType"] = true, ["Applications"] = true, ["MasterPublicDnsName"] = true, ["AutoScalingRole"] = true, ["SecurityConfiguration"] = true, ["VisibleToAllUsers"] = true, ["RequestedAmiVersion"] = true, ["LogUri"] = true, ["AutoTerminate"] = true, ["Id"] = true, ["ScaleDownBehavior"] = true, ["Configurations"] = true, nil }
@@ -1623,8 +2096,14 @@ end
 -- * Configurations [ConfigurationList] <note> <p>Amazon EMR releases 4.x or later.</p> </note> <p>The list of Configurations supplied to the EMR cluster.</p>
 -- @return Cluster structure as a key-value pair table
 function M.Cluster(args)
-	assert(args, "You must provdide an argument table when creating Cluster")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Cluster")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Status"] = args["Status"],
 		["Ec2InstanceAttributes"] = args["Ec2InstanceAttributes"],
 		["Name"] = args["Name"],
@@ -1647,8 +2126,13 @@ function M.Cluster(args)
 		["ScaleDownBehavior"] = args["ScaleDownBehavior"],
 		["Configurations"] = args["Configurations"],
 	}
-	asserts.AssertCluster(t)
-	return t
+	asserts.AssertCluster(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.JobFlowDetail = { ["AutoScalingRole"] = true, ["Name"] = true, ["ServiceRole"] = true, ["JobFlowId"] = true, ["Instances"] = true, ["JobFlowRole"] = true, ["Steps"] = true, ["ScaleDownBehavior"] = true, ["ExecutionStatusDetail"] = true, ["VisibleToAllUsers"] = true, ["BootstrapActions"] = true, ["LogUri"] = true, ["AmiVersion"] = true, ["SupportedProducts"] = true, nil }
@@ -1703,8 +2187,14 @@ end
 -- Required key: Instances
 -- @return JobFlowDetail structure as a key-value pair table
 function M.JobFlowDetail(args)
-	assert(args, "You must provdide an argument table when creating JobFlowDetail")
-	local t = { 
+	assert(args, "You must provide an argument table when creating JobFlowDetail")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["AutoScalingRole"] = args["AutoScalingRole"],
 		["Name"] = args["Name"],
 		["ServiceRole"] = args["ServiceRole"],
@@ -1720,8 +2210,13 @@ function M.JobFlowDetail(args)
 		["AmiVersion"] = args["AmiVersion"],
 		["SupportedProducts"] = args["SupportedProducts"],
 	}
-	asserts.AssertJobFlowDetail(t)
-	return t
+	asserts.AssertJobFlowDetail(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.TerminateJobFlowsInput = { ["JobFlowIds"] = true, nil }
@@ -1744,12 +2239,23 @@ end
 -- Required key: JobFlowIds
 -- @return TerminateJobFlowsInput structure as a key-value pair table
 function M.TerminateJobFlowsInput(args)
-	assert(args, "You must provdide an argument table when creating TerminateJobFlowsInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating TerminateJobFlowsInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["JobFlowIds"] = args["JobFlowIds"],
 	}
-	asserts.AssertTerminateJobFlowsInput(t)
-	return t
+	asserts.AssertTerminateJobFlowsInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AddInstanceFleetOutput = { ["ClusterId"] = true, ["InstanceFleetId"] = true, nil }
@@ -1772,13 +2278,24 @@ end
 -- * InstanceFleetId [InstanceFleetId] <p>The unique identifier of the instance fleet.</p>
 -- @return AddInstanceFleetOutput structure as a key-value pair table
 function M.AddInstanceFleetOutput(args)
-	assert(args, "You must provdide an argument table when creating AddInstanceFleetOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AddInstanceFleetOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ClusterId"] = args["ClusterId"],
 		["InstanceFleetId"] = args["InstanceFleetId"],
 	}
-	asserts.AssertAddInstanceFleetOutput(t)
-	return t
+	asserts.AssertAddInstanceFleetOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ModifyInstanceFleetInput = { ["InstanceFleet"] = true, ["ClusterId"] = true, nil }
@@ -1805,13 +2322,24 @@ end
 -- Required key: InstanceFleet
 -- @return ModifyInstanceFleetInput structure as a key-value pair table
 function M.ModifyInstanceFleetInput(args)
-	assert(args, "You must provdide an argument table when creating ModifyInstanceFleetInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ModifyInstanceFleetInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["InstanceFleet"] = args["InstanceFleet"],
 		["ClusterId"] = args["ClusterId"],
 	}
-	asserts.AssertModifyInstanceFleetInput(t)
-	return t
+	asserts.AssertModifyInstanceFleetInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AddInstanceGroupsOutput = { ["InstanceGroupIds"] = true, ["JobFlowId"] = true, nil }
@@ -1834,13 +2362,24 @@ end
 -- * JobFlowId [XmlStringMaxLen256] <p>The job flow ID in which the instance groups are added.</p>
 -- @return AddInstanceGroupsOutput structure as a key-value pair table
 function M.AddInstanceGroupsOutput(args)
-	assert(args, "You must provdide an argument table when creating AddInstanceGroupsOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AddInstanceGroupsOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["InstanceGroupIds"] = args["InstanceGroupIds"],
 		["JobFlowId"] = args["JobFlowId"],
 	}
-	asserts.AssertAddInstanceGroupsOutput(t)
-	return t
+	asserts.AssertAddInstanceGroupsOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CancelStepsOutput = { ["CancelStepsInfoList"] = true, nil }
@@ -1861,12 +2400,23 @@ end
 -- * CancelStepsInfoList [CancelStepsInfoList] <p>A list of <a>CancelStepsInfo</a>, which shows the status of specified cancel requests for each <code>StepID</code> specified.</p>
 -- @return CancelStepsOutput structure as a key-value pair table
 function M.CancelStepsOutput(args)
-	assert(args, "You must provdide an argument table when creating CancelStepsOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CancelStepsOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["CancelStepsInfoList"] = args["CancelStepsInfoList"],
 	}
-	asserts.AssertCancelStepsOutput(t)
-	return t
+	asserts.AssertCancelStepsOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Configuration = { ["Properties"] = true, ["Classification"] = true, ["Configurations"] = true, nil }
@@ -1891,14 +2441,25 @@ end
 -- * Configurations [ConfigurationList] <p>A list of additional configurations to apply within a configuration object.</p>
 -- @return Configuration structure as a key-value pair table
 function M.Configuration(args)
-	assert(args, "You must provdide an argument table when creating Configuration")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Configuration")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Properties"] = args["Properties"],
 		["Classification"] = args["Classification"],
 		["Configurations"] = args["Configurations"],
 	}
-	asserts.AssertConfiguration(t)
-	return t
+	asserts.AssertConfiguration(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.SecurityConfigurationSummary = { ["CreationDateTime"] = true, ["Name"] = true, nil }
@@ -1921,13 +2482,24 @@ end
 -- * Name [XmlString] <p>The name of the security configuration.</p>
 -- @return SecurityConfigurationSummary structure as a key-value pair table
 function M.SecurityConfigurationSummary(args)
-	assert(args, "You must provdide an argument table when creating SecurityConfigurationSummary")
-	local t = { 
+	assert(args, "You must provide an argument table when creating SecurityConfigurationSummary")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["CreationDateTime"] = args["CreationDateTime"],
 		["Name"] = args["Name"],
 	}
-	asserts.AssertSecurityConfigurationSummary(t)
-	return t
+	asserts.AssertSecurityConfigurationSummary(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CloudWatchAlarmDefinition = { ["EvaluationPeriods"] = true, ["Dimensions"] = true, ["Namespace"] = true, ["Period"] = true, ["ComparisonOperator"] = true, ["Statistic"] = true, ["Threshold"] = true, ["Unit"] = true, ["MetricName"] = true, nil }
@@ -1972,8 +2544,14 @@ end
 -- Required key: Threshold
 -- @return CloudWatchAlarmDefinition structure as a key-value pair table
 function M.CloudWatchAlarmDefinition(args)
-	assert(args, "You must provdide an argument table when creating CloudWatchAlarmDefinition")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CloudWatchAlarmDefinition")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["EvaluationPeriods"] = args["EvaluationPeriods"],
 		["Dimensions"] = args["Dimensions"],
 		["Namespace"] = args["Namespace"],
@@ -1984,8 +2562,13 @@ function M.CloudWatchAlarmDefinition(args)
 		["Unit"] = args["Unit"],
 		["MetricName"] = args["MetricName"],
 	}
-	asserts.AssertCloudWatchAlarmDefinition(t)
-	return t
+	asserts.AssertCloudWatchAlarmDefinition(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.FailureDetails = { ["Reason"] = true, ["LogFile"] = true, ["Message"] = true, nil }
@@ -2010,14 +2593,25 @@ end
 -- * Message [String] <p>The descriptive message including the error the EMR service has identified as the cause of step failure. This is text from an error log that describes the root cause of the failure.</p>
 -- @return FailureDetails structure as a key-value pair table
 function M.FailureDetails(args)
-	assert(args, "You must provdide an argument table when creating FailureDetails")
-	local t = { 
+	assert(args, "You must provide an argument table when creating FailureDetails")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Reason"] = args["Reason"],
 		["LogFile"] = args["LogFile"],
 		["Message"] = args["Message"],
 	}
-	asserts.AssertFailureDetails(t)
-	return t
+	asserts.AssertFailureDetails(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListClustersInput = { ["Marker"] = true, ["ClusterStates"] = true, ["CreatedAfter"] = true, ["CreatedBefore"] = true, nil }
@@ -2044,15 +2638,26 @@ end
 -- * CreatedBefore [Date] <p>The creation date and time end value filter for listing clusters.</p>
 -- @return ListClustersInput structure as a key-value pair table
 function M.ListClustersInput(args)
-	assert(args, "You must provdide an argument table when creating ListClustersInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListClustersInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Marker"] = args["Marker"],
 		["ClusterStates"] = args["ClusterStates"],
 		["CreatedAfter"] = args["CreatedAfter"],
 		["CreatedBefore"] = args["CreatedBefore"],
 	}
-	asserts.AssertListClustersInput(t)
-	return t
+	asserts.AssertListClustersInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Command = { ["Args"] = true, ["Name"] = true, ["ScriptPath"] = true, nil }
@@ -2077,14 +2682,25 @@ end
 -- * ScriptPath [String] <p>The Amazon S3 location of the command script.</p>
 -- @return Command structure as a key-value pair table
 function M.Command(args)
-	assert(args, "You must provdide an argument table when creating Command")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Command")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Args"] = args["Args"],
 		["Name"] = args["Name"],
 		["ScriptPath"] = args["ScriptPath"],
 	}
-	asserts.AssertCommand(t)
-	return t
+	asserts.AssertCommand(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteSecurityConfigurationOutput = { nil }
@@ -2103,11 +2719,22 @@ end
 -- Valid keys:
 -- @return DeleteSecurityConfigurationOutput structure as a key-value pair table
 function M.DeleteSecurityConfigurationOutput(args)
-	assert(args, "You must provdide an argument table when creating DeleteSecurityConfigurationOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteSecurityConfigurationOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertDeleteSecurityConfigurationOutput(t)
-	return t
+	asserts.AssertDeleteSecurityConfigurationOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.StepDetail = { ["ExecutionStatusDetail"] = true, ["StepConfig"] = true, nil }
@@ -2134,13 +2761,24 @@ end
 -- Required key: ExecutionStatusDetail
 -- @return StepDetail structure as a key-value pair table
 function M.StepDetail(args)
-	assert(args, "You must provdide an argument table when creating StepDetail")
-	local t = { 
+	assert(args, "You must provide an argument table when creating StepDetail")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ExecutionStatusDetail"] = args["ExecutionStatusDetail"],
 		["StepConfig"] = args["StepConfig"],
 	}
-	asserts.AssertStepDetail(t)
-	return t
+	asserts.AssertStepDetail(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.HadoopStepConfig = { ["MainClass"] = true, ["Args"] = true, ["Jar"] = true, ["Properties"] = true, nil }
@@ -2167,15 +2805,26 @@ end
 -- * Properties [StringMap] <p>The list of Java properties that are set when the step runs. You can use these properties to pass key value pairs to your main function.</p>
 -- @return HadoopStepConfig structure as a key-value pair table
 function M.HadoopStepConfig(args)
-	assert(args, "You must provdide an argument table when creating HadoopStepConfig")
-	local t = { 
+	assert(args, "You must provide an argument table when creating HadoopStepConfig")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["MainClass"] = args["MainClass"],
 		["Args"] = args["Args"],
 		["Jar"] = args["Jar"],
 		["Properties"] = args["Properties"],
 	}
-	asserts.AssertHadoopStepConfig(t)
-	return t
+	asserts.AssertHadoopStepConfig(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.RemoveTagsOutput = { nil }
@@ -2194,11 +2843,22 @@ end
 -- Valid keys:
 -- @return RemoveTagsOutput structure as a key-value pair table
 function M.RemoveTagsOutput(args)
-	assert(args, "You must provdide an argument table when creating RemoveTagsOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating RemoveTagsOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertRemoveTagsOutput(t)
-	return t
+	asserts.AssertRemoveTagsOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ScalingTrigger = { ["CloudWatchAlarmDefinition"] = true, nil }
@@ -2221,12 +2881,23 @@ end
 -- Required key: CloudWatchAlarmDefinition
 -- @return ScalingTrigger structure as a key-value pair table
 function M.ScalingTrigger(args)
-	assert(args, "You must provdide an argument table when creating ScalingTrigger")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ScalingTrigger")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["CloudWatchAlarmDefinition"] = args["CloudWatchAlarmDefinition"],
 	}
-	asserts.AssertScalingTrigger(t)
-	return t
+	asserts.AssertScalingTrigger(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InstanceTimeline = { ["ReadyDateTime"] = true, ["CreationDateTime"] = true, ["EndDateTime"] = true, nil }
@@ -2251,14 +2922,25 @@ end
 -- * EndDateTime [Date] <p>The date and time when the instance was terminated.</p>
 -- @return InstanceTimeline structure as a key-value pair table
 function M.InstanceTimeline(args)
-	assert(args, "You must provdide an argument table when creating InstanceTimeline")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InstanceTimeline")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ReadyDateTime"] = args["ReadyDateTime"],
 		["CreationDateTime"] = args["CreationDateTime"],
 		["EndDateTime"] = args["EndDateTime"],
 	}
-	asserts.AssertInstanceTimeline(t)
-	return t
+	asserts.AssertInstanceTimeline(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InstanceFleetProvisioningSpecifications = { ["SpotSpecification"] = true, nil }
@@ -2281,12 +2963,23 @@ end
 -- Required key: SpotSpecification
 -- @return InstanceFleetProvisioningSpecifications structure as a key-value pair table
 function M.InstanceFleetProvisioningSpecifications(args)
-	assert(args, "You must provdide an argument table when creating InstanceFleetProvisioningSpecifications")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InstanceFleetProvisioningSpecifications")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["SpotSpecification"] = args["SpotSpecification"],
 	}
-	asserts.AssertInstanceFleetProvisioningSpecifications(t)
-	return t
+	asserts.AssertInstanceFleetProvisioningSpecifications(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.RemoveAutoScalingPolicyOutput = { nil }
@@ -2305,11 +2998,22 @@ end
 -- Valid keys:
 -- @return RemoveAutoScalingPolicyOutput structure as a key-value pair table
 function M.RemoveAutoScalingPolicyOutput(args)
-	assert(args, "You must provdide an argument table when creating RemoveAutoScalingPolicyOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating RemoveAutoScalingPolicyOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertRemoveAutoScalingPolicyOutput(t)
-	return t
+	asserts.AssertRemoveAutoScalingPolicyOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ScalingConstraints = { ["MinCapacity"] = true, ["MaxCapacity"] = true, nil }
@@ -2336,13 +3040,24 @@ end
 -- Required key: MaxCapacity
 -- @return ScalingConstraints structure as a key-value pair table
 function M.ScalingConstraints(args)
-	assert(args, "You must provdide an argument table when creating ScalingConstraints")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ScalingConstraints")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["MinCapacity"] = args["MinCapacity"],
 		["MaxCapacity"] = args["MaxCapacity"],
 	}
-	asserts.AssertScalingConstraints(t)
-	return t
+	asserts.AssertScalingConstraints(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InstanceTypeSpecification = { ["EbsBlockDevices"] = true, ["EbsOptimized"] = true, ["BidPrice"] = true, ["BidPriceAsPercentageOfOnDemandPrice"] = true, ["WeightedCapacity"] = true, ["InstanceType"] = true, ["Configurations"] = true, nil }
@@ -2375,8 +3090,14 @@ end
 -- * Configurations [ConfigurationList] <p>A configuration classification that applies when provisioning cluster instances, which can include configurations for applications and software bundled with Amazon EMR.</p>
 -- @return InstanceTypeSpecification structure as a key-value pair table
 function M.InstanceTypeSpecification(args)
-	assert(args, "You must provdide an argument table when creating InstanceTypeSpecification")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InstanceTypeSpecification")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["EbsBlockDevices"] = args["EbsBlockDevices"],
 		["EbsOptimized"] = args["EbsOptimized"],
 		["BidPrice"] = args["BidPrice"],
@@ -2385,8 +3106,13 @@ function M.InstanceTypeSpecification(args)
 		["InstanceType"] = args["InstanceType"],
 		["Configurations"] = args["Configurations"],
 	}
-	asserts.AssertInstanceTypeSpecification(t)
-	return t
+	asserts.AssertInstanceTypeSpecification(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.RunJobFlowOutput = { ["JobFlowId"] = true, nil }
@@ -2407,12 +3133,23 @@ end
 -- * JobFlowId [XmlStringMaxLen256] <p>An unique identifier for the job flow.</p>
 -- @return RunJobFlowOutput structure as a key-value pair table
 function M.RunJobFlowOutput(args)
-	assert(args, "You must provdide an argument table when creating RunJobFlowOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating RunJobFlowOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["JobFlowId"] = args["JobFlowId"],
 	}
-	asserts.AssertRunJobFlowOutput(t)
-	return t
+	asserts.AssertRunJobFlowOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Instance = { ["Status"] = true, ["Ec2InstanceId"] = true, ["InstanceFleetId"] = true, ["EbsVolumes"] = true, ["PublicDnsName"] = true, ["InstanceType"] = true, ["PrivateDnsName"] = true, ["Market"] = true, ["PublicIpAddress"] = true, ["InstanceGroupId"] = true, ["Id"] = true, ["PrivateIpAddress"] = true, nil }
@@ -2455,8 +3192,14 @@ end
 -- * PrivateIpAddress [String] <p>The private IP address of the instance.</p>
 -- @return Instance structure as a key-value pair table
 function M.Instance(args)
-	assert(args, "You must provdide an argument table when creating Instance")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Instance")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Status"] = args["Status"],
 		["Ec2InstanceId"] = args["Ec2InstanceId"],
 		["InstanceFleetId"] = args["InstanceFleetId"],
@@ -2470,8 +3213,13 @@ function M.Instance(args)
 		["Id"] = args["Id"],
 		["PrivateIpAddress"] = args["PrivateIpAddress"],
 	}
-	asserts.AssertInstance(t)
-	return t
+	asserts.AssertInstance(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.SupportedProductConfig = { ["Args"] = true, ["Name"] = true, nil }
@@ -2494,13 +3242,24 @@ end
 -- * Name [XmlStringMaxLen256] <p>The name of the product configuration.</p>
 -- @return SupportedProductConfig structure as a key-value pair table
 function M.SupportedProductConfig(args)
-	assert(args, "You must provdide an argument table when creating SupportedProductConfig")
-	local t = { 
+	assert(args, "You must provide an argument table when creating SupportedProductConfig")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Args"] = args["Args"],
 		["Name"] = args["Name"],
 	}
-	asserts.AssertSupportedProductConfig(t)
-	return t
+	asserts.AssertSupportedProductConfig(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListInstanceFleetsInput = { ["Marker"] = true, ["ClusterId"] = true, nil }
@@ -2525,13 +3284,24 @@ end
 -- Required key: ClusterId
 -- @return ListInstanceFleetsInput structure as a key-value pair table
 function M.ListInstanceFleetsInput(args)
-	assert(args, "You must provdide an argument table when creating ListInstanceFleetsInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListInstanceFleetsInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Marker"] = args["Marker"],
 		["ClusterId"] = args["ClusterId"],
 	}
-	asserts.AssertListInstanceFleetsInput(t)
-	return t
+	asserts.AssertListInstanceFleetsInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.PutAutoScalingPolicyInput = { ["InstanceGroupId"] = true, ["ClusterId"] = true, ["AutoScalingPolicy"] = true, nil }
@@ -2562,14 +3332,25 @@ end
 -- Required key: AutoScalingPolicy
 -- @return PutAutoScalingPolicyInput structure as a key-value pair table
 function M.PutAutoScalingPolicyInput(args)
-	assert(args, "You must provdide an argument table when creating PutAutoScalingPolicyInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating PutAutoScalingPolicyInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["InstanceGroupId"] = args["InstanceGroupId"],
 		["ClusterId"] = args["ClusterId"],
 		["AutoScalingPolicy"] = args["AutoScalingPolicy"],
 	}
-	asserts.AssertPutAutoScalingPolicyInput(t)
-	return t
+	asserts.AssertPutAutoScalingPolicyInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListClustersOutput = { ["Marker"] = true, ["Clusters"] = true, nil }
@@ -2592,13 +3373,24 @@ end
 -- * Clusters [ClusterSummaryList] <p>The list of clusters for the account based on the given filters.</p>
 -- @return ListClustersOutput structure as a key-value pair table
 function M.ListClustersOutput(args)
-	assert(args, "You must provdide an argument table when creating ListClustersOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListClustersOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Marker"] = args["Marker"],
 		["Clusters"] = args["Clusters"],
 	}
-	asserts.AssertListClustersOutput(t)
-	return t
+	asserts.AssertListClustersOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListInstancesOutput = { ["Marker"] = true, ["Instances"] = true, nil }
@@ -2621,13 +3413,24 @@ end
 -- * Instances [InstanceList] <p>The list of instances for the cluster and given filters.</p>
 -- @return ListInstancesOutput structure as a key-value pair table
 function M.ListInstancesOutput(args)
-	assert(args, "You must provdide an argument table when creating ListInstancesOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListInstancesOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Marker"] = args["Marker"],
 		["Instances"] = args["Instances"],
 	}
-	asserts.AssertListInstancesOutput(t)
-	return t
+	asserts.AssertListInstancesOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InstanceResizePolicy = { ["InstanceTerminationTimeout"] = true, ["InstancesToProtect"] = true, ["InstancesToTerminate"] = true, nil }
@@ -2652,14 +3455,25 @@ end
 -- * InstancesToTerminate [EC2InstanceIdsList] <p>Specific list of instances to be terminated when shrinking an instance group.</p>
 -- @return InstanceResizePolicy structure as a key-value pair table
 function M.InstanceResizePolicy(args)
-	assert(args, "You must provdide an argument table when creating InstanceResizePolicy")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InstanceResizePolicy")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["InstanceTerminationTimeout"] = args["InstanceTerminationTimeout"],
 		["InstancesToProtect"] = args["InstancesToProtect"],
 		["InstancesToTerminate"] = args["InstancesToTerminate"],
 	}
-	asserts.AssertInstanceResizePolicy(t)
-	return t
+	asserts.AssertInstanceResizePolicy(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InstanceGroupDetail = { ["ReadyDateTime"] = true, ["Name"] = true, ["InstanceRole"] = true, ["EndDateTime"] = true, ["InstanceRequestCount"] = true, ["State"] = true, ["BidPrice"] = true, ["LastStateChangeReason"] = true, ["StartDateTime"] = true, ["InstanceGroupId"] = true, ["InstanceRunningCount"] = true, ["CreationDateTime"] = true, ["InstanceType"] = true, ["Market"] = true, nil }
@@ -2720,8 +3534,14 @@ end
 -- Required key: CreationDateTime
 -- @return InstanceGroupDetail structure as a key-value pair table
 function M.InstanceGroupDetail(args)
-	assert(args, "You must provdide an argument table when creating InstanceGroupDetail")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InstanceGroupDetail")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ReadyDateTime"] = args["ReadyDateTime"],
 		["Name"] = args["Name"],
 		["InstanceRole"] = args["InstanceRole"],
@@ -2737,8 +3557,13 @@ function M.InstanceGroupDetail(args)
 		["InstanceType"] = args["InstanceType"],
 		["Market"] = args["Market"],
 	}
-	asserts.AssertInstanceGroupDetail(t)
-	return t
+	asserts.AssertInstanceGroupDetail(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.EbsVolume = { ["Device"] = true, ["VolumeId"] = true, nil }
@@ -2761,13 +3586,24 @@ end
 -- * VolumeId [String] <p>The volume identifier of the EBS volume.</p>
 -- @return EbsVolume structure as a key-value pair table
 function M.EbsVolume(args)
-	assert(args, "You must provdide an argument table when creating EbsVolume")
-	local t = { 
+	assert(args, "You must provide an argument table when creating EbsVolume")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Device"] = args["Device"],
 		["VolumeId"] = args["VolumeId"],
 	}
-	asserts.AssertEbsVolume(t)
-	return t
+	asserts.AssertEbsVolume(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeSecurityConfigurationInput = { ["Name"] = true, nil }
@@ -2790,12 +3626,23 @@ end
 -- Required key: Name
 -- @return DescribeSecurityConfigurationInput structure as a key-value pair table
 function M.DescribeSecurityConfigurationInput(args)
-	assert(args, "You must provdide an argument table when creating DescribeSecurityConfigurationInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeSecurityConfigurationInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Name"] = args["Name"],
 	}
-	asserts.AssertDescribeSecurityConfigurationInput(t)
-	return t
+	asserts.AssertDescribeSecurityConfigurationInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AddJobFlowStepsInput = { ["Steps"] = true, ["JobFlowId"] = true, nil }
@@ -2822,13 +3669,24 @@ end
 -- Required key: Steps
 -- @return AddJobFlowStepsInput structure as a key-value pair table
 function M.AddJobFlowStepsInput(args)
-	assert(args, "You must provdide an argument table when creating AddJobFlowStepsInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AddJobFlowStepsInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Steps"] = args["Steps"],
 		["JobFlowId"] = args["JobFlowId"],
 	}
-	asserts.AssertAddJobFlowStepsInput(t)
-	return t
+	asserts.AssertAddJobFlowStepsInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InstanceFleetStatus = { ["Timeline"] = true, ["State"] = true, ["StateChangeReason"] = true, nil }
@@ -2853,14 +3711,25 @@ end
 -- * StateChangeReason [InstanceFleetStateChangeReason] <p>Provides status change reason details for the instance fleet.</p>
 -- @return InstanceFleetStatus structure as a key-value pair table
 function M.InstanceFleetStatus(args)
-	assert(args, "You must provdide an argument table when creating InstanceFleetStatus")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InstanceFleetStatus")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Timeline"] = args["Timeline"],
 		["State"] = args["State"],
 		["StateChangeReason"] = args["StateChangeReason"],
 	}
-	asserts.AssertInstanceFleetStatus(t)
-	return t
+	asserts.AssertInstanceFleetStatus(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeClusterInput = { ["ClusterId"] = true, nil }
@@ -2883,12 +3752,23 @@ end
 -- Required key: ClusterId
 -- @return DescribeClusterInput structure as a key-value pair table
 function M.DescribeClusterInput(args)
-	assert(args, "You must provdide an argument table when creating DescribeClusterInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeClusterInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ClusterId"] = args["ClusterId"],
 	}
-	asserts.AssertDescribeClusterInput(t)
-	return t
+	asserts.AssertDescribeClusterInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListStepsOutput = { ["Marker"] = true, ["Steps"] = true, nil }
@@ -2911,13 +3791,24 @@ end
 -- * Steps [StepSummaryList] <p>The filtered list of steps for the cluster.</p>
 -- @return ListStepsOutput structure as a key-value pair table
 function M.ListStepsOutput(args)
-	assert(args, "You must provdide an argument table when creating ListStepsOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListStepsOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Marker"] = args["Marker"],
 		["Steps"] = args["Steps"],
 	}
-	asserts.AssertListStepsOutput(t)
-	return t
+	asserts.AssertListStepsOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ScriptBootstrapActionConfig = { ["Path"] = true, ["Args"] = true, nil }
@@ -2942,13 +3833,24 @@ end
 -- Required key: Path
 -- @return ScriptBootstrapActionConfig structure as a key-value pair table
 function M.ScriptBootstrapActionConfig(args)
-	assert(args, "You must provdide an argument table when creating ScriptBootstrapActionConfig")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ScriptBootstrapActionConfig")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Path"] = args["Path"],
 		["Args"] = args["Args"],
 	}
-	asserts.AssertScriptBootstrapActionConfig(t)
-	return t
+	asserts.AssertScriptBootstrapActionConfig(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AddInstanceFleetInput = { ["InstanceFleet"] = true, ["ClusterId"] = true, nil }
@@ -2975,13 +3877,24 @@ end
 -- Required key: InstanceFleet
 -- @return AddInstanceFleetInput structure as a key-value pair table
 function M.AddInstanceFleetInput(args)
-	assert(args, "You must provdide an argument table when creating AddInstanceFleetInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AddInstanceFleetInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["InstanceFleet"] = args["InstanceFleet"],
 		["ClusterId"] = args["ClusterId"],
 	}
-	asserts.AssertAddInstanceFleetInput(t)
-	return t
+	asserts.AssertAddInstanceFleetInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.RemoveAutoScalingPolicyInput = { ["InstanceGroupId"] = true, ["ClusterId"] = true, nil }
@@ -3008,13 +3921,24 @@ end
 -- Required key: InstanceGroupId
 -- @return RemoveAutoScalingPolicyInput structure as a key-value pair table
 function M.RemoveAutoScalingPolicyInput(args)
-	assert(args, "You must provdide an argument table when creating RemoveAutoScalingPolicyInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating RemoveAutoScalingPolicyInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["InstanceGroupId"] = args["InstanceGroupId"],
 		["ClusterId"] = args["ClusterId"],
 	}
-	asserts.AssertRemoveAutoScalingPolicyInput(t)
-	return t
+	asserts.AssertRemoveAutoScalingPolicyInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InstanceGroupStatus = { ["Timeline"] = true, ["State"] = true, ["StateChangeReason"] = true, nil }
@@ -3039,14 +3963,25 @@ end
 -- * StateChangeReason [InstanceGroupStateChangeReason] <p>The status change reason details for the instance group.</p>
 -- @return InstanceGroupStatus structure as a key-value pair table
 function M.InstanceGroupStatus(args)
-	assert(args, "You must provdide an argument table when creating InstanceGroupStatus")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InstanceGroupStatus")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Timeline"] = args["Timeline"],
 		["State"] = args["State"],
 		["StateChangeReason"] = args["StateChangeReason"],
 	}
-	asserts.AssertInstanceGroupStatus(t)
-	return t
+	asserts.AssertInstanceGroupStatus(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AddTagsOutput = { nil }
@@ -3065,11 +4000,22 @@ end
 -- Valid keys:
 -- @return AddTagsOutput structure as a key-value pair table
 function M.AddTagsOutput(args)
-	assert(args, "You must provdide an argument table when creating AddTagsOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AddTagsOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertAddTagsOutput(t)
-	return t
+	asserts.AssertAddTagsOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.EbsBlockDeviceConfig = { ["VolumeSpecification"] = true, ["VolumesPerInstance"] = true, nil }
@@ -3094,13 +4040,24 @@ end
 -- Required key: VolumeSpecification
 -- @return EbsBlockDeviceConfig structure as a key-value pair table
 function M.EbsBlockDeviceConfig(args)
-	assert(args, "You must provdide an argument table when creating EbsBlockDeviceConfig")
-	local t = { 
+	assert(args, "You must provide an argument table when creating EbsBlockDeviceConfig")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["VolumeSpecification"] = args["VolumeSpecification"],
 		["VolumesPerInstance"] = args["VolumesPerInstance"],
 	}
-	asserts.AssertEbsBlockDeviceConfig(t)
-	return t
+	asserts.AssertEbsBlockDeviceConfig(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.SetTerminationProtectionInput = { ["TerminationProtected"] = true, ["JobFlowIds"] = true, nil }
@@ -3127,13 +4084,24 @@ end
 -- Required key: TerminationProtected
 -- @return SetTerminationProtectionInput structure as a key-value pair table
 function M.SetTerminationProtectionInput(args)
-	assert(args, "You must provdide an argument table when creating SetTerminationProtectionInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating SetTerminationProtectionInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["TerminationProtected"] = args["TerminationProtected"],
 		["JobFlowIds"] = args["JobFlowIds"],
 	}
-	asserts.AssertSetTerminationProtectionInput(t)
-	return t
+	asserts.AssertSetTerminationProtectionInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InstanceFleetConfig = { ["Name"] = true, ["InstanceFleetType"] = true, ["LaunchSpecifications"] = true, ["TargetSpotCapacity"] = true, ["InstanceTypeConfigs"] = true, ["TargetOnDemandCapacity"] = true, nil }
@@ -3166,8 +4134,14 @@ end
 -- Required key: InstanceFleetType
 -- @return InstanceFleetConfig structure as a key-value pair table
 function M.InstanceFleetConfig(args)
-	assert(args, "You must provdide an argument table when creating InstanceFleetConfig")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InstanceFleetConfig")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Name"] = args["Name"],
 		["InstanceFleetType"] = args["InstanceFleetType"],
 		["LaunchSpecifications"] = args["LaunchSpecifications"],
@@ -3175,8 +4149,13 @@ function M.InstanceFleetConfig(args)
 		["InstanceTypeConfigs"] = args["InstanceTypeConfigs"],
 		["TargetOnDemandCapacity"] = args["TargetOnDemandCapacity"],
 	}
-	asserts.AssertInstanceFleetConfig(t)
-	return t
+	asserts.AssertInstanceFleetConfig(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.MetricDimension = { ["Value"] = true, ["Key"] = true, nil }
@@ -3199,13 +4178,24 @@ end
 -- * Key [String] <p>The dimension name.</p>
 -- @return MetricDimension structure as a key-value pair table
 function M.MetricDimension(args)
-	assert(args, "You must provdide an argument table when creating MetricDimension")
-	local t = { 
+	assert(args, "You must provide an argument table when creating MetricDimension")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Value"] = args["Value"],
 		["Key"] = args["Key"],
 	}
-	asserts.AssertMetricDimension(t)
-	return t
+	asserts.AssertMetricDimension(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AddJobFlowStepsOutput = { ["StepIds"] = true, nil }
@@ -3226,12 +4216,23 @@ end
 -- * StepIds [StepIdsList] <p>The identifiers of the list of steps added to the job flow.</p>
 -- @return AddJobFlowStepsOutput structure as a key-value pair table
 function M.AddJobFlowStepsOutput(args)
-	assert(args, "You must provdide an argument table when creating AddJobFlowStepsOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AddJobFlowStepsOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["StepIds"] = args["StepIds"],
 	}
-	asserts.AssertAddJobFlowStepsOutput(t)
-	return t
+	asserts.AssertAddJobFlowStepsOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InstanceGroup = { ["RequestedInstanceCount"] = true, ["Status"] = true, ["Name"] = true, ["InstanceGroupType"] = true, ["EbsBlockDevices"] = true, ["AutoScalingPolicy"] = true, ["ShrinkPolicy"] = true, ["Id"] = true, ["EbsOptimized"] = true, ["BidPrice"] = true, ["Configurations"] = true, ["InstanceType"] = true, ["Market"] = true, ["RunningInstanceCount"] = true, nil }
@@ -3278,8 +4279,14 @@ end
 -- * RunningInstanceCount [Integer] <p>The number of instances currently running in this instance group.</p>
 -- @return InstanceGroup structure as a key-value pair table
 function M.InstanceGroup(args)
-	assert(args, "You must provdide an argument table when creating InstanceGroup")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InstanceGroup")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["RequestedInstanceCount"] = args["RequestedInstanceCount"],
 		["Status"] = args["Status"],
 		["Name"] = args["Name"],
@@ -3295,8 +4302,13 @@ function M.InstanceGroup(args)
 		["Market"] = args["Market"],
 		["RunningInstanceCount"] = args["RunningInstanceCount"],
 	}
-	asserts.AssertInstanceGroup(t)
-	return t
+	asserts.AssertInstanceGroup(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateSecurityConfigurationInput = { ["SecurityConfiguration"] = true, ["Name"] = true, nil }
@@ -3323,13 +4335,24 @@ end
 -- Required key: SecurityConfiguration
 -- @return CreateSecurityConfigurationInput structure as a key-value pair table
 function M.CreateSecurityConfigurationInput(args)
-	assert(args, "You must provdide an argument table when creating CreateSecurityConfigurationInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateSecurityConfigurationInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["SecurityConfiguration"] = args["SecurityConfiguration"],
 		["Name"] = args["Name"],
 	}
-	asserts.AssertCreateSecurityConfigurationInput(t)
-	return t
+	asserts.AssertCreateSecurityConfigurationInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListInstancesInput = { ["InstanceGroupTypes"] = true, ["InstanceFleetType"] = true, ["InstanceFleetId"] = true, ["ClusterId"] = true, ["InstanceStates"] = true, ["Marker"] = true, ["InstanceGroupId"] = true, nil }
@@ -3364,8 +4387,14 @@ end
 -- Required key: ClusterId
 -- @return ListInstancesInput structure as a key-value pair table
 function M.ListInstancesInput(args)
-	assert(args, "You must provdide an argument table when creating ListInstancesInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListInstancesInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["InstanceGroupTypes"] = args["InstanceGroupTypes"],
 		["InstanceFleetType"] = args["InstanceFleetType"],
 		["InstanceFleetId"] = args["InstanceFleetId"],
@@ -3374,8 +4403,13 @@ function M.ListInstancesInput(args)
 		["Marker"] = args["Marker"],
 		["InstanceGroupId"] = args["InstanceGroupId"],
 	}
-	asserts.AssertListInstancesInput(t)
-	return t
+	asserts.AssertListInstancesInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.StepStatus = { ["Timeline"] = true, ["State"] = true, ["StateChangeReason"] = true, ["FailureDetails"] = true, nil }
@@ -3402,15 +4436,26 @@ end
 -- * FailureDetails [FailureDetails] <p>The details for the step failure including reason, message, and log file path where the root cause was identified.</p>
 -- @return StepStatus structure as a key-value pair table
 function M.StepStatus(args)
-	assert(args, "You must provdide an argument table when creating StepStatus")
-	local t = { 
+	assert(args, "You must provide an argument table when creating StepStatus")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Timeline"] = args["Timeline"],
 		["State"] = args["State"],
 		["StateChangeReason"] = args["StateChangeReason"],
 		["FailureDetails"] = args["FailureDetails"],
 	}
-	asserts.AssertStepStatus(t)
-	return t
+	asserts.AssertStepStatus(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.SpotProvisioningSpecification = { ["TimeoutDurationMinutes"] = true, ["BlockDurationMinutes"] = true, ["TimeoutAction"] = true, nil }
@@ -3439,14 +4484,25 @@ end
 -- Required key: TimeoutAction
 -- @return SpotProvisioningSpecification structure as a key-value pair table
 function M.SpotProvisioningSpecification(args)
-	assert(args, "You must provdide an argument table when creating SpotProvisioningSpecification")
-	local t = { 
+	assert(args, "You must provide an argument table when creating SpotProvisioningSpecification")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["TimeoutDurationMinutes"] = args["TimeoutDurationMinutes"],
 		["BlockDurationMinutes"] = args["BlockDurationMinutes"],
 		["TimeoutAction"] = args["TimeoutAction"],
 	}
-	asserts.AssertSpotProvisioningSpecification(t)
-	return t
+	asserts.AssertSpotProvisioningSpecification(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ClusterStatus = { ["Timeline"] = true, ["State"] = true, ["StateChangeReason"] = true, nil }
@@ -3471,14 +4527,25 @@ end
 -- * StateChangeReason [ClusterStateChangeReason] <p>The reason for the cluster status change.</p>
 -- @return ClusterStatus structure as a key-value pair table
 function M.ClusterStatus(args)
-	assert(args, "You must provdide an argument table when creating ClusterStatus")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ClusterStatus")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Timeline"] = args["Timeline"],
 		["State"] = args["State"],
 		["StateChangeReason"] = args["StateChangeReason"],
 	}
-	asserts.AssertClusterStatus(t)
-	return t
+	asserts.AssertClusterStatus(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ScalingRule = { ["Action"] = true, ["Trigger"] = true, ["Name"] = true, ["Description"] = true, nil }
@@ -3511,15 +4578,26 @@ end
 -- Required key: Trigger
 -- @return ScalingRule structure as a key-value pair table
 function M.ScalingRule(args)
-	assert(args, "You must provdide an argument table when creating ScalingRule")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ScalingRule")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Action"] = args["Action"],
 		["Trigger"] = args["Trigger"],
 		["Name"] = args["Name"],
 		["Description"] = args["Description"],
 	}
-	asserts.AssertScalingRule(t)
-	return t
+	asserts.AssertScalingRule(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.StepExecutionStatusDetail = { ["State"] = true, ["EndDateTime"] = true, ["CreationDateTime"] = true, ["LastStateChangeReason"] = true, ["StartDateTime"] = true, nil }
@@ -3552,16 +4630,27 @@ end
 -- Required key: CreationDateTime
 -- @return StepExecutionStatusDetail structure as a key-value pair table
 function M.StepExecutionStatusDetail(args)
-	assert(args, "You must provdide an argument table when creating StepExecutionStatusDetail")
-	local t = { 
+	assert(args, "You must provide an argument table when creating StepExecutionStatusDetail")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["State"] = args["State"],
 		["EndDateTime"] = args["EndDateTime"],
 		["CreationDateTime"] = args["CreationDateTime"],
 		["LastStateChangeReason"] = args["LastStateChangeReason"],
 		["StartDateTime"] = args["StartDateTime"],
 	}
-	asserts.AssertStepExecutionStatusDetail(t)
-	return t
+	asserts.AssertStepExecutionStatusDetail(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.SimpleScalingPolicyConfiguration = { ["CoolDown"] = true, ["ScalingAdjustment"] = true, ["AdjustmentType"] = true, nil }
@@ -3588,14 +4677,25 @@ end
 -- Required key: ScalingAdjustment
 -- @return SimpleScalingPolicyConfiguration structure as a key-value pair table
 function M.SimpleScalingPolicyConfiguration(args)
-	assert(args, "You must provdide an argument table when creating SimpleScalingPolicyConfiguration")
-	local t = { 
+	assert(args, "You must provide an argument table when creating SimpleScalingPolicyConfiguration")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["CoolDown"] = args["CoolDown"],
 		["ScalingAdjustment"] = args["ScalingAdjustment"],
 		["AdjustmentType"] = args["AdjustmentType"],
 	}
-	asserts.AssertSimpleScalingPolicyConfiguration(t)
-	return t
+	asserts.AssertSimpleScalingPolicyConfiguration(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AddTagsInput = { ["ResourceId"] = true, ["Tags"] = true, nil }
@@ -3622,13 +4722,24 @@ end
 -- Required key: Tags
 -- @return AddTagsInput structure as a key-value pair table
 function M.AddTagsInput(args)
-	assert(args, "You must provdide an argument table when creating AddTagsInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AddTagsInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ResourceId"] = args["ResourceId"],
 		["Tags"] = args["Tags"],
 	}
-	asserts.AssertAddTagsInput(t)
-	return t
+	asserts.AssertAddTagsInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InstanceStatus = { ["Timeline"] = true, ["State"] = true, ["StateChangeReason"] = true, nil }
@@ -3653,14 +4764,25 @@ end
 -- * StateChangeReason [InstanceStateChangeReason] <p>The details of the status change reason for the instance.</p>
 -- @return InstanceStatus structure as a key-value pair table
 function M.InstanceStatus(args)
-	assert(args, "You must provdide an argument table when creating InstanceStatus")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InstanceStatus")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Timeline"] = args["Timeline"],
 		["State"] = args["State"],
 		["StateChangeReason"] = args["StateChangeReason"],
 	}
-	asserts.AssertInstanceStatus(t)
-	return t
+	asserts.AssertInstanceStatus(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.StepSummary = { ["Status"] = true, ["Config"] = true, ["Id"] = true, ["ActionOnFailure"] = true, ["Name"] = true, nil }
@@ -3689,16 +4811,27 @@ end
 -- * Name [String] <p>The name of the cluster step.</p>
 -- @return StepSummary structure as a key-value pair table
 function M.StepSummary(args)
-	assert(args, "You must provdide an argument table when creating StepSummary")
-	local t = { 
+	assert(args, "You must provide an argument table when creating StepSummary")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Status"] = args["Status"],
 		["Config"] = args["Config"],
 		["Id"] = args["Id"],
 		["ActionOnFailure"] = args["ActionOnFailure"],
 		["Name"] = args["Name"],
 	}
-	asserts.AssertStepSummary(t)
-	return t
+	asserts.AssertStepSummary(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.VolumeSpecification = { ["Iops"] = true, ["VolumeType"] = true, ["SizeInGB"] = true, nil }
@@ -3727,14 +4860,25 @@ end
 -- Required key: SizeInGB
 -- @return VolumeSpecification structure as a key-value pair table
 function M.VolumeSpecification(args)
-	assert(args, "You must provdide an argument table when creating VolumeSpecification")
-	local t = { 
+	assert(args, "You must provide an argument table when creating VolumeSpecification")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Iops"] = args["Iops"],
 		["VolumeType"] = args["VolumeType"],
 		["SizeInGB"] = args["SizeInGB"],
 	}
-	asserts.AssertVolumeSpecification(t)
-	return t
+	asserts.AssertVolumeSpecification(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.BootstrapActionConfig = { ["ScriptBootstrapAction"] = true, ["Name"] = true, nil }
@@ -3761,13 +4905,24 @@ end
 -- Required key: ScriptBootstrapAction
 -- @return BootstrapActionConfig structure as a key-value pair table
 function M.BootstrapActionConfig(args)
-	assert(args, "You must provdide an argument table when creating BootstrapActionConfig")
-	local t = { 
+	assert(args, "You must provide an argument table when creating BootstrapActionConfig")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ScriptBootstrapAction"] = args["ScriptBootstrapAction"],
 		["Name"] = args["Name"],
 	}
-	asserts.AssertBootstrapActionConfig(t)
-	return t
+	asserts.AssertBootstrapActionConfig(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CancelStepsInput = { ["StepIds"] = true, ["ClusterId"] = true, nil }
@@ -3790,13 +4945,24 @@ end
 -- * ClusterId [XmlStringMaxLen256] <p>The <code>ClusterID</code> for which specified steps will be canceled. Use <a>RunJobFlow</a> and <a>ListClusters</a> to get ClusterIDs. </p>
 -- @return CancelStepsInput structure as a key-value pair table
 function M.CancelStepsInput(args)
-	assert(args, "You must provdide an argument table when creating CancelStepsInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CancelStepsInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["StepIds"] = args["StepIds"],
 		["ClusterId"] = args["ClusterId"],
 	}
-	asserts.AssertCancelStepsInput(t)
-	return t
+	asserts.AssertCancelStepsInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AutoScalingPolicy = { ["Rules"] = true, ["Constraints"] = true, nil }
@@ -3823,13 +4989,24 @@ end
 -- Required key: Rules
 -- @return AutoScalingPolicy structure as a key-value pair table
 function M.AutoScalingPolicy(args)
-	assert(args, "You must provdide an argument table when creating AutoScalingPolicy")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AutoScalingPolicy")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Rules"] = args["Rules"],
 		["Constraints"] = args["Constraints"],
 	}
-	asserts.AssertAutoScalingPolicy(t)
-	return t
+	asserts.AssertAutoScalingPolicy(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AddInstanceGroupsInput = { ["JobFlowId"] = true, ["InstanceGroups"] = true, nil }
@@ -3856,13 +5033,24 @@ end
 -- Required key: JobFlowId
 -- @return AddInstanceGroupsInput structure as a key-value pair table
 function M.AddInstanceGroupsInput(args)
-	assert(args, "You must provdide an argument table when creating AddInstanceGroupsInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AddInstanceGroupsInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["JobFlowId"] = args["JobFlowId"],
 		["InstanceGroups"] = args["InstanceGroups"],
 	}
-	asserts.AssertAddInstanceGroupsInput(t)
-	return t
+	asserts.AssertAddInstanceGroupsInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidRequestException = { ["ErrorCode"] = true, ["Message"] = true, nil }
@@ -3885,13 +5073,24 @@ end
 -- * Message [ErrorMessage] <p>The message associated with the exception.</p>
 -- @return InvalidRequestException structure as a key-value pair table
 function M.InvalidRequestException(args)
-	assert(args, "You must provdide an argument table when creating InvalidRequestException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidRequestException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ErrorCode"] = args["ErrorCode"],
 		["Message"] = args["Message"],
 	}
-	asserts.AssertInvalidRequestException(t)
-	return t
+	asserts.AssertInvalidRequestException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AutoScalingPolicyStateChangeReason = { ["Message"] = true, ["Code"] = true, nil }
@@ -3914,13 +5113,24 @@ end
 -- * Code [AutoScalingPolicyStateChangeReasonCode] <p>The code indicating the reason for the change in status.<code>USER_REQUEST</code> indicates that the scaling policy status was changed by a user. <code>PROVISION_FAILURE</code> indicates that the status change was because the policy failed to provision. <code>CLEANUP_FAILURE</code> indicates an error.</p>
 -- @return AutoScalingPolicyStateChangeReason structure as a key-value pair table
 function M.AutoScalingPolicyStateChangeReason(args)
-	assert(args, "You must provdide an argument table when creating AutoScalingPolicyStateChangeReason")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AutoScalingPolicyStateChangeReason")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Message"] = args["Message"],
 		["Code"] = args["Code"],
 	}
-	asserts.AssertAutoScalingPolicyStateChangeReason(t)
-	return t
+	asserts.AssertAutoScalingPolicyStateChangeReason(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteSecurityConfigurationInput = { ["Name"] = true, nil }
@@ -3943,12 +5153,23 @@ end
 -- Required key: Name
 -- @return DeleteSecurityConfigurationInput structure as a key-value pair table
 function M.DeleteSecurityConfigurationInput(args)
-	assert(args, "You must provdide an argument table when creating DeleteSecurityConfigurationInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteSecurityConfigurationInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Name"] = args["Name"],
 	}
-	asserts.AssertDeleteSecurityConfigurationInput(t)
-	return t
+	asserts.AssertDeleteSecurityConfigurationInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InstanceGroupModifyConfig = { ["InstanceGroupId"] = true, ["InstanceCount"] = true, ["EC2InstanceIdsToTerminate"] = true, ["ShrinkPolicy"] = true, nil }
@@ -3977,15 +5198,26 @@ end
 -- Required key: InstanceGroupId
 -- @return InstanceGroupModifyConfig structure as a key-value pair table
 function M.InstanceGroupModifyConfig(args)
-	assert(args, "You must provdide an argument table when creating InstanceGroupModifyConfig")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InstanceGroupModifyConfig")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["InstanceGroupId"] = args["InstanceGroupId"],
 		["InstanceCount"] = args["InstanceCount"],
 		["EC2InstanceIdsToTerminate"] = args["EC2InstanceIdsToTerminate"],
 		["ShrinkPolicy"] = args["ShrinkPolicy"],
 	}
-	asserts.AssertInstanceGroupModifyConfig(t)
-	return t
+	asserts.AssertInstanceGroupModifyConfig(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListSecurityConfigurationsOutput = { ["Marker"] = true, ["SecurityConfigurations"] = true, nil }
@@ -4008,13 +5240,24 @@ end
 -- * SecurityConfigurations [SecurityConfigurationList] <p>The creation date and time, and name, of each security configuration.</p>
 -- @return ListSecurityConfigurationsOutput structure as a key-value pair table
 function M.ListSecurityConfigurationsOutput(args)
-	assert(args, "You must provdide an argument table when creating ListSecurityConfigurationsOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListSecurityConfigurationsOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Marker"] = args["Marker"],
 		["SecurityConfigurations"] = args["SecurityConfigurations"],
 	}
-	asserts.AssertListSecurityConfigurationsOutput(t)
-	return t
+	asserts.AssertListSecurityConfigurationsOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListInstanceGroupsOutput = { ["Marker"] = true, ["InstanceGroups"] = true, nil }
@@ -4037,13 +5280,24 @@ end
 -- * InstanceGroups [InstanceGroupList] <p>The list of instance groups for the cluster and given filters.</p>
 -- @return ListInstanceGroupsOutput structure as a key-value pair table
 function M.ListInstanceGroupsOutput(args)
-	assert(args, "You must provdide an argument table when creating ListInstanceGroupsOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListInstanceGroupsOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Marker"] = args["Marker"],
 		["InstanceGroups"] = args["InstanceGroups"],
 	}
-	asserts.AssertListInstanceGroupsOutput(t)
-	return t
+	asserts.AssertListInstanceGroupsOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ScalingAction = { ["SimpleScalingPolicyConfiguration"] = true, ["Market"] = true, nil }
@@ -4068,13 +5322,24 @@ end
 -- Required key: SimpleScalingPolicyConfiguration
 -- @return ScalingAction structure as a key-value pair table
 function M.ScalingAction(args)
-	assert(args, "You must provdide an argument table when creating ScalingAction")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ScalingAction")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["SimpleScalingPolicyConfiguration"] = args["SimpleScalingPolicyConfiguration"],
 		["Market"] = args["Market"],
 	}
-	asserts.AssertScalingAction(t)
-	return t
+	asserts.AssertScalingAction(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.RemoveTagsInput = { ["ResourceId"] = true, ["TagKeys"] = true, nil }
@@ -4101,13 +5366,24 @@ end
 -- Required key: TagKeys
 -- @return RemoveTagsInput structure as a key-value pair table
 function M.RemoveTagsInput(args)
-	assert(args, "You must provdide an argument table when creating RemoveTagsInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating RemoveTagsInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ResourceId"] = args["ResourceId"],
 		["TagKeys"] = args["TagKeys"],
 	}
-	asserts.AssertRemoveTagsInput(t)
-	return t
+	asserts.AssertRemoveTagsInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ClusterSummary = { ["Status"] = true, ["NormalizedInstanceHours"] = true, ["Id"] = true, ["Name"] = true, nil }
@@ -4134,15 +5410,26 @@ end
 -- * Name [String] <p>The name of the cluster.</p>
 -- @return ClusterSummary structure as a key-value pair table
 function M.ClusterSummary(args)
-	assert(args, "You must provdide an argument table when creating ClusterSummary")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ClusterSummary")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Status"] = args["Status"],
 		["NormalizedInstanceHours"] = args["NormalizedInstanceHours"],
 		["Id"] = args["Id"],
 		["Name"] = args["Name"],
 	}
-	asserts.AssertClusterSummary(t)
-	return t
+	asserts.AssertClusterSummary(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.PutAutoScalingPolicyOutput = { ["InstanceGroupId"] = true, ["ClusterId"] = true, ["AutoScalingPolicy"] = true, nil }
@@ -4167,14 +5454,25 @@ end
 -- * AutoScalingPolicy [AutoScalingPolicyDescription] <p>The automatic scaling policy definition.</p>
 -- @return PutAutoScalingPolicyOutput structure as a key-value pair table
 function M.PutAutoScalingPolicyOutput(args)
-	assert(args, "You must provdide an argument table when creating PutAutoScalingPolicyOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating PutAutoScalingPolicyOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["InstanceGroupId"] = args["InstanceGroupId"],
 		["ClusterId"] = args["ClusterId"],
 		["AutoScalingPolicy"] = args["AutoScalingPolicy"],
 	}
-	asserts.AssertPutAutoScalingPolicyOutput(t)
-	return t
+	asserts.AssertPutAutoScalingPolicyOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeJobFlowsInput = { ["CreatedAfter"] = true, ["JobFlowIds"] = true, ["CreatedBefore"] = true, ["JobFlowStates"] = true, nil }
@@ -4201,15 +5499,26 @@ end
 -- * JobFlowStates [JobFlowExecutionStateList] <p>Return only job flows whose state is contained in this list.</p>
 -- @return DescribeJobFlowsInput structure as a key-value pair table
 function M.DescribeJobFlowsInput(args)
-	assert(args, "You must provdide an argument table when creating DescribeJobFlowsInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeJobFlowsInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["CreatedAfter"] = args["CreatedAfter"],
 		["JobFlowIds"] = args["JobFlowIds"],
 		["CreatedBefore"] = args["CreatedBefore"],
 		["JobFlowStates"] = args["JobFlowStates"],
 	}
-	asserts.AssertDescribeJobFlowsInput(t)
-	return t
+	asserts.AssertDescribeJobFlowsInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeSecurityConfigurationOutput = { ["SecurityConfiguration"] = true, ["CreationDateTime"] = true, ["Name"] = true, nil }
@@ -4234,14 +5543,25 @@ end
 -- * Name [XmlString] <p>The name of the security configuration.</p>
 -- @return DescribeSecurityConfigurationOutput structure as a key-value pair table
 function M.DescribeSecurityConfigurationOutput(args)
-	assert(args, "You must provdide an argument table when creating DescribeSecurityConfigurationOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeSecurityConfigurationOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["SecurityConfiguration"] = args["SecurityConfiguration"],
 		["CreationDateTime"] = args["CreationDateTime"],
 		["Name"] = args["Name"],
 	}
-	asserts.AssertDescribeSecurityConfigurationOutput(t)
-	return t
+	asserts.AssertDescribeSecurityConfigurationOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.BootstrapActionDetail = { ["BootstrapActionConfig"] = true, nil }
@@ -4262,12 +5582,23 @@ end
 -- * BootstrapActionConfig [BootstrapActionConfig] <p>A description of the bootstrap action.</p>
 -- @return BootstrapActionDetail structure as a key-value pair table
 function M.BootstrapActionDetail(args)
-	assert(args, "You must provdide an argument table when creating BootstrapActionDetail")
-	local t = { 
+	assert(args, "You must provide an argument table when creating BootstrapActionDetail")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["BootstrapActionConfig"] = args["BootstrapActionConfig"],
 	}
-	asserts.AssertBootstrapActionDetail(t)
-	return t
+	asserts.AssertBootstrapActionDetail(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.StepConfig = { ["HadoopJarStep"] = true, ["Name"] = true, ["ActionOnFailure"] = true, nil }
@@ -4296,14 +5627,25 @@ end
 -- Required key: HadoopJarStep
 -- @return StepConfig structure as a key-value pair table
 function M.StepConfig(args)
-	assert(args, "You must provdide an argument table when creating StepConfig")
-	local t = { 
+	assert(args, "You must provide an argument table when creating StepConfig")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["HadoopJarStep"] = args["HadoopJarStep"],
 		["Name"] = args["Name"],
 		["ActionOnFailure"] = args["ActionOnFailure"],
 	}
-	asserts.AssertStepConfig(t)
-	return t
+	asserts.AssertStepConfig(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListBootstrapActionsInput = { ["Marker"] = true, ["ClusterId"] = true, nil }
@@ -4328,13 +5670,24 @@ end
 -- Required key: ClusterId
 -- @return ListBootstrapActionsInput structure as a key-value pair table
 function M.ListBootstrapActionsInput(args)
-	assert(args, "You must provdide an argument table when creating ListBootstrapActionsInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListBootstrapActionsInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Marker"] = args["Marker"],
 		["ClusterId"] = args["ClusterId"],
 	}
-	asserts.AssertListBootstrapActionsInput(t)
-	return t
+	asserts.AssertListBootstrapActionsInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeClusterOutput = { ["Cluster"] = true, nil }
@@ -4355,12 +5708,23 @@ end
 -- * Cluster [Cluster] <p>This output contains the details for the requested cluster.</p>
 -- @return DescribeClusterOutput structure as a key-value pair table
 function M.DescribeClusterOutput(args)
-	assert(args, "You must provdide an argument table when creating DescribeClusterOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeClusterOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Cluster"] = args["Cluster"],
 	}
-	asserts.AssertDescribeClusterOutput(t)
-	return t
+	asserts.AssertDescribeClusterOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 function asserts.AssertInstanceGroupState(str)
@@ -5582,8 +6946,11 @@ function M.CancelStepsAsync(CancelStepsInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "ElasticMapReduce.CancelSteps",
 	}
+	for header,value in pairs(CancelStepsInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", CancelStepsInput, headers, settings, cb)
 	else
@@ -5614,8 +6981,11 @@ function M.RemoveAutoScalingPolicyAsync(RemoveAutoScalingPolicyInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "ElasticMapReduce.RemoveAutoScalingPolicy",
 	}
+	for header,value in pairs(RemoveAutoScalingPolicyInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", RemoveAutoScalingPolicyInput, headers, settings, cb)
 	else
@@ -5646,8 +7016,11 @@ function M.CreateSecurityConfigurationAsync(CreateSecurityConfigurationInput, cb
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "ElasticMapReduce.CreateSecurityConfiguration",
 	}
+	for header,value in pairs(CreateSecurityConfigurationInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateSecurityConfigurationInput, headers, settings, cb)
 	else
@@ -5678,8 +7051,11 @@ function M.RunJobFlowAsync(RunJobFlowInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "ElasticMapReduce.RunJobFlow",
 	}
+	for header,value in pairs(RunJobFlowInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", RunJobFlowInput, headers, settings, cb)
 	else
@@ -5710,8 +7086,11 @@ function M.DescribeSecurityConfigurationAsync(DescribeSecurityConfigurationInput
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "ElasticMapReduce.DescribeSecurityConfiguration",
 	}
+	for header,value in pairs(DescribeSecurityConfigurationInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeSecurityConfigurationInput, headers, settings, cb)
 	else
@@ -5742,8 +7121,11 @@ function M.ListSecurityConfigurationsAsync(ListSecurityConfigurationsInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "ElasticMapReduce.ListSecurityConfigurations",
 	}
+	for header,value in pairs(ListSecurityConfigurationsInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ListSecurityConfigurationsInput, headers, settings, cb)
 	else
@@ -5774,8 +7156,11 @@ function M.SetTerminationProtectionAsync(SetTerminationProtectionInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "ElasticMapReduce.SetTerminationProtection",
 	}
+	for header,value in pairs(SetTerminationProtectionInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", SetTerminationProtectionInput, headers, settings, cb)
 	else
@@ -5806,8 +7191,11 @@ function M.DeleteSecurityConfigurationAsync(DeleteSecurityConfigurationInput, cb
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "ElasticMapReduce.DeleteSecurityConfiguration",
 	}
+	for header,value in pairs(DeleteSecurityConfigurationInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteSecurityConfigurationInput, headers, settings, cb)
 	else
@@ -5838,8 +7226,11 @@ function M.AddInstanceGroupsAsync(AddInstanceGroupsInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "ElasticMapReduce.AddInstanceGroups",
 	}
+	for header,value in pairs(AddInstanceGroupsInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", AddInstanceGroupsInput, headers, settings, cb)
 	else
@@ -5870,8 +7261,11 @@ function M.ListBootstrapActionsAsync(ListBootstrapActionsInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "ElasticMapReduce.ListBootstrapActions",
 	}
+	for header,value in pairs(ListBootstrapActionsInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ListBootstrapActionsInput, headers, settings, cb)
 	else
@@ -5902,8 +7296,11 @@ function M.ListClustersAsync(ListClustersInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "ElasticMapReduce.ListClusters",
 	}
+	for header,value in pairs(ListClustersInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ListClustersInput, headers, settings, cb)
 	else
@@ -5934,8 +7331,11 @@ function M.ListInstancesAsync(ListInstancesInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "ElasticMapReduce.ListInstances",
 	}
+	for header,value in pairs(ListInstancesInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ListInstancesInput, headers, settings, cb)
 	else
@@ -5966,8 +7366,11 @@ function M.DescribeClusterAsync(DescribeClusterInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "ElasticMapReduce.DescribeCluster",
 	}
+	for header,value in pairs(DescribeClusterInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeClusterInput, headers, settings, cb)
 	else
@@ -5998,8 +7401,11 @@ function M.ListStepsAsync(ListStepsInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "ElasticMapReduce.ListSteps",
 	}
+	for header,value in pairs(ListStepsInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ListStepsInput, headers, settings, cb)
 	else
@@ -6030,8 +7436,11 @@ function M.RemoveTagsAsync(RemoveTagsInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "ElasticMapReduce.RemoveTags",
 	}
+	for header,value in pairs(RemoveTagsInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", RemoveTagsInput, headers, settings, cb)
 	else
@@ -6062,8 +7471,11 @@ function M.ModifyInstanceGroupsAsync(ModifyInstanceGroupsInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "ElasticMapReduce.ModifyInstanceGroups",
 	}
+	for header,value in pairs(ModifyInstanceGroupsInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ModifyInstanceGroupsInput, headers, settings, cb)
 	else
@@ -6094,8 +7506,11 @@ function M.PutAutoScalingPolicyAsync(PutAutoScalingPolicyInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "ElasticMapReduce.PutAutoScalingPolicy",
 	}
+	for header,value in pairs(PutAutoScalingPolicyInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", PutAutoScalingPolicyInput, headers, settings, cb)
 	else
@@ -6126,8 +7541,11 @@ function M.AddInstanceFleetAsync(AddInstanceFleetInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "ElasticMapReduce.AddInstanceFleet",
 	}
+	for header,value in pairs(AddInstanceFleetInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", AddInstanceFleetInput, headers, settings, cb)
 	else
@@ -6158,8 +7576,11 @@ function M.SetVisibleToAllUsersAsync(SetVisibleToAllUsersInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "ElasticMapReduce.SetVisibleToAllUsers",
 	}
+	for header,value in pairs(SetVisibleToAllUsersInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", SetVisibleToAllUsersInput, headers, settings, cb)
 	else
@@ -6190,8 +7611,11 @@ function M.ListInstanceFleetsAsync(ListInstanceFleetsInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "ElasticMapReduce.ListInstanceFleets",
 	}
+	for header,value in pairs(ListInstanceFleetsInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ListInstanceFleetsInput, headers, settings, cb)
 	else
@@ -6222,8 +7646,11 @@ function M.TerminateJobFlowsAsync(TerminateJobFlowsInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "ElasticMapReduce.TerminateJobFlows",
 	}
+	for header,value in pairs(TerminateJobFlowsInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", TerminateJobFlowsInput, headers, settings, cb)
 	else
@@ -6254,8 +7681,11 @@ function M.AddTagsAsync(AddTagsInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "ElasticMapReduce.AddTags",
 	}
+	for header,value in pairs(AddTagsInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", AddTagsInput, headers, settings, cb)
 	else
@@ -6286,8 +7716,11 @@ function M.ModifyInstanceFleetAsync(ModifyInstanceFleetInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "ElasticMapReduce.ModifyInstanceFleet",
 	}
+	for header,value in pairs(ModifyInstanceFleetInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ModifyInstanceFleetInput, headers, settings, cb)
 	else
@@ -6318,8 +7751,11 @@ function M.AddJobFlowStepsAsync(AddJobFlowStepsInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "ElasticMapReduce.AddJobFlowSteps",
 	}
+	for header,value in pairs(AddJobFlowStepsInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", AddJobFlowStepsInput, headers, settings, cb)
 	else
@@ -6350,8 +7786,11 @@ function M.ListInstanceGroupsAsync(ListInstanceGroupsInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "ElasticMapReduce.ListInstanceGroups",
 	}
+	for header,value in pairs(ListInstanceGroupsInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ListInstanceGroupsInput, headers, settings, cb)
 	else
@@ -6382,8 +7821,11 @@ function M.DescribeStepAsync(DescribeStepInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "ElasticMapReduce.DescribeStep",
 	}
+	for header,value in pairs(DescribeStepInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeStepInput, headers, settings, cb)
 	else

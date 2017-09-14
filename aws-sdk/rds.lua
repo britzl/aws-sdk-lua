@@ -37,11 +37,22 @@ end
 -- Valid keys:
 -- @return CertificateNotFoundFault structure as a key-value pair table
 function M.CertificateNotFoundFault(args)
-	assert(args, "You must provdide an argument table when creating CertificateNotFoundFault")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CertificateNotFoundFault")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertCertificateNotFoundFault(t)
-	return t
+	asserts.AssertCertificateNotFoundFault(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DBSubnetGroupNotFoundFault = { nil }
@@ -60,11 +71,22 @@ end
 -- Valid keys:
 -- @return DBSubnetGroupNotFoundFault structure as a key-value pair table
 function M.DBSubnetGroupNotFoundFault(args)
-	assert(args, "You must provdide an argument table when creating DBSubnetGroupNotFoundFault")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DBSubnetGroupNotFoundFault")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertDBSubnetGroupNotFoundFault(t)
-	return t
+	asserts.AssertDBSubnetGroupNotFoundFault(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CopyDBClusterParameterGroupMessage = { ["TargetDBClusterParameterGroupIdentifier"] = true, ["Tags"] = true, ["SourceDBClusterParameterGroupIdentifier"] = true, ["TargetDBClusterParameterGroupDescription"] = true, nil }
@@ -97,15 +119,26 @@ end
 -- Required key: TargetDBClusterParameterGroupDescription
 -- @return CopyDBClusterParameterGroupMessage structure as a key-value pair table
 function M.CopyDBClusterParameterGroupMessage(args)
-	assert(args, "You must provdide an argument table when creating CopyDBClusterParameterGroupMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CopyDBClusterParameterGroupMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["TargetDBClusterParameterGroupIdentifier"] = args["TargetDBClusterParameterGroupIdentifier"],
 		["Tags"] = args["Tags"],
 		["SourceDBClusterParameterGroupIdentifier"] = args["SourceDBClusterParameterGroupIdentifier"],
 		["TargetDBClusterParameterGroupDescription"] = args["TargetDBClusterParameterGroupDescription"],
 	}
-	asserts.AssertCopyDBClusterParameterGroupMessage(t)
-	return t
+	asserts.AssertCopyDBClusterParameterGroupMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AddSourceIdentifierToSubscriptionMessage = { ["SourceIdentifier"] = true, ["SubscriptionName"] = true, nil }
@@ -132,13 +165,24 @@ end
 -- Required key: SourceIdentifier
 -- @return AddSourceIdentifierToSubscriptionMessage structure as a key-value pair table
 function M.AddSourceIdentifierToSubscriptionMessage(args)
-	assert(args, "You must provdide an argument table when creating AddSourceIdentifierToSubscriptionMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AddSourceIdentifierToSubscriptionMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["SourceIdentifier"] = args["SourceIdentifier"],
 		["SubscriptionName"] = args["SubscriptionName"],
 	}
-	asserts.AssertAddSourceIdentifierToSubscriptionMessage(t)
-	return t
+	asserts.AssertAddSourceIdentifierToSubscriptionMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.SubscriptionAlreadyExistFault = { nil }
@@ -157,11 +201,22 @@ end
 -- Valid keys:
 -- @return SubscriptionAlreadyExistFault structure as a key-value pair table
 function M.SubscriptionAlreadyExistFault(args)
-	assert(args, "You must provdide an argument table when creating SubscriptionAlreadyExistFault")
-	local t = { 
+	assert(args, "You must provide an argument table when creating SubscriptionAlreadyExistFault")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertSubscriptionAlreadyExistFault(t)
-	return t
+	asserts.AssertSubscriptionAlreadyExistFault(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DBSubnetGroupQuotaExceededFault = { nil }
@@ -180,11 +235,22 @@ end
 -- Valid keys:
 -- @return DBSubnetGroupQuotaExceededFault structure as a key-value pair table
 function M.DBSubnetGroupQuotaExceededFault(args)
-	assert(args, "You must provdide an argument table when creating DBSubnetGroupQuotaExceededFault")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DBSubnetGroupQuotaExceededFault")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertDBSubnetGroupQuotaExceededFault(t)
-	return t
+	asserts.AssertDBSubnetGroupQuotaExceededFault(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DBClusterRole = { ["Status"] = true, ["RoleArn"] = true, nil }
@@ -207,13 +273,24 @@ end
 -- * RoleArn [String] <p>The Amazon Resource Name (ARN) of the IAM role that is associated with the DB cluster.</p>
 -- @return DBClusterRole structure as a key-value pair table
 function M.DBClusterRole(args)
-	assert(args, "You must provdide an argument table when creating DBClusterRole")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DBClusterRole")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Status"] = args["Status"],
 		["RoleArn"] = args["RoleArn"],
 	}
-	asserts.AssertDBClusterRole(t)
-	return t
+	asserts.AssertDBClusterRole(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ModifyOptionGroupMessage = { ["OptionsToRemove"] = true, ["OptionsToInclude"] = true, ["ApplyImmediately"] = true, ["OptionGroupName"] = true, nil }
@@ -242,15 +319,26 @@ end
 -- Required key: OptionGroupName
 -- @return ModifyOptionGroupMessage structure as a key-value pair table
 function M.ModifyOptionGroupMessage(args)
-	assert(args, "You must provdide an argument table when creating ModifyOptionGroupMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ModifyOptionGroupMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["OptionsToRemove"] = args["OptionsToRemove"],
 		["OptionsToInclude"] = args["OptionsToInclude"],
 		["ApplyImmediately"] = args["ApplyImmediately"],
 		["OptionGroupName"] = args["OptionGroupName"],
 	}
-	asserts.AssertModifyOptionGroupMessage(t)
-	return t
+	asserts.AssertModifyOptionGroupMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ModifyEventSubscriptionMessage = { ["EventCategories"] = true, ["Enabled"] = true, ["SourceType"] = true, ["SubscriptionName"] = true, ["SnsTopicArn"] = true, nil }
@@ -281,16 +369,27 @@ end
 -- Required key: SubscriptionName
 -- @return ModifyEventSubscriptionMessage structure as a key-value pair table
 function M.ModifyEventSubscriptionMessage(args)
-	assert(args, "You must provdide an argument table when creating ModifyEventSubscriptionMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ModifyEventSubscriptionMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["EventCategories"] = args["EventCategories"],
 		["Enabled"] = args["Enabled"],
 		["SourceType"] = args["SourceType"],
 		["SubscriptionName"] = args["SubscriptionName"],
 		["SnsTopicArn"] = args["SnsTopicArn"],
 	}
-	asserts.AssertModifyEventSubscriptionMessage(t)
-	return t
+	asserts.AssertModifyEventSubscriptionMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CopyOptionGroupMessage = { ["TargetOptionGroupDescription"] = true, ["Tags"] = true, ["TargetOptionGroupIdentifier"] = true, ["SourceOptionGroupIdentifier"] = true, nil }
@@ -323,15 +422,26 @@ end
 -- Required key: TargetOptionGroupDescription
 -- @return CopyOptionGroupMessage structure as a key-value pair table
 function M.CopyOptionGroupMessage(args)
-	assert(args, "You must provdide an argument table when creating CopyOptionGroupMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CopyOptionGroupMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["TargetOptionGroupDescription"] = args["TargetOptionGroupDescription"],
 		["Tags"] = args["Tags"],
 		["TargetOptionGroupIdentifier"] = args["TargetOptionGroupIdentifier"],
 		["SourceOptionGroupIdentifier"] = args["SourceOptionGroupIdentifier"],
 	}
-	asserts.AssertCopyOptionGroupMessage(t)
-	return t
+	asserts.AssertCopyOptionGroupMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DBSecurityGroupMessage = { ["Marker"] = true, ["DBSecurityGroups"] = true, nil }
@@ -354,13 +464,24 @@ end
 -- * DBSecurityGroups [DBSecurityGroups] <p> A list of <a>DBSecurityGroup</a> instances. </p>
 -- @return DBSecurityGroupMessage structure as a key-value pair table
 function M.DBSecurityGroupMessage(args)
-	assert(args, "You must provdide an argument table when creating DBSecurityGroupMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DBSecurityGroupMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Marker"] = args["Marker"],
 		["DBSecurityGroups"] = args["DBSecurityGroups"],
 	}
-	asserts.AssertDBSecurityGroupMessage(t)
-	return t
+	asserts.AssertDBSecurityGroupMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DBSubnetGroup = { ["Subnets"] = true, ["VpcId"] = true, ["DBSubnetGroupDescription"] = true, ["SubnetGroupStatus"] = true, ["DBSubnetGroupArn"] = true, ["DBSubnetGroupName"] = true, nil }
@@ -391,8 +512,14 @@ end
 -- * DBSubnetGroupName [String] <p>The name of the DB subnet group.</p>
 -- @return DBSubnetGroup structure as a key-value pair table
 function M.DBSubnetGroup(args)
-	assert(args, "You must provdide an argument table when creating DBSubnetGroup")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DBSubnetGroup")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Subnets"] = args["Subnets"],
 		["VpcId"] = args["VpcId"],
 		["DBSubnetGroupDescription"] = args["DBSubnetGroupDescription"],
@@ -400,8 +527,13 @@ function M.DBSubnetGroup(args)
 		["DBSubnetGroupArn"] = args["DBSubnetGroupArn"],
 		["DBSubnetGroupName"] = args["DBSubnetGroupName"],
 	}
-	asserts.AssertDBSubnetGroup(t)
-	return t
+	asserts.AssertDBSubnetGroup(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DBSubnetGroupAlreadyExistsFault = { nil }
@@ -420,11 +552,22 @@ end
 -- Valid keys:
 -- @return DBSubnetGroupAlreadyExistsFault structure as a key-value pair table
 function M.DBSubnetGroupAlreadyExistsFault(args)
-	assert(args, "You must provdide an argument table when creating DBSubnetGroupAlreadyExistsFault")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DBSubnetGroupAlreadyExistsFault")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertDBSubnetGroupAlreadyExistsFault(t)
-	return t
+	asserts.AssertDBSubnetGroupAlreadyExistsFault(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteDBInstanceMessage = { ["FinalDBSnapshotIdentifier"] = true, ["SkipFinalSnapshot"] = true, ["DBInstanceIdentifier"] = true, nil }
@@ -451,14 +594,25 @@ end
 -- Required key: DBInstanceIdentifier
 -- @return DeleteDBInstanceMessage structure as a key-value pair table
 function M.DeleteDBInstanceMessage(args)
-	assert(args, "You must provdide an argument table when creating DeleteDBInstanceMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteDBInstanceMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["FinalDBSnapshotIdentifier"] = args["FinalDBSnapshotIdentifier"],
 		["SkipFinalSnapshot"] = args["SkipFinalSnapshot"],
 		["DBInstanceIdentifier"] = args["DBInstanceIdentifier"],
 	}
-	asserts.AssertDeleteDBInstanceMessage(t)
-	return t
+	asserts.AssertDeleteDBInstanceMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DBSubnetGroupNotAllowedFault = { nil }
@@ -477,11 +631,22 @@ end
 -- Valid keys:
 -- @return DBSubnetGroupNotAllowedFault structure as a key-value pair table
 function M.DBSubnetGroupNotAllowedFault(args)
-	assert(args, "You must provdide an argument table when creating DBSubnetGroupNotAllowedFault")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DBSubnetGroupNotAllowedFault")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertDBSubnetGroupNotAllowedFault(t)
-	return t
+	asserts.AssertDBSubnetGroupNotAllowedFault(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeDBClusterParameterGroupsMessage = { ["DBClusterParameterGroupName"] = true, ["Marker"] = true, ["MaxRecords"] = true, ["Filters"] = true, nil }
@@ -508,15 +673,26 @@ end
 -- * Filters [FilterList] <p>This parameter is not currently supported.</p>
 -- @return DescribeDBClusterParameterGroupsMessage structure as a key-value pair table
 function M.DescribeDBClusterParameterGroupsMessage(args)
-	assert(args, "You must provdide an argument table when creating DescribeDBClusterParameterGroupsMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeDBClusterParameterGroupsMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DBClusterParameterGroupName"] = args["DBClusterParameterGroupName"],
 		["Marker"] = args["Marker"],
 		["MaxRecords"] = args["MaxRecords"],
 		["Filters"] = args["Filters"],
 	}
-	asserts.AssertDescribeDBClusterParameterGroupsMessage(t)
-	return t
+	asserts.AssertDescribeDBClusterParameterGroupsMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DBClusterSnapshotAttribute = { ["AttributeName"] = true, ["AttributeValues"] = true, nil }
@@ -539,13 +715,24 @@ end
 -- * AttributeValues [AttributeValueList] <p>The value(s) for the manual DB cluster snapshot attribute.</p> <p>If the <code>AttributeName</code> field is set to <code>restore</code>, then this element returns a list of IDs of the AWS accounts that are authorized to copy or restore the manual DB cluster snapshot. If a value of <code>all</code> is in the list, then the manual DB cluster snapshot is public and available for any AWS account to copy or restore.</p>
 -- @return DBClusterSnapshotAttribute structure as a key-value pair table
 function M.DBClusterSnapshotAttribute(args)
-	assert(args, "You must provdide an argument table when creating DBClusterSnapshotAttribute")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DBClusterSnapshotAttribute")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["AttributeName"] = args["AttributeName"],
 		["AttributeValues"] = args["AttributeValues"],
 	}
-	asserts.AssertDBClusterSnapshotAttribute(t)
-	return t
+	asserts.AssertDBClusterSnapshotAttribute(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.StorageTypeNotSupportedFault = { nil }
@@ -564,11 +751,22 @@ end
 -- Valid keys:
 -- @return StorageTypeNotSupportedFault structure as a key-value pair table
 function M.StorageTypeNotSupportedFault(args)
-	assert(args, "You must provdide an argument table when creating StorageTypeNotSupportedFault")
-	local t = { 
+	assert(args, "You must provide an argument table when creating StorageTypeNotSupportedFault")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertStorageTypeNotSupportedFault(t)
-	return t
+	asserts.AssertStorageTypeNotSupportedFault(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateOptionGroupResult = { ["OptionGroup"] = true, nil }
@@ -589,12 +787,23 @@ end
 -- * OptionGroup [OptionGroup] 
 -- @return CreateOptionGroupResult structure as a key-value pair table
 function M.CreateOptionGroupResult(args)
-	assert(args, "You must provdide an argument table when creating CreateOptionGroupResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateOptionGroupResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["OptionGroup"] = args["OptionGroup"],
 	}
-	asserts.AssertCreateOptionGroupResult(t)
-	return t
+	asserts.AssertCreateOptionGroupResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateEventSubscriptionMessage = { ["EventCategories"] = true, ["SourceType"] = true, ["Tags"] = true, ["Enabled"] = true, ["SnsTopicArn"] = true, ["SubscriptionName"] = true, ["SourceIds"] = true, nil }
@@ -631,8 +840,14 @@ end
 -- Required key: SnsTopicArn
 -- @return CreateEventSubscriptionMessage structure as a key-value pair table
 function M.CreateEventSubscriptionMessage(args)
-	assert(args, "You must provdide an argument table when creating CreateEventSubscriptionMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateEventSubscriptionMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["EventCategories"] = args["EventCategories"],
 		["SourceType"] = args["SourceType"],
 		["Tags"] = args["Tags"],
@@ -641,8 +856,13 @@ function M.CreateEventSubscriptionMessage(args)
 		["SubscriptionName"] = args["SubscriptionName"],
 		["SourceIds"] = args["SourceIds"],
 	}
-	asserts.AssertCreateEventSubscriptionMessage(t)
-	return t
+	asserts.AssertCreateEventSubscriptionMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AddRoleToDBClusterMessage = { ["RoleArn"] = true, ["DBClusterIdentifier"] = true, nil }
@@ -669,13 +889,24 @@ end
 -- Required key: RoleArn
 -- @return AddRoleToDBClusterMessage structure as a key-value pair table
 function M.AddRoleToDBClusterMessage(args)
-	assert(args, "You must provdide an argument table when creating AddRoleToDBClusterMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AddRoleToDBClusterMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["RoleArn"] = args["RoleArn"],
 		["DBClusterIdentifier"] = args["DBClusterIdentifier"],
 	}
-	asserts.AssertAddRoleToDBClusterMessage(t)
-	return t
+	asserts.AssertAddRoleToDBClusterMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DBSnapshotMessage = { ["Marker"] = true, ["DBSnapshots"] = true, nil }
@@ -698,13 +929,24 @@ end
 -- * DBSnapshots [DBSnapshotList] <p> A list of <a>DBSnapshot</a> instances. </p>
 -- @return DBSnapshotMessage structure as a key-value pair table
 function M.DBSnapshotMessage(args)
-	assert(args, "You must provdide an argument table when creating DBSnapshotMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DBSnapshotMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Marker"] = args["Marker"],
 		["DBSnapshots"] = args["DBSnapshots"],
 	}
-	asserts.AssertDBSnapshotMessage(t)
-	return t
+	asserts.AssertDBSnapshotMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Tag = { ["Value"] = true, ["Key"] = true, nil }
@@ -727,13 +969,24 @@ end
 -- * Key [String] <p>A key is the required name of the tag. The string value can be from 1 to 128 Unicode characters in length and cannot be prefixed with "aws:" or "rds:". The string can only contain only the set of Unicode letters, digits, white-space, '_', '.', '/', '=', '+', '-' (Java regex: "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").</p>
 -- @return Tag structure as a key-value pair table
 function M.Tag(args)
-	assert(args, "You must provdide an argument table when creating Tag")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Tag")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Value"] = args["Value"],
 		["Key"] = args["Key"],
 	}
-	asserts.AssertTag(t)
-	return t
+	asserts.AssertTag(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CopyDBSnapshotMessage = { ["CopyTags"] = true, ["SourceRegion"] = true, ["Tags"] = true, ["PreSignedUrl"] = true, ["TargetDBSnapshotIdentifier"] = true, ["SourceDBSnapshotIdentifier"] = true, ["KmsKeyId"] = true, ["OptionGroupName"] = true, nil }
@@ -772,8 +1025,14 @@ end
 -- Required key: TargetDBSnapshotIdentifier
 -- @return CopyDBSnapshotMessage structure as a key-value pair table
 function M.CopyDBSnapshotMessage(args)
-	assert(args, "You must provdide an argument table when creating CopyDBSnapshotMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CopyDBSnapshotMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["CopyTags"] = args["CopyTags"],
 		["SourceRegion"] = args["SourceRegion"],
 		["Tags"] = args["Tags"],
@@ -783,8 +1042,13 @@ function M.CopyDBSnapshotMessage(args)
 		["KmsKeyId"] = args["KmsKeyId"],
 		["OptionGroupName"] = args["OptionGroupName"],
 	}
-	asserts.AssertCopyDBSnapshotMessage(t)
-	return t
+	asserts.AssertCopyDBSnapshotMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.OrderableDBInstanceOption = { ["Engine"] = true, ["SupportsIAMDatabaseAuthentication"] = true, ["StorageType"] = true, ["LicenseModel"] = true, ["SupportsStorageEncryption"] = true, ["SupportsEnhancedMonitoring"] = true, ["Vpc"] = true, ["EngineVersion"] = true, ["DBInstanceClass"] = true, ["AvailabilityZones"] = true, ["MultiAZCapable"] = true, ["ReadReplicaCapable"] = true, ["SupportsIops"] = true, nil }
@@ -829,8 +1093,14 @@ end
 -- * SupportsIops [Boolean] <p>Indicates whether this orderable DB instance supports provisioned IOPS.</p>
 -- @return OrderableDBInstanceOption structure as a key-value pair table
 function M.OrderableDBInstanceOption(args)
-	assert(args, "You must provdide an argument table when creating OrderableDBInstanceOption")
-	local t = { 
+	assert(args, "You must provide an argument table when creating OrderableDBInstanceOption")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Engine"] = args["Engine"],
 		["SupportsIAMDatabaseAuthentication"] = args["SupportsIAMDatabaseAuthentication"],
 		["StorageType"] = args["StorageType"],
@@ -845,8 +1115,13 @@ function M.OrderableDBInstanceOption(args)
 		["ReadReplicaCapable"] = args["ReadReplicaCapable"],
 		["SupportsIops"] = args["SupportsIops"],
 	}
-	asserts.AssertOrderableDBInstanceOption(t)
-	return t
+	asserts.AssertOrderableDBInstanceOption(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DBSecurityGroupAlreadyExistsFault = { nil }
@@ -865,11 +1140,22 @@ end
 -- Valid keys:
 -- @return DBSecurityGroupAlreadyExistsFault structure as a key-value pair table
 function M.DBSecurityGroupAlreadyExistsFault(args)
-	assert(args, "You must provdide an argument table when creating DBSecurityGroupAlreadyExistsFault")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DBSecurityGroupAlreadyExistsFault")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertDBSecurityGroupAlreadyExistsFault(t)
-	return t
+	asserts.AssertDBSecurityGroupAlreadyExistsFault(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DBClusterParameterGroupNameMessage = { ["DBClusterParameterGroupName"] = true, nil }
@@ -890,12 +1176,23 @@ end
 -- * DBClusterParameterGroupName [String] <p>The name of the DB cluster parameter group.</p> <p>Constraints:</p> <ul> <li> <p>Must be 1 to 255 alphanumeric characters</p> </li> <li> <p>First character must be a letter</p> </li> <li> <p>Cannot end with a hyphen or contain two consecutive hyphens</p> </li> </ul> <note> <p>This value is stored as a lowercase string.</p> </note>
 -- @return DBClusterParameterGroupNameMessage structure as a key-value pair table
 function M.DBClusterParameterGroupNameMessage(args)
-	assert(args, "You must provdide an argument table when creating DBClusterParameterGroupNameMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DBClusterParameterGroupNameMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DBClusterParameterGroupName"] = args["DBClusterParameterGroupName"],
 	}
-	asserts.AssertDBClusterParameterGroupNameMessage(t)
-	return t
+	asserts.AssertDBClusterParameterGroupNameMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidOptionGroupStateFault = { nil }
@@ -914,11 +1211,22 @@ end
 -- Valid keys:
 -- @return InvalidOptionGroupStateFault structure as a key-value pair table
 function M.InvalidOptionGroupStateFault(args)
-	assert(args, "You must provdide an argument table when creating InvalidOptionGroupStateFault")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidOptionGroupStateFault")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertInvalidOptionGroupStateFault(t)
-	return t
+	asserts.AssertInvalidOptionGroupStateFault(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeDBSecurityGroupsMessage = { ["Marker"] = true, ["MaxRecords"] = true, ["Filters"] = true, ["DBSecurityGroupName"] = true, nil }
@@ -945,15 +1253,26 @@ end
 -- * DBSecurityGroupName [String] <p>The name of the DB security group to return details for.</p>
 -- @return DescribeDBSecurityGroupsMessage structure as a key-value pair table
 function M.DescribeDBSecurityGroupsMessage(args)
-	assert(args, "You must provdide an argument table when creating DescribeDBSecurityGroupsMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeDBSecurityGroupsMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Marker"] = args["Marker"],
 		["MaxRecords"] = args["MaxRecords"],
 		["Filters"] = args["Filters"],
 		["DBSecurityGroupName"] = args["DBSecurityGroupName"],
 	}
-	asserts.AssertDescribeDBSecurityGroupsMessage(t)
-	return t
+	asserts.AssertDescribeDBSecurityGroupsMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CopyDBSnapshotResult = { ["DBSnapshot"] = true, nil }
@@ -974,12 +1293,23 @@ end
 -- * DBSnapshot [DBSnapshot] 
 -- @return CopyDBSnapshotResult structure as a key-value pair table
 function M.CopyDBSnapshotResult(args)
-	assert(args, "You must provdide an argument table when creating CopyDBSnapshotResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CopyDBSnapshotResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DBSnapshot"] = args["DBSnapshot"],
 	}
-	asserts.AssertCopyDBSnapshotResult(t)
-	return t
+	asserts.AssertCopyDBSnapshotResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DBInstanceAlreadyExistsFault = { nil }
@@ -998,11 +1328,22 @@ end
 -- Valid keys:
 -- @return DBInstanceAlreadyExistsFault structure as a key-value pair table
 function M.DBInstanceAlreadyExistsFault(args)
-	assert(args, "You must provdide an argument table when creating DBInstanceAlreadyExistsFault")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DBInstanceAlreadyExistsFault")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertDBInstanceAlreadyExistsFault(t)
-	return t
+	asserts.AssertDBInstanceAlreadyExistsFault(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DBClusterSnapshot = { ["Engine"] = true, ["SnapshotCreateTime"] = true, ["VpcId"] = true, ["DBClusterIdentifier"] = true, ["DBClusterSnapshotArn"] = true, ["MasterUsername"] = true, ["LicenseModel"] = true, ["Status"] = true, ["PercentProgress"] = true, ["DBClusterSnapshotIdentifier"] = true, ["KmsKeyId"] = true, ["ClusterCreateTime"] = true, ["StorageEncrypted"] = true, ["AllocatedStorage"] = true, ["EngineVersion"] = true, ["SnapshotType"] = true, ["SourceDBClusterSnapshotArn"] = true, ["AvailabilityZones"] = true, ["IAMDatabaseAuthenticationEnabled"] = true, ["Port"] = true, nil }
@@ -1061,8 +1402,14 @@ end
 -- * Port [Integer] <p>Specifies the port that the DB cluster was listening on at the time of the snapshot.</p>
 -- @return DBClusterSnapshot structure as a key-value pair table
 function M.DBClusterSnapshot(args)
-	assert(args, "You must provdide an argument table when creating DBClusterSnapshot")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DBClusterSnapshot")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Engine"] = args["Engine"],
 		["SnapshotCreateTime"] = args["SnapshotCreateTime"],
 		["VpcId"] = args["VpcId"],
@@ -1084,8 +1431,13 @@ function M.DBClusterSnapshot(args)
 		["IAMDatabaseAuthenticationEnabled"] = args["IAMDatabaseAuthenticationEnabled"],
 		["Port"] = args["Port"],
 	}
-	asserts.AssertDBClusterSnapshot(t)
-	return t
+	asserts.AssertDBClusterSnapshot(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.FailoverDBClusterResult = { ["DBCluster"] = true, nil }
@@ -1106,12 +1458,23 @@ end
 -- * DBCluster [DBCluster] 
 -- @return FailoverDBClusterResult structure as a key-value pair table
 function M.FailoverDBClusterResult(args)
-	assert(args, "You must provdide an argument table when creating FailoverDBClusterResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating FailoverDBClusterResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DBCluster"] = args["DBCluster"],
 	}
-	asserts.AssertFailoverDBClusterResult(t)
-	return t
+	asserts.AssertFailoverDBClusterResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.SourceRegion = { ["Status"] = true, ["Endpoint"] = true, ["RegionName"] = true, nil }
@@ -1136,14 +1499,25 @@ end
 -- * RegionName [String] <p>The source region name.</p>
 -- @return SourceRegion structure as a key-value pair table
 function M.SourceRegion(args)
-	assert(args, "You must provdide an argument table when creating SourceRegion")
-	local t = { 
+	assert(args, "You must provide an argument table when creating SourceRegion")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Status"] = args["Status"],
 		["Endpoint"] = args["Endpoint"],
 		["RegionName"] = args["RegionName"],
 	}
-	asserts.AssertSourceRegion(t)
-	return t
+	asserts.AssertSourceRegion(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.PurchaseReservedDBInstancesOfferingMessage = { ["ReservedDBInstanceId"] = true, ["ReservedDBInstancesOfferingId"] = true, ["DBInstanceCount"] = true, ["Tags"] = true, nil }
@@ -1172,15 +1546,26 @@ end
 -- Required key: ReservedDBInstancesOfferingId
 -- @return PurchaseReservedDBInstancesOfferingMessage structure as a key-value pair table
 function M.PurchaseReservedDBInstancesOfferingMessage(args)
-	assert(args, "You must provdide an argument table when creating PurchaseReservedDBInstancesOfferingMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating PurchaseReservedDBInstancesOfferingMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ReservedDBInstanceId"] = args["ReservedDBInstanceId"],
 		["ReservedDBInstancesOfferingId"] = args["ReservedDBInstancesOfferingId"],
 		["DBInstanceCount"] = args["DBInstanceCount"],
 		["Tags"] = args["Tags"],
 	}
-	asserts.AssertPurchaseReservedDBInstancesOfferingMessage(t)
-	return t
+	asserts.AssertPurchaseReservedDBInstancesOfferingMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ResetDBParameterGroupMessage = { ["DBParameterGroupName"] = true, ["ResetAllParameters"] = true, ["Parameters"] = true, nil }
@@ -1207,14 +1592,25 @@ end
 -- Required key: DBParameterGroupName
 -- @return ResetDBParameterGroupMessage structure as a key-value pair table
 function M.ResetDBParameterGroupMessage(args)
-	assert(args, "You must provdide an argument table when creating ResetDBParameterGroupMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ResetDBParameterGroupMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DBParameterGroupName"] = args["DBParameterGroupName"],
 		["ResetAllParameters"] = args["ResetAllParameters"],
 		["Parameters"] = args["Parameters"],
 	}
-	asserts.AssertResetDBParameterGroupMessage(t)
-	return t
+	asserts.AssertResetDBParameterGroupMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DBClusterSnapshotMessage = { ["Marker"] = true, ["DBClusterSnapshots"] = true, nil }
@@ -1237,13 +1633,24 @@ end
 -- * DBClusterSnapshots [DBClusterSnapshotList] <p>Provides a list of DB cluster snapshots for the user.</p>
 -- @return DBClusterSnapshotMessage structure as a key-value pair table
 function M.DBClusterSnapshotMessage(args)
-	assert(args, "You must provdide an argument table when creating DBClusterSnapshotMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DBClusterSnapshotMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Marker"] = args["Marker"],
 		["DBClusterSnapshots"] = args["DBClusterSnapshots"],
 	}
-	asserts.AssertDBClusterSnapshotMessage(t)
-	return t
+	asserts.AssertDBClusterSnapshotMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DBClusterMember = { ["IsClusterWriter"] = true, ["DBClusterParameterGroupStatus"] = true, ["PromotionTier"] = true, ["DBInstanceIdentifier"] = true, nil }
@@ -1270,15 +1677,26 @@ end
 -- * DBInstanceIdentifier [String] <p>Specifies the instance identifier for this member of the DB cluster.</p>
 -- @return DBClusterMember structure as a key-value pair table
 function M.DBClusterMember(args)
-	assert(args, "You must provdide an argument table when creating DBClusterMember")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DBClusterMember")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["IsClusterWriter"] = args["IsClusterWriter"],
 		["DBClusterParameterGroupStatus"] = args["DBClusterParameterGroupStatus"],
 		["PromotionTier"] = args["PromotionTier"],
 		["DBInstanceIdentifier"] = args["DBInstanceIdentifier"],
 	}
-	asserts.AssertDBClusterMember(t)
-	return t
+	asserts.AssertDBClusterMember(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.RebootDBInstanceMessage = { ["ForceFailover"] = true, ["DBInstanceIdentifier"] = true, nil }
@@ -1303,13 +1721,24 @@ end
 -- Required key: DBInstanceIdentifier
 -- @return RebootDBInstanceMessage structure as a key-value pair table
 function M.RebootDBInstanceMessage(args)
-	assert(args, "You must provdide an argument table when creating RebootDBInstanceMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating RebootDBInstanceMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ForceFailover"] = args["ForceFailover"],
 		["DBInstanceIdentifier"] = args["DBInstanceIdentifier"],
 	}
-	asserts.AssertRebootDBInstanceMessage(t)
-	return t
+	asserts.AssertRebootDBInstanceMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AvailabilityZone = { ["Name"] = true, nil }
@@ -1330,12 +1759,23 @@ end
 -- * Name [String] <p>The name of the availability zone.</p>
 -- @return AvailabilityZone structure as a key-value pair table
 function M.AvailabilityZone(args)
-	assert(args, "You must provdide an argument table when creating AvailabilityZone")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AvailabilityZone")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Name"] = args["Name"],
 	}
-	asserts.AssertAvailabilityZone(t)
-	return t
+	asserts.AssertAvailabilityZone(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ModifyDBClusterParameterGroupMessage = { ["DBClusterParameterGroupName"] = true, ["Parameters"] = true, nil }
@@ -1362,13 +1802,24 @@ end
 -- Required key: Parameters
 -- @return ModifyDBClusterParameterGroupMessage structure as a key-value pair table
 function M.ModifyDBClusterParameterGroupMessage(args)
-	assert(args, "You must provdide an argument table when creating ModifyDBClusterParameterGroupMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ModifyDBClusterParameterGroupMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DBClusterParameterGroupName"] = args["DBClusterParameterGroupName"],
 		["Parameters"] = args["Parameters"],
 	}
-	asserts.AssertModifyDBClusterParameterGroupMessage(t)
-	return t
+	asserts.AssertModifyDBClusterParameterGroupMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ModifyDBSnapshotAttributeMessage = { ["ValuesToAdd"] = true, ["ValuesToRemove"] = true, ["DBSnapshotIdentifier"] = true, ["AttributeName"] = true, nil }
@@ -1399,15 +1850,26 @@ end
 -- Required key: AttributeName
 -- @return ModifyDBSnapshotAttributeMessage structure as a key-value pair table
 function M.ModifyDBSnapshotAttributeMessage(args)
-	assert(args, "You must provdide an argument table when creating ModifyDBSnapshotAttributeMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ModifyDBSnapshotAttributeMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ValuesToAdd"] = args["ValuesToAdd"],
 		["ValuesToRemove"] = args["ValuesToRemove"],
 		["DBSnapshotIdentifier"] = args["DBSnapshotIdentifier"],
 		["AttributeName"] = args["AttributeName"],
 	}
-	asserts.AssertModifyDBSnapshotAttributeMessage(t)
-	return t
+	asserts.AssertModifyDBSnapshotAttributeMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DBClusterAlreadyExistsFault = { nil }
@@ -1426,11 +1888,22 @@ end
 -- Valid keys:
 -- @return DBClusterAlreadyExistsFault structure as a key-value pair table
 function M.DBClusterAlreadyExistsFault(args)
-	assert(args, "You must provdide an argument table when creating DBClusterAlreadyExistsFault")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DBClusterAlreadyExistsFault")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertDBClusterAlreadyExistsFault(t)
-	return t
+	asserts.AssertDBClusterAlreadyExistsFault(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateDBSecurityGroupMessage = { ["Tags"] = true, ["DBSecurityGroupDescription"] = true, ["DBSecurityGroupName"] = true, nil }
@@ -1459,14 +1932,25 @@ end
 -- Required key: DBSecurityGroupDescription
 -- @return CreateDBSecurityGroupMessage structure as a key-value pair table
 function M.CreateDBSecurityGroupMessage(args)
-	assert(args, "You must provdide an argument table when creating CreateDBSecurityGroupMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateDBSecurityGroupMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Tags"] = args["Tags"],
 		["DBSecurityGroupDescription"] = args["DBSecurityGroupDescription"],
 		["DBSecurityGroupName"] = args["DBSecurityGroupName"],
 	}
-	asserts.AssertCreateDBSecurityGroupMessage(t)
-	return t
+	asserts.AssertCreateDBSecurityGroupMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Certificate = { ["CertificateArn"] = true, ["ValidTill"] = true, ["CertificateIdentifier"] = true, ["Thumbprint"] = true, ["CertificateType"] = true, ["ValidFrom"] = true, nil }
@@ -1497,8 +1981,14 @@ end
 -- * ValidFrom [TStamp] <p>The starting date from which the certificate is valid.</p>
 -- @return Certificate structure as a key-value pair table
 function M.Certificate(args)
-	assert(args, "You must provdide an argument table when creating Certificate")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Certificate")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["CertificateArn"] = args["CertificateArn"],
 		["ValidTill"] = args["ValidTill"],
 		["CertificateIdentifier"] = args["CertificateIdentifier"],
@@ -1506,8 +1996,13 @@ function M.Certificate(args)
 		["CertificateType"] = args["CertificateType"],
 		["ValidFrom"] = args["ValidFrom"],
 	}
-	asserts.AssertCertificate(t)
-	return t
+	asserts.AssertCertificate(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.TagListMessage = { ["TagList"] = true, nil }
@@ -1528,12 +2023,23 @@ end
 -- * TagList [TagList] <p>List of tags returned by the ListTagsForResource operation.</p>
 -- @return TagListMessage structure as a key-value pair table
 function M.TagListMessage(args)
-	assert(args, "You must provdide an argument table when creating TagListMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating TagListMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["TagList"] = args["TagList"],
 	}
-	asserts.AssertTagListMessage(t)
-	return t
+	asserts.AssertTagListMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ReservedDBInstanceNotFoundFault = { nil }
@@ -1552,11 +2058,22 @@ end
 -- Valid keys:
 -- @return ReservedDBInstanceNotFoundFault structure as a key-value pair table
 function M.ReservedDBInstanceNotFoundFault(args)
-	assert(args, "You must provdide an argument table when creating ReservedDBInstanceNotFoundFault")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ReservedDBInstanceNotFoundFault")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertReservedDBInstanceNotFoundFault(t)
-	return t
+	asserts.AssertReservedDBInstanceNotFoundFault(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DBSubnetGroupDoesNotCoverEnoughAZs = { nil }
@@ -1575,11 +2092,22 @@ end
 -- Valid keys:
 -- @return DBSubnetGroupDoesNotCoverEnoughAZs structure as a key-value pair table
 function M.DBSubnetGroupDoesNotCoverEnoughAZs(args)
-	assert(args, "You must provdide an argument table when creating DBSubnetGroupDoesNotCoverEnoughAZs")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DBSubnetGroupDoesNotCoverEnoughAZs")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertDBSubnetGroupDoesNotCoverEnoughAZs(t)
-	return t
+	asserts.AssertDBSubnetGroupDoesNotCoverEnoughAZs(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.PromoteReadReplicaDBClusterResult = { ["DBCluster"] = true, nil }
@@ -1600,12 +2128,23 @@ end
 -- * DBCluster [DBCluster] 
 -- @return PromoteReadReplicaDBClusterResult structure as a key-value pair table
 function M.PromoteReadReplicaDBClusterResult(args)
-	assert(args, "You must provdide an argument table when creating PromoteReadReplicaDBClusterResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating PromoteReadReplicaDBClusterResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DBCluster"] = args["DBCluster"],
 	}
-	asserts.AssertPromoteReadReplicaDBClusterResult(t)
-	return t
+	asserts.AssertPromoteReadReplicaDBClusterResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListTagsForResourceMessage = { ["ResourceName"] = true, ["Filters"] = true, nil }
@@ -1630,13 +2169,24 @@ end
 -- Required key: ResourceName
 -- @return ListTagsForResourceMessage structure as a key-value pair table
 function M.ListTagsForResourceMessage(args)
-	assert(args, "You must provdide an argument table when creating ListTagsForResourceMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListTagsForResourceMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ResourceName"] = args["ResourceName"],
 		["Filters"] = args["Filters"],
 	}
-	asserts.AssertListTagsForResourceMessage(t)
-	return t
+	asserts.AssertListTagsForResourceMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.RestoreDBInstanceFromDBSnapshotResult = { ["DBInstance"] = true, nil }
@@ -1657,12 +2207,23 @@ end
 -- * DBInstance [DBInstance] 
 -- @return RestoreDBInstanceFromDBSnapshotResult structure as a key-value pair table
 function M.RestoreDBInstanceFromDBSnapshotResult(args)
-	assert(args, "You must provdide an argument table when creating RestoreDBInstanceFromDBSnapshotResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating RestoreDBInstanceFromDBSnapshotResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DBInstance"] = args["DBInstance"],
 	}
-	asserts.AssertRestoreDBInstanceFromDBSnapshotResult(t)
-	return t
+	asserts.AssertRestoreDBInstanceFromDBSnapshotResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ResetDBClusterParameterGroupMessage = { ["DBClusterParameterGroupName"] = true, ["ResetAllParameters"] = true, ["Parameters"] = true, nil }
@@ -1689,14 +2250,25 @@ end
 -- Required key: DBClusterParameterGroupName
 -- @return ResetDBClusterParameterGroupMessage structure as a key-value pair table
 function M.ResetDBClusterParameterGroupMessage(args)
-	assert(args, "You must provdide an argument table when creating ResetDBClusterParameterGroupMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ResetDBClusterParameterGroupMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DBClusterParameterGroupName"] = args["DBClusterParameterGroupName"],
 		["ResetAllParameters"] = args["ResetAllParameters"],
 		["Parameters"] = args["Parameters"],
 	}
-	asserts.AssertResetDBClusterParameterGroupMessage(t)
-	return t
+	asserts.AssertResetDBClusterParameterGroupMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.PromoteReadReplicaMessage = { ["PreferredBackupWindow"] = true, ["BackupRetentionPeriod"] = true, ["DBInstanceIdentifier"] = true, nil }
@@ -1723,14 +2295,25 @@ end
 -- Required key: DBInstanceIdentifier
 -- @return PromoteReadReplicaMessage structure as a key-value pair table
 function M.PromoteReadReplicaMessage(args)
-	assert(args, "You must provdide an argument table when creating PromoteReadReplicaMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating PromoteReadReplicaMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["PreferredBackupWindow"] = args["PreferredBackupWindow"],
 		["BackupRetentionPeriod"] = args["BackupRetentionPeriod"],
 		["DBInstanceIdentifier"] = args["DBInstanceIdentifier"],
 	}
-	asserts.AssertPromoteReadReplicaMessage(t)
-	return t
+	asserts.AssertPromoteReadReplicaMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidVPCNetworkStateFault = { nil }
@@ -1749,11 +2332,22 @@ end
 -- Valid keys:
 -- @return InvalidVPCNetworkStateFault structure as a key-value pair table
 function M.InvalidVPCNetworkStateFault(args)
-	assert(args, "You must provdide an argument table when creating InvalidVPCNetworkStateFault")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidVPCNetworkStateFault")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertInvalidVPCNetworkStateFault(t)
-	return t
+	asserts.AssertInvalidVPCNetworkStateFault(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.OptionGroups = { ["Marker"] = true, ["OptionGroupsList"] = true, nil }
@@ -1776,13 +2370,24 @@ end
 -- * OptionGroupsList [OptionGroupsList] <p>List of option groups.</p>
 -- @return OptionGroups structure as a key-value pair table
 function M.OptionGroups(args)
-	assert(args, "You must provdide an argument table when creating OptionGroups")
-	local t = { 
+	assert(args, "You must provide an argument table when creating OptionGroups")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Marker"] = args["Marker"],
 		["OptionGroupsList"] = args["OptionGroupsList"],
 	}
-	asserts.AssertOptionGroups(t)
-	return t
+	asserts.AssertOptionGroups(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidDBSnapshotStateFault = { nil }
@@ -1801,11 +2406,22 @@ end
 -- Valid keys:
 -- @return InvalidDBSnapshotStateFault structure as a key-value pair table
 function M.InvalidDBSnapshotStateFault(args)
-	assert(args, "You must provdide an argument table when creating InvalidDBSnapshotStateFault")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidDBSnapshotStateFault")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertInvalidDBSnapshotStateFault(t)
-	return t
+	asserts.AssertInvalidDBSnapshotStateFault(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeCertificatesMessage = { ["Marker"] = true, ["CertificateIdentifier"] = true, ["MaxRecords"] = true, ["Filters"] = true, nil }
@@ -1832,15 +2448,26 @@ end
 -- * Filters [FilterList] <p>This parameter is not currently supported.</p>
 -- @return DescribeCertificatesMessage structure as a key-value pair table
 function M.DescribeCertificatesMessage(args)
-	assert(args, "You must provdide an argument table when creating DescribeCertificatesMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeCertificatesMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Marker"] = args["Marker"],
 		["CertificateIdentifier"] = args["CertificateIdentifier"],
 		["MaxRecords"] = args["MaxRecords"],
 		["Filters"] = args["Filters"],
 	}
-	asserts.AssertDescribeCertificatesMessage(t)
-	return t
+	asserts.AssertDescribeCertificatesMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ResourcePendingMaintenanceActions = { ["PendingMaintenanceActionDetails"] = true, ["ResourceIdentifier"] = true, nil }
@@ -1863,13 +2490,24 @@ end
 -- * ResourceIdentifier [String] <p>The ARN of the resource that has pending maintenance actions.</p>
 -- @return ResourcePendingMaintenanceActions structure as a key-value pair table
 function M.ResourcePendingMaintenanceActions(args)
-	assert(args, "You must provdide an argument table when creating ResourcePendingMaintenanceActions")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ResourcePendingMaintenanceActions")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["PendingMaintenanceActionDetails"] = args["PendingMaintenanceActionDetails"],
 		["ResourceIdentifier"] = args["ResourceIdentifier"],
 	}
-	asserts.AssertResourcePendingMaintenanceActions(t)
-	return t
+	asserts.AssertResourcePendingMaintenanceActions(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.PurchaseReservedDBInstancesOfferingResult = { ["ReservedDBInstance"] = true, nil }
@@ -1890,12 +2528,23 @@ end
 -- * ReservedDBInstance [ReservedDBInstance] 
 -- @return PurchaseReservedDBInstancesOfferingResult structure as a key-value pair table
 function M.PurchaseReservedDBInstancesOfferingResult(args)
-	assert(args, "You must provdide an argument table when creating PurchaseReservedDBInstancesOfferingResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating PurchaseReservedDBInstancesOfferingResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ReservedDBInstance"] = args["ReservedDBInstance"],
 	}
-	asserts.AssertPurchaseReservedDBInstancesOfferingResult(t)
-	return t
+	asserts.AssertPurchaseReservedDBInstancesOfferingResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DBLogFileNotFoundFault = { nil }
@@ -1914,11 +2563,22 @@ end
 -- Valid keys:
 -- @return DBLogFileNotFoundFault structure as a key-value pair table
 function M.DBLogFileNotFoundFault(args)
-	assert(args, "You must provdide an argument table when creating DBLogFileNotFoundFault")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DBLogFileNotFoundFault")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertDBLogFileNotFoundFault(t)
-	return t
+	asserts.AssertDBLogFileNotFoundFault(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DBSecurityGroupMembership = { ["Status"] = true, ["DBSecurityGroupName"] = true, nil }
@@ -1941,13 +2601,24 @@ end
 -- * DBSecurityGroupName [String] <p>The name of the DB security group.</p>
 -- @return DBSecurityGroupMembership structure as a key-value pair table
 function M.DBSecurityGroupMembership(args)
-	assert(args, "You must provdide an argument table when creating DBSecurityGroupMembership")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DBSecurityGroupMembership")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Status"] = args["Status"],
 		["DBSecurityGroupName"] = args["DBSecurityGroupName"],
 	}
-	asserts.AssertDBSecurityGroupMembership(t)
-	return t
+	asserts.AssertDBSecurityGroupMembership(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DBParameterGroupNotFoundFault = { nil }
@@ -1966,11 +2637,22 @@ end
 -- Valid keys:
 -- @return DBParameterGroupNotFoundFault structure as a key-value pair table
 function M.DBParameterGroupNotFoundFault(args)
-	assert(args, "You must provdide an argument table when creating DBParameterGroupNotFoundFault")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DBParameterGroupNotFoundFault")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertDBParameterGroupNotFoundFault(t)
-	return t
+	asserts.AssertDBParameterGroupNotFoundFault(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteDBClusterMessage = { ["FinalDBSnapshotIdentifier"] = true, ["SkipFinalSnapshot"] = true, ["DBClusterIdentifier"] = true, nil }
@@ -1997,14 +2679,25 @@ end
 -- Required key: DBClusterIdentifier
 -- @return DeleteDBClusterMessage structure as a key-value pair table
 function M.DeleteDBClusterMessage(args)
-	assert(args, "You must provdide an argument table when creating DeleteDBClusterMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteDBClusterMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["FinalDBSnapshotIdentifier"] = args["FinalDBSnapshotIdentifier"],
 		["SkipFinalSnapshot"] = args["SkipFinalSnapshot"],
 		["DBClusterIdentifier"] = args["DBClusterIdentifier"],
 	}
-	asserts.AssertDeleteDBClusterMessage(t)
-	return t
+	asserts.AssertDeleteDBClusterMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ModifyDBClusterSnapshotAttributeMessage = { ["ValuesToAdd"] = true, ["DBClusterSnapshotIdentifier"] = true, ["ValuesToRemove"] = true, ["AttributeName"] = true, nil }
@@ -2035,15 +2728,26 @@ end
 -- Required key: AttributeName
 -- @return ModifyDBClusterSnapshotAttributeMessage structure as a key-value pair table
 function M.ModifyDBClusterSnapshotAttributeMessage(args)
-	assert(args, "You must provdide an argument table when creating ModifyDBClusterSnapshotAttributeMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ModifyDBClusterSnapshotAttributeMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ValuesToAdd"] = args["ValuesToAdd"],
 		["DBClusterSnapshotIdentifier"] = args["DBClusterSnapshotIdentifier"],
 		["ValuesToRemove"] = args["ValuesToRemove"],
 		["AttributeName"] = args["AttributeName"],
 	}
-	asserts.AssertModifyDBClusterSnapshotAttributeMessage(t)
-	return t
+	asserts.AssertModifyDBClusterSnapshotAttributeMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateOptionGroupMessage = { ["OptionGroupDescription"] = true, ["EngineName"] = true, ["MajorEngineVersion"] = true, ["OptionGroupName"] = true, ["Tags"] = true, nil }
@@ -2080,16 +2784,27 @@ end
 -- Required key: OptionGroupDescription
 -- @return CreateOptionGroupMessage structure as a key-value pair table
 function M.CreateOptionGroupMessage(args)
-	assert(args, "You must provdide an argument table when creating CreateOptionGroupMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateOptionGroupMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["OptionGroupDescription"] = args["OptionGroupDescription"],
 		["EngineName"] = args["EngineName"],
 		["MajorEngineVersion"] = args["MajorEngineVersion"],
 		["OptionGroupName"] = args["OptionGroupName"],
 		["Tags"] = args["Tags"],
 	}
-	asserts.AssertCreateOptionGroupMessage(t)
-	return t
+	asserts.AssertCreateOptionGroupMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteEventSubscriptionMessage = { ["SubscriptionName"] = true, nil }
@@ -2112,12 +2827,23 @@ end
 -- Required key: SubscriptionName
 -- @return DeleteEventSubscriptionMessage structure as a key-value pair table
 function M.DeleteEventSubscriptionMessage(args)
-	assert(args, "You must provdide an argument table when creating DeleteEventSubscriptionMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteEventSubscriptionMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["SubscriptionName"] = args["SubscriptionName"],
 	}
-	asserts.AssertDeleteEventSubscriptionMessage(t)
-	return t
+	asserts.AssertDeleteEventSubscriptionMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateDBSubnetGroupResult = { ["DBSubnetGroup"] = true, nil }
@@ -2138,12 +2864,23 @@ end
 -- * DBSubnetGroup [DBSubnetGroup] 
 -- @return CreateDBSubnetGroupResult structure as a key-value pair table
 function M.CreateDBSubnetGroupResult(args)
-	assert(args, "You must provdide an argument table when creating CreateDBSubnetGroupResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateDBSubnetGroupResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DBSubnetGroup"] = args["DBSubnetGroup"],
 	}
-	asserts.AssertCreateDBSubnetGroupResult(t)
-	return t
+	asserts.AssertCreateDBSubnetGroupResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ReservedDBInstanceAlreadyExistsFault = { nil }
@@ -2162,11 +2899,22 @@ end
 -- Valid keys:
 -- @return ReservedDBInstanceAlreadyExistsFault structure as a key-value pair table
 function M.ReservedDBInstanceAlreadyExistsFault(args)
-	assert(args, "You must provdide an argument table when creating ReservedDBInstanceAlreadyExistsFault")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ReservedDBInstanceAlreadyExistsFault")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertReservedDBInstanceAlreadyExistsFault(t)
-	return t
+	asserts.AssertReservedDBInstanceAlreadyExistsFault(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeOrderableDBInstanceOptionsMessage = { ["Engine"] = true, ["Vpc"] = true, ["LicenseModel"] = true, ["MaxRecords"] = true, ["Filters"] = true, ["EngineVersion"] = true, ["Marker"] = true, ["DBInstanceClass"] = true, nil }
@@ -2203,8 +2951,14 @@ end
 -- Required key: Engine
 -- @return DescribeOrderableDBInstanceOptionsMessage structure as a key-value pair table
 function M.DescribeOrderableDBInstanceOptionsMessage(args)
-	assert(args, "You must provdide an argument table when creating DescribeOrderableDBInstanceOptionsMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeOrderableDBInstanceOptionsMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Engine"] = args["Engine"],
 		["Vpc"] = args["Vpc"],
 		["LicenseModel"] = args["LicenseModel"],
@@ -2214,8 +2968,13 @@ function M.DescribeOrderableDBInstanceOptionsMessage(args)
 		["Marker"] = args["Marker"],
 		["DBInstanceClass"] = args["DBInstanceClass"],
 	}
-	asserts.AssertDescribeOrderableDBInstanceOptionsMessage(t)
-	return t
+	asserts.AssertDescribeOrderableDBInstanceOptionsMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteDBClusterParameterGroupMessage = { ["DBClusterParameterGroupName"] = true, nil }
@@ -2238,12 +2997,23 @@ end
 -- Required key: DBClusterParameterGroupName
 -- @return DeleteDBClusterParameterGroupMessage structure as a key-value pair table
 function M.DeleteDBClusterParameterGroupMessage(args)
-	assert(args, "You must provdide an argument table when creating DeleteDBClusterParameterGroupMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteDBClusterParameterGroupMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DBClusterParameterGroupName"] = args["DBClusterParameterGroupName"],
 	}
-	asserts.AssertDeleteDBClusterParameterGroupMessage(t)
-	return t
+	asserts.AssertDeleteDBClusterParameterGroupMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.StopDBInstanceMessage = { ["DBSnapshotIdentifier"] = true, ["DBInstanceIdentifier"] = true, nil }
@@ -2268,13 +3038,24 @@ end
 -- Required key: DBInstanceIdentifier
 -- @return StopDBInstanceMessage structure as a key-value pair table
 function M.StopDBInstanceMessage(args)
-	assert(args, "You must provdide an argument table when creating StopDBInstanceMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating StopDBInstanceMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DBSnapshotIdentifier"] = args["DBSnapshotIdentifier"],
 		["DBInstanceIdentifier"] = args["DBInstanceIdentifier"],
 	}
-	asserts.AssertStopDBInstanceMessage(t)
-	return t
+	asserts.AssertStopDBInstanceMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteDBClusterSnapshotResult = { ["DBClusterSnapshot"] = true, nil }
@@ -2295,12 +3076,23 @@ end
 -- * DBClusterSnapshot [DBClusterSnapshot] 
 -- @return DeleteDBClusterSnapshotResult structure as a key-value pair table
 function M.DeleteDBClusterSnapshotResult(args)
-	assert(args, "You must provdide an argument table when creating DeleteDBClusterSnapshotResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteDBClusterSnapshotResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DBClusterSnapshot"] = args["DBClusterSnapshot"],
 	}
-	asserts.AssertDeleteDBClusterSnapshotResult(t)
-	return t
+	asserts.AssertDeleteDBClusterSnapshotResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpgradeTarget = { ["Engine"] = true, ["IsMajorVersionUpgrade"] = true, ["AutoUpgrade"] = true, ["Description"] = true, ["EngineVersion"] = true, nil }
@@ -2329,16 +3121,27 @@ end
 -- * EngineVersion [String] <p>The version number of the upgrade target database engine.</p>
 -- @return UpgradeTarget structure as a key-value pair table
 function M.UpgradeTarget(args)
-	assert(args, "You must provdide an argument table when creating UpgradeTarget")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpgradeTarget")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Engine"] = args["Engine"],
 		["IsMajorVersionUpgrade"] = args["IsMajorVersionUpgrade"],
 		["AutoUpgrade"] = args["AutoUpgrade"],
 		["Description"] = args["Description"],
 		["EngineVersion"] = args["EngineVersion"],
 	}
-	asserts.AssertUpgradeTarget(t)
-	return t
+	asserts.AssertUpgradeTarget(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ModifyDBSnapshotResult = { ["DBSnapshot"] = true, nil }
@@ -2359,12 +3162,23 @@ end
 -- * DBSnapshot [DBSnapshot] 
 -- @return ModifyDBSnapshotResult structure as a key-value pair table
 function M.ModifyDBSnapshotResult(args)
-	assert(args, "You must provdide an argument table when creating ModifyDBSnapshotResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ModifyDBSnapshotResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DBSnapshot"] = args["DBSnapshot"],
 	}
-	asserts.AssertModifyDBSnapshotResult(t)
-	return t
+	asserts.AssertModifyDBSnapshotResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateDBSnapshotMessage = { ["DBSnapshotIdentifier"] = true, ["DBInstanceIdentifier"] = true, ["Tags"] = true, nil }
@@ -2393,14 +3207,25 @@ end
 -- Required key: DBInstanceIdentifier
 -- @return CreateDBSnapshotMessage structure as a key-value pair table
 function M.CreateDBSnapshotMessage(args)
-	assert(args, "You must provdide an argument table when creating CreateDBSnapshotMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateDBSnapshotMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DBSnapshotIdentifier"] = args["DBSnapshotIdentifier"],
 		["DBInstanceIdentifier"] = args["DBInstanceIdentifier"],
 		["Tags"] = args["Tags"],
 	}
-	asserts.AssertCreateDBSnapshotMessage(t)
-	return t
+	asserts.AssertCreateDBSnapshotMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ModifyDBInstanceResult = { ["DBInstance"] = true, nil }
@@ -2421,12 +3246,23 @@ end
 -- * DBInstance [DBInstance] 
 -- @return ModifyDBInstanceResult structure as a key-value pair table
 function M.ModifyDBInstanceResult(args)
-	assert(args, "You must provdide an argument table when creating ModifyDBInstanceResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ModifyDBInstanceResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DBInstance"] = args["DBInstance"],
 	}
-	asserts.AssertModifyDBInstanceResult(t)
-	return t
+	asserts.AssertModifyDBInstanceResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.RestoreDBClusterFromS3Message = { ["SourceEngine"] = true, ["MasterUsername"] = true, ["VpcSecurityGroupIds"] = true, ["EnableIAMDatabaseAuthentication"] = true, ["S3IngestionRoleArn"] = true, ["Engine"] = true, ["Tags"] = true, ["S3Prefix"] = true, ["PreferredBackupWindow"] = true, ["SourceEngineVersion"] = true, ["BackupRetentionPeriod"] = true, ["PreferredMaintenanceWindow"] = true, ["S3BucketName"] = true, ["DBClusterParameterGroupName"] = true, ["EngineVersion"] = true, ["DBSubnetGroupName"] = true, ["OptionGroupName"] = true, ["CharacterSetName"] = true, ["DBClusterIdentifier"] = true, ["MasterUserPassword"] = true, ["KmsKeyId"] = true, ["StorageEncrypted"] = true, ["DatabaseName"] = true, ["AvailabilityZones"] = true, ["Port"] = true, nil }
@@ -2511,8 +3347,14 @@ end
 -- Required key: S3IngestionRoleArn
 -- @return RestoreDBClusterFromS3Message structure as a key-value pair table
 function M.RestoreDBClusterFromS3Message(args)
-	assert(args, "You must provdide an argument table when creating RestoreDBClusterFromS3Message")
-	local t = { 
+	assert(args, "You must provide an argument table when creating RestoreDBClusterFromS3Message")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["SourceEngine"] = args["SourceEngine"],
 		["MasterUsername"] = args["MasterUsername"],
 		["VpcSecurityGroupIds"] = args["VpcSecurityGroupIds"],
@@ -2539,8 +3381,13 @@ function M.RestoreDBClusterFromS3Message(args)
 		["AvailabilityZones"] = args["AvailabilityZones"],
 		["Port"] = args["Port"],
 	}
-	asserts.AssertRestoreDBClusterFromS3Message(t)
-	return t
+	asserts.AssertRestoreDBClusterFromS3Message(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DBClusterNotFoundFault = { nil }
@@ -2559,11 +3406,22 @@ end
 -- Valid keys:
 -- @return DBClusterNotFoundFault structure as a key-value pair table
 function M.DBClusterNotFoundFault(args)
-	assert(args, "You must provdide an argument table when creating DBClusterNotFoundFault")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DBClusterNotFoundFault")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertDBClusterNotFoundFault(t)
-	return t
+	asserts.AssertDBClusterNotFoundFault(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.PointInTimeRestoreNotEnabledFault = { nil }
@@ -2582,11 +3440,22 @@ end
 -- Valid keys:
 -- @return PointInTimeRestoreNotEnabledFault structure as a key-value pair table
 function M.PointInTimeRestoreNotEnabledFault(args)
-	assert(args, "You must provdide an argument table when creating PointInTimeRestoreNotEnabledFault")
-	local t = { 
+	assert(args, "You must provide an argument table when creating PointInTimeRestoreNotEnabledFault")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertPointInTimeRestoreNotEnabledFault(t)
-	return t
+	asserts.AssertPointInTimeRestoreNotEnabledFault(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeAccountAttributesMessage = { nil }
@@ -2605,11 +3474,22 @@ end
 -- Valid keys:
 -- @return DescribeAccountAttributesMessage structure as a key-value pair table
 function M.DescribeAccountAttributesMessage(args)
-	assert(args, "You must provdide an argument table when creating DescribeAccountAttributesMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeAccountAttributesMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertDescribeAccountAttributesMessage(t)
-	return t
+	asserts.AssertDescribeAccountAttributesMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeDBParametersMessage = { ["Marker"] = true, ["DBParameterGroupName"] = true, ["MaxRecords"] = true, ["Filters"] = true, ["Source"] = true, nil }
@@ -2640,16 +3520,27 @@ end
 -- Required key: DBParameterGroupName
 -- @return DescribeDBParametersMessage structure as a key-value pair table
 function M.DescribeDBParametersMessage(args)
-	assert(args, "You must provdide an argument table when creating DescribeDBParametersMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeDBParametersMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Marker"] = args["Marker"],
 		["DBParameterGroupName"] = args["DBParameterGroupName"],
 		["MaxRecords"] = args["MaxRecords"],
 		["Filters"] = args["Filters"],
 		["Source"] = args["Source"],
 	}
-	asserts.AssertDescribeDBParametersMessage(t)
-	return t
+	asserts.AssertDescribeDBParametersMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidDBSubnetGroupFault = { nil }
@@ -2668,11 +3559,22 @@ end
 -- Valid keys:
 -- @return InvalidDBSubnetGroupFault structure as a key-value pair table
 function M.InvalidDBSubnetGroupFault(args)
-	assert(args, "You must provdide an argument table when creating InvalidDBSubnetGroupFault")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidDBSubnetGroupFault")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertInvalidDBSubnetGroupFault(t)
-	return t
+	asserts.AssertInvalidDBSubnetGroupFault(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateEventSubscriptionResult = { ["EventSubscription"] = true, nil }
@@ -2693,12 +3595,23 @@ end
 -- * EventSubscription [EventSubscription] 
 -- @return CreateEventSubscriptionResult structure as a key-value pair table
 function M.CreateEventSubscriptionResult(args)
-	assert(args, "You must provdide an argument table when creating CreateEventSubscriptionResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateEventSubscriptionResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["EventSubscription"] = args["EventSubscription"],
 	}
-	asserts.AssertCreateEventSubscriptionResult(t)
-	return t
+	asserts.AssertCreateEventSubscriptionResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DBClusterParameterGroupsMessage = { ["Marker"] = true, ["DBClusterParameterGroups"] = true, nil }
@@ -2721,13 +3634,24 @@ end
 -- * DBClusterParameterGroups [DBClusterParameterGroupList] <p>A list of DB cluster parameter groups.</p>
 -- @return DBClusterParameterGroupsMessage structure as a key-value pair table
 function M.DBClusterParameterGroupsMessage(args)
-	assert(args, "You must provdide an argument table when creating DBClusterParameterGroupsMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DBClusterParameterGroupsMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Marker"] = args["Marker"],
 		["DBClusterParameterGroups"] = args["DBClusterParameterGroups"],
 	}
-	asserts.AssertDBClusterParameterGroupsMessage(t)
-	return t
+	asserts.AssertDBClusterParameterGroupsMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateDBSnapshotResult = { ["DBSnapshot"] = true, nil }
@@ -2748,12 +3672,23 @@ end
 -- * DBSnapshot [DBSnapshot] 
 -- @return CreateDBSnapshotResult structure as a key-value pair table
 function M.CreateDBSnapshotResult(args)
-	assert(args, "You must provdide an argument table when creating CreateDBSnapshotResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateDBSnapshotResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DBSnapshot"] = args["DBSnapshot"],
 	}
-	asserts.AssertCreateDBSnapshotResult(t)
-	return t
+	asserts.AssertCreateDBSnapshotResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteDBParameterGroupMessage = { ["DBParameterGroupName"] = true, nil }
@@ -2776,12 +3711,23 @@ end
 -- Required key: DBParameterGroupName
 -- @return DeleteDBParameterGroupMessage structure as a key-value pair table
 function M.DeleteDBParameterGroupMessage(args)
-	assert(args, "You must provdide an argument table when creating DeleteDBParameterGroupMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteDBParameterGroupMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DBParameterGroupName"] = args["DBParameterGroupName"],
 	}
-	asserts.AssertDeleteDBParameterGroupMessage(t)
-	return t
+	asserts.AssertDeleteDBParameterGroupMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DBUpgradeDependencyFailureFault = { nil }
@@ -2800,11 +3746,22 @@ end
 -- Valid keys:
 -- @return DBUpgradeDependencyFailureFault structure as a key-value pair table
 function M.DBUpgradeDependencyFailureFault(args)
-	assert(args, "You must provdide an argument table when creating DBUpgradeDependencyFailureFault")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DBUpgradeDependencyFailureFault")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertDBUpgradeDependencyFailureFault(t)
-	return t
+	asserts.AssertDBUpgradeDependencyFailureFault(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AuthorizationQuotaExceededFault = { nil }
@@ -2823,11 +3780,22 @@ end
 -- Valid keys:
 -- @return AuthorizationQuotaExceededFault structure as a key-value pair table
 function M.AuthorizationQuotaExceededFault(args)
-	assert(args, "You must provdide an argument table when creating AuthorizationQuotaExceededFault")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AuthorizationQuotaExceededFault")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertAuthorizationQuotaExceededFault(t)
-	return t
+	asserts.AssertAuthorizationQuotaExceededFault(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidDBClusterSnapshotStateFault = { nil }
@@ -2846,11 +3814,22 @@ end
 -- Valid keys:
 -- @return InvalidDBClusterSnapshotStateFault structure as a key-value pair table
 function M.InvalidDBClusterSnapshotStateFault(args)
-	assert(args, "You must provdide an argument table when creating InvalidDBClusterSnapshotStateFault")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidDBClusterSnapshotStateFault")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertInvalidDBClusterSnapshotStateFault(t)
-	return t
+	asserts.AssertInvalidDBClusterSnapshotStateFault(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeReservedDBInstancesMessage = { ["MultiAZ"] = true, ["OfferingType"] = true, ["ProductDescription"] = true, ["ReservedDBInstancesOfferingId"] = true, ["Marker"] = true, ["Duration"] = true, ["MaxRecords"] = true, ["Filters"] = true, ["ReservedDBInstanceId"] = true, ["DBInstanceClass"] = true, nil }
@@ -2889,8 +3868,14 @@ end
 -- * DBInstanceClass [String] <p>The DB instance class filter value. Specify this parameter to show only those reservations matching the specified DB instances class.</p>
 -- @return DescribeReservedDBInstancesMessage structure as a key-value pair table
 function M.DescribeReservedDBInstancesMessage(args)
-	assert(args, "You must provdide an argument table when creating DescribeReservedDBInstancesMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeReservedDBInstancesMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["MultiAZ"] = args["MultiAZ"],
 		["OfferingType"] = args["OfferingType"],
 		["ProductDescription"] = args["ProductDescription"],
@@ -2902,8 +3887,13 @@ function M.DescribeReservedDBInstancesMessage(args)
 		["ReservedDBInstanceId"] = args["ReservedDBInstanceId"],
 		["DBInstanceClass"] = args["DBInstanceClass"],
 	}
-	asserts.AssertDescribeReservedDBInstancesMessage(t)
-	return t
+	asserts.AssertDescribeReservedDBInstancesMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateDBInstanceReadReplicaResult = { ["DBInstance"] = true, nil }
@@ -2924,12 +3914,23 @@ end
 -- * DBInstance [DBInstance] 
 -- @return CreateDBInstanceReadReplicaResult structure as a key-value pair table
 function M.CreateDBInstanceReadReplicaResult(args)
-	assert(args, "You must provdide an argument table when creating CreateDBInstanceReadReplicaResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateDBInstanceReadReplicaResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DBInstance"] = args["DBInstance"],
 	}
-	asserts.AssertCreateDBInstanceReadReplicaResult(t)
-	return t
+	asserts.AssertCreateDBInstanceReadReplicaResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeEventsMessage = { ["EventCategories"] = true, ["SourceType"] = true, ["Marker"] = true, ["MaxRecords"] = true, ["StartTime"] = true, ["Duration"] = true, ["Filters"] = true, ["SourceIdentifier"] = true, ["EndTime"] = true, nil }
@@ -2966,8 +3967,14 @@ end
 -- * EndTime [TStamp] <p> The end of the time interval for which to retrieve events, specified in ISO 8601 format. For more information about ISO 8601, go to the <a href="http://en.wikipedia.org/wiki/ISO_8601">ISO8601 Wikipedia page.</a> </p> <p>Example: 2009-07-08T18:00Z</p>
 -- @return DescribeEventsMessage structure as a key-value pair table
 function M.DescribeEventsMessage(args)
-	assert(args, "You must provdide an argument table when creating DescribeEventsMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeEventsMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["EventCategories"] = args["EventCategories"],
 		["SourceType"] = args["SourceType"],
 		["Marker"] = args["Marker"],
@@ -2978,8 +3985,13 @@ function M.DescribeEventsMessage(args)
 		["SourceIdentifier"] = args["SourceIdentifier"],
 		["EndTime"] = args["EndTime"],
 	}
-	asserts.AssertDescribeEventsMessage(t)
-	return t
+	asserts.AssertDescribeEventsMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.StorageQuotaExceededFault = { nil }
@@ -2998,11 +4010,22 @@ end
 -- Valid keys:
 -- @return StorageQuotaExceededFault structure as a key-value pair table
 function M.StorageQuotaExceededFault(args)
-	assert(args, "You must provdide an argument table when creating StorageQuotaExceededFault")
-	local t = { 
+	assert(args, "You must provide an argument table when creating StorageQuotaExceededFault")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertStorageQuotaExceededFault(t)
-	return t
+	asserts.AssertStorageQuotaExceededFault(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DBCluster = { ["MasterUsername"] = true, ["ReaderEndpoint"] = true, ["ReadReplicaIdentifiers"] = true, ["CloneGroupId"] = true, ["VpcSecurityGroups"] = true, ["IAMDatabaseAuthenticationEnabled"] = true, ["HostedZoneId"] = true, ["Status"] = true, ["MultiAZ"] = true, ["LatestRestorableTime"] = true, ["PreferredBackupWindow"] = true, ["DBSubnetGroup"] = true, ["AllocatedStorage"] = true, ["DBClusterOptionGroupMemberships"] = true, ["BackupRetentionPeriod"] = true, ["PreferredMaintenanceWindow"] = true, ["Engine"] = true, ["Endpoint"] = true, ["AssociatedRoles"] = true, ["EarliestRestorableTime"] = true, ["PercentProgress"] = true, ["ReplicationSourceIdentifier"] = true, ["ClusterCreateTime"] = true, ["EngineVersion"] = true, ["CharacterSetName"] = true, ["DBClusterIdentifier"] = true, ["DbClusterResourceId"] = true, ["DBClusterMembers"] = true, ["DBClusterArn"] = true, ["KmsKeyId"] = true, ["StorageEncrypted"] = true, ["DatabaseName"] = true, ["DBClusterParameterGroup"] = true, ["AvailabilityZones"] = true, ["Port"] = true, nil }
@@ -3091,8 +4114,14 @@ end
 -- * Port [IntegerOptional] <p>Specifies the port that the database engine is listening on.</p>
 -- @return DBCluster structure as a key-value pair table
 function M.DBCluster(args)
-	assert(args, "You must provdide an argument table when creating DBCluster")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DBCluster")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["MasterUsername"] = args["MasterUsername"],
 		["ReaderEndpoint"] = args["ReaderEndpoint"],
 		["ReadReplicaIdentifiers"] = args["ReadReplicaIdentifiers"],
@@ -3129,8 +4158,13 @@ function M.DBCluster(args)
 		["AvailabilityZones"] = args["AvailabilityZones"],
 		["Port"] = args["Port"],
 	}
-	asserts.AssertDBCluster(t)
-	return t
+	asserts.AssertDBCluster(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DBSnapshotAlreadyExistsFault = { nil }
@@ -3149,11 +4183,22 @@ end
 -- Valid keys:
 -- @return DBSnapshotAlreadyExistsFault structure as a key-value pair table
 function M.DBSnapshotAlreadyExistsFault(args)
-	assert(args, "You must provdide an argument table when creating DBSnapshotAlreadyExistsFault")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DBSnapshotAlreadyExistsFault")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertDBSnapshotAlreadyExistsFault(t)
-	return t
+	asserts.AssertDBSnapshotAlreadyExistsFault(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DBSnapshotAttribute = { ["AttributeName"] = true, ["AttributeValues"] = true, nil }
@@ -3176,13 +4221,24 @@ end
 -- * AttributeValues [AttributeValueList] <p>The value or values for the manual DB snapshot attribute.</p> <p>If the <code>AttributeName</code> field is set to <code>restore</code>, then this element returns a list of IDs of the AWS accounts that are authorized to copy or restore the manual DB snapshot. If a value of <code>all</code> is in the list, then the manual DB snapshot is public and available for any AWS account to copy or restore.</p>
 -- @return DBSnapshotAttribute structure as a key-value pair table
 function M.DBSnapshotAttribute(args)
-	assert(args, "You must provdide an argument table when creating DBSnapshotAttribute")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DBSnapshotAttribute")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["AttributeName"] = args["AttributeName"],
 		["AttributeValues"] = args["AttributeValues"],
 	}
-	asserts.AssertDBSnapshotAttribute(t)
-	return t
+	asserts.AssertDBSnapshotAttribute(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeDBSnapshotAttributesMessage = { ["DBSnapshotIdentifier"] = true, nil }
@@ -3205,12 +4261,23 @@ end
 -- Required key: DBSnapshotIdentifier
 -- @return DescribeDBSnapshotAttributesMessage structure as a key-value pair table
 function M.DescribeDBSnapshotAttributesMessage(args)
-	assert(args, "You must provdide an argument table when creating DescribeDBSnapshotAttributesMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeDBSnapshotAttributesMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DBSnapshotIdentifier"] = args["DBSnapshotIdentifier"],
 	}
-	asserts.AssertDescribeDBSnapshotAttributesMessage(t)
-	return t
+	asserts.AssertDescribeDBSnapshotAttributesMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Event = { ["EventCategories"] = true, ["SourceType"] = true, ["SourceArn"] = true, ["Date"] = true, ["Message"] = true, ["SourceIdentifier"] = true, nil }
@@ -3241,8 +4308,14 @@ end
 -- * SourceIdentifier [String] <p>Provides the identifier for the source of the event.</p>
 -- @return Event structure as a key-value pair table
 function M.Event(args)
-	assert(args, "You must provdide an argument table when creating Event")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Event")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["EventCategories"] = args["EventCategories"],
 		["SourceType"] = args["SourceType"],
 		["SourceArn"] = args["SourceArn"],
@@ -3250,8 +4323,13 @@ function M.Event(args)
 		["Message"] = args["Message"],
 		["SourceIdentifier"] = args["SourceIdentifier"],
 	}
-	asserts.AssertEvent(t)
-	return t
+	asserts.AssertEvent(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteDBClusterSnapshotMessage = { ["DBClusterSnapshotIdentifier"] = true, nil }
@@ -3274,12 +4352,23 @@ end
 -- Required key: DBClusterSnapshotIdentifier
 -- @return DeleteDBClusterSnapshotMessage structure as a key-value pair table
 function M.DeleteDBClusterSnapshotMessage(args)
-	assert(args, "You must provdide an argument table when creating DeleteDBClusterSnapshotMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteDBClusterSnapshotMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DBClusterSnapshotIdentifier"] = args["DBClusterSnapshotIdentifier"],
 	}
-	asserts.AssertDeleteDBClusterSnapshotMessage(t)
-	return t
+	asserts.AssertDeleteDBClusterSnapshotMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.RestoreDBClusterToPointInTimeResult = { ["DBCluster"] = true, nil }
@@ -3300,12 +4389,23 @@ end
 -- * DBCluster [DBCluster] 
 -- @return RestoreDBClusterToPointInTimeResult structure as a key-value pair table
 function M.RestoreDBClusterToPointInTimeResult(args)
-	assert(args, "You must provdide an argument table when creating RestoreDBClusterToPointInTimeResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating RestoreDBClusterToPointInTimeResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DBCluster"] = args["DBCluster"],
 	}
-	asserts.AssertRestoreDBClusterToPointInTimeResult(t)
-	return t
+	asserts.AssertRestoreDBClusterToPointInTimeResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.SourceNotFoundFault = { nil }
@@ -3324,11 +4424,22 @@ end
 -- Valid keys:
 -- @return SourceNotFoundFault structure as a key-value pair table
 function M.SourceNotFoundFault(args)
-	assert(args, "You must provdide an argument table when creating SourceNotFoundFault")
-	local t = { 
+	assert(args, "You must provide an argument table when creating SourceNotFoundFault")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertSourceNotFoundFault(t)
-	return t
+	asserts.AssertSourceNotFoundFault(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeDBClusterSnapshotsMessage = { ["IncludeShared"] = true, ["DBClusterIdentifier"] = true, ["IncludePublic"] = true, ["MaxRecords"] = true, ["Marker"] = true, ["DBClusterSnapshotIdentifier"] = true, ["Filters"] = true, ["SnapshotType"] = true, nil }
@@ -3363,8 +4474,14 @@ end
 -- * SnapshotType [String] <p>The type of DB cluster snapshots to be returned. You can specify one of the following values:</p> <ul> <li> <p> <code>automated</code> - Return all DB cluster snapshots that have been automatically taken by Amazon RDS for my AWS account.</p> </li> <li> <p> <code>manual</code> - Return all DB cluster snapshots that have been taken by my AWS account.</p> </li> <li> <p> <code>shared</code> - Return all manual DB cluster snapshots that have been shared to my AWS account.</p> </li> <li> <p> <code>public</code> - Return all DB cluster snapshots that have been marked as public.</p> </li> </ul> <p>If you don't specify a <code>SnapshotType</code> value, then both automated and manual DB cluster snapshots are returned. You can include shared DB cluster snapshots with these results by setting the <code>IncludeShared</code> parameter to <code>true</code>. You can include public DB cluster snapshots with these results by setting the <code>IncludePublic</code> parameter to <code>true</code>.</p> <p>The <code>IncludeShared</code> and <code>IncludePublic</code> parameters don't apply for <code>SnapshotType</code> values of <code>manual</code> or <code>automated</code>. The <code>IncludePublic</code> parameter doesn't apply when <code>SnapshotType</code> is set to <code>shared</code>. The <code>IncludeShared</code> parameter doesn't apply when <code>SnapshotType</code> is set to <code>public</code>.</p>
 -- @return DescribeDBClusterSnapshotsMessage structure as a key-value pair table
 function M.DescribeDBClusterSnapshotsMessage(args)
-	assert(args, "You must provdide an argument table when creating DescribeDBClusterSnapshotsMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeDBClusterSnapshotsMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["IncludeShared"] = args["IncludeShared"],
 		["DBClusterIdentifier"] = args["DBClusterIdentifier"],
 		["IncludePublic"] = args["IncludePublic"],
@@ -3374,8 +4491,13 @@ function M.DescribeDBClusterSnapshotsMessage(args)
 		["Filters"] = args["Filters"],
 		["SnapshotType"] = args["SnapshotType"],
 	}
-	asserts.AssertDescribeDBClusterSnapshotsMessage(t)
-	return t
+	asserts.AssertDescribeDBClusterSnapshotsMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Parameter = { ["ApplyMethod"] = true, ["Description"] = true, ["DataType"] = true, ["IsModifiable"] = true, ["AllowedValues"] = true, ["Source"] = true, ["ParameterValue"] = true, ["ParameterName"] = true, ["MinimumEngineVersion"] = true, ["ApplyType"] = true, nil }
@@ -3414,8 +4536,14 @@ end
 -- * ApplyType [String] <p>Specifies the engine specific parameters type.</p>
 -- @return Parameter structure as a key-value pair table
 function M.Parameter(args)
-	assert(args, "You must provdide an argument table when creating Parameter")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Parameter")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ApplyMethod"] = args["ApplyMethod"],
 		["Description"] = args["Description"],
 		["DataType"] = args["DataType"],
@@ -3427,8 +4555,13 @@ function M.Parameter(args)
 		["MinimumEngineVersion"] = args["MinimumEngineVersion"],
 		["ApplyType"] = args["ApplyType"],
 	}
-	asserts.AssertParameter(t)
-	return t
+	asserts.AssertParameter(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ModifyDBSubnetGroupResult = { ["DBSubnetGroup"] = true, nil }
@@ -3449,12 +4582,23 @@ end
 -- * DBSubnetGroup [DBSubnetGroup] 
 -- @return ModifyDBSubnetGroupResult structure as a key-value pair table
 function M.ModifyDBSubnetGroupResult(args)
-	assert(args, "You must provdide an argument table when creating ModifyDBSubnetGroupResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ModifyDBSubnetGroupResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DBSubnetGroup"] = args["DBSubnetGroup"],
 	}
-	asserts.AssertModifyDBSubnetGroupResult(t)
-	return t
+	asserts.AssertModifyDBSubnetGroupResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CharacterSet = { ["CharacterSetName"] = true, ["CharacterSetDescription"] = true, nil }
@@ -3477,13 +4621,24 @@ end
 -- * CharacterSetDescription [String] <p>The description of the character set.</p>
 -- @return CharacterSet structure as a key-value pair table
 function M.CharacterSet(args)
-	assert(args, "You must provdide an argument table when creating CharacterSet")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CharacterSet")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["CharacterSetName"] = args["CharacterSetName"],
 		["CharacterSetDescription"] = args["CharacterSetDescription"],
 	}
-	asserts.AssertCharacterSet(t)
-	return t
+	asserts.AssertCharacterSet(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.EventCategoriesMessage = { ["EventCategoriesMapList"] = true, nil }
@@ -3504,12 +4659,23 @@ end
 -- * EventCategoriesMapList [EventCategoriesMapList] <p>A list of EventCategoriesMap data types.</p>
 -- @return EventCategoriesMessage structure as a key-value pair table
 function M.EventCategoriesMessage(args)
-	assert(args, "You must provdide an argument table when creating EventCategoriesMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating EventCategoriesMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["EventCategoriesMapList"] = args["EventCategoriesMapList"],
 	}
-	asserts.AssertEventCategoriesMessage(t)
-	return t
+	asserts.AssertEventCategoriesMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeDBClusterSnapshotAttributesResult = { ["DBClusterSnapshotAttributesResult"] = true, nil }
@@ -3530,12 +4696,23 @@ end
 -- * DBClusterSnapshotAttributesResult [DBClusterSnapshotAttributesResult] 
 -- @return DescribeDBClusterSnapshotAttributesResult structure as a key-value pair table
 function M.DescribeDBClusterSnapshotAttributesResult(args)
-	assert(args, "You must provdide an argument table when creating DescribeDBClusterSnapshotAttributesResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeDBClusterSnapshotAttributesResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DBClusterSnapshotAttributesResult"] = args["DBClusterSnapshotAttributesResult"],
 	}
-	asserts.AssertDescribeDBClusterSnapshotAttributesResult(t)
-	return t
+	asserts.AssertDescribeDBClusterSnapshotAttributesResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DBInstanceNotFoundFault = { nil }
@@ -3554,11 +4731,22 @@ end
 -- Valid keys:
 -- @return DBInstanceNotFoundFault structure as a key-value pair table
 function M.DBInstanceNotFoundFault(args)
-	assert(args, "You must provdide an argument table when creating DBInstanceNotFoundFault")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DBInstanceNotFoundFault")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertDBInstanceNotFoundFault(t)
-	return t
+	asserts.AssertDBInstanceNotFoundFault(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.RecurringCharge = { ["RecurringChargeAmount"] = true, ["RecurringChargeFrequency"] = true, nil }
@@ -3581,13 +4769,24 @@ end
 -- * RecurringChargeFrequency [String] <p>The frequency of the recurring charge.</p>
 -- @return RecurringCharge structure as a key-value pair table
 function M.RecurringCharge(args)
-	assert(args, "You must provdide an argument table when creating RecurringCharge")
-	local t = { 
+	assert(args, "You must provide an argument table when creating RecurringCharge")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["RecurringChargeAmount"] = args["RecurringChargeAmount"],
 		["RecurringChargeFrequency"] = args["RecurringChargeFrequency"],
 	}
-	asserts.AssertRecurringCharge(t)
-	return t
+	asserts.AssertRecurringCharge(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AccountAttributesMessage = { ["AccountQuotas"] = true, nil }
@@ -3608,12 +4807,23 @@ end
 -- * AccountQuotas [AccountQuotaList] <p>A list of <a>AccountQuota</a> objects. Within this list, each quota has a name, a count of usage toward the quota maximum, and a maximum value for the quota.</p>
 -- @return AccountAttributesMessage structure as a key-value pair table
 function M.AccountAttributesMessage(args)
-	assert(args, "You must provdide an argument table when creating AccountAttributesMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AccountAttributesMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["AccountQuotas"] = args["AccountQuotas"],
 	}
-	asserts.AssertAccountAttributesMessage(t)
-	return t
+	asserts.AssertAccountAttributesMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.RestoreDBInstanceFromDBSnapshotMessage = { ["PubliclyAccessible"] = true, ["DomainIAMRoleName"] = true, ["LicenseModel"] = true, ["EnableIAMDatabaseAuthentication"] = true, ["CopyTagsToSnapshot"] = true, ["Engine"] = true, ["MultiAZ"] = true, ["Tags"] = true, ["AutoMinorVersionUpgrade"] = true, ["DBSnapshotIdentifier"] = true, ["DBSubnetGroupName"] = true, ["DBName"] = true, ["TdeCredentialPassword"] = true, ["TdeCredentialArn"] = true, ["OptionGroupName"] = true, ["Domain"] = true, ["AvailabilityZone"] = true, ["StorageType"] = true, ["Iops"] = true, ["DBInstanceClass"] = true, ["Port"] = true, ["DBInstanceIdentifier"] = true, nil }
@@ -3680,8 +4890,14 @@ end
 -- Required key: DBSnapshotIdentifier
 -- @return RestoreDBInstanceFromDBSnapshotMessage structure as a key-value pair table
 function M.RestoreDBInstanceFromDBSnapshotMessage(args)
-	assert(args, "You must provdide an argument table when creating RestoreDBInstanceFromDBSnapshotMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating RestoreDBInstanceFromDBSnapshotMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["PubliclyAccessible"] = args["PubliclyAccessible"],
 		["DomainIAMRoleName"] = args["DomainIAMRoleName"],
 		["LicenseModel"] = args["LicenseModel"],
@@ -3705,8 +4921,13 @@ function M.RestoreDBInstanceFromDBSnapshotMessage(args)
 		["Port"] = args["Port"],
 		["DBInstanceIdentifier"] = args["DBInstanceIdentifier"],
 	}
-	asserts.AssertRestoreDBInstanceFromDBSnapshotMessage(t)
-	return t
+	asserts.AssertRestoreDBInstanceFromDBSnapshotMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidDBClusterStateFault = { nil }
@@ -3725,11 +4946,22 @@ end
 -- Valid keys:
 -- @return InvalidDBClusterStateFault structure as a key-value pair table
 function M.InvalidDBClusterStateFault(args)
-	assert(args, "You must provdide an argument table when creating InvalidDBClusterStateFault")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidDBClusterStateFault")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertInvalidDBClusterStateFault(t)
-	return t
+	asserts.AssertInvalidDBClusterStateFault(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DBEngineVersion = { ["Engine"] = true, ["DBParameterGroupFamily"] = true, ["SupportedCharacterSets"] = true, ["DefaultCharacterSet"] = true, ["SupportedTimezones"] = true, ["DBEngineDescription"] = true, ["EngineVersion"] = true, ["DBEngineVersionDescription"] = true, ["ValidUpgradeTarget"] = true, nil }
@@ -3766,8 +4998,14 @@ end
 -- * ValidUpgradeTarget [ValidUpgradeTargetList] <p>A list of engine versions that this database engine version can be upgraded to.</p>
 -- @return DBEngineVersion structure as a key-value pair table
 function M.DBEngineVersion(args)
-	assert(args, "You must provdide an argument table when creating DBEngineVersion")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DBEngineVersion")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Engine"] = args["Engine"],
 		["DBParameterGroupFamily"] = args["DBParameterGroupFamily"],
 		["SupportedCharacterSets"] = args["SupportedCharacterSets"],
@@ -3778,8 +5016,13 @@ function M.DBEngineVersion(args)
 		["DBEngineVersionDescription"] = args["DBEngineVersionDescription"],
 		["ValidUpgradeTarget"] = args["ValidUpgradeTarget"],
 	}
-	asserts.AssertDBEngineVersion(t)
-	return t
+	asserts.AssertDBEngineVersion(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DBSubnetQuotaExceededFault = { nil }
@@ -3798,11 +5041,22 @@ end
 -- Valid keys:
 -- @return DBSubnetQuotaExceededFault structure as a key-value pair table
 function M.DBSubnetQuotaExceededFault(args)
-	assert(args, "You must provdide an argument table when creating DBSubnetQuotaExceededFault")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DBSubnetQuotaExceededFault")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertDBSubnetQuotaExceededFault(t)
-	return t
+	asserts.AssertDBSubnetQuotaExceededFault(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.RemoveSourceIdentifierFromSubscriptionMessage = { ["SourceIdentifier"] = true, ["SubscriptionName"] = true, nil }
@@ -3829,13 +5083,24 @@ end
 -- Required key: SourceIdentifier
 -- @return RemoveSourceIdentifierFromSubscriptionMessage structure as a key-value pair table
 function M.RemoveSourceIdentifierFromSubscriptionMessage(args)
-	assert(args, "You must provdide an argument table when creating RemoveSourceIdentifierFromSubscriptionMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating RemoveSourceIdentifierFromSubscriptionMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["SourceIdentifier"] = args["SourceIdentifier"],
 		["SubscriptionName"] = args["SubscriptionName"],
 	}
-	asserts.AssertRemoveSourceIdentifierFromSubscriptionMessage(t)
-	return t
+	asserts.AssertRemoveSourceIdentifierFromSubscriptionMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeDBSnapshotsMessage = { ["IncludeShared"] = true, ["IncludePublic"] = true, ["Marker"] = true, ["MaxRecords"] = true, ["DBSnapshotIdentifier"] = true, ["Filters"] = true, ["SnapshotType"] = true, ["DBInstanceIdentifier"] = true, nil }
@@ -3870,8 +5135,14 @@ end
 -- * DBInstanceIdentifier [String] <p>The ID of the DB instance to retrieve the list of DB snapshots for. This parameter cannot be used in conjunction with <code>DBSnapshotIdentifier</code>. This parameter is not case-sensitive. </p> <p>Constraints:</p> <ul> <li> <p>Must contain from 1 to 63 alphanumeric characters or hyphens</p> </li> <li> <p>First character must be a letter</p> </li> <li> <p>Cannot end with a hyphen or contain two consecutive hyphens</p> </li> </ul>
 -- @return DescribeDBSnapshotsMessage structure as a key-value pair table
 function M.DescribeDBSnapshotsMessage(args)
-	assert(args, "You must provdide an argument table when creating DescribeDBSnapshotsMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeDBSnapshotsMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["IncludeShared"] = args["IncludeShared"],
 		["IncludePublic"] = args["IncludePublic"],
 		["Marker"] = args["Marker"],
@@ -3881,8 +5152,13 @@ function M.DescribeDBSnapshotsMessage(args)
 		["SnapshotType"] = args["SnapshotType"],
 		["DBInstanceIdentifier"] = args["DBInstanceIdentifier"],
 	}
-	asserts.AssertDescribeDBSnapshotsMessage(t)
-	return t
+	asserts.AssertDescribeDBSnapshotsMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ModifyDBClusterResult = { ["DBCluster"] = true, nil }
@@ -3903,12 +5179,23 @@ end
 -- * DBCluster [DBCluster] 
 -- @return ModifyDBClusterResult structure as a key-value pair table
 function M.ModifyDBClusterResult(args)
-	assert(args, "You must provdide an argument table when creating ModifyDBClusterResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ModifyDBClusterResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DBCluster"] = args["DBCluster"],
 	}
-	asserts.AssertModifyDBClusterResult(t)
-	return t
+	asserts.AssertModifyDBClusterResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateDBClusterSnapshotResult = { ["DBClusterSnapshot"] = true, nil }
@@ -3929,12 +5216,23 @@ end
 -- * DBClusterSnapshot [DBClusterSnapshot] 
 -- @return CreateDBClusterSnapshotResult structure as a key-value pair table
 function M.CreateDBClusterSnapshotResult(args)
-	assert(args, "You must provdide an argument table when creating CreateDBClusterSnapshotResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateDBClusterSnapshotResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DBClusterSnapshot"] = args["DBClusterSnapshot"],
 	}
-	asserts.AssertCreateDBClusterSnapshotResult(t)
-	return t
+	asserts.AssertCreateDBClusterSnapshotResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteDBSubnetGroupMessage = { ["DBSubnetGroupName"] = true, nil }
@@ -3957,12 +5255,23 @@ end
 -- Required key: DBSubnetGroupName
 -- @return DeleteDBSubnetGroupMessage structure as a key-value pair table
 function M.DeleteDBSubnetGroupMessage(args)
-	assert(args, "You must provdide an argument table when creating DeleteDBSubnetGroupMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteDBSubnetGroupMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DBSubnetGroupName"] = args["DBSubnetGroupName"],
 	}
-	asserts.AssertDeleteDBSubnetGroupMessage(t)
-	return t
+	asserts.AssertDeleteDBSubnetGroupMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeEventSubscriptionsMessage = { ["Marker"] = true, ["MaxRecords"] = true, ["Filters"] = true, ["SubscriptionName"] = true, nil }
@@ -3989,15 +5298,26 @@ end
 -- * SubscriptionName [String] <p>The name of the RDS event notification subscription you want to describe.</p>
 -- @return DescribeEventSubscriptionsMessage structure as a key-value pair table
 function M.DescribeEventSubscriptionsMessage(args)
-	assert(args, "You must provdide an argument table when creating DescribeEventSubscriptionsMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeEventSubscriptionsMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Marker"] = args["Marker"],
 		["MaxRecords"] = args["MaxRecords"],
 		["Filters"] = args["Filters"],
 		["SubscriptionName"] = args["SubscriptionName"],
 	}
-	asserts.AssertDescribeEventSubscriptionsMessage(t)
-	return t
+	asserts.AssertDescribeEventSubscriptionsMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.OptionVersion = { ["Version"] = true, ["IsDefault"] = true, nil }
@@ -4020,13 +5340,24 @@ end
 -- * IsDefault [Boolean] <p>True if the version is the default version of the option; otherwise, false.</p>
 -- @return OptionVersion structure as a key-value pair table
 function M.OptionVersion(args)
-	assert(args, "You must provdide an argument table when creating OptionVersion")
-	local t = { 
+	assert(args, "You must provide an argument table when creating OptionVersion")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Version"] = args["Version"],
 		["IsDefault"] = args["IsDefault"],
 	}
-	asserts.AssertOptionVersion(t)
-	return t
+	asserts.AssertOptionVersion(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.RestoreDBInstanceToPointInTimeResult = { ["DBInstance"] = true, nil }
@@ -4047,12 +5378,23 @@ end
 -- * DBInstance [DBInstance] 
 -- @return RestoreDBInstanceToPointInTimeResult structure as a key-value pair table
 function M.RestoreDBInstanceToPointInTimeResult(args)
-	assert(args, "You must provdide an argument table when creating RestoreDBInstanceToPointInTimeResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating RestoreDBInstanceToPointInTimeResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DBInstance"] = args["DBInstance"],
 	}
-	asserts.AssertRestoreDBInstanceToPointInTimeResult(t)
-	return t
+	asserts.AssertRestoreDBInstanceToPointInTimeResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateDBInstanceReadReplicaMessage = { ["SourceRegion"] = true, ["AvailabilityZone"] = true, ["DBSubnetGroupName"] = true, ["MonitoringRoleArn"] = true, ["PubliclyAccessible"] = true, ["Tags"] = true, ["StorageType"] = true, ["PreSignedUrl"] = true, ["AutoMinorVersionUpgrade"] = true, ["EnableIAMDatabaseAuthentication"] = true, ["KmsKeyId"] = true, ["Iops"] = true, ["OptionGroupName"] = true, ["MonitoringInterval"] = true, ["CopyTagsToSnapshot"] = true, ["DBInstanceClass"] = true, ["SourceDBInstanceIdentifier"] = true, ["Port"] = true, ["DBInstanceIdentifier"] = true, nil }
@@ -4113,8 +5455,14 @@ end
 -- Required key: SourceDBInstanceIdentifier
 -- @return CreateDBInstanceReadReplicaMessage structure as a key-value pair table
 function M.CreateDBInstanceReadReplicaMessage(args)
-	assert(args, "You must provdide an argument table when creating CreateDBInstanceReadReplicaMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateDBInstanceReadReplicaMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["SourceRegion"] = args["SourceRegion"],
 		["AvailabilityZone"] = args["AvailabilityZone"],
 		["DBSubnetGroupName"] = args["DBSubnetGroupName"],
@@ -4135,8 +5483,13 @@ function M.CreateDBInstanceReadReplicaMessage(args)
 		["Port"] = args["Port"],
 		["DBInstanceIdentifier"] = args["DBInstanceIdentifier"],
 	}
-	asserts.AssertCreateDBInstanceReadReplicaMessage(t)
-	return t
+	asserts.AssertCreateDBInstanceReadReplicaMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeDBClustersMessage = { ["Marker"] = true, ["MaxRecords"] = true, ["Filters"] = true, ["DBClusterIdentifier"] = true, nil }
@@ -4163,15 +5516,26 @@ end
 -- * DBClusterIdentifier [String] <p>The user-supplied DB cluster identifier. If this parameter is specified, information from only the specific DB cluster is returned. This parameter isn't case-sensitive.</p> <p>Constraints:</p> <ul> <li> <p>Must contain from 1 to 63 alphanumeric characters or hyphens</p> </li> <li> <p>First character must be a letter</p> </li> <li> <p>Cannot end with a hyphen or contain two consecutive hyphens</p> </li> </ul>
 -- @return DescribeDBClustersMessage structure as a key-value pair table
 function M.DescribeDBClustersMessage(args)
-	assert(args, "You must provdide an argument table when creating DescribeDBClustersMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeDBClustersMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Marker"] = args["Marker"],
 		["MaxRecords"] = args["MaxRecords"],
 		["Filters"] = args["Filters"],
 		["DBClusterIdentifier"] = args["DBClusterIdentifier"],
 	}
-	asserts.AssertDescribeDBClustersMessage(t)
-	return t
+	asserts.AssertDescribeDBClustersMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidRestoreFault = { nil }
@@ -4190,11 +5554,22 @@ end
 -- Valid keys:
 -- @return InvalidRestoreFault structure as a key-value pair table
 function M.InvalidRestoreFault(args)
-	assert(args, "You must provdide an argument table when creating InvalidRestoreFault")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidRestoreFault")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertInvalidRestoreFault(t)
-	return t
+	asserts.AssertInvalidRestoreFault(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.SubscriptionCategoryNotFoundFault = { nil }
@@ -4213,11 +5588,22 @@ end
 -- Valid keys:
 -- @return SubscriptionCategoryNotFoundFault structure as a key-value pair table
 function M.SubscriptionCategoryNotFoundFault(args)
-	assert(args, "You must provdide an argument table when creating SubscriptionCategoryNotFoundFault")
-	local t = { 
+	assert(args, "You must provide an argument table when creating SubscriptionCategoryNotFoundFault")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertSubscriptionCategoryNotFoundFault(t)
-	return t
+	asserts.AssertSubscriptionCategoryNotFoundFault(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DBInstance = { ["PubliclyAccessible"] = true, ["MasterUsername"] = true, ["MonitoringInterval"] = true, ["LicenseModel"] = true, ["MonitoringRoleArn"] = true, ["VpcSecurityGroups"] = true, ["InstanceCreateTime"] = true, ["CopyTagsToSnapshot"] = true, ["OptionGroupMemberships"] = true, ["PendingModifiedValues"] = true, ["Engine"] = true, ["MultiAZ"] = true, ["LatestRestorableTime"] = true, ["DBSecurityGroups"] = true, ["DBParameterGroups"] = true, ["ReadReplicaSourceDBInstanceIdentifier"] = true, ["AutoMinorVersionUpgrade"] = true, ["PreferredBackupWindow"] = true, ["PromotionTier"] = true, ["DBSubnetGroup"] = true, ["SecondaryAvailabilityZone"] = true, ["ReadReplicaDBInstanceIdentifiers"] = true, ["AllocatedStorage"] = true, ["DBInstanceArn"] = true, ["BackupRetentionPeriod"] = true, ["DBName"] = true, ["PreferredMaintenanceWindow"] = true, ["Endpoint"] = true, ["DBInstanceStatus"] = true, ["StatusInfos"] = true, ["IAMDatabaseAuthenticationEnabled"] = true, ["EngineVersion"] = true, ["ReadReplicaDBClusterIdentifiers"] = true, ["TdeCredentialArn"] = true, ["EnhancedMonitoringResourceArn"] = true, ["CharacterSetName"] = true, ["AvailabilityZone"] = true, ["DomainMemberships"] = true, ["DBClusterIdentifier"] = true, ["StorageType"] = true, ["DbiResourceId"] = true, ["CACertificateIdentifier"] = true, ["Iops"] = true, ["StorageEncrypted"] = true, ["KmsKeyId"] = true, ["Timezone"] = true, ["DBInstanceClass"] = true, ["DbInstancePort"] = true, ["DBInstanceIdentifier"] = true, nil }
@@ -4334,8 +5720,14 @@ end
 -- * DBInstanceIdentifier [String] <p>Contains a user-supplied database identifier. This identifier is the unique key that identifies a DB instance.</p>
 -- @return DBInstance structure as a key-value pair table
 function M.DBInstance(args)
-	assert(args, "You must provdide an argument table when creating DBInstance")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DBInstance")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["PubliclyAccessible"] = args["PubliclyAccessible"],
 		["MasterUsername"] = args["MasterUsername"],
 		["MonitoringInterval"] = args["MonitoringInterval"],
@@ -4386,8 +5778,13 @@ function M.DBInstance(args)
 		["DbInstancePort"] = args["DbInstancePort"],
 		["DBInstanceIdentifier"] = args["DBInstanceIdentifier"],
 	}
-	asserts.AssertDBInstance(t)
-	return t
+	asserts.AssertDBInstance(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.RestoreDBClusterFromSnapshotResult = { ["DBCluster"] = true, nil }
@@ -4408,12 +5805,23 @@ end
 -- * DBCluster [DBCluster] 
 -- @return RestoreDBClusterFromSnapshotResult structure as a key-value pair table
 function M.RestoreDBClusterFromSnapshotResult(args)
-	assert(args, "You must provdide an argument table when creating RestoreDBClusterFromSnapshotResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating RestoreDBClusterFromSnapshotResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DBCluster"] = args["DBCluster"],
 	}
-	asserts.AssertRestoreDBClusterFromSnapshotResult(t)
-	return t
+	asserts.AssertRestoreDBClusterFromSnapshotResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.PendingMaintenanceAction = { ["Description"] = true, ["OptInStatus"] = true, ["ForcedApplyDate"] = true, ["AutoAppliedAfterDate"] = true, ["Action"] = true, ["CurrentApplyDate"] = true, nil }
@@ -4444,8 +5852,14 @@ end
 -- * CurrentApplyDate [TStamp] <p>The effective date when the pending maintenance action will be applied to the resource. This date takes into account opt-in requests received from the <a>ApplyPendingMaintenanceAction</a> API, the <code>AutoAppliedAfterDate</code>, and the <code>ForcedApplyDate</code>. This value is blank if an opt-in request has not been received and nothing has been specified as <code>AutoAppliedAfterDate</code> or <code>ForcedApplyDate</code>.</p>
 -- @return PendingMaintenanceAction structure as a key-value pair table
 function M.PendingMaintenanceAction(args)
-	assert(args, "You must provdide an argument table when creating PendingMaintenanceAction")
-	local t = { 
+	assert(args, "You must provide an argument table when creating PendingMaintenanceAction")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Description"] = args["Description"],
 		["OptInStatus"] = args["OptInStatus"],
 		["ForcedApplyDate"] = args["ForcedApplyDate"],
@@ -4453,8 +5867,13 @@ function M.PendingMaintenanceAction(args)
 		["Action"] = args["Action"],
 		["CurrentApplyDate"] = args["CurrentApplyDate"],
 	}
-	asserts.AssertPendingMaintenanceAction(t)
-	return t
+	asserts.AssertPendingMaintenanceAction(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteEventSubscriptionResult = { ["EventSubscription"] = true, nil }
@@ -4475,12 +5894,23 @@ end
 -- * EventSubscription [EventSubscription] 
 -- @return DeleteEventSubscriptionResult structure as a key-value pair table
 function M.DeleteEventSubscriptionResult(args)
-	assert(args, "You must provdide an argument table when creating DeleteEventSubscriptionResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteEventSubscriptionResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["EventSubscription"] = args["EventSubscription"],
 	}
-	asserts.AssertDeleteEventSubscriptionResult(t)
-	return t
+	asserts.AssertDeleteEventSubscriptionResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ReservedDBInstance = { ["MultiAZ"] = true, ["OfferingType"] = true, ["FixedPrice"] = true, ["CurrencyCode"] = true, ["ProductDescription"] = true, ["ReservedDBInstancesOfferingId"] = true, ["RecurringCharges"] = true, ["ReservedDBInstanceArn"] = true, ["Duration"] = true, ["State"] = true, ["DBInstanceCount"] = true, ["StartTime"] = true, ["ReservedDBInstanceId"] = true, ["DBInstanceClass"] = true, ["UsagePrice"] = true, nil }
@@ -4529,8 +5959,14 @@ end
 -- * UsagePrice [Double] <p>The hourly price charged for this reserved DB instance.</p>
 -- @return ReservedDBInstance structure as a key-value pair table
 function M.ReservedDBInstance(args)
-	assert(args, "You must provdide an argument table when creating ReservedDBInstance")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ReservedDBInstance")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["MultiAZ"] = args["MultiAZ"],
 		["OfferingType"] = args["OfferingType"],
 		["FixedPrice"] = args["FixedPrice"],
@@ -4547,8 +5983,13 @@ function M.ReservedDBInstance(args)
 		["DBInstanceClass"] = args["DBInstanceClass"],
 		["UsagePrice"] = args["UsagePrice"],
 	}
-	asserts.AssertReservedDBInstance(t)
-	return t
+	asserts.AssertReservedDBInstance(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidDBSubnetStateFault = { nil }
@@ -4567,11 +6008,22 @@ end
 -- Valid keys:
 -- @return InvalidDBSubnetStateFault structure as a key-value pair table
 function M.InvalidDBSubnetStateFault(args)
-	assert(args, "You must provdide an argument table when creating InvalidDBSubnetStateFault")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidDBSubnetStateFault")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertInvalidDBSubnetStateFault(t)
-	return t
+	asserts.AssertInvalidDBSubnetStateFault(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AuthorizeDBSecurityGroupIngressMessage = { ["EC2SecurityGroupName"] = true, ["EC2SecurityGroupOwnerId"] = true, ["CIDRIP"] = true, ["EC2SecurityGroupId"] = true, ["DBSecurityGroupName"] = true, nil }
@@ -4602,16 +6054,27 @@ end
 -- Required key: DBSecurityGroupName
 -- @return AuthorizeDBSecurityGroupIngressMessage structure as a key-value pair table
 function M.AuthorizeDBSecurityGroupIngressMessage(args)
-	assert(args, "You must provdide an argument table when creating AuthorizeDBSecurityGroupIngressMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AuthorizeDBSecurityGroupIngressMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["EC2SecurityGroupName"] = args["EC2SecurityGroupName"],
 		["EC2SecurityGroupOwnerId"] = args["EC2SecurityGroupOwnerId"],
 		["CIDRIP"] = args["CIDRIP"],
 		["EC2SecurityGroupId"] = args["EC2SecurityGroupId"],
 		["DBSecurityGroupName"] = args["DBSecurityGroupName"],
 	}
-	asserts.AssertAuthorizeDBSecurityGroupIngressMessage(t)
-	return t
+	asserts.AssertAuthorizeDBSecurityGroupIngressMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.OptionGroupMembership = { ["Status"] = true, ["OptionGroupName"] = true, nil }
@@ -4634,13 +6097,24 @@ end
 -- * OptionGroupName [String] <p>The name of the option group that the instance belongs to.</p>
 -- @return OptionGroupMembership structure as a key-value pair table
 function M.OptionGroupMembership(args)
-	assert(args, "You must provdide an argument table when creating OptionGroupMembership")
-	local t = { 
+	assert(args, "You must provide an argument table when creating OptionGroupMembership")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Status"] = args["Status"],
 		["OptionGroupName"] = args["OptionGroupName"],
 	}
-	asserts.AssertOptionGroupMembership(t)
-	return t
+	asserts.AssertOptionGroupMembership(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateDBParameterGroupResult = { ["DBParameterGroup"] = true, nil }
@@ -4661,12 +6135,23 @@ end
 -- * DBParameterGroup [DBParameterGroup] 
 -- @return CreateDBParameterGroupResult structure as a key-value pair table
 function M.CreateDBParameterGroupResult(args)
-	assert(args, "You must provdide an argument table when creating CreateDBParameterGroupResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateDBParameterGroupResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DBParameterGroup"] = args["DBParameterGroup"],
 	}
-	asserts.AssertCreateDBParameterGroupResult(t)
-	return t
+	asserts.AssertCreateDBParameterGroupResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ResourceNotFoundFault = { nil }
@@ -4685,11 +6170,22 @@ end
 -- Valid keys:
 -- @return ResourceNotFoundFault structure as a key-value pair table
 function M.ResourceNotFoundFault(args)
-	assert(args, "You must provdide an argument table when creating ResourceNotFoundFault")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ResourceNotFoundFault")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertResourceNotFoundFault(t)
-	return t
+	asserts.AssertResourceNotFoundFault(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateDBClusterResult = { ["DBCluster"] = true, nil }
@@ -4710,12 +6206,23 @@ end
 -- * DBCluster [DBCluster] 
 -- @return CreateDBClusterResult structure as a key-value pair table
 function M.CreateDBClusterResult(args)
-	assert(args, "You must provdide an argument table when creating CreateDBClusterResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateDBClusterResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DBCluster"] = args["DBCluster"],
 	}
-	asserts.AssertCreateDBClusterResult(t)
-	return t
+	asserts.AssertCreateDBClusterResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.PromoteReadReplicaResult = { ["DBInstance"] = true, nil }
@@ -4736,12 +6243,23 @@ end
 -- * DBInstance [DBInstance] 
 -- @return PromoteReadReplicaResult structure as a key-value pair table
 function M.PromoteReadReplicaResult(args)
-	assert(args, "You must provdide an argument table when creating PromoteReadReplicaResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating PromoteReadReplicaResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DBInstance"] = args["DBInstance"],
 	}
-	asserts.AssertPromoteReadReplicaResult(t)
-	return t
+	asserts.AssertPromoteReadReplicaResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.OptionSetting = { ["IsCollection"] = true, ["Name"] = true, ["DataType"] = true, ["DefaultValue"] = true, ["Value"] = true, ["AllowedValues"] = true, ["IsModifiable"] = true, ["ApplyType"] = true, ["Description"] = true, nil }
@@ -4778,8 +6296,14 @@ end
 -- * Description [String] <p>The description of the option setting.</p>
 -- @return OptionSetting structure as a key-value pair table
 function M.OptionSetting(args)
-	assert(args, "You must provdide an argument table when creating OptionSetting")
-	local t = { 
+	assert(args, "You must provide an argument table when creating OptionSetting")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["IsCollection"] = args["IsCollection"],
 		["Name"] = args["Name"],
 		["DataType"] = args["DataType"],
@@ -4790,8 +6314,13 @@ function M.OptionSetting(args)
 		["ApplyType"] = args["ApplyType"],
 		["Description"] = args["Description"],
 	}
-	asserts.AssertOptionSetting(t)
-	return t
+	asserts.AssertOptionSetting(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateDBClusterMessage = { ["MasterUsername"] = true, ["VpcSecurityGroupIds"] = true, ["EnableIAMDatabaseAuthentication"] = true, ["Engine"] = true, ["Tags"] = true, ["PreferredBackupWindow"] = true, ["SourceRegion"] = true, ["BackupRetentionPeriod"] = true, ["PreferredMaintenanceWindow"] = true, ["DBClusterParameterGroupName"] = true, ["PreSignedUrl"] = true, ["ReplicationSourceIdentifier"] = true, ["EngineVersion"] = true, ["DBSubnetGroupName"] = true, ["OptionGroupName"] = true, ["CharacterSetName"] = true, ["DBClusterIdentifier"] = true, ["MasterUserPassword"] = true, ["KmsKeyId"] = true, ["StorageEncrypted"] = true, ["DatabaseName"] = true, ["AvailabilityZones"] = true, ["Port"] = true, nil }
@@ -4860,8 +6389,14 @@ end
 -- Required key: Engine
 -- @return CreateDBClusterMessage structure as a key-value pair table
 function M.CreateDBClusterMessage(args)
-	assert(args, "You must provdide an argument table when creating CreateDBClusterMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateDBClusterMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["MasterUsername"] = args["MasterUsername"],
 		["VpcSecurityGroupIds"] = args["VpcSecurityGroupIds"],
 		["EnableIAMDatabaseAuthentication"] = args["EnableIAMDatabaseAuthentication"],
@@ -4886,8 +6421,13 @@ function M.CreateDBClusterMessage(args)
 		["AvailabilityZones"] = args["AvailabilityZones"],
 		["Port"] = args["Port"],
 	}
-	asserts.AssertCreateDBClusterMessage(t)
-	return t
+	asserts.AssertCreateDBClusterMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DownloadDBLogFilePortionDetails = { ["Marker"] = true, ["AdditionalDataPending"] = true, ["LogFileData"] = true, nil }
@@ -4912,14 +6452,25 @@ end
 -- * LogFileData [String] <p>Entries from the specified log file.</p>
 -- @return DownloadDBLogFilePortionDetails structure as a key-value pair table
 function M.DownloadDBLogFilePortionDetails(args)
-	assert(args, "You must provdide an argument table when creating DownloadDBLogFilePortionDetails")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DownloadDBLogFilePortionDetails")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Marker"] = args["Marker"],
 		["AdditionalDataPending"] = args["AdditionalDataPending"],
 		["LogFileData"] = args["LogFileData"],
 	}
-	asserts.AssertDownloadDBLogFilePortionDetails(t)
-	return t
+	asserts.AssertDownloadDBLogFilePortionDetails(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DBParameterGroupAlreadyExistsFault = { nil }
@@ -4938,11 +6489,22 @@ end
 -- Valid keys:
 -- @return DBParameterGroupAlreadyExistsFault structure as a key-value pair table
 function M.DBParameterGroupAlreadyExistsFault(args)
-	assert(args, "You must provdide an argument table when creating DBParameterGroupAlreadyExistsFault")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DBParameterGroupAlreadyExistsFault")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertDBParameterGroupAlreadyExistsFault(t)
-	return t
+	asserts.AssertDBParameterGroupAlreadyExistsFault(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DBEngineVersionMessage = { ["Marker"] = true, ["DBEngineVersions"] = true, nil }
@@ -4965,13 +6527,24 @@ end
 -- * DBEngineVersions [DBEngineVersionList] <p> A list of <code>DBEngineVersion</code> elements. </p>
 -- @return DBEngineVersionMessage structure as a key-value pair table
 function M.DBEngineVersionMessage(args)
-	assert(args, "You must provdide an argument table when creating DBEngineVersionMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DBEngineVersionMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Marker"] = args["Marker"],
 		["DBEngineVersions"] = args["DBEngineVersions"],
 	}
-	asserts.AssertDBEngineVersionMessage(t)
-	return t
+	asserts.AssertDBEngineVersionMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeDBInstancesMessage = { ["Marker"] = true, ["MaxRecords"] = true, ["Filters"] = true, ["DBInstanceIdentifier"] = true, nil }
@@ -4998,15 +6571,26 @@ end
 -- * DBInstanceIdentifier [String] <p>The user-supplied instance identifier. If this parameter is specified, information from only the specific DB instance is returned. This parameter isn't case-sensitive.</p> <p>Constraints:</p> <ul> <li> <p>Must contain from 1 to 63 alphanumeric characters or hyphens</p> </li> <li> <p>First character must be a letter</p> </li> <li> <p>Cannot end with a hyphen or contain two consecutive hyphens</p> </li> </ul>
 -- @return DescribeDBInstancesMessage structure as a key-value pair table
 function M.DescribeDBInstancesMessage(args)
-	assert(args, "You must provdide an argument table when creating DescribeDBInstancesMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeDBInstancesMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Marker"] = args["Marker"],
 		["MaxRecords"] = args["MaxRecords"],
 		["Filters"] = args["Filters"],
 		["DBInstanceIdentifier"] = args["DBInstanceIdentifier"],
 	}
-	asserts.AssertDescribeDBInstancesMessage(t)
-	return t
+	asserts.AssertDescribeDBInstancesMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.SNSNoAuthorizationFault = { nil }
@@ -5025,11 +6609,22 @@ end
 -- Valid keys:
 -- @return SNSNoAuthorizationFault structure as a key-value pair table
 function M.SNSNoAuthorizationFault(args)
-	assert(args, "You must provdide an argument table when creating SNSNoAuthorizationFault")
-	local t = { 
+	assert(args, "You must provide an argument table when creating SNSNoAuthorizationFault")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertSNSNoAuthorizationFault(t)
-	return t
+	asserts.AssertSNSNoAuthorizationFault(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DBParameterGroupDetails = { ["Marker"] = true, ["Parameters"] = true, nil }
@@ -5052,13 +6647,24 @@ end
 -- * Parameters [ParametersList] <p> A list of <a>Parameter</a> values. </p>
 -- @return DBParameterGroupDetails structure as a key-value pair table
 function M.DBParameterGroupDetails(args)
-	assert(args, "You must provdide an argument table when creating DBParameterGroupDetails")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DBParameterGroupDetails")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Marker"] = args["Marker"],
 		["Parameters"] = args["Parameters"],
 	}
-	asserts.AssertDBParameterGroupDetails(t)
-	return t
+	asserts.AssertDBParameterGroupDetails(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateDBInstanceResult = { ["DBInstance"] = true, nil }
@@ -5079,12 +6685,23 @@ end
 -- * DBInstance [DBInstance] 
 -- @return CreateDBInstanceResult structure as a key-value pair table
 function M.CreateDBInstanceResult(args)
-	assert(args, "You must provdide an argument table when creating CreateDBInstanceResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateDBInstanceResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DBInstance"] = args["DBInstance"],
 	}
-	asserts.AssertCreateDBInstanceResult(t)
-	return t
+	asserts.AssertCreateDBInstanceResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidDBInstanceStateFault = { nil }
@@ -5103,11 +6720,22 @@ end
 -- Valid keys:
 -- @return InvalidDBInstanceStateFault structure as a key-value pair table
 function M.InvalidDBInstanceStateFault(args)
-	assert(args, "You must provdide an argument table when creating InvalidDBInstanceStateFault")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidDBInstanceStateFault")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertInvalidDBInstanceStateFault(t)
-	return t
+	asserts.AssertInvalidDBInstanceStateFault(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteDBSnapshotResult = { ["DBSnapshot"] = true, nil }
@@ -5128,12 +6756,23 @@ end
 -- * DBSnapshot [DBSnapshot] 
 -- @return DeleteDBSnapshotResult structure as a key-value pair table
 function M.DeleteDBSnapshotResult(args)
-	assert(args, "You must provdide an argument table when creating DeleteDBSnapshotResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteDBSnapshotResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DBSnapshot"] = args["DBSnapshot"],
 	}
-	asserts.AssertDeleteDBSnapshotResult(t)
-	return t
+	asserts.AssertDeleteDBSnapshotResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateDBSecurityGroupResult = { ["DBSecurityGroup"] = true, nil }
@@ -5154,12 +6793,23 @@ end
 -- * DBSecurityGroup [DBSecurityGroup] 
 -- @return CreateDBSecurityGroupResult structure as a key-value pair table
 function M.CreateDBSecurityGroupResult(args)
-	assert(args, "You must provdide an argument table when creating CreateDBSecurityGroupResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateDBSecurityGroupResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DBSecurityGroup"] = args["DBSecurityGroup"],
 	}
-	asserts.AssertCreateDBSecurityGroupResult(t)
-	return t
+	asserts.AssertCreateDBSecurityGroupResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateDBClusterParameterGroupResult = { ["DBClusterParameterGroup"] = true, nil }
@@ -5180,12 +6830,23 @@ end
 -- * DBClusterParameterGroup [DBClusterParameterGroup] 
 -- @return CreateDBClusterParameterGroupResult structure as a key-value pair table
 function M.CreateDBClusterParameterGroupResult(args)
-	assert(args, "You must provdide an argument table when creating CreateDBClusterParameterGroupResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateDBClusterParameterGroupResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DBClusterParameterGroup"] = args["DBClusterParameterGroup"],
 	}
-	asserts.AssertCreateDBClusterParameterGroupResult(t)
-	return t
+	asserts.AssertCreateDBClusterParameterGroupResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DBSecurityGroupNotSupportedFault = { nil }
@@ -5204,11 +6865,22 @@ end
 -- Valid keys:
 -- @return DBSecurityGroupNotSupportedFault structure as a key-value pair table
 function M.DBSecurityGroupNotSupportedFault(args)
-	assert(args, "You must provdide an argument table when creating DBSecurityGroupNotSupportedFault")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DBSecurityGroupNotSupportedFault")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertDBSecurityGroupNotSupportedFault(t)
-	return t
+	asserts.AssertDBSecurityGroupNotSupportedFault(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DBSecurityGroupQuotaExceededFault = { nil }
@@ -5227,11 +6899,22 @@ end
 -- Valid keys:
 -- @return DBSecurityGroupQuotaExceededFault structure as a key-value pair table
 function M.DBSecurityGroupQuotaExceededFault(args)
-	assert(args, "You must provdide an argument table when creating DBSecurityGroupQuotaExceededFault")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DBSecurityGroupQuotaExceededFault")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertDBSecurityGroupQuotaExceededFault(t)
-	return t
+	asserts.AssertDBSecurityGroupQuotaExceededFault(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.OptionGroupOption = { ["MinimumRequiredMinorEngineVersion"] = true, ["OptionsDependedOn"] = true, ["MajorEngineVersion"] = true, ["OptionGroupOptionVersions"] = true, ["Persistent"] = true, ["Description"] = true, ["DefaultPort"] = true, ["Permanent"] = true, ["OptionGroupOptionSettings"] = true, ["OptionsConflictsWith"] = true, ["EngineName"] = true, ["PortRequired"] = true, ["Name"] = true, nil }
@@ -5276,8 +6959,14 @@ end
 -- * Name [String] <p>The name of the option.</p>
 -- @return OptionGroupOption structure as a key-value pair table
 function M.OptionGroupOption(args)
-	assert(args, "You must provdide an argument table when creating OptionGroupOption")
-	local t = { 
+	assert(args, "You must provide an argument table when creating OptionGroupOption")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["MinimumRequiredMinorEngineVersion"] = args["MinimumRequiredMinorEngineVersion"],
 		["OptionsDependedOn"] = args["OptionsDependedOn"],
 		["MajorEngineVersion"] = args["MajorEngineVersion"],
@@ -5292,8 +6981,13 @@ function M.OptionGroupOption(args)
 		["PortRequired"] = args["PortRequired"],
 		["Name"] = args["Name"],
 	}
-	asserts.AssertOptionGroupOption(t)
-	return t
+	asserts.AssertOptionGroupOption(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DBClusterParameterGroup = { ["DBClusterParameterGroupName"] = true, ["DBParameterGroupFamily"] = true, ["Description"] = true, ["DBClusterParameterGroupArn"] = true, nil }
@@ -5320,15 +7014,26 @@ end
 -- * DBClusterParameterGroupArn [String] <p>The Amazon Resource Name (ARN) for the DB cluster parameter group.</p>
 -- @return DBClusterParameterGroup structure as a key-value pair table
 function M.DBClusterParameterGroup(args)
-	assert(args, "You must provdide an argument table when creating DBClusterParameterGroup")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DBClusterParameterGroup")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DBClusterParameterGroupName"] = args["DBClusterParameterGroupName"],
 		["DBParameterGroupFamily"] = args["DBParameterGroupFamily"],
 		["Description"] = args["Description"],
 		["DBClusterParameterGroupArn"] = args["DBClusterParameterGroupArn"],
 	}
-	asserts.AssertDBClusterParameterGroup(t)
-	return t
+	asserts.AssertDBClusterParameterGroup(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DBClusterQuotaExceededFault = { nil }
@@ -5347,11 +7052,22 @@ end
 -- Valid keys:
 -- @return DBClusterQuotaExceededFault structure as a key-value pair table
 function M.DBClusterQuotaExceededFault(args)
-	assert(args, "You must provdide an argument table when creating DBClusterQuotaExceededFault")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DBClusterQuotaExceededFault")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertDBClusterQuotaExceededFault(t)
-	return t
+	asserts.AssertDBClusterQuotaExceededFault(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeDBEngineVersionsMessage = { ["Engine"] = true, ["DBParameterGroupFamily"] = true, ["ListSupportedCharacterSets"] = true, ["DefaultOnly"] = true, ["ListSupportedTimezones"] = true, ["MaxRecords"] = true, ["Filters"] = true, ["EngineVersion"] = true, ["Marker"] = true, nil }
@@ -5388,8 +7104,14 @@ end
 -- * Marker [String] <p> An optional pagination token provided by a previous request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by <code>MaxRecords</code>. </p>
 -- @return DescribeDBEngineVersionsMessage structure as a key-value pair table
 function M.DescribeDBEngineVersionsMessage(args)
-	assert(args, "You must provdide an argument table when creating DescribeDBEngineVersionsMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeDBEngineVersionsMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Engine"] = args["Engine"],
 		["DBParameterGroupFamily"] = args["DBParameterGroupFamily"],
 		["ListSupportedCharacterSets"] = args["ListSupportedCharacterSets"],
@@ -5400,8 +7122,13 @@ function M.DescribeDBEngineVersionsMessage(args)
 		["EngineVersion"] = args["EngineVersion"],
 		["Marker"] = args["Marker"],
 	}
-	asserts.AssertDescribeDBEngineVersionsMessage(t)
-	return t
+	asserts.AssertDescribeDBEngineVersionsMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AddSourceIdentifierToSubscriptionResult = { ["EventSubscription"] = true, nil }
@@ -5422,12 +7149,23 @@ end
 -- * EventSubscription [EventSubscription] 
 -- @return AddSourceIdentifierToSubscriptionResult structure as a key-value pair table
 function M.AddSourceIdentifierToSubscriptionResult(args)
-	assert(args, "You must provdide an argument table when creating AddSourceIdentifierToSubscriptionResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AddSourceIdentifierToSubscriptionResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["EventSubscription"] = args["EventSubscription"],
 	}
-	asserts.AssertAddSourceIdentifierToSubscriptionResult(t)
-	return t
+	asserts.AssertAddSourceIdentifierToSubscriptionResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ApplyPendingMaintenanceActionResult = { ["ResourcePendingMaintenanceActions"] = true, nil }
@@ -5448,12 +7186,23 @@ end
 -- * ResourcePendingMaintenanceActions [ResourcePendingMaintenanceActions] 
 -- @return ApplyPendingMaintenanceActionResult structure as a key-value pair table
 function M.ApplyPendingMaintenanceActionResult(args)
-	assert(args, "You must provdide an argument table when creating ApplyPendingMaintenanceActionResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ApplyPendingMaintenanceActionResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ResourcePendingMaintenanceActions"] = args["ResourcePendingMaintenanceActions"],
 	}
-	asserts.AssertApplyPendingMaintenanceActionResult(t)
-	return t
+	asserts.AssertApplyPendingMaintenanceActionResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CopyDBClusterParameterGroupResult = { ["DBClusterParameterGroup"] = true, nil }
@@ -5474,12 +7223,23 @@ end
 -- * DBClusterParameterGroup [DBClusterParameterGroup] 
 -- @return CopyDBClusterParameterGroupResult structure as a key-value pair table
 function M.CopyDBClusterParameterGroupResult(args)
-	assert(args, "You must provdide an argument table when creating CopyDBClusterParameterGroupResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CopyDBClusterParameterGroupResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DBClusterParameterGroup"] = args["DBClusterParameterGroup"],
 	}
-	asserts.AssertCopyDBClusterParameterGroupResult(t)
-	return t
+	asserts.AssertCopyDBClusterParameterGroupResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.OptionGroupOptionsMessage = { ["OptionGroupOptions"] = true, ["Marker"] = true, nil }
@@ -5502,13 +7262,24 @@ end
 -- * Marker [String] <p>An optional pagination token provided by a previous request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by <code>MaxRecords</code>.</p>
 -- @return OptionGroupOptionsMessage structure as a key-value pair table
 function M.OptionGroupOptionsMessage(args)
-	assert(args, "You must provdide an argument table when creating OptionGroupOptionsMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating OptionGroupOptionsMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["OptionGroupOptions"] = args["OptionGroupOptions"],
 		["Marker"] = args["Marker"],
 	}
-	asserts.AssertOptionGroupOptionsMessage(t)
-	return t
+	asserts.AssertOptionGroupOptionsMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DBClusterOptionGroupStatus = { ["Status"] = true, ["DBClusterOptionGroupName"] = true, nil }
@@ -5531,13 +7302,24 @@ end
 -- * DBClusterOptionGroupName [String] <p>Specifies the name of the DB cluster option group.</p>
 -- @return DBClusterOptionGroupStatus structure as a key-value pair table
 function M.DBClusterOptionGroupStatus(args)
-	assert(args, "You must provdide an argument table when creating DBClusterOptionGroupStatus")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DBClusterOptionGroupStatus")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Status"] = args["Status"],
 		["DBClusterOptionGroupName"] = args["DBClusterOptionGroupName"],
 	}
-	asserts.AssertDBClusterOptionGroupStatus(t)
-	return t
+	asserts.AssertDBClusterOptionGroupStatus(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DBParameterGroup = { ["DBParameterGroupArn"] = true, ["DBParameterGroupName"] = true, ["DBParameterGroupFamily"] = true, ["Description"] = true, nil }
@@ -5564,15 +7346,26 @@ end
 -- * Description [String] <p>Provides the customer-specified description for this DB parameter group.</p>
 -- @return DBParameterGroup structure as a key-value pair table
 function M.DBParameterGroup(args)
-	assert(args, "You must provdide an argument table when creating DBParameterGroup")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DBParameterGroup")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DBParameterGroupArn"] = args["DBParameterGroupArn"],
 		["DBParameterGroupName"] = args["DBParameterGroupName"],
 		["DBParameterGroupFamily"] = args["DBParameterGroupFamily"],
 		["Description"] = args["Description"],
 	}
-	asserts.AssertDBParameterGroup(t)
-	return t
+	asserts.AssertDBParameterGroup(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.StopDBInstanceResult = { ["DBInstance"] = true, nil }
@@ -5593,12 +7386,23 @@ end
 -- * DBInstance [DBInstance] 
 -- @return StopDBInstanceResult structure as a key-value pair table
 function M.StopDBInstanceResult(args)
-	assert(args, "You must provdide an argument table when creating StopDBInstanceResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating StopDBInstanceResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DBInstance"] = args["DBInstance"],
 	}
-	asserts.AssertStopDBInstanceResult(t)
-	return t
+	asserts.AssertStopDBInstanceResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeEventCategoriesMessage = { ["SourceType"] = true, ["Filters"] = true, nil }
@@ -5621,13 +7425,24 @@ end
 -- * Filters [FilterList] <p>This parameter is not currently supported.</p>
 -- @return DescribeEventCategoriesMessage structure as a key-value pair table
 function M.DescribeEventCategoriesMessage(args)
-	assert(args, "You must provdide an argument table when creating DescribeEventCategoriesMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeEventCategoriesMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["SourceType"] = args["SourceType"],
 		["Filters"] = args["Filters"],
 	}
-	asserts.AssertDescribeEventCategoriesMessage(t)
-	return t
+	asserts.AssertDescribeEventCategoriesMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.RestoreDBClusterToPointInTimeMessage = { ["VpcSecurityGroupIds"] = true, ["DBClusterIdentifier"] = true, ["Tags"] = true, ["UseLatestRestorableTime"] = true, ["RestoreType"] = true, ["EnableIAMDatabaseAuthentication"] = true, ["KmsKeyId"] = true, ["SourceDBClusterIdentifier"] = true, ["DBSubnetGroupName"] = true, ["RestoreToTime"] = true, ["Port"] = true, ["OptionGroupName"] = true, nil }
@@ -5674,8 +7489,14 @@ end
 -- Required key: SourceDBClusterIdentifier
 -- @return RestoreDBClusterToPointInTimeMessage structure as a key-value pair table
 function M.RestoreDBClusterToPointInTimeMessage(args)
-	assert(args, "You must provdide an argument table when creating RestoreDBClusterToPointInTimeMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating RestoreDBClusterToPointInTimeMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["VpcSecurityGroupIds"] = args["VpcSecurityGroupIds"],
 		["DBClusterIdentifier"] = args["DBClusterIdentifier"],
 		["Tags"] = args["Tags"],
@@ -5689,8 +7510,13 @@ function M.RestoreDBClusterToPointInTimeMessage(args)
 		["Port"] = args["Port"],
 		["OptionGroupName"] = args["OptionGroupName"],
 	}
-	asserts.AssertRestoreDBClusterToPointInTimeMessage(t)
-	return t
+	asserts.AssertRestoreDBClusterToPointInTimeMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateDBClusterSnapshotMessage = { ["DBClusterSnapshotIdentifier"] = true, ["DBClusterIdentifier"] = true, ["Tags"] = true, nil }
@@ -5719,14 +7545,25 @@ end
 -- Required key: DBClusterIdentifier
 -- @return CreateDBClusterSnapshotMessage structure as a key-value pair table
 function M.CreateDBClusterSnapshotMessage(args)
-	assert(args, "You must provdide an argument table when creating CreateDBClusterSnapshotMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateDBClusterSnapshotMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DBClusterSnapshotIdentifier"] = args["DBClusterSnapshotIdentifier"],
 		["DBClusterIdentifier"] = args["DBClusterIdentifier"],
 		["Tags"] = args["Tags"],
 	}
-	asserts.AssertCreateDBClusterSnapshotMessage(t)
-	return t
+	asserts.AssertCreateDBClusterSnapshotMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.RebootDBInstanceResult = { ["DBInstance"] = true, nil }
@@ -5747,12 +7584,23 @@ end
 -- * DBInstance [DBInstance] 
 -- @return RebootDBInstanceResult structure as a key-value pair table
 function M.RebootDBInstanceResult(args)
-	assert(args, "You must provdide an argument table when creating RebootDBInstanceResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating RebootDBInstanceResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DBInstance"] = args["DBInstance"],
 	}
-	asserts.AssertRebootDBInstanceResult(t)
-	return t
+	asserts.AssertRebootDBInstanceResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.PromoteReadReplicaDBClusterMessage = { ["DBClusterIdentifier"] = true, nil }
@@ -5775,12 +7623,23 @@ end
 -- Required key: DBClusterIdentifier
 -- @return PromoteReadReplicaDBClusterMessage structure as a key-value pair table
 function M.PromoteReadReplicaDBClusterMessage(args)
-	assert(args, "You must provdide an argument table when creating PromoteReadReplicaDBClusterMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating PromoteReadReplicaDBClusterMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DBClusterIdentifier"] = args["DBClusterIdentifier"],
 	}
-	asserts.AssertPromoteReadReplicaDBClusterMessage(t)
-	return t
+	asserts.AssertPromoteReadReplicaDBClusterMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CopyDBParameterGroupResult = { ["DBParameterGroup"] = true, nil }
@@ -5801,12 +7660,23 @@ end
 -- * DBParameterGroup [DBParameterGroup] 
 -- @return CopyDBParameterGroupResult structure as a key-value pair table
 function M.CopyDBParameterGroupResult(args)
-	assert(args, "You must provdide an argument table when creating CopyDBParameterGroupResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CopyDBParameterGroupResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DBParameterGroup"] = args["DBParameterGroup"],
 	}
-	asserts.AssertCopyDBParameterGroupResult(t)
-	return t
+	asserts.AssertCopyDBParameterGroupResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.SNSInvalidTopicFault = { nil }
@@ -5825,11 +7695,22 @@ end
 -- Valid keys:
 -- @return SNSInvalidTopicFault structure as a key-value pair table
 function M.SNSInvalidTopicFault(args)
-	assert(args, "You must provdide an argument table when creating SNSInvalidTopicFault")
-	local t = { 
+	assert(args, "You must provide an argument table when creating SNSInvalidTopicFault")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertSNSInvalidTopicFault(t)
-	return t
+	asserts.AssertSNSInvalidTopicFault(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.RemoveSourceIdentifierFromSubscriptionResult = { ["EventSubscription"] = true, nil }
@@ -5850,12 +7731,23 @@ end
 -- * EventSubscription [EventSubscription] 
 -- @return RemoveSourceIdentifierFromSubscriptionResult structure as a key-value pair table
 function M.RemoveSourceIdentifierFromSubscriptionResult(args)
-	assert(args, "You must provdide an argument table when creating RemoveSourceIdentifierFromSubscriptionResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating RemoveSourceIdentifierFromSubscriptionResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["EventSubscription"] = args["EventSubscription"],
 	}
-	asserts.AssertRemoveSourceIdentifierFromSubscriptionResult(t)
-	return t
+	asserts.AssertRemoveSourceIdentifierFromSubscriptionResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteDBClusterResult = { ["DBCluster"] = true, nil }
@@ -5876,12 +7768,23 @@ end
 -- * DBCluster [DBCluster] 
 -- @return DeleteDBClusterResult structure as a key-value pair table
 function M.DeleteDBClusterResult(args)
-	assert(args, "You must provdide an argument table when creating DeleteDBClusterResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteDBClusterResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DBCluster"] = args["DBCluster"],
 	}
-	asserts.AssertDeleteDBClusterResult(t)
-	return t
+	asserts.AssertDeleteDBClusterResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CopyDBClusterSnapshotMessage = { ["CopyTags"] = true, ["SourceRegion"] = true, ["Tags"] = true, ["SourceDBClusterSnapshotIdentifier"] = true, ["PreSignedUrl"] = true, ["KmsKeyId"] = true, ["TargetDBClusterSnapshotIdentifier"] = true, nil }
@@ -5918,8 +7821,14 @@ end
 -- Required key: TargetDBClusterSnapshotIdentifier
 -- @return CopyDBClusterSnapshotMessage structure as a key-value pair table
 function M.CopyDBClusterSnapshotMessage(args)
-	assert(args, "You must provdide an argument table when creating CopyDBClusterSnapshotMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CopyDBClusterSnapshotMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["CopyTags"] = args["CopyTags"],
 		["SourceRegion"] = args["SourceRegion"],
 		["Tags"] = args["Tags"],
@@ -5928,8 +7837,13 @@ function M.CopyDBClusterSnapshotMessage(args)
 		["KmsKeyId"] = args["KmsKeyId"],
 		["TargetDBClusterSnapshotIdentifier"] = args["TargetDBClusterSnapshotIdentifier"],
 	}
-	asserts.AssertCopyDBClusterSnapshotMessage(t)
-	return t
+	asserts.AssertCopyDBClusterSnapshotMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeEngineDefaultClusterParametersResult = { ["EngineDefaults"] = true, nil }
@@ -5950,12 +7864,23 @@ end
 -- * EngineDefaults [EngineDefaults] 
 -- @return DescribeEngineDefaultClusterParametersResult structure as a key-value pair table
 function M.DescribeEngineDefaultClusterParametersResult(args)
-	assert(args, "You must provdide an argument table when creating DescribeEngineDefaultClusterParametersResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeEngineDefaultClusterParametersResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["EngineDefaults"] = args["EngineDefaults"],
 	}
-	asserts.AssertDescribeEngineDefaultClusterParametersResult(t)
-	return t
+	asserts.AssertDescribeEngineDefaultClusterParametersResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.SubscriptionNotFoundFault = { nil }
@@ -5974,11 +7899,22 @@ end
 -- Valid keys:
 -- @return SubscriptionNotFoundFault structure as a key-value pair table
 function M.SubscriptionNotFoundFault(args)
-	assert(args, "You must provdide an argument table when creating SubscriptionNotFoundFault")
-	local t = { 
+	assert(args, "You must provide an argument table when creating SubscriptionNotFoundFault")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertSubscriptionNotFoundFault(t)
-	return t
+	asserts.AssertSubscriptionNotFoundFault(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeReservedDBInstancesOfferingsMessage = { ["MultiAZ"] = true, ["OfferingType"] = true, ["ProductDescription"] = true, ["ReservedDBInstancesOfferingId"] = true, ["Marker"] = true, ["MaxRecords"] = true, ["Filters"] = true, ["Duration"] = true, ["DBInstanceClass"] = true, nil }
@@ -6015,8 +7951,14 @@ end
 -- * DBInstanceClass [String] <p>The DB instance class filter value. Specify this parameter to show only the available offerings matching the specified DB instance class.</p>
 -- @return DescribeReservedDBInstancesOfferingsMessage structure as a key-value pair table
 function M.DescribeReservedDBInstancesOfferingsMessage(args)
-	assert(args, "You must provdide an argument table when creating DescribeReservedDBInstancesOfferingsMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeReservedDBInstancesOfferingsMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["MultiAZ"] = args["MultiAZ"],
 		["OfferingType"] = args["OfferingType"],
 		["ProductDescription"] = args["ProductDescription"],
@@ -6027,8 +7969,13 @@ function M.DescribeReservedDBInstancesOfferingsMessage(args)
 		["Duration"] = args["Duration"],
 		["DBInstanceClass"] = args["DBInstanceClass"],
 	}
-	asserts.AssertDescribeReservedDBInstancesOfferingsMessage(t)
-	return t
+	asserts.AssertDescribeReservedDBInstancesOfferingsMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteOptionGroupMessage = { ["OptionGroupName"] = true, nil }
@@ -6051,12 +7998,23 @@ end
 -- Required key: OptionGroupName
 -- @return DeleteOptionGroupMessage structure as a key-value pair table
 function M.DeleteOptionGroupMessage(args)
-	assert(args, "You must provdide an argument table when creating DeleteOptionGroupMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteOptionGroupMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["OptionGroupName"] = args["OptionGroupName"],
 	}
-	asserts.AssertDeleteOptionGroupMessage(t)
-	return t
+	asserts.AssertDeleteOptionGroupMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribePendingMaintenanceActionsMessage = { ["Marker"] = true, ["MaxRecords"] = true, ["Filters"] = true, ["ResourceIdentifier"] = true, nil }
@@ -6083,15 +8041,26 @@ end
 -- * ResourceIdentifier [String] <p>The ARN of a resource to return pending maintenance actions for.</p>
 -- @return DescribePendingMaintenanceActionsMessage structure as a key-value pair table
 function M.DescribePendingMaintenanceActionsMessage(args)
-	assert(args, "You must provdide an argument table when creating DescribePendingMaintenanceActionsMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribePendingMaintenanceActionsMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Marker"] = args["Marker"],
 		["MaxRecords"] = args["MaxRecords"],
 		["Filters"] = args["Filters"],
 		["ResourceIdentifier"] = args["ResourceIdentifier"],
 	}
-	asserts.AssertDescribePendingMaintenanceActionsMessage(t)
-	return t
+	asserts.AssertDescribePendingMaintenanceActionsMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidDBParameterGroupStateFault = { nil }
@@ -6110,11 +8079,22 @@ end
 -- Valid keys:
 -- @return InvalidDBParameterGroupStateFault structure as a key-value pair table
 function M.InvalidDBParameterGroupStateFault(args)
-	assert(args, "You must provdide an argument table when creating InvalidDBParameterGroupStateFault")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidDBParameterGroupStateFault")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertInvalidDBParameterGroupStateFault(t)
-	return t
+	asserts.AssertInvalidDBParameterGroupStateFault(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeOptionGroupsMessage = { ["MajorEngineVersion"] = true, ["MaxRecords"] = true, ["Filters"] = true, ["Marker"] = true, ["EngineName"] = true, ["OptionGroupName"] = true, nil }
@@ -6145,8 +8125,14 @@ end
 -- * OptionGroupName [String] <p>The name of the option group to describe. Cannot be supplied together with EngineName or MajorEngineVersion.</p>
 -- @return DescribeOptionGroupsMessage structure as a key-value pair table
 function M.DescribeOptionGroupsMessage(args)
-	assert(args, "You must provdide an argument table when creating DescribeOptionGroupsMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeOptionGroupsMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["MajorEngineVersion"] = args["MajorEngineVersion"],
 		["MaxRecords"] = args["MaxRecords"],
 		["Filters"] = args["Filters"],
@@ -6154,8 +8140,13 @@ function M.DescribeOptionGroupsMessage(args)
 		["EngineName"] = args["EngineName"],
 		["OptionGroupName"] = args["OptionGroupName"],
 	}
-	asserts.AssertDescribeOptionGroupsMessage(t)
-	return t
+	asserts.AssertDescribeOptionGroupsMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DBSnapshotNotFoundFault = { nil }
@@ -6174,11 +8165,22 @@ end
 -- Valid keys:
 -- @return DBSnapshotNotFoundFault structure as a key-value pair table
 function M.DBSnapshotNotFoundFault(args)
-	assert(args, "You must provdide an argument table when creating DBSnapshotNotFoundFault")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DBSnapshotNotFoundFault")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertDBSnapshotNotFoundFault(t)
-	return t
+	asserts.AssertDBSnapshotNotFoundFault(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DBClusterParameterGroupDetails = { ["Marker"] = true, ["Parameters"] = true, nil }
@@ -6201,13 +8203,24 @@ end
 -- * Parameters [ParametersList] <p>Provides a list of parameters for the DB cluster parameter group.</p>
 -- @return DBClusterParameterGroupDetails structure as a key-value pair table
 function M.DBClusterParameterGroupDetails(args)
-	assert(args, "You must provdide an argument table when creating DBClusterParameterGroupDetails")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DBClusterParameterGroupDetails")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Marker"] = args["Marker"],
 		["Parameters"] = args["Parameters"],
 	}
-	asserts.AssertDBClusterParameterGroupDetails(t)
-	return t
+	asserts.AssertDBClusterParameterGroupDetails(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateDBSubnetGroupMessage = { ["DBSubnetGroupName"] = true, ["DBSubnetGroupDescription"] = true, ["SubnetIds"] = true, ["Tags"] = true, nil }
@@ -6240,15 +8253,26 @@ end
 -- Required key: SubnetIds
 -- @return CreateDBSubnetGroupMessage structure as a key-value pair table
 function M.CreateDBSubnetGroupMessage(args)
-	assert(args, "You must provdide an argument table when creating CreateDBSubnetGroupMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateDBSubnetGroupMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DBSubnetGroupName"] = args["DBSubnetGroupName"],
 		["DBSubnetGroupDescription"] = args["DBSubnetGroupDescription"],
 		["SubnetIds"] = args["SubnetIds"],
 		["Tags"] = args["Tags"],
 	}
-	asserts.AssertCreateDBSubnetGroupMessage(t)
-	return t
+	asserts.AssertCreateDBSubnetGroupMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DBSubnetGroupMessage = { ["Marker"] = true, ["DBSubnetGroups"] = true, nil }
@@ -6271,13 +8295,24 @@ end
 -- * DBSubnetGroups [DBSubnetGroups] <p> A list of <a>DBSubnetGroup</a> instances. </p>
 -- @return DBSubnetGroupMessage structure as a key-value pair table
 function M.DBSubnetGroupMessage(args)
-	assert(args, "You must provdide an argument table when creating DBSubnetGroupMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DBSubnetGroupMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Marker"] = args["Marker"],
 		["DBSubnetGroups"] = args["DBSubnetGroups"],
 	}
-	asserts.AssertDBSubnetGroupMessage(t)
-	return t
+	asserts.AssertDBSubnetGroupMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.VpcSecurityGroupMembership = { ["Status"] = true, ["VpcSecurityGroupId"] = true, nil }
@@ -6300,13 +8335,24 @@ end
 -- * VpcSecurityGroupId [String] <p>The name of the VPC security group.</p>
 -- @return VpcSecurityGroupMembership structure as a key-value pair table
 function M.VpcSecurityGroupMembership(args)
-	assert(args, "You must provdide an argument table when creating VpcSecurityGroupMembership")
-	local t = { 
+	assert(args, "You must provide an argument table when creating VpcSecurityGroupMembership")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Status"] = args["Status"],
 		["VpcSecurityGroupId"] = args["VpcSecurityGroupId"],
 	}
-	asserts.AssertVpcSecurityGroupMembership(t)
-	return t
+	asserts.AssertVpcSecurityGroupMembership(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.RestoreDBClusterFromSnapshotMessage = { ["Engine"] = true, ["DBClusterIdentifier"] = true, ["Tags"] = true, ["VpcSecurityGroupIds"] = true, ["EnableIAMDatabaseAuthentication"] = true, ["KmsKeyId"] = true, ["DatabaseName"] = true, ["EngineVersion"] = true, ["DBSubnetGroupName"] = true, ["AvailabilityZones"] = true, ["Port"] = true, ["OptionGroupName"] = true, ["SnapshotIdentifier"] = true, nil }
@@ -6357,8 +8403,14 @@ end
 -- Required key: Engine
 -- @return RestoreDBClusterFromSnapshotMessage structure as a key-value pair table
 function M.RestoreDBClusterFromSnapshotMessage(args)
-	assert(args, "You must provdide an argument table when creating RestoreDBClusterFromSnapshotMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating RestoreDBClusterFromSnapshotMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Engine"] = args["Engine"],
 		["DBClusterIdentifier"] = args["DBClusterIdentifier"],
 		["Tags"] = args["Tags"],
@@ -6373,8 +8425,13 @@ function M.RestoreDBClusterFromSnapshotMessage(args)
 		["OptionGroupName"] = args["OptionGroupName"],
 		["SnapshotIdentifier"] = args["SnapshotIdentifier"],
 	}
-	asserts.AssertRestoreDBClusterFromSnapshotMessage(t)
-	return t
+	asserts.AssertRestoreDBClusterFromSnapshotMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.RevokeDBSecurityGroupIngressMessage = { ["EC2SecurityGroupName"] = true, ["EC2SecurityGroupOwnerId"] = true, ["CIDRIP"] = true, ["EC2SecurityGroupId"] = true, ["DBSecurityGroupName"] = true, nil }
@@ -6405,16 +8462,27 @@ end
 -- Required key: DBSecurityGroupName
 -- @return RevokeDBSecurityGroupIngressMessage structure as a key-value pair table
 function M.RevokeDBSecurityGroupIngressMessage(args)
-	assert(args, "You must provdide an argument table when creating RevokeDBSecurityGroupIngressMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating RevokeDBSecurityGroupIngressMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["EC2SecurityGroupName"] = args["EC2SecurityGroupName"],
 		["EC2SecurityGroupOwnerId"] = args["EC2SecurityGroupOwnerId"],
 		["CIDRIP"] = args["CIDRIP"],
 		["EC2SecurityGroupId"] = args["EC2SecurityGroupId"],
 		["DBSecurityGroupName"] = args["DBSecurityGroupName"],
 	}
-	asserts.AssertRevokeDBSecurityGroupIngressMessage(t)
-	return t
+	asserts.AssertRevokeDBSecurityGroupIngressMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InstanceQuotaExceededFault = { nil }
@@ -6433,11 +8501,22 @@ end
 -- Valid keys:
 -- @return InstanceQuotaExceededFault structure as a key-value pair table
 function M.InstanceQuotaExceededFault(args)
-	assert(args, "You must provdide an argument table when creating InstanceQuotaExceededFault")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InstanceQuotaExceededFault")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertInstanceQuotaExceededFault(t)
-	return t
+	asserts.AssertInstanceQuotaExceededFault(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.EventSubscriptionsMessage = { ["Marker"] = true, ["EventSubscriptionsList"] = true, nil }
@@ -6460,13 +8539,24 @@ end
 -- * EventSubscriptionsList [EventSubscriptionsList] <p>A list of EventSubscriptions data types.</p>
 -- @return EventSubscriptionsMessage structure as a key-value pair table
 function M.EventSubscriptionsMessage(args)
-	assert(args, "You must provdide an argument table when creating EventSubscriptionsMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating EventSubscriptionsMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Marker"] = args["Marker"],
 		["EventSubscriptionsList"] = args["EventSubscriptionsList"],
 	}
-	asserts.AssertEventSubscriptionsMessage(t)
-	return t
+	asserts.AssertEventSubscriptionsMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ReservedDBInstancesOfferingNotFoundFault = { nil }
@@ -6485,11 +8575,22 @@ end
 -- Valid keys:
 -- @return ReservedDBInstancesOfferingNotFoundFault structure as a key-value pair table
 function M.ReservedDBInstancesOfferingNotFoundFault(args)
-	assert(args, "You must provdide an argument table when creating ReservedDBInstancesOfferingNotFoundFault")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ReservedDBInstancesOfferingNotFoundFault")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertReservedDBInstancesOfferingNotFoundFault(t)
-	return t
+	asserts.AssertReservedDBInstancesOfferingNotFoundFault(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.KMSKeyNotAccessibleFault = { nil }
@@ -6508,11 +8609,22 @@ end
 -- Valid keys:
 -- @return KMSKeyNotAccessibleFault structure as a key-value pair table
 function M.KMSKeyNotAccessibleFault(args)
-	assert(args, "You must provdide an argument table when creating KMSKeyNotAccessibleFault")
-	local t = { 
+	assert(args, "You must provide an argument table when creating KMSKeyNotAccessibleFault")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertKMSKeyNotAccessibleFault(t)
-	return t
+	asserts.AssertKMSKeyNotAccessibleFault(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DBSecurityGroupNotFoundFault = { nil }
@@ -6531,11 +8643,22 @@ end
 -- Valid keys:
 -- @return DBSecurityGroupNotFoundFault structure as a key-value pair table
 function M.DBSecurityGroupNotFoundFault(args)
-	assert(args, "You must provdide an argument table when creating DBSecurityGroupNotFoundFault")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DBSecurityGroupNotFoundFault")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertDBSecurityGroupNotFoundFault(t)
-	return t
+	asserts.AssertDBSecurityGroupNotFoundFault(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ModifyDBClusterMessage = { ["DBClusterParameterGroupName"] = true, ["EnableIAMDatabaseAuthentication"] = true, ["DBClusterIdentifier"] = true, ["PreferredMaintenanceWindow"] = true, ["NewDBClusterIdentifier"] = true, ["VpcSecurityGroupIds"] = true, ["ApplyImmediately"] = true, ["PreferredBackupWindow"] = true, ["MasterUserPassword"] = true, ["BackupRetentionPeriod"] = true, ["Port"] = true, ["OptionGroupName"] = true, nil }
@@ -6580,8 +8703,14 @@ end
 -- Required key: DBClusterIdentifier
 -- @return ModifyDBClusterMessage structure as a key-value pair table
 function M.ModifyDBClusterMessage(args)
-	assert(args, "You must provdide an argument table when creating ModifyDBClusterMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ModifyDBClusterMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DBClusterParameterGroupName"] = args["DBClusterParameterGroupName"],
 		["EnableIAMDatabaseAuthentication"] = args["EnableIAMDatabaseAuthentication"],
 		["DBClusterIdentifier"] = args["DBClusterIdentifier"],
@@ -6595,8 +8724,13 @@ function M.ModifyDBClusterMessage(args)
 		["Port"] = args["Port"],
 		["OptionGroupName"] = args["OptionGroupName"],
 	}
-	asserts.AssertModifyDBClusterMessage(t)
-	return t
+	asserts.AssertModifyDBClusterMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ModifyDBClusterSnapshotAttributeResult = { ["DBClusterSnapshotAttributesResult"] = true, nil }
@@ -6617,12 +8751,23 @@ end
 -- * DBClusterSnapshotAttributesResult [DBClusterSnapshotAttributesResult] 
 -- @return ModifyDBClusterSnapshotAttributeResult structure as a key-value pair table
 function M.ModifyDBClusterSnapshotAttributeResult(args)
-	assert(args, "You must provdide an argument table when creating ModifyDBClusterSnapshotAttributeResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ModifyDBClusterSnapshotAttributeResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DBClusterSnapshotAttributesResult"] = args["DBClusterSnapshotAttributesResult"],
 	}
-	asserts.AssertModifyDBClusterSnapshotAttributeResult(t)
-	return t
+	asserts.AssertModifyDBClusterSnapshotAttributeResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ApplyPendingMaintenanceActionMessage = { ["ApplyAction"] = true, ["OptInType"] = true, ["ResourceIdentifier"] = true, nil }
@@ -6653,14 +8798,25 @@ end
 -- Required key: OptInType
 -- @return ApplyPendingMaintenanceActionMessage structure as a key-value pair table
 function M.ApplyPendingMaintenanceActionMessage(args)
-	assert(args, "You must provdide an argument table when creating ApplyPendingMaintenanceActionMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ApplyPendingMaintenanceActionMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ApplyAction"] = args["ApplyAction"],
 		["OptInType"] = args["OptInType"],
 		["ResourceIdentifier"] = args["ResourceIdentifier"],
 	}
-	asserts.AssertApplyPendingMaintenanceActionMessage(t)
-	return t
+	asserts.AssertApplyPendingMaintenanceActionMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AuthorizationNotFoundFault = { nil }
@@ -6679,11 +8835,22 @@ end
 -- Valid keys:
 -- @return AuthorizationNotFoundFault structure as a key-value pair table
 function M.AuthorizationNotFoundFault(args)
-	assert(args, "You must provdide an argument table when creating AuthorizationNotFoundFault")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AuthorizationNotFoundFault")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertAuthorizationNotFoundFault(t)
-	return t
+	asserts.AssertAuthorizationNotFoundFault(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateDBParameterGroupMessage = { ["DBParameterGroupName"] = true, ["DBParameterGroupFamily"] = true, ["Description"] = true, ["Tags"] = true, nil }
@@ -6716,15 +8883,26 @@ end
 -- Required key: Description
 -- @return CreateDBParameterGroupMessage structure as a key-value pair table
 function M.CreateDBParameterGroupMessage(args)
-	assert(args, "You must provdide an argument table when creating CreateDBParameterGroupMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateDBParameterGroupMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DBParameterGroupName"] = args["DBParameterGroupName"],
 		["DBParameterGroupFamily"] = args["DBParameterGroupFamily"],
 		["Description"] = args["Description"],
 		["Tags"] = args["Tags"],
 	}
-	asserts.AssertCreateDBParameterGroupMessage(t)
-	return t
+	asserts.AssertCreateDBParameterGroupMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.PendingModifiedValues = { ["MultiAZ"] = true, ["StorageType"] = true, ["CACertificateIdentifier"] = true, ["LicenseModel"] = true, ["MasterUserPassword"] = true, ["Port"] = true, ["Iops"] = true, ["AllocatedStorage"] = true, ["EngineVersion"] = true, ["DBInstanceClass"] = true, ["DBSubnetGroupName"] = true, ["BackupRetentionPeriod"] = true, ["DBInstanceIdentifier"] = true, nil }
@@ -6769,8 +8947,14 @@ end
 -- * DBInstanceIdentifier [String] <p> Contains the new <code>DBInstanceIdentifier</code> for the DB instance that will be applied or is in progress. </p>
 -- @return PendingModifiedValues structure as a key-value pair table
 function M.PendingModifiedValues(args)
-	assert(args, "You must provdide an argument table when creating PendingModifiedValues")
-	local t = { 
+	assert(args, "You must provide an argument table when creating PendingModifiedValues")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["MultiAZ"] = args["MultiAZ"],
 		["StorageType"] = args["StorageType"],
 		["CACertificateIdentifier"] = args["CACertificateIdentifier"],
@@ -6785,8 +8969,13 @@ function M.PendingModifiedValues(args)
 		["BackupRetentionPeriod"] = args["BackupRetentionPeriod"],
 		["DBInstanceIdentifier"] = args["DBInstanceIdentifier"],
 	}
-	asserts.AssertPendingModifiedValues(t)
-	return t
+	asserts.AssertPendingModifiedValues(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeDBParameterGroupsMessage = { ["Marker"] = true, ["DBParameterGroupName"] = true, ["MaxRecords"] = true, ["Filters"] = true, nil }
@@ -6813,15 +9002,26 @@ end
 -- * Filters [FilterList] <p>This parameter is not currently supported.</p>
 -- @return DescribeDBParameterGroupsMessage structure as a key-value pair table
 function M.DescribeDBParameterGroupsMessage(args)
-	assert(args, "You must provdide an argument table when creating DescribeDBParameterGroupsMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeDBParameterGroupsMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Marker"] = args["Marker"],
 		["DBParameterGroupName"] = args["DBParameterGroupName"],
 		["MaxRecords"] = args["MaxRecords"],
 		["Filters"] = args["Filters"],
 	}
-	asserts.AssertDescribeDBParameterGroupsMessage(t)
-	return t
+	asserts.AssertDescribeDBParameterGroupsMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateDBInstanceMessage = { ["DBParameterGroupName"] = true, ["PubliclyAccessible"] = true, ["DomainIAMRoleName"] = true, ["MasterUsername"] = true, ["MonitoringInterval"] = true, ["LicenseModel"] = true, ["VpcSecurityGroupIds"] = true, ["EnableIAMDatabaseAuthentication"] = true, ["CopyTagsToSnapshot"] = true, ["Engine"] = true, ["MultiAZ"] = true, ["DBSecurityGroups"] = true, ["Tags"] = true, ["AutoMinorVersionUpgrade"] = true, ["PreferredBackupWindow"] = true, ["PromotionTier"] = true, ["TdeCredentialArn"] = true, ["AllocatedStorage"] = true, ["DBSubnetGroupName"] = true, ["DBName"] = true, ["PreferredMaintenanceWindow"] = true, ["TdeCredentialPassword"] = true, ["Domain"] = true, ["EngineVersion"] = true, ["BackupRetentionPeriod"] = true, ["OptionGroupName"] = true, ["CharacterSetName"] = true, ["AvailabilityZone"] = true, ["MonitoringRoleArn"] = true, ["DBClusterIdentifier"] = true, ["StorageType"] = true, ["MasterUserPassword"] = true, ["Iops"] = true, ["StorageEncrypted"] = true, ["KmsKeyId"] = true, ["Timezone"] = true, ["DBInstanceClass"] = true, ["Port"] = true, ["DBInstanceIdentifier"] = true, nil }
@@ -6924,8 +9124,14 @@ end
 -- Required key: Engine
 -- @return CreateDBInstanceMessage structure as a key-value pair table
 function M.CreateDBInstanceMessage(args)
-	assert(args, "You must provdide an argument table when creating CreateDBInstanceMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateDBInstanceMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DBParameterGroupName"] = args["DBParameterGroupName"],
 		["PubliclyAccessible"] = args["PubliclyAccessible"],
 		["DomainIAMRoleName"] = args["DomainIAMRoleName"],
@@ -6966,8 +9172,13 @@ function M.CreateDBInstanceMessage(args)
 		["Port"] = args["Port"],
 		["DBInstanceIdentifier"] = args["DBInstanceIdentifier"],
 	}
-	asserts.AssertCreateDBInstanceMessage(t)
-	return t
+	asserts.AssertCreateDBInstanceMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CertificateMessage = { ["Certificates"] = true, ["Marker"] = true, nil }
@@ -6990,13 +9201,24 @@ end
 -- * Marker [String] <p> An optional pagination token provided by a previous <a>DescribeCertificates</a> request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by <code>MaxRecords</code> . </p>
 -- @return CertificateMessage structure as a key-value pair table
 function M.CertificateMessage(args)
-	assert(args, "You must provdide an argument table when creating CertificateMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CertificateMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Certificates"] = args["Certificates"],
 		["Marker"] = args["Marker"],
 	}
-	asserts.AssertCertificateMessage(t)
-	return t
+	asserts.AssertCertificateMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.OptionGroup = { ["VpcId"] = true, ["MajorEngineVersion"] = true, ["OptionGroupDescription"] = true, ["Options"] = true, ["OptionGroupArn"] = true, ["EngineName"] = true, ["AllowsVpcAndNonVpcInstanceMemberships"] = true, ["OptionGroupName"] = true, nil }
@@ -7031,8 +9253,14 @@ end
 -- * OptionGroupName [String] <p>Specifies the name of the option group.</p>
 -- @return OptionGroup structure as a key-value pair table
 function M.OptionGroup(args)
-	assert(args, "You must provdide an argument table when creating OptionGroup")
-	local t = { 
+	assert(args, "You must provide an argument table when creating OptionGroup")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["VpcId"] = args["VpcId"],
 		["MajorEngineVersion"] = args["MajorEngineVersion"],
 		["OptionGroupDescription"] = args["OptionGroupDescription"],
@@ -7042,8 +9270,13 @@ function M.OptionGroup(args)
 		["AllowsVpcAndNonVpcInstanceMemberships"] = args["AllowsVpcAndNonVpcInstanceMemberships"],
 		["OptionGroupName"] = args["OptionGroupName"],
 	}
-	asserts.AssertOptionGroup(t)
-	return t
+	asserts.AssertOptionGroup(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidDBSubnetGroupStateFault = { nil }
@@ -7062,11 +9295,22 @@ end
 -- Valid keys:
 -- @return InvalidDBSubnetGroupStateFault structure as a key-value pair table
 function M.InvalidDBSubnetGroupStateFault(args)
-	assert(args, "You must provdide an argument table when creating InvalidDBSubnetGroupStateFault")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidDBSubnetGroupStateFault")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertInvalidDBSubnetGroupStateFault(t)
-	return t
+	asserts.AssertInvalidDBSubnetGroupStateFault(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AuthorizeDBSecurityGroupIngressResult = { ["DBSecurityGroup"] = true, nil }
@@ -7087,12 +9331,23 @@ end
 -- * DBSecurityGroup [DBSecurityGroup] 
 -- @return AuthorizeDBSecurityGroupIngressResult structure as a key-value pair table
 function M.AuthorizeDBSecurityGroupIngressResult(args)
-	assert(args, "You must provdide an argument table when creating AuthorizeDBSecurityGroupIngressResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AuthorizeDBSecurityGroupIngressResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DBSecurityGroup"] = args["DBSecurityGroup"],
 	}
-	asserts.AssertAuthorizeDBSecurityGroupIngressResult(t)
-	return t
+	asserts.AssertAuthorizeDBSecurityGroupIngressResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ProvisionedIopsNotAvailableInAZFault = { nil }
@@ -7111,11 +9366,22 @@ end
 -- Valid keys:
 -- @return ProvisionedIopsNotAvailableInAZFault structure as a key-value pair table
 function M.ProvisionedIopsNotAvailableInAZFault(args)
-	assert(args, "You must provdide an argument table when creating ProvisionedIopsNotAvailableInAZFault")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ProvisionedIopsNotAvailableInAZFault")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertProvisionedIopsNotAvailableInAZFault(t)
-	return t
+	asserts.AssertProvisionedIopsNotAvailableInAZFault(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeEngineDefaultParametersMessage = { ["Marker"] = true, ["DBParameterGroupFamily"] = true, ["MaxRecords"] = true, ["Filters"] = true, nil }
@@ -7144,15 +9410,26 @@ end
 -- Required key: DBParameterGroupFamily
 -- @return DescribeEngineDefaultParametersMessage structure as a key-value pair table
 function M.DescribeEngineDefaultParametersMessage(args)
-	assert(args, "You must provdide an argument table when creating DescribeEngineDefaultParametersMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeEngineDefaultParametersMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Marker"] = args["Marker"],
 		["DBParameterGroupFamily"] = args["DBParameterGroupFamily"],
 		["MaxRecords"] = args["MaxRecords"],
 		["Filters"] = args["Filters"],
 	}
-	asserts.AssertDescribeEngineDefaultParametersMessage(t)
-	return t
+	asserts.AssertDescribeEngineDefaultParametersMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidDBSecurityGroupStateFault = { nil }
@@ -7171,11 +9448,22 @@ end
 -- Valid keys:
 -- @return InvalidDBSecurityGroupStateFault structure as a key-value pair table
 function M.InvalidDBSecurityGroupStateFault(args)
-	assert(args, "You must provdide an argument table when creating InvalidDBSecurityGroupStateFault")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidDBSecurityGroupStateFault")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertInvalidDBSecurityGroupStateFault(t)
-	return t
+	asserts.AssertInvalidDBSecurityGroupStateFault(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.OptionGroupAlreadyExistsFault = { nil }
@@ -7194,11 +9482,22 @@ end
 -- Valid keys:
 -- @return OptionGroupAlreadyExistsFault structure as a key-value pair table
 function M.OptionGroupAlreadyExistsFault(args)
-	assert(args, "You must provdide an argument table when creating OptionGroupAlreadyExistsFault")
-	local t = { 
+	assert(args, "You must provide an argument table when creating OptionGroupAlreadyExistsFault")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertOptionGroupAlreadyExistsFault(t)
-	return t
+	asserts.AssertOptionGroupAlreadyExistsFault(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InsufficientDBClusterCapacityFault = { nil }
@@ -7217,11 +9516,22 @@ end
 -- Valid keys:
 -- @return InsufficientDBClusterCapacityFault structure as a key-value pair table
 function M.InsufficientDBClusterCapacityFault(args)
-	assert(args, "You must provdide an argument table when creating InsufficientDBClusterCapacityFault")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InsufficientDBClusterCapacityFault")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertInsufficientDBClusterCapacityFault(t)
-	return t
+	asserts.AssertInsufficientDBClusterCapacityFault(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeDBLogFilesResponse = { ["DescribeDBLogFiles"] = true, ["Marker"] = true, nil }
@@ -7244,13 +9554,24 @@ end
 -- * Marker [String] <p>A pagination token that can be used in a subsequent DescribeDBLogFiles request.</p>
 -- @return DescribeDBLogFilesResponse structure as a key-value pair table
 function M.DescribeDBLogFilesResponse(args)
-	assert(args, "You must provdide an argument table when creating DescribeDBLogFilesResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeDBLogFilesResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DescribeDBLogFiles"] = args["DescribeDBLogFiles"],
 		["Marker"] = args["Marker"],
 	}
-	asserts.AssertDescribeDBLogFilesResponse(t)
-	return t
+	asserts.AssertDescribeDBLogFilesResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.SharedSnapshotQuotaExceededFault = { nil }
@@ -7269,11 +9590,22 @@ end
 -- Valid keys:
 -- @return SharedSnapshotQuotaExceededFault structure as a key-value pair table
 function M.SharedSnapshotQuotaExceededFault(args)
-	assert(args, "You must provdide an argument table when creating SharedSnapshotQuotaExceededFault")
-	local t = { 
+	assert(args, "You must provide an argument table when creating SharedSnapshotQuotaExceededFault")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertSharedSnapshotQuotaExceededFault(t)
-	return t
+	asserts.AssertSharedSnapshotQuotaExceededFault(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CopyOptionGroupResult = { ["OptionGroup"] = true, nil }
@@ -7294,12 +9626,23 @@ end
 -- * OptionGroup [OptionGroup] 
 -- @return CopyOptionGroupResult structure as a key-value pair table
 function M.CopyOptionGroupResult(args)
-	assert(args, "You must provdide an argument table when creating CopyOptionGroupResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CopyOptionGroupResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["OptionGroup"] = args["OptionGroup"],
 	}
-	asserts.AssertCopyOptionGroupResult(t)
-	return t
+	asserts.AssertCopyOptionGroupResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ModifyEventSubscriptionResult = { ["EventSubscription"] = true, nil }
@@ -7320,12 +9663,23 @@ end
 -- * EventSubscription [EventSubscription] 
 -- @return ModifyEventSubscriptionResult structure as a key-value pair table
 function M.ModifyEventSubscriptionResult(args)
-	assert(args, "You must provdide an argument table when creating ModifyEventSubscriptionResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ModifyEventSubscriptionResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["EventSubscription"] = args["EventSubscription"],
 	}
-	asserts.AssertModifyEventSubscriptionResult(t)
-	return t
+	asserts.AssertModifyEventSubscriptionResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.RemoveRoleFromDBClusterMessage = { ["RoleArn"] = true, ["DBClusterIdentifier"] = true, nil }
@@ -7352,13 +9706,24 @@ end
 -- Required key: RoleArn
 -- @return RemoveRoleFromDBClusterMessage structure as a key-value pair table
 function M.RemoveRoleFromDBClusterMessage(args)
-	assert(args, "You must provdide an argument table when creating RemoveRoleFromDBClusterMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating RemoveRoleFromDBClusterMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["RoleArn"] = args["RoleArn"],
 		["DBClusterIdentifier"] = args["DBClusterIdentifier"],
 	}
-	asserts.AssertRemoveRoleFromDBClusterMessage(t)
-	return t
+	asserts.AssertRemoveRoleFromDBClusterMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DBSecurityGroup = { ["VpcId"] = true, ["DBSecurityGroupDescription"] = true, ["IPRanges"] = true, ["OwnerId"] = true, ["DBSecurityGroupArn"] = true, ["EC2SecurityGroups"] = true, ["DBSecurityGroupName"] = true, nil }
@@ -7391,8 +9756,14 @@ end
 -- * DBSecurityGroupName [String] <p>Specifies the name of the DB security group.</p>
 -- @return DBSecurityGroup structure as a key-value pair table
 function M.DBSecurityGroup(args)
-	assert(args, "You must provdide an argument table when creating DBSecurityGroup")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DBSecurityGroup")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["VpcId"] = args["VpcId"],
 		["DBSecurityGroupDescription"] = args["DBSecurityGroupDescription"],
 		["IPRanges"] = args["IPRanges"],
@@ -7401,8 +9772,13 @@ function M.DBSecurityGroup(args)
 		["EC2SecurityGroups"] = args["EC2SecurityGroups"],
 		["DBSecurityGroupName"] = args["DBSecurityGroupName"],
 	}
-	asserts.AssertDBSecurityGroup(t)
-	return t
+	asserts.AssertDBSecurityGroup(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.EC2SecurityGroup = { ["Status"] = true, ["EC2SecurityGroupName"] = true, ["EC2SecurityGroupOwnerId"] = true, ["EC2SecurityGroupId"] = true, nil }
@@ -7429,15 +9805,26 @@ end
 -- * EC2SecurityGroupId [String] <p>Specifies the id of the EC2 security group.</p>
 -- @return EC2SecurityGroup structure as a key-value pair table
 function M.EC2SecurityGroup(args)
-	assert(args, "You must provdide an argument table when creating EC2SecurityGroup")
-	local t = { 
+	assert(args, "You must provide an argument table when creating EC2SecurityGroup")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Status"] = args["Status"],
 		["EC2SecurityGroupName"] = args["EC2SecurityGroupName"],
 		["EC2SecurityGroupOwnerId"] = args["EC2SecurityGroupOwnerId"],
 		["EC2SecurityGroupId"] = args["EC2SecurityGroupId"],
 	}
-	asserts.AssertEC2SecurityGroup(t)
-	return t
+	asserts.AssertEC2SecurityGroup(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeOptionGroupOptionsMessage = { ["Marker"] = true, ["EngineName"] = true, ["MaxRecords"] = true, ["MajorEngineVersion"] = true, ["Filters"] = true, nil }
@@ -7468,16 +9855,27 @@ end
 -- Required key: EngineName
 -- @return DescribeOptionGroupOptionsMessage structure as a key-value pair table
 function M.DescribeOptionGroupOptionsMessage(args)
-	assert(args, "You must provdide an argument table when creating DescribeOptionGroupOptionsMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeOptionGroupOptionsMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Marker"] = args["Marker"],
 		["EngineName"] = args["EngineName"],
 		["MaxRecords"] = args["MaxRecords"],
 		["MajorEngineVersion"] = args["MajorEngineVersion"],
 		["Filters"] = args["Filters"],
 	}
-	asserts.AssertDescribeOptionGroupOptionsMessage(t)
-	return t
+	asserts.AssertDescribeOptionGroupOptionsMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AuthorizationAlreadyExistsFault = { nil }
@@ -7496,11 +9894,22 @@ end
 -- Valid keys:
 -- @return AuthorizationAlreadyExistsFault structure as a key-value pair table
 function M.AuthorizationAlreadyExistsFault(args)
-	assert(args, "You must provdide an argument table when creating AuthorizationAlreadyExistsFault")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AuthorizationAlreadyExistsFault")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertAuthorizationAlreadyExistsFault(t)
-	return t
+	asserts.AssertAuthorizationAlreadyExistsFault(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DBParameterGroupsMessage = { ["Marker"] = true, ["DBParameterGroups"] = true, nil }
@@ -7523,13 +9932,24 @@ end
 -- * DBParameterGroups [DBParameterGroupList] <p> A list of <a>DBParameterGroup</a> instances. </p>
 -- @return DBParameterGroupsMessage structure as a key-value pair table
 function M.DBParameterGroupsMessage(args)
-	assert(args, "You must provdide an argument table when creating DBParameterGroupsMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DBParameterGroupsMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Marker"] = args["Marker"],
 		["DBParameterGroups"] = args["DBParameterGroups"],
 	}
-	asserts.AssertDBParameterGroupsMessage(t)
-	return t
+	asserts.AssertDBParameterGroupsMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.OptionGroupNotFoundFault = { nil }
@@ -7548,11 +9968,22 @@ end
 -- Valid keys:
 -- @return OptionGroupNotFoundFault structure as a key-value pair table
 function M.OptionGroupNotFoundFault(args)
-	assert(args, "You must provdide an argument table when creating OptionGroupNotFoundFault")
-	local t = { 
+	assert(args, "You must provide an argument table when creating OptionGroupNotFoundFault")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertOptionGroupNotFoundFault(t)
-	return t
+	asserts.AssertOptionGroupNotFoundFault(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DBSnapshot = { ["MasterUsername"] = true, ["LicenseModel"] = true, ["InstanceCreateTime"] = true, ["Engine"] = true, ["VpcId"] = true, ["SourceRegion"] = true, ["AllocatedStorage"] = true, ["Status"] = true, ["PercentProgress"] = true, ["SourceDBSnapshotIdentifier"] = true, ["DBSnapshotIdentifier"] = true, ["DBSnapshotArn"] = true, ["EngineVersion"] = true, ["TdeCredentialArn"] = true, ["OptionGroupName"] = true, ["SnapshotCreateTime"] = true, ["AvailabilityZone"] = true, ["StorageType"] = true, ["Encrypted"] = true, ["IAMDatabaseAuthenticationEnabled"] = true, ["Iops"] = true, ["KmsKeyId"] = true, ["SnapshotType"] = true, ["Timezone"] = true, ["Port"] = true, ["DBInstanceIdentifier"] = true, nil }
@@ -7623,8 +10054,14 @@ end
 -- * DBInstanceIdentifier [String] <p>Specifies the DB instance identifier of the DB instance this DB snapshot was created from.</p>
 -- @return DBSnapshot structure as a key-value pair table
 function M.DBSnapshot(args)
-	assert(args, "You must provdide an argument table when creating DBSnapshot")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DBSnapshot")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["MasterUsername"] = args["MasterUsername"],
 		["LicenseModel"] = args["LicenseModel"],
 		["InstanceCreateTime"] = args["InstanceCreateTime"],
@@ -7652,8 +10089,13 @@ function M.DBSnapshot(args)
 		["Port"] = args["Port"],
 		["DBInstanceIdentifier"] = args["DBInstanceIdentifier"],
 	}
-	asserts.AssertDBSnapshot(t)
-	return t
+	asserts.AssertDBSnapshot(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DBClusterRoleQuotaExceededFault = { nil }
@@ -7672,11 +10114,22 @@ end
 -- Valid keys:
 -- @return DBClusterRoleQuotaExceededFault structure as a key-value pair table
 function M.DBClusterRoleQuotaExceededFault(args)
-	assert(args, "You must provdide an argument table when creating DBClusterRoleQuotaExceededFault")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DBClusterRoleQuotaExceededFault")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertDBClusterRoleQuotaExceededFault(t)
-	return t
+	asserts.AssertDBClusterRoleQuotaExceededFault(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InsufficientStorageClusterCapacityFault = { nil }
@@ -7695,11 +10148,22 @@ end
 -- Valid keys:
 -- @return InsufficientStorageClusterCapacityFault structure as a key-value pair table
 function M.InsufficientStorageClusterCapacityFault(args)
-	assert(args, "You must provdide an argument table when creating InsufficientStorageClusterCapacityFault")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InsufficientStorageClusterCapacityFault")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertInsufficientStorageClusterCapacityFault(t)
-	return t
+	asserts.AssertInsufficientStorageClusterCapacityFault(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeEngineDefaultClusterParametersMessage = { ["Marker"] = true, ["DBParameterGroupFamily"] = true, ["MaxRecords"] = true, ["Filters"] = true, nil }
@@ -7728,15 +10192,26 @@ end
 -- Required key: DBParameterGroupFamily
 -- @return DescribeEngineDefaultClusterParametersMessage structure as a key-value pair table
 function M.DescribeEngineDefaultClusterParametersMessage(args)
-	assert(args, "You must provdide an argument table when creating DescribeEngineDefaultClusterParametersMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeEngineDefaultClusterParametersMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Marker"] = args["Marker"],
 		["DBParameterGroupFamily"] = args["DBParameterGroupFamily"],
 		["MaxRecords"] = args["MaxRecords"],
 		["Filters"] = args["Filters"],
 	}
-	asserts.AssertDescribeEngineDefaultClusterParametersMessage(t)
-	return t
+	asserts.AssertDescribeEngineDefaultClusterParametersMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ModifyDBSnapshotMessage = { ["DBSnapshotIdentifier"] = true, ["EngineVersion"] = true, nil }
@@ -7761,13 +10236,24 @@ end
 -- Required key: DBSnapshotIdentifier
 -- @return ModifyDBSnapshotMessage structure as a key-value pair table
 function M.ModifyDBSnapshotMessage(args)
-	assert(args, "You must provdide an argument table when creating ModifyDBSnapshotMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ModifyDBSnapshotMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DBSnapshotIdentifier"] = args["DBSnapshotIdentifier"],
 		["EngineVersion"] = args["EngineVersion"],
 	}
-	asserts.AssertModifyDBSnapshotMessage(t)
-	return t
+	asserts.AssertModifyDBSnapshotMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InsufficientDBInstanceCapacityFault = { nil }
@@ -7786,11 +10272,22 @@ end
 -- Valid keys:
 -- @return InsufficientDBInstanceCapacityFault structure as a key-value pair table
 function M.InsufficientDBInstanceCapacityFault(args)
-	assert(args, "You must provdide an argument table when creating InsufficientDBInstanceCapacityFault")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InsufficientDBInstanceCapacityFault")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertInsufficientDBInstanceCapacityFault(t)
-	return t
+	asserts.AssertInsufficientDBInstanceCapacityFault(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateDBClusterParameterGroupMessage = { ["DBClusterParameterGroupName"] = true, ["DBParameterGroupFamily"] = true, ["Description"] = true, ["Tags"] = true, nil }
@@ -7823,15 +10320,26 @@ end
 -- Required key: Description
 -- @return CreateDBClusterParameterGroupMessage structure as a key-value pair table
 function M.CreateDBClusterParameterGroupMessage(args)
-	assert(args, "You must provdide an argument table when creating CreateDBClusterParameterGroupMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateDBClusterParameterGroupMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DBClusterParameterGroupName"] = args["DBClusterParameterGroupName"],
 		["DBParameterGroupFamily"] = args["DBParameterGroupFamily"],
 		["Description"] = args["Description"],
 		["Tags"] = args["Tags"],
 	}
-	asserts.AssertCreateDBClusterParameterGroupMessage(t)
-	return t
+	asserts.AssertCreateDBClusterParameterGroupMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DBClusterMessage = { ["Marker"] = true, ["DBClusters"] = true, nil }
@@ -7854,13 +10362,24 @@ end
 -- * DBClusters [DBClusterList] <p>Contains a list of DB clusters for the user.</p>
 -- @return DBClusterMessage structure as a key-value pair table
 function M.DBClusterMessage(args)
-	assert(args, "You must provdide an argument table when creating DBClusterMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DBClusterMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Marker"] = args["Marker"],
 		["DBClusters"] = args["DBClusters"],
 	}
-	asserts.AssertDBClusterMessage(t)
-	return t
+	asserts.AssertDBClusterMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.EventCategoriesMap = { ["EventCategories"] = true, ["SourceType"] = true, nil }
@@ -7883,13 +10402,24 @@ end
 -- * SourceType [String] <p>The source type that the returned categories belong to</p>
 -- @return EventCategoriesMap structure as a key-value pair table
 function M.EventCategoriesMap(args)
-	assert(args, "You must provdide an argument table when creating EventCategoriesMap")
-	local t = { 
+	assert(args, "You must provide an argument table when creating EventCategoriesMap")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["EventCategories"] = args["EventCategories"],
 		["SourceType"] = args["SourceType"],
 	}
-	asserts.AssertEventCategoriesMap(t)
-	return t
+	asserts.AssertEventCategoriesMap(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.OrderableDBInstanceOptionsMessage = { ["Marker"] = true, ["OrderableDBInstanceOptions"] = true, nil }
@@ -7912,13 +10442,24 @@ end
 -- * OrderableDBInstanceOptions [OrderableDBInstanceOptionsList] <p>An <a>OrderableDBInstanceOption</a> structure containing information about orderable options for the DB instance.</p>
 -- @return OrderableDBInstanceOptionsMessage structure as a key-value pair table
 function M.OrderableDBInstanceOptionsMessage(args)
-	assert(args, "You must provdide an argument table when creating OrderableDBInstanceOptionsMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating OrderableDBInstanceOptionsMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Marker"] = args["Marker"],
 		["OrderableDBInstanceOptions"] = args["OrderableDBInstanceOptions"],
 	}
-	asserts.AssertOrderableDBInstanceOptionsMessage(t)
-	return t
+	asserts.AssertOrderableDBInstanceOptionsMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeDBSnapshotAttributesResult = { ["DBSnapshotAttributesResult"] = true, nil }
@@ -7939,12 +10480,23 @@ end
 -- * DBSnapshotAttributesResult [DBSnapshotAttributesResult] 
 -- @return DescribeDBSnapshotAttributesResult structure as a key-value pair table
 function M.DescribeDBSnapshotAttributesResult(args)
-	assert(args, "You must provdide an argument table when creating DescribeDBSnapshotAttributesResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeDBSnapshotAttributesResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DBSnapshotAttributesResult"] = args["DBSnapshotAttributesResult"],
 	}
-	asserts.AssertDescribeDBSnapshotAttributesResult(t)
-	return t
+	asserts.AssertDescribeDBSnapshotAttributesResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AccountQuota = { ["Max"] = true, ["AccountQuotaName"] = true, ["Used"] = true, nil }
@@ -7969,14 +10521,25 @@ end
 -- * Used [Long] <p>The amount currently used toward the quota maximum.</p>
 -- @return AccountQuota structure as a key-value pair table
 function M.AccountQuota(args)
-	assert(args, "You must provdide an argument table when creating AccountQuota")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AccountQuota")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Max"] = args["Max"],
 		["AccountQuotaName"] = args["AccountQuotaName"],
 		["Used"] = args["Used"],
 	}
-	asserts.AssertAccountQuota(t)
-	return t
+	asserts.AssertAccountQuota(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeDBClusterParametersMessage = { ["DBClusterParameterGroupName"] = true, ["Source"] = true, ["MaxRecords"] = true, ["Marker"] = true, ["Filters"] = true, nil }
@@ -8007,16 +10570,27 @@ end
 -- Required key: DBClusterParameterGroupName
 -- @return DescribeDBClusterParametersMessage structure as a key-value pair table
 function M.DescribeDBClusterParametersMessage(args)
-	assert(args, "You must provdide an argument table when creating DescribeDBClusterParametersMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeDBClusterParametersMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DBClusterParameterGroupName"] = args["DBClusterParameterGroupName"],
 		["Source"] = args["Source"],
 		["MaxRecords"] = args["MaxRecords"],
 		["Marker"] = args["Marker"],
 		["Filters"] = args["Filters"],
 	}
-	asserts.AssertDescribeDBClusterParametersMessage(t)
-	return t
+	asserts.AssertDescribeDBClusterParametersMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ModifyDBSubnetGroupMessage = { ["DBSubnetGroupName"] = true, ["DBSubnetGroupDescription"] = true, ["SubnetIds"] = true, nil }
@@ -8045,14 +10619,25 @@ end
 -- Required key: SubnetIds
 -- @return ModifyDBSubnetGroupMessage structure as a key-value pair table
 function M.ModifyDBSubnetGroupMessage(args)
-	assert(args, "You must provdide an argument table when creating ModifyDBSubnetGroupMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ModifyDBSubnetGroupMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DBSubnetGroupName"] = args["DBSubnetGroupName"],
 		["DBSubnetGroupDescription"] = args["DBSubnetGroupDescription"],
 		["SubnetIds"] = args["SubnetIds"],
 	}
-	asserts.AssertModifyDBSubnetGroupMessage(t)
-	return t
+	asserts.AssertModifyDBSubnetGroupMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DownloadDBLogFilePortionMessage = { ["Marker"] = true, ["NumberOfLines"] = true, ["LogFileName"] = true, ["DBInstanceIdentifier"] = true, nil }
@@ -8083,15 +10668,26 @@ end
 -- Required key: LogFileName
 -- @return DownloadDBLogFilePortionMessage structure as a key-value pair table
 function M.DownloadDBLogFilePortionMessage(args)
-	assert(args, "You must provdide an argument table when creating DownloadDBLogFilePortionMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DownloadDBLogFilePortionMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Marker"] = args["Marker"],
 		["NumberOfLines"] = args["NumberOfLines"],
 		["LogFileName"] = args["LogFileName"],
 		["DBInstanceIdentifier"] = args["DBInstanceIdentifier"],
 	}
-	asserts.AssertDownloadDBLogFilePortionMessage(t)
-	return t
+	asserts.AssertDownloadDBLogFilePortionMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ModifyDBSnapshotAttributeResult = { ["DBSnapshotAttributesResult"] = true, nil }
@@ -8112,12 +10708,23 @@ end
 -- * DBSnapshotAttributesResult [DBSnapshotAttributesResult] 
 -- @return ModifyDBSnapshotAttributeResult structure as a key-value pair table
 function M.ModifyDBSnapshotAttributeResult(args)
-	assert(args, "You must provdide an argument table when creating ModifyDBSnapshotAttributeResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ModifyDBSnapshotAttributeResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DBSnapshotAttributesResult"] = args["DBSnapshotAttributesResult"],
 	}
-	asserts.AssertModifyDBSnapshotAttributeResult(t)
-	return t
+	asserts.AssertModifyDBSnapshotAttributeResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CopyDBClusterSnapshotResult = { ["DBClusterSnapshot"] = true, nil }
@@ -8138,12 +10745,23 @@ end
 -- * DBClusterSnapshot [DBClusterSnapshot] 
 -- @return CopyDBClusterSnapshotResult structure as a key-value pair table
 function M.CopyDBClusterSnapshotResult(args)
-	assert(args, "You must provdide an argument table when creating CopyDBClusterSnapshotResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CopyDBClusterSnapshotResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DBClusterSnapshot"] = args["DBClusterSnapshot"],
 	}
-	asserts.AssertCopyDBClusterSnapshotResult(t)
-	return t
+	asserts.AssertCopyDBClusterSnapshotResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CopyDBParameterGroupMessage = { ["SourceDBParameterGroupIdentifier"] = true, ["TargetDBParameterGroupDescription"] = true, ["TargetDBParameterGroupIdentifier"] = true, ["Tags"] = true, nil }
@@ -8176,15 +10794,26 @@ end
 -- Required key: TargetDBParameterGroupDescription
 -- @return CopyDBParameterGroupMessage structure as a key-value pair table
 function M.CopyDBParameterGroupMessage(args)
-	assert(args, "You must provdide an argument table when creating CopyDBParameterGroupMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CopyDBParameterGroupMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["SourceDBParameterGroupIdentifier"] = args["SourceDBParameterGroupIdentifier"],
 		["TargetDBParameterGroupDescription"] = args["TargetDBParameterGroupDescription"],
 		["TargetDBParameterGroupIdentifier"] = args["TargetDBParameterGroupIdentifier"],
 		["Tags"] = args["Tags"],
 	}
-	asserts.AssertCopyDBParameterGroupMessage(t)
-	return t
+	asserts.AssertCopyDBParameterGroupMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.EventsMessage = { ["Marker"] = true, ["Events"] = true, nil }
@@ -8207,13 +10836,24 @@ end
 -- * Events [EventList] <p> A list of <a>Event</a> instances. </p>
 -- @return EventsMessage structure as a key-value pair table
 function M.EventsMessage(args)
-	assert(args, "You must provdide an argument table when creating EventsMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating EventsMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Marker"] = args["Marker"],
 		["Events"] = args["Events"],
 	}
-	asserts.AssertEventsMessage(t)
-	return t
+	asserts.AssertEventsMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteDBSnapshotMessage = { ["DBSnapshotIdentifier"] = true, nil }
@@ -8236,12 +10876,23 @@ end
 -- Required key: DBSnapshotIdentifier
 -- @return DeleteDBSnapshotMessage structure as a key-value pair table
 function M.DeleteDBSnapshotMessage(args)
-	assert(args, "You must provdide an argument table when creating DeleteDBSnapshotMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteDBSnapshotMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DBSnapshotIdentifier"] = args["DBSnapshotIdentifier"],
 	}
-	asserts.AssertDeleteDBSnapshotMessage(t)
-	return t
+	asserts.AssertDeleteDBSnapshotMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ReservedDBInstancesOffering = { ["MultiAZ"] = true, ["OfferingType"] = true, ["FixedPrice"] = true, ["UsagePrice"] = true, ["ReservedDBInstancesOfferingId"] = true, ["RecurringCharges"] = true, ["ProductDescription"] = true, ["Duration"] = true, ["DBInstanceClass"] = true, ["CurrencyCode"] = true, nil }
@@ -8280,8 +10931,14 @@ end
 -- * CurrencyCode [String] <p>The currency code for the reserved DB instance offering.</p>
 -- @return ReservedDBInstancesOffering structure as a key-value pair table
 function M.ReservedDBInstancesOffering(args)
-	assert(args, "You must provdide an argument table when creating ReservedDBInstancesOffering")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ReservedDBInstancesOffering")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["MultiAZ"] = args["MultiAZ"],
 		["OfferingType"] = args["OfferingType"],
 		["FixedPrice"] = args["FixedPrice"],
@@ -8293,8 +10950,13 @@ function M.ReservedDBInstancesOffering(args)
 		["DBInstanceClass"] = args["DBInstanceClass"],
 		["CurrencyCode"] = args["CurrencyCode"],
 	}
-	asserts.AssertReservedDBInstancesOffering(t)
-	return t
+	asserts.AssertReservedDBInstancesOffering(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.OptionGroupQuotaExceededFault = { nil }
@@ -8313,11 +10975,22 @@ end
 -- Valid keys:
 -- @return OptionGroupQuotaExceededFault structure as a key-value pair table
 function M.OptionGroupQuotaExceededFault(args)
-	assert(args, "You must provdide an argument table when creating OptionGroupQuotaExceededFault")
-	local t = { 
+	assert(args, "You must provide an argument table when creating OptionGroupQuotaExceededFault")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertOptionGroupQuotaExceededFault(t)
-	return t
+	asserts.AssertOptionGroupQuotaExceededFault(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AddTagsToResourceMessage = { ["ResourceName"] = true, ["Tags"] = true, nil }
@@ -8344,13 +11017,24 @@ end
 -- Required key: Tags
 -- @return AddTagsToResourceMessage structure as a key-value pair table
 function M.AddTagsToResourceMessage(args)
-	assert(args, "You must provdide an argument table when creating AddTagsToResourceMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AddTagsToResourceMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ResourceName"] = args["ResourceName"],
 		["Tags"] = args["Tags"],
 	}
-	asserts.AssertAddTagsToResourceMessage(t)
-	return t
+	asserts.AssertAddTagsToResourceMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.IPRange = { ["Status"] = true, ["CIDRIP"] = true, nil }
@@ -8373,13 +11057,24 @@ end
 -- * CIDRIP [String] <p>Specifies the IP range.</p>
 -- @return IPRange structure as a key-value pair table
 function M.IPRange(args)
-	assert(args, "You must provdide an argument table when creating IPRange")
-	local t = { 
+	assert(args, "You must provide an argument table when creating IPRange")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Status"] = args["Status"],
 		["CIDRIP"] = args["CIDRIP"],
 	}
-	asserts.AssertIPRange(t)
-	return t
+	asserts.AssertIPRange(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ReservedDBInstanceQuotaExceededFault = { nil }
@@ -8398,11 +11093,22 @@ end
 -- Valid keys:
 -- @return ReservedDBInstanceQuotaExceededFault structure as a key-value pair table
 function M.ReservedDBInstanceQuotaExceededFault(args)
-	assert(args, "You must provdide an argument table when creating ReservedDBInstanceQuotaExceededFault")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ReservedDBInstanceQuotaExceededFault")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertReservedDBInstanceQuotaExceededFault(t)
-	return t
+	asserts.AssertReservedDBInstanceQuotaExceededFault(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidSubnet = { nil }
@@ -8421,11 +11127,22 @@ end
 -- Valid keys:
 -- @return InvalidSubnet structure as a key-value pair table
 function M.InvalidSubnet(args)
-	assert(args, "You must provdide an argument table when creating InvalidSubnet")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidSubnet")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertInvalidSubnet(t)
-	return t
+	asserts.AssertInvalidSubnet(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DBClusterParameterGroupNotFoundFault = { nil }
@@ -8444,11 +11161,22 @@ end
 -- Valid keys:
 -- @return DBClusterParameterGroupNotFoundFault structure as a key-value pair table
 function M.DBClusterParameterGroupNotFoundFault(args)
-	assert(args, "You must provdide an argument table when creating DBClusterParameterGroupNotFoundFault")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DBClusterParameterGroupNotFoundFault")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertDBClusterParameterGroupNotFoundFault(t)
-	return t
+	asserts.AssertDBClusterParameterGroupNotFoundFault(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.FailoverDBClusterMessage = { ["DBClusterIdentifier"] = true, ["TargetDBInstanceIdentifier"] = true, nil }
@@ -8471,13 +11199,24 @@ end
 -- * TargetDBInstanceIdentifier [String] <p>The name of the instance to promote to the primary instance.</p> <p>You must specify the instance identifier for an Aurora Replica in the DB cluster. For example, <code>mydbcluster-replica1</code>.</p>
 -- @return FailoverDBClusterMessage structure as a key-value pair table
 function M.FailoverDBClusterMessage(args)
-	assert(args, "You must provdide an argument table when creating FailoverDBClusterMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating FailoverDBClusterMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DBClusterIdentifier"] = args["DBClusterIdentifier"],
 		["TargetDBInstanceIdentifier"] = args["TargetDBInstanceIdentifier"],
 	}
-	asserts.AssertFailoverDBClusterMessage(t)
-	return t
+	asserts.AssertFailoverDBClusterMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ModifyOptionGroupResult = { ["OptionGroup"] = true, nil }
@@ -8498,12 +11237,23 @@ end
 -- * OptionGroup [OptionGroup] 
 -- @return ModifyOptionGroupResult structure as a key-value pair table
 function M.ModifyOptionGroupResult(args)
-	assert(args, "You must provdide an argument table when creating ModifyOptionGroupResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ModifyOptionGroupResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["OptionGroup"] = args["OptionGroup"],
 	}
-	asserts.AssertModifyOptionGroupResult(t)
-	return t
+	asserts.AssertModifyOptionGroupResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DBParameterGroupNameMessage = { ["DBParameterGroupName"] = true, nil }
@@ -8524,12 +11274,23 @@ end
 -- * DBParameterGroupName [String] <p>Provides the name of the DB parameter group.</p>
 -- @return DBParameterGroupNameMessage structure as a key-value pair table
 function M.DBParameterGroupNameMessage(args)
-	assert(args, "You must provdide an argument table when creating DBParameterGroupNameMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DBParameterGroupNameMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DBParameterGroupName"] = args["DBParameterGroupName"],
 	}
-	asserts.AssertDBParameterGroupNameMessage(t)
-	return t
+	asserts.AssertDBParameterGroupNameMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.SNSTopicArnNotFoundFault = { nil }
@@ -8548,11 +11309,22 @@ end
 -- Valid keys:
 -- @return SNSTopicArnNotFoundFault structure as a key-value pair table
 function M.SNSTopicArnNotFoundFault(args)
-	assert(args, "You must provdide an argument table when creating SNSTopicArnNotFoundFault")
-	local t = { 
+	assert(args, "You must provide an argument table when creating SNSTopicArnNotFoundFault")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertSNSTopicArnNotFoundFault(t)
-	return t
+	asserts.AssertSNSTopicArnNotFoundFault(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Option = { ["DBSecurityGroupMemberships"] = true, ["OptionName"] = true, ["Persistent"] = true, ["VpcSecurityGroupMemberships"] = true, ["OptionSettings"] = true, ["Permanent"] = true, ["OptionVersion"] = true, ["Port"] = true, ["OptionDescription"] = true, nil }
@@ -8589,8 +11361,14 @@ end
 -- * OptionDescription [String] <p>The description of the option.</p>
 -- @return Option structure as a key-value pair table
 function M.Option(args)
-	assert(args, "You must provdide an argument table when creating Option")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Option")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DBSecurityGroupMemberships"] = args["DBSecurityGroupMemberships"],
 		["OptionName"] = args["OptionName"],
 		["Persistent"] = args["Persistent"],
@@ -8601,8 +11379,13 @@ function M.Option(args)
 		["Port"] = args["Port"],
 		["OptionDescription"] = args["OptionDescription"],
 	}
-	asserts.AssertOption(t)
-	return t
+	asserts.AssertOption(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeDBLogFilesDetails = { ["LastWritten"] = true, ["LogFileName"] = true, ["Size"] = true, nil }
@@ -8627,14 +11410,25 @@ end
 -- * Size [Long] <p>The size, in bytes, of the log file for the specified DB instance.</p>
 -- @return DescribeDBLogFilesDetails structure as a key-value pair table
 function M.DescribeDBLogFilesDetails(args)
-	assert(args, "You must provdide an argument table when creating DescribeDBLogFilesDetails")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeDBLogFilesDetails")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["LastWritten"] = args["LastWritten"],
 		["LogFileName"] = args["LogFileName"],
 		["Size"] = args["Size"],
 	}
-	asserts.AssertDescribeDBLogFilesDetails(t)
-	return t
+	asserts.AssertDescribeDBLogFilesDetails(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.EventSubscriptionQuotaExceededFault = { nil }
@@ -8653,11 +11447,22 @@ end
 -- Valid keys:
 -- @return EventSubscriptionQuotaExceededFault structure as a key-value pair table
 function M.EventSubscriptionQuotaExceededFault(args)
-	assert(args, "You must provdide an argument table when creating EventSubscriptionQuotaExceededFault")
-	local t = { 
+	assert(args, "You must provide an argument table when creating EventSubscriptionQuotaExceededFault")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertEventSubscriptionQuotaExceededFault(t)
-	return t
+	asserts.AssertEventSubscriptionQuotaExceededFault(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.OptionConfiguration = { ["DBSecurityGroupMemberships"] = true, ["OptionName"] = true, ["VpcSecurityGroupMemberships"] = true, ["OptionSettings"] = true, ["OptionVersion"] = true, ["Port"] = true, nil }
@@ -8690,8 +11495,14 @@ end
 -- Required key: OptionName
 -- @return OptionConfiguration structure as a key-value pair table
 function M.OptionConfiguration(args)
-	assert(args, "You must provdide an argument table when creating OptionConfiguration")
-	local t = { 
+	assert(args, "You must provide an argument table when creating OptionConfiguration")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DBSecurityGroupMemberships"] = args["DBSecurityGroupMemberships"],
 		["OptionName"] = args["OptionName"],
 		["VpcSecurityGroupMemberships"] = args["VpcSecurityGroupMemberships"],
@@ -8699,8 +11510,13 @@ function M.OptionConfiguration(args)
 		["OptionVersion"] = args["OptionVersion"],
 		["Port"] = args["Port"],
 	}
-	asserts.AssertOptionConfiguration(t)
-	return t
+	asserts.AssertOptionConfiguration(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeEngineDefaultParametersResult = { ["EngineDefaults"] = true, nil }
@@ -8721,12 +11537,23 @@ end
 -- * EngineDefaults [EngineDefaults] 
 -- @return DescribeEngineDefaultParametersResult structure as a key-value pair table
 function M.DescribeEngineDefaultParametersResult(args)
-	assert(args, "You must provdide an argument table when creating DescribeEngineDefaultParametersResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeEngineDefaultParametersResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["EngineDefaults"] = args["EngineDefaults"],
 	}
-	asserts.AssertDescribeEngineDefaultParametersResult(t)
-	return t
+	asserts.AssertDescribeEngineDefaultParametersResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DBInstanceStatusInfo = { ["Status"] = true, ["Message"] = true, ["StatusType"] = true, ["Normal"] = true, nil }
@@ -8753,15 +11580,26 @@ end
 -- * Normal [Boolean] <p>Boolean value that is true if the instance is operating normally, or false if the instance is in an error state.</p>
 -- @return DBInstanceStatusInfo structure as a key-value pair table
 function M.DBInstanceStatusInfo(args)
-	assert(args, "You must provdide an argument table when creating DBInstanceStatusInfo")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DBInstanceStatusInfo")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Status"] = args["Status"],
 		["Message"] = args["Message"],
 		["StatusType"] = args["StatusType"],
 		["Normal"] = args["Normal"],
 	}
-	asserts.AssertDBInstanceStatusInfo(t)
-	return t
+	asserts.AssertDBInstanceStatusInfo(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DBClusterSnapshotAlreadyExistsFault = { nil }
@@ -8780,11 +11618,22 @@ end
 -- Valid keys:
 -- @return DBClusterSnapshotAlreadyExistsFault structure as a key-value pair table
 function M.DBClusterSnapshotAlreadyExistsFault(args)
-	assert(args, "You must provdide an argument table when creating DBClusterSnapshotAlreadyExistsFault")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DBClusterSnapshotAlreadyExistsFault")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertDBClusterSnapshotAlreadyExistsFault(t)
-	return t
+	asserts.AssertDBClusterSnapshotAlreadyExistsFault(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.RemoveTagsFromResourceMessage = { ["ResourceName"] = true, ["TagKeys"] = true, nil }
@@ -8811,13 +11660,24 @@ end
 -- Required key: TagKeys
 -- @return RemoveTagsFromResourceMessage structure as a key-value pair table
 function M.RemoveTagsFromResourceMessage(args)
-	assert(args, "You must provdide an argument table when creating RemoveTagsFromResourceMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating RemoveTagsFromResourceMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ResourceName"] = args["ResourceName"],
 		["TagKeys"] = args["TagKeys"],
 	}
-	asserts.AssertRemoveTagsFromResourceMessage(t)
-	return t
+	asserts.AssertRemoveTagsFromResourceMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.RevokeDBSecurityGroupIngressResult = { ["DBSecurityGroup"] = true, nil }
@@ -8838,12 +11698,23 @@ end
 -- * DBSecurityGroup [DBSecurityGroup] 
 -- @return RevokeDBSecurityGroupIngressResult structure as a key-value pair table
 function M.RevokeDBSecurityGroupIngressResult(args)
-	assert(args, "You must provdide an argument table when creating RevokeDBSecurityGroupIngressResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating RevokeDBSecurityGroupIngressResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DBSecurityGroup"] = args["DBSecurityGroup"],
 	}
-	asserts.AssertRevokeDBSecurityGroupIngressResult(t)
-	return t
+	asserts.AssertRevokeDBSecurityGroupIngressResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidEventSubscriptionStateFault = { nil }
@@ -8862,11 +11733,22 @@ end
 -- Valid keys:
 -- @return InvalidEventSubscriptionStateFault structure as a key-value pair table
 function M.InvalidEventSubscriptionStateFault(args)
-	assert(args, "You must provdide an argument table when creating InvalidEventSubscriptionStateFault")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidEventSubscriptionStateFault")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertInvalidEventSubscriptionStateFault(t)
-	return t
+	asserts.AssertInvalidEventSubscriptionStateFault(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.RestoreDBClusterFromS3Result = { ["DBCluster"] = true, nil }
@@ -8887,12 +11769,23 @@ end
 -- * DBCluster [DBCluster] 
 -- @return RestoreDBClusterFromS3Result structure as a key-value pair table
 function M.RestoreDBClusterFromS3Result(args)
-	assert(args, "You must provdide an argument table when creating RestoreDBClusterFromS3Result")
-	local t = { 
+	assert(args, "You must provide an argument table when creating RestoreDBClusterFromS3Result")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DBCluster"] = args["DBCluster"],
 	}
-	asserts.AssertRestoreDBClusterFromS3Result(t)
-	return t
+	asserts.AssertRestoreDBClusterFromS3Result(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.SourceRegionMessage = { ["Marker"] = true, ["SourceRegions"] = true, nil }
@@ -8915,13 +11808,24 @@ end
 -- * SourceRegions [SourceRegionList] <p>A list of SourceRegion instances that contains each source AWS Region that the current region can get a Read Replica or a DB snapshot from.</p>
 -- @return SourceRegionMessage structure as a key-value pair table
 function M.SourceRegionMessage(args)
-	assert(args, "You must provdide an argument table when creating SourceRegionMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating SourceRegionMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Marker"] = args["Marker"],
 		["SourceRegions"] = args["SourceRegions"],
 	}
-	asserts.AssertSourceRegionMessage(t)
-	return t
+	asserts.AssertSourceRegionMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Timezone = { ["TimezoneName"] = true, nil }
@@ -8942,12 +11846,23 @@ end
 -- * TimezoneName [String] <p>The name of the time zone.</p>
 -- @return Timezone structure as a key-value pair table
 function M.Timezone(args)
-	assert(args, "You must provdide an argument table when creating Timezone")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Timezone")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["TimezoneName"] = args["TimezoneName"],
 	}
-	asserts.AssertTimezone(t)
-	return t
+	asserts.AssertTimezone(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Subnet = { ["SubnetStatus"] = true, ["SubnetIdentifier"] = true, ["SubnetAvailabilityZone"] = true, nil }
@@ -8972,14 +11887,25 @@ end
 -- * SubnetAvailabilityZone [AvailabilityZone] 
 -- @return Subnet structure as a key-value pair table
 function M.Subnet(args)
-	assert(args, "You must provdide an argument table when creating Subnet")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Subnet")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["SubnetStatus"] = args["SubnetStatus"],
 		["SubnetIdentifier"] = args["SubnetIdentifier"],
 		["SubnetAvailabilityZone"] = args["SubnetAvailabilityZone"],
 	}
-	asserts.AssertSubnet(t)
-	return t
+	asserts.AssertSubnet(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeSourceRegionsMessage = { ["Marker"] = true, ["MaxRecords"] = true, ["Filters"] = true, ["RegionName"] = true, nil }
@@ -9006,15 +11932,26 @@ end
 -- * RegionName [String] <p>The source region name. For example, <code>us-east-1</code>.</p> <p>Constraints:</p> <ul> <li> <p>Must specify a valid AWS Region name.</p> </li> </ul>
 -- @return DescribeSourceRegionsMessage structure as a key-value pair table
 function M.DescribeSourceRegionsMessage(args)
-	assert(args, "You must provdide an argument table when creating DescribeSourceRegionsMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeSourceRegionsMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Marker"] = args["Marker"],
 		["MaxRecords"] = args["MaxRecords"],
 		["Filters"] = args["Filters"],
 		["RegionName"] = args["RegionName"],
 	}
-	asserts.AssertDescribeSourceRegionsMessage(t)
-	return t
+	asserts.AssertDescribeSourceRegionsMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ReservedDBInstancesOfferingMessage = { ["Marker"] = true, ["ReservedDBInstancesOfferings"] = true, nil }
@@ -9037,13 +11974,24 @@ end
 -- * ReservedDBInstancesOfferings [ReservedDBInstancesOfferingList] <p>A list of reserved DB instance offerings.</p>
 -- @return ReservedDBInstancesOfferingMessage structure as a key-value pair table
 function M.ReservedDBInstancesOfferingMessage(args)
-	assert(args, "You must provdide an argument table when creating ReservedDBInstancesOfferingMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ReservedDBInstancesOfferingMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Marker"] = args["Marker"],
 		["ReservedDBInstancesOfferings"] = args["ReservedDBInstancesOfferings"],
 	}
-	asserts.AssertReservedDBInstancesOfferingMessage(t)
-	return t
+	asserts.AssertReservedDBInstancesOfferingMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeDBLogFilesMessage = { ["FileLastWritten"] = true, ["Marker"] = true, ["MaxRecords"] = true, ["FileSize"] = true, ["Filters"] = true, ["FilenameContains"] = true, ["DBInstanceIdentifier"] = true, nil }
@@ -9078,8 +12026,14 @@ end
 -- Required key: DBInstanceIdentifier
 -- @return DescribeDBLogFilesMessage structure as a key-value pair table
 function M.DescribeDBLogFilesMessage(args)
-	assert(args, "You must provdide an argument table when creating DescribeDBLogFilesMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeDBLogFilesMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["FileLastWritten"] = args["FileLastWritten"],
 		["Marker"] = args["Marker"],
 		["MaxRecords"] = args["MaxRecords"],
@@ -9088,8 +12042,13 @@ function M.DescribeDBLogFilesMessage(args)
 		["FilenameContains"] = args["FilenameContains"],
 		["DBInstanceIdentifier"] = args["DBInstanceIdentifier"],
 	}
-	asserts.AssertDescribeDBLogFilesMessage(t)
-	return t
+	asserts.AssertDescribeDBLogFilesMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeDBClusterSnapshotAttributesMessage = { ["DBClusterSnapshotIdentifier"] = true, nil }
@@ -9112,12 +12071,23 @@ end
 -- Required key: DBClusterSnapshotIdentifier
 -- @return DescribeDBClusterSnapshotAttributesMessage structure as a key-value pair table
 function M.DescribeDBClusterSnapshotAttributesMessage(args)
-	assert(args, "You must provdide an argument table when creating DescribeDBClusterSnapshotAttributesMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeDBClusterSnapshotAttributesMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DBClusterSnapshotIdentifier"] = args["DBClusterSnapshotIdentifier"],
 	}
-	asserts.AssertDescribeDBClusterSnapshotAttributesMessage(t)
-	return t
+	asserts.AssertDescribeDBClusterSnapshotAttributesMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.SnapshotQuotaExceededFault = { nil }
@@ -9136,11 +12106,22 @@ end
 -- Valid keys:
 -- @return SnapshotQuotaExceededFault structure as a key-value pair table
 function M.SnapshotQuotaExceededFault(args)
-	assert(args, "You must provdide an argument table when creating SnapshotQuotaExceededFault")
-	local t = { 
+	assert(args, "You must provide an argument table when creating SnapshotQuotaExceededFault")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertSnapshotQuotaExceededFault(t)
-	return t
+	asserts.AssertSnapshotQuotaExceededFault(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.StartDBInstanceMessage = { ["DBInstanceIdentifier"] = true, nil }
@@ -9163,12 +12144,23 @@ end
 -- Required key: DBInstanceIdentifier
 -- @return StartDBInstanceMessage structure as a key-value pair table
 function M.StartDBInstanceMessage(args)
-	assert(args, "You must provdide an argument table when creating StartDBInstanceMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating StartDBInstanceMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DBInstanceIdentifier"] = args["DBInstanceIdentifier"],
 	}
-	asserts.AssertStartDBInstanceMessage(t)
-	return t
+	asserts.AssertStartDBInstanceMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ModifyDBParameterGroupMessage = { ["DBParameterGroupName"] = true, ["Parameters"] = true, nil }
@@ -9195,13 +12187,24 @@ end
 -- Required key: Parameters
 -- @return ModifyDBParameterGroupMessage structure as a key-value pair table
 function M.ModifyDBParameterGroupMessage(args)
-	assert(args, "You must provdide an argument table when creating ModifyDBParameterGroupMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ModifyDBParameterGroupMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DBParameterGroupName"] = args["DBParameterGroupName"],
 		["Parameters"] = args["Parameters"],
 	}
-	asserts.AssertModifyDBParameterGroupMessage(t)
-	return t
+	asserts.AssertModifyDBParameterGroupMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteDBSecurityGroupMessage = { ["DBSecurityGroupName"] = true, nil }
@@ -9224,12 +12227,23 @@ end
 -- Required key: DBSecurityGroupName
 -- @return DeleteDBSecurityGroupMessage structure as a key-value pair table
 function M.DeleteDBSecurityGroupMessage(args)
-	assert(args, "You must provdide an argument table when creating DeleteDBSecurityGroupMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteDBSecurityGroupMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DBSecurityGroupName"] = args["DBSecurityGroupName"],
 	}
-	asserts.AssertDeleteDBSecurityGroupMessage(t)
-	return t
+	asserts.AssertDeleteDBSecurityGroupMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeDBSubnetGroupsMessage = { ["Marker"] = true, ["DBSubnetGroupName"] = true, ["MaxRecords"] = true, ["Filters"] = true, nil }
@@ -9256,15 +12270,26 @@ end
 -- * Filters [FilterList] <p>This parameter is not currently supported.</p>
 -- @return DescribeDBSubnetGroupsMessage structure as a key-value pair table
 function M.DescribeDBSubnetGroupsMessage(args)
-	assert(args, "You must provdide an argument table when creating DescribeDBSubnetGroupsMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeDBSubnetGroupsMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Marker"] = args["Marker"],
 		["DBSubnetGroupName"] = args["DBSubnetGroupName"],
 		["MaxRecords"] = args["MaxRecords"],
 		["Filters"] = args["Filters"],
 	}
-	asserts.AssertDescribeDBSubnetGroupsMessage(t)
-	return t
+	asserts.AssertDescribeDBSubnetGroupsMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteDBInstanceResult = { ["DBInstance"] = true, nil }
@@ -9285,12 +12310,23 @@ end
 -- * DBInstance [DBInstance] 
 -- @return DeleteDBInstanceResult structure as a key-value pair table
 function M.DeleteDBInstanceResult(args)
-	assert(args, "You must provdide an argument table when creating DeleteDBInstanceResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteDBInstanceResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DBInstance"] = args["DBInstance"],
 	}
-	asserts.AssertDeleteDBInstanceResult(t)
-	return t
+	asserts.AssertDeleteDBInstanceResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DBClusterSnapshotNotFoundFault = { nil }
@@ -9309,11 +12345,22 @@ end
 -- Valid keys:
 -- @return DBClusterSnapshotNotFoundFault structure as a key-value pair table
 function M.DBClusterSnapshotNotFoundFault(args)
-	assert(args, "You must provdide an argument table when creating DBClusterSnapshotNotFoundFault")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DBClusterSnapshotNotFoundFault")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertDBClusterSnapshotNotFoundFault(t)
-	return t
+	asserts.AssertDBClusterSnapshotNotFoundFault(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.StartDBInstanceResult = { ["DBInstance"] = true, nil }
@@ -9334,12 +12381,23 @@ end
 -- * DBInstance [DBInstance] 
 -- @return StartDBInstanceResult structure as a key-value pair table
 function M.StartDBInstanceResult(args)
-	assert(args, "You must provdide an argument table when creating StartDBInstanceResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating StartDBInstanceResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DBInstance"] = args["DBInstance"],
 	}
-	asserts.AssertStartDBInstanceResult(t)
-	return t
+	asserts.AssertStartDBInstanceResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DBInstanceMessage = { ["Marker"] = true, ["DBInstances"] = true, nil }
@@ -9362,13 +12420,24 @@ end
 -- * DBInstances [DBInstanceList] <p> A list of <a>DBInstance</a> instances. </p>
 -- @return DBInstanceMessage structure as a key-value pair table
 function M.DBInstanceMessage(args)
-	assert(args, "You must provdide an argument table when creating DBInstanceMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DBInstanceMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Marker"] = args["Marker"],
 		["DBInstances"] = args["DBInstances"],
 	}
-	asserts.AssertDBInstanceMessage(t)
-	return t
+	asserts.AssertDBInstanceMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Filter = { ["Values"] = true, ["Name"] = true, nil }
@@ -9395,13 +12464,24 @@ end
 -- Required key: Values
 -- @return Filter structure as a key-value pair table
 function M.Filter(args)
-	assert(args, "You must provdide an argument table when creating Filter")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Filter")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Values"] = args["Values"],
 		["Name"] = args["Name"],
 	}
-	asserts.AssertFilter(t)
-	return t
+	asserts.AssertFilter(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.RestoreDBInstanceToPointInTimeMessage = { ["PubliclyAccessible"] = true, ["DomainIAMRoleName"] = true, ["LicenseModel"] = true, ["EnableIAMDatabaseAuthentication"] = true, ["CopyTagsToSnapshot"] = true, ["Engine"] = true, ["MultiAZ"] = true, ["Tags"] = true, ["AutoMinorVersionUpgrade"] = true, ["TdeCredentialArn"] = true, ["DBSubnetGroupName"] = true, ["DBName"] = true, ["TdeCredentialPassword"] = true, ["UseLatestRestorableTime"] = true, ["RestoreTime"] = true, ["SourceDBInstanceIdentifier"] = true, ["OptionGroupName"] = true, ["Domain"] = true, ["AvailabilityZone"] = true, ["StorageType"] = true, ["Iops"] = true, ["DBInstanceClass"] = true, ["Port"] = true, ["TargetDBInstanceIdentifier"] = true, nil }
@@ -9472,8 +12552,14 @@ end
 -- Required key: TargetDBInstanceIdentifier
 -- @return RestoreDBInstanceToPointInTimeMessage structure as a key-value pair table
 function M.RestoreDBInstanceToPointInTimeMessage(args)
-	assert(args, "You must provdide an argument table when creating RestoreDBInstanceToPointInTimeMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating RestoreDBInstanceToPointInTimeMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["PubliclyAccessible"] = args["PubliclyAccessible"],
 		["DomainIAMRoleName"] = args["DomainIAMRoleName"],
 		["LicenseModel"] = args["LicenseModel"],
@@ -9499,8 +12585,13 @@ function M.RestoreDBInstanceToPointInTimeMessage(args)
 		["Port"] = args["Port"],
 		["TargetDBInstanceIdentifier"] = args["TargetDBInstanceIdentifier"],
 	}
-	asserts.AssertRestoreDBInstanceToPointInTimeMessage(t)
-	return t
+	asserts.AssertRestoreDBInstanceToPointInTimeMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.PendingMaintenanceActionsMessage = { ["Marker"] = true, ["PendingMaintenanceActions"] = true, nil }
@@ -9523,13 +12614,24 @@ end
 -- * PendingMaintenanceActions [PendingMaintenanceActions] <p>A list of the pending maintenance actions for the resource.</p>
 -- @return PendingMaintenanceActionsMessage structure as a key-value pair table
 function M.PendingMaintenanceActionsMessage(args)
-	assert(args, "You must provdide an argument table when creating PendingMaintenanceActionsMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating PendingMaintenanceActionsMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Marker"] = args["Marker"],
 		["PendingMaintenanceActions"] = args["PendingMaintenanceActions"],
 	}
-	asserts.AssertPendingMaintenanceActionsMessage(t)
-	return t
+	asserts.AssertPendingMaintenanceActionsMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DomainNotFoundFault = { nil }
@@ -9548,11 +12650,22 @@ end
 -- Valid keys:
 -- @return DomainNotFoundFault structure as a key-value pair table
 function M.DomainNotFoundFault(args)
-	assert(args, "You must provdide an argument table when creating DomainNotFoundFault")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DomainNotFoundFault")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertDomainNotFoundFault(t)
-	return t
+	asserts.AssertDomainNotFoundFault(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.EngineDefaults = { ["Marker"] = true, ["DBParameterGroupFamily"] = true, ["Parameters"] = true, nil }
@@ -9577,14 +12690,25 @@ end
 -- * Parameters [ParametersList] <p>Contains a list of engine default parameters.</p>
 -- @return EngineDefaults structure as a key-value pair table
 function M.EngineDefaults(args)
-	assert(args, "You must provdide an argument table when creating EngineDefaults")
-	local t = { 
+	assert(args, "You must provide an argument table when creating EngineDefaults")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Marker"] = args["Marker"],
 		["DBParameterGroupFamily"] = args["DBParameterGroupFamily"],
 		["Parameters"] = args["Parameters"],
 	}
-	asserts.AssertEngineDefaults(t)
-	return t
+	asserts.AssertEngineDefaults(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DBParameterGroupQuotaExceededFault = { nil }
@@ -9603,11 +12727,22 @@ end
 -- Valid keys:
 -- @return DBParameterGroupQuotaExceededFault structure as a key-value pair table
 function M.DBParameterGroupQuotaExceededFault(args)
-	assert(args, "You must provdide an argument table when creating DBParameterGroupQuotaExceededFault")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DBParameterGroupQuotaExceededFault")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertDBParameterGroupQuotaExceededFault(t)
-	return t
+	asserts.AssertDBParameterGroupQuotaExceededFault(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DomainMembership = { ["Status"] = true, ["IAMRoleName"] = true, ["Domain"] = true, ["FQDN"] = true, nil }
@@ -9634,15 +12769,26 @@ end
 -- * FQDN [String] <p>The fully qualified domain name of the Active Directory Domain.</p>
 -- @return DomainMembership structure as a key-value pair table
 function M.DomainMembership(args)
-	assert(args, "You must provdide an argument table when creating DomainMembership")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DomainMembership")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Status"] = args["Status"],
 		["IAMRoleName"] = args["IAMRoleName"],
 		["Domain"] = args["Domain"],
 		["FQDN"] = args["FQDN"],
 	}
-	asserts.AssertDomainMembership(t)
-	return t
+	asserts.AssertDomainMembership(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DBClusterRoleAlreadyExistsFault = { nil }
@@ -9661,11 +12807,22 @@ end
 -- Valid keys:
 -- @return DBClusterRoleAlreadyExistsFault structure as a key-value pair table
 function M.DBClusterRoleAlreadyExistsFault(args)
-	assert(args, "You must provdide an argument table when creating DBClusterRoleAlreadyExistsFault")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DBClusterRoleAlreadyExistsFault")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertDBClusterRoleAlreadyExistsFault(t)
-	return t
+	asserts.AssertDBClusterRoleAlreadyExistsFault(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ReservedDBInstanceMessage = { ["Marker"] = true, ["ReservedDBInstances"] = true, nil }
@@ -9688,13 +12845,24 @@ end
 -- * ReservedDBInstances [ReservedDBInstanceList] <p>A list of reserved DB instances.</p>
 -- @return ReservedDBInstanceMessage structure as a key-value pair table
 function M.ReservedDBInstanceMessage(args)
-	assert(args, "You must provdide an argument table when creating ReservedDBInstanceMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ReservedDBInstanceMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Marker"] = args["Marker"],
 		["ReservedDBInstances"] = args["ReservedDBInstances"],
 	}
-	asserts.AssertReservedDBInstanceMessage(t)
-	return t
+	asserts.AssertReservedDBInstanceMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DBParameterGroupStatus = { ["DBParameterGroupName"] = true, ["ParameterApplyStatus"] = true, nil }
@@ -9717,13 +12885,24 @@ end
 -- * ParameterApplyStatus [String] <p>The status of parameter updates.</p>
 -- @return DBParameterGroupStatus structure as a key-value pair table
 function M.DBParameterGroupStatus(args)
-	assert(args, "You must provdide an argument table when creating DBParameterGroupStatus")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DBParameterGroupStatus")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DBParameterGroupName"] = args["DBParameterGroupName"],
 		["ParameterApplyStatus"] = args["ParameterApplyStatus"],
 	}
-	asserts.AssertDBParameterGroupStatus(t)
-	return t
+	asserts.AssertDBParameterGroupStatus(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DBClusterSnapshotAttributesResult = { ["DBClusterSnapshotAttributes"] = true, ["DBClusterSnapshotIdentifier"] = true, nil }
@@ -9746,13 +12925,24 @@ end
 -- * DBClusterSnapshotIdentifier [String] <p>The identifier of the manual DB cluster snapshot that the attributes apply to.</p>
 -- @return DBClusterSnapshotAttributesResult structure as a key-value pair table
 function M.DBClusterSnapshotAttributesResult(args)
-	assert(args, "You must provdide an argument table when creating DBClusterSnapshotAttributesResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DBClusterSnapshotAttributesResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DBClusterSnapshotAttributes"] = args["DBClusterSnapshotAttributes"],
 		["DBClusterSnapshotIdentifier"] = args["DBClusterSnapshotIdentifier"],
 	}
-	asserts.AssertDBClusterSnapshotAttributesResult(t)
-	return t
+	asserts.AssertDBClusterSnapshotAttributesResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Endpoint = { ["HostedZoneId"] = true, ["Port"] = true, ["Address"] = true, nil }
@@ -9777,14 +12967,25 @@ end
 -- * Address [String] <p>Specifies the DNS address of the DB instance.</p>
 -- @return Endpoint structure as a key-value pair table
 function M.Endpoint(args)
-	assert(args, "You must provdide an argument table when creating Endpoint")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Endpoint")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["HostedZoneId"] = args["HostedZoneId"],
 		["Port"] = args["Port"],
 		["Address"] = args["Address"],
 	}
-	asserts.AssertEndpoint(t)
-	return t
+	asserts.AssertEndpoint(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidS3BucketFault = { nil }
@@ -9803,11 +13004,22 @@ end
 -- Valid keys:
 -- @return InvalidS3BucketFault structure as a key-value pair table
 function M.InvalidS3BucketFault(args)
-	assert(args, "You must provdide an argument table when creating InvalidS3BucketFault")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidS3BucketFault")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertInvalidS3BucketFault(t)
-	return t
+	asserts.AssertInvalidS3BucketFault(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.OptionGroupOptionSetting = { ["SettingDescription"] = true, ["DefaultValue"] = true, ["AllowedValues"] = true, ["IsModifiable"] = true, ["SettingName"] = true, ["ApplyType"] = true, nil }
@@ -9838,8 +13050,14 @@ end
 -- * ApplyType [String] <p>The DB engine specific parameter type for the option group option.</p>
 -- @return OptionGroupOptionSetting structure as a key-value pair table
 function M.OptionGroupOptionSetting(args)
-	assert(args, "You must provdide an argument table when creating OptionGroupOptionSetting")
-	local t = { 
+	assert(args, "You must provide an argument table when creating OptionGroupOptionSetting")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["SettingDescription"] = args["SettingDescription"],
 		["DefaultValue"] = args["DefaultValue"],
 		["AllowedValues"] = args["AllowedValues"],
@@ -9847,8 +13065,13 @@ function M.OptionGroupOptionSetting(args)
 		["SettingName"] = args["SettingName"],
 		["ApplyType"] = args["ApplyType"],
 	}
-	asserts.AssertOptionGroupOptionSetting(t)
-	return t
+	asserts.AssertOptionGroupOptionSetting(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DBClusterRoleNotFoundFault = { nil }
@@ -9867,11 +13090,22 @@ end
 -- Valid keys:
 -- @return DBClusterRoleNotFoundFault structure as a key-value pair table
 function M.DBClusterRoleNotFoundFault(args)
-	assert(args, "You must provdide an argument table when creating DBClusterRoleNotFoundFault")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DBClusterRoleNotFoundFault")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertDBClusterRoleNotFoundFault(t)
-	return t
+	asserts.AssertDBClusterRoleNotFoundFault(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DBSnapshotAttributesResult = { ["DBSnapshotIdentifier"] = true, ["DBSnapshotAttributes"] = true, nil }
@@ -9894,13 +13128,24 @@ end
 -- * DBSnapshotAttributes [DBSnapshotAttributeList] <p>The list of attributes and values for the manual DB snapshot.</p>
 -- @return DBSnapshotAttributesResult structure as a key-value pair table
 function M.DBSnapshotAttributesResult(args)
-	assert(args, "You must provdide an argument table when creating DBSnapshotAttributesResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DBSnapshotAttributesResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DBSnapshotIdentifier"] = args["DBSnapshotIdentifier"],
 		["DBSnapshotAttributes"] = args["DBSnapshotAttributes"],
 	}
-	asserts.AssertDBSnapshotAttributesResult(t)
-	return t
+	asserts.AssertDBSnapshotAttributesResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.EventSubscription = { ["Status"] = true, ["SubscriptionCreationTime"] = true, ["SourceType"] = true, ["EventCategoriesList"] = true, ["EventSubscriptionArn"] = true, ["SourceIdsList"] = true, ["CustSubscriptionId"] = true, ["Enabled"] = true, ["SnsTopicArn"] = true, ["CustomerAwsId"] = true, nil }
@@ -9939,8 +13184,14 @@ end
 -- * CustomerAwsId [String] <p>The AWS customer account associated with the RDS event notification subscription.</p>
 -- @return EventSubscription structure as a key-value pair table
 function M.EventSubscription(args)
-	assert(args, "You must provdide an argument table when creating EventSubscription")
-	local t = { 
+	assert(args, "You must provide an argument table when creating EventSubscription")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Status"] = args["Status"],
 		["SubscriptionCreationTime"] = args["SubscriptionCreationTime"],
 		["SourceType"] = args["SourceType"],
@@ -9952,8 +13203,13 @@ function M.EventSubscription(args)
 		["SnsTopicArn"] = args["SnsTopicArn"],
 		["CustomerAwsId"] = args["CustomerAwsId"],
 	}
-	asserts.AssertEventSubscription(t)
-	return t
+	asserts.AssertEventSubscription(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ModifyDBInstanceMessage = { ["DBParameterGroupName"] = true, ["AllowMajorVersionUpgrade"] = true, ["DomainIAMRoleName"] = true, ["MonitoringInterval"] = true, ["LicenseModel"] = true, ["VpcSecurityGroupIds"] = true, ["EnableIAMDatabaseAuthentication"] = true, ["CopyTagsToSnapshot"] = true, ["NewDBInstanceIdentifier"] = true, ["MultiAZ"] = true, ["DBSecurityGroups"] = true, ["PubliclyAccessible"] = true, ["AutoMinorVersionUpgrade"] = true, ["PreferredBackupWindow"] = true, ["PromotionTier"] = true, ["TdeCredentialArn"] = true, ["AllocatedStorage"] = true, ["DBSubnetGroupName"] = true, ["PreferredMaintenanceWindow"] = true, ["TdeCredentialPassword"] = true, ["DBPortNumber"] = true, ["ApplyImmediately"] = true, ["EngineVersion"] = true, ["BackupRetentionPeriod"] = true, ["OptionGroupName"] = true, ["Domain"] = true, ["MonitoringRoleArn"] = true, ["StorageType"] = true, ["CACertificateIdentifier"] = true, ["MasterUserPassword"] = true, ["Iops"] = true, ["DBInstanceClass"] = true, ["DBInstanceIdentifier"] = true, nil }
@@ -10040,8 +13296,14 @@ end
 -- Required key: DBInstanceIdentifier
 -- @return ModifyDBInstanceMessage structure as a key-value pair table
 function M.ModifyDBInstanceMessage(args)
-	assert(args, "You must provdide an argument table when creating ModifyDBInstanceMessage")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ModifyDBInstanceMessage")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DBParameterGroupName"] = args["DBParameterGroupName"],
 		["AllowMajorVersionUpgrade"] = args["AllowMajorVersionUpgrade"],
 		["DomainIAMRoleName"] = args["DomainIAMRoleName"],
@@ -10076,8 +13338,13 @@ function M.ModifyDBInstanceMessage(args)
 		["DBInstanceClass"] = args["DBInstanceClass"],
 		["DBInstanceIdentifier"] = args["DBInstanceIdentifier"],
 	}
-	asserts.AssertModifyDBInstanceMessage(t)
-	return t
+	asserts.AssertModifyDBInstanceMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.SubnetAlreadyInUse = { nil }
@@ -10096,11 +13363,22 @@ end
 -- Valid keys:
 -- @return SubnetAlreadyInUse structure as a key-value pair table
 function M.SubnetAlreadyInUse(args)
-	assert(args, "You must provdide an argument table when creating SubnetAlreadyInUse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating SubnetAlreadyInUse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertSubnetAlreadyInUse(t)
-	return t
+	asserts.AssertSubnetAlreadyInUse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 function asserts.AssertSourceType(str)
@@ -11251,8 +14529,11 @@ function M.DescribeCertificatesAsync(DescribeCertificatesMessage, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DescribeCertificates",
 	}
+	for header,value in pairs(DescribeCertificatesMessage.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeCertificatesMessage, headers, settings, cb)
 	else
@@ -11283,8 +14564,11 @@ function M.RestoreDBClusterToPointInTimeAsync(RestoreDBClusterToPointInTimeMessa
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".RestoreDBClusterToPointInTime",
 	}
+	for header,value in pairs(RestoreDBClusterToPointInTimeMessage.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", RestoreDBClusterToPointInTimeMessage, headers, settings, cb)
 	else
@@ -11315,8 +14599,11 @@ function M.DescribeEngineDefaultParametersAsync(DescribeEngineDefaultParametersM
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DescribeEngineDefaultParameters",
 	}
+	for header,value in pairs(DescribeEngineDefaultParametersMessage.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeEngineDefaultParametersMessage, headers, settings, cb)
 	else
@@ -11347,8 +14634,11 @@ function M.DeleteDBClusterSnapshotAsync(DeleteDBClusterSnapshotMessage, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DeleteDBClusterSnapshot",
 	}
+	for header,value in pairs(DeleteDBClusterSnapshotMessage.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteDBClusterSnapshotMessage, headers, settings, cb)
 	else
@@ -11379,8 +14669,11 @@ function M.CreateDBParameterGroupAsync(CreateDBParameterGroupMessage, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".CreateDBParameterGroup",
 	}
+	for header,value in pairs(CreateDBParameterGroupMessage.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateDBParameterGroupMessage, headers, settings, cb)
 	else
@@ -11411,8 +14704,11 @@ function M.AuthorizeDBSecurityGroupIngressAsync(AuthorizeDBSecurityGroupIngressM
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".AuthorizeDBSecurityGroupIngress",
 	}
+	for header,value in pairs(AuthorizeDBSecurityGroupIngressMessage.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", AuthorizeDBSecurityGroupIngressMessage, headers, settings, cb)
 	else
@@ -11443,8 +14739,11 @@ function M.DescribeDBSubnetGroupsAsync(DescribeDBSubnetGroupsMessage, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DescribeDBSubnetGroups",
 	}
+	for header,value in pairs(DescribeDBSubnetGroupsMessage.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeDBSubnetGroupsMessage, headers, settings, cb)
 	else
@@ -11475,8 +14774,11 @@ function M.DescribeDBEngineVersionsAsync(DescribeDBEngineVersionsMessage, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DescribeDBEngineVersions",
 	}
+	for header,value in pairs(DescribeDBEngineVersionsMessage.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeDBEngineVersionsMessage, headers, settings, cb)
 	else
@@ -11507,8 +14809,11 @@ function M.CopyDBSnapshotAsync(CopyDBSnapshotMessage, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".CopyDBSnapshot",
 	}
+	for header,value in pairs(CopyDBSnapshotMessage.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", CopyDBSnapshotMessage, headers, settings, cb)
 	else
@@ -11539,8 +14844,11 @@ function M.StopDBInstanceAsync(StopDBInstanceMessage, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".StopDBInstance",
 	}
+	for header,value in pairs(StopDBInstanceMessage.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", StopDBInstanceMessage, headers, settings, cb)
 	else
@@ -11571,8 +14879,11 @@ function M.DeleteEventSubscriptionAsync(DeleteEventSubscriptionMessage, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DeleteEventSubscription",
 	}
+	for header,value in pairs(DeleteEventSubscriptionMessage.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteEventSubscriptionMessage, headers, settings, cb)
 	else
@@ -11603,8 +14914,11 @@ function M.CreateDBInstanceReadReplicaAsync(CreateDBInstanceReadReplicaMessage, 
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".CreateDBInstanceReadReplica",
 	}
+	for header,value in pairs(CreateDBInstanceReadReplicaMessage.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateDBInstanceReadReplicaMessage, headers, settings, cb)
 	else
@@ -11635,8 +14949,11 @@ function M.CreateDBClusterSnapshotAsync(CreateDBClusterSnapshotMessage, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".CreateDBClusterSnapshot",
 	}
+	for header,value in pairs(CreateDBClusterSnapshotMessage.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateDBClusterSnapshotMessage, headers, settings, cb)
 	else
@@ -11667,8 +14984,11 @@ function M.DescribeReservedDBInstancesOfferingsAsync(DescribeReservedDBInstances
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DescribeReservedDBInstancesOfferings",
 	}
+	for header,value in pairs(DescribeReservedDBInstancesOfferingsMessage.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeReservedDBInstancesOfferingsMessage, headers, settings, cb)
 	else
@@ -11699,8 +15019,11 @@ function M.DeleteDBClusterAsync(DeleteDBClusterMessage, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DeleteDBCluster",
 	}
+	for header,value in pairs(DeleteDBClusterMessage.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteDBClusterMessage, headers, settings, cb)
 	else
@@ -11731,8 +15054,11 @@ function M.ResetDBClusterParameterGroupAsync(ResetDBClusterParameterGroupMessage
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".ResetDBClusterParameterGroup",
 	}
+	for header,value in pairs(ResetDBClusterParameterGroupMessage.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ResetDBClusterParameterGroupMessage, headers, settings, cb)
 	else
@@ -11763,8 +15089,11 @@ function M.ListTagsForResourceAsync(ListTagsForResourceMessage, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".ListTagsForResource",
 	}
+	for header,value in pairs(ListTagsForResourceMessage.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ListTagsForResourceMessage, headers, settings, cb)
 	else
@@ -11795,8 +15124,11 @@ function M.ModifyDBSnapshotAsync(ModifyDBSnapshotMessage, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".ModifyDBSnapshot",
 	}
+	for header,value in pairs(ModifyDBSnapshotMessage.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ModifyDBSnapshotMessage, headers, settings, cb)
 	else
@@ -11827,8 +15159,11 @@ function M.DeleteDBSubnetGroupAsync(DeleteDBSubnetGroupMessage, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DeleteDBSubnetGroup",
 	}
+	for header,value in pairs(DeleteDBSubnetGroupMessage.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteDBSubnetGroupMessage, headers, settings, cb)
 	else
@@ -11859,8 +15194,11 @@ function M.RestoreDBInstanceFromDBSnapshotAsync(RestoreDBInstanceFromDBSnapshotM
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".RestoreDBInstanceFromDBSnapshot",
 	}
+	for header,value in pairs(RestoreDBInstanceFromDBSnapshotMessage.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", RestoreDBInstanceFromDBSnapshotMessage, headers, settings, cb)
 	else
@@ -11891,8 +15229,11 @@ function M.DescribeOptionGroupsAsync(DescribeOptionGroupsMessage, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DescribeOptionGroups",
 	}
+	for header,value in pairs(DescribeOptionGroupsMessage.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeOptionGroupsMessage, headers, settings, cb)
 	else
@@ -11923,8 +15264,11 @@ function M.RestoreDBClusterFromS3Async(RestoreDBClusterFromS3Message, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".RestoreDBClusterFromS3",
 	}
+	for header,value in pairs(RestoreDBClusterFromS3Message.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", RestoreDBClusterFromS3Message, headers, settings, cb)
 	else
@@ -11955,8 +15299,11 @@ function M.DeleteDBInstanceAsync(DeleteDBInstanceMessage, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DeleteDBInstance",
 	}
+	for header,value in pairs(DeleteDBInstanceMessage.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteDBInstanceMessage, headers, settings, cb)
 	else
@@ -11987,8 +15334,11 @@ function M.CreateDBClusterParameterGroupAsync(CreateDBClusterParameterGroupMessa
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".CreateDBClusterParameterGroup",
 	}
+	for header,value in pairs(CreateDBClusterParameterGroupMessage.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateDBClusterParameterGroupMessage, headers, settings, cb)
 	else
@@ -12019,8 +15369,11 @@ function M.DeleteDBParameterGroupAsync(DeleteDBParameterGroupMessage, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DeleteDBParameterGroup",
 	}
+	for header,value in pairs(DeleteDBParameterGroupMessage.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteDBParameterGroupMessage, headers, settings, cb)
 	else
@@ -12051,8 +15404,11 @@ function M.DescribeEventCategoriesAsync(DescribeEventCategoriesMessage, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DescribeEventCategories",
 	}
+	for header,value in pairs(DescribeEventCategoriesMessage.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeEventCategoriesMessage, headers, settings, cb)
 	else
@@ -12083,8 +15439,11 @@ function M.AddTagsToResourceAsync(AddTagsToResourceMessage, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".AddTagsToResource",
 	}
+	for header,value in pairs(AddTagsToResourceMessage.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", AddTagsToResourceMessage, headers, settings, cb)
 	else
@@ -12115,8 +15474,11 @@ function M.ModifyOptionGroupAsync(ModifyOptionGroupMessage, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".ModifyOptionGroup",
 	}
+	for header,value in pairs(ModifyOptionGroupMessage.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ModifyOptionGroupMessage, headers, settings, cb)
 	else
@@ -12147,8 +15509,11 @@ function M.DescribeDBLogFilesAsync(DescribeDBLogFilesMessage, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DescribeDBLogFiles",
 	}
+	for header,value in pairs(DescribeDBLogFilesMessage.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeDBLogFilesMessage, headers, settings, cb)
 	else
@@ -12179,8 +15544,11 @@ function M.RemoveTagsFromResourceAsync(RemoveTagsFromResourceMessage, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".RemoveTagsFromResource",
 	}
+	for header,value in pairs(RemoveTagsFromResourceMessage.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", RemoveTagsFromResourceMessage, headers, settings, cb)
 	else
@@ -12211,8 +15579,11 @@ function M.DescribeReservedDBInstancesAsync(DescribeReservedDBInstancesMessage, 
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DescribeReservedDBInstances",
 	}
+	for header,value in pairs(DescribeReservedDBInstancesMessage.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeReservedDBInstancesMessage, headers, settings, cb)
 	else
@@ -12243,8 +15614,11 @@ function M.CopyOptionGroupAsync(CopyOptionGroupMessage, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".CopyOptionGroup",
 	}
+	for header,value in pairs(CopyOptionGroupMessage.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", CopyOptionGroupMessage, headers, settings, cb)
 	else
@@ -12275,8 +15649,11 @@ function M.CreateDBInstanceAsync(CreateDBInstanceMessage, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".CreateDBInstance",
 	}
+	for header,value in pairs(CreateDBInstanceMessage.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateDBInstanceMessage, headers, settings, cb)
 	else
@@ -12307,8 +15684,11 @@ function M.ModifyEventSubscriptionAsync(ModifyEventSubscriptionMessage, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".ModifyEventSubscription",
 	}
+	for header,value in pairs(ModifyEventSubscriptionMessage.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ModifyEventSubscriptionMessage, headers, settings, cb)
 	else
@@ -12339,8 +15719,11 @@ function M.ModifyDBSubnetGroupAsync(ModifyDBSubnetGroupMessage, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".ModifyDBSubnetGroup",
 	}
+	for header,value in pairs(ModifyDBSubnetGroupMessage.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ModifyDBSubnetGroupMessage, headers, settings, cb)
 	else
@@ -12371,8 +15754,11 @@ function M.DeleteDBSecurityGroupAsync(DeleteDBSecurityGroupMessage, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DeleteDBSecurityGroup",
 	}
+	for header,value in pairs(DeleteDBSecurityGroupMessage.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteDBSecurityGroupMessage, headers, settings, cb)
 	else
@@ -12403,8 +15789,11 @@ function M.RestoreDBInstanceToPointInTimeAsync(RestoreDBInstanceToPointInTimeMes
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".RestoreDBInstanceToPointInTime",
 	}
+	for header,value in pairs(RestoreDBInstanceToPointInTimeMessage.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", RestoreDBInstanceToPointInTimeMessage, headers, settings, cb)
 	else
@@ -12435,8 +15824,11 @@ function M.AddSourceIdentifierToSubscriptionAsync(AddSourceIdentifierToSubscript
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".AddSourceIdentifierToSubscription",
 	}
+	for header,value in pairs(AddSourceIdentifierToSubscriptionMessage.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", AddSourceIdentifierToSubscriptionMessage, headers, settings, cb)
 	else
@@ -12467,8 +15859,11 @@ function M.CopyDBClusterParameterGroupAsync(CopyDBClusterParameterGroupMessage, 
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".CopyDBClusterParameterGroup",
 	}
+	for header,value in pairs(CopyDBClusterParameterGroupMessage.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", CopyDBClusterParameterGroupMessage, headers, settings, cb)
 	else
@@ -12499,8 +15894,11 @@ function M.StartDBInstanceAsync(StartDBInstanceMessage, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".StartDBInstance",
 	}
+	for header,value in pairs(StartDBInstanceMessage.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", StartDBInstanceMessage, headers, settings, cb)
 	else
@@ -12531,8 +15929,11 @@ function M.DescribeDBClusterSnapshotAttributesAsync(DescribeDBClusterSnapshotAtt
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DescribeDBClusterSnapshotAttributes",
 	}
+	for header,value in pairs(DescribeDBClusterSnapshotAttributesMessage.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeDBClusterSnapshotAttributesMessage, headers, settings, cb)
 	else
@@ -12563,8 +15964,11 @@ function M.RestoreDBClusterFromSnapshotAsync(RestoreDBClusterFromSnapshotMessage
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".RestoreDBClusterFromSnapshot",
 	}
+	for header,value in pairs(RestoreDBClusterFromSnapshotMessage.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", RestoreDBClusterFromSnapshotMessage, headers, settings, cb)
 	else
@@ -12595,8 +15999,11 @@ function M.DescribeDBParametersAsync(DescribeDBParametersMessage, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DescribeDBParameters",
 	}
+	for header,value in pairs(DescribeDBParametersMessage.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeDBParametersMessage, headers, settings, cb)
 	else
@@ -12627,8 +16034,11 @@ function M.PromoteReadReplicaDBClusterAsync(PromoteReadReplicaDBClusterMessage, 
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".PromoteReadReplicaDBCluster",
 	}
+	for header,value in pairs(PromoteReadReplicaDBClusterMessage.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", PromoteReadReplicaDBClusterMessage, headers, settings, cb)
 	else
@@ -12659,8 +16069,11 @@ function M.DescribeDBClusterParametersAsync(DescribeDBClusterParametersMessage, 
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DescribeDBClusterParameters",
 	}
+	for header,value in pairs(DescribeDBClusterParametersMessage.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeDBClusterParametersMessage, headers, settings, cb)
 	else
@@ -12691,8 +16104,11 @@ function M.DeleteDBSnapshotAsync(DeleteDBSnapshotMessage, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DeleteDBSnapshot",
 	}
+	for header,value in pairs(DeleteDBSnapshotMessage.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteDBSnapshotMessage, headers, settings, cb)
 	else
@@ -12723,8 +16139,11 @@ function M.DescribeEventsAsync(DescribeEventsMessage, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DescribeEvents",
 	}
+	for header,value in pairs(DescribeEventsMessage.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeEventsMessage, headers, settings, cb)
 	else
@@ -12755,8 +16174,11 @@ function M.DescribeEventSubscriptionsAsync(DescribeEventSubscriptionsMessage, cb
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DescribeEventSubscriptions",
 	}
+	for header,value in pairs(DescribeEventSubscriptionsMessage.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeEventSubscriptionsMessage, headers, settings, cb)
 	else
@@ -12787,8 +16209,11 @@ function M.DeleteOptionGroupAsync(DeleteOptionGroupMessage, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DeleteOptionGroup",
 	}
+	for header,value in pairs(DeleteOptionGroupMessage.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteOptionGroupMessage, headers, settings, cb)
 	else
@@ -12819,8 +16244,11 @@ function M.PromoteReadReplicaAsync(PromoteReadReplicaMessage, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".PromoteReadReplica",
 	}
+	for header,value in pairs(PromoteReadReplicaMessage.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", PromoteReadReplicaMessage, headers, settings, cb)
 	else
@@ -12851,8 +16279,11 @@ function M.AddRoleToDBClusterAsync(AddRoleToDBClusterMessage, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".AddRoleToDBCluster",
 	}
+	for header,value in pairs(AddRoleToDBClusterMessage.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", AddRoleToDBClusterMessage, headers, settings, cb)
 	else
@@ -12883,8 +16314,11 @@ function M.ModifyDBSnapshotAttributeAsync(ModifyDBSnapshotAttributeMessage, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".ModifyDBSnapshotAttribute",
 	}
+	for header,value in pairs(ModifyDBSnapshotAttributeMessage.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ModifyDBSnapshotAttributeMessage, headers, settings, cb)
 	else
@@ -12915,8 +16349,11 @@ function M.DescribeDBParameterGroupsAsync(DescribeDBParameterGroupsMessage, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DescribeDBParameterGroups",
 	}
+	for header,value in pairs(DescribeDBParameterGroupsMessage.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeDBParameterGroupsMessage, headers, settings, cb)
 	else
@@ -12947,8 +16384,11 @@ function M.ModifyDBClusterParameterGroupAsync(ModifyDBClusterParameterGroupMessa
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".ModifyDBClusterParameterGroup",
 	}
+	for header,value in pairs(ModifyDBClusterParameterGroupMessage.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ModifyDBClusterParameterGroupMessage, headers, settings, cb)
 	else
@@ -12979,8 +16419,11 @@ function M.FailoverDBClusterAsync(FailoverDBClusterMessage, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".FailoverDBCluster",
 	}
+	for header,value in pairs(FailoverDBClusterMessage.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", FailoverDBClusterMessage, headers, settings, cb)
 	else
@@ -13011,8 +16454,11 @@ function M.ApplyPendingMaintenanceActionAsync(ApplyPendingMaintenanceActionMessa
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".ApplyPendingMaintenanceAction",
 	}
+	for header,value in pairs(ApplyPendingMaintenanceActionMessage.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ApplyPendingMaintenanceActionMessage, headers, settings, cb)
 	else
@@ -13043,8 +16489,11 @@ function M.DescribeDBInstancesAsync(DescribeDBInstancesMessage, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DescribeDBInstances",
 	}
+	for header,value in pairs(DescribeDBInstancesMessage.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeDBInstancesMessage, headers, settings, cb)
 	else
@@ -13075,8 +16524,11 @@ function M.PurchaseReservedDBInstancesOfferingAsync(PurchaseReservedDBInstancesO
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".PurchaseReservedDBInstancesOffering",
 	}
+	for header,value in pairs(PurchaseReservedDBInstancesOfferingMessage.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", PurchaseReservedDBInstancesOfferingMessage, headers, settings, cb)
 	else
@@ -13107,8 +16559,11 @@ function M.DescribeOrderableDBInstanceOptionsAsync(DescribeOrderableDBInstanceOp
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DescribeOrderableDBInstanceOptions",
 	}
+	for header,value in pairs(DescribeOrderableDBInstanceOptionsMessage.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeOrderableDBInstanceOptionsMessage, headers, settings, cb)
 	else
@@ -13139,8 +16594,11 @@ function M.CreateOptionGroupAsync(CreateOptionGroupMessage, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".CreateOptionGroup",
 	}
+	for header,value in pairs(CreateOptionGroupMessage.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateOptionGroupMessage, headers, settings, cb)
 	else
@@ -13171,8 +16629,11 @@ function M.DescribeOptionGroupOptionsAsync(DescribeOptionGroupOptionsMessage, cb
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DescribeOptionGroupOptions",
 	}
+	for header,value in pairs(DescribeOptionGroupOptionsMessage.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeOptionGroupOptionsMessage, headers, settings, cb)
 	else
@@ -13203,8 +16664,11 @@ function M.ResetDBParameterGroupAsync(ResetDBParameterGroupMessage, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".ResetDBParameterGroup",
 	}
+	for header,value in pairs(ResetDBParameterGroupMessage.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ResetDBParameterGroupMessage, headers, settings, cb)
 	else
@@ -13235,8 +16699,11 @@ function M.DescribeEngineDefaultClusterParametersAsync(DescribeEngineDefaultClus
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DescribeEngineDefaultClusterParameters",
 	}
+	for header,value in pairs(DescribeEngineDefaultClusterParametersMessage.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeEngineDefaultClusterParametersMessage, headers, settings, cb)
 	else
@@ -13267,8 +16734,11 @@ function M.CreateDBSnapshotAsync(CreateDBSnapshotMessage, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".CreateDBSnapshot",
 	}
+	for header,value in pairs(CreateDBSnapshotMessage.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateDBSnapshotMessage, headers, settings, cb)
 	else
@@ -13299,8 +16769,11 @@ function M.CreateDBClusterAsync(CreateDBClusterMessage, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".CreateDBCluster",
 	}
+	for header,value in pairs(CreateDBClusterMessage.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateDBClusterMessage, headers, settings, cb)
 	else
@@ -13331,8 +16804,11 @@ function M.DescribeAccountAttributesAsync(DescribeAccountAttributesMessage, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DescribeAccountAttributes",
 	}
+	for header,value in pairs(DescribeAccountAttributesMessage.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeAccountAttributesMessage, headers, settings, cb)
 	else
@@ -13363,8 +16839,11 @@ function M.DescribeDBSnapshotsAsync(DescribeDBSnapshotsMessage, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DescribeDBSnapshots",
 	}
+	for header,value in pairs(DescribeDBSnapshotsMessage.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeDBSnapshotsMessage, headers, settings, cb)
 	else
@@ -13395,8 +16874,11 @@ function M.ModifyDBClusterSnapshotAttributeAsync(ModifyDBClusterSnapshotAttribut
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".ModifyDBClusterSnapshotAttribute",
 	}
+	for header,value in pairs(ModifyDBClusterSnapshotAttributeMessage.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ModifyDBClusterSnapshotAttributeMessage, headers, settings, cb)
 	else
@@ -13427,8 +16909,11 @@ function M.CreateDBSecurityGroupAsync(CreateDBSecurityGroupMessage, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".CreateDBSecurityGroup",
 	}
+	for header,value in pairs(CreateDBSecurityGroupMessage.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateDBSecurityGroupMessage, headers, settings, cb)
 	else
@@ -13459,8 +16944,11 @@ function M.RemoveRoleFromDBClusterAsync(RemoveRoleFromDBClusterMessage, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".RemoveRoleFromDBCluster",
 	}
+	for header,value in pairs(RemoveRoleFromDBClusterMessage.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", RemoveRoleFromDBClusterMessage, headers, settings, cb)
 	else
@@ -13491,8 +16979,11 @@ function M.RevokeDBSecurityGroupIngressAsync(RevokeDBSecurityGroupIngressMessage
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".RevokeDBSecurityGroupIngress",
 	}
+	for header,value in pairs(RevokeDBSecurityGroupIngressMessage.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", RevokeDBSecurityGroupIngressMessage, headers, settings, cb)
 	else
@@ -13523,8 +17014,11 @@ function M.CreateEventSubscriptionAsync(CreateEventSubscriptionMessage, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".CreateEventSubscription",
 	}
+	for header,value in pairs(CreateEventSubscriptionMessage.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateEventSubscriptionMessage, headers, settings, cb)
 	else
@@ -13555,8 +17049,11 @@ function M.CopyDBParameterGroupAsync(CopyDBParameterGroupMessage, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".CopyDBParameterGroup",
 	}
+	for header,value in pairs(CopyDBParameterGroupMessage.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", CopyDBParameterGroupMessage, headers, settings, cb)
 	else
@@ -13587,8 +17084,11 @@ function M.RebootDBInstanceAsync(RebootDBInstanceMessage, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".RebootDBInstance",
 	}
+	for header,value in pairs(RebootDBInstanceMessage.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", RebootDBInstanceMessage, headers, settings, cb)
 	else
@@ -13619,8 +17119,11 @@ function M.CreateDBSubnetGroupAsync(CreateDBSubnetGroupMessage, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".CreateDBSubnetGroup",
 	}
+	for header,value in pairs(CreateDBSubnetGroupMessage.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateDBSubnetGroupMessage, headers, settings, cb)
 	else
@@ -13651,8 +17154,11 @@ function M.ModifyDBClusterAsync(ModifyDBClusterMessage, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".ModifyDBCluster",
 	}
+	for header,value in pairs(ModifyDBClusterMessage.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ModifyDBClusterMessage, headers, settings, cb)
 	else
@@ -13683,8 +17189,11 @@ function M.DescribeDBSnapshotAttributesAsync(DescribeDBSnapshotAttributesMessage
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DescribeDBSnapshotAttributes",
 	}
+	for header,value in pairs(DescribeDBSnapshotAttributesMessage.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeDBSnapshotAttributesMessage, headers, settings, cb)
 	else
@@ -13715,8 +17224,11 @@ function M.DescribeSourceRegionsAsync(DescribeSourceRegionsMessage, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DescribeSourceRegions",
 	}
+	for header,value in pairs(DescribeSourceRegionsMessage.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeSourceRegionsMessage, headers, settings, cb)
 	else
@@ -13747,8 +17259,11 @@ function M.DownloadDBLogFilePortionAsync(DownloadDBLogFilePortionMessage, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DownloadDBLogFilePortion",
 	}
+	for header,value in pairs(DownloadDBLogFilePortionMessage.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DownloadDBLogFilePortionMessage, headers, settings, cb)
 	else
@@ -13779,8 +17294,11 @@ function M.DescribeDBClustersAsync(DescribeDBClustersMessage, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DescribeDBClusters",
 	}
+	for header,value in pairs(DescribeDBClustersMessage.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeDBClustersMessage, headers, settings, cb)
 	else
@@ -13811,8 +17329,11 @@ function M.DescribeDBClusterSnapshotsAsync(DescribeDBClusterSnapshotsMessage, cb
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DescribeDBClusterSnapshots",
 	}
+	for header,value in pairs(DescribeDBClusterSnapshotsMessage.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeDBClusterSnapshotsMessage, headers, settings, cb)
 	else
@@ -13843,8 +17364,11 @@ function M.ModifyDBParameterGroupAsync(ModifyDBParameterGroupMessage, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".ModifyDBParameterGroup",
 	}
+	for header,value in pairs(ModifyDBParameterGroupMessage.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ModifyDBParameterGroupMessage, headers, settings, cb)
 	else
@@ -13875,8 +17399,11 @@ function M.DescribeDBSecurityGroupsAsync(DescribeDBSecurityGroupsMessage, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DescribeDBSecurityGroups",
 	}
+	for header,value in pairs(DescribeDBSecurityGroupsMessage.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeDBSecurityGroupsMessage, headers, settings, cb)
 	else
@@ -13907,8 +17434,11 @@ function M.DeleteDBClusterParameterGroupAsync(DeleteDBClusterParameterGroupMessa
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DeleteDBClusterParameterGroup",
 	}
+	for header,value in pairs(DeleteDBClusterParameterGroupMessage.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteDBClusterParameterGroupMessage, headers, settings, cb)
 	else
@@ -13939,8 +17469,11 @@ function M.DescribePendingMaintenanceActionsAsync(DescribePendingMaintenanceActi
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DescribePendingMaintenanceActions",
 	}
+	for header,value in pairs(DescribePendingMaintenanceActionsMessage.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribePendingMaintenanceActionsMessage, headers, settings, cb)
 	else
@@ -13971,8 +17504,11 @@ function M.DescribeDBClusterParameterGroupsAsync(DescribeDBClusterParameterGroup
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DescribeDBClusterParameterGroups",
 	}
+	for header,value in pairs(DescribeDBClusterParameterGroupsMessage.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeDBClusterParameterGroupsMessage, headers, settings, cb)
 	else
@@ -14003,8 +17539,11 @@ function M.CopyDBClusterSnapshotAsync(CopyDBClusterSnapshotMessage, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".CopyDBClusterSnapshot",
 	}
+	for header,value in pairs(CopyDBClusterSnapshotMessage.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", CopyDBClusterSnapshotMessage, headers, settings, cb)
 	else
@@ -14035,8 +17574,11 @@ function M.ModifyDBInstanceAsync(ModifyDBInstanceMessage, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".ModifyDBInstance",
 	}
+	for header,value in pairs(ModifyDBInstanceMessage.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ModifyDBInstanceMessage, headers, settings, cb)
 	else
@@ -14067,8 +17609,11 @@ function M.RemoveSourceIdentifierFromSubscriptionAsync(RemoveSourceIdentifierFro
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".RemoveSourceIdentifierFromSubscription",
 	}
+	for header,value in pairs(RemoveSourceIdentifierFromSubscriptionMessage.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", RemoveSourceIdentifierFromSubscriptionMessage, headers, settings, cb)
 	else

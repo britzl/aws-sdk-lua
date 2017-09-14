@@ -41,13 +41,24 @@ end
 -- * GroupCertificateAuthorityArn [__string] Arn of the certificate authority for the group.
 -- @return GroupCertificateAuthorityProperties structure as a key-value pair table
 function M.GroupCertificateAuthorityProperties(args)
-	assert(args, "You must provdide an argument table when creating GroupCertificateAuthorityProperties")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GroupCertificateAuthorityProperties")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["GroupCertificateAuthorityId"] = args["GroupCertificateAuthorityId"],
 		["GroupCertificateAuthorityArn"] = args["GroupCertificateAuthorityArn"],
 	}
-	asserts.AssertGroupCertificateAuthorityProperties(t)
-	return t
+	asserts.AssertGroupCertificateAuthorityProperties(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetGroupCertificateConfigurationRequest = { ["GroupId"] = true, nil }
@@ -70,12 +81,24 @@ end
 -- Required key: GroupId
 -- @return GetGroupCertificateConfigurationRequest structure as a key-value pair table
 function M.GetGroupCertificateConfigurationRequest(args)
-	assert(args, "You must provdide an argument table when creating GetGroupCertificateConfigurationRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetGroupCertificateConfigurationRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{GroupId}"] = args["GroupId"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["GroupId"] = args["GroupId"],
 	}
-	asserts.AssertGetGroupCertificateConfigurationRequest(t)
-	return t
+	asserts.AssertGetGroupCertificateConfigurationRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListSubscriptionDefinitionVersionsRequest = { ["SubscriptionDefinitionId"] = true, ["NextToken"] = true, ["MaxResults"] = true, nil }
@@ -102,14 +125,28 @@ end
 -- Required key: SubscriptionDefinitionId
 -- @return ListSubscriptionDefinitionVersionsRequest structure as a key-value pair table
 function M.ListSubscriptionDefinitionVersionsRequest(args)
-	assert(args, "You must provdide an argument table when creating ListSubscriptionDefinitionVersionsRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListSubscriptionDefinitionVersionsRequest")
+    local query_args = { 
+        ["NextToken"] = args["NextToken"],
+        ["MaxResults"] = args["MaxResults"],
+    }
+    local uri_args = { 
+        ["{SubscriptionDefinitionId}"] = args["SubscriptionDefinitionId"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["SubscriptionDefinitionId"] = args["SubscriptionDefinitionId"],
 		["NextToken"] = args["NextToken"],
 		["MaxResults"] = args["MaxResults"],
 	}
-	asserts.AssertListSubscriptionDefinitionVersionsRequest(t)
-	return t
+	asserts.AssertListSubscriptionDefinitionVersionsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.BadRequestException = { ["ErrorDetails"] = true, ["Message"] = true, nil }
@@ -132,13 +169,24 @@ end
 -- * Message [__string] Message
 -- @return BadRequestException structure as a key-value pair table
 function M.BadRequestException(args)
-	assert(args, "You must provdide an argument table when creating BadRequestException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating BadRequestException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ErrorDetails"] = args["ErrorDetails"],
 		["Message"] = args["Message"],
 	}
-	asserts.AssertBadRequestException(t)
-	return t
+	asserts.AssertBadRequestException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AssociateServiceRoleToAccountRequest = { ["RoleArn"] = true, nil }
@@ -159,12 +207,23 @@ end
 -- * RoleArn [__string] Role arn you wish to associate with this account.
 -- @return AssociateServiceRoleToAccountRequest structure as a key-value pair table
 function M.AssociateServiceRoleToAccountRequest(args)
-	assert(args, "You must provdide an argument table when creating AssociateServiceRoleToAccountRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AssociateServiceRoleToAccountRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["RoleArn"] = args["RoleArn"],
 	}
-	asserts.AssertAssociateServiceRoleToAccountRequest(t)
-	return t
+	asserts.AssertAssociateServiceRoleToAccountRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListGroupsRequest = { ["NextToken"] = true, ["MaxResults"] = true, nil }
@@ -187,13 +246,26 @@ end
 -- * MaxResults [__string] Specifies the maximum number of list results to be returned in this page
 -- @return ListGroupsRequest structure as a key-value pair table
 function M.ListGroupsRequest(args)
-	assert(args, "You must provdide an argument table when creating ListGroupsRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListGroupsRequest")
+    local query_args = { 
+        ["NextToken"] = args["NextToken"],
+        ["MaxResults"] = args["MaxResults"],
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NextToken"] = args["NextToken"],
 		["MaxResults"] = args["MaxResults"],
 	}
-	asserts.AssertListGroupsRequest(t)
-	return t
+	asserts.AssertListGroupsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListCoreDefinitionsResponse = { ["Definitions"] = true, ["NextToken"] = true, nil }
@@ -216,13 +288,24 @@ end
 -- * NextToken [__string] The token for the next set of results, or ''null'' if there are no additional results.
 -- @return ListCoreDefinitionsResponse structure as a key-value pair table
 function M.ListCoreDefinitionsResponse(args)
-	assert(args, "You must provdide an argument table when creating ListCoreDefinitionsResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListCoreDefinitionsResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Definitions"] = args["Definitions"],
 		["NextToken"] = args["NextToken"],
 	}
-	asserts.AssertListCoreDefinitionsResponse(t)
-	return t
+	asserts.AssertListCoreDefinitionsResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateDeviceDefinitionRequest = { ["AmznClientToken"] = true, ["InitialVersion"] = true, ["Name"] = true, nil }
@@ -247,14 +330,26 @@ end
 -- * Name [__string] name of the device definition
 -- @return CreateDeviceDefinitionRequest structure as a key-value pair table
 function M.CreateDeviceDefinitionRequest(args)
-	assert(args, "You must provdide an argument table when creating CreateDeviceDefinitionRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateDeviceDefinitionRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+        ["X-Amzn-Client-Token"] = args["AmznClientToken"],
+    }
+	local all_args = { 
 		["AmznClientToken"] = args["AmznClientToken"],
 		["InitialVersion"] = args["InitialVersion"],
 		["Name"] = args["Name"],
 	}
-	asserts.AssertCreateDeviceDefinitionRequest(t)
-	return t
+	asserts.AssertCreateDeviceDefinitionRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InternalServerErrorException = { ["ErrorDetails"] = true, ["Message"] = true, nil }
@@ -277,13 +372,24 @@ end
 -- * Message [__string] Message
 -- @return InternalServerErrorException structure as a key-value pair table
 function M.InternalServerErrorException(args)
-	assert(args, "You must provdide an argument table when creating InternalServerErrorException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InternalServerErrorException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ErrorDetails"] = args["ErrorDetails"],
 		["Message"] = args["Message"],
 	}
-	asserts.AssertInternalServerErrorException(t)
-	return t
+	asserts.AssertInternalServerErrorException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetServiceRoleForAccountRequest = { nil }
@@ -302,11 +408,22 @@ end
 -- Valid keys:
 -- @return GetServiceRoleForAccountRequest structure as a key-value pair table
 function M.GetServiceRoleForAccountRequest(args)
-	assert(args, "You must provdide an argument table when creating GetServiceRoleForAccountRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetServiceRoleForAccountRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertGetServiceRoleForAccountRequest(t)
-	return t
+	asserts.AssertGetServiceRoleForAccountRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListDeviceDefinitionVersionsRequest = { ["DeviceDefinitionId"] = true, ["NextToken"] = true, ["MaxResults"] = true, nil }
@@ -333,14 +450,28 @@ end
 -- Required key: DeviceDefinitionId
 -- @return ListDeviceDefinitionVersionsRequest structure as a key-value pair table
 function M.ListDeviceDefinitionVersionsRequest(args)
-	assert(args, "You must provdide an argument table when creating ListDeviceDefinitionVersionsRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListDeviceDefinitionVersionsRequest")
+    local query_args = { 
+        ["NextToken"] = args["NextToken"],
+        ["MaxResults"] = args["MaxResults"],
+    }
+    local uri_args = { 
+        ["{DeviceDefinitionId}"] = args["DeviceDefinitionId"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DeviceDefinitionId"] = args["DeviceDefinitionId"],
 		["NextToken"] = args["NextToken"],
 		["MaxResults"] = args["MaxResults"],
 	}
-	asserts.AssertListDeviceDefinitionVersionsRequest(t)
-	return t
+	asserts.AssertListDeviceDefinitionVersionsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateLoggerDefinitionRequest = { ["AmznClientToken"] = true, ["InitialVersion"] = true, ["Name"] = true, nil }
@@ -365,14 +496,26 @@ end
 -- * Name [__string] name of the logger definition
 -- @return CreateLoggerDefinitionRequest structure as a key-value pair table
 function M.CreateLoggerDefinitionRequest(args)
-	assert(args, "You must provdide an argument table when creating CreateLoggerDefinitionRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateLoggerDefinitionRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+        ["X-Amzn-Client-Token"] = args["AmznClientToken"],
+    }
+	local all_args = { 
 		["AmznClientToken"] = args["AmznClientToken"],
 		["InitialVersion"] = args["InitialVersion"],
 		["Name"] = args["Name"],
 	}
-	asserts.AssertCreateLoggerDefinitionRequest(t)
-	return t
+	asserts.AssertCreateLoggerDefinitionRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateSubscriptionDefinitionRequest = { ["AmznClientToken"] = true, ["InitialVersion"] = true, ["Name"] = true, nil }
@@ -397,14 +540,26 @@ end
 -- * Name [__string] name of the subscription definition
 -- @return CreateSubscriptionDefinitionRequest structure as a key-value pair table
 function M.CreateSubscriptionDefinitionRequest(args)
-	assert(args, "You must provdide an argument table when creating CreateSubscriptionDefinitionRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateSubscriptionDefinitionRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+        ["X-Amzn-Client-Token"] = args["AmznClientToken"],
+    }
+	local all_args = { 
 		["AmznClientToken"] = args["AmznClientToken"],
 		["InitialVersion"] = args["InitialVersion"],
 		["Name"] = args["Name"],
 	}
-	asserts.AssertCreateSubscriptionDefinitionRequest(t)
-	return t
+	asserts.AssertCreateSubscriptionDefinitionRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListCoreDefinitionVersionsResponse = { ["NextToken"] = true, ["Versions"] = true, nil }
@@ -427,13 +582,24 @@ end
 -- * Versions [ListOfVersionInformation] Versions
 -- @return ListCoreDefinitionVersionsResponse structure as a key-value pair table
 function M.ListCoreDefinitionVersionsResponse(args)
-	assert(args, "You must provdide an argument table when creating ListCoreDefinitionVersionsResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListCoreDefinitionVersionsResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NextToken"] = args["NextToken"],
 		["Versions"] = args["Versions"],
 	}
-	asserts.AssertListCoreDefinitionVersionsResponse(t)
-	return t
+	asserts.AssertListCoreDefinitionVersionsResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListLoggerDefinitionsResponse = { ["Definitions"] = true, ["NextToken"] = true, nil }
@@ -456,13 +622,24 @@ end
 -- * NextToken [__string] The token for the next set of results, or ''null'' if there are no additional results.
 -- @return ListLoggerDefinitionsResponse structure as a key-value pair table
 function M.ListLoggerDefinitionsResponse(args)
-	assert(args, "You must provdide an argument table when creating ListLoggerDefinitionsResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListLoggerDefinitionsResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Definitions"] = args["Definitions"],
 		["NextToken"] = args["NextToken"],
 	}
-	asserts.AssertListLoggerDefinitionsResponse(t)
-	return t
+	asserts.AssertListLoggerDefinitionsResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetLoggerDefinitionResponse = { ["LatestVersionArn"] = true, ["Name"] = true, ["LastUpdatedTimestamp"] = true, ["LatestVersion"] = true, ["CreationTimestamp"] = true, ["Id"] = true, ["Arn"] = true, nil }
@@ -495,8 +672,14 @@ end
 -- * Arn [__string] Arn of the definition.
 -- @return GetLoggerDefinitionResponse structure as a key-value pair table
 function M.GetLoggerDefinitionResponse(args)
-	assert(args, "You must provdide an argument table when creating GetLoggerDefinitionResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetLoggerDefinitionResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["LatestVersionArn"] = args["LatestVersionArn"],
 		["Name"] = args["Name"],
 		["LastUpdatedTimestamp"] = args["LastUpdatedTimestamp"],
@@ -505,8 +688,13 @@ function M.GetLoggerDefinitionResponse(args)
 		["Id"] = args["Id"],
 		["Arn"] = args["Arn"],
 	}
-	asserts.AssertGetLoggerDefinitionResponse(t)
-	return t
+	asserts.AssertGetLoggerDefinitionResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetGroupVersionResponse = { ["Definition"] = true, ["Version"] = true, ["CreationTimestamp"] = true, ["Id"] = true, ["Arn"] = true, nil }
@@ -535,16 +723,27 @@ end
 -- * Arn [__string] Arn of the group version.
 -- @return GetGroupVersionResponse structure as a key-value pair table
 function M.GetGroupVersionResponse(args)
-	assert(args, "You must provdide an argument table when creating GetGroupVersionResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetGroupVersionResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Definition"] = args["Definition"],
 		["Version"] = args["Version"],
 		["CreationTimestamp"] = args["CreationTimestamp"],
 		["Id"] = args["Id"],
 		["Arn"] = args["Arn"],
 	}
-	asserts.AssertGetGroupVersionResponse(t)
-	return t
+	asserts.AssertGetGroupVersionResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateGroupRequest = { ["AmznClientToken"] = true, ["InitialVersion"] = true, ["Name"] = true, nil }
@@ -569,14 +768,26 @@ end
 -- * Name [__string] name of the group
 -- @return CreateGroupRequest structure as a key-value pair table
 function M.CreateGroupRequest(args)
-	assert(args, "You must provdide an argument table when creating CreateGroupRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateGroupRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+        ["X-Amzn-Client-Token"] = args["AmznClientToken"],
+    }
+	local all_args = { 
 		["AmznClientToken"] = args["AmznClientToken"],
 		["InitialVersion"] = args["InitialVersion"],
 		["Name"] = args["Name"],
 	}
-	asserts.AssertCreateGroupRequest(t)
-	return t
+	asserts.AssertCreateGroupRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetGroupRequest = { ["GroupId"] = true, nil }
@@ -599,12 +810,24 @@ end
 -- Required key: GroupId
 -- @return GetGroupRequest structure as a key-value pair table
 function M.GetGroupRequest(args)
-	assert(args, "You must provdide an argument table when creating GetGroupRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetGroupRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{GroupId}"] = args["GroupId"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["GroupId"] = args["GroupId"],
 	}
-	asserts.AssertGetGroupRequest(t)
-	return t
+	asserts.AssertGetGroupRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdateSubscriptionDefinitionResponse = { nil }
@@ -623,11 +846,22 @@ end
 -- Valid keys:
 -- @return UpdateSubscriptionDefinitionResponse structure as a key-value pair table
 function M.UpdateSubscriptionDefinitionResponse(args)
-	assert(args, "You must provdide an argument table when creating UpdateSubscriptionDefinitionResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateSubscriptionDefinitionResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertUpdateSubscriptionDefinitionResponse(t)
-	return t
+	asserts.AssertUpdateSubscriptionDefinitionResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AssociateServiceRoleToAccountResponse = { ["AssociatedAt"] = true, nil }
@@ -648,12 +882,23 @@ end
 -- * AssociatedAt [__string] Time when the service role was associated to the account.
 -- @return AssociateServiceRoleToAccountResponse structure as a key-value pair table
 function M.AssociateServiceRoleToAccountResponse(args)
-	assert(args, "You must provdide an argument table when creating AssociateServiceRoleToAccountResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AssociateServiceRoleToAccountResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["AssociatedAt"] = args["AssociatedAt"],
 	}
-	asserts.AssertAssociateServiceRoleToAccountResponse(t)
-	return t
+	asserts.AssertAssociateServiceRoleToAccountResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateLoggerDefinitionVersionRequest = { ["Loggers"] = true, ["LoggerDefinitionId"] = true, ["AmznClientToken"] = true, nil }
@@ -680,14 +925,27 @@ end
 -- Required key: LoggerDefinitionId
 -- @return CreateLoggerDefinitionVersionRequest structure as a key-value pair table
 function M.CreateLoggerDefinitionVersionRequest(args)
-	assert(args, "You must provdide an argument table when creating CreateLoggerDefinitionVersionRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateLoggerDefinitionVersionRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{LoggerDefinitionId}"] = args["LoggerDefinitionId"],
+    }
+    local header_args = { 
+        ["X-Amzn-Client-Token"] = args["AmznClientToken"],
+    }
+	local all_args = { 
 		["Loggers"] = args["Loggers"],
 		["LoggerDefinitionId"] = args["LoggerDefinitionId"],
 		["AmznClientToken"] = args["AmznClientToken"],
 	}
-	asserts.AssertCreateLoggerDefinitionVersionRequest(t)
-	return t
+	asserts.AssertCreateLoggerDefinitionVersionRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteLoggerDefinitionRequest = { ["LoggerDefinitionId"] = true, nil }
@@ -710,12 +968,24 @@ end
 -- Required key: LoggerDefinitionId
 -- @return DeleteLoggerDefinitionRequest structure as a key-value pair table
 function M.DeleteLoggerDefinitionRequest(args)
-	assert(args, "You must provdide an argument table when creating DeleteLoggerDefinitionRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteLoggerDefinitionRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{LoggerDefinitionId}"] = args["LoggerDefinitionId"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["LoggerDefinitionId"] = args["LoggerDefinitionId"],
 	}
-	asserts.AssertDeleteLoggerDefinitionRequest(t)
-	return t
+	asserts.AssertDeleteLoggerDefinitionRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListGroupVersionsRequest = { ["NextToken"] = true, ["GroupId"] = true, ["MaxResults"] = true, nil }
@@ -742,14 +1012,28 @@ end
 -- Required key: GroupId
 -- @return ListGroupVersionsRequest structure as a key-value pair table
 function M.ListGroupVersionsRequest(args)
-	assert(args, "You must provdide an argument table when creating ListGroupVersionsRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListGroupVersionsRequest")
+    local query_args = { 
+        ["NextToken"] = args["NextToken"],
+        ["MaxResults"] = args["MaxResults"],
+    }
+    local uri_args = { 
+        ["{GroupId}"] = args["GroupId"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NextToken"] = args["NextToken"],
 		["GroupId"] = args["GroupId"],
 		["MaxResults"] = args["MaxResults"],
 	}
-	asserts.AssertListGroupVersionsRequest(t)
-	return t
+	asserts.AssertListGroupVersionsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetGroupCertificateAuthorityResponse = { ["PemEncodedCertificate"] = true, ["GroupCertificateAuthorityId"] = true, ["GroupCertificateAuthorityArn"] = true, nil }
@@ -774,14 +1058,25 @@ end
 -- * GroupCertificateAuthorityArn [__string] Arn of the certificate authority for the group.
 -- @return GetGroupCertificateAuthorityResponse structure as a key-value pair table
 function M.GetGroupCertificateAuthorityResponse(args)
-	assert(args, "You must provdide an argument table when creating GetGroupCertificateAuthorityResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetGroupCertificateAuthorityResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["PemEncodedCertificate"] = args["PemEncodedCertificate"],
 		["GroupCertificateAuthorityId"] = args["GroupCertificateAuthorityId"],
 		["GroupCertificateAuthorityArn"] = args["GroupCertificateAuthorityArn"],
 	}
-	asserts.AssertGetGroupCertificateAuthorityResponse(t)
-	return t
+	asserts.AssertGetGroupCertificateAuthorityResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateDeviceDefinitionResponse = { ["LatestVersionArn"] = true, ["Name"] = true, ["LastUpdatedTimestamp"] = true, ["LatestVersion"] = true, ["CreationTimestamp"] = true, ["Id"] = true, ["Arn"] = true, nil }
@@ -814,8 +1109,14 @@ end
 -- * Arn [__string] Arn of the definition.
 -- @return CreateDeviceDefinitionResponse structure as a key-value pair table
 function M.CreateDeviceDefinitionResponse(args)
-	assert(args, "You must provdide an argument table when creating CreateDeviceDefinitionResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateDeviceDefinitionResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["LatestVersionArn"] = args["LatestVersionArn"],
 		["Name"] = args["Name"],
 		["LastUpdatedTimestamp"] = args["LastUpdatedTimestamp"],
@@ -824,8 +1125,13 @@ function M.CreateDeviceDefinitionResponse(args)
 		["Id"] = args["Id"],
 		["Arn"] = args["Arn"],
 	}
-	asserts.AssertCreateDeviceDefinitionResponse(t)
-	return t
+	asserts.AssertCreateDeviceDefinitionResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteFunctionDefinitionResponse = { nil }
@@ -844,11 +1150,22 @@ end
 -- Valid keys:
 -- @return DeleteFunctionDefinitionResponse structure as a key-value pair table
 function M.DeleteFunctionDefinitionResponse(args)
-	assert(args, "You must provdide an argument table when creating DeleteFunctionDefinitionResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteFunctionDefinitionResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertDeleteFunctionDefinitionResponse(t)
-	return t
+	asserts.AssertDeleteFunctionDefinitionResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateCoreDefinitionRequest = { ["AmznClientToken"] = true, ["InitialVersion"] = true, ["Name"] = true, nil }
@@ -873,14 +1190,26 @@ end
 -- * Name [__string] name of the core definition
 -- @return CreateCoreDefinitionRequest structure as a key-value pair table
 function M.CreateCoreDefinitionRequest(args)
-	assert(args, "You must provdide an argument table when creating CreateCoreDefinitionRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateCoreDefinitionRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+        ["X-Amzn-Client-Token"] = args["AmznClientToken"],
+    }
+	local all_args = { 
 		["AmznClientToken"] = args["AmznClientToken"],
 		["InitialVersion"] = args["InitialVersion"],
 		["Name"] = args["Name"],
 	}
-	asserts.AssertCreateCoreDefinitionRequest(t)
-	return t
+	asserts.AssertCreateCoreDefinitionRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DisassociateServiceRoleFromAccountResponse = { ["DisassociatedAt"] = true, nil }
@@ -901,12 +1230,23 @@ end
 -- * DisassociatedAt [__string] Time when the service role was disassociated from the account.
 -- @return DisassociateServiceRoleFromAccountResponse structure as a key-value pair table
 function M.DisassociateServiceRoleFromAccountResponse(args)
-	assert(args, "You must provdide an argument table when creating DisassociateServiceRoleFromAccountResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DisassociateServiceRoleFromAccountResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DisassociatedAt"] = args["DisassociatedAt"],
 	}
-	asserts.AssertDisassociateServiceRoleFromAccountResponse(t)
-	return t
+	asserts.AssertDisassociateServiceRoleFromAccountResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeviceDefinitionVersion = { ["Devices"] = true, nil }
@@ -927,12 +1267,23 @@ end
 -- * Devices [ListOfDevice] Devices in the definition version.
 -- @return DeviceDefinitionVersion structure as a key-value pair table
 function M.DeviceDefinitionVersion(args)
-	assert(args, "You must provdide an argument table when creating DeviceDefinitionVersion")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeviceDefinitionVersion")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Devices"] = args["Devices"],
 	}
-	asserts.AssertDeviceDefinitionVersion(t)
-	return t
+	asserts.AssertDeviceDefinitionVersion(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListFunctionDefinitionVersionsRequest = { ["FunctionDefinitionId"] = true, ["NextToken"] = true, ["MaxResults"] = true, nil }
@@ -959,14 +1310,28 @@ end
 -- Required key: FunctionDefinitionId
 -- @return ListFunctionDefinitionVersionsRequest structure as a key-value pair table
 function M.ListFunctionDefinitionVersionsRequest(args)
-	assert(args, "You must provdide an argument table when creating ListFunctionDefinitionVersionsRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListFunctionDefinitionVersionsRequest")
+    local query_args = { 
+        ["NextToken"] = args["NextToken"],
+        ["MaxResults"] = args["MaxResults"],
+    }
+    local uri_args = { 
+        ["{FunctionDefinitionId}"] = args["FunctionDefinitionId"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["FunctionDefinitionId"] = args["FunctionDefinitionId"],
 		["NextToken"] = args["NextToken"],
 		["MaxResults"] = args["MaxResults"],
 	}
-	asserts.AssertListFunctionDefinitionVersionsRequest(t)
-	return t
+	asserts.AssertListFunctionDefinitionVersionsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DisassociateRoleFromGroupResponse = { ["DisassociatedAt"] = true, nil }
@@ -987,12 +1352,23 @@ end
 -- * DisassociatedAt [__string] Time when the role was disassociated from the group.
 -- @return DisassociateRoleFromGroupResponse structure as a key-value pair table
 function M.DisassociateRoleFromGroupResponse(args)
-	assert(args, "You must provdide an argument table when creating DisassociateRoleFromGroupResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DisassociateRoleFromGroupResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DisassociatedAt"] = args["DisassociatedAt"],
 	}
-	asserts.AssertDisassociateRoleFromGroupResponse(t)
-	return t
+	asserts.AssertDisassociateRoleFromGroupResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.LoggerDefinitionVersion = { ["Loggers"] = true, nil }
@@ -1013,12 +1389,23 @@ end
 -- * Loggers [ListOfLogger] List of loggers.
 -- @return LoggerDefinitionVersion structure as a key-value pair table
 function M.LoggerDefinitionVersion(args)
-	assert(args, "You must provdide an argument table when creating LoggerDefinitionVersion")
-	local t = { 
+	assert(args, "You must provide an argument table when creating LoggerDefinitionVersion")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Loggers"] = args["Loggers"],
 	}
-	asserts.AssertLoggerDefinitionVersion(t)
-	return t
+	asserts.AssertLoggerDefinitionVersion(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateFunctionDefinitionVersionRequest = { ["FunctionDefinitionId"] = true, ["Functions"] = true, ["AmznClientToken"] = true, nil }
@@ -1045,14 +1432,27 @@ end
 -- Required key: FunctionDefinitionId
 -- @return CreateFunctionDefinitionVersionRequest structure as a key-value pair table
 function M.CreateFunctionDefinitionVersionRequest(args)
-	assert(args, "You must provdide an argument table when creating CreateFunctionDefinitionVersionRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateFunctionDefinitionVersionRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{FunctionDefinitionId}"] = args["FunctionDefinitionId"],
+    }
+    local header_args = { 
+        ["X-Amzn-Client-Token"] = args["AmznClientToken"],
+    }
+	local all_args = { 
 		["FunctionDefinitionId"] = args["FunctionDefinitionId"],
 		["Functions"] = args["Functions"],
 		["AmznClientToken"] = args["AmznClientToken"],
 	}
-	asserts.AssertCreateFunctionDefinitionVersionRequest(t)
-	return t
+	asserts.AssertCreateFunctionDefinitionVersionRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteDeviceDefinitionResponse = { nil }
@@ -1071,11 +1471,22 @@ end
 -- Valid keys:
 -- @return DeleteDeviceDefinitionResponse structure as a key-value pair table
 function M.DeleteDeviceDefinitionResponse(args)
-	assert(args, "You must provdide an argument table when creating DeleteDeviceDefinitionResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteDeviceDefinitionResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertDeleteDeviceDefinitionResponse(t)
-	return t
+	asserts.AssertDeleteDeviceDefinitionResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateDeviceDefinitionVersionResponse = { ["Version"] = true, ["CreationTimestamp"] = true, ["Id"] = true, ["Arn"] = true, nil }
@@ -1102,15 +1513,26 @@ end
 -- * Arn [__string] Arn of the version.
 -- @return CreateDeviceDefinitionVersionResponse structure as a key-value pair table
 function M.CreateDeviceDefinitionVersionResponse(args)
-	assert(args, "You must provdide an argument table when creating CreateDeviceDefinitionVersionResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateDeviceDefinitionVersionResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Version"] = args["Version"],
 		["CreationTimestamp"] = args["CreationTimestamp"],
 		["Id"] = args["Id"],
 		["Arn"] = args["Arn"],
 	}
-	asserts.AssertCreateDeviceDefinitionVersionResponse(t)
-	return t
+	asserts.AssertCreateDeviceDefinitionVersionResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListLoggerDefinitionVersionsRequest = { ["LoggerDefinitionId"] = true, ["NextToken"] = true, ["MaxResults"] = true, nil }
@@ -1137,14 +1559,28 @@ end
 -- Required key: LoggerDefinitionId
 -- @return ListLoggerDefinitionVersionsRequest structure as a key-value pair table
 function M.ListLoggerDefinitionVersionsRequest(args)
-	assert(args, "You must provdide an argument table when creating ListLoggerDefinitionVersionsRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListLoggerDefinitionVersionsRequest")
+    local query_args = { 
+        ["NextToken"] = args["NextToken"],
+        ["MaxResults"] = args["MaxResults"],
+    }
+    local uri_args = { 
+        ["{LoggerDefinitionId}"] = args["LoggerDefinitionId"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["LoggerDefinitionId"] = args["LoggerDefinitionId"],
 		["NextToken"] = args["NextToken"],
 		["MaxResults"] = args["MaxResults"],
 	}
-	asserts.AssertListLoggerDefinitionVersionsRequest(t)
-	return t
+	asserts.AssertListLoggerDefinitionVersionsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DefinitionInformation = { ["LatestVersionArn"] = true, ["Name"] = true, ["LastUpdatedTimestamp"] = true, ["LatestVersion"] = true, ["CreationTimestamp"] = true, ["Id"] = true, ["Arn"] = true, nil }
@@ -1177,8 +1613,14 @@ end
 -- * Arn [__string] Arn of the definition.
 -- @return DefinitionInformation structure as a key-value pair table
 function M.DefinitionInformation(args)
-	assert(args, "You must provdide an argument table when creating DefinitionInformation")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DefinitionInformation")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["LatestVersionArn"] = args["LatestVersionArn"],
 		["Name"] = args["Name"],
 		["LastUpdatedTimestamp"] = args["LastUpdatedTimestamp"],
@@ -1187,8 +1629,13 @@ function M.DefinitionInformation(args)
 		["Id"] = args["Id"],
 		["Arn"] = args["Arn"],
 	}
-	asserts.AssertDefinitionInformation(t)
-	return t
+	asserts.AssertDefinitionInformation(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GeneralError = { ["ErrorDetails"] = true, ["Message"] = true, nil }
@@ -1211,13 +1658,24 @@ end
 -- * Message [__string] Message
 -- @return GeneralError structure as a key-value pair table
 function M.GeneralError(args)
-	assert(args, "You must provdide an argument table when creating GeneralError")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GeneralError")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ErrorDetails"] = args["ErrorDetails"],
 		["Message"] = args["Message"],
 	}
-	asserts.AssertGeneralError(t)
-	return t
+	asserts.AssertGeneralError(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetCoreDefinitionResponse = { ["LatestVersionArn"] = true, ["Name"] = true, ["LastUpdatedTimestamp"] = true, ["LatestVersion"] = true, ["CreationTimestamp"] = true, ["Id"] = true, ["Arn"] = true, nil }
@@ -1250,8 +1708,14 @@ end
 -- * Arn [__string] Arn of the definition.
 -- @return GetCoreDefinitionResponse structure as a key-value pair table
 function M.GetCoreDefinitionResponse(args)
-	assert(args, "You must provdide an argument table when creating GetCoreDefinitionResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetCoreDefinitionResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["LatestVersionArn"] = args["LatestVersionArn"],
 		["Name"] = args["Name"],
 		["LastUpdatedTimestamp"] = args["LastUpdatedTimestamp"],
@@ -1260,8 +1724,13 @@ function M.GetCoreDefinitionResponse(args)
 		["Id"] = args["Id"],
 		["Arn"] = args["Arn"],
 	}
-	asserts.AssertGetCoreDefinitionResponse(t)
-	return t
+	asserts.AssertGetCoreDefinitionResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetSubscriptionDefinitionRequest = { ["SubscriptionDefinitionId"] = true, nil }
@@ -1284,12 +1753,24 @@ end
 -- Required key: SubscriptionDefinitionId
 -- @return GetSubscriptionDefinitionRequest structure as a key-value pair table
 function M.GetSubscriptionDefinitionRequest(args)
-	assert(args, "You must provdide an argument table when creating GetSubscriptionDefinitionRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetSubscriptionDefinitionRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{SubscriptionDefinitionId}"] = args["SubscriptionDefinitionId"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["SubscriptionDefinitionId"] = args["SubscriptionDefinitionId"],
 	}
-	asserts.AssertGetSubscriptionDefinitionRequest(t)
-	return t
+	asserts.AssertGetSubscriptionDefinitionRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdateFunctionDefinitionResponse = { nil }
@@ -1308,11 +1789,22 @@ end
 -- Valid keys:
 -- @return UpdateFunctionDefinitionResponse structure as a key-value pair table
 function M.UpdateFunctionDefinitionResponse(args)
-	assert(args, "You must provdide an argument table when creating UpdateFunctionDefinitionResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateFunctionDefinitionResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertUpdateFunctionDefinitionResponse(t)
-	return t
+	asserts.AssertUpdateFunctionDefinitionResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdateSubscriptionDefinitionRequest = { ["SubscriptionDefinitionId"] = true, ["Name"] = true, nil }
@@ -1337,13 +1829,25 @@ end
 -- Required key: SubscriptionDefinitionId
 -- @return UpdateSubscriptionDefinitionRequest structure as a key-value pair table
 function M.UpdateSubscriptionDefinitionRequest(args)
-	assert(args, "You must provdide an argument table when creating UpdateSubscriptionDefinitionRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateSubscriptionDefinitionRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{SubscriptionDefinitionId}"] = args["SubscriptionDefinitionId"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["SubscriptionDefinitionId"] = args["SubscriptionDefinitionId"],
 		["Name"] = args["Name"],
 	}
-	asserts.AssertUpdateSubscriptionDefinitionRequest(t)
-	return t
+	asserts.AssertUpdateSubscriptionDefinitionRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateDeploymentRequest = { ["DeploymentId"] = true, ["DeploymentType"] = true, ["AmznClientToken"] = true, ["GroupVersionId"] = true, ["GroupId"] = true, nil }
@@ -1374,16 +1878,29 @@ end
 -- Required key: GroupId
 -- @return CreateDeploymentRequest structure as a key-value pair table
 function M.CreateDeploymentRequest(args)
-	assert(args, "You must provdide an argument table when creating CreateDeploymentRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateDeploymentRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{GroupId}"] = args["GroupId"],
+    }
+    local header_args = { 
+        ["X-Amzn-Client-Token"] = args["AmznClientToken"],
+    }
+	local all_args = { 
 		["DeploymentId"] = args["DeploymentId"],
 		["DeploymentType"] = args["DeploymentType"],
 		["AmznClientToken"] = args["AmznClientToken"],
 		["GroupVersionId"] = args["GroupVersionId"],
 		["GroupId"] = args["GroupId"],
 	}
-	asserts.AssertCreateDeploymentRequest(t)
-	return t
+	asserts.AssertCreateDeploymentRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetConnectivityInfoResponse = { ["ConnectivityInfo"] = true, ["Message"] = true, nil }
@@ -1406,13 +1923,24 @@ end
 -- * Message [__string] Response Text
 -- @return GetConnectivityInfoResponse structure as a key-value pair table
 function M.GetConnectivityInfoResponse(args)
-	assert(args, "You must provdide an argument table when creating GetConnectivityInfoResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetConnectivityInfoResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ConnectivityInfo"] = args["ConnectivityInfo"],
 		["Message"] = args["Message"],
 	}
-	asserts.AssertGetConnectivityInfoResponse(t)
-	return t
+	asserts.AssertGetConnectivityInfoResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListCoreDefinitionVersionsRequest = { ["NextToken"] = true, ["CoreDefinitionId"] = true, ["MaxResults"] = true, nil }
@@ -1439,14 +1967,28 @@ end
 -- Required key: CoreDefinitionId
 -- @return ListCoreDefinitionVersionsRequest structure as a key-value pair table
 function M.ListCoreDefinitionVersionsRequest(args)
-	assert(args, "You must provdide an argument table when creating ListCoreDefinitionVersionsRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListCoreDefinitionVersionsRequest")
+    local query_args = { 
+        ["NextToken"] = args["NextToken"],
+        ["MaxResults"] = args["MaxResults"],
+    }
+    local uri_args = { 
+        ["{CoreDefinitionId}"] = args["CoreDefinitionId"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NextToken"] = args["NextToken"],
 		["CoreDefinitionId"] = args["CoreDefinitionId"],
 		["MaxResults"] = args["MaxResults"],
 	}
-	asserts.AssertListCoreDefinitionVersionsRequest(t)
-	return t
+	asserts.AssertListCoreDefinitionVersionsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteDeviceDefinitionRequest = { ["DeviceDefinitionId"] = true, nil }
@@ -1469,12 +2011,24 @@ end
 -- Required key: DeviceDefinitionId
 -- @return DeleteDeviceDefinitionRequest structure as a key-value pair table
 function M.DeleteDeviceDefinitionRequest(args)
-	assert(args, "You must provdide an argument table when creating DeleteDeviceDefinitionRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteDeviceDefinitionRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{DeviceDefinitionId}"] = args["DeviceDefinitionId"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DeviceDefinitionId"] = args["DeviceDefinitionId"],
 	}
-	asserts.AssertDeleteDeviceDefinitionRequest(t)
-	return t
+	asserts.AssertDeleteDeviceDefinitionRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdateCoreDefinitionResponse = { nil }
@@ -1493,11 +2047,22 @@ end
 -- Valid keys:
 -- @return UpdateCoreDefinitionResponse structure as a key-value pair table
 function M.UpdateCoreDefinitionResponse(args)
-	assert(args, "You must provdide an argument table when creating UpdateCoreDefinitionResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateCoreDefinitionResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertUpdateCoreDefinitionResponse(t)
-	return t
+	asserts.AssertUpdateCoreDefinitionResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdateLoggerDefinitionResponse = { nil }
@@ -1516,11 +2081,22 @@ end
 -- Valid keys:
 -- @return UpdateLoggerDefinitionResponse structure as a key-value pair table
 function M.UpdateLoggerDefinitionResponse(args)
-	assert(args, "You must provdide an argument table when creating UpdateLoggerDefinitionResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateLoggerDefinitionResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertUpdateLoggerDefinitionResponse(t)
-	return t
+	asserts.AssertUpdateLoggerDefinitionResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.FunctionDefinitionVersion = { ["Functions"] = true, nil }
@@ -1541,12 +2117,23 @@ end
 -- * Functions [ListOfFunction] Lambda functions in this function definition version.
 -- @return FunctionDefinitionVersion structure as a key-value pair table
 function M.FunctionDefinitionVersion(args)
-	assert(args, "You must provdide an argument table when creating FunctionDefinitionVersion")
-	local t = { 
+	assert(args, "You must provide an argument table when creating FunctionDefinitionVersion")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Functions"] = args["Functions"],
 	}
-	asserts.AssertFunctionDefinitionVersion(t)
-	return t
+	asserts.AssertFunctionDefinitionVersion(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateSubscriptionDefinitionResponse = { ["LatestVersionArn"] = true, ["Name"] = true, ["LastUpdatedTimestamp"] = true, ["LatestVersion"] = true, ["CreationTimestamp"] = true, ["Id"] = true, ["Arn"] = true, nil }
@@ -1579,8 +2166,14 @@ end
 -- * Arn [__string] Arn of the definition.
 -- @return CreateSubscriptionDefinitionResponse structure as a key-value pair table
 function M.CreateSubscriptionDefinitionResponse(args)
-	assert(args, "You must provdide an argument table when creating CreateSubscriptionDefinitionResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateSubscriptionDefinitionResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["LatestVersionArn"] = args["LatestVersionArn"],
 		["Name"] = args["Name"],
 		["LastUpdatedTimestamp"] = args["LastUpdatedTimestamp"],
@@ -1589,8 +2182,13 @@ function M.CreateSubscriptionDefinitionResponse(args)
 		["Id"] = args["Id"],
 		["Arn"] = args["Arn"],
 	}
-	asserts.AssertCreateSubscriptionDefinitionResponse(t)
-	return t
+	asserts.AssertCreateSubscriptionDefinitionResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetDeviceDefinitionRequest = { ["DeviceDefinitionId"] = true, nil }
@@ -1613,12 +2211,24 @@ end
 -- Required key: DeviceDefinitionId
 -- @return GetDeviceDefinitionRequest structure as a key-value pair table
 function M.GetDeviceDefinitionRequest(args)
-	assert(args, "You must provdide an argument table when creating GetDeviceDefinitionRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetDeviceDefinitionRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{DeviceDefinitionId}"] = args["DeviceDefinitionId"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DeviceDefinitionId"] = args["DeviceDefinitionId"],
 	}
-	asserts.AssertGetDeviceDefinitionRequest(t)
-	return t
+	asserts.AssertGetDeviceDefinitionRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.SubscriptionDefinitionVersion = { ["Subscriptions"] = true, nil }
@@ -1639,12 +2249,23 @@ end
 -- * Subscriptions [ListOfSubscription] Subscriptions in the version.
 -- @return SubscriptionDefinitionVersion structure as a key-value pair table
 function M.SubscriptionDefinitionVersion(args)
-	assert(args, "You must provdide an argument table when creating SubscriptionDefinitionVersion")
-	local t = { 
+	assert(args, "You must provide an argument table when creating SubscriptionDefinitionVersion")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Subscriptions"] = args["Subscriptions"],
 	}
-	asserts.AssertSubscriptionDefinitionVersion(t)
-	return t
+	asserts.AssertSubscriptionDefinitionVersion(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CoreDefinitionVersion = { ["Cores"] = true, nil }
@@ -1665,12 +2286,23 @@ end
 -- * Cores [ListOfCore] Cores in the definition version.
 -- @return CoreDefinitionVersion structure as a key-value pair table
 function M.CoreDefinitionVersion(args)
-	assert(args, "You must provdide an argument table when creating CoreDefinitionVersion")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CoreDefinitionVersion")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Cores"] = args["Cores"],
 	}
-	asserts.AssertCoreDefinitionVersion(t)
-	return t
+	asserts.AssertCoreDefinitionVersion(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetDeploymentStatusResponse = { ["UpdatedAt"] = true, ["DeploymentStatus"] = true, ["ErrorMessage"] = true, nil }
@@ -1695,14 +2327,25 @@ end
 -- * ErrorMessage [__string] Error Message
 -- @return GetDeploymentStatusResponse structure as a key-value pair table
 function M.GetDeploymentStatusResponse(args)
-	assert(args, "You must provdide an argument table when creating GetDeploymentStatusResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetDeploymentStatusResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["UpdatedAt"] = args["UpdatedAt"],
 		["DeploymentStatus"] = args["DeploymentStatus"],
 		["ErrorMessage"] = args["ErrorMessage"],
 	}
-	asserts.AssertGetDeploymentStatusResponse(t)
-	return t
+	asserts.AssertGetDeploymentStatusResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetAssociatedRoleResponse = { ["AssociatedAt"] = true, ["RoleArn"] = true, nil }
@@ -1725,13 +2368,24 @@ end
 -- * RoleArn [__string] Arn of the role that is associated with the group.
 -- @return GetAssociatedRoleResponse structure as a key-value pair table
 function M.GetAssociatedRoleResponse(args)
-	assert(args, "You must provdide an argument table when creating GetAssociatedRoleResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetAssociatedRoleResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["AssociatedAt"] = args["AssociatedAt"],
 		["RoleArn"] = args["RoleArn"],
 	}
-	asserts.AssertGetAssociatedRoleResponse(t)
-	return t
+	asserts.AssertGetAssociatedRoleResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteGroupRequest = { ["GroupId"] = true, nil }
@@ -1754,12 +2408,24 @@ end
 -- Required key: GroupId
 -- @return DeleteGroupRequest structure as a key-value pair table
 function M.DeleteGroupRequest(args)
-	assert(args, "You must provdide an argument table when creating DeleteGroupRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteGroupRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{GroupId}"] = args["GroupId"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["GroupId"] = args["GroupId"],
 	}
-	asserts.AssertDeleteGroupRequest(t)
-	return t
+	asserts.AssertDeleteGroupRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteSubscriptionDefinitionResponse = { nil }
@@ -1778,11 +2444,22 @@ end
 -- Valid keys:
 -- @return DeleteSubscriptionDefinitionResponse structure as a key-value pair table
 function M.DeleteSubscriptionDefinitionResponse(args)
-	assert(args, "You must provdide an argument table when creating DeleteSubscriptionDefinitionResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteSubscriptionDefinitionResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertDeleteSubscriptionDefinitionResponse(t)
-	return t
+	asserts.AssertDeleteSubscriptionDefinitionResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListDeploymentsRequest = { ["NextToken"] = true, ["GroupId"] = true, ["MaxResults"] = true, nil }
@@ -1809,14 +2486,28 @@ end
 -- Required key: GroupId
 -- @return ListDeploymentsRequest structure as a key-value pair table
 function M.ListDeploymentsRequest(args)
-	assert(args, "You must provdide an argument table when creating ListDeploymentsRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListDeploymentsRequest")
+    local query_args = { 
+        ["NextToken"] = args["NextToken"],
+        ["MaxResults"] = args["MaxResults"],
+    }
+    local uri_args = { 
+        ["{GroupId}"] = args["GroupId"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NextToken"] = args["NextToken"],
 		["GroupId"] = args["GroupId"],
 		["MaxResults"] = args["MaxResults"],
 	}
-	asserts.AssertListDeploymentsRequest(t)
-	return t
+	asserts.AssertListDeploymentsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListGroupsResponse = { ["NextToken"] = true, ["Groups"] = true, nil }
@@ -1839,13 +2530,24 @@ end
 -- * Groups [ListOfGroupInformation] Groups
 -- @return ListGroupsResponse structure as a key-value pair table
 function M.ListGroupsResponse(args)
-	assert(args, "You must provdide an argument table when creating ListGroupsResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListGroupsResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NextToken"] = args["NextToken"],
 		["Groups"] = args["Groups"],
 	}
-	asserts.AssertListGroupsResponse(t)
-	return t
+	asserts.AssertListGroupsResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdateGroupRequest = { ["GroupId"] = true, ["Name"] = true, nil }
@@ -1870,13 +2572,25 @@ end
 -- Required key: GroupId
 -- @return UpdateGroupRequest structure as a key-value pair table
 function M.UpdateGroupRequest(args)
-	assert(args, "You must provdide an argument table when creating UpdateGroupRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateGroupRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{GroupId}"] = args["GroupId"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["GroupId"] = args["GroupId"],
 		["Name"] = args["Name"],
 	}
-	asserts.AssertUpdateGroupRequest(t)
-	return t
+	asserts.AssertUpdateGroupRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ConnectivityInfo = { ["Metadata"] = true, ["PortNumber"] = true, ["HostAddress"] = true, ["Id"] = true, nil }
@@ -1903,15 +2617,26 @@ end
 -- * Id [__string] Element Id for this entry in the list.
 -- @return ConnectivityInfo structure as a key-value pair table
 function M.ConnectivityInfo(args)
-	assert(args, "You must provdide an argument table when creating ConnectivityInfo")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ConnectivityInfo")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Metadata"] = args["Metadata"],
 		["PortNumber"] = args["PortNumber"],
 		["HostAddress"] = args["HostAddress"],
 		["Id"] = args["Id"],
 	}
-	asserts.AssertConnectivityInfo(t)
-	return t
+	asserts.AssertConnectivityInfo(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ErrorDetail = { ["DetailedErrorCode"] = true, ["DetailedErrorMessage"] = true, nil }
@@ -1934,13 +2659,24 @@ end
 -- * DetailedErrorMessage [__string] Detailed Error Message
 -- @return ErrorDetail structure as a key-value pair table
 function M.ErrorDetail(args)
-	assert(args, "You must provdide an argument table when creating ErrorDetail")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ErrorDetail")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DetailedErrorCode"] = args["DetailedErrorCode"],
 		["DetailedErrorMessage"] = args["DetailedErrorMessage"],
 	}
-	asserts.AssertErrorDetail(t)
-	return t
+	asserts.AssertErrorDetail(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteCoreDefinitionRequest = { ["CoreDefinitionId"] = true, nil }
@@ -1963,12 +2699,24 @@ end
 -- Required key: CoreDefinitionId
 -- @return DeleteCoreDefinitionRequest structure as a key-value pair table
 function M.DeleteCoreDefinitionRequest(args)
-	assert(args, "You must provdide an argument table when creating DeleteCoreDefinitionRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteCoreDefinitionRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{CoreDefinitionId}"] = args["CoreDefinitionId"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["CoreDefinitionId"] = args["CoreDefinitionId"],
 	}
-	asserts.AssertDeleteCoreDefinitionRequest(t)
-	return t
+	asserts.AssertDeleteCoreDefinitionRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetDeviceDefinitionVersionResponse = { ["Definition"] = true, ["Version"] = true, ["CreationTimestamp"] = true, ["Id"] = true, ["Arn"] = true, nil }
@@ -1997,16 +2745,27 @@ end
 -- * Arn [__string] Arn of the device definition version.
 -- @return GetDeviceDefinitionVersionResponse structure as a key-value pair table
 function M.GetDeviceDefinitionVersionResponse(args)
-	assert(args, "You must provdide an argument table when creating GetDeviceDefinitionVersionResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetDeviceDefinitionVersionResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Definition"] = args["Definition"],
 		["Version"] = args["Version"],
 		["CreationTimestamp"] = args["CreationTimestamp"],
 		["Id"] = args["Id"],
 		["Arn"] = args["Arn"],
 	}
-	asserts.AssertGetDeviceDefinitionVersionResponse(t)
-	return t
+	asserts.AssertGetDeviceDefinitionVersionResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GroupInformation = { ["LatestVersionArn"] = true, ["Name"] = true, ["LastUpdatedTimestamp"] = true, ["LatestVersion"] = true, ["CreationTimestamp"] = true, ["Id"] = true, ["Arn"] = true, nil }
@@ -2039,8 +2798,14 @@ end
 -- * Arn [__string] Arn of a group.
 -- @return GroupInformation structure as a key-value pair table
 function M.GroupInformation(args)
-	assert(args, "You must provdide an argument table when creating GroupInformation")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GroupInformation")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["LatestVersionArn"] = args["LatestVersionArn"],
 		["Name"] = args["Name"],
 		["LastUpdatedTimestamp"] = args["LastUpdatedTimestamp"],
@@ -2049,8 +2814,13 @@ function M.GroupInformation(args)
 		["Id"] = args["Id"],
 		["Arn"] = args["Arn"],
 	}
-	asserts.AssertGroupInformation(t)
-	return t
+	asserts.AssertGroupInformation(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateGroupCertificateAuthorityRequest = { ["AmznClientToken"] = true, ["GroupId"] = true, nil }
@@ -2075,13 +2845,26 @@ end
 -- Required key: GroupId
 -- @return CreateGroupCertificateAuthorityRequest structure as a key-value pair table
 function M.CreateGroupCertificateAuthorityRequest(args)
-	assert(args, "You must provdide an argument table when creating CreateGroupCertificateAuthorityRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateGroupCertificateAuthorityRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{GroupId}"] = args["GroupId"],
+    }
+    local header_args = { 
+        ["X-Amzn-Client-Token"] = args["AmznClientToken"],
+    }
+	local all_args = { 
 		["AmznClientToken"] = args["AmznClientToken"],
 		["GroupId"] = args["GroupId"],
 	}
-	asserts.AssertCreateGroupCertificateAuthorityRequest(t)
-	return t
+	asserts.AssertCreateGroupCertificateAuthorityRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Subscription = { ["Source"] = true, ["Target"] = true, ["Id"] = true, ["Subject"] = true, nil }
@@ -2108,15 +2891,26 @@ end
 -- * Subject [__string] Subject of the message.
 -- @return Subscription structure as a key-value pair table
 function M.Subscription(args)
-	assert(args, "You must provdide an argument table when creating Subscription")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Subscription")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Source"] = args["Source"],
 		["Target"] = args["Target"],
 		["Id"] = args["Id"],
 		["Subject"] = args["Subject"],
 	}
-	asserts.AssertSubscription(t)
-	return t
+	asserts.AssertSubscription(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetSubscriptionDefinitionVersionResponse = { ["Definition"] = true, ["Version"] = true, ["CreationTimestamp"] = true, ["Id"] = true, ["Arn"] = true, nil }
@@ -2145,16 +2939,27 @@ end
 -- * Arn [__string] Arn of the subscription definition version.
 -- @return GetSubscriptionDefinitionVersionResponse structure as a key-value pair table
 function M.GetSubscriptionDefinitionVersionResponse(args)
-	assert(args, "You must provdide an argument table when creating GetSubscriptionDefinitionVersionResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetSubscriptionDefinitionVersionResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Definition"] = args["Definition"],
 		["Version"] = args["Version"],
 		["CreationTimestamp"] = args["CreationTimestamp"],
 		["Id"] = args["Id"],
 		["Arn"] = args["Arn"],
 	}
-	asserts.AssertGetSubscriptionDefinitionVersionResponse(t)
-	return t
+	asserts.AssertGetSubscriptionDefinitionVersionResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetCoreDefinitionVersionRequest = { ["CoreDefinitionId"] = true, ["CoreDefinitionVersionId"] = true, nil }
@@ -2181,13 +2986,26 @@ end
 -- Required key: CoreDefinitionVersionId
 -- @return GetCoreDefinitionVersionRequest structure as a key-value pair table
 function M.GetCoreDefinitionVersionRequest(args)
-	assert(args, "You must provdide an argument table when creating GetCoreDefinitionVersionRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetCoreDefinitionVersionRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{CoreDefinitionId}"] = args["CoreDefinitionId"],
+        ["{CoreDefinitionVersionId}"] = args["CoreDefinitionVersionId"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["CoreDefinitionId"] = args["CoreDefinitionId"],
 		["CoreDefinitionVersionId"] = args["CoreDefinitionVersionId"],
 	}
-	asserts.AssertGetCoreDefinitionVersionRequest(t)
-	return t
+	asserts.AssertGetCoreDefinitionVersionRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DisassociateServiceRoleFromAccountRequest = { nil }
@@ -2206,11 +3024,22 @@ end
 -- Valid keys:
 -- @return DisassociateServiceRoleFromAccountRequest structure as a key-value pair table
 function M.DisassociateServiceRoleFromAccountRequest(args)
-	assert(args, "You must provdide an argument table when creating DisassociateServiceRoleFromAccountRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DisassociateServiceRoleFromAccountRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertDisassociateServiceRoleFromAccountRequest(t)
-	return t
+	asserts.AssertDisassociateServiceRoleFromAccountRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetSubscriptionDefinitionVersionRequest = { ["SubscriptionDefinitionVersionId"] = true, ["SubscriptionDefinitionId"] = true, nil }
@@ -2237,13 +3066,26 @@ end
 -- Required key: SubscriptionDefinitionVersionId
 -- @return GetSubscriptionDefinitionVersionRequest structure as a key-value pair table
 function M.GetSubscriptionDefinitionVersionRequest(args)
-	assert(args, "You must provdide an argument table when creating GetSubscriptionDefinitionVersionRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetSubscriptionDefinitionVersionRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{SubscriptionDefinitionVersionId}"] = args["SubscriptionDefinitionVersionId"],
+        ["{SubscriptionDefinitionId}"] = args["SubscriptionDefinitionId"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["SubscriptionDefinitionVersionId"] = args["SubscriptionDefinitionVersionId"],
 		["SubscriptionDefinitionId"] = args["SubscriptionDefinitionId"],
 	}
-	asserts.AssertGetSubscriptionDefinitionVersionRequest(t)
-	return t
+	asserts.AssertGetSubscriptionDefinitionVersionRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListFunctionDefinitionVersionsResponse = { ["NextToken"] = true, ["Versions"] = true, nil }
@@ -2266,13 +3108,24 @@ end
 -- * Versions [ListOfVersionInformation] Versions
 -- @return ListFunctionDefinitionVersionsResponse structure as a key-value pair table
 function M.ListFunctionDefinitionVersionsResponse(args)
-	assert(args, "You must provdide an argument table when creating ListFunctionDefinitionVersionsResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListFunctionDefinitionVersionsResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NextToken"] = args["NextToken"],
 		["Versions"] = args["Versions"],
 	}
-	asserts.AssertListFunctionDefinitionVersionsResponse(t)
-	return t
+	asserts.AssertListFunctionDefinitionVersionsResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateDeploymentResponse = { ["DeploymentId"] = true, ["DeploymentArn"] = true, nil }
@@ -2295,13 +3148,24 @@ end
 -- * DeploymentArn [__string] Arn of the deployment.
 -- @return CreateDeploymentResponse structure as a key-value pair table
 function M.CreateDeploymentResponse(args)
-	assert(args, "You must provdide an argument table when creating CreateDeploymentResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateDeploymentResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DeploymentId"] = args["DeploymentId"],
 		["DeploymentArn"] = args["DeploymentArn"],
 	}
-	asserts.AssertCreateDeploymentResponse(t)
-	return t
+	asserts.AssertCreateDeploymentResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdateFunctionDefinitionRequest = { ["FunctionDefinitionId"] = true, ["Name"] = true, nil }
@@ -2326,13 +3190,25 @@ end
 -- Required key: FunctionDefinitionId
 -- @return UpdateFunctionDefinitionRequest structure as a key-value pair table
 function M.UpdateFunctionDefinitionRequest(args)
-	assert(args, "You must provdide an argument table when creating UpdateFunctionDefinitionRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateFunctionDefinitionRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{FunctionDefinitionId}"] = args["FunctionDefinitionId"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["FunctionDefinitionId"] = args["FunctionDefinitionId"],
 		["Name"] = args["Name"],
 	}
-	asserts.AssertUpdateFunctionDefinitionRequest(t)
-	return t
+	asserts.AssertUpdateFunctionDefinitionRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateLoggerDefinitionVersionResponse = { ["Version"] = true, ["CreationTimestamp"] = true, ["Id"] = true, ["Arn"] = true, nil }
@@ -2359,15 +3235,26 @@ end
 -- * Arn [__string] Arn of the version.
 -- @return CreateLoggerDefinitionVersionResponse structure as a key-value pair table
 function M.CreateLoggerDefinitionVersionResponse(args)
-	assert(args, "You must provdide an argument table when creating CreateLoggerDefinitionVersionResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateLoggerDefinitionVersionResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Version"] = args["Version"],
 		["CreationTimestamp"] = args["CreationTimestamp"],
 		["Id"] = args["Id"],
 		["Arn"] = args["Arn"],
 	}
-	asserts.AssertCreateLoggerDefinitionVersionResponse(t)
-	return t
+	asserts.AssertCreateLoggerDefinitionVersionResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteCoreDefinitionResponse = { nil }
@@ -2386,11 +3273,22 @@ end
 -- Valid keys:
 -- @return DeleteCoreDefinitionResponse structure as a key-value pair table
 function M.DeleteCoreDefinitionResponse(args)
-	assert(args, "You must provdide an argument table when creating DeleteCoreDefinitionResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteCoreDefinitionResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertDeleteCoreDefinitionResponse(t)
-	return t
+	asserts.AssertDeleteCoreDefinitionResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetDeviceDefinitionVersionRequest = { ["DeviceDefinitionId"] = true, ["DeviceDefinitionVersionId"] = true, nil }
@@ -2417,13 +3315,26 @@ end
 -- Required key: DeviceDefinitionId
 -- @return GetDeviceDefinitionVersionRequest structure as a key-value pair table
 function M.GetDeviceDefinitionVersionRequest(args)
-	assert(args, "You must provdide an argument table when creating GetDeviceDefinitionVersionRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetDeviceDefinitionVersionRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{DeviceDefinitionId}"] = args["DeviceDefinitionId"],
+        ["{DeviceDefinitionVersionId}"] = args["DeviceDefinitionVersionId"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DeviceDefinitionId"] = args["DeviceDefinitionId"],
 		["DeviceDefinitionVersionId"] = args["DeviceDefinitionVersionId"],
 	}
-	asserts.AssertGetDeviceDefinitionVersionRequest(t)
-	return t
+	asserts.AssertGetDeviceDefinitionVersionRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListDefinitionsResponse = { ["Definitions"] = true, ["NextToken"] = true, nil }
@@ -2446,13 +3357,24 @@ end
 -- * NextToken [__string] The token for the next set of results, or ''null'' if there are no additional results.
 -- @return ListDefinitionsResponse structure as a key-value pair table
 function M.ListDefinitionsResponse(args)
-	assert(args, "You must provdide an argument table when creating ListDefinitionsResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListDefinitionsResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Definitions"] = args["Definitions"],
 		["NextToken"] = args["NextToken"],
 	}
-	asserts.AssertListDefinitionsResponse(t)
-	return t
+	asserts.AssertListDefinitionsResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateCoreDefinitionResponse = { ["LatestVersionArn"] = true, ["Name"] = true, ["LastUpdatedTimestamp"] = true, ["LatestVersion"] = true, ["CreationTimestamp"] = true, ["Id"] = true, ["Arn"] = true, nil }
@@ -2485,8 +3407,14 @@ end
 -- * Arn [__string] Arn of the definition.
 -- @return CreateCoreDefinitionResponse structure as a key-value pair table
 function M.CreateCoreDefinitionResponse(args)
-	assert(args, "You must provdide an argument table when creating CreateCoreDefinitionResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateCoreDefinitionResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["LatestVersionArn"] = args["LatestVersionArn"],
 		["Name"] = args["Name"],
 		["LastUpdatedTimestamp"] = args["LastUpdatedTimestamp"],
@@ -2495,8 +3423,13 @@ function M.CreateCoreDefinitionResponse(args)
 		["Id"] = args["Id"],
 		["Arn"] = args["Arn"],
 	}
-	asserts.AssertCreateCoreDefinitionResponse(t)
-	return t
+	asserts.AssertCreateCoreDefinitionResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdateLoggerDefinitionRequest = { ["LoggerDefinitionId"] = true, ["Name"] = true, nil }
@@ -2521,13 +3454,25 @@ end
 -- Required key: LoggerDefinitionId
 -- @return UpdateLoggerDefinitionRequest structure as a key-value pair table
 function M.UpdateLoggerDefinitionRequest(args)
-	assert(args, "You must provdide an argument table when creating UpdateLoggerDefinitionRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateLoggerDefinitionRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{LoggerDefinitionId}"] = args["LoggerDefinitionId"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["LoggerDefinitionId"] = args["LoggerDefinitionId"],
 		["Name"] = args["Name"],
 	}
-	asserts.AssertUpdateLoggerDefinitionRequest(t)
-	return t
+	asserts.AssertUpdateLoggerDefinitionRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetDeviceDefinitionResponse = { ["LatestVersionArn"] = true, ["Name"] = true, ["LastUpdatedTimestamp"] = true, ["LatestVersion"] = true, ["CreationTimestamp"] = true, ["Id"] = true, ["Arn"] = true, nil }
@@ -2560,8 +3505,14 @@ end
 -- * Arn [__string] Arn of the definition.
 -- @return GetDeviceDefinitionResponse structure as a key-value pair table
 function M.GetDeviceDefinitionResponse(args)
-	assert(args, "You must provdide an argument table when creating GetDeviceDefinitionResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetDeviceDefinitionResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["LatestVersionArn"] = args["LatestVersionArn"],
 		["Name"] = args["Name"],
 		["LastUpdatedTimestamp"] = args["LastUpdatedTimestamp"],
@@ -2570,8 +3521,13 @@ function M.GetDeviceDefinitionResponse(args)
 		["Id"] = args["Id"],
 		["Arn"] = args["Arn"],
 	}
-	asserts.AssertGetDeviceDefinitionResponse(t)
-	return t
+	asserts.AssertGetDeviceDefinitionResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetFunctionDefinitionVersionRequest = { ["FunctionDefinitionId"] = true, ["FunctionDefinitionVersionId"] = true, nil }
@@ -2598,13 +3554,26 @@ end
 -- Required key: FunctionDefinitionVersionId
 -- @return GetFunctionDefinitionVersionRequest structure as a key-value pair table
 function M.GetFunctionDefinitionVersionRequest(args)
-	assert(args, "You must provdide an argument table when creating GetFunctionDefinitionVersionRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetFunctionDefinitionVersionRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{FunctionDefinitionId}"] = args["FunctionDefinitionId"],
+        ["{FunctionDefinitionVersionId}"] = args["FunctionDefinitionVersionId"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["FunctionDefinitionId"] = args["FunctionDefinitionId"],
 		["FunctionDefinitionVersionId"] = args["FunctionDefinitionVersionId"],
 	}
-	asserts.AssertGetFunctionDefinitionVersionRequest(t)
-	return t
+	asserts.AssertGetFunctionDefinitionVersionRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListSubscriptionDefinitionsResponse = { ["Definitions"] = true, ["NextToken"] = true, nil }
@@ -2627,13 +3596,24 @@ end
 -- * NextToken [__string] The token for the next set of results, or ''null'' if there are no additional results.
 -- @return ListSubscriptionDefinitionsResponse structure as a key-value pair table
 function M.ListSubscriptionDefinitionsResponse(args)
-	assert(args, "You must provdide an argument table when creating ListSubscriptionDefinitionsResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListSubscriptionDefinitionsResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Definitions"] = args["Definitions"],
 		["NextToken"] = args["NextToken"],
 	}
-	asserts.AssertListSubscriptionDefinitionsResponse(t)
-	return t
+	asserts.AssertListSubscriptionDefinitionsResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetConnectivityInfoRequest = { ["ThingName"] = true, nil }
@@ -2656,12 +3636,24 @@ end
 -- Required key: ThingName
 -- @return GetConnectivityInfoRequest structure as a key-value pair table
 function M.GetConnectivityInfoRequest(args)
-	assert(args, "You must provdide an argument table when creating GetConnectivityInfoRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetConnectivityInfoRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{ThingName}"] = args["ThingName"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ThingName"] = args["ThingName"],
 	}
-	asserts.AssertGetConnectivityInfoRequest(t)
-	return t
+	asserts.AssertGetConnectivityInfoRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.FunctionConfiguration = { ["ExecArgs"] = true, ["Executable"] = true, ["MemorySize"] = true, ["Environment"] = true, ["Pinned"] = true, ["Timeout"] = true, nil }
@@ -2692,8 +3684,14 @@ end
 -- * Timeout [__integer] The function execution time at which Lambda should terminate the function. This timeout still applies to pinned lambdas for each request.
 -- @return FunctionConfiguration structure as a key-value pair table
 function M.FunctionConfiguration(args)
-	assert(args, "You must provdide an argument table when creating FunctionConfiguration")
-	local t = { 
+	assert(args, "You must provide an argument table when creating FunctionConfiguration")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ExecArgs"] = args["ExecArgs"],
 		["Executable"] = args["Executable"],
 		["MemorySize"] = args["MemorySize"],
@@ -2701,8 +3699,13 @@ function M.FunctionConfiguration(args)
 		["Pinned"] = args["Pinned"],
 		["Timeout"] = args["Timeout"],
 	}
-	asserts.AssertFunctionConfiguration(t)
-	return t
+	asserts.AssertFunctionConfiguration(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListFunctionDefinitionsResponse = { ["Definitions"] = true, ["NextToken"] = true, nil }
@@ -2725,13 +3728,24 @@ end
 -- * NextToken [__string] The token for the next set of results, or ''null'' if there are no additional results.
 -- @return ListFunctionDefinitionsResponse structure as a key-value pair table
 function M.ListFunctionDefinitionsResponse(args)
-	assert(args, "You must provdide an argument table when creating ListFunctionDefinitionsResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListFunctionDefinitionsResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Definitions"] = args["Definitions"],
 		["NextToken"] = args["NextToken"],
 	}
-	asserts.AssertListFunctionDefinitionsResponse(t)
-	return t
+	asserts.AssertListFunctionDefinitionsResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Empty = { nil }
@@ -2750,11 +3764,22 @@ end
 -- Valid keys:
 -- @return Empty structure as a key-value pair table
 function M.Empty(args)
-	assert(args, "You must provdide an argument table when creating Empty")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Empty")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertEmpty(t)
-	return t
+	asserts.AssertEmpty(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Core = { ["CertificateArn"] = true, ["ThingArn"] = true, ["SyncShadow"] = true, ["Id"] = true, nil }
@@ -2781,15 +3806,26 @@ end
 -- * Id [__string] Element Id for this entry in the list.
 -- @return Core structure as a key-value pair table
 function M.Core(args)
-	assert(args, "You must provdide an argument table when creating Core")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Core")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["CertificateArn"] = args["CertificateArn"],
 		["ThingArn"] = args["ThingArn"],
 		["SyncShadow"] = args["SyncShadow"],
 		["Id"] = args["Id"],
 	}
-	asserts.AssertCore(t)
-	return t
+	asserts.AssertCore(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetFunctionDefinitionRequest = { ["FunctionDefinitionId"] = true, nil }
@@ -2812,12 +3848,24 @@ end
 -- Required key: FunctionDefinitionId
 -- @return GetFunctionDefinitionRequest structure as a key-value pair table
 function M.GetFunctionDefinitionRequest(args)
-	assert(args, "You must provdide an argument table when creating GetFunctionDefinitionRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetFunctionDefinitionRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{FunctionDefinitionId}"] = args["FunctionDefinitionId"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["FunctionDefinitionId"] = args["FunctionDefinitionId"],
 	}
-	asserts.AssertGetFunctionDefinitionRequest(t)
-	return t
+	asserts.AssertGetFunctionDefinitionRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateCoreDefinitionVersionResponse = { ["Version"] = true, ["CreationTimestamp"] = true, ["Id"] = true, ["Arn"] = true, nil }
@@ -2844,15 +3892,26 @@ end
 -- * Arn [__string] Arn of the version.
 -- @return CreateCoreDefinitionVersionResponse structure as a key-value pair table
 function M.CreateCoreDefinitionVersionResponse(args)
-	assert(args, "You must provdide an argument table when creating CreateCoreDefinitionVersionResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateCoreDefinitionVersionResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Version"] = args["Version"],
 		["CreationTimestamp"] = args["CreationTimestamp"],
 		["Id"] = args["Id"],
 		["Arn"] = args["Arn"],
 	}
-	asserts.AssertCreateCoreDefinitionVersionResponse(t)
-	return t
+	asserts.AssertCreateCoreDefinitionVersionResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdateGroupCertificateConfigurationResponse = { ["CertificateExpiryInMilliseconds"] = true, ["GroupId"] = true, ["CertificateAuthorityExpiryInMilliseconds"] = true, nil }
@@ -2877,14 +3936,25 @@ end
 -- * CertificateAuthorityExpiryInMilliseconds [__string] Amount of time when the certificate authority expires in milliseconds.
 -- @return UpdateGroupCertificateConfigurationResponse structure as a key-value pair table
 function M.UpdateGroupCertificateConfigurationResponse(args)
-	assert(args, "You must provdide an argument table when creating UpdateGroupCertificateConfigurationResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateGroupCertificateConfigurationResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["CertificateExpiryInMilliseconds"] = args["CertificateExpiryInMilliseconds"],
 		["GroupId"] = args["GroupId"],
 		["CertificateAuthorityExpiryInMilliseconds"] = args["CertificateAuthorityExpiryInMilliseconds"],
 	}
-	asserts.AssertUpdateGroupCertificateConfigurationResponse(t)
-	return t
+	asserts.AssertUpdateGroupCertificateConfigurationResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetGroupResponse = { ["LatestVersionArn"] = true, ["Name"] = true, ["LastUpdatedTimestamp"] = true, ["LatestVersion"] = true, ["CreationTimestamp"] = true, ["Id"] = true, ["Arn"] = true, nil }
@@ -2917,8 +3987,14 @@ end
 -- * Arn [__string] Arn of the definition.
 -- @return GetGroupResponse structure as a key-value pair table
 function M.GetGroupResponse(args)
-	assert(args, "You must provdide an argument table when creating GetGroupResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetGroupResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["LatestVersionArn"] = args["LatestVersionArn"],
 		["Name"] = args["Name"],
 		["LastUpdatedTimestamp"] = args["LastUpdatedTimestamp"],
@@ -2927,8 +4003,13 @@ function M.GetGroupResponse(args)
 		["Id"] = args["Id"],
 		["Arn"] = args["Arn"],
 	}
-	asserts.AssertGetGroupResponse(t)
-	return t
+	asserts.AssertGetGroupResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetLoggerDefinitionVersionRequest = { ["LoggerDefinitionId"] = true, ["LoggerDefinitionVersionId"] = true, nil }
@@ -2955,13 +4036,26 @@ end
 -- Required key: LoggerDefinitionId
 -- @return GetLoggerDefinitionVersionRequest structure as a key-value pair table
 function M.GetLoggerDefinitionVersionRequest(args)
-	assert(args, "You must provdide an argument table when creating GetLoggerDefinitionVersionRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetLoggerDefinitionVersionRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{LoggerDefinitionId}"] = args["LoggerDefinitionId"],
+        ["{LoggerDefinitionVersionId}"] = args["LoggerDefinitionVersionId"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["LoggerDefinitionId"] = args["LoggerDefinitionId"],
 		["LoggerDefinitionVersionId"] = args["LoggerDefinitionVersionId"],
 	}
-	asserts.AssertGetLoggerDefinitionVersionRequest(t)
-	return t
+	asserts.AssertGetLoggerDefinitionVersionRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListLoggerDefinitionsRequest = { ["NextToken"] = true, ["MaxResults"] = true, nil }
@@ -2984,13 +4078,26 @@ end
 -- * MaxResults [__string] Specifies the maximum number of list results to be returned in this page
 -- @return ListLoggerDefinitionsRequest structure as a key-value pair table
 function M.ListLoggerDefinitionsRequest(args)
-	assert(args, "You must provdide an argument table when creating ListLoggerDefinitionsRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListLoggerDefinitionsRequest")
+    local query_args = { 
+        ["NextToken"] = args["NextToken"],
+        ["MaxResults"] = args["MaxResults"],
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NextToken"] = args["NextToken"],
 		["MaxResults"] = args["MaxResults"],
 	}
-	asserts.AssertListLoggerDefinitionsRequest(t)
-	return t
+	asserts.AssertListLoggerDefinitionsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Device = { ["CertificateArn"] = true, ["ThingArn"] = true, ["SyncShadow"] = true, ["Id"] = true, nil }
@@ -3017,15 +4124,26 @@ end
 -- * Id [__string] Element Id for this entry in the list.
 -- @return Device structure as a key-value pair table
 function M.Device(args)
-	assert(args, "You must provdide an argument table when creating Device")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Device")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["CertificateArn"] = args["CertificateArn"],
 		["ThingArn"] = args["ThingArn"],
 		["SyncShadow"] = args["SyncShadow"],
 		["Id"] = args["Id"],
 	}
-	asserts.AssertDevice(t)
-	return t
+	asserts.AssertDevice(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetFunctionDefinitionResponse = { ["LatestVersionArn"] = true, ["Name"] = true, ["LastUpdatedTimestamp"] = true, ["LatestVersion"] = true, ["CreationTimestamp"] = true, ["Id"] = true, ["Arn"] = true, nil }
@@ -3058,8 +4176,14 @@ end
 -- * Arn [__string] Arn of the definition.
 -- @return GetFunctionDefinitionResponse structure as a key-value pair table
 function M.GetFunctionDefinitionResponse(args)
-	assert(args, "You must provdide an argument table when creating GetFunctionDefinitionResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetFunctionDefinitionResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["LatestVersionArn"] = args["LatestVersionArn"],
 		["Name"] = args["Name"],
 		["LastUpdatedTimestamp"] = args["LastUpdatedTimestamp"],
@@ -3068,8 +4192,13 @@ function M.GetFunctionDefinitionResponse(args)
 		["Id"] = args["Id"],
 		["Arn"] = args["Arn"],
 	}
-	asserts.AssertGetFunctionDefinitionResponse(t)
-	return t
+	asserts.AssertGetFunctionDefinitionResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetGroupCertificateAuthorityRequest = { ["CertificateAuthorityId"] = true, ["GroupId"] = true, nil }
@@ -3096,13 +4225,26 @@ end
 -- Required key: GroupId
 -- @return GetGroupCertificateAuthorityRequest structure as a key-value pair table
 function M.GetGroupCertificateAuthorityRequest(args)
-	assert(args, "You must provdide an argument table when creating GetGroupCertificateAuthorityRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetGroupCertificateAuthorityRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{CertificateAuthorityId}"] = args["CertificateAuthorityId"],
+        ["{GroupId}"] = args["GroupId"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["CertificateAuthorityId"] = args["CertificateAuthorityId"],
 		["GroupId"] = args["GroupId"],
 	}
-	asserts.AssertGetGroupCertificateAuthorityRequest(t)
-	return t
+	asserts.AssertGetGroupCertificateAuthorityRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListSubscriptionDefinitionVersionsResponse = { ["NextToken"] = true, ["Versions"] = true, nil }
@@ -3125,13 +4267,24 @@ end
 -- * Versions [ListOfVersionInformation] Versions
 -- @return ListSubscriptionDefinitionVersionsResponse structure as a key-value pair table
 function M.ListSubscriptionDefinitionVersionsResponse(args)
-	assert(args, "You must provdide an argument table when creating ListSubscriptionDefinitionVersionsResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListSubscriptionDefinitionVersionsResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NextToken"] = args["NextToken"],
 		["Versions"] = args["Versions"],
 	}
-	asserts.AssertListSubscriptionDefinitionVersionsResponse(t)
-	return t
+	asserts.AssertListSubscriptionDefinitionVersionsResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdateCoreDefinitionRequest = { ["CoreDefinitionId"] = true, ["Name"] = true, nil }
@@ -3156,13 +4309,25 @@ end
 -- Required key: CoreDefinitionId
 -- @return UpdateCoreDefinitionRequest structure as a key-value pair table
 function M.UpdateCoreDefinitionRequest(args)
-	assert(args, "You must provdide an argument table when creating UpdateCoreDefinitionRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateCoreDefinitionRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{CoreDefinitionId}"] = args["CoreDefinitionId"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["CoreDefinitionId"] = args["CoreDefinitionId"],
 		["Name"] = args["Name"],
 	}
-	asserts.AssertUpdateCoreDefinitionRequest(t)
-	return t
+	asserts.AssertUpdateCoreDefinitionRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetCoreDefinitionVersionResponse = { ["Definition"] = true, ["Version"] = true, ["CreationTimestamp"] = true, ["Id"] = true, ["Arn"] = true, nil }
@@ -3191,16 +4356,27 @@ end
 -- * Arn [__string] Arn of the core definition version.
 -- @return GetCoreDefinitionVersionResponse structure as a key-value pair table
 function M.GetCoreDefinitionVersionResponse(args)
-	assert(args, "You must provdide an argument table when creating GetCoreDefinitionVersionResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetCoreDefinitionVersionResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Definition"] = args["Definition"],
 		["Version"] = args["Version"],
 		["CreationTimestamp"] = args["CreationTimestamp"],
 		["Id"] = args["Id"],
 		["Arn"] = args["Arn"],
 	}
-	asserts.AssertGetCoreDefinitionVersionResponse(t)
-	return t
+	asserts.AssertGetCoreDefinitionVersionResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DisassociateRoleFromGroupRequest = { ["GroupId"] = true, nil }
@@ -3223,12 +4399,24 @@ end
 -- Required key: GroupId
 -- @return DisassociateRoleFromGroupRequest structure as a key-value pair table
 function M.DisassociateRoleFromGroupRequest(args)
-	assert(args, "You must provdide an argument table when creating DisassociateRoleFromGroupRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DisassociateRoleFromGroupRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{GroupId}"] = args["GroupId"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["GroupId"] = args["GroupId"],
 	}
-	asserts.AssertDisassociateRoleFromGroupRequest(t)
-	return t
+	asserts.AssertDisassociateRoleFromGroupRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListDeviceDefinitionsRequest = { ["NextToken"] = true, ["MaxResults"] = true, nil }
@@ -3251,13 +4439,26 @@ end
 -- * MaxResults [__string] Specifies the maximum number of list results to be returned in this page
 -- @return ListDeviceDefinitionsRequest structure as a key-value pair table
 function M.ListDeviceDefinitionsRequest(args)
-	assert(args, "You must provdide an argument table when creating ListDeviceDefinitionsRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListDeviceDefinitionsRequest")
+    local query_args = { 
+        ["NextToken"] = args["NextToken"],
+        ["MaxResults"] = args["MaxResults"],
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NextToken"] = args["NextToken"],
 		["MaxResults"] = args["MaxResults"],
 	}
-	asserts.AssertListDeviceDefinitionsRequest(t)
-	return t
+	asserts.AssertListDeviceDefinitionsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateSubscriptionDefinitionVersionResponse = { ["Version"] = true, ["CreationTimestamp"] = true, ["Id"] = true, ["Arn"] = true, nil }
@@ -3284,15 +4485,26 @@ end
 -- * Arn [__string] Arn of the version.
 -- @return CreateSubscriptionDefinitionVersionResponse structure as a key-value pair table
 function M.CreateSubscriptionDefinitionVersionResponse(args)
-	assert(args, "You must provdide an argument table when creating CreateSubscriptionDefinitionVersionResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateSubscriptionDefinitionVersionResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Version"] = args["Version"],
 		["CreationTimestamp"] = args["CreationTimestamp"],
 		["Id"] = args["Id"],
 		["Arn"] = args["Arn"],
 	}
-	asserts.AssertCreateSubscriptionDefinitionVersionResponse(t)
-	return t
+	asserts.AssertCreateSubscriptionDefinitionVersionResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdateGroupResponse = { nil }
@@ -3311,11 +4523,22 @@ end
 -- Valid keys:
 -- @return UpdateGroupResponse structure as a key-value pair table
 function M.UpdateGroupResponse(args)
-	assert(args, "You must provdide an argument table when creating UpdateGroupResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateGroupResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertUpdateGroupResponse(t)
-	return t
+	asserts.AssertUpdateGroupResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdateConnectivityInfoRequest = { ["ConnectivityInfo"] = true, ["ThingName"] = true, nil }
@@ -3340,13 +4563,25 @@ end
 -- Required key: ThingName
 -- @return UpdateConnectivityInfoRequest structure as a key-value pair table
 function M.UpdateConnectivityInfoRequest(args)
-	assert(args, "You must provdide an argument table when creating UpdateConnectivityInfoRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateConnectivityInfoRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{ThingName}"] = args["ThingName"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ConnectivityInfo"] = args["ConnectivityInfo"],
 		["ThingName"] = args["ThingName"],
 	}
-	asserts.AssertUpdateConnectivityInfoRequest(t)
-	return t
+	asserts.AssertUpdateConnectivityInfoRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteSubscriptionDefinitionRequest = { ["SubscriptionDefinitionId"] = true, nil }
@@ -3369,12 +4604,24 @@ end
 -- Required key: SubscriptionDefinitionId
 -- @return DeleteSubscriptionDefinitionRequest structure as a key-value pair table
 function M.DeleteSubscriptionDefinitionRequest(args)
-	assert(args, "You must provdide an argument table when creating DeleteSubscriptionDefinitionRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteSubscriptionDefinitionRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{SubscriptionDefinitionId}"] = args["SubscriptionDefinitionId"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["SubscriptionDefinitionId"] = args["SubscriptionDefinitionId"],
 	}
-	asserts.AssertDeleteSubscriptionDefinitionRequest(t)
-	return t
+	asserts.AssertDeleteSubscriptionDefinitionRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.VersionInformation = { ["Version"] = true, ["CreationTimestamp"] = true, ["Id"] = true, ["Arn"] = true, nil }
@@ -3401,15 +4648,26 @@ end
 -- * Arn [__string] Arn of the version.
 -- @return VersionInformation structure as a key-value pair table
 function M.VersionInformation(args)
-	assert(args, "You must provdide an argument table when creating VersionInformation")
-	local t = { 
+	assert(args, "You must provide an argument table when creating VersionInformation")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Version"] = args["Version"],
 		["CreationTimestamp"] = args["CreationTimestamp"],
 		["Id"] = args["Id"],
 		["Arn"] = args["Arn"],
 	}
-	asserts.AssertVersionInformation(t)
-	return t
+	asserts.AssertVersionInformation(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GroupCertificateConfiguration = { ["CertificateExpiryInMilliseconds"] = true, ["GroupId"] = true, ["CertificateAuthorityExpiryInMilliseconds"] = true, nil }
@@ -3434,14 +4692,25 @@ end
 -- * CertificateAuthorityExpiryInMilliseconds [__string] Amount of time when the certificate authority expires in milliseconds.
 -- @return GroupCertificateConfiguration structure as a key-value pair table
 function M.GroupCertificateConfiguration(args)
-	assert(args, "You must provdide an argument table when creating GroupCertificateConfiguration")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GroupCertificateConfiguration")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["CertificateExpiryInMilliseconds"] = args["CertificateExpiryInMilliseconds"],
 		["GroupId"] = args["GroupId"],
 		["CertificateAuthorityExpiryInMilliseconds"] = args["CertificateAuthorityExpiryInMilliseconds"],
 	}
-	asserts.AssertGroupCertificateConfiguration(t)
-	return t
+	asserts.AssertGroupCertificateConfiguration(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetAssociatedRoleRequest = { ["GroupId"] = true, nil }
@@ -3464,12 +4733,24 @@ end
 -- Required key: GroupId
 -- @return GetAssociatedRoleRequest structure as a key-value pair table
 function M.GetAssociatedRoleRequest(args)
-	assert(args, "You must provdide an argument table when creating GetAssociatedRoleRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetAssociatedRoleRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{GroupId}"] = args["GroupId"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["GroupId"] = args["GroupId"],
 	}
-	asserts.AssertGetAssociatedRoleRequest(t)
-	return t
+	asserts.AssertGetAssociatedRoleRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetCoreDefinitionRequest = { ["CoreDefinitionId"] = true, nil }
@@ -3492,12 +4773,24 @@ end
 -- Required key: CoreDefinitionId
 -- @return GetCoreDefinitionRequest structure as a key-value pair table
 function M.GetCoreDefinitionRequest(args)
-	assert(args, "You must provdide an argument table when creating GetCoreDefinitionRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetCoreDefinitionRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{CoreDefinitionId}"] = args["CoreDefinitionId"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["CoreDefinitionId"] = args["CoreDefinitionId"],
 	}
-	asserts.AssertGetCoreDefinitionRequest(t)
-	return t
+	asserts.AssertGetCoreDefinitionRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListSubscriptionDefinitionsRequest = { ["NextToken"] = true, ["MaxResults"] = true, nil }
@@ -3520,13 +4813,26 @@ end
 -- * MaxResults [__string] Specifies the maximum number of list results to be returned in this page
 -- @return ListSubscriptionDefinitionsRequest structure as a key-value pair table
 function M.ListSubscriptionDefinitionsRequest(args)
-	assert(args, "You must provdide an argument table when creating ListSubscriptionDefinitionsRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListSubscriptionDefinitionsRequest")
+    local query_args = { 
+        ["NextToken"] = args["NextToken"],
+        ["MaxResults"] = args["MaxResults"],
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NextToken"] = args["NextToken"],
 		["MaxResults"] = args["MaxResults"],
 	}
-	asserts.AssertListSubscriptionDefinitionsRequest(t)
-	return t
+	asserts.AssertListSubscriptionDefinitionsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateSubscriptionDefinitionVersionRequest = { ["SubscriptionDefinitionId"] = true, ["AmznClientToken"] = true, ["Subscriptions"] = true, nil }
@@ -3553,14 +4859,27 @@ end
 -- Required key: SubscriptionDefinitionId
 -- @return CreateSubscriptionDefinitionVersionRequest structure as a key-value pair table
 function M.CreateSubscriptionDefinitionVersionRequest(args)
-	assert(args, "You must provdide an argument table when creating CreateSubscriptionDefinitionVersionRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateSubscriptionDefinitionVersionRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{SubscriptionDefinitionId}"] = args["SubscriptionDefinitionId"],
+    }
+    local header_args = { 
+        ["X-Amzn-Client-Token"] = args["AmznClientToken"],
+    }
+	local all_args = { 
 		["SubscriptionDefinitionId"] = args["SubscriptionDefinitionId"],
 		["AmznClientToken"] = args["AmznClientToken"],
 		["Subscriptions"] = args["Subscriptions"],
 	}
-	asserts.AssertCreateSubscriptionDefinitionVersionRequest(t)
-	return t
+	asserts.AssertCreateSubscriptionDefinitionVersionRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateCoreDefinitionVersionRequest = { ["Cores"] = true, ["AmznClientToken"] = true, ["CoreDefinitionId"] = true, nil }
@@ -3587,14 +4906,27 @@ end
 -- Required key: CoreDefinitionId
 -- @return CreateCoreDefinitionVersionRequest structure as a key-value pair table
 function M.CreateCoreDefinitionVersionRequest(args)
-	assert(args, "You must provdide an argument table when creating CreateCoreDefinitionVersionRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateCoreDefinitionVersionRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{CoreDefinitionId}"] = args["CoreDefinitionId"],
+    }
+    local header_args = { 
+        ["X-Amzn-Client-Token"] = args["AmznClientToken"],
+    }
+	local all_args = { 
 		["Cores"] = args["Cores"],
 		["AmznClientToken"] = args["AmznClientToken"],
 		["CoreDefinitionId"] = args["CoreDefinitionId"],
 	}
-	asserts.AssertCreateCoreDefinitionVersionRequest(t)
-	return t
+	asserts.AssertCreateCoreDefinitionVersionRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateFunctionDefinitionRequest = { ["AmznClientToken"] = true, ["InitialVersion"] = true, ["Name"] = true, nil }
@@ -3619,14 +4951,26 @@ end
 -- * Name [__string] name of the function definition
 -- @return CreateFunctionDefinitionRequest structure as a key-value pair table
 function M.CreateFunctionDefinitionRequest(args)
-	assert(args, "You must provdide an argument table when creating CreateFunctionDefinitionRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateFunctionDefinitionRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+        ["X-Amzn-Client-Token"] = args["AmznClientToken"],
+    }
+	local all_args = { 
 		["AmznClientToken"] = args["AmznClientToken"],
 		["InitialVersion"] = args["InitialVersion"],
 		["Name"] = args["Name"],
 	}
-	asserts.AssertCreateFunctionDefinitionRequest(t)
-	return t
+	asserts.AssertCreateFunctionDefinitionRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AssociateRoleToGroupRequest = { ["RoleArn"] = true, ["GroupId"] = true, nil }
@@ -3651,13 +4995,25 @@ end
 -- Required key: GroupId
 -- @return AssociateRoleToGroupRequest structure as a key-value pair table
 function M.AssociateRoleToGroupRequest(args)
-	assert(args, "You must provdide an argument table when creating AssociateRoleToGroupRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AssociateRoleToGroupRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{GroupId}"] = args["GroupId"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["RoleArn"] = args["RoleArn"],
 		["GroupId"] = args["GroupId"],
 	}
-	asserts.AssertAssociateRoleToGroupRequest(t)
-	return t
+	asserts.AssertAssociateRoleToGroupRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetSubscriptionDefinitionResponse = { ["LatestVersionArn"] = true, ["Name"] = true, ["LastUpdatedTimestamp"] = true, ["LatestVersion"] = true, ["CreationTimestamp"] = true, ["Id"] = true, ["Arn"] = true, nil }
@@ -3690,8 +5046,14 @@ end
 -- * Arn [__string] Arn of the definition.
 -- @return GetSubscriptionDefinitionResponse structure as a key-value pair table
 function M.GetSubscriptionDefinitionResponse(args)
-	assert(args, "You must provdide an argument table when creating GetSubscriptionDefinitionResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetSubscriptionDefinitionResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["LatestVersionArn"] = args["LatestVersionArn"],
 		["Name"] = args["Name"],
 		["LastUpdatedTimestamp"] = args["LastUpdatedTimestamp"],
@@ -3700,8 +5062,13 @@ function M.GetSubscriptionDefinitionResponse(args)
 		["Id"] = args["Id"],
 		["Arn"] = args["Arn"],
 	}
-	asserts.AssertGetSubscriptionDefinitionResponse(t)
-	return t
+	asserts.AssertGetSubscriptionDefinitionResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListGroupVersionsResponse = { ["NextToken"] = true, ["Versions"] = true, nil }
@@ -3724,13 +5091,24 @@ end
 -- * Versions [ListOfVersionInformation] Versions
 -- @return ListGroupVersionsResponse structure as a key-value pair table
 function M.ListGroupVersionsResponse(args)
-	assert(args, "You must provdide an argument table when creating ListGroupVersionsResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListGroupVersionsResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NextToken"] = args["NextToken"],
 		["Versions"] = args["Versions"],
 	}
-	asserts.AssertListGroupVersionsResponse(t)
-	return t
+	asserts.AssertListGroupVersionsResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListCoreDefinitionsRequest = { ["NextToken"] = true, ["MaxResults"] = true, nil }
@@ -3753,13 +5131,26 @@ end
 -- * MaxResults [__string] Specifies the maximum number of list results to be returned in this page
 -- @return ListCoreDefinitionsRequest structure as a key-value pair table
 function M.ListCoreDefinitionsRequest(args)
-	assert(args, "You must provdide an argument table when creating ListCoreDefinitionsRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListCoreDefinitionsRequest")
+    local query_args = { 
+        ["NextToken"] = args["NextToken"],
+        ["MaxResults"] = args["MaxResults"],
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NextToken"] = args["NextToken"],
 		["MaxResults"] = args["MaxResults"],
 	}
-	asserts.AssertListCoreDefinitionsRequest(t)
-	return t
+	asserts.AssertListCoreDefinitionsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListGroupCertificateAuthoritiesResponse = { ["GroupCertificateAuthorities"] = true, nil }
@@ -3780,12 +5171,23 @@ end
 -- * GroupCertificateAuthorities [ListOfGroupCertificateAuthorityProperties] List of certificate authorities associated with the group.
 -- @return ListGroupCertificateAuthoritiesResponse structure as a key-value pair table
 function M.ListGroupCertificateAuthoritiesResponse(args)
-	assert(args, "You must provdide an argument table when creating ListGroupCertificateAuthoritiesResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListGroupCertificateAuthoritiesResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["GroupCertificateAuthorities"] = args["GroupCertificateAuthorities"],
 	}
-	asserts.AssertListGroupCertificateAuthoritiesResponse(t)
-	return t
+	asserts.AssertListGroupCertificateAuthoritiesResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Logger = { ["Type"] = true, ["Space"] = true, ["Component"] = true, ["Id"] = true, ["Level"] = true, nil }
@@ -3814,16 +5216,27 @@ end
 -- * Level [LoggerLevel] The level of the logs
 -- @return Logger structure as a key-value pair table
 function M.Logger(args)
-	assert(args, "You must provdide an argument table when creating Logger")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Logger")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Type"] = args["Type"],
 		["Space"] = args["Space"],
 		["Component"] = args["Component"],
 		["Id"] = args["Id"],
 		["Level"] = args["Level"],
 	}
-	asserts.AssertLogger(t)
-	return t
+	asserts.AssertLogger(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdateGroupCertificateConfigurationRequest = { ["CertificateExpiryInMilliseconds"] = true, ["GroupId"] = true, nil }
@@ -3848,13 +5261,25 @@ end
 -- Required key: GroupId
 -- @return UpdateGroupCertificateConfigurationRequest structure as a key-value pair table
 function M.UpdateGroupCertificateConfigurationRequest(args)
-	assert(args, "You must provdide an argument table when creating UpdateGroupCertificateConfigurationRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateGroupCertificateConfigurationRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{GroupId}"] = args["GroupId"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["CertificateExpiryInMilliseconds"] = args["CertificateExpiryInMilliseconds"],
 		["GroupId"] = args["GroupId"],
 	}
-	asserts.AssertUpdateGroupCertificateConfigurationRequest(t)
-	return t
+	asserts.AssertUpdateGroupCertificateConfigurationRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetFunctionDefinitionVersionResponse = { ["Definition"] = true, ["Version"] = true, ["CreationTimestamp"] = true, ["Id"] = true, ["Arn"] = true, nil }
@@ -3883,16 +5308,27 @@ end
 -- * Arn [__string] Arn of the function definition version.
 -- @return GetFunctionDefinitionVersionResponse structure as a key-value pair table
 function M.GetFunctionDefinitionVersionResponse(args)
-	assert(args, "You must provdide an argument table when creating GetFunctionDefinitionVersionResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetFunctionDefinitionVersionResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Definition"] = args["Definition"],
 		["Version"] = args["Version"],
 		["CreationTimestamp"] = args["CreationTimestamp"],
 		["Id"] = args["Id"],
 		["Arn"] = args["Arn"],
 	}
-	asserts.AssertGetFunctionDefinitionVersionResponse(t)
-	return t
+	asserts.AssertGetFunctionDefinitionVersionResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListGroupCertificateAuthoritiesRequest = { ["GroupId"] = true, nil }
@@ -3915,12 +5351,24 @@ end
 -- Required key: GroupId
 -- @return ListGroupCertificateAuthoritiesRequest structure as a key-value pair table
 function M.ListGroupCertificateAuthoritiesRequest(args)
-	assert(args, "You must provdide an argument table when creating ListGroupCertificateAuthoritiesRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListGroupCertificateAuthoritiesRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{GroupId}"] = args["GroupId"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["GroupId"] = args["GroupId"],
 	}
-	asserts.AssertListGroupCertificateAuthoritiesRequest(t)
-	return t
+	asserts.AssertListGroupCertificateAuthoritiesRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListDeviceDefinitionsResponse = { ["Definitions"] = true, ["NextToken"] = true, nil }
@@ -3943,13 +5391,24 @@ end
 -- * NextToken [__string] The token for the next set of results, or ''null'' if there are no additional results.
 -- @return ListDeviceDefinitionsResponse structure as a key-value pair table
 function M.ListDeviceDefinitionsResponse(args)
-	assert(args, "You must provdide an argument table when creating ListDeviceDefinitionsResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListDeviceDefinitionsResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Definitions"] = args["Definitions"],
 		["NextToken"] = args["NextToken"],
 	}
-	asserts.AssertListDeviceDefinitionsResponse(t)
-	return t
+	asserts.AssertListDeviceDefinitionsResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateFunctionDefinitionVersionResponse = { ["Version"] = true, ["CreationTimestamp"] = true, ["Id"] = true, ["Arn"] = true, nil }
@@ -3976,15 +5435,26 @@ end
 -- * Arn [__string] Arn of the version.
 -- @return CreateFunctionDefinitionVersionResponse structure as a key-value pair table
 function M.CreateFunctionDefinitionVersionResponse(args)
-	assert(args, "You must provdide an argument table when creating CreateFunctionDefinitionVersionResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateFunctionDefinitionVersionResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Version"] = args["Version"],
 		["CreationTimestamp"] = args["CreationTimestamp"],
 		["Id"] = args["Id"],
 		["Arn"] = args["Arn"],
 	}
-	asserts.AssertCreateFunctionDefinitionVersionResponse(t)
-	return t
+	asserts.AssertCreateFunctionDefinitionVersionResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateGroupVersionResponse = { ["Version"] = true, ["CreationTimestamp"] = true, ["Id"] = true, ["Arn"] = true, nil }
@@ -4011,15 +5481,26 @@ end
 -- * Arn [__string] Arn of the version.
 -- @return CreateGroupVersionResponse structure as a key-value pair table
 function M.CreateGroupVersionResponse(args)
-	assert(args, "You must provdide an argument table when creating CreateGroupVersionResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateGroupVersionResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Version"] = args["Version"],
 		["CreationTimestamp"] = args["CreationTimestamp"],
 		["Id"] = args["Id"],
 		["Arn"] = args["Arn"],
 	}
-	asserts.AssertCreateGroupVersionResponse(t)
-	return t
+	asserts.AssertCreateGroupVersionResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListVersionsResponse = { ["NextToken"] = true, ["Versions"] = true, nil }
@@ -4042,13 +5523,24 @@ end
 -- * Versions [ListOfVersionInformation] Versions
 -- @return ListVersionsResponse structure as a key-value pair table
 function M.ListVersionsResponse(args)
-	assert(args, "You must provdide an argument table when creating ListVersionsResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListVersionsResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NextToken"] = args["NextToken"],
 		["Versions"] = args["Versions"],
 	}
-	asserts.AssertListVersionsResponse(t)
-	return t
+	asserts.AssertListVersionsResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdateDeviceDefinitionRequest = { ["DeviceDefinitionId"] = true, ["Name"] = true, nil }
@@ -4073,13 +5565,25 @@ end
 -- Required key: DeviceDefinitionId
 -- @return UpdateDeviceDefinitionRequest structure as a key-value pair table
 function M.UpdateDeviceDefinitionRequest(args)
-	assert(args, "You must provdide an argument table when creating UpdateDeviceDefinitionRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateDeviceDefinitionRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{DeviceDefinitionId}"] = args["DeviceDefinitionId"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DeviceDefinitionId"] = args["DeviceDefinitionId"],
 		["Name"] = args["Name"],
 	}
-	asserts.AssertUpdateDeviceDefinitionRequest(t)
-	return t
+	asserts.AssertUpdateDeviceDefinitionRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GroupVersion = { ["CoreDefinitionVersionArn"] = true, ["LoggerDefinitionVersionArn"] = true, ["FunctionDefinitionVersionArn"] = true, ["DeviceDefinitionVersionArn"] = true, ["SubscriptionDefinitionVersionArn"] = true, nil }
@@ -4108,16 +5612,27 @@ end
 -- * SubscriptionDefinitionVersionArn [__string] Subscription definition version arn for this group.
 -- @return GroupVersion structure as a key-value pair table
 function M.GroupVersion(args)
-	assert(args, "You must provdide an argument table when creating GroupVersion")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GroupVersion")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["CoreDefinitionVersionArn"] = args["CoreDefinitionVersionArn"],
 		["LoggerDefinitionVersionArn"] = args["LoggerDefinitionVersionArn"],
 		["FunctionDefinitionVersionArn"] = args["FunctionDefinitionVersionArn"],
 		["DeviceDefinitionVersionArn"] = args["DeviceDefinitionVersionArn"],
 		["SubscriptionDefinitionVersionArn"] = args["SubscriptionDefinitionVersionArn"],
 	}
-	asserts.AssertGroupVersion(t)
-	return t
+	asserts.AssertGroupVersion(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteLoggerDefinitionResponse = { nil }
@@ -4136,11 +5651,22 @@ end
 -- Valid keys:
 -- @return DeleteLoggerDefinitionResponse structure as a key-value pair table
 function M.DeleteLoggerDefinitionResponse(args)
-	assert(args, "You must provdide an argument table when creating DeleteLoggerDefinitionResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteLoggerDefinitionResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertDeleteLoggerDefinitionResponse(t)
-	return t
+	asserts.AssertDeleteLoggerDefinitionResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteFunctionDefinitionRequest = { ["FunctionDefinitionId"] = true, nil }
@@ -4163,12 +5689,24 @@ end
 -- Required key: FunctionDefinitionId
 -- @return DeleteFunctionDefinitionRequest structure as a key-value pair table
 function M.DeleteFunctionDefinitionRequest(args)
-	assert(args, "You must provdide an argument table when creating DeleteFunctionDefinitionRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteFunctionDefinitionRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{FunctionDefinitionId}"] = args["FunctionDefinitionId"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["FunctionDefinitionId"] = args["FunctionDefinitionId"],
 	}
-	asserts.AssertDeleteFunctionDefinitionRequest(t)
-	return t
+	asserts.AssertDeleteFunctionDefinitionRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Deployment = { ["DeploymentId"] = true, ["DeploymentArn"] = true, ["GroupArn"] = true, ["CreatedAt"] = true, nil }
@@ -4195,15 +5733,26 @@ end
 -- * CreatedAt [__string] Timestamp when the deployment was created.
 -- @return Deployment structure as a key-value pair table
 function M.Deployment(args)
-	assert(args, "You must provdide an argument table when creating Deployment")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Deployment")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DeploymentId"] = args["DeploymentId"],
 		["DeploymentArn"] = args["DeploymentArn"],
 		["GroupArn"] = args["GroupArn"],
 		["CreatedAt"] = args["CreatedAt"],
 	}
-	asserts.AssertDeployment(t)
-	return t
+	asserts.AssertDeployment(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetGroupCertificateConfigurationResponse = { ["CertificateExpiryInMilliseconds"] = true, ["GroupId"] = true, ["CertificateAuthorityExpiryInMilliseconds"] = true, nil }
@@ -4228,14 +5777,25 @@ end
 -- * CertificateAuthorityExpiryInMilliseconds [__string] Amount of time when the certificate authority expires in milliseconds.
 -- @return GetGroupCertificateConfigurationResponse structure as a key-value pair table
 function M.GetGroupCertificateConfigurationResponse(args)
-	assert(args, "You must provdide an argument table when creating GetGroupCertificateConfigurationResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetGroupCertificateConfigurationResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["CertificateExpiryInMilliseconds"] = args["CertificateExpiryInMilliseconds"],
 		["GroupId"] = args["GroupId"],
 		["CertificateAuthorityExpiryInMilliseconds"] = args["CertificateAuthorityExpiryInMilliseconds"],
 	}
-	asserts.AssertGetGroupCertificateConfigurationResponse(t)
-	return t
+	asserts.AssertGetGroupCertificateConfigurationResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateGroupCertificateAuthorityResponse = { ["GroupCertificateAuthorityArn"] = true, nil }
@@ -4256,12 +5816,23 @@ end
 -- * GroupCertificateAuthorityArn [__string] Arn of the group certificate authority.
 -- @return CreateGroupCertificateAuthorityResponse structure as a key-value pair table
 function M.CreateGroupCertificateAuthorityResponse(args)
-	assert(args, "You must provdide an argument table when creating CreateGroupCertificateAuthorityResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateGroupCertificateAuthorityResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["GroupCertificateAuthorityArn"] = args["GroupCertificateAuthorityArn"],
 	}
-	asserts.AssertCreateGroupCertificateAuthorityResponse(t)
-	return t
+	asserts.AssertCreateGroupCertificateAuthorityResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetDeploymentStatusRequest = { ["DeploymentId"] = true, ["GroupId"] = true, nil }
@@ -4288,13 +5859,26 @@ end
 -- Required key: DeploymentId
 -- @return GetDeploymentStatusRequest structure as a key-value pair table
 function M.GetDeploymentStatusRequest(args)
-	assert(args, "You must provdide an argument table when creating GetDeploymentStatusRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetDeploymentStatusRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{DeploymentId}"] = args["DeploymentId"],
+        ["{GroupId}"] = args["GroupId"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DeploymentId"] = args["DeploymentId"],
 		["GroupId"] = args["GroupId"],
 	}
-	asserts.AssertGetDeploymentStatusRequest(t)
-	return t
+	asserts.AssertGetDeploymentStatusRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.FunctionConfigurationEnvironment = { ["Variables"] = true, nil }
@@ -4315,12 +5899,23 @@ end
 -- * Variables [MapOf__string] Environment variables for the lambda function.
 -- @return FunctionConfigurationEnvironment structure as a key-value pair table
 function M.FunctionConfigurationEnvironment(args)
-	assert(args, "You must provdide an argument table when creating FunctionConfigurationEnvironment")
-	local t = { 
+	assert(args, "You must provide an argument table when creating FunctionConfigurationEnvironment")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Variables"] = args["Variables"],
 	}
-	asserts.AssertFunctionConfigurationEnvironment(t)
-	return t
+	asserts.AssertFunctionConfigurationEnvironment(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Function = { ["FunctionConfiguration"] = true, ["Id"] = true, ["FunctionArn"] = true, nil }
@@ -4345,14 +5940,25 @@ end
 -- * FunctionArn [__string] Arn of the Lambda function.
 -- @return Function structure as a key-value pair table
 function M.Function(args)
-	assert(args, "You must provdide an argument table when creating Function")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Function")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["FunctionConfiguration"] = args["FunctionConfiguration"],
 		["Id"] = args["Id"],
 		["FunctionArn"] = args["FunctionArn"],
 	}
-	asserts.AssertFunction(t)
-	return t
+	asserts.AssertFunction(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateGroupVersionRequest = { ["AmznClientToken"] = true, ["DeviceDefinitionVersionArn"] = true, ["SubscriptionDefinitionVersionArn"] = true, ["FunctionDefinitionVersionArn"] = true, ["CoreDefinitionVersionArn"] = true, ["LoggerDefinitionVersionArn"] = true, ["GroupId"] = true, nil }
@@ -4387,8 +5993,16 @@ end
 -- Required key: GroupId
 -- @return CreateGroupVersionRequest structure as a key-value pair table
 function M.CreateGroupVersionRequest(args)
-	assert(args, "You must provdide an argument table when creating CreateGroupVersionRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateGroupVersionRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{GroupId}"] = args["GroupId"],
+    }
+    local header_args = { 
+        ["X-Amzn-Client-Token"] = args["AmznClientToken"],
+    }
+	local all_args = { 
 		["AmznClientToken"] = args["AmznClientToken"],
 		["DeviceDefinitionVersionArn"] = args["DeviceDefinitionVersionArn"],
 		["SubscriptionDefinitionVersionArn"] = args["SubscriptionDefinitionVersionArn"],
@@ -4397,8 +6011,13 @@ function M.CreateGroupVersionRequest(args)
 		["LoggerDefinitionVersionArn"] = args["LoggerDefinitionVersionArn"],
 		["GroupId"] = args["GroupId"],
 	}
-	asserts.AssertCreateGroupVersionRequest(t)
-	return t
+	asserts.AssertCreateGroupVersionRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteGroupResponse = { nil }
@@ -4417,11 +6036,22 @@ end
 -- Valid keys:
 -- @return DeleteGroupResponse structure as a key-value pair table
 function M.DeleteGroupResponse(args)
-	assert(args, "You must provdide an argument table when creating DeleteGroupResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteGroupResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertDeleteGroupResponse(t)
-	return t
+	asserts.AssertDeleteGroupResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateFunctionDefinitionResponse = { ["LatestVersionArn"] = true, ["Name"] = true, ["LastUpdatedTimestamp"] = true, ["LatestVersion"] = true, ["CreationTimestamp"] = true, ["Id"] = true, ["Arn"] = true, nil }
@@ -4454,8 +6084,14 @@ end
 -- * Arn [__string] Arn of the definition.
 -- @return CreateFunctionDefinitionResponse structure as a key-value pair table
 function M.CreateFunctionDefinitionResponse(args)
-	assert(args, "You must provdide an argument table when creating CreateFunctionDefinitionResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateFunctionDefinitionResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["LatestVersionArn"] = args["LatestVersionArn"],
 		["Name"] = args["Name"],
 		["LastUpdatedTimestamp"] = args["LastUpdatedTimestamp"],
@@ -4464,8 +6100,13 @@ function M.CreateFunctionDefinitionResponse(args)
 		["Id"] = args["Id"],
 		["Arn"] = args["Arn"],
 	}
-	asserts.AssertCreateFunctionDefinitionResponse(t)
-	return t
+	asserts.AssertCreateFunctionDefinitionResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AssociateRoleToGroupResponse = { ["AssociatedAt"] = true, nil }
@@ -4486,12 +6127,23 @@ end
 -- * AssociatedAt [__string] Time the role arn was associated to your group.
 -- @return AssociateRoleToGroupResponse structure as a key-value pair table
 function M.AssociateRoleToGroupResponse(args)
-	assert(args, "You must provdide an argument table when creating AssociateRoleToGroupResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AssociateRoleToGroupResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["AssociatedAt"] = args["AssociatedAt"],
 	}
-	asserts.AssertAssociateRoleToGroupResponse(t)
-	return t
+	asserts.AssertAssociateRoleToGroupResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateLoggerDefinitionResponse = { ["LatestVersionArn"] = true, ["Name"] = true, ["LastUpdatedTimestamp"] = true, ["LatestVersion"] = true, ["CreationTimestamp"] = true, ["Id"] = true, ["Arn"] = true, nil }
@@ -4524,8 +6176,14 @@ end
 -- * Arn [__string] Arn of the definition.
 -- @return CreateLoggerDefinitionResponse structure as a key-value pair table
 function M.CreateLoggerDefinitionResponse(args)
-	assert(args, "You must provdide an argument table when creating CreateLoggerDefinitionResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateLoggerDefinitionResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["LatestVersionArn"] = args["LatestVersionArn"],
 		["Name"] = args["Name"],
 		["LastUpdatedTimestamp"] = args["LastUpdatedTimestamp"],
@@ -4534,8 +6192,13 @@ function M.CreateLoggerDefinitionResponse(args)
 		["Id"] = args["Id"],
 		["Arn"] = args["Arn"],
 	}
-	asserts.AssertCreateLoggerDefinitionResponse(t)
-	return t
+	asserts.AssertCreateLoggerDefinitionResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdateConnectivityInfoResponse = { ["Message"] = true, ["Version"] = true, nil }
@@ -4558,13 +6221,24 @@ end
 -- * Version [__string] New Version
 -- @return UpdateConnectivityInfoResponse structure as a key-value pair table
 function M.UpdateConnectivityInfoResponse(args)
-	assert(args, "You must provdide an argument table when creating UpdateConnectivityInfoResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateConnectivityInfoResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Message"] = args["Message"],
 		["Version"] = args["Version"],
 	}
-	asserts.AssertUpdateConnectivityInfoResponse(t)
-	return t
+	asserts.AssertUpdateConnectivityInfoResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateDeviceDefinitionVersionRequest = { ["DeviceDefinitionId"] = true, ["AmznClientToken"] = true, ["Devices"] = true, nil }
@@ -4591,14 +6265,27 @@ end
 -- Required key: DeviceDefinitionId
 -- @return CreateDeviceDefinitionVersionRequest structure as a key-value pair table
 function M.CreateDeviceDefinitionVersionRequest(args)
-	assert(args, "You must provdide an argument table when creating CreateDeviceDefinitionVersionRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateDeviceDefinitionVersionRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{DeviceDefinitionId}"] = args["DeviceDefinitionId"],
+    }
+    local header_args = { 
+        ["X-Amzn-Client-Token"] = args["AmznClientToken"],
+    }
+	local all_args = { 
 		["DeviceDefinitionId"] = args["DeviceDefinitionId"],
 		["AmznClientToken"] = args["AmznClientToken"],
 		["Devices"] = args["Devices"],
 	}
-	asserts.AssertCreateDeviceDefinitionVersionRequest(t)
-	return t
+	asserts.AssertCreateDeviceDefinitionVersionRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetLoggerDefinitionVersionResponse = { ["Definition"] = true, ["Version"] = true, ["CreationTimestamp"] = true, ["Id"] = true, ["Arn"] = true, nil }
@@ -4627,16 +6314,27 @@ end
 -- * Arn [__string] Arn of the logger definition version.
 -- @return GetLoggerDefinitionVersionResponse structure as a key-value pair table
 function M.GetLoggerDefinitionVersionResponse(args)
-	assert(args, "You must provdide an argument table when creating GetLoggerDefinitionVersionResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetLoggerDefinitionVersionResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Definition"] = args["Definition"],
 		["Version"] = args["Version"],
 		["CreationTimestamp"] = args["CreationTimestamp"],
 		["Id"] = args["Id"],
 		["Arn"] = args["Arn"],
 	}
-	asserts.AssertGetLoggerDefinitionVersionResponse(t)
-	return t
+	asserts.AssertGetLoggerDefinitionVersionResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdateDeviceDefinitionResponse = { nil }
@@ -4655,11 +6353,22 @@ end
 -- Valid keys:
 -- @return UpdateDeviceDefinitionResponse structure as a key-value pair table
 function M.UpdateDeviceDefinitionResponse(args)
-	assert(args, "You must provdide an argument table when creating UpdateDeviceDefinitionResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateDeviceDefinitionResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertUpdateDeviceDefinitionResponse(t)
-	return t
+	asserts.AssertUpdateDeviceDefinitionResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListFunctionDefinitionsRequest = { ["NextToken"] = true, ["MaxResults"] = true, nil }
@@ -4682,13 +6391,26 @@ end
 -- * MaxResults [__string] Specifies the maximum number of list results to be returned in this page
 -- @return ListFunctionDefinitionsRequest structure as a key-value pair table
 function M.ListFunctionDefinitionsRequest(args)
-	assert(args, "You must provdide an argument table when creating ListFunctionDefinitionsRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListFunctionDefinitionsRequest")
+    local query_args = { 
+        ["NextToken"] = args["NextToken"],
+        ["MaxResults"] = args["MaxResults"],
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NextToken"] = args["NextToken"],
 		["MaxResults"] = args["MaxResults"],
 	}
-	asserts.AssertListFunctionDefinitionsRequest(t)
-	return t
+	asserts.AssertListFunctionDefinitionsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListLoggerDefinitionVersionsResponse = { ["NextToken"] = true, ["Versions"] = true, nil }
@@ -4711,13 +6433,24 @@ end
 -- * Versions [ListOfVersionInformation] Versions
 -- @return ListLoggerDefinitionVersionsResponse structure as a key-value pair table
 function M.ListLoggerDefinitionVersionsResponse(args)
-	assert(args, "You must provdide an argument table when creating ListLoggerDefinitionVersionsResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListLoggerDefinitionVersionsResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NextToken"] = args["NextToken"],
 		["Versions"] = args["Versions"],
 	}
-	asserts.AssertListLoggerDefinitionVersionsResponse(t)
-	return t
+	asserts.AssertListLoggerDefinitionVersionsResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetServiceRoleForAccountResponse = { ["AssociatedAt"] = true, ["RoleArn"] = true, nil }
@@ -4740,13 +6473,24 @@ end
 -- * RoleArn [__string] Role arn which is associated to the account.
 -- @return GetServiceRoleForAccountResponse structure as a key-value pair table
 function M.GetServiceRoleForAccountResponse(args)
-	assert(args, "You must provdide an argument table when creating GetServiceRoleForAccountResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetServiceRoleForAccountResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["AssociatedAt"] = args["AssociatedAt"],
 		["RoleArn"] = args["RoleArn"],
 	}
-	asserts.AssertGetServiceRoleForAccountResponse(t)
-	return t
+	asserts.AssertGetServiceRoleForAccountResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetLoggerDefinitionRequest = { ["LoggerDefinitionId"] = true, nil }
@@ -4769,12 +6513,24 @@ end
 -- Required key: LoggerDefinitionId
 -- @return GetLoggerDefinitionRequest structure as a key-value pair table
 function M.GetLoggerDefinitionRequest(args)
-	assert(args, "You must provdide an argument table when creating GetLoggerDefinitionRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetLoggerDefinitionRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{LoggerDefinitionId}"] = args["LoggerDefinitionId"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["LoggerDefinitionId"] = args["LoggerDefinitionId"],
 	}
-	asserts.AssertGetLoggerDefinitionRequest(t)
-	return t
+	asserts.AssertGetLoggerDefinitionRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetGroupVersionRequest = { ["GroupId"] = true, ["GroupVersionId"] = true, nil }
@@ -4801,13 +6557,26 @@ end
 -- Required key: GroupId
 -- @return GetGroupVersionRequest structure as a key-value pair table
 function M.GetGroupVersionRequest(args)
-	assert(args, "You must provdide an argument table when creating GetGroupVersionRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetGroupVersionRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+        ["{GroupId}"] = args["GroupId"],
+        ["{GroupVersionId}"] = args["GroupVersionId"],
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["GroupId"] = args["GroupId"],
 		["GroupVersionId"] = args["GroupVersionId"],
 	}
-	asserts.AssertGetGroupVersionRequest(t)
-	return t
+	asserts.AssertGetGroupVersionRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListDeploymentsResponse = { ["NextToken"] = true, ["Deployments"] = true, nil }
@@ -4830,13 +6599,24 @@ end
 -- * Deployments [Deployments] Information on deployments
 -- @return ListDeploymentsResponse structure as a key-value pair table
 function M.ListDeploymentsResponse(args)
-	assert(args, "You must provdide an argument table when creating ListDeploymentsResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListDeploymentsResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NextToken"] = args["NextToken"],
 		["Deployments"] = args["Deployments"],
 	}
-	asserts.AssertListDeploymentsResponse(t)
-	return t
+	asserts.AssertListDeploymentsResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListDeviceDefinitionVersionsResponse = { ["NextToken"] = true, ["Versions"] = true, nil }
@@ -4859,13 +6639,24 @@ end
 -- * Versions [ListOfVersionInformation] Versions
 -- @return ListDeviceDefinitionVersionsResponse structure as a key-value pair table
 function M.ListDeviceDefinitionVersionsResponse(args)
-	assert(args, "You must provdide an argument table when creating ListDeviceDefinitionVersionsResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListDeviceDefinitionVersionsResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NextToken"] = args["NextToken"],
 		["Versions"] = args["Versions"],
 	}
-	asserts.AssertListDeviceDefinitionVersionsResponse(t)
-	return t
+	asserts.AssertListDeviceDefinitionVersionsResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateGroupResponse = { ["LatestVersionArn"] = true, ["Name"] = true, ["LastUpdatedTimestamp"] = true, ["LatestVersion"] = true, ["CreationTimestamp"] = true, ["Id"] = true, ["Arn"] = true, nil }
@@ -4898,8 +6689,14 @@ end
 -- * Arn [__string] Arn of the definition.
 -- @return CreateGroupResponse structure as a key-value pair table
 function M.CreateGroupResponse(args)
-	assert(args, "You must provdide an argument table when creating CreateGroupResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateGroupResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["LatestVersionArn"] = args["LatestVersionArn"],
 		["Name"] = args["Name"],
 		["LastUpdatedTimestamp"] = args["LastUpdatedTimestamp"],
@@ -4908,8 +6705,13 @@ function M.CreateGroupResponse(args)
 		["Id"] = args["Id"],
 		["Arn"] = args["Arn"],
 	}
-	asserts.AssertCreateGroupResponse(t)
-	return t
+	asserts.AssertCreateGroupResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 function asserts.AssertLoggerLevel(str)
@@ -5254,8 +7056,11 @@ function M.GetDeviceDefinitionVersionAsync(GetDeviceDefinitionVersionRequest, cb
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".GetDeviceDefinitionVersion",
 	}
+	for header,value in pairs(GetDeviceDefinitionVersionRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
 	if request_handler then
 		request_handler(settings.uri, "/greengrass/definition/devices/{DeviceDefinitionId}/versions/{DeviceDefinitionVersionId}", GetDeviceDefinitionVersionRequest, headers, settings, cb)
 	else
@@ -5286,8 +7091,11 @@ function M.ListDeviceDefinitionVersionsAsync(ListDeviceDefinitionVersionsRequest
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".ListDeviceDefinitionVersions",
 	}
+	for header,value in pairs(ListDeviceDefinitionVersionsRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
 	if request_handler then
 		request_handler(settings.uri, "/greengrass/definition/devices/{DeviceDefinitionId}/versions", ListDeviceDefinitionVersionsRequest, headers, settings, cb)
 	else
@@ -5318,8 +7126,11 @@ function M.AssociateRoleToGroupAsync(AssociateRoleToGroupRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".AssociateRoleToGroup",
 	}
+	for header,value in pairs(AssociateRoleToGroupRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("PUT")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT")
 	if request_handler then
 		request_handler(settings.uri, "/greengrass/groups/{GroupId}/role", AssociateRoleToGroupRequest, headers, settings, cb)
 	else
@@ -5350,8 +7161,11 @@ function M.ListSubscriptionDefinitionVersionsAsync(ListSubscriptionDefinitionVer
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".ListSubscriptionDefinitionVersions",
 	}
+	for header,value in pairs(ListSubscriptionDefinitionVersionsRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
 	if request_handler then
 		request_handler(settings.uri, "/greengrass/definition/subscriptions/{SubscriptionDefinitionId}/versions", ListSubscriptionDefinitionVersionsRequest, headers, settings, cb)
 	else
@@ -5382,8 +7196,11 @@ function M.ListCoreDefinitionsAsync(ListCoreDefinitionsRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".ListCoreDefinitions",
 	}
+	for header,value in pairs(ListCoreDefinitionsRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
 	if request_handler then
 		request_handler(settings.uri, "/greengrass/definition/cores", ListCoreDefinitionsRequest, headers, settings, cb)
 	else
@@ -5414,8 +7231,11 @@ function M.ListGroupVersionsAsync(ListGroupVersionsRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".ListGroupVersions",
 	}
+	for header,value in pairs(ListGroupVersionsRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
 	if request_handler then
 		request_handler(settings.uri, "/greengrass/groups/{GroupId}/versions", ListGroupVersionsRequest, headers, settings, cb)
 	else
@@ -5446,8 +7266,11 @@ function M.UpdateCoreDefinitionAsync(UpdateCoreDefinitionRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".UpdateCoreDefinition",
 	}
+	for header,value in pairs(UpdateCoreDefinitionRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("PUT")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT")
 	if request_handler then
 		request_handler(settings.uri, "/greengrass/definition/cores/{CoreDefinitionId}", UpdateCoreDefinitionRequest, headers, settings, cb)
 	else
@@ -5478,8 +7301,11 @@ function M.CreateCoreDefinitionAsync(CreateCoreDefinitionRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".CreateCoreDefinition",
 	}
+	for header,value in pairs(CreateCoreDefinitionRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/greengrass/definition/cores", CreateCoreDefinitionRequest, headers, settings, cb)
 	else
@@ -5510,8 +7336,11 @@ function M.GetSubscriptionDefinitionAsync(GetSubscriptionDefinitionRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".GetSubscriptionDefinition",
 	}
+	for header,value in pairs(GetSubscriptionDefinitionRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
 	if request_handler then
 		request_handler(settings.uri, "/greengrass/definition/subscriptions/{SubscriptionDefinitionId}", GetSubscriptionDefinitionRequest, headers, settings, cb)
 	else
@@ -5542,8 +7371,11 @@ function M.GetDeploymentStatusAsync(GetDeploymentStatusRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".GetDeploymentStatus",
 	}
+	for header,value in pairs(GetDeploymentStatusRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
 	if request_handler then
 		request_handler(settings.uri, "/greengrass/groups/{GroupId}/deployments/{DeploymentId}/status", GetDeploymentStatusRequest, headers, settings, cb)
 	else
@@ -5574,8 +7406,11 @@ function M.ListDeviceDefinitionsAsync(ListDeviceDefinitionsRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".ListDeviceDefinitions",
 	}
+	for header,value in pairs(ListDeviceDefinitionsRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
 	if request_handler then
 		request_handler(settings.uri, "/greengrass/definition/devices", ListDeviceDefinitionsRequest, headers, settings, cb)
 	else
@@ -5606,8 +7441,11 @@ function M.CreateGroupAsync(CreateGroupRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".CreateGroup",
 	}
+	for header,value in pairs(CreateGroupRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/greengrass/groups", CreateGroupRequest, headers, settings, cb)
 	else
@@ -5638,8 +7476,11 @@ function M.GetGroupCertificateAuthorityAsync(GetGroupCertificateAuthorityRequest
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".GetGroupCertificateAuthority",
 	}
+	for header,value in pairs(GetGroupCertificateAuthorityRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
 	if request_handler then
 		request_handler(settings.uri, "/greengrass/groups/{GroupId}/certificateauthorities/{CertificateAuthorityId}", GetGroupCertificateAuthorityRequest, headers, settings, cb)
 	else
@@ -5670,8 +7511,11 @@ function M.CreateDeploymentAsync(CreateDeploymentRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".CreateDeployment",
 	}
+	for header,value in pairs(CreateDeploymentRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/greengrass/groups/{GroupId}/deployments", CreateDeploymentRequest, headers, settings, cb)
 	else
@@ -5702,8 +7546,11 @@ function M.ListSubscriptionDefinitionsAsync(ListSubscriptionDefinitionsRequest, 
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".ListSubscriptionDefinitions",
 	}
+	for header,value in pairs(ListSubscriptionDefinitionsRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
 	if request_handler then
 		request_handler(settings.uri, "/greengrass/definition/subscriptions", ListSubscriptionDefinitionsRequest, headers, settings, cb)
 	else
@@ -5734,8 +7581,11 @@ function M.UpdateDeviceDefinitionAsync(UpdateDeviceDefinitionRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".UpdateDeviceDefinition",
 	}
+	for header,value in pairs(UpdateDeviceDefinitionRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("PUT")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT")
 	if request_handler then
 		request_handler(settings.uri, "/greengrass/definition/devices/{DeviceDefinitionId}", UpdateDeviceDefinitionRequest, headers, settings, cb)
 	else
@@ -5766,8 +7616,11 @@ function M.ListLoggerDefinitionVersionsAsync(ListLoggerDefinitionVersionsRequest
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".ListLoggerDefinitionVersions",
 	}
+	for header,value in pairs(ListLoggerDefinitionVersionsRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
 	if request_handler then
 		request_handler(settings.uri, "/greengrass/definition/loggers/{LoggerDefinitionId}/versions", ListLoggerDefinitionVersionsRequest, headers, settings, cb)
 	else
@@ -5798,8 +7651,11 @@ function M.CreateDeviceDefinitionAsync(CreateDeviceDefinitionRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".CreateDeviceDefinition",
 	}
+	for header,value in pairs(CreateDeviceDefinitionRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/greengrass/definition/devices", CreateDeviceDefinitionRequest, headers, settings, cb)
 	else
@@ -5830,8 +7686,11 @@ function M.AssociateServiceRoleToAccountAsync(AssociateServiceRoleToAccountReque
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".AssociateServiceRoleToAccount",
 	}
+	for header,value in pairs(AssociateServiceRoleToAccountRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("PUT")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT")
 	if request_handler then
 		request_handler(settings.uri, "/greengrass/servicerole", AssociateServiceRoleToAccountRequest, headers, settings, cb)
 	else
@@ -5862,8 +7721,11 @@ function M.DeleteGroupAsync(DeleteGroupRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DeleteGroup",
 	}
+	for header,value in pairs(DeleteGroupRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("DELETE")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE")
 	if request_handler then
 		request_handler(settings.uri, "/greengrass/groups/{GroupId}", DeleteGroupRequest, headers, settings, cb)
 	else
@@ -5894,8 +7756,11 @@ function M.CreateDeviceDefinitionVersionAsync(CreateDeviceDefinitionVersionReque
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".CreateDeviceDefinitionVersion",
 	}
+	for header,value in pairs(CreateDeviceDefinitionVersionRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/greengrass/definition/devices/{DeviceDefinitionId}/versions", CreateDeviceDefinitionVersionRequest, headers, settings, cb)
 	else
@@ -5926,8 +7791,11 @@ function M.GetCoreDefinitionAsync(GetCoreDefinitionRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".GetCoreDefinition",
 	}
+	for header,value in pairs(GetCoreDefinitionRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
 	if request_handler then
 		request_handler(settings.uri, "/greengrass/definition/cores/{CoreDefinitionId}", GetCoreDefinitionRequest, headers, settings, cb)
 	else
@@ -5958,8 +7826,11 @@ function M.GetSubscriptionDefinitionVersionAsync(GetSubscriptionDefinitionVersio
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".GetSubscriptionDefinitionVersion",
 	}
+	for header,value in pairs(GetSubscriptionDefinitionVersionRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
 	if request_handler then
 		request_handler(settings.uri, "/greengrass/definition/subscriptions/{SubscriptionDefinitionId}/versions/{SubscriptionDefinitionVersionId}", GetSubscriptionDefinitionVersionRequest, headers, settings, cb)
 	else
@@ -5990,8 +7861,11 @@ function M.ListFunctionDefinitionVersionsAsync(ListFunctionDefinitionVersionsReq
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".ListFunctionDefinitionVersions",
 	}
+	for header,value in pairs(ListFunctionDefinitionVersionsRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
 	if request_handler then
 		request_handler(settings.uri, "/greengrass/definition/functions/{FunctionDefinitionId}/versions", ListFunctionDefinitionVersionsRequest, headers, settings, cb)
 	else
@@ -6022,8 +7896,11 @@ function M.GetFunctionDefinitionAsync(GetFunctionDefinitionRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".GetFunctionDefinition",
 	}
+	for header,value in pairs(GetFunctionDefinitionRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
 	if request_handler then
 		request_handler(settings.uri, "/greengrass/definition/functions/{FunctionDefinitionId}", GetFunctionDefinitionRequest, headers, settings, cb)
 	else
@@ -6054,8 +7931,11 @@ function M.GetGroupAsync(GetGroupRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".GetGroup",
 	}
+	for header,value in pairs(GetGroupRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
 	if request_handler then
 		request_handler(settings.uri, "/greengrass/groups/{GroupId}", GetGroupRequest, headers, settings, cb)
 	else
@@ -6086,8 +7966,11 @@ function M.UpdateGroupAsync(UpdateGroupRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".UpdateGroup",
 	}
+	for header,value in pairs(UpdateGroupRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("PUT")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT")
 	if request_handler then
 		request_handler(settings.uri, "/greengrass/groups/{GroupId}", UpdateGroupRequest, headers, settings, cb)
 	else
@@ -6118,8 +8001,11 @@ function M.DeleteCoreDefinitionAsync(DeleteCoreDefinitionRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DeleteCoreDefinition",
 	}
+	for header,value in pairs(DeleteCoreDefinitionRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("DELETE")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE")
 	if request_handler then
 		request_handler(settings.uri, "/greengrass/definition/cores/{CoreDefinitionId}", DeleteCoreDefinitionRequest, headers, settings, cb)
 	else
@@ -6150,8 +8036,11 @@ function M.CreateGroupVersionAsync(CreateGroupVersionRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".CreateGroupVersion",
 	}
+	for header,value in pairs(CreateGroupVersionRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/greengrass/groups/{GroupId}/versions", CreateGroupVersionRequest, headers, settings, cb)
 	else
@@ -6182,8 +8071,11 @@ function M.CreateLoggerDefinitionVersionAsync(CreateLoggerDefinitionVersionReque
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".CreateLoggerDefinitionVersion",
 	}
+	for header,value in pairs(CreateLoggerDefinitionVersionRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/greengrass/definition/loggers/{LoggerDefinitionId}/versions", CreateLoggerDefinitionVersionRequest, headers, settings, cb)
 	else
@@ -6214,8 +8106,11 @@ function M.GetDeviceDefinitionAsync(GetDeviceDefinitionRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".GetDeviceDefinition",
 	}
+	for header,value in pairs(GetDeviceDefinitionRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
 	if request_handler then
 		request_handler(settings.uri, "/greengrass/definition/devices/{DeviceDefinitionId}", GetDeviceDefinitionRequest, headers, settings, cb)
 	else
@@ -6246,8 +8141,11 @@ function M.GetFunctionDefinitionVersionAsync(GetFunctionDefinitionVersionRequest
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".GetFunctionDefinitionVersion",
 	}
+	for header,value in pairs(GetFunctionDefinitionVersionRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
 	if request_handler then
 		request_handler(settings.uri, "/greengrass/definition/functions/{FunctionDefinitionId}/versions/{FunctionDefinitionVersionId}", GetFunctionDefinitionVersionRequest, headers, settings, cb)
 	else
@@ -6278,8 +8176,11 @@ function M.GetLoggerDefinitionVersionAsync(GetLoggerDefinitionVersionRequest, cb
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".GetLoggerDefinitionVersion",
 	}
+	for header,value in pairs(GetLoggerDefinitionVersionRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
 	if request_handler then
 		request_handler(settings.uri, "/greengrass/definition/loggers/{LoggerDefinitionId}/versions/{LoggerDefinitionVersionId}", GetLoggerDefinitionVersionRequest, headers, settings, cb)
 	else
@@ -6310,8 +8211,11 @@ function M.CreateCoreDefinitionVersionAsync(CreateCoreDefinitionVersionRequest, 
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".CreateCoreDefinitionVersion",
 	}
+	for header,value in pairs(CreateCoreDefinitionVersionRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/greengrass/definition/cores/{CoreDefinitionId}/versions", CreateCoreDefinitionVersionRequest, headers, settings, cb)
 	else
@@ -6342,8 +8246,11 @@ function M.ListCoreDefinitionVersionsAsync(ListCoreDefinitionVersionsRequest, cb
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".ListCoreDefinitionVersions",
 	}
+	for header,value in pairs(ListCoreDefinitionVersionsRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
 	if request_handler then
 		request_handler(settings.uri, "/greengrass/definition/cores/{CoreDefinitionId}/versions", ListCoreDefinitionVersionsRequest, headers, settings, cb)
 	else
@@ -6374,8 +8281,11 @@ function M.UpdateGroupCertificateConfigurationAsync(UpdateGroupCertificateConfig
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".UpdateGroupCertificateConfiguration",
 	}
+	for header,value in pairs(UpdateGroupCertificateConfigurationRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("PUT")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT")
 	if request_handler then
 		request_handler(settings.uri, "/greengrass/groups/{GroupId}/certificateauthorities/configuration/expiry", UpdateGroupCertificateConfigurationRequest, headers, settings, cb)
 	else
@@ -6406,8 +8316,11 @@ function M.CreateGroupCertificateAuthorityAsync(CreateGroupCertificateAuthorityR
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".CreateGroupCertificateAuthority",
 	}
+	for header,value in pairs(CreateGroupCertificateAuthorityRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/greengrass/groups/{GroupId}/certificateauthorities", CreateGroupCertificateAuthorityRequest, headers, settings, cb)
 	else
@@ -6438,8 +8351,11 @@ function M.GetServiceRoleForAccountAsync(GetServiceRoleForAccountRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".GetServiceRoleForAccount",
 	}
+	for header,value in pairs(GetServiceRoleForAccountRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
 	if request_handler then
 		request_handler(settings.uri, "/greengrass/servicerole", GetServiceRoleForAccountRequest, headers, settings, cb)
 	else
@@ -6470,8 +8386,11 @@ function M.UpdateConnectivityInfoAsync(UpdateConnectivityInfoRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".UpdateConnectivityInfo",
 	}
+	for header,value in pairs(UpdateConnectivityInfoRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("PUT")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT")
 	if request_handler then
 		request_handler(settings.uri, "/greengrass/things/{ThingName}/connectivityInfo", UpdateConnectivityInfoRequest, headers, settings, cb)
 	else
@@ -6502,8 +8421,11 @@ function M.DisassociateRoleFromGroupAsync(DisassociateRoleFromGroupRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DisassociateRoleFromGroup",
 	}
+	for header,value in pairs(DisassociateRoleFromGroupRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("DELETE")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE")
 	if request_handler then
 		request_handler(settings.uri, "/greengrass/groups/{GroupId}/role", DisassociateRoleFromGroupRequest, headers, settings, cb)
 	else
@@ -6534,8 +8456,11 @@ function M.CreateLoggerDefinitionAsync(CreateLoggerDefinitionRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".CreateLoggerDefinition",
 	}
+	for header,value in pairs(CreateLoggerDefinitionRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/greengrass/definition/loggers", CreateLoggerDefinitionRequest, headers, settings, cb)
 	else
@@ -6566,8 +8491,11 @@ function M.ListGroupCertificateAuthoritiesAsync(ListGroupCertificateAuthoritiesR
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".ListGroupCertificateAuthorities",
 	}
+	for header,value in pairs(ListGroupCertificateAuthoritiesRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
 	if request_handler then
 		request_handler(settings.uri, "/greengrass/groups/{GroupId}/certificateauthorities", ListGroupCertificateAuthoritiesRequest, headers, settings, cb)
 	else
@@ -6598,8 +8526,11 @@ function M.UpdateSubscriptionDefinitionAsync(UpdateSubscriptionDefinitionRequest
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".UpdateSubscriptionDefinition",
 	}
+	for header,value in pairs(UpdateSubscriptionDefinitionRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("PUT")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT")
 	if request_handler then
 		request_handler(settings.uri, "/greengrass/definition/subscriptions/{SubscriptionDefinitionId}", UpdateSubscriptionDefinitionRequest, headers, settings, cb)
 	else
@@ -6630,8 +8561,11 @@ function M.DeleteSubscriptionDefinitionAsync(DeleteSubscriptionDefinitionRequest
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DeleteSubscriptionDefinition",
 	}
+	for header,value in pairs(DeleteSubscriptionDefinitionRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("DELETE")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE")
 	if request_handler then
 		request_handler(settings.uri, "/greengrass/definition/subscriptions/{SubscriptionDefinitionId}", DeleteSubscriptionDefinitionRequest, headers, settings, cb)
 	else
@@ -6662,8 +8596,11 @@ function M.CreateFunctionDefinitionVersionAsync(CreateFunctionDefinitionVersionR
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".CreateFunctionDefinitionVersion",
 	}
+	for header,value in pairs(CreateFunctionDefinitionVersionRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/greengrass/definition/functions/{FunctionDefinitionId}/versions", CreateFunctionDefinitionVersionRequest, headers, settings, cb)
 	else
@@ -6694,8 +8631,11 @@ function M.ListDeploymentsAsync(ListDeploymentsRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".ListDeployments",
 	}
+	for header,value in pairs(ListDeploymentsRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
 	if request_handler then
 		request_handler(settings.uri, "/greengrass/groups/{GroupId}/deployments", ListDeploymentsRequest, headers, settings, cb)
 	else
@@ -6726,8 +8666,11 @@ function M.GetGroupVersionAsync(GetGroupVersionRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".GetGroupVersion",
 	}
+	for header,value in pairs(GetGroupVersionRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
 	if request_handler then
 		request_handler(settings.uri, "/greengrass/groups/{GroupId}/versions/{GroupVersionId}", GetGroupVersionRequest, headers, settings, cb)
 	else
@@ -6758,8 +8701,11 @@ function M.DisassociateServiceRoleFromAccountAsync(DisassociateServiceRoleFromAc
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DisassociateServiceRoleFromAccount",
 	}
+	for header,value in pairs(DisassociateServiceRoleFromAccountRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("DELETE")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE")
 	if request_handler then
 		request_handler(settings.uri, "/greengrass/servicerole", DisassociateServiceRoleFromAccountRequest, headers, settings, cb)
 	else
@@ -6790,8 +8736,11 @@ function M.GetCoreDefinitionVersionAsync(GetCoreDefinitionVersionRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".GetCoreDefinitionVersion",
 	}
+	for header,value in pairs(GetCoreDefinitionVersionRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
 	if request_handler then
 		request_handler(settings.uri, "/greengrass/definition/cores/{CoreDefinitionId}/versions/{CoreDefinitionVersionId}", GetCoreDefinitionVersionRequest, headers, settings, cb)
 	else
@@ -6822,8 +8771,11 @@ function M.ListFunctionDefinitionsAsync(ListFunctionDefinitionsRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".ListFunctionDefinitions",
 	}
+	for header,value in pairs(ListFunctionDefinitionsRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
 	if request_handler then
 		request_handler(settings.uri, "/greengrass/definition/functions", ListFunctionDefinitionsRequest, headers, settings, cb)
 	else
@@ -6854,8 +8806,11 @@ function M.GetGroupCertificateConfigurationAsync(GetGroupCertificateConfiguratio
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".GetGroupCertificateConfiguration",
 	}
+	for header,value in pairs(GetGroupCertificateConfigurationRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
 	if request_handler then
 		request_handler(settings.uri, "/greengrass/groups/{GroupId}/certificateauthorities/configuration/expiry", GetGroupCertificateConfigurationRequest, headers, settings, cb)
 	else
@@ -6886,8 +8841,11 @@ function M.DeleteFunctionDefinitionAsync(DeleteFunctionDefinitionRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DeleteFunctionDefinition",
 	}
+	for header,value in pairs(DeleteFunctionDefinitionRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("DELETE")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE")
 	if request_handler then
 		request_handler(settings.uri, "/greengrass/definition/functions/{FunctionDefinitionId}", DeleteFunctionDefinitionRequest, headers, settings, cb)
 	else
@@ -6918,8 +8876,11 @@ function M.GetAssociatedRoleAsync(GetAssociatedRoleRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".GetAssociatedRole",
 	}
+	for header,value in pairs(GetAssociatedRoleRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
 	if request_handler then
 		request_handler(settings.uri, "/greengrass/groups/{GroupId}/role", GetAssociatedRoleRequest, headers, settings, cb)
 	else
@@ -6950,8 +8911,11 @@ function M.UpdateLoggerDefinitionAsync(UpdateLoggerDefinitionRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".UpdateLoggerDefinition",
 	}
+	for header,value in pairs(UpdateLoggerDefinitionRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("PUT")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT")
 	if request_handler then
 		request_handler(settings.uri, "/greengrass/definition/loggers/{LoggerDefinitionId}", UpdateLoggerDefinitionRequest, headers, settings, cb)
 	else
@@ -6982,8 +8946,11 @@ function M.CreateFunctionDefinitionAsync(CreateFunctionDefinitionRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".CreateFunctionDefinition",
 	}
+	for header,value in pairs(CreateFunctionDefinitionRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/greengrass/definition/functions", CreateFunctionDefinitionRequest, headers, settings, cb)
 	else
@@ -7014,8 +8981,11 @@ function M.GetLoggerDefinitionAsync(GetLoggerDefinitionRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".GetLoggerDefinition",
 	}
+	for header,value in pairs(GetLoggerDefinitionRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
 	if request_handler then
 		request_handler(settings.uri, "/greengrass/definition/loggers/{LoggerDefinitionId}", GetLoggerDefinitionRequest, headers, settings, cb)
 	else
@@ -7046,8 +9016,11 @@ function M.UpdateFunctionDefinitionAsync(UpdateFunctionDefinitionRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".UpdateFunctionDefinition",
 	}
+	for header,value in pairs(UpdateFunctionDefinitionRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("PUT")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "PUT")
 	if request_handler then
 		request_handler(settings.uri, "/greengrass/definition/functions/{FunctionDefinitionId}", UpdateFunctionDefinitionRequest, headers, settings, cb)
 	else
@@ -7078,8 +9051,11 @@ function M.ListLoggerDefinitionsAsync(ListLoggerDefinitionsRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".ListLoggerDefinitions",
 	}
+	for header,value in pairs(ListLoggerDefinitionsRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
 	if request_handler then
 		request_handler(settings.uri, "/greengrass/definition/loggers", ListLoggerDefinitionsRequest, headers, settings, cb)
 	else
@@ -7110,8 +9086,11 @@ function M.CreateSubscriptionDefinitionAsync(CreateSubscriptionDefinitionRequest
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".CreateSubscriptionDefinition",
 	}
+	for header,value in pairs(CreateSubscriptionDefinitionRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/greengrass/definition/subscriptions", CreateSubscriptionDefinitionRequest, headers, settings, cb)
 	else
@@ -7142,8 +9121,11 @@ function M.GetConnectivityInfoAsync(GetConnectivityInfoRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".GetConnectivityInfo",
 	}
+	for header,value in pairs(GetConnectivityInfoRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
 	if request_handler then
 		request_handler(settings.uri, "/greengrass/things/{ThingName}/connectivityInfo", GetConnectivityInfoRequest, headers, settings, cb)
 	else
@@ -7174,8 +9156,11 @@ function M.ListGroupsAsync(ListGroupsRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".ListGroups",
 	}
+	for header,value in pairs(ListGroupsRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("GET")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "GET")
 	if request_handler then
 		request_handler(settings.uri, "/greengrass/groups", ListGroupsRequest, headers, settings, cb)
 	else
@@ -7206,8 +9191,11 @@ function M.DeleteLoggerDefinitionAsync(DeleteLoggerDefinitionRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DeleteLoggerDefinition",
 	}
+	for header,value in pairs(DeleteLoggerDefinitionRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("DELETE")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE")
 	if request_handler then
 		request_handler(settings.uri, "/greengrass/definition/loggers/{LoggerDefinitionId}", DeleteLoggerDefinitionRequest, headers, settings, cb)
 	else
@@ -7238,8 +9226,11 @@ function M.DeleteDeviceDefinitionAsync(DeleteDeviceDefinitionRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DeleteDeviceDefinition",
 	}
+	for header,value in pairs(DeleteDeviceDefinitionRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("DELETE")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "DELETE")
 	if request_handler then
 		request_handler(settings.uri, "/greengrass/definition/devices/{DeviceDefinitionId}", DeleteDeviceDefinitionRequest, headers, settings, cb)
 	else
@@ -7270,8 +9261,11 @@ function M.CreateSubscriptionDefinitionVersionAsync(CreateSubscriptionDefinition
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".CreateSubscriptionDefinitionVersion",
 	}
+	for header,value in pairs(CreateSubscriptionDefinitionVersionRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/greengrass/definition/subscriptions/{SubscriptionDefinitionId}/versions", CreateSubscriptionDefinitionVersionRequest, headers, settings, cb)
 	else

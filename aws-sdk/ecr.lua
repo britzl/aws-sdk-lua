@@ -47,14 +47,25 @@ end
 -- Required key: imageIds
 -- @return BatchDeleteImageRequest structure as a key-value pair table
 function M.BatchDeleteImageRequest(args)
-	assert(args, "You must provdide an argument table when creating BatchDeleteImageRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating BatchDeleteImageRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["repositoryName"] = args["repositoryName"],
 		["registryId"] = args["registryId"],
 		["imageIds"] = args["imageIds"],
 	}
-	asserts.AssertBatchDeleteImageRequest(t)
-	return t
+	asserts.AssertBatchDeleteImageRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.RepositoryNotEmptyException = { ["message"] = true, nil }
@@ -75,12 +86,23 @@ end
 -- * message [ExceptionMessage] <p>The error message associated with the exception.</p>
 -- @return RepositoryNotEmptyException structure as a key-value pair table
 function M.RepositoryNotEmptyException(args)
-	assert(args, "You must provdide an argument table when creating RepositoryNotEmptyException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating RepositoryNotEmptyException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertRepositoryNotEmptyException(t)
-	return t
+	asserts.AssertRepositoryNotEmptyException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.PutImageRequest = { ["imageManifest"] = true, ["repositoryName"] = true, ["registryId"] = true, ["imageTag"] = true, nil }
@@ -111,15 +133,26 @@ end
 -- Required key: imageManifest
 -- @return PutImageRequest structure as a key-value pair table
 function M.PutImageRequest(args)
-	assert(args, "You must provdide an argument table when creating PutImageRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating PutImageRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["imageManifest"] = args["imageManifest"],
 		["repositoryName"] = args["repositoryName"],
 		["registryId"] = args["registryId"],
 		["imageTag"] = args["imageTag"],
 	}
-	asserts.AssertPutImageRequest(t)
-	return t
+	asserts.AssertPutImageRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListImagesRequest = { ["nextToken"] = true, ["filter"] = true, ["repositoryName"] = true, ["registryId"] = true, ["maxResults"] = true, nil }
@@ -150,16 +183,27 @@ end
 -- Required key: repositoryName
 -- @return ListImagesRequest structure as a key-value pair table
 function M.ListImagesRequest(args)
-	assert(args, "You must provdide an argument table when creating ListImagesRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListImagesRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["nextToken"] = args["nextToken"],
 		["filter"] = args["filter"],
 		["repositoryName"] = args["repositoryName"],
 		["registryId"] = args["registryId"],
 		["maxResults"] = args["maxResults"],
 	}
-	asserts.AssertListImagesRequest(t)
-	return t
+	asserts.AssertListImagesRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.LayerAlreadyExistsException = { ["message"] = true, nil }
@@ -180,12 +224,23 @@ end
 -- * message [ExceptionMessage] <p>The error message associated with the exception.</p>
 -- @return LayerAlreadyExistsException structure as a key-value pair table
 function M.LayerAlreadyExistsException(args)
-	assert(args, "You must provdide an argument table when creating LayerAlreadyExistsException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating LayerAlreadyExistsException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertLayerAlreadyExistsException(t)
-	return t
+	asserts.AssertLayerAlreadyExistsException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidLayerPartException = { ["lastValidByteReceived"] = true, ["uploadId"] = true, ["message"] = true, ["repositoryName"] = true, ["registryId"] = true, nil }
@@ -214,16 +269,27 @@ end
 -- * registryId [RegistryId] <p>The registry ID associated with the exception.</p>
 -- @return InvalidLayerPartException structure as a key-value pair table
 function M.InvalidLayerPartException(args)
-	assert(args, "You must provdide an argument table when creating InvalidLayerPartException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidLayerPartException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["lastValidByteReceived"] = args["lastValidByteReceived"],
 		["uploadId"] = args["uploadId"],
 		["message"] = args["message"],
 		["repositoryName"] = args["repositoryName"],
 		["registryId"] = args["registryId"],
 	}
-	asserts.AssertInvalidLayerPartException(t)
-	return t
+	asserts.AssertInvalidLayerPartException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.BatchGetImageResponse = { ["images"] = true, ["failures"] = true, nil }
@@ -246,13 +312,24 @@ end
 -- * failures [ImageFailureList] <p>Any failures associated with the call.</p>
 -- @return BatchGetImageResponse structure as a key-value pair table
 function M.BatchGetImageResponse(args)
-	assert(args, "You must provdide an argument table when creating BatchGetImageResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating BatchGetImageResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["images"] = args["images"],
 		["failures"] = args["failures"],
 	}
-	asserts.AssertBatchGetImageResponse(t)
-	return t
+	asserts.AssertBatchGetImageResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeRepositoriesResponse = { ["nextToken"] = true, ["repositories"] = true, nil }
@@ -275,13 +352,24 @@ end
 -- * repositories [RepositoryList] <p>A list of repository objects corresponding to valid repositories.</p>
 -- @return DescribeRepositoriesResponse structure as a key-value pair table
 function M.DescribeRepositoriesResponse(args)
-	assert(args, "You must provdide an argument table when creating DescribeRepositoriesResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeRepositoriesResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["nextToken"] = args["nextToken"],
 		["repositories"] = args["repositories"],
 	}
-	asserts.AssertDescribeRepositoriesResponse(t)
-	return t
+	asserts.AssertDescribeRepositoriesResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.LayerInaccessibleException = { ["message"] = true, nil }
@@ -302,12 +390,23 @@ end
 -- * message [ExceptionMessage] <p>The error message associated with the exception.</p>
 -- @return LayerInaccessibleException structure as a key-value pair table
 function M.LayerInaccessibleException(args)
-	assert(args, "You must provdide an argument table when creating LayerInaccessibleException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating LayerInaccessibleException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertLayerInaccessibleException(t)
-	return t
+	asserts.AssertLayerInaccessibleException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Layer = { ["layerAvailability"] = true, ["layerDigest"] = true, ["layerSize"] = true, ["mediaType"] = true, nil }
@@ -334,15 +433,26 @@ end
 -- * mediaType [MediaType] <p>The media type of the layer, such as <code>application/vnd.docker.image.rootfs.diff.tar.gzip</code> or <code>application/vnd.oci.image.layer.v1.tar+gzip</code>.</p>
 -- @return Layer structure as a key-value pair table
 function M.Layer(args)
-	assert(args, "You must provdide an argument table when creating Layer")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Layer")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["layerAvailability"] = args["layerAvailability"],
 		["layerDigest"] = args["layerDigest"],
 		["layerSize"] = args["layerSize"],
 		["mediaType"] = args["mediaType"],
 	}
-	asserts.AssertLayer(t)
-	return t
+	asserts.AssertLayer(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetDownloadUrlForLayerRequest = { ["layerDigest"] = true, ["repositoryName"] = true, ["registryId"] = true, nil }
@@ -371,14 +481,25 @@ end
 -- Required key: layerDigest
 -- @return GetDownloadUrlForLayerRequest structure as a key-value pair table
 function M.GetDownloadUrlForLayerRequest(args)
-	assert(args, "You must provdide an argument table when creating GetDownloadUrlForLayerRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetDownloadUrlForLayerRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["layerDigest"] = args["layerDigest"],
 		["repositoryName"] = args["repositoryName"],
 		["registryId"] = args["registryId"],
 	}
-	asserts.AssertGetDownloadUrlForLayerRequest(t)
-	return t
+	asserts.AssertGetDownloadUrlForLayerRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteRepositoryResponse = { ["repository"] = true, nil }
@@ -399,12 +520,23 @@ end
 -- * repository [Repository] <p>The repository that was deleted.</p>
 -- @return DeleteRepositoryResponse structure as a key-value pair table
 function M.DeleteRepositoryResponse(args)
-	assert(args, "You must provdide an argument table when creating DeleteRepositoryResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteRepositoryResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["repository"] = args["repository"],
 	}
-	asserts.AssertDeleteRepositoryResponse(t)
-	return t
+	asserts.AssertDeleteRepositoryResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.BatchCheckLayerAvailabilityResponse = { ["layers"] = true, ["failures"] = true, nil }
@@ -427,13 +559,24 @@ end
 -- * failures [LayerFailureList] <p>Any failures associated with the call.</p>
 -- @return BatchCheckLayerAvailabilityResponse structure as a key-value pair table
 function M.BatchCheckLayerAvailabilityResponse(args)
-	assert(args, "You must provdide an argument table when creating BatchCheckLayerAvailabilityResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating BatchCheckLayerAvailabilityResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["layers"] = args["layers"],
 		["failures"] = args["failures"],
 	}
-	asserts.AssertBatchCheckLayerAvailabilityResponse(t)
-	return t
+	asserts.AssertBatchCheckLayerAvailabilityResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetDownloadUrlForLayerResponse = { ["downloadUrl"] = true, ["layerDigest"] = true, nil }
@@ -456,13 +599,24 @@ end
 -- * layerDigest [LayerDigest] <p>The digest of the image layer to download.</p>
 -- @return GetDownloadUrlForLayerResponse structure as a key-value pair table
 function M.GetDownloadUrlForLayerResponse(args)
-	assert(args, "You must provdide an argument table when creating GetDownloadUrlForLayerResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetDownloadUrlForLayerResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["downloadUrl"] = args["downloadUrl"],
 		["layerDigest"] = args["layerDigest"],
 	}
-	asserts.AssertGetDownloadUrlForLayerResponse(t)
-	return t
+	asserts.AssertGetDownloadUrlForLayerResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeImagesResponse = { ["nextToken"] = true, ["imageDetails"] = true, nil }
@@ -485,13 +639,24 @@ end
 -- * imageDetails [ImageDetailList] <p>A list of <a>ImageDetail</a> objects that contain data about the image.</p>
 -- @return DescribeImagesResponse structure as a key-value pair table
 function M.DescribeImagesResponse(args)
-	assert(args, "You must provdide an argument table when creating DescribeImagesResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeImagesResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["nextToken"] = args["nextToken"],
 		["imageDetails"] = args["imageDetails"],
 	}
-	asserts.AssertDescribeImagesResponse(t)
-	return t
+	asserts.AssertDescribeImagesResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.LimitExceededException = { ["message"] = true, nil }
@@ -512,12 +677,23 @@ end
 -- * message [ExceptionMessage] <p>The error message associated with the exception.</p>
 -- @return LimitExceededException structure as a key-value pair table
 function M.LimitExceededException(args)
-	assert(args, "You must provdide an argument table when creating LimitExceededException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating LimitExceededException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertLimitExceededException(t)
-	return t
+	asserts.AssertLimitExceededException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CompleteLayerUploadRequest = { ["uploadId"] = true, ["layerDigests"] = true, ["repositoryName"] = true, ["registryId"] = true, nil }
@@ -550,15 +726,26 @@ end
 -- Required key: layerDigests
 -- @return CompleteLayerUploadRequest structure as a key-value pair table
 function M.CompleteLayerUploadRequest(args)
-	assert(args, "You must provdide an argument table when creating CompleteLayerUploadRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CompleteLayerUploadRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["uploadId"] = args["uploadId"],
 		["layerDigests"] = args["layerDigests"],
 		["repositoryName"] = args["repositoryName"],
 		["registryId"] = args["registryId"],
 	}
-	asserts.AssertCompleteLayerUploadRequest(t)
-	return t
+	asserts.AssertCompleteLayerUploadRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.RepositoryNotFoundException = { ["message"] = true, nil }
@@ -579,12 +766,23 @@ end
 -- * message [ExceptionMessage] <p>The error message associated with the exception.</p>
 -- @return RepositoryNotFoundException structure as a key-value pair table
 function M.RepositoryNotFoundException(args)
-	assert(args, "You must provdide an argument table when creating RepositoryNotFoundException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating RepositoryNotFoundException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertRepositoryNotFoundException(t)
-	return t
+	asserts.AssertRepositoryNotFoundException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetAuthorizationTokenResponse = { ["authorizationData"] = true, nil }
@@ -605,12 +803,23 @@ end
 -- * authorizationData [AuthorizationDataList] <p>A list of authorization token data objects that correspond to the <code>registryIds</code> values in the request.</p>
 -- @return GetAuthorizationTokenResponse structure as a key-value pair table
 function M.GetAuthorizationTokenResponse(args)
-	assert(args, "You must provdide an argument table when creating GetAuthorizationTokenResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetAuthorizationTokenResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["authorizationData"] = args["authorizationData"],
 	}
-	asserts.AssertGetAuthorizationTokenResponse(t)
-	return t
+	asserts.AssertGetAuthorizationTokenResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeImagesFilter = { ["tagStatus"] = true, nil }
@@ -631,12 +840,23 @@ end
 -- * tagStatus [TagStatus] <p>The tag status with which to filter your <a>DescribeImages</a> results. You can filter results based on whether they are <code>TAGGED</code> or <code>UNTAGGED</code>.</p>
 -- @return DescribeImagesFilter structure as a key-value pair table
 function M.DescribeImagesFilter(args)
-	assert(args, "You must provdide an argument table when creating DescribeImagesFilter")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeImagesFilter")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["tagStatus"] = args["tagStatus"],
 	}
-	asserts.AssertDescribeImagesFilter(t)
-	return t
+	asserts.AssertDescribeImagesFilter(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetAuthorizationTokenRequest = { ["registryIds"] = true, nil }
@@ -657,12 +877,23 @@ end
 -- * registryIds [GetAuthorizationTokenRegistryIdList] <p>A list of AWS account IDs that are associated with the registries for which to get authorization tokens. If you do not specify a registry, the default registry is assumed.</p>
 -- @return GetAuthorizationTokenRequest structure as a key-value pair table
 function M.GetAuthorizationTokenRequest(args)
-	assert(args, "You must provdide an argument table when creating GetAuthorizationTokenRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetAuthorizationTokenRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["registryIds"] = args["registryIds"],
 	}
-	asserts.AssertGetAuthorizationTokenRequest(t)
-	return t
+	asserts.AssertGetAuthorizationTokenRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListImagesFilter = { ["tagStatus"] = true, nil }
@@ -683,12 +914,23 @@ end
 -- * tagStatus [TagStatus] <p>The tag status with which to filter your <a>ListImages</a> results. You can filter results based on whether they are <code>TAGGED</code> or <code>UNTAGGED</code>.</p>
 -- @return ListImagesFilter structure as a key-value pair table
 function M.ListImagesFilter(args)
-	assert(args, "You must provdide an argument table when creating ListImagesFilter")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListImagesFilter")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["tagStatus"] = args["tagStatus"],
 	}
-	asserts.AssertListImagesFilter(t)
-	return t
+	asserts.AssertListImagesFilter(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.SetRepositoryPolicyRequest = { ["policyText"] = true, ["force"] = true, ["repositoryName"] = true, ["registryId"] = true, nil }
@@ -719,15 +961,26 @@ end
 -- Required key: policyText
 -- @return SetRepositoryPolicyRequest structure as a key-value pair table
 function M.SetRepositoryPolicyRequest(args)
-	assert(args, "You must provdide an argument table when creating SetRepositoryPolicyRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating SetRepositoryPolicyRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["policyText"] = args["policyText"],
 		["force"] = args["force"],
 		["repositoryName"] = args["repositoryName"],
 		["registryId"] = args["registryId"],
 	}
-	asserts.AssertSetRepositoryPolicyRequest(t)
-	return t
+	asserts.AssertSetRepositoryPolicyRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ImageDetail = { ["imageSizeInBytes"] = true, ["imageDigest"] = true, ["imageTags"] = true, ["registryId"] = true, ["repositoryName"] = true, ["imagePushedAt"] = true, nil }
@@ -758,8 +1011,14 @@ end
 -- * imagePushedAt [PushTimestamp] <p>The date and time, expressed in standard JavaScript date format, at which the current image was pushed to the repository. </p>
 -- @return ImageDetail structure as a key-value pair table
 function M.ImageDetail(args)
-	assert(args, "You must provdide an argument table when creating ImageDetail")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ImageDetail")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["imageSizeInBytes"] = args["imageSizeInBytes"],
 		["imageDigest"] = args["imageDigest"],
 		["imageTags"] = args["imageTags"],
@@ -767,8 +1026,13 @@ function M.ImageDetail(args)
 		["repositoryName"] = args["repositoryName"],
 		["imagePushedAt"] = args["imagePushedAt"],
 	}
-	asserts.AssertImageDetail(t)
-	return t
+	asserts.AssertImageDetail(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.EmptyUploadException = { ["message"] = true, nil }
@@ -789,12 +1053,23 @@ end
 -- * message [ExceptionMessage] <p>The error message associated with the exception.</p>
 -- @return EmptyUploadException structure as a key-value pair table
 function M.EmptyUploadException(args)
-	assert(args, "You must provdide an argument table when creating EmptyUploadException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating EmptyUploadException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertEmptyUploadException(t)
-	return t
+	asserts.AssertEmptyUploadException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.RepositoryAlreadyExistsException = { ["message"] = true, nil }
@@ -815,12 +1090,23 @@ end
 -- * message [ExceptionMessage] <p>The error message associated with the exception.</p>
 -- @return RepositoryAlreadyExistsException structure as a key-value pair table
 function M.RepositoryAlreadyExistsException(args)
-	assert(args, "You must provdide an argument table when creating RepositoryAlreadyExistsException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating RepositoryAlreadyExistsException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertRepositoryAlreadyExistsException(t)
-	return t
+	asserts.AssertRepositoryAlreadyExistsException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeRepositoriesRequest = { ["nextToken"] = true, ["repositoryNames"] = true, ["registryId"] = true, ["maxResults"] = true, nil }
@@ -847,15 +1133,26 @@ end
 -- * maxResults [MaxResults] <p>The maximum number of repository results returned by <code>DescribeRepositories</code> in paginated output. When this parameter is used, <code>DescribeRepositories</code> only returns <code>maxResults</code> results in a single page along with a <code>nextToken</code> response element. The remaining results of the initial request can be seen by sending another <code>DescribeRepositories</code> request with the returned <code>nextToken</code> value. This value can be between 1 and 100. If this parameter is not used, then <code>DescribeRepositories</code> returns up to 100 results and a <code>nextToken</code> value, if applicable.</p>
 -- @return DescribeRepositoriesRequest structure as a key-value pair table
 function M.DescribeRepositoriesRequest(args)
-	assert(args, "You must provdide an argument table when creating DescribeRepositoriesRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeRepositoriesRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["nextToken"] = args["nextToken"],
 		["repositoryNames"] = args["repositoryNames"],
 		["registryId"] = args["registryId"],
 		["maxResults"] = args["maxResults"],
 	}
-	asserts.AssertDescribeRepositoriesRequest(t)
-	return t
+	asserts.AssertDescribeRepositoriesRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ImageFailure = { ["failureReason"] = true, ["failureCode"] = true, ["imageId"] = true, nil }
@@ -880,14 +1177,25 @@ end
 -- * imageId [ImageIdentifier] <p>The image ID associated with the failure.</p>
 -- @return ImageFailure structure as a key-value pair table
 function M.ImageFailure(args)
-	assert(args, "You must provdide an argument table when creating ImageFailure")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ImageFailure")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["failureReason"] = args["failureReason"],
 		["failureCode"] = args["failureCode"],
 		["imageId"] = args["imageId"],
 	}
-	asserts.AssertImageFailure(t)
-	return t
+	asserts.AssertImageFailure(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AuthorizationData = { ["authorizationToken"] = true, ["expiresAt"] = true, ["proxyEndpoint"] = true, nil }
@@ -912,14 +1220,25 @@ end
 -- * proxyEndpoint [ProxyEndpoint] <p>The registry URL to use for this authorization token in a <code>docker login</code> command. The Amazon ECR registry URL format is <code>https://aws_account_id.dkr.ecr.region.amazonaws.com</code>. For example, <code>https://012345678910.dkr.ecr.us-east-1.amazonaws.com</code>.. </p>
 -- @return AuthorizationData structure as a key-value pair table
 function M.AuthorizationData(args)
-	assert(args, "You must provdide an argument table when creating AuthorizationData")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AuthorizationData")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["authorizationToken"] = args["authorizationToken"],
 		["expiresAt"] = args["expiresAt"],
 		["proxyEndpoint"] = args["proxyEndpoint"],
 	}
-	asserts.AssertAuthorizationData(t)
-	return t
+	asserts.AssertAuthorizationData(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.BatchDeleteImageResponse = { ["failures"] = true, ["imageIds"] = true, nil }
@@ -942,13 +1261,24 @@ end
 -- * imageIds [ImageIdentifierList] <p>The image IDs of the deleted images.</p>
 -- @return BatchDeleteImageResponse structure as a key-value pair table
 function M.BatchDeleteImageResponse(args)
-	assert(args, "You must provdide an argument table when creating BatchDeleteImageResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating BatchDeleteImageResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["failures"] = args["failures"],
 		["imageIds"] = args["imageIds"],
 	}
-	asserts.AssertBatchDeleteImageResponse(t)
-	return t
+	asserts.AssertBatchDeleteImageResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.BatchCheckLayerAvailabilityRequest = { ["layerDigests"] = true, ["repositoryName"] = true, ["registryId"] = true, nil }
@@ -977,14 +1307,25 @@ end
 -- Required key: layerDigests
 -- @return BatchCheckLayerAvailabilityRequest structure as a key-value pair table
 function M.BatchCheckLayerAvailabilityRequest(args)
-	assert(args, "You must provdide an argument table when creating BatchCheckLayerAvailabilityRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating BatchCheckLayerAvailabilityRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["layerDigests"] = args["layerDigests"],
 		["repositoryName"] = args["repositoryName"],
 		["registryId"] = args["registryId"],
 	}
-	asserts.AssertBatchCheckLayerAvailabilityRequest(t)
-	return t
+	asserts.AssertBatchCheckLayerAvailabilityRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InitiateLayerUploadResponse = { ["partSize"] = true, ["uploadId"] = true, nil }
@@ -1007,13 +1348,24 @@ end
 -- * uploadId [UploadId] <p>The upload ID for the layer upload. This parameter is passed to further <a>UploadLayerPart</a> and <a>CompleteLayerUpload</a> operations.</p>
 -- @return InitiateLayerUploadResponse structure as a key-value pair table
 function M.InitiateLayerUploadResponse(args)
-	assert(args, "You must provdide an argument table when creating InitiateLayerUploadResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InitiateLayerUploadResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["partSize"] = args["partSize"],
 		["uploadId"] = args["uploadId"],
 	}
-	asserts.AssertInitiateLayerUploadResponse(t)
-	return t
+	asserts.AssertInitiateLayerUploadResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Image = { ["imageManifest"] = true, ["repositoryName"] = true, ["registryId"] = true, ["imageId"] = true, nil }
@@ -1040,15 +1392,26 @@ end
 -- * imageId [ImageIdentifier] <p>An object containing the image tag and image digest associated with an image.</p>
 -- @return Image structure as a key-value pair table
 function M.Image(args)
-	assert(args, "You must provdide an argument table when creating Image")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Image")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["imageManifest"] = args["imageManifest"],
 		["repositoryName"] = args["repositoryName"],
 		["registryId"] = args["registryId"],
 		["imageId"] = args["imageId"],
 	}
-	asserts.AssertImage(t)
-	return t
+	asserts.AssertImage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ImageIdentifier = { ["imageTag"] = true, ["imageDigest"] = true, nil }
@@ -1071,13 +1434,24 @@ end
 -- * imageDigest [ImageDigest] <p>The <code>sha256</code> digest of the image manifest.</p>
 -- @return ImageIdentifier structure as a key-value pair table
 function M.ImageIdentifier(args)
-	assert(args, "You must provdide an argument table when creating ImageIdentifier")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ImageIdentifier")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["imageTag"] = args["imageTag"],
 		["imageDigest"] = args["imageDigest"],
 	}
-	asserts.AssertImageIdentifier(t)
-	return t
+	asserts.AssertImageIdentifier(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CompleteLayerUploadResponse = { ["uploadId"] = true, ["layerDigest"] = true, ["repositoryName"] = true, ["registryId"] = true, nil }
@@ -1104,15 +1478,26 @@ end
 -- * registryId [RegistryId] <p>The registry ID associated with the request.</p>
 -- @return CompleteLayerUploadResponse structure as a key-value pair table
 function M.CompleteLayerUploadResponse(args)
-	assert(args, "You must provdide an argument table when creating CompleteLayerUploadResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CompleteLayerUploadResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["uploadId"] = args["uploadId"],
 		["layerDigest"] = args["layerDigest"],
 		["repositoryName"] = args["repositoryName"],
 		["registryId"] = args["registryId"],
 	}
-	asserts.AssertCompleteLayerUploadResponse(t)
-	return t
+	asserts.AssertCompleteLayerUploadResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetRepositoryPolicyResponse = { ["policyText"] = true, ["repositoryName"] = true, ["registryId"] = true, nil }
@@ -1137,14 +1522,25 @@ end
 -- * registryId [RegistryId] <p>The registry ID associated with the request.</p>
 -- @return GetRepositoryPolicyResponse structure as a key-value pair table
 function M.GetRepositoryPolicyResponse(args)
-	assert(args, "You must provdide an argument table when creating GetRepositoryPolicyResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetRepositoryPolicyResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["policyText"] = args["policyText"],
 		["repositoryName"] = args["repositoryName"],
 		["registryId"] = args["registryId"],
 	}
-	asserts.AssertGetRepositoryPolicyResponse(t)
-	return t
+	asserts.AssertGetRepositoryPolicyResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.LayersNotFoundException = { ["message"] = true, nil }
@@ -1165,12 +1561,23 @@ end
 -- * message [ExceptionMessage] <p>The error message associated with the exception.</p>
 -- @return LayersNotFoundException structure as a key-value pair table
 function M.LayersNotFoundException(args)
-	assert(args, "You must provdide an argument table when creating LayersNotFoundException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating LayersNotFoundException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertLayersNotFoundException(t)
-	return t
+	asserts.AssertLayersNotFoundException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UploadLayerPartRequest = { ["layerPartBlob"] = true, ["partFirstByte"] = true, ["uploadId"] = true, ["registryId"] = true, ["repositoryName"] = true, ["partLastByte"] = true, nil }
@@ -1211,8 +1618,14 @@ end
 -- Required key: layerPartBlob
 -- @return UploadLayerPartRequest structure as a key-value pair table
 function M.UploadLayerPartRequest(args)
-	assert(args, "You must provdide an argument table when creating UploadLayerPartRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UploadLayerPartRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["layerPartBlob"] = args["layerPartBlob"],
 		["partFirstByte"] = args["partFirstByte"],
 		["uploadId"] = args["uploadId"],
@@ -1220,8 +1633,13 @@ function M.UploadLayerPartRequest(args)
 		["repositoryName"] = args["repositoryName"],
 		["partLastByte"] = args["partLastByte"],
 	}
-	asserts.AssertUploadLayerPartRequest(t)
-	return t
+	asserts.AssertUploadLayerPartRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidLayerException = { ["message"] = true, nil }
@@ -1242,12 +1660,23 @@ end
 -- * message [ExceptionMessage] <p>The error message associated with the exception.</p>
 -- @return InvalidLayerException structure as a key-value pair table
 function M.InvalidLayerException(args)
-	assert(args, "You must provdide an argument table when creating InvalidLayerException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidLayerException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertInvalidLayerException(t)
-	return t
+	asserts.AssertInvalidLayerException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Repository = { ["registryId"] = true, ["repositoryName"] = true, ["repositoryArn"] = true, ["createdAt"] = true, ["repositoryUri"] = true, nil }
@@ -1276,16 +1705,27 @@ end
 -- * repositoryUri [Url] <p>The URI for the repository. You can use this URI for Docker <code>push</code> and <code>pull</code> operations.</p>
 -- @return Repository structure as a key-value pair table
 function M.Repository(args)
-	assert(args, "You must provdide an argument table when creating Repository")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Repository")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["registryId"] = args["registryId"],
 		["repositoryName"] = args["repositoryName"],
 		["repositoryArn"] = args["repositoryArn"],
 		["createdAt"] = args["createdAt"],
 		["repositoryUri"] = args["repositoryUri"],
 	}
-	asserts.AssertRepository(t)
-	return t
+	asserts.AssertRepository(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.RepositoryPolicyNotFoundException = { ["message"] = true, nil }
@@ -1306,12 +1746,23 @@ end
 -- * message [ExceptionMessage] <p>The error message associated with the exception.</p>
 -- @return RepositoryPolicyNotFoundException structure as a key-value pair table
 function M.RepositoryPolicyNotFoundException(args)
-	assert(args, "You must provdide an argument table when creating RepositoryPolicyNotFoundException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating RepositoryPolicyNotFoundException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertRepositoryPolicyNotFoundException(t)
-	return t
+	asserts.AssertRepositoryPolicyNotFoundException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetRepositoryPolicyRequest = { ["repositoryName"] = true, ["registryId"] = true, nil }
@@ -1336,13 +1787,24 @@ end
 -- Required key: repositoryName
 -- @return GetRepositoryPolicyRequest structure as a key-value pair table
 function M.GetRepositoryPolicyRequest(args)
-	assert(args, "You must provdide an argument table when creating GetRepositoryPolicyRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetRepositoryPolicyRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["repositoryName"] = args["repositoryName"],
 		["registryId"] = args["registryId"],
 	}
-	asserts.AssertGetRepositoryPolicyRequest(t)
-	return t
+	asserts.AssertGetRepositoryPolicyRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ImageAlreadyExistsException = { ["message"] = true, nil }
@@ -1363,12 +1825,23 @@ end
 -- * message [ExceptionMessage] <p>The error message associated with the exception.</p>
 -- @return ImageAlreadyExistsException structure as a key-value pair table
 function M.ImageAlreadyExistsException(args)
-	assert(args, "You must provdide an argument table when creating ImageAlreadyExistsException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ImageAlreadyExistsException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertImageAlreadyExistsException(t)
-	return t
+	asserts.AssertImageAlreadyExistsException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ImageNotFoundException = { ["message"] = true, nil }
@@ -1389,12 +1862,23 @@ end
 -- * message [ExceptionMessage] 
 -- @return ImageNotFoundException structure as a key-value pair table
 function M.ImageNotFoundException(args)
-	assert(args, "You must provdide an argument table when creating ImageNotFoundException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ImageNotFoundException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertImageNotFoundException(t)
-	return t
+	asserts.AssertImageNotFoundException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListImagesResponse = { ["nextToken"] = true, ["imageIds"] = true, nil }
@@ -1417,13 +1901,24 @@ end
 -- * imageIds [ImageIdentifierList] <p>The list of image IDs for the requested repository.</p>
 -- @return ListImagesResponse structure as a key-value pair table
 function M.ListImagesResponse(args)
-	assert(args, "You must provdide an argument table when creating ListImagesResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListImagesResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["nextToken"] = args["nextToken"],
 		["imageIds"] = args["imageIds"],
 	}
-	asserts.AssertListImagesResponse(t)
-	return t
+	asserts.AssertListImagesResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.LayerFailure = { ["layerDigest"] = true, ["failureCode"] = true, ["failureReason"] = true, nil }
@@ -1448,14 +1943,25 @@ end
 -- * failureReason [LayerFailureReason] <p>The reason for the failure.</p>
 -- @return LayerFailure structure as a key-value pair table
 function M.LayerFailure(args)
-	assert(args, "You must provdide an argument table when creating LayerFailure")
-	local t = { 
+	assert(args, "You must provide an argument table when creating LayerFailure")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["layerDigest"] = args["layerDigest"],
 		["failureCode"] = args["failureCode"],
 		["failureReason"] = args["failureReason"],
 	}
-	asserts.AssertLayerFailure(t)
-	return t
+	asserts.AssertLayerFailure(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UploadNotFoundException = { ["message"] = true, nil }
@@ -1476,12 +1982,23 @@ end
 -- * message [ExceptionMessage] <p>The error message associated with the exception.</p>
 -- @return UploadNotFoundException structure as a key-value pair table
 function M.UploadNotFoundException(args)
-	assert(args, "You must provdide an argument table when creating UploadNotFoundException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UploadNotFoundException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertUploadNotFoundException(t)
-	return t
+	asserts.AssertUploadNotFoundException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidParameterException = { ["message"] = true, nil }
@@ -1502,12 +2019,23 @@ end
 -- * message [ExceptionMessage] <p>The error message associated with the exception.</p>
 -- @return InvalidParameterException structure as a key-value pair table
 function M.InvalidParameterException(args)
-	assert(args, "You must provdide an argument table when creating InvalidParameterException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidParameterException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertInvalidParameterException(t)
-	return t
+	asserts.AssertInvalidParameterException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateRepositoryRequest = { ["repositoryName"] = true, nil }
@@ -1530,12 +2058,23 @@ end
 -- Required key: repositoryName
 -- @return CreateRepositoryRequest structure as a key-value pair table
 function M.CreateRepositoryRequest(args)
-	assert(args, "You must provdide an argument table when creating CreateRepositoryRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateRepositoryRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["repositoryName"] = args["repositoryName"],
 	}
-	asserts.AssertCreateRepositoryRequest(t)
-	return t
+	asserts.AssertCreateRepositoryRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeImagesRequest = { ["repositoryName"] = true, ["maxResults"] = true, ["filter"] = true, ["imageIds"] = true, ["registryId"] = true, ["nextToken"] = true, nil }
@@ -1568,8 +2107,14 @@ end
 -- Required key: repositoryName
 -- @return DescribeImagesRequest structure as a key-value pair table
 function M.DescribeImagesRequest(args)
-	assert(args, "You must provdide an argument table when creating DescribeImagesRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeImagesRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["repositoryName"] = args["repositoryName"],
 		["maxResults"] = args["maxResults"],
 		["filter"] = args["filter"],
@@ -1577,8 +2122,13 @@ function M.DescribeImagesRequest(args)
 		["registryId"] = args["registryId"],
 		["nextToken"] = args["nextToken"],
 	}
-	asserts.AssertDescribeImagesRequest(t)
-	return t
+	asserts.AssertDescribeImagesRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteRepositoryPolicyRequest = { ["repositoryName"] = true, ["registryId"] = true, nil }
@@ -1603,13 +2153,24 @@ end
 -- Required key: repositoryName
 -- @return DeleteRepositoryPolicyRequest structure as a key-value pair table
 function M.DeleteRepositoryPolicyRequest(args)
-	assert(args, "You must provdide an argument table when creating DeleteRepositoryPolicyRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteRepositoryPolicyRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["repositoryName"] = args["repositoryName"],
 		["registryId"] = args["registryId"],
 	}
-	asserts.AssertDeleteRepositoryPolicyRequest(t)
-	return t
+	asserts.AssertDeleteRepositoryPolicyRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ServerException = { ["message"] = true, nil }
@@ -1630,12 +2191,23 @@ end
 -- * message [ExceptionMessage] <p>The error message associated with the exception.</p>
 -- @return ServerException structure as a key-value pair table
 function M.ServerException(args)
-	assert(args, "You must provdide an argument table when creating ServerException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ServerException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertServerException(t)
-	return t
+	asserts.AssertServerException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateRepositoryResponse = { ["repository"] = true, nil }
@@ -1656,12 +2228,23 @@ end
 -- * repository [Repository] <p>The repository that was created.</p>
 -- @return CreateRepositoryResponse structure as a key-value pair table
 function M.CreateRepositoryResponse(args)
-	assert(args, "You must provdide an argument table when creating CreateRepositoryResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateRepositoryResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["repository"] = args["repository"],
 	}
-	asserts.AssertCreateRepositoryResponse(t)
-	return t
+	asserts.AssertCreateRepositoryResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.LayerPartTooSmallException = { ["message"] = true, nil }
@@ -1682,12 +2265,23 @@ end
 -- * message [ExceptionMessage] <p>The error message associated with the exception.</p>
 -- @return LayerPartTooSmallException structure as a key-value pair table
 function M.LayerPartTooSmallException(args)
-	assert(args, "You must provdide an argument table when creating LayerPartTooSmallException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating LayerPartTooSmallException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertLayerPartTooSmallException(t)
-	return t
+	asserts.AssertLayerPartTooSmallException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.SetRepositoryPolicyResponse = { ["policyText"] = true, ["repositoryName"] = true, ["registryId"] = true, nil }
@@ -1712,14 +2306,25 @@ end
 -- * registryId [RegistryId] <p>The registry ID associated with the request.</p>
 -- @return SetRepositoryPolicyResponse structure as a key-value pair table
 function M.SetRepositoryPolicyResponse(args)
-	assert(args, "You must provdide an argument table when creating SetRepositoryPolicyResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating SetRepositoryPolicyResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["policyText"] = args["policyText"],
 		["repositoryName"] = args["repositoryName"],
 		["registryId"] = args["registryId"],
 	}
-	asserts.AssertSetRepositoryPolicyResponse(t)
-	return t
+	asserts.AssertSetRepositoryPolicyResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.BatchGetImageRequest = { ["repositoryName"] = true, ["registryId"] = true, ["acceptedMediaTypes"] = true, ["imageIds"] = true, nil }
@@ -1750,15 +2355,26 @@ end
 -- Required key: imageIds
 -- @return BatchGetImageRequest structure as a key-value pair table
 function M.BatchGetImageRequest(args)
-	assert(args, "You must provdide an argument table when creating BatchGetImageRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating BatchGetImageRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["repositoryName"] = args["repositoryName"],
 		["registryId"] = args["registryId"],
 		["acceptedMediaTypes"] = args["acceptedMediaTypes"],
 		["imageIds"] = args["imageIds"],
 	}
-	asserts.AssertBatchGetImageRequest(t)
-	return t
+	asserts.AssertBatchGetImageRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteRepositoryRequest = { ["force"] = true, ["repositoryName"] = true, ["registryId"] = true, nil }
@@ -1785,14 +2401,25 @@ end
 -- Required key: repositoryName
 -- @return DeleteRepositoryRequest structure as a key-value pair table
 function M.DeleteRepositoryRequest(args)
-	assert(args, "You must provdide an argument table when creating DeleteRepositoryRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteRepositoryRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["force"] = args["force"],
 		["repositoryName"] = args["repositoryName"],
 		["registryId"] = args["registryId"],
 	}
-	asserts.AssertDeleteRepositoryRequest(t)
-	return t
+	asserts.AssertDeleteRepositoryRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteRepositoryPolicyResponse = { ["policyText"] = true, ["repositoryName"] = true, ["registryId"] = true, nil }
@@ -1817,14 +2444,25 @@ end
 -- * registryId [RegistryId] <p>The registry ID associated with the request.</p>
 -- @return DeleteRepositoryPolicyResponse structure as a key-value pair table
 function M.DeleteRepositoryPolicyResponse(args)
-	assert(args, "You must provdide an argument table when creating DeleteRepositoryPolicyResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteRepositoryPolicyResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["policyText"] = args["policyText"],
 		["repositoryName"] = args["repositoryName"],
 		["registryId"] = args["registryId"],
 	}
-	asserts.AssertDeleteRepositoryPolicyResponse(t)
-	return t
+	asserts.AssertDeleteRepositoryPolicyResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.PutImageResponse = { ["image"] = true, nil }
@@ -1845,12 +2483,23 @@ end
 -- * image [Image] <p>Details of the image uploaded.</p>
 -- @return PutImageResponse structure as a key-value pair table
 function M.PutImageResponse(args)
-	assert(args, "You must provdide an argument table when creating PutImageResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating PutImageResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["image"] = args["image"],
 	}
-	asserts.AssertPutImageResponse(t)
-	return t
+	asserts.AssertPutImageResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InitiateLayerUploadRequest = { ["repositoryName"] = true, ["registryId"] = true, nil }
@@ -1875,13 +2524,24 @@ end
 -- Required key: repositoryName
 -- @return InitiateLayerUploadRequest structure as a key-value pair table
 function M.InitiateLayerUploadRequest(args)
-	assert(args, "You must provdide an argument table when creating InitiateLayerUploadRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InitiateLayerUploadRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["repositoryName"] = args["repositoryName"],
 		["registryId"] = args["registryId"],
 	}
-	asserts.AssertInitiateLayerUploadRequest(t)
-	return t
+	asserts.AssertInitiateLayerUploadRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UploadLayerPartResponse = { ["uploadId"] = true, ["lastByteReceived"] = true, ["repositoryName"] = true, ["registryId"] = true, nil }
@@ -1908,15 +2568,26 @@ end
 -- * registryId [RegistryId] <p>The registry ID associated with the request.</p>
 -- @return UploadLayerPartResponse structure as a key-value pair table
 function M.UploadLayerPartResponse(args)
-	assert(args, "You must provdide an argument table when creating UploadLayerPartResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UploadLayerPartResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["uploadId"] = args["uploadId"],
 		["lastByteReceived"] = args["lastByteReceived"],
 		["repositoryName"] = args["repositoryName"],
 		["registryId"] = args["registryId"],
 	}
-	asserts.AssertUploadLayerPartResponse(t)
-	return t
+	asserts.AssertUploadLayerPartResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 function asserts.AssertMediaType(str)
@@ -2535,8 +3206,11 @@ function M.DescribeRepositoriesAsync(DescribeRepositoriesRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AmazonEC2ContainerRegistry_V20150921.DescribeRepositories",
 	}
+	for header,value in pairs(DescribeRepositoriesRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeRepositoriesRequest, headers, settings, cb)
 	else
@@ -2567,8 +3241,11 @@ function M.DeleteRepositoryAsync(DeleteRepositoryRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AmazonEC2ContainerRegistry_V20150921.DeleteRepository",
 	}
+	for header,value in pairs(DeleteRepositoryRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteRepositoryRequest, headers, settings, cb)
 	else
@@ -2599,8 +3276,11 @@ function M.BatchDeleteImageAsync(BatchDeleteImageRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AmazonEC2ContainerRegistry_V20150921.BatchDeleteImage",
 	}
+	for header,value in pairs(BatchDeleteImageRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", BatchDeleteImageRequest, headers, settings, cb)
 	else
@@ -2631,8 +3311,11 @@ function M.GetDownloadUrlForLayerAsync(GetDownloadUrlForLayerRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AmazonEC2ContainerRegistry_V20150921.GetDownloadUrlForLayer",
 	}
+	for header,value in pairs(GetDownloadUrlForLayerRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", GetDownloadUrlForLayerRequest, headers, settings, cb)
 	else
@@ -2663,8 +3346,11 @@ function M.PutImageAsync(PutImageRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AmazonEC2ContainerRegistry_V20150921.PutImage",
 	}
+	for header,value in pairs(PutImageRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", PutImageRequest, headers, settings, cb)
 	else
@@ -2695,8 +3381,11 @@ function M.GetAuthorizationTokenAsync(GetAuthorizationTokenRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AmazonEC2ContainerRegistry_V20150921.GetAuthorizationToken",
 	}
+	for header,value in pairs(GetAuthorizationTokenRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", GetAuthorizationTokenRequest, headers, settings, cb)
 	else
@@ -2727,8 +3416,11 @@ function M.ListImagesAsync(ListImagesRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AmazonEC2ContainerRegistry_V20150921.ListImages",
 	}
+	for header,value in pairs(ListImagesRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ListImagesRequest, headers, settings, cb)
 	else
@@ -2759,8 +3451,11 @@ function M.GetRepositoryPolicyAsync(GetRepositoryPolicyRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AmazonEC2ContainerRegistry_V20150921.GetRepositoryPolicy",
 	}
+	for header,value in pairs(GetRepositoryPolicyRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", GetRepositoryPolicyRequest, headers, settings, cb)
 	else
@@ -2791,8 +3486,11 @@ function M.CompleteLayerUploadAsync(CompleteLayerUploadRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AmazonEC2ContainerRegistry_V20150921.CompleteLayerUpload",
 	}
+	for header,value in pairs(CompleteLayerUploadRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", CompleteLayerUploadRequest, headers, settings, cb)
 	else
@@ -2823,8 +3521,11 @@ function M.DescribeImagesAsync(DescribeImagesRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AmazonEC2ContainerRegistry_V20150921.DescribeImages",
 	}
+	for header,value in pairs(DescribeImagesRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeImagesRequest, headers, settings, cb)
 	else
@@ -2855,8 +3556,11 @@ function M.InitiateLayerUploadAsync(InitiateLayerUploadRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AmazonEC2ContainerRegistry_V20150921.InitiateLayerUpload",
 	}
+	for header,value in pairs(InitiateLayerUploadRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", InitiateLayerUploadRequest, headers, settings, cb)
 	else
@@ -2887,8 +3591,11 @@ function M.BatchGetImageAsync(BatchGetImageRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AmazonEC2ContainerRegistry_V20150921.BatchGetImage",
 	}
+	for header,value in pairs(BatchGetImageRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", BatchGetImageRequest, headers, settings, cb)
 	else
@@ -2919,8 +3626,11 @@ function M.SetRepositoryPolicyAsync(SetRepositoryPolicyRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AmazonEC2ContainerRegistry_V20150921.SetRepositoryPolicy",
 	}
+	for header,value in pairs(SetRepositoryPolicyRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", SetRepositoryPolicyRequest, headers, settings, cb)
 	else
@@ -2951,8 +3661,11 @@ function M.CreateRepositoryAsync(CreateRepositoryRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AmazonEC2ContainerRegistry_V20150921.CreateRepository",
 	}
+	for header,value in pairs(CreateRepositoryRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateRepositoryRequest, headers, settings, cb)
 	else
@@ -2983,8 +3696,11 @@ function M.BatchCheckLayerAvailabilityAsync(BatchCheckLayerAvailabilityRequest, 
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AmazonEC2ContainerRegistry_V20150921.BatchCheckLayerAvailability",
 	}
+	for header,value in pairs(BatchCheckLayerAvailabilityRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", BatchCheckLayerAvailabilityRequest, headers, settings, cb)
 	else
@@ -3015,8 +3731,11 @@ function M.UploadLayerPartAsync(UploadLayerPartRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AmazonEC2ContainerRegistry_V20150921.UploadLayerPart",
 	}
+	for header,value in pairs(UploadLayerPartRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", UploadLayerPartRequest, headers, settings, cb)
 	else
@@ -3047,8 +3766,11 @@ function M.DeleteRepositoryPolicyAsync(DeleteRepositoryPolicyRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AmazonEC2ContainerRegistry_V20150921.DeleteRepositoryPolicy",
 	}
+	for header,value in pairs(DeleteRepositoryPolicyRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteRepositoryPolicyRequest, headers, settings, cb)
 	else

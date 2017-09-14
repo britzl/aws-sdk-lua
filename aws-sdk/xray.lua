@@ -37,11 +37,22 @@ end
 -- Valid keys:
 -- @return InvalidRequestException structure as a key-value pair table
 function M.InvalidRequestException(args)
-	assert(args, "You must provdide an argument table when creating InvalidRequestException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidRequestException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertInvalidRequestException(t)
-	return t
+	asserts.AssertInvalidRequestException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AnnotationValue = { ["NumberValue"] = true, ["BooleanValue"] = true, ["StringValue"] = true, nil }
@@ -66,14 +77,25 @@ end
 -- * StringValue [String] <p>Value for a String annotation.</p>
 -- @return AnnotationValue structure as a key-value pair table
 function M.AnnotationValue(args)
-	assert(args, "You must provdide an argument table when creating AnnotationValue")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AnnotationValue")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NumberValue"] = args["NumberValue"],
 		["BooleanValue"] = args["BooleanValue"],
 		["StringValue"] = args["StringValue"],
 	}
-	asserts.AssertAnnotationValue(t)
-	return t
+	asserts.AssertAnnotationValue(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.FaultStatistics = { ["OtherCount"] = true, ["TotalCount"] = true, nil }
@@ -96,13 +118,24 @@ end
 -- * TotalCount [NullableLong] <p>The total number of requests that failed with a 5xx Server Error status code.</p>
 -- @return FaultStatistics structure as a key-value pair table
 function M.FaultStatistics(args)
-	assert(args, "You must provdide an argument table when creating FaultStatistics")
-	local t = { 
+	assert(args, "You must provide an argument table when creating FaultStatistics")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["OtherCount"] = args["OtherCount"],
 		["TotalCount"] = args["TotalCount"],
 	}
-	asserts.AssertFaultStatistics(t)
-	return t
+	asserts.AssertFaultStatistics(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.TraceUser = { ["UserName"] = true, ["ServiceIds"] = true, nil }
@@ -125,13 +158,24 @@ end
 -- * ServiceIds [ServiceIds] <p>Services that the user's request hit.</p>
 -- @return TraceUser structure as a key-value pair table
 function M.TraceUser(args)
-	assert(args, "You must provdide an argument table when creating TraceUser")
-	local t = { 
+	assert(args, "You must provide an argument table when creating TraceUser")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["UserName"] = args["UserName"],
 		["ServiceIds"] = args["ServiceIds"],
 	}
-	asserts.AssertTraceUser(t)
-	return t
+	asserts.AssertTraceUser(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetTraceSummariesRequest = { ["FilterExpression"] = true, ["EndTime"] = true, ["NextToken"] = true, ["StartTime"] = true, ["Sampling"] = true, nil }
@@ -164,16 +208,27 @@ end
 -- Required key: EndTime
 -- @return GetTraceSummariesRequest structure as a key-value pair table
 function M.GetTraceSummariesRequest(args)
-	assert(args, "You must provdide an argument table when creating GetTraceSummariesRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetTraceSummariesRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["FilterExpression"] = args["FilterExpression"],
 		["EndTime"] = args["EndTime"],
 		["NextToken"] = args["NextToken"],
 		["StartTime"] = args["StartTime"],
 		["Sampling"] = args["Sampling"],
 	}
-	asserts.AssertGetTraceSummariesRequest(t)
-	return t
+	asserts.AssertGetTraceSummariesRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Service = { ["SummaryStatistics"] = true, ["ReferenceId"] = true, ["Name"] = true, ["DurationHistogram"] = true, ["Root"] = true, ["ResponseTimeHistogram"] = true, ["State"] = true, ["Edges"] = true, ["Names"] = true, ["StartTime"] = true, ["EndTime"] = true, ["Type"] = true, ["AccountId"] = true, nil }
@@ -218,8 +273,14 @@ end
 -- * AccountId [String] <p>Identifier of the AWS account in which the service runs.</p>
 -- @return Service structure as a key-value pair table
 function M.Service(args)
-	assert(args, "You must provdide an argument table when creating Service")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Service")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["SummaryStatistics"] = args["SummaryStatistics"],
 		["ReferenceId"] = args["ReferenceId"],
 		["Name"] = args["Name"],
@@ -234,8 +295,13 @@ function M.Service(args)
 		["Type"] = args["Type"],
 		["AccountId"] = args["AccountId"],
 	}
-	asserts.AssertService(t)
-	return t
+	asserts.AssertService(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetServiceGraphResult = { ["Services"] = true, ["EndTime"] = true, ["NextToken"] = true, ["StartTime"] = true, nil }
@@ -262,15 +328,26 @@ end
 -- * StartTime [Timestamp] <p>The start of the time frame for which the graph was generated.</p>
 -- @return GetServiceGraphResult structure as a key-value pair table
 function M.GetServiceGraphResult(args)
-	assert(args, "You must provdide an argument table when creating GetServiceGraphResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetServiceGraphResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Services"] = args["Services"],
 		["EndTime"] = args["EndTime"],
 		["NextToken"] = args["NextToken"],
 		["StartTime"] = args["StartTime"],
 	}
-	asserts.AssertGetServiceGraphResult(t)
-	return t
+	asserts.AssertGetServiceGraphResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetServiceGraphRequest = { ["EndTime"] = true, ["NextToken"] = true, ["StartTime"] = true, nil }
@@ -299,14 +376,25 @@ end
 -- Required key: EndTime
 -- @return GetServiceGraphRequest structure as a key-value pair table
 function M.GetServiceGraphRequest(args)
-	assert(args, "You must provdide an argument table when creating GetServiceGraphRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetServiceGraphRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["EndTime"] = args["EndTime"],
 		["NextToken"] = args["NextToken"],
 		["StartTime"] = args["StartTime"],
 	}
-	asserts.AssertGetServiceGraphRequest(t)
-	return t
+	asserts.AssertGetServiceGraphRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ThrottledException = { nil }
@@ -325,11 +413,22 @@ end
 -- Valid keys:
 -- @return ThrottledException structure as a key-value pair table
 function M.ThrottledException(args)
-	assert(args, "You must provdide an argument table when creating ThrottledException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ThrottledException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertThrottledException(t)
-	return t
+	asserts.AssertThrottledException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.HistogramEntry = { ["Count"] = true, ["Value"] = true, nil }
@@ -352,13 +451,24 @@ end
 -- * Value [Double] <p>The value of the entry.</p>
 -- @return HistogramEntry structure as a key-value pair table
 function M.HistogramEntry(args)
-	assert(args, "You must provdide an argument table when creating HistogramEntry")
-	local t = { 
+	assert(args, "You must provide an argument table when creating HistogramEntry")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Count"] = args["Count"],
 		["Value"] = args["Value"],
 	}
-	asserts.AssertHistogramEntry(t)
-	return t
+	asserts.AssertHistogramEntry(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetTraceSummariesResult = { ["TraceSummaries"] = true, ["NextToken"] = true, ["ApproximateTime"] = true, ["TracesProcessedCount"] = true, nil }
@@ -385,15 +495,26 @@ end
 -- * TracesProcessedCount [NullableLong] <p>The number of traces that were processed to get this set of summaries.</p>
 -- @return GetTraceSummariesResult structure as a key-value pair table
 function M.GetTraceSummariesResult(args)
-	assert(args, "You must provdide an argument table when creating GetTraceSummariesResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetTraceSummariesResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["TraceSummaries"] = args["TraceSummaries"],
 		["NextToken"] = args["NextToken"],
 		["ApproximateTime"] = args["ApproximateTime"],
 		["TracesProcessedCount"] = args["TracesProcessedCount"],
 	}
-	asserts.AssertGetTraceSummariesResult(t)
-	return t
+	asserts.AssertGetTraceSummariesResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Http = { ["HttpStatus"] = true, ["ClientIp"] = true, ["HttpURL"] = true, ["UserAgent"] = true, ["HttpMethod"] = true, nil }
@@ -422,16 +543,27 @@ end
 -- * HttpMethod [String] <p>The request method.</p>
 -- @return Http structure as a key-value pair table
 function M.Http(args)
-	assert(args, "You must provdide an argument table when creating Http")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Http")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["HttpStatus"] = args["HttpStatus"],
 		["ClientIp"] = args["ClientIp"],
 		["HttpURL"] = args["HttpURL"],
 		["UserAgent"] = args["UserAgent"],
 		["HttpMethod"] = args["HttpMethod"],
 	}
-	asserts.AssertHttp(t)
-	return t
+	asserts.AssertHttp(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Trace = { ["Duration"] = true, ["Segments"] = true, ["Id"] = true, nil }
@@ -456,14 +588,25 @@ end
 -- * Id [TraceId] <p>The unique identifier for the request that generated the trace's segments and subsegments.</p>
 -- @return Trace structure as a key-value pair table
 function M.Trace(args)
-	assert(args, "You must provdide an argument table when creating Trace")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Trace")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Duration"] = args["Duration"],
 		["Segments"] = args["Segments"],
 		["Id"] = args["Id"],
 	}
-	asserts.AssertTrace(t)
-	return t
+	asserts.AssertTrace(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.PutTelemetryRecordsRequest = { ["ResourceARN"] = true, ["Hostname"] = true, ["TelemetryRecords"] = true, ["EC2InstanceId"] = true, nil }
@@ -492,15 +635,26 @@ end
 -- Required key: TelemetryRecords
 -- @return PutTelemetryRecordsRequest structure as a key-value pair table
 function M.PutTelemetryRecordsRequest(args)
-	assert(args, "You must provdide an argument table when creating PutTelemetryRecordsRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating PutTelemetryRecordsRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ResourceARN"] = args["ResourceARN"],
 		["Hostname"] = args["Hostname"],
 		["TelemetryRecords"] = args["TelemetryRecords"],
 		["EC2InstanceId"] = args["EC2InstanceId"],
 	}
-	asserts.AssertPutTelemetryRecordsRequest(t)
-	return t
+	asserts.AssertPutTelemetryRecordsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.BatchGetTracesRequest = { ["NextToken"] = true, ["TraceIds"] = true, nil }
@@ -525,13 +679,24 @@ end
 -- Required key: TraceIds
 -- @return BatchGetTracesRequest structure as a key-value pair table
 function M.BatchGetTracesRequest(args)
-	assert(args, "You must provdide an argument table when creating BatchGetTracesRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating BatchGetTracesRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NextToken"] = args["NextToken"],
 		["TraceIds"] = args["TraceIds"],
 	}
-	asserts.AssertBatchGetTracesRequest(t)
-	return t
+	asserts.AssertBatchGetTracesRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ErrorStatistics = { ["OtherCount"] = true, ["ThrottleCount"] = true, ["TotalCount"] = true, nil }
@@ -556,14 +721,25 @@ end
 -- * TotalCount [NullableLong] <p>The total number of requests that failed with a 4xx Client Error status code.</p>
 -- @return ErrorStatistics structure as a key-value pair table
 function M.ErrorStatistics(args)
-	assert(args, "You must provdide an argument table when creating ErrorStatistics")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ErrorStatistics")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["OtherCount"] = args["OtherCount"],
 		["ThrottleCount"] = args["ThrottleCount"],
 		["TotalCount"] = args["TotalCount"],
 	}
-	asserts.AssertErrorStatistics(t)
-	return t
+	asserts.AssertErrorStatistics(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ValueWithServiceIds = { ["AnnotationValue"] = true, ["ServiceIds"] = true, nil }
@@ -586,13 +762,24 @@ end
 -- * ServiceIds [ServiceIds] <p>Services to which the annotation applies.</p>
 -- @return ValueWithServiceIds structure as a key-value pair table
 function M.ValueWithServiceIds(args)
-	assert(args, "You must provdide an argument table when creating ValueWithServiceIds")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ValueWithServiceIds")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["AnnotationValue"] = args["AnnotationValue"],
 		["ServiceIds"] = args["ServiceIds"],
 	}
-	asserts.AssertValueWithServiceIds(t)
-	return t
+	asserts.AssertValueWithServiceIds(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Segment = { ["Document"] = true, ["Id"] = true, nil }
@@ -615,13 +802,24 @@ end
 -- * Id [SegmentId] <p>The segment's ID.</p>
 -- @return Segment structure as a key-value pair table
 function M.Segment(args)
-	assert(args, "You must provdide an argument table when creating Segment")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Segment")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Document"] = args["Document"],
 		["Id"] = args["Id"],
 	}
-	asserts.AssertSegment(t)
-	return t
+	asserts.AssertSegment(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.BatchGetTracesResult = { ["NextToken"] = true, ["Traces"] = true, ["UnprocessedTraceIds"] = true, nil }
@@ -646,14 +844,25 @@ end
 -- * UnprocessedTraceIds [UnprocessedTraceIdList] <p>Trace IDs of requests that haven't been processed.</p>
 -- @return BatchGetTracesResult structure as a key-value pair table
 function M.BatchGetTracesResult(args)
-	assert(args, "You must provdide an argument table when creating BatchGetTracesResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating BatchGetTracesResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NextToken"] = args["NextToken"],
 		["Traces"] = args["Traces"],
 		["UnprocessedTraceIds"] = args["UnprocessedTraceIds"],
 	}
-	asserts.AssertBatchGetTracesResult(t)
-	return t
+	asserts.AssertBatchGetTracesResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.TraceSummary = { ["HasError"] = true, ["Http"] = true, ["Users"] = true, ["HasFault"] = true, ["Annotations"] = true, ["IsPartial"] = true, ["ResponseTime"] = true, ["ServiceIds"] = true, ["Duration"] = true, ["Id"] = true, ["HasThrottle"] = true, nil }
@@ -694,8 +903,14 @@ end
 -- * HasThrottle [NullableBoolean] <p>One or more of the segment documents has a 429 throttling error.</p>
 -- @return TraceSummary structure as a key-value pair table
 function M.TraceSummary(args)
-	assert(args, "You must provdide an argument table when creating TraceSummary")
-	local t = { 
+	assert(args, "You must provide an argument table when creating TraceSummary")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["HasError"] = args["HasError"],
 		["Http"] = args["Http"],
 		["Users"] = args["Users"],
@@ -708,8 +923,13 @@ function M.TraceSummary(args)
 		["Id"] = args["Id"],
 		["HasThrottle"] = args["HasThrottle"],
 	}
-	asserts.AssertTraceSummary(t)
-	return t
+	asserts.AssertTraceSummary(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.BackendConnectionErrors = { ["ConnectionRefusedCount"] = true, ["HTTPCode5XXCount"] = true, ["OtherCount"] = true, ["HTTPCode4XXCount"] = true, ["UnknownHostCount"] = true, ["TimeoutCount"] = true, nil }
@@ -740,8 +960,14 @@ end
 -- * TimeoutCount [NullableInteger] <p/>
 -- @return BackendConnectionErrors structure as a key-value pair table
 function M.BackendConnectionErrors(args)
-	assert(args, "You must provdide an argument table when creating BackendConnectionErrors")
-	local t = { 
+	assert(args, "You must provide an argument table when creating BackendConnectionErrors")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ConnectionRefusedCount"] = args["ConnectionRefusedCount"],
 		["HTTPCode5XXCount"] = args["HTTPCode5XXCount"],
 		["OtherCount"] = args["OtherCount"],
@@ -749,8 +975,13 @@ function M.BackendConnectionErrors(args)
 		["UnknownHostCount"] = args["UnknownHostCount"],
 		["TimeoutCount"] = args["TimeoutCount"],
 	}
-	asserts.AssertBackendConnectionErrors(t)
-	return t
+	asserts.AssertBackendConnectionErrors(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetTraceGraphRequest = { ["NextToken"] = true, ["TraceIds"] = true, nil }
@@ -775,13 +1006,24 @@ end
 -- Required key: TraceIds
 -- @return GetTraceGraphRequest structure as a key-value pair table
 function M.GetTraceGraphRequest(args)
-	assert(args, "You must provdide an argument table when creating GetTraceGraphRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetTraceGraphRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NextToken"] = args["NextToken"],
 		["TraceIds"] = args["TraceIds"],
 	}
-	asserts.AssertGetTraceGraphRequest(t)
-	return t
+	asserts.AssertGetTraceGraphRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.TelemetryRecord = { ["SegmentsSpilloverCount"] = true, ["BackendConnectionErrors"] = true, ["Timestamp"] = true, ["SegmentsSentCount"] = true, ["SegmentsRejectedCount"] = true, ["SegmentsReceivedCount"] = true, nil }
@@ -812,8 +1054,14 @@ end
 -- * SegmentsReceivedCount [NullableInteger] <p/>
 -- @return TelemetryRecord structure as a key-value pair table
 function M.TelemetryRecord(args)
-	assert(args, "You must provdide an argument table when creating TelemetryRecord")
-	local t = { 
+	assert(args, "You must provide an argument table when creating TelemetryRecord")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["SegmentsSpilloverCount"] = args["SegmentsSpilloverCount"],
 		["BackendConnectionErrors"] = args["BackendConnectionErrors"],
 		["Timestamp"] = args["Timestamp"],
@@ -821,8 +1069,13 @@ function M.TelemetryRecord(args)
 		["SegmentsRejectedCount"] = args["SegmentsRejectedCount"],
 		["SegmentsReceivedCount"] = args["SegmentsReceivedCount"],
 	}
-	asserts.AssertTelemetryRecord(t)
-	return t
+	asserts.AssertTelemetryRecord(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Alias = { ["Type"] = true, ["Name"] = true, ["Names"] = true, nil }
@@ -847,14 +1100,25 @@ end
 -- * Names [AliasNames] <p>A list of names for the alias, including the canonical name.</p>
 -- @return Alias structure as a key-value pair table
 function M.Alias(args)
-	assert(args, "You must provdide an argument table when creating Alias")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Alias")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Type"] = args["Type"],
 		["Name"] = args["Name"],
 		["Names"] = args["Names"],
 	}
-	asserts.AssertAlias(t)
-	return t
+	asserts.AssertAlias(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Edge = { ["SummaryStatistics"] = true, ["ReferenceId"] = true, ["ResponseTimeHistogram"] = true, ["StartTime"] = true, ["EndTime"] = true, ["Aliases"] = true, nil }
@@ -885,8 +1149,14 @@ end
 -- * Aliases [AliasList] <p>Aliases for the edge.</p>
 -- @return Edge structure as a key-value pair table
 function M.Edge(args)
-	assert(args, "You must provdide an argument table when creating Edge")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Edge")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["SummaryStatistics"] = args["SummaryStatistics"],
 		["ReferenceId"] = args["ReferenceId"],
 		["ResponseTimeHistogram"] = args["ResponseTimeHistogram"],
@@ -894,8 +1164,13 @@ function M.Edge(args)
 		["EndTime"] = args["EndTime"],
 		["Aliases"] = args["Aliases"],
 	}
-	asserts.AssertEdge(t)
-	return t
+	asserts.AssertEdge(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.PutTelemetryRecordsResult = { nil }
@@ -914,11 +1189,22 @@ end
 -- Valid keys:
 -- @return PutTelemetryRecordsResult structure as a key-value pair table
 function M.PutTelemetryRecordsResult(args)
-	assert(args, "You must provdide an argument table when creating PutTelemetryRecordsResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating PutTelemetryRecordsResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertPutTelemetryRecordsResult(t)
-	return t
+	asserts.AssertPutTelemetryRecordsResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.PutTraceSegmentsRequest = { ["TraceSegmentDocuments"] = true, nil }
@@ -941,12 +1227,23 @@ end
 -- Required key: TraceSegmentDocuments
 -- @return PutTraceSegmentsRequest structure as a key-value pair table
 function M.PutTraceSegmentsRequest(args)
-	assert(args, "You must provdide an argument table when creating PutTraceSegmentsRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating PutTraceSegmentsRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["TraceSegmentDocuments"] = args["TraceSegmentDocuments"],
 	}
-	asserts.AssertPutTraceSegmentsRequest(t)
-	return t
+	asserts.AssertPutTraceSegmentsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.PutTraceSegmentsResult = { ["UnprocessedTraceSegments"] = true, nil }
@@ -967,12 +1264,23 @@ end
 -- * UnprocessedTraceSegments [UnprocessedTraceSegmentList] <p>Segments that failed processing.</p>
 -- @return PutTraceSegmentsResult structure as a key-value pair table
 function M.PutTraceSegmentsResult(args)
-	assert(args, "You must provdide an argument table when creating PutTraceSegmentsResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating PutTraceSegmentsResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["UnprocessedTraceSegments"] = args["UnprocessedTraceSegments"],
 	}
-	asserts.AssertPutTraceSegmentsResult(t)
-	return t
+	asserts.AssertPutTraceSegmentsResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetTraceGraphResult = { ["Services"] = true, ["NextToken"] = true, nil }
@@ -995,13 +1303,24 @@ end
 -- * NextToken [String] <p>Pagination token. Not used.</p>
 -- @return GetTraceGraphResult structure as a key-value pair table
 function M.GetTraceGraphResult(args)
-	assert(args, "You must provdide an argument table when creating GetTraceGraphResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetTraceGraphResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Services"] = args["Services"],
 		["NextToken"] = args["NextToken"],
 	}
-	asserts.AssertGetTraceGraphResult(t)
-	return t
+	asserts.AssertGetTraceGraphResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ServiceStatistics = { ["ErrorStatistics"] = true, ["FaultStatistics"] = true, ["OkCount"] = true, ["TotalResponseTime"] = true, ["TotalCount"] = true, nil }
@@ -1030,16 +1349,27 @@ end
 -- * TotalCount [NullableLong] <p>The total number of completed requests.</p>
 -- @return ServiceStatistics structure as a key-value pair table
 function M.ServiceStatistics(args)
-	assert(args, "You must provdide an argument table when creating ServiceStatistics")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ServiceStatistics")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ErrorStatistics"] = args["ErrorStatistics"],
 		["FaultStatistics"] = args["FaultStatistics"],
 		["OkCount"] = args["OkCount"],
 		["TotalResponseTime"] = args["TotalResponseTime"],
 		["TotalCount"] = args["TotalCount"],
 	}
-	asserts.AssertServiceStatistics(t)
-	return t
+	asserts.AssertServiceStatistics(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UnprocessedTraceSegment = { ["ErrorCode"] = true, ["Message"] = true, ["Id"] = true, nil }
@@ -1064,14 +1394,25 @@ end
 -- * Id [String] <p>The segment's ID.</p>
 -- @return UnprocessedTraceSegment structure as a key-value pair table
 function M.UnprocessedTraceSegment(args)
-	assert(args, "You must provdide an argument table when creating UnprocessedTraceSegment")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UnprocessedTraceSegment")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ErrorCode"] = args["ErrorCode"],
 		["Message"] = args["Message"],
 		["Id"] = args["Id"],
 	}
-	asserts.AssertUnprocessedTraceSegment(t)
-	return t
+	asserts.AssertUnprocessedTraceSegment(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.EdgeStatistics = { ["ErrorStatistics"] = true, ["FaultStatistics"] = true, ["OkCount"] = true, ["TotalResponseTime"] = true, ["TotalCount"] = true, nil }
@@ -1100,16 +1441,27 @@ end
 -- * TotalCount [NullableLong] <p>The total number of completed requests.</p>
 -- @return EdgeStatistics structure as a key-value pair table
 function M.EdgeStatistics(args)
-	assert(args, "You must provdide an argument table when creating EdgeStatistics")
-	local t = { 
+	assert(args, "You must provide an argument table when creating EdgeStatistics")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ErrorStatistics"] = args["ErrorStatistics"],
 		["FaultStatistics"] = args["FaultStatistics"],
 		["OkCount"] = args["OkCount"],
 		["TotalResponseTime"] = args["TotalResponseTime"],
 		["TotalCount"] = args["TotalCount"],
 	}
-	asserts.AssertEdgeStatistics(t)
-	return t
+	asserts.AssertEdgeStatistics(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ServiceId = { ["AccountId"] = true, ["Type"] = true, ["Name"] = true, ["Names"] = true, nil }
@@ -1136,15 +1488,26 @@ end
 -- * Names [ServiceNames] <p/>
 -- @return ServiceId structure as a key-value pair table
 function M.ServiceId(args)
-	assert(args, "You must provdide an argument table when creating ServiceId")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ServiceId")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["AccountId"] = args["AccountId"],
 		["Type"] = args["Type"],
 		["Name"] = args["Name"],
 		["Names"] = args["Names"],
 	}
-	asserts.AssertServiceId(t)
-	return t
+	asserts.AssertServiceId(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 function asserts.AssertFilterExpression(str)
@@ -1624,8 +1987,11 @@ function M.GetServiceGraphAsync(GetServiceGraphRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".GetServiceGraph",
 	}
+	for header,value in pairs(GetServiceGraphRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/ServiceGraph", GetServiceGraphRequest, headers, settings, cb)
 	else
@@ -1656,8 +2022,11 @@ function M.PutTraceSegmentsAsync(PutTraceSegmentsRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".PutTraceSegments",
 	}
+	for header,value in pairs(PutTraceSegmentsRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/TraceSegments", PutTraceSegmentsRequest, headers, settings, cb)
 	else
@@ -1688,8 +2057,11 @@ function M.GetTraceSummariesAsync(GetTraceSummariesRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".GetTraceSummaries",
 	}
+	for header,value in pairs(GetTraceSummariesRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/TraceSummaries", GetTraceSummariesRequest, headers, settings, cb)
 	else
@@ -1720,8 +2092,11 @@ function M.GetTraceGraphAsync(GetTraceGraphRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".GetTraceGraph",
 	}
+	for header,value in pairs(GetTraceGraphRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/TraceGraph", GetTraceGraphRequest, headers, settings, cb)
 	else
@@ -1752,8 +2127,11 @@ function M.BatchGetTracesAsync(BatchGetTracesRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".BatchGetTraces",
 	}
+	for header,value in pairs(BatchGetTracesRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/Traces", BatchGetTracesRequest, headers, settings, cb)
 	else
@@ -1784,8 +2162,11 @@ function M.PutTelemetryRecordsAsync(PutTelemetryRecordsRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".PutTelemetryRecords",
 	}
+	for header,value in pairs(PutTelemetryRecordsRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("rest-json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/TelemetryRecords", PutTelemetryRecordsRequest, headers, settings, cb)
 	else

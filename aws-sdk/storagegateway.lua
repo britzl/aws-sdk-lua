@@ -41,13 +41,24 @@ end
 -- * errorDetails [errorDetails] <p>Human-readable text that provides detail about the error that occurred.</p>
 -- @return StorageGatewayError structure as a key-value pair table
 function M.StorageGatewayError(args)
-	assert(args, "You must provdide an argument table when creating StorageGatewayError")
-	local t = { 
+	assert(args, "You must provide an argument table when creating StorageGatewayError")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["errorCode"] = args["errorCode"],
 		["errorDetails"] = args["errorDetails"],
 	}
-	asserts.AssertStorageGatewayError(t)
-	return t
+	asserts.AssertStorageGatewayError(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ResetCacheInput = { ["GatewayARN"] = true, nil }
@@ -70,12 +81,23 @@ end
 -- Required key: GatewayARN
 -- @return ResetCacheInput structure as a key-value pair table
 function M.ResetCacheInput(args)
-	assert(args, "You must provdide an argument table when creating ResetCacheInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ResetCacheInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["GatewayARN"] = args["GatewayARN"],
 	}
-	asserts.AssertResetCacheInput(t)
-	return t
+	asserts.AssertResetCacheInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ShutdownGatewayOutput = { ["GatewayARN"] = true, nil }
@@ -96,12 +118,23 @@ end
 -- * GatewayARN [GatewayARN] 
 -- @return ShutdownGatewayOutput structure as a key-value pair table
 function M.ShutdownGatewayOutput(args)
-	assert(args, "You must provdide an argument table when creating ShutdownGatewayOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ShutdownGatewayOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["GatewayARN"] = args["GatewayARN"],
 	}
-	asserts.AssertShutdownGatewayOutput(t)
-	return t
+	asserts.AssertShutdownGatewayOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.StorediSCSIVolume = { ["VolumeSizeInBytes"] = true, ["VolumeProgress"] = true, ["VolumeDiskId"] = true, ["PreservedExistingData"] = true, ["VolumeiSCSIAttributes"] = true, ["VolumeType"] = true, ["VolumeId"] = true, ["SourceSnapshotId"] = true, ["VolumeARN"] = true, ["CreatedDate"] = true, ["VolumeStatus"] = true, nil }
@@ -142,8 +175,14 @@ end
 -- * VolumeStatus [VolumeStatus] <p>One of the VolumeStatus values that indicates the state of the storage volume.</p>
 -- @return StorediSCSIVolume structure as a key-value pair table
 function M.StorediSCSIVolume(args)
-	assert(args, "You must provdide an argument table when creating StorediSCSIVolume")
-	local t = { 
+	assert(args, "You must provide an argument table when creating StorediSCSIVolume")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["VolumeSizeInBytes"] = args["VolumeSizeInBytes"],
 		["VolumeProgress"] = args["VolumeProgress"],
 		["VolumeDiskId"] = args["VolumeDiskId"],
@@ -156,8 +195,13 @@ function M.StorediSCSIVolume(args)
 		["CreatedDate"] = args["CreatedDate"],
 		["VolumeStatus"] = args["VolumeStatus"],
 	}
-	asserts.AssertStorediSCSIVolume(t)
-	return t
+	asserts.AssertStorediSCSIVolume(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CancelRetrievalOutput = { ["TapeARN"] = true, nil }
@@ -178,12 +222,23 @@ end
 -- * TapeARN [TapeARN] <p>The Amazon Resource Name (ARN) of the virtual tape for which retrieval was canceled.</p>
 -- @return CancelRetrievalOutput structure as a key-value pair table
 function M.CancelRetrievalOutput(args)
-	assert(args, "You must provdide an argument table when creating CancelRetrievalOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CancelRetrievalOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["TapeARN"] = args["TapeARN"],
 	}
-	asserts.AssertCancelRetrievalOutput(t)
-	return t
+	asserts.AssertCancelRetrievalOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteTapeInput = { ["GatewayARN"] = true, ["TapeARN"] = true, nil }
@@ -210,13 +265,24 @@ end
 -- Required key: TapeARN
 -- @return DeleteTapeInput structure as a key-value pair table
 function M.DeleteTapeInput(args)
-	assert(args, "You must provdide an argument table when creating DeleteTapeInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteTapeInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["GatewayARN"] = args["GatewayARN"],
 		["TapeARN"] = args["TapeARN"],
 	}
-	asserts.AssertDeleteTapeInput(t)
-	return t
+	asserts.AssertDeleteTapeInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeTapeRecoveryPointsInput = { ["Marker"] = true, ["GatewayARN"] = true, ["Limit"] = true, nil }
@@ -243,14 +309,25 @@ end
 -- Required key: GatewayARN
 -- @return DescribeTapeRecoveryPointsInput structure as a key-value pair table
 function M.DescribeTapeRecoveryPointsInput(args)
-	assert(args, "You must provdide an argument table when creating DescribeTapeRecoveryPointsInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeTapeRecoveryPointsInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Marker"] = args["Marker"],
 		["GatewayARN"] = args["GatewayARN"],
 		["Limit"] = args["Limit"],
 	}
-	asserts.AssertDescribeTapeRecoveryPointsInput(t)
-	return t
+	asserts.AssertDescribeTapeRecoveryPointsInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CachediSCSIVolume = { ["VolumeSizeInBytes"] = true, ["VolumeProgress"] = true, ["VolumeiSCSIAttributes"] = true, ["VolumeType"] = true, ["VolumeId"] = true, ["SourceSnapshotId"] = true, ["VolumeARN"] = true, ["CreatedDate"] = true, ["VolumeStatus"] = true, nil }
@@ -287,8 +364,14 @@ end
 -- * VolumeStatus [VolumeStatus] <p>One of the VolumeStatus values that indicates the state of the storage volume.</p>
 -- @return CachediSCSIVolume structure as a key-value pair table
 function M.CachediSCSIVolume(args)
-	assert(args, "You must provdide an argument table when creating CachediSCSIVolume")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CachediSCSIVolume")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["VolumeSizeInBytes"] = args["VolumeSizeInBytes"],
 		["VolumeProgress"] = args["VolumeProgress"],
 		["VolumeiSCSIAttributes"] = args["VolumeiSCSIAttributes"],
@@ -299,8 +382,13 @@ function M.CachediSCSIVolume(args)
 		["CreatedDate"] = args["CreatedDate"],
 		["VolumeStatus"] = args["VolumeStatus"],
 	}
-	asserts.AssertCachediSCSIVolume(t)
-	return t
+	asserts.AssertCachediSCSIVolume(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteBandwidthRateLimitInput = { ["GatewayARN"] = true, ["BandwidthType"] = true, nil }
@@ -327,13 +415,24 @@ end
 -- Required key: BandwidthType
 -- @return DeleteBandwidthRateLimitInput structure as a key-value pair table
 function M.DeleteBandwidthRateLimitInput(args)
-	assert(args, "You must provdide an argument table when creating DeleteBandwidthRateLimitInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteBandwidthRateLimitInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["GatewayARN"] = args["GatewayARN"],
 		["BandwidthType"] = args["BandwidthType"],
 	}
-	asserts.AssertDeleteBandwidthRateLimitInput(t)
-	return t
+	asserts.AssertDeleteBandwidthRateLimitInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateTapesInput = { ["GatewayARN"] = true, ["TapeBarcodePrefix"] = true, ["TapeSizeInBytes"] = true, ["NumTapesToCreate"] = true, ["ClientToken"] = true, nil }
@@ -372,16 +471,27 @@ end
 -- Required key: TapeBarcodePrefix
 -- @return CreateTapesInput structure as a key-value pair table
 function M.CreateTapesInput(args)
-	assert(args, "You must provdide an argument table when creating CreateTapesInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateTapesInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["GatewayARN"] = args["GatewayARN"],
 		["TapeBarcodePrefix"] = args["TapeBarcodePrefix"],
 		["TapeSizeInBytes"] = args["TapeSizeInBytes"],
 		["NumTapesToCreate"] = args["NumTapesToCreate"],
 		["ClientToken"] = args["ClientToken"],
 	}
-	asserts.AssertCreateTapesInput(t)
-	return t
+	asserts.AssertCreateTapesInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.RemoveTagsFromResourceInput = { ["ResourceARN"] = true, ["TagKeys"] = true, nil }
@@ -408,13 +518,24 @@ end
 -- Required key: TagKeys
 -- @return RemoveTagsFromResourceInput structure as a key-value pair table
 function M.RemoveTagsFromResourceInput(args)
-	assert(args, "You must provdide an argument table when creating RemoveTagsFromResourceInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating RemoveTagsFromResourceInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ResourceARN"] = args["ResourceARN"],
 		["TagKeys"] = args["TagKeys"],
 	}
-	asserts.AssertRemoveTagsFromResourceInput(t)
-	return t
+	asserts.AssertRemoveTagsFromResourceInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteFileShareInput = { ["FileShareARN"] = true, nil }
@@ -437,12 +558,23 @@ end
 -- Required key: FileShareARN
 -- @return DeleteFileShareInput structure as a key-value pair table
 function M.DeleteFileShareInput(args)
-	assert(args, "You must provdide an argument table when creating DeleteFileShareInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteFileShareInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["FileShareARN"] = args["FileShareARN"],
 	}
-	asserts.AssertDeleteFileShareInput(t)
-	return t
+	asserts.AssertDeleteFileShareInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AddWorkingStorageInput = { ["GatewayARN"] = true, ["DiskIds"] = true, nil }
@@ -469,13 +601,24 @@ end
 -- Required key: DiskIds
 -- @return AddWorkingStorageInput structure as a key-value pair table
 function M.AddWorkingStorageInput(args)
-	assert(args, "You must provdide an argument table when creating AddWorkingStorageInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AddWorkingStorageInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["GatewayARN"] = args["GatewayARN"],
 		["DiskIds"] = args["DiskIds"],
 	}
-	asserts.AssertAddWorkingStorageInput(t)
-	return t
+	asserts.AssertAddWorkingStorageInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListFileSharesOutput = { ["Marker"] = true, ["FileShareInfoList"] = true, ["NextMarker"] = true, nil }
@@ -500,14 +643,25 @@ end
 -- * NextMarker [Marker] <p>If a value is present, there are more file shares to return. In a subsequent request, use <code>NextMarker</code> as the value for <code>Marker</code> to retrieve the next set of file shares. </p>
 -- @return ListFileSharesOutput structure as a key-value pair table
 function M.ListFileSharesOutput(args)
-	assert(args, "You must provdide an argument table when creating ListFileSharesOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListFileSharesOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Marker"] = args["Marker"],
 		["FileShareInfoList"] = args["FileShareInfoList"],
 		["NextMarker"] = args["NextMarker"],
 	}
-	asserts.AssertListFileSharesOutput(t)
-	return t
+	asserts.AssertListFileSharesOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ChapInfo = { ["TargetARN"] = true, ["SecretToAuthenticateInitiator"] = true, ["InitiatorName"] = true, ["SecretToAuthenticateTarget"] = true, nil }
@@ -534,15 +688,26 @@ end
 -- * SecretToAuthenticateTarget [ChapSecret] <p>The secret key that the target must provide to participate in mutual CHAP with the initiator (e.g. Windows client).</p>
 -- @return ChapInfo structure as a key-value pair table
 function M.ChapInfo(args)
-	assert(args, "You must provdide an argument table when creating ChapInfo")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ChapInfo")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["TargetARN"] = args["TargetARN"],
 		["SecretToAuthenticateInitiator"] = args["SecretToAuthenticateInitiator"],
 		["InitiatorName"] = args["InitiatorName"],
 		["SecretToAuthenticateTarget"] = args["SecretToAuthenticateTarget"],
 	}
-	asserts.AssertChapInfo(t)
-	return t
+	asserts.AssertChapInfo(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.SetLocalConsolePasswordOutput = { ["GatewayARN"] = true, nil }
@@ -563,12 +728,23 @@ end
 -- * GatewayARN [GatewayARN] 
 -- @return SetLocalConsolePasswordOutput structure as a key-value pair table
 function M.SetLocalConsolePasswordOutput(args)
-	assert(args, "You must provdide an argument table when creating SetLocalConsolePasswordOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating SetLocalConsolePasswordOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["GatewayARN"] = args["GatewayARN"],
 	}
-	asserts.AssertSetLocalConsolePasswordOutput(t)
-	return t
+	asserts.AssertSetLocalConsolePasswordOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListVolumeRecoveryPointsInput = { ["GatewayARN"] = true, nil }
@@ -591,12 +767,23 @@ end
 -- Required key: GatewayARN
 -- @return ListVolumeRecoveryPointsInput structure as a key-value pair table
 function M.ListVolumeRecoveryPointsInput(args)
-	assert(args, "You must provdide an argument table when creating ListVolumeRecoveryPointsInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListVolumeRecoveryPointsInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["GatewayARN"] = args["GatewayARN"],
 	}
-	asserts.AssertListVolumeRecoveryPointsInput(t)
-	return t
+	asserts.AssertListVolumeRecoveryPointsInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeTapesInput = { ["Marker"] = true, ["GatewayARN"] = true, ["TapeARNs"] = true, ["Limit"] = true, nil }
@@ -625,15 +812,26 @@ end
 -- Required key: GatewayARN
 -- @return DescribeTapesInput structure as a key-value pair table
 function M.DescribeTapesInput(args)
-	assert(args, "You must provdide an argument table when creating DescribeTapesInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeTapesInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Marker"] = args["Marker"],
 		["GatewayARN"] = args["GatewayARN"],
 		["TapeARNs"] = args["TapeARNs"],
 		["Limit"] = args["Limit"],
 	}
-	asserts.AssertDescribeTapesInput(t)
-	return t
+	asserts.AssertDescribeTapesInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdateBandwidthRateLimitInput = { ["GatewayARN"] = true, ["AverageUploadRateLimitInBitsPerSec"] = true, ["AverageDownloadRateLimitInBitsPerSec"] = true, nil }
@@ -660,14 +858,25 @@ end
 -- Required key: GatewayARN
 -- @return UpdateBandwidthRateLimitInput structure as a key-value pair table
 function M.UpdateBandwidthRateLimitInput(args)
-	assert(args, "You must provdide an argument table when creating UpdateBandwidthRateLimitInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateBandwidthRateLimitInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["GatewayARN"] = args["GatewayARN"],
 		["AverageUploadRateLimitInBitsPerSec"] = args["AverageUploadRateLimitInBitsPerSec"],
 		["AverageDownloadRateLimitInBitsPerSec"] = args["AverageDownloadRateLimitInBitsPerSec"],
 	}
-	asserts.AssertUpdateBandwidthRateLimitInput(t)
-	return t
+	asserts.AssertUpdateBandwidthRateLimitInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.TapeRecoveryPointInfo = { ["TapeStatus"] = true, ["TapeARN"] = true, ["TapeSizeInBytes"] = true, ["TapeRecoveryPointTime"] = true, nil }
@@ -694,15 +903,26 @@ end
 -- * TapeRecoveryPointTime [Time] <p>The time when the point-in-time view of the virtual tape was replicated for later recovery.</p> <p>The string format of the tape recovery point time is in the ISO8601 extended YYYY-MM-DD'T'HH:MM:SS'Z' format.</p>
 -- @return TapeRecoveryPointInfo structure as a key-value pair table
 function M.TapeRecoveryPointInfo(args)
-	assert(args, "You must provdide an argument table when creating TapeRecoveryPointInfo")
-	local t = { 
+	assert(args, "You must provide an argument table when creating TapeRecoveryPointInfo")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["TapeStatus"] = args["TapeStatus"],
 		["TapeARN"] = args["TapeARN"],
 		["TapeSizeInBytes"] = args["TapeSizeInBytes"],
 		["TapeRecoveryPointTime"] = args["TapeRecoveryPointTime"],
 	}
-	asserts.AssertTapeRecoveryPointInfo(t)
-	return t
+	asserts.AssertTapeRecoveryPointInfo(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListLocalDisksInput = { ["GatewayARN"] = true, nil }
@@ -725,12 +945,23 @@ end
 -- Required key: GatewayARN
 -- @return ListLocalDisksInput structure as a key-value pair table
 function M.ListLocalDisksInput(args)
-	assert(args, "You must provdide an argument table when creating ListLocalDisksInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListLocalDisksInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["GatewayARN"] = args["GatewayARN"],
 	}
-	asserts.AssertListLocalDisksInput(t)
-	return t
+	asserts.AssertListLocalDisksInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeCachediSCSIVolumesOutput = { ["CachediSCSIVolumes"] = true, nil }
@@ -751,12 +982,23 @@ end
 -- * CachediSCSIVolumes [CachediSCSIVolumes] <p>An array of objects where each object contains metadata about one cached volume.</p>
 -- @return DescribeCachediSCSIVolumesOutput structure as a key-value pair table
 function M.DescribeCachediSCSIVolumesOutput(args)
-	assert(args, "You must provdide an argument table when creating DescribeCachediSCSIVolumesOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeCachediSCSIVolumesOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["CachediSCSIVolumes"] = args["CachediSCSIVolumes"],
 	}
-	asserts.AssertDescribeCachediSCSIVolumesOutput(t)
-	return t
+	asserts.AssertDescribeCachediSCSIVolumesOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InternalServerError = { ["message"] = true, ["error"] = true, nil }
@@ -779,13 +1021,24 @@ end
 -- * error [StorageGatewayError] <p>A <a>StorageGatewayError</a> that provides more information about the cause of the error.</p>
 -- @return InternalServerError structure as a key-value pair table
 function M.InternalServerError(args)
-	assert(args, "You must provdide an argument table when creating InternalServerError")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InternalServerError")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 		["error"] = args["error"],
 	}
-	asserts.AssertInternalServerError(t)
-	return t
+	asserts.AssertInternalServerError(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.RetrieveTapeRecoveryPointInput = { ["GatewayARN"] = true, ["TapeARN"] = true, nil }
@@ -812,13 +1065,24 @@ end
 -- Required key: GatewayARN
 -- @return RetrieveTapeRecoveryPointInput structure as a key-value pair table
 function M.RetrieveTapeRecoveryPointInput(args)
-	assert(args, "You must provdide an argument table when creating RetrieveTapeRecoveryPointInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating RetrieveTapeRecoveryPointInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["GatewayARN"] = args["GatewayARN"],
 		["TapeARN"] = args["TapeARN"],
 	}
-	asserts.AssertRetrieveTapeRecoveryPointInput(t)
-	return t
+	asserts.AssertRetrieveTapeRecoveryPointInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeTapeRecoveryPointsOutput = { ["Marker"] = true, ["GatewayARN"] = true, ["TapeRecoveryPointInfos"] = true, nil }
@@ -843,14 +1107,25 @@ end
 -- * TapeRecoveryPointInfos [TapeRecoveryPointInfos] <p>An array of TapeRecoveryPointInfos that are available for the specified gateway.</p>
 -- @return DescribeTapeRecoveryPointsOutput structure as a key-value pair table
 function M.DescribeTapeRecoveryPointsOutput(args)
-	assert(args, "You must provdide an argument table when creating DescribeTapeRecoveryPointsOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeTapeRecoveryPointsOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Marker"] = args["Marker"],
 		["GatewayARN"] = args["GatewayARN"],
 		["TapeRecoveryPointInfos"] = args["TapeRecoveryPointInfos"],
 	}
-	asserts.AssertDescribeTapeRecoveryPointsOutput(t)
-	return t
+	asserts.AssertDescribeTapeRecoveryPointsOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdateGatewayInformationInput = { ["GatewayTimezone"] = true, ["GatewayARN"] = true, ["GatewayName"] = true, nil }
@@ -877,14 +1152,25 @@ end
 -- Required key: GatewayARN
 -- @return UpdateGatewayInformationInput structure as a key-value pair table
 function M.UpdateGatewayInformationInput(args)
-	assert(args, "You must provdide an argument table when creating UpdateGatewayInformationInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateGatewayInformationInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["GatewayTimezone"] = args["GatewayTimezone"],
 		["GatewayARN"] = args["GatewayARN"],
 		["GatewayName"] = args["GatewayName"],
 	}
-	asserts.AssertUpdateGatewayInformationInput(t)
-	return t
+	asserts.AssertUpdateGatewayInformationInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdateGatewaySoftwareNowInput = { ["GatewayARN"] = true, nil }
@@ -907,12 +1193,23 @@ end
 -- Required key: GatewayARN
 -- @return UpdateGatewaySoftwareNowInput structure as a key-value pair table
 function M.UpdateGatewaySoftwareNowInput(args)
-	assert(args, "You must provdide an argument table when creating UpdateGatewaySoftwareNowInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateGatewaySoftwareNowInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["GatewayARN"] = args["GatewayARN"],
 	}
-	asserts.AssertUpdateGatewaySoftwareNowInput(t)
-	return t
+	asserts.AssertUpdateGatewaySoftwareNowInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListVolumeInitiatorsInput = { ["VolumeARN"] = true, nil }
@@ -935,12 +1232,23 @@ end
 -- Required key: VolumeARN
 -- @return ListVolumeInitiatorsInput structure as a key-value pair table
 function M.ListVolumeInitiatorsInput(args)
-	assert(args, "You must provdide an argument table when creating ListVolumeInitiatorsInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListVolumeInitiatorsInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["VolumeARN"] = args["VolumeARN"],
 	}
-	asserts.AssertListVolumeInitiatorsInput(t)
-	return t
+	asserts.AssertListVolumeInitiatorsInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateNFSFileShareInput = { ["DefaultStorageClass"] = true, ["ClientList"] = true, ["Squash"] = true, ["NFSFileShareDefaults"] = true, ["KMSKey"] = true, ["Role"] = true, ["LocationARN"] = true, ["ClientToken"] = true, ["GatewayARN"] = true, ["ReadOnly"] = true, ["KMSEncrypted"] = true, nil }
@@ -989,8 +1297,14 @@ end
 -- Required key: LocationARN
 -- @return CreateNFSFileShareInput structure as a key-value pair table
 function M.CreateNFSFileShareInput(args)
-	assert(args, "You must provdide an argument table when creating CreateNFSFileShareInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateNFSFileShareInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DefaultStorageClass"] = args["DefaultStorageClass"],
 		["ClientList"] = args["ClientList"],
 		["Squash"] = args["Squash"],
@@ -1003,8 +1317,13 @@ function M.CreateNFSFileShareInput(args)
 		["ReadOnly"] = args["ReadOnly"],
 		["KMSEncrypted"] = args["KMSEncrypted"],
 	}
-	asserts.AssertCreateNFSFileShareInput(t)
-	return t
+	asserts.AssertCreateNFSFileShareInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DisableGatewayOutput = { ["GatewayARN"] = true, nil }
@@ -1025,12 +1344,23 @@ end
 -- * GatewayARN [GatewayARN] <p>The unique Amazon Resource Name of the disabled gateway.</p>
 -- @return DisableGatewayOutput structure as a key-value pair table
 function M.DisableGatewayOutput(args)
-	assert(args, "You must provdide an argument table when creating DisableGatewayOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DisableGatewayOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["GatewayARN"] = args["GatewayARN"],
 	}
-	asserts.AssertDisableGatewayOutput(t)
-	return t
+	asserts.AssertDisableGatewayOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeChapCredentialsInput = { ["TargetARN"] = true, nil }
@@ -1053,12 +1383,23 @@ end
 -- Required key: TargetARN
 -- @return DescribeChapCredentialsInput structure as a key-value pair table
 function M.DescribeChapCredentialsInput(args)
-	assert(args, "You must provdide an argument table when creating DescribeChapCredentialsInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeChapCredentialsInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["TargetARN"] = args["TargetARN"],
 	}
-	asserts.AssertDescribeChapCredentialsInput(t)
-	return t
+	asserts.AssertDescribeChapCredentialsInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteSnapshotScheduleInput = { ["VolumeARN"] = true, nil }
@@ -1081,12 +1422,23 @@ end
 -- Required key: VolumeARN
 -- @return DeleteSnapshotScheduleInput structure as a key-value pair table
 function M.DeleteSnapshotScheduleInput(args)
-	assert(args, "You must provdide an argument table when creating DeleteSnapshotScheduleInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteSnapshotScheduleInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["VolumeARN"] = args["VolumeARN"],
 	}
-	asserts.AssertDeleteSnapshotScheduleInput(t)
-	return t
+	asserts.AssertDeleteSnapshotScheduleInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Tag = { ["Value"] = true, ["Key"] = true, nil }
@@ -1113,13 +1465,24 @@ end
 -- Required key: Value
 -- @return Tag structure as a key-value pair table
 function M.Tag(args)
-	assert(args, "You must provdide an argument table when creating Tag")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Tag")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Value"] = args["Value"],
 		["Key"] = args["Key"],
 	}
-	asserts.AssertTag(t)
-	return t
+	asserts.AssertTag(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdateChapCredentialsOutput = { ["TargetARN"] = true, ["InitiatorName"] = true, nil }
@@ -1142,13 +1505,24 @@ end
 -- * InitiatorName [IqnName] <p>The iSCSI initiator that connects to the target. This is the same initiator name specified in the request.</p>
 -- @return UpdateChapCredentialsOutput structure as a key-value pair table
 function M.UpdateChapCredentialsOutput(args)
-	assert(args, "You must provdide an argument table when creating UpdateChapCredentialsOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateChapCredentialsOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["TargetARN"] = args["TargetARN"],
 		["InitiatorName"] = args["InitiatorName"],
 	}
-	asserts.AssertUpdateChapCredentialsOutput(t)
-	return t
+	asserts.AssertUpdateChapCredentialsOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.SetLocalConsolePasswordInput = { ["GatewayARN"] = true, ["LocalConsolePassword"] = true, nil }
@@ -1175,13 +1549,24 @@ end
 -- Required key: LocalConsolePassword
 -- @return SetLocalConsolePasswordInput structure as a key-value pair table
 function M.SetLocalConsolePasswordInput(args)
-	assert(args, "You must provdide an argument table when creating SetLocalConsolePasswordInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating SetLocalConsolePasswordInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["GatewayARN"] = args["GatewayARN"],
 		["LocalConsolePassword"] = args["LocalConsolePassword"],
 	}
-	asserts.AssertSetLocalConsolePasswordInput(t)
-	return t
+	asserts.AssertSetLocalConsolePasswordInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Disk = { ["DiskSizeInBytes"] = true, ["DiskAllocationType"] = true, ["DiskPath"] = true, ["DiskStatus"] = true, ["DiskAllocationResource"] = true, ["DiskId"] = true, ["DiskNode"] = true, nil }
@@ -1214,8 +1599,14 @@ end
 -- * DiskNode [string] 
 -- @return Disk structure as a key-value pair table
 function M.Disk(args)
-	assert(args, "You must provdide an argument table when creating Disk")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Disk")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DiskSizeInBytes"] = args["DiskSizeInBytes"],
 		["DiskAllocationType"] = args["DiskAllocationType"],
 		["DiskPath"] = args["DiskPath"],
@@ -1224,8 +1615,13 @@ function M.Disk(args)
 		["DiskId"] = args["DiskId"],
 		["DiskNode"] = args["DiskNode"],
 	}
-	asserts.AssertDisk(t)
-	return t
+	asserts.AssertDisk(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeGatewayInformationOutput = { ["GatewayName"] = true, ["GatewayType"] = true, ["GatewayState"] = true, ["LastSoftwareUpdate"] = true, ["GatewayTimezone"] = true, ["GatewayNetworkInterfaces"] = true, ["NextUpdateAvailabilityDate"] = true, ["GatewayId"] = true, ["GatewayARN"] = true, nil }
@@ -1262,8 +1658,14 @@ end
 -- * GatewayARN [GatewayARN] 
 -- @return DescribeGatewayInformationOutput structure as a key-value pair table
 function M.DescribeGatewayInformationOutput(args)
-	assert(args, "You must provdide an argument table when creating DescribeGatewayInformationOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeGatewayInformationOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["GatewayName"] = args["GatewayName"],
 		["GatewayType"] = args["GatewayType"],
 		["GatewayState"] = args["GatewayState"],
@@ -1274,8 +1676,13 @@ function M.DescribeGatewayInformationOutput(args)
 		["GatewayId"] = args["GatewayId"],
 		["GatewayARN"] = args["GatewayARN"],
 	}
-	asserts.AssertDescribeGatewayInformationOutput(t)
-	return t
+	asserts.AssertDescribeGatewayInformationOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DisableGatewayInput = { ["GatewayARN"] = true, nil }
@@ -1298,12 +1705,23 @@ end
 -- Required key: GatewayARN
 -- @return DisableGatewayInput structure as a key-value pair table
 function M.DisableGatewayInput(args)
-	assert(args, "You must provdide an argument table when creating DisableGatewayInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DisableGatewayInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["GatewayARN"] = args["GatewayARN"],
 	}
-	asserts.AssertDisableGatewayInput(t)
-	return t
+	asserts.AssertDisableGatewayInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteFileShareOutput = { ["FileShareARN"] = true, nil }
@@ -1324,12 +1742,23 @@ end
 -- * FileShareARN [FileShareARN] <p>The Amazon Resource Name (ARN) of the deleted file share. </p>
 -- @return DeleteFileShareOutput structure as a key-value pair table
 function M.DeleteFileShareOutput(args)
-	assert(args, "You must provdide an argument table when creating DeleteFileShareOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteFileShareOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["FileShareARN"] = args["FileShareARN"],
 	}
-	asserts.AssertDeleteFileShareOutput(t)
-	return t
+	asserts.AssertDeleteFileShareOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeUploadBufferOutput = { ["GatewayARN"] = true, ["UploadBufferAllocatedInBytes"] = true, ["DiskIds"] = true, ["UploadBufferUsedInBytes"] = true, nil }
@@ -1356,15 +1785,26 @@ end
 -- * UploadBufferUsedInBytes [long] 
 -- @return DescribeUploadBufferOutput structure as a key-value pair table
 function M.DescribeUploadBufferOutput(args)
-	assert(args, "You must provdide an argument table when creating DescribeUploadBufferOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeUploadBufferOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["GatewayARN"] = args["GatewayARN"],
 		["UploadBufferAllocatedInBytes"] = args["UploadBufferAllocatedInBytes"],
 		["DiskIds"] = args["DiskIds"],
 		["UploadBufferUsedInBytes"] = args["UploadBufferUsedInBytes"],
 	}
-	asserts.AssertDescribeUploadBufferOutput(t)
-	return t
+	asserts.AssertDescribeUploadBufferOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AddWorkingStorageOutput = { ["GatewayARN"] = true, nil }
@@ -1385,12 +1825,23 @@ end
 -- * GatewayARN [GatewayARN] 
 -- @return AddWorkingStorageOutput structure as a key-value pair table
 function M.AddWorkingStorageOutput(args)
-	assert(args, "You must provdide an argument table when creating AddWorkingStorageOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AddWorkingStorageOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["GatewayARN"] = args["GatewayARN"],
 	}
-	asserts.AssertAddWorkingStorageOutput(t)
-	return t
+	asserts.AssertAddWorkingStorageOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ResetCacheOutput = { ["GatewayARN"] = true, nil }
@@ -1411,12 +1862,23 @@ end
 -- * GatewayARN [GatewayARN] 
 -- @return ResetCacheOutput structure as a key-value pair table
 function M.ResetCacheOutput(args)
-	assert(args, "You must provdide an argument table when creating ResetCacheOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ResetCacheOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["GatewayARN"] = args["GatewayARN"],
 	}
-	asserts.AssertResetCacheOutput(t)
-	return t
+	asserts.AssertResetCacheOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListTapesInput = { ["Marker"] = true, ["Limit"] = true, ["TapeARNs"] = true, nil }
@@ -1441,14 +1903,25 @@ end
 -- * TapeARNs [TapeARNs] 
 -- @return ListTapesInput structure as a key-value pair table
 function M.ListTapesInput(args)
-	assert(args, "You must provdide an argument table when creating ListTapesInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListTapesInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Marker"] = args["Marker"],
 		["Limit"] = args["Limit"],
 		["TapeARNs"] = args["TapeARNs"],
 	}
-	asserts.AssertListTapesInput(t)
-	return t
+	asserts.AssertListTapesInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Tape = { ["TapeCreatedDate"] = true, ["TapeUsedInBytes"] = true, ["TapeARN"] = true, ["VTLDevice"] = true, ["TapeSizeInBytes"] = true, ["TapeBarcode"] = true, ["Progress"] = true, ["TapeStatus"] = true, nil }
@@ -1483,8 +1956,14 @@ end
 -- * TapeStatus [TapeStatus] <p>The current state of the virtual tape.</p>
 -- @return Tape structure as a key-value pair table
 function M.Tape(args)
-	assert(args, "You must provdide an argument table when creating Tape")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Tape")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["TapeCreatedDate"] = args["TapeCreatedDate"],
 		["TapeUsedInBytes"] = args["TapeUsedInBytes"],
 		["TapeARN"] = args["TapeARN"],
@@ -1494,8 +1973,13 @@ function M.Tape(args)
 		["Progress"] = args["Progress"],
 		["TapeStatus"] = args["TapeStatus"],
 	}
-	asserts.AssertTape(t)
-	return t
+	asserts.AssertTape(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeGatewayInformationInput = { ["GatewayARN"] = true, nil }
@@ -1518,12 +2002,23 @@ end
 -- Required key: GatewayARN
 -- @return DescribeGatewayInformationInput structure as a key-value pair table
 function M.DescribeGatewayInformationInput(args)
-	assert(args, "You must provdide an argument table when creating DescribeGatewayInformationInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeGatewayInformationInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["GatewayARN"] = args["GatewayARN"],
 	}
-	asserts.AssertDescribeGatewayInformationInput(t)
-	return t
+	asserts.AssertDescribeGatewayInformationInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeVTLDevicesOutput = { ["Marker"] = true, ["GatewayARN"] = true, ["VTLDevices"] = true, nil }
@@ -1548,14 +2043,25 @@ end
 -- * VTLDevices [VTLDevices] <p>An array of VTL device objects composed of the Amazon Resource Name(ARN) of the VTL devices.</p>
 -- @return DescribeVTLDevicesOutput structure as a key-value pair table
 function M.DescribeVTLDevicesOutput(args)
-	assert(args, "You must provdide an argument table when creating DescribeVTLDevicesOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeVTLDevicesOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Marker"] = args["Marker"],
 		["GatewayARN"] = args["GatewayARN"],
 		["VTLDevices"] = args["VTLDevices"],
 	}
-	asserts.AssertDescribeVTLDevicesOutput(t)
-	return t
+	asserts.AssertDescribeVTLDevicesOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeSnapshotScheduleInput = { ["VolumeARN"] = true, nil }
@@ -1578,12 +2084,23 @@ end
 -- Required key: VolumeARN
 -- @return DescribeSnapshotScheduleInput structure as a key-value pair table
 function M.DescribeSnapshotScheduleInput(args)
-	assert(args, "You must provdide an argument table when creating DescribeSnapshotScheduleInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeSnapshotScheduleInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["VolumeARN"] = args["VolumeARN"],
 	}
-	asserts.AssertDescribeSnapshotScheduleInput(t)
-	return t
+	asserts.AssertDescribeSnapshotScheduleInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeBandwidthRateLimitOutput = { ["GatewayARN"] = true, ["AverageUploadRateLimitInBitsPerSec"] = true, ["AverageDownloadRateLimitInBitsPerSec"] = true, nil }
@@ -1608,14 +2125,25 @@ end
 -- * AverageDownloadRateLimitInBitsPerSec [BandwidthDownloadRateLimit] <p>The average download bandwidth rate limit in bits per second. This field does not appear in the response if the download rate limit is not set.</p>
 -- @return DescribeBandwidthRateLimitOutput structure as a key-value pair table
 function M.DescribeBandwidthRateLimitOutput(args)
-	assert(args, "You must provdide an argument table when creating DescribeBandwidthRateLimitOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeBandwidthRateLimitOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["GatewayARN"] = args["GatewayARN"],
 		["AverageUploadRateLimitInBitsPerSec"] = args["AverageUploadRateLimitInBitsPerSec"],
 		["AverageDownloadRateLimitInBitsPerSec"] = args["AverageDownloadRateLimitInBitsPerSec"],
 	}
-	asserts.AssertDescribeBandwidthRateLimitOutput(t)
-	return t
+	asserts.AssertDescribeBandwidthRateLimitOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListVolumesInput = { ["Marker"] = true, ["GatewayARN"] = true, ["Limit"] = true, nil }
@@ -1640,14 +2168,25 @@ end
 -- * Limit [PositiveIntObject] <p>Specifies that the list of volumes returned be limited to the specified number of items.</p>
 -- @return ListVolumesInput structure as a key-value pair table
 function M.ListVolumesInput(args)
-	assert(args, "You must provdide an argument table when creating ListVolumesInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListVolumesInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Marker"] = args["Marker"],
 		["GatewayARN"] = args["GatewayARN"],
 		["Limit"] = args["Limit"],
 	}
-	asserts.AssertListVolumesInput(t)
-	return t
+	asserts.AssertListVolumesInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListVolumeInitiatorsOutput = { ["Initiators"] = true, nil }
@@ -1668,12 +2207,23 @@ end
 -- * Initiators [Initiators] <p>The host names and port numbers of all iSCSI initiators that are connected to the gateway.</p>
 -- @return ListVolumeInitiatorsOutput structure as a key-value pair table
 function M.ListVolumeInitiatorsOutput(args)
-	assert(args, "You must provdide an argument table when creating ListVolumeInitiatorsOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListVolumeInitiatorsOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Initiators"] = args["Initiators"],
 	}
-	asserts.AssertListVolumeInitiatorsOutput(t)
-	return t
+	asserts.AssertListVolumeInitiatorsOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeTapeArchivesInput = { ["Marker"] = true, ["Limit"] = true, ["TapeARNs"] = true, nil }
@@ -1698,14 +2248,25 @@ end
 -- * TapeARNs [TapeARNs] <p>Specifies one or more unique Amazon Resource Names (ARNs) that represent the virtual tapes you want to describe.</p>
 -- @return DescribeTapeArchivesInput structure as a key-value pair table
 function M.DescribeTapeArchivesInput(args)
-	assert(args, "You must provdide an argument table when creating DescribeTapeArchivesInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeTapeArchivesInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Marker"] = args["Marker"],
 		["Limit"] = args["Limit"],
 		["TapeARNs"] = args["TapeARNs"],
 	}
-	asserts.AssertDescribeTapeArchivesInput(t)
-	return t
+	asserts.AssertDescribeTapeArchivesInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListTagsForResourceOutput = { ["Marker"] = true, ["ResourceARN"] = true, ["Tags"] = true, nil }
@@ -1730,14 +2291,25 @@ end
 -- * Tags [Tags] <p>An array that contains the tags for the specified resource.</p>
 -- @return ListTagsForResourceOutput structure as a key-value pair table
 function M.ListTagsForResourceOutput(args)
-	assert(args, "You must provdide an argument table when creating ListTagsForResourceOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListTagsForResourceOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Marker"] = args["Marker"],
 		["ResourceARN"] = args["ResourceARN"],
 		["Tags"] = args["Tags"],
 	}
-	asserts.AssertListTagsForResourceOutput(t)
-	return t
+	asserts.AssertListTagsForResourceOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListTapesOutput = { ["Marker"] = true, ["TapeInfos"] = true, nil }
@@ -1760,13 +2332,24 @@ end
 -- * TapeInfos [TapeInfos] 
 -- @return ListTapesOutput structure as a key-value pair table
 function M.ListTapesOutput(args)
-	assert(args, "You must provdide an argument table when creating ListTapesOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListTapesOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Marker"] = args["Marker"],
 		["TapeInfos"] = args["TapeInfos"],
 	}
-	asserts.AssertListTapesOutput(t)
-	return t
+	asserts.AssertListTapesOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.VolumeiSCSIAttributes = { ["TargetARN"] = true, ["NetworkInterfaceId"] = true, ["LunNumber"] = true, ["ChapEnabled"] = true, ["NetworkInterfacePort"] = true, nil }
@@ -1795,16 +2378,27 @@ end
 -- * NetworkInterfacePort [integer] <p>The port used to communicate with iSCSI targets.</p>
 -- @return VolumeiSCSIAttributes structure as a key-value pair table
 function M.VolumeiSCSIAttributes(args)
-	assert(args, "You must provdide an argument table when creating VolumeiSCSIAttributes")
-	local t = { 
+	assert(args, "You must provide an argument table when creating VolumeiSCSIAttributes")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["TargetARN"] = args["TargetARN"],
 		["NetworkInterfaceId"] = args["NetworkInterfaceId"],
 		["LunNumber"] = args["LunNumber"],
 		["ChapEnabled"] = args["ChapEnabled"],
 		["NetworkInterfacePort"] = args["NetworkInterfacePort"],
 	}
-	asserts.AssertVolumeiSCSIAttributes(t)
-	return t
+	asserts.AssertVolumeiSCSIAttributes(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdateSnapshotScheduleOutput = { ["VolumeARN"] = true, nil }
@@ -1825,12 +2419,23 @@ end
 -- * VolumeARN [VolumeARN] <p/>
 -- @return UpdateSnapshotScheduleOutput structure as a key-value pair table
 function M.UpdateSnapshotScheduleOutput(args)
-	assert(args, "You must provdide an argument table when creating UpdateSnapshotScheduleOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateSnapshotScheduleOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["VolumeARN"] = args["VolumeARN"],
 	}
-	asserts.AssertUpdateSnapshotScheduleOutput(t)
-	return t
+	asserts.AssertUpdateSnapshotScheduleOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdateBandwidthRateLimitOutput = { ["GatewayARN"] = true, nil }
@@ -1851,12 +2456,23 @@ end
 -- * GatewayARN [GatewayARN] 
 -- @return UpdateBandwidthRateLimitOutput structure as a key-value pair table
 function M.UpdateBandwidthRateLimitOutput(args)
-	assert(args, "You must provdide an argument table when creating UpdateBandwidthRateLimitOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateBandwidthRateLimitOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["GatewayARN"] = args["GatewayARN"],
 	}
-	asserts.AssertUpdateBandwidthRateLimitOutput(t)
-	return t
+	asserts.AssertUpdateBandwidthRateLimitOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.NFSFileShareInfo = { ["FileShareARN"] = true, ["FileShareStatus"] = true, ["FileShareId"] = true, ["DefaultStorageClass"] = true, ["ClientList"] = true, ["Squash"] = true, ["NFSFileShareDefaults"] = true, ["KMSKey"] = true, ["Role"] = true, ["LocationARN"] = true, ["Path"] = true, ["GatewayARN"] = true, ["ReadOnly"] = true, ["KMSEncrypted"] = true, nil }
@@ -1903,8 +2519,14 @@ end
 -- * KMSEncrypted [boolean] <p>True to use Amazon S3 server side encryption with your own KMS key, or false to use a key managed by Amazon S3. Optional. </p>
 -- @return NFSFileShareInfo structure as a key-value pair table
 function M.NFSFileShareInfo(args)
-	assert(args, "You must provdide an argument table when creating NFSFileShareInfo")
-	local t = { 
+	assert(args, "You must provide an argument table when creating NFSFileShareInfo")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["FileShareARN"] = args["FileShareARN"],
 		["FileShareStatus"] = args["FileShareStatus"],
 		["FileShareId"] = args["FileShareId"],
@@ -1920,8 +2542,13 @@ function M.NFSFileShareInfo(args)
 		["ReadOnly"] = args["ReadOnly"],
 		["KMSEncrypted"] = args["KMSEncrypted"],
 	}
-	asserts.AssertNFSFileShareInfo(t)
-	return t
+	asserts.AssertNFSFileShareInfo(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateCachediSCSIVolumeOutput = { ["TargetARN"] = true, ["VolumeARN"] = true, nil }
@@ -1944,13 +2571,24 @@ end
 -- * VolumeARN [VolumeARN] 
 -- @return CreateCachediSCSIVolumeOutput structure as a key-value pair table
 function M.CreateCachediSCSIVolumeOutput(args)
-	assert(args, "You must provdide an argument table when creating CreateCachediSCSIVolumeOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateCachediSCSIVolumeOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["TargetARN"] = args["TargetARN"],
 		["VolumeARN"] = args["VolumeARN"],
 	}
-	asserts.AssertCreateCachediSCSIVolumeOutput(t)
-	return t
+	asserts.AssertCreateCachediSCSIVolumeOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeMaintenanceStartTimeOutput = { ["HourOfDay"] = true, ["GatewayARN"] = true, ["DayOfWeek"] = true, ["MinuteOfHour"] = true, ["Timezone"] = true, nil }
@@ -1979,16 +2617,27 @@ end
 -- * Timezone [GatewayTimezone] 
 -- @return DescribeMaintenanceStartTimeOutput structure as a key-value pair table
 function M.DescribeMaintenanceStartTimeOutput(args)
-	assert(args, "You must provdide an argument table when creating DescribeMaintenanceStartTimeOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeMaintenanceStartTimeOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["HourOfDay"] = args["HourOfDay"],
 		["GatewayARN"] = args["GatewayARN"],
 		["DayOfWeek"] = args["DayOfWeek"],
 		["MinuteOfHour"] = args["MinuteOfHour"],
 		["Timezone"] = args["Timezone"],
 	}
-	asserts.AssertDescribeMaintenanceStartTimeOutput(t)
-	return t
+	asserts.AssertDescribeMaintenanceStartTimeOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteChapCredentialsInput = { ["TargetARN"] = true, ["InitiatorName"] = true, nil }
@@ -2015,13 +2664,24 @@ end
 -- Required key: InitiatorName
 -- @return DeleteChapCredentialsInput structure as a key-value pair table
 function M.DeleteChapCredentialsInput(args)
-	assert(args, "You must provdide an argument table when creating DeleteChapCredentialsInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteChapCredentialsInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["TargetARN"] = args["TargetARN"],
 		["InitiatorName"] = args["InitiatorName"],
 	}
-	asserts.AssertDeleteChapCredentialsInput(t)
-	return t
+	asserts.AssertDeleteChapCredentialsInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListTagsForResourceInput = { ["Marker"] = true, ["ResourceARN"] = true, ["Limit"] = true, nil }
@@ -2048,14 +2708,25 @@ end
 -- Required key: ResourceARN
 -- @return ListTagsForResourceInput structure as a key-value pair table
 function M.ListTagsForResourceInput(args)
-	assert(args, "You must provdide an argument table when creating ListTagsForResourceInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListTagsForResourceInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Marker"] = args["Marker"],
 		["ResourceARN"] = args["ResourceARN"],
 		["Limit"] = args["Limit"],
 	}
-	asserts.AssertListTagsForResourceInput(t)
-	return t
+	asserts.AssertListTagsForResourceInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateTapesOutput = { ["TapeARNs"] = true, nil }
@@ -2076,12 +2747,23 @@ end
 -- * TapeARNs [TapeARNs] <p>A list of unique Amazon Resource Names (ARNs) that represents the virtual tapes that were created.</p>
 -- @return CreateTapesOutput structure as a key-value pair table
 function M.CreateTapesOutput(args)
-	assert(args, "You must provdide an argument table when creating CreateTapesOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateTapesOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["TapeARNs"] = args["TapeARNs"],
 	}
-	asserts.AssertCreateTapesOutput(t)
-	return t
+	asserts.AssertCreateTapesOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteSnapshotScheduleOutput = { ["VolumeARN"] = true, nil }
@@ -2102,12 +2784,23 @@ end
 -- * VolumeARN [VolumeARN] 
 -- @return DeleteSnapshotScheduleOutput structure as a key-value pair table
 function M.DeleteSnapshotScheduleOutput(args)
-	assert(args, "You must provdide an argument table when creating DeleteSnapshotScheduleOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteSnapshotScheduleOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["VolumeARN"] = args["VolumeARN"],
 	}
-	asserts.AssertDeleteSnapshotScheduleOutput(t)
-	return t
+	asserts.AssertDeleteSnapshotScheduleOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AddTagsToResourceInput = { ["ResourceARN"] = true, ["Tags"] = true, nil }
@@ -2134,13 +2827,24 @@ end
 -- Required key: Tags
 -- @return AddTagsToResourceInput structure as a key-value pair table
 function M.AddTagsToResourceInput(args)
-	assert(args, "You must provdide an argument table when creating AddTagsToResourceInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AddTagsToResourceInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ResourceARN"] = args["ResourceARN"],
 		["Tags"] = args["Tags"],
 	}
-	asserts.AssertAddTagsToResourceInput(t)
-	return t
+	asserts.AssertAddTagsToResourceInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.RefreshCacheOutput = { ["FileShareARN"] = true, nil }
@@ -2161,12 +2865,23 @@ end
 -- * FileShareARN [FileShareARN] 
 -- @return RefreshCacheOutput structure as a key-value pair table
 function M.RefreshCacheOutput(args)
-	assert(args, "You must provdide an argument table when creating RefreshCacheOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating RefreshCacheOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["FileShareARN"] = args["FileShareARN"],
 	}
-	asserts.AssertRefreshCacheOutput(t)
-	return t
+	asserts.AssertRefreshCacheOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeStorediSCSIVolumesOutput = { ["StorediSCSIVolumes"] = true, nil }
@@ -2187,12 +2902,23 @@ end
 -- * StorediSCSIVolumes [StorediSCSIVolumes] 
 -- @return DescribeStorediSCSIVolumesOutput structure as a key-value pair table
 function M.DescribeStorediSCSIVolumesOutput(args)
-	assert(args, "You must provdide an argument table when creating DescribeStorediSCSIVolumesOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeStorediSCSIVolumesOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["StorediSCSIVolumes"] = args["StorediSCSIVolumes"],
 	}
-	asserts.AssertDescribeStorediSCSIVolumesOutput(t)
-	return t
+	asserts.AssertDescribeStorediSCSIVolumesOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdateVTLDeviceTypeOutput = { ["VTLDeviceARN"] = true, nil }
@@ -2213,12 +2939,23 @@ end
 -- * VTLDeviceARN [VTLDeviceARN] <p>The Amazon Resource Name (ARN) of the medium changer you have selected.</p>
 -- @return UpdateVTLDeviceTypeOutput structure as a key-value pair table
 function M.UpdateVTLDeviceTypeOutput(args)
-	assert(args, "You must provdide an argument table when creating UpdateVTLDeviceTypeOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateVTLDeviceTypeOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["VTLDeviceARN"] = args["VTLDeviceARN"],
 	}
-	asserts.AssertUpdateVTLDeviceTypeOutput(t)
-	return t
+	asserts.AssertUpdateVTLDeviceTypeOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AddCacheInput = { ["GatewayARN"] = true, ["DiskIds"] = true, nil }
@@ -2245,13 +2982,24 @@ end
 -- Required key: DiskIds
 -- @return AddCacheInput structure as a key-value pair table
 function M.AddCacheInput(args)
-	assert(args, "You must provdide an argument table when creating AddCacheInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AddCacheInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["GatewayARN"] = args["GatewayARN"],
 		["DiskIds"] = args["DiskIds"],
 	}
-	asserts.AssertAddCacheInput(t)
-	return t
+	asserts.AssertAddCacheInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.VolumeRecoveryPointInfo = { ["VolumeSizeInBytes"] = true, ["VolumeUsageInBytes"] = true, ["VolumeARN"] = true, ["VolumeRecoveryPointTime"] = true, nil }
@@ -2278,15 +3026,26 @@ end
 -- * VolumeRecoveryPointTime [string] 
 -- @return VolumeRecoveryPointInfo structure as a key-value pair table
 function M.VolumeRecoveryPointInfo(args)
-	assert(args, "You must provdide an argument table when creating VolumeRecoveryPointInfo")
-	local t = { 
+	assert(args, "You must provide an argument table when creating VolumeRecoveryPointInfo")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["VolumeSizeInBytes"] = args["VolumeSizeInBytes"],
 		["VolumeUsageInBytes"] = args["VolumeUsageInBytes"],
 		["VolumeARN"] = args["VolumeARN"],
 		["VolumeRecoveryPointTime"] = args["VolumeRecoveryPointTime"],
 	}
-	asserts.AssertVolumeRecoveryPointInfo(t)
-	return t
+	asserts.AssertVolumeRecoveryPointInfo(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListGatewaysInput = { ["Marker"] = true, ["Limit"] = true, nil }
@@ -2309,13 +3068,24 @@ end
 -- * Limit [PositiveIntObject] <p>Specifies that the list of gateways returned be limited to the specified number of items.</p>
 -- @return ListGatewaysInput structure as a key-value pair table
 function M.ListGatewaysInput(args)
-	assert(args, "You must provdide an argument table when creating ListGatewaysInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListGatewaysInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Marker"] = args["Marker"],
 		["Limit"] = args["Limit"],
 	}
-	asserts.AssertListGatewaysInput(t)
-	return t
+	asserts.AssertListGatewaysInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.VolumeInfo = { ["VolumeSizeInBytes"] = true, ["VolumeType"] = true, ["VolumeId"] = true, ["VolumeARN"] = true, ["GatewayId"] = true, ["GatewayARN"] = true, nil }
@@ -2346,8 +3116,14 @@ end
 -- * GatewayARN [GatewayARN] 
 -- @return VolumeInfo structure as a key-value pair table
 function M.VolumeInfo(args)
-	assert(args, "You must provdide an argument table when creating VolumeInfo")
-	local t = { 
+	assert(args, "You must provide an argument table when creating VolumeInfo")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["VolumeSizeInBytes"] = args["VolumeSizeInBytes"],
 		["VolumeType"] = args["VolumeType"],
 		["VolumeId"] = args["VolumeId"],
@@ -2355,8 +3131,13 @@ function M.VolumeInfo(args)
 		["GatewayId"] = args["GatewayId"],
 		["GatewayARN"] = args["GatewayARN"],
 	}
-	asserts.AssertVolumeInfo(t)
-	return t
+	asserts.AssertVolumeInfo(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeNFSFileSharesInput = { ["FileShareARNList"] = true, nil }
@@ -2379,12 +3160,23 @@ end
 -- Required key: FileShareARNList
 -- @return DescribeNFSFileSharesInput structure as a key-value pair table
 function M.DescribeNFSFileSharesInput(args)
-	assert(args, "You must provdide an argument table when creating DescribeNFSFileSharesInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeNFSFileSharesInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["FileShareARNList"] = args["FileShareARNList"],
 	}
-	asserts.AssertDescribeNFSFileSharesInput(t)
-	return t
+	asserts.AssertDescribeNFSFileSharesInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListVolumeRecoveryPointsOutput = { ["GatewayARN"] = true, ["VolumeRecoveryPointInfos"] = true, nil }
@@ -2407,13 +3199,24 @@ end
 -- * VolumeRecoveryPointInfos [VolumeRecoveryPointInfos] 
 -- @return ListVolumeRecoveryPointsOutput structure as a key-value pair table
 function M.ListVolumeRecoveryPointsOutput(args)
-	assert(args, "You must provdide an argument table when creating ListVolumeRecoveryPointsOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListVolumeRecoveryPointsOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["GatewayARN"] = args["GatewayARN"],
 		["VolumeRecoveryPointInfos"] = args["VolumeRecoveryPointInfos"],
 	}
-	asserts.AssertListVolumeRecoveryPointsOutput(t)
-	return t
+	asserts.AssertListVolumeRecoveryPointsOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteTapeArchiveInput = { ["TapeARN"] = true, nil }
@@ -2436,12 +3239,23 @@ end
 -- Required key: TapeARN
 -- @return DeleteTapeArchiveInput structure as a key-value pair table
 function M.DeleteTapeArchiveInput(args)
-	assert(args, "You must provdide an argument table when creating DeleteTapeArchiveInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteTapeArchiveInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["TapeARN"] = args["TapeARN"],
 	}
-	asserts.AssertDeleteTapeArchiveInput(t)
-	return t
+	asserts.AssertDeleteTapeArchiveInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ActivateGatewayOutput = { ["GatewayARN"] = true, nil }
@@ -2462,12 +3276,23 @@ end
 -- * GatewayARN [GatewayARN] 
 -- @return ActivateGatewayOutput structure as a key-value pair table
 function M.ActivateGatewayOutput(args)
-	assert(args, "You must provdide an argument table when creating ActivateGatewayOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ActivateGatewayOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["GatewayARN"] = args["GatewayARN"],
 	}
-	asserts.AssertActivateGatewayOutput(t)
-	return t
+	asserts.AssertActivateGatewayOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListVolumesOutput = { ["Marker"] = true, ["GatewayARN"] = true, ["VolumeInfos"] = true, nil }
@@ -2492,14 +3317,25 @@ end
 -- * VolumeInfos [VolumeInfos] 
 -- @return ListVolumesOutput structure as a key-value pair table
 function M.ListVolumesOutput(args)
-	assert(args, "You must provdide an argument table when creating ListVolumesOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListVolumesOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Marker"] = args["Marker"],
 		["GatewayARN"] = args["GatewayARN"],
 		["VolumeInfos"] = args["VolumeInfos"],
 	}
-	asserts.AssertListVolumesOutput(t)
-	return t
+	asserts.AssertListVolumesOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteVolumeInput = { ["VolumeARN"] = true, nil }
@@ -2522,12 +3358,23 @@ end
 -- Required key: VolumeARN
 -- @return DeleteVolumeInput structure as a key-value pair table
 function M.DeleteVolumeInput(args)
-	assert(args, "You must provdide an argument table when creating DeleteVolumeInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteVolumeInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["VolumeARN"] = args["VolumeARN"],
 	}
-	asserts.AssertDeleteVolumeInput(t)
-	return t
+	asserts.AssertDeleteVolumeInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ShutdownGatewayInput = { ["GatewayARN"] = true, nil }
@@ -2550,12 +3397,23 @@ end
 -- Required key: GatewayARN
 -- @return ShutdownGatewayInput structure as a key-value pair table
 function M.ShutdownGatewayInput(args)
-	assert(args, "You must provdide an argument table when creating ShutdownGatewayInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ShutdownGatewayInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["GatewayARN"] = args["GatewayARN"],
 	}
-	asserts.AssertShutdownGatewayInput(t)
-	return t
+	asserts.AssertShutdownGatewayInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteGatewayInput = { ["GatewayARN"] = true, nil }
@@ -2578,12 +3436,23 @@ end
 -- Required key: GatewayARN
 -- @return DeleteGatewayInput structure as a key-value pair table
 function M.DeleteGatewayInput(args)
-	assert(args, "You must provdide an argument table when creating DeleteGatewayInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteGatewayInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["GatewayARN"] = args["GatewayARN"],
 	}
-	asserts.AssertDeleteGatewayInput(t)
-	return t
+	asserts.AssertDeleteGatewayInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdateChapCredentialsInput = { ["TargetARN"] = true, ["SecretToAuthenticateInitiator"] = true, ["InitiatorName"] = true, ["SecretToAuthenticateTarget"] = true, nil }
@@ -2616,15 +3485,26 @@ end
 -- Required key: InitiatorName
 -- @return UpdateChapCredentialsInput structure as a key-value pair table
 function M.UpdateChapCredentialsInput(args)
-	assert(args, "You must provdide an argument table when creating UpdateChapCredentialsInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateChapCredentialsInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["TargetARN"] = args["TargetARN"],
 		["SecretToAuthenticateInitiator"] = args["SecretToAuthenticateInitiator"],
 		["InitiatorName"] = args["InitiatorName"],
 		["SecretToAuthenticateTarget"] = args["SecretToAuthenticateTarget"],
 	}
-	asserts.AssertUpdateChapCredentialsInput(t)
-	return t
+	asserts.AssertUpdateChapCredentialsInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeUploadBufferInput = { ["GatewayARN"] = true, nil }
@@ -2647,12 +3527,23 @@ end
 -- Required key: GatewayARN
 -- @return DescribeUploadBufferInput structure as a key-value pair table
 function M.DescribeUploadBufferInput(args)
-	assert(args, "You must provdide an argument table when creating DescribeUploadBufferInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeUploadBufferInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["GatewayARN"] = args["GatewayARN"],
 	}
-	asserts.AssertDescribeUploadBufferInput(t)
-	return t
+	asserts.AssertDescribeUploadBufferInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListLocalDisksOutput = { ["GatewayARN"] = true, ["Disks"] = true, nil }
@@ -2675,13 +3566,24 @@ end
 -- * Disks [Disks] 
 -- @return ListLocalDisksOutput structure as a key-value pair table
 function M.ListLocalDisksOutput(args)
-	assert(args, "You must provdide an argument table when creating ListLocalDisksOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListLocalDisksOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["GatewayARN"] = args["GatewayARN"],
 		["Disks"] = args["Disks"],
 	}
-	asserts.AssertListLocalDisksOutput(t)
-	return t
+	asserts.AssertListLocalDisksOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GatewayInfo = { ["GatewayId"] = true, ["GatewayARN"] = true, ["GatewayName"] = true, ["GatewayOperationalState"] = true, ["GatewayType"] = true, nil }
@@ -2710,16 +3612,27 @@ end
 -- * GatewayType [GatewayType] <p>The type of the gateway.</p>
 -- @return GatewayInfo structure as a key-value pair table
 function M.GatewayInfo(args)
-	assert(args, "You must provdide an argument table when creating GatewayInfo")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GatewayInfo")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["GatewayId"] = args["GatewayId"],
 		["GatewayARN"] = args["GatewayARN"],
 		["GatewayName"] = args["GatewayName"],
 		["GatewayOperationalState"] = args["GatewayOperationalState"],
 		["GatewayType"] = args["GatewayType"],
 	}
-	asserts.AssertGatewayInfo(t)
-	return t
+	asserts.AssertGatewayInfo(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.FileShareInfo = { ["FileShareARN"] = true, ["GatewayARN"] = true, ["FileShareStatus"] = true, ["FileShareId"] = true, nil }
@@ -2746,15 +3659,26 @@ end
 -- * FileShareId [FileShareId] 
 -- @return FileShareInfo structure as a key-value pair table
 function M.FileShareInfo(args)
-	assert(args, "You must provdide an argument table when creating FileShareInfo")
-	local t = { 
+	assert(args, "You must provide an argument table when creating FileShareInfo")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["FileShareARN"] = args["FileShareARN"],
 		["GatewayARN"] = args["GatewayARN"],
 		["FileShareStatus"] = args["FileShareStatus"],
 		["FileShareId"] = args["FileShareId"],
 	}
-	asserts.AssertFileShareInfo(t)
-	return t
+	asserts.AssertFileShareInfo(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AddTagsToResourceOutput = { ["ResourceARN"] = true, nil }
@@ -2775,12 +3699,23 @@ end
 -- * ResourceARN [ResourceARN] <p>The Amazon Resource Name (ARN) of the resource you want to add tags to.</p>
 -- @return AddTagsToResourceOutput structure as a key-value pair table
 function M.AddTagsToResourceOutput(args)
-	assert(args, "You must provdide an argument table when creating AddTagsToResourceOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AddTagsToResourceOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ResourceARN"] = args["ResourceARN"],
 	}
-	asserts.AssertAddTagsToResourceOutput(t)
-	return t
+	asserts.AssertAddTagsToResourceOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AddUploadBufferOutput = { ["GatewayARN"] = true, nil }
@@ -2801,12 +3736,23 @@ end
 -- * GatewayARN [GatewayARN] 
 -- @return AddUploadBufferOutput structure as a key-value pair table
 function M.AddUploadBufferOutput(args)
-	assert(args, "You must provdide an argument table when creating AddUploadBufferOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AddUploadBufferOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["GatewayARN"] = args["GatewayARN"],
 	}
-	asserts.AssertAddUploadBufferOutput(t)
-	return t
+	asserts.AssertAddUploadBufferOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.TapeInfo = { ["TapeStatus"] = true, ["TapeARN"] = true, ["TapeSizeInBytes"] = true, ["GatewayARN"] = true, ["TapeBarcode"] = true, nil }
@@ -2835,16 +3781,27 @@ end
 -- * TapeBarcode [TapeBarcode] <p>The barcode that identifies a specific virtual tape.</p>
 -- @return TapeInfo structure as a key-value pair table
 function M.TapeInfo(args)
-	assert(args, "You must provdide an argument table when creating TapeInfo")
-	local t = { 
+	assert(args, "You must provide an argument table when creating TapeInfo")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["TapeStatus"] = args["TapeStatus"],
 		["TapeARN"] = args["TapeARN"],
 		["TapeSizeInBytes"] = args["TapeSizeInBytes"],
 		["GatewayARN"] = args["GatewayARN"],
 		["TapeBarcode"] = args["TapeBarcode"],
 	}
-	asserts.AssertTapeInfo(t)
-	return t
+	asserts.AssertTapeInfo(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteTapeArchiveOutput = { ["TapeARN"] = true, nil }
@@ -2865,12 +3822,23 @@ end
 -- * TapeARN [TapeARN] <p>The Amazon Resource Name (ARN) of the virtual tape that was deleted from the virtual tape shelf (VTS).</p>
 -- @return DeleteTapeArchiveOutput structure as a key-value pair table
 function M.DeleteTapeArchiveOutput(args)
-	assert(args, "You must provdide an argument table when creating DeleteTapeArchiveOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteTapeArchiveOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["TapeARN"] = args["TapeARN"],
 	}
-	asserts.AssertDeleteTapeArchiveOutput(t)
-	return t
+	asserts.AssertDeleteTapeArchiveOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteChapCredentialsOutput = { ["TargetARN"] = true, ["InitiatorName"] = true, nil }
@@ -2893,13 +3861,24 @@ end
 -- * InitiatorName [IqnName] <p>The iSCSI initiator that connects to the target.</p>
 -- @return DeleteChapCredentialsOutput structure as a key-value pair table
 function M.DeleteChapCredentialsOutput(args)
-	assert(args, "You must provdide an argument table when creating DeleteChapCredentialsOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteChapCredentialsOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["TargetARN"] = args["TargetARN"],
 		["InitiatorName"] = args["InitiatorName"],
 	}
-	asserts.AssertDeleteChapCredentialsOutput(t)
-	return t
+	asserts.AssertDeleteChapCredentialsOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.RefreshCacheInput = { ["FileShareARN"] = true, nil }
@@ -2922,12 +3901,23 @@ end
 -- Required key: FileShareARN
 -- @return RefreshCacheInput structure as a key-value pair table
 function M.RefreshCacheInput(args)
-	assert(args, "You must provdide an argument table when creating RefreshCacheInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating RefreshCacheInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["FileShareARN"] = args["FileShareARN"],
 	}
-	asserts.AssertRefreshCacheInput(t)
-	return t
+	asserts.AssertRefreshCacheInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ActivateGatewayInput = { ["GatewayName"] = true, ["GatewayType"] = true, ["TapeDriveType"] = true, ["MediumChangerType"] = true, ["GatewayTimezone"] = true, ["GatewayRegion"] = true, ["ActivationKey"] = true, nil }
@@ -2968,8 +3958,14 @@ end
 -- Required key: GatewayRegion
 -- @return ActivateGatewayInput structure as a key-value pair table
 function M.ActivateGatewayInput(args)
-	assert(args, "You must provdide an argument table when creating ActivateGatewayInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ActivateGatewayInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["GatewayName"] = args["GatewayName"],
 		["GatewayType"] = args["GatewayType"],
 		["TapeDriveType"] = args["TapeDriveType"],
@@ -2978,8 +3974,13 @@ function M.ActivateGatewayInput(args)
 		["GatewayRegion"] = args["GatewayRegion"],
 		["ActivationKey"] = args["ActivationKey"],
 	}
-	asserts.AssertActivateGatewayInput(t)
-	return t
+	asserts.AssertActivateGatewayInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeCacheInput = { ["GatewayARN"] = true, nil }
@@ -3002,12 +4003,23 @@ end
 -- Required key: GatewayARN
 -- @return DescribeCacheInput structure as a key-value pair table
 function M.DescribeCacheInput(args)
-	assert(args, "You must provdide an argument table when creating DescribeCacheInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeCacheInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["GatewayARN"] = args["GatewayARN"],
 	}
-	asserts.AssertDescribeCacheInput(t)
-	return t
+	asserts.AssertDescribeCacheInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidGatewayRequestException = { ["message"] = true, ["error"] = true, nil }
@@ -3030,13 +4042,24 @@ end
 -- * error [StorageGatewayError] <p>A <a>StorageGatewayError</a> that provides more detail about the cause of the error.</p>
 -- @return InvalidGatewayRequestException structure as a key-value pair table
 function M.InvalidGatewayRequestException(args)
-	assert(args, "You must provdide an argument table when creating InvalidGatewayRequestException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidGatewayRequestException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 		["error"] = args["error"],
 	}
-	asserts.AssertInvalidGatewayRequestException(t)
-	return t
+	asserts.AssertInvalidGatewayRequestException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteVolumeOutput = { ["VolumeARN"] = true, nil }
@@ -3057,12 +4080,23 @@ end
 -- * VolumeARN [VolumeARN] <p>The Amazon Resource Name (ARN) of the storage volume that was deleted. It is the same ARN you provided in the request.</p>
 -- @return DeleteVolumeOutput structure as a key-value pair table
 function M.DeleteVolumeOutput(args)
-	assert(args, "You must provdide an argument table when creating DeleteVolumeOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteVolumeOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["VolumeARN"] = args["VolumeARN"],
 	}
-	asserts.AssertDeleteVolumeOutput(t)
-	return t
+	asserts.AssertDeleteVolumeOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.RetrieveTapeArchiveInput = { ["GatewayARN"] = true, ["TapeARN"] = true, nil }
@@ -3089,13 +4123,24 @@ end
 -- Required key: GatewayARN
 -- @return RetrieveTapeArchiveInput structure as a key-value pair table
 function M.RetrieveTapeArchiveInput(args)
-	assert(args, "You must provdide an argument table when creating RetrieveTapeArchiveInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating RetrieveTapeArchiveInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["GatewayARN"] = args["GatewayARN"],
 		["TapeARN"] = args["TapeARN"],
 	}
-	asserts.AssertRetrieveTapeArchiveInput(t)
-	return t
+	asserts.AssertRetrieveTapeArchiveInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeCachediSCSIVolumesInput = { ["VolumeARNs"] = true, nil }
@@ -3118,12 +4163,23 @@ end
 -- Required key: VolumeARNs
 -- @return DescribeCachediSCSIVolumesInput structure as a key-value pair table
 function M.DescribeCachediSCSIVolumesInput(args)
-	assert(args, "You must provdide an argument table when creating DescribeCachediSCSIVolumesInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeCachediSCSIVolumesInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["VolumeARNs"] = args["VolumeARNs"],
 	}
-	asserts.AssertDescribeCachediSCSIVolumesInput(t)
-	return t
+	asserts.AssertDescribeCachediSCSIVolumesInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdateGatewayInformationOutput = { ["GatewayARN"] = true, ["GatewayName"] = true, nil }
@@ -3146,13 +4202,24 @@ end
 -- * GatewayName [string] 
 -- @return UpdateGatewayInformationOutput structure as a key-value pair table
 function M.UpdateGatewayInformationOutput(args)
-	assert(args, "You must provdide an argument table when creating UpdateGatewayInformationOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateGatewayInformationOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["GatewayARN"] = args["GatewayARN"],
 		["GatewayName"] = args["GatewayName"],
 	}
-	asserts.AssertUpdateGatewayInformationOutput(t)
-	return t
+	asserts.AssertUpdateGatewayInformationOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListFileSharesInput = { ["Marker"] = true, ["GatewayARN"] = true, ["Limit"] = true, nil }
@@ -3177,14 +4244,25 @@ end
 -- * Limit [PositiveIntObject] <p>The maximum number of file shares to return in the response. The value must be an integer with a value greater than zero. Optional.</p>
 -- @return ListFileSharesInput structure as a key-value pair table
 function M.ListFileSharesInput(args)
-	assert(args, "You must provdide an argument table when creating ListFileSharesInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListFileSharesInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Marker"] = args["Marker"],
 		["GatewayARN"] = args["GatewayARN"],
 		["Limit"] = args["Limit"],
 	}
-	asserts.AssertListFileSharesInput(t)
-	return t
+	asserts.AssertListFileSharesInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdateGatewaySoftwareNowOutput = { ["GatewayARN"] = true, nil }
@@ -3205,12 +4283,23 @@ end
 -- * GatewayARN [GatewayARN] 
 -- @return UpdateGatewaySoftwareNowOutput structure as a key-value pair table
 function M.UpdateGatewaySoftwareNowOutput(args)
-	assert(args, "You must provdide an argument table when creating UpdateGatewaySoftwareNowOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateGatewaySoftwareNowOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["GatewayARN"] = args["GatewayARN"],
 	}
-	asserts.AssertUpdateGatewaySoftwareNowOutput(t)
-	return t
+	asserts.AssertUpdateGatewaySoftwareNowOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.RemoveTagsFromResourceOutput = { ["ResourceARN"] = true, nil }
@@ -3231,12 +4320,23 @@ end
 -- * ResourceARN [ResourceARN] <p>The Amazon Resource Name (ARN) of the resource that the tags were removed from.</p>
 -- @return RemoveTagsFromResourceOutput structure as a key-value pair table
 function M.RemoveTagsFromResourceOutput(args)
-	assert(args, "You must provdide an argument table when creating RemoveTagsFromResourceOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating RemoveTagsFromResourceOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ResourceARN"] = args["ResourceARN"],
 	}
-	asserts.AssertRemoveTagsFromResourceOutput(t)
-	return t
+	asserts.AssertRemoveTagsFromResourceOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteBandwidthRateLimitOutput = { ["GatewayARN"] = true, nil }
@@ -3257,12 +4357,23 @@ end
 -- * GatewayARN [GatewayARN] 
 -- @return DeleteBandwidthRateLimitOutput structure as a key-value pair table
 function M.DeleteBandwidthRateLimitOutput(args)
-	assert(args, "You must provdide an argument table when creating DeleteBandwidthRateLimitOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteBandwidthRateLimitOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["GatewayARN"] = args["GatewayARN"],
 	}
-	asserts.AssertDeleteBandwidthRateLimitOutput(t)
-	return t
+	asserts.AssertDeleteBandwidthRateLimitOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdateMaintenanceStartTimeOutput = { ["GatewayARN"] = true, nil }
@@ -3283,12 +4394,23 @@ end
 -- * GatewayARN [GatewayARN] 
 -- @return UpdateMaintenanceStartTimeOutput structure as a key-value pair table
 function M.UpdateMaintenanceStartTimeOutput(args)
-	assert(args, "You must provdide an argument table when creating UpdateMaintenanceStartTimeOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateMaintenanceStartTimeOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["GatewayARN"] = args["GatewayARN"],
 	}
-	asserts.AssertUpdateMaintenanceStartTimeOutput(t)
-	return t
+	asserts.AssertUpdateMaintenanceStartTimeOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateSnapshotFromVolumeRecoveryPointInput = { ["SnapshotDescription"] = true, ["VolumeARN"] = true, nil }
@@ -3315,13 +4437,24 @@ end
 -- Required key: SnapshotDescription
 -- @return CreateSnapshotFromVolumeRecoveryPointInput structure as a key-value pair table
 function M.CreateSnapshotFromVolumeRecoveryPointInput(args)
-	assert(args, "You must provdide an argument table when creating CreateSnapshotFromVolumeRecoveryPointInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateSnapshotFromVolumeRecoveryPointInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["SnapshotDescription"] = args["SnapshotDescription"],
 		["VolumeARN"] = args["VolumeARN"],
 	}
-	asserts.AssertCreateSnapshotFromVolumeRecoveryPointInput(t)
-	return t
+	asserts.AssertCreateSnapshotFromVolumeRecoveryPointInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.TapeArchive = { ["TapeCreatedDate"] = true, ["TapeUsedInBytes"] = true, ["TapeARN"] = true, ["CompletionTime"] = true, ["TapeSizeInBytes"] = true, ["TapeBarcode"] = true, ["RetrievedTo"] = true, ["TapeStatus"] = true, nil }
@@ -3356,8 +4489,14 @@ end
 -- * TapeStatus [TapeArchiveStatus] <p>The current state of the archived virtual tape.</p>
 -- @return TapeArchive structure as a key-value pair table
 function M.TapeArchive(args)
-	assert(args, "You must provdide an argument table when creating TapeArchive")
-	local t = { 
+	assert(args, "You must provide an argument table when creating TapeArchive")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["TapeCreatedDate"] = args["TapeCreatedDate"],
 		["TapeUsedInBytes"] = args["TapeUsedInBytes"],
 		["TapeARN"] = args["TapeARN"],
@@ -3367,8 +4506,13 @@ function M.TapeArchive(args)
 		["RetrievedTo"] = args["RetrievedTo"],
 		["TapeStatus"] = args["TapeStatus"],
 	}
-	asserts.AssertTapeArchive(t)
-	return t
+	asserts.AssertTapeArchive(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.StartGatewayInput = { ["GatewayARN"] = true, nil }
@@ -3391,12 +4535,23 @@ end
 -- Required key: GatewayARN
 -- @return StartGatewayInput structure as a key-value pair table
 function M.StartGatewayInput(args)
-	assert(args, "You must provdide an argument table when creating StartGatewayInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating StartGatewayInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["GatewayARN"] = args["GatewayARN"],
 	}
-	asserts.AssertStartGatewayInput(t)
-	return t
+	asserts.AssertStartGatewayInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeNFSFileSharesOutput = { ["NFSFileShareInfoList"] = true, nil }
@@ -3417,12 +4572,23 @@ end
 -- * NFSFileShareInfoList [NFSFileShareInfoList] <p>An array containing a description for each requested file share. </p>
 -- @return DescribeNFSFileSharesOutput structure as a key-value pair table
 function M.DescribeNFSFileSharesOutput(args)
-	assert(args, "You must provdide an argument table when creating DescribeNFSFileSharesOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeNFSFileSharesOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NFSFileShareInfoList"] = args["NFSFileShareInfoList"],
 	}
-	asserts.AssertDescribeNFSFileSharesOutput(t)
-	return t
+	asserts.AssertDescribeNFSFileSharesOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateNFSFileShareOutput = { ["FileShareARN"] = true, nil }
@@ -3443,12 +4609,23 @@ end
 -- * FileShareARN [FileShareARN] <p>The Amazon Resource Name (ARN) of the newly created file share. </p>
 -- @return CreateNFSFileShareOutput structure as a key-value pair table
 function M.CreateNFSFileShareOutput(args)
-	assert(args, "You must provdide an argument table when creating CreateNFSFileShareOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateNFSFileShareOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["FileShareARN"] = args["FileShareARN"],
 	}
-	asserts.AssertCreateNFSFileShareOutput(t)
-	return t
+	asserts.AssertCreateNFSFileShareOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.VTLDevice = { ["VTLDeviceType"] = true, ["VTLDeviceProductIdentifier"] = true, ["DeviceiSCSIAttributes"] = true, ["VTLDeviceARN"] = true, ["VTLDeviceVendor"] = true, nil }
@@ -3477,16 +4654,27 @@ end
 -- * VTLDeviceVendor [VTLDeviceVendor] 
 -- @return VTLDevice structure as a key-value pair table
 function M.VTLDevice(args)
-	assert(args, "You must provdide an argument table when creating VTLDevice")
-	local t = { 
+	assert(args, "You must provide an argument table when creating VTLDevice")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["VTLDeviceType"] = args["VTLDeviceType"],
 		["VTLDeviceProductIdentifier"] = args["VTLDeviceProductIdentifier"],
 		["DeviceiSCSIAttributes"] = args["DeviceiSCSIAttributes"],
 		["VTLDeviceARN"] = args["VTLDeviceARN"],
 		["VTLDeviceVendor"] = args["VTLDeviceVendor"],
 	}
-	asserts.AssertVTLDevice(t)
-	return t
+	asserts.AssertVTLDevice(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AddUploadBufferInput = { ["GatewayARN"] = true, ["DiskIds"] = true, nil }
@@ -3513,13 +4701,24 @@ end
 -- Required key: DiskIds
 -- @return AddUploadBufferInput structure as a key-value pair table
 function M.AddUploadBufferInput(args)
-	assert(args, "You must provdide an argument table when creating AddUploadBufferInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AddUploadBufferInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["GatewayARN"] = args["GatewayARN"],
 		["DiskIds"] = args["DiskIds"],
 	}
-	asserts.AssertAddUploadBufferInput(t)
-	return t
+	asserts.AssertAddUploadBufferInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CancelRetrievalInput = { ["GatewayARN"] = true, ["TapeARN"] = true, nil }
@@ -3546,13 +4745,24 @@ end
 -- Required key: TapeARN
 -- @return CancelRetrievalInput structure as a key-value pair table
 function M.CancelRetrievalInput(args)
-	assert(args, "You must provdide an argument table when creating CancelRetrievalInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CancelRetrievalInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["GatewayARN"] = args["GatewayARN"],
 		["TapeARN"] = args["TapeARN"],
 	}
-	asserts.AssertCancelRetrievalInput(t)
-	return t
+	asserts.AssertCancelRetrievalInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListGatewaysOutput = { ["Marker"] = true, ["Gateways"] = true, nil }
@@ -3575,13 +4785,24 @@ end
 -- * Gateways [Gateways] 
 -- @return ListGatewaysOutput structure as a key-value pair table
 function M.ListGatewaysOutput(args)
-	assert(args, "You must provdide an argument table when creating ListGatewaysOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListGatewaysOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Marker"] = args["Marker"],
 		["Gateways"] = args["Gateways"],
 	}
-	asserts.AssertListGatewaysOutput(t)
-	return t
+	asserts.AssertListGatewaysOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateTapeWithBarcodeInput = { ["GatewayARN"] = true, ["TapeSizeInBytes"] = true, ["TapeBarcode"] = true, nil }
@@ -3612,14 +4833,25 @@ end
 -- Required key: TapeBarcode
 -- @return CreateTapeWithBarcodeInput structure as a key-value pair table
 function M.CreateTapeWithBarcodeInput(args)
-	assert(args, "You must provdide an argument table when creating CreateTapeWithBarcodeInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateTapeWithBarcodeInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["GatewayARN"] = args["GatewayARN"],
 		["TapeSizeInBytes"] = args["TapeSizeInBytes"],
 		["TapeBarcode"] = args["TapeBarcode"],
 	}
-	asserts.AssertCreateTapeWithBarcodeInput(t)
-	return t
+	asserts.AssertCreateTapeWithBarcodeInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeWorkingStorageInput = { ["GatewayARN"] = true, nil }
@@ -3642,12 +4874,23 @@ end
 -- Required key: GatewayARN
 -- @return DescribeWorkingStorageInput structure as a key-value pair table
 function M.DescribeWorkingStorageInput(args)
-	assert(args, "You must provdide an argument table when creating DescribeWorkingStorageInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeWorkingStorageInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["GatewayARN"] = args["GatewayARN"],
 	}
-	asserts.AssertDescribeWorkingStorageInput(t)
-	return t
+	asserts.AssertDescribeWorkingStorageInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdateSnapshotScheduleInput = { ["RecurrenceInHours"] = true, ["StartAt"] = true, ["Description"] = true, ["VolumeARN"] = true, nil }
@@ -3680,15 +4923,26 @@ end
 -- Required key: RecurrenceInHours
 -- @return UpdateSnapshotScheduleInput structure as a key-value pair table
 function M.UpdateSnapshotScheduleInput(args)
-	assert(args, "You must provdide an argument table when creating UpdateSnapshotScheduleInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateSnapshotScheduleInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["RecurrenceInHours"] = args["RecurrenceInHours"],
 		["StartAt"] = args["StartAt"],
 		["Description"] = args["Description"],
 		["VolumeARN"] = args["VolumeARN"],
 	}
-	asserts.AssertUpdateSnapshotScheduleInput(t)
-	return t
+	asserts.AssertUpdateSnapshotScheduleInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeviceiSCSIAttributes = { ["TargetARN"] = true, ["NetworkInterfaceId"] = true, ["ChapEnabled"] = true, ["NetworkInterfacePort"] = true, nil }
@@ -3715,15 +4969,26 @@ end
 -- * NetworkInterfacePort [integer] <p>The port used to communicate with iSCSI VTL device targets.</p>
 -- @return DeviceiSCSIAttributes structure as a key-value pair table
 function M.DeviceiSCSIAttributes(args)
-	assert(args, "You must provdide an argument table when creating DeviceiSCSIAttributes")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeviceiSCSIAttributes")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["TargetARN"] = args["TargetARN"],
 		["NetworkInterfaceId"] = args["NetworkInterfaceId"],
 		["ChapEnabled"] = args["ChapEnabled"],
 		["NetworkInterfacePort"] = args["NetworkInterfacePort"],
 	}
-	asserts.AssertDeviceiSCSIAttributes(t)
-	return t
+	asserts.AssertDeviceiSCSIAttributes(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeChapCredentialsOutput = { ["ChapCredentials"] = true, nil }
@@ -3744,12 +5009,23 @@ end
 -- * ChapCredentials [ChapCredentials] <p>An array of <a>ChapInfo</a> objects that represent CHAP credentials. Each object in the array contains CHAP credential information for one target-initiator pair. If no CHAP credentials are set, an empty array is returned. CHAP credential information is provided in a JSON object with the following fields:</p> <ul> <li> <p> <b>InitiatorName</b>: The iSCSI initiator that connects to the target.</p> </li> <li> <p> <b>SecretToAuthenticateInitiator</b>: The secret key that the initiator (for example, the Windows client) must provide to participate in mutual CHAP with the target.</p> </li> <li> <p> <b>SecretToAuthenticateTarget</b>: The secret key that the target must provide to participate in mutual CHAP with the initiator (e.g. Windows client).</p> </li> <li> <p> <b>TargetARN</b>: The Amazon Resource Name (ARN) of the storage volume.</p> </li> </ul>
 -- @return DescribeChapCredentialsOutput structure as a key-value pair table
 function M.DescribeChapCredentialsOutput(args)
-	assert(args, "You must provdide an argument table when creating DescribeChapCredentialsOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeChapCredentialsOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ChapCredentials"] = args["ChapCredentials"],
 	}
-	asserts.AssertDescribeChapCredentialsOutput(t)
-	return t
+	asserts.AssertDescribeChapCredentialsOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ServiceUnavailableError = { ["message"] = true, ["error"] = true, nil }
@@ -3772,13 +5048,24 @@ end
 -- * error [StorageGatewayError] <p>A <a>StorageGatewayError</a> that provides more information about the cause of the error.</p>
 -- @return ServiceUnavailableError structure as a key-value pair table
 function M.ServiceUnavailableError(args)
-	assert(args, "You must provdide an argument table when creating ServiceUnavailableError")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ServiceUnavailableError")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 		["error"] = args["error"],
 	}
-	asserts.AssertServiceUnavailableError(t)
-	return t
+	asserts.AssertServiceUnavailableError(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdateNFSFileShareOutput = { ["FileShareARN"] = true, nil }
@@ -3799,12 +5086,23 @@ end
 -- * FileShareARN [FileShareARN] <p>The Amazon Resource Name (ARN) of the updated file share. </p>
 -- @return UpdateNFSFileShareOutput structure as a key-value pair table
 function M.UpdateNFSFileShareOutput(args)
-	assert(args, "You must provdide an argument table when creating UpdateNFSFileShareOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateNFSFileShareOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["FileShareARN"] = args["FileShareARN"],
 	}
-	asserts.AssertUpdateNFSFileShareOutput(t)
-	return t
+	asserts.AssertUpdateNFSFileShareOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.NFSFileShareDefaults = { ["OwnerId"] = true, ["DirectoryMode"] = true, ["GroupId"] = true, ["FileMode"] = true, nil }
@@ -3831,15 +5129,26 @@ end
 -- * FileMode [PermissionMode] <p>The Unix file mode in the form "nnnn". For example, "0666" represents the default file mode inside the file share. The default value is 0666. </p>
 -- @return NFSFileShareDefaults structure as a key-value pair table
 function M.NFSFileShareDefaults(args)
-	assert(args, "You must provdide an argument table when creating NFSFileShareDefaults")
-	local t = { 
+	assert(args, "You must provide an argument table when creating NFSFileShareDefaults")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["OwnerId"] = args["OwnerId"],
 		["DirectoryMode"] = args["DirectoryMode"],
 		["GroupId"] = args["GroupId"],
 		["FileMode"] = args["FileMode"],
 	}
-	asserts.AssertNFSFileShareDefaults(t)
-	return t
+	asserts.AssertNFSFileShareDefaults(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CancelArchivalInput = { ["GatewayARN"] = true, ["TapeARN"] = true, nil }
@@ -3866,13 +5175,24 @@ end
 -- Required key: TapeARN
 -- @return CancelArchivalInput structure as a key-value pair table
 function M.CancelArchivalInput(args)
-	assert(args, "You must provdide an argument table when creating CancelArchivalInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CancelArchivalInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["GatewayARN"] = args["GatewayARN"],
 		["TapeARN"] = args["TapeARN"],
 	}
-	asserts.AssertCancelArchivalInput(t)
-	return t
+	asserts.AssertCancelArchivalInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AddCacheOutput = { ["GatewayARN"] = true, nil }
@@ -3893,12 +5213,23 @@ end
 -- * GatewayARN [GatewayARN] 
 -- @return AddCacheOutput structure as a key-value pair table
 function M.AddCacheOutput(args)
-	assert(args, "You must provdide an argument table when creating AddCacheOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AddCacheOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["GatewayARN"] = args["GatewayARN"],
 	}
-	asserts.AssertAddCacheOutput(t)
-	return t
+	asserts.AssertAddCacheOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeStorediSCSIVolumesInput = { ["VolumeARNs"] = true, nil }
@@ -3921,12 +5252,23 @@ end
 -- Required key: VolumeARNs
 -- @return DescribeStorediSCSIVolumesInput structure as a key-value pair table
 function M.DescribeStorediSCSIVolumesInput(args)
-	assert(args, "You must provdide an argument table when creating DescribeStorediSCSIVolumesInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeStorediSCSIVolumesInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["VolumeARNs"] = args["VolumeARNs"],
 	}
-	asserts.AssertDescribeStorediSCSIVolumesInput(t)
-	return t
+	asserts.AssertDescribeStorediSCSIVolumesInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeCacheOutput = { ["CacheUsedPercentage"] = true, ["CacheMissPercentage"] = true, ["CacheDirtyPercentage"] = true, ["CacheHitPercentage"] = true, ["CacheAllocatedInBytes"] = true, ["GatewayARN"] = true, ["DiskIds"] = true, nil }
@@ -3959,8 +5301,14 @@ end
 -- * DiskIds [DiskIds] 
 -- @return DescribeCacheOutput structure as a key-value pair table
 function M.DescribeCacheOutput(args)
-	assert(args, "You must provdide an argument table when creating DescribeCacheOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeCacheOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["CacheUsedPercentage"] = args["CacheUsedPercentage"],
 		["CacheMissPercentage"] = args["CacheMissPercentage"],
 		["CacheDirtyPercentage"] = args["CacheDirtyPercentage"],
@@ -3969,8 +5317,13 @@ function M.DescribeCacheOutput(args)
 		["GatewayARN"] = args["GatewayARN"],
 		["DiskIds"] = args["DiskIds"],
 	}
-	asserts.AssertDescribeCacheOutput(t)
-	return t
+	asserts.AssertDescribeCacheOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateTapeWithBarcodeOutput = { ["TapeARN"] = true, nil }
@@ -3991,12 +5344,23 @@ end
 -- * TapeARN [TapeARN] <p>A unique Amazon Resource Name (ARN) that represents the virtual tape that was created.</p>
 -- @return CreateTapeWithBarcodeOutput structure as a key-value pair table
 function M.CreateTapeWithBarcodeOutput(args)
-	assert(args, "You must provdide an argument table when creating CreateTapeWithBarcodeOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateTapeWithBarcodeOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["TapeARN"] = args["TapeARN"],
 	}
-	asserts.AssertCreateTapeWithBarcodeOutput(t)
-	return t
+	asserts.AssertCreateTapeWithBarcodeOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeTapesOutput = { ["Marker"] = true, ["Tapes"] = true, nil }
@@ -4019,13 +5383,24 @@ end
 -- * Tapes [Tapes] <p>An array of virtual tape descriptions.</p>
 -- @return DescribeTapesOutput structure as a key-value pair table
 function M.DescribeTapesOutput(args)
-	assert(args, "You must provdide an argument table when creating DescribeTapesOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeTapesOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Marker"] = args["Marker"],
 		["Tapes"] = args["Tapes"],
 	}
-	asserts.AssertDescribeTapesOutput(t)
-	return t
+	asserts.AssertDescribeTapesOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdateMaintenanceStartTimeInput = { ["HourOfDay"] = true, ["GatewayARN"] = true, ["DayOfWeek"] = true, ["MinuteOfHour"] = true, nil }
@@ -4060,15 +5435,26 @@ end
 -- Required key: DayOfWeek
 -- @return UpdateMaintenanceStartTimeInput structure as a key-value pair table
 function M.UpdateMaintenanceStartTimeInput(args)
-	assert(args, "You must provdide an argument table when creating UpdateMaintenanceStartTimeInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateMaintenanceStartTimeInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["HourOfDay"] = args["HourOfDay"],
 		["GatewayARN"] = args["GatewayARN"],
 		["DayOfWeek"] = args["DayOfWeek"],
 		["MinuteOfHour"] = args["MinuteOfHour"],
 	}
-	asserts.AssertUpdateMaintenanceStartTimeInput(t)
-	return t
+	asserts.AssertUpdateMaintenanceStartTimeInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeTapeArchivesOutput = { ["Marker"] = true, ["TapeArchives"] = true, nil }
@@ -4091,13 +5477,24 @@ end
 -- * TapeArchives [TapeArchives] <p>An array of virtual tape objects in the virtual tape shelf (VTS). The description includes of the Amazon Resource Name(ARN) of the virtual tapes. The information returned includes the Amazon Resource Names (ARNs) of the tapes, size of the tapes, status of the tapes, progress of the description and tape barcode.</p>
 -- @return DescribeTapeArchivesOutput structure as a key-value pair table
 function M.DescribeTapeArchivesOutput(args)
-	assert(args, "You must provdide an argument table when creating DescribeTapeArchivesOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeTapeArchivesOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Marker"] = args["Marker"],
 		["TapeArchives"] = args["TapeArchives"],
 	}
-	asserts.AssertDescribeTapeArchivesOutput(t)
-	return t
+	asserts.AssertDescribeTapeArchivesOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteTapeOutput = { ["TapeARN"] = true, nil }
@@ -4118,12 +5515,23 @@ end
 -- * TapeARN [TapeARN] <p>The Amazon Resource Name (ARN) of the deleted virtual tape.</p>
 -- @return DeleteTapeOutput structure as a key-value pair table
 function M.DeleteTapeOutput(args)
-	assert(args, "You must provdide an argument table when creating DeleteTapeOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteTapeOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["TapeARN"] = args["TapeARN"],
 	}
-	asserts.AssertDeleteTapeOutput(t)
-	return t
+	asserts.AssertDeleteTapeOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.StartGatewayOutput = { ["GatewayARN"] = true, nil }
@@ -4144,12 +5552,23 @@ end
 -- * GatewayARN [GatewayARN] 
 -- @return StartGatewayOutput structure as a key-value pair table
 function M.StartGatewayOutput(args)
-	assert(args, "You must provdide an argument table when creating StartGatewayOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating StartGatewayOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["GatewayARN"] = args["GatewayARN"],
 	}
-	asserts.AssertStartGatewayOutput(t)
-	return t
+	asserts.AssertStartGatewayOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeBandwidthRateLimitInput = { ["GatewayARN"] = true, nil }
@@ -4172,12 +5591,23 @@ end
 -- Required key: GatewayARN
 -- @return DescribeBandwidthRateLimitInput structure as a key-value pair table
 function M.DescribeBandwidthRateLimitInput(args)
-	assert(args, "You must provdide an argument table when creating DescribeBandwidthRateLimitInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeBandwidthRateLimitInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["GatewayARN"] = args["GatewayARN"],
 	}
-	asserts.AssertDescribeBandwidthRateLimitInput(t)
-	return t
+	asserts.AssertDescribeBandwidthRateLimitInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateSnapshotFromVolumeRecoveryPointOutput = { ["SnapshotId"] = true, ["VolumeARN"] = true, ["VolumeRecoveryPointTime"] = true, nil }
@@ -4202,14 +5632,25 @@ end
 -- * VolumeRecoveryPointTime [string] 
 -- @return CreateSnapshotFromVolumeRecoveryPointOutput structure as a key-value pair table
 function M.CreateSnapshotFromVolumeRecoveryPointOutput(args)
-	assert(args, "You must provdide an argument table when creating CreateSnapshotFromVolumeRecoveryPointOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateSnapshotFromVolumeRecoveryPointOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["SnapshotId"] = args["SnapshotId"],
 		["VolumeARN"] = args["VolumeARN"],
 		["VolumeRecoveryPointTime"] = args["VolumeRecoveryPointTime"],
 	}
-	asserts.AssertCreateSnapshotFromVolumeRecoveryPointOutput(t)
-	return t
+	asserts.AssertCreateSnapshotFromVolumeRecoveryPointOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.NetworkInterface = { ["Ipv4Address"] = true, ["MacAddress"] = true, ["Ipv6Address"] = true, nil }
@@ -4234,14 +5675,25 @@ end
 -- * Ipv6Address [string] <p>The Internet Protocol version 6 (IPv6) address of the interface. <i>Currently not supported</i>.</p>
 -- @return NetworkInterface structure as a key-value pair table
 function M.NetworkInterface(args)
-	assert(args, "You must provdide an argument table when creating NetworkInterface")
-	local t = { 
+	assert(args, "You must provide an argument table when creating NetworkInterface")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Ipv4Address"] = args["Ipv4Address"],
 		["MacAddress"] = args["MacAddress"],
 		["Ipv6Address"] = args["Ipv6Address"],
 	}
-	asserts.AssertNetworkInterface(t)
-	return t
+	asserts.AssertNetworkInterface(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteGatewayOutput = { ["GatewayARN"] = true, nil }
@@ -4262,12 +5714,23 @@ end
 -- * GatewayARN [GatewayARN] 
 -- @return DeleteGatewayOutput structure as a key-value pair table
 function M.DeleteGatewayOutput(args)
-	assert(args, "You must provdide an argument table when creating DeleteGatewayOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteGatewayOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["GatewayARN"] = args["GatewayARN"],
 	}
-	asserts.AssertDeleteGatewayOutput(t)
-	return t
+	asserts.AssertDeleteGatewayOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdateVTLDeviceTypeInput = { ["DeviceType"] = true, ["VTLDeviceARN"] = true, nil }
@@ -4294,13 +5757,24 @@ end
 -- Required key: DeviceType
 -- @return UpdateVTLDeviceTypeInput structure as a key-value pair table
 function M.UpdateVTLDeviceTypeInput(args)
-	assert(args, "You must provdide an argument table when creating UpdateVTLDeviceTypeInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateVTLDeviceTypeInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DeviceType"] = args["DeviceType"],
 		["VTLDeviceARN"] = args["VTLDeviceARN"],
 	}
-	asserts.AssertUpdateVTLDeviceTypeInput(t)
-	return t
+	asserts.AssertUpdateVTLDeviceTypeInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeWorkingStorageOutput = { ["GatewayARN"] = true, ["DiskIds"] = true, ["WorkingStorageAllocatedInBytes"] = true, ["WorkingStorageUsedInBytes"] = true, nil }
@@ -4327,15 +5801,26 @@ end
 -- * WorkingStorageUsedInBytes [long] <p>The total working storage in bytes in use by the gateway. If no working storage is configured for the gateway, this field returns 0.</p>
 -- @return DescribeWorkingStorageOutput structure as a key-value pair table
 function M.DescribeWorkingStorageOutput(args)
-	assert(args, "You must provdide an argument table when creating DescribeWorkingStorageOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeWorkingStorageOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["GatewayARN"] = args["GatewayARN"],
 		["DiskIds"] = args["DiskIds"],
 		["WorkingStorageAllocatedInBytes"] = args["WorkingStorageAllocatedInBytes"],
 		["WorkingStorageUsedInBytes"] = args["WorkingStorageUsedInBytes"],
 	}
-	asserts.AssertDescribeWorkingStorageOutput(t)
-	return t
+	asserts.AssertDescribeWorkingStorageOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeSnapshotScheduleOutput = { ["RecurrenceInHours"] = true, ["StartAt"] = true, ["Description"] = true, ["VolumeARN"] = true, ["Timezone"] = true, nil }
@@ -4364,16 +5849,27 @@ end
 -- * Timezone [GatewayTimezone] 
 -- @return DescribeSnapshotScheduleOutput structure as a key-value pair table
 function M.DescribeSnapshotScheduleOutput(args)
-	assert(args, "You must provdide an argument table when creating DescribeSnapshotScheduleOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeSnapshotScheduleOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["RecurrenceInHours"] = args["RecurrenceInHours"],
 		["StartAt"] = args["StartAt"],
 		["Description"] = args["Description"],
 		["VolumeARN"] = args["VolumeARN"],
 		["Timezone"] = args["Timezone"],
 	}
-	asserts.AssertDescribeSnapshotScheduleOutput(t)
-	return t
+	asserts.AssertDescribeSnapshotScheduleOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateSnapshotInput = { ["SnapshotDescription"] = true, ["VolumeARN"] = true, nil }
@@ -4400,13 +5896,24 @@ end
 -- Required key: SnapshotDescription
 -- @return CreateSnapshotInput structure as a key-value pair table
 function M.CreateSnapshotInput(args)
-	assert(args, "You must provdide an argument table when creating CreateSnapshotInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateSnapshotInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["SnapshotDescription"] = args["SnapshotDescription"],
 		["VolumeARN"] = args["VolumeARN"],
 	}
-	asserts.AssertCreateSnapshotInput(t)
-	return t
+	asserts.AssertCreateSnapshotInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateStorediSCSIVolumeOutput = { ["VolumeSizeInBytes"] = true, ["TargetARN"] = true, ["VolumeARN"] = true, nil }
@@ -4431,14 +5938,25 @@ end
 -- * VolumeARN [VolumeARN] <p>The Amazon Resource Name (ARN) of the configured volume.</p>
 -- @return CreateStorediSCSIVolumeOutput structure as a key-value pair table
 function M.CreateStorediSCSIVolumeOutput(args)
-	assert(args, "You must provdide an argument table when creating CreateStorediSCSIVolumeOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateStorediSCSIVolumeOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["VolumeSizeInBytes"] = args["VolumeSizeInBytes"],
 		["TargetARN"] = args["TargetARN"],
 		["VolumeARN"] = args["VolumeARN"],
 	}
-	asserts.AssertCreateStorediSCSIVolumeOutput(t)
-	return t
+	asserts.AssertCreateStorediSCSIVolumeOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.RetrieveTapeArchiveOutput = { ["TapeARN"] = true, nil }
@@ -4459,12 +5977,23 @@ end
 -- * TapeARN [TapeARN] <p>The Amazon Resource Name (ARN) of the retrieved virtual tape.</p>
 -- @return RetrieveTapeArchiveOutput structure as a key-value pair table
 function M.RetrieveTapeArchiveOutput(args)
-	assert(args, "You must provdide an argument table when creating RetrieveTapeArchiveOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating RetrieveTapeArchiveOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["TapeARN"] = args["TapeARN"],
 	}
-	asserts.AssertRetrieveTapeArchiveOutput(t)
-	return t
+	asserts.AssertRetrieveTapeArchiveOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateSnapshotOutput = { ["SnapshotId"] = true, ["VolumeARN"] = true, nil }
@@ -4487,13 +6016,24 @@ end
 -- * VolumeARN [VolumeARN] <p>The Amazon Resource Name (ARN) of the volume of which the snapshot was taken.</p>
 -- @return CreateSnapshotOutput structure as a key-value pair table
 function M.CreateSnapshotOutput(args)
-	assert(args, "You must provdide an argument table when creating CreateSnapshotOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateSnapshotOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["SnapshotId"] = args["SnapshotId"],
 		["VolumeARN"] = args["VolumeARN"],
 	}
-	asserts.AssertCreateSnapshotOutput(t)
-	return t
+	asserts.AssertCreateSnapshotOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.RetrieveTapeRecoveryPointOutput = { ["TapeARN"] = true, nil }
@@ -4514,12 +6054,23 @@ end
 -- * TapeARN [TapeARN] <p>The Amazon Resource Name (ARN) of the virtual tape for which the recovery point was retrieved.</p>
 -- @return RetrieveTapeRecoveryPointOutput structure as a key-value pair table
 function M.RetrieveTapeRecoveryPointOutput(args)
-	assert(args, "You must provdide an argument table when creating RetrieveTapeRecoveryPointOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating RetrieveTapeRecoveryPointOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["TapeARN"] = args["TapeARN"],
 	}
-	asserts.AssertRetrieveTapeRecoveryPointOutput(t)
-	return t
+	asserts.AssertRetrieveTapeRecoveryPointOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdateNFSFileShareInput = { ["FileShareARN"] = true, ["DefaultStorageClass"] = true, ["Squash"] = true, ["NFSFileShareDefaults"] = true, ["KMSKey"] = true, ["ReadOnly"] = true, ["ClientList"] = true, ["KMSEncrypted"] = true, nil }
@@ -4556,8 +6107,14 @@ end
 -- Required key: FileShareARN
 -- @return UpdateNFSFileShareInput structure as a key-value pair table
 function M.UpdateNFSFileShareInput(args)
-	assert(args, "You must provdide an argument table when creating UpdateNFSFileShareInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateNFSFileShareInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["FileShareARN"] = args["FileShareARN"],
 		["DefaultStorageClass"] = args["DefaultStorageClass"],
 		["Squash"] = args["Squash"],
@@ -4567,8 +6124,13 @@ function M.UpdateNFSFileShareInput(args)
 		["ClientList"] = args["ClientList"],
 		["KMSEncrypted"] = args["KMSEncrypted"],
 	}
-	asserts.AssertUpdateNFSFileShareInput(t)
-	return t
+	asserts.AssertUpdateNFSFileShareInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateStorediSCSIVolumeInput = { ["NetworkInterfaceId"] = true, ["SnapshotId"] = true, ["GatewayARN"] = true, ["PreserveExistingData"] = true, ["TargetName"] = true, ["DiskId"] = true, nil }
@@ -4609,8 +6171,14 @@ end
 -- Required key: NetworkInterfaceId
 -- @return CreateStorediSCSIVolumeInput structure as a key-value pair table
 function M.CreateStorediSCSIVolumeInput(args)
-	assert(args, "You must provdide an argument table when creating CreateStorediSCSIVolumeInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateStorediSCSIVolumeInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NetworkInterfaceId"] = args["NetworkInterfaceId"],
 		["SnapshotId"] = args["SnapshotId"],
 		["GatewayARN"] = args["GatewayARN"],
@@ -4618,8 +6186,13 @@ function M.CreateStorediSCSIVolumeInput(args)
 		["TargetName"] = args["TargetName"],
 		["DiskId"] = args["DiskId"],
 	}
-	asserts.AssertCreateStorediSCSIVolumeInput(t)
-	return t
+	asserts.AssertCreateStorediSCSIVolumeInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CancelArchivalOutput = { ["TapeARN"] = true, nil }
@@ -4640,12 +6213,23 @@ end
 -- * TapeARN [TapeARN] <p>The Amazon Resource Name (ARN) of the virtual tape for which archiving was canceled.</p>
 -- @return CancelArchivalOutput structure as a key-value pair table
 function M.CancelArchivalOutput(args)
-	assert(args, "You must provdide an argument table when creating CancelArchivalOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CancelArchivalOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["TapeARN"] = args["TapeARN"],
 	}
-	asserts.AssertCancelArchivalOutput(t)
-	return t
+	asserts.AssertCancelArchivalOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateCachediSCSIVolumeInput = { ["VolumeSizeInBytes"] = true, ["NetworkInterfaceId"] = true, ["ClientToken"] = true, ["SnapshotId"] = true, ["SourceVolumeARN"] = true, ["GatewayARN"] = true, ["TargetName"] = true, nil }
@@ -4688,8 +6272,14 @@ end
 -- Required key: ClientToken
 -- @return CreateCachediSCSIVolumeInput structure as a key-value pair table
 function M.CreateCachediSCSIVolumeInput(args)
-	assert(args, "You must provdide an argument table when creating CreateCachediSCSIVolumeInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateCachediSCSIVolumeInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["VolumeSizeInBytes"] = args["VolumeSizeInBytes"],
 		["NetworkInterfaceId"] = args["NetworkInterfaceId"],
 		["ClientToken"] = args["ClientToken"],
@@ -4698,8 +6288,13 @@ function M.CreateCachediSCSIVolumeInput(args)
 		["GatewayARN"] = args["GatewayARN"],
 		["TargetName"] = args["TargetName"],
 	}
-	asserts.AssertCreateCachediSCSIVolumeInput(t)
-	return t
+	asserts.AssertCreateCachediSCSIVolumeInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeVTLDevicesInput = { ["Marker"] = true, ["GatewayARN"] = true, ["Limit"] = true, ["VTLDeviceARNs"] = true, nil }
@@ -4728,15 +6323,26 @@ end
 -- Required key: GatewayARN
 -- @return DescribeVTLDevicesInput structure as a key-value pair table
 function M.DescribeVTLDevicesInput(args)
-	assert(args, "You must provdide an argument table when creating DescribeVTLDevicesInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeVTLDevicesInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Marker"] = args["Marker"],
 		["GatewayARN"] = args["GatewayARN"],
 		["Limit"] = args["Limit"],
 		["VTLDeviceARNs"] = args["VTLDeviceARNs"],
 	}
-	asserts.AssertDescribeVTLDevicesInput(t)
-	return t
+	asserts.AssertDescribeVTLDevicesInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeMaintenanceStartTimeInput = { ["GatewayARN"] = true, nil }
@@ -4759,12 +6365,23 @@ end
 -- Required key: GatewayARN
 -- @return DescribeMaintenanceStartTimeInput structure as a key-value pair table
 function M.DescribeMaintenanceStartTimeInput(args)
-	assert(args, "You must provdide an argument table when creating DescribeMaintenanceStartTimeInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeMaintenanceStartTimeInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["GatewayARN"] = args["GatewayARN"],
 	}
-	asserts.AssertDescribeMaintenanceStartTimeInput(t)
-	return t
+	asserts.AssertDescribeMaintenanceStartTimeInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 function asserts.AssertRole(str)
@@ -6150,8 +7767,11 @@ function M.DescribeSnapshotScheduleAsync(DescribeSnapshotScheduleInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "StorageGateway_20130630.DescribeSnapshotSchedule",
 	}
+	for header,value in pairs(DescribeSnapshotScheduleInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeSnapshotScheduleInput, headers, settings, cb)
 	else
@@ -6182,8 +7802,11 @@ function M.UpdateNFSFileShareAsync(UpdateNFSFileShareInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "StorageGateway_20130630.UpdateNFSFileShare",
 	}
+	for header,value in pairs(UpdateNFSFileShareInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateNFSFileShareInput, headers, settings, cb)
 	else
@@ -6214,8 +7837,11 @@ function M.DescribeTapeArchivesAsync(DescribeTapeArchivesInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "StorageGateway_20130630.DescribeTapeArchives",
 	}
+	for header,value in pairs(DescribeTapeArchivesInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeTapeArchivesInput, headers, settings, cb)
 	else
@@ -6246,8 +7872,11 @@ function M.DeleteFileShareAsync(DeleteFileShareInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "StorageGateway_20130630.DeleteFileShare",
 	}
+	for header,value in pairs(DeleteFileShareInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteFileShareInput, headers, settings, cb)
 	else
@@ -6278,8 +7907,11 @@ function M.RefreshCacheAsync(RefreshCacheInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "StorageGateway_20130630.RefreshCache",
 	}
+	for header,value in pairs(RefreshCacheInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", RefreshCacheInput, headers, settings, cb)
 	else
@@ -6310,8 +7942,11 @@ function M.DescribeMaintenanceStartTimeAsync(DescribeMaintenanceStartTimeInput, 
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "StorageGateway_20130630.DescribeMaintenanceStartTime",
 	}
+	for header,value in pairs(DescribeMaintenanceStartTimeInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeMaintenanceStartTimeInput, headers, settings, cb)
 	else
@@ -6342,8 +7977,11 @@ function M.DescribeGatewayInformationAsync(DescribeGatewayInformationInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "StorageGateway_20130630.DescribeGatewayInformation",
 	}
+	for header,value in pairs(DescribeGatewayInformationInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeGatewayInformationInput, headers, settings, cb)
 	else
@@ -6374,8 +8012,11 @@ function M.UpdateGatewayInformationAsync(UpdateGatewayInformationInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "StorageGateway_20130630.UpdateGatewayInformation",
 	}
+	for header,value in pairs(UpdateGatewayInformationInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateGatewayInformationInput, headers, settings, cb)
 	else
@@ -6406,8 +8047,11 @@ function M.DisableGatewayAsync(DisableGatewayInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "StorageGateway_20130630.DisableGateway",
 	}
+	for header,value in pairs(DisableGatewayInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DisableGatewayInput, headers, settings, cb)
 	else
@@ -6438,8 +8082,11 @@ function M.ListFileSharesAsync(ListFileSharesInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "StorageGateway_20130630.ListFileShares",
 	}
+	for header,value in pairs(ListFileSharesInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ListFileSharesInput, headers, settings, cb)
 	else
@@ -6470,8 +8117,11 @@ function M.UpdateMaintenanceStartTimeAsync(UpdateMaintenanceStartTimeInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "StorageGateway_20130630.UpdateMaintenanceStartTime",
 	}
+	for header,value in pairs(UpdateMaintenanceStartTimeInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateMaintenanceStartTimeInput, headers, settings, cb)
 	else
@@ -6502,8 +8152,11 @@ function M.CreateTapesAsync(CreateTapesInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "StorageGateway_20130630.CreateTapes",
 	}
+	for header,value in pairs(CreateTapesInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateTapesInput, headers, settings, cb)
 	else
@@ -6534,8 +8187,11 @@ function M.UpdateBandwidthRateLimitAsync(UpdateBandwidthRateLimitInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "StorageGateway_20130630.UpdateBandwidthRateLimit",
 	}
+	for header,value in pairs(UpdateBandwidthRateLimitInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateBandwidthRateLimitInput, headers, settings, cb)
 	else
@@ -6566,8 +8222,11 @@ function M.CreateCachediSCSIVolumeAsync(CreateCachediSCSIVolumeInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "StorageGateway_20130630.CreateCachediSCSIVolume",
 	}
+	for header,value in pairs(CreateCachediSCSIVolumeInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateCachediSCSIVolumeInput, headers, settings, cb)
 	else
@@ -6598,8 +8257,11 @@ function M.CreateTapeWithBarcodeAsync(CreateTapeWithBarcodeInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "StorageGateway_20130630.CreateTapeWithBarcode",
 	}
+	for header,value in pairs(CreateTapeWithBarcodeInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateTapeWithBarcodeInput, headers, settings, cb)
 	else
@@ -6630,8 +8292,11 @@ function M.DescribeChapCredentialsAsync(DescribeChapCredentialsInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "StorageGateway_20130630.DescribeChapCredentials",
 	}
+	for header,value in pairs(DescribeChapCredentialsInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeChapCredentialsInput, headers, settings, cb)
 	else
@@ -6662,8 +8327,11 @@ function M.ListLocalDisksAsync(ListLocalDisksInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "StorageGateway_20130630.ListLocalDisks",
 	}
+	for header,value in pairs(ListLocalDisksInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ListLocalDisksInput, headers, settings, cb)
 	else
@@ -6694,8 +8362,11 @@ function M.UpdateGatewaySoftwareNowAsync(UpdateGatewaySoftwareNowInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "StorageGateway_20130630.UpdateGatewaySoftwareNow",
 	}
+	for header,value in pairs(UpdateGatewaySoftwareNowInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateGatewaySoftwareNowInput, headers, settings, cb)
 	else
@@ -6726,8 +8397,11 @@ function M.ResetCacheAsync(ResetCacheInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "StorageGateway_20130630.ResetCache",
 	}
+	for header,value in pairs(ResetCacheInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ResetCacheInput, headers, settings, cb)
 	else
@@ -6758,8 +8432,11 @@ function M.AddTagsToResourceAsync(AddTagsToResourceInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "StorageGateway_20130630.AddTagsToResource",
 	}
+	for header,value in pairs(AddTagsToResourceInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", AddTagsToResourceInput, headers, settings, cb)
 	else
@@ -6790,8 +8467,11 @@ function M.RetrieveTapeArchiveAsync(RetrieveTapeArchiveInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "StorageGateway_20130630.RetrieveTapeArchive",
 	}
+	for header,value in pairs(RetrieveTapeArchiveInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", RetrieveTapeArchiveInput, headers, settings, cb)
 	else
@@ -6822,8 +8502,11 @@ function M.SetLocalConsolePasswordAsync(SetLocalConsolePasswordInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "StorageGateway_20130630.SetLocalConsolePassword",
 	}
+	for header,value in pairs(SetLocalConsolePasswordInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", SetLocalConsolePasswordInput, headers, settings, cb)
 	else
@@ -6854,8 +8537,11 @@ function M.UpdateSnapshotScheduleAsync(UpdateSnapshotScheduleInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "StorageGateway_20130630.UpdateSnapshotSchedule",
 	}
+	for header,value in pairs(UpdateSnapshotScheduleInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateSnapshotScheduleInput, headers, settings, cb)
 	else
@@ -6886,8 +8572,11 @@ function M.ListVolumeInitiatorsAsync(ListVolumeInitiatorsInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "StorageGateway_20130630.ListVolumeInitiators",
 	}
+	for header,value in pairs(ListVolumeInitiatorsInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ListVolumeInitiatorsInput, headers, settings, cb)
 	else
@@ -6918,8 +8607,11 @@ function M.RemoveTagsFromResourceAsync(RemoveTagsFromResourceInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "StorageGateway_20130630.RemoveTagsFromResource",
 	}
+	for header,value in pairs(RemoveTagsFromResourceInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", RemoveTagsFromResourceInput, headers, settings, cb)
 	else
@@ -6950,8 +8642,11 @@ function M.CreateSnapshotFromVolumeRecoveryPointAsync(CreateSnapshotFromVolumeRe
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "StorageGateway_20130630.CreateSnapshotFromVolumeRecoveryPoint",
 	}
+	for header,value in pairs(CreateSnapshotFromVolumeRecoveryPointInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateSnapshotFromVolumeRecoveryPointInput, headers, settings, cb)
 	else
@@ -6982,8 +8677,11 @@ function M.ListGatewaysAsync(ListGatewaysInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "StorageGateway_20130630.ListGateways",
 	}
+	for header,value in pairs(ListGatewaysInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ListGatewaysInput, headers, settings, cb)
 	else
@@ -7014,8 +8712,11 @@ function M.DeleteChapCredentialsAsync(DeleteChapCredentialsInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "StorageGateway_20130630.DeleteChapCredentials",
 	}
+	for header,value in pairs(DeleteChapCredentialsInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteChapCredentialsInput, headers, settings, cb)
 	else
@@ -7046,8 +8747,11 @@ function M.DeleteVolumeAsync(DeleteVolumeInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "StorageGateway_20130630.DeleteVolume",
 	}
+	for header,value in pairs(DeleteVolumeInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteVolumeInput, headers, settings, cb)
 	else
@@ -7078,8 +8782,11 @@ function M.DescribeTapeRecoveryPointsAsync(DescribeTapeRecoveryPointsInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "StorageGateway_20130630.DescribeTapeRecoveryPoints",
 	}
+	for header,value in pairs(DescribeTapeRecoveryPointsInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeTapeRecoveryPointsInput, headers, settings, cb)
 	else
@@ -7110,8 +8817,11 @@ function M.ActivateGatewayAsync(ActivateGatewayInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "StorageGateway_20130630.ActivateGateway",
 	}
+	for header,value in pairs(ActivateGatewayInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ActivateGatewayInput, headers, settings, cb)
 	else
@@ -7142,8 +8852,11 @@ function M.DeleteTapeArchiveAsync(DeleteTapeArchiveInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "StorageGateway_20130630.DeleteTapeArchive",
 	}
+	for header,value in pairs(DeleteTapeArchiveInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteTapeArchiveInput, headers, settings, cb)
 	else
@@ -7174,8 +8887,11 @@ function M.DescribeVTLDevicesAsync(DescribeVTLDevicesInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "StorageGateway_20130630.DescribeVTLDevices",
 	}
+	for header,value in pairs(DescribeVTLDevicesInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeVTLDevicesInput, headers, settings, cb)
 	else
@@ -7206,8 +8922,11 @@ function M.AddCacheAsync(AddCacheInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "StorageGateway_20130630.AddCache",
 	}
+	for header,value in pairs(AddCacheInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", AddCacheInput, headers, settings, cb)
 	else
@@ -7238,8 +8957,11 @@ function M.ListVolumesAsync(ListVolumesInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "StorageGateway_20130630.ListVolumes",
 	}
+	for header,value in pairs(ListVolumesInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ListVolumesInput, headers, settings, cb)
 	else
@@ -7270,8 +8992,11 @@ function M.DescribeCachediSCSIVolumesAsync(DescribeCachediSCSIVolumesInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "StorageGateway_20130630.DescribeCachediSCSIVolumes",
 	}
+	for header,value in pairs(DescribeCachediSCSIVolumesInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeCachediSCSIVolumesInput, headers, settings, cb)
 	else
@@ -7302,8 +9027,11 @@ function M.RetrieveTapeRecoveryPointAsync(RetrieveTapeRecoveryPointInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "StorageGateway_20130630.RetrieveTapeRecoveryPoint",
 	}
+	for header,value in pairs(RetrieveTapeRecoveryPointInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", RetrieveTapeRecoveryPointInput, headers, settings, cb)
 	else
@@ -7334,8 +9062,11 @@ function M.CancelRetrievalAsync(CancelRetrievalInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "StorageGateway_20130630.CancelRetrieval",
 	}
+	for header,value in pairs(CancelRetrievalInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", CancelRetrievalInput, headers, settings, cb)
 	else
@@ -7366,8 +9097,11 @@ function M.DescribeBandwidthRateLimitAsync(DescribeBandwidthRateLimitInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "StorageGateway_20130630.DescribeBandwidthRateLimit",
 	}
+	for header,value in pairs(DescribeBandwidthRateLimitInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeBandwidthRateLimitInput, headers, settings, cb)
 	else
@@ -7398,8 +9132,11 @@ function M.DescribeStorediSCSIVolumesAsync(DescribeStorediSCSIVolumesInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "StorageGateway_20130630.DescribeStorediSCSIVolumes",
 	}
+	for header,value in pairs(DescribeStorediSCSIVolumesInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeStorediSCSIVolumesInput, headers, settings, cb)
 	else
@@ -7430,8 +9167,11 @@ function M.ListVolumeRecoveryPointsAsync(ListVolumeRecoveryPointsInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "StorageGateway_20130630.ListVolumeRecoveryPoints",
 	}
+	for header,value in pairs(ListVolumeRecoveryPointsInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ListVolumeRecoveryPointsInput, headers, settings, cb)
 	else
@@ -7462,8 +9202,11 @@ function M.UpdateChapCredentialsAsync(UpdateChapCredentialsInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "StorageGateway_20130630.UpdateChapCredentials",
 	}
+	for header,value in pairs(UpdateChapCredentialsInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateChapCredentialsInput, headers, settings, cb)
 	else
@@ -7494,8 +9237,11 @@ function M.StartGatewayAsync(StartGatewayInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "StorageGateway_20130630.StartGateway",
 	}
+	for header,value in pairs(StartGatewayInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", StartGatewayInput, headers, settings, cb)
 	else
@@ -7526,8 +9272,11 @@ function M.DescribeCacheAsync(DescribeCacheInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "StorageGateway_20130630.DescribeCache",
 	}
+	for header,value in pairs(DescribeCacheInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeCacheInput, headers, settings, cb)
 	else
@@ -7558,8 +9307,11 @@ function M.AddUploadBufferAsync(AddUploadBufferInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "StorageGateway_20130630.AddUploadBuffer",
 	}
+	for header,value in pairs(AddUploadBufferInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", AddUploadBufferInput, headers, settings, cb)
 	else
@@ -7590,8 +9342,11 @@ function M.DeleteSnapshotScheduleAsync(DeleteSnapshotScheduleInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "StorageGateway_20130630.DeleteSnapshotSchedule",
 	}
+	for header,value in pairs(DeleteSnapshotScheduleInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteSnapshotScheduleInput, headers, settings, cb)
 	else
@@ -7622,8 +9377,11 @@ function M.UpdateVTLDeviceTypeAsync(UpdateVTLDeviceTypeInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "StorageGateway_20130630.UpdateVTLDeviceType",
 	}
+	for header,value in pairs(UpdateVTLDeviceTypeInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateVTLDeviceTypeInput, headers, settings, cb)
 	else
@@ -7654,8 +9412,11 @@ function M.DeleteTapeAsync(DeleteTapeInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "StorageGateway_20130630.DeleteTape",
 	}
+	for header,value in pairs(DeleteTapeInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteTapeInput, headers, settings, cb)
 	else
@@ -7686,8 +9447,11 @@ function M.DeleteBandwidthRateLimitAsync(DeleteBandwidthRateLimitInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "StorageGateway_20130630.DeleteBandwidthRateLimit",
 	}
+	for header,value in pairs(DeleteBandwidthRateLimitInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteBandwidthRateLimitInput, headers, settings, cb)
 	else
@@ -7718,8 +9482,11 @@ function M.ShutdownGatewayAsync(ShutdownGatewayInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "StorageGateway_20130630.ShutdownGateway",
 	}
+	for header,value in pairs(ShutdownGatewayInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ShutdownGatewayInput, headers, settings, cb)
 	else
@@ -7750,8 +9517,11 @@ function M.DescribeTapesAsync(DescribeTapesInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "StorageGateway_20130630.DescribeTapes",
 	}
+	for header,value in pairs(DescribeTapesInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeTapesInput, headers, settings, cb)
 	else
@@ -7782,8 +9552,11 @@ function M.CreateNFSFileShareAsync(CreateNFSFileShareInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "StorageGateway_20130630.CreateNFSFileShare",
 	}
+	for header,value in pairs(CreateNFSFileShareInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateNFSFileShareInput, headers, settings, cb)
 	else
@@ -7814,8 +9587,11 @@ function M.CreateStorediSCSIVolumeAsync(CreateStorediSCSIVolumeInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "StorageGateway_20130630.CreateStorediSCSIVolume",
 	}
+	for header,value in pairs(CreateStorediSCSIVolumeInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateStorediSCSIVolumeInput, headers, settings, cb)
 	else
@@ -7846,8 +9622,11 @@ function M.CancelArchivalAsync(CancelArchivalInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "StorageGateway_20130630.CancelArchival",
 	}
+	for header,value in pairs(CancelArchivalInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", CancelArchivalInput, headers, settings, cb)
 	else
@@ -7878,8 +9657,11 @@ function M.ListTapesAsync(ListTapesInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "StorageGateway_20130630.ListTapes",
 	}
+	for header,value in pairs(ListTapesInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ListTapesInput, headers, settings, cb)
 	else
@@ -7910,8 +9692,11 @@ function M.DeleteGatewayAsync(DeleteGatewayInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "StorageGateway_20130630.DeleteGateway",
 	}
+	for header,value in pairs(DeleteGatewayInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteGatewayInput, headers, settings, cb)
 	else
@@ -7942,8 +9727,11 @@ function M.DescribeNFSFileSharesAsync(DescribeNFSFileSharesInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "StorageGateway_20130630.DescribeNFSFileShares",
 	}
+	for header,value in pairs(DescribeNFSFileSharesInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeNFSFileSharesInput, headers, settings, cb)
 	else
@@ -7974,8 +9762,11 @@ function M.DescribeWorkingStorageAsync(DescribeWorkingStorageInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "StorageGateway_20130630.DescribeWorkingStorage",
 	}
+	for header,value in pairs(DescribeWorkingStorageInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeWorkingStorageInput, headers, settings, cb)
 	else
@@ -8006,8 +9797,11 @@ function M.DescribeUploadBufferAsync(DescribeUploadBufferInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "StorageGateway_20130630.DescribeUploadBuffer",
 	}
+	for header,value in pairs(DescribeUploadBufferInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeUploadBufferInput, headers, settings, cb)
 	else
@@ -8038,8 +9832,11 @@ function M.ListTagsForResourceAsync(ListTagsForResourceInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "StorageGateway_20130630.ListTagsForResource",
 	}
+	for header,value in pairs(ListTagsForResourceInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ListTagsForResourceInput, headers, settings, cb)
 	else
@@ -8070,8 +9867,11 @@ function M.AddWorkingStorageAsync(AddWorkingStorageInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "StorageGateway_20130630.AddWorkingStorage",
 	}
+	for header,value in pairs(AddWorkingStorageInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", AddWorkingStorageInput, headers, settings, cb)
 	else
@@ -8102,8 +9902,11 @@ function M.CreateSnapshotAsync(CreateSnapshotInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "StorageGateway_20130630.CreateSnapshot",
 	}
+	for header,value in pairs(CreateSnapshotInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateSnapshotInput, headers, settings, cb)
 	else

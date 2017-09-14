@@ -37,11 +37,22 @@ end
 -- Valid keys:
 -- @return UnsupportedOperation structure as a key-value pair table
 function M.UnsupportedOperation(args)
-	assert(args, "You must provdide an argument table when creating UnsupportedOperation")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UnsupportedOperation")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertUnsupportedOperation(t)
-	return t
+	asserts.AssertUnsupportedOperation(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.PurgeQueueInProgress = { nil }
@@ -60,11 +71,22 @@ end
 -- Valid keys:
 -- @return PurgeQueueInProgress structure as a key-value pair table
 function M.PurgeQueueInProgress(args)
-	assert(args, "You must provdide an argument table when creating PurgeQueueInProgress")
-	local t = { 
+	assert(args, "You must provide an argument table when creating PurgeQueueInProgress")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertPurgeQueueInProgress(t)
-	return t
+	asserts.AssertPurgeQueueInProgress(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.MessageAttributeValue = { ["BinaryListValues"] = true, ["StringValue"] = true, ["DataType"] = true, ["BinaryValue"] = true, ["StringListValues"] = true, nil }
@@ -95,16 +117,27 @@ end
 -- Required key: DataType
 -- @return MessageAttributeValue structure as a key-value pair table
 function M.MessageAttributeValue(args)
-	assert(args, "You must provdide an argument table when creating MessageAttributeValue")
-	local t = { 
+	assert(args, "You must provide an argument table when creating MessageAttributeValue")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["BinaryListValues"] = args["BinaryListValues"],
 		["StringValue"] = args["StringValue"],
 		["DataType"] = args["DataType"],
 		["BinaryValue"] = args["BinaryValue"],
 		["StringListValues"] = args["StringListValues"],
 	}
-	asserts.AssertMessageAttributeValue(t)
-	return t
+	asserts.AssertMessageAttributeValue(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.SetQueueAttributesRequest = { ["QueueUrl"] = true, ["Attributes"] = true, nil }
@@ -131,13 +164,24 @@ end
 -- Required key: Attributes
 -- @return SetQueueAttributesRequest structure as a key-value pair table
 function M.SetQueueAttributesRequest(args)
-	assert(args, "You must provdide an argument table when creating SetQueueAttributesRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating SetQueueAttributesRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["QueueUrl"] = args["QueueUrl"],
 		["Attributes"] = args["Attributes"],
 	}
-	asserts.AssertSetQueueAttributesRequest(t)
-	return t
+	asserts.AssertSetQueueAttributesRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetQueueAttributesRequest = { ["QueueUrl"] = true, ["AttributeNames"] = true, nil }
@@ -162,13 +206,24 @@ end
 -- Required key: QueueUrl
 -- @return GetQueueAttributesRequest structure as a key-value pair table
 function M.GetQueueAttributesRequest(args)
-	assert(args, "You must provdide an argument table when creating GetQueueAttributesRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetQueueAttributesRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["QueueUrl"] = args["QueueUrl"],
 		["AttributeNames"] = args["AttributeNames"],
 	}
-	asserts.AssertGetQueueAttributesRequest(t)
-	return t
+	asserts.AssertGetQueueAttributesRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.SendMessageBatchResult = { ["Successful"] = true, ["Failed"] = true, nil }
@@ -195,13 +250,24 @@ end
 -- Required key: Failed
 -- @return SendMessageBatchResult structure as a key-value pair table
 function M.SendMessageBatchResult(args)
-	assert(args, "You must provdide an argument table when creating SendMessageBatchResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating SendMessageBatchResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Successful"] = args["Successful"],
 		["Failed"] = args["Failed"],
 	}
-	asserts.AssertSendMessageBatchResult(t)
-	return t
+	asserts.AssertSendMessageBatchResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateQueueRequest = { ["Attributes"] = true, ["QueueName"] = true, nil }
@@ -226,13 +292,24 @@ end
 -- Required key: QueueName
 -- @return CreateQueueRequest structure as a key-value pair table
 function M.CreateQueueRequest(args)
-	assert(args, "You must provdide an argument table when creating CreateQueueRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateQueueRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Attributes"] = args["Attributes"],
 		["QueueName"] = args["QueueName"],
 	}
-	asserts.AssertCreateQueueRequest(t)
-	return t
+	asserts.AssertCreateQueueRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.RemovePermissionRequest = { ["QueueUrl"] = true, ["Label"] = true, nil }
@@ -259,13 +336,24 @@ end
 -- Required key: Label
 -- @return RemovePermissionRequest structure as a key-value pair table
 function M.RemovePermissionRequest(args)
-	assert(args, "You must provdide an argument table when creating RemovePermissionRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating RemovePermissionRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["QueueUrl"] = args["QueueUrl"],
 		["Label"] = args["Label"],
 	}
-	asserts.AssertRemovePermissionRequest(t)
-	return t
+	asserts.AssertRemovePermissionRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteMessageBatchRequestEntry = { ["ReceiptHandle"] = true, ["Id"] = true, nil }
@@ -292,13 +380,24 @@ end
 -- Required key: ReceiptHandle
 -- @return DeleteMessageBatchRequestEntry structure as a key-value pair table
 function M.DeleteMessageBatchRequestEntry(args)
-	assert(args, "You must provdide an argument table when creating DeleteMessageBatchRequestEntry")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteMessageBatchRequestEntry")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ReceiptHandle"] = args["ReceiptHandle"],
 		["Id"] = args["Id"],
 	}
-	asserts.AssertDeleteMessageBatchRequestEntry(t)
-	return t
+	asserts.AssertDeleteMessageBatchRequestEntry(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.SendMessageBatchRequest = { ["QueueUrl"] = true, ["Entries"] = true, nil }
@@ -325,13 +424,24 @@ end
 -- Required key: Entries
 -- @return SendMessageBatchRequest structure as a key-value pair table
 function M.SendMessageBatchRequest(args)
-	assert(args, "You must provdide an argument table when creating SendMessageBatchRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating SendMessageBatchRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["QueueUrl"] = args["QueueUrl"],
 		["Entries"] = args["Entries"],
 	}
-	asserts.AssertSendMessageBatchRequest(t)
-	return t
+	asserts.AssertSendMessageBatchRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ChangeMessageVisibilityBatchResult = { ["Successful"] = true, ["Failed"] = true, nil }
@@ -358,13 +468,24 @@ end
 -- Required key: Failed
 -- @return ChangeMessageVisibilityBatchResult structure as a key-value pair table
 function M.ChangeMessageVisibilityBatchResult(args)
-	assert(args, "You must provdide an argument table when creating ChangeMessageVisibilityBatchResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ChangeMessageVisibilityBatchResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Successful"] = args["Successful"],
 		["Failed"] = args["Failed"],
 	}
-	asserts.AssertChangeMessageVisibilityBatchResult(t)
-	return t
+	asserts.AssertChangeMessageVisibilityBatchResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateQueueResult = { ["QueueUrl"] = true, nil }
@@ -385,12 +506,23 @@ end
 -- * QueueUrl [String] <p>The URL of the created Amazon SQS queue.</p>
 -- @return CreateQueueResult structure as a key-value pair table
 function M.CreateQueueResult(args)
-	assert(args, "You must provdide an argument table when creating CreateQueueResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateQueueResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["QueueUrl"] = args["QueueUrl"],
 	}
-	asserts.AssertCreateQueueResult(t)
-	return t
+	asserts.AssertCreateQueueResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.PurgeQueueRequest = { ["QueueUrl"] = true, nil }
@@ -413,12 +545,23 @@ end
 -- Required key: QueueUrl
 -- @return PurgeQueueRequest structure as a key-value pair table
 function M.PurgeQueueRequest(args)
-	assert(args, "You must provdide an argument table when creating PurgeQueueRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating PurgeQueueRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["QueueUrl"] = args["QueueUrl"],
 	}
-	asserts.AssertPurgeQueueRequest(t)
-	return t
+	asserts.AssertPurgeQueueRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ReceiptHandleIsInvalid = { nil }
@@ -437,11 +580,22 @@ end
 -- Valid keys:
 -- @return ReceiptHandleIsInvalid structure as a key-value pair table
 function M.ReceiptHandleIsInvalid(args)
-	assert(args, "You must provdide an argument table when creating ReceiptHandleIsInvalid")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ReceiptHandleIsInvalid")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertReceiptHandleIsInvalid(t)
-	return t
+	asserts.AssertReceiptHandleIsInvalid(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidAttributeName = { nil }
@@ -460,11 +614,22 @@ end
 -- Valid keys:
 -- @return InvalidAttributeName structure as a key-value pair table
 function M.InvalidAttributeName(args)
-	assert(args, "You must provdide an argument table when creating InvalidAttributeName")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidAttributeName")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertInvalidAttributeName(t)
-	return t
+	asserts.AssertInvalidAttributeName(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ChangeMessageVisibilityBatchRequest = { ["QueueUrl"] = true, ["Entries"] = true, nil }
@@ -491,13 +656,24 @@ end
 -- Required key: Entries
 -- @return ChangeMessageVisibilityBatchRequest structure as a key-value pair table
 function M.ChangeMessageVisibilityBatchRequest(args)
-	assert(args, "You must provdide an argument table when creating ChangeMessageVisibilityBatchRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ChangeMessageVisibilityBatchRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["QueueUrl"] = args["QueueUrl"],
 		["Entries"] = args["Entries"],
 	}
-	asserts.AssertChangeMessageVisibilityBatchRequest(t)
-	return t
+	asserts.AssertChangeMessageVisibilityBatchRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ReceiveMessageRequest = { ["QueueUrl"] = true, ["ReceiveRequestAttemptId"] = true, ["MaxNumberOfMessages"] = true, ["WaitTimeSeconds"] = true, ["MessageAttributeNames"] = true, ["VisibilityTimeout"] = true, ["AttributeNames"] = true, nil }
@@ -532,8 +708,14 @@ end
 -- Required key: QueueUrl
 -- @return ReceiveMessageRequest structure as a key-value pair table
 function M.ReceiveMessageRequest(args)
-	assert(args, "You must provdide an argument table when creating ReceiveMessageRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ReceiveMessageRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["QueueUrl"] = args["QueueUrl"],
 		["ReceiveRequestAttemptId"] = args["ReceiveRequestAttemptId"],
 		["MaxNumberOfMessages"] = args["MaxNumberOfMessages"],
@@ -542,8 +724,13 @@ function M.ReceiveMessageRequest(args)
 		["VisibilityTimeout"] = args["VisibilityTimeout"],
 		["AttributeNames"] = args["AttributeNames"],
 	}
-	asserts.AssertReceiveMessageRequest(t)
-	return t
+	asserts.AssertReceiveMessageRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ReceiveMessageResult = { ["Messages"] = true, nil }
@@ -564,12 +751,23 @@ end
 -- * Messages [MessageList] <p>A list of messages.</p>
 -- @return ReceiveMessageResult structure as a key-value pair table
 function M.ReceiveMessageResult(args)
-	assert(args, "You must provdide an argument table when creating ReceiveMessageResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ReceiveMessageResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Messages"] = args["Messages"],
 	}
-	asserts.AssertReceiveMessageResult(t)
-	return t
+	asserts.AssertReceiveMessageResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.SendMessageBatchResultEntry = { ["MD5OfMessageBody"] = true, ["MD5OfMessageAttributes"] = true, ["Id"] = true, ["SequenceNumber"] = true, ["MessageId"] = true, nil }
@@ -604,16 +802,27 @@ end
 -- Required key: MD5OfMessageBody
 -- @return SendMessageBatchResultEntry structure as a key-value pair table
 function M.SendMessageBatchResultEntry(args)
-	assert(args, "You must provdide an argument table when creating SendMessageBatchResultEntry")
-	local t = { 
+	assert(args, "You must provide an argument table when creating SendMessageBatchResultEntry")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["MD5OfMessageBody"] = args["MD5OfMessageBody"],
 		["MD5OfMessageAttributes"] = args["MD5OfMessageAttributes"],
 		["Id"] = args["Id"],
 		["SequenceNumber"] = args["SequenceNumber"],
 		["MessageId"] = args["MessageId"],
 	}
-	asserts.AssertSendMessageBatchResultEntry(t)
-	return t
+	asserts.AssertSendMessageBatchResultEntry(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidBatchEntryId = { nil }
@@ -632,11 +841,22 @@ end
 -- Valid keys:
 -- @return InvalidBatchEntryId structure as a key-value pair table
 function M.InvalidBatchEntryId(args)
-	assert(args, "You must provdide an argument table when creating InvalidBatchEntryId")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidBatchEntryId")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertInvalidBatchEntryId(t)
-	return t
+	asserts.AssertInvalidBatchEntryId(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ChangeMessageVisibilityRequest = { ["QueueUrl"] = true, ["ReceiptHandle"] = true, ["VisibilityTimeout"] = true, nil }
@@ -667,14 +887,25 @@ end
 -- Required key: VisibilityTimeout
 -- @return ChangeMessageVisibilityRequest structure as a key-value pair table
 function M.ChangeMessageVisibilityRequest(args)
-	assert(args, "You must provdide an argument table when creating ChangeMessageVisibilityRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ChangeMessageVisibilityRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["QueueUrl"] = args["QueueUrl"],
 		["ReceiptHandle"] = args["ReceiptHandle"],
 		["VisibilityTimeout"] = args["VisibilityTimeout"],
 	}
-	asserts.AssertChangeMessageVisibilityRequest(t)
-	return t
+	asserts.AssertChangeMessageVisibilityRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.BatchResultErrorEntry = { ["Message"] = true, ["SenderFault"] = true, ["Code"] = true, ["Id"] = true, nil }
@@ -707,15 +938,26 @@ end
 -- Required key: Code
 -- @return BatchResultErrorEntry structure as a key-value pair table
 function M.BatchResultErrorEntry(args)
-	assert(args, "You must provdide an argument table when creating BatchResultErrorEntry")
-	local t = { 
+	assert(args, "You must provide an argument table when creating BatchResultErrorEntry")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Message"] = args["Message"],
 		["SenderFault"] = args["SenderFault"],
 		["Code"] = args["Code"],
 		["Id"] = args["Id"],
 	}
-	asserts.AssertBatchResultErrorEntry(t)
-	return t
+	asserts.AssertBatchResultErrorEntry(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.SendMessageResult = { ["MD5OfMessageBody"] = true, ["MD5OfMessageAttributes"] = true, ["SequenceNumber"] = true, ["MessageId"] = true, nil }
@@ -742,15 +984,26 @@ end
 -- * MessageId [String] <p>An attribute containing the <code>MessageId</code> of the message sent to the queue. For more information, see <a href="http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-queue-message-identifiers.html">Queue and Message Identifiers</a> in the <i>Amazon SQS Developer Guide</i>. </p>
 -- @return SendMessageResult structure as a key-value pair table
 function M.SendMessageResult(args)
-	assert(args, "You must provdide an argument table when creating SendMessageResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating SendMessageResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["MD5OfMessageBody"] = args["MD5OfMessageBody"],
 		["MD5OfMessageAttributes"] = args["MD5OfMessageAttributes"],
 		["SequenceNumber"] = args["SequenceNumber"],
 		["MessageId"] = args["MessageId"],
 	}
-	asserts.AssertSendMessageResult(t)
-	return t
+	asserts.AssertSendMessageResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteMessageBatchRequest = { ["QueueUrl"] = true, ["Entries"] = true, nil }
@@ -777,13 +1030,24 @@ end
 -- Required key: Entries
 -- @return DeleteMessageBatchRequest structure as a key-value pair table
 function M.DeleteMessageBatchRequest(args)
-	assert(args, "You must provdide an argument table when creating DeleteMessageBatchRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteMessageBatchRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["QueueUrl"] = args["QueueUrl"],
 		["Entries"] = args["Entries"],
 	}
-	asserts.AssertDeleteMessageBatchRequest(t)
-	return t
+	asserts.AssertDeleteMessageBatchRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.QueueDoesNotExist = { nil }
@@ -802,11 +1066,22 @@ end
 -- Valid keys:
 -- @return QueueDoesNotExist structure as a key-value pair table
 function M.QueueDoesNotExist(args)
-	assert(args, "You must provdide an argument table when creating QueueDoesNotExist")
-	local t = { 
+	assert(args, "You must provide an argument table when creating QueueDoesNotExist")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertQueueDoesNotExist(t)
-	return t
+	asserts.AssertQueueDoesNotExist(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.SendMessageRequest = { ["QueueUrl"] = true, ["MessageDeduplicationId"] = true, ["MessageBody"] = true, ["DelaySeconds"] = true, ["MessageAttributes"] = true, ["MessageGroupId"] = true, nil }
@@ -841,8 +1116,14 @@ end
 -- Required key: MessageBody
 -- @return SendMessageRequest structure as a key-value pair table
 function M.SendMessageRequest(args)
-	assert(args, "You must provdide an argument table when creating SendMessageRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating SendMessageRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["QueueUrl"] = args["QueueUrl"],
 		["MessageDeduplicationId"] = args["MessageDeduplicationId"],
 		["MessageBody"] = args["MessageBody"],
@@ -850,8 +1131,13 @@ function M.SendMessageRequest(args)
 		["MessageAttributes"] = args["MessageAttributes"],
 		["MessageGroupId"] = args["MessageGroupId"],
 	}
-	asserts.AssertSendMessageRequest(t)
-	return t
+	asserts.AssertSendMessageRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.MessageNotInflight = { nil }
@@ -870,11 +1156,22 @@ end
 -- Valid keys:
 -- @return MessageNotInflight structure as a key-value pair table
 function M.MessageNotInflight(args)
-	assert(args, "You must provdide an argument table when creating MessageNotInflight")
-	local t = { 
+	assert(args, "You must provide an argument table when creating MessageNotInflight")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertMessageNotInflight(t)
-	return t
+	asserts.AssertMessageNotInflight(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetQueueAttributesResult = { ["Attributes"] = true, nil }
@@ -895,12 +1192,23 @@ end
 -- * Attributes [QueueAttributeMap] <p>A map of attributes to their respective values.</p>
 -- @return GetQueueAttributesResult structure as a key-value pair table
 function M.GetQueueAttributesResult(args)
-	assert(args, "You must provdide an argument table when creating GetQueueAttributesResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetQueueAttributesResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Attributes"] = args["Attributes"],
 	}
-	asserts.AssertGetQueueAttributesResult(t)
-	return t
+	asserts.AssertGetQueueAttributesResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListDeadLetterSourceQueuesRequest = { ["QueueUrl"] = true, nil }
@@ -923,12 +1231,23 @@ end
 -- Required key: QueueUrl
 -- @return ListDeadLetterSourceQueuesRequest structure as a key-value pair table
 function M.ListDeadLetterSourceQueuesRequest(args)
-	assert(args, "You must provdide an argument table when creating ListDeadLetterSourceQueuesRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListDeadLetterSourceQueuesRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["QueueUrl"] = args["QueueUrl"],
 	}
-	asserts.AssertListDeadLetterSourceQueuesRequest(t)
-	return t
+	asserts.AssertListDeadLetterSourceQueuesRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Message = { ["Body"] = true, ["ReceiptHandle"] = true, ["MD5OfBody"] = true, ["MD5OfMessageAttributes"] = true, ["MessageId"] = true, ["Attributes"] = true, ["MessageAttributes"] = true, nil }
@@ -961,8 +1280,14 @@ end
 -- * MessageAttributes [MessageBodyAttributeMap] <p>Each message attribute consists of a <code>Name</code>, <code>Type</code>, and <code>Value</code>. For more information, see <a href="http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-message-attributes.html#message-attributes-items-validation">Message Attribute Items and Validation</a> in the <i>Amazon SQS Developer Guide</i>.</p>
 -- @return Message structure as a key-value pair table
 function M.Message(args)
-	assert(args, "You must provdide an argument table when creating Message")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Message")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Body"] = args["Body"],
 		["ReceiptHandle"] = args["ReceiptHandle"],
 		["MD5OfBody"] = args["MD5OfBody"],
@@ -971,8 +1296,13 @@ function M.Message(args)
 		["Attributes"] = args["Attributes"],
 		["MessageAttributes"] = args["MessageAttributes"],
 	}
-	asserts.AssertMessage(t)
-	return t
+	asserts.AssertMessage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.OverLimit = { nil }
@@ -991,11 +1321,22 @@ end
 -- Valid keys:
 -- @return OverLimit structure as a key-value pair table
 function M.OverLimit(args)
-	assert(args, "You must provdide an argument table when creating OverLimit")
-	local t = { 
+	assert(args, "You must provide an argument table when creating OverLimit")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertOverLimit(t)
-	return t
+	asserts.AssertOverLimit(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetQueueUrlRequest = { ["QueueName"] = true, ["QueueOwnerAWSAccountId"] = true, nil }
@@ -1020,13 +1361,24 @@ end
 -- Required key: QueueName
 -- @return GetQueueUrlRequest structure as a key-value pair table
 function M.GetQueueUrlRequest(args)
-	assert(args, "You must provdide an argument table when creating GetQueueUrlRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetQueueUrlRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["QueueName"] = args["QueueName"],
 		["QueueOwnerAWSAccountId"] = args["QueueOwnerAWSAccountId"],
 	}
-	asserts.AssertGetQueueUrlRequest(t)
-	return t
+	asserts.AssertGetQueueUrlRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetQueueUrlResult = { ["QueueUrl"] = true, nil }
@@ -1047,12 +1399,23 @@ end
 -- * QueueUrl [String] <p>The URL of the queue.</p>
 -- @return GetQueueUrlResult structure as a key-value pair table
 function M.GetQueueUrlResult(args)
-	assert(args, "You must provdide an argument table when creating GetQueueUrlResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetQueueUrlResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["QueueUrl"] = args["QueueUrl"],
 	}
-	asserts.AssertGetQueueUrlResult(t)
-	return t
+	asserts.AssertGetQueueUrlResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteQueueRequest = { ["QueueUrl"] = true, nil }
@@ -1075,12 +1438,23 @@ end
 -- Required key: QueueUrl
 -- @return DeleteQueueRequest structure as a key-value pair table
 function M.DeleteQueueRequest(args)
-	assert(args, "You must provdide an argument table when creating DeleteQueueRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteQueueRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["QueueUrl"] = args["QueueUrl"],
 	}
-	asserts.AssertDeleteQueueRequest(t)
-	return t
+	asserts.AssertDeleteQueueRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.BatchRequestTooLong = { nil }
@@ -1099,11 +1473,22 @@ end
 -- Valid keys:
 -- @return BatchRequestTooLong structure as a key-value pair table
 function M.BatchRequestTooLong(args)
-	assert(args, "You must provdide an argument table when creating BatchRequestTooLong")
-	local t = { 
+	assert(args, "You must provide an argument table when creating BatchRequestTooLong")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertBatchRequestTooLong(t)
-	return t
+	asserts.AssertBatchRequestTooLong(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidMessageContents = { nil }
@@ -1122,11 +1507,22 @@ end
 -- Valid keys:
 -- @return InvalidMessageContents structure as a key-value pair table
 function M.InvalidMessageContents(args)
-	assert(args, "You must provdide an argument table when creating InvalidMessageContents")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidMessageContents")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertInvalidMessageContents(t)
-	return t
+	asserts.AssertInvalidMessageContents(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListQueuesRequest = { ["QueueNamePrefix"] = true, nil }
@@ -1147,12 +1543,23 @@ end
 -- * QueueNamePrefix [String] <p>A string to use for filtering the list results. Only those queues whose name begins with the specified string are returned.</p> <p>Queue names are case-sensitive.</p>
 -- @return ListQueuesRequest structure as a key-value pair table
 function M.ListQueuesRequest(args)
-	assert(args, "You must provdide an argument table when creating ListQueuesRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListQueuesRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["QueueNamePrefix"] = args["QueueNamePrefix"],
 	}
-	asserts.AssertListQueuesRequest(t)
-	return t
+	asserts.AssertListQueuesRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidIdFormat = { nil }
@@ -1171,11 +1578,22 @@ end
 -- Valid keys:
 -- @return InvalidIdFormat structure as a key-value pair table
 function M.InvalidIdFormat(args)
-	assert(args, "You must provdide an argument table when creating InvalidIdFormat")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidIdFormat")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertInvalidIdFormat(t)
-	return t
+	asserts.AssertInvalidIdFormat(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AddPermissionRequest = { ["QueueUrl"] = true, ["AWSAccountIds"] = true, ["Actions"] = true, ["Label"] = true, nil }
@@ -1210,15 +1628,26 @@ end
 -- Required key: Actions
 -- @return AddPermissionRequest structure as a key-value pair table
 function M.AddPermissionRequest(args)
-	assert(args, "You must provdide an argument table when creating AddPermissionRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AddPermissionRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["QueueUrl"] = args["QueueUrl"],
 		["AWSAccountIds"] = args["AWSAccountIds"],
 		["Actions"] = args["Actions"],
 		["Label"] = args["Label"],
 	}
-	asserts.AssertAddPermissionRequest(t)
-	return t
+	asserts.AssertAddPermissionRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListDeadLetterSourceQueuesResult = { ["queueUrls"] = true, nil }
@@ -1241,12 +1670,23 @@ end
 -- Required key: queueUrls
 -- @return ListDeadLetterSourceQueuesResult structure as a key-value pair table
 function M.ListDeadLetterSourceQueuesResult(args)
-	assert(args, "You must provdide an argument table when creating ListDeadLetterSourceQueuesResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListDeadLetterSourceQueuesResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["queueUrls"] = args["queueUrls"],
 	}
-	asserts.AssertListDeadLetterSourceQueuesResult(t)
-	return t
+	asserts.AssertListDeadLetterSourceQueuesResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.QueueNameExists = { nil }
@@ -1265,11 +1705,22 @@ end
 -- Valid keys:
 -- @return QueueNameExists structure as a key-value pair table
 function M.QueueNameExists(args)
-	assert(args, "You must provdide an argument table when creating QueueNameExists")
-	local t = { 
+	assert(args, "You must provide an argument table when creating QueueNameExists")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertQueueNameExists(t)
-	return t
+	asserts.AssertQueueNameExists(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.BatchEntryIdsNotDistinct = { nil }
@@ -1288,11 +1739,22 @@ end
 -- Valid keys:
 -- @return BatchEntryIdsNotDistinct structure as a key-value pair table
 function M.BatchEntryIdsNotDistinct(args)
-	assert(args, "You must provdide an argument table when creating BatchEntryIdsNotDistinct")
-	local t = { 
+	assert(args, "You must provide an argument table when creating BatchEntryIdsNotDistinct")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertBatchEntryIdsNotDistinct(t)
-	return t
+	asserts.AssertBatchEntryIdsNotDistinct(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteMessageBatchResultEntry = { ["Id"] = true, nil }
@@ -1315,12 +1777,23 @@ end
 -- Required key: Id
 -- @return DeleteMessageBatchResultEntry structure as a key-value pair table
 function M.DeleteMessageBatchResultEntry(args)
-	assert(args, "You must provdide an argument table when creating DeleteMessageBatchResultEntry")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteMessageBatchResultEntry")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Id"] = args["Id"],
 	}
-	asserts.AssertDeleteMessageBatchResultEntry(t)
-	return t
+	asserts.AssertDeleteMessageBatchResultEntry(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.EmptyBatchRequest = { nil }
@@ -1339,11 +1812,22 @@ end
 -- Valid keys:
 -- @return EmptyBatchRequest structure as a key-value pair table
 function M.EmptyBatchRequest(args)
-	assert(args, "You must provdide an argument table when creating EmptyBatchRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating EmptyBatchRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertEmptyBatchRequest(t)
-	return t
+	asserts.AssertEmptyBatchRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListQueuesResult = { ["QueueUrls"] = true, nil }
@@ -1364,12 +1848,23 @@ end
 -- * QueueUrls [QueueUrlList] <p>A list of queue URLs, up to 1,000 entries.</p>
 -- @return ListQueuesResult structure as a key-value pair table
 function M.ListQueuesResult(args)
-	assert(args, "You must provdide an argument table when creating ListQueuesResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListQueuesResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["QueueUrls"] = args["QueueUrls"],
 	}
-	asserts.AssertListQueuesResult(t)
-	return t
+	asserts.AssertListQueuesResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.SendMessageBatchRequestEntry = { ["MessageDeduplicationId"] = true, ["MessageBody"] = true, ["DelaySeconds"] = true, ["MessageAttributes"] = true, ["Id"] = true, ["MessageGroupId"] = true, nil }
@@ -1404,8 +1899,14 @@ end
 -- Required key: MessageBody
 -- @return SendMessageBatchRequestEntry structure as a key-value pair table
 function M.SendMessageBatchRequestEntry(args)
-	assert(args, "You must provdide an argument table when creating SendMessageBatchRequestEntry")
-	local t = { 
+	assert(args, "You must provide an argument table when creating SendMessageBatchRequestEntry")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["MessageDeduplicationId"] = args["MessageDeduplicationId"],
 		["MessageBody"] = args["MessageBody"],
 		["DelaySeconds"] = args["DelaySeconds"],
@@ -1413,8 +1914,13 @@ function M.SendMessageBatchRequestEntry(args)
 		["Id"] = args["Id"],
 		["MessageGroupId"] = args["MessageGroupId"],
 	}
-	asserts.AssertSendMessageBatchRequestEntry(t)
-	return t
+	asserts.AssertSendMessageBatchRequestEntry(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ChangeMessageVisibilityBatchRequestEntry = { ["ReceiptHandle"] = true, ["VisibilityTimeout"] = true, ["Id"] = true, nil }
@@ -1443,14 +1949,25 @@ end
 -- Required key: ReceiptHandle
 -- @return ChangeMessageVisibilityBatchRequestEntry structure as a key-value pair table
 function M.ChangeMessageVisibilityBatchRequestEntry(args)
-	assert(args, "You must provdide an argument table when creating ChangeMessageVisibilityBatchRequestEntry")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ChangeMessageVisibilityBatchRequestEntry")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ReceiptHandle"] = args["ReceiptHandle"],
 		["VisibilityTimeout"] = args["VisibilityTimeout"],
 		["Id"] = args["Id"],
 	}
-	asserts.AssertChangeMessageVisibilityBatchRequestEntry(t)
-	return t
+	asserts.AssertChangeMessageVisibilityBatchRequestEntry(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.TooManyEntriesInBatchRequest = { nil }
@@ -1469,11 +1986,22 @@ end
 -- Valid keys:
 -- @return TooManyEntriesInBatchRequest structure as a key-value pair table
 function M.TooManyEntriesInBatchRequest(args)
-	assert(args, "You must provdide an argument table when creating TooManyEntriesInBatchRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating TooManyEntriesInBatchRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertTooManyEntriesInBatchRequest(t)
-	return t
+	asserts.AssertTooManyEntriesInBatchRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.QueueDeletedRecently = { nil }
@@ -1492,11 +2020,22 @@ end
 -- Valid keys:
 -- @return QueueDeletedRecently structure as a key-value pair table
 function M.QueueDeletedRecently(args)
-	assert(args, "You must provdide an argument table when creating QueueDeletedRecently")
-	local t = { 
+	assert(args, "You must provide an argument table when creating QueueDeletedRecently")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertQueueDeletedRecently(t)
-	return t
+	asserts.AssertQueueDeletedRecently(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteMessageBatchResult = { ["Successful"] = true, ["Failed"] = true, nil }
@@ -1523,13 +2062,24 @@ end
 -- Required key: Failed
 -- @return DeleteMessageBatchResult structure as a key-value pair table
 function M.DeleteMessageBatchResult(args)
-	assert(args, "You must provdide an argument table when creating DeleteMessageBatchResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteMessageBatchResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Successful"] = args["Successful"],
 		["Failed"] = args["Failed"],
 	}
-	asserts.AssertDeleteMessageBatchResult(t)
-	return t
+	asserts.AssertDeleteMessageBatchResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ChangeMessageVisibilityBatchResultEntry = { ["Id"] = true, nil }
@@ -1552,12 +2102,23 @@ end
 -- Required key: Id
 -- @return ChangeMessageVisibilityBatchResultEntry structure as a key-value pair table
 function M.ChangeMessageVisibilityBatchResultEntry(args)
-	assert(args, "You must provdide an argument table when creating ChangeMessageVisibilityBatchResultEntry")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ChangeMessageVisibilityBatchResultEntry")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Id"] = args["Id"],
 	}
-	asserts.AssertChangeMessageVisibilityBatchResultEntry(t)
-	return t
+	asserts.AssertChangeMessageVisibilityBatchResultEntry(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteMessageRequest = { ["QueueUrl"] = true, ["ReceiptHandle"] = true, nil }
@@ -1584,13 +2145,24 @@ end
 -- Required key: ReceiptHandle
 -- @return DeleteMessageRequest structure as a key-value pair table
 function M.DeleteMessageRequest(args)
-	assert(args, "You must provdide an argument table when creating DeleteMessageRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteMessageRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["QueueUrl"] = args["QueueUrl"],
 		["ReceiptHandle"] = args["ReceiptHandle"],
 	}
-	asserts.AssertDeleteMessageRequest(t)
-	return t
+	asserts.AssertDeleteMessageRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 function asserts.AssertQueueAttributeName(str)
@@ -1987,8 +2559,11 @@ function M.CreateQueueAsync(CreateQueueRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".CreateQueue",
 	}
+	for header,value in pairs(CreateQueueRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateQueueRequest, headers, settings, cb)
 	else
@@ -2019,8 +2594,11 @@ function M.GetQueueAttributesAsync(GetQueueAttributesRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".GetQueueAttributes",
 	}
+	for header,value in pairs(GetQueueAttributesRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", GetQueueAttributesRequest, headers, settings, cb)
 	else
@@ -2051,8 +2629,11 @@ function M.SetQueueAttributesAsync(SetQueueAttributesRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".SetQueueAttributes",
 	}
+	for header,value in pairs(SetQueueAttributesRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", SetQueueAttributesRequest, headers, settings, cb)
 	else
@@ -2083,8 +2664,11 @@ function M.GetQueueUrlAsync(GetQueueUrlRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".GetQueueUrl",
 	}
+	for header,value in pairs(GetQueueUrlRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", GetQueueUrlRequest, headers, settings, cb)
 	else
@@ -2115,8 +2699,11 @@ function M.DeleteMessageBatchAsync(DeleteMessageBatchRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DeleteMessageBatch",
 	}
+	for header,value in pairs(DeleteMessageBatchRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteMessageBatchRequest, headers, settings, cb)
 	else
@@ -2147,8 +2734,11 @@ function M.SendMessageBatchAsync(SendMessageBatchRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".SendMessageBatch",
 	}
+	for header,value in pairs(SendMessageBatchRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", SendMessageBatchRequest, headers, settings, cb)
 	else
@@ -2179,8 +2769,11 @@ function M.ListDeadLetterSourceQueuesAsync(ListDeadLetterSourceQueuesRequest, cb
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".ListDeadLetterSourceQueues",
 	}
+	for header,value in pairs(ListDeadLetterSourceQueuesRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ListDeadLetterSourceQueuesRequest, headers, settings, cb)
 	else
@@ -2211,8 +2804,11 @@ function M.ChangeMessageVisibilityAsync(ChangeMessageVisibilityRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".ChangeMessageVisibility",
 	}
+	for header,value in pairs(ChangeMessageVisibilityRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ChangeMessageVisibilityRequest, headers, settings, cb)
 	else
@@ -2243,8 +2839,11 @@ function M.AddPermissionAsync(AddPermissionRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".AddPermission",
 	}
+	for header,value in pairs(AddPermissionRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", AddPermissionRequest, headers, settings, cb)
 	else
@@ -2275,8 +2874,11 @@ function M.ChangeMessageVisibilityBatchAsync(ChangeMessageVisibilityBatchRequest
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".ChangeMessageVisibilityBatch",
 	}
+	for header,value in pairs(ChangeMessageVisibilityBatchRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ChangeMessageVisibilityBatchRequest, headers, settings, cb)
 	else
@@ -2307,8 +2909,11 @@ function M.SendMessageAsync(SendMessageRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".SendMessage",
 	}
+	for header,value in pairs(SendMessageRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", SendMessageRequest, headers, settings, cb)
 	else
@@ -2339,8 +2944,11 @@ function M.DeleteQueueAsync(DeleteQueueRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DeleteQueue",
 	}
+	for header,value in pairs(DeleteQueueRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteQueueRequest, headers, settings, cb)
 	else
@@ -2371,8 +2979,11 @@ function M.PurgeQueueAsync(PurgeQueueRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".PurgeQueue",
 	}
+	for header,value in pairs(PurgeQueueRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", PurgeQueueRequest, headers, settings, cb)
 	else
@@ -2403,8 +3014,11 @@ function M.ReceiveMessageAsync(ReceiveMessageRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".ReceiveMessage",
 	}
+	for header,value in pairs(ReceiveMessageRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ReceiveMessageRequest, headers, settings, cb)
 	else
@@ -2435,8 +3049,11 @@ function M.DeleteMessageAsync(DeleteMessageRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DeleteMessage",
 	}
+	for header,value in pairs(DeleteMessageRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteMessageRequest, headers, settings, cb)
 	else
@@ -2467,8 +3084,11 @@ function M.ListQueuesAsync(ListQueuesRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".ListQueues",
 	}
+	for header,value in pairs(ListQueuesRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ListQueuesRequest, headers, settings, cb)
 	else
@@ -2499,8 +3119,11 @@ function M.RemovePermissionAsync(RemovePermissionRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".RemovePermission",
 	}
+	for header,value in pairs(RemovePermissionRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", RemovePermissionRequest, headers, settings, cb)
 	else

@@ -43,13 +43,24 @@ end
 -- Required key: replicationJobId
 -- @return StartOnDemandReplicationRunRequest structure as a key-value pair table
 function M.StartOnDemandReplicationRunRequest(args)
-	assert(args, "You must provdide an argument table when creating StartOnDemandReplicationRunRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating StartOnDemandReplicationRunRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["replicationJobId"] = args["replicationJobId"],
 		["description"] = args["description"],
 	}
-	asserts.AssertStartOnDemandReplicationRunRequest(t)
-	return t
+	asserts.AssertStartOnDemandReplicationRunRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ReplicationJobNotFoundException = { ["message"] = true, nil }
@@ -70,12 +81,23 @@ end
 -- * message [ErrorMessage] 
 -- @return ReplicationJobNotFoundException structure as a key-value pair table
 function M.ReplicationJobNotFoundException(args)
-	assert(args, "You must provdide an argument table when creating ReplicationJobNotFoundException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ReplicationJobNotFoundException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertReplicationJobNotFoundException(t)
-	return t
+	asserts.AssertReplicationJobNotFoundException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InternalError = { ["message"] = true, nil }
@@ -96,12 +118,23 @@ end
 -- * message [ErrorMessage] 
 -- @return InternalError structure as a key-value pair table
 function M.InternalError(args)
-	assert(args, "You must provdide an argument table when creating InternalError")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InternalError")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertInternalError(t)
-	return t
+	asserts.AssertInternalError(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ImportServerCatalogResponse = { nil }
@@ -120,11 +153,22 @@ end
 -- Valid keys:
 -- @return ImportServerCatalogResponse structure as a key-value pair table
 function M.ImportServerCatalogResponse(args)
-	assert(args, "You must provdide an argument table when creating ImportServerCatalogResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ImportServerCatalogResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertImportServerCatalogResponse(t)
-	return t
+	asserts.AssertImportServerCatalogResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.NoConnectorsAvailableException = { ["message"] = true, nil }
@@ -145,12 +189,23 @@ end
 -- * message [ErrorMessage] 
 -- @return NoConnectorsAvailableException structure as a key-value pair table
 function M.NoConnectorsAvailableException(args)
-	assert(args, "You must provdide an argument table when creating NoConnectorsAvailableException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating NoConnectorsAvailableException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertNoConnectorsAvailableException(t)
-	return t
+	asserts.AssertNoConnectorsAvailableException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Connector = { ["status"] = true, ["capabilityList"] = true, ["macAddress"] = true, ["vmManagerName"] = true, ["connectorId"] = true, ["associatedOn"] = true, ["version"] = true, ["vmManagerId"] = true, ["vmManagerType"] = true, ["ipAddress"] = true, nil }
@@ -189,8 +244,14 @@ end
 -- * ipAddress [IpAddress] 
 -- @return Connector structure as a key-value pair table
 function M.Connector(args)
-	assert(args, "You must provdide an argument table when creating Connector")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Connector")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["status"] = args["status"],
 		["capabilityList"] = args["capabilityList"],
 		["macAddress"] = args["macAddress"],
@@ -202,8 +263,13 @@ function M.Connector(args)
 		["vmManagerType"] = args["vmManagerType"],
 		["ipAddress"] = args["ipAddress"],
 	}
-	asserts.AssertConnector(t)
-	return t
+	asserts.AssertConnector(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetReplicationJobsResponse = { ["nextToken"] = true, ["replicationJobList"] = true, nil }
@@ -226,13 +292,24 @@ end
 -- * replicationJobList [ReplicationJobList] 
 -- @return GetReplicationJobsResponse structure as a key-value pair table
 function M.GetReplicationJobsResponse(args)
-	assert(args, "You must provdide an argument table when creating GetReplicationJobsResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetReplicationJobsResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["nextToken"] = args["nextToken"],
 		["replicationJobList"] = args["replicationJobList"],
 	}
-	asserts.AssertGetReplicationJobsResponse(t)
-	return t
+	asserts.AssertGetReplicationJobsResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ServerCannotBeReplicatedException = { ["message"] = true, nil }
@@ -253,12 +330,23 @@ end
 -- * message [ErrorMessage] 
 -- @return ServerCannotBeReplicatedException structure as a key-value pair table
 function M.ServerCannotBeReplicatedException(args)
-	assert(args, "You must provdide an argument table when creating ServerCannotBeReplicatedException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ServerCannotBeReplicatedException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertServerCannotBeReplicatedException(t)
-	return t
+	asserts.AssertServerCannotBeReplicatedException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ImportServerCatalogRequest = { nil }
@@ -277,11 +365,22 @@ end
 -- Valid keys:
 -- @return ImportServerCatalogRequest structure as a key-value pair table
 function M.ImportServerCatalogRequest(args)
-	assert(args, "You must provdide an argument table when creating ImportServerCatalogRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ImportServerCatalogRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertImportServerCatalogRequest(t)
-	return t
+	asserts.AssertImportServerCatalogRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteServerCatalogRequest = { nil }
@@ -300,11 +399,22 @@ end
 -- Valid keys:
 -- @return DeleteServerCatalogRequest structure as a key-value pair table
 function M.DeleteServerCatalogRequest(args)
-	assert(args, "You must provdide an argument table when creating DeleteServerCatalogRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteServerCatalogRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertDeleteServerCatalogRequest(t)
-	return t
+	asserts.AssertDeleteServerCatalogRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ReplicationRun = { ["amiId"] = true, ["description"] = true, ["state"] = true, ["completedTime"] = true, ["scheduledStartTime"] = true, ["replicationRunId"] = true, ["type"] = true, ["statusMessage"] = true, nil }
@@ -339,8 +449,14 @@ end
 -- * statusMessage [ReplicationRunStatusMessage] 
 -- @return ReplicationRun structure as a key-value pair table
 function M.ReplicationRun(args)
-	assert(args, "You must provdide an argument table when creating ReplicationRun")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ReplicationRun")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["amiId"] = args["amiId"],
 		["description"] = args["description"],
 		["state"] = args["state"],
@@ -350,8 +466,13 @@ function M.ReplicationRun(args)
 		["type"] = args["type"],
 		["statusMessage"] = args["statusMessage"],
 	}
-	asserts.AssertReplicationRun(t)
-	return t
+	asserts.AssertReplicationRun(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteServerCatalogResponse = { nil }
@@ -370,11 +491,22 @@ end
 -- Valid keys:
 -- @return DeleteServerCatalogResponse structure as a key-value pair table
 function M.DeleteServerCatalogResponse(args)
-	assert(args, "You must provdide an argument table when creating DeleteServerCatalogResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteServerCatalogResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertDeleteServerCatalogResponse(t)
-	return t
+	asserts.AssertDeleteServerCatalogResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetReplicationRunsRequest = { ["nextToken"] = true, ["replicationJobId"] = true, ["maxResults"] = true, nil }
@@ -401,14 +533,25 @@ end
 -- Required key: replicationJobId
 -- @return GetReplicationRunsRequest structure as a key-value pair table
 function M.GetReplicationRunsRequest(args)
-	assert(args, "You must provdide an argument table when creating GetReplicationRunsRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetReplicationRunsRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["nextToken"] = args["nextToken"],
 		["replicationJobId"] = args["replicationJobId"],
 		["maxResults"] = args["maxResults"],
 	}
-	asserts.AssertGetReplicationRunsRequest(t)
-	return t
+	asserts.AssertGetReplicationRunsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetConnectorsRequest = { ["nextToken"] = true, ["maxResults"] = true, nil }
@@ -431,13 +574,24 @@ end
 -- * maxResults [MaxResults] 
 -- @return GetConnectorsRequest structure as a key-value pair table
 function M.GetConnectorsRequest(args)
-	assert(args, "You must provdide an argument table when creating GetConnectorsRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetConnectorsRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["nextToken"] = args["nextToken"],
 		["maxResults"] = args["maxResults"],
 	}
-	asserts.AssertGetConnectorsRequest(t)
-	return t
+	asserts.AssertGetConnectorsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DisassociateConnectorRequest = { ["connectorId"] = true, nil }
@@ -460,12 +614,23 @@ end
 -- Required key: connectorId
 -- @return DisassociateConnectorRequest structure as a key-value pair table
 function M.DisassociateConnectorRequest(args)
-	assert(args, "You must provdide an argument table when creating DisassociateConnectorRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DisassociateConnectorRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["connectorId"] = args["connectorId"],
 	}
-	asserts.AssertDisassociateConnectorRequest(t)
-	return t
+	asserts.AssertDisassociateConnectorRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidParameterException = { ["message"] = true, nil }
@@ -486,12 +651,23 @@ end
 -- * message [ErrorMessage] 
 -- @return InvalidParameterException structure as a key-value pair table
 function M.InvalidParameterException(args)
-	assert(args, "You must provdide an argument table when creating InvalidParameterException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidParameterException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertInvalidParameterException(t)
-	return t
+	asserts.AssertInvalidParameterException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetServersResponse = { ["lastModifiedOn"] = true, ["nextToken"] = true, ["serverCatalogStatus"] = true, ["serverList"] = true, nil }
@@ -518,15 +694,26 @@ end
 -- * serverList [ServerList] 
 -- @return GetServersResponse structure as a key-value pair table
 function M.GetServersResponse(args)
-	assert(args, "You must provdide an argument table when creating GetServersResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetServersResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["lastModifiedOn"] = args["lastModifiedOn"],
 		["nextToken"] = args["nextToken"],
 		["serverCatalogStatus"] = args["serverCatalogStatus"],
 		["serverList"] = args["serverList"],
 	}
-	asserts.AssertGetServersResponse(t)
-	return t
+	asserts.AssertGetServersResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ReplicationRunLimitExceededException = { ["message"] = true, nil }
@@ -547,12 +734,23 @@ end
 -- * message [ErrorMessage] 
 -- @return ReplicationRunLimitExceededException structure as a key-value pair table
 function M.ReplicationRunLimitExceededException(args)
-	assert(args, "You must provdide an argument table when creating ReplicationRunLimitExceededException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ReplicationRunLimitExceededException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertReplicationRunLimitExceededException(t)
-	return t
+	asserts.AssertReplicationRunLimitExceededException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UnauthorizedOperationException = { ["message"] = true, nil }
@@ -573,12 +771,23 @@ end
 -- * message [ErrorMessage] 
 -- @return UnauthorizedOperationException structure as a key-value pair table
 function M.UnauthorizedOperationException(args)
-	assert(args, "You must provdide an argument table when creating UnauthorizedOperationException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UnauthorizedOperationException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertUnauthorizedOperationException(t)
-	return t
+	asserts.AssertUnauthorizedOperationException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteReplicationJobResponse = { nil }
@@ -597,11 +806,22 @@ end
 -- Valid keys:
 -- @return DeleteReplicationJobResponse structure as a key-value pair table
 function M.DeleteReplicationJobResponse(args)
-	assert(args, "You must provdide an argument table when creating DeleteReplicationJobResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteReplicationJobResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertDeleteReplicationJobResponse(t)
-	return t
+	asserts.AssertDeleteReplicationJobResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.OperationNotPermittedException = { ["message"] = true, nil }
@@ -622,12 +842,23 @@ end
 -- * message [ErrorMessage] 
 -- @return OperationNotPermittedException structure as a key-value pair table
 function M.OperationNotPermittedException(args)
-	assert(args, "You must provdide an argument table when creating OperationNotPermittedException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating OperationNotPermittedException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertOperationNotPermittedException(t)
-	return t
+	asserts.AssertOperationNotPermittedException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateReplicationJobResponse = { ["replicationJobId"] = true, nil }
@@ -648,12 +879,23 @@ end
 -- * replicationJobId [ReplicationJobId] 
 -- @return CreateReplicationJobResponse structure as a key-value pair table
 function M.CreateReplicationJobResponse(args)
-	assert(args, "You must provdide an argument table when creating CreateReplicationJobResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateReplicationJobResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["replicationJobId"] = args["replicationJobId"],
 	}
-	asserts.AssertCreateReplicationJobResponse(t)
-	return t
+	asserts.AssertCreateReplicationJobResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdateReplicationJobRequest = { ["licenseType"] = true, ["description"] = true, ["nextReplicationRunStartTime"] = true, ["replicationJobId"] = true, ["frequency"] = true, ["roleName"] = true, nil }
@@ -686,8 +928,14 @@ end
 -- Required key: replicationJobId
 -- @return UpdateReplicationJobRequest structure as a key-value pair table
 function M.UpdateReplicationJobRequest(args)
-	assert(args, "You must provdide an argument table when creating UpdateReplicationJobRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateReplicationJobRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["licenseType"] = args["licenseType"],
 		["description"] = args["description"],
 		["nextReplicationRunStartTime"] = args["nextReplicationRunStartTime"],
@@ -695,8 +943,13 @@ function M.UpdateReplicationJobRequest(args)
 		["frequency"] = args["frequency"],
 		["roleName"] = args["roleName"],
 	}
-	asserts.AssertUpdateReplicationJobRequest(t)
-	return t
+	asserts.AssertUpdateReplicationJobRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.MissingRequiredParameterException = { ["message"] = true, nil }
@@ -717,12 +970,23 @@ end
 -- * message [ErrorMessage] 
 -- @return MissingRequiredParameterException structure as a key-value pair table
 function M.MissingRequiredParameterException(args)
-	assert(args, "You must provdide an argument table when creating MissingRequiredParameterException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating MissingRequiredParameterException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertMissingRequiredParameterException(t)
-	return t
+	asserts.AssertMissingRequiredParameterException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Server = { ["replicationJobTerminated"] = true, ["serverId"] = true, ["serverType"] = true, ["replicationJobId"] = true, ["vmServer"] = true, nil }
@@ -751,16 +1015,27 @@ end
 -- * vmServer [VmServer] 
 -- @return Server structure as a key-value pair table
 function M.Server(args)
-	assert(args, "You must provdide an argument table when creating Server")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Server")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["replicationJobTerminated"] = args["replicationJobTerminated"],
 		["serverId"] = args["serverId"],
 		["serverType"] = args["serverType"],
 		["replicationJobId"] = args["replicationJobId"],
 		["vmServer"] = args["vmServer"],
 	}
-	asserts.AssertServer(t)
-	return t
+	asserts.AssertServer(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ReplicationJobAlreadyExistsException = { ["message"] = true, nil }
@@ -781,12 +1056,23 @@ end
 -- * message [ErrorMessage] 
 -- @return ReplicationJobAlreadyExistsException structure as a key-value pair table
 function M.ReplicationJobAlreadyExistsException(args)
-	assert(args, "You must provdide an argument table when creating ReplicationJobAlreadyExistsException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ReplicationJobAlreadyExistsException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertReplicationJobAlreadyExistsException(t)
-	return t
+	asserts.AssertReplicationJobAlreadyExistsException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.StartOnDemandReplicationRunResponse = { ["replicationRunId"] = true, nil }
@@ -807,12 +1093,23 @@ end
 -- * replicationRunId [ReplicationRunId] 
 -- @return StartOnDemandReplicationRunResponse structure as a key-value pair table
 function M.StartOnDemandReplicationRunResponse(args)
-	assert(args, "You must provdide an argument table when creating StartOnDemandReplicationRunResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating StartOnDemandReplicationRunResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["replicationRunId"] = args["replicationRunId"],
 	}
-	asserts.AssertStartOnDemandReplicationRunResponse(t)
-	return t
+	asserts.AssertStartOnDemandReplicationRunResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateReplicationJobRequest = { ["licenseType"] = true, ["description"] = true, ["seedReplicationTime"] = true, ["frequency"] = true, ["roleName"] = true, ["serverId"] = true, nil }
@@ -849,8 +1146,14 @@ end
 -- Required key: frequency
 -- @return CreateReplicationJobRequest structure as a key-value pair table
 function M.CreateReplicationJobRequest(args)
-	assert(args, "You must provdide an argument table when creating CreateReplicationJobRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateReplicationJobRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["licenseType"] = args["licenseType"],
 		["description"] = args["description"],
 		["seedReplicationTime"] = args["seedReplicationTime"],
@@ -858,8 +1161,13 @@ function M.CreateReplicationJobRequest(args)
 		["roleName"] = args["roleName"],
 		["serverId"] = args["serverId"],
 	}
-	asserts.AssertCreateReplicationJobRequest(t)
-	return t
+	asserts.AssertCreateReplicationJobRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteReplicationJobRequest = { ["replicationJobId"] = true, nil }
@@ -882,12 +1190,23 @@ end
 -- Required key: replicationJobId
 -- @return DeleteReplicationJobRequest structure as a key-value pair table
 function M.DeleteReplicationJobRequest(args)
-	assert(args, "You must provdide an argument table when creating DeleteReplicationJobRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteReplicationJobRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["replicationJobId"] = args["replicationJobId"],
 	}
-	asserts.AssertDeleteReplicationJobRequest(t)
-	return t
+	asserts.AssertDeleteReplicationJobRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DisassociateConnectorResponse = { nil }
@@ -906,11 +1225,22 @@ end
 -- Valid keys:
 -- @return DisassociateConnectorResponse structure as a key-value pair table
 function M.DisassociateConnectorResponse(args)
-	assert(args, "You must provdide an argument table when creating DisassociateConnectorResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DisassociateConnectorResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertDisassociateConnectorResponse(t)
-	return t
+	asserts.AssertDisassociateConnectorResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetReplicationJobsRequest = { ["nextToken"] = true, ["replicationJobId"] = true, ["maxResults"] = true, nil }
@@ -935,14 +1265,25 @@ end
 -- * maxResults [MaxResults] 
 -- @return GetReplicationJobsRequest structure as a key-value pair table
 function M.GetReplicationJobsRequest(args)
-	assert(args, "You must provdide an argument table when creating GetReplicationJobsRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetReplicationJobsRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["nextToken"] = args["nextToken"],
 		["replicationJobId"] = args["replicationJobId"],
 		["maxResults"] = args["maxResults"],
 	}
-	asserts.AssertGetReplicationJobsRequest(t)
-	return t
+	asserts.AssertGetReplicationJobsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ReplicationJob = { ["licenseType"] = true, ["latestAmiId"] = true, ["description"] = true, ["vmServer"] = true, ["replicationRunList"] = true, ["nextReplicationRunStartTime"] = true, ["serverType"] = true, ["replicationJobId"] = true, ["state"] = true, ["seedReplicationTime"] = true, ["frequency"] = true, ["roleName"] = true, ["serverId"] = true, ["statusMessage"] = true, nil }
@@ -989,8 +1330,14 @@ end
 -- * statusMessage [ReplicationJobStatusMessage] 
 -- @return ReplicationJob structure as a key-value pair table
 function M.ReplicationJob(args)
-	assert(args, "You must provdide an argument table when creating ReplicationJob")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ReplicationJob")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["licenseType"] = args["licenseType"],
 		["latestAmiId"] = args["latestAmiId"],
 		["description"] = args["description"],
@@ -1006,8 +1353,13 @@ function M.ReplicationJob(args)
 		["serverId"] = args["serverId"],
 		["statusMessage"] = args["statusMessage"],
 	}
-	asserts.AssertReplicationJob(t)
-	return t
+	asserts.AssertReplicationJob(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.VmServer = { ["vmManagerName"] = true, ["vmServerAddress"] = true, ["vmName"] = true, ["vmPath"] = true, ["vmManagerType"] = true, nil }
@@ -1036,16 +1388,27 @@ end
 -- * vmManagerType [VmManagerType] 
 -- @return VmServer structure as a key-value pair table
 function M.VmServer(args)
-	assert(args, "You must provdide an argument table when creating VmServer")
-	local t = { 
+	assert(args, "You must provide an argument table when creating VmServer")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["vmManagerName"] = args["vmManagerName"],
 		["vmServerAddress"] = args["vmServerAddress"],
 		["vmName"] = args["vmName"],
 		["vmPath"] = args["vmPath"],
 		["vmManagerType"] = args["vmManagerType"],
 	}
-	asserts.AssertVmServer(t)
-	return t
+	asserts.AssertVmServer(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.VmServerAddress = { ["vmManagerId"] = true, ["vmId"] = true, nil }
@@ -1068,13 +1431,24 @@ end
 -- * vmId [VmId] 
 -- @return VmServerAddress structure as a key-value pair table
 function M.VmServerAddress(args)
-	assert(args, "You must provdide an argument table when creating VmServerAddress")
-	local t = { 
+	assert(args, "You must provide an argument table when creating VmServerAddress")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["vmManagerId"] = args["vmManagerId"],
 		["vmId"] = args["vmId"],
 	}
-	asserts.AssertVmServerAddress(t)
-	return t
+	asserts.AssertVmServerAddress(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetServersRequest = { ["nextToken"] = true, ["maxResults"] = true, nil }
@@ -1097,13 +1471,24 @@ end
 -- * maxResults [MaxResults] 
 -- @return GetServersRequest structure as a key-value pair table
 function M.GetServersRequest(args)
-	assert(args, "You must provdide an argument table when creating GetServersRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetServersRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["nextToken"] = args["nextToken"],
 		["maxResults"] = args["maxResults"],
 	}
-	asserts.AssertGetServersRequest(t)
-	return t
+	asserts.AssertGetServersRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetConnectorsResponse = { ["nextToken"] = true, ["connectorList"] = true, nil }
@@ -1126,13 +1511,24 @@ end
 -- * connectorList [ConnectorList] 
 -- @return GetConnectorsResponse structure as a key-value pair table
 function M.GetConnectorsResponse(args)
-	assert(args, "You must provdide an argument table when creating GetConnectorsResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetConnectorsResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["nextToken"] = args["nextToken"],
 		["connectorList"] = args["connectorList"],
 	}
-	asserts.AssertGetConnectorsResponse(t)
-	return t
+	asserts.AssertGetConnectorsResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetReplicationRunsResponse = { ["nextToken"] = true, ["replicationJob"] = true, ["replicationRunList"] = true, nil }
@@ -1157,14 +1553,25 @@ end
 -- * replicationRunList [ReplicationRunList] 
 -- @return GetReplicationRunsResponse structure as a key-value pair table
 function M.GetReplicationRunsResponse(args)
-	assert(args, "You must provdide an argument table when creating GetReplicationRunsResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetReplicationRunsResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["nextToken"] = args["nextToken"],
 		["replicationJob"] = args["replicationJob"],
 		["replicationRunList"] = args["replicationRunList"],
 	}
-	asserts.AssertGetReplicationRunsResponse(t)
-	return t
+	asserts.AssertGetReplicationRunsResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdateReplicationJobResponse = { nil }
@@ -1183,11 +1590,22 @@ end
 -- Valid keys:
 -- @return UpdateReplicationJobResponse structure as a key-value pair table
 function M.UpdateReplicationJobResponse(args)
-	assert(args, "You must provdide an argument table when creating UpdateReplicationJobResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateReplicationJobResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertUpdateReplicationJobResponse(t)
-	return t
+	asserts.AssertUpdateReplicationJobResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 function asserts.AssertReplicationRunState(str)
@@ -1667,8 +2085,11 @@ function M.ImportServerCatalogAsync(ImportServerCatalogRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AWSServerMigrationService_V2016_10_24.ImportServerCatalog",
 	}
+	for header,value in pairs(ImportServerCatalogRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ImportServerCatalogRequest, headers, settings, cb)
 	else
@@ -1699,8 +2120,11 @@ function M.GetConnectorsAsync(GetConnectorsRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AWSServerMigrationService_V2016_10_24.GetConnectors",
 	}
+	for header,value in pairs(GetConnectorsRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", GetConnectorsRequest, headers, settings, cb)
 	else
@@ -1731,8 +2155,11 @@ function M.DeleteReplicationJobAsync(DeleteReplicationJobRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AWSServerMigrationService_V2016_10_24.DeleteReplicationJob",
 	}
+	for header,value in pairs(DeleteReplicationJobRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteReplicationJobRequest, headers, settings, cb)
 	else
@@ -1763,8 +2190,11 @@ function M.StartOnDemandReplicationRunAsync(StartOnDemandReplicationRunRequest, 
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AWSServerMigrationService_V2016_10_24.StartOnDemandReplicationRun",
 	}
+	for header,value in pairs(StartOnDemandReplicationRunRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", StartOnDemandReplicationRunRequest, headers, settings, cb)
 	else
@@ -1795,8 +2225,11 @@ function M.GetServersAsync(GetServersRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AWSServerMigrationService_V2016_10_24.GetServers",
 	}
+	for header,value in pairs(GetServersRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", GetServersRequest, headers, settings, cb)
 	else
@@ -1827,8 +2260,11 @@ function M.GetReplicationRunsAsync(GetReplicationRunsRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AWSServerMigrationService_V2016_10_24.GetReplicationRuns",
 	}
+	for header,value in pairs(GetReplicationRunsRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", GetReplicationRunsRequest, headers, settings, cb)
 	else
@@ -1859,8 +2295,11 @@ function M.GetReplicationJobsAsync(GetReplicationJobsRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AWSServerMigrationService_V2016_10_24.GetReplicationJobs",
 	}
+	for header,value in pairs(GetReplicationJobsRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", GetReplicationJobsRequest, headers, settings, cb)
 	else
@@ -1891,8 +2330,11 @@ function M.DisassociateConnectorAsync(DisassociateConnectorRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AWSServerMigrationService_V2016_10_24.DisassociateConnector",
 	}
+	for header,value in pairs(DisassociateConnectorRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DisassociateConnectorRequest, headers, settings, cb)
 	else
@@ -1923,8 +2365,11 @@ function M.CreateReplicationJobAsync(CreateReplicationJobRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AWSServerMigrationService_V2016_10_24.CreateReplicationJob",
 	}
+	for header,value in pairs(CreateReplicationJobRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateReplicationJobRequest, headers, settings, cb)
 	else
@@ -1955,8 +2400,11 @@ function M.UpdateReplicationJobAsync(UpdateReplicationJobRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AWSServerMigrationService_V2016_10_24.UpdateReplicationJob",
 	}
+	for header,value in pairs(UpdateReplicationJobRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateReplicationJobRequest, headers, settings, cb)
 	else
@@ -1987,8 +2435,11 @@ function M.DeleteServerCatalogAsync(DeleteServerCatalogRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AWSServerMigrationService_V2016_10_24.DeleteServerCatalog",
 	}
+	for header,value in pairs(DeleteServerCatalogRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteServerCatalogRequest, headers, settings, cb)
 	else

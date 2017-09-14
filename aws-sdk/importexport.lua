@@ -39,12 +39,23 @@ end
 -- * message [ErrorMessage] 
 -- @return NoSuchBucketException structure as a key-value pair table
 function M.NoSuchBucketException(args)
-	assert(args, "You must provdide an argument table when creating NoSuchBucketException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating NoSuchBucketException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertNoSuchBucketException(t)
-	return t
+	asserts.AssertNoSuchBucketException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidCustomsException = { ["message"] = true, nil }
@@ -65,12 +76,23 @@ end
 -- * message [ErrorMessage] 
 -- @return InvalidCustomsException structure as a key-value pair table
 function M.InvalidCustomsException(args)
-	assert(args, "You must provdide an argument table when creating InvalidCustomsException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidCustomsException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertInvalidCustomsException(t)
-	return t
+	asserts.AssertInvalidCustomsException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.MissingParameterException = { ["message"] = true, nil }
@@ -91,12 +113,23 @@ end
 -- * message [ErrorMessage] 
 -- @return MissingParameterException structure as a key-value pair table
 function M.MissingParameterException(args)
-	assert(args, "You must provdide an argument table when creating MissingParameterException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating MissingParameterException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertMissingParameterException(t)
-	return t
+	asserts.AssertMissingParameterException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UnableToUpdateJobIdException = { ["message"] = true, nil }
@@ -117,12 +150,23 @@ end
 -- * message [ErrorMessage] 
 -- @return UnableToUpdateJobIdException structure as a key-value pair table
 function M.UnableToUpdateJobIdException(args)
-	assert(args, "You must provdide an argument table when creating UnableToUpdateJobIdException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UnableToUpdateJobIdException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertUnableToUpdateJobIdException(t)
-	return t
+	asserts.AssertUnableToUpdateJobIdException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CancelJobInput = { ["APIVersion"] = true, ["JobId"] = true, nil }
@@ -147,13 +191,24 @@ end
 -- Required key: JobId
 -- @return CancelJobInput structure as a key-value pair table
 function M.CancelJobInput(args)
-	assert(args, "You must provdide an argument table when creating CancelJobInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CancelJobInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["APIVersion"] = args["APIVersion"],
 		["JobId"] = args["JobId"],
 	}
-	asserts.AssertCancelJobInput(t)
-	return t
+	asserts.AssertCancelJobInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidFileSystemException = { ["message"] = true, nil }
@@ -174,12 +229,23 @@ end
 -- * message [ErrorMessage] 
 -- @return InvalidFileSystemException structure as a key-value pair table
 function M.InvalidFileSystemException(args)
-	assert(args, "You must provdide an argument table when creating InvalidFileSystemException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidFileSystemException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertInvalidFileSystemException(t)
-	return t
+	asserts.AssertInvalidFileSystemException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ExpiredJobIdException = { ["message"] = true, nil }
@@ -200,12 +266,23 @@ end
 -- * message [ErrorMessage] 
 -- @return ExpiredJobIdException structure as a key-value pair table
 function M.ExpiredJobIdException(args)
-	assert(args, "You must provdide an argument table when creating ExpiredJobIdException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ExpiredJobIdException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertExpiredJobIdException(t)
-	return t
+	asserts.AssertExpiredJobIdException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UnableToCancelJobIdException = { ["message"] = true, nil }
@@ -226,12 +303,23 @@ end
 -- * message [ErrorMessage] 
 -- @return UnableToCancelJobIdException structure as a key-value pair table
 function M.UnableToCancelJobIdException(args)
-	assert(args, "You must provdide an argument table when creating UnableToCancelJobIdException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UnableToCancelJobIdException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertUnableToCancelJobIdException(t)
-	return t
+	asserts.AssertUnableToCancelJobIdException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetShippingLabelInput = { ["city"] = true, ["street3"] = true, ["name"] = true, ["country"] = true, ["company"] = true, ["jobIds"] = true, ["APIVersion"] = true, ["phoneNumber"] = true, ["street1"] = true, ["postalCode"] = true, ["stateOrProvince"] = true, ["street2"] = true, nil }
@@ -276,8 +364,14 @@ end
 -- Required key: jobIds
 -- @return GetShippingLabelInput structure as a key-value pair table
 function M.GetShippingLabelInput(args)
-	assert(args, "You must provdide an argument table when creating GetShippingLabelInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetShippingLabelInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["city"] = args["city"],
 		["street3"] = args["street3"],
 		["name"] = args["name"],
@@ -291,8 +385,13 @@ function M.GetShippingLabelInput(args)
 		["stateOrProvince"] = args["stateOrProvince"],
 		["street2"] = args["street2"],
 	}
-	asserts.AssertGetShippingLabelInput(t)
-	return t
+	asserts.AssertGetShippingLabelInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetStatusInput = { ["APIVersion"] = true, ["JobId"] = true, nil }
@@ -317,13 +416,24 @@ end
 -- Required key: JobId
 -- @return GetStatusInput structure as a key-value pair table
 function M.GetStatusInput(args)
-	assert(args, "You must provdide an argument table when creating GetStatusInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetStatusInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["APIVersion"] = args["APIVersion"],
 		["JobId"] = args["JobId"],
 	}
-	asserts.AssertGetStatusInput(t)
-	return t
+	asserts.AssertGetStatusInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidParameterException = { ["message"] = true, nil }
@@ -344,12 +454,23 @@ end
 -- * message [ErrorMessage] 
 -- @return InvalidParameterException structure as a key-value pair table
 function M.InvalidParameterException(args)
-	assert(args, "You must provdide an argument table when creating InvalidParameterException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidParameterException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertInvalidParameterException(t)
-	return t
+	asserts.AssertInvalidParameterException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidAccessKeyIdException = { ["message"] = true, nil }
@@ -370,12 +491,23 @@ end
 -- * message [ErrorMessage] 
 -- @return InvalidAccessKeyIdException structure as a key-value pair table
 function M.InvalidAccessKeyIdException(args)
-	assert(args, "You must provdide an argument table when creating InvalidAccessKeyIdException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidAccessKeyIdException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertInvalidAccessKeyIdException(t)
-	return t
+	asserts.AssertInvalidAccessKeyIdException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Artifact = { ["URL"] = true, ["Description"] = true, nil }
@@ -398,13 +530,24 @@ end
 -- * Description [Description] 
 -- @return Artifact structure as a key-value pair table
 function M.Artifact(args)
-	assert(args, "You must provdide an argument table when creating Artifact")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Artifact")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["URL"] = args["URL"],
 		["Description"] = args["Description"],
 	}
-	asserts.AssertArtifact(t)
-	return t
+	asserts.AssertArtifact(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidJobIdException = { ["message"] = true, nil }
@@ -425,12 +568,23 @@ end
 -- * message [ErrorMessage] 
 -- @return InvalidJobIdException structure as a key-value pair table
 function M.InvalidJobIdException(args)
-	assert(args, "You must provdide an argument table when creating InvalidJobIdException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidJobIdException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertInvalidJobIdException(t)
-	return t
+	asserts.AssertInvalidJobIdException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateJobQuotaExceededException = { ["message"] = true, nil }
@@ -451,12 +605,23 @@ end
 -- * message [ErrorMessage] 
 -- @return CreateJobQuotaExceededException structure as a key-value pair table
 function M.CreateJobQuotaExceededException(args)
-	assert(args, "You must provdide an argument table when creating CreateJobQuotaExceededException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateJobQuotaExceededException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertCreateJobQuotaExceededException(t)
-	return t
+	asserts.AssertCreateJobQuotaExceededException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateJobOutput = { ["ArtifactList"] = true, ["WarningMessage"] = true, ["SignatureFileContents"] = true, ["Signature"] = true, ["JobId"] = true, ["JobType"] = true, nil }
@@ -487,8 +652,14 @@ end
 -- * JobType [JobType] 
 -- @return CreateJobOutput structure as a key-value pair table
 function M.CreateJobOutput(args)
-	assert(args, "You must provdide an argument table when creating CreateJobOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateJobOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ArtifactList"] = args["ArtifactList"],
 		["WarningMessage"] = args["WarningMessage"],
 		["SignatureFileContents"] = args["SignatureFileContents"],
@@ -496,8 +667,13 @@ function M.CreateJobOutput(args)
 		["JobId"] = args["JobId"],
 		["JobType"] = args["JobType"],
 	}
-	asserts.AssertCreateJobOutput(t)
-	return t
+	asserts.AssertCreateJobOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Job = { ["CreationDate"] = true, ["IsCanceled"] = true, ["JobType"] = true, ["JobId"] = true, nil }
@@ -524,15 +700,26 @@ end
 -- * JobId [JobId] 
 -- @return Job structure as a key-value pair table
 function M.Job(args)
-	assert(args, "You must provdide an argument table when creating Job")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Job")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["CreationDate"] = args["CreationDate"],
 		["IsCanceled"] = args["IsCanceled"],
 		["JobType"] = args["JobType"],
 		["JobId"] = args["JobId"],
 	}
-	asserts.AssertJob(t)
-	return t
+	asserts.AssertJob(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CanceledJobIdException = { ["message"] = true, nil }
@@ -553,12 +740,23 @@ end
 -- * message [ErrorMessage] 
 -- @return CanceledJobIdException structure as a key-value pair table
 function M.CanceledJobIdException(args)
-	assert(args, "You must provdide an argument table when creating CanceledJobIdException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CanceledJobIdException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertCanceledJobIdException(t)
-	return t
+	asserts.AssertCanceledJobIdException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.BucketPermissionException = { ["message"] = true, nil }
@@ -579,12 +777,23 @@ end
 -- * message [ErrorMessage] 
 -- @return BucketPermissionException structure as a key-value pair table
 function M.BucketPermissionException(args)
-	assert(args, "You must provdide an argument table when creating BucketPermissionException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating BucketPermissionException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertBucketPermissionException(t)
-	return t
+	asserts.AssertBucketPermissionException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.MissingCustomsException = { ["message"] = true, nil }
@@ -605,12 +814,23 @@ end
 -- * message [ErrorMessage] 
 -- @return MissingCustomsException structure as a key-value pair table
 function M.MissingCustomsException(args)
-	assert(args, "You must provdide an argument table when creating MissingCustomsException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating MissingCustomsException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertMissingCustomsException(t)
-	return t
+	asserts.AssertMissingCustomsException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.MultipleRegionsException = { ["message"] = true, nil }
@@ -631,12 +851,23 @@ end
 -- * message [ErrorMessage] 
 -- @return MultipleRegionsException structure as a key-value pair table
 function M.MultipleRegionsException(args)
-	assert(args, "You must provdide an argument table when creating MultipleRegionsException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating MultipleRegionsException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertMultipleRegionsException(t)
-	return t
+	asserts.AssertMultipleRegionsException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListJobsOutput = { ["Jobs"] = true, ["IsTruncated"] = true, nil }
@@ -659,13 +890,24 @@ end
 -- * IsTruncated [IsTruncated] 
 -- @return ListJobsOutput structure as a key-value pair table
 function M.ListJobsOutput(args)
-	assert(args, "You must provdide an argument table when creating ListJobsOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListJobsOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Jobs"] = args["Jobs"],
 		["IsTruncated"] = args["IsTruncated"],
 	}
-	asserts.AssertListJobsOutput(t)
-	return t
+	asserts.AssertListJobsOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdateJobOutput = { ["ArtifactList"] = true, ["Success"] = true, ["WarningMessage"] = true, nil }
@@ -690,14 +932,25 @@ end
 -- * WarningMessage [WarningMessage] 
 -- @return UpdateJobOutput structure as a key-value pair table
 function M.UpdateJobOutput(args)
-	assert(args, "You must provdide an argument table when creating UpdateJobOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateJobOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ArtifactList"] = args["ArtifactList"],
 		["Success"] = args["Success"],
 		["WarningMessage"] = args["WarningMessage"],
 	}
-	asserts.AssertUpdateJobOutput(t)
-	return t
+	asserts.AssertUpdateJobOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateJobInput = { ["ManifestAddendum"] = true, ["ValidateOnly"] = true, ["APIVersion"] = true, ["JobType"] = true, ["Manifest"] = true, nil }
@@ -732,16 +985,27 @@ end
 -- Required key: ValidateOnly
 -- @return CreateJobInput structure as a key-value pair table
 function M.CreateJobInput(args)
-	assert(args, "You must provdide an argument table when creating CreateJobInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateJobInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ManifestAddendum"] = args["ManifestAddendum"],
 		["ValidateOnly"] = args["ValidateOnly"],
 		["APIVersion"] = args["APIVersion"],
 		["JobType"] = args["JobType"],
 		["Manifest"] = args["Manifest"],
 	}
-	asserts.AssertCreateJobInput(t)
-	return t
+	asserts.AssertCreateJobInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CancelJobOutput = { ["Success"] = true, nil }
@@ -762,12 +1026,23 @@ end
 -- * Success [Success] 
 -- @return CancelJobOutput structure as a key-value pair table
 function M.CancelJobOutput(args)
-	assert(args, "You must provdide an argument table when creating CancelJobOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CancelJobOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Success"] = args["Success"],
 	}
-	asserts.AssertCancelJobOutput(t)
-	return t
+	asserts.AssertCancelJobOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetShippingLabelOutput = { ["ShippingLabelURL"] = true, ["Warning"] = true, nil }
@@ -790,13 +1065,24 @@ end
 -- * Warning [GenericString] 
 -- @return GetShippingLabelOutput structure as a key-value pair table
 function M.GetShippingLabelOutput(args)
-	assert(args, "You must provdide an argument table when creating GetShippingLabelOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetShippingLabelOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ShippingLabelURL"] = args["ShippingLabelURL"],
 		["Warning"] = args["Warning"],
 	}
-	asserts.AssertGetShippingLabelOutput(t)
-	return t
+	asserts.AssertGetShippingLabelOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.MalformedManifestException = { ["message"] = true, nil }
@@ -817,12 +1103,23 @@ end
 -- * message [ErrorMessage] 
 -- @return MalformedManifestException structure as a key-value pair table
 function M.MalformedManifestException(args)
-	assert(args, "You must provdide an argument table when creating MalformedManifestException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating MalformedManifestException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertMalformedManifestException(t)
-	return t
+	asserts.AssertMalformedManifestException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.MissingManifestFieldException = { ["message"] = true, nil }
@@ -843,12 +1140,23 @@ end
 -- * message [ErrorMessage] 
 -- @return MissingManifestFieldException structure as a key-value pair table
 function M.MissingManifestFieldException(args)
-	assert(args, "You must provdide an argument table when creating MissingManifestFieldException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating MissingManifestFieldException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertMissingManifestFieldException(t)
-	return t
+	asserts.AssertMissingManifestFieldException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidVersionException = { ["message"] = true, nil }
@@ -869,12 +1177,23 @@ end
 -- * message [ErrorMessage] 
 -- @return InvalidVersionException structure as a key-value pair table
 function M.InvalidVersionException(args)
-	assert(args, "You must provdide an argument table when creating InvalidVersionException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidVersionException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertInvalidVersionException(t)
-	return t
+	asserts.AssertInvalidVersionException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidAddressException = { ["message"] = true, nil }
@@ -895,12 +1214,23 @@ end
 -- * message [ErrorMessage] 
 -- @return InvalidAddressException structure as a key-value pair table
 function M.InvalidAddressException(args)
-	assert(args, "You must provdide an argument table when creating InvalidAddressException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidAddressException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertInvalidAddressException(t)
-	return t
+	asserts.AssertInvalidAddressException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListJobsInput = { ["Marker"] = true, ["MaxJobs"] = true, ["APIVersion"] = true, nil }
@@ -925,14 +1255,25 @@ end
 -- * APIVersion [APIVersion] 
 -- @return ListJobsInput structure as a key-value pair table
 function M.ListJobsInput(args)
-	assert(args, "You must provdide an argument table when creating ListJobsInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListJobsInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Marker"] = args["Marker"],
 		["MaxJobs"] = args["MaxJobs"],
 		["APIVersion"] = args["APIVersion"],
 	}
-	asserts.AssertListJobsInput(t)
-	return t
+	asserts.AssertListJobsInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetStatusOutput = { ["ProgressMessage"] = true, ["ProgressCode"] = true, ["CreationDate"] = true, ["LogBucket"] = true, ["ArtifactList"] = true, ["LocationMessage"] = true, ["CurrentManifest"] = true, ["JobId"] = true, ["Carrier"] = true, ["JobType"] = true, ["Signature"] = true, ["TrackingNumber"] = true, ["SignatureFileContents"] = true, ["ErrorCount"] = true, ["LocationCode"] = true, ["LogKey"] = true, nil }
@@ -983,8 +1324,14 @@ end
 -- * LogKey [LogKey] 
 -- @return GetStatusOutput structure as a key-value pair table
 function M.GetStatusOutput(args)
-	assert(args, "You must provdide an argument table when creating GetStatusOutput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetStatusOutput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ProgressMessage"] = args["ProgressMessage"],
 		["ProgressCode"] = args["ProgressCode"],
 		["CreationDate"] = args["CreationDate"],
@@ -1002,8 +1349,13 @@ function M.GetStatusOutput(args)
 		["LocationCode"] = args["LocationCode"],
 		["LogKey"] = args["LogKey"],
 	}
-	asserts.AssertGetStatusOutput(t)
-	return t
+	asserts.AssertGetStatusOutput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidManifestFieldException = { ["message"] = true, nil }
@@ -1024,12 +1376,23 @@ end
 -- * message [ErrorMessage] 
 -- @return InvalidManifestFieldException structure as a key-value pair table
 function M.InvalidManifestFieldException(args)
-	assert(args, "You must provdide an argument table when creating InvalidManifestFieldException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidManifestFieldException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertInvalidManifestFieldException(t)
-	return t
+	asserts.AssertInvalidManifestFieldException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdateJobInput = { ["Manifest"] = true, ["ValidateOnly"] = true, ["APIVersion"] = true, ["JobType"] = true, ["JobId"] = true, nil }
@@ -1066,16 +1429,27 @@ end
 -- Required key: ValidateOnly
 -- @return UpdateJobInput structure as a key-value pair table
 function M.UpdateJobInput(args)
-	assert(args, "You must provdide an argument table when creating UpdateJobInput")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateJobInput")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Manifest"] = args["Manifest"],
 		["ValidateOnly"] = args["ValidateOnly"],
 		["APIVersion"] = args["APIVersion"],
 		["JobType"] = args["JobType"],
 		["JobId"] = args["JobId"],
 	}
-	asserts.AssertUpdateJobInput(t)
-	return t
+	asserts.AssertUpdateJobInput(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 function asserts.Assertstreet2(str)
@@ -1599,8 +1973,11 @@ function M.ListJobsAsync(ListJobsInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".ListJobs",
 	}
+	for header,value in pairs(ListJobsInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/?Operation=ListJobs", ListJobsInput, headers, settings, cb)
 	else
@@ -1631,8 +2008,11 @@ function M.UpdateJobAsync(UpdateJobInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".UpdateJob",
 	}
+	for header,value in pairs(UpdateJobInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/?Operation=UpdateJob", UpdateJobInput, headers, settings, cb)
 	else
@@ -1663,8 +2043,11 @@ function M.CreateJobAsync(CreateJobInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".CreateJob",
 	}
+	for header,value in pairs(CreateJobInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/?Operation=CreateJob", CreateJobInput, headers, settings, cb)
 	else
@@ -1695,8 +2078,11 @@ function M.GetStatusAsync(GetStatusInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".GetStatus",
 	}
+	for header,value in pairs(GetStatusInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/?Operation=GetStatus", GetStatusInput, headers, settings, cb)
 	else
@@ -1727,8 +2113,11 @@ function M.CancelJobAsync(CancelJobInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".CancelJob",
 	}
+	for header,value in pairs(CancelJobInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/?Operation=CancelJob", CancelJobInput, headers, settings, cb)
 	else
@@ -1759,8 +2148,11 @@ function M.GetShippingLabelAsync(GetShippingLabelInput, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".GetShippingLabel",
 	}
+	for header,value in pairs(GetShippingLabelInput.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/?Operation=GetShippingLabel", GetShippingLabelInput, headers, settings, cb)
 	else

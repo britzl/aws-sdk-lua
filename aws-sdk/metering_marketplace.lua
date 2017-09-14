@@ -39,12 +39,23 @@ end
 -- * message [errorMessage] 
 -- @return ExpiredTokenException structure as a key-value pair table
 function M.ExpiredTokenException(args)
-	assert(args, "You must provdide an argument table when creating ExpiredTokenException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ExpiredTokenException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertExpiredTokenException(t)
-	return t
+	asserts.AssertExpiredTokenException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ResolveCustomerRequest = { ["RegistrationToken"] = true, nil }
@@ -67,12 +78,23 @@ end
 -- Required key: RegistrationToken
 -- @return ResolveCustomerRequest structure as a key-value pair table
 function M.ResolveCustomerRequest(args)
-	assert(args, "You must provdide an argument table when creating ResolveCustomerRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ResolveCustomerRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["RegistrationToken"] = args["RegistrationToken"],
 	}
-	asserts.AssertResolveCustomerRequest(t)
-	return t
+	asserts.AssertResolveCustomerRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ResolveCustomerResult = { ["ProductCode"] = true, ["CustomerIdentifier"] = true, nil }
@@ -95,13 +117,24 @@ end
 -- * CustomerIdentifier [CustomerIdentifier] <p>The CustomerIdentifier is used to identify an individual customer in your application. Calls to BatchMeterUsage require CustomerIdentifiers for each UsageRecord.</p>
 -- @return ResolveCustomerResult structure as a key-value pair table
 function M.ResolveCustomerResult(args)
-	assert(args, "You must provdide an argument table when creating ResolveCustomerResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ResolveCustomerResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ProductCode"] = args["ProductCode"],
 		["CustomerIdentifier"] = args["CustomerIdentifier"],
 	}
-	asserts.AssertResolveCustomerResult(t)
-	return t
+	asserts.AssertResolveCustomerResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.TimestampOutOfBoundsException = { ["message"] = true, nil }
@@ -122,12 +155,23 @@ end
 -- * message [errorMessage] 
 -- @return TimestampOutOfBoundsException structure as a key-value pair table
 function M.TimestampOutOfBoundsException(args)
-	assert(args, "You must provdide an argument table when creating TimestampOutOfBoundsException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating TimestampOutOfBoundsException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertTimestampOutOfBoundsException(t)
-	return t
+	asserts.AssertTimestampOutOfBoundsException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.BatchMeterUsageResult = { ["UnprocessedRecords"] = true, ["Results"] = true, nil }
@@ -150,13 +194,24 @@ end
 -- * Results [UsageRecordResultList] <p>Contains all UsageRecords processed by BatchMeterUsage. These records were either honored by AWS Marketplace Metering Service or were invalid.</p>
 -- @return BatchMeterUsageResult structure as a key-value pair table
 function M.BatchMeterUsageResult(args)
-	assert(args, "You must provdide an argument table when creating BatchMeterUsageResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating BatchMeterUsageResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["UnprocessedRecords"] = args["UnprocessedRecords"],
 		["Results"] = args["Results"],
 	}
-	asserts.AssertBatchMeterUsageResult(t)
-	return t
+	asserts.AssertBatchMeterUsageResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidTokenException = { ["message"] = true, nil }
@@ -177,12 +232,23 @@ end
 -- * message [errorMessage] 
 -- @return InvalidTokenException structure as a key-value pair table
 function M.InvalidTokenException(args)
-	assert(args, "You must provdide an argument table when creating InvalidTokenException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidTokenException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertInvalidTokenException(t)
-	return t
+	asserts.AssertInvalidTokenException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidCustomerIdentifierException = { ["message"] = true, nil }
@@ -203,12 +269,23 @@ end
 -- * message [errorMessage] 
 -- @return InvalidCustomerIdentifierException structure as a key-value pair table
 function M.InvalidCustomerIdentifierException(args)
-	assert(args, "You must provdide an argument table when creating InvalidCustomerIdentifierException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidCustomerIdentifierException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertInvalidCustomerIdentifierException(t)
-	return t
+	asserts.AssertInvalidCustomerIdentifierException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.MeterUsageRequest = { ["ProductCode"] = true, ["UsageQuantity"] = true, ["DryRun"] = true, ["UsageDimension"] = true, ["Timestamp"] = true, nil }
@@ -247,16 +324,27 @@ end
 -- Required key: DryRun
 -- @return MeterUsageRequest structure as a key-value pair table
 function M.MeterUsageRequest(args)
-	assert(args, "You must provdide an argument table when creating MeterUsageRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating MeterUsageRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ProductCode"] = args["ProductCode"],
 		["UsageQuantity"] = args["UsageQuantity"],
 		["DryRun"] = args["DryRun"],
 		["UsageDimension"] = args["UsageDimension"],
 		["Timestamp"] = args["Timestamp"],
 	}
-	asserts.AssertMeterUsageRequest(t)
-	return t
+	asserts.AssertMeterUsageRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.MeterUsageResult = { ["MeteringRecordId"] = true, nil }
@@ -277,12 +365,23 @@ end
 -- * MeteringRecordId [String] 
 -- @return MeterUsageResult structure as a key-value pair table
 function M.MeterUsageResult(args)
-	assert(args, "You must provdide an argument table when creating MeterUsageResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating MeterUsageResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["MeteringRecordId"] = args["MeteringRecordId"],
 	}
-	asserts.AssertMeterUsageResult(t)
-	return t
+	asserts.AssertMeterUsageResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidProductCodeException = { ["message"] = true, nil }
@@ -303,12 +402,23 @@ end
 -- * message [errorMessage] 
 -- @return InvalidProductCodeException structure as a key-value pair table
 function M.InvalidProductCodeException(args)
-	assert(args, "You must provdide an argument table when creating InvalidProductCodeException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidProductCodeException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertInvalidProductCodeException(t)
-	return t
+	asserts.AssertInvalidProductCodeException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InternalServiceErrorException = { ["message"] = true, nil }
@@ -329,12 +439,23 @@ end
 -- * message [errorMessage] 
 -- @return InternalServiceErrorException structure as a key-value pair table
 function M.InternalServiceErrorException(args)
-	assert(args, "You must provdide an argument table when creating InternalServiceErrorException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InternalServiceErrorException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertInternalServiceErrorException(t)
-	return t
+	asserts.AssertInternalServiceErrorException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidEndpointRegionException = { ["message"] = true, nil }
@@ -355,12 +476,23 @@ end
 -- * message [errorMessage] 
 -- @return InvalidEndpointRegionException structure as a key-value pair table
 function M.InvalidEndpointRegionException(args)
-	assert(args, "You must provdide an argument table when creating InvalidEndpointRegionException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidEndpointRegionException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertInvalidEndpointRegionException(t)
-	return t
+	asserts.AssertInvalidEndpointRegionException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UsageRecordResult = { ["Status"] = true, ["UsageRecord"] = true, ["MeteringRecordId"] = true, nil }
@@ -385,14 +517,25 @@ end
 -- * MeteringRecordId [String] <p>The MeteringRecordId is a unique identifier for this metering event.</p>
 -- @return UsageRecordResult structure as a key-value pair table
 function M.UsageRecordResult(args)
-	assert(args, "You must provdide an argument table when creating UsageRecordResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UsageRecordResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Status"] = args["Status"],
 		["UsageRecord"] = args["UsageRecord"],
 		["MeteringRecordId"] = args["MeteringRecordId"],
 	}
-	asserts.AssertUsageRecordResult(t)
-	return t
+	asserts.AssertUsageRecordResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.BatchMeterUsageRequest = { ["UsageRecords"] = true, ["ProductCode"] = true, nil }
@@ -419,13 +562,24 @@ end
 -- Required key: ProductCode
 -- @return BatchMeterUsageRequest structure as a key-value pair table
 function M.BatchMeterUsageRequest(args)
-	assert(args, "You must provdide an argument table when creating BatchMeterUsageRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating BatchMeterUsageRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["UsageRecords"] = args["UsageRecords"],
 		["ProductCode"] = args["ProductCode"],
 	}
-	asserts.AssertBatchMeterUsageRequest(t)
-	return t
+	asserts.AssertBatchMeterUsageRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidUsageDimensionException = { ["message"] = true, nil }
@@ -446,12 +600,23 @@ end
 -- * message [errorMessage] 
 -- @return InvalidUsageDimensionException structure as a key-value pair table
 function M.InvalidUsageDimensionException(args)
-	assert(args, "You must provdide an argument table when creating InvalidUsageDimensionException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidUsageDimensionException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertInvalidUsageDimensionException(t)
-	return t
+	asserts.AssertInvalidUsageDimensionException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UsageRecord = { ["Timestamp"] = true, ["CustomerIdentifier"] = true, ["Dimension"] = true, ["Quantity"] = true, nil }
@@ -486,15 +651,26 @@ end
 -- Required key: Quantity
 -- @return UsageRecord structure as a key-value pair table
 function M.UsageRecord(args)
-	assert(args, "You must provdide an argument table when creating UsageRecord")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UsageRecord")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Timestamp"] = args["Timestamp"],
 		["CustomerIdentifier"] = args["CustomerIdentifier"],
 		["Dimension"] = args["Dimension"],
 		["Quantity"] = args["Quantity"],
 	}
-	asserts.AssertUsageRecord(t)
-	return t
+	asserts.AssertUsageRecord(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ThrottlingException = { ["message"] = true, nil }
@@ -515,12 +691,23 @@ end
 -- * message [errorMessage] 
 -- @return ThrottlingException structure as a key-value pair table
 function M.ThrottlingException(args)
-	assert(args, "You must provdide an argument table when creating ThrottlingException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ThrottlingException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertThrottlingException(t)
-	return t
+	asserts.AssertThrottlingException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DuplicateRequestException = { ["message"] = true, nil }
@@ -541,12 +728,23 @@ end
 -- * message [errorMessage] 
 -- @return DuplicateRequestException structure as a key-value pair table
 function M.DuplicateRequestException(args)
-	assert(args, "You must provdide an argument table when creating DuplicateRequestException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DuplicateRequestException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertDuplicateRequestException(t)
-	return t
+	asserts.AssertDuplicateRequestException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 function asserts.AssertNonEmptyString(str)
@@ -747,8 +945,11 @@ function M.BatchMeterUsageAsync(BatchMeterUsageRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AWSMPMeteringService.BatchMeterUsage",
 	}
+	for header,value in pairs(BatchMeterUsageRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", BatchMeterUsageRequest, headers, settings, cb)
 	else
@@ -779,8 +980,11 @@ function M.MeterUsageAsync(MeterUsageRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AWSMPMeteringService.MeterUsage",
 	}
+	for header,value in pairs(MeterUsageRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", MeterUsageRequest, headers, settings, cb)
 	else
@@ -811,8 +1015,11 @@ function M.ResolveCustomerAsync(ResolveCustomerRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AWSMPMeteringService.ResolveCustomer",
 	}
+	for header,value in pairs(ResolveCustomerRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ResolveCustomerRequest, headers, settings, cb)
 	else

@@ -41,13 +41,24 @@ end
 -- * Names [StringList] <p>The names of associated stacks.</p>
 -- @return ListAssociatedStacksResult structure as a key-value pair table
 function M.ListAssociatedStacksResult(args)
-	assert(args, "You must provdide an argument table when creating ListAssociatedStacksResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListAssociatedStacksResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NextToken"] = args["NextToken"],
 		["Names"] = args["Names"],
 	}
-	asserts.AssertListAssociatedStacksResult(t)
-	return t
+	asserts.AssertListAssociatedStacksResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.StopFleetResult = { nil }
@@ -66,11 +77,22 @@ end
 -- Valid keys:
 -- @return StopFleetResult structure as a key-value pair table
 function M.StopFleetResult(args)
-	assert(args, "You must provdide an argument table when creating StopFleetResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating StopFleetResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertStopFleetResult(t)
-	return t
+	asserts.AssertStopFleetResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeImagesResult = { ["Images"] = true, nil }
@@ -91,12 +113,23 @@ end
 -- * Images [ImageList] <p>The list of images.</p>
 -- @return DescribeImagesResult structure as a key-value pair table
 function M.DescribeImagesResult(args)
-	assert(args, "You must provdide an argument table when creating DescribeImagesResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeImagesResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Images"] = args["Images"],
 	}
-	asserts.AssertDescribeImagesResult(t)
-	return t
+	asserts.AssertDescribeImagesResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.OperationNotPermittedException = { ["Message"] = true, nil }
@@ -117,12 +150,23 @@ end
 -- * Message [ErrorMessage] 
 -- @return OperationNotPermittedException structure as a key-value pair table
 function M.OperationNotPermittedException(args)
-	assert(args, "You must provdide an argument table when creating OperationNotPermittedException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating OperationNotPermittedException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Message"] = args["Message"],
 	}
-	asserts.AssertOperationNotPermittedException(t)
-	return t
+	asserts.AssertOperationNotPermittedException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteFleetRequest = { ["Name"] = true, nil }
@@ -145,12 +189,23 @@ end
 -- Required key: Name
 -- @return DeleteFleetRequest structure as a key-value pair table
 function M.DeleteFleetRequest(args)
-	assert(args, "You must provdide an argument table when creating DeleteFleetRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteFleetRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Name"] = args["Name"],
 	}
-	asserts.AssertDeleteFleetRequest(t)
-	return t
+	asserts.AssertDeleteFleetRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateStackRequest = { ["DisplayName"] = true, ["Name"] = true, ["StorageConnectors"] = true, ["Description"] = true, nil }
@@ -179,15 +234,26 @@ end
 -- Required key: Name
 -- @return CreateStackRequest structure as a key-value pair table
 function M.CreateStackRequest(args)
-	assert(args, "You must provdide an argument table when creating CreateStackRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateStackRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DisplayName"] = args["DisplayName"],
 		["Name"] = args["Name"],
 		["StorageConnectors"] = args["StorageConnectors"],
 		["Description"] = args["Description"],
 	}
-	asserts.AssertCreateStackRequest(t)
-	return t
+	asserts.AssertCreateStackRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeSessionsResult = { ["NextToken"] = true, ["Sessions"] = true, nil }
@@ -210,13 +276,24 @@ end
 -- * Sessions [SessionList] <p>The list of streaming sessions.</p>
 -- @return DescribeSessionsResult structure as a key-value pair table
 function M.DescribeSessionsResult(args)
-	assert(args, "You must provdide an argument table when creating DescribeSessionsResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeSessionsResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NextToken"] = args["NextToken"],
 		["Sessions"] = args["Sessions"],
 	}
-	asserts.AssertDescribeSessionsResult(t)
-	return t
+	asserts.AssertDescribeSessionsResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Stack = { ["DisplayName"] = true, ["Name"] = true, ["StorageConnectors"] = true, ["StackErrors"] = true, ["CreatedTime"] = true, ["Arn"] = true, ["Description"] = true, nil }
@@ -251,8 +328,14 @@ end
 -- Required key: Name
 -- @return Stack structure as a key-value pair table
 function M.Stack(args)
-	assert(args, "You must provdide an argument table when creating Stack")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Stack")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DisplayName"] = args["DisplayName"],
 		["Name"] = args["Name"],
 		["StorageConnectors"] = args["StorageConnectors"],
@@ -261,8 +344,13 @@ function M.Stack(args)
 		["Arn"] = args["Arn"],
 		["Description"] = args["Description"],
 	}
-	asserts.AssertStack(t)
-	return t
+	asserts.AssertStack(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.StartFleetResult = { nil }
@@ -281,11 +369,22 @@ end
 -- Valid keys:
 -- @return StartFleetResult structure as a key-value pair table
 function M.StartFleetResult(args)
-	assert(args, "You must provdide an argument table when creating StartFleetResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating StartFleetResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertStartFleetResult(t)
-	return t
+	asserts.AssertStartFleetResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ComputeCapacityStatus = { ["Available"] = true, ["Desired"] = true, ["Running"] = true, ["InUse"] = true, nil }
@@ -314,15 +413,26 @@ end
 -- Required key: Desired
 -- @return ComputeCapacityStatus structure as a key-value pair table
 function M.ComputeCapacityStatus(args)
-	assert(args, "You must provdide an argument table when creating ComputeCapacityStatus")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ComputeCapacityStatus")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Available"] = args["Available"],
 		["Desired"] = args["Desired"],
 		["Running"] = args["Running"],
 		["InUse"] = args["InUse"],
 	}
-	asserts.AssertComputeCapacityStatus(t)
-	return t
+	asserts.AssertComputeCapacityStatus(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.LimitExceededException = { ["Message"] = true, nil }
@@ -343,12 +453,23 @@ end
 -- * Message [ErrorMessage] 
 -- @return LimitExceededException structure as a key-value pair table
 function M.LimitExceededException(args)
-	assert(args, "You must provdide an argument table when creating LimitExceededException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating LimitExceededException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Message"] = args["Message"],
 	}
-	asserts.AssertLimitExceededException(t)
-	return t
+	asserts.AssertLimitExceededException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ConcurrentModificationException = { ["Message"] = true, nil }
@@ -369,12 +490,23 @@ end
 -- * Message [ErrorMessage] 
 -- @return ConcurrentModificationException structure as a key-value pair table
 function M.ConcurrentModificationException(args)
-	assert(args, "You must provdide an argument table when creating ConcurrentModificationException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ConcurrentModificationException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Message"] = args["Message"],
 	}
-	asserts.AssertConcurrentModificationException(t)
-	return t
+	asserts.AssertConcurrentModificationException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.StartFleetRequest = { ["Name"] = true, nil }
@@ -397,12 +529,23 @@ end
 -- Required key: Name
 -- @return StartFleetRequest structure as a key-value pair table
 function M.StartFleetRequest(args)
-	assert(args, "You must provdide an argument table when creating StartFleetRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating StartFleetRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Name"] = args["Name"],
 	}
-	asserts.AssertStartFleetRequest(t)
-	return t
+	asserts.AssertStartFleetRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeStacksRequest = { ["NextToken"] = true, ["Names"] = true, nil }
@@ -425,13 +568,24 @@ end
 -- * Names [StringList] <p>The stack names to describe. Use null to describe all the stacks for the AWS account.</p>
 -- @return DescribeStacksRequest structure as a key-value pair table
 function M.DescribeStacksRequest(args)
-	assert(args, "You must provdide an argument table when creating DescribeStacksRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeStacksRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NextToken"] = args["NextToken"],
 		["Names"] = args["Names"],
 	}
-	asserts.AssertDescribeStacksRequest(t)
-	return t
+	asserts.AssertDescribeStacksRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateStreamingURLRequest = { ["FleetName"] = true, ["UserId"] = true, ["Validity"] = true, ["StackName"] = true, ["SessionContext"] = true, ["ApplicationId"] = true, nil }
@@ -468,8 +622,14 @@ end
 -- Required key: UserId
 -- @return CreateStreamingURLRequest structure as a key-value pair table
 function M.CreateStreamingURLRequest(args)
-	assert(args, "You must provdide an argument table when creating CreateStreamingURLRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateStreamingURLRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["FleetName"] = args["FleetName"],
 		["UserId"] = args["UserId"],
 		["Validity"] = args["Validity"],
@@ -477,8 +637,13 @@ function M.CreateStreamingURLRequest(args)
 		["SessionContext"] = args["SessionContext"],
 		["ApplicationId"] = args["ApplicationId"],
 	}
-	asserts.AssertCreateStreamingURLRequest(t)
-	return t
+	asserts.AssertCreateStreamingURLRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Application = { ["DisplayName"] = true, ["Name"] = true, ["LaunchParameters"] = true, ["Enabled"] = true, ["IconURL"] = true, ["LaunchPath"] = true, ["Metadata"] = true, nil }
@@ -511,8 +676,14 @@ end
 -- * Metadata [Metadata] <p>Additional attributes that describe the application.</p>
 -- @return Application structure as a key-value pair table
 function M.Application(args)
-	assert(args, "You must provdide an argument table when creating Application")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Application")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DisplayName"] = args["DisplayName"],
 		["Name"] = args["Name"],
 		["LaunchParameters"] = args["LaunchParameters"],
@@ -521,8 +692,13 @@ function M.Application(args)
 		["LaunchPath"] = args["LaunchPath"],
 		["Metadata"] = args["Metadata"],
 	}
-	asserts.AssertApplication(t)
-	return t
+	asserts.AssertApplication(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DisassociateFleetResult = { nil }
@@ -541,11 +717,22 @@ end
 -- Valid keys:
 -- @return DisassociateFleetResult structure as a key-value pair table
 function M.DisassociateFleetResult(args)
-	assert(args, "You must provdide an argument table when creating DisassociateFleetResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DisassociateFleetResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertDisassociateFleetResult(t)
-	return t
+	asserts.AssertDisassociateFleetResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdateStackRequest = { ["DeleteStorageConnectors"] = true, ["DisplayName"] = true, ["Description"] = true, ["StorageConnectors"] = true, ["Name"] = true, nil }
@@ -576,16 +763,27 @@ end
 -- Required key: Name
 -- @return UpdateStackRequest structure as a key-value pair table
 function M.UpdateStackRequest(args)
-	assert(args, "You must provdide an argument table when creating UpdateStackRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateStackRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DeleteStorageConnectors"] = args["DeleteStorageConnectors"],
 		["DisplayName"] = args["DisplayName"],
 		["Description"] = args["Description"],
 		["StorageConnectors"] = args["StorageConnectors"],
 		["Name"] = args["Name"],
 	}
-	asserts.AssertUpdateStackRequest(t)
-	return t
+	asserts.AssertUpdateStackRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListAssociatedFleetsResult = { ["NextToken"] = true, ["Names"] = true, nil }
@@ -608,13 +806,24 @@ end
 -- * Names [StringList] <p>The names of associated fleets.</p>
 -- @return ListAssociatedFleetsResult structure as a key-value pair table
 function M.ListAssociatedFleetsResult(args)
-	assert(args, "You must provdide an argument table when creating ListAssociatedFleetsResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListAssociatedFleetsResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NextToken"] = args["NextToken"],
 		["Names"] = args["Names"],
 	}
-	asserts.AssertListAssociatedFleetsResult(t)
-	return t
+	asserts.AssertListAssociatedFleetsResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidParameterCombinationException = { ["Message"] = true, nil }
@@ -635,12 +844,23 @@ end
 -- * Message [ErrorMessage] 
 -- @return InvalidParameterCombinationException structure as a key-value pair table
 function M.InvalidParameterCombinationException(args)
-	assert(args, "You must provdide an argument table when creating InvalidParameterCombinationException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidParameterCombinationException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Message"] = args["Message"],
 	}
-	asserts.AssertInvalidParameterCombinationException(t)
-	return t
+	asserts.AssertInvalidParameterCombinationException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdateStackResult = { ["Stack"] = true, nil }
@@ -661,12 +881,23 @@ end
 -- * Stack [Stack] <p>A list of stack details.</p>
 -- @return UpdateStackResult structure as a key-value pair table
 function M.UpdateStackResult(args)
-	assert(args, "You must provdide an argument table when creating UpdateStackResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateStackResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Stack"] = args["Stack"],
 	}
-	asserts.AssertUpdateStackResult(t)
-	return t
+	asserts.AssertUpdateStackResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ComputeCapacity = { ["DesiredInstances"] = true, nil }
@@ -689,12 +920,23 @@ end
 -- Required key: DesiredInstances
 -- @return ComputeCapacity structure as a key-value pair table
 function M.ComputeCapacity(args)
-	assert(args, "You must provdide an argument table when creating ComputeCapacity")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ComputeCapacity")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DesiredInstances"] = args["DesiredInstances"],
 	}
-	asserts.AssertComputeCapacity(t)
-	return t
+	asserts.AssertComputeCapacity(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ExpireSessionRequest = { ["SessionId"] = true, nil }
@@ -717,12 +959,23 @@ end
 -- Required key: SessionId
 -- @return ExpireSessionRequest structure as a key-value pair table
 function M.ExpireSessionRequest(args)
-	assert(args, "You must provdide an argument table when creating ExpireSessionRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ExpireSessionRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["SessionId"] = args["SessionId"],
 	}
-	asserts.AssertExpireSessionRequest(t)
-	return t
+	asserts.AssertExpireSessionRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.IncompatibleImageException = { ["Message"] = true, nil }
@@ -743,12 +996,23 @@ end
 -- * Message [ErrorMessage] 
 -- @return IncompatibleImageException structure as a key-value pair table
 function M.IncompatibleImageException(args)
-	assert(args, "You must provdide an argument table when creating IncompatibleImageException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating IncompatibleImageException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Message"] = args["Message"],
 	}
-	asserts.AssertIncompatibleImageException(t)
-	return t
+	asserts.AssertIncompatibleImageException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ResourceAlreadyExistsException = { ["Message"] = true, nil }
@@ -769,12 +1033,23 @@ end
 -- * Message [ErrorMessage] 
 -- @return ResourceAlreadyExistsException structure as a key-value pair table
 function M.ResourceAlreadyExistsException(args)
-	assert(args, "You must provdide an argument table when creating ResourceAlreadyExistsException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ResourceAlreadyExistsException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Message"] = args["Message"],
 	}
-	asserts.AssertResourceAlreadyExistsException(t)
-	return t
+	asserts.AssertResourceAlreadyExistsException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteStackRequest = { ["Name"] = true, nil }
@@ -797,12 +1072,23 @@ end
 -- Required key: Name
 -- @return DeleteStackRequest structure as a key-value pair table
 function M.DeleteStackRequest(args)
-	assert(args, "You must provdide an argument table when creating DeleteStackRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteStackRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Name"] = args["Name"],
 	}
-	asserts.AssertDeleteStackRequest(t)
-	return t
+	asserts.AssertDeleteStackRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateStackResult = { ["Stack"] = true, nil }
@@ -823,12 +1109,23 @@ end
 -- * Stack [Stack] <p>The details for the created stack.</p>
 -- @return CreateStackResult structure as a key-value pair table
 function M.CreateStackResult(args)
-	assert(args, "You must provdide an argument table when creating CreateStackResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateStackResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Stack"] = args["Stack"],
 	}
-	asserts.AssertCreateStackResult(t)
-	return t
+	asserts.AssertCreateStackResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Image = { ["PublicBaseImageReleasedDate"] = true, ["DisplayName"] = true, ["Name"] = true, ["Applications"] = true, ["BaseImageArn"] = true, ["Visibility"] = true, ["Platform"] = true, ["State"] = true, ["CreatedTime"] = true, ["Description"] = true, ["StateChangeReason"] = true, ["Arn"] = true, ["ImageBuilderSupported"] = true, nil }
@@ -875,8 +1172,14 @@ end
 -- Required key: Name
 -- @return Image structure as a key-value pair table
 function M.Image(args)
-	assert(args, "You must provdide an argument table when creating Image")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Image")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["PublicBaseImageReleasedDate"] = args["PublicBaseImageReleasedDate"],
 		["DisplayName"] = args["DisplayName"],
 		["Name"] = args["Name"],
@@ -891,8 +1194,13 @@ function M.Image(args)
 		["Arn"] = args["Arn"],
 		["ImageBuilderSupported"] = args["ImageBuilderSupported"],
 	}
-	asserts.AssertImage(t)
-	return t
+	asserts.AssertImage(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Session = { ["AuthenticationType"] = true, ["UserId"] = true, ["FleetName"] = true, ["StackName"] = true, ["State"] = true, ["Id"] = true, nil }
@@ -933,8 +1241,14 @@ end
 -- Required key: State
 -- @return Session structure as a key-value pair table
 function M.Session(args)
-	assert(args, "You must provdide an argument table when creating Session")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Session")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["AuthenticationType"] = args["AuthenticationType"],
 		["UserId"] = args["UserId"],
 		["FleetName"] = args["FleetName"],
@@ -942,8 +1256,13 @@ function M.Session(args)
 		["State"] = args["State"],
 		["Id"] = args["Id"],
 	}
-	asserts.AssertSession(t)
-	return t
+	asserts.AssertSession(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.StopFleetRequest = { ["Name"] = true, nil }
@@ -966,12 +1285,23 @@ end
 -- Required key: Name
 -- @return StopFleetRequest structure as a key-value pair table
 function M.StopFleetRequest(args)
-	assert(args, "You must provdide an argument table when creating StopFleetRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating StopFleetRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Name"] = args["Name"],
 	}
-	asserts.AssertStopFleetRequest(t)
-	return t
+	asserts.AssertStopFleetRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ImageStateChangeReason = { ["Message"] = true, ["Code"] = true, nil }
@@ -994,13 +1324,24 @@ end
 -- * Code [ImageStateChangeReasonCode] <p>The state change reason code of the image.</p>
 -- @return ImageStateChangeReason structure as a key-value pair table
 function M.ImageStateChangeReason(args)
-	assert(args, "You must provdide an argument table when creating ImageStateChangeReason")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ImageStateChangeReason")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Message"] = args["Message"],
 		["Code"] = args["Code"],
 	}
-	asserts.AssertImageStateChangeReason(t)
-	return t
+	asserts.AssertImageStateChangeReason(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ExpireSessionResult = { nil }
@@ -1019,11 +1360,22 @@ end
 -- Valid keys:
 -- @return ExpireSessionResult structure as a key-value pair table
 function M.ExpireSessionResult(args)
-	assert(args, "You must provdide an argument table when creating ExpireSessionResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ExpireSessionResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertExpireSessionResult(t)
-	return t
+	asserts.AssertExpireSessionResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListAssociatedFleetsRequest = { ["StackName"] = true, ["NextToken"] = true, nil }
@@ -1048,13 +1400,24 @@ end
 -- Required key: StackName
 -- @return ListAssociatedFleetsRequest structure as a key-value pair table
 function M.ListAssociatedFleetsRequest(args)
-	assert(args, "You must provdide an argument table when creating ListAssociatedFleetsRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListAssociatedFleetsRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["StackName"] = args["StackName"],
 		["NextToken"] = args["NextToken"],
 	}
-	asserts.AssertListAssociatedFleetsRequest(t)
-	return t
+	asserts.AssertListAssociatedFleetsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeStacksResult = { ["NextToken"] = true, ["Stacks"] = true, nil }
@@ -1077,13 +1440,24 @@ end
 -- * Stacks [StackList] <p>The list of stack details.</p>
 -- @return DescribeStacksResult structure as a key-value pair table
 function M.DescribeStacksResult(args)
-	assert(args, "You must provdide an argument table when creating DescribeStacksResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeStacksResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NextToken"] = args["NextToken"],
 		["Stacks"] = args["Stacks"],
 	}
-	asserts.AssertDescribeStacksResult(t)
-	return t
+	asserts.AssertDescribeStacksResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateFleetRequest = { ["DisplayName"] = true, ["MaxUserDurationInSeconds"] = true, ["VpcConfig"] = true, ["DisconnectTimeoutInSeconds"] = true, ["EnableDefaultInternetAccess"] = true, ["ImageName"] = true, ["ComputeCapacity"] = true, ["Description"] = true, ["InstanceType"] = true, ["Name"] = true, nil }
@@ -1130,8 +1504,14 @@ end
 -- Required key: ComputeCapacity
 -- @return CreateFleetRequest structure as a key-value pair table
 function M.CreateFleetRequest(args)
-	assert(args, "You must provdide an argument table when creating CreateFleetRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateFleetRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DisplayName"] = args["DisplayName"],
 		["MaxUserDurationInSeconds"] = args["MaxUserDurationInSeconds"],
 		["VpcConfig"] = args["VpcConfig"],
@@ -1143,8 +1523,13 @@ function M.CreateFleetRequest(args)
 		["InstanceType"] = args["InstanceType"],
 		["Name"] = args["Name"],
 	}
-	asserts.AssertCreateFleetRequest(t)
-	return t
+	asserts.AssertCreateFleetRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdateFleetResult = { ["Fleet"] = true, nil }
@@ -1165,12 +1550,23 @@ end
 -- * Fleet [Fleet] <p>A list of fleet details.</p>
 -- @return UpdateFleetResult structure as a key-value pair table
 function M.UpdateFleetResult(args)
-	assert(args, "You must provdide an argument table when creating UpdateFleetResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateFleetResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Fleet"] = args["Fleet"],
 	}
-	asserts.AssertUpdateFleetResult(t)
-	return t
+	asserts.AssertUpdateFleetResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidRoleException = { ["Message"] = true, nil }
@@ -1191,12 +1587,23 @@ end
 -- * Message [ErrorMessage] 
 -- @return InvalidRoleException structure as a key-value pair table
 function M.InvalidRoleException(args)
-	assert(args, "You must provdide an argument table when creating InvalidRoleException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidRoleException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Message"] = args["Message"],
 	}
-	asserts.AssertInvalidRoleException(t)
-	return t
+	asserts.AssertInvalidRoleException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListAssociatedStacksRequest = { ["NextToken"] = true, ["FleetName"] = true, nil }
@@ -1221,13 +1628,24 @@ end
 -- Required key: FleetName
 -- @return ListAssociatedStacksRequest structure as a key-value pair table
 function M.ListAssociatedStacksRequest(args)
-	assert(args, "You must provdide an argument table when creating ListAssociatedStacksRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListAssociatedStacksRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NextToken"] = args["NextToken"],
 		["FleetName"] = args["FleetName"],
 	}
-	asserts.AssertListAssociatedStacksRequest(t)
-	return t
+	asserts.AssertListAssociatedStacksRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteStackResult = { nil }
@@ -1246,11 +1664,22 @@ end
 -- Valid keys:
 -- @return DeleteStackResult structure as a key-value pair table
 function M.DeleteStackResult(args)
-	assert(args, "You must provdide an argument table when creating DeleteStackResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteStackResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertDeleteStackResult(t)
-	return t
+	asserts.AssertDeleteStackResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Fleet = { ["ComputeCapacityStatus"] = true, ["DisplayName"] = true, ["Name"] = true, ["VpcConfig"] = true, ["FleetErrors"] = true, ["DisconnectTimeoutInSeconds"] = true, ["EnableDefaultInternetAccess"] = true, ["State"] = true, ["ImageName"] = true, ["CreatedTime"] = true, ["MaxUserDurationInSeconds"] = true, ["InstanceType"] = true, ["Arn"] = true, ["Description"] = true, nil }
@@ -1309,8 +1738,14 @@ end
 -- Required key: State
 -- @return Fleet structure as a key-value pair table
 function M.Fleet(args)
-	assert(args, "You must provdide an argument table when creating Fleet")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Fleet")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ComputeCapacityStatus"] = args["ComputeCapacityStatus"],
 		["DisplayName"] = args["DisplayName"],
 		["Name"] = args["Name"],
@@ -1326,8 +1761,13 @@ function M.Fleet(args)
 		["Arn"] = args["Arn"],
 		["Description"] = args["Description"],
 	}
-	asserts.AssertFleet(t)
-	return t
+	asserts.AssertFleet(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeFleetsRequest = { ["NextToken"] = true, ["Names"] = true, nil }
@@ -1350,13 +1790,24 @@ end
 -- * Names [StringList] <p>The fleet names to describe. Use null to describe all the fleets for the AWS account.</p>
 -- @return DescribeFleetsRequest structure as a key-value pair table
 function M.DescribeFleetsRequest(args)
-	assert(args, "You must provdide an argument table when creating DescribeFleetsRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeFleetsRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NextToken"] = args["NextToken"],
 		["Names"] = args["Names"],
 	}
-	asserts.AssertDescribeFleetsRequest(t)
-	return t
+	asserts.AssertDescribeFleetsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeFleetsResult = { ["Fleets"] = true, ["NextToken"] = true, nil }
@@ -1379,13 +1830,24 @@ end
 -- * NextToken [String] <p>The pagination token to use to retrieve the next page of results for this operation. If there are no more pages, this value is null.</p>
 -- @return DescribeFleetsResult structure as a key-value pair table
 function M.DescribeFleetsResult(args)
-	assert(args, "You must provdide an argument table when creating DescribeFleetsResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeFleetsResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Fleets"] = args["Fleets"],
 		["NextToken"] = args["NextToken"],
 	}
-	asserts.AssertDescribeFleetsResult(t)
-	return t
+	asserts.AssertDescribeFleetsResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ResourceNotFoundException = { ["Message"] = true, nil }
@@ -1406,12 +1868,23 @@ end
 -- * Message [ErrorMessage] 
 -- @return ResourceNotFoundException structure as a key-value pair table
 function M.ResourceNotFoundException(args)
-	assert(args, "You must provdide an argument table when creating ResourceNotFoundException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ResourceNotFoundException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Message"] = args["Message"],
 	}
-	asserts.AssertResourceNotFoundException(t)
-	return t
+	asserts.AssertResourceNotFoundException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdateFleetRequest = { ["AttributesToDelete"] = true, ["DeleteVpcConfig"] = true, ["DisplayName"] = true, ["MaxUserDurationInSeconds"] = true, ["VpcConfig"] = true, ["DisconnectTimeoutInSeconds"] = true, ["EnableDefaultInternetAccess"] = true, ["ImageName"] = true, ["ComputeCapacity"] = true, ["Description"] = true, ["InstanceType"] = true, ["Name"] = true, nil }
@@ -1456,8 +1929,14 @@ end
 -- Required key: Name
 -- @return UpdateFleetRequest structure as a key-value pair table
 function M.UpdateFleetRequest(args)
-	assert(args, "You must provdide an argument table when creating UpdateFleetRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateFleetRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["AttributesToDelete"] = args["AttributesToDelete"],
 		["DeleteVpcConfig"] = args["DeleteVpcConfig"],
 		["DisplayName"] = args["DisplayName"],
@@ -1471,8 +1950,13 @@ function M.UpdateFleetRequest(args)
 		["InstanceType"] = args["InstanceType"],
 		["Name"] = args["Name"],
 	}
-	asserts.AssertUpdateFleetRequest(t)
-	return t
+	asserts.AssertUpdateFleetRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.FleetError = { ["ErrorCode"] = true, ["ErrorMessage"] = true, nil }
@@ -1495,13 +1979,24 @@ end
 -- * ErrorMessage [String] <p>The error message generated when the fleet has errors.</p>
 -- @return FleetError structure as a key-value pair table
 function M.FleetError(args)
-	assert(args, "You must provdide an argument table when creating FleetError")
-	local t = { 
+	assert(args, "You must provide an argument table when creating FleetError")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ErrorCode"] = args["ErrorCode"],
 		["ErrorMessage"] = args["ErrorMessage"],
 	}
-	asserts.AssertFleetError(t)
-	return t
+	asserts.AssertFleetError(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeSessionsRequest = { ["AuthenticationType"] = true, ["FleetName"] = true, ["UserId"] = true, ["StackName"] = true, ["Limit"] = true, ["NextToken"] = true, nil }
@@ -1536,8 +2031,14 @@ end
 -- Required key: FleetName
 -- @return DescribeSessionsRequest structure as a key-value pair table
 function M.DescribeSessionsRequest(args)
-	assert(args, "You must provdide an argument table when creating DescribeSessionsRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeSessionsRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["AuthenticationType"] = args["AuthenticationType"],
 		["FleetName"] = args["FleetName"],
 		["UserId"] = args["UserId"],
@@ -1545,8 +2046,13 @@ function M.DescribeSessionsRequest(args)
 		["Limit"] = args["Limit"],
 		["NextToken"] = args["NextToken"],
 	}
-	asserts.AssertDescribeSessionsRequest(t)
-	return t
+	asserts.AssertDescribeSessionsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AssociateFleetRequest = { ["StackName"] = true, ["FleetName"] = true, nil }
@@ -1573,13 +2079,24 @@ end
 -- Required key: StackName
 -- @return AssociateFleetRequest structure as a key-value pair table
 function M.AssociateFleetRequest(args)
-	assert(args, "You must provdide an argument table when creating AssociateFleetRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AssociateFleetRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["StackName"] = args["StackName"],
 		["FleetName"] = args["FleetName"],
 	}
-	asserts.AssertAssociateFleetRequest(t)
-	return t
+	asserts.AssertAssociateFleetRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ResourceNotAvailableException = { ["Message"] = true, nil }
@@ -1600,12 +2117,23 @@ end
 -- * Message [ErrorMessage] 
 -- @return ResourceNotAvailableException structure as a key-value pair table
 function M.ResourceNotAvailableException(args)
-	assert(args, "You must provdide an argument table when creating ResourceNotAvailableException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ResourceNotAvailableException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Message"] = args["Message"],
 	}
-	asserts.AssertResourceNotAvailableException(t)
-	return t
+	asserts.AssertResourceNotAvailableException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateFleetResult = { ["Fleet"] = true, nil }
@@ -1626,12 +2154,23 @@ end
 -- * Fleet [Fleet] <p>The details for the created fleet.</p>
 -- @return CreateFleetResult structure as a key-value pair table
 function M.CreateFleetResult(args)
-	assert(args, "You must provdide an argument table when creating CreateFleetResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateFleetResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Fleet"] = args["Fleet"],
 	}
-	asserts.AssertCreateFleetResult(t)
-	return t
+	asserts.AssertCreateFleetResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.StorageConnector = { ["ConnectorType"] = true, ["ResourceIdentifier"] = true, nil }
@@ -1656,13 +2195,24 @@ end
 -- Required key: ConnectorType
 -- @return StorageConnector structure as a key-value pair table
 function M.StorageConnector(args)
-	assert(args, "You must provdide an argument table when creating StorageConnector")
-	local t = { 
+	assert(args, "You must provide an argument table when creating StorageConnector")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ConnectorType"] = args["ConnectorType"],
 		["ResourceIdentifier"] = args["ResourceIdentifier"],
 	}
-	asserts.AssertStorageConnector(t)
-	return t
+	asserts.AssertStorageConnector(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeImagesRequest = { ["Names"] = true, nil }
@@ -1683,12 +2233,23 @@ end
 -- * Names [StringList] <p>A specific list of images to describe.</p>
 -- @return DescribeImagesRequest structure as a key-value pair table
 function M.DescribeImagesRequest(args)
-	assert(args, "You must provdide an argument table when creating DescribeImagesRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeImagesRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Names"] = args["Names"],
 	}
-	asserts.AssertDescribeImagesRequest(t)
-	return t
+	asserts.AssertDescribeImagesRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.StackError = { ["ErrorCode"] = true, ["ErrorMessage"] = true, nil }
@@ -1711,13 +2272,24 @@ end
 -- * ErrorMessage [String] <p>The error message of a stack error.</p>
 -- @return StackError structure as a key-value pair table
 function M.StackError(args)
-	assert(args, "You must provdide an argument table when creating StackError")
-	local t = { 
+	assert(args, "You must provide an argument table when creating StackError")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ErrorCode"] = args["ErrorCode"],
 		["ErrorMessage"] = args["ErrorMessage"],
 	}
-	asserts.AssertStackError(t)
-	return t
+	asserts.AssertStackError(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteFleetResult = { nil }
@@ -1736,11 +2308,22 @@ end
 -- Valid keys:
 -- @return DeleteFleetResult structure as a key-value pair table
 function M.DeleteFleetResult(args)
-	assert(args, "You must provdide an argument table when creating DeleteFleetResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteFleetResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertDeleteFleetResult(t)
-	return t
+	asserts.AssertDeleteFleetResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AssociateFleetResult = { nil }
@@ -1759,11 +2342,22 @@ end
 -- Valid keys:
 -- @return AssociateFleetResult structure as a key-value pair table
 function M.AssociateFleetResult(args)
-	assert(args, "You must provdide an argument table when creating AssociateFleetResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AssociateFleetResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertAssociateFleetResult(t)
-	return t
+	asserts.AssertAssociateFleetResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateStreamingURLResult = { ["Expires"] = true, ["StreamingURL"] = true, nil }
@@ -1786,13 +2380,24 @@ end
 -- * StreamingURL [String] <p>The URL to start the AppStream 2.0 streaming session.</p>
 -- @return CreateStreamingURLResult structure as a key-value pair table
 function M.CreateStreamingURLResult(args)
-	assert(args, "You must provdide an argument table when creating CreateStreamingURLResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateStreamingURLResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Expires"] = args["Expires"],
 		["StreamingURL"] = args["StreamingURL"],
 	}
-	asserts.AssertCreateStreamingURLResult(t)
-	return t
+	asserts.AssertCreateStreamingURLResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DisassociateFleetRequest = { ["StackName"] = true, ["FleetName"] = true, nil }
@@ -1819,13 +2424,24 @@ end
 -- Required key: StackName
 -- @return DisassociateFleetRequest structure as a key-value pair table
 function M.DisassociateFleetRequest(args)
-	assert(args, "You must provdide an argument table when creating DisassociateFleetRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DisassociateFleetRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["StackName"] = args["StackName"],
 		["FleetName"] = args["FleetName"],
 	}
-	asserts.AssertDisassociateFleetRequest(t)
-	return t
+	asserts.AssertDisassociateFleetRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.VpcConfig = { ["SubnetIds"] = true, ["SecurityGroupIds"] = true, nil }
@@ -1848,13 +2464,24 @@ end
 -- * SecurityGroupIds [SecurityGroupIdList] <p>Security groups associated with the fleet.</p>
 -- @return VpcConfig structure as a key-value pair table
 function M.VpcConfig(args)
-	assert(args, "You must provdide an argument table when creating VpcConfig")
-	local t = { 
+	assert(args, "You must provide an argument table when creating VpcConfig")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["SubnetIds"] = args["SubnetIds"],
 		["SecurityGroupIds"] = args["SecurityGroupIds"],
 	}
-	asserts.AssertVpcConfig(t)
-	return t
+	asserts.AssertVpcConfig(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ResourceInUseException = { ["Message"] = true, nil }
@@ -1875,12 +2502,23 @@ end
 -- * Message [ErrorMessage] 
 -- @return ResourceInUseException structure as a key-value pair table
 function M.ResourceInUseException(args)
-	assert(args, "You must provdide an argument table when creating ResourceInUseException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ResourceInUseException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Message"] = args["Message"],
 	}
-	asserts.AssertResourceInUseException(t)
-	return t
+	asserts.AssertResourceInUseException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 function asserts.AssertSessionState(str)
@@ -2397,8 +3035,11 @@ function M.UpdateStackAsync(UpdateStackRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "PhotonAdminProxyService.UpdateStack",
 	}
+	for header,value in pairs(UpdateStackRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateStackRequest, headers, settings, cb)
 	else
@@ -2429,8 +3070,11 @@ function M.CreateFleetAsync(CreateFleetRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "PhotonAdminProxyService.CreateFleet",
 	}
+	for header,value in pairs(CreateFleetRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateFleetRequest, headers, settings, cb)
 	else
@@ -2461,8 +3105,11 @@ function M.DeleteFleetAsync(DeleteFleetRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "PhotonAdminProxyService.DeleteFleet",
 	}
+	for header,value in pairs(DeleteFleetRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteFleetRequest, headers, settings, cb)
 	else
@@ -2493,8 +3140,11 @@ function M.CreateStreamingURLAsync(CreateStreamingURLRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "PhotonAdminProxyService.CreateStreamingURL",
 	}
+	for header,value in pairs(CreateStreamingURLRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateStreamingURLRequest, headers, settings, cb)
 	else
@@ -2525,8 +3175,11 @@ function M.DescribeSessionsAsync(DescribeSessionsRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "PhotonAdminProxyService.DescribeSessions",
 	}
+	for header,value in pairs(DescribeSessionsRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeSessionsRequest, headers, settings, cb)
 	else
@@ -2557,8 +3210,11 @@ function M.AssociateFleetAsync(AssociateFleetRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "PhotonAdminProxyService.AssociateFleet",
 	}
+	for header,value in pairs(AssociateFleetRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", AssociateFleetRequest, headers, settings, cb)
 	else
@@ -2589,8 +3245,11 @@ function M.StopFleetAsync(StopFleetRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "PhotonAdminProxyService.StopFleet",
 	}
+	for header,value in pairs(StopFleetRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", StopFleetRequest, headers, settings, cb)
 	else
@@ -2621,8 +3280,11 @@ function M.DescribeFleetsAsync(DescribeFleetsRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "PhotonAdminProxyService.DescribeFleets",
 	}
+	for header,value in pairs(DescribeFleetsRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeFleetsRequest, headers, settings, cb)
 	else
@@ -2653,8 +3315,11 @@ function M.UpdateFleetAsync(UpdateFleetRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "PhotonAdminProxyService.UpdateFleet",
 	}
+	for header,value in pairs(UpdateFleetRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateFleetRequest, headers, settings, cb)
 	else
@@ -2685,8 +3350,11 @@ function M.DescribeImagesAsync(DescribeImagesRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "PhotonAdminProxyService.DescribeImages",
 	}
+	for header,value in pairs(DescribeImagesRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeImagesRequest, headers, settings, cb)
 	else
@@ -2717,8 +3385,11 @@ function M.DeleteStackAsync(DeleteStackRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "PhotonAdminProxyService.DeleteStack",
 	}
+	for header,value in pairs(DeleteStackRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteStackRequest, headers, settings, cb)
 	else
@@ -2749,8 +3420,11 @@ function M.ExpireSessionAsync(ExpireSessionRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "PhotonAdminProxyService.ExpireSession",
 	}
+	for header,value in pairs(ExpireSessionRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ExpireSessionRequest, headers, settings, cb)
 	else
@@ -2781,8 +3455,11 @@ function M.ListAssociatedStacksAsync(ListAssociatedStacksRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "PhotonAdminProxyService.ListAssociatedStacks",
 	}
+	for header,value in pairs(ListAssociatedStacksRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ListAssociatedStacksRequest, headers, settings, cb)
 	else
@@ -2813,8 +3490,11 @@ function M.ListAssociatedFleetsAsync(ListAssociatedFleetsRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "PhotonAdminProxyService.ListAssociatedFleets",
 	}
+	for header,value in pairs(ListAssociatedFleetsRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ListAssociatedFleetsRequest, headers, settings, cb)
 	else
@@ -2845,8 +3525,11 @@ function M.StartFleetAsync(StartFleetRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "PhotonAdminProxyService.StartFleet",
 	}
+	for header,value in pairs(StartFleetRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", StartFleetRequest, headers, settings, cb)
 	else
@@ -2877,8 +3560,11 @@ function M.DisassociateFleetAsync(DisassociateFleetRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "PhotonAdminProxyService.DisassociateFleet",
 	}
+	for header,value in pairs(DisassociateFleetRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DisassociateFleetRequest, headers, settings, cb)
 	else
@@ -2909,8 +3595,11 @@ function M.DescribeStacksAsync(DescribeStacksRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "PhotonAdminProxyService.DescribeStacks",
 	}
+	for header,value in pairs(DescribeStacksRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeStacksRequest, headers, settings, cb)
 	else
@@ -2941,8 +3630,11 @@ function M.CreateStackAsync(CreateStackRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "PhotonAdminProxyService.CreateStack",
 	}
+	for header,value in pairs(CreateStackRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateStackRequest, headers, settings, cb)
 	else

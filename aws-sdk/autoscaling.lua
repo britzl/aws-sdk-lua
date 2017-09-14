@@ -49,16 +49,27 @@ end
 -- Required key: PolicyName
 -- @return ExecutePolicyType structure as a key-value pair table
 function M.ExecutePolicyType(args)
-	assert(args, "You must provdide an argument table when creating ExecutePolicyType")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ExecutePolicyType")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["MetricValue"] = args["MetricValue"],
 		["PolicyName"] = args["PolicyName"],
 		["AutoScalingGroupName"] = args["AutoScalingGroupName"],
 		["HonorCooldown"] = args["HonorCooldown"],
 		["BreachThreshold"] = args["BreachThreshold"],
 	}
-	asserts.AssertExecutePolicyType(t)
-	return t
+	asserts.AssertExecutePolicyType(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DetachInstancesQuery = { ["ShouldDecrementDesiredCapacity"] = true, ["AutoScalingGroupName"] = true, ["InstanceIds"] = true, nil }
@@ -87,14 +98,25 @@ end
 -- Required key: ShouldDecrementDesiredCapacity
 -- @return DetachInstancesQuery structure as a key-value pair table
 function M.DetachInstancesQuery(args)
-	assert(args, "You must provdide an argument table when creating DetachInstancesQuery")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DetachInstancesQuery")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ShouldDecrementDesiredCapacity"] = args["ShouldDecrementDesiredCapacity"],
 		["AutoScalingGroupName"] = args["AutoScalingGroupName"],
 		["InstanceIds"] = args["InstanceIds"],
 	}
-	asserts.AssertDetachInstancesQuery(t)
-	return t
+	asserts.AssertDetachInstancesQuery(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AttachLoadBalancerTargetGroupsResultType = { nil }
@@ -113,11 +135,22 @@ end
 -- Valid keys:
 -- @return AttachLoadBalancerTargetGroupsResultType structure as a key-value pair table
 function M.AttachLoadBalancerTargetGroupsResultType(args)
-	assert(args, "You must provdide an argument table when creating AttachLoadBalancerTargetGroupsResultType")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AttachLoadBalancerTargetGroupsResultType")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertAttachLoadBalancerTargetGroupsResultType(t)
-	return t
+	asserts.AssertAttachLoadBalancerTargetGroupsResultType(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.TerminateInstanceInAutoScalingGroupType = { ["InstanceId"] = true, ["ShouldDecrementDesiredCapacity"] = true, nil }
@@ -144,13 +177,24 @@ end
 -- Required key: ShouldDecrementDesiredCapacity
 -- @return TerminateInstanceInAutoScalingGroupType structure as a key-value pair table
 function M.TerminateInstanceInAutoScalingGroupType(args)
-	assert(args, "You must provdide an argument table when creating TerminateInstanceInAutoScalingGroupType")
-	local t = { 
+	assert(args, "You must provide an argument table when creating TerminateInstanceInAutoScalingGroupType")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["InstanceId"] = args["InstanceId"],
 		["ShouldDecrementDesiredCapacity"] = args["ShouldDecrementDesiredCapacity"],
 	}
-	asserts.AssertTerminateInstanceInAutoScalingGroupType(t)
-	return t
+	asserts.AssertTerminateInstanceInAutoScalingGroupType(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ScalingActivityInProgressFault = { ["message"] = true, nil }
@@ -171,12 +215,23 @@ end
 -- * message [XmlStringMaxLen255] <p/>
 -- @return ScalingActivityInProgressFault structure as a key-value pair table
 function M.ScalingActivityInProgressFault(args)
-	assert(args, "You must provdide an argument table when creating ScalingActivityInProgressFault")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ScalingActivityInProgressFault")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertScalingActivityInProgressFault(t)
-	return t
+	asserts.AssertScalingActivityInProgressFault(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AttachInstancesQuery = { ["AutoScalingGroupName"] = true, ["InstanceIds"] = true, nil }
@@ -201,13 +256,24 @@ end
 -- Required key: AutoScalingGroupName
 -- @return AttachInstancesQuery structure as a key-value pair table
 function M.AttachInstancesQuery(args)
-	assert(args, "You must provdide an argument table when creating AttachInstancesQuery")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AttachInstancesQuery")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["AutoScalingGroupName"] = args["AutoScalingGroupName"],
 		["InstanceIds"] = args["InstanceIds"],
 	}
-	asserts.AssertAttachInstancesQuery(t)
-	return t
+	asserts.AssertAttachInstancesQuery(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ActivityType = { ["Activity"] = true, nil }
@@ -228,12 +294,23 @@ end
 -- * Activity [Activity] <p>A scaling activity.</p>
 -- @return ActivityType structure as a key-value pair table
 function M.ActivityType(args)
-	assert(args, "You must provdide an argument table when creating ActivityType")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ActivityType")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Activity"] = args["Activity"],
 	}
-	asserts.AssertActivityType(t)
-	return t
+	asserts.AssertActivityType(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeScalingActivitiesType = { ["ActivityIds"] = true, ["MaxRecords"] = true, ["NextToken"] = true, ["AutoScalingGroupName"] = true, nil }
@@ -260,15 +337,26 @@ end
 -- * AutoScalingGroupName [ResourceName] <p>The name of the group.</p>
 -- @return DescribeScalingActivitiesType structure as a key-value pair table
 function M.DescribeScalingActivitiesType(args)
-	assert(args, "You must provdide an argument table when creating DescribeScalingActivitiesType")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeScalingActivitiesType")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ActivityIds"] = args["ActivityIds"],
 		["MaxRecords"] = args["MaxRecords"],
 		["NextToken"] = args["NextToken"],
 		["AutoScalingGroupName"] = args["AutoScalingGroupName"],
 	}
-	asserts.AssertDescribeScalingActivitiesType(t)
-	return t
+	asserts.AssertDescribeScalingActivitiesType(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.PoliciesType = { ["ScalingPolicies"] = true, ["NextToken"] = true, nil }
@@ -291,13 +379,24 @@ end
 -- * NextToken [XmlString] <p>The token to use when requesting the next set of items. If there are no additional items to return, the string is empty.</p>
 -- @return PoliciesType structure as a key-value pair table
 function M.PoliciesType(args)
-	assert(args, "You must provdide an argument table when creating PoliciesType")
-	local t = { 
+	assert(args, "You must provide an argument table when creating PoliciesType")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ScalingPolicies"] = args["ScalingPolicies"],
 		["NextToken"] = args["NextToken"],
 	}
-	asserts.AssertPoliciesType(t)
-	return t
+	asserts.AssertPoliciesType(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AttachLoadBalancersResultType = { nil }
@@ -316,11 +415,22 @@ end
 -- Valid keys:
 -- @return AttachLoadBalancersResultType structure as a key-value pair table
 function M.AttachLoadBalancersResultType(args)
-	assert(args, "You must provdide an argument table when creating AttachLoadBalancersResultType")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AttachLoadBalancersResultType")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertAttachLoadBalancersResultType(t)
-	return t
+	asserts.AssertAttachLoadBalancersResultType(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ScheduledActionsType = { ["NextToken"] = true, ["ScheduledUpdateGroupActions"] = true, nil }
@@ -343,13 +453,24 @@ end
 -- * ScheduledUpdateGroupActions [ScheduledUpdateGroupActions] <p>The scheduled actions.</p>
 -- @return ScheduledActionsType structure as a key-value pair table
 function M.ScheduledActionsType(args)
-	assert(args, "You must provdide an argument table when creating ScheduledActionsType")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ScheduledActionsType")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NextToken"] = args["NextToken"],
 		["ScheduledUpdateGroupActions"] = args["ScheduledUpdateGroupActions"],
 	}
-	asserts.AssertScheduledActionsType(t)
-	return t
+	asserts.AssertScheduledActionsType(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ResourceInUseFault = { ["message"] = true, nil }
@@ -370,12 +491,23 @@ end
 -- * message [XmlStringMaxLen255] <p/>
 -- @return ResourceInUseFault structure as a key-value pair table
 function M.ResourceInUseFault(args)
-	assert(args, "You must provdide an argument table when creating ResourceInUseFault")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ResourceInUseFault")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertResourceInUseFault(t)
-	return t
+	asserts.AssertResourceInUseFault(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.LaunchConfigurationNameType = { ["LaunchConfigurationName"] = true, nil }
@@ -398,12 +530,23 @@ end
 -- Required key: LaunchConfigurationName
 -- @return LaunchConfigurationNameType structure as a key-value pair table
 function M.LaunchConfigurationNameType(args)
-	assert(args, "You must provdide an argument table when creating LaunchConfigurationNameType")
-	local t = { 
+	assert(args, "You must provide an argument table when creating LaunchConfigurationNameType")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["LaunchConfigurationName"] = args["LaunchConfigurationName"],
 	}
-	asserts.AssertLaunchConfigurationNameType(t)
-	return t
+	asserts.AssertLaunchConfigurationNameType(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.StepAdjustment = { ["ScalingAdjustment"] = true, ["MetricIntervalLowerBound"] = true, ["MetricIntervalUpperBound"] = true, nil }
@@ -430,14 +573,25 @@ end
 -- Required key: ScalingAdjustment
 -- @return StepAdjustment structure as a key-value pair table
 function M.StepAdjustment(args)
-	assert(args, "You must provdide an argument table when creating StepAdjustment")
-	local t = { 
+	assert(args, "You must provide an argument table when creating StepAdjustment")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ScalingAdjustment"] = args["ScalingAdjustment"],
 		["MetricIntervalLowerBound"] = args["MetricIntervalLowerBound"],
 		["MetricIntervalUpperBound"] = args["MetricIntervalUpperBound"],
 	}
-	asserts.AssertStepAdjustment(t)
-	return t
+	asserts.AssertStepAdjustment(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteLifecycleHookAnswer = { nil }
@@ -456,11 +610,22 @@ end
 -- Valid keys:
 -- @return DeleteLifecycleHookAnswer structure as a key-value pair table
 function M.DeleteLifecycleHookAnswer(args)
-	assert(args, "You must provdide an argument table when creating DeleteLifecycleHookAnswer")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteLifecycleHookAnswer")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertDeleteLifecycleHookAnswer(t)
-	return t
+	asserts.AssertDeleteLifecycleHookAnswer(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.LaunchConfiguration = { ["UserData"] = true, ["IamInstanceProfile"] = true, ["ClassicLinkVPCId"] = true, ["EbsOptimized"] = true, ["PlacementTenancy"] = true, ["LaunchConfigurationARN"] = true, ["InstanceMonitoring"] = true, ["ImageId"] = true, ["CreatedTime"] = true, ["BlockDeviceMappings"] = true, ["KeyName"] = true, ["SecurityGroups"] = true, ["AssociatePublicIpAddress"] = true, ["LaunchConfigurationName"] = true, ["KernelId"] = true, ["RamdiskId"] = true, ["ClassicLinkVPCSecurityGroups"] = true, ["InstanceType"] = true, ["SpotPrice"] = true, nil }
@@ -525,8 +690,14 @@ end
 -- Required key: CreatedTime
 -- @return LaunchConfiguration structure as a key-value pair table
 function M.LaunchConfiguration(args)
-	assert(args, "You must provdide an argument table when creating LaunchConfiguration")
-	local t = { 
+	assert(args, "You must provide an argument table when creating LaunchConfiguration")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["UserData"] = args["UserData"],
 		["IamInstanceProfile"] = args["IamInstanceProfile"],
 		["ClassicLinkVPCId"] = args["ClassicLinkVPCId"],
@@ -547,8 +718,13 @@ function M.LaunchConfiguration(args)
 		["InstanceType"] = args["InstanceType"],
 		["SpotPrice"] = args["SpotPrice"],
 	}
-	asserts.AssertLaunchConfiguration(t)
-	return t
+	asserts.AssertLaunchConfiguration(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ScalingProcessQuery = { ["AutoScalingGroupName"] = true, ["ScalingProcesses"] = true, nil }
@@ -573,13 +749,24 @@ end
 -- Required key: AutoScalingGroupName
 -- @return ScalingProcessQuery structure as a key-value pair table
 function M.ScalingProcessQuery(args)
-	assert(args, "You must provdide an argument table when creating ScalingProcessQuery")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ScalingProcessQuery")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["AutoScalingGroupName"] = args["AutoScalingGroupName"],
 		["ScalingProcesses"] = args["ScalingProcesses"],
 	}
-	asserts.AssertScalingProcessQuery(t)
-	return t
+	asserts.AssertScalingProcessQuery(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeAccountLimitsAnswer = { ["NumberOfLaunchConfigurations"] = true, ["MaxNumberOfLaunchConfigurations"] = true, ["NumberOfAutoScalingGroups"] = true, ["MaxNumberOfAutoScalingGroups"] = true, nil }
@@ -606,15 +793,26 @@ end
 -- * MaxNumberOfAutoScalingGroups [MaxNumberOfAutoScalingGroups] <p>The maximum number of groups allowed for your AWS account. The default limit is 20 per region.</p>
 -- @return DescribeAccountLimitsAnswer structure as a key-value pair table
 function M.DescribeAccountLimitsAnswer(args)
-	assert(args, "You must provdide an argument table when creating DescribeAccountLimitsAnswer")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeAccountLimitsAnswer")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NumberOfLaunchConfigurations"] = args["NumberOfLaunchConfigurations"],
 		["MaxNumberOfLaunchConfigurations"] = args["MaxNumberOfLaunchConfigurations"],
 		["NumberOfAutoScalingGroups"] = args["NumberOfAutoScalingGroups"],
 		["MaxNumberOfAutoScalingGroups"] = args["MaxNumberOfAutoScalingGroups"],
 	}
-	asserts.AssertDescribeAccountLimitsAnswer(t)
-	return t
+	asserts.AssertDescribeAccountLimitsAnswer(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.TagDescription = { ["ResourceType"] = true, ["ResourceId"] = true, ["PropagateAtLaunch"] = true, ["Value"] = true, ["Key"] = true, nil }
@@ -643,16 +841,27 @@ end
 -- * Key [TagKey] <p>The tag key.</p>
 -- @return TagDescription structure as a key-value pair table
 function M.TagDescription(args)
-	assert(args, "You must provdide an argument table when creating TagDescription")
-	local t = { 
+	assert(args, "You must provide an argument table when creating TagDescription")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ResourceType"] = args["ResourceType"],
 		["ResourceId"] = args["ResourceId"],
 		["PropagateAtLaunch"] = args["PropagateAtLaunch"],
 		["Value"] = args["Value"],
 		["Key"] = args["Key"],
 	}
-	asserts.AssertTagDescription(t)
-	return t
+	asserts.AssertTagDescription(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Tag = { ["ResourceType"] = true, ["ResourceId"] = true, ["PropagateAtLaunch"] = true, ["Value"] = true, ["Key"] = true, nil }
@@ -683,16 +892,27 @@ end
 -- Required key: Key
 -- @return Tag structure as a key-value pair table
 function M.Tag(args)
-	assert(args, "You must provdide an argument table when creating Tag")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Tag")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ResourceType"] = args["ResourceType"],
 		["ResourceId"] = args["ResourceId"],
 		["PropagateAtLaunch"] = args["PropagateAtLaunch"],
 		["Value"] = args["Value"],
 		["Key"] = args["Key"],
 	}
-	asserts.AssertTag(t)
-	return t
+	asserts.AssertTag(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateOrUpdateTagsType = { ["Tags"] = true, nil }
@@ -715,12 +935,23 @@ end
 -- Required key: Tags
 -- @return CreateOrUpdateTagsType structure as a key-value pair table
 function M.CreateOrUpdateTagsType(args)
-	assert(args, "You must provdide an argument table when creating CreateOrUpdateTagsType")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateOrUpdateTagsType")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Tags"] = args["Tags"],
 	}
-	asserts.AssertCreateOrUpdateTagsType(t)
-	return t
+	asserts.AssertCreateOrUpdateTagsType(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Ebs = { ["VolumeSize"] = true, ["Encrypted"] = true, ["VolumeType"] = true, ["DeleteOnTermination"] = true, ["SnapshotId"] = true, ["Iops"] = true, nil }
@@ -751,8 +982,14 @@ end
 -- * Iops [BlockDeviceEbsIops] <p>The number of I/O operations per second (IOPS) to provision for the volume.</p> <p>Constraint: Required when the volume type is <code>io1</code>.</p>
 -- @return Ebs structure as a key-value pair table
 function M.Ebs(args)
-	assert(args, "You must provdide an argument table when creating Ebs")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Ebs")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["VolumeSize"] = args["VolumeSize"],
 		["Encrypted"] = args["Encrypted"],
 		["VolumeType"] = args["VolumeType"],
@@ -760,8 +997,13 @@ function M.Ebs(args)
 		["SnapshotId"] = args["SnapshotId"],
 		["Iops"] = args["Iops"],
 	}
-	asserts.AssertEbs(t)
-	return t
+	asserts.AssertEbs(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ExitStandbyQuery = { ["AutoScalingGroupName"] = true, ["InstanceIds"] = true, nil }
@@ -786,13 +1028,24 @@ end
 -- Required key: AutoScalingGroupName
 -- @return ExitStandbyQuery structure as a key-value pair table
 function M.ExitStandbyQuery(args)
-	assert(args, "You must provdide an argument table when creating ExitStandbyQuery")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ExitStandbyQuery")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["AutoScalingGroupName"] = args["AutoScalingGroupName"],
 		["InstanceIds"] = args["InstanceIds"],
 	}
-	asserts.AssertExitStandbyQuery(t)
-	return t
+	asserts.AssertExitStandbyQuery(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeMetricCollectionTypesAnswer = { ["Metrics"] = true, ["Granularities"] = true, nil }
@@ -815,13 +1068,24 @@ end
 -- * Granularities [MetricGranularityTypes] <p>The granularities for the metrics.</p>
 -- @return DescribeMetricCollectionTypesAnswer structure as a key-value pair table
 function M.DescribeMetricCollectionTypesAnswer(args)
-	assert(args, "You must provdide an argument table when creating DescribeMetricCollectionTypesAnswer")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeMetricCollectionTypesAnswer")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Metrics"] = args["Metrics"],
 		["Granularities"] = args["Granularities"],
 	}
-	asserts.AssertDescribeMetricCollectionTypesAnswer(t)
-	return t
+	asserts.AssertDescribeMetricCollectionTypesAnswer(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteTagsType = { ["Tags"] = true, nil }
@@ -844,12 +1108,23 @@ end
 -- Required key: Tags
 -- @return DeleteTagsType structure as a key-value pair table
 function M.DeleteTagsType(args)
-	assert(args, "You must provdide an argument table when creating DeleteTagsType")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteTagsType")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Tags"] = args["Tags"],
 	}
-	asserts.AssertDeleteTagsType(t)
-	return t
+	asserts.AssertDeleteTagsType(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AlreadyExistsFault = { ["message"] = true, nil }
@@ -870,12 +1145,23 @@ end
 -- * message [XmlStringMaxLen255] <p/>
 -- @return AlreadyExistsFault structure as a key-value pair table
 function M.AlreadyExistsFault(args)
-	assert(args, "You must provdide an argument table when creating AlreadyExistsFault")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AlreadyExistsFault")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertAlreadyExistsFault(t)
-	return t
+	asserts.AssertAlreadyExistsFault(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AutoScalingGroup = { ["PlacementGroup"] = true, ["VPCZoneIdentifier"] = true, ["LoadBalancerNames"] = true, ["CreatedTime"] = true, ["Status"] = true, ["AutoScalingGroupARN"] = true, ["SuspendedProcesses"] = true, ["Tags"] = true, ["MaxSize"] = true, ["TerminationPolicies"] = true, ["TargetGroupARNs"] = true, ["HealthCheckType"] = true, ["AutoScalingGroupName"] = true, ["MinSize"] = true, ["LaunchConfigurationName"] = true, ["HealthCheckGracePeriod"] = true, ["DesiredCapacity"] = true, ["EnabledMetrics"] = true, ["DefaultCooldown"] = true, ["Instances"] = true, ["AvailabilityZones"] = true, ["NewInstancesProtectedFromScaleIn"] = true, nil }
@@ -954,8 +1240,14 @@ end
 -- Required key: CreatedTime
 -- @return AutoScalingGroup structure as a key-value pair table
 function M.AutoScalingGroup(args)
-	assert(args, "You must provdide an argument table when creating AutoScalingGroup")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AutoScalingGroup")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["PlacementGroup"] = args["PlacementGroup"],
 		["VPCZoneIdentifier"] = args["VPCZoneIdentifier"],
 		["LoadBalancerNames"] = args["LoadBalancerNames"],
@@ -979,8 +1271,13 @@ function M.AutoScalingGroup(args)
 		["AvailabilityZones"] = args["AvailabilityZones"],
 		["NewInstancesProtectedFromScaleIn"] = args["NewInstancesProtectedFromScaleIn"],
 	}
-	asserts.AssertAutoScalingGroup(t)
-	return t
+	asserts.AssertAutoScalingGroup(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DetachInstancesAnswer = { ["Activities"] = true, nil }
@@ -1001,12 +1298,23 @@ end
 -- * Activities [Activities] <p>The activities related to detaching the instances from the Auto Scaling group.</p>
 -- @return DetachInstancesAnswer structure as a key-value pair table
 function M.DetachInstancesAnswer(args)
-	assert(args, "You must provdide an argument table when creating DetachInstancesAnswer")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DetachInstancesAnswer")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Activities"] = args["Activities"],
 	}
-	asserts.AssertDetachInstancesAnswer(t)
-	return t
+	asserts.AssertDetachInstancesAnswer(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ScalingPolicy = { ["PolicyName"] = true, ["EstimatedInstanceWarmup"] = true, ["MinAdjustmentStep"] = true, ["MinAdjustmentMagnitude"] = true, ["MetricAggregationType"] = true, ["AutoScalingGroupName"] = true, ["PolicyARN"] = true, ["Cooldown"] = true, ["PolicyType"] = true, ["StepAdjustments"] = true, ["AdjustmentType"] = true, ["Alarms"] = true, ["ScalingAdjustment"] = true, nil }
@@ -1051,8 +1359,14 @@ end
 -- * ScalingAdjustment [PolicyIncrement] <p>The amount by which to scale, based on the specified adjustment type. A positive value adds to the current capacity while a negative number removes from the current capacity.</p>
 -- @return ScalingPolicy structure as a key-value pair table
 function M.ScalingPolicy(args)
-	assert(args, "You must provdide an argument table when creating ScalingPolicy")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ScalingPolicy")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["PolicyName"] = args["PolicyName"],
 		["EstimatedInstanceWarmup"] = args["EstimatedInstanceWarmup"],
 		["MinAdjustmentStep"] = args["MinAdjustmentStep"],
@@ -1067,8 +1381,13 @@ function M.ScalingPolicy(args)
 		["Alarms"] = args["Alarms"],
 		["ScalingAdjustment"] = args["ScalingAdjustment"],
 	}
-	asserts.AssertScalingPolicy(t)
-	return t
+	asserts.AssertScalingPolicy(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.RecordLifecycleActionHeartbeatAnswer = { nil }
@@ -1087,11 +1406,22 @@ end
 -- Valid keys:
 -- @return RecordLifecycleActionHeartbeatAnswer structure as a key-value pair table
 function M.RecordLifecycleActionHeartbeatAnswer(args)
-	assert(args, "You must provdide an argument table when creating RecordLifecycleActionHeartbeatAnswer")
-	local t = { 
+	assert(args, "You must provide an argument table when creating RecordLifecycleActionHeartbeatAnswer")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertRecordLifecycleActionHeartbeatAnswer(t)
-	return t
+	asserts.AssertRecordLifecycleActionHeartbeatAnswer(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteScheduledActionType = { ["AutoScalingGroupName"] = true, ["ScheduledActionName"] = true, nil }
@@ -1118,13 +1448,24 @@ end
 -- Required key: ScheduledActionName
 -- @return DeleteScheduledActionType structure as a key-value pair table
 function M.DeleteScheduledActionType(args)
-	assert(args, "You must provdide an argument table when creating DeleteScheduledActionType")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteScheduledActionType")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["AutoScalingGroupName"] = args["AutoScalingGroupName"],
 		["ScheduledActionName"] = args["ScheduledActionName"],
 	}
-	asserts.AssertDeleteScheduledActionType(t)
-	return t
+	asserts.AssertDeleteScheduledActionType(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeNotificationConfigurationsType = { ["MaxRecords"] = true, ["NextToken"] = true, ["AutoScalingGroupNames"] = true, nil }
@@ -1149,14 +1490,25 @@ end
 -- * AutoScalingGroupNames [AutoScalingGroupNames] <p>The name of the group.</p>
 -- @return DescribeNotificationConfigurationsType structure as a key-value pair table
 function M.DescribeNotificationConfigurationsType(args)
-	assert(args, "You must provdide an argument table when creating DescribeNotificationConfigurationsType")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeNotificationConfigurationsType")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["MaxRecords"] = args["MaxRecords"],
 		["NextToken"] = args["NextToken"],
 		["AutoScalingGroupNames"] = args["AutoScalingGroupNames"],
 	}
-	asserts.AssertDescribeNotificationConfigurationsType(t)
-	return t
+	asserts.AssertDescribeNotificationConfigurationsType(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.MetricGranularityType = { ["Granularity"] = true, nil }
@@ -1177,12 +1529,23 @@ end
 -- * Granularity [XmlStringMaxLen255] <p>The granularity. The only valid value is <code>1Minute</code>.</p>
 -- @return MetricGranularityType structure as a key-value pair table
 function M.MetricGranularityType(args)
-	assert(args, "You must provdide an argument table when creating MetricGranularityType")
-	local t = { 
+	assert(args, "You must provide an argument table when creating MetricGranularityType")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Granularity"] = args["Granularity"],
 	}
-	asserts.AssertMetricGranularityType(t)
-	return t
+	asserts.AssertMetricGranularityType(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeScheduledActionsType = { ["EndTime"] = true, ["AutoScalingGroupName"] = true, ["MaxRecords"] = true, ["ScheduledActionNames"] = true, ["StartTime"] = true, ["NextToken"] = true, nil }
@@ -1213,8 +1576,14 @@ end
 -- * NextToken [XmlString] <p>The token for the next set of items to return. (You received this token from a previous call.)</p>
 -- @return DescribeScheduledActionsType structure as a key-value pair table
 function M.DescribeScheduledActionsType(args)
-	assert(args, "You must provdide an argument table when creating DescribeScheduledActionsType")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeScheduledActionsType")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["EndTime"] = args["EndTime"],
 		["AutoScalingGroupName"] = args["AutoScalingGroupName"],
 		["MaxRecords"] = args["MaxRecords"],
@@ -1222,8 +1591,13 @@ function M.DescribeScheduledActionsType(args)
 		["StartTime"] = args["StartTime"],
 		["NextToken"] = args["NextToken"],
 	}
-	asserts.AssertDescribeScheduledActionsType(t)
-	return t
+	asserts.AssertDescribeScheduledActionsType(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ResourceContentionFault = { ["message"] = true, nil }
@@ -1244,12 +1618,23 @@ end
 -- * message [XmlStringMaxLen255] <p/>
 -- @return ResourceContentionFault structure as a key-value pair table
 function M.ResourceContentionFault(args)
-	assert(args, "You must provdide an argument table when creating ResourceContentionFault")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ResourceContentionFault")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertResourceContentionFault(t)
-	return t
+	asserts.AssertResourceContentionFault(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ScheduledUpdateGroupAction = { ["MinSize"] = true, ["DesiredCapacity"] = true, ["AutoScalingGroupName"] = true, ["MaxSize"] = true, ["Recurrence"] = true, ["ScheduledActionARN"] = true, ["ScheduledActionName"] = true, ["StartTime"] = true, ["Time"] = true, ["EndTime"] = true, nil }
@@ -1288,8 +1673,14 @@ end
 -- * EndTime [TimestampType] <p>The date and time that the action is scheduled to end. This date and time can be up to one month in the future.</p>
 -- @return ScheduledUpdateGroupAction structure as a key-value pair table
 function M.ScheduledUpdateGroupAction(args)
-	assert(args, "You must provdide an argument table when creating ScheduledUpdateGroupAction")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ScheduledUpdateGroupAction")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["MinSize"] = args["MinSize"],
 		["DesiredCapacity"] = args["DesiredCapacity"],
 		["AutoScalingGroupName"] = args["AutoScalingGroupName"],
@@ -1301,8 +1692,13 @@ function M.ScheduledUpdateGroupAction(args)
 		["Time"] = args["Time"],
 		["EndTime"] = args["EndTime"],
 	}
-	asserts.AssertScheduledUpdateGroupAction(t)
-	return t
+	asserts.AssertScheduledUpdateGroupAction(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.EnabledMetric = { ["Metric"] = true, ["Granularity"] = true, nil }
@@ -1325,13 +1721,24 @@ end
 -- * Granularity [XmlStringMaxLen255] <p>The granularity of the metric. The only valid value is <code>1Minute</code>.</p>
 -- @return EnabledMetric structure as a key-value pair table
 function M.EnabledMetric(args)
-	assert(args, "You must provdide an argument table when creating EnabledMetric")
-	local t = { 
+	assert(args, "You must provide an argument table when creating EnabledMetric")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Metric"] = args["Metric"],
 		["Granularity"] = args["Granularity"],
 	}
-	asserts.AssertEnabledMetric(t)
-	return t
+	asserts.AssertEnabledMetric(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeletePolicyType = { ["PolicyName"] = true, ["AutoScalingGroupName"] = true, nil }
@@ -1356,13 +1763,24 @@ end
 -- Required key: PolicyName
 -- @return DeletePolicyType structure as a key-value pair table
 function M.DeletePolicyType(args)
-	assert(args, "You must provdide an argument table when creating DeletePolicyType")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeletePolicyType")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["PolicyName"] = args["PolicyName"],
 		["AutoScalingGroupName"] = args["AutoScalingGroupName"],
 	}
-	asserts.AssertDeletePolicyType(t)
-	return t
+	asserts.AssertDeletePolicyType(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteLifecycleHookType = { ["LifecycleHookName"] = true, ["AutoScalingGroupName"] = true, nil }
@@ -1389,13 +1807,24 @@ end
 -- Required key: AutoScalingGroupName
 -- @return DeleteLifecycleHookType structure as a key-value pair table
 function M.DeleteLifecycleHookType(args)
-	assert(args, "You must provdide an argument table when creating DeleteLifecycleHookType")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteLifecycleHookType")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["LifecycleHookName"] = args["LifecycleHookName"],
 		["AutoScalingGroupName"] = args["AutoScalingGroupName"],
 	}
-	asserts.AssertDeleteLifecycleHookType(t)
-	return t
+	asserts.AssertDeleteLifecycleHookType(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ProcessType = { ["ProcessName"] = true, nil }
@@ -1418,12 +1847,23 @@ end
 -- Required key: ProcessName
 -- @return ProcessType structure as a key-value pair table
 function M.ProcessType(args)
-	assert(args, "You must provdide an argument table when creating ProcessType")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ProcessType")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ProcessName"] = args["ProcessName"],
 	}
-	asserts.AssertProcessType(t)
-	return t
+	asserts.AssertProcessType(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ProcessesType = { ["Processes"] = true, nil }
@@ -1444,12 +1884,23 @@ end
 -- * Processes [Processes] <p>The names of the process types.</p>
 -- @return ProcessesType structure as a key-value pair table
 function M.ProcessesType(args)
-	assert(args, "You must provdide an argument table when creating ProcessesType")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ProcessesType")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Processes"] = args["Processes"],
 	}
-	asserts.AssertProcessesType(t)
-	return t
+	asserts.AssertProcessesType(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.PutNotificationConfigurationType = { ["AutoScalingGroupName"] = true, ["NotificationTypes"] = true, ["TopicARN"] = true, nil }
@@ -1480,14 +1931,25 @@ end
 -- Required key: NotificationTypes
 -- @return PutNotificationConfigurationType structure as a key-value pair table
 function M.PutNotificationConfigurationType(args)
-	assert(args, "You must provdide an argument table when creating PutNotificationConfigurationType")
-	local t = { 
+	assert(args, "You must provide an argument table when creating PutNotificationConfigurationType")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["AutoScalingGroupName"] = args["AutoScalingGroupName"],
 		["NotificationTypes"] = args["NotificationTypes"],
 		["TopicARN"] = args["TopicARN"],
 	}
-	asserts.AssertPutNotificationConfigurationType(t)
-	return t
+	asserts.AssertPutNotificationConfigurationType(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.EnterStandbyAnswer = { ["Activities"] = true, nil }
@@ -1508,12 +1970,23 @@ end
 -- * Activities [Activities] <p>The activities related to moving instances into <code>Standby</code> mode.</p>
 -- @return EnterStandbyAnswer structure as a key-value pair table
 function M.EnterStandbyAnswer(args)
-	assert(args, "You must provdide an argument table when creating EnterStandbyAnswer")
-	local t = { 
+	assert(args, "You must provide an argument table when creating EnterStandbyAnswer")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Activities"] = args["Activities"],
 	}
-	asserts.AssertEnterStandbyAnswer(t)
-	return t
+	asserts.AssertEnterStandbyAnswer(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ExitStandbyAnswer = { ["Activities"] = true, nil }
@@ -1534,12 +2007,23 @@ end
 -- * Activities [Activities] <p>The activities related to moving instances out of <code>Standby</code> mode.</p>
 -- @return ExitStandbyAnswer structure as a key-value pair table
 function M.ExitStandbyAnswer(args)
-	assert(args, "You must provdide an argument table when creating ExitStandbyAnswer")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ExitStandbyAnswer")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Activities"] = args["Activities"],
 	}
-	asserts.AssertExitStandbyAnswer(t)
-	return t
+	asserts.AssertExitStandbyAnswer(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeAdjustmentTypesAnswer = { ["AdjustmentTypes"] = true, nil }
@@ -1560,12 +2044,23 @@ end
 -- * AdjustmentTypes [AdjustmentTypes] <p>The policy adjustment types.</p>
 -- @return DescribeAdjustmentTypesAnswer structure as a key-value pair table
 function M.DescribeAdjustmentTypesAnswer(args)
-	assert(args, "You must provdide an argument table when creating DescribeAdjustmentTypesAnswer")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeAdjustmentTypesAnswer")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["AdjustmentTypes"] = args["AdjustmentTypes"],
 	}
-	asserts.AssertDescribeAdjustmentTypesAnswer(t)
-	return t
+	asserts.AssertDescribeAdjustmentTypesAnswer(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AdjustmentType = { ["AdjustmentType"] = true, nil }
@@ -1586,12 +2081,23 @@ end
 -- * AdjustmentType [XmlStringMaxLen255] <p>The policy adjustment type. The valid values are <code>ChangeInCapacity</code>, <code>ExactCapacity</code>, and <code>PercentChangeInCapacity</code>.</p>
 -- @return AdjustmentType structure as a key-value pair table
 function M.AdjustmentType(args)
-	assert(args, "You must provdide an argument table when creating AdjustmentType")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AdjustmentType")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["AdjustmentType"] = args["AdjustmentType"],
 	}
-	asserts.AssertAdjustmentType(t)
-	return t
+	asserts.AssertAdjustmentType(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DisableMetricsCollectionQuery = { ["Metrics"] = true, ["AutoScalingGroupName"] = true, nil }
@@ -1616,13 +2122,24 @@ end
 -- Required key: AutoScalingGroupName
 -- @return DisableMetricsCollectionQuery structure as a key-value pair table
 function M.DisableMetricsCollectionQuery(args)
-	assert(args, "You must provdide an argument table when creating DisableMetricsCollectionQuery")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DisableMetricsCollectionQuery")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Metrics"] = args["Metrics"],
 		["AutoScalingGroupName"] = args["AutoScalingGroupName"],
 	}
-	asserts.AssertDisableMetricsCollectionQuery(t)
-	return t
+	asserts.AssertDisableMetricsCollectionQuery(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.NotificationConfiguration = { ["AutoScalingGroupName"] = true, ["NotificationType"] = true, ["TopicARN"] = true, nil }
@@ -1647,14 +2164,25 @@ end
 -- * TopicARN [ResourceName] <p>The Amazon Resource Name (ARN) of the Amazon Simple Notification Service (SNS) topic.</p>
 -- @return NotificationConfiguration structure as a key-value pair table
 function M.NotificationConfiguration(args)
-	assert(args, "You must provdide an argument table when creating NotificationConfiguration")
-	local t = { 
+	assert(args, "You must provide an argument table when creating NotificationConfiguration")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["AutoScalingGroupName"] = args["AutoScalingGroupName"],
 		["NotificationType"] = args["NotificationType"],
 		["TopicARN"] = args["TopicARN"],
 	}
-	asserts.AssertNotificationConfiguration(t)
-	return t
+	asserts.AssertNotificationConfiguration(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.LaunchConfigurationNamesType = { ["MaxRecords"] = true, ["LaunchConfigurationNames"] = true, ["NextToken"] = true, nil }
@@ -1679,14 +2207,25 @@ end
 -- * NextToken [XmlString] <p>The token for the next set of items to return. (You received this token from a previous call.)</p>
 -- @return LaunchConfigurationNamesType structure as a key-value pair table
 function M.LaunchConfigurationNamesType(args)
-	assert(args, "You must provdide an argument table when creating LaunchConfigurationNamesType")
-	local t = { 
+	assert(args, "You must provide an argument table when creating LaunchConfigurationNamesType")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["MaxRecords"] = args["MaxRecords"],
 		["LaunchConfigurationNames"] = args["LaunchConfigurationNames"],
 		["NextToken"] = args["NextToken"],
 	}
-	asserts.AssertLaunchConfigurationNamesType(t)
-	return t
+	asserts.AssertLaunchConfigurationNamesType(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.PutScalingPolicyType = { ["PolicyName"] = true, ["EstimatedInstanceWarmup"] = true, ["MinAdjustmentStep"] = true, ["MinAdjustmentMagnitude"] = true, ["MetricAggregationType"] = true, ["AutoScalingGroupName"] = true, ["Cooldown"] = true, ["PolicyType"] = true, ["StepAdjustments"] = true, ["AdjustmentType"] = true, ["ScalingAdjustment"] = true, nil }
@@ -1733,8 +2272,14 @@ end
 -- Required key: AdjustmentType
 -- @return PutScalingPolicyType structure as a key-value pair table
 function M.PutScalingPolicyType(args)
-	assert(args, "You must provdide an argument table when creating PutScalingPolicyType")
-	local t = { 
+	assert(args, "You must provide an argument table when creating PutScalingPolicyType")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["PolicyName"] = args["PolicyName"],
 		["EstimatedInstanceWarmup"] = args["EstimatedInstanceWarmup"],
 		["MinAdjustmentStep"] = args["MinAdjustmentStep"],
@@ -1747,8 +2292,13 @@ function M.PutScalingPolicyType(args)
 		["AdjustmentType"] = args["AdjustmentType"],
 		["ScalingAdjustment"] = args["ScalingAdjustment"],
 	}
-	asserts.AssertPutScalingPolicyType(t)
-	return t
+	asserts.AssertPutScalingPolicyType(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InstanceMonitoring = { ["Enabled"] = true, nil }
@@ -1769,12 +2319,23 @@ end
 -- * Enabled [MonitoringEnabled] <p>If <code>true</code>, detailed monitoring is enabled. Otherwise, basic monitoring is enabled.</p>
 -- @return InstanceMonitoring structure as a key-value pair table
 function M.InstanceMonitoring(args)
-	assert(args, "You must provdide an argument table when creating InstanceMonitoring")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InstanceMonitoring")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Enabled"] = args["Enabled"],
 	}
-	asserts.AssertInstanceMonitoring(t)
-	return t
+	asserts.AssertInstanceMonitoring(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Instance = { ["ProtectedFromScaleIn"] = true, ["AvailabilityZone"] = true, ["InstanceId"] = true, ["HealthStatus"] = true, ["LifecycleState"] = true, ["LaunchConfigurationName"] = true, nil }
@@ -1817,8 +2378,14 @@ end
 -- Required key: ProtectedFromScaleIn
 -- @return Instance structure as a key-value pair table
 function M.Instance(args)
-	assert(args, "You must provdide an argument table when creating Instance")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Instance")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ProtectedFromScaleIn"] = args["ProtectedFromScaleIn"],
 		["AvailabilityZone"] = args["AvailabilityZone"],
 		["InstanceId"] = args["InstanceId"],
@@ -1826,8 +2393,13 @@ function M.Instance(args)
 		["LifecycleState"] = args["LifecycleState"],
 		["LaunchConfigurationName"] = args["LaunchConfigurationName"],
 	}
-	asserts.AssertInstance(t)
-	return t
+	asserts.AssertInstance(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DetachLoadBalancersType = { ["AutoScalingGroupName"] = true, ["LoadBalancerNames"] = true, nil }
@@ -1854,13 +2426,24 @@ end
 -- Required key: LoadBalancerNames
 -- @return DetachLoadBalancersType structure as a key-value pair table
 function M.DetachLoadBalancersType(args)
-	assert(args, "You must provdide an argument table when creating DetachLoadBalancersType")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DetachLoadBalancersType")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["AutoScalingGroupName"] = args["AutoScalingGroupName"],
 		["LoadBalancerNames"] = args["LoadBalancerNames"],
 	}
-	asserts.AssertDetachLoadBalancersType(t)
-	return t
+	asserts.AssertDetachLoadBalancersType(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.SetInstanceProtectionQuery = { ["ProtectedFromScaleIn"] = true, ["AutoScalingGroupName"] = true, ["InstanceIds"] = true, nil }
@@ -1891,14 +2474,25 @@ end
 -- Required key: ProtectedFromScaleIn
 -- @return SetInstanceProtectionQuery structure as a key-value pair table
 function M.SetInstanceProtectionQuery(args)
-	assert(args, "You must provdide an argument table when creating SetInstanceProtectionQuery")
-	local t = { 
+	assert(args, "You must provide an argument table when creating SetInstanceProtectionQuery")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ProtectedFromScaleIn"] = args["ProtectedFromScaleIn"],
 		["AutoScalingGroupName"] = args["AutoScalingGroupName"],
 		["InstanceIds"] = args["InstanceIds"],
 	}
-	asserts.AssertSetInstanceProtectionQuery(t)
-	return t
+	asserts.AssertSetInstanceProtectionQuery(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.TagsType = { ["NextToken"] = true, ["Tags"] = true, nil }
@@ -1921,13 +2515,24 @@ end
 -- * Tags [TagDescriptionList] <p>One or more tags.</p>
 -- @return TagsType structure as a key-value pair table
 function M.TagsType(args)
-	assert(args, "You must provdide an argument table when creating TagsType")
-	local t = { 
+	assert(args, "You must provide an argument table when creating TagsType")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NextToken"] = args["NextToken"],
 		["Tags"] = args["Tags"],
 	}
-	asserts.AssertTagsType(t)
-	return t
+	asserts.AssertTagsType(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.LaunchConfigurationsType = { ["NextToken"] = true, ["LaunchConfigurations"] = true, nil }
@@ -1952,13 +2557,24 @@ end
 -- Required key: LaunchConfigurations
 -- @return LaunchConfigurationsType structure as a key-value pair table
 function M.LaunchConfigurationsType(args)
-	assert(args, "You must provdide an argument table when creating LaunchConfigurationsType")
-	local t = { 
+	assert(args, "You must provide an argument table when creating LaunchConfigurationsType")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NextToken"] = args["NextToken"],
 		["LaunchConfigurations"] = args["LaunchConfigurations"],
 	}
-	asserts.AssertLaunchConfigurationsType(t)
-	return t
+	asserts.AssertLaunchConfigurationsType(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.LimitExceededFault = { ["message"] = true, nil }
@@ -1979,12 +2595,23 @@ end
 -- * message [XmlStringMaxLen255] <p/>
 -- @return LimitExceededFault structure as a key-value pair table
 function M.LimitExceededFault(args)
-	assert(args, "You must provdide an argument table when creating LimitExceededFault")
-	local t = { 
+	assert(args, "You must provide an argument table when creating LimitExceededFault")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertLimitExceededFault(t)
-	return t
+	asserts.AssertLimitExceededFault(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateLaunchConfigurationType = { ["UserData"] = true, ["IamInstanceProfile"] = true, ["ClassicLinkVPCId"] = true, ["InstanceId"] = true, ["PlacementTenancy"] = true, ["AssociatePublicIpAddress"] = true, ["InstanceMonitoring"] = true, ["ClassicLinkVPCSecurityGroups"] = true, ["BlockDeviceMappings"] = true, ["KeyName"] = true, ["SecurityGroups"] = true, ["EbsOptimized"] = true, ["LaunchConfigurationName"] = true, ["KernelId"] = true, ["RamdiskId"] = true, ["ImageId"] = true, ["InstanceType"] = true, ["SpotPrice"] = true, nil }
@@ -2041,8 +2668,14 @@ end
 -- Required key: LaunchConfigurationName
 -- @return CreateLaunchConfigurationType structure as a key-value pair table
 function M.CreateLaunchConfigurationType(args)
-	assert(args, "You must provdide an argument table when creating CreateLaunchConfigurationType")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateLaunchConfigurationType")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["UserData"] = args["UserData"],
 		["IamInstanceProfile"] = args["IamInstanceProfile"],
 		["ClassicLinkVPCId"] = args["ClassicLinkVPCId"],
@@ -2062,8 +2695,13 @@ function M.CreateLaunchConfigurationType(args)
 		["InstanceType"] = args["InstanceType"],
 		["SpotPrice"] = args["SpotPrice"],
 	}
-	asserts.AssertCreateLaunchConfigurationType(t)
-	return t
+	asserts.AssertCreateLaunchConfigurationType(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.PolicyARNType = { ["PolicyARN"] = true, nil }
@@ -2084,12 +2722,23 @@ end
 -- * PolicyARN [ResourceName] <p>The Amazon Resource Name (ARN) of the policy.</p>
 -- @return PolicyARNType structure as a key-value pair table
 function M.PolicyARNType(args)
-	assert(args, "You must provdide an argument table when creating PolicyARNType")
-	local t = { 
+	assert(args, "You must provide an argument table when creating PolicyARNType")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["PolicyARN"] = args["PolicyARN"],
 	}
-	asserts.AssertPolicyARNType(t)
-	return t
+	asserts.AssertPolicyARNType(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AutoScalingInstancesType = { ["NextToken"] = true, ["AutoScalingInstances"] = true, nil }
@@ -2112,13 +2761,24 @@ end
 -- * AutoScalingInstances [AutoScalingInstances] <p>The instances.</p>
 -- @return AutoScalingInstancesType structure as a key-value pair table
 function M.AutoScalingInstancesType(args)
-	assert(args, "You must provdide an argument table when creating AutoScalingInstancesType")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AutoScalingInstancesType")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NextToken"] = args["NextToken"],
 		["AutoScalingInstances"] = args["AutoScalingInstances"],
 	}
-	asserts.AssertAutoScalingInstancesType(t)
-	return t
+	asserts.AssertAutoScalingInstancesType(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.SetDesiredCapacityType = { ["AutoScalingGroupName"] = true, ["DesiredCapacity"] = true, ["HonorCooldown"] = true, nil }
@@ -2147,14 +2807,25 @@ end
 -- Required key: DesiredCapacity
 -- @return SetDesiredCapacityType structure as a key-value pair table
 function M.SetDesiredCapacityType(args)
-	assert(args, "You must provdide an argument table when creating SetDesiredCapacityType")
-	local t = { 
+	assert(args, "You must provide an argument table when creating SetDesiredCapacityType")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["AutoScalingGroupName"] = args["AutoScalingGroupName"],
 		["DesiredCapacity"] = args["DesiredCapacity"],
 		["HonorCooldown"] = args["HonorCooldown"],
 	}
-	asserts.AssertSetDesiredCapacityType(t)
-	return t
+	asserts.AssertSetDesiredCapacityType(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AutoScalingGroupsType = { ["AutoScalingGroups"] = true, ["NextToken"] = true, nil }
@@ -2179,13 +2850,24 @@ end
 -- Required key: AutoScalingGroups
 -- @return AutoScalingGroupsType structure as a key-value pair table
 function M.AutoScalingGroupsType(args)
-	assert(args, "You must provdide an argument table when creating AutoScalingGroupsType")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AutoScalingGroupsType")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["AutoScalingGroups"] = args["AutoScalingGroups"],
 		["NextToken"] = args["NextToken"],
 	}
-	asserts.AssertAutoScalingGroupsType(t)
-	return t
+	asserts.AssertAutoScalingGroupsType(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.BlockDeviceMapping = { ["DeviceName"] = true, ["VirtualName"] = true, ["NoDevice"] = true, ["Ebs"] = true, nil }
@@ -2214,15 +2896,26 @@ end
 -- Required key: DeviceName
 -- @return BlockDeviceMapping structure as a key-value pair table
 function M.BlockDeviceMapping(args)
-	assert(args, "You must provdide an argument table when creating BlockDeviceMapping")
-	local t = { 
+	assert(args, "You must provide an argument table when creating BlockDeviceMapping")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DeviceName"] = args["DeviceName"],
 		["VirtualName"] = args["VirtualName"],
 		["NoDevice"] = args["NoDevice"],
 		["Ebs"] = args["Ebs"],
 	}
-	asserts.AssertBlockDeviceMapping(t)
-	return t
+	asserts.AssertBlockDeviceMapping(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Filter = { ["Values"] = true, ["Name"] = true, nil }
@@ -2245,13 +2938,24 @@ end
 -- * Name [XmlString] <p>The name of the filter. The valid values are: <code>"auto-scaling-group"</code>, <code>"key"</code>, <code>"value"</code>, and <code>"propagate-at-launch"</code>.</p>
 -- @return Filter structure as a key-value pair table
 function M.Filter(args)
-	assert(args, "You must provdide an argument table when creating Filter")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Filter")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Values"] = args["Values"],
 		["Name"] = args["Name"],
 	}
-	asserts.AssertFilter(t)
-	return t
+	asserts.AssertFilter(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.PutScheduledUpdateGroupActionType = { ["MinSize"] = true, ["DesiredCapacity"] = true, ["AutoScalingGroupName"] = true, ["Recurrence"] = true, ["MaxSize"] = true, ["ScheduledActionName"] = true, ["StartTime"] = true, ["Time"] = true, ["EndTime"] = true, nil }
@@ -2292,8 +2996,14 @@ end
 -- Required key: ScheduledActionName
 -- @return PutScheduledUpdateGroupActionType structure as a key-value pair table
 function M.PutScheduledUpdateGroupActionType(args)
-	assert(args, "You must provdide an argument table when creating PutScheduledUpdateGroupActionType")
-	local t = { 
+	assert(args, "You must provide an argument table when creating PutScheduledUpdateGroupActionType")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["MinSize"] = args["MinSize"],
 		["DesiredCapacity"] = args["DesiredCapacity"],
 		["AutoScalingGroupName"] = args["AutoScalingGroupName"],
@@ -2304,8 +3014,13 @@ function M.PutScheduledUpdateGroupActionType(args)
 		["Time"] = args["Time"],
 		["EndTime"] = args["EndTime"],
 	}
-	asserts.AssertPutScheduledUpdateGroupActionType(t)
-	return t
+	asserts.AssertPutScheduledUpdateGroupActionType(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeTagsType = { ["MaxRecords"] = true, ["NextToken"] = true, ["Filters"] = true, nil }
@@ -2330,14 +3045,25 @@ end
 -- * Filters [Filters] <p>A filter used to scope the tags to return.</p>
 -- @return DescribeTagsType structure as a key-value pair table
 function M.DescribeTagsType(args)
-	assert(args, "You must provdide an argument table when creating DescribeTagsType")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeTagsType")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["MaxRecords"] = args["MaxRecords"],
 		["NextToken"] = args["NextToken"],
 		["Filters"] = args["Filters"],
 	}
-	asserts.AssertDescribeTagsType(t)
-	return t
+	asserts.AssertDescribeTagsType(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.EnterStandbyQuery = { ["ShouldDecrementDesiredCapacity"] = true, ["AutoScalingGroupName"] = true, ["InstanceIds"] = true, nil }
@@ -2366,14 +3092,25 @@ end
 -- Required key: ShouldDecrementDesiredCapacity
 -- @return EnterStandbyQuery structure as a key-value pair table
 function M.EnterStandbyQuery(args)
-	assert(args, "You must provdide an argument table when creating EnterStandbyQuery")
-	local t = { 
+	assert(args, "You must provide an argument table when creating EnterStandbyQuery")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ShouldDecrementDesiredCapacity"] = args["ShouldDecrementDesiredCapacity"],
 		["AutoScalingGroupName"] = args["AutoScalingGroupName"],
 		["InstanceIds"] = args["InstanceIds"],
 	}
-	asserts.AssertEnterStandbyQuery(t)
-	return t
+	asserts.AssertEnterStandbyQuery(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidNextToken = { ["message"] = true, nil }
@@ -2394,12 +3131,23 @@ end
 -- * message [XmlStringMaxLen255] <p/>
 -- @return InvalidNextToken structure as a key-value pair table
 function M.InvalidNextToken(args)
-	assert(args, "You must provdide an argument table when creating InvalidNextToken")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidNextToken")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertInvalidNextToken(t)
-	return t
+	asserts.AssertInvalidNextToken(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeLoadBalancersRequest = { ["MaxRecords"] = true, ["NextToken"] = true, ["AutoScalingGroupName"] = true, nil }
@@ -2426,14 +3174,25 @@ end
 -- Required key: AutoScalingGroupName
 -- @return DescribeLoadBalancersRequest structure as a key-value pair table
 function M.DescribeLoadBalancersRequest(args)
-	assert(args, "You must provdide an argument table when creating DescribeLoadBalancersRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeLoadBalancersRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["MaxRecords"] = args["MaxRecords"],
 		["NextToken"] = args["NextToken"],
 		["AutoScalingGroupName"] = args["AutoScalingGroupName"],
 	}
-	asserts.AssertDescribeLoadBalancersRequest(t)
-	return t
+	asserts.AssertDescribeLoadBalancersRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.RecordLifecycleActionHeartbeatType = { ["InstanceId"] = true, ["LifecycleHookName"] = true, ["AutoScalingGroupName"] = true, ["LifecycleActionToken"] = true, nil }
@@ -2464,15 +3223,26 @@ end
 -- Required key: AutoScalingGroupName
 -- @return RecordLifecycleActionHeartbeatType structure as a key-value pair table
 function M.RecordLifecycleActionHeartbeatType(args)
-	assert(args, "You must provdide an argument table when creating RecordLifecycleActionHeartbeatType")
-	local t = { 
+	assert(args, "You must provide an argument table when creating RecordLifecycleActionHeartbeatType")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["InstanceId"] = args["InstanceId"],
 		["LifecycleHookName"] = args["LifecycleHookName"],
 		["AutoScalingGroupName"] = args["AutoScalingGroupName"],
 		["LifecycleActionToken"] = args["LifecycleActionToken"],
 	}
-	asserts.AssertRecordLifecycleActionHeartbeatType(t)
-	return t
+	asserts.AssertRecordLifecycleActionHeartbeatType(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DetachLoadBalancerTargetGroupsType = { ["TargetGroupARNs"] = true, ["AutoScalingGroupName"] = true, nil }
@@ -2499,13 +3269,24 @@ end
 -- Required key: TargetGroupARNs
 -- @return DetachLoadBalancerTargetGroupsType structure as a key-value pair table
 function M.DetachLoadBalancerTargetGroupsType(args)
-	assert(args, "You must provdide an argument table when creating DetachLoadBalancerTargetGroupsType")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DetachLoadBalancerTargetGroupsType")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["TargetGroupARNs"] = args["TargetGroupARNs"],
 		["AutoScalingGroupName"] = args["AutoScalingGroupName"],
 	}
-	asserts.AssertDetachLoadBalancerTargetGroupsType(t)
-	return t
+	asserts.AssertDetachLoadBalancerTargetGroupsType(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeLoadBalancerTargetGroupsResponse = { ["NextToken"] = true, ["LoadBalancerTargetGroups"] = true, nil }
@@ -2528,13 +3309,24 @@ end
 -- * LoadBalancerTargetGroups [LoadBalancerTargetGroupStates] <p>Information about the target groups.</p>
 -- @return DescribeLoadBalancerTargetGroupsResponse structure as a key-value pair table
 function M.DescribeLoadBalancerTargetGroupsResponse(args)
-	assert(args, "You must provdide an argument table when creating DescribeLoadBalancerTargetGroupsResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeLoadBalancerTargetGroupsResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NextToken"] = args["NextToken"],
 		["LoadBalancerTargetGroups"] = args["LoadBalancerTargetGroups"],
 	}
-	asserts.AssertDescribeLoadBalancerTargetGroupsResponse(t)
-	return t
+	asserts.AssertDescribeLoadBalancerTargetGroupsResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeNotificationConfigurationsAnswer = { ["NextToken"] = true, ["NotificationConfigurations"] = true, nil }
@@ -2559,13 +3351,24 @@ end
 -- Required key: NotificationConfigurations
 -- @return DescribeNotificationConfigurationsAnswer structure as a key-value pair table
 function M.DescribeNotificationConfigurationsAnswer(args)
-	assert(args, "You must provdide an argument table when creating DescribeNotificationConfigurationsAnswer")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeNotificationConfigurationsAnswer")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NextToken"] = args["NextToken"],
 		["NotificationConfigurations"] = args["NotificationConfigurations"],
 	}
-	asserts.AssertDescribeNotificationConfigurationsAnswer(t)
-	return t
+	asserts.AssertDescribeNotificationConfigurationsAnswer(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateAutoScalingGroupType = { ["HealthCheckGracePeriod"] = true, ["TargetGroupARNs"] = true, ["PlacementGroup"] = true, ["DesiredCapacity"] = true, ["Tags"] = true, ["InstanceId"] = true, ["LoadBalancerNames"] = true, ["AutoScalingGroupName"] = true, ["DefaultCooldown"] = true, ["MinSize"] = true, ["MaxSize"] = true, ["VPCZoneIdentifier"] = true, ["TerminationPolicies"] = true, ["LaunchConfigurationName"] = true, ["AvailabilityZones"] = true, ["HealthCheckType"] = true, ["NewInstancesProtectedFromScaleIn"] = true, nil }
@@ -2624,8 +3427,14 @@ end
 -- Required key: MaxSize
 -- @return CreateAutoScalingGroupType structure as a key-value pair table
 function M.CreateAutoScalingGroupType(args)
-	assert(args, "You must provdide an argument table when creating CreateAutoScalingGroupType")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateAutoScalingGroupType")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["HealthCheckGracePeriod"] = args["HealthCheckGracePeriod"],
 		["TargetGroupARNs"] = args["TargetGroupARNs"],
 		["PlacementGroup"] = args["PlacementGroup"],
@@ -2644,8 +3453,13 @@ function M.CreateAutoScalingGroupType(args)
 		["HealthCheckType"] = args["HealthCheckType"],
 		["NewInstancesProtectedFromScaleIn"] = args["NewInstancesProtectedFromScaleIn"],
 	}
-	asserts.AssertCreateAutoScalingGroupType(t)
-	return t
+	asserts.AssertCreateAutoScalingGroupType(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CompleteLifecycleActionType = { ["LifecycleActionResult"] = true, ["LifecycleHookName"] = true, ["InstanceId"] = true, ["AutoScalingGroupName"] = true, ["LifecycleActionToken"] = true, nil }
@@ -2680,16 +3494,27 @@ end
 -- Required key: LifecycleActionResult
 -- @return CompleteLifecycleActionType structure as a key-value pair table
 function M.CompleteLifecycleActionType(args)
-	assert(args, "You must provdide an argument table when creating CompleteLifecycleActionType")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CompleteLifecycleActionType")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["LifecycleActionResult"] = args["LifecycleActionResult"],
 		["LifecycleHookName"] = args["LifecycleHookName"],
 		["InstanceId"] = args["InstanceId"],
 		["AutoScalingGroupName"] = args["AutoScalingGroupName"],
 		["LifecycleActionToken"] = args["LifecycleActionToken"],
 	}
-	asserts.AssertCompleteLifecycleActionType(t)
-	return t
+	asserts.AssertCompleteLifecycleActionType(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribePoliciesType = { ["PolicyNames"] = true, ["PolicyTypes"] = true, ["NextToken"] = true, ["AutoScalingGroupName"] = true, ["MaxRecords"] = true, nil }
@@ -2718,16 +3543,27 @@ end
 -- * MaxRecords [MaxRecords] <p>The maximum number of items to be returned with each call. The default value is 50 and the maximum value is 100.</p>
 -- @return DescribePoliciesType structure as a key-value pair table
 function M.DescribePoliciesType(args)
-	assert(args, "You must provdide an argument table when creating DescribePoliciesType")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribePoliciesType")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["PolicyNames"] = args["PolicyNames"],
 		["PolicyTypes"] = args["PolicyTypes"],
 		["NextToken"] = args["NextToken"],
 		["AutoScalingGroupName"] = args["AutoScalingGroupName"],
 		["MaxRecords"] = args["MaxRecords"],
 	}
-	asserts.AssertDescribePoliciesType(t)
-	return t
+	asserts.AssertDescribePoliciesType(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeLifecycleHooksAnswer = { ["LifecycleHooks"] = true, nil }
@@ -2748,12 +3584,23 @@ end
 -- * LifecycleHooks [LifecycleHooks] <p>The lifecycle hooks for the specified group.</p>
 -- @return DescribeLifecycleHooksAnswer structure as a key-value pair table
 function M.DescribeLifecycleHooksAnswer(args)
-	assert(args, "You must provdide an argument table when creating DescribeLifecycleHooksAnswer")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeLifecycleHooksAnswer")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["LifecycleHooks"] = args["LifecycleHooks"],
 	}
-	asserts.AssertDescribeLifecycleHooksAnswer(t)
-	return t
+	asserts.AssertDescribeLifecycleHooksAnswer(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DetachLoadBalancersResultType = { nil }
@@ -2772,11 +3619,22 @@ end
 -- Valid keys:
 -- @return DetachLoadBalancersResultType structure as a key-value pair table
 function M.DetachLoadBalancersResultType(args)
-	assert(args, "You must provdide an argument table when creating DetachLoadBalancersResultType")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DetachLoadBalancersResultType")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertDetachLoadBalancersResultType(t)
-	return t
+	asserts.AssertDetachLoadBalancersResultType(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.SetInstanceProtectionAnswer = { nil }
@@ -2795,11 +3653,22 @@ end
 -- Valid keys:
 -- @return SetInstanceProtectionAnswer structure as a key-value pair table
 function M.SetInstanceProtectionAnswer(args)
-	assert(args, "You must provdide an argument table when creating SetInstanceProtectionAnswer")
-	local t = { 
+	assert(args, "You must provide an argument table when creating SetInstanceProtectionAnswer")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertSetInstanceProtectionAnswer(t)
-	return t
+	asserts.AssertSetInstanceProtectionAnswer(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AutoScalingInstanceDetails = { ["ProtectedFromScaleIn"] = true, ["AvailabilityZone"] = true, ["InstanceId"] = true, ["AutoScalingGroupName"] = true, ["HealthStatus"] = true, ["LifecycleState"] = true, ["LaunchConfigurationName"] = true, nil }
@@ -2846,8 +3715,14 @@ end
 -- Required key: ProtectedFromScaleIn
 -- @return AutoScalingInstanceDetails structure as a key-value pair table
 function M.AutoScalingInstanceDetails(args)
-	assert(args, "You must provdide an argument table when creating AutoScalingInstanceDetails")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AutoScalingInstanceDetails")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ProtectedFromScaleIn"] = args["ProtectedFromScaleIn"],
 		["AvailabilityZone"] = args["AvailabilityZone"],
 		["InstanceId"] = args["InstanceId"],
@@ -2856,8 +3731,13 @@ function M.AutoScalingInstanceDetails(args)
 		["LifecycleState"] = args["LifecycleState"],
 		["LaunchConfigurationName"] = args["LaunchConfigurationName"],
 	}
-	asserts.AssertAutoScalingInstanceDetails(t)
-	return t
+	asserts.AssertAutoScalingInstanceDetails(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteAutoScalingGroupType = { ["ForceDelete"] = true, ["AutoScalingGroupName"] = true, nil }
@@ -2882,13 +3762,24 @@ end
 -- Required key: AutoScalingGroupName
 -- @return DeleteAutoScalingGroupType structure as a key-value pair table
 function M.DeleteAutoScalingGroupType(args)
-	assert(args, "You must provdide an argument table when creating DeleteAutoScalingGroupType")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteAutoScalingGroupType")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ForceDelete"] = args["ForceDelete"],
 		["AutoScalingGroupName"] = args["AutoScalingGroupName"],
 	}
-	asserts.AssertDeleteAutoScalingGroupType(t)
-	return t
+	asserts.AssertDeleteAutoScalingGroupType(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeLifecycleHooksType = { ["LifecycleHookNames"] = true, ["AutoScalingGroupName"] = true, nil }
@@ -2913,13 +3804,24 @@ end
 -- Required key: AutoScalingGroupName
 -- @return DescribeLifecycleHooksType structure as a key-value pair table
 function M.DescribeLifecycleHooksType(args)
-	assert(args, "You must provdide an argument table when creating DescribeLifecycleHooksType")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeLifecycleHooksType")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["LifecycleHookNames"] = args["LifecycleHookNames"],
 		["AutoScalingGroupName"] = args["AutoScalingGroupName"],
 	}
-	asserts.AssertDescribeLifecycleHooksType(t)
-	return t
+	asserts.AssertDescribeLifecycleHooksType(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeAutoScalingNotificationTypesAnswer = { ["AutoScalingNotificationTypes"] = true, nil }
@@ -2940,12 +3842,23 @@ end
 -- * AutoScalingNotificationTypes [AutoScalingNotificationTypes] <p>The notification types.</p>
 -- @return DescribeAutoScalingNotificationTypesAnswer structure as a key-value pair table
 function M.DescribeAutoScalingNotificationTypesAnswer(args)
-	assert(args, "You must provdide an argument table when creating DescribeAutoScalingNotificationTypesAnswer")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeAutoScalingNotificationTypesAnswer")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["AutoScalingNotificationTypes"] = args["AutoScalingNotificationTypes"],
 	}
-	asserts.AssertDescribeAutoScalingNotificationTypesAnswer(t)
-	return t
+	asserts.AssertDescribeAutoScalingNotificationTypesAnswer(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CompleteLifecycleActionAnswer = { nil }
@@ -2964,11 +3877,22 @@ end
 -- Valid keys:
 -- @return CompleteLifecycleActionAnswer structure as a key-value pair table
 function M.CompleteLifecycleActionAnswer(args)
-	assert(args, "You must provdide an argument table when creating CompleteLifecycleActionAnswer")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CompleteLifecycleActionAnswer")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertCompleteLifecycleActionAnswer(t)
-	return t
+	asserts.AssertCompleteLifecycleActionAnswer(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DetachLoadBalancerTargetGroupsResultType = { nil }
@@ -2987,11 +3911,22 @@ end
 -- Valid keys:
 -- @return DetachLoadBalancerTargetGroupsResultType structure as a key-value pair table
 function M.DetachLoadBalancerTargetGroupsResultType(args)
-	assert(args, "You must provdide an argument table when creating DetachLoadBalancerTargetGroupsResultType")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DetachLoadBalancerTargetGroupsResultType")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertDetachLoadBalancerTargetGroupsResultType(t)
-	return t
+	asserts.AssertDetachLoadBalancerTargetGroupsResultType(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.LifecycleHook = { ["GlobalTimeout"] = true, ["HeartbeatTimeout"] = true, ["RoleARN"] = true, ["AutoScalingGroupName"] = true, ["LifecycleHookName"] = true, ["NotificationMetadata"] = true, ["DefaultResult"] = true, ["NotificationTargetARN"] = true, ["LifecycleTransition"] = true, nil }
@@ -3028,8 +3963,14 @@ end
 -- * LifecycleTransition [LifecycleTransition] <p>The state of the EC2 instance to which you want to attach the lifecycle hook. For a list of lifecycle hook types, see <a>DescribeLifecycleHookTypes</a>.</p>
 -- @return LifecycleHook structure as a key-value pair table
 function M.LifecycleHook(args)
-	assert(args, "You must provdide an argument table when creating LifecycleHook")
-	local t = { 
+	assert(args, "You must provide an argument table when creating LifecycleHook")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["GlobalTimeout"] = args["GlobalTimeout"],
 		["HeartbeatTimeout"] = args["HeartbeatTimeout"],
 		["RoleARN"] = args["RoleARN"],
@@ -3040,8 +3981,13 @@ function M.LifecycleHook(args)
 		["NotificationTargetARN"] = args["NotificationTargetARN"],
 		["LifecycleTransition"] = args["LifecycleTransition"],
 	}
-	asserts.AssertLifecycleHook(t)
-	return t
+	asserts.AssertLifecycleHook(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeLifecycleHookTypesAnswer = { ["LifecycleHookTypes"] = true, nil }
@@ -3062,12 +4008,23 @@ end
 -- * LifecycleHookTypes [AutoScalingNotificationTypes] <p>The lifecycle hook types.</p>
 -- @return DescribeLifecycleHookTypesAnswer structure as a key-value pair table
 function M.DescribeLifecycleHookTypesAnswer(args)
-	assert(args, "You must provdide an argument table when creating DescribeLifecycleHookTypesAnswer")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeLifecycleHookTypesAnswer")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["LifecycleHookTypes"] = args["LifecycleHookTypes"],
 	}
-	asserts.AssertDescribeLifecycleHookTypesAnswer(t)
-	return t
+	asserts.AssertDescribeLifecycleHookTypesAnswer(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeTerminationPolicyTypesAnswer = { ["TerminationPolicyTypes"] = true, nil }
@@ -3088,12 +4045,23 @@ end
 -- * TerminationPolicyTypes [TerminationPolicies] <p>The termination policies supported by Auto Scaling (<code>OldestInstance</code>, <code>OldestLaunchConfiguration</code>, <code>NewestInstance</code>, <code>ClosestToNextInstanceHour</code>, and <code>Default</code>).</p>
 -- @return DescribeTerminationPolicyTypesAnswer structure as a key-value pair table
 function M.DescribeTerminationPolicyTypesAnswer(args)
-	assert(args, "You must provdide an argument table when creating DescribeTerminationPolicyTypesAnswer")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeTerminationPolicyTypesAnswer")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["TerminationPolicyTypes"] = args["TerminationPolicyTypes"],
 	}
-	asserts.AssertDescribeTerminationPolicyTypesAnswer(t)
-	return t
+	asserts.AssertDescribeTerminationPolicyTypesAnswer(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteNotificationConfigurationType = { ["AutoScalingGroupName"] = true, ["TopicARN"] = true, nil }
@@ -3120,13 +4088,24 @@ end
 -- Required key: TopicARN
 -- @return DeleteNotificationConfigurationType structure as a key-value pair table
 function M.DeleteNotificationConfigurationType(args)
-	assert(args, "You must provdide an argument table when creating DeleteNotificationConfigurationType")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteNotificationConfigurationType")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["AutoScalingGroupName"] = args["AutoScalingGroupName"],
 		["TopicARN"] = args["TopicARN"],
 	}
-	asserts.AssertDeleteNotificationConfigurationType(t)
-	return t
+	asserts.AssertDeleteNotificationConfigurationType(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.LoadBalancerTargetGroupState = { ["LoadBalancerTargetGroupARN"] = true, ["State"] = true, nil }
@@ -3149,13 +4128,24 @@ end
 -- * State [XmlStringMaxLen255] <p>The state of the target group.</p> <ul> <li> <p> <code>Adding</code> - The Auto Scaling instances are being registered with the target group.</p> </li> <li> <p> <code>Added</code> - All Auto Scaling instances are registered with the target group.</p> </li> <li> <p> <code>InService</code> - At least one Auto Scaling instance passed an ELB health check.</p> </li> <li> <p> <code>Removing</code> - The Auto Scaling instances are being deregistered from the target group. If connection draining is enabled, Elastic Load Balancing waits for in-flight requests to complete before deregistering the instances.</p> </li> <li> <p> <code>Removed</code> - All Auto Scaling instances are deregistered from the target group.</p> </li> </ul>
 -- @return LoadBalancerTargetGroupState structure as a key-value pair table
 function M.LoadBalancerTargetGroupState(args)
-	assert(args, "You must provdide an argument table when creating LoadBalancerTargetGroupState")
-	local t = { 
+	assert(args, "You must provide an argument table when creating LoadBalancerTargetGroupState")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["LoadBalancerTargetGroupARN"] = args["LoadBalancerTargetGroupARN"],
 		["State"] = args["State"],
 	}
-	asserts.AssertLoadBalancerTargetGroupState(t)
-	return t
+	asserts.AssertLoadBalancerTargetGroupState(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.EnableMetricsCollectionQuery = { ["Metrics"] = true, ["AutoScalingGroupName"] = true, ["Granularity"] = true, nil }
@@ -3184,14 +4174,25 @@ end
 -- Required key: Granularity
 -- @return EnableMetricsCollectionQuery structure as a key-value pair table
 function M.EnableMetricsCollectionQuery(args)
-	assert(args, "You must provdide an argument table when creating EnableMetricsCollectionQuery")
-	local t = { 
+	assert(args, "You must provide an argument table when creating EnableMetricsCollectionQuery")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Metrics"] = args["Metrics"],
 		["AutoScalingGroupName"] = args["AutoScalingGroupName"],
 		["Granularity"] = args["Granularity"],
 	}
-	asserts.AssertEnableMetricsCollectionQuery(t)
-	return t
+	asserts.AssertEnableMetricsCollectionQuery(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.LoadBalancerState = { ["State"] = true, ["LoadBalancerName"] = true, nil }
@@ -3214,13 +4215,24 @@ end
 -- * LoadBalancerName [XmlStringMaxLen255] <p>The name of the load balancer.</p>
 -- @return LoadBalancerState structure as a key-value pair table
 function M.LoadBalancerState(args)
-	assert(args, "You must provdide an argument table when creating LoadBalancerState")
-	local t = { 
+	assert(args, "You must provide an argument table when creating LoadBalancerState")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["State"] = args["State"],
 		["LoadBalancerName"] = args["LoadBalancerName"],
 	}
-	asserts.AssertLoadBalancerState(t)
-	return t
+	asserts.AssertLoadBalancerState(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.SuspendedProcess = { ["ProcessName"] = true, ["SuspensionReason"] = true, nil }
@@ -3243,13 +4255,24 @@ end
 -- * SuspensionReason [XmlStringMaxLen255] <p>The reason that the process was suspended.</p>
 -- @return SuspendedProcess structure as a key-value pair table
 function M.SuspendedProcess(args)
-	assert(args, "You must provdide an argument table when creating SuspendedProcess")
-	local t = { 
+	assert(args, "You must provide an argument table when creating SuspendedProcess")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ProcessName"] = args["ProcessName"],
 		["SuspensionReason"] = args["SuspensionReason"],
 	}
-	asserts.AssertSuspendedProcess(t)
-	return t
+	asserts.AssertSuspendedProcess(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Alarm = { ["AlarmName"] = true, ["AlarmARN"] = true, nil }
@@ -3272,13 +4295,24 @@ end
 -- * AlarmARN [ResourceName] <p>The Amazon Resource Name (ARN) of the alarm.</p>
 -- @return Alarm structure as a key-value pair table
 function M.Alarm(args)
-	assert(args, "You must provdide an argument table when creating Alarm")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Alarm")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["AlarmName"] = args["AlarmName"],
 		["AlarmARN"] = args["AlarmARN"],
 	}
-	asserts.AssertAlarm(t)
-	return t
+	asserts.AssertAlarm(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AttachLoadBalancersType = { ["AutoScalingGroupName"] = true, ["LoadBalancerNames"] = true, nil }
@@ -3305,13 +4339,24 @@ end
 -- Required key: LoadBalancerNames
 -- @return AttachLoadBalancersType structure as a key-value pair table
 function M.AttachLoadBalancersType(args)
-	assert(args, "You must provdide an argument table when creating AttachLoadBalancersType")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AttachLoadBalancersType")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["AutoScalingGroupName"] = args["AutoScalingGroupName"],
 		["LoadBalancerNames"] = args["LoadBalancerNames"],
 	}
-	asserts.AssertAttachLoadBalancersType(t)
-	return t
+	asserts.AssertAttachLoadBalancersType(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AttachLoadBalancerTargetGroupsType = { ["TargetGroupARNs"] = true, ["AutoScalingGroupName"] = true, nil }
@@ -3338,13 +4383,24 @@ end
 -- Required key: TargetGroupARNs
 -- @return AttachLoadBalancerTargetGroupsType structure as a key-value pair table
 function M.AttachLoadBalancerTargetGroupsType(args)
-	assert(args, "You must provdide an argument table when creating AttachLoadBalancerTargetGroupsType")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AttachLoadBalancerTargetGroupsType")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["TargetGroupARNs"] = args["TargetGroupARNs"],
 		["AutoScalingGroupName"] = args["AutoScalingGroupName"],
 	}
-	asserts.AssertAttachLoadBalancerTargetGroupsType(t)
-	return t
+	asserts.AssertAttachLoadBalancerTargetGroupsType(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ActivitiesType = { ["Activities"] = true, ["NextToken"] = true, nil }
@@ -3369,13 +4425,24 @@ end
 -- Required key: Activities
 -- @return ActivitiesType structure as a key-value pair table
 function M.ActivitiesType(args)
-	assert(args, "You must provdide an argument table when creating ActivitiesType")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ActivitiesType")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Activities"] = args["Activities"],
 		["NextToken"] = args["NextToken"],
 	}
-	asserts.AssertActivitiesType(t)
-	return t
+	asserts.AssertActivitiesType(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.PutLifecycleHookType = { ["HeartbeatTimeout"] = true, ["RoleARN"] = true, ["AutoScalingGroupName"] = true, ["LifecycleHookName"] = true, ["NotificationMetadata"] = true, ["DefaultResult"] = true, ["NotificationTargetARN"] = true, ["LifecycleTransition"] = true, nil }
@@ -3414,8 +4481,14 @@ end
 -- Required key: AutoScalingGroupName
 -- @return PutLifecycleHookType structure as a key-value pair table
 function M.PutLifecycleHookType(args)
-	assert(args, "You must provdide an argument table when creating PutLifecycleHookType")
-	local t = { 
+	assert(args, "You must provide an argument table when creating PutLifecycleHookType")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["HeartbeatTimeout"] = args["HeartbeatTimeout"],
 		["RoleARN"] = args["RoleARN"],
 		["AutoScalingGroupName"] = args["AutoScalingGroupName"],
@@ -3425,8 +4498,13 @@ function M.PutLifecycleHookType(args)
 		["NotificationTargetARN"] = args["NotificationTargetARN"],
 		["LifecycleTransition"] = args["LifecycleTransition"],
 	}
-	asserts.AssertPutLifecycleHookType(t)
-	return t
+	asserts.AssertPutLifecycleHookType(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.PutLifecycleHookAnswer = { nil }
@@ -3445,11 +4523,22 @@ end
 -- Valid keys:
 -- @return PutLifecycleHookAnswer structure as a key-value pair table
 function M.PutLifecycleHookAnswer(args)
-	assert(args, "You must provdide an argument table when creating PutLifecycleHookAnswer")
-	local t = { 
+	assert(args, "You must provide an argument table when creating PutLifecycleHookAnswer")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertPutLifecycleHookAnswer(t)
-	return t
+	asserts.AssertPutLifecycleHookAnswer(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Activity = { ["Description"] = true, ["AutoScalingGroupName"] = true, ["ActivityId"] = true, ["Details"] = true, ["StartTime"] = true, ["Progress"] = true, ["EndTime"] = true, ["Cause"] = true, ["StatusMessage"] = true, ["StatusCode"] = true, nil }
@@ -3498,8 +4587,14 @@ end
 -- Required key: StatusCode
 -- @return Activity structure as a key-value pair table
 function M.Activity(args)
-	assert(args, "You must provdide an argument table when creating Activity")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Activity")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Description"] = args["Description"],
 		["AutoScalingGroupName"] = args["AutoScalingGroupName"],
 		["ActivityId"] = args["ActivityId"],
@@ -3511,8 +4606,13 @@ function M.Activity(args)
 		["StatusMessage"] = args["StatusMessage"],
 		["StatusCode"] = args["StatusCode"],
 	}
-	asserts.AssertActivity(t)
-	return t
+	asserts.AssertActivity(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.MetricCollectionType = { ["Metric"] = true, nil }
@@ -3533,12 +4633,23 @@ end
 -- * Metric [XmlStringMaxLen255] <p>One of the following metrics:</p> <ul> <li> <p> <code>GroupMinSize</code> </p> </li> <li> <p> <code>GroupMaxSize</code> </p> </li> <li> <p> <code>GroupDesiredCapacity</code> </p> </li> <li> <p> <code>GroupInServiceInstances</code> </p> </li> <li> <p> <code>GroupPendingInstances</code> </p> </li> <li> <p> <code>GroupStandbyInstances</code> </p> </li> <li> <p> <code>GroupTerminatingInstances</code> </p> </li> <li> <p> <code>GroupTotalInstances</code> </p> </li> </ul>
 -- @return MetricCollectionType structure as a key-value pair table
 function M.MetricCollectionType(args)
-	assert(args, "You must provdide an argument table when creating MetricCollectionType")
-	local t = { 
+	assert(args, "You must provide an argument table when creating MetricCollectionType")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Metric"] = args["Metric"],
 	}
-	asserts.AssertMetricCollectionType(t)
-	return t
+	asserts.AssertMetricCollectionType(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeAutoScalingInstancesType = { ["MaxRecords"] = true, ["NextToken"] = true, ["InstanceIds"] = true, nil }
@@ -3563,14 +4674,25 @@ end
 -- * InstanceIds [InstanceIds] <p>The instances to describe; up to 50 instance IDs. If you omit this parameter, all Auto Scaling instances are described. If you specify an ID that does not exist, it is ignored with no error.</p>
 -- @return DescribeAutoScalingInstancesType structure as a key-value pair table
 function M.DescribeAutoScalingInstancesType(args)
-	assert(args, "You must provdide an argument table when creating DescribeAutoScalingInstancesType")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeAutoScalingInstancesType")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["MaxRecords"] = args["MaxRecords"],
 		["NextToken"] = args["NextToken"],
 		["InstanceIds"] = args["InstanceIds"],
 	}
-	asserts.AssertDescribeAutoScalingInstancesType(t)
-	return t
+	asserts.AssertDescribeAutoScalingInstancesType(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeLoadBalancerTargetGroupsRequest = { ["MaxRecords"] = true, ["NextToken"] = true, ["AutoScalingGroupName"] = true, nil }
@@ -3597,14 +4719,25 @@ end
 -- Required key: AutoScalingGroupName
 -- @return DescribeLoadBalancerTargetGroupsRequest structure as a key-value pair table
 function M.DescribeLoadBalancerTargetGroupsRequest(args)
-	assert(args, "You must provdide an argument table when creating DescribeLoadBalancerTargetGroupsRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeLoadBalancerTargetGroupsRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["MaxRecords"] = args["MaxRecords"],
 		["NextToken"] = args["NextToken"],
 		["AutoScalingGroupName"] = args["AutoScalingGroupName"],
 	}
-	asserts.AssertDescribeLoadBalancerTargetGroupsRequest(t)
-	return t
+	asserts.AssertDescribeLoadBalancerTargetGroupsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.SetInstanceHealthQuery = { ["InstanceId"] = true, ["ShouldRespectGracePeriod"] = true, ["HealthStatus"] = true, nil }
@@ -3633,14 +4766,25 @@ end
 -- Required key: HealthStatus
 -- @return SetInstanceHealthQuery structure as a key-value pair table
 function M.SetInstanceHealthQuery(args)
-	assert(args, "You must provdide an argument table when creating SetInstanceHealthQuery")
-	local t = { 
+	assert(args, "You must provide an argument table when creating SetInstanceHealthQuery")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["InstanceId"] = args["InstanceId"],
 		["ShouldRespectGracePeriod"] = args["ShouldRespectGracePeriod"],
 		["HealthStatus"] = args["HealthStatus"],
 	}
-	asserts.AssertSetInstanceHealthQuery(t)
-	return t
+	asserts.AssertSetInstanceHealthQuery(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeLoadBalancersResponse = { ["LoadBalancers"] = true, ["NextToken"] = true, nil }
@@ -3663,13 +4807,24 @@ end
 -- * NextToken [XmlString] <p>The token to use when requesting the next set of items. If there are no additional items to return, the string is empty.</p>
 -- @return DescribeLoadBalancersResponse structure as a key-value pair table
 function M.DescribeLoadBalancersResponse(args)
-	assert(args, "You must provdide an argument table when creating DescribeLoadBalancersResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeLoadBalancersResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["LoadBalancers"] = args["LoadBalancers"],
 		["NextToken"] = args["NextToken"],
 	}
-	asserts.AssertDescribeLoadBalancersResponse(t)
-	return t
+	asserts.AssertDescribeLoadBalancersResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdateAutoScalingGroupType = { ["HealthCheckGracePeriod"] = true, ["PlacementGroup"] = true, ["DesiredCapacity"] = true, ["TerminationPolicies"] = true, ["AutoScalingGroupName"] = true, ["DefaultCooldown"] = true, ["MinSize"] = true, ["MaxSize"] = true, ["VPCZoneIdentifier"] = true, ["LaunchConfigurationName"] = true, ["AvailabilityZones"] = true, ["HealthCheckType"] = true, ["NewInstancesProtectedFromScaleIn"] = true, nil }
@@ -3716,8 +4871,14 @@ end
 -- Required key: AutoScalingGroupName
 -- @return UpdateAutoScalingGroupType structure as a key-value pair table
 function M.UpdateAutoScalingGroupType(args)
-	assert(args, "You must provdide an argument table when creating UpdateAutoScalingGroupType")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateAutoScalingGroupType")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["HealthCheckGracePeriod"] = args["HealthCheckGracePeriod"],
 		["PlacementGroup"] = args["PlacementGroup"],
 		["DesiredCapacity"] = args["DesiredCapacity"],
@@ -3732,8 +4893,13 @@ function M.UpdateAutoScalingGroupType(args)
 		["HealthCheckType"] = args["HealthCheckType"],
 		["NewInstancesProtectedFromScaleIn"] = args["NewInstancesProtectedFromScaleIn"],
 	}
-	asserts.AssertUpdateAutoScalingGroupType(t)
-	return t
+	asserts.AssertUpdateAutoScalingGroupType(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AutoScalingGroupNamesType = { ["MaxRecords"] = true, ["NextToken"] = true, ["AutoScalingGroupNames"] = true, nil }
@@ -3758,14 +4924,25 @@ end
 -- * AutoScalingGroupNames [AutoScalingGroupNames] <p>The group names. If you omit this parameter, all Auto Scaling groups are described.</p>
 -- @return AutoScalingGroupNamesType structure as a key-value pair table
 function M.AutoScalingGroupNamesType(args)
-	assert(args, "You must provdide an argument table when creating AutoScalingGroupNamesType")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AutoScalingGroupNamesType")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["MaxRecords"] = args["MaxRecords"],
 		["NextToken"] = args["NextToken"],
 		["AutoScalingGroupNames"] = args["AutoScalingGroupNames"],
 	}
-	asserts.AssertAutoScalingGroupNamesType(t)
-	return t
+	asserts.AssertAutoScalingGroupNamesType(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 function asserts.AssertXmlStringMaxLen19(str)
@@ -5072,8 +6249,11 @@ function M.DeleteTagsAsync(DeleteTagsType, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DeleteTags",
 	}
+	for header,value in pairs(DeleteTagsType.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteTagsType, headers, settings, cb)
 	else
@@ -5104,8 +6284,11 @@ function M.DescribeScalingActivitiesAsync(DescribeScalingActivitiesType, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DescribeScalingActivities",
 	}
+	for header,value in pairs(DescribeScalingActivitiesType.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeScalingActivitiesType, headers, settings, cb)
 	else
@@ -5136,8 +6319,11 @@ function M.CreateAutoScalingGroupAsync(CreateAutoScalingGroupType, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".CreateAutoScalingGroup",
 	}
+	for header,value in pairs(CreateAutoScalingGroupType.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateAutoScalingGroupType, headers, settings, cb)
 	else
@@ -5168,8 +6354,11 @@ function M.ExecutePolicyAsync(ExecutePolicyType, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".ExecutePolicy",
 	}
+	for header,value in pairs(ExecutePolicyType.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ExecutePolicyType, headers, settings, cb)
 	else
@@ -5200,8 +6389,11 @@ function M.SetInstanceProtectionAsync(SetInstanceProtectionQuery, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".SetInstanceProtection",
 	}
+	for header,value in pairs(SetInstanceProtectionQuery.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", SetInstanceProtectionQuery, headers, settings, cb)
 	else
@@ -5232,8 +6424,11 @@ function M.DetachLoadBalancerTargetGroupsAsync(DetachLoadBalancerTargetGroupsTyp
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DetachLoadBalancerTargetGroups",
 	}
+	for header,value in pairs(DetachLoadBalancerTargetGroupsType.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DetachLoadBalancerTargetGroupsType, headers, settings, cb)
 	else
@@ -5264,8 +6459,11 @@ function M.DescribeNotificationConfigurationsAsync(DescribeNotificationConfigura
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DescribeNotificationConfigurations",
 	}
+	for header,value in pairs(DescribeNotificationConfigurationsType.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeNotificationConfigurationsType, headers, settings, cb)
 	else
@@ -5296,8 +6494,11 @@ function M.DeleteAutoScalingGroupAsync(DeleteAutoScalingGroupType, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DeleteAutoScalingGroup",
 	}
+	for header,value in pairs(DeleteAutoScalingGroupType.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteAutoScalingGroupType, headers, settings, cb)
 	else
@@ -5328,8 +6529,11 @@ function M.DeletePolicyAsync(DeletePolicyType, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DeletePolicy",
 	}
+	for header,value in pairs(DeletePolicyType.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DeletePolicyType, headers, settings, cb)
 	else
@@ -5360,8 +6564,11 @@ function M.ExitStandbyAsync(ExitStandbyQuery, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".ExitStandby",
 	}
+	for header,value in pairs(ExitStandbyQuery.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ExitStandbyQuery, headers, settings, cb)
 	else
@@ -5392,8 +6599,11 @@ function M.SetInstanceHealthAsync(SetInstanceHealthQuery, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".SetInstanceHealth",
 	}
+	for header,value in pairs(SetInstanceHealthQuery.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", SetInstanceHealthQuery, headers, settings, cb)
 	else
@@ -5424,8 +6634,11 @@ function M.CreateOrUpdateTagsAsync(CreateOrUpdateTagsType, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".CreateOrUpdateTags",
 	}
+	for header,value in pairs(CreateOrUpdateTagsType.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateOrUpdateTagsType, headers, settings, cb)
 	else
@@ -5455,7 +6668,8 @@ function M.DescribeScalingProcessTypesAsync(cb)
 		[request_headers.AMZ_TARGET_HEADER] = ".DescribeScalingProcessTypes",
 	}
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", {}, headers, settings, cb)
 	else
@@ -5485,8 +6699,11 @@ function M.PutLifecycleHookAsync(PutLifecycleHookType, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".PutLifecycleHook",
 	}
+	for header,value in pairs(PutLifecycleHookType.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", PutLifecycleHookType, headers, settings, cb)
 	else
@@ -5517,8 +6734,11 @@ function M.DetachLoadBalancersAsync(DetachLoadBalancersType, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DetachLoadBalancers",
 	}
+	for header,value in pairs(DetachLoadBalancersType.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DetachLoadBalancersType, headers, settings, cb)
 	else
@@ -5549,8 +6769,11 @@ function M.AttachInstancesAsync(AttachInstancesQuery, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".AttachInstances",
 	}
+	for header,value in pairs(AttachInstancesQuery.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", AttachInstancesQuery, headers, settings, cb)
 	else
@@ -5581,8 +6804,11 @@ function M.PutScheduledUpdateGroupActionAsync(PutScheduledUpdateGroupActionType,
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".PutScheduledUpdateGroupAction",
 	}
+	for header,value in pairs(PutScheduledUpdateGroupActionType.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", PutScheduledUpdateGroupActionType, headers, settings, cb)
 	else
@@ -5613,8 +6839,11 @@ function M.PutScalingPolicyAsync(PutScalingPolicyType, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".PutScalingPolicy",
 	}
+	for header,value in pairs(PutScalingPolicyType.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", PutScalingPolicyType, headers, settings, cb)
 	else
@@ -5645,8 +6874,11 @@ function M.DeleteScheduledActionAsync(DeleteScheduledActionType, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DeleteScheduledAction",
 	}
+	for header,value in pairs(DeleteScheduledActionType.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteScheduledActionType, headers, settings, cb)
 	else
@@ -5677,8 +6909,11 @@ function M.AttachLoadBalancersAsync(AttachLoadBalancersType, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".AttachLoadBalancers",
 	}
+	for header,value in pairs(AttachLoadBalancersType.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", AttachLoadBalancersType, headers, settings, cb)
 	else
@@ -5709,8 +6944,11 @@ function M.DetachInstancesAsync(DetachInstancesQuery, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DetachInstances",
 	}
+	for header,value in pairs(DetachInstancesQuery.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DetachInstancesQuery, headers, settings, cb)
 	else
@@ -5740,7 +6978,8 @@ function M.DescribeAdjustmentTypesAsync(cb)
 		[request_headers.AMZ_TARGET_HEADER] = ".DescribeAdjustmentTypes",
 	}
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", {}, headers, settings, cb)
 	else
@@ -5770,8 +7009,11 @@ function M.TerminateInstanceInAutoScalingGroupAsync(TerminateInstanceInAutoScali
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".TerminateInstanceInAutoScalingGroup",
 	}
+	for header,value in pairs(TerminateInstanceInAutoScalingGroupType.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", TerminateInstanceInAutoScalingGroupType, headers, settings, cb)
 	else
@@ -5802,8 +7044,11 @@ function M.AttachLoadBalancerTargetGroupsAsync(AttachLoadBalancerTargetGroupsTyp
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".AttachLoadBalancerTargetGroups",
 	}
+	for header,value in pairs(AttachLoadBalancerTargetGroupsType.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", AttachLoadBalancerTargetGroupsType, headers, settings, cb)
 	else
@@ -5834,8 +7079,11 @@ function M.DescribeLoadBalancersAsync(DescribeLoadBalancersRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DescribeLoadBalancers",
 	}
+	for header,value in pairs(DescribeLoadBalancersRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeLoadBalancersRequest, headers, settings, cb)
 	else
@@ -5866,8 +7114,11 @@ function M.CompleteLifecycleActionAsync(CompleteLifecycleActionType, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".CompleteLifecycleAction",
 	}
+	for header,value in pairs(CompleteLifecycleActionType.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", CompleteLifecycleActionType, headers, settings, cb)
 	else
@@ -5897,7 +7148,8 @@ function M.DescribeMetricCollectionTypesAsync(cb)
 		[request_headers.AMZ_TARGET_HEADER] = ".DescribeMetricCollectionTypes",
 	}
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", {}, headers, settings, cb)
 	else
@@ -5927,8 +7179,11 @@ function M.UpdateAutoScalingGroupAsync(UpdateAutoScalingGroupType, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".UpdateAutoScalingGroup",
 	}
+	for header,value in pairs(UpdateAutoScalingGroupType.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateAutoScalingGroupType, headers, settings, cb)
 	else
@@ -5959,8 +7214,11 @@ function M.RecordLifecycleActionHeartbeatAsync(RecordLifecycleActionHeartbeatTyp
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".RecordLifecycleActionHeartbeat",
 	}
+	for header,value in pairs(RecordLifecycleActionHeartbeatType.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", RecordLifecycleActionHeartbeatType, headers, settings, cb)
 	else
@@ -5991,8 +7249,11 @@ function M.PutNotificationConfigurationAsync(PutNotificationConfigurationType, c
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".PutNotificationConfiguration",
 	}
+	for header,value in pairs(PutNotificationConfigurationType.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", PutNotificationConfigurationType, headers, settings, cb)
 	else
@@ -6023,8 +7284,11 @@ function M.ResumeProcessesAsync(ScalingProcessQuery, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".ResumeProcesses",
 	}
+	for header,value in pairs(ScalingProcessQuery.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ScalingProcessQuery, headers, settings, cb)
 	else
@@ -6055,8 +7319,11 @@ function M.CreateLaunchConfigurationAsync(CreateLaunchConfigurationType, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".CreateLaunchConfiguration",
 	}
+	for header,value in pairs(CreateLaunchConfigurationType.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateLaunchConfigurationType, headers, settings, cb)
 	else
@@ -6086,7 +7353,8 @@ function M.DescribeLifecycleHookTypesAsync(cb)
 		[request_headers.AMZ_TARGET_HEADER] = ".DescribeLifecycleHookTypes",
 	}
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", {}, headers, settings, cb)
 	else
@@ -6116,8 +7384,11 @@ function M.DescribeAutoScalingInstancesAsync(DescribeAutoScalingInstancesType, c
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DescribeAutoScalingInstances",
 	}
+	for header,value in pairs(DescribeAutoScalingInstancesType.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeAutoScalingInstancesType, headers, settings, cb)
 	else
@@ -6148,8 +7419,11 @@ function M.DescribeTagsAsync(DescribeTagsType, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DescribeTags",
 	}
+	for header,value in pairs(DescribeTagsType.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeTagsType, headers, settings, cb)
 	else
@@ -6179,7 +7453,8 @@ function M.DescribeTerminationPolicyTypesAsync(cb)
 		[request_headers.AMZ_TARGET_HEADER] = ".DescribeTerminationPolicyTypes",
 	}
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", {}, headers, settings, cb)
 	else
@@ -6209,8 +7484,11 @@ function M.DisableMetricsCollectionAsync(DisableMetricsCollectionQuery, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DisableMetricsCollection",
 	}
+	for header,value in pairs(DisableMetricsCollectionQuery.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DisableMetricsCollectionQuery, headers, settings, cb)
 	else
@@ -6241,8 +7519,11 @@ function M.SetDesiredCapacityAsync(SetDesiredCapacityType, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".SetDesiredCapacity",
 	}
+	for header,value in pairs(SetDesiredCapacityType.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", SetDesiredCapacityType, headers, settings, cb)
 	else
@@ -6273,8 +7554,11 @@ function M.DescribeLaunchConfigurationsAsync(LaunchConfigurationNamesType, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DescribeLaunchConfigurations",
 	}
+	for header,value in pairs(LaunchConfigurationNamesType.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", LaunchConfigurationNamesType, headers, settings, cb)
 	else
@@ -6305,8 +7589,11 @@ function M.EnterStandbyAsync(EnterStandbyQuery, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".EnterStandby",
 	}
+	for header,value in pairs(EnterStandbyQuery.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", EnterStandbyQuery, headers, settings, cb)
 	else
@@ -6337,8 +7624,11 @@ function M.DescribeLoadBalancerTargetGroupsAsync(DescribeLoadBalancerTargetGroup
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DescribeLoadBalancerTargetGroups",
 	}
+	for header,value in pairs(DescribeLoadBalancerTargetGroupsRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeLoadBalancerTargetGroupsRequest, headers, settings, cb)
 	else
@@ -6369,8 +7659,11 @@ function M.DeleteLaunchConfigurationAsync(LaunchConfigurationNameType, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DeleteLaunchConfiguration",
 	}
+	for header,value in pairs(LaunchConfigurationNameType.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", LaunchConfigurationNameType, headers, settings, cb)
 	else
@@ -6401,8 +7694,11 @@ function M.DeleteLifecycleHookAsync(DeleteLifecycleHookType, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DeleteLifecycleHook",
 	}
+	for header,value in pairs(DeleteLifecycleHookType.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteLifecycleHookType, headers, settings, cb)
 	else
@@ -6433,8 +7729,11 @@ function M.DescribePoliciesAsync(DescribePoliciesType, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DescribePolicies",
 	}
+	for header,value in pairs(DescribePoliciesType.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribePoliciesType, headers, settings, cb)
 	else
@@ -6465,8 +7764,11 @@ function M.DescribeLifecycleHooksAsync(DescribeLifecycleHooksType, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DescribeLifecycleHooks",
 	}
+	for header,value in pairs(DescribeLifecycleHooksType.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeLifecycleHooksType, headers, settings, cb)
 	else
@@ -6497,8 +7799,11 @@ function M.DescribeScheduledActionsAsync(DescribeScheduledActionsType, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DescribeScheduledActions",
 	}
+	for header,value in pairs(DescribeScheduledActionsType.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeScheduledActionsType, headers, settings, cb)
 	else
@@ -6529,8 +7834,11 @@ function M.DescribeAutoScalingGroupsAsync(AutoScalingGroupNamesType, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DescribeAutoScalingGroups",
 	}
+	for header,value in pairs(AutoScalingGroupNamesType.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", AutoScalingGroupNamesType, headers, settings, cb)
 	else
@@ -6561,8 +7869,11 @@ function M.EnableMetricsCollectionAsync(EnableMetricsCollectionQuery, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".EnableMetricsCollection",
 	}
+	for header,value in pairs(EnableMetricsCollectionQuery.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", EnableMetricsCollectionQuery, headers, settings, cb)
 	else
@@ -6593,8 +7904,11 @@ function M.DeleteNotificationConfigurationAsync(DeleteNotificationConfigurationT
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".DeleteNotificationConfiguration",
 	}
+	for header,value in pairs(DeleteNotificationConfigurationType.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteNotificationConfigurationType, headers, settings, cb)
 	else
@@ -6624,7 +7938,8 @@ function M.DescribeAutoScalingNotificationTypesAsync(cb)
 		[request_headers.AMZ_TARGET_HEADER] = ".DescribeAutoScalingNotificationTypes",
 	}
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", {}, headers, settings, cb)
 	else
@@ -6654,8 +7969,11 @@ function M.SuspendProcessesAsync(ScalingProcessQuery, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = ".SuspendProcesses",
 	}
+	for header,value in pairs(ScalingProcessQuery.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ScalingProcessQuery, headers, settings, cb)
 	else
@@ -6685,7 +8003,8 @@ function M.DescribeAccountLimitsAsync(cb)
 		[request_headers.AMZ_TARGET_HEADER] = ".DescribeAccountLimits",
 	}
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+
+	local request_handler, err = request_handlers.from_protocol_and_method("query", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", {}, headers, settings, cb)
 	else

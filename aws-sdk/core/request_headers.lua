@@ -19,5 +19,6 @@ M.HOST_HEADER = "Host"
 M.USER_AGENT_HEADER = "User-Agent"
 M.VIA_HEADER = "Via"
 M.X_AMZ_EXPIRES_HEADER = "X-Amz-Expires"
+M.X_AMZ_CONTENT_SHA256 = "X-Amz-Content-Sha256"
 
 return M

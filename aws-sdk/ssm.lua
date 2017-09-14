@@ -37,11 +37,22 @@ end
 -- Valid keys:
 -- @return InvocationDoesNotExist structure as a key-value pair table
 function M.InvocationDoesNotExist(args)
-	assert(args, "You must provdide an argument table when creating InvocationDoesNotExist")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvocationDoesNotExist")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertInvocationDoesNotExist(t)
-	return t
+	asserts.AssertInvocationDoesNotExist(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdateManagedInstanceRoleRequest = { ["InstanceId"] = true, ["IamRole"] = true, nil }
@@ -68,13 +79,24 @@ end
 -- Required key: IamRole
 -- @return UpdateManagedInstanceRoleRequest structure as a key-value pair table
 function M.UpdateManagedInstanceRoleRequest(args)
-	assert(args, "You must provdide an argument table when creating UpdateManagedInstanceRoleRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateManagedInstanceRoleRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["InstanceId"] = args["InstanceId"],
 		["IamRole"] = args["IamRole"],
 	}
-	asserts.AssertUpdateManagedInstanceRoleRequest(t)
-	return t
+	asserts.AssertUpdateManagedInstanceRoleRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListTagsForResourceResult = { ["TagList"] = true, nil }
@@ -95,12 +117,23 @@ end
 -- * TagList [TagList] <p>A list of tags.</p>
 -- @return ListTagsForResourceResult structure as a key-value pair table
 function M.ListTagsForResourceResult(args)
-	assert(args, "You must provdide an argument table when creating ListTagsForResourceResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListTagsForResourceResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["TagList"] = args["TagList"],
 	}
-	asserts.AssertListTagsForResourceResult(t)
-	return t
+	asserts.AssertListTagsForResourceResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateDocumentResult = { ["DocumentDescription"] = true, nil }
@@ -121,12 +154,23 @@ end
 -- * DocumentDescription [DocumentDescription] <p>Information about the Systems Manager document.</p>
 -- @return CreateDocumentResult structure as a key-value pair table
 function M.CreateDocumentResult(args)
-	assert(args, "You must provdide an argument table when creating CreateDocumentResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateDocumentResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DocumentDescription"] = args["DocumentDescription"],
 	}
-	asserts.AssertCreateDocumentResult(t)
-	return t
+	asserts.AssertCreateDocumentResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.MaintenanceWindowFilter = { ["Values"] = true, ["Key"] = true, nil }
@@ -149,13 +193,24 @@ end
 -- * Key [MaintenanceWindowFilterKey] <p>The name of the filter.</p>
 -- @return MaintenanceWindowFilter structure as a key-value pair table
 function M.MaintenanceWindowFilter(args)
-	assert(args, "You must provdide an argument table when creating MaintenanceWindowFilter")
-	local t = { 
+	assert(args, "You must provide an argument table when creating MaintenanceWindowFilter")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Values"] = args["Values"],
 		["Key"] = args["Key"],
 	}
-	asserts.AssertMaintenanceWindowFilter(t)
-	return t
+	asserts.AssertMaintenanceWindowFilter(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.StopAutomationExecutionRequest = { ["AutomationExecutionId"] = true, nil }
@@ -178,12 +233,23 @@ end
 -- Required key: AutomationExecutionId
 -- @return StopAutomationExecutionRequest structure as a key-value pair table
 function M.StopAutomationExecutionRequest(args)
-	assert(args, "You must provdide an argument table when creating StopAutomationExecutionRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating StopAutomationExecutionRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["AutomationExecutionId"] = args["AutomationExecutionId"],
 	}
-	asserts.AssertStopAutomationExecutionRequest(t)
-	return t
+	asserts.AssertStopAutomationExecutionRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidNotificationConfig = { ["Message"] = true, nil }
@@ -204,12 +270,23 @@ end
 -- * Message [String] 
 -- @return InvalidNotificationConfig structure as a key-value pair table
 function M.InvalidNotificationConfig(args)
-	assert(args, "You must provdide an argument table when creating InvalidNotificationConfig")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidNotificationConfig")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Message"] = args["Message"],
 	}
-	asserts.AssertInvalidNotificationConfig(t)
-	return t
+	asserts.AssertInvalidNotificationConfig(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DocumentIdentifier = { ["Name"] = true, ["PlatformTypes"] = true, ["DocumentVersion"] = true, ["DocumentType"] = true, ["Owner"] = true, ["SchemaVersion"] = true, nil }
@@ -240,8 +317,14 @@ end
 -- * SchemaVersion [DocumentSchemaVersion] <p>The schema version.</p>
 -- @return DocumentIdentifier structure as a key-value pair table
 function M.DocumentIdentifier(args)
-	assert(args, "You must provdide an argument table when creating DocumentIdentifier")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DocumentIdentifier")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Name"] = args["Name"],
 		["PlatformTypes"] = args["PlatformTypes"],
 		["DocumentVersion"] = args["DocumentVersion"],
@@ -249,8 +332,13 @@ function M.DocumentIdentifier(args)
 		["Owner"] = args["Owner"],
 		["SchemaVersion"] = args["SchemaVersion"],
 	}
-	asserts.AssertDocumentIdentifier(t)
-	return t
+	asserts.AssertDocumentIdentifier(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.RegisterDefaultPatchBaselineResult = { ["BaselineId"] = true, nil }
@@ -271,12 +359,23 @@ end
 -- * BaselineId [BaselineId] <p>The ID of the default patch baseline.</p>
 -- @return RegisterDefaultPatchBaselineResult structure as a key-value pair table
 function M.RegisterDefaultPatchBaselineResult(args)
-	assert(args, "You must provdide an argument table when creating RegisterDefaultPatchBaselineResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating RegisterDefaultPatchBaselineResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["BaselineId"] = args["BaselineId"],
 	}
-	asserts.AssertRegisterDefaultPatchBaselineResult(t)
-	return t
+	asserts.AssertRegisterDefaultPatchBaselineResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Patch = { ["ContentUrl"] = true, ["ProductFamily"] = true, ["Product"] = true, ["Vendor"] = true, ["Description"] = true, ["Classification"] = true, ["Title"] = true, ["ReleaseDate"] = true, ["Language"] = true, ["MsrcSeverity"] = true, ["KbNumber"] = true, ["MsrcNumber"] = true, ["Id"] = true, nil }
@@ -321,8 +420,14 @@ end
 -- * Id [PatchId] <p>The ID of the patch (this is different than the Microsoft Knowledge Base ID).</p>
 -- @return Patch structure as a key-value pair table
 function M.Patch(args)
-	assert(args, "You must provdide an argument table when creating Patch")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Patch")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ContentUrl"] = args["ContentUrl"],
 		["ProductFamily"] = args["ProductFamily"],
 		["Product"] = args["Product"],
@@ -337,8 +442,13 @@ function M.Patch(args)
 		["MsrcNumber"] = args["MsrcNumber"],
 		["Id"] = args["Id"],
 	}
-	asserts.AssertPatch(t)
-	return t
+	asserts.AssertPatch(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeregisterTaskFromMaintenanceWindowResult = { ["WindowTaskId"] = true, ["WindowId"] = true, nil }
@@ -361,13 +471,24 @@ end
 -- * WindowId [MaintenanceWindowId] <p>The ID of the Maintenance Window the task was removed from.</p>
 -- @return DeregisterTaskFromMaintenanceWindowResult structure as a key-value pair table
 function M.DeregisterTaskFromMaintenanceWindowResult(args)
-	assert(args, "You must provdide an argument table when creating DeregisterTaskFromMaintenanceWindowResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeregisterTaskFromMaintenanceWindowResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["WindowTaskId"] = args["WindowTaskId"],
 		["WindowId"] = args["WindowId"],
 	}
-	asserts.AssertDeregisterTaskFromMaintenanceWindowResult(t)
-	return t
+	asserts.AssertDeregisterTaskFromMaintenanceWindowResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ParameterMetadata = { ["KeyId"] = true, ["Name"] = true, ["LastModifiedDate"] = true, ["AllowedPattern"] = true, ["LastModifiedUser"] = true, ["Type"] = true, ["Description"] = true, nil }
@@ -400,8 +521,14 @@ end
 -- * Description [ParameterDescription] <p>Description of the parameter actions.</p>
 -- @return ParameterMetadata structure as a key-value pair table
 function M.ParameterMetadata(args)
-	assert(args, "You must provdide an argument table when creating ParameterMetadata")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ParameterMetadata")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["KeyId"] = args["KeyId"],
 		["Name"] = args["Name"],
 		["LastModifiedDate"] = args["LastModifiedDate"],
@@ -410,8 +537,13 @@ function M.ParameterMetadata(args)
 		["Type"] = args["Type"],
 		["Description"] = args["Description"],
 	}
-	asserts.AssertParameterMetadata(t)
-	return t
+	asserts.AssertParameterMetadata(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetParametersRequest = { ["Names"] = true, ["WithDecryption"] = true, nil }
@@ -436,13 +568,24 @@ end
 -- Required key: Names
 -- @return GetParametersRequest structure as a key-value pair table
 function M.GetParametersRequest(args)
-	assert(args, "You must provdide an argument table when creating GetParametersRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetParametersRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Names"] = args["Names"],
 		["WithDecryption"] = args["WithDecryption"],
 	}
-	asserts.AssertGetParametersRequest(t)
-	return t
+	asserts.AssertGetParametersRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetParametersResult = { ["InvalidParameters"] = true, ["Parameters"] = true, nil }
@@ -465,13 +608,24 @@ end
 -- * Parameters [ParameterList] <p>A list of details for a parameter.</p>
 -- @return GetParametersResult structure as a key-value pair table
 function M.GetParametersResult(args)
-	assert(args, "You must provdide an argument table when creating GetParametersResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetParametersResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["InvalidParameters"] = args["InvalidParameters"],
 		["Parameters"] = args["Parameters"],
 	}
-	asserts.AssertGetParametersResult(t)
-	return t
+	asserts.AssertGetParametersResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.PatchFilter = { ["Values"] = true, ["Key"] = true, nil }
@@ -498,13 +652,24 @@ end
 -- Required key: Values
 -- @return PatchFilter structure as a key-value pair table
 function M.PatchFilter(args)
-	assert(args, "You must provdide an argument table when creating PatchFilter")
-	local t = { 
+	assert(args, "You must provide an argument table when creating PatchFilter")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Values"] = args["Values"],
 		["Key"] = args["Key"],
 	}
-	asserts.AssertPatchFilter(t)
-	return t
+	asserts.AssertPatchFilter(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ItemSizeLimitExceededException = { ["TypeName"] = true, ["Message"] = true, nil }
@@ -527,13 +692,24 @@ end
 -- * Message [String] 
 -- @return ItemSizeLimitExceededException structure as a key-value pair table
 function M.ItemSizeLimitExceededException(args)
-	assert(args, "You must provdide an argument table when creating ItemSizeLimitExceededException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ItemSizeLimitExceededException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["TypeName"] = args["TypeName"],
 		["Message"] = args["Message"],
 	}
-	asserts.AssertItemSizeLimitExceededException(t)
-	return t
+	asserts.AssertItemSizeLimitExceededException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeMaintenanceWindowExecutionTaskInvocationsResult = { ["NextToken"] = true, ["WindowExecutionTaskInvocationIdentities"] = true, nil }
@@ -556,13 +732,24 @@ end
 -- * WindowExecutionTaskInvocationIdentities [MaintenanceWindowExecutionTaskInvocationIdentityList] <p>Information about the task invocation results per invocation.</p>
 -- @return DescribeMaintenanceWindowExecutionTaskInvocationsResult structure as a key-value pair table
 function M.DescribeMaintenanceWindowExecutionTaskInvocationsResult(args)
-	assert(args, "You must provdide an argument table when creating DescribeMaintenanceWindowExecutionTaskInvocationsResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeMaintenanceWindowExecutionTaskInvocationsResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NextToken"] = args["NextToken"],
 		["WindowExecutionTaskInvocationIdentities"] = args["WindowExecutionTaskInvocationIdentities"],
 	}
-	asserts.AssertDescribeMaintenanceWindowExecutionTaskInvocationsResult(t)
-	return t
+	asserts.AssertDescribeMaintenanceWindowExecutionTaskInvocationsResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ResourceLimitExceededException = { ["Message"] = true, nil }
@@ -583,12 +770,23 @@ end
 -- * Message [String] 
 -- @return ResourceLimitExceededException structure as a key-value pair table
 function M.ResourceLimitExceededException(args)
-	assert(args, "You must provdide an argument table when creating ResourceLimitExceededException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ResourceLimitExceededException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Message"] = args["Message"],
 	}
-	asserts.AssertResourceLimitExceededException(t)
-	return t
+	asserts.AssertResourceLimitExceededException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AddTagsToResourceRequest = { ["ResourceType"] = true, ["ResourceId"] = true, ["Tags"] = true, nil }
@@ -619,14 +817,25 @@ end
 -- Required key: Tags
 -- @return AddTagsToResourceRequest structure as a key-value pair table
 function M.AddTagsToResourceRequest(args)
-	assert(args, "You must provdide an argument table when creating AddTagsToResourceRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AddTagsToResourceRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ResourceType"] = args["ResourceType"],
 		["ResourceId"] = args["ResourceId"],
 		["Tags"] = args["Tags"],
 	}
-	asserts.AssertAddTagsToResourceRequest(t)
-	return t
+	asserts.AssertAddTagsToResourceRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DocumentVersionInfo = { ["IsDefaultVersion"] = true, ["Name"] = true, ["DocumentVersion"] = true, ["CreatedDate"] = true, nil }
@@ -653,15 +862,26 @@ end
 -- * CreatedDate [DateTime] <p>The date the document was created.</p>
 -- @return DocumentVersionInfo structure as a key-value pair table
 function M.DocumentVersionInfo(args)
-	assert(args, "You must provdide an argument table when creating DocumentVersionInfo")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DocumentVersionInfo")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["IsDefaultVersion"] = args["IsDefaultVersion"],
 		["Name"] = args["Name"],
 		["DocumentVersion"] = args["DocumentVersion"],
 		["CreatedDate"] = args["CreatedDate"],
 	}
-	asserts.AssertDocumentVersionInfo(t)
-	return t
+	asserts.AssertDocumentVersionInfo(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeInstancePatchStatesRequest = { ["NextToken"] = true, ["MaxResults"] = true, ["InstanceIds"] = true, nil }
@@ -688,14 +908,25 @@ end
 -- Required key: InstanceIds
 -- @return DescribeInstancePatchStatesRequest structure as a key-value pair table
 function M.DescribeInstancePatchStatesRequest(args)
-	assert(args, "You must provdide an argument table when creating DescribeInstancePatchStatesRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeInstancePatchStatesRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NextToken"] = args["NextToken"],
 		["MaxResults"] = args["MaxResults"],
 		["InstanceIds"] = args["InstanceIds"],
 	}
-	asserts.AssertDescribeInstancePatchStatesRequest(t)
-	return t
+	asserts.AssertDescribeInstancePatchStatesRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetDocumentResult = { ["Content"] = true, ["Name"] = true, ["DocumentVersion"] = true, ["DocumentType"] = true, nil }
@@ -722,15 +953,26 @@ end
 -- * DocumentType [DocumentType] <p>The document type.</p>
 -- @return GetDocumentResult structure as a key-value pair table
 function M.GetDocumentResult(args)
-	assert(args, "You must provdide an argument table when creating GetDocumentResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetDocumentResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Content"] = args["Content"],
 		["Name"] = args["Name"],
 		["DocumentVersion"] = args["DocumentVersion"],
 		["DocumentType"] = args["DocumentType"],
 	}
-	asserts.AssertGetDocumentResult(t)
-	return t
+	asserts.AssertGetDocumentResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetAutomationExecutionResult = { ["AutomationExecution"] = true, nil }
@@ -751,12 +993,23 @@ end
 -- * AutomationExecution [AutomationExecution] <p>Detailed information about the current state of an automation execution.</p>
 -- @return GetAutomationExecutionResult structure as a key-value pair table
 function M.GetAutomationExecutionResult(args)
-	assert(args, "You must provdide an argument table when creating GetAutomationExecutionResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetAutomationExecutionResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["AutomationExecution"] = args["AutomationExecution"],
 	}
-	asserts.AssertGetAutomationExecutionResult(t)
-	return t
+	asserts.AssertGetAutomationExecutionResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidFilterKey = { nil }
@@ -775,11 +1028,22 @@ end
 -- Valid keys:
 -- @return InvalidFilterKey structure as a key-value pair table
 function M.InvalidFilterKey(args)
-	assert(args, "You must provdide an argument table when creating InvalidFilterKey")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidFilterKey")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertInvalidFilterKey(t)
-	return t
+	asserts.AssertInvalidFilterKey(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InventoryItem = { ["ContentHash"] = true, ["TypeName"] = true, ["SchemaVersion"] = true, ["CaptureTime"] = true, ["Content"] = true, nil }
@@ -814,16 +1078,27 @@ end
 -- Required key: CaptureTime
 -- @return InventoryItem structure as a key-value pair table
 function M.InventoryItem(args)
-	assert(args, "You must provdide an argument table when creating InventoryItem")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InventoryItem")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ContentHash"] = args["ContentHash"],
 		["TypeName"] = args["TypeName"],
 		["SchemaVersion"] = args["SchemaVersion"],
 		["CaptureTime"] = args["CaptureTime"],
 		["Content"] = args["Content"],
 	}
-	asserts.AssertInventoryItem(t)
-	return t
+	asserts.AssertInventoryItem(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.MaintenanceWindowTaskParameterValueExpression = { ["Values"] = true, nil }
@@ -844,12 +1119,23 @@ end
 -- * Values [MaintenanceWindowTaskParameterValueList] <p>This field contains an array of 0 or more strings, each 1 to 255 characters in length.</p>
 -- @return MaintenanceWindowTaskParameterValueExpression structure as a key-value pair table
 function M.MaintenanceWindowTaskParameterValueExpression(args)
-	assert(args, "You must provdide an argument table when creating MaintenanceWindowTaskParameterValueExpression")
-	local t = { 
+	assert(args, "You must provide an argument table when creating MaintenanceWindowTaskParameterValueExpression")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Values"] = args["Values"],
 	}
-	asserts.AssertMaintenanceWindowTaskParameterValueExpression(t)
-	return t
+	asserts.AssertMaintenanceWindowTaskParameterValueExpression(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.MaintenanceWindowIdentity = { ["Duration"] = true, ["Cutoff"] = true, ["WindowId"] = true, ["Enabled"] = true, ["Name"] = true, nil }
@@ -878,16 +1164,27 @@ end
 -- * Name [MaintenanceWindowName] <p>The name of the Maintenance Window.</p>
 -- @return MaintenanceWindowIdentity structure as a key-value pair table
 function M.MaintenanceWindowIdentity(args)
-	assert(args, "You must provdide an argument table when creating MaintenanceWindowIdentity")
-	local t = { 
+	assert(args, "You must provide an argument table when creating MaintenanceWindowIdentity")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Duration"] = args["Duration"],
 		["Cutoff"] = args["Cutoff"],
 		["WindowId"] = args["WindowId"],
 		["Enabled"] = args["Enabled"],
 		["Name"] = args["Name"],
 	}
-	asserts.AssertMaintenanceWindowIdentity(t)
-	return t
+	asserts.AssertMaintenanceWindowIdentity(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.PatchStatus = { ["ApprovalDate"] = true, ["DeploymentStatus"] = true, nil }
@@ -910,13 +1207,24 @@ end
 -- * DeploymentStatus [PatchDeploymentStatus] <p>The approval status of a patch (APPROVED, PENDING_APPROVAL, EXPLICIT_APPROVED, EXPLICIT_REJECTED).</p>
 -- @return PatchStatus structure as a key-value pair table
 function M.PatchStatus(args)
-	assert(args, "You must provdide an argument table when creating PatchStatus")
-	local t = { 
+	assert(args, "You must provide an argument table when creating PatchStatus")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ApprovalDate"] = args["ApprovalDate"],
 		["DeploymentStatus"] = args["DeploymentStatus"],
 	}
-	asserts.AssertPatchStatus(t)
-	return t
+	asserts.AssertPatchStatus(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListDocumentsResult = { ["DocumentIdentifiers"] = true, ["NextToken"] = true, nil }
@@ -939,13 +1247,24 @@ end
 -- * NextToken [NextToken] <p>The token to use when requesting the next set of items. If there are no additional items to return, the string is empty.</p>
 -- @return ListDocumentsResult structure as a key-value pair table
 function M.ListDocumentsResult(args)
-	assert(args, "You must provdide an argument table when creating ListDocumentsResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListDocumentsResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DocumentIdentifiers"] = args["DocumentIdentifiers"],
 		["NextToken"] = args["NextToken"],
 	}
-	asserts.AssertListDocumentsResult(t)
-	return t
+	asserts.AssertListDocumentsResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidAutomationExecutionParametersException = { ["Message"] = true, nil }
@@ -966,12 +1285,23 @@ end
 -- * Message [String] 
 -- @return InvalidAutomationExecutionParametersException structure as a key-value pair table
 function M.InvalidAutomationExecutionParametersException(args)
-	assert(args, "You must provdide an argument table when creating InvalidAutomationExecutionParametersException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidAutomationExecutionParametersException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Message"] = args["Message"],
 	}
-	asserts.AssertInvalidAutomationExecutionParametersException(t)
-	return t
+	asserts.AssertInvalidAutomationExecutionParametersException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ParameterAlreadyExists = { ["message"] = true, nil }
@@ -992,12 +1322,23 @@ end
 -- * message [String] 
 -- @return ParameterAlreadyExists structure as a key-value pair table
 function M.ParameterAlreadyExists(args)
-	assert(args, "You must provdide an argument table when creating ParameterAlreadyExists")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ParameterAlreadyExists")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertParameterAlreadyExists(t)
-	return t
+	asserts.AssertParameterAlreadyExists(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CancelCommandRequest = { ["CommandId"] = true, ["InstanceIds"] = true, nil }
@@ -1022,13 +1363,24 @@ end
 -- Required key: CommandId
 -- @return CancelCommandRequest structure as a key-value pair table
 function M.CancelCommandRequest(args)
-	assert(args, "You must provdide an argument table when creating CancelCommandRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CancelCommandRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["CommandId"] = args["CommandId"],
 		["InstanceIds"] = args["InstanceIds"],
 	}
-	asserts.AssertCancelCommandRequest(t)
-	return t
+	asserts.AssertCancelCommandRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeregisterManagedInstanceRequest = { ["InstanceId"] = true, nil }
@@ -1051,12 +1403,23 @@ end
 -- Required key: InstanceId
 -- @return DeregisterManagedInstanceRequest structure as a key-value pair table
 function M.DeregisterManagedInstanceRequest(args)
-	assert(args, "You must provdide an argument table when creating DeregisterManagedInstanceRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeregisterManagedInstanceRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["InstanceId"] = args["InstanceId"],
 	}
-	asserts.AssertDeregisterManagedInstanceRequest(t)
-	return t
+	asserts.AssertDeregisterManagedInstanceRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Command = { ["Comment"] = true, ["Status"] = true, ["MaxErrors"] = true, ["Parameters"] = true, ["ExpiresAfter"] = true, ["ServiceRole"] = true, ["DocumentName"] = true, ["TargetCount"] = true, ["OutputS3BucketName"] = true, ["NotificationConfig"] = true, ["CompletedCount"] = true, ["Targets"] = true, ["StatusDetails"] = true, ["ErrorCount"] = true, ["OutputS3KeyPrefix"] = true, ["RequestedDateTime"] = true, ["OutputS3Region"] = true, ["CommandId"] = true, ["InstanceIds"] = true, ["MaxConcurrency"] = true, nil }
@@ -1115,8 +1478,14 @@ end
 -- * MaxConcurrency [MaxConcurrency] <p>The maximum number of instances that are allowed to execute the command at the same time. You can specify a number of instances, such as 10, or a percentage of instances, such as 10%. The default value is 50. For more information about how to use MaxConcurrency, see <a href="http://docs.aws.amazon.com/systems-manager/latest/userguide/run-command.html">Executing a Command Using Systems Manager Run Command</a>.</p>
 -- @return Command structure as a key-value pair table
 function M.Command(args)
-	assert(args, "You must provdide an argument table when creating Command")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Command")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Comment"] = args["Comment"],
 		["Status"] = args["Status"],
 		["MaxErrors"] = args["MaxErrors"],
@@ -1138,8 +1507,13 @@ function M.Command(args)
 		["InstanceIds"] = args["InstanceIds"],
 		["MaxConcurrency"] = args["MaxConcurrency"],
 	}
-	asserts.AssertCommand(t)
-	return t
+	asserts.AssertCommand(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.PutParameterRequest = { ["KeyId"] = true, ["Name"] = true, ["Value"] = true, ["AllowedPattern"] = true, ["Type"] = true, ["Overwrite"] = true, ["Description"] = true, nil }
@@ -1178,8 +1552,14 @@ end
 -- Required key: Type
 -- @return PutParameterRequest structure as a key-value pair table
 function M.PutParameterRequest(args)
-	assert(args, "You must provdide an argument table when creating PutParameterRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating PutParameterRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["KeyId"] = args["KeyId"],
 		["Name"] = args["Name"],
 		["Value"] = args["Value"],
@@ -1188,8 +1568,13 @@ function M.PutParameterRequest(args)
 		["Overwrite"] = args["Overwrite"],
 		["Description"] = args["Description"],
 	}
-	asserts.AssertPutParameterRequest(t)
-	return t
+	asserts.AssertPutParameterRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.RemoveTagsFromResourceRequest = { ["ResourceType"] = true, ["ResourceId"] = true, ["TagKeys"] = true, nil }
@@ -1220,14 +1605,25 @@ end
 -- Required key: TagKeys
 -- @return RemoveTagsFromResourceRequest structure as a key-value pair table
 function M.RemoveTagsFromResourceRequest(args)
-	assert(args, "You must provdide an argument table when creating RemoveTagsFromResourceRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating RemoveTagsFromResourceRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ResourceType"] = args["ResourceType"],
 		["ResourceId"] = args["ResourceId"],
 		["TagKeys"] = args["TagKeys"],
 	}
-	asserts.AssertRemoveTagsFromResourceRequest(t)
-	return t
+	asserts.AssertRemoveTagsFromResourceRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DocumentFilter = { ["value"] = true, ["key"] = true, nil }
@@ -1254,13 +1650,24 @@ end
 -- Required key: value
 -- @return DocumentFilter structure as a key-value pair table
 function M.DocumentFilter(args)
-	assert(args, "You must provdide an argument table when creating DocumentFilter")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DocumentFilter")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["value"] = args["value"],
 		["key"] = args["key"],
 	}
-	asserts.AssertDocumentFilter(t)
-	return t
+	asserts.AssertDocumentFilter(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetDeployablePatchSnapshotForInstanceRequest = { ["InstanceId"] = true, ["SnapshotId"] = true, nil }
@@ -1287,13 +1694,24 @@ end
 -- Required key: SnapshotId
 -- @return GetDeployablePatchSnapshotForInstanceRequest structure as a key-value pair table
 function M.GetDeployablePatchSnapshotForInstanceRequest(args)
-	assert(args, "You must provdide an argument table when creating GetDeployablePatchSnapshotForInstanceRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetDeployablePatchSnapshotForInstanceRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["InstanceId"] = args["InstanceId"],
 		["SnapshotId"] = args["SnapshotId"],
 	}
-	asserts.AssertGetDeployablePatchSnapshotForInstanceRequest(t)
-	return t
+	asserts.AssertGetDeployablePatchSnapshotForInstanceRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetMaintenanceWindowExecutionResult = { ["Status"] = true, ["TaskIds"] = true, ["StartTime"] = true, ["EndTime"] = true, ["WindowExecutionId"] = true, ["StatusDetails"] = true, nil }
@@ -1324,8 +1742,14 @@ end
 -- * StatusDetails [MaintenanceWindowExecutionStatusDetails] <p>The details explaining the Status. Only available for certain status values.</p>
 -- @return GetMaintenanceWindowExecutionResult structure as a key-value pair table
 function M.GetMaintenanceWindowExecutionResult(args)
-	assert(args, "You must provdide an argument table when creating GetMaintenanceWindowExecutionResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetMaintenanceWindowExecutionResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Status"] = args["Status"],
 		["TaskIds"] = args["TaskIds"],
 		["StartTime"] = args["StartTime"],
@@ -1333,8 +1757,13 @@ function M.GetMaintenanceWindowExecutionResult(args)
 		["WindowExecutionId"] = args["WindowExecutionId"],
 		["StatusDetails"] = args["StatusDetails"],
 	}
-	asserts.AssertGetMaintenanceWindowExecutionResult(t)
-	return t
+	asserts.AssertGetMaintenanceWindowExecutionResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListCommandsRequest = { ["InstanceId"] = true, ["Filters"] = true, ["NextToken"] = true, ["CommandId"] = true, ["MaxResults"] = true, nil }
@@ -1363,16 +1792,27 @@ end
 -- * MaxResults [CommandMaxResults] <p>(Optional) The maximum number of items to return for this call. The call also returns a token that you can specify in a subsequent call to get the next set of results.</p>
 -- @return ListCommandsRequest structure as a key-value pair table
 function M.ListCommandsRequest(args)
-	assert(args, "You must provdide an argument table when creating ListCommandsRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListCommandsRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["InstanceId"] = args["InstanceId"],
 		["Filters"] = args["Filters"],
 		["NextToken"] = args["NextToken"],
 		["CommandId"] = args["CommandId"],
 		["MaxResults"] = args["MaxResults"],
 	}
-	asserts.AssertListCommandsRequest(t)
-	return t
+	asserts.AssertListCommandsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetDeployablePatchSnapshotForInstanceResult = { ["InstanceId"] = true, ["SnapshotId"] = true, ["SnapshotDownloadUrl"] = true, nil }
@@ -1397,14 +1837,25 @@ end
 -- * SnapshotDownloadUrl [SnapshotDownloadUrl] <p>A pre-signed Amazon S3 URL that can be used to download the patch snapshot.</p>
 -- @return GetDeployablePatchSnapshotForInstanceResult structure as a key-value pair table
 function M.GetDeployablePatchSnapshotForInstanceResult(args)
-	assert(args, "You must provdide an argument table when creating GetDeployablePatchSnapshotForInstanceResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetDeployablePatchSnapshotForInstanceResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["InstanceId"] = args["InstanceId"],
 		["SnapshotId"] = args["SnapshotId"],
 		["SnapshotDownloadUrl"] = args["SnapshotDownloadUrl"],
 	}
-	asserts.AssertGetDeployablePatchSnapshotForInstanceResult(t)
-	return t
+	asserts.AssertGetDeployablePatchSnapshotForInstanceResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListInventoryEntriesRequest = { ["InstanceId"] = true, ["TypeName"] = true, ["NextToken"] = true, ["MaxResults"] = true, ["Filters"] = true, nil }
@@ -1437,16 +1888,27 @@ end
 -- Required key: TypeName
 -- @return ListInventoryEntriesRequest structure as a key-value pair table
 function M.ListInventoryEntriesRequest(args)
-	assert(args, "You must provdide an argument table when creating ListInventoryEntriesRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListInventoryEntriesRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["InstanceId"] = args["InstanceId"],
 		["TypeName"] = args["TypeName"],
 		["NextToken"] = args["NextToken"],
 		["MaxResults"] = args["MaxResults"],
 		["Filters"] = args["Filters"],
 	}
-	asserts.AssertListInventoryEntriesRequest(t)
-	return t
+	asserts.AssertListInventoryEntriesRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DocumentVersionLimitExceeded = { ["Message"] = true, nil }
@@ -1467,12 +1929,23 @@ end
 -- * Message [String] 
 -- @return DocumentVersionLimitExceeded structure as a key-value pair table
 function M.DocumentVersionLimitExceeded(args)
-	assert(args, "You must provdide an argument table when creating DocumentVersionLimitExceeded")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DocumentVersionLimitExceeded")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Message"] = args["Message"],
 	}
-	asserts.AssertDocumentVersionLimitExceeded(t)
-	return t
+	asserts.AssertDocumentVersionLimitExceeded(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeletePatchBaselineResult = { ["BaselineId"] = true, nil }
@@ -1493,12 +1966,23 @@ end
 -- * BaselineId [BaselineId] <p>The ID of the deleted patch baseline.</p>
 -- @return DeletePatchBaselineResult structure as a key-value pair table
 function M.DeletePatchBaselineResult(args)
-	assert(args, "You must provdide an argument table when creating DeletePatchBaselineResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeletePatchBaselineResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["BaselineId"] = args["BaselineId"],
 	}
-	asserts.AssertDeletePatchBaselineResult(t)
-	return t
+	asserts.AssertDeletePatchBaselineResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeDocumentPermissionResponse = { ["AccountIds"] = true, nil }
@@ -1519,12 +2003,23 @@ end
 -- * AccountIds [AccountIdList] <p>The account IDs that have permission to use this document. The ID can be either an AWS account or <i>All</i>.</p>
 -- @return DescribeDocumentPermissionResponse structure as a key-value pair table
 function M.DescribeDocumentPermissionResponse(args)
-	assert(args, "You must provdide an argument table when creating DescribeDocumentPermissionResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeDocumentPermissionResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["AccountIds"] = args["AccountIds"],
 	}
-	asserts.AssertDescribeDocumentPermissionResponse(t)
-	return t
+	asserts.AssertDescribeDocumentPermissionResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.RegisterTaskWithMaintenanceWindowRequest = { ["ServiceRoleArn"] = true, ["LoggingInfo"] = true, ["MaxErrors"] = true, ["TaskArn"] = true, ["MaxConcurrency"] = true, ["ClientToken"] = true, ["Targets"] = true, ["Priority"] = true, ["WindowId"] = true, ["TaskType"] = true, ["TaskParameters"] = true, nil }
@@ -1579,8 +2074,14 @@ end
 -- Required key: MaxErrors
 -- @return RegisterTaskWithMaintenanceWindowRequest structure as a key-value pair table
 function M.RegisterTaskWithMaintenanceWindowRequest(args)
-	assert(args, "You must provdide an argument table when creating RegisterTaskWithMaintenanceWindowRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating RegisterTaskWithMaintenanceWindowRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ServiceRoleArn"] = args["ServiceRoleArn"],
 		["LoggingInfo"] = args["LoggingInfo"],
 		["MaxErrors"] = args["MaxErrors"],
@@ -1593,8 +2094,13 @@ function M.RegisterTaskWithMaintenanceWindowRequest(args)
 		["TaskType"] = args["TaskType"],
 		["TaskParameters"] = args["TaskParameters"],
 	}
-	asserts.AssertRegisterTaskWithMaintenanceWindowRequest(t)
-	return t
+	asserts.AssertRegisterTaskWithMaintenanceWindowRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateAssociationRequest = { ["ScheduleExpression"] = true, ["OutputLocation"] = true, ["Name"] = true, ["Parameters"] = true, ["InstanceId"] = true, ["DocumentVersion"] = true, ["Targets"] = true, nil }
@@ -1629,8 +2135,14 @@ end
 -- Required key: Name
 -- @return CreateAssociationRequest structure as a key-value pair table
 function M.CreateAssociationRequest(args)
-	assert(args, "You must provdide an argument table when creating CreateAssociationRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateAssociationRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ScheduleExpression"] = args["ScheduleExpression"],
 		["OutputLocation"] = args["OutputLocation"],
 		["Name"] = args["Name"],
@@ -1639,8 +2151,13 @@ function M.CreateAssociationRequest(args)
 		["DocumentVersion"] = args["DocumentVersion"],
 		["Targets"] = args["Targets"],
 	}
-	asserts.AssertCreateAssociationRequest(t)
-	return t
+	asserts.AssertCreateAssociationRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeMaintenanceWindowTargetsResult = { ["NextToken"] = true, ["Targets"] = true, nil }
@@ -1663,13 +2180,24 @@ end
 -- * Targets [MaintenanceWindowTargetList] <p>Information about the targets in the Maintenance Window.</p>
 -- @return DescribeMaintenanceWindowTargetsResult structure as a key-value pair table
 function M.DescribeMaintenanceWindowTargetsResult(args)
-	assert(args, "You must provdide an argument table when creating DescribeMaintenanceWindowTargetsResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeMaintenanceWindowTargetsResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NextToken"] = args["NextToken"],
 		["Targets"] = args["Targets"],
 	}
-	asserts.AssertDescribeMaintenanceWindowTargetsResult(t)
-	return t
+	asserts.AssertDescribeMaintenanceWindowTargetsResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribePatchGroupStateResult = { ["InstancesWithNotApplicablePatches"] = true, ["InstancesWithMissingPatches"] = true, ["InstancesWithFailedPatches"] = true, ["InstancesWithInstalledOtherPatches"] = true, ["Instances"] = true, ["InstancesWithInstalledPatches"] = true, nil }
@@ -1700,8 +2228,14 @@ end
 -- * InstancesWithInstalledPatches [Integer] <p>The number of instances with installed patches.</p>
 -- @return DescribePatchGroupStateResult structure as a key-value pair table
 function M.DescribePatchGroupStateResult(args)
-	assert(args, "You must provdide an argument table when creating DescribePatchGroupStateResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribePatchGroupStateResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["InstancesWithNotApplicablePatches"] = args["InstancesWithNotApplicablePatches"],
 		["InstancesWithMissingPatches"] = args["InstancesWithMissingPatches"],
 		["InstancesWithFailedPatches"] = args["InstancesWithFailedPatches"],
@@ -1709,8 +2243,13 @@ function M.DescribePatchGroupStateResult(args)
 		["Instances"] = args["Instances"],
 		["InstancesWithInstalledPatches"] = args["InstancesWithInstalledPatches"],
 	}
-	asserts.AssertDescribePatchGroupStateResult(t)
-	return t
+	asserts.AssertDescribePatchGroupStateResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ItemContentMismatchException = { ["TypeName"] = true, ["Message"] = true, nil }
@@ -1733,13 +2272,24 @@ end
 -- * Message [String] 
 -- @return ItemContentMismatchException structure as a key-value pair table
 function M.ItemContentMismatchException(args)
-	assert(args, "You must provdide an argument table when creating ItemContentMismatchException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ItemContentMismatchException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["TypeName"] = args["TypeName"],
 		["Message"] = args["Message"],
 	}
-	asserts.AssertItemContentMismatchException(t)
-	return t
+	asserts.AssertItemContentMismatchException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteParameterRequest = { ["Name"] = true, nil }
@@ -1762,12 +2312,23 @@ end
 -- Required key: Name
 -- @return DeleteParameterRequest structure as a key-value pair table
 function M.DeleteParameterRequest(args)
-	assert(args, "You must provdide an argument table when creating DeleteParameterRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteParameterRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Name"] = args["Name"],
 	}
-	asserts.AssertDeleteParameterRequest(t)
-	return t
+	asserts.AssertDeleteParameterRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidTarget = { ["Message"] = true, nil }
@@ -1788,12 +2349,23 @@ end
 -- * Message [String] 
 -- @return InvalidTarget structure as a key-value pair table
 function M.InvalidTarget(args)
-	assert(args, "You must provdide an argument table when creating InvalidTarget")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidTarget")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Message"] = args["Message"],
 	}
-	asserts.AssertInvalidTarget(t)
-	return t
+	asserts.AssertInvalidTarget(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InstanceAssociation = { ["InstanceId"] = true, ["Content"] = true, ["AssociationId"] = true, nil }
@@ -1818,14 +2390,25 @@ end
 -- * AssociationId [AssociationId] <p>The association ID.</p>
 -- @return InstanceAssociation structure as a key-value pair table
 function M.InstanceAssociation(args)
-	assert(args, "You must provdide an argument table when creating InstanceAssociation")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InstanceAssociation")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["InstanceId"] = args["InstanceId"],
 		["Content"] = args["Content"],
 		["AssociationId"] = args["AssociationId"],
 	}
-	asserts.AssertInstanceAssociation(t)
-	return t
+	asserts.AssertInstanceAssociation(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeMaintenanceWindowExecutionTasksResult = { ["WindowExecutionTaskIdentities"] = true, ["NextToken"] = true, nil }
@@ -1848,13 +2431,24 @@ end
 -- * NextToken [NextToken] <p>The token to use when requesting the next set of items. If there are no additional items to return, the string is empty.</p>
 -- @return DescribeMaintenanceWindowExecutionTasksResult structure as a key-value pair table
 function M.DescribeMaintenanceWindowExecutionTasksResult(args)
-	assert(args, "You must provdide an argument table when creating DescribeMaintenanceWindowExecutionTasksResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeMaintenanceWindowExecutionTasksResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["WindowExecutionTaskIdentities"] = args["WindowExecutionTaskIdentities"],
 		["NextToken"] = args["NextToken"],
 	}
-	asserts.AssertDescribeMaintenanceWindowExecutionTasksResult(t)
-	return t
+	asserts.AssertDescribeMaintenanceWindowExecutionTasksResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeAvailablePatchesResult = { ["NextToken"] = true, ["Patches"] = true, nil }
@@ -1877,13 +2471,24 @@ end
 -- * Patches [PatchList] <p>An array of patches. Each entry in the array is a patch structure.</p>
 -- @return DescribeAvailablePatchesResult structure as a key-value pair table
 function M.DescribeAvailablePatchesResult(args)
-	assert(args, "You must provdide an argument table when creating DescribeAvailablePatchesResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeAvailablePatchesResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NextToken"] = args["NextToken"],
 		["Patches"] = args["Patches"],
 	}
-	asserts.AssertDescribeAvailablePatchesResult(t)
-	return t
+	asserts.AssertDescribeAvailablePatchesResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.RegisterPatchBaselineForPatchGroupRequest = { ["PatchGroup"] = true, ["BaselineId"] = true, nil }
@@ -1910,13 +2515,24 @@ end
 -- Required key: PatchGroup
 -- @return RegisterPatchBaselineForPatchGroupRequest structure as a key-value pair table
 function M.RegisterPatchBaselineForPatchGroupRequest(args)
-	assert(args, "You must provdide an argument table when creating RegisterPatchBaselineForPatchGroupRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating RegisterPatchBaselineForPatchGroupRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["PatchGroup"] = args["PatchGroup"],
 		["BaselineId"] = args["BaselineId"],
 	}
-	asserts.AssertRegisterPatchBaselineForPatchGroupRequest(t)
-	return t
+	asserts.AssertRegisterPatchBaselineForPatchGroupRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.StepExecution = { ["Inputs"] = true, ["Outputs"] = true, ["StepName"] = true, ["FailureMessage"] = true, ["ExecutionEndTime"] = true, ["FailureDetails"] = true, ["ResponseCode"] = true, ["ExecutionStartTime"] = true, ["Action"] = true, ["Response"] = true, ["StepStatus"] = true, nil }
@@ -1957,8 +2573,14 @@ end
 -- * StepStatus [AutomationExecutionStatus] <p>The execution status for this step. Valid values include: Pending, InProgress, Success, Cancelled, Failed, and TimedOut.</p>
 -- @return StepExecution structure as a key-value pair table
 function M.StepExecution(args)
-	assert(args, "You must provdide an argument table when creating StepExecution")
-	local t = { 
+	assert(args, "You must provide an argument table when creating StepExecution")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Inputs"] = args["Inputs"],
 		["Outputs"] = args["Outputs"],
 		["StepName"] = args["StepName"],
@@ -1971,8 +2593,13 @@ function M.StepExecution(args)
 		["Response"] = args["Response"],
 		["StepStatus"] = args["StepStatus"],
 	}
-	asserts.AssertStepExecution(t)
-	return t
+	asserts.AssertStepExecution(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InstancePatchStateFilter = { ["Type"] = true, ["Values"] = true, ["Key"] = true, nil }
@@ -2003,14 +2630,25 @@ end
 -- Required key: Type
 -- @return InstancePatchStateFilter structure as a key-value pair table
 function M.InstancePatchStateFilter(args)
-	assert(args, "You must provdide an argument table when creating InstancePatchStateFilter")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InstancePatchStateFilter")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Type"] = args["Type"],
 		["Values"] = args["Values"],
 		["Key"] = args["Key"],
 	}
-	asserts.AssertInstancePatchStateFilter(t)
-	return t
+	asserts.AssertInstancePatchStateFilter(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribePatchBaselinesRequest = { ["NextToken"] = true, ["MaxResults"] = true, ["Filters"] = true, nil }
@@ -2035,14 +2673,25 @@ end
 -- * Filters [PatchOrchestratorFilterList] <p>Each element in the array is a structure containing: </p> <p>Key: (string, "NAME_PREFIX" or "OWNER")</p> <p>Value: (array of strings, exactly 1 entry, between 1 and 255 characters)</p>
 -- @return DescribePatchBaselinesRequest structure as a key-value pair table
 function M.DescribePatchBaselinesRequest(args)
-	assert(args, "You must provdide an argument table when creating DescribePatchBaselinesRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribePatchBaselinesRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NextToken"] = args["NextToken"],
 		["MaxResults"] = args["MaxResults"],
 		["Filters"] = args["Filters"],
 	}
-	asserts.AssertDescribePatchBaselinesRequest(t)
-	return t
+	asserts.AssertDescribePatchBaselinesRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AutomationDefinitionVersionNotFoundException = { ["Message"] = true, nil }
@@ -2063,12 +2712,23 @@ end
 -- * Message [String] 
 -- @return AutomationDefinitionVersionNotFoundException structure as a key-value pair table
 function M.AutomationDefinitionVersionNotFoundException(args)
-	assert(args, "You must provdide an argument table when creating AutomationDefinitionVersionNotFoundException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AutomationDefinitionVersionNotFoundException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Message"] = args["Message"],
 	}
-	asserts.AssertAutomationDefinitionVersionNotFoundException(t)
-	return t
+	asserts.AssertAutomationDefinitionVersionNotFoundException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeActivationsResult = { ["NextToken"] = true, ["ActivationList"] = true, nil }
@@ -2091,13 +2751,24 @@ end
 -- * ActivationList [ActivationList] <p>A list of activations for your AWS account.</p>
 -- @return DescribeActivationsResult structure as a key-value pair table
 function M.DescribeActivationsResult(args)
-	assert(args, "You must provdide an argument table when creating DescribeActivationsResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeActivationsResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NextToken"] = args["NextToken"],
 		["ActivationList"] = args["ActivationList"],
 	}
-	asserts.AssertDescribeActivationsResult(t)
-	return t
+	asserts.AssertDescribeActivationsResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.StartAutomationExecutionResult = { ["AutomationExecutionId"] = true, nil }
@@ -2118,12 +2789,23 @@ end
 -- * AutomationExecutionId [AutomationExecutionId] <p>The unique ID of a newly scheduled automation execution.</p>
 -- @return StartAutomationExecutionResult structure as a key-value pair table
 function M.StartAutomationExecutionResult(args)
-	assert(args, "You must provdide an argument table when creating StartAutomationExecutionResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating StartAutomationExecutionResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["AutomationExecutionId"] = args["AutomationExecutionId"],
 	}
-	asserts.AssertStartAutomationExecutionResult(t)
-	return t
+	asserts.AssertStartAutomationExecutionResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListDocumentVersionsResult = { ["DocumentVersions"] = true, ["NextToken"] = true, nil }
@@ -2146,13 +2828,24 @@ end
 -- * NextToken [NextToken] <p>The token to use when requesting the next set of items. If there are no additional items to return, the string is empty.</p>
 -- @return ListDocumentVersionsResult structure as a key-value pair table
 function M.ListDocumentVersionsResult(args)
-	assert(args, "You must provdide an argument table when creating ListDocumentVersionsResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListDocumentVersionsResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DocumentVersions"] = args["DocumentVersions"],
 		["NextToken"] = args["NextToken"],
 	}
-	asserts.AssertListDocumentVersionsResult(t)
-	return t
+	asserts.AssertListDocumentVersionsResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeEffectivePatchesForPatchBaselineRequest = { ["NextToken"] = true, ["BaselineId"] = true, ["MaxResults"] = true, nil }
@@ -2179,14 +2872,25 @@ end
 -- Required key: BaselineId
 -- @return DescribeEffectivePatchesForPatchBaselineRequest structure as a key-value pair table
 function M.DescribeEffectivePatchesForPatchBaselineRequest(args)
-	assert(args, "You must provdide an argument table when creating DescribeEffectivePatchesForPatchBaselineRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeEffectivePatchesForPatchBaselineRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NextToken"] = args["NextToken"],
 		["BaselineId"] = args["BaselineId"],
 		["MaxResults"] = args["MaxResults"],
 	}
-	asserts.AssertDescribeEffectivePatchesForPatchBaselineRequest(t)
-	return t
+	asserts.AssertDescribeEffectivePatchesForPatchBaselineRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Activation = { ["IamRole"] = true, ["RegistrationLimit"] = true, ["Description"] = true, ["ActivationId"] = true, ["RegistrationsCount"] = true, ["CreatedDate"] = true, ["DefaultInstanceName"] = true, ["Expired"] = true, ["ExpirationDate"] = true, nil }
@@ -2223,8 +2927,14 @@ end
 -- * ExpirationDate [ExpirationDate] <p>The date when this activation can no longer be used to register managed instances.</p>
 -- @return Activation structure as a key-value pair table
 function M.Activation(args)
-	assert(args, "You must provdide an argument table when creating Activation")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Activation")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["IamRole"] = args["IamRole"],
 		["RegistrationLimit"] = args["RegistrationLimit"],
 		["Description"] = args["Description"],
@@ -2235,8 +2945,13 @@ function M.Activation(args)
 		["Expired"] = args["Expired"],
 		["ExpirationDate"] = args["ExpirationDate"],
 	}
-	asserts.AssertActivation(t)
-	return t
+	asserts.AssertActivation(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.SendCommandResult = { ["Command"] = true, nil }
@@ -2257,12 +2972,23 @@ end
 -- * Command [Command] <p>The request as it was received by Systems Manager. Also provides the command ID which can be used future references to this request.</p>
 -- @return SendCommandResult structure as a key-value pair table
 function M.SendCommandResult(args)
-	assert(args, "You must provdide an argument table when creating SendCommandResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating SendCommandResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Command"] = args["Command"],
 	}
-	asserts.AssertSendCommandResult(t)
-	return t
+	asserts.AssertSendCommandResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetInventoryRequest = { ["ResultAttributes"] = true, ["NextToken"] = true, ["MaxResults"] = true, ["Filters"] = true, nil }
@@ -2289,15 +3015,26 @@ end
 -- * Filters [InventoryFilterList] <p>One or more filters. Use a filter to return a more specific list of results.</p>
 -- @return GetInventoryRequest structure as a key-value pair table
 function M.GetInventoryRequest(args)
-	assert(args, "You must provdide an argument table when creating GetInventoryRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetInventoryRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ResultAttributes"] = args["ResultAttributes"],
 		["NextToken"] = args["NextToken"],
 		["MaxResults"] = args["MaxResults"],
 		["Filters"] = args["Filters"],
 	}
-	asserts.AssertGetInventoryRequest(t)
-	return t
+	asserts.AssertGetInventoryRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateAssociationResult = { ["AssociationDescription"] = true, nil }
@@ -2318,12 +3055,23 @@ end
 -- * AssociationDescription [AssociationDescription] <p>Information about the association.</p>
 -- @return CreateAssociationResult structure as a key-value pair table
 function M.CreateAssociationResult(args)
-	assert(args, "You must provdide an argument table when creating CreateAssociationResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateAssociationResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["AssociationDescription"] = args["AssociationDescription"],
 	}
-	asserts.AssertCreateAssociationResult(t)
-	return t
+	asserts.AssertCreateAssociationResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidDocument = { ["Message"] = true, nil }
@@ -2344,12 +3092,23 @@ end
 -- * Message [String] <p>The document does not exist or the document is not available to the user. This exception can be issued by CreateAssociation, CreateAssociationBatch, DeleteAssociation, DeleteDocument, DescribeAssociation, DescribeDocument, GetDocument, SendCommand, or UpdateAssociationStatus. </p>
 -- @return InvalidDocument structure as a key-value pair table
 function M.InvalidDocument(args)
-	assert(args, "You must provdide an argument table when creating InvalidDocument")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidDocument")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Message"] = args["Message"],
 	}
-	asserts.AssertInvalidDocument(t)
-	return t
+	asserts.AssertInvalidDocument(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteAssociationResult = { nil }
@@ -2368,11 +3127,22 @@ end
 -- Valid keys:
 -- @return DeleteAssociationResult structure as a key-value pair table
 function M.DeleteAssociationResult(args)
-	assert(args, "You must provdide an argument table when creating DeleteAssociationResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteAssociationResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertDeleteAssociationResult(t)
-	return t
+	asserts.AssertDeleteAssociationResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.MaxDocumentSizeExceeded = { ["Message"] = true, nil }
@@ -2393,12 +3163,23 @@ end
 -- * Message [String] 
 -- @return MaxDocumentSizeExceeded structure as a key-value pair table
 function M.MaxDocumentSizeExceeded(args)
-	assert(args, "You must provdide an argument table when creating MaxDocumentSizeExceeded")
-	local t = { 
+	assert(args, "You must provide an argument table when creating MaxDocumentSizeExceeded")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Message"] = args["Message"],
 	}
-	asserts.AssertMaxDocumentSizeExceeded(t)
-	return t
+	asserts.AssertMaxDocumentSizeExceeded(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribePatchBaselinesResult = { ["NextToken"] = true, ["BaselineIdentities"] = true, nil }
@@ -2421,13 +3202,24 @@ end
 -- * BaselineIdentities [PatchBaselineIdentityList] <p>An array of PatchBaselineIdentity elements.</p>
 -- @return DescribePatchBaselinesResult structure as a key-value pair table
 function M.DescribePatchBaselinesResult(args)
-	assert(args, "You must provdide an argument table when creating DescribePatchBaselinesResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribePatchBaselinesResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NextToken"] = args["NextToken"],
 		["BaselineIdentities"] = args["BaselineIdentities"],
 	}
-	asserts.AssertDescribePatchBaselinesResult(t)
-	return t
+	asserts.AssertDescribePatchBaselinesResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeMaintenanceWindowExecutionsResult = { ["WindowExecutions"] = true, ["NextToken"] = true, nil }
@@ -2450,13 +3242,24 @@ end
 -- * NextToken [NextToken] <p>The token to use when requesting the next set of items. If there are no additional items to return, the string is empty.</p>
 -- @return DescribeMaintenanceWindowExecutionsResult structure as a key-value pair table
 function M.DescribeMaintenanceWindowExecutionsResult(args)
-	assert(args, "You must provdide an argument table when creating DescribeMaintenanceWindowExecutionsResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeMaintenanceWindowExecutionsResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["WindowExecutions"] = args["WindowExecutions"],
 		["NextToken"] = args["NextToken"],
 	}
-	asserts.AssertDescribeMaintenanceWindowExecutionsResult(t)
-	return t
+	asserts.AssertDescribeMaintenanceWindowExecutionsResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreatePatchBaselineResult = { ["BaselineId"] = true, nil }
@@ -2477,12 +3280,23 @@ end
 -- * BaselineId [BaselineId] <p>The ID of the created patch baseline.</p>
 -- @return CreatePatchBaselineResult structure as a key-value pair table
 function M.CreatePatchBaselineResult(args)
-	assert(args, "You must provdide an argument table when creating CreatePatchBaselineResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreatePatchBaselineResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["BaselineId"] = args["BaselineId"],
 	}
-	asserts.AssertCreatePatchBaselineResult(t)
-	return t
+	asserts.AssertCreatePatchBaselineResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.PatchGroupPatchBaselineMapping = { ["PatchGroup"] = true, ["BaselineIdentity"] = true, nil }
@@ -2505,13 +3319,24 @@ end
 -- * BaselineIdentity [PatchBaselineIdentity] <p>The patch baseline the patch group is registered with.</p>
 -- @return PatchGroupPatchBaselineMapping structure as a key-value pair table
 function M.PatchGroupPatchBaselineMapping(args)
-	assert(args, "You must provdide an argument table when creating PatchGroupPatchBaselineMapping")
-	local t = { 
+	assert(args, "You must provide an argument table when creating PatchGroupPatchBaselineMapping")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["PatchGroup"] = args["PatchGroup"],
 		["BaselineIdentity"] = args["BaselineIdentity"],
 	}
-	asserts.AssertPatchGroupPatchBaselineMapping(t)
-	return t
+	asserts.AssertPatchGroupPatchBaselineMapping(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidInstanceInformationFilterValue = { ["message"] = true, nil }
@@ -2532,12 +3357,23 @@ end
 -- * message [String] 
 -- @return InvalidInstanceInformationFilterValue structure as a key-value pair table
 function M.InvalidInstanceInformationFilterValue(args)
-	assert(args, "You must provdide an argument table when creating InvalidInstanceInformationFilterValue")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidInstanceInformationFilterValue")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertInvalidInstanceInformationFilterValue(t)
-	return t
+	asserts.AssertInvalidInstanceInformationFilterValue(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.StopAutomationExecutionResult = { nil }
@@ -2556,11 +3392,22 @@ end
 -- Valid keys:
 -- @return StopAutomationExecutionResult structure as a key-value pair table
 function M.StopAutomationExecutionResult(args)
-	assert(args, "You must provdide an argument table when creating StopAutomationExecutionResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating StopAutomationExecutionResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertStopAutomationExecutionResult(t)
-	return t
+	asserts.AssertStopAutomationExecutionResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetPatchBaselineForPatchGroupResult = { ["PatchGroup"] = true, ["BaselineId"] = true, nil }
@@ -2583,13 +3430,24 @@ end
 -- * BaselineId [BaselineId] <p>The ID of the patch baseline that should be used for the patch group.</p>
 -- @return GetPatchBaselineForPatchGroupResult structure as a key-value pair table
 function M.GetPatchBaselineForPatchGroupResult(args)
-	assert(args, "You must provdide an argument table when creating GetPatchBaselineForPatchGroupResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetPatchBaselineForPatchGroupResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["PatchGroup"] = args["PatchGroup"],
 		["BaselineId"] = args["BaselineId"],
 	}
-	asserts.AssertGetPatchBaselineForPatchGroupResult(t)
-	return t
+	asserts.AssertGetPatchBaselineForPatchGroupResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ParameterHistory = { ["KeyId"] = true, ["Name"] = true, ["LastModifiedDate"] = true, ["Value"] = true, ["AllowedPattern"] = true, ["LastModifiedUser"] = true, ["Type"] = true, ["Description"] = true, nil }
@@ -2624,8 +3482,14 @@ end
 -- * Description [ParameterDescription] <p>Information about the parameter.</p>
 -- @return ParameterHistory structure as a key-value pair table
 function M.ParameterHistory(args)
-	assert(args, "You must provdide an argument table when creating ParameterHistory")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ParameterHistory")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["KeyId"] = args["KeyId"],
 		["Name"] = args["Name"],
 		["LastModifiedDate"] = args["LastModifiedDate"],
@@ -2635,8 +3499,13 @@ function M.ParameterHistory(args)
 		["Type"] = args["Type"],
 		["Description"] = args["Description"],
 	}
-	asserts.AssertParameterHistory(t)
-	return t
+	asserts.AssertParameterHistory(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AutomationDefinitionNotFoundException = { ["Message"] = true, nil }
@@ -2657,12 +3526,23 @@ end
 -- * Message [String] 
 -- @return AutomationDefinitionNotFoundException structure as a key-value pair table
 function M.AutomationDefinitionNotFoundException(args)
-	assert(args, "You must provdide an argument table when creating AutomationDefinitionNotFoundException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AutomationDefinitionNotFoundException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Message"] = args["Message"],
 	}
-	asserts.AssertAutomationDefinitionNotFoundException(t)
-	return t
+	asserts.AssertAutomationDefinitionNotFoundException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CommandPlugin = { ["Status"] = true, ["ResponseStartDateTime"] = true, ["StandardErrorUrl"] = true, ["OutputS3BucketName"] = true, ["OutputS3Region"] = true, ["OutputS3KeyPrefix"] = true, ["ResponseCode"] = true, ["Output"] = true, ["ResponseFinishDateTime"] = true, ["StatusDetails"] = true, ["StandardOutputUrl"] = true, ["Name"] = true, nil }
@@ -2705,8 +3585,14 @@ end
 -- * Name [CommandPluginName] <p>The name of the plugin. Must be one of the following: aws:updateAgent, aws:domainjoin, aws:applications, aws:runPowerShellScript, aws:psmodule, aws:cloudWatch, aws:runShellScript, or aws:updateSSMAgent. </p>
 -- @return CommandPlugin structure as a key-value pair table
 function M.CommandPlugin(args)
-	assert(args, "You must provdide an argument table when creating CommandPlugin")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CommandPlugin")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Status"] = args["Status"],
 		["ResponseStartDateTime"] = args["ResponseStartDateTime"],
 		["StandardErrorUrl"] = args["StandardErrorUrl"],
@@ -2720,8 +3606,13 @@ function M.CommandPlugin(args)
 		["StandardOutputUrl"] = args["StandardOutputUrl"],
 		["Name"] = args["Name"],
 	}
-	asserts.AssertCommandPlugin(t)
-	return t
+	asserts.AssertCommandPlugin(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DocumentLimitExceeded = { ["Message"] = true, nil }
@@ -2742,12 +3633,23 @@ end
 -- * Message [String] 
 -- @return DocumentLimitExceeded structure as a key-value pair table
 function M.DocumentLimitExceeded(args)
-	assert(args, "You must provdide an argument table when creating DocumentLimitExceeded")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DocumentLimitExceeded")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Message"] = args["Message"],
 	}
-	asserts.AssertDocumentLimitExceeded(t)
-	return t
+	asserts.AssertDocumentLimitExceeded(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeEffectiveInstanceAssociationsResult = { ["Associations"] = true, ["NextToken"] = true, nil }
@@ -2770,13 +3672,24 @@ end
 -- * NextToken [NextToken] <p>The token to use when requesting the next set of items. If there are no additional items to return, the string is empty.</p>
 -- @return DescribeEffectiveInstanceAssociationsResult structure as a key-value pair table
 function M.DescribeEffectiveInstanceAssociationsResult(args)
-	assert(args, "You must provdide an argument table when creating DescribeEffectiveInstanceAssociationsResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeEffectiveInstanceAssociationsResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Associations"] = args["Associations"],
 		["NextToken"] = args["NextToken"],
 	}
-	asserts.AssertDescribeEffectiveInstanceAssociationsResult(t)
-	return t
+	asserts.AssertDescribeEffectiveInstanceAssociationsResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.MaintenanceWindowExecutionTaskInvocationIdentity = { ["Status"] = true, ["Parameters"] = true, ["OwnerInformation"] = true, ["WindowTargetId"] = true, ["ExecutionId"] = true, ["InvocationId"] = true, ["StartTime"] = true, ["EndTime"] = true, ["WindowExecutionId"] = true, ["StatusDetails"] = true, ["TaskExecutionId"] = true, nil }
@@ -2817,8 +3730,14 @@ end
 -- * TaskExecutionId [MaintenanceWindowExecutionTaskId] <p>The ID of the specific task execution in the Maintenance Window execution.</p>
 -- @return MaintenanceWindowExecutionTaskInvocationIdentity structure as a key-value pair table
 function M.MaintenanceWindowExecutionTaskInvocationIdentity(args)
-	assert(args, "You must provdide an argument table when creating MaintenanceWindowExecutionTaskInvocationIdentity")
-	local t = { 
+	assert(args, "You must provide an argument table when creating MaintenanceWindowExecutionTaskInvocationIdentity")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Status"] = args["Status"],
 		["Parameters"] = args["Parameters"],
 		["OwnerInformation"] = args["OwnerInformation"],
@@ -2831,8 +3750,13 @@ function M.MaintenanceWindowExecutionTaskInvocationIdentity(args)
 		["StatusDetails"] = args["StatusDetails"],
 		["TaskExecutionId"] = args["TaskExecutionId"],
 	}
-	asserts.AssertMaintenanceWindowExecutionTaskInvocationIdentity(t)
-	return t
+	asserts.AssertMaintenanceWindowExecutionTaskInvocationIdentity(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdateAssociationStatusRequest = { ["InstanceId"] = true, ["AssociationStatus"] = true, ["Name"] = true, nil }
@@ -2863,14 +3787,25 @@ end
 -- Required key: AssociationStatus
 -- @return UpdateAssociationStatusRequest structure as a key-value pair table
 function M.UpdateAssociationStatusRequest(args)
-	assert(args, "You must provdide an argument table when creating UpdateAssociationStatusRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateAssociationStatusRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["InstanceId"] = args["InstanceId"],
 		["AssociationStatus"] = args["AssociationStatus"],
 		["Name"] = args["Name"],
 	}
-	asserts.AssertUpdateAssociationStatusRequest(t)
-	return t
+	asserts.AssertUpdateAssociationStatusRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdatePatchBaselineResult = { ["BaselineId"] = true, ["Name"] = true, ["RejectedPatches"] = true, ["GlobalFilters"] = true, ["ApprovalRules"] = true, ["ModifiedDate"] = true, ["CreatedDate"] = true, ["ApprovedPatches"] = true, ["Description"] = true, nil }
@@ -2907,8 +3842,14 @@ end
 -- * Description [BaselineDescription] <p>A description of the Patch Baseline.</p>
 -- @return UpdatePatchBaselineResult structure as a key-value pair table
 function M.UpdatePatchBaselineResult(args)
-	assert(args, "You must provdide an argument table when creating UpdatePatchBaselineResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdatePatchBaselineResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["BaselineId"] = args["BaselineId"],
 		["Name"] = args["Name"],
 		["RejectedPatches"] = args["RejectedPatches"],
@@ -2919,8 +3860,13 @@ function M.UpdatePatchBaselineResult(args)
 		["ApprovedPatches"] = args["ApprovedPatches"],
 		["Description"] = args["Description"],
 	}
-	asserts.AssertUpdatePatchBaselineResult(t)
-	return t
+	asserts.AssertUpdatePatchBaselineResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeEffectivePatchesForPatchBaselineResult = { ["NextToken"] = true, ["EffectivePatches"] = true, nil }
@@ -2943,13 +3889,24 @@ end
 -- * EffectivePatches [EffectivePatchList] <p>An array of patches and patch status.</p>
 -- @return DescribeEffectivePatchesForPatchBaselineResult structure as a key-value pair table
 function M.DescribeEffectivePatchesForPatchBaselineResult(args)
-	assert(args, "You must provdide an argument table when creating DescribeEffectivePatchesForPatchBaselineResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeEffectivePatchesForPatchBaselineResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NextToken"] = args["NextToken"],
 		["EffectivePatches"] = args["EffectivePatches"],
 	}
-	asserts.AssertDescribeEffectivePatchesForPatchBaselineResult(t)
-	return t
+	asserts.AssertDescribeEffectivePatchesForPatchBaselineResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DocumentAlreadyExists = { ["Message"] = true, nil }
@@ -2970,12 +3927,23 @@ end
 -- * Message [String] 
 -- @return DocumentAlreadyExists structure as a key-value pair table
 function M.DocumentAlreadyExists(args)
-	assert(args, "You must provdide an argument table when creating DocumentAlreadyExists")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DocumentAlreadyExists")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Message"] = args["Message"],
 	}
-	asserts.AssertDocumentAlreadyExists(t)
-	return t
+	asserts.AssertDocumentAlreadyExists(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteMaintenanceWindowRequest = { ["WindowId"] = true, nil }
@@ -2998,12 +3966,23 @@ end
 -- Required key: WindowId
 -- @return DeleteMaintenanceWindowRequest structure as a key-value pair table
 function M.DeleteMaintenanceWindowRequest(args)
-	assert(args, "You must provdide an argument table when creating DeleteMaintenanceWindowRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteMaintenanceWindowRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["WindowId"] = args["WindowId"],
 	}
-	asserts.AssertDeleteMaintenanceWindowRequest(t)
-	return t
+	asserts.AssertDeleteMaintenanceWindowRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListAssociationsRequest = { ["AssociationFilterList"] = true, ["NextToken"] = true, ["MaxResults"] = true, nil }
@@ -3028,14 +4007,25 @@ end
 -- * MaxResults [MaxResults] <p>The maximum number of items to return for this call. The call also returns a token that you can specify in a subsequent call to get the next set of results.</p>
 -- @return ListAssociationsRequest structure as a key-value pair table
 function M.ListAssociationsRequest(args)
-	assert(args, "You must provdide an argument table when creating ListAssociationsRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListAssociationsRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["AssociationFilterList"] = args["AssociationFilterList"],
 		["NextToken"] = args["NextToken"],
 		["MaxResults"] = args["MaxResults"],
 	}
-	asserts.AssertListAssociationsRequest(t)
-	return t
+	asserts.AssertListAssociationsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeParametersRequest = { ["ParameterFilters"] = true, ["NextToken"] = true, ["MaxResults"] = true, ["Filters"] = true, nil }
@@ -3062,15 +4052,26 @@ end
 -- * Filters [ParametersFilterList] <p>One or more filters. Use a filter to return a more specific list of results.</p>
 -- @return DescribeParametersRequest structure as a key-value pair table
 function M.DescribeParametersRequest(args)
-	assert(args, "You must provdide an argument table when creating DescribeParametersRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeParametersRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ParameterFilters"] = args["ParameterFilters"],
 		["NextToken"] = args["NextToken"],
 		["MaxResults"] = args["MaxResults"],
 		["Filters"] = args["Filters"],
 	}
-	asserts.AssertDescribeParametersRequest(t)
-	return t
+	asserts.AssertDescribeParametersRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteParametersResult = { ["InvalidParameters"] = true, ["DeletedParameters"] = true, nil }
@@ -3093,13 +4094,24 @@ end
 -- * DeletedParameters [ParameterNameList] <p>The names of the deleted parameters.</p>
 -- @return DeleteParametersResult structure as a key-value pair table
 function M.DeleteParametersResult(args)
-	assert(args, "You must provdide an argument table when creating DeleteParametersResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteParametersResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["InvalidParameters"] = args["InvalidParameters"],
 		["DeletedParameters"] = args["DeletedParameters"],
 	}
-	asserts.AssertDeleteParametersResult(t)
-	return t
+	asserts.AssertDeleteParametersResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AssociationStatus = { ["Date"] = true, ["AdditionalInfo"] = true, ["Message"] = true, ["Name"] = true, nil }
@@ -3132,15 +4144,26 @@ end
 -- Required key: Message
 -- @return AssociationStatus structure as a key-value pair table
 function M.AssociationStatus(args)
-	assert(args, "You must provdide an argument table when creating AssociationStatus")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AssociationStatus")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Date"] = args["Date"],
 		["AdditionalInfo"] = args["AdditionalInfo"],
 		["Message"] = args["Message"],
 		["Name"] = args["Name"],
 	}
-	asserts.AssertAssociationStatus(t)
-	return t
+	asserts.AssertAssociationStatus(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InstanceInformationFilter = { ["valueSet"] = true, ["key"] = true, nil }
@@ -3167,13 +4190,24 @@ end
 -- Required key: valueSet
 -- @return InstanceInformationFilter structure as a key-value pair table
 function M.InstanceInformationFilter(args)
-	assert(args, "You must provdide an argument table when creating InstanceInformationFilter")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InstanceInformationFilter")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["valueSet"] = args["valueSet"],
 		["key"] = args["key"],
 	}
-	asserts.AssertInstanceInformationFilter(t)
-	return t
+	asserts.AssertInstanceInformationFilter(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeMaintenanceWindowTargetsRequest = { ["WindowId"] = true, ["NextToken"] = true, ["MaxResults"] = true, ["Filters"] = true, nil }
@@ -3202,15 +4236,26 @@ end
 -- Required key: WindowId
 -- @return DescribeMaintenanceWindowTargetsRequest structure as a key-value pair table
 function M.DescribeMaintenanceWindowTargetsRequest(args)
-	assert(args, "You must provdide an argument table when creating DescribeMaintenanceWindowTargetsRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeMaintenanceWindowTargetsRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["WindowId"] = args["WindowId"],
 		["NextToken"] = args["NextToken"],
 		["MaxResults"] = args["MaxResults"],
 		["Filters"] = args["Filters"],
 	}
-	asserts.AssertDescribeMaintenanceWindowTargetsRequest(t)
-	return t
+	asserts.AssertDescribeMaintenanceWindowTargetsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateAssociationBatchRequestEntry = { ["ScheduleExpression"] = true, ["OutputLocation"] = true, ["Name"] = true, ["Parameters"] = true, ["InstanceId"] = true, ["DocumentVersion"] = true, ["Targets"] = true, nil }
@@ -3245,8 +4290,14 @@ end
 -- Required key: Name
 -- @return CreateAssociationBatchRequestEntry structure as a key-value pair table
 function M.CreateAssociationBatchRequestEntry(args)
-	assert(args, "You must provdide an argument table when creating CreateAssociationBatchRequestEntry")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateAssociationBatchRequestEntry")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ScheduleExpression"] = args["ScheduleExpression"],
 		["OutputLocation"] = args["OutputLocation"],
 		["Name"] = args["Name"],
@@ -3255,8 +4306,13 @@ function M.CreateAssociationBatchRequestEntry(args)
 		["DocumentVersion"] = args["DocumentVersion"],
 		["Targets"] = args["Targets"],
 	}
-	asserts.AssertCreateAssociationBatchRequestEntry(t)
-	return t
+	asserts.AssertCreateAssociationBatchRequestEntry(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListTagsForResourceRequest = { ["ResourceType"] = true, ["ResourceId"] = true, nil }
@@ -3283,13 +4339,24 @@ end
 -- Required key: ResourceId
 -- @return ListTagsForResourceRequest structure as a key-value pair table
 function M.ListTagsForResourceRequest(args)
-	assert(args, "You must provdide an argument table when creating ListTagsForResourceRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListTagsForResourceRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ResourceType"] = args["ResourceType"],
 		["ResourceId"] = args["ResourceId"],
 	}
-	asserts.AssertListTagsForResourceRequest(t)
-	return t
+	asserts.AssertListTagsForResourceRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Parameter = { ["Type"] = true, ["Name"] = true, ["Value"] = true, nil }
@@ -3314,14 +4381,25 @@ end
 -- * Value [PSParameterValue] <p>The parameter value.</p>
 -- @return Parameter structure as a key-value pair table
 function M.Parameter(args)
-	assert(args, "You must provdide an argument table when creating Parameter")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Parameter")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Type"] = args["Type"],
 		["Name"] = args["Name"],
 		["Value"] = args["Value"],
 	}
-	asserts.AssertParameter(t)
-	return t
+	asserts.AssertParameter(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidPluginName = { nil }
@@ -3340,11 +4418,22 @@ end
 -- Valid keys:
 -- @return InvalidPluginName structure as a key-value pair table
 function M.InvalidPluginName(args)
-	assert(args, "You must provdide an argument table when creating InvalidPluginName")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidPluginName")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertInvalidPluginName(t)
-	return t
+	asserts.AssertInvalidPluginName(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetParametersByPathResult = { ["NextToken"] = true, ["Parameters"] = true, nil }
@@ -3367,13 +4456,24 @@ end
 -- * Parameters [ParameterList] <p>A list of parameters found in the specified hierarchy.</p>
 -- @return GetParametersByPathResult structure as a key-value pair table
 function M.GetParametersByPathResult(args)
-	assert(args, "You must provdide an argument table when creating GetParametersByPathResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetParametersByPathResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NextToken"] = args["NextToken"],
 		["Parameters"] = args["Parameters"],
 	}
-	asserts.AssertGetParametersByPathResult(t)
-	return t
+	asserts.AssertGetParametersByPathResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdateDocumentDefaultVersionResult = { ["Description"] = true, nil }
@@ -3394,12 +4494,23 @@ end
 -- * Description [DocumentDefaultVersionDescription] <p>The description of a custom document that you want to set as the default version.</p>
 -- @return UpdateDocumentDefaultVersionResult structure as a key-value pair table
 function M.UpdateDocumentDefaultVersionResult(args)
-	assert(args, "You must provdide an argument table when creating UpdateDocumentDefaultVersionResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateDocumentDefaultVersionResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Description"] = args["Description"],
 	}
-	asserts.AssertUpdateDocumentDefaultVersionResult(t)
-	return t
+	asserts.AssertUpdateDocumentDefaultVersionResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetParametersByPathRequest = { ["Recursive"] = true, ["ParameterFilters"] = true, ["WithDecryption"] = true, ["MaxResults"] = true, ["Path"] = true, ["NextToken"] = true, nil }
@@ -3432,8 +4543,14 @@ end
 -- Required key: Path
 -- @return GetParametersByPathRequest structure as a key-value pair table
 function M.GetParametersByPathRequest(args)
-	assert(args, "You must provdide an argument table when creating GetParametersByPathRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetParametersByPathRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Recursive"] = args["Recursive"],
 		["ParameterFilters"] = args["ParameterFilters"],
 		["WithDecryption"] = args["WithDecryption"],
@@ -3441,8 +4558,13 @@ function M.GetParametersByPathRequest(args)
 		["Path"] = args["Path"],
 		["NextToken"] = args["NextToken"],
 	}
-	asserts.AssertGetParametersByPathRequest(t)
-	return t
+	asserts.AssertGetParametersByPathRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdatePatchBaselineRequest = { ["BaselineId"] = true, ["Name"] = true, ["RejectedPatches"] = true, ["GlobalFilters"] = true, ["ApprovalRules"] = true, ["ApprovedPatches"] = true, ["Description"] = true, nil }
@@ -3477,8 +4599,14 @@ end
 -- Required key: BaselineId
 -- @return UpdatePatchBaselineRequest structure as a key-value pair table
 function M.UpdatePatchBaselineRequest(args)
-	assert(args, "You must provdide an argument table when creating UpdatePatchBaselineRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdatePatchBaselineRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["BaselineId"] = args["BaselineId"],
 		["Name"] = args["Name"],
 		["RejectedPatches"] = args["RejectedPatches"],
@@ -3487,8 +4615,13 @@ function M.UpdatePatchBaselineRequest(args)
 		["ApprovedPatches"] = args["ApprovedPatches"],
 		["Description"] = args["Description"],
 	}
-	asserts.AssertUpdatePatchBaselineRequest(t)
-	return t
+	asserts.AssertUpdatePatchBaselineRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Tag = { ["Value"] = true, ["Key"] = true, nil }
@@ -3515,13 +4648,24 @@ end
 -- Required key: Value
 -- @return Tag structure as a key-value pair table
 function M.Tag(args)
-	assert(args, "You must provdide an argument table when creating Tag")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Tag")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Value"] = args["Value"],
 		["Key"] = args["Key"],
 	}
-	asserts.AssertTag(t)
-	return t
+	asserts.AssertTag(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.PatchRuleGroup = { ["PatchRules"] = true, nil }
@@ -3544,12 +4688,23 @@ end
 -- Required key: PatchRules
 -- @return PatchRuleGroup structure as a key-value pair table
 function M.PatchRuleGroup(args)
-	assert(args, "You must provdide an argument table when creating PatchRuleGroup")
-	local t = { 
+	assert(args, "You must provide an argument table when creating PatchRuleGroup")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["PatchRules"] = args["PatchRules"],
 	}
-	asserts.AssertPatchRuleGroup(t)
-	return t
+	asserts.AssertPatchRuleGroup(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.FailureDetails = { ["FailureStage"] = true, ["FailureType"] = true, ["Details"] = true, nil }
@@ -3574,14 +4729,25 @@ end
 -- * Details [AutomationParameterMap] <p>Detailed information about the Automation step failure.</p>
 -- @return FailureDetails structure as a key-value pair table
 function M.FailureDetails(args)
-	assert(args, "You must provdide an argument table when creating FailureDetails")
-	local t = { 
+	assert(args, "You must provide an argument table when creating FailureDetails")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["FailureStage"] = args["FailureStage"],
 		["FailureType"] = args["FailureType"],
 		["Details"] = args["Details"],
 	}
-	asserts.AssertFailureDetails(t)
-	return t
+	asserts.AssertFailureDetails(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UnsupportedParameterType = { ["message"] = true, nil }
@@ -3602,12 +4768,23 @@ end
 -- * message [String] 
 -- @return UnsupportedParameterType structure as a key-value pair table
 function M.UnsupportedParameterType(args)
-	assert(args, "You must provdide an argument table when creating UnsupportedParameterType")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UnsupportedParameterType")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertUnsupportedParameterType(t)
-	return t
+	asserts.AssertUnsupportedParameterType(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListCommandInvocationsResult = { ["NextToken"] = true, ["CommandInvocations"] = true, nil }
@@ -3630,13 +4807,24 @@ end
 -- * CommandInvocations [CommandInvocationList] <p>(Optional) A list of all invocations. </p>
 -- @return ListCommandInvocationsResult structure as a key-value pair table
 function M.ListCommandInvocationsResult(args)
-	assert(args, "You must provdide an argument table when creating ListCommandInvocationsResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListCommandInvocationsResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NextToken"] = args["NextToken"],
 		["CommandInvocations"] = args["CommandInvocations"],
 	}
-	asserts.AssertListCommandInvocationsResult(t)
-	return t
+	asserts.AssertListCommandInvocationsResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeInstancePatchesResult = { ["NextToken"] = true, ["Patches"] = true, nil }
@@ -3659,13 +4847,24 @@ end
 -- * Patches [PatchComplianceDataList] <p>Each entry in the array is a structure containing:</p> <p>Title (string)</p> <p>KBId (string)</p> <p>Classification (string)</p> <p>Severity (string)</p> <p>State (string: "INSTALLED", "INSTALLED OTHER", "MISSING", "NOT APPLICABLE", "FAILED")</p> <p>InstalledTime (DateTime)</p> <p>InstalledBy (string)</p>
 -- @return DescribeInstancePatchesResult structure as a key-value pair table
 function M.DescribeInstancePatchesResult(args)
-	assert(args, "You must provdide an argument table when creating DescribeInstancePatchesResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeInstancePatchesResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NextToken"] = args["NextToken"],
 		["Patches"] = args["Patches"],
 	}
-	asserts.AssertDescribeInstancePatchesResult(t)
-	return t
+	asserts.AssertDescribeInstancePatchesResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetPatchBaselineForPatchGroupRequest = { ["PatchGroup"] = true, nil }
@@ -3688,12 +4887,23 @@ end
 -- Required key: PatchGroup
 -- @return GetPatchBaselineForPatchGroupRequest structure as a key-value pair table
 function M.GetPatchBaselineForPatchGroupRequest(args)
-	assert(args, "You must provdide an argument table when creating GetPatchBaselineForPatchGroupRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetPatchBaselineForPatchGroupRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["PatchGroup"] = args["PatchGroup"],
 	}
-	asserts.AssertGetPatchBaselineForPatchGroupRequest(t)
-	return t
+	asserts.AssertGetPatchBaselineForPatchGroupRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ResourceInUseException = { ["Message"] = true, nil }
@@ -3714,12 +4924,23 @@ end
 -- * Message [String] 
 -- @return ResourceInUseException structure as a key-value pair table
 function M.ResourceInUseException(args)
-	assert(args, "You must provdide an argument table when creating ResourceInUseException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ResourceInUseException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Message"] = args["Message"],
 	}
-	asserts.AssertResourceInUseException(t)
-	return t
+	asserts.AssertResourceInUseException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeMaintenanceWindowsResult = { ["WindowIdentities"] = true, ["NextToken"] = true, nil }
@@ -3742,13 +4963,24 @@ end
 -- * NextToken [NextToken] <p>The token to use when requesting the next set of items. If there are no additional items to return, the string is empty.</p>
 -- @return DescribeMaintenanceWindowsResult structure as a key-value pair table
 function M.DescribeMaintenanceWindowsResult(args)
-	assert(args, "You must provdide an argument table when creating DescribeMaintenanceWindowsResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeMaintenanceWindowsResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["WindowIdentities"] = args["WindowIdentities"],
 		["NextToken"] = args["NextToken"],
 	}
-	asserts.AssertDescribeMaintenanceWindowsResult(t)
-	return t
+	asserts.AssertDescribeMaintenanceWindowsResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeletePatchBaselineRequest = { ["BaselineId"] = true, nil }
@@ -3771,12 +5003,23 @@ end
 -- Required key: BaselineId
 -- @return DeletePatchBaselineRequest structure as a key-value pair table
 function M.DeletePatchBaselineRequest(args)
-	assert(args, "You must provdide an argument table when creating DeletePatchBaselineRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeletePatchBaselineRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["BaselineId"] = args["BaselineId"],
 	}
-	asserts.AssertDeletePatchBaselineRequest(t)
-	return t
+	asserts.AssertDeletePatchBaselineRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateAssociationBatchRequest = { ["Entries"] = true, nil }
@@ -3799,12 +5042,23 @@ end
 -- Required key: Entries
 -- @return CreateAssociationBatchRequest structure as a key-value pair table
 function M.CreateAssociationBatchRequest(args)
-	assert(args, "You must provdide an argument table when creating CreateAssociationBatchRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateAssociationBatchRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Entries"] = args["Entries"],
 	}
-	asserts.AssertCreateAssociationBatchRequest(t)
-	return t
+	asserts.AssertCreateAssociationBatchRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeMaintenanceWindowExecutionTasksRequest = { ["NextToken"] = true, ["WindowExecutionId"] = true, ["MaxResults"] = true, ["Filters"] = true, nil }
@@ -3833,15 +5087,26 @@ end
 -- Required key: WindowExecutionId
 -- @return DescribeMaintenanceWindowExecutionTasksRequest structure as a key-value pair table
 function M.DescribeMaintenanceWindowExecutionTasksRequest(args)
-	assert(args, "You must provdide an argument table when creating DescribeMaintenanceWindowExecutionTasksRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeMaintenanceWindowExecutionTasksRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NextToken"] = args["NextToken"],
 		["WindowExecutionId"] = args["WindowExecutionId"],
 		["MaxResults"] = args["MaxResults"],
 		["Filters"] = args["Filters"],
 	}
-	asserts.AssertDescribeMaintenanceWindowExecutionTasksRequest(t)
-	return t
+	asserts.AssertDescribeMaintenanceWindowExecutionTasksRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AutomationExecution = { ["AutomationExecutionStatus"] = true, ["Parameters"] = true, ["Outputs"] = true, ["DocumentName"] = true, ["AutomationExecutionId"] = true, ["FailureMessage"] = true, ["ExecutionEndTime"] = true, ["DocumentVersion"] = true, ["ExecutionStartTime"] = true, ["StepExecutions"] = true, nil }
@@ -3880,8 +5145,14 @@ end
 -- * StepExecutions [StepExecutionList] <p>A list of details about the current state of all steps that comprise an execution. An Automation document contains a list of steps that are executed in order.</p>
 -- @return AutomationExecution structure as a key-value pair table
 function M.AutomationExecution(args)
-	assert(args, "You must provdide an argument table when creating AutomationExecution")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AutomationExecution")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["AutomationExecutionStatus"] = args["AutomationExecutionStatus"],
 		["Parameters"] = args["Parameters"],
 		["Outputs"] = args["Outputs"],
@@ -3893,8 +5164,13 @@ function M.AutomationExecution(args)
 		["ExecutionStartTime"] = args["ExecutionStartTime"],
 		["StepExecutions"] = args["StepExecutions"],
 	}
-	asserts.AssertAutomationExecution(t)
-	return t
+	asserts.AssertAutomationExecution(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribePatchGroupsRequest = { ["NextToken"] = true, ["MaxResults"] = true, nil }
@@ -3917,13 +5193,24 @@ end
 -- * MaxResults [PatchBaselineMaxResults] <p>The maximum number of patch groups to return (per page).</p>
 -- @return DescribePatchGroupsRequest structure as a key-value pair table
 function M.DescribePatchGroupsRequest(args)
-	assert(args, "You must provdide an argument table when creating DescribePatchGroupsRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribePatchGroupsRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NextToken"] = args["NextToken"],
 		["MaxResults"] = args["MaxResults"],
 	}
-	asserts.AssertDescribePatchGroupsRequest(t)
-	return t
+	asserts.AssertDescribePatchGroupsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.HierarchyLevelLimitExceededException = { ["message"] = true, nil }
@@ -3944,12 +5231,23 @@ end
 -- * message [String] <p>A hierarchy can have a maximum of five levels. For example:</p> <p>/Finance/Prod/IAD/OS/WinServ2016/license15</p> <p>For more information, see <a href="http://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-paramstore-working-path.html">Develop a Parameter Hierarchy</a>. </p>
 -- @return HierarchyLevelLimitExceededException structure as a key-value pair table
 function M.HierarchyLevelLimitExceededException(args)
-	assert(args, "You must provdide an argument table when creating HierarchyLevelLimitExceededException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating HierarchyLevelLimitExceededException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertHierarchyLevelLimitExceededException(t)
-	return t
+	asserts.AssertHierarchyLevelLimitExceededException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AlreadyExistsException = { ["Message"] = true, nil }
@@ -3970,12 +5268,23 @@ end
 -- * Message [String] 
 -- @return AlreadyExistsException structure as a key-value pair table
 function M.AlreadyExistsException(args)
-	assert(args, "You must provdide an argument table when creating AlreadyExistsException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AlreadyExistsException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Message"] = args["Message"],
 	}
-	asserts.AssertAlreadyExistsException(t)
-	return t
+	asserts.AssertAlreadyExistsException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidSchedule = { ["Message"] = true, nil }
@@ -3996,12 +5305,23 @@ end
 -- * Message [String] 
 -- @return InvalidSchedule structure as a key-value pair table
 function M.InvalidSchedule(args)
-	assert(args, "You must provdide an argument table when creating InvalidSchedule")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidSchedule")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Message"] = args["Message"],
 	}
-	asserts.AssertInvalidSchedule(t)
-	return t
+	asserts.AssertInvalidSchedule(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidActivation = { ["Message"] = true, nil }
@@ -4022,12 +5342,23 @@ end
 -- * Message [String] 
 -- @return InvalidActivation structure as a key-value pair table
 function M.InvalidActivation(args)
-	assert(args, "You must provdide an argument table when creating InvalidActivation")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidActivation")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Message"] = args["Message"],
 	}
-	asserts.AssertInvalidActivation(t)
-	return t
+	asserts.AssertInvalidActivation(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeMaintenanceWindowExecutionsRequest = { ["WindowId"] = true, ["NextToken"] = true, ["MaxResults"] = true, ["Filters"] = true, nil }
@@ -4056,15 +5387,26 @@ end
 -- Required key: WindowId
 -- @return DescribeMaintenanceWindowExecutionsRequest structure as a key-value pair table
 function M.DescribeMaintenanceWindowExecutionsRequest(args)
-	assert(args, "You must provdide an argument table when creating DescribeMaintenanceWindowExecutionsRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeMaintenanceWindowExecutionsRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["WindowId"] = args["WindowId"],
 		["NextToken"] = args["NextToken"],
 		["MaxResults"] = args["MaxResults"],
 		["Filters"] = args["Filters"],
 	}
-	asserts.AssertDescribeMaintenanceWindowExecutionsRequest(t)
-	return t
+	asserts.AssertDescribeMaintenanceWindowExecutionsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AutomationExecutionMetadata = { ["AutomationExecutionStatus"] = true, ["Outputs"] = true, ["DocumentName"] = true, ["AutomationExecutionId"] = true, ["ExecutionEndTime"] = true, ["DocumentVersion"] = true, ["ExecutionStartTime"] = true, ["ExecutedBy"] = true, ["LogFile"] = true, nil }
@@ -4101,8 +5443,14 @@ end
 -- * LogFile [String] <p>An Amazon S3 bucket where execution information is stored.</p>
 -- @return AutomationExecutionMetadata structure as a key-value pair table
 function M.AutomationExecutionMetadata(args)
-	assert(args, "You must provdide an argument table when creating AutomationExecutionMetadata")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AutomationExecutionMetadata")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["AutomationExecutionStatus"] = args["AutomationExecutionStatus"],
 		["Outputs"] = args["Outputs"],
 		["DocumentName"] = args["DocumentName"],
@@ -4113,8 +5461,13 @@ function M.AutomationExecutionMetadata(args)
 		["ExecutedBy"] = args["ExecutedBy"],
 		["LogFile"] = args["LogFile"],
 	}
-	asserts.AssertAutomationExecutionMetadata(t)
-	return t
+	asserts.AssertAutomationExecutionMetadata(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InstanceInformation = { ["IsLatestVersion"] = true, ["IamRole"] = true, ["ComputerName"] = true, ["AssociationOverview"] = true, ["PingStatus"] = true, ["Name"] = true, ["LastSuccessfulAssociationExecutionDate"] = true, ["InstanceId"] = true, ["IPAddress"] = true, ["AssociationStatus"] = true, ["LastAssociationExecutionDate"] = true, ["ResourceType"] = true, ["ActivationId"] = true, ["AgentVersion"] = true, ["PlatformVersion"] = true, ["RegistrationDate"] = true, ["PlatformName"] = true, ["PlatformType"] = true, ["LastPingDateTime"] = true, nil }
@@ -4171,8 +5524,14 @@ end
 -- * LastPingDateTime [DateTime] <p>The date and time when agent last pinged Systems Manager service. </p>
 -- @return InstanceInformation structure as a key-value pair table
 function M.InstanceInformation(args)
-	assert(args, "You must provdide an argument table when creating InstanceInformation")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InstanceInformation")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["IsLatestVersion"] = args["IsLatestVersion"],
 		["IamRole"] = args["IamRole"],
 		["ComputerName"] = args["ComputerName"],
@@ -4193,8 +5552,13 @@ function M.InstanceInformation(args)
 		["PlatformType"] = args["PlatformType"],
 		["LastPingDateTime"] = args["LastPingDateTime"],
 	}
-	asserts.AssertInstanceInformation(t)
-	return t
+	asserts.AssertInstanceInformation(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidRole = { ["Message"] = true, nil }
@@ -4215,12 +5579,23 @@ end
 -- * Message [String] 
 -- @return InvalidRole structure as a key-value pair table
 function M.InvalidRole(args)
-	assert(args, "You must provdide an argument table when creating InvalidRole")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidRole")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Message"] = args["Message"],
 	}
-	asserts.AssertInvalidRole(t)
-	return t
+	asserts.AssertInvalidRole(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteActivationRequest = { ["ActivationId"] = true, nil }
@@ -4243,12 +5618,23 @@ end
 -- Required key: ActivationId
 -- @return DeleteActivationRequest structure as a key-value pair table
 function M.DeleteActivationRequest(args)
-	assert(args, "You must provdide an argument table when creating DeleteActivationRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteActivationRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ActivationId"] = args["ActivationId"],
 	}
-	asserts.AssertDeleteActivationRequest(t)
-	return t
+	asserts.AssertDeleteActivationRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidInstanceId = { ["Message"] = true, nil }
@@ -4269,12 +5655,23 @@ end
 -- * Message [String] 
 -- @return InvalidInstanceId structure as a key-value pair table
 function M.InvalidInstanceId(args)
-	assert(args, "You must provdide an argument table when creating InvalidInstanceId")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidInstanceId")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Message"] = args["Message"],
 	}
-	asserts.AssertInvalidInstanceId(t)
-	return t
+	asserts.AssertInvalidInstanceId(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InventoryItemSchema = { ["TypeName"] = true, ["Version"] = true, ["Attributes"] = true, nil }
@@ -4303,14 +5700,25 @@ end
 -- Required key: Attributes
 -- @return InventoryItemSchema structure as a key-value pair table
 function M.InventoryItemSchema(args)
-	assert(args, "You must provdide an argument table when creating InventoryItemSchema")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InventoryItemSchema")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["TypeName"] = args["TypeName"],
 		["Version"] = args["Version"],
 		["Attributes"] = args["Attributes"],
 	}
-	asserts.AssertInventoryItemSchema(t)
-	return t
+	asserts.AssertInventoryItemSchema(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteMaintenanceWindowResult = { ["WindowId"] = true, nil }
@@ -4331,12 +5739,23 @@ end
 -- * WindowId [MaintenanceWindowId] <p>The ID of the deleted Maintenance Window.</p>
 -- @return DeleteMaintenanceWindowResult structure as a key-value pair table
 function M.DeleteMaintenanceWindowResult(args)
-	assert(args, "You must provdide an argument table when creating DeleteMaintenanceWindowResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteMaintenanceWindowResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["WindowId"] = args["WindowId"],
 	}
-	asserts.AssertDeleteMaintenanceWindowResult(t)
-	return t
+	asserts.AssertDeleteMaintenanceWindowResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeInstancePatchStatesResult = { ["InstancePatchStates"] = true, ["NextToken"] = true, nil }
@@ -4359,13 +5778,24 @@ end
 -- * NextToken [NextToken] <p>The token to use when requesting the next set of items. If there are no additional items to return, the string is empty.</p>
 -- @return DescribeInstancePatchStatesResult structure as a key-value pair table
 function M.DescribeInstancePatchStatesResult(args)
-	assert(args, "You must provdide an argument table when creating DescribeInstancePatchStatesResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeInstancePatchStatesResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["InstancePatchStates"] = args["InstancePatchStates"],
 		["NextToken"] = args["NextToken"],
 	}
-	asserts.AssertDescribeInstancePatchStatesResult(t)
-	return t
+	asserts.AssertDescribeInstancePatchStatesResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Association = { ["ScheduleExpression"] = true, ["Name"] = true, ["LastExecutionDate"] = true, ["InstanceId"] = true, ["Overview"] = true, ["AssociationId"] = true, ["DocumentVersion"] = true, ["Targets"] = true, nil }
@@ -4400,8 +5830,14 @@ end
 -- * Targets [Targets] <p>The instances targeted by the request to create an association. </p>
 -- @return Association structure as a key-value pair table
 function M.Association(args)
-	assert(args, "You must provdide an argument table when creating Association")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Association")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ScheduleExpression"] = args["ScheduleExpression"],
 		["Name"] = args["Name"],
 		["LastExecutionDate"] = args["LastExecutionDate"],
@@ -4411,8 +5847,13 @@ function M.Association(args)
 		["DocumentVersion"] = args["DocumentVersion"],
 		["Targets"] = args["Targets"],
 	}
-	asserts.AssertAssociation(t)
-	return t
+	asserts.AssertAssociation(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeEffectiveInstanceAssociationsRequest = { ["InstanceId"] = true, ["NextToken"] = true, ["MaxResults"] = true, nil }
@@ -4439,14 +5880,25 @@ end
 -- Required key: InstanceId
 -- @return DescribeEffectiveInstanceAssociationsRequest structure as a key-value pair table
 function M.DescribeEffectiveInstanceAssociationsRequest(args)
-	assert(args, "You must provdide an argument table when creating DescribeEffectiveInstanceAssociationsRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeEffectiveInstanceAssociationsRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["InstanceId"] = args["InstanceId"],
 		["NextToken"] = args["NextToken"],
 		["MaxResults"] = args["MaxResults"],
 	}
-	asserts.AssertDescribeEffectiveInstanceAssociationsRequest(t)
-	return t
+	asserts.AssertDescribeEffectiveInstanceAssociationsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetParameterHistoryResult = { ["NextToken"] = true, ["Parameters"] = true, nil }
@@ -4469,13 +5921,24 @@ end
 -- * Parameters [ParameterHistoryList] <p>A list of parameters returned by the request.</p>
 -- @return GetParameterHistoryResult structure as a key-value pair table
 function M.GetParameterHistoryResult(args)
-	assert(args, "You must provdide an argument table when creating GetParameterHistoryResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetParameterHistoryResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NextToken"] = args["NextToken"],
 		["Parameters"] = args["Parameters"],
 	}
-	asserts.AssertGetParameterHistoryResult(t)
-	return t
+	asserts.AssertGetParameterHistoryResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.LoggingInfo = { ["S3KeyPrefix"] = true, ["S3BucketName"] = true, ["S3Region"] = true, nil }
@@ -4504,14 +5967,25 @@ end
 -- Required key: S3Region
 -- @return LoggingInfo structure as a key-value pair table
 function M.LoggingInfo(args)
-	assert(args, "You must provdide an argument table when creating LoggingInfo")
-	local t = { 
+	assert(args, "You must provide an argument table when creating LoggingInfo")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["S3KeyPrefix"] = args["S3KeyPrefix"],
 		["S3BucketName"] = args["S3BucketName"],
 		["S3Region"] = args["S3Region"],
 	}
-	asserts.AssertLoggingInfo(t)
-	return t
+	asserts.AssertLoggingInfo(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListInventoryEntriesResult = { ["InstanceId"] = true, ["TypeName"] = true, ["Entries"] = true, ["SchemaVersion"] = true, ["NextToken"] = true, ["CaptureTime"] = true, nil }
@@ -4542,8 +6016,14 @@ end
 -- * CaptureTime [InventoryItemCaptureTime] <p>The time that inventory information was collected for the instance(s).</p>
 -- @return ListInventoryEntriesResult structure as a key-value pair table
 function M.ListInventoryEntriesResult(args)
-	assert(args, "You must provdide an argument table when creating ListInventoryEntriesResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListInventoryEntriesResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["InstanceId"] = args["InstanceId"],
 		["TypeName"] = args["TypeName"],
 		["Entries"] = args["Entries"],
@@ -4551,8 +6031,13 @@ function M.ListInventoryEntriesResult(args)
 		["NextToken"] = args["NextToken"],
 		["CaptureTime"] = args["CaptureTime"],
 	}
-	asserts.AssertListInventoryEntriesResult(t)
-	return t
+	asserts.AssertListInventoryEntriesResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeregisterManagedInstanceResult = { nil }
@@ -4571,11 +6056,22 @@ end
 -- Valid keys:
 -- @return DeregisterManagedInstanceResult structure as a key-value pair table
 function M.DeregisterManagedInstanceResult(args)
-	assert(args, "You must provdide an argument table when creating DeregisterManagedInstanceResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeregisterManagedInstanceResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertDeregisterManagedInstanceResult(t)
-	return t
+	asserts.AssertDeregisterManagedInstanceResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeAutomationExecutionsResult = { ["NextToken"] = true, ["AutomationExecutionMetadataList"] = true, nil }
@@ -4598,13 +6094,24 @@ end
 -- * AutomationExecutionMetadataList [AutomationExecutionMetadataList] <p>The list of details about each automation execution which has occurred which matches the filter specification, if any.</p>
 -- @return DescribeAutomationExecutionsResult structure as a key-value pair table
 function M.DescribeAutomationExecutionsResult(args)
-	assert(args, "You must provdide an argument table when creating DescribeAutomationExecutionsResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeAutomationExecutionsResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NextToken"] = args["NextToken"],
 		["AutomationExecutionMetadataList"] = args["AutomationExecutionMetadataList"],
 	}
-	asserts.AssertDescribeAutomationExecutionsResult(t)
-	return t
+	asserts.AssertDescribeAutomationExecutionsResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeregisterTaskFromMaintenanceWindowRequest = { ["WindowTaskId"] = true, ["WindowId"] = true, nil }
@@ -4631,13 +6138,24 @@ end
 -- Required key: WindowTaskId
 -- @return DeregisterTaskFromMaintenanceWindowRequest structure as a key-value pair table
 function M.DeregisterTaskFromMaintenanceWindowRequest(args)
-	assert(args, "You must provdide an argument table when creating DeregisterTaskFromMaintenanceWindowRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeregisterTaskFromMaintenanceWindowRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["WindowTaskId"] = args["WindowTaskId"],
 		["WindowId"] = args["WindowId"],
 	}
-	asserts.AssertDeregisterTaskFromMaintenanceWindowRequest(t)
-	return t
+	asserts.AssertDeregisterTaskFromMaintenanceWindowRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidPermissionType = { ["Message"] = true, nil }
@@ -4658,12 +6176,23 @@ end
 -- * Message [String] 
 -- @return InvalidPermissionType structure as a key-value pair table
 function M.InvalidPermissionType(args)
-	assert(args, "You must provdide an argument table when creating InvalidPermissionType")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidPermissionType")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Message"] = args["Message"],
 	}
-	asserts.AssertInvalidPermissionType(t)
-	return t
+	asserts.AssertInvalidPermissionType(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CancelCommandResult = { nil }
@@ -4682,11 +6211,22 @@ end
 -- Valid keys:
 -- @return CancelCommandResult structure as a key-value pair table
 function M.CancelCommandResult(args)
-	assert(args, "You must provdide an argument table when creating CancelCommandResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CancelCommandResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertCancelCommandResult(t)
-	return t
+	asserts.AssertCancelCommandResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetAutomationExecutionRequest = { ["AutomationExecutionId"] = true, nil }
@@ -4709,12 +6249,23 @@ end
 -- Required key: AutomationExecutionId
 -- @return GetAutomationExecutionRequest structure as a key-value pair table
 function M.GetAutomationExecutionRequest(args)
-	assert(args, "You must provdide an argument table when creating GetAutomationExecutionRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetAutomationExecutionRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["AutomationExecutionId"] = args["AutomationExecutionId"],
 	}
-	asserts.AssertGetAutomationExecutionRequest(t)
-	return t
+	asserts.AssertGetAutomationExecutionRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.RegisterTaskWithMaintenanceWindowResult = { ["WindowTaskId"] = true, nil }
@@ -4735,12 +6286,23 @@ end
 -- * WindowTaskId [MaintenanceWindowTaskId] <p>The id of the task in the Maintenance Window.</p>
 -- @return RegisterTaskWithMaintenanceWindowResult structure as a key-value pair table
 function M.RegisterTaskWithMaintenanceWindowResult(args)
-	assert(args, "You must provdide an argument table when creating RegisterTaskWithMaintenanceWindowResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating RegisterTaskWithMaintenanceWindowResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["WindowTaskId"] = args["WindowTaskId"],
 	}
-	asserts.AssertRegisterTaskWithMaintenanceWindowResult(t)
-	return t
+	asserts.AssertRegisterTaskWithMaintenanceWindowResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AssociatedInstances = { nil }
@@ -4759,11 +6321,22 @@ end
 -- Valid keys:
 -- @return AssociatedInstances structure as a key-value pair table
 function M.AssociatedInstances(args)
-	assert(args, "You must provdide an argument table when creating AssociatedInstances")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AssociatedInstances")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertAssociatedInstances(t)
-	return t
+	asserts.AssertAssociatedInstances(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetMaintenanceWindowExecutionRequest = { ["WindowExecutionId"] = true, nil }
@@ -4786,12 +6359,23 @@ end
 -- Required key: WindowExecutionId
 -- @return GetMaintenanceWindowExecutionRequest structure as a key-value pair table
 function M.GetMaintenanceWindowExecutionRequest(args)
-	assert(args, "You must provdide an argument table when creating GetMaintenanceWindowExecutionRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetMaintenanceWindowExecutionRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["WindowExecutionId"] = args["WindowExecutionId"],
 	}
-	asserts.AssertGetMaintenanceWindowExecutionRequest(t)
-	return t
+	asserts.AssertGetMaintenanceWindowExecutionRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeMaintenanceWindowExecutionTaskInvocationsRequest = { ["MaxResults"] = true, ["NextToken"] = true, ["WindowExecutionId"] = true, ["Filters"] = true, ["TaskId"] = true, nil }
@@ -4824,16 +6408,27 @@ end
 -- Required key: TaskId
 -- @return DescribeMaintenanceWindowExecutionTaskInvocationsRequest structure as a key-value pair table
 function M.DescribeMaintenanceWindowExecutionTaskInvocationsRequest(args)
-	assert(args, "You must provdide an argument table when creating DescribeMaintenanceWindowExecutionTaskInvocationsRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeMaintenanceWindowExecutionTaskInvocationsRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["MaxResults"] = args["MaxResults"],
 		["NextToken"] = args["NextToken"],
 		["WindowExecutionId"] = args["WindowExecutionId"],
 		["Filters"] = args["Filters"],
 		["TaskId"] = args["TaskId"],
 	}
-	asserts.AssertDescribeMaintenanceWindowExecutionTaskInvocationsRequest(t)
-	return t
+	asserts.AssertDescribeMaintenanceWindowExecutionTaskInvocationsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetInventorySchemaRequest = { ["TypeName"] = true, ["NextToken"] = true, ["MaxResults"] = true, nil }
@@ -4858,14 +6453,25 @@ end
 -- * MaxResults [GetInventorySchemaMaxResults] <p>The maximum number of items to return for this call. The call also returns a token that you can specify in a subsequent call to get the next set of results.</p>
 -- @return GetInventorySchemaRequest structure as a key-value pair table
 function M.GetInventorySchemaRequest(args)
-	assert(args, "You must provdide an argument table when creating GetInventorySchemaRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetInventorySchemaRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["TypeName"] = args["TypeName"],
 		["NextToken"] = args["NextToken"],
 		["MaxResults"] = args["MaxResults"],
 	}
-	asserts.AssertGetInventorySchemaRequest(t)
-	return t
+	asserts.AssertGetInventorySchemaRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DuplicateInstanceId = { nil }
@@ -4884,11 +6490,22 @@ end
 -- Valid keys:
 -- @return DuplicateInstanceId structure as a key-value pair table
 function M.DuplicateInstanceId(args)
-	assert(args, "You must provdide an argument table when creating DuplicateInstanceId")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DuplicateInstanceId")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertDuplicateInstanceId(t)
-	return t
+	asserts.AssertDuplicateInstanceId(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidCommandId = { nil }
@@ -4907,11 +6524,22 @@ end
 -- Valid keys:
 -- @return InvalidCommandId structure as a key-value pair table
 function M.InvalidCommandId(args)
-	assert(args, "You must provdide an argument table when creating InvalidCommandId")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidCommandId")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertInvalidCommandId(t)
-	return t
+	asserts.AssertInvalidCommandId(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ParameterStringFilter = { ["Values"] = true, ["Option"] = true, ["Key"] = true, nil }
@@ -4938,14 +6566,25 @@ end
 -- Required key: Key
 -- @return ParameterStringFilter structure as a key-value pair table
 function M.ParameterStringFilter(args)
-	assert(args, "You must provdide an argument table when creating ParameterStringFilter")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ParameterStringFilter")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Values"] = args["Values"],
 		["Option"] = args["Option"],
 		["Key"] = args["Key"],
 	}
-	asserts.AssertParameterStringFilter(t)
-	return t
+	asserts.AssertParameterStringFilter(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeAutomationExecutionsRequest = { ["NextToken"] = true, ["MaxResults"] = true, ["Filters"] = true, nil }
@@ -4970,14 +6609,25 @@ end
 -- * Filters [AutomationExecutionFilterList] <p>Filters used to limit the scope of executions that are requested.</p>
 -- @return DescribeAutomationExecutionsRequest structure as a key-value pair table
 function M.DescribeAutomationExecutionsRequest(args)
-	assert(args, "You must provdide an argument table when creating DescribeAutomationExecutionsRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeAutomationExecutionsRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NextToken"] = args["NextToken"],
 		["MaxResults"] = args["MaxResults"],
 		["Filters"] = args["Filters"],
 	}
-	asserts.AssertDescribeAutomationExecutionsRequest(t)
-	return t
+	asserts.AssertDescribeAutomationExecutionsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeMaintenanceWindowTasksResult = { ["Tasks"] = true, ["NextToken"] = true, nil }
@@ -5000,13 +6650,24 @@ end
 -- * NextToken [NextToken] <p>The token to use when requesting the next set of items. If there are no additional items to return, the string is empty.</p>
 -- @return DescribeMaintenanceWindowTasksResult structure as a key-value pair table
 function M.DescribeMaintenanceWindowTasksResult(args)
-	assert(args, "You must provdide an argument table when creating DescribeMaintenanceWindowTasksResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeMaintenanceWindowTasksResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Tasks"] = args["Tasks"],
 		["NextToken"] = args["NextToken"],
 	}
-	asserts.AssertDescribeMaintenanceWindowTasksResult(t)
-	return t
+	asserts.AssertDescribeMaintenanceWindowTasksResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteAssociationRequest = { ["InstanceId"] = true, ["AssociationId"] = true, ["Name"] = true, nil }
@@ -5031,14 +6692,25 @@ end
 -- * Name [DocumentName] <p>The name of the Systems Manager document.</p>
 -- @return DeleteAssociationRequest structure as a key-value pair table
 function M.DeleteAssociationRequest(args)
-	assert(args, "You must provdide an argument table when creating DeleteAssociationRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteAssociationRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["InstanceId"] = args["InstanceId"],
 		["AssociationId"] = args["AssociationId"],
 		["Name"] = args["Name"],
 	}
-	asserts.AssertDeleteAssociationRequest(t)
-	return t
+	asserts.AssertDeleteAssociationRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeActivationsFilter = { ["FilterKey"] = true, ["FilterValues"] = true, nil }
@@ -5061,13 +6733,24 @@ end
 -- * FilterValues [StringList] <p>The filter values.</p>
 -- @return DescribeActivationsFilter structure as a key-value pair table
 function M.DescribeActivationsFilter(args)
-	assert(args, "You must provdide an argument table when creating DescribeActivationsFilter")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeActivationsFilter")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["FilterKey"] = args["FilterKey"],
 		["FilterValues"] = args["FilterValues"],
 	}
-	asserts.AssertDescribeActivationsFilter(t)
-	return t
+	asserts.AssertDescribeActivationsFilter(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeregisterPatchBaselineForPatchGroupRequest = { ["PatchGroup"] = true, ["BaselineId"] = true, nil }
@@ -5094,13 +6777,24 @@ end
 -- Required key: PatchGroup
 -- @return DeregisterPatchBaselineForPatchGroupRequest structure as a key-value pair table
 function M.DeregisterPatchBaselineForPatchGroupRequest(args)
-	assert(args, "You must provdide an argument table when creating DeregisterPatchBaselineForPatchGroupRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeregisterPatchBaselineForPatchGroupRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["PatchGroup"] = args["PatchGroup"],
 		["BaselineId"] = args["BaselineId"],
 	}
-	asserts.AssertDeregisterPatchBaselineForPatchGroupRequest(t)
-	return t
+	asserts.AssertDeregisterPatchBaselineForPatchGroupRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InternalServerError = { ["Message"] = true, nil }
@@ -5121,12 +6815,23 @@ end
 -- * Message [String] 
 -- @return InternalServerError structure as a key-value pair table
 function M.InternalServerError(args)
-	assert(args, "You must provdide an argument table when creating InternalServerError")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InternalServerError")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Message"] = args["Message"],
 	}
-	asserts.AssertInternalServerError(t)
-	return t
+	asserts.AssertInternalServerError(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DuplicateDocumentContent = { ["Message"] = true, nil }
@@ -5147,12 +6852,23 @@ end
 -- * Message [String] 
 -- @return DuplicateDocumentContent structure as a key-value pair table
 function M.DuplicateDocumentContent(args)
-	assert(args, "You must provdide an argument table when creating DuplicateDocumentContent")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DuplicateDocumentContent")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Message"] = args["Message"],
 	}
-	asserts.AssertDuplicateDocumentContent(t)
-	return t
+	asserts.AssertDuplicateDocumentContent(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.PatchFilterGroup = { ["PatchFilters"] = true, nil }
@@ -5175,12 +6891,23 @@ end
 -- Required key: PatchFilters
 -- @return PatchFilterGroup structure as a key-value pair table
 function M.PatchFilterGroup(args)
-	assert(args, "You must provdide an argument table when creating PatchFilterGroup")
-	local t = { 
+	assert(args, "You must provide an argument table when creating PatchFilterGroup")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["PatchFilters"] = args["PatchFilters"],
 	}
-	asserts.AssertPatchFilterGroup(t)
-	return t
+	asserts.AssertPatchFilterGroup(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.StatusUnchanged = { nil }
@@ -5199,11 +6926,22 @@ end
 -- Valid keys:
 -- @return StatusUnchanged structure as a key-value pair table
 function M.StatusUnchanged(args)
-	assert(args, "You must provdide an argument table when creating StatusUnchanged")
-	local t = { 
+	assert(args, "You must provide an argument table when creating StatusUnchanged")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertStatusUnchanged(t)
-	return t
+	asserts.AssertStatusUnchanged(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.S3OutputUrl = { ["OutputUrl"] = true, nil }
@@ -5224,12 +6962,23 @@ end
 -- * OutputUrl [Url] <p>A URL for an Amazon S3 bucket where you want to store the results of this request.</p>
 -- @return S3OutputUrl structure as a key-value pair table
 function M.S3OutputUrl(args)
-	assert(args, "You must provdide an argument table when creating S3OutputUrl")
-	local t = { 
+	assert(args, "You must provide an argument table when creating S3OutputUrl")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["OutputUrl"] = args["OutputUrl"],
 	}
-	asserts.AssertS3OutputUrl(t)
-	return t
+	asserts.AssertS3OutputUrl(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.RemoveTagsFromResourceResult = { nil }
@@ -5248,11 +6997,22 @@ end
 -- Valid keys:
 -- @return RemoveTagsFromResourceResult structure as a key-value pair table
 function M.RemoveTagsFromResourceResult(args)
-	assert(args, "You must provdide an argument table when creating RemoveTagsFromResourceResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating RemoveTagsFromResourceResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertRemoveTagsFromResourceResult(t)
-	return t
+	asserts.AssertRemoveTagsFromResourceResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeMaintenanceWindowTasksRequest = { ["WindowId"] = true, ["NextToken"] = true, ["MaxResults"] = true, ["Filters"] = true, nil }
@@ -5281,15 +7041,26 @@ end
 -- Required key: WindowId
 -- @return DescribeMaintenanceWindowTasksRequest structure as a key-value pair table
 function M.DescribeMaintenanceWindowTasksRequest(args)
-	assert(args, "You must provdide an argument table when creating DescribeMaintenanceWindowTasksRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeMaintenanceWindowTasksRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["WindowId"] = args["WindowId"],
 		["NextToken"] = args["NextToken"],
 		["MaxResults"] = args["MaxResults"],
 		["Filters"] = args["Filters"],
 	}
-	asserts.AssertDescribeMaintenanceWindowTasksRequest(t)
-	return t
+	asserts.AssertDescribeMaintenanceWindowTasksRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CommandInvocation = { ["Comment"] = true, ["Status"] = true, ["CommandPlugins"] = true, ["ServiceRole"] = true, ["InstanceId"] = true, ["DocumentName"] = true, ["NotificationConfig"] = true, ["StatusDetails"] = true, ["StandardOutputUrl"] = true, ["StandardErrorUrl"] = true, ["TraceOutput"] = true, ["InstanceName"] = true, ["CommandId"] = true, ["RequestedDateTime"] = true, nil }
@@ -5336,8 +7107,14 @@ end
 -- * RequestedDateTime [DateTime] <p>The time and date the request was sent to this instance.</p>
 -- @return CommandInvocation structure as a key-value pair table
 function M.CommandInvocation(args)
-	assert(args, "You must provdide an argument table when creating CommandInvocation")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CommandInvocation")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Comment"] = args["Comment"],
 		["Status"] = args["Status"],
 		["CommandPlugins"] = args["CommandPlugins"],
@@ -5353,8 +7130,13 @@ function M.CommandInvocation(args)
 		["CommandId"] = args["CommandId"],
 		["RequestedDateTime"] = args["RequestedDateTime"],
 	}
-	asserts.AssertCommandInvocation(t)
-	return t
+	asserts.AssertCommandInvocation(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InventoryFilter = { ["Type"] = true, ["Values"] = true, ["Key"] = true, nil }
@@ -5383,14 +7165,25 @@ end
 -- Required key: Values
 -- @return InventoryFilter structure as a key-value pair table
 function M.InventoryFilter(args)
-	assert(args, "You must provdide an argument table when creating InventoryFilter")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InventoryFilter")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Type"] = args["Type"],
 		["Values"] = args["Values"],
 		["Key"] = args["Key"],
 	}
-	asserts.AssertInventoryFilter(t)
-	return t
+	asserts.AssertInventoryFilter(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ResultAttribute = { ["TypeName"] = true, nil }
@@ -5413,12 +7206,23 @@ end
 -- Required key: TypeName
 -- @return ResultAttribute structure as a key-value pair table
 function M.ResultAttribute(args)
-	assert(args, "You must provdide an argument table when creating ResultAttribute")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ResultAttribute")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["TypeName"] = args["TypeName"],
 	}
-	asserts.AssertResultAttribute(t)
-	return t
+	asserts.AssertResultAttribute(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeInstanceAssociationsStatusResult = { ["InstanceAssociationStatusInfos"] = true, ["NextToken"] = true, nil }
@@ -5441,13 +7245,24 @@ end
 -- * NextToken [NextToken] <p>The token to use when requesting the next set of items. If there are no additional items to return, the string is empty.</p>
 -- @return DescribeInstanceAssociationsStatusResult structure as a key-value pair table
 function M.DescribeInstanceAssociationsStatusResult(args)
-	assert(args, "You must provdide an argument table when creating DescribeInstanceAssociationsStatusResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeInstanceAssociationsStatusResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["InstanceAssociationStatusInfos"] = args["InstanceAssociationStatusInfos"],
 		["NextToken"] = args["NextToken"],
 	}
-	asserts.AssertDescribeInstanceAssociationsStatusResult(t)
-	return t
+	asserts.AssertDescribeInstanceAssociationsStatusResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetMaintenanceWindowExecutionTaskRequest = { ["WindowExecutionId"] = true, ["TaskId"] = true, nil }
@@ -5474,13 +7289,24 @@ end
 -- Required key: TaskId
 -- @return GetMaintenanceWindowExecutionTaskRequest structure as a key-value pair table
 function M.GetMaintenanceWindowExecutionTaskRequest(args)
-	assert(args, "You must provdide an argument table when creating GetMaintenanceWindowExecutionTaskRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetMaintenanceWindowExecutionTaskRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["WindowExecutionId"] = args["WindowExecutionId"],
 		["TaskId"] = args["TaskId"],
 	}
-	asserts.AssertGetMaintenanceWindowExecutionTaskRequest(t)
-	return t
+	asserts.AssertGetMaintenanceWindowExecutionTaskRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdateDocumentResult = { ["DocumentDescription"] = true, nil }
@@ -5501,12 +7327,23 @@ end
 -- * DocumentDescription [DocumentDescription] <p>A description of the document that was updated.</p>
 -- @return UpdateDocumentResult structure as a key-value pair table
 function M.UpdateDocumentResult(args)
-	assert(args, "You must provdide an argument table when creating UpdateDocumentResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateDocumentResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DocumentDescription"] = args["DocumentDescription"],
 	}
-	asserts.AssertUpdateDocumentResult(t)
-	return t
+	asserts.AssertUpdateDocumentResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateMaintenanceWindowResult = { ["WindowId"] = true, nil }
@@ -5527,12 +7364,23 @@ end
 -- * WindowId [MaintenanceWindowId] <p>The ID of the created Maintenance Window.</p>
 -- @return CreateMaintenanceWindowResult structure as a key-value pair table
 function M.CreateMaintenanceWindowResult(args)
-	assert(args, "You must provdide an argument table when creating CreateMaintenanceWindowResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateMaintenanceWindowResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["WindowId"] = args["WindowId"],
 	}
-	asserts.AssertCreateMaintenanceWindowResult(t)
-	return t
+	asserts.AssertCreateMaintenanceWindowResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.EffectivePatch = { ["PatchStatus"] = true, ["Patch"] = true, nil }
@@ -5555,13 +7403,24 @@ end
 -- * Patch [Patch] <p>Provides metadata for a patch, including information such as the KB ID, severity, classification and a URL for where more information can be obtained about the patch.</p>
 -- @return EffectivePatch structure as a key-value pair table
 function M.EffectivePatch(args)
-	assert(args, "You must provdide an argument table when creating EffectivePatch")
-	local t = { 
+	assert(args, "You must provide an argument table when creating EffectivePatch")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["PatchStatus"] = args["PatchStatus"],
 		["Patch"] = args["Patch"],
 	}
-	asserts.AssertEffectivePatch(t)
-	return t
+	asserts.AssertEffectivePatch(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ModifyDocumentPermissionResponse = { nil }
@@ -5580,11 +7439,22 @@ end
 -- Valid keys:
 -- @return ModifyDocumentPermissionResponse structure as a key-value pair table
 function M.ModifyDocumentPermissionResponse(args)
-	assert(args, "You must provdide an argument table when creating ModifyDocumentPermissionResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ModifyDocumentPermissionResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertModifyDocumentPermissionResponse(t)
-	return t
+	asserts.AssertModifyDocumentPermissionResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Target = { ["Values"] = true, ["Key"] = true, nil }
@@ -5607,13 +7477,24 @@ end
 -- * Key [TargetKey] <p>User-defined criteria for sending commands that target instances that meet the criteria. Key can be tag:&lt;Amazon EC2 tag&gt; or InstanceIds. For more information about how to send commands that target instances using Key,Value parameters, see <a href="http://docs.aws.amazon.com/systems-manager/latest/userguide/send-commands-multiple.html">Executing a Command Using Systems Manager Run Command</a>.</p>
 -- @return Target structure as a key-value pair table
 function M.Target(args)
-	assert(args, "You must provdide an argument table when creating Target")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Target")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Values"] = args["Values"],
 		["Key"] = args["Key"],
 	}
-	asserts.AssertTarget(t)
-	return t
+	asserts.AssertTarget(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.PutInventoryRequest = { ["InstanceId"] = true, ["Items"] = true, nil }
@@ -5640,13 +7521,24 @@ end
 -- Required key: Items
 -- @return PutInventoryRequest structure as a key-value pair table
 function M.PutInventoryRequest(args)
-	assert(args, "You must provdide an argument table when creating PutInventoryRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating PutInventoryRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["InstanceId"] = args["InstanceId"],
 		["Items"] = args["Items"],
 	}
-	asserts.AssertPutInventoryRequest(t)
-	return t
+	asserts.AssertPutInventoryRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.MaintenanceWindowExecution = { ["Status"] = true, ["WindowId"] = true, ["StartTime"] = true, ["EndTime"] = true, ["WindowExecutionId"] = true, ["StatusDetails"] = true, nil }
@@ -5677,8 +7569,14 @@ end
 -- * StatusDetails [MaintenanceWindowExecutionStatusDetails] <p>The details explaining the Status. Only available for certain status values.</p>
 -- @return MaintenanceWindowExecution structure as a key-value pair table
 function M.MaintenanceWindowExecution(args)
-	assert(args, "You must provdide an argument table when creating MaintenanceWindowExecution")
-	local t = { 
+	assert(args, "You must provide an argument table when creating MaintenanceWindowExecution")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Status"] = args["Status"],
 		["WindowId"] = args["WindowId"],
 		["StartTime"] = args["StartTime"],
@@ -5686,8 +7584,13 @@ function M.MaintenanceWindowExecution(args)
 		["WindowExecutionId"] = args["WindowExecutionId"],
 		["StatusDetails"] = args["StatusDetails"],
 	}
-	asserts.AssertMaintenanceWindowExecution(t)
-	return t
+	asserts.AssertMaintenanceWindowExecution(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeregisterPatchBaselineForPatchGroupResult = { ["PatchGroup"] = true, ["BaselineId"] = true, nil }
@@ -5710,13 +7613,24 @@ end
 -- * BaselineId [BaselineId] <p>The ID of the patch baseline the patch group was deregistered from.</p>
 -- @return DeregisterPatchBaselineForPatchGroupResult structure as a key-value pair table
 function M.DeregisterPatchBaselineForPatchGroupResult(args)
-	assert(args, "You must provdide an argument table when creating DeregisterPatchBaselineForPatchGroupResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeregisterPatchBaselineForPatchGroupResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["PatchGroup"] = args["PatchGroup"],
 		["BaselineId"] = args["BaselineId"],
 	}
-	asserts.AssertDeregisterPatchBaselineForPatchGroupResult(t)
-	return t
+	asserts.AssertDeregisterPatchBaselineForPatchGroupResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InventoryResultItem = { ["ContentHash"] = true, ["TypeName"] = true, ["SchemaVersion"] = true, ["CaptureTime"] = true, ["Content"] = true, nil }
@@ -5751,16 +7665,27 @@ end
 -- Required key: Content
 -- @return InventoryResultItem structure as a key-value pair table
 function M.InventoryResultItem(args)
-	assert(args, "You must provdide an argument table when creating InventoryResultItem")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InventoryResultItem")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ContentHash"] = args["ContentHash"],
 		["TypeName"] = args["TypeName"],
 		["SchemaVersion"] = args["SchemaVersion"],
 		["CaptureTime"] = args["CaptureTime"],
 		["Content"] = args["Content"],
 	}
-	asserts.AssertInventoryResultItem(t)
-	return t
+	asserts.AssertInventoryResultItem(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.MaintenanceWindowTask = { ["LoggingInfo"] = true, ["ServiceRoleArn"] = true, ["MaxErrors"] = true, ["TaskArn"] = true, ["MaxConcurrency"] = true, ["WindowTaskId"] = true, ["TaskParameters"] = true, ["Priority"] = true, ["WindowId"] = true, ["Type"] = true, ["Targets"] = true, nil }
@@ -5801,8 +7726,14 @@ end
 -- * Targets [Targets] <p>The targets (either instances or tags). Instances are specified using Key=instanceids,Values=&lt;instanceid1&gt;,&lt;instanceid2&gt;. Tags are specified using Key=&lt;tag name&gt;,Values=&lt;tag value&gt;.</p>
 -- @return MaintenanceWindowTask structure as a key-value pair table
 function M.MaintenanceWindowTask(args)
-	assert(args, "You must provdide an argument table when creating MaintenanceWindowTask")
-	local t = { 
+	assert(args, "You must provide an argument table when creating MaintenanceWindowTask")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["LoggingInfo"] = args["LoggingInfo"],
 		["ServiceRoleArn"] = args["ServiceRoleArn"],
 		["MaxErrors"] = args["MaxErrors"],
@@ -5815,8 +7746,13 @@ function M.MaintenanceWindowTask(args)
 		["Type"] = args["Type"],
 		["Targets"] = args["Targets"],
 	}
-	asserts.AssertMaintenanceWindowTask(t)
-	return t
+	asserts.AssertMaintenanceWindowTask(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidItemContentException = { ["TypeName"] = true, ["Message"] = true, nil }
@@ -5839,13 +7775,24 @@ end
 -- * Message [String] 
 -- @return InvalidItemContentException structure as a key-value pair table
 function M.InvalidItemContentException(args)
-	assert(args, "You must provdide an argument table when creating InvalidItemContentException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidItemContentException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["TypeName"] = args["TypeName"],
 		["Message"] = args["Message"],
 	}
-	asserts.AssertInvalidItemContentException(t)
-	return t
+	asserts.AssertInvalidItemContentException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetInventorySchemaResult = { ["NextToken"] = true, ["Schemas"] = true, nil }
@@ -5868,13 +7815,24 @@ end
 -- * Schemas [InventoryItemSchemaResultList] <p>Inventory schemas returned by the request.</p>
 -- @return GetInventorySchemaResult structure as a key-value pair table
 function M.GetInventorySchemaResult(args)
-	assert(args, "You must provdide an argument table when creating GetInventorySchemaResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetInventorySchemaResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NextToken"] = args["NextToken"],
 		["Schemas"] = args["Schemas"],
 	}
-	asserts.AssertGetInventorySchemaResult(t)
-	return t
+	asserts.AssertGetInventorySchemaResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListDocumentVersionsRequest = { ["NextToken"] = true, ["Name"] = true, ["MaxResults"] = true, nil }
@@ -5901,14 +7859,25 @@ end
 -- Required key: Name
 -- @return ListDocumentVersionsRequest structure as a key-value pair table
 function M.ListDocumentVersionsRequest(args)
-	assert(args, "You must provdide an argument table when creating ListDocumentVersionsRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListDocumentVersionsRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NextToken"] = args["NextToken"],
 		["Name"] = args["Name"],
 		["MaxResults"] = args["MaxResults"],
 	}
-	asserts.AssertListDocumentVersionsRequest(t)
-	return t
+	asserts.AssertListDocumentVersionsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetParameterResult = { ["Parameter"] = true, nil }
@@ -5929,12 +7898,23 @@ end
 -- * Parameter [Parameter] <p>Information about a parameter.</p>
 -- @return GetParameterResult structure as a key-value pair table
 function M.GetParameterResult(args)
-	assert(args, "You must provdide an argument table when creating GetParameterResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetParameterResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Parameter"] = args["Parameter"],
 	}
-	asserts.AssertGetParameterResult(t)
-	return t
+	asserts.AssertGetParameterResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidFilter = { ["Message"] = true, nil }
@@ -5955,12 +7935,23 @@ end
 -- * Message [String] 
 -- @return InvalidFilter structure as a key-value pair table
 function M.InvalidFilter(args)
-	assert(args, "You must provdide an argument table when creating InvalidFilter")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidFilter")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Message"] = args["Message"],
 	}
-	asserts.AssertInvalidFilter(t)
-	return t
+	asserts.AssertInvalidFilter(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InstanceAssociationOutputLocation = { ["S3Location"] = true, nil }
@@ -5981,12 +7972,23 @@ end
 -- * S3Location [S3OutputLocation] <p>An Amazon S3 bucket where you want to store the results of this request.</p>
 -- @return InstanceAssociationOutputLocation structure as a key-value pair table
 function M.InstanceAssociationOutputLocation(args)
-	assert(args, "You must provdide an argument table when creating InstanceAssociationOutputLocation")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InstanceAssociationOutputLocation")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["S3Location"] = args["S3Location"],
 	}
-	asserts.AssertInstanceAssociationOutputLocation(t)
-	return t
+	asserts.AssertInstanceAssociationOutputLocation(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListDocumentsRequest = { ["DocumentFilterList"] = true, ["NextToken"] = true, ["MaxResults"] = true, nil }
@@ -6011,14 +8013,25 @@ end
 -- * MaxResults [MaxResults] <p>The maximum number of items to return for this call. The call also returns a token that you can specify in a subsequent call to get the next set of results.</p>
 -- @return ListDocumentsRequest structure as a key-value pair table
 function M.ListDocumentsRequest(args)
-	assert(args, "You must provdide an argument table when creating ListDocumentsRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListDocumentsRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DocumentFilterList"] = args["DocumentFilterList"],
 		["NextToken"] = args["NextToken"],
 		["MaxResults"] = args["MaxResults"],
 	}
-	asserts.AssertListDocumentsRequest(t)
-	return t
+	asserts.AssertListDocumentsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateAssociationBatchResult = { ["Successful"] = true, ["Failed"] = true, nil }
@@ -6041,13 +8054,24 @@ end
 -- * Failed [FailedCreateAssociationList] <p>Information about the associations that failed.</p>
 -- @return CreateAssociationBatchResult structure as a key-value pair table
 function M.CreateAssociationBatchResult(args)
-	assert(args, "You must provdide an argument table when creating CreateAssociationBatchResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateAssociationBatchResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Successful"] = args["Successful"],
 		["Failed"] = args["Failed"],
 	}
-	asserts.AssertCreateAssociationBatchResult(t)
-	return t
+	asserts.AssertCreateAssociationBatchResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeAvailablePatchesRequest = { ["NextToken"] = true, ["MaxResults"] = true, ["Filters"] = true, nil }
@@ -6072,14 +8096,25 @@ end
 -- * Filters [PatchOrchestratorFilterList] <p>Filters used to scope down the returned patches.</p>
 -- @return DescribeAvailablePatchesRequest structure as a key-value pair table
 function M.DescribeAvailablePatchesRequest(args)
-	assert(args, "You must provdide an argument table when creating DescribeAvailablePatchesRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeAvailablePatchesRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NextToken"] = args["NextToken"],
 		["MaxResults"] = args["MaxResults"],
 		["Filters"] = args["Filters"],
 	}
-	asserts.AssertDescribeAvailablePatchesRequest(t)
-	return t
+	asserts.AssertDescribeAvailablePatchesRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeDocumentRequest = { ["Name"] = true, ["DocumentVersion"] = true, nil }
@@ -6104,13 +8139,24 @@ end
 -- Required key: Name
 -- @return DescribeDocumentRequest structure as a key-value pair table
 function M.DescribeDocumentRequest(args)
-	assert(args, "You must provdide an argument table when creating DescribeDocumentRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeDocumentRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Name"] = args["Name"],
 		["DocumentVersion"] = args["DocumentVersion"],
 	}
-	asserts.AssertDescribeDocumentRequest(t)
-	return t
+	asserts.AssertDescribeDocumentRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidDocumentVersion = { ["Message"] = true, nil }
@@ -6131,12 +8177,23 @@ end
 -- * Message [String] 
 -- @return InvalidDocumentVersion structure as a key-value pair table
 function M.InvalidDocumentVersion(args)
-	assert(args, "You must provdide an argument table when creating InvalidDocumentVersion")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidDocumentVersion")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Message"] = args["Message"],
 	}
-	asserts.AssertInvalidDocumentVersion(t)
-	return t
+	asserts.AssertInvalidDocumentVersion(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AutomationExecutionNotFoundException = { ["Message"] = true, nil }
@@ -6157,12 +8214,23 @@ end
 -- * Message [String] 
 -- @return AutomationExecutionNotFoundException structure as a key-value pair table
 function M.AutomationExecutionNotFoundException(args)
-	assert(args, "You must provdide an argument table when creating AutomationExecutionNotFoundException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AutomationExecutionNotFoundException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Message"] = args["Message"],
 	}
-	asserts.AssertAutomationExecutionNotFoundException(t)
-	return t
+	asserts.AssertAutomationExecutionNotFoundException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AssociationDoesNotExist = { ["Message"] = true, nil }
@@ -6183,12 +8251,23 @@ end
 -- * Message [String] 
 -- @return AssociationDoesNotExist structure as a key-value pair table
 function M.AssociationDoesNotExist(args)
-	assert(args, "You must provdide an argument table when creating AssociationDoesNotExist")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AssociationDoesNotExist")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Message"] = args["Message"],
 	}
-	asserts.AssertAssociationDoesNotExist(t)
-	return t
+	asserts.AssertAssociationDoesNotExist(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AssociationDescription = { ["Status"] = true, ["ScheduleExpression"] = true, ["OutputLocation"] = true, ["Name"] = true, ["Parameters"] = true, ["LastExecutionDate"] = true, ["InstanceId"] = true, ["Overview"] = true, ["AssociationId"] = true, ["DocumentVersion"] = true, ["LastSuccessfulExecutionDate"] = true, ["LastUpdateAssociationDate"] = true, ["Date"] = true, ["Targets"] = true, nil }
@@ -6235,8 +8314,14 @@ end
 -- * Targets [Targets] <p>The instances targeted by the request. </p>
 -- @return AssociationDescription structure as a key-value pair table
 function M.AssociationDescription(args)
-	assert(args, "You must provdide an argument table when creating AssociationDescription")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AssociationDescription")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Status"] = args["Status"],
 		["ScheduleExpression"] = args["ScheduleExpression"],
 		["OutputLocation"] = args["OutputLocation"],
@@ -6252,8 +8337,13 @@ function M.AssociationDescription(args)
 		["Date"] = args["Date"],
 		["Targets"] = args["Targets"],
 	}
-	asserts.AssertAssociationDescription(t)
-	return t
+	asserts.AssertAssociationDescription(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.MaintenanceWindowExecutionTaskIdentity = { ["Status"] = true, ["TaskArn"] = true, ["StartTime"] = true, ["TaskType"] = true, ["EndTime"] = true, ["WindowExecutionId"] = true, ["StatusDetails"] = true, ["TaskExecutionId"] = true, nil }
@@ -6288,8 +8378,14 @@ end
 -- * TaskExecutionId [MaintenanceWindowExecutionTaskId] <p>The ID of the specific task execution in the Maintenance Window execution.</p>
 -- @return MaintenanceWindowExecutionTaskIdentity structure as a key-value pair table
 function M.MaintenanceWindowExecutionTaskIdentity(args)
-	assert(args, "You must provdide an argument table when creating MaintenanceWindowExecutionTaskIdentity")
-	local t = { 
+	assert(args, "You must provide an argument table when creating MaintenanceWindowExecutionTaskIdentity")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Status"] = args["Status"],
 		["TaskArn"] = args["TaskArn"],
 		["StartTime"] = args["StartTime"],
@@ -6299,8 +8395,13 @@ function M.MaintenanceWindowExecutionTaskIdentity(args)
 		["StatusDetails"] = args["StatusDetails"],
 		["TaskExecutionId"] = args["TaskExecutionId"],
 	}
-	asserts.AssertMaintenanceWindowExecutionTaskIdentity(t)
-	return t
+	asserts.AssertMaintenanceWindowExecutionTaskIdentity(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AutomationExecutionLimitExceededException = { ["Message"] = true, nil }
@@ -6321,12 +8422,23 @@ end
 -- * Message [String] 
 -- @return AutomationExecutionLimitExceededException structure as a key-value pair table
 function M.AutomationExecutionLimitExceededException(args)
-	assert(args, "You must provdide an argument table when creating AutomationExecutionLimitExceededException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AutomationExecutionLimitExceededException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Message"] = args["Message"],
 	}
-	asserts.AssertAutomationExecutionLimitExceededException(t)
-	return t
+	asserts.AssertAutomationExecutionLimitExceededException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.SendCommandRequest = { ["Comment"] = true, ["ServiceRoleArn"] = true, ["MaxErrors"] = true, ["Parameters"] = true, ["TimeoutSeconds"] = true, ["DocumentName"] = true, ["DocumentHash"] = true, ["OutputS3BucketName"] = true, ["NotificationConfig"] = true, ["DocumentHashType"] = true, ["OutputS3KeyPrefix"] = true, ["OutputS3Region"] = true, ["Targets"] = true, ["InstanceIds"] = true, ["MaxConcurrency"] = true, nil }
@@ -6377,8 +8489,14 @@ end
 -- Required key: DocumentName
 -- @return SendCommandRequest structure as a key-value pair table
 function M.SendCommandRequest(args)
-	assert(args, "You must provdide an argument table when creating SendCommandRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating SendCommandRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Comment"] = args["Comment"],
 		["ServiceRoleArn"] = args["ServiceRoleArn"],
 		["MaxErrors"] = args["MaxErrors"],
@@ -6395,8 +8513,13 @@ function M.SendCommandRequest(args)
 		["InstanceIds"] = args["InstanceIds"],
 		["MaxConcurrency"] = args["MaxConcurrency"],
 	}
-	asserts.AssertSendCommandRequest(t)
-	return t
+	asserts.AssertSendCommandRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdateDocumentDefaultVersionRequest = { ["Name"] = true, ["DocumentVersion"] = true, nil }
@@ -6423,13 +8546,24 @@ end
 -- Required key: DocumentVersion
 -- @return UpdateDocumentDefaultVersionRequest structure as a key-value pair table
 function M.UpdateDocumentDefaultVersionRequest(args)
-	assert(args, "You must provdide an argument table when creating UpdateDocumentDefaultVersionRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateDocumentDefaultVersionRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Name"] = args["Name"],
 		["DocumentVersion"] = args["DocumentVersion"],
 	}
-	asserts.AssertUpdateDocumentDefaultVersionRequest(t)
-	return t
+	asserts.AssertUpdateDocumentDefaultVersionRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetPatchBaselineResult = { ["BaselineId"] = true, ["Name"] = true, ["PatchGroups"] = true, ["RejectedPatches"] = true, ["GlobalFilters"] = true, ["ApprovalRules"] = true, ["ModifiedDate"] = true, ["CreatedDate"] = true, ["ApprovedPatches"] = true, ["Description"] = true, nil }
@@ -6468,8 +8602,14 @@ end
 -- * Description [BaselineDescription] <p>A description of the patch baseline.</p>
 -- @return GetPatchBaselineResult structure as a key-value pair table
 function M.GetPatchBaselineResult(args)
-	assert(args, "You must provdide an argument table when creating GetPatchBaselineResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetPatchBaselineResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["BaselineId"] = args["BaselineId"],
 		["Name"] = args["Name"],
 		["PatchGroups"] = args["PatchGroups"],
@@ -6481,8 +8621,13 @@ function M.GetPatchBaselineResult(args)
 		["ApprovedPatches"] = args["ApprovedPatches"],
 		["Description"] = args["Description"],
 	}
-	asserts.AssertGetPatchBaselineResult(t)
-	return t
+	asserts.AssertGetPatchBaselineResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.NotificationConfig = { ["NotificationArn"] = true, ["NotificationEvents"] = true, ["NotificationType"] = true, nil }
@@ -6507,14 +8652,25 @@ end
 -- * NotificationType [NotificationType] <p>Command: Receive notification when the status of a command changes. Invocation: For commands sent to multiple instances, receive notification on a per-instance basis when the status of a command changes. </p>
 -- @return NotificationConfig structure as a key-value pair table
 function M.NotificationConfig(args)
-	assert(args, "You must provdide an argument table when creating NotificationConfig")
-	local t = { 
+	assert(args, "You must provide an argument table when creating NotificationConfig")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NotificationArn"] = args["NotificationArn"],
 		["NotificationEvents"] = args["NotificationEvents"],
 		["NotificationType"] = args["NotificationType"],
 	}
-	asserts.AssertNotificationConfig(t)
-	return t
+	asserts.AssertNotificationConfig(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ModifyDocumentPermissionRequest = { ["AccountIdsToAdd"] = true, ["PermissionType"] = true, ["AccountIdsToRemove"] = true, ["Name"] = true, nil }
@@ -6545,15 +8701,26 @@ end
 -- Required key: PermissionType
 -- @return ModifyDocumentPermissionRequest structure as a key-value pair table
 function M.ModifyDocumentPermissionRequest(args)
-	assert(args, "You must provdide an argument table when creating ModifyDocumentPermissionRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ModifyDocumentPermissionRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["AccountIdsToAdd"] = args["AccountIdsToAdd"],
 		["PermissionType"] = args["PermissionType"],
 		["AccountIdsToRemove"] = args["AccountIdsToRemove"],
 		["Name"] = args["Name"],
 	}
-	asserts.AssertModifyDocumentPermissionRequest(t)
-	return t
+	asserts.AssertModifyDocumentPermissionRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.RegisterTargetWithMaintenanceWindowRequest = { ["ResourceType"] = true, ["OwnerInformation"] = true, ["WindowId"] = true, ["Targets"] = true, ["ClientToken"] = true, nil }
@@ -6588,16 +8755,27 @@ end
 -- Required key: Targets
 -- @return RegisterTargetWithMaintenanceWindowRequest structure as a key-value pair table
 function M.RegisterTargetWithMaintenanceWindowRequest(args)
-	assert(args, "You must provdide an argument table when creating RegisterTargetWithMaintenanceWindowRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating RegisterTargetWithMaintenanceWindowRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ResourceType"] = args["ResourceType"],
 		["OwnerInformation"] = args["OwnerInformation"],
 		["WindowId"] = args["WindowId"],
 		["Targets"] = args["Targets"],
 		["ClientToken"] = args["ClientToken"],
 	}
-	asserts.AssertRegisterTargetWithMaintenanceWindowRequest(t)
-	return t
+	asserts.AssertRegisterTargetWithMaintenanceWindowRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.TotalSizeLimitExceededException = { ["Message"] = true, nil }
@@ -6618,12 +8796,23 @@ end
 -- * Message [String] 
 -- @return TotalSizeLimitExceededException structure as a key-value pair table
 function M.TotalSizeLimitExceededException(args)
-	assert(args, "You must provdide an argument table when creating TotalSizeLimitExceededException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating TotalSizeLimitExceededException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Message"] = args["Message"],
 	}
-	asserts.AssertTotalSizeLimitExceededException(t)
-	return t
+	asserts.AssertTotalSizeLimitExceededException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidResourceType = { nil }
@@ -6642,11 +8831,22 @@ end
 -- Valid keys:
 -- @return InvalidResourceType structure as a key-value pair table
 function M.InvalidResourceType(args)
-	assert(args, "You must provdide an argument table when creating InvalidResourceType")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidResourceType")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertInvalidResourceType(t)
-	return t
+	asserts.AssertInvalidResourceType(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetMaintenanceWindowResult = { ["Cutoff"] = true, ["Name"] = true, ["Schedule"] = true, ["Enabled"] = true, ["AllowUnassociatedTargets"] = true, ["WindowId"] = true, ["ModifiedDate"] = true, ["CreatedDate"] = true, ["Duration"] = true, nil }
@@ -6683,8 +8883,14 @@ end
 -- * Duration [MaintenanceWindowDurationHours] <p>The duration of the Maintenance Window in hours.</p>
 -- @return GetMaintenanceWindowResult structure as a key-value pair table
 function M.GetMaintenanceWindowResult(args)
-	assert(args, "You must provdide an argument table when creating GetMaintenanceWindowResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetMaintenanceWindowResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Cutoff"] = args["Cutoff"],
 		["Name"] = args["Name"],
 		["Schedule"] = args["Schedule"],
@@ -6695,8 +8901,13 @@ function M.GetMaintenanceWindowResult(args)
 		["CreatedDate"] = args["CreatedDate"],
 		["Duration"] = args["Duration"],
 	}
-	asserts.AssertGetMaintenanceWindowResult(t)
-	return t
+	asserts.AssertGetMaintenanceWindowResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdateAssociationRequest = { ["ScheduleExpression"] = true, ["OutputLocation"] = true, ["Name"] = true, ["Parameters"] = true, ["AssociationId"] = true, ["DocumentVersion"] = true, ["Targets"] = true, nil }
@@ -6731,8 +8942,14 @@ end
 -- Required key: AssociationId
 -- @return UpdateAssociationRequest structure as a key-value pair table
 function M.UpdateAssociationRequest(args)
-	assert(args, "You must provdide an argument table when creating UpdateAssociationRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateAssociationRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ScheduleExpression"] = args["ScheduleExpression"],
 		["OutputLocation"] = args["OutputLocation"],
 		["Name"] = args["Name"],
@@ -6741,8 +8958,13 @@ function M.UpdateAssociationRequest(args)
 		["DocumentVersion"] = args["DocumentVersion"],
 		["Targets"] = args["Targets"],
 	}
-	asserts.AssertUpdateAssociationRequest(t)
-	return t
+	asserts.AssertUpdateAssociationRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdateAssociationStatusResult = { ["AssociationDescription"] = true, nil }
@@ -6763,12 +8985,23 @@ end
 -- * AssociationDescription [AssociationDescription] <p>Information about the association.</p>
 -- @return UpdateAssociationStatusResult structure as a key-value pair table
 function M.UpdateAssociationStatusResult(args)
-	assert(args, "You must provdide an argument table when creating UpdateAssociationStatusResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateAssociationStatusResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["AssociationDescription"] = args["AssociationDescription"],
 	}
-	asserts.AssertUpdateAssociationStatusResult(t)
-	return t
+	asserts.AssertUpdateAssociationStatusResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidNextToken = { ["Message"] = true, nil }
@@ -6789,12 +9022,23 @@ end
 -- * Message [String] 
 -- @return InvalidNextToken structure as a key-value pair table
 function M.InvalidNextToken(args)
-	assert(args, "You must provdide an argument table when creating InvalidNextToken")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidNextToken")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Message"] = args["Message"],
 	}
-	asserts.AssertInvalidNextToken(t)
-	return t
+	asserts.AssertInvalidNextToken(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InstanceAggregatedAssociationOverview = { ["DetailedStatus"] = true, ["InstanceAssociationStatusAggregatedCount"] = true, nil }
@@ -6817,13 +9061,24 @@ end
 -- * InstanceAssociationStatusAggregatedCount [InstanceAssociationStatusAggregatedCount] <p>The number of associations for the instance(s).</p>
 -- @return InstanceAggregatedAssociationOverview structure as a key-value pair table
 function M.InstanceAggregatedAssociationOverview(args)
-	assert(args, "You must provdide an argument table when creating InstanceAggregatedAssociationOverview")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InstanceAggregatedAssociationOverview")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DetailedStatus"] = args["DetailedStatus"],
 		["InstanceAssociationStatusAggregatedCount"] = args["InstanceAssociationStatusAggregatedCount"],
 	}
-	asserts.AssertInstanceAggregatedAssociationOverview(t)
-	return t
+	asserts.AssertInstanceAggregatedAssociationOverview(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeInstancePatchesRequest = { ["InstanceId"] = true, ["NextToken"] = true, ["MaxResults"] = true, ["Filters"] = true, nil }
@@ -6852,15 +9107,26 @@ end
 -- Required key: InstanceId
 -- @return DescribeInstancePatchesRequest structure as a key-value pair table
 function M.DescribeInstancePatchesRequest(args)
-	assert(args, "You must provdide an argument table when creating DescribeInstancePatchesRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeInstancePatchesRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["InstanceId"] = args["InstanceId"],
 		["NextToken"] = args["NextToken"],
 		["MaxResults"] = args["MaxResults"],
 		["Filters"] = args["Filters"],
 	}
-	asserts.AssertDescribeInstancePatchesRequest(t)
-	return t
+	asserts.AssertDescribeInstancePatchesRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InstanceInformationStringFilter = { ["Values"] = true, ["Key"] = true, nil }
@@ -6887,13 +9153,24 @@ end
 -- Required key: Values
 -- @return InstanceInformationStringFilter structure as a key-value pair table
 function M.InstanceInformationStringFilter(args)
-	assert(args, "You must provdide an argument table when creating InstanceInformationStringFilter")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InstanceInformationStringFilter")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Values"] = args["Values"],
 		["Key"] = args["Key"],
 	}
-	asserts.AssertInstanceInformationStringFilter(t)
-	return t
+	asserts.AssertInstanceInformationStringFilter(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetMaintenanceWindowRequest = { ["WindowId"] = true, nil }
@@ -6916,12 +9193,23 @@ end
 -- Required key: WindowId
 -- @return GetMaintenanceWindowRequest structure as a key-value pair table
 function M.GetMaintenanceWindowRequest(args)
-	assert(args, "You must provdide an argument table when creating GetMaintenanceWindowRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetMaintenanceWindowRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["WindowId"] = args["WindowId"],
 	}
-	asserts.AssertGetMaintenanceWindowRequest(t)
-	return t
+	asserts.AssertGetMaintenanceWindowRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeregisterTargetFromMaintenanceWindowResult = { ["WindowId"] = true, ["WindowTargetId"] = true, nil }
@@ -6944,13 +9232,24 @@ end
 -- * WindowTargetId [MaintenanceWindowTargetId] <p>The ID of the removed target definition.</p>
 -- @return DeregisterTargetFromMaintenanceWindowResult structure as a key-value pair table
 function M.DeregisterTargetFromMaintenanceWindowResult(args)
-	assert(args, "You must provdide an argument table when creating DeregisterTargetFromMaintenanceWindowResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeregisterTargetFromMaintenanceWindowResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["WindowId"] = args["WindowId"],
 		["WindowTargetId"] = args["WindowTargetId"],
 	}
-	asserts.AssertDeregisterTargetFromMaintenanceWindowResult(t)
-	return t
+	asserts.AssertDeregisterTargetFromMaintenanceWindowResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AddTagsToResourceResult = { nil }
@@ -6969,11 +9268,22 @@ end
 -- Valid keys:
 -- @return AddTagsToResourceResult structure as a key-value pair table
 function M.AddTagsToResourceResult(args)
-	assert(args, "You must provdide an argument table when creating AddTagsToResourceResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AddTagsToResourceResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertAddTagsToResourceResult(t)
-	return t
+	asserts.AssertAddTagsToResourceResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.HierarchyTypeMismatchException = { ["message"] = true, nil }
@@ -6994,12 +9304,23 @@ end
 -- * message [String] <p>Parameter Store does not support changing a parameter type in a hierarchy. For example, you can't change a parameter from a String type to a SecureString type. You must create a new, unique parameter.</p>
 -- @return HierarchyTypeMismatchException structure as a key-value pair table
 function M.HierarchyTypeMismatchException(args)
-	assert(args, "You must provdide an argument table when creating HierarchyTypeMismatchException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating HierarchyTypeMismatchException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertHierarchyTypeMismatchException(t)
-	return t
+	asserts.AssertHierarchyTypeMismatchException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdateManagedInstanceRoleResult = { nil }
@@ -7018,11 +9339,22 @@ end
 -- Valid keys:
 -- @return UpdateManagedInstanceRoleResult structure as a key-value pair table
 function M.UpdateManagedInstanceRoleResult(args)
-	assert(args, "You must provdide an argument table when creating UpdateManagedInstanceRoleResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateManagedInstanceRoleResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertUpdateManagedInstanceRoleResult(t)
-	return t
+	asserts.AssertUpdateManagedInstanceRoleResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidOutputFolder = { nil }
@@ -7041,11 +9373,22 @@ end
 -- Valid keys:
 -- @return InvalidOutputFolder structure as a key-value pair table
 function M.InvalidOutputFolder(args)
-	assert(args, "You must provdide an argument table when creating InvalidOutputFolder")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidOutputFolder")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertInvalidOutputFolder(t)
-	return t
+	asserts.AssertInvalidOutputFolder(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeMaintenanceWindowsRequest = { ["NextToken"] = true, ["MaxResults"] = true, ["Filters"] = true, nil }
@@ -7070,14 +9413,25 @@ end
 -- * Filters [MaintenanceWindowFilterList] <p>Optional filters used to narrow down the scope of the returned Maintenance Windows. Supported filter keys are Name and Enabled.</p>
 -- @return DescribeMaintenanceWindowsRequest structure as a key-value pair table
 function M.DescribeMaintenanceWindowsRequest(args)
-	assert(args, "You must provdide an argument table when creating DescribeMaintenanceWindowsRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeMaintenanceWindowsRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NextToken"] = args["NextToken"],
 		["MaxResults"] = args["MaxResults"],
 		["Filters"] = args["Filters"],
 	}
-	asserts.AssertDescribeMaintenanceWindowsRequest(t)
-	return t
+	asserts.AssertDescribeMaintenanceWindowsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateActivationResult = { ["ActivationCode"] = true, ["ActivationId"] = true, nil }
@@ -7100,13 +9454,24 @@ end
 -- * ActivationId [ActivationId] <p>The ID number generated by the system when it processed the activation. The activation ID functions like a user name.</p>
 -- @return CreateActivationResult structure as a key-value pair table
 function M.CreateActivationResult(args)
-	assert(args, "You must provdide an argument table when creating CreateActivationResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateActivationResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ActivationCode"] = args["ActivationCode"],
 		["ActivationId"] = args["ActivationId"],
 	}
-	asserts.AssertCreateActivationResult(t)
-	return t
+	asserts.AssertCreateActivationResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidActivationId = { ["Message"] = true, nil }
@@ -7127,12 +9492,23 @@ end
 -- * Message [String] 
 -- @return InvalidActivationId structure as a key-value pair table
 function M.InvalidActivationId(args)
-	assert(args, "You must provdide an argument table when creating InvalidActivationId")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidActivationId")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Message"] = args["Message"],
 	}
-	asserts.AssertInvalidActivationId(t)
-	return t
+	asserts.AssertInvalidActivationId(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AssociationLimitExceeded = { nil }
@@ -7151,11 +9527,22 @@ end
 -- Valid keys:
 -- @return AssociationLimitExceeded structure as a key-value pair table
 function M.AssociationLimitExceeded(args)
-	assert(args, "You must provdide an argument table when creating AssociationLimitExceeded")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AssociationLimitExceeded")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertAssociationLimitExceeded(t)
-	return t
+	asserts.AssertAssociationLimitExceeded(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CommandFilter = { ["value"] = true, ["key"] = true, nil }
@@ -7182,13 +9569,24 @@ end
 -- Required key: value
 -- @return CommandFilter structure as a key-value pair table
 function M.CommandFilter(args)
-	assert(args, "You must provdide an argument table when creating CommandFilter")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CommandFilter")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["value"] = args["value"],
 		["key"] = args["key"],
 	}
-	asserts.AssertCommandFilter(t)
-	return t
+	asserts.AssertCommandFilter(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.StartAutomationExecutionRequest = { ["DocumentName"] = true, ["Parameters"] = true, ["DocumentVersion"] = true, nil }
@@ -7215,14 +9613,25 @@ end
 -- Required key: DocumentName
 -- @return StartAutomationExecutionRequest structure as a key-value pair table
 function M.StartAutomationExecutionRequest(args)
-	assert(args, "You must provdide an argument table when creating StartAutomationExecutionRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating StartAutomationExecutionRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DocumentName"] = args["DocumentName"],
 		["Parameters"] = args["Parameters"],
 		["DocumentVersion"] = args["DocumentVersion"],
 	}
-	asserts.AssertStartAutomationExecutionRequest(t)
-	return t
+	asserts.AssertStartAutomationExecutionRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidResultAttributeException = { ["Message"] = true, nil }
@@ -7243,12 +9652,23 @@ end
 -- * Message [String] 
 -- @return InvalidResultAttributeException structure as a key-value pair table
 function M.InvalidResultAttributeException(args)
-	assert(args, "You must provdide an argument table when creating InvalidResultAttributeException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidResultAttributeException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Message"] = args["Message"],
 	}
-	asserts.AssertInvalidResultAttributeException(t)
-	return t
+	asserts.AssertInvalidResultAttributeException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeInstanceAssociationsStatusRequest = { ["InstanceId"] = true, ["NextToken"] = true, ["MaxResults"] = true, nil }
@@ -7275,14 +9695,25 @@ end
 -- Required key: InstanceId
 -- @return DescribeInstanceAssociationsStatusRequest structure as a key-value pair table
 function M.DescribeInstanceAssociationsStatusRequest(args)
-	assert(args, "You must provdide an argument table when creating DescribeInstanceAssociationsStatusRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeInstanceAssociationsStatusRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["InstanceId"] = args["InstanceId"],
 		["NextToken"] = args["NextToken"],
 		["MaxResults"] = args["MaxResults"],
 	}
-	asserts.AssertDescribeInstanceAssociationsStatusRequest(t)
-	return t
+	asserts.AssertDescribeInstanceAssociationsStatusRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ParameterPatternMismatchException = { ["message"] = true, nil }
@@ -7303,12 +9734,23 @@ end
 -- * message [String] <p>The parameter name is not valid.</p>
 -- @return ParameterPatternMismatchException structure as a key-value pair table
 function M.ParameterPatternMismatchException(args)
-	assert(args, "You must provdide an argument table when creating ParameterPatternMismatchException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ParameterPatternMismatchException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertParameterPatternMismatchException(t)
-	return t
+	asserts.AssertParameterPatternMismatchException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetCommandInvocationResult = { ["Comment"] = true, ["ExecutionElapsedTime"] = true, ["ExecutionEndDateTime"] = true, ["StandardErrorContent"] = true, ["InstanceId"] = true, ["StandardErrorUrl"] = true, ["DocumentName"] = true, ["StandardOutputContent"] = true, ["Status"] = true, ["StatusDetails"] = true, ["PluginName"] = true, ["ResponseCode"] = true, ["ExecutionStartDateTime"] = true, ["CommandId"] = true, ["StandardOutputUrl"] = true, nil }
@@ -7357,8 +9799,14 @@ end
 -- * StandardOutputUrl [Url] <p>The URL for the complete text written by the plugin to stdout in Amazon S3. If an Amazon S3 bucket was not specified, then this string is empty.</p>
 -- @return GetCommandInvocationResult structure as a key-value pair table
 function M.GetCommandInvocationResult(args)
-	assert(args, "You must provdide an argument table when creating GetCommandInvocationResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetCommandInvocationResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Comment"] = args["Comment"],
 		["ExecutionElapsedTime"] = args["ExecutionElapsedTime"],
 		["ExecutionEndDateTime"] = args["ExecutionEndDateTime"],
@@ -7375,8 +9823,13 @@ function M.GetCommandInvocationResult(args)
 		["CommandId"] = args["CommandId"],
 		["StandardOutputUrl"] = args["StandardOutputUrl"],
 	}
-	asserts.AssertGetCommandInvocationResult(t)
-	return t
+	asserts.AssertGetCommandInvocationResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.FailedCreateAssociation = { ["Entry"] = true, ["Message"] = true, ["Fault"] = true, nil }
@@ -7401,14 +9854,25 @@ end
 -- * Fault [Fault] <p>The source of the failure.</p>
 -- @return FailedCreateAssociation structure as a key-value pair table
 function M.FailedCreateAssociation(args)
-	assert(args, "You must provdide an argument table when creating FailedCreateAssociation")
-	local t = { 
+	assert(args, "You must provide an argument table when creating FailedCreateAssociation")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Entry"] = args["Entry"],
 		["Message"] = args["Message"],
 		["Fault"] = args["Fault"],
 	}
-	asserts.AssertFailedCreateAssociation(t)
-	return t
+	asserts.AssertFailedCreateAssociation(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DocumentDescription = { ["Status"] = true, ["Sha1"] = true, ["Hash"] = true, ["Name"] = true, ["Parameters"] = true, ["DocumentType"] = true, ["PlatformTypes"] = true, ["DocumentVersion"] = true, ["HashType"] = true, ["CreatedDate"] = true, ["Owner"] = true, ["SchemaVersion"] = true, ["DefaultVersion"] = true, ["LatestVersion"] = true, ["Description"] = true, nil }
@@ -7457,8 +9921,14 @@ end
 -- * Description [DescriptionInDocument] <p>A description of the document. </p>
 -- @return DocumentDescription structure as a key-value pair table
 function M.DocumentDescription(args)
-	assert(args, "You must provdide an argument table when creating DocumentDescription")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DocumentDescription")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Status"] = args["Status"],
 		["Sha1"] = args["Sha1"],
 		["Hash"] = args["Hash"],
@@ -7475,8 +9945,13 @@ function M.DocumentDescription(args)
 		["LatestVersion"] = args["LatestVersion"],
 		["Description"] = args["Description"],
 	}
-	asserts.AssertDocumentDescription(t)
-	return t
+	asserts.AssertDocumentDescription(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdateAssociationResult = { ["AssociationDescription"] = true, nil }
@@ -7497,12 +9972,23 @@ end
 -- * AssociationDescription [AssociationDescription] <p>The description of the association that was updated.</p>
 -- @return UpdateAssociationResult structure as a key-value pair table
 function M.UpdateAssociationResult(args)
-	assert(args, "You must provdide an argument table when creating UpdateAssociationResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateAssociationResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["AssociationDescription"] = args["AssociationDescription"],
 	}
-	asserts.AssertUpdateAssociationResult(t)
-	return t
+	asserts.AssertUpdateAssociationResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.MaintenanceWindowTarget = { ["ResourceType"] = true, ["OwnerInformation"] = true, ["WindowId"] = true, ["Targets"] = true, ["WindowTargetId"] = true, nil }
@@ -7531,16 +10017,27 @@ end
 -- * WindowTargetId [MaintenanceWindowTargetId] <p>The ID of the target.</p>
 -- @return MaintenanceWindowTarget structure as a key-value pair table
 function M.MaintenanceWindowTarget(args)
-	assert(args, "You must provdide an argument table when creating MaintenanceWindowTarget")
-	local t = { 
+	assert(args, "You must provide an argument table when creating MaintenanceWindowTarget")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ResourceType"] = args["ResourceType"],
 		["OwnerInformation"] = args["OwnerInformation"],
 		["WindowId"] = args["WindowId"],
 		["Targets"] = args["Targets"],
 		["WindowTargetId"] = args["WindowTargetId"],
 	}
-	asserts.AssertMaintenanceWindowTarget(t)
-	return t
+	asserts.AssertMaintenanceWindowTarget(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetMaintenanceWindowExecutionTaskResult = { ["Status"] = true, ["MaxErrors"] = true, ["TaskArn"] = true, ["MaxConcurrency"] = true, ["ServiceRole"] = true, ["WindowExecutionId"] = true, ["StatusDetails"] = true, ["Priority"] = true, ["StartTime"] = true, ["EndTime"] = true, ["Type"] = true, ["TaskParameters"] = true, ["TaskExecutionId"] = true, nil }
@@ -7585,8 +10082,14 @@ end
 -- * TaskExecutionId [MaintenanceWindowExecutionTaskId] <p>The ID of the specific task execution in the Maintenance Window task that was retrieved.</p>
 -- @return GetMaintenanceWindowExecutionTaskResult structure as a key-value pair table
 function M.GetMaintenanceWindowExecutionTaskResult(args)
-	assert(args, "You must provdide an argument table when creating GetMaintenanceWindowExecutionTaskResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetMaintenanceWindowExecutionTaskResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Status"] = args["Status"],
 		["MaxErrors"] = args["MaxErrors"],
 		["TaskArn"] = args["TaskArn"],
@@ -7601,8 +10104,13 @@ function M.GetMaintenanceWindowExecutionTaskResult(args)
 		["TaskParameters"] = args["TaskParameters"],
 		["TaskExecutionId"] = args["TaskExecutionId"],
 	}
-	asserts.AssertGetMaintenanceWindowExecutionTaskResult(t)
-	return t
+	asserts.AssertGetMaintenanceWindowExecutionTaskResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetInventoryResult = { ["Entities"] = true, ["NextToken"] = true, nil }
@@ -7625,13 +10133,24 @@ end
 -- * NextToken [NextToken] <p>The token to use when requesting the next set of items. If there are no additional items to return, the string is empty.</p>
 -- @return GetInventoryResult structure as a key-value pair table
 function M.GetInventoryResult(args)
-	assert(args, "You must provdide an argument table when creating GetInventoryResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetInventoryResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Entities"] = args["Entities"],
 		["NextToken"] = args["NextToken"],
 	}
-	asserts.AssertGetInventoryResult(t)
-	return t
+	asserts.AssertGetInventoryResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetPatchBaselineRequest = { ["BaselineId"] = true, nil }
@@ -7654,12 +10173,23 @@ end
 -- Required key: BaselineId
 -- @return GetPatchBaselineRequest structure as a key-value pair table
 function M.GetPatchBaselineRequest(args)
-	assert(args, "You must provdide an argument table when creating GetPatchBaselineRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetPatchBaselineRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["BaselineId"] = args["BaselineId"],
 	}
-	asserts.AssertGetPatchBaselineRequest(t)
-	return t
+	asserts.AssertGetPatchBaselineRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.RegisterPatchBaselineForPatchGroupResult = { ["PatchGroup"] = true, ["BaselineId"] = true, nil }
@@ -7682,13 +10212,24 @@ end
 -- * BaselineId [BaselineId] <p>The ID of the patch baseline the patch group was registered with.</p>
 -- @return RegisterPatchBaselineForPatchGroupResult structure as a key-value pair table
 function M.RegisterPatchBaselineForPatchGroupResult(args)
-	assert(args, "You must provdide an argument table when creating RegisterPatchBaselineForPatchGroupResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating RegisterPatchBaselineForPatchGroupResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["PatchGroup"] = args["PatchGroup"],
 		["BaselineId"] = args["BaselineId"],
 	}
-	asserts.AssertRegisterPatchBaselineForPatchGroupResult(t)
-	return t
+	asserts.AssertRegisterPatchBaselineForPatchGroupResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.TooManyUpdates = { ["Message"] = true, nil }
@@ -7709,12 +10250,23 @@ end
 -- * Message [String] 
 -- @return TooManyUpdates structure as a key-value pair table
 function M.TooManyUpdates(args)
-	assert(args, "You must provdide an argument table when creating TooManyUpdates")
-	local t = { 
+	assert(args, "You must provide an argument table when creating TooManyUpdates")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Message"] = args["Message"],
 	}
-	asserts.AssertTooManyUpdates(t)
-	return t
+	asserts.AssertTooManyUpdates(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.PatchOrchestratorFilter = { ["Values"] = true, ["Key"] = true, nil }
@@ -7737,13 +10289,24 @@ end
 -- * Key [PatchOrchestratorFilterKey] <p>The key for the filter.</p>
 -- @return PatchOrchestratorFilter structure as a key-value pair table
 function M.PatchOrchestratorFilter(args)
-	assert(args, "You must provdide an argument table when creating PatchOrchestratorFilter")
-	local t = { 
+	assert(args, "You must provide an argument table when creating PatchOrchestratorFilter")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Values"] = args["Values"],
 		["Key"] = args["Key"],
 	}
-	asserts.AssertPatchOrchestratorFilter(t)
-	return t
+	asserts.AssertPatchOrchestratorFilter(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeregisterTargetFromMaintenanceWindowRequest = { ["WindowId"] = true, ["WindowTargetId"] = true, nil }
@@ -7770,13 +10333,24 @@ end
 -- Required key: WindowTargetId
 -- @return DeregisterTargetFromMaintenanceWindowRequest structure as a key-value pair table
 function M.DeregisterTargetFromMaintenanceWindowRequest(args)
-	assert(args, "You must provdide an argument table when creating DeregisterTargetFromMaintenanceWindowRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeregisterTargetFromMaintenanceWindowRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["WindowId"] = args["WindowId"],
 		["WindowTargetId"] = args["WindowTargetId"],
 	}
-	asserts.AssertDeregisterTargetFromMaintenanceWindowRequest(t)
-	return t
+	asserts.AssertDeregisterTargetFromMaintenanceWindowRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.PatchRule = { ["PatchFilterGroup"] = true, ["ApproveAfterDays"] = true, nil }
@@ -7803,13 +10377,24 @@ end
 -- Required key: ApproveAfterDays
 -- @return PatchRule structure as a key-value pair table
 function M.PatchRule(args)
-	assert(args, "You must provdide an argument table when creating PatchRule")
-	local t = { 
+	assert(args, "You must provide an argument table when creating PatchRule")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["PatchFilterGroup"] = args["PatchFilterGroup"],
 		["ApproveAfterDays"] = args["ApproveAfterDays"],
 	}
-	asserts.AssertPatchRule(t)
-	return t
+	asserts.AssertPatchRule(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteActivationResult = { nil }
@@ -7828,11 +10413,22 @@ end
 -- Valid keys:
 -- @return DeleteActivationResult structure as a key-value pair table
 function M.DeleteActivationResult(args)
-	assert(args, "You must provdide an argument table when creating DeleteActivationResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteActivationResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertDeleteActivationResult(t)
-	return t
+	asserts.AssertDeleteActivationResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CustomSchemaCountLimitExceededException = { ["Message"] = true, nil }
@@ -7853,12 +10449,23 @@ end
 -- * Message [String] 
 -- @return CustomSchemaCountLimitExceededException structure as a key-value pair table
 function M.CustomSchemaCountLimitExceededException(args)
-	assert(args, "You must provdide an argument table when creating CustomSchemaCountLimitExceededException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CustomSchemaCountLimitExceededException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Message"] = args["Message"],
 	}
-	asserts.AssertCustomSchemaCountLimitExceededException(t)
-	return t
+	asserts.AssertCustomSchemaCountLimitExceededException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteParameterResult = { nil }
@@ -7877,11 +10484,22 @@ end
 -- Valid keys:
 -- @return DeleteParameterResult structure as a key-value pair table
 function M.DeleteParameterResult(args)
-	assert(args, "You must provdide an argument table when creating DeleteParameterResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteParameterResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertDeleteParameterResult(t)
-	return t
+	asserts.AssertDeleteParameterResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidFilterOption = { ["message"] = true, nil }
@@ -7902,12 +10520,23 @@ end
 -- * message [String] <p>The specified filter option is not valid. Valid options are Equals and BeginsWith. For Path filter, valid options are Recursive and OneLevel.</p>
 -- @return InvalidFilterOption structure as a key-value pair table
 function M.InvalidFilterOption(args)
-	assert(args, "You must provdide an argument table when creating InvalidFilterOption")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidFilterOption")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertInvalidFilterOption(t)
-	return t
+	asserts.AssertInvalidFilterOption(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.S3OutputLocation = { ["OutputS3KeyPrefix"] = true, ["OutputS3BucketName"] = true, ["OutputS3Region"] = true, nil }
@@ -7932,14 +10561,25 @@ end
 -- * OutputS3Region [S3Region] <p>(Deprecated) You can no longer specify this parameter. The system ignores it. Instead, Systems Manager automatically determines the Amazon S3 bucket region.</p>
 -- @return S3OutputLocation structure as a key-value pair table
 function M.S3OutputLocation(args)
-	assert(args, "You must provdide an argument table when creating S3OutputLocation")
-	local t = { 
+	assert(args, "You must provide an argument table when creating S3OutputLocation")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["OutputS3KeyPrefix"] = args["OutputS3KeyPrefix"],
 		["OutputS3BucketName"] = args["OutputS3BucketName"],
 		["OutputS3Region"] = args["OutputS3Region"],
 	}
-	asserts.AssertS3OutputLocation(t)
-	return t
+	asserts.AssertS3OutputLocation(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AssociationOverview = { ["Status"] = true, ["DetailedStatus"] = true, ["AssociationStatusAggregatedCount"] = true, nil }
@@ -7964,14 +10604,25 @@ end
 -- * AssociationStatusAggregatedCount [AssociationStatusAggregatedCount] <p>Returns the number of targets for the association status. For example, if you created an association with two instances, and one of them was successful, this would return the count of instances by status.</p>
 -- @return AssociationOverview structure as a key-value pair table
 function M.AssociationOverview(args)
-	assert(args, "You must provdide an argument table when creating AssociationOverview")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AssociationOverview")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Status"] = args["Status"],
 		["DetailedStatus"] = args["DetailedStatus"],
 		["AssociationStatusAggregatedCount"] = args["AssociationStatusAggregatedCount"],
 	}
-	asserts.AssertAssociationOverview(t)
-	return t
+	asserts.AssertAssociationOverview(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DocumentDefaultVersionDescription = { ["DefaultVersion"] = true, ["Name"] = true, nil }
@@ -7994,13 +10645,24 @@ end
 -- * Name [DocumentName] <p>The name of the document.</p>
 -- @return DocumentDefaultVersionDescription structure as a key-value pair table
 function M.DocumentDefaultVersionDescription(args)
-	assert(args, "You must provdide an argument table when creating DocumentDefaultVersionDescription")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DocumentDefaultVersionDescription")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DefaultVersion"] = args["DefaultVersion"],
 		["Name"] = args["Name"],
 	}
-	asserts.AssertDocumentDefaultVersionDescription(t)
-	return t
+	asserts.AssertDocumentDefaultVersionDescription(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidTypeNameException = { ["Message"] = true, nil }
@@ -8021,12 +10683,23 @@ end
 -- * Message [String] 
 -- @return InvalidTypeNameException structure as a key-value pair table
 function M.InvalidTypeNameException(args)
-	assert(args, "You must provdide an argument table when creating InvalidTypeNameException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidTypeNameException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Message"] = args["Message"],
 	}
-	asserts.AssertInvalidTypeNameException(t)
-	return t
+	asserts.AssertInvalidTypeNameException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ParameterNotFound = { ["message"] = true, nil }
@@ -8047,12 +10720,23 @@ end
 -- * message [String] 
 -- @return ParameterNotFound structure as a key-value pair table
 function M.ParameterNotFound(args)
-	assert(args, "You must provdide an argument table when creating ParameterNotFound")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ParameterNotFound")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertParameterNotFound(t)
-	return t
+	asserts.AssertParameterNotFound(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InstancePatchState = { ["OperationStartTime"] = true, ["BaselineId"] = true, ["FailedCount"] = true, ["InstanceId"] = true, ["OwnerInformation"] = true, ["NotApplicableCount"] = true, ["OperationEndTime"] = true, ["PatchGroup"] = true, ["InstalledOtherCount"] = true, ["MissingCount"] = true, ["SnapshotId"] = true, ["Operation"] = true, ["InstalledCount"] = true, nil }
@@ -8109,8 +10793,14 @@ end
 -- Required key: Operation
 -- @return InstancePatchState structure as a key-value pair table
 function M.InstancePatchState(args)
-	assert(args, "You must provdide an argument table when creating InstancePatchState")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InstancePatchState")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["OperationStartTime"] = args["OperationStartTime"],
 		["BaselineId"] = args["BaselineId"],
 		["FailedCount"] = args["FailedCount"],
@@ -8125,8 +10815,13 @@ function M.InstancePatchState(args)
 		["Operation"] = args["Operation"],
 		["InstalledCount"] = args["InstalledCount"],
 	}
-	asserts.AssertInstancePatchState(t)
-	return t
+	asserts.AssertInstancePatchState(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidDocumentOperation = { ["Message"] = true, nil }
@@ -8147,12 +10842,23 @@ end
 -- * Message [String] 
 -- @return InvalidDocumentOperation structure as a key-value pair table
 function M.InvalidDocumentOperation(args)
-	assert(args, "You must provdide an argument table when creating InvalidDocumentOperation")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidDocumentOperation")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Message"] = args["Message"],
 	}
-	asserts.AssertInvalidDocumentOperation(t)
-	return t
+	asserts.AssertInvalidDocumentOperation(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListCommandInvocationsRequest = { ["InstanceId"] = true, ["MaxResults"] = true, ["Details"] = true, ["Filters"] = true, ["NextToken"] = true, ["CommandId"] = true, nil }
@@ -8183,8 +10889,14 @@ end
 -- * CommandId [CommandId] <p>(Optional) The invocations for a specific command ID.</p>
 -- @return ListCommandInvocationsRequest structure as a key-value pair table
 function M.ListCommandInvocationsRequest(args)
-	assert(args, "You must provdide an argument table when creating ListCommandInvocationsRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListCommandInvocationsRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["InstanceId"] = args["InstanceId"],
 		["MaxResults"] = args["MaxResults"],
 		["Details"] = args["Details"],
@@ -8192,8 +10904,13 @@ function M.ListCommandInvocationsRequest(args)
 		["NextToken"] = args["NextToken"],
 		["CommandId"] = args["CommandId"],
 	}
-	asserts.AssertListCommandInvocationsRequest(t)
-	return t
+	asserts.AssertListCommandInvocationsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UnsupportedInventorySchemaVersionException = { ["Message"] = true, nil }
@@ -8214,12 +10931,23 @@ end
 -- * Message [String] 
 -- @return UnsupportedInventorySchemaVersionException structure as a key-value pair table
 function M.UnsupportedInventorySchemaVersionException(args)
-	assert(args, "You must provdide an argument table when creating UnsupportedInventorySchemaVersionException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UnsupportedInventorySchemaVersionException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Message"] = args["Message"],
 	}
-	asserts.AssertUnsupportedInventorySchemaVersionException(t)
-	return t
+	asserts.AssertUnsupportedInventorySchemaVersionException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AssociationFilter = { ["value"] = true, ["key"] = true, nil }
@@ -8246,13 +10974,24 @@ end
 -- Required key: value
 -- @return AssociationFilter structure as a key-value pair table
 function M.AssociationFilter(args)
-	assert(args, "You must provdide an argument table when creating AssociationFilter")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AssociationFilter")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["value"] = args["value"],
 		["key"] = args["key"],
 	}
-	asserts.AssertAssociationFilter(t)
-	return t
+	asserts.AssertAssociationFilter(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetParameterHistoryRequest = { ["NextToken"] = true, ["Name"] = true, ["MaxResults"] = true, ["WithDecryption"] = true, nil }
@@ -8281,15 +11020,26 @@ end
 -- Required key: Name
 -- @return GetParameterHistoryRequest structure as a key-value pair table
 function M.GetParameterHistoryRequest(args)
-	assert(args, "You must provdide an argument table when creating GetParameterHistoryRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetParameterHistoryRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NextToken"] = args["NextToken"],
 		["Name"] = args["Name"],
 		["MaxResults"] = args["MaxResults"],
 		["WithDecryption"] = args["WithDecryption"],
 	}
-	asserts.AssertGetParameterHistoryRequest(t)
-	return t
+	asserts.AssertGetParameterHistoryRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.RegisterDefaultPatchBaselineRequest = { ["BaselineId"] = true, nil }
@@ -8312,12 +11062,23 @@ end
 -- Required key: BaselineId
 -- @return RegisterDefaultPatchBaselineRequest structure as a key-value pair table
 function M.RegisterDefaultPatchBaselineRequest(args)
-	assert(args, "You must provdide an argument table when creating RegisterDefaultPatchBaselineRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating RegisterDefaultPatchBaselineRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["BaselineId"] = args["BaselineId"],
 	}
-	asserts.AssertRegisterDefaultPatchBaselineRequest(t)
-	return t
+	asserts.AssertRegisterDefaultPatchBaselineRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidResourceId = { nil }
@@ -8336,11 +11097,22 @@ end
 -- Valid keys:
 -- @return InvalidResourceId structure as a key-value pair table
 function M.InvalidResourceId(args)
-	assert(args, "You must provdide an argument table when creating InvalidResourceId")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidResourceId")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertInvalidResourceId(t)
-	return t
+	asserts.AssertInvalidResourceId(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AssociationAlreadyExists = { nil }
@@ -8359,11 +11131,22 @@ end
 -- Valid keys:
 -- @return AssociationAlreadyExists structure as a key-value pair table
 function M.AssociationAlreadyExists(args)
-	assert(args, "You must provdide an argument table when creating AssociationAlreadyExists")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AssociationAlreadyExists")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertAssociationAlreadyExists(t)
-	return t
+	asserts.AssertAssociationAlreadyExists(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribePatchGroupsResult = { ["NextToken"] = true, ["Mappings"] = true, nil }
@@ -8386,13 +11169,24 @@ end
 -- * Mappings [PatchGroupPatchBaselineMappingList] <p>Each entry in the array contains:</p> <p>PatchGroup: string (between 1 and 256 characters, Regex: ^([\p{L}\p{Z}\p{N}_.:/=+\-@]*)$)</p> <p>PatchBaselineIdentity: A PatchBaselineIdentity element. </p>
 -- @return DescribePatchGroupsResult structure as a key-value pair table
 function M.DescribePatchGroupsResult(args)
-	assert(args, "You must provdide an argument table when creating DescribePatchGroupsResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribePatchGroupsResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NextToken"] = args["NextToken"],
 		["Mappings"] = args["Mappings"],
 	}
-	asserts.AssertDescribePatchGroupsResult(t)
-	return t
+	asserts.AssertDescribePatchGroupsResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeInstanceInformationResult = { ["InstanceInformationList"] = true, ["NextToken"] = true, nil }
@@ -8415,13 +11209,24 @@ end
 -- * NextToken [NextToken] <p>The token to use when requesting the next set of items. If there are no additional items to return, the string is empty. </p>
 -- @return DescribeInstanceInformationResult structure as a key-value pair table
 function M.DescribeInstanceInformationResult(args)
-	assert(args, "You must provdide an argument table when creating DescribeInstanceInformationResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeInstanceInformationResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["InstanceInformationList"] = args["InstanceInformationList"],
 		["NextToken"] = args["NextToken"],
 	}
-	asserts.AssertDescribeInstanceInformationResult(t)
-	return t
+	asserts.AssertDescribeInstanceInformationResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AutomationExecutionFilter = { ["Values"] = true, ["Key"] = true, nil }
@@ -8448,13 +11253,24 @@ end
 -- Required key: Values
 -- @return AutomationExecutionFilter structure as a key-value pair table
 function M.AutomationExecutionFilter(args)
-	assert(args, "You must provdide an argument table when creating AutomationExecutionFilter")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AutomationExecutionFilter")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Values"] = args["Values"],
 		["Key"] = args["Key"],
 	}
-	asserts.AssertAutomationExecutionFilter(t)
-	return t
+	asserts.AssertAutomationExecutionFilter(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetParameterRequest = { ["Name"] = true, ["WithDecryption"] = true, nil }
@@ -8479,13 +11295,24 @@ end
 -- Required key: Name
 -- @return GetParameterRequest structure as a key-value pair table
 function M.GetParameterRequest(args)
-	assert(args, "You must provdide an argument table when creating GetParameterRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetParameterRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Name"] = args["Name"],
 		["WithDecryption"] = args["WithDecryption"],
 	}
-	asserts.AssertGetParameterRequest(t)
-	return t
+	asserts.AssertGetParameterRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.PatchComplianceData = { ["KBId"] = true, ["Severity"] = true, ["Classification"] = true, ["Title"] = true, ["State"] = true, ["InstalledTime"] = true, nil }
@@ -8528,8 +11355,14 @@ end
 -- Required key: InstalledTime
 -- @return PatchComplianceData structure as a key-value pair table
 function M.PatchComplianceData(args)
-	assert(args, "You must provdide an argument table when creating PatchComplianceData")
-	local t = { 
+	assert(args, "You must provide an argument table when creating PatchComplianceData")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["KBId"] = args["KBId"],
 		["Severity"] = args["Severity"],
 		["Classification"] = args["Classification"],
@@ -8537,8 +11370,13 @@ function M.PatchComplianceData(args)
 		["State"] = args["State"],
 		["InstalledTime"] = args["InstalledTime"],
 	}
-	asserts.AssertPatchComplianceData(t)
-	return t
+	asserts.AssertPatchComplianceData(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdateDocumentRequest = { ["Content"] = true, ["Name"] = true, ["DocumentVersion"] = true, nil }
@@ -8567,14 +11405,25 @@ end
 -- Required key: Name
 -- @return UpdateDocumentRequest structure as a key-value pair table
 function M.UpdateDocumentRequest(args)
-	assert(args, "You must provdide an argument table when creating UpdateDocumentRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateDocumentRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Content"] = args["Content"],
 		["Name"] = args["Name"],
 		["DocumentVersion"] = args["DocumentVersion"],
 	}
-	asserts.AssertUpdateDocumentRequest(t)
-	return t
+	asserts.AssertUpdateDocumentRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.PutInventoryResult = { nil }
@@ -8593,11 +11442,22 @@ end
 -- Valid keys:
 -- @return PutInventoryResult structure as a key-value pair table
 function M.PutInventoryResult(args)
-	assert(args, "You must provdide an argument table when creating PutInventoryResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating PutInventoryResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertPutInventoryResult(t)
-	return t
+	asserts.AssertPutInventoryResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListAssociationsResult = { ["Associations"] = true, ["NextToken"] = true, nil }
@@ -8620,13 +11480,24 @@ end
 -- * NextToken [NextToken] <p>The token to use when requesting the next set of items. If there are no additional items to return, the string is empty.</p>
 -- @return ListAssociationsResult structure as a key-value pair table
 function M.ListAssociationsResult(args)
-	assert(args, "You must provdide an argument table when creating ListAssociationsResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListAssociationsResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Associations"] = args["Associations"],
 		["NextToken"] = args["NextToken"],
 	}
-	asserts.AssertListAssociationsResult(t)
-	return t
+	asserts.AssertListAssociationsResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidOutputLocation = { nil }
@@ -8645,11 +11516,22 @@ end
 -- Valid keys:
 -- @return InvalidOutputLocation structure as a key-value pair table
 function M.InvalidOutputLocation(args)
-	assert(args, "You must provdide an argument table when creating InvalidOutputLocation")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidOutputLocation")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertInvalidOutputLocation(t)
-	return t
+	asserts.AssertInvalidOutputLocation(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidParameters = { ["Message"] = true, nil }
@@ -8670,12 +11552,23 @@ end
 -- * Message [String] 
 -- @return InvalidParameters structure as a key-value pair table
 function M.InvalidParameters(args)
-	assert(args, "You must provdide an argument table when creating InvalidParameters")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidParameters")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Message"] = args["Message"],
 	}
-	asserts.AssertInvalidParameters(t)
-	return t
+	asserts.AssertInvalidParameters(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteDocumentResult = { nil }
@@ -8694,11 +11587,22 @@ end
 -- Valid keys:
 -- @return DeleteDocumentResult structure as a key-value pair table
 function M.DeleteDocumentResult(args)
-	assert(args, "You must provdide an argument table when creating DeleteDocumentResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteDocumentResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertDeleteDocumentResult(t)
-	return t
+	asserts.AssertDeleteDocumentResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateMaintenanceWindowRequest = { ["Cutoff"] = true, ["Name"] = true, ["Schedule"] = true, ["AllowUnassociatedTargets"] = true, ["ClientToken"] = true, ["Duration"] = true, nil }
@@ -8739,8 +11643,14 @@ end
 -- Required key: AllowUnassociatedTargets
 -- @return CreateMaintenanceWindowRequest structure as a key-value pair table
 function M.CreateMaintenanceWindowRequest(args)
-	assert(args, "You must provdide an argument table when creating CreateMaintenanceWindowRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateMaintenanceWindowRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Cutoff"] = args["Cutoff"],
 		["Name"] = args["Name"],
 		["Schedule"] = args["Schedule"],
@@ -8748,8 +11658,13 @@ function M.CreateMaintenanceWindowRequest(args)
 		["ClientToken"] = args["ClientToken"],
 		["Duration"] = args["Duration"],
 	}
-	asserts.AssertCreateMaintenanceWindowRequest(t)
-	return t
+	asserts.AssertCreateMaintenanceWindowRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeInstancePatchStatesForPatchGroupRequest = { ["PatchGroup"] = true, ["NextToken"] = true, ["MaxResults"] = true, ["Filters"] = true, nil }
@@ -8778,15 +11693,26 @@ end
 -- Required key: PatchGroup
 -- @return DescribeInstancePatchStatesForPatchGroupRequest structure as a key-value pair table
 function M.DescribeInstancePatchStatesForPatchGroupRequest(args)
-	assert(args, "You must provdide an argument table when creating DescribeInstancePatchStatesForPatchGroupRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeInstancePatchStatesForPatchGroupRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["PatchGroup"] = args["PatchGroup"],
 		["NextToken"] = args["NextToken"],
 		["MaxResults"] = args["MaxResults"],
 		["Filters"] = args["Filters"],
 	}
-	asserts.AssertDescribeInstancePatchStatesForPatchGroupRequest(t)
-	return t
+	asserts.AssertDescribeInstancePatchStatesForPatchGroupRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetDefaultPatchBaselineResult = { ["BaselineId"] = true, nil }
@@ -8807,12 +11733,23 @@ end
 -- * BaselineId [BaselineId] <p>The ID of the default patch baseline.</p>
 -- @return GetDefaultPatchBaselineResult structure as a key-value pair table
 function M.GetDefaultPatchBaselineResult(args)
-	assert(args, "You must provdide an argument table when creating GetDefaultPatchBaselineResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetDefaultPatchBaselineResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["BaselineId"] = args["BaselineId"],
 	}
-	asserts.AssertGetDefaultPatchBaselineResult(t)
-	return t
+	asserts.AssertGetDefaultPatchBaselineResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetDefaultPatchBaselineRequest = { nil }
@@ -8831,11 +11768,22 @@ end
 -- Valid keys:
 -- @return GetDefaultPatchBaselineRequest structure as a key-value pair table
 function M.GetDefaultPatchBaselineRequest(args)
-	assert(args, "You must provdide an argument table when creating GetDefaultPatchBaselineRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetDefaultPatchBaselineRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertGetDefaultPatchBaselineRequest(t)
-	return t
+	asserts.AssertGetDefaultPatchBaselineRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeAssociationRequest = { ["InstanceId"] = true, ["AssociationId"] = true, ["Name"] = true, nil }
@@ -8860,14 +11808,25 @@ end
 -- * Name [DocumentName] <p>The name of the SSM document.</p>
 -- @return DescribeAssociationRequest structure as a key-value pair table
 function M.DescribeAssociationRequest(args)
-	assert(args, "You must provdide an argument table when creating DescribeAssociationRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeAssociationRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["InstanceId"] = args["InstanceId"],
 		["AssociationId"] = args["AssociationId"],
 		["Name"] = args["Name"],
 	}
-	asserts.AssertDescribeAssociationRequest(t)
-	return t
+	asserts.AssertDescribeAssociationRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeInstanceInformationRequest = { ["InstanceInformationFilterList"] = true, ["NextToken"] = true, ["MaxResults"] = true, ["Filters"] = true, nil }
@@ -8894,15 +11853,26 @@ end
 -- * Filters [InstanceInformationStringFilterList] <p>One or more filters. Use a filter to return a more specific list of instances.</p>
 -- @return DescribeInstanceInformationRequest structure as a key-value pair table
 function M.DescribeInstanceInformationRequest(args)
-	assert(args, "You must provdide an argument table when creating DescribeInstanceInformationRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeInstanceInformationRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["InstanceInformationFilterList"] = args["InstanceInformationFilterList"],
 		["NextToken"] = args["NextToken"],
 		["MaxResults"] = args["MaxResults"],
 		["Filters"] = args["Filters"],
 	}
-	asserts.AssertDescribeInstanceInformationRequest(t)
-	return t
+	asserts.AssertDescribeInstanceInformationRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListCommandsResult = { ["Commands"] = true, ["NextToken"] = true, nil }
@@ -8925,13 +11895,24 @@ end
 -- * NextToken [NextToken] <p>(Optional) The token for the next set of items to return. (You received this token from a previous call.)</p>
 -- @return ListCommandsResult structure as a key-value pair table
 function M.ListCommandsResult(args)
-	assert(args, "You must provdide an argument table when creating ListCommandsResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListCommandsResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Commands"] = args["Commands"],
 		["NextToken"] = args["NextToken"],
 	}
-	asserts.AssertListCommandsResult(t)
-	return t
+	asserts.AssertListCommandsResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidFilterValue = { ["Message"] = true, nil }
@@ -8952,12 +11933,23 @@ end
 -- * Message [String] 
 -- @return InvalidFilterValue structure as a key-value pair table
 function M.InvalidFilterValue(args)
-	assert(args, "You must provdide an argument table when creating InvalidFilterValue")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidFilterValue")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Message"] = args["Message"],
 	}
-	asserts.AssertInvalidFilterValue(t)
-	return t
+	asserts.AssertInvalidFilterValue(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetCommandInvocationRequest = { ["InstanceId"] = true, ["PluginName"] = true, ["CommandId"] = true, nil }
@@ -8986,14 +11978,25 @@ end
 -- Required key: InstanceId
 -- @return GetCommandInvocationRequest structure as a key-value pair table
 function M.GetCommandInvocationRequest(args)
-	assert(args, "You must provdide an argument table when creating GetCommandInvocationRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetCommandInvocationRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["InstanceId"] = args["InstanceId"],
 		["PluginName"] = args["PluginName"],
 		["CommandId"] = args["CommandId"],
 	}
-	asserts.AssertGetCommandInvocationRequest(t)
-	return t
+	asserts.AssertGetCommandInvocationRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateDocumentRequest = { ["Content"] = true, ["Name"] = true, ["DocumentType"] = true, nil }
@@ -9022,14 +12025,25 @@ end
 -- Required key: Name
 -- @return CreateDocumentRequest structure as a key-value pair table
 function M.CreateDocumentRequest(args)
-	assert(args, "You must provdide an argument table when creating CreateDocumentRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateDocumentRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Content"] = args["Content"],
 		["Name"] = args["Name"],
 		["DocumentType"] = args["DocumentType"],
 	}
-	asserts.AssertCreateDocumentRequest(t)
-	return t
+	asserts.AssertCreateDocumentRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InstanceAssociationStatusInfo = { ["Status"] = true, ["DetailedStatus"] = true, ["OutputUrl"] = true, ["Name"] = true, ["InstanceId"] = true, ["AssociationId"] = true, ["DocumentVersion"] = true, ["ErrorCode"] = true, ["ExecutionSummary"] = true, ["ExecutionDate"] = true, nil }
@@ -9068,8 +12082,14 @@ end
 -- * ExecutionDate [DateTime] <p>The date the instance association executed. </p>
 -- @return InstanceAssociationStatusInfo structure as a key-value pair table
 function M.InstanceAssociationStatusInfo(args)
-	assert(args, "You must provdide an argument table when creating InstanceAssociationStatusInfo")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InstanceAssociationStatusInfo")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Status"] = args["Status"],
 		["DetailedStatus"] = args["DetailedStatus"],
 		["OutputUrl"] = args["OutputUrl"],
@@ -9081,8 +12101,13 @@ function M.InstanceAssociationStatusInfo(args)
 		["ExecutionSummary"] = args["ExecutionSummary"],
 		["ExecutionDate"] = args["ExecutionDate"],
 	}
-	asserts.AssertInstanceAssociationStatusInfo(t)
-	return t
+	asserts.AssertInstanceAssociationStatusInfo(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ParametersFilter = { ["Values"] = true, ["Key"] = true, nil }
@@ -9109,13 +12134,24 @@ end
 -- Required key: Values
 -- @return ParametersFilter structure as a key-value pair table
 function M.ParametersFilter(args)
-	assert(args, "You must provdide an argument table when creating ParametersFilter")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ParametersFilter")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Values"] = args["Values"],
 		["Key"] = args["Key"],
 	}
-	asserts.AssertParametersFilter(t)
-	return t
+	asserts.AssertParametersFilter(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.TooManyTagsError = { nil }
@@ -9134,11 +12170,22 @@ end
 -- Valid keys:
 -- @return TooManyTagsError structure as a key-value pair table
 function M.TooManyTagsError(args)
-	assert(args, "You must provdide an argument table when creating TooManyTagsError")
-	local t = { 
+	assert(args, "You must provide an argument table when creating TooManyTagsError")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertTooManyTagsError(t)
-	return t
+	asserts.AssertTooManyTagsError(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeDocumentPermissionRequest = { ["PermissionType"] = true, ["Name"] = true, nil }
@@ -9165,13 +12212,24 @@ end
 -- Required key: PermissionType
 -- @return DescribeDocumentPermissionRequest structure as a key-value pair table
 function M.DescribeDocumentPermissionRequest(args)
-	assert(args, "You must provdide an argument table when creating DescribeDocumentPermissionRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeDocumentPermissionRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["PermissionType"] = args["PermissionType"],
 		["Name"] = args["Name"],
 	}
-	asserts.AssertDescribeDocumentPermissionRequest(t)
-	return t
+	asserts.AssertDescribeDocumentPermissionRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DocumentPermissionLimit = { ["Message"] = true, nil }
@@ -9192,12 +12250,23 @@ end
 -- * Message [String] 
 -- @return DocumentPermissionLimit structure as a key-value pair table
 function M.DocumentPermissionLimit(args)
-	assert(args, "You must provdide an argument table when creating DocumentPermissionLimit")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DocumentPermissionLimit")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Message"] = args["Message"],
 	}
-	asserts.AssertDocumentPermissionLimit(t)
-	return t
+	asserts.AssertDocumentPermissionLimit(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteDocumentRequest = { ["Name"] = true, nil }
@@ -9220,12 +12289,23 @@ end
 -- Required key: Name
 -- @return DeleteDocumentRequest structure as a key-value pair table
 function M.DeleteDocumentRequest(args)
-	assert(args, "You must provdide an argument table when creating DeleteDocumentRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteDocumentRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Name"] = args["Name"],
 	}
-	asserts.AssertDeleteDocumentRequest(t)
-	return t
+	asserts.AssertDeleteDocumentRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeInstancePatchStatesForPatchGroupResult = { ["InstancePatchStates"] = true, ["NextToken"] = true, nil }
@@ -9248,13 +12328,24 @@ end
 -- * NextToken [NextToken] <p>The token to use when requesting the next set of items. If there are no additional items to return, the string is empty.</p>
 -- @return DescribeInstancePatchStatesForPatchGroupResult structure as a key-value pair table
 function M.DescribeInstancePatchStatesForPatchGroupResult(args)
-	assert(args, "You must provdide an argument table when creating DescribeInstancePatchStatesForPatchGroupResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeInstancePatchStatesForPatchGroupResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["InstancePatchStates"] = args["InstancePatchStates"],
 		["NextToken"] = args["NextToken"],
 	}
-	asserts.AssertDescribeInstancePatchStatesForPatchGroupResult(t)
-	return t
+	asserts.AssertDescribeInstancePatchStatesForPatchGroupResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidUpdate = { ["Message"] = true, nil }
@@ -9275,12 +12366,23 @@ end
 -- * Message [String] 
 -- @return InvalidUpdate structure as a key-value pair table
 function M.InvalidUpdate(args)
-	assert(args, "You must provdide an argument table when creating InvalidUpdate")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidUpdate")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Message"] = args["Message"],
 	}
-	asserts.AssertInvalidUpdate(t)
-	return t
+	asserts.AssertInvalidUpdate(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidAllowedPatternException = { ["message"] = true, nil }
@@ -9301,12 +12403,23 @@ end
 -- * message [String] <p>The request does not meet the regular expression requirement.</p>
 -- @return InvalidAllowedPatternException structure as a key-value pair table
 function M.InvalidAllowedPatternException(args)
-	assert(args, "You must provdide an argument table when creating InvalidAllowedPatternException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidAllowedPatternException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertInvalidAllowedPatternException(t)
-	return t
+	asserts.AssertInvalidAllowedPatternException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InventoryItemAttribute = { ["DataType"] = true, ["Name"] = true, nil }
@@ -9333,13 +12446,24 @@ end
 -- Required key: DataType
 -- @return InventoryItemAttribute structure as a key-value pair table
 function M.InventoryItemAttribute(args)
-	assert(args, "You must provdide an argument table when creating InventoryItemAttribute")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InventoryItemAttribute")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DataType"] = args["DataType"],
 		["Name"] = args["Name"],
 	}
-	asserts.AssertInventoryItemAttribute(t)
-	return t
+	asserts.AssertInventoryItemAttribute(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdateMaintenanceWindowResult = { ["Cutoff"] = true, ["Name"] = true, ["Schedule"] = true, ["Enabled"] = true, ["AllowUnassociatedTargets"] = true, ["WindowId"] = true, ["Duration"] = true, nil }
@@ -9372,8 +12496,14 @@ end
 -- * Duration [MaintenanceWindowDurationHours] <p>The duration of the Maintenance Window in hours.</p>
 -- @return UpdateMaintenanceWindowResult structure as a key-value pair table
 function M.UpdateMaintenanceWindowResult(args)
-	assert(args, "You must provdide an argument table when creating UpdateMaintenanceWindowResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateMaintenanceWindowResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Cutoff"] = args["Cutoff"],
 		["Name"] = args["Name"],
 		["Schedule"] = args["Schedule"],
@@ -9382,8 +12512,13 @@ function M.UpdateMaintenanceWindowResult(args)
 		["WindowId"] = args["WindowId"],
 		["Duration"] = args["Duration"],
 	}
-	asserts.AssertUpdateMaintenanceWindowResult(t)
-	return t
+	asserts.AssertUpdateMaintenanceWindowResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateActivationRequest = { ["DefaultInstanceName"] = true, ["IamRole"] = true, ["ExpirationDate"] = true, ["Description"] = true, ["RegistrationLimit"] = true, nil }
@@ -9414,16 +12549,27 @@ end
 -- Required key: IamRole
 -- @return CreateActivationRequest structure as a key-value pair table
 function M.CreateActivationRequest(args)
-	assert(args, "You must provdide an argument table when creating CreateActivationRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateActivationRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DefaultInstanceName"] = args["DefaultInstanceName"],
 		["IamRole"] = args["IamRole"],
 		["ExpirationDate"] = args["ExpirationDate"],
 		["Description"] = args["Description"],
 		["RegistrationLimit"] = args["RegistrationLimit"],
 	}
-	asserts.AssertCreateActivationRequest(t)
-	return t
+	asserts.AssertCreateActivationRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeAssociationResult = { ["AssociationDescription"] = true, nil }
@@ -9444,12 +12590,23 @@ end
 -- * AssociationDescription [AssociationDescription] <p>Information about the association.</p>
 -- @return DescribeAssociationResult structure as a key-value pair table
 function M.DescribeAssociationResult(args)
-	assert(args, "You must provdide an argument table when creating DescribeAssociationResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeAssociationResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["AssociationDescription"] = args["AssociationDescription"],
 	}
-	asserts.AssertDescribeAssociationResult(t)
-	return t
+	asserts.AssertDescribeAssociationResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InventoryResultEntity = { ["Data"] = true, ["Id"] = true, nil }
@@ -9472,13 +12629,24 @@ end
 -- * Id [InventoryResultEntityId] <p>ID of the inventory result entity. For example, for managed instance inventory the result will be the managed instance ID. For EC2 instance inventory, the result will be the instance ID. </p>
 -- @return InventoryResultEntity structure as a key-value pair table
 function M.InventoryResultEntity(args)
-	assert(args, "You must provdide an argument table when creating InventoryResultEntity")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InventoryResultEntity")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Data"] = args["Data"],
 		["Id"] = args["Id"],
 	}
-	asserts.AssertInventoryResultEntity(t)
-	return t
+	asserts.AssertInventoryResultEntity(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeParametersResult = { ["NextToken"] = true, ["Parameters"] = true, nil }
@@ -9501,13 +12669,24 @@ end
 -- * Parameters [ParameterMetadataList] <p>Parameters returned by the request.</p>
 -- @return DescribeParametersResult structure as a key-value pair table
 function M.DescribeParametersResult(args)
-	assert(args, "You must provdide an argument table when creating DescribeParametersResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeParametersResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NextToken"] = args["NextToken"],
 		["Parameters"] = args["Parameters"],
 	}
-	asserts.AssertDescribeParametersResult(t)
-	return t
+	asserts.AssertDescribeParametersResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UnsupportedPlatformType = { ["Message"] = true, nil }
@@ -9528,12 +12707,23 @@ end
 -- * Message [String] 
 -- @return UnsupportedPlatformType structure as a key-value pair table
 function M.UnsupportedPlatformType(args)
-	assert(args, "You must provdide an argument table when creating UnsupportedPlatformType")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UnsupportedPlatformType")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Message"] = args["Message"],
 	}
-	asserts.AssertUnsupportedPlatformType(t)
-	return t
+	asserts.AssertUnsupportedPlatformType(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeDocumentResult = { ["Document"] = true, nil }
@@ -9554,12 +12744,23 @@ end
 -- * Document [DocumentDescription] <p>Information about the SSM document.</p>
 -- @return DescribeDocumentResult structure as a key-value pair table
 function M.DescribeDocumentResult(args)
-	assert(args, "You must provdide an argument table when creating DescribeDocumentResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeDocumentResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Document"] = args["Document"],
 	}
-	asserts.AssertDescribeDocumentResult(t)
-	return t
+	asserts.AssertDescribeDocumentResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DoesNotExistException = { ["Message"] = true, nil }
@@ -9580,12 +12781,23 @@ end
 -- * Message [String] 
 -- @return DoesNotExistException structure as a key-value pair table
 function M.DoesNotExistException(args)
-	assert(args, "You must provdide an argument table when creating DoesNotExistException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DoesNotExistException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Message"] = args["Message"],
 	}
-	asserts.AssertDoesNotExistException(t)
-	return t
+	asserts.AssertDoesNotExistException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ParameterLimitExceeded = { ["message"] = true, nil }
@@ -9606,12 +12818,23 @@ end
 -- * message [String] 
 -- @return ParameterLimitExceeded structure as a key-value pair table
 function M.ParameterLimitExceeded(args)
-	assert(args, "You must provdide an argument table when creating ParameterLimitExceeded")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ParameterLimitExceeded")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertParameterLimitExceeded(t)
-	return t
+	asserts.AssertParameterLimitExceeded(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InstanceAssociationOutputUrl = { ["S3OutputUrl"] = true, nil }
@@ -9632,12 +12855,23 @@ end
 -- * S3OutputUrl [S3OutputUrl] <p>The URL of Amazon S3 bucket where you want to store the results of this request.</p>
 -- @return InstanceAssociationOutputUrl structure as a key-value pair table
 function M.InstanceAssociationOutputUrl(args)
-	assert(args, "You must provdide an argument table when creating InstanceAssociationOutputUrl")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InstanceAssociationOutputUrl")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["S3OutputUrl"] = args["S3OutputUrl"],
 	}
-	asserts.AssertInstanceAssociationOutputUrl(t)
-	return t
+	asserts.AssertInstanceAssociationOutputUrl(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteParametersRequest = { ["Names"] = true, nil }
@@ -9660,12 +12894,23 @@ end
 -- Required key: Names
 -- @return DeleteParametersRequest structure as a key-value pair table
 function M.DeleteParametersRequest(args)
-	assert(args, "You must provdide an argument table when creating DeleteParametersRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteParametersRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Names"] = args["Names"],
 	}
-	asserts.AssertDeleteParametersRequest(t)
-	return t
+	asserts.AssertDeleteParametersRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreatePatchBaselineRequest = { ["Description"] = true, ["RejectedPatches"] = true, ["GlobalFilters"] = true, ["ApprovalRules"] = true, ["ClientToken"] = true, ["ApprovedPatches"] = true, ["Name"] = true, nil }
@@ -9700,8 +12945,14 @@ end
 -- Required key: Name
 -- @return CreatePatchBaselineRequest structure as a key-value pair table
 function M.CreatePatchBaselineRequest(args)
-	assert(args, "You must provdide an argument table when creating CreatePatchBaselineRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreatePatchBaselineRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Description"] = args["Description"],
 		["RejectedPatches"] = args["RejectedPatches"],
 		["GlobalFilters"] = args["GlobalFilters"],
@@ -9710,8 +12961,13 @@ function M.CreatePatchBaselineRequest(args)
 		["ApprovedPatches"] = args["ApprovedPatches"],
 		["Name"] = args["Name"],
 	}
-	asserts.AssertCreatePatchBaselineRequest(t)
-	return t
+	asserts.AssertCreatePatchBaselineRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetDocumentRequest = { ["Name"] = true, ["DocumentVersion"] = true, nil }
@@ -9736,13 +12992,24 @@ end
 -- Required key: Name
 -- @return GetDocumentRequest structure as a key-value pair table
 function M.GetDocumentRequest(args)
-	assert(args, "You must provdide an argument table when creating GetDocumentRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetDocumentRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Name"] = args["Name"],
 		["DocumentVersion"] = args["DocumentVersion"],
 	}
-	asserts.AssertGetDocumentRequest(t)
-	return t
+	asserts.AssertGetDocumentRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.IdempotentParameterMismatch = { ["Message"] = true, nil }
@@ -9763,12 +13030,23 @@ end
 -- * Message [String] 
 -- @return IdempotentParameterMismatch structure as a key-value pair table
 function M.IdempotentParameterMismatch(args)
-	assert(args, "You must provdide an argument table when creating IdempotentParameterMismatch")
-	local t = { 
+	assert(args, "You must provide an argument table when creating IdempotentParameterMismatch")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Message"] = args["Message"],
 	}
-	asserts.AssertIdempotentParameterMismatch(t)
-	return t
+	asserts.AssertIdempotentParameterMismatch(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribePatchGroupStateRequest = { ["PatchGroup"] = true, nil }
@@ -9791,12 +13069,23 @@ end
 -- Required key: PatchGroup
 -- @return DescribePatchGroupStateRequest structure as a key-value pair table
 function M.DescribePatchGroupStateRequest(args)
-	assert(args, "You must provdide an argument table when creating DescribePatchGroupStateRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribePatchGroupStateRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["PatchGroup"] = args["PatchGroup"],
 	}
-	asserts.AssertDescribePatchGroupStateRequest(t)
-	return t
+	asserts.AssertDescribePatchGroupStateRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.PatchBaselineIdentity = { ["BaselineName"] = true, ["DefaultBaseline"] = true, ["BaselineDescription"] = true, ["BaselineId"] = true, nil }
@@ -9823,15 +13112,26 @@ end
 -- * BaselineId [BaselineId] <p>The ID of the patch baseline.</p>
 -- @return PatchBaselineIdentity structure as a key-value pair table
 function M.PatchBaselineIdentity(args)
-	assert(args, "You must provdide an argument table when creating PatchBaselineIdentity")
-	local t = { 
+	assert(args, "You must provide an argument table when creating PatchBaselineIdentity")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["BaselineName"] = args["BaselineName"],
 		["DefaultBaseline"] = args["DefaultBaseline"],
 		["BaselineDescription"] = args["BaselineDescription"],
 		["BaselineId"] = args["BaselineId"],
 	}
-	asserts.AssertPatchBaselineIdentity(t)
-	return t
+	asserts.AssertPatchBaselineIdentity(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DescribeActivationsRequest = { ["NextToken"] = true, ["MaxResults"] = true, ["Filters"] = true, nil }
@@ -9856,14 +13156,25 @@ end
 -- * Filters [DescribeActivationsFilterList] <p>A filter to view information about your activations.</p>
 -- @return DescribeActivationsRequest structure as a key-value pair table
 function M.DescribeActivationsRequest(args)
-	assert(args, "You must provdide an argument table when creating DescribeActivationsRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DescribeActivationsRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NextToken"] = args["NextToken"],
 		["MaxResults"] = args["MaxResults"],
 		["Filters"] = args["Filters"],
 	}
-	asserts.AssertDescribeActivationsRequest(t)
-	return t
+	asserts.AssertDescribeActivationsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.RegisterTargetWithMaintenanceWindowResult = { ["WindowTargetId"] = true, nil }
@@ -9884,12 +13195,23 @@ end
 -- * WindowTargetId [MaintenanceWindowTargetId] <p>The ID of the target definition in this Maintenance Window.</p>
 -- @return RegisterTargetWithMaintenanceWindowResult structure as a key-value pair table
 function M.RegisterTargetWithMaintenanceWindowResult(args)
-	assert(args, "You must provdide an argument table when creating RegisterTargetWithMaintenanceWindowResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating RegisterTargetWithMaintenanceWindowResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["WindowTargetId"] = args["WindowTargetId"],
 	}
-	asserts.AssertRegisterTargetWithMaintenanceWindowResult(t)
-	return t
+	asserts.AssertRegisterTargetWithMaintenanceWindowResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DocumentParameter = { ["DefaultValue"] = true, ["Type"] = true, ["Name"] = true, ["Description"] = true, nil }
@@ -9916,15 +13238,26 @@ end
 -- * Description [DocumentParameterDescrption] <p>A description of what the parameter does, how to use it, the default value, and whether or not the parameter is optional.</p>
 -- @return DocumentParameter structure as a key-value pair table
 function M.DocumentParameter(args)
-	assert(args, "You must provdide an argument table when creating DocumentParameter")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DocumentParameter")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DefaultValue"] = args["DefaultValue"],
 		["Type"] = args["Type"],
 		["Name"] = args["Name"],
 		["Description"] = args["Description"],
 	}
-	asserts.AssertDocumentParameter(t)
-	return t
+	asserts.AssertDocumentParameter(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidDocumentSchemaVersion = { ["Message"] = true, nil }
@@ -9945,12 +13278,23 @@ end
 -- * Message [String] 
 -- @return InvalidDocumentSchemaVersion structure as a key-value pair table
 function M.InvalidDocumentSchemaVersion(args)
-	assert(args, "You must provdide an argument table when creating InvalidDocumentSchemaVersion")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidDocumentSchemaVersion")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Message"] = args["Message"],
 	}
-	asserts.AssertInvalidDocumentSchemaVersion(t)
-	return t
+	asserts.AssertInvalidDocumentSchemaVersion(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidDocumentContent = { ["Message"] = true, nil }
@@ -9971,12 +13315,23 @@ end
 -- * Message [String] <p>A description of the validation error.</p>
 -- @return InvalidDocumentContent structure as a key-value pair table
 function M.InvalidDocumentContent(args)
-	assert(args, "You must provdide an argument table when creating InvalidDocumentContent")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidDocumentContent")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Message"] = args["Message"],
 	}
-	asserts.AssertInvalidDocumentContent(t)
-	return t
+	asserts.AssertInvalidDocumentContent(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.InvalidKeyId = { ["message"] = true, nil }
@@ -9997,12 +13352,23 @@ end
 -- * message [String] 
 -- @return InvalidKeyId structure as a key-value pair table
 function M.InvalidKeyId(args)
-	assert(args, "You must provdide an argument table when creating InvalidKeyId")
-	local t = { 
+	assert(args, "You must provide an argument table when creating InvalidKeyId")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertInvalidKeyId(t)
-	return t
+	asserts.AssertInvalidKeyId(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.PutParameterResult = { nil }
@@ -10021,11 +13387,22 @@ end
 -- Valid keys:
 -- @return PutParameterResult structure as a key-value pair table
 function M.PutParameterResult(args)
-	assert(args, "You must provdide an argument table when creating PutParameterResult")
-	local t = { 
+	assert(args, "You must provide an argument table when creating PutParameterResult")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertPutParameterResult(t)
-	return t
+	asserts.AssertPutParameterResult(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdateMaintenanceWindowRequest = { ["Cutoff"] = true, ["Name"] = true, ["Schedule"] = true, ["Enabled"] = true, ["AllowUnassociatedTargets"] = true, ["WindowId"] = true, ["Duration"] = true, nil }
@@ -10060,8 +13437,14 @@ end
 -- Required key: WindowId
 -- @return UpdateMaintenanceWindowRequest structure as a key-value pair table
 function M.UpdateMaintenanceWindowRequest(args)
-	assert(args, "You must provdide an argument table when creating UpdateMaintenanceWindowRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateMaintenanceWindowRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Cutoff"] = args["Cutoff"],
 		["Name"] = args["Name"],
 		["Schedule"] = args["Schedule"],
@@ -10070,8 +13453,13 @@ function M.UpdateMaintenanceWindowRequest(args)
 		["WindowId"] = args["WindowId"],
 		["Duration"] = args["Duration"],
 	}
-	asserts.AssertUpdateMaintenanceWindowRequest(t)
-	return t
+	asserts.AssertUpdateMaintenanceWindowRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 function asserts.AssertAutomationExecutionStatus(str)
@@ -13877,8 +17265,11 @@ function M.DeleteActivationAsync(DeleteActivationRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AmazonSSM.DeleteActivation",
 	}
+	for header,value in pairs(DeleteActivationRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteActivationRequest, headers, settings, cb)
 	else
@@ -13909,8 +17300,11 @@ function M.UpdatePatchBaselineAsync(UpdatePatchBaselineRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AmazonSSM.UpdatePatchBaseline",
 	}
+	for header,value in pairs(UpdatePatchBaselineRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdatePatchBaselineRequest, headers, settings, cb)
 	else
@@ -13941,8 +17335,11 @@ function M.CreateMaintenanceWindowAsync(CreateMaintenanceWindowRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AmazonSSM.CreateMaintenanceWindow",
 	}
+	for header,value in pairs(CreateMaintenanceWindowRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateMaintenanceWindowRequest, headers, settings, cb)
 	else
@@ -13973,8 +17370,11 @@ function M.DeregisterManagedInstanceAsync(DeregisterManagedInstanceRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AmazonSSM.DeregisterManagedInstance",
 	}
+	for header,value in pairs(DeregisterManagedInstanceRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DeregisterManagedInstanceRequest, headers, settings, cb)
 	else
@@ -14005,8 +17405,11 @@ function M.CreatePatchBaselineAsync(CreatePatchBaselineRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AmazonSSM.CreatePatchBaseline",
 	}
+	for header,value in pairs(CreatePatchBaselineRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", CreatePatchBaselineRequest, headers, settings, cb)
 	else
@@ -14037,8 +17440,11 @@ function M.GetDeployablePatchSnapshotForInstanceAsync(GetDeployablePatchSnapshot
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AmazonSSM.GetDeployablePatchSnapshotForInstance",
 	}
+	for header,value in pairs(GetDeployablePatchSnapshotForInstanceRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", GetDeployablePatchSnapshotForInstanceRequest, headers, settings, cb)
 	else
@@ -14069,8 +17475,11 @@ function M.DescribeDocumentPermissionAsync(DescribeDocumentPermissionRequest, cb
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AmazonSSM.DescribeDocumentPermission",
 	}
+	for header,value in pairs(DescribeDocumentPermissionRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeDocumentPermissionRequest, headers, settings, cb)
 	else
@@ -14101,8 +17510,11 @@ function M.DescribeEffectivePatchesForPatchBaselineAsync(DescribeEffectivePatche
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AmazonSSM.DescribeEffectivePatchesForPatchBaseline",
 	}
+	for header,value in pairs(DescribeEffectivePatchesForPatchBaselineRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeEffectivePatchesForPatchBaselineRequest, headers, settings, cb)
 	else
@@ -14133,8 +17545,11 @@ function M.DescribeAvailablePatchesAsync(DescribeAvailablePatchesRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AmazonSSM.DescribeAvailablePatches",
 	}
+	for header,value in pairs(DescribeAvailablePatchesRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeAvailablePatchesRequest, headers, settings, cb)
 	else
@@ -14165,8 +17580,11 @@ function M.DescribeInstancePatchesAsync(DescribeInstancePatchesRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AmazonSSM.DescribeInstancePatches",
 	}
+	for header,value in pairs(DescribeInstancePatchesRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeInstancePatchesRequest, headers, settings, cb)
 	else
@@ -14197,8 +17615,11 @@ function M.PutParameterAsync(PutParameterRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AmazonSSM.PutParameter",
 	}
+	for header,value in pairs(PutParameterRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", PutParameterRequest, headers, settings, cb)
 	else
@@ -14229,8 +17650,11 @@ function M.RegisterDefaultPatchBaselineAsync(RegisterDefaultPatchBaselineRequest
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AmazonSSM.RegisterDefaultPatchBaseline",
 	}
+	for header,value in pairs(RegisterDefaultPatchBaselineRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", RegisterDefaultPatchBaselineRequest, headers, settings, cb)
 	else
@@ -14261,8 +17685,11 @@ function M.ListDocumentVersionsAsync(ListDocumentVersionsRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AmazonSSM.ListDocumentVersions",
 	}
+	for header,value in pairs(ListDocumentVersionsRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ListDocumentVersionsRequest, headers, settings, cb)
 	else
@@ -14293,8 +17720,11 @@ function M.GetPatchBaselineForPatchGroupAsync(GetPatchBaselineForPatchGroupReque
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AmazonSSM.GetPatchBaselineForPatchGroup",
 	}
+	for header,value in pairs(GetPatchBaselineForPatchGroupRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", GetPatchBaselineForPatchGroupRequest, headers, settings, cb)
 	else
@@ -14325,8 +17755,11 @@ function M.GetAutomationExecutionAsync(GetAutomationExecutionRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AmazonSSM.GetAutomationExecution",
 	}
+	for header,value in pairs(GetAutomationExecutionRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", GetAutomationExecutionRequest, headers, settings, cb)
 	else
@@ -14357,8 +17790,11 @@ function M.ListAssociationsAsync(ListAssociationsRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AmazonSSM.ListAssociations",
 	}
+	for header,value in pairs(ListAssociationsRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ListAssociationsRequest, headers, settings, cb)
 	else
@@ -14389,8 +17825,11 @@ function M.DescribeInstancePatchStatesAsync(DescribeInstancePatchStatesRequest, 
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AmazonSSM.DescribeInstancePatchStates",
 	}
+	for header,value in pairs(DescribeInstancePatchStatesRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeInstancePatchStatesRequest, headers, settings, cb)
 	else
@@ -14421,8 +17860,11 @@ function M.DescribeAssociationAsync(DescribeAssociationRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AmazonSSM.DescribeAssociation",
 	}
+	for header,value in pairs(DescribeAssociationRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeAssociationRequest, headers, settings, cb)
 	else
@@ -14453,8 +17895,11 @@ function M.PutInventoryAsync(PutInventoryRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AmazonSSM.PutInventory",
 	}
+	for header,value in pairs(PutInventoryRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", PutInventoryRequest, headers, settings, cb)
 	else
@@ -14485,8 +17930,11 @@ function M.DescribeInstancePatchStatesForPatchGroupAsync(DescribeInstancePatchSt
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AmazonSSM.DescribeInstancePatchStatesForPatchGroup",
 	}
+	for header,value in pairs(DescribeInstancePatchStatesForPatchGroupRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeInstancePatchStatesForPatchGroupRequest, headers, settings, cb)
 	else
@@ -14517,8 +17965,11 @@ function M.GetDefaultPatchBaselineAsync(GetDefaultPatchBaselineRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AmazonSSM.GetDefaultPatchBaseline",
 	}
+	for header,value in pairs(GetDefaultPatchBaselineRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", GetDefaultPatchBaselineRequest, headers, settings, cb)
 	else
@@ -14549,8 +18000,11 @@ function M.DescribeAutomationExecutionsAsync(DescribeAutomationExecutionsRequest
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AmazonSSM.DescribeAutomationExecutions",
 	}
+	for header,value in pairs(DescribeAutomationExecutionsRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeAutomationExecutionsRequest, headers, settings, cb)
 	else
@@ -14581,8 +18035,11 @@ function M.GetDocumentAsync(GetDocumentRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AmazonSSM.GetDocument",
 	}
+	for header,value in pairs(GetDocumentRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", GetDocumentRequest, headers, settings, cb)
 	else
@@ -14613,8 +18070,11 @@ function M.GetMaintenanceWindowAsync(GetMaintenanceWindowRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AmazonSSM.GetMaintenanceWindow",
 	}
+	for header,value in pairs(GetMaintenanceWindowRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", GetMaintenanceWindowRequest, headers, settings, cb)
 	else
@@ -14645,8 +18105,11 @@ function M.GetParametersByPathAsync(GetParametersByPathRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AmazonSSM.GetParametersByPath",
 	}
+	for header,value in pairs(GetParametersByPathRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", GetParametersByPathRequest, headers, settings, cb)
 	else
@@ -14677,8 +18140,11 @@ function M.CreateDocumentAsync(CreateDocumentRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AmazonSSM.CreateDocument",
 	}
+	for header,value in pairs(CreateDocumentRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateDocumentRequest, headers, settings, cb)
 	else
@@ -14709,8 +18175,11 @@ function M.DeleteAssociationAsync(DeleteAssociationRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AmazonSSM.DeleteAssociation",
 	}
+	for header,value in pairs(DeleteAssociationRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteAssociationRequest, headers, settings, cb)
 	else
@@ -14741,8 +18210,11 @@ function M.AddTagsToResourceAsync(AddTagsToResourceRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AmazonSSM.AddTagsToResource",
 	}
+	for header,value in pairs(AddTagsToResourceRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", AddTagsToResourceRequest, headers, settings, cb)
 	else
@@ -14773,8 +18245,11 @@ function M.UpdateManagedInstanceRoleAsync(UpdateManagedInstanceRoleRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AmazonSSM.UpdateManagedInstanceRole",
 	}
+	for header,value in pairs(UpdateManagedInstanceRoleRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateManagedInstanceRoleRequest, headers, settings, cb)
 	else
@@ -14805,8 +18280,11 @@ function M.DescribePatchBaselinesAsync(DescribePatchBaselinesRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AmazonSSM.DescribePatchBaselines",
 	}
+	for header,value in pairs(DescribePatchBaselinesRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribePatchBaselinesRequest, headers, settings, cb)
 	else
@@ -14837,8 +18315,11 @@ function M.UpdateMaintenanceWindowAsync(UpdateMaintenanceWindowRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AmazonSSM.UpdateMaintenanceWindow",
 	}
+	for header,value in pairs(UpdateMaintenanceWindowRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateMaintenanceWindowRequest, headers, settings, cb)
 	else
@@ -14869,8 +18350,11 @@ function M.GetPatchBaselineAsync(GetPatchBaselineRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AmazonSSM.GetPatchBaseline",
 	}
+	for header,value in pairs(GetPatchBaselineRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", GetPatchBaselineRequest, headers, settings, cb)
 	else
@@ -14901,8 +18385,11 @@ function M.StopAutomationExecutionAsync(StopAutomationExecutionRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AmazonSSM.StopAutomationExecution",
 	}
+	for header,value in pairs(StopAutomationExecutionRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", StopAutomationExecutionRequest, headers, settings, cb)
 	else
@@ -14933,8 +18420,11 @@ function M.GetInventoryAsync(GetInventoryRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AmazonSSM.GetInventory",
 	}
+	for header,value in pairs(GetInventoryRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", GetInventoryRequest, headers, settings, cb)
 	else
@@ -14965,8 +18455,11 @@ function M.RemoveTagsFromResourceAsync(RemoveTagsFromResourceRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AmazonSSM.RemoveTagsFromResource",
 	}
+	for header,value in pairs(RemoveTagsFromResourceRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", RemoveTagsFromResourceRequest, headers, settings, cb)
 	else
@@ -14997,8 +18490,11 @@ function M.DeregisterTargetFromMaintenanceWindowAsync(DeregisterTargetFromMainte
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AmazonSSM.DeregisterTargetFromMaintenanceWindow",
 	}
+	for header,value in pairs(DeregisterTargetFromMaintenanceWindowRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DeregisterTargetFromMaintenanceWindowRequest, headers, settings, cb)
 	else
@@ -15029,8 +18525,11 @@ function M.SendCommandAsync(SendCommandRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AmazonSSM.SendCommand",
 	}
+	for header,value in pairs(SendCommandRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", SendCommandRequest, headers, settings, cb)
 	else
@@ -15061,8 +18560,11 @@ function M.DescribeInstanceAssociationsStatusAsync(DescribeInstanceAssociationsS
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AmazonSSM.DescribeInstanceAssociationsStatus",
 	}
+	for header,value in pairs(DescribeInstanceAssociationsStatusRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeInstanceAssociationsStatusRequest, headers, settings, cb)
 	else
@@ -15093,8 +18595,11 @@ function M.DescribePatchGroupsAsync(DescribePatchGroupsRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AmazonSSM.DescribePatchGroups",
 	}
+	for header,value in pairs(DescribePatchGroupsRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribePatchGroupsRequest, headers, settings, cb)
 	else
@@ -15125,8 +18630,11 @@ function M.GetMaintenanceWindowExecutionTaskAsync(GetMaintenanceWindowExecutionT
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AmazonSSM.GetMaintenanceWindowExecutionTask",
 	}
+	for header,value in pairs(GetMaintenanceWindowExecutionTaskRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", GetMaintenanceWindowExecutionTaskRequest, headers, settings, cb)
 	else
@@ -15157,8 +18665,11 @@ function M.GetInventorySchemaAsync(GetInventorySchemaRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AmazonSSM.GetInventorySchema",
 	}
+	for header,value in pairs(GetInventorySchemaRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", GetInventorySchemaRequest, headers, settings, cb)
 	else
@@ -15189,8 +18700,11 @@ function M.CancelCommandAsync(CancelCommandRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AmazonSSM.CancelCommand",
 	}
+	for header,value in pairs(CancelCommandRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", CancelCommandRequest, headers, settings, cb)
 	else
@@ -15221,8 +18735,11 @@ function M.GetCommandInvocationAsync(GetCommandInvocationRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AmazonSSM.GetCommandInvocation",
 	}
+	for header,value in pairs(GetCommandInvocationRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", GetCommandInvocationRequest, headers, settings, cb)
 	else
@@ -15253,8 +18770,11 @@ function M.UpdateAssociationStatusAsync(UpdateAssociationStatusRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AmazonSSM.UpdateAssociationStatus",
 	}
+	for header,value in pairs(UpdateAssociationStatusRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateAssociationStatusRequest, headers, settings, cb)
 	else
@@ -15285,8 +18805,11 @@ function M.DescribePatchGroupStateAsync(DescribePatchGroupStateRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AmazonSSM.DescribePatchGroupState",
 	}
+	for header,value in pairs(DescribePatchGroupStateRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribePatchGroupStateRequest, headers, settings, cb)
 	else
@@ -15317,8 +18840,11 @@ function M.CreateAssociationBatchAsync(CreateAssociationBatchRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AmazonSSM.CreateAssociationBatch",
 	}
+	for header,value in pairs(CreateAssociationBatchRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateAssociationBatchRequest, headers, settings, cb)
 	else
@@ -15349,8 +18875,11 @@ function M.GetParameterAsync(GetParameterRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AmazonSSM.GetParameter",
 	}
+	for header,value in pairs(GetParameterRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", GetParameterRequest, headers, settings, cb)
 	else
@@ -15381,8 +18910,11 @@ function M.DescribeMaintenanceWindowExecutionTasksAsync(DescribeMaintenanceWindo
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AmazonSSM.DescribeMaintenanceWindowExecutionTasks",
 	}
+	for header,value in pairs(DescribeMaintenanceWindowExecutionTasksRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeMaintenanceWindowExecutionTasksRequest, headers, settings, cb)
 	else
@@ -15413,8 +18945,11 @@ function M.GetParameterHistoryAsync(GetParameterHistoryRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AmazonSSM.GetParameterHistory",
 	}
+	for header,value in pairs(GetParameterHistoryRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", GetParameterHistoryRequest, headers, settings, cb)
 	else
@@ -15445,8 +18980,11 @@ function M.DeregisterTaskFromMaintenanceWindowAsync(DeregisterTaskFromMaintenanc
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AmazonSSM.DeregisterTaskFromMaintenanceWindow",
 	}
+	for header,value in pairs(DeregisterTaskFromMaintenanceWindowRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DeregisterTaskFromMaintenanceWindowRequest, headers, settings, cb)
 	else
@@ -15477,8 +19015,11 @@ function M.ListCommandInvocationsAsync(ListCommandInvocationsRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AmazonSSM.ListCommandInvocations",
 	}
+	for header,value in pairs(ListCommandInvocationsRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ListCommandInvocationsRequest, headers, settings, cb)
 	else
@@ -15509,8 +19050,11 @@ function M.DescribeParametersAsync(DescribeParametersRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AmazonSSM.DescribeParameters",
 	}
+	for header,value in pairs(DescribeParametersRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeParametersRequest, headers, settings, cb)
 	else
@@ -15541,8 +19085,11 @@ function M.DescribeMaintenanceWindowTasksAsync(DescribeMaintenanceWindowTasksReq
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AmazonSSM.DescribeMaintenanceWindowTasks",
 	}
+	for header,value in pairs(DescribeMaintenanceWindowTasksRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeMaintenanceWindowTasksRequest, headers, settings, cb)
 	else
@@ -15573,8 +19120,11 @@ function M.DeleteParametersAsync(DeleteParametersRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AmazonSSM.DeleteParameters",
 	}
+	for header,value in pairs(DeleteParametersRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteParametersRequest, headers, settings, cb)
 	else
@@ -15605,8 +19155,11 @@ function M.DescribeMaintenanceWindowTargetsAsync(DescribeMaintenanceWindowTarget
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AmazonSSM.DescribeMaintenanceWindowTargets",
 	}
+	for header,value in pairs(DescribeMaintenanceWindowTargetsRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeMaintenanceWindowTargetsRequest, headers, settings, cb)
 	else
@@ -15637,8 +19190,11 @@ function M.DescribeInstanceInformationAsync(DescribeInstanceInformationRequest, 
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AmazonSSM.DescribeInstanceInformation",
 	}
+	for header,value in pairs(DescribeInstanceInformationRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeInstanceInformationRequest, headers, settings, cb)
 	else
@@ -15669,8 +19225,11 @@ function M.CreateActivationAsync(CreateActivationRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AmazonSSM.CreateActivation",
 	}
+	for header,value in pairs(CreateActivationRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateActivationRequest, headers, settings, cb)
 	else
@@ -15701,8 +19260,11 @@ function M.RegisterPatchBaselineForPatchGroupAsync(RegisterPatchBaselineForPatch
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AmazonSSM.RegisterPatchBaselineForPatchGroup",
 	}
+	for header,value in pairs(RegisterPatchBaselineForPatchGroupRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", RegisterPatchBaselineForPatchGroupRequest, headers, settings, cb)
 	else
@@ -15733,8 +19295,11 @@ function M.UpdateDocumentAsync(UpdateDocumentRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AmazonSSM.UpdateDocument",
 	}
+	for header,value in pairs(UpdateDocumentRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateDocumentRequest, headers, settings, cb)
 	else
@@ -15765,8 +19330,11 @@ function M.DescribeActivationsAsync(DescribeActivationsRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AmazonSSM.DescribeActivations",
 	}
+	for header,value in pairs(DescribeActivationsRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeActivationsRequest, headers, settings, cb)
 	else
@@ -15797,8 +19365,11 @@ function M.CreateAssociationAsync(CreateAssociationRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AmazonSSM.CreateAssociation",
 	}
+	for header,value in pairs(CreateAssociationRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateAssociationRequest, headers, settings, cb)
 	else
@@ -15829,8 +19400,11 @@ function M.GetMaintenanceWindowExecutionAsync(GetMaintenanceWindowExecutionReque
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AmazonSSM.GetMaintenanceWindowExecution",
 	}
+	for header,value in pairs(GetMaintenanceWindowExecutionRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", GetMaintenanceWindowExecutionRequest, headers, settings, cb)
 	else
@@ -15861,8 +19435,11 @@ function M.DeleteMaintenanceWindowAsync(DeleteMaintenanceWindowRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AmazonSSM.DeleteMaintenanceWindow",
 	}
+	for header,value in pairs(DeleteMaintenanceWindowRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteMaintenanceWindowRequest, headers, settings, cb)
 	else
@@ -15893,8 +19470,11 @@ function M.ListCommandsAsync(ListCommandsRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AmazonSSM.ListCommands",
 	}
+	for header,value in pairs(ListCommandsRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ListCommandsRequest, headers, settings, cb)
 	else
@@ -15925,8 +19505,11 @@ function M.UpdateAssociationAsync(UpdateAssociationRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AmazonSSM.UpdateAssociation",
 	}
+	for header,value in pairs(UpdateAssociationRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateAssociationRequest, headers, settings, cb)
 	else
@@ -15957,8 +19540,11 @@ function M.DeleteDocumentAsync(DeleteDocumentRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AmazonSSM.DeleteDocument",
 	}
+	for header,value in pairs(DeleteDocumentRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteDocumentRequest, headers, settings, cb)
 	else
@@ -15989,8 +19575,11 @@ function M.DescribeEffectiveInstanceAssociationsAsync(DescribeEffectiveInstanceA
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AmazonSSM.DescribeEffectiveInstanceAssociations",
 	}
+	for header,value in pairs(DescribeEffectiveInstanceAssociationsRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeEffectiveInstanceAssociationsRequest, headers, settings, cb)
 	else
@@ -16021,8 +19610,11 @@ function M.DescribeMaintenanceWindowsAsync(DescribeMaintenanceWindowsRequest, cb
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AmazonSSM.DescribeMaintenanceWindows",
 	}
+	for header,value in pairs(DescribeMaintenanceWindowsRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeMaintenanceWindowsRequest, headers, settings, cb)
 	else
@@ -16053,8 +19645,11 @@ function M.DeleteParameterAsync(DeleteParameterRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AmazonSSM.DeleteParameter",
 	}
+	for header,value in pairs(DeleteParameterRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteParameterRequest, headers, settings, cb)
 	else
@@ -16085,8 +19680,11 @@ function M.DescribeMaintenanceWindowExecutionTaskInvocationsAsync(DescribeMainte
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AmazonSSM.DescribeMaintenanceWindowExecutionTaskInvocations",
 	}
+	for header,value in pairs(DescribeMaintenanceWindowExecutionTaskInvocationsRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeMaintenanceWindowExecutionTaskInvocationsRequest, headers, settings, cb)
 	else
@@ -16117,8 +19715,11 @@ function M.ModifyDocumentPermissionAsync(ModifyDocumentPermissionRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AmazonSSM.ModifyDocumentPermission",
 	}
+	for header,value in pairs(ModifyDocumentPermissionRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ModifyDocumentPermissionRequest, headers, settings, cb)
 	else
@@ -16149,8 +19750,11 @@ function M.DescribeMaintenanceWindowExecutionsAsync(DescribeMaintenanceWindowExe
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AmazonSSM.DescribeMaintenanceWindowExecutions",
 	}
+	for header,value in pairs(DescribeMaintenanceWindowExecutionsRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeMaintenanceWindowExecutionsRequest, headers, settings, cb)
 	else
@@ -16181,8 +19785,11 @@ function M.StartAutomationExecutionAsync(StartAutomationExecutionRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AmazonSSM.StartAutomationExecution",
 	}
+	for header,value in pairs(StartAutomationExecutionRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", StartAutomationExecutionRequest, headers, settings, cb)
 	else
@@ -16213,8 +19820,11 @@ function M.DescribeDocumentAsync(DescribeDocumentRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AmazonSSM.DescribeDocument",
 	}
+	for header,value in pairs(DescribeDocumentRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DescribeDocumentRequest, headers, settings, cb)
 	else
@@ -16245,8 +19855,11 @@ function M.UpdateDocumentDefaultVersionAsync(UpdateDocumentDefaultVersionRequest
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AmazonSSM.UpdateDocumentDefaultVersion",
 	}
+	for header,value in pairs(UpdateDocumentDefaultVersionRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateDocumentDefaultVersionRequest, headers, settings, cb)
 	else
@@ -16277,8 +19890,11 @@ function M.RegisterTargetWithMaintenanceWindowAsync(RegisterTargetWithMaintenanc
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AmazonSSM.RegisterTargetWithMaintenanceWindow",
 	}
+	for header,value in pairs(RegisterTargetWithMaintenanceWindowRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", RegisterTargetWithMaintenanceWindowRequest, headers, settings, cb)
 	else
@@ -16309,8 +19925,11 @@ function M.DeletePatchBaselineAsync(DeletePatchBaselineRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AmazonSSM.DeletePatchBaseline",
 	}
+	for header,value in pairs(DeletePatchBaselineRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DeletePatchBaselineRequest, headers, settings, cb)
 	else
@@ -16341,8 +19960,11 @@ function M.ListInventoryEntriesAsync(ListInventoryEntriesRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AmazonSSM.ListInventoryEntries",
 	}
+	for header,value in pairs(ListInventoryEntriesRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ListInventoryEntriesRequest, headers, settings, cb)
 	else
@@ -16373,8 +19995,11 @@ function M.DeregisterPatchBaselineForPatchGroupAsync(DeregisterPatchBaselineForP
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AmazonSSM.DeregisterPatchBaselineForPatchGroup",
 	}
+	for header,value in pairs(DeregisterPatchBaselineForPatchGroupRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DeregisterPatchBaselineForPatchGroupRequest, headers, settings, cb)
 	else
@@ -16405,8 +20030,11 @@ function M.ListTagsForResourceAsync(ListTagsForResourceRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AmazonSSM.ListTagsForResource",
 	}
+	for header,value in pairs(ListTagsForResourceRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ListTagsForResourceRequest, headers, settings, cb)
 	else
@@ -16437,8 +20065,11 @@ function M.RegisterTaskWithMaintenanceWindowAsync(RegisterTaskWithMaintenanceWin
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AmazonSSM.RegisterTaskWithMaintenanceWindow",
 	}
+	for header,value in pairs(RegisterTaskWithMaintenanceWindowRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", RegisterTaskWithMaintenanceWindowRequest, headers, settings, cb)
 	else
@@ -16469,8 +20100,11 @@ function M.GetParametersAsync(GetParametersRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AmazonSSM.GetParameters",
 	}
+	for header,value in pairs(GetParametersRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", GetParametersRequest, headers, settings, cb)
 	else
@@ -16501,8 +20135,11 @@ function M.ListDocumentsAsync(ListDocumentsRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AmazonSSM.ListDocuments",
 	}
+	for header,value in pairs(ListDocumentsRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ListDocumentsRequest, headers, settings, cb)
 	else

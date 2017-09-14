@@ -41,12 +41,23 @@ end
 -- Required key: IPSetId
 -- @return GetIPSetRequest structure as a key-value pair table
 function M.GetIPSetRequest(args)
-	assert(args, "You must provdide an argument table when creating GetIPSetRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetIPSetRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["IPSetId"] = args["IPSetId"],
 	}
-	asserts.AssertGetIPSetRequest(t)
-	return t
+	asserts.AssertGetIPSetRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListRateBasedRulesRequest = { ["NextMarker"] = true, ["Limit"] = true, nil }
@@ -69,13 +80,24 @@ end
 -- * Limit [PaginationLimit] <p>Specifies the number of <code>Rules</code> that you want AWS WAF to return for this request. If you have more <code>Rules</code> than the number that you specify for <code>Limit</code>, the response includes a <code>NextMarker</code> value that you can use to get another batch of <code>Rules</code>.</p>
 -- @return ListRateBasedRulesRequest structure as a key-value pair table
 function M.ListRateBasedRulesRequest(args)
-	assert(args, "You must provdide an argument table when creating ListRateBasedRulesRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListRateBasedRulesRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NextMarker"] = args["NextMarker"],
 		["Limit"] = args["Limit"],
 	}
-	asserts.AssertListRateBasedRulesRequest(t)
-	return t
+	asserts.AssertListRateBasedRulesRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.TimeWindow = { ["EndTime"] = true, ["StartTime"] = true, nil }
@@ -102,13 +124,24 @@ end
 -- Required key: EndTime
 -- @return TimeWindow structure as a key-value pair table
 function M.TimeWindow(args)
-	assert(args, "You must provdide an argument table when creating TimeWindow")
-	local t = { 
+	assert(args, "You must provide an argument table when creating TimeWindow")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["EndTime"] = args["EndTime"],
 		["StartTime"] = args["StartTime"],
 	}
-	asserts.AssertTimeWindow(t)
-	return t
+	asserts.AssertTimeWindow(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.XssMatchTuple = { ["TextTransformation"] = true, ["FieldToMatch"] = true, nil }
@@ -135,13 +168,24 @@ end
 -- Required key: TextTransformation
 -- @return XssMatchTuple structure as a key-value pair table
 function M.XssMatchTuple(args)
-	assert(args, "You must provdide an argument table when creating XssMatchTuple")
-	local t = { 
+	assert(args, "You must provide an argument table when creating XssMatchTuple")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["TextTransformation"] = args["TextTransformation"],
 		["FieldToMatch"] = args["FieldToMatch"],
 	}
-	asserts.AssertXssMatchTuple(t)
-	return t
+	asserts.AssertXssMatchTuple(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetChangeTokenStatusResponse = { ["ChangeTokenStatus"] = true, nil }
@@ -162,12 +206,23 @@ end
 -- * ChangeTokenStatus [ChangeTokenStatus] <p>The status of the change token.</p>
 -- @return GetChangeTokenStatusResponse structure as a key-value pair table
 function M.GetChangeTokenStatusResponse(args)
-	assert(args, "You must provdide an argument table when creating GetChangeTokenStatusResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetChangeTokenStatusResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ChangeTokenStatus"] = args["ChangeTokenStatus"],
 	}
-	asserts.AssertGetChangeTokenStatusResponse(t)
-	return t
+	asserts.AssertGetChangeTokenStatusResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.WafAction = { ["Type"] = true, nil }
@@ -190,12 +245,23 @@ end
 -- Required key: Type
 -- @return WafAction structure as a key-value pair table
 function M.WafAction(args)
-	assert(args, "You must provdide an argument table when creating WafAction")
-	local t = { 
+	assert(args, "You must provide an argument table when creating WafAction")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Type"] = args["Type"],
 	}
-	asserts.AssertWafAction(t)
-	return t
+	asserts.AssertWafAction(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteRuleRequest = { ["ChangeToken"] = true, ["RuleId"] = true, nil }
@@ -222,13 +288,24 @@ end
 -- Required key: ChangeToken
 -- @return DeleteRuleRequest structure as a key-value pair table
 function M.DeleteRuleRequest(args)
-	assert(args, "You must provdide an argument table when creating DeleteRuleRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteRuleRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ChangeToken"] = args["ChangeToken"],
 		["RuleId"] = args["RuleId"],
 	}
-	asserts.AssertDeleteRuleRequest(t)
-	return t
+	asserts.AssertDeleteRuleRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdateRuleRequest = { ["ChangeToken"] = true, ["Updates"] = true, ["RuleId"] = true, nil }
@@ -259,14 +336,25 @@ end
 -- Required key: Updates
 -- @return UpdateRuleRequest structure as a key-value pair table
 function M.UpdateRuleRequest(args)
-	assert(args, "You must provdide an argument table when creating UpdateRuleRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateRuleRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ChangeToken"] = args["ChangeToken"],
 		["Updates"] = args["Updates"],
 		["RuleId"] = args["RuleId"],
 	}
-	asserts.AssertUpdateRuleRequest(t)
-	return t
+	asserts.AssertUpdateRuleRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListByteMatchSetsResponse = { ["NextMarker"] = true, ["ByteMatchSets"] = true, nil }
@@ -289,13 +377,24 @@ end
 -- * ByteMatchSets [ByteMatchSetSummaries] <p>An array of <a>ByteMatchSetSummary</a> objects.</p>
 -- @return ListByteMatchSetsResponse structure as a key-value pair table
 function M.ListByteMatchSetsResponse(args)
-	assert(args, "You must provdide an argument table when creating ListByteMatchSetsResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListByteMatchSetsResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NextMarker"] = args["NextMarker"],
 		["ByteMatchSets"] = args["ByteMatchSets"],
 	}
-	asserts.AssertListByteMatchSetsResponse(t)
-	return t
+	asserts.AssertListByteMatchSetsResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Predicate = { ["Negated"] = true, ["Type"] = true, ["DataId"] = true, nil }
@@ -326,14 +425,25 @@ end
 -- Required key: DataId
 -- @return Predicate structure as a key-value pair table
 function M.Predicate(args)
-	assert(args, "You must provdide an argument table when creating Predicate")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Predicate")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Negated"] = args["Negated"],
 		["Type"] = args["Type"],
 		["DataId"] = args["DataId"],
 	}
-	asserts.AssertPredicate(t)
-	return t
+	asserts.AssertPredicate(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdateIPSetRequest = { ["IPSetId"] = true, ["ChangeToken"] = true, ["Updates"] = true, nil }
@@ -364,14 +474,25 @@ end
 -- Required key: Updates
 -- @return UpdateIPSetRequest structure as a key-value pair table
 function M.UpdateIPSetRequest(args)
-	assert(args, "You must provdide an argument table when creating UpdateIPSetRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateIPSetRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["IPSetId"] = args["IPSetId"],
 		["ChangeToken"] = args["ChangeToken"],
 		["Updates"] = args["Updates"],
 	}
-	asserts.AssertUpdateIPSetRequest(t)
-	return t
+	asserts.AssertUpdateIPSetRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteByteMatchSetRequest = { ["ByteMatchSetId"] = true, ["ChangeToken"] = true, nil }
@@ -398,13 +519,24 @@ end
 -- Required key: ChangeToken
 -- @return DeleteByteMatchSetRequest structure as a key-value pair table
 function M.DeleteByteMatchSetRequest(args)
-	assert(args, "You must provdide an argument table when creating DeleteByteMatchSetRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteByteMatchSetRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ByteMatchSetId"] = args["ByteMatchSetId"],
 		["ChangeToken"] = args["ChangeToken"],
 	}
-	asserts.AssertDeleteByteMatchSetRequest(t)
-	return t
+	asserts.AssertDeleteByteMatchSetRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteSqlInjectionMatchSetResponse = { ["ChangeToken"] = true, nil }
@@ -425,12 +557,23 @@ end
 -- * ChangeToken [ChangeToken] <p>The <code>ChangeToken</code> that you used to submit the <code>DeleteSqlInjectionMatchSet</code> request. You can also use this value to query the status of the request. For more information, see <a>GetChangeTokenStatus</a>.</p>
 -- @return DeleteSqlInjectionMatchSetResponse structure as a key-value pair table
 function M.DeleteSqlInjectionMatchSetResponse(args)
-	assert(args, "You must provdide an argument table when creating DeleteSqlInjectionMatchSetResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteSqlInjectionMatchSetResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ChangeToken"] = args["ChangeToken"],
 	}
-	asserts.AssertDeleteSqlInjectionMatchSetResponse(t)
-	return t
+	asserts.AssertDeleteSqlInjectionMatchSetResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdateIPSetResponse = { ["ChangeToken"] = true, nil }
@@ -451,12 +594,23 @@ end
 -- * ChangeToken [ChangeToken] <p>The <code>ChangeToken</code> that you used to submit the <code>UpdateIPSet</code> request. You can also use this value to query the status of the request. For more information, see <a>GetChangeTokenStatus</a>.</p>
 -- @return UpdateIPSetResponse structure as a key-value pair table
 function M.UpdateIPSetResponse(args)
-	assert(args, "You must provdide an argument table when creating UpdateIPSetResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateIPSetResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ChangeToken"] = args["ChangeToken"],
 	}
-	asserts.AssertUpdateIPSetResponse(t)
-	return t
+	asserts.AssertUpdateIPSetResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.WAFNonexistentContainerException = { ["message"] = true, nil }
@@ -477,12 +631,23 @@ end
 -- * message [errorMessage] 
 -- @return WAFNonexistentContainerException structure as a key-value pair table
 function M.WAFNonexistentContainerException(args)
-	assert(args, "You must provdide an argument table when creating WAFNonexistentContainerException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating WAFNonexistentContainerException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertWAFNonexistentContainerException(t)
-	return t
+	asserts.AssertWAFNonexistentContainerException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.WAFInvalidAccountException = { nil }
@@ -501,11 +666,22 @@ end
 -- Valid keys:
 -- @return WAFInvalidAccountException structure as a key-value pair table
 function M.WAFInvalidAccountException(args)
-	assert(args, "You must provdide an argument table when creating WAFInvalidAccountException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating WAFInvalidAccountException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertWAFInvalidAccountException(t)
-	return t
+	asserts.AssertWAFInvalidAccountException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.WebACLSummary = { ["WebACLId"] = true, ["Name"] = true, nil }
@@ -532,13 +708,24 @@ end
 -- Required key: Name
 -- @return WebACLSummary structure as a key-value pair table
 function M.WebACLSummary(args)
-	assert(args, "You must provdide an argument table when creating WebACLSummary")
-	local t = { 
+	assert(args, "You must provide an argument table when creating WebACLSummary")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["WebACLId"] = args["WebACLId"],
 		["Name"] = args["Name"],
 	}
-	asserts.AssertWebACLSummary(t)
-	return t
+	asserts.AssertWebACLSummary(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetByteMatchSetRequest = { ["ByteMatchSetId"] = true, nil }
@@ -561,12 +748,23 @@ end
 -- Required key: ByteMatchSetId
 -- @return GetByteMatchSetRequest structure as a key-value pair table
 function M.GetByteMatchSetRequest(args)
-	assert(args, "You must provdide an argument table when creating GetByteMatchSetRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetByteMatchSetRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ByteMatchSetId"] = args["ByteMatchSetId"],
 	}
-	asserts.AssertGetByteMatchSetRequest(t)
-	return t
+	asserts.AssertGetByteMatchSetRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateRateBasedRuleRequest = { ["ChangeToken"] = true, ["RateLimit"] = true, ["RateKey"] = true, ["Name"] = true, ["MetricName"] = true, nil }
@@ -605,16 +803,27 @@ end
 -- Required key: ChangeToken
 -- @return CreateRateBasedRuleRequest structure as a key-value pair table
 function M.CreateRateBasedRuleRequest(args)
-	assert(args, "You must provdide an argument table when creating CreateRateBasedRuleRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateRateBasedRuleRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ChangeToken"] = args["ChangeToken"],
 		["RateLimit"] = args["RateLimit"],
 		["RateKey"] = args["RateKey"],
 		["Name"] = args["Name"],
 		["MetricName"] = args["MetricName"],
 	}
-	asserts.AssertCreateRateBasedRuleRequest(t)
-	return t
+	asserts.AssertCreateRateBasedRuleRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteRateBasedRuleResponse = { ["ChangeToken"] = true, nil }
@@ -635,12 +844,23 @@ end
 -- * ChangeToken [ChangeToken] <p>The <code>ChangeToken</code> that you used to submit the <code>DeleteRateBasedRule</code> request. You can also use this value to query the status of the request. For more information, see <a>GetChangeTokenStatus</a>.</p>
 -- @return DeleteRateBasedRuleResponse structure as a key-value pair table
 function M.DeleteRateBasedRuleResponse(args)
-	assert(args, "You must provdide an argument table when creating DeleteRateBasedRuleResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteRateBasedRuleResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ChangeToken"] = args["ChangeToken"],
 	}
-	asserts.AssertDeleteRateBasedRuleResponse(t)
-	return t
+	asserts.AssertDeleteRateBasedRuleResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteWebACLRequest = { ["ChangeToken"] = true, ["WebACLId"] = true, nil }
@@ -667,13 +887,24 @@ end
 -- Required key: ChangeToken
 -- @return DeleteWebACLRequest structure as a key-value pair table
 function M.DeleteWebACLRequest(args)
-	assert(args, "You must provdide an argument table when creating DeleteWebACLRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteWebACLRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ChangeToken"] = args["ChangeToken"],
 		["WebACLId"] = args["WebACLId"],
 	}
-	asserts.AssertDeleteWebACLRequest(t)
-	return t
+	asserts.AssertDeleteWebACLRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListIPSetsResponse = { ["IPSets"] = true, ["NextMarker"] = true, nil }
@@ -696,13 +927,24 @@ end
 -- * NextMarker [NextMarker] <p>If you have more <code>IPSet</code> objects than the number that you specified for <code>Limit</code> in the request, the response includes a <code>NextMarker</code> value. To list more <code>IPSet</code> objects, submit another <code>ListIPSets</code> request, and specify the <code>NextMarker</code> value from the response in the <code>NextMarker</code> value in the next request.</p>
 -- @return ListIPSetsResponse structure as a key-value pair table
 function M.ListIPSetsResponse(args)
-	assert(args, "You must provdide an argument table when creating ListIPSetsResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListIPSetsResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["IPSets"] = args["IPSets"],
 		["NextMarker"] = args["NextMarker"],
 	}
-	asserts.AssertListIPSetsResponse(t)
-	return t
+	asserts.AssertListIPSetsResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.SizeConstraint = { ["ComparisonOperator"] = true, ["TextTransformation"] = true, ["FieldToMatch"] = true, ["Size"] = true, nil }
@@ -737,15 +979,26 @@ end
 -- Required key: Size
 -- @return SizeConstraint structure as a key-value pair table
 function M.SizeConstraint(args)
-	assert(args, "You must provdide an argument table when creating SizeConstraint")
-	local t = { 
+	assert(args, "You must provide an argument table when creating SizeConstraint")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ComparisonOperator"] = args["ComparisonOperator"],
 		["TextTransformation"] = args["TextTransformation"],
 		["FieldToMatch"] = args["FieldToMatch"],
 		["Size"] = args["Size"],
 	}
-	asserts.AssertSizeConstraint(t)
-	return t
+	asserts.AssertSizeConstraint(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateRuleResponse = { ["ChangeToken"] = true, ["Rule"] = true, nil }
@@ -768,13 +1021,24 @@ end
 -- * Rule [Rule] <p>The <a>Rule</a> returned in the <code>CreateRule</code> response.</p>
 -- @return CreateRuleResponse structure as a key-value pair table
 function M.CreateRuleResponse(args)
-	assert(args, "You must provdide an argument table when creating CreateRuleResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateRuleResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ChangeToken"] = args["ChangeToken"],
 		["Rule"] = args["Rule"],
 	}
-	asserts.AssertCreateRuleResponse(t)
-	return t
+	asserts.AssertCreateRuleResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.FieldToMatch = { ["Data"] = true, ["Type"] = true, nil }
@@ -799,13 +1063,24 @@ end
 -- Required key: Type
 -- @return FieldToMatch structure as a key-value pair table
 function M.FieldToMatch(args)
-	assert(args, "You must provdide an argument table when creating FieldToMatch")
-	local t = { 
+	assert(args, "You must provide an argument table when creating FieldToMatch")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Data"] = args["Data"],
 		["Type"] = args["Type"],
 	}
-	asserts.AssertFieldToMatch(t)
-	return t
+	asserts.AssertFieldToMatch(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteSqlInjectionMatchSetRequest = { ["ChangeToken"] = true, ["SqlInjectionMatchSetId"] = true, nil }
@@ -832,13 +1107,24 @@ end
 -- Required key: ChangeToken
 -- @return DeleteSqlInjectionMatchSetRequest structure as a key-value pair table
 function M.DeleteSqlInjectionMatchSetRequest(args)
-	assert(args, "You must provdide an argument table when creating DeleteSqlInjectionMatchSetRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteSqlInjectionMatchSetRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ChangeToken"] = args["ChangeToken"],
 		["SqlInjectionMatchSetId"] = args["SqlInjectionMatchSetId"],
 	}
-	asserts.AssertDeleteSqlInjectionMatchSetRequest(t)
-	return t
+	asserts.AssertDeleteSqlInjectionMatchSetRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetSizeConstraintSetRequest = { ["SizeConstraintSetId"] = true, nil }
@@ -861,12 +1147,23 @@ end
 -- Required key: SizeConstraintSetId
 -- @return GetSizeConstraintSetRequest structure as a key-value pair table
 function M.GetSizeConstraintSetRequest(args)
-	assert(args, "You must provdide an argument table when creating GetSizeConstraintSetRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetSizeConstraintSetRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["SizeConstraintSetId"] = args["SizeConstraintSetId"],
 	}
-	asserts.AssertGetSizeConstraintSetRequest(t)
-	return t
+	asserts.AssertGetSizeConstraintSetRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ByteMatchTuple = { ["TargetString"] = true, ["PositionalConstraint"] = true, ["TextTransformation"] = true, ["FieldToMatch"] = true, nil }
@@ -901,15 +1198,26 @@ end
 -- Required key: PositionalConstraint
 -- @return ByteMatchTuple structure as a key-value pair table
 function M.ByteMatchTuple(args)
-	assert(args, "You must provdide an argument table when creating ByteMatchTuple")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ByteMatchTuple")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["TargetString"] = args["TargetString"],
 		["PositionalConstraint"] = args["PositionalConstraint"],
 		["TextTransformation"] = args["TextTransformation"],
 		["FieldToMatch"] = args["FieldToMatch"],
 	}
-	asserts.AssertByteMatchTuple(t)
-	return t
+	asserts.AssertByteMatchTuple(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListResourcesForWebACLRequest = { ["WebACLId"] = true, nil }
@@ -932,12 +1240,23 @@ end
 -- Required key: WebACLId
 -- @return ListResourcesForWebACLRequest structure as a key-value pair table
 function M.ListResourcesForWebACLRequest(args)
-	assert(args, "You must provdide an argument table when creating ListResourcesForWebACLRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListResourcesForWebACLRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["WebACLId"] = args["WebACLId"],
 	}
-	asserts.AssertListResourcesForWebACLRequest(t)
-	return t
+	asserts.AssertListResourcesForWebACLRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetSampledRequestsResponse = { ["TimeWindow"] = true, ["SampledRequests"] = true, ["PopulationSize"] = true, nil }
@@ -962,14 +1281,25 @@ end
 -- * PopulationSize [PopulationSize] <p>The total number of requests from which <code>GetSampledRequests</code> got a sample of <code>MaxItems</code> requests. If <code>PopulationSize</code> is less than <code>MaxItems</code>, the sample includes every request that your AWS resource received during the specified time range.</p>
 -- @return GetSampledRequestsResponse structure as a key-value pair table
 function M.GetSampledRequestsResponse(args)
-	assert(args, "You must provdide an argument table when creating GetSampledRequestsResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetSampledRequestsResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["TimeWindow"] = args["TimeWindow"],
 		["SampledRequests"] = args["SampledRequests"],
 		["PopulationSize"] = args["PopulationSize"],
 	}
-	asserts.AssertGetSampledRequestsResponse(t)
-	return t
+	asserts.AssertGetSampledRequestsResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.IPSetDescriptor = { ["Type"] = true, ["Value"] = true, nil }
@@ -996,13 +1326,24 @@ end
 -- Required key: Value
 -- @return IPSetDescriptor structure as a key-value pair table
 function M.IPSetDescriptor(args)
-	assert(args, "You must provdide an argument table when creating IPSetDescriptor")
-	local t = { 
+	assert(args, "You must provide an argument table when creating IPSetDescriptor")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Type"] = args["Type"],
 		["Value"] = args["Value"],
 	}
-	asserts.AssertIPSetDescriptor(t)
-	return t
+	asserts.AssertIPSetDescriptor(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.WAFDisallowedNameException = { ["message"] = true, nil }
@@ -1023,12 +1364,23 @@ end
 -- * message [errorMessage] 
 -- @return WAFDisallowedNameException structure as a key-value pair table
 function M.WAFDisallowedNameException(args)
-	assert(args, "You must provdide an argument table when creating WAFDisallowedNameException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating WAFDisallowedNameException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertWAFDisallowedNameException(t)
-	return t
+	asserts.AssertWAFDisallowedNameException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AssociateWebACLResponse = { nil }
@@ -1047,11 +1399,22 @@ end
 -- Valid keys:
 -- @return AssociateWebACLResponse structure as a key-value pair table
 function M.AssociateWebACLResponse(args)
-	assert(args, "You must provdide an argument table when creating AssociateWebACLResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AssociateWebACLResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertAssociateWebACLResponse(t)
-	return t
+	asserts.AssertAssociateWebACLResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetSqlInjectionMatchSetRequest = { ["SqlInjectionMatchSetId"] = true, nil }
@@ -1074,12 +1437,23 @@ end
 -- Required key: SqlInjectionMatchSetId
 -- @return GetSqlInjectionMatchSetRequest structure as a key-value pair table
 function M.GetSqlInjectionMatchSetRequest(args)
-	assert(args, "You must provdide an argument table when creating GetSqlInjectionMatchSetRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetSqlInjectionMatchSetRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["SqlInjectionMatchSetId"] = args["SqlInjectionMatchSetId"],
 	}
-	asserts.AssertGetSqlInjectionMatchSetRequest(t)
-	return t
+	asserts.AssertGetSqlInjectionMatchSetRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateXssMatchSetResponse = { ["ChangeToken"] = true, ["XssMatchSet"] = true, nil }
@@ -1102,13 +1476,24 @@ end
 -- * XssMatchSet [XssMatchSet] <p>An <a>XssMatchSet</a>.</p>
 -- @return CreateXssMatchSetResponse structure as a key-value pair table
 function M.CreateXssMatchSetResponse(args)
-	assert(args, "You must provdide an argument table when creating CreateXssMatchSetResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateXssMatchSetResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ChangeToken"] = args["ChangeToken"],
 		["XssMatchSet"] = args["XssMatchSet"],
 	}
-	asserts.AssertCreateXssMatchSetResponse(t)
-	return t
+	asserts.AssertCreateXssMatchSetResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetRuleRequest = { ["RuleId"] = true, nil }
@@ -1131,12 +1516,23 @@ end
 -- Required key: RuleId
 -- @return GetRuleRequest structure as a key-value pair table
 function M.GetRuleRequest(args)
-	assert(args, "You must provdide an argument table when creating GetRuleRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetRuleRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["RuleId"] = args["RuleId"],
 	}
-	asserts.AssertGetRuleRequest(t)
-	return t
+	asserts.AssertGetRuleRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetSqlInjectionMatchSetResponse = { ["SqlInjectionMatchSet"] = true, nil }
@@ -1157,12 +1553,23 @@ end
 -- * SqlInjectionMatchSet [SqlInjectionMatchSet] <p>Information about the <a>SqlInjectionMatchSet</a> that you specified in the <code>GetSqlInjectionMatchSet</code> request. For more information, see the following topics:</p> <ul> <li> <p> <a>SqlInjectionMatchSet</a>: Contains <code>Name</code>, <code>SqlInjectionMatchSetId</code>, and an array of <code>SqlInjectionMatchTuple</code> objects</p> </li> <li> <p> <a>SqlInjectionMatchTuple</a>: Each <code>SqlInjectionMatchTuple</code> object contains <code>FieldToMatch</code> and <code>TextTransformation</code> </p> </li> <li> <p> <a>FieldToMatch</a>: Contains <code>Data</code> and <code>Type</code> </p> </li> </ul>
 -- @return GetSqlInjectionMatchSetResponse structure as a key-value pair table
 function M.GetSqlInjectionMatchSetResponse(args)
-	assert(args, "You must provdide an argument table when creating GetSqlInjectionMatchSetResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetSqlInjectionMatchSetResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["SqlInjectionMatchSet"] = args["SqlInjectionMatchSet"],
 	}
-	asserts.AssertGetSqlInjectionMatchSetResponse(t)
-	return t
+	asserts.AssertGetSqlInjectionMatchSetResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdateXssMatchSetResponse = { ["ChangeToken"] = true, nil }
@@ -1183,12 +1590,23 @@ end
 -- * ChangeToken [ChangeToken] <p>The <code>ChangeToken</code> that you used to submit the <code>UpdateXssMatchSet</code> request. You can also use this value to query the status of the request. For more information, see <a>GetChangeTokenStatus</a>.</p>
 -- @return UpdateXssMatchSetResponse structure as a key-value pair table
 function M.UpdateXssMatchSetResponse(args)
-	assert(args, "You must provdide an argument table when creating UpdateXssMatchSetResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateXssMatchSetResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ChangeToken"] = args["ChangeToken"],
 	}
-	asserts.AssertUpdateXssMatchSetResponse(t)
-	return t
+	asserts.AssertUpdateXssMatchSetResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.XssMatchSetSummary = { ["XssMatchSetId"] = true, ["Name"] = true, nil }
@@ -1215,13 +1633,24 @@ end
 -- Required key: Name
 -- @return XssMatchSetSummary structure as a key-value pair table
 function M.XssMatchSetSummary(args)
-	assert(args, "You must provdide an argument table when creating XssMatchSetSummary")
-	local t = { 
+	assert(args, "You must provide an argument table when creating XssMatchSetSummary")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["XssMatchSetId"] = args["XssMatchSetId"],
 		["Name"] = args["Name"],
 	}
-	asserts.AssertXssMatchSetSummary(t)
-	return t
+	asserts.AssertXssMatchSetSummary(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListXssMatchSetsResponse = { ["XssMatchSets"] = true, ["NextMarker"] = true, nil }
@@ -1244,13 +1673,24 @@ end
 -- * NextMarker [NextMarker] <p>If you have more <a>XssMatchSet</a> objects than the number that you specified for <code>Limit</code> in the request, the response includes a <code>NextMarker</code> value. To list more <code>XssMatchSet</code> objects, submit another <code>ListXssMatchSets</code> request, and specify the <code>NextMarker</code> value from the response in the <code>NextMarker</code> value in the next request.</p>
 -- @return ListXssMatchSetsResponse structure as a key-value pair table
 function M.ListXssMatchSetsResponse(args)
-	assert(args, "You must provdide an argument table when creating ListXssMatchSetsResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListXssMatchSetsResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["XssMatchSets"] = args["XssMatchSets"],
 		["NextMarker"] = args["NextMarker"],
 	}
-	asserts.AssertListXssMatchSetsResponse(t)
-	return t
+	asserts.AssertListXssMatchSetsResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ByteMatchSet = { ["ByteMatchSetId"] = true, ["Name"] = true, ["ByteMatchTuples"] = true, nil }
@@ -1279,14 +1719,25 @@ end
 -- Required key: ByteMatchTuples
 -- @return ByteMatchSet structure as a key-value pair table
 function M.ByteMatchSet(args)
-	assert(args, "You must provdide an argument table when creating ByteMatchSet")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ByteMatchSet")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ByteMatchSetId"] = args["ByteMatchSetId"],
 		["Name"] = args["Name"],
 		["ByteMatchTuples"] = args["ByteMatchTuples"],
 	}
-	asserts.AssertByteMatchSet(t)
-	return t
+	asserts.AssertByteMatchSet(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetRateBasedRuleRequest = { ["RuleId"] = true, nil }
@@ -1309,12 +1760,23 @@ end
 -- Required key: RuleId
 -- @return GetRateBasedRuleRequest structure as a key-value pair table
 function M.GetRateBasedRuleRequest(args)
-	assert(args, "You must provdide an argument table when creating GetRateBasedRuleRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetRateBasedRuleRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["RuleId"] = args["RuleId"],
 	}
-	asserts.AssertGetRateBasedRuleRequest(t)
-	return t
+	asserts.AssertGetRateBasedRuleRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.SampledHTTPRequest = { ["Action"] = true, ["Timestamp"] = true, ["Request"] = true, ["Weight"] = true, nil }
@@ -1345,15 +1807,26 @@ end
 -- Required key: Weight
 -- @return SampledHTTPRequest structure as a key-value pair table
 function M.SampledHTTPRequest(args)
-	assert(args, "You must provdide an argument table when creating SampledHTTPRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating SampledHTTPRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Action"] = args["Action"],
 		["Timestamp"] = args["Timestamp"],
 		["Request"] = args["Request"],
 		["Weight"] = args["Weight"],
 	}
-	asserts.AssertSampledHTTPRequest(t)
-	return t
+	asserts.AssertSampledHTTPRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DisassociateWebACLResponse = { nil }
@@ -1372,11 +1845,22 @@ end
 -- Valid keys:
 -- @return DisassociateWebACLResponse structure as a key-value pair table
 function M.DisassociateWebACLResponse(args)
-	assert(args, "You must provdide an argument table when creating DisassociateWebACLResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DisassociateWebACLResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertDisassociateWebACLResponse(t)
-	return t
+	asserts.AssertDisassociateWebACLResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.WAFInternalErrorException = { ["message"] = true, nil }
@@ -1397,12 +1881,23 @@ end
 -- * message [errorMessage] 
 -- @return WAFInternalErrorException structure as a key-value pair table
 function M.WAFInternalErrorException(args)
-	assert(args, "You must provdide an argument table when creating WAFInternalErrorException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating WAFInternalErrorException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertWAFInternalErrorException(t)
-	return t
+	asserts.AssertWAFInternalErrorException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.SqlInjectionMatchTuple = { ["TextTransformation"] = true, ["FieldToMatch"] = true, nil }
@@ -1429,13 +1924,24 @@ end
 -- Required key: TextTransformation
 -- @return SqlInjectionMatchTuple structure as a key-value pair table
 function M.SqlInjectionMatchTuple(args)
-	assert(args, "You must provdide an argument table when creating SqlInjectionMatchTuple")
-	local t = { 
+	assert(args, "You must provide an argument table when creating SqlInjectionMatchTuple")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["TextTransformation"] = args["TextTransformation"],
 		["FieldToMatch"] = args["FieldToMatch"],
 	}
-	asserts.AssertSqlInjectionMatchTuple(t)
-	return t
+	asserts.AssertSqlInjectionMatchTuple(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetRateBasedRuleResponse = { ["Rule"] = true, nil }
@@ -1456,12 +1962,23 @@ end
 -- * Rule [RateBasedRule] <p>Information about the <a>RateBasedRule</a> that you specified in the <code>GetRateBasedRule</code> request.</p>
 -- @return GetRateBasedRuleResponse structure as a key-value pair table
 function M.GetRateBasedRuleResponse(args)
-	assert(args, "You must provdide an argument table when creating GetRateBasedRuleResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetRateBasedRuleResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Rule"] = args["Rule"],
 	}
-	asserts.AssertGetRateBasedRuleResponse(t)
-	return t
+	asserts.AssertGetRateBasedRuleResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdateSqlInjectionMatchSetRequest = { ["ChangeToken"] = true, ["Updates"] = true, ["SqlInjectionMatchSetId"] = true, nil }
@@ -1492,14 +2009,25 @@ end
 -- Required key: Updates
 -- @return UpdateSqlInjectionMatchSetRequest structure as a key-value pair table
 function M.UpdateSqlInjectionMatchSetRequest(args)
-	assert(args, "You must provdide an argument table when creating UpdateSqlInjectionMatchSetRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateSqlInjectionMatchSetRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ChangeToken"] = args["ChangeToken"],
 		["Updates"] = args["Updates"],
 		["SqlInjectionMatchSetId"] = args["SqlInjectionMatchSetId"],
 	}
-	asserts.AssertUpdateSqlInjectionMatchSetRequest(t)
-	return t
+	asserts.AssertUpdateSqlInjectionMatchSetRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.WAFInvalidOperationException = { ["message"] = true, nil }
@@ -1520,12 +2048,23 @@ end
 -- * message [errorMessage] 
 -- @return WAFInvalidOperationException structure as a key-value pair table
 function M.WAFInvalidOperationException(args)
-	assert(args, "You must provdide an argument table when creating WAFInvalidOperationException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating WAFInvalidOperationException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertWAFInvalidOperationException(t)
-	return t
+	asserts.AssertWAFInvalidOperationException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateByteMatchSetResponse = { ["ChangeToken"] = true, ["ByteMatchSet"] = true, nil }
@@ -1548,13 +2087,24 @@ end
 -- * ByteMatchSet [ByteMatchSet] <p>A <a>ByteMatchSet</a> that contains no <code>ByteMatchTuple</code> objects.</p>
 -- @return CreateByteMatchSetResponse structure as a key-value pair table
 function M.CreateByteMatchSetResponse(args)
-	assert(args, "You must provdide an argument table when creating CreateByteMatchSetResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateByteMatchSetResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ChangeToken"] = args["ChangeToken"],
 		["ByteMatchSet"] = args["ByteMatchSet"],
 	}
-	asserts.AssertCreateByteMatchSetResponse(t)
-	return t
+	asserts.AssertCreateByteMatchSetResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetByteMatchSetResponse = { ["ByteMatchSet"] = true, nil }
@@ -1575,12 +2125,23 @@ end
 -- * ByteMatchSet [ByteMatchSet] <p>Information about the <a>ByteMatchSet</a> that you specified in the <code>GetByteMatchSet</code> request. For more information, see the following topics:</p> <ul> <li> <p> <a>ByteMatchSet</a>: Contains <code>ByteMatchSetId</code>, <code>ByteMatchTuples</code>, and <code>Name</code> </p> </li> <li> <p> <code>ByteMatchTuples</code>: Contains an array of <a>ByteMatchTuple</a> objects. Each <code>ByteMatchTuple</code> object contains <a>FieldToMatch</a>, <code>PositionalConstraint</code>, <code>TargetString</code>, and <code>TextTransformation</code> </p> </li> <li> <p> <a>FieldToMatch</a>: Contains <code>Data</code> and <code>Type</code> </p> </li> </ul>
 -- @return GetByteMatchSetResponse structure as a key-value pair table
 function M.GetByteMatchSetResponse(args)
-	assert(args, "You must provdide an argument table when creating GetByteMatchSetResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetByteMatchSetResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ByteMatchSet"] = args["ByteMatchSet"],
 	}
-	asserts.AssertGetByteMatchSetResponse(t)
-	return t
+	asserts.AssertGetByteMatchSetResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetChangeTokenResponse = { ["ChangeToken"] = true, nil }
@@ -1601,12 +2162,23 @@ end
 -- * ChangeToken [ChangeToken] <p>The <code>ChangeToken</code> that you used in the request. Use this value in a <code>GetChangeTokenStatus</code> request to get the current status of the request. </p>
 -- @return GetChangeTokenResponse structure as a key-value pair table
 function M.GetChangeTokenResponse(args)
-	assert(args, "You must provdide an argument table when creating GetChangeTokenResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetChangeTokenResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ChangeToken"] = args["ChangeToken"],
 	}
-	asserts.AssertGetChangeTokenResponse(t)
-	return t
+	asserts.AssertGetChangeTokenResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.WAFReferencedItemException = { ["message"] = true, nil }
@@ -1627,12 +2199,23 @@ end
 -- * message [errorMessage] 
 -- @return WAFReferencedItemException structure as a key-value pair table
 function M.WAFReferencedItemException(args)
-	assert(args, "You must provdide an argument table when creating WAFReferencedItemException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating WAFReferencedItemException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertWAFReferencedItemException(t)
-	return t
+	asserts.AssertWAFReferencedItemException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.WebACL = { ["DefaultAction"] = true, ["Rules"] = true, ["MetricName"] = true, ["WebACLId"] = true, ["Name"] = true, nil }
@@ -1667,16 +2250,27 @@ end
 -- Required key: Rules
 -- @return WebACL structure as a key-value pair table
 function M.WebACL(args)
-	assert(args, "You must provdide an argument table when creating WebACL")
-	local t = { 
+	assert(args, "You must provide an argument table when creating WebACL")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DefaultAction"] = args["DefaultAction"],
 		["Rules"] = args["Rules"],
 		["MetricName"] = args["MetricName"],
 		["WebACLId"] = args["WebACLId"],
 		["Name"] = args["Name"],
 	}
-	asserts.AssertWebACL(t)
-	return t
+	asserts.AssertWebACL(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListWebACLsResponse = { ["NextMarker"] = true, ["WebACLs"] = true, nil }
@@ -1699,13 +2293,24 @@ end
 -- * WebACLs [WebACLSummaries] <p>An array of <a>WebACLSummary</a> objects.</p>
 -- @return ListWebACLsResponse structure as a key-value pair table
 function M.ListWebACLsResponse(args)
-	assert(args, "You must provdide an argument table when creating ListWebACLsResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListWebACLsResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NextMarker"] = args["NextMarker"],
 		["WebACLs"] = args["WebACLs"],
 	}
-	asserts.AssertListWebACLsResponse(t)
-	return t
+	asserts.AssertListWebACLsResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateSqlInjectionMatchSetResponse = { ["ChangeToken"] = true, ["SqlInjectionMatchSet"] = true, nil }
@@ -1728,13 +2333,24 @@ end
 -- * SqlInjectionMatchSet [SqlInjectionMatchSet] <p>A <a>SqlInjectionMatchSet</a>.</p>
 -- @return CreateSqlInjectionMatchSetResponse structure as a key-value pair table
 function M.CreateSqlInjectionMatchSetResponse(args)
-	assert(args, "You must provdide an argument table when creating CreateSqlInjectionMatchSetResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateSqlInjectionMatchSetResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ChangeToken"] = args["ChangeToken"],
 		["SqlInjectionMatchSet"] = args["SqlInjectionMatchSet"],
 	}
-	asserts.AssertCreateSqlInjectionMatchSetResponse(t)
-	return t
+	asserts.AssertCreateSqlInjectionMatchSetResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateSizeConstraintSetResponse = { ["SizeConstraintSet"] = true, ["ChangeToken"] = true, nil }
@@ -1757,13 +2373,24 @@ end
 -- * ChangeToken [ChangeToken] <p>The <code>ChangeToken</code> that you used to submit the <code>CreateSizeConstraintSet</code> request. You can also use this value to query the status of the request. For more information, see <a>GetChangeTokenStatus</a>.</p>
 -- @return CreateSizeConstraintSetResponse structure as a key-value pair table
 function M.CreateSizeConstraintSetResponse(args)
-	assert(args, "You must provdide an argument table when creating CreateSizeConstraintSetResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateSizeConstraintSetResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["SizeConstraintSet"] = args["SizeConstraintSet"],
 		["ChangeToken"] = args["ChangeToken"],
 	}
-	asserts.AssertCreateSizeConstraintSetResponse(t)
-	return t
+	asserts.AssertCreateSizeConstraintSetResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetSampledRequestsRequest = { ["TimeWindow"] = true, ["WebAclId"] = true, ["MaxItems"] = true, ["RuleId"] = true, nil }
@@ -1798,15 +2425,26 @@ end
 -- Required key: MaxItems
 -- @return GetSampledRequestsRequest structure as a key-value pair table
 function M.GetSampledRequestsRequest(args)
-	assert(args, "You must provdide an argument table when creating GetSampledRequestsRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetSampledRequestsRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["TimeWindow"] = args["TimeWindow"],
 		["WebAclId"] = args["WebAclId"],
 		["MaxItems"] = args["MaxItems"],
 		["RuleId"] = args["RuleId"],
 	}
-	asserts.AssertGetSampledRequestsRequest(t)
-	return t
+	asserts.AssertGetSampledRequestsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetRateBasedRuleManagedKeysResponse = { ["ManagedKeys"] = true, ["NextMarker"] = true, nil }
@@ -1829,13 +2467,24 @@ end
 -- * NextMarker [NextMarker] <p>A null value and not currently used.</p>
 -- @return GetRateBasedRuleManagedKeysResponse structure as a key-value pair table
 function M.GetRateBasedRuleManagedKeysResponse(args)
-	assert(args, "You must provdide an argument table when creating GetRateBasedRuleManagedKeysResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetRateBasedRuleManagedKeysResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ManagedKeys"] = args["ManagedKeys"],
 		["NextMarker"] = args["NextMarker"],
 	}
-	asserts.AssertGetRateBasedRuleManagedKeysResponse(t)
-	return t
+	asserts.AssertGetRateBasedRuleManagedKeysResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteSizeConstraintSetResponse = { ["ChangeToken"] = true, nil }
@@ -1856,12 +2505,23 @@ end
 -- * ChangeToken [ChangeToken] <p>The <code>ChangeToken</code> that you used to submit the <code>DeleteSizeConstraintSet</code> request. You can also use this value to query the status of the request. For more information, see <a>GetChangeTokenStatus</a>.</p>
 -- @return DeleteSizeConstraintSetResponse structure as a key-value pair table
 function M.DeleteSizeConstraintSetResponse(args)
-	assert(args, "You must provdide an argument table when creating DeleteSizeConstraintSetResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteSizeConstraintSetResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ChangeToken"] = args["ChangeToken"],
 	}
-	asserts.AssertDeleteSizeConstraintSetResponse(t)
-	return t
+	asserts.AssertDeleteSizeConstraintSetResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdateXssMatchSetRequest = { ["ChangeToken"] = true, ["XssMatchSetId"] = true, ["Updates"] = true, nil }
@@ -1892,14 +2552,25 @@ end
 -- Required key: Updates
 -- @return UpdateXssMatchSetRequest structure as a key-value pair table
 function M.UpdateXssMatchSetRequest(args)
-	assert(args, "You must provdide an argument table when creating UpdateXssMatchSetRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateXssMatchSetRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ChangeToken"] = args["ChangeToken"],
 		["XssMatchSetId"] = args["XssMatchSetId"],
 		["Updates"] = args["Updates"],
 	}
-	asserts.AssertUpdateXssMatchSetRequest(t)
-	return t
+	asserts.AssertUpdateXssMatchSetRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdateByteMatchSetRequest = { ["ByteMatchSetId"] = true, ["ChangeToken"] = true, ["Updates"] = true, nil }
@@ -1930,14 +2601,25 @@ end
 -- Required key: Updates
 -- @return UpdateByteMatchSetRequest structure as a key-value pair table
 function M.UpdateByteMatchSetRequest(args)
-	assert(args, "You must provdide an argument table when creating UpdateByteMatchSetRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateByteMatchSetRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ByteMatchSetId"] = args["ByteMatchSetId"],
 		["ChangeToken"] = args["ChangeToken"],
 		["Updates"] = args["Updates"],
 	}
-	asserts.AssertUpdateByteMatchSetRequest(t)
-	return t
+	asserts.AssertUpdateByteMatchSetRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetWebACLRequest = { ["WebACLId"] = true, nil }
@@ -1960,12 +2642,23 @@ end
 -- Required key: WebACLId
 -- @return GetWebACLRequest structure as a key-value pair table
 function M.GetWebACLRequest(args)
-	assert(args, "You must provdide an argument table when creating GetWebACLRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetWebACLRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["WebACLId"] = args["WebACLId"],
 	}
-	asserts.AssertGetWebACLRequest(t)
-	return t
+	asserts.AssertGetWebACLRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.IPSetSummary = { ["IPSetId"] = true, ["Name"] = true, nil }
@@ -1992,13 +2685,24 @@ end
 -- Required key: Name
 -- @return IPSetSummary structure as a key-value pair table
 function M.IPSetSummary(args)
-	assert(args, "You must provdide an argument table when creating IPSetSummary")
-	local t = { 
+	assert(args, "You must provide an argument table when creating IPSetSummary")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["IPSetId"] = args["IPSetId"],
 		["Name"] = args["Name"],
 	}
-	asserts.AssertIPSetSummary(t)
-	return t
+	asserts.AssertIPSetSummary(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetIPSetResponse = { ["IPSet"] = true, nil }
@@ -2019,12 +2723,23 @@ end
 -- * IPSet [IPSet] <p>Information about the <a>IPSet</a> that you specified in the <code>GetIPSet</code> request. For more information, see the following topics:</p> <ul> <li> <p> <a>IPSet</a>: Contains <code>IPSetDescriptors</code>, <code>IPSetId</code>, and <code>Name</code> </p> </li> <li> <p> <code>IPSetDescriptors</code>: Contains an array of <a>IPSetDescriptor</a> objects. Each <code>IPSetDescriptor</code> object contains <code>Type</code> and <code>Value</code> </p> </li> </ul>
 -- @return GetIPSetResponse structure as a key-value pair table
 function M.GetIPSetResponse(args)
-	assert(args, "You must provdide an argument table when creating GetIPSetResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetIPSetResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["IPSet"] = args["IPSet"],
 	}
-	asserts.AssertGetIPSetResponse(t)
-	return t
+	asserts.AssertGetIPSetResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetWebACLResponse = { ["WebACL"] = true, nil }
@@ -2045,12 +2760,23 @@ end
 -- * WebACL [WebACL] <p>Information about the <a>WebACL</a> that you specified in the <code>GetWebACL</code> request. For more information, see the following topics:</p> <ul> <li> <p> <a>WebACL</a>: Contains <code>DefaultAction</code>, <code>MetricName</code>, <code>Name</code>, an array of <code>Rule</code> objects, and <code>WebACLId</code> </p> </li> <li> <p> <code>DefaultAction</code> (Data type is <a>WafAction</a>): Contains <code>Type</code> </p> </li> <li> <p> <code>Rules</code>: Contains an array of <code>ActivatedRule</code> objects, which contain <code>Action</code>, <code>Priority</code>, and <code>RuleId</code> </p> </li> <li> <p> <code>Action</code>: Contains <code>Type</code> </p> </li> </ul>
 -- @return GetWebACLResponse structure as a key-value pair table
 function M.GetWebACLResponse(args)
-	assert(args, "You must provdide an argument table when creating GetWebACLResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetWebACLResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["WebACL"] = args["WebACL"],
 	}
-	asserts.AssertGetWebACLResponse(t)
-	return t
+	asserts.AssertGetWebACLResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdateSizeConstraintSetRequest = { ["SizeConstraintSetId"] = true, ["ChangeToken"] = true, ["Updates"] = true, nil }
@@ -2081,14 +2807,25 @@ end
 -- Required key: Updates
 -- @return UpdateSizeConstraintSetRequest structure as a key-value pair table
 function M.UpdateSizeConstraintSetRequest(args)
-	assert(args, "You must provdide an argument table when creating UpdateSizeConstraintSetRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateSizeConstraintSetRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["SizeConstraintSetId"] = args["SizeConstraintSetId"],
 		["ChangeToken"] = args["ChangeToken"],
 		["Updates"] = args["Updates"],
 	}
-	asserts.AssertUpdateSizeConstraintSetRequest(t)
-	return t
+	asserts.AssertUpdateSizeConstraintSetRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteXssMatchSetResponse = { ["ChangeToken"] = true, nil }
@@ -2109,12 +2846,23 @@ end
 -- * ChangeToken [ChangeToken] <p>The <code>ChangeToken</code> that you used to submit the <code>DeleteXssMatchSet</code> request. You can also use this value to query the status of the request. For more information, see <a>GetChangeTokenStatus</a>.</p>
 -- @return DeleteXssMatchSetResponse structure as a key-value pair table
 function M.DeleteXssMatchSetResponse(args)
-	assert(args, "You must provdide an argument table when creating DeleteXssMatchSetResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteXssMatchSetResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ChangeToken"] = args["ChangeToken"],
 	}
-	asserts.AssertDeleteXssMatchSetResponse(t)
-	return t
+	asserts.AssertDeleteXssMatchSetResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteRateBasedRuleRequest = { ["ChangeToken"] = true, ["RuleId"] = true, nil }
@@ -2141,13 +2889,24 @@ end
 -- Required key: ChangeToken
 -- @return DeleteRateBasedRuleRequest structure as a key-value pair table
 function M.DeleteRateBasedRuleRequest(args)
-	assert(args, "You must provdide an argument table when creating DeleteRateBasedRuleRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteRateBasedRuleRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ChangeToken"] = args["ChangeToken"],
 		["RuleId"] = args["RuleId"],
 	}
-	asserts.AssertDeleteRateBasedRuleRequest(t)
-	return t
+	asserts.AssertDeleteRateBasedRuleRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteIPSetRequest = { ["IPSetId"] = true, ["ChangeToken"] = true, nil }
@@ -2174,13 +2933,24 @@ end
 -- Required key: ChangeToken
 -- @return DeleteIPSetRequest structure as a key-value pair table
 function M.DeleteIPSetRequest(args)
-	assert(args, "You must provdide an argument table when creating DeleteIPSetRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteIPSetRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["IPSetId"] = args["IPSetId"],
 		["ChangeToken"] = args["ChangeToken"],
 	}
-	asserts.AssertDeleteIPSetRequest(t)
-	return t
+	asserts.AssertDeleteIPSetRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdateWebACLResponse = { ["ChangeToken"] = true, nil }
@@ -2201,12 +2971,23 @@ end
 -- * ChangeToken [ChangeToken] <p>The <code>ChangeToken</code> that you used to submit the <code>UpdateWebACL</code> request. You can also use this value to query the status of the request. For more information, see <a>GetChangeTokenStatus</a>.</p>
 -- @return UpdateWebACLResponse structure as a key-value pair table
 function M.UpdateWebACLResponse(args)
-	assert(args, "You must provdide an argument table when creating UpdateWebACLResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateWebACLResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ChangeToken"] = args["ChangeToken"],
 	}
-	asserts.AssertUpdateWebACLResponse(t)
-	return t
+	asserts.AssertUpdateWebACLResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.XssMatchSet = { ["XssMatchTuples"] = true, ["XssMatchSetId"] = true, ["Name"] = true, nil }
@@ -2235,14 +3016,25 @@ end
 -- Required key: XssMatchTuples
 -- @return XssMatchSet structure as a key-value pair table
 function M.XssMatchSet(args)
-	assert(args, "You must provdide an argument table when creating XssMatchSet")
-	local t = { 
+	assert(args, "You must provide an argument table when creating XssMatchSet")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["XssMatchTuples"] = args["XssMatchTuples"],
 		["XssMatchSetId"] = args["XssMatchSetId"],
 		["Name"] = args["Name"],
 	}
-	asserts.AssertXssMatchSet(t)
-	return t
+	asserts.AssertXssMatchSet(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdateSizeConstraintSetResponse = { ["ChangeToken"] = true, nil }
@@ -2263,12 +3055,23 @@ end
 -- * ChangeToken [ChangeToken] <p>The <code>ChangeToken</code> that you used to submit the <code>UpdateSizeConstraintSet</code> request. You can also use this value to query the status of the request. For more information, see <a>GetChangeTokenStatus</a>.</p>
 -- @return UpdateSizeConstraintSetResponse structure as a key-value pair table
 function M.UpdateSizeConstraintSetResponse(args)
-	assert(args, "You must provdide an argument table when creating UpdateSizeConstraintSetResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateSizeConstraintSetResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ChangeToken"] = args["ChangeToken"],
 	}
-	asserts.AssertUpdateSizeConstraintSetResponse(t)
-	return t
+	asserts.AssertUpdateSizeConstraintSetResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.SizeConstraintSetUpdate = { ["Action"] = true, ["SizeConstraint"] = true, nil }
@@ -2295,13 +3098,24 @@ end
 -- Required key: SizeConstraint
 -- @return SizeConstraintSetUpdate structure as a key-value pair table
 function M.SizeConstraintSetUpdate(args)
-	assert(args, "You must provdide an argument table when creating SizeConstraintSetUpdate")
-	local t = { 
+	assert(args, "You must provide an argument table when creating SizeConstraintSetUpdate")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Action"] = args["Action"],
 		["SizeConstraint"] = args["SizeConstraint"],
 	}
-	asserts.AssertSizeConstraintSetUpdate(t)
-	return t
+	asserts.AssertSizeConstraintSetUpdate(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetXssMatchSetRequest = { ["XssMatchSetId"] = true, nil }
@@ -2324,12 +3138,23 @@ end
 -- Required key: XssMatchSetId
 -- @return GetXssMatchSetRequest structure as a key-value pair table
 function M.GetXssMatchSetRequest(args)
-	assert(args, "You must provdide an argument table when creating GetXssMatchSetRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetXssMatchSetRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["XssMatchSetId"] = args["XssMatchSetId"],
 	}
-	asserts.AssertGetXssMatchSetRequest(t)
-	return t
+	asserts.AssertGetXssMatchSetRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListRulesRequest = { ["NextMarker"] = true, ["Limit"] = true, nil }
@@ -2352,13 +3177,24 @@ end
 -- * Limit [PaginationLimit] <p>Specifies the number of <code>Rules</code> that you want AWS WAF to return for this request. If you have more <code>Rules</code> than the number that you specify for <code>Limit</code>, the response includes a <code>NextMarker</code> value that you can use to get another batch of <code>Rules</code>.</p>
 -- @return ListRulesRequest structure as a key-value pair table
 function M.ListRulesRequest(args)
-	assert(args, "You must provdide an argument table when creating ListRulesRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListRulesRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NextMarker"] = args["NextMarker"],
 		["Limit"] = args["Limit"],
 	}
-	asserts.AssertListRulesRequest(t)
-	return t
+	asserts.AssertListRulesRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteWebACLResponse = { ["ChangeToken"] = true, nil }
@@ -2379,12 +3215,23 @@ end
 -- * ChangeToken [ChangeToken] <p>The <code>ChangeToken</code> that you used to submit the <code>DeleteWebACL</code> request. You can also use this value to query the status of the request. For more information, see <a>GetChangeTokenStatus</a>.</p>
 -- @return DeleteWebACLResponse structure as a key-value pair table
 function M.DeleteWebACLResponse(args)
-	assert(args, "You must provdide an argument table when creating DeleteWebACLResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteWebACLResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ChangeToken"] = args["ChangeToken"],
 	}
-	asserts.AssertDeleteWebACLResponse(t)
-	return t
+	asserts.AssertDeleteWebACLResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ByteMatchSetUpdate = { ["Action"] = true, ["ByteMatchTuple"] = true, nil }
@@ -2411,13 +3258,24 @@ end
 -- Required key: ByteMatchTuple
 -- @return ByteMatchSetUpdate structure as a key-value pair table
 function M.ByteMatchSetUpdate(args)
-	assert(args, "You must provdide an argument table when creating ByteMatchSetUpdate")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ByteMatchSetUpdate")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Action"] = args["Action"],
 		["ByteMatchTuple"] = args["ByteMatchTuple"],
 	}
-	asserts.AssertByteMatchSetUpdate(t)
-	return t
+	asserts.AssertByteMatchSetUpdate(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateRuleRequest = { ["ChangeToken"] = true, ["Name"] = true, ["MetricName"] = true, nil }
@@ -2448,14 +3306,25 @@ end
 -- Required key: ChangeToken
 -- @return CreateRuleRequest structure as a key-value pair table
 function M.CreateRuleRequest(args)
-	assert(args, "You must provdide an argument table when creating CreateRuleRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateRuleRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ChangeToken"] = args["ChangeToken"],
 		["Name"] = args["Name"],
 		["MetricName"] = args["MetricName"],
 	}
-	asserts.AssertCreateRuleRequest(t)
-	return t
+	asserts.AssertCreateRuleRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteXssMatchSetRequest = { ["ChangeToken"] = true, ["XssMatchSetId"] = true, nil }
@@ -2482,13 +3351,24 @@ end
 -- Required key: ChangeToken
 -- @return DeleteXssMatchSetRequest structure as a key-value pair table
 function M.DeleteXssMatchSetRequest(args)
-	assert(args, "You must provdide an argument table when creating DeleteXssMatchSetRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteXssMatchSetRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ChangeToken"] = args["ChangeToken"],
 		["XssMatchSetId"] = args["XssMatchSetId"],
 	}
-	asserts.AssertDeleteXssMatchSetRequest(t)
-	return t
+	asserts.AssertDeleteXssMatchSetRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListResourcesForWebACLResponse = { ["ResourceArns"] = true, nil }
@@ -2509,12 +3389,23 @@ end
 -- * ResourceArns [ResourceArns] <p>An array of ARNs (Amazon Resource Names) of the resources associated with the specified web ACL. An array with zero elements is returned if there are no resources associated with the web ACL.</p>
 -- @return ListResourcesForWebACLResponse structure as a key-value pair table
 function M.ListResourcesForWebACLResponse(args)
-	assert(args, "You must provdide an argument table when creating ListResourcesForWebACLResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListResourcesForWebACLResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ResourceArns"] = args["ResourceArns"],
 	}
-	asserts.AssertListResourcesForWebACLResponse(t)
-	return t
+	asserts.AssertListResourcesForWebACLResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.WAFLimitsExceededException = { ["message"] = true, nil }
@@ -2535,12 +3426,23 @@ end
 -- * message [errorMessage] 
 -- @return WAFLimitsExceededException structure as a key-value pair table
 function M.WAFLimitsExceededException(args)
-	assert(args, "You must provdide an argument table when creating WAFLimitsExceededException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating WAFLimitsExceededException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertWAFLimitsExceededException(t)
-	return t
+	asserts.AssertWAFLimitsExceededException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateXssMatchSetRequest = { ["ChangeToken"] = true, ["Name"] = true, nil }
@@ -2567,13 +3469,24 @@ end
 -- Required key: ChangeToken
 -- @return CreateXssMatchSetRequest structure as a key-value pair table
 function M.CreateXssMatchSetRequest(args)
-	assert(args, "You must provdide an argument table when creating CreateXssMatchSetRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateXssMatchSetRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ChangeToken"] = args["ChangeToken"],
 		["Name"] = args["Name"],
 	}
-	asserts.AssertCreateXssMatchSetRequest(t)
-	return t
+	asserts.AssertCreateXssMatchSetRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdateByteMatchSetResponse = { ["ChangeToken"] = true, nil }
@@ -2594,12 +3507,23 @@ end
 -- * ChangeToken [ChangeToken] <p>The <code>ChangeToken</code> that you used to submit the <code>UpdateByteMatchSet</code> request. You can also use this value to query the status of the request. For more information, see <a>GetChangeTokenStatus</a>.</p>
 -- @return UpdateByteMatchSetResponse structure as a key-value pair table
 function M.UpdateByteMatchSetResponse(args)
-	assert(args, "You must provdide an argument table when creating UpdateByteMatchSetResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateByteMatchSetResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ChangeToken"] = args["ChangeToken"],
 	}
-	asserts.AssertUpdateByteMatchSetResponse(t)
-	return t
+	asserts.AssertUpdateByteMatchSetResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteByteMatchSetResponse = { ["ChangeToken"] = true, nil }
@@ -2620,12 +3544,23 @@ end
 -- * ChangeToken [ChangeToken] <p>The <code>ChangeToken</code> that you used to submit the <code>DeleteByteMatchSet</code> request. You can also use this value to query the status of the request. For more information, see <a>GetChangeTokenStatus</a>.</p>
 -- @return DeleteByteMatchSetResponse structure as a key-value pair table
 function M.DeleteByteMatchSetResponse(args)
-	assert(args, "You must provdide an argument table when creating DeleteByteMatchSetResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteByteMatchSetResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ChangeToken"] = args["ChangeToken"],
 	}
-	asserts.AssertDeleteByteMatchSetResponse(t)
-	return t
+	asserts.AssertDeleteByteMatchSetResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetRateBasedRuleManagedKeysRequest = { ["NextMarker"] = true, ["RuleId"] = true, nil }
@@ -2650,13 +3585,24 @@ end
 -- Required key: RuleId
 -- @return GetRateBasedRuleManagedKeysRequest structure as a key-value pair table
 function M.GetRateBasedRuleManagedKeysRequest(args)
-	assert(args, "You must provdide an argument table when creating GetRateBasedRuleManagedKeysRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetRateBasedRuleManagedKeysRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NextMarker"] = args["NextMarker"],
 		["RuleId"] = args["RuleId"],
 	}
-	asserts.AssertGetRateBasedRuleManagedKeysRequest(t)
-	return t
+	asserts.AssertGetRateBasedRuleManagedKeysRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdateRateBasedRuleRequest = { ["RateLimit"] = true, ["ChangeToken"] = true, ["Updates"] = true, ["RuleId"] = true, nil }
@@ -2691,15 +3637,26 @@ end
 -- Required key: RateLimit
 -- @return UpdateRateBasedRuleRequest structure as a key-value pair table
 function M.UpdateRateBasedRuleRequest(args)
-	assert(args, "You must provdide an argument table when creating UpdateRateBasedRuleRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateRateBasedRuleRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["RateLimit"] = args["RateLimit"],
 		["ChangeToken"] = args["ChangeToken"],
 		["Updates"] = args["Updates"],
 		["RuleId"] = args["RuleId"],
 	}
-	asserts.AssertUpdateRateBasedRuleRequest(t)
-	return t
+	asserts.AssertUpdateRateBasedRuleRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.WebACLUpdate = { ["Action"] = true, ["ActivatedRule"] = true, nil }
@@ -2726,13 +3683,24 @@ end
 -- Required key: ActivatedRule
 -- @return WebACLUpdate structure as a key-value pair table
 function M.WebACLUpdate(args)
-	assert(args, "You must provdide an argument table when creating WebACLUpdate")
-	local t = { 
+	assert(args, "You must provide an argument table when creating WebACLUpdate")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Action"] = args["Action"],
 		["ActivatedRule"] = args["ActivatedRule"],
 	}
-	asserts.AssertWebACLUpdate(t)
-	return t
+	asserts.AssertWebACLUpdate(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Rule = { ["Predicates"] = true, ["MetricName"] = true, ["Name"] = true, ["RuleId"] = true, nil }
@@ -2763,15 +3731,26 @@ end
 -- Required key: Predicates
 -- @return Rule structure as a key-value pair table
 function M.Rule(args)
-	assert(args, "You must provdide an argument table when creating Rule")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Rule")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Predicates"] = args["Predicates"],
 		["MetricName"] = args["MetricName"],
 		["Name"] = args["Name"],
 		["RuleId"] = args["RuleId"],
 	}
-	asserts.AssertRule(t)
-	return t
+	asserts.AssertRule(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListIPSetsRequest = { ["NextMarker"] = true, ["Limit"] = true, nil }
@@ -2794,13 +3773,24 @@ end
 -- * Limit [PaginationLimit] <p>Specifies the number of <code>IPSet</code> objects that you want AWS WAF to return for this request. If you have more <code>IPSet</code> objects than the number you specify for <code>Limit</code>, the response includes a <code>NextMarker</code> value that you can use to get another batch of <code>IPSet</code> objects.</p>
 -- @return ListIPSetsRequest structure as a key-value pair table
 function M.ListIPSetsRequest(args)
-	assert(args, "You must provdide an argument table when creating ListIPSetsRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListIPSetsRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NextMarker"] = args["NextMarker"],
 		["Limit"] = args["Limit"],
 	}
-	asserts.AssertListIPSetsRequest(t)
-	return t
+	asserts.AssertListIPSetsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ActivatedRule = { ["Priority"] = true, ["Action"] = true, ["Type"] = true, ["RuleId"] = true, nil }
@@ -2833,15 +3823,26 @@ end
 -- Required key: Action
 -- @return ActivatedRule structure as a key-value pair table
 function M.ActivatedRule(args)
-	assert(args, "You must provdide an argument table when creating ActivatedRule")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ActivatedRule")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Priority"] = args["Priority"],
 		["Action"] = args["Action"],
 		["Type"] = args["Type"],
 		["RuleId"] = args["RuleId"],
 	}
-	asserts.AssertActivatedRule(t)
-	return t
+	asserts.AssertActivatedRule(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateWebACLRequest = { ["DefaultAction"] = true, ["ChangeToken"] = true, ["Name"] = true, ["MetricName"] = true, nil }
@@ -2876,15 +3877,26 @@ end
 -- Required key: ChangeToken
 -- @return CreateWebACLRequest structure as a key-value pair table
 function M.CreateWebACLRequest(args)
-	assert(args, "You must provdide an argument table when creating CreateWebACLRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateWebACLRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DefaultAction"] = args["DefaultAction"],
 		["ChangeToken"] = args["ChangeToken"],
 		["Name"] = args["Name"],
 		["MetricName"] = args["MetricName"],
 	}
-	asserts.AssertCreateWebACLRequest(t)
-	return t
+	asserts.AssertCreateWebACLRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdateRuleResponse = { ["ChangeToken"] = true, nil }
@@ -2905,12 +3917,23 @@ end
 -- * ChangeToken [ChangeToken] <p>The <code>ChangeToken</code> that you used to submit the <code>UpdateRule</code> request. You can also use this value to query the status of the request. For more information, see <a>GetChangeTokenStatus</a>.</p>
 -- @return UpdateRuleResponse structure as a key-value pair table
 function M.UpdateRuleResponse(args)
-	assert(args, "You must provdide an argument table when creating UpdateRuleResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateRuleResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ChangeToken"] = args["ChangeToken"],
 	}
-	asserts.AssertUpdateRuleResponse(t)
-	return t
+	asserts.AssertUpdateRuleResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DisassociateWebACLRequest = { ["ResourceArn"] = true, nil }
@@ -2933,12 +3956,23 @@ end
 -- Required key: ResourceArn
 -- @return DisassociateWebACLRequest structure as a key-value pair table
 function M.DisassociateWebACLRequest(args)
-	assert(args, "You must provdide an argument table when creating DisassociateWebACLRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DisassociateWebACLRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ResourceArn"] = args["ResourceArn"],
 	}
-	asserts.AssertDisassociateWebACLRequest(t)
-	return t
+	asserts.AssertDisassociateWebACLRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListSizeConstraintSetsRequest = { ["NextMarker"] = true, ["Limit"] = true, nil }
@@ -2961,13 +3995,24 @@ end
 -- * Limit [PaginationLimit] <p>Specifies the number of <code>SizeConstraintSet</code> objects that you want AWS WAF to return for this request. If you have more <code>SizeConstraintSets</code> objects than the number you specify for <code>Limit</code>, the response includes a <code>NextMarker</code> value that you can use to get another batch of <code>SizeConstraintSet</code> objects.</p>
 -- @return ListSizeConstraintSetsRequest structure as a key-value pair table
 function M.ListSizeConstraintSetsRequest(args)
-	assert(args, "You must provdide an argument table when creating ListSizeConstraintSetsRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListSizeConstraintSetsRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NextMarker"] = args["NextMarker"],
 		["Limit"] = args["Limit"],
 	}
-	asserts.AssertListSizeConstraintSetsRequest(t)
-	return t
+	asserts.AssertListSizeConstraintSetsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.SqlInjectionMatchSetUpdate = { ["Action"] = true, ["SqlInjectionMatchTuple"] = true, nil }
@@ -2994,13 +4039,24 @@ end
 -- Required key: SqlInjectionMatchTuple
 -- @return SqlInjectionMatchSetUpdate structure as a key-value pair table
 function M.SqlInjectionMatchSetUpdate(args)
-	assert(args, "You must provdide an argument table when creating SqlInjectionMatchSetUpdate")
-	local t = { 
+	assert(args, "You must provide an argument table when creating SqlInjectionMatchSetUpdate")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Action"] = args["Action"],
 		["SqlInjectionMatchTuple"] = args["SqlInjectionMatchTuple"],
 	}
-	asserts.AssertSqlInjectionMatchSetUpdate(t)
-	return t
+	asserts.AssertSqlInjectionMatchSetUpdate(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.WAFUnavailableEntityException = { ["message"] = true, nil }
@@ -3021,12 +4077,23 @@ end
 -- * message [errorMessage] 
 -- @return WAFUnavailableEntityException structure as a key-value pair table
 function M.WAFUnavailableEntityException(args)
-	assert(args, "You must provdide an argument table when creating WAFUnavailableEntityException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating WAFUnavailableEntityException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertWAFUnavailableEntityException(t)
-	return t
+	asserts.AssertWAFUnavailableEntityException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetChangeTokenRequest = { nil }
@@ -3045,11 +4112,22 @@ end
 -- Valid keys:
 -- @return GetChangeTokenRequest structure as a key-value pair table
 function M.GetChangeTokenRequest(args)
-	assert(args, "You must provdide an argument table when creating GetChangeTokenRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetChangeTokenRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertGetChangeTokenRequest(t)
-	return t
+	asserts.AssertGetChangeTokenRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateSqlInjectionMatchSetRequest = { ["ChangeToken"] = true, ["Name"] = true, nil }
@@ -3076,13 +4154,24 @@ end
 -- Required key: ChangeToken
 -- @return CreateSqlInjectionMatchSetRequest structure as a key-value pair table
 function M.CreateSqlInjectionMatchSetRequest(args)
-	assert(args, "You must provdide an argument table when creating CreateSqlInjectionMatchSetRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateSqlInjectionMatchSetRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ChangeToken"] = args["ChangeToken"],
 		["Name"] = args["Name"],
 	}
-	asserts.AssertCreateSqlInjectionMatchSetRequest(t)
-	return t
+	asserts.AssertCreateSqlInjectionMatchSetRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateSizeConstraintSetRequest = { ["ChangeToken"] = true, ["Name"] = true, nil }
@@ -3109,13 +4198,24 @@ end
 -- Required key: ChangeToken
 -- @return CreateSizeConstraintSetRequest structure as a key-value pair table
 function M.CreateSizeConstraintSetRequest(args)
-	assert(args, "You must provdide an argument table when creating CreateSizeConstraintSetRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateSizeConstraintSetRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ChangeToken"] = args["ChangeToken"],
 		["Name"] = args["Name"],
 	}
-	asserts.AssertCreateSizeConstraintSetRequest(t)
-	return t
+	asserts.AssertCreateSizeConstraintSetRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.SizeConstraintSetSummary = { ["SizeConstraintSetId"] = true, ["Name"] = true, nil }
@@ -3142,13 +4242,24 @@ end
 -- Required key: Name
 -- @return SizeConstraintSetSummary structure as a key-value pair table
 function M.SizeConstraintSetSummary(args)
-	assert(args, "You must provdide an argument table when creating SizeConstraintSetSummary")
-	local t = { 
+	assert(args, "You must provide an argument table when creating SizeConstraintSetSummary")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["SizeConstraintSetId"] = args["SizeConstraintSetId"],
 		["Name"] = args["Name"],
 	}
-	asserts.AssertSizeConstraintSetSummary(t)
-	return t
+	asserts.AssertSizeConstraintSetSummary(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListSqlInjectionMatchSetsResponse = { ["SqlInjectionMatchSets"] = true, ["NextMarker"] = true, nil }
@@ -3171,13 +4282,24 @@ end
 -- * NextMarker [NextMarker] <p>If you have more <a>SqlInjectionMatchSet</a> objects than the number that you specified for <code>Limit</code> in the request, the response includes a <code>NextMarker</code> value. To list more <code>SqlInjectionMatchSet</code> objects, submit another <code>ListSqlInjectionMatchSets</code> request, and specify the <code>NextMarker</code> value from the response in the <code>NextMarker</code> value in the next request.</p>
 -- @return ListSqlInjectionMatchSetsResponse structure as a key-value pair table
 function M.ListSqlInjectionMatchSetsResponse(args)
-	assert(args, "You must provdide an argument table when creating ListSqlInjectionMatchSetsResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListSqlInjectionMatchSetsResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["SqlInjectionMatchSets"] = args["SqlInjectionMatchSets"],
 		["NextMarker"] = args["NextMarker"],
 	}
-	asserts.AssertListSqlInjectionMatchSetsResponse(t)
-	return t
+	asserts.AssertListSqlInjectionMatchSetsResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListSqlInjectionMatchSetsRequest = { ["NextMarker"] = true, ["Limit"] = true, nil }
@@ -3200,13 +4322,24 @@ end
 -- * Limit [PaginationLimit] <p>Specifies the number of <a>SqlInjectionMatchSet</a> objects that you want AWS WAF to return for this request. If you have more <code>SqlInjectionMatchSet</code> objects than the number you specify for <code>Limit</code>, the response includes a <code>NextMarker</code> value that you can use to get another batch of <code>Rules</code>.</p>
 -- @return ListSqlInjectionMatchSetsRequest structure as a key-value pair table
 function M.ListSqlInjectionMatchSetsRequest(args)
-	assert(args, "You must provdide an argument table when creating ListSqlInjectionMatchSetsRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListSqlInjectionMatchSetsRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NextMarker"] = args["NextMarker"],
 		["Limit"] = args["Limit"],
 	}
-	asserts.AssertListSqlInjectionMatchSetsRequest(t)
-	return t
+	asserts.AssertListSqlInjectionMatchSetsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.HTTPRequest = { ["Country"] = true, ["URI"] = true, ["Headers"] = true, ["ClientIP"] = true, ["Method"] = true, ["HTTPVersion"] = true, nil }
@@ -3237,8 +4370,14 @@ end
 -- * HTTPVersion [HTTPVersion] <p>The HTTP version specified in the sampled web request, for example, <code>HTTP/1.1</code>.</p>
 -- @return HTTPRequest structure as a key-value pair table
 function M.HTTPRequest(args)
-	assert(args, "You must provdide an argument table when creating HTTPRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating HTTPRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Country"] = args["Country"],
 		["URI"] = args["URI"],
 		["Headers"] = args["Headers"],
@@ -3246,8 +4385,13 @@ function M.HTTPRequest(args)
 		["Method"] = args["Method"],
 		["HTTPVersion"] = args["HTTPVersion"],
 	}
-	asserts.AssertHTTPRequest(t)
-	return t
+	asserts.AssertHTTPRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListWebACLsRequest = { ["NextMarker"] = true, ["Limit"] = true, nil }
@@ -3270,13 +4414,24 @@ end
 -- * Limit [PaginationLimit] <p>Specifies the number of <code>WebACL</code> objects that you want AWS WAF to return for this request. If you have more <code>WebACL</code> objects than the number that you specify for <code>Limit</code>, the response includes a <code>NextMarker</code> value that you can use to get another batch of <code>WebACL</code> objects.</p>
 -- @return ListWebACLsRequest structure as a key-value pair table
 function M.ListWebACLsRequest(args)
-	assert(args, "You must provdide an argument table when creating ListWebACLsRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListWebACLsRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NextMarker"] = args["NextMarker"],
 		["Limit"] = args["Limit"],
 	}
-	asserts.AssertListWebACLsRequest(t)
-	return t
+	asserts.AssertListWebACLsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateWebACLResponse = { ["WebACL"] = true, ["ChangeToken"] = true, nil }
@@ -3299,13 +4454,24 @@ end
 -- * ChangeToken [ChangeToken] <p>The <code>ChangeToken</code> that you used to submit the <code>CreateWebACL</code> request. You can also use this value to query the status of the request. For more information, see <a>GetChangeTokenStatus</a>.</p>
 -- @return CreateWebACLResponse structure as a key-value pair table
 function M.CreateWebACLResponse(args)
-	assert(args, "You must provdide an argument table when creating CreateWebACLResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateWebACLResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["WebACL"] = args["WebACL"],
 		["ChangeToken"] = args["ChangeToken"],
 	}
-	asserts.AssertCreateWebACLResponse(t)
-	return t
+	asserts.AssertCreateWebACLResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteRuleResponse = { ["ChangeToken"] = true, nil }
@@ -3326,12 +4492,23 @@ end
 -- * ChangeToken [ChangeToken] <p>The <code>ChangeToken</code> that you used to submit the <code>DeleteRule</code> request. You can also use this value to query the status of the request. For more information, see <a>GetChangeTokenStatus</a>.</p>
 -- @return DeleteRuleResponse structure as a key-value pair table
 function M.DeleteRuleResponse(args)
-	assert(args, "You must provdide an argument table when creating DeleteRuleResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteRuleResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ChangeToken"] = args["ChangeToken"],
 	}
-	asserts.AssertDeleteRuleResponse(t)
-	return t
+	asserts.AssertDeleteRuleResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetWebACLForResourceRequest = { ["ResourceArn"] = true, nil }
@@ -3354,12 +4531,23 @@ end
 -- Required key: ResourceArn
 -- @return GetWebACLForResourceRequest structure as a key-value pair table
 function M.GetWebACLForResourceRequest(args)
-	assert(args, "You must provdide an argument table when creating GetWebACLForResourceRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetWebACLForResourceRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ResourceArn"] = args["ResourceArn"],
 	}
-	asserts.AssertGetWebACLForResourceRequest(t)
-	return t
+	asserts.AssertGetWebACLForResourceRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteSizeConstraintSetRequest = { ["SizeConstraintSetId"] = true, ["ChangeToken"] = true, nil }
@@ -3386,13 +4574,24 @@ end
 -- Required key: ChangeToken
 -- @return DeleteSizeConstraintSetRequest structure as a key-value pair table
 function M.DeleteSizeConstraintSetRequest(args)
-	assert(args, "You must provdide an argument table when creating DeleteSizeConstraintSetRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteSizeConstraintSetRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["SizeConstraintSetId"] = args["SizeConstraintSetId"],
 		["ChangeToken"] = args["ChangeToken"],
 	}
-	asserts.AssertDeleteSizeConstraintSetRequest(t)
-	return t
+	asserts.AssertDeleteSizeConstraintSetRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdateRateBasedRuleResponse = { ["ChangeToken"] = true, nil }
@@ -3413,12 +4612,23 @@ end
 -- * ChangeToken [ChangeToken] <p>The <code>ChangeToken</code> that you used to submit the <code>UpdateRateBasedRule</code> request. You can also use this value to query the status of the request. For more information, see <a>GetChangeTokenStatus</a>.</p>
 -- @return UpdateRateBasedRuleResponse structure as a key-value pair table
 function M.UpdateRateBasedRuleResponse(args)
-	assert(args, "You must provdide an argument table when creating UpdateRateBasedRuleResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateRateBasedRuleResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ChangeToken"] = args["ChangeToken"],
 	}
-	asserts.AssertUpdateRateBasedRuleResponse(t)
-	return t
+	asserts.AssertUpdateRateBasedRuleResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetSizeConstraintSetResponse = { ["SizeConstraintSet"] = true, nil }
@@ -3439,12 +4649,23 @@ end
 -- * SizeConstraintSet [SizeConstraintSet] <p>Information about the <a>SizeConstraintSet</a> that you specified in the <code>GetSizeConstraintSet</code> request. For more information, see the following topics:</p> <ul> <li> <p> <a>SizeConstraintSet</a>: Contains <code>SizeConstraintSetId</code>, <code>SizeConstraints</code>, and <code>Name</code> </p> </li> <li> <p> <code>SizeConstraints</code>: Contains an array of <a>SizeConstraint</a> objects. Each <code>SizeConstraint</code> object contains <a>FieldToMatch</a>, <code>TextTransformation</code>, <code>ComparisonOperator</code>, and <code>Size</code> </p> </li> <li> <p> <a>FieldToMatch</a>: Contains <code>Data</code> and <code>Type</code> </p> </li> </ul>
 -- @return GetSizeConstraintSetResponse structure as a key-value pair table
 function M.GetSizeConstraintSetResponse(args)
-	assert(args, "You must provdide an argument table when creating GetSizeConstraintSetResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetSizeConstraintSetResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["SizeConstraintSet"] = args["SizeConstraintSet"],
 	}
-	asserts.AssertGetSizeConstraintSetResponse(t)
-	return t
+	asserts.AssertGetSizeConstraintSetResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListRulesResponse = { ["Rules"] = true, ["NextMarker"] = true, nil }
@@ -3467,13 +4688,24 @@ end
 -- * NextMarker [NextMarker] <p>If you have more <code>Rules</code> than the number that you specified for <code>Limit</code> in the request, the response includes a <code>NextMarker</code> value. To list more <code>Rules</code>, submit another <code>ListRules</code> request, and specify the <code>NextMarker</code> value from the response in the <code>NextMarker</code> value in the next request.</p>
 -- @return ListRulesResponse structure as a key-value pair table
 function M.ListRulesResponse(args)
-	assert(args, "You must provdide an argument table when creating ListRulesResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListRulesResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Rules"] = args["Rules"],
 		["NextMarker"] = args["NextMarker"],
 	}
-	asserts.AssertListRulesResponse(t)
-	return t
+	asserts.AssertListRulesResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateIPSetRequest = { ["ChangeToken"] = true, ["Name"] = true, nil }
@@ -3500,13 +4732,24 @@ end
 -- Required key: ChangeToken
 -- @return CreateIPSetRequest structure as a key-value pair table
 function M.CreateIPSetRequest(args)
-	assert(args, "You must provdide an argument table when creating CreateIPSetRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateIPSetRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ChangeToken"] = args["ChangeToken"],
 		["Name"] = args["Name"],
 	}
-	asserts.AssertCreateIPSetRequest(t)
-	return t
+	asserts.AssertCreateIPSetRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetRuleResponse = { ["Rule"] = true, nil }
@@ -3527,12 +4770,23 @@ end
 -- * Rule [Rule] <p>Information about the <a>Rule</a> that you specified in the <code>GetRule</code> request. For more information, see the following topics:</p> <ul> <li> <p> <a>Rule</a>: Contains <code>MetricName</code>, <code>Name</code>, an array of <code>Predicate</code> objects, and <code>RuleId</code> </p> </li> <li> <p> <a>Predicate</a>: Each <code>Predicate</code> object contains <code>DataId</code>, <code>Negated</code>, and <code>Type</code> </p> </li> </ul>
 -- @return GetRuleResponse structure as a key-value pair table
 function M.GetRuleResponse(args)
-	assert(args, "You must provdide an argument table when creating GetRuleResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetRuleResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Rule"] = args["Rule"],
 	}
-	asserts.AssertGetRuleResponse(t)
-	return t
+	asserts.AssertGetRuleResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListByteMatchSetsRequest = { ["NextMarker"] = true, ["Limit"] = true, nil }
@@ -3555,13 +4809,24 @@ end
 -- * Limit [PaginationLimit] <p>Specifies the number of <code>ByteMatchSet</code> objects that you want AWS WAF to return for this request. If you have more <code>ByteMatchSets</code> objects than the number you specify for <code>Limit</code>, the response includes a <code>NextMarker</code> value that you can use to get another batch of <code>ByteMatchSet</code> objects.</p>
 -- @return ListByteMatchSetsRequest structure as a key-value pair table
 function M.ListByteMatchSetsRequest(args)
-	assert(args, "You must provdide an argument table when creating ListByteMatchSetsRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListByteMatchSetsRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NextMarker"] = args["NextMarker"],
 		["Limit"] = args["Limit"],
 	}
-	asserts.AssertListByteMatchSetsRequest(t)
-	return t
+	asserts.AssertListByteMatchSetsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateIPSetResponse = { ["IPSet"] = true, ["ChangeToken"] = true, nil }
@@ -3584,13 +4849,24 @@ end
 -- * ChangeToken [ChangeToken] <p>The <code>ChangeToken</code> that you used to submit the <code>CreateIPSet</code> request. You can also use this value to query the status of the request. For more information, see <a>GetChangeTokenStatus</a>.</p>
 -- @return CreateIPSetResponse structure as a key-value pair table
 function M.CreateIPSetResponse(args)
-	assert(args, "You must provdide an argument table when creating CreateIPSetResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateIPSetResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["IPSet"] = args["IPSet"],
 		["ChangeToken"] = args["ChangeToken"],
 	}
-	asserts.AssertCreateIPSetResponse(t)
-	return t
+	asserts.AssertCreateIPSetResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateByteMatchSetRequest = { ["ChangeToken"] = true, ["Name"] = true, nil }
@@ -3617,13 +4893,24 @@ end
 -- Required key: ChangeToken
 -- @return CreateByteMatchSetRequest structure as a key-value pair table
 function M.CreateByteMatchSetRequest(args)
-	assert(args, "You must provdide an argument table when creating CreateByteMatchSetRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateByteMatchSetRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ChangeToken"] = args["ChangeToken"],
 		["Name"] = args["Name"],
 	}
-	asserts.AssertCreateByteMatchSetRequest(t)
-	return t
+	asserts.AssertCreateByteMatchSetRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.IPSet = { ["IPSetId"] = true, ["Name"] = true, ["IPSetDescriptors"] = true, nil }
@@ -3652,14 +4939,25 @@ end
 -- Required key: IPSetDescriptors
 -- @return IPSet structure as a key-value pair table
 function M.IPSet(args)
-	assert(args, "You must provdide an argument table when creating IPSet")
-	local t = { 
+	assert(args, "You must provide an argument table when creating IPSet")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["IPSetId"] = args["IPSetId"],
 		["Name"] = args["Name"],
 		["IPSetDescriptors"] = args["IPSetDescriptors"],
 	}
-	asserts.AssertIPSet(t)
-	return t
+	asserts.AssertIPSet(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AssociateWebACLRequest = { ["ResourceArn"] = true, ["WebACLId"] = true, nil }
@@ -3686,13 +4984,24 @@ end
 -- Required key: ResourceArn
 -- @return AssociateWebACLRequest structure as a key-value pair table
 function M.AssociateWebACLRequest(args)
-	assert(args, "You must provdide an argument table when creating AssociateWebACLRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AssociateWebACLRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ResourceArn"] = args["ResourceArn"],
 		["WebACLId"] = args["WebACLId"],
 	}
-	asserts.AssertAssociateWebACLRequest(t)
-	return t
+	asserts.AssertAssociateWebACLRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ByteMatchSetSummary = { ["ByteMatchSetId"] = true, ["Name"] = true, nil }
@@ -3719,13 +5028,24 @@ end
 -- Required key: Name
 -- @return ByteMatchSetSummary structure as a key-value pair table
 function M.ByteMatchSetSummary(args)
-	assert(args, "You must provdide an argument table when creating ByteMatchSetSummary")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ByteMatchSetSummary")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ByteMatchSetId"] = args["ByteMatchSetId"],
 		["Name"] = args["Name"],
 	}
-	asserts.AssertByteMatchSetSummary(t)
-	return t
+	asserts.AssertByteMatchSetSummary(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.WAFInvalidParameterException = { ["field"] = true, ["reason"] = true, ["parameter"] = true, nil }
@@ -3750,14 +5070,25 @@ end
 -- * parameter [ParameterExceptionParameter] 
 -- @return WAFInvalidParameterException structure as a key-value pair table
 function M.WAFInvalidParameterException(args)
-	assert(args, "You must provdide an argument table when creating WAFInvalidParameterException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating WAFInvalidParameterException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["field"] = args["field"],
 		["reason"] = args["reason"],
 		["parameter"] = args["parameter"],
 	}
-	asserts.AssertWAFInvalidParameterException(t)
-	return t
+	asserts.AssertWAFInvalidParameterException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.SqlInjectionMatchSetSummary = { ["Name"] = true, ["SqlInjectionMatchSetId"] = true, nil }
@@ -3784,13 +5115,24 @@ end
 -- Required key: Name
 -- @return SqlInjectionMatchSetSummary structure as a key-value pair table
 function M.SqlInjectionMatchSetSummary(args)
-	assert(args, "You must provdide an argument table when creating SqlInjectionMatchSetSummary")
-	local t = { 
+	assert(args, "You must provide an argument table when creating SqlInjectionMatchSetSummary")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Name"] = args["Name"],
 		["SqlInjectionMatchSetId"] = args["SqlInjectionMatchSetId"],
 	}
-	asserts.AssertSqlInjectionMatchSetSummary(t)
-	return t
+	asserts.AssertSqlInjectionMatchSetSummary(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetChangeTokenStatusRequest = { ["ChangeToken"] = true, nil }
@@ -3813,12 +5155,23 @@ end
 -- Required key: ChangeToken
 -- @return GetChangeTokenStatusRequest structure as a key-value pair table
 function M.GetChangeTokenStatusRequest(args)
-	assert(args, "You must provdide an argument table when creating GetChangeTokenStatusRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetChangeTokenStatusRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ChangeToken"] = args["ChangeToken"],
 	}
-	asserts.AssertGetChangeTokenStatusRequest(t)
-	return t
+	asserts.AssertGetChangeTokenStatusRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdateSqlInjectionMatchSetResponse = { ["ChangeToken"] = true, nil }
@@ -3839,12 +5192,23 @@ end
 -- * ChangeToken [ChangeToken] <p>The <code>ChangeToken</code> that you used to submit the <code>UpdateSqlInjectionMatchSet</code> request. You can also use this value to query the status of the request. For more information, see <a>GetChangeTokenStatus</a>.</p>
 -- @return UpdateSqlInjectionMatchSetResponse structure as a key-value pair table
 function M.UpdateSqlInjectionMatchSetResponse(args)
-	assert(args, "You must provdide an argument table when creating UpdateSqlInjectionMatchSetResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateSqlInjectionMatchSetResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ChangeToken"] = args["ChangeToken"],
 	}
-	asserts.AssertUpdateSqlInjectionMatchSetResponse(t)
-	return t
+	asserts.AssertUpdateSqlInjectionMatchSetResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.WAFNonEmptyEntityException = { ["message"] = true, nil }
@@ -3865,12 +5229,23 @@ end
 -- * message [errorMessage] 
 -- @return WAFNonEmptyEntityException structure as a key-value pair table
 function M.WAFNonEmptyEntityException(args)
-	assert(args, "You must provdide an argument table when creating WAFNonEmptyEntityException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating WAFNonEmptyEntityException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertWAFNonEmptyEntityException(t)
-	return t
+	asserts.AssertWAFNonEmptyEntityException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.WAFStaleDataException = { ["message"] = true, nil }
@@ -3891,12 +5266,23 @@ end
 -- * message [errorMessage] 
 -- @return WAFStaleDataException structure as a key-value pair table
 function M.WAFStaleDataException(args)
-	assert(args, "You must provdide an argument table when creating WAFStaleDataException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating WAFStaleDataException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertWAFStaleDataException(t)
-	return t
+	asserts.AssertWAFStaleDataException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.SizeConstraintSet = { ["SizeConstraints"] = true, ["SizeConstraintSetId"] = true, ["Name"] = true, nil }
@@ -3925,14 +5311,25 @@ end
 -- Required key: SizeConstraints
 -- @return SizeConstraintSet structure as a key-value pair table
 function M.SizeConstraintSet(args)
-	assert(args, "You must provdide an argument table when creating SizeConstraintSet")
-	local t = { 
+	assert(args, "You must provide an argument table when creating SizeConstraintSet")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["SizeConstraints"] = args["SizeConstraints"],
 		["SizeConstraintSetId"] = args["SizeConstraintSetId"],
 		["Name"] = args["Name"],
 	}
-	asserts.AssertSizeConstraintSet(t)
-	return t
+	asserts.AssertSizeConstraintSet(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdateWebACLRequest = { ["DefaultAction"] = true, ["ChangeToken"] = true, ["WebACLId"] = true, ["Updates"] = true, nil }
@@ -3963,15 +5360,26 @@ end
 -- Required key: ChangeToken
 -- @return UpdateWebACLRequest structure as a key-value pair table
 function M.UpdateWebACLRequest(args)
-	assert(args, "You must provdide an argument table when creating UpdateWebACLRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateWebACLRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["DefaultAction"] = args["DefaultAction"],
 		["ChangeToken"] = args["ChangeToken"],
 		["WebACLId"] = args["WebACLId"],
 		["Updates"] = args["Updates"],
 	}
-	asserts.AssertUpdateWebACLRequest(t)
-	return t
+	asserts.AssertUpdateWebACLRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.XssMatchSetUpdate = { ["Action"] = true, ["XssMatchTuple"] = true, nil }
@@ -3998,13 +5406,24 @@ end
 -- Required key: XssMatchTuple
 -- @return XssMatchSetUpdate structure as a key-value pair table
 function M.XssMatchSetUpdate(args)
-	assert(args, "You must provdide an argument table when creating XssMatchSetUpdate")
-	local t = { 
+	assert(args, "You must provide an argument table when creating XssMatchSetUpdate")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Action"] = args["Action"],
 		["XssMatchTuple"] = args["XssMatchTuple"],
 	}
-	asserts.AssertXssMatchSetUpdate(t)
-	return t
+	asserts.AssertXssMatchSetUpdate(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateRateBasedRuleResponse = { ["ChangeToken"] = true, ["Rule"] = true, nil }
@@ -4027,13 +5446,24 @@ end
 -- * Rule [RateBasedRule] <p>The <a>RateBasedRule</a> that is returned in the <code>CreateRateBasedRule</code> response.</p>
 -- @return CreateRateBasedRuleResponse structure as a key-value pair table
 function M.CreateRateBasedRuleResponse(args)
-	assert(args, "You must provdide an argument table when creating CreateRateBasedRuleResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateRateBasedRuleResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ChangeToken"] = args["ChangeToken"],
 		["Rule"] = args["Rule"],
 	}
-	asserts.AssertCreateRateBasedRuleResponse(t)
-	return t
+	asserts.AssertCreateRateBasedRuleResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.RuleSummary = { ["Name"] = true, ["RuleId"] = true, nil }
@@ -4060,13 +5490,24 @@ end
 -- Required key: Name
 -- @return RuleSummary structure as a key-value pair table
 function M.RuleSummary(args)
-	assert(args, "You must provdide an argument table when creating RuleSummary")
-	local t = { 
+	assert(args, "You must provide an argument table when creating RuleSummary")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Name"] = args["Name"],
 		["RuleId"] = args["RuleId"],
 	}
-	asserts.AssertRuleSummary(t)
-	return t
+	asserts.AssertRuleSummary(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.IPSetUpdate = { ["Action"] = true, ["IPSetDescriptor"] = true, nil }
@@ -4093,13 +5534,24 @@ end
 -- Required key: IPSetDescriptor
 -- @return IPSetUpdate structure as a key-value pair table
 function M.IPSetUpdate(args)
-	assert(args, "You must provdide an argument table when creating IPSetUpdate")
-	local t = { 
+	assert(args, "You must provide an argument table when creating IPSetUpdate")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Action"] = args["Action"],
 		["IPSetDescriptor"] = args["IPSetDescriptor"],
 	}
-	asserts.AssertIPSetUpdate(t)
-	return t
+	asserts.AssertIPSetUpdate(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListXssMatchSetsRequest = { ["NextMarker"] = true, ["Limit"] = true, nil }
@@ -4122,13 +5574,24 @@ end
 -- * Limit [PaginationLimit] <p>Specifies the number of <a>XssMatchSet</a> objects that you want AWS WAF to return for this request. If you have more <code>XssMatchSet</code> objects than the number you specify for <code>Limit</code>, the response includes a <code>NextMarker</code> value that you can use to get another batch of <code>Rules</code>.</p>
 -- @return ListXssMatchSetsRequest structure as a key-value pair table
 function M.ListXssMatchSetsRequest(args)
-	assert(args, "You must provdide an argument table when creating ListXssMatchSetsRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListXssMatchSetsRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NextMarker"] = args["NextMarker"],
 		["Limit"] = args["Limit"],
 	}
-	asserts.AssertListXssMatchSetsRequest(t)
-	return t
+	asserts.AssertListXssMatchSetsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListRateBasedRulesResponse = { ["Rules"] = true, ["NextMarker"] = true, nil }
@@ -4151,13 +5614,24 @@ end
 -- * NextMarker [NextMarker] <p>If you have more <code>Rules</code> than the number that you specified for <code>Limit</code> in the request, the response includes a <code>NextMarker</code> value. To list more <code>Rules</code>, submit another <code>ListRateBasedRules</code> request, and specify the <code>NextMarker</code> value from the response in the <code>NextMarker</code> value in the next request.</p>
 -- @return ListRateBasedRulesResponse structure as a key-value pair table
 function M.ListRateBasedRulesResponse(args)
-	assert(args, "You must provdide an argument table when creating ListRateBasedRulesResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListRateBasedRulesResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Rules"] = args["Rules"],
 		["NextMarker"] = args["NextMarker"],
 	}
-	asserts.AssertListRateBasedRulesResponse(t)
-	return t
+	asserts.AssertListRateBasedRulesResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListSizeConstraintSetsResponse = { ["NextMarker"] = true, ["SizeConstraintSets"] = true, nil }
@@ -4180,13 +5654,24 @@ end
 -- * SizeConstraintSets [SizeConstraintSetSummaries] <p>An array of <a>SizeConstraintSetSummary</a> objects.</p>
 -- @return ListSizeConstraintSetsResponse structure as a key-value pair table
 function M.ListSizeConstraintSetsResponse(args)
-	assert(args, "You must provdide an argument table when creating ListSizeConstraintSetsResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListSizeConstraintSetsResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NextMarker"] = args["NextMarker"],
 		["SizeConstraintSets"] = args["SizeConstraintSets"],
 	}
-	asserts.AssertListSizeConstraintSetsResponse(t)
-	return t
+	asserts.AssertListSizeConstraintSetsResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.WAFNonexistentItemException = { ["message"] = true, nil }
@@ -4207,12 +5692,23 @@ end
 -- * message [errorMessage] 
 -- @return WAFNonexistentItemException structure as a key-value pair table
 function M.WAFNonexistentItemException(args)
-	assert(args, "You must provdide an argument table when creating WAFNonexistentItemException")
-	local t = { 
+	assert(args, "You must provide an argument table when creating WAFNonexistentItemException")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["message"] = args["message"],
 	}
-	asserts.AssertWAFNonexistentItemException(t)
-	return t
+	asserts.AssertWAFNonexistentItemException(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.RuleUpdate = { ["Action"] = true, ["Predicate"] = true, nil }
@@ -4239,13 +5735,24 @@ end
 -- Required key: Predicate
 -- @return RuleUpdate structure as a key-value pair table
 function M.RuleUpdate(args)
-	assert(args, "You must provdide an argument table when creating RuleUpdate")
-	local t = { 
+	assert(args, "You must provide an argument table when creating RuleUpdate")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Action"] = args["Action"],
 		["Predicate"] = args["Predicate"],
 	}
-	asserts.AssertRuleUpdate(t)
-	return t
+	asserts.AssertRuleUpdate(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.RateBasedRule = { ["RateKey"] = true, ["Name"] = true, ["RuleId"] = true, ["RateLimit"] = true, ["MatchPredicates"] = true, ["MetricName"] = true, nil }
@@ -4284,8 +5791,14 @@ end
 -- Required key: RateLimit
 -- @return RateBasedRule structure as a key-value pair table
 function M.RateBasedRule(args)
-	assert(args, "You must provdide an argument table when creating RateBasedRule")
-	local t = { 
+	assert(args, "You must provide an argument table when creating RateBasedRule")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["RateKey"] = args["RateKey"],
 		["Name"] = args["Name"],
 		["RuleId"] = args["RuleId"],
@@ -4293,8 +5806,13 @@ function M.RateBasedRule(args)
 		["MatchPredicates"] = args["MatchPredicates"],
 		["MetricName"] = args["MetricName"],
 	}
-	asserts.AssertRateBasedRule(t)
-	return t
+	asserts.AssertRateBasedRule(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.SqlInjectionMatchSet = { ["SqlInjectionMatchTuples"] = true, ["Name"] = true, ["SqlInjectionMatchSetId"] = true, nil }
@@ -4323,14 +5841,25 @@ end
 -- Required key: SqlInjectionMatchTuples
 -- @return SqlInjectionMatchSet structure as a key-value pair table
 function M.SqlInjectionMatchSet(args)
-	assert(args, "You must provdide an argument table when creating SqlInjectionMatchSet")
-	local t = { 
+	assert(args, "You must provide an argument table when creating SqlInjectionMatchSet")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["SqlInjectionMatchTuples"] = args["SqlInjectionMatchTuples"],
 		["Name"] = args["Name"],
 		["SqlInjectionMatchSetId"] = args["SqlInjectionMatchSetId"],
 	}
-	asserts.AssertSqlInjectionMatchSet(t)
-	return t
+	asserts.AssertSqlInjectionMatchSet(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetXssMatchSetResponse = { ["XssMatchSet"] = true, nil }
@@ -4351,12 +5880,23 @@ end
 -- * XssMatchSet [XssMatchSet] <p>Information about the <a>XssMatchSet</a> that you specified in the <code>GetXssMatchSet</code> request. For more information, see the following topics:</p> <ul> <li> <p> <a>XssMatchSet</a>: Contains <code>Name</code>, <code>XssMatchSetId</code>, and an array of <code>XssMatchTuple</code> objects</p> </li> <li> <p> <a>XssMatchTuple</a>: Each <code>XssMatchTuple</code> object contains <code>FieldToMatch</code> and <code>TextTransformation</code> </p> </li> <li> <p> <a>FieldToMatch</a>: Contains <code>Data</code> and <code>Type</code> </p> </li> </ul>
 -- @return GetXssMatchSetResponse structure as a key-value pair table
 function M.GetXssMatchSetResponse(args)
-	assert(args, "You must provdide an argument table when creating GetXssMatchSetResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetXssMatchSetResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["XssMatchSet"] = args["XssMatchSet"],
 	}
-	asserts.AssertGetXssMatchSetResponse(t)
-	return t
+	asserts.AssertGetXssMatchSetResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteIPSetResponse = { ["ChangeToken"] = true, nil }
@@ -4377,12 +5917,23 @@ end
 -- * ChangeToken [ChangeToken] <p>The <code>ChangeToken</code> that you used to submit the <code>DeleteIPSet</code> request. You can also use this value to query the status of the request. For more information, see <a>GetChangeTokenStatus</a>.</p>
 -- @return DeleteIPSetResponse structure as a key-value pair table
 function M.DeleteIPSetResponse(args)
-	assert(args, "You must provdide an argument table when creating DeleteIPSetResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteIPSetResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ChangeToken"] = args["ChangeToken"],
 	}
-	asserts.AssertDeleteIPSetResponse(t)
-	return t
+	asserts.AssertDeleteIPSetResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetWebACLForResourceResponse = { ["WebACLSummary"] = true, nil }
@@ -4403,12 +5954,23 @@ end
 -- * WebACLSummary [WebACLSummary] <p>Information about the web ACL that you specified in the <code>GetWebACLForResource</code> request. If there is no associated resource, a null WebACLSummary is returned.</p>
 -- @return GetWebACLForResourceResponse structure as a key-value pair table
 function M.GetWebACLForResourceResponse(args)
-	assert(args, "You must provdide an argument table when creating GetWebACLForResourceResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetWebACLForResourceResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["WebACLSummary"] = args["WebACLSummary"],
 	}
-	asserts.AssertGetWebACLForResourceResponse(t)
-	return t
+	asserts.AssertGetWebACLForResourceResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.HTTPHeader = { ["Name"] = true, ["Value"] = true, nil }
@@ -4431,13 +5993,24 @@ end
 -- * Value [HeaderValue] <p>The value of one of the headers in the sampled web request.</p>
 -- @return HTTPHeader structure as a key-value pair table
 function M.HTTPHeader(args)
-	assert(args, "You must provdide an argument table when creating HTTPHeader")
-	local t = { 
+	assert(args, "You must provide an argument table when creating HTTPHeader")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Name"] = args["Name"],
 		["Value"] = args["Value"],
 	}
-	asserts.AssertHTTPHeader(t)
-	return t
+	asserts.AssertHTTPHeader(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 function asserts.AssertManagedKey(str)
@@ -5336,8 +6909,11 @@ function M.CreateSizeConstraintSetAsync(CreateSizeConstraintSetRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AWSWAF_Regional_20161128.CreateSizeConstraintSet",
 	}
+	for header,value in pairs(CreateSizeConstraintSetRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateSizeConstraintSetRequest, headers, settings, cb)
 	else
@@ -5368,8 +6944,11 @@ function M.ListIPSetsAsync(ListIPSetsRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AWSWAF_Regional_20161128.ListIPSets",
 	}
+	for header,value in pairs(ListIPSetsRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ListIPSetsRequest, headers, settings, cb)
 	else
@@ -5400,8 +6979,11 @@ function M.DeleteRateBasedRuleAsync(DeleteRateBasedRuleRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AWSWAF_Regional_20161128.DeleteRateBasedRule",
 	}
+	for header,value in pairs(DeleteRateBasedRuleRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteRateBasedRuleRequest, headers, settings, cb)
 	else
@@ -5432,8 +7014,11 @@ function M.ListWebACLsAsync(ListWebACLsRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AWSWAF_Regional_20161128.ListWebACLs",
 	}
+	for header,value in pairs(ListWebACLsRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ListWebACLsRequest, headers, settings, cb)
 	else
@@ -5464,8 +7049,11 @@ function M.GetChangeTokenStatusAsync(GetChangeTokenStatusRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AWSWAF_Regional_20161128.GetChangeTokenStatus",
 	}
+	for header,value in pairs(GetChangeTokenStatusRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", GetChangeTokenStatusRequest, headers, settings, cb)
 	else
@@ -5496,8 +7084,11 @@ function M.DeleteSqlInjectionMatchSetAsync(DeleteSqlInjectionMatchSetRequest, cb
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AWSWAF_Regional_20161128.DeleteSqlInjectionMatchSet",
 	}
+	for header,value in pairs(DeleteSqlInjectionMatchSetRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteSqlInjectionMatchSetRequest, headers, settings, cb)
 	else
@@ -5528,8 +7119,11 @@ function M.ListByteMatchSetsAsync(ListByteMatchSetsRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AWSWAF_Regional_20161128.ListByteMatchSets",
 	}
+	for header,value in pairs(ListByteMatchSetsRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ListByteMatchSetsRequest, headers, settings, cb)
 	else
@@ -5560,8 +7154,11 @@ function M.CreateRuleAsync(CreateRuleRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AWSWAF_Regional_20161128.CreateRule",
 	}
+	for header,value in pairs(CreateRuleRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateRuleRequest, headers, settings, cb)
 	else
@@ -5592,8 +7189,11 @@ function M.GetRateBasedRuleManagedKeysAsync(GetRateBasedRuleManagedKeysRequest, 
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AWSWAF_Regional_20161128.GetRateBasedRuleManagedKeys",
 	}
+	for header,value in pairs(GetRateBasedRuleManagedKeysRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", GetRateBasedRuleManagedKeysRequest, headers, settings, cb)
 	else
@@ -5624,8 +7224,11 @@ function M.CreateSqlInjectionMatchSetAsync(CreateSqlInjectionMatchSetRequest, cb
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AWSWAF_Regional_20161128.CreateSqlInjectionMatchSet",
 	}
+	for header,value in pairs(CreateSqlInjectionMatchSetRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateSqlInjectionMatchSetRequest, headers, settings, cb)
 	else
@@ -5656,8 +7259,11 @@ function M.ListRateBasedRulesAsync(ListRateBasedRulesRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AWSWAF_Regional_20161128.ListRateBasedRules",
 	}
+	for header,value in pairs(ListRateBasedRulesRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ListRateBasedRulesRequest, headers, settings, cb)
 	else
@@ -5688,8 +7294,11 @@ function M.DeleteByteMatchSetAsync(DeleteByteMatchSetRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AWSWAF_Regional_20161128.DeleteByteMatchSet",
 	}
+	for header,value in pairs(DeleteByteMatchSetRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteByteMatchSetRequest, headers, settings, cb)
 	else
@@ -5720,8 +7329,11 @@ function M.DeleteXssMatchSetAsync(DeleteXssMatchSetRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AWSWAF_Regional_20161128.DeleteXssMatchSet",
 	}
+	for header,value in pairs(DeleteXssMatchSetRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteXssMatchSetRequest, headers, settings, cb)
 	else
@@ -5752,8 +7364,11 @@ function M.ListSqlInjectionMatchSetsAsync(ListSqlInjectionMatchSetsRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AWSWAF_Regional_20161128.ListSqlInjectionMatchSets",
 	}
+	for header,value in pairs(ListSqlInjectionMatchSetsRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ListSqlInjectionMatchSetsRequest, headers, settings, cb)
 	else
@@ -5784,8 +7399,11 @@ function M.DeleteRuleAsync(DeleteRuleRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AWSWAF_Regional_20161128.DeleteRule",
 	}
+	for header,value in pairs(DeleteRuleRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteRuleRequest, headers, settings, cb)
 	else
@@ -5816,8 +7434,11 @@ function M.GetIPSetAsync(GetIPSetRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AWSWAF_Regional_20161128.GetIPSet",
 	}
+	for header,value in pairs(GetIPSetRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", GetIPSetRequest, headers, settings, cb)
 	else
@@ -5848,8 +7469,11 @@ function M.UpdateIPSetAsync(UpdateIPSetRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AWSWAF_Regional_20161128.UpdateIPSet",
 	}
+	for header,value in pairs(UpdateIPSetRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateIPSetRequest, headers, settings, cb)
 	else
@@ -5880,8 +7504,11 @@ function M.UpdateRuleAsync(UpdateRuleRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AWSWAF_Regional_20161128.UpdateRule",
 	}
+	for header,value in pairs(UpdateRuleRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateRuleRequest, headers, settings, cb)
 	else
@@ -5912,8 +7539,11 @@ function M.GetByteMatchSetAsync(GetByteMatchSetRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AWSWAF_Regional_20161128.GetByteMatchSet",
 	}
+	for header,value in pairs(GetByteMatchSetRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", GetByteMatchSetRequest, headers, settings, cb)
 	else
@@ -5944,8 +7574,11 @@ function M.CreateXssMatchSetAsync(CreateXssMatchSetRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AWSWAF_Regional_20161128.CreateXssMatchSet",
 	}
+	for header,value in pairs(CreateXssMatchSetRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateXssMatchSetRequest, headers, settings, cb)
 	else
@@ -5976,8 +7609,11 @@ function M.UpdateRateBasedRuleAsync(UpdateRateBasedRuleRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AWSWAF_Regional_20161128.UpdateRateBasedRule",
 	}
+	for header,value in pairs(UpdateRateBasedRuleRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateRateBasedRuleRequest, headers, settings, cb)
 	else
@@ -6008,8 +7644,11 @@ function M.GetChangeTokenAsync(GetChangeTokenRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AWSWAF_Regional_20161128.GetChangeToken",
 	}
+	for header,value in pairs(GetChangeTokenRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", GetChangeTokenRequest, headers, settings, cb)
 	else
@@ -6040,8 +7679,11 @@ function M.ListXssMatchSetsAsync(ListXssMatchSetsRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AWSWAF_Regional_20161128.ListXssMatchSets",
 	}
+	for header,value in pairs(ListXssMatchSetsRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ListXssMatchSetsRequest, headers, settings, cb)
 	else
@@ -6072,8 +7714,11 @@ function M.AssociateWebACLAsync(AssociateWebACLRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AWSWAF_Regional_20161128.AssociateWebACL",
 	}
+	for header,value in pairs(AssociateWebACLRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", AssociateWebACLRequest, headers, settings, cb)
 	else
@@ -6104,8 +7749,11 @@ function M.GetSizeConstraintSetAsync(GetSizeConstraintSetRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AWSWAF_Regional_20161128.GetSizeConstraintSet",
 	}
+	for header,value in pairs(GetSizeConstraintSetRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", GetSizeConstraintSetRequest, headers, settings, cb)
 	else
@@ -6136,8 +7784,11 @@ function M.CreateIPSetAsync(CreateIPSetRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AWSWAF_Regional_20161128.CreateIPSet",
 	}
+	for header,value in pairs(CreateIPSetRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateIPSetRequest, headers, settings, cb)
 	else
@@ -6168,8 +7819,11 @@ function M.GetXssMatchSetAsync(GetXssMatchSetRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AWSWAF_Regional_20161128.GetXssMatchSet",
 	}
+	for header,value in pairs(GetXssMatchSetRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", GetXssMatchSetRequest, headers, settings, cb)
 	else
@@ -6200,8 +7854,11 @@ function M.UpdateXssMatchSetAsync(UpdateXssMatchSetRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AWSWAF_Regional_20161128.UpdateXssMatchSet",
 	}
+	for header,value in pairs(UpdateXssMatchSetRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateXssMatchSetRequest, headers, settings, cb)
 	else
@@ -6232,8 +7889,11 @@ function M.GetRateBasedRuleAsync(GetRateBasedRuleRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AWSWAF_Regional_20161128.GetRateBasedRule",
 	}
+	for header,value in pairs(GetRateBasedRuleRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", GetRateBasedRuleRequest, headers, settings, cb)
 	else
@@ -6264,8 +7924,11 @@ function M.UpdateSizeConstraintSetAsync(UpdateSizeConstraintSetRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AWSWAF_Regional_20161128.UpdateSizeConstraintSet",
 	}
+	for header,value in pairs(UpdateSizeConstraintSetRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateSizeConstraintSetRequest, headers, settings, cb)
 	else
@@ -6296,8 +7959,11 @@ function M.CreateRateBasedRuleAsync(CreateRateBasedRuleRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AWSWAF_Regional_20161128.CreateRateBasedRule",
 	}
+	for header,value in pairs(CreateRateBasedRuleRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateRateBasedRuleRequest, headers, settings, cb)
 	else
@@ -6328,8 +7994,11 @@ function M.ListRulesAsync(ListRulesRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AWSWAF_Regional_20161128.ListRules",
 	}
+	for header,value in pairs(ListRulesRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ListRulesRequest, headers, settings, cb)
 	else
@@ -6360,8 +8029,11 @@ function M.GetSampledRequestsAsync(GetSampledRequestsRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AWSWAF_Regional_20161128.GetSampledRequests",
 	}
+	for header,value in pairs(GetSampledRequestsRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", GetSampledRequestsRequest, headers, settings, cb)
 	else
@@ -6392,8 +8064,11 @@ function M.CreateWebACLAsync(CreateWebACLRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AWSWAF_Regional_20161128.CreateWebACL",
 	}
+	for header,value in pairs(CreateWebACLRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateWebACLRequest, headers, settings, cb)
 	else
@@ -6424,8 +8099,11 @@ function M.DeleteWebACLAsync(DeleteWebACLRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AWSWAF_Regional_20161128.DeleteWebACL",
 	}
+	for header,value in pairs(DeleteWebACLRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteWebACLRequest, headers, settings, cb)
 	else
@@ -6456,8 +8134,11 @@ function M.GetRuleAsync(GetRuleRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AWSWAF_Regional_20161128.GetRule",
 	}
+	for header,value in pairs(GetRuleRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", GetRuleRequest, headers, settings, cb)
 	else
@@ -6488,8 +8169,11 @@ function M.DeleteSizeConstraintSetAsync(DeleteSizeConstraintSetRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AWSWAF_Regional_20161128.DeleteSizeConstraintSet",
 	}
+	for header,value in pairs(DeleteSizeConstraintSetRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteSizeConstraintSetRequest, headers, settings, cb)
 	else
@@ -6520,8 +8204,11 @@ function M.GetWebACLForResourceAsync(GetWebACLForResourceRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AWSWAF_Regional_20161128.GetWebACLForResource",
 	}
+	for header,value in pairs(GetWebACLForResourceRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", GetWebACLForResourceRequest, headers, settings, cb)
 	else
@@ -6552,8 +8239,11 @@ function M.UpdateSqlInjectionMatchSetAsync(UpdateSqlInjectionMatchSetRequest, cb
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AWSWAF_Regional_20161128.UpdateSqlInjectionMatchSet",
 	}
+	for header,value in pairs(UpdateSqlInjectionMatchSetRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateSqlInjectionMatchSetRequest, headers, settings, cb)
 	else
@@ -6584,8 +8274,11 @@ function M.UpdateWebACLAsync(UpdateWebACLRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AWSWAF_Regional_20161128.UpdateWebACL",
 	}
+	for header,value in pairs(UpdateWebACLRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateWebACLRequest, headers, settings, cb)
 	else
@@ -6616,8 +8309,11 @@ function M.CreateByteMatchSetAsync(CreateByteMatchSetRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AWSWAF_Regional_20161128.CreateByteMatchSet",
 	}
+	for header,value in pairs(CreateByteMatchSetRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateByteMatchSetRequest, headers, settings, cb)
 	else
@@ -6648,8 +8344,11 @@ function M.ListResourcesForWebACLAsync(ListResourcesForWebACLRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AWSWAF_Regional_20161128.ListResourcesForWebACL",
 	}
+	for header,value in pairs(ListResourcesForWebACLRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ListResourcesForWebACLRequest, headers, settings, cb)
 	else
@@ -6680,8 +8379,11 @@ function M.GetWebACLAsync(GetWebACLRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AWSWAF_Regional_20161128.GetWebACL",
 	}
+	for header,value in pairs(GetWebACLRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", GetWebACLRequest, headers, settings, cb)
 	else
@@ -6712,8 +8414,11 @@ function M.UpdateByteMatchSetAsync(UpdateByteMatchSetRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AWSWAF_Regional_20161128.UpdateByteMatchSet",
 	}
+	for header,value in pairs(UpdateByteMatchSetRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateByteMatchSetRequest, headers, settings, cb)
 	else
@@ -6744,8 +8449,11 @@ function M.DisassociateWebACLAsync(DisassociateWebACLRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AWSWAF_Regional_20161128.DisassociateWebACL",
 	}
+	for header,value in pairs(DisassociateWebACLRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DisassociateWebACLRequest, headers, settings, cb)
 	else
@@ -6776,8 +8484,11 @@ function M.GetSqlInjectionMatchSetAsync(GetSqlInjectionMatchSetRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AWSWAF_Regional_20161128.GetSqlInjectionMatchSet",
 	}
+	for header,value in pairs(GetSqlInjectionMatchSetRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", GetSqlInjectionMatchSetRequest, headers, settings, cb)
 	else
@@ -6808,8 +8519,11 @@ function M.ListSizeConstraintSetsAsync(ListSizeConstraintSetsRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AWSWAF_Regional_20161128.ListSizeConstraintSets",
 	}
+	for header,value in pairs(ListSizeConstraintSetsRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ListSizeConstraintSetsRequest, headers, settings, cb)
 	else
@@ -6840,8 +8554,11 @@ function M.DeleteIPSetAsync(DeleteIPSetRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "AWSWAF_Regional_20161128.DeleteIPSet",
 	}
+	for header,value in pairs(DeleteIPSetRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteIPSetRequest, headers, settings, cb)
 	else

@@ -41,12 +41,23 @@ end
 -- Required key: AssignmentId
 -- @return GetAssignmentRequest structure as a key-value pair table
 function M.GetAssignmentRequest(args)
-	assert(args, "You must provdide an argument table when creating GetAssignmentRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetAssignmentRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["AssignmentId"] = args["AssignmentId"],
 	}
-	asserts.AssertGetAssignmentRequest(t)
-	return t
+	asserts.AssertGetAssignmentRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListReviewPolicyResultsForHITRequest = { ["RetrieveResults"] = true, ["PolicyLevels"] = true, ["MaxResults"] = true, ["HITId"] = true, ["RetrieveActions"] = true, ["NextToken"] = true, nil }
@@ -79,8 +90,14 @@ end
 -- Required key: HITId
 -- @return ListReviewPolicyResultsForHITRequest structure as a key-value pair table
 function M.ListReviewPolicyResultsForHITRequest(args)
-	assert(args, "You must provdide an argument table when creating ListReviewPolicyResultsForHITRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListReviewPolicyResultsForHITRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["RetrieveResults"] = args["RetrieveResults"],
 		["PolicyLevels"] = args["PolicyLevels"],
 		["MaxResults"] = args["MaxResults"],
@@ -88,8 +105,13 @@ function M.ListReviewPolicyResultsForHITRequest(args)
 		["RetrieveActions"] = args["RetrieveActions"],
 		["NextToken"] = args["NextToken"],
 	}
-	asserts.AssertListReviewPolicyResultsForHITRequest(t)
-	return t
+	asserts.AssertListReviewPolicyResultsForHITRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetFileUploadURLResponse = { ["FileUploadURL"] = true, nil }
@@ -110,12 +132,23 @@ end
 -- * FileUploadURL [String] <p> A temporary URL for the file that the Worker uploaded for the answer. </p>
 -- @return GetFileUploadURLResponse structure as a key-value pair table
 function M.GetFileUploadURLResponse(args)
-	assert(args, "You must provdide an argument table when creating GetFileUploadURLResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetFileUploadURLResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["FileUploadURL"] = args["FileUploadURL"],
 	}
-	asserts.AssertGetFileUploadURLResponse(t)
-	return t
+	asserts.AssertGetFileUploadURLResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.QualificationRequest = { ["QualificationTypeId"] = true, ["WorkerId"] = true, ["QualificationRequestId"] = true, ["SubmitTime"] = true, ["Test"] = true, ["Answer"] = true, nil }
@@ -146,8 +179,14 @@ end
 -- * Answer [String] <p> The Worker's answers for the Qualification type's test contained in a QuestionFormAnswers document, if the type has a test and the Worker has submitted answers. If the Worker does not provide any answers, Answer may be empty. </p>
 -- @return QualificationRequest structure as a key-value pair table
 function M.QualificationRequest(args)
-	assert(args, "You must provdide an argument table when creating QualificationRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating QualificationRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["QualificationTypeId"] = args["QualificationTypeId"],
 		["WorkerId"] = args["WorkerId"],
 		["QualificationRequestId"] = args["QualificationRequestId"],
@@ -155,8 +194,13 @@ function M.QualificationRequest(args)
 		["Test"] = args["Test"],
 		["Answer"] = args["Answer"],
 	}
-	asserts.AssertQualificationRequest(t)
-	return t
+	asserts.AssertQualificationRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateHITWithHITTypeRequest = { ["RequesterAnnotation"] = true, ["MaxAssignments"] = true, ["Question"] = true, ["UniqueRequestToken"] = true, ["HITLayoutParameters"] = true, ["HITTypeId"] = true, ["AssignmentReviewPolicy"] = true, ["HITReviewPolicy"] = true, ["HITLayoutId"] = true, ["LifetimeInSeconds"] = true, nil }
@@ -199,8 +243,14 @@ end
 -- Required key: LifetimeInSeconds
 -- @return CreateHITWithHITTypeRequest structure as a key-value pair table
 function M.CreateHITWithHITTypeRequest(args)
-	assert(args, "You must provdide an argument table when creating CreateHITWithHITTypeRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateHITWithHITTypeRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["RequesterAnnotation"] = args["RequesterAnnotation"],
 		["MaxAssignments"] = args["MaxAssignments"],
 		["Question"] = args["Question"],
@@ -212,8 +262,13 @@ function M.CreateHITWithHITTypeRequest(args)
 		["HITLayoutId"] = args["HITLayoutId"],
 		["LifetimeInSeconds"] = args["LifetimeInSeconds"],
 	}
-	asserts.AssertCreateHITWithHITTypeRequest(t)
-	return t
+	asserts.AssertCreateHITWithHITTypeRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateQualificationTypeRequest = { ["AutoGranted"] = true, ["Name"] = true, ["TestDurationInSeconds"] = true, ["QualificationTypeStatus"] = true, ["Test"] = true, ["AnswerKey"] = true, ["AutoGrantedValue"] = true, ["Keywords"] = true, ["RetryDelayInSeconds"] = true, ["Description"] = true, nil }
@@ -258,8 +313,14 @@ end
 -- Required key: QualificationTypeStatus
 -- @return CreateQualificationTypeRequest structure as a key-value pair table
 function M.CreateQualificationTypeRequest(args)
-	assert(args, "You must provdide an argument table when creating CreateQualificationTypeRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateQualificationTypeRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["AutoGranted"] = args["AutoGranted"],
 		["Name"] = args["Name"],
 		["TestDurationInSeconds"] = args["TestDurationInSeconds"],
@@ -271,8 +332,13 @@ function M.CreateQualificationTypeRequest(args)
 		["RetryDelayInSeconds"] = args["RetryDelayInSeconds"],
 		["Description"] = args["Description"],
 	}
-	asserts.AssertCreateQualificationTypeRequest(t)
-	return t
+	asserts.AssertCreateQualificationTypeRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListWorkersWithQualificationTypeResponse = { ["NumResults"] = true, ["NextToken"] = true, ["Qualifications"] = true, nil }
@@ -297,14 +363,25 @@ end
 -- * Qualifications [QualificationList] <p> The list of Qualification elements returned by this call. </p>
 -- @return ListWorkersWithQualificationTypeResponse structure as a key-value pair table
 function M.ListWorkersWithQualificationTypeResponse(args)
-	assert(args, "You must provdide an argument table when creating ListWorkersWithQualificationTypeResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListWorkersWithQualificationTypeResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NumResults"] = args["NumResults"],
 		["NextToken"] = args["NextToken"],
 		["Qualifications"] = args["Qualifications"],
 	}
-	asserts.AssertListWorkersWithQualificationTypeResponse(t)
-	return t
+	asserts.AssertListWorkersWithQualificationTypeResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.NotifyWorkersFailureStatus = { ["NotifyWorkersFailureMessage"] = true, ["WorkerId"] = true, ["NotifyWorkersFailureCode"] = true, nil }
@@ -329,14 +406,25 @@ end
 -- * NotifyWorkersFailureCode [NotifyWorkersFailureCode] <p> Encoded value for the failure type. </p>
 -- @return NotifyWorkersFailureStatus structure as a key-value pair table
 function M.NotifyWorkersFailureStatus(args)
-	assert(args, "You must provdide an argument table when creating NotifyWorkersFailureStatus")
-	local t = { 
+	assert(args, "You must provide an argument table when creating NotifyWorkersFailureStatus")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NotifyWorkersFailureMessage"] = args["NotifyWorkersFailureMessage"],
 		["WorkerId"] = args["WorkerId"],
 		["NotifyWorkersFailureCode"] = args["NotifyWorkersFailureCode"],
 	}
-	asserts.AssertNotifyWorkersFailureStatus(t)
-	return t
+	asserts.AssertNotifyWorkersFailureStatus(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AcceptQualificationRequestRequest = { ["IntegerValue"] = true, ["QualificationRequestId"] = true, nil }
@@ -361,13 +449,24 @@ end
 -- Required key: QualificationRequestId
 -- @return AcceptQualificationRequestRequest structure as a key-value pair table
 function M.AcceptQualificationRequestRequest(args)
-	assert(args, "You must provdide an argument table when creating AcceptQualificationRequestRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AcceptQualificationRequestRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["IntegerValue"] = args["IntegerValue"],
 		["QualificationRequestId"] = args["QualificationRequestId"],
 	}
-	asserts.AssertAcceptQualificationRequestRequest(t)
-	return t
+	asserts.AssertAcceptQualificationRequestRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListHITsRequest = { ["NextToken"] = true, ["MaxResults"] = true, nil }
@@ -390,13 +489,24 @@ end
 -- * MaxResults [ResultSize] 
 -- @return ListHITsRequest structure as a key-value pair table
 function M.ListHITsRequest(args)
-	assert(args, "You must provdide an argument table when creating ListHITsRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListHITsRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NextToken"] = args["NextToken"],
 		["MaxResults"] = args["MaxResults"],
 	}
-	asserts.AssertListHITsRequest(t)
-	return t
+	asserts.AssertListHITsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListReviewableHITsRequest = { ["Status"] = true, ["HITTypeId"] = true, ["NextToken"] = true, ["MaxResults"] = true, nil }
@@ -423,15 +533,26 @@ end
 -- * MaxResults [ResultSize] <p> Limit the number of results returned. </p>
 -- @return ListReviewableHITsRequest structure as a key-value pair table
 function M.ListReviewableHITsRequest(args)
-	assert(args, "You must provdide an argument table when creating ListReviewableHITsRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListReviewableHITsRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Status"] = args["Status"],
 		["HITTypeId"] = args["HITTypeId"],
 		["NextToken"] = args["NextToken"],
 		["MaxResults"] = args["MaxResults"],
 	}
-	asserts.AssertListReviewableHITsRequest(t)
-	return t
+	asserts.AssertListReviewableHITsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Assignment = { ["ApprovalTime"] = true, ["AutoApprovalTime"] = true, ["AssignmentId"] = true, ["WorkerId"] = true, ["RequesterFeedback"] = true, ["AcceptTime"] = true, ["Deadline"] = true, ["HITId"] = true, ["Answer"] = true, ["AssignmentStatus"] = true, ["SubmitTime"] = true, ["RejectionTime"] = true, nil }
@@ -474,8 +595,14 @@ end
 -- * RejectionTime [Timestamp] <p> If the Worker has submitted results and the Requester has rejected the results, RejectionTime is the date and time the Requester rejected the results.</p>
 -- @return Assignment structure as a key-value pair table
 function M.Assignment(args)
-	assert(args, "You must provdide an argument table when creating Assignment")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Assignment")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ApprovalTime"] = args["ApprovalTime"],
 		["AutoApprovalTime"] = args["AutoApprovalTime"],
 		["AssignmentId"] = args["AssignmentId"],
@@ -489,8 +616,13 @@ function M.Assignment(args)
 		["SubmitTime"] = args["SubmitTime"],
 		["RejectionTime"] = args["RejectionTime"],
 	}
-	asserts.AssertAssignment(t)
-	return t
+	asserts.AssertAssignment(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetHITResponse = { ["HIT"] = true, nil }
@@ -511,12 +643,23 @@ end
 -- * HIT [HIT] <p> Contains the requested HIT data.</p>
 -- @return GetHITResponse structure as a key-value pair table
 function M.GetHITResponse(args)
-	assert(args, "You must provdide an argument table when creating GetHITResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetHITResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["HIT"] = args["HIT"],
 	}
-	asserts.AssertGetHITResponse(t)
-	return t
+	asserts.AssertGetHITResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AssociateQualificationWithWorkerResponse = { nil }
@@ -535,11 +678,22 @@ end
 -- Valid keys:
 -- @return AssociateQualificationWithWorkerResponse structure as a key-value pair table
 function M.AssociateQualificationWithWorkerResponse(args)
-	assert(args, "You must provdide an argument table when creating AssociateQualificationWithWorkerResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AssociateQualificationWithWorkerResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertAssociateQualificationWithWorkerResponse(t)
-	return t
+	asserts.AssertAssociateQualificationWithWorkerResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.QualificationRequirement = { ["RequiredToPreview"] = true, ["LocaleValues"] = true, ["IntegerValues"] = true, ["Comparator"] = true, ["QualificationTypeId"] = true, nil }
@@ -572,16 +726,27 @@ end
 -- Required key: Comparator
 -- @return QualificationRequirement structure as a key-value pair table
 function M.QualificationRequirement(args)
-	assert(args, "You must provdide an argument table when creating QualificationRequirement")
-	local t = { 
+	assert(args, "You must provide an argument table when creating QualificationRequirement")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["RequiredToPreview"] = args["RequiredToPreview"],
 		["LocaleValues"] = args["LocaleValues"],
 		["IntegerValues"] = args["IntegerValues"],
 		["Comparator"] = args["Comparator"],
 		["QualificationTypeId"] = args["QualificationTypeId"],
 	}
-	asserts.AssertQualificationRequirement(t)
-	return t
+	asserts.AssertQualificationRequirement(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdateHITTypeOfHITResponse = { nil }
@@ -600,11 +765,22 @@ end
 -- Valid keys:
 -- @return UpdateHITTypeOfHITResponse structure as a key-value pair table
 function M.UpdateHITTypeOfHITResponse(args)
-	assert(args, "You must provdide an argument table when creating UpdateHITTypeOfHITResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateHITTypeOfHITResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertUpdateHITTypeOfHITResponse(t)
-	return t
+	asserts.AssertUpdateHITTypeOfHITResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateWorkerBlockRequest = { ["WorkerId"] = true, ["Reason"] = true, nil }
@@ -631,13 +807,24 @@ end
 -- Required key: Reason
 -- @return CreateWorkerBlockRequest structure as a key-value pair table
 function M.CreateWorkerBlockRequest(args)
-	assert(args, "You must provdide an argument table when creating CreateWorkerBlockRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateWorkerBlockRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["WorkerId"] = args["WorkerId"],
 		["Reason"] = args["Reason"],
 	}
-	asserts.AssertCreateWorkerBlockRequest(t)
-	return t
+	asserts.AssertCreateWorkerBlockRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.RequestError = { ["Message"] = true, ["TurkErrorCode"] = true, nil }
@@ -660,13 +847,24 @@ end
 -- * TurkErrorCode [TurkErrorCode] 
 -- @return RequestError structure as a key-value pair table
 function M.RequestError(args)
-	assert(args, "You must provdide an argument table when creating RequestError")
-	local t = { 
+	assert(args, "You must provide an argument table when creating RequestError")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Message"] = args["Message"],
 		["TurkErrorCode"] = args["TurkErrorCode"],
 	}
-	asserts.AssertRequestError(t)
-	return t
+	asserts.AssertRequestError(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ApproveAssignmentResponse = { nil }
@@ -685,11 +883,22 @@ end
 -- Valid keys:
 -- @return ApproveAssignmentResponse structure as a key-value pair table
 function M.ApproveAssignmentResponse(args)
-	assert(args, "You must provdide an argument table when creating ApproveAssignmentResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ApproveAssignmentResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertApproveAssignmentResponse(t)
-	return t
+	asserts.AssertApproveAssignmentResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetQualificationTypeRequest = { ["QualificationTypeId"] = true, nil }
@@ -712,12 +921,23 @@ end
 -- Required key: QualificationTypeId
 -- @return GetQualificationTypeRequest structure as a key-value pair table
 function M.GetQualificationTypeRequest(args)
-	assert(args, "You must provdide an argument table when creating GetQualificationTypeRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetQualificationTypeRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["QualificationTypeId"] = args["QualificationTypeId"],
 	}
-	asserts.AssertGetQualificationTypeRequest(t)
-	return t
+	asserts.AssertGetQualificationTypeRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListHITsForQualificationTypeResponse = { ["NumResults"] = true, ["HITs"] = true, ["NextToken"] = true, nil }
@@ -742,14 +962,25 @@ end
 -- * NextToken [PaginationToken] 
 -- @return ListHITsForQualificationTypeResponse structure as a key-value pair table
 function M.ListHITsForQualificationTypeResponse(args)
-	assert(args, "You must provdide an argument table when creating ListHITsForQualificationTypeResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListHITsForQualificationTypeResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NumResults"] = args["NumResults"],
 		["HITs"] = args["HITs"],
 		["NextToken"] = args["NextToken"],
 	}
-	asserts.AssertListHITsForQualificationTypeResponse(t)
-	return t
+	asserts.AssertListHITsForQualificationTypeResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListQualificationRequestsRequest = { ["NextToken"] = true, ["MaxResults"] = true, ["QualificationTypeId"] = true, nil }
@@ -774,14 +1005,25 @@ end
 -- * QualificationTypeId [EntityId] <p>The ID of the QualificationType.</p>
 -- @return ListQualificationRequestsRequest structure as a key-value pair table
 function M.ListQualificationRequestsRequest(args)
-	assert(args, "You must provdide an argument table when creating ListQualificationRequestsRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListQualificationRequestsRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NextToken"] = args["NextToken"],
 		["MaxResults"] = args["MaxResults"],
 		["QualificationTypeId"] = args["QualificationTypeId"],
 	}
-	asserts.AssertListQualificationRequestsRequest(t)
-	return t
+	asserts.AssertListQualificationRequestsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListAssignmentsForHITRequest = { ["AssignmentStatuses"] = true, ["NextToken"] = true, ["HITId"] = true, ["MaxResults"] = true, nil }
@@ -810,15 +1052,26 @@ end
 -- Required key: HITId
 -- @return ListAssignmentsForHITRequest structure as a key-value pair table
 function M.ListAssignmentsForHITRequest(args)
-	assert(args, "You must provdide an argument table when creating ListAssignmentsForHITRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListAssignmentsForHITRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["AssignmentStatuses"] = args["AssignmentStatuses"],
 		["NextToken"] = args["NextToken"],
 		["HITId"] = args["HITId"],
 		["MaxResults"] = args["MaxResults"],
 	}
-	asserts.AssertListAssignmentsForHITRequest(t)
-	return t
+	asserts.AssertListAssignmentsForHITRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.SendTestEventNotificationRequest = { ["Notification"] = true, ["TestEventType"] = true, nil }
@@ -845,13 +1098,24 @@ end
 -- Required key: TestEventType
 -- @return SendTestEventNotificationRequest structure as a key-value pair table
 function M.SendTestEventNotificationRequest(args)
-	assert(args, "You must provdide an argument table when creating SendTestEventNotificationRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating SendTestEventNotificationRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Notification"] = args["Notification"],
 		["TestEventType"] = args["TestEventType"],
 	}
-	asserts.AssertSendTestEventNotificationRequest(t)
-	return t
+	asserts.AssertSendTestEventNotificationRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdateHITReviewStatusResponse = { nil }
@@ -870,11 +1134,22 @@ end
 -- Valid keys:
 -- @return UpdateHITReviewStatusResponse structure as a key-value pair table
 function M.UpdateHITReviewStatusResponse(args)
-	assert(args, "You must provdide an argument table when creating UpdateHITReviewStatusResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateHITReviewStatusResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertUpdateHITReviewStatusResponse(t)
-	return t
+	asserts.AssertUpdateHITReviewStatusResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListWorkerBlocksRequest = { ["NextToken"] = true, ["MaxResults"] = true, nil }
@@ -897,13 +1172,24 @@ end
 -- * MaxResults [ResultSize] 
 -- @return ListWorkerBlocksRequest structure as a key-value pair table
 function M.ListWorkerBlocksRequest(args)
-	assert(args, "You must provdide an argument table when creating ListWorkerBlocksRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListWorkerBlocksRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NextToken"] = args["NextToken"],
 		["MaxResults"] = args["MaxResults"],
 	}
-	asserts.AssertListWorkerBlocksRequest(t)
-	return t
+	asserts.AssertListWorkerBlocksRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ParameterMapEntry = { ["Values"] = true, ["Key"] = true, nil }
@@ -926,13 +1212,24 @@ end
 -- * Key [String] <p> The QuestionID from the HIT that is used to identify which question requires Mechanical Turk to score as part of the ScoreMyKnownAnswers/2011-09-01 Review Policy. </p>
 -- @return ParameterMapEntry structure as a key-value pair table
 function M.ParameterMapEntry(args)
-	assert(args, "You must provdide an argument table when creating ParameterMapEntry")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ParameterMapEntry")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Values"] = args["Values"],
 		["Key"] = args["Key"],
 	}
-	asserts.AssertParameterMapEntry(t)
-	return t
+	asserts.AssertParameterMapEntry(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListReviewableHITsResponse = { ["NumResults"] = true, ["HITs"] = true, ["NextToken"] = true, nil }
@@ -957,14 +1254,25 @@ end
 -- * NextToken [PaginationToken] 
 -- @return ListReviewableHITsResponse structure as a key-value pair table
 function M.ListReviewableHITsResponse(args)
-	assert(args, "You must provdide an argument table when creating ListReviewableHITsResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListReviewableHITsResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NumResults"] = args["NumResults"],
 		["HITs"] = args["HITs"],
 		["NextToken"] = args["NextToken"],
 	}
-	asserts.AssertListReviewableHITsResponse(t)
-	return t
+	asserts.AssertListReviewableHITsResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListQualificationTypesResponse = { ["NumResults"] = true, ["QualificationTypes"] = true, ["NextToken"] = true, nil }
@@ -989,14 +1297,25 @@ end
 -- * NextToken [PaginationToken] 
 -- @return ListQualificationTypesResponse structure as a key-value pair table
 function M.ListQualificationTypesResponse(args)
-	assert(args, "You must provdide an argument table when creating ListQualificationTypesResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListQualificationTypesResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NumResults"] = args["NumResults"],
 		["QualificationTypes"] = args["QualificationTypes"],
 		["NextToken"] = args["NextToken"],
 	}
-	asserts.AssertListQualificationTypesResponse(t)
-	return t
+	asserts.AssertListQualificationTypesResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ApproveAssignmentRequest = { ["AssignmentId"] = true, ["RequesterFeedback"] = true, ["OverrideRejection"] = true, nil }
@@ -1023,14 +1342,25 @@ end
 -- Required key: AssignmentId
 -- @return ApproveAssignmentRequest structure as a key-value pair table
 function M.ApproveAssignmentRequest(args)
-	assert(args, "You must provdide an argument table when creating ApproveAssignmentRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ApproveAssignmentRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["AssignmentId"] = args["AssignmentId"],
 		["RequesterFeedback"] = args["RequesterFeedback"],
 		["OverrideRejection"] = args["OverrideRejection"],
 	}
-	asserts.AssertApproveAssignmentRequest(t)
-	return t
+	asserts.AssertApproveAssignmentRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetQualificationScoreRequest = { ["WorkerId"] = true, ["QualificationTypeId"] = true, nil }
@@ -1057,13 +1387,24 @@ end
 -- Required key: WorkerId
 -- @return GetQualificationScoreRequest structure as a key-value pair table
 function M.GetQualificationScoreRequest(args)
-	assert(args, "You must provdide an argument table when creating GetQualificationScoreRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetQualificationScoreRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["WorkerId"] = args["WorkerId"],
 		["QualificationTypeId"] = args["QualificationTypeId"],
 	}
-	asserts.AssertGetQualificationScoreRequest(t)
-	return t
+	asserts.AssertGetQualificationScoreRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateHITTypeResponse = { ["HITTypeId"] = true, nil }
@@ -1084,12 +1425,23 @@ end
 -- * HITTypeId [EntityId] <p> The ID of the newly registered HIT type.</p>
 -- @return CreateHITTypeResponse structure as a key-value pair table
 function M.CreateHITTypeResponse(args)
-	assert(args, "You must provdide an argument table when creating CreateHITTypeResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateHITTypeResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["HITTypeId"] = args["HITTypeId"],
 	}
-	asserts.AssertCreateHITTypeResponse(t)
-	return t
+	asserts.AssertCreateHITTypeResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateHITRequest = { ["HITLayoutParameters"] = true, ["RequesterAnnotation"] = true, ["AutoApprovalDelayInSeconds"] = true, ["MaxAssignments"] = true, ["Title"] = true, ["Question"] = true, ["UniqueRequestToken"] = true, ["AssignmentDurationInSeconds"] = true, ["AssignmentReviewPolicy"] = true, ["QualificationRequirements"] = true, ["HITReviewPolicy"] = true, ["Keywords"] = true, ["Reward"] = true, ["HITLayoutId"] = true, ["LifetimeInSeconds"] = true, ["Description"] = true, nil }
@@ -1150,8 +1502,14 @@ end
 -- Required key: Description
 -- @return CreateHITRequest structure as a key-value pair table
 function M.CreateHITRequest(args)
-	assert(args, "You must provdide an argument table when creating CreateHITRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateHITRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["HITLayoutParameters"] = args["HITLayoutParameters"],
 		["RequesterAnnotation"] = args["RequesterAnnotation"],
 		["AutoApprovalDelayInSeconds"] = args["AutoApprovalDelayInSeconds"],
@@ -1169,8 +1527,13 @@ function M.CreateHITRequest(args)
 		["LifetimeInSeconds"] = args["LifetimeInSeconds"],
 		["Description"] = args["Description"],
 	}
-	asserts.AssertCreateHITRequest(t)
-	return t
+	asserts.AssertCreateHITRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ReviewReport = { ["ReviewActions"] = true, ["ReviewResults"] = true, nil }
@@ -1193,13 +1556,24 @@ end
 -- * ReviewResults [ReviewResultDetailList] <p> A list of ReviewResults objects for each action specified in the Review Policy. </p>
 -- @return ReviewReport structure as a key-value pair table
 function M.ReviewReport(args)
-	assert(args, "You must provdide an argument table when creating ReviewReport")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ReviewReport")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["ReviewActions"] = args["ReviewActions"],
 		["ReviewResults"] = args["ReviewResults"],
 	}
-	asserts.AssertReviewReport(t)
-	return t
+	asserts.AssertReviewReport(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ReviewActionDetail = { ["Status"] = true, ["ActionName"] = true, ["TargetType"] = true, ["TargetId"] = true, ["ErrorCode"] = true, ["ActionId"] = true, ["CompleteTime"] = true, ["Result"] = true, nil }
@@ -1234,8 +1608,14 @@ end
 -- * Result [String] <p> A description of the outcome of the review.</p>
 -- @return ReviewActionDetail structure as a key-value pair table
 function M.ReviewActionDetail(args)
-	assert(args, "You must provdide an argument table when creating ReviewActionDetail")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ReviewActionDetail")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Status"] = args["Status"],
 		["ActionName"] = args["ActionName"],
 		["TargetType"] = args["TargetType"],
@@ -1245,8 +1625,13 @@ function M.ReviewActionDetail(args)
 		["CompleteTime"] = args["CompleteTime"],
 		["Result"] = args["Result"],
 	}
-	asserts.AssertReviewActionDetail(t)
-	return t
+	asserts.AssertReviewActionDetail(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.WorkerBlock = { ["WorkerId"] = true, ["Reason"] = true, nil }
@@ -1269,13 +1654,24 @@ end
 -- * Reason [String] <p> A message explaining the reason the Worker was blocked. </p>
 -- @return WorkerBlock structure as a key-value pair table
 function M.WorkerBlock(args)
-	assert(args, "You must provdide an argument table when creating WorkerBlock")
-	local t = { 
+	assert(args, "You must provide an argument table when creating WorkerBlock")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["WorkerId"] = args["WorkerId"],
 		["Reason"] = args["Reason"],
 	}
-	asserts.AssertWorkerBlock(t)
-	return t
+	asserts.AssertWorkerBlock(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListWorkersWithQualificationTypeRequest = { ["Status"] = true, ["NextToken"] = true, ["MaxResults"] = true, ["QualificationTypeId"] = true, nil }
@@ -1304,15 +1700,26 @@ end
 -- Required key: QualificationTypeId
 -- @return ListWorkersWithQualificationTypeRequest structure as a key-value pair table
 function M.ListWorkersWithQualificationTypeRequest(args)
-	assert(args, "You must provdide an argument table when creating ListWorkersWithQualificationTypeRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListWorkersWithQualificationTypeRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Status"] = args["Status"],
 		["NextToken"] = args["NextToken"],
 		["MaxResults"] = args["MaxResults"],
 		["QualificationTypeId"] = args["QualificationTypeId"],
 	}
-	asserts.AssertListWorkersWithQualificationTypeRequest(t)
-	return t
+	asserts.AssertListWorkersWithQualificationTypeRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListWorkerBlocksResponse = { ["NumResults"] = true, ["NextToken"] = true, ["WorkerBlocks"] = true, nil }
@@ -1337,14 +1744,25 @@ end
 -- * WorkerBlocks [WorkerBlockList] <p> The list of WorkerBlocks, containing the collection of Worker IDs and reasons for blocking.</p>
 -- @return ListWorkerBlocksResponse structure as a key-value pair table
 function M.ListWorkerBlocksResponse(args)
-	assert(args, "You must provdide an argument table when creating ListWorkerBlocksResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListWorkerBlocksResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NumResults"] = args["NumResults"],
 		["NextToken"] = args["NextToken"],
 		["WorkerBlocks"] = args["WorkerBlocks"],
 	}
-	asserts.AssertListWorkerBlocksResponse(t)
-	return t
+	asserts.AssertListWorkerBlocksResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteWorkerBlockRequest = { ["WorkerId"] = true, ["Reason"] = true, nil }
@@ -1369,13 +1787,24 @@ end
 -- Required key: WorkerId
 -- @return DeleteWorkerBlockRequest structure as a key-value pair table
 function M.DeleteWorkerBlockRequest(args)
-	assert(args, "You must provdide an argument table when creating DeleteWorkerBlockRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteWorkerBlockRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["WorkerId"] = args["WorkerId"],
 		["Reason"] = args["Reason"],
 	}
-	asserts.AssertDeleteWorkerBlockRequest(t)
-	return t
+	asserts.AssertDeleteWorkerBlockRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListBonusPaymentsRequest = { ["AssignmentId"] = true, ["NextToken"] = true, ["HITId"] = true, ["MaxResults"] = true, nil }
@@ -1402,15 +1831,26 @@ end
 -- * MaxResults [ResultSize] 
 -- @return ListBonusPaymentsRequest structure as a key-value pair table
 function M.ListBonusPaymentsRequest(args)
-	assert(args, "You must provdide an argument table when creating ListBonusPaymentsRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListBonusPaymentsRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["AssignmentId"] = args["AssignmentId"],
 		["NextToken"] = args["NextToken"],
 		["HITId"] = args["HITId"],
 		["MaxResults"] = args["MaxResults"],
 	}
-	asserts.AssertListBonusPaymentsRequest(t)
-	return t
+	asserts.AssertListBonusPaymentsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListBonusPaymentsResponse = { ["NumResults"] = true, ["NextToken"] = true, ["BonusPayments"] = true, nil }
@@ -1435,14 +1875,25 @@ end
 -- * BonusPayments [BonusPaymentList] <p>A successful request to the ListBonusPayments operation returns a list of BonusPayment objects. </p>
 -- @return ListBonusPaymentsResponse structure as a key-value pair table
 function M.ListBonusPaymentsResponse(args)
-	assert(args, "You must provdide an argument table when creating ListBonusPaymentsResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListBonusPaymentsResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NumResults"] = args["NumResults"],
 		["NextToken"] = args["NextToken"],
 		["BonusPayments"] = args["BonusPayments"],
 	}
-	asserts.AssertListBonusPaymentsResponse(t)
-	return t
+	asserts.AssertListBonusPaymentsResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateQualificationTypeResponse = { ["QualificationType"] = true, nil }
@@ -1463,12 +1914,23 @@ end
 -- * QualificationType [QualificationType] <p>The created Qualification type, returned as a QualificationType data structure.</p>
 -- @return CreateQualificationTypeResponse structure as a key-value pair table
 function M.CreateQualificationTypeResponse(args)
-	assert(args, "You must provdide an argument table when creating CreateQualificationTypeResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateQualificationTypeResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["QualificationType"] = args["QualificationType"],
 	}
-	asserts.AssertCreateQualificationTypeResponse(t)
-	return t
+	asserts.AssertCreateQualificationTypeResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateHITTypeRequest = { ["Description"] = true, ["Title"] = true, ["AssignmentDurationInSeconds"] = true, ["QualificationRequirements"] = true, ["Keywords"] = true, ["Reward"] = true, ["AutoApprovalDelayInSeconds"] = true, nil }
@@ -1509,8 +1971,14 @@ end
 -- Required key: Description
 -- @return CreateHITTypeRequest structure as a key-value pair table
 function M.CreateHITTypeRequest(args)
-	assert(args, "You must provdide an argument table when creating CreateHITTypeRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateHITTypeRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Description"] = args["Description"],
 		["Title"] = args["Title"],
 		["AssignmentDurationInSeconds"] = args["AssignmentDurationInSeconds"],
@@ -1519,8 +1987,13 @@ function M.CreateHITTypeRequest(args)
 		["Reward"] = args["Reward"],
 		["AutoApprovalDelayInSeconds"] = args["AutoApprovalDelayInSeconds"],
 	}
-	asserts.AssertCreateHITTypeRequest(t)
-	return t
+	asserts.AssertCreateHITTypeRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateHITResponse = { ["HIT"] = true, nil }
@@ -1541,12 +2014,23 @@ end
 -- * HIT [HIT] <p> Contains the newly created HIT data. For a description of the HIT data structure as it appears in responses, see the HIT Data Structure documentation. </p>
 -- @return CreateHITResponse structure as a key-value pair table
 function M.CreateHITResponse(args)
-	assert(args, "You must provdide an argument table when creating CreateHITResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateHITResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["HIT"] = args["HIT"],
 	}
-	asserts.AssertCreateHITResponse(t)
-	return t
+	asserts.AssertCreateHITResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.RejectAssignmentRequest = { ["AssignmentId"] = true, ["RequesterFeedback"] = true, nil }
@@ -1571,13 +2055,24 @@ end
 -- Required key: AssignmentId
 -- @return RejectAssignmentRequest structure as a key-value pair table
 function M.RejectAssignmentRequest(args)
-	assert(args, "You must provdide an argument table when creating RejectAssignmentRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating RejectAssignmentRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["AssignmentId"] = args["AssignmentId"],
 		["RequesterFeedback"] = args["RequesterFeedback"],
 	}
-	asserts.AssertRejectAssignmentRequest(t)
-	return t
+	asserts.AssertRejectAssignmentRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdateNotificationSettingsRequest = { ["Active"] = true, ["HITTypeId"] = true, ["Notification"] = true, nil }
@@ -1604,14 +2099,25 @@ end
 -- Required key: HITTypeId
 -- @return UpdateNotificationSettingsRequest structure as a key-value pair table
 function M.UpdateNotificationSettingsRequest(args)
-	assert(args, "You must provdide an argument table when creating UpdateNotificationSettingsRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateNotificationSettingsRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Active"] = args["Active"],
 		["HITTypeId"] = args["HITTypeId"],
 		["Notification"] = args["Notification"],
 	}
-	asserts.AssertUpdateNotificationSettingsRequest(t)
-	return t
+	asserts.AssertUpdateNotificationSettingsRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Qualification = { ["Status"] = true, ["QualificationTypeId"] = true, ["WorkerId"] = true, ["LocaleValue"] = true, ["GrantTime"] = true, ["IntegerValue"] = true, nil }
@@ -1642,8 +2148,14 @@ end
 -- * IntegerValue [Integer] <p> The value (score) of the Qualification, if the Qualification has an integer value.</p>
 -- @return Qualification structure as a key-value pair table
 function M.Qualification(args)
-	assert(args, "You must provdide an argument table when creating Qualification")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Qualification")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Status"] = args["Status"],
 		["QualificationTypeId"] = args["QualificationTypeId"],
 		["WorkerId"] = args["WorkerId"],
@@ -1651,8 +2163,13 @@ function M.Qualification(args)
 		["GrantTime"] = args["GrantTime"],
 		["IntegerValue"] = args["IntegerValue"],
 	}
-	asserts.AssertQualification(t)
-	return t
+	asserts.AssertQualification(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdateExpirationForHITResponse = { nil }
@@ -1671,11 +2188,22 @@ end
 -- Valid keys:
 -- @return UpdateExpirationForHITResponse structure as a key-value pair table
 function M.UpdateExpirationForHITResponse(args)
-	assert(args, "You must provdide an argument table when creating UpdateExpirationForHITResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateExpirationForHITResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertUpdateExpirationForHITResponse(t)
-	return t
+	asserts.AssertUpdateExpirationForHITResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetQualificationScoreResponse = { ["Qualification"] = true, nil }
@@ -1696,12 +2224,23 @@ end
 -- * Qualification [Qualification] <p> The Qualification data structure of the Qualification assigned to a user, including the Qualification type and the value (score). </p>
 -- @return GetQualificationScoreResponse structure as a key-value pair table
 function M.GetQualificationScoreResponse(args)
-	assert(args, "You must provdide an argument table when creating GetQualificationScoreResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetQualificationScoreResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Qualification"] = args["Qualification"],
 	}
-	asserts.AssertGetQualificationScoreResponse(t)
-	return t
+	asserts.AssertGetQualificationScoreResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AcceptQualificationRequestResponse = { nil }
@@ -1720,11 +2259,22 @@ end
 -- Valid keys:
 -- @return AcceptQualificationRequestResponse structure as a key-value pair table
 function M.AcceptQualificationRequestResponse(args)
-	assert(args, "You must provdide an argument table when creating AcceptQualificationRequestResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AcceptQualificationRequestResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertAcceptQualificationRequestResponse(t)
-	return t
+	asserts.AssertAcceptQualificationRequestResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.BonusPayment = { ["AssignmentId"] = true, ["WorkerId"] = true, ["BonusAmount"] = true, ["GrantTime"] = true, ["Reason"] = true, nil }
@@ -1753,16 +2303,27 @@ end
 -- * Reason [String] <p>The Reason text given when the bonus was granted, if any.</p>
 -- @return BonusPayment structure as a key-value pair table
 function M.BonusPayment(args)
-	assert(args, "You must provdide an argument table when creating BonusPayment")
-	local t = { 
+	assert(args, "You must provide an argument table when creating BonusPayment")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["AssignmentId"] = args["AssignmentId"],
 		["WorkerId"] = args["WorkerId"],
 		["BonusAmount"] = args["BonusAmount"],
 		["GrantTime"] = args["GrantTime"],
 		["Reason"] = args["Reason"],
 	}
-	asserts.AssertBonusPayment(t)
-	return t
+	asserts.AssertBonusPayment(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.RejectQualificationRequestRequest = { ["Reason"] = true, ["QualificationRequestId"] = true, nil }
@@ -1787,13 +2348,24 @@ end
 -- Required key: QualificationRequestId
 -- @return RejectQualificationRequestRequest structure as a key-value pair table
 function M.RejectQualificationRequestRequest(args)
-	assert(args, "You must provdide an argument table when creating RejectQualificationRequestRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating RejectQualificationRequestRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Reason"] = args["Reason"],
 		["QualificationRequestId"] = args["QualificationRequestId"],
 	}
-	asserts.AssertRejectQualificationRequestRequest(t)
-	return t
+	asserts.AssertRejectQualificationRequestRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DisassociateQualificationFromWorkerResponse = { nil }
@@ -1812,11 +2384,22 @@ end
 -- Valid keys:
 -- @return DisassociateQualificationFromWorkerResponse structure as a key-value pair table
 function M.DisassociateQualificationFromWorkerResponse(args)
-	assert(args, "You must provdide an argument table when creating DisassociateQualificationFromWorkerResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DisassociateQualificationFromWorkerResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertDisassociateQualificationFromWorkerResponse(t)
-	return t
+	asserts.AssertDisassociateQualificationFromWorkerResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.QualificationType = { ["AutoGranted"] = true, ["Description"] = true, ["QualificationTypeId"] = true, ["AutoGrantedValue"] = true, ["CreationTime"] = true, ["TestDurationInSeconds"] = true, ["QualificationTypeStatus"] = true, ["Test"] = true, ["AnswerKey"] = true, ["IsRequestable"] = true, ["Keywords"] = true, ["RetryDelayInSeconds"] = true, ["Name"] = true, nil }
@@ -1861,8 +2444,14 @@ end
 -- * Name [String] <p> The name of the Qualification type. The type name is used to identify the type, and to find the type using a Qualification type search. </p>
 -- @return QualificationType structure as a key-value pair table
 function M.QualificationType(args)
-	assert(args, "You must provdide an argument table when creating QualificationType")
-	local t = { 
+	assert(args, "You must provide an argument table when creating QualificationType")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["AutoGranted"] = args["AutoGranted"],
 		["Description"] = args["Description"],
 		["QualificationTypeId"] = args["QualificationTypeId"],
@@ -1877,8 +2466,13 @@ function M.QualificationType(args)
 		["RetryDelayInSeconds"] = args["RetryDelayInSeconds"],
 		["Name"] = args["Name"],
 	}
-	asserts.AssertQualificationType(t)
-	return t
+	asserts.AssertQualificationType(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdateHITReviewStatusRequest = { ["Revert"] = true, ["HITId"] = true, nil }
@@ -1903,13 +2497,24 @@ end
 -- Required key: HITId
 -- @return UpdateHITReviewStatusRequest structure as a key-value pair table
 function M.UpdateHITReviewStatusRequest(args)
-	assert(args, "You must provdide an argument table when creating UpdateHITReviewStatusRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateHITReviewStatusRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Revert"] = args["Revert"],
 		["HITId"] = args["HITId"],
 	}
-	asserts.AssertUpdateHITReviewStatusRequest(t)
-	return t
+	asserts.AssertUpdateHITReviewStatusRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListQualificationRequestsResponse = { ["NumResults"] = true, ["QualificationRequests"] = true, ["NextToken"] = true, nil }
@@ -1934,14 +2539,25 @@ end
 -- * NextToken [PaginationToken] 
 -- @return ListQualificationRequestsResponse structure as a key-value pair table
 function M.ListQualificationRequestsResponse(args)
-	assert(args, "You must provdide an argument table when creating ListQualificationRequestsResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListQualificationRequestsResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NumResults"] = args["NumResults"],
 		["QualificationRequests"] = args["QualificationRequests"],
 		["NextToken"] = args["NextToken"],
 	}
-	asserts.AssertListQualificationRequestsResponse(t)
-	return t
+	asserts.AssertListQualificationRequestsResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.PolicyParameter = { ["MapEntries"] = true, ["Values"] = true, ["Key"] = true, nil }
@@ -1966,14 +2582,25 @@ end
 -- * Key [String] <p> Name of the parameter from the list of Review Polices. </p>
 -- @return PolicyParameter structure as a key-value pair table
 function M.PolicyParameter(args)
-	assert(args, "You must provdide an argument table when creating PolicyParameter")
-	local t = { 
+	assert(args, "You must provide an argument table when creating PolicyParameter")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["MapEntries"] = args["MapEntries"],
 		["Values"] = args["Values"],
 		["Key"] = args["Key"],
 	}
-	asserts.AssertPolicyParameter(t)
-	return t
+	asserts.AssertPolicyParameter(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ReviewResultDetail = { ["QuestionId"] = true, ["SubjectType"] = true, ["Value"] = true, ["ActionId"] = true, ["Key"] = true, ["SubjectId"] = true, nil }
@@ -2004,8 +2631,14 @@ end
 -- * SubjectId [EntityId] <p>The HITID or AssignmentId about which this result was taken. Note that HIT-level Review Policies will often emit results about both the HIT itself and its Assignments, while Assignment-level review policies generally only emit results about the Assignment itself. </p>
 -- @return ReviewResultDetail structure as a key-value pair table
 function M.ReviewResultDetail(args)
-	assert(args, "You must provdide an argument table when creating ReviewResultDetail")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ReviewResultDetail")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["QuestionId"] = args["QuestionId"],
 		["SubjectType"] = args["SubjectType"],
 		["Value"] = args["Value"],
@@ -2013,8 +2646,13 @@ function M.ReviewResultDetail(args)
 		["Key"] = args["Key"],
 		["SubjectId"] = args["SubjectId"],
 	}
-	asserts.AssertReviewResultDetail(t)
-	return t
+	asserts.AssertReviewResultDetail(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.SendBonusResponse = { nil }
@@ -2033,11 +2671,22 @@ end
 -- Valid keys:
 -- @return SendBonusResponse structure as a key-value pair table
 function M.SendBonusResponse(args)
-	assert(args, "You must provdide an argument table when creating SendBonusResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating SendBonusResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertSendBonusResponse(t)
-	return t
+	asserts.AssertSendBonusResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteHITRequest = { ["HITId"] = true, nil }
@@ -2060,12 +2709,23 @@ end
 -- Required key: HITId
 -- @return DeleteHITRequest structure as a key-value pair table
 function M.DeleteHITRequest(args)
-	assert(args, "You must provdide an argument table when creating DeleteHITRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteHITRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["HITId"] = args["HITId"],
 	}
-	asserts.AssertDeleteHITRequest(t)
-	return t
+	asserts.AssertDeleteHITRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateWorkerBlockResponse = { nil }
@@ -2084,11 +2744,22 @@ end
 -- Valid keys:
 -- @return CreateWorkerBlockResponse structure as a key-value pair table
 function M.CreateWorkerBlockResponse(args)
-	assert(args, "You must provdide an argument table when creating CreateWorkerBlockResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateWorkerBlockResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertCreateWorkerBlockResponse(t)
-	return t
+	asserts.AssertCreateWorkerBlockResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteQualificationTypeRequest = { ["QualificationTypeId"] = true, nil }
@@ -2111,12 +2782,23 @@ end
 -- Required key: QualificationTypeId
 -- @return DeleteQualificationTypeRequest structure as a key-value pair table
 function M.DeleteQualificationTypeRequest(args)
-	assert(args, "You must provdide an argument table when creating DeleteQualificationTypeRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteQualificationTypeRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["QualificationTypeId"] = args["QualificationTypeId"],
 	}
-	asserts.AssertDeleteQualificationTypeRequest(t)
-	return t
+	asserts.AssertDeleteQualificationTypeRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateAdditionalAssignmentsForHITResponse = { nil }
@@ -2135,11 +2817,22 @@ end
 -- Valid keys:
 -- @return CreateAdditionalAssignmentsForHITResponse structure as a key-value pair table
 function M.CreateAdditionalAssignmentsForHITResponse(args)
-	assert(args, "You must provdide an argument table when creating CreateAdditionalAssignmentsForHITResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateAdditionalAssignmentsForHITResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertCreateAdditionalAssignmentsForHITResponse(t)
-	return t
+	asserts.AssertCreateAdditionalAssignmentsForHITResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListReviewPolicyResultsForHITResponse = { ["HITReviewReport"] = true, ["AssignmentReviewReport"] = true, ["AssignmentReviewPolicy"] = true, ["HITId"] = true, ["HITReviewPolicy"] = true, ["NextToken"] = true, nil }
@@ -2170,8 +2863,14 @@ end
 -- * NextToken [PaginationToken] 
 -- @return ListReviewPolicyResultsForHITResponse structure as a key-value pair table
 function M.ListReviewPolicyResultsForHITResponse(args)
-	assert(args, "You must provdide an argument table when creating ListReviewPolicyResultsForHITResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListReviewPolicyResultsForHITResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["HITReviewReport"] = args["HITReviewReport"],
 		["AssignmentReviewReport"] = args["AssignmentReviewReport"],
 		["AssignmentReviewPolicy"] = args["AssignmentReviewPolicy"],
@@ -2179,8 +2878,13 @@ function M.ListReviewPolicyResultsForHITResponse(args)
 		["HITReviewPolicy"] = args["HITReviewPolicy"],
 		["NextToken"] = args["NextToken"],
 	}
-	asserts.AssertListReviewPolicyResultsForHITResponse(t)
-	return t
+	asserts.AssertListReviewPolicyResultsForHITResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdateQualificationTypeRequest = { ["AutoGranted"] = true, ["Description"] = true, ["QualificationTypeId"] = true, ["TestDurationInSeconds"] = true, ["QualificationTypeStatus"] = true, ["AnswerKey"] = true, ["AutoGrantedValue"] = true, ["Test"] = true, ["RetryDelayInSeconds"] = true, nil }
@@ -2219,8 +2923,14 @@ end
 -- Required key: QualificationTypeId
 -- @return UpdateQualificationTypeRequest structure as a key-value pair table
 function M.UpdateQualificationTypeRequest(args)
-	assert(args, "You must provdide an argument table when creating UpdateQualificationTypeRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateQualificationTypeRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["AutoGranted"] = args["AutoGranted"],
 		["Description"] = args["Description"],
 		["QualificationTypeId"] = args["QualificationTypeId"],
@@ -2231,8 +2941,13 @@ function M.UpdateQualificationTypeRequest(args)
 		["Test"] = args["Test"],
 		["RetryDelayInSeconds"] = args["RetryDelayInSeconds"],
 	}
-	asserts.AssertUpdateQualificationTypeRequest(t)
-	return t
+	asserts.AssertUpdateQualificationTypeRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateAdditionalAssignmentsForHITRequest = { ["NumberOfAdditionalAssignments"] = true, ["HITId"] = true, ["UniqueRequestToken"] = true, nil }
@@ -2259,14 +2974,25 @@ end
 -- Required key: HITId
 -- @return CreateAdditionalAssignmentsForHITRequest structure as a key-value pair table
 function M.CreateAdditionalAssignmentsForHITRequest(args)
-	assert(args, "You must provdide an argument table when creating CreateAdditionalAssignmentsForHITRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateAdditionalAssignmentsForHITRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NumberOfAdditionalAssignments"] = args["NumberOfAdditionalAssignments"],
 		["HITId"] = args["HITId"],
 		["UniqueRequestToken"] = args["UniqueRequestToken"],
 	}
-	asserts.AssertCreateAdditionalAssignmentsForHITRequest(t)
-	return t
+	asserts.AssertCreateAdditionalAssignmentsForHITRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetAccountBalanceResponse = { ["AvailableBalance"] = true, ["OnHoldBalance"] = true, nil }
@@ -2289,13 +3015,24 @@ end
 -- * OnHoldBalance [NumericValue] 
 -- @return GetAccountBalanceResponse structure as a key-value pair table
 function M.GetAccountBalanceResponse(args)
-	assert(args, "You must provdide an argument table when creating GetAccountBalanceResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetAccountBalanceResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["AvailableBalance"] = args["AvailableBalance"],
 		["OnHoldBalance"] = args["OnHoldBalance"],
 	}
-	asserts.AssertGetAccountBalanceResponse(t)
-	return t
+	asserts.AssertGetAccountBalanceResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdateExpirationForHITRequest = { ["HITId"] = true, ["ExpireAt"] = true, nil }
@@ -2320,13 +3057,24 @@ end
 -- Required key: HITId
 -- @return UpdateExpirationForHITRequest structure as a key-value pair table
 function M.UpdateExpirationForHITRequest(args)
-	assert(args, "You must provdide an argument table when creating UpdateExpirationForHITRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateExpirationForHITRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["HITId"] = args["HITId"],
 		["ExpireAt"] = args["ExpireAt"],
 	}
-	asserts.AssertUpdateExpirationForHITRequest(t)
-	return t
+	asserts.AssertUpdateExpirationForHITRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ServiceFault = { ["Message"] = true, ["TurkErrorCode"] = true, nil }
@@ -2349,13 +3097,24 @@ end
 -- * TurkErrorCode [TurkErrorCode] 
 -- @return ServiceFault structure as a key-value pair table
 function M.ServiceFault(args)
-	assert(args, "You must provdide an argument table when creating ServiceFault")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ServiceFault")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Message"] = args["Message"],
 		["TurkErrorCode"] = args["TurkErrorCode"],
 	}
-	asserts.AssertServiceFault(t)
-	return t
+	asserts.AssertServiceFault(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteHITResponse = { nil }
@@ -2374,11 +3133,22 @@ end
 -- Valid keys:
 -- @return DeleteHITResponse structure as a key-value pair table
 function M.DeleteHITResponse(args)
-	assert(args, "You must provdide an argument table when creating DeleteHITResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteHITResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertDeleteHITResponse(t)
-	return t
+	asserts.AssertDeleteHITResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteQualificationTypeResponse = { nil }
@@ -2397,11 +3167,22 @@ end
 -- Valid keys:
 -- @return DeleteQualificationTypeResponse structure as a key-value pair table
 function M.DeleteQualificationTypeResponse(args)
-	assert(args, "You must provdide an argument table when creating DeleteQualificationTypeResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteQualificationTypeResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertDeleteQualificationTypeResponse(t)
-	return t
+	asserts.AssertDeleteQualificationTypeResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.RejectQualificationRequestResponse = { nil }
@@ -2420,11 +3201,22 @@ end
 -- Valid keys:
 -- @return RejectQualificationRequestResponse structure as a key-value pair table
 function M.RejectQualificationRequestResponse(args)
-	assert(args, "You must provdide an argument table when creating RejectQualificationRequestResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating RejectQualificationRequestResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertRejectQualificationRequestResponse(t)
-	return t
+	asserts.AssertRejectQualificationRequestResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdateQualificationTypeResponse = { ["QualificationType"] = true, nil }
@@ -2445,12 +3237,23 @@ end
 -- * QualificationType [QualificationType] <p> Contains a QualificationType data structure.</p>
 -- @return UpdateQualificationTypeResponse structure as a key-value pair table
 function M.UpdateQualificationTypeResponse(args)
-	assert(args, "You must provdide an argument table when creating UpdateQualificationTypeResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateQualificationTypeResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["QualificationType"] = args["QualificationType"],
 	}
-	asserts.AssertUpdateQualificationTypeResponse(t)
-	return t
+	asserts.AssertUpdateQualificationTypeResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdateNotificationSettingsResponse = { nil }
@@ -2469,11 +3272,22 @@ end
 -- Valid keys:
 -- @return UpdateNotificationSettingsResponse structure as a key-value pair table
 function M.UpdateNotificationSettingsResponse(args)
-	assert(args, "You must provdide an argument table when creating UpdateNotificationSettingsResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateNotificationSettingsResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertUpdateNotificationSettingsResponse(t)
-	return t
+	asserts.AssertUpdateNotificationSettingsResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DeleteWorkerBlockResponse = { nil }
@@ -2492,11 +3306,22 @@ end
 -- Valid keys:
 -- @return DeleteWorkerBlockResponse structure as a key-value pair table
 function M.DeleteWorkerBlockResponse(args)
-	assert(args, "You must provdide an argument table when creating DeleteWorkerBlockResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DeleteWorkerBlockResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertDeleteWorkerBlockResponse(t)
-	return t
+	asserts.AssertDeleteWorkerBlockResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetQualificationTypeResponse = { ["QualificationType"] = true, nil }
@@ -2517,12 +3342,23 @@ end
 -- * QualificationType [QualificationType] <p> The returned Qualification Type</p>
 -- @return GetQualificationTypeResponse structure as a key-value pair table
 function M.GetQualificationTypeResponse(args)
-	assert(args, "You must provdide an argument table when creating GetQualificationTypeResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetQualificationTypeResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["QualificationType"] = args["QualificationType"],
 	}
-	asserts.AssertGetQualificationTypeResponse(t)
-	return t
+	asserts.AssertGetQualificationTypeResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListHITsResponse = { ["NumResults"] = true, ["HITs"] = true, ["NextToken"] = true, nil }
@@ -2547,14 +3383,25 @@ end
 -- * NextToken [PaginationToken] 
 -- @return ListHITsResponse structure as a key-value pair table
 function M.ListHITsResponse(args)
-	assert(args, "You must provdide an argument table when creating ListHITsResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListHITsResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NumResults"] = args["NumResults"],
 		["HITs"] = args["HITs"],
 		["NextToken"] = args["NextToken"],
 	}
-	asserts.AssertListHITsResponse(t)
-	return t
+	asserts.AssertListHITsResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.RejectAssignmentResponse = { nil }
@@ -2573,11 +3420,22 @@ end
 -- Valid keys:
 -- @return RejectAssignmentResponse structure as a key-value pair table
 function M.RejectAssignmentResponse(args)
-	assert(args, "You must provdide an argument table when creating RejectAssignmentResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating RejectAssignmentResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertRejectAssignmentResponse(t)
-	return t
+	asserts.AssertRejectAssignmentResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.UpdateHITTypeOfHITRequest = { ["HITTypeId"] = true, ["HITId"] = true, nil }
@@ -2604,13 +3462,24 @@ end
 -- Required key: HITTypeId
 -- @return UpdateHITTypeOfHITRequest structure as a key-value pair table
 function M.UpdateHITTypeOfHITRequest(args)
-	assert(args, "You must provdide an argument table when creating UpdateHITTypeOfHITRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating UpdateHITTypeOfHITRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["HITTypeId"] = args["HITTypeId"],
 		["HITId"] = args["HITId"],
 	}
-	asserts.AssertUpdateHITTypeOfHITRequest(t)
-	return t
+	asserts.AssertUpdateHITTypeOfHITRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetAssignmentResponse = { ["Assignment"] = true, ["HIT"] = true, nil }
@@ -2633,13 +3502,24 @@ end
 -- * HIT [HIT] <p> The HIT associated with this assignment. The response includes one HIT element.</p>
 -- @return GetAssignmentResponse structure as a key-value pair table
 function M.GetAssignmentResponse(args)
-	assert(args, "You must provdide an argument table when creating GetAssignmentResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetAssignmentResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Assignment"] = args["Assignment"],
 		["HIT"] = args["HIT"],
 	}
-	asserts.AssertGetAssignmentResponse(t)
-	return t
+	asserts.AssertGetAssignmentResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListQualificationTypesRequest = { ["Query"] = true, ["MustBeOwnedByCaller"] = true, ["NextToken"] = true, ["MaxResults"] = true, ["MustBeRequestable"] = true, nil }
@@ -2670,16 +3550,27 @@ end
 -- Required key: MustBeRequestable
 -- @return ListQualificationTypesRequest structure as a key-value pair table
 function M.ListQualificationTypesRequest(args)
-	assert(args, "You must provdide an argument table when creating ListQualificationTypesRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListQualificationTypesRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Query"] = args["Query"],
 		["MustBeOwnedByCaller"] = args["MustBeOwnedByCaller"],
 		["NextToken"] = args["NextToken"],
 		["MaxResults"] = args["MaxResults"],
 		["MustBeRequestable"] = args["MustBeRequestable"],
 	}
-	asserts.AssertListQualificationTypesRequest(t)
-	return t
+	asserts.AssertListQualificationTypesRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetAccountBalanceRequest = { nil }
@@ -2698,11 +3589,22 @@ end
 -- Valid keys:
 -- @return GetAccountBalanceRequest structure as a key-value pair table
 function M.GetAccountBalanceRequest(args)
-	assert(args, "You must provdide an argument table when creating GetAccountBalanceRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetAccountBalanceRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertGetAccountBalanceRequest(t)
-	return t
+	asserts.AssertGetAccountBalanceRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.NotifyWorkersRequest = { ["WorkerIds"] = true, ["MessageText"] = true, ["Subject"] = true, nil }
@@ -2733,14 +3635,25 @@ end
 -- Required key: WorkerIds
 -- @return NotifyWorkersRequest structure as a key-value pair table
 function M.NotifyWorkersRequest(args)
-	assert(args, "You must provdide an argument table when creating NotifyWorkersRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating NotifyWorkersRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["WorkerIds"] = args["WorkerIds"],
 		["MessageText"] = args["MessageText"],
 		["Subject"] = args["Subject"],
 	}
-	asserts.AssertNotifyWorkersRequest(t)
-	return t
+	asserts.AssertNotifyWorkersRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.SendTestEventNotificationResponse = { nil }
@@ -2759,11 +3672,22 @@ end
 -- Valid keys:
 -- @return SendTestEventNotificationResponse structure as a key-value pair table
 function M.SendTestEventNotificationResponse(args)
-	assert(args, "You must provdide an argument table when creating SendTestEventNotificationResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating SendTestEventNotificationResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 	}
-	asserts.AssertSendTestEventNotificationResponse(t)
-	return t
+	asserts.AssertSendTestEventNotificationResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.AssociateQualificationWithWorkerRequest = { ["WorkerId"] = true, ["SendNotification"] = true, ["IntegerValue"] = true, ["QualificationTypeId"] = true, nil }
@@ -2794,15 +3718,26 @@ end
 -- Required key: WorkerId
 -- @return AssociateQualificationWithWorkerRequest structure as a key-value pair table
 function M.AssociateQualificationWithWorkerRequest(args)
-	assert(args, "You must provdide an argument table when creating AssociateQualificationWithWorkerRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating AssociateQualificationWithWorkerRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["WorkerId"] = args["WorkerId"],
 		["SendNotification"] = args["SendNotification"],
 		["IntegerValue"] = args["IntegerValue"],
 		["QualificationTypeId"] = args["QualificationTypeId"],
 	}
-	asserts.AssertAssociateQualificationWithWorkerRequest(t)
-	return t
+	asserts.AssertAssociateQualificationWithWorkerRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.HIT = { ["HITGroupId"] = true, ["RequesterAnnotation"] = true, ["NumberOfAssignmentsCompleted"] = true, ["Description"] = true, ["MaxAssignments"] = true, ["Title"] = true, ["NumberOfAssignmentsAvailable"] = true, ["Question"] = true, ["CreationTime"] = true, ["AssignmentDurationInSeconds"] = true, ["HITTypeId"] = true, ["NumberOfAssignmentsPending"] = true, ["HITStatus"] = true, ["HITId"] = true, ["QualificationRequirements"] = true, ["Keywords"] = true, ["Expiration"] = true, ["Reward"] = true, ["HITLayoutId"] = true, ["HITReviewStatus"] = true, ["AutoApprovalDelayInSeconds"] = true, nil }
@@ -2863,8 +3798,14 @@ end
 -- * AutoApprovalDelayInSeconds [Long] <p>The amount of time, in seconds, after the Worker submits an assignment for the HIT that the results are automatically approved by Amazon Mechanical Turk. This is the amount of time the Requester has to reject an assignment submitted by a Worker before the assignment is auto-approved and the Worker is paid. </p>
 -- @return HIT structure as a key-value pair table
 function M.HIT(args)
-	assert(args, "You must provdide an argument table when creating HIT")
-	local t = { 
+	assert(args, "You must provide an argument table when creating HIT")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["HITGroupId"] = args["HITGroupId"],
 		["RequesterAnnotation"] = args["RequesterAnnotation"],
 		["NumberOfAssignmentsCompleted"] = args["NumberOfAssignmentsCompleted"],
@@ -2887,8 +3828,13 @@ function M.HIT(args)
 		["HITReviewStatus"] = args["HITReviewStatus"],
 		["AutoApprovalDelayInSeconds"] = args["AutoApprovalDelayInSeconds"],
 	}
-	asserts.AssertHIT(t)
-	return t
+	asserts.AssertHIT(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.CreateHITWithHITTypeResponse = { ["HIT"] = true, nil }
@@ -2909,12 +3855,23 @@ end
 -- * HIT [HIT] <p> Contains the newly created HIT data. For a description of the HIT data structure as it appears in responses, see the HIT Data Structure documentation. </p>
 -- @return CreateHITWithHITTypeResponse structure as a key-value pair table
 function M.CreateHITWithHITTypeResponse(args)
-	assert(args, "You must provdide an argument table when creating CreateHITWithHITTypeResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating CreateHITWithHITTypeResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["HIT"] = args["HIT"],
 	}
-	asserts.AssertCreateHITWithHITTypeResponse(t)
-	return t
+	asserts.AssertCreateHITWithHITTypeResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListHITsForQualificationTypeRequest = { ["NextToken"] = true, ["MaxResults"] = true, ["QualificationTypeId"] = true, nil }
@@ -2941,14 +3898,25 @@ end
 -- Required key: QualificationTypeId
 -- @return ListHITsForQualificationTypeRequest structure as a key-value pair table
 function M.ListHITsForQualificationTypeRequest(args)
-	assert(args, "You must provdide an argument table when creating ListHITsForQualificationTypeRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListHITsForQualificationTypeRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NextToken"] = args["NextToken"],
 		["MaxResults"] = args["MaxResults"],
 		["QualificationTypeId"] = args["QualificationTypeId"],
 	}
-	asserts.AssertListHITsForQualificationTypeRequest(t)
-	return t
+	asserts.AssertListHITsForQualificationTypeRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.HITLayoutParameter = { ["Name"] = true, ["Value"] = true, nil }
@@ -2971,13 +3939,24 @@ end
 -- * Value [String] <p>The value substituted for the parameter referenced in the HITLayout. </p>
 -- @return HITLayoutParameter structure as a key-value pair table
 function M.HITLayoutParameter(args)
-	assert(args, "You must provdide an argument table when creating HITLayoutParameter")
-	local t = { 
+	assert(args, "You must provide an argument table when creating HITLayoutParameter")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Name"] = args["Name"],
 		["Value"] = args["Value"],
 	}
-	asserts.AssertHITLayoutParameter(t)
-	return t
+	asserts.AssertHITLayoutParameter(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.NotifyWorkersResponse = { ["NotifyWorkersFailureStatuses"] = true, nil }
@@ -2998,12 +3977,23 @@ end
 -- * NotifyWorkersFailureStatuses [NotifyWorkersFailureStatusList] <p> When MTurk sends notifications to the list of Workers, it returns back any failures it encounters in this list of NotifyWorkersFailureStatus objects. </p>
 -- @return NotifyWorkersResponse structure as a key-value pair table
 function M.NotifyWorkersResponse(args)
-	assert(args, "You must provdide an argument table when creating NotifyWorkersResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating NotifyWorkersResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NotifyWorkersFailureStatuses"] = args["NotifyWorkersFailureStatuses"],
 	}
-	asserts.AssertNotifyWorkersResponse(t)
-	return t
+	asserts.AssertNotifyWorkersResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.Locale = { ["Country"] = true, ["Subdivision"] = true, nil }
@@ -3028,13 +4018,24 @@ end
 -- Required key: Country
 -- @return Locale structure as a key-value pair table
 function M.Locale(args)
-	assert(args, "You must provdide an argument table when creating Locale")
-	local t = { 
+	assert(args, "You must provide an argument table when creating Locale")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["Country"] = args["Country"],
 		["Subdivision"] = args["Subdivision"],
 	}
-	asserts.AssertLocale(t)
-	return t
+	asserts.AssertLocale(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ListAssignmentsForHITResponse = { ["NumResults"] = true, ["Assignments"] = true, ["NextToken"] = true, nil }
@@ -3059,14 +4060,25 @@ end
 -- * NextToken [PaginationToken] 
 -- @return ListAssignmentsForHITResponse structure as a key-value pair table
 function M.ListAssignmentsForHITResponse(args)
-	assert(args, "You must provdide an argument table when creating ListAssignmentsForHITResponse")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ListAssignmentsForHITResponse")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["NumResults"] = args["NumResults"],
 		["Assignments"] = args["Assignments"],
 		["NextToken"] = args["NextToken"],
 	}
-	asserts.AssertListAssignmentsForHITResponse(t)
-	return t
+	asserts.AssertListAssignmentsForHITResponse(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.SendBonusRequest = { ["AssignmentId"] = true, ["WorkerId"] = true, ["BonusAmount"] = true, ["Reason"] = true, ["UniqueRequestToken"] = true, nil }
@@ -3101,16 +4113,27 @@ end
 -- Required key: AssignmentId
 -- @return SendBonusRequest structure as a key-value pair table
 function M.SendBonusRequest(args)
-	assert(args, "You must provdide an argument table when creating SendBonusRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating SendBonusRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["AssignmentId"] = args["AssignmentId"],
 		["WorkerId"] = args["WorkerId"],
 		["BonusAmount"] = args["BonusAmount"],
 		["Reason"] = args["Reason"],
 		["UniqueRequestToken"] = args["UniqueRequestToken"],
 	}
-	asserts.AssertSendBonusRequest(t)
-	return t
+	asserts.AssertSendBonusRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.NotificationSpecification = { ["EventTypes"] = true, ["Destination"] = true, ["Version"] = true, ["Transport"] = true, nil }
@@ -3141,15 +4164,26 @@ end
 -- Required key: Transport
 -- @return NotificationSpecification structure as a key-value pair table
 function M.NotificationSpecification(args)
-	assert(args, "You must provdide an argument table when creating NotificationSpecification")
-	local t = { 
+	assert(args, "You must provide an argument table when creating NotificationSpecification")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["EventTypes"] = args["EventTypes"],
 		["Destination"] = args["Destination"],
 		["Version"] = args["Version"],
 		["Transport"] = args["Transport"],
 	}
-	asserts.AssertNotificationSpecification(t)
-	return t
+	asserts.AssertNotificationSpecification(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetFileUploadURLRequest = { ["AssignmentId"] = true, ["QuestionIdentifier"] = true, nil }
@@ -3176,13 +4210,24 @@ end
 -- Required key: QuestionIdentifier
 -- @return GetFileUploadURLRequest structure as a key-value pair table
 function M.GetFileUploadURLRequest(args)
-	assert(args, "You must provdide an argument table when creating GetFileUploadURLRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetFileUploadURLRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["AssignmentId"] = args["AssignmentId"],
 		["QuestionIdentifier"] = args["QuestionIdentifier"],
 	}
-	asserts.AssertGetFileUploadURLRequest(t)
-	return t
+	asserts.AssertGetFileUploadURLRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.ReviewPolicy = { ["PolicyName"] = true, ["Parameters"] = true, nil }
@@ -3205,13 +4250,24 @@ end
 -- * Parameters [PolicyParameterList] <p>Name of the parameter from the Review policy.</p>
 -- @return ReviewPolicy structure as a key-value pair table
 function M.ReviewPolicy(args)
-	assert(args, "You must provdide an argument table when creating ReviewPolicy")
-	local t = { 
+	assert(args, "You must provide an argument table when creating ReviewPolicy")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["PolicyName"] = args["PolicyName"],
 		["Parameters"] = args["Parameters"],
 	}
-	asserts.AssertReviewPolicy(t)
-	return t
+	asserts.AssertReviewPolicy(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.DisassociateQualificationFromWorkerRequest = { ["WorkerId"] = true, ["Reason"] = true, ["QualificationTypeId"] = true, nil }
@@ -3240,14 +4296,25 @@ end
 -- Required key: QualificationTypeId
 -- @return DisassociateQualificationFromWorkerRequest structure as a key-value pair table
 function M.DisassociateQualificationFromWorkerRequest(args)
-	assert(args, "You must provdide an argument table when creating DisassociateQualificationFromWorkerRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating DisassociateQualificationFromWorkerRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["WorkerId"] = args["WorkerId"],
 		["Reason"] = args["Reason"],
 		["QualificationTypeId"] = args["QualificationTypeId"],
 	}
-	asserts.AssertDisassociateQualificationFromWorkerRequest(t)
-	return t
+	asserts.AssertDisassociateQualificationFromWorkerRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 keys.GetHITRequest = { ["HITId"] = true, nil }
@@ -3270,12 +4337,23 @@ end
 -- Required key: HITId
 -- @return GetHITRequest structure as a key-value pair table
 function M.GetHITRequest(args)
-	assert(args, "You must provdide an argument table when creating GetHITRequest")
-	local t = { 
+	assert(args, "You must provide an argument table when creating GetHITRequest")
+    local query_args = { 
+    }
+    local uri_args = { 
+    }
+    local header_args = { 
+    }
+	local all_args = { 
 		["HITId"] = args["HITId"],
 	}
-	asserts.AssertGetHITRequest(t)
-	return t
+	asserts.AssertGetHITRequest(all_args)
+	return {
+        all = all_args,
+        query = query_args,
+        uri = uri_args,
+        headers = header_args,
+    }
 end
 
 function asserts.AssertReviewPolicyLevel(str)
@@ -3941,8 +5019,11 @@ function M.SendBonusAsync(SendBonusRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "MTurkRequesterServiceV20170117.SendBonus",
 	}
+	for header,value in pairs(SendBonusRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", SendBonusRequest, headers, settings, cb)
 	else
@@ -3973,8 +5054,11 @@ function M.AssociateQualificationWithWorkerAsync(AssociateQualificationWithWorke
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "MTurkRequesterServiceV20170117.AssociateQualificationWithWorker",
 	}
+	for header,value in pairs(AssociateQualificationWithWorkerRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", AssociateQualificationWithWorkerRequest, headers, settings, cb)
 	else
@@ -4005,8 +5089,11 @@ function M.UpdateHITTypeOfHITAsync(UpdateHITTypeOfHITRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "MTurkRequesterServiceV20170117.UpdateHITTypeOfHIT",
 	}
+	for header,value in pairs(UpdateHITTypeOfHITRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateHITTypeOfHITRequest, headers, settings, cb)
 	else
@@ -4037,8 +5124,11 @@ function M.UpdateNotificationSettingsAsync(UpdateNotificationSettingsRequest, cb
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "MTurkRequesterServiceV20170117.UpdateNotificationSettings",
 	}
+	for header,value in pairs(UpdateNotificationSettingsRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateNotificationSettingsRequest, headers, settings, cb)
 	else
@@ -4069,8 +5159,11 @@ function M.ListWorkerBlocksAsync(ListWorkerBlocksRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "MTurkRequesterServiceV20170117.ListWorkerBlocks",
 	}
+	for header,value in pairs(ListWorkerBlocksRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ListWorkerBlocksRequest, headers, settings, cb)
 	else
@@ -4101,8 +5194,11 @@ function M.ListReviewableHITsAsync(ListReviewableHITsRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "MTurkRequesterServiceV20170117.ListReviewableHITs",
 	}
+	for header,value in pairs(ListReviewableHITsRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ListReviewableHITsRequest, headers, settings, cb)
 	else
@@ -4133,8 +5229,11 @@ function M.ListAssignmentsForHITAsync(ListAssignmentsForHITRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "MTurkRequesterServiceV20170117.ListAssignmentsForHIT",
 	}
+	for header,value in pairs(ListAssignmentsForHITRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ListAssignmentsForHITRequest, headers, settings, cb)
 	else
@@ -4165,8 +5264,11 @@ function M.DisassociateQualificationFromWorkerAsync(DisassociateQualificationFro
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "MTurkRequesterServiceV20170117.DisassociateQualificationFromWorker",
 	}
+	for header,value in pairs(DisassociateQualificationFromWorkerRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DisassociateQualificationFromWorkerRequest, headers, settings, cb)
 	else
@@ -4197,8 +5299,11 @@ function M.RejectQualificationRequestAsync(RejectQualificationRequestRequest, cb
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "MTurkRequesterServiceV20170117.RejectQualificationRequest",
 	}
+	for header,value in pairs(RejectQualificationRequestRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", RejectQualificationRequestRequest, headers, settings, cb)
 	else
@@ -4229,8 +5334,11 @@ function M.CreateHITTypeAsync(CreateHITTypeRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "MTurkRequesterServiceV20170117.CreateHITType",
 	}
+	for header,value in pairs(CreateHITTypeRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateHITTypeRequest, headers, settings, cb)
 	else
@@ -4261,8 +5369,11 @@ function M.GetFileUploadURLAsync(GetFileUploadURLRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "MTurkRequesterServiceV20170117.GetFileUploadURL",
 	}
+	for header,value in pairs(GetFileUploadURLRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", GetFileUploadURLRequest, headers, settings, cb)
 	else
@@ -4293,8 +5404,11 @@ function M.ListReviewPolicyResultsForHITAsync(ListReviewPolicyResultsForHITReque
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "MTurkRequesterServiceV20170117.ListReviewPolicyResultsForHIT",
 	}
+	for header,value in pairs(ListReviewPolicyResultsForHITRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ListReviewPolicyResultsForHITRequest, headers, settings, cb)
 	else
@@ -4325,8 +5439,11 @@ function M.UpdateExpirationForHITAsync(UpdateExpirationForHITRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "MTurkRequesterServiceV20170117.UpdateExpirationForHIT",
 	}
+	for header,value in pairs(UpdateExpirationForHITRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateExpirationForHITRequest, headers, settings, cb)
 	else
@@ -4357,8 +5474,11 @@ function M.UpdateQualificationTypeAsync(UpdateQualificationTypeRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "MTurkRequesterServiceV20170117.UpdateQualificationType",
 	}
+	for header,value in pairs(UpdateQualificationTypeRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateQualificationTypeRequest, headers, settings, cb)
 	else
@@ -4389,8 +5509,11 @@ function M.NotifyWorkersAsync(NotifyWorkersRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "MTurkRequesterServiceV20170117.NotifyWorkers",
 	}
+	for header,value in pairs(NotifyWorkersRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", NotifyWorkersRequest, headers, settings, cb)
 	else
@@ -4421,8 +5544,11 @@ function M.ListQualificationTypesAsync(ListQualificationTypesRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "MTurkRequesterServiceV20170117.ListQualificationTypes",
 	}
+	for header,value in pairs(ListQualificationTypesRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ListQualificationTypesRequest, headers, settings, cb)
 	else
@@ -4453,8 +5579,11 @@ function M.CreateHITAsync(CreateHITRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "MTurkRequesterServiceV20170117.CreateHIT",
 	}
+	for header,value in pairs(CreateHITRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateHITRequest, headers, settings, cb)
 	else
@@ -4485,8 +5614,11 @@ function M.ListHITsForQualificationTypeAsync(ListHITsForQualificationTypeRequest
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "MTurkRequesterServiceV20170117.ListHITsForQualificationType",
 	}
+	for header,value in pairs(ListHITsForQualificationTypeRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ListHITsForQualificationTypeRequest, headers, settings, cb)
 	else
@@ -4517,8 +5649,11 @@ function M.AcceptQualificationRequestAsync(AcceptQualificationRequestRequest, cb
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "MTurkRequesterServiceV20170117.AcceptQualificationRequest",
 	}
+	for header,value in pairs(AcceptQualificationRequestRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", AcceptQualificationRequestRequest, headers, settings, cb)
 	else
@@ -4549,8 +5684,11 @@ function M.ListQualificationRequestsAsync(ListQualificationRequestsRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "MTurkRequesterServiceV20170117.ListQualificationRequests",
 	}
+	for header,value in pairs(ListQualificationRequestsRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ListQualificationRequestsRequest, headers, settings, cb)
 	else
@@ -4581,8 +5719,11 @@ function M.UpdateHITReviewStatusAsync(UpdateHITReviewStatusRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "MTurkRequesterServiceV20170117.UpdateHITReviewStatus",
 	}
+	for header,value in pairs(UpdateHITReviewStatusRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", UpdateHITReviewStatusRequest, headers, settings, cb)
 	else
@@ -4613,8 +5754,11 @@ function M.ListHITsAsync(ListHITsRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "MTurkRequesterServiceV20170117.ListHITs",
 	}
+	for header,value in pairs(ListHITsRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ListHITsRequest, headers, settings, cb)
 	else
@@ -4645,8 +5789,11 @@ function M.ListWorkersWithQualificationTypeAsync(ListWorkersWithQualificationTyp
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "MTurkRequesterServiceV20170117.ListWorkersWithQualificationType",
 	}
+	for header,value in pairs(ListWorkersWithQualificationTypeRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ListWorkersWithQualificationTypeRequest, headers, settings, cb)
 	else
@@ -4677,8 +5824,11 @@ function M.GetAccountBalanceAsync(GetAccountBalanceRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "MTurkRequesterServiceV20170117.GetAccountBalance",
 	}
+	for header,value in pairs(GetAccountBalanceRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", GetAccountBalanceRequest, headers, settings, cb)
 	else
@@ -4709,8 +5859,11 @@ function M.DeleteQualificationTypeAsync(DeleteQualificationTypeRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "MTurkRequesterServiceV20170117.DeleteQualificationType",
 	}
+	for header,value in pairs(DeleteQualificationTypeRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteQualificationTypeRequest, headers, settings, cb)
 	else
@@ -4741,8 +5894,11 @@ function M.SendTestEventNotificationAsync(SendTestEventNotificationRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "MTurkRequesterServiceV20170117.SendTestEventNotification",
 	}
+	for header,value in pairs(SendTestEventNotificationRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", SendTestEventNotificationRequest, headers, settings, cb)
 	else
@@ -4773,8 +5929,11 @@ function M.CreateHITWithHITTypeAsync(CreateHITWithHITTypeRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "MTurkRequesterServiceV20170117.CreateHITWithHITType",
 	}
+	for header,value in pairs(CreateHITWithHITTypeRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateHITWithHITTypeRequest, headers, settings, cb)
 	else
@@ -4805,8 +5964,11 @@ function M.CreateWorkerBlockAsync(CreateWorkerBlockRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "MTurkRequesterServiceV20170117.CreateWorkerBlock",
 	}
+	for header,value in pairs(CreateWorkerBlockRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateWorkerBlockRequest, headers, settings, cb)
 	else
@@ -4837,8 +5999,11 @@ function M.ApproveAssignmentAsync(ApproveAssignmentRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "MTurkRequesterServiceV20170117.ApproveAssignment",
 	}
+	for header,value in pairs(ApproveAssignmentRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ApproveAssignmentRequest, headers, settings, cb)
 	else
@@ -4869,8 +6034,11 @@ function M.ListBonusPaymentsAsync(ListBonusPaymentsRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "MTurkRequesterServiceV20170117.ListBonusPayments",
 	}
+	for header,value in pairs(ListBonusPaymentsRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", ListBonusPaymentsRequest, headers, settings, cb)
 	else
@@ -4901,8 +6069,11 @@ function M.DeleteHITAsync(DeleteHITRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "MTurkRequesterServiceV20170117.DeleteHIT",
 	}
+	for header,value in pairs(DeleteHITRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteHITRequest, headers, settings, cb)
 	else
@@ -4933,8 +6104,11 @@ function M.GetQualificationScoreAsync(GetQualificationScoreRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "MTurkRequesterServiceV20170117.GetQualificationScore",
 	}
+	for header,value in pairs(GetQualificationScoreRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", GetQualificationScoreRequest, headers, settings, cb)
 	else
@@ -4965,8 +6139,11 @@ function M.DeleteWorkerBlockAsync(DeleteWorkerBlockRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "MTurkRequesterServiceV20170117.DeleteWorkerBlock",
 	}
+	for header,value in pairs(DeleteWorkerBlockRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", DeleteWorkerBlockRequest, headers, settings, cb)
 	else
@@ -4997,8 +6174,11 @@ function M.GetQualificationTypeAsync(GetQualificationTypeRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "MTurkRequesterServiceV20170117.GetQualificationType",
 	}
+	for header,value in pairs(GetQualificationTypeRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", GetQualificationTypeRequest, headers, settings, cb)
 	else
@@ -5029,8 +6209,11 @@ function M.RejectAssignmentAsync(RejectAssignmentRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "MTurkRequesterServiceV20170117.RejectAssignment",
 	}
+	for header,value in pairs(RejectAssignmentRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", RejectAssignmentRequest, headers, settings, cb)
 	else
@@ -5061,8 +6244,11 @@ function M.CreateQualificationTypeAsync(CreateQualificationTypeRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "MTurkRequesterServiceV20170117.CreateQualificationType",
 	}
+	for header,value in pairs(CreateQualificationTypeRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateQualificationTypeRequest, headers, settings, cb)
 	else
@@ -5093,8 +6279,11 @@ function M.GetAssignmentAsync(GetAssignmentRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "MTurkRequesterServiceV20170117.GetAssignment",
 	}
+	for header,value in pairs(GetAssignmentRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", GetAssignmentRequest, headers, settings, cb)
 	else
@@ -5125,8 +6314,11 @@ function M.GetHITAsync(GetHITRequest, cb)
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "MTurkRequesterServiceV20170117.GetHIT",
 	}
+	for header,value in pairs(GetHITRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", GetHITRequest, headers, settings, cb)
 	else
@@ -5157,8 +6349,11 @@ function M.CreateAdditionalAssignmentsForHITAsync(CreateAdditionalAssignmentsFor
 		[request_headers.CONTENT_TYPE_HEADER] = content_type.from_protocol(M.metadata.protocol, M.metadata.json_version),
 		[request_headers.AMZ_TARGET_HEADER] = "MTurkRequesterServiceV20170117.CreateAdditionalAssignmentsForHIT",
 	}
+	for header,value in pairs(CreateAdditionalAssignmentsForHITRequest.headers) do
+		headers[header] = value
+	end
 
-	local request_handler, err = request_handlers.from_http_method("POST")
+	local request_handler, err = request_handlers.from_protocol_and_method("json", "POST")
 	if request_handler then
 		request_handler(settings.uri, "/", CreateAdditionalAssignmentsForHITRequest, headers, settings, cb)
 	else
